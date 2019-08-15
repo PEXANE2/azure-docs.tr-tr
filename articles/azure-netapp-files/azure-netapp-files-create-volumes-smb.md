@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 6e425eba3159f8840e1a7960f6a6c3171b1ba163
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850424"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975925"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -85,7 +85,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         Bu, SMB sunucu makinesi hesaplarının oluşturulacağı kuruluş birimi (OU) için LDAP yoludur. Diğer bir deyişle, OU = ikinci düzey, OU = ilk düzey. 
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 
-    ![Active Directory Birleştir](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Active Directory ekleyin](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. **Katıl**’a tıklayın.  
 
@@ -127,7 +127,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         
         Bir alt ağ temsilcisi yoksa, birim oluştur sayfasında **Yeni oluştur** ' a tıklayabilirsiniz. Sonra alt ağ oluştur sayfasında alt ağ bilgilerini belirtin ve alt ağın Azure NetApp Files için temsilci olarak **Microsoft. NetApp/birimler** ' i seçin. Her VNET 'te Azure NetApp Files için yalnızca bir alt ağ atanabilir.   
  
-        ![Birim oluşturun](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Birim oluştur](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
@@ -148,4 +148,6 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
 * [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
+* [SMB SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * [Azure hizmetleri için sanal ağ tümleştirmesi hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Azure CLı kullanarak yeni bir Active Directory ormanı yüklemesi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

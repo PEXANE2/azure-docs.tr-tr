@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6d05b6ac49b372caff1bdc2f03358598fcc1afba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737085"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951974"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -72,8 +72,8 @@ Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 ça
 
 MARS aracısını, şirket içi makinelerde ve Azure VM 'lerde çalışan bazı işletim sistemlerinde doğrudan Azure 'a yedeklemek için kullanabilirsiniz. İşletim sistemleri 64 bit olmalıdır ve en son hizmet paketlerini ve güncelleştirmelerini çalıştırıyor olmalıdır. Aşağıdaki tabloda bu işletim sistemleri özetlenmektedir:
 
-**İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu**
---- | --- | ---
+**İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** 
+--- | --- | --- 
 Windows 10 (Enterprise, Pro, Home) | Evet | Hayır
 Windows 8.1 (Enterprise, Pro)| Evet |Hayır
 Windows 8 (Enterprise, Pro) | Evet | Hayır

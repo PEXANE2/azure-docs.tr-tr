@@ -1,9 +1,9 @@
 ---
-title: 'Sorun giderme: Veri indirilen Azure Active Directory etkinlik günlüklerindeki eksik | Microsoft Docs'
+title: Sorunu İndirilen Azure Active Directory etkinlik günlüklerinde eksik veriler | Microsoft Docs
 description: İndirilen Azure Active Directory etkinlik günlüklerindeki eksik verilere yönelik bir çözüm sağlar.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2200a9c75b371ed72ffefe6900367e698101e0fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f120c1b86efe94f4ff6316e6116b9049582b07e9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437116"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987977"
 ---
-# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Tüm verileri karşıdan Azure Active Directory etkinlik günlüğünde bulamıyorum
+# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>İndirdiğim Azure Active Directory etkinlik günlüğündeki tüm verileri bulamıyorum
 
 ## <a name="symptoms"></a>Belirtiler
 
 Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden? 
 
- ![Raporlama](./media/troubleshoot-missing-data-download/01.png)
+ ![Raporlanıyor](./media/troubleshoot-missing-data-download/01.png)
  
 ## <a name="cause"></a>Nedeni
 
-Azure Portal'da etkinlik günlüklerini indirdiğinizde ölçek en son gerçekleşen en başta göre sıralanmış, 250.000 kayıtlara sınırlıyoruz. 
+Etkinlik günlüklerini Azure portal indirdiğinizde, ölçeği 250.000 kayıt olarak sınırlarız ve en son ilk olarak sıralanır. 
 
 ## <a name="resolution"></a>Çözüm
 
@@ -42,5 +42,5 @@ Belirli bir noktadaki bir milyon kaydı getirmek için [Azure AD Raporlama API�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Active Directory SSS raporları](reports-faq.md)
+* [Azure Active Directory raporları SSS](reports-faq.md)
 

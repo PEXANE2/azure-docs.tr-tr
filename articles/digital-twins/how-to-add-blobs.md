@@ -1,44 +1,44 @@
 ---
-title: Azure dijital İkizlerini nesneleri blobları ekleme | Microsoft Docs
-description: Azure dijital İkizlerini nesnelerine blobları eklemeyi öğrenin.
+title: Azure dijital TWINS 'de nesnelere blob ekleme | Microsoft Docs
+description: Azure dijital TWINS 'deki nesnelere blob ekleme hakkında bilgi edinin.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 61c09435606612377781fb382d2d31144e96b07b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670810"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966009"
 ---
-# <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure dijital İkizlerini nesnelerine BLOB Ekle
+# <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure dijital TWINS 'de nesnelere blob ekleme
 
-Resimler ve günlükleri gibi yaygın dosya türleri yapılandırılmamış temsillerini blobudur. BLOB'ları izlemek bir MIME türü kullanarak temsil ettikleri ne tür veriler (örneğin: "image/jpeg") ve meta verileri (adı, açıklamayı, türü ve benzeri).
+Blob 'lar, Resimler ve Günlükler gibi ortak dosya türlerinin yapılandırılmamış temsilleridir. Blob 'lar bir MIME türünü (örneğin, "image/jpeg") ve meta verileri (ad, açıklama, tür vb.) kullanarak temsil ettikleri veri türlerini izler.
 
-Azure dijital İkizlerini cihazlara, boşluk ve kullanıcılara düğmelere bloblarını destekler. BLOB'ları, bir kullanıcı, cihaz fotoğraf, video, bir harita, üretici yazılımı zip, JSON verilerini, bir günlük, vb. bir profil resmi temsil edebilir.
+Azure dijital TWINS, cihaz, boşluk ve kullanıcılara Blobları eklemeyi destekler. Blob 'lar, bir Kullanıcı, bir cihaz fotoğrafı, video, harita, bir bellenim zip, JSON verileri, günlük vb. için bir profil resmini temsil edebilir.
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
-## <a name="uploading-blobs-overview"></a>Karşıya BLOB'ları genel bakış
+## <a name="uploading-blobs-overview"></a>Bloblara genel bakış yükleme
 
-Çok bölümlü istekleri, özel uç noktaları ve onların ilgili işlevleri blobları karşıya yüklemek için kullanabilirsiniz.
+Blob 'ları belirli uç noktalara ve ilgili işlevlere yüklemek için çok parçalı istekleri kullanabilirsiniz.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-### <a name="blob-metadata"></a>BLOB meta verileri
+### <a name="blob-metadata"></a>Blob meta verileri
 
-Ek olarak **Content-Type** ve **Content-Disposition**, dijital İkizlerini Azure blob çok parçalı istek, doğru JSON gövdesi belirtmeniz gerekir. Göndermek için hangi JSON gövdesi gerçekleştirilmekte olan HTTP isteği işlemi türüne bağlıdır.
+**Content-Type** ve **Content-Disposition**özelliklerine ek olarak, Azure dijital TWINS blob çok parçalı istekleri doğru JSON gövdesini belirtmelidir. Hangi JSON gövdesinin gönderileceği, gerçekleştirilen HTTP istek işlem türüne bağlıdır.
 
-Dört ana JSON şemalarının şunlardır:
+Dört adet ana JSON şemaları şunlardır:
 
 [![JSON şemaları](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
 
-JSON blob meta verilerini aşağıdaki modele uyar:
+JSON blob meta verileri aşağıdaki modele uyar:
 
 ```JSON
 {
@@ -53,28 +53,28 @@ JSON blob meta verilerini aşağıdaki modele uyar:
 
 | Öznitelik | Type | Açıklama |
 | --- | --- | --- |
-| **parentId** | Dize | Blob (boşluk, cihazları veya kullanıcıları ile) ilişkilendirilecek üst varlık |
-| **name** |Dize | Blob için bir insan kolay ad |
-| **type** | Dize | Blob - türünü kullanamaz *türü* ve *typeId*  |
-| **typeId** | Tamsayı | Blob türü kimliği - kullanamaz *türü* ve *typeId* |
-| **subtype** | Dize | Blob alt - kullanamaz *alt* ve *subtypeId* |
-| **subtypeId** | Tamsayı | Alt tür kimliği - blob için kullanamaz *alt* ve *subtypeId* |
-| **description** | Dize | Blob özelleştirilmiş açıklaması |
-| **sharing** | Dize | Blob olup paylaşılabilir - sabit listesi [`None`, `Tree`, `Global`] |
+| **parentId** | Dize | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
+| **name** |Dize | Blob için insan dostu bir ad |
+| **type** | Dize | Blob türü- *Type* ve *TypeId* kullanılamaz  |
+| **Türü** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
+| **subtype** | Dize | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
+| **Alt TypeId** | Tamsayı | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
+| **description** | Dize | Blobun özelleştirilmiş açıklaması |
+| **sharing** | Dize | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
 
-BLOB meta verileri ile ilk öbek olarak sağlanan her zaman **Content-Type** `application/json` veya farklı bir `.json` dosya. Dosya verileri ikinci öbekte sağlanan ve desteklenen bir MIME türü olabilir.
+Blob meta verileri her zaman **içerik türü** `application/json` olan ilk öbek olarak veya `.json` dosya olarak sağlanır. Dosya verileri ikinci öbekte sağlanır ve desteklenen herhangi bir MIME türünde olabilir.
 
-Swagger belgeler, bu modeli şemaları tam ayrıntılı açıklar.
+Swagger belgelerinde, bu model şemaları tam ayrıntılı olarak açıklanmaktadır.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
-Başvuru belgeleri okuyarak kullanma hakkında bilgi edinin [Swagger'ı kullanmayı](./how-to-use-swagger.md).
+[Swagger 'Yi nasıl kullanacağınızı](./how-to-use-swagger.md)okuyarak başvuru belgelerini kullanma hakkında bilgi edinin.
 
 <div id="blobModel"></div>
 
-### <a name="blobs-response-data"></a>BLOB'ları yanıt verileri
+### <a name="blobs-response-data"></a>Blob yanıt verileri
 
-Döndürülen tek tek bloblar için aşağıdaki JSON şeması uyar:
+Ayrı olarak döndürülen blob 'lar aşağıdaki JSON şemasına uygundur:
 
 ```JSON
 {
@@ -111,25 +111,25 @@ Döndürülen tek tek bloblar için aşağıdaki JSON şeması uyar:
 | Öznitelik | Type | Açıklama |
 | --- | --- | --- |
 | **id** | Dize | Blob için benzersiz tanımlayıcı |
-| **name** |Dize | Blob için bir insan kolay ad |
-| **parentId** | Dize | Blob (boşluk, cihazları veya kullanıcıları ile) ilişkilendirilecek üst varlık |
-| **type** | Dize | Blob - türünü kullanamaz *türü* ve *typeId*  |
-| **typeId** | Tamsayı | Blob türü kimliği - kullanamaz *türü* ve *typeId* |
-| **subtype** | Dize | Blob alt - kullanamaz *alt* ve *subtypeId* |
-| **subtypeId** | Tamsayı | Alt tür kimliği - blob için kullanamaz *alt* ve *subtypeId* |
-| **sharing** | Dize | Blob olup paylaşılabilir - sabit listesi [`None`, `Tree`, `Global`] |
-| **description** | Dize | Blob özelleştirilmiş açıklaması |
-| **contentInfos** | Array | Sürüm dahil olmak üzere yapılandırılmamış meta veri bilgilerini belirtir. |
-| **fullName** | Dize | Blob tam adı |
-| **spacePaths** | Dize | Alan yolu |
+| **name** |Dize | Blob için insan dostu bir ad |
+| **parentId** | Dize | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
+| **type** | Dize | Blob türü- *Type* ve *TypeId* kullanılamaz  |
+| **Türü** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
+| **subtype** | Dize | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
+| **Alt TypeId** | Tamsayı | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
+| **sharing** | Dize | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
+| **description** | Dize | Blobun özelleştirilmiş açıklaması |
+| **Contentınfos** | Array | Sürüm dahil yapılandırılmamış meta veri bilgilerini belirtir |
+| **fullName** | Dize | Blobun tam adı |
+| **spacePaths** | Dize | Boşluk yolu |
 
-BLOB meta verileri ile ilk öbek olarak sağlanan her zaman **Content-Type** `application/json` veya farklı bir `.json` dosya. Dosya verileri ikinci öbekte sağlanan ve desteklenen bir MIME türü olabilir.
+Blob meta verileri her zaman **içerik türü** `application/json` olan ilk öbek olarak veya `.json` dosya olarak sağlanır. Dosya verileri ikinci öbekte sağlanır ve desteklenen herhangi bir MIME türünde olabilir.
 
-### <a name="blob-multipart-request-examples"></a>BLOB çok parçalı istek örnekleri
+### <a name="blob-multipart-request-examples"></a>Blob çok parçalı istek örnekleri
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Bir metin dosyası bir blob olarak karşıya yükleyin ve boşluk ile ilişkilendirmek için kimliği doğrulanmış bir HTTP POST isteği olun:
+Bir metin dosyasını blob olarak karşıya yüklemek ve bir boşlukla ilişkilendirmek için, kimliği doğrulanmış bir HTTP POST isteği oluşturun:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs
@@ -161,9 +161,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 
 | Value | Şununla değiştir |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | Çok bölümlü içerik sınır adı |
+| USER_DEFINED_BOUNDARY | Çok parçalı bir içerik sınır adı |
 
-Aşağıdaki kod bir sınıf kullanarak aynı blob karşıya yükleme, .NET uygulamasıdır [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
+Aşağıdaki kod, [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent)sınıfı kullanılarak aynı blob yüklemesinin .net uygulamasıdır:
 
 ```csharp
 //Supply your metadata in a suitable format
@@ -181,9 +181,9 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
-Son olarak, [cURL](https://curl.haxx.se/) kullanıcılar, çok bölümlü form isteklerini aynı şekilde yapabilirsiniz:
+Son olarak [](https://curl.haxx.se/) , kullanıcılar çok parçalı form isteklerini aynı şekilde yapabilirler:
 
-[![Cihaz BLOB'ları](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[![Cihaz blob 'ları](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
 curl
@@ -191,29 +191,29 @@ curl
  -H "Authorization: Bearer YOUR_TOKEN"
  -H "Accept: application/json"
  -H "Content-Type: multipart/form-data"
- -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json"
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
 | Value | Şununla değiştir |
 | --- | --- |
-| YOUR_TOKEN | Geçerli, OAuth 2.0 belirteç |
-| YOUR_SPACE_ID | Blob ile ilişkilendirmek için alan kimliği |
-| PATH_TO_FILE | Metin dosyasının yolu |
+| YOUR_TOKEN | Geçerli OAuth 2,0 belirteciniz |
+| YOUR_SPACE_ID | Blobun ilişkilendirileceği alanın KIMLIĞI |
+| PATH_TO_FILE | Metin dosyanızın yolu |
 
-Başarılı bir GÖNDERİ (daha önce vurgulanan kırmızı renkte) blob yeni Kimliğini döndürür.
+Başarılı bir GÖNDERI, yeni Blobun KIMLIĞINI döndürür (daha önce kırmızı renkle vurgulanır).
 
 ## <a name="api-endpoints"></a>API uç noktaları
 
-Aşağıdaki bölümlerde, çekirdek blob ile ilgili API uç noktaları ve kendi işlevler açıklanmaktadır.
+Aşağıdaki bölümlerde, blob ile ilgili temel API uç noktaları ve işlevleri açıklanır.
 
 ### <a name="devices"></a>Cihazlar
 
-Bloblar için cihazlar ekleyebilirsiniz. Aşağıdaki görüntüde Yönetimi API'leri için Swagger başvuru belgeleri gösterilmektedir. Bu, cihazla ilgili API uç noktaları için blob tüketimi ve uygulamasına geçirmek için gerekli yol parametreleri belirtir.
+Blob 'ları cihazlara ekleyebilirsiniz. Aşağıdaki görüntüde, yönetim API 'leriniz için Swagger başvuru belgeleri gösterilmektedir. Blob tüketimi için cihazla ilgili API uç noktalarını ve bunlara geçirilecek gerekli yol parametrelerini belirtir.
 
-[![Cihaz BLOB'ları](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[![Cihaz blob 'ları](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
 
-Örneğin, güncelleştirmek veya blob oluşturma ve blob için bir cihaz eklemek için kimliği doğrulanmış bir HTTP PATCH isteği olun:
+Örneğin, bir blobu güncelleştirmek veya oluşturmak ve blobu bir cihaza eklemek için, kimliği doğrulanmış bir HTTP PATCH isteği oluşturun:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -221,17 +221,17 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 | Parametre | Şununla değiştir |
 | --- | --- |
-| *YOUR_BLOB_ID* | İstenen blob kimliği |
+| *YOUR_BLOB_ID* | İstenen blob KIMLIĞI |
 
-Başarılı istekler döndürür bir JSON nesnesi olarak [daha önce açıklanan](#blobModel).
+Başarılı istekler, [daha önce açıklandığı](#blobModel)gıbı bir JSON nesnesi döndürür.
 
-### <a name="spaces"></a>Alanları
+### <a name="spaces"></a>Boşluklar
 
-Ayrıca, blobları için alanları ekleyebilirsiniz. Aşağıdaki görüntü, alanı API uç noktalarını blobları işlenmesinden sorumludur listeler. Ayrıca, bu uç noktalarına geçmek için herhangi bir yol parametreleri listeler.
+Ayrıca boşluklara blob 'lar ekleyebilirsiniz. Aşağıdaki görüntüde Blobların işlenmesinden sorumlu tüm alan API uç noktaları listelenmektedir. Ayrıca, bu uç noktalara geçirilecek tüm yol parametrelerini listeler.
 
-[![Alanı BLOB'ları](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[![Alan blob 'ları](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
 
-Örneğin, bir blob için bir alanı eklenmiş döndürmek için kimliği doğrulanmış bir HTTP GET isteği olun:
+Örneğin, bir alana eklenmiş bir blob döndürmek için, kimliği doğrulanmış bir HTTP GET isteği oluşturun:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -239,19 +239,19 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 | Parametre | Şununla değiştir |
 | --- | --- |
-| *YOUR_BLOB_ID* | İstenen blob kimliği |
+| *YOUR_BLOB_ID* | İstenen blob KIMLIĞI |
 
-Başarılı istekler döndürür bir JSON nesnesi olarak [daha önce açıklanan](#blobModel).
+Başarılı istekler, [daha önce açıklandığı](#blobModel)gıbı bir JSON nesnesi döndürür.
 
-Bir PATCH isteği aynı uç noktasına, meta veri açıklamalarını güncelleştirir ve blob sürümleri oluşturur. HTTP isteği, tüm gerekli meta ve çok bölümlü form verilerinin yanı sıra düzeltme eki yöntemi aracılığıyla yapılır.
+Aynı uç noktaya yönelik bir yama isteği meta veri açıklamalarını güncelleştirir ve BLOB sürümlerini oluşturur. HTTP isteği, gerekli meta ve çok parçalı form verileriyle birlikte PATCH yöntemi aracılığıyla yapılır.
 
 ### <a name="users"></a>Kullanıcılar
 
-Blobları kullanıcı modelleri (örneğin, bir profil resmi ilişkilendirmek için) ekleyebilirsiniz. Aşağıdaki resim gibi ilgili kullanıcı API uç noktaları ve tüm gerekli yol parametreleri gösterir `id`:
+Blob 'ları Kullanıcı modellerine ekleyebilirsiniz (örneğin, bir profil resmini ilişkilendirmek için). Aşağıdaki görüntüde, ilgili Kullanıcı API uç noktaları ve gerekli yol parametreleri gösterilmektedir; örneğin `id`:
 
-[![Kullanıcı BLOB'ları](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[![Kullanıcı blob 'ları](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
 
-Örneğin, bir kullanıcıya bağlı olarak bir blob getirmek için kimliği doğrulanmış bir HTTP GET isteği için gerekli form verilerle olun:
+Örneğin, bir kullanıcıya eklenmiş bir blobu getirmek için, gerekli form verileriyle birlikte kimliği doğrulanmış bir HTTP GET isteği oluşturun:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
@@ -259,13 +259,13 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 | Parametre | Şununla değiştir |
 | --- | --- |
-| *YOUR_BLOB_ID* | İstenen blob kimliği |
+| *YOUR_BLOB_ID* | İstenen blob KIMLIĞI |
 
-Başarılı istekler döndürür bir JSON nesnesi olarak [daha önce açıklanan](#blobModel).
+Başarılı istekler, [daha önce açıklandığı](#blobModel)gıbı bir JSON nesnesi döndürür.
 
 ## <a name="common-errors"></a>Sık karşılaşılan hatalar
 
-Sık karşılaşılan doğru üst bilgi bilgileri sağlayarak değil içerir:
+Yaygın bir hata, doğru başlık bilgilerini sağlamayı içerir:
 
 ```JSON
 {
@@ -276,15 +276,15 @@ Sık karşılaşılan doğru üst bilgi bilgileri sağlayarak değil içerir:
 }
 ```
 
-Bu hatayı gidermek için genel istek uygun olduğunu doğrulayın **Content-Type** üst bilgi:
+Bu hatayı çözmek için, genel isteğin uygun bir **Content-Type** üst bilgisine sahip olduğunu doğrulayın:
 
 * `multipart/mixed`
 * `multipart/form-data`
 
-Ayrıca, çok bölümlü her öbek karşılık gelen olduğunu doğrulayın. **Content-Type** gerektiğinde.
+Ayrıca, her bir çok parçalı öbekin gerektiği şekilde karşılık gelen bir **Içerik türüne** sahip olduğunu doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure dijital çiftleri için Swagger başvuru belgeleri hakkında daha fazla bilgi edinmek için [kullanımı Azure dijital İkizlerini Swagger](how-to-use-swagger.md).
+- Azure dijital TWINS için Swagger başvuru belgeleri hakkında daha fazla bilgi edinmek için bkz. [Azure dijital TWINS Swagger kullanımı](how-to-use-swagger.md).
 
-- Postman ile blobları karşıya yüklemek için okuma [Postman yapılandırma](./how-to-configure-postman.md).
+- Blob 'ları Postman aracılığıyla karşıya yüklemek için [Postman yapılandırma](./how-to-configure-postman.md)makalesini okuyun.

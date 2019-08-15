@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1842d32a838470d9b2af3a778c44c37464d32294
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554686"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954335"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretler dosyanızdaki koşulları anlayın
 
@@ -43,46 +43,46 @@ Liste, Kullandıkça Öde (PAYG), Kurumsal Anlaşma (EA) ve Microsoft Müşteri 
 Terim | Hesap türü | Açıklama
 --- | --- | ---
 Hesap adı | EA, PAYG | EA kayıt hesabının veya PAYG faturalandırma hesabının görünen adı.
-Hesap sahibinin kimliği | EA, PAYG | EA kayıt hesabı veya PAYG faturalandırma hesabı için benzersiz tanımlayıcı.
+Accountownerıd<sup>1</sup> | EA, PAYG | EA kayıt hesabı veya PAYG faturalandırma hesabı için benzersiz tanımlayıcı.
 Ek bilgi | Tümü | Hizmete özgü meta veriler. Örneğin, bir sanal makine için görüntü türü.
-Billingaccountıd | Tümü | Kök faturalandırma hesabı için benzersiz tanımlayıcı.
+Billingaccountıd<sup>1</sup> | Tümü | Kök faturalandırma hesabı için benzersiz tanımlayıcı.
 BillingAccountName | Tümü | Faturalandırma hesabının adı.
 BillingCurrency | Tümü | Faturalandırma hesabıyla ilişkili para birimi.
 BillingPeriod | EA, PAYG | Ücretin fatura dönemi.
 BillingPeriodEndDate | Tümü | Fatura döneminin bitiş tarihi.
 BillingPeriodStartDate | Tümü | Fatura döneminin başlangıç tarihi.
-Billingprofileıd | Tümü | EA kaydı, PAYG aboneliği, MCA Faturalandırma profili veya AWS birleştirilmiş hesabının benzersiz tanıtıcısı.
+Billingprofileıd<sup>1</sup> | Tümü | EA kaydı, PAYG aboneliği, MCA Faturalandırma profili veya AWS birleştirilmiş hesabının benzersiz tanıtıcısı.
 BillingProfileName | Tümü | EA kaydı, PAYG aboneliği, MCA Faturalandırma profili veya AWS birleştirilmiş hesabının adı.
 ChargeType | Tümü | Ücretin kullanım (**kullanım**), satın alma (**satın alma**) veya para iadesi (**para iadesi**) temsil edip etmediğini gösterir.
 Tüketilen hizmet | Tümü | Ücretle ilişkili hizmetin adı.
-CostCenter | EA, MCA | İzleme maliyetleri için abonelik için tanımlanan maliyet merkezi (yalnızca MCA hesapları için açık faturalandırma dönemlerinde mevcuttur).
+CostCenter<sup>1</sup> | EA, MCA | İzleme maliyetleri için abonelik için tanımlanan maliyet merkezi (yalnızca MCA hesapları için açık faturalandırma dönemlerinde mevcuttur).
 Maliyet | EA, PAYG | Bkz. Costınbillingcurrency.
 Maliyetsiz para birimi | EXCEP | Kredi veya vergi öncesi faturalandırma para birimi cinsinden ücret ücreti.
 Costınpricingcurrency | EXCEP | Kredi veya vergi öncesi fiyatlandırma para birimi cinsinden ücret ücreti.
 Currency | EA, PAYG | Bkz. BillingCurrency.
-Date | Tümü | Ücretin kullanım veya satın alma tarihi.
+Tarih<sup>1</sup> | Tümü | Ücretin kullanım veya satın alma tarihi.
 Efekt fiyatı | Tümü | Dönem için karıştırılan birim fiyatı. Karıştırılan fiyatlar, birim fiyatındaki dalgalanmaların ortalamasını artırır ve bu da süreyi, zaman içinde miktarı artar şekilde azaltır.
 ExchangeRateDate | EXCEP | Döviz oranının kurulduğu tarih.
 ExchangeRatePricingToBilling | EXCEP | Fiyatlandırma para birimindeki maliyeti faturalandırma para birimine dönüştürmek için kullanılan döviz kuru.
 Sıklık | Tümü | Bir ücretin yinelenmesi beklenip yinelenmeyeceğini gösterir. Ücretler bir kez (**Onetime**), aylık veya yıllık olarak yinelenir (**yinelenen**) veya kullanımı (**usagebased**) temel alabilir.
 InvoiceId | PAYG, MCA | Fatura PDF 'sinde listelenen benzersiz belge KIMLIĞI.
 Invoicesection | EXCEP | Bkz. ınvoicesectionname.
-Invoicesectionıd | EA, MCA | EA Departmanı veya MCA Invoice bölümü için benzersiz tanımlayıcı.
+Invoicesectionıd<sup>1</sup> | EA, MCA | EA Departmanı veya MCA Invoice bölümü için benzersiz tanımlayıcı.
 Invoicesectionname | EA, MCA | EA Departmanı veya MCA Invoice bölümünün adı.
 IsAzureCreditEligible | Tümü | Azure kredilerinin kullanımı için ücretin ödeme için uygun olup olmadığını gösterir (değerler: True, false).
 Location | EXCEP | Kaynağın çalıştığı veri merkezi konumu.
 Ölçüm kategorisi | Tümü | Ölçüm için sınıflandırma kategorisinin adı. Örneğin, *bulut hizmetleri* ve *ağ*.
-Ölçüm kimliği | Tümü | Ölçüm için benzersiz tanımlayıcı.
+Ölçüm kimliği<sup>1</sup> | Tümü | Ölçüm için benzersiz tanımlayıcı.
 Ölçüm adı | Tümü | Ölçerin adı.
 Ölçüm bölgesi | Tümü | Konuma göre fiyatlandırılır Hizmetleri için veri merkezi konumunun adı. Bkz. konum.
 Ölçüm alt kategorisi | Tümü | Ölçüm alt sınıflandırma kategorisinin adı.
-OfferId | Tümü | Satın alınan teklifin adı.
-PartNumber | EA, PAYG | Belirli ölçüm fiyatlandırmasını almak için kullanılan tanımlayıcı.
+OfferId<sup>1</sup> | Tümü | Satın alınan teklifin adı.
+PartNumber<sup>1</sup> | EA, PAYG | Belirli ölçüm fiyatlandırmasını almak için kullanılan tanımlayıcı.
 PlanName | EA, PAYG | Market planı adı.
 Previousıniceıd | EXCEP | Bu satır öğesi bir para iadesi ise orijinal faturaya başvuru.
 PricingCurrency | EXCEP | Anlaşmalı fiyatlara göre derecelendirirken kullanılan para birimi.
 Ürün | Tümü | Ürünün adı.
-Ürün kimliği | EXCEP | Ürün için benzersiz tanımlayıcı.
+ProductID<sup>1</sup> | EXCEP | Ürün için benzersiz tanımlayıcı.
 ProductOrderId | Tümü | Ürün siparişi için benzersiz tanımlayıcı.
 ProductOrderName | Tümü | Ürün siparişi için benzersiz ad.
 PublisherName | Tümü | Market Hizmetleri için Yayımcı.
@@ -91,7 +91,7 @@ Miktar | Tümü | Satın alınan veya tüketilen birim sayısı.
 Reservationıd | EA, MCA | Satın alınan ayırma örneği için benzersiz tanımlayıcı.
 Rezervadı | EA, MCA | Satın alınan rezervasyon örneğinin adı.
 ResourceGroup | Tümü | Kaynağın bulunduğu [kaynak grubunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) adı.
-RESOURCEID | Tümü | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) kaynağının benzersiz tanıtıcısı.
+RESOURCEID<sup>1</sup> | Tümü | [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources) kaynağının benzersiz tanıtıcısı.
 Kaynak konumu | Tümü | Kaynağın çalıştığı veri merkezi konumu. Bkz. konum.
 ResourceName | EA, PAYG | Kaynağın adı.
 KaynakTürü | EXCEP | Kaynak örneğinin türü.
@@ -100,12 +100,14 @@ Hizmet bilgisi 1 | Tümü | Hizmete özgü meta veriler.
 Hizmet bilgisi 2 | Tümü | İsteğe bağlı hizmete özgü meta verileri olan eski alan.
 ServicePeriodEndDate | EXCEP | Tüketilen veya satın alınan hizmete yönelik fiyatlandırma ve kilitleme döneminin bitiş tarihi.
 ServicePeriodStartDate | EXCEP | Tüketilen veya satın alınan hizmet için tanımlanan ve kilitlenen fiyatlandırma döneminin başlangıç tarihi.
-SubscriptionId | Tümü | Azure aboneliği için benzersiz tanımlayıcı.
+SubscriptionID<sup>1</sup> | Tümü | Azure aboneliği için benzersiz tanımlayıcı.
 Abonelik adı | Tümü | Azure aboneliğinin adı.
-Tags | Tümü | Kaynağa atanan Etiketler. Kaynak grubu etiketlerini içermez. , İç geri ödeme için maliyetleri gruplamak veya dağıtmak için kullanılabilir. Daha fazla bilgi için bkz. [Azure kaynaklarınızı etiketlerle düzenleme](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Etiketler<sup>1</sup> | Tümü | Kaynağa atanan Etiketler. Kaynak grubu etiketlerini içermez. , İç geri ödeme için maliyetleri gruplamak veya dağıtmak için kullanılabilir. Daha fazla bilgi için bkz. [Azure kaynaklarınızı etiketlerle düzenleme](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
 Terim | Tümü | Teklifin geçerliliği için terimi görüntüler. Örneğin: Ayrılmış örnekler söz konusu olduğunda, dönem olarak 12 ay görüntüler. Tek seferlik satın alma veya yinelenen satın alma işlemleri için dönem 1 aydır (SaaS, Market desteği). Bu, Azure tüketimi için geçerli değildir.
 Ölçü birimi | Tümü | Hizmetin faturalandırılması için ölçü birimi. Örneğin, işlem hizmetleri saat başına faturalandırılır.
 Fiyatı | EA, PAYG | Ücret için birim başına fiyat.
+
+_<sup>**1**</sup> alan tek bir maliyet kaydı için BENZERSIZ bir kimlik oluşturmak için kullanılır._
 
 Note bazı alanlar, hesap türleri arasında büyük küçük harf ve aralığa göre farklılık gösterebilir.
 Kullandıkça Öde kullanım dosyalarının eski sürümlerinde, bildirim ve günlük kullanım için ayrı bölümler vardır.

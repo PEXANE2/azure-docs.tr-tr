@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424125"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955001"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics aracısıyla günlük verilerini toplama
 
@@ -34,13 +34,21 @@ Toplanan verileri analiz etmek ve üzerinde işlem yapmadan önce, Azure Izleyic
 
 Linux ve Windows için aracı, TCP bağlantı noktası 443 üzerinden Azure Izleyici hizmetine giden iletişim kurar ve makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırmasını anlamak için aşağıdaki gereksinimleri gözden geçirin Gerekli. BT güvenlik ilkeleriniz ağdaki bilgisayarların Internet 'e bağlanmasına izin vermediğinden, bir [Log Analytics ağ geçidi](gateway.md) ayarlayabilir ve ardından aracıyı ağ geçidinden Azure izleyici günlüklerine bağlanacak şekilde yapılandırabilirsiniz. Aracı daha sonra yapılandırma bilgilerini alabilir ve çalışma alanınızda etkinleştirdiğiniz veri toplama kurallarına ve izleme çözümlerine bağlı olarak toplanan verileri gönderebilir. 
 
-System Center Operations Manager 2012 R2 veya üzeri bir bilgisayarı izliyorsanız, verilerin toplanması ve hizmete iletilmesi ve yine de [Operations Manager](../../azure-monitor/platform/om-agents.md)tarafından Izlenmesi Için Azure İzleyici hizmeti ile çok fazla erişilebilir. Linux bilgisayarları ile, Windows Aracısı yaptığı için aracı bir sistem sağlığı hizmeti bileşeni içermez ve bilgiler, bir yönetim sunucusu tarafından adına toplanır ve işlenir. Linux bilgisayarları Operations Manager farklı şekilde izlendiğinden, doğrudan yapılandırma almaz veya veri toplamazlar ve Windows Agent tarafından yönetilen bir sistem gibi yönetim grubundan ileri doğru bir şekilde ilerlemez. Sonuç olarak, bu senaryo Operations Manager bildiren Linux bilgisayarları ile desteklenmez ve Linux bilgisayarı [bir Operations Manager yönetim grubuna](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) ve bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir.
+Veri toplamak için Log Analytics aracılarını kullanırken, aracı dağıtımınızı planlamak için aşağıdakileri anlamanız gerekir:
 
-Linux Aracısı, yalnızca tek bir çalışma alanına raporlama desteklese de Windows aracı en fazla dört Log Analytics çalışma alanlarını, rapor edebilirsiniz.  
+* Windows aracılarından veri toplamak için, [her aracıyı bir veya daha fazla çalışma alanına rapor verecek şekilde yapılandırabilirsiniz](agent-windows.md), bu da bir System Center Operations Manager yönetim grubuna bildirimde bulunur. Windows Aracısı en fazla dört çalışma alanı rapor edebilir.
+* Linux Aracısı çoklu barındırıltı desteklemez ve yalnızca tek bir çalışma alanına rapor verebilir.
+
+System Center Operations Manager 2012 R2 veya sonraki bir sürümünü kullanıyorsanız:
+
+* Her bir Operations Manager yönetim grubu [yalnızca bir çalışma alanına bağlanabilir](om-agents.md).
+* Bir yönetim grubuna rapor veren Linux bilgisayarların doğrudan bir Log Analytics çalışma alanına rapor verecek şekilde yapılandırılması gerekir. Linux bilgisayarlarınız zaten bir çalışma alanına doğrudan raporlama yaptıysanız ve bunları Operations Manager izlemek istiyorsanız, [bir Operations Manager yönetim grubuna raporlamak](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)için aşağıdaki adımları izleyin.
+* Log Analytics Windows aracısını Windows bilgisayarına yükleyebilir ve hem bir çalışma alanıyla hem de bir çalışma alanı ile tümleşik Operations Manager, farklı bir çalışma alanı için rapor verebilirsiniz.
 
 Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor, karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking.md), [güncelleştirme yönetimi](../../automation/automation-update-management.md)ve [Azure Güvenlik Merkezi gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu da destekler ](../../security-center/security-center-intro.md). Karma Runbook çalışanı rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyon karma Runbook çalışanı](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Desteklenen Windows işletim sistemleri
+
 Aşağıdaki Windows işletim sistemi sürümleri Windows aracısı için resmi olarak desteklenir:
 
 * Windows Server 2019

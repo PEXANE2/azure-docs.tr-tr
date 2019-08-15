@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358590"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016038"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS karşılama API 'Leri, sürüm 2 
 
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -789,6 +789,8 @@ Kod: 500<br> İç sunucu hatası.
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>SaaS hizmetinde Web kancası uygulama
 
 Yayımcının, kullanıcılarına hizmetinde değişiklik yapmak için bu SaaS hizmetinde bir Web kancası uygulaması gerekir. SaaS hizmetinin, Web kancası bildiriminde bir işlem yapmadan önce doğrulamak ve yetkilendirmek için Operations API 'sini çağırması beklenmektedir.
+
+Microsoft, güvenli iletişim sağlamak için, çağrının bir parçası olarak yetkilendirme üst bilgisinde Azure Active Directory JWT belirtecini içerir. SaaS sağlayıcılarının yalnızca geçerli çağrıların kabul edildiğinden emin olmak için [Microsoft Identity platform erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) makalesinde AÇıKLANDıĞı gibi JWT belirtecini doğrulaması önerilir.
 
 ```json
 {

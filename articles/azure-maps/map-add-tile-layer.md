@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar 'a kutucuk katmanı ekleme | Microsoft Docs
-description: JavaScript eşlemesine döşeme katmanı ekleme
+description: Azure Maps web SDK 'sına kutucuk katmanı ekleme.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882097"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976448"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Haritaya kutucuk katmanı ekleme
 
@@ -40,16 +40,24 @@ Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya a�
 
 ## <a name="add-a-tile-layer"></a>Kutucuk katmanı ekleme
 
- Bu örnek, x, y, yakınlaştırma döşeme sistemi kullanan bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla. 
+ Bu örnek, x, y, yakınlaştırma döşeme sistemi kullanan bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla. Radar verileri görüntülerken, kullanıcılar haritada gezindikleri gibi şehirlerin etiketlerini açıkça görebilir ve bu da `labels` katmanın altına döşeme katmanı eklenerek yapılabilir.
+
+```javascript
+//Create a tile layer and add it to the map below the label layer.
+//Weather radar tiles from Iowa Environmental Mesonet of Iowa State University.
+map.layers.add(new atlas.layer.TileLayer({
+    tileUrl: 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png',
+    opacity: 0.8,
+    tileSize: 256
+}), 'labels');
+```
+
+Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='X, Y ve Z kullanarak döşeme katmanı' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>X, Y ve Z</a> ile Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) kullanarak kalem döşeme katmanına bakın.
 </iframe>
-
-Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
-
-İkinci kod bloğunda, bir döşeme bir URL 'yi bir kutucuk hizmetine, kutucuk boyutuna ve yarı saydam hale getirmek için bir opaklık geçirerek bir [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) oluşturulur. Ayrıca, harita katmanını haritaya eklerken, etiketlerin hala açıkça görünür olması için `labels` katmanın altına eklenir.
 
 ## <a name="customize-a-tile-layer"></a>Döşeme katmanını özelleştirme
 

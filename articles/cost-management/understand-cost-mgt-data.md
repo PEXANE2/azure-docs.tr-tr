@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384861"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953160"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -30,11 +30,11 @@ Aşağıdaki bilgiler, Azure maliyet yönetimi 'nde Şu anda desteklenen [Micros
 | **Kategori**  | **Teklif adı** | **Kota KIMLIĞI** | **Teklif numarası** | **Verilerin kullanılabildiği yer** |
 | --- | --- | --- | --- | --- |
 | **Azure Almanya** | [Azure Almanya Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P | 2 Ekim 2018<sup>2</sup> |
-| **Azure Devlet Kurumları** | Azure Kamu kuruluşu                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | <sup>2014 mayıs</sup> |
-| **Kurumsal Anlaşma (EA)** | Kurumsal Geliştirme ve Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | <sup>2014 mayıs</sup> |
-| **Kurumsal Anlaşma (EA)** | [Microsoft Azure Kurumsal](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | <sup>2014 mayıs</sup> |
-| **Microsoft Müşteri Sözleşmesi** | [Microsoft Azure planı](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Yok | Mar 2019<sup>3</sup> |
-| **Microsoft Müşteri Sözleşmesi** | [Geliştirme ve test için plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Yok | Mar 2019<sup>3</sup> |
+| **Azure Devlet Kurumları** | Azure Kamu kuruluşu                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 Mayıs<sup></sup> |
+| **Kurumsal Anlaşma (EA)** | Kurumsal Geliştirme ve Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 Mayıs<sup></sup> |
+| **Kurumsal Anlaşma (EA)** | [Microsoft Azure Kurumsal](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 Mayıs<sup></sup> |
+| **Microsoft Müşteri Sözleşmesi** | [Microsoft Azure planı](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Yok | Mart 2019<sup>3</sup> |
+| **Microsoft Müşteri Sözleşmesi** | [Geliştirme ve test için plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Yok | Mart 2019<sup>3</sup> |
 | **Microsoft Developer Network (MSDN)** | [MSDN Platformları](https://azure.microsoft.com/offers/ms-azr-0062p) <sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 Ekim 2018<sup>2</sup> |
 | **Kullandıkça öde** | [Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 Ekim 2018<sup>2</sup> |
 | **Kullandıkça öde** | [Kullandıkça Öde geliştirme ve test](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 Ekim 2018<sup>2</sup> |
@@ -51,9 +51,9 @@ Aşağıdaki bilgiler, Azure maliyet yönetimi 'nde Şu anda desteklenen [Micros
 
 _<sup>**1**</sup> Mayıs 2014 tarihinden önceki veriler Için [Azure Enterprise Portal](https://ea.azure.com)' ı ziyaret edin._
 
-_2 Ekim 2018 tarihinden önceki <sup>**veriler için**</sup> [Azure Hesap Merkezi](https://account.azure.com/subscriptions)ziyaret edin._
+_<sup></sup> 2 Ekim 2018 tarihinden önceki veriler için [Azure Hesap Merkezi](https://account.azure.com/subscriptions)ziyaret edin._
 
-_<sup>**3**</sup> Mar 2019 ' de Microsoft Müşteri anlaşmaları başlatıldı ve bu noktadan önce geçmiş veri yok._
+_<sup>**3**</sup> Microsoft Müşteri anlaşmaları Mart 2019 ' de başlatılmış ve bu noktadan önce geçmiş verisi yok._
 
 _Kredi tabanlı ve kullandıkça öde abonelikleri için <sup>**4**</sup> geçmiş veriler faturanızdan eşleşmeyebilir. Bkz. [geçmiş verileri, aşağıdaki faturayla eşleşmeyebilir](#historical-data-might-not-match-invoice) ._
 

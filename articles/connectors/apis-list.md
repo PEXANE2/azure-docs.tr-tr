@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
 ms.openlocfilehash: 126c3fb348b1d53769a818ae4b21fcdbbef65615
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68517230"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için bağlayıcılar
@@ -187,7 +187,7 @@ Bağlantılar, hizmet veya sistem izin verdiği sürece hedef hizmete veya siste
 
 ## <a name="custom-apis-and-connectors"></a>Özel API 'Ler ve bağlayıcılar
 
-Özel kod çalıştıran veya bağlayıcı olarak kullanılamayan API 'Leri çağırmak için, [özel API Apps oluşturarak](../logic-apps/logic-apps-create-api-app.md)Logic Apps platformunu genişletebilirsiniz. Ayrıca, bu API 'Leri Azure aboneliğinizdeki herhangi bir mantıksal uygulama için kullanılabilir hale getirmek *üzere bekleyen veya* SOAP tabanlı API 'ler için [özel bağlayıcılar oluşturabilirsiniz](../logic-apps/custom-connector-overview.md) .
+Özel kod çalıştıran veya bağlayıcı olarak kullanılamayan API 'Leri çağırmak için, [özel API Apps oluşturarak](../logic-apps/logic-apps-create-api-app.md)Logic Apps platformunu genişletebilirsiniz. Ayrıca, bu API 'Leri Azure aboneliğinizdeki herhangi bir mantıksal uygulama için kullanılabilir hale getirmek üzere bekleyen veya SOAP tabanlı API 'Ler için [özel bağlayıcılar oluşturabilirsiniz](../logic-apps/custom-connector-overview.md) .
 Özel API Apps veya bağlayıcıları herkesin Azure 'da kullanması için genel hale getirmek amacıyla, [Microsoft sertifikası için bağlayıcılar gönderebilirsiniz](../logic-apps/custom-connector-submit-certification.md).
 
 > [!NOTE]

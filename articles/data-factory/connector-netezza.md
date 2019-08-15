@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c179cfbf86c2dddfb34b46540aba8898038751
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61399936"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966502"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Netezza'dan verileri kopyalama
 
@@ -28,6 +28,10 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Netezza'dan verileri kop
 Tüm desteklenen havuz veri deposuna Netezza'dan verileri kopyalayabilirsiniz. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar. Bu bağlayıcıyı kullanmak için herhangi bir sürücüsü el ile yüklemeniz gerekmez.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>başlarken
 
@@ -42,14 +46,14 @@ Aşağıdaki özellikler Netezza bağlı hizmeti için desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | **Türü** özelliği ayarlanmalıdır **Netezza**. | Evet |
-| connectionString | Netezza'ya bağlanma bir ODBC bağlantı dizesi. <br/>Bu alan, Data Factory'de güvenle depolamak için bir SecureString olarak işaretleyin. Parola Azure anahtar kasası ve çekme koyabilirsiniz `pwd` yapılandırma bağlantı dizesini dışında. Aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault'ta Store](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren makalesi. | Evet |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir olması durumunda) bir şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure Integration Runtime seçebilirsiniz. Belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
+| connectionString | Netezza'ya bağlanma bir ODBC bağlantı dizesi. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
 
 Bir bağlantı dizesi olan `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Aşağıdaki tabloda ayarlayabilirsiniz daha fazla özellik açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| SecurityLevel | Veri deposuna bağlantı için sürücüyü kullanır (SSL/TLS) güvenlik düzeyi. Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli** (**onlyUnSecured**): Sürücü SSL kullanmaz.<br/>- **Güvenli olmayan (preferredUnSecured) (varsayılan) tercih edilen**: Sunucu sunar, sürücü SSL kullanmaz. <br/>- **Güvenli (preferredSecured) tercih edilen**: Sunucu sunar, sürücü SSL kullanır. <br/>- **Yalnızca (onlySecured) güvenli**: Bir SSL bağlantısı yoksa sürücüsü bağlama değil. | Hayır |
+| SecurityLevel | Veri deposuna bağlantı için sürücüyü kullanır (SSL/TLS) güvenlik düzeyi. Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (**yalnızca güvenli olmayan**): Sürücü SSL kullanmaz.<br/>- **Tercih edilen güvenli olmayan (Preferredgüvensiz) (varsayılan)** : Sunucu bir seçenek sağlıyorsa, sürücü SSL kullanmaz. <br/>- **Tercih edilen güvenli (Preferredgüvenli)** : Sunucu bir seçenek sağlıyorsa, sürücü SSL kullanır. <br/>- **Yalnızca güvenli (yalnızca güvenli)** : SSL bağlantısı yoksa sürücü bağlanamaz. | Hayır |
 | CaCertFile | Sunucu tarafından kullanılan SSL sertifikasının tam yolu. Örnek: `CaCertFile=<cert path>;`| SSL etkinleştirilmişse, Evet |
 
 **Örnek**
@@ -73,7 +77,7 @@ Bir bağlantı dizesi olan `Server=<server>;Port=<port>;Database=<database>;UID=
 }
 ```
 
-**Örnek: parola Azure Key Vault'ta depolama**
+**Örnek: Azure Key Vault parola depola**
 
 ```json
 {
@@ -112,7 +116,7 @@ Netezza'dan verileri kopyalamak için ayarlanmış **türü** veri kümesine öz
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **NetezzaTable** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **NetezzaTable** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**

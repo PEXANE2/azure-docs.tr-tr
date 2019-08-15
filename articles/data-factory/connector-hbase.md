@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: bc13a1d0a7710a9f96110f1516fe2e48d538fe7e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a0d187d31acbea44740295dd3b61f2ec76e021e7
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720775"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967492"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>HBase Azure Data Factory kullanarak verileri kopyalama 
 
@@ -28,6 +28,10 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de HBase verileri kopyalama
 HBase tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
 Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -41,7 +45,7 @@ HBase bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **HBase** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **HBase** | Evet |
 | host | HBase sunucusunun IP adresi veya ana bilgisayar adı. Yani.  `[clustername].azurehdinsight.net`, )`192.168.222.160`  | Evet |
 | port | HBase örneği istemci bağlantıları için dinlemek üzere kullandığı TCP bağlantı noktası. Varsayılan değer 9090'dır. Azure Hdınsights bağlarsanız, bağlantı noktası 443 belirtin. | Hayır |
 | httpPath | HBase sunucuya, örneğin karşılık gelen kısmi URL `/hbaserest0` Hdınsights küme kullanılırken. | Hayır |
@@ -52,7 +56,7 @@ HBase bağlı hizmeti için aşağıdaki özellikleri destekler:
 | trustedCertPath | SSL üzerinden bağlanırken sunucu doğrulamak için güvenilen CA sertifikalarını içeren .pem dosyasının tam yolu. Bu özellik yalnızca şirket içinde barındırılan IR üzerinde SSL kullanılarak, ayarlanabilir Varsayılan değer IR ile yüklü cacerts.pem dosyasıdır  | Hayır |
 | allowHostNameCNMismatch | SSL üzerinden bağlanırken sunucu ana bilgisayar adını eşleştirmek için bir CA tarafından verilen SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
 | allowSelfSignedServerCert | Otomatik olarak imzalanan sertifikalar sunucudan izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir değilse), şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure Integration Runtime kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
 >Yapışkan oturumu örneğin HDInsight kümenizi desteklemiyorsa, açıkça http yolu ayarını sonunda düğüm dizinini ekleyin, örneğin belirtin `/hbaserest0` yerine `/hbaserest`.
@@ -122,7 +126,7 @@ HBase verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **H
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **HBaseObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **HBaseObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -152,7 +156,7 @@ HBase verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayar
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **HBaseSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **HBaseSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

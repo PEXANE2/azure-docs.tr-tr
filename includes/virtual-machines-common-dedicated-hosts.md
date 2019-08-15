@@ -8,26 +8,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 438f450efe207999947795878a9815fca64f45ca
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702952"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976657"
 ---
-Azure adanmış ana bilgisayar, bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, kaynak olarak sağlanmış olan veri merkezlerimizde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
-
-> [!IMPORTANT]
-> Azure ayrılmış Konakları Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bilinen önizleme sınırlamaları**
-> - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-> - Önizleme ilk sürümü aşağıdaki VM serisini destekler: DSv3 ve ESv3. 
-> - Önizleme sırasında, ayrılmış bir konağa dağıtılan bir sanal makineyi yeniden boyutlandıramazsınız.
-> - Bakım özellikleri üzerinde denetim sınırlı bir önizleme aşamasındadır. Denemek için bu [aday anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) gerçekleştirerek başlayın.  
-> Önizleme sırasında, ayrılmış kapasite seçeneğini sunmayacağız. 
-
 ## <a name="benefits"></a>Avantajlar 
 
 Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:

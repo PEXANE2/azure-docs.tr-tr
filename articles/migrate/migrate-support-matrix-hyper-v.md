@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 105cbf173a9abe1adf0999f63740d47b3da51a29
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856298"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952132"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V değerlendirmesi ve geçiş için destek matrisi
 
@@ -61,8 +61,8 @@ Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturab
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Konak dağıtımı**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. |
-| **Konak işletim sistemi** | Windows Server 2016 veya Windows Server 2012 R2.<br/> Windows Server 2019 çalıştıran Hyper-V konaklarında bulunan VM 'Leri değerlendiremiyoruz. |
+| **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. <br/> Alternatif olarak, yönetici izinleri atamak istemiyorsanız, bir yerel veya etki alanı kullanıcı hesabı oluşturun ve kullanıcıyı bu gruplara (uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları) ekleyin. |
+| **Konak işletim sistemi** | Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2.<br/> Windows Server 2012 çalıştıran Hyper-V konaklarında bulunan VM 'Leri değerlendiremiyoruz. |
 | **PowerShell uzaktan Iletişim**   | Her konakta etkin olmalıdır. |
 | **Hyper-V çoğaltma**       | Hyper-V çoğaltması kullanıyorsanız (veya aynı VM tanımlayıcılarına sahip birden fazla sanal makine varsa) Azure geçişi 'ni kullanarak hem özgün hem de çoğaltılan VM 'Leri keşfetiyorsanız, Azure geçişi tarafından oluşturulan değerlendirme doğru olmayabilir. |
 
@@ -72,13 +72,8 @@ Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturab
 | **Destek**                  | **Ayrıntılar**               
 | :----------------------------- | :------------------- |
 | **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri. |
-| **İzinler**           | Değerlendirmek istediğiniz her Hyper-V VM üzerinde yönetici izinlerine sahip olmanız gerekir. |
 | **Tümleştirme Hizmetleri**       | [Hyper-V tümleştirme hizmetlerinin](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) , işletim sistemi bilgilerini yakalamak için değerlendirmekte olduğunuz VM 'lerde çalışıyor olması gerekir. |
-| **UEFı önyüklemesi**                  | UEFı önyüklemesi olan VM 'Ler geçiş için desteklenmez. |
-| **Şifrelenmiş diskler/birimler**    | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez. |
-| **RDM/geçiş diskleri**      | VM 'Lerin RDM veya PASSTHROUGH diskleri varsa, bu diskler Azure 'a çoğaltılmaz. |
-| **ALACAĞINI**                        | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz. |
-| **Hedef disk**                | Azure geçişi değerlendirmeleri, Azure VM 'lerine yalnızca yönetilen disklerle geçiş yapmanızı önerir. |
+
 
 
 ## <a name="assessment-appliance-requirements"></a>Değerlendirme-gereç gereksinimleri
@@ -103,8 +98,8 @@ VM 'Leri değerlendirmek için, Azure geçişi gereci internet bağlantısı ger
 **URL** | **Ayrıntılar**  
 --- | ---
 *.portal.azure.com | Azure portal gezinti
-*.windows.net | Azure aboneliğinizde oturum açın
-*.microsoftonline.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Azure aboneliğinizde oturum açın
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
 Management.Azure.com | Gereç için hizmet iletişimine yönelik Azure Active Directory uygulamalar oluşturma.
 dc.services.visualstudio.com | Günlüğe kaydetme ve izleme
 *.vault.azure.net | Gereç ve hizmet arasında iletişim kurarken Azure Key Vault gizli dizileri yönetin.
@@ -119,7 +114,7 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 
 **cihaz** | **bağlantı**
 --- | ---
-**Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 numaralı bağlantı noktası üzerinden giden bağlantılar.
+**Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 bağlantı noktalarında giden bağlantılar.
 **Hyper-V konağı/kümesi** | Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V VM 'lerinin yapılandırma ve performans meta verilerini çekmek için WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Geçiş-Hyper-V ana bilgisayar gereksinimleri

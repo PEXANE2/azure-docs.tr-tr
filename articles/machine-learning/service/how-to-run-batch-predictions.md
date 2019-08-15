@@ -1,5 +1,5 @@
 ---
-title: Büyük veriler üzerinde toplu Öngörüler çalıştırın
+title: İşlem hatları ile büyük veriler üzerinde toplu tahmine dayalı çalıştırma
 titleSuffix: Azure Machine Learning service
 description: Batch zaman uyumsuz olarak büyük miktarlarda verileri Azure Machine Learning hizmetini kullanarak tahminlerde bulunmayı öğrenin.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358717"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963014"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile büyük veri kümelerinde toplu Öngörüler çalıştırma
+# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları ile büyük veri kümelerinde toplu tahminleri çalıştırma
 
-Bu makalede, Azure Machine Learning hizmeti kullanarak zaman uyumsuz olarak büyük miktarlarda veri tahminlerinin nasıl yapılacağını öğreneceksiniz.
+Bu makalede, Azure Machine Learning hizmetiyle ML işlem hatlarını kullanarak büyük miktarlarda verileri zaman uyumsuz olarak tahmin etme hakkında bilgi edineceksiniz.
 
 Toplu işlem Tahmini (veya toplu Puanlama), zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım sağlar. Toplu tahmin işlem hatlarını çıkarımı terabaytlarca üretim veri gerçekleştirmek için ölçeklendirilebilir. Toplu tahmin, büyük bir veri koleksiyonu için yüksek aktarım hızı, yangın ve unutma tahminleri için iyileştirilmiştir.
 
@@ -358,7 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu çalışmayı uçtan uca görmek için, [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)'da Batch Puanlama Not defterini deneyin.
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
-
+Bu çalışmayı uçtan uca görmek için, [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)'da Batch Puanlama Not defterini deneyin veya örnek bir çözüm mimarisini görmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/ai/batch-scoring-python) 'ne gidin.

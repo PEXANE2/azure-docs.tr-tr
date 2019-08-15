@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar 'a HTML Işaretleyicisi ekleme | Microsoft Docs
-description: JavaScript eşlemesine HTML Işaretleyicisi ekleme
+description: Azure Maps web SDK 'sına bir HTML Işaretleyicisi ekleme.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ff18b8646a3845d029e9826c0895b9d3eb16bdde
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849301"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976214"
 ---
 # <a name="add-html-markers-to-the-map"></a>Haritaya HTML işaretçileri ekleyin
 
@@ -28,16 +28,36 @@ Bu makalede, bir HTML Işaretçisi olarak haritaya bir görüntü dosyası gibi 
 
 ## <a name="add-an-html-marker"></a>HTML işaretleyicisi ekleme
 
-Htmlişaretleyici sınıfının varsayılan bir stili vardır. İşaretin renk ve metin seçeneklerini ayarlayarak işaretçiyi özelleştirebilirsiniz. Htmlişaretleyici sınıfının varsayılan stili, renk ve metin yer tutucusu olan bir SVG şablonudur. Hızlı özelleştirme için Htmlişaretleyici seçeneklerinde Color ve Text özelliklerini ayarlayın. 
+[Htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) sınıfının varsayılan bir stili vardır. İşaretin renk ve metin seçeneklerini ayarlayarak işaretçiyi özelleştirebilirsiniz. HTML işaret sınıfının varsayılan stili, `{color}` ve `{text}` yer tutucusu olan bir SVG şablonudur. Hızlı özelleştirme için HTML işaretleyici seçeneklerinde renk ve metin özelliklerini ayarlayın. 
+
+Aşağıdaki kod bir HTML işaretleyicisi oluşturur ve Color özelliğini "DodgerBlue" olarak ve metin özelliğini "10" olarak ayarlar. Açılan pencere, işaretleyicinin görünürlüğünü değiştirmek için `click` işaretçiye eklenir ve olay kullanılır.
+
+```javascript
+//Create a HTML marker and add it to the map.
+var marker = new atlas.HtmlMarker({
+    color: 'DodgerBlue',
+    text: '10',
+    position: [0, 0],
+    popup: new atlas.Popup({
+        content: '<div style="padding:10px">Hello World</div>',
+        pixelOffset: [0, -30]
+    })
+});
+
+map.markers.add(marker);
+
+//Add a click event to toggle the popup.
+map.events.add('click',marker, () => {
+    marker.togglePopup();
+});
+```
+
+Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Haritaya HTML Işaretleyicisi ekleme' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>bir haritaya HTML işaretleyicisi ekleme</a> kalemine bakın.
 </iframe>
-
-Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
-
-İkinci kod bloğu harita sınıfının [işaretçiler](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) özelliğini kullanarak haritaya bir [htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) ekler. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , Eşleme tam olarak yüklendikten sonra görüntülendiğinden emin olmak için, [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) işlevi Içindeki haritaya htmlişaretleyici eklenir.
 
 ## <a name="create-svg-templated-html-marker"></a>SVG şablonu oluşturma HTML işaretleyicisi
 
@@ -62,7 +82,7 @@ HTML işaretlerinin avantajlarından biri, CSS kullanılarak erişilebilecek ço
 
 ## <a name="draggable-html-markers"></a>Sürüklenebilir HTML işaretçileri
 
-Bu örnek, bir HTML işaretleyici sürüklenebilir nasıl yapılacağını gösterir. HTML işaretçileri desteği `drag` `dragstart` ve`dragend` olayları.
+Bu örnek, bir HTML işaretleyici sürüklenebilir nasıl yapılacağını gösterir. HTML işaretçileri, `drag` `dragstart` ve`dragend` olaylarını destekler.
 
 <br/>
 

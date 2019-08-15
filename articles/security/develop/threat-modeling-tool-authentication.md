@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728403"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967942"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Güvenlik çerçevesi: Kimlik doğrulaması | Karşı 
 
@@ -435,7 +435,7 @@ Bu yapılandırmanın verimliliğini test etmek için yerel OIDC korumalı uygul
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvur**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Adımları** | <p>Azure AD kimlik doğrulama kitaplığı (ADAL), istemci uygulama geliştiricilerinin kullanıcıların bulut veya şirket içi Active Directory (AD) için kolayca kimlik doğrulamasını sağlar ve ardından API çağrılarını güvenli hale getirmek için erişim belirteçleri elde eder.</p><p>ADAL, zaman uyumsuz destek, erişim belirteçleri depolayan ve belirteçleri yenileyen yapılandırılabilir bir belirteç önbelleği, erişim belirtecinin süresi dolarsa ve yenileme belirtecinin kullanılabildiği otomatik belirteç yenilemesi, kimlik doğrulamasını daha kolay hale getirir. daha fazla.</p><p>ADAL, karmaşıklığın çoğunu işleyerek, bir geliştiricinin uygulamanızdaki iş mantığına odaklanmasını ve güvenlik uzmanı olmadan kaynakları kolayca güvenli hale getirmenize yardımcı olabilir. .NET, JavaScript (Client ve Node. js), iOS, Android ve Java için ayrı kitaplıklar vardır.</p>|
+| **Adımları** | <p>Azure AD kimlik doğrulama kitaplığı (ADAL), istemci uygulama geliştiricilerinin kullanıcıların bulut veya şirket içi Active Directory (AD) için kolayca kimlik doğrulamasını sağlar ve ardından API çağrılarını güvenli hale getirmek için erişim belirteçleri elde eder.</p><p>ADAL, zaman uyumsuz destek, erişim belirteçleri depolayan ve belirteçleri yenileyen yapılandırılabilir bir belirteç önbelleği, erişim belirtecinin süresi dolarsa ve yenileme belirtecinin kullanılabildiği otomatik belirteç yenilemesi, kimlik doğrulamasını daha kolay hale getirir. daha fazla.</p><p>ADAL, karmaşıklığın çoğunu işleyerek, bir geliştiricinin uygulamanızdaki iş mantığına odaklanmasını ve güvenlik uzmanı olmadan kaynakları kolayca güvenli hale getirmenize yardımcı olabilir. .NET, JavaScript (Client ve Node. js), Python, iOS, Android ve Java için ayrı kitaplıklar vardır.</p>|
 
 ## <a id="authn-devices-field"></a>Alan ağ geçidine bağlanan cihazların kimliğini doğrulama
 

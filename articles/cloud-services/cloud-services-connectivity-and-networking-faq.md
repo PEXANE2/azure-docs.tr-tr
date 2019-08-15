@@ -11,16 +11,15 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 513803adec71e0e2c9578d762c5f4c110ed7086f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384505"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941743"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: Sık sorulan sorular (SSS)
 
@@ -29,7 +28,7 @@ Bu makalede, [Azure Cloud Services](https://azure.microsoft.com/services/cloud-s
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Bir IP 'yi çoklu VIP bulut hizmetinde ayıramıyorum.
-İlk olarak, için IP 'yi ayırmak istediğiniz sanal makine örneğinin açık olduğundan emin olun. İkinci olarak, hem hazırlama hem de üretim dağıtımları için ayrılmış IP 'Leri kullandığınızdan emin olun. Dağıtım yükseltilirken *ayarları değiştirmeyin.*
+İlk olarak, için IP 'yi ayırmak istediğiniz sanal makine örneğinin açık olduğundan emin olun. İkinci olarak, hem hazırlama hem de üretim dağıtımları için ayrılmış IP 'Leri kullandığınızdan emin olun. Dağıtım yükseltilirken ayarları değiştirmeyin.
 
 ## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>NSG 'ye sahip olduğumu Uzak Masaüstü Nasıl yaparım? mi kullanıyorsunuz?
 NSG 'ye, **3389** ve **20000**bağlantı noktalarında trafiğe izin veren kurallar ekleyin. Uzak Masaüstü **3389**numaralı bağlantı noktasını kullanır. Bulut hizmeti örnekleri yük dengedir, bu nedenle hangi örneğin bağlanılacağını doğrudan kontrol edebilirsiniz. *Remoteforwarder* ve *RemoteAccess* ARACıLARı, Uzak Masaüstü Protokolü (RDP) trafiğini YÖNETIR ve istemcinin bir RDP tanımlama bilgisi göndermesini ve bağlanılacak tek bir örnek belirtmesini sağlar. *Remoteforwarder* ve *RemoteAccess* aracılarının bağlantı noktası **20000** ' ün açık olması gerekir. Bu, bir NSG varsa engellenebilir.
@@ -54,7 +53,7 @@ RDP ayarlarınızda yapılandırılan sona erme tarihini atladığınızda "Bu K
 
 2. **Üretim** veya **hazırlama** dağıtım yuvasını seçin.
 
-3. Tarihi bitiş **tarihini değiştirin** ve ardından yapılandırmayı kaydedin.
+3. Tarihi bitiş tarihini değiştirin ve ardından yapılandırmayı kaydedin.
 
 Artık makinenize RDP ile kullanabileceksiniz.
 

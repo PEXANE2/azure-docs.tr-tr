@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881472"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966461"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve Oracle 'a kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,11 +33,13 @@ Bir Oracle veritabanından desteklenen herhangi bir havuz veri deposuna veri kop
 Özellikle, bu Oracle Bağlayıcısı şunları destekler:
 
 - Bir Oracle veritabanının aşağıdaki sürümleri:
-  - Oracle 12c R1 (12,1)
-  - Oracle 11g R1, R2 (11,1, 11,2)
-  - Oracle 10G R1, R2 (10,1, 10,2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18,1) ve üzeri
+    - Oracle 12c R1 (12,1) ve üzeri
+    - Oracle 11g R1 (11,1) ve üzeri
+    - Oracle 10G R1 (10,1) ve üzeri
+    - Oracle 9i R2 (9,2) ve üzeri
+    - Oracle 8i R3 (8.1.7) ve üzeri
+    - Oracle Database Cloud Sınavveri hizmeti
 - Temel veya OID kimlik doğrulamaları kullanarak verileri kopyalama.
 - Oracle kaynağından paralel kopyalama. Ayrıntılar için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın.
 
@@ -46,7 +48,9 @@ Bir Oracle veritabanından desteklenen herhangi bir havuz veri deposuna veri kop
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Ve herkese açık olmayan bir Oracle veritabanından veri kopyalamak için, [Şirket içinde barındırılan bir tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md)ayarlamanız gerekir. Integration Runtime, yerleşik bir Oracle sürücüsü sağlar. Bu nedenle, ve Oracle 'dan veri kopyaladığınızda sürücüyü el ile yüklemeniz gerekmez.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+Integration Runtime, yerleşik bir Oracle sürücüsü sağlar. Bu nedenle, ve Oracle 'dan veri kopyaladığınızda sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="get-started"></a>başlarken
 
@@ -62,7 +66,7 @@ Oracle bağlı hizmeti aşağıdaki özellikleri destekler:
 |:--- |:--- |:--- |
 | type | Type özelliği **Oracle**olarak ayarlanmalıdır. | Evet |
 | connectionString | Oracle Database örneğine bağlanmak için gereken bilgileri belirtir. <br/>Data Factory güvenli bir şekilde depolamak `SecureString` için bu alanı bir olarak işaretleyin. Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault depolayın](store-credentials-in-key-vault.md) . <br><br>**Desteklenen bağlantı türü**: Veritabanınızı tanımlamak için **Oracle SID** veya **Oracle hizmet adını** kullanabilirsiniz:<br>-SID kullanıyorsanız:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Hizmet adı kullanıyorsanız:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Evet |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Şirket içinde barındırılan tümleştirme çalışma zamanını veya Azure tümleştirme çalışma zamanını (veri depoluiz herkese açık ise) kullanabilirsiniz. Belirtilmemişse, bu özellik varsayılan Azure tümleştirme çalışma zamanını kullanır. |Hayır |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
 
 >[!TIP]
 >Bir hata alırsanız, "ORA-01025: UPI parametresi aralık dışında "ve Oracle sürümünüz 8i 'dir, Bağlantı dizenizi ekleyin `WireProtocolMode=1` . Sonra yeniden deneyin.
@@ -191,11 +195,10 @@ Ve Oracle 'dan verileri kopyalamak için, veri kümesinin Type özelliğini olar
 
 Bu bölüm, Oracle kaynağı ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar. Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md). 
 
-### <a name="oracle-as-a-source-type"></a>Kaynak türü olarak Oracle
+### <a name="oracle-as-source"></a>Kaynak olarak Oracle
 
-> [!TIP]
->
-> Verileri bölümlemeyi kullanarak Oracle 'dan verimli bir şekilde yüklemek için bkz. [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle).
+>[!TIP]
+>Verileri bölümlemeyi kullanarak Oracle 'dan verimli bir şekilde yüklemek için bkz. [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle).
 
 Oracle 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü olarak `OracleSource`ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü.
 
@@ -242,7 +245,7 @@ Oracle 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü ola
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>Havuz türü olarak Oracle
+### <a name="oracle-as-sink"></a>Havuz olarak Oracle
 
 Verileri Oracle 'a kopyalamak için kopyalama etkinliğindeki havuz türünü olarak `OracleSink`ayarlayın. Aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir.
 
@@ -339,12 +342,12 @@ Ve Oracle 'a veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kopy
 | Oracle veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
 | BFILE |Byte[] |
-| BUN |Byte[]<br/>(yalnızca Oracle 10G ve üzeri sürümlerde desteklenir) |
+| BLOB |Byte[]<br/>(yalnızca Oracle 10G ve üzeri sürümlerde desteklenir) |
 | CHAR |Dize |
-| CLOB |Dize |
-| DATE |Datetime |
+| CLOB |String |
+| DATE |DateTime |
 | FLOAT |Decimal, String (olursa hassasiyet > 28) |
-| GIR |Decimal, String (olursa hassasiyet > 28) |
+| INTEGER |Decimal, String (olursa hassasiyet > 28) |
 | LONG |Dize |
 | LONG RAW |Byte[] |
 | NCHAR |Dize |
@@ -353,7 +356,7 @@ Ve Oracle 'a veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kopy
 | NVARCHAR2 |Dize |
 | RAW |Byte[] |
 | ROWID |Dize |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |Dize |
 | TIMESTAMP WITH TIME ZONE |Dize |
 | UNSIGNED INTEGER |Number |

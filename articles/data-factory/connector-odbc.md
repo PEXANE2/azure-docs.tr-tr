@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak ODBC kaynaklardan veri kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına OData kaynaklardan bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Data Factory kullanarak ODBC kaynaklarından veri kopyalama | Microsoft Docs
+description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak OData kaynaklarından desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,56 +10,56 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711467"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966912"
 ---
-# <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Gelen ve ODBC veri depoları Azure Data Factory kullanarak veri kopyalama
-> [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
+# <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve ODBC veri depolarından veri kopyalama
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-odbc-connector.md)
 > * [Geçerli sürüm](connector-odbc.md)
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de ilk ve son bir ODBC veri deposuna veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, verileri bir ODBC veri deposuna ve ' den kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-ODBC kaynağından tüm desteklenen havuz veri deposuna veri kopyalamak ya da ODBC havuz için herhangi bir desteklenen kaynak veri deposundan kopyalayın. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+ODBC kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilir veya desteklenen herhangi bir kaynak veri deposundan ODBC havuzuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
-Özellikle, bu ODBC bağlayıcı/BLOB'dan veri kopyalamayı destekler **herhangi bir ODBC uyumlu veri depoları** kullanarak **temel** veya **anonim** kimlik doğrulaması.
+Özellikle, bu ODBC Bağlayıcısı **temel** veya **anonim** kimlik doğrulaması kullanarak **ODBC ile uyumlu tüm veri depolarından** veri kopyalamayı destekler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu ODBC bağlayıcıyı kullanmak için yapmanız:
+Bu ODBC bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- Şirket içinde barındırılan tümleştirme çalışma zamanını oluşturan ayarlayın. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makale Ayrıntılar için.
-- Veri deposu için ODBC sürücüsü, Integration Runtime makineye yükleyin.
+- Şirket içinde barındırılan bir Integration Runtime ayarlayın. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makale Ayrıntılar için.
+- Integration Runtime makinesindeki veri deposu için ODBC sürücüsünü yükler.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli ODBC Bağlayıcısı tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, ODBC bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özelliklerle ilgili ayrıntıları sağlar.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-ODBC bağlı hizmeti için aşağıdaki özellikleri destekler:
+ODBC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **ODBC** | Evet |
-| connectionString | Kimlik bilgisi bölümü hariç olmak üzere bağlantı dizesi. Desen gibi ile bağlantı dizesini belirtin `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, veya sistem DSN ayarladığınız Integration Runtime makinede (veri kaynağı adı) kullanmak `"DSN=<name of the DSN on IR machine>;"` (hala kimlik bilgisi bölümü bağlı hizmette uygun şekilde belirttiğiniz).<br>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md).| Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **İsti** | Evet |
+| connectionString | Kimlik bilgisi bölümünü dışlayarak bağlantı dizesi. Bağlantı dizesini gibi `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`bir düzende belirtebilir veya Integration Runtime `"DSN=<name of the DSN on IR machine>;"` makinede ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü belirtmeniz gerekir).<br>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md).| Evet |
 | authenticationType | ODBC veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler şunlardır: **Temel** ve **anonim**. | Evet |
-| userName | Temel kimlik doğrulamasını kullanıyorsanız kullanıcı adı belirtin. | Hayır |
-| password | Kullanıcı adı için belirtilen kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
-| credential | Erişim kimlik bilgisi sürücüye özel özellik-değer biçiminde belirtilen bağlantı dizesi kısmı. Örnek: `"RefreshToken=<secret refresh token>;"`. Bu alanı bir SecureString işaretleyin. | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtildiği gibi bir şirket içinde barındırılan tümleştirme çalışma zamanı gereklidir [önkoşulları](#prerequisites). |Evet |
+| userName | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
+| credential | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Örnek: `"RefreshToken=<secret refresh token>;"`. Bu alanı SecureString olarak işaretleyin. | Hayır |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
-**Örnek 1: Temel kimlik doğrulaması kullanma**
+**Örnek 1: temel kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -86,7 +86,7 @@ ODBC bağlı hizmeti için aşağıdaki özellikleri destekler:
 }
 ```
 
-**Örnek 2: Anonim kimlik doğrulamasını kullanma**
+**Örnek 2: anonim kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -114,14 +114,14 @@ ODBC bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölümde, ODBC veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm, ODBC veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-/ ODBC uyumlu veri deposuna veri kopyalamak için dataset öğesinin type özelliği ayarlamak **RelationalTable**. Aşağıdaki özellikler desteklenir:
+ODBC ile uyumlu veri deposundan veri kopyalamak için, veri kümesinin Type özelliğini **Relationaltable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **RelationalTable** | Evet |
-| tableName | ODBC veri deposundaki tablosunun adı. | Hayır ("etkinlik kaynakta sorgulama" belirtilirse) kaynak için;<br/>Havuz için Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **RelationalTable** | Evet |
+| tableName | ODBC veri deposundaki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
 **Örnek**
 
@@ -143,15 +143,15 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, ODBC kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, ODBC kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="odbc-as-source"></a>ODBC kaynağı olarak
+### <a name="odbc-as-source"></a>Kaynak olarak ODBC
 
-ODBC uyumlu veri deposundan veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **RelationalSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+ODBC uyumlu veri deposundan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Relationalsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **RelationalSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **RelationalSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**
@@ -186,19 +186,19 @@ ODBC uyumlu veri deposundan veri kopyalamak için kopyalama etkinliği için kay
 ]
 ```
 
-### <a name="odbc-as-sink"></a>ODBC havuz olarak
+### <a name="odbc-as-sink"></a>Havuz olarak ODBC
 
-ODBC uyumlu veri deposuna veri kopyalamak için kopyalama etkinliğine de Havuz türü ayarlayın. **OdbcSink**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
+ODBC uyumlu veri deposuna veri kopyalamak için kopyalama etkinliğindeki havuz türünü **Odbcsink**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuz öğesinin type özelliği ayarlanmalıdır: **OdbcSink** | Evet |
-| writeBatchTimeout |Toplu ekleme işlemi zaman aşımına uğramadan önce tamamlanması için bir süre bekleyin.<br/>İzin verilen değerler: TimeSpan değeri. Örnek: "00: 30:00" (30 dakika). |Hayır |
-| writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında veri SQL tablosuna ekler.<br/>İzin verilen değerler: tamsayı (satır sayısı). |Hayır (varsayılan değer 0 - otomatik algılanan) |
-| preCopyScript |Her çalıştırma, veri deposuna veri yazılmadan önce yürütmek kopyalama etkinliği için bir SQL sorgusunu belirtin. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanabilirsiniz. |Hayır |
+| türü | Kopyalama etkinliği havuzunun Type özelliği şu şekilde ayarlanmalıdır: **OdbcSink** | Evet |
+| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00:30:00" (30 dakika). |Hayır |
+| writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler.<br/>İzin verilen değerler: Integer (satır sayısı). |Hayır (varsayılan 0-otomatik olarak algılanır) |
+| preCopyScript |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
 
 > [!NOTE]
-> (Otomatik olarak algılanan), ayarlanmamışsa "writeBatchSize" için kopyalama etkinliği ilk sürücü toplu işlemleri destekler ve varsa 10000'e ayarlayın veya bu gereksinimleri karşılamıyorsa 1 olarak ayarlayın. algılar. Açıkça 0 dışında bir değere ayarlarsanız, kopyalama etkinliği, değer geçerlidir ve sürücü toplu işlemleri desteklemeyen çalışma zamanında başarısız olur.
+> "WriteBatchSize" ayarlanmamışsa (otomatik algılanan), kopyalama etkinliği önce sürücünün Batch işlemlerini destekleyip desteklemediğini algılar ve bunu yoksa 10000 olarak ayarlayın veya yoksa 1 olarak ayarlayın. 0 dışında bir değer ayarlarsanız, kopyalama etkinliği değeri eşit kılar ve sürücü Batch işlemlerini desteklemiyorsa çalışma zamanında başarısız olur.
 
 **Örnek:**
 
@@ -232,93 +232,19 @@ ODBC uyumlu veri deposuna veri kopyalamak için kopyalama etkinliğine de Havuz 
 ]
 ```
 
-## <a name="ibm-informix-source"></a>IBM Informix kaynak
-
-Genel ODBC Bağlayıcısı'nı kullanarak IBM Informix veritabanından veri kopyalayabilirsiniz.
-
-Data store erişimi olan bir makinede bir şirket içinde barındırılan tümleştirme çalışma zamanı ayarlayın. Integration Runtime, veri deposuna bağlanmak için Informix için ODBC sürücüsünü kullanır. Bu nedenle, aynı makinede zaten yüklü değilse sürücüsü yükleyin. Örneğin, sürücü "IBM INFORMİX ODBC sürücü (64-bit)" kullanabilirsiniz. Bkz: [önkoşulları](#prerequisites) ayrıntıları bölümü.
-
-Data Factory çözümünde Informix kaynak kullanmadan önce tümleştirme çalışma zamanı'ndaki yönergeleri kullanarak veri deposu bağlanıp bağlanamadığını doğrulayın [bağlantı sorunlarını giderme](#troubleshoot-connectivity-issues) bölümü.
-
-Aşağıdaki örnekte gösterildiği gibi bir IBM Informix data store bir Azure veri fabrikanıza bağlamak üzere bir ODBC bağlı hizmet oluşturun:
-
-```json
-{
-    "name": "InformixLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<Informix connection string or DSN>"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Okuma ODBC veri kullanımının makaleyi baştan ayrıntılı bir genel bakış için bir kopyalama işleminde kaynak/havuz veri depoları olarak depolar.
-
-## <a name="microsoft-access-source"></a>Microsoft Access kaynağı
-
-Genel ODBC Bağlayıcısı'nı kullanarak Microsoft Access veritabanından veri kopyalayabilirsiniz.
-
-Data store erişimi olan bir makinede bir şirket içinde barındırılan tümleştirme çalışma zamanı ayarlayın. Integration Runtime, veri deposuna bağlanmak için Microsoft Access ODBC sürücüsünü kullanır. Bu nedenle, aynı makinede zaten yüklü değilse sürücüsü yükleyin. Bkz: [önkoşulları](#prerequisites) ayrıntıları bölümü.
-
-Data Factory çözümünde Microsoft Access kaynağı kullanmadan önce tümleştirme çalışma zamanı'ndaki yönergeleri kullanarak veri deposu bağlanıp bağlanamadığını doğrulayın [bağlantı sorunlarını giderme](#troubleshoot-connectivity-issues) bölümü.
-
-Aşağıdaki örnekte gösterildiği gibi bir Microsoft Access veritabanına bir Azure data factory'ye bağlamak için bir ODBC bağlı hizmet oluşturun:
-
-```json
-{
-    "name": "MicrosoftAccessLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Okuma ODBC veri kullanımının makaleyi baştan ayrıntılı bir genel bakış için bir kopyalama işleminde kaynak/havuz veri depoları olarak depolar.
-
-## <a name="sap-hana-sink"></a>SAP HANA havuz
+## <a name="sap-hana-sink"></a>SAP HANA havuzu
 
 >[!NOTE]
->SAP HANA veri deposundan veri kopyalamak için doğal olarak başvuran [SAP HANA Bağlayıcısı](connector-sap-hana.md). SAP HANA veri kopyalamak için ODBC bağlayıcıyı kullanmak üzere bu yönergeyi izleyin. Bu nedenle Not SAP HANA Bağlayıcısı ve ODBC Bağlayıcısı için bağlı hizmetler farklı bir türle yeniden kullanılamaz.
+>SAP HANA veri deposundan verileri kopyalamak için yerel [SAP HANA Bağlayıcısı](connector-sap-hana.md)' na bakın. SAP HANA verileri kopyalamak için lütfen bu yönergeyi izleyerek ODBC bağlayıcısını kullanın. SAP HANA Bağlayıcısı ve ODBC Bağlayıcısı için bağlı hizmetlerin farklı türde olduğunu ve bu nedenle yeniden kullanılmamasını aklınızda olun.
 >
 
-Genel ODBC Bağlayıcısı'nı kullanarak SAP HANA veritabanı'na veri kopyalayabilirsiniz.
+Genel ODBC bağlayıcısını kullanarak verileri SAP HANA veritabanına kopyalayabilirsiniz.
 
-Data store erişimi olan bir makinede bir şirket içinde barındırılan tümleştirme çalışma zamanı ayarlayın. Integration Runtime, veri deposuna bağlanmak için SAP HANA ODBC sürücüsünü kullanır. Bu nedenle, aynı makinede zaten yüklü değilse sürücüsü yükleyin. Bkz: [önkoşulları](#prerequisites) ayrıntıları bölümü.
+Veri deponuza erişimi olan bir makinede şirket içinde barındırılan bir Integration Runtime ayarlayın. Integration Runtime, veri deposuna bağlanmak için SAP HANA ODBC sürücüsünü kullanır. Bu nedenle, aynı makinede zaten yüklü değilse sürücüyü yükleme. Ayrıntılar için [Önkoşullar](#prerequisites) bölümüne bakın.
 
-Data Factory çözümünde SAP HANA havuz kullanmadan önce tümleştirme çalışma zamanı'ndaki yönergeleri kullanarak veri deposu bağlanıp bağlanamadığını doğrulayın [bağlantı sorunlarını giderme](#troubleshoot-connectivity-issues) bölümü.
+Data Factory çözümünde SAP HANA havuzunu kullanmadan önce, Integration Runtime [bağlantı sorunlarını giderme](#troubleshoot-connectivity-issues) bölümündeki yönergeleri kullanarak veri deposuna bağlanıp bağlanamayacağını doğrulayın.
 
-Aşağıdaki örnekte gösterildiği gibi bir Azure veri fabrikası için bir SAP HANA veri deposuna bağlamak için bir ODBC bağlı hizmet oluşturun:
+Aşağıdaki örnekte gösterildiği gibi SAP HANA veri deposunu bir Azure Data Factory 'ye bağlamak için ODBC bağlantılı hizmeti oluşturun:
 
 ```json
 {
@@ -345,17 +271,17 @@ Aşağıdaki örnekte gösterildiği gibi bir Azure veri fabrikası için bir SA
 }
 ```
 
-Okuma ODBC veri kullanımının makaleyi baştan ayrıntılı bir genel bakış için bir kopyalama işleminde kaynak/havuz veri depoları olarak depolar.
+ODBC veri depolarının bir kopyalama işleminde kaynak/havuz veri depoları olarak kullanılmasına ilişkin ayrıntılı bir genel bakış için makalenin başındaki makaleyi okuyun.
 
 ## <a name="troubleshoot-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
-Bağlantı sorunlarını gidermek için **tanılama** sekmesinde **Integration Runtime Yapılandırma Yöneticisi**.
+Bağlantı sorunlarını gidermek için **Integration Runtime Configuration Manager** **Tanılama** sekmesini kullanın.
 
-1. Başlatma **Integration Runtime Yapılandırma Yöneticisi**.
-2. Geçiş **tanılama** sekmesi.
-3. "Bağlantıyı Sına" bölümü altında seçin **türü** (bağlı hizmet) verilerini depolar.
-4. Belirtin **bağlantı dizesi** öğesini veri deposuna bağlanmak için kullanılan **kimlik doğrulaması** girin **kullanıcı adı**, **parola**, ve/veya **kimlik bilgilerini**.
-5. Tıklayın **Bağlantıyı Sına** veri deposuna test edin.
+1. **Integration Runtime Configuration Manager**başlatın.
+2. **Tanılama** sekmesine geçin.
+3. "Bağlantıyı Sına" bölümünde, veri deposu **türünü** (bağlı hizmet) seçin.
+4. Veri deposuna bağlanmak için kullanılan **bağlantı dizesini** belirtin, **kimlik doğrulamasını** seçin ve **Kullanıcı adı**, **parola**ve/veya **kimlik bilgilerini**girin.
+5. Veri deposuyla bağlantıyı test etmek için **Bağlantıyı Sına** ' ya tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md##supported-data-stores-and-formats).

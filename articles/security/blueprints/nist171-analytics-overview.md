@@ -1,6 +1,6 @@
 ---
-title: Azure güvenlik ve uyumluluk planı - 800-171 NIST SP için veri analizi
-description: Azure güvenlik ve uyumluluk planı - 800-171 NIST SP için veri analizi
+title: Azure Güvenlik ve Uyumluluk Şeması-NıST SP 800-171 için veri analizi
+description: Azure Güvenlik ve Uyumluluk Şeması-NıST SP 800-171 için veri analizi
 services: security
 author: jomolesk
 ms.assetid: ca75d2a8-4e20-489b-9a9f-3a61e74b032d
@@ -8,40 +8,40 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f79ba9ae60454d4e73c914fc1c8af675a6d07d5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12119097f08fbb221f644fa2d86bade78b054269
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60608862"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946741"
 ---
-# <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure güvenlik ve uyumluluk planı - 800-171 NIST SP için veri analizi
+# <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure Güvenlik ve Uyumluluk Şeması-NıST SP 800-171 için veri analizi
 
 ## <a name="overview"></a>Genel Bakış
-[NIST özel yayını 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) nonfederal bilgi sistemleri ve kuruluşlar içinde bulunduğu kontrollü Sınıflandırılmamış bilgiler (CUI) korumak için yönergeler sağlar. NIST SP 800-171 CUI gizliliğini korumaya yönelik güvenlik gereksinimleri 14 ailelerinde oluşturur.
+[NIST özel yayını 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) , Federal olmayan bilgi sistemlerinde ve kuruluşlarda bulunan kontrollü sınıflandırılmamış bilgilerin (CUI) korunması için yönergeler sağlar. NıST SP 800-171, CUı 'nin gizliliğini korumak için 14 güvenlik gereksinimi gereksinimlerinin 14 ailesinden olduğunu belirler.
 
-Azure güvenlik ve uyumluluk planı, müşterilerin veri analizi mimarisi bir alt kümesini SP NIST 800-171 denetimleri uygulayan azure'da dağıtma yardımcı olan yönergeler sağlar. Bu çözüm, müşterilerin belirli güvenlik ve uyumluluk gereksinimlerini karşılayabilecek bir yol gösterir. Ayrıca müşterilerin oluşturmak ve Azure'da kendi veri analizi çözümleri yapılandırma temeli olarak kullanılır.
+Bu Azure Güvenlik ve Uyumluluk Şeması, müşterilerin Azure 'da NıST SP 800-171 denetimlerinin bir alt kümesini uygulayan bir veri analizi mimarisi dağıtmaları konusunda rehberlik sağlar. Bu çözüm, müşterilerin belirli güvenlik ve uyumluluk gereksinimlerini karşılayabileceği yolları gösterir. Ayrıca, müşterilerin Azure 'da kendi veri analizi çözümlerini oluşturup yapılandırmasına yönelik bir temel işlevi görür.
 
-Bu başvuru mimarisi, ilişkili Uygulama Kılavuzu ve tehdit modeli, müşterilerin kendi belirli gereksinimlerine uyum sağlamak bir temel olarak görev yapacak yöneliktir. Olarak kullanılmaması-üretim ortamıdır. Değişiklik yapmadan bu mimarisini dağıtma tamamen NIST SP 800-171 gereksinimlerini karşılamak için yeterli değil. Müşteriler, uygun güvenlik yürütmek için sorumludur ve uyumluluk değerlendirmesi yerleşik herhangi bir çözümün bu mimari kullanır. Gereksinimleri her bir müşterinin uygulama ayrıntılarına göre farklılık gösterebilir.
+Bu başvuru mimarisi, ilişkili uygulama kılavuzu ve tehdit modeli, müşterilerin belirli gereksinimlerine uyum sağlamak için bir temel işlevi sunmaya yöneliktir. Bunlar bir üretim ortamında olduğu gibi kullanılmamalıdır. Bu mimariyi değişiklik olmadan dağıtmak, NıST SP 800-171 gereksinimlerini tamamen karşılamak için yeterli değildir. Müşteriler, bu mimariyi kullanan herhangi bir çözüme uygun güvenlik ve uyumluluk değerlendirmeleri yürütmekten sorumludur. Gereksinimler, her bir müşterinin uygulamasının özelliklerine göre farklılık gösterebilir.
 
 ## <a name="architecture-diagram-and-components"></a>Mimari diyagramı ve bileşenleri
-Bu çözüm, müşteriler, kendi analiz araçları oluşturabileceğiniz bir analiz platformu sağlar. Başvuru mimarisi, genel kullanım örneği açıklanmaktadır. Müşteriler, toplu veri içeri aktarmaları SQL/veri Yöneticisi tarafından veri girişi için kullanabilirsiniz. Bunlar, işletimsel veri güncelleştirmelerine işletimsel bir kullanıcı verilerine giriş için de kullanabilirsiniz. Her iki iş akışları, Azure SQL veritabanı'na veri almak için Azure işlevleri ekleyebilirsiniz. Azure işlevleri, müşterinin analiz gereksinimleri için benzersiz alma görevlerini işlemek için Azure Portalı aracılığıyla müşteri tarafından yapılandırılması gerekir.
+Bu çözüm, müşterilerin kendi analiz araçlarını oluşturabileceğiniz bir analiz platformu sağlar. Başvuru mimarisi genel kullanım durumunu özetler. Müşteriler, SQL/veri Yöneticisi tarafından toplu veri içeri aktarmaları aracılığıyla veri girişi yapmak için kullanabilir. Ayrıca, işletimsel bir kullanıcı aracılığıyla işletimsel veri güncelleştirmeleri aracılığıyla veri girişi için de kullanabilir. Her iki iş akışı da Azure SQL veritabanı 'na veri aktarmak için Azure Işlevleri 'ni birleştirir. Müşterinin analiz gereksinimlerine özgü içeri aktarma görevlerini işlemek için Azure portal aracılığıyla Azure Işlevleri yapılandırılmalıdır.
 
-Azure, birçok müşteri için raporlama ve Analiz Hizmetleri sunar. Bu çözüm, Azure Machine Learning Hizmetleri ve SQL veritabanı hızlı bir şekilde verilerine göz atın ve verilerinizin daha akıllı modelleme aracılığıyla daha hızlı sonuç sunmak için kullanır. Machine Learning, veri kümeleri arasında yeni ilişkiler bularak sorgu hızı artırmak için tasarlanmıştır. Başlangıçta, verileri çeşitli istatistik işlevleri aracılığıyla çalıştırılır. Daha sonra en fazla yedi ek sorgu havuzları sorgu iş yükü dağıtabilir ve yanıt sürelerini kısaltmak için aynı tablosal modelleri ile eşitlenebilir. Müşteri sunucunun sorgu havuzu toplam sekiz için getirir.
+Azure, müşteri için çeşitli raporlama ve analiz hizmetleri sunar. Bu çözüm, verilere hızla gözatmak ve verilerin daha akıllı modellenmesi yoluyla daha hızlı sonuçlar sunmak için Azure Machine Learning Hizmetleri ve SQL veritabanı 'nı kullanır. Machine Learning, veri kümeleri arasında yeni ilişkiler bulmaktan sorgu hızlarını artırmak için tasarlanmıştır. Başlangıçta, veriler çeşitli istatistiksel işlevler aracılığıyla eğitilir. Daha sonra, en fazla yedi ek sorgu havuzu, sorgu iş yükünü yaymak ve yanıt sürelerini azaltmak için aynı tablolu modellerle eşitlenebilir. Müşteri sunucusu, sorgu havuzlarının toplamını sekiz ' a getirir.
 
-Gelişmiş analiz ve raporlama için SQL veritabanı ile sütun deposu dizinleri yapılandırılabilir. Machine Learning ve SQL veritabanı yukarı veya aşağı ölçeklendirilebilir veya yanıt olarak müşteri kullanımını tamamen kapatabilmek. Tüm SQL trafiği otomatik olarak imzalanan sertifikalar dahil edilmesi SSL ile şifrelenir. En iyi uygulama, Gelişmiş güvenlikten yararlanmaya başlamak için güvenilir bir sertifika yetkilisi kullanımını öneririz.
+Gelişmiş analiz ve raporlama için SQL veritabanı, sütun deposu dizinleriyle yapılandırılabilir. Machine Learning ve SQL veritabanı, müşteri kullanımına yanıt olarak tamamen ölçeklendirilebilir veya kapatılabilir ya da kapatılabilir. Tüm SQL trafiği, otomatik olarak imzalanan sertifikaların dahil edilmesi yoluyla SSL ile şifrelenir. En iyi uygulama olarak, gelişmiş güvenlik için güvenilir bir sertifika yetkilisinin kullanılmasını öneririz.
 
-Verileri SQL veritabanına karşıya ve makine öğrenimi tarafından geliştirilen sonra işletimsel kullanıcı ve Power BI ile SQL/veri Yöneticisi tarafından Sindirilmiş. Power BI verilerini sezgisel görüntüler ve bilgi ilişkin daha kapsamlı içgörüler çizmek için birden fazla veri kümesi arasında birlikte çeker. Power BI, yüksek düzeyde uyumluluk sahiptir ve SQL veritabanı ile kolayca tümleşir. Müşterilerin iş gereksinimlerini tarafından gerekli olan senaryoları çeşit işlemek için yapılandırabilirsiniz.
+Veriler SQL veritabanına yüklendikten ve Machine Learning eğitilirken, işletimsel Kullanıcı ve SQL/veri Yöneticisi tarafından Power BI ile bir şekilde belirlenir. Power BI, verileri daha canlı bir şekilde görüntüler ve daha fazla öngörü çizmek için birden fazla veri kümesi genelinde bilgi çeker. Power BI, yüksek derecede uyum sağlar ve SQL veritabanı ile kolayca tümleştirilebilir. Müşteriler, iş ihtiyaçları için gereken geniş bir senaryo dizisini işleyecek şekilde yapılandırabilir.
 
-Çözümün tamamını müşteriler Azure portalından yapılandırdığınız Azure depolama üzerinde oluşturulmuştur. Depolama, bekleyen verileri gizliliğini korumak için depolama hizmeti şifrelemesi ile tüm verileri şifreler. Müşterinin birincil veri merkezinde olumsuz bir olay veri kaybına neden olmayan coğrafi olarak yedekli depolama sağlar. İkinci bir kopyasını ayrı bir yerde mil uzaklıkta, yüzlerce depolanır.
+Tüm çözüm, müşterilerin Azure portal yapılandırıldığı Azure Storage üzerine kurulmuştur. Depolama, bekleyen verilerin gizliliğini korumak için Depolama Hizmeti Şifrelemesi tüm verileri şifreler. Coğrafi olarak yedekli depolama, müşterinin birincil veri merkezindeki olumsuz bir olayın veri kaybına neden olmamasını sağlar. İkinci bir kopya yüzlerce mil uzakta ayrı bir konumda depolanır.
 
-Gelişmiş güvenlik için bu çözümdeki tüm kaynaklar bir kaynak grubuyla Azure Resource Manager aracılığıyla yönetilir. Dağıtılan kaynakları (Azure AD) rol tabanlı erişim denetimi (RBAC) erişimi denetlemek için kullanılan Azure Active Directory. Bu kaynaklar, Azure anahtar Kasası'nda müşteri anahtarlarını içerir. Sistem durumu, Azure Güvenlik Merkezi ve Azure İzleyici izlenir. Müşteriler, günlükleri tutmak için her iki izleme hizmetleri yapılandırın. Sistem durumu, kullanımı kolay tek bir Panoda görüntülenir.
+Gelişmiş güvenlik için, bu Çözümdeki tüm kaynaklar Azure Resource Manager aracılığıyla bir kaynak grubu olarak yönetilir. Dağıtılan kaynaklara erişimi denetlemek için Azure Active Directory (Azure AD) rol tabanlı erişim denetimi (RBAC) kullanılır. Bu kaynaklar Azure Key Vault içindeki müşteri anahtarlarını içerir. Sistem durumu, Azure Güvenlik Merkezi ve Azure Izleyici aracılığıyla izlenir. Müşteriler, günlükleri yakalamak için her iki izleme hizmetini de yapılandırır. Sistem durumu, kullanımı kolay tek bir panoda görüntülenir.
 
-SQL veritabanı, yaygın olarak SQL Server Management Studio yönetilir. SQL veritabanına güvenli bir VPN veya Azure ExpressRoute bağlantısı üzerinden erişmek için yapılandırılmış yerel makineden çalıştırır. *Bir VPN veya ExpressRoute bağlantısı için kaynak grubu yönetimi ve veri içe yapılandırmanızı öneririz*.
+SQL veritabanı genellikle SQL Server Management Studio aracılığıyla yönetilir. Güvenli bir VPN veya Azure ExpressRoute bağlantısı aracılığıyla SQL veritabanına erişmek için yapılandırılmış bir yerel makineden çalışır. *Kaynak grubuna yönetim ve veri aktarma için BIR VPN veya ExpressRoute bağlantısı yapılandırmanızı öneririz*.
 
-![Veri analizi için NIST SP 800-171 başvurusu mimari şeması](images/nist171-analytics-architecture.png "veri analizi için NIST SP 800-171 başvuru mimarisi diyagramı")
+![NıST SP 800-171 başvuru mimarisi diyagramı Için veri analizi](images/nist171-analytics-architecture.png "NıST SP 800-171 başvuru mimarisi diyagramı Için veri analizi")
 
-Bu çözüm, aşağıdaki Azure hizmetlerini kullanır. Daha fazla bilgi için [dağıtım mimarisi](#deployment-architecture) bölümü.
+Bu çözüm aşağıdaki Azure hizmetlerini kullanır. Daha fazla bilgi için bkz. [dağıtım mimarisi](#deployment-architecture) bölümü.
 
 - Application Insights
 - Azure Active Directory
@@ -51,137 +51,137 @@ Bu çözüm, aşağıdaki Azure hizmetlerini kullanır. Daha fazla bilgi için [
 - Azure İşlevleri
 - Azure Key Vault
 - Azure Machine Learning
-- Azure İzleyici (günlük)
+- Azure Izleyici (Günlükler)
 - Azure Güvenlik Merkezi
-- Azure SQL Veritabanı
+- Azure SQL Database
 - Azure Storage
-- Azure Sanal Ağ
-    - (1) /16 ağ
-    - (2) /24 ağlar
+- Azure Sanal Ağı
+    - (1)/16 ağ
+    - (2)/24 ağ
     - (2) ağ güvenlik grupları
 - Power BI Panosu
 
 ## <a name="deployment-architecture"></a>Dağıtım mimarisi
-Aşağıdaki bölümde dağıtım ve uygulama öğeleri ayrıntılı olarak açıklanmaktadır.
+Aşağıdaki bölümde dağıtım ve uygulama öğelerinin ayrıntıları verilmiştir.
 
-**Azure Event grid'i**: İle [Event Grid](https://docs.microsoft.com/azure/event-grid/overview), müşterilerin kolayca olay tabanlı mimariler ile uygulama oluşturun. Kullanıcılar, abone olmak istediğiniz Azure kaynağını seçin. Ardından, olay işleyicisi veya Web kancası olayı göndermek için bir uç nokta sağlar. Müşteriler, bir olay aboneliği oluşturmak için Web kancası URL'si sorgu parametreleri ekleyerek Web kancası uç noktalarını güvenli hale getirebilirsiniz. Event Grid yalnızca HTTPS Web kancası uç noktaları destekliyor. Event Grid ile müşteriler, çeşitli yönetim işlemlerini yapmak için farklı kullanıcılara verilen erişim düzeyini denetleyebilirsiniz. Kullanıcılar, olay abonelikleri listesi, yenilerini oluşturabilir ve anahtarları oluşturun. Event Grid, Azure RBAC kullanır.
+**Azure Event Grid**: [Event Grid](https://docs.microsoft.com/azure/event-grid/overview), müşteriler olay tabanlı mimarilere sahip uygulamaları kolayca oluşturabilir. Kullanıcılar abone olmak istedikleri Azure kaynağını seçer. Ardından olay işleyicisine veya Web kancasına olayı göndermek için bir uç nokta verir. Müşteriler, bir olay aboneliği oluştururken Web kancası URL 'sine sorgu parametreleri ekleyerek Web kancası uç noktalarının güvenliğini sağlayabilir. Event Grid yalnızca HTTPS Web kancası uç noktalarını destekler. Event Grid, müşteriler farklı kullanıcılara verilen erişim düzeyini çeşitli yönetim işlemleri yapmak üzere denetleyebilir. Kullanıcılar olay aboneliklerini listeleyebilir, yenilerini oluşturabilir ve anahtar oluşturabilir. Event Grid Azure RBAC kullanır.
 
-**Azure işlevleri**: [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) kod üzerine çalışan bir sunucusuz işlem hizmetidir. Açıkça sağlamak veya altyapıyı yönetmek zorunda değilsiniz. Çok çeşitli olaylara yanıt olarak bir komut dosyası veya kod parçası çalıştırmak için Azure İşlevleri’ni kullanın.
+**Azure işlevleri**: [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) , isteğe bağlı kod çalıştıran sunucusuz bir işlem hizmetidir. Altyapıyı açıkça sağlamak veya yönetmek zorunda değilsiniz. Çok çeşitli olaylara yanıt olarak bir komut dosyası veya kod parçası çalıştırmak için Azure İşlevleri’ni kullanın.
 
-**Azure Machine Learning hizmeti**: [Makine öğrenimi](https://docs.microsoft.com/azure/machine-learning/service/) mevcut verileri gelecekteki davranışları, sonuçları ve eğilimleri öngörmelerini sağlayan bir veri bilimi tekniğidir.
+**Azure Machine Learning hizmeti**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) , bilgisayarların gelecekteki davranışları, sonuçları ve eğilimleri tahmin etmek için mevcut verileri kullanmasına izin veren bir veri bilimi tekniğidir.
 
-**Azure veri Kataloğu**: [Veri Kataloğu](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) veri kaynaklarını bulma ve verileri yöneten kullanıcılar tarafından anlamak daha kolay hale getirir. Genel veri kaynakları, etiketlenmiş ve veriler için Aranan kayıtlı. Veri kalırken, meta veri kopyası mevcut konumunda, veri Kataloğu'na eklenir. Veri kaynağı konumuna yönelik bir başvuru bulunur. Meta veriler, her veri kaynağı arama yoluyla bulmasını kolaylaştırmak üzere dizine alınır. Dizin oluşturma anlaşılır bulan kullanıcılar için kolaylaştırır.
+**Azure Veri Kataloğu**: Veri [kataloğu](../../data-catalog/overview.md) , veri kaynaklarını verileri yöneten kullanıcılar tarafından keşfve anlamayı kolaylaştırır. Ortak veri kaynakları, veriler için kaydedilebilir, etiketlenebilir ve aranabilir. Veriler mevcut konumunda kalır, ancak meta verilerinin bir kopyası veri kataloğuna eklenir. Veri kaynağı konumuna bir başvuru dahildir. Her bir veri kaynağının arama yoluyla keşfedilmesi kolay hale getirmek için meta veriler dizine alınır. Dizin oluşturma işlemi, onu keşfettiğiniz kullanıcılar için de anlaşılır hale gelir.
 
 ### <a name="virtual-network"></a>Sanal ağ
-Bu başvuru mimarisi, özel bir sanal ağ ile bir 10.0.0.0/16 adres alanı tanımlar.
+Bu başvuru mimarisi, adres alanı 10.0.0.0/16 olan bir özel sanal ağ tanımlar.
 
-**Ağ güvenlik grupları**: [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) izin veren veya bir sanal ağ içinde trafiği reddeden erişim denetim listeleri (Nsg'ler) içerir. Nsg bir alt ağ veya tek tek sanal makine düzeyinde trafiği güvenli hale getirmek için kullanılabilir. Aşağıdaki Nsg'ler mevcuttur:
+**Ağ güvenlik grupları**: [Ağ güvenlik grupları](../../virtual-network/virtual-network-vnet-plan-design-arm.md) (NSG), bir sanal ağ içindeki trafiğe izin veren veya bu trafiği reddeden erişim denetimi listelerini içerir. NSG 'ler, trafiği bir alt ağda veya tek bir sanal makine düzeyinde güvenli hale getirmek için kullanılabilir. Aşağıdaki NSG 'ler mevcuttur:
   - Active Directory için bir NSG
-  - İş yükü için bir NSG
+  - İş yükü için NSG
 
-Her nsg belirli bağlantı noktalarına sahiptir ve çözüm güvenli bir şekilde ve doğru bir şekilde çalışabilmek protokollerini açın. Ayrıca, aşağıdaki yapılandırmalar her NSG için etkinleştirilir:
-  - [Tanılama günlüklerini ve olayları](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) etkinleştirilir ve bir depolama hesabında depolanmış
-  - Azure İzleyici günlüklerine bağlı olduğu [NSG'ın tanılama](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+Bir NSG 'lerin her biri, çözümün güvenli ve doğru bir şekilde çalışabilmesi için belirli bağlantı noktalarına ve protokollere açıktır. Ayrıca, her NSG için aşağıdaki yapılandırma etkinleştirilir:
+  - [Tanılama günlükleri ve olayları](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) , bir depolama hesabında etkinleştirilir ve depolanır
+  - Azure Izleyici günlükleri [NSG 'nin tanımasına](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) bağlandı
 
-**Alt ağlar**: Her alt ağ, karşılık gelen NSG ile ilişkilidir.
+**Alt ağlar**: Her alt ağ, ilgili NSG ile ilişkilendirilir.
 
 ### <a name="data-in-transit"></a>Aktarım durumundaki veriler
-Azure, Azure veri merkezleri gelen ve giden tüm iletişimi varsayılan olarak şifreler. Tüm depolama için Azure portalı üzerinden HTTPS gerçekleşir.
+Azure, Azure veri merkezlerinden gelen ve varsayılan olarak tüm iletişimleri şifreler. Azure portal aracılığıyla depolamaya yönelik tüm işlemler HTTPS üzerinden gerçekleşir.
 
 ### <a name="data-at-rest"></a>Bekleyen veriler
 
-Mimarisi, bekleyen veri şifrelemesi, Denetim veritabanı ve diğer ölçüler verilerinizi korumanızı sağlar.
+Mimari, verileri şifreleme, veritabanı denetimi ve diğer ölçülerle korur.
 
-**Azure depolama**: Bekleyen şifreli verileri gereksinimlerini karşılamak için tüm [depolama](https://azure.microsoft.com/services/storage/) kullanan [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/storage-service-encryption). Bu özellik, Kurumsal güvenlik ve uyumluluk gereksinimlerini 800-171 NIST SP tarafından tanımlanan desteklemek üzere verileri koruyarak yardımcı olur.
+**Azure depolama**: Bekleyen şifrelenmiş verilerin gereksinimlerini karşılamak için, tüm [depolama](https://azure.microsoft.com/services/storage/) [depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md)kullanır. Bu özellik, NıST SP 800-171 tarafından tanımlanan kurumsal güvenlik taahhütleri ve uyumluluk gereksinimleri desteğiyle verileri korumanıza ve korumaya yardımcı olur.
 
-**Azure Disk şifrelemesi**: [Disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) veri diskleri için birim şifrelemesi sağlamak için Windows BitLocker özelliğini kullanır. Çözüm denetlemenize ve disk şifreleme anahtarlarını yönetmek için Azure anahtar kasası ile tümleştirilir.
+**Azure disk şifrelemesi**: [Disk şifrelemesi](../azure-security-disk-encryption-overview.md) , veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un BitLocker özelliğini kullanır. Çözüm, disk şifreleme anahtarlarının denetlenmesi ve yönetilmesine yardımcı olmak için Azure Key Vault ile tümleşir.
 
 **Azure SQL veritabanı**: SQL veritabanı örneği aşağıdaki veritabanı güvenlik önlemlerini kullanır:
--   [Active Directory kimlik doğrulaması ve yetkilendirme](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) veritabanı kullanıcıları ve diğer Microsoft Hizmetleri tek bir merkezi konumda kimlik yönetimini sağlar.
--   [SQL veritabanı denetimi](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) veritabanı olaylarını izler ve bir denetim günlüğüne bir Azure depolama hesabında yazar.
--   SQL veritabanını kullanacak şekilde yapılandırıldığını [saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Bu, gerçek zamanlı şifreleme ve şifre çözme veritabanı, ilişkili yedeklemeler ve işlem günlük dosyaları bekleyen bilgileri korumak için gerçekleştirir. Veriler güvencesi yetkisiz erişim olmamıştır saydam veri şifrelemesi sağlar.
--   [Güvenlik duvarı kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) doğru izinler verilene kadar veritabanı sunucularına tüm erişimi engeller. Güvenlik duvarı, her bir isteğin kaynak IP adresine göre veritabanlarına erişim verir.
--   [SQL tehdit algılama](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) algılama ve yanıt olarak olası tehditleri ortaya çıktıkları sağlar. Şüpheli veritabanı etkinlikleri, potansiyel açıklar, SQL ekleme saldırıları ve anormal veritabanı erişim modellerinin güvenlik uyarıları sağlar.
--   [Şifrelenmiş sütunlar](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) hassas verileri hiçbir zaman içinde veritabanı sistemi düz metin olarak göründüğünden emin olun. Veri şifrelemesi etkinleştirildikten sonra yalnızca istemci uygulamaları veya uygulama sunucuları anahtarlarına erişimi ile düz metin verilere erişebilir.
-- [SQL veritabanı dinamik veri maskeleme](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) tarafından ayrıcalıksız kullanıcılar veya uygulamalar için veri maskeleme, hassas verilerin görünürlüğünü ayrıcalık sahibi sınırlar. Bu otomatik olarak olası hassas verileri bulabilir ve uygulanması için uygun maskeleri önerin. Dinamik veri maskeleme, hassas verilerin yetkisiz erişim veritabanı açıktan erişim azaltmaya yardımcı olur. *Müşteriler, kendi veritabanı şeması uyması ayarlarını sorumludur.*
+-   [Active Directory kimlik doğrulaması ve yetkilendirme](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) , veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin tek bir merkezi konumda kimlik yönetimine izin verebilir.
+-   [SQL veritabanı denetimi](../../sql-database/sql-database-auditing.md) , veritabanı olaylarını izler ve bunları Azure Storage hesabındaki bir denetim günlüğüne yazar.
+-   SQL veritabanı, [Saydam veri şifrelemesini](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)kullanacak şekilde yapılandırılmıştır. Bekleyen bilgileri korumak için veritabanı, ilişkili yedeklemeler ve işlem günlüğü dosyalarını gerçek zamanlı şifrelemeyi ve şifre çözmeyi gerçekleştirir. Saydam veri şifrelemesi, depolanan verilerin yetkisiz erişime maruz olmadığından emin olmak için güvence sağlar.
+-   [Güvenlik duvarı kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) , uygun izinler verilene kadar veritabanı sunucularına tüm erişimi engeller. Güvenlik duvarı, her bir isteğin kaynak IP adresine göre veritabanlarına erişim verir.
+-   [SQL tehdit algılama](../../sql-database/sql-database-threat-detection.md) , olası tehditlere karşı algılama ve yanıt oluşmasına olanak sağlar. Şüpheli veritabanı etkinlikleri, olası güvenlik açıkları, SQL ekleme saldırıları ve anormal veritabanı erişim desenleri için güvenlik uyarıları sağlar.
+-   [Şifrelenmiş sütunlar](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) , gizli verilerin veritabanı sisteminde hiç düz metin olarak hiçbir şekilde göründüğünden emin olun. Veri şifreleme etkinleştirildikten sonra yalnızca, anahtarlara erişimi olan istemci uygulamaları veya uygulama sunucuları düz metin verilerine erişebilir.
+- [SQL veritabanı dinamik veri maskeleme](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) , verileri ayrıcalıksız kullanıcılara veya uygulamalara maskeleyerek hassas veri pozlamasını sınırlar. Potansiyel olarak hassas verileri bulabilir ve uygun maskeleri uygulanabilir hale getirebilirsiniz. Dinamik veri maskeleme, hassas verilerin veritabanından yetkisiz erişim yoluyla çıkış yapabilmesi için erişimi azaltmaya yardımcı olur. *Müşteriler, ayarlarının veritabanı şemasına uyacak şekilde ayarlamaktan sorumludur.*
 
 ### <a name="identity-management"></a>Kimlik yönetimi
-Özellikleri, Azure ortamında veri erişimi yönetmek için aşağıdaki teknolojileri sağlar:
--   [Azure AD](https://azure.microsoft.com/services/active-directory/) Microsoft çok kiracılı bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Bu çözüm için tüm kullanıcılar Azure AD'de oluşturulur ve SQL veritabanına erişim kullanıcıları içerir.
--   Azure AD'yi kullanarak uygulamaya kimlik doğrulaması gerçekleştirilir. Daha fazla bilgi için bkz. nasıl [Azure AD ile uygulamaları tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Veritabanı sütun şifreleme Azure AD uygulamasını SQL veritabanına kimlik doğrulaması için de kullanır. Daha fazla bilgi için bkz. nasıl [SQL veritabanındaki hassas verileri korumaya](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
--   [Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) ayrıntılı erişim izinlerini tanımlamak için yöneticiler tarafından kullanılabilir. Kullanıcıların işlerini yapması için gereken Bununla, bunlar sadece erişim miktarını verebilirsiniz. Azure kaynakları için her sınırsız kullanıcı izinleri vermek yerine, yöneticiler verilerine erişmek için yalnızca belirli eylemleri izin verebilir. Abonelik yöneticisine abonelik erişimi sınırlıdır.
-- [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) verileri gibi belirli bilgileri erişebilen kullanıcı sayısını en aza indirmek için müşteriler tarafından kullanılabilir. Yöneticiler, Azure AD Privileged Identity Management, bulmak, kısıtlamak ve ayrıcalıklı kimlikleri ve bu kimliklerin kaynaklara erişimini izlemek için kullanabilirsiniz. Bu işlev, gerektiğinde talep üzerine tam zamanında yönetimsel erişim uygulamak için de kullanılabilir.
--   [Azure Active Directory kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) bir kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını algılar. Bir kuruluşun kimlikleri ilgili algılanan kuşkulu eylemleri için otomatik yanıtlar yapılandırır. Aynı zamanda bunları gidermek için uygun eylemde için şüpheli olayları sorunu kısmen Araştırıyor.
+Aşağıdaki teknolojiler, Azure ortamındaki verilere erişimi yönetmeye yönelik yetenekler sağlar:
+-   [Azure AD](https://azure.microsoft.com/services/active-directory/) , Microsoft çok kiracılı bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Bu çözüme yönelik tüm kullanıcılar Azure AD 'de oluşturulur ve SQL veritabanına erişen kullanıcıları içerir.
+-   Uygulamanın kimlik doğrulaması, Azure AD kullanılarak gerçekleştirilir. Daha fazla bilgi için bkz. [uygulamaları Azure AD ile tümleştirme](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Veritabanı sütun şifrelemesi, SQL veritabanı 'nda uygulamanın kimliğini doğrulamak için Azure AD 'yi de kullanır. Daha fazla bilgi için bkz. [SQL veritabanı 'nda hassas verileri koruma](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+-   [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) , yöneticiler tarafından hassas erişim izinleri tanımlamak için kullanılabilir. Bununla birlikte, yalnızca kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu erişim miktarına izin verebilir. Yöneticiler, her kullanıcıya Azure kaynakları için kısıtlanmamış izinler vermek yerine, verilere erişim için yalnızca belirli eylemlere izin verebilir. Abonelik erişimi, abonelik yöneticisiyle sınırlıdır.
+- [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) , müşteriler tarafından veri gibi belirli bilgilere erişebilen kullanıcı sayısını en aza indirmek için kullanılabilir. Yöneticiler, ayrıcalıklı kimlikleri ve kaynaklara erişimlerini bulma, kısıtlama ve izleme işlemleri için Azure AD Privileged Identity Management kullanabilir. Bu işlevsellik, gerektiğinde isteğe bağlı, tam zamanında yönetim erişimi sağlamak için de kullanılabilir.
+-   [Azure Active Directory kimlik koruması](../../active-directory/identity-protection/overview.md) , bir kuruluşun kimliklerini etkileyen olası güvenlik açıklarını algılar. Bir kuruluşun kimlikleriyle ilgili şüpheli eylemleri algılanan otomatik yanıtları yapılandırır. Ayrıca, şüpheli olayları araştırır ve bunları çözmek için uygun eylemi gerçekleştirebilir.
 
 ### <a name="security"></a>Güvenlik
-**Gizli dizileri Yönetim**: Çözüm [Azure anahtar kasası](https://azure.microsoft.com/services/key-vault/) anahtar ve gizli dizi yönetimi. Key Vault, şifreleme anahtarlarını koruyun ve bulut uygulamaları ve Hizmetleri tarafından kullanılan gizli yardımcı olur. Aşağıdaki anahtar kasası özellikleri müşteri verilerini korumaya yardımcı olur:
-- Gelişmiş erişim ilkeleri gereksinim olarak yapılandırılır.
-- Key Vault erişim ilkeleri anahtarlara ve gizli anahtarları en düşük gerekli izinlerle tanımlanır.
-- Tüm anahtarları ve gizli anahtarları Key vault'ta sona erme tarihi vardır.
-- Tüm anahtarları Key vault'ta özel bir donanım güvenlik modülleri tarafından korunur. Bir donanım güvenlik modülü korumalı anahtarlar 2048 bit RSA anahtar anahtar türüdür.
-- Tüm kullanıcılar ve kimlikler RBAC kullanarak minimum gerekli izinleri verilir.
-- Key Vault için tanılama günlükleri ile 365 gün en az bir saklama süresi etkinleştirilir.
-- Anahtarlar için izin verilen şifreleme işlemleri gerekli olanlarla sınırlıdır.
+**Gizli dizi yönetimi**: Çözüm, anahtarların ve parolaların yönetimi için [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) kullanır. Key Vault, bulut uygulamaları ve Hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Aşağıdaki Key Vault özellikleri müşterilerin verileri korumalarına yardımcı olur:
+- Gelişmiş erişim ilkeleri, gereksinim temelinde yapılandırılır.
+- Key Vault erişim ilkeleri anahtarlar ve gizlilikler için gereken en düşük izinlerle tanımlanır.
+- Key Vault tüm anahtarlar ve gizli dizileri için süre sonu tarihleri vardır.
+- Key Vault tüm anahtarlar özel donanım güvenliği modülleri tarafından korunur. Anahtar türü, donanım güvenlik-modül korumalı 2048-bit RSA anahtarıdır.
+- Tüm kullanıcılara ve kimliklere RBAC kullanılarak gerekli olan en düşük izinler verilir.
+- Key Vault için tanılama günlükleri, en az 365 günlük bir bekletme dönemi ile etkinleştirilir.
+- Anahtarlar için izin verilen şifreleme işlemleri, gerekli olanlarla kısıtlıdır.
 
-**Azure Güvenlik Merkezi**: İle [Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro), müşterilerin merkezi olarak uygulama ve iş yüklerinizde güvenlik ilkelerini yönetme, sınırlama, tehditlere maruz kalma riskinizi ve algılayabilir ve saldırılara karşılık vermek. Güvenlik Merkezi, yapılandırma ve güvenlik duruşunu ve verilerin korunmasına yardımcı olmak için hizmet öneriler sağlamak üzere Azure hizmetlerinin mevcut yapılandırmaları da erişir.
+**Azure Güvenlik Merkezi**: [Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro)ile, müşteriler iş yükleri genelinde güvenlik ilkelerini merkezi olarak uygulayabilir ve yönetebilir, tehditlere maruz kalma olasılığını sınırlayabilir, saldırıları algılayabilir ve bunlara yanıt verebilir. Güvenlik Merkezi, güvenlik duruşunu artırmaya ve verileri korumaya yardımcı olmak için yapılandırma ve hizmet önerileri sağlamak üzere Azure hizmetleri 'nin mevcut yapılandırmalarına da erişir.
 
- Güvenlik Merkezi algılama özellikleri çeşitli ortamlarını hedefleyen potansiyel saldırılar müşteriler uyarmak için kullanır. Bu uyarılar uyarıyı neyin tetiklediği, hedeflenen kaynaklar ve saldırının kaynağı hakkındaki değerli bilgileri içerir. Güvenlik Merkezi'nde bulunan bir dizi [güvenlik uyarıları önceden tanımlanmış](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) bir tehdit veya şüpheli etkinlik başladığında tetiklenir. Müşteriler [özel uyarı kuralları](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) kendi ortamından toplanmış veriler üzerinde yeni güvenlik uyarıları tanımlamak için.
+ Güvenlik Merkezi, ortamlarını hedefleyen olası saldırılardan müşterileri uyarmak için çeşitli algılama özellikleri kullanır. Bu uyarılar uyarıyı neyin tetiklediği, hedeflenen kaynaklar ve saldırının kaynağı hakkındaki değerli bilgileri içerir. Güvenlik Merkezi, bir tehdit veya şüpheli etkinlik gerçekleştiğinde tetiklenen bir dizi [önceden tanımlanmış güvenlik uyarısı](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) içerir. Müşteriler, kendi ortamlarından zaten toplanmış olan verileri temel alarak yeni güvenlik uyarıları tanımlamak için [özel uyarı kuralları](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) kullanabilir.
 
- Güvenlik Merkezi, öncelikli güvenlik uyarıları ve olayları sağlar. Güvenlik Merkezi'ni keşfedin ve olası güvenlik sorunlarını çözmek, müşteriler için daha basit hale getirir. A [tehdit zekası raporu](https://docs.microsoft.com/azure/security-center/security-center-threat-report) her tehdit algılanan için oluşturulur. Bunlar tehdit araştırma ve düzeltme olay yanıt ekiplerinin raporları kullanabilirsiniz.
+ Güvenlik Merkezi, öncelikli güvenlik uyarıları ve olayları sağlar. Güvenlik Merkezi, müşterilerin olası güvenlik sorunlarını bulmasını ve adresetmelerini kolaylaştırır. Algılanan her tehdit için bir [tehdit bilgileri raporu](https://docs.microsoft.com/azure/security-center/security-center-threat-report) oluşturulur. Olay yanıtı takımları, tehditleri araştırıp düzelttiklerinde raporları kullanabilir.
 
-### <a name="logging-and-auditing"></a>Günlüğe kaydetme ve Denetim
+### <a name="logging-and-auditing"></a>Günlüğe kaydetme ve denetleme
 
-Azure Hizmetleri, sistem ve kullanıcı etkinliğini yanı sıra, sistem durumu kapsamlı bir şekilde oturum:
-- **Etkinlik günlükleri**: [Etkinlik günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bir Abonelikteki kaynaklar üzerinde gerçekleştirilen işlemler hakkında bilgi sağlar. Etkinlik günlükleri bir işlemin Başlatıcı belirlemek yardımcı olabilir, oluşumunu ve durum zaman.
-- **Tanılama günlükleri**: [Tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) her kaynak tarafından oluşturulan tüm günlükleri içerir. Bu günlükler, Windows olayı sistem günlükleri, depolama günlükleri, anahtar kasası denetim günlüklerini ve Azure Application Gateway erişim ve güvenlik duvarı günlükleri içerir. Tüm tanılama günlükleri için merkezi ve şifrelenmiş Azure depolama hesabına arşivleme yazın. Kullanıcılar saklama süresi 730 gün belirli gereksinimleri karşılamak için en fazla yapılandırabilirsiniz.
+Azure Hizmetleri, sistem durumunun yanı sıra sistem durumu ve Kullanıcı etkinliklerini de yoğun olarak günlüğe kaydeder:
+- **Etkinlik günlükleri**: [Etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md) , bir abonelikteki kaynaklarda gerçekleştirilen işlemlerle ilgili öngörüler sağlar. Etkinlik günlükleri, bir işlemin başlatıcısının, oluşma süresinin ve durumunun belirlenmesine yardımcı olabilir.
+- **Tanılama günlükleri**: [Tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md) her kaynak tarafından yayılan tüm günlükleri içerir. Bu Günlükler Windows olay sistem günlüklerini, depolama günlüklerini, Key Vault denetim günlüklerini ve Azure Application Gateway Access ve güvenlik duvarı günlüklerini içerir. Tüm tanılama günlükleri, arşivleme için merkezi ve şifrelenmiş bir Azure depolama hesabına yazar. Kullanıcılar, belirli gereksinimlerini karşılamak için 730 güne kadar olan saklama süresini yapılandırabilir.
 
-**Azure İzleyici günlüklerine**: Günlükleri birleştirilmiş [Azure İzleyici günlükleri](https://azure.microsoft.com/services/log-analytics/) işleme, depolama ve Panosu raporlama. Veriler toplandıktan sonra Log Analytics çalışma alanları içindeki her bir veri türü için ayrı tablolar halinde düzenlenir. Bu şekilde, tüm veri ve böylece özgün kaynağına bakılmaksızın birlikte çözümlenebilir. Güvenlik Merkezi, Azure İzleyici günlükleri ile tümleştirilir. Müşteriler, güvenlik olay verilerine erişmek ve diğer hizmetlerden gelen verilerle birleştirmek için Kusto sorguları kullanabilirsiniz.
+**Azure izleyici günlükleri**: Günlükler, işleme, depolama ve Pano raporlama için [Azure izleyici günlüklerinde](https://azure.microsoft.com/services/log-analytics/) birleştirilir. Veriler toplandıktan sonra, Log Analytics çalışma alanları içindeki her veri türü için ayrı tablolar halinde düzenlenir. Bu şekilde, özgün kaynağından bağımsız olarak tüm veriler birlikte analiz edilebilir. Güvenlik Merkezi, Azure Izleyici günlükleri ile tümleşir. Müşteriler, güvenlik olay verilerine erişmek ve diğer hizmetlerdeki verilerle birleştirmek için kusto sorguları kullanabilir.
 
-Aşağıdaki Azure [izleme çözümleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) Bu mimarinin bir parçası olarak dahil edilir:
--   [Active Directory değerlendirmesi](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory sistem durumu denetimi çözümü, risk ve server ortamlarının sistem durumunu düzenli aralıklarla değerlendirir. Bu, Önceliklendirilmiş öneriler için dağıtılan sunucu altyapısı belirli listesini sağlar.
-- [SQL değerlendirmesi](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): SQL sistem durumu denetimi çözümü, risk ve server ortamlarının sistem durumunu düzenli aralıklarla değerlendirir. Müşteriler, Önceliklendirilmiş öneriler için dağıtılan sunucu altyapısı belirli listesini sağlar.
-- [Aracı sistem durumu](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Aracı durumu çözümü, kaç aracının dağıtılır ve kullanıcıların coğrafi dağılımı bildirir. Ayrıca, kaç aracının yanıt vermeyen ve işletimsel verileri gönderme aracı sayısını raporlar.
--   [Etkinlik günlüğü analizi](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Etkinlik günlüğü analizi çözümü, bir müşteri için tüm Azure abonelikleri arasında Azure etkinlik günlüklerini analiziyle yardımcı olur.
+Aşağıdaki Azure [izleme çözümleri](../../monitoring/monitoring-solutions.md) , bu mimarinin bir parçası olarak dahil edilmiştir:
+-   [Active Directory değerlendirmesi](../../azure-monitor/insights/ad-assessment.md): Active Directory sistem durumu denetimi çözümü, düzenli aralıklarla sunucu ortamlarının riskini ve sistem durumunu değerlendirir. Dağıtılan Sunucu altyapısına özgü önerilerin öncelikli bir listesini sağlar.
+- [SQL değerlendirmesi](../../azure-monitor/insights/sql-assessment.md): SQL durum denetimi çözümü, düzenli aralıklarla sunucu ortamlarının riskini ve sistem durumunu değerlendirir. Müşterilere dağıtılan Sunucu altyapısına özgü önerilerin öncelikli bir listesini sağlar.
+- [Aracı durumu](../../monitoring/monitoring-solution-agenthealth.md): Aracı Durumu çözümü, kaç aracının dağıtıldığını ve bunların coğrafi dağılımını bildirir. Ayrıca, kaç aracının yanıt vermemeye yönelik olduğunu ve işletimsel verileri gönderen aracıların sayısını da bildirir.
+-   [Etkinlik günlüğü Analizi](../../azure-monitor/platform/collect-activity-logs.md): Etkinlik Günlüğü Analizi çözümü, bir müşterinin tüm Azure aboneliklerinde Azure etkinlik günlüklerinin analizine yardımcı olur.
 
-**Azure Otomasyonu**: [Otomasyon](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) runbook'ları yöneten depolar ve çalıştırır. Bu çözümde, SQL veritabanı'ndan günlüklerini toplama runbook'ları yardımcı olur. Müşteriler, Otomasyon kullanabileceğiniz [değişiklik izleme](https://docs.microsoft.com/azure/automation/automation-change-tracking) ortamındaki değişiklikler kolayca belirlemek için çözüm.
+**Azure Otomasyonu**: [Otomasyon](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) runbook 'ları depolar, çalıştırır ve yönetir. Bu çözümde runbook 'lar SQL veritabanından günlükleri toplamaya yardımcı olur. Müşteriler, ortamdaki değişiklikleri kolayca belirlemek için Otomasyon [değişiklik izleme](../../automation/change-tracking.md) çözümünü kullanabilir.
 
-**Azure İzleyici**: [İzleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) kullanıcıların performans izleme, güvenliği koruma ve eğilimleri belirlemenize yardımcı olur. Kuruluşlar, denetleme, uyarı oluşturma ve verileri arşivlemek için kullanabilirsiniz. Ayrıca, Azure kaynaklarını API çağrılarında takip edebilirsiniz.
+**Azure izleyici**: [İzleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) , kullanıcıların performansı izlemelerine, güvenliği korumasına ve eğilimleri belirlemesine yardımcı olur. Kuruluşlar bu uygulamayı kullanarak denetim yapabilir, uyarılar oluşturabilir ve verileri arşivleyebilir. Ayrıca, Azure kaynaklarındaki API çağrılarını da izleyebilir.
 
-**Application Insights**: [Application Insights](https://docs.microsoft.com/azure/application-insights/) birden çok platformda web geliştiricileri için genişletilebilir bir Application Performance Management hizmetidir. Performans anomalileri algılar ve güçlü analiz araçları içerir. Araçlar, sorunları tanılamanıza ve kullanıcıların uygulamayla ne yaptığını anlamanıza yardımcı yardımcı olur. Performans ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak için tasarlanmıştır.
+**Application Insights**: [Application Insights](https://docs.microsoft.com/azure/application-insights/) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performansı yönetim hizmetidir. Performans anormallerini algılar ve güçlü analiz araçları içerir. Araçlar sorunları tanılamanıza ve müşterilerin uygulamayla neler yaptığını anlamalarına yardımcı olur. Kullanıcıların performansı ve kullanılabilirliği sürekli gelişmesine yardımcı olmak için tasarlanmıştır.
 
 ## <a name="threat-model"></a>Tehdit modeli
 
-Bu başvuru mimarisine yönelik veri akış diyagramı kullanılabilir [indirme](https://aka.ms/nist171-analytics-tm) veya buradan ulaşabilirsiniz. Bu model system altyapısında potansiyel risk puanları, değişiklikler yaptığınızda anlamasına yardımcı olabilir.
+Bu başvuru mimarisi için veri akışı diyagramı [indirilebilir](https://aka.ms/nist171-analytics-tm) veya burada bulunabilir. Bu model, müşterilerin değişiklik yaptıkları sırada sistem altyapısında olası risk noktalarını anlamasına yardımcı olabilir.
 
-![NIST SP 800-171 tehdit modeli için veri analizi](images/nist171-analytics-threat-model.png "NIST SP 800-171 tehdit modeli için veri analizi")
+![NıST SP 800-171 tehdit modeli Için veri analizi](images/nist171-analytics-threat-model.png "NıST SP 800-171 tehdit modeli Için veri analizi")
 
 ## <a name="compliance-documentation"></a>Uyumluluk belgeleri
-[Azure güvenlik ve uyumluluk planı - 800-171 NIST SP müşteri sorumluluk matris](https://aka.ms/nist171-crm) 800-171 NIST SP tarafından gerekli tüm güvenlik denetimleri listeler. Bu matris her denetimi uyarlamasını Microsoft, müşteri sorumluluğu olup ayrıntıları veya ikisi arasında paylaşılan.
+[Azure Güvenlik ve uyumluluk şeması-NıST sp 800-171 müşteri sorumluluğu matrisi](https://aka.ms/nist171-crm) , nıst SP 800-171 için gereken tüm güvenlik denetimlerini listeler. Bu matris, her denetim uygulamasının Microsoft 'un, müşterinin sorumluluğunun veya ikisi arasında paylaşılıp 'nin sorumluluğundadır.
 
-[Azure güvenlik ve uyumluluk planı - 800-171 NIST SP veri analizi denetimi uygulama matris](https://aka.ms/nist171-analytics-cim) hangi NIST SP üzerinde 800-171 denetimleri ile veri analizi mimarisi açıklanmıştır bilgi sağlar. Bu, uygulama kapsanan her denetimin gereksinimleri nasıl karşıladığını ayrıntılı açıklamaları içerir.
+[Azure Güvenlik ve uyumluluk şeması-NıST sp 800-171 veri analizi denetim uygulama matrisi](https://aka.ms/nist171-analytics-cim) , Data Analytics mimarisi tarafından HANGI nıst SP 800-171 denetimlerinin giderildiği hakkında bilgi sağlar. Uygulamanın kapsanan her denetimin gereksinimlerini nasıl karşıladığına ilişkin ayrıntılı açıklamalar içerir.
 
 
-## <a name="guidance-and-recommendations"></a>Yönerge ve öneriler
+## <a name="guidance-and-recommendations"></a>Kılavuz ve öneriler
 ### <a name="vpn-and-expressroute"></a>VPN ve ExpressRoute
-Güvenli bir VPN tüneli veya [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) güvenli bir şekilde bu verileri analiz başvuru mimarisinin bir parçası olarak dağıtılan kaynakların bir bağlantı kurmak için yapılandırılması gerekir. Müşteriler, uygun bir VPN veya ExpressRoute ayarlayarak, Aktarımdaki veriler için koruma katmanı ekleyebilirsiniz.
+Güvenli bir VPN tüneli veya [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) , bu veri analizi başvuru mimarisinin bir parçası olarak dağıtılan kaynaklarla güvenli bir şekilde bağlantı kuracak şekilde yapılandırılmalıdır. Bir VPN veya ExpressRoute 'u uygun şekilde ayarlayarak, müşteriler aktarım sırasında veriler için bir koruma katmanı ekleyebilir.
 
-Azure ile güvenli bir VPN tüneli uygulayarak, şirket içi ağ ile bir Azure sanal ağı arasında sanal bir özel bağlantı oluşturulabilir. Bu bağlantı, Internet üzerinden gerçekleşir. Müşteriler, şifreli bir bağlantı, ağ ve Azure arasında güvenli bir şekilde bilgilerin "tüneli" bağlantısını kullanabilirsiniz. Siteden siteye VPN ölçeklerde tarafından dağıtılan yıllardır güvenli, olgun bir teknolojidir. [IPSec tünel modu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) şifreleme mekanizması olarak bu seçenek kullanılır.
+Azure ile güvenli bir VPN tüneli uygulayarak, şirket içi ağ ve Azure sanal ağı arasında sanal bir özel bağlantı oluşturulabilir. Bu bağlantı Internet üzerinden gerçekleşir. Müşteriler, ağ ve Azure arasında şifrelenmiş bir bağlantı içindeki bilgileri güvenli bir şekilde "tünele" bir bağlantı ile kullanabilirler. Siteden siteye VPN, delikler için tüm boyutlardaki kuruluşlar tarafından dağıtılan güvenli, Olgun bir teknolojidir. [IPSec tünel modu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) Bu seçenekte bir şifreleme mekanizması olarak kullanılır.
 
-İçindeki VPN tüneli trafik Internet bir siteden siteye VPN ile geçtiğinden, Microsoft başka bir daha da güvenli bağlantı seçeneği sunar. ExpressRoute adanmış WAN olan Azure ve şirket içi konum veya Exchange barındırma sağlayıcısı arasındaki bağlantı. ExpressRoute bağlantıları, bir müşterinin telekomünikasyon sağlayıcısına doğrudan bağlanın. Sonuç olarak, veriler Internet üzerinden yolculuk değil ve kendisine sunulan değil. Bu bağlantılar, daha fazla güvenilirlik, daha yüksek hız, düşük gecikme ve tipik bağlantılardan daha yüksek güvenlik sunar. 
+VPN tünelinin içindeki trafik, siteden siteye VPN ile Internet 'e geçiş yaptığından, Microsoft başka bir daha bile daha fazla güvenli bağlantı seçeneği sunar. ExpressRoute, Azure ile şirket içi bir konum veya bir Exchange barındırma sağlayıcısı arasındaki adanmış bir WAN bağlantıdır. ExpressRoute bağlantıları doğrudan bir müşterinin iletişim sağlayıcısına bağlanır. Sonuç olarak, veriler Internet üzerinden hareket etmez ve bu verilere gösterilmez. Bu bağlantılar, tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, daha düşük gecikme süreleri ve daha yüksek güvenlik sunar. 
 
-Bir şirket içi ağı Azure'a genişleten güvenli bir hibrit ağı uygulamak için en iyi uygulamalardan bazılarıdır [kullanılabilir](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+Şirket içi bir ağı Azure 'a genişleten güvenli bir karma ağ uygulamak için en iyi yöntemler [mevcuttur](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
 
-### <a name="extract-transform-load-process"></a>Çıkartma-dönüştürme-yükleme işlemi
-[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) veri yükleme SQL veritabanı'na bir ayrı çıkartma-dönüştürme-yükleme gerek kalmadan veya aracı içeri aktarın. PolyBase, T-SQL sorguları verilerine erişmesini sağlar. SQL Server ile uyumlu üçüncü taraf araçları ve Microsoft iş zekası ve analiz yığını PolyBase ile birlikte kullanılabilir.
+### <a name="extract-transform-load-process"></a>Ayıklama-dönüştürme-yükleme işlemi
+[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) , ayrı bir ayıklama-dönüştürme veya içeri aktarma aracına gerek duymadan SQL veritabanına veri yükleyebilir. PolyBase, T-SQL sorguları aracılığıyla verilere erişim sağlar. SQL Server ile uyumlu Microsoft iş zekası ve analiz yığını ve üçüncü taraf araçları PolyBase ile birlikte kullanılabilir.
 
-### <a name="azure-ad-setup"></a>Azure AD Kurulumu
-[Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) dağıtımını yöneten ve ortam ile etkileşime geçen personelin erişimi sağlama için gereklidir. Şirket içinde Active Directory, Azure AD ile tümleştirilebilir [dört tıklama](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Müşteriler ayrıca Azure AD'ye dağıtılan Active Directory altyapısı (etki alanı denetleyicileri) bağlayabilirsiniz. Bunu yapmak için bir alt etki alanı bir Azure AD ormanı dağıtılan Active Directory altyapısı olun.
+### <a name="azure-ad-setup"></a>Azure AD kurulumu
+[Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) , dağıtımı yönetmek ve ortamla etkileşime geçen personele erişimi sağlamak için gereklidir. Şirket içi Active Directory, [dört tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md)Azure AD ile tümleştirilebilir. Müşteriler ayrıca dağıtılan Active Directory altyapısını (etki alanı denetleyicileri) Azure AD 'ye bağlayabilir. Bunu yapmak için, dağıtılan Active Directory altyapısını bir Azure AD ormanının alt etki alanı haline getirin.
 
-## <a name="disclaimer"></a>Bildirim
+## <a name="disclaimer"></a>Sorumluluk Reddi
 
- - Bu belgede yalnızca bilgilendirme amaçlıdır. MICROSOFT HİÇBİR EXPRESS, ZIMNİ VEYA YASAL BU BELGEDEKİ BİLGİLER GARANTİDE BULUNMAZ. Bu belgede sağlanan "olarak-olduğundan." Bilgi ve URL ve diğer Internet Web sitesi referansları da dahil olmak üzere bu belgede, bildirilmeksizin değiştirilebilir. Müşteriler bu belgeyi okuma KULLANIMLARDAN doğacak riskler size aittir.
- - Bu belge, müşterilerle herhangi bir Microsoft ürünü veya çözümler üzerinde hiçbir fikri mülkiyet hakkı sağlamaz.
- - Müşteriler kopyalayabilir ve dahili başvuru amacıyla bu belgeyi kullanın.
- - Bu belgedeki bazı öneriler artan veri, ağ veya azure'da işlem kaynağı kullanımına neden olabilir ve bir müşterinin Azure lisans ya da abonelik maliyetlerinizi artırabilir.
- - Bu mimari, müşterilerin kendi belirli gereksinimlerine ayarlamak bir temel olarak hizmet vermek için tasarlanmıştır ve olarak kullanılmamalıdır-üretim ortamıdır.
- - Bu belge, bir başvuru olarak geliştirilir ve tüm anlamına gelir, bir müşteri özel uyumluluk gereksinimlerini ve düzenlemeleri karşılayabilecek tanımlamak için kullanılmamalıdır. Müşterilerin onaylı müşteri uygulamaları kuruluşları yasal Destek'ten arama.
+ - Bu belge yalnızca bilgilendirme amaçlıdır. MICROSOFT BU BELGEDEKI BILGILERE GÖRE HIÇBIR GARANTI VERMEZ, AÇIK, ZIMNI VEYA YASAL DEĞILDIR. Bu belge "olduğu gibi" verilmiştir. Bu belgede ifade edilen, URL ve diğer Internet Web sitesi başvuruları dahil olmak üzere bilgiler ve görünümler bildirimde bulunmaksızın değiştirilebilir. Bu belgeyi okuyan müşteriler bunu kullanmanın riskini de taşır.
+ - Bu belge, müşterilere herhangi bir Microsoft ürün veya çözümünden hiçbir fikri mülkiyet hakkı sağlamaz.
+ - Müşteriler bu belgeyi, iç başvuru amaçları için kopyalayabilir ve kullanabilir.
+ - Bu belgedeki bazı öneriler, Azure 'da veri, ağ veya işlem kaynağı kullanımının artmasına neden olabilir ve bir müşterinin Azure lisansını veya abonelik maliyetlerini artırabilir.
+ - Bu mimarinin, müşterilerin belirli gereksinimlerine göre ayarlanmalarına yönelik bir temel işlevi görmesi ve bir üretim ortamında olduğu gibi kullanılmamalıdır.
+ - Bu belge bir başvuru olarak geliştirilmiştir ve bir müşterinin belirli uyumluluk gereksinimlerini ve düzenlemeleri karşılayabileceği tüm yolları tanımlamak için kullanılmamalıdır. Müşteriler, onaylı müşteri uygulamalarında organizasyonlarından yasal destek almalıdır.

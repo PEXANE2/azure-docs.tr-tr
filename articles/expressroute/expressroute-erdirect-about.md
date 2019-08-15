@@ -1,33 +1,33 @@
 ---
 title: ExpressRoute doğrudan - Azure hakkında | Microsoft Docs
-description: Bu sayfa ExpressRoute doğrudan genel bir bakış sağlar.
+description: Bu sayfada ExpressRoute Direct 'e genel bakış sunulmaktadır
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 08/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: a294c444f10719f69716b25b97cd137874a3e0be
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807471"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954146"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
-ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme konumlarda doğrudan bağlanma özelliği sağlar. ExpressRoute doğrudan çift 100 GB/sn veya uygun ölçekte etkin/etkin bağlantı destekleyen 10 GB/sn bağlantı sağlar.
+ExpressRoute doğrudan, Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme konumlarda doğrudan bağlanma özelliği sağlar. ExpressRoute Direct, ölçek sırasında etkin/etkin bağlantıyı destekleyen çift 100 Gbps veya 10 Gbps bağlantı sağlar.
 
 ExpressRoute doğrudan sağlayan önemli özellikler dahil ancak bunlarla sınırlı değildir:
 
 * Depolama ve Cosmos DB gibi hizmetler için Büyük Veri Alımı özelliği
-* Fiziksel yalıtım gibi özel ve ayrı bağlantı gerektirir ve düzenlenen sektörler için: Banka, devlet ve perakende
+* Düzenlenmiş ve şunun gibi adanmış ve yalıtılmış bağlantı gerektiren sektörlerin fiziksel yalıtımı: Bankacılık, kamu ve perakende
 * Bağlantı hattı dağıtımının iş birimine dayalı detaylı denetimi
 
-## <a name="onboard-to-expressroute-direct"></a>ExpressRoute doğrudan ekleme
+## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct 'e ekleme
 
-ExpressRoute doğrudan kullanmadan önce aboneliğinizi kaydetmelisiniz. Kaydetmek için bir e-posta Gönder <ExpressRouteDirect@microsoft.com> abonelik Kimliğinizi, aşağıdaki ayrıntılar dahil olmak üzere:
+ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydetmek için bir e-posta Gönder <ExpressRouteDirect@microsoft.com> abonelik Kimliğinizi, aşağıdaki ayrıntılar dahil olmak üzere:
 
 * Senaryo ile gerçekleştirmek için aradığınız **ExpressRoute doğrudan**
 * Konum bkz - [iş ortakları ve eşleme konumları](expressroute-locations-providers.md) tüm konumlara tam listesi için
@@ -38,10 +38,10 @@ ExpressRoute doğrudan kullanmadan önce aboneliğinizi kaydetmelisiniz. Kaydetm
 
 | **ExpressRoute kullanarak bir hizmet sağlayıcısı** | **ExpressRoute doğrudan** | 
 | --- | --- |
-| Hızlı ekleme ve mevcut altyapısıyla bağlantısını etkinleştirmek için hizmet sağlayıcıları kullanır. | 100 GB/sn/10 GB/sn altyapı ve tam yönetim tüm katmanların gerektirir
+| Hızlı ekleme ve mevcut altyapısıyla bağlantısını etkinleştirmek için hizmet sağlayıcıları kullanır. | 100 Gbps/10 Gbps altyapısı ve tüm katmanların tam yönetimi gerekir
 | Sağlayıcı Ethernet ve MPLS gibi yüzlerce ile tümleşir | Düzenlenen sektör ve büyük veri alımı için doğrudan/adanmış kapasite |
-| 50 MB/sn devreler SKU'lardan 10 GB/sn | Müşteri, doğrudan aşağıdaki bağlantı hattı SKU'larında 100 GB/sn ExpressRoute bir birleşimini seçebilirsiniz: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Müşteri, doğrudan aşağıdaki SKU'larında 10 Gbps ExpressRoute bağlantı hattı bir birleşimini seçebilirsiniz:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
-| Tek bir kiracı için en iyi duruma getirilmiş | Tek kiracılı/bulut hizmeti sağlayıcıları için en iyi duruma getirilmiş / birden çok iş birimleri
+| 50 MB/sn devreler SKU'lardan 10 GB/sn | Müşteri, 100 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Müşteri, 10 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| Tek bir kiracı için en iyi duruma getirilmiş | Birden çok iş birimi ve birden çok iş ortamı ile tek bir kiracı için iyileştirildi
 
 ## <a name="expressroute-direct-circuits"></a>Doğrudan ExpressRoute bağlantı hatları
 
@@ -53,28 +53,28 @@ Her eşleme konumunda, Microsoft'un genel ağ erişimi olan ve varsayılan olara
 
 ## <a name="circuit-skus"></a>Bağlantı hattı SKU'ları
 
-ExpressRoute doğrudan Azure depolama ve diğer büyük veri hizmetlerle büyük veri alma senaryolarını destekler. ExpressRoute bağlantı hatları üzerinde 100 GB/sn ExpressRoute doğrudan şimdi de destek **40 GB/sn** ve **100 GB/sn** bağlantı hattı SKU'ları. Fiziksel bağlantı noktası çiftleri **100 veya 10 GB/sn** yalnızca ve birden çok sanal bağlantı hattına sahip olabilir. Bağlantı hattı boyutları:
+ExpressRoute doğrudan Azure depolama ve diğer büyük veri hizmetlerle büyük veri alma senaryolarını destekler. 100 Gbps ExpressRoute doğrudan 'daki ExpressRoute devreleri, **40 Gbps** ve **100 Gbps** devre SKU 'larını da desteklemektedir. Fiziksel bağlantı noktası çiftleri yalnızca **100 veya 10 GB/sn** olabilir ve birden çok sanal Devreme sahip olabilir. Devre boyutları:
 
-| **ExpressRoute doğrudan 100 GB/sn** | **10 Gbps ExpressRoute doğrudan** | 
+| **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
-| **Bant genişliği abone**: 200 Gbps | **Bant genişliği abone**: 20 Gbps |
+| **Abone olunan bant genişliği**: 200 Gbps | **Abone olunan bant genişliği**: 20 Gbps |
 | <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>Teknik Gereksinimler
 
-* Microsoft Enterprise Edge (MSEE) yönlendirici arabirimleri:
-    * İkili 10 ya da 100 Gigabit Ethernet bağlantı noktası yalnızca yönlendirici çifti arasında
-    * Tek modu LR Fiber bağlantısı
+* Microsoft Kurumsal kenar yönlendirici (MSEE) arabirimleri:
+    * Yalnızca yönlendirici çiftinde çift 10 veya 100 Gigabit Ethernet bağlantı noktası
+    * Tek modlu LR fiber bağlantı
     * IPv4 ve IPv6
     * IP MTU 1500 bayt
 
-* Anahtar/yönlendirici Katman 2/Katman 3 bağlantısı:
-    * 1 802.1Q (Dot1Q) etiketi veya iki etiketi (QinQ) 802.1Q desteklemelidir kapsülleme etiketi
-    * Ethernet türü 0x8100 =
-    * Microsoft tarafından - belirtilen bir VLAN kimliği temel dış VLAN etiket (STAG) eklemelisiniz *yalnızca QinQ uygulanabilir*
-    * Çoklu BGP oturumları (VLAN) bağlantı noktası ve cihaz başına desteklemelidir
-    * IPv4 ve IPv6 bağlantısı. *IPv6 için hiçbir ek alt arabirimi oluşturulur. IPv6 adresi için var olan alt arabirimi eklenecek*. 
-    * İsteğe bağlı: [Çift yönlü iletme algılama (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) desteği, varsayılan olarak tüm özel eşlemeler ExpressRoute bağlantı hatları üzerinde yapılandırıldığı
+* Anahtar/yönlendirici katman 2/katman 3 bağlantısı:
+    * 1 802.1 Q (Dot1Q) etiketi veya iki etiket 802.1 Q (QinQ) etiketi kapsüllemeyi desteklemelidir
+    * EtherType = 0x8100
+    * Microsoft tarafından belirtilen VLAN KIMLIğINE bağlı olarak dış VLAN etiketi (STAG) eklenmelidir ve *yalnızca QinQ üzerinde geçerlidir*
+    * Bağlantı noktası ve cihaz başına birden çok BGP oturumu (VLAN) desteklemelidir
+    * IPv4 ve IPv6 bağlantısı. *IPv6 için ek bir alt arabirim oluşturulmaz. IPv6 adresi var olan alt arabirime*eklenecektir. 
+    * İsteğe bağlı: ExpressRoute devrelerinde tüm özel eşlemelerde varsayılan olarak yapılandırılan [çift yönlü Iletme algılaması (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) desteği
 
 ## <a name="vlan-tagging"></a>VLAN etiketleme
 
@@ -86,7 +86,7 @@ ExpressRoute doğrudan QinQ hem Dot1Q VLAN etiketleme destekler.
 
 ## <a name="workflow"></a>İş akışı
 
-[![İş akışı](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![akışıyla](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

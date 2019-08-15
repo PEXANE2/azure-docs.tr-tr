@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827470"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966400"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure veri fabrikasında kopyalama etkinliği
 
@@ -33,7 +33,7 @@ Azure Data Factory'de arasında veri depoları şirket içindeki ve buluttaki ve
 
 Kopyalama Etkinliği yürütüldüğünde bir [Integration Runtime](concepts-integration-runtime.md). Farklı veri kopyalama senaryosunda, Integration Runtime farklı türleri yararlanılabilir olabilir:
 
-* Veriler arasında veri kopyalama hem de genel olarak erişilebilir olduğunu depoladığında, kopyalama etkinliği tarafından desteklenmesini **Azure Integration Runtime**, güvenli, güvenilir, ölçeklenebilir ve [küresel olarak kullanılabilir](concepts-integration-runtime.md#integration-runtime-location).
+* Her iki IP 'den internet üzerinden herkese açık olan veri depoları arasında veri kopyalarken kopyalama etkinliği güvenli, güvenilir, ölçeklenebilir ve [küresel olarak kullanılabilir](concepts-integration-runtime.md#integration-runtime-location) **Azure Integration Runtime**tarafından güçlenebilir.
 * Bulunan şirket içi verileri kopyalama/veri depolarına veya ayarlamak gereken erişim denetimi (örneğin, Azure sanal ağı) içeren bir ağda olduğunda bir **tümleşik çalışma zamanı barındırabileceğiniz** veri kopyalama olanağı.
 
 Tümleştirme çalışma zamanı her kaynak ve havuz veri deposu ile ilişkilendirilmesi gerekir. Hakkında ayrıntılı bilgi edinin. kopyalama etkinliği [kullanılacak IR'yi belirler](concepts-integration-runtime.md#determining-which-ir-to-use).
@@ -193,7 +193,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de, etk
 | usedDataIntegrationUnits | Kopyalama sırasında etkili veri tümleştirme birimi. | Int32 değeri |
 | usedParallelCopies | Kopyalama sırasında etkili parallelCopies. | Int32 değeri |
 | redirectRowPath | Blob depolamada Atlanan uyumsuz satırların günlük yolu "Redirectıncompatiblerowsettings" altında yapılandırın. Aşağıdaki örnekte bakın. | Metin (dize) |
-| executionDetails | Kopyalama etkinliği, geçer aşamaları ve ilgili adımlarda, süre, kullanılan yapılandırmaları, vb. hakkında daha fazla bilgi. Bu bölümde, değişiklik gösterebileceği için ayrıştırılacak önermedi.<br/><br/>ADF Ayrıca, altında `detailedDurations`ilgili adımlarda harcanan ayrıntılı süreleri (saniye cinsinden) raporlar:<br/>- **Sıraya alma süresi** (`queuingDuration`): Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde gerçekten başlatılana kadar geçen süre. Şirket içinde barındırılan IR kullanıyorsanız ve bu değer büyükse, IR kapasitesini ve kullanımını kontrol etmeyi ve iş yükünüze göre ölçeği artırma/genişletme seçeneğini önerin. <br/>- **Kopyalama öncesi betik süresi** (`preCopyScriptDuration`): Havuz veri deposunda kopyalama öncesi betiği yürütmek için harcanan süre. Kopyalama öncesi betiği yapılandırırken uygulayın. <br/>- **İlk bayta kadar süre** (`timeToFirstByte`): Tümleştirme çalışma zamanının kaynak veri deposundan ilk baytı alacağı zaman. Dosya tabanlı olmayan kaynak için geçerlidir. Bu değer büyükse, sorguyu veya sunucuyu denetleyip iyileştirmek için öneri önerin.<br/>- **Aktarım süresi** (`transferDuration`): Tümleştirme çalışma zamanının ilk baytı aldıktan sonra kaynaktaki tüm verileri havuza aktarması için geçen süre. | Array |
+| executionDetails | Kopyalama etkinliği, geçer aşamaları ve ilgili adımlarda, süre, kullanılan yapılandırmaları, vb. hakkında daha fazla bilgi. Bu bölümde, değişiklik gösterebileceği için ayrıştırılacak önermedi.<br/><br/>ADF Ayrıca, bölümündeki `detailedDurations`ilgili adımlarda harcanan ayrıntılı süreleri (saniye cinsinden) raporlar. Bu adımların süreleri özeldir ve yalnızca belirtilen kopyalama etkinliği çalıştırmasına uygulananlar görünür:<br/>- **Sıraya alma süresi** (`queuingDuration`): Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. Şirket içinde barındırılan IR kullanıyorsanız ve bu değer büyükse, IR kapasitesini ve kullanımını kontrol etmeyi ve iş yükünüze göre ölçeği artırma/genişletme seçeneğini önerin. <br/>- **Kopyalama öncesi betik süresi** (`preCopyScriptDuration`): IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Kopyalama öncesi betiği yapılandırırken uygulayın. <br/>- **İlk bayta kadar süre** (`timeToFirstByte`): Önceki adımın bitişi ile kaynak veri deposundan ilk baytı alan IR arasındaki geçen süre. Dosya tabanlı olmayan kaynak için geçerlidir. Bu değer büyükse, sorguyu veya sunucuyu denetleyip iyileştirmek için öneri önerin.<br/>- **Aktarım süresi** (`transferDuration`): Önceki adımın sonu ile IR 'nin tüm verileri kaynaktan havuza aktarma arasındaki geçen süre. | Array |
 | Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için [performans ve ayarlama](#performance-and-tuning) bölümüne bakın. | Array |
 
 ```json

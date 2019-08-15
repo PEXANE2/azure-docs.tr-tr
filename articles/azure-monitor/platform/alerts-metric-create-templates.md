@@ -1,6 +1,6 @@
 ---
 title: Resource Manager şablonu ile ölçüm uyarısı oluşturma
-description: Ölçüm uyarısı oluşturma için Resource Manager şablonu kullanmayı öğrenin.
+description: Ölçüm uyarısı oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğrenin.
 author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 8300baa1afa3e6c738cee4c2a2517463c2af1e88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4430b14a93bb4cf2ccf43881ad061590f8e6815
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978847"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976691"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu makalede nasıl kullanabileceğinizi gösteren bir [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) yapılandırmak için [yeni ölçüm uyarılarının](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure İzleyici'de. Resource Manager şablonları, program aracılığıyla uyarıları ortamlarınızda tutarlı ve tekrarlanabilir bir şekilde ayarlamak etkinleştirin. Yeni ölçüm uyarılarının şu anda kullanılabilir [bu kaynak türleri kümesini](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-monitor/platform/alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
 
 > [!IMPORTANT]
-> Kaynak türü için ölçüm uyarıları oluşturma için kaynak şablonu: Azure Log Analytics çalışma alanı (örn.)) `Microsoft.OperationalInsights/workspaces`, ek adımlar gerektirir. Ayrıntılar için makaleye bakın [günlükleri - kaynak şablonu için ölçüm Uyarısı](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Kaynak türü için ölçüm uyarıları oluşturmak için kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces`, ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
 
 Temel adımlar aşağıdaki gibidir:
 
-1. Şablonlardan birini nasıl uyarı oluşturulacağı açıklayan bir JSON dosyası olarak kullanın.
-2. Düzenleyin ve karşılık gelen parametre dosyasını bir JSON olarak uyarı özelleştirmek için kullanın.
-3. Şablon kullanarak dağıtma [herhangi bir dağıtım yöntemi](../../azure-resource-manager/resource-group-template-deploy.md).
+1. Aşağıdaki şablonlardan birini, uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak kullanın.
+2. Uyarıyı özelleştirmek için ilgili parametreler dosyasını JSON olarak düzenleyin ve kullanın
+3. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/resource-group-template-deploy.md)kullanarak şablonu dağıtın.
 
-## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit statik eşik ölçüm uyarısı için şablon
+## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit bir statik eşik ölçümü için şablon uyarısı
 
-Resource Manager şablonu kullanarak bir uyarı oluşturmak için kaynak türü oluştur `Microsoft.Insights/metricAlerts` ve tüm ilgili özellikleri doldurur. Bir ölçüm uyarısı kuralının oluşturur ve örnek bir şablonu aşağıdadır.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak `Microsoft.Insights/metricAlerts` oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
-Bu izlenecek yolda amacıyla simplestaticmetricalert.json olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u simplestaticmetricalert. JSON olarak kaydedin.
 
 ```json
 {
@@ -187,15 +187,15 @@ Bu izlenecek yolda amacıyla simplestaticmetricalert.json olarak aşağıdaki js
 }
 ```
 
-Bir uyarı kuralı özellikleri ve şema açıklaması [ulaşabilirsiniz](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Komut satırında veya bir parametre dosyası aracılığıyla, parametre değerlerini ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir.
+Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir.
 
-Aşağıdaki json'u simplestaticmetricalert.parameters.json kaydedin ve gerektiği gibi değiştirin.
+Aşağıdaki JSON 'u simplestaticmetricalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -233,7 +233,7 @@ Aşağıdaki json'u simplestaticmetricalert.parameters.json kaydedin ve gerekti�
 ```
 
 
-PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak bir ölçüm uyarısı oluşturabilirsiniz.
+PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -260,13 +260,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Ölçüm uyarısı hedef kaynağı için farklı bir kaynak grubunda oluşturulması, ancak aynı kaynak grubunu, hedef kaynak kullanmanızı öneririz.
+> Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
 
-## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Basit bir dinamik eşikler ölçüm uyarısı için şablon
+## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Basit dinamik eşikler ölçüm uyarısı için şablon
 
-Resource Manager şablonu kullanarak bir uyarı oluşturmak için kaynak türü oluştur `Microsoft.Insights/metricAlerts` ve tüm ilgili özellikleri doldurur. Bir ölçüm uyarısı kuralının oluşturur ve örnek bir şablonu aşağıdadır.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak `Microsoft.Insights/metricAlerts` oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
-Bu izlenecek yolda amacıyla simpledynamicmetricalert.json olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert. JSON olarak kaydedin.
 
 ```json
 {
@@ -440,15 +440,15 @@ Bu izlenecek yolda amacıyla simpledynamicmetricalert.json olarak aşağıdaki j
 }
 ```
 
-Bir uyarı kuralı özellikleri ve şema açıklaması [ulaşabilirsiniz](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Komut satırında veya bir parametre dosyası aracılığıyla, parametre değerlerini ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir. 
+Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir. 
 
-Aşağıdaki json'u simpledynamicmetricalert.parameters.json kaydedin ve gerektiği gibi değiştirin.
+Aşağıdaki JSON öğesini simpledynamicmetricalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -492,7 +492,7 @@ Aşağıdaki json'u simpledynamicmetricalert.parameters.json kaydedin ve gerekti
 ```
 
 
-PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak bir ölçüm uyarısı oluşturabilirsiniz.
+PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -519,13 +519,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Ölçüm uyarısı hedef kaynağı için farklı bir kaynak grubunda oluşturulması, ancak aynı kaynak grubunu, hedef kaynak kullanmanızı öneririz.
+> Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Daha gelişmiş bir statik eşiği ölçüm uyarısı için şablon
+## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Daha gelişmiş bir statik eşik ölçümü için şablon uyarısı
 
-Yeni ölçüm uyarılarının, çok boyutlu ölçümler üzerinde uyarı yanı sıra birden çok ölçüt destekleyen destekler. Boyutlu ölçümler üzerinde daha gelişmiş bir ölçüm uyarısı oluşturma ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
+Daha yeni ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok ölçütü desteklemeyi destekler. Boyut ölçümleri üzerinde daha gelişmiş bir ölçüm uyarısı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
 
-Bu izlenecek yolda amacıyla advancedstaticmetricalert.json olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert. JSON olarak kaydedin.
 
 ```json
 {
@@ -641,13 +641,13 @@ Bu izlenecek yolda amacıyla advancedstaticmetricalert.json olarak aşağıdaki 
 }
 ```
 
-Yukarıdaki şablonu aşağıda sağlanan parametre dosyası ile birlikte kullanabilirsiniz. 
+Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
 
-Kaydet ve advancedstaticmetricalert.parameters.json amacıyla bu kılavuz olarak aşağıdaki json'u değiştirin.
+Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advancedstaticmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -710,7 +710,7 @@ Kaydet ve advancedstaticmetricalert.parameters.json amacıyla bu kılavuz olarak
 ```
 
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyası kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 ```powershell
@@ -737,15 +737,15 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Ölçüm uyarısı hedef kaynağı için farklı bir kaynak grubunda oluşturulması, ancak aynı kaynak grubunu, hedef kaynak kullanmanızı öneririz.
+> Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
 
 ## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Daha gelişmiş dinamik eşikler ölçüm uyarısı için şablon
 
-Boyutlu ölçümler üzerinde daha gelişmiş dinamik eşikler ölçüm uyarısı oluşturmak için aşağıdaki şablonu kullanabilirsiniz. Birden çok ölçüt şu anda desteklenmemektedir.
+Boyut ölçümlerinde daha gelişmiş dinamik eşikler ölçüm uyarısı oluşturmak için aşağıdaki şablonu kullanabilirsiniz. Birden çok ölçüt Şu anda desteklenmiyor.
 
-Uyarı kuralı oluşturabilmeniz dinamik eşikler ölçüm serisi (hatta farklı türleri için) yüzlerce eşikleri yönetmek için daha az uyarı kuralları sonuçları bir zaman uyarlanmış.
+Dinamik eşik uyarıları kuralı, her seferinde yüzlerce ölçüm serisi (hatta farklı türler) için özel eşikler oluşturabilir ve bu da daha az uyarı kuralı elde edebilir.
 
-Bu izlenecek yolda amacıyla advanceddynamicmetricalert.json olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u advanceddynamicmetricalert. JSON olarak kaydedin.
 
 ```json
 {
@@ -853,13 +853,13 @@ Bu izlenecek yolda amacıyla advanceddynamicmetricalert.json olarak aşağıdaki
 }
 ```
 
-Yukarıdaki şablonu aşağıda sağlanan parametre dosyası ile birlikte kullanabilirsiniz. 
+Yukarıdaki şablonu, aşağıda belirtilen parametre dosyası ile birlikte kullanabilirsiniz. 
 
-Kaydet ve advanceddynamicmetricalert.parameters.json amacıyla bu kılavuz olarak aşağıdaki json'u değiştirin.
+Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'u advanceddynamicmetricalert. Parameters. JSON olarak kaydedin ve değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -911,7 +911,7 @@ Kaydet ve advanceddynamicmetricalert.parameters.json amacıyla bu kılavuz olara
 ```
 
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyası kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 ```powershell
@@ -938,25 +938,25 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Ölçüm uyarısı hedef kaynağı için farklı bir kaynak grubunda oluşturulması, ancak aynı kaynak grubunu, hedef kaynak kullanmanızı öneririz.
+> Ölçüm uyarısı hedef kaynağa farklı bir kaynak grubunda oluşturularken, hedef kaynağınız ile aynı kaynak grubunu kullanmanızı öneririz.
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Birden çok kaynak izleyen ölçüm uyarısı için şablon
+## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Birden çok kaynağı izleyen ölçüm uyarısı şablonu
 
-Tek bir kaynak ölçüm uyarıları oluşturmak için örnek Azure Resource Manager şablonları önceki bölümlerde açıklanmıştır. Azure İzleyici artık birden fazla kaynak ile tek bir ölçüm uyarısı kuralının izlenmesini de destekler. Bu önizleme özelliği şu anda yalnızca Azure Resource Manager şablonları ve REST API kullanılabilir ve yalnızca sanal makineler için desteklenir.
+Önceki bölümlerde, tek bir kaynağı izleyen ölçüm uyarıları oluşturmak için örnek Azure Resource Manager şablonlar açıklanmıştır. Azure Izleyici artık tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın izlenmesini desteklemektedir. Bu özellik şu anda yalnızca Azure genel bulutunda ve yalnızca sanal makineler ve veri kutusu uç cihazları için desteklenir.
 
-Dinamik eşikler uyarı kurallarını yönetmek için daha az uyarı kuralları sonuçları bir anda yüzlerce ölçüm serisi (hatta farklı türleri için) için özel olarak uyarlanmış eşikler oluşturmak da yardımcı olabilir.
+Dinamik eşikler uyarıları kuralı, aynı anda yüzlerce ölçüm serisi (hatta farklı türler) için özel eşikler oluşturmaya da yardımcı olabilir. Bu, daha az uyarı kuralının yönetilmesine neden olur.
 
-Bu bölümde Azure Resource Manager şablonları için tek bir kural ile birden çok kaynakları izlemek üç senaryo açıklanmaktadır.
+Bu bölümde, tek bir kuralla birden çok kaynağı izlemek üzere üç senaryonun Azure Resource Manager şablonları açıklanır.
 
-- Tüm sanal makineler (bir Azure bölgesinde) bir veya daha fazla kaynak gruplarında izleme.
-- Bir Abonelikteki tüm sanal makineleri (bir Azure bölgesinde) izleme
-- Bir Abonelikteki sanal makinelerin (bir Azure bölgesinde) bir listesini izleme.
+- Bir veya daha fazla kaynak grubunda tüm sanal makineleri (bir Azure bölgesinde) izleme.
+- Bir abonelikteki tüm sanal makineleri (bir Azure bölgesinde) izleme
+- Bir abonelikteki sanal makinelerin (bir Azure bölgesindeki) listesini izleme.
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Bir veya daha fazla kaynak gruplarındaki tüm sanal makinelere statik eşiği Uyarısı
+### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Bir veya daha fazla kaynak grubunda bulunan tüm sanal makinelerde statik eşik uyarısı
 
-Bu şablon, bir veya daha fazla kaynak grupları tüm sanal makineler (bir Azure bölgesinde) için CPU yüzdesi izleyen bir statik eşiği ölçüm uyarı kuralı oluşturur.
+Bu şablon, bir veya daha fazla kaynak grubunda tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen bir statik eşik ölçüm uyarı kuralı oluşturur.
 
-Bu gözden geçirme amacıyla all-vms-in-resource-group-static.json olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Static. JSON olarak kaydedin.
 
 ```json
 {
@@ -1172,12 +1172,12 @@ Bu gözden geçirme amacıyla all-vms-in-resource-group-static.json olarak aşa�
 }
 ```
 
-Parametre dosyasını aşağıdaki yukarıdaki şablonu kullanabilirsiniz.
-Kaydet ve aşağıdaki json'u amacıyla bu kılavuzda all-vms-in-resource-group-static.parameters.json olarak değiştirin.
+Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
+Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'ı Resource-Group-Static. Parameters. JSON olarak kaydedin ve değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1223,7 +1223,7 @@ Kaydet ve aşağıdaki json'u amacıyla bu kılavuzda all-vms-in-resource-group-
 }
 ```
 
-Geçerli çalışma dizininizden PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak statik ölçüm uyarısı oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak statik ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -1248,11 +1248,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Bir veya daha fazla kaynak grupları içindeki tüm sanal makinelerde dinamik eşik uyarısı
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Bir veya daha fazla kaynak grubunda bulunan tüm sanal makinelerde dinamik eşikler uyarısı
 
-Bu şablon, bir veya daha fazla kaynak grupları tüm sanal makineler (bir Azure bölgesinde) için CPU yüzdesi izleyen bir dinamik eşikler ölçüm uyarı kuralı oluşturur.
+Bu şablon, bir veya daha fazla kaynak grubunda tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen dinamik bir eşikler ölçüm uyarı kuralı oluşturur.
 
-Bu gözden geçirme amacıyla all-vms-in-resource-group-dynamic.json olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Dynamic. JSON olarak kaydedin.
 
 ```json
 {
@@ -1489,12 +1489,12 @@ Bu gözden geçirme amacıyla all-vms-in-resource-group-dynamic.json olarak aşa
 }
 ```
 
-Parametre dosyasını aşağıdaki yukarıdaki şablonu kullanabilirsiniz.
-Kaydet ve aşağıdaki json'u amacıyla bu kılavuzda all-vms-in-resource-group-dynamic.parameters.json olarak değiştirin.
+Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
+Bu izlenecek yolun amacına uygun olarak aşağıdaki JSON 'ı Resource-Group-Dynamic. Parameters. JSON olarak kaydedin ve değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1546,7 +1546,7 @@ Kaydet ve aşağıdaki json'u amacıyla bu kılavuzda all-vms-in-resource-group-
 }
 ```
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -1571,11 +1571,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-dynamic.parameters.json
 ```
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Bir Abonelikteki tüm sanal makinelere statik eşiği Uyarısı
+### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Bir abonelikteki tüm sanal makinelerde statik eşik uyarısı
 
-Bu şablon, bir Abonelikteki tüm sanal makineler (bir Azure bölgesinde) için CPU yüzdesi izleyen bir statik eşiği ölçüm uyarı kuralı oluşturur.
+Bu şablon, bir abonelikteki tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen bir statik eşik ölçümü uyarı kuralı oluşturur.
 
-Tüm-VM-içinde-abonelik-static.json amacıyla bu kılavuz olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı tüm-VM--------------------
 
 ```json
 {
@@ -1791,12 +1791,12 @@ Tüm-VM-içinde-abonelik-static.json amacıyla bu kılavuz olarak aşağıdaki j
 }
 ```
 
-Parametre dosyasını aşağıdaki yukarıdaki şablonu kullanabilirsiniz.
-Kaydet ve tüm-VM-içinde-abonelik-static.parameters.json amacıyla bu kılavuz olarak aşağıdaki json'u değiştirin.
+Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı----------------------
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -1839,7 +1839,7 @@ Kaydet ve tüm-VM-içinde-abonelik-static.parameters.json amacıyla bu kılavuz 
 }
 ```
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -1864,11 +1864,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription.parameters-static.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Bir Abonelikteki tüm sanal makinelerde dinamik eşik uyarısı
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Bir abonelikteki tüm sanal makinelerde dinamik eşikler uyarısı
 
-Bu şablon, bir Abonelikteki tüm sanal makineler (bir Azure bölgesinde) için CPU yüzdesi izleyen bir dinamik eşikler ölçüm uyarı kuralı oluşturur.
+Bu şablon, bir abonelikteki tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen dinamik bir eşikler ölçüm uyarı kuralı oluşturur.
 
-Tüm-VM-içinde-abonelik-dynamic.json amacıyla bu kılavuz olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yol için, aşağıdaki JSON 'yi abonelik-dinamik. JSON olarak kaydedin.
 
 ```json
 {
@@ -2105,12 +2105,12 @@ Tüm-VM-içinde-abonelik-dynamic.json amacıyla bu kılavuz olarak aşağıdaki 
 }
 ```
 
-Parametre dosyasını aşağıdaki yukarıdaki şablonu kullanabilirsiniz.
-Kaydet ve tüm-VM-içinde-abonelik-dynamic.parameters.json amacıyla bu kılavuz olarak aşağıdaki json'u değiştirin.
+Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı abonelik---------------------
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2159,7 +2159,7 @@ Kaydet ve tüm-VM-içinde-abonelik-dynamic.parameters.json amacıyla bu kılavuz
 }
 ```
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -2184,11 +2184,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription-dynamic.parameter-dynamics.json
 ```
 
-### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Sanal makinelerin listesini uyarısında statik eşiği
+### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Sanal makineler listesinde statik eşik uyarısı
 
-Bu şablon, bir abonelikte (bir Azure bölgesinde) sanal makinelerin bir listesi için CPU yüzdesi izleyen bir statik eşiği ölçüm uyarı kuralı oluşturur.
+Bu şablon, bir abonelikteki sanal makinelerin (bir Azure bölgesindeki) bir listesi için yüzde CPU 'YU izleyen bir statik eşik ölçümü uyarı kuralı oluşturur.
 
-Liste-,-vms-static.json amacıyla bu kılavuz olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı-VM-static. JSON listesi olarak kaydedin.
 
 ```json
 {
@@ -2404,12 +2404,12 @@ Liste-,-vms-static.json amacıyla bu kılavuz olarak aşağıdaki json'u kaydedi
 }
 ```
 
-Parametre dosyasını aşağıdaki yukarıdaki şablonu kullanabilirsiniz.
-Kaydet ve liste-,-VM-static.parameters.json amacıyla bu kılavuz olarak aşağıdaki json'u değiştirin.
+Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı-VM-static. Parameters. JSON listesi olarak kaydedin ve değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2455,7 +2455,7 @@ Kaydet ve liste-,-VM-static.parameters.json amacıyla bu kılavuz olarak aşağ�
 }
 ```
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -2480,11 +2480,11 @@ az group deployment create \
     --parameters @list-of-vms-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Sanal makinelerin listesini dinamik eşikler uyarı
+### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Sanal makineler listesinde dinamik eşikler uyarısı
 
-Bu şablon, CPU yüzdesi (bir Azure bölgesinde) bir Abonelikteki sanal makinelerin bir listesi için izleyen bir dinamik eşikler ölçüm uyarı kuralı oluşturur.
+Bu şablon, bir abonelikteki sanal makinelerin (bir Azure bölgesindeki) bir listesi için yüzde CPU 'YU izleyen dinamik bir eşikler ölçüm uyarı kuralı oluşturur.
 
-Liste-,-vms-dynamic.json amacıyla bu kılavuz olarak aşağıdaki json'u kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı VM 'ler-Dynamic. JSON olarak kaydedin.
 
 ```json
 {
@@ -2721,12 +2721,12 @@ Liste-,-vms-dynamic.json amacıyla bu kılavuz olarak aşağıdaki json'u kayded
 }
 ```
 
-Parametre dosyasını aşağıdaki yukarıdaki şablonu kullanabilirsiniz.
-Kaydet ve liste-,-VM-dynamic.parameters.json amacıyla bu kılavuz olarak aşağıdaki json'u değiştirin.
+Yukarıdaki şablon, yukarıdaki parametre dosyası ile birlikte kullanılabilir.
+Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı VM listesi-Dynamic. Parameters. JSON olarak kaydedin ve değiştirin.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "alertName": {
@@ -2778,7 +2778,7 @@ Kaydet ve liste-,-VM-dynamic.parameters.json amacıyla bu kılavuz olarak aşağ
 }
 ```
 
-Ölçüm Uyarısı, geçerli çalışma dizinine PowerShell veya Azure CLI kullanarak şablonu ve parametre dosyalarını kullanarak oluşturabilirsiniz.
+Geçerli çalışma dizininizden PowerShell veya Azure CLı kullanarak şablon ve parametreler dosyasını kullanarak ölçüm uyarısı oluşturabilirsiniz.
 
 Azure PowerShell’i kullanma
 
@@ -2804,7 +2804,7 @@ az group deployment create \
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Daha fazla bilgi edinin [Azure uyarıları](alerts-overview.md)
-* Bilgi edinmek için nasıl [Resource Manager şablonları ile bir eylem grubu oluştur](action-groups-create-resource-manager-template.md)
-* JSON söz dizimi ve özellikler için bkz: [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) şablon başvurusu.
+* [Azure 'da uyarılar](alerts-overview.md) hakkında daha fazla bilgi edinin
+* [Kaynak Yöneticisi şablonlarıyla bir eylem grubu oluşturmayı](action-groups-create-resource-manager-template.md) öğrenin
+* JSON sözdizimi ve özellikleri için bkz. [Microsoft. Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) şablon başvurusu.
 

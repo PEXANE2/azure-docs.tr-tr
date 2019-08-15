@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305729"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985335"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Depolama hesabı yük devretmesini başlatma (Önizleme)
 
@@ -68,12 +68,13 @@ Bir hesap yük devretmesi başlatmak üzere PowerShell 'i kullanmak için, önce
 
     - **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
     - Tüm **Azure** modüllerini ' den `%Program Files%\WindowsPowerShell\Modules`kaldırın.
-    
+
 1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. PowerShellGet yükledikten sonra PowerShell penceresini kapatın ve yeniden açın. 
 
 1. Azure PowerShell en son sürümünü yükler:
@@ -82,14 +83,14 @@ Bir hesap yük devretmesi başlatmak üzere PowerShell 'i kullanmak için, önce
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Azure AD 'yi destekleyen bir Azure depolama önizleme modülü yükler:
-   
+1. Hesap yük devretmesini destekleyen bir Azure depolama önizleme modülü yükler:
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. PowerShell penceresini kapatıp yeniden açın.
  
-
 PowerShell 'den bir hesap yük devretmesi başlatmak için aşağıdaki komutu yürütün:
 
 ```powershell

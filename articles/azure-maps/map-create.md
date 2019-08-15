@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar ile harita oluşturma | Microsoft Docs
-description: JavaScript eşlemesi oluşturma
+description: Azure Maps web SDK ile harita oluşturma.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 932c244ff41e757413a05cde019ee7ee1a82232d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882076"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976114"
 ---
 # <a name="create-a-map"></a>Harita oluşturma
 
@@ -22,7 +22,7 @@ Bu makalede harita oluşturma ve Haritayı canlandırma yolları gösterilmekted
 
 ## <a name="loading-a-map"></a>Harita yükleme
 
-Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)yeni bir örneğini oluşturun. Eşleme başlatılırken Haritayı işlemek için bir DIV öğe KIMLIĞI ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirilir. `atlas` Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse, eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra haritaya bir `ready` veya `load` olayı ekleyin ve ardından bu olay işleyicisindeki eşlemele etkileşim kuran ek kodu ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. İlk harita görünümü tamamen yüklemeyi tamamladıktan sonra olayateşlenir.`load` 
+Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)yeni bir örneğini oluşturun. Harita başlatılırken, Haritayı işlemek için bir DIV öğe KIMLIĞI ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirilir. `atlas` Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse, eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra haritaya bir `ready` veya `load` olayı ekleyin ve ardından bu olay işleyicisindeki eşlemele etkileşim kuran ek kodu ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. İlk harita görünümü tamamen yüklemeyi tamamladıktan sonra olayateşlenir.`load` 
 
 <br/>
 
@@ -104,3 +104,6 @@ Uygulamanıza işlevsellik eklemek için bkz. kod örnekleri:
 
 > [!div class="nextstepaction"]
 > [Haritaya denetim ekleme](map-add-controls.md)
+
+> [!div class="nextstepaction"]
+> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

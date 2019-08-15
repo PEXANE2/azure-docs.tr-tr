@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 376620459a0ab2f0f170b0743c0ab51a51bca9c4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698943"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967849"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda fiyatlandırma katmanları-tek sunucu
 
@@ -107,6 +107,9 @@ Hizmet, sunucunuzun yedeklerini otomatik olarak alır. Yedeklemeler için en dü
 ## <a name="scale-resources"></a>Kaynakları ölçeklendirme
 
 Sunucunuzu oluşturduktan sonra, sanal çekirdekleri, donanım oluşturmayı, fiyatlandırma katmanını (temel ve dışı), depolama miktarını ve yedekleme saklama süresini bağımsız olarak değiştirebilirsiniz. Sunucu oluşturulduktan sonra yedekleme depolama türünü değiştiremezsiniz. Sanal çekirdek sayısı yukarı veya aşağı ölçeklendirilebilir. Yedekleme saklama süresi 7 ile 35 gün arasında ölçeklendirilebilir veya kapatılabilir. Depolama boyutu yalnızca artırılabilir. Kaynakların ölçeklendirilmesi portal veya Azure CLı aracılığıyla yapılabilir. Azure CLı kullanarak ölçeklendirmeyle ilgili bir örnek için bkz. [Azure CLI kullanarak PostgreSQL Için Azure veritabanı sunucusunu izleme ve ölçeklendirme](scripts/sample-scale-server-up-or-down.md).
+
+> [!NOTE] 
+> Depolama boyutu yalnızca artırılabilir. Artdıktan sonra daha küçük bir depolama boyutuna dönemezsiniz.
 
 Sanal çekirdek sayısını, donanım oluşturmayı veya fiyatlandırma katmanını değiştirdiğinizde, yeni işlem ayırmasıyla orijinal sunucunun bir kopyası oluşturulur. Yeni sunucu çalışır duruma geçtikten sonra, bağlantılar yeni sunucuya geçer. Sistem yeni sunucuya geçerken yeni bağlantı kurulamaz ve tüm işlenmemiş işlemler geri alınır. Bu süre değişir, ancak çoğu durumda bir dakikadan daha kısadır.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817255"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968955"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>İlke: Dizininizdeki kullanıcılar için
 
@@ -35,7 +35,7 @@ ms.locfileid: "68817255"
 
 ### <a name="policy-for-users-not-in-your-directory"></a>İlke: Dizininizde bulunmayan kullanıcılar için
 
-İlkenizin bu erişim paketini isteyebilmek için dizininizde olmayan kullanıcılar için olmasını istiyorsanız bu adımları izleyin. **Dizininizde olmayan kullanıcılar** , başka BIR Azure AD dizinindeki kullanıcılara başvurur ve henüz dizininizden davet edilmemiş olabilir.  Dizinler, **Kurumsal ilişkiler işbirliği kısıtlamaları** ayarlarında izin verilecek şekilde yapılandırılmalıdır.
+İlkenizin bu erişim paketini isteyebilmek için dizininizde olmayan kullanıcılar için olmasını istiyorsanız bu adımları izleyin. **Dizininizde olmayan kullanıcılar** , başka BIR Azure AD dizinindeki kullanıcılara başvurur ve henüz dizininizden davet edilmemiş olabilir. Şu anda yalnızca Azure AD kullanan kuruluşlardan kullanıcıları ekleyebilirsiniz. Dizinler, **Kurumsal ilişkiler işbirliği kısıtlamaları** ayarlarında izin verilecek şekilde yapılandırılmalıdır.
 
 > [!NOTE]
 > Henüz, isteğiniz onaylanmış veya otomatik olarak onaylanan dizininizde olmayan bir kullanıcı için bir konuk dış Kullanıcı hesabı oluşturulacaktır. Konuk davet edilecek, ancak davet e-postası almacaktır. Bunun yerine, bunlara erişim paketi ataması teslim edildiğinde bir e-posta gönderilir. Varsayılan olarak, Konuk kullanıcının artık herhangi bir erişim paketi ataması olmadığında, son atamasının süresi dolduğunda veya iptal edildiğinden, bu Konuk Kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcılarınızın, hiçbir erişim paketi ataması olmasa bile dizininizden sonsuza kadar kalmasını istiyorsanız, Yetkilendirme Yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz.

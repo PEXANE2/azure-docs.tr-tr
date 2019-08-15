@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3f991d90dfdd5d31d1a7cf7119356f40458e7614
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568237"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985717"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Özellik Karşılaştırması: Azure SQL veritabanı SQL Server karşılaştırması
 
@@ -84,7 +84,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Tam metin araması (ft sayısı)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Evet, ancak üçüncü taraf sözcük ayırıcıları desteklenmez | Evet, ancak [üçüncü taraf sözcük ayırıcıları desteklenmez](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [İşlevler](https://docs.microsoft.com/sql/t-sql/functions/functions) | Çoğu-bkz. ayrı işlevler | Evet-bkz. [saklı yordamlar, işlevler, Tetikleyiciler farklılıkları](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Grafik işleme](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Evet | Evet |
-| [Bellek içi iyileştirme](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Evet- [yalnızca Premium ve iş açısından kritik katmanları](sql-database-in-memory.md) | Yalnızca Evet- [iş açısından kritik katmanı](sql-database-managed-instance.md) |
+| [Bellek içi iyileştirme](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Evet- [Premium ve iş açısından kritik katmanları yalnızca](sql-database-in-memory.md) tablo türleri gibi kalıcı olmayan bellek içi nesneler için sınırlı destek | Yalnızca Evet- [iş açısından kritik katmanı](sql-database-managed-instance.md) |
 | [JSON veri desteği](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Evet](sql-database-json-features.md) | [Evet](sql-database-json-features.md) |
 | [Dil öğeleri](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Çoğu-bkz. ayrı öğeler |  Evet-bkz. [T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md) |
 | [Bağlı sunucular](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Hayır- [elastik sorgu](sql-database-elastic-query-horizontal-partitioning.md) | Evet. Yalnızca dağıtılmış işlemler olmadan [SQL Server ve SQL veritabanı](sql-database-managed-instance-transact-sql-information.md#linked-servers) . |

@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/31/2019
-ms.openlocfilehash: 0a497ce506e1aa3b0f9afc47bf1ab8382c9c0405
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: e571c65e64fad73c646aa05366cab685aa745caa
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951456"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968954"
 ---
 1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
@@ -45,10 +45,13 @@ ms.locfileid: "68951456"
 
    ![Çalışma alanı oluşturma durumu](./media/aml-create-in-portal/notifications.png)
 
-1. Kodunuz yerel ortamınızdan bu çalışma alanına başvuruyorsa, çalışma alanının **genel bakış** bölümünde **config. json dosyasını indir** ' i seçin.  
+1. Portaldan, Visual Interface veya otomatik ML denemeleri gibi bir kod içermeyen seçenek kullanacaksanız, artık bu işlemi tamamladınız. Bir [Not defteri VM](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) 'si oluşturuyorsanız, bu sanal makine de yapılır. 
+
+1. Yerel ortamınızda bu çalışma alanına başvuruda bulunan kodu kullanmayı planlıyorsanız, çalışma alanının **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin.  
 
    ![Config.json dosyasını indir](./media/aml-create-in-portal/configure.png)
+   
+   Dosyayı Python betikleriniz veya Jupyıter Not defterleriniz ile dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir. Bir not defteri VM oluşturduğunuzda, bu dosya VM 'deki doğru dizine eklenir.
 
-    Bu JSON dosyasını Python betiklerinizi veya Jupyıter not defterlerini içeren dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir.
+    
 
-   Bir [Not defteri sanal makinesi](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) kullanacaksanız, bu dosyayı indirmeniz gerekmez, sanal makine üzerinde doğru dizine eklenir.

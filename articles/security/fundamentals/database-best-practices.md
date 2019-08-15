@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727450"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927999"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure güvenliği için en iyi yöntemler
 Bu makalede veritabanı güvenliği için en iyi yöntemler açıklanmaktadır.
@@ -28,7 +28,7 @@ Bu makalede veritabanı güvenliği için en iyi yöntemler açıklanmaktadır.
 En iyi uygulamalar, görüşlerden oluşan yarışmaları temel alır ve geçerli Azure platformu özellikleri ve özellik kümeleriyle çalışır. Zamanla ve teknolojiler zaman içinde değişir ve bu makale, bu değişiklikleri yansıtacak şekilde düzenli olarak güncelleştirilir.
 
 ## <a name="secure-databases"></a>Güvenli veritabanları
-Güvenlik, veritabanlarının yönetiminde önemli bir konudur ve [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/)için her zaman bir önceliktir. Veritabanları, HIPAA, ISO 27001/27002 ve PCI DSS düzey 1 dahil olmak üzere çok sayıda yasal veya güvenlik gereksinimini karşılamanıza yardımcı olmak için sıkı bir şekilde güvenli hale getirilir. Güvenlik uyumluluğu sertifikalarına yönelik geçerli bir liste, [Microsoft Trust Center sitesinde](https://azure.microsoft.com/support/trust-center/services/)bulunabilir. Ayrıca, veritabanlarını yasal gereksinimlere göre belirli Azure veri merkezlerine yerleştirmeyi seçebilirsiniz.
+Güvenlik, veritabanlarının yönetiminde önemli bir konudur ve [Azure SQL veritabanı](../../sql-database/index.yml)için her zaman bir önceliktir. Veritabanları, HIPAA, ISO 27001/27002 ve PCI DSS düzey 1 dahil olmak üzere çok sayıda yasal veya güvenlik gereksinimini karşılamanıza yardımcı olmak için sıkı bir şekilde güvenli hale getirilir. Güvenlik uyumluluğu sertifikalarına yönelik geçerli bir liste, [Microsoft Trust Center sitesinde](https://azure.microsoft.com/support/trust-center/services/)bulunabilir. Ayrıca, veritabanlarını yasal gereksinimlere göre belirli Azure veri merkezlerine yerleştirmeyi seçebilirsiniz.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Veritabanı erişimini kısıtlamak için güvenlik duvarı kuralları kullanma
 Microsoft Azure SQL Veritabanı, Azure ve diğer internet tabanlı uygulamalar için bir ilişkisel veritabanı hizmeti sağlar. Erişim güvenliği sağlamak için SQL veritabanı, ile erişimi denetler:

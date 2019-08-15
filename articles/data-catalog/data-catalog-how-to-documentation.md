@@ -6,14 +6,15 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882501"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950198"
 ---
-# <a name="document-data-sources"></a>Veri kaynaklarını belgelendirme
+# <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarını belgeleme
+
 ## <a name="introduction"></a>Giriş
 **Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, **Azure Veri Kataloğu** , kullanıcıların veri kaynaklarını bulmasına, *anlamasına*ve kullanmasına yardımcı olur ve kuruluşların mevcut verilerinden daha fazla değer almasını sağlar.
 

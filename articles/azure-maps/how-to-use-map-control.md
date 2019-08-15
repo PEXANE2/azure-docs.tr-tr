@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5fdbd8092abcc51fc03e8b00106b7e25ec4be905
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a152f32ef7d68686539b7d6edee57db8a5da9553
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839391"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976237"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure haritalar harita denetimini kullanma
 
@@ -102,7 +102,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     </script>
     ```
 
-    Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) daha fazla ayrıntı için.
+    Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgesi.
 
 6. İsteğe bağlı olarak, aşağıdaki meta etiketi öğelerini sayfanızın baş bir sayfasına eklemeyi yararlı bulabilirsiniz:
 
@@ -214,3 +214,11 @@ Bir haritanın stilini nasıl ayarlayacağınızı öğrenin:
 
 > [!div class="nextstepaction"]
 > [Harita stili seçin](choose-map-style.md)
+
+Haritanızda daha fazla veri eklemek için:
+
+> [!div class="nextstepaction"]
+> [Harita oluşturma](map-create.md)
+
+> [!div class="nextstepaction"]
+> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

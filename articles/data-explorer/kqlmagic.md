@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814507"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933686"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Azure 'da verileri çözümlemek için bir Jupyter Notebook ve Ksqlmagic uzantısı kullanın Veri Gezgini
 
@@ -39,7 +39,9 @@ Jupyter Notebook, canlı kod, denklem, görselleştirmeler ve anlatım metni iç
     ```python
     %reload_ext Kqlmagic
     ```
-
+    > [!NOTE]
+    > Çekirdek > çekirdeği Değiştir > Python 3,6 ' e tıklayarak çekirdek sürümünü Python 3,6 olarak değiştirin.
+    
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Azure Veri Gezgini yardım kümesine bağlanma
 
 *Yardım* kümesinde barındırılan *örnekler* veritabanına bağlanmak için aşağıdaki komutu kullanın. Microsoft dışı AAD kullanıcıları için kiracı adını `Microsoft.com` AAD kiracınızla değiştirin.

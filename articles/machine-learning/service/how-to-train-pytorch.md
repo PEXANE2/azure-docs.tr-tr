@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fe3e222da265614ff64e3d913f6514398abf32b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847668"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966781"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Pytorch derin öğrenme modellerini Azure Machine Learning ölçeklendirirken eğitme
 
@@ -229,3 +229,4 @@ Bu makalede, Azure Machine Learning hizmetinde PyTorch kullanarak derin bir öğ
 * [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
 * [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 * [Eğitilen model dağıtma](how-to-deploy-and-where.md)
+* [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

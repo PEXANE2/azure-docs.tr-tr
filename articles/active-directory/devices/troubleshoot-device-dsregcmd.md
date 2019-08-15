@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189e4f280e8aba28c4d1af449aa8a3428e303911
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298418"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987162"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Dsregcmd komutunu kullanarak cihazların sorunlarını giderme
 
@@ -28,10 +28,10 @@ Bu bölümde cihaz JOIN durumu parametreleri listelenmektedir. Aşağıdaki tabl
 
 | Azureadkatıldı | Enterprisekatılmış | Domainkatılmış | Cihaz durumu |
 | ---   | ---   | ---   | ---   |
-| YES | NO | NO | Azure AD 'ye katılmış |
-| NO | NO | YES | Etki alanına katılmış |
-| YES | NO | YES | Karma AD 'ye katılmış |
-| NO | YES | YES | Şirket içi DRS 'ye katılmış |
+| EVET | NO | NO | Azure AD'ye Katıldı |
+| NO | NO | EVET | Etki Alanına Katıldı |
+| EVET | NO | EVET | Karma AD 'ye katılmış |
+| NO | EVET | EVET | Şirket içi DRS 'ye katılmış |
 
 > [!NOTE]
 > Workplace Join (Azure AD kayıtlı) durumu "Kullanıcı durumu" bölümünde görüntülenir
@@ -295,6 +295,9 @@ Bu bölümde, buluta katılmış bir cihazda gerçekleştirilen sağlamlık dene
 ## <a name="ngc-prerequisite-check"></a>NGC önkoşul denetimi
 
 Bu bölüm, bir NGC anahtarının sağlanması için önkoşul denetimlerini gerçekleştirir. 
+
+> [!NOTE]
+> Kullanıcı zaten NGC kimlik bilgilerini başarıyla yapılandırdıysa dsregcmd/Status içinde NGC önkoşul denetimi ayrıntılarını göremeyebilirsiniz.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Örnek NGC önkoşul denetimi çıkışı
 

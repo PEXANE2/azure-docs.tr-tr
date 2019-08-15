@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737159"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951863"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -138,6 +138,50 @@ Veri diski 1 | 4095 GB | 30 GB
 Veri diski 2 | 4095 GB | 0 GB
 
 Bu durumda sanal makinenin gerçek boyutu 17 GB + 30 GB + 0 GB = 47 GB 'dir. Bu korumalı örnek boyutu (47 GB) aylık faturanın temelini oluşturur. VM 'deki veri miktarı büyüdükçe, faturalandırma değişiklikleri için kullanılan korumalı örnek boyutu.
+
+<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Sınırlı genel önizleme: Disk boyutlarına göre 30 TB 'a kadar VM yedeklemesi
+
+Azure Backup artık boyutu 30 TB 'a kadar olan daha büyük ve daha güçlü [Azure yönetilen disklerinin](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) sınırlı bir genel önizlemesini desteklemektedir. Bu önizleme, yönetilen sanal makineler için üretim düzeyi desteği sağlar.
+
+Devam eden yedeklemeleriniz üzerinde herhangi bir etki olmadan önizlemeye sorunsuzca kayıt yapabilirsiniz. Abonelik önizlemeye kaydedildikten sonra, disk boyutları 30 TB 'a kadar olan tüm sanal makinelerin başarılı bir şekilde yedeklenmesi gerekir. Önizlemeye kaydolmak için:
+ 
+Aşağıdaki cmdlet 'leri yükseltilmiş bir PowerShell terminalden yürütün:
+
+1. Azure hesabınızda oturum açın.
+
+    ```powershell
+    PS C:> Login-AzureRmAccount
+    ```
+
+2. Yükseltme için kaydolmak istediğiniz aboneliği seçin:
+
+    ```powershell
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
+3. Bu aboneliği Önizleme programına Kaydet: 
+
+    ```powershell
+    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+    Aboneliğin önizlemeye kaydolması için 30 dakika bekleyin. 
+
+ 4. Durumu denetlemek için aşağıdaki cmdlet 'leri çalıştırın:
+
+    ```powershell
+    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
+    ```
+5. Aboneliğin kayıtlı olarak gösterdiği zaman aşağıdaki komutu çalıştırın:
+    
+    ```powershell
+    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    ```
+
+> [!NOTE]
+> 4 TB 'tan büyük disklere sahip şifrelenmiş VM 'Ler Bu önizlemede desteklenmez.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

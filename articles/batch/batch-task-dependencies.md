@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a0a258630fcb3639f20de4c72591611b7af15b90
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68322970"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturma
@@ -163,7 +163,7 @@ Bağımlılık eylemi, üst görevin çıkış koşulunu temel alır. Aşağıda
 
 .NET ' te bir bağımlılık eylemi belirtmek için [Exitoptions][net_exitoptions]' ı ayarlayın. Çıkış koşulunun [DependencyAction][net_dependencyaction] özelliği. **DependencyAction** özelliği iki değerden birini alır:
 
-- **DependencyAction** özelliğinin uygun olarak ayarlanması, üst görev belirtilen bir hatayla sonlandırılmadığı takdirde bağımlı görevlerin çalışmaya uygun **olduğunu gösterir.**
+- **DependencyAction** özelliğinin uygun olarak ayarlanması , üst görev belirtilen bir hatayla sonlandırılmadığı takdirde bağımlı görevlerin çalışmaya uygun olduğunu gösterir.
 - **DependencyAction** özelliğinin **blok** olarak ayarlanması bağımlı görevlerin çalıştırmaya uygun olmadığını gösterir.
 
 **DependencyAction** özelliği için varsayılan ayar, çıkış kodu 0 ve diğer tüm çıkış koşulları için **engellenir** .

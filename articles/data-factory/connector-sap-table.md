@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720656"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967400"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
 
@@ -201,7 +201,7 @@ Ve SAP BW açık hub bağlantılı hizmetine veri kopyalamak için aşağıdaki 
 
 Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md). Aşağıdaki bölüm, SAP tablo kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="sap-table-as-a-source"></a>Kaynak olarak SAP tablosu
+### <a name="sap-table-as-source"></a>Kaynak olarak SAP tablosu
 
 Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
@@ -223,7 +223,7 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 <br/>
 >`partitionLowerBound``maxPartitionsNumber` `partitionUpperBound` Örnek olarak, her bölümdeki satır sayısı şu formül ile hesaplanır: (ve arasında kalan toplam satır)/. `partitionOnInt` `partitionOption`<br/>
 <br/>
->Kopyalamanın hızlandırılmasına yönelik bölümleri paralel olarak çalıştırmak için, `maxPartitionsNumber` `parallelCopies` özelliğinin değerinin birden fazla olmasını öneririz. Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance.md#parallel-copy).
+>Kopyayı hızlandırmak için veri bölümlerini paralel olarak yüklemek için, paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayarla denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, SAP tabloınızdan verilerin bir kısmını alır. Özelliğin değerinin birden çok `maxPartitionsNumber` değerini yapmanızı kesinlikle öneririz. `parallelCopies`
 
 İçinde `rfcTableOptions`, satırları filtrelemek için aşağıdaki genel SAP sorgu işleçlerini kullanabilirsiniz:
 
@@ -269,7 +269,8 @@ Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

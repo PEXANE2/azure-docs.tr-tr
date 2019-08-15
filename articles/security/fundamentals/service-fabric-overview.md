@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 75888d9da0d8a6e76e787b7d3867e94eefff337e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726583"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934583"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric güvenliğine genel bakış
-[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) , ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştıran bir dağıtılmış sistemler platformudur. Service Fabric, bulut uygulamaları geliştirme ve yönetme sorunlarını giderir. Geliştiriciler ve Yöneticiler, karmaşık altyapı sorunlarından kaçınıp ölçeklenebilir ve güvenilir olan görev açısından kritik, zorlu iş yüklerini uygulamaya odaklanabilirler.
+[Azure Service Fabric](../../service-fabric/service-fabric-overview.md) , ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştıran bir dağıtılmış sistemler platformudur. Service Fabric, bulut uygulamaları geliştirme ve yönetme sorunlarını giderir. Geliştiriciler ve Yöneticiler, karmaşık altyapı sorunlarından kaçınıp ölçeklenebilir ve güvenilir olan görev açısından kritik, zorlu iş yüklerini uygulamaya odaklanabilirler.
 
 Bu makale, Service Fabric dağıtımına yönelik güvenlik konularına genel bakış.
 
@@ -41,7 +41,7 @@ Windows üzerinde çalışan Azure veya tek başına kümeler üzerinde çalış
 
 Service Fabric, bir küme oluştururken belirttiğiniz X. 509.440 sunucu sertifikalarını kullanır. Bu sertifikaların ne olduğuna ve bunları nasıl elde edebilir veya oluşturabileceğiniz hakkında hızlı bir genel bakış için bkz. [sertifikalarla çalışma](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates).
 
-Azure portal, Azure Resource Manager şablonları veya tek başına JSON şablonu aracılığıyla küme oluştururken sertifika güvenliği yapılandırırsınız. Birincil bir sertifika ve sertifika rollover 'lar için kullanılan isteğe bağlı bir ikincil sertifika belirtebilirsiniz. Belirttiğiniz birincil ve ikincil sertifikalar, yönetici istemcisinden ve [istemciden düğüme güvenlik](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)için belirttiğiniz salt okunurdur istemci sertifikalarından farklı olmalıdır.
+Azure portal, Azure Resource Manager şablonları veya tek başına JSON şablonu aracılığıyla küme oluştururken sertifika güvenliği yapılandırırsınız. Birincil bir sertifika ve sertifika rollover 'lar için kullanılan isteğe bağlı bir ikincil sertifika belirtebilirsiniz. Belirttiğiniz birincil ve ikincil sertifikalar, yönetici istemcisinden ve [istemciden düğüme güvenlik](../../service-fabric/service-fabric-cluster-security.md)için belirttiğiniz salt okunurdur istemci sertifikalarından farklı olmalıdır.
 
 ### <a name="client-to-node-security"></a>İstemciden düğüme güvenlik
 İstemci kimliklerini kullanarak istemciden düğüme güvenliği yapılandırırsınız. Bir istemci ve küme arasında güven oluşturmak için, kümeyi, hangi istemci kimliklerinin güvenebileceği hakkında bilgi sahibi olacak şekilde yapılandırmanız gerekir.
@@ -59,11 +59,11 @@ Azure portal, Kaynak Yöneticisi şablonları veya tek başına JSON şablonu ar
 
 Yönetici sertifikasını kullanarak kümeye bağlanan istemciler, yönetim özelliklerine tam erişime sahiptir. Salt okuma Kullanıcı istemci sertifikasını kullanarak kümeye bağlanan istemciler yalnızca yönetim özelliklerine okuma erişimine sahiptir. Diğer bir deyişle, bu sertifikalar rol tabanlı erişim denetimi (RBAC) için kullanılır.
 
-Bir kümede sertifika güvenliğini yapılandırma hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonu kullanarak küme ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm).
+Bir kümede sertifika güvenliğini yapılandırma hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonu kullanarak küme ayarlama](../../service-fabric/service-fabric-cluster-creation-via-arm.md).
 
 #### <a name="client-to-node-azure-active-directory-security"></a>İstemciden düğüme Azure Active Directory güvenliği
 
-Azure üzerinde çalışan kümeler Azure Active Directory (Azure AD) kullanarak yönetim uç noktalarına erişimi de güvenli hale getirebilirsiniz. Gerekli Azure Active Directory yapıtları oluşturma, küme oluşturma sırasında doldurma ve bu kümelere bağlanma hakkında daha fazla bilgi için, bkz. [bir Azure Resource Manager şablonu kullanarak küme ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm).
+Azure üzerinde çalışan kümeler Azure Active Directory (Azure AD) kullanarak yönetim uç noktalarına erişimi de güvenli hale getirebilirsiniz. Gerekli Azure Active Directory yapıtları oluşturma, küme oluşturma sırasında doldurma ve bu kümelere bağlanma hakkında daha fazla bilgi için, bkz. [bir Azure Resource Manager şablonu kullanarak küme ayarlama](../../service-fabric/service-fabric-cluster-creation-via-arm.md).
 
 Azure AD, kuruluşların (kiracılar olarak bilinir) uygulamalara Kullanıcı erişimini yönetmesine olanak sağlar. Web tabanlı bir oturum açma ARABIRIMI ve yerel istemci deneyimine sahip uygulamalar vardır.
 
@@ -74,7 +74,7 @@ Azure kümelerinde, düğümden düğüme güvenlik için istemcilerin ve sertif
 Windows Server 2012 R2 ve Active Directory içeren tek başına Windows Server kümeleri için, grup yönetilen hizmet hesapları (gMSAs) ile Windows güvenliği kullanmanızı öneririz. Aksi takdirde, Windows Güvenlik ile Windows hesaplarını kullanın.
 
 ## <a name="understand-monitoring-and-diagnostics-in-service-fabric"></a>Service Fabric izleme ve tanılamayı anlama
-[İzleme ve tanılama](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview) , her türlü ortamda uygulama ve hizmet geliştirmek, test etmek ve dağıtmak için önemlidir. Service Fabric çözümler, uygulama ve hizmetlerin yerel bir geliştirme ortamında veya üretimde beklendiği gibi çalışmasını sağlamak için izleme ve tanılama uyguladığınızda en iyi şekilde çalışır.
+[İzleme ve tanılama](../../service-fabric/service-fabric-diagnostics-overview.md) , her türlü ortamda uygulama ve hizmet geliştirmek, test etmek ve dağıtmak için önemlidir. Service Fabric çözümler, uygulama ve hizmetlerin yerel bir geliştirme ortamında veya üretimde beklendiği gibi çalışmasını sağlamak için izleme ve tanılama uyguladığınızda en iyi şekilde çalışır.
 
 Bir güvenlik perspektifinden, izlemenin ve Tanılamanın ana amaçları şunlardır:
 
@@ -84,13 +84,13 @@ Bir güvenlik perspektifinden, izlemenin ve Tanılamanın ana amaçları şunlar
 
 İzleme ve tanılama iş akışı üç adımdan oluşur:
 
-1.  **Olay oluşturma**: Olay oluşturma, hem altyapı (küme) düzeyinde hem de uygulama/hizmet düzeyinde olayları (Günlükler, izlemeler, özel olaylar) içerir. Sunulan özellikleri ve daha fazla izleme eklemeyi anlamak için [altyapı düzeyinde olaylar](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) ve [uygulama düzeyi olaylar](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) hakkında daha fazla bilgi edinin.
+1.  **Olay oluşturma**: Olay oluşturma, hem altyapı (küme) düzeyinde hem de uygulama/hizmet düzeyinde olayları (Günlükler, izlemeler, özel olaylar) içerir. Sunulan özellikleri ve daha fazla izleme eklemeyi anlamak için [altyapı düzeyinde olaylar](../../service-fabric/service-fabric-diagnostics-event-generation-infra.md) ve [uygulama düzeyi olaylar](../../service-fabric/service-fabric-diagnostics-event-generation-app.md) hakkında daha fazla bilgi edinin.
 
-2.  **Olay toplama**: Oluşturulan olayların görüntülenebilmesi için toplanıp toplanmaları gerekir. Genellikle [Azure tanılama](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (aracı tabanlı günlük koleksiyonuna benzer) veya [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (işlem içi günlük koleksiyonu) kullanmanızı öneririz.
+2.  **Olay toplama**: Oluşturulan olayların görüntülenebilmesi için toplanıp toplanmaları gerekir. Genellikle [Azure tanılama](../../service-fabric/service-fabric-diagnostics-event-aggregation-wad.md) (aracı tabanlı günlük koleksiyonuna benzer) veya [EventFlow](../../service-fabric/service-fabric-diagnostics-event-aggregation-eventflow.md) (işlem içi günlük koleksiyonu) kullanmanızı öneririz.
 
-3.  **Analiz**: Analiz ve görüntü sağlamak için olayların bir biçimde görselleştirildiği ve erişilebilir olması gerekir. İzleme ve tanılama verilerinin çözümlenmesi ve görselleştirilmesi için çeşitli platformlar vardır. [Azure izleyici günlükleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) ve [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) önerilir, çünkü Service Fabric iyi bir şekilde tümleşir.
+3.  **Analiz**: Analiz ve görüntü sağlamak için olayların bir biçimde görselleştirildiği ve erişilebilir olması gerekir. İzleme ve tanılama verilerinin çözümlenmesi ve görselleştirilmesi için çeşitli platformlar vardır. [Azure izleyici günlükleri](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) ve [Azure Application Insights](../../service-fabric/service-fabric-diagnostics-event-analysis-appinsights.md) önerilir, çünkü Service Fabric iyi bir şekilde tümleşir.
 
-[Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) 'yi bir Service Fabric kümesinin oluşturulduğu birçok Azure kaynağını izlemek için de kullanabilirsiniz.
+[Azure izleyici](../../azure-monitor/overview.md) 'yi bir Service Fabric kümesinin oluşturulduğu birçok Azure kaynağını izlemek için de kullanabilirsiniz.
 
 İzleme, hizmetler genelinde sistem durumunu ve yüklemeyi izleyebilecek ve sistem durumu modeli hiyerarşisindeki herhangi bir şey için sistem durumunu rapor eden ayrı bir hizmettir. Bir izleme kullanmak, tek bir hizmetin görünümüne göre algılanamayan hataları önlemeye yardımcı olabilir. 
 
@@ -109,17 +109,17 @@ Aşağıdaki tabloda, küme kurulumunda ihtiyacınız olan sertifikalar listelen
 |Sunucusertifikası| Bu sertifika, bu kümeye bağlanmayı denediğinde istemciye sunulur. İki sunucu sertifikası kullanabilirsiniz: birincil sertifika ve yükseltme için ikincil.|
 |Clientcertificateparmak Izleri|  Bu, kimliği doğrulanmış istemcilere yüklenecek bir sertifika kümesidir.|
 |ClientCertificateCommonNames|  Bu, CertificateCommonName için ilk istemci sertifikasının ortak adıdır. Certificateıssuerparmak Izi, bu sertifikayı veren için parmak izi.|
-|Smarproxycertificate|   Bu, [ters proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)'nizin güvenliğini sağlamak için belirtebileceğiniz isteğe bağlı bir sertifikadır.|
+|Smarproxycertificate|   Bu, [ters proxy](../../service-fabric/service-fabric-reverseproxy.md)'nizin güvenliğini sağlamak için belirtebileceğiniz isteğe bağlı bir sertifikadır.|
 
-Sertifikaların güvenliğini sağlama hakkında daha fazla bilgi için bkz. [X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)getirme.
+Sertifikaların güvenliğini sağlama hakkında daha fazla bilgi için bkz. [X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale](../../service-fabric/service-fabric-windows-cluster-x509-security.md)getirme.
 
 ## <a name="understand-role-based-access-control"></a>Rol tabanlı erişim denetimini anlama
-Yönetici ve Kullanıcı istemci rollerini, her biri için ayrı kimlikler (Sertifikalar dahil) sağlayarak küme oluşturma sırasında belirtirsiniz. Varsayılan erişim denetimi ayarları ve varsayılan ayarların nasıl değiştirileceği hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles).
+Yönetici ve Kullanıcı istemci rollerini, her biri için ayrı kimlikler (Sertifikalar dahil) sağlayarak küme oluşturma sırasında belirtirsiniz. Varsayılan erişim denetimi ayarları ve varsayılan ayarların nasıl değiştirileceği hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı erişim denetimi](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 ## <a name="secure-standalone-clusters-by-using-windows-security"></a>Windows güvenliğini kullanarak tek başına kümeleri güvenli hale getirme
 Service Fabric kümesine yetkisiz erişimi engellemek için, kümeyi güvenli hale getirin. Küme üretim iş yüklerini çalıştırdığında güvenlik özellikle önemlidir. ClusterConfig. JSON dosyasındaki Windows güvenliğini kullanarak düğümden düğüme ve istemciden düğüme güvenliği yapılandırırsınız.
 
-Service Fabric bir gMSA altında çalışması gerektiğinde, [Clustergmsaıdentity](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security)ayarlayarak düğümden düğüme güvenliği yapılandırırsınız. Düğümler arasında güven ilişkileri oluşturmak için, onları birbirleriyle haberdar etmeniz gerekir.
+Service Fabric bir gMSA altında çalışması gerektiğinde, [Clustergmsaıdentity](../../service-fabric/service-fabric-windows-cluster-windows-security.md)ayarlayarak düğümden düğüme güvenliği yapılandırırsınız. Düğümler arasında güven ilişkileri oluşturmak için, onları birbirleriyle haberdar etmeniz gerekir.
 
 Bir Active Directory etki alanı içinde makine grubu kullanmak istiyorsanız, Kümekimliği ayarlayarak düğümden düğüme güvenliği yapılandırırsınız. Daha fazla bilgi için bkz. [Active Directory makine grubu oluşturma](https://msdn.microsoft.com/library/aa545347).
 
@@ -132,14 +132,14 @@ Clienentidentities kullanarak istemciden düğüme güvenliği yapılandırırs�
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında gizli dizileri yönetme
 Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir.
 
-Anahtarları ve gizli dizileri yönetmek için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) kullanabilirsiniz. Ancak, bir uygulamadaki gizli dizi kullanımı belirli bir bulut platformuna bağlı değildir. Uygulamaları herhangi bir yerde barındırılan bir kümeye dağıtabilirsiniz. Bu akışta dört ana adım vardır:
+Anahtarları ve gizli dizileri yönetmek için [Azure Key Vault](../../key-vault/key-vault-whatis.md) kullanabilirsiniz. Ancak, bir uygulamadaki gizli dizi kullanımı belirli bir bulut platformuna bağlı değildir. Uygulamaları herhangi bir yerde barındırılan bir kümeye dağıtabilirsiniz. Bu akışta dört ana adım vardır:
 
 1.  Veri şifreleme sertifikası alın.
 2.  Sertifikayı kümenize yükler.
 3.  Bir uygulamayı sertifikayla dağıtmakta ve bir hizmetin Settings. xml yapılandırma dosyasına eklerken gizli değerleri şifreleyin.
 4.  Şifrelenmiş değerleri, aynı şifreleme sertifikasıyla şifrelerini çözerek Settings. xml dosyasından okuyun.
 
-Daha fazla bilgi için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management).
+Daha fazla bilgi için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](../../service-fabric/service-fabric-application-secret-management.md).
 
 ### <a name="configure-security-policies-for-an-application"></a>Bir uygulama için güvenlik ilkelerini yapılandırma
 Azure Service Fabric güvenliği 'ni kullanarak, farklı Kullanıcı hesapları altında kümede çalışan uygulamaların güvenli hale getirilmesine yardımcı olabilirsiniz. Service Fabric güvenliği, uygulamaların kullanıcı hesapları kapsamında (örneğin, dosyalar, dizinler ve sertifikalar) dağıtımı sırasında kullandığı kaynakların korunmasına da yardımcı olur. Bu, paylaşılan barındırılan bir ortamda bile çalışan uygulamaları daha güvenli hale getirir.
@@ -153,8 +153,8 @@ Güvenlik ilkelerini yapılandırmaya yönelik görevler şunları içerir:
 -   HTTP ve HTTPS uç noktaları için güvenlik erişimi ilkesi atama
 
 ## <a name="secure-communication-for-services"></a>Hizmetler için güvenli iletişim
-Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Daha fazla bilgi için bkz. [hizmet Için güvenli hizmet uzaktan iletişim iletişimleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication).
+Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Daha fazla bilgi için bkz. [hizmet Için güvenli hizmet uzaktan iletişim iletişimleri](../../service-fabric/service-fabric-reliable-services-secure-communication.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Küme güvenliği hakkında kavramsal bilgiler için bkz. [Azure Resource Manager kullanarak Service Fabric kümesi oluşturma](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) ve [Azure Portal kullanarak Service Fabric kümesi oluşturma](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal).
-- Service Fabric 'de küme güvenliği hakkında daha fazla bilgi için bkz. [Service Fabric kümesi güvenlik senaryoları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
+- Küme güvenliği hakkında kavramsal bilgiler için bkz. [Azure Resource Manager kullanarak Service Fabric kümesi oluşturma](../../service-fabric/service-fabric-cluster-creation-via-arm.md) ve [Azure Portal kullanarak Service Fabric kümesi oluşturma](../../service-fabric/service-fabric-cluster-creation-via-portal.md).
+- Service Fabric 'de küme güvenliği hakkında daha fazla bilgi için bkz. [Service Fabric kümesi güvenlik senaryoları](../../service-fabric/service-fabric-cluster-security.md).

@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar ile yönleri göster | Microsoft Docs
-description: JavaScript eşlemesindeki iki konum arasındaki yönleri görüntüleme
+description: Azure Maps web SDK ile Haritada iki konum arasındaki yönleri görüntüleme.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 65f8337585e0a4d1077897274fd07505024af22c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638955"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976484"
 ---
 # <a name="show-directions-from-a-to-b"></a>A'dan B'ye yönleri gösterme
 
@@ -39,7 +39,7 @@ Dördüncü kod bloğu başlangıç ve bitiş [noktaları](https://docs.microsof
 
 Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır. Beşinci kod bloğu oluşturur ve haritaya bir sembol katmanı ekler.
 
-Altıncı kod bloğu, [hizmet modülünün](how-to-use-services-module.md)bir parçası olan Azure Maps yönlendirme hizmeti 'ni sorgular. RouteURL 'nin [Hesaplayısınuyönleri](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) yöntemi başlangıç ve bitiş noktaları arasında bir yol almak için kullanılır. Yanıttan bir geojson Özellik koleksiyonu daha sonra `geojson.getFeatures()` yöntemi kullanılarak ayıklanır ve veri kaynağına eklenir. Ardından yanıtı haritada bir yol olarak işler. Haritaya satır ekleme hakkında daha fazla bilgi için bkz. [haritaya satır ekleme](./map-add-shape.md#addALine).
+Altıncı kod bloğu, [hizmet modülünün](how-to-use-services-module.md)bir parçası olan Azure Maps yönlendirme hizmeti 'ni sorgular. RouteURL 'nin [Hesaplayısınuyönleri](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) yöntemi başlangıç ve bitiş noktaları arasında bir yol almak için kullanılır. Yanıttan bir geojson Özellik koleksiyonu daha sonra `geojson.getFeatures()` yöntemi kullanılarak ayıklanır ve veri kaynağına eklenir. Ardından yanıtı haritada bir yol olarak işler. Haritaya satır ekleme hakkında daha fazla bilgi için bkz. [haritaya satır ekleme](map-add-line-layer.md).
 
 Son kod bloğu haritanın [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın sınırlarını ayarlar.
 
@@ -62,7 +62,7 @@ Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-contr
 
 Sonraki kod bloğu, Başlangıç `SouthWest` ve `NorthEast` hedef noktalarından oluşur ve bu noktaları oluşturur ve haritanın [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın sınırlarını ayarlar.
 
-Son kod bloğu, [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)'sine bir arama isteği yapmak IÇIN [getirme API](https://fetch.spec.whatwg.org/) 'sini kullanır. Yanıt daha sonra ayrıştırılır. Yanıt başarılı olduysa, enlem ve boylam bilgileri, bu noktaları bağlayarak bir satırı dizi oluşturmak için kullanılır. Daha sonra, satır verileri haritada yolu işlemek için veri kaynağına eklenir. Yönergeler için [haritada satır ekleme '](./map-add-shape.md#addALine) ye bakabilirsiniz.
+Son kod bloğu, [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)'sine bir arama isteği yapmak IÇIN [getirme API](https://fetch.spec.whatwg.org/) 'sini kullanır. Yanıt daha sonra ayrıştırılır. Yanıt başarılı olduysa, enlem ve boylam bilgileri, bu noktaları bağlayarak bir satırı dizi oluşturmak için kullanılır. Daha sonra, satır verileri haritada yolu işlemek için veri kaynağına eklenir. Yönergeler için [haritada satır ekleme '](map-add-line-layer.md) ye bakabilirsiniz.
 
 Yol sorgusu, veri kaynağı, simge ve çizgi katmanları ve kamera sınırları, eşlemenin tam olarak yüklendikten sonra sonuçların görüntülenmesini sağlamak için haritanın [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) içinde oluşturulur ve ayarlanır.
 

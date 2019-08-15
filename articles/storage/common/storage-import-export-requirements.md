@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147942"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967865"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure içeri/dışarı aktarma sistem gereksinimleri
 
@@ -41,9 +41,9 @@ Sabit sürücüleri aşağıdaki WAImportExport aracını kullanarak hazırlaman
 
 Azure içeri/dışarı aktarma hizmeti, aşağıdaki türlerde depolama hesapları destekler:
 
-- Standart genel amaçlı v2 depolama hesaplarının (çoğu senaryo için önerilir)
+- Standart Genel Amaçlı v2 depolama hesapları (çoğu senaryo için önerilir)
 - Blob Depolama Hesapları
-- Genel amaçlı v1 depolama hesaplarında (hem Klasik hem de Azure Resource Manager dağıtımları) 
+- Genel Amaçlı v1 depolama hesapları (klasik veya Azure Resource Manager dağıtımları), 
 
 Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabı genel bakış](storage-account-overview.md).
 
@@ -72,11 +72,15 @@ Azure içeri/dışarı aktarma hizmeti için veri kopyalamak için desteklenen d
 Aşağıdaki listede yer alan disk, içeri/dışarı aktarma hizmeti ile kullanım için desteklenir.
 
 
-|Disk türü  |Boyut  |Desteklenen |Desteklenmiyor  |
-|---------|---------|---------|---------|
-|SSD    |   2,5"      |SATA III          |  USB       |
-|HDD     |  2,5"<br>3,5"       |SATA II, SATA III         |Yerleşik bir USB bağdaştırıcısı ile dış HDD <br> Bir dış HDD büyük küçük harfleri içindeki diski         |
+|Disk türü  |Boyut  |Desteklenen |
+|---------|---------|---------|
+|SSD    |   2,5"      |SATA III          | 
+|HDD     |  2,5"<br>3,5"       |SATA II, SATA III         |
 
+Aşağıdaki disk türleri desteklenmez:
+- USBs.
+- Yerleşik USB bağdaştırıcısı ile harici HDD.
+- Harici bir HDD 'nin kasasını içinde olan diskler.
 
 Tek içeri/dışarı aktarma işi sahip olabilir:
 - En fazla 10 HDD/SSD.

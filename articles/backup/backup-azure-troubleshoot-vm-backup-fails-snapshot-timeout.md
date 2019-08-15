@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688972"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952055"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: Aracı veya uzantıyla ilgili sorunlar
 
@@ -29,12 +29,10 @@ Bu makalede, VM Aracısı ve uzantısıyla iletişim ile ilgili Azure Backup hat
 **Hata kodu**: UserErrorGuestAgentStatusUnavailable <br>
 **Hata iletisi**: VM Aracısı, Azure Backup ile iletişim kuramadı<br>
 
-Yedekleme hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yedekleme, bir noktadan noktaya anlık görüntü almak için VM aracısıyla iletişim kurarak işi başlatır. Aşağıdaki koşullardan herhangi biri, anlık görüntünün tetiklenmesi önlenebilir. Bir anlık görüntü tetiklenmediğinde yedekleme başarısız olabilir. Aşağıdaki sorun giderme adımlarını listelenen sırayla doldurun ve ardından işleminizi yeniden deneyin:<br>
-**Neden 1: [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'Leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**Neden 2: [VM 'de yüklü olan aracı güncel değil (Linux VM 'Leri için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Neden 3: [Anlık görüntü durumu alınamaz veya bir anlık görüntü alınamaz](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**Neden 4: [Yedekleme Uzantısı güncelleştirme veya yükleme başarısız oluyor](#the-backup-extension-fails-to-update-or-load)**  
-**Neden 5: [VM 'nin internet erişimi yok](#the-vm-has-no-internet-access)**
+Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yüklü değil ve Azure Backup hizmetinin anlık görüntüleri tetiklemesine engel olabilir.  
+    
+- VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa **aracıyı yeniden başlatın** ve yedekleme işlemini yeniden deneyin (geçici yedeklemeyi deneyin). Aracıyı yeniden başlatma adımları için bkz. [Windows VM 'leri](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) veya [Linux VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). 
+- VM Aracısı yüklü değilse veya güncel değilse, VM aracısını yükleyip güncelleştirin ve yedekleme işlemini yeniden deneyin. Aracıyı yüklemeye/güncelleştirmeye yönelik adımlar için bkz. [Windows VM 'leri](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) veya [Linux VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError-anlık görüntü durumu için VM aracısıyla iletişim kurulamadı
 
@@ -44,7 +42,8 @@ Yedekleme hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yedekle
 Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yedekleme işlemi bir zaman noktaya anlık görüntü almak için VM yedekleme uzantısıyla iletişim kurarak işi başlatır. Aşağıdaki koşullardan herhangi biri, anlık görüntünün tetiklenmesi önlenebilir. Anlık görüntü tetiklenmemişse bir yedekleme hatası oluşabilir. Aşağıdaki sorun giderme adımlarını listelenen sırayla doldurun ve ardından işleminizi yeniden deneyin:  
 **Neden 1: [Aracı VM 'ye yüklendi, ancak yanıt vermiyor (Windows VM 'Leri için)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **Neden 2: [VM 'de yüklü olan aracı güncel değil (Linux VM 'Leri için)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Neden 3: [VM 'nin internet erişimi yok](#the-vm-has-no-internet-access)**
+**Neden 3: [Anlık görüntü durumu alınamaz veya bir anlık görüntü alınamaz](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
+**Neden 4: [Yedekleme Uzantısı güncelleştirme veya yükleme başarısız oluyor](#the-backup-extension-fails-to-update-or-load)** 
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>Usererrorrpcollectionlimitulaşıldı-geri yükleme noktası koleksiyonu en yüksek sınırına ulaşıldı
 
@@ -107,7 +106,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: UserErrorUnsupportedDiskSize <br>
 **Hata iletisi**: Şu anda Azure Backup, 4095GB 'tan büyük disk boyutlarını desteklemiyor <br>
 
-Disk boyutu 4095GB 'tan büyük olan VM yedeklenirken yedekleme işlemi başarısız olabilir. 4 TB 'den büyük disklere yönelik Azure Backup büyük disk desteğinin özel önizlemesine kaydolmak için, AskAzureBackupTeam@microsoft.comboyut olarak en fazla 30tb 'a gidin.
+Disk boyutu 4.095 GB 'tan büyük bir VM 'yi yedeklerken yedekleme işlemi başarısız olabilir. 4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [Azure VM yedeklemesi 'ne genel bakış](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>Usererrorbackupoperationınprogress-Şu anda başka bir yedekleme işlemi sürdüğünden yedekleme başlatılamıyor
 

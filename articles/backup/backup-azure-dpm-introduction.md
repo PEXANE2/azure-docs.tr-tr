@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c762054ed0df3a3781dda7057ff8793dbf82565
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 71070a778e54e51cdb528041f746489bb64e979c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689295"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954704"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -91,7 +91,7 @@ Kasada DPM sunucusunu kaydettiğinizde kasa kimlik bilgilerini kullanırsınız.
 
 ### <a name="best-practices-for-vault-credentials"></a>Kasa kimlik bilgileri için en iyi yöntemler
 
-Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal güvenli bir kanaldan indirebilirsiniz:
+Kimlik bilgilerini almak için kasa kimlik bilgileri dosyasını Azure portal güvenli bir kanaldan indirin:
 
 - Kasa kimlik bilgileri yalnızca kayıt iş akışı sırasında kullanılır.
 - Kasa kimlik bilgileri dosyasının güvenli ve güvenliği aşılmış olduğundan emin olmak sizin sorumluluğunuzdadır.

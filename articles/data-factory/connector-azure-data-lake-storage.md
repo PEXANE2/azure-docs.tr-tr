@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a0a7a413d6c3344ccf5c3f7e4d14dd3d82715034
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1882e994c5d062d3ca841025edb61965f7eb0aa0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840314"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967047"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama
 
-Azure Data Lake Storage 2., [Azure Blob depolamada](../storage/blobs/storage-blobs-introduction.md)yerleşik olan büyük veri analizlerine adanmış bir yetenekler kümesidir. Hem dosya sistemi hem de nesne depolama paradigmalarına kullanarak verilerinize arabirim atamak için kullanabilirsiniz.
+Azure Data Lake Storage 2. (ADLS 2.), [Azure Blob depolamada](../storage/blobs/storage-blobs-introduction.md)yerleşik olan büyük veri analizlerine adanmış bir dizi özellik kümesidir. Hem dosya sistemi hem de nesne depolama paradigmalarına kullanarak verilerinize arabirim atamak için kullanabilirsiniz.
 
 Bu makalede, Azure Data Lake Storage 2. verileri içine ve öğesinden kopyalama özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
 
@@ -73,6 +73,9 @@ Depolama hesabı anahtarı kimlik doğrulaması kullanmak için aşağıdaki öz
 | url | Düzenine sahip Data Lake Storage 2. için uç nokta `https://<accountname>.dfs.core.windows.net`. | Evet |
 | accountKey | Data Lake Storage 2. için hesap anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Veri depolubir özel ağda ise Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını kullanabilirsiniz. Bu özellik belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
+
+>[!NOTE]
+>Hesap anahtarı kimlik doğrulaması kullanılırken ikincil ADLS dosya sistemi uç noktası desteklenmez. Diğer kimlik doğrulama türlerini kullanabilirsiniz.
 
 **Örnek:**
 

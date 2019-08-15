@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 3ad599182191e41ea43d38260692a7ab46e1af6f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845007"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986850"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>HTTPS üzerinden özel etki alanlarıyla bloblara erişmek için Azure CDN kullanma
 
@@ -40,7 +40,7 @@ Azure CDN, aktarım sırasında Web uygulaması verilerinizin gizliliğini ve ve
 
 ## <a name="shared-access-signatures"></a>Paylaşılan erişim imzaları
 
-Varsayılan olarak, BLOB depolama uç noktaları anonim okuma erişimine izin vermez. BLOB depolama uç noktanız anonim okuma erişimine izin vermeyecek şekilde yapılandırıldıysa, özel etki alanınız için her istekte bir [paylaşılan erişim imza](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) belirteci sağlayın. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](storage-manage-access-to-resources.md).
+Varsayılan olarak, BLOB depolama uç noktaları anonim okuma erişimine izin vermez. BLOB depolama uç noktanız anonim okuma erişimine izin vermeyecek şekilde yapılandırıldıysa, özel etki alanınız için her istekte bir [paylaşılan erişim imza](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) belirteci sağlayın. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](storage-manage-access-to-resources.md).
 
 Azure CDN, paylaşılan erişim imzası belirtecine eklenen kısıtlamalara uymaz. Örneğin, tüm paylaşılan erişim imzası belirteçleri sona erer. İçerik Azure CDN Edge düğümlerinden temizlenene kadar, zaman aşımına uğradı bir paylaşılan erişim imzasıyla içeriğe erişmeye devam edebilirsiniz. Önbellek yanıtı üst bilgisini ayarlayarak verilerin Azure CDN üzerinde ne kadar süreyle önbelleğe alınacağını denetleyebilirsiniz. Hakkında bilgi edinmek için bkz. [Azure CDN Azure Storage bloblarının kullanım süresini yönetme](../../cdn/cdn-manage-expiration-of-blob-content.md).
 

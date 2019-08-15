@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: dd678fb784fa7587912f113a7c00bebca76efce8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7bf9c338315f5013be815625b06d633567a801a0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857520"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912519"
 ---
 Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izleme anahtarı başına bazı sınırlar vardır. Limitler seçtiğiniz [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/application-insights/) bağlıdır.
 
@@ -23,7 +23,8 @@ Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izlem
 | Azaltma | 32.000 olay/saniye | Sınır bir dakika içinde ölçülür.
 | Veri saklama | 90 gün | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/app/analytics.md) ve [Ölçüm Gezgini](../articles/azure-monitor/app/metrics-explorer.md) içindir.
 | [Çok adımlı kullanılabilirlik testi](../articles/azure-monitor/app/availability-multistep.md) ayrıntılı sonuçlarını saklama | 90 gün | Bu kaynak her adımın ayrıntılı sonuçlarını verir.
-| En fazla olay boyutu | 64,000 |
+| Maksimum telemetri öğesi boyutu | 64 kB |
+| Toplu iş başına maksimum telemetri öğesi | 64 K |
 | Özellik ve ölçüm adı uzunluğu | 150 | Bkz. [tür şemaları](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
 | Özellik değeri dize uzunluğu | 8,192  | Bkz. [tür şemaları](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
 | İzleme ve özel durum iletisi uzunluğu | 32.768  | Bkz. [tür şemaları](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).

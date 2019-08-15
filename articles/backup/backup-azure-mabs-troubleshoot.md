@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689265"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954675"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -55,13 +55,13 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 
 | Çalışma | Hata ayrıntıları | Geçici Çözüm |
 | --- | --- | --- |
-| Geri yükle | **Hata kodu**: CBPServerRegisteredVaultDontMatchWithCurrent/kasa kimlik bilgileri hatası: 100110 <br/> <br/>**Hata iletisi**: Belirtilen kasa kimlik bilgileri, sunucunun kayıtlı olduğu kasadan farklı | **Neden**: Bu sorun, dış DPM kurtarma seçeneğini kullanarak dosyaları özgün sunucudan alternatif sunucuya geri yüklemeye çalışırken ve Kurtarılmakta olan sunucu ve verilerin yedeklendiği orijinal sunucu aynı ile ilişkilendirilmediğinde oluşur. Kurtarma hizmeti Kasası.<br/> <br/>**Geçici çözüm** Bu sorunu çözmek için hem özgün hem de alternatif sunucunun aynı kasaya kayıtlı olduğundan emin olun.|
+| Geri yükle | **Hata kodu**: CBPServerRegisteredVaultDontMatchWithCurrent/kasa kimlik bilgileri hatası: 100110 <br/> <br/>**Hata iletisi**: Belirtilen kasa kimlik bilgileri, sunucunun kayıtlı olduğu kasadan farklı | **Neden**: Bu sorun, dış DPM kurtarma seçeneğini kullanarak dosyaları özgün sunucudan alternatif sunucuya geri yüklemeye çalışırken ve Kurtarılmakta olan sunucu ve verilerin yedeklendiği orijinal sunucu aynı ile ilişkili değilse oluşur. Kurtarma hizmeti Kasası.<br/> <br/>**Geçici çözüm** Bu sorunu çözmek için hem özgün hem de alternatif sunucunun aynı kasaya kayıtlı olduğundan emin olun.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM için çevrimiçi kurtarma noktası oluşturma işleri başarısız oluyor
 
 | Çalışma | Hata ayrıntıları | Geçici Çözüm |
 | --- | --- | --- |
-| Yedekle | VMware VM için çevrimiçi kurtarma noktası oluşturma işleri başarısız oluyor. DPM, şifre izleme bilgilerini almaya çalışırken VMware 'den bir hatayla karşılaştı. HataKodu-FileFaultFault (KIMLIK 33621) |  <ol><li> Etkilenen VM 'Ler için VMware üzerinde CTK 'yi sıfırlayın.</li> <li>Bağımsız diskin VMware üzerinde yerinde olmadığından emin olun.</li> <li>Etkilenen VM 'Ler için korumayı durdurun ve **Yenile** düğmesiyle yeniden koruyun. </li><li>Etkilenen VM 'Ler için bir CC çalıştırın.</li></ol>|
+| Yedekle | VMware VM için çevrimiçi kurtarma noktası oluşturma işleri başarısız oluyor. DPM, şifre izleme bilgilerini almaya çalışırken VMware 'den bir hatayla karşılaştı. HataKodu-FileFaultFault (KIMLIK 33621) |  <ol><li> Etkilenen VM 'Ler için VMware üzerinde CTK 'yi sıfırlayın.</li> <li>Bağımsız diskin VMware üzerinde yerinde olmadığından emin olun.</li> <li>Etkilenen VM 'Ler için korumayı durdurun ve **Yenile** düğmesini kullanarak yeniden koruyun. </li><li>Etkilenen VM 'Ler için bir CC çalıştırın.</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Sunucuda DPM aracı Düzenleyicisi hizmetindeki bir iletişim hatası nedeniyle Aracı işlemi başarısız oldu
@@ -102,7 +102,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 | Yedekle | İş çalışırken beklenmeyen bir hata oluştu. Cihaz kullanılamıyor. | **Üründe gösterilen önerilen eylem işe yaramazsa aşağıdaki adımları uygulayın:** <br> <ul><li>Koruma grubundaki öğelerde gölge kopya depolama alanını sınırsız olarak ayarlayın ve ardından tutarlılık denetimini çalıştırın.<br></li> VEYA <li>Mevcut koruma grubunu silip birden çok yeni grup oluşturmayı deneyin. Her yeni koruma grubunun içinde ayrı bir öğesi olmalıdır.</li></ul> |
 | Yedekle | Yalnızca sistem durumunu yedekliyorsanız, korunan bilgisayarda sistem durumu yedeklemesini depolamak için yeterli boş alan olduğunu doğrulayın. | <ol><li>Windows Server Yedekleme korunan makinede yüklü olduğunu doğrulayın.</li><li>Korunan bilgisayarda sistem durumu için yeterli alan olduğunu doğrulayın. Bunu doğrulamak için en kolay yol, korunan bilgisayara gidip Windows Server Yedekleme açın, seçimlere tıklayarak, sonra BMR 'yi seçer. Kullanıcı arabirimi daha sonra ne kadar alan gerektiğini söyler. **WSB**YerelYedekleme > **Yedekleme zamanlamasını açın Yedekleme**yapılandırması**tam sunucu** seçin (boyut görüntülenir). >  >  >  Doğrulama için bu boyutu kullanın.</li></ol>
 | Yedekle | BMR için yedekleme hatası | BMR boyutu büyükse, bazı uygulama dosyalarını işletim sistemi sürücüsüne taşıyın ve yeniden deneyin. |
-| Yedekle | Yeni bir Microsoft Azure Backup sunucusundaki bir VMware VM 'yi yeniden koruma seçeneği eklemek için kullanılabilir olarak gösterilmez. | VMware özellikleri, Microsoft Azure Backup sunucusunun eski, Kullanımdan kaldırılmış bir örneğine işaret edilir. Bu sorunu çözmek için:<br><ol><li>VCenter 'da (SC-VMM eşdeğeri), **Özet** sekmesine ve ardından **özel özniteliklere**gidin.</li>  <li>**DPMServer** değerinden eski Microsoft Azure Backup sunucu adını silin.</li>  <li>Yeni Microsoft Azure Backup sunucusuna dönün ve PG 'ı değiştirin.  **Yenile** düğmesini seçtikten sonra, sanal makine, korumaya eklemek için kullanılabilir bir onay kutusuyla birlikte görüntülenir.</li></ol> |
+| Yedekle | Yeni bir Microsoft Azure Backup sunucusundaki bir VMware VM 'yi yeniden koruma seçeneği, eklemek için kullanılabilir olarak gösterilmez. | VMware özellikleri, Microsoft Azure Backup sunucusunun eski, Kullanımdan kaldırılmış bir örneğine işaret edilir. Bu sorunu çözmek için:<br><ol><li>VCenter 'da (SC-VMM eşdeğeri), **Özet** sekmesine ve ardından **özel özniteliklere**gidin.</li>  <li>**DPMServer** değerinden eski Microsoft Azure Backup sunucu adını silin.</li>  <li>Yeni Microsoft Azure Backup sunucusuna dönün ve PG 'ı değiştirin.  **Yenile** düğmesini seçtikten sonra, sanal makine, korumaya eklemek için kullanılabilir bir onay kutusuyla birlikte görüntülenir.</li></ol> |
 | Yedekle | Dosyalara/paylaşılan klasörlere erişirken hata oluştu | Virüsten koruma ayarlarını, [DPM sunucusunda virüsten koruma yazılımı çalıştırma](https://technet.microsoft.com/library/hh757911.aspx)başlıklı TechNet makalesinde önerildiği şekilde değiştirmeyi deneyin.|
 
 
@@ -118,7 +118,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 
 | Çalışma | Hata ayrıntıları | Geçici Çözüm |
 | --- | --- | --- |
-| Office 365 hesabı kullanarak e-posta bildirimleri ayarlama |Hata KIMLIĞI: 2013| **Sağlamak**<br> Office 365 hesabı kullanılmaya çalışılıyor <br>**Önerilen eylem:**<ol><li> Emin olunması gereken ilk şey, DPM sunucunuz için "alma bağlayıcısında anonim geçişe Izin ver" ayarı Exchange 'de ayarlanmıştır. Bunun nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. TechNet 'teki [alma bağlayıcısında anonim geçişe Izin verme](https://technet.microsoft.com/library/bb232021.aspx) .</li> <li> İç SMTP geçişi kullanamaz ve Office 365 sunucunuzu kullanarak ayarlamanız gerekiyorsa, IIS 'yi geçiş olarak ayarlayabilirsiniz. DPM sunucusunu, [IIS kullanarak, SMTP 'Yi O365 'e geçirecek](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)şekilde yapılandırın.<br><br> **ÖNEMLI** \@ *Etkialanı \* Kullanıcı Domain.com biçimini kullandığınızdan emin olun.<br><br><li>DPM 'yi yerel sunucu adını SMTP sunucusu, bağlantı noktası 587 olarak kullanmak için işaretleyin. Sonra, e-postaların gelmesi gereken kullanıcı e-postasına işaret edin.<li> DPM SMTP kurulumu sayfasındaki Kullanıcı adı ve parola, DPM 'nin açık olduğu etki alanındaki bir etki alanı hesabı için olmalıdır. </li><br> **NOT**: SMTP sunucu adresini değiştirirken, yeni ayarlarda değişiklik yapın, ayarlar kutusunu kapatın ve yeni değeri yansıttığından emin olmak için yeniden açın.  Yalnızca değiştirme ve test etme her zaman yeni ayarların etkili olmasına neden olabilir, bu nedenle bu şekilde test etmek en iyi uygulamadır.<br><br>Bu işlem sırasında dilediğiniz zaman, DPM konsolunu kapatarak ve aşağıdaki kayıt defteri anahtarlarını düzenleyerek bu ayarları temizleyebilirsiniz: **HKLM\Software\Microsoft\Microsoft Data Protection manager\notification\ <br/> parolayı ve smtpusername anahtarlarını silin**. Yeniden başlattığınızda onları Kullanıcı arabirimine geri ekleyebilirsiniz.
+| Office 365 hesabı kullanarak e-posta bildirimleri ayarlama |Hata KIMLIĞI: 2013| **Sağlamak**<br> Office 365 hesabı kullanılmaya çalışılıyor <br>**Önerilen eylem:**<ol><li> Emin olunması gereken ilk şey, DPM sunucunuz için "alma bağlayıcısında anonim geçişe Izin ver" ayarı Exchange 'de ayarlanmıştır. Bunun nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. TechNet 'teki [alma bağlayıcısında anonim geçişe Izin verme](https://technet.microsoft.com/library/bb232021.aspx) .</li> <li> İç SMTP geçişi kullanamaz ve Office 365 sunucunuzu kullanarak ayarlamanız gerekiyorsa, IIS 'yi geçiş olarak ayarlayabilirsiniz. DPM sunucusunu, [IIS kullanarak, SMTP 'Yi O365 'e geçirecek](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)şekilde yapılandırın.<br><br> **ÖNEMLI** Etkialanı \ Kullanıcı\@Domain.com biçimini kullandığınızdan emin olun.<br><br><li>DPM 'yi yerel sunucu adını SMTP sunucusu, bağlantı noktası 587 olarak kullanmak için işaretleyin. Sonra, e-postaların gelmesi gereken kullanıcı e-postasına işaret edin.<li> DPM SMTP kurulumu sayfasındaki Kullanıcı adı ve parola, DPM 'nin açık olduğu etki alanındaki bir etki alanı hesabı için olmalıdır. </li><br> **NOT**: SMTP sunucu adresini değiştirirken, yeni ayarlarda değişiklik yapın, ayarlar kutusunu kapatın ve yeni değeri yansıttığından emin olmak için yeniden açın.  Yalnızca değiştirme ve test etme her zaman yeni ayarların etkili olmasına neden olabilir, bu nedenle bu şekilde test etmek en iyi uygulamadır.<br><br>Bu işlem sırasında dilediğiniz zaman, DPM konsolunu kapatarak ve aşağıdaki kayıt defteri anahtarlarını düzenleyerek bu ayarları temizleyebilirsiniz: **HKLM\Software\Microsoft\Microsoft Data Protection manager\notification\ <br/> parolayı ve smtpusername anahtarlarını silin**. Yeniden başlattığınızda onları Kullanıcı arabirimine geri ekleyebilirsiniz.
 
 
 ## <a name="common-issues"></a>Sık karşılaşılan sorunlar
@@ -132,7 +132,7 @@ Hata iletisi | Önerilen eylem |
 -- | --
 Disk yedekleme kopyası geçersiz ya da eksik olduğundan yedekleme başarısız oldu. | Bu sorunu çözmek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin: <br/> 1. Disk kurtarma noktası oluşturma<br/> 2. Veri kaynağı üzerinde tutarlılık denetimi Çalıştır <br/> 3. DataSource 'un korumasını durdurun ve ardından bu veri kaynağının korumasını yeniden yapılandırın
 
-### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>Cbpsourcesnapshotfailedreplicametadatageçersiz
+### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
 
 Hata iletisi | Önerilen eylem |
 -- | --
@@ -148,4 +148,4 @@ Kaynak birim anlık görüntüsü, tutarsız veri kaynağı çoğaltması nedeni
 
 Hata iletisi | Önerilen eylem |
 -- | --
-Disk yedekleme çoğaltması kopyalanamadığından yedekleme başarısız oldu.| Önceki tüm disk yedekleme çoğaltma dosyalarının (. vhdx) çıkarıldığından ve çevrimiçi yedeklemeler sırasında devam eden disk yedeklemesi olmadığından emin olun
+Disk yedekleme çoğaltması kopyalanamadığı için yedekleme başarısız oldu.| Önceki tüm disk yedekleme çoğaltma dosyalarının (. vhdx) çıkarıldığından ve çevrimiçi yedeklemeler sırasında devam eden disk yedeklemesi olmadığından emin olun

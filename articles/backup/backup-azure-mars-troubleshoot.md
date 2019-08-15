@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: 12cc584b27134c5c109f1a95eb4ccf8a7b2f0c64
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2ff5d760579c31c4bd11252e09da1cbb94576229
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689210"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954654"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -181,7 +181,7 @@ MARS Aracısı işlemlerinin başarılı olabilmesi için önbellek klasörünü
 - [Önbellek klasörüne erişimi kısıtlayan başka işlem olmadığından emin olun (örn. virüsten koruma yazılımı)](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
 ### <a name="increase-shadow-copy-storage"></a>Gölge kopya depolama alanını artırma
-Veri kaynağını korumak için yeterli gölge kopya depolama alanı yoksa yedekleme işlemleri başarısız olabilir. Bu sorunu çözmek için, aşağıda gösterildiği gibi, bir korumalı birimdeki gölge kopya depolama alanını aşağıdaki gibi kullanın:
+Veri kaynağını korumak için yeterli gölge kopya depolama alanı yoksa yedekleme işlemleri başarısız olabilir. Bu sorunu çözmek için, aşağıda gösterildiği gibi, aşağıdaki gibi, Korumalı birimdeki gölge kopya depolama alanını yükseltin:
 - Yükseltilmiş komut isteminden geçerli gölge depolama alanını kontrol edin:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
 - Aşağıdaki komutu kullanarak gölge depolama alanını yükseltin:<br/>

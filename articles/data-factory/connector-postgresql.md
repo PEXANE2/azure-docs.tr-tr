@@ -1,6 +1,6 @@
 ---
-title: Gelen PostgreSQL Azure Data Factory kullanarak verileri kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına PostgreSQL bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Data Factory kullanarak PostgreSQL 'Ten veri kopyalama | Microsoft Docs
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak PostgreSQL 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,49 +10,49 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cad0895b63e8c201183284e9d754a482669c48d
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 0efb884de9deaa2784e160785c26d78179da6567
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312011"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966880"
 ---
-# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL verileri kopyalama
-> [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
+# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri kopyalama
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [Geçerli sürüm](connector-postgresql.md)
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de bir PostgreSQL veritabanından veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, bir PostgreSQL veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-PostgreSQL veritabanı'ndan veri her desteklenen havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+PostgreSQL veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
-Özellikle, bu PostgreSQL bağlayıcı PostgreSQL destekler **sürüm 7.4 ve yukarıdaki**.
+Özellikle, bu PostgreSQL Bağlayıcısı PostgreSQL **sürüm 7,4 ve üstünü**destekler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-PostgreSQL veritabanınızın genel olarak erişilebilir durumda değilse, şirket içinde barındırılan tümleştirme çalışma zamanını oluşturan ayarlayın gerekir. Şirket içinde barındırılan tümleştirme çalışma zamanları hakkında bilgi edinmek için [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makalesi. Tümleştirme çalışma zamanı 3.7 sürümünden itibaren yerleşik bir PostgreSQL sürücü sağlar, bu nedenle herhangi bir sürücü el ile yüklemeniz gerekmez.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-3\.7 düşük şirket içinde barındırılan IR sürümü için yüklemeniz gerekir. [Ngpsql PostgreSQL için veri sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 ve tümleştirme çalışma zamanı makinesinde 3.1.9 arasında sürümüne sahip.
+3,7 'den daha düşük olan şirket içinde barındırılan IR sürümü için Integration Runtime makinesindeki 2.0.12 ve 3.1.9 arasında sürümü olan [PostgreSQL Için Ngpsql veri sağlayıcısını](https://go.microsoft.com/fwlink/?linkid=282716) yüklemeniz gerekir.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli PostgreSQL bağlayıcıya tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, PostgreSQL bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-PostgreSQL bağlı hizmeti için aşağıdaki özellikleri destekler:
+PostgreSQL bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **PostgreSql** | Evet |
-| connectionString | PostgreSQL için Azure veritabanı'na bağlanmak için bir ODBC bağlantı dizesi. <br/>Bu alan, Data Factory'de güvenle depolamak için bir SecureString olarak işaretleyin. Parola Azure anahtar kasası ve çekme koyabilirsiniz `password` yapılandırma bağlantı dizesini dışında. Aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault'ta Store](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren makalesi. | Evet |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir değilse), şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure Integration Runtime kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **PostgreSql** | Evet |
+| connectionString | PostgreSQL için Azure veritabanı'na bağlanmak için bir ODBC bağlantı dizesi. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 Bir bağlantı dizesi olan `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Daha fazla özellik durumunuz ayarlayabilirsiniz:
 
@@ -82,7 +82,7 @@ Bir bağlantı dizesi olan `Server=<server>;Database=<database>;Port=<port>;UID=
 }
 ```
 
-**Örnek: parola Azure Key Vault'ta depolama**
+**Örnek: Azure Key Vault parola depola**
 
 ```json
 {
@@ -111,9 +111,9 @@ Bir bağlantı dizesi olan `Server=<server>;Database=<database>;Port=<port>;UID=
 }
 ```
 
-Aşağıdaki yük ile PostgreSQL bağlı hizmeti kullanıyorsanız, hala olarak desteklenmektedir-olan ancak bundan sonra yeni bir tane kullanmak için önerilir.
+Aşağıdaki yük ile PostgreSQL bağlı hizmetini kullanıyorsanız, yeni bir tane olduğu gibi, ileri ' yi kullanmanız önerilir.
 
-**Önceki yükü:**
+**Önceki yük:**
 
 ```json
 {
@@ -139,14 +139,14 @@ Aşağıdaki yük ile PostgreSQL bağlı hizmeti kullanıyorsanız, hala olarak 
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölümde, PostgreSQL veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm, PostgreSQL veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-PostgreSQL verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **RelationalTable**. Aşağıdaki özellikler desteklenir:
+PostgreSQL 'ten veri kopyalamak için, veri kümesinin Type özelliğini **Relationaltable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **RelationalTable** | Evet |
-| tableName | PostgreSQL veritabanı tablosunun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **RelationalTable** | Evet |
+| tableName | PostgreSQL veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
 
@@ -167,19 +167,19 @@ PostgreSQL verileri kopyalamak için dataset öğesinin type özelliği ayarlama
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, PostgreSQL kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, PostgreSQL kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="postgresql-as-source"></a>Kaynak olarak PostgreSQL
 
-PostgreSQL verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **RelationalSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+PostgreSQL 'ten veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Relationalsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **RelationalSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **RelationalSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 > [!NOTE]
-> Şema ve tablo adları büyük/küçük harfe duyarlıdır. İçine alınmaları `""` (çift tırnak) sorgu.
+> Şema ve tablo adları büyük/küçük harfe duyarlıdır. Onları `""` sorguya (çift tırnak) içine alın.
 
 **Örnek:**
 

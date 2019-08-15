@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688718"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954990"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -393,7 +393,7 @@ Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge 
 
 ### <a name="changing-the-policy-of-protection"></a>Koruma ilkesini değiştirme
 
-VM 'nin koruduğu ilkeyi değiştirmek için, [Korumayı etkinleştirme](#enabling-protection-for-the-azure-vm)ile aynı biçimi kullanabilirsiniz. [İstek gövdesinde](#example-request-body) yenı ilke kimliğini sağlamanız ve isteği göndermesi yeterlidir. Örneğin: TestVM ilkesini ' DefaultPolicy ' iken ' ProdPolicy ' olarak değiştirmek için, istek gövdesinde ' ProdPolicy ' kimliğini sağlayın.
+VM 'nin koruduğu ilkeyi değiştirmek için, [Korumayı etkinleştirme](#enabling-protection-for-the-azure-vm)ile aynı biçimi kullanabilirsiniz. [İstek gövdesinde](#example-request-body) yenı ilke kimliğini sağlamanız ve isteği göndermesi yeterlidir. Örneğin: TestVM ilkesini ' DefaultPolicy ' iken ' ProdPolicy ' olarak değiştirmek için, istek gövdesinde ' ProdPolicy ' KIMLIĞINI sağlayın.
 
 ```http
 {

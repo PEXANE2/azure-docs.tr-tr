@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727765"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934828"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory ile parolalar olmadan bir dünya
 
 Parolalarınızla ilişkinizi bölmek zaman alabilir. Parolalar geçmişte bizim için iyi, ancak bugünün dijital çalışma alanında, saldırganlar için görece kolay bir saldırı vektörü haline gelmiştir. Saldırganlar, parolaları beğendiğinde ve Azure Active Directory (Azure AD) ' deki en yaygın olarak reddedilen parolaların, yıl, ay, mevsimi veya yerel bir spor ekibi gibi terimleri dahil etmenizin nedenini öğrenmek zor değildir. Ayrıca, [araştırma](https://aka.ms/passwordguidance) , parola yönetimi için uzunluk gereksinimleri, karmaşıklık gereksinimleri ve değişiklik frekansları gibi geleneksel önerilerin, insan doğası ile ilgili çeşitli nedenlerle onay açısından üretken olduğunu göstermiştir.
 
-Kullanıcı hesaplarının güvenliğini sağlamak için yaygın olarak kullanılan üç tür saldırı, parola spreyi, kimlik avı ve ihlalin yeniden yürütme. [Akıllı kilitleme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout), [yasaklanmış parolalar](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)ve [parola koruması](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) gibi Azure AD özellikleri, bu tür saldırılara karşı korumaya yardımcı olabilir. Benzer şekilde, [Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) (MFA) veya iki adımlı doğrulama uygulamak, ikinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar. Ancak uzun çalıştırmada, parolasız bir çözüm, en güvenli kimlik doğrulama yöntemini sağlamaya yönelik en iyi çözümdür.
+Kullanıcı hesaplarının güvenliğini sağlamak için yaygın olarak kullanılan üç tür saldırı, parola spreyi, kimlik avı ve ihlalin yeniden yürütme. [Akıllı kilitleme](../../active-directory/authentication/howto-password-smart-lockout.md), [yasaklanmış parolalar](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)ve [parola koruması](../../active-directory/authentication/concept-password-ban-bad-on-premises.md) gibi Azure AD özellikleri, bu tür saldırılara karşı korumaya yardımcı olabilir. Benzer şekilde, [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) veya iki adımlı doğrulama uygulamak, ikinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar. Ancak uzun çalıştırmada, parolasız bir çözüm, en güvenli kimlik doğrulama yöntemini sağlamaya yönelik en iyi çözümdür.
 
 Bu makale, Microsoft 'un parolasız çözümlerini anlamanıza ve uygulamanıza yardımcı olan ve aşağıdaki seçeneklerden bir veya daha fazlası arasından seçim yapmanıza yardımcı olan yolculuğun başlangıcıdır:
 
@@ -109,7 +109,7 @@ Iş için Windows Hello 'Yu içeren diğer senaryolarda kimlik doğrulama işlem
 
 [MICROSOFT PIN sıfırlama Hizmetleri](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) , Azure AD 'de kullanıcıların PIN kodlarını sıfırlamalarını sağlayan bir özelliktir. Yönetici, Grup ilkesi, Microsoft Intune veya uyumlu bir MDM 'yi kullanarak Windows 10 cihazlarını, kullanıcıların bu ayarları aracılığıyla veya kilit ekranı üzerinde istemeden PIN 'ı sıfırlamasına olanak sağlayan Microsoft PIN sıfırlama hizmetini güvenli bir şekilde kullanmasını sağlar. yeniden kayıt.
 
-Bazen kullanıcıların parolaları kullanmaya geri dönmesi gerekir. [Self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) (SSPR), kullanıcıların BT personeli ile iletişim kurmaya gerek kalmadan parolalarını sıfırlamalarını sağlayan başka bir Azure AD özelliğidir. Kullanıcılar, hizmet kullanılmadan önce self servis parola sıfırlama için kaydolmalıdır veya kaydolmalıdır. Kayıt sırasında Kullanıcı, kuruluşu tarafından etkinleştirilen bir veya daha fazla kimlik doğrulama yöntemi seçer. SSPR kullanıcıların engellerini hızlı bir şekilde kaldırmasını ve nerede olduğu veya günün saati olmadan çalışmaya devam etmesine olanak sağlar. Kuruluşunuz, kullanıcıların kendi kendilerine engellemeyi kaldırmaya izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
+Bazen kullanıcıların parolaları kullanmaya geri dönmesi gerekir. [Self servis parola sıfırlama](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR), kullanıcıların BT personeli ile iletişim kurmaya gerek kalmadan parolalarını sıfırlamalarını sağlayan başka bir Azure AD özelliğidir. Kullanıcılar, hizmet kullanılmadan önce self servis parola sıfırlama için kaydolmalıdır veya kaydolmalıdır. Kayıt sırasında Kullanıcı, kuruluşu tarafından etkinleştirilen bir veya daha fazla kimlik doğrulama yöntemi seçer. SSPR kullanıcıların engellerini hızlı bir şekilde kaldırmasını ve nerede olduğu veya günün saati olmadan çalışmaya devam etmesine olanak sağlar. Kuruluşunuz, kullanıcıların kendi kendilerine engellemeyi kaldırmaya izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Microsoft Authenticator ile passwordless oturum açma
 
@@ -125,9 +125,9 @@ Azure AD 'de passwordless oturum açmak için Microsoft Authenticator uygulamas�
 
 * Son kullanıcılar Azure Multi-Factor Authentication için etkinleştirildi
 
-* Kullanıcıların cihazlarını Microsoft Intune veya bir üçüncü taraf mobil cihaz yönetimi (MDM) çözümünü kullanarak kaydetmelerini sağlama olanağı
+* Uygulamanın dağıtımını kolaylaştırmak için Microsoft Intune veya bir üçüncü taraf mobil cihaz yönetimi (MDM) çözümünü kullanarak cihazlarını kaydetmeleri önerilir.
 
-Bu gereksinimlerin karşılandığı varsayıldığında Yöneticiler, [Windows PowerShell](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users) kullanarak Kiracıdaki parolasız telefon oturum açma özelliğini etkinleştirir. Kiracıda telefonla oturum açma etkinleştirildikten sonra, son kullanıcılar uygulamanın **hesaplar** ekranında iş veya okul hesabı ' nı seçip **telefonla oturum açmayı etkinleştir**' i seçerek telefonu kullanarak oturum açmayı tercih edebilir.
+Bu gereksinimlerin karşılandığı varsayıldığında Yöneticiler, [Windows PowerShell](../../active-directory/authentication/howto-authentication-passwordless-phone.md) kullanarak Kiracıdaki parolasız telefon oturum açma özelliğini etkinleştirir. Kiracıda telefonla oturum açma etkinleştirildikten sonra, son kullanıcılar uygulamanın **hesaplar** ekranında iş veya okul hesabı ' nı seçip **telefonla oturum açmayı etkinleştir**' i seçerek telefonu kullanarak oturum açmayı tercih edebilir.
 
 Parolasız oturum açma 'nın yönetici tarafından etkinleştirildiği varsayıldığında, son kullanıcıların aşağıdaki gereksinimleri karşılaması gerekir:
 
@@ -137,9 +137,9 @@ Parolasız oturum açma 'nın yönetici tarafından etkinleştirildiği varsayı
 
 * Uygulamaya anında iletme bildirimleri eklenmiş iş veya okul hesabı
 
-Hesabınızı kilitleyen veya yeni bir cihazda hesapları yeniden oluşturmak zorunda kalmaktan kaçınmak için [Hesap kimlik bilgilerinizi buluta yedeklemek](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-backup-recovery) üzere Microsoft Authenticator kullanmanız önerilir. Yedeklemeden sonra, verilerinizi yeni bir cihazda kurtarmak için de kullanabilirsiniz; bu da, kilitlenmelerden veya hesapların yeniden oluşturulması gereğini ortadan kaldırmanıza imkan sağlar.
+Hesabınızı kilitleyen veya yeni bir cihazda hesapları yeniden oluşturmak zorunda kalmaktan kaçınmak için [Hesap kimlik bilgilerinizi buluta yedeklemek](../../active-directory/user-help/user-help-auth-app-backup-recovery.md) üzere Microsoft Authenticator kullanmanız önerilir. Yedeklemeden sonra, verilerinizi yeni bir cihazda kurtarmak için de kullanabilirsiniz; bu da, kilitlenmelerden veya hesapların yeniden oluşturulması gereğini ortadan kaldırmanıza imkan sağlar.
 
-Çoğu Kullanıcı, kimlik doğrulamak için yalnızca parolaları kullanmaya alışkın olduğundan, kuruluşunuzun bu işlemle ilgili olarak kullanıcıları eğitilbilmesi önemlidir. Tanıma, kullanıcıların Microsoft Authenticator uygulamasını kullanarak oturum açma ile ilgili herhangi bir [sorun](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#known-issues) için yardım masasına çağrı olasılığını azaltabilir.
+Çoğu Kullanıcı, kimlik doğrulamak için yalnızca parolaları kullanmaya alışkın olduğundan, kuruluşunuzun bu işlemle ilgili olarak kullanıcıları eğitilbilmesi önemlidir. Tanıma, kullanıcıların Microsoft Authenticator uygulamasını kullanarak oturum açma ile ilgili herhangi bir [sorun](../../active-directory/authentication/howto-authentication-passwordless-phone.md) için yardım masasına çağrı olasılığını azaltabilir.
 
 > [!NOTE]
 > Bu çözüm için olası bir başarısızlık noktası, gezici bir kullanıcının Internet bağlantısı olmayan bir konumda olduğu yerdir. FIDO2 güvenlik anahtarları ve Iş için Windows Hello aynı sınırlamaya tabi değildir.
@@ -150,9 +150,9 @@ Hesabınızı kilitleyen veya yeni bir cihazda hesapları yeniden oluşturmak zo
 
 Microsoft Authenticator uygulamasının bir Azure AD hesabında oturum açmak için parolasız bir çözüm olarak kullanılabilmesi için, adımların hem yönetici hem de son kullanıcılar tarafından gerçekleştirilmesi gerekir.
 
-İlk olarak, bir yöneticinin Windows PowerShell kullanarak, Kiracıdaki [kimlik bilgileri olarak uygulamanın kullanımını etkinleştirmesi](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users) gerekir. Ayrıca, yöneticinin Azure Multi-Factor Authentication (Azure MFA) için son kullanıcıları etkinleştirmesi ve Microsoft Authenticator uygulamasını [doğrulama yöntemlerinden](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#verification-methods)biri olarak yapılandırması gerekir.
+İlk olarak, bir yöneticinin Windows PowerShell kullanarak, Kiracıdaki [kimlik bilgileri olarak uygulamanın kullanımını etkinleştirmesi](../../active-directory/authentication/howto-authentication-passwordless-phone.md) gerekir. Ayrıca, yöneticinin Azure Multi-Factor Authentication (Azure MFA) için son kullanıcıları etkinleştirmesi ve Microsoft Authenticator uygulamasını [doğrulama yöntemlerinden](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods)biri olarak yapılandırması gerekir.
 
-Son kullanıcıların Microsoft Authenticator uygulamasını [indirmesi ve yüklemesi](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) ve Microsoft Authenticator uygulamasını doğrulama yöntemlerinden biri olarak kullanması için [hesabını ayarlaması](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app) gerekir.
+Son kullanıcıların Microsoft Authenticator uygulamasını [indirmesi ve yüklemesi](../../active-directory/user-help/user-help-auth-app-download-install.md) ve Microsoft Authenticator uygulamasını doğrulama yöntemlerinden biri olarak kullanması için [hesabını ayarlaması](../../active-directory/user-help/security-info-setup-auth-app.md) gerekir.
 
 > [!VIDEO https://www.youtube.com/embed/uWbkLuI4g30]
 
@@ -184,7 +184,7 @@ Microsoft Authenticator kullanan passwordless kimlik doğrulaması, Iş için Wi
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Kullanıcı, Microsoft Authenticator kimlik bilgileriyle parolasız oturum açmayı yönetir
 
-[Birleşik kayıt](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)Ile kullanıcılar Azure Multi-Factor Authentication ve self servis parola sıfırlamanın avantajlarından yararlanabilir ve bu avantajları alabilir. Kullanıcılar bu ayarları, [Profilim sayfamda](https://aka.ms/mysecurityinfo)gezinerek kaydeder ve yönetir. SSPR 'yi etkinleştirmenin yanı sıra, Birleşik kayıt birden çok kimlik doğrulama yöntemini ve eylemini destekler.
+[Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)Ile kullanıcılar Azure Multi-Factor Authentication ve self servis parola sıfırlamanın avantajlarından yararlanabilir ve bu avantajları alabilir. Kullanıcılar bu ayarları, [Profilim sayfamda](https://aka.ms/mysecurityinfo)gezinerek kaydeder ve yönetir. SSPR 'yi etkinleştirmenin yanı sıra, Birleşik kayıt birden çok kimlik doğrulama yöntemini ve eylemini destekler.
 
 ## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
 
@@ -228,7 +228,7 @@ Ayrıca, her bir kuruluşun bir güvenlik anahtarının kaybedilmesi veya çalı
 
 Yöneticiler [anahtarları el ile](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) sağlayabildiği ve bunları son kullanıcılara dağıtabilecek sırada, Windows 10 kılıt ekranında FIDO2 kimlik bilgisi sağlayıcısının sağlanması ve etkinleştirilmesi [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)üzerinden desteklenecektir. Ayrıca, yöneticilerin, donanım belirteci cihazlarını passwordless kimlik doğrulama yöntemi olarak etkinleştirmek için [Azure Portal](https://portal.azure.com/) kullanmaları gerekir.
 
-FIDO2 güvenlik anahtarlarının dağıtımı, kullanıcıların anahtarlarını [Birleşik kayıt](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)kullanarak kaydetmelerini de gerektirir. Birleşik kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Azure Multi-Factor Authentication hem de çoklu oturum açma parolası sıfırlamasının (SSPR) avantajlarından yararlanır.
+FIDO2 güvenlik anahtarlarının dağıtımı, kullanıcıların anahtarlarını [Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)kullanarak kaydetmelerini de gerektirir. Birleşik kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Azure Multi-Factor Authentication hem de çoklu oturum açma parolası sıfırlamasının (SSPR) avantajlarından yararlanır.
 
 Donanım belirtecini varsayılan Multi-Factor Authentication yöntemi olarak seçmeye ek olarak, ek bir doğrulama seçeneği de seçmeniz önerilir.
 
@@ -342,5 +342,5 @@ Yaygın olarak erişilebilen cihazlarda Biyometri ve ortak anahtar şifrelemesi 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Passwordne olduğuna](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) ilişkin genel bakış nedir?
+* [Passwordne olduğuna](../../active-directory/authentication/concept-authentication-passwordless.md) ilişkin genel bakış nedir?
 * [Azure AD 'de passwordless 'yi etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)

@@ -1,5 +1,5 @@
 ---
-title: 'İşlem hatları: makine öğrenimi iş akışlarını iyileştirme'
+title: ML işlem hatları nelerdir
 titleSuffix: Azure Machine Learning service
 description: Bu makalede, makine öğrenimi işlem hatları için Python ve işlem hatlarını kullanmanın avantajları Azure Machine Learning SDK ile birlikte derleme hakkında bilgi edinin. Machine learning (ML) işlem hatları oluşturmak, en iyi duruma getirmek ve makine öğrenimi iş akışları yönetmek için veri uzmanları tarafından kullanılır.
 services: machine-learning
@@ -11,18 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9965dbbca939f566048312af921061a188ee50d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884234"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951808"
 ---
-# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde yeniden kullanılabilir ML işlem hatları oluşturun
+# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde ML işlem hatları nelerdir?
 
-Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz makine öğrenimi ardışık düzenleri ve işlem hatları kullanmanın avantajları hakkında bilgi edinin.
-
-## <a name="what-are-machine-learning-pipelines"></a>Machine learning işlem hatlarını nelerdir?
+Azure Machine Learning hizmeti ile oluşturabileceğiniz ve yönetebileceğiniz makine öğrenimi ardışık düzenleri hakkında bilgi edinin. 
 
 Machine learning (ML) işlem hatları, veri bilimcileri, veri mühendisleri ve BT uzmanları kullanarak içinde yer alan adımların üzerinde işbirliği yapabilirsiniz:
 + Normalizations ve dönüştürmeler gibi veri hazırlama
@@ -30,7 +28,7 @@ Machine learning (ML) işlem hatları, veri bilimcileri, veri mühendisleri ve B
 + Modeli değerlendirme
 + Dağıtım
 
-Aşağıdaki diyagramda örnek bir işlem hattı işlemi gösterilmektedir:
+Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
 
 ![Azure Machine Learning hizmetinde makine öğrenimi ardışık düzenleri](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -47,9 +45,7 @@ Azure bulutu, her biri farklı bir amaca sahip birkaç farklı işlem hattı sa�
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Neden Azure Machine Learning ile işlem hatları oluşturabilir?
 
-Aynı zamanda tek tek işlem hattı çalıştırmalarını göndermek ve izlemek için [Python için Azure Machine Learning SDK 'sını](#the-python-sdk-for-pipelines) kullanabilirsiniz.
-
-İşlem hattı ile akışınızı Basitlik, hız, taşınabilirlik ve yeniden iyileştirebilirsiniz. Azure Machine Learning ile işlem hatları oluştururken, altyapı ve otomasyon yerine uzmanınıza ve makine öğrenmenize odaklanırsınız.
+Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine uzmanınıza, makine öğrenimine odaklanmanıza olanak sağlayabilir.
 
 İşlem hatları, işlem hattının farklı hesaplama birimleri olan birden çok **adımdan**oluşturulur. Her adım bağımsız olarak çalıştırılabilir ve yalıtılmış işlem kaynakları kullanabilir. Bu, birden çok veri bilimcilerinin aynı işlem hattı üzerinde, yoğun bilgi işlem kaynakları olmadan aynı anda çalışmasına olanak tanır ve ayrıca her adım için farklı işlem türleri/boyutları kullanmayı kolaylaştırır.
 
@@ -73,20 +69,20 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 
 ## <a name="the-python-sdk-for-pipelines"></a>İşlem hatları için Python SDK'sı
 
-ML işlem hatlarınızı oluşturmak için Python kullanın. Azure Machine Learning SDK'sı, sıralama ve hiçbir veri bağımlılık mevcut olduğunda işlem hatlarınızı adımları paralelleştirmek için zorunlu yapıları sunar. Jupyıter not defterlerinde veya başka bir tercih edilen IDE 'de onunla etkileşime geçebilirsiniz.
+Tercih ettiğiniz IDE veya Jupyıter not defterlerinde ML işlem hatlarınızı oluşturmak için [Python SDK 'Yı kullanın](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) . Azure Machine Learning SDK'sı, sıralama ve hiçbir veri bağımlılık mevcut olduğunda işlem hatlarınızı adımları paralelleştirmek için zorunlu yapıları sunar. 
 
-Bildirim temelli veriler bağımlılıkları kullanarak, görevlerinizi en iyi duruma getirebilirsiniz. SDK, veri aktarımı ve model yayımlama gibi ortak görevler için önceden oluşturulmuş modüller çerçevesini içerir. İşlem hatları arasında yeniden kullanılabilir olan özel adımları uygulayarak kendi kurallarınızı modellemek için çerçeveyi genişletebilirsiniz. İşlem hedeflerini ve depolama kaynaklarını doğrudan SDK 'dan da yönetebilirsiniz.
+Bildirim temelli veriler bağımlılıkları kullanarak, görevlerinizi en iyi duruma getirebilirsiniz. SDK, veri aktarımı ve model yayımlama gibi ortak görevler için önceden oluşturulmuş modüller çerçevesini içerir. İşlem hatları arasında yeniden kullanılabilir özel adımları uygulayarak, kendi kurallarınızı modellemek için çerçeveyi genişletebilirsiniz. İşlem hedeflerini ve depolama kaynaklarını doğrudan SDK 'dan da yönetebilirsiniz.
 
-İşlem hatlarını şablon olarak kaydedebilir ve toplu Puanlama veya yeniden eğitim işleri zamanlayabilmeniz için bunları bir REST uç noktasına dağıtabilirsiniz.
+İşlem hatlarınızı şablon olarak kaydedin ve toplu Puanlama veya yeniden eğitim işleri için bir REST uç noktasına dağıtın.
 
-Kendinizinkini nasıl derulacağını görmek için, sonraki bölümde işlem hatları ve Not defteri [Için Python SDK başvurusu belgelerine](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) bakın.
-
-## <a name="example-notebooks"></a>Örnek Not Defterleri
-
-Azure Machine Learning işlem hatlarında aşağıdaki not defterlerini göstermektedir: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+Azure Machine Learning işlem hatları için iki Python paketi vardır: [azureml-işlem hattı-çekirdek](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) ve [azureml-işlem hattı-adımlar](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
++ Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
+
++ [Büyük verilerde toplu tahmine dayalı tahminleri](how-to-run-batch-predictions.md)nasıl çalıştıracağınızı öğrenin.
+
++ İşlem [hatları Için SDK başvuru belgelerini](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) okuyun
+
++ İşlem [hatları Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)gösteren örnek bir Jupyter Not defteri deneyin. [Bu hizmeti araştırmak için not defterlerini çalıştırmayı](samples-notebooks.md)öğrenin.

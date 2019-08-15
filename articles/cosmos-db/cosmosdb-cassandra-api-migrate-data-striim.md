@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1e14e9819f4b3344d0f0155ac5c15337a45952dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c739a6e79cab14ecc8e5a4be23c551d2774cbbd8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828058"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933987"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Çarpıcı anlık ileti kullanarak verileri Azure Cosmos DB Cassandra API hesabına geçirme
 
 Azure Marketi 'ndeki çarpıcı anlık ileti resmi, veri ambarlarından ve veritabanlarından Azure 'a sürekli gerçek zamanlı veri hareketi sunar. Verileri taşırken, satır içi normalleştirmeyi, veri dönüştürmeyi ve gerçek zamanlı analizleri ve veri raporlama senaryolarını sağlayabilirsiniz. Kurumsal verileri sürekli olarak Azure Cosmos DB Cassandra API taşımaya kadar hızlı bir şekilde çalışmaya başlamak kolaydır. Azure, hızlı anlık ileti dağıtmayı ve verilerin Azure Cosmos DB geçişini kolaylaştıran bir market teklifi sunar. 
 
-Bu makalede, verileri bir **Oracle veritabanından** **Azure Cosmos DB Cassnadra API hesabına**geçirmek için nasıl çaba anlık iletiniz kullanılacağı gösterilmektedir.
+Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesabına**veri geçirmek için nasıl çaba ım kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

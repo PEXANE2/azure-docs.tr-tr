@@ -1,5 +1,5 @@
 ---
-title: Özel bir Docker görüntüsü ile modeller dağıtma
+title: Özel bir Docker görüntüsü kullanarak modeller dağıtma
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning hizmet modellerinizi dağıttığınızda özel bir Docker görüntüsü kullanmayı öğrenin. Eğitilen bir model dağıtıldığında, görüntüyü, Web sunucusunu ve hizmeti çalıştırmak için gereken diğer bileşenleri barındırmak için bir Docker görüntüsü oluşturulur. Azure Machine Learning hizmet sizin için varsayılan bir görüntü sağladığından, kendi görüntünüzü da kullanabilirsiniz.
 services: machine-learning
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856116"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990513"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak model dağıtma
+# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak model dağıtma
 
-Eğitim modellerini Azure Machine Learning hizmeti ile dağıttığınızda özel bir Docker görüntüsü kullanmayı öğrenin.
+Eğitim modellerini Azure Machine Learning hizmetiyle dağıtırken özel bir Docker görüntüsü kullanmayı öğrenin.
 
 Eğitilen bir modeli bir Web hizmetine veya IoT Edge cihaza dağıttığınızda, bir Docker görüntüsü oluşturulur. Bu görüntü modeli, Conda ortamını ve modeli kullanmak için gereken varlıkları içerir. Ayrıca, bir Web hizmeti olarak dağıtıldığında gelen istekleri işlemek için bir Web sunucusu ve Azure IoT Hub ile çalışmak için gereken bileşenleri içerir.
 
@@ -28,7 +28,7 @@ Azure Machine Learning hizmet varsayılan bir Docker görüntüsü sağladığı
 Genellikle, bileşen sürümlerini denetlemek veya dağıtım sırasında zaman kazanmak istediğinizde özel bir görüntü oluşturursunuz. Örneğin, belirli bir Python, Conda veya başka bir bileşen sürümünde standartlaştırmak isteyebilirsiniz. Ayrıca, modelinize gereken yazılımı yükleme işleminin uzun sürme süresini de yüklemek isteyebilirsiniz. Temel görüntü oluştururken yazılımı yüklemek, her dağıtım için yüklemeniz gerekmediği anlamına gelir.
 
 > [!IMPORTANT]
-> Bir model dağıtıldığında, Web sunucusu veya IoT Edge bileşenleri gibi temel bileşenleri geçersiz kılamazsınız. Bu bileşenler, Microsoft tarafından sınanmış ve desteklenen, bilinen bir çalışma ortamı sağlar.
+> Bir modeli dağıtırken, Web sunucusu veya IoT Edge bileşenleri gibi temel bileşenleri geçersiz kılamazsınız. Bu bileşenler, Microsoft tarafından sınanmış ve desteklenen, bilinen bir çalışma ortamı sağlar.
 
 > [!WARNING]
 > Microsoft, özel bir görüntünün neden olduğu sorunları gidermenize yardımcı olabilir. Sorunlarla karşılaşırsanız, sorunun yansımanıza özgü olup olmadığını görmek için varsayılan görüntüyü veya Microsoft 'un sağladığı görüntülerden birini kullanmanız istenebilir.
@@ -98,6 +98,8 @@ Azure Machine Learning hizmetini kullanarak modeller zaten eğitilen veya dağı
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
     ```
+
+    [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
     Döndürülen bilgiler aşağıdaki metne benzer:
 

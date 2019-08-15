@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e34dae5570c64ec2c9fdc478ba8ec1bf4bce9d2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65788668"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976738"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory’de işlem hatları ve etkinlikler
-> [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-create-pipelines.md)
 > * [Geçerli sürüm](concepts-pipelines-activities.md)
 
@@ -59,6 +59,8 @@ Veri dönüştürme etkinliği | İşlem ortamı
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Özel Kod](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Not Defteri](transform-data-databricks-notebook.md) | Azure Databricks
+[Databricks jar etkinliği](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks Python etkinliği](transform-data-databricks-python.md) | Azure Databricks
 
 Daha fazla bilgi için [veri dönüştürme etkinlikleri](transform-data.md) makalesine bakın.
 
@@ -94,15 +96,15 @@ JSON biçiminde işlem hattı şöyle tanımlanır:
 }
 ```
 
-Etiket | Açıklama | Tür | Gerekli
+Etiket | Açıklama | Type | Gerekli
 --- | ----------- | ---- | --------
-name | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | String | Evet
-description | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. | String | Hayır
+name | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Bir harf, sayı veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\”</li></ul> | Dize | Evet
+description | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. | Dize | Hayır
 activities | **Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. Etkinliklerin JSON öğesi hakkında ayrıntılı bilgi için [Etkinlik JSON](#activity-json) bölümüne bakın. | Array | Evet
-parametreler | **Parametreler** bölümü, işlem hattınızı yeniden kullanım için esnek hale getiren, işlem hattında tanımlanmış bir veya daha fazla parametreyi içerebilir. | List | Hayır
+parameters | **Parametreler** bölümü, işlem hattınızı yeniden kullanım için esnek hale getiren, işlem hattında tanımlanmış bir veya daha fazla parametreyi içerebilir. | List | Hayır
 
 ## <a name="activity-json"></a>Etkinlik JSON
-**Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. İki temel etkinlik türü vardır: Yürütme ve denetim etkinlikleri.
+**Etkinlikler** bölümünde tanımlanmış bir veya daha fazla etkinlik olabilir. İki ana etkinlik türü vardır: Yürütme ve denetim etkinlikleri.
 
 ### <a name="execution-activities"></a>Yürütme etkinlikleri
 Yürütme etkinlikleri [veri taşıma](#data-movement-activities) ve [veri dönüştürme etkinliklerini](#data-transformation-activities) içerir. Aşağıdaki üst düzey yapıya sahiptir:
@@ -129,9 +131,9 @@ Aşağıdaki tabloda, etkinlik JSON tanımındaki özellikler açıklamaktadır:
 
 Etiket | Açıklama | Gerekli
 --- | ----------- | ---------
-name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li></ul>
+name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li></ul>
 description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-type | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-activities) bölümlerine bakın. | Evet
+türü | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-activities) bölümlerine bakın. | Evet
 linkedServiceName | Etkinlik tarafından kullanılan bağlı hizmetin adı.<br/><br/>Bir etkinlik için gerekli işlem ortamına bağlanan bağlı hizmeti belirtmeniz gerekebilir. | HDInsight Etkinliği, Azure Machine Learning Toplu İşlem Puanlandırma Etkinliği, Saklı Yordam Etkinliği için evet. <br/><br/>Diğer tümü için hayır
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 policy | Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Bu özellik zaman aşımı ve yeniden deneme davranışını içerir. Belirtilmemişse, varsayılan değerler kullanılır. Daha fazla bilgi için [Etkinlik İlkesi](#activity-policy) bölümüne bakın. | Hayır
@@ -170,10 +172,10 @@ dependsOn | Bu özellik etkinlik bağımlılıklarını ve sonraki etkinliklerin
 
 JSON adı | Açıklama | İzin Verilen Değerler | Gerekli
 --------- | ----------- | -------------- | --------
-timeout | Çalıştırılacak etkinliğinin zaman aşımını belirtir. | Timespan | Hayır. Varsayılan zaman aşımı süresi 7 gündür.
-retry | En fazla yeniden deneme sayısı | Integer | Hayır. Varsayılan değer 0'dır
-retryIntervalInSeconds | Yeniden deneme girişimleri arasında saniye cinsinden gecikme | Integer | Hayır. Varsayılan değer 30 saniyedir
-secureOutput | true olarak ayarlandığında etkinlik çıkışı güvenli olarak kabul edilir ve izleme amacıyla günlüğe alınmaz. | Boolean | Hayır. Varsayılan değer false’tur.
+zaman aşımı | Çalıştırılacak etkinliğinin zaman aşımını belirtir. | Zaman aralığı | Hayır. Varsayılan zaman aşımı süresi 7 gündür.
+retry | En fazla yeniden deneme sayısı | Tamsayı | Hayır. Varsayılan değer 0'dır
+retryIntervalInSeconds | Yeniden deneme girişimleri arasında saniye cinsinden gecikme | Tamsayı | Hayır. Varsayılan değer 30 saniyedir
+secureOutput | true olarak ayarlandığında etkinlik çıkışı güvenli olarak kabul edilir ve izleme amacıyla günlüğe alınmaz. | Boole değeri | Hayır. Varsayılan değer false’tur.
 
 ### <a name="control-activity"></a>Denetim etkinliği
 Denetim etkinlikleri aşağıdaki üst düzey yapıya sahiptir:
@@ -194,9 +196,9 @@ Denetim etkinlikleri aşağıdaki üst düzey yapıya sahiptir:
 
 Etiket | Açıklama | Gerekli
 --- | ----------- | --------
-name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf, sayı veya alt çizgi ile başlamalıdır (\_)</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li><ul>
+name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li><ul>
 description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-activities) bölümlerine bakın. | Evet
+türü | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-activities) bölümlerine bakın. | Evet
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 dependsOn | Bu özellik Etkinlik Bağımlılığını ve sonraki etkinliklerin önceki etkinliklere ne kadar bağımlı olduğunu tanımlamak için kullanılır. Daha fazla bilgi için bkz. [etkinlik bağımlılığı](#activity-dependency). | Hayır
 
@@ -207,12 +209,12 @@ Farklı bağımlılık koşulları şunlardır: Başarılı, başarısız, atlan
 
 Örneğin, bir işlem hattında Etkinlik A -> Etkinlik B ise oluşabilecek farklı senaryolar şunlardır:
 
-- Etkinlik B etkinlik ile koşuluyla bağımlıdır **başarılı**: Etkinlik B yalnızca çalıştırmaları başarılı ise etkinlik son durumu
-- Etkinlik B etkinlik ile koşuluyla bağımlıdır **başarısız**: Etkinlik son durumuna sahip etkinlik B yalnızca çalıştırma başarısız
-- Etkinlik B etkinlik ile koşuluyla bağımlıdır **tamamlandı**: Etkinlik B, etkinlik son durumu başarılı veya başarısız olması durumunda çalıştırır.
-- Etkinlik B etkinlik ile koşuluyla bağımlıdır **atlandı**: Etkinlik B çalıştırmalarını etkinlik son durumu varsa atlandı. Atlandı koşulu, her bir etkinliğin yalnızca önceki etkinlik başarılı olursa çalıştığı Etkinlik X -> Etkinlik Y -> Etkinlik Z senaryosunda gerçekleşir. Etkinlik X başarısız olursa, Etkinlik Y hiçbir zaman yürütülmeyeceği için durumu “Atlandı” olur. Benzer şekilde, Etkinlik Z’nin durumu da "Atlandı" olur.
+- Etkinlik B, etkinlik A 'da **başarılı**olan bağımlılık koşuluna sahip: Etkinlik B yalnızca etkinlik A 'nın son durumu başarılı olursa çalışır
+- Etkinlik B, etkinlik A 'da **başarısız**olan bağımlılık koşuluna sahip: Etkinlik B yalnızca etkinlik A 'nın son durumu başarısız ise çalışır
+- Etkinlik B, etkinlik A 'da **tamamlandı**ile bağımlılık koşuluna sahiptir: Etkinlik A 'nın son durumu başarılı veya başarısız olursa etkinlik B çalıştırılır
+- Etkinlik B, etkinlik A üzerinde **Atlanan**bağımlılık koşuluna sahip: Etkinlik A 'nın son durumu atlandı ise etkinlik B çalışır. Atlandı koşulu, her bir etkinliğin yalnızca önceki etkinlik başarılı olursa çalıştığı Etkinlik X -> Etkinlik Y -> Etkinlik Z senaryosunda gerçekleşir. Etkinlik X başarısız olursa, Etkinlik Y hiçbir zaman yürütülmeyeceği için durumu “Atlandı” olur. Benzer şekilde, Etkinlik Z’nin durumu da "Atlandı" olur.
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Örnek: Etkinlik 2, etkinlik 1'in başarılı olmasına bağlıdır
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Örnek: Etkinlik 2, etkinliğin 1 ' de başarılı olduğuna bağlıdır
 
 ```json
 {

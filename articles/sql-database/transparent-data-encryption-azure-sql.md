@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 04/19/2019
-ms.openlocfilehash: 1d5baf4b7f8a28638c5dbd50fb407035a5b9ea89
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566132"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967913"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL veritabanı ve veri ambarı için saydam veri şifrelemesi
 
@@ -37,7 +37,7 @@ Azure 'da, saydam veri şifrelemesi için varsayılan ayar, veritabanı şifrele
 Microsoft ayrıca, coğrafi çoğaltma ve geri yükleme için gerektiğinde anahtarları sorunsuzca taşımalı ve yönetir.
 
 > [!IMPORTANT]
-> Yeni oluşturulan tüm SQL veritabanları, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılarak varsayılan olarak şifrelenir. Azure SQL yönetilen örnek veritabanları, 2017 Mayıs 'tan önce oluşturulan mevcut SQL veritabanları ve geri yükleme, coğrafi çoğaltma ve veritabanı kopyası kullanılarak oluşturulan SQL veritabanları varsayılan olarak şifrelenmez.
+> Yeni oluşturulan tüm SQL veritabanları ve yönetilen örnek veritabanları, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılarak varsayılan olarak şifrelenir. 2017 Mayıs 'tan önce oluşturulan mevcut SQL veritabanları ve geri yükleme, coğrafi çoğaltma ve veritabanı kopyası kullanılarak oluşturulan SQL veritabanları varsayılan olarak şifrelenmez. 2019 Şubat 'tan önce oluşturulan mevcut yönetilen örnek veritabanları varsayılan olarak şifrelenmez. Restore ile oluşturulan yönetilen örnek veritabanları, kaynaktan şifreleme durumunu devralma.
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Müşteri tarafından yönetilen saydam veri şifrelemesi-Kendi Anahtarını Getir
 

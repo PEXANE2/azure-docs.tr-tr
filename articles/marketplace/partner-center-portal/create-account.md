@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668336"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955579"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -71,7 +71,7 @@ Iş Ortağı Merkezi 'nde bir hesap oluşturduğunuz için teşekkürler! Artık
 
 Hesabınız [bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com)' den geçirildiyse, yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez, ancak e-posta yoluyla yeni Iş Ortağı Merkezi hesabınıza özelleştirilmiş bir bağlantı almış ve bir başlık bildiriminde şu tarihten sonra görüntülenir Mevcut CPP hesabınızda oturum açma.
 
-Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni Iş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, Iş Ortağı Merkezi 'nde [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/) ziyaret ederek hesabınıza geri dönebilirsiniz.
+Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni Iş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, Iş Ortağı Merkezi 'nde [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
 
 Yayımlama sözleşmesi ve şirket profili bilgileri yeni Iş Ortağı Merkezi hesabınıza geçirilir, daha önce, daha önce ayarlanan bir hesap ödeme profili bilgileri, Kullanıcı hesapları ve izinler ve CPP hesabınızla ilişkili etkin teklifler. 
 

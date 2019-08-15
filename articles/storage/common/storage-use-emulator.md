@@ -7,18 +7,19 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 8737e3b2445f5b89c62cead5fae34b8ad076113a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721740"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986398"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 
 Microsoft Azure depolama öykünücüsü, geliştirme amacıyla Azure blob, kuyruk ve tablo hizmetlerine öykünen yerel bir ortam sağlar. Depolama öykünücüsünü kullanarak, Azure aboneliği oluşturmadan veya herhangi bir maliyet oluşturmadan uygulamanızı depolama hizmetleri ile yerel olarak test edebilirsiniz. Uygulamanızın öykünücüsünde nasıl çalıştığı konusunda memnun olduğunuzda, buluttaki bir Azure depolama hesabı kullanarak geçiş yapabilirsiniz.
 
 ## <a name="get-the-storage-emulator"></a>Depolama öykünücüsünü al
+
 Depolama öykünücüsü [MICROSOFT Azure SDK](https://azure.microsoft.com/downloads/)'nın bir parçası olarak kullanılabilir. Depolama öykünücüsünü [tek başına yükleyiciyi](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (doğrudan indirme) kullanarak da yükleyebilirsiniz. Depolama öykünücüsünü yüklemek için bilgisayarınızda yönetici ayrıcalıklarına sahip olmanız gerekir.
 
 Depolama öykünücüsü Şu anda yalnızca Windows üzerinde çalışır. Linux için bir depolama öykünücüsünün düşünüldüğünde, topluluk tarafından tutulan, açık kaynak depolama öykünücü [Azıite](https://github.com/azure/azurite)olan bir seçenek vardır.
@@ -29,6 +30,7 @@ Depolama öykünücüsü Şu anda yalnızca Windows üzerinde çalışır. Linux
 > Depolama öykünücüsü, OData kitaplıklarının belirli sürümlerine bağlıdır. Depolama öykünücüsü tarafından kullanılan OData dll 'Leri diğer sürümlerle değiştirmek desteklenmez ve beklenmeyen davranışlara neden olabilir. Ancak, depolama hizmeti tarafından desteklenen herhangi bir OData sürümü, istekleri öykünücüye göndermek için kullanılabilir.
 
 ## <a name="how-the-storage-emulator-works"></a>Depolama öykünücüsünün nasıl çalıştığı
+
 Depolama öykünücüsü, Azure depolama hizmetlerine öykünmek için yerel bir Microsoft SQL Server örneği ve yerel dosya sistemi kullanır. Varsayılan olarak, depolama öykünücüsü Microsoft SQL Server 2012 Express LocalDB 'deki bir veritabanını kullanır. Depolama öykünücüsünü, LocalDB örneği yerine SQL Server yerel bir örneğine erişecek şekilde yapılandırmayı tercih edebilirsiniz. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [depolama öykünücüsünü başlatma ve başlatma](#start-and-initialize-the-storage-emulator) bölümüne bakın.
 
 Depolama öykünücüsü, Windows kimlik doğrulaması kullanarak SQL Server veya LocalDB 'ye bağlanır.
@@ -38,6 +40,7 @@ Depolama öykünücüsü ile Azure depolama hizmetleri arasında bazı işlevler
 ## <a name="start-and-initialize-the-storage-emulator"></a>Depolama öykünücüsünü başlatma ve başlatma
 
 Azure Storage öykünücüsü 'nü başlatmak için:
+
 1. **Başlat** düğmesini seçin veya **Windows** tuşuna basın.
 2. Yazmaya `Azure Storage Emulator`başlayın.
 3. Görüntülenmiş uygulamalar listesinden öykünücü ' ı seçin.
@@ -79,9 +82,11 @@ Bu komutlar hakkında daha fazla bilgi için bkz. [depolama öykünücüsü komu
 > LocalDB yüklemesi de dahil olmak üzere SQL Server örneklerinizi yönetmek için [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) kullanabilirsiniz. Smss **sunucuya Bağlan** iletişim kutusunda, LocalDB örneğine `(localdb)\MSSQLLocalDb` bağlanmak için **sunucu adı:** alanında öğesini belirtin.
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>Depolama öykünücüsünde istekleri kimlik doğrulama
+
 Depolama öykünücüsünü yükleyip başlattığınızda, kodunuzu buna karşı test edebilirsiniz. Bulutta Azure Storage 'da olduğu gibi, anonim bir istek olmadığı sürece depolama öykünücüsünde her istekte yaptığınız tüm istekler yetkilendirmelidir. Paylaşılan anahtar kimlik doğrulamasını veya paylaşılan erişim imzasını (SAS) kullanarak depolama öykünücüsünde istekleri yetkilendirebilirsiniz.
 
 ### <a name="authorize-with-shared-key-credentials"></a>Paylaşılan anahtar kimlik bilgileriyle yetkilendir
+
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](../storage-configure-connection-string.md).
@@ -115,9 +120,10 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 Bu örnekle oluşturulan paylaşılan erişim imzası bir gün için geçerlidir. İmza, kapsayıcı içindeki bloblara tam erişim (okuma, yazma, silme, listeleme) verir.
 
-Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [Azure depolama 'da paylaşılan erişim imzaları (SAS) kullanma](../storage-dotnet-shared-access-signature-part-1.md).
+Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md).
 
 ## <a name="addressing-resources-in-the-storage-emulator"></a>Depolama öykünücüsünde kaynakları adresleme
+
 Depolama öykünücüsünün hizmet uç noktaları, Azure Storage hesabından farklıdır. Bunun farkı, yerel bilgisayarın etki alanı adı çözümlemesini gerçekleştirmediği, depolama öykünücü uç noktalarının yerel adresler olmasını gerektirmektir.
 
 Bir Azure depolama hesabındaki bir kaynağı adresettiğiniz zaman, aşağıdaki düzeni kullanırsınız. Hesap adı URI ana bilgisayar adının bir parçası ve değinmekte olan kaynak URI yolunun bir parçası:
@@ -143,6 +149,7 @@ Depolama öykünücüsünün hizmet uç noktaları şunlardır:
 * Tablo hizmeti:`http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>RA-GRS ile hesap ikincil adresi oluşturma
+
 Sürüm 3,1 ' den başlayarak, depolama öykünücüsü Okuma Erişimli Coğrafi olarak yedekli çoğaltmayı (RA-GRS) destekler. Hem bulutta hem de yerel öykünücüsünde depolama kaynakları için, hesap adına ikincil ekleyerek ikincil konuma erişebilirsiniz. Örneğin, aşağıdaki adres, depolama öykünücüsünde salt okunurdur ikincil kullanarak bir bloba erişmek için kullanılabilir:
 
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
@@ -153,6 +160,7 @@ Sürüm 3,1 ' den başlayarak, depolama öykünücüsü Okuma Erişimli Coğrafi
 >
 
 ## <a name="storage-emulator-command-line-tool-reference"></a>Depolama öykünücüsü komut satırı araç başvurusu
+
 Sürüm 3,0 ' den başlayarak, depolama öykünücüsünü başlattığınızda bir konsol penceresi görüntülenir. Öykünücü başlatmak ve durdurmak için konsol penceresindeki komut satırını kullanın ve durum sorgusu yapın ve diğer işlemleri gerçekleştirin.
 
 > [!NOTE]
@@ -161,9 +169,11 @@ Sürüm 3,0 ' den başlayarak, depolama öykünücüsünü başlattığınızda 
 >
 
 ### <a name="command-line-syntax"></a>Komut satırı sözdizimi
+
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
 ### <a name="options"></a>Seçenekler
+
 Seçenek listesini görüntülemek için komut satırına `/help` yazın.
 
 | Seçenek | Açıklama | Komut | Bağımsız Değişkenler |
@@ -175,6 +185,7 @@ Seçenek listesini görüntülemek için komut satırına `/help` yazın.
 | **Dengeleyici** |Öykünücüyü ayarlamak için bir kerelik başlatma gerçekleştirir. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-sunucu sunucuadi InstanceName*: SQL örneğini barındıran sunucuyu belirtir. <br/>*-SQLInstance InstanceName*: Varsayılan sunucu örneğinde kullanılacak SQL örneğinin adını belirtir. <br/>*-forcecoluştur*: Zaten mevcut olsa bile SQL veritabanı oluşturma işlemini zorlar. <br/>*-skipcreate*: SQL veritabanı oluşturmayı atlar. Bu,-forcecoluştur 'a göre önceliklidir.<br/>*-reserveports*: Hizmetlerle ilişkili HTTP bağlantı noktalarını ayırmaya çalışır.<br/>*-unreserveports*: Hizmetlerle ilişkili HTTP bağlantı noktaları için ayırmaları kaldırmaya çalışır. Bu,-reserveports üzerinden önceliklidir.<br/>*-InProcess*: Yeni bir işlem oluşturmak yerine geçerli işlemde başlatmayı gerçekleştirir. Bağlantı noktası ayırmalarını değiştirmek için geçerli işlem yükseltilmiş izinlerle başlatılmalıdır. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Depolama öykünücüsü ile Azure depolama arasındaki farklar
+
 Depolama öykünücüsü yerel bir SQL örneğinde çalışan bir Öykünülmüş ortam olduğundan, öykünücü ve buluttaki bir Azure depolama hesabı arasındaki işlevlerde farklılık vardır:
 
 * Depolama öykünücüsü yalnızca tek bir sabit hesabı ve iyi bilinen bir kimlik doğrulama anahtarını destekler.
@@ -185,6 +196,7 @@ Depolama öykünücüsü yerel bir SQL örneğinde çalışan bir Öykünülmü�
 * Henüz öykünücü tarafından desteklenmeyen Depolama Hizmetleri sürümünü kullanırsanız, depolama öykünücüsü bir VersionNotSupportedByEmulator hatası döndürür (HTTP durum kodu 400-Hatalı Istek).
 
 ### <a name="differences-for-blob-storage"></a>BLOB depolama farklılıkları
+
 Öykünücüdeki blob depolaması için aşağıdaki farklar geçerlidir:
 
 * Depolama öykünücüsü yalnızca 2 GB 'a kadar blob boyutunu destekler.
@@ -195,6 +207,7 @@ Depolama öykünücüsü yerel bir SQL örneğinde çalışan bir Öykünülmü�
 * Ekleme blobu işlemleri öykünücü tarafından desteklenmez. Bir ekleme blobu üzerinde bir işlemin deneneceği bir FeatureNotSupportedByEmulator hatası (HTTP durum kodu 400-Hatalı Istek) döndürüyor.
 
 ### <a name="differences-for-table-storage"></a>Tablo depolama farklılıkları
+
 Öykünücüdeki tablo depolaması için aşağıdaki farklar geçerlidir:
 
 * Depolama öykünücüsünde tablo hizmetindeki Tarih özellikleri yalnızca SQL Server 2005 tarafından desteklenen aralığı destekler (1 Ocak 1753 ' den daha sonra olmaları gerekir). 1 Ocak 1753 tarihinden önceki tüm tarihler bu değere dönüştürülür. Tarihlerin duyarlığı, SQL Server 2005 ' lik duyarlığından sınırlıdır, Yani tarihin saniyenin 1/300 ' e kadar kesin olduğu anlamına gelir.
@@ -203,34 +216,43 @@ Depolama öykünücüsü yerel bir SQL örneğinde çalışan bir Öykünülmü�
 * Depolama öykünücüsü ' nde `Edm.Guid` , veri türü özellikleri veya `Edm.Binary` yalnızca `Equal (eq)` sorgu filtresi dizelerindeki `NotEqual (ne)` ve karşılaştırma işleçlerini destekler.
 
 ### <a name="differences-for-queue-storage"></a>Kuyruk depolama farkları
+
 Öykünücüde kuyruk depolamaya özgü fark yoktur.
 
 ## <a name="storage-emulator-release-notes"></a>Depolama öykünücüsü sürüm notları
 
 ### <a name="version-57"></a>Sürüm 5,7
+
 Günlüğe kaydetme etkinleştirildiyse çökmeye neden olacak bir hata düzeltildi.
 
 ### <a name="version-56"></a>Sürüm 5,6
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2018-03-28 sürümünü desteklemektedir.
 
 ### <a name="version-55"></a>Sürüm 5,5
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2017-11-09 sürümünü desteklemektedir.
 * Blob 'un oluşturulma zamanını döndüren blob **oluşturuldu** özelliği için destek eklenmiştir.
 
 ### <a name="version-54"></a>Sürüm 5,4
+
 Yükleme kararlılığını artırmak için, öykünücü artık yükleme zamanında bağlantı noktası ayırma girişiminde bulunmamaktadır. Bağlantı noktası ayırmaları isteniyorsa, bunu belirtmek için **Init** komutunun *-reserveports* seçeneğini kullanın.
 
 ### <a name="version-53"></a>Sürüm 5,3
+
 Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2017-07-29 sürümünü desteklemektedir.
 
 ### <a name="version-52"></a>Sürüm 5,2
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2017-04-17 sürümünü desteklemektedir.
 * Tablo özelliği değerlerinin düzgün bir şekilde kodlanmamasına neden olan bir hata düzeltildi.
 
 ### <a name="version-51"></a>Sürüm 5,1
+
 Depolama öykünücüsünün `DataServiceVersion` , hizmetin olmadığı bazı yanıtlara üstbilgiyi döndürdüğü bir hata düzeltildi.
 
 ### <a name="version-50"></a>Sürüm 5,0
+
 * Depolama öykünücüsü yükleyicisi artık var olan MSSQL ve .NET Framework yüklemelerini kontrol eder.
 * Depolama öykünücüsü yükleyicisi, artık veritabanını yükleme kapsamında oluşturmayacaktır. Başlatma kapsamında gerekirse veritabanı yine de oluşturulacaktır.
 * Veritabanı oluşturma artık yükseltme gerektirmez.
@@ -240,38 +262,48 @@ Depolama öykünücüsünün `DataServiceVersion` , hizmetin olmadığı bazı y
 * Bazı dll 'Ler kaldırıldı veya yeniden adlandırıldı.
 
 ### <a name="version-46"></a>Sürüm 4,6
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2016-05-31 sürümünü desteklemektedir.
 
 ### <a name="version-45"></a>Sürüm 4,5
+
 * Yedekleme veritabanı yeniden adlandırıldığında depolama öykünücüsünün başlatılmasının ve yüklemesinin başarısız olmasına neden olan bir hata düzeltildi.
 
 ### <a name="version-44"></a>Sürüm 4,4
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2015-12-11 sürümünü desteklemektedir.
 * Depolama öykünücüsünün blob verileri çöp toplama işlemi, çok sayıda blob ile ilgilenirken artık daha etkilidir.
 * Kapsayıcı ACL XML 'sinin depolama hizmetinin nasıl yaptığından farklı bir şekilde doğrulanmasının neden olduğu bir hata düzeltildi.
 * Bazen büyük ve küçük tarih saat değerlerinin yanlış saat diliminden raporlanmasının neden olduğu bir hata düzeltildi.
 
 ### <a name="version-43"></a>Sürüm 4,3
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2015-07-08 sürümünü desteklemektedir.
 
 ### <a name="version-42"></a>Sürüm 4,2
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2015-04-05 sürümünü desteklemektedir.
 
 ### <a name="version-41"></a>Sürüm 4,1
+
 * Depolama öykünücüsü, yeni ekleme blobu özellikleri dışında blob, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2015-02-21 sürümünü desteklemektedir.
 * Henüz öykünücü tarafından desteklenmeyen Depolama Hizmetleri sürümünü kullanıyorsanız, öykünücü anlamlı bir hata iletisi döndürür. Öykünücü 'un en son sürümünü kullanmanızı öneririz. VersionNotSupportedByEmulator hatasıyla karşılaşırsanız (HTTP durum kodu 400-Hatalı Istek), lütfen depolama öykünücüsünün en son sürümünü indirin.
 * Yarış durumunda olan bir hata düzeltildiğinde, eşzamanlı birleştirme işlemleri sırasında tablo varlık verilerinin hatalı olması neden oldu.
 
 ### <a name="version-40"></a>Sürüm 4,0
+
 * Depolama öykünücüsü yürütülebilir dosyası, *Azurestorampaemulator. exe*olarak yeniden adlandırıldı.
 
 ### <a name="version-32"></a>Sürüm 3,2
+
 * Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2014-02-14 sürümünü desteklemektedir. Dosya hizmeti uç noktaları şu anda depolama öykünücüsünde desteklenmiyor. Sürüm 2014-02-14 hakkındaki ayrıntılar için bkz. [Azure depolama hizmetleri Için sürüm oluşturma](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) .
 
 ### <a name="version-31"></a>Sürüm 3,1
+
 * Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) depolama öykünücüsünde destekleniyor. Blob hizmeti alma Istatistiklerini al, kuyruk hizmet Istatistiklerini al ve tablo hizmeti Istatistikleri API 'Leri, hesap ikincili için desteklenir ve arka plandaki SQL veritabanına göre her zaman LastSyncTime yanıt öğesinin değerini geçerli saat olarak döndürür. Depolama öykünücüsüyle ikincil öğesine programlı erişim için, .NET sürüm 3,2 veya üzeri için depolama Istemcisi kitaplığı 'nı kullanın. Ayrıntılar için bkz. .NET için Microsoft Azure Depolama Istemci kitaplığı başvurusu.
 
 ### <a name="version-30"></a>Sürüm 3,0
+
 * Azure depolama öykünücüsü artık işlem öykünücüsü ile aynı pakette yer alınmaz.
 * Depolama öykünücüsü grafik kullanıcı arabirimi, betik temelli bir komut satırı arabiriminin yararına kullanım dışı bırakılmıştır. Komut satırı arabirimi hakkında daha fazla bilgi için bkz. depolama öykünücüsü komut satırı araç başvurusu. Grafik arabirimi sürüm 3,0 ' de mevcut olmaya devam edecektir, ancak yalnızca Işlem öykünücüsü, sistem tepsisi simgesine sağ tıklayıp depolama öykünücüsü Kullanıcı arabirimini göster ' i seçerek erişilebilir.
 * Azure Depolama hizmetlerinin 2013-08-15 sürümü artık tam olarak desteklenmektedir. (Daha önce bu sürüm yalnızca depolama öykünücü sürümü 2.2.1 Preview tarafından desteklenmektedir.)

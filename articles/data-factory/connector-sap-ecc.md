@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c92c1b87de1b728fd79c1ef02b32135463c7124f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6fd7c4ffafa54acb7ff67bd2e595f0b3c02a0e5a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720677"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967410"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC 'den veri kopyalama
 
@@ -50,6 +50,10 @@ SAP ECC genellikle, SAP Gateway aracılığıyla OData Hizmetleri aracılığıy
 
 - **SAP OData hizmetini etkinleştirin ve yapılandırın**. Bir saniyede TCODE SıCF aracılığıyla OData hizmetini etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin gösterilmesini gerektiğini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [adım adım Kılavuzu](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
+## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -66,7 +70,7 @@ SAP ECC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | `url` | SAP ECC OData hizmetinin URL 'SI. | Evet |
 | `username` | SAP ECC 'ye bağlanmak için kullanılan Kullanıcı adı. | Hayır |
 | `password` | SAP ECC 'ye bağlanmak için kullanılan düz metin parolası. | Hayır |
-| `connectVia` | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Şirket içinde barındırılan bir tümleştirme çalışma zamanı veya Azure Integration Runtime (veri depoluiz herkese açık ise) kullanabilirsiniz. Çalışma zamanı belirtmezseniz, `connectVia` varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
+| `connectVia` | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Bir çalışma zamanı belirtmezseniz, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | Hayır |
 
 ### <a name="example"></a>Örnek
 

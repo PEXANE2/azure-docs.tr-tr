@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736253"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975729"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -34,7 +34,8 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   Bir API Management örneği. Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
--   Size ait olan özel bir etki alanı adı. Kullanmak istediğiniz özel etki alanı adı ayrı ayrı temin ve bir DNS sunucusunda barındırılmalıdır. Bu konu, özel bir etki alanı adının nasıl barındıralınacağını gösteren yönergeler sağlamaz.
+-   Siz veya kuruluşunuzun sahip olduğu özel bir etki alanı adı. Bu konu, özel bir etki alanı adını nasıl temin etmek için yönergeler sağlamaz.
+-   Özel etki alanı adını API Management örneğinizin varsayılan etki alanı adına eşleyen bir DNS sunucusunda barındırılan bir CNAME kaydı. Bu konu, CNAME kaydını barındırmak için yönergeler sağlamaz.
 -   Ortak ve özel anahtarı olan geçerli bir sertifikanız olmalıdır (. PFX). Konu veya konu diğer adı (SAN), etki alanı adıyla eşleşmelidir (Bu, API Management örneğinin SSL üzerinden URL 'Leri güvenli bir şekilde kullanıma sunmasına olanak sağlar).
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Özel bir etki alanı adı ayarlamak için Azure portal kullanın
@@ -52,13 +53,17 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     > [!NOTE]
     > Yalnızca tüketim katmanında yapılandırma için kullanılabilir olan **ağ geçidi** uç noktası.
     > Tüm uç noktaları veya bunlardan bazılarını güncelleştirebilirsiniz. Genellikle müşteriler **ağ geçidini** güncelleştirir (Bu URL, API Management Ile sunulan API 'yi çağırmak için kullanılır) ve **Portal** (geliştirici portalı URL 'si).
-    > **Yönetim** ve **SCM** uç noktaları yalnızca API Management örnek sahipleri tarafından dahili olarak kullanılır ve bu nedenle, özel bir etki alanı adı daha az sıklıkla atanır. **Premium** katmanı, **ağ geçidi** uç noktası için birden çok konak adı ayarlamayı destekler.
+    > **Yönetim** ve **SCM** uç noktaları yalnızca API Management örnek sahipleri tarafından dahili olarak kullanılır ve bu nedenle, özel bir etki alanı adı daha az sıklıkla atanır.
+    > **Premium** katmanı, **ağ geçidi** uç noktası için birden çok konak adı ayarlamayı destekler.
 
 1. Güncelleştirmek istediğiniz uç noktayı seçin.
 1. Sağdaki pencerede **Özel ' e**tıklayın.
 
-    - **Özel etki alanı adı**' nda, kullanmak istediğiniz adı belirtin. Örneğin: `api.contoso.com`. Joker karakter etki alanı adları (örneğin \*,. domain.com) de desteklenir.
+    - **Özel etki alanı adı**' nda, kullanmak istediğiniz adı belirtin. Örneğin: `api.contoso.com`.
     - **Sertifikada**Key Vault bir sertifika seçin. Geçerli bir de yükleyebilirsiniz. Sertifika bir parolayla korunuyorsa PFX dosyası ve **parolasını**girin.
+
+    > [!NOTE]
+    > Joker karakter etki alanı adları, `*.contoso.com` örn. tüketim katmanı hariç tüm katmanlarda desteklenir.
 
     > [!TIP]
     > Sertifikaları yönetmek için Azure Key Vault kullanmanızı ve onları oto döndürme için ayarlamayı öneririz.
@@ -71,7 +76,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 1. Uygula ' ya tıklayın.
 
     > [!NOTE]
-    > Sertifikayı atama işlemi, dağıtımın boyutuna bağlı olarak 15 dakika veya daha fazla sürebilir. Geliştirici SKU 'SU kapalı, temel ve daha yüksek SKU 'nun kapalı kalma süresi yoktur.
+    > Sertifikayı atama işlemi, dağıtımın boyutuna bağlı olarak 15 dakika veya daha fazla sürebilir. Geliştirici SKU 'SU kapalı, temel ve daha yüksek SKU 'Ların kapalı kalma süresi yoktur.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
@@ -79,8 +84,8 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 
 Özel etki alanı adınız için DNS yapılandırılırken iki seçeneğiniz vardır:
 
-- Yapılandırılmış özel etki alanı adınızın uç noktasını işaret eden bir CNAME kaydı yapılandırın.
-- API Management ağ geçidi IP adresinizi işaret eden bir A-kaydı yapılandırın.
+-   Yapılandırılmış özel etki alanı adınızın uç noktasını işaret eden bir CNAME kaydı yapılandırın.
+-   API Management ağ geçidi IP adresinizi işaret eden bir A-kaydı yapılandırın.
 
 > [!NOTE]
 > API Yönetimi örneğinin IP adresi statik olsa da, birkaç senaryoda değişebilir. Bu nedenle, özel etki alanı yapılandırılırken CNAME kullanılması önerilir. DNS yapılandırma yöntemi seçerken göz önüne alın. [API Yönetimi hakkında SSS](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)bölümünde daha fazla bilgi edinin.

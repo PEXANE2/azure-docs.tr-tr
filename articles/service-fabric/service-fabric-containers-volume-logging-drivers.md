@@ -9,30 +9,30 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: 36a3bb385064009f25a585ea299558d54714fc27
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb45dda9886450d217355d876ae35af954d99845
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599693"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955589"
 ---
-# <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure dosyaları birim sürücüsü (Önizleme)
-Azure Files Volume eklentisi, Docker kapsayıcıları için [Azure dosya](https:///azure/storage/files/storage-files-introduction) tabanlı birimler sağlayan bir [Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) eklentisidir. Bu Docker birim eklentisi, Service Fabric kümelerine dağıtılabilen bir Service Fabric uygulaması olarak paketlenir. Amacı, kümeye dağıtılan diğer Service Fabric kapsayıcı uygulamaları için Azure dosya tabanlı birimler sağlamaktır.
+# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure dosyaları birim sürücüsü
+Azure Files Volume eklentisi, Docker kapsayıcıları için [Azure dosya](/azure/storage/files/storage-files-introduction) tabanlı birimler sağlayan bir [Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) eklentisidir. Bu Docker birim eklentisi, Service Fabric kümelerine dağıtılabilen bir Service Fabric uygulaması olarak paketlenir. Amacı, kümeye dağıtılan diğer Service Fabric kapsayıcı uygulamaları için Azure dosya tabanlı birimler sağlamaktır.
 
 > [!NOTE]
-> Azure Files Volume eklentisinin sürüm 6.5.516.9494, bu belgeyle kullanılabilen bir önizleme sürümüdür. Önizleme sürümü olarak, üretim ortamlarında kullanılması **desteklenmez.**
+> Azure Files Volume eklentisinin sürüm 6.5.516.9494, bu belgeyle kullanılabilen bir önizleme sürümüdür. Önizleme sürümü olarak, üretim ortamlarında kullanılması desteklenmez.
 >
 
 ## <a name="prerequisites"></a>Önkoşullar
-* Azure Files Volume eklentisinin Windows sürümü yalnızca [Windows Server sürüm 1709](https:///windows-server/get-started/whats-new-in-windows-server-1709), [windows 10 sürüm 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) veya sonraki işletim sistemlerinde kullanılabilir.
+* Azure Files Volume eklentisinin Windows sürümü yalnızca [Windows Server sürüm 1709](/windows-server/get-started/whats-new-in-windows-server-1709), [windows 10 sürüm 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) veya sonraki işletim sistemlerinde kullanılabilir.
 
 * Azure Files Volume eklentisinin Linux sürümü, Service Fabric tarafından desteklenen tüm işletim sistemi sürümlerinde kullanılabilir.
 
 * Azure Files Volume eklentisi yalnızca Service Fabric sürüm 6,2 ve daha yeni sürümlerde kullanılabilir.
 
-* Service Fabric kapsayıcı uygulamasının birim olarak kullanacağı bir dosya paylaşma oluşturmak için [Azure dosyaları belgelerindeki](https:///azure/storage/files/storage-how-to-create-file-share) yönergeleri izleyin.
+* Service Fabric kapsayıcı uygulamasının birim olarak kullanacağı bir dosya paylaşma oluşturmak için [Azure dosyaları belgelerindeki](/azure/storage/files/storage-how-to-create-file-share) yönergeleri izleyin.
 
-* [PowerShell 'i Service Fabric modülü](https:///azure/service-fabric/service-fabric-get-started) veya [sfctl](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) yüklü olarak yüklemeniz gerekir.
+* [PowerShell 'i Service Fabric modülü](/azure/service-fabric/service-fabric-get-started) veya [sfctl](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) yüklü olarak yüklemeniz gerekir.
 
 * Hyper-V kapsayıcıları kullanıyorsanız, aşağıdaki kod parçacıklarının Azure Resource Manager şablonunuzda (Azure Cluster) veya ClusterConfig. JSON (tek başına küme) ClusterManifest (yerel küme) veya fabricSettings bölümüne eklenmesi gerekir.
 
@@ -78,12 +78,12 @@ Linux için Azure Resource Manager dağıtım komutu:
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-Betiği başarıyla çalıştırdıktan sonra, [uygulamanızı yapılandırma bölümüne atlayabilirsiniz.](https:////azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
+Betiği başarıyla çalıştırdıktan sonra, [uygulamanızı yapılandırma bölümüne atlayabilirsiniz.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
 
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>Tek başına kümeler için el ile dağıtım
 
-Kapsayıcılarınız için birimleri sağlayan Service Fabric uygulaması [Service Fabric indirme sitesinden](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.516.9494.zip)indirilebilir. Uygulama, [PowerShell](https:///azure/service-fabric/service-fabric-deploy-remove-applications), [CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) veya [FabricClient API 'leri](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient)aracılığıyla kümeye dağıtılabilir.
+Kapsayıcılarınız için birimleri sağlayan Service Fabric uygulaması [Service Fabric indirme sitesinden](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.516.9494.zip)indirilebilir. Uygulama, [PowerShell](./service-fabric-deploy-remove-applications.md), [CLI](./service-fabric-application-lifecycle-sfctl.md) veya [FabricClient API 'leri](./service-fabric-deploy-remove-applications-fabricclient.md)aracılığıyla kümeye dağıtılabilir.
 
 1. Komut satırını kullanarak, dizini indirilen uygulama paketinin kök dizinine değiştirin.
 
@@ -128,10 +128,10 @@ Kapsayıcılarınız için birimleri sağlayan Service Fabric uygulaması [Servi
 
 > [!NOTE]
 > 
-> Windows Server 2016 Datacenter, kapsayıcılara SMB takmaları eşlemeyi desteklemez ([yalnızca Windows Server sürüm 1709 ' de desteklenir](https:///virtualization/windowscontainers/manage-containers/container-storage)). Bu kısıtlama, 1709 'den eski sürümlerde ağ birimi eşlemeyi ve Azure dosyaları birim sürücülerini engeller.
+> Windows Server 2016 Datacenter, kapsayıcılara SMB takmaları eşlemeyi desteklemez ([yalnızca Windows Server sürüm 1709 ' de desteklenir](/virtualization/windowscontainers/manage-containers/container-storage)). Bu kısıtlama, 1709 'den eski sürümlerde ağ birimi eşlemeyi ve Azure dosyaları birim sürücülerini engeller.
 
 #### <a name="deploy-the-application-on-a-local-development-cluster"></a>Uygulamayı yerel bir geliştirme kümesinde dağıtma
-Yukarıdaki 1-3 adımlarını izleyin [.](https:////azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
+Yukarıdaki 1-3 adımlarını izleyin [.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
 
  Azure dosyaları toplu eklenti uygulaması için varsayılan hizmet örneği sayısı-1 ' dir. Bu, kümedeki her düğüme dağıtılan bir hizmetin bir örneği olduğu anlamına gelir. Ancak, Azure dosyaları toplu eklenti uygulamasını yerel bir geliştirme kümesine dağıttığınızda, hizmet örneği sayısı 1 olarak belirtilmelidir. Bu, **InstanceCount** uygulama parametresi aracılığıyla yapılabilir. Bu nedenle, yerel bir geliştirme kümesinde Azure dosyaları toplu eklenti uygulaması oluşturma komutu şunlardır:
 
@@ -204,7 +204,7 @@ Yukarıdaki kod parçacığında bulunan **Driveroption** öğelerinde gösteril
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>Kendi birim veya günlük sürücünüzü kullanma
-Service Fabric Ayrıca kendi özel [biriminiz](https://docs.docker.com/engine/extend/plugins_volume/) veya [günlük](https://docs.docker.com/engine/admin/logging/overview/) sürücüleriniz kullanımına izin verir. Docker Volume/Logging sürücüsü kümede yüklü değilse, RDP/SSH protokollerini kullanarak el ile yükleyebilirsiniz. Bu protokollerle yüklemeyi, bir [sanal makine ölçek kümesi başlatma betiği](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) veya [setupentrypoint betiği](https:///azure/service-fabric/service-fabric-application-model)aracılığıyla gerçekleştirebilirsiniz.
+Service Fabric Ayrıca kendi özel [biriminiz](https://docs.docker.com/engine/extend/plugins_volume/) veya [günlük](https://docs.docker.com/engine/admin/logging/overview/) sürücüleriniz kullanımına izin verir. Docker Volume/Logging sürücüsü kümede yüklü değilse, RDP/SSH protokollerini kullanarak el ile yükleyebilirsiniz. Bu protokollerle yüklemeyi, bir [sanal makine ölçek kümesi başlatma betiği](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) veya [setupentrypoint betiği](/azure/service-fabric/service-fabric-application-model)aracılığıyla gerçekleştirebilirsiniz.
 
 [Azure Için Docker birim sürücüsünü](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) yüklemeye yönelik betiğe örnek olarak aşağıdaki gibidir:
 
@@ -233,7 +233,7 @@ Uygulamalarınızda, yüklediğiniz birim veya günlük sürücüsünü kullanma
 </ContainerHostPolicies>
 ```
 
-Bir birim eklentisi belirtirken Service Fabric, belirtilen parametreleri kullanarak birimi otomatik olarak oluşturur. Volume **öğesi Için** **kaynak** etiketi birimin adıdır ve **sürücü** etiketi birim sürücüsü eklentisini belirtir. **Hedef** etiket, **kaynağın** çalışan kapsayıcı içinde eşlendiği konumdur. Bu nedenle, hedef Kapsayıcınız içinde zaten bulunan bir konum olamaz. Seçenekler, aşağıdaki gibi **Driveroption** etiketi kullanılarak belirtilebilir:
+Bir birim eklentisi belirtirken Service Fabric, belirtilen parametreleri kullanarak birimi otomatik olarak oluşturur. Volume öğesi için **kaynak** etiketi birimin adıdır ve **sürücü** etiketi birim sürücüsü eklentisini belirtir. **Hedef** etiket, **kaynağın** çalışan kapsayıcı içinde eşlendiği konumdur. Bu nedenle, hedef Kapsayıcınız içinde zaten bulunan bir konum olamaz. Seçenekler, aşağıdaki gibi **Driveroption** etiketi kullanılarak belirtilebilir:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">

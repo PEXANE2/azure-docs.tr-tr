@@ -1,6 +1,6 @@
 ---
-title: Tanılama ve Azure Cosmos DB kullanırken sorgu sorunlarını giderme
-description: Tanımlamak, tanılamak ve Azure Cosmos DB SQL sorgu sorunlarını giderme hakkında bilgi edinin.
+title: Azure Cosmos DB kullanırken sorgu sorunlarını tanılama ve giderme
+description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı ve sorun gidermeyi öğrenin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: troubleshooting
@@ -8,62 +8,66 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835828"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986162"
 ---
-# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB için sorgu performansı sorunlarını giderme
-Bu makalede tanımlamak, tanılamak ve Azure Cosmos DB SQL sorgu sorunlarını giderme konusunda anlatılmaktadır. Azure Cosmos DB sorgular için en iyi performans elde etmek için aşağıdaki sorun giderme adımlarını izleyin. 
+# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB sorgu performansının sorunlarını giderme
+Bu makalede, SQL sorgu sorunlarını Azure Cosmos DB belirleme, tanılama ve sorunlarını giderme konuları ele alınmaktadır. Azure Cosmos DB sorgularda en iyi performansı elde etmek için aşağıdaki sorun giderme adımlarını izleyin. 
 
-## <a name="collocate-clients-in-same-azure-region"></a>İstemcilerin aynı Azure bölgesinde ISS'de 
-En düşük gecikmeyi çağıran uygulama için aynı Azure bölgesindeki sağlanan Azure Cosmos DB uç nokta olarak bulunduğu sağlayarak gerçekleştirilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/#services) makalesi.
+## <a name="collocate-clients-in-same-azure-region"></a>Aynı Azure bölgesindeki istemcileri birlikte bulun 
+Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak elde edilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/#services) makalesi.
 
-## <a name="check-consistency-level"></a>Tutarlılık düzeyi denetimi
-[Tutarlılık düzeyi](consistency-levels.md) performans ve ücretleri etkileyebilir. Tutarlılık düzeyi, verilen senaryo için uygun olduğundan emin olun. Daha fazla ayrıntı için bkz: [tutarlılık düzeyi seçme](consistency-levels-choosing.md).
+## <a name="check-consistency-level"></a>Tutarlılık düzeyini denetle
+[Tutarlılık düzeyi](consistency-levels.md) , performansı ve ücretleri etkileyebilir. Tutarlılık düzeyinin verilen senaryoya uygun olduğundan emin olun. Daha fazla ayrıntı için bkz. [tutarlılık düzeyi seçme](consistency-levels-choosing.md).
 
-## <a name="log-query-metrics"></a>Sorgu ölçümleri günlüğe kaydedin
-Kullanım `QueryMetrics` yavaş veya pahalı sorgu giderilir. 
+## <a name="log-sql-query-in-storage-account"></a>Depolama hesabında SQL sorgusunu günlüğe kaydet
+[Tanılama günlükleri aracılığıyla SQL API sorgu günlükleri](logging.md#turn-on-logging-in-the-azure-portal) , gizleme sorgusunun tercih ettiğiniz bir depolama hesabında günlüğe erişmesini sağlar. Bu, tanılama günlüklerine bakabilmeniz ve daha fazla ru kullanarak sorgu bulmanıza ve QueryRuntimeStatistics ile eşleşecek etkinlik kimliğini kullanmanıza olanak tanır. 
 
-  * Ayarlama `FeedOptions.PopulateQueryMetrics = true` olmasını `QueryMetrics` yanıt.
-  * `QueryMetrics` sınıfında aşırı yüklenmiş bir `.ToString()` dize gösterimini almak için çağrılan işlev `QueryMetrics`. 
-  * Ölçümleri, diğerlerinin yanında aşağıdaki Öngörüler türetmek için kullanılabilir: 
+
+## <a name="log-query-metrics"></a>Günlük sorgusu ölçümleri
+Yavaş `QueryMetrics` veya pahalı sorguların sorunlarını gidermek için kullanın. 
+
+  * Yanıtta `FeedOptions.PopulateQueryMetrics = true` olacak`QueryMetrics` şekilde ayarlayın.
+  * `QueryMetrics`sınıfında, öğesinin `QueryMetrics`dize `.ToString()` gösterimini almak için çağrılabilecek aşırı yüklenmiş bir işlev vardır. 
+  * Ölçümler, diğerleri arasında aşağıdaki öngörüleri türetmek için kullanılabilir: 
   
-      * Olup herhangi belirli bir sorgu işlem hattındaki bileşeninin (yüzlerce milisaniye ya da daha fazla sırayla) tamamlamak için anormal olarak uzun sürdü. 
+      * Sorgu işlem hattının herhangi bir belirli bileşeninin olağan dışı bir şekilde (yüzlerce milisaniyelik veya daha fazla) tamamlanmasını belirtir. 
 
-          * Bakmak `TotalExecutionTime`.
-          * Varsa `TotalExecutionTime` sorgusunu uçtan uca yürütme süresi'dan küçük ve istemci tarafı veya ağda zaman harcandığını. İki Azure bölgesi ve istemci birlikte bulunan denetleyin.
+          * Bölümüne bakın `TotalExecutionTime`.
+          * `TotalExecutionTime` Sorgunun son yürütme zamanından daha küçükse, istemci tarafında veya ağda saat harcanmaktadır. İstemci ve Azure bölgesinin birlikte bulunduğundan emin olun.
       
-      * (Çıkış belge sayısı alınan belge sayısından daha az ise) belgeleri hatalı pozitif sonuçları gerçekleştirildiğini analiz.  
+      * Çözümlenen belgelerde hatalı pozitif sonuçlar olup olmadığı (çıkış belgesi sayısı alınan belge sayısından çok daha az ise).  
 
-          * Bakmak `Index Utilization`.
-          * `Index Utilization` = (Döndürülen belgeler sayısı / yüklenen sayısı belgeler)
-          * Döndürülen belge sayısı yüklenen sayıdan daha az ise, hatalı pozitif sonuçları çözümlenmekte.
-          * Dar filtrelerle alınmasını belge sayısını sınırlayın.  
+          * Bölümüne bakın `Index Utilization`.
+          * `Index Utilization`= (Döndürülen belge sayısı/yüklenen belge sayısı)
+          * Döndürülen belge sayısı yüklenen sayıdan çok daha küçükse, yanlış pozitif sonuçlar çözümlenmekte olur.
+          * Daha dar filtrelerle alınmakta olan belge sayısını sınırlayın.  
 
-      * Tek gidiş dönüş fared (bkz `Partition Execution Timeline` gelen dize gösterimini `QueryMetrics`). 
-      * Olup sorgu yüksek istek yükü kullanılan. 
+      * Tek tek gidiş dönüşlerin `Partition Execution Timeline` `QueryMetrics`nasıl olduğu (dize gösteriminden bkz.). 
+      * Sorgunun yüksek istek ücreti tüketip tüketilmediğini belirtir. 
 
-Daha fazla ayrıntı için bkz: [SQL sorgusu yürütme ölçümlerini edinme](profile-sql-api-query.md) makalesi.
+Daha fazla ayrıntı için bkz. [SQL sorgu yürütme ölçümleri alma](profile-sql-api-query.md) makalesi.
       
-## <a name="tune-query-feed-options-parameters"></a>Sorgu akış seçenekleri parametrelerini ayarlama 
-Sorgu performansı isteğin öne [akış seçenekleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) parametreleri. Ayar deneyin seçenekleri aşağıda:
+## <a name="tune-query-feed-options-parameters"></a>Sorgu Akışı Seçenekleri Parametrelerini Ayarlama 
+İsteğin [Akış Seçenekleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) Parametreleri aracılığıyla sorgu performansı ayarlanabilir. Aşağıdaki seçenekleri ayarlamayı deneyin:
 
-  * Ayarlama `MaxDegreeOfParallelism` -1 ilk ve ardından farklı değerler arasında karşılaştırma performans. 
-  * Ayarlama `MaxBufferedItemCount` -1 ilk ve ardından farklı değerler arasında karşılaştırma performans. 
-  * Ayarlama `MaxItemCount` -1.
+  * Önce `MaxDegreeOfParallelism` -1 olarak ayarlayın ve ardından farklı değerler genelinde performansı karşılaştırın. 
+  * Önce `MaxBufferedItemCount` -1 olarak ayarlayın ve ardından farklı değerler genelinde performansı karşılaştırın. 
+  * \- `MaxItemCount` 1 olarak ayarlayın.
 
-Farklı değerler performansını karşılaştırılırken, 2, 4, 8, 16 ve diğerleri gibi değerler deneyin.
+Farklı değerlerin performansını karşılaştırırken, 2, 4, 8, 16 vb. gibi değerleri deneyin.
  
-## <a name="read-all-results-from-continuations"></a>Tüm sonuçları gelen devamlılığını okuyun
-Tüm sonuçları gitmiyor düşünüyorsanız, tam olarak devamlılığın boşaltma emin olun. Diğer bir deyişle, devamlılık belirteci elde etmek üzere daha fazla belge sahipken sonuçları okuma tutun.
+## <a name="read-all-results-from-continuations"></a>Devamlılıklardan tüm sonuçları okuyun
+Tüm sonuçları almadığınızı düşünüyorsanız devamlılığı tamamen boşalttığınızdan emin olun. Başka bir deyişle, devamlılık belirtecinin askıya alınacağı daha fazla belgesi varken sonuçları okumayı sürdürün.
 
-Tam olarak boşaltma aşağıdaki desenlerden birini kullanarak gerçekleştirilebilir:
+Aşağıdaki desenlerden herhangi biriyle tam boşaltma gerçekleştirilebilir:
 
-  * Devamlılık boş durumdayken işleme sonuçlarını devam edin.
-  * Sorgu daha fazla sonuç varken işleme devam edin. 
+  * Devamlılık boş olmadığından sonuçları işlemeye devam edin.
+  * Sorgu daha fazla sonuç içerdiğinden işleme devam edin. 
 
     ```csharp
     // using AsDocumentQuery you get access to whether or not the query HasMoreResults
@@ -80,15 +84,15 @@ Tam olarak boşaltma aşağıdaki desenlerden birini kullanarak gerçekleştiril
     ```
 
 ## <a name="choose-system-functions-that-utilize-index"></a>Dizin kullanan sistem işlevlerini seçin
-İfade bir dize değerleri aralığına çevrilebilir, dizinin kullanabilir; Aksi takdirde, işlem gerçekleştirilemiyor. 
+İfade, bir dize değerleri aralığına çevrilebiliyorsa dizini kullanabilir; aksi takdirde dizini kullanamaz. 
 
-Dizinden yararlanabilecek dize işlevleri listesi aşağıda verilmiştir: 
+Dizini kullanılabilecek dize işlevlerinin listesi aşağıdadır: 
     
-  * STARTSWITH (str_expr, str_expr) 
-  * Sol (str_expr, num_expr) str_expr = 
-  * (Str_expr, num_expr, num_expr) alt DİZENİN ilk num_expr 0 ise, ancak yalnızca str_expr = 
+  * STARTSWITH(str_expr, str_expr) 
+  * LEFT(str_expr, num_expr) = str_expr 
+  * SUBSTRING(str_expr, num_expr, num_expr) = str_expr, but only if first num_expr is 0 
     
-    Birkaç sorgu örnekleri şunlardır: 
+    İşte birkaç sorgu örneği: 
     
     ```sql
 
@@ -108,9 +112,9 @@ Dizinden yararlanabilecek dize işlevleri listesi aşağıda verilmiştir:
 
     ```
 
-  * Sistem işlevleri filtredeki kaçının (veya WHERE yan tümcesi) dizin tarafından sunulan değil. Bazı örnekler gibi sistem işlevlerini içerir, üst, alt içerir.
+  * Dizin tarafından sunulmayan filtredeki (veya WHERE yan tümcesindeki) sistem işlevlerinden kaçının. Bu tür sistem işlevlerinin bazı örnekleri şunlardır, büyük, daha düşüktür.
   * Mümkün olduğunda sorguları bölüm anahtarı filtrelemesi kullanacak şekilde yazın.
-  * Yüksek performanslı elde etmek için büyük/küçük filtrede çağırma sorgular kullanmayın. Bunun yerine, değerler ekleme sırasında büyük/küçük harfleri normalleştirmek. Değerlerin her biri için istenen büyük/küçük harf değeri eklemek veya istenen büyük/küçük harf değeri ve özgün değeri ekleyin. 
+  * Performansı elde etmek için, filtrede üst/alt ' i çağırmayı önleyin. Bunun yerine, ekleme sırasında değerlerin büyük küçük harflerini normalleştirin. Değerlerin her biri için istenen büyük küçük harfe sahip değeri ekleyin veya hem özgün değeri hem de değeri istenen büyük küçük harfe ekleyin. 
 
     Örneğin:
     
@@ -120,9 +124,9 @@ Dizinden yararlanabilecek dize işlevleri listesi aşağıda verilmiştir:
 
     ```
     
-    Bu durum için deposu "ALİ" büyük harfli veya "ALi" özgün değeri hem de "ALİ" depolayın. 
+    Bu durumda, "alı" i büyük harfle depolayın veya "ali" değerini özgün değeri ve "alı" olarak depolayın. 
     
-    JSON veri büyük/küçük harf normalleştirilmiş sorgu olur:
+    JSON veri büyük küçük harf normalleştirilirse sorgu şu şekilde olur:
     
     ```sql
 
@@ -130,45 +134,45 @@ Dizinden yararlanabilecek dize işlevleri listesi aşağıda verilmiştir:
 
     ```
 
-    İkinci sorgu, dönüştürmeler her değeri "ALİ" için değerleri karşılaştırmak için gerçekleştirme gerektirmez daha fazla performansa sahip olacaktır.
+    İkinci sorgu, değerleri "alı" ile karşılaştırmak için değerlerin her birinde dönüşümler yapılmasını gerektirmediğinden daha iyi performans sağlayacaktır.
 
-Daha fazla sistem işlevi için bilgi [sistem işlevlerini](sql-query-system-functions.md) makalesi.
+Daha fazla sistem işlevi ayrıntıları için bkz. [sistem işlevleri](sql-query-system-functions.md) makalesi.
 
-## <a name="check-indexing-policy"></a>Dizin oluşturma ilkesini denetleme
-Doğrulamak için geçerli [dizin oluşturma ilkesi](index-policy.md) idealdir:
+## <a name="check-indexing-policy"></a>Dizin oluşturma ilkesini denetle
+Geçerli [Dizin Oluşturma İlkesinin](index-policy.md) en iyi olduğunu doğrulamak için:
 
-  * Sorgularda kullanılan tüm JSON yolları daha hızlı okuma için dizin oluşturma İlkesi'nde dahil olduklarından emin olun.
-  * Daha fazla yüksek performanslı yazma işlemleri için sorgularda kullanılmaz yolları hariç tut.
+  * Sorgularda kullanılan tüm JSON yollarının, daha hızlı okuma için dizin oluşturma ilkesine eklendiğinden emin olun.
+  * Daha fazla performans yazma için sorgularda kullanılmayan yolları dışlayın.
 
-Daha fazla ayrıntı için bkz: [nasıl yönetme dizin oluşturma ilkesi](how-to-manage-indexing-policy.md) makalesi.
+Daha fazla ayrıntı için bkz. [Dizin oluşturma Ilkesini yönetme](how-to-manage-indexing-policy.md) makalesi.
 
-## <a name="spatial-data-check-ordering-of-points"></a>Uzamsal veriler: Kontrol noktalarını sıralama
+## <a name="spatial-data-check-ordering-of-points"></a>Uzamsal veriler: Noktaların sıralamasını denetleme
 İçinde bir Çokgen noktalarının saat yönünün tersi düzende belirtilmesi gerekir. Bir çokgenin belirtilen saat yönünde sırayla bölgesinde tersini temsil eder.
 
-## <a name="optimize-join-expressions"></a>Birleştirme ifadeleri en iyi duruma getirme
-`JOIN` ifadeler, büyük arası ürünlere kaymasını genişletebilirsiniz. Ne zaman mümkün olan daha küçük bir arama sorgusunu daha dar bir filtre boşluk.
+## <a name="optimize-join-expressions"></a>JOIN ifadelerini iyileştirme
+`JOIN`ifadeler, büyük çapraz ürünlere genişleyebilir. Mümkün olduğunda, daha dar bir filtre yoluyla daha küçük bir arama alanına karşı sorgulayın.
 
-Birden çok değerli alt sorgularda en iyi duruma getirebilir `JOIN` doğrulamaları her seçin-çok ifade sonra yerine tüm çapraz birleşimlerde sonra gönderme by ifadeleri `WHERE` yan tümcesi. Ayrıntılı bir örnek için bkz. [birleştirme ifadeleri en iyi duruma getirme](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) makalesi.
+Çoklu değer alt sorguları, `JOIN` `WHERE` yan Tümcecikteki tüm çapraz birleşimler yerine her bir SELECT-many ifadesinden sonra gelen koşulları ileterek ifadeleri iyileştirebilir. Ayrıntılı bir örnek için bkz. [JOIN deyimlerini iyileştirme](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) makalesi.
 
-## <a name="optimize-order-by-expressions"></a>ORDER BY ifadeleri en iyi duruma getirme 
-`ORDER BY` alanları seyrek veya dizin ilkesinde dahil değil ise, sorgu performansı düşebilir.
+## <a name="optimize-order-by-expressions"></a>SıRALAMA ölçütü ifadelerini iyileştirme 
+`ORDER BY`alanlar seyrek olursa veya dizin ilkesine dahil edilmamışsa sorgu performansı düşebilir.
 
-  * Zamanı gibi seyrek alanlar için arama alanını mümkün olduğunca filtrelerle azaltın. 
-  * Tek bir özellik için `ORDER BY`, dizin ilkesinde özellik içerir. 
-  * Birden çok özellik için `ORDER BY` ifadeleri tanımlamak bir [bileşik dizin](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) sıralanan alanları.  
+  * Zaman gibi seyrek alanlar için, filtre ile mümkün olduğunca fazla arama alanını azaltın. 
+  * Tek özellik `ORDER BY`için Dizin ilkesine özelliği ekleyin. 
+  * Birden çok özellik `ORDER BY` ifadesi için, sıralanan alanlarda [bileşik bir dizin](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) tanımlayın.  
 
-## <a name="many-large-documents-being-loaded-and-processed"></a>Yüklenen ve işlenen çok sayıda büyük belgeleri
-Saat ve bir sorgu için gerekli RU'ları yalnızca yanıt boyutuna bağlı değildir, ayrıca sorgu işleme işlem hattı tarafından yapılan iş bağımlı oldukları. Saat ve RU, tüm sorgu işleme işlem hattı tarafından yapılan iş miktarı ile orantılı olarak artar. Daha fazla iş büyük dosyalar için gerçekleştirilir, bu nedenle daha fazla zaman ve RU yüklemek ve büyük belgeleri işlemek için gereklidir.
+## <a name="many-large-documents-being-loaded-and-processed"></a>Yüklenen ve işlenen birçok büyük belge
+Bir sorgu için gereken saat ve RUs yalnızca yanıtın boyutuna bağlı değildir, ayrıca sorgu işleme ardışık düzeni tarafından gerçekleştirilen işe da bağımlıdır. Zaman ve ru, tüm sorgu işleme işlem hattının yaptığı iş miktarı ile orantılı olarak artar. Büyük belgeler için daha fazla iş yapılır, bu nedenle büyük belgeleri yüklemek ve işlemek için daha fazla zaman ve RUs gerekir.
 
-## <a name="low-provisioned-throughput"></a>Sağlanan aktarım hızının düşük olmasını
-Sağlanan aktarım hızı, iş yükü işleyebileceğinden emin olun. Etkilenen koleksiyonlar için RU bütçe artırın.
+## <a name="low-provisioned-throughput"></a>Düşük sağlanan aktarım hızı
+Sağlanan aktarım hızının iş yükünü işleyediğinden emin olun. Etkilenen koleksiyonlar için RU bütçesini yükseltin.
 
 ## <a name="try-upgrading-to-the-latest-sdk-version"></a>En son SDK sürümüne yükseltmeyi deneyin
-En son SDK'sı bakın belirlemek için [SDK'sını indirin ve sürüm notları](sql-api-sdk-dotnet.md) makalesi.
+En son SDK 'yı öğrenmek için bkz. [SDK indirme ve sürüm notları](sql-api-sdk-dotnet.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-RU sorgu ölçün, sorgularınızı ve daha fazlasını ayarlamanıza olanak tanıyan bir yürütme istatistikleri alma konusunda belgelere bakın:
+Sorgu başına ru ölçüsünde aşağıdaki belgelere bakın, sorgularınızı ayarlamak için yürütme istatistiklerini alın ve daha fazlasını yapın:
 
-* [.NET SDK kullanarak SQL sorgusu yürütme ölçümleri alma](profile-sql-api-query.md)
+* [.NET SDK kullanarak SQL sorgusu yürütme ölçümlerini alma](profile-sql-api-query.md)
 * [Azure Cosmos DB ile sorgu performansını ayarlama](sql-api-sql-query-metrics.md)
-* [.NET SDK'sı için performans ipuçları](performance-tips.md)
+* [.NET SDK’sı için performans ipuçları](performance-tips.md)

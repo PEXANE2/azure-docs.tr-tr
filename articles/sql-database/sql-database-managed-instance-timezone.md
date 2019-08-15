@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 07/05/2019
-ms.openlocfilehash: 33c844374d6d2b8e64cde6c7c9633e54a292d95f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567285"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967914"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'nde saat dilimleri
 
@@ -83,10 +83,7 @@ Bir yedekleme dosyasını geri yükleyebilir veya verileri yönetilen bir örne�
 
 ### <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 
-<del>Bir zaman içinde geri yükleme gerçekleştirdiğinizde geri yükleme süresi UTC saati olarak yorumlanır. Bu ayar, gün ışığından yararlanma süresi ve olası değişiklikleri nedeniyle herhangi bir belirsizlik önler.<del>
-
- >[!WARNING]
-  > Geçerli davranış yukarıdaki ifadeye sahip değildir ve geri yükleme saati, otomatik veritabanı yedeklerinin alındığı kaynak yönetilen Örneğin saat dilimine göre yorumlanır. Belirli bir zamanı UTC saatine göre yorumlamak için bu davranışı düzeltmede çalışıyoruz. Daha ayrıntılı bilgi için bkz. [bilinen sorunlar](sql-database-managed-instance-timezone.md#known-issues) .
+Bir zaman içinde geri yükleme gerçekleştirdiğinizde geri yükleme süresi UTC saati olarak yorumlanır. Bu şekilde, gün ışığından yararlanma süresi ve olası değişiklikleri nedeniyle herhangi bir belirsizlikleri kaçınılmaz.
 
 ### <a name="auto-failover-groups"></a>Otomatik yük devretme grupları
 

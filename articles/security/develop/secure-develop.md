@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780559"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928064"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar geliştirin
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -89,7 +89,7 @@ Bu, gerçek verilerinize daha az sayıda kişinin erişimi olduğu anlamına gel
 
 Deneme yanılma ve sözlük tabanlı tahminlere karşı savunmak için, kullanıcıların karmaşık bir parola oluşturmasını sağlamak için güçlü bir parola ilkesi uygulamanız gerekir (örneğin, 12 karakter minimum uzunluğu ve alfasayısal ve özel karakterler gerektirir).
 
-Parola ilkeleri oluşturmak ve zorlamak için bir kimlik çerçevesi kullanabilirsiniz. Azure AD B2C, [Yerleşik ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)ve daha fazlasını sağlayarak parola yönetimine yardımcı olur.
+Parola ilkeleri oluşturmak ve zorlamak için bir kimlik çerçevesi kullanabilirsiniz. Azure AD B2C, [Yerleşik ilkeler](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [self servis parola sıfırlama](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)ve daha fazlasını sağlayarak parola yönetimine yardımcı olur.
 
 Varsayılan hesapların saldırılarına karşı savunmak için tüm anahtarların ve parolaların değiştirilebilen ve kaynakları yükledikten sonra oluşturulduğunu veya değiştirildiğini doğrulayın.
 
@@ -99,9 +99,9 @@ Uygulamanın parolaları otomatik olarak oluşturması gerekiyorsa, oluşturulan
 
 Uygulamanız [dosya karşıya yüklemeye](https://www.owasp.org/index.php/Unrestricted_File_Upload)izin veriyorsa, bu riskli etkinlik için uygulayabileceğiniz önlemleri göz önünde bulundurun. Birçok saldırının ilk adımı, saldırı altında olan bir sisteme bazı kötü amaçlı kodlar almanızı sağlar. Bir dosya yükleme işleminin kullanılması, saldırganın bunu gerçekleştirmenize yardımcı olur. OWASP, karşıya yüklediğiniz dosyanın güvende olduğundan emin olmak için bir dosyayı doğrulamaya yönelik çözümler sunar.
 
-Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](https://docs.microsoft.com/azure/security/fundamentals/antimalware) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
+Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](../fundamentals/antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) ile tümleştirebilirsiniz.
+[Microsoft Antimalware](../fundamentals/antimalware.md) gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](../../security-center/security-center-partner-integration.md) ile tümleştirebilirsiniz.
 
 ### <a name="dont-cache-sensitive-content"></a>Hassas içeriği önbelleğe alma
 
@@ -117,7 +117,7 @@ Tüm bilinen bileşenleri belirlemek için uygulamanızı ve bağımlı kitaplı
 [Tinfoil Security](https://www.tinfoilsecurity.com/) tarafından desteklenen güvenlik açığı taraması, Azure App Service Web Apps için kullanılabilir. [App Service Ile tinfoil Security scanning](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) , geliştiricilerin ve yöneticilerin kötü amaçlı bir aktör tarafından yararlanabilmeleri için hızlı, tümleşik ve ekonomik bir şekilde bulma ve adresleme olanakları sunmaktadır.
 
 > [!NOTE]
-> [Tinfoil Security 'Yi Azure AD ile de tümleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial). Tinfoil Security 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+> [Tinfoil Security 'Yi Azure AD ile de tümleştirebilirsiniz](../../active-directory/saas-apps/tinfoil-security-tutorial.md). Tinfoil Security 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 >  - Azure AD 'de, tinfoil Security 'ye kimlerin erişebileceğini kontrol edebilirsiniz.
 >  - Kullanıcılarınız Azure AD hesapları kullanılarak tinfoil Security 'de (çoklu oturum açma) otomatik olarak oturum açabilir.
 >  - Hesaplarınızı tek bir merkezi konumda, Azure portal yönetebilirsiniz.
@@ -128,7 +128,7 @@ Dinamik uygulama güvenliği testi (DAVST), güvenlik açıklarını bulmak içi
 
 Bast, statik uygulama güvenliği testi 'nden (SAST) farklıdır. SAST araçları, kod yürütülemediği zaman güvenlik kusurunu bulmak için kaynak kodu veya derlenmiş kod sürümlerini analiz eder.
 
-Bir güvenlik uzmanı (bir [sızma Sınayıcısı](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) veya güvenlik açığı denetçisi) ile birlikte, tercihen Bir güvenlik uzmanı yoksa, bir Web proxy tarayıcısı ve bazı eğitimlerle kendiniz de gerçekleştirebilirsiniz. Kodunuzda açık güvenlik sorunları sunmatığınızdan emin olmak için bir VAST tarayıcıyı erken takın. Web uygulaması güvenlik açığı tarayıcıları listesi için [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) sitesine bakın.
+Bir güvenlik uzmanı (bir [sızma Sınayıcısı](../fundamentals/pen-testing.md) veya güvenlik açığı denetçisi) ile birlikte, tercihen Bir güvenlik uzmanı yoksa, bir Web proxy tarayıcısı ve bazı eğitimlerle kendiniz de gerçekleştirebilirsiniz. Kodunuzda açık güvenlik sorunları sunmatığınızdan emin olmak için bir VAST tarayıcıyı erken takın. Web uygulaması güvenlik açığı tarayıcıları listesi için [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) sitesine bakın.
 
 ### <a name="perform-fuzz-testing"></a>Belirsizlik testi gerçekleştir
 
@@ -144,7 +144,7 @@ Uygulamayı tarayarak saldırı yüzeyinin bir resmini oluşturabilirsiniz. Micr
 
 ### <a name="perform-security-penetration-testing"></a>Güvenlik, sızma testi gerçekleştirme
 
-Uygulamanızın güvenli olmasını sağlamak, diğer tüm işlevleri test etmek kadar önemlidir. Derleme ve dağıtım sürecinin standart bir parçasını, [sızma testi](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) yapın. Dağıtılan uygulamalarda düzenli güvenlik testlerini ve güvenlik açığı taramasını zamanlayın ve açık bağlantı noktaları, uç noktalar ve saldırıları izleyin.
+Uygulamanızın güvenli olmasını sağlamak, diğer tüm işlevleri test etmek kadar önemlidir. Derleme ve dağıtım sürecinin standart bir parçasını, [sızma testi](../fundamentals/pen-testing.md) yapın. Dağıtılan uygulamalarda düzenli güvenlik testlerini ve güvenlik açığı taramasını zamanlayın ve açık bağlantı noktaları, uç noktalar ve saldırıları izleyin.
 
 ### <a name="run-security-verification-tests"></a>Güvenlik doğrulama testlerini Çalıştır
 

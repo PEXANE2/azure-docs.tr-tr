@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/12/2019
+ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638384"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977063"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda çoğaltmaları okuma
 
@@ -34,7 +34,33 @@ Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kayna�
 
 Okuma çoğaltması özelliği zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Ana ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
 
-Okuma çoğaltmaları, olağanüstü durum kurtarma planınızı geliştirebilir. Bölgesel bir olağanüstü durum varsa ve ana sunucunuz kullanılamaz durumdaysa, iş yükünüzü başka bir bölgedeki bir çoğaltmaya yönlendirebilirsiniz. Bunu yapmak için önce çoğaltmayı durdur işlevini kullanarak çoğaltmanın yazmaları kabul etmesine izin verin. Daha sonra bağlantı dizesini güncelleştirerek uygulamanızı yeniden yönlendirebilirsiniz. [Çoğaltmayı durdur](#stop-replication) bölümünde daha fazla bilgi edinin.
+
+## <a name="cross-region-replication"></a>Çapraz bölge çoğaltma
+Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
+
+> [!IMPORTANT]
+> Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
+
+[MariaDB Için Azure veritabanı bölgesine](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)bir ana sunucu ekleyebilirsiniz.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir.
+
+### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
+Ana sunucunuzun bulunduğu yere bakılmaksızın aşağıdaki bölgelerin herhangi birinde her zaman bir okuma çoğaltması oluşturabilirsiniz. Evrensel çoğaltma bölgeleri şunlardır:
+
+Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2.
+
+
+### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
+Evrensel çoğaltma bölgelerine ek olarak, ana sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)daha fazla bilgi edinebilirsiniz.
+
+Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları kullanıyorsanız, çoğaltmayı diğer bölgelerden biri yerine eşleştirilmiş bölgede oluşturmanızı öneririz. Eşleştirilmiş bölgeler eşzamanlı güncelleştirmeleri önleyin ve fiziksel yalıtımın ve veri fazlalığını önceliklendirir.  
+
+Ancak göz önünde bulundurulması gereken sınırlamalar vardır: 
+
+* Bölgesel kullanılabilirlik: MariaDB için Azure veritabanı Batı ABD 2, Fransa Orta, BAE Kuzey ve Almanya Orta sunulmaktadır. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
+    
+* Tek yönlü çiftler: Bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir. 
+   Bu, Batı Hindistan 'deki bir ana sunucunun Güney Hindistan bir çoğaltma oluşturmasıdır. Ancak, Güney Hindistan bir ana sunucu Batı Hindistan bir çoğaltma oluşturamaz. Bunun nedeni, Batı Hindistan ikincil bölgesinin Güney Hindistan, ancak Güney Hindistan ikincil bölgesi Batı Hindistan değildir.
+
 
 ## <a name="create-a-replica"></a>Çoğaltma oluşturma
 

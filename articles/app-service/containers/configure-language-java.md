@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 1488dbdcc042b29880560e7255de96b8d0409779
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498501"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967154"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -243,9 +243,6 @@ Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ort
 
 Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platformlarıyla Linux üzerinde Azure App Service dağıtılan Java uygulamalarının nasıl bağlanacağı gösterilmektedir.
 
-[Yeni relik](#configure-new-relic)
-yapılandırma[AppDynamics](#configure-appdynamics) 'i yapılandırma
-
 ### <a name="configure-new-relic"></a>Yeni relik yapılandırma
 
 1. [NewRelic.com](https://newrelic.com/signup) adresinde bir Newrelik hesabı oluşturun
@@ -257,8 +254,7 @@ yapılandırma[AppDynamics](#configure-appdynamics) 'i yapılandırma
 7. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
     - Uygulamanız **Java SE**kullanıyorsa, değeriyle `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`adlı bir ortam değişkeni oluşturun.
     - **Tomcat**kullanıyorsanız, değeriyle `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`adlı bir ortam değişkeni oluşturun.
-    - KıI kullanıyorsanız, Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) yeni relik belgelerine bakın.
-    - `javaagent` Veya `JAVA_OPTS` içinbirortamdeğişkeninizzatenvarsa,geçerlideğerinsonunabuseçeneğiekleyin.`CATALINA_OPTS`
+    - KıI kullanıyorsanız,Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) yeni relik belgelerine bakın.
 
 ### <a name="configure-appdynamics"></a>AppDynamics 'i yapılandırma
 
@@ -269,7 +265,9 @@ yapılandırma[AppDynamics](#configure-appdynamics) 'i yapılandırma
 5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
     - **Java SE**kullanıyorsanız, App Service adınız `JAVA_OPTS` `<app-name>` olan değer `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` ile adlı bir ortam değişkeni oluşturun.
     - **Tomcat**kullanıyorsanız, App Service adınız `CATALINA_OPTS` `<app-name>` olan değer `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` ile adlı bir ortam değişkeni oluşturun.
-    - KıI kullanıyorsanız, Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics belgelerine bakın.
+    - KıI kullanıyorsanız,Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics belgelerine bakın.
+
+>  `-javaagent:/...` Veya `JAVA_OPTS` içinbirortamdeğişkeninizzatenvarsa,geçerlideğerinsonunabuseçeneğiekleyin.`CATALINA_OPTS`
 
 ## <a name="configure-jar-applications"></a>JAR uygulamalarını yapılandırma
 
@@ -425,9 +423,9 @@ Bu konuyla ilgili daha fazla bilgi için lütfen veri erişimi ve [externalized 
 ## <a name="configure-java-ee-wildfly"></a>Java EE 'ı yapılandırma (Yavaya)
 
 > [!NOTE]
-> App Service Linux 'ta Java Enterprise Edition Şu anda önizleme aşamasındadır. Bu yığın üretime yönelik iş **için önerilmez.** Java ve Tomcat yığınlarımızla ilgili bilgiler.
+> App Service Linux 'ta Java Enterprise Edition Şu anda önizleme aşamasındadır. Bu yığın üretime yönelik iş için önerilmez. Java ve Tomcat yığınlarımızla ilgili bilgiler.
 
-Linux üzerinde Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Linux tabanlı hizmette Java Enterprise (Java EE) uygulamalarını oluşturmalarına, dağıtmasına ve ölçeklendirmesine olanak tanır.  Temel Java kurumsal çalışma zamanı ortamı, [Açık kaynaklı bir](https://wildfly.org/) uygulama sunucusudur.
+Linux üzerinde Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Linux tabanlı hizmette Java Enterprise (Java EE) uygulamalarını oluşturmalarına, dağıtmasına ve ölçeklendirmesine olanak tanır.  Temel Java kurumsal çalışma zamanı ortamı, açık kaynaklı bir uygulama [](https://wildfly.org/) sunucusudur.
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
@@ -482,7 +480,7 @@ Jpatron CLı aracılığıyla modülleri ve bunların bağımlılıklarını ve 
 
 Modülünüzün dosyalarını ve içeriğini aldıktan sonra, modülü, Yavaya uygulama sunucusuna eklemek için aşağıdaki adımları izleyin.
 
-1. Dosyalarınızı,  */Home/site/Deployments/Tools*gibi bir App Service örneğindeki BIR konuma yüklemek için FTP 'yi kullanın. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](../deploy-ftp.md).
+1. Dosyalarınızı, */Home/site/Deployments/Tools*gibi bir App Service örneğindeki BIR konuma yüklemek için FTP 'yi kullanın. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](../deploy-ftp.md).
 2. Azure Portal **yapılandırma** > **genel ayarları** sayfasında, **Başlangıç betiği** alanını başlangıç kabuğu betiğinizin konumuna ayarlayın, örneğin */Home/site/Deployments/Tools/Startup.exe*.
 3. Portalın **genel bakış** bölümündeki veya Azure CLI kullanarak **yeniden başlat** düğmesine basarak App Service örneğinizi yeniden başlatın.
 
@@ -636,7 +634,7 @@ Daha sonra, uygulamanızın Yavaya yapılandırmasını güncelleştirmeniz ve y
     mvn package -DskipTests azure-webapp:deploy
     ```
 
-3. Azure portal **genel bakış** bölümündeki veya Azure clı  kullanarak App Service örneğinizi yeniden başlatın.
+3. Azure portal **genel bakış** bölümündeki veya Azure clı kullanarak App Service örneğinizi yeniden başlatın.
 
 App Service örneğiniz artık veritabanınıza erişecek şekilde yapılandırılmıştır.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: dacurwin
-ms.openlocfilehash: 379dd87edbbfa878a034cd61854ee15f215b0228
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: cca8cf3a222b71954e6727e184ff5d16839a6a68
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689123"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954550"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup kullanarak şifrelenmiş VM 'Ler için Key Vault anahtarı ve gizli anahtarı geri yükleme
 
@@ -23,7 +23,7 @@ Bu makalede, anahtar ve gizli anahtarı anahtar kasasında yoksa, şifrelenmiş 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Yedekleme şifreli VM 'ler** -şifrelenmiş Azure vm 'ler Azure Backup kullanılarak yedeklendi. Şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini öğrenmek için [PowerShell 'i kullanarak Azure VM 'lerini yedeklemeyi ve geri yüklemeyi yönetme](backup-azure-vms-automation.md) makalesine bakın.
+* **Yedekleme şifreli VM 'ler** -şifrelenmiş Azure vm 'ler Azure Backup kullanılarak yedeklendi. Şifrelenmiş Azure sanal makinelerini yedekleme hakkında ayrıntılı bilgi için [PowerShell 'i kullanarak Azure VM 'lerini yedekleme ve geri yükleme makalesini yönetme](backup-azure-vms-automation.md) makalesine bakın.
 * **Azure Key Vault yapılandırma** – anahtarların ve parolaların geri yüklenmesi gereken anahtar kasasının zaten mevcut olduğundan emin olun. Anahtar Kasası yönetimi hakkında ayrıntılı bilgi [edinmek için Azure Key Vault kullanmaya başlama](../key-vault/key-vault-get-started.md) makalesine başvurun.
 * **Diski geri yükleme** - [PowerShell ADıMLARıNı](backup-azure-vms-automation.md#restore-an-azure-vm)kullanarak şifrelenmiş VM için diskleri geri yüklemek üzere geri yükleme işini tetiklemiş olduğunuzdan emin olun. Bunun nedeni, bu işin depolama hesabınızda şifreli VM 'nin geri yüklenecek anahtarlar ve gizli dizileri içeren bir JSON dosyası oluşturması.
 
@@ -138,4 +138,4 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anahtar ve gizli anahtarı anahtar kasasına geri yükledikten sonra, geri yüklenen diskten, anahtar ve gizli bilgisayarlardan şifrelenmiş VM 'Ler oluşturmak için [PowerShell kullanarak Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini yönetme](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) makalesine bakın.
+Anahtar ve gizli anahtarı anahtar kasasına geri yükledikten sonra, geri yüklenen disk, anahtar ve gizli bilgisayarlardan şifrelenmiş VM 'Ler oluşturmak için [PowerShell kullanarak Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini yönetme](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) makalesine bakın.

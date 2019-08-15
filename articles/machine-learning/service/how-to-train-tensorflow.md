@@ -1,29 +1,29 @@
 ---
-title: TensorFlow modellerini eğitme ve kaydetme
+title: Derin öğrenme sinir ağını TensorFlow ile eğitme
 titleSuffix: Azure Machine Learning service
-description: Bu makalede, Azure Machine Learning hizmetini kullanarak bir TensorFlow modelinin nasıl eğiteyapılacağı ve kaydedileceği gösterilmektedir.
+description: TensorFlow eğitim betikleri Azure Machine Learning hizmetini kullanarak ölçekte nasıl çalıştırılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/10/2019
+ms.date: 08/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5d281598bc905914b71f40d556cfa0b16a46485
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 41ebca7bd4ea299bda7e2d7a95edced583866527
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847646"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966801"
 ---
-# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile, TensorFlow modellerini eğitme ve kaydetme
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
 
-Bu makalede, Azure Machine Learning hizmetini kullanarak bir TensorFlow modelinin nasıl eğiteyapılacağı ve kaydedileceği gösterilmektedir. Popüler [veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanarak, Masorflow [Python kitaplığı](https://www.tensorflow.org/overview)kullanılarak oluşturulan derin bir sinir ağını kullanarak el yazısı rakamlarını sınıflandırın.
+Bu makalede, Azure Machine Learning [TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) sınıfını kullanarak [TensorFlow](https://www.tensorflow.org/overview) eğitim betiklerinizi ölçeklendirerek nasıl çalıştırabileceğiniz gösterilmektedir. Bu örnek, derin sinir ağı (DNN) kullanarak el ile yapılan rakamları sınıflandırmak için bir TensorFlow modeli kaydeder ve kaydettirir.
 
-TensorFlow, yaygın olarak derin sinir ağlar (DNN) oluşturmak için kullanılan bir açık kaynaklı hesaplama çerçevesidir. Azure Machine Learning hizmeti sayesinde, elastik bulut işlem kaynaklarını kullanarak açık kaynaklı eğitim işlerini hızla ölçeklendirebilirsiniz. Ayrıca eğitim çalıştırmalarını, sürüm modellerinizi, modellerinizi dağıtmayı ve daha fazlasını izleyebilirsiniz.
+Baştan sona akış modeli geliştirmenize veya [mevcut bir modeli](how-to-deploy-existing-model.md) buluta verdiğinize göre, üretim sınıfı modellerini derlemek, dağıtmak, sürüm ve izlemek üzere açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz .
 
-Sıfırdan bir TensorFlow modeli geliştirirken veya [var olan bir modeli](how-to-deploy-existing-model.md) buluta getiriyor Azure Machine Learning hizmet, üretime hazırlamış modeller oluşturmanıza yardımcı olabilir.
+[Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,7 +32,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
  - Azure Machine Learning Not defteri VM-indirme veya yükleme gerekli değil
 
      - [Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için ortamı ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md) ayarlayın.
-    - Not defteri sunucusundaki örnekler klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **kullanımı nasıl kullanılır-azureml > eğitimi--derin öğrenme > tren-hyperparameter-ayarla-dağıt-TensorFlow** klasörü. 
+    - Not defteri sunucusundaki örnekler derin öğrenimi klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulabilirsiniz: **nasıl kullanıma yönelik-nasıl yapılır-azureml > eğitimi-derin öğrenme > tren-hiper parametre-ayarla-dağıt-ile-TensorFlow** klasörde. 
  
  - Kendi Jupyter Notebook sunucunuz
 
@@ -73,7 +73,7 @@ from azureml.core.compute_target import ComputeTargetException
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>Deneme oluşturma
+### <a name="create-a-deep-learning-experiment"></a>Derin öğrenme denemesi oluşturun
 
 Eğitim betiklerinizi tutmak için bir deneme ve bir klasör oluşturun. Bu örnekte, "TF-mnist" adlı bir deneme oluşturun.
 
@@ -292,5 +292,9 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 Bu makalede, bir TensorFlow modeli eğitildiniz ve kaydettiniz. GPU etkin bir kümeye model dağıtmayı öğrenmek için, GPU modeli dağıtım makalemize devam edin.
 
-[GPU 'lar](how-to-deploy-inferencing-gpus.md)
-ile ınırm için dağıtım[, tensorboard ile izleme](how-to-monitor-tensorboard.md)
+> [!div class="nextstepaction"]
+> [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)
+* [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
+* [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
+* [Eğitilen model dağıtma](how-to-deploy-and-where.md)
+* [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

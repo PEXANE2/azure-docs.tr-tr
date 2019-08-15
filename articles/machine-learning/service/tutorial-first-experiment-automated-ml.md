@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 1d2a0c9e1531ace16335ea57acaccedfe2c1a3c8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815885"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990069"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Öğretici: Otomatik makine öğrenimini kullanarak ilk sınıflandırma modelinizi eğitme ve dağıtma (Önizleme)
 
@@ -86,7 +86,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 1. **Gelişmiş ayarlar** ' ı genişletin ve alanları aşağıdaki gibi doldurun.
 
-    Gelişmiş ayarlar|Değer
+    Gelişmiş ayarlar|Value
     ------|------
     Birincil ölçüm| AUC_weighted 
     Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam tamamlamayı bitmeden önce sonlanır: <br> *Eğitim iş süresi (dakika)* : 5  <br> *En fazla yineleme sayısı*: 10 
@@ -95,7 +95,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
     Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı için **5** ' i seçin.
 
    >[!NOTE]
-   > Bu deneme için, bir ölçüm veya en fazla yineleme eşiği ayarlayamıyoruz. Ayrıca algoritmaların test edilmeye engel olmaz.
+   > Bu deneme için, yineleme eşiğine göre ölçüm veya en fazla çekirdek ayarlayamıyoruz. Ayrıca algoritmaların test edilmeye engel olmaz.
 
 1. Denemeyi çalıştırmak için **Başlat** ' ı seçin.
 

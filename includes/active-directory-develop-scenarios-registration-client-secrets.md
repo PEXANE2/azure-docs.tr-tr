@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f98808aa0f8a2c32e2117447824114747091a82
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286334"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912517"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Parolaların veya sertifikaların kaydı
 
@@ -29,7 +29,7 @@ Gizli istemci uygulamaları gibi, bir gizli dizi veya sertifika kaydetmeniz gere
 
 İstemci kimlik bilgilerinin yönetimi, bir uygulamanın **sertifikalar & gizli** dizileri sayfasında oluşur:
 
-![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
+![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
 - Gizli istemci uygulamasının kaydı sırasında, uygulama gizli anahtarı (istemci gizli dizisi olarak da adlandırılır) Azure AD tarafından oluşturulur. **Yeni istemci parolası**' nı seçtiğinizde bu oluşturma gerçekleşir. Bu noktada, **Kaydet**' i seçmeden önce panodaki gizli dizesini uygulamanızda kullanmak üzere kopyalamanız gerekir. Bu dize daha fazla sunulmaz.
 - Sertifika, **Sertifika Yükle** düğmesi kullanılarak uygulama kaydına yüklenir. Azure AD yalnızca uygulamada doğrudan kayıtlı olan sertifikaları destekler ve sertifika zincirlerini takip etmez.

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 905d208dccf54ac34e3f832d4d0c5b98a6121757
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2b4d636737dbd75829c9555e340f79c3c867910d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827518"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967571"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
@@ -262,18 +262,18 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="azure-sql-database-as-the-source"></a>Kaynak olarak Azure SQL veritabanı
 
-Azure SQL veritabanından veri kopyalamak için kopyalama etkinliği kaynağındaki **Type** özelliğini **SQLSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Azure SQL veritabanından veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği **SQLSource**olarak ayarlanmalıdır. | Evet |
+| türü | Kopyalama etkinliği kaynağının **Type** özelliği **Azuressqlsource**olarak ayarlanmalıdır. "SqlSource" türü, geriye dönük uyumluluk için hala desteklenmektedir. | Evet |
 | sqlReaderQuery | Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. | Hayır |
 | sqlReaderStoredProcedureName | Kaynak tablo verilerini okuyan saklı yordamın adı. Son SQL deyim bir SELECT deyimi saklı yordam içinde olmalıdır. | Hayır |
 | storedProcedureParameters | Saklı yordamın parametreleri.<br/>İzin verilen değerler, ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. | Hayır |
 
 **Şunlara işaret eder:**
 
-- SQLSource için **Sqlreaderquery** belirtilmişsekopyalama etkinliği verileri almak IÇIN bu sorguyu Azure SQL veritabanı kaynağına karşı çalıştırır. Saklı yordam parametreleri alırsa, **sqlReaderStoredProcedureName** ve **storedProcedureParameters** belirterek bir saklı yordam de belirtebilirsiniz.
+- **Azuresopsource**Için **sqlreaderquery** belirtilmişse, kopyalama etkinliği verileri almak IÇIN bu sorguyu Azure SQL veritabanı kaynağına karşı çalıştırır. Saklı yordam parametreleri alırsa, **sqlReaderStoredProcedureName** ve **storedProcedureParameters** belirterek bir saklı yordam de belirtebilirsiniz.
 - **Sqlreaderquery** veya **SQLREADERSTOREDPROCEDURENAME**belirtmezseniz, JSON veri kümesinin "yapı" bölümünde tanımlanan sütunlar bir sorgu oluşturmak için kullanılır. Sorgu Azure `select column1, column2 from mytable` SQL veritabanı 'nda çalışır. Veri kümesi tanımında "Structure" yoksa, tablodan tüm sütunlar seçilir.
 
 #### <a name="sql-query-example"></a>SQL sorgusu örneği
@@ -297,7 +297,7 @@ Azure SQL veritabanından veri kopyalamak için kopyalama etkinliği kaynağınd
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderQuery": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -329,7 +329,7 @@ Azure SQL veritabanından veri kopyalamak için kopyalama etkinliği kaynağınd
         ],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "AzureSqlSource",
                 "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
                 "storedProcedureParameters": {
                     "stringData": { "value": "str3" },
@@ -368,11 +368,11 @@ GO
 > [!TIP]
 > [Azure SQL veritabanı 'na veri yüklemek Için en iyi](#best-practice-for-loading-data-into-azure-sql-database)uygulamalardan desteklenen yazma davranışları, konfigürasyonlar ve en iyi uygulamalar hakkında daha fazla bilgi edinin.
 
-Verileri Azure SQL veritabanına kopyalamak için kopyalama etkinliği havuzunda **tür** özelliğini **sqlsink**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
+Azure SQL veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun **Type** özelliği **sqlsink**olarak ayarlanmalıdır. | Evet |
+| türü | Kopyalama etkinliği havuzunun **Type** özelliği **Azuressqlsink**olarak ayarlanmalıdır. "SqlSink" türü, geriye dönük uyumluluk için hala destekleniyor. | Evet |
 | writeBatchSize | *Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/> İzin verilen değer **tamsayı** (satır sayısı). Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır |
 | writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/> İzin verilen değer **timespan**. Örnek olarak "00:30:00" (30 dakika) bulunur. | Hayır |
 | preCopyScript | Azure SQL veritabanı 'na veri yazmadan önce çalıştırılacak kopyalama etkinliği için bir SQL sorgusu belirtin. Her kopya çalıştırması için yalnızca bir kez çağrılır. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanın. | Hayır |
@@ -405,7 +405,7 @@ Verileri Azure SQL veritabanına kopyalamak için kopyalama etkinliği havuzunda
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "writeBatchSize": 100000
             }
         }
@@ -439,7 +439,7 @@ Verileri Azure SQL veritabanına kopyalamak için kopyalama etkinliği havuzunda
                 "type": "<source type>"
             },
             "sink": {
-                "type": "SqlSink",
+                "type": "AzureSqlSink",
                 "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
                 "storedProcedureTableTypeParameterName": "MyTable",
                 "sqlWriterTableType": "MyTableType",
@@ -553,7 +553,7 @@ Aşağıdaki örnek, Azure SQL veritabanı 'nda bir tabloyu kullanarak bir sakl�
 
     ```json
     "sink": {
-        "type": "SqlSink",
+        "type": "AzureSqlSink",
         "SqlWriterStoredProcedureName": "spOverwriteMarketing",
         "storedProcedureTableTypeParameterName": "Marketing",
         "SqlWriterTableType": "MarketingType",

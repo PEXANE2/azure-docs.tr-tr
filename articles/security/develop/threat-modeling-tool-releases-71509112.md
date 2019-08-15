@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 554e3259fb386abbdaebc167c852f88cb63bf50a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728174"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928111"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA sürüm 7.1.50911.2-9/12/2018
 
@@ -97,7 +97,7 @@ Evet, şunları yapabilirsiniz! [Azure kalıbı kümesi GitHub 'da kullanılabil
 
 ## <a name="documentation-and-feedback"></a>Belgeler ve geri bildirim
 
-- Threat Modeling Tool belgeleri [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)konumunda bulunur ve [Aracı kullanma hakkında](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)bilgiler içerir.
+- Threat Modeling Tool belgeleri [docs.Microsoft.com](threat-modeling-tool.md)konumunda bulunur ve [Aracı kullanma hakkında](threat-modeling-tool-getting-started.md)bilgiler içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

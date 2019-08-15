@@ -4,17 +4,17 @@ description: Azure IOT Edge arka plan programı ve çalışma zamanı ve üretim
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/22/2019
+ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9b9acac829fd128a66e3ceea603bb804adf2a88b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fdecc34b49b853c34624cabf4688e0387c303a16
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598592"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985809"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IOT Edge desteklenen sistemleri
 
@@ -67,7 +67,7 @@ Aşağıdaki tabloda listelenen sistemler Microsoft tarafından desteklenir, gen
 | Windows 10 IoT Enterprise, derleme 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server 2019, derleme 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server IoT 2019, derleme 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows 10 IoT Core, derleme 17763 | Genel önizleme |  |  |
+| Windows 10 IoT Core, derleme 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
 
 Yukarıda listelenen Windows işletim sistemleri, Windows üzerinde Windows kapsayıcıları çalıştıran cihazlara yönelik gereksinimlerdir. Bu yapılandırma, üretim için desteklenen tek yapılandırmadır. Windows için Azure IoT Edge yükleme paketleri Windows üzerinde Linux kapsayıcılarının kullanılmasına izin verir; Ancak, bu yapılandırma yalnızca geliştirme ve test içindir. Windows üzerinde Linux kapsayıcıları kullanımı, üretim için desteklenen bir yapılandırma değildir. Bu geliştirme senaryosunda herhangi bir Windows 10 Build 14393 veya daha yeni sürümü ve Windows Server 2016 ya da daha yeni sürümü kullanılabilir.

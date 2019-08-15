@@ -3,7 +3,7 @@ title: 'Sorun giderme: Azure Active Directory etkinlik günlüklerindeki eksik v
 description: Azure Active Directory etkinlik günlüklerindeki eksik verilere yönelik bir çözüm sağlar.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b25c09b140102c0788a939c48f48300242fc6ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a04de319a17255e3b61378cbd716828a237317b3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285038"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989511"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Sorun giderme: Azure Active Directory etkinlik günlüklerindeki eksik veriler 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Giderilmesine Azure Active Directory etkinlik günlüklerinde eksik veriler 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Azure portalda son eylemlerin denetim günlüklerini bulamıyorum
 
@@ -53,7 +53,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalında kısa bir süre önce oturum açtım ve bu oturum açma işleminin günlük girişlerini `Activity logs > Sign-ins` dikey penceresinde görmeyi umuyordum, ancak bulamıyorum.
 
- ![Raporlama](./media/troubleshoot-missing-audit-data/02.png)
+ ![Raporlanıyor](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Nedeni
 
@@ -74,7 +74,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
 
- ![Raporlama](./media/troubleshoot-missing-audit-data/03.png)
+ ![Raporlanıyor](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Nedeni
 

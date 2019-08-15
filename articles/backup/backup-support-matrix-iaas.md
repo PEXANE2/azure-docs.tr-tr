@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 369be73e2884594171419a66b94db64184582e58
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813818"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952026"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
@@ -157,8 +157,8 @@ Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den so
 
 **Bileşen** | **Destek**
 --- | ---
-Azure VM veri diskleri | 16 veya daha az veri diski olan bir VM 'yi yedekleyin. <br/><br/> 4 TB 'a kadar disk boyutlarını destekler.
-Veri diski boyutu | Tek disk 4095 GB 'a kadar olabilir.<br/><br/>4 TB 'den büyük disklere yönelik Azure Backup büyük disk desteğinin özel önizlemesine kaydolmak için, AskAzureBackupTeam@microsoft.comboyut olarak en fazla 30tb 'a gidin.  
+Azure VM veri diskleri | 16 veya daha az veri diski olan bir VM 'yi yedekleyin. <br/><br/> 4 TB 'a kadar disk boyutlarını destekler.<br/><br/>4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [Azure VM yedeklemesi 'ne genel bakış](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Veri diski boyutu | Tek disk 4095 GB 'a kadar olabilir.<br/><br/>4 TB 'tan büyük diskler için Azure Backup büyük disk desteğinin sınırlı genel önizlemesine kaydolmak için, bu [makaleye](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)bakın.
 Depolama türü | Standart HDD, Standart SSD Premium SSD.
 Yönetilen diskler | Destekleniyor.
 Şifrelenmiş diskler | Destekleniyor.<br/><br/> Azure disk şifrelemesi ile etkinleştirilen Azure VM 'Leri yedeklenebilir (Azure AD uygulaması ile veya olmadan).<br/><br/> Şifrelenmiş VM 'Ler dosya/klasör düzeyinde kurtarılamaz. Tüm VM 'yi kurtarmanız gerekir.<br/><br/> Azure Backup tarafından zaten korunan VM 'lerde şifrelemeyi etkinleştirebilirsiniz.

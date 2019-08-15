@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: a5db2c1c40c9c6f5c05205b9b2c652d2e23cf229
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848254"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990580"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal (Önizleme) içinde otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 
@@ -66,6 +66,10 @@ Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik makine öğre
 1. Bir depolama kapsayıcısı seçin.
 
 1. Depolama kapsayıcıınızdan bir veri dosyası seçin veya yerel bilgisayarınızdaki bir dosyayı kapsayıcıya yükleyin. Genel Önizleme yalnızca yerel dosya yüklemelerini ve Azure Blob depolama hesaplarını destekler.
+    >[!Important]
+    > Eğitim verileri için gereksinimler:
+    >* Verilerin tablolu biçimde olması gerekir.
+    >* Tahmin etmek istediğiniz değer (hedef sütun) verilerde bulunmalıdır.
 
     [![Veri dosyası seç](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
@@ -173,7 +177,7 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
     + Seçenek 2: Bu deneyime ait belirli bir model yinelemesini dağıtmak için, modelin detayına gidin ve çalışma ayrıntısı sayfasını açın ve modeli Dağıt ' ı seçin.
 1. **Modeli dağıt** bölmesini doldurun,
 
-    Alan| Değer
+    Alan| Value
     ----|----
     Dağıtım adı| Dağıtımınız için benzersiz bir ad girin.
     Dağıtım açıklaması| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.

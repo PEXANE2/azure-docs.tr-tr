@@ -4,14 +4,14 @@ description: Azure Active Directory Domain Services aracılığıyla Azure dosya
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 060c47cc25d04bccc253bcebf6479d660621f6d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855317"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934995"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Azure dosyaları için SMB üzerinden Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -142,7 +142,16 @@ Kullanıcılara paylaşma düzeyi izinleri vermek için iki Azure yerleşik rol�
 > [!IMPORTANT]
 > Bir kimliğe rol atama özelliği de dahil olmak üzere bir dosya paylaşımının tam yönetim denetimi, depolama hesabı anahtarının kullanılmasını gerektirir. Yönetim denetimi, Azure AD kimlik bilgileriyle desteklenmez.
 
-Azure PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz.
+Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz.
+
+#### <a name="azure-portal"></a>Azure portal
+[Azure Portal](https://portal.azure.com)kullanarak BIR Azure AD kimliğine RBAC rolü atamak için aşağıdaki adımları izleyin:
+
+1. Azure portal, dosya paylaşımınıza gidin veya [Azure dosyalarında bir dosya paylaşma oluşturun](storage-how-to-create-file-share.md).
+2. Seçin **erişim denetimi (IAM)** .
+3. **Rol ataması Ekle** ' yi seçin
+4. **Rol ataması Ekle** dikey penceresinde, **rol** listesinden uygun yerleşik rolü (depolama dosyası veri SMB paylaşma okuyucusu, depolama dosya veri SMB paylaşma katılımcısı) seçin. Varsayılan ayarda **erişim ata** seçeneğini bırakın: **Azure AD kullanıcısı, grubu veya hizmet sorumlusu**. Hedef Azure AD kimliğini ada veya e-posta adresine göre seçin.
+5. Rol atama işlemini gerçekleştirmek için **Kaydet** ' i seçin.
 
 #### <a name="powershell"></a>PowerShell
 

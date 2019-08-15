@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847815"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946379"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning eğitim sırasında günlük ölçümleri
+# <a name="log-metrics-during-training-runs"></a>Eğitim çalıştırmaları sırasında günlük ölçümleri
 
 Denemeleri ve izleme ölçümlerinizi izleyerek model oluşturma işlemini geliştirin. Bu makalede, eğitim betiğe nasıl günlük ekleneceğini, bir deneme çalıştırması göndermenize, çalıştırmayı izlemenize ve Azure Machine Learning hizmetinde çalıştırmanın sonuçlarını görüntülemenize öğrenin.
+
+> [!NOTE]
+> Azure Machine Learning hizmet, eğitim sırasında diğer kaynaklardaki bilgileri, örneğin, oto ml veya eğitim işini çalıştıran Docker kapsayıcısını de günlüğe kaydeder. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
 
 ## <a name="list-of-training-metrics"></a>Eğitim ölçümlerin listesi 
 
@@ -221,7 +224,7 @@ Bu örnek, yukarıda temel sklearn Ridge modeli genişletir. Alfa değerleri öl
 
 ## <a name="manage-a-run"></a>Bir çalıştırmayı yönetme
 
-[Başlat, izle ve iptali eğitim çalıştırmaları](how-to-manage-runs.md) makalesinde, denemeleri ' yi yönetme hakkında belirli Azure Machine Learning iş akışları vurgulanmaktadır.
+[Başlat, izle ve iptal eğitimi çalıştırmaları](how-to-manage-runs.md) makalesinde, denemeleri ' yi yönetme hakkında belirli Azure Machine Learning iş akışları vurgulanmaktadır.
 
 ## <a name="view-run-details"></a>Çalıştırma Ayrıntıları görünümü
 

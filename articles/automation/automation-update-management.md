@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741852"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952979"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -84,6 +84,7 @@ Aşağıdaki tabloda desteklenen işletim sistemlerinin bir listesi gösterilmek
 
 > [!NOTE]
 > Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi ile yönetilebilir. Güncelleştirme Yönetimi, temel görüntü değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerini tek seferde güncelleştirmeme gibi, güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir.
+> [Azure olmayan bir makine Için Onbazı](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)altındaki adımları izleyerek VMSS düğümleri eklenebilir.
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 
@@ -93,6 +94,7 @@ Aşağıdaki tabloda, desteklenmeyen bir işletim sistemleri listelenmektedir:
 |---------|---------|
 |Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.        |
 |Windows Server 2016 Nano sunucu     | Desteklenmiyor.       |
+|Azure Kubernetes hizmet düğümleri | Desteklenmiyor. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde ayrıntılı düzeltme eki uygulama işlemini kullanın|
 
 ### <a name="client-requirements"></a>İstemci gereksinimleri
 
@@ -359,6 +361,10 @@ Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
+
+Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir.  [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli konuların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
+
+Red Hat Linux makinelerinde, gerekli uç noktalar için lütfen [rhuı içerik teslimi sunucularının IP](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) 'lerine bakın. Diğer Linux dağıtımları için sağlayıcı belgelerine bakın.
 
 Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma çalışan rolü bağlantı noktaları](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

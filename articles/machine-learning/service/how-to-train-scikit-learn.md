@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e76a747f7e1d7ca7056edf5b69df0677aeff96a1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856009"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962993"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Derleme scikit-Azure Machine Learning hizmeti ile ölçeklendirmeye yönelik modeller öğrenin
 
@@ -192,12 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir makine öğrenimini, scikit-Azure Machine Learning hizmetini kullanarak bir sınıflandırma modeli ile Eğitirsiniz ve kaydettiniz.
 
-* Modeli dağıtmayı öğrenmek için [model dağıtım](how-to-deploy-and-where.md) makalemize devam edin.
+Bu makalede, Azure Machine Learning hizmetinde bir keras modeli eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için model dağıtım makalemize devam edin.
 
-* [Hiper parametreleri ayarlayın](how-to-tune-hyperparameters.md).
-
-* [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md).
-
-* [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
+> [!div class="nextstepaction"]
+> [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)
+* [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
+* [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
+* [Eğitilen model dağıtma](how-to-deploy-and-where.md)
+* [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

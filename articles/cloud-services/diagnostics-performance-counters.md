@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: gwallace
 ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68358940"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure bulut hizmetiniz için performans sayaçlarını toplayın
@@ -115,7 +115,7 @@ Daha fazla bilgi için bkz. [Azure Cloud Services için](../azure-monitor/app/cl
 ### <a name="azure-diagnostics"></a>Azure Tanılama
 
 > [!IMPORTANT]
-> Bu veriler depolama hesabında toplanırken, Portal verileri grafiğe yönelik yerel bir yol **sağlamaz.** Application Insights gibi başka bir tanılama hizmetini uygulamanıza tümleştirmeniz kesinlikle önerilir.
+> Bu veriler depolama hesabında toplanırken, Portal verileri grafiğe yönelik yerel bir yol sağlamaz. Application Insights gibi başka bir tanılama hizmetini uygulamanıza tümleştirmeniz kesinlikle önerilir.
 
 Cloud Services için Azure Tanılama uzantısı, hangi performans sayaçlarını toplamak istediğinizi belirtmenizi sağlar. Azure Tanılama ayarlamak için bkz. [bulut hizmeti Izlemeye genel bakış](cloud-services-how-to-monitor.md#setup-diagnostics-extension).
 

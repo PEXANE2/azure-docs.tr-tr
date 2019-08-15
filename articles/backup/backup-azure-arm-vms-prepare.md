@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f8086580d60d13251052636d4d771855e9605a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663698"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954943"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -138,7 +138,7 @@ Yedeklemeyi etkinleştirdikten sonra:
 Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
 
 1. **İlke adı**' nda anlamlı bir ad belirtin.
-2. **Yedekleme zamanlaması** ' nda yedeklemelerin ne zaman alınacağını belirtin. Azure VM 'Leri için günlük veya haftalık yedeklemeler gerçekleştirebilirsiniz.
+2. **Yedekleme zamanlaması**' nda, yedeklemelerin ne zaman alınacağını belirtin. Azure VM 'Leri için günlük veya haftalık yedeklemeler gerçekleştirebilirsiniz.
 2. **Anlık geri yükleme**' de anlık geri yükleme için anlık görüntüleri yerel olarak ne kadar süreyle bekletmek istediğinizi belirtin.
     - ' Yi geri yüklerken, yedeklenen VM diskleri depolama alanından, ağ üzerinden kurtarma depolama konumuna kopyalanır. Anlık geri yükleme sayesinde, yedekleme verilerinin kasaya aktarılmasını beklemeden, bir yedekleme işi sırasında alınan yerel olarak depolanmış anlık görüntülerden yararlanabilirsiniz.
     - Anlık geri yüklemenin anlık görüntülerini bir ila beş gün arasında tutabilirsiniz. Varsayılan ayar iki gün olur.
@@ -164,12 +164,12 @@ Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
 
 ## <a name="verify-backup-job-status"></a>Yedekleme işinin durumunu doğrulama
 
-Her VM yedeklemesinin yedekleme işi ayrıntıları 2 aşamadan oluşur, **anlık görüntü** aşaması ve ardından **verileri kasaya aktar** aşamasına sahiptir.<br/>
-Anlık görüntü aşaması, **anlık geri yüklemeler** için disklerle birlikte depolanan bir kurtarma noktasının kullanılabilirliğini garanti eder ve Kullanıcı tarafından yapılandırılan anlık görüntü bekletmesine bağlı olarak en fazla 5 gün kullanılabilir. Verileri kasaya aktarma, uzun süreli saklama için kasada bir kurtarma noktası oluşturur. Verileri kasaya aktarma işlemi yalnızca anlık görüntü aşaması tamamlandıktan sonra başlar.
+Her VM yedeklemesinin yedekleme işi ayrıntıları iki aşamadan oluşur, **anlık görüntü** aşaması ve ardından **verileri kasaya aktar** aşamasına gelir.<br/>
+Anlık görüntü aşaması, **anlık geri yüklemeler** için disklerle birlikte depolanan bir kurtarma noktasının kullanılabilirliğini garanti eder ve Kullanıcı tarafından yapılandırılan anlık görüntü bekletmesine bağlı olarak en fazla beş gün boyunca kullanılabilir. Verileri kasaya aktarma, uzun süreli saklama için kasada bir kurtarma noktası oluşturur. Verileri kasaya aktarma işlemi yalnızca anlık görüntü aşaması tamamlandıktan sonra başlar.
 
   ![Yedekleme Işi durumu](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Arka uçta çalışan, biri ön uç yedekleme işi için, aşağıda verilen şekilde **yedekleme işi** ayrıntıları dikey penceresinden denetlenebilir Iki **alt görev** vardır:
+Arka uçta çalışan, **yedekleme işi** ayrıntıları dikey penceresinden aşağıda verilen şekilde denetlenen bir ön uç yedekleme işi olan Iki **alt görev** vardır:
 
   ![Yedekleme Işi durumu](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 

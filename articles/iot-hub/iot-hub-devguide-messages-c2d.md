@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880992"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964127"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -82,10 +82,6 @@ Buluttan cihaza bir ileti gönderdiğinizde, hizmet iletinin son durumu hakkınd
 
 **ACK** değeri *doluysa*ve geri bildirim iletisi almazsanız, geri bildirim iletisinin süresi sona ermediği anlamına gelir. Hizmet özgün iletiye ne olduğunu bilmez. Uygulamada, bir hizmet, geri bildirimin süresi dolmadan önce işleyebilmesi gerekir. En uzun süre sonu süresi iki gündür ve bir hata oluşursa hizmetin yeniden çalıştırılması zaman alır.
 
-> [!NOTE]
-> Cihaz silindiğinde, bekleyen geri bildirimler de silinir.
->
-
 [Uç noktalar](iot-hub-devguide-endpoints.md)bölümünde açıklandığı gibi, IoT Hub, hizmet 'e yönelik bir uç nokta, */ileti/servicebound/feedback*ile ileti olarak geri bildirimde bulunun. Geri bildirim alma semantiği, buluttan cihaza iletiler için aynıdır. Mümkün olduğunda ileti geri bildirimi, aşağıdaki biçimde tek bir ileti halinde toplu olarak oluşturulur:
 
 | Özellik     | Açıklama |
@@ -125,6 +121,12 @@ Geri bildirim iletisinin gövdesi aşağıdaki kodda gösterilmiştir:
   ...
 ]
 ```
+
+**Silinen cihazlar için bekleyen geri bildirimler**
+
+Bir cihaz silindiğinde, bekleyen geri bildirimler de silinir. Cihaz geri bildirimi toplu olarak gönderilir. Bir cihaz, dar pencerede (genellikle 1 saniyeden daha az), cihazın ileti alındığını doğruladığı ve bir sonraki geri bildirim toplu işi hazırlandığında, geri bildirim oluşmaz.
+
+Cihazınızı silmeden önce bekleyen geri bildirimin gelmesi için bir süre bekledikten sonra bu davranışı ele alabilirsiniz. Bir cihaz silindikten sonra ilgili ileti geri bildirimi kaybedilmelidir.
 
 ## <a name="cloud-to-device-configuration-options"></a>Buluttan cihaza yapılandırma seçenekleri
 

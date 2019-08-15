@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 5f62bd0456bfbf5882d6d8c3ee822433fbb58302
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f933b926aa0e277976416ae1b3b2eb684d9fcc85
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688771"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955077"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell ile Azure dosyalarını yedekleme ve geri yükleme
 
@@ -167,7 +167,7 @@ Yedekleme ilkesi yedeklemeler için zamanlamayı ve yedekleme kurtarma noktalar�
 - [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)kullanarak varsayılan yedekleme ilkesi zamanlamasını görüntüleyin.
 -  Yeni bir yedekleme ilkesi oluşturmak için [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) cmdlet 'ini kullanırsınız. Zamanlama ve bekletme ilkesi nesnelerini girin.
 
-Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Daha sonra bu değişkeni yeni bir ilke (**Newafspolicy**) için parametre olarak kullanır. **Newafspolicy** günlük bir yedekleme gerçekleştirir ve 30 gün boyunca saklar.
+Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Daha sonra bu değişkenleri yeni bir ilke (**Newafspolicy**) için parametre olarak kullanır. **Newafspolicy** günlük bir yedekleme gerçekleştirir ve 30 gün boyunca saklar.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -223,7 +223,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)ile korumayı etkinleştirin. İlke kasayla ilişkilendirildikten sonra, yedeklemeler ilke zamanlamasına uygun olarak tetiklenir.
 
-Aşağıdaki örnek, **Teststorageacct**depolama hesabındaki Azure dosya paylaşımı **Testazurefileshare** ' **i ilkeyle izin**vermez.
+Aşağıdaki örnek, **Teststorageacct**depolama hesabındaki Azure dosya paylaşımı **testazurefileshare** ' i ilkeyle izin vermez.
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol

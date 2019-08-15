@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: 5e449ae33b19b27c3ea50d982ed84f681a0beb8f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727279"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927923"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -79,7 +79,7 @@ Virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tan
 
 Microsoft Antimalware gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Üretim ortamınızdan ayrı olarak barındırılan ortamlar için, VM 'lerinizin ve bulut hizmetlerinizin korunmasına yardımcı olmak üzere bir kötü amaçlı yazılımdan koruma uzantısı kullanabilirsiniz.
 
-Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) ile tümleştirebilirsiniz.
+Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](../../security-center/index.yml) ile tümleştirebilirsiniz.
 
 **En iyi uygulama**: Kötü amaçlı yazılımlara karşı koruma için bir kötü amaçlı yazılımdan koruma çözümü yükler   
 **Ayrıntı**: [Microsoft iş ortağı çözümü veya Microsoft Antimalware yüklemesi](../../security-center/security-center-install-endpoint-protection.md)

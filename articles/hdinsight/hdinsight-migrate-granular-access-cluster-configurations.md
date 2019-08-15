@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/09/2019
+ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884311"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945070"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -20,8 +20,9 @@ Hassas bilgileri almak için daha ayrıntılı rol tabanlı erişimi desteklemey
 
 ## <a name="what-is-changing"></a>Ne değişiyor?
 
-Daha önce gizli dizi, `*/read` izin, katkıda bulunan veya Reader [RBAC rollerinin](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), izne sahip herkes tarafından kullanılabildikleri sırada bulunan küme kullanıcıları tarafından HDInsight API 'si aracılığıyla elde edilebilir.
-Bu gizli bilgilere erişmek için `Microsoft.HDInsight/clusters/configurations/*` izin gerekir. Bu, artık okuyucu rolüne sahip kullanıcılar tarafından erişilemeyeceği anlamına gelir. Gizli dizileri, bir kullanıcının rolünden izin verilmelidir daha fazla yükseltilmiş erişim elde etmek için kullanılabilecek değerler olarak tanımlanır. Bunlar, küme ağ geçidi HTTP kimlik bilgileri, depolama hesabı anahtarları ve veritabanı kimlik bilgileri gibi değerleri içerir.
+Daha önce gizli dizi, `*/read` izin, katkıda bulunan veya Reader [RBAC rollerinin](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), izne sahip herkes tarafından kullanılabildikleri sırada bulunan küme kullanıcıları tarafından HDInsight API 'si aracılığıyla elde edilebilir. Gizli dizileri, bir kullanıcının rolünden izin verilmelidir daha fazla yükseltilmiş erişim elde etmek için kullanılabilecek değerler olarak tanımlanır. Bunlar, küme ağ geçidi HTTP kimlik bilgileri, depolama hesabı anahtarları ve veritabanı kimlik bilgileri gibi değerleri içerir.
+
+Bu gizli bilgilere erişmek için `Microsoft.HDInsight/clusters/configurations/action` izin gerekir. Bu, artık okuyucu rolüne sahip kullanıcılar tarafından erişilemeyeceği anlamına gelir. Bu izne sahip roller katkıda bulunan, sahip ve yeni HDInsight küme Işletmeni rolü (aşağıda daha fazla).
 
 Ayrıca, katkıda bulunan veya sahip 'in yönetim izinleri verilmeden gizli dizileri alabilecek yeni bir [HDInsight küme işletmeni](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) rolü sunuyoruz. Özetlemek için:
 
@@ -128,7 +129,7 @@ Python için HDInsight SDK 'sının [Version 1.0.0](https://pypi.org/project/azu
 
 ### <a name="sdk-for-java"></a>Java Için SDK
 
-Java için HDInsight SDK 'sının [Version 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) veya üzeri sürümüne güncelleştirin. Aşağıdaki değişikliklerden etkilenen bir yöntem kullanıyorsanız, minimum kod değişiklikleri gerekebilir:
+Java için HDInsight SDK 'sının [Version 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) veya üzeri sürümüne güncelleştirin. Aşağıdaki değişikliklerden etkilenen bir yöntem kullanıyorsanız, minimum kod değişiklikleri gerekebilir:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get), artık depolama anahtarları (çekirdek-site) veya HTTP kimlik bilgileri (ağ geçidi) gibi **hassas parametreleri döndürmez** .
     - Gizli parametreler dahil tüm yapılandırmaların alınması için ileri ' yi [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) kullanın.  ' Reader ' rolüne sahip kullanıcıların bu yöntemi kullanabilediğine unutmayın. Bu, kullanıcıların bir küme için hassas bilgilere erişebileceği ayrıntılı denetim sağlar. 

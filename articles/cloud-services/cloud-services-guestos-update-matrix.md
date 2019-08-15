@@ -7,18 +7,17 @@ author: raiye
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 9f796d4fe0edd1b6a944fc96e8045b1434d939f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 63c0502cb7b5abf6b6005683cc97d3229ec90e47
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592423"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945440"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -212,7 +211,7 @@ Konuk işletim sistemi sürümleri için önemli olan üç tarih vardır: **yay�
 
 **Devre dışı bırakılan** tarih ve **sona erme** tarihi arasındaki pencere, bir konuk işletim sisteminden diğerine kolayca geçiş yapmak için bir arabellek sağlar. Konuk işletim sistemi olarak *Otomatik* ' i kullanıyorsanız, her zaman en son sürümü kullanmaya başlayacaksınız ve süresi dolmadan önce endişelenmeniz gerekmez.
 
-**Sona erme** tarihi geçtiğinde, hala bu konuk işletim sistemini kullanan tüm bulut hizmetleri durdurulur, silinir veya yükseltmeye zorlanır. Bu kullanımdan [kaldırma ilkesi hakkında][retirepolicy]daha fazla bilgi edinebilirsiniz.
+**Sona erme** tarihi geçtiğinde, hala bu konuk işletim sistemini kullanan tüm bulut hizmetleri durdurulur, silinir veya yükseltmeye zorlanır. Bu kullanımdan kaldırma ilkesi hakkında daha fazla bilgi [][retirepolicy]edinebilirsiniz.
 
 ## <a name="guest-os-family-version-explanation"></a>Konuk işletim sistemi ailesi-sürüm açıklaması
 Konuk işletim sistemi aileleri, Microsoft Windows Server 'ın yayınlanan sürümlerini temel alır. Konuk IŞLETIM sistemi, Azure Cloud Services üzerinde çalıştığı temel işletim sistemidir. Her konuk işletim sisteminde bir aile, sürüm ve sürüm numarası vardır.
