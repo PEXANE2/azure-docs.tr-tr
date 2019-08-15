@@ -44,7 +44,7 @@ Kare bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Kare** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Kare** | Evet |
 | host | Kare örneğinin URL'si. (yani mystore.mysquare.com)  | Evet |
 | clientId | Kare uygulamanızla ilişkili istemci kimliği.  | Evet |
 | clientSecret | Kare uygulamanızla ilişkili istemci gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
