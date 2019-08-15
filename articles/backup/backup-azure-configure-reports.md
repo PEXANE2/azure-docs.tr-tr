@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 293af600f4bd58efe8383d019ca3d17f724f242c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689349"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933322"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 Bu makalede, bir kurtarma hizmetleri Kasası kullanarak Azure Backup raporlarını yapılandırmak için izlenecek adımlar gösterilmektedir. Ayrıca, Power BI kullanarak raporlara nasıl erişdeğiştirileceğini gösterir. Bu adımları tamamladıktan sonra, raporları görüntülemek, özelleştirmek ve oluşturmak için doğrudan Power BI gidebilirsiniz.
@@ -37,7 +37,7 @@ Bu sorundan kaçınmak için lütfen en son uygulamayı (sürüm 1,8) indirin.
 - Henüz kayıtlı değilse, **Microsoft. Insights**kaynak sağlayıcısını kaydedin. Raporlama verilerinin depolama hesabına akabilmesi için depolama hesabı ve kurtarma hizmetleri Kasası aboneliklerini kullanın. Bu adımı yapmak için Azure Portal gidin, **abonelik** > **kaynak sağlayıcıları**' nı seçin ve bu sağlayıcıyı kaydetmek için denetleyin.
 
 ## <a name="configure-storage-account-for-reports"></a>Raporlar için depolama hesabını yapılandırma
-Azure portal kullanarak bir kurtarma hizmetleri Kasası için depolama hesabı yapılandırmak için aşağıdaki adımları izleyin. Bu, tek seferlik bir yapılandırmadır. Depolama hesabı yapılandırıldıktan sonra, içerik paketini görüntülemek ve raporları kullanmak için doğrudan Power BI gidebilirsiniz.
+Azure portal kullanarak bir kurtarma hizmetleri Kasası için depolama hesabı yapılandırmak için aşağıdaki adımları izleyin. Bu, tek seferlik bir yapılandırmadır. Depolama hesabı yapılandırıldıktan sonra, şablon uygulamasını görüntülemek ve raporları kullanmak için doğrudan Power BI gidebilirsiniz.
 
 1. Zaten açık bir kurtarma hizmetleri Kasası varsa, sonraki adıma gidin. Açık bir kurtarma hizmetleri Kasası yoksa, Azure portal, **tüm hizmetler**' i seçin.
 
@@ -80,11 +80,11 @@ Bir kurtarma hizmetleri Kasası kullanarak raporlar için bir depolama hesabı y
 Raporu özelleştirmek ve paylaşmak istiyorsanız, bir çalışma alanı oluşturun ve aşağıdaki adımları uygulayın
 
 1. Power BI [oturum açın](https://powerbi.microsoft.com/landing/signin/) .
-2. **Veri Al**’ı seçin. **Kendi içeriğinizi oluşturmanın daha fazla yolu Için** **hizmet içerik paketleri**' ni seçin. [Bir hizmete bağlanmak için Power BI belgelerindeki](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)adımları izleyin.
+2. **Microsoft Appsource 'Tan daha fazla uygulama almak > uygulamalar**'a gidin. [Bir hizmete bağlanmak için Power BI belgelerindeki](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)adımları izleyin.
 
 3. **Arama** çubuğuna **Azure Backup** girin ve **Şimdi al**' ı seçin.
 
-      ![İçerik paketini al](./media/backup-azure-configure-reports/content-pack-get.png)
+      ![Şablon uygulamasını al](./media/backup-azure-configure-reports/template-app-get.png)
 4. Önceki 5. adımda yapılandırılan depolama hesabının adını girin ve **İleri**' yi seçin.
 
     ![Depolama hesabı adını girin](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
@@ -96,11 +96,11 @@ Raporu özelleştirmek ve paylaşmak istiyorsanız, bir çalışma alanı oluşt
 
     ![İçerik paketi içeri aktarılıyor](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
 
-    İçeri aktarma işlemi tamamlandıktan sonra **başarı** bildirimi görürsünüz. Depolama hesabındaki veri miktarı büyükse, içerik paketini içeri aktarmak biraz daha uzun sürebilir.
+    İçeri aktarma işlemi tamamlandıktan sonra **başarı** bildirimi görürsünüz. Depolama hesabındaki veri miktarı büyükse, şablon uygulamasını içeri aktarmak biraz daha uzun sürebilir.
 
     ![Başarılı içerik paketini içeri aktar](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
 
-7. Veriler başarıyla içeri aktarıldıktan sonra, **Azure Backup** içerik paketi gezinti bölmesindeki **uygulamalarda** görünür. **Panolar**, **raporlar**ve **veri kümeleri**bölümünde listede artık Azure Backup gösterilmektedir.
+7. Veriler başarıyla içeri aktarıldıktan sonra, **Azure Backup** şablonu uygulaması gezinti bölmesindeki **uygulamalarda** görünür. **Panolar**, **raporlar**ve **veri kümeleri**bölümünde listede artık Azure Backup gösterilmektedir.
 
 8. **Panolar**altında, bir sabitlenmiş anahtar raporları kümesini gösteren **Azure Backup**' yi seçin.
 
@@ -117,10 +117,10 @@ Raporu özelleştirmek ve paylaşmak istiyorsanız, bir çalışma alanı oluşt
 | Hata Ayrıntıları | Çözüm |
 | --- | --- |
 | Yedekleme raporlarının depolama hesabını ayarladıktan sonra, **depolama hesabı** hala **Yapılandırılmadı**' ı gösterir. | Bir depolama hesabını başarıyla yapılandırdıysanız, raporlama verileriniz Bu soruna karşın içinde akar. Bu sorunu çözmek için Azure Portal gidin ve **tüm hizmetler** > **Tanılama ayarları** > **Kurtarma Hizmetleri Kasası** > **düzenleme ayarını**seçin. Daha önce yapılandırılan ayarı silin ve aynı dikey pencerede yeni bir ayar oluşturun. Bu kez, **ad** kutusunda **hizmet**' i seçin. Artık yapılandırılan depolama hesabı görüntülenir. |
-|Power BI Azure Backup içerik paketini içeri aktardıktan sonra, "404-Container bulunamadı" hata iletisi görüntülenir. | Daha önce belirtildiği gibi, kurtarma hizmetleri kasasındaki raporları yapılandırdıktan sonra Power BI doğru şekilde görmek için 24 saat beklemeniz gerekir. Raporlara 24 saatten önce erişmeye çalışırsanız, geçerli raporları göstermek için tüm veriler henüz mevcut olmadığından bu hata iletisi görüntülenir. |
+|Power BI Azure Backup şablon uygulamasını içeri aktardıktan sonra, "404-Container bulunamadı" hata iletisi görüntülenir. | Daha önce belirtildiği gibi, kurtarma hizmetleri kasasındaki raporları yapılandırdıktan sonra Power BI doğru şekilde görmek için 24 saat beklemeniz gerekir. Raporlara 24 saatten önce erişmeye çalışırsanız, geçerli raporları göstermek için tüm veriler henüz mevcut olmadığından bu hata iletisi görüntülenir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Depolama hesabını yapılandırıp Azure Backup içerik paketini içeri aktardıktan sonra, sonraki adımlar raporları özelleştirmek ve rapor oluşturmak için bir raporlama veri modeli kullanmaktır. Daha fazla bilgi için aşağıdaki makalelere bakın.
+Depolama hesabını yapılandırıp Azure Backup şablonu uygulamasını içeri aktardıktan sonra, sonraki adımlar raporları özelleştirmek ve rapor oluşturmak için bir raporlama veri modeli kullanmaktır. Daha fazla bilgi için aşağıdaki makalelere bakın.
 
 * [Azure Backup raporlama veri modeli kullanma](backup-azure-reports-data-model.md)
 * [Power BI raporları filtrele](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

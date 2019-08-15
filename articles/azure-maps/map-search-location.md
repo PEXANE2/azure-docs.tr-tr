@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar ile arama sonuçlarını gösterme | Microsoft Docs
-description: Azure haritalar ile arama isteği gerçekleştirme daha sonra sonuçları bir JavaScript eşlemesinde görüntüleme
+description: Azure haritalar ile bir arama isteği gerçekleştirme ve sonuçları Azure Maps web SDK 'sında görüntüleme.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 22b677ef4b21d3869e39d600910c271c935934ca
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7c4c78e1d21754d42391a3762e9f7ed199a7376b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638649"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975973"
 ---
 # <a name="show-search-results-on-the-map"></a>Haritada arama sonuçlarını göster
 

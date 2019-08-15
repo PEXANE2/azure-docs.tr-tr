@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780624"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928084"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
 Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -36,7 +36,7 @@ Geliştiriciler için kullanılabilen Azure hizmetlerini ve Azure 'da en iyi gü
 
   - [Azure 'a yönelik Geliştirici Kılavuzu](https://azure.microsoft.com/campaigns/developer-guide/) , Azure ile çalışmaya başlamanızı gösterir. Kılavuzda, uygulamalarınızı çalıştırmak, verilerinizi depolamak, zekası eklemek, IoT uygulamaları oluşturmak ve çözümlerinizi daha verimli ve güvenli bir şekilde dağıtmak için kullanabileceğiniz hizmetler gösterilmektedir.
 
-  - [Azure geliştiricileri için Başlarken Kılavuzu](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide) , geliştirme Ihtiyaçları için Azure platformunu kullanmaya başlamak isteyen geliştiriciler için önemli bilgiler sağlar.
+  - [Azure geliştiricileri için Başlarken Kılavuzu](../../guides/developer/azure-developer-guide.md) , geliştirme Ihtiyaçları için Azure platformunu kullanmaya başlamak isteyen geliştiriciler için önemli bilgiler sağlar.
 
   - [SDK 'lar ve araçlar](https://docs.microsoft.com/azure/index#pivot=sdkstools) , Azure 'da kullanılabilen araçları açıklar.
 
@@ -66,7 +66,7 @@ Uygulamanız için gereksinimleri yazdığınızda, uygulamanızın ve verilerin
 
   - Uygulamam gizli veriler içeriyor mu?
 
-  - Uygulamam, [Federal Finans Kurumu Inceleme Council (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview) veya [ödeme kartı sektör verileri güvenlik standartları (PCI DSS) gibi endüstri standartlarına ve uyumluluk programlarına bağlı kalmalarını gerektiren verileri toplar veya depolar ](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview)?
+  - Uygulamam, [Federal Finans Kurumu Inceleme Council (FFIEC)](../blueprints/ffiec-analytics-overview.md) veya [ödeme kartı sektör verileri güvenlik standartları (PCI DSS) gibi endüstri standartlarına ve uyumluluk programlarına bağlı kalmalarını gerektiren verileri toplar veya depolar ](../blueprints/pcidss-analytics-overview.md)?
 
   - Uygulamam, tek bir kişiyi tanımlamak, iletişim kurmak veya bulmak için kendi başına veya diğer bilgilerle kullanılabilecek gizli kişisel veya müşteri verileri toplar ya da içeriyor mu?
 
@@ -129,13 +129,13 @@ Gelişmiş hata ayıklama özelliklerine ve yerleşik Azure desteğine sahip ola
 Microsoft, Azure 'da uygulama geliştirmek için kullanabileceğiniz çeşitli [Diller, çerçeveler ve araçlar](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) sunar. [.Net ve .NET Core geliştiricileri Için Azure](https://docs.microsoft.com/dotnet/azure/)bir örnektir. Sunduğumuz her dil ve çerçeve için hızlı başlangıç, öğreticiler ve API başvurularını hızla kullanmaya başlamanıza yardımcı olacak şekilde bulacaksınız.
 
 Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanabileceğiniz çeşitli hizmetler sunar. Bu hizmetler, .NET, .NET Core, Java, Ruby, Node. js, PHP veya Python gibi en sevdiğiniz dilde geliştirme yapmanızı sağlar.
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (Web Apps), bu hizmetlerden biridir.
+[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps), bu hizmetlerden biridir.
 
 Web Apps Microsoft Azure gücünü uygulamanıza ekler. Güvenlik, Yük Dengeleme, otomatik ölçeklendirme ve otomatik yönetimi içerir. Ayrıca, paket yönetimi, hazırlama ortamları, özel etki alanları, SSL/TLS sertifikaları ve Azure DevOps, GitHub, Docker Hub 'dan ve diğer kaynaklardan sürekli dağıtım gibi Web Apps DevOps özelliğinden faydalanabilirsiniz.
 
 Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanabileceğiniz diğer hizmetler sunar. Çoğu senaryo için Web Apps en iyi seçenektir. Mikro hizmet mimarisi için [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)göz önünde bulundurun.
 Kodlarınızın çalıştığı sanal makineler üzerinde daha fazla denetime sahip olmanız gerekiyorsa [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)’i düşünün.
-Bu Azure hizmetleri arasından nasıl seçim yapılacağı hakkında daha fazla bilgi için bkz. [Azure App Service, sanal makineler, Service Fabric ve Cloud Services karşılaştırması](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm).
+Bu Azure hizmetleri arasından nasıl seçim yapılacağı hakkında daha fazla bilgi için bkz. [Azure App Service, sanal makineler, Service Fabric ve Cloud Services karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ### <a name="apply-updates-to-components"></a>Güncelleştirmeleri bileşenlere Uygula
 
@@ -147,18 +147,18 @@ Araç önerileri için [bilinen güvenlik açıklarını içeren bileşenleri ku
 
 Tehdit modellemesi, işletmenizin ve uygulamanızın olası güvenlik tehditlerini tanımlama ve daha sonra uygun azaltmaları sağlama işlemidir. SDL, ekiplerin tasarım aşamasında tehdit modellemesinde, olası sorunları çözümlemede oldukça kolay ve ekonomik bir şekilde etkili olması gerektiğini belirtir. Tehdit modellemesinin tasarım aşamasında kullanılması, toplam geliştirme maliyetinizi büyük ölçüde azaltabilir.
 
-Tehdit modelleme sürecini kolaylaştırmaya yardımcı olmak için, [SDL Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) , güvenlikle ilgili olmayan uzmanlar göz önünde bulundurularak tasarlandık. Bu araç, tehdit modellerini oluşturma ve çözümleme hakkında açık yönergeler sunarak tüm geliştiriciler için tehdit modellemesini kolaylaştırır.
+Tehdit modelleme sürecini kolaylaştırmaya yardımcı olmak için, [SDL Threat Modeling Tool](threat-modeling-tool.md) , güvenlikle ilgili olmayan uzmanlar göz önünde bulundurularak tasarlandık. Bu araç, tehdit modellerini oluşturma ve çözümleme hakkında açık yönergeler sunarak tüm geliştiriciler için tehdit modellemesini kolaylaştırır.
 
 Uygulama tasarımını modelleme ve [ilerleme](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) tehditleri numaralandırma — sızdırma, izinsiz, ret, bilgilerin açıklanması, hizmet reddi ve ayrıcalık yükselmesi — tüm güven sınırları genelinde tasarım hatalarını yakalamak için etkili bir yol kanıtlandı erken açık. Aşağıdaki tabloda, Ilerleme tehditleri listelenmekte ve Azure tarafından sunulan özellikleri kullanan bazı örnek azaltmaları sunulmaktadır. Bu azaltmaları her durumda çalışmaz.
 
 | Tehdit | Güvenlik özelliği | Olası Azure platformu risk azaltma |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Sızdır               | Authentication        | [HTTPS bağlantıları gerektir](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Kurcalama              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
+| Kurcalama              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
 | Kar            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
-| Bilgilerin Açığa Çıkması | Gizlilik       | REST ve iletim [sırasında](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) hassas verileri [](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit)şifreleyin. |
-| Hizmet Reddi      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
-| Ayrıcalık Yükseltme | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)kullanın.|
+| Bilgilerin Açığa Çıkması | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
+| Hizmet Reddi      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
+| Ayrıcalık Yükseltme | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
 
 ### <a name="reduce-your-attack-surface"></a>Saldırı yüzeyinizi azaltın
 
@@ -203,21 +203,21 @@ Web uygulamaları geliştirmeye yönelik kimlik merkezli bir yaklaşım gelişti
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>Kullanıcılar için Multi-Factor Authentication 'ı zorlama
 
-İki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır çünkü Kullanıcı adı ve parola türleri ile ilgili güvenlik zayıflarını önler. Azure Yönetim arabirimlerine (Azure portal/uzak PowerShell) ve müşteriye yönelik hizmetlere erişim, [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)kullanmak üzere tasarlanmalı ve yapılandırılmalıdır.
+İki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır çünkü Kullanıcı adı ve parola türleri ile ilgili güvenlik zayıflarını önler. Azure Yönetim arabirimlerine (Azure portal/uzak PowerShell) ve müşteriye yönelik hizmetlere erişim, [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)kullanmak üzere tasarlanmalı ve yapılandırılmalıdır.
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Güçlü kimlik doğrulama ve yetkilendirme platformları kullanın
 
-Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodunun geliştirmesinin hataya yol açabilir. Ticari kod (örneğin, Microsoft 'tan) genellikle güvenlik için kapsamlı olarak gözden geçirilir. [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) , kimlik ve erişim yönetimi için Azure çözümüdür. Bu Azure AD araçları ve Hizmetleri, güvenli geliştirmeyle ilgili olarak size yardımcı olur:
+Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodunun geliştirmesinin hataya yol açabilir. Ticari kod (örneğin, Microsoft 'tan) genellikle güvenlik için kapsamlı olarak gözden geçirilir. [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) , kimlik ve erişim yönetimi için Azure çözümüdür. Bu Azure AD araçları ve Hizmetleri, güvenli geliştirmeyle ilgili olarak size yardımcı olur:
 
-- [Azure AD kimlik platformu (geliştiriciler Için Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) , geliştiricilerin kullanıcılara güvenli bir şekilde oturum açtırmış uygulamalar oluşturmak için kullandığı bir bulut kimlik hizmetidir. Azure AD, çok kiracılı uygulamalar geliştirmek isteyen tek kiracılı, iş kolu (LOB) uygulamaları ve geliştiriciler oluşturan geliştiricilere yardımcı olur. Temel oturum açma 'ya ek olarak, Azure AD kullanılarak oluşturulan uygulamalar, Azure AD platformunda oluşturulmuş Microsoft API 'Lerini ve özel API 'Leri çağırabilir. Azure AD kimlik platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
+- [Azure AD kimlik platformu (geliştiriciler Için Azure AD)](../../active-directory/develop/about-microsoft-identity-platform.md) , geliştiricilerin kullanıcılara güvenli bir şekilde oturum açtırmış uygulamalar oluşturmak için kullandığı bir bulut kimlik hizmetidir. Azure AD, çok kiracılı uygulamalar geliştirmek isteyen tek kiracılı, iş kolu (LOB) uygulamaları ve geliştiriciler oluşturan geliştiricilere yardımcı olur. Temel oturum açma 'ya ek olarak, Azure AD kullanılarak oluşturulan uygulamalar, Azure AD platformunda oluşturulmuş Microsoft API 'Lerini ve özel API 'Leri çağırabilir. Azure AD kimlik platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
-- [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) , uygulamalarınızı kullandıklarında müşterilerin nasıl kaydolup oturum açmasını ve profillerini nasıl yönetebileceğinizi denetlemek için kullanabileceğiniz bir kimlik yönetimi hizmetidir. Bu, diğer kullanıcıların yanı sıra iOS, Android ve .NET için geliştirilen uygulamaları içerir. Azure AD B2C, müşteri kimliklerini korurken bu eylemlere izin vermez.
+- [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) , uygulamalarınızı kullandıklarında müşterilerin nasıl kaydolup oturum açmasını ve profillerini nasıl yönetebileceğinizi denetlemek için kullanabileceğiniz bir kimlik yönetimi hizmetidir. Bu, diğer kullanıcıların yanı sıra iOS, Android ve .NET için geliştirilen uygulamaları içerir. Azure AD B2C, müşteri kimliklerini korurken bu eylemlere izin vermez.
 
 #### <a name="apply-the-principle-of-least-privilege"></a>En az ayrıcalık ilkesini uygulayın
 
 [En az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) kavramı, kullanıcılara, işlerini yapmak için ihtiyaç duydukları ve başka hiçbir şeyin daha fazla erişim ve denetim yapma anlamına gelir.
 
-Yazılım geliştiricisi etki alanı yöneticisi haklarına ihtiyaç duyuyor mu? Yönetim Yardımcısı 'nın kişisel bilgisayarlarındaki yönetim denetimlerine erişmesi gerekiyor mu? Yazılıma erişimin değerlendirilmesi farklı değildir. Kullanıcılara uygulamanızda farklı yetenekler ve yetki vermek için [rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) kullanıyorsanız herkese her şeye erişim vermeyiz. Her rol için gerekli olan erişimi sınırlayarak, oluşan bir güvenlik sorunu riskini sınırlandırırsınız.
+Yazılım geliştiricisi etki alanı yöneticisi haklarına ihtiyaç duyuyor mu? Yönetim Yardımcısı 'nın kişisel bilgisayarlarındaki yönetim denetimlerine erişmesi gerekiyor mu? Yazılıma erişimin değerlendirilmesi farklı değildir. Kullanıcılara uygulamanızda farklı yetenekler ve yetki vermek için [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) kullanıyorsanız herkese her şeye erişim vermeyiz. Her rol için gerekli olan erişimi sınırlayarak, oluşan bir güvenlik sorunu riskini sınırlandırırsınız.
 
 Uygulamanızın erişim desenlerinin tamamında [en az ayrıcalığı](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) zorladığından emin olun.
 
@@ -226,7 +226,7 @@ Uygulamanızın erişim desenlerinin tamamında [en az ayrıcalığı](https://d
 
 #### <a name="implement-just-in-time-access"></a>Tam zamanında erişim uygulama
 
-Ayrıcalıkların etkilenme süresini daha da azaltmak için *tam zamanında* (JIT) erişimi uygulayın. [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) için kullanın:
+Ayrıcalıkların etkilenme süresini daha da azaltmak için *tam zamanında* (JIT) erişimi uygulayın. [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) için kullanın:
 
 - Kullanıcılara yalnızca JıT için gereken izinleri verin.
 - Ayrıcalıkların otomatik olarak iptal edildiğinden emin olmak için, kısa süreli bir süre için roller atayın.
@@ -242,7 +242,7 @@ Bu tür bir saldırıya karşı savunmanız gereken en iyi yol, kullanıcıdan s
 
 Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü bir şey, yetkisiz bir tarafın bunlara erişmesini sağlayabilir. Saldırganlar, GitHub gibi kod depolarında depolanan anahtarları ve gizli dizileri bulmak için otomatik ve el ile tekniklerin avantajlarından yararlanabilir. Bu genel kod depolarında veya diğer bir sunucuda anahtar ve gizli dizileri yerleştirmeyin.
 
-Anahtar yönetimi çözümüne her zaman anahtarlarınızı, sertifikalarınızı, sırları ve bağlantı dizilerinizi koyun. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)ile BULUTTA bir HSM sağlar.
+Anahtar yönetimi çözümüne her zaman anahtarlarınızı, sertifikalarınızı, sırları ve bağlantı dizilerinizi koyun. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Key Vault](../../key-vault/key-vault-whatis.md)ile BULUTTA bir HSM sağlar.
 
 *Gizli bir depo*olan Key Vault: uygulama gizli dizileri depolamak için merkezi bir bulut hizmetidir. Key Vault, uygulama gizli dizilerini tek bir merkezi konumda tutarak ve güvenli erişim, izin denetimi ve erişim günlüğü sağlayarak gizli verilerinizi güvende tutar.
 
@@ -267,7 +267,7 @@ Veri biçimlerinizi tasarlarken tüm uygulanabilir verileri hassas olarak etiket
 #### <a name="use-encryption"></a>Şifreleme kullan
 
 Verilerin korunması, güvenlik stratejinizin önemli bir parçası olmalıdır.
-Verileriniz bir veritabanında depolanıyorsa veya konumlar arasında geri ve ileri taşınırsa, [bekleyen](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) verilerin şifrelemesini (veritabanında iken) ve [Aktarım sırasında verilerin](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) şifrelemesini (Kullanıcı, veritabanı, API veya hizmet uç noktası) kullanın. Verileri Exchange için her zaman SSL/TLS protokollerini kullanmanızı öneririz. Şifreleme için TLS 'nin en son sürümünü kullandığınızdan emin olun (Şu anda bu sürüm 1,2 ' dir).
+Verileriniz bir veritabanında depolanıyorsa veya konumlar arasında geri ve ileri taşınırsa, [bekleyen](../fundamentals/encryption-atrest.md) verilerin şifrelemesini (veritabanında iken) ve [Aktarım sırasında verilerin](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit) şifrelemesini (Kullanıcı, veritabanı, API veya hizmet uç noktası) kullanın. Verileri Exchange için her zaman SSL/TLS protokollerini kullanmanızı öneririz. Şifreleme için TLS 'nin en son sürümünü kullandığınızdan emin olun (Şu anda bu sürüm 1,2 ' dir).
 
 #### <a name="avoid-hard-coding"></a>Sabit kodlamadan kaçının
 
@@ -277,7 +277,7 @@ Kodunuzda açıklama yerleştirdiğinizde, hassas bilgileri saklamayın olduğun
 
 Temel olarak, geliştirme projenizdeki her şeyin dağıtıldığında genel bilgi olacağını varsayalım. Projedeki herhangi bir türden hassas verileri dahil kullanmaktan kaçının.
 
-Daha önce [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)tartışıyoruz. Key Vault kullanarak anahtarlar ve parolalar gibi gizli dizileri, onları sabit kodlamak yerine depolayın. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault kullandığınızda Azure Web uygulamanız, kaynak denetiimde veya yapılandırmanızda gizli dizileri depolamadan kolayca ve güvenli bir şekilde gizli dizi yapılandırma değerlerine erişebilir. Daha fazla bilgi edinmek için bkz. [Azure Key Vault ile sunucu uygulamalarınızda gizli dizileri yönetme](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Daha önce [Azure Key Vault](../../key-vault/key-vault-whatis.md)tartışıyoruz. Key Vault kullanarak anahtarlar ve parolalar gibi gizli dizileri, onları sabit kodlamak yerine depolayın. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault kullandığınızda Azure Web uygulamanız, kaynak denetiimde veya yapılandırmanızda gizli dizileri depolamadan kolayca ve güvenli bir şekilde gizli dizi yapılandırma değerlerine erişebilir. Daha fazla bilgi edinmek için bkz. [Azure Key Vault ile sunucu uygulamalarınızda gizli dizileri yönetme](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Başarısız-güvenli ölçüleri uygulama
 
@@ -299,7 +299,7 @@ Emin olun:
 
 - Özel durumlar günlüğe kaydedilir ve araştırılması için gerekli olan bir veya daha fazla bilgi sağlar.
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) , bağımlı sistemlerden kaynaklanan [hata ve özel durumları işlemeye](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling) yönelik birinci sınıf bir deneyim sağlar. Kuruluşlar ve kuruluşlar arasında uygulamaları, verileri, sistemleri ve Hizmetleri tümleştiren görevleri ve işlemleri otomatikleştirmek için iş akışları oluşturmak üzere Logic Apps kullanabilirsiniz.
+[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) , bağımlı sistemlerden kaynaklanan [hata ve özel durumları işlemeye](../../logic-apps/logic-apps-exception-handling.md) yönelik birinci sınıf bir deneyim sağlar. Kuruluşlar ve kuruluşlar arasında uygulamaları, verileri, sistemleri ve Hizmetleri tümleştiren görevleri ve işlemleri otomatikleştirmek için iş akışları oluşturmak üzere Logic Apps kullanabilirsiniz.
 
 ### <a name="use-logging-and-alerting"></a>Günlüğe kaydetme ve uyarı kullanma
 

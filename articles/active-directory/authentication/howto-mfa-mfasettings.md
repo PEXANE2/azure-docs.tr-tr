@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514981"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68948885"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -389,8 +389,7 @@ Kullanıcı tarafından güvenilen cihazlar ve tarayıcılar için _Multi-Factor
 >[!IMPORTANT]
 >Bir hesap veya cihazın güvenliği tehlikeye girerse, güvenilir cihazlarda Multi-Factor Authentication 'ın anımsanacak güvenliği etkileyebilir. Bir şirket hesabının güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybedilirse veya çalınırsa, [çok faktörlü kimlik doğrulamasını tüm cihazlarda geri yüklemeniz](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)gerekir.
 >
->Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının iki aşamalı doğrulamayı yeniden gerçekleştirmesi gerekir. Ayrıca, kullanıcılarınızı [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)konusundaki yönergelerden, kendi cihazlarındaki Multi-Factor Authentication 'ı geri yüklemelerini de söyleyebilirsiniz.
->
+>Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının iki aşamalı doğrulamayı yeniden gerçekleştirmesi gerekir. Ayrıca, kullanıcılarınızı [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)konusundaki yönergelerden, kendi cihazlarındaki Multi-Factor Authentication 'ı geri yüklemelerini de söyleyebilirsiniz.
 
 ### <a name="how-the-feature-works"></a>Özelliğin çalışma şekli
 

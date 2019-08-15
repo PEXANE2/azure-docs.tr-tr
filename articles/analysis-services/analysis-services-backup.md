@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619197"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932470"
 ---
 # <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
@@ -72,7 +72,7 @@ Yedeklemeden önce, sunucunuz için depolama ayarlarını yapılandırmanız ger
 
 
 ### <a name="powershell"></a>PowerShell
-[Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) cmdlet 'ini kullanın.
+[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) cmdlet 'ini kullanın.
 
 ## <a name="restore"></a>Geri yükle
 Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığınız depolama hesabında olmalıdır. Bir yedekleme dosyasını şirket içi bir konumdan depolama hesabınıza taşımanız gerekiyorsa [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) veya [AzCopy](../storage/common/storage-use-azcopy.md) komut satırı yardımcı programını kullanın. 
@@ -99,7 +99,7 @@ Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığ
 
 ### <a name="powershell"></a>PowerShell
 
-[Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) cmdlet 'ini kullanın.
+[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) cmdlet 'ini kullanın.
 
 
 ## <a name="related-information"></a>İlgili bilgiler

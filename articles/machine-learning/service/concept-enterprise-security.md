@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856232"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946400"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için kurumsal güvenlik
 
 Bu makalede, Azure Machine Learning hizmeti ile kullanılabilen güvenlik özellikleri hakkında bilgi edineceksiniz.
 
-Bir bulut hizmeti kullanırken, erişimi yalnızca ihtiyacı olan kullanıcılarla kısıtlamak en iyi uygulamadır. Bu, hizmet tarafından kullanılan kimlik doğrulama ve yetkilendirme modelini öğrenilerek başlar. Ayrıca, ağ erişimini kısıtlamak veya şirket içi ağınızdaki kaynakları buluttan güvenle katmak isteyebilirsiniz. Veri şifrelemesi de hem bekleyen hem de veriler hizmetler arasında taşınıyor. Son olarak, hizmeti izleyebilmeniz ve tüm etkinliklerin denetim günlüğünü üretmeniz gerekir.
+Bir bulut hizmeti kullanırken, erişimi yalnızca ihtiyacı olan kullanıcılarla kısıtlamak en iyi uygulamadır. Bu, hizmet tarafından kullanılan kimlik doğrulama ve yetkilendirme modelini öğrenilerek başlar. Ayrıca, ağ erişimini kısıtlamak veya şirket içi ağınızdaki kaynakları güvenli bir şekilde buluta katmak isteyebilirsiniz. Veri şifrelemesi de hem bekleyen hem de veriler hizmetler arasında taşınıyor. Son olarak, hizmeti izleyebilmeniz ve tüm etkinliklerin denetim günlüğünü üretmeniz gerekir.
 
 ## <a name="authentication"></a>Authentication
 
@@ -29,7 +29,7 @@ Aynı için Azure Active Directory (Azure AD) yapılandırılmışsa çok faktö
 
 * İstemci Azure AD 'ye oturum açar ve Azure Resource Manager belirtecini alır.  Kullanıcılar ve hizmet sorumluları tam olarak desteklenmektedir.
 * İstemci, tüm Azure Machine Learning Hizmetleri & Azure Resource Manager belirteç sunar
-* Azure Machine Learning hizmeti, Kullanıcı işlemine bir Azure Machine Learning belirteci sağlar. Örneğin, Machine Learning İşlem. Bu Azure Machine Learning belirteci, Kullanıcı işlemi, çalıştırma tamamlandıktan sonra Azure Machine Learning hizmetine (kapsamı çalışma alanına sınırlar) geri çağırmak için kullanılır.
+* Azure Machine Learning hizmeti, Kullanıcı işlemine bir Azure Machine Learning belirteci sağlar. Örneğin, Machine Learning İşlem. Bu belirteç, çalışma tamamlandıktan sonra Azure Machine Learning hizmetine (kapsamı çalışma alanına sınır) geri çağırmak için Kullanıcı işlemi tarafından kullanılır.
 
 ![Azure Machine Learning hizmetinde kimlik doğrulamanın nasıl çalıştığını gösteren ekran görüntüsü](./media/enterprise-readiness/authentication.png)
 
@@ -151,7 +151,7 @@ Eğitim verileri genellikle Azure Blob Storage 'da da depolanır, bu sayede işl
 
 #### <a name="cosmos-db"></a>Cosmos DB
 
-Azure Machine Learning hizmeti, ölçüm ve meta verileri Azure Machine Learning hizmeti tarafından yönetilen bir Microsoft aboneliğinde bulunan Cosmos DB depolar. Cosmos DB depolanan tüm veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak geri kalanında şifrelenir.
+Azure Machine Learning hizmeti, ölçüm ve meta verileri Azure Machine Learning hizmeti tarafından yönetilen bir Microsoft aboneliğinde bulunan Cosmos DB depolar. Cosmos DB depolanan tüm veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak Rest 'te şifrelenir.
 
 #### <a name="azure-container-registry-acr"></a>Azure Container Registry (ACR)
 
@@ -159,8 +159,8 @@ Kayıt defterinizde (ACR) bulunan tüm kapsayıcı görüntüleri, bekleyen olar
 
 #### <a name="machine-learning-compute"></a>Machine Learning İşlemi
 
-Her işlem düğümü için işletim sistemi diski, Azure depolama 'da depolanır Azure Machine Learning hizmet depolama hesaplarında Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu işlem kısa ömürlü olur ve normalde sıraya alınmış bir çalışan olmadığında kümeler ayarlanır. Temel alınan sanal makine, için de sağlanmış ve işletim sistemi diski silinmiş. Azure disk şifrelemesi, işletim sistemi diski için desteklenmez.
-Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici diski de vardır. Bu disk, eğitim verilerini hazırlamak için isteğe bağlı olarak da kullanılabilir. Bu disk şifrelenmedi.
+Her işlem düğümü için işletim sistemi diski, Azure depolama 'da depolanır Azure Machine Learning hizmet depolama hesaplarında Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu işlem hedefi kısa ömürlü ve hiçbir çalışan sıraya alma işlemi olmadığında kümeler normal şekilde ölçeklendirilir. Temel alınan sanal makine, için de sağlanmış ve işletim sistemi diski silinmiş. Azure disk şifrelemesi, işletim sistemi diski için desteklenmez.
+Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici diski de vardır. Disk, eğitim verilerini hazırlamak için isteğe bağlı olarak da kullanılabilir. Disk şifrelenmedi.
 Rest 'in Azure 'da nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Azure veri şifreleme-Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
@@ -199,7 +199,12 @@ Aşağıdaki ekran görüntüsünde bir çalışma alanı için etkinlik günlü
 
 ![Bir çalışma alanı altındaki etkinlik günlüğünü gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-activity-log.png)
 
-Puanlama isteği ayrıntıları, çalışma alanı oluşturulurken kullanıcının aboneliğinde oluşturulan Appınsights 'da depolanır. Bu, HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration vb. gibi alanları içerir.
+Puanlama isteği ayrıntıları, çalışma alanı oluşturulurken kullanıcının aboneliğinde oluşturulan Application Insight 'da depolanır. Günlüğe kaydedilen bilgiler HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration vb. gibi alanları içerir.
+
+> [!IMPORTANT]
+> Azure Machine Learning çalışma alanındaki bazı eylemler etkinlik günlüğüne bilgi vermez. Örneğin, bir eğitimi başlatma veya bir modeli kaydetme.
+>
+> Bu eylemlerden bazıları, çalışma alanınızın __Etkinlikler__ alanında görünür, ancak aktiviteyi kimin başlattığını göstermez.
 
 ## <a name="data-flow-diagram"></a>Veri akışı diyagramı
 
@@ -220,7 +225,7 @@ Bir çalışma alanına bağlı diğer hesaplar (Azure Kubernetes hizmeti, VM vb
 ### <a name="save-source-code-training-scripts"></a>Kaynak kodunu kaydet (eğitim betikleri)
 
 Aşağıdaki diyagramda, kod anlık görüntüsü iş akışı gösterilmektedir.
-Bir Azure Machine Learning hizmet çalışma alanıyla ilişkili, kaynak kodu (eğitim betikleri) içeren dizinlerdir (denemeleri).  Bunlar müşterinin yerel makinesinde ve bulutta depolanır (müşterinin aboneliği altında Azure Blob depolama alanında). Bu kod anlık görüntüleri, geçmiş denetimi için yürütme veya denetleme için kullanılır.
+Bir Azure Machine Learning hizmet çalışma alanıyla ilişkili, kaynak kodu (eğitim betikleri) içeren dizinlerdir (denemeleri).  Bu betikler müşterinin yerel makinesinde ve bulutta depolanır (müşterinin aboneliği altındaki Azure Blob depolama alanında). Kod anlık görüntüleri, geçmiş denetimi için yürütme veya denetleme için kullanılır.
 
 ![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/code-snapshot.png)
 
@@ -233,12 +238,12 @@ Aşağıdaki diyagramda eğitim iş akışı gösterilmektedir.
 * Yönetilen bir işlem (örn.) seçebilirsiniz. Machine Learning İşlem) veya yönetilmeyen işlem (örn. VM) eğitim işlerinizi çalıştırın. Veri akışı aşağıdaki senaryolar için açıklanmaktadır:
 * (VM/HDInsight – Microsoft aboneliğindeki Key Vault SSH kimlik bilgileri kullanılarak erişilir) Azure Machine Learning hizmet, işlem hedefinde yönetim kodunu şu şekilde çalıştırır:
 
-   1. Ortamı hazırlar. (Docker 'ın VM ve yerel için de bir seçenek olduğunu unutmayın. Docker kapsayıcısında deneme çalıştırmanın nasıl çalıştığını anlamak için Machine Learning İşlem için aşağıdaki adımlara bakın.)
+   1. Ortamı hazırlar. (Docker, VM ve yerel için de bir seçenektir. Docker kapsayıcısında deneme çalıştırmanın nasıl çalıştığını anlamak için Machine Learning İşlem için aşağıdaki adımlara bakın.)
    1. Kodu indirir.
    1. Ortam değişkenlerini ve yapılandırmaları ayarlar.
    1. Kullanıcı betiğini çalıştırır (yukarıda belirtilen kod anlık görüntüsü).
 
-* (Machine Learning İşlem – çalışma alanı yönetilen kimlik kullanılarak erişilir) Machine Learning İşlem yönetilen bir işlem olduğundan, Microsoft aboneliği kapsamında çalıştığı bir sonuç olarak Microsoft tarafından yönetildiğine unutmayın.
+* (Machine Learning İşlem – çalışma alanı tarafından yönetilen kimlik kullanılarak erişilir) Machine Learning İşlem yönetilen bir işlem olduğundan, Microsoft aboneliği kapsamında çalıştığı bir sonuç olarak Microsoft tarafından yönetilir.
 
    1. Gerekirse uzak Docker oluşturma kapalıdır.
    1. Yönetim kodunu Kullanıcı Azure FileShare 'e yazar.
@@ -259,7 +264,7 @@ Ayrıntıları aşağıda görebilirsiniz:
 * Kullanıcı model, puan dosyası ve diğer model bağımlılıklarını kullanarak görüntü oluşturuyor
 * Docker görüntüsü oluşturulur ve ACR 'de depolanır
 * Web hizmeti, yukarıda oluşturulan görüntüyü kullanarak işlem hedefine (acı/AKS) dağıtılır
-* Puanlama isteği ayrıntıları, kullanıcının aboneliğindeki Appınsights 'da depolanır
+* Puanlama isteği ayrıntıları, Kullanıcı aboneliğindeki Application Insight 'da depolanır
 * Telemetri ayrıca Microsoft/Azure aboneliğine gönderilir
 
 ![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/inferencing.png)

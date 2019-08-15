@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618404"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941948"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>İş açısından kritik verileri Azure Blob depolama alanında depolayın
 
@@ -53,7 +53,7 @@ Sabit bir ilke tarafından korunan blob 'lar varsa kapsayıcı ve hesap silmeye 
 ### <a name="time-based-retention"></a>Zamana dayalı saklama
 
 > [!IMPORTANT]
-> Bir zaman tabanlı bekletme ilkesi, blob 'un sec 17A-4 (f) ve diğer yasal uyumluluk için uyumlu bir sabit (yazma ve silme korumalı) durumunda olması gerekir. İlkeyi, genellikle 24 saatten daha az sürede kilitlemenizi öneririz. Uygulanan bir zaman tabanlı bekletme ilkesinin ilk *durumu, kilidi*kapatmadan önce özelliği test etmeniz ve ilkede değişiklikler yapmanız sağlanır. *Kilidi açık* duruma karşı koruma sağlarken, kısa vadeli Özellik denemeleri dışında herhangi bir amaçla *kilitsiz* durum kullanılması önerilmez. 
+> Bir zaman tabanlı bekletme ilkesi, blob 'un sec 17A-4 (f) ve diğer yasal uyumluluk için uyumlu bir sabit (yazma ve silme korumalı) durumunda olması gerekir. İlkeyi, genellikle 24 saatten daha az sürede kilitlemenizi öneririz. Uygulanan bir zaman tabanlı bekletme ilkesinin ilk durumu, kilidi kapatmadan önceözelliği test etmeniz ve ilkede değişiklikler yapmanız sağlanır. *Kilidi açık* duruma karşı koruma sağlarken, kısa vadeli Özellik denemeleri dışında herhangi bir amaçla *kilitsiz* durum kullanılması önerilmez. 
 
 Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Mevcut blob 'lar için geçerli saklama süresi, blob değiştirme zamanı ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farka eşittir.
 
@@ -80,7 +80,7 @@ Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmı�
 |---------|---------|---------|
 |Blobdaki geçerli saklama süresi dolmadı ve/veya yasal tutma ayarlandı     |Sabit: hem silme hem de yazma korumalı         | Blob<sup>1</sup>koyma, yerleştirme blok<sup>1</sup>, yerleştirme listesi<sup>1</sup>, kapsayıcıyı silme, blobu silme, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopyalama blobu, ekleme bloğu         |
 |Blob üzerindeki geçerli saklama süresi doldu     |Yalnızca yazma korumalı (silme işlemlerine izin verilir)         |Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopyalama blobu, ekleme bloğu         |
-|Tüm yasal tutar temizlendi ve kapsayıcıda zaman tabanlı bekletme ilkesi ayarlanmadı     |Değiştirilebilir         |None         |
+|Tüm yasal tutar temizlendi ve kapsayıcıda zaman tabanlı bekletme ilkesi ayarlanmadı     |Değiştirilebilir         |Yok.         |
 |Bir solucan ilkesi oluşturulmaz (zamana dayalı saklama veya yasal saklama)     |Değiştirilebilir         |Yok.         |
 
 <sup>1</sup> uygulama bu işlemlerin bir kez yeni blob oluşturmasına izin verir. Sabit bir kapsayıcıda var olan bir blob yolundaki tüm sonraki üzerine yazma işlemlerine izin verilmez.
@@ -175,7 +175,7 @@ Evet. Microsoft, uyumluluğu belgelemek için kayıt yönetimi ve bilgi İdaresi
 
 **Özellik yalnızca blob 'ları engellemek veya sayfa ve ekleme Blobları da için geçerlidir mi?**
 
-Sabit depolama, herhangi bir blob türüyle kullanılabilir, ancak bunu blok Blobları için kullanmanızı öneririz. Blok Bloblarından farklı olarak, sayfa Blobları ve ekleme Blobları bir solucan kapsayıcısının dışında oluşturulmalı ve sonra içine kopyalanmalıdır. Bu Blobları bir solucan kapsayıcısına kopyaladıktan sonra, bir ekleme blobuna *başka ekleme* veya sayfa blobuna yapılan değişikliklere izin verilmez.
+Sabit depolama, kapsayıcı düzeyinde ayarlandığı için herhangi bir blob türüyle kullanılabilir, ancak genellikle blok bloblarını depolayan kapsayıcılar için solucan kullanmanızı öneririz. Blok Bloblarından farklı olarak, tüm yeni sayfa Blobları ve ekleme Blobları bir solucan kapsayıcısının dışında oluşturulmalıdır ve sonra içine kopyalanmalıdır. Bu Blobları bir solucan kapsayıcısına kopyaladıktan sonra, bir ekleme blobuna başka ekleme veya sayfa blobuna yapılan değişikliklere izin verilmez. Bu nedenle, sanal makine diskini kilitleyecek şekilde VHD 'leri (sayfa Blobları) depolayan bir kapsayıcıda bir solucan ilkesi ayarlamak kesinlikle önerilmez.
 
 **Bu özelliği kullanmak için yeni bir depolama hesabı oluşturmem gerekir mi?**
 

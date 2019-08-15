@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840532"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934285"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimine giriş
 
@@ -78,7 +78,7 @@ Derin öğrenmesinin gerçekleştirebileceği önemli bir görev da e-bulma ' d�
 
 ## <a name="what-are-artificial-neural-networks"></a>Yapay sinir Networks nedir?
 
-Yapay bir sinir ağı, insan Beyininin bilgi işlem bilgilerinde bıoloji sinir Networks tarafından önemli bir öğrenme modelidir. Şu anda kullanılmakta olan birden çok yapay sinir Networks türü vardır. En popüler yapay sinir ağı typologies aşağıda ele alınmıştır.
+Yapay sinir ağları bağlı düğümlerin katmanlarına göre biçimlendirilir. Derin öğrenme modelleri, çok fazla sayıda katmanda sinir ağlarını kullanır. En popüler yapay sinir ağı typologies aşağıda ele alınmıştır.
 
 ### <a name="feedforward-neural-network"></a>Feedforward sinir ağı
 

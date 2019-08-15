@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728812"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934907"
 ---
 # <a name="develop-a-secure-web-app"></a>Güvenli bir Web uygulaması geliştirme
 
@@ -52,16 +52,16 @@ Uygulama, üç katman içeren tipik bir n katmanlı uygulamadır. İzleme ve giz
 
 Mimari aşağıdaki bileşenlerden oluşur:
 
-- [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/). Uygulama mimarimiz için ağ geçidini ve güvenlik duvarını sağlar.
-- [Linux üzerinde Azure Web Apps](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro). Bir Linux ortamında Python uygulamasını çalıştırmak için kapsayıcı çalışma zamanı sağlar.
-- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/). Uygulamanın gizli dizilerini depolar ve şifreler ve bunların çevresindeki erişim ilkelerinin oluşturulmasını yönetir.
+- [Azure Application Gateway](../../application-gateway/index.yml). Uygulama mimarimiz için ağ geçidini ve güvenlik duvarını sağlar.
+- [Linux üzerinde Azure Web Apps](../../app-service/containers/app-service-linux-intro.md). Bir Linux ortamında Python uygulamasını çalıştırmak için kapsayıcı çalışma zamanı sağlar.
+- [Azure Key Vault](../../key-vault/index.yml). Uygulamanın gizli dizilerini depolar ve şifreler ve bunların çevresindeki erişim ilkelerinin oluşturulmasını yönetir.
 - [PostgreSQL Için Azure veritabanı](https://azure.microsoft.com/services/postgresql/). Uygulama verilerini güvenli bir şekilde depolar.
-- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) ve [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Uygulamamızın işlemi üzerinde izleme ve uyarılar sağlar.
+- [Azure Güvenlik Merkezi](../../security-center/index.yml) ve [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Uygulamamızın işlemi üzerinde izleme ve uyarılar sağlar.
 
 ## <a name="threat-model"></a>Tehdit modeli
 Tehdit modellemesi, işletmenizin ve uygulamanızın olası güvenlik tehditlerini tanımlama ve daha sonra uygun bir risk azaltma planının yerinde olmasını sağlama işlemidir.
 
-Bu örnek, güvenli örnek uygulama için tehdit modellemesini uygulamak üzere [Microsoft Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) kullandı. Bileşenleri ve veri akışlarını diyagram oluşturarak, geliştirme sürecinde sorunları ve tehditleri erkenden ayırt edebilirsiniz. Bu, daha sonra zaman ve para tasarrufu sağlar.
+Bu örnek, güvenli örnek uygulama için tehdit modellemesini uygulamak üzere [Microsoft Threat Modeling Tool](threat-modeling-tool.md) kullandı. Bileşenleri ve veri akışlarını diyagram oluşturarak, geliştirme sürecinde sorunları ve tehditleri erkenden ayırt edebilirsiniz. Bu, daha sonra zaman ve para tasarrufu sağlar.
 
 Örnek uygulama için tehdit modelidir:
 
@@ -349,19 +349,19 @@ $$ LANGUAGE PLPGSQL;
 ```
 
 
-PostgreSQL için SSL ve sertifika yetkilisi (CA) doğrulamasını ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+PostgreSQL için SSL ve sertifika yetkilisi (CA) doğrulamasını ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 Kapsayıcıda bir kök sertifika bulunur. Sertifikayı elde etmek için uygulanan adımlar şunlardır:
 
 1. Sertifika [yetkilisinden](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)sertifika dosyasını indirin.
-2. [Makinenizde OpenSSL indirin ve yükleyin](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
+2. [Makinenizde OpenSSL indirin ve yükleyin](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 3. Sertifika dosyanızın kodunu çözün:
 
    ```powershell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-PostgreSQL için SSL güvenliğini yapılandırma hakkında daha fazla bilgi için bkz. [SSL bağlantısı güvenliği yapılandırma](https://docs.microsoft.com/en-gb/azure/postgresql/concepts-ssl-connection-security).
+PostgreSQL için SSL güvenliğini yapılandırma hakkında daha fazla bilgi için bkz. [SSL bağlantısı güvenliği yapılandırma](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Linux üzerinde Azure Web Apps dağıtma
 Azure, Python, Ruby, C#ve Java gibi yaygın olarak kullanılan diller için önceden oluşturulmuş bir kapsayıcı ve resim kümesi sağladığından Azure App Service en üstünde Linux hizmetlerini kolayca oluşturabilirsiniz. Azure Ayrıca, Azure App Service platformunda neredeyse tüm programlama dillerinin çalıştırılmasına izin veren özel kapsayıcıları destekler.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562117"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942893"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl Yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -101,7 +101,7 @@ Azure AD'yi temizlemek için:
 - **Windows 7/8** -ŞIRKET içi ad 'nizin Windows 7/8 cihazlarını devre dışı bırakın veya silin. Windows 7/8 cihazlarını Azure AD'de devre dışı bırakmak veya silmek için Azure AD Connect kullanamazsınız. Bunun yerine, şirket içi kuruluşunuzda değişiklik yaptığınızda, Azure AD 'de devre dışı bırakmanız/silmeniz gerekir.
 
 > [!NOTE]
->* Şirket içi AD veya Azure AD 'deki cihazları silmek istemciye kayıt yapmaz. Yalnızca bir kimlik olarak cihaz kullanan kaynaklara erişimi engeller (örn. koşullu erişim). [İstemcide kayıt kaldırma](faq.md#hybrid-azure-ad-join-faq)hakkında daha fazla bilgi edinin.
+>* Şirket içi AD 'de veya Azure AD 'de cihazları silmek, istemcide kaydı kaldırmaz. Yalnızca bir kimlik olarak cihaz kullanan kaynaklara erişimi engeller (örn. koşullu erişim). [İstemcide kayıt kaldırma](faq.md#hybrid-azure-ad-join-faq)hakkında daha fazla bilgi edinin.
 >* Bir Windows 10 cihazını yalnızca Azure AD 'de silmek, Azure AD Connect 'i kullanarak cihazı şirket içi cihazınızdan yeniden eşitler, ancak "bekliyor" durumunda yeni bir nesne olarak yeniden eşitlenir. Cihazda yeniden kayıt gereklidir.
 >* Windows 10/Server 2016 cihazları için eşitleme kapsamından cihaz kaldırma, Azure AD cihazını silecektir. Bunu eşitleme kapsamına geri eklemek, "bekleyen" durumuna yeni bir nesne yerleştirir. Cihazın yeniden kaydı gereklidir.
 >* Windows 10 cihazlarının eşitlenmesi için Azure AD Connect kullanmıyorsanız (örn. yalnızca kayıt için AD FS kullanıyorsanız), Windows 7/8 cihazlarına benzer yaşam döngüsünü yönetmeniz gerekir.

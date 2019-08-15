@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a0717785f4f9c1c21a18d081d157a6cdc8c12f18
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 3cdbb6587871b970c0188c0b8f510cc9f1f4fe07
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371194"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985173"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Azure depolama 'ya erişimi yetkilendirme
 
@@ -24,11 +24,11 @@ Aşağıdaki tabloda, Azure depolama 'nın kaynaklara erişimi yetkilendirmek i�
 
 |  |Paylaşılan anahtar (depolama hesabı anahtarı)  |Paylaşılan erişim imzası (SAS)  |Azure Active Directory (Azure AD)  |Anonim genel okuma erişimi  |
 |---------|---------|---------|---------|---------|
-|Azure Blob 'Ları     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-dotnet-shared-access-signature-part-1.md)         |[Destekleniyor](storage-auth-aad.md)         |[Destekleniyor](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Blob 'Ları     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-sas-overview.md)         |[Destekleniyor](storage-auth-aad.md)         |[Destekleniyor](../blobs/storage-manage-access-to-resources.md)         |
 |Azure dosyaları (SMB)     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |Desteklenmiyor         |[Yalnızca AAD etki alanı Hizmetleri ile desteklenir](../files/storage-files-active-directory-overview.md)         |Desteklenmiyor         |
-|Azure dosyaları (REST)     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-dotnet-shared-access-signature-part-1.md)         |Desteklenmiyor         |Desteklenmiyor         |
-|Azure Kuyrukları     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-dotnet-shared-access-signature-part-1.md)         |[Destekleniyor](storage-auth-aad.md)         |Desteklenmiyor         |
-|Azure Tabloları     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-dotnet-shared-access-signature-part-1.md)         |Desteklenmiyor         |Desteklenmiyor         |
+|Azure dosyaları (REST)     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-sas-overview.md)         |Desteklenmiyor         |Desteklenmiyor         |
+|Azure Kuyrukları     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-sas-overview.md)         |[Destekleniyor](storage-auth-aad.md)         |Desteklenmiyor         |
+|Azure Tabloları     |[Destekleniyor](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Destekleniyor](storage-sas-overview.md)         |Desteklenmiyor         |Desteklenmiyor         |
 
 Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 
@@ -37,7 +37,7 @@ Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 - Dosyalar için **Azure AD Domain Services (DS) Tümleştirmesi (Önizleme)** . Azure dosyaları, Azure AD DS aracılığıyla sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Bu, bir istemcinin depolama hesabındaki kaynaklara erişimi üzerinde ayrıntılı denetim için RBAC sağlar. Etki alanı Hizmetleri kullanan dosyalarda Azure AD tümleştirmesi hakkında daha fazla bilgi için bkz. [SMB erişimi için Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulama desteği (Önizleme)](../files/storage-files-active-directory-overview.md).
 
 - Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan anahtar yetkilendirmesi** . Paylaşılan anahtar kullanan bir istemci, depolama hesabı erişim anahtarı kullanılarak imzalanan her isteği içeren bir üst bilgi geçirir. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/).
-- Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan erişim imzaları** . Paylaşılan erişim imzaları (SAS), bir depolama hesabındaki kaynaklara sınırlı temsilci erişimi sağlar. İmzanın geçerli olduğu zaman aralığına veya izin verdiği izinlere yönelik kısıtlamalar, erişimi yönetme konusunda esneklik sağlar. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan erişim imzaları** . Paylaşılan erişim imzaları (SAS), bir depolama hesabındaki kaynaklara sınırlı temsilci erişimi sağlar. İmzanın geçerli olduğu zaman aralığına veya izin verdiği izinlere yönelik kısıtlamalar, erişimi yönetme konusunda esneklik sağlar. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
 - Kapsayıcılar ve BLOB 'lar için **anonim genel okuma erişimi** . Yetkilendirme gerekli değildir. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../blobs/storage-manage-access-to-resources.md).  
 
 Varsayılan olarak, Azure Storage 'daki tüm kaynaklar güvenli hale getirilir ve yalnızca hesap sahibi tarafından kullanılabilir. İstemcilere Depolama hesabınızdaki kaynaklara erişim izni vermek için yukarıda özetlenen yetkilendirme stratejilerinden birini kullanabilseniz de, Microsoft en yüksek güvenlik ve kullanım kolaylığı için mümkün olduğunda Azure AD 'nin kullanılmasını önerir. 
