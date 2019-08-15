@@ -44,9 +44,9 @@ sections:
         style: unordered
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme.</a>
-          - html: <a href="tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitme ve dağıtma</a>.
-          - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlayın ve otomatik ML kullanın</b>.</a>
-          - html: <a href="how-to-run-batch-predictions">Büyük veri kümelerinde ML işlem hatlarıyla toplu tahminler çalıştırma</b>.</a>
+          - html: <a href="tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitin ve dağıtın.</a>
+          - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlayın ve otomatik ML kullanın.</b></a>
+          - html: <a href="how-to-run-batch-predictions">Büyük veri kümelerinde ML işlem hatlarıyla toplu tahminler çalıştırın.</b></a>
   - title: Örnekler
     items:
       - type: paragraph
@@ -56,10 +56,10 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/aml-sdk">Ana Python SDK’sı</a>: Temel işlevsellik, otomatik makine öğrenmesi, işlem hatları ve daha fazlası'
-          - html: '<a href="https://aka.ms/aml-monitoring-sdk">İzleme</a> Python SDK’sı: Dağıtılmış web hizmetlerinden veri toplama'
-          - html: Görsel arabirim için <a href="../algorithm-module-reference/module-reference.md">algoritma ve modül başvurusu</a>
-          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: makine öğrenmesi komut satırı arabirimi uzantısı'
+          - html: '<a href="https://aka.ms/aml-sdk">Ana Python SDK’sı</a> belgeleri: Temel işlevsellik, otomatik makine öğrenmesi, işlem hatları ve daha fazlası hakkında bilgi edinin.'
+          - html: '<a href="https://aka.ms/aml-monitoring-sdk">İzleme</a> Python SDK’sı belgeleri: Dağıtılmış web hizmetlerinden veri toplama hakkında bilgi edinin'
+          - html: Görsel arabirim modülleri için <a href="../algorithm-module-reference/module-reference.md">algoritma ve modül başvurusu</a> belgeleri.
+          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: Makine öğrenmesi komut satırı arabirimi uzantısı hakkında bilgi edinin.'
   - title: Diğer Azure Machine Learning teknolojileri
     items:
       - type: list

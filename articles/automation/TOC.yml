@@ -20,10 +20,14 @@
       displayName: RBAC
     - name: Otomasyon Hesabınızı başka bir Aboneliğe taşıma
       href: how-to/move-account.md
+    - name: Otomasyon Hizmetleri’nin eklenmesini otomatikleştirme
+      href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
 - name: Süreç Otomasyonu
   items:
     - name: Karma Runbook Çalışanına Genel Bakış
       href: automation-hybrid-runbook-worker.md
+    - name: Runbook galerisi
+      href: automation-runbook-gallery.md
     - name: Kavramlar
       items:
         - name: Runbook türleri
@@ -297,8 +301,6 @@
   items:
     - name: SendGrid kullanarak Runbook'tan e-posta gönderme
       href: automation-send-email.md
-    - name: Runbook galerisi
-      href: automation-runbook-gallery.md
     - name: Ölçüm uyarıları ile runbook’ları izleme
       href: automation-alert-metric.md
     - name: Azure uyarılarından runbook başlatma

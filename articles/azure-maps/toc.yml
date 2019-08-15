@@ -25,6 +25,8 @@
       items:
         - name: Bölge sınırı ayarlama
           href: tutorial-geofence.md
+        - name: Uzamsal analiz
+          href: tutorial-iot-hub-maps.md
 - name: Kavramlar
   items:
     - name: Azure Haritalar ile kimlik doğrulaması

@@ -310,6 +310,8 @@
           href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
         - name: Apache Ambari ana bilgisayarları ve hizmetleri yavaşlatıyor
           href: ./apache-ambari-troubleshoot-down-hosts-services.md
+        - name: Data Lake dosyalarına erişilemiyor
+          href: ./hdinsight-troubleshoot-data-lake-files.md
         - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS sorunlarını giderme
