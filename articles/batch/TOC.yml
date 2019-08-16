@@ -79,10 +79,12 @@
           href: batch-pool-vm-sizes.md
         - name: İşlem düğümlerine erişimi yapılandırma
           href: pool-endpoint-configuration.md
-        - name: Özel bir görüntü ile havuz oluşturma
+        - name: Paylaşılan Görüntü Galerisi ile bir havuz oluşturma
           href: batch-custom-images.md
         - name: Sanal ağ içinde havuz oluşturma
           href: batch-virtual-network.md
+        - name: Sanal dosya sistemi takma
+          href: virtual-file-mount.md
         - name: Azure dosya paylaşımını bağlama
           href: pool-file-shares.md
         - name: RDMA veya GPU örnekleri kullanma

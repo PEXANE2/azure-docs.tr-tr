@@ -85,5 +85,7 @@
           href: how-to/dev-spaces-business-continuity.md
         - name: Windows kapsayıcıları ile etkileşim kurma
           href: how-to/run-dev-spaces-windows-containers.md
+        - name: Özel giriş ve HTTPS için traefik kullanma
+          href: how-to/ingress-https-traefik.md
     - name: Sorun giderme
       href: troubleshooting.md

@@ -127,7 +127,7 @@ Standart Load Balancer, yalnızca arka uç havuzunda standart IP adreslerine sah
 1. Portalın sol üst tarafında, **kaynak** > oluştur**işlem** > **Windows Server 2019 Datacenter**' u seçin. 
    
 1. İçinde **sanal makine oluşturma**yazın veya aşağıdaki değerleri seçin **Temelleri** sekmesinde:
-   - **** Abonelik > **kaynak grubu**: **Myresourcegroupslb**öğesini seçin.
+   - Abonelik > **kaynak grubu**: **Myresourcegroupslb**öğesini seçin.
    - **Örnek ayrıntıları** > **sanal makine adı**: *MyVM1*yazın.
    - **Örnek ayrıntıları** > **bölgesi** > **Batı Avrupa**seçin.
    - **Örnek ayrıntıları** > **kullanılabilirlik seçenekleri** > **kullanılabilirlik alanları**' nı seçin. 

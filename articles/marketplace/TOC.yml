@@ -439,20 +439,38 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Yeni teklif oluşturma
       items:
-        - name: Teklif oluşturma denetim listesi
-          href: ./partner-center-portal/offer-creation-checklist.md
-        - name: SaaS teklifi oluşturma
-          href: ./partner-center-portal/create-new-saas-offer.md
-        - name: SaaS ölçülen faturalaması
-          href: ./partner-center-portal/saas-metered-billing.md
+        - name: Dynamics 365 teklifleri
           items:
-            - name: Market ölçüm hizmeti API’leri - SSS
-              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-            - name: Market ölçüm hizmeti API’leri
-              href: ./partner-center-portal/marketplace-metering-service-apis.md
-        - name: SaaS gerçekleştirme API'leri
-          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+            - name: Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Dynamics 365 for Operations teklifi oluşturma
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: Dynamics 365 Business Central teklifi oluşturma
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: SaaS teklifleri
           items:
+            - name: SaaS teklifi oluşturma denetim listesi
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: SaaS teklifi oluşturma
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS ölçülen faturalaması
+              href: ./partner-center-portal/saas-metered-billing.md
+              items:
+                - name: Market ölçüm hizmeti API’leri - SSS
+                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+                - name: Market ölçüm hizmeti API’leri
+                  href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: SaaS gerçekleştirme API'leri
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: SaaS uygulaması kaydetme
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: SaaS Gerçekleştirme API’leri v2
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: SaaS Gerçekleştirme API’leri v1 (kullanım dışı)
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: SaaS gerçekleştirme API’leri - SSS
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
             - name: SaaS uygulaması kaydetme
               href: ./partner-center-portal/pc-saas-registration.md
             - name: SaaS Gerçekleştirme API’leri v2

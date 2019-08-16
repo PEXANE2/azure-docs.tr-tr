@@ -709,7 +709,7 @@ Anahtar bilgileri:
     **Göreli** seçenek için aşağıdaki değerler mevcuttur:
   - **Kök**: URL karşılaştırma noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir.
 
-    Örneğin: http:\//WPC.exe 01.&lt; etki&gt;alanı **** 800001/myorigin/myFolder/index.htm/
+    Örneğin: http:\//WPC.exe 01.&lt; etki&gt;alanı 800001/myorigin/myFolder/index.htm/
 
   - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). . Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların kaynak değerini kullanması gerekir. \* 
 
@@ -793,7 +793,7 @@ Anahtar bilgileri:
    Bu seçenek aşağıdaki değerlere sahip olabilir:
      - **Kök**: URL karşılaştırma noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir.
 
-       Örneğin: http:\//WPC.exe 01.&lt; etki&gt;alanı **** 800001/myorigin/myFolder/index.htm/
+       Örneğin: http:\//WPC.exe 01.&lt; etki&gt;alanı 800001/myorigin/myFolder/index.htm/
 
      - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). . Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların kaynak değerini kullanması gerekir. \* 
 

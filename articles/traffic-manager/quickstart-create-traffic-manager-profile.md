@@ -39,7 +39,7 @@ Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Doğu ABD* ve *Batı A
 
 1. **Web uygulaması oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
 
-   - **** Abonelik > **kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1**yazın.
+   - Abonelik > **kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1**yazın.
    - **Örnek ayrıntıları** > **adı**: *MyWebAppEastUS*yazın.
    - **Örnek ayrıntıları** > **Yayımlama**: **Kod**seçin.
    - **Örnek ayrıntıları** > **çalışma zamanı yığını**: **ASP.net v 4.7** seçin
