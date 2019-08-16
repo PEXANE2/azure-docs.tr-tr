@@ -120,12 +120,8 @@
         - name: Dağıtma - REST API
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
-        - name: SAS belirteciyle şablonların güvenliğini sağlama
-          items:
-            - name: Azure CLI kullanma
-              href: resource-manager-cli-sas-token.md
-            - name: Azure PowerShell kullanma
-              href: resource-manager-powershell-sas-token.md
+        - name: SAS belirteciyle şablon güvenliğini sağlama
+          href: secure-template-with-sas-token.md
         - name: Birden çok kaynak grubuna veya aboneliğe dağıtma
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

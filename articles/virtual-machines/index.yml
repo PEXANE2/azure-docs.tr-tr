@@ -3,7 +3,7 @@ documentType: LandingData
 title: Sanal Makineler Belgeleri
 metadata:
   document_id: na
-  title: 'Azure Linux Sanal Makine Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
+  title: 'Azure Sanal Makine Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace

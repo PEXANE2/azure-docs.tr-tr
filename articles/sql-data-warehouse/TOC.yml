@@ -267,14 +267,14 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Bağlantı dizeleri
           href: sql-data-warehouse-connection-strings.md
-        - name: sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Visual Studio SSDT yükleme
+          href: sql-data-warehouse-install-visual-studio.md
+        - name: Visual Studio SSDT ile sorgulama
+          href: sql-data-warehouse-query-visual-studio.md
         - name: SSMS ile Sorgulama
           href: sql-data-warehouse-query-ssms.md
-        - name: Visual Studio ile Sorgulama
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Visual Studio yükleme
-          href: sql-data-warehouse-install-visual-studio.md
+        - name: SQLCMD ile bağlanma ve sorgulama
+          href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: İş yükü yönetimi
       items:
         - name: İş yükünüzü çözümleme

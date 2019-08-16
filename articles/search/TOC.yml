@@ -13,7 +13,7 @@
       items:
         - name: Dizin oluşturma ve kullanma
           href: search-get-started-portal.md
-        - name: AI ile zenginleştirme (bilişsel arama)
+        - name: Bilişsel arama (AI) ile zenginleştirme
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       href: search-get-started-dotnet.md
@@ -59,6 +59,8 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
     - name: Java örnekleri
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: JavaScript örnekleri
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
     - name: Python örnekleri
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
     - name: REST örnekleri

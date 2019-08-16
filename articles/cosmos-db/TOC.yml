@@ -648,6 +648,8 @@
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB Tetikleyicileriyle İlgili Sorunları Giderme
           href: troubleshoot-changefeed-functions.md
+        - name: Değişiklik akışı işlemcisi başlangıç zamanı
+          href: how-to-configure-change-feed-start-time.md
     - name: Apache Spark ile yerleşik analiz
       items:
         - name: Azure Databricks Spark bağlayıcısı

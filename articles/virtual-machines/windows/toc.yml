@@ -388,7 +388,7 @@
           items:
             - name: Yazma hızlandırıcıyı etkinleştirme
               href: how-to-enable-write-accelerator.md
-            - name: Ultra SSD'leri etkinleştirme
+            - name: Ultra diskleri kullanma
               href: disks-enable-ultra-ssd.md
             - name: Disk kıyaslama
               href: disks-benchmarks.md

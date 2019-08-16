@@ -10,7 +10,7 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Kullanıcılara lisans atama
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Kaynak kapsamına sahip bir rol atama
+    - name: Sınırsız uygulama kaydı için izin verme
       href: roles-quickstart-app-registration-limits.md
     - name: Grupların süre sonunu ayarlama
       href: groups-quickstart-expiration.md
