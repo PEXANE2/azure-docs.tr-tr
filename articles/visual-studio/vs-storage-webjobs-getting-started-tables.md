@@ -3,7 +3,7 @@ title: Azure depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra Visual Studio 'da Azure Web Işleri projesinde Azure Tablo Depolamayı kullanmaya başlama
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 481c2f1eaf20e317c8efa4f21f337f4073af898f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260754"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510675"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure Storage 'ı kullanmaya başlama (Azure WebJob projeleri)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -32,7 +32,7 @@ Bazı kod parçacıklarında, tetikleyici özniteliklerinden biri kullanılarak 
 ## <a name="how-to-add-entities-to-a-table"></a>Tabloya varlıklar ekleme
 Bir tabloya varlık eklemek için, **ICollector\<t >** veya **\<ıasynccollector t >** parametresi ile **Table** özniteliğini kullanın; burada **T** eklemek istediğiniz varlıkların şemasını belirtir. Öznitelik Oluşturucusu, tablonun adını belirten bir String parametresi alır.
 
-Aşağıdaki kod örneği, *giriş adlı bir*tabloya **kişi** varlıkları ekler.
+Aşağıdaki kod örneği, giriş adlı bir tabloya **kişi** varlıkları ekler.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -49,7 +49,7 @@ Aşağıdaki kod örneği, *giriş adlı bir*tabloya **kişi** varlıkları ekle
             }
         }
 
-Genellikle **ICollector** ile kullandığınız tür **tableentity** öğesinden türetilir veya **ıtableentity**' ı uygular, ancak bunu yapmak zorunda değildir. Aşağıdaki **kişi** sınıflarından biri **, önceki giriş** yönteminde gösterilen kodla çalışır.
+Genellikle **ICollector** ile kullandığınız tür **tableentity** öğesinden türetilir veya **ıtableentity**' ı uygular, ancak bunu yapmak zorunda değildir. Aşağıdaki **kişi** sınıflarından biri, önceki giriş yönteminde gösterilen kodla çalışır.
 
         public class Person : TableEntity
         {
@@ -81,7 +81,7 @@ Veri giriş işlevleri genellikle büyük hacimlerdeki verileri işletiğinden, 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Tablodaki birden çok varlığı okuma
 Bir tabloyu okumak için **tablo** özniteliğini, tür **T** 'in **tableentity** 'dan türetildiği veya **ıtableentity**uygulayan bir **IQueryable\<T >** parametresiyle kullanın.
 
-Aşağıdaki kod örneği, **giriş tablosundan tüm** satırları okur ve günlüğe kaydeder:
+Aşağıdaki kod örneği, giriş tablosundan tüm satırları okur ve günlüğe kaydeder:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -123,7 +123,7 @@ Bu örnekteki **kişi** sınıfının **ıtableentity**uygulaması gerekmez.
 ## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>.NET Storage API 'sini doğrudan bir tabloyla çalışmak üzere kullanma
 Tablo ile çalışma konusunda daha fazla esneklik için bir **cloudtable** nesnesi ile **Table** özniteliğini de kullanabilirsiniz.
 
-Aşağıdaki kod örneği, *giriş tablosuna tek* bir varlık eklemek Için bir **cloudtable** nesnesi kullanır.
+Aşağıdaki kod örneği, giriş tablosuna tek bir varlık eklemek için bir **cloudtable** nesnesi kullanır .
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,

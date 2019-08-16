@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 8fac70e7e5125ae86b2b5ce13041bbf1fd067bbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642078"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509088"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanan bir ACR görevinde çapraz kayıt defteri kimlik doğrulaması 
 
@@ -76,7 +76,7 @@ Bu bölümdeki adımlar bir görev oluşturur ve Kullanıcı tarafından atanan 
 
 ### <a name="create-task"></a>Görev Oluştur
 
-Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev bağlamı yerel sistemdir ve komut çalışma dizinindeki dosyasına `helloworldtask.yaml` başvurur. `--assign-identity` Parametresi, Kullanıcı tarafından atanan kimliğin kaynak kimliğini geçirir. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki dosyasına `helloworldtask.yaml` başvurur. `--assign-identity` Parametresi, Kullanıcı tarafından atanan kimliğin kaynak kimliğini geçirir. 
 
 ```azurecli
 az acr task create \
@@ -95,7 +95,7 @@ Bu bölümdeki adımlar bir görev oluşturur ve sistem tarafından atanan bir k
 
 ### <a name="create-task"></a>Görev Oluştur
 
-Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev bağlamı yerel sistemdir ve komut çalışma dizinindeki dosyasına `helloworldtask.yaml` başvurur. Değer `--assign-identity` içermeyen parametre, görevde sistem tarafından atanan kimliği etkinleştirmesine izin vermez. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek bir görev *Merhaba Dünya görevi* oluşturun. Görev, kaynak kodu bağlamı olmadan çalışır ve komut çalışma dizinindeki dosyasına `helloworldtask.yaml` başvurur. Değer `--assign-identity` içermeyen parametre, görevde sistem tarafından atanan kimliği etkinleştirmesine izin vermez. 
 
 ```azurecli
 az acr task create \

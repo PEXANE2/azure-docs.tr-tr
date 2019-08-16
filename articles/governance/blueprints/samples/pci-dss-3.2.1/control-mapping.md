@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226021"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515694"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
@@ -25,7 +25,7 @@ Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. 
 
 Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ağları yönetmenize ve denetlemenize yardımcı olur. Çok izin verilen kurallar istenmeyen ağ erişimine izin verebilir ve incelenmelidir. Bu şema, korumasız uç noktaları, uygulamaları ve depolama hesaplarını izleyen bir Azure ilke tanımı atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
 
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h ve 6.5.3 şifreleme koruması
@@ -34,22 +34,22 @@ Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullan
 
 - İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- Azure Güvenlik Merkezi 'nde şifrelenmemiş SQL veritabanını izleme
+- API Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
-- Otomasyon hesabı değişkenleri şifrelenmelidir
+- Otomasyon hesabı değişkenlerinin şifrelenmesi gerekir
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
-- SQL DB saydam veri şifrelemesini dağıtma
+- SQL veritabanı saydam veri şifrelemesi dağıt
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 ve 11.2.1 güvenlik açığı taraması ve sistem güncelleştirmeleri
 
 Bu şema, Azure 'da eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur Güvenlik Merkezi. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
 
 - Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
-- Windows Server için varsayılan Microsoft ıaasantimalware uzantısını dağıt
+- Windows Server için varsayılan Microsoft IaaSAntimalware uzantısını dağıt
 - SQL Server 'Lar üzerinde tehdit algılamayı dağıtma
 - Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -75,11 +75,11 @@ servislere.
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
-- Özel RBAC kurallarının kullanımını denetleme
+- Özel RBAC kurallarının kullanımını denetleyin
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 sürümlü ve 8.1.5 en az ayrıcalık ve Kullanıcı erişim haklarının Incelenmesi
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, yönetici [Hesap tanımlarını,](../../../policy/overview.md) hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirilmek üzere önceliklendirilmek zorunda olan denetim hesaplarına atar.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, yönetici [](../../../policy/overview.md) hesap tanımlarını, hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirilmek üzere önceliklendirilmek zorunda olan denetim hesaplarına atar.
 
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
@@ -110,10 +110,10 @@ Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Window
 Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur.
 Tanılama günlükleri, Azure kaynakları içinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure günlükleri, kaynak genelinde olayların zaman bağıntılı bir kaydını oluşturmak için eşitlenmiş iç saatleri kullanır.
 
-- Azure Güvenlik Merkezi 'nde denetlenen SQL Server 'ı izleme
+- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
-- SQL Server 'lar üzerinde denetim dağıtma
+- SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL sunucularına Denetim dağıt
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843352"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516047"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ve yönetilen ve yönetilmeyen Premium diskler hakkında sık sorulan sorular
 
@@ -143,7 +143,48 @@ GPT bölümlendirme, işletim sistemi disklerinde değil yalnızca veri diskleri
 
 **Hangi disk türleri anlık görüntüleri destekliyor?**
 
-Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu üç disk türü için, tüm disk boyutları (boyut olarak 32 TiB 'ye kadar olan diskler dahil) için anlık görüntüler desteklenir. Ultra SSD 'Ler, anlık görüntüleri desteklemez.
+Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu üç disk türü için, tüm disk boyutları (boyut olarak 32 TiB 'ye kadar olan diskler dahil) için anlık görüntüler desteklenir. Ultra diskler anlık görüntüleri desteklemez.
+
+## <a name="ultra-disks"></a>Ultra diskler
+
+**Hangi bölgeler Şu anda Ultra diskleri destekliyor?**
+- Doğu ABD 2
+- Güneydoğu Asya
+- Kuzey Avrupa
+
+**Şu anda hangi VM serileri Ultra diskleri destekliyor?**
+- ESv3
+- DSv3
+
+**Son derece disk verimini ne şekilde ayarlayamalıyım?**
+Disk aktarım hızını hangi şekilde ayarlayacağınızdan emin değilseniz, 16 KiB 'nin GÇ boyutunu kabul ederek ve uygulamanızı izlerken performansı buradan ayarlamanız önerilir. Formül şu şekilde olur: MB/sn cinsinden aktarım hızı = ıOPS * 16/1000.
+
+**Diskmi 40000 ıOPS olarak yapılandırdım, ancak yalnızca 12800 ıOPS görüyorum, diskin performansını neden göremiyorum?**
+Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. Lütfen kullandığınız VM boyutunun disklerinizde yapılandırılan düzeyleri destekleyebileceğini doğrulayın. VM 'niz tarafından uygulanan GÇ limitleriyle ilgili ayrıntılar için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../articles/virtual-machines/windows/sizes.md).
+
+**Bir ultra disk ile önbelleğe alma düzeylerini kullanabilir miyim?**
+Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı hiçbiri olarak ayarlayın.
+
+**Var olan sanal makinenize bir ultra disk ekleyebilir miyim?**
+Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabilirlik alanı çifti olması gerekir. Ayrıntılar için bkz. [Ultra disklerle çalışmaya](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) başlama.
+
+**VM 'im için bir ultra disk işletim sistemi diski olarak kullanabilir miyim?**
+Hayır, Ultra diskler yalnızca veri diskleri olarak desteklenir ve yalnızca 4K yerel disk olarak desteklenir.
+
+**Var olan bir diski bir ultra diske dönüştürebilir miyim?**
+Hayır, ancak mevcut bir diskteki tarihi bir ultra diske geçirebilirsiniz. Var olan bir diski bir ultra diske geçirmek için, her iki diski aynı sanal makineye bağlayın ve disk verilerini bir diskten diğerine kopyalayın ya da veri geçişi için 3. taraf çözümünü kullanın.
+
+**Ultra diskler için anlık görüntüler oluşturabilir miyim?**
+Hayır, anlık görüntüler henüz kullanılamıyor.
+
+**Azure Backup Ultra diskler için kullanılabilir mi?**
+Hayır, Azure Backup desteği henüz kullanılamıyor.
+
+**Kullanılabilirlik kümesinde çalışan bir VM 'ye bir ultra disk ekleyebilir miyim?**
+Hayır, bu henüz desteklenmiyor.
+
+**Ultra diskler kullanan VM 'Ler için Azure Site Recovery (ASR) etkinleştirebilir miyim?**
+Hayır, ASR henüz Ultra diskler için desteklenmiyor.
 
 ## <a name="standard-ssd-disks"></a>Standart SSD diskler
 

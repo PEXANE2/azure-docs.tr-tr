@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967576"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509065"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
 
@@ -48,9 +48,9 @@ Basit bir örnek olarak, aşağıdaki komut, `hello-world` görüntüyü Docker 
 az acr task create \
   --name mytask \
   --registry myregistry \
-  --context /dev/null \
   --cmd hello-world \
-  --schedule "0 21 * * *"
+  --schedule "0 21 * * *" \
+  --context /dev/null
 ```
 
 Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Task Show][az-acr-task-show] komutunu çalıştırın. Varsayılan olarak, temel görüntü güncelleştirme tetikleyicisi de etkinleştirilir.
@@ -176,11 +176,11 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 |Type  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
-|Belirli bir değer |<nobr>"5 * * * *"</nobr>|saatte 5 dakikada bir saat geçti|
-|Tüm değerler (`*`)|<nobr>"* 5 * * *"</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
-|Bir Aralık (`-` işleç)|<nobr>"0 1-3 * * *"</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
-|Bir değerler kümesi (`,` işleç)|<nobr>"20, 30, 40 * * * *"</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
-|Bir Aralık değeri (`/` işleç)|<nobr>"*/10 * * * *"</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
+|Belirli bir değer |<nobr>`"5 * * * *"`</nobr>|saatte 5 dakikada bir saat geçti|
+|Tüm değerler (`*`)|<nobr>`"* 5 * * *"`</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
+|Bir Aralık (`-` işleç)|<nobr>`"0 1-3 * * *"`</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
+|Bir değerler kümesi (`,` işleç)|<nobr>`"20,30,40 * * * *"`</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
+|Bir Aralık değeri (`/` işleç)|<nobr>`"*/10 * * * *"`</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -198,6 +198,8 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Bir kayıt defterindeki depoları temizlemek için zamanlanmış bir görev kullanmanın bir örneği için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
 
 Kaynak kodu işlemeleri veya temel görüntü güncelleştirmeleri tarafından tetiklenen görev örnekleri için [ACR görevler öğretici serisini](container-registry-tutorial-quick-task.md)inceleyin.
 

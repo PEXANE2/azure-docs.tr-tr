@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966851"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512592"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Bir web hizmeti olarak bir Azure Machine Learning modeli kullanma
 
 Bir Azure Machine Learning modeli bir web hizmeti olarak dağıtma, bir REST API oluşturur. Bu API için veri göndermek ve modeli tarafından döndürülen tahmin alırsınız. Bu belgede, Web hizmeti için, Go, Java ve Python kullanarak C#istemci oluşturma hakkında bilgi edinin.
 
-Azure Container Instances, Azure Kubernetes hizmeti veya alan-programlanabilir kapı dizileri (FPGA) için bir görüntü dağıtırken bir Web hizmeti oluşturursunuz. Kayıtlı modeller ve Puanlama dosyalarından görüntüler oluşturursunuz. [Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk)kullanarak bir Web hizmetine erişmek IÇIN kullanılan URI 'yi alırsınız. Kimlik doğrulamasını etkinleştirdiyseniz, kimlik doğrulama anahtarlarını almak için SDK'yı da kullanabilirsiniz.
+Azure Container Instances, Azure Kubernetes hizmeti veya alan-programlanabilir kapı dizileri (FPGA) için bir görüntü dağıtırken bir Web hizmeti oluşturursunuz. Kayıtlı modeller ve Puanlama dosyalarından görüntüler oluşturursunuz. [Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk)kullanarak bir Web hizmetine erişmek IÇIN kullanılan URI 'yi alırsınız. Kimlik doğrulaması etkinleştirilirse, kimlik doğrulama anahtarlarını veya belirteçlerini almak için SDK 'Yı da kullanabilirsiniz.
 
 Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş akışı:
 
@@ -81,6 +81,8 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 |Anahtar|Varsayılan olarak devre dışı| Varsayılan olarak etkin|
 |Belirteç| Kullanılamaz| Varsayılan olarak devre dışı |
 
+Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirtecin olarak `Bearer <key-or-token>`biçimlendirilmesi gerekir, burada `<key-or-token>` anahtar veya belirteç değeridir.
+
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
 Bir dağıtım için kimlik doğrulamasını etkinleştirdiğinizde, otomatik olarak kimlik doğrulama anahtarları oluşturursunuz.
@@ -112,7 +114,7 @@ Belirteç kimlik doğrulamasını denetlemek için, bir `token_auth_enabled` da�
 Belirteç kimlik doğrulaması etkinleştirilirse, bir taşıyıcı belirteci almak için `get_token` yöntemini ve bu belirteçlerin süre sonu süresini kullanabilirsiniz:
 
 ```python
-token, refresh_by = service.get_tokens()
+token, refresh_by = service.get_token()
 print(token)
 ```
 
@@ -193,9 +195,9 @@ namespace MLWebServiceClient
     {
         static void Main(string[] args)
         {
-            // Set the scoring URI and authentication key
+            // Set the scoring URI and authentication key or token
             string scoringUri = "<your web service URI>";
-            string authKey = "<your key>";
+            string authKey = "<your key or token>";
 
             // Set the data to be sent to the service.
             // In this case, we are sending two sets of data to be scored.
@@ -309,8 +311,8 @@ var exampleData = []Features{
 
 // Set to the URI for your service
 var serviceUri string = "<your web service URI>"
-// Set to the authentication key (if any) for your service
-var authKey string = "<your key>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
 
 func main() {
     // Create the input data from example data
@@ -364,8 +366,8 @@ public class App {
     public static void sendRequest(String data) {
         // Replace with the scoring_uri of your service
         String uri = "<your web service URI>";
-        // If using authentication, replace with the auth key
-        String key = "<your key>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
         try {
             // Create the request
             Content content = Request.Post(uri)
@@ -438,8 +440,8 @@ import json
 
 # URL for the web service
 scoring_uri = '<your web service URI>'
-# If the service is authenticated, set the key
-key = '<your key>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
 
 # Two sets of data to score, so we get two results back
 data = {"data":

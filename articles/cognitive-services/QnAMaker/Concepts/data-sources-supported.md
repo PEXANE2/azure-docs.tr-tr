@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/15/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955550"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515801"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Veri kaynakları için soru-cevap Oluşturucu içeriği
 
@@ -133,9 +133,21 @@ Biçiminde Bankalarıyla yapılandırılmış *.txt*, *.tsv* veya *.xls* dosyala
 
 Kaynak dosyadaki ek sütunlar göz ardı edilir.
 
+### <a name="example-of-structured-excel-file"></a>Yapılandırılmış Excel dosyası örneği
+
 Yapılandırılmış bir soru-cevap örneği aşağıdadır *.xls* dosyasıyla HTML içeriği:
 
  ![Yapılandırılmış bir soru-cevap, örnek bir Bilgi Bankası için excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel dosyasında tek yanıt için alternatif soruların örneği
+
+Aşağıda, tek bir yanıt için çeşitli alternatif sorulara sahip bir yapılandırılmış QnA *. xls* dosyası örneği verilmiştir:
+
+ ![Excel dosyasında tek yanıt için alternatif soruların örneği](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+Dosya alındıktan sonra, soru-cevap çifti aşağıda gösterildiği gibi Bilgi Bankası 'nda bulunur:
+
+ ![Bilgi Bankası 'na aktarılan tek yanıt için alternatif soruların ekran görüntüsü](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>İçeri aktarma ile yapılandırılmış veri biçimi
 

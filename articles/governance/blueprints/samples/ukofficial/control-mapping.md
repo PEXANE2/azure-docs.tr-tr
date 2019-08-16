@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226019"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515619"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
@@ -33,13 +33,13 @@ Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır
 Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, ilkenizi cryptograph denetimleri kullanarak zorlamanıza yardımcı olur.
 Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; depolama hesaplarında, SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin; depolama hesaplarına Güvenli olmayan bağlantıları denetleme ve Redis Cache; zayıf sanal makine parola şifrelemesini denetleme; ve şifrelenmemiş Service Fabric iletişimini denetleyin.
 
-- Azure Güvenlik Merkezi 'nde şifrelenmemiş SQL veritabanlarını izleme
+- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
-- Otomasyon hesabı değişkenleri şifrelenmelidir
+- Otomasyon hesabı değişkenlerinin şifrelenmesi gerekir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
-- SQL DB saydam veri şifrelemesini dağıtma
+- SQL veritabanı saydam veri şifrelemesi dağıt
 - Data Lake Store hesaplarında şifreleme gerektir
 - İzin verilen konumlar ("UK Güney" ve "UK Batı" için sabit olarak kodlanmış)
 - Kaynak grupları için izin verilen konumlar ("UK Güney" ve "UK Batı" olarak kodlanmıştır)
@@ -58,9 +58,9 @@ Bu şema, eksik Endpoint Protection, eksik sistem güncelleştirmeleri, işletim
 
 Bu şema, Kısıtlanmamış erişim, beyaz liste etkinliği ve tehditler üzerinde koruyucu izleme sağlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi varlıklarını korumanıza yardımcı olur.
 
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
-- SQL Server 'lar üzerinde tehdit algılamayı dağıtma
+- SQL sunucularına Tehdit Algılama dağıt
 - Windows Server için varsayılan Microsoft IaaS kötü amaçlı yazılımdan koruma uzantısını dağıt
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 güvenli Kullanıcı Yönetimi/10 kimliği ve kimlik doğrulaması
@@ -111,13 +111,13 @@ Bu şema ayrıca Azure ilke tanımlarını atayarak Azure kaynaklarına erişimi
 - \[Önizleme\]: Parolasız hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
-- Yönetilen diskleri kullanmayan VM 'Leri denetleme
+- Yönetilen diskler kullanmayan VM'leri denetle
 
 ## <a name="11-external-interface-protection"></a>11 harici arabirim koruması
 
 Uygun güvenli Kullanıcı yönetimi için 25 ' ten fazla ilke kullanmaktan başka, bu şema, kısıtlanmamış depolama hesaplarını izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak hizmet arabirimlerini yetkisiz erişimden korumanıza yardımcı olur. Sınırsız erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir. Bu şema ayrıca sanal makinelerde Uyarlamalı uygulama denetimleri sağlayan bir ilke atar.
 
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
+- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
 
 ## <a name="12-secure-service-administration"></a>12 güvenli hizmet yönetimi
@@ -151,12 +151,12 @@ Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıkların
 
 Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Atanan bir ilke, sanal makinelerin belirli bir Log Analytics çalışma alanına günlük gönderip göndermemişse de denetler.
 
-- Azure Güvenlik Merkezi 'nde denetlenen SQL Server 'ı izleme
+- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
+- SQL sunucu düzeyi Denetim ayarlarını denetle
 - \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
-- Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
+- Sanal ağlar oluşturulduğunda ağ izleyicisi dağıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

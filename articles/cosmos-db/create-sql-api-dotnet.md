@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: a7950d80bd5aa21b26a7724845f10515a65c033d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371018"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512714"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API kaynaklarını yönetmek için bir .NET konsol uygulaması oluşturma
 
@@ -165,6 +165,8 @@ Farklı varlıkların hiyerarşisi hakkında daha fazla bilgi edinmek için, [Az
 * [Createcontainerıfnotexistsasync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet)--bu Yöntem (yoksa) oluşturur veya bir kapsayıcıyı zaman uyumsuz bir işlem olarak (zaten varsa) alır. Kapsayıcının yeni oluşturulup oluşturulmayacağını (201) veya var olan bir kapsayıcının döndürülüp döndürülmediğini (200) öğrenmek için yanıttan durum kodunu kontrol edebilirsiniz. 
 * [Createitemasync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) -bu yöntem kapsayıcı içinde bir öğe oluşturur. 
 
+* [Upsertitemasync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet) -bu yöntem, zaten yoksa kapsayıcı içinde bir öğe oluşturur veya zaten varsa öğeyi değiştirir. 
+
 * [Getıtemqueryyineleyici](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ) -bu yöntem, parametreli değerler içeren bir SQL ifadesini kullanarak bir Azure Cosmos veritabanındaki kapsayıcı altındaki öğeler için bir sorgu oluşturur. 
 
@@ -294,7 +296,7 @@ public class Program
 
 ### <a name="create-a-database"></a>Veritabanı oluşturma 
 
-`program.cs` Sınıfında `CreateDatabaseAsync` yöntemini tanımlayın. Bu yöntem, `FamilyDatabase` zaten yoksa oluşturur. 
+`program.cs` Sınıfında `CreateDatabaseAsync` yöntemini tanımlayın. Bu yöntem, `FamilyDatabase` zaten yoksa oluşturur.
 
 ```csharp
 private async Task CreateDatabaseAsync()
@@ -322,7 +324,7 @@ private async Task CreateContainerAsync()
 
 ### <a name="create-an-item"></a>Öğe oluştur
 
-Aşağıdaki kodla `AddItemsToContainerAsync` yöntemi ekleyerek bir aile öğesi oluşturun:
+Aşağıdaki kodla `AddItemsToContainerAsync` metodunu ekleyerek bir aile öğesi oluşturun. Bir öğe oluşturmak için `CreateItemAsync` veya `UpsertItemAsync` yöntemlerini kullanabilirsiniz:
 
 ```csharp
 private async Task AddItemsToContainerAsync()

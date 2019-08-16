@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
-ms.author: rkarlin
-ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 39849514d772f128434daad590de22f941245af7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235780"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516102"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama
 Bu belge, güvenlik uyarılarını yönetmeniz ve yanıtlamanız için Azure Güvenlik Merkezi’ni kullanmanıza yardımcı olur.
@@ -51,14 +51,14 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 
 Bu sayfanın alt bölümünde her bir uyarı için ayrıntılar bulunur. Sıralamak için hangi sütuna göre sıralamak istediğinizi belirtin. Her sütunun tanımı aşağıda verilmiştir:
 
-* **Açıklama**: Uyarının kısa bir açıklama.
-* **Sayısı**: Belirli bir günde algılanan bu belirli türdeki tüm uyarıların bir listesi.
-* **Tarafından algılanan**: Uyarıyı tetiklemekten sorumlu hizmet.
-* **Tarih**: Olayın gerçekleştiği tarih.
-* **Durum**: Bu uyarı için geçerli durumu. İki tür durum mevcuttur:
+* **Açıklama**: Uyarının kısa bir açıklaması.
+* **Sayı**: Belirli bir gün üzerinde algılanan bu belirli türdeki tüm uyarıların listesi.
+* **Tespit eden**: Uyarıyı tetiklemeden sorumlu olan hizmet.
+* **Tarih**: Olayın oluştuğu tarih.
+* **Durum**: Bu uyarının geçerli durumu. İki tür durum mevcuttur:
   * **Etkin**: Güvenlik Uyarısı algılandı.
-  * **Kapatıldı**: Güvenlik Uyarısı, kullanıcı tarafından kapatıldı. Bu durum genellikle, araştırılan uyarılar için kullanılır ve gerçek bir saldırı olarak azaltılan ya da değil.
-* **Önem derecesi**: Önem düzeyi yüksek, Orta veya düşük olabilir.
+  * **Çıkarıldı**: Güvenlik uyarısı kullanıcı tarafından kapatıldı. Bu durum genellikle araştırılan ve hafiftılan ya da gerçek bir saldırı olmayan uyarılar için kullanılır.
+* **Önem derecesi**: Yüksek, orta veya düşük olabilen önem derecesi düzeyi.
 
 > [!NOTE]
 > Güvenlik Merkezi tarafından oluşturulan güvenlik uyarıları, Azure Etkinlik Günlüğü altında ayrıca görünür. Azure Etkinlik Günlüğü’ne erişim hakkında daha fazla bilgi için bkz. [Kaynaklara uygulanan eylemleri denetlemek için etkinlik günlüklerini görüntüle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
@@ -67,16 +67,16 @@ Bu sayfanın alt bölümünde her bir uyarı için ayrıntılar bulunur. Sırala
 
 ### <a name="alert-severity"></a>Uyarı önem derecesi
 
--   **Yüksek**: Kaynağınızın tehlikeye girmemesini yüksek olasılık yoktur. İçine hemen görünmelidir. Güvenlik Merkezi, hem kötü amaçlı bir eyleme ve uyarı vermek üzere kullanılan bulguları yüksek güvenilirliğe sahip. Örneğin, mimikatz'ı kimlik bilgisi hırsızlığı için kullanılan genel bir aracı gibi bilinen bir kötü amaçlı araç yürütülmesini algılarsa bir uyarı. 
--   **Orta**: Bir kaynak tehlikede olduğunu gösterebilecek kuşkulu bir etkinlik büyük olasılıkla budur.
-Güvenlik Merkezi'nin ellerde analitik veya arama Orta ve kötü amaçlı güvenini Orta Yüksek. Bunlar genellikle machine learning'e ya da tabanlı anomali algılama olur. Örneğin, bir oturum açma denemesi, anormal bir konumdan.
--   **Düşük**: Bu, zararsız pozitif ya da engellenen bir saldırı olabilir. 
-    - Güvenlik Merkezi amaç kötü amaçlı ve etkinlik zararsız başarılara yeterli değil. Örneğin, günlük Temizle izlerini gizlemek bir saldırgan çalışır, ancak çoğu durumda, sıradan bir işlem yöneticileri tarafından gerçekleştirilir, bu sorunla karşılaşabilirsiniz bir eylemdir.
-    - İçine bak öneririz ilgi çekici bir durum değilse Güvenlik Merkezi genellikle zaman saldırıları engellendi, sunmayacaktır. 
--   **Bilgilendirme**: Bir güvenlik olayı altında ayrıntıya veya belirli bir uyarı kimliği ile REST API kullanıyorsanız, yalnızca bilgilendirici uyarılar görürsünüz Olay uyarıları, bazıları, yalnızca bilgilendirici olacak şekilde kendi görünebilir, ancak diğer uyarılar bağlamında daha yakından bakın bu durum bir dizi genellikle oluşur.  
+-   **Yüksek**: Kaynağınızın güvenliğinin tehlikeye girdiği büyük bir olasılık vardır. Hemen bir yere bakmanız gerekir. Güvenlik Merkezi, hem kötü amaçlı amaç hem de uyarı vermek için kullanılan bulgularda yüksek güvenilirliğe sahiptir. Örneğin, Mimikatz gibi bilinen kötü amaçlı bir aracın yürütülmesini algılayan bir uyarı, kimlik bilgilerinin çalınması için kullanılan ortak bir araçtır. 
+-   **Orta**: Bu, bir kaynağın güvenliğinin aşıldığını gösterebilen şüpheli bir etkinlikten kaynaklanıyor olabilir.
+Güvenlik Merkezi 'nin analitik veya bulma 'daki güvenilirliği orta ve kötü amaçlı amaç 'nin güvenilirliği orta ile yüksektir. Bunlar genellikle makine öğrenimi veya anomali tabanlı algılamalar olur. Örneğin, anormal bir konumdan oturum açma girişimi.
+-   **Düşük**: Bu bir zararsız veya engellenmiş saldırı olabilir. 
+    - Güvenlik Merkezi, amacın kötü amaçlı olduğu ve etkinliğin masum olabileceğinden emin olmak için yeterli değildir. Örneğin, günlük Temizleme, bir saldırgan parçaları gizlemeyi denediğinde gerçekleşemeyen bir eylemdir, ancak çoğu durumda Yöneticiler tarafından gerçekleştirilen bir rutin işlemdir.
+    - Güvenlik Merkezi, baktığımız ilginç bir durum olmadığı takdirde saldırı ne zaman engellendiğine ilişkin bilgi vermez. 
+-   **Bilgi amaçlı**: Yalnızca bir güvenlik olayının detayına veya belirli bir uyarı KIMLIĞIYLE REST API kullandığınızda bilgilendirme uyarıları görürsünüz. Genellikle bir olay bir dizi uyarıdan oluşur, bazıları yalnızca bilgilendirici olarak görünebilir, ancak diğer uyarıların bağlamında daha yakından bir görünüme sahip olabilir.  
 
 > [!NOTE]
-> Kullanıyorsanız **2015-06-01-preview** API sürümü, daha sonra hangi alarma önem derecesi türleri uygulanır hangi senaryoları için hangi yukarıda listelenen gelen farklar vardır.  
+> **2015-06-01-Preview** API sürümünü kullanıyorsanız, yukarıda listelenenden itibaren alarm önem derecesi türlerinin hangi senaryolara uygulanabileceğini gösteren farklılıklar vardır.  
 
 ### <a name="filtering-alerts"></a>Uyarıları filtreleme
 Tarihe, duruma ve önem derecesine göre uyarıları filtreleyebilirsiniz. Filtreleme uyarıları, güvenlik uyarıları gösterimi kapsamını daraltmanızın gerektiği senaryolar için faydalı olabilir. Örneğin, sistemde olası bir ihlali araştırdığınız için son 24 saatte oluşan güvenlik uyarılarını ele almak isteyebilirsiniz.
@@ -94,9 +94,9 @@ Bu durumda, tetiklenen uyarılar şüpheli Uzak Masaüstü Protokolü (RDP) etki
 
 ![Azure Güvenlik Merkezi'nde güvenlik uyarıları hakkında ne yapılacağına ilişkin öneriler](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig6-ga.png)
 
-**Açıklama** alanında bu olay hakkında daha fazla ayrıntı bulabilirsiniz. Bu ek ayrıntılar, güvenlik uyarısını neyin tetiklediği, hedef kaynak, uygulanabilirse kaynak IP adresi ve düzeltmeye ilişkin öneriler hakkında öngörüler sunar.  Windows güvenlik olayı günlüklerinin tümü IP adresi içermediğinden, bazı durumlarda kaynak IP adresi boştur (yoktur).
+**Açıklama** alanında, bu olayla ilgili daha fazla ayrıntı bulabilirsiniz. Bu ek ayrıntılar, güvenlik uyarısını neyin tetiklediği, hedef kaynak, uygulanabilirse kaynak IP adresi ve düzeltmeye ilişkin öneriler hakkında öngörüler sunar.  Windows güvenlik olayı günlüklerinin tümü IP adresi içermediğinden, bazı durumlarda kaynak IP adresi boştur (yoktur).
 
-Güvenlik Merkezi tarafından önerilen düzeltme, güvenlik uyarısına göre farklılık gösterir. Bazı durumlarda, önerilen düzeltmeyi uygulamak için diğer Azure işlevlerini kullanmak zorunda kalabilirsiniz. Örneğin, bu saldırıya ilişkin düzeltme, [ağ ACL'si](../virtual-network/virtual-networks-acl.md) veya [ağ güvenlik grubu](../virtual-network/security-overview.md#security-rules) kuralı kullanarak bu saldırıyı gerçekleştiren IP adresini kara listeye almaktır. Farklı uyarı türleri hakkında daha fazla bilgi için [Azure Güvenlik Merkezi'nde Türe Göre Güvenlik Uyarıları](security-center-alerts-type.md) makalesini okuyun.
+Güvenlik Merkezi tarafından önerilen düzeltme, güvenlik uyarısına göre farklılık gösterir. Bazı durumlarda, önerilen düzeltmeyi uygulamak için diğer Azure işlevlerini kullanmak zorunda kalabilirsiniz. Örneğin, bu saldırının düzeltilmesi, [ağ ACL 'si](../virtual-network/virtual-networks-acl.md) veya [ağ güvenlik grubu](../virtual-network/security-overview.md#security-rules) kuralı kullanarak bu saldırıyı oluşturan IP adresine izin vermemelidir. Farklı Uyarı türleri hakkında daha fazla bilgi için [güvenlik uyarıları türlerini](security-center-alerts-overview.md#security-alert-types)okuyun.
 
 > [!NOTE]
 > Güvenlik Merkezi Linux makinelerdeki kötü amaçlı davranışlarını algılamak için denetim kayıtlarını kullanan yeni bir algılama kümesi ve ortak denetim çerçevesi içeren sınırlı bir önizleme sürümüyle yayımlanmıştır. Önizlemeye katılmak için lütfen abonelik kimliklerinizi [bize](mailto:ASC_linuxdetections@microsoft.com) e-posta ile gönderin.

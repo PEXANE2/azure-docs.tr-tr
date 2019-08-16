@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883595"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515542"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler
 
@@ -165,6 +165,6 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Güvenlik Merkezi 'ni benimsemek için tasarım konularını nasıl planlayacağınızı ve anlayacağınızı](security-center-planning-and-operations-guide.md)öğrenin.
-- [Güvenlik Merkezi 'nde sanal makine davranış analizi ve kilitlenme bilgi döküm belleği Analizi](security-center-alerts-type.md#virtual-machine-behavioral-analysis)hakkında daha fazla bilgi edinin.
+- [Azure Güvenlik Merkezi 'Nde VM 'ler & Sunucular Için tehdit algılama](security-center-alerts-iaas.md)hakkında daha fazla bilgi edinin.
 - [Azure Güvenlik Merkezi 'ni kullanma hakkında sık sorulan soruları](security-center-faq.md)bulun.
 - [Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini](https://blogs.msdn.com/b/azuresecurity/)bulun.

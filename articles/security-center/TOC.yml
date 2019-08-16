@@ -181,10 +181,6 @@
           href: security-center-search.md
         - name: Planlama ve işlemler
           href: security-center-planning-and-operations-guide.md
-        - name: Güvenlik uyarılarını anlama
-          href: security-center-alerts-type.md
-        - name: Azure kaynakları ve kullanıcıları için UEBA
-          href: security-center-ueba-mcas.md
         - name: Güvenlik yapılandırmalarını özelleştirme
           href: security-center-customize-os-security-config.md
 - name: Başvuru

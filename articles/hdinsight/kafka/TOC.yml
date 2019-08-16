@@ -200,6 +200,8 @@
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: Kaynaklar
   items:
+    - name: SSS
+      href: kafka-faq.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Forumdan yardım alma

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: İlk modelinizi eğitme.'
+title: 'Öğretici: İlk ML modelinizi eğitme'
 titleSuffix: Azure Machine Learning service
 description: Bu öğreticide, Azure Machine Learning hizmetinde temel tasarım düzenlerini öğrenir ve diabetes veri kümesine dayalı basit bir scikit-öğrenme modeli eğitin.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934228"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516231"
 ---
-# <a name="tutorial-train-your-first-model"></a>Öğretici: İlk modelinizi eğitme
+# <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
 Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. Önceki öğreticide [bir çalışma alanı oluşturdunuz ve bir geliştirme ortamı seçtiniz](tutorial-1st-experiment-sdk-setup.md). Bu öğreticide, Azure Machine Learning hizmetinde temel tasarım düzenlerini öğrenir ve diabetes veri kümesine dayalı basit bir scikit-öğrenme modeli eğitin. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeklenebilmeniz için SDK 'nın pratik bilgisine sahip olursunuz.
 
@@ -112,7 +112,7 @@ Eğitim tamamlandıktan sonra, portalda deneye bir `experiment` bağlantı getir
 experiment
 ```
 
-<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portalına bağlantı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portalına bağlantı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
 

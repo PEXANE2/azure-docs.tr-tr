@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986162"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515806"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB sorgu performansının sorunlarını giderme
 Bu makalede, SQL sorgu sorunlarını Azure Cosmos DB belirleme, tanılama ve sorunlarını giderme konuları ele alınmaktadır. Azure Cosmos DB sorgularda en iyi performansı elde etmek için aşağıdaki sorun giderme adımlarını izleyin. 
@@ -24,11 +24,12 @@ Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosm
 ## <a name="check-consistency-level"></a>Tutarlılık düzeyini denetle
 [Tutarlılık düzeyi](consistency-levels.md) , performansı ve ücretleri etkileyebilir. Tutarlılık düzeyinin verilen senaryoya uygun olduğundan emin olun. Daha fazla ayrıntı için bkz. [tutarlılık düzeyi seçme](consistency-levels-choosing.md).
 
-## <a name="log-sql-query-in-storage-account"></a>Depolama hesabında SQL sorgusunu günlüğe kaydet
-[Tanılama günlükleri aracılığıyla SQL API sorgu günlükleri](logging.md#turn-on-logging-in-the-azure-portal) , gizleme sorgusunun tercih ettiğiniz bir depolama hesabında günlüğe erişmesini sağlar. Bu, tanılama günlüklerine bakabilmeniz ve daha fazla ru kullanarak sorgu bulmanıza ve QueryRuntimeStatistics ile eşleşecek etkinlik kimliğini kullanmanıza olanak tanır. 
+## <a name="log-the-executed-sql-query"></a>Yürütülen SQL sorgusunu günlüğe kaydet 
 
+Yürütülen SQL sorgusunu bir depolama hesabında veya tanılama günlüğü tablosunda günlüğe kaydedebilirsiniz. [Tanılama günlükleri aracılığıyla SQL sorgu günlükleri](logging.md#turn-on-logging-in-the-azure-portal) , karıştırılmış sorguyu seçtiğiniz bir depolama hesabında günlüğe kaydetmenize olanak tanır. Bu, daha yüksek RUs 'yi kullanan günlüklere baklamanızı ve sorgu bulmayı sağlar. Daha sonra, QueryRuntimeStatistics içindeki gerçek sorguyla eşleştirmek için etkinlik kimliğini kullanabilirsiniz. Sorgu güvenlik amacı ve sorgu parametresi adları ve WHERE yan tümcelerinde değerleri gerçek adlardan ve değerlerden farklı olacak şekilde belirlenir. Yürütülen sorguların uzun süreli olarak bekletilmesini sağlamak için depolama hesabını günlüğe kaydetme kullanabilirsiniz.  
 
 ## <a name="log-query-metrics"></a>Günlük sorgusu ölçümleri
+
 Yavaş `QueryMetrics` veya pahalı sorguların sorunlarını gidermek için kullanın. 
 
   * Yanıtta `FeedOptions.PopulateQueryMetrics = true` olacak`QueryMetrics` şekilde ayarlayın.

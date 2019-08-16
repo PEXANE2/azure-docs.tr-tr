@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 535b96a2bb86f1996e6ff0aba19339b55a18ee50
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67147279"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515858"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics aracısını hibrit ortamlardaki Linux bilgisayarlar için yapılandırma
 [Azure Log Analytics](../platform/agent-windows.md), doğrudan veri merkezinizdeki veya diğer bulut ortamlarındaki fiziksel veya sanal Linux bilgisayarlarınızda bulunan verileri ayrıntılı analiz ve bağıntı için tek bir depoda toplayabilir. Bu hızlı başlangıçta birkaç kolay adımda Linux bilgisayarınızı nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir.  Azure Linux VM’leri için [Azure Sanal Makineler hakkında veri toplama](quick-collect-azurevm.md) konusuna bakın.  
@@ -32,11 +32,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
-1. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
+1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics**girin. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
 
     ![Azure portal](media/quick-collect-linux-computer/azure-portal-01.png) 
 
-2. **Oluştur**’a tıklayın, ardından şu öğeler için seçim yapın:
+2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
    * Yeni **Log Analytics çalışma alanı** için *DefaultLAWorkspace* gibi bir ad sağlayın. OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.   
    * Varsayılan seçili abonelik uygun değilse açılan listeden bağlanacak bir **Abonelik** seçin.
@@ -46,7 +46,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
         ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
 
-3. **Log Analytics çalışma alanı** bölmesinde gerekli bilgileri girdikten sonra **Tamam**’a tıklayın.  
+3. **Log Analytics çalışma alanı** bölmesinde gerekli bilgileri sağladıktan sonra **Tamam**' ı seçin.  
 
 Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlemin ilerleme durumunu menüdeki **Bildirimler**’in altından izleyebilirsiniz. 
 
@@ -55,7 +55,7 @@ Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalış
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-1. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
+1. Azure portal sol üst köşede bulunan **tüm hizmetler** ' i seçin. Kaynak listesinde **Log Analytics**girin. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
 2. Log Analytics çalışma alanlarınızın listesinde, daha önceden oluşturduğunuz *DefaultLAWorkspace* çalışma alanını seçin.
 3. **Gelişmiş ayarlar**’ı seçin.
 
@@ -107,23 +107,23 @@ Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim
 Log Analytics uzun süreli analiz ve raporlama için belirttiğiniz Linux Syslog ve performans sayaçlarından olayları toplayarak belirli bir koşul algılandığında işlem yapabilir.  Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
 
 1. **Syslog**’u seçin.  
-2. Bir olay günlüğü eklemek için günlüğün adını yazın. **Syslog** yazıp artı işaretine **+** tıklayın.  
+2. Bir olay günlüğü eklemek için günlüğün adını yazın. **Syslog** girin ve ardından artı işaretini **+** seçin.  
 3. Tabloda, **Bilgiler**, **Bildirim** ve **Hata Ayıklama** önem derecelerinin işaretini kaldırın. 
-4. Yapılandırmayı kaydetmek için sayfanın en üstünde yer alan **Kaydet**’e tıklayın.
+4. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 5. Bir Linux bilgisayarda performans sayaçlarını toplamayı etkinleştirmek için **Linux Performans Verileri**’ni seçin. 
-6. Yeni bir Log Analytics çalışma alanı için Linux Performans sayaçlarını ilk kez yapılandırırken, birkaç ortak sayacı hızlı bir şekilde oluşturma seçenekleri sunulur. Her birinin yanında bir onay kutusu görüntülenir. 
+6. Yeni bir Log Analytics çalışma alanı için Linux Performans sayaçlarını ilk kez yapılandırırken, birkaç ortak sayacı hızlı bir şekilde oluşturma seçenekleri sunulur. Her birinin yanındaki onay kutusuyla listelenir. 
 
     ![Varsayılan Windows performans sayaçları seçildi](media/quick-collect-linux-computer/linux-perfcounters-default.png)
     
-    **Seçili performans sayaçlarını ekle**’ye tıklayın. Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.
+    **Seçili performans sayaçlarını Ekle**' yi seçin. Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.
 
-7. Yapılandırmayı kaydetmek için sayfanın en üstünde yer alan **Kaydet**’e tıklayın.
+7. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
 ## <a name="view-data-collected"></a>Toplanan verileri görüntüleyin
 Veri toplamayı etkinleştirdiyseniz, şimdi hedef bilgisayardan verileri görmek için basit bir günlük araması örneği çalıştıralım.  
 
-1. Azure portalında, Log Analytics’e gidip önceden oluşturduğunuz çalışma alanını seçin.
-2. **Günlük Araması** kutucuğuna tıklayın ve Günlük Araması bölmesinde, sorgu alanında `Perf` yazıp Enter tuşuna basın veya sorgu alanının sağındaki arama düğmesine tıklayın.
+1. Azure portal, Log Analytics ' e gidin ve daha önce oluşturduğunuz çalışma alanını seçin.
+2. **Günlük araması** kutucuğunu seçin ve günlük araması bölmesinde, sorgu alanına girin `Perf` ve ENTER tuşuna basın veya sorgu alanının sağındaki arama düğmesini seçin.
 
     ![Log Analytics günlük araması sorgu örneği](media/quick-collect-linux-computer/log-analytics-portal-queryexample.png)
 
@@ -138,7 +138,7 @@ Aracıyı kaldırmak için Linux bilgisayarında aşağıdaki komutu çalıştı
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-Çalışma alanını silmek için, önceden oluşturduğunuz Log Analytics çalışma alanını seçin ve kaynak sayfasında **Sil**’e tıklayın.
+Çalışma alanını silmek için, daha önce oluşturduğunuz Log Analytics çalışma alanını seçin ve kaynak sayfasında **Sil**' i seçin.
 
 ![Log Analytics kaynağını silme](media/quick-collect-linux-computer/log-analytics-portal-delete-resource.png)
 

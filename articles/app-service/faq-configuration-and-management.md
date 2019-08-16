@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489443"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513797"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -167,7 +167,7 @@ App Service Ortamı kullanıyorsanız [Barbcuda güvenlik duvarını](https://az
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>App Service bir Web uygulamasındaki bağlantı noktaları Nasıl yaparım? engellensin mi?
 
-App Service paylaşılan kiracı ortamında, altyapının doğası nedeniyle belirli bağlantı noktalarını engellemek mümkün değildir. 4016, 4018 ve 4020 TCP bağlantı noktaları, Visual Studio uzaktan hata ayıklama için de açık olabilir.
+App Service paylaşılan kiracı ortamında, altyapının doğası nedeniyle belirli bağlantı noktalarını engellemek mümkün değildir. 4020, 4022 ve 4024 TCP bağlantı noktaları, Visual Studio uzaktan hata ayıklama için de açık olabilir.
 
 App Service Ortamı, gelen ve giden trafik üzerinde tam denetime sahip olursunuz. Belirli bağlantı noktalarını kısıtlamak veya engellemek için ağ güvenlik gruplarını kullanabilirsiniz. App Service Ortamı hakkında daha fazla bilgi için bkz. [App Service ortamı tanıtımı](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
@@ -251,7 +251,7 @@ Zamanlanmış Web Işleri hakkında daha fazla bilgi için bkz. [cron ifadesi ku
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>App Service uygulamam için Nasıl yaparım? sızma testi gerçekleştir mi?
 
-Sızma testi gerçekleştirmek için [bir istek gönderebilirsiniz](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+Sızma testi gerçekleştirmek için [bir istek gönderebilirsiniz](https://portal.msrc.microsoft.com/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Traffic Manager kullanan bir App Service Web uygulaması için özel etki alanı adı Nasıl yaparım? yapılandırmak.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 701e6f0e93fe853a3703f9923af4dffd16090c80
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: HT
+ms.openlocfilehash: 693e58cf578b5b2374a1d8fc63da8bb1a77faf1b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036798"
+ms.locfileid: "69515834"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>Hızlı Başlangıç: MongoDB ve Java SDK için Azure Cosmos DB API 'sini kullanarak bir Web uygulaması oluşturma
 
@@ -114,7 +114,7 @@ Aşağıdaki kod parçacıklarının tamamı, Program.java dosyasından alınmı
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. Hesap sayfasında **Hızlı Başlangıç**'ı ve ardından Java'yı seçip bağlantı dizesini panonuza kopyalayın
+1. Hesaptan **hızlı başlangıç**' yi seçin, **Java**' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
 
 2. `Program.java` dosyasını açın, MongoClientURI oluşturucusunun bağımsız değişkenini bağlantı dizesiyle değiştirin. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
     

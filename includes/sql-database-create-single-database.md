@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
 ms.openlocfilehash: eff121cfaf4473607110de4553a9bb8021990caf
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "68444688"
 ---
 Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını oluşturacaksınız. 
@@ -23,7 +23,7 @@ Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını olu
 Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun. 
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-2. **Veritabanları** ' nı seçin ve SQL veritabanı ' **nı seçerek** **SQL veritabanı oluştur** sayfasını açın.
+2. **Veritabanları** ' nı seçin ve SQL VERITABANı ' nı seçerek **SQL veritabanı oluştur** sayfasını açın.
 
    ![Tek veritabanı oluşturma](../articles/sql-database/media/sql-database-get-started-portal/create-database-1.png)
 

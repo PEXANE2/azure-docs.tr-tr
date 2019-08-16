@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: b9dd89e38f5cab6dceca36201695c068e0521943
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: HT
+ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034857"
+ms.locfileid: "69515852"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -36,7 +36,7 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
 |  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
 |  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1\.   |    Hayır    |
-|  Azure NetApp Files ile VNet 'te kullanılmakta olan en fazla IP sayısı (eşlenen VNET 'Ler dahil)    |    1000   |    Hayır   |
+|  Azure NetApp Files erişebilen VNet 'teki eş zamanlı IP sayısı (eşlenen VNET 'Ler dahil)   |    1000   |    Hayır   |
 |  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
 |  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
 |  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |

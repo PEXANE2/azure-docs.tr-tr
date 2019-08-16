@@ -1,49 +1,46 @@
 ---
-title: SQL Data Warehouse için Visual Studio ve SSDT 'yi yükler | Microsoft Docs
+title: SQL Data Warehouse için Visual Studio 2019 'yi yükler | Microsoft Docs
 description: Azure SQL Data Warehouse için Visual Studio'yu ve SQL Server Veri Araçları'nı (SSDT) Yükleme
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/05/2019
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aa904ac62ce41cc89945ddfdef2e426143e42bb4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 65cbd6679c85e82eaa5fd28bb91d54b443cc891e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479487"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515466"
 ---
-# <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>SQL Data Warehouse için Visual Studio ve SSDT 'yi yükler
-SQL veri ambarı için uygulama geliştirmek üzere Visual Studio 2019 kullanın. Şu anda Visual Studio 2019 SSDT, SQL veri ambarı için desteklenmiyor. 
+# <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL veri ambarı için Visual Studio 2019 ile çalışmaya başlama
+Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapabilmenizi sağlayan tek bir araçtır:
 
-Visual Studio 'Yu SSDT ile kullanmak, SQL veri ambarınızdaki tabloları, görünümleri, saklı yordamları ve birçok daha fazla nesneyi görsel olarak araştırmak için SQL Server Nesne Gezgini kullanmanıza olanak sağlar. Ayrıca sorguları çalıştırmanızı sağlar.
+- SQL veri ambarı için uygulama bağlama, sorgulama ve geliştirme 
+- Tablolar, görünümler, saklı yordamlar ve vb. dahil olmak üzere veri modelinizdeki tüm nesneleri görsel olarak araştırmak için Nesne Gezgini 'nden yararlanın.
+- Nesneleriniz için T-SQL veri tanımlama dili (DDL) betikleri oluşturun
+- SSDT veritabanı projeleriyle durum tabanlı bir yaklaşım kullanarak veri Ambarınızı geliştirme
+- Veritabanı projenizi git gibi kaynak denetim sistemleriyle Azure DevOps depoları ile tümleştirin
+- Azure DevOps [yakında çıkacak] gibi Otomasyon sunucularıyla sürekli tümleştirme ve dağıtım işlem hatları ayarlayın
 
 > [!NOTE]
-> SQL Data Warehouse, henüz Visual Studio Veritabanı Projelerini desteklemiyor. Bu özellikte düzenli güncelleştirmeler almak için lütfen [UserVoice]' ı oylayın.
-> 
-> 
+> Visual Studio SSDT veritabanı projeleri Şu anda önizlemededir. Bu özellikte düzenli güncelleştirmeler almak için lütfen [UserVoice]' ı oylayın.
 
-## <a name="step-1-install-visual-studio"></a>1\. adım: Visual Studio'yu yükleme
-Visual Studio 'Yu indirmek ve yüklemek için bu bağlantıları izleyin. Zaten Visual Studio 2013 veya daha yeni bir sürüm yüklüyse, adım 2 ' ye atlayabilir, SSDT 'yi yükleyebilirsiniz.
+## <a name="install-visual-studio-2019"></a>Visual Studio 2019 'yi yükler
+Visual Studio 'Yu indirmek ve yüklemek için aşağıdaki bağlantıyı kullanın: [Visual Studio 2019 'yi indirin][]' i indirin. Yüklemesi sırasında veri depolama ve işleme iş yükünü seçmeniz gerekir. Visual Studio 2019 ' de birden fazla bağımsız SSDT yüklemesi gerekli değildir.
 
-1. [Visual Studio 'Yu indirin][].
-2. MSDN'de bulunan [Visual Studio’yu Yükleme][Installing Visual Studio] kılavuzunu izleyin ve varsayılan yapılandırmaları seçin.
+## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>SSDT Visual Studio 2019 (Önizleme) ile ilgili sorunları bildirme
 
-## <a name="step-2-install-ssdt"></a>2\. adım: SSDT 'yi yükler
-Visual Studio için SSDT 'yi yüklemek için, önce bu adımları izleyerek Visual Studio içinden bir SSDT güncelleştirmesi olup olmadığını denetleyin.
-
-1. Visual Studio 'da **Araçlar** / **Uzantılar ve güncelleştirmeler** ' e tıklayın... / **Güncelleştirmeleriyle**
-2. **Ürün Güncelleştirmeleri**'ni seçip **Veritabanı araçları için Microsoft SQL Server Güncelleştirmesi** olup olmadığına bakın.
-
-Güncelleştirme bulunmazsa en son sürümün yüklü olması gerekir. SSDT'nin yüklendiğini doğrulamak **Yardım** / **Microsoft Visual Studio Hakkında**'ya tıklayın ve SQL Server Veri Araçları'nın listede olup olmadığına bakın. Yükleme seçeneği Visual Studio 'dan kullanılamazsa, SSDT 'yi el ile indirip yüklemek için [SSDT indirme][SSDT Download] sayfasını ziyaret edebilirsiniz.
+SSDT 'yi SQL veri ambarı ile kullanırken oluşan sorunları bildirmek için şu e-posta dağıtım listesini e-postayla gönderin:<sqldwssdtpreview@service.microsoft.com>
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 SSDT 'nin en son sürümüne sahip olduğunuza göre, SQL veri ambarınıza [bağlanmaya][connect] hazırsınız.
 
 <!--Anchors-->
@@ -54,7 +51,7 @@ SSDT 'nin en son sürümüne sahip olduğunuza göre, SQL veri ambarınıza [ba�
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-[Visual Studio 'Yu indirin]: https://www.visualstudio.com/downloads/
+[Visual Studio 2019 'yi indirin]: https://www.visualstudio.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

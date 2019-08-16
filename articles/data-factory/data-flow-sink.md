@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640289"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515657"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Veri akışı için havuz dönüştürme
 
@@ -79,13 +79,16 @@ Dosya adlandırmayı ayarlama:
 
 Veritabanı ayarlarını seçin:
 
+![SQL havuzu seçeneklerini gösteren ayarlar sekmesi](media/data-flow/alter-row2.png "SQL seçenekleri")
+
 * **Güncelleştirme yöntemi**: Varsayılan değer eklemeleri izin verdir. Kaynağınızdan yeni satırlar eklemeyi durdurmak istiyorsanız **eklemeye Izin ver** ' i temizleyin. Satırları güncelleştirmek, kaldırmak veya silmek için önce bu eylemler için satırları etiketlemek üzere bir alter-Row dönüşümü ekleyin. 
 * **Tablo yeniden oluştur**: Veri akışı tamamlanmadan önce hedef tablonuzu bırakın veya oluşturun.
 * **Truncate table**: Veri akışı tamamlanmadan önce hedef tablonuzdaki tüm satırları kaldırın.
 * **Toplu iş boyutu**: Demetini parçalara yazmalar için bir sayı girin. Büyük veri yükleri için bu seçeneği kullanın. 
 * **Hazırlamayı etkinleştir**: Azure veri ambarı 'nı havuz veri kümeniz olarak yüklediğinizde PolyBase kullanın.
+* **SQL betikleri öncesi ve sonrası**: (Ön işleme) ve sonra (işlem sonrası) veri havuzu veritabanınıza yazıldıktan önce yürütülecek çok satırlı SQL betikleri girin
 
-![SQL havuzu seçeneklerini gösteren ayarlar sekmesi](media/data-flow/alter-row2.png "SQL seçenekleri")
+![SQL işleme betikleri ön ve sonrası](media/data-flow/prepost1.png "SQL işleme betikleri")
 
 > [!NOTE]
 > Veri akışı ' nda, hedef veritabanınızda yeni bir tablo tanımı oluşturmak için Data Factory yönlendirebilirsiniz. Tablo tanımını oluşturmak için, havuz dönüşümünde yeni bir tablo adına sahip bir veri kümesi ayarlayın. SQL veri kümesinde tablo adının altında **Düzenle** ' yi seçin ve yeni bir tablo adı girin. Ardından, havuz dönüşümünde, **şema Drçıkmasına Izin ver**' i açın. **Içeri aktarma şemasını** **none**olarak ayarlayın.

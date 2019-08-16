@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335802"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511007"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -322,9 +322,9 @@ Traffic Manager, uç noktanın DNS adı veya IP adresi ile yanıt verir. IPv6 u�
 
 Genellikle Traffic Manager, trafiği farklı bölgelerde dağıtılan uygulamalara yönlendirmek için kullanılır. Ancak, aynı bölgede bir uygulamanın birden fazla dağıtımı olduğunda da kullanılabilir. Traffic Manager Azure uç noktaları aynı Azure bölgesindeki birden fazla Web uygulaması uç noktasının aynı Traffic Manager profiline eklenmesine izin vermez.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Traffic Manager profillerinin Azure uç noktalarını farklı bir kaynak grubuna taşımak Nasıl yaparım??
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Traffic Manager profillerinin Azure uç noktalarını farklı bir kaynak grubuna veya aboneliğe taşımak Nasıl yaparım? istiyor musunuz?
 
-Bir Traffic Manager profiliyle ilişkili Azure uç noktaları, kaynak kimlikleri kullanılarak izlenir. Uç nokta olarak kullanılan bir Azure kaynağı (örneğin, genel IP, klasik bulut hizmeti, WebApp veya iç içe geçmiş bir şekilde kullanılan başka bir Traffic Manager profili) farklı bir kaynak grubuna taşındığında, kaynak KIMLIĞI değişir. Şu anda bu senaryoda, Traffic Manager profilini önce silerek ve sonra uç noktaları Profile geri ekleyerek güncelleştirmeniz gerekir.
+Bir Traffic Manager profiliyle ilişkili Azure uç noktaları, kaynak kimlikleri kullanılarak izlenir. Uç nokta olarak kullanılan bir Azure kaynağı (örneğin, genel IP, klasik bulut hizmeti, WebApp veya iç içe geçmiş bir şekilde kullanılan başka bir Traffic Manager profili) farklı bir kaynak grubuna veya aboneliğe taşındığında, kaynak KIMLIĞI değişir. Şu anda bu senaryoda, Traffic Manager profilini önce silerek ve sonra uç noktaları Profile geri ekleyerek güncelleştirmeniz gerekir.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Uç nokta izleme Traffic Manager
 

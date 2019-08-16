@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 711552501825e5d34d3547ede8dc998065083c96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2573adcb199ab32467493729842b6c47e3add64b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566742"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515306"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Genel amaçlı hizmet katmanı-Azure SQL veritabanı
 
@@ -48,7 +48,7 @@ Genel Amaçlı hizmet katmanı, genel iş yükleri için tasarlanan Azure SQL ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yönetilen örnekteki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)kaynak özelliklerini (çekirdek sayısı, GÇ, bellek) genel amaçlı/standart katmanı, [Vcore modeli](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) veya [DTU modelinde](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)tek bir veritabanı ya da [Vcore modeli](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) ve [DTU modelinde](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)esnek havuz bulun.
+- [Yönetilen örnekteki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)kaynak özelliklerini (çekirdek sayısı, GÇ, bellek) genel amaçlı/standart katmanı, [Vcore modeli](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) veya [DTU modelinde](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)tek bir veritabanı ya da [Vcore modeli](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) ve [DTU modelinde](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)esnek havuz bulun.
 - [İş açısından kritik](sql-database-service-tier-business-critical.md) ve [hiper ölçek](sql-database-service-tier-hyperscale.md) katmanları hakkında bilgi edinin.
 - [Service Fabric](../service-fabric/service-fabric-overview.md)hakkında bilgi edinin.
 - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla seçenek için bkz. [Iş sürekliliği](sql-database-business-continuity.md).

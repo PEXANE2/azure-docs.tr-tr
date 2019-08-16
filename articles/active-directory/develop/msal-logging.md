@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834986"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512532"
 ---
 # <a name="logging"></a>Günlüğe Kaydetme
 Sorunları tanılamanıza ve ayrıntı sağlamanıza yardımcı olabilecek günlük iletileri oluşturmak için Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamaları. Bir uygulama, birkaç satırlık kodla günlüğe kaydetmeyi yapılandırabilir ve ayrıntı düzeyi üzerinde özel denetime sahip olabilir ve kişisel ve kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Bir MSAL günlüğe kaydetme geri çağırması ayarlamanız ve kullanıcıların kimlik doğrulama sorunlarıyla karşılaştıklarında günlükleri göndermesi için bir yol sağlamanız önerilir.
@@ -40,6 +40,10 @@ MSAL 'nin günlükçüsü, birkaç ayrıntı düzeyinin yakalamaya izin verir:
 Varsayılan olarak, MSAL günlükçüsü, son derece hassas kişisel veya kurumsal verileri yakalamaz. Kitaplığı, bunu yapmayı seçerseniz kişisel ve kurumsal verileri günlüğe kaydetmeyi etkinleştirme seçeneğini sağlar.
 
 ## <a name="logging-in-msalnet"></a>MSAL.NET içinde oturum açma
+
+ > [!NOTE]
+ > MSAL.NET hakkında daha fazla bilgi için [msal.net wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)'yi inceleyin. MSAL.NET günlük ve daha fazlasını örnekler alın. 
+ 
 MSAL 3. x içinde, günlük kaydı `.WithLogging` Oluşturucu değiştiricisini kullanarak uygulama oluşturma sırasında uygulama başına ayarlanır. Bu yöntem isteğe bağlı parametreleri alır:
 
 - *Düzey* , hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Hatalara ayarlandığında yalnızca hatalar alınır

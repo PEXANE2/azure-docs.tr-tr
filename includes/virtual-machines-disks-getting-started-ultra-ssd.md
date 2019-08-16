@@ -5,80 +5,113 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/10/2019
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 742e0028b1f92beb8300cc97f09d8292259fbc0a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712481"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510333"
 ---
-# <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Etkinleştirme ve Azure ultra SSD (Önizleme) dağıtma
+# <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
 
-Azure Iaas sanal makinelerini (VM) için tutarlı düşük gecikme süreli disk depolama (SSD) (Önizleme) teklif yüksek aktarım hızı ve yüksek IOPS Azure ultra katı hal sürücüleri. Bu yeni teklif, var olan diskleri tekliflerimizi aynı kullanılabilirlik düzeylerinde satırı performansının üst sağlar. Ultra yüksek SSD önemli avantajlarından biri, Vm'leri yeniden başlatma gerekmeden iş yüklerinizi birlikte SSD performansını dinamik olarak değiştirmenize olanak yeteneğidir. Ultra yüksek SSD'ler, SAP HANA, en çok katmanı veritabanları ve işlem yoğunluklu iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur.
+Azure Ultra diskler, Azure IaaS sanal makineleri (VM 'Ler) için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikme süreli disk depolama alanı sunar. Bu yeni teklif, var olan diskler tekliflerimiz ile aynı Kullanılabilirlik düzeylerinde satır performansının üst kısmında yer sağlar. Ultra disklerin büyük bir avantajı, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizde dinamik olarak değiştirme yeteneğidir. Ultra diskler SAP HANA, üst katman veritabanları ve işlem açısından ağır iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur.
 
-Şu anda, ultra Ssd'leri olan Önizleme aşamasındadır ve gerekir [kaydetme](https://aka.ms/UltraSSDPreviewSignUp) erişebilmeleri için önizlemede.
+## <a name="check-if-your-subscription-has-access"></a>Aboneliğinizin erişimi olup olmadığını denetleyin
 
-## <a name="determine-your-availability-zone"></a>Kullanılabilirlik alanı belirleme
+Zaten Ultra disklere kaydolduysanız ve aboneliğinizin Ultra diskler için etkin olup olmadığını denetlemek istiyorsanız aşağıdaki komutlardan birini kullanın: 
 
-Onaylandıktan sonra ultra SSD kullanmak için içinde bulunduğunuz hangi kullanılabilirlik alanı'nı belirlemeniz gerekir. Hangi Doğu ultra diskinize dağıtmak için ABD 2 bölgesinde belirlemek için aşağıdaki komutlardan birini çalıştırın:
+CLI`az feature show --namespace Microsoft.Compute --name UltraSSD`
 
-PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
+PowerShell: `Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName UltraSSD`
 
-CLI: `az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].locationInfo"`
+Aboneliğiniz etkinleştirilmişse, çıktılarınız şuna benzer şekilde görünmelidir:
 
-Yanıt X olduğu bölge Doğu ABD 2 bölgesinde kullanmak için aşağıdaki formu, benzer olacaktır. X 1, 2 veya 3 olabilir.
-
-Koruma **bölgeleri** değeri, kullanılabilirlik alanı temsil ettiği ve Ultra yüksek bir SSD dağıtmak için gerekir.
-
-|ResourceType  |Ad  |Location  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
-|---------|---------|---------|---------|---------|---------|---------|
-|Diskler     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
-
-> [!NOTE]
-> Komutundan yanıt yoktu sonra hala geçerli özelliğine kaydınızı Beklemede veya henüz onaylanmadı.
-
-Dağıtmak için hangi bölgeyi artık bildiğinize göre bu makalede, ilk Vm'lerinizi ultra SSD ile dağıtılan almak için dağıtım adımları izleyin.
-
-## <a name="deploy-an-ultra-ssd-using-azure-resource-manager"></a>Azure Resource Manager kullanarak bir ultra SSD dağıtma
-
-İlk olarak dağıtmak için VM boyutunu belirler. Bu önizleme kapsamında, yalnızca DsV3 ve EsV3 VM aileleri desteklenir. Bu ikinci tablo başvurmak [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) bu VM boyutları hakkında ek ayrıntılar için.
-
-Birden çok ultra SSD'ler ile bir VM oluşturmak istiyorsanız, örneğe bakın [birden çok ultra SSD ile VM oluşturma](https://aka.ms/UltraSSDTemplate).
-
-Kendi şablonunuzu kullanmak istiyorsanız, emin **apiVersion** için `Microsoft.Compute/virtualMachines` ve `Microsoft.Compute/Disks` olarak ayarlandığından `2018-06-01` (veya üzeri).
-
-Disk sku kümesine **UltraSSD_LRS**, disk kapasitesi, IOPS, kullanılabilirlik alanı ve aktarım hızı Ultra yüksek bir disk oluşturmak için MB/sn olarak ayarlayın.
-
-VM oluşturulduktan sonra bölüm ve veri diskleri Biçimlendir ve bunları iş yükleriniz için yapılandırabilirsiniz.
-
-## <a name="deploy-an-ultra-ssd-using-cli"></a>CLI kullanarak bir ultra SSD dağıtma
-
-İlk olarak dağıtmak için VM boyutunu belirler. Bu önizleme kapsamında, yalnızca DsV3 ve EsV3 VM aileleri desteklenir. Bu ikinci tablo başvurmak [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) bu VM boyutları hakkında ek ayrıntılar için.
-
-Ultra yüksek SSD'ler için Ultra yüksek SSD kullanma yeteneği olan bir VM oluşturmanız gerekir.
-
-Değiştirin veya ayarla **$vmname**, **$rgname**, **$diskname**, **$location**, **$password**, **$user** değişkenlerini kendi değerlerinizle. Ayarlama **$zone** adresinden aldığınız, kullanılabilirlik alanı değerine [bu makalenin Başlat](#determine-your-availability-zone). Ardından ultra etkin sanal makine oluşturmak için aşağıdaki CLI komutunu çalıştırın:
-
-```azurecli-interactive
-az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
+```bash
+{
+  "id": "/subscriptions/<yoursubID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/UltraSSD",
+  "name": "Microsoft.Compute/UltraSSD",
+  "properties": {
+    "state": "Registered"
+  },
+  "type": "Microsoft.Features/providers/features"
+}
 ```
 
-### <a name="create-an-ultra-ssd-using-cli"></a>CLI kullanarak bir ultra SSD oluşturma
+## <a name="determine-your-availability-zone"></a>Kullanılabilirlik bölgenizi belirleme
 
-Ultra yüksek SSD kullanma yeteneği olan bir VM'ye sahip olduğunuza göre oluşturabilir ve bir ultra SSD ekleyebilir.
+Onaylandığında, Ultra diskler kullanabilmeniz için hangi kullanılabilirlik bölgesini kullanacağınızı belirlemeniz gerekir. Ultra diskinizin hangi bölgeden dağıtılacağını öğrenmek için aşağıdaki komutlardan birini çalıştırın, önce **bölge**, **VMSize**ve **abonelik** değerlerini değiştirdiğinizden emin olun:
+
+CLI
+
+```bash
+$subscription = "<yourSubID>"
+$region = "<yourLocation>, example value is southeastasia"
+$vmSize = "<yourVMSize>, example value is Standard_E64s_v3"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
+```
+
+PowerShell:
+
+```powershell
+$region = "southeastasia"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
+```
+
+Yanıt aşağıdaki biçimde olacaktır; burada X, seçtiğiniz bölgede dağıtım için kullanılacak bölgedir. X 1, 2 veya 3 olabilir. Şu anda yalnızca üç bölge Ultra diskleri destekler, bunlar şunlardır: Doğu ABD 2, Güneydoğu Asya ve Kuzey Avrupa.
+
+Bölge değerini koru, kullanılabilirlik **bölgenizi** temsil eder ve bir ultra disk dağıtmak için bu alana ihtiyacınız olur.
+
+|KaynakTürü  |Name  |Location  |Bölgeler  |Kısıtlama  |Özellik  |Value  |
+|---------|---------|---------|---------|---------|---------|---------|
+|diskler     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+
+> [!NOTE]
+> Komuttan yanıt yoksa, özelliğe kaydınız hala bekliyor veya CLı ya da PowerShell 'in eski bir sürümünü kullanıyorsunuz.
+
+Hangi bölgeyi dağıtacağınızı bildiğinize göre, bu makaledeki dağıtım adımlarını izleyerek bir ultra disk eklenmiş bir VM dağıtın veya var olan bir VM 'ye bir ultra disk takın.
+
+## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Azure Resource Manager kullanarak bir ultra disk dağıtma
+
+İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi [](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) için bu blogdaki ikinci tabloya bakın.
+
+Birden çok Ultra disk içeren bir VM oluşturmak isterseniz, örneğe [birden çok Ultra disk içeren BIR VM oluşturma](https://aka.ms/UltraSSDTemplate)konusuna bakın.
+
+Kendi şablonunuzu kullanmayı düşünüyorsanız, ve `Microsoft.Compute/Disks` için `Microsoft.Compute/virtualMachines` **apiversion** ' ın (veya üzeri) olarak `2018-06-01` ayarlandığından emin olun.
+
+Disk SKU 'sunu **UltraSSD_LRS**olarak ayarlayın, ardından bir ultra disk oluşturmak için disk KAPASITESINI, IOPS 'yi, kullanılabilirlik alanını ve aktarım hızını MB olarak ayarlayın.
+
+VM sağlandıktan sonra veri disklerini bölümleyebilir ve biçimlendirebilir ve iş yükleriniz için yapılandırabilirsiniz.
+
+## <a name="deploy-an-ultra-disk-using-cli"></a>CLı kullanarak bir ultra disk dağıtma
+
+İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi [](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) için bu blogdaki ikinci tabloya bakın.
+
+Bir ultra disk eklemek için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir.
+
+**$VMName**, **$RgName**, **$diskname**, **$Location**, **$Password**, **$User** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-your-availability-zone)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki CLı komutunu çalıştırın:
 
 ```azurecli-interactive
-location="eastus2"
-subscription="xxx"
-rgname="ultraRG"
-diskname="ssd1"
-vmname="ultravm1"
-zone=123
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
+```
 
-#create an Ultra SSD disk
+### <a name="create-an-ultra-disk-using-cli"></a>CLı kullanarak bir ultra disk oluşturma
+
+Artık Ultra diskler iliştirebilen bir VM 'ye sahip olduğunuza göre, buna bir ultra disk oluşturup ekleyebilirsiniz.
+
+```azurecli-interactive
+$location="eastus2"
+$subscription="xxx"
+$rgname="ultraRG"
+$diskname="ssd1"
+$vmname="ultravm1"
+$zone=123
+
+#create an ultra disk
 az disk create `
 --subscription $subscription `
 -n $diskname `
@@ -91,9 +124,22 @@ az disk create `
 --disk-mbps-read-write 50
 ```
 
-### <a name="adjust-the-performance-of-an-ultra-ssd-using-cli"></a>CLI kullanarak bir ultra SSD performansını ayarlama
+## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>CLı kullanarak bir VM 'ye Ultra disk iliştirme
 
-Ultra yüksek SSD performanslarını ayarlamanıza olanak sağlayan benzersiz bir özelliği sunar, aşağıdaki komutu bu özelliğin nasıl kullanılacağı gösterilmektedir:
+Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölge/kullanılabilirlik bölgesi varsa, yeni bir VM oluşturmak zorunda kalmadan Ultra disklerin kullanımını sağlayabilirsiniz.
+
+```bash
+$rgName = "<yourResourceGroupName>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$subscriptionId = "<yourSubscriptionID>"
+
+az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
+```
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-cli"></a>CLı kullanarak bir ultra diskin performansını ayarlama
+
+Ultra diskler, performansını ayarlamanıza olanak tanıyan benzersiz bir özellik sunar ve aşağıdaki komutta bu özelliğin nasıl kullanılacağı gösterilmektedir:
 
 ```azurecli-interactive
 az disk update `
@@ -104,11 +150,11 @@ az disk update `
 --set diskMbpsReadWrite=800
 ```
 
-## <a name="deploy-an-ultra-ssd-using-powershell"></a>PowerShell kullanarak bir ultra SSD dağıtma
+## <a name="deploy-an-ultra-disk-using-powershell"></a>PowerShell kullanarak bir ultra disk dağıtma
 
-İlk olarak dağıtmak için VM boyutunu belirler. Bu önizleme kapsamında, yalnızca DsV3 ve EsV3 VM aileleri desteklenir. Bu ikinci tablo başvurmak [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) bu VM boyutları hakkında ek ayrıntılar için.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi [](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) için bu blogdaki ikinci tabloya bakın.
 
-Ultra yüksek SSD'ler için Ultra yüksek SSD kullanma yeteneği olan bir VM oluşturmanız gerekir. Değiştirin veya ayarla **$resourcegroup** ve **$vmName** değişkenlerini kendi değerlerinizle. Ayarlama **$zone** adresinden aldığınız, kullanılabilirlik alanı değerine [bu makalenin Başlat](#determine-your-availability-zone). Ardından aşağıdakini çalıştırın [New-AzVm](/powershell/module/az.compute/new-azvm) komutu bir ultra oluşturmak için VM etkin:
+Ultra diskler kullanmak için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir. **$Resourcegroup** ve **$vmName** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-your-availability-zone)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki [New-AzVm](/powershell/module/az.compute/new-azvm) komutunu çalıştırın:
 
 ```powershell
 New-AzVm `
@@ -121,9 +167,9 @@ New-AzVm `
     -zone $zone
 ```
 
-### <a name="create-an-ultra-ssd-using-powershell"></a>PowerShell kullanarak bir ultra SSD oluşturma
+### <a name="create-an-ultra-disk-using-powershell"></a>PowerShell kullanarak bir ultra disk oluşturma
 
-Ultra yüksek SSD kullanma yeteneği olan bir VM'ye sahip olduğunuza göre oluşturabilir ve bir ultra SSD ekler:
+Artık Ultra diskler kullanabilen bir VM 'ye sahip olduğunuza göre, buna bir ultra disk oluşturup ekleyebilirsiniz:
 
 ```powershell
 $diskconfig = New-AzDiskConfig `
@@ -141,9 +187,27 @@ New-AzDisk `
 -Disk $diskconfig;
 ```
 
-### <a name="adjust-the-performance-of-an-ultra-ssd-using-powershell"></a>PowerShell kullanarak bir ultra SSD performansını ayarlama
+## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>PowerShell kullanarak bir VM 'ye Ultra disk iliştirme
 
-Ultra yüksek SSD performanslarını ayarlamanıza olanak sağlayan benzersiz bir özellik varsa, aşağıdaki komutu diskini ayırmak zorunda kalmadan performans ayarlayan bir örnektir:
+Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölge/kullanılabilirlik bölgesi varsa, yeni bir VM oluşturmak zorunda kalmadan Ultra disklerin kullanımını sağlayabilirsiniz.
+
+```powershell
+# add disk to VM
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Login-AzureRMAccount -SubscriptionId $subscription
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-powershell"></a>PowerShell kullanarak bir ultra diskin performansını ayarlama
+
+Ultra disklerin, performansını ayarlamanıza olanak tanıyan benzersiz bir özelliği vardır ve aşağıdaki komut, diski ayırmak zorunda kalmadan performansı ayarlayan bir örnektir:
 
 ```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
@@ -152,4 +216,4 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni disk türünü deneyin istiyorsanız [bu anketi Önizleme için erişim isteği](https://aka.ms/UltraSSDPreviewSignUp).
+[Bu anketle](https://aka.ms/UltraDiskSignup)yeni disk türü isteği erişimini denemek istiyorsanız.

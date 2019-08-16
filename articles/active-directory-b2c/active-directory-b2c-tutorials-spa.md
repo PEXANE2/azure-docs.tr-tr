@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6884cb7b10da3996977f2aea7693625bc45c3139
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 8683169e0f8464cdcf52600968f67f3622e61445
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369565"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509577"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
@@ -49,8 +49,8 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 Önkoşulların bir parçası olarak tamamladığınız ikinci öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Öğreticideki örnekle iletişimi etkinleştirmek için, Azure AD B2C içinde uygulamaya bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. Üst menüdeki **Dizin ve abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Yanıt URL 'si**altında, `http://localhost:6420`ekleyin.
 1. **Kaydet**’i seçin.
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 Örneği edindiğinizden, kodu Azure AD B2C kiracı adınızla ve önceki bir adımda kaydettiğiniz uygulama KIMLIĞIYLE güncelleştirin.
 
 1. `index.html` Dosyayı örnek dizinin kökünde açın.
-1. Tanımda, ClientID değerini önceki bir adımda kaydettiğiniz uygulama kimliğiyle değiştirin.  `msalConfig` Sonra, Azure AD B2C kiracı adınızla **yetkili** URI değerini güncelleştirin. Ayrıca, ön koşullardan birinde oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı ile URI 'yi güncelleştirin (örneğin, *B2C_1_signupsignin1*).
+1. Tanımda, ClientID değerini önceki bir adımda kaydettiğiniz uygulama kimliğiyle değiştirin. `msalConfig` Sonra, Azure AD B2C kiracı adınızla **yetkili** URI değerini güncelleştirin. Ayrıca, ön koşullardan birinde oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı ile URI 'yi güncelleştirin (örneğin, *B2C_1_signupsignin1*).
 
     ```javascript
     var msalConfig = {
@@ -109,23 +109,23 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     Listening on port 6420...
     ```
 
-1. Uygulamayı görüntülemek `http://localhost:6420` için tarayıcınızda sayfasına gidin.
+1. `http://localhost:6420` Uygulamayı görüntülemek için tarayıcınızda sayfasına gidin.
 
 Örnek kaydolma, oturum açma, profil düzenlemesi ve parola sıfırlamayı destekler. Bu öğretici, bir kullanıcının e-posta adresi kullanarak nasıl kaydolduğunda vurgular.
 
 ### <a name="sign-up-using-an-email-address"></a>E-posta adresi kullanarak kaydolma
 
-1. Daha önceki bir adımda belirttiğiniz *B2C_1_signupsignin1* Kullanıcı akışını başlatmak Için **oturum aç** ' a tıklayın.
-1. Azure AD B2C, kayıt bağlantısı içeren bir oturum açma sayfası sunar. Henüz bir hesabınız olmadığından **Şimdi kaydolun** bağlantısına tıklayın.
+1. Daha önceki bir adımda belirttiğiniz *B2C_1_signupsignin1* Kullanıcı akışını başlatmak Için **oturum aç** ' ı seçin.
+1. Azure AD B2C, kayıt bağlantısı içeren bir oturum açma sayfası sunar. Henüz bir hesabınız olmadığından **Şimdi kaydolun** bağlantısını seçin.
 1. Kaydolma iş akışında, kullanıcı kimliğini bir e-posta adresi kullanarak toplamak ve doğrulamak için bir sayfa sunar. Kaydolma iş akışı, kullanıcının parolasını ve Kullanıcı akışında tanımlanan istenen öznitelikleri de toplar.
 
     Geçerli bir e-posta adresi kullanın ve doğrulama kodunu kullanarak doğrulamayı gerçekleştirin. Parola ayarlayın. İstenen öznitelikler için değerleri girin.
 
     ![Oturum açma/kaydolma Kullanıcı akışından sunulan kaydolma sayfası](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
-1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur**’a tıklayın.
+1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur** ' u seçin.
 
-**Oluştur**' a tıkladığınızda, kaydolma sayfası kapanır ve oturum açma sayfası yeniden görüntülenir.
+**Oluştur**' u seçtiğinizde, kaydolma sayfası kapanır ve oturum açma sayfası yeniden görüntülenir.
 
 Artık uygulamada oturum açmak için e-posta adresinizi ve parolanızı kullanabilirsiniz.
 

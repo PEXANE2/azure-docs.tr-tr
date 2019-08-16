@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d49ef19d763ea3ae643a9c7bbbbb620ae414c664
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7be9a208f82dd9a487c1794a7996f9bb11bb09d8
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816821"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515443"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğinin denetim eşlemesi
 
@@ -118,13 +118,13 @@ Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmaların�
 - \[Önizleme\]: Depolama hesapları için eksik blob şifrelemesini denetle
 - \[Önizleme\]: Windows VM 'yi denetlemek için VM Uzantısı 'nı dağıtma, ters çevrilebilir şifreleme kullanarak parolaları depolamamalıdır
 - \[Önizleme\]: Windows VM 'yi denetleme, parolaları ters çevrilebilir şifreleme kullanarak depolamamalıdır
-- \[Önizleme\]: Azure Güvenlik Merkezi 'nde şifrelenmemiş SQL veritabanını izleme
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde şifrelenmemiş VM disklerini izleme
 - Otomasyon hesabı değişkenlerinin şifrelemesinin etkinleştirilmesini denetleyin
 - Redis Cache önbelleğinizde yalnızca güvenli bağlantıların etkinleştirilmesini denetleyin
 - Depolama hesaplarına güvenli aktarımı denetleyin
 - Service Fabric'te ClusterProtectionLevel özelliğinin EncryptAndSign olarak ayarlanmasını denetleyin
 - Saydam veri şifreleme durumunu denetle
+- SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
 
 ## <a name="a1241-event-logging"></a>A. 12.4.1 olay günlüğü
 
@@ -135,9 +135,9 @@ Tanılama günlükleri, Azure kaynakları içinde gerçekleştirilen işlemlere 
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Dependency Agent dağıtımı listelenmemiş
 - \[Önizleme\]: Denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: Azure Güvenlik Merkezi 'nde denetlenen SQL veritabanını izleme
 - Tanılama ayarını denetle
 - SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3 Yöneticisi ve işleç günlükleri
 
@@ -147,9 +147,9 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen yedi Azure ilke 
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Dependency Agent dağıtımı listelenmemiş
 - \[Önizleme\]: Denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: Azure Güvenlik Merkezi 'nde denetlenen SQL veritabanını izleme
 - Tanılama ayarını denetle
 - SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 
 ## <a name="a1244-clock-synchronization"></a>A. 12.4.4 saat eşitleme
 
@@ -159,9 +159,9 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen yedi Azure ilke 
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Dependency Agent dağıtımı listelenmemiş
 - \[Önizleme\]: Denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
-- \[Önizleme\]: Azure Güvenlik Merkezi 'nde denetlenen SQL veritabanını izleme
 - Tanılama ayarını denetle
 - SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 işletimsel sistemlere yazılım yüklemesi
 

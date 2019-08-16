@@ -3,7 +3,7 @@ title: Kuyruk depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) il
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra bir WebJob projesinde Azure kuyruk depolamayı kullanmaya başlama.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248968"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510796"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure kuyruk depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile çalışmaya başlama
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 **Dizenin**yanı sıra, parametresi bir bayt dizisi, **cloudqueuemessage** nesnesi veya tanımladığınız bir poco olabilir.
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(düz eskı CLR nesnesi](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) sıra iletileri
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(düz eskı CLR nesnesi](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) sıra iletileri
 Aşağıdaki örnekte, kuyruk iletisi **Blobname** özelliği Içeren bir **BlobInformation** nesnesi için JSON içeriyor. SDK, nesneyi otomatik olarak seri hale getirir.
 
 ```csharp
@@ -88,7 +88,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>QueueTrigger özniteliği ile birlikte çalışarak türler
 Aşağıdaki türlerle **Queuetrigger** kullanabilirsiniz:
 
-* **dize**
+* **string**
 * JSON olarak seri hale getirilmiş bir POCO türü
 * **Byte []**
 * **CloudQueueMessage**
@@ -159,7 +159,7 @@ public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
         queueTrigger=Hello world!
 
 ## <a name="graceful-shutdown"></a>Düzgün kapanma
-Sürekli bir WebJob 'ta çalışan bir işlev, **WebJob parametresini kabul** edebilir. Bu, Işletim sisteminin Web işi sonlandırıldıktan sonra işleve bildirmesini sağlar. Bu bildirimi, işlevin verileri tutarsız bir durumda bırakmak için beklenmedik bir şekilde sonlandığından emin olmak için kullanabilirsiniz.
+Sürekli bir WebJob 'ta çalışan bir işlev, WebJob parametresini kabul edebilir. Bu, Işletim sisteminin Web işi sonlandırıldıktan sonra işleve bildirmesini sağlar. Bu bildirimi, işlevin verileri tutarsız bir durumda bırakmak için beklenmedik bir şekilde sonlandığından emin olmak için kullanabilirsiniz.
 
 Aşağıdaki örnek, bir işlevde yaklaşan WebJob sonlandırmasının nasıl kontrol alınacağını gösterir.
 
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(düz eskı CLR nesnesi](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) sıra iletileri
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(düz eskı CLR nesnesi](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) sıra iletileri
 Bir dize yerine POCO içeren bir kuyruk iletisi oluşturmak için, POCO türünü **Queue** özniteliği oluşturucusuna bir output parametresi olarak geçirin.
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(düz eskı CLR nesnesi](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) sıra iletileri
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(düz eskı CLR nesnesi](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) sıra iletileri
 Kuyruk iletisinde JSON olarak depolanan bir POCO için, **Queue** özniteliğinin **blobpath** parametresindeki nesnenin özelliklerini adlandırmak için yer tutucuları kullanabilirsiniz. Sıra meta veri özellik adlarını yer tutucular olarak da kullanabilirsiniz. Bkz. [kuyruk veya kuyruk iletisi meta verilerini alma](#get-queue-or-queue-message-metadata).
 
 Aşağıdaki örnek, bir blobu farklı bir uzantıya sahip yeni bir bloba kopyalar. Kuyruk iletisi **Blobname** ve **BlobNameWithoutExtension** özelliklerini içeren bir **BlobInformation** nesnesidir. Özellik adları, **BLOB** öznitelikleri için blob yolunda yer tutucu olarak kullanılır.

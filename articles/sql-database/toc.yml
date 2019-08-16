@@ -107,6 +107,8 @@
       items:
         - name: DMS kullanarak çevrimiçi geçiş
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: Yük devretme grubuna ekleme
+          href: sql-database-managed-instance-failover-group-tutorial.md
         - name: İşlem çoğaltmasını yapılandırma
           href: replication-with-sql-database-managed-instance.md
     - name: SQL Veritabanı’nda güvenlik

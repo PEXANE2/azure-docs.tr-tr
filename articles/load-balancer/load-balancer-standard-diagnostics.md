@@ -1,7 +1,7 @@
 ---
-title: Azure Standart Load Balancer tanılama
+title: Ölçümler, uyarılar ve kaynak sistem durumu ile Azure Standart Load Balancer tanılaması
 titlesuffix: Azure Load Balancer
-description: Azure Standart Load Balancer için tanılama için kullanılabilir ölçümleri ve sistem durumu bilgilerini kullanın.
+description: Azure Standart Load Balancer tanımak için kullanılabilir ölçümleri, uyarıları ve kaynak durumu bilgilerini kullanın.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274476"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516262"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Standart Load Balancer için ölçümler ve sistem durumu tanılaması
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak sistem durumu ile tanılamayı Standart Load Balancer
 
-Azure Standart Load Balancer, Azure Standart Load Balancer kullanıma sunar ve kaynaklarınızın aşağıdaki tanılama özelliklerini sağlar:
-* **Çok boyutlu ölçümler**: Hem genel hem de iç yük dengeleyici yapılandırması için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) aracılığıyla yeni çok boyutlu tanılama özellikleri sağlar. Yük dengeleyici kaynaklarınızı izleyebilir, yönetebilir ve sorun giderebilirsiniz.
+Azure Standart Load Balancer aşağıdaki tanılama yeteneklerini kullanıma sunar:
 
-* **Kaynak durumu**: Azure portal ve Kaynak Durumu sayfasındaki Load Balancer sayfası (Izleyici altında), Standart Load Balancer genel yük dengeleyici yapılandırması için Kaynak Durumu bölümünü kullanıma sunar.
+* **Çok boyutlu ölçümler ve uyarılar**: Standart yük dengeleyici yapılandırmalarına yönelik [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) aracılığıyla yeni çok boyutlu tanılama özellikleri sağlar. Standart yük dengeleyici kaynaklarınızı izleyebilir, yönetebilir ve sorun giderebilirsiniz.
+
+* **Kaynak durumu**: Azure portal ve Kaynak Durumu sayfasındaki Load Balancer sayfası (Izleyici altında) Standart Load Balancer için Kaynak Durumu bölümünü kullanıma sunar. 
 
 Bu makalede, bu yetenekler için hızlı bir tura yer verilmiştir ve bunları Standart Load Balancer için kullanmanın yolları sunulmaktadır.
 
@@ -172,9 +173,6 @@ Grafik, müşterilerin, diğer sorunların oluşup oluşmadığını tahmin etme
 
 Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu**altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir.
 
->[!NOTE]
->Load Balancer için kaynak sistem durumu şu anda yalnızca Standart Load Balancer ortak yapılandırması için kullanılabilir. İç yük dengeleyici kaynakları veya Load Balancer kaynaklarının temel SKU 'Ları kaynak durumunu açığa çıkarır.
-
 Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
 1. **Hizmet durumunu** **İzle** > ' yi seçin.
 
@@ -184,7 +182,7 @@ Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
 
 2. **Kaynak durumu**' yi seçin ve ardından **abonelik kimliği** ve **kaynak türü = Load Balancer** ' nın seçildiğinden emin olun.
 
-   ![Kaynak sistem durumu](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   ![Kaynak durumu](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
    *Rakam Sistem durumu görünümü için kaynak seçin*
 
@@ -196,15 +194,11 @@ Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
  
 Çeşitli kaynak sistem durumu durumları ve bunların açıklamaları aşağıdaki tabloda listelenmiştir: 
 
-| Kaynak sistem durumu | Açıklama |
+| Kaynak durumu | Açıklama |
 | --- | --- |
-| Kullanılabilir | Ortak standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
-| Kullanılamaz | Ortak standart yük dengeleyici kaynağınız sağlıklı değil. **Azure izleyici** > **ölçümleri**' ni seçerek sistem durumunu tanılayın.<br>(*Kullanılamayan* durum, kaynağın ortak standart yük dengeleyicinizle bağlantılı olmadığı anlamına da gelebilir.) |
-| Bilinmiyor | Ortak standart yük dengeleyici kaynağınız için kaynak sistem durumu henüz güncelleştirilmemiş.<br>(*Bilinmeyen* durum, kaynağın ortak standart yük dengeleyicinizle bağlantılı olmadığı anlamına da gelebilir.)  |
-
-## <a name="limitations"></a>Sınırlamalar 
-
-- Veri yolu kullanılabilirliği (VIP kullanılabilirliği), iç Load Balancer ön uçları için kullanılamaz.
+| Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
+| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. **Azure izleyici** > **ölçümleri**' ni seçerek sistem durumunu tanılayın.<br>(*Kullanılamayan* durum, kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına da gelebilir.) |
+| Bilinmiyor | Standart yük dengeleyici kaynağınız için kaynak sistem durumu henüz güncelleştirilmemiş.<br>(*Bilinmeyen* durum da kaynağın standart yük dengeleyicinizle bağlantılı olmadığı anlamına gelebilir.)  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -212,5 +206,3 @@ Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
 - [Yük dengeleyici giden bağlantınız](https://aka.ms/lboutbound)hakkında daha fazla bilgi edinin.
 - [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)hakkında bilgi edinin.
 - [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/) ve [ölçümleri REST API aracılığıyla alma](/rest/api/monitor/metrics/list)hakkında bilgi edinin.
-
-

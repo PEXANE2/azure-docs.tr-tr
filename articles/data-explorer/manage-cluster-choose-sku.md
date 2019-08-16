@@ -7,85 +7,87 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383825"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515734"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümeniz için doğru VM SKU 'sunu seçin 
 
-Azure Veri Gezgini, yeni bir küme oluştururken veya değişen bir iş yükü için kümeyi iyileştirerek seçebileceğiniz birden çok VM SKU 'su vardır. VM 'Ler, her iş yükü için en iyi maliyete izin vermek üzere dikkatle seçildi. 
+Yeni bir küme oluşturduğunuzda veya değişen bir iş yükü için bir kümeyi iyileştirirken Azure Veri Gezgini, aralarından seçim yapmak için birden çok sanal makine (VM) SKU 'su sunar. VM 'Ler size herhangi bir iş yükü için en uygun maliyeti sunacak şekilde dikkatlice seçildi. 
 
-Veri yönetimi kümesinin boyutu ve VM SKU 'SU Azure Veri Gezgini hizmeti tarafından tam olarak yönetilir. Altyapının VM boyutu ve Alım iş yükü gibi faktörlerle belirlenir. 
+Veri yönetimi kümesinin boyutu ve VM SKU 'SU Azure Veri Gezgini hizmeti tarafından tam olarak yönetilir. Bu, altyapının VM boyutu ve Alım iş yükü gibi etkenlere göre belirlenir. 
 
-Altyapı kümesine yönelik VM SKU 'SU, [küme ölçeğini ölçeklendirerek](manage-cluster-vertical-scaling.md)dilediğiniz zaman değiştirilebilir. Bu nedenle, ilk senaryoya uyan minimum SKU boyutuyla başlamak en iyisidir. Küme, yeni VM SKU 'SU ile yeniden oluşturulduğu sırada kümenin ölçeğini 30 dakikaya varan bir süre içinde azaltmaya dikkat edin.
+[Küme ölçeğini](manage-cluster-vertical-scaling.md)değiştirerek motor KÜMESI IÇIN VM SKU 'sunu dilediğiniz zaman değiştirebilirsiniz. İlk senaryoya uyan en küçük SKU boyutuyla başlamak en iyisidir. Küme, yeni VM SKU 'SU ile yeniden oluşturulduğu sırada kümenin ölçeğini 30 dakikaya varan bir süre içinde azaltmaya dikkat edin.
 
 > [!TIP]
-> İşlem [RI (ayrılmış örnekler)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) Azure Veri Gezgini kümesi için geçerlidir.  
+> İşlem için [ayrılmış örnekler (RI)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) Azure Veri Gezgini kümesi için geçerlidir.  
 
-Bu makalede farklı VM SKU 'SU seçenekleri açıklanmakta ve en iyi seçim yapmanıza yardımcı olabilecek teknik ayrıntılar sağlanmaktadır.
+Bu makalede çeşitli VM SKU seçenekleri açıklanmakta ve en iyi seçim yapmanıza yardımcı olabilecek teknik ayrıntılar sağlanmaktadır.
 
-## <a name="select-the-cluster-type"></a>Küme türünü seçin
+## <a name="select-a-cluster-type"></a>Küme türünü seçin
 
 Azure Veri Gezgini iki tür küme sunar:
 
 * **Üretim**: Üretim kümeleri, motor ve veri yönetimi kümeleri için iki düğüm içerir ve Azure Veri Gezgini [SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)altında işletilebilir.
 
-* **Geliştirme/test (SLA yok)** : Geliştirme ve test kümelerinde, altyapı kümesi için tek bir D11_v2 düğümü ve veri yönetimi kümesi için tek bir D1 düğümü vardır. Düşük örnek sayısı ve altyapının işaretleme ücreti olmadığından, bu küme türü en düşük maliyetli bir yapılandırmadır. Artıklık içermediğinden bu küme yapılandırması için SLA yok.
+* **Geliştirme/test (SLA yok)** : Geliştirme ve test kümelerinde, altyapı kümesi için tek bir D11 v2 düğümü ve veri yönetimi kümesi için tek bir D1 düğümü vardır. Bu küme türü, düşük örnek sayısı ve motor işaretleme ücreti olmadığından en düşük maliyetli bir yapılandırmadır. Artıklık olmadığından, bu küme yapılandırması için SLA yoktur.
 
 ## <a name="sku-types"></a>SKU türleri
 
-Azure Veri Gezgini kümesi oluştururken, planlı iş yükü için *en iyi* VM SKU 'sunu seçin. Azure Veri Gezgini 'in arasından seçim yapabileceğiniz iki SKU ailesi vardır:
+Bir Azure Veri Gezgini kümesi oluşturduğunuzda, planlı iş yükü için *en iyi* VM SKU 'sunu seçin. Aşağıdaki iki Azure Veri Gezgini SKU aileleri arasından seçim yapabilirsiniz:
 
-* **D_V2**: D SKU, işlem için iyileştirilmiş ve iki şekilde sağlanır.
+* **D v2**: D SKU, işlem için iyileştirilmiştir ve iki şekilde sunulur:
     * VM 'nin kendisi
     * Premium Depolama diskleriyle paketlenmiş VM
 
-* **LS**: L SKU, depolama için iyileştirildi. Benzer fiyatlandırıld SKU 'sundan daha büyük bir SSD boyutuna  sahiptir.
+* **LS**: L SKU, depolama için iyileştirilmiştir. Benzer şekilde ücretlendirilen D SKU 'sundan daha büyük bir SSD boyutu vardır.
 
-Aşağıdaki tabloda, kullanılabilir SKU türleri arasındaki temel farklılıklar verilmiştir:
+Kullanılabilir SKU türleri arasındaki temel farklılıklar aşağıdaki tabloda açıklanmıştır:
  
-|**Özniteliğe** | **D SKU 'SU** | **L SKU 'SU**
+| Öznitelik | D SKU 'SU | L SKU 'SU |
 |---|---|---
-|**Küçük SKU 'Lar**|En az iki çekirdekli boyut ' 11 '|En küçük boyut, dört çekirdekli ' L4 '
-|**Kullanılabilirlik**|Tüm bölgelerde kullanılabilir (DS + PS sürümü daha sınırlı kullanılabilirliğe sahiptir)|Birkaç bölgede kullanılabilir
-|**Çekirdek başına GB başına maliyet**|D SKU 'SU ile yüksek, DS + PS sürümü ile düşük|*Kullandıkça Öde* seçeneği ile Cheapest
-|**RI (ayrılmış örnekler) fiyatlandırması**|Yüksek indirim (üç yıllık taahhüt için% 55 üzerinden)|Düşük indirim (üç yıllık taahhüt için% 20)  
+|**Küçük SKU 'Lar**|En küçük boyut, iki çekirdekli D11|Dört çekirdekle en az boyut L4 |
+|**Kullanılabilirlik**|Tüm bölgelerde kullanılabilir (DS + PS sürümü daha sınırlı kullanılabilirliğe sahiptir)|Birkaç bölgede kullanılabilir |
+|**Çekirdek başına&nbsp;GB başına maliyet**|D SKU 'SU ile yüksek, DS + PS sürümü ile düşük|Kullandıkça öde seçeneği ile en düşük |
+|**Ayrılmış örnekler (RI) fiyatlandırması**|Yüksek indirim (üç yıllık&nbsp;taahhüt için yüzde 55 üzerinden)|Düşük indirim (üç&nbsp;yıllık taahhüt için yüzde 20) |  
 
 ## <a name="select-your-cluster-vm"></a>Küme VM 'nizi seçme 
 
 Küme VM 'nizi seçmek için [Dikey ölçeklendirmeyi yapılandırın](manage-cluster-vertical-scaling.md#configure-vertical-scaling). 
 
-Farklı VM SKU 'SU seçenekleri, istenen senaryo için gerekli performans ve sık erişimli önbellek gereksinimlerinin maliyetlerini iyileştirmenize olanak tanır. Senaryo yüksek bir sorgu birimi için en iyi performansı gerektiriyorsa ideal SKU, işlem için iyileştirilmiş olmalıdır. Diğer taraftan, senaryo görece daha düşük sorgu yüküne sahip büyük hacimlerde veri sorgulamayı gerektiriyorsa, depolama için iyileştirilmiş SKU, mükemmel performans sağlarken maliyetleri azaltır.
+Arasından seçim yapabileceğiniz çeşitli VM SKU seçenekleri sayesinde, senaryonuza yönelik performans ve etkin önbellek gereksinimlerinin maliyetlerini iyileştirebilirsiniz. 
+* Yüksek bir sorgu birimi için en iyi performansa ihtiyaç duyuyorsanız ideal SKU, işlem için iyileştirilmiş olmalıdır. 
+* Görece daha düşük sorgu yüküne sahip büyük hacimlerde veri sorgulaması yapmanız gerekiyorsa, depolama için iyileştirilmiş SKU, maliyetleri azaltmaya ve yine de mükemmel performans sağlamaya yardımcı olabilir.
 
-Küçük SKU 'Lar için küme başına örnek sayısı sınırlı olduğundan, daha fazla RAM 'e sahip daha büyük VM 'Lerin kullanılması tercih edilir. RAM boyutu, kullanılan `joins`sorgular gibi RAM kaynağına daha fazla talep döndüren bazı sorgu türleri için gereklidir. Bu nedenle, ölçekleme seçeneklerini düşünürken daha fazla örnek ekleyerek ölçeği genişleme özelliğinden daha büyük bir SKU 'ya ölçeklendirmeniz önerilir.
+Küçük SKU 'Lar için küme başına örnek sayısı sınırlı olduğundan, RAM daha büyük olan büyük VM 'Lerin kullanılması tercih edilir. RAM kaynağına daha fazla talep döndüren bazı sorgu türleri için, kullanılan `joins`sorgular gıbı daha fazla RAM gerekir. Bu nedenle, ölçekleme seçeneklerini düşünürken daha fazla örnek ekleyerek ölçeği genişletmek yerine daha büyük bir SKU 'ya ölçeklendirmenizi öneririz.
 
 ## <a name="vm-options"></a>VM seçenekleri
 
-Aşağıdaki tabloda Azure Veri Gezgini kümesi VM 'Leri için teknik belirtimler sunulmaktadır:
+Azure Veri Gezgini kümesi VM 'lerinin teknik belirtimleri aşağıdaki tabloda açıklanmıştır:
 
-|**Name**| **Kategori** | **SSD boyutu** | **Sayısı** | **KOÇ** | **Premium depolama diskleri (1 TB)**| **Küme başına en az örnek sayısı** | **Küme başına en fazla örnek sayısı**
+|**Name**| **Kategori** | **SSD boyutu** | **Sayısı** | **KOÇ** | **Premium depolama diskleri (1&nbsp;TB)**| **Küme başına en az örnek sayısı** | **Küme başına en fazla örnek sayısı**
 |---|---|---|---|---|---|---|---
-|D11_v2| işlem için iyileştirilmiş | 75 GB    | 2 | 14 GB | 0 | 1\. | 8 (1 olduğu geliştirme ve test SKU 'SU hariç)
-|D12_v2| işlem için iyileştirilmiş | 150 GB   | 4 | 28 GB | 0 | 2 | 16
-|D13_v2| işlem için iyileştirilmiş | 307 GB   | 8 | 56 GB | 0 | 2 | 1000
-|D14_v2| işlem için iyileştirilmiş | 614 GB   | 16| 112 GB | 0 | 2 | 1000
-|DS13_v2 + 1TB PS| depolama için iyileştirilmiş | 1 TB | 8 | 56 GB | 1 | 2 | 1000
-|DS13_v2 + 2TB PS| depolama için iyileştirilmiş | 2 TB | 8 | 56 GB | 2 | 2 | 1000
-|DS14_v2 + 3TB PS| depolama için iyileştirilmiş | 3 TB | 16 | 112 GB | 2 | 2 | 1000
-|DS14_v2 + 4TB PS| depolama için iyileştirilmiş | 4 TB | 16 | 112 GB | 4 | 2 | 1000
-|L4s_v1| depolama için iyileştirilmiş | 650 GB | 4 | 32 GB | 0 | 2 | 16
-|L8s_v1| depolama için iyileştirilmiş | 1,3 TB | 8 | 64 GB | 0 | 2 | 1000
-|L16s_1| depolama için iyileştirilmiş | 2,6 TB | 16| 128 GB | 0 | 2 | 1000
+|D11 v2| işlem için iyileştirilmiş | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1\. | 8 (1 olan geliştirme ve test SKU 'SU hariç)
+|D12 v2| işlem için iyileştirilmiş | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
+|D13 v2| işlem için iyileştirilmiş | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1000
+|D14 v2| işlem için iyileştirilmiş | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1000
+|DS13 v2 + 1&nbsp;TB&nbsp;PS| depolama ile iyileştirilmiş | 1&nbsp;TB | 8 | 56&nbsp;GB | 1\. | 2 | 1000
+|DS13 v2 + 2&nbsp;TB&nbsp;PS| depolama ile iyileştirilmiş | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1000
+|DS14 v2 + 3&nbsp;TB&nbsp;PS| depolama ile iyileştirilmiş | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1000
+|DS14 v2 + 4&nbsp;TB&nbsp;PS| depolama ile iyileştirilmiş | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1000
+|L4s v1| depolama ile iyileştirilmiş | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
+|L8s v1| depolama ile iyileştirilmiş | 1,3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1000
+|L16s_1| depolama ile iyileştirilmiş | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1000
 
-* Azure Veri Gezgini [Listsku 'larını](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)kullanarak bölge BAŞıNA GÜNCELLEŞTIRILMIŞ VM SKU listesini görüntüleyin. 
-* [Farklı Işlem SKU 'ları](/azure/virtual-machines/windows/sizes-compute)hakkında daha fazla bilgi edinin. 
+* Azure Veri Gezgini [Listsku 'larını](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)kullanarak bölge BAŞıNA GÜNCELLEŞTIRILMIŞ VM SKU listesini görüntüleyebilirsiniz. 
+* [Çeşitli Işlem SKU 'ları](/azure/virtual-machines/windows/sizes-compute)hakkında daha fazla bilgi edinin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Altyapı kümesi, farklı gereksinimler için VM SKU 'SU değiştirilerek dilediğiniz zaman [yukarı veya aşağı ölçeklendirilebilir](manage-cluster-vertical-scaling.md) . 
+* Farklı gereksinimlere bağlı olarak, sanal makine SKU 'sunu değiştirerek motor kümesini istediğiniz zaman [ölçeklendirebilir veya](manage-cluster-vertical-scaling.md) azaltabilirsiniz. 
 
-* Motor kümesinin boyutu, değişen taleplerle kapasiteyi değiştirmek için, [içinde ölçeklendirilebilir ve dışarı](manage-cluster-horizontal-scaling.md) değiştirilebilir.
+* Değişiklik taleplerine bağlı olarak kapasiteyi değiştirmek için motor kümesi boyutunu [ölçeklendirebilir veya ölçeğini](manage-cluster-horizontal-scaling.md) değiştirebilirsiniz.
 
