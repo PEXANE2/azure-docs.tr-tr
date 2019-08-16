@@ -19,10 +19,6 @@
 - name: Kavramlar
   expanded: false
   items:
-    - name: Koşullu Erişimi Benimseme
-      href: howto-conditional-access-adoption-kit.md
-    - name: Ana hat koruma ilkeleri
-      href: concept-baseline-protection.md
     - name: Koşullar
       href: conditions.md
     - name: Konum koşulları
@@ -33,6 +29,8 @@
       href: service-dependencies.md
     - name: Durum aracı
       href: what-if-tool.md
+    - name: Ana hat koruma ilkeleri
+      href: concept-baseline-protection.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
@@ -40,16 +38,6 @@
       href: plan-conditional-access.md
     - name: En iyi uygulamalar
       href: best-practices.md
-    - name: Ana hat ilkeleri
-      items:
-        - name: Yöneticiler için MFA gerektirme
-          href: howto-baseline-protect-administrators.md
-        - name: Son kullanıcı koruma
-          href: howto-baseline-protect-end-users.md
-        - name: Eski kimlik doğrulamasını engelleme
-          href: howto-baseline-protect-legacy-auth.md
-        - name: Hizmet yönetimi için MFA gerektirme
-          href: howto-baseline-protect-azure.md
     - name: Eski kimlik doğrulamasını engelleme
       href: block-legacy-authentication.md
     - name: MFA kaydı için Koşullu Erişim
@@ -68,6 +56,18 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klasik ilkeleri geçirme
       href: policy-migration.md
+    - name: Ana hat ilkeleri
+      items:
+        - name: Yöneticiler için MFA gerektirme
+          href: howto-baseline-protect-administrators.md
+        - name: Son kullanıcı koruma
+          href: howto-baseline-protect-end-users.md
+        - name: Eski kimlik doğrulamasını engelleme
+          href: howto-baseline-protect-legacy-auth.md
+        - name: Hizmet yönetimi için MFA gerektirme
+          href: howto-baseline-protect-azure.md
+    - name: Koşullu Erişimi Benimseme
+      href: howto-conditional-access-adoption-kit.md
     - name: Sorun giderme
       items:
         - name: What If aracını kullanarak sorun giderme

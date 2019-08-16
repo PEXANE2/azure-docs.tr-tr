@@ -83,7 +83,7 @@
             - name: Özel bulut silme
               href: delete-private-cloud.md
         - name: CloudSimple etkinliğini izleme
-          href: 'https://docs.azure.cloudsimple.com/activity/'
+          href: monitor-activity.md
         - name: Özel bulut ağı ayarlama
           items:
             - name: VLAN ve alt ağlar oluşturma ve yönetme
