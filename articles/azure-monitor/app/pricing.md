@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989224"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534599"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -92,7 +92,7 @@ Uygulamanızın ne kadar veri gönderdiğini görmek için aşağıdaki seçenek
 Veri haciminizi azaltmak için yapabileceğiniz bazı şeyler aşağıda verilmiştir:
 
 * [Örnekleme](../../azure-monitor/app/sampling.md)kullanın. Bu teknoloji, ölçümlerinizi azaltmadan veri hızınızı azaltır. Aramada ilgili öğeler arasında gezinme özelliğini kaybetmezsiniz. Sunucu uygulamalarında örnekleme otomatik olarak çalışır.
-* Her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayın](../../azure-monitor/app/javascript.md#detailed-configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
+* Her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayın](../../azure-monitor/app/javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
 * Gerekli olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights. config dosyasını düzenleyin](../../azure-monitor/app/configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
 * Telemetrinizi ayrı izleme anahtarları arasında ayırın. 
 * Ön toplama ölçümleri. Uygulamanızda TrackMetric çağrısı yaparsanız, bir ölçüm toplu işleminin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.

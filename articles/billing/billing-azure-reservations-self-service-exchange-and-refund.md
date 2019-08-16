@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814105"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543011"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure ayırmaları için self servis değişimlerinin ve para iadesi
 
@@ -60,11 +60,6 @@ Orijinal fatura iptal edilir ve yeni bir fatura oluşturulur. Para, orijinal sat
 
 Azure 'da iptaller, alışverişlerde ve para iadesi için aşağıdaki ilkeler bulunur.
 
-**İptal ilkeleri**
-
-- Bir ayırmayı iptal ederseniz,% 12 erken sonlandırma ücreti olabilir.
-- İptal için alacağınız para iadesi, kalan Pro-derecelendirilen bakiyeniz eksi% 12 erken sonlandırma ücretinden sona ermiştir. İptal etmek için Azure portal rezervasyonuna gidin ve **para iadesi**' ni seçin.
-
 **Exchange ilkeleri**
 
 - Aynı türde yeni bir ayırma satın almak için birden fazla mevcut ayırma döndürebilirsiniz. Bir türe ait ayırmaları bir tane için alışverişi yapamazsınız. Örneğin, bir SQL ayırması satın almak için bir VM ayırması geri dönemiyoruz.
@@ -77,10 +72,12 @@ Azure 'da iptaller, alışverişlerde ve para iadesi için aşağıdaki ilkeler 
 - Alışverişlerde hiçbir ceza veya yıllık sınır yoktur.
 
 **Para iadesi ilkeleri**
+- Bir ayırmayı iptal ederseniz,% 12 erken sonlandırma ücreti olabilir.
+- İptal için alacağınız para iadesi, kalan Pro-derecelendirilen bakiyeniz eksi% 12 erken sonlandırma ücretinden sona ermiştir. İptal etmek için Azure portal rezervasyonuna gidin ve **para iadesi**' ni seçin.
 - Toplam para iadesi miktarı 12 aylık bir yuvarlama penceresinde $50.000 ABD Doları aşamaz.
 - Para iadesi, satın alma fiyatınızın en düşük fiyatına veya rezervasyonun geçerli fiyatına göre hesaplanır.
 - Yalnızca rezervasyon sahipleri bir para iadesi işleyebilir. [Ayırmayı yönetebilen kullanıcıları nasıl ekleyeceğinizi veya değiştirebileceğinizi öğrenin](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Microsoft, herhangi bir dönüşte% 12 ceza tutarında ücret ödemesine hak eder, ancak ceza Şu anda ücretlendirilmez.
+- Microsoft, tüm dönüşler için% 12 ceza tutarında ücret ödeme hakkını saklı tutar. Ceza puanı Şu anda ücretlendirilmez, ancak gelecekte ücretlendirilecektir.
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Depolama için Premium olmayan Exchange depolaması
 

@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 0a254716acbcd51263680d421045788e8365ae8b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034839"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533150"
 ---
 # <a name="what-is-azure-search"></a>Azure Search nedir?
 
 Azure Search, geliştiricilere, web uygulamalarındaki, mobil uygulamalardaki ve kurumsal uygulamalardaki özel, heterojen içeriğe yönelik zengin arama deneyimi ekleme araçlarını ve API’lerini sunan, hizmet olarak arama bulut çözümüdür. Özel kodunuz veri alımı (Dizin oluşturma) çağırır, sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, Azure Search işlevleri kullanılarak istemci kodunuzda tanımlanmıştır ve Azure Search oluşturduğunuz, sahip olduğunuz kalıcı bir dizin üzerinde sorgu yürütülede ve bu durumda depolanıyor.
 
-![Azure Search mimarisi](media/search-what-is-azure-search/azure-search-diagram.png "Azure Search mimarisi")
+![Azure Search mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search mimarisi")
 
 <!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
 + Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.

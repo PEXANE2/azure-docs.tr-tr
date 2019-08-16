@@ -5,23 +5,23 @@ description: Azure portal otomatik makine öğrenimi ile bir sınıflandırma mo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 07/23/2019
-ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/14/2019
+ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990069"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534398"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>Öğretici: Otomatik makine öğrenimini kullanarak ilk sınıflandırma modelinizi eğitme ve dağıtma (Önizleme)
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
-Bu öğreticide, Azure portal ilk otomatik makine öğrenimi denemenizi oluşturmayı öğreneceksiniz. Bu örnek, bir istemcinin bankaya ait bir terime yatırıp abone olup olmayacağını tahmin etmek için bir sınıflandırma modeli oluşturur.
+Bu öğreticide, tek bir kod satırı yazmadan Azure portal (Önizleme) içinde ilk otomatik makine öğrenimi denemenizi oluşturmayı öğreneceksiniz. Bu örnek, bir istemcinin bir mali kurum ile sabit bir depozito 'e abone olup olmadığını tahmin etmek için bir sınıflandırma modeli oluşturur.
 
-Hizmetin otomatik makine öğrenimi özelliklerini ve Azure portal kullanarak otomatik makine öğrenimi işlemine başlarsınız. Algoritma seçimi ve hyperparameter ayarı sizin için yapılır. Otomatik makine öğrenimi tekniği, tek bir kod satırı yazmadan, kriterinize göre en iyi modeli bulana kadar birçok algoritma ve hiper parametre kombinasyonu üzerinde yinelenir.
+Azure Machine Learning hizmetinin ve Azure portal otomatik makine öğrenimi özelliklerini kullanarak otomatik makine öğrenimi işlemine başlarsınız. Algoritma seçimi ve hyperparameter ayarı sizin için yapılır. Otomatik makine öğrenimi tekniği, kriterinize göre en iyi modeli bulana kadar birçok algoritma ve hiper parametre kombinasyonu üzerinde yinelenir.
 
 Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
@@ -36,7 +36,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
-* **Bankmarketing_train. csv** veri dosyası. [İndirin](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+* [ **Bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) veri dosyasını indirin. **Y** sütunu, bir müşterinin, daha sonra bu öğreticide tahmine yönelik hedef sütun olarak tanımlanan sabit bir dönem yatırma abone olup olmadığını gösterir. 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -44,11 +44,14 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 ## <a name="create-an-experiment"></a>Deneme oluşturma
 
+Bu adımlar, birincil ölçümünüzün ve model türünün seçilmesi için veri seçiminden ayarlanan denemenize kılavuzluk sağlar. 
+
 1. Çalışma alanınızın sol bölmesine gidin. **Yazma (Önizleme)** bölümünde **otomatik makine öğrenimi** ' ni seçin.
+Otomatik Machine Learning için ilk denemenizin olduğu **Için otomatik Machine Learning ekranına hoş geldiniz** ' i görürsünüz.
 
     ![Azure portal gezinti bölmesi](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
 
-    Otomatik Machine Learning ilk denemenize göre **otomatik Machine Learning ekranına hoş geldiniz** ' i görürsünüz. 
+
 
 1. **Deneme oluştur**' u seçin. Ardından deneme adı olarak **My-1-oto ml-deney** i girin.
 
@@ -64,7 +67,8 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
     Oluşturma işlemi tamamlandığında, açılan listeden yeni işlem ' ı seçin ve ardından **İleri**' yi seçin.
 
-1. Bu öğretici için, varsayılan depolama hesabını ve yeni hesaplamanıza göre oluşturulan kapsayıcıyı kullanırız. Otomatik olarak formda doldurulur.
+    >[!NOTE]
+    >Bu öğretici için, varsayılan depolama hesabını ve yeni hesaplamanıza göre oluşturulan kapsayıcıyı kullanırız. Otomatik olarak formda doldurulur.
 
 1. **Karşıya yükle** ' yi seçin ve varsayılan kapsayıcıya yüklemek için yerel bilgisayarınızdan **bankmarketing_train. csv** dosyasını seçin. Genel Önizleme yalnızca yerel dosya yüklemelerini ve Azure Blob depolama hesaplarını destekler. Karşıya yükleme tamamlandığında, listeden dosyayı seçin. 
 
@@ -116,7 +120,9 @@ Deneme ilerledikçe, **çalışma ayrıntısı** ekranı, yineleme grafiğini ve
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
-Bu deneme için, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi model olarak kabul edilir. Azure portal otomatik makine öğrenimi kullanarak, yeni verileri tahmin etmek için bu modeli bir Web hizmeti olarak dağıtabiliriz. 
+Azure portal otomatik makine öğrenimi kullanarak, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için en iyi modeli bir Web hizmeti olarak dağıtabiliriz. Bu deneme için, dağıtım, mali kurumun potansiyel olarak sabit vadeli depozito müşterilerini tanımlamaya yönelik yinelemeli ve ölçeklenebilir bir çözüme sahip olduğu anlamına gelir.
+
+Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi model olarak kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer.
 
 1. **Ayrıntıları Çalıştır** sayfasında, **en iyi modeli dağıt** düğmesini seçin.
 
@@ -129,13 +135,13 @@ Bu deneme için, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi mo
     Puanlama betiği| Otomatik olarak açıklamalı
     Ortam betiği| Otomatik olarak açıklamalı
     
-1. **Dağıt**'ı seçin. Dağıtımın tamamlanabilmesi yaklaşık 20 dakika sürer.
+1. **Dağıt**'ı seçin.
 
     Dağıtım başarıyla tamamlandığında aşağıdaki ileti görünür:
 
     ![Dağıtım Tamam](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
     
-    İşte bu kadar! Tahmin oluşturmak için işlemsel bir Web hizmetiniz vardır.
+    Artık tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -159,7 +165,10 @@ Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alan�
 
 Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluşturmak ve dağıtmak için Azure portal kullandınız. Daha fazla bilgi ve sonraki adımlar için aşağıdaki makalelere bakın:
 
-+ [Bir Web hizmetini](how-to-consume-web-service.md)kullanmayı öğrenin.
+> [!div class="nextstepaction"]
+> [Web hizmeti kullanma](how-to-consume-web-service.md)
+
+
 + [Ön işleme](how-to-create-portal-experiments.md#preprocess)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.

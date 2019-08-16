@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950448"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534967"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub iletilerini oluşturma ve okuma
 
@@ -49,14 +49,15 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT Hub Iletilerinin sistem özellikleri
 
-| Özellik | Açıklama  |Kullanıcı ayarlanabilir mi?|Yönlendirme sorgusu için anahtar sözcük|
+| Özellik | Açıklama  |Kullanıcı ayarlanabilir mi?|İçin anahtar sözcük </br>Yönlendirme sorgusu|
 | --- | --- | --- | --- |
-| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`, büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda).  | Evet | MessageId |
-| ıothub-enqueuedtime |[Cihazdan buluta](iot-hub-devguide-d2c-guidance.md) mesajın IoT Hub tarafından alındığı tarih ve saat. | Hayır | EnqueuedTime |
-| Kullanıcı kimliği |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak `{iot hub name}`ayarlanır. | Evet | UserId |
-| ıothub-bağlantı-cihaz kimliği |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **DeviceID** 'sini içerir. | Hayır | DeviceId |
-| ıothub-bağlantı-auth-Generation-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **GenerationID** 'Sini ( [cihaz kimliği başına kimlik özellikleri](iot-hub-devguide-identity-registry.md#device-identity-properties)) içerir. | Hayır |Devicegenerationıd |
-| ıothub-Connection-auth-yöntemi |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir kimlik doğrulama yöntemi. Bu özellik, iletiyi gönderen cihazın kimliğini doğrulamak için kullanılan kimlik doğrulama yöntemi hakkındaki bilgileri içerir.| Hayır | AuthMethod |
+| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`, büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda).  | Evet | Ileti |
+| ıothub-enqueuedtime |[Cihazdan buluta](iot-hub-devguide-d2c-guidance.md) mesajın IoT Hub tarafından alındığı tarih ve saat. | Hayır | enqueuedTime |
+| Kullanıcı kimliği |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak `{iot hub name}`ayarlanır. | Evet | userId |
+| ıothub-bağlantı-cihaz kimliği |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **DeviceID** 'sini içerir. | Hayır | Connectiondeviceıd |
+| ıothub-Connection-Module-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **ModuleID** 'sini içerir. | Hayır | Connectionmoduleıd |
+| ıothub-bağlantı-auth-Generation-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **Connectiondevicegenerationıd** 'Sini ( [cihaz kimliği başına kimlik özellikleri](iot-hub-devguide-identity-registry.md#device-identity-properties)) içerir. | Hayır |Connectiondevicegenerationıd |
+| ıothub-Connection-auth-yöntemi |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir kimlik doğrulama yöntemi. Bu özellik, iletiyi gönderen cihazın kimliğini doğrulamak için kullanılan kimlik doğrulama yöntemi hakkındaki bilgileri içerir.| Hayır | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub Iletilerinin sistem özellikleri
 

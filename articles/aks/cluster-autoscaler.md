@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: dc5e862109a766f708338ebddb91a75ffc550306
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6ed50380b47040793e9826b64297bacf6ab12c71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031917"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533601"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak üzere bir kümeyi otomatik olarak ölçeklendirme
 
@@ -90,7 +90,7 @@ Küme otomatik olarak ölçeklendirilmesine nasıl ölçeklenebileceğinize ili�
 
 Küme otomatik yüklemesi, ölçek olayları ve kaynak eşikleri arasındaki zaman aralıkları gibi şeyler için başlangıç parametrelerini kullanır. Bu parametreler Azure platformu tarafından tanımlanır ve şu anda ayarlamanız için sunulmamaktadır. Kümenin otomatik olarak kullandığı parametreler hakkında daha fazla bilgi için bkz. [küme otomatik Scaler parametreleri nedir?][autoscaler-parameters].
 
-İki otomatik scalers birlikte çalışabilir ve genellikle bir kümede dağıtılır. Birleştirildiğinde, yatay Pod otomatik Scaler, uygulama talebini karşılamak için gereken sayıda Pod çalıştırmaya odaklanılmıştır. Küme otomatik yüklemesi, zamanlanmış pods 'yi desteklemek için gereken düğüm sayısını çalıştırmaya odaklanır.
+Küme ve yatay Pod otomatik scalers birlikte çalışabilir ve genellikle bir kümede birlikte dağıtılır. Birleştirildiğinde, yatay Pod otomatik Scaler, uygulama talebini karşılamak için gereken sayıda Pod çalıştırmaya odaklanılmıştır. Küme otomatik yüklemesi, zamanlanmış pods 'yi desteklemek için gereken düğüm sayısını çalıştırmaya odaklanır.
 
 > [!NOTE]
 > Küme otomatik ölçeklendirme kullandığınızda el ile ölçekleme devre dışıdır. Küme otomatik olarak gerekli düğüm sayısını belirlemesine izin verin. Kümenizi el ile ölçeklendirmek isterseniz, [küme otomatik Scaler ' ı devre dışı bırakın](#disable-the-cluster-autoscaler).
@@ -124,9 +124,14 @@ az aks create \
 
 Kümeyi oluşturmak ve küme otomatik Scaler ayarlarını yapılandırmak birkaç dakika sürer.
 
-### <a name="update-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-a-single-node-pool"></a>Tek düğümlü havuz içeren bir kümede bulunan mevcut düğüm havuzunda küme otomatik Scaler 'ı güncelleştirme
+## <a name="change-the-cluster-autoscaler-settings"></a>Küme otomatik Scaler ayarlarını değiştirme
 
-Önceki küme otomatik Scaler ayarlarını, [başlamadan önce](#before-you-begin) önceki bölümünde özetlenen gereksinimleri karşılayan bir kümede güncelleştirebilirsiniz. Kümenizdeki küme otomatik listesini *tek* bir düğüm havuzuyla etkinleştirmek için [az aks Update][az-aks-update] komutunu kullanın.
+> [!IMPORTANT]
+> Aboneliğinizde *birden çok aracı havuzu* özelliği etkinleştirilmişse, [birden çok aracı havuzu ile otomatik ölçeklendirmeyi](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled)atlayın. Birden çok aracı havuzu etkin olan kümeler, `az aks nodepool` `az aks`yerine düğüm havuzuna özgü özellikleri değiştirmek için komut kümesinin kullanılmasını gerektirir. Aşağıdaki yönergelerde birden çok düğüm havuzu etkinleştirilmemiş varsayılmaktadır. BT 'nin etkinleştirilip etkinleştirilmediğini denetlemek için, öğesini çalıştırın `az feature  list -o table` ve `Microsoft.ContainerService/multiagentpoolpreview`bulun.
+
+Önceki adımda, bir AKS kümesi oluşturmak veya var olan bir düğüm havuzunu güncelleştirmek için, küme otomatik algılama en düşük düğüm sayısı *1*olarak ayarlanmıştır ve en fazla düğüm sayısı *3*olarak ayarlanmıştır. Uygulamanız değiştikçe değişiklik yaparken, küme otomatik Scaler düğüm sayısını ayarlamanız gerekebilir.
+
+Düğüm sayısını değiştirmek için [az aks Update][az-aks-update] komutunu kullanın.
 
 ```azurecli-interactive
 az aks update \
@@ -137,41 +142,7 @@ az aks update \
   --max-count 5
 ```
 
-Daha sonra küme otomatik, `az aks update --enable-cluster-autoscaler` veya `az aks update --disable-cluster-autoscaler` komutlarıyla etkinleştirilebilir veya devre dışı bırakılabilir.
-
-### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools"></a>Birden çok düğüm havuzu içeren bir kümede var olan düğüm havuzunda küme otomatik Scaler özelliğini etkinleştirme
-
-Küme otomatik [izleme özelliği, birden çok düğüm havuzları önizleme özelliği](use-multiple-node-pools.md) etkinleştirilmiş olarak da kullanılabilir. Birden çok düğüm havuzu tutan bir AKS kümesi içindeki tek düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirebilir ve [başlamadan önce, başlamadan önce](#before-you-begin) bölümünde açıklandığı gibi gereksinimleri karşılarlar. Tek bir düğüm havuzunda küme otomatik Scaler özelliğini etkinleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
-
-```azurecli-interactive
-az aks nodepool update \
-  --resource-group myResourceGroup \
-  --cluster-name myAKSCluster \
-  --name mynodepool \
-  --enable-cluster-autoscaler \
-  --min-count 1 \
-  --max-count 3
-```
-
-Daha sonra küme otomatik, `az aks nodepool update --enable-cluster-autoscaler` veya `az aks nodepool update --disable-cluster-autoscaler` komutlarıyla etkinleştirilebilir veya devre dışı bırakılabilir.
-
-## <a name="change-the-cluster-autoscaler-settings"></a>Küme otomatik Scaler ayarlarını değiştirme
-
-Önceki adımda, bir AKS kümesi oluşturmak veya var olan bir düğüm havuzunu güncelleştirmek için, küme otomatik algılama en düşük düğüm sayısı *1*olarak ayarlanmıştır ve en fazla düğüm sayısı *3*olarak ayarlanmıştır. Uygulamanız değiştikçe değişiklik yaparken, küme otomatik Scaler düğüm sayısını ayarlamanız gerekebilir.
-
-Düğüm sayısını değiştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
-
-```azurecli-interactive
-az aks nodepool update \
-  --resource-group myResourceGroup \
-  --cluster-name myAKSCluster \
-  --name mynodepool \
-  --update-cluster-autoscaler \
-  --min-count 1 \
-  --max-count 5
-```
-
-Yukarıdaki örnek, *Myakscluster* içindeki *mynodepool* düğüm havuzunda küme otomatik Scaler 'sini en az *1* ve en fazla *5* düğüm olarak güncelleştirir.
+Yukarıdaki örnek, *Myakscluster* içindeki tek düğümlü havuzda küme otomatik Scaler ' nı en az *1* ve en fazla *5* düğüm olarak güncelleştirir.
 
 > [!NOTE]
 > Önizleme süresince, düğüm havuzu için şu anda ayarlanmış olandan daha yüksek bir düğüm sayısı ayarlayamazsınız. Örneğin, şu anda en az *1*olarak ayarlandıysa, en az sayıyı *3*olarak güncelleştiremezsiniz.
@@ -180,17 +151,46 @@ Uygulamalarınızın ve hizmetlerinizin performansını izleyin ve küme otomati
 
 ## <a name="disable-the-cluster-autoscaler"></a>Küme otomatik Scaler 'ı devre dışı bırakma
 
-Artık küme otomatik özelliğini kullanmak istemiyorsanız, *--Disable-Cluster-otomatik Scaler* parametresini belirterek [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanarak devre dışı bırakabilirsiniz. Küme otomatik yüklemesi devre dışı bırakıldığında düğümler kaldırılmaz.
+Artık küme otomatik özelliğini kullanmak istemiyorsanız, *--Disable-Cluster-otomatik Scaler* parametresini belirterek [az aks Update][az-aks-update] komutunu kullanarak devre dışı bırakabilirsiniz. Küme otomatik yüklemesi devre dışı bırakıldığında düğümler kaldırılmaz.
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --disable-cluster-autoscaler
+```
+
+[Az aks Scale][az-aks-scale] komutunu kullanarak küme otomatik Scaler 'ı devre dışı bıraktıktan sonra kümenizi el ile ölçekleyebilirsiniz. Yatay Pod otomatik Scaler ' ı kullanırsanız, bu özellik küme otomatik olarak devre dışı bırakılmış olarak çalışmaya devam eder, ancak tüm düğüm kaynakları kullanımda ise, Pod çalışmayabilir.
+
+## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Devre dışı bırakılan bir kümeyi otomatik olarak yeniden etkinleştirin
+
+Küme otomatik olarak var olan bir kümede yeniden etkinleştirmek istiyorsanız, [az aks Update][az-aks-update] komutunu kullanarak *--Enable-Cluster-otomatik Scaler* parametresini belirterek yeniden etkinleştirebilirsiniz.
+
+## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Birden çok düğüm havuzu etkin olan küme otomatik Scaler 'ı kullanma
+
+Küme otomatik [yüklemesi, birden çok düğüm havuzları önizleme özelliği](use-multiple-node-pools.md) etkinleştirilmiş olarak birlikte kullanılabilir. Birden çok düğüm havuzunun nasıl etkinleştirileceğini ve var olan bir kümeye ek düğüm havuzları nasıl ekleneceğini öğrenmek için bu belgeyi izleyin. Her iki özelliği birlikte kullanırken kümedeki her bir düğüm havuzunda küme otomatik Scaler ' ı etkinleştirir ve her birine benzersiz otomatik ölçeklendirme kuralları geçirebilir.
+
+Aşağıdaki komut, bu belgede daha önce [ilk yönergeleri](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) izlediğinizi ve mevcut düğüm havuzunun en büyük sayısını *3* ' ten *5*' e kadar güncelleştirmek istediğinizi varsayar. Mevcut bir düğüm havuzunun ayarlarını güncelleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
 
 ```azurecli-interactive
 az aks nodepool update \
   --resource-group myResourceGroup \
-  --cluster-name myAKSCluster \
+  --cluster-name multipoolcluster \
+  --name mynodepool \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 5
+```
+
+Küme otomatik Scaler, [az aks nodepool Update][az-aks-nodepool-update] ile devre dışı bırakılabilir ve `--disable-cluster-autoscaler` parametresi geçiliyor.
+
+```azurecli-interactive
+az aks nodepool update \
+  --resource-group myResourceGroup \
+  --cluster-name multipoolcluster \
   --name mynodepool \
   --disable-cluster-autoscaler
 ```
-
-[Az aks Scale][az-aks-scale] komutunu kullanarak kümenizi el ile ölçekleyebilirsiniz. Yatay Pod otomatik Scaler ' ı kullanırsanız, bu özellik küme otomatik olarak devre dışı bırakılmış olarak çalışmaya devam eder, ancak düğüm kaynakları kullanımda ise, Pod çalışmayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

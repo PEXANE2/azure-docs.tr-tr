@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: robinsh
-ms.openlocfilehash: 544c29505d9bf34622963dfac8987b7eae4f8bc5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668182"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558712"
 ---
 # <a name="get-started-with-device-management-net"></a>Cihaz yönetimini kullanmaya başlama (.NET)
 
@@ -22,7 +22,7 @@ ms.locfileid: "68668182"
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
-* Bir IoT Hub oluşturmak ve IoT Hub 'ınızda bir cihaz kimliği oluşturmak için Azure portal kullanın.
+* IoT Hub 'ınızda bir IoT Hub 'ı oluşturmak ve bir cihaz kimliği oluşturmak için Azure portal kullanın.
 
 * Bu cihazı yeniden yükleyen doğrudan bir yöntem içeren bir sanal cihaz uygulaması oluşturun. Doğrudan Yöntemler buluttan çağrılır.
 
@@ -30,15 +30,15 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Bu öğreticinin sonunda iki .NET konsol uygulamanız olacak:
 
-* Daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan **SimulateManagedDevice**, bir yeniden başlatma doğrudan yöntemi alır, fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
+* **SimulateManagedDevice**. Bu uygulama daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanır, bir yeniden başlatma doğrudan yöntemi alır, fiziksel yeniden başlatmanın benzetimini yapar ve son yeniden başlatmanın zamanını raporlar.
 
-* Sanal cihaz uygulamasında doğrudan bir yöntemi çağıran **Triggerreboot**, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
+* **Triggerreboot**. Bu uygulama, sanal cihaz uygulamasında doğrudan bir yöntem çağırır, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 * Visual Studio.
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+* Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -56,27 +56,33 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Doğrudan bir yöntem kullanarak cihazda Uzaktan yeniden başlatma tetikleyin
 
-Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden başlatma C#işlemini başlatan bir .NET konsol uygulaması (kullanarak) oluşturursunuz. Uygulama, bu cihazın son yeniden başlatma zamanını saptamak için Device ikizi sorgularını kullanır.
+Bu bölümde, bir doğrudan yöntem kullanan bir cihazda Uzaktan yeniden başlatma C#Başlatan bir .NET konsol uygulaması oluşturacaksınız. Uygulama, bu cihazın son yeniden başlatma zamanını saptamak için Device ikizi sorgularını kullanır.
 
-1. Visual Studio’da **Konsol Uygulaması (.NET Framework)** proje şablonunu kullanarak yeni bir çözüme bir Visual C# Windows Klasik Masaüstü projesi ekleyin. .NET Framework sürümünün 4.5.1 veya sonraki bir sürüm olduğundan emin olun. Projeyi **Triggerreboot**olarak adlandırın.
+1. Visual Studio 'da **Yeni proje oluştur**' u seçin.
 
-    ![Yeni Visual C# Windows Klasik Masaüstü projesi](./media/iot-hub-csharp-csharp-device-management-get-started/createserviceapp.png)
+1. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** proje şablonunu bulup seçin ve ardından **İleri**' yi seçin.
 
-2. Çözüm Gezgini, **Triggerreboot** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
+1. **Yeni projenizi yapılandırın**bölümünde, projeyi *triggerreboot*olarak adlandırın ve .NET Framework Version 4.5.1 veya üstünü seçin. **Oluştur**’u seçin.
 
-3. **NuGet Paket Yöneticisi** penceresinde, **Araştır**' ı seçin, Microsoft. **Azure. Devices**' i arayın, **Microsoft. Azure. Devices** paketini yüklemek için, **install** ' ı seçin ve kullanım koşullarını kabul edin. Bu yordam, [Azure IoT hizmeti SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
+    ![Yeni Visual C# Windows Klasik Masaüstü projesi](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-    ![NuGet Paket Yöneticisi penceresi](./media/iot-hub-csharp-csharp-device-management-get-started/servicesdknuget.png)
+1. **Çözüm Gezgini**, **triggerreboot** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-4. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
-   
+1. **Araştır**' ı seçin, **Microsoft. Azure. Devices**' i arayıp seçin. **Microsoft. Azure. Devices** paketini yüklemek için **yüklemeyi** seçin.
+
+    ![NuGet Paket Yöneticisi penceresi](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
+
+   Bu adım, [Azure IoT hizmeti SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
+
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
-        
-5. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
-   
+
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+
    ```csharp
    static RegistryManager registryManager;
    static string connString = "{iot hub connection string}";
@@ -84,8 +90,8 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
    static string targetDevice = "myDeviceId";
    ```
 
-6. **Program** sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, yeniden başlatılan cihaz için cihaz ikizi alır ve bildirilen özellikleri verir.
-   
+1. **Program** sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, yeniden başlatılan cihaz için cihaz ikizi alır ve bildirilen özellikleri verir.
+
    ```csharp
    public static async Task QueryTwinRebootReported()
    {
@@ -93,8 +99,8 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
        Console.WriteLine(twin.Properties.Reported.ToJson());
    }
    ```
-        
-7. **Program** sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, doğrudan bir yöntemi kullanarak cihazda yeniden başlatmayı başlatır.
+
+1. **Program** sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, doğrudan bir yöntemi kullanarak cihazda yeniden başlatmayı başlatır.
 
    ```csharp
    public static async Task StartReboot()
@@ -110,8 +116,8 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
    }
    ```
 
-7. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
-   
+1. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
+
    ```csharp
    registryManager = RegistryManager.CreateFromConnectionString(connString);
    StartReboot().Wait();
@@ -120,14 +126,14 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
    Console.ReadLine();
    ```
 
-8. Çözümü oluşturun.
+1. Yapı yapı**çözümünü**seçin. > 
 
 > [!NOTE]
 > Bu öğreticide, cihazın bildirilen özellikleri için yalnızca tek bir sorgu gerçekleştirilir. Üretim kodunda, bildirilen özelliklerde yapılan değişiklikleri algılamayı yoklamayı öneririz.
 
 ## <a name="create-a-simulated-device-app"></a>Sanal cihaz uygulaması oluşturma
 
-Bu bölümde şunları gerçekleştireceksiniz:
+Bu bölümde, aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
 * Bulut tarafından çağrılan doğrudan bir yönteme yanıt veren bir .NET konsol uygulaması oluşturun.
 
@@ -135,31 +141,38 @@ Bu bölümde şunları gerçekleştireceksiniz:
 
 * Cihaz ikizi sorguları cihazları ve en son yeniden başlatıldığı zaman bunları belirlemek için, bildirilen özellikleri kullanın.
 
-1. Visual Studio'da **Konsol Uygulaması** proje şablonunu kullanarak geçerli çözüme bir Visual C# Windows Klasik Masaüstü projesi ekleyin. Projeyi **SimulateManagedDevice**olarak adlandırın.
-   
-    ![Yeni Visual C# Windows Klasik cihaz uygulaması](./media/iot-hub-csharp-csharp-device-management-get-started/createdeviceapp.png)
-    
-2. Çözüm Gezgini, **SimulateManagedDevice** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** öğesine tıklayın.
+Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
 
-3. **NuGet Paket Yöneticisi** penceresinde, **Araştır** ' ı seçin ve **Microsoft. Azure. Devices. Client**için arama yapın. **Microsoft. Azure. Devices. Client** paketini yüklemek için **Install** ' ı seçin ve kullanım koşullarını kabul edin. Bu yordam, [Azure IoT cihaz SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
-   
-    ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-device-management-get-started/clientsdknuget.png)
-    
-4. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
-   
+1. Visual Studio 'da, zaten oluşturduğunuz triggerreboot çözümünde **Dosya** > **Yeni** > **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** proje şablonunu bulup seçin ve ardından **İleri**' yi seçin.
+
+1. **Yeni projenizi yapılandırın**bölümünde, projeyi *SimulateManagedDevice*olarak adlandırın ve **çözüm**için **çözüme Ekle**' yi seçin. **Oluştur**’u seçin.
+
+    ![Projeyi adlandırın ve çözüme ekleyin](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
+
+1. Çözüm Gezgini, yeni **SimulateManagedDevice** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
+
+1. **Araştır**' ı seçin, ardından **Microsoft. Azure. Devices. Client**öğesini arayıp seçin. **Yükle**’yi seçin.
+
+    ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
+
+   Bu adım, [Azure IoT cihaz SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
+
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, önceki bölümde not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, önceki bölümde not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
 
     ```csharp
     static string DeviceConnectionString = 
       "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
-6. Cihaza doğrudan yöntemini uygulamak için aşağıdakileri ekleyin:
+
+1. Cihaza doğrudan yöntemini uygulamak için aşağıdakileri ekleyin:
 
    ```csharp
    static Task<MethodResponse> onReboot(MethodRequest methodRequest, object userContext)
@@ -193,7 +206,7 @@ Bu bölümde şunları gerçekleştireceksiniz:
    }
    ```
 
-7. Son olarak, aşağıdaki kodu **Main** yöntemine ekleyerek IoT Hub 'ınız bağlantısını açın ve Yöntem dinleyicisini başlatın:
+1. Son olarak, aşağıdaki kodu **Main** yöntemine ekleyerek IoT Hub 'ınız bağlantısını açın ve Yöntem dinleyicisini başlatın:
 
    ```csharp
    try
@@ -219,20 +232,26 @@ Bu bölümde şunları gerçekleştireceksiniz:
        Console.WriteLine("Error in sample: {0}", ex.Message);
    }
    ```
-        
-8. Visual Studio Çözüm Gezgini'nde çözümünüze sağ tıklayın ve ardından **Başlangıç Projelerini Ayarla...** öğesine tıklayın. **Tek bir başlangıç projesi**seçin ve açılan menüden **SimulateManagedDevice** projesini seçin. Çözümü oluşturun.       
+
+1. Çözüm Gezgini, çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin. 
+
+1. **Ortak özellikler** > **Başlangıç projesi**için **tek başlangıç projesi**' ni seçin ve ardından **SimulateManagedDevice** projesini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+
+1. Yapı yapı**çözümünü**seçin. > 
 
 > [!NOTE]
-> Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
+> Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)bölümünde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. .NET cihaz uygulamasını çalıştırmak için **SimulateManagedDevice**. **SimulateManagedDevice** projesine sağ tıklayın, **Hata Ayıkla**' yı seçin ve ardından **Yeni örnek Başlat**' ı seçin. IoT Hub 'ınızdan Yöntem çağrılarını dinlemeye başlaması gerekir. 
+1. .NET cihaz uygulaması **SimulateManagedDevice**çalıştırmak için, Çözüm Gezgini ' de, **SimulateManagedDevice** projesine sağ tıklayın, **Hata Ayıkla**' yı seçin ve ardından **Yeni örnek Başlat**' ı seçin. Uygulama, IoT Hub 'ınızdaki Yöntem çağrılarını dinlemeye başlamalıdır.
 
-2. Artık cihaz bağlı olduğuna ve Yöntem etkinleştirmeleri beklerken, sanal cihaz uygulamasındaki yeniden başlatma yöntemini çağırmak için .NET **Triggerreboot** uygulamasını çalıştırın. Bunu yapmak için, **Triggerreboot** projesine sağ tıklayın, **Hata Ayıkla**' yı seçin ve ardından **Yeni örnek Başlat**' ı seçin. "Yeniden başlatılıyor!" öğesini görmeniz gerekir **SimulatedManagedDevice** konsolunda yazılır ve cihazın, **triggerreboot** konsoluna yazılan son yeniden başlatma zamanını içeren bildirilen özellikleri.
-   
+1. Cihaz bağlandıktan ve Yöntem etkinleştirmeleri için beklerken, **Triggerreboot** projesine sağ tıklayın, **Hata Ayıkla**' yı seçin ve ardından **Yeni örnek Başlat**' ı seçin.
+
+   "Yeniden başlatılıyor!" öğesini görmeniz gerekir **SimulatedManagedDevice** konsolunda yazılır ve cihazın, **triggerreboot** konsoluna yazılan son yeniden başlatma zamanını içeren bildirilen özellikleri.
+
     ![Hizmet ve cihaz uygulaması çalıştırma](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

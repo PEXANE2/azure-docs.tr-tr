@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: dbfa7aaccd513ffcf8ba3907911d8c49275b2ea6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967648"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543005"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -228,6 +228,18 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="common-http-errors"></a>Ortak HTTP hataları
+
+|Kod|Açıklama|
+|:--|--|
+|2xx|Başarılı|
+|400|isteğin parametreleri yanlış gerekli parametreler eksik, hatalı biçimlendirilmiş ya da çok büyük olduğu anlamına gelir|
+|400|isteğin gövde JSON eksik, hatalı biçimlendirilmiş ya da çok büyük yani yanlış|
+|401|Geçersiz anahtar|
+|403|Yasak - sizin doğru izinlere sahip değilsiniz|
+|404|KB yok|
+|410|Bu API kullanım dışı ve artık kullanılamıyor|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014241"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535000"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanma (Önizleme)
 
@@ -69,7 +69,7 @@ Daha önce yapmadıysanız, [bash için bir Cloud Shell penceresi açın.](https
 
 Komut dosyası tarafından oluşturulan kaynaklar aşağıda verilmiştir. **Zenginleştirme** , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir. **Orijinal** , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir.
 
-| Ad | Value |
+| Name | Value |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | kapsayıcı adı | Özgün  |
@@ -84,7 +84,7 @@ Komut dosyası tarafından oluşturulan kaynaklar aşağıda verilmiştir. **Zen
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id -o tsv)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -250,7 +250,7 @@ Bu noktada, kaynakların hepsi ayarlanır ve yönlendirme yapılandırılır. İ
 
 2. Bu değerleri ContosoStorageEndpointEnriched uç noktası için listeye ekleyin.
 
-   | Ad | Value | Uç nokta (açılan liste) |
+   | Name | Value | Uç nokta (açılan liste) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | Azurestoraygecontainers > ContosoStorageEndpointEnriched |
@@ -269,7 +269,7 @@ Bu noktada, kaynakların hepsi ayarlanır ve yönlendirme yapılandırılır. İ
 
 ## <a name="send-messages-to-the-iot-hub"></a>IoT Hub ileti gönderin
 
-İleti zenginleştirmelerinin uç nokta için yapılandırıldığına göre, IoT Hub ileti göndermek için sanal cihaz uygulamasını çalıştırın. Hub, aşağıdakileri gerçekleştiren kurallarla ayarlandı:
+İleti zenginleştirmelerinin uç nokta için yapılandırıldığına göre, IoT Hub ileti göndermek için sanal cihaz uygulamasını çalıştırın. Hub, aşağıdakileri gerçekleştiren ayarlarla ayarlanmıştır:
 
 * Depolama uç noktasına yönlendirilen iletiler, ContosoStorageEndpointOriginal uyumlu olmayacaktır ve depolama kapsayıcısında `original`depolanır.
 

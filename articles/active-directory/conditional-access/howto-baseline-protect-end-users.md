@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608143"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532934"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Temel ilke: Son Kullanıcı koruması (Önizleme)
 
@@ -64,11 +64,11 @@ Eski kimlik doğrulama protokolleri (IMAP, SMTP, POP3, vb.), posta istemcileri t
 
 Bu ilkeyi etkinleştirmek ve kullanıcılarınızı korumak için:
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde temel ilke ' yi seçin **: Son Kullanıcı koruması (Önizleme)** .
-1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
-1.  **Kaydet**' e tıklayın.
+1. İlkeyi **ilkeyi hemen kullanacak**şekilde ayarlayın.
+1. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

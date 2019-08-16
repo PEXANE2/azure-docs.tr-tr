@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 7deb9d2cf16aa82de7ce4ea163652c2936819063
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489784"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533248"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-java"></a>Hızlı Başlangıç: Java 'da Azure Search dizini oluşturma
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Aşağıdaki listede, bu örnek ile ilgili dosyalar açıklanmaktadır.
 Tüm REST API çağrıları Azure Search, hizmet URL 'sini ve ' `api-key`yı sağlamanızı gerektirir. 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Atlama çubuğunda, aboneliğiniz için sağlanan tüm Azure Search hizmetlerini listelemek için **Search hizmeti**'ne tıklayın.
+2. Aboneliğiniz için sağlanan tüm Azure Search hizmetlerini listelemek için atlama çubuğunda **Arama hizmeti** ' ni seçin.
 3. Kullanmak istediğiniz hizmeti seçin.
 4. Hizmet panosunda, yönetici anahtarlarına erişim için anahtar simgesi ile birlikte önemli bilgiler için kutucuklar görürsünüz.
    
@@ -69,20 +69,20 @@ Tüm REST API çağrıları Azure Search, hizmet URL 'sini ve ' `api-key`yı sa�
 
 ## <a name="download-the-sample-files"></a>Örnek dosyalarını indirme
 1. GitHub’da [search-java-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) öğesine gidin.
-2. **ZIP'i İndir**'e tıklayın, .zip dosyasını diske kaydedin ve ardından içerdiği tüm dosyaları ayıklayın. Daha sonra projeyi bulmayı kolaylaştırmak için, dosyaları Java çalışma alanınıza ayıklamayı göz önünde bulundurun.
+2. **ZIP 'ı indir**' i seçin,. zip dosyasını diske kaydedin ve ardından içerdiği tüm dosyaları ayıklayın. Daha sonra projeyi bulmayı kolaylaştırmak için, dosyaları Java çalışma alanınıza ayıklamayı göz önünde bulundurun.
 3. Örnek dosyaları salt okunurdur. Klasör özelliklerine sağ tıklayın ve salt okunur özniteliğini kaldırın.
 
 Sonraki tüm dosya değişiklikleri ve çalıştırma deyimleri bu klasördeki dosyalara uygulanır.  
 
 ## <a name="import-project"></a>Projeyi içeri aktarma
-1. Eclipse'te, **File (Dosya)**  > **Import (İçeri Aktar)**  > **General (Genel)**  > **Existing Projects into Workspace (Var olan Projeleri Çalışma Alanına)** seçeneğini belirleyin.
+1. Tutulma ' da, **Dosya** > **genel** > var > **olan projeleri çalışma alanına**Aktar ' ı seçin.
    
     ![Mevcut projenin nasıl içeri aktarılacağını gösteren ekran görüntüsü][4]
 2. **Select root directory (Kök dizini seç)** bölümünde örnek dosyaları içeren klasöre gidin. Proje klasörünü içeren klasörü seçin. Proje, **Projects (Projeler)** listesinde seçili öğe olarak görünmelidir.
    
     ![Projeleri Içeri aktar penceresindeki projeler listesini gösteren ekran görüntüsü][12]
-3.           **Son**'a tıklayın.
-4. Dosyaları görüntülemek ve düzenlemek için **Proje Gezgini**'ni kullanın. Zaten açık değilse **Pencere** > **Görünümü Göster** > **Proje Gezgini**'ne tıklayın veya açmak için kısayolu kullanın.
+3. **Son**’u seçin.
+4. Dosyaları görüntülemek ve düzenlemek için **Proje Gezgini**'ni kullanın. Zaten açık değilse **pencere** > **Görünüm** > **Proje Gezginini** göster ' i seçin veya kısayolu açmak için kısayolu kullanın.
 
 ## <a name="configure-the-service-url-and-api-key"></a>Hizmet URL 'sini yapılandırın ve`api-key`
 1. **Proje Gezgini**'nde, **config. Properties** ' e çift tıklayarak sunucu adı ve `api-key`içeren yapılandırma ayarlarını düzenleyin.
@@ -96,19 +96,19 @@ Sonraki tüm dosya değişiklikleri ve çalıştırma deyimleri bu klasördeki d
 2. **Dynamic Web Module (Dinamik Web Modülü)** öğesini, **Java**'yı ve **JavaScript**'i seçin.
    
     ![Projeniz için proje modellerinin nasıl seçileceğini gösteren ekran görüntüsü][6]
-3. **Uygula**'ya tıklayın.
+3. **Uygula**’yı seçin.
 4. **Window (Pencere)**  > **Preferences (Tercihler)**  > **Server (Sunucu)**  > **Runtime Environments (Çalışma Zamanı Ortamları)**  > **Add... (Ekle...)** öğesini seçin.
 5. Apache'yi genişletin ve önceden yüklediğiniz Apache Tomcat sunucusu sürümünü seçin. Sistemimizde sürüm 8 yüklüdür.
    
     ![Çalışma zamanı ortamı penceresinde, Apache Tomcat sürümünüzü seçebileceğiniz ekran görüntüsü][7]
 6. Sonraki sayfada Tomcat yükleme dizinini belirtin. Windows bilgisayarda, bu büyük olasılıkla C:\Program Files\Apache Software Foundation\Tomcat *sürüm* olacaktır.
-7.           **Son**'a tıklayın.
+7. **Son**’u seçin.
 8. **Window (Pencere)**  > **Preferences (Tercihler)**  > **Java** > **Installed JREs (Yüklü JRE'ler)**  > **Add (Ekle)** seçeneğini belirleyin.
 9. **Add JRE (JRE Ekle)** bölümünde **Standard VM (Standart VM)** öğesini seçin.
-10.           **İleri**'ye tıklayın.
-11. JRE Tanımı'nda, JRE giriş alanında **Directory (Dizin)** seçeneğine tıklayın.
+10. **İleri**’yi seçin.
+11. JRE tanımında, JRE giriş bölümünde **Dizin**' i seçin.
 12. **Program Files (Program Dosyaları)**  > **Java**'ya gidin ve daha önce yüklediğiniz JDK'yı seçin. JDK'yı JRE olarak seçmek önemlidir.
-13. Yüklü JRE'ler içinde **JDK**'yı seçin. Ayarlarınız aşağıdaki ekran görüntüsüne benzer görünmelidir.
+13. Yüklü JREs 'de **JDK**'yi seçin. Ayarlarınız aşağıdaki ekran görüntüsüne benzer görünmelidir.
     
     ![Yüklü JRE olarak JDK 'nin nasıl seçileceğini gösteren ekran görüntüsü][9]
 14. İsteğe bağlı olarak, uygulamayı bir dış tarayıcı penceresinde açmak için **Window (Pencere)**  > **Web Browser (Web Tarayıcısı)**  > **Internet Explorer**'ı seçin. Dış tarayıcı kullanmanız daha iyi bir Web uygulaması deneyimi sağlar.
@@ -117,11 +117,11 @@ Sonraki tüm dosya değişiklikleri ve çalıştırma deyimleri bu klasördeki d
 
 Yapılandırma görevlerini tamamladınız. Ardından, projeyi derleyip çalıştırırsınız.
 
-## <a name="build-the-project"></a>Projeyi derleme
-1. Proje Gezgini'nde proje adına sağ tıklayın ve projeyi yapılandırmak için **Run As (Farklı Çalıştır)**  > **Maven build... (Maven derlemesi...)** seçeneğini belirleyin.
+## <a name="build-the-project"></a>Proje derleme
+1. Proje Gezgini 'nde proje adına sağ tıklayın ve projeyi yapılandırmak için**Maven Build** **olarak** > Çalıştır ' ı seçin.
    
     ![Proje Gezgini penceresinde Maven derlemesini seçme şeklini gösteren ekran görüntüsü][10]
-2. Edit Configuration (Yapılandırmayı Düzenle) alanında Targets (Hedefler) için "clean install" ("temiz yükleme") yazın ve ardından **Run (Çalıştır)** düğmesine tıklayın.
+2. Yapılandırma Düzenle ' de hedefler ' de "temiz yüklemesi" girin ve ardından **Çalıştır**' ı seçin.
 
 Konsol penceresinde durum iletilerinin çıkışı alınır. Projenin hatasız olarak derlendiğini belirten DERLEME BAŞARILI iletisini görmeniz gerekir.
 
@@ -131,19 +131,19 @@ Bu son adımda, uygulamayı bir yerel sunucu çalışma zamanı ortamında çal�
 Eclipse'te henüz bir sunucu çalışma zamanı ortamı belirtmediyseniz öncelikle bunu yapmanız gerekir.
 
 1. Proje Gezgini'nde **WebContent**'i genişletin.
-2. **Search.jsp** > **Run As (Farklı Çalıştır)**  > **Run on Server (Sunucuda Çalıştır)** öğesine sağ tıklayın. Apache Tomcat sunucusunu seçin ve ardından **Run (Çalıştır)** öğesine tıklayın.
+2. **Search.jsp** > **Run As (Farklı Çalıştır)**  > **Run on Server (Sunucuda Çalıştır)** öğesine sağ tıklayın. Apache Tomcat sunucusunu seçip **Çalıştır**' ı seçin.
 
 > [!TIP]
-> Projenizi depolamak için varsayılan olmayan bir çalışma alanı kullandıysanız sunucu başlangıç hatasını önlemek için, **Run Configuration (Yapılandırmayı Çalıştır)** öğesini proje konumunu işaret edecek şekilde değiştirmeniz gerekir. Proje Gezgini'nde **Search.jsp** > **Run As (Farklı Çalıştır)**  > **Run Configurations (Yapılandırmaları Çalıştır)** öğesine sağ tıklayın. Apache Tomcat sunucusunu seçin. **Arguments (Bağımsız Değişkenler)** seçeneğine tıklayın. Projeyi içeren klasörü ayarlamak için **Workspace (Çalışma Alanı)** veya **File System (Dosya Sistemi)** seçeneğine tıklayın.
+> Projenizi depolamak için varsayılan olmayan bir çalışma alanı kullandıysanız sunucu başlangıç hatasını önlemek için, **Run Configuration (Yapılandırmayı Çalıştır)** öğesini proje konumunu işaret edecek şekilde değiştirmeniz gerekir. Proje Gezgini'nde **Search.jsp** > **Run As (Farklı Çalıştır)**  > **Run Configurations (Yapılandırmaları Çalıştır)** öğesine sağ tıklayın. Apache Tomcat sunucusunu seçin. **Bağımsız değişkenler**seçin. Projeyi içeren klasörü ayarlamak için **çalışma alanı** veya **dosya sistemi** ' ni seçin.
 > 
 > 
 
 Uygulamayı çalıştırdığınızda, koşulları girmeniz için arama kutusu sağlayan bir tarayıcı penceresi görmeniz gerekir.
 
-Dizini oluşturması ve yüklemesi için hizmete zaman tanımak amacıyla **Search (Ara)** seçeneğine tıklamadan önce yaklaşık bir dakika bekleyin. HTTP 404 hatası alırsanız yeniden denemeden önce biraz daha uzun süre beklemeniz gerekir.
+**Aramayı** seçmeden önce bir dakika bekleyip, dizin oluşturma ve yükleme süresine izin verin. HTTP 404 hatası alırsanız yeniden denemeden önce biraz daha uzun süre beklemeniz gerekir.
 
 ## <a name="search-on-usgs-data"></a>USGS verilerinde arama
-USGS veri kümesi, Rhode Island eyaleti ile ilgili kayıtları içerir. Boş bir arama kutusunda **Search (Ara)** düğmesine tıklarsanız varsayılan seçenek olan ilk 50 girişi alırsınız.
+USGS veri kümesi, Rhode Island eyaleti ile ilgili kayıtları içerir. Boş bir arama kutusunda **Ara** ' yı seçerseniz, varsayılan değer olan ilk 50 girdi alırsınız.
 
 Bir arama terimi girmeniz arama alt yapısına gitmesi gereken bir hedef verir. Bölgesel bir ad girmeyi deneyin. "Roger Williams", Rhode Island'ın ilk valisiydi. Çok sayıda parka, binaya ve okula onun adı verildi.
 

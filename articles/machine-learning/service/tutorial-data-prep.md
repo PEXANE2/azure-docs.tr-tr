@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 241c84212132ee90e71291758e094cb4a115f2e2
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: cc243fea67c479879f25e4f39e3cd1c5e0237869
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018090"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534356"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Öğretici: Gerileme modelleme için verileri hazırlama
 
@@ -35,40 +35,15 @@ Bu öğreticide şunları yaptınız:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Not defteri adımlarını okumak için [geliştirme ortamınızı ayarlamayı](#start) atlayın veya Not defterini almak ve Azure Notebooks veya kendi Not defteri sunucunuzda çalıştırmak için aşağıdaki yönergeleri kullanın. Not defterini çalıştırmak için şunlar gerekir:
+* [Öğreticiyi doldurun: İlk ml denemenizi](tutorial-1st-experiment-sdk-setup.md) oluşturmaya başlayın:
+    * Çalışma alanı oluşturma
+    * Bulut Not defteri sunucusu oluşturma
+    * Jupyter Not defteri panosunu başlatma
 
-* Aşağıdaki yüklü bir Python 3,6 Not defteri sunucusu:
-    * Azure Machine Learning SDK 'dan paket `azureml-dataprep`
-* Öğretici Not defteri
+* Jupyter Not defteri panosunu başlattıktan sonra **öğreticiler/Regression-part1-Data-Prep. ipynb** Not defterini açın.
 
-* Çalışma alanınızda bir [bulut Not defteri sunucusu](#azure) kullanın 
-* [Kendi Not defteri sunucunuzu](#server) kullanın
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  `azureml-dataprep` Paketi Azure Machine Learning SDK ' dan yüklediğinizden emin olun.
 
-### <a name="azure"></a>Çalışma alanınızda bir bulut Not defteri sunucusu kullanın
-
-Kendi bulut tabanlı Not defteri sunucunuza kolayca başlamak kolaydır. Python için Azure Machine Learning SDK zaten yüklenmiş ve bu bulut kaynağını oluşturduktan sonra sizin için yapılandırılmış.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Not defteri Web sayfasını başlattıktan sonra **öğreticiler/Regression-part1-Data-Prep. ipynb** Not defterini çalıştırın.
-
-### <a name="server"></a>Kendi Jupyter Not defteri sunucunuzu kullanın
-
-Bilgisayarınızda yerel bir Jupyter not defteri sunucusu oluşturmak için aşağıdaki adımları kullanın.  Adımları tamamladıktan sonra **öğreticiler/Regression-part1-Data-Prep. ipynb** Not defterini çalıştırın.
-
-1. [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)'daki yükleme adımlarını doldurun.
-1. SDK 'yı yüklediğinizde paket otomatik olarak yüklenir. `azureml-dataprep`
-1. [GitHub deposunu](https://aka.ms/aml-notebooks) kopyalayın.
-
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Kopyaladığınız dizinden notebook sunucusunu başlatın.
-
-    ```shell
-    jupyter notebook
-    ```
 
 ## <a name="start"></a>Geliştirme ortamınızı ayarlama
 

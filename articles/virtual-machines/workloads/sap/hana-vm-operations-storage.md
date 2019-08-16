@@ -1,6 +1,6 @@
 ---
-title: SAP HANA Azure sanal makine depolama yapılandırmaları | Microsoft Docs
-description: SAP HANA, dağıtılan bunları sahip VM için depolama önerileri.
+title: Azure sanal makine depolama yapılandırmalarının SAP HANA | Microsoft Docs
+description: SAP HANA dağıtılan VM için depolama önerileri.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -13,185 +13,187 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/05/2019
+ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d062b6fff9693d5bda75edd65b8fe88d834eff57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b363c9da195794f6356539ffca46101edf431c2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735519"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533882"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
-Azure, Azure Vm'leri için SAP HANA çalıştırmayı uygun olan farklı depolama türlerini sağlar. SAP HANA dağıtım listesi gibi için kabul edilebilir bir Azure depolama türleri: 
+Azure, SAP HANA çalıştıran Azure sanal makineleri için uygun olan farklı türlerde depolama alanı sağlar. SAP HANA dağıtımlar listesi için kabul edilebilir Azure Depolama türleri: 
 
-- Standart SSD disk sürücüsü (SSD)
-- Premium katı hal sürücülerine (SSD)
-- Ultra yüksek SSD genel önizlemeye sunuldu ve üretim SAP uygulamalarıyla henüz desteklenmiyor
+- Standart SSD disk sürücüleri (SSD)
+- Premium katı hal sürücüleri (SSD)
+- [Ultra disk](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-enable-ultra-ssd) 
 
-Şu disk türleri hakkında bilgi edinmek için bkz [bir disk türü seçin](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types)
+Bu disk türleri hakkında bilgi edinmek için [disk türünü seçme](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types) makalesine bakın
 
-Azure, Azure standart ve Premium depolama alanına VHD'ler için iki dağıtım yöntemleri sunar. Genel senaryo veriyorsa yararlanmak [Azure yönetilen disk](https://azure.microsoft.com/services/managed-disks/) dağıtımları. 
+Azure, Azure Standard ve Premium depolamada bulunan VHD 'ler için iki dağıtım yöntemi sunar. Genel senaryo izin veriyorsa, [Azure yönetilen disk](https://azure.microsoft.com/services/managed-disks/) dağıtımlarından yararlanın. 
 
-Depolama türleri ve IOPS ve depolama aktarım hızının, SLA'ları içeren listeyi gözden geçirip [yönetilen diskler için Azure belgeleri](https://azure.microsoft.com/pricing/details/managed-disks/).
+Depolama türlerinin bir listesi ve ıOPS ve depolama aktarım hızı içindeki SLA 'Lar için, [yönetilen diskler Için Azure belgelerini](https://azure.microsoft.com/pricing/details/managed-disks/)gözden geçirin.
 
-**Öneri: Azure Premium depolama, Azure yazma Hızlandırıcı ile birlikte kullanın ve dağıtım için Azure yönetilen diskler kullanın**
+**Önerilen Azure Yazma Hızlandırıcısı ile birlikte Azure Premium depolamayı kullanma ve dağıtım için Azure yönetilen disklerini kullanma**
 
-Şirket içi dünyasında, nadiren g/ç alt sistemlerinin ve özellikleri hakkında önemli gerekiyordu. SAP HANA için en az depolama gereksinimlerinin karşılandığından emin olmak gereken gerecin satıcısına neden oldu. Azure altyapı kendiniz gibi bu gereksinimleri bazıları farkında olmalıdır. Bazı istemeden en düşük aktarım hızı özelliklerine gerek výsledek:
+Şirket içi dünyada, genellikle g/ç alt sistemleri ve özellikleri hakkında dikkatli olmanız gerekiyordu. Bunun nedeni, Gereç satıcısının SAP HANA için en düşük depolama gereksinimlerinin karşılandığından emin olması gerekiyordu. Azure altyapısını kendiniz oluştururken, bu gereksinimlerin bazılarını bilmelisiniz. İstenen en düşük aktarım hızı özelliklerinden bazıları şunlar için gerekenler:
 
-- Okuma/yazma etkinleştirileceği **/hana/günlük** 250 MB/sn 1 MB g/ç boyutu
-- Etkinleştirme okuma en az 400 MB/sn için etkinlik **/hana/veri** 16 MB ve 64 MB g/ç boyutları için
-- En az 250 MB/sn için yazma etkinliği etkinleştirin **/hana/veri** 16 MB ve 64 MB g/ç boyutu
+- 1 MB g/ç boyutlarıyla 250 MB/sn 'nin **/Hana/log** tarihinde okuma/yazma özelliğini etkinleştirin
+- 16 MB ve 64 MB g/ç boyutları için **/Hana/Data** için en az 400 MB/sn okuma etkinliğini etkinleştirin
+- 16 MB ve 64 MB g/ç boyutları ile **/Hana/Data** için en az 250 MB/sn yazma etkinliğini etkinleştirin
 
-Düşük depolama gecikme süresi gibi SAP HANA DBMS verileri bellek içinde saklamak gibi DBMS sistemler için önemlidir. Kritik depolama genellikle DBMS sistemleri işlem günlüğü yazma yoludur. Ancak aynı zamanda operations kayıt yazma veya kilitlenme kurtarma kritik sonra verileri bellek içinde yükleniyor. Bu nedenle, **zorunlu** için Azure Premium Diskler'den yararlanmaya **/hana/veri** ve **/hana/günlük** birimleri. En düşük aktarım hızı elde etmek için **/hana/günlük** ve **/hana/veri** RAID 0 oluşturmanızı sağlayacak dilediğiniz şekilde SAP tarafından MDADM veya LVM birden çok Azure Premium depolama diskleri kullanarak. Ve RAID birimleri olarak **/hana/veri** ve **/hana/günlük** birimleri. 
+Yetersiz depolama gecikmesi DBMS sistemleri için kritik öneme sahip olduğu için, DBMS gibi SAP HANA, verileri bellekteki tut gibi. Depolama alanındaki kritik yol genellikle DBMS sistemlerinin işlem günlüğü yazmaları etrafında olur. Ayrıca, kilitlenme kurtarmasından sonra işlemi yazma veya bellek içi veri yükleme gibi işlemler önemli olabilir. Bu nedenle, **/Hana/Data** ve **/Hana/log** birimleri için Azure Premium disklerinin yararlanmak **zorunludur** . SAP tarafından istenen en düşük **/Hana/log** ve **/Hana/Data** aktarım hızını elde etmek Için, birden çok Azure Premium Depolama diski üzerinden MDADDM veya LVM kullanarak bir RAID 0 oluşturmanız gerekir. Ve RAID birimlerini **/Hana/Data** ve **/Hana/log** birimleri olarak kullanın. 
 
-**Öneri: Stripe RAID 0 öneri boyutları olarak kullanmaktır:**
+**Önerilen RAID 0 için şerit boyutları olarak kullanım önerisi:**
 
-- 64 KB veya 128 KB   **/hana/veri**
-- 32 KB   **/hana/günlük**
+- **/Hana/Data** IÇIN 64 kb veya 128 KB
+- **/Hana/log** IÇIN 32 KB
 
 > [!NOTE]
-> Azure Premium ve standart depolama üç görüntü VHD tutmak bu yana RAID birimleri kullanılarak herhangi bir yedeklilik düzeyi yapılandırmanız gerekmez. Yalnızca bir RAID birimine kullanımını yeterli g/ç aktarım hızı birimleri yapılandırmaktır.
+> Azure Premium ve standart depolama, bir VHD 'nin üç görüntüsünü tutadığından, RAID birimlerini kullanarak artıklık düzeyi yapılandırmanız gerekmez. RAID birimi kullanımı, yalnızca yeterli g/ç üretilen işi sağlayan birimleri yapılandırmak içindir.
 
-Azure VHD'leri bir RAID altında bir dizi biriktirme, IOPS ve depolama aktarım hızı taraftan biriktirici olur. 3 x P30 Azure Premium depolama diskleri üzerinde bir RAID 0 koyarsanız, bu nedenle, bu, üç kez IOPS ve tek bir Azure Premium depolama P30 disk depolama verimliliğini üç kez vermeniz gerekir.
+Bir RAID 'in altındaki birçok Azure VHD birikimini, ıOPS ve depolama alanı işleme tarafında ackümülatif ' dir. Bu nedenle, 3 x P30 Azure Premium Depolama diski üzerinden bir RAID 0 yerleştirirseniz, tek bir Azure Premium Depolama P30 diskinin depolama aktarım hızını üç kez ve üç kez vermesi gerekir.
 
-Aşağıdaki önbelleğe alma önerileri, g/ç özelliklerini listeleyen gibi SAP HANA için varsayılarak:
+Aşağıdaki önbelleğe alma önerileri, şunun gibi SAP HANA için g/ç özelliklerinin olduğunu varsayar:
 
-- Zor var. karşı HANA veri dosyalarını okuma her türlü iş yükü Büyük ölçekli g/ç HANA veriler yüklendiğinde veya HANA örneği yeniden başlatma işleminden sonra özel durumlardır. Başka bir örneği büyük veri dosyalarını karşı g/ç HANA veritabanı yedeklemeleri olabilir okuyun. Sonuç olarak çoğunlukla Önbellek Okuma beri örneklerinin en mantıklı değildir, tüm veri dosyası birimleri tamamen okunması gerekir.
-- Veri dosyalarını karşı yazma, HANA kayıt ve HANA kurtarma tarafından temel artışları yaşanır. Yazma kayıt zaman uyumsuzdur ve tüm kullanıcı işlemleri tutan değil. Yazma kilitlenme Kurtarma sırasında önemli bir performans sistem yeniden hızlı yanıt almak için verilerdir. Bunun yerine olağanüstü durum kurtarma ancak olmalıdır
-- HANA Yinele dosyalarından gereken tüm okuma vardır. Özel durumlar, işlem günlüğü yedeklemeleri, kilitlenme kurtarma gerçekleştirirken veya bir HANA örneği yeniden başlatma aşaması büyük g/ç olan.  
-- Ana SAP HANA Yinele günlük dosyası karşı yazma yüktür. G/ç olabilir iş yükü doğasına bağlı, 4 KB olarak veya diğer durumlarda g/ç boyutu 1 MB veya daha fazla küçük. Performans kritik SAP HANA Yinele günlük karşı gecikme yazmaktır.
-- Tüm yazma işlemlerini güvenilir bir biçimde diskte kalıcı gerekir
+- HANA veri dosyalarında her türlü okuma iş yükü vardır. Özel durumlar, HANA örneğinin yeniden başlatıldıktan sonra veya veriler HANA 'ya yüklendiğinde büyük ölçekli g/ç 'dir. Veri dosyalarına karşı daha büyük bir okuma g/ç, HANA veritabanı yedeklemeleri olabilir. Sonuç olarak okuma önbelleği çoğu durumda çoğu zaman bu yana anlamlı değildir, tüm veri dosyası birimlerinin tamamen okunabilir olması gerekir.
+- Veri dosyalarına yönelik yazma, Hana işlemi ve Hana kilitlenme kurtarması temelinde artışlarıyla 'de yaşanır. İşlemi yazmak zaman uyumsuzdur ve herhangi bir Kullanıcı hareketini tutmaz. Kilitlenme kurtarması sırasında verilerin yazılması, sistemin tekrar hızlı yanıt vermesini sağlamak için performans açısından kritik öneme sahiptir. Ancak, kilitlenme kurtarması bunun yerine olağanüstü durumlar olmalıdır
+- HANA yineleme dosyalarından her türlü okuma işlemi de vardır. Özel durumlar, işlem günlüğü yedeklemeleri, kilitlenme kurtarması veya bir HANA örneğinin yeniden başlatma aşamasında olan büyük g/ç aşamasıdır.  
+- SAP HANA Yinele günlük dosyasında ana yük yazılır. İş yükünün yapısına bağlı olarak, 4 KB kadar küçük veya diğer durumlarda 1 MB veya daha fazla g/ç boyutunda g/ç olabilir. Yeniden yineleme SAP HANA için yazma gecikmesi performans açısından kritik öneme sahiptir.
+- Tüm yazmamaların diskte güvenilir bir biçimde kalıcı olması gerekir
 
-**Öneri: Bu gözlemlenen GÇ desenlerinden sonucunda SAP HANA, Azure Premium depolama kullanan farklı birimler için önbelleğe alma gibi ayarlanmalıdır:**
+**Önerilen Bu gözlemlenen g/ç desenlerinin SAP HANA bir sonucu olarak, Azure Premium depolama kullanan farklı birimlerin önbelleğe alınması şöyle ayarlanmalıdır:**
 
-- **/ hana/veri** -önbelleksizlik
-- **/ hana/günlük** - önbelleksizlik - M serisi (Bu belgenin sonraki bölümlerinde bakın) için özel durumu
-- **/ hana/paylaşılan** - okuma önbelleğe alma
-
-
-Ayrıca genel VM g/ç aktarım hızı boyutlandırma ya da bir VM için karar aklınızda bulundurun. VM depolama verimliliğini makalesinde genel belgelenen [bellek için iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
-
-## <a name="linux-io-scheduler-mode"></a>Linux g/ç Zamanlayıcısını modu
-Linux, birkaç farklı g/ç planlama modu vardır. Linux satıcılar ve SAP ortak öneri olan disk birimlerden g/ç Zamanlayıcı modunu yapılandırmak için **cfq** moduna **noop** modu. Ayrıntılar başvurulan [SAP notu #1984798](https://launchpad.support.sap.com/#/notes/1984787). 
+- **/Hana/Data** -önbelleğe alma yok
+- **/Hana/log** -önbelleğe alma-d serisi için özel durum (Bu belgenin devamındaki bölümüne bakın)
+- **/Hana/Shared** -okuma önbelleği
 
 
-## <a name="production-storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure M serisi sanal makineler için Azure yazma Hızlandırıcı ile üretim depolama çözümü
-Azure yazma Hızlandırıcı Azure M serisi VM'ler için özel olarak kullanıma bir işlevdir. Adını belirten gibi Azure Premium Depolama'ya yönelik yazma işlemlerinin g/ç gecikme işlevselliğini amacı artırmaktır. SAP HANA için yazma Hızlandırıcı karşı kullanılmak üzere beklenen **/hana/günlük** yalnızca birim. Bu nedenle, **/hana/veri** ve **/hana/günlük** destekleyen Azure yazma Hızlandırıcı ile farklı birimler **/hana/günlük** yalnızca birim. 
+Ayrıca, bir VM 'yi boyutlandırdığınızda veya karar verirken genel VM g/ç verimini göz önünde bulundurun. Genel VM depolama verimi, bu makalede bellek için [iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)bölümünde belgelenmiştir.
+
+## <a name="linux-io-scheduler-mode"></a>Linux g/ç zamanlayıcı modu
+Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SAP aracılığıyla sık görülen öneriler, disk birimleri için g/ç Zamanlayıcı modunu, **CFQ** modundan **noop** moduna yeniden yapılandırmadır. [SAP Note #1984798](https://launchpad.support.sap.com/#/notes/1984787)ayrıntılara başvurulur. 
+
+
+## <a name="production-storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure 10 serisi sanal makineler için Azure Yazma Hızlandırıcısı ile üretim depolama çözümü
+Azure Yazma Hızlandırıcısı, Azure a serisi VM 'Leri için özel olarak kullanıma sunulan bir işlevdir. Ad olduğu gibi, işlevselliğin amacı, Azure Premium depolamada yazma Işlemleri için g/ç gecikmesini geliştirmedir. SAP HANA için, Yazma Hızlandırıcısı yalnızca **/Hana/log hacminde** kullanılması gerekir. Bu nedenle, **/Hana/Data** ve **/Hana/log** , Azure yazma Hızlandırıcısı yalnızca **/Hana/log** birimini desteklemeye yönelik ayrı birimlerdir. 
 
 > [!IMPORTANT]
-> Yalnızca Azure yazma Hızlandırıcı ile SAP HANA sertifika Azure M serisi sanal makineler için olduğundan **/hana/günlük** birim. Sonuç olarak, üretim senaryosu Azure M serisi sanal makinelerde SAP HANA dağıtımları için Azure yazma Hızlandırıcı ile yapılandırılması beklenir **/hana/günlük** birim.  
+> Azure n serisi sanal makineler için SAP HANA sertifikası, **/Hana/log** birimi Için yalnızca Azure yazma Hızlandırıcısı. Sonuç olarak, Azure n serisi sanal makinelerdeki dağıtım SAP HANA dağıtımları, **/Hana/log** birimi için Azure yazma hızlandırıcısı ile yapılandırılmalıdır.  
 
 > [!NOTE]
-> Üretim senaryoları için belirli bir sanal makine türü için SAP HANA SAP tarafından desteklenip desteklenmediğini kontrol [IAAS için SAP belgelerindeki](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
+> Üretim senaryolarında, [ıAAS Için SAP BELGELERINDE](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)sap tarafından SAP HANA için belirli bir sanal makine türünün desteklenip desteklenmediğini kontrol edin.
 
-**Öneri: Üretim senaryoları için önerilen yapılandırmalar şöyle görünür:**
+**Önerilen Üretim senaryolarında önerilen yapılandırma şöyle görünür:**
 
-| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | / hana/veri | / hana/günlük | / hana/paylaşılan | / root birimi | / usr/sap | hana/yedekleme |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data | /Hana/log | /Hana/Shared | /root birimi | /usr/SAP | Hana/yedekleme |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 giB | 500 MB/sn | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
-| M32ls | 256 GiB | 500 MB/sn | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
-| M64ls | 512 GiB | 1000 MB/sn | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
-| M64s | 1000 giB | 1000 MB/sn | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
-| M64ms | 1750 giB | 1000 MB/sn | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 giB | 2000 MB/sn |3 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 2 x P40 |
-| M128ms | 3800 giB | 2000 MB/sn | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P40 |
-| M208s_v2 | 2850 GiB | 1000 MB/sn | 4 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P40 |
-| M208ms_v2 | 5700 GiB | 1000 MB/sn | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
-| M416s_v2 | 5700 GiB | 2000 MB/sn | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
-| M416ms_v2 | 11400 giB | 2000 MB/sn | 8 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P50 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
+| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 2 x P40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P40 |
+| M208s_v2 | 2850 GiB | 1000 MB/s | 4 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P40 |
+| M208ms_v2 | 5700 GiB | 1000 MB/s | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
+| M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
+| M416ms_v2 | 11400 GiB | 2000 MB/s | 8 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P50 |
 
-M416xx_v2 VM türleri henüz Microsoft tarafından ortak olarak kullanılabilir duruma getirilmez. Farklı önerilen birimler için depolama verimliliğini çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü için daha yüksek birimleri gerektiriyorsa **/hana/veri** ve **/hana/günlük**, Azure Premium depolama VHD'leri sayısını artırmanız gerekir. Bir toplu listelenen arttıkça IOPS değerinden daha fazla VHD ile ve Azure sanal makine türünü sınırları dahilinde g/ç aktarım hızı boyutlandırma.
+M416xx_v2 VM türleri henüz Microsoft tarafından genel kullanıma açık hale getirilmez. Farklı önerilen birimler için depolama aktarım hızının, çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü **/Hana/Data** ve **/Hana/log**için daha yüksek birimler gerektiriyorsa, Azure Premium Depolama VHD 'lerinin sayısını artırmanız gerekir. Listelenmiş olandan daha fazla VHD 'ye sahip bir birimi boyutlandırma, ıOPS 'yi ve g/ç verimini Azure sanal makine türü sınırları içinde arttırır.
 
-Azure yazma Hızlandırıcı, yalnızca çalışır birlikte [Azure yönetilen diskler](https://azure.microsoft.com/services/managed-disks/). Bu nedenle en az Azure Premium depolama diskleri oluşturan **/hana/günlük** birim yönetilen diskler olarak dağıtılması gerekiyor.
+Azure Yazma Hızlandırıcısı yalnızca [Azure yönetilen disklerle](https://azure.microsoft.com/services/managed-disks/)birlikte çalışmaktadır. Bu nedenle, en azından **/Hana/log** birimini oluşturan Azure Premium Depolama disklerinin yönetilen diskler olarak dağıtılması gerekir.
 
-Azure Premium depolama VHD'leri Azure yazma Hızlandırıcı tarafından desteklenen VM başına sınırları vardır. Geçerli sınırlar şu şekildedir:
+Azure Yazma Hızlandırıcısı tarafından desteklenebilir sanal makine başına Azure Premium Depolama VHD 'lerinin sınırları vardır. Geçerli sınırlar şunlardır:
 
-- M128xx ve M416xx bir VM 16 VHD'ler
-- M64xx ve M208xx bir VM için 8 VHD'ler
-- Bir M32xx 4 VHD'ler VM
+- M128xx ve M416xx VM için 16 VHD
+- M64xx ve M208xx VM için 8 VHD
+- M32xx VM için 4 VHD
 
-Makalesinde Azure yazma Hızlandırıcı etkinleştirme hakkında daha ayrıntılı yönergeler bulunabilir [yazma hızlandırıcı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+Azure Yazma Hızlandırıcısı 'in nasıl etkinleştirileceği hakkında daha ayrıntılı yönergeler [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)makalesinde bulunabilir.
 
-Ayrıntıları ve kısıtlamaları Azure yazma Hızlandırıcı için aynı belgelerinde bulunabilir.
+Azure Yazma Hızlandırıcısı yönelik ayrıntılar ve kısıtlamalar aynı belgelerde bulunabilir.
 
-**Öneri: Yazma Hızlandırıcı /hana/log birimin oluşturan diskler için kullanmanız gerekir**
+**Önerilen /Hana/log birimini oluşturan diskler için Yazma Hızlandırıcısı kullanmanız gerekir**
 
 
-## <a name="cost-conscious-azure-storage-configuration"></a>Maliyet bilinçli Azure depolama yapılandırması
-Aşağıdaki tabloda, Azure Vm'leri üzerinde SAP HANA ana müşterileri de VM türleri bir yapılandırılmasını gösterir. SAP HANA için tüm en az depolama ölçütleri karşılamıyor olabilir veya SAP HANA ile SAP tarafından resmi olarak desteklenmez bazı VM türleri olabilir. Ancak şu ana kadar sorunsuz üretim dışı senaryolar için gerçekleştirmek için bu sanal makineler olduğu görülüyor. **/Hana/veri** ve **/hana/günlük** tek bir birim için birleştirilir. Sonuç olarak Azure yazma Hızlandırıcı kullanımı bir sınırlama ıops'ye hale gelebilir.
-
-> [!NOTE]
-> Desteklenen SAP senaryoları için belirli bir sanal makine türü için SAP HANA SAP tarafından desteklenip desteklenmediğini kontrol [IAAS için SAP belgelerindeki](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
+## <a name="cost-conscious-azure-storage-configuration"></a>Maliyet bilincine sahip Azure depolama yapılandırması
+Aşağıdaki tabloda, müşterilerin Azure VM 'lerinde SAP HANA barındırmak için de kullandığı VM türlerinin bir yapılandırması gösterilmektedir. SAP HANA için en düşük depolama ölçütlerine uymayan bazı sanal makine türleri olabilir veya SAP tarafından SAP HANA ile resmi olarak desteklenmez. Ancak şimdiye kadar bu VM 'Ler, üretim dışı senaryolar için iyi bir şekilde gerçekleştirdi. **/Hana/Data** ve **/Hana/log** , tek bir birimde birleştirilir. Sonuç olarak, Azure Yazma Hızlandırıcısı kullanımı ıOPS cinsinden bir sınırlama haline gelebilir.
 
 > [!NOTE]
-> Maliyet bilinçli bir çözümü, eski önerileri farklıdır sunucudan taşımak için [Azure standart HDD diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) daha iyi gerçekleştirmek için ve daha güvenilir [Azure standart SSD disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)
+> SAP tarafından desteklenen senaryolar için, [ıAAS Için SAP BELGELERINDE](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)sap tarafından SAP HANA için belirli bir sanal makine türünün desteklenip desteklenmediğini kontrol edin.
+
+> [!NOTE]
+> Maliyet açısından önem veren bir çözüme yönelik önceki önerilerden bir değişiklik, [azure standart HDD disklerinden](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) daha iyi performans ve daha güvenilir [Azure Standart SSD disklerine](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) geçiş yapmak için kullanılır
 
 
-| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | / hana/veri ve/hana/günlük<br /> LVM'yi veya MDADM Şerit | / hana/paylaşılan | / root birimi | / usr/sap | hana/yedekleme |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data ve/Hana/log<br /> LVM veya MDADDM ile şeritli | /Hana/Shared | /root birimi | /usr/SAP | Hana/yedekleme |
 | --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 112 giB | 768 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
-| E16v3 | 128 GiB | 384 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
-| E32v3 | 256 GiB | 768 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| E64v3 | 432 giB | 1200 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
-| GS5 | 448 GiB | 2000 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
-| M32ts | 192 giB | 500 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| M32ls | 256 GiB | 500 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| M64ls | 512 GiB | 1000 MB/sn | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
-| M64s | 1000 giB | 1000 MB/sn | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
-| M64ms | 1750 giB | 1000 MB/sn | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
-| M128s | 2000 giB | 2000 MB/sn |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
-| M128ms | 3800 giB | 2000 MB/sn | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
-| M208s_v2 | 2850 GiB | 1000 MB/sn | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
-| M208ms_v2 | 5700 GiB | 1000 MB/sn | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
-| M416s_v2 | 5700 GiB | 2000 MB/sn | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
-| M416ms_v2 | 11400 giB | 2000 MB/sn | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
+| DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
+| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
+| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
+| E64v3 | 432 GiB | 1200 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
+| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
+| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
+| M208s_v2 | 2850 GiB | 1000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
+| M208ms_v2 | 5700 GiB | 1000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
+| M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
+| M416ms_v2 | 11400 GiB | 2000 MB/s | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
 
 
-M416xx_v2 VM türleri henüz Microsoft tarafından ortak olarak kullanılabilir duruma getirilmez. Daha küçük bir VM ile 3 x P20 oversize birimleri ayarına göre alan öneriler ilgili türler için önerilen disk [SAP TDI depolama teknik incelemesi](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Ancak tabloda gösterildiği seçimi, SAP HANA için yeterli disk aktarım hızı çalışıldı. Değişiklikleri gerekiyorsa **/hana/yedekleme** iki kez bellek birimine temsil eden yedeklemeler tutmak için boyutta, birim ayarlamak ücretsiz gönderebilirsiniz.   
-Farklı önerilen birimler için depolama verimliliğini çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü için daha yüksek birimleri gerektiriyorsa **/hana/veri** ve **/hana/günlük**, Azure Premium depolama VHD'leri sayısını artırmanız gerekir. Bir toplu listelenen arttıkça IOPS değerinden daha fazla VHD ile ve Azure sanal makine türünü sınırları dahilinde g/ç aktarım hızı boyutlandırma. 
-
-> [!NOTE]
-> Yukarıdaki yapılandırma öğesinden yararlı değildir [Azure sanal makine tek bir sanal makine SLA'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) Azure Premium depolama ve Azure standart depolama bir karışımını kullanır. Ancak, maliyetleri iyileştirmek için seçimi seçildi. Yukarıda Azure Standard Storage (VM yapılandırması Azure tek VM SLA ile uyumlu hale getirmek için Sxx) olarak listelenen tüm diskler için Premium depolama seçmeniz gerekir.
-
+M416xx_v2 VM türleri henüz Microsoft tarafından genel kullanıma açık hale getirilmez. 3 x P20 daha küçük sanal makine türleri için önerilen diskler, [SAP TDI depolama teknik incelemesine](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)göre boşluk önerileriyle ilgili birimleri fazla boyuta göre daha fazla boyuta sahiptir. Ancak tabloda gösterildiği gibi seçim, SAP HANA için yeterli disk işleme sağlamak üzere yapılmıştır. İki kat daha fazla bellek birimini temsil eden yedeklemeleri korumak için boyutlandırılmış olan **/Hana/Backup** biriminde değişiklikler yapmanız gerekiyorsa, ayarlamayı ücretsiz olarak kullanabilirsiniz.   
+Farklı önerilen birimler için depolama aktarım hızının, çalıştırmak istediğiniz iş yükünü karşılayıp karşılamadığını kontrol edin. İş yükü **/Hana/Data** ve **/Hana/log**için daha yüksek birimler gerektiriyorsa, Azure Premium Depolama VHD 'lerinin sayısını artırmanız gerekir. Listelenmiş olandan daha fazla VHD 'ye sahip bir birimi boyutlandırma, ıOPS 'yi ve g/ç verimini Azure sanal makine türü sınırları içinde arttırır. 
 
 > [!NOTE]
-> Belirtilen disk yapılandırması önerileri SAP altyapısını sağlayıcıları ifade en düşük gereksinimler hedeflediğiniz. Gerçek müşteri dağıtımları ve iş yükü senaryoları, burada bu önerileri yine de yeterli özellikleri sağlamadı durumlarda karşılaşıldı. Bunlar burada bir müşteri HANA yeniden başlatmadan sonra verileri daha hızlı bir şekilde yeniden yüklenmesi gereken durumlar olabilir veya burada depolama yapılandırmaları gerekli daha yüksek bant yedekleme. Dahil edilen diğer durumlarda **/hana/günlük** burada 5000 IOPS değil belirli iş yükü için yeterli. Bu nedenle bu önerileri bir başlangıç olarak işaret ve uyum Al iş yükü gereksinimlerine göre.
+> Yukarıdaki yapılandırmaların Azure [sanal makine tek VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) 'Sından bir Azure Premium Depolama ve Azure Standart depolama alanı karışımını kullandığından, bu yapılandırma avantajına sahip olmaz. Ancak, maliyetleri iyileştirmek için seçim seçilmiş. VM yapılandırmasını Azure tek VM SLA 'Sı ile uyumlu hale getirmek için Azure Standart depolama (SXX) olarak listelenen tüm diskler için Premium Depolama alanını seçmeniz gerekir.
+
+
+> [!NOTE]
+> Belirtilen disk yapılandırması önerileri, en düşük gereksinimleri SAP 'nin altyapı sağlayıcıları doğrultusunda ifade eder. Gerçek müşteri dağıtımları ve iş yükü senaryolarında, Bu önerilerin hala yeterli yetenekleri sağlamadığı durumlarla karşılaşıldı. Bu durum, bir müşterinin bir HANA yeniden başlatıldıktan sonra verilerin daha hızlı bir şekilde yeniden yüklenmesini gerektiren veya yedekleme yapılandırmalarının depolama için daha yüksek bant genişliğine sahip olduğu durumlar olabilir. Diğer durumlarda, 5000 ıOPS 'nin belirli iş yükü için yeterli olmadığı **/Hana/log** dahil değildir. Bu nedenle, bu önerileri bir başlangıç noktası olarak götürün ve iş yükünün gereksinimlerine göre uyarlayın.
 >  
 
-## <a name="azure-ultra-ssd-storage-configuration-for-sap-hana"></a>SAP HANA için Azure Ultra SSD depolama yapılandırması
-Microsoft adlı yeni bir Azure depolama türü ile tanışın sürecinde [Azure Ultra SSD](https://azure.microsoft.com/updates/ultra-ssd-new-azure-managed-disks-offering-for-your-most-latency-sensitive-workloads/). Şu ana kadar sunulan Azure depolama ve Ultra SSD arasında büyük fark, disk özellikleri için disk boyutunu artık bağlandığına değil ise. Bir müşteri olarak bu özellikler için Ultra yüksek SSD tanımlayabilirsiniz:
+## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>SAP HANA için Azure Ultra disk depolama yapılandırması
+Microsoft, [Azure Ultra disk](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#ultra-disk)adlı yeni bir Azure depolama türü kullanıma sunuyoruz. Şu ana kadar sunulan Azure depolama arasındaki büyük fark, disk yeteneklerinin artık disk boyutuna bağlanmadığı bir istektir. Müşteri olarak, bu özellikleri ultra disk için tanımlayabilirsiniz:
 
-- 4 GiB 65.536 Gib'a yeniden arasında değişen bir diskin boyutu
-- 100 IOPS IOPS aralığından 160K IOPS için (en fazla VM türleri de bağlıdır)
-- Depolama performansını 2.000 MB/sn için 300 MB/sn
+- 4 GiB ile 65.536 GiB arasında değişen bir disk boyutu
+- IOPS, 100 ıOPS 'den 160K ıOPS 'ye (maksimum sanal makine türlerine göre değişir) göre Aralık
+- 300 MB/sn 'den 2.000 MB/sn 'ye kadar depolama verimi
 
-Ayrıntılar için makalesi Ara [Duyurusu Ultra SSD – yeni nesil Azure diskleri teknoloji (Önizleme)](https://azure.microsoft.com/blog/announcing-ultra-ssd-the-next-generation-of-azure-disks-technology-preview/)
+Ultra Disk size boyut, ıOPS ve disk aktarım hızı aralığınızı karşılayan tek bir disk tanımlama olanağı sağlar. IOP ve depolama verimlilik gereksinimlerini karşılayan birimler oluşturmak için Azure Premium Depolama 'nın en üstünde LVM veya MDADDM gibi mantıksal birim yöneticileri kullanmak yerine. Ultra disk ve Premium Depolama arasında bir yapılandırma karışımı çalıştırabilirsiniz. Sonuç olarak, Ultra disk kullanımını performans açısından kritik/Hana/Data ve/Hana/log birimlerine sınırlayabilir ve Azure Premium Depolama ile diğer birimleri kapsaymanıza olanak sağlayabilirsiniz.
 
-UltraSSD, boyutu, IOPS ve disk aktarım hızı aralığı karşıladığı tek bir diske tanımlamak için olanağını sağlar. IOPS ve depolama aktarım hızı gereksinimlerini karşılamak birimleri oluşturmak için mantıksal birim yöneticileri LVM veya Azure Premium depolama üzerinde MDADM gibi kullanmak yerine. Yapılandırma karma UltraSSD ve Premium depolama çalıştırabilirsiniz. Sonuç olarak, performans kritik /hana/data ve /hana/log birimleri UltraSSD kullanımını sınırlamak ve Azure Premium depolama ile diğer birimleri kapsar
+> [!IMPORTANT]
+> Ultra disk henüz tüm Azure bölgelerinde mevcut değildir ve henüz tüm VM türlerini desteklemede değildir. Ultra diskin kullanılabildiği ve hangi VM ailelerinin desteklendiği hakkında ayrıntılı bilgi için, [Azure 'da disk türlerinin kullanılabildiği](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#ultra-disk)makaleye bakın.
 
-| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | / hana/veri hacmi | / hana/veri g/ç aktarım hızı | / hana/veri IOPS | / hana/günlük birimi | / hana/günlük g/ç aktarım hızı | / hana/günlük IOPS |
+| VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Data birimi | /Hana/Data g/ç verimlilik | /Hana/Data ıOPS | /Hana/log birimi | /Hana/log g/ç aktarım hızı | /Hana/log ıOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 giB | 500 MB/sn | 250 GB | 500 MB/sn | 7500 | 256 GB | 500 MB/sn  | 2000 |
-| M32ls | 256 GiB | 500 MB/sn | 300 GB | 500 MB/sn | 7500 | 256 GB | 500 MB/sn  | 2000 |
-| M64ls | 512 GiB | 1000 MB/sn | 600 GB | 500 MB/sn | 7500 | 512 GB | 500 MB/sn  | 2000 |
-| M64s | 1000 giB | 1000 MB/sn |  1200 GB | 500 MB/sn | 7500 | 512 GB | 500 MB/sn  | 2000 |
-| M64ms | 1750 giB | 1000 MB/sn | 2100 GB | 500 MB/sn | 7500 | 512 GB | 500 MB/sn  | 2000 |
-| M128s | 2000 giB | 2\.000 MB/sn |2400 GB | 1200 MB/sn |9000 | 512 GB | 800 MB/sn  | 2000 | 
-| M128ms | 3800 giB | 2\.000 MB/sn | 4800 GB | 1200 MB/sn |9000 | 512 GB | 800 MB/sn  | 2000 | 
-| M208s_v2 | 2850 GiB | 1000 MB/sn | 3500 GB | 1000 MB/sn | 9000 | 512 GB | 500 MB/sn  | 2000 | 
-| M208ms_v2 | 5700 GiB | 1000 MB/sn | 7200 GB | 1000 MB/sn | 9000 | 512 GB | 500 MB/sn  | 2000 | 
-| M416s_v2 | 5700 GiB | 2\.000 MB/sn | 7200 GB | 1500 M / sn | 9000 | 512 GB | 800 MB/sn  | 2000 | 
-| M416ms_v2 | 11400 giB | 2\.000 MB/sn | 14400 GB | 1500 MB/sn | 9000 | 512 GB | 800 MB/sn  | 2000 |   
+| E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 500 MBps | 7500 | 256 GB | 500 MBps  | 2000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 500 MBps | 7500 | 256 GB | 500 MBps  | 2000 |
+| M64ls | 512 GiB | 1000 MB/s | 600 GB | 500 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
+| M64s | 1000 GiB | 1\.000 MB/s |  1200 GB | 500 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
+| M64ms | 1750 GiB | 1\.000 MB/s | 2100 GB | 500 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
+| M128s | 2000 GiB | 2\.000 MB/s |2400 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 2000 | 
+| M128ms | 3800 GiB | 2\.000 MB/s | 4800 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 2000 | 
+| M208s_v2 | 2850 GiB | 1\.000 MB/s | 3500 GB | 1000 MBps | 9000 | 512 GB | 500 MBps  | 2000 | 
+| M208ms_v2 | 5700 GiB | 1\.000 MB/s | 7200 GB | 1000 MBps | 9000 | 512 GB | 500 MBps  | 2000 | 
+| M416s_v2 | 5700 GiB | 2\.000 MB/s | 7200 GB | 1500B bps | 9000 | 512 GB | 800 MBps  | 2000 | 
+| M416ms_v2 | 11400 GiB | 2\.000 MB/s | 14400 GB | 1500 MBps | 9000 | 512 GB | 800 MBps  | 2000 |   
 
-M416xx_v2 VM türleri henüz Microsoft tarafından ortak olarak kullanılabilir duruma getirilmez. Listelenen değerler bir başlangıç noktası olacak şekilde tasarlanmıştır ve gerçek taleplerini karşı değerlendirilmesi gerekir. Azure Ultra SSD ile avantajı, IOPS ve aktarım hızı için değerler sanal makineyi gerek kalmadan uyarlanabilir veya iş yükü durdurma sisteme uygulanacak olmasıdır.   
+M416xx_v2 VM türleri henüz Microsoft tarafından genel kullanıma açık hale getirilmez. Listelenen değerlerin başlangıç noktası olması amaçlanmıştır ve gerçek taleplere göre değerlendirilmesi gerekir. Azure Ultra disk 'in avantajı, ıOPS ve aktarım hızı değerlerinin, VM 'yi kapatma veya sisteme uygulanan iş yükünü durdurma gerekmeden uyarlanabilme gereği elde edilebilir.   
 
 > [!NOTE]
-> Şu ana kadar depolama anlık görüntüleri UltraSSD depolama ile kullanılamaz. Bu VM anlık görüntüleri Azure yedekleme Services ile kullanımını engeller.
+> Şimdiye kadar, Ultra disk depolaması olan depolama anlık görüntüleri kullanılabilir değildir. Bu, VM anlık görüntülerinin Azure Backup hizmetleriyle kullanımını engeller
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için bkz.
 
-- [Azure sanal makineleri için SAP HANA yüksek kullanılabilirlik Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+- [Azure sanal makineleri Için yüksek kullanılabilirlik kılavuzu SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

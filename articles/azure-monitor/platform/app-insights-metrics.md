@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: d4b7a214af23d69f1217d84e9401de230cd358b0
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877369"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535042"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
@@ -93,13 +93,13 @@ availabilityResults
 Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application Insights JavaScript SDK 'Sı tarafından toplanır. Kullanıcılarınızın web uygulamanızla ilgili deneyimi hakkında harika öngörüler sağlar. Tarayıcı ölçümleri genellikle örneklenir, yani örnekleme tarafından çarpıtılmış olan sunucu tarafı ölçümleriyle karşılaştırıldığında kullanım numaralarının daha yüksek hassasiyetini sağlar.
 
 > [!NOTE]
-> Tarayıcı ölçümlerini toplamak için uygulamanızın [Application Insights JAVASCRIPT SDK kod parçacığı](../../azure-monitor/app/javascript.md#add-the-sdk-script-to-your-app-or-web-pages)ile işaretlenmiş olması gerekir.
+> Tarayıcı ölçümlerini toplamak için uygulamanızın [Application Insights JavaScript SDK 'sı](../../azure-monitor/app/javascript.md)ile işaretlenmiş olması gerekir.
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Tarayıcı sayfa yükleme süresi (Browserzamanlamalar/totalDuration)
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
 
 ```Kusto
 browserTimings
@@ -115,7 +115,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, en düşük, en fazla|None|
+|Milisaniye|Ortalama, en düşük, en fazla|Yok.|
 
 ```Kusto
 browserTimings
@@ -185,7 +185,7 @@ Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum say�
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Count|Count|None|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Yok.|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -313,7 +313,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
+|Yüzde|Ortalama, en düşük, en fazla|Bulut rol örneği
 
 ```Kusto
 performanceCounters
@@ -327,7 +327,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Bayt/saniye|Ortalama, en düşük, en fazla|Bulut rolü örneği
+|Bayt/saniye|Ortalama, en düşük, en fazla|Bulut rol örneği
 
 ```Kusto
 performanceCounters
@@ -343,7 +343,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Bayt|Ortalama, en düşük, en fazla|Bulut rolü örneği
+|Bayt|Ortalama, en düşük, en fazla|Bulut rol örneği
 
 ```Kusto
 performanceCounters
@@ -359,7 +359,7 @@ performanceCounters
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
+|Yüzde|Ortalama, en düşük, en fazla|Bulut rol örneği
 
 >[!NOTE]
 > İşlemci zamanı ölçümü, Azure Uygulama Hizmetleri 'nde barındırılan uygulamalar için kullanılamaz. Uygulama hizmetlerinde barındırılan Web uygulamalarının CPU kullanımını izlemek için [Işlem CPU](#process-cpu-performancecountersprocesscpupercentage) ölçüsünü kullanın.

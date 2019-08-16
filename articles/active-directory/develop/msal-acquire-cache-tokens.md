@@ -3,7 +3,7 @@ title: Belirteçleri yönetme (Microsoft kimlik doğrulama kitaplığı) | Mavis
 description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak belirteçleri edinme ve önbelleğe alma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835090"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532893"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>MSAL kullanarak belirteçleri edinme ve önbelleğe alma
 [Erişim belirteçleri](access-tokens.md) , istemcilerin Azure tarafından korunan Web API 'lerini güvenli bir şekilde çağırmasını sağlar. Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollarla bir Web tarayıcısı aracılığıyla Kullanıcı etkileşimi gerekir. Bazıları hiçbir Kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç alma yöntemi, uygulamanın ortak bir istemci uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (bir Windows hizmeti gibi Web uygulaması, Web API 'SI veya Daemon uygulaması) olması halinde değişir.

@@ -3,7 +3,7 @@ title: İstemci uygulama yapılandırması (Microsoft kimlik doğrulama kitaplı
 description: Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) ortak istemci ve gizli istemci uygulamaları için yapılandırma seçenekleri hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304723"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532923"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
@@ -35,7 +35,7 @@ Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel v
     - [İstemci parolası](#client-secret) (gizli istemci uygulamaları için).
 - Günlük düzeyi, kişisel verilerin denetimi ve kitaplığı kullanarak bileşen adı dahil olmak üzere [günlüğe kaydetme seçenekleri](#logging).
 
-## <a name="authority"></a>İniz
+## <a name="authority"></a>Yetkili
 Yetkili, MSAL tarafından belirteçleri isteyebileceğini bir dizini gösteren bir URL 'dir. Ortak yetkililer şunlardır:
 
 - https\://Login.microsoftonline.com/\<kiracısı\>/, &lt;kiracı&gt; , Azure Active Directory (Azure AD) kiracısı veya bu Azure AD kiracısıyla ilişkili bir etki alanı olan kiracı kimliğidir. Yalnızca belirli bir kuruluşun kullanıcılarına oturum açmak için kullanılır.
@@ -98,14 +98,14 @@ Uygulamanız için geçerli hedef kitle, uygulamanızda belirlediğiniz hedef ki
 ## <a name="client-id"></a>İstemci Kimliği
 İstemci KIMLIĞI, uygulama kaydedildiğinde Azure AD tarafından uygulamanıza atanan benzersiz uygulama (istemci) KIMLIĞIDIR.
 
-## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'SI
+## <a name="redirect-uri"></a>Yönlendirme URI'si
 Yeniden yönlendirme URI 'si, kimlik sağlayıcısı 'nın güvenlik belirteçlerini uygulamasına geri göndereceği URI 'dir.
 
 ### <a name="redirect-uri-for-public-client-apps"></a>Ortak istemci uygulamaları için yeniden yönlendirme URI 'SI
 MSAL kullanan ortak bir istemci uygulama geliştiricisiyseniz:
 - Masaüstü veya UWP uygulamalarında kullanmak `.WithDefaultRedirectUri()` istersiniz (msal.NET 4.1 +). Bu yöntem, ortak istemci uygulamasının yeniden yönlendirme URI özelliğini genel istemci uygulamaları için önerilen varsayılan yeniden yönlendirme URI 'si olarak ayarlar. 
 
-  Platform  | Yeniden yönlendirme URI 'SI  
+  Platform  | Yönlendirme URI'si  
   ---------  | --------------
   Masaüstü uygulaması (.NET ILT) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`değeri. Bu, kaydolmanız gereken WebAuthenticationBroker. GetCurrentApplicationCallbackUri () sonucuna değer ayarlayarak, SSO 'yu tarayıcıda sağlar
@@ -129,7 +129,7 @@ Web Apps için, yeniden yönlendirme URI 'SI (veya Yanıt URI 'SI), Azure AD 'ni
 
 Daemon uygulamaları için bir yeniden yönlendirme URI 'SI belirtmeniz gerekmez.
 
-## <a name="client-secret"></a>Gizli anahtar
+## <a name="client-secret"></a>İstemci parolası
 Bu seçenek, gizli istemci uygulaması için istemci parolasını belirtir. Bu gizli dizi (uygulama parolası) uygulama kayıt portalı tarafından sağlanır veya PowerShell AzureAD, PowerShell Azurerd veya Azure CLı ile uygulama kaydı sırasında Azure AD 'ye sağlanır.
 
 ## <a name="logging"></a>Günlüğe Kaydetme

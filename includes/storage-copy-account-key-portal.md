@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 11/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 13e99f1dc84c5345ba04fcfc412b8ef4237cc581
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1eadda6e36e7e3798bf055b138bec1b897e3014d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188044"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541559"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>Azure portalından kimlik bilgilerinizi kopyalama
 
-Örnek uygulamanın, depolama hesabınıza erişim yetkisi vermesi gerekir. Bir bağlantı dizesi şeklinde uygulamaya depolama hesabı kimlik bilgilerinizi sağlayın. Depolama hesabınızın kimlik bilgilerini görüntülemek için:
+Örnek uygulamanın, depolama hesabınıza erişim yetkisi vermesi gerekir. Depolama hesabı kimlik bilgilerinizi uygulamaya bağlantı dizesi biçiminde sağlayın. Depolama hesabınızın kimlik bilgilerini görüntülemek için:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Depolama hesabınızı bulun.
 3. Depolama hesabına genel bakışın **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Hesap erişim anahtarlarınız ve bağlantı dizeniz görüntülenir.
 4. Yetkilendirme için gerekecek olan depolama hesabınızın adını not edin.   
-5. **key1** bölümünde **Anahtar** değerini bulun ve **Kopyala** düğmesine tıklayarak hesap anahtarını kopyalayın.
+5. **KEY1**altında **anahtar** değerini bulun ve hesap anahtarını kopyalamak için **Kopyala** ' yı seçin.
 
     ![Azure portalından hesap anahtarınızın kopyalanmasını gösteren ekran görüntüsü](media/storage-copy-account-key-portal/portal-account-key.png)

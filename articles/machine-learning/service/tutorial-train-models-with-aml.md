@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032999"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534790"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: Veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
 
@@ -40,33 +40,15 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Not defteri adımlarını okumak için [geliştirme ortamınızı ayarlamayı](#start) atlayın veya Not defterini almak ve Azure Notebooks veya kendi Not defteri sunucunuzda çalıştırmak için aşağıdaki yönergeleri kullanın.  Not defterini çalıştırmak için şunlar gerekir:
+* [Öğreticiyi doldurun: İlk ml denemenizi](tutorial-1st-experiment-sdk-setup.md) oluşturmaya başlayın:
+    * Çalışma alanı oluşturma
+    * Bulut Not defteri sunucusu oluşturma
+    * Jupyter Not defteri panosunu başlatma
 
-* Aşağıdaki yüklü bir Python 3,6 Not defteri sunucusu:
-    * Python için Azure Machine Learning SDK 'Sı
-    * `matplotlib` ve `scikit-learn`
-* Öğretici Not defteri ve dosya **Utils.py**
-* Machine Learning çalışma alanı
-* Çalışma alanının yapılandırma dosyası, not defteriyle aynı dizinde
+* Jupyter Not defteri panosunu başlattıktan sonra **öğreticiler/img-Classification-part1-Training. ipynb** Not defterini açın.
 
-Bu önkoşulların tümünü aşağıdaki bölümlerden birine alın.
+Öğretici ve ilgili **Utils.py** dosyası, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak isterseniz [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızdaki ve `matplotlib` `scikit-learn` ortamınızda yüklü olduğundan emin olun.
 
-* Çalışma alanınızda bir [bulut Not defteri sunucusu](#azure) kullanın
-* [Kendi Not defteri sunucunuzu](#server) kullanın
-
-### <a name="azure"></a>Çalışma alanınızda bir bulut Not defteri sunucusu kullanın
-
-Kendi bulut tabanlı Not defteri sunucunuza kolayca başlamak kolaydır. [Python için Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk) zaten yüklenmiş ve bu bulut kaynağını oluşturduktan sonra sizin için yapılandırılmış.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Not defteri Web sayfasını başlattıktan sonra **öğreticiler/img-Classification-part1-Training. ipynb** Not defterini açın.
-
-### <a name="server"></a>Kendi Jupyter Not defteri sunucunuzu kullanın
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- Adımları tamamladıktan sonra, kopyalanmış dizininizden **öğreticiler/img-Classification-part1-Training. ipynb** Not defterini çalıştırın.
 
 ## <a name="start"></a>Geliştirme ortamınızı ayarlama
 

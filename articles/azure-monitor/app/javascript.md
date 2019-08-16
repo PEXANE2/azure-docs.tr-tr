@@ -10,233 +10,252 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: eb936e7ad863fc7816ee8ed3b5dd88a8f25dbef0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813969"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534536"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
-Web sayfanızın veya uygulamanızın performansı ve kullanımı hakkında bilgi edinin. Sayfa betiğinize [Application Insights](app-insights-overview.md)’ı ekleyerek, sayfa yüklemelerinin ve AJAX çağrılarının zamanlamalarının yanı sıra, tarayıcı özel durumları ile AJAX hatalarının sayılarını ve ayrıntılarını, ayrıca kullanıcı ve oturum sayılarını elde edebilirsiniz. Bunların tümü sayfaya, istemci işletim sistemi ve tarayıcı sürümüne, coğrafi konuma ve başka boyutlara göre kesimlere ayrılmıştır. Hata sayısı veya yavaş sayfa yüklemesi hakkında uyarı ayarlayabilirsiniz. Ayrıca JavaScript kodunuza izleme çağrıları ekleyerek web sayfası uygulamanızın farklı özelliklerinin nasıl kullanıldığını izleyebilirsiniz.
 
-Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScript eklemeniz yeterlidir. Web hizmetinizin [Java](java-get-started.md) veya [ASP.NET](asp-net.md) olması halinde, sunucunuzdan ve istemcilerinizden telemetri tümleştirebilirsiniz.
+Web sayfanızın veya uygulamanızın performansı ve kullanımı hakkında bilgi edinin. Sayfa betiğe [Application Insights](app-insights-overview.md) eklerseniz, sayfa YÜKLEMELERININ ve Ajax çağrılarının zamanlamalarının yanı sıra, tarayıcı özel DURUMLARıNıN ve Ajax hatalarının yanı sıra kullanıcıların ve oturum sayılarındaki ayrıntıları alırsınız. Bunların tümü sayfaya, istemci işletim sistemi ve tarayıcı sürümüne, coğrafi konuma ve başka boyutlara göre kesimlere ayrılmıştır. Hata sayısı veya yavaş sayfa yüklemesi hakkında uyarı ayarlayabilirsiniz. Ayrıca JavaScript kodunuza izleme çağrıları ekleyerek web sayfası uygulamanızın farklı özelliklerinin nasıl kullanıldığını izleyebilirsiniz.
 
-![portal.azure.com adresinde uygulamanızın kaynağını açıp Tarayıcı’ya tıklayın](media/javascript/03.png)
+Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScript eklemeniz yeterlidir. Web hizmetiniz [Java](java-get-started.md) veya [ASP.net](asp-net.md)ise, uygulamanızın performansını uçtan uca anlamak için istemci tarafı JavaScript SDK 'sı Ile birlikte sunucu tarafı SDK 'larını kullanabilirsiniz.
 
-Bir [Microsoft Azure](https://azure.com) aboneliğine ihtiyacınız olacaktır. Takımınızın kurumsal bir aboneliği varsa sahibinden Microsoft Hesabınızı eklemesini isteyin.
+## <a name="adding-the-javascript-sdk"></a>JavaScript SDK 'Sı ekleme
 
-## <a name="set-up-application-insights-for-your-web-page"></a>Web sayfalarınız için Application Insights’ı ayarlama
-Yükleyici kod parçacığını web sayfalarınıza aşağıdaki şekilde ekleyin.
+1. Önce bir Application Insights kaynağına ihtiyacınız vardır. Henüz bir kaynak ve izleme anahtarınız yoksa [Yeni kaynak oluştur yönergelerini](create-new-resource.md)izleyin.
+2. JavaScript telemetrinizin gönderilmesini istediğiniz kaynaktaki izleme anahtarını kopyalayın.
+3. Aşağıdaki iki seçenekten birini kullanarak Web sayfanıza veya uygulamanıza Application Insights JavaScript SDK 'sını ekleyin:
+    * [NPM kurulumu](#npm-based-setup)
+    * [JavaScript kod parçacığı](#snippet-based-setup)
 
-### <a name="open-or-create-application-insights-resource"></a>Application Insights kaynağı açma veya oluşturma
-Sayfanızın performansı ve kullanımı hakkında verilerin görüntülendiği yer Application Insights kaynağıdır. 
+> [!IMPORTANT]
+> Uygulamanıza Application Insights JavaScript SDK 'Sı eklemek için aşağıdaki yöntemlerden birini kullanmanız yeterlidir. NPM tabanlı kurulumu kullanırsanız, kod parçacığı tabanlı kurulumu kullanmayın. Aynı zamanda, kod parçacığı tabanlı yaklaşımı kullanırken ters senaryo için de, NPM tabanlı kurulum 'u kullanmayın. 
 
-[Azure portalda](https://portal.azure.com) oturum açın.
+### <a name="npm-based-setup"></a>NPM tabanlı kurulum 
 
-Uygulamanız sunucu tarafı için izlemeyi zaten ayarladıysanız zaten bir kaynağınız vardır:
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
-![Gözat, Geliştirici Hizmetleri, Application Insights’ı seçin.](media/javascript/01-find.png)
+const appInsights = new ApplicationInsights({ config: {
+  instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+```
 
-Yoksa, bir tane oluşturun:
+### <a name="snippet-based-setup"></a>Kod parçacığı tabanlı kurulum
 
-![Yeni, Geliştirici Hizmetleri, Application Insights’ı seçin.](media/javascript/01-create.png)
+Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, bağımlılıklarınızın tüm olası sorunlarını izleyebilmesi için `<head>` , bölüminizdeki ilk betik olmalıdır.
 
-*Hala sorularınız mı var?* [Kaynak oluşturma hakkında daha fazla bilgi](create-new-resource.md ).
-
-### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Uygulamanıza veya web sayfalarınıza SDK betiği ekleme
-
-```HTML
-<!-- 
-To collect user behavior analytics about your application, 
-insert the following script into each page you want to track.
-Place this code immediately before the closing </head> tag,
-and before any other scripts. Your first data will appear 
-automatically in just a few seconds.
--->
+```html
 <script type="text/javascript">
-    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY"
-    }
-    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+{
+  instrumentationKey:"INSTRUMENTATION_KEY"
+}
+);window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
-Betiği, izlemek istediğiniz her sayfanın `</head>` etiketinin hemen önüne ekleyin. Web sayfanızda bir ana sayfa varsa betiği buraya koyabilirsiniz. Örneğin:
+### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
+
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bunlar:
+
+- Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
+    - Yığın izleme
+    - Özel durum ayrıntıları ve hatayı eşlik eden ileti
+    - Satır & sütun hatası sayısı
+    - Hatanın oluşturulduğu URL
+- Uygulamanızın yaptığı **ağ bağımlılığı Istekleri** **XHR** ve **getir** (getirme koleksiyonu varsayılan olarak devre dışıdır) istekleri, hakkında bilgi içerir
+    - Bağımlılık kaynağının URL 'si
+    - Bağımlılığı istemek için kullanılan komut & yöntemi
+    - İstek süresi
+    - İsteğin sonuç kodu ve başarı durumu
+    - İstek yapan kullanıcının KIMLIĞI (varsa)
+    - İsteğin yapıldığı bağıntı bağlamı (varsa)
+- **Kullanıcı bilgileri** (örneğin, konum, ağ, IP)
+- **Cihaz bilgileri** (örneğin, tarayıcı, işletim sistemi, sürüm, dil, çözüm, model)
+- **Oturum bilgileri**
+
+### <a name="telemetry-initializers"></a>Telemetri başlatıcıları
+Telemetri başlatıcıları, kullanıcının tarayıcısından gönderilmeden önce toplanan telemetrinin içeriğini değiştirmek için kullanılır. Ayrıca, `false`belirli telemetrinin gönderilmesini engellemek için de kullanılabilir. Application Insights örneğinize birden çok telemetri başlatıcıları eklenebilir ve bunlar ekleme sırasında yürütülür.
+
+İçin `addTelemetryInitializer` giriş bağımsız değişkeni, bir bağımsız değişken olarak bir [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer) `boolean` veya `void`döndüren bir geri çağırma olur. Geri döntakdirde `false`telemetri öğesi gönderilmez, aksi takdirde bir sonraki telemetri başlatıcısına devam eder veya telemetri toplama uç noktasına gönderilir.
+
+Telemetri başlatıcılarının kullanılmasına bir örnek:
+```ts
+var telemetryInitializer = (envelope) => {
+  envelope.data.someField = 'This item passed through my telemetry initializer';
+};
+appInsights.addTelemetryInitializer(telemetryInitializer);
+appInsights.trackTrace({message: 'This message will use a telemetry initializer'});
+
+appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
+appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
+```
+## <a name="configuration"></a>Yapılandırma
+Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç `instrumentationKey`olarak isteğe bağlıdır.
+
+| Name | Varsayılan | Açıklama |
+|------|---------|-------------|
+| ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
+| Accoun | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
+| sessionRenewalMs | 1800000 | Kullanıcı bu süre boyunca devre dışı bırakılırsa, bir oturum günlüğe kaydedilir. Varsayılan değer 30 dakikadır |
+| sessionExpirationMs | 86400000 | Bu süre boyunca milisaniye cinsinden devam eden bir oturum günlüğe kaydedilir. Varsayılan değer 24 saattir |
+| Maxbatchsizeınbytes | 10000 | Telemetri toplu işinin en büyük boyutu. Bir toplu iş bu sınırı aşarsa, hemen gönderilir ve yeni bir toplu işlem başlatılır |
+| Maxbatchınterval | 15000 | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) |
+| disableExceptionTracking | false | True ise özel durumlar, bir oto toplanmaz. Varsayılan değer false’tur. |
+| Disabletelemetri | false | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false’tur. |
+| enableDebug | false | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>***Not:*** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, `consoleLoggingLevel` veya `telemetryLoggingLevel` yerine `enableDebug`kullanmayı düşünün. |
+| loggingLevelConsole | 0 | **İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: Yalnızca kritik hatalar, <br>2: Her şey (hata & uyarı) |
+| Loggingleveltelemetri | 1\. | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: Yalnızca kritik hatalar, <br>2: Her şey (hata & uyarı) |
+| Diagnosticlogınterval | 10000 | iç İç günlük kuyruğu için yoklama aralığı (MS cinsinden) |
+| samplingPercentage | 100 | Gönderilecek olayların yüzdesi. Varsayılan değer 100 ' dir, yani tüm olaylar gönderilir. Büyük ölçekli uygulamalar için veri ucunu korumak isterseniz bunu ayarlayın. |
+| Oto Trackpagevisittime | false | True ise, bir PageView üzerinde, önceki belgelenmiş sayfanın görünüm süresi izlenir ve telemetri olarak gönderilir ve geçerli PageView için yeni bir Zamanlayıcı başlatılır. Varsayılan değer false’tur. |
+| disableAjaxTracking | false | True ise, Ajax çağrıları tekrar toplanmamıştır. Varsayılan değer false’tur. |
+| disableFetchTracking | true | True ise, Fetch istekleri tekrar toplanmaz. Varsayılan değer true 'dur |
+| overridePageViewDuration | false | True ise trackPageView 'ın varsayılan davranışı sayfa görüntüleme süresi aralığının sonuna, trackPageView çağrıldığında bir kayıt olarak değiştirilmiştir. Yanlış olursa ve trackPageView için özel süre sağlanmamışsa, sayfa görünümü performansı, gezinti zamanlaması API 'SI kullanılarak hesaplanır. Varsayılan değer false’tur. |
+| maxAjaxCallsPerView | 500 | Varsayılan 500-sayfa görünümü başına kaç AJAX çağrısının izleneceğini denetler. Sayfadaki tüm (sınırsız) AJAX çağrılarını izlemek için-1 olarak ayarlayın. |
+| disableDataLossAnalysis | true | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. |
+| disableCorrelationHeaders | false | Yanlış ise, SDK, sunucu tarafındaki ilgili isteklerle ilişkilendirmek üzere tüm bağımlılık isteklerine iki üst bilgi (' Istek-kimlik ' ve ' Istek-bağlam ') ekler. Varsayılan değer false’tur. |
+| correlationHeaderExcludedDomains |  | Belirli etki alanları için bağıntı üstbilgilerini devre dışı bırak |
+| correlationHeaderDomains |  | Belirli etki alanları için bağıntı üstbilgilerini etkinleştir |
+| disableFlushOnBeforeUnload | false | Varsayılan yanlış. True ise, onBeforeUnload olay tetikleyicileri sırasında temizleme yöntemi çağrılmayacak |
+| enableSessionStorageBuffer | true | Varsayılan değer. Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi |
+| Idite ıeusedisabled | false | Varsayılan yanlış. True ise SDK, tanımlama bilgilerinden herhangi bir veriyi depolamaz veya okummaz.|
+| Pişirme etki alanı | null | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur. |
+| ıretrydisabled | false | Varsayılan yanlış. Yanlışsa, 206 (kısmi başarı), 408 (zaman aşımı), 429 (çok fazla istek), 500 (iç sunucu hatası), 503 (hizmet kullanılamıyor) ve 0 (yalnızca algılanırsa) üzerinde yeniden deneyin |
+| ıstorageusedisabled | false | True ise, SDK yerel ve oturum depolamadan hiçbir veriyi depolamaz veya okummaz. Varsayılan değer false’tur. |
+| ıconlanapidisabled | true | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
+| SDK uzantısı | null | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). Varsayılan değer null. |
+| isBrowserLinkTrackingEnabled | false | Varsayılan değer false’tur. Doğru ise, SDK tüm [tarayıcı bağlantısı](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) isteklerini izler. |
+| appId | null | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. Varsayılan değer null |
+| enableCorsCorrelation | false | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. Varsayılan değer false şeklindedir |
+| namePrefix | tanımsız | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer.
+| Enableoto Routetracking | false | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri (`example.com/foo#bar`) de yeni sayfa görünümleri olarak kaydedilir.
+
+## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
+
+Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol değiştirmeyi işlemez. Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, kurulum yapılandırmanıza ekleyebilirsiniz `enableAutoRouteTracking: true` .
+
+Şu anda, bu SDK ile başlatabilmeniz için ayrı bir [tepki sağlayan eklenti](#react-extensions) sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)toplayacaktır.
+
+## <a name="react-extensions"></a>Tepki verme uzantıları
+
+| Uzantılar |
+|---------------|
+| [Tıkla](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)|
+| [Yerel olarak tepki verme](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native)|
+
+## <a name="explore-browserclient-side-data"></a>Tarayıcı/istemci tarafı verilerini keşfet
+
+Bir tarayıcı/istemci tarafı verileri, **ölçümler** 'e giderek ve ilgilendiğiniz ölçümleri tek bir ekleyerek görüntüleyebilirsiniz: 
+
+![](./media/javascript/page-view-load-time.png)
+
+Ayrıca, portaldaki tarayıcı deneyimi aracılığıyla JavaScript SDK 'sindeki verilerinizi görüntüleyebilirsiniz.
+
+**Tarayıcı** ' yı seçin ve ardından **hatalara** veya **performans**' ı seçin.
+
+![](./media/javascript/browser.png)
 
-* ASP.NET MVC projesinde `View\Shared\_Layout.cshtml` içine koyabilirsiniz
-* SharePoint sitesinde, denetim masasında [Site Ayarları / Ana Sayfa](sharepoint.md)’yı açın.
+### <a name="performance"></a>Performans 
 
-Betikte, verileri Application Insights kaynağınıza yönlendiren izleme anahtarı bulunur. 
+![](./media/javascript/performance-operations.png)
 
-([Betiğin daha ayrıntılı açıklaması](https://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
+### <a name="dependencies"></a>Bağımlılıkları
 
-## <a name="detailed-configuration"></a>Ayrıntılı yapılandırma
-Çoğunlukla gerekmese de, ayarlayabileceğiniz birkaç [parametre](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) vardır. Örneğin, sayfa başına görünümde bildirilen Ajax çağrılarını devre dışı bırakabilir veya çağrıların sayısını sınırlayabilirsiniz. Alternatif olarak, hata ayıklama modunu; telemetriyi toplu hale getirilmeden, ardışık düzende taşıyacak şekilde ayarlayabilirsiniz.
+![](./media/javascript/performance-dependencies.png)
 
-Bu parametreleri ayarlamak için kod parçacığında bu satırı bulun ve şunun arkasına virgülle ayrılmış daha fazla öğe ekleyin:
+### <a name="analytics"></a>Analiz 
 
-    })({
-      instrumentationKey: "..."
-      // Insert here
-    });
+JavaScript SDK 'Sı tarafından toplanan telemetrinizi sorgulamak için **Günlükler (Analiz) Içinde görüntüle** düğmesini seçin. `where` Bir`client_Type == "Browser"`ifadesini ekleyerek yalnızca JavaScript SDK 'dan verileri görürsünüz ve diğer SDK 'lar tarafından toplanan tüm sunucu tarafı telemetri hariç tutulur.
+ 
+```kusto
+// average pageView duration by name
+let timeGrain=5m;
+let dataset=pageViews
+// additional filters can be applied here
+| where timestamp > ago(1d)
+| where client_Type == "Browser" ;
+// calculate average pageView duration for all pageViews
+dataset
+| summarize avg(duration) by bin(timestamp, timeGrain)
+| extend pageView='Overall'
+// render result in a chart
+| render timechart
+```
 
-Yapılandırma parametrelerinin tüm listesi için lütfen [GitHub sayfasına](https://github.com/microsoft/applicationinsights-js#configuration)bakın. Bazı kullanılabilir parametreler şunlardır:
+### <a name="source-map-support"></a>Kaynak eşleme desteği
 
-    // Send telemetry immediately without batching.
-    // Remember to remove this when no longer required, as it
-    // can affect browser performance.
-    enableDebug: boolean,
+Özel durum telemetrinizin mini ' çağrı yığını 'i Azure Portal için küçültülmüş olabilir. Özel durum ayrıntıları panelindeki tüm mevcut tümleştirmeler, yeni bir küçültülmüş Callstack ile birlikte çalışacaktır. Sürükle ve bırak kaynak eşlemesi, tüm mevcut ve gelecekteki JS SDK 'larını (+ node. JS) destekler, bu nedenle SDK sürümünüzü yükseltmeniz gerekmez. Mini olmayan çağrı yığınınızı görüntülemek için
+1. "Uçtan uca işlem ayrıntılarını" görüntülemek için Azure portal bir özel durum telemetrisi öğesi seçin
+2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak şununla sondan düzeltildi`.map`
+3. Kaynak haritalarını Azure portal çağrı yığınına sürükleyip bırakın![](https://i.imgur.com/Efue9nU.gif)
 
-    // Don't log browser exceptions.
-    disableExceptionTracking: boolean,
+## <a name="application-insights-web-basic"></a>Application Insights Web temel
 
-    // Set false to enable autocollection of [Fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (disabled by default)
-    disableFetchTracking: boolean, // default is true
-    
-    // Don't log ajax calls.
-    disableAjaxTracking: boolean,
+Hafif bir deneyim için Application Insights temel sürümünü yükleyebilirsiniz
+```
+npm i --save @microsoft/applicationinsights-web-basic
+```
+Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şekilde oluşturmak için size dayanır. Örneğin, hiçbir yeniden koleksiyon (yakalanamayan özel durumlar, AJAX vb.) yoktur. , Vb. gibi `trackTrace` `trackException`belirli telemetri türlerini göndermek için API 'ler bu sürüme dahil değildir, bu nedenle kendi sarmalayıcı sağlamanız gerekir. Kullanılabilir tek API `track`. [Örnek](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) burada bulunur.
 
-    // Limit number of Ajax calls logged, to reduce traffic.
-    maxAjaxCallsPerView: 10, // default is 500
-    
-    // Time page load up to execution of first trackPageView().
-    overridePageViewDuration: boolean,
+## <a name="examples"></a>Örnekler
 
-    // Set dynamically for an authenticated user.
-    accountId: string,
-    
+Çalıştırılabilir örnekler için bkz. [Application Insights JAVASCRIPT SDK örnekleri](https://github.com/topics/applicationinsights-js-demo)
 
-## <a name="run"></a>Uygulamanızı çalıştırma
-Web uygulamanızı çalıştırın, telemetri oluşturmak için bir süre bunu kullanın ve birkaç saniye bekleyin. Geliştirme makinenizdeki **F5** tuşunu kullanarak bunu çalıştırabilir ya da yayımlayabilir ve kullanıcıların bunu yürütmesine izin verebilirsiniz.
+## <a name="upgrading-from-the-old-version-of-application-insights"></a>Application Insights eski sürümünden yükseltme
 
-Web uygulamasının Application Insights’a gönderdiği telemetriyi denetlemek istiyorsanız, tarayıcınızın hata ayıklama araçlarını kullanın (birçok tarayıcıda **F12**). Veriler dc.services.visualstudio.com adresine gönderilir.
+SDK v2 sürümündeki son değişiklikler:
+- Daha iyi API imzaları sağlamak için, trackPageView, trackException gibi bazı API çağrılarından bazıları güncelleştirilmiştir. IE8 ' te veya tarayıcının alt sürümlerinde çalıştırmak desteklenmez.
+- Telemetri zarfı, veri şeması güncelleştirmeleri nedeniyle alan adı ve yapı değişikliklerine sahiptir.
+- Taşındı `context.operation` .`context.telemetryTrace` Bazı alanlar da değiştirildi (`operation.id`) --> `telemetryTrace.traceID`
+  - Geçerli sayfa görüntülemesi kimliğini (örneğin, spa uygulamalarında) el ile yenilemek istiyorsanız, bu işlem şu şekilde yapılabilir`appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
 
-## <a name="explore-your-browser-performance-data"></a>Tarayıcı performans verilerinizi araştırma
-Kullanıcılarınızın tarayıcılarından toplanan performans verilerini göstermek için Tarayıcı dikey penceresini açın.
+Geçerli Application Insights ÜRETIM SDK 'sını (1.0.20) kullanıyorsanız ve yeni SDK 'nın çalışma zamanında çalışıp çalışmadığını görmek istiyorsanız, URL 'YI geçerli SDK yükleme senaryonuza bağlı olarak güncelleştirin.
 
-![portal.azure.com adresinde uygulamanızın kaynağını açıp Ayarlar, Tarayıcı’ya tıklama](./media/javascript/03.png)
+- CDN senaryosu aracılığıyla indir: Şu URL 'yi işaret etmek için şu anda kullandığınız kod parçacığını güncelleştirin:
+   ```
+   "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+   ```
 
-Henüz veri yok mu? Sayfanın üstündeki **Yenile**'ye tıklayın. Hala hiçbir şey yok mu? Bkz. [Sorun giderme](troubleshoot-faq.md).
+- NPM senaryosu: CDN `downloadAndSetup` 'den tam ApplicationInsights betiğini indirme ve izleme anahtarıyla başlatma çağrısı:
 
-Tarayıcı dikey penceresi, hazır filtrelerin ve grafik seçimlerinin bulunduğu [Ölçüm Gezgini dikey penceresidir](metrics-explorer.md). İsterseniz zaman aralığını, filtreleri ve grafik yapılandırmasını düzenleyebilir ve sonucu sık kullanılan olarak kaydedebilirsiniz. Asıl dikey pencere yapılandırmasına dönmek için **Varsayılanları geri yükle**’ye tıklayın.
+   ```ts
+   appInsights.downloadAndSetup({
+     instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+     url: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+     });
+   ```
 
-## <a name="page-load-performance"></a>Sayfa yükleme performansı
-Üst kısım sayfa yükleme sürelerinin bölümlenmiş bir grafiğidir. Grafiğin toplam yüksekliği yüklenecek ortalama süreyi ve kullanıcılarınızın tarayıcılarda uygulamanızdan görüntülenecek sayfaları temsil eder. Süre, düzen ve çalışma betikleri de dahil tüm zaman uyumlu yük etkinlikleri işlenene kadar tarayıcının ilk HTTP isteğini gönderdiği zamandan ölçülür. AJAX çağrılarından web bölümleri yükleme gibi zaman uyumsuz görevleri içermez.
+İzleme telemetrinin beklendiği gibi çalıştığını doğrulamak için dahili ortamda test edin. Tümü çalışırsa, API imzalarınızı SDK v2 sürümüne uygun şekilde güncelleştirin ve üretim ortamlarınızda dağıtın.
 
-Grafik, toplam sayfa yükleme süresini [W3C tarafından tanımlanan standart zamanlamalara](https://www.w3.org/TR/navigation-timing/#processing-model) böler. 
+## <a name="sdk-performanceoverhead"></a>SDK performansı/ek yükü
 
-![](./media/javascript/08-client-split.png)
+Yalnızca 25 KB 'lık bir değere sahip ve başlatmak için yalnızca ~ 15 MS alan Application Insights, Web sitenize fazla miktarda loadtime ekler. Kod parçacığını kullanarak, kitaplığın minimum bileşenleri hızlı bir şekilde yüklenir. Bu sırada, tam komut dosyası arka planda indirilir.
 
-*Ağa bağlanma* süresinin çoğunlukla beklediğinizden kısa olduğunu unutmayın; bunun nedeni, tarayıcıdan sunucuya yapılan tüm isteklerin ortalaması olmasıdır. Tek tek isteklerin çoğunun bağlantı süresi 0 değerindedir; çünkü sunucuya zaten etkin bir bağlantı vardır.
+Betik CDN 'den indirilirken, sayfanızın tüm izlenmesi sıraya alınır. İndirilen betik zaman uyumsuz olarak başlatıldıktan sonra, kuyruğa alınan tüm olaylar izlenir. Sonuç olarak, sayfanızın tüm yaşam döngüsü boyunca hiçbir Telemetriyi kaybetmezsiniz. Bu kurulum işlemi, sayfanıza, kullanıcılarınız için görünmeyen sorunsuz bir analiz sistemi sağlar.
 
-### <a name="slow-loading"></a>Yavaş mı yükleniyor?
-Yavaş sayfa yüklenmesi kullanım memnuniyetsizliğinin başlıca kaynaklarından biridir. Grafik yavaş sayfa yüklemeleri gösteriyorsa, bazı tanılama araştırmalarını yapmak kolaydır.
+> Özet:
+> - **25 KB** gdaraltılmış
+> - **15 MS** genel başlatma süresi
+> - Sayfanın yaşam döngüsü boyunca **sıfır** izleme kaçırıldı
 
-Grafik, uygulamanızdaki tüm sayfa yüklerinin ortalamasını gösterir. Sorunun belirli sayfalara sınırlı olup olmadığını görmek için, sayfa URL'siyle bölümlenmiş kılavuzun bulunduğu dikey pencereyi daha fazla inceleyin:
+## <a name="browser-support"></a>Tarayıcı desteği
 
-![](./media/javascript/09-page-perf.png)
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | !['U](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+--- | --- | --- | --- | --- |
+En son ✔ | En son ✔ | 9 + ✔ | En son ✔ | En son ✔ |
 
-Sayfa görünümü sayısına ve standart sapmaya dikkat edin. Sayfa sayısı çok azsa, sorun kullanıcıları çok etkilemez. Yüksek bir standart sapma (ortalamayla karşılaştırılabilir) tek tek ölçüler arasında çok sayıda farklılık gösterir.
+## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 
-**Tek URL’yi ve tek sayfa görünümünü yakınlaştırma.** Tam da bu URL için filtre uygulanmış tarayıcı grafiklerinin dikey penceresini görüntülemek için sayfa adlarından istediğinize tıklayın; bundan sonra da bir sayfa görünümü örneğine tıklayın.
-
-![](./media/javascript/35.png)
-
-Bu etkinlikle ilgili özelliklerin tam listesi için `...` seçeneğine tıklayın veya Ajax çağrılarını ve bağlantılı etkinlikleri inceleyin. Zaman uyumluysalar, Yavaş Ajax çağrıları genel sayfa yükleme süresini etkiler. İlgili etkinlikler aynı URL için sunucu isteklerini ekler (web sunucunuza Application Insights kurduysanız).
-
-**Zaman içerisinde performans sayfası.** Tarayıcılar dikey penceresine dönün, Sayfa Görünümü Yükleme Süresi kılavuzunu çizgi grafiği olarak değiştirerek belirli zamanlarda yükselme olup olmadığına bakın:
-
-![Kılavuzun başlığına tıklayın ve yeni bir grafik türü seçin](./media/javascript/10-page-perf-area.png)
-
-**Diğer boyutlara göre bölme.** Sayfalarınızın yavaş yüklenme nedeni belirli bir tarayıcı, istemci işletim sistemi veya kullanıcı konumu olabilir mi? Yeni bir grafik ekleyin ve denemenizi **Gruplandır** boyutuyla yapın.
-
-![](./media/javascript/21.png)
-
-## <a name="ajax-performance"></a>AJAX Performansı
-Web sayfalarınızda AJAX çağrılarının iyi iş çıkardığından emin olun. Bunlar çoğunlukla zaman uyumsuz olarak sayfanızı bölümlerini doldurmak için kullanılır. Genel sayfa hemen yüklenebilse de, kullanıcılarınızın boş web bölümlerine bakıp burada veri görünmesini bekleyerek hayal kırıklığına uğrayabilirler.
-
-Web sayfasından oluşturulan AJAX çağrıları Tarayıcılar dikey penceresinde bağımlılıklar olarak gösterilir.
-
-Dikey pencerenin üst kısmında özet grafikleri vardır:
-
-![](./media/javascript/31.png)
-
-daha aşağıda da ayrıntılı kılavuzlar:
-
-![](./media/javascript/33.png)
-
-Belirli ayrıntılar için herhangi bir satıra tıklayın.
-
-> [!NOTE]
-> Dikey pencerede Tarayıcılar filtresini silerseniz, bu grafiklere hem sunucu hem de AJAX bağımlılıkları eklenir. Filtreyi yeniden yapılandırmak için Varsayılanları Geri Yükle'ye tıklayın.
-> 
-> 
-
-**Başarısız Ajax çağrılarını incelemek için** Bağımlılık hataları kılavuzuna gidin ve belirli örnekleri görmek için bir satıra tıklayın.
-
-![](./media/javascript/37.png)
-
-Ajax çağrısıyla ilgili tam telemetri için `...` seçeneğine tıklayın.
-
-### <a name="no-ajax-calls-reported"></a>Hiç Ajax çağrısı bildirilmedi mi?
-Ajax çağrılarında web sayfanızın betiğinden oluşturulan HTTP/HTTPS çağrıları vardır. Bunların bildirildiğini görmüyorsanız, kod parçacığının `disableAjaxTracking` öğesini veya `maxAjaxCallsPerView` [parametrelerini](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) ayarlayıp ayarlamadığını denetleyin.
-
-## <a name="browser-exceptions"></a>Tarayıcı özel durumları
-Tarayıcılar dikey penceresinde bir özel durum özet grafiği, dikey pencerenin daha aşağısındaysa özel durum türleri kılavuzu bulunur.
-
-![](./media/javascript/39.png)
-
-Tarayıcı özel durumlarının bildirildiğini görmüyorsanız, kod parçacığının `disableExceptionTracking`[parametresini](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) ayarlayıp ayarlamadığını denetleyin.
-
-## <a name="inspect-individual-page-view-events"></a>Tek tek sayfa görünümü etkinliklerini inceleme
-
-Sayfa görünümü telemetrisi çoğunlukla Application Insights tarafından analiz edilir; yalnızca birikmeli raporları, tüm kullanıcıların ortalamasını görürsünüz. Ancak, hata ayıklama amacıyla tek tek sayfa görünümü etkinliklerine de bakabilirsiniz.
-
-Tanılama Ara dikey penceresinde Filtreler’i Sayfa Görünümü olarak ayarlayın.
-
-![](./media/javascript/12-search-pages.png)
-
-Daha fazla ayrıntı için herhangi bir olayı seçin. Daha da fazla ayrıntı görmek için, ayrıntılar sayfasında "..." öğesine tıklayın.
-
-> [!NOTE]
-> [Arama](diagnostic-search.md)kullanıyorsanız, tüm kelimeleri eşleştirmek zorunda olduğuna dikkat edin: "Abou" ve "hakkında", "About" ile eşleşmez.
-> 
-> 
-
-Ayrıca sayfa görünümlerini aramak için güçlü [Log Analytics dilinden](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour) de yararlanabilirsiniz.
-
-### <a name="page-view-properties"></a>Sayfa görünümü özellikleri
-* **Sayfa görünümü süresi** 
-  
-  * Varsayılan olarak, istemcinin tam yükleme isteğine ait sayfa yükleme süresi (yardımcı dosyalar da dahildir, ancak Ajax çağırıları gibi zaman uyumsuz görevler hariç tutulur). 
-  * `overridePageViewDuration` seçeneğini [sayfa yapılandırması](#detailed-configuration) içinde ayarlarsanız, ilk `trackPageView` yürütmesi için istemci isteğinin zaman aralığıdır. betiğin başlatılmasından sonra trackPageView öğesini normal konumundan taşırsanız farklı bir değer yansıtır.
-  * `overridePageViewDuration` ayarlanmış ve süre bağımsız değişkeni `trackPageView()` çağrısında verilmişse, bunun yerine bağımsız değişken değeri kullanılır. 
-
-## <a name="custom-page-counts"></a>Özel sayfa sayıları
-Varsayılan olarak, istemci tarayıcısına yeni bir sayfanın her yüklenişinde bir sayfa sayısı oluşur.  Ancak, ek sayfa görünümlerini de saymak isteyebilirsiniz. Örneğin, sayfa içeriğini sekmelerde görüntüleyebilir; sizse kullanıcı sekmeler arasında geçiş yaptığında sayfayı saymak istersiniz. Sayfadaki JavaScript kodu tarayıcının URL’sini değiştirmeden yeni içerik yükleyebilir.
-
-İstemci kodunun uygun bir noktasına buradaki gibi JavaScript çağrısı ekleyin:
-
-    appInsights.trackPageView(myPageName);
-
-Sayfa adında,URL’deki karakterlerin aynısı bulunabilir, ancak "#" veya "?" karakterinden sonraki her şey göz ardı edilir.
-
-## <a name="usage-tracking"></a>Kullanımı izleme
-Uygulamanızla kullanıcılarınızın neler yaptığını bilmek ister misiniz?
-
-* [Kullanıcı davranışı analiz araçları hakkında bilgi edinin](usage-overview.md)
-* [Özel etkinlikler ve ölçüm API’si hakkında bilgi edinin](api-custom-events-metrics.md).
-
-## <a name="video"></a> Video
-
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
-
-
+Application Insights JavaScript SDK 'Sı, kaynak kodu görüntülemek veya projeye katkıda bulunmak için açık kaynaktır ve [resmi GitHub deposunu](https://github.com/Microsoft/ApplicationInsights-JS)ziyaret edebilir.
 
 ## <a name="next"></a> Sonraki adımlar
 * [Kullanımı izleme](usage-overview.md)

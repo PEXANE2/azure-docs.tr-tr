@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688325"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534475"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Modern Okuyucu SDK başvurusu
 
@@ -35,7 +35,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="parameters"></a>Parametreler
 
-| Ad | Tür | Açıklama |
+| Name | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `token` | dize | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
 | `subdomain` | dize | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
@@ -73,6 +73,7 @@ Tam ekran okuyucu 'da gösterilecek içeriği içerir.
 | --------- | ----------- |
 | metin/düz | Düz metin. |
 | Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
 
 ### <a name="options"></a>Seçenekler
 
@@ -104,7 +105,8 @@ Hata hakkındaki bilgileri içerir.
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, Ayrıntılar `message` için bkz. |
 | zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
-| Tokenaşımına uğradı| Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
+| Tokenaşımına uğradı | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
+| Sürecek | Çağrı hızı sınırı aşıldı. |
 
 ## <a name="launching-the-immersive-reader"></a>Modern okuyucu başlatılıyor
 

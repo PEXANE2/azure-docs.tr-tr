@@ -3,7 +3,7 @@ title: Evrensel Windows Platformu konuları (.NET için Microsoft kimlik doğrul
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Evrensel Windows Platformu kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 263264742088a0012ea844946e13cffbab634b29
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277914"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532483"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET ile ilgili Evrensel Windows Platformu özel noktalar
 UWP 'de, MSAL.NET kullanırken dikkate almanız gereken bazı noktalar vardır.
@@ -32,7 +32,7 @@ WinRT platformunda, `PublicClientApplication` aşağıdaki Boolean özelliğine 
 
 > [!IMPORTANT]
 > Bu özelliğin true olarak ayarlanması, uygulama geliştiricisinin uygulamada tümleşik Windows kimlik doğrulamasını (ıWA) etkinleştirdiğinizi varsayar. Bunun için:
-> - UWP uygulamanızda, yetenekler sekmesinde, aşağıdaki özellikleri etkinleştirin:  ``Package.appxmanifest``
+> - UWP uygulamanızda, yetenekler sekmesinde, aşağıdaki özellikleri etkinleştirin: ``Package.appxmanifest``
 >   - Kurumsal kimlik doğrulama
 >   - Özel ağlar (Istemci & sunucusu)
 >   - Paylaşılan Kullanıcı sertifikası

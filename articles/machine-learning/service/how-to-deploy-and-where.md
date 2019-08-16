@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5c0c3ade3fd089a4819b8836b07e249fc32c06e0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990569"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543618"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modelleri dağıtma
 
@@ -149,12 +149,25 @@ Aşağıdaki işlem hedefleri veya işlem kaynakları, Web hizmeti dağıtımın
 
 ## <a name="prepare-to-deploy"></a>Dağıtmaya hazırlanma
 
-Web hizmeti olarak dağıtmak için bir çıkarım yapılandırması (`InferenceConfig`) ve bir dağıtım yapılandırması oluşturmanız gerekir. Çıkarım veya model Puanlama, dağıtılan modelin tahmin için en yaygın olarak üretim verilerinde kullanıldığı aşamadır. Çıkarım yapılandırmasında, modelinize hizmeti sağlamak için gereken betikleri ve bağımlılıkları belirtirsiniz. Dağıtım yapılandırmasında, işlem hedefinde modelin nasıl kullanılacağına ilişkin ayrıntıları belirtirsiniz.
+Modeli dağıtmak için birkaç şey gerekir:
 
-> [!IMPORTANT]
-> Azure Machine Learning SDK, Web hizmeti veya IoT Edge dağıtımlarının veri deposuna veya veri kümelerine erişmesi için bir yol sağlamaz. Dağıtım dışında depolanan verilere (örneğin, bir Azure depolama hesabında) erişmek için dağıtılan modele ihtiyacınız varsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
->
-> Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-run-batch-predictions.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
+* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
+
+    > [!IMPORTANT]
+    > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
+    >
+    > İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, istemciye döndürmeden önce yanıtı dönüştürebilir.
+
+    > [!IMPORTANT]
+    > Azure Machine Learning SDK, Web hizmeti veya IoT Edge dağıtımlarının veri deposuna veya veri kümelerine erişmesi için bir yol sağlamaz. Dağıtım dışında depolanan verilere (örneğin, bir Azure depolama hesabında) erişmek için dağıtılan modele ihtiyacınız varsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
+    >
+    > Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-run-batch-predictions.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
+
+* Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
+
+* Dağıtılan modeli barındıran işlem hedefi için __dağıtım yapılandırması__ . Bu yapılandırma, modeli çalıştırmak için gereken bellek ve CPU gereksinimleri gibi şeyleri açıklar.
+
+Bu varlıklar bir __çıkarım yapılandırmasıyla__kapsüllenir ve bir __dağıtım yapılandırması__. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur. Bu konfigürasyonlar SDK kullanılırken programlı olarak ve dağıtım gerçekleştirmek için CLı kullanılırken JSON dosyaları olarak tanımlanır.
 
 ### <a id="script"></a> 1. Giriş betiğinizi & bağımlılıklarınızı tanımlayın
 
@@ -399,9 +412,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2. Inısenceconfig 'nizi tanımlama
 
-Çıkarım yapılandırması, tahmine dayalı hale getirmek üzere modelin nasıl yapılandırılacağını açıklar. Aşağıdaki örnek, bir çıkarım yapılandırmasının nasıl oluşturulacağını gösterir. Bu yapılandırma, çalışma zamanını, giriş betiğini ve (isteğe bağlı olarak) Conda ortam dosyasını belirtir:
+Çıkarım yapılandırması, tahmine dayalı hale getirmek üzere modelin nasıl yapılandırılacağını açıklar. Bu yapılandırma, giriş betiğinizin bir parçası değil; Giriş betiğine başvurur ve dağıtım için gerekli tüm kaynakları bulmak için kullanılır. Daha sonra modeli dağıtmada kullanılır.
+
+Aşağıdaki örnek, bir çıkarım yapılandırmasının nasıl oluşturulacağını gösterir. Bu yapılandırma, çalışma zamanını, giriş betiğini ve (isteğe bağlı olarak) Conda ortam dosyasını belirtir:
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +448,7 @@ Bu örnekte, yapılandırma aşağıdaki öğeleri içerir:
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Dağıtım yapılandırmanızı tanımlama
 
-Dağıtılmadan önce dağıtım yapılandırmasını tanımlamanız gerekir. __Dağıtım yapılandırması, Web hizmetini barındıracak işlem hedefine özgüdür__. Örneğin, yerel olarak dağıttığınızda, hizmetin istekleri kabul ettiği bağlantı noktasını belirtmeniz gerekir.
+Dağıtılmadan önce dağıtım yapılandırmasını tanımlamanız gerekir. __Dağıtım yapılandırması, Web hizmetini barındıracak işlem hedefine özgüdür__. Örneğin, yerel olarak dağıttığınızda, hizmetin istekleri kabul ettiği bağlantı noktasını belirtmeniz gerekir. Dağıtım yapılandırması, giriş betiğinizin bir parçası değil. Modeli ve giriş betiğini barındıracak işlem hedefinin özelliklerini tanımlamak için kullanılır.
 
 İşlem kaynağını da oluşturmanız gerekebilir. Örneğin, çalışma alanınız ile ilişkili bir Azure Kubernetes hizmetiniz yoksa.
 
@@ -442,6 +459,12 @@ Aşağıdaki tabloda her işlem hedefi için bir dağıtım yapılandırması ol
 | Yerel | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Örneği | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+Yerel, ACI ve AKS Web Hizmetleri için bu sınıfların her biri, öğesinden `azureml.core.webservice`içeri aktarılabilir:
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > Modelinizi bir hizmet olarak dağıtmadan önce en iyi CPU ve bellek gereksinimlerini öğrenmek için profili oluşturmanız gerekebilir. SDK ya da CLı kullanarak modelinize profil oluşturabilirsiniz. Daha fazla bilgi için [profile ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) ve [az ml model profil](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) başvurusuna bakın.
@@ -459,6 +482,8 @@ Yerel olarak dağıtmak için, yerel makinenizde Docker 'ın yüklü olması ger
 #### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)

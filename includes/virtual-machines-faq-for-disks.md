@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a334b19fe4dd819a6e4c391e49d934bf5955a567
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516047"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541556"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ve yönetilen ve yönetilmeyen Premium diskler hakkında sık sorulan sorular
 
@@ -172,7 +172,7 @@ Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabi
 Hayır, Ultra diskler yalnızca veri diskleri olarak desteklenir ve yalnızca 4K yerel disk olarak desteklenir.
 
 **Var olan bir diski bir ultra diske dönüştürebilir miyim?**
-Hayır, ancak mevcut bir diskteki tarihi bir ultra diske geçirebilirsiniz. Var olan bir diski bir ultra diske geçirmek için, her iki diski aynı sanal makineye bağlayın ve disk verilerini bir diskten diğerine kopyalayın ya da veri geçişi için 3. taraf çözümünü kullanın.
+Hayır, ancak mevcut bir diskteki verileri bir ultra diske geçirebilirsiniz. Var olan bir diski bir ultra diske geçirmek için, her iki diski aynı sanal makineye bağlayın ve disk verilerini bir diskten diğerine kopyalayın ya da veri geçişi için 3. taraf çözümünü kullanın.
 
 **Ultra diskler için anlık görüntüler oluşturabilir miyim?**
 Hayır, anlık görüntüler henüz kullanılamıyor.

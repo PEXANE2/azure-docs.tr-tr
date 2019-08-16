@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663884"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557812"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleme
 
@@ -30,7 +30,7 @@ Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offli
 ## <a name="prerequisites"></a>Önkoşullar
 
 1. Bir kişiselleştirici döngüsüyle yapılandırılmış olması gerekir
-1. Kişiselleştirici döngüsü, anlamlı değerlendirme sonuçları için günlüklerinde en az 50.000 olay içermelidir.
+1. Kişiselleştirme döngüsünün temsili bir tahmini veri miktarına sahip olması gerekir. Bu, en az 50.000 olay elde ettiğimiz anlamlı değerlendirme sonuçları için günlüklere bakın.
 
 İsteğe bağlı olarak, aynı değerlendirmede karşılaştırmak ve test yapmak için daha önce de daha önce _öğrendiğiniz öğrenme ilkesi_ dosyalarını vermiş olabilirsiniz.
 

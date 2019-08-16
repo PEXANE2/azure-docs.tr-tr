@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 514098368c38c6d61bc192f5ba0f0450dc05776c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033978"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533477"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -35,7 +35,7 @@ Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Birden çok nodepools kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
+Birden çok düğüm havuzu kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -167,6 +167,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 
 ## <a name="upgrade-a-node-pool"></a>Düğüm havuzunu yükseltme
 
+> [!NOTE]
+> Bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri birbirini dışlıyor. Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme](https://aka.ms/aks-pending-upgrade)kılavuzumuzdan bu konuda daha fazla bilgi edinin.
+
 Aks kümeniz ilk adımda oluşturulduysa, bir `--kubernetes-version` *1.13.9* belirtildi. Bu, Kubernetes sürümünü hem denetim düzlemi hem de ilk düğüm havuzu için ayarlar. Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltmek için farklı komutlar vardır. Komut, tek bir düğüm havuzunu yükseltmek için kullanıldığında, `az aks nodepool upgrade` denetim düzlemini yükseltmek için kullanılır. `az aks upgrade`
 
 *Mynodepool* , Kubernetes *1.13.9*'e yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks düğüm havuzu yükseltme][az-aks-nodepool-upgrade] komutunu kullanın:
@@ -283,7 +286,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Küme otomatik Scaler 'ı etkinleştirerek belirli bir düğüm havuzunu otomatik olarak ölçeklendirin
 
-AKS, düğüm havuzlarını [küme](cluster-autoscaler.md)otomatik olarak adlandırılan bir bileşenle otomatik olarak ölçeklendirmek için önizleme aşamasında ayrı bir özellik sunar. Bu bileşen, düğüm havuzu başına benzersiz minimum ve maksimum ölçek sayısı olan düğüm havuzu başına etkinleştirilebilen bir AKS eklentisi. [Düğüm havuzu başına küme otomatik Scaler 'ı kullanmayı](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools)öğrenin.
+AKS, düğüm havuzlarını [küme](cluster-autoscaler.md)otomatik olarak adlandırılan bir özellik ile otomatik olarak ölçeklendirmek için önizleme aşamasında ayrı bir özellik sunar. Bu özellik, düğüm havuzu başına benzersiz minimum ve maksimum ölçek sayısı olan düğüm havuzu başına etkinleştirilebilen bir AKS eklentisi. [Düğüm havuzu başına küme otomatik Scaler 'ı kullanmayı](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)öğrenin.
 
 ## <a name="delete-a-node-pool"></a>Düğüm havuzunu silme
 
@@ -553,6 +556,9 @@ az group deployment create \
 Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına ve işlemlerine bağlı olarak AKS kümenizin güncelleştirilmesi birkaç dakika sürebilir.
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Düğüm havuzunda düğüm başına genel IP atama
+
+> [!NOTE]
+> Önizleme sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle bu özelliği *AKS (Önizleme) standart Load Balancer SKU 'su* ile kullanmanın bir sınırlaması vardır. Önizlemede, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU 'su* kullanın.
 
 AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak bazı senaryolar, düğüm havuzundaki düğümlerin kendi genel IP adreslerine sahip olmasını gerektirebilir. Örneğin, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için gereken oyun. Bu, ayrı bir önizleme özelliği olan düğüm genel IP (Önizleme) için kaydolarak elde edilebilir.
 

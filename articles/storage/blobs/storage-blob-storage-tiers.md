@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952888"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543671"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -80,6 +80,7 @@ Arşiv erişim katmanı için örnek kullanım senaryoları şunları içerir:
 ### <a name="blob-rehydration"></a>Blob yeniden doldurma
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+Daha fazla bilgi edinmek için [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md) bölümüne bakın.  
 
 ## <a name="account-level-tiering"></a>Hesap düzeyi katmanlama
 
@@ -164,11 +165,13 @@ Bu bölümde Azure portalı kullanarak aşağıdaki senaryolar gösterilmektedir
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Depolama hesabınızdaki blobunuza gitmek için **tüm kaynaklar**' ı seçin, depolama hesabınızı seçin, kapsayıcınızı seçin ve ardından blobu seçin.
+1. Depolama hesabınızdaki blobunuza gitmek için Tüm Kaynaklar’ı seçin, depolama hesabınızı seçin, kapsayıcınızı seçin ve ardından blobunuzu seçin.
 
-1. **BLOB özellikleri** dikey penceresinde, **erişim katmanı** açılan menüsünü seçerek **sık**erişimli, seyrek erişimli veya **Arşiv** erişim katmanını seçin.
+1. **BLOB özellikleri** dikey penceresinde katmanı **Değiştir** düğmesini seçerek katman dikey penceresini açın.
 
-1. Dikey pencerenin en üstündeki **Kaydet**'e tıklayın.
+1. **Sık**erişimli, seyrekerişimli veya **Arşiv** erişim katmanını seçin. Blobun Şu anda arşivde varsa ve çevrimiçi bir katmana yeniden dönmek istiyorsanız, **Standart** veya **yüksek**bir yeniden doldurma önceliği de seçebilirsiniz.
+
+1. Dikey pencerenin alt kısmındaki **Tamam**’a tıklayın.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
@@ -245,6 +248,8 @@ Diğer limitlerle birlikte veri depolama alanı, erişim katmanına göre değil
 [Bölgeye göre sık, seyrek ve arşiv kullanılabilirliğini denetleme](https://azure.microsoft.com/regions/#services)
 
 [Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
+
+[Blob verilerini arşiv katmanından yeniden doldurma hakkında bilgi edinin](storage-blob-rehydration.md)
 
 [Azure Depolama ölçümlerini etkinleştirerek geçerli depolama hesaplarınızın kullanımını değerlendirme](../common/storage-enable-and-view-metrics.md)
 

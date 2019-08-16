@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c2adf9bff4c3d91305e71a7688740fa0268ad7b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295641"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531471"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure veri ve depolama hizmetlerini koruma
 Bu konu başlığı altında, veri ve depolama kaynakları için güvenlik önerilerini görüntüleme ve uygulama işlemlerinin nasıl yapılacağı gösterilmektedir. Azure Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz edilirken bu önerileri buldu.
@@ -40,7 +40,7 @@ Bu sayfadan şunları yapabilirsiniz:
 * Her sekmeye tıklayın ve önerileri kaynak türüne göre görüntüleyin.
 
     > [!NOTE]
-    > Depolama şifrelemesi hakkında daha fazla bilgi için [Azure Güvenlik Merkezi'ndeki Azure depolama hesabı için şifrelemeyi etkinleştirme](security-center-enable-encryption-for-storage-account.md) bölümünü okuyun.
+    > Depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
 
 
 ## <a name="remediate-a-recommendation-on-a-data-resource"></a>Veri kaynağı üzerindeki öneriyi Düzeltme
@@ -65,12 +65,12 @@ Bu sayfadan şunları yapabilirsiniz:
 |----|----|----|----|
 |Depolama hesabı|20|Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir|Güvenli aktarım, depolama hesabınızı yalnızca güvenli bağlantılardan (HTTPS) istekleri kabul edecek şekilde zorlayan bir seçenektir. HTTPS, sunucu ile hizmet arasında kimlik doğrulaması sağlar ve aradaki bağlantıyı izinsiz izleme, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı korur.|
 |Redis|20|Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir|Redsıs için yalnızca SSL aracılığıyla bağlantıları Azure önbelleğine etkinleştirin. Güvenli bağlantı kullanımı, sunucu ve hizmet arasında kimlik doğrulaması sağlar ve aradaki bağlantıyı izinsiz izleme, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı korur.|
-|SQL|15|SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir|Rest verilerini korumak ve uyumluluk gereksinimlerini karşılamak için saydam veri şifrelemesini etkinleştirin.|
+|SQL|15|SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir|Bekleyen verileri korumak ve uyumluluk gereksinimlerini karşılamak için saydam veri şifrelemesini etkinleştirin.|
 |SQL|15|SQL Server denetimi etkinleştirilmelidir|Azure SQL sunucuları için denetimi etkinleştirin. (Yalnızca Azure SQL hizmeti. , Sanal makinelerinizde çalışan SQL içermez.)|
 |Data Lake Analytics|5|Data Lake Analytics tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. |
 |Data Lake Store|5|Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. |
 |SQL|30|SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.|
-|SQL|20|SQL Server için bir Azure AD yöneticisi sağlama|Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure AD yöneticisi sağlayın. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.|
+|SQL|20|SQL sunucusuna Azure AD yöneticisi sağlama|Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure AD yöneticisi sağlayın. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.|
 |Depolama hesabı|15|Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır|Depolama hesabı güvenlik duvarı ayarlarınızda Kısıtlanmamış ağ erişimini denetleyin. Bunun yerine, ağ kurallarını yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırın. Belirli Internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel Internet IP adresi aralıklarına giden trafiğe erişim izni verebilirsiniz.|
 |Depolama hesabı|1\.|Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir|Depolama hesaplarınız için yeni Azure Resource Manager v2 kullanarak, daha güçlü erişim denetimi (RBAC), daha iyi denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, için Anahtar Kasası erişimi gibi güvenlik geliştirmeleri sağlayın. daha kolay güvenlik yönetimi için gizlilikler ve Azure AD tabanlı kimlik doğrulaması ve Etiketler ve kaynak grupları desteği.|
 

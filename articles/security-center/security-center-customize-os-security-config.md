@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 08/15/2019
+ms.author: v-mohabe
+ms.openlocfilehash: df4f51f97798048b28c0193dbc61e07fc55c9adc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662484"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535063"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik yapılandırmasını özelleştirme (kullanımdan kaldırıldı)
 
@@ -304,7 +304,7 @@ Olası tüm hatalar aşağıdaki tabloda listelenmiştir:
 | ErrorNullRulesetsPropertyOnCustom        | Verilen yapılandırma durumu *özel* ancak *Baselinerulisets* özelliği null veya boş.                                             |
 | ErrorParsingBaselineConfig               | Verilen yapılandırma geçersiz. Tanımlı bir veya daha fazla değer null değere sahip veya geçersiz türde.                                  |
 | ErrorParsingIsDefaultProperty            | Verilen *configurationstatus* değeri *{0}* geçersiz. Değer yalnızca *varsayılan* veya *özel*olabilir.                                         |
-| Incompatibleviewversion                  | Bu çalışma alanı *{0}* türünde Görünüm *sürümü desteklenmiyor.*                                                                                   |
+| Incompatibleviewversion                  | Bu çalışma alanı *{0}* türünde görünüm sürümü desteklenmiyor.                                                                                   |
 | Invalidbaselineconfigurationgeneralerror | Verilen temel yapılandırma bir veya daha fazla tür doğrulama hatası ile bulundu.                                                          |
 | ViewConversionError                      | Görünüm, çalışma alanının desteklediğinden daha eski bir sürümdür. Görüntüleme dönüşümü başarısız oldu {0}:.                                                                 |
 
@@ -317,4 +317,4 @@ Bu makalede, güvenlik merkezi 'nde işletim sistemi güvenlik yapılandırması
 
 - [Güvenlik Merkezi ortak yapılandırma tanımlayıcıları ve temel kuralları](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
 - Güvenlik Merkezi, yapılandırma kurallarına benzersiz tanımlayıcılar atamak için ortak yapılandırma numaralandırması (CCE) kullanır. Daha fazla bilgi için bkz. [CCE](https://nvd.nist.gov/config/cce/index).
-- İşletim sistemi yapılandırmanızın önerilen güvenlik yapılandırması kurallarıyla eşleşmemesi durumunda güvenlik açıklarını gidermek için bkz. [güvenlik yapılandırmalarını düzeltme](security-center-remediate-os-vulnerabilities.md).
+- İşletim sistemi yapılandırmanızın önerilen güvenlik yapılandırması kurallarıyla eşleşmemesi durumunda güvenlik açıklarını gidermek için bkz. [güvenlik yapılandırmalarını düzeltme](security-center-virtual-machine-protection.md).

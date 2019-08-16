@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494832"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557941"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -72,7 +72,7 @@ Tüm Azure Ilke örnekleri [Azure ilke](../samples/index.md)örneklerimizle.
 
 ## <a name="mode"></a>Mod
 
-İlke bir Azure Resource Manager özelliğini veya bir kaynak sağlayıcısı özelliğini hedeflediğinden, **mod** yapılandırılır.
+İlke bir Azure Resource Manager özelliğini veya kaynak sağlayıcısı özelliğini hedeflediğinden, **mod** yapılandırılır.
 
 ### <a name="resource-manager-modes"></a>Kaynak Yöneticisi modları
 
@@ -314,7 +314,7 @@ Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametreler
 
 #### <a name="value-examples"></a>Değer örnekleri
 
-Bu ilke kuralı örneği,  `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre `*netrg`karşılaştırmak için değeri kullanır. Kural, adı içinde `Microsoft.Network/*` `*netrg`sonlanan herhangi bir kaynak grubundaki **türden** olmayan tüm kaynakları reddeder.
+Bu ilke kuralı örneği, `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre `*netrg`karşılaştırmak için değeri kullanır. Kural, adı içinde `Microsoft.Network/*` `*netrg`sonlanan herhangi bir kaynak grubundaki **türden** olmayan tüm kaynakları reddeder.
 
 ```json
 {
@@ -372,7 +372,7 @@ Bu ilke kuralı örneği, birden çok iç içe işlevlerin sonucunun **eşit** `
 
 Yukarıdaki örnek ilke kuralı, **adın** ilk üç karakterini **ABC**olarak karşılaştırmak için [substring ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) kullanır. **Ad** üç karakterden kısaysa, `substring()` işlev bir hatayla sonuçlanır. Bu hata, ilkenin **reddetme** efekti olmasına neden olur.
 
-Bunun yerine, adın ilk üç karakterinin bir hataya neden olmak üzere üç **karakterden kısa olmasına** izin vermeden **eşittir ABC** **değerine eşit** olup olmadığını denetlemek için [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) işlevini kullanın:
+Bunun yerine, adın ilk üç karakterinin bir hataya neden olmak üzere üç karakterden kısa olmasına izin vermeden eşittir **ABC** değerine eşit olup olmadığını denetlemek için [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) işlevini kullanın:
 
 ```json
 {
@@ -388,7 +388,7 @@ Bunun yerine, adın ilk üç karakterinin bir hataya neden olmak üzere üç **k
 }
 ```
 
-Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir  `substring()` değer almaya çalışmadan önce adın uzunluğunu denetler. **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
+Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir `substring()` değer almaya çalışmadan önce adın uzunluğunu denetler. **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
 
 ### <a name="effect"></a>Etki
 
@@ -517,7 +517,7 @@ Birkaç kullanılabilir diğer adlarına sahip bir 'normal' bir ad ve başka gö
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**[\*]** Diğer adı dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. **Iprules\*[]** kullanarak, her _eylemin_ _reddetme_, ancak kaç kural var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir. Bu örnek kural, **ıprules [\*]. Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler **ve yalnızca en** az bir eşleşme bulmazsa, bu değeri uygular:
+**[\*]** Diğer adı dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. **Iprules\*[]** kullanarak, her _eylemin_ _reddetme_, ancak kaç kural var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir. Bu örnek kural, **ıprules [\*]. Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler ve yalnızca en az bir eşleşme bulmazsa, bu değeri uygular:
 
 ```json
 "policyRule": {

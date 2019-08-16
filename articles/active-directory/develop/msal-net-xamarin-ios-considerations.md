@@ -3,7 +3,7 @@ title: Xamarin iOS konuları (.NET için Microsoft kimlik doğrulama kitaplığ�
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin iOS kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7bb4aab4c217e20245a1f6ee9b2910a4558acad
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278222"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532379"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin iOS 'a özgü hususlar
 Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç önemli noktalar vardır.
@@ -71,7 +71,7 @@ var builder = PublicClientApplicationBuilder
 
 Yetkilendirmeler. plist aşağıdaki XML parçası gibi görünecek şekilde güncellenmelidir:
 
-Bu değişiklik,  aşağıdaki erişim grubunu ya da kendinizinkini kullanarak `Entitlements.plist` , dosya içinde Anahtarlık erişimini etkinleştirmeye ek olarak yapılır:
+Bu değişiklik, aşağıdaki erişim grubunu ya da kendinizinkini kullanarak `Entitlements.plist` , dosya içinde Anahtarlık erişimini etkinleştirmeye ek olarak yapılır:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>

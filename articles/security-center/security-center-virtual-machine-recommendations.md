@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi'nde sanal makine önerileri | Microsoft Docs
-description: Bu belge Azure Güvenlik Merkezi önerilerini, sanal makineler ve bilgisayarlar ve web uygulamaları ve App Service ortamları korunmasına nasıl yardımcı olacağını açıklar.
+title: Azure Güvenlik Merkezi 'nde sanal makine önerileri | Microsoft Docs
+description: Bu belge, sanal makinelerinizi ve bilgisayarlarınızı ve Web uygulamalarınızı ve App Service ortamlarınızı korumanıza yardımcı olacak Azure Güvenlik Merkezi önerilerini açıklamaktadır.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 798e027ca611905766b1fb8bcdb89cba4aeaf9b2
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545013"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531329"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Azure Güvenlik Merkezi kaynak önerilerini anlama
 
 
 ## <a name="recommendations"></a>Öneriler
-Aşağıdaki tablolar kullanılabilir işlem anlamanıza yardımcı olması için referans olarak kullanın ve uygulama önerileri ve uygulamanız durumunda her birinin ne yaptığını Hizmetleri.
+Kullanılabilir Işlem ve uygulama hizmetleri önerilerini ve uygulamayı uyguladığınızda bunlardan ne yaptığını anlamanıza yardımcı olması için aşağıdaki tabloları başvuru olarak kullanın.
 
 ### <a name="computers"></a>Bilgisayarlar
 | Öneri | Açıklama |
 | --- | --- |
-| [Abonelikler için veri toplamayı etkinleştirin](security-center-enable-data-collection.md) |Her bir aboneliğiniz ve aboneliklerinizdeki tüm sanal makinelerine (VM) için güvenlik ilkesinde veri toplamayı etkinleştirmenizi önerir. |
-| [Azure depolama hesabı için şifrelemeyi etkinleştirme](security-center-enable-encryption-for-storage-account.md) | Bekleyen veri için Azure depolama hizmeti şifrelemesi etkinleştirmenizi önerir. Azure depolama alanına yazılır ve alma önce şifrelerini çözer, verileri şifreleyerek depolama hizmeti şifrelemesi (SSE) çalışır. SSE, şu anda yalnızca Azure Blob hizmeti için kullanılabilir ve blok blobları, sayfa blobları için kullanılabilir ve ekleme blobları. Daha fazla bilgi için bkz. [bekleyen veriler için depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md).</br>SSE, yalnızca Resource Manager depolama hesaplarında desteklenir. Klasik depolama hesapları şu anda desteklenmemektedir. Klasik ve Resource Manager dağıtım modelleri anlamak için bkz [Azure dağıtım modelleri](../azure-classic-rm.md). |
-| [Güvenlik yapılandırmalarını düzeltme](security-center-remediate-os-vulnerabilities.md) |İşletim sistemi yapılandırmalarınızı önerilen güvenlik yapılandırması kurallarını hizalama önerir örn izin verme Parolaların kaydedilmesine izin. |
-| [Sistem güncelleştirmelerini uygulayın](security-center-apply-system-updates.md) |VM’lerinize eksik sistem güvenliği güncelleştirmelerini ve kritik güncelleştirmeleri dağıtmanızı önerir. |
-| [Just-ın-Time geçerli ağ erişim denetimi](security-center-just-in-time.md) | Tam zamanında VM erişimini uygulanmasını önerir. Yalnızca zaman özellik önizlemededir ve Güvenlik Merkezi'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md). |
-| [Sistem güncelleştirmelerinden sonra yeniden başlatın](security-center-apply-system-updates.md#reboot-after-system-updates) |Sistem güncelleştirmelerini uygulama işlemini tamamlamak için VM’yi yeniden başlatmanızı önerir. |
-| [Endpoint Protection’ı yükleyin](security-center-install-endpoint-protection.md) |VM’lere (yalnızca Windows VM’leri) kötü amaçlı yazılımdan koruma programları sağlamanızı önerir. |
-| [VM Aracısını etkinleştirin](security-center-enable-vm-agent.md) |Hangi VM’lerin VM Aracısı gerektirdiğini görmenizi sağlar. Düzeltme eki tarama, temel tarama ve kötü amaçlı yazılımdan koruma programları sağlamak üzere VM’lere VM Aracısı yüklenmelidir. VM Aracısı, Azure Marketi’nden dağıtılan VM’ler için varsayılan olarak yüklüdür. [VM Aracısı ve Uzantılar – 2. Kısım](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) makalesinde VM Aracısının nasıl yüklendiğine ilişkin bilgiler verilmektedir. |
-| [Disk şifrelemesi uygulayın](security-center-apply-disk-encryption.md) |Azure Disk Şifrelemesi kullanarak VM’nizi şifrelemenizi önerir (Windows ve Linux VM’leri). Şifreleme hem işletim sistemi hem de VM’nizin üzerindeki veri birimleri için önerilir. |
-| [İşletim sistemi sürümünü güncelleştirme](security-center-update-os-version.md) |İşletim sistemi (OS) sürümünü bulut hizmetinize kullanılabilir en son sürümü için işletim sistemi ailesi için güncelleştirmeniz önerir.  Bulut hizmetleri hakkında daha fazla bilgi için bkz. [Cloud Services'e genel bakış](../cloud-services/cloud-services-choose-me.md). |
-| [Güvenlik açığı değerlendirmesi yüklü değil](security-center-vulnerability-assessment-recommendations.md) |Sanal makinenize bir güvenlik açığı değerlendirme çözümü yüklemenizi önerir. |
-| [Güvenlik açıklarını düzeltin](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |VM’nize yüklü güvenlik açığı değerlendirme çözümü tarafından algılanan sistem ve uygulama güvenlik açıklarını görmenizi sağlar. |
+| Abonelikler için veri toplamayı etkinleştirin|Her bir aboneliğiniz ve aboneliklerinizdeki tüm sanal makinelerine (VM) için güvenlik ilkesinde veri toplamayı etkinleştirmenizi önerir. |
+| Azure Depolama Hesabı için şifrelemeyi etkinleştirin| Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi etkinleştirmenizi önerir. Depolama Hizmeti Şifrelemesi (SSE), Azure depolama 'ya yazıldığında verileri şifreleyerek ve almadan önce şifrelerini çözerek işe yarar. SSE Şu anda yalnızca Azure Blob hizmeti için kullanılabilir ve blok Blobları, sayfa Blobları ve ekleme Blobları için kullanılabilir. Daha fazla bilgi için bkz. [bekleyen veriler için depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md).</br>SSE yalnızca Kaynak Yöneticisi depolama hesaplarında desteklenir. Klasik depolama hesapları Şu anda desteklenmiyor. Klasik ve Kaynak Yöneticisi dağıtım modellerini anlamak için bkz. Azure dağıtım modelleri. |
+| Güvenlik yapılandırmalarını düzelt|İşletim sistemi yapılandırmalarınızı önerilen güvenlik yapılandırması kurallarıyla hizalamanızı önerir, Örneğin Parolaların kaydedilmesine izin vermeyin. |
+| Sistem güncelleştirmelerini uygulayın |VM’lerinize eksik sistem güvenliği güncelleştirmelerini ve kritik güncelleştirmeleri dağıtmanızı önerir. |
+| Anlık ağ erişim denetimi uygulama| Tam zamanında VM erişimi uygulamanızı önerir. Tam zamanında özelliği önizleme aşamasındadır ve Güvenlik Merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md). |
+| Sistem güncelleştirmelerinden sonra sistemi yeniden başlatma|Sistem güncelleştirmelerini uygulama işlemini tamamlamak için VM’yi yeniden başlatmanızı önerir. |
+| Endpoint Protection yükle|VM’lere (yalnızca Windows VM’leri) kötü amaçlı yazılımdan koruma programları sağlamanızı önerir. |
+| VM Aracısını etkinleştirme |Hangi VM’lerin VM Aracısı gerektirdiğini görmenizi sağlar. Düzeltme eki tarama, temel tarama ve kötü amaçlı yazılımdan koruma programları sağlamak üzere VM’lere VM Aracısı yüklenmelidir. VM Aracısı, Azure Marketi’nden dağıtılan VM’ler için varsayılan olarak yüklüdür. [VM Aracısı ve Uzantılar – 2. Kısım](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) makalesinde VM Aracısının nasıl yüklendiğine ilişkin bilgiler verilmektedir. |
+| Disk şifrelemesi uygulayın|Azure Disk Şifrelemesi kullanarak VM’nizi şifrelemenizi önerir (Windows ve Linux VM’leri). Şifreleme hem işletim sistemi hem de VM’nizin üzerindeki veri birimleri için önerilir. |
+| İşletim sistemi sürümünü güncelleştirme|Bulut hizmetiniz için işletim sistemi (OS) sürümünü, işletim sistemi aileniz için kullanılabilen en son sürüme güncelleştirmenizi önerir.  Cloud Services hakkında daha fazla bilgi edinmek için bkz. Cloud Services genel bakış. |
+| Güvenlik açığı değerlendirmesi yüklü değil|Sanal makinenize bir güvenlik açığı değerlendirme çözümü yüklemenizi önerir. |
+| Güvenlik açıklarını düzeltin) |VM’nize yüklü güvenlik açığı değerlendirme çözümü tarafından algılanan sistem ve uygulama güvenlik açıklarını görmenizi sağlar. |
 
-### Uygulama Hizmetleri <a name="app-services"></a>
+### Uygulama Hizmetleri<a name="app-services"></a>
 | Öneri | Açıklama |
 | --- | --- |
-| App Service yalnızca HTTPS üzerinden erişilebilir olmalıdır | App Service'in erişim HTTPS üzerinden sınırı, yalnızca, önerir. |
-| Web uygulaması için Web yuvalarını devre dışı bırakılmalıdır| Web uygulamaları içinde Web yuvaları kullanımını dikkatle gözden geçirin önerir.  Web yuvaları Protokolü farklı güvenlik tehdidi türlerine savunmasızdır. |
-| Web uygulamanız için özel etki alanları kullanın | Bir web uygulaması kimlik avı gibi genel saldırılara ve DNS ile ilgili diğer saldırılara karşı korumak için özel etki alanları kullanmanızı önerir. |
-| Web uygulaması için IP kısıtlamalarını yapılandırma | Uygulamanıza erişmek için izin verilen IP adreslerinin bir listesi tanımladığınız önerir.  IP kısıtlamaları kullanımı, bir web uygulaması genel saldırılara karşı korur. |
-| Tüm izin verme ('* ') uygulamanıza erişmek için kaynaklar | WEBSITE_LOAD_CERTIFICATES parametre ayarladığınız değil önerir ' *'. Parametre ayarı '* ' tüm sertifikalar, web uygulamaları kişisel sertifika deposuna yüklenecektir anlamına gelir.  Site çalışma zamanında tüm sertifikalara erişim gerektiğini olası olmadığından bu en düşük öncelik ilkesini kötüye neden olabilir. |
-| CORS her kaynağın uygulamanıza erişmesine izin vermemelidir | Web uygulamanızla etkileşim kurmak yalnızca gerekli etki alanlarına izin önerir. Kaynak kaynak paylaşımı (CORS) tüm etki alanları web uygulamanıza erişmek izin vermemelisiniz. |
-| Kullanım en son .NET Framework Web uygulaması için desteklenir. | En son .NET Framework sürümü için en son güvenlik sınıflarını kullanmanızı önerir. Eski sınıfları ve türleri kullanma, uygulamanızı saldırılara açık hale getirebilirsiniz. |
+| App Service yalnızca HTTPS üzerinden erişilebilir olmalıdır | App Service erişimini yalnızca HTTPS üzerinden sınırlandırmanızı önerir. |
+| Web uygulaması için Web yuvalarını devre dışı bırakılmalıdır| Web uygulamaları içinde Web Yuvaları kullanımını dikkatle incelemenizi önerir.  Web yuvaları Protokolü farklı güvenlik tehdidi türlerine savunmasızdır. |
+| Web uygulamanız için özel etki alanları kullanın | Bir Web uygulamasını, kimlik avı ve diğer DNS ile ilgili saldırıları gibi yaygın saldırılara karşı korumak için özel etki alanları kullanmanızı önerir. |
+| Web uygulaması için IP kısıtlamalarını yapılandırma | Uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı önerir.  IP kısıtlamaları kullanımı, bir web uygulaması genel saldırılara karşı korur. |
+| Tüm izin verme ('* ') uygulamanıza erişmek için kaynaklar | WEBSITE_LOAD_CERTIFICATES parametresini ' *' olarak ayarlayamamanızı önerir. Parametresinin '* ' olarak ayarlanması, tüm sertifikaların Web uygulamalarına ait kişisel sertifika deponuza yüklenebileceği anlamına gelir.  Site çalışma zamanında tüm sertifikalara erişim gerektiğini olası olmadığından bu en düşük öncelik ilkesini kötüye neden olabilir. |
+| CORS, her kaynağın uygulamanıza erişmesine izin vermemelidir | Yalnızca gerekli etki alanlarının Web uygulamanızla etkileşime geçmesini sağlar. Kaynak kaynak paylaşımı (CORS) tüm etki alanları web uygulamanıza erişmek izin vermemelisiniz. |
+| Kullanım en son .NET Framework Web uygulaması için desteklenir. | En son güvenlik sınıfları için en son .NET Framework sürümünü kullanmanızı önerir. Eski sınıfları ve türleri kullanma, uygulamanızı saldırılara açık hale getirebilirsiniz. |
 | Web uygulaması için desteklenen en son Java sürümünü kullanın | En son güvenlik sınıfları için en son Java sürümünü kullanmanızı önerir. Eski sınıfları ve türleri kullanma, uygulamanızı saldırılara açık hale getirebilirsiniz. |
 | Web uygulaması için desteklenen en son PHP sürümünü kullanın | En son güvenlik sınıfları için en son PHP sürümünü kullanmanızı önerir. Eski sınıfları ve türleri kullanma, uygulamanızı saldırılara açık hale getirebilirsiniz. |
-| [Web uygulaması güvenlik duvarı ekleme](security-center-add-web-application-firewall.md) |Web uç noktaları için web uygulaması Güvenlik Duvarı (WAF) dağıtmanızı önerir. Bir WAF öneri, bir giden açık web bağlantı noktaları (80,443) ile ilişkili ağ güvenlik grubu olan tüm genel kullanıma yönelik IP için (örnek düzeyi IP veya yük dengeli IP) gösterilir.</br></br>Güvenlik Merkezi, sanal makinelerde ve App Service ortamında web uygulamalarınızı hedefleyen saldırılara karşı korumaya yardımcı olmak için bir WAF sağlamanızı önerir. App Service ortamı (ASE) olan bir [Premium](https://azure.microsoft.com/pricing/details/app-service/) hizmet planı seçeneği Azure App Service, Azure App Service uygulamalarını güvenli olarak çalıştırmak için tam yalıtılmış ve ayrılmış bir ortam sağlar. ASE hakkında daha fazla bilgi için bkz: [App Service ortamı belgeleri](../app-service/environment/intro.md).</br></br>Var olan WAF dağıtımlarınız için bu uygulamaları ekleyerek, birden çok web uygulaması Güvenlik Merkezi'nde koruyabilirsiniz. |
-| [Uygulama korumasını sonlandırma](security-center-add-web-application-firewall.md#finalize-application-protection) |Bir WAF yapılandırmasını tamamlamak için WAF gerecine trafiği gelmesi gerekir. Bu öneriyi şu gerekli Kurulum değişiklikleri tamamlar. |
-| Web uygulaması için desteklenen en son Node.js sürümünü kullanın | En son güvenlik sınıfları için en son Node.js sürümünü kullanmanızı önerir. Eski sınıfları ve türleri kullanma, uygulamanızı saldırılara açık hale getirebilirsiniz. |
-| CORS her kaynağın işlev uygulamanıza erişmek izin vermemelidir | Web uygulamanızla etkileşim kurmak yalnızca gerekli etki alanlarına izin önerir. Kaynak kaynak paylaşımı (CORS) tüm etki alanlarının işlev uygulamanıza erişmek izin vermemelisiniz. |
-| İşlev uygulaması için özel etki alanları kullanın | Bir işlev uygulaması, kimlik avı gibi genel saldırılara ve DNS ile ilgili diğer saldırılara karşı korumak için özel etki alanları kullanmanızı önerir. |
-| İşlev uygulaması için IP kısıtlamalarını yapılandırma | Uygulamanıza erişmek için izin verilen IP adreslerinin bir listesi tanımladığınız önerir. IP kısıtlamaları kullanımını bir işlev uygulaması genel saldırılara karşı korur. |
-| İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır | İşlev uygulamaları, erişim HTTPS üzerinden sınırı, yalnızca, önerir. |
-| Uzaktan hata ayıklama için işlev uygulaması kapatılmalıdır | Bunu kullanmak artık ihtiyacınız yoksa işlev uygulaması için hata ayıklamasını kapatma önerir. Uzaktan hata ayıklama, gelen bağlantı noktası üzerinde bir işlev uygulaması açılmasını gerektirir. |
-| İşlev uygulaması için Web yuvalarını devre dışı bırakılmalıdır | İşlev uygulamaları içinde Web yuvaları kullanımını dikkatle gözden geçirin önerir. Web yuvaları Protokolü farklı güvenlik tehdidi türlerine savunmasızdır. |
+| [Web uygulaması güvenlik duvarı ekleme](security-center-add-web-application-firewall.md) |Web uç noktaları için bir Web uygulaması güvenlik duvarı (WAF) dağıtmanızı önerir. Açık gelen Web bağlantı noktaları (80.443) ile ilişkili bir ağ güvenlik grubuna sahip olan genel kullanıma açık IP (örnek düzeyi IP veya yük dengeli IP) için WAF önerisi gösterilmektedir.</br></br>Güvenlik Merkezi, sanal makinelerde ve App Service Ortamı üzerinde Web uygulamalarınızı hedefleme saldırılarına karşı savunmaya yardımcı olmak için bir WAF sağlamanızı önerir. App Service Ortamı (Ao), Azure App Service uygulamaları güvenli bir şekilde çalıştırmak için tam olarak yalıtılmış ve ayrılmış bir ortam sağlayan bir Azure App Service [Premium](https://azure.microsoft.com/pricing/details/app-service/) hizmet planı seçeneğidir. Ao hakkında daha fazla bilgi edinmek için [App Service ortamı belgelerine](../app-service/environment/intro.md)bakın.</br></br>Bu uygulamaları var olan WAF dağıtımlarınıza ekleyerek güvenlik merkezi 'nde birden çok Web uygulamasını koruyabilirsiniz. |
+| [Uygulama korumasını sonlandırma](security-center-add-web-application-firewall.md#finalize-application-protection) |Bir WAF yapılandırmasını gerçekleştirmek için trafiğin WAF gerecine tekrar yönlendirilmelidir. Bu öneriyi takip eden, gerekli kurulum değişikliklerini tamamlar. |
+| Web uygulaması için desteklenen en son Node.js sürümünü kullanın | En son güvenlik sınıfları için en son Node. js sürümünü kullanmanızı önerir. Eski sınıfları ve türleri kullanma, uygulamanızı saldırılara açık hale getirebilirsiniz. |
+| CORS her kaynağın işlev uygulamanıza erişmek izin vermemelidir | Yalnızca gerekli etki alanlarının Web uygulamanızla etkileşime geçmesini sağlar. Kaynak kaynak paylaşımı (CORS) tüm etki alanlarının işlev uygulamanıza erişmek izin vermemelisiniz. |
+| İşlev uygulaması için özel etki alanları kullanın | Bir işlev uygulamasını kimlik avı ve diğer DNS ile ilgili saldırılar gibi yaygın saldırılara karşı korumak için özel etki alanları kullanmanızı önerir. |
+| İşlev uygulaması için IP kısıtlamalarını yapılandırma | Uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı önerir. IP kısıtlamaları kullanımını bir işlev uygulaması genel saldırılara karşı korur. |
+| İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır | Işlev uygulamalarının erişimini yalnızca HTTPS üzerinden sınırlandırmanızı önerir. |
+| İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır | Artık kullanmanıza gerek kalmadığında İşlev Uygulaması için hata ayıklamayı kapatmanızı önerir. Uzaktan hata ayıklama, gelen bağlantı noktası üzerinde bir işlev uygulaması açılmasını gerektirir. |
+| İşlev uygulaması için Web yuvalarını devre dışı bırakılmalıdır | Işlev uygulamaları dahilinde Web Yuvaları kullanımını dikkatle incelemenizi önerir. Web yuvaları Protokolü farklı güvenlik tehdidi türlerine savunmasızdır. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

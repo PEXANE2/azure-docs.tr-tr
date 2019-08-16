@@ -7,16 +7,16 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2122b6bd5fbd6b15bd5a2e411898d957708bf4c9
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839988"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558877"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
-Azure ayırmaları, bir yıllık veya üç yıllık sanal makine, SQL veritabanı işlem kapasitesi, Azure Cosmos DB üretilen iş veya diğer Azure kaynakları için ön ödeme yaparak para tasarrufu yapmanıza yardımcı olur. Ön ödeme, kullandığınız kaynaklara ilişkin bir indirim elde etmenizi sağlar. Ayırmalar, Kullandıkça Öde fiyatlarında% 72 ' e varan sanal makinenizi, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerini önemli ölçüde azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
+Azure ayırmaları, bir yıllık veya üç yıllık sanal makine, SQL veritabanı işlem kapasitesi, Azure Cosmos DB üretilen iş veya diğer Azure kaynakları için ön ödeme yaparak para tasarrufu yapmanıza yardımcı olur. Peşin ödeme yaparak kullandığınız kaynakları indirimli satın alabilirsiniz. Ayırmalar, Kullandıkça Öde fiyatlarında% 72 ' e varan sanal makinenizi, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerini önemli ölçüde azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
 
 [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)bir rezervasyon satın alabilirsiniz.
 
@@ -36,7 +36,7 @@ Windows sanal makineler ve SQL veritabanı için [Azure hibrit avantajı](https:
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Rezervasyon satın alma hakkına sahip misiniz?
 
-Bir planı satın almak için, bir kuruluşta (MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde aboneliğine (MS-AZR-003P veya MS-AZR-0023P) bir abonelik sahibi rolüne sahip olmanız gerekir. Bulut çözümü sağlayıcıları Azure Portal veya [iş ortağı merkezi](/partner-center/azure-reservations) 'ni kullanarak Azure ayırmaları satın alabilir.
+Bir planı satın almak için, bir kuruluşta (MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde aboneliğine (MS-AZR-0003P veya MS-AZR-0023P) bir abonelik sahibi rolüne sahip olmanız gerekir. Bulut çözümü sağlayıcıları Azure Portal veya [iş ortağı merkezi](/partner-center/azure-reservations) 'ni kullanarak Azure ayırmaları satın alabilir.
 
 Kurumsal Anlaşma (EA) müşterileri, EA portalındaki **ayrılmış örnekleri Ekle** seçeneğini devre dışı BıRAKARAK satınalmaları EA yöneticilerle sınırlayabilir. EA yöneticileri, bir ayırma satın almak için en az bir EA aboneliğine sahip bir abonelik sahibi olmalıdır. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi takımlar, rezervasyonların maliyet merkezi sahiplerini ekleyebilirler. Sahipleri daha sonra, rezervasyonlarını aboneliklerine göre kapsamlarına alabilir. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimi olması gerekmez.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c642640d590e1f568fb6f6c5072decd75575ab2d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876294"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543643"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure 'dan Azure 'a çoğaltma hakkında ağ iletişimi hakkında
 
@@ -93,8 +93,8 @@ Site Recovery IP adresi aralıkları aşağıdaki gibidir:
    Batı ABD 2 | 52.183.45.166 | 13.66.228.204
    Birleşik Krallık Batı | 51.141.3.203 | 51.141.14.113
    Birleşik Krallık Güney | 51.140.43.158 | 51.140.189.52
-   UK Güney 2 | 13.87.37.4| 13.87.34.139
-   UK Kuzey | 51.142.209.167 | 13.87.102.68
+   BK Güney 2 | 13.87.37.4| 13.87.34.139
+   BK Kuzey | 51.142.209.167 | 13.87.102.68
    Kore Orta | 52.231.28.253 | 52.231.32.85
    Kore Güney | 52.231.198.185 | 52.231.200.144
    Fransa Orta | 52.143.138.106 | 52.143.136.55
@@ -109,6 +109,11 @@ Site Recovery IP adresi aralıkları aşağıdaki gibidir:
    ABD Devleti Texas | 52.238.119.218 | 52.238.116.60
    US DoD Doğu | 52.181.164.103 | 52.181.162.129
    US DoD Orta | 52.182.95.237 | 52.182.90.133
+   Çin Kuzey | 40.125.202.254 | 42.159.4.151
+   Çin Kuzey 2 | 40.73.35.193 | 40.73.33.230
+   Çin Doğu | 42.159.205.45 | 42.159.132.40
+   Çin Doğu 2 | 40.73.118.52| 40.73.100.125
+  
 ## <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması
 
 Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandırılacağını gösterir.

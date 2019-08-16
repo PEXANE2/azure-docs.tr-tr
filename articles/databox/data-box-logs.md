@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934217"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535177"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için izleme ve olay günlüğü
 
@@ -64,7 +64,7 @@ Siparişinizi Azure portal ve sevkiyat taşıyıcısı Web sitesi aracılığıy
 
 - Data Box, şirket içinde kilitli bir durumda ulaşır. Azure portal için kullanılabilir cihaz kimlik bilgilerini siparişiniz için kullanabilirsiniz.  
 
-    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntıları > kimlik bilgileri** dikey penceresine erişimi içeren herhangi bir eylem etkinlik günlüklerine eylem olarak `ListCredentials` kaydedilir.
+    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntıları > kimlik bilgileri** dikey penceresine erişimi içeren herhangi bir eylem etkinlik günlüklerine eylem olarak `ListCredentials` kaydedilir.
 
     ![Etkinlik günlüklerini sorgulama](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Data Box veya Data Box Heavy veri kopyalama sırasında, kopyalandığı veriler
 
 ### <a name="errorxml-file"></a>Error. xml dosyası
 
-Kopyalama işlerinin hatasız bitdiğinizden emin olun. Kopyalama işlemi sırasında hatalar varsa, **Bağlan ve Kopyala** sayfasından günlükleri indirin.
+Kopyalama işlerinin hatasız bitdiğinizden emin olun. Kopyalama işlemi sırasında hatalar varsa, **Bağlan ve Kopyala** sayfasından günlükleri indirin.
 
 - 512 bayt olmayan bir dosyayı Data Box bir yönetilen disk klasörüne kopyaladıysanız, dosya hazırlama depolama hesabınıza Sayfa Blobu olarak yüklenmeyecektir. Günlüklerde bir hata görürsünüz. Dosyayı kaldırın ve 512 bayt hizalı bir dosyayı kopyalayın.
 - Bir VHDX veya bir Dinamik VHD veya bir fark kayıt VHD 'SI (Bu dosyalar desteklenmiyorsa) kopyaladıysanız günlüklerde bir hata görürsünüz.
@@ -203,7 +203,7 @@ Azure 'a veri yükleme sırasında bir kopyalama günlüğü oluşturulur.
 
 Azure 'a yükleme sırasında Döngüsel artıklık denetimi (CRC) hesaplaması yapılır. Veri kopyalama işleminden sonra ve veri karşıya yüklemeden sonra CRCs 'Ler karşılaştırılır. CRC uyumsuzluğu, karşılık gelen dosyaların karşıya yüklenemediğini belirtir.
 
-Varsayılan olarak, Günlükler adlı `copylog`bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralına göre saklanır:
+Varsayılan olarak, Günlükler adlı `copylog`bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralına göre saklanır:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>İndirme sırası geçmişi
 
-Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları**' na gidin.  **Yükleme sırası geçmişi**  seçeneği kullanılabilir. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
+Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları**' na gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
 
 Sipariş geçmişi boyunca kaydırırsanız şunu görürsünüz:
 

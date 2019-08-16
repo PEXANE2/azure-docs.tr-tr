@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c192a994ac5398d41e28a35267b922ba98b721cc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69513608"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533460"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
@@ -126,15 +126,6 @@ Bölge adları yerine bölge IP adresleri listesi için, Microsoft Indirme Merke
 >Güncelleştirilmiş bir dosya haftalık olarak gönderilir. Dosya, şu anda dağıtılmış aralıkları ve IP aralıklarında yaklaşan değişiklikleri yansıtır. Dosyada görüntülenen yeni aralıklar, en az bir hafta için veri merkezlerinde kullanılmıyor.
 >
 > Her hafta yeni XML dosyasını indirmek iyi bir fikirdir. Daha sonra, sitenizi Azure 'da çalışan hizmetleri doğru şekilde belirlemek için güncelleştirin. Azure ExpressRoute kullanıcıları bu dosyanın, her ayın ilk haftasında Azure Space Sınır Ağ Geçidi Protokolü (BGP) tanıtımını güncelleştirmek için kullanıldığını unutmayın.
-
-## <a name="introduction-video"></a>Tanıtım videosu
-
-Okumak yerine izlemeyi mi tercih ediyorsunuz? Azure Otomasyonu durum yapılandırması ilk kez duyurulduğu zaman 2015 Mayıs 'tan aşağıdaki videoya göz atın.
-
-> [!NOTE]
-> Bu videoda tartışılan kavramlar ve yaşam döngüsü doğru olsa da, bu videonun kaydedilmesinden bu yana Azure Automation durum yapılandırması ilerlemedi bir lot içeriyor. Artık genel kullanıma sunulmuştur, Azure portal çok daha kapsamlı bir kullanıcı arabirimine sahiptir ve birçok ek özelliği destekler.
-
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

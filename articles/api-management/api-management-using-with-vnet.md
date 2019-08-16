@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: d643f242182959f98fa9476f4a701b82cf1c2800
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509652"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558627"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlarla Azure API Management kullanma
-Azure sanal ağları (VNet), erişimi denetlediğiniz internet 'e ait olmayan bir ağa Azure kaynaklarınızı yerleştiriyor. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgileri başlatın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
+Azure sanal ağları (VNet), erişimi denetlediğiniz internet 'e yönelik bir yönlendirilebilir ağa Azure kaynaklarınızı yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgileri başlatın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
 
 Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ içindeki arka uç hizmetlerine erişebilir. Geliştirici portalı ve API ağ geçidi, Internet 'ten ya da yalnızca sanal ağ içinden erişilebilir olacak şekilde yapılandırılabilir.
 

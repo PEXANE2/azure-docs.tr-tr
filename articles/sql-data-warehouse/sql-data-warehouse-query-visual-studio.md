@@ -2,20 +2,20 @@
 title: Azure SQL Veri Ambarı'na Bağlanma - VSTS | Microsoft Belgeleri
 description: Visual Studio ile SQL Data Warehouse'u sorgulayın.
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479455"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534785"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SQL Veri Ambarı'na bağlanma
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68479455"
 > 
 > 
 
-Azure SQL Data Warehouse’u yalnızca birkaç dakika içinde sorgulamak için Visual Studio kullanın. Bu yöntem Visual Studio’daki SQL Server Veri Araçları (SSDT) uzantısını kullanır. 
+Azure SQL Data Warehouse’u yalnızca birkaç dakika içinde sorgulamak için Visual Studio kullanın. Bu yöntem, Visual Studio 2019 ' de SQL Server Veri Araçları (SSDT) uzantısını kullanır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi kullanmak için şunlar gerekir:
@@ -37,7 +37,7 @@ Bu öğreticiyi kullanmak için şunlar gerekir:
 * Tam SQL server adı. Bunu bulmak için bkz. [SQL Data Warehouse'a bağlanma][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. SQL Data Warehouse'unuza bağlanma
-1. Visual Studio 2013 veya Visual Studio 2015'i açın.
+1. Visual Studio 2019 ' i açın.
 2. SQL Server Nesne Gezgini'ni açın. Bunu gerçekleştirmek için **Görünüm** > **SQL Server Nesne Gezgini**'ni seçin.
    
     ![SQL Server Nesne Gezgini][1]

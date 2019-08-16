@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834738"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532414"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) OAuth2 örtük verme akışını anlama
 
@@ -35,7 +35,7 @@ OAuth2 örtük verme, OAuth2 belirtiminde en uzun güvenlik sorunları listesine
 
 Quintessential [OAuth2 yetkilendirme kodu verme](https://tools.ietf.org/html/rfc6749#section-1.3.1) , iki ayrı uç nokta kullanan yetkilendirme vericisinden yararlanır. Yetkilendirme uç noktası, bir yetkilendirme kodu ile sonuçlanan Kullanıcı etkileşimi aşaması için kullanılır. Belirteç uç noktası daha sonra istemci tarafından bir erişim belirtecinin kodunu ve genellikle bir yenileme belirtecini değiş tokuş etmek için kullanılır. Yetkilendirme sunucusunun istemcinin kimliğini doğrulayabilmesi için, Web uygulamalarının belirteç uç noktasına kendi uygulama kimlik bilgilerini sunması gerekir.
 
-[OAuth2 örtük verme](https://tools.ietf.org/html/rfc6749#section-1.3.2) , diğer yetkilendirmelerden oluşan bir değişkendir. Bir istemcinin, bir erişim belirteci almasına izin verir (ve [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)kullanılırken id_token), belirteç uç noktası ile iletişim kurmadan veya istemcinin kimliğini doğrulamadan doğrudan yetkilendirme uç noktasından. Bu değişken, bir Web tarayıcısında çalışan JavaScript tabanlı uygulamalar için tasarlandı: özgün OAuth2 belirtiminde belirteçler bir URI parçasında döndürülür. Bu, belirteç bitlerini istemcideki JavaScript kodu için kullanılabilir hale getirir, ancak sunucuya doğru yeniden yönlendirmelere dahil edilmezler. Doğrudan yetkilendirme uç noktasından tarayıcı yeniden yönlendirmeleri aracılığıyla belirteçleri döndürme. Ayrıca, belirteç uç noktasıyla iletişim kurmak için JavaScript uygulamasının gerekli olduğu durumlarda gerekli olan çapraz kaynak çağrıları için tüm gereksinimleri ortadan kaldırma avantajına sahiptir.
+[OAuth2 örtük verme](https://tools.ietf.org/html/rfc6749#section-1.3.2) , diğer yetkilendirmelerden oluşan bir değişkendir. Bir istemcinin, bir erişim belirteci almasına izin verir (ve [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)kullanılırken id_token), belirteç uç noktası ile iletişim kurmadan veya istemcinin kimliğini doğrulamadan doğrudan yetkilendirme uç noktasından. Bu değişken, bir Web tarayıcısında çalışan JavaScript tabanlı uygulamalar için tasarlandı: özgün OAuth2 belirtiminde belirteçler bir URI parçasında döndürülür. Bu, belirteç bitlerini istemcideki JavaScript kodu için kullanılabilir hale getirir, ancak sunucuya doğru yeniden yönlendirmelere dahil edilmezler. OAuth2 örtük izin ' da, yetkilendirme uç noktası önceden sağlanan yeniden yönlendirme URI 'sini kullanarak doğrudan istemciye erişim belirteçleri verir. Ayrıca, belirteç uç noktasıyla iletişim kurmak için JavaScript uygulamasının gerekli olduğu durumlarda gerekli olan çapraz kaynak çağrıları için tüm gereksinimleri ortadan kaldırma avantajına sahiptir.
 
 OAuth2 örtük verme 'nin önemli bir özelliği, bu akışların istemciye hiçbir zaman yenileme belirteçleri döndürmemesinden kaynaklanmaktadır. Sonraki bölümde bunun gerekli olmadığını ve aslında bir güvenlik sorunu olduğunu gösterir.
 

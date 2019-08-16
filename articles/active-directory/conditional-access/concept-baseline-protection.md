@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608175"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533062"
 ---
 # <a name="what-are-baseline-policies"></a>Temel ilkeler nelerdir?
 
@@ -41,7 +41,7 @@ Bu ilkelerin dördü, POP, IMAP ve eski Office Masaüstü istemcileri gibi eski 
 
 Yönetici hesaplarının sahip olduğu güç ve erişim nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açmak için kullanıldıkları zaman daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure Active Directory ' de, yöneticilerin Azure Multi-Factor Authentication 'ı kaydolmasına ve kullanmasına gerek kalmadan daha güçlü bir hesap doğrulaması edinebilirsiniz.
 
-[Yöneticiler için MFA gerektir (Önizleme)](howto-baseline-protect-administrators.md) , aşağıdaki dizin rolleri için çok faktörlü kimlik doğrulaması (MFA) gerektiren bir temel ilkedir ve en ayrıcalıklı Azure AD rolleri olarak kabul edilir:
+[Yöneticiler IÇIN MFA gerektir (Önizleme)](howto-baseline-protect-administrators.md) , aşağıdaki dizin rolleri için çok faktörlü kimlik doğrulaması (MFA) gerektiren bir temel ilkedir ve en AYRıCALıKLı Azure AD rolleri olarak kabul edilir:
 
 * Genel yönetici
 * SharePoint yöneticisi
@@ -52,7 +52,7 @@ Yönetici hesaplarının sahip olduğu güç ve erişim nedeniyle, onlara özel 
 * Faturalama yöneticisi
 * Kullanıcı yöneticisi
 
-Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun.
+Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun.
 
 ### <a name="end-user-protection-preview"></a>Son Kullanıcı koruması (Önizleme)
 
@@ -87,11 +87,11 @@ Ayrıcalıklı eylemleri korumak için, bu **hizmet yönetimi IÇIN MFA gerektir
 
 Temel bir ilkeyi etkinleştirmek için:
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde, etkinleştirmek istediğiniz bir temel ilke seçin.
 1. **Etkin Ilkeyi** **Açık**olarak ayarlayın.
-1. Kaydet ' e tıklayın.
+1. Kaydet’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

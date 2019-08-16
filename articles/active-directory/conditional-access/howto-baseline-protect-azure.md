@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608131"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532945"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Temel ilke: Hizmet yönetimi için MFA gerektir (Önizleme)
 
@@ -32,21 +32,21 @@ Hizmetlerinizi yönetmek için Azure Resource Manager kullanmak, yüksek ayrıca
 
 Bu ilke bir kiracıda etkinleştirildikten sonra, Azure yönetim kaynakları 'nda oturum açan tüm kullanıcılara, çok faktörlü kimlik doğrulamasıyla karşılaşacaktır. Kullanıcı MFA için kayıtlı değilse, kullanıcının devam edebilmesi için Microsoft Authenticator uygulamasını kullanarak kaydetmesi gerekecektir.
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)'i kullanarak etkileşimli oturum açma gerçekleştirmek için [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini kullanın.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)'i kullanarak etkileşimli oturum açma gerçekleştirmek için [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini kullanın.
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Bu cmdlet çalıştırıldığında bir belirteç dizesi sunar. Oturum açmak için, bu dizeyi kopyalayın ve tarayıcıya yapıştırın [https://microsoft.com/devicelogin.](https://microsoft.com/devicelogin)  Azure’a bağlanmak için PowerShell oturumunuzun kimliği doğrulanır.
+Bu cmdlet çalıştırıldığında bir belirteç dizesi sunar. Oturum açmak için, bu dizeyi kopyalayın ve tarayıcıya yapıştırın [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) . Azure’a bağlanmak için PowerShell oturumunuzun kimliği doğrulanır.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)kullanarak etkileşimli oturum açma gerçekleştirmek için [az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu çalıştırın.
+[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)kullanarak etkileşimli oturum açma gerçekleştirmek için [az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu çalıştırın.
 
 ```azurecli
 az login
 ```
 
-CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, tarayıcınızda gezindikten [https://aka.ms/devicelogin](https://aka.ms/devicelogin) sonra bir yetkilendirme kodu girmek için bir tarayıcı sayfası açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Daha sonra, tarayıcıda hesap kimlik bilgilerinizle oturum açın.
+CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, tarayıcınızda gezindikten [https://aka.ms/devicelogin](https://aka.ms/devicelogin) sonra bir yetkilendirme kodu girmek için bir tarayıcı sayfası açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Daha sonra, tarayıcıda hesap kimlik bilgilerinizle oturum açın.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
@@ -58,11 +58,11 @@ CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum a�
 
 Bu ilkeyi etkinleştirmek ve yöneticilerinizi korumak için:
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde temel ilke ' yi seçin **: Hizmet yönetimi için MFA gerektir (Önizleme)** .
-1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
-1.  **Kaydet**' e tıklayın.
+1. İlkeyi **ilkeyi hemen kullanacak**şekilde ayarlayın.
+1. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

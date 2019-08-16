@@ -3,17 +3,17 @@ title: CloudSimple-PRIVATE Cloud VMware bileşenleri tarafından Azure VMware ç
 description: VMware bileşenlerinin özel buluta nasıl yüklendiğini açıklar
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812187"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543712"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
 
@@ -47,11 +47,11 @@ vCenter Server gereci (VCSA), CloudSimple tarafından VMware çözümü için ki
 
 ### <a name="vcenter-single-sign-on"></a>vCenter çoklu oturum açma
 
-VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz **CloudOwner@cloudsimple.com** için varsayılan bir Kullanıcı oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](https://docs.azure.cloudsimple.com/set-vcenter-identity/)ekleyebilirsiniz.
+VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz **CloudOwner@cloudsimple.com** için varsayılan bir Kullanıcı oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
 
 ## <a name="vsan-storage"></a>vSAN depolaması
 
-Özel bulutlar tümüyle yapılandırılan tümü-Flash vSAN depolama, küme yereliyle oluşturulur.  VSAN veri deposu ile vSphere kümesi oluşturmak için aynı SKU 'nun en az üç düğümü gereklidir.  Yinelenenleri kaldırma ve sıkıştırma, varsayılan olarak vSAN veri deposunda etkinleştirilir.  VSphere kümesinin her bir düğümünde iki disk grubu oluşturulur. Her disk grubu, bir önbellek diski ve üç kapasite diski içerir.
+Özel bulutlar tümüyle yapılandırılan tümü-Flash vSAN depolama, küme yereliyle oluşturulur.  VSAN veri deposu ile vSphere kümesi oluşturmak için aynı SKU 'nun en az üç düğümü gereklidir.  Devre dışı bırakma ve sıkıştırma, varsayılan olarak vSAN veri deposunda etkindir.  VSphere kümesinin her bir düğümünde iki disk grubu oluşturulur. Her disk grubu, bir önbellek diski ve üç kapasite diski içerir.
 
 VSphere kümesinde varsayılan bir vSAN depolama ilkesi oluşturulur ve vSAN veri deposuna uygulanır.  Bu ilke, gerekli hizmet düzeyini güvence altına almak için VM depolama nesnelerinin veri deposu içinde nasıl sağlandığını ve ayrılacağını belirler.  Depolama ilkesi, **tolerans (FTT)** ve **hata toleransı yöntemi**hatalarını tanımlar.  Yeni depolama ilkeleri oluşturabilir ve bunları sanal makinelere uygulayabilirsiniz. SLA 'yı sürdürmek için, vSAN veri deposunda% 25 yedek kapasitesinin korunması gerekir.  
 

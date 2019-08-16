@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5093b74484cd04a0c0c7afed8e2ebc725af033f5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249827"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543812"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure sanal ağ için IPv6 nedir? (Önizleme)
 
@@ -48,10 +48,12 @@ VNet için IPv6 aşağıdaki özellikleri içerir:
 
 - Azure müşterileri kendi kendi IPv6 sanal ağ adresi alanını, uygulamalarının gereksinimlerini karşılamak için tanımlayabilir veya şirket içi IP alanı ile sorunsuz bir şekilde tümleşebilir.
 - İkili yığın (IPv4 ve IPv6) sanal ağları çift yığın alt ağları ile, uygulamaların sanal ağlarında veya Internet 'te hem IPv4 hem de IPv6 kaynaklarıyla bağlanmasını sağlar.
-- Kaynaklarınızı ağ güvenlik grupları için IPv6 kurallarıyla koruyun
+    > [!IMPORTANT]
+    > IPv6 alt ağları tam/64 boyutunda olmalıdır.  Bu, bazı yönlendiricilerin yalnızca/64 IPv6 yollarını kabul edebilmesi için alt ağın şirket içi bir ağa yönlendirilmesini etkinleştirmeye karar verirseniz uyumluluğun yapılmasını sağlar.  
+- Kaynaklarınızı ağ güvenlik grupları için IPv6 kurallarıyla koruyun.
 - Kullanıcı tanımlı yollarla sanal ağınızdaki IPv6 trafiğinin yönlendirilmesini, özellikle de Uygulamanızı artırmak için ağ sanal gereçlerini kullanarak özelleştirin.
 - Internet istemcilerinin, IPv6 (AAAA) kayıtları için Azure DNS desteği ile seçim protokolünü kullanarak çift yığın uygulamanıza sorunsuz bir şekilde erişmesini sağlayın. 
-- Standart IPv6 genel Load Balancer aşağıdakiler de dahil olmak üzere dayanıklı, ölçeklenebilir uygulamalar oluşturmak için desteklenir:
+- Dayanıklı, ölçeklenebilir uygulamalar oluşturmak için standart IPv6 Genel Load Balancer desteği. Bu da şunu içerir:
     - Hangi arka uç havuzu örneklerinin sistem durumu olduğunu ve bu nedenle yeni akışlar alabileceğini belirleyen isteğe bağlı IPv6 sistem durumu araştırması. .  
     - Bu özelliği özel gereksinimlerinize göre ölçeklendirmeye ve ayarlamaya yönelik giden bağlantı üzerinde tam bildirime dayalı denetim sağlayan isteğe bağlı giden kurallar.
     - Tek bir yük dengeleyicinin birden çok IPv6 genel IP adresi kullanmasını sağlayan isteğe bağlı birden çok ön uç yapılandırması-aynı ön uç Protokolü ve bağlantı noktası ön uç adresleri arasında yeniden kullanılabilir.
@@ -67,8 +69,8 @@ Azure sanal ağ için IPv6 önizleme sürümü aşağıdaki sınırlamalara sahi
 - Önizleme için ağ Izleyicisi desteği NSG akış günlükleri ve ağ paketi yakalamaları ile sınırlıdır.
 - Sanal ağ eşlemesi (bölgesel veya genel) önizlemede desteklenmez.
 - Standart IPv6 dış Load Balancer kullanırken aşağıdaki sınırlar geçerlidir: 
-  - Giden kuralları birden çok ön uç genel IP 'ye başvurabilir, ancak bir IPv6 genel ön **ekine başvuramaz.** IP genel ön eki yalnızca IPv4 öneklerini destekler.
-  - IPv6 Yük Dengeleme kuralları, *kayan IP* **özelliğini kullanmayabilir** . Arka uç örneklerinde bağlantı noktası yeniden kullanımı yalnızca IPv4 ile desteklenir.
+  - Giden kuralları birden çok ön uç genel IP 'ye başvurabilir, ancak bir IPv6 genel ön ekine başvuramaz. IP genel ön eki yalnızca IPv4 öneklerini destekler.
+  - IPv6 Yük Dengeleme kuralları, *kayan IP* özelliğini kullanmayabilir. Arka uç örneklerinde bağlantı noktası yeniden kullanımı yalnızca IPv4 ile desteklenir.
 - Internet 'e yönelik bir IPv6 adresi bloğunu ayırma, Azure genel IP adresi öneki özelliği tarafından desteklenmez.
 
 ## <a name="pricing"></a>Fiyatlandırma

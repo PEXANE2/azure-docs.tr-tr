@@ -8,27 +8,25 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 07/31/2019
-ms.openlocfilehash: e571c65e64fad73c646aa05366cab685aa745caa
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/14/2019
+ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968954"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534417"
 ---
 1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
-1. Azure portal sol üst köşesinde **kaynak oluştur**' u seçin.
+1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
 1. **Machine Learning hizmeti çalışma alanını**bulmak için arama çubuğunu kullanın.
 
 1. **Machine Learning hizmet çalışma alanı**' nı seçin.
 
-1. **Ml hizmeti çalışma alanı** bölmesinde başlamak için **Oluştur** ' u seçin.
+1. Başlamak için **Machine Learning hizmet çalışma alanı** bölmesinde **Oluştur** ' u seçin.
 
 1. Yeni çalışma alanınızı, çalışma alanı adı, abonelik, kaynak grubu ve konum sağlayarak yapılandırın.
-
-    ![Çalışma alanı oluşturma](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
    Alan|Açıklama 
    ---|---
@@ -41,17 +39,5 @@ ms.locfileid: "68968954"
 
    Çalışma alanını oluşturmak birkaç dakika sürebilir.
 
-   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. Ayrıca Bildirimler bölümünde de bulunur. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
-
-   ![Çalışma alanı oluşturma durumu](./media/aml-create-in-portal/notifications.png)
-
-1. Portaldan, Visual Interface veya otomatik ML denemeleri gibi bir kod içermeyen seçenek kullanacaksanız, artık bu işlemi tamamladınız. Bir [Not defteri VM](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) 'si oluşturuyorsanız, bu sanal makine de yapılır. 
-
-1. Yerel ortamınızda bu çalışma alanına başvuruda bulunan kodu kullanmayı planlıyorsanız, çalışma alanının **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin.  
-
-   ![Config.json dosyasını indir](./media/aml-create-in-portal/configure.png)
-   
-   Dosyayı Python betikleriniz veya Jupyıter Not defterleriniz ile dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir. Bir not defteri VM oluşturduğunuzda, bu dosya VM 'deki doğru dizine eklenir.
-
-    
+   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 

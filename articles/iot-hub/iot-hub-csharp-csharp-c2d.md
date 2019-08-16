@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: f8ba9508bdbb7fd436d3b693e638f29bac5065bf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5fb6b17bcbc39b4e7531f79b832853a4f1ed1fd5
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618663"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558675"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>IoT Hub (.NET) ile buluttan cihazınıza ileti gönderme
 
@@ -26,7 +26,7 @@ Azure IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu öğretici, [bir cihazdan IoT Hub 'ına telemetri gönderme hakkında bir](quickstart-send-telemetry-dotnet.md)yapı oluşturur. Aşağıdaki adımları nasıl yapabileceğiniz gösterilmektedir:
+Bu öğretici, [bir cihazdan IoT Hub 'ına telemetri gönderme hakkında bir](quickstart-send-telemetry-dotnet.md)yapı oluşturur. Aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
 * Çözüm arka ucundan, IoT Hub aracılığıyla buluttan cihaza iletileri tek bir cihaza gönderin.
 
@@ -38,23 +38,23 @@ Bu öğretici, [bir cihazdan IoT Hub 'ına telemetri gönderme hakkında bir](qu
 
 Bu öğreticinin sonunda iki .NET konsol uygulaması çalıştırırsınız.
 
-* **SimulatedDevice**, bir cihazdan Telemetriyi, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletileri alan bir [IoT Hub 'ına bir cihaz aracılığıyla göndererek](quickstart-send-telemetry-dotnet.md)oluşturulan bir uygulama sürümüdür.
+* **SimulatedDevice**. Bu uygulama, IoT Hub 'ınıza bağlanır ve buluttan cihaza iletileri alır. Bu uygulama, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-dotnet.md)bölümünde oluşturulan uygulamanın değiştirilmiş bir sürümüdür.
 
-* Cihaz uygulamasına IoT Hub aracılığıyla buluttan cihaza ileti gönderen **Sendcloudtodevice**ve sonra teslim onayını alır.
+* **Sendcloudtodevice**. Bu uygulama, IoT Hub aracılığıyla cihaz uygulamasına buluttan cihaza bir ileti gönderir ve ardından teslim alındı bildirimi alır.
 
 > [!NOTE]
-> IoT Hub, [Azure IoT cihaz SDK 'ları](iot-hub-devguide-sdks.md)aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için, [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
+> IoT Hub, [Azure IoT cihaz SDK 'ları](iot-hub-devguide-sdks.md)aracılığıyla C, Java, Python ve JavaScript gibi birçok cihaz platformu ve DILI için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için, [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
 >
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 * Visual Studio
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+* Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
 ## <a name="receive-messages-in-the-device-app"></a>Cihaz uygulamasında ileti alma
 
-Bu bölümde, IoT Hub 'ından buluttan cihaza ileti almak için [bir cihazdan telemetri gönderme bölümünde oluşturduğunuz cihaz uygulamasını bir IoT Hub 'ına](quickstart-send-telemetry-dotnet.md) değiştireceksiniz.
+Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazdan telemetri gönderme bölümünde oluşturduğunuz cihaz uygulamasını bir IoT Hub 'ına](quickstart-send-telemetry-dotnet.md) değiştirin.
 
 1. Visual Studio 'da, **SimulatedDevice** projesinde, **Program** sınıfına aşağıdaki yöntemi ekleyin.
 
@@ -77,21 +77,21 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza ileti almak için [bir cihazdan te
     }
    ```
 
-   `ReceiveAsync` Yöntemi, cihaz tarafından alındığı sırada alınan iletiyi zaman uyumsuz olarak döndürür. Belirtilme zaman aşımı süresinden sonra *null* döndürür (Bu durumda, bir dakikalık varsayılan değer kullanılır). Uygulama *null*aldığında yeni iletileri beklemeye devam etmelidir. Bu gereksinim, `if (receivedMessage == null) continue` çizginin nedenidir.
-
-    ' A yapılan `CompleteAsync()` çağrı, iletinin başarıyla işlendiğini IoT Hub bildirir. İleti, cihaz sırasından güvenle kaldırılabilir. Cihaz uygulamasının ileti işlemeyi tamamlamasını önleyen bir sorun oluştuysa, IoT Hub yeniden teslim eder. Daha sonra, cihaz uygulamasındaki ileti işleme mantığının *ıdempotent*olması önemlidir, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir. 
-
-    Bir uygulama bir iletiyi geçici olarak iptal edebilir ve bu da IoT Hub 'ı, gelecekteki tüketim için kuyruktaki iletiyi korur. Ya da uygulama, iletiyi sıradan kalıcı olarak kaldıran bir iletiyi reddedebilirler. Buluttan cihaza ileti yaşam döngüsü hakkında daha fazla bilgi için, bkz. [D2C and C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
-
-   > [!NOTE]
-   > Aktarım olarak MQTT veya AMQP yerine https kullandığınızda, `ReceiveAsync` yöntemi hemen döndürür. HTTPS ile buluttan cihaza iletiler için desteklenen model, iletileri seyrek olarak denetleyen (25 dakikada bir daha az) zaman zaman bağlı cihazlardır. Daha fazla HTTPS vermek istekleri IoT Hub azaltarak sonuçları alır. MQTT, AMQP ve HTTPS desteği arasındaki farklar ve IoT Hub azaltma hakkında daha fazla bilgi için, bkz. [D2C and C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
-   >
-
-2. Aşağıdaki yöntemi, `Console.ReadLine()` satırın hemen öncesine, **Main** yöntemine ekleyin:
+1. Aşağıdaki yöntemi, `Console.ReadLine()` satırın hemen öncesine, **Main** yöntemine ekleyin:
 
    ```csharp
    ReceiveC2dAsync();
    ```
+
+`ReceiveAsync` Yöntemi, cihaz tarafından alındığı sırada alınan iletiyi zaman uyumsuz olarak döndürür. Belirli bir zaman aşımı süresinden sonra *null* değerini döndürür. Bu örnekte, bir dakikalık varsayılan değer kullanılır. Uygulama *null*aldığında yeni iletileri beklemeye devam etmelidir. Bu gereksinim, `if (receivedMessage == null) continue` çizginin nedenidir.
+
+' A yapılan `CompleteAsync()` çağrı, iletinin başarıyla işlendiğini IoT Hub bildirir. İleti, cihaz sırasından güvenle kaldırılabilir. Cihaz uygulamasının ileti işlemeyi tamamlamasını önleyen bir sorun oluştuysa, IoT Hub yeniden teslim eder. Aynı iletiyi birden çok kez almak aynı sonucu ürettiğinden, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır.
+
+Bir uygulama bir iletiyi geçici olarak iptal edebilir ve bu da IoT Hub 'ı, gelecekteki tüketim için kuyruktaki iletiyi korur. Ya da uygulama, iletiyi sıradan kalıcı olarak kaldıran bir iletiyi reddedebilirler. Buluttan cihaza ileti yaşam döngüsü hakkında daha fazla bilgi için, bkz. [D2C and C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
+
+   > [!NOTE]
+   > Aktarım olarak MQTT veya AMQP yerine https kullandığınızda, `ReceiveAsync` yöntemi hemen döndürür. HTTPS ile buluttan cihaza iletiler için desteklenen model, iletileri seyrek olarak denetleyen (25 dakikada bir daha az) zaman zaman bağlı cihazlardır. Daha fazla HTTPS vermek istekleri IoT Hub azaltarak sonuçları alır. MQTT, AMQP ve HTTPS desteği arasındaki farklar ve IoT Hub azaltma hakkında daha fazla bilgi için, bkz. [D2C and C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
+   >
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
@@ -103,32 +103,32 @@ Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-te
 
 Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uygulaması yazarsınız.
 
-1. Geçerli Visual Studio çözümünde çözüme sağ tıklayın ve > Yeni Proje Ekle ' yi seçin. **Windows Masaüstü** ve **konsol uygulaması (.NET Framework)** öğesini seçin. Projeyi **Sendcloudtodevice** olarak adlandırın ve .NET Framework en son sürümünü seçin ve ardından projeyi oluşturmak için **Tamam** ' ı seçin.
+1. Geçerli Visual Studio çözümünde **Dosya** > **Yeni** > **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-   ![Visual Studio 'da yeni proje](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
+1. Projeyi *Sendcloudtodevice*olarak adlandırın. **Çözüm**altında **çözüme Ekle** ' yi seçin ve .NET Framework en son sürümünü kabul edin. Projeyi oluşturmak için **Oluştur**'u seçin.
 
-2. Çözüm Gezgini, çözüme sağ tıklayın ve sonra **çözüm Için NuGet Paketlerini Yönet...** seçeneğine tıklayın.
+   ![Visual Studio 'da yeni bir proje yapılandırma](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
-   Bu eylem, **NuGet Paketlerini Yönet** penceresi açılır.
+1. Çözüm Gezgini ' de, yeni çözüme sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-3. **Microsoft. Azure. Devices**' i arayın, gözden geçirme sekmesini seçin. Paketi bulduğunuzda, **yükler**' e tıklayın ve kullanım koşullarını kabul edin.
+1. **NuGet Paketlerini Yönet**bölümünde, **Araştır**' ı seçin ve ardından **Microsoft. Azure. Devices**' i arayıp seçin. **Yüklemeyi**seçin.
 
-   Bu, [Azure IoT hizmeti SDK 'Sı NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.Devices/)bir başvuru indirir, yükler ve ekler.
+   Bu adım, [Azure IoT hizmeti SDK 'Sı NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices/)'ni indirir, yükler ve buna bir başvuru ekler.
 
-4. **Program.cs** dosyasının en `using` üstüne aşağıdaki ifadeyi ekleyin.
+1. **Program.cs** dosyasının en `using` üstüne aşağıdaki ifadeyi ekleyin.
 
    ``` csharp
    using Microsoft.Azure.Devices;
    ```
 
-5. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, daha önce [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
 
    ``` csharp
    static ServiceClient serviceClient;
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. **Program** sınıfına aşağıdaki yöntemi ekleyin. Cihaz adını [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönderme](quickstart-send-telemetry-dotnet.md)bölümünde kullandığınız şekilde ayarlayın.
+1. **Program** sınıfına aşağıdaki yöntemi ekleyin. Cihaz adını [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönderme](quickstart-send-telemetry-dotnet.md)bölümünde kullandığınız şekilde ayarlayın.
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -141,7 +141,7 @@ Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uy
 
    Bu yöntem, cihaza, `myFirstDevice`kimliğine sahip yeni bir buluttan cihaza ileti gönderir. Bu parametreyi yalnızca [bir cihazdan IoT Hub 'ına Telemetriyi göndermek için](quickstart-send-telemetry-dotnet.md)kullanılan bir cihazdan değiştirdiyseniz değiştirin.
 
-7. Son olarak, aşağıdaki satırları **Main** yöntemine ekleyin.
+1. Son olarak, aşağıdaki satırları **Main** yöntemine ekleyin.
 
    ``` csharp
    Console.WriteLine("Send Cloud-to-Device message\n");
@@ -153,9 +153,11 @@ Artık cihaz uygulamasına buluttan cihaza iletiler gönderen bir .NET konsol uy
    Console.ReadLine();
    ```
 
-8. Visual Studio içinden çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla...** seçeneğini belirleyin. **Birden çok başlangıç projesi**seçin ve ardından **Readdevicetocloudmessages**, **SimulatedDevice**ve **sendcloudtodevice**için **başlatma** eylemini seçin.
+1. Çözüm Gezgini 'nde çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin.
 
-9. **F5**tuşuna basın. Üç uygulamanın tümünün başlaması gerekir. **Sendcloudtodevice** pencerelerini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi görmeniz gerekir.
+1. **Ortak özellikler** > **Başlangıç projesinde** **birden çok başlangıç**projesi ' ni seçin ve ardından **readdevicetocloudmessages**, **SimulatedDevice**ve sendcloudtodevice için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+
+1. **F5**tuşuna basın. Üç uygulamanın tümünün başlaması gerekir. **Sendcloudtodevice** pencerelerini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi görmeniz gerekir.
 
    ![Uygulama alma iletisi](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
@@ -190,24 +192,24 @@ Bu bölümde, **Sendcloudtodevice** uygulamasını, geri bildirim Isteyecek ve I
 
     Bu alma deseninin, cihaz uygulamasından gelen buluttan cihaza iletileri almak için kullandığı aynı olduğunu göz önünde bir şekilde yapın.
 
-2. Aşağıdaki yöntemi, `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` satırın hemen sonrasına, **Main** yöntemine ekleyin.
+1. **Main** yöntemine hemen sonra `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`aşağıdaki satırı ekleyin.
 
    ``` csharp
    ReceiveFeedbackAsync();
    ```
 
-3. Buluttan cihaza iletinizin teslimine ilişkin geri bildirim istemek için **Sendcloudtodevicemessageasync** yönteminde bir özellik belirtmeniz gerekir. Aşağıdaki satırı, `var commandMessage = new Message(...);` satırdan hemen sonra ekleyin.
+1. Buluttan cihaza iletinizin teslimine ilişkin geri bildirim istemek için **Sendcloudtodevicemessageasync** yönteminde bir özellik belirtmeniz gerekir. Aşağıdaki satırı, `var commandMessage = new Message(...);` satırdan hemen sonra ekleyin.
 
    ``` csharp
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-4. **F5**tuşuna basarak uygulamaları çalıştırın. Üç uygulamanın tümünün başlatılmasını görmeniz gerekir. **Sendcloudtodevice** pencerelerini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi ve birkaç saniye sonra, **Sendcloudtodevice** uygulamanız tarafından alınan geri bildirim iletisini görmeniz gerekir.
+1. **F5**tuşuna basarak uygulamaları çalıştırın. Üç uygulamanın tümünün başlatılmasını görmeniz gerekir. **Sendcloudtodevice** pencerelerini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi ve birkaç saniye sonra, **Sendcloudtodevice** uygulamanız tarafından alınan geri bildirim iletisini görmeniz gerekir.
 
    ![Uygulama alma iletisi](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
-> Kolaylık olması için, bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
+> Kolaylık olması için, bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)bölümünde önerildiği gibi, üstel geri alma gibi yeniden deneme ilkeleri uygulamanız gerekir.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
