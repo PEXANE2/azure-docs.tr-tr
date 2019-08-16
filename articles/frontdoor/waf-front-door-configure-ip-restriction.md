@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 025e45b86fa3a6020652ae9756ceace5b51daa55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516212"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534992"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Azure ön kapı hizmeti için Web uygulaması güvenlik duvarıyla bir IP kısıtlama kuralı yapılandırma
 Bu makalede, Azure CLı, Azure PowerShell veya bir Azure Resource Manager şablonu kullanarak Azure ön kapısı hizmeti için bir Web uygulaması güvenlik duvarında (WAF) IP kısıtlama kurallarını yapılandırma işlemi gösterilmektedir.
@@ -56,7 +56,7 @@ Aşağıdaki örneklerde:
 -  *Ipallowpolicyexampleclı* öğesini daha önce oluşturduğunuz benzersiz ilkenize değiştirin.
 -  *IP adresi-aralığı-1*, *IP-adres-aralığı-2* ' yi kendi aralığınızla değiştirin.
 
-İlk olarak, önceki adımdan oluşturulan ilke için bir IP izin verme kuralı oluşturun. Bir kuralın bir sonraki adımda eklenecek bir eşleşme koşuluna sahip olması gerektiğinden, Note **--erteleme** gereklidir.
+İlk olarak, önceki adımdan oluşturulan ilke için bir IP izin verme kuralı oluşturun. Bir kuralın en az bir eşleşme koşulu içermesi gerektiğinden, Note **--erteleme** gerekir. 
 
 ```azurecli
 az network front-door waf-policy rule create \

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562938"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535097"
 ---
 # <a name="try-speech-services-for-free"></a>Konuşma Hizmetleri ücretsiz olarak deneyin
 
@@ -38,7 +38,7 @@ Son olarak, konuşma Hizmetleri, uygulama geliştirmeye uygun olan ücretsiz ve 
 
    ![Konuşma Hizmetleri sekmesi](media/index/try-speech-api-free-trial1.png)
 
-1. **Konuşma Hizmetleri**' nin altında, **API anahtarını al** düğmesini seçin.
+1. **Konuşma Hizmetleri**altında, **API anahtarı al**' ı seçin.
 
    ![API anahtarı](media/index/try-speech-api-free-trial2.png)
 
@@ -48,7 +48,7 @@ Son olarak, konuşma Hizmetleri, uygulama geliştirmeye uygun olan ücretsiz ve 
 
 1. Microsoft, Facebook, LinkedIn ve GitHub hesabınızı kullanarak oturum açın.
 
-    Ücretsiz bir Microsoft hesabı için kaydolabilirsiniz [Microsoft hesap portalı](https://account.microsoft.com/account). Başlamak için tıklayın **Microsoft'ta oturum açma** oturum açması istenir,'a tıklayarak **oluşturun.** Oluşturun ve yeni Microsoft hesabınızı doğrulamak için adımları izleyin.
+    Ücretsiz bir Microsoft hesabı için kaydolabilirsiniz [Microsoft hesap portalı](https://account.microsoft.com/account). Başlamak için **Microsoft hesabıyla oturum açın** ' yi seçin ve ardından oturum açmanız istendiğinde oluştur ' u seçin **.** Oluşturun ve yeni Microsoft hesabınızı doğrulamak için adımları izleyin.
 
 Bilişsel hizmetler için deneyin'da oturum açtıktan sonra ücretsiz deneme sürümünüzü başlar. Görüntülenen Web sayfasının şu anda deneme abonelikleri olan tüm Azure Bilişsel hizmetler hizmetler listelenir. İki abonelik anahtarı **konuşma Hizmetleri**' nin yanında listelenmiştir. İki anahtarı uygulamalarınızda kullanabilirsiniz.
 
@@ -59,9 +59,9 @@ Bilişsel hizmetler için deneyin'da oturum açtıktan sonra ücretsiz deneme s�
 
 Yeni Azure hesapları 30 gün boyunca kullanılabilir 200 ABD Doları değerinde bir hizmet kredisi alırsınız. Bu kredisi, konuşma hizmetlerini daha ayrıntılı incelemek veya uygulama geliştirmeye başlamak için kullanabilirsiniz.
 
-Yeni bir Azure hesabı için kaydolmak için Git [Azure kayıt sayfasına](https://azure.microsoft.com/free/ai/), tıklayın **ücretsiz Başlat** ve Microsoft hesabınızı kullanarak yeni bir Azure hesabı oluşturun.
+Yeni bir Azure hesabına kaydolmak için [Azure kaydolma sayfasına](https://azure.microsoft.com/free/ai/)gidin, **ücretsiz Başlat ' ı** seçin ve Microsoft hesabı kullanarak yeni bir Azure hesabı oluşturun.
 
-Ücretsiz bir Microsoft hesabı için kaydolabilirsiniz [Microsoft hesap portalı](https://account.microsoft.com/account). Başlamak için tıklayın **Microsoft'ta oturum açma** oturum açması istenir,'a tıklayarak **oluşturun.** Oluşturun ve yeni Microsoft hesabınızı doğrulamak için adımları izleyin.
+Ücretsiz bir Microsoft hesabı için kaydolabilirsiniz [Microsoft hesap portalı](https://account.microsoft.com/account). Başlamak için **Microsoft hesabıyla oturum açın** ' yi seçin ve ardından oturum açmanız istendiğinde oluştur ' u seçin **.** Oluşturun ve yeni Microsoft hesabınızı doğrulamak için adımları izleyin.
 
 Azure hesabınızı oluşturduktan sonra, konuşma Hizmetleri için bir abonelik başlatmak üzere sonraki bölümdeki adımları izleyin.
 
@@ -90,7 +90,7 @@ Azure hesabınıza bir konuşma Hizmetleri kaynağı (ücretsiz veya ücretli ka
    * Yeni kaynak için bir ad. Adı aynı hizmetin birden fazla aboneliğe arasında ayırt etmenize yardımcı olur.
    * Yeni kaynak ücretleri nasıl faturalandırılır belirlemek için ilişkili olduğu Azure aboneliğini seçin.
    * Kaynağın kullanılacağı [bölgeyi](regions.md) seçin.
-   * Ya da ücretsiz veya Ücretli fiyatlandırma katmanı seçin. Tıklayın **fiyatlandırma ayrıntılarının tamamını görüntüle** her katman için fiyatlandırma ve kullanım Kotalar hakkında tam bilgi için.
+   * Ya da ücretsiz veya Ücretli fiyatlandırma katmanı seçin. Her bir katmanın fiyatlandırma ve kullanım kotalarıyla ilgili tüm bilgiler için **tam fiyatlandırma ayrıntılarını görüntüle** ' yi seçin.
    * Bu konuşma abonelik için yeni bir kaynak grubu oluşturun veya mevcut bir kaynak grubu aboneliği atayın. Kaynak düzenlenir, çeşitli Azure aboneliklerinizi tutmak Yardım gruplandırır.
    * Aboneliğinize gelecekte kolay erişim için seçin **panoya Sabitle** onay kutusu.
    * Seçin **oluşturun.**
@@ -101,7 +101,7 @@ Azure hesabınıza bir konuşma Hizmetleri kaynağı (ücretsiz veya ücretli ka
 
      ![Hızlı Başlangıç paneli](media/index/try-speech-api-create-speech5.png)
 
-1. Altında **hızlı**, tıklayın **anahtarları** abonelik anahtarlarınızı görüntülemek için 1. adım altında bağlantı. Her aboneliğin, iki anahtarı vardır; uygulamanızda iki anahtarı kullanabilirsiniz. Kodunuzu yapıştırma panoya kopyalamak için her anahtar yanındaki düğmeyi seçin.
+1. **Hızlı başlangıç**altında, abonelik anahtarlarınızı göstermek için adım 1 ' ın altındaki **anahtarlar** bağlantısını seçin. Her aboneliğin, iki anahtarı vardır; uygulamanızda iki anahtarı kullanabilirsiniz. Kodunuzu yapıştırma panoya kopyalamak için her anahtar yanındaki düğmeyi seçin.
 
 > [!NOTE]
 > Bir veya birden çok bölgede standart katman abonelikleri sınırsız sayıda oluşturabilirsiniz. Ancak, yalnızca bir ücretsiz katman abonelik oluşturabilir. Ücretsiz katmanındaki 7 gün için kullanılmaması modeli dağıtımlarını otomatik olarak kullanımdan olacaktır.

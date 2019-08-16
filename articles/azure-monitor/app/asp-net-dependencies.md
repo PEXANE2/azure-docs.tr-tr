@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326442"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534609"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -90,7 +90,7 @@ Standart bağımlılık izleme modülünü devre dışı bırakmak istiyorsanız
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Web sayfalarından AJAX çağrılarını izleme
 
-Web sayfaları için, JavaScript SDK Application Insights, [burada](javascript.md#ajax-performance)açıklandığı gıbı, Ajax çağrılarını otomatik olarak bağımlılıklar olarak toplar. Bu belge, sunucu bileşenlerinden bağımlılıklara odaklanır.
+Web sayfaları için Application Insights JavaScript SDK 'Sı otomatik olarak AJAX çağrılarını bağımlılık olarak toplar.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Tam SQL sorgusu almak için gelişmiş SQL izleme
 
@@ -113,7 +113,7 @@ Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığın
 
 * [Uygulama Haritası](app-map.md) komşu bileşenlerini ve uygulama arasındaki bağımlılıkları görselleştirir.
 * [Işlem tanılama](transaction-diagnostics.md) Birleşik, bağıntılı sunucu verilerini gösterir.
-* [Tarayıcılar sekmesi](javascript.md#ajax-performance) kullanıcılarınızın TARAYıCıLARıNDAKI Ajax çağrılarını gösterir.
+* [Tarayıcılar sekmesi](javascript.md) kullanıcılarınızın TARAYıCıLARıNDAKI Ajax çağrılarını gösterir.
 * Bağımlılık çağrılarını denetlemek için yavaş veya başarısız olan isteklerden öğesine tıklayın.
 * [Analytics](#logs-analytics) sorgu bağımlılık verileri için kullanılabilir.
 

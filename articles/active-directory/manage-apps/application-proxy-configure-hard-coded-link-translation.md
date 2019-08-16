@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d85fc7ed16f397cb91232e9648df4e8741b37a
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705791"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533689"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
 
@@ -30,13 +30,16 @@ Azure AD Uygulama Ara Sunucusu, şirket içi uygulamalarınızı uzak veya kendi
 Bağlantıların şirket ağınızın hem içinde hem de dışında çalıştığından emin olmanın en iyi yolu, uygulamalarınızın dış URL 'Lerinin iç URL 'Leriyle aynı olacak şekilde yapılandırmaktır. Dış URL 'nizin varsayılan uygulama proxy 'si etki alanı yerine kurumsal etki alanı adına sahip olacak şekilde yapılandırılması için [özel etki alanlarını](application-proxy-configure-custom-domain.md) kullanın.
 
 
-Kiracınızda özel etki alanlarını kullanmıyorsanız, bu işlevselliği sağlamak için birkaç başka seçenek vardır. Bunların hepsi aynı zamanda özel etki alanları ve birbirleriyle uyumludur, böylece özel etki alanlarını ve gerekirse diğer çözümleri yapılandırabilirsiniz. 
+Kiracınızda özel etki alanlarını kullanmıyorsanız, bu işlevselliği sağlamak için birkaç başka seçenek vardır. Bunların hepsi aynı zamanda özel etki alanları ve birbirleriyle uyumludur, böylece özel etki alanlarını ve gerekirse diğer çözümleri yapılandırabilirsiniz.
+
+> [!NOTE]
+> JavaScript kullanılarak oluşturulan sabit kodlanmış iç URL 'Ler için bağlantı çevirisi desteklenmez.
 
 **Seçenek 1: Managed Browser veya Microsoft Edge** 'i kullanın – Bu çözüm yalnızca, kullanıcıların uygulamaya Intune Managed Browser veya Microsoft Edge tarayıcısı aracılığıyla erişmelerini önermeye veya gerektirmeye planlandıysanız geçerlidir. Yayımlanan tüm URL 'Leri işleyecek. 
 
 **Seçenek 2: Uygulamaps uzantısını** kullanın – Bu çözüm, kullanıcıların bir istemci tarafı tarayıcı uzantısı yüklemesini gerektirir, ancak yayımlanan tüm URL 'leri işleyecek ve en popüler tarayıcılarla çalışır. 
 
-**Seçenek 3: Bağlantı çevirisi ayarını** kullanın – Bu, kullanıcılar tarafından görünmeyen bir yönetim tarafı ayarıdır. Ancak, URL 'Leri yalnızca HTML ve CSS 'de işleymeyecektir. JavaScript üzerinden oluşturulan sabit kodlanmış iç URL 'Ler (örneğin,) çalışmayacak.  
+**Seçenek 3: Bağlantı çevirisi ayarını** kullanın – Bu, kullanıcılar tarafından görünmeyen bir yönetim tarafı ayarıdır. Ancak, URL 'Leri yalnızca HTML ve CSS 'de işleymeyecektir.   
 
 Bu üç özellik, kullanıcılarınızın nerede olduğuna bakılmaksızın bağlantılarınızı çalışır halde tutar. Doğrudan iç uç noktalara veya bağlantı noktalarına işaret eden uygulamalarınız varsa, bu iç URL 'Leri yayımlanmış dış uygulama proxy 'Si URL 'Lerine eşleyebilirsiniz. 
 
@@ -110,7 +113,7 @@ Ayrıca, CSS içinde URL özniteliği de çevrilir.
 
 ### <a name="how-do-apps-link-to-each-other"></a>Uygulamalar birbirlerine nasıl bağlanır?
 
-Her uygulama için bağlantı çevirisi etkinleştirilir, böylece uygulama başına düzeyinde kullanıcı deneyimi üzerinde denetime sahip olursunuz. Uygulamanın *bağlantılarını değil* , bu *uygulamadaki bağlantıların çevrilmesini* istediğinizde bir uygulama için bağlantı çevirisini açın. 
+Her uygulama için bağlantı çevirisi etkinleştirilir, böylece uygulama başına düzeyinde kullanıcı deneyimi üzerinde denetime sahip olursunuz. Uygulamanın bağlantılarını değil, bu uygulamadaki bağlantıların çevrilmesini istediğinizde bir uygulama için bağlantı çevirisini açın. 
 
 Örneğin, uygulama proxy 'Si aracılığıyla her birine bağlanan üç uygulamanız olduğunu varsayalım: Avantajlar, giderler ve seyahat. Uygulama proxy 'Si aracılığıyla yayımlanmamış bir dördüncü uygulama, geri bildirim var.
 

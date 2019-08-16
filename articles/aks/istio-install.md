@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67625987"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542874"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
 
@@ -41,6 +41,8 @@ Bu makalede şunları öğreneceksiniz:
 Bu makalede açıklanan adımlarda bir aks kümesi (RBAC etkinleştirilmiş Kubernetes `1.11` ve üzeri) oluşturduğunuz ve kümeyle bir `kubectl` bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
 
 Bu yönergeleri izlemek ve Istio 'yu yüklemek için [Helm][helm] gerekir. Kümenizde doğru bir sürüm `2.12.2` veya daha sonra yüklenip yapılandırılmış olması önerilir. Held 'yi yüklemeyle ilgili yardıma ihtiyacınız varsa bkz. [aks helk Yükleme Kılavuzu][helm-install]. Tüm istio Pod 'ler de Linux düğümlerinde çalışacak şekilde zamanlanmalıdır.
+
+AKS kümenizde Istio çalıştırmaya yönelik ek kaynak gereksinimlerini anlamak için, [Istio performans ve ölçeklenebilirlik](https://istio.io/docs/concepts/performance-and-scalability/) belgelerini okuduğunuzdan emin olun. Çekirdek ve bellek gereksinimleri, belirli iş yükünüze göre farklılık gösterecektir. Kuruluma uygun sayıda düğüm ve VM boyutu seçin.
 
 Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai sonuç, resmi Istio yükleme [kılavuzundaki][istio-install-helm]yapıda aynıdır.
 
@@ -124,7 +126,7 @@ source ~/completions/istioctl.bash
 echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 ```
 
-Şimdi de bir sonraki bölüme geçiş [yapın.](#install-the-istio-crds-on-aks)
+Şimdi de bir sonraki bölüme geçiş yapın. [](#install-the-istio-crds-on-aks)
 
 ### <a name="linux-or-windows-subsystem-for-linux"></a>Linux için Linux veya Windows alt sistemi
 
@@ -148,7 +150,7 @@ source ~/completions/istioctl.bash
 echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 ```
 
-Şimdi de bir sonraki bölüme geçiş [yapın.](#install-the-istio-crds-on-aks)
+Şimdi de bir sonraki bölüme geçiş yapın. [](#install-the-istio-crds-on-aks)
 
 ### <a name="windows"></a>Windows
 
@@ -167,7 +169,7 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
 [environment]::SetEnvironmentVariable("PATH", $PATH)
 ```
 
-Şimdi de bir sonraki bölüme geçiş [yapın.](#install-the-istio-crds-on-aks)
+Şimdi de bir sonraki bölüme geçiş yapın. [](#install-the-istio-crds-on-aks)
 
 ## <a name="install-the-istio-crds-on-aks"></a>AKS 'e Istio CRDs 'yi yükler
 

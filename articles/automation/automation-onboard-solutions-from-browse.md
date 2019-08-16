@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667338"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534693"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Birden çok VM 'de Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini etkinleştirme
 
@@ -45,7 +45,7 @@ Sanal makinelerin listesi, yalnızca aynı abonelikte ve konumda bulunan sanal m
 
 ### <a name="resource-group-limit"></a>Ekleme sınırlamaları
 
-Ekleme için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına 5 kaynak grubu ile sınırlıdır. Ekleme bütünlüğünden emin olmak için bu kaynak gruplarının 2 ' nin, Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak üzere ayrılmıştır. Bu, dağıtım için seçilecek 3 kaynak grubu ile aynı kalır.
+Ekleme için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına 5 kaynak grubu ile sınırlıdır. Ekleme bütünlüğünden emin olmak için bu kaynak gruplarının 2 ' nin, Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak üzere ayrılmıştır. Bu, dağıtım için seçilecek 3 kaynak grubu ile aynı kalır. Bu sınır, bir otomasyon çözümü tarafından yönetilebilen kaynak gruplarının sayısını değil, yalnızca eşzamanlı ekleme için geçerlidir.
 
 Bir runbook 'u ekleme için de kullanabilirsiniz. daha fazla bilgi için bkz. [Azure Otomasyonu 'nda güncelleştirme ve değişiklik izleme çözümlerini](automation-onboard-solutions.md)ekleme.
 

@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8541713219eb8daf880605089fe49fc585836bdc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591899"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534943"
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>Derin öğrenme sanal makinesine giriş
+
+> [!NOTE]
+> Tüm derin öğrenme VM (DLVM) araçları artık [veri bilimi VM'si (DSVM)](dsvm-tools-overview.md)olarak katlanmıştır. DLCı VM ve DSVM artık aynı. Lütfen DLVM yerine bir DSVM oluşturmayı düşünün.
 
 ## <a name="why-deep-learning-virtual-machine"></a>Derin öğrenme sanal makinesi neden? 
 
@@ -35,7 +38,6 @@ Derin öğrenme sanal makinesi, derinlemesine öğrenme modellerini eğitmek iç
 
 Derin öğrenme sanal makinesini aşağıdaki adımlarla kullanmaya başlayın:
 
-* [Derin öğrenme sanal makinesi sağlama](provision-deep-learning-dsvm.md)
-* [Derin öğrenme sanal makinesini kullanın](use-deep-learning-dsvm.md)
-* [Araç başvurusu](dsvm-deep-learning-ai-frameworks.md)
-* [Örnekler](dsvm-samples-and-walkthroughs.md)
+* [Windows Veri Bilimi Sanal Makinesi sağlama](provision-vm.md)
+* [Ubuntu Veri Bilimi Sanal Makinesi sağlama](dsvm-ubuntu-intro.md)
+

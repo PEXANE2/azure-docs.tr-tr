@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 5049a35b943c68d1a05d1435113226d83dc5ecf4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031773"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533618"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de yetkili IP adresi aralıklarını kullanarak API sunucusuna önizleme-güvenli erişim
 
@@ -108,6 +108,14 @@ Bir sonraki bölümde yetkili IP aralıklarını etkinleştirdiğinizde bir küm
 
 > [!WARNING]
 > Azure Güvenlik duvarı kullanımı, aylık bir fatura döngüsüne göre önemli maliyetler oluşturabilir. Azure Güvenlik Duvarı 'nı kullanma gereksinimi yalnızca bu ilk önizleme döneminde gerekli olmalıdır. Daha fazla bilgi ve maliyet planlaması için bkz. [Azure Güvenlik Duvarı fiyatlandırması][azure-firewall-costs].
+>
+> Alternatif olarak, kümeniz [Standart SKU yük dengeleyiciyi][standard-sku-lb]kullanıyorsa, Azure Güvenlik duvarını giden ağ geçidi olarak yapılandırmanız gerekmez. [Az Network public-ip List][az-network-public-ip-list] kullanın ve genellikle *Mc_* ile başlayan aks kümenizin kaynak grubunu belirtin. Bu, kümeniz için ortak IP 'yi görüntüler; bu, beyaz listeye eklenebilir. Örneğin:
+>
+> ```azurecli-interactive
+> RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
+> SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
+> az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSClusterSLB
+> ```
 
 İlk olarak, AKS kümesi ve sanal ağ için *Mc_* kaynak grubu adını alın. Ardından, [az Network VNET subnet Create][az-network-vnet-subnet-create] komutunu kullanarak bir alt ağ oluşturun. Aşağıdaki örnek, *10.200.0.0/16*CIDR aralığı ile *AzureFirewallSubnet* adlı bir alt ağ oluşturur:
 
@@ -259,11 +267,13 @@ Daha fazla bilgi için bkz. [aks 'teki uygulamalar ve kümeler Için güvenlik k
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [create-aks-sp]: kubernetes-service-principal.md#manually-create-a-service-principal
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-firewall-create]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-create
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
@@ -271,3 +281,4 @@ Daha fazla bilgi için bkz. [aks 'teki uygulamalar ve kümeler Için güvenlik k
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[standard-sku-lb]: load-balancer-standard.md

@@ -14,30 +14,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 08/11/2019
 ms.author: vijetaj
-ms.openlocfilehash: 08a740ec898f1ac46ff66de9002e4241d918adc0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2bcda25ed6897f8955d7e74981bc4f04a145c99
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558174"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534917"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Derin Öğrenme ve AI çerçeveleri
-[Veri bilimi sanal makinesi](https://aka.ms/dsvm) (DSVM) ve [derin öğrenme VM](https://aka.ms/dsvm/deeplearning) Tahmine dayalı analiz ile yapay zeka (AI) uygulamaları oluşturmanıza yardımcı olmak için ayrıntılı öğrenme çerçevelerini destekler ve bilişsel yetenekleri, görüntü ve dil anlama gibi.
+[Veri bilimi sanal makinesi](https://aka.ms/dsvm) (dsvm), tahmine dayalı analiz ve görüntü ve dil anlama gibi bilişsel Özellikler Ile yapay zeka (AI) uygulamaları oluşturmaya yardımcı olacak çok sayıda derin öğrenme çerçevesini destekler.
 
 Tüm derin öğrenme çerçeveleri DSVM'nin kullanılabilir ilişkin ayrıntılar aşağıdadır.
 
-## <a name="microsoft-cognitive-toolkit"></a>Microsoft Bilişsel Araç Seti
-
-|    |           |
-| ------------- | ------------- |
-| Nedir?   | Derin öğrenme      |
-| Desteklenen DSVM sürümleri      | Windows, Linux     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Python 3.5 yüklenir Microsoft Cognitive Toolkit (CNTK) [Linux ve Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) ve Python 3.6 üzerinde [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition).   |
-| Örneklere bağlantılar      | Örnek Jupyter not defterleri bulunur.     |
-| DSVM ilgili araçları      | Keras      |
-| Kullanma / çalıştırın nasıl?    | *, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) veya [Jupyıterhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın, ardından örnekler için cntk dizinini açın. |
 
 ## <a name="tensorflow"></a>TensorFlow
 
@@ -50,16 +40,16 @@ Tüm derin öğrenme çerçeveleri DSVM'nin kullanılabilir ilişkin ayrıntıla
 | DSVM ilgili araçları      | Keras      |
 | Kullanma / çalıştırın nasıl?    | *, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) veya [Jupyıterhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın ve örnekler için TensorFlow dizinini açın.  |
 
-## <a name="horovod"></a>Horovod
+## <a name="pytorch"></a>PyTorch
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | TensorFlow Distribued derin öğrenme framework      |
-| Desteklenen DSVM sürümleri      | Ubuntu     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Horovod üzerinde Python 3.5 yüklenir [Ubuntu](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
-| Örneklere bağlantılar      | [https://github.com/uber/horovod/tree/master/examples](https://github.com/uber/horovod/tree/master/examples)     |
-| DSVM ilgili araçları      | TensorFlow      |
-| Kullanma / çalıştırın nasıl?    | Bir terminal adresindeki: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. |
+| Nedir?   | Derin öğrenme      |
+| Desteklenen DSVM sürümleri      | Linux     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | PyTorch yüklü [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
+| Örneklere bağlantılar      | Örnek Jupyter not defterleri dahil edin ve örnekler de /dsvm/samples/pytorch içinde bulunabilir.      |
+| DSVM ilgili araçları      | Torch      |
+| Nasıl kullanma / çalıştırın |*, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi Terhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın ve ardından örnekler Için PyTorch dizinini açın.  |
 
 ## <a name="keras"></a>Keras
 
@@ -111,6 +101,70 @@ Caffe'nın yüklü sürümü, Python 2.7 gerektirir ve varsayılan olarak etkinl
 | Kullanma / çalıştırın nasıl?    | *, Terminal: etkinleştirme [kök Python ortamı](dsvm-languages.md#python-linux-and-windows-server-2012-edition), Python'ı başlatın ve caffe2 içeri aktarın. <br/> * Giriş JupyterHub: [bağlanmak için JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), ardından örnek not defterleri bulmak için Caffe2 dizine gidin. Bazı dizüstü bilgisayarlar Python kodunda ayarlanacak Caffe2 kök gerektirir; /OPT/caffe2 girin. |
 | Notları oluşturun | Caffe2 kaynağından Linux üzerinde kurulmuştur ve CUDA, cuDNN ve Intel MKL içerir. Kararlılık tüm GPU'ları ve test edilen örnekler için seçilen 0d9c0d48c6f20143d6404b99cc568efd29d5a4be, geçerli işlemesidir. |
 
+## <a name="torch"></a>Torch
+
+|    |           |
+| ------------- | ------------- |
+| Nedir?   | Derin öğrenme      |
+| Desteklenen DSVM sürümleri      | Ubuntu     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Torch yüklü `/dsvm/tools/torch`. PyTorch Python 2.7 yüklenir (_kök_), Python 3.5 yanı sıra (_py35_) ortamı.   |
+| Örneklere bağlantılar      | Torch örnekleri yer `/dsvm/samples/torch`. PyTorch örnekleri yer `/dsvm/samples/pytorch`.      |
+
+
+
+
+## <a name="mxnet-model-server"></a>MXNet modeli sunucusu
+
+|    |           |
+| ------------- | ------------- |
+| Nedir?   | MXNet ve ONNX modelleri için HTTP uç noktaları oluşturmak için bir sunucu      |
+| Desteklenen DSVM sürümleri      | Linux     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | _mxnet modeli sunucu_ terminal bulunur.   |
+| Örneklere bağlantılar      | Güncel örnekleri arayabilirsiniz [MXNet modeli sunucu sayfası](https://github.com/awslabs/mxnet-model-server).    |
+| DSVM ilgili araçları      | MXNet      |
+
+
+## <a name="mxnet"></a>MXNet
+
+|    |           |
+| ------------- | ------------- |
+| Nedir?   | Derin öğrenme      |
+| Desteklenen DSVM sürümleri      | Windows, Linux     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | MXNet yüklü `C:\dsvm\tools\mxnet` Windows üzerinde ve `/dsvm/tools/mxnet` Linux üzerinde. Python bağlamaları yüklenen Python 3.5 [Linux ve Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) ve Python 3.6 üzerinde [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). R bağlamaları, Ubuntu'da da yüklenir.   |
+| Örneklere bağlantılar      | Örnek Jupyter not defterleri bulunur.    |
+| DSVM ilgili araçları      | Keras      |
+| Kullanma / çalıştırın nasıl?    | *, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) veya [Jupyıterhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın ve ardından örnek için mxnet dizinini açın.  |
+ | Notları oluşturun | MXNet kaynağından Linux üzerinde yerleşik olarak bulunur. Bu derleme CUDA, cuDNN, NCCL ve MKL içerir. |
+
+
+
+
+
+
+## <a name="horovod"></a>Horovod
+
+|    |           |
+| ------------- | ------------- |
+| Nedir?   | TensorFlow için dağıtılmış derin öğrenme çerçevesi      |
+| Desteklenen DSVM sürümleri      | Ubuntu     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Horovod üzerinde Python 3.5 yüklenir [Ubuntu](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
+| Örneklere bağlantılar      | [https://github.com/uber/horovod/tree/master/examples](https://github.com/uber/horovod/tree/master/examples)     |
+| DSVM ilgili araçları      | TensorFlow      |
+| Kullanma / çalıştırın nasıl?    | Bir terminal adresindeki: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. |
+
+
+
+## <a name="theano"></a>Theano
+
+|    |           |
+| ------------- | ------------- |
+| Nedir?   | Derin öğrenme      |
+| Desteklenen DSVM sürümleri      | Ubuntu     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Theano Python 2.7 yüklenir (_kök_), Python 3.5 yanı sıra (_py35_) ortamı.   |
+| DSVM ilgili araçları      | Keras      |
+| Kullanma / çalıştırın nasıl?    | * Bir terminal, (kök veya py35) python çalıştırın, sonra theano alma Python sürümü etkinleştirin. <br/> * Jupi 'de Python 2,7 veya 3,5 çekirdeğini seçin ve ardından Ano içeri aktarın.  <br/>Son MKL hatanın geçici olarak çözmek için katman iş parçacığı MKL ayarlamanız gerekir:<br/><br/>_Export MKL_THREADING_LAYER = GNU_|
+
+
 ## <a name="chainer"></a>Chainer
 
 |    |           |
@@ -146,17 +200,6 @@ Ayrıntılı su kullanmak için:
 * Terminalde,: etkinleştirme [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) çalıştırın, ortam _python_. <br/>
 * İçinde JupyterHub: [bağlanmak için JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), ardından örnek not defterleri bulmak için deep_water dizine gidin.
 
-## <a name="mxnet"></a>MXNet
-
-|    |           |
-| ------------- | ------------- |
-| Nedir?   | Derin öğrenme      |
-| Desteklenen DSVM sürümleri      | Windows, Linux     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | MXNet yüklü `C:\dsvm\tools\mxnet` Windows üzerinde ve `/dsvm/tools/mxnet` Linux üzerinde. Python bağlamaları yüklenen Python 3.5 [Linux ve Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) ve Python 3.6 üzerinde [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). R bağlamaları, Ubuntu'da da yüklenir.   |
-| Örneklere bağlantılar      | Örnek Jupyter not defterleri bulunur.    |
-| DSVM ilgili araçları      | Keras      |
-| Kullanma / çalıştırın nasıl?    | *, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) veya [Jupyıterhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın ve ardından örnek için mxnet dizinini açın.  |
- | Notları oluşturun | MXNet kaynağından Linux üzerinde yerleşik olarak bulunur. Bu derleme CUDA, cuDNN, NCCL ve MKL içerir. |
 
 ## <a name="nvidia-digits"></a>NVIDIA BASAMAK
 
@@ -187,48 +230,6 @@ Hizmeti başlatmak için yaklaşık bir dakika sürer. Bir web tarayıcısını 
 
 
 
-## <a name="theano"></a>Theano
-
-|    |           |
-| ------------- | ------------- |
-| Nedir?   | Derin öğrenme      |
-| Desteklenen DSVM sürümleri      | Ubuntu     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Theano Python 2.7 yüklenir (_kök_), Python 3.5 yanı sıra (_py35_) ortamı.   |
-| DSVM ilgili araçları      | Keras      |
-| Kullanma / çalıştırın nasıl?    | * Bir terminal, (kök veya py35) python çalıştırın, sonra theano alma Python sürümü etkinleştirin. <br/> * Jupi 'de Python 2,7 veya 3,5 çekirdeğini seçin ve ardından Ano içeri aktarın.  <br/>Son MKL hatanın geçici olarak çözmek için katman iş parçacığı MKL ayarlamanız gerekir:<br/><br/>_Export MKL_THREADING_LAYER = GNU_|
-
-
-
-## <a name="torch"></a>Torch
-
-|    |           |
-| ------------- | ------------- |
-| Nedir?   | Derin öğrenme      |
-| Desteklenen DSVM sürümleri      | Ubuntu     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Torch yüklü `/dsvm/tools/torch`. PyTorch Python 2.7 yüklenir (_kök_), Python 3.5 yanı sıra (_py35_) ortamı.   |
-| Örneklere bağlantılar      | Torch örnekleri yer `/dsvm/samples/torch`. PyTorch örnekleri yer `/dsvm/samples/pytorch`.      |
-
-
-## <a name="pytorch"></a>PyTorch
-
-|    |           |
-| ------------- | ------------- |
-| Nedir?   | Derin öğrenme      |
-| Desteklenen DSVM sürümleri      | Linux     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | PyTorch yüklü [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
-| Örneklere bağlantılar      | Örnek Jupyter not defterleri dahil edin ve örnekler de /dsvm/samples/pytorch içinde bulunabilir.      |
-| DSVM ilgili araçları      | Torch      |
-| Nasıl kullanma / çalıştırın |*, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi Terhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın ve ardından örnekler Için PyTorch dizinini açın.  |
-
-## <a name="mxnet-model-server"></a>MXNet modeli sunucusu
-
-|    |           |
-| ------------- | ------------- |
-| Nedir?   | MXNet ve ONNX modelleri için HTTP uç noktaları oluşturmak için bir sunucu      |
-| Desteklenen DSVM sürümleri      | Linux     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | _mxnet modeli sunucu_ terminal bulunur.   |
-| Örneklere bağlantılar      | Güncel örnekleri arayabilirsiniz [MXNet modeli sunucu sayfası](https://github.com/awslabs/mxnet-model-server).    |
-| DSVM ilgili araçları      | MXNet      |
 
 ## <a name="tensorflow-serving"></a>TensorFlow sunma
 
@@ -251,4 +252,14 @@ Hizmeti başlatmak için yaklaşık bir dakika sürer. Bir web tarayıcısını 
 | DSVM ilgili araçları      | TensorFlow hizmet verebilmesi için MXNet modeli sunucusu  |
 
 
+## <a name="microsoft-cognitive-toolkit"></a>Microsoft Bilişsel Araç Seti
+
+|    |           |
+| ------------- | ------------- |
+| Nedir?   | Derin öğrenme      |
+| Desteklenen DSVM sürümleri      | Windows, Linux     |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Python 3.5 yüklenir Microsoft Cognitive Toolkit (CNTK) [Linux ve Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) ve Python 3.6 üzerinde [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition).   |
+| Örneklere bağlantılar      | Örnek Jupyter not defterleri bulunur.     |
+| DSVM ilgili araçları      | Keras      |
+| Kullanma / çalıştırın nasıl?    | *, Bir terminal: doğru ortamı etkinleştirmek ve Python'ı çalıştırın. <br/> * Jupyter 'da *: [Jupi](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) veya [Jupyıterhub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)'a bağlanın, ardından örnekler için cntk dizinini açın. |
 

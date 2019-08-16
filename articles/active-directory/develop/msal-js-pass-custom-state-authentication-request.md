@@ -1,9 +1,9 @@
 ---
-title: Kimlik doğrulama istekleri (JavaScript için Microsoft kimlik doğrulama kitaplığı) özel durumda geçirin | Azure
-description: JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı kullanarak kimlik doğrulama isteği bir özel durum parametresi değeri geçirin öğrenin.
+title: Kimlik doğrulama isteklerinde özel durum geçirme (JavaScript için Microsoft kimlik doğrulama kitaplığı) | Mavisi
+description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak kimlik doğrulama isteğinde özel durum parametre değeri geçirme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: nacanuma
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29d84838ddb11ac359d7a04dbce8e39dd05ac01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420506"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532753"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Özel bir durum geçişi MSAL.js kullanılarak kimlik doğrulaması istekleri
-*Durumu* parametresi, OAuth 2.0 tarafından tanımlandığı gibi bir kimlik doğrulama isteğine dahil ve siteler arası istek sahteciliği saldırılarına önlemek için belirteci yanıt olarak da döndürülür. Varsayılan olarak, Microsoft kimlik doğrulama kitaplığı JavaScript (MSAL.js) için rastgele oluşturulmuş geçirir benzersiz *durumu* kimlik doğrulama isteklerini parametre değeri.
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL. js kullanarak kimlik doğrulama isteklerinde özel durum geçirme
+OAuth 2,0 tarafından tanımlanan *durum* parametresi bir kimlik doğrulama isteğine dahildir ve ayrıca, siteler arası istek sahteciliği saldırılarını engellemek için belirteç yanıtında de döndürülür. Varsayılan olarak, JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), kimlik doğrulama isteklerinde rastgele oluşturulmuş benzersiz bir *durum* parametresi değeri geçirir.
 
-State parametresi, bilgileri yeniden yönlendirme önce uygulamanın durumu kodlamak için de kullanılabilir. Uygulamasında, bu parametre için giriş olarak oldukları sayfası ya da görünümü gibi kullanıcı durumunun geçirebilirsiniz. MSAL.js kitaplığı, özel durum durumu parametre olarak geçirmenize olanak `Request` nesnesi:
+Durum parametresi, yeniden yönlendirmenin önüne uygulama durumunun bilgilerini kodlamak için de kullanılabilir. Bu parametreye giriş olarak kullanıcının durumunu uygulamada (sayfada bulunan sayfa veya görüntüleme gibi) geçirebilirsiniz. MSAL. js kitaplığı, özel durumlarınızı `Request` nesne içinde durum parametresi olarak geçirmenize olanak sağlar:
 
 ```javascript
 // Request type
@@ -57,7 +57,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Geçirilen durumu isteği gönderirken MSAL.js tarafından ayarlamak için benzersiz GUID eklenir. Yanıt döndürüldüğünde, MSAL.js durumu eşleştirmek için denetler ve durumda geçirilen özel döndürür `Response` nesnesinin `accountState`.
+Geçirilen durum, istek gönderilirken MSAL. js tarafından ayarlanan benzersiz GUID 'ye eklenir. Yanıt döndürüldüğünde, msal. js bir durum eşleşmesi olup olmadığını denetler ve ardından `Response` `accountState`nesne içindeki özel geçti durumunu döndürür.
 
 ```javascript
 export type AuthResponse = {
@@ -73,4 +73,4 @@ export type AuthResponse = {
 };
 ```
 
-Daha fazla bilgi okuyun [tek sayfalı uygulama (SPA) oluşturma](scenario-spa-overview.md) MSAL.js kullanılarak.
+Daha fazla bilgi edinmek için MSAL. js kullanarak [tek sayfalı uygulama (Spa) oluşturma](scenario-spa-overview.md) hakkında bilgi edinin.

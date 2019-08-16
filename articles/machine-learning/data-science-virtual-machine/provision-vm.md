@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591831"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534940"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure 'da bir Windows Veri Bilimi Sanal Makinesi sağlama
 
@@ -48,6 +48,7 @@ Aşağıdaki araçlar DSVM 'ye eklenmiştir:
   * [Apache detaya gitme](https://drill.apache.org/) -Apache Hadoop, NoSQL ve bulut depolama için şema ücretsiz SQL sorgu altyapısı. ODBC ve JDBC arabirimleri, NoSQL ve Power BI, Microsoft Excel ve Tableau gibi standart BI araçlarından dosyaları'nı sorgulamak için destekler.
 * Kitaplıklarında, R ve Python için Azure Machine Learning ve diğer Azure Hizmetleri kullanma
 * Git, GitHub ve Azure DevOps içeren kaynak kodu depoları ile çalışmak için Git Bash dahil. Git, Git Bash ve bir komut istemi erişilebilir çeşitli popüler Linux komut satırı yardımcı programları sağlar. Awk, sed, perl, grep, bulma, wget ve curl örnek verilebilir.
+* Geliştirme araçları ve düzenleyiciler (RStudio, Pyı)
 
 ### <a name="about-data-science"></a>Veri bilimi hakkında
 

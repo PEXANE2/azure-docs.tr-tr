@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881809"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543502"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
 Konuk yapılandırması, Azure sanal makinelerinin denetlenmesine yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/dsc) (DSC) kaynak modülünü kullanır. DSC yapılandırması, sanal makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, Ilke etkisi **denetimi** tetiklenir ve sanal makine **uyumlu**değil olarak kabul edilir.
+
+[Azure Ilke Konuk yapılandırması](/azure/governance/policy/concepts/guest-configuration) yalnızca sanal makinelerin içindeki ayarları denetlemek için kullanılabilir. Sanal makinelerin içindeki ayarların düzeltilmesi henüz mevcut değil.
 
 Bir Azure sanal makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608167"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533025"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>Temel ilke: Yöneticiler için MFA gerektir (Önizleme)
 
 Ayrıcalıklı hesaplara erişimi olan kullanıcıların ortamınıza sınırsız erişimi vardır. Bu hesapların gücüyle ilgili olan güç nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açmak için kullanıldıkları zaman daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure Active Directory, çok faktörlü kimlik doğrulaması (MFA) gerektirerek daha güçlü bir hesap doğrulaması alabilirsiniz.
 
-**Yöneticiler için MFA gerektir (Önizleme)**  , aşağıdaki ayrıcalıklı yönetici rollerden her biri oturum açtığında MFA gerektiren bir [temel ilkedir](concept-baseline-protection.md) :
+**Yöneticiler IÇIN MFA gerektir (Önizleme)** , aşağıdaki ayrıcalıklı yönetici rollerden her biri oturum açtığında MFA gerektiren bir [temel ilkedir](concept-baseline-protection.md) :
 
 * Genel yönetici
 * SharePoint yöneticisi
@@ -52,11 +52,11 @@ Eski kimlik doğrulama protokolleri (IMAP, SMTP, POP3, vb.), posta istemcileri t
 
 Bu ilkeyi etkinleştirmek ve yöneticilerinizi korumak için:
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde temel ilke ' yi seçin **: Yöneticiler için MFA gerektir (Önizleme)** .
-1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
-1.  **Kaydet**' e tıklayın.
+1. İlkeyi **ilkeyi hemen kullanacak**şekilde ayarlayın.
+1. **Kaydet**’e tıklayın.
 
 > [!WARNING]
 > Bu ilke Önizlemedeki bir ilke daha **sonra otomatik olarak etkinleştir** seçeneği vardı. Ani Kullanıcı etkisini en aza indirmek için bu seçeneği kaldırdık. Kullanılabilir olduğunda bu seçeneği belirlediyseniz, **ilkeyi kullanma** otomatik olarak seçilidir. Bu temel ilkeyi kullanmak istiyorlarsa, etkinleştirmek için yukarıdaki adımlara bakın.

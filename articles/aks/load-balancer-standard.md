@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 68968c1f846a1052600a8ed108f4d40fd9d8f2cb
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032236"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534736"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de standart SKU yük dengeleyici kullanma
 
@@ -92,11 +92,11 @@ az provider register --namespace Microsoft.ContainerService
 
 * Yük Dengeleyici için *Standart* SKU kullanırken, genel adreslere izin vermenız ve IP oluşturma ile ilgili herhangi bir Azure ilkesinin oluşturulmaması gerekir. AKS kümesi, genellikle *Mc_* ile adlandırılan aks kümesi için aynı kaynak grubunda oluşturulan *Standart* SKU genel IP 'yi otomatik olarak oluşturur. AKS, genel IP 'yi *Standart* SKU yük dengeleyicisine atar. AKS kümesinden giden trafiğe izin vermek için genel IP gereklidir. Bu genel IP Ayrıca, denetim düzlemi ve aracı düğümleri arasındaki bağlantının yanı sıra önceki AKS sürümleriyle uyumluluğu sürdürmek için de gereklidir.
 * Yük Dengeleyici için *Standart* SKU kullanırken, Kubernetes sürüm 1.13.5 veya üstünü kullanmanız gerekir.
-* [Düğüm genel IP özelliğini](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) standart yük dengeleyiciler ile birlikte kullanıyorsanız, düğüm IÇIN bir SLB giden kuralı ya da genel IP ayarlayabilirsiniz. Bir sanal makine hem SLB giden kuralına hem de genel IP 'ye aynı anda iliştirilemediğinden bir veya başka birini seçmeniz gerekir.
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
 * AKS 'deki bir yük dengeleyici için *Standart* SKU kullanırken, yük dengeleyici için çıkış için kendı genel IP adresinizi ayarlayamazsınız. AKS 'in yük dengeleyicisine atadığı IP adresini kullanmanız gerekir.
+* Bu, [düğüm genel IP özelliğiyle](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool)kullanılamaz.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

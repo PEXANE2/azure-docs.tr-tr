@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663892"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559096"
 ---
 # <a name="personalizer-settings"></a>Kişiselleştirici ayarları
 
@@ -86,6 +86,7 @@ Bu ayarı değiştirdikten sonra **Kaydet**' i seçtiğinizden emin olun.
 ## <a name="import-and-export-learning-policy"></a>Öğrenme ilkesini içeri ve dışarı aktarma
 
 **Model ve ilke**için kaynak yönetiminin bölümünde yeni bir öğrenme ilkesi içeri aktarın veya geçerli öğrenme ilkesini dışarı aktarın.
+Önceki dışarı aktarımlardan öğrenme ilkesi dosyalarını alabilir veya çevrimdışı değerlendirmeler sırasında bulunan en iyi duruma getirilmiş ilkeleri karşıdan yükleyebilirsiniz. Bu dosyalarda el ile yapılan değişikliklerin yapılması, makine öğrenimi performansını ve çevrimdışı değerlendirmelerinin doğruluğunu etkiler ve Microsoft, makine öğrenimi ve değerlendirmelerinin doğruluğunu veya el ile düzenlenen ilkelerden kaynaklanan hizmet özel durumlarını da aşamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a8351f13f015ca53e72bbff41152e46690fdc7bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/15/2019
+ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855724"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543472"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Nedeni
 
-Bu özel durumun en olası nedeni, yeterli yığın belleği değildir. Spark uygulamanız, yürüticileri veya sürücüleri çalıştırırken yeterli Java sanal makinesi (JVM) yığın belleği gerektirir.
+Bu özel durumun en olası nedeni, Java sanal makineleri (JVMs) yeterli yığın bellek tahsis edildiği ' dir. Bu JVM 'Ler, Apache Spark uygulamasının bir parçası olarak yürüticileri veya sürücüler olarak başlatılır.
 
 ### <a name="resolution"></a>Çözüm
 
 1. Spark uygulamasının işleyeceği verilerin boyut üst sınırını belirleyin. Giriş verilerini dönüştürerek oluşturulan ara veriler ve ara verileri daha fazla dönüştürme ile üretilen çıkış verileri temelinde, en fazla giriş verisi boyutuna göre boyut tahmini yapın. Başlangıçtaki tahmin yeterli değilse, boyutu biraz artırabilir ve bellek hataları alt tarafına kadar yineleme yapın.
 
-1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, kümenin YARN kullanıcı arabirimindeki Cluster Metrics bölümünde şu değerlerin karşılaştırmasına bakarak saptanabilir: Memory Used, Memory Total ve VCores Used, VCores Total
+1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, **kullanılan bellek** değerleri için kümenin Yarn Kullanıcı arabiriminin küme ölçümleri bölümü görüntülenirken belirlenebilir. Kullanılan **bellek toplamı** ve **sanal çekirdekler** karşılaştırması **Sanal çekirdekler toplam**.
 
     ![Yarn çekirdek bellek görünümü](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 

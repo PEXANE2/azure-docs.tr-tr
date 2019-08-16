@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035748"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534158"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yapılandırma
 
@@ -126,12 +126,12 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
 
 ### <a name="install"></a>Yükleyip yapılandırın
 
-Ubuntu 17.0.4 üzerinde Strongswa 5.5.1 aracılığıyla aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.10, Strongswa GUI 'yi desteklemez. Ubuntu 16.0.10 kullanmak istiyorsanız, [komut satırını](#linuxinstallcli)kullanmanız gerekir. Aşağıdaki örnekler, Linux sürümünüze ve Strongswa sürümüne bağlı olarak gördüğünüz ekranlarla eşleşmeyebilir.
+Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.10, Strongswa GUI 'yi desteklemez. Ubuntu 16.0.10 kullanmak istiyorsanız, [komut satırını](#linuxinstallcli)kullanmanız gerekir. Aşağıdaki örnekler, Linux sürümünüze ve Strongswa sürümüne bağlı olarak gördüğünüz ekranlarla eşleşmeyebilir.
 
-1. Örnekteki komutu çalıştırarak **Strongswa** ve Ağ yöneticisini yüklemek için **terminali** açın. *Libcharon-ek eklentilerle*ilgili bir hata alırsanız, ' strongswa-Plugin-EAP-MSCHAPv2 ' ile değiştirin.
+1. Örnekteki komutu çalıştırarak **Strongswa** ve Ağ yöneticisini yüklemek için **terminali** açın.
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
 2. **Ağ Yöneticisi** simgesini (yukarı ok/aşağı ok) seçin ve ardından **Bağlantıları Düzenle**' yi seçin.
 

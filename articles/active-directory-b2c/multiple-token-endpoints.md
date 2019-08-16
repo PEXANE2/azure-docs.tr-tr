@@ -1,6 +1,6 @@
 ---
-title: OWIN tabanlı bir Web uygulamasında birden çok belirteç verenler destekleme-Azure Active Directory B2C
-description: .NET Web uygulamasını birden çok etki alanı tarafından verilen belirteçleri destekleyecek şekilde nasıl etkinleştirebileceğinizi öğrenin.
+title: OWıN tabanlı Web API 'Lerini b2clogin.com-Azure Active Directory B2C 'e geçirme
+description: Uygulamalarınızı b2clogin.com 'e geçirirken birden çok belirteç verenler tarafından verilen belirteçleri desteklemek için bir .NET Web API 'sini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716749"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533771"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>OWIN tabanlı bir Web uygulamasında birden çok belirteç veren desteği
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
 
-Bu makalede, [.net Için açık Web arabirimi (OWıN)](http://owin.org/)uygulayan Web uygulamalarında ve API 'lerde birden çok belirteç verenler desteğini etkinleştirme tekniği açıklanmaktadır. Birden çok belirteç uç noktasını desteklemek, *login.microsoftonline.com* ' den *b2clogin.com*' ye Azure Active Directory (Azure AD) B2C uygulamaları geçirdiğinizde faydalıdır.
+Bu makalede, [.net Için açık Web arabirimi (OWıN)](http://owin.org/)uygulayan Web API 'lerinde birden çok belirteç verenler desteğini etkinleştirme tekniği açıklanmaktadır. Birden çok belirteç uç noktasını desteklemek, Azure Active Directory B2C (Azure AD B2C) API 'Lerini ve uygulamalarını *login.microsoftonline.com* ' den *b2clogin.com*' ye geçirirken yararlıdır.
 
-Aşağıdaki bölümlerde, bir Web uygulamasında birden çok veren ve [Microsoft OWIN][katana] ara yazılım bileşenleri (Katana) kullanan karşılık gelen Web API 'si nasıl etkinleşeceği hakkında bir örnek bulunmaktadır. Kod örnekleri Microsoft OWıN ara yazılımı 'na özgü olsa da, genel teknik diğer OWIN kitaplıkları için geçerli olmalıdır.
+Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçleri kabul etmek için API 'nize destek ekleyerek, API 'den login.microsoftonline.com tarafından verilen belirteçler desteğini kaldırmadan önce Web uygulamalarınızı aşamalı bir şekilde geçirebilirsiniz.
+
+Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Katana) kullanan BIR Web API 'sinde birden çok veren 'in nasıl etkinleşeceği hakkında bir örnek sunar. Kod örnekleri Microsoft OWıN ara yazılımı 'na özgü olsa da, genel teknik diğer OWIN kitaplıkları için geçerli olmalıdır.
 
 > [!NOTE]
-> Bu makale, şu anda dağıtılan `login.microsoftonline.com` ve önerilen `b2clogin.com` uç noktaya geçiş yapmak isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
+> Bu makale, şu anda dağıtılmış olan API 'ler ve uygulama `login.microsoftonline.com` ve önerilen `b2clogin.com` uç noktaya geçirmek isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,7 +36,7 @@ Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklar
 
 ## <a name="get-token-issuer-endpoints"></a>Belirteç Verenin uç noktalarını al
 
-İlk olarak, uygulamanızda desteklemek istediğiniz her veren için belirteç verenin uç noktası URI 'Lerini almanız gerekir. Azure AD B2C kiracınız tarafından desteklenen *b2clogin.com* ve *login.microsoftonline.com* uç noktalarını almak için Azure Portal aşağıdaki yordamı kullanın.
+İlk olarak, API 'niz içinde desteklemek istediğiniz her veren için belirteç verenin uç noktası URI 'Lerini almanız gerekir. Azure AD B2C kiracınız tarafından desteklenen *b2clogin.com* ve *login.microsoftonline.com* uç noktalarını almak için Azure Portal aşağıdaki yordamı kullanın.
 
 Mevcut Kullanıcı akışlarınızdan birini seçerek başlayın:
 

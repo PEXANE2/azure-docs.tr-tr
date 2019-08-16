@@ -3,8 +3,8 @@ title: Red Hat Update Infrastructure | Microsoft Docs
 description: Microsoft azure'da isteğe bağlı Red Hat Enterprise Linux örnekleri için Red Hat Update Infrastructure hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: ac3b29e3cd6cbaf0a8a34f442c55b386f150e018
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774279"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543773"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure'da isteğe bağlı Red Hat Enterprise Linux VM'ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) gibi Red Hat barındırılan depo içeriğini yansıtmak için özel depolar ile Azure özgü içerik oluşturmak ve son kullanıcı VM'ler için kullanılabilir hale getirmek amacıyla bulut sağlayıcıları sağlar.
@@ -31,22 +31,52 @@ Azure 'da yayımlama ve bekletme ilkeleri de dahil olmak üzere RHEL görüntül
 Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI hakkında önemli bilgiler
+
 * Azure RHUı, Azure 'da oluşturulan tüm RHEL PAYG sanal makinelerini destekleyen güncelleştirme altyapısıdır. Bu, PAYG RHEL VM 'lerinizi abonelik Yöneticisi veya uydu ya da diğer güncelleştirme kaynakları ile kaydetmektir, ancak bunu bir PAYG VM ile yapmanız dolaylı çift faturalandırmaya neden olur. Ayrıntılar için aşağıdaki noktaya bakın.
 * Azure'da barındırılan RHUI erişimi PAYG RHEL görüntüsü fiyatına dahildir. Azure'da barındırılan RHUI PAYG RHEL VM'den kaydını kaldırırsanız, sanal makinenin bir VM Getir-kendi lisansını (KLG) türü dönüştürmez. Başka bir güncelleştirme kaynağı ile aynı VM kaydolursanız, neden olabilecek _dolaylı_ çift ücretleri. İlk kez Azure RHEL yazılım ücreti karşılığında ücret ödersiniz. İkinci kez önceden satın alınan Red Hat abonelikler için ücret ödersiniz. Azure 'da barındırılan RHUı dışında bir güncelleştirme altyapısını sürekli olarak kullanmanız gerekiyorsa, [RHEL BYOS görüntülerini](https://aka.ms/rhel-byos)kullanmaya kaydolmayı göz önünde bulundurun.
-* Varsayılan RHUı davranışı, çalıştırdığınızda `sudo yum update`RHEL VM 'nizi en son alt sürüme yükseltmez.
-
-    Örneğin, bir RHEL 7.4 PAYG görüntüden bir VM sağlama ve çalıştırıyorsanız `sudo yum update`, RHEL 7.6 VM (en son alt sürüm RHEL7 ailesindeki) elde edersiniz.
-
-    Bu davranışı önlemek için, [genişletilmiş güncelleştirme destek kanallarına](#rhel-eus-and-version-locking-rhel-vms) geçebilir veya [Azure için Red Hat tabanlı bir sanal makine oluşturma ve karşıya yükleme](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) makalesinde açıklandığı gibi kendi görüntünüzü oluşturabilirsiniz. Kendi görüntünüzü oluşturursanız, bu dosyayı farklı bir güncelleştirme altyapısına ([doğrudan Red Hat içerik teslim sunucuları](https://access.redhat.com/solutions/253273) veya [Red Hat uydu sunucusu](https://access.redhat.com/products/red-hat-satellite)) bağlamanız gerekir.
-
-
 
 * Azure 'daki RHEL SAP PAYG görüntüleri (RHEL for SAP, RHEL for SAP HANA ve RHEL for SAP Business Applications), SAP sertifikası için gereken belirli RHEL alt sürümünde kalan adanmış RHUı kanallarına bağlanır.
 
-* İçindeki VM'ler için Azure'da barındırılan RHUI erişim sınırlıdır [Azure veri merkezi IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653). Proxy kullanıyorsanız tüm VM trafiğe bir şirket içi ağ altyapısı aracılığıyla RHEL PAYG sanal makinelerin Azure RHUI erişmek kullanıcı tanımlı rotalar ayarlama gerekebilir.
+* İçindeki VM'ler için Azure'da barındırılan RHUI erişim sınırlıdır [Azure veri merkezi IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653). Proxy kullanıyorsanız tüm VM trafiğe bir şirket içi ağ altyapısı aracılığıyla RHEL PAYG sanal makinelerin Azure RHUI erişmek kullanıcı tanımlı rotalar ayarlama gerekebilir. Bu durumda, _Tüm_ rhuı IP adresleri için Kullanıcı tanımlı yolların eklenmesi gerekecektir.
+
+## <a name="image-update-behavior"></a>Görüntü güncelleştirme davranışı
+
+2019 Nisan itibariyle Azure, genişletilmiş güncelleştirme desteği (EUS) depolarına bağlı olan RHEL görüntülerini varsayılan olarak normal (EUS olmayan) depolara bağlı olan RHEL görüntülerini sağlar. RHEL EUS hakkında daha fazla ayrıntı, Red Hat 'in [Sürüm yaşam döngüsü belgelerinde](https://access.redhat.com/support/policy/updates/errata) ve [EUS belgelerinde](https://access.redhat.com/articles/rhel-eus)bulunabilir. Varsayılan davranışı, farklı `sudo yum update` depolara farklı görüntüler bağlı olduğundan, hangi RHEL görüntüsüne sahip olduğunuza bağlı olarak değişir.
+
+Tam görüntü listesi için Azure CLI kullanarak `az vm image list --publisher redhat --all` çalıştırın.
+
+### <a name="images-connected-to-non-eus-repositories"></a>DUYMSUZ depolara bağlı görüntüler
+
+Bir RHEL görüntüsünden sanal olmayan depolara bağlı bir VM sağlarsanız, çalıştırdığınızda `sudo yum update`en son RHEL alt sürümüne yükseltilecektir. Örneğin, bir RHEL 7,4 PAYG görüntüsünden bir VM sağlarsanız ve çalıştırırsanız `sudo yum update`, bir RHEL 7,7 sanal makinesi (RHEL7 ailesinden en son ikincil sürüm) ile biter.
+
+EUS depolarından bağlantılı olan görüntüler SKU 'da küçük bir sürüm numarası içermez. SKU, URN 'deki üçüncü öğedir (görüntünün tam adı). Örneğin, aşağıdaki tüm görüntüler EUS depolarından ekli olarak sunulur:
+
+```text
+RedHat:RHEL:7-LVM:7.4.2018010506
+RedHat:RHEL:7-LVM:7.5.2018081518
+RedHat:RHEL:7-LVM:7.6.2019062414
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7-RAW:7.5.2018081518
+RedHat:RHEL:7-RAW:7.6.2019062120
+```
+
+SKU 'Ların 7-LVM ya da 7-RAW olduğunu unutmayın. İkincil sürüm, bu görüntülerin sürümünde (URN 'deki dördüncü öğe) belirtilir.
+
+### <a name="images-connected-to-eus-repositories"></a>EUS depolarıyla bağlantılı görüntüler
+
+Bir RHEL görüntüsünden, EUS depolarında bağlı bir VM sağlarsanız, çalıştırdığınızda `sudo yum update`en son RHEL alt sürümüne yükseltmeyecektir. Bunun nedeni, EUS depolarına bağlı görüntülerin aynı zamanda belirli alt sürümlerine de sürüm kilitleneceğini sağlamalarıdır.
+
+EUS depolarıyla bağlantılı görüntüler SKU 'da küçük bir sürüm numarası içerecektir. Örneğin, aşağıdaki resimlerin hepsi, EUS depolarında ekli olarak sunulur:
+
+```text
+RedHat:RHEL:7.4:7.4.2019062107
+RedHat:RHEL:7.5:7.5.2019062018
+RedHat:RHEL:7.6:7.6.2019062116
+```
 
 ## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS ve sürüm kilitleme RHEL VM 'Leri
-Bazı müşteriler RHEL VM 'lerini belirli bir RHEL küçük sürümüne kilitlemek isteyebilir. Depoları genişletilmiş güncelleştirme desteği depolarına işaret etmek üzere güncelleştirerek RHEL VM 'nizi belirli bir alt sürüme taşıyabilirsiniz. Ayrıca, EUS sürüm kilitleme işlemini geri alabilirsiniz.
+
+Bazı müşteriler VM sağlamaktan sonra RHEL VM 'lerini belirli bir RHEL alt sürümüne kilitlemek isteyebilir. Depoları genişletilmiş güncelleştirme desteği depolarına işaret etmek üzere güncelleştirerek RHEL VM 'nizi belirli bir alt sürüme taşıyabilirsiniz. Ayrıca, EUS sürüm kilitleme işlemini geri alabilirsiniz.
 
 >[!NOTE]
 > RHEL ek özellikleri üzerinde EUS desteklenmez. Bu, genellikle RHEL ek özellikler kanalından kullanılabilen bir paketi yüklüyorsanız, duyurken bunu yapamazsınız. Red Hat ek özellikleri ürün yaşam döngüsü [burada](https://access.redhat.com/support/policy/updates/extras/)ayrıntılı olarak verilmiştir.
@@ -55,12 +85,13 @@ Bu yazma sırasında, RHEL < = 7,3 için EUS desteği sona ermiştir. Daha fazla
 * RHEL 7,4 EUS desteği 31 Ağustos 2019 ' de bitiyor
 * RHEL 7,5 EUS desteği 30 Nisan 2020 ' de bitiyor
 * RHEL 7,6 EUS desteği 31 Ekim 2020 ' de bitiyor
+* RHEL 7,7 EUS desteği 30 Ağustos 2021 ' de bitiyor
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 'yi EUS 'ye değiştirme (belirli bir alt sürüme yönelik sürüm kilidi)
 Bir RHEL VM 'yi belirli bir alt sürüme (farklı çalıştır kökü) kilitlemek için aşağıdaki yönergeleri kullanın:
 
 >[!NOTE]
-> Bu yalnızca EUS 'nin kullanılabildiği RHEL sürümleri için geçerlidir. Bu yazma sırasında, RHEL 7.2-7.6 içerir. Daha fazla ayrıntı [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
+> Bu yalnızca EUS 'nin kullanılabildiği RHEL sürümleri için geçerlidir. Bu yazma sırasında, RHEL 7.2-7.7 içerir. Daha fazla ayrıntı [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
 
 1. EUS dışı depoları devre dışı bırak:
     ```bash

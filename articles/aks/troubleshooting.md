@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381957"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533529"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -86,10 +86,12 @@ Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken o
 
 *Bu sorun giderme yardımı şuradan yönlendirilir https://aka.ms/aks-pending-upgrade*
 
-Etkin yükseltme işlemleri gerçekleşirken veya bir yükseltme denendiğinde küme işlemleri sınırlandırılır, ancak daha sonra başarısız oldu. Kümenizde ayrıntılı durum almak `az aks show -g myResourceGroup -n myAKSCluster -o table` için sorunu tanılamak için. Sonuca göre:
+Tek düğümlü havuz veya [birden çok düğüm](use-multiple-node-pools.md) havuzu içeren bir küme ile bir kümede yükseltme ve ölçeklendirme işlemleri birbirini dışlıyor. Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. Sonuç olarak, etkin yükseltme veya ölçeklendirme işlemleri gerçekleşirken veya denendiğinde ve daha sonra başarısız olduğunda işlemler sınırlıdır. 
+
+Kümenizde ayrıntılı durum almak `az aks show -g myResourceGroup -n myAKSCluster -o table` için sorunu tanılamaya yardımcı olmak için. Sonuca göre:
 
 * Küme etkin bir şekilde yükseltildiğinde, işlem sonlanana kadar bekleyin. Başarılı olduysa, daha önce başarısız olan işlemi yeniden deneyin.
-* Kümede yükseltme başarısız olduysa, yukarıda belirtilen adımları izleyin
+* Kümede yükseltme başarısız olursa, önceki bölümde açıklanan adımları izleyin.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Kümemi farklı bir aboneliğe veya kümeme yeni bir kiracıya sahip aboneliğime taşıyabilir miyim?
 

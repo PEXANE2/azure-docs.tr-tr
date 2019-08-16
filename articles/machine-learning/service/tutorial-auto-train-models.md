@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 04/11/2019
+ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70a95cdba2a8b41c7b2fc3ee4b2664f049a84e95
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846024"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534833"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Öğretici: Gerileme modelinizi derlemek için otomatik makine öğrenimi kullanma
 
@@ -42,36 +42,11 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Not defteri adımlarını okumak için [geliştirme ortamınızı ayarlamayı](#start) atlayın veya Not defterini almak ve Azure Notebooks veya kendi Not defteri sunucunuzda çalıştırmak için aşağıdaki yönergeleri kullanın. Not defterini çalıştırmak için şunlar gerekir:
+* [Veri hazırlama öğreticisini](tutorial-data-prep.md)bir kısmını tamamen doldurun.
 
-* [Veri hazırlama öğreticisini çalıştırma](tutorial-data-prep.md).
-* Aşağıdaki yüklü bir Python 3,6 Not defteri sunucusu:
-    * `automl` Ve`notebooks` ek özellikler ile Python için Azure Machine Learning SDK
-    * `matplotlib`
-* Öğretici Not defteri
-* Machine Learning çalışma alanı
-* Çalışma alanının yapılandırma dosyası, not defteriyle aynı dizinde
+* Birinci kısmı tamamladıktan sonra, aynı not defteri sunucusunu kullanarak **öğreticiler/Regression-part2-Automated-ml. ipynb** Not defterini açın.
 
-Bu önkoşulların tümünü aşağıdaki bölümlerden birine alın.
-
-* Çalışma alanınızda bir [bulut Not defteri sunucusu](#azure) kullanın
-* [Kendi Not defteri sunucunuzu](#server) kullanın
-
-### <a name="azure"></a>Çalışma alanınızda bir bulut Not defteri sunucusu kullanın
-
-Kendi bulut tabanlı Not defteri sunucunuza kolayca başlamak kolaydır. [Python için Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk) zaten yüklenmiş ve bu bulut kaynağını oluşturduktan sonra sizin için yapılandırılmış.
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* Not defteri Web sayfasını başlattıktan sonra **öğreticiler/Regression-part2-Automated-ml. ipynb** Not defterini çalıştırın.
-
-### <a name="server"></a>Kendi Jupyter Not defteri sunucunuzu kullanın
-
-Bilgisayarınızda yerel bir Jupyter not defteri sunucusu oluşturmak için aşağıdaki adımları kullanın.  Ortamınızdaki ve diğer `matplotlib` `automl` eközellikleriortamınızayüklediğinizdeneminolun`notebooks` .
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
-Adımları tamamladıktan sonra **öğreticiler/Regression-part2-Automated-ml. ipynb** Not defterini çalıştırın.
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Azure Machine Learning SDK 'sındaki ve `matplotlib` `automl` ve `notebooks` ek ekstraların yüklü olduğundan emin olun.
 
 ## <a name="start"></a>Geliştirme ortamınızı ayarlama
 

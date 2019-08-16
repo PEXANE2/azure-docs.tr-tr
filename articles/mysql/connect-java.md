@@ -4,18 +4,19 @@ description: Bu hızlı başlangıçta, MySQL veritabanı için Azure veritaban�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter, seo-java-july2019
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/08/2019
-ms.openlocfilehash: 5dbac4cee4df43dfc2f0ebf9fdb5e2e7b7d3192c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b24efe52d0ab24659c4278c6be59c4262023b26f
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931608"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541828"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Verilere bağlanmak ve verileri sorgulamak için Java 'Yı kullanma
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Hızlı Başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java 'Yı kullanma
+
 Bu hızlı başlangıçta, Java uygulaması ve JDBC sürücü [MariaDB bağlayıcısını/J](https://mariadb.com/kb/en/library/mariadb-connector-j/)kullanarak MySQL Için Azure veritabanı 'na nasıl bağlanulacağı gösterilmektedir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makalede, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar

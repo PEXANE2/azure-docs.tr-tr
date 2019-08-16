@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: CentOS DSVM’si oluşturma
       href: linux-dsvm-intro.md
-    - name: Derin Öğrenme VM’si oluşturma
-      href: provision-deep-learning-dsvm.md
-    - name: Coğrafi AI DSVM’si oluşturma
+    - name: Coğrafi AI Veri Bilimi VM'si oluşturma
       href: provision-geo-ai-dsvm.md
 - name: Kavramlar
   items:

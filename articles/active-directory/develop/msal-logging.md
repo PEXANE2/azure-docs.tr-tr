@@ -3,7 +3,7 @@ title: MSAL uygulamalarında oturum açma | Mavisi
 description: Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamalarında günlüğe kaydetme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/22/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 475b692a29edf5cdd05552e7b5c3dc5fde210275
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 2f52ca8062ed1ed196a67d25385b712451afe8ae
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512532"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532735"
 ---
 # <a name="logging"></a>Günlüğe Kaydetme
 Sorunları tanılamanıza ve ayrıntı sağlamanıza yardımcı olabilecek günlük iletileri oluşturmak için Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamaları. Bir uygulama, birkaç satırlık kodla günlüğe kaydetmeyi yapılandırabilir ve ayrıntı düzeyi üzerinde özel denetime sahip olabilir ve kişisel ve kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Bir MSAL günlüğe kaydetme geri çağırması ayarlamanız ve kullanıcıların kimlik doğrulama sorunlarıyla karşılaştıklarında günlükleri göndermesi için bir yol sağlamanız önerilir.

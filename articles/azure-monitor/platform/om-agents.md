@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663730"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543053"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -65,12 +65,12 @@ Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 >[!NOTE]
 >Azure API 'Lerinde yapılan son değişiklikler, müşterilerin yönetim grubu ve Azure Izleyici arasındaki tümleştirmeyi ilk kez başarıyla yapılandırmasını engelleyecek. Yönetim gruplarını hizmetle zaten tümleştirmiş olan müşteriler için, mevcut bağlantınızı yeniden yapılandırmanız gerekmiyorsa bu sorundan etkilenmez.  
 >Aşağıdaki Operations Manager sürümleri için yeni bir yönetim paketi yayımlanmıştır:
->  
->* System Center Operations Manager 1801 için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57173) indirin  
->* System Center 2016-Operations Manager için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57172) indirin  
->* System Center Operations Manager 2012 R2 için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57171) indirin  
->
->Bu yönetim paketi güncelleştirmesi System Center Operations Manager 1807 için geçerli değildir, bu sürüm 1801 ' den bir güncelleştirme sürümüdür ve ürünün tam derlemesi değildir.   
+> - System Center Operations Manager 2019 için, yönetim paketi Operations Manager derleme ile birlikte sağlanır.
+>- Operations Manager 1801 yönetim paketi, Operations Manager 1807 için de geçerlidir.
+>- System Center Operations Manager 1801 için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57173)indirin.
+>- System Center 2016-Operations Manager için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57172)indirin.  
+>- System Center Operations Manager 2012 R2 için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57171)indirin.  
+
 
 ### <a name="network"></a>Ağ
 

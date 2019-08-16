@@ -10,15 +10,15 @@ author: ajlam
 ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 273f8ad080b80a58b63e70ab2aa311c9c498d491
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.custom: seo-java-july2019. seo-java-august2019
+ms.openlocfilehash: 5e118bad0bfdd1a8e265aa0ed3eeea78a3b0da54
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640071"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543519"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Java kullanarak Azure SQL veritabanı sorgulama
+# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı Başlangıç: Java kullanarak bir Azure SQL veritabanına bağlanma ve sorgulama
 
 Bu makalede, [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) kullanarak BIR Azure SQL veritabanına nasıl bağlanacağı gösterilmektedir. Daha sonra verileri sorgulamak için T-SQL deyimlerini kullanabilirsiniz.
 

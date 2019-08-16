@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 7de3dd016700d10ef5fac97fada5cd23c2f4e1cb
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016485"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558305"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
@@ -65,6 +65,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+ > [!NOTE]
+    > Yüklemeyi tekrardan kaçınmak için, yüklemeden önce paketin zaten mevcut olup olmadığını denetleyin. Yukarıdaki `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` örnek kodda olduğu gibi. Yüklemeyi tekrarlamak, Web hizmeti istek zaman aşımına neden olabilir.     
 
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 

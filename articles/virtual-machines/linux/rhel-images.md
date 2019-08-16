@@ -3,22 +3,22 @@ title: Azure 'da görüntüleri Red Hat Enterprise Linux | Microsoft Docs
 description: Microsoft Azure Red Hat Enterprise Linux görüntüleri hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25b0ccfa5ed2b7b9ff031565fe7f14b1477769c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854432"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543856"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 'da görüntüleri Red Hat Enterprise Linux
 Bu makalede, Azure Marketi 'ndeki kullanılabilir Red Hat Enterprise Linux (RHEL) görüntüleri, adlandırma ve bekletme ilkelerine göre birlikte açıklanmaktadır.
@@ -99,13 +99,15 @@ SKU 'da küçük bir sürüm içeren RHEL görüntüleri için aşağıdaki tabl
 
 >[!NOTE]
 > Yazma sırasında, yalnızca RHEL 7,4 ve üzeri alt sürümlerde EUS desteği vardır. EUS artık RHEL < = 7,3 için desteklenmiyor.
+>
+> RHEL EUS kullanılabilirliği hakkında daha fazla ayrıntı için [burada](https://access.redhat.com/support/policy/updates/errata)bulunabilir.
 
 İkincil sürüm |EUS resmi örneği              |EUS durumu                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | 2019 Nisan ve üzeri yayımlanan görüntüler varsayılan olarak EUS olur|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | 2019 Haziran ve üzeri yayımlanan görüntüler varsayılan olarak EUS olacaktır |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | 2019 ve üzeri yayımlanan görüntüler varsayılan olarak EUS olacaktır  |
-RHEL 8,0      |Yok                            | Şu anda kullanılabilir görüntü yok                 |
+RHEL 8,0      |Yok                            | Red Hat 'te kullanılabilir EUS yok                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>Kullanılabilir RHEL görüntüleri listesi

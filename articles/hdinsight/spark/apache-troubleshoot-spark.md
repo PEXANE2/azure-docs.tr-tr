@@ -4,15 +4,15 @@ description: Apache Spark ve Azure HDInsight ile çalışma hakkında sık sorul
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88136fee7a75b8f3b8e504b1ff1e6673a31bcf7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721158"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543167"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark, Azure HDInsight'ı kullanarak sorun giderme
 
@@ -22,7 +22,7 @@ ms.locfileid: "64721158"
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-Spark yapılandırma değerlerini öne bir Apache Spark uygulaması OutofMemoryError özel durumu korunmanıza yardımcı olun. Aşağıdaki adımlar, Azure HDInsight Spark yapılandırma değerlerini varsayılan gösterir: 
+Spark yapılandırma değerleri ayarlanabilir Apache Spark bir Application OutofMemoryError özel durumu kullanmaktan kaçınmaya yardımcı olur. Aşağıdaki adımlar, Azure HDInsight 'ta varsayılan Spark yapılandırma değerlerini göstermektedir: 
 
 1. Kümeleri listesinde seçin **Spark2**.
 
@@ -90,7 +90,7 @@ Bu değişiklikler, küme çapında ancak Spark işi gönderdiğinizde geçersiz
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Hangi Spark belirlemek üzere ayarlanması ve hangi değerlerine ne neden olan bir Apache Spark uygulaması OutofMemoryError özel durumu görmek yapılandırmaları gerekir.
+1. Hangi Spark yapılandırmalarının ayarlanması gerektiğini ve değerleri belirlemek için, bkz. Apache Spark Application OutofMemoryError özel durumu.
 
 2. Jupyter Not Defteri, ilk hücrenin sonra **%% yapılandırma** yönergesi, Spark yapılandırmaları geçerli JSON biçiminde belirtin. Gerçek değerleri gerektiği gibi değiştirin:
 
@@ -105,7 +105,7 @@ Bu değişiklikler, küme çapında ancak Spark işi gönderdiğinizde geçersiz
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Hangi Spark belirlemek üzere ayarlanması ve hangi değerlerine ne neden olan bir Apache Spark uygulaması OutofMemoryError özel durumu görmek yapılandırmaları gerekir. 
+1. Hangi Spark yapılandırmalarının ayarlanması gerektiğini ve değerleri belirlemek için, bkz. Apache Spark Application OutofMemoryError özel durumu. 
 
 2. Spark uygulaması Livy için cURL gibi bir REST istemcisi kullanarak gönderin. Aşağıdakine benzer bir komut kullanın. Gerçek değerleri gerektiği gibi değiştirin:
 
@@ -121,7 +121,7 @@ Bu değişiklikler, küme çapında ancak Spark işi gönderdiğinizde geçersiz
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Hangi Spark belirlemek üzere ayarlanması ve hangi değerlerine ne neden olan bir Apache Spark uygulaması OutofMemoryError özel durumu görmek yapılandırmaları gerekir.
+1. Hangi Spark yapılandırmalarının ayarlanması gerektiğini ve değerleri belirlemek için, bkz. Apache Spark Application OutofMemoryError özel durumu.
 
 2. Spark-shell, aşağıdakine benzer bir komut kullanarak başlatın. Gerçek değer yapılandırmalarının gerektiği gibi değiştirin: 
 
@@ -133,91 +133,16 @@ Bu değişiklikler, küme çapında ancak Spark işi gönderdiğinizde geçersiz
 
 [HDInsight kümeleri üzerinde Apache Spark iş gönderme](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
+## <a name="next-steps"></a>Sonraki adımlar
 
-## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Bir Apache Spark uygulaması OutofMemoryError özel durum nedeni nedir?
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-### <a name="detailed-description"></a>Ayrıntılı bir açıklaması
+* [Spark bellek yönetimine genel bakış](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-Spark uygulaması, aşağıdaki türde Yakalanmayan Özel durum ile başarısız olur:
+* [HDInsight kümelerinde Spark uygulamasında hata ayıklama](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
 
-```apache
-ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
+* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-```apache
-ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker-0,5,main] 
-
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
-
-### <a name="probable-cause"></a>Olası neden
-
-Bu özel durumun en olası nedeni, Java sanal makineleri (JVMs) yeterli yığın bellek tahsis edildiği ' dir. Bu JVMs Spark uygulaması kapsamında Yürütücü veya sürücü başlatılır. 
-
-### <a name="resolution-steps"></a>Çözüm adımları
-
-1. Spark veri en büyük boyutunu belirlemek uygulama işler. En fazla girdi verilerini, giriş verilerinin dönüştürülmesiyle üretilen Ara veriler ve Ara veriler uygulamanın daha fazla dönüştürürken üretilen çıktı verilerinin boyutuna bağlı olarak bir tahmin yapabilirsiniz. Bu işlem, bir ilk biçimsel tahmin kuramıyorsa bir yinelemeli olabilir. 
-
-2. Kullanılacak gideceğinizi HDInsight küme bellek ve çekirdek Spark uygulamasını barındırmak için yeterli kaynağa sahip olduğundan emin olun. Bu küme ölçümleri bölümünü değerlerini YARN kullanıcı Arabiriminde görüntüleyerek belirlemek **kullanılan bellek** vs. **Bellek toplam**, ve **sanal çekirdekler kullanılan** vs. **Sanal çekirdekler toplam**.
-
-3. Aşağıdaki Spark yapılandırmaları kullanılabilir bellek ve çekirdeklerin % 90'ı aşmamalıdır uygun değerlere ayarlayın. Değerler de Spark uygulamasının bellek gereksinimlerini olmalıdır: 
-
-    ```apache
-    spark.executor.instances (Example: 8 for 8 executor count) 
-    spark.executor.memory (Example: 4g for 4 GB) 
-    spark.yarn.executor.memoryOverhead (Example: 384m for 384 MB) 
-    spark.executor.cores (Example: 2 for 2 cores per executor) 
-    spark.driver.memory (Example: 8g for 8GB) 
-    spark.driver.cores (Example: 4 for 4 cores)   
-    spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
-    ```
-
-    Tüm yürütücüleri tarafından kullanılan toplam bellek hesaplamak için: 
-    
-    ```apache
-    spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
-    ```
-   Sürücü tarafından kullanılan toplam bellek hesaplamak için:
-    
-    ```apache
-    spark.driver.memory + spark.yarn.driver.memoryOverhead
-    ```
-
-### <a name="additional-reading"></a>Ek okuma
-
-- [Apache Spark bellek yönetimine genel bakış](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Bir HDInsight kümesi üzerinde bir Apache Spark uygulamasının hatasını ayıklama](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
-
-
-### <a name="see-also"></a>Ayrıca Bkz.
-[Azure HDInsight'ı kullanarak sorun giderme](../../hdinsight/hdinsight-troubleshoot-guide.md)
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
