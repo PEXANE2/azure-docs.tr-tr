@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772700"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848193"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -40,7 +40,7 @@ Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmak
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](setup-create-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm), [Azure Databricks](#aml-databricks)veya [Azure Notebooks](#aznotebooks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
+Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm), [Azure Databricks](#aml-databricks)veya [Azure Notebooks](#aznotebooks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
 
 [Yerel bilgisayarınız](#local)için SDK ortamını yüklemek üzere [Jupyter Notebook sunucu](#jupyter) veya [Visual Studio Code](#vscode) şunları yapmanız gerekir:
 
@@ -294,7 +294,7 @@ Azure Databricks Azure Machine Learning hizmeti ile nasıl kullanılır:
 
 Şu ayarları kullanın:
 
-| Ayar |Şunlara uygulanacaktır:| Value |
+| Ayar |Şunlara uygulanacaktır:| Değer |
 |----|---|---|
 | Küme adı |her zaman| yourclustername |
 | Databricks Çalışma Zamanı |her zaman| ML olmayan tüm çalışma zamanı (ML 4. x, 5. x) |
@@ -336,7 +336,7 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:
 
-Databricks için otomatik **** makine öğrenimi ![Azure Machine Learning SDK 'sı olmadan databricks için SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Databricks için otomatik makine öğrenimi ![Azure Machine Learning SDK 'sı olmadan databricks için SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
 Databricks 'te otomatik makine öğrenimi ile ![otomatik makine öğrenimi SDK 'sı ile databricks için SDK](./media/how-to-configure-environment/automlonadb.jpg)
 
@@ -377,7 +377,7 @@ Bu dosyadan kodunuzu kullanmak için `ws=Workspace.from_config()`. Bu kod, bilgi
 
 Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 
-* **[Azure Machine Learning hizmet çalışma alanı oluşturma](setup-create-workspace.md#sdk)bölümündeki adımları izleyin**: Azure Notebooks kitaplığınızda bir *config. JSON* dosyası oluşturulur. Dosya, çalışma alanınızın yapılandırma bilgilerini içerir. *Config. json dosyasını* diğer geliştirme ortamlarına indirebilir veya kopyalayabilirsiniz.
+* Bir *config. JSON* dosyası yazmak için  **[ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py): kullanın**. Dosya, çalışma alanınızın yapılandırma bilgilerini içerir. *Config. json dosyasını* diğer geliştirme ortamlarına indirebilir veya kopyalayabilirsiniz.
 
 * **Dosyayı indirin**: [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin.
 
