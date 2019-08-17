@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989251"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562109"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -122,7 +122,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust WIndows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.

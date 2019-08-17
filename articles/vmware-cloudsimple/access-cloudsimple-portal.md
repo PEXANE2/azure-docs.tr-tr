@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812765"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563229"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Azure portal 'ten CloudSimple portalı tarafından VMware çözümüne erişme
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal CloudSimple Portal tarafından kullanılan VMware çözümüne erişin
 
 Çoklu oturum açma, CloudSimple portalına erişim için desteklenir. Azure portal oturum açtıktan sonra CloudSimple portalına yeniden oturum açmadan erişebilirsiniz. CloudSimple portalına ilk kez eriştiğinizde [Cloudsimple hizmet Yetkilendirme](#consent-to-cloudsimple-service-authorization-application) uygulamasını yetkilendirmeniz istenir.  Yetkilendirme, tek seferlik bir işlemdir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rollerin, CloudSimple hizmeti 'nin dağıtıldığı kaynak grubunda yapılandırılması gerekir.  Roller, CloudSimple hizmeti nesnesinde de yapılandırılabilir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi.
+Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rollerin, CloudSimple hizmeti 'nin dağıtıldığı kaynak grubunda yapılandırılması gerekir.  Roller, CloudSimple hizmeti nesnesinde de yapılandırılabilir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi. Yalnızca yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rolün abonelikte yapılandırılması gerekir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi.
 
-Özel roller kullanıyorsanız, rol altında ```Actions```aşağıdaki işlemlerden herhangi birine sahip olmalıdır.  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  İşlemlerden herhangi biri bir parçasıysa ```NotActions```, Kullanıcı cloudsimple portalına erişemez. 
+Özel roller kullanıyorsanız, rol altında ```Actions```aşağıdaki işlemlerden herhangi birine sahip olmalıdır.  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  İşlemlerden herhangi biri bir parçasıysa ```NotActions```, Kullanıcı cloudsimple portalına erişemez.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -48,7 +48,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
     ![CloudSimple portalını Başlat](media/launch-cloudsimple-portal.png)
 
-> [!TIP]
+> [!NOTE]
 > Doğrudan Azure portal özel bir bulut işlemi seçerseniz (özel bir bulut oluşturma veya genişletme gibi), CloudSimple portalı belirtilen sayfada açılır.
 
 CloudSimple portalında yan menüden **giriş** ' i seçerek özel bulutlarınız hakkında özet bilgiler görüntüleyin. Özel bulutlarınızın kaynakları ve kapasitesi, dikkat gerektiren uyarılarla ve görevlerle birlikte gösterilir. Ortak görevler için sayfanın üst kısmındaki adlandırılmış simgeler ' e tıklayın.
@@ -57,7 +57,7 @@ CloudSimple portalında yan menüden **giriş** ' i seçerek özel bulutlarını
 
 ## <a name="consent-to-cloudsimple-service-authorization-application"></a>CloudSimple hizmet Yetkilendirme uygulamasına izin verme
 
-CloudSimple portalının ilk kez Azure portal başlatılması, CloudSimple hizmet Yetkilendirme uygulaması için izin vermenizi gerektirir.  İstenen izinleri vermek ve CloudSimple portalına erişmek için **kabul et** ' i seçin. 
+CloudSimple portalının ilk kez Azure portal başlatılması, CloudSimple hizmet Yetkilendirme uygulaması için izin vermenizi gerektirir.  İstenen izinleri vermek ve CloudSimple portalına erişmek için **kabul et** ' i seçin.
 
 ![CloudSimple hizmet yetkilendirmesi-Yöneticiler için onay](media/cloudsimple-azure-consent.png)
 

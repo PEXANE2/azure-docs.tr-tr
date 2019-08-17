@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d9fc39edfad18c756c2816f9eb0b3774d8bf882c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812671"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563200"
 ---
 # <a name="account-management-overview"></a>Hesap yönetimine genel bakış
 
-CloudSimple hizmetinizi oluşturduğunuzda, CloudSimple üzerinde bir hesap oluşturur.  Hesap, hizmetin bulunduğu Azure aboneliğiniz ile ilişkilendirilir.  Abonelikte **sahip** ve **katkıda** bulunan rollerine sahip tüm kullanıcıların cloudsimple portalına erişimi vardır.  CloudSimple hizmetiyle ilişkili Azure abonelik KIMLIĞI ve kiracı KIMLIĞI [hesaplar sayfasında](https://docs.azure.cloudsimple.com/account/)bulunur.
+CloudSimple hizmetinizi oluşturduğunuzda, CloudSimple üzerinde bir hesap oluşturur.  Hesap, hizmetin bulunduğu Azure aboneliğiniz ile ilişkilendirilir.  Abonelikte **sahip** ve **katkıda** bulunan rollerine sahip tüm kullanıcıların cloudsimple portalına erişimi vardır.  CloudSimple hizmetiyle ilişkili Azure abonelik KIMLIĞI ve kiracı KIMLIĞI [hesaplar sayfasında](account.md)bulunur.
 
 ## <a name="additional-alert-emails"></a>Ek uyarı e-postaları
 
@@ -36,5 +36,5 @@ Abonelikte **sahip** ve **katkıda** bulunan rolü olan tüm kullanıcıların c
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hesap özetini görüntüle](https://docs.azure.cloudsimple.com/account/)
-* [Kullanıcı listesini görüntüle](https://docs.azure.cloudsimple.com/users/)
+* [Hesap özetini görüntüle](account.md)
+* [Kullanıcı listesini görüntüle](users.md)

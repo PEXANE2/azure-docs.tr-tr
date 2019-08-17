@@ -1,8 +1,8 @@
 ---
-title: Azure Blockchain hizmet desteklenen muhasebe sürümleri, düzeltme eki uygulama ve yükseltme
-description: Düzeltme eki uygulama ve sistem tarafından yönetilen sistemler ve kullanıcı tarafından yönetilen yükseltmeleri ile ilgili ilkeler de dahil olmak üzere Azure blok zinciri Service'te desteklenen defterler sürümlerinin genel bakış.
+title: Azure blok zinciri hizmeti desteklenen muhasebe sürümleri, düzeltme eki uygulama ve yükseltme
+description: Systems düzeltme eki uygulama ve sistem tarafından yönetilen ve Kullanıcı tarafından yönetilen yükseltmelerle ilgili ilkeler de dahil olmak üzere Azure blok zinciri hizmeti 'ndeki desteklenen bağış cihazları sürümlerine genel bakış.
 services: azure-blockchain
-keywords: Blok zinciri
+keywords: blok zinciri
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
@@ -10,33 +10,33 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399098"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562796"
 ---
-# <a name="supported-azure-blockchain-service-ledger-versions"></a>Desteklenen Azure blok zinciri hizmet muhasebe sürümleri
+# <a name="supported-azure-blockchain-service-ledger-versions"></a>Desteklenen Azure blok zinciri hizmeti muhasebe sürümleri
 
-Azure Blockchain hizmetinin kullandığı Ethereum tabanlı [çekirdek](https://www.goquorum.com/developers) bilinen katılımcılar, Azure Blockchain hizmetinde Konsorsiyumu olarak tanımlanan bir grup içinde özel hareketler işlenmesi için tasarlanmış muhasebe.
+Azure blok zinciri hizmeti, Azure blok zinciri hizmeti 'nde bir konsorsiyum olarak tanımlanan, bilinen katılımcılar grubu içindeki özel işlemlerin işlenmesi için tasarlanan Ethereum tabanlı [çekirdek](https://www.goquorum.com/developers) muhasebeyi kullanır.
 
-Şu anda Azure blok zinciri hizmet destekler [çekirdek sürümü 2.2.1](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1) ve [Tessera hareket yöneticisi](https://github.com/jpmorganchase/tessera).
+Şu anda Azure blok zinciri hizmeti, [çekirdek sürümü 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) ve [Tessera işlem yöneticisini](https://github.com/jpmorganchase/tessera)destekler.
 
-## <a name="managing-updates-and-upgrades"></a>Yönetme güncelleştirmeler ve yükseltmeler
+## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
 
-Bir ana, alt sürüm oluşturma çekirdek gerçekleştirilir ve düzeltme eki serbest bırakır. Çekirdek sürümü 2.0.1 ise, örneğin, sürüm türü gibi kategorilere:
+Çekirdekte sürüm oluşturma, büyük ve küçük ve düzeltme eki sürümleriyle yapılır. Örneğin, çekirdek sürümü 2.0.1 ise, yayın türü şu şekilde kategorilere ayrılır:
 
-|Büyük | Küçük  | Düzeltme Eki  |
+|Büyük | Küçük  | Yama  |
 | :--- | :----- | :----- |
-| 2 | 0 | 1 | 
+| 2 | 0 | 1\. | 
 
-Azure Blockchain hizmeti çalıştıran var olan üyelerine düzeltme eki çekirdek sürümleri çekirdek kullanıma sunulacaktır, 30 gün içinde otomatik olarak güncelleştirir.
+Azure blok zinciri hizmeti, çekirdeğin düzeltme eki sürümlerini, çekirdekte kullanılabilir hale getirilmekte olan 30 gün içinde var olan çalışan üyelere otomatik olarak güncelleştirir.
 
-## <a name="availability-of-new-ledger-versions"></a>Yeni kayıt defteri sürümlerinde kullanılabilirliği
+## <a name="availability-of-new-ledger-versions"></a>Yeni muhasebe sürümlerinin kullanılabilirliği
 
-Azure Blockchain hizmeti çekirdek üreticisinden olma 60 gün içinde çekirdek muhasebe en büyük ve küçük sürümlere sağlar. En fazla dört ikincil sürüm yeni üye ve consortium sağlanırken aralarından seçim yapabileceğiniz consortia için sağlanır. Bir ana için yükseltme veya ikincil sürüm şu anda desteklenmiyor.
+Azure blok zinciri hizmeti, çekirdek üreticisinin 60 gün içinde kullanılabilir olması için çekirdek muhasebeyi en son büyük ve küçük sürümlerini sağlar. Yeni bir üye ve konsorsiyumun sağlanmasından sonra aralarından seçim yapmak için en fazla dört alt sürüm verilmiştir. Sürümünden büyük veya küçük bir sürüme yükseltme şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Blockchain hizmet sınırları](limits.md)
+[Azure blok zinciri hizmeti sınırları](limits.md)

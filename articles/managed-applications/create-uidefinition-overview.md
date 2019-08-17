@@ -1,5 +1,5 @@
 ---
-title: Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefiıniyon. JSON | Microsoft Docs
+title: Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON | Microsoft Docs
 description: Azure yönetilen uygulamalar için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar
 services: managed-applications
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 292f2995e7ff1f56c306b8c9859bdb323f21762d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847603"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563548"
 ---
-# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefiıniyon. JSON
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON
 
 Bu belge, yönetilen bir uygulama oluştururken Kullanıcı arabirimini tanımlamak için Azure portal tarafından kullanılan **Createuıdefinition. JSON** dosyasının temel kavramlarını tanıtır.
 

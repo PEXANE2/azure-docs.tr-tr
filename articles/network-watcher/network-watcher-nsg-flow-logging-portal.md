@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f254572f5c26a809f401e99f527ccd3d30451c3d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 433f8550e9bf8d5f352494005300e1f92494c3c7
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931580"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563496"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir sanal makineye gelen ve giden ağ trafiğini günlüğe kaydet
 
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     |Ayar|Value|
     |---|---|
-    |Ad|myVm|
+    |Name|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |istemcisiyle yönetilen bir cihaz için)| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Subscription| Aboneliğinizi seçin.|
@@ -88,7 +88,7 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
 
     | Ayar        | Value                                                        |
     | ---            | ---   |
-    | Ad           | 3-24 karakter uzunluğundadır. Yalnızca küçük harfler ve rakamlar içerebilir ve tüm Azure Depolama hesapları arasında benzersiz olmalıdır.                                                               |
+    | Name           | 3-24 karakter uzunluğundadır. Yalnızca küçük harfler ve rakamlar içerebilir ve tüm Azure Depolama hesapları arasında benzersiz olmalıdır.                                                               |
     | Location       | **Doğu ABD**’yi seçin                                           |
     | Resource group | **Var olanı kullan**’ı seçin ve sonra **myResourceGroup** seçeneğini belirleyin |
 
@@ -114,6 +114,8 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
    > * Depolama hesaplarında [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) etkindir.
 1. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 10. **Bekletme (gün)** değerini 5 olarak ayarlayın ve **Kaydet**’i seçin.
+    > [!IMPORTANT]
+    > Şu anda ağ Izleyicisi için ağ [güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) , bekletme ilkesi ayarlarına göre blob depolamadan otomatik olarak silinmediği bir sorun vardır. Sıfır olmayan bir bekletme ilkeniz varsa, herhangi bir ücret ödemeden kaçınmak için saklama süresini aşan depolama bloblarını düzenli aralıklarla silmenizi öneririz. NSG akış günlüğü depolama blogunu silme hakkında daha fazla bilgi için bkz. [NSG akış günlüğü depolama Bloblarını silme](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="download-flow-log"></a>Akış günlüğünü indirme
 

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444032"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562906"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -31,7 +31,7 @@ Azure Işlevleri, platformlar arası yerel geliştirme ve Windows ve Linux üzer
 
 Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği için tüm dağıtım teknolojileri bulunmaz. Aşağıdaki grafikte, her bir işletim sistemi ve barındırma planı birleşimi için hangi dağıtım teknolojilerinin desteklendiği gösterilmektedir:
 
-| Dağıtım teknolojisi | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış  | Linux kullanımı (Önizleme) | Linux adanmış |
+| Dağıtım teknolojisi | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış  | Linux tüketimi | Linux adanmış |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
 | Dış paket URL 'SI<sup>1</sup> |✔|✔|✔|✔|✔|
 | ZIP dağıtımı |✔|✔|✔| |✔|
@@ -70,7 +70,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 >
 >Azure Blob depolama kullanırsanız, IŞLEVLERE pakete erişim sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanın. Uygulamanın her yeniden başlatıldığı zaman içeriğin bir kopyasını getirir. Başvurunuz, uygulamanın ömrü için geçerli olmalıdır.
 
->__Ne zaman kullanılır:__ Dış paket URL 'SI, tüketim planında (Önizleme) Linux üzerinde çalışan Azure Işlevleri için desteklenen tek dağıtım yöntemidir. Bir işlev uygulamasının başvurduğu paket dosyasını güncelleştirdiğinizde, Azure 'u uygulamanızın değiştiğini bildirmek için [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing) gerekir.
+>__Ne zaman kullanılır:__ Dış paket URL 'SI, tüketim planında Linux üzerinde çalışan Azure Işlevleri için desteklenen tek dağıtım yöntemidir. Bir işlev uygulamasının başvurduğu paket dosyasını güncelleştirdiğinizde, Azure 'u uygulamanızın değiştiğini bildirmek için [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing) gerekir.
 
 ### <a name="zip-deploy"></a>ZIP dağıtımı
 
@@ -151,7 +151,7 @@ Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan 
 
 Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve diller gösterilmektedir:
 
-| | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış | Linux kullanımı (Önizleme) | Linux Premium (Önizleme)| Linux adanmış |
+| | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış | Linux tüketimi | Linux Premium (Önizleme)| Linux adanmış |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
 | C#SCRIPT |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

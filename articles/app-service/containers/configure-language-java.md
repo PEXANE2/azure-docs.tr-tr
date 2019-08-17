@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967154"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563004"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -139,7 +139,7 @@ Tek bir uygulama çalıştıran geliştiriciler App Service planında bir dağı
 
 Uygulama yığını ayarlarını ayarladığınızda, en iyi bellek ayırmayı bulmak için App Service planı ayrıntılarınızı gözden geçirin ve birden çok uygulama ve dağıtım yuvası ihtiyaçlarına sahip olmak üzere birden fazla uygulama ve dağıtım yuvası
 
-Bir JAR uygulaması dağıtıyorsanız, yerleşik görüntünün uygulamanızı doğru bir şekilde tanımlayabilmesi için *app. jar* olarak adlandırılmalıdır. (Maven eklentisi bu yeniden adlandırmayı otomatik olarak yapar.) JAR 'nizi *app. jar*'e yeniden adlandırmak ISTEMIYORSANıZ, jar dosyanızı çalıştırmak için komutuyla bir kabuk betiği yükleyebilirsiniz. Sonra bu betiğin tam yolunu portalın yapılandırma bölümündeki [başlangıç dosyası](app-service-linux-faq.md#built-in-images) metin kutusuna yapıştırın.
+Bir JAR uygulaması dağıtıyorsanız, yerleşik görüntünün uygulamanızı doğru bir şekilde tanımlayabilmesi için *app. jar* olarak adlandırılmalıdır. (Maven eklentisi bu yeniden adlandırmayı otomatik olarak yapar.) JAR 'nizi *app. jar*'e yeniden adlandırmak ISTEMIYORSANıZ, jar dosyanızı çalıştırmak için komutuyla bir kabuk betiği yükleyebilirsiniz. Sonra bu betiğin tam yolunu portalın yapılandırma bölümündeki [başlangıç dosyası](app-service-linux-faq.md#built-in-images) metin kutusuna yapıştırın. Başlangıç betiği, yerleştirildiği dizinden çalışmaz. Bu nedenle, başlangıç betiğinizdeki dosyalara başvurmak için her zaman mutlak yollar kullanın (örneğin `java -jar /home/myapp/myapp.jar`:).
 
 ### <a name="turn-on-web-sockets"></a>Web yuvalarını aç
 

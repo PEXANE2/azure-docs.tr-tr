@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c25c0a2b2f48baa3b57a8ad39ed4514c884826
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533145"
+ms.locfileid: "69561311"
 ---
 # <a name="what-are-authentication-methods"></a>Kimlik doğrulama yöntemleri nelerdir?
 
@@ -31,7 +31,7 @@ Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönt
 | istemcisiyle yönetilen bir cihaz için) | MFA ve SSPR |
 | Güvenlik soruları | Yalnızca SSPR |
 | E-posta adresi | Yalnızca SSPR |
-| Microsoft Authenticator uygulaması | SSPR için MFA ve genel önizleme |
+| Microsoft Authenticator uygulaması | MFA ve SSPR |
 | OATH donanım belirteci | MFA ve SSPR için genel önizleme |
 | SMS | MFA ve SSPR |
 | Sesli çağrı | MFA ve SSPR |
@@ -41,7 +41,7 @@ Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönt
 
 |     |
 | --- |
-| MFA ve SSPR için OATH Donanım belirteçleri ve mobil uygulama bildirimi ya da mobil uygulama kodu Azure AD self servis parola sıfırlama için yöntemler Azure Active Directory genel önizleme özellikleridir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| MFA ve SSPR için OATH Donanım belirteçleri, Azure Active Directory genel önizleme özellikleridir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="password"></a>istemcisiyle yönetilen bir cihaz için)

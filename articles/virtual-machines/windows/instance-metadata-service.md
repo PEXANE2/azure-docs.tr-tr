@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 6ddd8922f1830b2f57c8ecb4ff62871961b09fec
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a1c4575ec2ecc65d863ad80f73e64b7a4efdf96f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228318"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563244"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -39,10 +39,10 @@ Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API s�
 
 Regions                                        | Sonrası?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11 
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
-[Azure Çin](https://www.azure.cn/)                                                     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11
+[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure Çin](https://www.azure.cn/)                                                     | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel Kullanıma Sunuldu | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
 
 Bu tablo, hizmet güncelleştirmeleri olduğunda ve veya desteklenen yeni sürümler varsa güncelleştirilir.
 
@@ -104,9 +104,9 @@ Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir
 
 API | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | nesnesinde | text
-/scheduledevents | nesnesinde | Seçim
-/attested | nesnesinde | Seçim
+/Instance | json | text
+/scheduledevents | json | yok
+/attested | json | yok
 
 Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
 
@@ -367,14 +367,15 @@ placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../vi
 planınızın | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
-Sağlayıcısını | VM sağlayıcısı | 2018-10-01
+sağlayıcı | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM görüntüsünün yayımcısı | 2017-04-02
 resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
-İsteyin | VM görüntüsü için belirli SKU | 2017-04-02
+sku | VM görüntüsü için belirli SKU | 2017-04-02
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
-etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+tags | Sanal makineniz için [Etiketler](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
 version | VM görüntüsünün sürümü | 2017-04-02
 vmId | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | Sanal makine ölçek kümesinin [sanal makine ölçek kümesi adı](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
@@ -425,7 +426,7 @@ Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izle
 }
 ```
 
-> İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, oturum açmak için kullanılan sertifikayı, belge oluşturma ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarını içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
+> İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Oturum açmak için kullanılan sertifikayı ve VMID, nonce, SubscriptionID, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarını içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Windows sanal makinesinde atsınanan meta veriler alınıyor
 
@@ -457,7 +458,7 @@ Nonce, belirtilen isteğe bağlı 10 basamaklı bir dizedir. Nonce, isteği izle
 }
 ```
 
-> İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, oturum açmak için kullanılan sertifikayı, belge oluşturma ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarını içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
+> İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Oturum açmak için kullanılan sertifikayı ve VMID, nonce, SubscriptionID, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarını içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
 
 
 ## <a name="example-scenarios-for-usage"></a>Kullanım için örnek senaryolar  
@@ -568,8 +569,32 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-> [!NOTE]
-> Etiketler noktalı virgülle ayrılır. Etiketi programlı olarak ayıklamak üzere bir Ayrıştırıcı yazılmışsa, ayrıştırıcısının doğru çalışması için etiket adları ve değerleri noktalı virgül içermemelidir.
+`tags` Alan, etiketleri noktalı virgülle ayrılmış bir dizedir. Etiketlerde noktalı virgül kullanılırsa bu bir sorun olabilir. Etiketleri programlı olarak ayıklamak üzere yazılmışsa, `tagsList` sınırlandırıcı olmayan bir JSON dizisi olan alana ve sonuç olarak ayrıştırılmaya daha kolay.
+
+**İstek**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+```
+
+**Yanıt**
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "Environment",
+    "value": "Test"
+  },
+  {
+    "name": "Role",
+    "value": "WebRole"
+  }
+]
+```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>VM'nin Azure'da çalıştırıldığını doğrulama
 
@@ -612,7 +637,8 @@ Verification successful
     "createdOn":"11/28/18 00:16:17 -0000",
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34"
+"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
 }
 ```
 
@@ -623,10 +649,11 @@ planınızın | Azure Market görüntüsündeki bir VM için [plan](https://docs
 zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu zaman damgası
 zaman damgası/expiresOn | İmzalanan belgenin süresi dolan zaman damgası
 vmId |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
+subscriptionId | Üzerinde sunulan sanal makine için Azure aboneliği`2019-04-30`
 
 #### <a name="verifying-the-signature"></a>İmza doğrulanıyor
 
-Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulayabilirsiniz. Ayrıca ara sertifikayı ve sertifika zincirini doğrulayabilirsiniz.
+Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulayabilirsiniz. Ayrıca ara sertifikayı ve sertifika zincirini doğrulayabilirsiniz. Son olarak, abonelik KIMLIĞININ doğru olduğunu doğrulayabilirsiniz.
 
 > [!NOTE]
 > Genel bulut ve bağımsız bulutu için sertifika farklı olacaktır.
@@ -699,7 +726,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Özel veriler
+### <a name="custom-data"></a>Özel Veriler
 Instance Metadata Service, VM 'nin kendi özel verilerine erişimine sahip olmasını sağlar. İkili veriler 64 KB 'tan az olmalıdır ve Base64 kodlamalı biçimde VM 'ye sağlanmalıdır.
 
 Azure özel verileri REST API 'Ler, PowerShell cmdlet 'Leri, Azure komut satırı arabirimi (CLı) veya ARM şablonu aracılığıyla sanal makineye eklenebilir.

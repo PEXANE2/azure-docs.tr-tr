@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704388"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562704"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - coğrafi olağanüstü durum kurtarma 
 
@@ -37,7 +37,7 @@ Azure Event Hubs'ın coğrafi olağanüstü durum kurtarma özelliği bir olağa
 
 ## <a name="basic-concepts-and-terms"></a>Temel kavramlar ve terimler
 
-Olağanüstü Durum Kurtarma özelliği meta verileri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarında kullanır. Coğrafi olağanüstü durum kurtarma özelliği için kullanılabilir olduğunu unutmayın [standart SKU](https://azure.microsoft.com/pricing/details/event-hubs/) yalnızca. Bir diğer ad üzerinden bağlantı kurulmadığı herhangi bir bağlantı dizesi değişiklik yapılması gerekmez.
+Olağanüstü Durum Kurtarma özelliği meta verileri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarında kullanır. Coğrafi olağanüstü durum kurtarma özelliğinin yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/) için kullanılabilir olduğunu unutmayın. Bir diğer ad üzerinden bağlantı kurulmadığı herhangi bir bağlantı dizesi değişiklik yapılması gerekmez.
 
 Bu makalede aşağıdaki terimler kullanılır:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 420ac45b7d3b5e97772b1aa712ba6b8442ac1de2
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559136"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562748"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Kubernetes ve Helm ile kullanma
 
@@ -95,7 +95,7 @@ Microsoft tarafından sunulan tüm genel kullanıma açık HELI grafikleri için
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Sonra, helk grafik değerlerimizi yapılandıracağız. Aşağıdaki YAML 'yi kopyalayıp adlı `config-values.yaml`bir dosyaya yapıştırın. Bilişsel **Hizmetler konuşma şirket Içi HELI grafiğini**özelleştirme hakkında daha fazla bilgi için bkz. [HELI grafiklerini özelleştirme](#customize-helm-charts). `billing` Ve`apikey` değerlerini kendi değerlerinizle değiştirin.
+Sonra, helk grafik değerlerimizi yapılandıracağız. Aşağıdaki YAML 'yi kopyalayıp adlı `config-values.yaml`bir dosyaya yapıştırın. Bilişsel **Hizmetler konuşma şirket Içi HELI grafiğini**özelleştirme hakkında daha fazla bilgi için bkz. [HELI grafiklerini özelleştirme](#customize-helm-charts). `# {ENDPOINT_URI}` Ve`# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -113,8 +113,8 @@ speechToText:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 
 # text-to-speech configurations
 textToSpeech:
@@ -129,8 +129,8 @@ textToSpeech:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 ```
 
 > [!IMPORTANT]

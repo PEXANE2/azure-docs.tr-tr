@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ba2d2fd9c943fe55e82956d022f6ba9840a550f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536605"
+ms.locfileid: "69563065"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak Azure sanal ağını CloudSimple 'a bağlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "69536605"
 Özel bulutunuz ve Azure sanal ağı arasındaki ExpressRoute bağlantısı için bir yetkilendirme anahtarı gereklidir. Anahtar almak için, <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">destek</a>ile bir bilet dosyası yapın.  İstekte aşağıdaki bilgileri kullanın:
 
 * Sorun türü: **Teknik**
-* Abonelik: CloudSimple hizmetinin dağıtıldığı aboneliği seçin * *
+* Abonelik: **CloudSimple hizmetinin dağıtıldığı aboneliği seçin**
 * Hizmet: **CloudSimple tarafından VMware çözümü**
 * Sorun türü: **Hizmet isteği**
 * Sorun alt türü: **Azure VNET bağlantısı için yetkilendirme anahtarı**

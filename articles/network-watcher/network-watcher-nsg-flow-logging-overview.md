@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a77cc22c7a56c29b5b42a032af3d0ea0b2c17d88
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881783"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563524"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -90,6 +90,9 @@ Aşağıdaki metin akış günlüğüne bir örnektir. Gördüğünüz gibi, ön
 **Bir kaynağa bağlı tüm NSG 'ler için NSG akış günlüğünü etkinleştirin**: Azure 'da akış günlüğü, NSG kaynağında yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm trafiğin kaydedildiğinden emin olmak için bir kaynağın alt ağını veya ağ arabirimini uygulayan NSG akış günlüğü 'nün etkinleştirilmiş olması önerilir. Ağ güvenlik grupları hakkında daha fazla bilgi için [trafiğin nasıl değerlendirildiğini](../virtual-network/security-overview.md#how-traffic-is-evaluated) görün. 
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, yüksek hacimde depolama işlemlerine ve ilişkili maliyetlere neden olabilir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Ek ayrıntılar için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) .
+
+> [!IMPORTANT]
+> Şu anda ağ Izleyicisi için ağ [güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) , bekletme ilkesi ayarlarına göre blob depolamadan otomatik olarak silinmediği bir sorun vardır. Sıfır olmayan bir bekletme ilkeniz varsa, herhangi bir ücret ödemeden kaçınmak için saklama süresini aşan depolama bloblarını düzenli aralıklarla silmenizi öneririz. NSG akış günlüğü depolama blogunu silme hakkında daha fazla bilgi için bkz. [NSG akış günlüğü depolama Bloblarını silme](network-watcher-delete-nsg-flow-log-blobs.md).
 
 **Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: NIC ile ilişkili bir genel IP adresi olmayan, örnek düzeyi genel IP olarak veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'Ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) 'yi kullanır ve bunu kolaylaştırmak için Azure tarafından ATANMıŞ bir IP adresine sahiptir giden bağlantı. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 

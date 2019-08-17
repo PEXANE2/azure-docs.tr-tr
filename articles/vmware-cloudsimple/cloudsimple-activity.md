@@ -8,34 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816255"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563179"
 ---
 # <a name="activity-management-overview"></a>Etkinlik yönetimine genel bakış
 
-CloudSimple, özel bulutlarınızın çalışmasını etkileyebilecek tüm etkinlikleri izler. Uyarılar, olaylar, görevler ve denetim etkinliği de dahil olmak üzere bu etkinlikler. [Etkinlik sayfaları](https://docs.azure.cloudsimple.com/activity/) , tüm geçerli etkinlikleri özetler ve ek ayrıntılar için ayrıntıya gitmenizi sağlar.
+CloudSimple, özel bulut ortamınızın çalışmasını etkileyebilecek tüm etkinlikleri izler. Etkinlikleri, uyarıları, olayları, görevleri ve denetim etkinliğini içerir. [Etkinlik sayfaları](monitor-activity.md) , tüm geçerli etkinlikleri özetler ve ek ayrıntılar için ayrıntıya gitmenizi sağlar.
 
 ## <a name="events"></a>Events
 
-Olayları, CloudSimple portalındaki Kullanıcı ve sistem etkinliğini izler.  Olaylar, belirli bir kaynakla ilişkili etkinliği ve etkinin önem derecesini gösterir.  Olayları CloudSimple portalından görüntüleyebilirsiniz.
+Olayları, CloudSimple portalındaki Kullanıcı ve sistem etkinliğini izler. Olaylar, belirli bir kaynakla ilişkili etkinliği ve etkinin önem derecesini gösterir.  Olayları CloudSimple portalından görüntüleyebilirsiniz.
 
 ## <a name="alerts"></a>Uyarılar
 
-Uyarılar, CloudSimple ortamınızdaki önemli etkinliklerin bildirimidir.  Faturalandırma veya Kullanıcı erişimini etkileyen olaylar, uyarı olarak gösterilir.  Yükseltilmiş uyarıları CloudSimple portalından kabul edebilirsiniz.
+Uyarılar, CloudSimple ortamınızdaki önemli etkinliklerin bildirimidir. Faturalandırma veya Kullanıcı erişimini etkileyen olaylar uyarı olarak gösterilir.  CloudSimple portalından uyarıları kabul edebilirsiniz.
 
 ## <a name="tasks"></a>Görevler
 
-Görevler, 30 saniyeden uzun süren tüm kullanıcı işlemlerini izler.  Bir görevin ilerlemesini CloudSimple portalından izleyebilirsiniz.  Tamamlanan görevler, görevin tamamlanması için geçen toplam süreyi gösterir.
+Görevler, 30 saniyeden uzun süren tüm kullanıcı işlemlerini izler. Bir görevin ilerlemesini CloudSimple portalından izleyebilirsiniz.  Tamamlanan görevler için, bilgiler tamamlanma için toplam süreyi içerir.
 
 ## <a name="audit"></a>Denetim
 
-Denetim günlükleri Kullanıcı tarafından gerçekleştirilen işlemleri izler.  Günlükler, kullanıcının işlem için sağlamasıyla ilgili parametreleri içerir.  Tüm kullanıcılar için Kullanıcı etkinliğini izlemek üzere Denetim günlüklerini kullanabilirsiniz.
+Denetim günlükleri Kullanıcı işlemlerini izler. Denetim günlükleri, Kullanıcı tarafından işlem için belirtilen parametreleri içerir.  Tüm kullanıcılar için Kullanıcı etkinliğini izlemek üzere Denetim günlüklerini kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hesap özetini görüntüle](https://docs.azure.cloudsimple.com/account/)
-* [Kullanım günlüğünü görüntüleme](https://docs.azure.cloudsimple.com/usage/)
+* [Hesap özetini görüntüle](account.md)

@@ -13,18 +13,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: ec42693fe42f35d728a4a5018776867f07403f81
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226868"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562882"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
 Bu makale, Python kullanarak Azure Işlevleri geliştirmeye giriş niteliğindedir. Aşağıdaki içerik [Azure işlevleri geliştirici kılavuzunu](functions-reference.md)zaten okuduğunuzu varsayar.
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 ## <a name="programming-model"></a>Programlama modeli
 

@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 348cd0eccc66adb29a7564bbbeca99fffec28957
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443947"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562851"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -51,7 +51,7 @@ Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırm
 | | Tüketim planı | Premium planı | Adanmış plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | GA | önizleme | GA |
-| Linux | önizleme | önizleme | GA |
+| Linux | GA | önizleme | GA |
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
@@ -132,7 +132,7 @@ Bu komutun `dynamic`çıktısı olduğunda, işlev uygulamanız tüketim planın
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerinin günlüğe kaydetme gibi işlemler için Azure Storage 'ı kullandığından, bazı depolama hesaplarının kuyrukları ve tabloları desteklememesinden kaynaklanır. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama çoğaltması olan genel amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir  işlev uygulaması.
+Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerinin günlüğe kaydetme gibi işlemler için Azure Storage 'ı kullandığından, bazı depolama hesaplarının kuyrukları ve tabloları desteklememesinden kaynaklanır. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama çoğaltması olan genel amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması.
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 

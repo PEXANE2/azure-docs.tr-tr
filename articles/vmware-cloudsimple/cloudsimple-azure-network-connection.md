@@ -8,27 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eca3e316d866814f6727dd8ef2c3fa490a551383
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812718"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563170"
 ---
 # <a name="azure-network-connections-overview"></a>Azure ağ bağlantılarına genel bakış
 
 Bir bölgede CloudSimple hizmeti oluşturduğunuzda, şunları yapabilirsiniz:
 
-* Bir Azure ExpressRoute bağlantı hattı oluşturur ve bu bölgedeki hizmete iliştirir
-* Azure ExpressRoute kullanarak CloudSimple bölge ağınızdan Azure sanal ağınıza veya şirket içi ağınıza bağlantı sağlar
-* Özel bulut ortamınızdan Azure aboneliğinizde veya şirket içi ağınızda çalışan erişim hizmetleri sağlar
+* Bir Azure ExpressRoute bağlantı hattı oluşturur ve bu bölgedeki hizmete iliştirir.
+* Azure ExpressRoute kullanarak CloudSimple bölge ağınızı Azure sanal ağınıza veya şirket içi ağınıza bağlar.
+* Özel bulut ortamınızdan Azure aboneliğinizde veya şirket içi ağınızda çalışan hizmetlere erişim sağlar.
 
-Bağlantı:
-
-* Güvenlik
-* Özel
-* Yüksek bant genişliği
-* Düşük gecikme süresi
+ExpressRoute bağlantısı, düşük gecikme süresine sahip yüksek bant genişliğidir.
 
 ## <a name="benefits"></a>Avantajlar
 
@@ -40,9 +35,9 @@ Azure ağ bağlantısı şunları yapmanıza olanak sağlar:
 
 ## <a name="azure-virtual-network-connection"></a>Azure sanal ağ bağlantısı
 
-Özel bulutlar, ExpressRoute kullanarak Azure kaynaklarınıza bağlanabilir.  Bu bağlantıyı, özel bulutunuzda Azure aboneliğinizde çalışan farklı kaynaklara erişmek için kullanabilirsiniz.  Bu bağlantı, özel bulut ağınızı Azure sanal ağınıza genişletmenizi sağlar.
+Özel bulutlar, ExpressRoute kullanarak Azure kaynaklarınıza bağlanabilir.  ExpressRoute bağlantısı, özel bulutunuzda Azure aboneliğinizde çalışan kaynaklara erişmenizi sağlar.  Bu bağlantı, özel bulut ağınızı Azure sanal ağınıza genişletmenizi sağlar.
 
-![Sanal ağa Azure ExpressRoute bağlantısı](media/cloudsimple-azure-network-connection.png)
+[![Sanal ağa Azure ExpressRoute bağlantısı](media/cloudsimple-azure-network-connection.png)
 
 ## <a name="expressroute-connection-to-on-premises-network"></a>Şirket içi ağa ExpressRoute bağlantısı
 
@@ -52,5 +47,5 @@ Mevcut Azure ExpressRoute devrenizi CloudSimple bölgenize bağlayabilirsiniz. E
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure sanal ağı ile CloudSimple bağlantısı arasındaki eşleme bilgilerini alın](https://docs.azure.cloudsimple.com/virtual-network-connection)
-* [ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [ExpressRoute kullanarak Azure sanal ağını CloudSimple 'a bağlama](virtual-network-connection.md)
+* [ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma](on-premises-connection.md)

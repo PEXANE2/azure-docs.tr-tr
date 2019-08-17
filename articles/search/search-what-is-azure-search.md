@@ -8,16 +8,16 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/13/2019
 ms.author: heidist
-ms.openlocfilehash: 0a254716acbcd51263680d421045788e8365ae8b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
-ms.translationtype: HT
+ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533150"
+ms.locfileid: "69558602"
 ---
 # <a name="what-is-azure-search"></a>Azure Search nedir?
 
-Azure Search, geliştiricilere, web uygulamalarındaki, mobil uygulamalardaki ve kurumsal uygulamalardaki özel, heterojen içeriğe yönelik zengin arama deneyimi ekleme araçlarını ve API’lerini sunan, hizmet olarak arama bulut çözümüdür. Özel kodunuz veri alımı (Dizin oluşturma) çağırır, sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, Azure Search işlevleri kullanılarak istemci kodunuzda tanımlanmıştır ve Azure Search oluşturduğunuz, sahip olduğunuz kalıcı bir dizin üzerinde sorgu yürütülede ve bu durumda depolanıyor.
+Azure Search, Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'Ler ve araçlar sağlayan bir hizmet olarak arama bir bulut çözümüdür. Özel kodunuz veri alımı (Dizin oluşturma) çağırır, sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, Azure Search işlevleri kullanılarak istemci kodunuzda tanımlanmıştır ve Azure Search oluşturduğunuz, sahip olduğunuz kalıcı bir dizin üzerinde sorgu yürütülede ve bu durumda depolanıyor.
 
 ![Azure Search mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search mimarisi")
 

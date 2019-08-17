@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: ae397c077ac87618b646883f9125c9da2df81bfd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: cce14a2f6e7f8aeca6c7f716d66520cef9484dde
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036573"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562643"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -188,7 +188,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 ## <a name="c1partners"></a>Diğer Hizmet Sağlayıcılar Üzerinden Bağlantı
 | **Location** | **Exchange** | **Bağlantı Sağlayıcılar** |
 | --- | --- | --- |
-| **Amsterdam** | Equinx, ınterxiyon, düzey 3 Iletişimleri, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, Gulf Köprüsü International, Kalaam Telebel B. S. C, MainOne, Nianet, Post, Proximus, TDC Erhverv, telekomünikasyon Italia parlak Le, Telekom Deutschland GmbH, Telia |
+| **Amsterdam** | Equinx, ınterxiyon, düzey 3 Iletişimleri, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, Gulf Köprüsü International, Kalaam Telebel B. S. C, MainOne, Nianet, POST Telepı, Proximus, TDC Erhverv, Telekom |
 | **Atlanta** | Equinix| Crown kalele
 | **Cape Town** | Teraco | MTN |
 | **Chicago** | Equinix| Crown kalele, SPI Enterprise, WINI akışı |

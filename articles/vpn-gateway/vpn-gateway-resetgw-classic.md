@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 359773dad53f333b2f052dd5b5481645c72746da
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 92978815af22e3ce1a549b9ca3e335befca8c918
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533925"
+ms.locfileid: "69563039"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway sıfırlama
 
@@ -69,10 +69,12 @@ Bir dönüş sonucu aldığınızda, ağ geçidi sıfırlamasının başarılı 
 
 ### <a name="resetclassic"></a>Klasik dağıtım modeli
 
-Bir ağ geçidini sıfırlamaya yönelik cmdlet **Reset-AzureVNetGateway**. Hizmet yönetimi için Azure PowerShell cmdlet 'lerinin yerel olarak masaüstünüze yüklenmesi gerekir. Azure Cloud Shell kullanamazsınız. Sıfırlama işlemini gerçekleştirmeden önce, [hizmet yönetimi (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)'lerinin en son sürümüne sahip olduğunuzdan emin olun. Aşağıdaki örnek, "ContosoVNet" adlı bir sanal ağ için ağ geçidini sıfırlar:
+Bir ağ geçidini sıfırlamaya yönelik cmdlet **Reset-AzureVNetGateway**. Hizmet yönetimi için Azure PowerShell cmdlet 'lerinin yerel olarak masaüstünüze yüklenmesi gerekir. Azure Cloud Shell kullanamazsınız. Sıfırlama işlemini gerçekleştirmeden önce, [hizmet yönetimi (SM) PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)'lerinin en son sürümüne sahip olduğunuzdan emin olun. Bu komutu kullanırken, sanal ağın tam adını kullandığınızdan emin olun. Portal kullanılarak oluşturulan klasik VNET 'ler, PowerShell için gereken uzun bir ada sahiptir. ' Get-AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml ' kullanarak uzun adı görüntüleyebilirsiniz.
+
+Aşağıdaki örnek, "Group TestRG1 TestVNet1" adlı bir sanal ağ için ağ geçidini sıfırlar (Bu, portalda yalnızca "TestVNet1" olarak gösterilir):
 
 ```powershell
-Reset-AzureVNetGateway –VnetName “ContosoVNet”
+Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
 Kaynaklanan

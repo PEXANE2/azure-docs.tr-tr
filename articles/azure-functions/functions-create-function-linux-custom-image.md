@@ -11,18 +11,18 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619617"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562924"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
 Azure İşlevleri, işlevlerinizi Linux’ta kendi özel kapsayıcınızda barındırmanıza olanak sağlar. Ayrıca, [varsayılan bir Azure App Service kapsayıcısı üzerinde barındırabilirsiniz](functions-create-first-azure-function-azure-cli-linux.md). Bu işlevsellik [2. x çalışma zamanı işlevlerini](functions-versions.md)gerektirir.
 
-Bu öğreticide işlevlerinizi Azure'a özel bir Docker görüntüsü olarak dağıtmayı öğreneceksiniz. Bu model, yerleşik kapsayıcı görüntüsünü özelleştirmeniz gerektiğinde faydalıdır. İşlevleriniz belirli bir dil sürümüne gereksinim duyduğunda veya yerleşik görüntüde sağlanmayan belirli bir bağımlılık ya da yapılandırma gerektirdiğinde özel görüntü kullanmak isteyebilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur. [Python desteği](functions-reference-python.md) Şu anda önizleme aşamasındadır.
+Bu öğreticide işlevlerinizi Azure'a özel bir Docker görüntüsü olarak dağıtmayı öğreneceksiniz. Bu model, yerleşik kapsayıcı görüntüsünü özelleştirmeniz gerektiğinde faydalıdır. İşlevleriniz belirli bir dil sürümüne gereksinim duyduğunda veya yerleşik görüntüde sağlanmayan belirli bir bağımlılık ya da yapılandırma gerektirdiğinde özel görüntü kullanmak isteyebilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur. 
 
 Bu öğretici, özel bir Linux görüntüsünde bir işlev oluşturmak için Azure İşlevleri Çekirdek Araçları'nı kullanma adımlarını göstermektedir. Bu görüntüyü Azure CLI kullanılarak oluşturulan Azure'daki bir işlev uygulamasında yayımlayabilirsiniz. Daha sonra, Azure kuyruk depolamaya bağlanmak için işlevinizi güncelleşolursunuz. Öğesini de etkinleştirmeniz gerekir.  
 
@@ -69,8 +69,6 @@ func init MyFunctionProj --docker
 * `dotnet`: bir .NET Core sınıf kitaplığı projesi (. csproj) oluşturur.
 * `node`: bir JavaScript projesi oluşturur.
 * `python`: bir Python projesi oluşturur.
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 Komut yürütüldüğünde, aşağıdaki çıktıya benzer bir şey görürsünüz:
 

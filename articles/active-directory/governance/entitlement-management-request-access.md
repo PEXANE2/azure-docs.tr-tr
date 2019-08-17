@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678127"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562150"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketine erişim isteme
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678127"
 > Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure AD Yetkilendirme Yönetimi ile erişim paketleri, erişim paketinin ömrü boyunca erişimi otomatik olarak yöneten kaynak ve ilkelerin bir kerelik kurulumunu etkinleştirir. 
+
+Erişim paketi Yöneticisi, kullanıcıların paketlere erişim sahibi olması için ilkeleri bir onay gerektirecek şekilde yapılandırabilir. Erişim paketine erişmesi gereken bir Kullanıcı, erişim sağlamak için bir istek gönderebilir. Bu makalede bir erişim isteğinin nasıl gönderileceği açıklanır.
 
 ## <a name="sign-in-to-the-my-access-portal"></a>Erişim Portalı 'nda oturum açın
 

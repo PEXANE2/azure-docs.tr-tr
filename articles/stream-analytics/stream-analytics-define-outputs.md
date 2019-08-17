@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383436"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563309"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışları anlama
 
@@ -271,6 +271,9 @@ Azure Stream Analytics, Azure işlevleri HTTP Tetikleyicileri çağırır. Azure
 
 Azure Stream Analytics bir Azure işlevinden 413 ("http Istek varlığı çok büyük") özel durumu aldığında, Azure Işlevlerine gönderdiği toplu işlerin boyutunu azaltır. Azure işlev kodunuzda bu özel durumun Azure Stream Analytics toplu işler göndermediğinden göndermez emin olmak için kullanın. Ayrıca, işlevde kullanılan en büyük toplu iş sayısı ve boyut değerlerinin Stream Analytics portalına girilen değerlerle tutarlı olduğundan emin olun.
 
+> [!NOTE]
+> Sınama bağlantısı sırasında, Stream Analytics iki çalışma arasındaki bağlantının test olması için Azure Işlevlerine boş bir toplu işlem gönderir. Test bağlantısının başarılı olduğundan emin olmak için Işlevler uygulamanızın boş toplu iş isteklerini işlediğinizden emin olun.
+
 Ayrıca, bir zaman penceresinde olay sahanlığı olmadığı durumlarda, hiçbir çıkış oluşturulmaz. Sonuç olarak, **Computeresult** işlevi çağrılmaz. Bu davranış, yerleşik pencereli toplama işlevleri ile tutarlıdır.
 
 ## <a name="custom-metadata-properties-for-output"></a>Çıkış için özel meta veri özellikleri 
@@ -309,7 +312,7 @@ Bölüm destek ve çıkış yazarların her çıkış türü sayısı aşağıda
 | Azure Cosmos DB | Evet | Sorgudaki bölüm BY yan tümcesine göre. | Giriş bölümleme için aşağıdaki [tam olarak, sorguları paralel](stream-analytics-scale-jobs.md). |
 | Azure İşlevleri | Hayır | None | Geçerli değildir. |
 
-Çıktı yazıcılarının sayısı, sorgudaki [(bkz.](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) yan `INTO <partition count>` tümcesi kullanılarak denetlenebilir ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınızı bölümlenmemiş bir giriş bölümündeki verileri eksikliği geç varış süreyi kadar bir gecikme neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md).
+Çıktı yazıcılarının sayısı, sorgudaki (bkz.) yan `INTO <partition count>` tümcesi kullanılarak [](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)denetlenebilir ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınızı bölümlenmemiş bir giriş bölümündeki verileri eksikliği geç varış süreyi kadar bir gecikme neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Toplu iş boyutu
 Azure Stream Analytics, olayları işlemek ve çıkışlara yazmak için değişken boyutlu toplu işler kullanır. Genellikle Stream Analytics altyapısı tek seferde bir ileti yazmaz ve verimlilik için toplu işler kullanır. Hem gelen hem de giden olayların oranı yüksek olduğunda Stream Analytics daha büyük toplu işler kullanır. Çıkış oranı düşük olduğunda, daha küçük toplu işler gecikme süresi düşük tutmak için kullanır.

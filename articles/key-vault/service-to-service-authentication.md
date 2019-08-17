@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 30c99ae4150e0bd4645488b5bf75b8bbac0ee66f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934333"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562450"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -132,7 +132,7 @@ Bu yalnızca yerel geliştirme için geçerlidir. Çözümünüz Azure 'a dağı
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Yönetilen kimlik veya Kullanıcı tarafından atanan kimlik kullanılarak uygulamayı çalıştırma 
 
-Kodunuzu bir Azure App Service veya yönetilen bir kimlik etkin bir Azure VM 'de çalıştırdığınızda, kitaplık yönetilen kimliği otomatik olarak kullanır. 
+Kodunuzu bir Azure App Service veya yönetilen bir kimlik etkin bir Azure VM 'de çalıştırdığınızda, kitaplık yönetilen kimliği otomatik olarak kullanır. Kod değişikliği gerekmez, ancak yönetilen kimliğin Anahtar Kasası için *Al* izinleri olmalıdır. Anahtar kasasının *erişim ilkeleri*aracılığıyla yönetilen kimliğe *Al* izinleri verebilirsiniz.
 
 Alternatif olarak, Kullanıcı tarafından atanan bir kimlikle kimlik doğrulaması yapabilirsiniz. Kullanıcı tarafından atanan kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler hakkında](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). Kullanıcı tarafından atanan bir kimlikle kimlik doğrulamak için, bağlantı dizesinde kullanıcı tarafından atanan kimliğin Istemci KIMLIĞINI belirtmeniz gerekir. Bağlantı dizesi aşağıdaki [bağlantı dizesi desteği](#connection-string-support) bölümünde belirtilmiştir.
 
