@@ -54,9 +54,9 @@ Web tablosu bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Web** |Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Web** |Evet |
 | url | Web kaynağının URL 'SI |Evet |
-| authenticationType | İzin verilen değer: **Anonim**. |Evet |
+| authenticationType | İzin verilen değer: **Anonymous**. |Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
 **Örnek:**
