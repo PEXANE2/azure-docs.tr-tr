@@ -44,7 +44,7 @@ Aşağıdaki özellikler, Zoho bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Zoho** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Zoho** | Evet |
 | endpoint | Zoho sunucu uç noktası (`crm.zoho.com/crm/private`). | Evet |
 | accessToken | Zoho kimlik doğrulaması için erişim belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
@@ -78,7 +78,7 @@ Zoho veri kopyalamak için dataset öğesinin type özelliği ayarlamak **ZohoOb
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ZohoObject** | Evet |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
 
@@ -108,7 +108,7 @@ Zoho veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayı
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ZohoSource** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Accounts"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Accounts"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**
 

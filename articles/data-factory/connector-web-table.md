@@ -56,7 +56,7 @@ Web tablosu bağlı hizmeti için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | type | Type özelliği şu şekilde ayarlanmalıdır: **Web** |Evet |
 | url | Web kaynağının URL 'SI |Evet |
-| authenticationType | İzin verilen değer: **Anonymous**. |Evet |
+| authenticationType | İzin verilen değer: **Anonim**. |Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
 **Örnek:**
@@ -86,7 +86,7 @@ Web tablosundan veri kopyalamak için veri kümesinin Type özelliğini **Webtab
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **WebTable** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **WebTable** | Evet |
 | path |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
 | index |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Evet |
 
