@@ -11,16 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 47de61db96b0f8f9b338f135d4f32eecc4a64efe
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722791"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562964"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure 'da HTTP ile tetiklenen bir işlev oluşturma
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 Bu makalede, Azure Işlevleri 'nde çalışan bir Python projesi oluşturmak için komut satırı araçlarının nasıl kullanılacağı gösterilmektedir. Oluşturduğunuz işlev HTTP istekleri tarafından tetiklenir. Son olarak, projenizi Azure 'da [sunucusuz bir işlev](functions-scale.md#consumption-plan) olarak çalışacak şekilde yayımlayabilirsiniz.
 
@@ -40,9 +38,9 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>Oluşturma ve bir sanal ortam etkinleştirin
+## <a name="create-and-activate-a-virtual-environment-optional"></a>Sanal ortam oluşturma ve etkinleştirme (isteğe bağlı)
 
-Python işlevlerini yerel olarak geliştirmek ve test etmek için bir Python 3,6 ortamında çalışmanız gerekir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`.
+Python işlevlerini yerel olarak geliştirmek ve test etmek için Python 3,6 ortamının kullanılması önerilir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`.
 
 ### <a name="bash"></a>Bash
 
@@ -165,15 +163,19 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
-
 > [!NOTE]
-> Azure Işlevleri, Linux için tüketim planı şu anda önizleme aşamasındadır ve yalnızca aşağıdaki bölgelerde kullanılabilir: Batı ABD, Doğu ABD, Batı Avrupa Doğu Asya. Ayrıca, Linux ve Windows uygulamaları aynı kaynak grubunda barındırılamaz. Bir Windows işlev uygulaması veya Web uygulaması ile `myResourceGroup` adlandırılmış bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
+> Linux ve Windows uygulamaları aynı kaynak grubunda barındırılamaz. Bir Windows işlev uygulaması veya Web uygulaması ile `myResourceGroup` adlandırılmış bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
+
+Bu komut Ayrıca, günlükleri izlemek ve görüntülemek için kullanılabilecek aynı kaynak grubunda ilişkili bir Azure Application Insights örneği sağlayacak.
 
 Artık yerel işlevler projenizi Azure 'daki işlev uygulamasına yayımlamaya hazırsınız.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+> [!NOTE]
+> Yayımlanmış bir Python uygulaması için neredeyse gerçek zamanlı günlükleri görüntülemek için Application Insights kullanmanızı öneririz [canlı ölçüm akışı](functions-monitoring.md#streaming-logs)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

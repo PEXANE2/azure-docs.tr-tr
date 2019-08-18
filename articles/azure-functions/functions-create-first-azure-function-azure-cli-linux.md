@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950029"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562977"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Core Tools ve Azure CLI'yi kullanarak Linux’ta barındırılan ilk işlevinizi oluşturma (önizleme)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Çekirdek araçları ve Azure CLı kullanarak Linux üzerinde barındırılan ilk işlevinizi oluşturma
 
-Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.com/serverless) bir Linux ortamında yürütmenize olanak tanır. Linux barındırma [işlevleri 2,0 çalışma zamanı](functions-versions.md)gerektirir. Sunucusuz [Tüketim planında](functions-scale.md#consumption-plan) Linux üzerinde bir işlev uygulaması çalıştırma desteği şu anda önizlemededir. Daha fazla bilgi edinmek için bkz. [Bu önizleme konuları makalesi](https://aka.ms/funclinux).
+Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.com/serverless) bir Linux ortamında yürütmenize olanak tanır. Linux barındırma [işlevleri 2. x çalışma zamanı](functions-versions.md)gerektirir. Sunucusuz işlevler, [Tüketim planında](functions-scale.md#consumption-plan)çalışır.
 
 Bu hızlı başlangıç makalesi, Azure CLI ile Linux üzerinde çalışan ilk işlev uygulamanızı oluşturma adımlarını göstermektedir. İşlev kodu yerel ortamda oluşturulur ve ardından [Azure Functions Core Tools](functions-run-local.md) ile Azure'a dağıtılır.
 
-Aşağıdaki adımlar Mac, Windows veya Linux bilgisayarlarda desteklenir. Bu makalede JavaScript veya C# ile işlev oluşturma adımları gösterilmektedir. Python işlevleri oluşturmayı öğrenmek için bkz. [temel araçları ve Azure CLI 'yi (Önizleme) kullanarak Ilk Python işlevinizi oluşturma](functions-create-first-function-python.md).
+Aşağıdaki adımlar Mac, Windows veya Linux bilgisayarlarda desteklenir. Bu makalede JavaScript veya C# ile işlev oluşturma adımları gösterilmektedir. Python işlevleri oluşturmayı öğrenmek için bkz. [temel araçları ve Azure CLI kullanarak Ilk Python işlevinizi oluşturma](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

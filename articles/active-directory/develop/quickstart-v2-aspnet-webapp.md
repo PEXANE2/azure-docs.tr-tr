@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed57f581db593a288e62d25a2f0b8ee42c28114
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b6685783d7ade59796af8fbf466124353a897cb9
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852963"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562096"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Hızlı Başlangıç: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -55,8 +55,10 @@ Bu hızlı başlangıçta, ASP.NET web uygulamasının herhangi bir Azure Active
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `ASPNET-Quickstart`.
->      - `https://localhost:44368/` **Yeniden yönlendirme URI 'si**ekleyin ve **Kaydet**' e tıklayın.
-**Kimlik doğrulaması** menüsünü seçin, **Örtük izin verme** bölümünde **kimlik belirteçlerini** ayarlayın ve **Kaydet**'i seçin.
+>      - `http://localhost:44368/` **Yeniden yönlendirme URI 'si**ekleyin ve **Kaydet**' e tıklayın.
+>      - Yönet bölümünün altındaki sol gezinti bölmesinden **kimlik doğrulaması** ' nı seçin.
+>          - **Örtük Izin ver** alt bölümünde **Kimlik belirteçleri**' ni seçin.
+>          - Sonra **Kaydet**' i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. adım: Uygulamanızı Azure portal yapılandırma
@@ -96,7 +98,8 @@ Bu hızlı başlangıçta, ASP.NET web uygulamasının herhangi bir Azure Active
 >   - Uygulamanız **Tüm Microsoft hesabı kullanıcıları** yaklaşımını destekliyorsa bu değeri `common` ile değiştirin
 >
 > > [!TIP]
-> > *Uygulama Kimliği*, *Dizin (kiracı) Kimliği* ve *Desteklenen hesap türleri* değerlerini bulmak için **Genel bakış** sayfasına gidin
+> > - *Uygulama Kimliği*, *Dizin (kiracı) Kimliği* ve *Desteklenen hesap türleri* değerlerini bulmak için **Genel bakış** sayfasına gidin
+> > - **Web. config** dosyasındaki `redirectUri` için değerinin Azure AD 'de uygulama kaydı için tanımlanan **yeniden yönlendirme URI 'sine** karşılık geldiğinden emin olun (yoksa, uygulama kaydı için **kimlik doğrulama** menüsüne gidin ve **yeniden yönlendirme URI 'sini güncelleştirin** eşleşecek şekilde)
 
 ## <a name="more-information"></a>Daha fazla bilgi
 

@@ -101,11 +101,9 @@
         - name: CloudSimple portal hesaplarını yönetme
           items:
             - name: Hesap özetini görüntüleme
-              href: 'https://docs.azure.cloudsimple.com/account/'
+              href: account.md
             - name: Kullanıcı listesini görüntüleme
-              href: 'https://docs.azure.cloudsimple.com/users/'
-            - name: Kullanım günlüğünü görüntüleme
-              href: 'https://docs.azure.cloudsimple.com/usage/'
+              href: users.md
             - name: Özel bulut ile sanal ağ bağlantısı ayarlama
               href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
             - name: Kullanıcı profilinizi düzenleme
@@ -129,7 +127,7 @@
             - name: Şirket içi ve özel bulut arasında VPN bağlantısı
               href: set-up-vpn.md
             - name: ExpressRoute ile şirket içi ağ bağlantısı
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: ExpressRoute ile Azure sanal ağ bağlantısı
               href: azure-expressroute-connection.md
         - name: VMware platformu
