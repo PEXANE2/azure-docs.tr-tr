@@ -130,7 +130,7 @@ Kopyalama etkinliği, aşağıdaki şablon desteklenen özelliklerin kapsamlı b
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Copy etkinliğinin Type özelliği şu şekilde ayarlanmalıdır: **Kopyala** | Evet |
+| type | Copy etkinliğinin Type özelliği şu şekilde ayarlanmalıdır: **Copy** | Evet |
 | inputs | Kaynak verileri hangi noktalara oluşturduğunuz veri kümesi belirtin. Kopyalama etkinliği, yalnızca tek bir giriş destekler. | Evet |
 | outputs | Havuz veri hangi noktalara oluşturduğunuz veri kümesi belirtin. Kopyalama etkinliği, yalnızca tek bir çıktı destekler. | Evet |
 | typeProperties | Kopyalama etkinliği yapılandırmak için özellikler grubu. | Evet |
