@@ -32,6 +32,8 @@
       href: create-host-pools-arm-template.md
     - name: PowerShell ile ana bilgisayar havuzu oluşturma
       href: create-host-pools-powershell.md
+    - name: Windows Sanal Masaüstü oturum sahiplerine Windows lisansı uygulama
+      href: apply-windows-license.md
     - name: Ana bilgisayar havuzu için kullanıcı profili paylaşımı ayarlama
       href: create-host-pools-user-profile.md
     - name: Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
@@ -48,6 +50,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: RDP Özelliklerini Özelleştirme
       href: customize-rdp-properties.md
+    - name: Tanılama aracını dağıtma
+      href: deploy-diagnostics.md
 - name: Kavramlar
   items:
     - name: Windows Sanal Masaüstü ortamı

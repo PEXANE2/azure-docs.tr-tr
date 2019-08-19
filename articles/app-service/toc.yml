@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: İşletim sistemi işlevi
       href: operating-system-functionality.md
+    - name: Dağıtım en iyi uygulamaları
+      href: deploy-best-practices.md
     - name: Güvenlik
       items:
         - name: Öneriler
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: Kaynaklar
   items:
+    - name: App Service Blogu
+      href: 'https://aka.ms/appserviceblog'
     - name: Microsoft Learn ile becerilerinizi geliştirin
       href: /learn/browse/
     - name: Azure Yol Haritası

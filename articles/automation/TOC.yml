@@ -276,6 +276,22 @@
         - name: State Configuration (DSC) sorunlarını giderme
           href: troubleshoot/desired-state-configuration.md
           displayName: 'Desired State Configuration, troubleshoot'
+    - name: Başvuru
+      items:
+        - name: Topluluk Çözümleri
+          items:
+            - name: Uygun ölçekte yapılandırma verileri
+              href: automation-dsc-config-data-at-scale.md
+              displayName: 'DSC, Configuration Data, ConfigData'
+            - name: Sunuculardan yapılandırma oluşturma
+              href: automation-dsc-config-from-server.md
+              displayName: 'DSC, ReverseDSC'
+            - name: STIG tabanlı yapılandırma
+              href: automation-dsc-configuration-based-on-stig.md
+              displayName: 'DSC, Configuration'
+            - name: Yapılandırmaları bileşik kaynaklara dönüştürme
+              href: automation-dsc-create-composite.md
+              displayName: 'DSC, composite'
 - name: Paylaşılan Kaynakları Yönetme
   items:
     - name: Sertifikalar

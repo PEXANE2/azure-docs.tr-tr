@@ -53,11 +53,9 @@
   items:
     - name: Logic Apps ile İşlevler
       href: functions-twitter-email.md
-    - name: Sunucusuz API oluşturma
-      href: functions-create-serverless-api.md
     - name: VS Code ile Python işlevleri geliştirme
       href: tutorial-vs-code-serverless-python.md
-    - name: OpenAPI tanımı oluşturma
+    - name: Sunucusuz API’ler için OpenAPI tanımı
       href: functions-openapi-definition.md
     - name: Sanal Ağa bağlanma
       href: functions-create-vnet.md
@@ -236,12 +234,10 @@
           href: functions-api-definition-getting-started.md
         - name: PowerApps ve Microsoft Flow’a dışarı aktarma
           href: app-service-export-api-to-powerapps-and-flow.md
-        - name: PowerApps’ten bir işlev çağırma
-          href: functions-powerapps-scenario.md
-        - name: Microsoft Flow’dan işlev çağırma
-          href: functions-flow-scenario.md
         - name: Yönetilen kimlik kullanma
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: HTTP işlev uç noktasını özelleştirme
+          href: functions-create-serverless-api.md
     - name: Sorun giderme
       items:
         - name: Depolama sorunlarını giderme

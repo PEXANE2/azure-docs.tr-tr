@@ -25,7 +25,7 @@
       href: concept-authentication-methods.md
     - name: Parolasız kimlik doğrulaması
       href: concept-authentication-passwordless.md
-    - name: Birleşik kayıt
+    - name: Güvenlik bilgileri kaydı
       href: concept-registration-mfa-sspr-combined.md
     - name: Parola sıfırlama
       items:
@@ -103,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Birleşik kayıt
+    - name: Güvenlik bilgileri kaydı
       items:
         - name: Birleşik kaydı etkinleştirme
           href: howto-registration-mfa-sspr-combined.md

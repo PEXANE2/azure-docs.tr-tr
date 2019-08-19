@@ -218,7 +218,7 @@
                       href: app/nodejs.md
                 - name: Web sayfaları
                   items:
-                    - name: istemci tarafı JavaScript
+                    - name: İstemci tarafı JavaScript
                       href: app/javascript.md
                 - name: Application Insights API özeti
                   displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
@@ -509,6 +509,10 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Docker ve Windows Kapsayıcıları’nı izleme
               href: insights/containers.md
+        - name: Depolama
+          items:
+            - name: Depolama için Azure İzleyici
+              href: insights/storage-insights-overview.md
         - name: Sanal makineler
           items:
             - name: Aracılar
@@ -1046,6 +1050,8 @@
               href: app/data-model-context.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
+    - name: Azure CLI - Application Insights (Önizleme)
+      href: 'https://docs.microsoft.com/cli/azure/ext/application-insights/monitor?view=azure-cli-latest'
     - name: Azure İşlevleri
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
