@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2e97a734a4730e4341614019e3ca1ecaa81420a7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: HT
+ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035982"
+ms.locfileid: "69516140"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
-Coğrafi bölge yedekli depolama (GZRS) (Önizleme) marrıes, [coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)tarafından sağlandığı şekilde bölgesel kesintilerden koruma ile bölgesel olarak yedekli [depolamanın (ZRS)](storage-redundancy-zrs.md) yüksek oranda kullanılabilir olması. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki üç [Azure kullanılabilirlik](../../availability-zones/az-overview.md) alanı arasında çoğaltılır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır.
+Coğrafi bölge yedekli depolama (GZRS) (Önizleme) marrıes, [coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)tarafından sağlandığı şekilde bölgesel kesintilerden koruma ile bölgesel olarak yedekli [depolamanın (ZRS)](storage-redundancy-zrs.md) yüksek oranda kullanılabilir olması. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki üç [Azure kullanılabilirlik](../../availability-zones/az-overview.md) alanı arasında çoğaltılır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır. Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirilir ve bir bölgesel çift oluşturur. Daha ayrıntılı bilgi ve özel durumlar için [belgelere](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)bakın.
 
 Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS, LRS, ZRS, GRS veya RA-GRS ile aynı [ölçeklenebilirlik hedeflerini](storage-scalability-targets.md) de sunmaktadır. Uygulamalarınızın birincil bölgedeki bir olağanüstü durum durumunda verileri okuyabilmeleri gerekiyorsa, isteğe bağlı olarak, Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) ile ikincil bölgedeki verilere okuma erişimini etkinleştirebilirsiniz.
 

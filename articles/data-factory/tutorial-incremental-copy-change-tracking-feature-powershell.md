@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: c38a3e21b9533307d8cac9d467972831080c1a48
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 117b6d53a3392e8a4f75d5d1966e3f48fb66d5ce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946971"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966406"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL Veritabanından Azure Blob Depolama alanına verileri artımlı olarak yükleme 
 Bu öğreticide, kaynak Azure SQL veritabanındaki **değişiklik izleme** bilgilerine dayanan değişiklik verilerini Azure blob depolamasına yükleyen bir işlem hattına sahip olan bir Azure veri fabrikası oluşturursunuz.  
@@ -370,7 +370,7 @@ Bu adımda değişiklik izleme sürümünü depolamak için bir veri kümesi olu
     ```
 
     Önkoşulların bir parçası olarak table_store_ChangeTracking_version tablosunu oluşturursunuz.
-2.  Veri kümesini oluşturmak için set-AzDataFactoryV2Dataset cmdlet 'ini çalıştırın: WatermarkDataset
+2.  Veri kümesini oluşturmak için set-AzDataFactoryV2Dataset cmdlet 'ini çalıştırın: ChangeTrackingDataset
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"

@@ -1,197 +1,203 @@
 ---
-title: Linux üzerinde - Azure App Service'e node.js uygulaması oluşturma | Microsoft Docs
-description: Linux’ta Azure App Service’te ilk Node.js Merhaba Dünya uygulamanızı birkaç dakika içinde dağıtın.
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Node.js web uygulaması oluşturma
+description: Azure Uygulama Hizmetleri için Node. js dağıtımı
+author: KarlErickson
+ms.author: karler
+ms.date: 07/18/2019
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 54602425ae6e1ff65a8445355af2eca09d495b05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.service: app-service
+ms.devlang: javascript
+ms.openlocfilehash: ced2977509f16f8dab2abe5546e19b7e05fb2a3d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397077"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975788"
 ---
-# <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service'te bir Node.js uygulaması oluşturma
+# <a name="create-a-nodejs-app-in-azure"></a>Azure 'da bir Node. js uygulaması oluşturma
 
-> [!NOTE]
-> Bu makalede bir uygulamanın Linux üzerinde App Service'e dağıtımı yapılır. App Service dağıtmak için _Windows_, bkz: [Azure'da bir Node.js uygulaması oluşturma](../app-service-web-get-started-nodejs.md).
->
+Azure App Service, yüksek düzeyde ölçeklenebilir, kendini yayama bir Web barındırma hizmeti sağlar. Bu hızlı başlangıçta Azure App Service için bir Node. js uygulamasının nasıl dağıtılacağı gösterilmektedir.
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta Linux üzerinde [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) kullanarak bir Node.js uygulamasını App Service’e dağıtma gösterilmektedir.
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı Cloud Shell'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) ile yerel olarak da çalıştırabilirsiniz.
+Azure hesabınız yoksa, herhangi bir hizmet birleşimini denemek için bugün Azure kredilerine $200 ile ücretsiz bir hesap için [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) .
 
-![Azure'da çalışan örnek uygulama](media/quickstart-nodejs/hello-world-in-browser.png)
+Node. [js ve NPM](https://nodejs.org/en/download)için Node. js Paket Yöneticisi ile birlikte yüklü [Visual Studio Code](https://code.visualstudio.com/) gerekir.
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+Ayrıca, bir hizmet olarak Azure platformunda (PaaS) Linux Web Apps oluşturmak, yönetmek ve dağıtmak için kullanabileceğiniz [Azure App Service uzantısını](vscode:extension/ms-azuretools.vscode-azureappservice)yüklemeniz gerekir.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+### <a name="sign-in"></a>Oturum aç
 
-## <a name="download-the-sample"></a>Örneği indirme
+Uzantı yüklendikten sonra Azure hesabınızda oturum açın. Azure **uygulama hizmeti** Gezginini göstermek Için etkinlik çubuğunda Azure logosu ' na tıklayın. **Azure 'Da oturum aç** ' a tıklayın ve yönergeleri izleyin.
 
-Cloud Shell'de bir quickstart dizini oluşturun ve o dizine geçin.
+![Azure 'da oturum açın](./media/quickstart-nodejs/sign-in.png)
+
+### <a name="troubleshooting"></a>Sorun giderme
+
+**"Adı [ABONELIK kimliği] olan abonelik bulunamıyor"** hatasını görürseniz, bunun nedeni bir ara sunucu arkasında olduğunuzdan ve Azure API 'sine ulaşamamanıza kaynaklanabilir. `HTTPS_PROXY` Kullanarak `HTTP_PROXY` terminalinizdekiproxybilgileriniziledeğişkenleriyapılandırınve`export`ortam değişkenlerini kullanın.
+
+```sh
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
+```
+
+Ortam değişkenlerinin ayarlanması sorunu düzeltmezse, aşağıdaki **bir sorunla karşılaştım** düğmesine tıklayarak bizimle iletişim kurun.
+
+### <a name="prerequisite-check"></a>Önkoşul denetimi
+
+Devam etmeden önce tüm önkoşulların yüklü ve yapılandırılmış olduğundan emin olun.
+
+VS Code, Azure e-posta adresinizi **Azure App SERVICE** Explorer 'Da durum çubuğunda ve aboneliğinizde görmeniz gerekir.
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
+
+## <a name="create-your-nodejs-application"></a>Node. js uygulamanızı oluşturma
+
+Ardından, buluta dağıtılabilecek bir Node. js uygulaması oluşturun. Bu hızlı başlangıç, uygulamayı bir terminalden hızlı bir şekilde genişletmek için bir uygulama Oluşturucu kullanır.
+
+> [!TIP]
+> [Node. js öğreticisini](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)zaten tamamladıysanız, [Web sitesini dağıtmaya](#deploy-the-website)devam edebilirsiniz.
+
+### <a name="install-the-express-generator"></a>Hızlı oluşturucuyu yükler
+
+[Express](https://www.expressjs.com) , Node. js uygulamaları oluşturmaya ve çalıştırmaya yönelik popüler bir çerçevedir. [Hızlı Oluşturucu](https://expressjs.com/en/starter/generator.html) aracını kullanarak yeni bir Express uygulaması oluşturabilirsiniz (oluşturma). Hızlı Oluşturucu bir NPM modülü olarak gönderilir ve NPM komut satırı aracı `npm`kullanılarak yüklenir.
 
 ```bash
-mkdir quickstart
-
-cd quickstart
+npm install -g express-generator
 ```
 
-Ardından, örnek uygulama deposunu quickstart dizininize kopyalamak için aşağıdaki komutu çalıştırın.
+`-g` Anahtar, her yerden çalıştırabilmeniz için hızlı oluşturucuyu makinenize küresel olarak yükleyebilir.
+
+### <a name="scaffold-a-new-application"></a>Yeni bir uygulamayı yapı iskelesi
+
+Sonra, şunu çalıştırarak yeni bir Express uygulaması `myExpressApp` olan yapı iskelesi:
 
 ```bash
-git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
+express myExpressApp --view pug --git
 ```
 
-Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
+Parametreler, oluşturucuya [Pug](https://pugjs.org/api/getting-started.html) şablon altyapısını (eski adıyla olarak `jade`bilinen) kullanmasını ve bir `.gitignore` dosya oluşturmayı söyler. `--view pug --git`
+
+Uygulamanın tüm bağımlılıklarını yüklemek için yeni klasöre gidin ve çalıştırın `npm install`.
 
 ```bash
-Cloning into 'nodejs-docs-hello-world'...
-remote: Counting objects: 40, done.
-remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
-Unpacking objects: 100% (40/40), done.
-Checking connectivity... done.
+cd myExpressApp
+npm install
 ```
 
-> [!NOTE]
-> Örnek index.js process.env.PORT için dinleme bağlantı noktasını ayarlar. Bu ortam değişkeni, App Service tarafından atanır.
->
+### <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-## <a name="create-a-web-app"></a>Web uygulaması oluşturma
-
-Örnek kodu içeren dizine geçin ve `az webapp up` komutunu çalıştırın.
-
-Aşağıdaki komutta <app_name> kısmını benzersiz uygulama adıyla değiştirin.
+Sonra, uygulamanın çalıştığından emin olun. Terminalden, sunucuyu başlatmak için `npm start` komutunu kullanarak uygulamayı başlatın.
 
 ```bash
-cd nodejs-docs-hello-world
-
-az webapp up -n <app_name>
+npm start
 ```
 
-Bu komutun çalıştırılması birkaç dakika sürebilir. Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
+Şimdi tarayıcınızı açın ve [http://localhost:3000](http://localhost:3000)' a gidin. burada şöyle bir şey görmeniz gerekir:
 
-```json
-Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
-Resource group creation complete
-Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
-App service plan creation complete
-Creating app '<app_name>' ....
-Webapp creation complete
-Updating app settings to enable build after deployment
-Creating zip with contents of dir /home/username/quickstart/nodejs-docs-hello-world ...
-Preparing to deploy and build contents to app.
-Fetching changes.
+![Express uygulaması çalıştırılıyor](./media/quickstart-nodejs/express.png)
 
-Generating deployment script.
-Generating deployment script.
-Generating deployment script.
-Running deployment command...
-Running deployment command...
-Running deployment command...
-Deployment successful.
-All done.
-{
-  "app_url": "https://<app_name>.azurewebsites.net",
-  "location": "Central US",
-  "name": "<app_name>",
-  "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_CentralUS ",
-  "serverfarm": "appsvc_asp_Linux_CentralUS",
-  "sku": "STANDARD",
-  "src_path": "/home/username/quickstart/nodejs-docs-hello-world ",
-  "version_detected": "6.9",
-  "version_to_create": "node|6.9"
-}
-```
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-`az webapp up` komutu şu eylemleri gerçekleştirir:
+## <a name="deploy-the-website"></a>Web sitesini dağıtma
 
-- Varsayılan kaynak grubunu oluşturur.
+Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js web sitenizi dağıtırsınız. Bu hızlı başlangıç, uygulamanızın sıkıştırılması ve Linux üzerinde bir Azure Web uygulamasına dağıtıldığı en temel dağıtım modelini kullanır.
 
-- Bir varsayılan uygulama hizmeti planı oluşturur.
+### <a name="deploy-using-azure-app-service"></a>Azure App Service kullanarak dağıtma
 
-- Belirtilen adla bir uygulama oluşturur.
-
-- [Zip dağıtma](https://docs.microsoft.com/azure/app-service/deploy-zip) dosyaları uygulamanın geçerli çalışma dizini.
-
-## <a name="browse-to-the-app"></a>Uygulamaya göz atma
-
-Web tarayıcınızı kullanarak, dağıtılan uygulamanın konumuna gidin. < App_name > Uygulama adınızla değiştirin.
+İlk olarak, uygulama klasörünüzü VS Code açın.
 
 ```bash
-http://<app_name>.azurewebsites.net
+code .
 ```
 
-Node.js örnek kodu, bir yerleşik görüntü ile Linux üzerinde App Service'te çalışıyor.
+**Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesine tıklayın.
 
-![Azure'da çalışan örnek uygulama](media/quickstart-nodejs/hello-world-in-browser.png)
+![Web uygulamasına dağıtma](./media/quickstart-nodejs/deploy.png)
 
-**Tebrikler!** Linux’ta App Service’e ilk Node.js uygulamanızı dağıttınız.
+> [!TIP]
+> Ayrıca,  ****komut paletinden** (CTRL + SHIFT + P) ' Web uygulamasına Dağıt ' yazarak ve Azure App Service çalıştırarak dağıtım yapabilirsiniz: Web App** 'e dağıtın komutu.
 
-## <a name="update-and-redeploy-the-code"></a>Kodu güncelleştirme ve yeniden dağıtma
+1. Şu anda açık `myExpressApp`olan dizini seçin.
 
-Cloud Shell'de, nano metin düzenleyicisini açmak için `nano index.js` yazın.
+2. **Yeni Web uygulaması oluştur**öğesini seçin.
 
-![Nano index.js](media/quickstart-nodejs/nano-indexjs.png)
+3. Web uygulamanız için genel olarak benzersiz bir ad yazın ve ENTER tuşuna basın. Uygulama adı için geçerli karakterler şunlardır ' a-z ', ' 0-9 ' ve '-'.
 
- `response.end` çağrısında metinde küçük bir değişiklik yapın:
+4. **Node. js sürümünüzü**seçin, LTS önerilir.
 
-```nodejs
-response.end("Hello Azure!");
-```
+    Bildirim kanalı, uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
 
-Değişikliklerinizi kaydedin ve nanodan çıkın. Kaydetmek için `^O` ve çıkmak için `^X` komutunu kullanın.
+Yapılandırmanızı hedef sunucuda çalışacak `npm install` şekilde güncellemek isteyip istemediğiniz sorulduğunda Evet ' e tıklayın. Uygulamanız daha sonra dağıtılır.
 
-Şimdi uygulamayı yeniden dağıtacaksınız. Yedek `<app_name>` uygulamanızla.
+![Yapılandırılmış dağıtım](./media/quickstart-nodejs/server-build.png)
+
+Dağıtım başladığında, daha sonraki dağıtımlar aynı App Service Web uygulamasını otomatik olarak hedefleyecek şekilde çalışma alanınızı güncelleştirmeniz istenir. Değişikliklerinizin doğru uygulamaya dağıtıldığından emin olmak için **Evet** ' i seçin.
+
+![Yapılandırılmış dağıtım](./media/quickstart-nodejs/save-configuration.png)
+
+> [!TIP]
+> Uygulamanızın bağlantı noktası ortam değişkeni tarafından belirtilen bağlantı noktasında dinleme yaptığını doğrulayın: `process.env.PORT`.
+
+### <a name="browse-the-website"></a>Web sitesine Gözat
+
+Dağıtım tamamlandıktan sonra, yeniden dağıtılan Web sitenizi görüntülemek için istemde **Web sitesine gözatıp** ' ye tıklayın.
+
+### <a name="troubleshooting"></a>Sorun giderme
+
+**"Bu dizini veya sayfayı görüntüleme izniniz yok"** hatasını görürseniz, büyük olasılıkla uygulama düzgün bir şekilde başlatılamadı. Sonraki bölüme gidin ve hatayı bulmak ve onarmak için günlük çıktısını görüntüleyin. Sorunu düzeltemedi, aşağıdan **bir sorunla karşılaştım** düğmesine tıklayarak bizimle iletişim kurun. Yardımımız duyuyoruz!
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
+
+### <a name="updating-the-website"></a>Web sitesi güncelleştiriliyor
+
+Aynı işlemi kullanarak ve yeni bir uygulama oluşturmak yerine var olan uygulamayı seçerek bu uygulamaya yapılan değişiklikleri dağıtabilirsiniz.
+
+## <a name="viewing-logs"></a>Günlükleri görüntüleme
+
+Bu bölümde, çalışan Web sitesindeki günlüklerin nasıl görüntüleneceğini (veya "Tail") öğreneceksiniz. Sitede yapılan `console.log` tüm çağrılar Visual Studio Code çıkış penceresinde görüntülenir.
+
+Uygulamayı **Azure App SERVICE** Explorer 'da bulun, uygulamaya sağ tıklayın ve **akış günlüklerini görüntüle**' yi seçin.
+
+İstendiğinde, günlüğü etkinleştirmeyi ve uygulamayı yeniden başlatmayı seçin. Uygulama yeniden başlatıldıktan sonra VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır.
+
+![Akış günlüklerini görüntüle](./media/quickstart-nodejs/view-logs.png)
+
+![Günlüğe kaydetmeyi etkinleştirme ve yeniden başlatma](./media/quickstart-nodejs/enable-restart.png)
+
+Birkaç saniye sonra, günlük akış hizmetine bağlı olduğunuzu belirten bir ileti görürsünüz.
 
 ```bash
-az webapp up -n <app_name>
+Connecting to log-streaming service...
+2017-12-21 17:33:51.428 INFO  - Container practical-mustache_2 for site practical-mustache initialized successfully.
+2017-12-21 17:33:56.500 INFO  - Container logs
 ```
 
-Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan tarayıcı penceresine dönüp sayfayı yenileyin.
+Günlük çıktısını görmek için sayfayı tarayıcıda birkaç kez yenileyin.
 
-![Azure'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-nodejs/hello-azure-in-browser.png)
-
-## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetme
-
-Git <a href="https://portal.azure.com" target="_blank">Azure portalında</a> oluşturduğunuz uygulamayı yönetmek için.
-
-Sol menüden **uygulama hizmetleri**ve ardından Azure uygulamanızın adına tıklayın.
-
-![Azure uygulamasına portal gezintisi](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
-
-Uygulamanızın genel bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini tamamlayabilirsiniz.
-
-![Azure portalında App Service sayfası](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
-
-Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. İleride bu kaynaklara ihtiyaç duymayacağınızı düşünüyorsanız, kaynak grubunu Cloud Shell'den silin. Bölgeyi değiştirdiyseniz, `appsvc_rg_Linux_CentralUS` kaynak grubu adını uygulamanıza özel kaynak grubuyla değiştirin.
-
-```azurecli-interactive
-az group delete --name appsvc_rg_Linux_CentralUS
+```bash
+2017-12-21 17:35:17.774 INFO  - Container logs
+2017-12-21T17:35:14.955412230Z GET / 304 141.798 ms - -
+2017-12-21T17:35:15.248930479Z GET /stylesheets/style.css 304 3.180 ms - -
+2017-12-21T17:35:15.378623115Z GET /favicon.ico 404 53.839 ms - 995
 ```
 
-Bu komutun çalıştırılması bir dakika sürebilir.
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Öğretici: MongoDB ile node.js uygulaması](tutorial-nodejs-mongodb-app.md)
+Tebrikler, bu hızlı başlangıcı başarıyla tamamladınız!
 
-> [!div class="nextstepaction"]
-> [Node.js uygulamasını yapılandırma](configure-language-nodejs.md)
+Daha sonra diğer Azure uzantılarına göz atın.
+
+* [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Azure İşlevleri](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+* [Docker Araçları](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+* [Azure CLı araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+
+Ya da Azure Uzantı paketi [Için düğüm paketini](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) yükleyerek tümünü alın.

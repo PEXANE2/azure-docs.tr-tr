@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f77a95af1edcd37043ea1e067560577140a81a04
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552550"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967601"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Özel ses-ilk sanal yardımcılar önizlemesi hakkında
 
@@ -36,14 +36,25 @@ Azure konuşma Hizmetleri 'ni kullanan özel sanal yardımcılar, geliştiricile
 |[Metinden konuşmaya](text-to-speech.md) | Botunuzun metinsel yanıtları, Azure konuşma hizmetlerinden gelen [metinden konuşmaya](text-to-speech.md) kullanılarak birleştirilmiştir. Bu birleştirme daha sonra istemci uygulamanız için bir ses akışı olarak kullanılabilir hale getirilir. Microsoft, bize daha fazla [iletişim](mailto:mstts@microsoft.com)sağlamak için markanızla bir ses sağlayan kendi özel, yüksek kalıtelı sinir TTS sesinizi oluşturma olanağı sunar.
 |[Doğrudan konuşma hattı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Bot Framework içindeki bir kanal olarak, doğrudan hat konuşma, istemci uygulamanız, uyumlu bir bot ve Azure konuşma hizmetlerinin özellikleri arasında sorunsuz ve sorunsuz bir bağlantı imkanı sunar. Botunuzu doğrudan hat konuşma kanalını kullanacak şekilde yapılandırma hakkında daha fazla bilgi için, [bot Framework belgelerindeki sayfasına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bakın.
 
+## <a name="get-started-with-virtual-assistants"></a>Sanal yardımcılar ile çalışmaya başlama
+
+Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hızlı başlangıç sunuyoruz. Bu tablo, dile göre düzenlenen ses-ilk Sanal Yardımcısı hızlı başlangıçlarını bir listesini içerir.
+
+| Hızlı Başlangıç | Platform | API başvurusu |
+|------------|----------|---------------|
+| C#, UWP | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Göz atma](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
+
 ## <a name="sample-code"></a>Örnek kod
 
 Bir ses-ilk Sanal Yardımcısı oluşturmak için örnek kod GitHub ' da kullanılabilir. Bu örnekler, çok sayıda popüler programlama dilinde bot 'a bağlanmak için istemci uygulamasını kapsar.
 
 * [Ses-ilk Sanal Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples)
-* [Hızlı başlangıç: ses-ilk sanal yardımcılarC#()](quickstart-virtual-assistant-csharp-uwp.md)
-* [Hızlı başlangıç: ses-ilk sanal yardımcılar (Java)](quickstart-virtual-assistant-java-jre.md)
-* [Doğrudan hat konuşma Istemcisi (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [Öğretici: Konuşmayı konuşma SDK 'Sı ile etkinleştirin,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="tutorial"></a>Öğretici
+[Konuşma SDK 'sını ve doğrudan hat konuşma kanalını kullanarak botunuzu sesli olarak etkinleştirmeye](tutorial-voice-enable-your-bot-speech-sdk.md)yönelik bir öğretici.
 
 ## <a name="customization"></a>Özelleştirme
 

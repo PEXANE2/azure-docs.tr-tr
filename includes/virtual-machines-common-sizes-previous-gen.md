@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: cfffc29a467a89416964564b9c55a73cbf77377d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8d90d71b8d29d26f09ef617ddd56ce91eb4e5e2e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601391"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541558"
 ---
 Bu bölümde, önceki nesil sanal makine boyutları hakkında bilgi sağlanır. Bu boyutlar hala kullanılabilir, ancak yeni nesiller mevcuttur. 
 
@@ -59,32 +59,9 @@ MB/sn = 10^6 bayt/saniye ve GiB = 1024^3 bayt.
 
 <sup>1</sup> bir FS Serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [yüksek performans Için tasarlama](../articles/virtual-machines/windows/premium-storage-performance.md).  
 
-## <a name="ls-series"></a>Ls serisi
+## <a name="nvv2-series"></a>NVv2 serisi
 
-Ls serisi, [Intel® Xeon İşlemci E5 v3 ailesi](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) ile 32’ye kadar vCPU kullanım olanağı sunar. Ls serisi, G/GS serisi ile aynı CPU performansı sunar ve her vCPU başına 8 GiB bellek içerir.
-
-Ls serisi, dayanıklı veri diskleri tarafından ulaşılabilir ıOPS 'yi artırmak için yerel bir önbellek oluşturulmasını desteklemez. Yerel diskin yüksek işleme ve ıOPS değeri, tek bir VM 'nin arızası durumunda Kalıcılık sağlamak için verileri birden çok VM arasında çoğaltan Apache Cassandra ve MongoDB gibi NoSQL depoları için ideal olan LS Serisi VM 'Leri sağlar.
-
-ACU 180-240
-
-Premium Depolama:  Desteklenen
-
-Premium depolama önbelleği:  Desteklenmiyor
- 
-| Size          | Sanal işlemci | Bellek (GiB) | Geçici depolama (GiB) | Maksimum veri diskleri | En fazla geçici depolama aktarım hızı (ıOPS/MBps) | Önbelleğe alınmamış maksimum disk aktarım hızı (ıOPS/MBps) | En fazla NIC/beklenen ağ bant genişliği (Mbps) | 
-|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
-| Standart_L4s   | 4  | 32  | 678   | 16 | 20000/200 | 5000/125  | 2 / 4000  | 
-| Standart_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4 / 8000  | 
-| Standart_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8 / 16000 | 
-| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5630 | 64   | 160000/1600   | 40000/1000     | 8 / 20000 | 
-
-LS Serisi VM 'lerle mümkün olan en fazla disk aktarım hızı, ekli disklerin sayısı, boyutu ve şeritleriyle sınırlı olabilir. Ayrıntılar için bkz. [yüksek performans Için tasarlama](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>1</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
-
-## <a name="nvv2-series-preview"></a>NVv2 serisi (Önizleme)
-
-**Daha yeni boyut önerisi**: [NVv3 serisi (Önizleme)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+**Daha yeni boyut önerisi**: [NVv3 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
 
 NVv2 serisi sanal makineler, [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 'LARı ve NVIDIA GRID Teknolojisi Ile Intel geniş CPU ile desteklenir. Bu sanal makineler, müşterilerin verilerini görselleştirmek, görüntülemek için sonuçların benzetimini yapmak, CAD üzerinde çalışmak veya içerik oluşturmak ve akışa almak istedikleri GPU hızlandırmalı grafik uygulamalarına ve sanal masaüstlerine yöneliktir. Ayrıca bu sanal makineler kodlama ve işleme gibi tek hassas iş yüklerini de çalıştırabilir. NVv2 sanal makineleri, Premium depolamayı destekler ve öncül NV serisi ile karşılaştırıldığında, sistem belleği (RAM) ile birlikte gelir.  
 
@@ -95,13 +72,3 @@ NVv2 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV ör
 | Standard_NV6s_v2 |6 |112 |320 | 1\. | 8 | 12 | 4 | 1\. | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
 | Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard A0 - A4, CLI ve PowerShell kullanarak
-
-Klasik dağıtım modelinde bazı VM boyutu adları CLI ve PowerShell'dekilerden biraz farklıdır:
-
-* Standard_A0 = Çok Küçük
-* Standard_A1 = Küçük
-* Standard_A2 = Orta
-* Standard_A3 = Büyük
-* Standard_A4 = Çok Büyük

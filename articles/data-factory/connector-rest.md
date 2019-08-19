@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak bir REST kaynağı'ndan veri kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına bir bulut veya şirket içi REST kaynaktan bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Data Factory kullanarak REST kaynağından veri kopyalama | Microsoft Docs
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliği kullanarak bir bulut veya şirket içi REST kaynağından desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,64 +10,68 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c7c8faad70022ba985a4041fd578becbaf70078
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60546651"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966876"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir REST uç noktasından veri kopyalama
+# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory kullanarak REST uç noktasından veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de bir REST uç noktasından veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Makaleyi yapılar [Azure veri fabrikasında kopyalama etkinliği](copy-activity-overview.md), kopyalama etkinliği genel bir bakış sunar.
+Bu makalede, bir REST uç noktasından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Makaleyi yapılar [Azure veri fabrikasında kopyalama etkinliği](copy-activity-overview.md), kopyalama etkinliği genel bir bakış sunar.
 
-Bu REST Bağlayıcısı arasındaki fark [HTTP Bağlayıcısı](connector-http.md) ve [Web tablo Bağlayıcısı](connector-web-table.md) şunlardır:
+Bu REST Bağlayıcısı, [http Bağlayıcısı](connector-http.md) ve [Web tablosu Bağlayıcısı](connector-web-table.md) arasındaki fark şudur:
 
-- **REST'e bağlayıcı** özellikle RESTful API'lerinden; verileri kopyalama desteği 
-- **HTTP Bağlayıcısı** örn herhangi bir HTTP uç noktasından veri almaya genel dosya indirilemedi. Bu REST bağlayıcı kullanılabilir olmadan önce desteklenen ancak daha az işlevsel REST'e bağlayıcı karşılaştırma olduğu RESTful API'den verileri kopyalamak için HTTP Bağlayıcısı'nı kullanmak için oluşabilir.
-- **Web tablosu Bağlayıcısı** tablo bir HTML Web sayfası içeriği ayıklar.
+- **Rest Bağlayıcısı** , verilerin yeniden oluşturulmuş API 'lerden kopyalanmasını özellikle destekler; 
+- **Http Bağlayıcısı** , örneğin dosyayı indirmek için HERHANGI bir HTTP uç noktasından veri almak için geneldir. Bu REST Bağlayıcısı kullanılabilir hale gelmeden önce, desteklenen ancak REST bağlayıcısıyla daha az işlevsel bir işlem olan API 'den veri kopyalamak için HTTP bağlayıcısını kullanabilirsiniz.
+- **Web tablosu Bağlayıcısı** , tablo IÇERIĞINI bir HTML Web sayfasından ayıklar.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Bir REST kaynağı'ndan veri her desteklenen havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).
+Bir REST kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Özellikle, bu genel bir REST bağlayıcıyı destekler:
+Özellikle, bu genel REST Bağlayıcısı şunları destekler:
 
-- Kullanarak bir REST uç noktasından veri alma **alma** veya **POST** yöntemleri.
-- Aşağıdaki kimlik doğrulamaları birini kullanarak verileri alınıyor: **Anonim**, **temel**, **AAD hizmet sorumlusu**, ve **kimliklerini Azure kaynakları için yönetilen**.
-- **[Sayfalandırma](#pagination-support)**  REST API'leri de.
-- REST JSON yanıtı kopyalama [olarak-olan](#export-json-response-as-is) veya kullanarak ayrıştırmayı [şema eşleme](copy-activity-schema-and-type-mapping.md#schema-mapping). Yalnızca yanıt yükünde **JSON** desteklenir.
+- **Get** veya **Post** yöntemlerini kullanarak bir REST uç noktasından veri alma.
+- Aşağıdaki kimlik doğrulamalarından birini kullanarak verileri alma: **Azure kaynakları Için** **anonim**, **temel**, **AAD hizmet sorumlusu**ve yönetilen kimlikler.
+- REST API 'Lerinde **[sayfalandırma](#pagination-support)** .
+- REST JSON yanıtını [olduğu gibi](#export-json-response-as-is) kopyalama veya [şema eşleme](copy-activity-schema-and-type-mapping.md#schema-mapping)kullanarak ayrıştırma. Yalnızca **JSON** 'daki yanıt yükü desteklenir.
 
 > [!TIP]
-> Data Factory REST bağlayıcısını yapılandırabilmeniz için önce veri alma isteği test etmek için API belirtimine üstbilgi ve gövde gereksinimleri hakkında bilgi edinin. Doğrulamak için Postman veya bir web tarayıcısı gibi araçları kullanabilirsiniz.
+> Data Factory ' de REST bağlayıcısını yapılandırmadan önce veri alımı isteğini test etmek için, üst bilgi ve gövde gereksinimlerine yönelik API belirtimi hakkında bilgi edinin. Doğrulamak için Postman veya bir Web tarayıcısı gibi araçları kullanabilirsiniz.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, REST bağlayıcıya özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, REST bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özelliklerle ilgili ayrıntıları sağlar.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-Aşağıdaki özellikleri bağlantılı REST hizmeti için desteklenir:
+REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** özelliği ayarlanmalıdır **RestService**. | Evet |
-| url | REST hizmeti temel URL'si. | Evet |
-| enableServerCertificateValidation | Uç noktasına bağlanırken sunucu tarafı SSL sertifikasını doğrulamak belirtir. | Hayır<br /> (varsayılan değer **true**) |
-| authenticationType | REST hizmete bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **AadServicePrincipal** ve **ManagedServiceIdentity**. Daha fazla özellikler ve örnekler üzerinde aşağıdaki karşılık gelen bölümlere sırasıyla bakın. | Evet |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel bir ağda yer alıyorsa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı bu özelliği kullanır. |Hayır |
+| türü | **Type** özelliği **RESTService**olarak ayarlanmalıdır. | Evet |
+| url | REST hizmetinin temel URL 'SI. | Evet |
+| enableServerCertificateValidation | Uç noktaya bağlanılırken sunucu tarafı SSL sertifikasının doğrulanması gerekip gerekmediğini belirtir. | Hayır<br /> (varsayılan değer **true**'dur) |
+| authenticationType | REST hizmetine bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Aadserviceprincipal** ve **managedserviceıdentity**. Daha fazla özellik ve örnekte sırasıyla aşağıdaki ilgili bölümlere bakın. | Evet |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, bu özellik varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 ### <a name="use-basic-authentication"></a>Temel kimlik doğrulaması kullan
 
-Ayarlama **authenticationType** özelliğini **temel**. Önceki bölümde açıklanan genel özelliklerine ek olarak aşağıdaki özellikleri belirtin:
+**AuthenticationType** özelliğini **temel**olarak ayarlayın. Önceki bölümde açıklanan genel özelliklere ek olarak, aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| userName adı | REST uç noktasına erişmek için kullanılacak kullanıcı adı. | Evet |
+| userName adı | REST uç noktasına erişmek için kullanılacak Kullanıcı adı. | Evet |
 | password | Kullanıcının parolasını ( **userName** değeri). Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 
 **Örnek**
@@ -94,16 +98,16 @@ Ayarlama **authenticationType** özelliğini **temel**. Önceki bölümde açık
 }
 ```
 
-### <a name="use-aad-service-principal-authentication"></a>AAD hizmet sorumlusu kimlik doğrulaması kullanma
+### <a name="use-aad-service-principal-authentication"></a>AAD hizmet sorumlusu kimlik doğrulamasını kullanma
 
-Ayarlama **authenticationType** özelliğini **AadServicePrincipal**. Önceki bölümde açıklanan genel özelliklerine ek olarak aşağıdaki özellikleri belirtin:
+**AuthenticationType** özelliğini **Aadserviceprincipal**olarak ayarlayın. Önceki bölümde açıklanan genel özelliklere ek olarak, aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| servicePrincipalId | Azure Active Directory Uygulama istemci kimliği belirtin. | Evet |
-| servicePrincipalKey | Azure Active Directory Uygulama anahtarını belirtin. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
+| servicePrincipalId | Azure Active Directory uygulamasının istemci KIMLIĞINI belirtin. | Evet |
+| servicePrincipalKey | Azure Active Directory uygulamasının anahtarını belirtin. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | tenant | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Bu, Azure portalının sağ üst köşedeki fare gelerek alın. | Evet |
-| aadResourceId | Belirtmek istediğiniz yetkilendirme için örneğin AAD kaynak `https://management.core.windows.net`.| Evet |
+| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, ör. `https://management.core.windows.net`| Evet |
 
 **Örnek**
 
@@ -131,13 +135,13 @@ Ayarlama **authenticationType** özelliğini **AadServicePrincipal**. Önceki b�
 }
 ```
 
-### <a name="managed-identity"></a> Azure kaynakları ile kimlik doğrulaması için yönetilen kimlikleri kullanmak
+### <a name="managed-identity"></a>Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler kullanma
 
-Ayarlama **authenticationType** özelliğini **ManagedServiceIdentity**. Önceki bölümde açıklanan genel özelliklerine ek olarak aşağıdaki özellikleri belirtin:
+**AuthenticationType** özelliğini **managedserviceıdentity**olarak ayarlayın. Önceki bölümde açıklanan genel özelliklere ek olarak, aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| aadResourceId | Belirtmek istediğiniz yetkilendirme için örneğin AAD kaynak `https://management.core.windows.net`.| Evet |
+| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, ör. `https://management.core.windows.net`| Evet |
 
 **Örnek**
 
@@ -161,22 +165,22 @@ Ayarlama **authenticationType** özelliğini **ManagedServiceIdentity**. Önceki
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bu bölümde REST veri kümesini destekleyen özelliklerin bir listesini sağlar. 
+Bu bölüm, REST veri kümesinin desteklediği özelliklerin bir listesini sağlar. 
 
 Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md). 
 
-Verileri geri KALANINDAN kopyalamak için aşağıdaki özellikler desteklenir:
+REST 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** kümesinin özelliği ayarlanmalıdır **RestResource**. | Evet |
-| relativeUrl | Verileri içeren kaynak için göreli bir URL. Bu özellik belirtilmezse bağlı hizmet tanımında belirtilen URL kullanılır. | Hayır |
-| requestMethod | HTTP yöntemi. İzin verilen değerler **alma** (varsayılan) ve **Post**. | Hayır |
-| additionalHeaders | Ek HTTP isteği üstbilgileri. | Hayır |
-| Includesearchresults: true | HTTP isteğinin gövdesi. | Hayır |
-| paginationRules | Sonraki sayfa istekleri oluşturmak için sayfalandırma kurallar. Başvurmak [sayfalandırma Destek](#pagination-support) ayrıntıları bölümü. | Hayır |
+| türü | DataSet 'in **Type** özelliği **restresource**olarak ayarlanmalıdır. | Evet |
+| relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. | Hayır |
+| requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |
+| additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
+| Istek gövdesi | HTTP isteğinin gövdesi. | Hayır |
+| Sayfaationrules | Sonraki sayfa isteklerini oluşturmak için sayfalandırma kuralları. Ayrıntılar için [sayfalandırma desteği](#pagination-support) bölümüne bakın. | Hayır |
 
-**Örnek 1: Get yöntemi ile sayfalandırma kullanma**
+**Örnek 1: Sayfalama ile get yöntemini kullanma**
 
 ```json
 {
@@ -222,19 +226,19 @@ Verileri geri KALANINDAN kopyalamak için aşağıdaki özellikler desteklenir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bu bölümde REST kaynağının desteklediği özelliklerin bir listesini sağlar.
+Bu bölüm, REST kaynağının desteklediği özelliklerin bir listesini sağlar.
 
 Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md). 
 
-### <a name="rest-as-source"></a>Kaynak olarak tutun
+### <a name="rest-as-source"></a>Kaynak olarak REST
 
-Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** kopyalama etkinliği kaynağı özelliği ayarlanmalıdır **RestSource**. | Evet |
-| httpRequestTimeout | Zaman aşımı ( **TimeSpan** değeri) bir yanıt almak HTTP isteği için. Bu değer, yanıt verileri okumak için zaman aşımını değil bir yanıt almak için zaman aşımı olur. Varsayılan değer **00:01:40**.  | Hayır |
-| requestInterval | Sonraki sayfa isteği göndermeden önce beklenecek süre. Varsayılan değer **00:00:01** |  Hayır |
+| türü | Kopyalama etkinliği kaynağının **Type** özelliği **restsource**olarak ayarlanmalıdır. | Evet |
+| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir.  | Hayır |
+| Requestınterval | Sonraki sayfa için istek gönderilmeden önce beklenecek süre. Varsayılan değer **00:00:01** ' dir |  Hayır |
 
 **Örnek**
 
@@ -270,37 +274,37 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
 ## <a name="pagination-support"></a>Sayfalandırma desteği
 
-Normalde, REST API, makul sayıda altında tek bir istek, yanıt yükü boyutunu sınırlamak; while büyük miktarda veri, döndürülecek sonuç birden çok sayfalarına böler ve sonucun sonraki sayfaya ulaşmak için art arda istekler göndermek çağıranlar gerektirir. Genellikle, tek bir sayfaya dinamik ve önceki sayfaya yanıttan döndürülen bilgileri tarafından oluşturulan isteğidir.
+Normal olarak, REST API tek bir isteğin yanıt yükü boyutunu makul bir sayı altında sınırlayın; büyük miktarda veri döndürülirken, sonucu birden çok sayfaya böler ve çağıranların sonraki sayfasına ulaşmak için birbirini izleyen istekler göndermesini gerektirir. Genellikle, bir sayfa için istek dinamik ve önceki sayfanın yanıtından döndürülen bilgiler tarafından oluşur.
 
-Bu genel bir REST Bağlayıcısı aşağıdaki sayfalandırma desenleri destekler: 
+Bu genel REST Bağlayıcısı aşağıdaki sayfalandırma düzenlerini destekler: 
 
-* Sonraki isteğin mutlak veya göreli URL'si özellik değeri geçerli bir yanıt gövdesindeki =
-* Sonraki isteğin mutlak veya göreli URL'si geçerli yanıt üst bilgilerinde de üst bilgi değeri =
-* Sonraki isteğin sorgu parametresi özellik değeri geçerli bir yanıt gövdesindeki =
-* Sonraki isteğin sorgu parametresi geçerli yanıt üst bilgilerinde de üst bilgi değeri =
-* Sonraki isteğin başlık özellik değeri geçerli bir yanıt gövdesindeki =
-* Sonraki isteğin başlığı üst bilgi değeri geçerli yanıt üst bilgilerinde =
+* Sonraki isteğin mutlak veya göreli URL = geçerli yanıt gövdesindeki Özellik değeri
+* Sonraki isteğin mutlak veya göreli URL = geçerli yanıt başlıklarındaki üst bilgi değeri
+* Sonraki isteğin sorgu parametresi = geçerli yanıt gövdesinde Özellik değeri
+* Sonraki isteğin sorgu parametresi = geçerli yanıt başlıklarındaki üst bilgi değeri
+* Sonraki isteğin üst bilgisi = geçerli yanıt gövdesinde Özellik değeri
+* Sonraki isteğin üst bilgisi = geçerli yanıt başlıklarındaki üst bilgi değeri
 
-**Sayfalandırma kuralları** kümesindeki bir veya daha fazla büyük/küçük harfe anahtar-değer çiftleri içeren bir sözlük olarak tanımlanır. Yapılandırma, ikinci sayfasından başlatma isteği oluşturmak için kullanılır. Bağlayıcı 204 (içerik yok) HTTP durum kodu alır ya da herhangi bir "paginationRules" JSONPath ifade null döndürür yineleme durdurur.
+**Sayfalandırma kuralları** bir veya daha fazla büyük küçük harf duyarlı anahtar-değer çifti içeren veri kümesinde sözlük olarak tanımlanır. Bu yapılandırma, ikinci sayfadan başlayarak isteği oluşturmak için kullanılacaktır. Bağlayıcı, HTTP durum kodu 204 (Içerik yok) aldığında veya "Sayfaationrules" içindeki bir JSONPath ifadesi null döndürürse yineleme durdurulur.
 
-**Anahtarları desteklenen** sayfalandırma kuralları:
+Sayfalandırma kurallarında **desteklenen anahtarlar** :
 
 | Anahtar | Açıklama |
 |:--- |:--- |
-| AbsoluteUrl | Sonraki istek için URL'yi belirtir. Bu olabilir **mutlak bir URL ya da göreli URL**. |
-| QueryParameters. *request_query_parameter* veya QueryParameters ['request_query_parameter'] | "request_query_parameter" kullanıcı-sonraki HTTP isteği URL'si bir sorgu parametresi adlarında başvuran tanımlanır. |
-| Üstbilgileri. *request_header* veya üstbilgisi ['request_header'] | "request_header" kullanıcı-sonraki HTTP isteği bir üst bilgi adı başvuran tanımlanır. |
+| AbsoluteUrl | Sonraki isteği vermek için URL 'YI gösterir. **Mutlak URL ya da GÖRELI URL**olabilir. |
+| QueryParameters. *request_query_parameter* OR QueryParameters [' request_query_parameter '] | "request_query_parameter", bir sonraki HTTP istek URL 'sinde bir sorgu parametresi adına başvuran Kullanıcı tanımlı ' dır. |
+| Bilgisinde. *request_header* VEYA üstbilgiler [' request_header '] | "request_header", bir sonraki HTTP isteğindeki bir üst bilgi adına başvuran Kullanıcı tanımlı ' dır. |
 
-**Desteklenen değerleri** sayfalandırma kuralları:
+Sayfalandırma kurallarında **desteklenen değerler** :
 
-| Değer | Açıklama |
+| Value | Açıklama |
 |:--- |:--- |
-| Üstbilgileri. *response_header* veya üstbilgisi ['response_header'] | "response_header" kullanıcı-başvuran bir üst bilgi adı değerini sonraki istek için kullanılacak geçerli HTTP yanıtı içinde tanımlanır. |
-| "(Yanıt gövdesi kökünü temsil eden) $" ile başlayan bir JSONPath ifadesi | Yanıt gövdesi yalnızca bir JSON nesnesi içermesi gerekir. JSONPath ifade sonraki istek için kullanılan tek bir İlkel değer döndürmelidir. |
+| Bilgisinde. *response_header* VEYA üstbilgiler [' response_header '] | "response_header", geçerli HTTP yanıtında bir üst bilgi adına başvuran, bir sonraki isteği vermek için kullanılacak olan Kullanıcı tanımlı ' dır. |
+| "$" (Yanıt gövdesinin kökünü temsil eden) ile başlayan bir JSONPath ifadesi | Yanıt gövdesi yalnızca bir JSON nesnesi içermelidir. JSONPath ifadesi bir sonraki isteği vermek için kullanılacak tek bir temel değer döndürmelidir. |
 
 **Örnek:**
 
-Facebook Graph API'si aşağıdaki yapısında, büyük/küçük harf sonraki sayfanın URL'sini temsil edilmiştir yanıt verir ***paging.next***:
+Facebook Graph API aşağıdaki yapıda yanıtı döndürür ve bu durumda sonraki sayfanın URL 'SI disk belleğine gösterilir ***. ileri***:
 
 ```json
 {
@@ -332,7 +336,7 @@ Facebook Graph API'si aşağıdaki yapısında, büyük/küçük harf sonraki sa
 }
 ```
 
-Karşılık gelen REST veri kümesi yapılandırma özellikle `paginationRules` aşağıdaki gibidir:
+Karşılık gelen REST veri kümesi yapılandırması, `paginationRules` özellikle aşağıdaki gibidir:
 
 ```json
 {
@@ -353,13 +357,13 @@ Karşılık gelen REST veri kümesi yapılandırma özellikle `paginationRules` 
 }
 ```
 
-## <a name="export-json-response-as-is"></a>JSON yanıtı olarak dışarı aktar-olup
+## <a name="export-json-response-as-is"></a>JSON yanıtını olduğu gibi dışarı aktar
 
-Bu REST bağlayıcı olarak REST API JSON yanıt vermek için kullanabileceğiniz-çeşitli dosya tabanlı depoladığı. Bu tür şemadan kopyalama elde etmek için "yapı" Atla (olarak da bilinir *şema*) bölümünde veri kümesini ve şema eşleme kopyalama etkinliğindeki.
+Bu REST bağlayıcısını, REST API JSON yanıtını farklı dosya tabanlı depolara dışarı aktarmak için kullanabilirsiniz. Bu tür şemadan bağımsız bir kopya elde etmek için, kopyalama etkinliğinde veri kümesi ve şema eşleme ' de "yapı" (kısaca *şema*) bölümünü atlayın.
 
 ## <a name="schema-mapping"></a>Şema eşleme
 
-Tablo havuz için REST uç noktasından veri kopyalamak için başvurmak [şema eşleme](copy-activity-schema-and-type-mapping.md#schema-mapping).
+REST uç noktasından tablo havuzuna veri kopyalamak için [Şema eşlemesi](copy-activity-schema-and-type-mapping.md#schema-mapping)' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

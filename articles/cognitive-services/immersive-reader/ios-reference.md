@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 47c2d772a3428594c84d3fe5e18262b5e5ab86f4
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951018"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966591"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Modern Okuyucu SDK başvurusu
 
@@ -102,5 +102,5 @@ Modern okuyucu iOS SDK 'Sı, iPad ve iPhone üzerinde iOS 9,0 veya üzeri için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [GitHub 'Da modern okuyucu IOS SDK 'sını](https://github.com/microsoft/immersive-reader-sdk/iOS) keşfet
+* [GitHub 'Da modern okuyucu IOS SDK 'sını](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) keşfet
 * [Hızlı Başlangıç: Tam ekran okuyucuyu (Swift) başlatan bir iOS uygulaması oluşturma](./ios-quickstart.md)

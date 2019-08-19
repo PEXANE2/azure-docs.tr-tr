@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: be6a402673fd2d3ba01451c6ea04e723cbdfa292
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597498"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967542"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB’ye giriş: Tablo API’si
 
@@ -58,8 +58,8 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 * [.NET’te Tablo API’siyle geliştirme](tutorial-develop-table-dotnet.md)
 * [Tablo API’sini kullanarak tablo verilerini sorgulama](tutorial-query-table.md)
 * [Tablo API'sini kullanarak Azure Cosmos DB genel dağıtımını ayarlamayı öğrenin](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB Tablosu .NET API'si](table-sdk-dotnet.md)
-* [Azure Cosmos DB Tablosu Java API'si](table-sdk-java.md)
-* [Azure Cosmos DB Tablosu Node.js API'si](table-sdk-nodejs.md)
+* [Azure Cosmos DB tablo .NET Standard SDK](table-sdk-dotnet-standard.md)
+* [Azure Cosmos DB tablosu .NET SDK 'Sı](table-sdk-dotnet.md)
+* [Azure Cosmos DB tablosu Java SDK 'Sı](table-sdk-java.md)
+* [Azure Cosmos DB Table Node. js SDK 'Sı](table-sdk-nodejs.md)
 * [Python için Azure Cosmos DB Tablosu SDK'sı](table-sdk-python.md)
-
