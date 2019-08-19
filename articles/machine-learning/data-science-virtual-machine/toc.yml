@@ -6,8 +6,6 @@
   items:
     - name: Veri Bilimi VM nedir?
       href: overview.md
-    - name: Derin Öğrenme VM nedir?
-      href: deep-learning-dsvm-overview.md
     - name: Coğrafi AI Veri Bilimi VM nedir?
       href: geo-ai-dsvm-overview.md
 - name: Hızlı Başlangıçlar
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: Kavramlar
   items:
-    - name: DSVM bulma
-      href: dsvm-tools-overview.md
     - name: Derin Öğrenme ve AI çerçeveleri
       href: dsvm-deep-learning-ai-frameworks.md
     - name: Programlama dilleri
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Linux DSVM’si kullanma
       href: linux-dsvm-walkthrough.md
-    - name: Derin Öğrenme VM’si kullanma
-      href: use-deep-learning-dsvm.md
     - name: Coğrafi AI DSVM kullanma
       href: use-geo-ai-dsvm.md
     - name: Otomatik ölçeklendirilmiş DSVM havuzu oluşturma
