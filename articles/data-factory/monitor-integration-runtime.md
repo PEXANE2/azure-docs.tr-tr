@@ -43,12 +43,12 @@ Azure tümleştirme çalışma zamanı için cmdlet tarafından döndürülen ö
 
 | Özellik | Açıklama |
 -------- | ------------- | 
-| Ad | Azure tümleştirme çalışma zamanı adı. |  
-| Eyalet | Azure tümleştirme çalışma zamanı durumu. | 
+| Name | Azure tümleştirme çalışma zamanı adı. |  
+| State | Azure tümleştirme çalışma zamanı durumu. | 
 | Location | Azure tümleştirme çalışma zamanının konumu. Bir Azure Integration runtime'nın konumu hakkında daha fazla ayrıntı için bkz: [tümleştirme çalışma zamanı giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanı ait data factory adı. | 
 | ResourceGroupName | Veri fabrikasına ait kaynak grubunun adı.  |
-| Açıklama | Integration runtime'nın açıklaması.  |
+| Description | Integration runtime'nın açıklaması.  |
 
 ### <a name="status"></a>Durum
 Aşağıdaki tabloda, bir Azure Integration runtime'nın olası durumlar sağlar:
