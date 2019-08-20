@@ -332,8 +332,6 @@
               href: iot-hub-raspberry-pi-kit-c-get-started.md
             - name: Arduino ile MXChip IoT DevKit
               href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-            - name: Arduino ile Adafruit Feather HUZZAH ESP8266
-              href: iot-hub-arduino-huzzah-esp8266-get-started.md
         - name: MXChip IoT DevKit kullanma
           items:
             - name: Azure Bilişsel Hizmetler ile sesli mesajı çevirme

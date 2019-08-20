@@ -7,9 +7,8 @@ metadata:
   description: 'Azure Search kullanarak özel ve heterojen içerikler üzerinde kurumsal arama çözümü oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgeler; aratılabilir içeriği, çeşitli senaryolarda basitten gelişmişe söz dizimleri kullanılarak sorgulanabilen tek bir hızlı dizinde toplamayı gösterir.'
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

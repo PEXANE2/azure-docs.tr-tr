@@ -170,7 +170,7 @@
     - name: Uygulama ölçeklendirme
       items:
         - name: Sunucu kapasitesinin ölçeğini artırma
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: PremiumV2 katmanını yapılandırma
           href: app-service-configure-premium-tier.md
         - name: Ölçeği birden fazla örneğe genişletme

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 94cd178b925b0b55f0ed6ed38ed821820bb1e072
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 49fbfe116a2fe554abb3a3ca4d1dcd6cab2b746d
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188482"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626412"
 ---
 Bir sonraki önerilen makaleye geçecekseniz oluşturduğunuz kaynakları tutabilir ve yeniden kullanabilirsiniz.
 
@@ -25,12 +25,12 @@ Geçmeyecekseniz ücret kesilmesini önlemek için bu makalede oluşturulan Azur
 
 Bir kaynak grubunu adıyla silmek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
+1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
-2. **Ada göre filtrele...** metin kutusuna IoT Hub'ınızın bulunduğu kaynak grubunun adını girin. 
+2. **Ada göre filtrele** metin kutusuna IoT Hub içeren kaynak grubunun adını yazın. 
 
-3. Sonuç listesinde kaynak grubunuzun sağ tarafında **...** ve sonra **Kaynak grubunu sil**'e tıklayın.
+3. Sonuç listesinde kaynak grubunuzun sağında **.** .. ' ı seçin ve **kaynak grubunu silin**.
 
     ![Sil](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
-4. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını tekrar yazın ve **Sil**'e tıklayın. Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
+4. Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yeniden yazın ve ardından **Sil**' i seçin. Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881612"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626416"
 ---
 Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için harika olan yüksek bir bellek-CPU oranı sunar. Bu makalede, bu gruplandırmadaki her bir boyut için sanal CPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkında bilgi sağlanır.
 
 * Ev3-Series, bir hiper iş yükleri için E5-2673 v4 2,3 GHz (çok Iyi) işlemciyi, çoğu genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 ' yi diğer bulutların genel amaçlı VM 'Leri ile hizalı hale getiriyor.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlandığı sürece (7 GiB/vCPU 'dan 8 GiB/vCPU 'ya kadar) bellek genişletilir.  Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
-* Eav3-Series ve Easv3 serisi, en fazla 256 GB L3 önbelleği olan çok iş parçacıklı bir yapılandırmada AMD 'nin 2.35 GHz EPYıC<sup>TM</sup> 7452v işlemcisini kullanır, bu da en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır.  Eav3-Series ve Easv3 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+* Eav3-Series ve Easv3 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş parçacıklı bir yapılandırmada AMD 'nin 2.35 GHz EPIC<sup>TM</sup> 7452v işlemcisini kullanır ve en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır.  Eav3-Series ve Easv3 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 * Mv2-Series, buluttaki herhangi bir VM 'nin en yüksek vCPU sayısını (208 vCPU 'ya kadar) ve en büyük bellek miktarını (5,7 TiB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek vCPU sayısı ve büyük miktarlarda belleğin yararlı olacağı diğer uygulamalar için idealdir.
 

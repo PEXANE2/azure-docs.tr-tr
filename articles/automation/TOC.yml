@@ -216,9 +216,6 @@
         - name: VM üzerindeki değişikliklerle ilgili sorunları giderme
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: Stok koleksiyonuyla VM yönetme
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: Sorun giderme
       items:
         - name: Ekleme

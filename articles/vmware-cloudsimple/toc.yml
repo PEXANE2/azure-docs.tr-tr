@@ -117,7 +117,7 @@
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Ortamınızı güvenli hale getirme
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: Özel bulut yönetimi
           items:
             - name: Özel Bulut ayrıcalıklarını yükseltme
@@ -143,7 +143,7 @@
             - name: VMware sanal makineleriyle Azure Application Gateway
               href: azure-application-gateway.md
             - name: Özel bulut vCenter sunucusunu vRealize otomasyon uç noktası olarak yapılandırma
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: configure-server-vrealize-automation-endpoint.md
             - name: İş yükü sanal makinelerini özel buluta geçirme
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Azure'da VMware içinde Uygulama yüksek kullanılabilirliğini sağlama

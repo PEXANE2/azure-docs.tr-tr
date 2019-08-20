@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4d13779317793b5edd971dd457a77e0bc5cae1c8
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: f85605610727ef2c1e1987b7ef93a41ce2417a25
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426970"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626413"
 ---
 | Resource | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "68426970"
 
 <sup>1</sup> Varsayılan sınırlar, ücretsiz deneme, Kullandıkça öde ve dv2, F ve G gibi seriler gibi teklif kategorisi türüne göre farklılık gösterir. Örneğin, Kurumsal Anlaşma abonelikler için varsayılan değer 350 ' dir.
 
-<sup>2</sup> Abonelik başına sınırsız sayıda etiket uygulayabilirsiniz. Kaynak ya da kaynak grubu başına etiket sayısı 15 ile sınırlıdır. Kaynak Yöneticisi, yalnızca etiket sayısı 10.000 veya daha az olduğunda, abonelikteki [benzersiz etiket adı ve değerlerinin listesini](/rest/api/resources/tags) döndürür. Sayı 10.000 ' i aştığında yine de etikete göre bir kaynak bulabilirsiniz.  
+<sup>2</sup> Abonelik başına sınırsız sayıda etiket uygulayabilirsiniz. Kaynak veya kaynak grubu başına etiket sayısı 50 ile sınırlıdır. Kaynak Yöneticisi, yalnızca etiket sayısı 10.000 veya daha az olduğunda, abonelikteki [benzersiz etiket adı ve değerlerinin listesini](/rest/api/resources/tags) döndürür. Sayı 10.000 ' i aştığında yine de etikete göre bir kaynak bulabilirsiniz.  
 
 <sup>3</sup> Bu özellikler artık Azure Kaynak grupları ve Kaynak Yöneticisi için gerekli değildir.
 

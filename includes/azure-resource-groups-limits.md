@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/30/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698290"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626415"
 ---
 | Resource | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "68698290"
 | Dağıtım geçmişinde kaynak grubu başına dağıtımlar |800<sup>1</sup> |800 |
 | Dağıtım başına kaynaklar |800 |800 |
 | Benzersiz kapsam başına yönetim kilitleri |20 |20 |
-| Kaynak veya kaynak grubu başına etiket sayısı |15 |15 |
+| Kaynak veya kaynak grubu başına etiket sayısı |50 |50 |
 | Etiket anahtarı uzunluğu |512 |512 |
 | Etiket değeri uzunluğu |256 |256 |
 
