@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512202"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622782"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' deki uygulamalarınıza kimlik sağlayıcıları ekleyin
 
@@ -94,13 +94,11 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>Azure Active Directory Identity sağlayıcısını ekleme
 
-1. Üst menüdeki **Dizin ve abonelik filtresini** tıklatıp Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure AD B2C kiracı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-1. Seçin **kimlik sağlayıcıları**ve ardından **Ekle**.
+1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
 1. Bir **ad**girin. Örneğin, *contoso Azure AD*yazın.
-1. **Kimlik sağlayıcısı türünü**seçin, **OpenID Connect**' i seçin ve ardından **Tamam**' a tıklayın.
-1. **Bu kimlik sağlayıcısını ayarla** öğesine tıklayın
-1. **Meta veri URL 'si**için, Azure AD kiracınızın `your-AD-tenant-domain` etki alanı adıyla değiştirerek aşağıdaki URL 'yi girin.
+1. **Meta veri URL 'si**için, Azure AD kiracınızın etki alanı adıyla `your-AD-tenant-domain` birlikte aşağıdaki URL 'yi girin:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,28 +106,27 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 
     Örneğin: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. **ISTEMCI kimliği**için, daha önce kaydettiğiniz *uygulama (istemci) kimliğini* girin.
-1. **İstemci parolası**için, daha önce kaydettiğiniz *istemci gizli* anahtarını girin.
-1. İsteğe bağlı olarak, **Domain_hint**için bir değer girin. Örneğin: `ContosoAD`. [Etki alanı ipuçları](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) , bir uygulamadan gelen kimlik doğrulama isteğine dahil olan yönergelerden yapılır. Bu kişiler, kullanıcıyı Federal IDP oturum açma sayfasında hızlandırmak için kullanılabilirler. Ya da çok kiracılı bir uygulama tarafından, kullanıcıyı kiracının kendi markalı Azure AD oturum açma sayfasına doğrudan hızlandırmak için kullanılabilirler.
-1. **Tamam**’ı seçin.
-1. **Bu kimlik sağlayıcısının taleplerini eşle** ve aşağıdaki talepleri ayarla ' yı seçin:
+1. **ISTEMCI kimliği**için, daha önce KAYDETTIĞINIZ uygulama kimliğini girin.
+1. **İstemci parolası**için, daha önce kaydettiğiniz istemci gizli anahtarını girin.
+1. **Kapsam**, **yanıt türü**ve **Yanıt modu**için varsayılan değerleri bırakın.
+1. Seçim **Domain_hint**için bir değer girin. Örneğin, *Contosoad*. [Etki alanı ipuçları](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) , bir uygulamadan gelen kimlik doğrulama isteğine dahil olan yönergelerden yapılır. Bu kişiler, kullanıcıyı Federal IDP oturum açma sayfasında hızlandırmak için kullanılabilirler. Ya da çok kiracılı bir uygulama tarafından, kullanıcıyı kiracının kendi markalı Azure AD oturum açma sayfasına doğrudan hızlandırmak için kullanılabilirler.
+1. **Kimlik sağlayıcısı talep eşlemesi**altında, aşağıdaki talep eşleme değerlerini girin:
 
-    - **Kullanıcı kimliği**için girin `oid`.
-    - **Görünen ad**için girin `name`.
-    - **Verilen ad**için girin `given_name`.
-    - **Soyadı**için girin `family_name`.
-    - **E-posta**için `unique_name`girin.
+    * **Kullanıcı kimliği**: *OID*
+    * **Görünen ad**: *ad*
+    * **Verilen ad**: *given_name*
+    * **Soyadı**: *family_name*
+    * **E-posta**: *unique_name*
 
-1. **Tamam**' ı seçin ve sonra yapılandırmanızı kaydetmek için **Oluştur** ' u seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="add-the-facebook-identity-provider"></a>Facebook kimlik sağlayıcısını ekleme
 
-1. Seçin **kimlik sağlayıcıları**ve ardından **Ekle**.
-1. Bir **ad**girin. Örneğin, *Facebook*girin.
-1. **Kimlik sağlayıcısı türünü**seçin, **Facebook**' u ve ardından **Tamam**' ı seçin.
-1. **Bu kimlik sağlayıcısını ayarla** ' yı seçin ve daha önce **istemci kimliği**olarak kaydettiğiniz *uygulama kimliğini* girin.
-1. **İstemci parolası**olarak kaydettiğiniz *uygulama gizli* anahtarını girin.
-1. **Tamam** ' ı seçin ve ardından Facebook yapılandırmanızı kaydetmek için **Oluştur** ' u seçin.
+1. **Kimlik sağlayıcıları**' nı seçin ve **Facebook**' u seçin.
+1. Bir **ad**girin. Örneğin, *Facebook*.
+1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Facebook UYGULAMASıNıN uygulama kimliğini girin.
+1. **İstemci parolası**için, kaydettiğiniz uygulama gizli anahtarını girin.
+1. **Kaydet**’i seçin.
 
 ## <a name="update-the-user-flow"></a>Kullanıcı akışını güncelleştirme
 

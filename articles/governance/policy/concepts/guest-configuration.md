@@ -8,16 +8,19 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326891"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624094"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
 Azure Ilkesi, Azure kaynaklarını denetlemeye ve [düzeltmelere](../how-to/remediate-resources.md) ek olarak, bir sanal makine içindeki ayarları denetleyebilir. Doğrulama Konuk yapılandırma uzantısı ve istemci tarafından gerçekleştirilir. İstemcisi aracılığıyla uzantısı gibi işletim sistemi yapılandırması, uygulama yapılandırması veya varlığı, ortam ayarlarını ve diğer ayarlarını doğrular.
+
+Azure Ilke Konuk yapılandırması şu anda yalnızca makinenin içindeki setler için bir denetim gerçekleştirir.
+Yapılandırma uygulamak henüz mümkün değildir.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879103"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622726"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD self servis parola sıfırlama için lisans gereksinimleri
 
@@ -34,7 +34,7 @@ Azure AD self servis parola sıfırlama Kullanıcı başına lisanslıdır, uyum
 * Bulut kullanıcıları için Self Servis Parola Sıfırlama
    * **Yalnızca bulutta bir Kullanıcı** ve parolamı unutdum.
       * Bilindiğim bir şeye Parolamı **sıfırlamak** istiyorum.
-   * Bu işlevsellik Azure AD Premium P1 veya P2 ya da Microsoft 365 İş dahil edilmiştir.
+   * Bu işlevsellik Azure AD Premium P1 veya P2, Microsoft 365 İş veya Office 365 ' de bulunur.
 
 * **Şirket içi geri yazma ile** self servis parola sıfırlama/değiştirme/kilit açma
    * Bir **Karma Kullanıcı** olan şirket içi Active Directory Kullanıcı hesabı, Azure AD Connect KULLANıLARAK Azure AD hesabım ile eşitlenir. Parolamı değiştirmek istiyorum, parolamı unutdum veya kilitlendim.

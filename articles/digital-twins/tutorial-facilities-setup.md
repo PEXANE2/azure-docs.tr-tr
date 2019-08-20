@@ -6,18 +6,18 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67484686"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622940"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital İkizlerini önizlemesi dağıtma ve uzamsal graph'ı yapılandırma
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital TWINS önizlemesi dağıtma ve uzamsal bir grafik yapılandırma
 
-Azure dijital İkizlerini Önizleme hizmeti, kişiler, yerler ve cihazlarda tutarlı bir uzamsal sistemde bir araya getirmek için kullanabilirsiniz. Bu öğretici serisinde, Azure dijital İkizlerini odası doluluk sıcaklık ve Uzaktan kalite en uygun koşullarla algılamak için nasıl kullanılacağını gösterir. 
+Azure Digital TWINS önizleme hizmetini kullanarak, kişileri, yerleri ve cihazları tutarlı bir uzamsal sisteme bir araya getirebilirsiniz. Bu öğretici serisinde, Azure dijital İkizlerini odası doluluk sıcaklık ve Uzaktan kalite en uygun koşullarla algılamak için nasıl kullanılacağını gösterir. 
 
 Bu öğreticiler bir ofis binasındaki bir senaryo oluşturmak için bir .NET konsol uygulaması size yol gösterir. Yapı, her zemin içinde birden çok Katlar ve odaları sahiptir. Odaları ile ortam sıcaklığı, hareket algılayan ve kalite hava, bağlı sensörlerden cihazları içerir. 
 
@@ -101,9 +101,9 @@ Ayıklanan örnek klasöründe dosyasını açın **digital-twins-samples-csharp
     ```
 
 1. Visual Studio Code'da açmak [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) dosyası **doluluk-quickstart** proje. Aşağıdaki değerleri güncelleştirin:
-   * **ClientID**: Azure AD uygulama kaydınızı uygulama Kimliğini girin. Bölümünde bu kimliği not ettiğiniz Burada, [uygulama izinleri ayarla](#permissions).
-   * **Kiracı**: Dizin kimliği girin, [Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ayrıca bu kimliği bölümünde belirtildiği Burada, [uygulama izinleri ayarla](#permissions).
-   * **BaseUrl**: Dijital İkizlerini örneğinizin URL'sini girin. Bu URL almak için değerlerle Örneğiniz için bu URL'yi içindeki yer tutucuları değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Yönetim API'si URL'den değiştirerek bu URL'yi alabilirsiniz [dağıtım bölümü](#deploy). Değiştirin **swagger /** ile **api/v1.0/** .
+   * **ClientID**: Azure AD uygulama kaydlarınızın uygulama KIMLIĞINI girin. Bölümünde bu kimliği not ettiğiniz Burada, [uygulama izinleri ayarla](#permissions).
+   * **Kiracı**: [Azure AD kiracınızın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)dizin kimliğini girin. Ayrıca bu kimliği bölümünde belirtildiği Burada, [uygulama izinleri ayarla](#permissions).
+   * **BaseUrl**: Dijital TWINS örneğinizin URL 'sini girin. Bu URL 'YI almak için, bu URL 'deki yer tutucuları örneğinizin değerleriyle değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Yönetim API'si URL'den değiştirerek bu URL'yi alabilirsiniz [dağıtım bölümü](#deploy). Değiştirin **swagger /** ile **api/v1.0/** .
 
 1. Örnek kullanarak keşfedebilirsiniz dijital İkizlerini özelliklerin bir listesi bakın. Şu komutu çalıştırın:
 
@@ -137,7 +137,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-Bu işlev kullanır [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) aynı klasörde yer alan. Bu dosyayı açın ve bir ofis binasındaki hiyerarşisini dikkat edin: *Mekan*, *kat*, *alan*, ve *odaları*. Bu fiziksel alanların herhangi birinde *cihazlar* ve *sensörler* bulunabilir. Her girişin bir önceden tanımlanmış sahip `type` &mdash;Örneğin, Floor, yer.
+Bu işlev kullanır [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) aynı klasörde yer alan. Bu dosyayı açın ve bir Office binasının hiyerarşisini aklınızda edin: *Mekan*, *Floor*, *Area*ve *Odalar*. Bu fiziksel alanların herhangi birinde *cihazlar* ve *sensörler* bulunabilir. Her girişin bir önceden tanımlanmış sahip `type` &mdash;Örneğin, Floor, yer.
 
 Örnek **yaml** dosyasını kullanan olan bir uzamsal grafiği gösterir `Default` dijital İkizlerini nesne modeli. Bu model türlerinin çoğu için genel adlar sağlar. Genel adlar bir yapı için yeterlidir. Örnek SensorDataType için sıcaklık ve için SpaceBlobType eşleyin. Bir örnek alanı subtypes FocusRoom oda, ConferenceRoom ve benzeri türüdür. 
 
@@ -149,13 +149,13 @@ Uzamsal graflar ve nesne modelleri hakkında daha fazla bilgi için okuma [dijit
 
 **ProvisionSample.yaml** dosyası aşağıdaki düğümleri içerir:
 
-- **Kaynakları**: `resources` Kurulumunuzu aygıtları ile iletişim kurmak için bir Azure IOT hub'ı kaynak düğümü oluşturur. IOT hub'ı, grafiğin kök düğümde, tüm cihazlardan ve sensörlerden grafınızı ile iletişim kurabilir.  
+- **kaynaklar**: Düğüm `resources` , kurulumlarınızdaki cihazlarla iletişim kurmak için bir Azure IoT Hub kaynağı oluşturur. IOT hub'ı, grafiğin kök düğümde, tüm cihazlardan ve sensörlerden grafınızı ile iletişim kurabilir.  
 
-- **alanları**: Dijital İkizlerini nesne modelinde `spaces` fiziksel konumları temsil eder. Her alana sahip bir `Type` &mdash;, bölge, mekan ya da müşteri&mdash;ve kolay bir `Name`. Alanları, hiyerarşik bir yapıyı başka alanları için ait olabilir. Sanal bir yapı uzamsal grafiğini provisionSample.yaml dosyası vardır. Mantıksal iç içe tür alanları Not `Floor` içinde `Venue`, `Area` içinde bir katı ve `Room` bir alan düğümleri. 
+- **boşluk**: Dijital TWINS nesne modelinde, `spaces` fiziksel konumları temsil eder. Her alana sahip bir `Type` &mdash;, bölge, mekan ya da müşteri&mdash;ve kolay bir `Name`. Alanları, hiyerarşik bir yapıyı başka alanları için ait olabilir. Sanal bir yapı uzamsal grafiğini provisionSample.yaml dosyası vardır. Mantıksal iç içe tür alanları Not `Floor` içinde `Venue`, `Area` içinde bir katı ve `Room` bir alan düğümleri. 
 
-- **cihazları**: Boşluk içerebilir `devices`, algılayıcılar sayısını yönetmek fiziksel veya sanal varlıkları olduğu. Örneğin, bir cihaz bir kullanıcıya ait telefon, Raspberry Pi algılayıcı pod veya bir ağ geçidi olabilir. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
+- **cihazlar**: Boşluklar, bir `devices`dizi sensöri yöneten fiziksel veya sanal varlıklar olan içerebilir. Örneğin, bir cihaz bir kullanıcıya ait telefon, Raspberry Pi algılayıcı pod veya bir ağ geçidi olabilir. Örnekteki hayali binanın **Focus Room** adlı odasında bir **Raspberry Pi 3 A1** cihazı bulunmaktadır. Her cihaz düğümü, örneğe sabit kodlanmış benzersiz bir `hardwareId` değerine sahiptir. Bu örneği üretim amaçlı kullanım için yapılandırmak isterseniz bu değerleri kendi sisteminizdeki değerlerle değiştirmeniz gerekir.  
 
-- **algılayıcılar**: Bir cihaza birden çok içerebilir `sensors`. Bunlar algılayabilir ve sıcaklık, hareket ve pil düzeyi kayıt fiziksel değişiklikleri ister. Her sensör düğümü, burada sabit kodlanmış `hardwareId` değeriyle benzersiz olarak tanımlanmıştır. Gerçek bir uygulama için bu kurulumda sensörlerden öğesinin benzersiz tanımlayıcıları kullanarak değiştirin. ProvisionSample.yaml dosyayı kaydetmek için iki algılayıcılara sahiptir *hareket* ve *CarbonDioxide*. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Bunlar provisionSample.yaml içinde derleme dışı bırakılan satır olarak verildiğini unutmayın. Bunları kaldırarak açıklamasını `#` kuyruğun her satırın karakter. 
+- **Algılayıcılar**: Bir cihaz birden çok `sensors`içerebilir. Bunlar algılayabilir ve sıcaklık, hareket ve pil düzeyi kayıt fiziksel değişiklikleri ister. Her sensör düğümü, burada sabit kodlanmış `hardwareId` değeriyle benzersiz olarak tanımlanmıştır. Gerçek bir uygulama için bu kurulumda sensörlerden öğesinin benzersiz tanımlayıcıları kullanarak değiştirin. ProvisionSample.yaml dosyayı kaydetmek için iki algılayıcılara sahiptir *hareket* ve *CarbonDioxide*. CarbonDioxide sensörünün tanımlandığı satırların altına aşağıdaki satırları ekleyerek *Temperature* (Sıcaklık) kaydı yapacak yeni bir sensör ekleyin. Bunlar provisionSample.yaml içinde derleme dışı bırakılan satır olarak verildiğini unutmayın. Bunları kaldırarak açıklamasını `#` kuyruğun her satırın karakter. 
 
     ```yaml
             - dataType: Temperature
@@ -184,4 +184,4 @@ Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu ö�
 
 Koşullar oluşturma Örneğinizdeki izlemek için özel bir mantıksal uygulama hakkında bilgi edinmek için serideki sonraki öğretici gidin: 
 > [!div class="nextstepaction"]
-> [Öğretici: Yapı ve koşullar çalışma İzleyici sağlayın](tutorial-facilities-udf.md)
+> [Öğretici: Oluşturma ve izleme çalışma koşullarınızı sağlama](tutorial-facilities-udf.md)

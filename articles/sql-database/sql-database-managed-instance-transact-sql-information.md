@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543702"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624020"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL veritabanı yönetilen örnek T-SQL Server 'den SQL farklılıkları
 
@@ -62,6 +62,7 @@ Yönetilen örneklerin otomatik yedeklemeleri vardır, böylece kullanıcılar t
 Algılan 
 
 - Yönetilen bir örnek ile, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
+- Hizmet tarafından yönetilen `BACKUP DATABASE ... WITH COPY_ONLY` saydam veri şifrelemesi (tde) ile şifrelenmiş bir veritabanında yürütemezsiniz. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
 - Yönetilen bir örnekteki `BACKUP` komutu kullanılarak en fazla yedekleme şeridi boyutu, en fazla BLOB boyutu olan 195 GB 'dir. Tek tek Stripe boyutunu azaltmak ve bu sınırın içinde kalmak için yedekleme komutundaki şeritler sayısını artırın.
 
     > [!TIP]
@@ -512,6 +513,10 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](http
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
 - App Service ortamları, Logic Apps ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları küresel olarak bağlandığında farklı bölgelerdeki yönetilen örneklere erişemez [ eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
+### <a name="tempdb-size"></a>TEMPDB boyutu
+
+Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başına 24 GB 'den büyük olamaz. İş açısından kritik katmanındaki `tempdb` en büyük boyut, örnek depolama boyutuyla sınırlıdır. `Tempdb`günlük dosyası boyutu, Genel Amaçlı ve İş Açısından Kritik katmanlarında 120 GB ile sınırlıdır. Bazı sorgular, üzerinde `tempdb` çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
+
 ## <a name="Changes"></a>Davranış değişiklikleri
 
 Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndürüyor:
@@ -526,13 +531,39 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ## <a name="Issues"></a>Bilinen sorunlar ve sınırlamalar
 
-### <a name="tempdb-size"></a>TEMPDB boyutu
+### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişimleri, hizmet katmanı yükseltmesinden sonra çalışmıyor
 
-Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başına 24 GB 'den büyük olamaz. İş açısından kritik katmanındaki `tempdb` en büyük boyut, örnek depolama boyutuyla sınırlıdır. `Tempdb`günlük dosyası boyutu, Genel Amaçlı ve İş Açısından Kritik katmanlarında 120 GB ile sınırlıdır. `tempdb` Veritabanı her zaman 12 veri dosyasına bölünür. Dosya başına bu en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb`. Bazı sorgular, üzerinde `tempdb` çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir. `Tempdb`örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de `tempdb` yapılan tüm değişiklikler korunmaz. 
+**Güncel** Ağu 2019
 
-### <a name="cant-restore-contained-database"></a>Kapsanan veritabanı geri yüklenemiyor
+Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri teslim edemiyor. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. Diğer veritabanında GUID 'ye göre hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri ileti teslim edemeyecektir. `DIALOG`
 
-Yönetilen örnek [içerilen veritabanlarını](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)geri yükleyemiyor. Mevcut kapsanan veritabanlarının zaman içinde geri yüklenmesi yönetilen örnek üzerinde çalışmıyor. Bu sırada, yönetilen örneğe yerleştirilmiş veritabanlarınızdan kapsama seçeneğini kaldırmanızı öneririz. Üretim veritabanları için içerme seçeneğini kullanmayın. 
+**Sorunu** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın.
+
+### <a name="some-aad-login-types-cannot-be-impersonated"></a>Bazı AAD oturum açma türlerine kimliğe bürünme yapılamaz
+
+**Güncel** 2019 Temmuz
+
+Aşağıdaki AAD `EXECUTE AS USER` sorumluları `EXECUTE AS LOGIN` kullanılarak veya kullanarak kimliğe bürünme desteklenmez:
+-   Diğer ad AAD kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
+- Aad uygulamaları ve hizmet sorumlularına göre AAD oturum açmaları ve kullanıcılar. Bu durumda `15517` ve `15406`aşağıdaki hatalar döndürülür.
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail içinde parametre desteklenmiyor
+
+**Güncel** 2019 Nisan
+
+`@query` [Sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) yordamındaki parametresi çalışmıyor.
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>AAD oturum açmaları ve kullanıcılar araçlar 'da desteklenmez
+
+**Güncel** Ocak 2019
+
+SQL Server Management Studio ve SQL Server Veri Araçları, Azure 'un seçkin Dizin oturumlarını ve kullanıcılarını desteklemez.
+- SQL Server Veri Araçları şu anda Azure AD Server sorumlularını (oturum açma) ve kullanıcıları (Genel Önizleme) kullanma desteklenmiyor.
+- Azure AD Server sorumluları (oturumlar) ve kullanıcıları (Genel Önizleme) için betik oluşturma SQL Server Management Studio desteklenmez.
+
+### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
+
+`tempdb` Veritabanı her zaman 12 veri dosyasına bölünür ve dosya yapısı değiştirilemez. Dosya başına en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb`. `Tempdb`örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de `tempdb` yapılan tüm değişiklikler korunmaz.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Küçük veritabanı dosyalarıyla depolama alanını aşma
 
@@ -551,24 +582,9 @@ Bu örnekte, mevcut veritabanları çalışmaya devam eder ve yeni dosyalar ekle
 
 [Kalan dosyaların sayısını](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) sistem görünümlerini kullanarak belirleyebilirsiniz. Bu sınıra ulaştıysanız, [DBCC SHRINKFILE ifadesini kullanarak daha küçük bir dosyayı boş ve silmeyi](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) deneyin veya [Bu sınıra sahip olmayan iş açısından kritik katmanına](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)geçin.
 
-### <a name="tooling"></a>Araçları
-
-SQL Server Management Studio ve SQL Server Veri Araçları yönetilen bir örneğe erişirken bazı sorunlar olabilir.
-
-- SQL Server Veri Araçları şu anda Azure AD Server sorumlularını (oturum açma) ve kullanıcıları (Genel Önizleme) kullanma desteklenmiyor.
-- Azure AD Server sorumluları (oturumlar) ve kullanıcıları (Genel Önizleme) için betik oluşturma SQL Server Management Studio desteklenmez.
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Bazı görünümlerde, günlüklerde ve iletilerde yanlış veritabanı adları
+### <a name="guid-values-shown-instead-of-database-names"></a>Veritabanı adları yerine gösterilen GUID değerleri
 
 Çeşitli sistem görünümleri, performans sayaçları, hata iletileri, XEvents ve hata günlüğü girdileri, gerçek veritabanı adları yerine GUID veritabanı tanımlayıcılarını görüntüler. Gelecekte gerçek veritabanı adlarıyla değiştirildiklerinden, bu GUID tanımlayıcılarına güvenmeyin.
-
-### <a name="database-mail"></a>Veritabanı posta
-
-`@query` [Sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) yordamındaki parametresi çalışmıyor.
-
-### <a name="database-mail-profile"></a>Veritabanı Postası profili
-
-SQL Server Agent tarafından kullanılan Veritabanı Postası profili çağrılmalıdır `AzureManagedInstance_dbmail_profile`. Diğer Veritabanı Postası profili adları için kısıtlama yoktur.
 
 ### <a name="error-logs-arent-persisted"></a>Hata günlükleri kalıcı değil
 
@@ -616,12 +632,6 @@ Bu kod aynı örnekteki verilerle çalışabilse de, MSDTC 'yi gerektirir.
 Yönetilen bir örneğe yerleştirilmiş olan CLR modülleri veya geçerli örneğe başvuran dağıtılmış sorgular bazen yerel bir örneğin IP 'sini çözümleyemeyebilir. Bu hata, geçici bir sorundur.
 
 **Sorunu** Mümkünse, bir CLR modülünde bağlam bağlantılarını kullanın.
-
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>Hizmet tarafından yönetilen anahtara sahip TDE şifreli veritabanları, Kullanıcı tarafından başlatılan yedeklemeleri desteklemez
-
-Hizmet tarafından yönetilen `BACKUP DATABASE ... WITH COPY_ONLY` saydam veri şifrelemesi (tde) ile şifrelenmiş bir veritabanında yürütemezsiniz. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız.
-
-**Sorunu** Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

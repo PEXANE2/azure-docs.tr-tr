@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985717"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624711"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Özellik Karşılaştırması: Azure SQL veritabanı SQL Server karşılaştırması
 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Harmanlama-sunucu/örnek](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Hayır, varsayılan mantıksal Sunucu harmanlaması `SQL_Latin1_General_CP1_CI_AS` her zaman kullanılır. | Evet, [örnek oluşturulduğunda](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) ayarlanabilir ve daha sonra güncelleştirilemez. |
 | [Columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Evet- [Premium katman, Standart katman-S3 ve üzeri, genel amaçlı katmanı ve iş açısından kritik katmanları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Evet |
 | [Ortak dil çalışma zamanı-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Hayır | Evet, ancak `CREATE ASSEMBLY` bildirimde dosya sistemine erişim olmadan-bkz. [clr farkları](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [Kapsanan veritabanları](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Evet | Şu anda [GERI yükleme sırasında, zaman içinde nokta GERI yükleme dahil bir hata nedeniyle](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database)yok. Bu, yakında düzeltilecektir. |
+| [Kapsanan veritabanları](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Evet | Evet |
 | [Kapsanan kullanıcılar](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Evet | Evet |
 | [Akış dili anahtar sözcüklerinin denetimi](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Evet | Evet |
 | [Kimlik Bilgileri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Evet, ancak yalnızca [veritabanı kapsamlı kimlik bilgileri](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Evet, ancak yalnızca **Azure Key Vault** ve `SHARED ACCESS SIGNATURE` desteklenir, [ayrıntıları](sql-database-managed-instance-transact-sql-information.md#credential) görüntüle |
@@ -132,7 +132,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Zamana bağlı tablolar](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Evet](sql-database-temporal-tables.md) | [Evet](sql-database-temporal-tables.md) |
 | Saat dilimi seçimi | Hayır | [Evet](sql-database-managed-instance-timezone.md), yönetilen örnek oluşturulduğunda yapılandırılması gerekir. |
 | Tehdit algılama|  [Evet](sql-database-threat-detection.md)|[Evet](sql-database-managed-instance-threat-detection.md)|
-| [İzleme bayrakları](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Hayır | Hayır |
+| [İzleme bayrakları](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Hayır | Evet, ancak yalnızca sınırlı genel izleme bayrakları kümesi. [DBCC farklarına](sql-database-managed-instance-transact-sql-information.md#dbcc) bakın |
 | [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) | Evet, [işlem ve anlık görüntü çoğaltma abonesi](sql-database-single-database-migrate.md) | Evet, [genel önizlemede](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance). Kısıtlamaların [buradaki](sql-database-managed-instance-transact-sql-information.md#replication)kısıtlamalarına bakın. |
 | [Değişkenler](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Evet | Evet |
 | [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Evet-yalnızca Genel Amaçlı ve İş Açısından Kritik hizmet katmanları| [Evet](transparent-data-encryption-azure-sql.md) |

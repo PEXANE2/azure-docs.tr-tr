@@ -4,14 +4,14 @@ description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kayna
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 7/9/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 73f4b6fe4714d21c12d2c7bd387cd30f6f711d5a
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226808"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624316"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
@@ -167,7 +167,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Larý | Evet | Evet |
+| sunucu | Evet | Evet |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Kaynak türü | Resource group | Subscription |
@@ -229,8 +229,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | ------------- | ----------- | ---------- |
 | leriniz | Hayır | Hayır |
 | dosya sunucuları | Hayır | Hayır |
-| Çizelge | Hayır | Hayır |
-| Onlarla | Hayır | Hayır |
+| işler | Hayır | Hayır |
+| çalışma alanı | Hayır | Hayır |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Kaynak türü | Resource group | Subscription |
@@ -263,7 +263,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | Redis | Evet | Evet |
 
 > [!IMPORTANT]
-> Redsıs örneği için Azure önbelleği bir sanal ağla yapılandırıldıysa, örnek farklı bir aboneliğe taşınamaz. Bkz. [sanal ağların taşıma sınırlamaları](./move-limitations/virtual-network-move-limitations.md).
+> Redsıs örneği için Azure önbelleği bir sanal ağla yapılandırıldıysa, örnek farklı bir aboneliğe taşınamaz. Bkz. [sanal ağların taşıma sınırlamaları](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Kaynak türü | Resource group | Subscription |
@@ -309,24 +309,24 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Evet | Evet |
+| hesaplar | Evet | Evet |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | availabilitysets | Evet | Evet |
-| Disklerinden | Evet | Evet |
+| diskler | Evet | Evet |
 | Galeriler | Hayır | Hayır |
 | Galeriler/görüntüler | Hayır | Hayır |
 | Galeriler/resimler/sürümler | Hayır | Hayır |
 | hostgroups | Hayır | Hayır |
 | hostgroups/konaklar | Hayır | Hayır |
-| images | Evet | Evet |
+| görüntüler | Evet | Evet |
 | proximityplacementgroups | Hayır | Hayır |
 | restorepointcollections | Hayır | Hayır |
 | sharedvmımages | Hayır | Hayır |
 | sharedvmımages/sürümler | Hayır | Hayır |
-| görüntüsünü | Evet | Evet |
+| anlık görüntüler | Evet | Evet |
 | virtualmachines | Evet | Evet |
 | virtualmachines/uzantıları | Evet | Evet |
 | virtualmachinescalesets | Evet | Evet |
@@ -368,7 +368,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. Cortanaanalizi
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Hayır | Hayır |
+| hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 | Kaynak türü | Resource group | Subscription |
@@ -383,7 +383,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Çizelge | Hayır | Hayır |
+| işler | Hayır | Hayır |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 | Kaynak türü | Resource group | Subscription |
@@ -393,7 +393,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Onlarla | Hayır | Hayır |
+| çalışma alanı | Hayır | Hayır |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Kaynak türü | Resource group | Subscription |
@@ -409,8 +409,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdataexchange"></a>Microsoft. DataExchange
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Paketlerle | Hayır | Hayır |
-| Planlama | Hayır | Hayır |
+| paketler | Hayır | Hayır |
+| planlar | Hayır | Hayır |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Kaynak türü | Resource group | Subscription |
@@ -426,12 +426,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Evet | Evet |
+| hesaplar | Evet | Evet |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Evet | Evet |
+| hesaplar | Evet | Evet |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 | Kaynak türü | Resource group | Subscription |
@@ -443,18 +443,18 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Larý | Evet | Evet |
+| sunucu | Evet | Evet |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Larý | Evet | Evet |
+| sunucu | Evet | Evet |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | sunucu grupları | Hayır | Hayır |
-| Larý | Evet | Evet |
+| sunucu | Evet | Evet |
 | serversv2 | Evet | Evet |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
@@ -478,7 +478,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Örleri | Hayır | Hayır |
+| örleri | Hayır | Hayır |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Kaynak türü | Resource group | Subscription |
@@ -528,12 +528,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | leriniz | Evet | Evet |
-| Öznitelikleri | Evet | Evet |
+| ad alanları | Evet | Evet |
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Hayır | Hayır |
+| hesaplar | Hayır | Hayır |
 
 ## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 | Kaynak türü | Resource group | Subscription |
@@ -558,7 +558,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| larla | Hayır | Hayır |
+| makineler | Hayır | Hayır |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 | Kaynak türü | Resource group | Subscription |
@@ -568,24 +568,24 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Çizelge | Evet | Evet |
+| işler | Evet | Evet |
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Hayır | Hayır |
+| hesaplar | Hayır | Hayır |
 | actiongroups | Evet | Evet |
 | activitylogalerts | Hayır | Hayır |
 | alertrules | Evet | Evet |
 | autoscalesettings | Evet | Evet |
-| Bileşenleri | Evet | Evet |
+| bileşenleri | Evet | Evet |
 | guestdiagnosticsettings | Hayır | Hayır |
 | metricalerts | Hayır | Hayır |
 | notificationgroups | Hayır | Hayır |
 | notificationrules | Hayır | Hayır |
 | scheduledqueryrules | Evet | Evet |
 | Web testleri | Evet | Evet |
-| Kitabı | Evet | Evet |
+| çalışma kitapları | Evet | Evet |
 
 > [!IMPORTANT]
 > Yeni aboneliğe taşınmasının [abonelik kotalarını](../azure-subscription-service-limits.md#azure-monitor-limits)aşmadığından emin olun.
@@ -623,12 +623,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Evet | Evet |
+| hesaplar | Evet | Evet |
 
 ## <a name="microsoftlocationservices"></a>Microsoft. LocationServices
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Hayır | Hayır |
+| hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Kaynak türü | Resource group | Subscription |
@@ -644,7 +644,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | ------------- | ----------- | ---------- |
 | commitmentplanlar | Evet | Evet |
 | Hizmetleri | Evet | Hayır |
-| Onlarla | Evet | Evet |
+| çalışma alanı | Evet | Evet |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | Kaynak türü | Resource group | Subscription |
@@ -654,7 +654,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Hayır | Hayır |
+| hesaplar | Hayır | Hayır |
 | hesaplar/çalışma alanları | Hayır | Hayır |
 | hesaplar/çalışma alanları/projeler | Hayır | Hayır |
 | teamaccounts | Hayır | Hayır |
@@ -664,7 +664,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Evet | Evet |
+| hesaplar | Evet | Evet |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft. MachineLearningOperationalization
 | Kaynak türü | Resource group | Subscription |
@@ -674,7 +674,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmachinelearningservices"></a>Microsoft. MachineLearningServices
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Onlarla | Hayır | Hayır |
+| çalışma alanı | Hayır | Hayır |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
 | Kaynak türü | Resource group | Subscription |
@@ -684,7 +684,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Evet | Evet |
+| hesaplar | Evet | Evet |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 | Kaynak türü | Resource group | Subscription |
@@ -722,7 +722,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | applicationsecuritygroups | Evet | Evet |
 | azurefirewalls | Evet | Evet |
 | Savunma Konakları | Hayır | Hayır |
-| bağlantının | Evet | Evet |
+| bağlantılar | Evet | Evet |
 | ddoscustompolicies | Evet | Evet |
 | ddosprotectionplanlar | Hayır | Hayır |
 | dnszones | Evet | Evet |
@@ -730,7 +730,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | expressroutecrossconnections | Hayır | Hayır |
 | expressroutegateway 'ler | Hayır | Hayır |
 | expressrouteports | Hayır | Hayır |
-| frontkapıların | Hayır | Hayır |
+| frontdoors | Hayır | Hayır |
 | frontdoorwebapplicationfirewallpolicies | Hayır | Hayır |
 | loadbalancers | Evet-temel SKU<br>Standart SKU yok | Evet-temel SKU<br>Standart SKU yok |
 | localnetworkgateway 'ler | Evet | Evet |
@@ -765,18 +765,18 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | webapplicationfirewallpolicies | Evet | Evet |
 
 > [!IMPORTANT]
-> Bkz. [sanal ağlar taşıma Kılavuzu](./move-limitations/virtual-network-move-limitations.md).
+> Bkz. [ağ taşıma Kılavuzu](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Öznitelikleri | Evet | Evet |
+| ad alanları | Evet | Evet |
 | ad alanları/notificationhub 'lar | Evet | Evet |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Onlarla | Evet | Evet |
+| çalışma alanı | Evet | Evet |
 
 > [!IMPORTANT]
 > Yeni aboneliğe taşınmasının [abonelik kotalarını](../azure-subscription-service-limits.md#azure-monitor-limits)aşmadığından emin olun.
@@ -786,17 +786,17 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | ------------- | ----------- | ---------- |
 | managementconfigurations | Evet | Evet |
 | çözümler | Evet | Evet |
-| Görünümler | Evet | Evet |
+| görüntüleme | Evet | Evet |
 
 ## <a name="microsoftpeering"></a>Microsoft. eşleme
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| eşlemeleri | Hayır | Hayır |
+| eşlemeler | Hayır | Hayır |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Panoların | Evet | Evet |
+| panoların | Evet | Evet |
 
 ## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 | Kaynak türü | Resource group | Subscription |
@@ -816,7 +816,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftprojectoxford"></a>Microsoft. ProjectOxford
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Hayır | Hayır |
+| hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 | Kaynak türü | Resource group | Subscription |
@@ -829,7 +829,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Öznitelikleri | Evet | Evet |
+| ad alanları | Evet | Evet |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
 | Kaynak türü | Resource group | Subscription |
@@ -839,7 +839,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| var | Evet | Evet |
+| akışlar | Evet | Evet |
 | işlere | Evet | Evet |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -864,7 +864,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Öznitelikleri | Evet | Evet |
+| ad alanları | Evet | Evet |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Kaynak türü | Resource group | Subscription |
@@ -874,9 +874,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | kapsayıcı grupları | Hayır | Hayır |
 | containergroupsets | Hayır | Hayır |
 | edgeclusters | Hayır | Hayır |
-| Mamak | Hayır | Hayır |
+| ağlar | Hayır | Hayır |
 | secretmağazaları | Hayır | Hayır |
-| volumes | Hayır | Hayır |
+| birim | Hayır | Hayır |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
 | Kaynak türü | Resource group | Subscription |
@@ -884,9 +884,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | uygulamalar | Evet | Evet |
 | kapsayıcı grupları | Hayır | Hayır |
 | geçidinin | Evet | Evet |
-| Mamak | Evet | Evet |
-| kaynaklanır | Evet | Evet |
-| volumes | Evet | Evet |
+| ağlar | Evet | Evet |
+| gizli dizi | Evet | Evet |
+| birim | Evet | Evet |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 | Kaynak türü | Resource group | Subscription |
@@ -916,7 +916,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | ınstancepools | Hayır | Hayır |
 | ManagedInstances | Hayır | Hayır |
 | ManagedInstances/veritabanları | Hayır | Hayır |
-| Larý | Evet | Evet |
+| sunucu | Evet | Evet |
 | sunucular/veritabanları | Evet | Evet |
 | sunucular/elaun havuzları | Evet | Evet |
 | virtualkümeler | Evet | Evet |
@@ -978,7 +978,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | ------------- | ----------- | ---------- |
 | lý | Hayır | Hayır |
 | ortamlar/EventSources | Hayır | Hayır |
-| örnekler | Hayır | Hayır |
+| Örnekler | Hayır | Hayır |
 | örnekler/ortamlar | Hayır | Hayır |
 | örnekler/ortamlar/EventSources | Hayır | Hayır |
 
@@ -986,7 +986,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | providerkayıtları | Hayır | Hayır |
-| Kaynakların | Hayır | Hayır |
+| kaynaklar | Hayır | Hayır |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Kaynak türü | Resource group | Subscription |
@@ -1008,7 +1008,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| account | Evet | Evet |
+| hesap | Evet | Evet |
 | Hesap/uzantı | Evet | Evet |
 | hesap/proje | Evet | Evet |
 
@@ -1025,13 +1025,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftweb"></a>Microsoft. Web
 | Kaynak türü | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Sertifika | Hayır | Evet |
+| sertifika | Hayır | Evet |
 | connectiongateway 'ler | Evet | Evet |
-| bağlantının | Evet | Evet |
+| bağlantılar | Evet | Evet |
 | customapsıs | Evet | Evet |
 | hostingenvironments | Hayır | Hayır |
 | serverfarms | Evet | Evet |
-| barındıra | Evet | Evet |
+| siteler | Evet | Evet |
 | siteler/premieraddons | Evet | Evet |
 | siteler/yuvalar | Evet | Evet |
 
@@ -1048,7 +1048,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 | ------------- | ----------- | ---------- |
 | applicationgroups | Hayır | Hayır |
 | Ana bilgisayar havuzları | Hayır | Hayır |
-| Onlarla | Hayır | Hayır |
+| çalışma alanı | Hayır | Hayır |
 
 ## <a name="third-party-services"></a>Üçüncü taraf hizmetleri
 

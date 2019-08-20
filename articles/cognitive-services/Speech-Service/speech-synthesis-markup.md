@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855092"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624251"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
 
@@ -31,6 +31,10 @@ SSML 'nin konuşma hizmetleri uygulamasının, World Wide Web Konsorsiyumu [konu
 Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve 4 dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Desteklenen dillerin, yerel ayarların ve seslerin (sinir ve standart) tüm listesi için bkz. [dil desteği](language-support.md).
 
 Standart, sinir ve özel sesler hakkında daha fazla bilgi edinmek için bkz. [metinden konuşmaya genel bakış](text-to-speech.md).
+
+## <a name="special-characters"></a>Özel karakterler
+
+Metin sentezleştirilmiş konuşmayı dönüştürmek için SSML kullanırken, XML gibi özel karakterlerin, tırnak işaretleri, kesme işareti ve köşeli ayraçlar gibi özel karakterler kaçışına dikkat edilmelidir. Daha fazla bilgi için bkz [. Genişletilebilir Biçimlendirme Dili (XML) 1,0: Ek D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>Desteklenen SSML öğeleri
 
@@ -134,7 +138,7 @@ Değişiklikler tümce düzeyinde uygulanır ve stil sese göre farklılık gös
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| türü | Konuşma stilini belirtir. Şu anda, konuşma stilleri sese özeldir. | Sinir Voice için konuşma stilini ayarlarken gereklidir. Kullanıyorsanız `mstts:express-as`, Type belirtilmelidir. Geçersiz bir değer sağlanmışsa, bu öğe yok sayılır. |
+| type | Konuşma stilini belirtir. Şu anda, konuşma stilleri sese özeldir. | Sinir Voice için konuşma stilini ayarlarken gereklidir. Kullanıyorsanız `mstts:express-as`, Type belirtilmelidir. Geçersiz bir değer sağlanmışsa, bu öğe yok sayılır. |
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
@@ -142,6 +146,7 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |-------|------|-------------|
 | `en-US-JessaNeural` | tür =`cheerful` | Olumlu ve mutlu bir ehareketini ifade eder |
 | | tür =`empathy` | Bir fikir ve anlalama hakkında ifade eder |
+| | tür =`chat` | Rastgele, gevşek bir tonda konuşabilirsiniz |
 | `zh-CN-XiaoxiaoNeural` | tür =`newscast` | Haber yayınlarına benzer şekilde resmi bir tonu ifade eder |
 | | tür =`sentiment` | Dokunmadan bir ileti veya hikaye ileten |
 

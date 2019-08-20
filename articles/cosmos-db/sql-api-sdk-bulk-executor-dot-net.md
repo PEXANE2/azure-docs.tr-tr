@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 989d52e773ed01a8fd1f4d383c42d7628e196a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d24481c1364b41f38e4ca7b8f7d726ebc22a1117
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814714"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624639"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: İndirme bilgileri 
 
@@ -33,9 +33,9 @@ ms.locfileid: "68814714"
 
 | |  |
 |---|---|
-| **Açıklama**| .Net toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü, Azure Cosmos DB kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
+| **Açıklama**| .Net toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
 |**SDK'sını indirme**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **GitHub 'da Bulkyürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+| **GitHub 'da toplu yürütücü kitaplığı**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Kullanmaya başlama**|[Toplu yürütücü kitaplığı .NET SDK ile çalışmaya başlama](bulk-executor-dot-net.md)|
 | **Geçerli desteklenen çerçevesi**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
@@ -60,7 +60,7 @@ ms.locfileid: "68814714"
 
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
-* Bulkyürütücü kitaplığı 'nın .NET Core uygulamalarıyla çalışmasını sağlamak için desteklenen hedef çerçevelerinden biri olarak 2,0 .NET Standard eklendi.
+* Toplu yürütücü kitaplığı 'nın .NET Core uygulamalarıyla çalışmasını sağlamak için desteklenen hedef çerçevelerinden biri olarak 2,0 .NET Standard eklendi.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
@@ -80,11 +80,11 @@ ms.locfileid: "68814714"
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* Bir sorun düzeltildi ve bu, Bulkyürütücü tarafından kullanılan Kullanıcı aracısında bir biçimlendirme sorununa neden oldu.
+* Toplu yürütücü tarafından kullanılan Kullanıcı aracısında bir biçimlendirme sorununa neden olan bir sorun düzeltildi.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* Depolama birimi özel durum oluşturmadan geçerli kapasiteyi aştığında, Bulkyürütücü içeri aktarma ve güncelleştirme API 'Lerinde Cosmos DB kapsayıcısının esnek ölçeklendirilmesine şeffaf bir şekilde uyum sağlar.
+* Toplu yürütücü içeri aktarma ve güncelleştirme API 'Lerinde, depolama, özel durum oluşturmadan geçerli kapasiteyi aştığında Cosmos kapsayıcısının esnek ölçeklendirilmesine şeffaf bir şekilde uyum sağlar.
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
@@ -92,7 +92,7 @@ ms.locfileid: "68814714"
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
-* Toplu bir sorun düzeltildi ve bu, sabit koleksiyonlara içeri aktarırken JSRT hatası oluşmasına neden oldu.
+* Toplu yürütücü 'in sabit koleksiyonlara aktarılırken JSRT hatası oluşturması nedeniyle oluşan bir sorun düzeltildi.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 

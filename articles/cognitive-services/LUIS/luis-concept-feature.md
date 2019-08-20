@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639217"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624579"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUSıS uygulamanızdaki ifade listesi özellikleri
 
@@ -69,7 +69,7 @@ Su gövdesi için sözcükler veya ifadeler eş anlamlı olduğundan ve söyleye
 
 ### <a name="non-interchangeable-lists"></a>Çapraz olmayan listeler
 
-Çapraz olmayan bir tümcecik listesi, LUSıS 'de algılama yapan bir sinyaldir. Tümcecik listesi, diğer sözcüklerin daha önemli olduğu kelimeleri veya tümceleri gösterir. Bu, hem amacı hem de varlık algılamayı belirlemede yardımcı olur. Örneğin, genel (kültürler genelinde, ancak hala tek bir dilde) seyahat gibi bir konu etki alanınız olduğunu varsayalım. Uygulama için önemli olan ancak eş anlamlı olmayan sözcükler ve deyimler vardır. 
+Çapraz olmayan bir tümcecik listesi, LUSıS 'de algılama yapan bir sinyaldir. Tümcecik listesi, diğer sözcüklerden daha önemli olan kelimeleri veya tümceleri gösterir. Bu, hem amacı hem de varlık algılamayı belirlemede yardımcı olur. Örneğin, genel (kültürler genelinde, ancak hala tek bir dilde) seyahat gibi bir konu etki alanınız olduğunu varsayalım. Uygulama için önemli olan ancak eş anlamlı olmayan sözcükler ve deyimler vardır. 
 
 Diğer bir örnek için, nadir, özel ve yabancı sözcükler için, çakışmayan bir tümcecik listesi kullanın. LUIS yabancı kelimeler (dışında uygulamanın kültür) yanı sıra, nadir ve özel sözcük tanıyamadı olabilir. Nadir bir sözcükler kümesini LUIS tanımayı öğrenin bir sınıf oluşturur, ancak eş anlamlılar olmayan değiştirilebilir olmayan ayarını gösterir veya birbirleri ile değiştirilebilir.
 

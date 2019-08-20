@@ -7,15 +7,15 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963835"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623821"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli nedir?
-Service Fabric uygulamaların Azure Resource Manager aracılığıyla Service Fabric kümenize dağıtılması önerilir. Bu yöntem, JSON 'daki uygulama ve Hizmetleri tanımlamaya ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtmanıza olanak tanır. Uygulamaları PowerShell veya Azure CLı aracılığıyla dağıtmanın ve yönetmenin aksine, kümenin kullanıma başlamasını beklemeniz gerekmez. Uygulama kaydı, sağlama ve dağıtım işleminin hepsi tek bir adımda meydana gelebilir. Bu, kümenizde uygulama yaşam döngüsünü yönetmek için en iyi uygulamadır. Daha fazla bilgi için [en iyi uygulamalara](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)bakın.
+Service Fabric uygulamaların Azure Resource Manager aracılığıyla Service Fabric kümenize dağıtılması önerilir. Bu yöntem, JSON 'daki uygulama ve Hizmetleri tanımlamaya ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtmanıza olanak tanır. Uygulamaları PowerShell veya Azure CLı aracılığıyla dağıtmanın ve yönetmenin aksine, kümenin kullanıma başlamasını beklemeniz gerekmez. Uygulama kaydetme, hazırlama ve dağıtma işlemlerinin tümü tek bir adımda gerçekleşebilir. Bu, kümenizdeki uygulama yaşam döngüsünü yönetmek için kullanılabilecek en iyi yöntemdir. Daha fazla bilgi için [en iyi uygulamalara](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)bakın.
 
 Uygun olduğunda, uygulamalarınızı geliştirmek için Kaynak Yöneticisi kaynak olarak yönetin:
 * Denetim izi: Kaynak Yöneticisi her işlemi denetler ve bu uygulamalarda ve kümeniz üzerinde yapılan değişiklikleri izlemenize yardımcı olabilecek ayrıntılı bir *etkinlik günlüğü* tutar.
@@ -33,7 +33,7 @@ Bu belgede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Azure Resource Manager kullanarak uygulama kaynaklarını dağıtma  
 Azure Resource Manager uygulama kaynak modelini kullanarak bir uygulamayı ve hizmetlerini dağıtmak için, uygulama kodu paketleyip paketi yüklemeniz ve sonra bir Azure Resource Manager şablonundaki paketin konumuna uygulama olarak başvurması gerekir Kaynak. Daha fazla bilgi için, [paketi bir uygulamayı](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)görüntüleyin.
           
-Ardından, bir Azure Resource Manager şablonu oluşturun, Parameters dosyasını uygulama ayrıntıları ile güncelleştirin ve Service Fabric kümesine dağıtın. Buraya örneklere bakın
+Ardından, bir Azure Resource Manager şablonu oluşturun, Parameters dosyasını uygulama ayrıntıları ile güncelleştirin ve Service Fabric kümesine dağıtın. [Buradaki](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)örneklere bakın.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma 
 Kaynak Yöneticisi şablondan uygulama dağıtmak, uygulama görüntüsünü hazırlamak için bir depolama hesabı gerektirir. Uygulamalarınızı hazırlamak için, mevcut bir depolama hesabını yeniden kullanabilir veya yeni bir depolama hesabı oluşturabilirsiniz. Mevcut bir depolama hesabını kullanmak istiyorsanız, bu adımı atlayabilirsiniz. 

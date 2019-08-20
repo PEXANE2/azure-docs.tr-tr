@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967623"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624272"
 ---
 # <a name="what-are-the-speech-services"></a>Konuşma Tanıma Hizmetleri nelerdir?
 
@@ -42,7 +42,8 @@ Bu özellikler Azure konuşma hizmetlerini yapar. Her bir özellik için genel k
 Azure konuşma Hizmetleri yenilikleri hakkında bilgi edinin.
 
 * Ağustos 2019
-  * **Yeni öğretici**: [Konuşmayı konuşma SDK 'Sı ile etkinleştirin,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * **Yeni öğretici**: [Konuşma SDK’sı ile botunuzu ses ile etkinleştirme, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * Ses için yeni bir konuşma stili [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)eklendi. `en-US-JessaNeural` 
 * Haziran 2019
   * Yayınlanan konuşma SDK 1.6.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
 * 2019 Mayıs-belgeler artık [konuşma dökümü](conversation-transcription-service.md), [çağrı merkezi dökümü](call-center-transcription.md)ve [sesli ilk sanal yardımcılar](voice-first-virtual-assistants.md)için kullanılabilir.

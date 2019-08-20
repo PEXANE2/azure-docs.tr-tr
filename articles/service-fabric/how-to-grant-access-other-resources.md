@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: b6e1108ffee13f1583d920947404963a69616788
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958427"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624899"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Service Fabric uygulamasının Azure kaynaklarına yönetilen kimlik erişimi verme
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric uygulamasının Azure kaynaklarına yönetilen kimlik erişimi verme (Önizleme)
 
 Uygulamanın diğer kaynaklara erişmek için yönetilen kimliğini kullanabilmesi için önce bu kimliğe erişilmekte olan korumalı Azure kaynağında izin verilmesi gerekir. İzin verme, genellikle Azure hizmetinin ' denetim düzlemi ' üzerinde, Azure Resource Manager aracılığıyla yönlendirilen korunan kaynağa sahip olan bir yönetim eyleminden oluşur ve bu, uygun rol tabanlı erişim denetimi uygular.
 

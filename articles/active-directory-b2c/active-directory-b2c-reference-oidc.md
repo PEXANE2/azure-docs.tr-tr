@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 08/20/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f6188f5c5bdd256ee84c5e7dc8632e5c067ceca5
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541729"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622067"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma
 
@@ -32,11 +32,10 @@ Azure AD B2C, standart OpenID Connect protokolünü basit kimlik doğrulaması v
 
 Web uygulamanızın kullanıcı kimliğini doğrulaması ve bir Kullanıcı akışı çalıştırması gerektiğinde, kullanıcıyı `/authorize` uç noktaya yönlendirebilir. Kullanıcı, Kullanıcı akışına bağlı olarak eylem gerçekleştirir.
 
-Bu istekte istemci, `scope` parametresindeki kullanıcıdan almaları gereken izinleri ve `p` parametresinde çalıştırmak için kullanıcı akışını gösterir. Üç örnek, her biri farklı bir Kullanıcı akışı kullanan aşağıdaki bölümlerde (okunabilirlik için satır sonları ile) verilmiştir. Her isteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Bir tane varsa `fabrikamb2c` ve bir Kullanıcı akışı oluşturduysanız, kiracınızın adıyla değiştirebilirsiniz. Ayrıca, ' i de değiştirmeniz `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`gerekir. Bu istemci KIMLIĞINI, oluşturduğunuz uygulama kaydının uygulama KIMLIĞIYLE değiştirin. Ayrıca, ilke adını `b2c_1_sign_in` kiracınızda bulunan ilke adıyla değiştirin.
+Bu istekte istemci, `scope` parametresindeki kullanıcıdan almaları gereken izinleri gösterir ve çalıştırılacak Kullanıcı akışını belirtir. Üç örnek, her biri farklı bir Kullanıcı akışı kullanan aşağıdaki bölümlerde (okunabilirlik için satır sonları ile) verilmiştir. Her isteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Bir tane varsa `fabrikamb2c` ve bir Kullanıcı akışı oluşturduysanız, kiracınızın adıyla değiştirebilirsiniz. Ayrıca, ' i de değiştirmeniz `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`gerekir. Bu istemci KIMLIĞINI, oluşturduğunuz uygulama kaydının uygulama KIMLIĞIYLE değiştirin. Ayrıca, ilke adını ()`{policy}`kiracınızda bulunan ilke adıyla (örneğin `b2c_1_sign_in`,) değiştirin.
 
-#### <a name="use-a-sign-in-user-flow"></a>Oturum açma Kullanıcı akışı kullanma
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -44,40 +43,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
-&p=b2c_1_sign_in
-```
-
-#### <a name="use-a-sign-up-user-flow"></a>Kaydolma Kullanıcı akışı kullanma
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_sign_up
-```
-
-#### <a name="use-an-edit-profile-user-flow"></a>Bir düzenleme profili Kullanıcı akışı kullanın
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_edit_profile
 ```
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
+| Kiracı | Evet | Azure AD B2C kiracınızın adı |
+| ilkesinin | Evet | Çalıştırılan Kullanıcı akışı. Azure AD B2C kiracınızda oluşturulan bir Kullanıcı akışının adıdır. Kullanıcı akışının adı ile `b2c_1_`başlamalıdır. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`, veya `b2c_1_edit_profile`. |
 | client_id | Evet | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
 | nonce | Evet | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılan rastgele benzersiz bir dizedir. |
-| p | Evet | Çalıştırılan Kullanıcı akışı. Azure AD B2C kiracınızda oluşturulan bir Kullanıcı akışının adıdır. Kullanıcı akışının adı ile `b2c\_1\_`başlamalıdır. |
 | response_type | Evet | OpenID Connect için bir KIMLIK belirteci içermelidir. Web uygulamanız, bir Web API 'SI çağırmak için belirteçler de gerekiyorsa, kullanabilirsiniz `code+id_token`. |
 | scope | Evet | Kapsamların boşlukla ayrılmış listesi. `openid` Kapsam, kullanıcıya oturum açma ve kimlik belirteçleri biçimindeki Kullanıcı hakkında veri edinme iznini gösterir. Kapsam `offline_access` , Web uygulamaları için isteğe bağlıdır. Uygulamanızın, kaynaklara genişletilmiş erişim için *yenileme belirtecine* sahip olacağını belirtir. |
 | isteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer, kullanıcıyı `login`bu istek üzerine kimlik bilgilerini girmeye zorlayan olur. |
@@ -91,7 +64,7 @@ Kullanıcı Kullanıcı akışını tamamladıktan sonra, `redirect_uri` `respon
 
 Kullanarak `response_mode=fragment` başarılı bir yanıt şöyle görünür:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
@@ -106,7 +79,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 Ayrıca, uygulamanın bunları uygun şekilde işleyebilmesi `redirect_uri` için hataya yanıt, parametreye gönderilebilir:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -125,11 +98,15 @@ Yalnızca bir KIMLIK belirtecinin alınması, kullanıcının kimliğini doğrul
 
 Azure AD B2C, bir uygulamanın çalışma zamanında Azure AD B2C hakkında bilgi almasına izin veren bir OpenID Connect meta veri uç noktası vardır. Bu bilgiler uç noktaları, belirteç içerikleri ve belirteç imzalama anahtarlarını içerir. B2C kiracınızdaki her Kullanıcı akışı için bir JSON meta veri belgesi vardır. Örneğin, içinde `b2c_1_sign_in` `fabrikamb2c.onmicrosoft.com` Kullanıcı akışı için meta veri belgesi şu konumda bulunur:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
+```
 
 Bu yapılandırma belgesinin `jwks_uri`özelliklerinden biri, aynı kullanıcı akışı değeri şöyle olacaktır:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`.
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
+```
 
 Bir KIMLIK belirtecini imzalarken (ve meta verileri nereden alacağınız) hangi Kullanıcı akışının kullanıldığını anlamak için iki seçeneğiniz vardır. İlk olarak, Kullanıcı akış adı, kimlik belirtecindeki `acr` talebe dahil edilir. Diğer bir seçenek de, isteği keserken Kullanıcı akışını `state` parametre değerinde kodlamak ve sonra hangi Kullanıcı akışının kullanıldığını anlamak için onu çözmez. Her iki yöntem de geçerlidir.
 
@@ -159,9 +136,9 @@ Uç noktaya `response_type=code+id_token` `POST` istek göndererek istenen kayna
 
 Ayrıca, uygulamanın istemci KIMLIĞINI istenen kapsam olarak kullanma kuralına göre uygulamanızın kendi arka uç Web API 'SI için bir erişim belirteci isteyebilirsiniz (Bu, "hedef kitle" olarak bu istemci KIMLIĞINE sahip bir erişim belirtecine neden olur):
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -169,17 +146,18 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
+| Kiracı | Evet | Azure AD B2C kiracınızın adı |
+| ilkesinin | Evet | Yetkilendirme kodunu almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. Bu parametreyi, POST gövdesine değil sorgu dizesine ekleyin. |
 | client_id | Evet | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
 | client_secret | Evet | [Azure Portal](https://portal.azure.com/)oluşturulan uygulama gizli dizisi. Bu uygulama gizli anahtarı önemli bir güvenlik yapıtı. Bunu sunucunuzda güvenli bir şekilde depolamanız gerekir. Bu istemci gizliliğini düzenli aralıklarla değiştirin. |
 | code | Evet | Kullanıcı akışının başlangıcında elde ettiğiniz yetkilendirme kodu. |
 | grant_type | Evet | Yetkilendirme kodu akışı için olması `authorization_code` gereken izin türü. |
-| p | Evet | Yetkilendirme kodunu almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. Bu parametreyi, POST gövdesine değil sorgu dizesine ekleyin. |
 | redirect_uri | Evet | Yetkilendirme kodunu aldığınız uygulamanın parametresi.`redirect_uri` |
 | scope | Hayır | Kapsamların boşlukla ayrılmış listesi. `openid` Kapsam, kullanıcının oturum açma iznini gösterir ve id_token parametreleri biçiminde kullanıcı hakkında veri alabilir. Uygulamanın kendi arka uç Web API 'sine, istemcisiyle aynı uygulama KIMLIĞIYLE temsil edilen belirteçleri almak için kullanılabilir. Kapsam `offline_access` , uygulamanızın kaynaklara genişletilmiş erişim için bir yenileme belirteci gerektiğini gösterir. |
 
 Başarılı bir belirteç yanıtı şöyle görünür:
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -189,6 +167,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | Parametre | Açıklama |
 | --------- | ----------- |
 | not_before | Belirtecin geçerli kabul edildiği zaman (dönem süresi). |
@@ -200,7 +179,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
 
 Hata yanıtları şöyle görünür:
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -216,9 +195,9 @@ Hata yanıtları şöyle görünür:
 
 Bir erişim belirtecini başarıyla edindiniz, artık, arka uç Web API 'lerinize yönelik isteklerindeki belirteçleri `Authorization` üstbilgiye ekleyerek kullanabilirsiniz:
 
-```
+```HTTP
 GET /tasks
-Host: https://mytaskwebapi.com
+Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
@@ -226,9 +205,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 KIMLIK belirteçlerinin kısa bir süre içinde süresi doluyor. Kaynaklara erişmek için süre dolduktan sonra belirteçleri yenileyin. Bir belirteci, `POST` `/token` uç noktaya başka bir istek göndererek yenileyebilirsiniz. Bu kez parametre yerine `refresh_token` `code` parametresini sağlayın:
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -236,17 +215,18 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
+| Kiracı | Evet | Azure AD B2C kiracınızın adı |
+| ilkesinin | Evet | Özgün yenileme belirtecini almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. Bu parametreyi, POST gövdesine değil sorgu dizesine ekleyin. |
 | client_id | Evet | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
 | client_secret | Evet | [Azure Portal](https://portal.azure.com/)oluşturulan uygulama gizli dizisi. Bu uygulama gizli anahtarı önemli bir güvenlik yapıtı. Bunu sunucunuzda güvenli bir şekilde depolamanız gerekir. Bu istemci gizliliğini düzenli aralıklarla değiştirin. |
 | grant_type | Evet | Yetkilendirme kodu akışının bu bölümü için yenileme belirteci olması gereken izin türü. |
 | refresh_token | Evet | Akışın ikinci bölümünde alınan orijinal yenileme belirteci. Bir yenileme belirteci almak için kapsamınhemyetkilendirmehemdebelirteçisteklerindekullanılmasıgerekir.`offline_access` |
-| p | Evet | Özgün yenileme belirtecini almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. Bu parametreyi, POST gövdesine değil sorgu dizesine ekleyin. |
 | redirect_uri | Hayır | Yetkilendirme kodunu aldığınız uygulamanın parametresi.`redirect_uri` |
 | scope | Hayır | Kapsamların boşlukla ayrılmış listesi. `openid` Kapsam, kullanıcıya oturum açma ve kimlik belirteçleri biçimindeki Kullanıcı hakkında veri edinme iznini gösterir. Uygulamanın kendi arka uç Web API 'sine belirteç göndermek için, istemcisiyle aynı uygulama KIMLIĞIYLE temsil edilen belirteçleri kullanabilirsiniz. Kapsam `offline_access` , uygulamanızın kaynaklara genişletilmiş erişim için bir yenileme belirteci gerektiğini gösterir. |
 
 Başarılı bir belirteç yanıtı şöyle görünür:
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -256,6 +236,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | Parametre | Açıklama |
 | --------- | ----------- |
 | not_before | Belirtecin geçerli kabul edildiği zaman (dönem süresi). |
@@ -267,7 +248,7 @@ Başarılı bir belirteç yanıtı şöyle görünür:
 
 Hata yanıtları şöyle görünür:
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -285,7 +266,7 @@ Kullanıcının uygulamadan oturum açmasını istediğinizde, uygulamanın tan�
 
 Kullanıcının oturumunu kapatmak için kullanıcıyı `end_session` daha önce açıklanan OpenID Connect meta veri belgesinde listelenen uç noktaya yönlendirin:
 
-```
+```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 

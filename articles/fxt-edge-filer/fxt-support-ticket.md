@@ -1,38 +1,38 @@
 ---
-title: Microsoft Azure FXT Edge dosyalayıcı için bir destek bileti açın
-description: Başlangıç ve bir Azure FXT Edge dosyalayıcı düğümünün güvenli kapatma için yordamlar
+title: Microsoft Azure FXT Edge Filer için bir destek bileti açın
+description: Azure FXT Edge Filer sisteminizle ilgili yardım için bir bilet açma yordamı
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: v-erkell
-ms.openlocfilehash: 82b6477b42d627baff10d9bde46452bf43900ffd
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828203"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624107"
 ---
-# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge Fili Oluşturucu için bir destek bileti açın
+# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge fili için bir destek bileti açın
 
-Bu makalede, Azure FXT Edge dosyalayıcı sisteminize Yardım almak açıklanmaktadır.
+Bu makalede, Azure FXT Edge Filer sisteminizle ilgili nasıl yardım alabileceğiniz açıklanır.
 
-Microsoft Müşteri Hizmetleri ve desteği ile bir destek bileti açmak için Azure portalını kullanın.
+Microsoft Müşteri Hizmetleri ve desteği ile bir destek bileti açmak için Azure portal kullanın.
 
-1. Açık [Azure portalında](https://portal.azure.com/) ve oturum açın.
-1. Sol bölmede bulunan alt kısma gidip tıklayın **Yardım + Destek**.
-1. Tıklayın **yeni destek isteği**. 
+1. [Azure Portal](https://portal.azure.com/) açın ve oturum açın.
+1. Sol bölmede, en alta kaydırın ve **Yardım + Destek**' e tıklayın.
+1. **Yeni destek isteği**' ne tıklayın. 
 
-   ![Boş bir destek isteği formu ekran görüntüsü](media/fxt-support-blank.png)
+   ![Boş destek isteği formunun ekran görüntüsü](media/fxt-support-blank.png)
 
 1. İstek formunu doldurun.  
-    1. İçinde **Temelleri** sekmesini, **sorun türü** ``Technical``. 
+    1. **Temel bilgiler** sekmesinde, **sorun türünü** ``Technical``seçin. 
     1. Aboneliğinizi seçin. 
-    1. Altında **hizmet**seçin **Azure FXT Edge dosyalayıcı**. Tıklamanız gerekebilir **tüm hizmetleri** denetimi bulmak için filtre. 
-    1. Girin bir **özeti** ve **sorun türü**. 
-    ![Boş bir destek isteği formu ekran görüntüsü](media/fxt-support-populated.png) 
-    1. Tıklayın **sonraki** devam etmek için. 
-1. İçinde **ayrıntıları** sekmesinde, sorun ve sizinle hakkında daha fazla bilgi ekleyin. Sorunla ilgili bir dosyayı karşıya yükleyebilirsiniz. 
-1. İçinde **gözden geçir + Oluştur**, bilgileri kontrol edin ve tıklayın **Oluştur** isteğinizi göndermek için düğme.
+    1. **Hizmet**altında **Azure FXT Edge Filer**' ı seçin. Bulmak için **tüm hizmetler** filtre denetimine tıklamanız gerekebilir. 
+    1. Bir **Özet** girin ve **sorun türünü**seçin. 
+    ![Boş destek isteği formunun ekran görüntüsü](media/fxt-support-populated.png) 
+    1. Devam etmek için **İleri** 'yi tıklatın. 
+1. **Ayrıntılar** sekmesinde, sorun ve sizinle iletişim kurma hakkında daha fazla bilgi ekleyin. Sorunla ilgili bir dosyayı karşıya yükleyebilirsiniz. 
+1. **Gözden geçir + oluştur**' da, bilgileri denetleyin ve isteğinizi göndermek için **Oluştur** düğmesine tıklayın.
 
-İsteği gönderdikten sonra bir bilet numarası ile bir onay e-posta alırsınız. Bir destek personelin isteği hakkında sizinle iletişim kurar.
+İsteği gönderdikten sonra, Bilet numarası içeren bir onay e-postası alacaksınız. Destek ekibi üyesi, istek hakkında sizinle iletişim kuracaktır.

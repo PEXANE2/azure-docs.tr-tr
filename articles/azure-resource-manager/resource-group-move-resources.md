@@ -4,14 +4,14 @@ description: Kaynakları yeni kaynak grubuna veya aboneliğe taşıma için Azur
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 53482fdd760517967c9a4a976b43b64ba745c637
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542972"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624552"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -32,9 +32,11 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
    * [Uygulama Hizmetleri taşıma Kılavuzu](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services taşıma Kılavuzu](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klasik dağıtım modeli taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md) -klasik işlem, klasik depolama, klasik sanal ağlar ve Cloud Services
+   * [Ağ taşıma Kılavuzu](./move-limitations/networking-move-limitations.md)
    * [Kurtarma Hizmetleri taşıma Kılavuzu](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Sanal makineler taşıma Kılavuzu](./move-limitations/virtual-machines-move-limitations.md)
-   * [Sanal ağlar taşıma Kılavuzu](./move-limitations/virtual-network-move-limitations.md)
+
+   Hedef kaynak grubu bir sanal ağ içeriyorsa, bu kaynaklar taşımaya dahil olmadığında bile, bağımlı kaynaklarının durumu taşımayı engelleyebilirler. Daha fazla bilgi için bkz. [ağ taşıma Kılavuzu](./move-limitations/virtual-network-move-limitations.md).
 
 1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../azure-supportability/how-to-create-azure-support-request.md). Seçin **abonelik yönetimi** sorun türü için.
 
@@ -97,10 +99,11 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
 1. **Abonelikler arasında geçiş için kaynak ve bağımlı kaynakları aynı kaynak grubunda yer almalıdır ve birlikte taşınmaları gerekir.** Örneğin, yönetilen disklere sahip bir VM, diğer bağımlı kaynaklarla birlikte VM ve yönetilen disklerin birlikte taşınmasını gerektirir.
 
    Bir kaynağı yeni bir aboneliğe taşıyorsanız, kaynağın bağımlı kaynaklara sahip olup olmadığını ve aynı kaynak grubunda bulunup bulunmadığını kontrol edin. Kaynaklar aynı kaynak grubunda değilse, kaynakların aynı kaynak grubuyla birleştirilebilir olup olmadığını denetleyin. Bu durumda, kaynak grupları arasında taşıma işlemi kullanarak tüm bu kaynakları aynı kaynak grubuna getirin.
-    
-Daha fazla bilgi için bkz. [abonelikler arasında taşıma senaryosu](#scenario-for-move-across-subscriptions).
+
+   Daha fazla bilgi için bkz. [abonelikler arasında taşıma senaryosu](#scenario-for-move-across-subscriptions).
 
 ## <a name="scenario-for-move-across-subscriptions"></a>Abonelikler arasında geçiş senaryosu
+
 Kaynakları bir abonelikten diğerine taşımak üç adımlı bir işlemdir:
 
 ![çapraz abonelik taşıma senaryosu](./media/resource-group-move-resources/cross-subscription-move-scenario.png)

@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562906"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624140"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
-Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makale, bu teknolojilerin kapsamlı bir listesini sağlar, Işlevlerin hangi özellikler için kullanılabilir olduğunu açıklar, her yöntemi kullanırken ne olduğunu açıklar ve çeşitli senaryolarda kullanılacak en iyi yöntem için öneriler sağlar . Azure Işlevlerine dağıtımı destekleyen çeşitli araçlar, bağlamlarına göre doğru teknoloji olarak ayarlanmıştır.
+Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknolojiyi kullanabilirsiniz. Bu makale, bu teknolojilerin kapsamlı bir listesini sağlar, Işlevlerin hangi özellikler için kullanılabilir olduğunu açıklar, her yöntemi kullanırken ne olduğunu açıklar ve çeşitli senaryolarda kullanılacak en iyi yöntem için öneriler sağlar . Azure Işlevlerine dağıtımı destekleyen çeşitli araçlar, bağlamlarına göre doğru teknoloji olarak ayarlanmıştır. Genel olarak, ZIP dağıtımı Azure Işlevleri için önerilen dağıtım teknolojisidir.
 
 ## <a name="deployment-technology-availability"></a>Dağıtım teknolojisinin kullanılabilirliği
 
@@ -31,17 +31,17 @@ Azure Işlevleri, platformlar arası yerel geliştirme ve Windows ve Linux üzer
 
 Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği için tüm dağıtım teknolojileri bulunmaz. Aşağıdaki grafikte, her bir işletim sistemi ve barındırma planı birleşimi için hangi dağıtım teknolojilerinin desteklendiği gösterilmektedir:
 
-| Dağıtım teknolojisi | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış  | Linux tüketimi | Linux adanmış |
-|-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
-| Dış paket URL 'SI<sup>1</sup> |✔|✔|✔|✔|✔|
-| ZIP dağıtımı |✔|✔|✔| |✔|
-| Docker kapsayıcısı | | | | |✔|
-| Web Dağıtımı |✔|✔|✔| | |
-| Kaynak denetimi |✔|✔|✔| |✔|
-| Yerel git<sup>1</sup> |✔|✔|✔| |✔|
-| Bulut eşitleme<sup>1</sup> |✔|✔|✔| |✔|
-| FTP<sup>1</sup> |✔|✔|✔| |✔|
-| Portal düzenlemesi |✔|✔|✔| |✔<sup>2</sup>|
+| Dağıtım teknolojisi | Windows tüketimi | Windows Premium (Önizleme) | Windows ayrılmış  | Linux tüketimi | Linux Premium (Önizleme) | Linux adanmış |
+|-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
+| Dış paket URL 'SI<sup>1</sup> |✔|✔|✔|✔|✔|✔|
+| ZIP dağıtımı |✔|✔|✔|✔|✔|✔|
+| Docker kapsayıcısı | | | | |✔|✔|
+| Web Dağıtımı |✔|✔|✔| | | |
+| Kaynak denetimi |✔|✔|✔| |✔|✔|
+| Yerel git<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Bulut eşitleme<sup>1</sup> |✔|✔|✔| |✔|✔|
+| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Portal düzenlemesi |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 [el ile tetikleyici eşitlemesi](#trigger-syncing)gerektiren <sup>1</sup> dağıtım teknolojisi.  
 <sup>2</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik http ve Zamanlayıcı Tetikleyicileri için etkindir.
@@ -58,7 +58,40 @@ Tetikleyicilerden herhangi birini değiştirdiğinizde, Işlevler altyapısını
 * `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` [Ana anahtarı](functions-bindings-http-webhook.md#authorization-keys)kullanarak bir http post isteği gönderin.
 * Uygulamasına `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`bir http post isteği gönderin. Yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve işlev uygulamanızın adıyla değiştirin.
 
-## <a name="deployment-technology-details"></a>Dağıtım teknolojisi ayrıntıları 
+### <a name="remote-build"></a>Uzak derleme
+
+Azure Işlevleri, ZIP dağıtımlarından sonra aldığı kodda derlemeleri otomatik olarak gerçekleştirebilir. Bu derlemeler, uygulamanızın Windows veya Linux üzerinde çalışıyor olmasına bağlı olarak biraz farklı davranır. Bir uygulama daha önce [paket modundan Çalıştır](run-functions-from-deployment-package.md) modunda çalışmak üzere ayarlandığında uzak derlemeler gerçekleştirilmez. 
+
+> [!NOTE]
+> Uzak derleme ile ilgili sorun yaşıyorsanız, bu durum uygulamanızın özellik kullanıma alınmadan önce oluşturulması olabilir (1 Ağustos 2019). Yeni bir işlev uygulaması oluşturmayı deneyin.
+
+#### <a name="remote-build-on-windows"></a>Windows üzerinde uzak derleme
+
+Windows üzerinde çalışan tüm işlev uygulamalarının SCM (veya [kudu](https://github.com/projectkudu/kudu)) sitesi küçük bir yönetim uygulamasına sahiptir. Bu site, Azure Işlevleri için dağıtım ve derleme mantığının çoğunu işler.
+
+Bir uygulama Windows 'a dağıtıldığında, ( `dotnet restore` C#) veya `npm install` (JavaScript) gibi dile özgü komutlar çalıştırılır.
+
+#### <a name="remote-build-on-linux-preview"></a>Linux üzerinde uzak derleme (Önizleme)
+
+Linux üzerinde uzak derlemeyi etkinleştirmek için aşağıdaki [uygulama ayarlarını](functions-how-to-use-azure-function-app-settings.md#settings)ayarlamanız gerekir:
+
+* `ENABLE_ORYX_BUILD=true`
+* `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
+
+Uygulamalar Linux üzerinde uzaktan oluşturulduğunda, [dağıtım paketinden çalıştırılırlar](run-functions-from-deployment-package.md).
+
+> [!NOTE]
+> Linux adanmış (App Service) planı üzerinde uzak derleme Şu anda yalnızca Node. js ve Python için desteklenir.
+
+##### <a name="consumption-preview-plan"></a>Tüketim (Önizleme) planı
+
+Tüketim planında çalışan Linux işlev uygulamalarının, dağıtım seçeneklerini sınırlayan bir SCM/kudu sitesi yok. Ancak, tüketim planında çalışan Linux 'ta işlev uygulamaları uzak yapıları destekler. Bu uzak derlemeler [Oryx](https://github.com/microsoft/Oryx)kullanır.
+
+##### <a name="dedicated-and-premium-preview-plans"></a>Adanmış ve Premium (Önizleme) planları
+
+Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](functions-scale.md#app-service-plan) ve [Premium planda](functions-scale.md#premium-plan) Ayrıca sınırlı bir SCM/kudu sitesi de vardır ve bu, kendisi de [Oryx](https://github.com/microsoft/Oryx)'ın avantajlarından yararlanır.
+
+## <a name="deployment-technology-details"></a>Dağıtım teknolojisi ayrıntıları
 
 Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
@@ -70,17 +103,25 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 >
 >Azure Blob depolama kullanırsanız, IŞLEVLERE pakete erişim sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanın. Uygulamanın her yeniden başlatıldığı zaman içeriğin bir kopyasını getirir. Başvurunuz, uygulamanın ömrü için geçerli olmalıdır.
 
->__Ne zaman kullanılır:__ Dış paket URL 'SI, tüketim planında Linux üzerinde çalışan Azure Işlevleri için desteklenen tek dağıtım yöntemidir. Bir işlev uygulamasının başvurduğu paket dosyasını güncelleştirdiğinizde, Azure 'u uygulamanızın değiştiğini bildirmek için [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing) gerekir.
+>__Ne zaman kullanılır:__ Dış paket URL 'SI, Kullanıcı özellikle uzak bir derlemeyi istememesi durumunda, tüketim planında Linux üzerinde çalışan Azure Işlevleri için desteklenen tek dağıtım yöntemidir. Bir işlev uygulamasının başvurduğu paket dosyasını güncelleştirdiğinizde, Azure 'u uygulamanızın değiştiğini bildirmek için [Tetikleyicileri el ile eşitlemeniz](#trigger-syncing) gerekir.
 
 ### <a name="zip-deploy"></a>ZIP dağıtımı
 
-İşlev uygulamanızı içeren bir. zip dosyasını Azure 'a göndermek için ZIP Deploy kullanın. İsteğe bağlı olarak, uygulamanızı [paket modundan Çalıştır](run-functions-from-deployment-package.md) modunda başlatılacak şekilde ayarlayabilirsiniz.
+İşlev uygulamanızı içeren bir. zip dosyasını Azure 'a göndermek için ZIP Deploy kullanın. İsteğe bağlı olarak, uygulamanızı [paketten çalışmaya](run-functions-from-deployment-package.md)başlayacak şekilde ayarlayabilir veya [uzak bir derleme](#remote-build) gerçekleşmektir.
 
 >__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual STUDIO](functions-develop-vs.md#publish-to-azure)veya [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
->
->ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paket modundan Çalıştır](run-functions-from-deployment-package.md) modunda çalışacak şekilde ayarlayabilirsiniz. Paket modundan çalıştırmayı ayarlamak için, `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini olarak `1`ayarlayın. ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır.
 
->__Ne zaman kullanılır:__ ZIP dağıtımı, Premium veya adanmış planda Windows ve Linux üzerinde çalışan Işlevler için önerilen dağıtım teknolojisidir.
+Uzak yapıyla bir ZIP dağıtımı gerçekleştirmek için aşağıdaki [çekirdek araçları](functions-run-local.md) komutunu kullanın:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Alternatif olarak, ' ' azureFunctions. scmDoBuildDuringDeployment "bayrağını ekleyerek dağıtımı yaparken uzak bir derlemeyi gerçekleştirmesini VS Code bildirebilirsiniz. VS Code bayrak eklemeyi öğrenmek için [Azure Işlevleri uzantısı wiki](https://github.com/microsoft/vscode-azurefunctions/wiki)'deki yönergeleri okuyun.
+
+>ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini olarak `1`ayarlayın. ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır. 
+
+>__Ne zaman kullanılır:__ ZIP dağıtımı, Azure Işlevleri için önerilen dağıtım teknolojisidir.
 
 ### <a name="docker-container"></a>Docker kapsayıcısı
 
@@ -93,7 +134,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 >
 >Özel bir kapsayıcı kullanarak mevcut bir uygulamaya dağıtmak için, [Azure Functions Core Tools](functions-run-local.md)bölümünde [`func deploy`](functions-run-local.md#publish) komutunu kullanın.
 
->__Ne zaman kullanılır:__ İşlev uygulamanızın çalıştırıldığı Linux ortamı üzerinde daha fazla denetime ihtiyacınız olduğunda Docker kapsayıcı seçeneğini kullanın. Bu dağıtım mekanizması yalnızca App Service planındaki Linux üzerinde çalışan Işlevler için kullanılabilir.
+>__Ne zaman kullanılır:__ İşlev uygulamanızın çalıştırıldığı Linux ortamı üzerinde daha fazla denetime ihtiyacınız olduğunda Docker kapsayıcı seçeneğini kullanın. Bu dağıtım mekanizması yalnızca Linux üzerinde çalışan Işlevler için kullanılabilir.
 
 ### <a name="web-deploy-msdeploy"></a>Web Dağıtımı (MSDeploy)
 
@@ -166,23 +207,7 @@ Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve d
 
 ## <a name="deployment-slots"></a>Dağıtım yuvaları
 
-İşlev uygulamanızı Azure 'a dağıttığınızda, doğrudan üretime dağıtmak yerine ayrı bir dağıtım yuvasına dağıtım yapabilirsiniz. Dağıtım yuvaları hakkında daha fazla bilgi için bkz. [Azure App Service yuvaları](../app-service/deploy-staging-slots.md).
-
-### <a name="deployment-slots-levels-of-support"></a>Dağıtım yuvaları destek düzeyleri
-
-Dağıtım yuvaları için iki düzey destek vardır:
-
-* **Genel kullanılabilirlik (GA)** : Tam olarak desteklenir ve üretim kullanımı için onaylanır.
-* **Önizleme**: Henüz desteklenmiyor, ancak gelecekte GA durumuna ulaşması bekleniyor.
-
-| İşletim sistemi/barındırma planı | Destek düzeyi |
-| --------------- | ------ |
-| Windows tüketimi | Önizleme |
-| Windows Premium (Önizleme) | Önizleme |
-| Windows ayrılmış | Genel kullanılabilirlik |
-| Linux tüketimi | Desteklenmiyor |
-| Linux Premium (Önizleme) | Önizleme |
-| Linux adanmış | Genel kullanılabilirlik |
+İşlev uygulamanızı Azure 'a dağıttığınızda, doğrudan üretime eklemek yerine ayrı bir dağıtım yuvasına dağıtım yapabilirsiniz. Dağıtım yuvaları hakkında daha fazla bilgi için bkz. Ayrıntılar için [Azure Işlevleri dağıtım yuvaları](../app-service/deploy-staging-slots.md) belgeleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

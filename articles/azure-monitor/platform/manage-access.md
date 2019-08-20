@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881421"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624331"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerini ve çalışma alanlarını yönetme
 
@@ -44,12 +44,12 @@ Bir çalışma alanında yapılandırılan erişim denetimi modunu Azure portal 
 
 ### <a name="configure-from-the-azure-portal"></a>Azure portal yapılandırma
 
-**Log Analytics çalışma** alanı menüsündeki çalışma alanının **genel bakış** sayfasında geçerli çalışma alanı erişim denetimi modunu görüntüleyebilirsiniz. 
+**Log Analytics çalışma** alanı menüsündeki çalışma alanının **genel bakış** sayfasında geçerli çalışma alanı erişim denetimi modunu görüntüleyebilirsiniz.
 
 ![Çalışma alanı erişim denetimi modunu görüntüle](media/manage-access/view-access-control-mode.png)
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-1. Azure portal, çalışma alanınız > Log Analytics çalışma alanları ' nı seçin.  
+1. Azure portal, çalışma alanınız > Log Analytics çalışma alanları ' nı seçin.
 
 Bu ayarı, çalışma alanının **Özellikler** sayfasından değiştirebilirsiniz. Çalışma alanını yapılandırma izniniz yoksa ayarı değiştirmek devre dışı bırakılır.
 
@@ -60,7 +60,7 @@ Bu ayarı, çalışma alanının **Özellikler** sayfasından değiştirebilirsi
 Abonelikteki tüm çalışma alanları için erişim denetimi modunu incelemek üzere aşağıdaki komutu kullanın:
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 Çıkışın aşağıdakine benzer olması gerekir:
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Değeri, çalışma `False` alanının çalışma alanı bağlamı erişim moduyla yapılandırıldığı anlamına gelir.  Değeri, çalışma `True` alanının kaynak bağlamı erişim moduyla yapılandırıldığı anlamına gelir. 
+Değeri, çalışma `False` alanının çalışma alanı bağlamı erişim moduyla yapılandırıldığı anlamına gelir.  Değeri, çalışma `True` alanının kaynak bağlamı erişim moduyla yapılandırıldığı anlamına gelir.
 
->[!NOTE]
->Bir çalışma alanı Boole değeri olmadan döndürülürse ve boşsa, bu da bir `False` değer sonuçlarıyla eşleşir.
+> [!NOTE]
+> Bir çalışma alanı Boole değeri olmadan döndürülürse ve boşsa, bu da bir `False` değer sonuçlarıyla eşleşir.
 >
 
 Belirli bir çalışma alanı için erişim denetimi modunu kaynak bağlamı iznine ayarlamak için aşağıdaki betiği kullanın:
@@ -81,9 +81,9 @@ Belirli bir çalışma alanı için erişim denetimi modunu kaynak bağlamı izn
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Abonelikteki tüm çalışma alanları için erişim denetimi modunu kaynak bağ
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -159,10 +159,10 @@ Log Analytics okuyucusu rolü, aşağıdaki Azure eylemleri içerir:
 * Yönetim çözümlerini ekleme ve kaldırma
 
     > [!NOTE]
-    > Başarıyla son iki eylemleri gerçekleştirmek için bu izin kaynak grubu veya abonelik düzeyinde verilmesi gerekir.  
+    > Başarıyla son iki eylemleri gerçekleştirmek için bu izin kaynak grubu veya abonelik düzeyinde verilmesi gerekir.
 
 * Depolama hesabı anahtarlarını okuma
-* Azure Depolama’dan günlüklerin toplanmasını yapılandırma  
+* Azure Depolama’dan günlüklerin toplanmasını yapılandırma
 * Azure kaynaklarına ilişkin izleme ayarlarını düzenleme:
   * VM'lere VM uzantısı ekleme
   * Tüm Azure kaynaklarında Azure tanılamayı yapılandırma
@@ -202,7 +202,7 @@ Kullanıcılar, kaynak bağlamı erişimi kullanarak bir çalışma alanından g
 | İzin | Açıklama |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Örnekler:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Kaynak için tüm günlük verilerini görüntüleme olanağı.  |
-| `Microsoft.Insights/diagnosticSettings/write ` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
+| `Microsoft.Insights/diagnosticSettings/write` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
 
 `/read`izin genellikle, yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) ve [katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolleri gibi  _\*/Read veya_ _\*_ Permissions içeren bir rolden verilir. Belirli eylemleri içeren özel rollerin veya adanmış yerleşik rollerin bu izni içeremediğini unutmayın.
 

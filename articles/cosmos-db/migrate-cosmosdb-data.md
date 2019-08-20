@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: 041f9c95b22fd4b8c238c603deb0558f2bca01a8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737634"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624600"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 
@@ -140,9 +140,16 @@ Geçiş işlemi tamamlandıktan sonra, dizin oluşturmayı güncelleştirebilirs
 
 6. Bu hatalardan bazıları, kaynak verilerdeki hatalı belgelerden kaynaklanıyor olabilir. Bunlar tanımlanmalıdır ve düzeltilir. Ardından, başarısız olan bölümlerde içeri aktarma adımını yeniden çalıştırmanız gerekir. 
 
-Geçiş tamamlandıktan sonra, Azure Cosmos DB içindeki belge sayısı, kaynak veritabanındaki belge sayısıyla aynı olduğunu doğrulayabilirsiniz. Bu örnekte, Azure Cosmos DB toplam boyut 65 terabayt olarak etkinleştirilir. Geçiş sonrası, dizin oluşturma seçime bağlı olarak açılabilir ve RUs iş yükünün işlemleri için gereken düzeye düşürülemez.   
+Geçiş tamamlandıktan sonra, Azure Cosmos DB içindeki belge sayısı, kaynak veritabanındaki belge sayısıyla aynı olduğunu doğrulayabilirsiniz. Bu örnekte, Azure Cosmos DB toplam boyut 65 terabayt olarak etkinleştirilir. Geçiş sonrası, dizin oluşturma seçime bağlı olarak açılabilir ve RUs iş yükünün işlemleri için gereken düzeye düşürülemez.
+
+## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB ekibine başvurun
+Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek için bu kılavuzu takip edebilir, ancak büyük ölçekli geçişler için, veri modellemeyi ve genel mimari incelemesini doğrulamak üzere Azure Cosmos DB ürün ekibine ulaşmanıza önerilir. Veri kümeniz ve iş yükünüze göre, ürün ekibi sizin için geçerli olabilecek diğer performans ve maliyet iyileştirmeleri de önerebilir. Büyük ölçekli geçişlerle yardım için Azure Cosmos DB ekibine başvurmak için, aşağıda gösterildiği gibi "genel danışmanlık" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açabilirsiniz.
+
+![Geçiş desteği konusu](./media/migrate-cosmosdb-data/supporttopic.png)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [.Net](bulk-executor-dot-net.md) ve [Java](bulk-executor-java.md)'daki toplu yürütücü kitaplığını kullanan örnek uygulamaları deneyerek daha fazla bilgi edinin. 
 * Toplu yürütücü kitaplığı, Cosmos DB Spark Bağlayıcısı ile tümleşiktir, daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md) makalesi.  
+* Büyük ölçekli geçişlerle ilgili ek yardım için "genel Danışma belgesi" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun. 
 

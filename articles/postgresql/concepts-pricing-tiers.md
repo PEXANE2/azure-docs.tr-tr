@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967849"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624838"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda fiyatlandırma katmanları-tek sunucu
 
@@ -67,7 +67,7 @@ Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sın�
 |              | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:-------------|:--------------------|:---------------------|
 | Depolama türü | Azure Premium Depolama | Azure Premium Depolama |
-| Depolama boyutu | 32 GB ila 16 TB| 32-16 TB |
+| Depolama boyutu | 32 GB ila 16 TB| 32 GB ila 16 TB |
 | Depolama artış boyutu | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS | 3 IOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
 

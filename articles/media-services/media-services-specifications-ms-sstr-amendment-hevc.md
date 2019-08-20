@@ -3,7 +3,7 @@ title: HEVC için Azure Media Services-Kesintisiz Akış Protocol (MS-SSTR) Düz
 description: Bu belirtim, Azure Media Services 'de HEVC ile parçalanmış MP4 tabanlı canlı akış için protokolü ve biçimi açıklar. Bu, HEVC alma ve akış desteği dahil olmak üzere Kesintisiz Akış Protokolü belgelerinin (MS-SSTR) bir düzeltmesi. Bu makalede yalnızca HEVC sağlamak için gereken değişiklikler belirtilmiştir, yani "(değişiklik yok)", metnin yalnızca açıklama için kopyalanacağını gösterir.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: dfd6de1ab2e4530afb56d1c6c67e6d78eb9ee474
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015689"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624811"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC için Kesintisiz Akış Protocol (MS-SSTR) Düzeltme 
 
@@ -27,7 +27,7 @@ ms.locfileid: "69015689"
 
 Bu makalede, HEVC kodlamalı videonun Kesintisiz Akış etkinleştirmek için, Kesintisiz Akış protokol belirtimi [MS-SSTR] uygulanacak ayrıntılı değişiklik işlemleri sunulmaktadır. Bu belirtimde, yalnızca HEVC video codec bileşenini sağlamak için gereken değişiklikleri özetler. Makale, [MS-SSTR] belirtimiyle aynı numaralandırma şemasını izler. Makale genelinde sunulan boş başlıklar, okuyucuyu [MS-SSTR] belirtimindeki konumlarına yönlendirmek için sağlanır.  "(Değişiklik yok)", metnin yalnızca açıklama amacıyla kopyalanacağını gösterir.
 
-Makale, kesintisiz akış bildiriminde HEVC video codec sinyal sinyali için teknik uygulama gereksinimleri sağlar ve 1.5 başvuruları, HEVC, Common Encryption HEVC ve Box içeren geçerli MPEG standartlarına başvuracak şekilde güncelleştirilir. ISO tabanlı medya dosyası biçiminin adları, en son belirtimlerle tutarlı olacak şekilde güncelleştirilmiştir. 
+Bu makalede, kesintisiz akış bildiriminde HEVC video codec sinyal sinyali (' hev1 ' veya ' hvc1 ' biçim izleri kullanılarak) için teknik uygulama gereksinimleri sağlanır ve 1.5 başvuruları, geçerli MPEG standartlarına başvuracak şekilde güncelleştirilir. HEVC dahil, HEVC Common Encryption ve ISO temel medya dosyası biçimi için Box adları, en son belirtimlerle tutarlı olacak şekilde güncelleştirilmiştir. 
 
 Başvurulan Kesintisiz Akış protokol belirtimi [MS-SSTR], ses ve video gibi canlı ve isteğe bağlı dijital medyayı (bir kodlayıcıdan bir Web sunucusuna, sunucudan başka bir sunucuya ve bir sunucudan bir HTTP istemcisine.
 HTTP üzerinden MPEG-4 ([[MPEG4-ra])](https://go.microsoft.com/fwlink/?LinkId=327787)tabanlı veri yapısı teslimi kullanımı, sıkıştırılmış medya içeriklerinin farklı kalite düzeyleri arasında neredeyse gerçek zamanlı olarak geçişe olanak tanır. İstemci bilgisayar veya cihaz için ağ ve video işleme koşulları değişse bile, HTTP istemcisi son kullanıcısına ilişkin sabit bir kayıttan yürütme deneyimi elde edersiniz.
@@ -148,10 +148,12 @@ Video veya ses akışlarına Common Encryption (CENC) uygulandığında, Protect
 >   **FourCC (değişken):** Her örnek için hangi medya biçiminin kullanıldığını belirleyen dört karakterli bir kod. Aşağıdaki değer aralığı aşağıdaki anlam anlamları ile ayrılmıştır:
 > 
 > * "hev1": Bu izleme için video örnekleri, [ISO/ıEC-14496-15] içinde belirtilen ' hev1 ' örnek açıklama biçimini kullanarak HEVC videosunu kullanır.
+>
+> * "hvc1": Bu izleme için video örnekleri, [ISO/ıEC-14496-15] içinde belirtilen ' hvc1 ' örnek açıklama biçimini kullanarak HEVC videosunu kullanır.
 > 
 >   **CodecPrivateData (değişken):** Medya biçimine özgü parametreleri ve izlemedeki tüm örneklerde ortak olan ve onaltılık kodlanmış bayt dizesi olarak temsil edilen veriler. Bayt dizisinin biçimi ve anlam anlamı, **FourCC** alanının değeri ile aşağıdaki gibi değişir:
 > 
->   * Bir TrackElement HEVC videosunu açıkladığı zaman, **FourCC** alanı **"hev1"** ve;
+>   * Bir TrackElement HEVC videosunu açıkladığı zaman, **FourCC** alanı **"hev1"** veya **"hvc1"** değerine eşit olacaktır
 > 
 >   **CodecPrivateData** alanı, aşağıdaki bayt dizisinin onaltılık kodlu bir dize gösterimini içerir. Bu, abnf [[RFC5234]:](https://go.microsoft.com/fwlink/?LinkId=123096) (MS-SSTR üzerinde değişiklik yok) içinde belirtilir
 > 
@@ -173,7 +175,7 @@ Video veya ses akışlarına Common Encryption (CENC) uygulandığında, Protect
 
 ### <a name="223-fragment-request"></a>2.2.3 Fragment Isteği 
 
->   **Not**: **MinorVersion** 2 ve ' hev1 ' için istenen varsayılan medya biçimi, [ISO/IEC 14496-12] ISO taban medya dosyası biçimi dördüncü sürüm ve [ISO/IEC 23001-7] Common Encryption Second Edition 'da belirtilen ' iso8 ' marka ISO taban medya dosyası biçimidir.
+>   **Not**: **MinorVersion** 2 ve ' hev1 ' veya ' hvc1 ' için istenen varsayılan medya biçimi, [ISO/IEC 14496-12] ISO taban medya dosyası biçimi dördüncü sürüm ve [ISO/IEC 23001-7] Common Encryption Second Edition içinde belirtilen ' iso8 ' marka ISO taban medya dosyası biçimidir.
 
 ### <a name="224-fragment-response"></a>2.2.4 Fragment yanıtı 
 

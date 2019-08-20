@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 08/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60cd87b6cecfb30ebc90f445c79e25c241980a86
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945916"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623356"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
 
@@ -95,7 +95,7 @@ Aşağıdaki adımları kullanın:
 
 ## <a name="review-batch-results"></a>Toplu iş sonuçlarını gözden geçirin
 
-Batch grafik dört quadrants sonuçlarını görüntüler. Grafiğin sağına bir filtredir. Varsayılan olarak, listedeki ilk amaca filtre ayarlanır. Filtre tüm hedefleri ve yalnızca basit ve bileşik varlıkları içerir. Seçtiğinizde, bir [grafik bölümünü](luis-concept-batch-test.md#batch-test-results) veya bir nokta grafik içinde ilişkili utterance(s) grafiğin altına görüntüleyebilirsiniz. 
+Batch grafik dört quadrants sonuçlarını görüntüler. Grafiğin sağına bir filtredir. Filtre, amaçları ve varlıkları içerir. Seçtiğinizde, bir [grafik bölümünü](luis-concept-batch-test.md#batch-test-results) veya bir nokta grafik içinde ilişkili utterance(s) grafiğin altına görüntüleyebilirsiniz. 
 
 Grafik üzerine gelindiğinde, fare tekerleğini büyütebilir veya grafikte görüntülenecek azaltın. Bu, sıkı bir şekilde birlikte kümelenmiş grafik üzerinde çok sayıda noktası olduğunda yararlıdır. 
 
@@ -103,27 +103,27 @@ Grafik dört Çeyrek dairelerle iki kırmızı renkte gösterilir bölümlerin b
 
 ### <a name="getjobinformation-test-results"></a>GetJobInformation test sonuçları
 
-**GetJobInformation** filtrede görüntülenen test sonuçları göster 2 dört tahminlerin başarılı. Adı seçin **hatalı pozitif sonuç** grafiğin altındaki konuşma görmek için sağ üst quadrant üstünde. 
+**GetJobInformation** filtrede görüntülenen test sonuçları göster 2 dört tahminlerin başarılı. Grafiğin altındaki diğer adımları görmek için sol alt çeyrek altında **yanlış negatif** adını seçin. 
 
-![LUIS toplu test konuşma](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+Kullanıcı utisin tam metnini görmek için CTRL + E klavye tuşlarını kullanarak etiket görünümüne geçin. 
 
-Neden olarak tahmin konuşma ikisidir **ApplyForJob**, doğru amacı yerine **GetJobInformation**? İki amacı, word seçeneği ve word düzenleme bakımından çok yakından ilişkilidir. Ayrıca, neredeyse üç kez daha fazla örnek için vardır **ApplyForJob** daha **GetJobInformation**. Bu düz olmayan örnek konuşma, ağırlıklandıran **ApplyForJob** amaç'ın ayrıcalık. 
+Söylenişi `Is there a database position open in Los Colinas?` , _getjobınformation_ olarak etiketlidir ancak geçerli model, bir _applyforjob_olarak gösterilen şekilde tahmin edilir. 
+
+**Getjobınformation**'Ten **applyforjob** için pek çok örnek vardır. Bu örnek, **Applyforjob** hedefinin kullanım açısından, yanlış tahmine neden olacak şekilde tartılanmalar. 
 
 Her iki amacı aynı hataların sayısını olduğunu fark edeceksiniz. Tek amacı, yanlış bir tahmin diğer hedefi de etkiler. Konuşma yanlış bir amaç için tahmin edilen ve başka bir amaç için Ayrıca yanlış tahmin değil çünkü her ikisi de hatalarla karşılaştınız. 
 
-![LUIS toplu test filtre hataları](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-Üst karşılık gelen sesleri nokta **hatalı pozitif sonuç** bölümü olan `Can I apply for any database jobs with this resume?` ve `Can I apply for any database jobs with this resume?`. İlk utterance, word için `resume` yalnızca içinde kullanılan **ApplyForJob**. İkinci utterance, word için `apply` yalnızca içinde kullanılan **ApplyForJob** hedefi.
-
-## <a name="fix-the-app"></a>Uygulama düzeltme
+## <a name="how-to-fix-the-app"></a>Uygulamayı çözme
 
 Bu bölümde tüm sesleri doğru şekilde tahmin için hedefidir **GetJobInformation** uygulama düzeltme tarafından. 
 
-Bu toplu dosya konuşma doğru ıntent'e ekleme görünüşte hızlı düzeltme olacaktır. Yine de yapmak istediğinizi değil olmasıdır. LUIS, örnek olarak eklemeden Bu konuşma doğru şekilde tahmin etmek istediğiniz. 
+Bu toplu dosya konuşma doğru ıntent'e ekleme görünüşte hızlı düzeltme olacaktır. Bu, yapmak istediğiniz şeydir. LUIS, örnek olarak eklemeden Bu konuşma doğru şekilde tahmin etmek istediğiniz. 
 
 Konuşma alanından kaldırma hakkında da merak edebilirsiniz **ApplyForJob** utterance miktarı aynı olana kadar **GetJobInformation**. Test sonuçlarını giderebilir ancak bu hedefi doğru sonraki tahmin gelen LUIS azaltabilir. 
 
-Daha fazla konuşma eklemek için ilk düzeltmesidir **GetJobInformation**. İkinci düzeltme gibi bir kelimelerin ağırlık azaltmaktır `resume` ve `apply` doğru **ApplyForJob** hedefi. 
+Bu çözüm, **Getjobınformation**için daha fazla bildirim eklemektir. İş için uygulanamamakta olan iş bilgilerini bulma amacını hala hedeflerken, söylenişi uzunluğunu, sözcük seçimini ve sözcük düzenlemesini değiştirmeyi unutmayın.
 
 ### <a name="add-more-utterances"></a>Daha fazla Konuşma ekleme
 
@@ -161,15 +161,13 @@ Toplu test konuşma doğru şekilde tahmin doğrulamak için batch testi yeniden
 
 1. Seçin **Test** üst gezinti çubuğunda. Toplu sonuçları hala açıksa seçin **listesine geri**.  
 
-2. Öğesinin üç noktasını (***...*** ) sağında toplu işlem adı'düğmesine tıklayın ve belirleyin **çalıştırma Dataset**. Toplu test işlemi tamamlanana kadar bekleyin. Dikkat **bkz sonuçları** düğme yeşildir şimdi. Başka bir deyişle, toplu işin tamamını başarıyla çalıştırıldı.
+1. Toplu işlem adının sağ tarafındaki üç nokta (***...***) düğmesini seçin ve **Çalıştır**' ı seçin. Toplu test işlemi tamamlanana kadar bekleyin. Dikkat **bkz sonuçları** düğme yeşildir şimdi. Başka bir deyişle, toplu işin tamamını başarıyla çalıştırıldı.
 
-3. Seçin **bkz sonuçları**. Intents tüm hedefi adları solundaki yeşil simgeler olması gerekir. 
-
-    ![Toplu sonuçları düğmesi vurgulanan LUIS ekran görüntüsü](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. Seçin **bkz sonuçları**. Intents tüm hedefi adları solundaki yeşil simgeler olması gerekir. 
 
 ## <a name="create-batch-file-with-entities"></a>Toplu iş dosyası ile varlıkları oluşturun 
 
-Toplu test varlıklarda doğrulamak için varlıkları batch JSON dosyasında etiketlenmesi gerekir. Yalnızca makine tarafından öğrenilen varlıklar kullanılır: basit ve bileşik varlıklar. Makine öğrenilen varlıklar her zaman normal ifadeler üzerinden bulundukları veya açık metinle eşleşen eklemeyin.
+Toplu test varlıklarda doğrulamak için varlıkları batch JSON dosyasında etiketlenmesi gerekir. 
 
 Varlıklar için toplam word çeşitlemesi ([belirteci](luis-glossary.md#token)) sayısı, tahmin kalite etkileyebilir. Varlık uzunluklarının çeşitli amaca etiketli Konuşma ile sağlanan eğitim verilerini içerdiğinden emin olun. 
 
@@ -178,7 +176,6 @@ Varlıklar için toplam word çeşitlemesi ([belirteci](luis-glossary.md#token))
 Değerini bir **iş** test konuşma içinde sağlanan varlıktır genellikle daha fazla sözcük olan birkaç örnekleri içeren bir veya iki sözcük. Varsa _kendi_ İnsan Kaynakları uygulamasında genellikle birçok bir kelimelerin iş adları varsa, örnek Konuşma ile etiketlenmiş **iş** bu uygulamada varlık iyi çalışmamasına.
 
 1. Oluşturma `HumanResources-entities-batch.json` gibi bir metin düzenleyicisinde [VSCode](https://code.visualstudio.com/) veya [indirme](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) bu.
-
 
 2. JSON biçimli bir toplu iş dosyasında bir konuşma ile içeren bir nesne dizisi Ekle **hedefi** utterance herhangi bir varlık konumlarını yanı sıra test tahmin edilen istiyor. Bir varlık belirteç tabanlı olduğundan, her varlık, bir karakter durdurmak ve başlatmak emin olun. Başlayamaz veya bitemez utterance bir alan üzerinde. Bu, toplu iş dosyasını içeri aktarma sırasında bir hataya neden olur.  
 

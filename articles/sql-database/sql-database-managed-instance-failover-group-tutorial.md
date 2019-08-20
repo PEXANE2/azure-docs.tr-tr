@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5bf2ee68ff2cfde2846dff2d94f7478920a18760
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037118"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624979"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: Yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
@@ -151,7 +151,7 @@ Yük devretme grubuna katılacak iki yönetilen örnek için, ağ iletişimine i
     | **Ağ Geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
     | **SKU**| Varsayılan `VpnGw1`bırakın. |
-    | **Location**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
+    | **Location**| Birincil yönetilen örneğinizin ve birincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| 2 `vnet-sql-mi-primary`. bölümde oluşturulan sanal ağı seçin. |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz `primary-gateway-IP`için gibi bir ad girin. |

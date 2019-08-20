@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295546"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624777"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure hizmet katmanı için tehdit algılama
 
@@ -47,6 +47,7 @@ Güvenlik Merkezi ağ katmanı analizi, Azure çekirdek yönlendiricileri taraf�
 |**Şüpheli gelen SSH ağ etkinliği**|Örneklenmiş ağ trafiği analizi, dağıtımınızdaki bir kaynağa anormal gelen SSH iletişimi algıladı. Görece yüksek sayıda gelen bağlantı, bu ortam için anormal olarak kabul edilir. Bu etkinlik, SSH arabiriminizi zorlamaya yönelik bir girişim olduğunu gösterebilir.
 |**Birden çok kaynaktan şüpheli gelen RDP ağ etkinliği**|Örneklenmiş ağ trafiği analizi, birden çok kaynaktan dağıtımınızdaki bir kaynağa anormal gelen RDP iletişimleri algıladı. Bu ortamda, kaynağına bağlanan çeşitli benzersiz IP 'Ler anormal olarak kabul edilir. Bu etkinlik, birden çok ana bilgisayardan (botnet) RDP arabiriminizi zorlamaya yönelik bir girişim olduğunu gösterebilir.|
 |**Şüpheli gelen RDP ağ etkinliği**|Örneklenmiş ağ trafiği analizi, dağıtımınızdaki bir kaynağa anormal gelen RDP iletişimi algıladı. Görece yüksek sayıda gelen bağlantı, bu ortam için anormal olarak kabul edilir. Bu etkinlik, SSH arabiriminizi zorlamaya yönelik bir girişim olduğunu gösterebilir.|
+|**Kötü amaçlı bir adresle ağ iletişimi algılandı**|Örneklenmiş ağ trafiği analizi, olası bir komut ve denetim (C & C) sunucusuyla dağıtımınızdaki bir kaynaktan kaynaklanan iletişimi algıladı. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|
 
 Güvenlik Merkezi 'nin tehdit koruması uygulamak için ağla ilgili sinyalleri nasıl kullanabileceğini anlamak için bkz. [Azure Güvenlik Merkezi 'Nde BULUŞSAL DNS algılamaları](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 ## Azure Yönetim Katmanı (Azure Resource Manager) (Önizleme)<a name ="management-layer"></a>
@@ -77,4 +78,4 @@ Güvenlik Merkezi, Azure için denetim düzlemi olarak kabul edilen Azure Resour
 > 3. **Tümleştirmelere**izin ver ' in altında, **verilerinize erişim Microsoft Cloud App Security izin ver**onay kutusunu temizleyin ve **Kaydet**' e tıklayın
 
 >[!NOTE]
->Azure Güvenlik Merkezi, güvenlikle ilgili müşteri verilerini kaynakla aynı coğrafi bölgede depolar. Microsoft, Azure Güvenlik Merkezi 'ni kaynağın coğrafi bölgede henüz dağıtmadıysa, verileri Birleşik Devletler depolar. Microsoft Cloud App Security (MCAS) etkinleştirildiğinde, bu bilgiler MCAS 'nin coğrafi konum kurallarına uygun olarak depolanır. [Daha fazla bilgi için bkz. bölgesel olmayan hizmetler Için veri depolama](http://azuredatacentermap.azurewebsites.net/).
+>Azure Güvenlik Merkezi, güvenlikle ilgili müşteri verilerini kaynakla aynı coğrafi bölgede depolar. Microsoft, Azure Güvenlik Merkezi 'ni kaynağın coğrafi bölgede henüz dağıtmadıysa, verileri Birleşik Devletler depolar. Microsoft Cloud App Security (MCAS) etkinleştirildiğinde, bu bilgiler MCAS 'nin coğrafi konum kurallarına uygun olarak depolanır. [Daha fazla bilgi için bkz. bölgesel olmayan hizmetler Için veri depolama](https://azuredatacentermap.azurewebsites.net/).

@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 5e118bad0bfdd1a8e265aa0ed3eeea78a3b0da54
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543519"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624078"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı Başlangıç: Java kullanarak bir Azure SQL veritabanına bağlanma ve sorgulama
 
@@ -55,7 +55,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
+2. **SQL veritabanlarını** seçin veya **SQL yönetilen örnekler** sayfasını açın.
 
 3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin. 
 
