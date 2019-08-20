@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014371"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617689"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage 2. depolama hesabı oluşturma
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |           | Önkoşul |
 |-----------|--------------|
 |Portal     | None         |
-|PowerShell | Bu hızlı başlangıç PowerShell modülü Az.Storage sürümünü gerektirir **0,7** veya üzeri. Geçerli sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az.Storage` komutu. Bu komutu çalıştırdıktan sonra sonuç görünüyorsa ya da dışında bir sürüm varsa **0,7** görünür sonra powershell Modülü'ı yükseltmeniz gerekir. Bkz: [, powershell modülü yükseltme](#upgrade-your-powershell-module) başlığına.
+|PowerShell | Bu hızlı başlangıç PowerShell modülü Az.Storage sürümünü gerektirir **0,7** veya üzeri. Geçerli sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az.Storage` komutu. Bu komutu çalıştırdıktan sonra hiçbir sonuç görünmez veya **0,7** 'den daha düşük bir sürüm görüntülenirse, PowerShell modülünüzü yükseltmeniz gerekir. Bkz: [, powershell modülü yükseltme](#upgrade-your-powershell-module) başlığına.
 |CLI        | Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştırabilirsiniz: <ul><li>CLI komutlarını Azure portalında Azure Cloud Shell içinden çalıştırabilirsiniz </li><li>CLI yükleyip CLI komutlarını yerel olarak çalıştırabilirsiniz</li></ul>|
 
 Komut satırında çalışırken Azure Cloud Shell'i çalıştırabilir veya CLI'yı yerel ortama yükleyebilirsiniz.

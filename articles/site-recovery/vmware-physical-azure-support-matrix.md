@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: raynew
-ms.openlocfilehash: 65c330a9b2dcc97160280daede926573fdef4c00
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679359"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617638"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -181,7 +181,7 @@ Konuk/sunucu VMDK | Evet
 Konuk/sunucu paylaşılan küme diski | Hayır
 Konuk/sunucu tarafından şifrelenen disk | Hayır
 Konuk/sunucu NFS | Hayır
-Konuk/sunucu Iscsı | Hayır
+Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
 Konuk/sunucu SMB 3,0 | Hayır
 Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar

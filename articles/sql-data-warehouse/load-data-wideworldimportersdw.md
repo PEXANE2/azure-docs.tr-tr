@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304289"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574943"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Öğretici: Azure SQL veri ambarı 'na veri yükleme
 
@@ -42,11 +42,11 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 [Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Boş bir SQL veri ambarı oluşturma
+## <a name="create-a-blank-sql-data-warehouse"></a>Boş bir SQL veri ambarı oluşturun
 
-Azure SQL veri ambarı bir dizi [işlem kaynağı](memory-and-concurrency-limits.md) ile oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
+Azure SQL veri ambarı, tanımlı bir [işlem kaynakları](memory-and-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
 
-Boş bir SQL veri ambarı oluşturmak için aşağıdaki adımları izleyin. 
+Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin. 
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -151,7 +151,7 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
     | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
     | Sunucu adı | Tam sunucu adı | Örneğin, **sample-svr.database.windows.net** tam sunucu adıdır. |
     | Authentication | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-    | Oturum Aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
+    | Oturum aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | istemcisiyle yönetilen bir cihaz için) | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 
     ![sunucuya bağlan](media/load-data-wideworldimportersdw/connect-to-server.png)

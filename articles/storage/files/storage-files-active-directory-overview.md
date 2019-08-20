@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: addb97d71da1ceac8717ae77204c87a8197dac86
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935165"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611783"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>SMB erişimi için Azure dosyalarına Azure Active Directory etki alanı hizmeti (Azure AD DS) kimlik doğrulama desteği 'ne genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -59,7 +59,7 @@ Bir VM üzerinde çalışan bir uygulamayla ilişkili bir kimlik, Azure dosyalar
 ### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>SMB erişimi için Azure AD etki alanı hizmeti kimlik doğrulamasını etkinleştirme
 24 Eylül 2018 ' den sonra oluşturulan yeni ve mevcut depolama hesaplarınızdaki Azure dosyaları için Azure AD etki alanı hizmet kimlik doğrulamasını etkinleştirebilirsiniz. 
 
-Bu özelliği etkinleştirmeden önce, depolama hesabınızın ilişkilendirildiği birincil Azure AD kiracısı için Azure AD Domain Services dağıtıldığını doğrulayın. Azure AD Domain Services henüz ayarlanmamışsa, [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştir](../../active-directory-domain-services/create-instance.md)bölümünde sunulan adım adım yönergeleri izleyin.
+Bu özelliği etkinleştirmeden önce, depolama hesabınızın ilişkilendirildiği birincil Azure AD kiracısı için Azure AD Domain Services dağıtıldığını doğrulayın. Azure AD Domain Services henüz ayarlanmamışsa, [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştir](../../active-directory-domain-services/tutorial-create-instance.md)bölümünde sunulan adım adım yönergeleri izleyin.
 
 Azure AD Domain Services dağıtımı genellikle 10 ila 15 dakika sürer. Azure AD Domain Services dağıtıldıktan sonra, Azure dosyaları için SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md). 
 

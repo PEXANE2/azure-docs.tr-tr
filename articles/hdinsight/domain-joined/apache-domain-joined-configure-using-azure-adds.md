@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488702"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614212"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services'i kullanarak bir HDInsight kümesi ile Kurumsal Güvenlik Paketi yapılandırma
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Active Directory Domain Services (Azure AD DS) kullanarak bir
 >
 > Küme depolama alanı Azure Blob depolama (te) ise, MFA 'yı devre dışı bırakın.
 
-Bir HDInsight kümesini ESP ile oluşturabilmeniz için AzureAD-DS ' i etkinleştirmek bir önkoşuldur. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/create-instance.md). 
+Bir HDInsight kümesini ESP ile oluşturabilmeniz için AzureAD-DS ' i etkinleştirmek bir önkoşuldur. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/tutorial-create-instance.md). 
 
 Azure AD-DS etkinleştirildiğinde, tüm kullanıcılar ve nesneler varsayılan olarak Azure Active Directory (AAD) ile Azure AD-DS arasında eşitlemeye başlar. Eşitleme işleminin uzunluğu, Azure AD 'deki nesne sayısına bağlıdır. Eşitleme, yüzlerce binlerce nesne için birkaç gün sürebilir. 
 
@@ -39,7 +39,7 @@ Azure AD-DS ile kullandığınız etki alanı adı, HDInsight ile çalışmak i�
 
 Yalnızca HDInsight kümelerine erişmesi gereken grupları eşitlemeyi tercih edebilirsiniz. Yalnızca belirli grupları eşitlemeye yönelik bu seçenek *kapsamlı eşitleme*olarak adlandırılır. Yönergeler için bkz. [Azure AD 'den yönetilen etki alanınızı kapsamlı eşitlemeyi yapılandırma](../../active-directory-domain-services/scoped-synchronization.md) .
 
-Güvenli LDAP etkinleştirildiğinde, etki alanı adını sertifikaya konu adı ve konu diğer adı ' na koyun. Örneğin, etki alanı adınız *contoso100.onmicrosoft.com*ise, sertifikanın konu adı ve konu diğer adında tam adın bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD DS tarafından yönetilen etki alanı için GÜVENLI LDAP yapılandırma](../../active-directory-domain-services/configure-ldaps.md). Aşağıda, otomatik olarak imzalanan bir sertifika oluşturma ve etki alanı adının (*contoso100.onmicrosoft.com*) hem konu adı hem de DnsName (konu alternatif adı) olarak sahip olduğu bir örnek verilmiştir:
+Güvenli LDAP etkinleştirildiğinde, etki alanı adını sertifikaya konu adı ve konu diğer adı ' na koyun. Örneğin, etki alanı adınız *contoso100.onmicrosoft.com*ise, sertifikanın konu adı ve konu diğer adında tam adın bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD DS tarafından yönetilen etki alanı için GÜVENLI LDAP yapılandırma](../../active-directory-domain-services/tutorial-configure-ldaps.md). Aşağıda, otomatik olarak imzalanan bir sertifika oluşturma ve etki alanı adının (*contoso100.onmicrosoft.com*) hem konu adı hem de DnsName (konu alternatif adı) olarak sahip olduğu bir örnek verilmiştir:
 
 ```powershell
 $lifetime=Get-Date
@@ -70,7 +70,7 @@ Yönetilen kimlik oluşturulduktan ve doğru rol verildikten sonra, AAD-DS Yöne
 ## <a name="networking-considerations"></a>Ağ konusunda dikkat edilmesi gerekenler
 
 > [!NOTE]  
-> Azure AD-DS 'nin bir Azure Resource Manager (ARM) tabanlı vNET 'te dağıtılması gerekir. Klasik sanal ağlar Azure AD-DS için desteklenmez. Daha fazla ayrıntı için lütfen [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) bölümüne bakın.
+> Azure AD-DS Azure Resource Manager tabanlı vNET 'te dağıtılmalıdır. Klasik sanal ağlar Azure AD-DS için desteklenmez. Daha fazla ayrıntı için lütfen [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) bölümüne bakın.
 
 Azure AD-DS 'yi etkinleştirdikten sonra, AD sanal makinelerinde (VM 'Ler) bir yerel etki alanı ad hizmeti (DNS) sunucusu çalışır. Azure AD-DS Sanal ağınızı (VNET) bu özel DNS sunucularını kullanacak şekilde yapılandırın. Doğru IP adreslerini bulmak için, **Yönet** kategorisi altında **Özellikler** ' i seçin ve **sanal ağ ÜZERINDE IP adresi**altında listelenen IP adreslerine bakın.
 

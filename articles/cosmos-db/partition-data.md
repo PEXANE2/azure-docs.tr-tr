@@ -6,12 +6,12 @@ author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 67ad37491f71ac82ff52331d19ea92a646c80a52
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716974"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616789"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB bölümlendirme ve yatay ölçekleme
 
@@ -27,7 +27,7 @@ Mantıksal bir bölüm ayrıca veritabanı işlemlerinin kapsamını tanımlar. 
 
 ## <a name="physical-partitions"></a>Fiziksel bölümler
 
-Azure Cosmos kapsayıcısı, çok sayıda mantıksal bölüm arasında veri ve aktarım hızı dağıtarak ölçeklendirilir. Dahili olarak, bir veya daha fazla mantıksal bölüm, [*çoğaltma kümesi*](global-dist-under-the-hood.md)olarak da adlandırılan bir çoğaltmalar kümesinden oluşan bir fiziksel bölüme eşlenir. Her çoğaltma kümesi, Azure Cosmos DB veritabanı altyapısının bir örneğini barındırır. Bir çoğaltma kümesi, fiziksel bölümde depolanan verilerin dayanıklı, yüksek oranda kullanılabilir ve tutarlı olmasını sağlar. Fiziksel bir bölüm, en fazla depolama ve istek birimi (ru) miktarını destekler. Fiziksel bölümü oluşturan her çoğaltma, bölümün depolama kotasını devralır. Fiziksel bölümün tüm çoğaltmaları, fiziksel bölüme ayrılan üretilen işi topluca destekler. 
+Azure Cosmos kapsayıcısı, çok sayıda mantıksal bölüm arasında veri ve aktarım hızı dağıtarak ölçeklendirilir. Dahili olarak, bir veya daha fazla mantıksal bölüm, [*çoğaltma kümesi*](global-dist-under-the-hood.md)olarak da adlandırılan bir çoğaltmalar kümesinden oluşan bir fiziksel bölüme eşlenir. Her çoğaltma kümesi, Azure Cosmos veritabanı altyapısının bir örneğini barındırır. Bir çoğaltma kümesi, fiziksel bölümde depolanan verilerin dayanıklı, yüksek oranda kullanılabilir ve tutarlı olmasını sağlar. Fiziksel bir bölüm, en fazla depolama ve istek birimi (ru) miktarını destekler. Fiziksel bölümü oluşturan her çoğaltma, bölümün depolama kotasını devralır. Fiziksel bölümün tüm çoğaltmaları, fiziksel bölüme ayrılan üretilen işi topluca destekler. 
 
 Aşağıdaki görüntüde, mantıksal bölümlerin küresel olarak dağıtılan fiziksel bölümlerle nasıl eşlendiği gösterilmektedir:
 

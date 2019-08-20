@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 28ba47c1c0ec053af8632475ad52ab50672eab64
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855146"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615745"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
 
@@ -137,7 +137,7 @@ ToDoItems çözümündeki kod şunları içerir:
     `IDocumentQuery<T>.ExecuteNextAsync<T>` işlevi Azure Cosmos DB’den sonuç sayfasını alır ve bu sayfa, döndürülecek başka sonuçların kalıp kalmadığını görmek üzere `HasMoreResults` tarafından denetlenir.
 
 > [!TIP]
-> Azure Cosmos DB kapsayıcıları ve belgeleri üzerinde çalışan çeşitli işlevler, bir URI 'yi kapsayıcı veya belge adresini belirten bir parametre olarak alır. Bu URI `URIFactory` sınıfı kullanılarak oluşturulur. Veritabanları, kapsayıcılar ve belgelerin URI 'Leri bu sınıfla oluşturulabilir.
+> Azure Cosmos kapsayıcılarında ve belgelerinde çalışan çeşitli işlevler, bir URI 'yi kapsayıcı veya belgenin adresini belirten bir parametre olarak alır. Bu URI `URIFactory` sınıfı kullanılarak oluşturulur. Veritabanları, kapsayıcılar ve belgelerin URI 'Leri bu sınıfla oluşturulabilir.
 
 * `ComsmosDBService.InsertToDoItem` İşlevi nasıl yeni bir belge ekleneceğini gösterir:
 

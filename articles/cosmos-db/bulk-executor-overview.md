@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637783"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615700"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
  
@@ -36,7 +36,7 @@ Toplu yürütücü kitaplığı bu muazzam işlem hızı ve depolamadan yararlan
  
 * Ölçek Genişletme mimarisi kullanarak bir saat içinde birkaç terabaytlık verileri toplu olarak içeri aktarabilir.  
 
-* Azure Cosmos DB kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. 
+* Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>Toplu yürütücü nasıl çalışır? 
 

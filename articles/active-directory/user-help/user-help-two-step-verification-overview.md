@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949561"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615991"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınız için genel bakış
 
@@ -29,7 +29,15 @@ BT ekibinizden veya patronunuzdan kuruluşunuzun hesabınıza ek bir güvenlik d
 >[!Important]
 >Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
 >
->Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) için iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız ve kişisel Microsoft hesabı, kendiniz için ayarladığınız hesap (örneğin, danielle@outlook.com), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+>Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) için iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız ve kişisel Microsoft hesabı, kendiniz için ayarladığınız hesap (örneğin, danielle@outlook.com), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+
+## <a name="who-decides-if-you-use-this-feature"></a>Bu özelliği kullanıp kullanmayacağına karar veriyor musunuz?
+
+Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız gerektiğine karar verebilir veya kendiniz karar veremeyebilirsiniz.
+
+- **İş veya Okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur.
+
+- **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki öğeli doğrulama ayarlamayı seçebilirsiniz (örneğin, alain@outlook.com). İki öğeli doğrulamayla ve kişisel Microsoft hesabı ilgili sorun yaşıyorsanız, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bölümüne bakın. Bu özelliği kullanmak isteyip istemediğinizi seçerken dilediğiniz zaman açıp kapatabilirsiniz.
 
 ## <a name="two-factor-verification-related-articles"></a>İki öğeli doğrulamayla ilgili makaleler
 

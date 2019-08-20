@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory etki alanı Hizmetleri için bir Windows Server VM'sine katılma | Microsoft Docs
-description: Bir Windows Server sanal makinesi, Azure Resource Manager şablonlarını kullanarak bir yönetilen etki alanına katılın.
+title: Windows Server VM 'sini Azure Active Directory Domain Services 'e ekleme | Microsoft Docs
+description: Azure Resource Manager şablonları kullanarak bir Windows Server sanal makinesini yönetilen bir etki alanına katın.
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,92 +15,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d16a4240b7a30a483b70b068ab7d91ca7bdcb17
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 599d474b7c45274c87878c622149a86bc93af318
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473028"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612280"
 ---
-# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Bir Windows Server sanal makinesi bir Resource Manager şablonu kullanarak bir yönetilen etki alanına ekleme
-Bu makalede Resource Manager şablonlarını kullanarak bir Azure AD Domain Services yönetilen etki alanına Windows Server sanal makinesinin nasıl gösterir.
+# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Windows Server sanal makinesini yönetilen bir etki alanına katma
+Bu makalede, Kaynak Yöneticisi şablonları kullanarak bir Windows Server sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Bu makalede listelenen görevleri gerçekleştirmek için gerekir:
+Bu makalede listelenen görevleri gerçekleştirmek için şunlar gerekir:
 1. Geçerli bir **Azure aboneliği**.
-2. Bir **Azure AD dizini** -ya da şirket içi dizin veya bir yalnızca bulut dizini ile eşitlenir.
-3. **Azure AD etki alanı Hizmetleri** Azure AD dizini için etkinleştirilmesi gerekir. Bunu yapmadıysanız, bölümünde açıklanan tüm görevleri izleyin [Başlarken kılavuzunda](create-instance.md).
-4. Sanal ağın DNS sunucuları olarak yönetilen etki alanı IP adreslerini yapılandırdığınızdan emin olun. Daha fazla bilgi için [Azure sanal ağı için DNS ayarlarını güncelleştirme](active-directory-ds-getting-started-dns.md)
-5. Tamamlamak için gereken adımlar [Azure AD Domain Services yönetilen etki alanınıza parolalarını eşitleyin](active-directory-ds-getting-started-password-sync.md).
+2. Bir **Azure ad dizini** -şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
+3. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](tutorial-create-instance.md)özetlenen tüm görevleri izleyin.
+4. Yönetilen etki alanının IP adreslerini, sanal ağ için DNS sunucuları olarak yapılandırdığınızdan emin olun. Daha fazla bilgi için bkz [. Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+5. [Parolaları Azure AD Domain Services yönetilen etki alanı ile senkronize](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)etmek için gereken adımları uygulayın.
 
 
-## <a name="install-and-configure-required-tools"></a>Yükleme ve gerekli araçları yapılandırma
+## <a name="install-and-configure-required-tools"></a>Gerekli araçları yükleyip yapılandırma
 Bu belgede özetlenen adımları gerçekleştirmek için aşağıdaki seçeneklerden birini kullanabilirsiniz:
-* **Azure PowerShell**: [Yükleme ve yapılandırma](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure CLI**: [Yükleme ve yapılandırma](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure PowerShell**: [Yükleyip yapılandırın](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Azure CLI**: [Yükleyip yapılandırın](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>1\. seçenek: Yeni bir Windows Server VM'si sağlama ve yönetilen bir etki alanına katılma
-**Hızlı Başlangıç şablonu adı**: [201-vm-etki alanına katılma](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Seçenek 1: Yeni bir Windows Server VM 'si sağlayın ve yönetilen bir etki alanına ekleyin
+**hızlı başlangıç şablonu adı**: [201-VM-etki alanına ekleme](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
-Bir Windows Server sanal makinesini dağıtmak ve yönetilen bir etki alanına katılmak için aşağıdaki adımları gerçekleştirin:
-1. Gidin [Hızlı Başlangıç şablonu](https://azure.microsoft.com/resources/templates/201-vm-domain-join/).
+Bir Windows Server sanal makinesini dağıtmak ve yönetilen bir etki alanına katmak için aşağıdaki adımları gerçekleştirin:
+1. [Hızlı başlangıç şablonuna](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)gidin.
 2. **Azure’a dağıt**’a tıklayın.
-3. İçinde **özel dağıtım** sayfasında, sanal makine sağlamak için gerekli bilgileri sağlayın.
-4. Seçin **Azure aboneliği** , sanal makine sağlamak. Azure AD Domain Services'i etkinleştirdiğiniz aynı Azure aboneliği seçin.
-5. Mevcut bir seçin **kaynak grubu** veya yeni bir tane oluşturun.
-6. Çekme bir **konumu** yeni bir sanal makine dağıtacağınız.
-7. İçinde **var olan sanal ağ adı**, Azure AD Domain Services yönetilen etki alanınız içinde dağıttığınız sanal ağ belirtin.
-8. İçinde **var olan alt ağ adı**, istediğiniz bu sanal makineyi dağıtmak için sanal ağ içindeki alt ağ belirtin. Ağ geçidi alt ağı sanal ağ içinde seçmeyin. Ayrıca, yönetilen etki alanınıza dağıtıldığı ayrılmış alt ağında seçmeyin.
-9. İçinde **etiket DNS ön eki**, sağlanma işlemi sanal makine için konak adı belirtin. Örneğin, 'contoso-win'.
-10. Uygun seçin **VM boyutu** sanal makine için.
-11. İçinde **etki alanına katılma**, yönetilen etki alanınızın DNS etki alanı adı belirtin.
-12. İçinde **etkialanı kullanıcıadı**, sanal Makinenin yönetilen etki alanına eklemek için kullanılması gereken yönetilen etki alanınızdaki kullanıcı hesabı adını belirtin.
-13. İçinde **etki alanı parolası**, 'domainUsername' parametresi tarafından başvurulan etki alanı kullanıcı hesabı parolasını belirtin.
-14. İsteğe bağlı: Belirtebileceğiniz bir **OU yolu** , sanal makine eklemek özel bir kuruluş için. Bu parametre için bir değer belirtmezseniz varsayılan sanal makine eklenir **AAD DC bilgisayarlar** yönetilen etki alanındaki OU.
-15. İçinde **VM yönetici kullanıcı adı** alanında, sanal makine için bir yerel yönetici hesabı adı belirtin.
-16. İçinde **VM yönetici parolası** alanında, sanal makine için bir yerel yönetici parolasını belirtin. Parola deneme yanılma saldırılarına karşı korumak sanal makine için bir tanımlayıcı yerel yönetici parolasını belirtin.
-17. Tıklayın **hüküm ve koşulları yukarıda belirtilen kabul ediyorum**.
-18. Tıklayın **satın alma** sanal makine sağlamak için.
+3. **Özel dağıtım** sayfasında, sanal makineyi sağlamak için gerekli bilgileri sağlayın.
+4. Sanal makinenin sağlanacağı **Azure aboneliğini** seçin. Azure AD Domain Services etkinleştirdiğiniz Azure aboneliğini seçin.
+5. Var olan bir **kaynak grubunu** seçin veya yeni bir tane oluşturun.
+6. Yeni sanal makinenin dağıtılacağı bir **konum** seçin.
+7. **Mevcut VNET adında**, Azure AD Domain Services yönetilen etki alanınızı dağıttığınız sanal ağı belirtin.
+8. **Mevcut alt ağ adı**' nda, bu sanal makineyi dağıtmak istediğiniz sanal ağ içindeki alt ağı belirtin. Sanal ağda ağ geçidi alt ağını seçmeyin. Ayrıca, yönetilen etki alanının dağıtıldığı ayrılmış alt ağı seçmeyin.
+9. **DNS etiketi öneki**' nde, sağlanmakta olan sanal makine için ana bilgisayar adını belirtin. Örneğin, ' contoso-Win '.
+10. Sanal makine için uygun **VM boyutunu** seçin.
+11. **Katılacak etki alanı**' nda, yönetilen etkı alanının DNS etki alanı adını belirtin.
+12. **Etki alanı Kullanıcı adı**' nda, yönetilen etkı alanında VM 'yi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesap adını belirtin.
+13. **Etki alanı parolası**' nda, ' DomainUserName ' parametresi tarafından başvurulan etki alanı kullanıcı hesabının parolasını belirtin.
+14. İsteğe bağlı: Bir özel OU için, sanal makinenin ekleneceği bir **OU yolu** belirtebilirsiniz. Bu parametre için bir değer belirtmezseniz, sanal makine yönetilen etki alanındaki varsayılan **AAD DC bilgisayarları** OU 'ya eklenir.
+15. **VM Yöneticisi Kullanıcı adı** alanında, sanal makine için bir yerel yönetici hesabı adı belirtin.
+16. **VM yönetici parolası** alanında, sanal makine için bir yerel yönetici parolası belirtin. Parola deneme yanılma saldırılarına karşı korunmak için sanal makine için güçlü bir yerel yönetici parolası sağlayın.
+17. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' a tıklayın.
+18. Sanal makineyi sağlamak için **satın al** ' a tıklayın.
 
 > [!WARNING]
-> **Uyarı parolalarıyla işleyin.**
-> Şablon parametre dosyası, etki alanı hesapları için parola yanı sıra sanal makine için yerel yönetici parolaları içerir. Bu dosya duran geçici dosya paylaşımlarında veya diğer paylaşılan konumu bırakmadığından emin olun. Öneririz, dispose bu dosya tamamladıktan sonra sanal makinelerinizi dağıtma.
+> **Parolaları dikkatle işleyin.**
+> Şablon parametre dosyası, etki alanı hesaplarının parolalarını ve sanal makine için yerel yönetici parolalarını içerir. Dosya paylaşımlarında veya diğer paylaşılan konumlarda bu dosyayı bir konumda bırakmadığınızdan emin olun. Sanal makinelerinizi dağıtmaya işiniz bittiğinde bu dosyayı atmayı öneririz.
 >
 
-Dağıtım başarıyla tamamlandıktan sonra yeni sağlanan Windows sanal makinenizi yönetilen etki alanına katıldı.
+Dağıtım başarıyla tamamlandıktan sonra, yeni sağlanan Windows sanal makineniz yönetilen etki alanına katılır.
 
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>2\. seçenek: Mevcut bir Windows Server sanal Makinesini yönetilen etki alanına katılın
-**Hızlı Başlangıç şablonu**: [201-vm-etki-birleştirme-mevcut](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Seçenek 2: Mevcut bir Windows Server sanal makinesini yönetilen bir etki alanına katma
+**hızlı başlangıç şablonu**: [201-VM-etki alanına ekleme-var](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
-Varolan bir Windows Server sanal makinesini yönetilen etki alanına katılmak için aşağıdaki adımları gerçekleştirin:
-1. Gidin [Hızlı Başlangıç şablonu](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+Mevcut bir Windows Server sanal makinesini yönetilen bir etki alanına katmak için aşağıdaki adımları gerçekleştirin:
+1. [Hızlı başlangıç şablonuna](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)gidin.
 2. **Azure’a dağıt**’a tıklayın.
-3. İçinde **özel dağıtım** sayfasında, sanal makine sağlamak için gerekli bilgileri sağlayın.
-4. Seçin **Azure aboneliği** , sanal makine sağlamak. Azure AD Domain Services'i etkinleştirdiğiniz aynı Azure aboneliği seçin.
-5. Mevcut bir seçin **kaynak grubu** veya yeni bir tane oluşturun.
-6. Çekme bir **konumu** yeni bir sanal makine dağıtacağınız.
-7. İçinde **VM List** alanında, yönetilen etki alanına katılması mevcut sanal makinelerin adlarını belirtin. Tek tek sanal makine adını ayırmak için virgül kullanın. Örneğin, **contoso web, contoso-API**.
-8. İçinde **etki alanına katılım kullanıcı adını**, sanal Makinenin yönetilen etki alanına eklemek için kullanılması gereken yönetilen etki alanınızdaki kullanıcı hesabı adını belirtin.
-9. İçinde **etki alanı kullanıcı parolası katılın**, 'domainUsername' parametresi tarafından başvurulan etki alanı kullanıcı hesabı parolasını belirtin.
-10. İçinde **etki alanı FQDN'si**, yönetilen etki alanınızın DNS etki alanı adı belirtin.
-11. İsteğe bağlı: Belirtebileceğiniz bir **OU yolu** , sanal makine eklemek özel bir kuruluş için. Bu parametre için bir değer belirtmezseniz varsayılan sanal makine eklenir **AAD DC bilgisayarlar** yönetilen etki alanındaki OU.
-12. Tıklayın **hüküm ve koşulları yukarıda belirtilen kabul ediyorum**.
-13. Tıklayın **satın alma** sanal makine sağlamak için.
+3. **Özel dağıtım** sayfasında, sanal makineyi sağlamak için gerekli bilgileri sağlayın.
+4. Sanal makinenin sağlanacağı **Azure aboneliğini** seçin. Azure AD Domain Services etkinleştirdiğiniz Azure aboneliğini seçin.
+5. Var olan bir **kaynak grubunu** seçin veya yeni bir tane oluşturun.
+6. Yeni sanal makinenin dağıtılacağı bir **konum** seçin.
+7. **VM listesi** alanında, yönetilen etki alanına katılacak var olan sanal makinelerin adlarını belirtin. Tek bir VM adını ayırmak için virgül kullanın. Örneğin, **contoso-Web, contoso-API**.
+8. **Etki alanına katılması Kullanıcı adı**' nda, yönetilen etkı alanında VM 'yi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesap adını belirtin.
+9. **Etki alanına katılması Kullanıcı parolası**' nda, ' DomainUserName ' parametresi tarafından başvurulan etki alanı kullanıcı hesabının parolasını belirtin.
+10. **Etki alanı FQDN 'si**' nde, yönetilen etkı alanının DNS etki alanı adını belirtin.
+11. İsteğe bağlı: Bir özel OU için, sanal makinenin ekleneceği bir **OU yolu** belirtebilirsiniz. Bu parametre için bir değer belirtmezseniz, sanal makine yönetilen etki alanındaki varsayılan **AAD DC bilgisayarları** OU 'ya eklenir.
+12. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' a tıklayın.
+13. Sanal makineyi sağlamak için **satın al** ' a tıklayın.
 
 > [!WARNING]
-> **Uyarı parolalarıyla işleyin.**
-> Şablon parametre dosyası, etki alanı hesapları için parola yanı sıra sanal makine için yerel yönetici parolaları içerir. Bu dosya duran geçici dosya paylaşımlarında veya diğer paylaşılan konumu bırakmadığından emin olun. Öneririz, dispose bu dosya tamamladıktan sonra sanal makinelerinizi dağıtma.
+> **Parolaları dikkatle işleyin.**
+> Şablon parametre dosyası, etki alanı hesaplarının parolalarını ve sanal makine için yerel yönetici parolalarını içerir. Dosya paylaşımlarında veya diğer paylaşılan konumlarda bu dosyayı bir konumda bırakmadığınızdan emin olun. Sanal makinelerinizi dağıtmaya işiniz bittiğinde bu dosyayı atmayı öneririz.
 >
 
-Dağıtım başarıyla tamamlandıktan sonra belirtilen Windows sanal makineleri yönetilen etki alanına katılır.
+Dağıtım başarıyla tamamlandıktan sonra, belirtilen Windows sanal makineleri yönetilen etki alanına katılır.
 
 
 ## <a name="related-content"></a>İlgili İçerik
 * [Azure PowerShell’e genel bakış](/powershell/azure/overview)
-* [Azure Hızlı Başlangıç şablonu - etki alanına yeni bir VM](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
-* [Azure Hızlı Başlangıç şablonu - etki alanına var olan VM'ler](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+* [Azure hızlı başlangıç şablonu-etki alanına yeni bir VM 'ye katılarak](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+* [Azure hızlı başlangıç şablonu-etki alanına mevcut VM 'Leri ekleme](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/resource-group-template-deploy.md)

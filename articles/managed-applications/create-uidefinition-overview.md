@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563548"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575644"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON
 
@@ -52,13 +52,11 @@ Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleş
 
 Dahil `$schema` edilmesi önerilir, ancak isteğe bağlıdır. Belirtilmişse, değeri `version` `$schema` URI içindeki sürümle eşleşmelidir.
 
-Kullanıcı arabirimi tanımınızı oluşturmak için bir JSON Düzenleyicisi kullanabilir ve bunu önizlemek için [UI tanımı korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
+Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir, ardından bunu önizlemek için [Createuıdefinition korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
 
 ## <a name="basics"></a>Temel
 
 Temel bilgiler, Azure portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Portal, içinde `basics`belirtilen öğeleri görüntülemenin yanı sıra, kullanıcıların abonelik, kaynak grubu ve dağıtımın konumunu seçmesi için öğeleri çıkarır. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım çapındaki parametreleri sorgulayan öğeler bu adımda ilerlemelidir.
-
-Bir öğenin davranışı kullanıcının aboneliğine, kaynak grubuna veya konuma bağımlıysa, bu öğe temel bilgiler bölümünde kullanılamaz. Örneğin, **Microsoft. COMPUTE. SizeSelector** , kullanılabilir boyutların listesini öğrenmek için kullanıcının aboneliğine ve konumuna bağımlıdır. Bu nedenle, **Microsoft. COMPUTE. SizeSelector** yalnızca adımlarda kullanılabilir. Genellikle, temel olarak yalnızca **Microsoft. Common** ad alanındaki öğeler kullanılabilir. Diğer ad alanlarında ( **Microsoft. COMPUTE. Credentials**gibi), kullanıcının bağlamına bağımlı olmayan bazı öğelere izin verilse de.
 
 ## <a name="steps"></a>Adımlar
 

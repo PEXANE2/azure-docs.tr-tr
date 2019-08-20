@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384154"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615354"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB ile küresel veri dağıtımı-
 
@@ -34,7 +34,7 @@ Aşağıdaki görüntüde gösterildiği gibi, bir kapsayıcı içindeki veriler
 
 Fiziksel bir bölüm, *çoğaltma kümesi*olarak adlandırılan bir çoğaltmalar grubu tarafından uygulanır. Her makine, yukarıdaki görüntüde gösterildiği gibi, sabit bir işlem kümesi içindeki çeşitli fiziksel bölümlere karşılık gelen yüzlerce çoğaltma barındırır. Çoğaltmaları karşılık gelen fiziksel bölümlere dinamik olarak yerleştirilir ve bir küme ve veri merkezleri bölge içindeki makineler arasında Yük Dengelemesi.  
 
-Bir yinelemenin benzersiz bir Azure Cosmos DB kiracıya ait. Her yineleme Cosmos DB'NİN'ın bir örneğini barındıran [veritabanı altyapısı](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), ilişkili dizinleri yanı sıra kaynakları yönetir. Cosmos DB'nin veritabanı altyapısı bir atom kayıt sırasını (ARS) temel tür sisteminde çalışır. Motor, bir şemanın kavramına belirsiz bir şekilde, kayıtların yapısı ve örnek değerleri arasındaki sınırı bulanıklaştırma. Cosmos DB, otomatik olarak her şeyi alımı sırasında şema veya dizin yönetimiyle ilgilenmenize gerek kalmadan, Global olarak dağıtılmış verileri sorgulamak kullanıcılara verimli bir biçimde dizin oluşturma tarafından tam şema agnosticism ulaşır.
+Bir yinelemenin benzersiz bir Azure Cosmos DB kiracıya ait. Her yineleme Cosmos DB'NİN'ın bir örneğini barındıran [veritabanı altyapısı](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), ilişkili dizinleri yanı sıra kaynakları yönetir. Cosmos veritabanı altyapısı, bir atom kayıt sırası (ARS) tabanlı tür sistemi üzerinde çalışır. Motor, bir şemanın kavramına belirsiz bir şekilde, kayıtların yapısı ve örnek değerleri arasındaki sınırı bulanıklaştırma. Cosmos DB, otomatik olarak her şeyi alımı sırasında şema veya dizin yönetimiyle ilgilenmenize gerek kalmadan, Global olarak dağıtılmış verileri sorgulamak kullanıcılara verimli bir biçimde dizin oluşturma tarafından tam şema agnosticism ulaşır.
 
 Cosmos veritabanı altyapısı, çeşitli koordinasyon temelleri, dil çalışma zamanları, sorgu işlemcisi ve işlem depolamadan ve veri dizinlemeden sorumlu depolama ve dizin oluşturma alt sistemlerinin uygulanması dahil bileşenlerden oluşur. anı. Dayanıklılık ve yüksek kullanılabilirlik sağlamak için veritabanı altyapısı, veri ve dizin ssd'lerde devam ediyorsa ve yineleme içinde veritabanı altyapısı örneği arasında çoğaltır-kümelerini sırasıyla. Daha büyük kiracılar, üretilen iş ve depolama alanı ölçeğinde ve daha büyük ya da daha fazla kopyaya veya her ikisine sahip olur. Sistemin her bileşenin tam olarak zaman uyumsuz: hiç olmadığı kadar hiçbir iş parçacığını engeller ve her bir iş parçacığı kısa süreli bir gereksiz iş parçacığı anahtar ödemeden çalışır. Genelinde tüm giriş denetimi yığından tüm g/ç yolu için oran sınırlandırma ve arka baskısı genişletilmeyecek. Cosmos veritabanı altyapısı, ayrıntılı eşzamanlılık yararlanmak ve yüksek verimlilik sağlamak için tasarlanmıştır.
 

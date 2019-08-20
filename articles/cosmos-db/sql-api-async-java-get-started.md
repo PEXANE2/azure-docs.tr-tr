@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Bir Azure Cosmos DB SQL API hesabı yönetmek için zaman uyumsuz Java SDK'sı ile bir Java uygulaması derleme"
+title: "Öğretici: Azure Cosmos DB bir SQL API hesabını yönetmek için zaman uyumsuz Java SDK 'Sı ile bir Java uygulaması oluşturma"
 description: Bu öğreticide, nasıl depolanacağını ve verilere bir SQL API hesabı içinde Azure Cosmos DB'de Async Java uygulaması kullanarak gösterir.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 12/15/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: c466c11cc51ca8d8efcf9ff4e86a9dbd2fd4930c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985645"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614620"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Öğretici: Bir SQL API hesabı depolanan verileri yönetmek için zaman uyumsuz Java SDK'sı ile bir Java uygulaması derleme
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Öğretici: Bir SQL API hesabında depolanan verileri yönetmek için zaman uyumsuz Java SDK 'Sı ile bir Java uygulaması derleme
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Veritabanı oluşturma
 
-Kullanarak Azure Cosmos DB veritabanınıza oluşturma `createDatabaseIfNotExists()` DocumentClient sınıfının yöntemi. Veritabanı, koleksiyonlar genelinde bölümlenmiş JSON belgesi depolama alanının mantıksal bir kapsayıcısıdır.
+Documentclient sınıfının `createDatabaseIfNotExists()` yöntemini kullanarak Azure Cosmos veritabanınızı oluşturun. Veritabanı, koleksiyonlar genelinde bölümlenmiş JSON belgesi depolama alanının mantıksal bir kapsayıcısıdır.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 

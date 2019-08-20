@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717544"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614063"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
 
@@ -79,11 +79,11 @@ Azure Cosmos DB iki tür tetikleyici destekler:
 
 ### <a name="pre-triggers"></a>Ön Tetikleyiciler
 
-Azure Cosmos DB, bir Azure Cosmos DB öğesinde bir işlem gerçekleştirerek çağrılabilecek Tetikleyiciler sağlar. Örneğin, bir öğe oluştururken bir ön tetikleyici belirtebilirsiniz. Bu durumda, ön tetikleyici, öğe oluşturulmadan önce çalıştırılır. Öncesi tetikleyici, giriş parametreleri bulunamaz. Gerekirse, istek nesnesi özgün istekten belge gövdesini güncelleştirmek için kullanılabilir. Tetikleyiciler kaydettiğinizde, kullanıcılar ile çalışabilmesi için işlemleri belirtebilir. Bir tetikleyici ile `TriggerOperation.Create`oluşturulduysa, bu tetikleyicinin değiştirme işleminde kullanılmasına izin verilmez. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
+Azure Cosmos DB, bir Azure Cosmos öğesinde bir işlem gerçekleştirerek çağrılabilecek Tetikleyiciler sağlar. Örneğin, bir öğe oluştururken bir ön tetikleyici belirtebilirsiniz. Bu durumda, ön tetikleyici, öğe oluşturulmadan önce çalıştırılır. Öncesi tetikleyici, giriş parametreleri bulunamaz. Gerekirse, istek nesnesi özgün istekten belge gövdesini güncelleştirmek için kullanılabilir. Tetikleyiciler kaydettiğinizde, kullanıcılar ile çalışabilmesi için işlemleri belirtebilir. Bir tetikleyici ile `TriggerOperation.Create`oluşturulduysa, bu tetikleyicinin değiştirme işleminde kullanılmasına izin verilmez. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
 
 ### <a name="post-triggers"></a>Tetikleyiciler sonrası
 
-Ön tetikleyicilere benzer, tetikleyicilere benzer bir Azure Cosmos DB öğe üzerinde de bir işlemle ilişkilendirilir ve herhangi bir giriş parametresi gerektirmez. İşlem tamamlandıktan *sonra* çalışır ve istemciye gönderilen yanıt iletisine erişim sağlar. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
+Ön Tetikleyiciler, tetikleyicilere benzer şekilde Azure Cosmos öğesindeki bir işlemle da ilişkilendirilir ve herhangi bir giriş parametresi gerekmez. İşlem tamamlandıktan *sonra* çalışır ve istemciye gönderilen yanıt iletisine erişim sağlar. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
 
 > [!NOTE]
 > Kayıtlı Tetikleyiciler, ilgili işlemler (oluşturma/silme/değiştirme/güncelleştirme) gerçekleştiğinde otomatik olarak çalıştırılmaz. Bu işlemler yürütürken açıkça çağrılmalıdır. Daha fazla bilgi için bkz. [Tetikleyicileri çalıştırma](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) makalesi.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827379"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617300"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights depolanan kişisel verilere yönelik kılavuz
 
@@ -98,6 +98,11 @@ Veri görüntüleme ve dışarı aktarma istekleri için [Log Analytics sorgu AP
 Bir *Temizleme* API 'si yolunu işlemenin bir parçası olarak kullanıma sunulmuştur. Bu yol, sorun ile ilişkili risk, olası performans etkisi ve Log Analytics verilerinizin diğer yönlerini, ölçümlerinin ve diğer yönlerini eğmek için potansiyel olarak kullanılmalıdır. Özel verileri işlemeye yönelik alternatif yaklaşımlar için [kişisel veri Işleme stratejisi](#strategy-for-personal-data-handling) bölümüne bakın.
 
 Temizleme, Azure 'daki hiçbir uygulamanın veya kullanıcının (kaynak sahibi dahil) Azure Resource Manager içinde açıkça bir rol verilmeden yürütme izinlerine sahip olacağı yüksek ayrıcalıklı bir işlemdir. Bu rol _veri_ kaybı olur ve veri kaybı nedeniyle dikkatli bir şekilde temsil edilmelidir. 
+
+> [!IMPORTANT]
+> Sistem kaynaklarını yönetmek için, temizleme istekleri saat başına 50 istekte azaltılır. Tek bir komut göndererek Temizleme isteklerinin yürütülmesi, koşulu temizleme gerektiren tüm Kullanıcı kimliklerini içerir. Birden çok kimlik belirtmek için [ın işlecini](/azure/kusto/query/inoperator) kullanın. Sonuçların beklendiğini doğrulamak için Temizleme isteğini yürütmeden önce sorguyu çalıştırmalısınız. 
+
+
 
 Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur: 
 

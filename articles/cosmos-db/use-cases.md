@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 28a4cc854842b66a9fb61134e3ca9ac9a5f38fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965598"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614232"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Yaygın Azure Cosmos DB kullanım örnekleri
 Bu makalede, Azure Cosmos DB için bazı ortak kullanım durumları için genel bir bakış sağlar.  Cosmos DB ile Uygulamanızı geliştirirken bu makaledeki önerileri bir başlangıç noktası olarak hizmet eder.   
@@ -26,7 +26,7 @@ Bu makaleyi okuduktan sonra aşağıdaki soruları yanıtlamak mümkün olacakt�
 ## <a name="introduction"></a>Giriş
 [Azure Cosmos DB](../cosmos-db/introduction.md) Microsoft'un Global olarak dağıtılmış veritabanı hizmetidir. Hizmet, esnek bir biçimde (ve birbirinden bağımsız olarak) herhangi sayıda coğrafi bölgesinde aktarım hızını ve depolamayı ölçeklendirme müşterilerin izin vermek için tasarlanmıştır. Azure Cosmos DB, ilk Global olarak dağıtılmış veritabanı hizmeti pazarında bugün kapsamlı sunmaya [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/cosmos-db/) aktarım hızı, gecikme süresi, kullanılabilirlik ve tutarlılık. 
 
-Azure Cosmos DB çok çeşitli uygulamalar ve kullanım örnekleri kullanılan bir genel dağıtılmış, çok modelli veritabanıdır. Herhangi bir için iyi bir seçenek olup [sunucusuz](https://azure.com/serverless) gereken milisaniye sipariş düşük yanıt süreleri ve hızlı bir şekilde ve küresel olarak ölçeklemek gereken uygulama. Birçok veri modelini destekler (anahtar-değer, belgeler, grafikler ve sütunlu) ve veriler için birçok API'lere erişim de dahil olmak üzere [Azure Cosmos DB'nin MongoDB API'si](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md), ve [tablolar API'SİNİN](table-introduction.md) yerel olarak ve Genişletilebilir bir şekilde. 
+Azure Cosmos DB çok çeşitli uygulamalar ve kullanım örnekleri kullanılan bir genel dağıtılmış, çok modelli veritabanıdır. Herhangi bir için iyi bir seçenek olup [sunucusuz](https://azure.com/serverless) gereken milisaniye sipariş düşük yanıt süreleri ve hızlı bir şekilde ve küresel olarak ölçeklemek gereken uygulama. Birden çok veri modelini (anahtar-değer, belge, grafik ve sütun) ve veri erişimi için [Azure Cosmos DB, MongoDB](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md)ve [tablo API 'si](table-introduction.md) yerel olarak ve genişletilebilir bir güvensiz. 
 
 Azure Cosmos DB'nin genel kullanımına açma hedefimizde sahip yüksek performanslı uygulamalar için uygun hale bazı öznitelikleri şunlardır:
 
@@ -44,7 +44,7 @@ IOT kullanım örnekleri, yaygın olarak nasıl bunlar, işlem, içe alma, bazı
 
 ![Azure Cosmos DB IOT başvuru mimarisi](./media/use-cases/iot.png)
 
-Düşük gecikme süresi ile yüksek aktarım hızı veri alımı sunduğu veri ani artışlara Azure olay hub'ları tarafından aktarılabilir. İçin gerçek zamanlı öngörülere işlenmesi gereken alınan verileri gerçek zamanlı analiz için Azure Stream Analytics'e funneled. Geçici sorgulama için Azure Cosmos DB'ye veri yüklenebilir. Azure Cosmos DB'ye veriler yüklendikten sonra veri sorgulanacağı hazırdır. Ayrıca, yeni veri ve mevcut verilerde yapılan değişiklikleri değişiklik akışı üzerinde okunabilir. Değişiklik akışı kalıcı bir ise, Cosmos DB kapsayıcıları yapılan sıralı bir düzende depolayan günlük ekleme. Tüm veriler veya yalnızca Azure Cosmos DB'de veri değişiklikleri, başvuru verileri gerçek zamanlı analiz parçası olarak kullanılabilir. Ayrıca, veriler daha fazla iyileştirilmektedir ve Azure Cosmos DB veri için HDInsight Pig, Hive veya Map/Reduce işleri bağlanarak işlenen.  Daraltılmış veri Azure Cosmos DB geri yüklenir ve raporlama için.   
+Düşük gecikme süresi ile yüksek aktarım hızı veri alımı sunduğu veri ani artışlara Azure olay hub'ları tarafından aktarılabilir. İçin gerçek zamanlı öngörülere işlenmesi gereken alınan verileri gerçek zamanlı analiz için Azure Stream Analytics'e funneled. Geçici sorgulama için Azure Cosmos DB'ye veri yüklenebilir. Azure Cosmos DB'ye veriler yüklendikten sonra veri sorgulanacağı hazırdır. Ayrıca, yeni veri ve mevcut verilerde yapılan değişiklikleri değişiklik akışı üzerinde okunabilir. Değişiklik akışı, yalnızca Cosmos kapsayıcılarındaki değişiklikleri sıralı sırada depolayan kalıcı, yalnızca bir Append günlüğü. Tüm veriler veya yalnızca Azure Cosmos DB'de veri değişiklikleri, başvuru verileri gerçek zamanlı analiz parçası olarak kullanılabilir. Ayrıca, veriler daha fazla iyileştirilmektedir ve Azure Cosmos DB veri için HDInsight Pig, Hive veya Map/Reduce işleri bağlanarak işlenen.  Daraltılmış veri Azure Cosmos DB geri yüklenir ve raporlama için.   
 
 Azure Cosmos DB, EventHubs ve Storm kullanarak örnek bir IOT çözüm için bkz: [hdınsight storm örnekleri GitHub deposunda](https://github.com/hdinsight/hdinsight-storm-examples/).
 
@@ -68,7 +68,7 @@ Ayrıca, Apache Spark işleri aracılığıyla büyük veri analizi için HDInsi
 ## <a name="gaming"></a>Oyun
 Veritabanı katmanı, oyun uygulamaları, önemli bir bileşenidir. Modern oyunlar grafik işleme mobile/konsol istemcilerde gerçekleştirir, ancak bulutta oyun içi istatistikler, sosyal medya tümleştirmesine ve yüksek puan tabloları gibi özelleştirilmiş ve kişiselleştirilmiş içerik sağlamak için kullanır. Oyunlar genellikle okuma için tek milisaniyelik gecikme süreleri gerektiren ve oyun içi deneyimi bir ilgi çekici sağlamak için yazar. Oyun veritabanını hızlı ve istek hızları büyük artış işleme sırasında yeni oyun başlatır ve özellik güncelleştirmeleri olması gerekir.
 
-Azure Cosmos DB gibi oyunlar tarafından kullanılan [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) tarafından [sonraki oyunları](https://www.nextgames.com/), ve [Halo 5: Veli](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB, Oyun geliştiriciler için aşağıdaki avantajları sağlar:
+Azure Cosmos DB, yürüyen ölü gibi [Oyunlar tarafından kullanılır: ](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) [Sonraki oyunlara](https://www.nextgames.com/) ve[Halo 5 ' te Man 'ın ARAI yok: Veliler](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB, Oyun geliştiriciler için aşağıdaki avantajları sağlar:
 
 * Azure Cosmos DB performans ölçeklenmesine olanak sağlayan esnek bir şekilde aşağı veya yukarı. Bu, tek bir API çağrısı yaparak güncelleştirme profili ve düzinelerce gelen istatistikleri eşzamanlı oyuncular milyonlarca işlemek oyunlar sağlar.
 * Azure Cosmos DB milisaniyelik okuma destekler ve oyun sırasında tüm aksamalar önlemeye yardımcı olmak yazar.
@@ -108,13 +108,13 @@ Veya daha fazla bilgi istiyorsanız, Cosmos DB kullanan müşteriler hakkında a
 * [Citrix](https://customers.microsoft.com/story/citrix). Azure Service Fabric ve Azure Cosmos DB'yi kullanarak çoklu oturum açma çözümü Citrix geliştirir
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA'ın Devrim niteliğindeki IOT çözüm vehicle sahipleri için saat, para, doğalgaz yardımcı olur — ve büyük olasılıkla yaşar.
 * [Domino'nın Pizza](https://www.dominos.com). Domino'nın Pizza Inc. bir Amerikan pizza Restoran zinciri olur.
-* [Johnson denetimleri](https://www.johnsoncontrols.com). Johnson denetimler, genel büyük teknoloji ve çok çeşitli müşteriler 150'den fazla ülkede/bölgede hizmet çok endüstriyel lider ' dir.
+* [Johnson denetimleri](https://www.johnsoncontrols.com). Johnson denetimleri, 150 ülkede/bölgede çok çeşitli müşterilere hizmet veren küresel bir ayrılmış teknolojidir ve çok endüstriyel bir liderdir.
 * [Microsoft Windows, Evrensel Store, Azure IOT Hub, Xbox Live ve diğer Internet ölçeğindeki Hizmetler](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Nasıl Microsoft Azure Cosmos DB'yi kullanarak yüksek düzeyde ölçeklenebilir hizmetler oluşturur.
 * [Microsoft Data ve analiz ekibi](https://customers.microsoft.com/story/microsoftdataandanalytics). Microsoft'un veri ve analiz ekibi, Azure Cosmos DB ile dünya ölçeğinde büyük veri koleksiyonu sağlar
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha, müşteriler ve işletmeler Hindistan bağlanmak için Azure Cosmos DB kullanır.
 * [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). Azure Cosmos DB ile uçuş NewOrbit alır.
 * [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Affinio, sosyal verilerden uygun ölçekte yararlanmasına için Azure Cosmos DB için AWS'den geçer.
-* [Sonraki oyunları](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Kullanılmayan yürüyen: No Man's Land oyunu, Azure Cosmos DB tarafından desteklenen #1 numaraya yükseliyor.
+* [Sonraki oyunları](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Yürüyen yok: Azure Cosmos DB tarafından desteklenen #1 Man oyunu oyları yok.
 * [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Nasıl Halo 5, Azure Cosmos DB kullanarak sosyal oyun deneyimini uygulanır.
 * [Cortana Analytics Galerisi](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Cortana Analytics Galerisi - Azure Cosmos DB üzerinde oluşturulmuş ölçeklenebilir topluluk sitesi.
 * [Meltem](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Entegratörü önde gelen esnek bulut teknolojileri birkaç dakika içinde çok uluslu firmaları genel bilgiler sağlar.

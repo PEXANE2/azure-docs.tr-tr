@@ -1,17 +1,17 @@
 ---
 title: .NET için Azure Cosmos DB performans ipuçları
-description: Azure Cosmos DB veritabanı performansını iyileştirecek istemci yapılandırma seçeneklerini öğrenin
+description: Azure Cosmos veritabanı performansını geliştirmek için istemci yapılandırma seçeneklerini öğrenin
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 21886c11bea6ff09cf97362e06c6d304aaa0d8cc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3c4dbd38edaf36461578e087010d978a25450d06
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250051"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614917"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -48,8 +48,8 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
      |Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
      |---------|---------|---------|---------|
      |Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-     |Direct    |    HTTPS     |  .NET ve Java SDK 'Sı    |   10000-20000 aralığındaki bağlantı noktaları    |
-     |Direct    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
+     |Doğrudan    |    HTTPS     |  .NET ve Java SDK 'Sı    |   10000-20000 aralığındaki bağlantı noktaları    |
+     |Doğrudan    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
 
      Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. Hem doğrudan TCP hem de HTTPS, ilk kimlik doğrulaması ve trafiği şifrelemek için SSL kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
 
@@ -78,7 +78,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
    <a id="same-region"></a>
 3. **Aynı Azure bölgesindeki istemcileri performans için birlikte bulun**
 
-    Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. Yaklaşık bir karşılaştırma için, 1-2 ms içinde aynı bölgedeki Azure Cosmos DB çağrıları tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS >. Bu gecikme süresi büyük olasılıkla istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine farklılık gösterebilir. Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak elde edilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
+    Mümkün olduğunda Azure Cosmos veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. Yaklaşık bir karşılaştırma için, 1-2 ms içinde aynı bölgedeki Azure Cosmos DB çağrıları tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS >. Bu gecikme süresi büyük olasılıkla istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine farklılık gösterebilir. Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak elde edilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
     ![Azure Cosmos DB bağlantı ilkesinin çizimi](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
@@ -162,7 +162,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     - Yürütülebilir uygulamalar için bu işlem, **derleme** sekmesindeki **proje özellikleri** penceresinde **32 bit tercih et** seçeneğinin işaretlenmesi yoluyla yapılabilir.
 
-    - VSTest tabanlı test projeleri için, **Visual Studio test** menü seçeneğinde test**Test ayarları**->**Varsayılan işlemci mimarisi x64 olarak**' **yi seçerek**->bu işlemi gerçekleştirebilirsiniz.
+    - VSTest tabanlı test projeleri için, **Visual Studio test** menü seçeneğinde test->**Test ayarları**->**Varsayılan işlemci mimarisi x64 olarak**' yi seçerek bu işlemi gerçekleştirebilirsiniz.
 
     - Yerel olarak dağıtılan ASP.NET Web uygulamaları için, **Araçlar**->**Seçenekler**->**Projeler ve çözümler** altında **Web siteleri ve projeleri için IIS Express 64 bitlik sürümü kullanılarak**bu yapılabilir. **Web projeleri**. ->
 

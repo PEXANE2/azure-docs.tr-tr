@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e09c36128c3471ce9df33b2a78eb14fab89435b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad09715f8ccbe20ec6f58d3a4543e0168e9f4cbc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498294"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617714"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Verileri şirket içi SQL Server veritabanından Azure Blob depolamaya kopyalama
 Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak verileri şirket içi bir SQL Server veritabanından Azure Blob depolama alanına kopyalayan bir veri fabrikası işlem hattı oluşturursunuz. Verileri şirket içi ile bulut veri depoları arasında taşıyan, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturup kullanabilirsiniz.
@@ -89,7 +89,6 @@ Bu öğreticide, depolama hesabınızın adını ve anahtarını kullanırsını
 
 1. **Depolama hesabı** penceresinde **Erişim anahtarları**'nı seçin.
 
-    ![Erişim tuşları](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
 1. **Depolama hesabı adı** ve **key1** kutularında değerleri kopyalayın ve ardından onları öğreticide daha sonra kullanmak için Not Defteri'ne veya başka bir düzenleyiciye yapıştırın. 
 
@@ -114,14 +113,11 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
 1. **adftutorial** öğesine ait **kapsayıcı** penceresini açık tutun. Öğreticinin sonundaki çıktıyı doğrulamak için bu sayfayı kullanırsınız. Data Factory bu kapsayıcıda çıktı klasörünü otomatik olarak oluşturduğundan sizin oluşturmanız gerekmez.
 
-    ![Kapsayıcı penceresi](media/tutorial-hybrid-copy-powershell/container-page.png)
-
-
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız. 
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol menüden **kaynak Oluştur** > **veri ve analiz** > **Data Factory**:
+1. Sol taraftaki menüden**veri ve analiz** >  > kaynak oluştur ' u seçin**Data Factory**:
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -195,7 +191,7 @@ Veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Ad alanı için a
 
     ![Tümleştirme çalışma zamanı adı](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. Altında **seçenek 1: Hızlı Kurulum**seçin **bu bilgisayarda hızlı kurulumu başlatmak için buraya tıklayın**. 
+1. 1 **. seçenek: Hızlı Kurulum**' u seçerek **Bu bilgisayarın hızlı kurulumunu başlatın**. 
 
     ![Hızlı kurulum bağlantısı](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 

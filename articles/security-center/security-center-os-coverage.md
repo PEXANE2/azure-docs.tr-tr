@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9a11af7e2875c9af5cf4b08d459bc67b55dbdcf3
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515542"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611957"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler
 
@@ -30,8 +30,7 @@ Hem klasik hem de Kaynak Yöneticisi dağıtım modelleri ve Bilgisayarları kul
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>Veri toplama aracısını destekleyen platformlar 
-
-Bu bölümde, Azure Güvenlik Merkezi aracısının çalışacağı ve veri toplayabileceği platformlar listelenmektedir.
+Bu bölümde, Azure Güvenlik Merkezi tarafından kullanılan Log Analytics aracısının çalıştırılabileceği platformlar listelenmektedir.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows bilgisayarları ve VM 'Ler için desteklenen platformlar
 Aşağıdaki Windows işletim sistemleri desteklenir:

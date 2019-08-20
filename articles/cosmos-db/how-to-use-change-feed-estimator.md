@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 582b0a586f830659bbea4dd665be938d2895de47
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544834"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615282"
 ---
 # <a name="use-the-change-feed-estimator"></a>Değişiklik akışı tahmin aracı 'ı kullanın
 
@@ -23,7 +23,7 @@ Değişiklik akışı işlemcisi, [değişiklik akışınızda](./change-feed.md
 
 Değişiklik akışı işlemcisi dağıtımı, CPU, bellek, ağ gibi kullanılabilir kaynaklara bağlı olarak belirli bir hızda değişiklik işleyebilir.
 
-Bu oran, değişikliklerinizin Azure Cosmos DB kapsayıcıda gerçekleştiği orandan daha yavaşsa, işlemciniz geri gecikme için başlar.
+Bu oran, değişikliklerinizin Azure Cosmos kapsayıcısında gerçekleştiği orandan daha yavaşsa, işlemcinizin arkasında gecikme olacak şekilde bekleecektir.
 
 Bu senaryonun belirlenmesi, değişiklik akışı işlemci dağıtımınızı ölçeklendirmemiz gerektiğini anlamanıza yardımcı olur.
 
@@ -60,8 +60,7 @@ Bu tahmini, izleme çözümünüze gönderebilir ve zaman içinde ilerleme durum
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makaleler de akış değiştirme hakkında daha fazla bilgi edinmek için şimdi geçebilirsiniz:
+Şimdi aşağıdaki makalelerde akış işlemcisini Değiştir hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Değişiklik akışına genel bakış](change-feed.md)
-* [Değişiklik akışını okuma yolları](read-change-feed.md)
-* [Değişiklik akışı işlemcisini kullanma](change-feed-processor.md)
+* [Değişiklik akışı işlemcisine genel bakış](change-feed-processor.md)
+* [Akış işlemcisi başlangıç saatini değiştir](how-to-configure-change-feed-start-time.md)

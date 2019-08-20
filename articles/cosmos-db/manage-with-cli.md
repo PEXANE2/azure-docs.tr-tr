@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815045"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615215"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos kaynaklarını yönetme
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ## <a name="create-a-database"></a>Veritabanı oluşturma
 
-Cosmos DB veritabanı oluşturmak için aşağıdaki komutu çalıştırın:
+Cosmos veritabanı oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az cosmosdb database create \
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-400 RU/s ve bölüm anahtarı ile bir Cosmos DB kapsayıcısı oluşturmak için aşağıdaki komutu çalıştırın:
+400 RU/s ve bölüm anahtarı ile Cosmos kapsayıcısı oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 # Create a container
@@ -67,7 +67,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>Kapsayıcının verimini değiştirme
 
-Cosmos DB kapsayıcısının verimini 1000 RU/sn olarak değiştirmek için aşağıdaki komutu çalıştırın:
+Cosmos kapsayıcısının verimini 1000 RU/sn olarak değiştirmek için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 # Update container throughput

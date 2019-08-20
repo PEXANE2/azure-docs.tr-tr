@@ -1,5 +1,5 @@
 ---
-title: Azure CLI betiği-Azure Cosmos DB Cassandra API'SİNİN hesap oluşturma, veritabanı ve tablo
+title: Azure CLı betiği-bir Azure Cosmos DB Cassandra API hesabı, veritabanı ve tablo oluşturma
 description: Azure CLI Betiği Örneği - Azure Cosmos DB Cassandra API hesabı, veritabanı ve tablosu oluşturma
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 89d43d8fc956d747de885f69017ed79f49670858
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dfb661ef4e33ee69692d1b7f7fa2c5869507741f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154746"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614878"
 ---
-# <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Azure Cosmos DB: Azure CLI kullanarak bir Cassandra API hesabı oluşturma
+# <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Azure Cosmos DB: Azure CLı kullanarak Cassandra API hesabı oluşturma
 
 Bu örnek CLI betiği, Azure Cosmos DB Cassandra API hesabı, veritabanı ve tablosu oluşturur.
 
@@ -46,7 +46,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos DB veritabanı oluşturur. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos veritabanı oluşturur. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Bir iş yükü sınıflandırıcı - T-SQL oluşturma | Microsoft Docs'
-description: T-SQL iş yükü sınıflandırıcı yüksek önem derecesiyle oluşturmak için kullanın.
+title: 'Hızlı Başlangıç: İş yükü Sınıflandırıcısı oluşturma-T-SQL | Microsoft Docs'
+description: T-SQL ' y i kullanarak yüksek öneme sahip bir iş yükü Sınıflandırıcısı oluşturun.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: f400989fdbdede4f4a07ee13c5a606d51529150c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588698"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574872"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Hızlı Başlangıç: T-SQL kullanarak bir iş yükü sınıflandırıcı oluşturma
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Hızlı Başlangıç: T-SQL kullanarak iş yükü Sınıflandırıcısı oluşturma
 
-Bu hızlı başlangıçta, CEO, kuruluşunuz için yüksek önem düzeyine sahip bir iş yükü sınıflandırıcı hızla oluşturacaksınız. Bu iş yükü sınıflandırıcı CEO sorguların diğer sorguları ile daha düşük önem sırasına göre önceliklidir izin verir.
+Bu hızlı başlangıçta, kuruluşunuzun CEO 'SU için yüksek önem derecesine sahip bir iş yükü sınıflandırıcısını hızlı bir şekilde oluşturacaksınız. Bu iş yükü Sınıflandırıcısı, CEO sorgularının, sıradaki daha düşük öneme sahip diğer sorgulara göre öncelikli olması için izin verir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -30,15 +30,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıçta, zaten sahip olduğunuz bir SQL veri ambarı ve Denetim veritabanı izinlere sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, zaten bir SQL veri ambarınızın olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
 [Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="create-login-for-theceo"></a>Oturum açma için TheCEO oluşturma
+## <a name="create-login-for-theceo"></a>TheCEO için oturum açma oluştur
 
-SQL Server kimlik doğrulaması oturum açma bilgisi oluşturma `master` kullanarak veritabanı [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) 'TheCEO' için.
+' TheCEO ' için `master` [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql) kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -50,7 +50,7 @@ END
 
 ## <a name="create-user"></a>Kullanıcı oluştur
 
-[Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO" mySampleDataWarehouse içinde
+"TheCEO" adlı Kullanıcı, mySampleDataWarehouse içinde [Oluştur](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest)
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -60,9 +60,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>Bir iş yükü sınıflandırıcı oluşturma
+## <a name="create-a-workload-classifier"></a>İş yükü Sınıflandırıcısı oluşturma
 
-Oluşturma bir [iş yükü sınıflandırıcı](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) yüksek önem düzeyine sahip "TheCEO" için.
+Yüksek öneme sahip "TheCEO" için bir [iş yükü Sınıflandırıcısı](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) oluşturun.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -72,7 +72,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
       ,IMPORTANCE = HIGH);
 ```
 
-## <a name="view-existing-classifiers"></a>Mevcut sınıflandırıcılar görüntüleyin
+## <a name="view-existing-classifiers"></a>Mevcut sınıflandırıcıları görüntüleme
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers
@@ -86,27 +86,27 @@ DROP USER [TheCEO]
 ;
 ```
 
-Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. Duraklatarak işlem, sizin yalnızca veri depolama için ücretlendirilirsiniz. Verilerle çalışmak hazır olduğunuzda, sürdürebilirsiniz.
+- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
 - Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
 
-Kaynakları temizlemek için aşağıdaki adımları izleyin.
+Kaynakları temizlemek için bu adımları izleyin.
 
-1. Oturum [Azure portalında](https://portal.azure.com)üzerinde veri ambarı'nızı seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, veri Ambarınızda öğesini seçin.
 
     ![Kaynakları temizleme](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlemi duraklatmak için işaretleyin **duraklatmak** düğmesi. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlemi sürdürmek için seçin **Başlat**.
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
 
-3. Veri ambarı, işlem ve depolama için ücret ödemezsiniz üzere kaldırmak için işaretleyin **Sil**.
+3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' i seçin.
 
-4. Oluşturduğunuz SQL sunucusunu kaldırmak için işaretleyin **mynewserver-20180430.database.windows.net** seçin ve önceki görüntüde **Sil**.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
+4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
 
-5. Kaynak grubunu kaldırmak için işaretleyin **myResourceGroup**ve ardından **kaynak grubunu Sil**.
+5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir iş yükü sınıflandırıcı oluşturdunuz. Birkaç sorgu gösterdikleri için TheCEO çalıştırın. Bkz: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) sorgular ve atanan önem görüntülemek için.
-- Azure SQL veri ambarı iş yükü yönetimi hakkında daha fazla bilgi için bkz: [iş yükü önem](sql-data-warehouse-workload-importance.md) ve [iş yükü sınıflandırma](sql-data-warehouse-workload-classification.md).
-- Nasıl yapılır makalelerine bakın [iş yükü önem yapılandırma](sql-data-warehouse-how-to-configure-workload-importance.md) ve nasıl [yönetme ve izleme iş yükü yönetimi](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Artık bir iş yükü Sınıflandırıcısı oluşturdunuz. Nasıl çalıştığını görmek için birkaç sorguyu TheCEO olarak çalıştırın. Sorguları ve atanan önemi görüntülemek için bkz. [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) .
+- Azure SQL veri ambarı iş yükü yönetimi hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md) ve [iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).
+- [Iş yükü önemini yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve [Iş yükü yönetimini yönetmek ve izlemek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)için nasıl yapılır makalelerine bakın.

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952055"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615869"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: Aracı veya uzantıyla ilgili sorunlar
 
@@ -106,7 +106,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: UserErrorUnsupportedDiskSize <br>
 **Hata iletisi**: Şu anda Azure Backup, 4095GB 'tan büyük disk boyutlarını desteklemiyor <br>
 
-Disk boyutu 4.095 GB 'tan büyük bir VM 'yi yedeklerken yedekleme işlemi başarısız olabilir. 4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [Azure VM yedeklemesi 'ne genel bakış](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Disk boyutu 4.095 GB 'tan büyük bir VM 'yi yedeklerken yedekleme işlemi başarısız olabilir. 4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bu [makaleye](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)bakın.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>Usererrorbackupoperationınprogress-Şu anda başka bir yedekleme işlemi sürdüğünden yedekleme başlatılamıyor
 

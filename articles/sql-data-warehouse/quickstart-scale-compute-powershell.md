@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3c3be507fd544ec86790f820830c2275e7703564
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641072"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574847"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Hızlı Başlangıç: PowerShell 'de Azure SQL veri ambarı 'nda işlem ölçekleme
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu hızlı başlangıçta zaten ölçeklendirebileceğiniz bir SQL veri ambarına sahip olduğunuz varsayılır. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıçta ölçeklendirebildiğiniz bir SQL veri ambarı zaten var. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -123,4 +123,4 @@ $database | Select-Object DatabaseName,Status
 Artık veri ambarınız için işlemin nasıl ölçeklendirileceğini öğrendiniz. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
->[SQL veri ambarına veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)

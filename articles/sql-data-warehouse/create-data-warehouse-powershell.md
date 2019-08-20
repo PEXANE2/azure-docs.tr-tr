@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1f800ade5c5122f0891c9122f6698b6550048c67
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479336"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574896"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile bir Azure SQL veri ambarı oluşturma ve sorgulama
 
@@ -149,4 +149,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 Artık bir veri ambarı oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz, veri ambarınıza bağlanmış ve birkaç sorgu çalıştırdınız. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
 > [!div class="nextstepaction"]
->[SQL veri ambarına veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)

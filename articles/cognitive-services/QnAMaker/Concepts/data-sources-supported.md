@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515801"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615975"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Veri kaynakları için soru-cevap Oluşturucu içeriği
 
 Soru-cevap Oluşturucu SSS, ürün kılavuzlarını, kılavuzlar, destek belgeleri ve web sayfaları, PDF dosyaları ya da Word MS doc dosyalarını depolanan ilkeleri gibi yarı yapılandırılmış içeriği otomatik olarak soru-cevap çiftlerini ayıklar. İçeriği, yapılandırılmış soru-cevap içerik dosyalarından Bilgi Bankası'na da eklenebilir. 
+
+## <a name="data-types"></a>Veri türleri
 
 Aşağıdaki tabloda, soru-cevap Oluşturucu tarafından desteklenen içeriği ve dosya biçimlerini türlerini özetler.
 
@@ -32,11 +34,21 @@ Aşağıdaki tabloda, soru-cevap Oluşturucu tarafından desteklenen içeriği v
 
 ## <a name="data-source-locations"></a>Veri kaynağı konumları
 
-Çoğu veri kaynağı konumu, kimlik doğrulaması gerektirmeyen genel URL 'Leri veya dosyaları sağlamalıdır. 
+Veri kaynağı konumları, kimlik doğrulaması gerektirmeyen **Genel URL 'ler veya dosyalardır**. 
 
-[SharePoint veri kaynağı konumlarına](../How-to/add-sharepoint-datasources.md) kimliği doğrulanmış dosyalar sağlama izni verilir. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. 
+Veri kaynağınız için kimlik doğrulaması gerekiyorsa, bu verileri Soru-Cevap Oluşturma almak için aşağıdaki yöntemleri göz önünde bulundurun:
 
-Kimliği doğrulanmış bir dosyanız veya URL 'niz varsa, dosyayı kimliği doğrulanmış siteden yerel bilgisayarınıza indirmek için alternatif bir seçenek, ardından dosyayı yerel bilgisayarınızdan Bilgi Bankası 'na eklemektir. 
+* [Dosyayı el Ile indirin](#download-file-from-authenticated-data-source-location) ve soru-cevap oluşturma alın
+* Kimliği doğrulanmış [SharePoint konumu](#import-file-from-authenticated-sharepoint) için içeri aktarma dosyası 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>Kimliği doğrulanmış veri kaynağı konumundan dosya indir
+
+Kimliği doğrulanmış bir dosyaya (kimliği doğrulanmış bir SharePoint konumunda değil) veya URL 'niz varsa, dosyayı kimliği doğrulanmış siteden yerel bilgisayarınıza indirmek için alternatif bir seçenek, dosyayı yerel bilgisayarınızdan Bilgi Bankası 'na eklemektir.
+
+### <a name="import-file-from-authenticated-sharepoint"></a>Kimliği doğrulanmış SharePoint 'ten dosya al 
+
+[SharePoint veri kaynağı konumlarına](../How-to/add-sharepoint-datasources.md) kimliği doğrulanmış **dosyalar**sağlama izni verilir. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. URL, gibi bir Web uzantısıyla sonlanıyorsa **. ASPX**, SharePoint 'ten soru-cevap oluşturma içine aktarılmaz.
+
 
 ## <a name="faq-urls"></a>SSS URL'leri
 

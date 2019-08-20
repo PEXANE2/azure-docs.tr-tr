@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 2d0c8cfb5e146694304d32eca27836f49d82e887
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618696"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614130"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure SQL veri ambarı veri kopyalayın 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -146,7 +146,7 @@ Hizmet sorumlusu tabanlı Azure AD uygulama belirteci kimlik doğrulamasını ku
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Hizmet sorumlusuna gerekli izinleri vermek** SQL kullanıcıları veya diğerleri için normalde yaptığınız gibi. Aşağıdaki kodu çalıştırın veya daha [fazla seçeneğe bakın](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
+4. **Hizmet sorumlusuna gerekli izinleri vermek** SQL kullanıcıları veya diğerleri için normalde yaptığınız gibi. Aşağıdaki kodu çalıştırın veya daha fazla seçeneğe bakın. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -196,7 +196,7 @@ Yönetilen kimlik kimlik doğrulamasını kullanmak için şu adımları izleyin
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi **Data Factory yönetilen kimliğe gerekli Izinleri verin** . Aşağıdaki kodu çalıştırın veya daha [fazla seçeneğe bakın](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
+3. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi **Data Factory yönetilen kimliğe gerekli Izinleri verin** . Aşağıdaki kodu çalıştırın veya daha fazla seçeneğe bakın. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -400,7 +400,7 @@ SQL veri ambarı'nda bir sonraki bölüm verimli bir şekilde yüklemek için Po
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Azure SQL veri ambarı'na veri yüklemek için PolyBase kullanma
 
-Kullanarak [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) büyük miktarda veri, yüksek aktarım hızı ile Azure SQL Data Warehouse'a yüklemek için etkili bir yoludur. Yerine varsayılan BULKINSERT mekanizmasını PolyBase kullanarak büyük bir kazanç aktarım hızının görürsünüz. Bkz: [Performans başvurusu](copy-activity-performance.md#performance-reference) ayrıntılı bir karşılaştırması için. Kullanım örneği ile bir kılavuz için bkz. [1 TB'ı Azure SQL Data Warehouse'a veri yükleme](v1/data-factory-load-sql-data-warehouse.md).
+Kullanarak [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) büyük miktarda veri, yüksek aktarım hızı ile Azure SQL Data Warehouse'a yüklemek için etkili bir yoludur. Yerine varsayılan BULKINSERT mekanizmasını PolyBase kullanarak büyük bir kazanç aktarım hızının görürsünüz. Kullanım örneği ile bir kılavuz için bkz. [1 TB'ı Azure SQL Data Warehouse'a veri yükleme](v1/data-factory-load-sql-data-warehouse.md).
 
 * Kaynak verileriniz Azure Blob 'dayken **, Azure Data Lake Storage 1. veya Azure Data Lake Storage 2.** ve **Biçim PolyBase UYUMLUYSA**, Azure SQL veri ambarı 'nın verileri kaynaktan çekmesini sağlamak üzere doğrudan PolyBase 'i çağırmak için kopyalama etkinliğini kullanabilirsiniz. Ayrıntılar için bkz  **[kopyalama PolyBase kullanarak doğrudan](#direct-copy-by-using-polybase)** .
 * Kaynak veri deposu ve biçim başlangıçta desteklenmez, PolyBase tarafından kullanın **[kopyalama PolyBase kullanarak hazırlanmış](#staged-copy-by-using-polybase)** bunun yerine özellik. Hazırlanmış kopya özelliğini de daha iyi aktarım hızı sağlar. Otomatik olarak verileri PolyBase ile uyumlu biçimine dönüştürür. Ve verileri Azure Blob Depolama alanında depolar. Ardından verileri SQL veri ambarı'na yükler.

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d7ceb854f5f6f8d0bfb2d589f42fe6d022ec743
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382469"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616005"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesaplarınızda oturum açın
 
@@ -56,7 +56,7 @@ Telefonla oturum açma yalnızca Android 6,0 veya üzeri çalıştıran iOS ve A
 
     - **Uygulamayı iki öğeli doğrulama için kullanıyorsanız.** Uygulamayı ve iki öğeli doğrulamayı zaten kullanıyorsanız, hesap adının yanındaki açılan oku seçebilir ve ardından **telefonla oturum açmayı etkinleştir**' i seçebilirsiniz.
 
-    - **İş veya okul hesabınızı bulamıyorsanız.** Uygulamanın **hesaplar** ekranında iş veya okul hesabınızı bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınızı [ekleme makalesindeki adımları](user-help-auth-app-add-work-school-account.md) izleyerek iş veya okul hesabınızı ekleyin.
+    - **İş veya okul hesabınızı bulamıyorsanız.** Uygulamanın **hesaplar** ekranında iş veya okul hesabınızı bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınızı ekleme makalesindeki adımları izleyerek iş veya okul hesabınızı [](user-help-auth-app-add-work-school-account.md) ekleyin.
 
 Telefonla oturum açma özelliğini etkinleştirdikten sonra yalnızca Microsoft Authenticator uygulamasını kullanarak oturum açabilirsiniz.
 
@@ -122,7 +122,7 @@ Standart iki öğeli doğrulama yöntemi, oturum açmak için kullandığınız 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
+- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
 
 - Uygulamayla ilgili daha fazla genel sorunuz varsa [Microsoft Authenticator SSS](user-help-auth-app-faq.md) bölümüne bakın
 

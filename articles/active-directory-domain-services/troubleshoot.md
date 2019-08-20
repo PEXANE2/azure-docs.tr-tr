@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c5ec80e81381423bdfdee07b1c020343d14ed559
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772984"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617061"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services-sorun giderme kılavuzu
 Bu makalede, Azure Active Directory (AD) etki alanı hizmetlerini ayarlarken veya yönetirken karşılaşabileceğiniz sorunlar için sorun giderme ipuçları sunulmaktadır.
@@ -32,7 +32,7 @@ Karşılaştığınız hata iletisine karşılık gelen sorun giderme adımları
 
 | **Hata Iletisi** | **Çözümleme** |
 | --- |:--- |
-| *Contoso100.com adı bu ağda zaten kullanımda. Kullanımda olmayan bir ad belirtin.* |[Sanal ağda etki alanı adı çakışması](troubleshoot.md#domain-name-conflict) |
+| *Contoso.com adı bu ağda zaten kullanılıyor. Kullanımda olmayan bir ad belirtin.* |[Sanal ağda etki alanı adı çakışması](troubleshoot.md#domain-name-conflict) |
 | *Domain Services bu Azure AD kiracısında etkinleştirilemedi. Hizmetin, 'Azure AD Domain Services Sync' adlı uygulama üzerinde yeterli izinleri yok. 'Azure AD Domain Services Sync' adlı uygulamayı silin ve ardından Azure AD kiracınız için Domain Services’ı etkinleştirmeyi deneyin.* |[Etki alanı Hizmetleri Azure AD Domain Services eşitleme uygulaması için yeterli izinlere sahip değil](troubleshoot.md#inadequate-permissions) |
 | *Domain Services bu Azure AD kiracısında etkinleştirilemedi. Azure AD kiracınızdaki Domain Services uygulamasının, Etki Alanı Hizmetlerini etkinleştirmek için gereken izinleri yok. Uygulama tanımlayıcısı d87dcbc6-a371-462e-88e3-28ad15ec4e64 olan uygulamayı silin ve Azure AD kiracınızda Domain Services’ı etkinleştirmeyi deneyin.* |[Etki alanı Hizmetleri uygulaması kiracınızda düzgün yapılandırılmamış](troubleshoot.md#invalid-configuration) |
 | *Domain Services bu Azure AD kiracısında etkinleştirilemedi. Azure AD kiracınızda Microsoft Azure AD uygulaması devre dışı bırakıldı. Uygulama tanımlayıcısı 00000002-0000-0000-c000-000000000000 olan uygulamayı etkinleştirin ve Azure AD kiracınızda Domain Services’ı etkinleştirmeyi deneyin.* |[Microsoft Graph uygulama Azure AD kiracınızda devre dışı bırakıldı](troubleshoot.md#microsoft-graph-disabled) |
@@ -40,7 +40,7 @@ Karşılaştığınız hata iletisine karşılık gelen sorun giderme adımları
 ### <a name="domain-name-conflict"></a>Etki alanı adı çakışması
 **Hata iletisi:**
 
-*Contoso100.com adı bu ağda zaten kullanımda. Kullanımda olmayan bir ad belirtin.*
+*Contoso.com adı bu ağda zaten kullanılıyor. Kullanımda olmayan bir ad belirtin.*
 
 **Düzeltmesi**
 
@@ -135,12 +135,12 @@ Azure AD kiracınızdaki bir veya daha fazla Kullanıcı yeni oluşturulan yöne
 >
 >
 
-* Başlarken kılavuzunda açıklanan adımlara uygun olarak [parola eşitlemesini etkinleştirdiğinizden](active-directory-ds-getting-started-password-sync.md) emin olun.
+* Başlarken kılavuzunda açıklanan adımlara uygun olarak [parola eşitlemesini etkinleştirdiğinizden](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) emin olun.
 * **Dış hesaplar:** Etkilenen kullanıcı hesabının, Azure AD kiracısında bir dış hesap olmadığından emin olun. Dış hesap örnekleri, Microsoft hesapları (örneğin, 'joe@live.com') veya dış bir Azure AD dizininden Kullanıcı hesapları içerir. Azure AD Domain Services bu kullanıcı hesapları için kimlik bilgileri olmadığından, bu kullanıcılar yönetilen etki alanında oturum açabilirler.
 * **Eşitlenmiş hesaplar:** Etkilenen Kullanıcı hesapları şirket içi dizinden eşitleniyorsa şunları doğrulayın:
 
   * [En son önerilen Azure AD Connect sürümüne](https://www.microsoft.com/download/details.aspx?id=47594)dağıttıysanız veya güncellenmiştir.
-  * [Tam eşitleme gerçekleştirmek](active-directory-ds-getting-started-password-sync.md)için Azure AD Connect yapılandırdınız.
+  * [Tam eşitleme gerçekleştirmek](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)için Azure AD Connect yapılandırdınız.
   * Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının Azure AD Domain Services ' de kullanılabilir olması biraz zaman alabilir. Kimlik doğrulamasını yeniden denemeden önce yeterince uzun süre beklemediğinizden emin olun.
   * Yukarıdaki adımları doğruladıktan sonra sorun devam ederse, Microsoft Azure AD eşitleme hizmetini yeniden başlatmayı deneyin. Eşitleme makinenizden bir komut istemi başlatın ve aşağıdaki komutları yürütün:
 

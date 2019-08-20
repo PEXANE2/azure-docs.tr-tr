@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952026"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617358"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
@@ -42,7 +42,7 @@ Azure VM 'yi yedekleme sunucusuna yedekleme  | Dosya/klasör/birim yedekleme; si
 Windows Azure VM oluştururken yedeklemeyi etkinleştirme | İçin desteklenir: <br/><br/> -Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)
 Linux VM oluştururken yedeklemeyi etkinleştirme | İçin desteklenir:<br/><br/> -Ubuntu sunucusu: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> CentOS 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Kapalı/çevrimdışı VM olan bir VM 'yi yedekleme | Destekleniyor.<br/><br/> Anlık görüntü yalnızca çökme ile tutarlı, uygulamayla tutarlı değildir.
-Yönetilen disklere geçtikten sonra diskleri yedekleme | Destekleniyor.<br/><br/> Yedekleme çalışmaya devam edecektir. Eylem gerekmiyor.
+Yönetilen disklere geçtikten sonra diskleri yedekleme | Destekleniyor.<br/><br/> Yedekleme çalışmaya devam edecektir. İşlem yapmanız gerekmez.
 Kaynak grubu kilidini etkinleştirdikten sonra yönetilen diskleri yedekleme | Desteklenmiyor.<br/><br/> Azure Backup eski geri yükleme noktalarını silemiyor ve en fazla geri yükleme noktası sınırına ulaşıldığında yedeklemeler başarısız olur.
 VM için yedekleme ilkesini değiştirme | Destekleniyor.<br/><br/> VM, yeni ilkedeki zamanlama ve bekletme ayarları kullanılarak yedeklenir. Bekletme ayarları genişletilmişse, var olan kurtarma noktaları işaretlenir ve saklanır. Azaldıysanız, var olan kurtarma noktaları sonraki temizleme işinde ayıklanır ve sonunda silinir.
 Bir yedekleme işini iptal et | Anlık görüntü işlemi sırasında desteklenir.<br/><br/> Anlık görüntü kasaya aktarıldığında desteklenmez.
@@ -157,7 +157,7 @@ Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den so
 
 **Bileşen** | **Destek**
 --- | ---
-Azure VM veri diskleri | 16 veya daha az veri diski olan bir VM 'yi yedekleyin. <br/><br/> 4 TB 'a kadar disk boyutlarını destekler.<br/><br/>4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [Azure VM yedeklemesi 'ne genel bakış](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Azure VM veri diskleri | 16 veya daha az veri diski olan bir VM 'yi yedekleyin. <br/><br/> 4 TB 'a kadar disk boyutlarını destekler.<br/><br/>4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bu [makaleye](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)bakın.
 Veri diski boyutu | Tek disk 4095 GB 'a kadar olabilir.<br/><br/>4 TB 'tan büyük diskler için Azure Backup büyük disk desteğinin sınırlı genel önizlemesine kaydolmak için, bu [makaleye](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)bakın.
 Depolama türü | Standart HDD, Standart SSD Premium SSD.
 Yönetilen diskler | Destekleniyor.

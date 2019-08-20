@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717076"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616882"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Azure platformunda bir lambda mimarisi uygulama 
 
@@ -42,7 +42,7 @@ Bir lambda mimarisinin temel ilkeleri olarak başına önceki şemada açıklana
 
 Daha fazla okuma sırasında biz yalnızca şunları kullanarak bu mimariyi uygulamak şunları yapabilir:
 
-* Azure Cosmos DB koleksiyonlar
+* Azure Cosmos kapsayıcıları
 * HDInsight (Apache Spark 2.1) kümesi
 * Spark Bağlayıcısı [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
 
@@ -114,7 +114,7 @@ Bu katmanda önemli nedir:
 
  1. Tüm **veri** yalnızca Azure Cosmos DB'ye (çok noktaya yayın sorunlarını önlemek için) gönderilir.
  2. **Toplu iş katmanı** olan Azure Cosmos DB'de depolanan ana veri kümesi (sabit, salt ham veri kümesi). HDI Spark'ı kullanarak hesaplanan batch görünümlerinizde depolanacak işlemlerinizi önceden hesaplayabilirsiniz.
- 3. **Hizmet katmanını** koleksiyon için ana veri kümesini içeren bir Azure Cosmos DB veritabanı ve toplu iş görünümünü hesaplanır.
+ 3. **Hizmet sunma katmanı** , ana veri kümesi ve hesaplanan toplu iş görünümü için koleksiyonlara sahip bir Azure Cosmos veritabanıdır.
  4. **Hız katmanının** bu makalenin sonraki bölümlerinde ele alınmıştır.
  5. Tüm sorguların sonuçlarını toplu görünümler ve gerçek zamanlı görünümleri birleştirme veya ayrı ayrı ping yanıtlanması.
 
@@ -161,7 +161,7 @@ limit 10
 
 ![Tweet diyez etiketi başına sayısını gösteren grafik](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-Şimdi sorgunuzu olduğuna göre çıktı verilerini farklı bir koleksiyona kaydetmek için Spark Bağlayıcısı'nı kullanarak bir koleksiyon için geri kaydedin.  Bu örnekte, Scala bağlantıyı göstermek için kullanın. Benzer şekilde, önceki örnekte, farklı bir Azure Cosmos DB koleksiyonu için Apache Spark DataFrame kaydetmek için yapılandırma bağlantısı oluşturun.
+Şimdi sorgunuzu olduğuna göre çıktı verilerini farklı bir koleksiyona kaydetmek için Spark Bağlayıcısı'nı kullanarak bir koleksiyon için geri kaydedin.  Bu örnekte, Scala bağlantıyı göstermek için kullanın. Önceki örneğe benzer şekilde, Apache Spark veri çerçevesini farklı bir Azure Cosmos kapsayıcısına kaydetmek için yapılandırma bağlantısını oluşturun.
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-Artık bu son deyim, Spark DataFrame yeni bir Azure Cosmos DB koleksiyonu kaydetti; bir lambda mimarisi açısından bakıldığında, bu, sizin **toplu Görünüm** içinde **Hizmet katmanını**.
+Bu son bildiri artık Spark DataFrame 'i yeni bir Azure Cosmos kapsayıcısına kaydettiniz. bir lambda mimarisi perspektifinden, bu, **hizmet veren katmandaki** **toplu iş görünümüdür** .
  
 #### <a name="resources"></a>Kaynaklar
 
@@ -205,7 +205,7 @@ Daha önce not ettiğiniz, kullanarak Azure Cosmos DB değişiklik akışı kita
 
 ![Lambda mimarisinin hız katmanına vurgulama diyagramı](./media/lambda-architecture/lambda-architecture-speed.png)
 
-Bunu yapmak için yapılandırılmış akış sorgularınızın sonuçlarını kaydetmek için ayrı bir Azure Cosmos DB koleksiyonu oluşturun.  Bu, diğer sistemler erişim sağlamak için bu bilgileri sağlar yalnızca Apache Spark. De Cosmos DB için-yaşam süresi (TTL) özelliği ile kullanarak, belgeleriniz otomatik olarak ayarlanmış bir süre sonra silinecek şekilde yapılandırabilirsiniz.  Azure Cosmos DB TTL özelliği hakkında daha fazla bilgi için bkz. [yaşam süresi otomatik olarak ile Azure Cosmos DB koleksiyonlarındaki verileri süresi dolacak](time-to-live.md)
+Bunu yapmak için, yapılandırılmış akış sorgularınızın sonuçlarını kaydetmek üzere ayrı bir Azure Cosmos kapsayıcısı oluşturun.  Bu, diğer sistemler erişim sağlamak için bu bilgileri sağlar yalnızca Apache Spark. De Cosmos DB için-yaşam süresi (TTL) özelliği ile kullanarak, belgeleriniz otomatik olarak ayarlanmış bir süre sonra silinecek şekilde yapılandırabilirsiniz.  Azure Cosmos DB TTL özelliği hakkında daha fazla bilgi için bkz. [Azure Cosmos kapsayıcılarındaki verileri yaşam süresi ile otomatik olarak bitirme](time-to-live.md)
 
 ```
 // Import Libraries

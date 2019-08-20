@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944949"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617339"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Öğretici: Amazon Web Services (AWS) Azure Active Directory ile tümleştirin
 
@@ -111,7 +111,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 7. Önceki özniteliklere ek olarak AWS uygulaması, SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı TALEPLERI** bölümünde, SAML belirteci özniteliğini eklemek için aşağıdaki adımları gerçekleştirin.
 
-    | Ad  | Kaynak özniteliği  | Ad Alanı |
+    | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | https://aws.amazon.com/SAML/Attributes |
     | Role            | Kullanıcı. atandroles |  https://aws.amazon.com/SAML/Attributes |
@@ -369,6 +369,12 @@ Erişim panelinde AWS kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız AWS 
    Azure AD 'ye, sağlama için Galeriden `servicePrincipals`birden çok AWS kiracısı (tarafından temsil edilir) eklenebilir. Bununla birlikte, tüm içeri aktarılan rollerin, SSO için kullanılmak üzere tek başına `servicePrincipals` `servicePrincipal` sağlanması için kullanılan birden fazla AWS 'den otomatik olarak yazamayacak bilinen bir sorun vardır. 
    
    Geçici bir çözüm olarak, sağlama yapılandırılmış her bir `appRoles` AWS `servicePrincipal` ' de içeri aktarılan her bir ı ayıklamak için [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 'sini kullanabilirsiniz. Daha sonra, bu rol dizelerini SSO 'nun yapılandırıldığı AWS `servicePrincipal` 'ye ekleyebilirsiniz.
+ 
+* Rollerin AWS 'den Azure AD 'ye aktarılmak için aşağıdaki gereksinimleri karşılaması gerekir:
+
+  * Roller tam olarak bir SAML sağlayıcısına sahip olmalıdır ve AWS 'de tanımlı
+
+  * İçeri aktarılmakta olan bir rol için, ARN ve SAML sağlayıcı ARN rolünün Birleşik uzunluğu 119 karakter veya daha az olmalıdır
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

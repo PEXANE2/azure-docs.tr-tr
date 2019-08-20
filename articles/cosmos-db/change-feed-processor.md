@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e5142e9b4e7c2c79fd2b7e41123db4422334b730
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0efd11ef4e9dda2c522e145bf5cb942998d59e53
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467782"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573959"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB akış işlemcisini değiştirme 
 
@@ -85,12 +85,13 @@ Cosmos kapsayıcılarının içindeki ve içindeki veri hareketleri her zaman RU
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [GitHub 'da kullanım örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
 * [GitHub 'da ek örnekler](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makaleler de akış değiştirme hakkında daha fazla bilgi edinmek için şimdi geçebilirsiniz:
+Şimdi aşağıdaki makalelerde akış işlemcisini Değiştir hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Değişiklik akışına genel bakış](change-feed.md)
-* [Değişiklik akışını okuma yolları](read-change-feed.md)
-* [Azure işlevleri ile akış Değiştir](change-feed-functions.md)
+* [Değişiklik akışı tahmin aracı 'ı kullanma](how-to-use-change-feed-estimator.md)
+* [Akış işlemcisi başlangıç saatini değiştir](how-to-configure-change-feed-start-time.md)

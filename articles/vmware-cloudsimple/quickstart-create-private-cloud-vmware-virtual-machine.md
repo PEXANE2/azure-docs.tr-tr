@@ -3,23 +3,23 @@ title: Hızlı başlangıç-özel bulutta bir VMware VM oluşturma
 description: CloudSimple özel bulutu 'nda ve VMware VM 'nin nasıl oluşturulacağını açıklar
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 06/03/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7d21035fc3e9e80344264b9fde21820162f376d3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816715"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574650"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
 
 Özel bulutunuzda sanal makineler oluşturmak için, Azure portal CloudSimple portalına erişerek başlayın.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -42,113 +42,100 @@ VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasınd
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>ISO veya vSphere şablonu yükleme
 
-> [!WARNING]
-> ISO yüklemeleri için vSphere HTML5 istemcisini kullanın.  Flash Client kullanımı bir hatayla sonuçlanabilir.
+  > [!WARNING]
+  > ISO yükleme için vSphere HTML5 istemcisini kullanın.  Flash Client kullanımı bir hatayla sonuçlanabilir.
 
-1. Bir sanal makine oluşturmak ve yerel sisteminizde kullanılabilir olmasını sağlamak için vCenter 'a yüklemek istediğiniz ISO veya vSphere şablonunu alın.
-
+1. Bir VM oluşturmak ve yerel sisteminizde kullanılabilir olmasını sağlamak için vCenter 'a yüklemek istediğiniz ISO veya vSphere şablonunu alın.
 2. VCenter 'da **disk** simgesine tıklayın ve **vsandatastore**' i seçin. **Dosyalar** ' a ve ardından **Yeni klasör**' e tıklayın.
+    ![vCenter ISO](media/vciso00.png)
 
-    ![vCenter ISO](media/vcenter-create-folder.png)
+3. ' IOS ve Şablonlar ' adlı bir klasör oluşturun.
 
-3. ISO dosyalarını depolamak için bir klasör oluşturun.
-
-4. Oluşturulan yeni klasöre gidin ve **dosyaları karşıya yükle**' ye tıklayın. ISO dosyasını karşıya yüklemek için ekrandaki yönergeleri izleyin.
+4. ISOs ve şablonlar 'daki ISOs klasörüne gidin ve **dosyaları karşıya yükle**' ye tıklayın. ISO dosyasını karşıya yüklemek için ekrandaki yönergeleri izleyin.
 
 ## <a name="create-a-virtual-machine-in-vcenter"></a>VCenter 'da sanal makine oluşturma
 
 1. VCenter 'da **konaklar ve kümeler** simgesine tıklayın.
 
 2. **Iş yükü** ' na sağ tıklayın ve **Yeni sanal makine**' yi seçin.
-    
-    ![Sanal makine oluşturma](media/create-vcenter-virtual-machine-01.png)
+    ![Yeni VM](media/vcvm01.png)
 
 3. **Yeni sanal makine oluştur** ' u seçin ve **İleri**' ye tıklayın.
+    ![Yeni VM](media/vcvm02.png)
 
-    ![Yeni sanal makine Sihirbazı](media/create-vcenter-virtual-machine-02.png)
-
-4. Makineyi adlandırın, **Iş yükü VM 'sinin** klasörünü seçin ve **İleri**' ye tıklayın.
-
-    ![Ad ve klasör seçin](media/create-vcenter-virtual-machine-03.png)
+4. Makineyi adlandırın, **Iş yükü VM** 'sinin konumunu seçin ve **İleri**' ye tıklayın.
+    ![Yeni VM](media/vcvm03.png)
 
 5. **Iş yükü** işlem kaynağını seçin ve **İleri**' ye tıklayın.
-
-    ![İşlem kaynağını seçin](media/create-vcenter-virtual-machine-04.png)
+    ![Yeni VM](media/vcvm04.png)
 
 6. **Vsandatastore** ' i seçin ve **İleri**' ye tıklayın.
-
-    ![Depolama’yı seçme](media/create-vcenter-virtual-machine-05.png)
+    ![Yeni VM](media/vcvm05.png)
 
 7. Varsayılan ESXi 6,5 uyumluluğu seçimini koruyun ve **İleri**' ye tıklayın.
+    ![Yeni VM](media/vcvm06.png)
 
-    ![Uyumluluk seçin](media/create-vcenter-virtual-machine-06.png)
+8. Oluşturmakta olduğunuz VM için ISO Konuk işletim sistemini seçin ve **İleri**' ye tıklayın.
+    ![Yeni VM](media/vcvm07.png)
 
-8. Sanal makine için ISO 'nın Konuk işletim sistemini seçip **İleri**' ye tıklayın.
-
-    ![Konuk işletim sistemini özelleştirme](media/create-vcenter-virtual-machine-07.png)
-
-9. Sabit disk ve ağ seçeneklerini belirleyin. Yeni CD/DVD sürücüsü için, **veri deposu ISO dosyası**' nı seçin.  Genel IP adresinden bu sanal makineye gelen trafiğe izin vermek istiyorsanız, ağı **VM-1**olarak seçin.
-
-    ![Donanım özelleştirmesini seçin](media/create-vcenter-virtual-machine-08.png)
+9. Sabit disk ve ağ seçeneklerini belirleyin. Yeni CD/DVD sürücüsü için, **veri deposu ISO dosyası**' nı seçin.  Genel IP adresinden bu VM 'ye giden trafiğe izin vermek istiyorsanız, ağı **VM-1**olarak seçin.
+    ![Yeni VM](media/vcvm08.png)
 
 10. Bir seçim penceresi açılır. Daha önce ISOs ve Şablonlar klasörüne yüklediğiniz dosyayı seçin ve **Tamam**' a tıklayın.
+    ![Yeni VM](media/vcvm10.png)
 
-    ![ISO seçin](media/create-vcenter-virtual-machine-10.png)
+11. Ayarları gözden geçirin ve VM 'yi oluşturmak için **Tamam** ' ı tıklatın.
+    ![Yeni VM](media/vcvm11.png)
 
-11. Ayarları gözden geçirin ve sanal makineyi oluşturmak için **Tamam** ' a tıklayın.
+VM artık Iş yükü işlem kaynaklarına eklenir ve kullanıma hazırdır. 
+![Yeni VM](media/vcvm12.png)
 
-    ![Seçenekleri gözden geçir](media/create-vcenter-virtual-machine-11.png)
+Temel kurulum artık tamamlanmıştır. Şirket içi VM altyapınızı kullanmaya benzer şekilde, özel bulutunuzu kullanmaya başlayabilirsiniz.
 
-Sanal makine artık Iş yükü işlem kaynaklarına eklenir ve kullanıma hazırdır. 
-
-![VCenter 'da yeni sanal makine](media/create-vcenter-virtual-machine-12.png)
-
-Temel kurulum artık tamamlanmıştır. Şirket içi sanal makine altyapınızı kullanmaya benzer şekilde, özel bulutunuzu kullanmaya başlayabilirsiniz.
-
-Sonraki bölümler, özel bulut iş yükleri için DNS ve DHCP sunucularını ayarlama ve varsayılan ağ yapılandırmasını değiştirme hakkında isteğe bağlı bilgiler içerir.
+Aşağıdaki bölümler, özel bulut iş yükleri için DNS ve DHCP sunucularını ayarlama ve varsayılan ağ yapılandırmasını değiştirme hakkında isteğe bağlı bilgiler içerir.
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>VCenter 'a Kullanıcı ve kimlik kaynakları ekleme (Isteğe bağlı)
 
-CloudSimple, Kullanıcı adı **cloudowner@cloudsimple.local** Ile varsayılan bir vCenter Kullanıcı hesabı atar. Kullanmaya başlamak için başka bir hesap kurulumu gerekli değildir.  CloudSimple normalde yöneticilere normal işlemler yapmak için ihtiyaç duydukları ayrıcalıkları atar.  Şirket içi Active Directory 'nizi veya Azure AD 'yi özel bulutunuzda [ek bir kimlik kaynağı](https://docs.azure.cloudsimple.com/set-vcenter-identity/) olarak ayarlayın.
+CloudSimple, Kullanıcı adı `cloudowner@cloudsimple.local`Ile varsayılan bir vCenter Kullanıcı hesabı atar. Kullanmaya başlamak için başka bir hesap kurulumu gerekli değildir.  CloudSimple normalde yöneticilere normal işlemler yapmak için ihtiyaç duydukları ayrıcalıkları atar.  Şirket içi Active Directory 'nizi veya Azure AD 'yi özel bulutunuzda [ek bir kimlik kaynağı](set-vcenter-identity.md) olarak ayarlayın.
 
-## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS ve DHCP sunucusu oluşturma (isteğe bağlı)
+## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS ve DHCP sunucusu oluşturma (Isteğe bağlı)
 
 Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Özel bulut ortamınızda bu hizmetleri sağlamak için vCenter 'da bir sanal makine yapılandırabilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+Önkoşullar
 
 * VLAN yapılandırılmış bir dağıtılmış bağlantı noktası grubu
 
-* Şirket içi veya Internet tabanlı DNS sunucuları için rota ayarlama
+* Kurulumu şirket içi veya Internet tabanlı DNS sunucularına yönlendirin
 
 * Bir sanal makine oluşturmak için sanal makine şablonu veya ISO
 
 Aşağıdaki bağlantılar, Linux ve Windows üzerinde DHCP ve DNS sunucularını ayarlamaya yönelik rehberlik sağlar.
 
-### <a name="linux-based-dns-server-setup"></a>Linux tabanlı DNS sunucusu kurulumu
+#### <a name="linux-based-dns-server-setup"></a>Linux tabanlı DNS sunucusu kurulumu
 
 Linux, DNS sunucularını ayarlamak için çeşitli paketler sunar.  Bir açık kaynak bağlama DNS sunucusu ayarlamaya yönelik yönergelerin bağlantısı aşağıda verilmiştir.
 
 [Örnek kurulum](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
-### <a name="windows-based-setup"></a>Windows tabanlı kurulum
+#### <a name="windows-based-setup"></a>Windows tabanlı kurulum
 
-Bu Microsoft makalelerinde bir Windows Server 'ın bir DNS sunucusu olarak ve bir DHCP sunucusu olarak nasıl ayarlanacağı açıklanır.
-<br>
+Bu Microsoft konuları, bir Windows Server 'ı bir DNS sunucusu olarak ve bir DHCP sunucusu olarak ayarlamayı açıklamaktadır.
+
 [DNS sunucusu olarak Windows Server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
 
 [DHCP sunucusu olarak Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
 
-## <a name="customize-networking-configuration-optional"></a>Ağ yapılandırmasını özelleştirme (isteğe bağlı)
+## <a name="customize-networking-configuration-optional"></a>Ağ yapılandırmasını özelleştirme (Isteğe bağlı)
 
-CloudSimple portalındaki ağ sayfaları, sanal makinelere yönelik güvenlik duvarı tabloları ve genel IP adresleri için yapılandırmayı belirtmenize olanak tanır.
+CloudSimple portalındaki ağ sayfaları, güvenlik duvarı tabloları ve VM 'Ler için genel IP adresleri için yapılandırmayı belirtmenize olanak tanır.
 
 ### <a name="allocate-public-ips"></a>Genel IP 'Leri ayır
 
 1. CloudSimple portalındaki **Network > genel IP** sayfasına gidin.
 2. **Genel IP ayır**' a tıklayın.
 3. IP adresi girişini tanımlamak için bir ad girin.
-4. Özel bulutunuzun konumunu seçin.
+4. Varsayılan konumu koruyun.
 5. İstenirse, boşta kalma zaman aşımını değiştirmek için kaydırıcıyı kullanın.
 6. Genel IP adresi atamak istediğiniz yerel IP adresini girin.
 7. İsterseniz ilişkili bir DNS adı girin.
@@ -156,26 +143,23 @@ CloudSimple portalındaki ağ sayfaları, sanal makinelere yönelik güvenlik du
 
     ![Genel IP](media/quick-create-pc-public-ip.png)
 
-Genel IP adresini ayırma görevi başlar. Görevin durumunu **etkinlik > görevler** sayfasında kontrol edebilirsiniz. Ayırma tamamlandığında, yeni giriş genel IP 'Ler sayfasında gösterilir.
+Genel IP adresini ayırma görevi başlar. Görevin durumunu **etkinlik > görevler** sayfasında kontrol edebilirsiniz. Ayırma tamamlandığında, yeni giriş genel IP 'Ler sayfasında gösterilir. 
 
-Bu IP adresinin eşlenmesi gereken sanal makinenin, yukarıda belirtilen yerel adresle yapılandırılması gerekir. IP adresi yapılandırma yordamı, sanal makine işletim sistemine özgüdür. Doğru yordam için sanal makine işletim sisteminizin belgelerine başvurun.
+Bu IP adresinin eşlenmesi gereken VM 'nin, yukarıda belirtilen yerel adresle yapılandırılması gerekir. IP adresini yapılandırma yordamı VM işletim sistemine özgüdür. Doğru yordam için VM işletim sisteminizin belgelerine başvurun.
 
 #### <a name="example"></a>Örnek
 
 Örneğin, Ubuntu 16,04 için Ayrıntılar aşağıda verilmiştir.
 
-Statik yöntemi dosyadaki ```/etc/network/interfaces```Inet adres ailesi yapılandırmasına ekleyin. Adres, ağ maskesi ve ağ geçidi değerlerini değiştirin. Bu örnekte eth0 arabirimini, iç IP adresi 192.168.24.10, ağ geçidi adresi 192.168.24.1 ve ağ maskesi 255.255.255.0 ' ı kullanıyoruz. 
-
-```interfaces``` Dosyayı düzenleyin.
+/Etc/Network/ınterfacesfile dosyasındaki Inet adres ailesi yapılandırmasına statik yöntemi ekleyin. Adres, ağ maskesi ve ağ geçidi değerlerini değiştirin. Bu örnekte eth0 arabirimini, iç IP adresi 192.168.24.10, ağ geçidi adresi 192.168.24.1 ve ağ maskesi 255.255.255.0 ' ı kullanıyoruz. Ortamınız için, kullanılabilir alt ağ bilgileri hoş geldiniz e-postasında sağlanır.
 
 ```
 sudo vi /etc/network/interfaces
 ```
 
-```interfaces``` Dosyasında aşağıdaki bölümü güncelleştirin.
-
 ```
 auto eth0
+Iface eth0 inet static
 iface eth0 inet static
 address 192.168.24.10
 netmask 255.255.255.0
@@ -184,31 +168,28 @@ dns-nameservers 8.8.8.8
 dns-domain acme.com
 dns-search acme.com
 ```
-
-Arabirimi devre dışı bırakın.
+Arabirimi el ile devre dışı bırakın.
 
 ```
 sudo ifdown eth0
 ```
-
-Arabirimi yeniden etkinleştirin.
+Arabirimi el ile yeniden etkinleştirin.
 
 ```
 sudo ifup eth0
 ```
 
-Varsayılan olarak, Internet 'ten gelen tüm trafik **reddedilir**. Başka herhangi bir bağlantı noktasını açmak isterseniz, bir [güvenlik duvarı tablosu](https://docs.azure.cloudsimple.com/firewall/)oluşturun.
+Varsayılan olarak, Internet 'ten gelen tüm trafik **reddedilir**. Başka herhangi bir bağlantı noktasını açmak isterseniz, bir [güvenlik duvarı tablosu](firewall.md)oluşturun.
 
 Bir iç IP adresini statik IP adresi olarak yapılandırdıktan sonra, sanal makinenin içinden Internet 'e ulaşabildiğinizi doğrulayın.
 
 ```
 ping 8.8.8.8
 ```
+Ayrıca, genel IP adresini kullanarak VM 'ye Internet 'ten ulaşabildiğinizi doğrulayın.
 
-Sanal makineye genel IP adresini kullanarak Internet 'ten ulaşabildiğinizi doğrulayın.
-
-Sanal makinedeki tüm güvenlik duvarı (IPTable) kurallarının bağlantı noktası 80 ' i engellemediğinden emin olun.
-
+VM üzerindeki tüm IPTable kurallarının 80 gelen bağlantı noktasını engellemediğinden emin olun.
+        
 ```
 netstat -an | grep 80
 ```
@@ -224,26 +205,26 @@ veya
 ```
 python3 -m http.server 80
 ```
-
-Masaüstünüzde bir tarayıcı başlatın ve sanal makinenizde dosyalara gözatmasını sağlamak üzere genel IP adresi için bağlantı noktası 80 ' ye işaret edin. 
+Masaüstünüzde bir tarayıcı başlatın ve VM 'nizin dosyalarına gözatmasını sağlamak için genel IP adresi bağlantı noktası 80 ' ye işaret edin. 
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Genel IP için varsayılan CloudSimple güvenlik duvarı kuralları
 
 * VPN trafiği: VPN ve tüm iş yükü ağları ve yönetim ağı arasındaki (from/ile) tüm trafiğe izin verilir.
 * Özel bulut iç trafiği: (From/to) iş yükü ağları ve yönetim ağı (yukarıda gösterilen) arasındaki tüm Doğu Batı trafiğine izin verilir.
 * Internet trafiği:
-    * Internet 'ten gelen tüm trafik iş yükü ağları ve yönetim ağı için reddedilir.
-    * İş yükü ağlarından veya yönetim ağından Internet 'e giden tüm trafiğe izin verilir.
+  * Internet 'ten gelen tüm trafik iş yükü ağları ve yönetim ağı için reddedilir.
+  * İş yükü ağlarından veya yönetim ağından Internet 'e giden tüm trafiğe izin verilir.
 
-Ayrıca, güvenlik duvarı kuralları özelliğini kullanarak, trafiğinizi güvenli hale getirmenin şeklini de değiştirebilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarı tablolarını ve kurallarını ayarlama](https://docs.azure.cloudsimple.com/firewall/).
+Ayrıca, güvenlik duvarı kuralları özelliğini kullanarak, trafiğinizi güvenli hale getirmenin şeklini de değiştirebilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md).
 
-## <a name="install-solutions-optional"></a>Çözümleri (isteğe bağlı) yükler
+## <a name="install-solutions-optional"></a>Çözümleri (Isteğe bağlı) yükler
+
 Özel bulut vCenter ortamınızdan tam olarak yararlanabilmek için, CloudSimple özel bulutunuzda çözümler yükleyebilirsiniz. Sanal makinelerinizi korumak için yedekleme, olağanüstü durum kurtarma, çoğaltma ve diğer işlevleri ayarlayabilirsiniz. Örnek olarak VMware Site Recovery Manager (VMware SRM) ve Veead yedekleme & çoğaltması bulunur.
 
-Bir çözümü yüklemek için, sınırlı bir süre için ek ayrıcalıklar istemeniz gerekir. Bkz. [hakları Yükselt](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges).
+Bir çözümü yüklemek için, sınırlı bir süre için ek ayrıcalıklar istemeniz gerekir. Bkz. [hakları Yükselt](escalate-private-cloud-privileges.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure 'da VMware sanal makinelerini kullanma](quickstart-create-vmware-virtual-machine.md)
-* [Azure ExpressRoute kullanarak şirket içi ağa bağlanma](https://docs.azure.cloudsimple.com/on-premises-connection)
-* [CloudSimple ağında VPN ağ geçitlerini ayarlama](https://docs.azure.cloudsimple.com/vpn-gateway)
+* [Azure 'da VMware VM 'lerini kullanma](quickstart-create-vmware-virtual-machine.md)
+* [Azure ExpressRoute kullanarak şirket içi ağa bağlanma](on-premises-connection.md)
+* [CloudSimple ağında VPN ağ geçitlerini ayarlama](vpn-gateway.md)

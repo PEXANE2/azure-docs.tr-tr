@@ -1,5 +1,5 @@
 ---
-title: "NoSQL Öğreticisi: SQL API'si için Azure Cosmos DB Java SDK'sı"
+title: "NoSQL öğreticisi: Azure Cosmos DB Java SDK 'Sı için SQL API"
 description: Azure Cosmos DB için SQL API’sini kullanarak çevrimiçi bir veritabanı ve Java konsol uygulaması oluşturan bir NoSQL öğreticisi. Azure SQL, JSON için bir NoSQL veritabanıdır.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/22/2018
 ms.author: sngun
-ms.openlocfilehash: 55bdcf9847f2194f269b92aed830a66c79c4d337
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 269b2bd1c1457b9e70ea4ada758aacb2f2ae96f3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985659"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614628"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL Öğreticisi: Bir SQL API Java konsol uygulaması oluşturma
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL öğreticisi: SQL API Java konsol uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -58,7 +58,7 @@ Bir Azure Cosmos DB hesabı oluşturalım. Kullanmak istediğiniz bir hesap zate
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>2. adım: GitHub projesini kopyalama
+## <a id="GitClone"></a>2. Adım: GitHub projesini kopyalama
 [Azure Cosmos DB ve Java’yı kullanmaya başlama](https://github.com/Azure-Samples/documentdb-java-getting-started) GitHub deposunu kopyalayarak başlayabilirsiniz. Örneğin, yerel bir dizinden örnek projesini yerele almak için aşağıdaki komutu çalıştırın.
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -73,7 +73,7 @@ Dizinde proje için bir `pom.xml` nesnesinin yanı sıra Java kaynak kodunu içe
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>3. adım: Bir Azure Cosmos DB hesabına bağlanma
+## <a id="Connect"></a>Adım 3: Azure Cosmos DB hesabına bağlanma
 Ardından, uç noktanızı ve birincil ana anahtarınızı almak için tekrar [Azure portala](https://portal.azure.com) gidin. Azure Cosmos DB uç noktası ve birincil anahtar, uygulamanızın nereye bağlanacağını anlaması ve Azure Cosmos DB’nin uygulamanızın bağlantısına güvenmesi için gereklidir.
 
 Azure portalında Azure Cosmos DB hesabınıza gidin ve ardından **Anahtarlar**’a tıklayın. Portaldaki URI’yi kopyalayın ve Program.java dosyasındaki `https://FILLME.documents.azure.com` içine yapıştırın. Ardından portaldan BİRİNCİL ANAHTARI kopyalayın ve `FILLME` içine yapıştırın.
@@ -84,7 +84,7 @@ Azure portalında Azure Cosmos DB hesabınıza gidin ve ardından **Anahtarlar**
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Bir Java konsol uygulaması oluşturmak için NoSQL Öğreticisi tarafından kullanılan Azure portalının ekran görüntüsü. Azure Cosmos DB hesabı dikey penceresinde ANAHTARLAR düğmesi vurgulanmış, ETKİN hub'ı vurgulanmış ve Anahtarlar dikey penceresinde URI, BİRİNCİL ANAHTAR ve İKİNCİL ANAHTAR değerleri vurgulanmış bir Azure Cosmos DB hesabını gösterir][keys]
+![Bir Java konsol uygulaması oluşturmak için NoSQL öğreticisi tarafından kullanılan Azure portal ekran görüntüsü. Azure Cosmos DB hesabı dikey penceresinde ANAHTARLAR düğmesi vurgulanmış, ETKİN hub'ı vurgulanmış ve Anahtarlar dikey penceresinde URI, BİRİNCİL ANAHTAR ve İKİNCİL ANAHTAR değerleri vurgulanmış bir Azure Cosmos DB hesabını gösterir][keys]
 
 ## <a name="step-4-create-a-database"></a>4\. Adım: Veritabanı oluşturma
 Azure Cosmos DB [veritabanınız](databases-containers-items.md#azure-cosmos-databases), **DocumentClient** sınıfının [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) yöntemi kullanılarak oluşturulabilir. Veritabanı, koleksiyonlar genelinde bölümlenmiş JSON belgesi depolama alanının mantıksal bir kapsayıcısıdır.
@@ -93,7 +93,7 @@ Azure Cosmos DB [veritabanınız](databases-containers-items.md#azure-cosmos-dat
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a id="CreateColl"></a>5. adım: Koleksiyon oluşturma
+## <a id="CreateColl"></a>5. Adım: Koleksiyon oluşturma
 > [!WARNING]
 > **createCollection**, ayrılmış işleme ile yeni bir koleksiyon oluşturur, bu da ücret ödenmesini gerektirebilir. Daha ayrıntılı bilgi için [fiyatlandırma sayfamızı](https://azure.microsoft.com/pricing/details/cosmos-db/) ziyaret edin.
 > 
@@ -105,14 +105,14 @@ Bir koleksiyon kullanarak oluşturulabilir [createCollection](/java/api/com.micr
     DocumentCollection collectionInfo = new DocumentCollection();
     collectionInfo.setId("familycoll");
 
-    // Azure Cosmos DB collections can be reserved with throughput specified in request units/second. 
+    // Azure Cosmos containers can be reserved with throughput specified in request units/second. 
     // Here we create a collection with 400 RU/s.
     RequestOptions requestOptions = new RequestOptions();
     requestOptions.setOfferThroughput(400);
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>6. adım: JSON belgeleri oluşturma
+## <a id="CreateDoc"></a>Adım 6: JSON belgeleri oluşturma
 Bir belge kullanarak oluşturulabilir [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) yöntemi **DocumentClient** sınıfı. Belgeler, kullanıcı tanımlı (rastgele) JSON içerikleridir. Şimdi bir veya daha fazla belge ekleyebiliriz. Veritabanınızda depolamak istediğiniz veriler zaten varsa, verileri bir veritabanına içeri aktarmak için Azure Cosmos DB’nin [Veri Geçişi aracını](import-data.md) kullanabilirsiniz.
 
     // Insert your Java objects as documents 
@@ -135,7 +135,7 @@ Bir belge kullanarak oluşturulabilir [createDocument](/java/api/com.microsoft.a
 
 ![Bir Java konsol uygulaması oluşturmak için NoSQL öğreticisi tarafından kullanılan belgeler, hesap, çevrimiçi veritabanı ve koleksiyon arasındaki hiyerarşik ilişkiyi gösteren diyagram](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>7. adım: Azure Cosmos DB kaynaklarını sorgulama
+## <a id="Query"></a>Adım 7: Azure Cosmos DB kaynaklarını sorgula
 Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için [zengin sorguların](how-to-sql-query.md) gerçekleştirilmesini destekler.  Aşağıdaki örnek kodda Azure Cosmos DB içindeki belgelerin SQL söz dizimi ve [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments) yöntemi kullanılarak nasıl sorgulanacağı gösterilmektedir.
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -148,7 +148,7 @@ Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için [zengin sor
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>8. adım: JSON belgesini değiştirme
+## <a id="ReplaceDocument"></a>8. Adım: JSON belgesini Değiştir
 Azure Cosmos DB, JSON belgelerinin [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument) yöntemiyle güncelleştirilmesini destekler.
 
     // Update a property
@@ -159,17 +159,17 @@ Azure Cosmos DB, JSON belgelerinin [replaceDocument](/java/api/com.microsoft.azu
         andersenFamily,
         null);
 
-## <a id="DeleteDocument"></a>9. adım: JSON belgesini silme
+## <a id="DeleteDocument"></a>9. Adım: JSON belgesini Sil
 Benzer şekilde, Azure Cosmos DB, JSON belgelerinin [deleteDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument) yöntemiyle silinmesini destekler.  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a id="DeleteDatabase"></a>10. adım: Veritabanını silme
+## <a id="DeleteDatabase"></a>10. Adım: Veritabanını silme
 Oluşturulan veritabanı silindiğinde, veritabanı ve tüm alt kaynaklar (koleksiyonlar, belgeler vb.) kaldırılır.
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>11. adım: Çalıştırın, Java konsol uygulaması tümünü bir araya!
+## <a id="Run"></a>Adım 11: Java konsol uygulamanızı birlikte çalıştırın!
 Konsoldan uygulamayı çalıştırmak için Maven kullanarak proje klasörüne gidin ve derleyin:
     
     mvn package

@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8786a99f012124848b02eb3db0c2a2e32ff01594
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c65192501f5cfa075ddb6a27369587de2952f38a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382384"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616026"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator uygulaması hakkında SSS
 
@@ -54,7 +54,7 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
+- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
 
 - İki aşamalı doğrulama hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [hesabı iki adımlı doğrulama Için ayarlama](multi-factor-authentication-end-user-first-time.md)
 

@@ -13,12 +13,12 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949762"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616114"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Yaygın iki öğeli doğrulama sorunlarını giderme
 
@@ -29,7 +29,7 @@ Bizden daha sık gerçekleşmemizi sağlayan bazı yaygın iki öğeli doğrulam
 >[!Important]
 >Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
 >
->Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) için iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız ve kişisel Microsoft hesabı, kendiniz için ayarladığınız hesap (örneğin, danielle@outlook.com), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+>Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap (örneğin, alain@contoso.com) için iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır. İki öğeli doğrulamayla ilgili sorun yaşıyorsanız ve kişisel Microsoft hesabı, kendiniz için ayarladığınız hesap (örneğin, danielle@outlook.com), [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>Evde mobil aygıtımı unuttum
 
@@ -92,7 +92,11 @@ Uluslararası bir konumdayken, kısa mesaj gibi mobil cihazla ilgili doğrulama 
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Uygulama parolalarımı çalışacak şekilde alamıyoruz
 
-Uygulama parolaları, iki öğeli doğrulamayı desteklemeyen eski masaüstü uygulamaları için normal parolanızı değiştirir. İlk olarak, parolayı doğru yazdığınızdan emin olun. Bu uygulamayı gidermezse, [iki adımlı doğrulama için uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal) konusunun **uygulamalarımı kullanarak uygulama parolaları oluşturma ve silme** bölümündeki adımları izleyerek uygulama için yeni bir uygulama parolası oluşturmayı deneyin.
+Uygulama parolaları, iki öğeli doğrulamayı desteklemeyen eski masaüstü uygulamaları için normal parolanızı değiştirir. İlk olarak, parolayı doğru yazdığınızdan emin olun. Bu uygulamayı gidermezse, [iki adımlı doğrulama için uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) konusunun **uygulamalarımı kullanarak uygulama parolaları oluşturma ve silme** bölümündeki adımları izleyerek uygulama için yeni bir uygulama parolası oluşturmayı deneyin.
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>İki öğeli doğrulamayı neden kapatamıyorum?
+
+İş veya okul hesabınızla iki öğeli doğrulama kullanıyorsanız (örneğin, alain@contoso.com), büyük olasılıkla kuruluşunuzun bu ek güvenlik özelliğini kullanmanız gerektiğine karar vermiş olması anlamına gelir. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur. Bununla birlikte, bir kişisel hesapla alain@outlook.comiki öğeli doğrulama kullanıyorsanız, bu özelliği açıp kapatabilirsiniz. Kişisel Microsoft hesaplarınız için iki öğeli doğrulamanın nasıl denetılacağı hakkında yönergeler için, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Sorunum için bir yanıt bulamadık
 

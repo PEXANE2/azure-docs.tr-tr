@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: d93f8c61511dd1d3fc2bfd253fa7a21857f67ed6
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563379"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611974"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search için bir fiyatlandırma katmanı seçin
 
@@ -62,7 +62,7 @@ Azure Search oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret a
 
 Ücretlendirmeden kaçınmak için sanal makinelerden veya "duraklatılmış" olabilecek diğer kaynaklardan farklı olarak, Azure Search bir hizmet, özel kullanım için ayrılmış donanımlar üzerinde her zaman kullanılabilir. Bu nedenle, hizmet oluşturma hizmeti oluştururken başlayan faturalandırılabilir bir olaydır ve hizmeti sildiğinizde sona erer. 
 
-En düşük ücret, ilk arama birimidir (bir çoğaltma x bir bölüm). Hizmet bu yapılandırmadan daha küçük bir süre içinde çalışmadığından hizmetin kullanım ömrü için bu minimum değer düzeltildi. En düşük değerin ötesinde, çoğaltmaları ve bölümleri birbirinden bağımsız olarak ekleyebilirsiniz. Çoğaltmalar ve bölümler aracılığıyla kapasitenin artımlı artışları, faturanızı aşağıdaki formüle göre artırır: [(çoğaltmalar x Partitions x oranı)](#search-units), burada ücretlendirilebilecek ücret seçtiğiniz fiyatlandırma katmanına bağlıdır.
+Minimum ücret, faturalandırılabilir fiyata ilk arama birimidir (bir çoğaltma x bir bölüm). Hizmet bu yapılandırmadan daha küçük bir süre içinde çalışmadığından hizmetin kullanım ömrü için bu minimum değer düzeltildi. En düşük değerin ötesinde, çoğaltmaları ve bölümleri birbirinden bağımsız olarak ekleyebilirsiniz. Çoğaltmalar ve bölümler aracılığıyla kapasitenin artımlı artışları, faturanızı aşağıdaki formüle göre artırır: [(çoğaltmalar x Partitions x oranı)](#search-units), burada ücretlendirilebilecek ücret seçtiğiniz fiyatlandırma katmanına bağlıdır.
 
 Bir arama çözümünün maliyetini tahmin ediyorsanız, fiyatlandırma ve kapasitenin doğrusal değil olduğunu aklınızda bulundurun. (Katından fazla kapasite maliyeti iki katına çıkarır.) Formülün nasıl çalıştığına ilişkin bir örnek için bkz. [çoğaltmaları ve bölümleri ayırma](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
@@ -157,7 +157,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 ### <a name="evaluating-capacity"></a>Kapasiteyi değerlendirme
 
-Hizmet çalıştırmanın kapasitesi ve maliyetleri doğrudan ilgilidir. Katmanlar iki düzeyde sınırlar uygulayabilir: depolama ve kaynaklar. Her ikisi de düşünmeniz gerekir, çünkü ilk ulaşılan sınır etkin sınırdır.
+Hizmetin kapasitesi ve maliyetleri, el ile çalışmaya devam ediyor. Katmanlar iki düzeyde sınırlar uygulayabilir: depolama ve kaynaklar. Her ikisi de düşünmeniz gerekir, çünkü ilk ulaşılan sınır etkin sınırdır.
 
 İş gereksinimleri genellikle ihtiyaç duyacağınız dizin sayısını belirler. Örneğin, büyük bir belge deposu için genel bir dizine ihtiyacınız bulunabilir. Ya da bölge, uygulama veya iş kolu tabanlı birden çok dizine ihtiyacınız bulunabilir.
 
@@ -167,25 +167,25 @@ Bir dizinin boyutunu öğrenmek için [bir tane oluşturmanız](search-create-in
 > Dizinler ve depolama için gelecekteki ihtiyaçları tahmin etmek de tahmin etmek gibi görünse de bunun yapılması gerekir. Bir katmanın kapasitesi çok düşük olursa, daha yüksek bir katmanda yeni bir hizmet sağlamanız ve ardından [dizinlerinizi yeniden yüklemeniz](search-howto-reindex.md)gerekir. Bir hizmetin bir SKU 'dan diğerine yerinde yükseltilmesi gerekmez.
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>1\. adım: Ücretsiz katmanı kullanarak kaba tahminler geliştirin
+### <a name="estimate-with-the-free-tier"></a>Ücretsiz katman ile tahmin edin
 
-Kapasiteyi tahmin etmek için bir yaklaşım ücretsiz katmanla başlamadır. Ücretsiz hizmetin üç Dizin, 50 MB depolama alanı ve 2 dakikalık dizin oluşturma süresi sunduğunu unutmayın. Tahmini bir dizin boyutunu bu kısıtlamalarla tahmin etmek zor olabilir. Uygulayabileceğiniz bir yaklaşım aşağıda verilmiştir:
+Kapasiteyi tahmin etmek için bir yaklaşım ücretsiz katmanla başlamadır. Ücretsiz hizmetin üç Dizin, 50 MB depolama alanı ve 2 dakikalık dizin oluşturma süresi sunduğunu unutmayın. Tahmini bir dizin boyutunu bu kısıtlamalarla tahmin etmek zor olabilir, ancak bunlar şu adımlardan biri:
 
 + [Ücretsiz bir hizmet oluşturun](search-create-service-portal.md).
-+ Küçük, temsili bir veri kümesi hazırlayın (örneğin, 5.000 belge ve yüzde 10 örnek boyutu).
-+ [İlk dizin oluşturun](search-create-index-portal.md) ve portalda boyutunu aklınızda (örneğin, 30 MB).
++ Küçük, temsili bir veri kümesi hazırlayın.
++ [Portalda bir başlangıç dizini oluşturun](search-create-index-portal.md) ve boyutunu aklınızda edin. Özellikler ve özniteliklerin depolama üzerinde bir etkisi vardır. Örneğin, öneri araçları (typeahead) eklemek, depolama gereksinimlerini artıracaktır. Aynı veri kümesini kullanarak, Depolama gereksinimlerinin nasıl değişeceğini görmek için, her bir alanda farklı özniteliklere sahip bir dizinin birden çok sürümünü oluşturmayı deneyebilirsiniz. Daha fazla bilgi için [temel dizin oluşturma içindeki "depolama etkileri"](search-what-is-an-index.md#storage-implications)başlığına bakın.
 
-Örnek, tüm veri kaynağının temsili ve yüzde 10 ' dur. tüm belgeler dizine alınmışsa 30 MB 'lık bir dizin yaklaşık 300 MB olur. Bu ön numarayla, bu miktarı iki dizin (geliştirme ve üretim) için bütçele çift olabilirsiniz. Bu, depolama gereksinimlerinde toplam 600 MB elde etmenizi sağlar. Bu gereksinim temel katman tarafından kolayca karşılanır, bu nedenle buradan başlamanız gerekir.
+El ile kabaca bir tahmin sayesinde, bu miktarı iki dizin (geliştirme ve üretim) için bütçeye katmanızı ve ardından katmanınızı uygun şekilde seçmenizi sağlayabilirsiniz.
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>2\. adım: Faturalanabilir bir katman kullanarak, iyileştirilmiş tahminler geliştirin
+### <a name="estimate-with-a-billable-tier"></a>Faturalandırılabilir katman ile tahmin
 
-Bazı müşteriler daha büyük örnekleme ve işleme süreleri barındırabilecek ve ardından geliştirme sırasında dizin miktarı, boyut ve sorgu birimlerinin gerçekçi tahminlerini geliştiren adanmış kaynaklarla başlamasını tercih eder. Başlangıçta, bir hizmet en iyi tahmini tahmine göre sağlanır. Daha sonra, geliştirme projesi açısından takımlar, genellikle mevcut hizmetin, öngörülen üretim iş yükleri için kapasitenin üzerinde mi yoksa kapamı olduğunu bilir.
+Adanmış kaynaklar, geliştirme sırasında dizin miktarının, boyutunun ve sorgu birimlerinin daha gerçekçi tahminleri için daha büyük örnekleme ve işleme sürelerine uyum sağlayabilir. Bazı müşteriler, faturalandırılabilir bir katmanda doğrudan geçiş yaparken geliştirme projesi olarak yeniden değerlendirilir.
 
 1. Alt katmanların ihtiyacınız olan dizin sayısını destekleyip desteklemediğini öğrenmek için [Her katmandaki hizmet sınırlarını gözden geçirin](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) . Temel, S1 ve S2 katmanlarında Dizin sınırları sırasıyla 15, 50 ve 200 ' dir. Depolama için Iyileştirilmiş katmanın, az sayıda çok büyük dizini destekleyecek şekilde tasarlandığından 10 Dizin sınırı vardır.
 
 1. [Faturalanabilir katmanda bir hizmet oluşturun](search-create-service-portal.md):
 
-    + Öğrenimi eğrisinin başında olduğunuzda, temel veya S1 ' te düşük ' ı başlatın.
+    + Tahmini yük hakkında emin değilseniz, temel veya S1 ' te düşük ' ı başlatın.
     + Büyük ölçekli dizin oluşturma ve sorgu yüklerine sahip olduğunuzu biliyorsanız, S2 veya hatta S3 ' da yüksek bir başlangıç yapın.
     + Depolama ile en Iyileştirilmiş, L1 veya L2 ile başlayın; büyük miktarda veri dizinleniyor ve sorgu yükü görece düşükse, dahili bir iş uygulamasında olduğu gibi.
 

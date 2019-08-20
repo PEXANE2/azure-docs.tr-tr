@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 47de61db96b0f8f9b338f135d4f32eecc4a64efe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562964"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575451"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure 'da HTTP ile tetiklenen bir işlev oluşturma
 
@@ -30,7 +30,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + [Python 3,6](https://www.python.org/downloads/)' ü yükler.
 
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.1071 veya sonraki bir sürümü yükler.
++ [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1575 veya sonraki bir sürümü yükler.
 
 + [Azure CLI](/cli/azure/install-azure-cli) sürüm 2. x veya sonraki bir sürümünü yükler.
 
@@ -79,8 +79,6 @@ Yeni MyFunctionProj klasörüne gidin:
 ```console
 cd MyFunctionProj
 ```
-
-Ardından, uzantı paketlerini etkinleştirmek için Host. json dosyasını güncelleştirin.  
 
 ## <a name="create-a-function"></a>İşlev oluşturma
 

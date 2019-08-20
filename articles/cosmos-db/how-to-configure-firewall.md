@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB hesabınız için bir IP güvenlik duvarı yapılandırın
-description: Azure Cosmos DB veritabanı hesaplarında güvenlik duvarı desteği için IP erişim denetim ilkelerini yapılandırmayı öğrenin.
+description: Azure Cosmos hesaplarında güvenlik duvarı desteği için IP erişim denetim ilkelerini yapılandırmayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ee9a686060fd712e9a1f14058ce7db325aaedffd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494887"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615372"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 'de IP güvenlik duvarını yapılandırma
 

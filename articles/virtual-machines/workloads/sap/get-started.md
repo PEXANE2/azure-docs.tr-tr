@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ecf3ec6ba9c71f3d7624b541ba0618645ab14f4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: da7b9c44d15ac0ca16afe15e429a6fe2cf89e366
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535095"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575247"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -122,6 +122,7 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 ## <a name="change-log"></a>Değişiklik günlüğü
 
+- 08/16/2019: Azure 'un yeni sürümüne güncelleştirilüyorsam, müşterilerin özel roldeki eylemleri güncelleştirmesine anımsatmak için [Azure 'daki Red Hat Enterprise Linux Paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) değişiklikleri  
 - 08/15/2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra diskin genel kullanılabilirliğini yansıtacak değişiklikler (eski adıyla Ultra SSD)
 - 08/01/2019: Değişiklikleri özel olarak SLES 15 için tümleştirmede [Azure 'daki SUSE Linux Enterprise Server pacemaker ayarlamaya](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler 
 - 07/23/2019: [Bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği](sap-high-availability-guide-wsfc-file-share.md) , Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşma kullanarak

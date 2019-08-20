@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566073"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611909"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Mevcut Azure Service Bus standart ad alanlarını Premium katmanına geçirin
 Daha önce, Azure Service Bus ad alanları yalnızca Standart katmanda sunulur. Ad alanları, düşük aktarım hızı ve geliştirici ortamları için iyileştirilmiş çok kiracılı kurulumlardır. Premium katmanı, öngörülebilir gecikme ve sabit bir fiyata daha fazla verimlilik için ad alanı başına adanmış kaynaklar sunar. Premium katman, ek kurumsal özellikler gerektiren yüksek aktarım hızı ve üretim ortamları için iyileştirilmiştir.
@@ -115,7 +115,8 @@ Azure portal kullanılarak geçiş, komutları kullanılarak geçişle aynı man
    1. Eşitleme tamamlandıktan sonra sayfanın alt kısmındaki **İleri** ' yi seçin.
 
 1. Özet sayfasındaki değişiklikleri gözden geçirin. Ad alanlarını değiştirmek ve geçişi gerçekleştirmek için **geçişi Tamam** ' ı seçin.
-    ![Ad alanı Değiştir-anahtar][] menüsü geçiş tamamlandığında onay sayfası görüntülenir.
+    ![Ad alanı Değiştir-anahtar menüsü][]  
+    Geçiş tamamlandığında onay sayfası görüntülenir.
     ![Ad alanı değiştirme-başarılı][]
 
 ## <a name="caveats"></a>Uyarılar

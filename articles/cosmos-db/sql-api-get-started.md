@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598524"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614693"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturun
 
@@ -126,7 +126,7 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
 
 1. Sonra, yeni bir örneği ```CosmosClient``` oluşturacak ve programımız için bazı yapı iskelesi ayarlamaya başlayacağız.
 
-    **Main** yönteminin altında, yeni bir zaman uyumsuz görev **ekleyin, bu**, yeni ```CosmosClient```bir örnek oluşturacak. Azure Cosmos DB kaynaklarında çalışan yöntemleri çağıran giriş noktası olarak **Getstarteddemoasync** kullanacağız.
+    **Main** yönteminin altında, yeni bir zaman uyumsuz görev ekleyin,bu, yeni ```CosmosClient```bir örnek oluşturacak. Azure Cosmos DB kaynaklarında çalışan yöntemleri çağıran giriş noktası olarak **Getstarteddemoasync** kullanacağız.
 
     ```csharp
     public static async Task Main(string[] args)
@@ -253,7 +253,7 @@ Bir veritabanı, ``CosmosClient`` sınıfının [**createdatabaseifnotexistsasyn
 
 Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB veritabanı oluşturdunuz.  
+Tebrikler! Azure Cosmos veritabanını başarıyla oluşturdunuz.  
 
 ## <a id="CreateColl"></a>5. Adım: Bir kapsayıcı oluşturma
 > [!WARNING]
@@ -263,7 +263,7 @@ Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB veritabanı oluşturdunu
 
 Bir kapsayıcı, **Cosmosdatabase** sınıfında [**Createcontainerifnotexistsasync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) veya [**createcontainsilinebilir Sync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) işlevi kullanılarak oluşturulabilir. Bir kapsayıcı, JavaScript 'te, örneğin saklı yordamlar, Kullanıcı tanımlı işlevler ve tetikleyiciler gibi öğeler (SQL API 'SI ise JSON belgeleri) ve ilişkili sunucu tarafı uygulama mantığını içerir.
 
-1. Createcontainksync  yöntemini kopyalayın ve **createdatabaseasync** yönteminizin altına yapıştırın. **Createcontainsilinebilir Sync** , zaten mevcut değilse, özelliği tarafından ``FamilyContainer`` ``LastName`` bölümlenmiş ``containerId`` alandan belirtilen kimliğe sahip yeni bir kapsayıcı oluşturur.
+1. Createcontainksync yöntemini kopyalayın ve **createdatabaseasync** yönteminizin altına yapıştırın. **Createcontainsilinebilir Sync** , zaten mevcut değilse, özelliği tarafından ``FamilyContainer`` ``LastName`` bölümlenmiş ``containerId`` alandan belirtilen kimliğe sahip yeni bir kapsayıcı oluşturur.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 
@@ -283,10 +283,10 @@ Bir kapsayıcı, **Cosmosdatabase** sınıfında [**Createcontainerifnotexistsas
 
    Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB kapsayıcısı oluşturdunuz.  
+Tebrikler! Azure Cosmos kapsayıcısını başarıyla oluşturdunuz.  
 
 ## <a id="CreateDoc"></a>Adım 6: Kapsayıcıya öğe ekleme
-Bir öğe **Cosmoscontainer** sınıfının [**Createıtemmasync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) işlevi kullanılarak oluşturulabilir. SQL API'sini kullanarak öğeler, kullanıcı tanımlı (rastgele) JSON içeriği olan belgeler olarak görüntülenir. Artık Azure Cosmos DB kapsayıcınıza bir öğe ekleyebilirsiniz.
+Bir öğe **Cosmoscontainer** sınıfının [**Createıtemmasync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) işlevi kullanılarak oluşturulabilir. SQL API'sini kullanarak öğeler, kullanıcı tanımlı (rastgele) JSON içeriği olan belgeler olarak görüntülenir. Artık Azure Cosmos kapsayıcınıza bir öğe ekleyebilirsiniz.
 
 İlk olarak, bu örnekte Azure Cosmos DB içinde depolanan nesneleri temsil edecek bir **Aile** sınıfı oluşturalım. **Family**'nin içinde kullanılan **Parent**, **Child**, **Pet**, **Address** alt sınıflarını da oluşturacağız. Note öğesinde JSON içinde **ID** olarak seri hale getirilmiş bir **ID** özelliği olmalıdır.
 
@@ -320,7 +320,7 @@ Kod, aynı KIMLIĞE sahip bir öğenin oluşturmadan önce mevcut olmadığında
 
 Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! İki Azure Cosmos DB öğesi başarıyla oluşturdunuz.  
+Tebrikler! İki Azure Cosmos öğesini başarıyla oluşturdunuz.  
 
 ## <a id="Query"></a>Adım 7: Azure Cosmos DB kaynaklarını sorgula
 Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için [zengin sorguların](sql-api-sql-query.md) gerçekleştirilmesini destekler. Aşağıdaki örnek kod, önceki adımda eklediğimiz öğelerde bir sorgunun nasıl çalıştırılacağını gösterir.
@@ -347,7 +347,7 @@ Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için [zengin sor
 
 Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! Azure Cosmos DB kapsayıcısına başarıyla sorguladınız.
+Tebrikler! Azure Cosmos kapsayıcısına başarıyla sorguladınız.
 
 ## <a id="ReplaceItem"></a>8. Adım: JSON öğesini değiştirme
 Artık Azure Cosmos DB bir öğeyi güncelleştireceğiz.
@@ -375,7 +375,7 @@ Artık Azure Cosmos DB bir öğeyi güncelleştireceğiz.
 
    Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB öğesini değiştirdiniz.
+Tebrikler! Azure Cosmos öğesini başarıyla değiştirdik.
 
 ## <a id="DeleteDocument"></a>9. Adım: Öğeyi sil
 Artık Azure Cosmos DB bir öğeyi silecağız.
@@ -404,7 +404,7 @@ Artık Azure Cosmos DB bir öğeyi silecağız.
 
 Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB öğesini sildiniz.
+Tebrikler! Azure Cosmos öğesini başarıyla sildiniz.
 
 ## <a id="DeleteDatabase"></a>10. Adım: Veritabanını silme
 Şimdi veritabanımızı silecağız. Oluşturulan veritabanı silindiğinde, veritabanı ve tüm alt kaynaklar (kapsayıcılar, öğeler ve saklı yordamlar, Kullanıcı tanımlı işlevler ve Tetikleyiciler) kaldırılır. Ayrıca **CosmosClient** örneğini de atıyoruz.
@@ -419,7 +419,7 @@ Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB öğesini sildiniz.
 
 Uygulamanızı çalıştırmak için **F5** ' i seçin.
 
-Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB veritabanını sildiniz.
+Tebrikler! Bir Azure Cosmos veritabanını başarıyla sildiniz.
 
 ## <a id="Run"></a>Adım 11: C# Konsol uygulamanızı birlikte çalıştırın!
 Visual Studio 'da F5 ' i seçerek uygulamayı derleyip hata ayıklama modunda çalıştırın.

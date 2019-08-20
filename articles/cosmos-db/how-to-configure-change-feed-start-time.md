@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 7db14f6406223486ea0efb80d3d1cfcd0351f414
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3ad9aff10b3bae36a173f776f55a434fd8b38b98
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037249"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574276"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Değişiklik akışı işlemcisi başlangıç saatini yapılandırma
 
@@ -51,8 +51,7 @@ Değişiklik akışı işlemcisi başlatılır ve kapsayıcının yaşam süresi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makaleler de akış değiştirme hakkında daha fazla bilgi edinmek için şimdi geçebilirsiniz:
+Şimdi aşağıdaki makalelerde akış işlemcisini Değiştir hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Değişiklik akışına genel bakış](change-feed.md)
-* [Değişiklik akışını okuma yolları](read-change-feed.md)
-* [Değişiklik akışı işlemcisini kullanma](change-feed-processor.md)
+* [Değişiklik akışı işlemcisine genel bakış](change-feed-processor.md)
+* [Değişiklik akışı tahmin aracı 'ı kullanma](how-to-use-change-feed-estimator.md)

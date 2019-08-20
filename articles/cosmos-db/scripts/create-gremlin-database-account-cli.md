@@ -1,5 +1,5 @@
 ---
-title: Azure CLI betiği-oluşturma Azure Cosmos DB Gremlin API hesabı, veritabanı ve graf
+title: Azure CLı betiği-Azure Cosmos DB Gremlin API hesabı, veritabanı ve grafik oluşturma
 description: Azure CLI Betiği Örneği - Azure Cosmos DB Gremlin API hesabı, veritabanı ve grafiği oluşturma
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 1be21c0d468a4fca9b8c5f5d734a755c413bf999
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72a0b0f1a2dfce33531c6d93f22b7774b8d17356
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154692"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616730"
 ---
-# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Azure Cosmos DB: Azure CLI kullanarak bir Gremlin API hesabı oluşturma
+# <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Azure Cosmos DB: Azure CLı kullanarak Gremlin API hesabı oluşturma
 
 Bu örnek CLI betiği, Azure Cosmos DB Gremlin API hesabı, veritabanı ve grafiği oluşturur.
 
@@ -43,7 +43,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos DB veritabanı oluşturur. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos veritabanı oluşturur. |
 | [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Gremlin için Azure Cosmos DB grafı oluşturur. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 

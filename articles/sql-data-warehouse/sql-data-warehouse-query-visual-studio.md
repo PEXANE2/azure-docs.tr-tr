@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534785"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575304"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SQL Veri Ambarı'na bağlanma
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Azure SQL Data Warehouse’u yalnızca birkaç dakika içinde sorgulamak için V
 ## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi kullanmak için şunlar gerekir:
 
-* Var olan bir SQL veri ambarı. Bir tane oluşturmak için bkz. [SQL Data Warehouse oluşturma][Create a SQL Data Warehouse].
+* Mevcut bir SQL veri ambarı. Bir tane oluşturmak için bkz. [SQL Data Warehouse oluşturma][Create a SQL Data Warehouse].
 * Visual Studio için SSDT. Visual Studio varsa büyük olasılıkla buna da sahip olursunuz. Yükleme yönergeleri ve seçenekleri için bkz. [Visual Studio’yu ve SSDT’yi yükleme][Installing Visual Studio and SSDT].
 * Tam SQL server adı. Bunu bulmak için bkz. [SQL Data Warehouse'a bağlanma][Connect to SQL Data Warehouse].
 

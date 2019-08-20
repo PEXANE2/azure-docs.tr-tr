@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467938"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615680"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB akışı değiştirme-genel bakış
 
-Azure Cosmos DB geliştirilme akış desteği, herhangi bir değişiklik için bir Azure Cosmos DB kapsayıcısı için dinleyerek değiştirin. Ardından, değiştirilmiş olan sırayla değiştirilen belgelerin sıralanmış listesini çıkarır. Değişiklikler kalıcı hale getirilir, zaman uyumsuz ve artırımlı olarak işlenebilir ve çıkış, paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir. 
+Azure Cosmos DB akış desteğini değiştirme, tüm değişiklikler için bir Azure Cosmos kapsayıcısını dinleyerek işe yarar. Ardından, değiştirilmiş olan sırayla değiştirilen belgelerin sıralanmış listesini çıkarır. Değişiklikler kalıcı hale getirilir, zaman uyumsuz ve artırımlı olarak işlenebilir ve çıkış, paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir. 
 
 Azure Cosmos DB, perakende, oyun, IOT ve işlem günlüğü uygulamalar için uygundur. Bu uygulamalar bir ortak tasarım modelinde, ek eylemleri tetiklemek için verilerde yapılan değişiklikleri kullanmaktır. Ek eylem örnekleri şunlardır:
 
@@ -56,7 +56,7 @@ Değişiklik akışı öğelerini değiştirme zamanlarının sırasına göre g
 
 Değişiklik akışı, bir TTL (yaşam süresi) özelliği bir öğe üzerinde -1 olarak ayarlarsanız, her zaman açık kalır. Veriler silinmez, değişiklik akışı kalır.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Değişiklik akışı ve _etag, _lsn veya _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Değişiklik akışı ve _etag, _lsn veya _ts
 
 _Etag biçimi dahili kullanım içindir ve dilediğiniz zaman değiştirebilirsiniz çünkü, bağımlılık üzerinde almamalıdır. _ts bir değişiklik ya da oluşturma zaman damgası ' dir. _Ts kronolojik bir karşılaştırması için kullanabilirsiniz. _lsn yalnızca değişiklik akışı için eklenen bir toplu iş KIMLIĞIDIR; işlem KIMLIĞINI temsil eder. Birçok öğe aynı _lsn olabilir. ETag FeedResponse üzerinde öğede gördüğünüz _etag farklıdır. _etag dahili bir tanımlayıcıdır ve eşzamanlılık için kullanılan denetim öğesi sürümü hakkında akışın sıralama için ETag kullanılırken söyler.
 

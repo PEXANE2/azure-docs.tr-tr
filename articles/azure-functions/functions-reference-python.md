@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562882"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615894"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -315,14 +315,22 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Azure 'da yayımlama
 
-Yayımlamaya hazırsanız, tüm bağımlılıklarınızın proje dizininizin kökünde bulunan *requirements. txt* dosyasında listelendiğinden emin olun. Derleyici gerektiren ve Pypı 'den manylinux ile uyumlu tekerlekler yüklemesini desteklemeyen bir paket kullanıyorsanız, Azure 'da yayımlama işlemi aşağıdaki hatayla başarısız olur: 
+Yayımlamaya hazırsanız, tüm bağımlılıklarınızın proje dizininizin kökünde bulunan *requirements. txt* dosyasında listelendiğinden emin olun. Azure Işlevleri bu bağımlılıkları [Uzaktan](functions-deployment-technologies.md#remote-build) oluşturabilir.
+
+Azure 'a dağıtmak ve uzak bir derleme gerçekleştirmek için aşağıdaki komutu kullanın:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Uzak derlemeyi kullanmıyorsanız ve Derleyici gerektiren bir paket kullanarak ve PyPI 'den Linux ile uyumlu birçok tekerlekün yüklenmesini desteklemiyorsa, yerel olarak oluşturmadan Azure 'a yayımlama aşağıdaki hatayla başarısız olur:
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-Gerekli ikilileri otomatik olarak derlemek ve yapılandırmak için, [Docker](https://docs.docker.com/install/) 'ı yerel makinenize yükleyip [Azure Functions Core Tools](functions-run-local.md#v2) (Func) kullanarak yayımlamak için aşağıdaki komutu çalıştırın. Azure 'daki işlev `<app name>` uygulamanızın adıyla değiştirmeyi unutmayın. 
+Yerel olarak oluşturmak ve gerekli ikilileri yapılandırmak için, [Docker](https://docs.docker.com/install/) 'ı yerel makinenize yükleyip [Azure Functions Core Tools](functions-run-local.md#v2) (Func) kullanarak yayımlamak için aşağıdaki komutu çalıştırın. Azure 'daki işlev `<app name>` uygulamanızın adıyla değiştirmeyi unutmayın. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

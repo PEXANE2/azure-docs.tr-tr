@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619819"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616924"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB veriler üzerinde toplu işlemler gerçekleştirmek için toplu Yürütücü Java kitaplığı kullanma
 
-Bu öğretici, Azure Cosmos DB'nin toplu Yürütücü Java kitaplığı kullanarak içeri aktarma ve Azure Cosmos DB belgeleri güncelleştirmek için yönergeler sağlar. Toplu Yürütücü kitaplığı ve yüksek düzeyde işleme ve depolama yararlanmanıza nasıl yardımcı olduğunu öğrenmek için bkz. [Yürütücü kitaplığına genel bakış toplu](bulk-executor-overview.md) makalesi. Bu öğreticide, rastgele belgeleri oluşturan bir Java uygulaması oluşturma ve bir Azure Cosmos DB kapsayıcısının içine alınan toplu oldukları. İçeri aktardıktan sonra toplu bir belge bazı özelliklerini güncelleştirir. 
+Bu öğretici, Azure Cosmos DB'nin toplu Yürütücü Java kitaplığı kullanarak içeri aktarma ve Azure Cosmos DB belgeleri güncelleştirmek için yönergeler sağlar. Toplu Yürütücü kitaplığı ve yüksek düzeyde işleme ve depolama yararlanmanıza nasıl yardımcı olduğunu öğrenmek için bkz. [Yürütücü kitaplığına genel bakış toplu](bulk-executor-overview.md) makalesi. Bu öğreticide, rastgele belgeler üreten ve bunlar bir Azure Cosmos kapsayıcısına toplu olarak içeri aktarılan bir Java uygulaması oluşturacaksınız. İçeri aktardıktan sonra toplu bir belge bazı özelliklerini güncelleştirir. 
 
 Şu anda, toplu yürütücü kitaplığı yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü Java kitaplığı 'nın nasıl kullanılacağı açıklanır. Toplu Yürütücü .NET kitaplığı ile Gremlin API kullanımı hakkında bilgi edinmek için [Azure Cosmos DB Gremlin API'SİNDE toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md).
 
@@ -88,7 +88,7 @@ Kopyalanan deponun iki örnekleri "BulkImport" ve "\azure-cosmosdb-bulkexecutor-
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Bir Azure Cosmos DB kapsayıcısı'na aktarma toplu olarak rastgele belgeler oluşturur API importAll çağırın. Komut satırı yapılandırmaları CmdLineConfiguration.java dosyası içinde yapılandırabilirsiniz.
+4. Bir Azure Cosmos kapsayıcısına toplu içeri aktarmaya yönelik rastgele belgeler üreten ImportAll API 'sini çağırın. Komut satırı yapılandırmaları CmdLineConfiguration.java dosyası içinde yapılandırabilirsiniz.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ Varolan belgeleri BulkUpdateAsync API'sini kullanarak güncelleştirebilirsiniz.
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Ardından bir Azure Cosmos DB kapsayıcısının içine alınan toplu olarak rastgele belgeler oluşturur API updateAll çağırın. CmdLineConfiguration.java dosyasında geçirilecek komut satırı yapılandırmaları yapılandırabilirsiniz.
+2. Daha sonra bir Azure Cosmos kapsayıcısına toplu olarak içeri aktarılacak rastgele belgeler üreten updateAll API 'yi çağırın. CmdLineConfiguration.java dosyasında geçirilecek komut satırı yapılandırmaları yapılandırabilirsiniz.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ Toplu Yürütücü Kitaplığı kullanıldığında daha iyi performans için a�
    * JVM'ın yığın boyutu fazla sayıda belge işleme bir bellek sorunu önlemek için yeterince büyük bir sayıya ayarlayın. Yığın boyutu önerilen: en fazla (3GB, 3 * sizeof (toplu olarak geçirilen tüm belgeleri Al API'si tek bir toplu)).  
    * Hangi nedeniyle daha yüksek aktarım hızı ile çok sayıda belgeleri toplu işlemleri gerçekleştirirken erişmenizi sağlayacak bir ön işleme süresi yoktur. 10.000.000 belge almak istiyorsanız, bu nedenle, 10 kez toplu olarak içeri aktarma üzerinde belgelerin 10 toplu her boyutta 1.000.000 çalışan toplu olarak içeri 100 kez belgelerin 100 toplu üzerinde her boyutu 100.000 belgelerin çalışan daha tercih edilir.  
 
-* Belirli bir Azure Cosmos DB kapsayıcısı için karşılık gelen tek bir sanal makine içindeki tüm uygulama için tek bir DocumentBulkExecutor nesnesi örneklemek için önerilir.  
+* Belirli bir Azure Cosmos kapsayıcısına karşılık gelen tek bir sanal makine içinde uygulamanın tamamı için tek bir Documentbulkyürütücü nesnesi örneği oluşturmanız önerilir.  
 
 * Bu yana tek bir toplu işlem API yürütme istemcinin CPU ve ağ GÇ büyük bir yığın kullanır. Birden çok görev tarafından dahili olarak UNICODE böyle, yürütülen her toplu işlem API çağrıları, uygulama işlemi içinde birden çok eş zamanlı görevleri UNICODE özen göstermektir. Tek bir sanal makine üzerinde çalışan tek bir toplu işlem API çağrısı tüketen tüm kapsayıcının aktarım hızını kaydedemediği (varsa, kapsayıcının aktarım hızını > 1 milyon RU/sn), eş zamanlı olarak toplu yürütmek için ayrı sanal makineler oluşturmak için tercih edilir API işlem çağrıları.
 

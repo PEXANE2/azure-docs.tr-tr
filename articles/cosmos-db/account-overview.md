@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 617d19b0dd9da926eb49170c1566febc6f6280ba
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467805"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617005"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos hesabıyla çalışma
 
@@ -25,7 +25,7 @@ Azure Cosmos hesabınızda bulunan tüm verilere erişimi güvenli bir şekilde 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos hesabındaki öğeler
 
-Azure Cosmos DB kapsayıcı temel ölçeklenebilirlik birimidir. Kapsayıcıda sınırsız bir sağlanan üretilen iş (RU/s) ve depolama alanı oluşturabilirsiniz. Azure Cosmos DB, sağlanan aktarım hızını ve depolamayı esnek ölçeklendirmek için belirttiğiniz mantıksal bölüm anahtarını kullanarak kapsayıcınızı saydam olarak bölümlendirir. Daha fazla bilgi için bkz. [Azure Cosmos kapsayıcıları ve öğeleriyle çalışma](databases-containers-items.md).
+Azure Cosmos kapsayıcısı, temel ölçeklenebilirlik birimidir. Kapsayıcıda sınırsız bir sağlanan üretilen iş (RU/s) ve depolama alanı oluşturabilirsiniz. Azure Cosmos DB, sağlanan aktarım hızını ve depolamayı esnek ölçeklendirmek için belirttiğiniz mantıksal bölüm anahtarını kullanarak kapsayıcınızı saydam olarak bölümlendirir. Daha fazla bilgi için bkz. [Azure Cosmos kapsayıcıları ve öğeleriyle çalışma](databases-containers-items.md).
 
 Şu anda, bir Azure aboneliği altında en fazla 100 Azure Cosmos hesabı oluşturabilirsiniz. Tek bir Azure Cosmos hesabı, sınırsız miktarda veriyi ve sağlanan aktarım hızını neredeyse yönetebilir. Verilerinizi ve sağlanan aktarım hızını yönetmek için, hesabınız altında ve bu veritabanı içinde bir veya daha fazla Azure Cosmos veritabanı oluşturabilir, bir veya daha fazla kapsayıcı oluşturabilirsiniz. Aşağıdaki görüntüde, bir Azure Cosmos hesabındaki öğelerin hiyerarşisi gösterilmektedir:
 

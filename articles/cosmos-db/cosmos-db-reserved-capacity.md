@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779870"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616913"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB ' de ayrılmış kapasiteyle maliyeti iyileştirin
 
@@ -57,7 +57,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Cosmos DB kaynakların k
    | Kaynak Grubu | Ayrılmış kapasite iskontosunun uygulandığı kaynak grubu. |
    |Terim  |   Bir yıl veya üç yıl.   |
    |Aktarım Hızı Türü   |  Aktarım hızı, istek birimleri olarak sağlanır. Her iki kurulum-tek bölge yazma işlemlerinin yanı sıra birden çok bölgeye yazma için sağlanan aktarım hızı için bir rezervasyon satın alabilirsiniz. Aktarım hızı türü, aralarından seçim yapabileceğiniz iki değere sahiptir: Saat başına 100 RU/sn ve dakikada 100 çoklu ana RU/s.|
-   | Ayrılmış Kapasite Birimleri| Ayırmak istediğiniz üretilen iş miktarı. Bölge başına tüm Cosmos DB kaynaklarınız (örneğin, veritabanları veya kapsayıcılar) için gereken aktarım hızını belirleyerek bu değeri hesaplayabilirsiniz. Daha sonra Cosmos DB veritabanınızla ilişkilendirdiğiniz bölge sayısına göre çarpmanız gerekir. Örneğin: Her bölgede 1.000.000 RU/sn içeren beş bölgedeyse, rezervasyon kapasitesi satın alma için 5.000.000 RU/sn seçeneğini belirleyin. |
+   | Ayrılmış Kapasite Birimleri| Ayırmak istediğiniz üretilen iş miktarı. Bölge başına tüm Cosmos DB kaynaklarınız (örneğin, veritabanları veya kapsayıcılar) için gereken aktarım hızını belirleyerek bu değeri hesaplayabilirsiniz. Daha sonra Cosmos veritabanınızla ilişkilendirdiğiniz bölge sayısına göre çarpmanız gerekir. Örneğin: Her bölgede 1.000.000 RU/sn içeren beş bölgedeyse, rezervasyon kapasitesi satın alma için 5.000.000 RU/sn seçeneğini belirleyin. |
 
 
 5. Formu doldurduktan sonra, ayrılan kapasiteyi satın almak için gereken fiyat hesaplanır. Çıktı Ayrıca, seçilen seçeneklerle aldığınız indirimin yüzdesini gösterir. Sonra **Seç** ' e tıklayın

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: bac61043d5804d1d8a719a311739e826a1bc2187
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9a2a11c2263500970e2f4294dd5d3711a57be349
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640984"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574584"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Hızlı Başlangıç: T-SQL kullanarak Azure SQL veri ambarı 'nda işlem ölçeklendirme
 
@@ -150,4 +150,4 @@ AND
 Artık veri ambarınız için işlemin nasıl ölçeklendirileceğini öğrendiniz. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
->[SQL veri ambarına veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)

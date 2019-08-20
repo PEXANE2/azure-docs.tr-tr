@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812217"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617608"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin
 
 Özel bulut vCenter 'nize yönetici erişimi için, CloudSimple ayrıcalıklarınızı geçici olarak ilerletebilirsiniz.  Yükseltilmiş ayrıcalıkları kullanarak, VMware çözümlerini yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
 
@@ -38,7 +38,7 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
     ![VSphere ayrıcalığını değiştirme](media/escalate-private-cloud-privilege.png)
 
-4. VSphere Kullanıcı türünü seçin.  Yalnızca **CloudOwner@cloudsimple.local** Yerel Kullanıcı ilerletilenebilir.
+4. VSphere Kullanıcı türünü seçin.  Yalnızca `CloudOwner@cloudsimple.local` Yerel Kullanıcı ilerletilenebilir.
 
 5. Açılan listeden ilerleme zaman aralığını seçin. Görevi tamamlamanıza olanak sağlayacak en kısa süreyi seçin.
 
@@ -46,7 +46,7 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
     ![Ayrıcalığı ilerlet iletişim kutusu](media/escalate-private-cloud-privilege-dialog.png)
 
-7.           **Tamam**'ı tıklatın.
+7. **Tamam**'ı tıklatın.
 
 8. Yükseltme işlemi birkaç dakika sürebilir. İşlem tamamlandığında **Tamam**’a tıklayın.
 
@@ -77,7 +77,7 @@ Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz b
 
 2. **Ön yükseltme**' ye tıklayın.
 
-3.           **Tamam**'ı tıklatın.
+3. **Tamam**'ı tıklatın.
 
 > [!IMPORTANT]
 > Herhangi bir hatayı önlemek için vCenter oturumunu kapatın ve yükseltme ayrıcalıklarından sonra tekrar oturum açın.

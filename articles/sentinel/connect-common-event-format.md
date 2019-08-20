@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 08/19/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1cc661509a28bb57bed0361b48cdeda5e6338e54
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28def73926294a025d70844e535a0856153ae30a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679317"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611939"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -54,6 +54,13 @@ Azure Sentinel ve CEF gereç arasındaki bağlantı üç adımda gerçekleşir:
 Alternatif olarak, aracıyı mevcut bir Azure VM 'de, başka bir buluttaki VM 'de veya şirket içi bir makinede el ile dağıtabilirsiniz. 
 
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
+
+## <a name="security-considerations"></a>Güvenlik konuları
+
+Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/linux/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
+
+Güvenlik çözümü ve Syslog makinesi arasındaki TLS iletişimini kullanmak için, Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: [Syslog TRAFIĞINI TLS-rsyslog Ile şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+
 
 ## <a name="step-1-configure-your-syslog-vm"></a>1\. adım: Syslog VM 'nizi yapılandırma
 

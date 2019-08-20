@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502407bbf1cdb47fc8105ed0220babcd9f292faa
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382701"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616074"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Kişisel Microsoft hesaplarınızı ekleyin
 
@@ -45,7 +45,7 @@ Outlook.com ve Xbox gibi kişisel Microsoft hesaplarınızı, hem standart iki �
 
     !["Daha fazla güvenlik seçenekleri" bağlantısı vurgulanmış güvenlik temelleri sayfası](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. **İki adımlı doğrulama** bölümüne gidin ve özelliği açmak için **seçin.** Artık kişisel hesabınızla kullanmak istemiyorsanız, buradan da kapatabilirsiniz.
+3. **İki adımlı doğrulama** bölümüne gidin ve özelliği açmak için seçin. Artık kişisel hesabınızla kullanmak istemiyorsanız, buradan da kapatabilirsiniz.
 
 ### <a name="add-your-microsoft-account-to-the-app"></a>Microsoft hesabı uygulamaya ekleyin
 
@@ -70,6 +70,6 @@ Outlook.com ve Xbox gibi kişisel Microsoft hesaplarınızı, hem standart iki �
 
 - Hesaplarınızı uygulamaya ekledikten sonra, cihazınızda kimlik doğrulayıcı uygulamasını kullanarak oturum açabilirsiniz. Daha fazla bilgi için bkz. [uygulamayı kullanarak oturum açma](user-help-auth-app-sign-in.md).
 
-- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
+- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
 
 - İOS çalıştıran cihazlarda, hesap kimlik bilgilerinizi ve hesaplarınızın sırası gibi ilgili uygulama ayarlarınızı buluta da yedekleyebilirsiniz. Daha fazla bilgi için bkz. [Microsoft Authenticator App Ile yedekleme ve kurtarma](user-help-auth-app-backup-recovery.md).

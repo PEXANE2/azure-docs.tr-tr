@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000789"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615390"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'de farklı API'ler ile ilgili sık sorulan sorular
 
@@ -123,7 +123,7 @@ Azure CosmosDB zaman serisi analiz Evet destekler, burada bir örnek için [zama
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>SQL API'si ile programlama geliştirmeye nasıl başlarım?
 
-Öncelikle, bir Azure aboneliği için kaydolmalısınız. Bir Azure aboneliğine kaydolduktan sonra Azure aboneliğinizde bir SQL API'si kapsayıcı ekleyebilirsiniz. Bir Azure Cosmos DB hesabını ekleme ile ilgili yönergeler için bkz: [bir Azure Cosmos DB veritabanı hesabı oluşturma](create-sql-api-dotnet.md#create-account).
+Öncelikle, bir Azure aboneliği için kaydolmalısınız. Bir Azure aboneliğine kaydolduktan sonra Azure aboneliğinizde bir SQL API'si kapsayıcı ekleyebilirsiniz. Azure Cosmos DB hesap ekleme hakkında yönergeler için bkz. [Azure Cosmos veritabanı hesabı oluşturma](create-sql-api-dotnet.md#create-account).
 
 .NET, Python, Node.js, JavaScript ve Java için [SDK'lar](sql-api-sdk-dotnet.md) kullanılabilir. Geliştiriciler ayrıca kullanabileceğiniz [RESTful HTTP API'lerini](/rest/api/cosmos-db/) çeşitli platformlar ve diller Azure Cosmos DB kaynaklarıyla etkileşim kurmak için.
 
@@ -203,7 +203,7 @@ Bu JavaScript sınırlamasıdır. JavaScript, IEEE 754 ' de belirtildiği gibi �
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API nedir?
 
-Azure Cosmos DB MongoDB için API 'SI, uygulamaların mevcut, topluluk tarafından desteklenen SDK 'Ları ve MongoDB için sürücüleri kullanarak yerel Azure Cosmos DB veritabanı altyapısına kolayca ve şeffaf bir şekilde iletişim kurmasına olanak tanıyan bir hat-protokol uyumluluk katmanıdır. Geliştiriciler artık Azure Cosmos DB faydalanan uygulamalar oluşturmak için mevcut MongoDB araç zincirlerini ve yeteneklerini kullanabilir. Geliştiriciler, çok yöneticili çoğaltma, Otomatik Dizin oluşturma, yedekleme bakımı, mali olarak desteklenen hizmet düzeyi sözleşmeleri (SLA 'Lar) vb. genel dağıtımı içeren Azure Cosmos DB benzersiz yetilerinden yararlanır.
+Azure Cosmos DB MongoDB için API 'SI, uygulamaların mevcut, topluluk tarafından desteklenen SDK 'Ları ve MongoDB için sürücüleri kullanarak yerel Azure Cosmos veritabanı altyapısına kolayca ve şeffaf bir şekilde iletişim kurmasına olanak tanıyan bir tel protokol uyumluluk katmanıdır. Geliştiriciler artık Azure Cosmos DB faydalanan uygulamalar oluşturmak için mevcut MongoDB araç zincirlerini ve yeteneklerini kullanabilir. Geliştiriciler, çok yöneticili çoğaltma, Otomatik Dizin oluşturma, yedekleme bakımı, mali olarak desteklenen hizmet düzeyi sözleşmeleri (SLA 'Lar) vb. genel dağıtımı içeren Azure Cosmos DB benzersiz yetilerinden yararlanır.
 
 ### <a name="how-do-i-connect-to-my-database"></a>Nasıl yaparım? veritabanıma bağlansın mı?
 
@@ -453,7 +453,7 @@ Tablo API'si, Azure tablo depolaması aynı sorgu işlevlerini sağlar. Azure Co
 Aşağıdaki koşullardan biri geçerli olduğu durumlarda TableThroughput değiştirmeniz gerekir:
 
 * Bir ayıklama, dönüştürme ve yükleme (ETL) veri gerçekleştiriyorsunuz veya kısa bir sürede çok sayıda veri karşıya yüklemek istediğiniz.
-* Kapsayıcı veya bir dizi kapsayıcıları arka uçta daha fazla aktarım hızı gerekir. Örneğin, kullanılan aktarım hızını birden çok sağlanan aktarım hızı ve, kaynaklarınızın azaltılıp olduğunu görürsünüz. Daha fazla bilgi için [Azure Cosmos DB kapsayıcıları için aktarım hızı ayarlama](set-throughput.md).
+* Kapsayıcı veya bir dizi kapsayıcıları arka uçta daha fazla aktarım hızı gerekir. Örneğin, kullanılan aktarım hızını birden çok sağlanan aktarım hızı ve, kaynaklarınızın azaltılıp olduğunu görürsünüz. Daha fazla bilgi için bkz. [Azure Cosmos kapsayıcıları için aktarım hızını ayarlama](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Ölçeği artırma veya miyim tablo API'si tablomun aktarım hızı ölçeklendirme?
 
@@ -720,7 +720,7 @@ Apache Cassandra API'si kapasite planlama, barındırmamıza aktarım hızı ve 
 
 Azure Cosmos DB, kullanılabilirlik ve düşük gecikme süresi nedeniyle hazır genel dağıtım sağlar. Kurulum çoğaltmalar veya başka şeyler için gerekmez. Tüm yazma işlemleri, performans garantisi sağlarken yazdığınız her bölgede her zaman durmadan bir çekirdekte işlenir.
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-and-more"></a>Önbelleğe alma, çeşitli ayarları göre çiçek tomurcukları filtre gibi tablo meta verileri için ne olduğunu onarım değişiklik, gc_grace, sıkıştırma memtable_flush_period ve daha fazlasını okuyun?
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Önbelleğe alma, çeşitli ayarları göre çiçek tomurcukları filtre gibi tablo meta verileri için ne olduğunu onarım değişiklik, gc_grace, sıkıştırma memtable_flush_period ve daha fazlasını okuyun?
 
 Azure Cosmos DB, okuma/yazma ve yapılandırma ayarlarından herhangi birini dokunma ve bunları yanlışlıkla düzenleme için gerek kalmadan işleme için performans sağlar.
 

@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: 641d622377bad7a1239efd526b93c6f0f0c08d4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/14/2019
+ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68887046"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575731"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta bağlantı sorunlarını Apache Phoenix
 
@@ -27,7 +27,7 @@ Etkin Zookeeper düğümünün yanlış IP 'si.
 
 ### <a name="resolution"></a>Çözüm
 
-Active Zookeeper düğümünün IP 'si, **HBase-> hızlı bağlantıları-> ZK***  **(etkin)-> Zookeeper Info**bağlantılarını izleyerek, ambarı kullanıcı arabiriminden belirlenebilir. Gerektiğinde düzeltin.
+Active Zookeeper düğümünün IP 'si, **HBase** > **hızlı bağlantılar** > **ZK (etkin)**  > **Zookeeper Info**bağlantılarını izleyerek, ambarı kullanıcı arabiriminden belirlenebilir. IP 'yi gerektiği gibi düzeltin.
 
 ---
 
@@ -35,27 +35,27 @@ Active Zookeeper düğümünün IP 'si, **HBase-> hızlı bağlantıları-> ZK**
 
 Gibi komutları `!tables`çalıştırırken şuna benzer bir hata iletisi alırsınız:
 
-```
+```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
 Gibi komutları `count 'SYSTEM.CATALOG'`çalıştırırken şuna benzer bir hata iletisi alırsınız:
 
-```
+```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
 ### <a name="resolution"></a>Çözüm
 
-Tüm Zookeeper düğümlerinde HMaster hizmetini, ambarı kullanıcı arabiriminden yeniden başlatın.
+Apache ambarı kullanıcı arabiriminden, tüm ZooKeeper düğümlerinde HMaster hizmetini yeniden başlatmak için aşağıdaki adımları izleyin:
 
-1. HBase 'in Özet bölümünde **HBase-> Active HBase Master** bağlantısına gidin.
+1. HBase 'in **Özet** bölümünden **HBase** > **etkin HBase Master**' a gidin.
 
-1. **Bileşenler** bölümünde HBase Master hizmetini yeniden başlatın.
+1. **Bileşenler** bölümünden HBase Master hizmetini yeniden başlatın.
 
-1. Kalan **bekleme HBase Master** Hizmetleri için yukarıdaki adımları tekrarlayın.
+1. Kalan tüm **bekleme HBase Master** Hizmetleri için bu adımları yineleyin.
 
-HBase Master hizmetin kurtarma işleminin kararlı hale gelmesi ve tamamlanması 5 dakika kadar sürebilir. `SYSTEM.CATALOG` Tablo normal 'e geri yüklendikten sonra Apache Phoenix bağlantı sorunu otomatik olarak çözümlenmelidir.
+HBase Master hizmetin kurtarma işleminin kararlı olması beş dakika kadar sürebilir. `SYSTEM.CATALOG` Tablo normal 'e geri yüklendikten sonra Apache Phoenix bağlantı sorunu otomatik olarak çözümlenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

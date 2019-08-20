@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: f2485786f323bc6d19d39f4da6ffa7cab14bbb4c
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: aad3ca34ab9db5ec910e70e70ba5a31afa94e417
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951831"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611988"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
@@ -24,7 +24,7 @@ Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini s
 
 * Kasaya veri aktarımını beklemek zorunda kalmadan kurtarma için kullanılabilen bir yedekleme işinin parçası olarak alınan anlık görüntüleri kullanma özelliği. Geri yüklemeyi tetiklemeden önce anlık görüntülerin kasaya kopyalaması için bekleme süresini azaltır.
 * , Varsayılan olarak iki gün boyunca anlık görüntüleri yerel olarak tutarak yedekleme ve geri yükleme sürelerini azaltır. Bu varsayılan anlık görüntü saklama değeri 1 ila 5 gün arasında bir değere yapılandırılabilir.
-* 4 TB 'a kadar disk boyutlarını destekler. Disklerin yeniden boyutlandırılması Azure Backup önerilmez. 4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [Azure VM yedeklemesi 'ne genel bakış](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+* 4 TB 'a kadar disk boyutlarını destekler. Disklerin yeniden boyutlandırılması Azure Backup önerilmez. 4 TB 'den büyük ve boyutu 30 TB 'a kadar olan diskler için Azure Backup büyük disk desteğinin sınırlı bir genel önizlemesine kaydolmak için bkz. [disk boyutları 30 TB 'a kadar VM yedeklemesi](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 * , Standart HDD disklerle ve Premium SSD disklerle birlikte Standart SSD diskleri destekler.
 * Geri yükleme sırasında, yönetilmeyen VM 'Lerin orijinal depolama hesaplarını (disk başına) kullanma özelliği. Bu özellik, VM 'nin depolama hesapları arasında dağıtılan diskleri olduğunda bile vardır. Çok çeşitli VM yapılandırmalarının geri yükleme işlemlerini hızlandırır.
 * Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *% 50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra% 50 boş alan yedeklemeler için bir gereksinim değildir.

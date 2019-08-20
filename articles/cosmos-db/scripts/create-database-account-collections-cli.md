@@ -1,5 +1,5 @@
 ---
-title: Azure CLI betiği-oluşturma bir Azure Cosmos DB SQL API hesabı, veritabanı ve kapsayıcı
+title: Azure CLı betiği-Azure Cosmos DB bir SQL API hesabı, veritabanı ve kapsayıcısı oluşturma
 description: Azure CLI Betiği Örneği - Azure Cosmos DB SQL API hesabı, veritabanı ve kapsayıcısı oluşturma
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c139ff60ef36b87d9ac16bfd16ad319cd9e17d10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ff6d0ea2701eab8f7cc98f2aeead7492b231f77
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154722"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616736"
 ---
-# <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Azure Cosmos DB: CLI kullanarak bir SQL API hesabı oluşturma
+# <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Azure Cosmos DB: CLı kullanarak SQL API hesabı oluşturma
 
 Bu örnek CLI betiği, Azure Cosmos DB SQL API hesabı, veritabanı ve kapsayıcısı oluşturur.  
 
@@ -43,8 +43,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos DB veritabanı oluşturur. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Azure Cosmos DB kapsayıcısı oluşturur. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos veritabanı oluşturur. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Azure Cosmos kapsayıcısı oluşturur. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

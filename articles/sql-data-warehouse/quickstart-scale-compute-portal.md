@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: de91b2d681037ae67e14b16934cf72441ef9fd82
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4197d7a4724199f8c42fc09a6d1ed18af46cc4f8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935149"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575366"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal Azure SQL veri ambarı 'nda işlem ölçeğini ölçeklendirme
 
@@ -60,4 +60,4 @@ Veri ambarı birimlerini değiştirmek için:
 Artık veri ambarınızın işlem ölçeğini ölçeklendirdiniz. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
->[SQL veri ambarına veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015967"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613234"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>İş Akışı Tasarımcısı ile Gelişmiş Kodlama İş Akışları Oluşturma  
 ## <a name="overview"></a>Genel Bakış
@@ -87,7 +87,7 @@ Media Services öğrenme yollarını gözden geçirin.
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Iş akışı Tasarımcısı aracında desteğe ihtiyacınız varsa veya özel iş akışları oluşturma hakkında sorularınız varsa, lütfen adresine mepd@microsoft.come-posta gönderin.
+Iş akışı Tasarımcısı aracında desteğe ihtiyacınız varsa veya özel iş akışları oluşturma hakkında sorularınız varsa, lütfen adresine mepd@microsoft.come-posta gönderin. Lütfen e-postanızı yazarken Ingilizce dilini kullanın.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Azure Premium Kodlayıcısı İş Akışı Tasarımcısı eğitim videoları](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

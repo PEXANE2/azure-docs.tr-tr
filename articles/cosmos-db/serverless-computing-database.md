@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 3bf89cd3ec0822cee2a3ebcf76de4193046462f9
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335897"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614590"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama
 
@@ -23,9 +23,9 @@ Sunucusuz bilgi işlem, tekrarlanabilir ve durumsuz olan ayrı mantık parçalar
 
 Azure Cosmos DB ve Azure Işlevleri, veritabanlarınızı ve sunucusuz uygulamalarınızı aşağıdaki yollarla tümleştirmenizi sağlar:
 
-* Cosmos DB için olay odaklı bir **Azure işlevleri tetikleyicisi**oluşturun. Bu tetikleyici, değişiklikler için Azure Cosmos DB kapsayıcınızı izlemek üzere [değişiklik akışı](change-feed.md) akışlarına bağımlıdır. Bir kapsayıcıda değişiklik yapıldığında, değişiklik akışı akışı, Azure Işlevini çağıran tetikleyicisine gönderilir.
-* Alternatif olarak, bir Azure Işlevini, bir **giriş bağlama**kullanarak bir Azure Cosmos DB kapsayıcısına bağlayın. Giriş bağlamaları bir işlev yürütüldüğünde bir kapsayıcıdan veri okur.
-* **Çıkış bağlamayı**kullanarak bir işlevi Azure Cosmos DB kapsayıcısına bağlama. Çıkış bağlamaları bir işlev tamamlandığında bir kapsayıcıya veri yazar.
+* Cosmos DB için olay odaklı bir **Azure işlevleri tetikleyicisi**oluşturun. Bu tetikleyici, değişiklikler için Azure Cosmos kapsayıcınızı izlemek üzere [değişiklik akışı](change-feed.md) akışlarına bağımlıdır. Bir kapsayıcıda değişiklik yapıldığında, değişiklik akışı akışı, Azure Işlevini çağıran tetikleyicisine gönderilir.
+* Alternatif olarak, bir Azure Işlevini bir **giriş bağlama**kullanarak bir Azure Cosmos kapsayıcısına bağlayın. Giriş bağlamaları bir işlev yürütüldüğünde bir kapsayıcıdan veri okur.
+* **Çıkış bağlamayı**kullanarak bir Işlevi Azure Cosmos kapsayıcısına bağlayın. Çıkış bağlamaları bir işlev tamamlandığında bir kapsayıcıya veri yazar.
 
 > [!NOTE]
 > Şu anda, Cosmos DB için Azure Işlevleri tetikleyicisi, giriş bağlamaları ve çıkış bağlamaları yalnızca SQL API 'SI ile kullanım için desteklenir. Diğer tüm Azure Cosmos DB API 'Lerinde, API 'niz için statik istemciyi kullanarak işlevinizden veritabanına erişmeniz gerekir.
@@ -37,9 +37,9 @@ Aşağıdaki diyagramda bu üç tümleştirmelerin her biri gösterilmektedir:
 
 Azure Cosmos DB için Azure Işlevleri tetikleyicisi, giriş bağlama ve çıkış bağlaması aşağıdaki bileşimlerde kullanılabilir:
 
-* Cosmos DB için bir Azure Işlevleri tetikleyicisi, farklı bir Azure Cosmos DB kapsayıcısına çıkış bağlaması ile kullanılabilir. Bir işlev değişiklik akışındaki bir öğe üzerinde bir eylem gerçekleştirdikten sonra, bunu başka bir kapsayıcıya yazabilirsiniz (bunun, geldiği aynı kapsayıcıya yazmak etkin bir yinelemeli döngü oluşturur). Ya da, değişen tüm öğeleri bir kapsayıcıdan farklı bir kapsayıcıya, çıkış bağlamasının kullanımıyla etkin bir şekilde geçirmek için Cosmos DB için bir Azure Işlevleri tetikleyicisi kullanabilirsiniz.
+* Cosmos DB için bir Azure Işlevleri tetikleyicisi, farklı bir Azure Cosmos kapsayıcısına çıkış bağlaması ile kullanılabilir. Bir işlev değişiklik akışındaki bir öğe üzerinde bir eylem gerçekleştirdikten sonra, bunu başka bir kapsayıcıya yazabilirsiniz (bunun, geldiği aynı kapsayıcıya yazmak etkin bir yinelemeli döngü oluşturur). Ya da, değişen tüm öğeleri bir kapsayıcıdan farklı bir kapsayıcıya, çıkış bağlamasının kullanımıyla etkin bir şekilde geçirmek için Cosmos DB için bir Azure Işlevleri tetikleyicisi kullanabilirsiniz.
 * Azure Cosmos DB için giriş bağlamaları ve çıkış bağlamaları aynı Azure Işlevinde kullanılabilir. Bu, giriş bağlaması ile belirli verileri bulmak, Azure Işlevinde değiştirmek ve ardından değişikliği sonrasında aynı kapsayıcıya veya farklı bir kapsayıcıya kaydetmek istediğinizde iyi çalışır.
-* Azure Cosmos DB kapsayıcısına bir giriş bağlama, Cosmos DB için bir Azure Işlevleri tetikleyicisi ile aynı işlevde kullanılabilir ve ayrıca, çıkış bağlamasıyla veya bunlarla birlikte kullanılabilir. Bu bileşimi, güncel para birimi değişim bilgilerini (bir Exchange kapsayıcısına bir giriş bağlamasıyla çekilir), alışveriş sepeti hizmetinizde yeni siparişlerin değişiklik akışına uygulamak için kullanabilirsiniz. Güncel para birimi dönüştürme uygulanmış olan güncelleştirilmiş alışveriş sepeti toplamı, bir çıkış bağlaması kullanılarak üçüncü bir kapsayıcıya yazılabilir.
+* Azure Cosmos kapsayıcısına bir giriş bağlama, Cosmos DB için bir Azure Işlevleri tetikleyicisi ile aynı işlevde kullanılabilir ve ayrıca, çıkış bağlamasıyla veya bunlarla birlikte kullanılabilir. Bu bileşimi, güncel para birimi değişim bilgilerini (bir Exchange kapsayıcısına bir giriş bağlamasıyla çekilir), alışveriş sepeti hizmetinizde yeni siparişlerin değişiklik akışına uygulamak için kullanabilirsiniz. Güncel para birimi dönüştürme uygulanmış olan güncelleştirilmiş alışveriş sepeti toplamı, bir çıkış bağlaması kullanılarak üçüncü bir kapsayıcıya yazılabilir.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
@@ -57,7 +57,7 @@ IoT uygulamalarında, bağlı bir otomobilde Check Engine ışığı görüntül
 4. Tetikleyici, değişiklik akışı aracılığıyla tüm değişiklikler akışı yaptığı için, algılayıcı veri koleksiyonundaki her veri değişikliği üzerinde çağrılır.
 5. Bir eşik koşulu, algılayıcı verilerini garanti departmanına göndermek için işlevinde kullanılır.
 6. Sıcaklık aynı zamanda belirli bir değer de varsa, sahibine da bir uyarı gönderilir.
-7. İşlevindeki **Çıkış bağlaması** , denetim motoru olayı hakkında bilgi depolamak için başka bir Azure Cosmos DB kapsayıcısındaki araba kaydını güncelleştirir.
+7. İşlevindeki **Çıkış bağlaması** , diğer bir Azure Cosmos kapsayıcısındaki araba kaydını, Check Engine olayı hakkında bilgi depolamak için güncelleştirir.
 
 Aşağıdaki görüntüde, bu tetikleyici için Azure portal yazılan kod gösterilmektedir.
 
@@ -69,7 +69,7 @@ Mali uygulamalarda, banka hesabı bakiyesi belirli bir miktarın altına düşt�
 
 **Paylaşır** Azure Cosmos DB girişi bağlamaya sahip bir Zamanlayıcı tetikleyicisi
 
-1. Bir [Zamanlayıcı tetikleyicisi](../azure-functions/functions-bindings-timer.md)kullanarak, bir Azure Cosmos DB kapsayıcısında depolanan banka hesap bakiyesi bilgilerini, bir **giriş bağlaması**kullanarak zaman aralıklarıyla alabilirsiniz.
+1. Bir [Zamanlayıcı tetikleyicisi](../azure-functions/functions-bindings-timer.md)kullanarak bir Azure Cosmos kapsayıcısında depolanan banka hesap bakiyesi bilgilerini, bir **giriş bağlaması**kullanarak zaman aralıklarıyla alabilirsiniz.
 2. Bakiye, Kullanıcı tarafından ayarlanan düşük bakiyeli eşiğin altındaysa Azure Işlevindeki bir eylemle takip edin.
 3. Çıkış bağlama, bir hizmet hesabından bir e-posta gönderen bir [SendGrid tümleştirmesi](../azure-functions/functions-bindings-sendgrid.md) olabilir ve bu, düşük bilanço hesaplarının her biri için tanımlanan e-posta adreslerine.
 
@@ -118,7 +118,7 @@ Azure Cosmos DB ve Azure Işlevleri arasında yerel tümleştirme, Azure portal 
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Sunucusuz bilgi işlem için neden Azure Işlevleri tümleştirmesi seçmelisiniz?
 
-Azure Işlevleri, altyapının sağlanması veya yönetilmesi gerekmeden, ölçeklenebilir iş birimleri veya isteğe bağlı olarak çalışabilen kısa mantık parçalarını oluşturma olanağı sağlar. Azure Işlevleri 'ni kullanarak, Azure Cosmos DB veritabanınızdaki değişikliklere yanıt vermek için tam bir blown uygulaması oluşturmanız gerekmez, belirli görevler için küçük yeniden kullanılabilir işlevler oluşturabilirsiniz. Ayrıca, HTTP istekleri veya süreli tetikleyici gibi bir olaya yanıt olarak Azure Işlevine giriş veya çıkış olarak Azure Cosmos DB verilerini de kullanabilirsiniz.
+Azure Işlevleri, altyapının sağlanması veya yönetilmesi gerekmeden, ölçeklenebilir iş birimleri veya isteğe bağlı olarak çalışabilen kısa mantık parçalarını oluşturma olanağı sağlar. Azure Işlevleri 'ni kullanarak, Azure Cosmos veritabanınızdaki değişikliklere yanıt vermek için tam bir blown uygulaması oluşturmanız gerekmez, belirli görevler için küçük yeniden kullanılabilir işlevler oluşturabilirsiniz. Ayrıca, HTTP istekleri veya süreli tetikleyici gibi bir olaya yanıt olarak Azure Işlevine giriş veya çıkış olarak Azure Cosmos DB verilerini de kullanabilirsiniz.
 
 Azure Cosmos DB, aşağıdaki nedenlerden dolayı sunucusuz bilgi işlem mimariniz için önerilen veritabanıdır:
 

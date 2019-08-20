@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619073"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575515"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL veri ambarı sorunlarını giderme
 Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
@@ -24,7 +24,7 @@ Bu makalede, yaygın sorun giderme sorusu listelenmektedir.
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | ' NT AUTHORıTY\ANONYMOUS LOGON ' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, Hata: 18456) | Bu hata, bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcıya sahip olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL veri ambarını belirtin ya da kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış][Security overview] makalesine bakın. |
-| "MyUserName" asıl sunucusu geçerli güvenlik bağlamı altında "Master" veritabanına erişemiyor. Kullanıcı varsayılan veritabanı açılamıyor. Oturum açma başarısız. ' MyUserName ' kullanıcısı için oturum açma başarısız. (Microsoft SQL Server, Hata: 916) | Bu hata, bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcıya sahip olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL veri ambarını belirtin ya da kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış][Security overview] makalesine bakın. |
+| "MyUserName" asıl sunucusu geçerli güvenlik bağlamı altında "Master" veritabanına erişemiyor. Kullanıcı varsayılan veritabanı açılamıyor. Oturum açılamadı. ' MyUserName ' kullanıcısı için oturum açma başarısız. (Microsoft SQL Server, Hata: 916) | Bu hata, bir AAD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcıya sahip olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı zamanında bağlanmak istediğiniz SQL veri ambarını belirtin ya da kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış][Security overview] makalesine bakın. |
 | CTAıP hatası                                                  | Bu hata, SQL Server ana veritabanında bir oturum oluşturulduğunda, ancak SQL veri ambarı veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış][Security overview] makalesine göz atın.  Bu makalede, ana bilgisayarda bir oturum açma ve Kullanıcı oluşturma ve ardından SQL veri ambarı veritabanında bir Kullanıcı oluşturma işlemleri açıklanmaktadır. |
 | Güvenlik duvarı tarafından engellendi                                          | Azure SQL veritabanları, yalnızca bilinen IP adreslerinin bir veritabanına erişimi olduğundan emin olmak için sunucu ve veritabanı düzeyi güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenli hale gelir. Bu, bağlanmadan önce açıkça etkinleştirmeniz ve IP adresi veya adres aralığı yapmanız gerekir.  Güvenlik duvarınızı erişim için yapılandırmak üzere, [sağlama yönergelerindeki][Provisioning instructions] [istemci IP 'niz için sunucu güvenlik duvarı erişimini yapılandırma][Configure server firewall access for your client IP] bölümündeki adımları izleyin. |
 | Araçla veya sürücüyle bağlantı yapılamaz                           | SQL veri ambarı, [SMS][SSMS]'Yi, [Visual Studio için SSDT][SSDT for Visual Studio]'yi veya verilerinizi sorgulamak için [sqlcmd][sqlcmd] kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve SQL veri ambarı 'na bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL veri ambarı Için sürücüler][Drivers for Azure SQL Data Warehouse] ve [Azure SQL veri ambarı makalelerine bağlanma][Connect to Azure SQL Data Warehouse] . |

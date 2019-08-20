@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845211"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574395"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry’de coğrafi çoğaltma
 
@@ -105,6 +105,14 @@ ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye ba�
 Coğrafi çoğaltma, Azure Container Registry [PREMIUM SKU](container-registry-skus.md) 'sunun bir özelliğidir. İstediğiniz bölgelere bir kayıt defteri çoğalttığınızda, her bölge için Premium kayıt defteri ücretlerine tabi olursunuz.
 
 Yukarıdaki örnekte, contoso iki kayıt, Doğu ABD, Kanada Orta ve Batı Avrupa çoğaltmaları ekleyerek bir yukarı Birleşik olarak birleştirilmiş. Contoso, ek yapılandırma veya yönetim olmadan ayda dört kat Premium ödemenizi ister. Her bölge artık görüntülerini yerel olarak çeker, performansı, Batı ABD ağ çıkış ücretleri olmadan Kanada ve Doğu ABD artırır.
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Coğrafi olarak çoğaltılan kayıt defterlerine gönderim işlemleri sorunlarını giderme
+ 
+Bir görüntüyü coğrafi olarak çoğaltılan bir kayıt defterine ileten bir Docker istemcisi, tüm görüntü katmanlarını ve bildirimini tek bir çoğaltılan bölgeye gönderemeyebilir. Azure Traffic Manager kayıt defteri isteklerini ağa en yakın çoğaltılan kayıt defterine yönlendirtiğinden bu durum oluşabilir. Kayıt defterinde *yakın* iki çoğaltma bölgesi varsa, görüntü katmanları ve bildirim iki siteye dağıtılabilir ve bildirim doğrulandığında gönderme işlemi başarısız olur. Bu sorun, bazı Linux konaklarındaki kayıt defteri DNS adının çözümlenme yöntemi nedeniyle oluşur. Bu sorun, istemci tarafı DNS önbelleği sağlayan Windows üzerinde oluşmaz.
+ 
+Bu sorun oluşursa, bir çözüm, Linux ana bilgisayarına gibi `dnsmasq` bir istemci tarafı DNS önbelleğinin uygulanmasından biridir. Bu, kayıt defteri adının tutarlı bir şekilde çözümlendiğinden emin olmanıza yardımcı olur. Azure 'da bir kayıt defterine göndermek için bir Linux VM kullanıyorsanız, bkz. [Azure 'Da Linux sanal makineleri Için DNS ad çözümleme seçenekleri](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)seçenekleri.
+
+Görüntüleri gönderirken en yakın çoğaltma ile DNS çözümlemesini iyileştirmek için, çekme işlemlerinin kaynağıyla aynı Azure bölgelerinde coğrafi olarak çoğaltılan bir kayıt defteri veya Azure dışında çalışırken en yakın bölgeyi yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

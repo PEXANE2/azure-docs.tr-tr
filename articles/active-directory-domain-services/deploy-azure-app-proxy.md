@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031041"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612999"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Uygulama Ara Sunucusu Azure AD Domain Services yönetilen bir etki alanında dağıtma
 Azure Active Directory (AD) uygulama proxy 'Si, internet üzerinden erişilecek şirket içi uygulamaları yayımlayarak uzak çalışanları desteklemenize yardımcı olur. Azure AD Domain Services ile, artık şirket içinde çalışan eski uygulamaları Azure altyapı hizmetleri 'ne açabilir ve taşıyabilirsiniz. Böylece, kuruluşunuzdaki kullanıcılara güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu kullanarak bu uygulamaları yayımlayabilirsiniz.
@@ -35,7 +35,7 @@ Bu makalede listelenen görevleri gerçekleştirmek için şunlar gerekir:
 1. Geçerli bir **Azure aboneliği**.
 2. Bir **Azure ad dizini** -şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
 3. Azure AD Uygulama Ara Sunucusu kullanmak için bir **Azure AD Premium Lisansı** gerekir.
-4. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](create-instance.md)özetlenen tüm görevleri izleyin.
+4. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](tutorial-create-instance.md)özetlenen tüm görevleri izleyin.
 
 <br>
 
@@ -114,18 +114,18 @@ Bu [makalede](deploy-kcd.md)açıklandığı gibi kaynak tabanlı KCD 'yi kullan
 
 Azure AD Uygulama Ara Sunucusu bağlayıcısının yüklü olduğu bilgisayarın ayarlarını almak için Get-ADComputer PowerShell cmdlet 'ini kullanın.
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 Bundan sonra, Resource Server için kaynak tabanlı KCD 'yi ayarlamak için set-ADComputer cmdlet 'ini kullanın.
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 Yönetilen etki alanında birden çok uygulama proxy Bağlayıcısı dağıttıysanız, bu tür bağlayıcı örnekleri için kaynak tabanlı KCD 'yi yapılandırmanız gerekir.
 
 
 ## <a name="related-content"></a>İlgili İçerik
-* [Azure AD Domain Services-Başlarken Kılavuzu](create-instance.md)
+* [Azure AD Domain Services-Başlarken Kılavuzu](tutorial-create-instance.md)
 * [Yönetilen bir etki alanında Kerberos kısıtlanmış temsilciyi yapılandırma](deploy-kcd.md)
 * [Kerberos kısıtlı temsilciye genel bakış](https://technet.microsoft.com/library/jj553400.aspx)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018907"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575131"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
     Kendi SQL 2017 örneğinizi kullandığınızda SSRS 'yi el ile yapılandırmanız gerekir. SSRS yapılandırmasından sonra, SSRS 'nin *ısınbaşlatılmış* özelliğinin *true*olarak ayarlandığından emin olun. Bu true olarak ayarlandığında, MABS SSRS 'nin zaten yapılandırıldığını varsayar ve SSRS yapılandırmasını atlar.
 
     SSRS yapılandırması için aşağıdaki değerleri kullanın: 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - Hizmet hesabı: ' Yerleşik hesabı kullan ' ağ hizmeti olmalıdır
+    - Web hizmeti URL 'SI: ' Sanal dizin ' ReportServer_ olmalıdır<SQLInstanceName>
+    - Veritabanınızı DatabaseName ReportServer $ olmalıdır<SQLInstanceName>
+    - Web portalı URL 'SI: ' Sanal dizin ' Reports_ olmalıdır<SQLInstanceName>
 
     SSRS yapılandırması hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
 

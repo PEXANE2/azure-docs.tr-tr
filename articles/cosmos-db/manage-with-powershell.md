@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965102"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616824"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
@@ -46,7 +46,7 @@ Aşağıdaki bölümlerde aşağıdakiler dahil olmak üzere Azure Cosmos hesab�
 
 ### <a id="create-account"></a>Azure Cosmos hesabı oluşturma
 
-Bu komut, [birden çok bölgede][distribute-data-globally], sınırlanmış bir [tutarlılık ilkesiyle](consistency-levels.md)bir Azure Cosmos DB veritabanı hesabı oluşturur.
+Bu komut, [birden çok bölgede][distribute-data-globally], sınırlanmış bir [tutarlılık Ilkesiyle](consistency-levels.md)Azure Cosmos veritabanı hesabı oluşturur.
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a>Azure Cosmos hesabını güncelleştirme
 
-Bu komut, Azure Cosmos DB veritabanı hesabı özelliklerinizi güncelleştirmenizi sağlar. Güncelleştirilebilen özellikler şunları içerir:
+Bu komut, Azure Cosmos veritabanı hesabı özelliklerinizi güncelleştirmenize olanak tanır. Güncelleştirilebilen özellikler şunları içerir:
 
 * Bölge ekleme veya kaldırma
 * Varsayılan tutarlılık ilkesini değiştirme
@@ -247,6 +247,7 @@ Aşağıdaki örnekte, hesabının geçerli bir yük devretme önceliğine `West
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

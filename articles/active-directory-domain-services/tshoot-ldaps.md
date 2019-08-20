@@ -1,6 +1,6 @@
 ---
-title: Güvenli LDAP (LDAPS) Azure AD Etki Alanı Hizmetleri'nde sorun giderme | Microsoft Docs
-description: Bir Azure AD Domain Services yönetilen etki alanı için güvenli LDAP (LDAPS) sorunlarını giderme
+title: Azure AD Domain Services 'de Güvenli LDAP (LDAPS) sorunlarını giderme | Microsoft Docs
+description: Azure AD Domain Services yönetilen bir etki alanı için Güvenli LDAP (LDAPS) sorunlarını giderme
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: a194919a488f6cb59c76315c9d8a3db1e9c1feb1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472196"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617057"
 ---
-# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Bir Azure AD Domain Services yönetilen etki alanı için güvenli LDAP (LDAPS) sorunlarını giderme
+# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanı için Güvenli LDAP (LDAPS) sorunlarını giderme
 
 ## <a name="connection-issues"></a>Bağlantı sorunları
-Güvenli LDAP kullanarak yönetilen etki alanına bağlanırken sorun varsa:
+Güvenli LDAP kullanarak yönetilen etki alanına bağlanmada sorun yaşıyorsanız:
 
-* Güvenli LDAP sertifikasını veren zincirini istemcide güvenilir olması gerekir. Kök sertifika yetkilisi güven oluşturmak için istemcide güvenilen kök sertifika deposuna eklemek tercih edebilirsiniz.
-* LDAP istemcisi (örneğin, ldp.exe) bir DNS adı veya IP adresini kullanarak güvenli LDAP uç noktasına bağlandığını doğrulayın.
-* LDAP istemcisi bağlandığı DNS adını denetleyin. Yönetilen etki alanı üzerinde güvenli LDAP'yi için genel IP adresine çözümlenmelidir.
-* Yönetilen etki alanınıza güvenli LDAP sertifikası konu veya konu diğer adları özniteliği bir DNS adı olduğunu doğrulayın.
-* Sanal ağ için NSG ayarları, internet'ten bağlantı noktası 636 trafiğine izin vermelidir. Yalnızca internet üzerinden güvenli LDAP erişimi etkinleştirdiyseniz bu adımı geçerlidir.
+* Güvenli LDAP sertifikasının veren zincirinin istemcide güvenilir olması gerekir. Güveni oluşturmak için, kök sertifika yetkilisini istemcideki güvenilen kök sertifika deposuna eklemeyi tercih edebilirsiniz.
+* LDAP istemcisinin (örneğin, Ldp. exe), IP adresi değil, DNS adı kullanarak Güvenli LDAP uç noktasına bağlandığını doğrulayın.
+* LDAP istemcisinin bağlandığı DNS adını denetleyin. Yönetilen etki alanında güvenli LDAP için genel IP adresine çözümlenmelidir.
+* Yönetilen etki alanınız için Güvenli LDAP sertifikasının konu veya konu alternatif adları özniteliğinde DNS adına sahip olduğunu doğrulayın.
+* Sanal ağın NSG ayarları, bağlantı noktası 636 ' e internet 'ten trafiğe izin vermelidir. Bu adım yalnızca internet üzerinden güvenli LDAP erişimini etkinleştirdiyseniz geçerlidir.
 
 
 ## <a name="need-help"></a>Yardım mı gerekiyor?
-Güvenli LDAP kullanarak yönetilen etki alanına bağlanırken sorun yaşamaya devam ediyorsanız [ürün ekibiyle](contact-us.md) Yardım. Daha iyi sorunun tanılanmasına yardımcı olmak için aşağıdaki bilgileri ekleyin:
-* Bağlantı oluşturma ve başarısız Ldp.exe'yi görüntüsü.
-* Azure AD Kiracı Kimliğinizi ve yönetilen etki alanınızın DNS etki alanı adı.
-* Bağlama olarak çalıştığınız tam kullanıcı adı.
+Güvenli LDAP kullanarak yönetilen etki alanına bağlanma konusunda hala sorun yaşıyorsanız yardım için [ürün ekibine başvurun](contact-us.md) . Sorunu tanılamaya daha iyi yardımcı olması için aşağıdaki bilgileri ekleyin:
+* Ldp. exe ' nin bağlantı kuran ve başarısız olduğu bir ekran görüntüsü.
+* Azure AD kiracı KIMLIĞINIZ ve yönetilen etki alanının DNS etki alanı adı.
+* Farklı bağlamaya çalıştığınız Kullanıcı adı.
 
 
 ## <a name="related-content"></a>İlgili içerik
-* [Azure AD etki alanı Hizmetleri - başlangıç kılavuzu](create-instance.md)
-* [Bir Azure AD Domain Services etki alanını yönetin](manage-domain.md)
-* [LDAP sorgu temelleri](https://technet.microsoft.com/library/aa996205.aspx)
-* [Azure AD etki alanı Hizmetleri için Grup İlkesi yönetme](manage-group-policy.md)
+* [Azure AD Domain Services-Başlarken Kılavuzu](tutorial-create-instance.md)
+* [Azure AD Domain Services etki alanını yönetme](tutorial-create-management-vm.md)
+* [LDAP sorgusu temelleri](https://technet.microsoft.com/library/aa996205.aspx)
+* [Azure AD Domain Services için grup ilkesi yönetme](manage-group-policy.md)
 * [Ağ güvenlik grupları](../virtual-network/security-overview.md)
 * [Ağ güvenlik grubu oluşturma](../virtual-network/tutorial-filter-network-traffic.md)

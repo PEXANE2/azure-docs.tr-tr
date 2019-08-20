@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602040"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616680"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB verilere güvenli erişim
 
@@ -105,7 +105,7 @@ Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örne
 <a id="users"></a>
 
 ## <a name="users"></a>Kullanıcılar
-Cosmos DB kullanıcılar bir Cosmos DB veritabanıyla ilişkilendirilir.  Her veritabanı sıfır veya daha fazla Kullanıcı Cosmos DB içerebilir.  Aşağıdaki kod örneği, bir Cosmos DB Kullanıcı kaynağının nasıl oluşturulacağını göstermektedir.
+Cosmos DB kullanıcılar bir Cosmos veritabanıyla ilişkilendirilir.  Her veritabanı sıfır veya daha fazla Kullanıcı Cosmos DB içerebilir.  Aşağıdaki kod örneği, bir Cosmos DB Kullanıcı kaynağının nasıl oluşturulacağını göstermektedir.
 
 ```csharp
 //Create a user.
@@ -193,5 +193,5 @@ Azure Cosmos DB, veritabanı veya koleksiyonlardaki tüm kişisel verileri arama
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Cosmos DB veritabanı güvenliği hakkında daha fazla bilgi için bkz [. Cosmos DB: Veritabanı güvenliği](database-security.md).
+* Cosmos veritabanı güvenliği hakkında daha fazla bilgi için bkz [. Cosmos DB: Veritabanı güvenliği](database-security.md).
 * Azure Cosmos DB yetkilendirme belirteçleri oluşturmayı öğrenmek için [Azure Cosmos DB kaynaklarında Access Control](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)bakın.

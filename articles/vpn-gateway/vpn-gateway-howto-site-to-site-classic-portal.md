@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 77cfde8cc9c6556b907f1185f451c70c8c8e888d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534058"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575471"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
@@ -39,7 +39,7 @@ Yapılandırmaya başlamadan önce aşağıdaki ölçütleri karşıladığını
 * Uyumlu bir VPN cihazı ve bu cihazı yapılandırabilecek birinin bulunduğundan emin olun. Uyumlu VPN cihazları ve cihaz yapılandırması hakkında daha fazla bilgi için bkz.[VPN Cihazları Hakkında](vpn-gateway-about-vpn-devices.md).
 * VPN cihazınız için dışarıya dönük genel bir IPv4 adresi olduğunu doğrulayın.
 * Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarıyla ilgili fazla bilginiz yoksa size bu ayrıntıları sağlayabilecek biriyle çalışmanız gerekir. Bu yapılandırmayı oluşturduğunuzda, Azure’un şirket içi konumunuza yönlendireceği IP adres aralığı ön eklerini oluşturmanız gerekir. Şirket içi ağınızın alt ağlarından hiçbiri, bağlanmak istediğiniz sanal ağ alt ağlarıyla çakışamaz.
-* Şu anda, ortak anahtarı belirtmek ve VPN ağ geçidi bağlantısını oluşturmak için PowerShell gereklidir. Azure Hizmet Yönetimi (SM) PowerShell cmdlet’lerinin en son sürümünü yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). Bu yapılandırma için PowerShell ile çalışırken yönetici olarak işlem yaptığınızdan emin olun.
+* Şu anda, ortak anahtarı belirtmek ve VPN ağ geçidi bağlantısını oluşturmak için PowerShell gereklidir. Azure Hizmet Yönetimi (SM) PowerShell cmdlet’lerinin en son sürümünü yükleyin. Cmdlet 'leri yüklemek için bkz. [hizmet yönetimi](/powershell/azure/servicemanagement/install-azure-ps). Genel olarak PowerShell yüklemeleri hakkında daha fazla bilgi için bkz. [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview). Bu yapılandırma için PowerShell ile çalışırken yönetici olarak işlem yaptığınızdan emin olun.
 
 ### <a name="values"></a>Bu alıştırma için örnek yapılandırma değerleri
 
@@ -159,6 +159,12 @@ Bu adımda, paylaşılan anahtarı ayarlayabilir ve bağlantıyı oluşturabilir
 
 ### <a name="step-1-connect-to-your-azure-account"></a>1\.Adım Azure hesabınıza bağlanma
 
+PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
+
+```powershell
+azure config mode asm
+```
+
 1. PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
    ```powershell
@@ -177,18 +183,14 @@ Bu adımda, paylaşılan anahtarı ayarlayabilir ve bağlantıyı oluşturabilir
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2\.Adım Paylaşılan anahtarı ayarlama ve bağlantıyı oluşturma
 
-PowerShell ve klasik dağıtım modeli ile çalışırken, portaldaki kaynakların adları bazı durumlarda Azure’un PowerShell kullanırken görmeyi beklediği adlar olmaz. Aşağıdaki adımlar, adların tam değerlerini almak için ağ yapılandırma dosyasını dışarı aktarmanıza yardımcı olur. PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
-
-```powershell
-azure config mode asm
-```
+Portalda klasik bir sanal ağ oluşturduğunuzda (PowerShell kullanarak), Azure Kaynak grubu adını kısa ada ekler. Örneğin, Azure 'a göre, bu alıştırma için oluşturduğunuz VNet 'in adı "TestVNet1" değil "Group TestRG1 TestVNet1" dır. PowerShell, portalda görünen kısa adı değil, sanal ağın tam adını gerektirir. Uzun ad portalda görünmez. Aşağıdaki adımlar, sanal ağ adının tam değerlerini almak için ağ yapılandırma dosyasını dışarı aktarmaya yardımcı olur. 
 
 1. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası C:\AzureNet dizinine aktarılır.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-2. Ağ yapılandırma dosyasını bir xml düzenleyicisi ile açın ve 'LocalNetworkSite name' ile 'VirtualNetworkSite name' değerlerini denetleyin. Örneği, ihtiyacınız olan değerleri yansıtacak şekilde değiştirin. Boşluk içeren bir ad belirtirken, değeri tek tırnak işaretleri içine alın.
+2. Ağ yapılandırma dosyasını bir xml düzenleyicisi ile açın ve 'LocalNetworkSite name' ile 'VirtualNetworkSite name' değerlerini denetleyin. Bu alıştırma için örneği, XML içindeki değerleri yansıtacak şekilde değiştirin. Boşluk içeren bir ad belirtirken, değeri tek tırnak işaretleri içine alın.
 
 3. Paylaşılan anahtarı ayarlayıp bağlantıyı oluşturun. '-SharedKey' sizin oluşturup belirttiğiniz bir değerdir. Örnekte 'abc123' değeri kullanılmıştır, ancak siz daha karmaşık bir değer oluşturabilirsiniz (ve oluşturmalısınız). Önemli olan, burada belirttiğiniz değerin VPN cihazınızı yapılandırırken belirttiğiniz değerle aynı olmasıdır.
 

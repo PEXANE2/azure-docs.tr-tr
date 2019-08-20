@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24e7e67145b789737484fcb594f48127c41eafe9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570570"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575230"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -107,12 +107,16 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    > RHEL 7,6: Fence-Agents-4.2.1 -11. EL7 _ 6.8  
    > RHEL 7,5: Fence-Agents-4.0.11 -86. EL7 _ 5.8  
    > RHEL 7,4: Fence-Agents-4.0.11 -66. EL7 _ 4.12  
-   > Daha fazla bilgi için bkz [. Azure VM 'nin BIR RHEL yüksek kullanılabilirlik kümesi üyesi olarak çalışıyor olması çok uzun zaman alır veya VM kapatılmadan önce başarısız/zaman aşımına](https://access.redhat.com/solutions/3408711) uğrar
+   > Daha fazla bilgi için, bkz. [Azure VM 'nin BIR RHEL yüksek kullanılabilirlik kümesi üyesi olarak çalışıyor olması çok uzun zaman alır veya VM kapatılmadan önce başarısız/zaman aşımına](https://access.redhat.com/solutions/3408711)uğrar.
 
    Azure çit aracısının sürümünü denetleyin. Gerekirse, yukarıda belirtilen değere eşit veya ondan daha yeni bir sürüme güncelleştirin.
+
    <pre><code># Check the version of the Azure Fence Agent
     sudo yum info fence-agents-azure-arm
    </code></pre>
+
+   > [!IMPORTANT]
+   > Azure sınır Aracısı 'nı güncelleştirmeniz gerekiyorsa ve özel rol kullanıyorsanız, özel rolü eylem **poweroff**içerecek şekilde güncelleştirdiğinizden emin olun. Ayrıntılar için bkz. sınır [Aracısı için özel rol oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
 

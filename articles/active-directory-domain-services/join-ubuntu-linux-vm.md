@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 78afec75269876c309b2c324d8a5973fd5ebf9a8
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773031"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612283"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 'daki bir Ubuntu sanal makinesini yönetilen bir etki alanına katma
 Bu makalede Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
@@ -31,9 +31,9 @@ Bu makalede Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen 
 Bu makalede listelenen görevleri gerçekleştirmek için şunlar gerekir:  
 1. Geçerli bir **Azure aboneliği**.
 2. Bir **Azure ad dizini** -şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
-3. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](create-instance.md)özetlenen tüm görevleri izleyin.
-4. Yönetilen etki alanının IP adreslerini, sanal ağ için DNS sunucuları olarak yapılandırdığınızdan emin olun. Daha fazla bilgi için bkz [. Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](active-directory-ds-getting-started-dns.md)
-5. [Parolaları Azure AD Domain Services yönetilen etki alanı ile senkronize](active-directory-ds-getting-started-password-sync.md)etmek için gereken adımları uygulayın.
+3. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](tutorial-create-instance.md)özetlenen tüm görevleri izleyin.
+4. Yönetilen etki alanının IP adreslerini, sanal ağ için DNS sunucuları olarak yapılandırdığınızdan emin olun. Daha fazla bilgi için bkz [. Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+5. [Parolaları Azure AD Domain Services yönetilen etki alanı ile senkronize](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)etmek için gereken adımları uygulayın.
 
 
 ## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Ubuntu Linux sanal makinesi sağlama
@@ -64,10 +64,10 @@ sudo vi /etc/hosts
 Konaklar dosyasında aşağıdaki değeri girin:
 
 ```console
-127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
+127.0.0.1 contoso-ubuntu.contoso.com contoso-ubuntu
 ```
 
-Burada, ' contoso100.com ', yönetilen etki alanının DNS etki alanı adıdır. ' contoso-Ubuntu ', yönetilen etki alanına katıldığınız Ubuntu sanal makinesinin ana bilgisayar adıdır.
+Burada, ' contoso.com ', yönetilen etki alanının DNS etki alanı adıdır. ' contoso-Ubuntu ', yönetilen etki alanına katıldığınız Ubuntu sanal makinesinin ana bilgisayar adıdır.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Linux sanal makinesine gereken paketleri yükler
@@ -88,7 +88,7 @@ Sonra, sanal makinede etki alanına katılması için gereken paketleri yükler.
 3. Kerberos yüklemesi sırasında, pembe bir ekran görürsünüz. ' Krb5-User ' paketinin yüklenmesi bölge adı (tüm büyük harfle) için istemde bulunur. Yükleme,/etc/kronb5,confiçindeki [Realm] ve [domain_realm] bölümlerini yazar.
 
     > [!TIP]
-    > Yönetilen etki alanının adı contoso100.com ise, bölge olarak CONTOSO100.COM girin. Bölge adının büyük harfle belirtilmiş olması gerektiğini unutmayın.
+    > Yönetilen etki alanının adı contoso.com ise, bölge olarak contoso.COM girin. Bölge adının büyük harfle belirtilmiş olması gerektiğini unutmayın.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Linux sanal makinesinde NTP (ağ zaman Protokolü) ayarlarını yapılandırma
@@ -101,16 +101,16 @@ sudo vi /etc/ntp.conf
 NTP. conf dosyasında aşağıdaki değeri girin ve dosyayı kaydedin:
 
 ```console
-server contoso100.com
+server contoso.com
 ```
 
-Burada, ' contoso100.com ', yönetilen etki alanının DNS etki alanı adıdır.
+Burada, ' contoso.com ', yönetilen etki alanının DNS etki alanı adıdır.
 
 Şimdi, Ubuntu VM 'sinin tarih ve saatini NTP sunucusu ile eşitleyin ve ardından NTP hizmetini başlatın:
 
 ```console
 sudo systemctl stop ntp
-sudo ntpdate contoso100.com
+sudo ntpdate contoso.com
 sudo systemctl start ntp
 ```
 
@@ -121,7 +121,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
 1. AAD etki alanı Hizmetleri tarafından yönetilen etki alanını bulun. SSH terminalinizde aşağıdaki komutu yazın:
 
     ```console
-    sudo realm discover CONTOSO100.COM
+    sudo realm discover contoso.COM
     ```
 
    > [!NOTE]
@@ -133,12 +133,12 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
 2. Kerberos başlatın. SSH terminalinizde aşağıdaki komutu yazın:
 
     > [!TIP]
-    > * ' AAD DC Administrators ' grubuna ait olan bir Kullanıcı belirttiğinizden emin olun.
+    > * ' AAD DC Administrators ' grubuna ait olan bir Kullanıcı belirttiğinizden emin olun. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)
     > * Etki alanı adını büyük harfle belirtin, aksi kinit başarısız olur.
     >
 
     ```console
-    kinit bob@CONTOSO100.COM
+    kinit bob@contoso.COM
     ```
 
 3. Makineyi etki alanına ekleyin. SSH terminalinizde aşağıdaki komutu yazın:
@@ -149,7 +149,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
     > VM 'niz etki alanına katılamediğinde, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
 
     ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
+    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
     ```
 
 Makine yönetilen etki alanına başarıyla katıldığında bir ileti ("makinenin bölgeye başarıyla kaydedildi") almanız gerekir.
@@ -176,7 +176,7 @@ Makine yönetilen etki alanına başarıyla katıldığında bir ileti ("makinen
 
 
 ## <a name="configure-automatic-home-directory-creation"></a>Otomatik Ana Dizin oluşturmayı yapılandırma
-Kullanıcıların oturum açmasını tamamladıktan sonra ana dizinin otomatik olarak oluşturulmasını etkinleştirmek için, PuTTY terminalinize aşağıdaki komutları yazın:
+Kullanıcı oturum açtıktan sonra ana dizinin otomatik olarak oluşturulmasını etkinleştirmek için, PuTTY terminalinize aşağıdaki komutları yazın:
 
 ```console
 sudo vi /etc/pam.d/common-session
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Etki alanına katılımı doğrula
 Makinenin yönetilen etki alanına başarıyla katılıp katılmadığını doğrulayın. Farklı bir SSH bağlantısı kullanarak etki alanına katılmış Ubuntu VM 'sine bağlanın. Bir etki alanı kullanıcı hesabı kullanın ve ardından Kullanıcı hesabının doğru çözümlenmiş olup olmadığını kontrol edin.
 
-1. SSH terminalinizde, SSH kullanarak etki alanına katılmış Ubuntu sanal makinesine bağlanmak için aşağıdaki komutu yazın. Yönetilen etki alanına ait bir etki alanı hesabı kullanın (örneğin, bu durumda 'bob@CONTOSO100.COM').)
+1. SSH terminalinizde, SSH kullanarak etki alanına katılmış Ubuntu sanal makinesine bağlanmak için aşağıdaki komutu yazın. Yönetilen etki alanına ait bir etki alanı hesabı kullanın (örneğin, bu durumda 'bob@contoso.COM').)
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
+    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
     ```
 
 2. SSH terminalinizde, giriş dizininin doğru şekilde başlatılmış olup olmadığını görmek için aşağıdaki komutu yazın.
@@ -231,10 +231,10 @@ Ubuntu VM 'de ' AAD DC Administrators ' grubu yönetici ayrıcalıklarının üy
 
 
 ## <a name="troubleshooting-domain-join"></a>Etki alanına katılması sorunlarını giderme
-[Etki alanına ekleme sorunlarını giderme](join-windows-vm.md#troubleshoot-joining-a-domain) makalesine bakın.
+[Etki alanına ekleme sorunlarını giderme](join-windows-vm.md#troubleshoot-domain-join-issues) makalesine bakın.
 
 
 ## <a name="related-content"></a>İlgili İçerik
-* [Azure AD Domain Services-Başlarken Kılavuzu](create-instance.md)
+* [Azure AD Domain Services-Başlarken Kılavuzu](tutorial-create-instance.md)
 * [Windows Server sanal makinesini Azure AD Domain Services yönetilen bir etki alanına katma](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Linux çalıştıran bir sanal makinede oturum açma](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

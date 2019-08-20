@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1654ccabab751896fcbbab09d112080ccc2f67b6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467722"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616852"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API hesabı ile Jeo-uzamsal ve GeoJSON konum verileri kullanın
 
@@ -249,7 +249,7 @@ Bu işlevler, çokgenler doğrulamak için de kullanılabilir. Örneğin, burada
 ### <a name="linq-querying-in-the-net-sdk"></a>LINQ içinde .NET SDK'sı sorgulanıyor
 SQL .NET SDK'sını da sağlayıcıları yöntem Saplaması `Distance()` ve `Within()` LINQ ifadeler içinde kullanmak için. Bu yöntem SQL LINQ sağlayıcısı çevirir eşdeğer SQL yerleşik işlev çağrıları çağrı (ST_DISTANCE ve ST_WITHIN sırasıyla). 
 
-"Konum" değeri olan bir 30 km belirtilen yarıçap içinde noktası LINQ kullanarak Azure Cosmos DB koleksiyondaki tüm belgeleri bulur bir LINQ Sorgu örneği aşağıda verilmiştir.
+Aşağıda, "location" değeri, LINQ kullanarak belirtilen noktanın bir yarıçapı içinde olan Azure Cosmos kapsayıcısındaki tüm belgeleri bulan LINQ sorgusunun bir örneği verilmiştir.
 
 **LINQ sorgusu için uzaklık**
 

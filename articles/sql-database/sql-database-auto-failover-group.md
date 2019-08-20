@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/18/2019
-ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 08/16/2019
+ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035071"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575784"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -25,7 +25,9 @@ Otomatik yük devretme grupları bir SQL veritabanı sunucusundaki bir veritaban
 > [!NOTE]
 > Bir SQL veritabanı sunucusunda tek veya havuza alınmış veritabanlarıyla çalışırken ve aynı ya da farklı bölgelerde birden çok ikincil sunucu istiyorsanız [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md)'yı kullanın. 
 
-Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, gruptaki bir veya birkaç veritabanını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında değişmeden kalan okuma/yazma ve salt okuma dinleyicisi uç noktaları sağlar. El ile veya otomatik yük devretme etkinleştirme kullanmanıza bakılmaksızın, yük devretme gruptaki tüm ikincil veritabanlarını birinciye geçirir. Veritabanı yük devretmesi tamamlandıktan sonra DNS kaydı, uç noktaları yeni bölgeye yönlendirmek üzere otomatik olarak güncelleştirilir. Belirli RPO ve RTO verileri için bkz. [Iş sürekliliği 'Ne genel bakış](sql-database-business-continuity.md).
+Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, gruptaki bir veya birkaç veritabanını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Bunlar genellikle yerleşik otomatik yüksek kullanılabilirlik işlemleriyle kendini hafiflede azallamayan olaylardır. Yük devretme tetikleyicilerine örnek olarak bir SQL kiracı halkasının neden olduğu bir olay veya birkaç işlem düğümündeki bir işletim sistemi çekirdek belleği sızıntısı nedeniyle bir veya daha fazla kiracı halkasının neden olduğu bir olay vardır Utine donanıma yetki alma.  Daha fazla bilgi için bkz. [SQL veritabanı yüksek kullanılabilirlik](sql-database-high-availability.md).
+
+Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında değişmeden kalan okuma/yazma ve salt okuma dinleyicisi uç noktaları sağlar. El ile veya otomatik yük devretme etkinleştirme kullanmanıza bakılmaksızın, yük devretme gruptaki tüm ikincil veritabanlarını birinciye geçirir. Veritabanı yük devretmesi tamamlandıktan sonra DNS kaydı, uç noktaları yeni bölgeye yönlendirmek üzere otomatik olarak güncelleştirilir. Belirli RPO ve RTO verileri için bkz. [Iş sürekliliği 'Ne genel bakış](sql-database-business-continuity.md).
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, SQL veritabanı sunucusundaki veya yönetilen örnekteki veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeyle sonuçlanır. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 

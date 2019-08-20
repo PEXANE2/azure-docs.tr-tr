@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 407b5b8dd4aa846140628c7d701ced92e8bcec03
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 57dc1e136d242fd0c5063526dc54bdb95351cf02
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780063"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616637"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API'si için .NET örnekleri
 > [!div class="op_single_selector"]
@@ -138,7 +138,7 @@ Bir Azure aboneliği veya ücretsiz Cosmos DB deneme hesabı
 | [Değişiklik akışını okuma](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [Bölüm anahtarı aralıklarını okuma](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
 
-Değişiklik akışı işlemcisi örneği, [Changefeedmigrationtool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool), verileri başka bir Cosmos DB koleksiyonuna çoğaltmak için değişiklik akışı işlemci kitaplığını nasıl kullanacağınızı gösterir.   
+Değişiklik akışı işlemcisi örneği, [Changefeedmigrationtool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool), verileri başka bir Cosmos kapsayıcısına çoğaltmak için değişiklik akışı işlemci kitaplığını nasıl kullanacağınızı gösterir.   
 
 ## <a name="server-side-programming-examples"></a>Sunucu tarafı programlama örnekleri
 Örnek *Serversıdescripts* projesinin [rundemoasync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB sunucu tarafı programlama hakkında bilgi edinmek için, bkz. [saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md). 

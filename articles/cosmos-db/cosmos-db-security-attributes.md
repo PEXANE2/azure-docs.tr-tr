@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f1b578ff70e8a2795ba886e6d0c75eff521f77c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442545"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615544"
 ---
 # <a name="security-attributes-for-azure-cosmos-db"></a>Azure Cosmos DB için güvenlik öznitelikleri
 
@@ -26,7 +26,7 @@ Bu makale, Azure Cosmos DB yerleşik güvenlik özniteliklerini belgeler.
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri) | Evet | Tüm Cosmos DB veritabanları ve yedeklemeler varsayılan olarak şifrelenir; [Azure Cosmos DB veri şifrelemeyi](database-encryption-at-rest.md)inceleyin. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme desteklenmez. |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri) | Evet | Tüm Cosmos veritabanları ve yedeklemeleri varsayılan olarak şifrelenir; [Azure Cosmos DB veri şifrelemeyi](database-encryption-at-rest.md)inceleyin. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme desteklenmez. |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Tüm Azure Cosmos DB verileri aktarım sırasında şifrelenir. |
 | Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır |  |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | Yalnızca API Premium tablolarında. Tüm API 'Ler bu özelliği desteklemez. Bkz [. Azure Cosmos DB giriş: Tablo API'si](table-introduction.md). |

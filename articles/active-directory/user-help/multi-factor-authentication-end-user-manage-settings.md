@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949790"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616155"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>İki öğeli doğrulama yöntemi ayarlarınızı yönetin
 
@@ -135,6 +135,10 @@ Kuruluşunuzun ayarlarına bağlı olarak, tarayıcınızda iki öğeli doğrula
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sorun giderme ipuçları ve [iki öğeli doğrulamayla](multi-factor-authentication-end-user-troubleshoot.md) Ilgili sorun yaşamadan yardım alın
+İki öğeli doğrulama ayarlarınızı ekledikten veya güncelleştirdikten sonra, uygulama parolalarınızı yönetebilir, oturum açabilir veya bazı yaygın iki öğeli doğrulama ile ilgili bazı sorunlarla ilgili yardım alabilirsiniz.
 
 - İki öğeli doğrulamayı desteklemeyen uygulamalar için [iki öğeli doğrulama için uygulama parolalarını yönetin](multi-factor-authentication-end-user-app-passwords.md) .
+
+- [İki öğeli doğrulama kullanarak oturum açın](multi-factor-authentication-end-user-signin.md)
+
+- [İki öğeli doğrulamayla ilgili yardım alın](multi-factor-authentication-end-user-troubleshoot.md)

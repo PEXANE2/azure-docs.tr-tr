@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562704"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611710"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - coğrafi olağanüstü durum kurtarma 
 
 Tüm durumlarda Azure bölgeleri veya veri merkezleri (hiçbir [kullanılabilirlik alanları](../availability-zones/az-overview.md) kullanılır), kesinti yaşamak veri işleme, farklı bir bölge veya veri merkezi içinde çalışmaya devam etmek önemlidir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* ve *coğrafi çoğaltma* tüm kuruluş için önemli özelliklerdir. Azure Event Hubs, hem coğrafi olağanüstü durum kurtarma ve coğrafi çoğaltma, ad alanı düzeyinde destekler. 
 
-Coğrafi olağanüstü durum kurtarma özelliği, hem Event Hubs standart hem de adanmış SKU için genel kullanıma sunulmuştur. Lütfen aynı SKU katmanındaki ad alanlarını yalnızca coğrafi olarak eşleştirbileceğinizi unutmayın. Örneğin, yalnızca adanmış SKU 'ımızda sunulan bir kümede ad alanınız varsa, bu yalnızca başka bir kümedeki ad alanıyla eşleştirilebilir. 
+> [!NOTE]
+> Coğrafi olağanüstü durum kurtarma özelliği yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/)için kullanılabilir.  
 
 ## <a name="outages-and-disasters"></a>Kesintileri ve olağanüstü durumları yönetme
 
@@ -37,7 +38,9 @@ Azure Event Hubs'ın coğrafi olağanüstü durum kurtarma özelliği bir olağa
 
 ## <a name="basic-concepts-and-terms"></a>Temel kavramlar ve terimler
 
-Olağanüstü Durum Kurtarma özelliği meta verileri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarında kullanır. Coğrafi olağanüstü durum kurtarma özelliğinin yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/) için kullanılabilir olduğunu unutmayın. Bir diğer ad üzerinden bağlantı kurulmadığı herhangi bir bağlantı dizesi değişiklik yapılması gerekmez.
+Olağanüstü Durum Kurtarma özelliği meta verileri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarında kullanır. 
+
+Coğrafi olağanüstü durum kurtarma özelliği yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/) için kullanılabilir. Bir diğer ad üzerinden bağlantı kurulmadığı herhangi bir bağlantı dizesi değişiklik yapılması gerekmez.
 
 Bu makalede aşağıdaki terimler kullanılır:
 
@@ -48,6 +51,19 @@ Bu makalede aşağıdaki terimler kullanılır:
 -  *Meta veriler*: Olay Hub 'ları ve tüketici grupları gibi varlıklar; ve ad alanıyla ilişkili hizmetin özellikleri. Varlıklar ve ayarları otomatik olarak çoğaltılır unutmayın. İletileri ve olayları çoğaltılmaz. 
 
 -  *Yük devretme*: İkincil ad alanını etkinleştirme işlemi.
+
+## <a name="supported-namespace-pairs"></a>Desteklenen ad alanı çiftleri
+Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:  
+
+| Birincil ad alanı | İkincil ad alanı | Desteklenmiyor | 
+| ----------------- | -------------------- | ---------- |
+| Standart | Standart | Evet | 
+| Standart | Adanmış | Evet | 
+| Adanmış | Adanmış | Evet | 
+| Adanmış | Standart | Hayır | 
+
+> [!NOTE]
+> Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
 
 ## <a name="setup-and-failover-flow"></a>Kurulum ve yük devretme akışı
 

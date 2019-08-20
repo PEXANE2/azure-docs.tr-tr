@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234182"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613163"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services-Güvenli LDAP yapılandırma sorunlarını giderme
 
-Bu makalede, Azure AD Domain Services için [GÜVENLI LDAP yapılandırılırken](configure-ldaps.md) sık karşılaşılan sorunlara yönelik çözümler sağlanmaktadır.
+Bu makalede, Azure AD Domain Services için [GÜVENLI LDAP yapılandırılırken](tutorial-configure-ldaps.md) sık karşılaşılan sorunlara yönelik çözümler sağlanmaktadır.
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Güvenli LDAP ağ güvenlik grubu yapılandırması
 
@@ -46,7 +46,7 @@ Güvenli LDAP etkinleştirildiğinde, yalnızca belirli IP adreslerinden gelen L
    4. Hedef bağlantı noktası aralıkları için "636" girişi.
    5. Protokol **TCP**'dir.
    6. Kurala uygun bir ad, açıklama ve öncelik verin. Bu kuralın önceliği, varsa "Tümünü Reddet" kuralının önceliği 'nden daha yüksek olmalıdır.
-   7.           **Tamam**'ı tıklatın.
+   7. **Tamam**'ı tıklatın.
 5. Kuralınızın oluşturulduğunu doğrulayın.
 6. Adımları doğru tamamladığınızdan emin olmak için etki alanının sistem durumunu iki saat içinde denetleyin.
 
@@ -62,7 +62,7 @@ Güvenli LDAP etkinleştirildiğinde, yalnızca belirli IP adreslerinden gelen L
 
 **Çözüm:**
 
-[GÜVENLI LDAP yapılandırma](configure-ldaps.md) makalesinde özetlenen adımları izleyerek yeni BIR Güvenli LDAP sertifikası oluşturun.
+[GÜVENLI LDAP yapılandırma](tutorial-configure-ldaps.md) makalesinde özetlenen adımları izleyerek yeni BIR Güvenli LDAP sertifikası oluşturun.
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
 [Geri bildirim paylaşmak veya destek için](contact-us.md)Azure Active Directory Domain Services ürün ekibine başvurun.

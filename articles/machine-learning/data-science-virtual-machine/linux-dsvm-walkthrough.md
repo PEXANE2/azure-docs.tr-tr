@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557340"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574974"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>İle bir Linux veri bilimi sanal makinesi Azure üzerinde veri bilimi
 Bu izlenecek yol, Linux veri bilimi sanal makinesi ile çeşitli genel veri bilimi görevlerini gerçekleştirmek nasıl gösterir. Linux veri bilimi sanal makinesi (DSVM) veri analizi ve makine öğrenimi için yaygın olarak kullanılan araçları koleksiyonu ile önceden yüklenmiş olan Azure üzerinde kullanılabilir bir sanal makine görüntüsüdür. Anahtar yazılım bileşenleri içinde listelenen [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md) konu. VM görüntüsü, yüklemek ve araçların her biri ayrı ayrı yapılandırmak zorunda kalmadan, dakikalar içinde veri bilimi yapmaya başlayın kolaylaştırır. Kolayca VM'yi, gerekirse ölçeği ve kullanımda olmadığında durdurun. Bu nedenle bu kaynak, esnek ve maliyet açısından verimli içindir.
@@ -229,6 +229,20 @@ Kendi API uç noktası dahil olmak üzere en son yayımlanan web hizmeti, ayrın
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Öğreticiler ve Kılavuzlar derin öğrenme
+
+Framework tabanlı örneklere ek olarak bir dizi kapsamlı izlenecek yollar DLVM doğrulanmış de sağlanır. Bu izlenecek yollar, uygulamaları geliştirmeye yönelik ayrıntılı öğrenme görüntü ve metin/language understanding gibi etki alanlarındaki hemen başlayabileceğiniz yardımcı olur. Daha fazla uçtan uca öğretici farklı etki alanlarını ve teknoloji eklenmesi devam eder.   
+
+
+- [Farklı çerçeveler arasında sinir ağlarını çalıştırma](https://github.com/ilkarman/DeepLearningFrameworks): Kodu bir çerçeveden diğerine geçirmeyi gösteren kapsamlı bir anlatım. Ayrıca, modeli karşılaştırmak ve çerçeveleri arasında zaman performans çalıştırmak nasıl gösterir. 
+
+- [Görüntülerin içindeki ürünleri algılamaya yönelik bir uçtan uca çözüm oluşturmak için nasıl yapılır Kılavuzu](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Görüntü algılama, görüntülerin içindeki nesneleri bulup sınıflandırmanın bir tekniğidir. Bu teknoloji çok büyük ödül çoğu gerçek yaşam iş alanlarında getirmek için olasılığına sahiptir. Örneğin, Perakendeciler, müşterinin hangi ürünü raftan teslim alındı belirlemek için bu tekniği kullanabilirsiniz. Bu bilgiler sırayla depoları ürün envanterini yönetmenize yardımcı olur. 
+
+- [Derin öğrenme için ses](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Bu öğreticide, bir ses olay algılama için ayrıntılı öğrenme modeli eğitimi gösterilir [urban sesleri dataset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) ve ses verilerle çalışmak nasıl bir genel bakış sağlar.
+
+- [Metin belgelerinin sınıflandırması](https://github.com/anargyri/lstm_han): Bu kılavuzda iki farklı sinir ağ mimarisi oluşturma ve eğitme gösterilmektedir: Hiyerarşik dikkat ağı ve uzun kısa süreli bellek (LSTM) ağı. Bu sinir ağları metin belgeleri sınıflandırmak için derin öğrenmeye yönelik Keras API'si kullanın. Keras, en popüler derin öğrenme çerçevelerinin üçüne bir ön uca sahiptir: Microsoft Cognitive Toolkit, TensorFlow ve şano.
 
 ## <a name="use-other-tools-available"></a>Diğer araçları kullanma
 Kalan bölümler, Linux veri bilimi sanal makinesi üzerinde yüklü araçlardan bazıları kullanmayı göstermektedir. Ele alınan araçlarının listesi aşağıda verilmiştir:

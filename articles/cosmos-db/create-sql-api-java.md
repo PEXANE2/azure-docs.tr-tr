@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.custom: seo-java-august2019
-ms.openlocfilehash: 5f8555d23a43a3ca391ec03f827b0d81ac3c4698
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933964"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616977"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Java uygulaması oluşturma
 
@@ -26,7 +26,7 @@ ms.locfileid: "68933964"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Bu hızlı başlangıçta Java uygulaması kullanarak bir Azure Cosmos DB [SQL API'si](sql-api-introduction.md) hesabının kaynaklarını oluşturma ve yönetme adımları gösterilmektedir. İlk olarak Azure portalı kullanarak bir Azure Cosmos DB SQL API'si hesabı oluşturacak, ardından [SQL Java SDK'sını](sql-api-sdk-async-java.md) kullanarak bir Java uygulaması oluşturacak ve son adımda Java uygulamasını kullanarak Cosmos DB hesabınıza kaynak ekleyeceksiniz. Bu hızlı başlangıçtaki yönergeler Java çalıştırabilen tüm işletim sistemlerinde izlenebilir. Bu hızlı başlangıcı tamamladıktan sonra Cosmos DB veritabanlarını oluşturma ve değiştirme hakkında bilgi sahibi olmanız, Kullanıcı arabiriminde veya program aracılığıyla kapsayıcılarınız hangisi olursa
+Bu hızlı başlangıçta Java uygulaması kullanarak bir Azure Cosmos DB [SQL API'si](sql-api-introduction.md) hesabının kaynaklarını oluşturma ve yönetme adımları gösterilmektedir. İlk olarak Azure portalı kullanarak bir Azure Cosmos DB SQL API'si hesabı oluşturacak, ardından [SQL Java SDK'sını](sql-api-sdk-async-java.md) kullanarak bir Java uygulaması oluşturacak ve son adımda Java uygulamasını kullanarak Cosmos DB hesabınıza kaynak ekleyeceksiniz. Bu hızlı başlangıçtaki yönergeler Java çalıştırabilen tüm işletim sistemlerinde izlenebilir. Bu hızlı başlangıcı tamamladıktan sonra Cosmos veritabanlarını oluşturma ve değiştirme hakkında bilgi sahibi olacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

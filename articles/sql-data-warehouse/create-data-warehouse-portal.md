@@ -11,14 +11,14 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: 2864acca443e3135ea0023070da95accf97fe2e9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479442"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575187"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında Azure SQL veri ambarı oluşturma ve sorgulama
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal Azure SQL veri ambarı oluşturma ve sorgulama
 
 Azure portal kullanarak bir Azure SQL veri ambarını hızlıca oluşturun ve sorgulayın.
 
@@ -37,9 +37,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="create-a-data-warehouse"></a>Veri ambarı oluşturma
 
-Azure SQL veri ambarı bir dizi [işlem kaynağı](memory-and-concurrency-limits.md) ile oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-logical-servers.md) içinde oluşturulur. 
+Azure SQL veri ambarı, tanımlı bir [işlem kaynakları](memory-and-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-logical-servers.md) içinde oluşturulur. 
 
-AdventureWorksDW örnek verileri içeren bir SQL veri ambarı oluşturmak için bu adımları izleyin. 
+AdventureWorksDW örnek verilerini içeren bir SQL veri ambarı oluşturmak için aşağıdaki adımları izleyin. 
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -194,7 +194,7 @@ Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 
     ![Kaynakları temizleme](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. Veri ambarı duraklatıldığında **, bir geri** düğmesi görürsünüz. İşlem işlemine geri dönmek için, geri ' **ye tıklayın.**
+2. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. Veri ambarı duraklatıldığında, bir geri düğmesi görürsünüz. İşlem işlemine geri dönmek için, geri ' ye tıklayın.
 
 3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' e tıklayın.
 
@@ -207,4 +207,4 @@ Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 Artık bir veri ambarı oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz, veri ambarınıza bağlanmış ve birkaç sorgu çalıştırdınız. Azure SQL Veri Ambarı hakkında daha fazla bilgi edinmek için, veri yükleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [SQL veri ambarına veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+> [Verileri bir SQL veri ambarına yükleme](load-data-from-azure-blob-storage-using-polybase.md)

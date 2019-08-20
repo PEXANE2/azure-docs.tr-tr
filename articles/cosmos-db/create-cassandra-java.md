@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019
-ms.openlocfilehash: e8ca40ec86bc3af92fd23bb7acce3d6c39b082fb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 7a76ed943a9c3f7312653d1ea4d714e4c02a5294
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933937"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615621"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Hızlı Başlangıç: Java SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -220,7 +220,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure Cosmos DB hesabını ve Cassandra veritabanını oluşturmayı, Veri Gezgini'ni kullanarak kapsayıcı oluşturmayı ve bu işlemleri programlı bir şekilde yapacak bir uygulamayı çalıştırmayı öğrendiniz. Şimdi Azure Cosmos DB kapsayıcınıza ek veri aktarabilirsiniz. 
+Bu hızlı başlangıçta Azure Cosmos DB hesabını ve Cassandra veritabanını oluşturmayı, Veri Gezgini'ni kullanarak kapsayıcı oluşturmayı ve bu işlemleri programlı bir şekilde yapacak bir uygulamayı çalıştırmayı öğrendiniz. Artık Azure Cosmos kapsayıcınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Cassandra verilerini Azure Cosmos DB’ye aktarma](cassandra-import-data.md)

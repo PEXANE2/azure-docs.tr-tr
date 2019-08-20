@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 128aa17c3f3d19f5551958fde488f803224d1cd5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693431"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613315"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Kullanıcı geçişi
 
@@ -93,7 +93,7 @@ Artık Azure AD B2C kiracınızdan Kullanıcı oluşturma, okuma ve güncelleşt
 
 ### <a name="step-14-optional-environment-cleanup"></a>Adım 1,4: Seçim Ortam temizleme
 
-Dizin verilerini okuma ve yazma izinleri, kullanıcıları silme *hakkını içermez.* Uygulamanıza kullanıcıları silme yeteneği vermek için (ortamınızı temizlemek için), PowerShell çalıştırmayı ve Kullanıcı hesabı yönetici izinlerini ayarlamayı içeren ek bir adım gerçekleştirmeniz gerekir. Aksi halde, bir sonraki bölüme atlayabilirsiniz.
+Dizin verilerini okuma ve yazma izinleri, kullanıcıları silme hakkını içermez. Uygulamanıza kullanıcıları silme yeteneği vermek için (ortamınızı temizlemek için), PowerShell çalıştırmayı ve Kullanıcı hesabı yönetici izinlerini ayarlamayı içeren ek bir adım gerçekleştirmeniz gerekir. Aksi halde, bir sonraki bölüme atlayabilirsiniz.
 
 > [!IMPORTANT]
 > B2C kiracısında *Yerel* olan bir B2C kiracı yönetici hesabı kullanmanız gerekir. Hesap adı sözdizimi *admin\@contosob2c.onmicrosoft.com*.
@@ -375,4 +375,4 @@ Günlük bilgilerini neredeyse gerçek zamanlı olarak görüntüleyebilir ve iz
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/yoelhor/Azure-AD-B2C-UserMigration
+[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration

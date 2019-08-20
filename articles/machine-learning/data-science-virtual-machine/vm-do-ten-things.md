@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557485"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575098"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows veri bilimi sanal makinesi üzerinde yapabileceğiniz on işlem
 
@@ -54,7 +54,7 @@ Bu makalede, çeşitli veri bilimi görevlerini gerçekleştirmek ve diğer Azur
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Verileri araştırmak ve Microsoft ML Server veya Python kullanarak modeller geliştirin
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1. Microsoft ML Server ile verileri İnceleme & modeller geliştirme
 R ve Python gibi dillerle DSVM üzerinde veri analiz yapmak için kullanabilirsiniz.
 
 R için bir IDE için Visual Studio Başlangıç menüsünde veya masaüstü veya R araçları bulunabilir RStudio gibi kullanabilirsiniz. Microsoft Open-Kaynak/CRAN-ölçeklenebilir analiz ve paralel öbekli analizi yaparak izin verilen bellek boyutu daha büyük veri analiz etmenizi sağlamak için R üzerine ek kitaplıklar sağlamıştır. 
@@ -73,7 +73,7 @@ Bkz: [PTVS dokümantasyonu](https://aka.ms/ptvsdocs) Python ortamları oluşturm
 
 Artık, yeni Python projesi oluşturmak için ayarlanır. Gidin **dosya** -> **yeni** -> **proje** -> **Python** ve türünü seçin Python uygulaması oluşturuyorsunuz. Sağ tıklayarak (Python 2.7 ya da 3.6) istenen sürüm için geçerli proje için Python ortamı ayarlayabilirsiniz **Python ortamları**u seçerek **Ekle/Kaldır Python ortamları**ve ardından olduğu istenen ortama çekme. Üründe PTVS ile çalışma hakkında daha fazla bilgi bulabilirsiniz [belgeleri](https://aka.ms/ptvsdocs).
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Jupyter Not Defteri kullanarak keşfedin ve Python veya R ile verilerinizi modelleyin
+## <a name="2-use-jupyter-notebooks"></a>2. Jupyıter not defterlerini kullanma
 Jupyter not defteri veri keşfi ve modelleme için bir tarayıcı tabanlı "IDE" sağlayan güçlü bir ortamdır. Python 2, 3 Python veya R (açık kaynak ve Microsoft R Server) bir Jupyter not defteri kullanabilirsiniz.
 
 Jupyter not defteri başlatmak için Başlat menüsünde simgesine tıklayın. / Masaüstü simgesi başlıklı **Jupyter not defteri**. DSVM komut satırına komutu da çalıştırabilirsiniz ```jupyter notebook``` dizininden var olan dizüstü bilgisayarlar veya nereye yeni not defteri oluşturmak istiyorsunuz.  
@@ -92,7 +92,7 @@ Jupyter başlattıktan sonra DSVM önceden paketlenmiş birkaç örnek not defte
 
 Keşfedebilirsiniz not defterinde olduktan sonra veri modeli oluşturma, seçtiğiniz kitaplıkları kullanarak modeli test etmek.
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3. R veya Python ve Operationalize Azure Machine Learning kullanarak bunları kullanarak modelleri oluşturabilir
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>3. Azure Machine Learning ile modelleri eğitme & dağıtma
 Yerleşik ve, model doğrulandığında sonra sonraki adım genellikle üretim ortamına dağıtmak için gelir. Bu, istemci bir gerçek zamanlı veya toplu iş modu olarak model tahminlerinin çağrılacak uygulamalar sağlar. Azure Machine Learning, R veya Python ile derlenen bir modeli kullanıma hazır hale getirmek için bir mekanizma sağlar.
 
 Azure Machine learning'de modelinizi kullanıma hazır hale getirme, bir web hizmeti, giriş parametreleri geçirin ve Öngörüler, çıktı modelden alma REST çağrılarını istemcilerin kullanıma sunulur.   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 Azure Machine Learning R Kitaplığı hakkında daha fazla bilgi bulunabilir [burada](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4. Azure portalı veya Powershell kullanarak Azure kaynaklarınızı yönetme
+## <a name="4-manage-azure-resources"></a>4. Azure kaynaklarını yönetme
 DSVM yalnızca analiz çözümünüzü sanal makinede yerel olarak oluşturmanıza olanak tanır, ancak Ayrıca, Microsoft'un Azure bulut hizmetlerinde erişmenize olanak sağlar. Azure, birkaç işlem, depolama, veri Analiz Hizmetleri ve diğer hizmetler yönetmek ve DSVM'ye erişim sağlar.
 
-Tarayıcınızı kullanırsınız ve fareyle Azure abonelik ve bulut kaynaklarınızı yönetmek için [Azure portalında](https://portal.azure.com). Azure Powershell, Azure aboneliğinize ve kaynaklarınıza bir komut dosyası aracılığıyla yönetmek için de kullanabilirsiniz.
-Azure Powershell masaüstündeki kısayoldan veya Başlat menüsünde "Microsoft Azure Powershell." başlıklı çalıştırabilirsiniz Başvurmak [Microsoft Azure Powershell belgeleri](../../powershell-azure-resource-manager.md) Azure aboneliğinizi ve Windows Powershell betiklerini kullanarak kaynaklara nasıl yönetebileceğiniz hakkında daha fazla bilgi.
+Azure aboneliğinizi ve bulut kaynaklarınızı yönetmek için iki seçeneğiniz vardır:
++ **Azure Portal**: tarayıcınızı kullanın ve [Azure Portal](https://portal.azure.com) üzerine gelin
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5. Paylaşılan bir dosya sistemi ile depolama alanınızı genişletin
++ **Azure PowerShell**: Windows PowerShell betikleri kullanın. Azure PowerShell 'i masaüstündeki bir kısayoldan veya "Microsoft Azure PowerShell" adlı başlangıç menüsünden çalıştırın. Tüm ayrıntılar için [Microsoft Azure PowerShell belgelerine](../../powershell-azure-resource-manager.md) bakın. 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5. Depolamayı paylaşılan dosya sistemleriyle genişletme
 Veri bilimcileri, büyük veri kümeleri, kod veya diğer kaynaklar takım içinde paylaşabilirsiniz. DSVM yaklaşık 45 GB kullanılabilir alan vardır. Depolama alanınızı genişletmek için Azure dosya Hizmeti'ne kullanabilirsiniz ve ya da bir veya daha fazla DSVM örneklerinde bağlayın veya bir REST API aracılığıyla erişebilirsiniz.  Ayrıca [Azure portalı](../../virtual-machines/windows/attach-managed-disk-portal.md) veya [Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) fazladan ayrılmış veri diskleri eklemek için. 
 
 > [!NOTE]
 > Azure dosya Hizmeti'ne paylaşımı maksimum alan 5 TB'dir ve tek tek dosya boyutu sınırını 1 TB'tır. 
-> 
-> 
 
 Azure Powershell, Azure dosya Hizmeti'ne paylaşımı oluşturmak için kullanabilirsiniz. Azure dosya hizmeti paylaşımı oluşturmak için Azure PowerShell altında çalıştırılacak betik aşağıda verilmiştir.
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 Artık VM üzerinde herhangi bir normal sürücünün olduğu gibi bu sürücü erişebilirsiniz.
 
-## <a name="6-share-code-with-your-team-using-github"></a>6. Kod GitHub kullanan ekibinizle paylaşın
+## <a name="6-share-code-in-github"></a>6. GitHub 'da kod paylaşma
 GitHub Geliştirici topluluğu tarafından paylaşılan çeşitli teknolojiler kullanarak farklı araçları için birçok örnek kod ve kaynaklar nerede bulabileceğiniz bir kod deposu bulunur. Git, izlemek ve sürümlerini kod dosyaları depolamak için bir teknoloji olarak kullanır. GitHub Ayrıca kendi deponuzu takımınızın paylaşılan kod ve belgeleri depolamak, sürüm denetimi uygulamak ve ayrıca denetlemek için görüntüleyin ve kodu katkıda bulunan erişimine sahip oluşturabileceğiniz platformudur. Ziyaret [GitHub yardım sayfalarına](https://help.github.com/) Git kullanma hakkında daha fazla bilgi için. GitHub, takımınızla işbirliği yapmanıza, topluluk tarafından geliştirilen kodu kullanın ve kod topluluğa katkıda yollarından biri olarak kullanabilirsiniz.
 
 DSVM zaten iyi GUI GitHub deposuna erişmek için komut satırı hem de istemci araçlarıyla yüklü olarak sunulur. Git ve GitHub ile çalışmak için komut satırı aracı, Git Bash çağrılır. DSVM'nin yüklü visual Studio, Git uzantılarına sahiptir. Başlat menüsünde ve masaüstünde bu araçları için başlangıç simgeler bulabilirsiniz.
@@ -273,7 +273,7 @@ Visual Studio'da aynı kopyalama işlemi yapabilirsiniz. Aşağıdaki ekran gör
 
 GitHub deponuza kullanılabilen çeşitli kaynaklardan github.com üzerinde çalışmak için Git kullanma hakkında daha fazla bilgi bulabilirsiniz. [Kağıdı](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) yararlı bir başvurudur.
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7. Çeşitli Azure veri ve Analiz Hizmetleri erişim
+## <a name="7-access-many-azure-data--analytics-services"></a>7. Birçok Azure Data & Analytics hizmetine erişin
 ### <a name="azure-blob"></a>Azure Blob
 Azure blob, büyük ve küçük veriler için güvenilir, ekonomik bulut depolamadır. Bu bölümde, Azure Blob ve bir Azure Blob üzerinde depolanan verilere erişmek için nasıl veri taşıyabileceğinizi açıklanmaktadır.
 
@@ -851,8 +851,8 @@ Azure Cosmos DB DSVM erişmek için koşullar başına adımları şunlardır:
 
 Verileri içeri aktardığınızda, Jupyter için gidip başlıklı not defterini açın *DocumentDBSample* Azure Cosmos DB'ye erişmek ve bazı temel sorgulama yapmak için python kodu içerir. Cosmos DB hakkında daha fazla hizmet ziyaret ederek edinebilirsiniz [belgeleri sayfasını](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Raporlar ve Pano Power BI Desktop kullanarak derleme
-Volkan JSON dosyasını önceki Cosmos DB örnekte veri görsel Öngörüler edinmek için Power bı'da görselleştirebilirsiniz. Ayrıntılı adımlar kullanılabilir [Power BI makalesinde](../../cosmos-db/powerbi-visualize.md). Üst düzey adımlar şunlardır:
+## <a name="8-power-bi-reports--dashboards"></a>8. Power BI raporları & panoları 
+Verilerle ilgili görsel bilgiler elde etmek için Power BI masaüstündeki önceki Cosmos DB örneğinde Volcano JSON dosyasını görselleştirebilirsiniz. Ayrıntılı adımlar kullanılabilir [Power BI makalesinde](../../cosmos-db/powerbi-visualize.md). Üst düzey adımlar şunlardır:
 
 1. Power BI Desktop'ı açın ve "Verileri alın." URL olarak belirtin: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Bir liste olarak alınan JSON kayıtlar görmeniz gerekir
@@ -884,7 +884,7 @@ Raporlar ve veri modelini kullanarak görselleştirmeler oluşturmaya başlayabi
 
 ![Power BI Desktop rapor görünümü - Power BI Bağlayıcısı](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9. DSVM proje gereksinimlerinizi karşılayacak şekilde dinamik olarak ölçeklendirin
+## <a name="9-dynamic-dsvm-scaling"></a>9. Dinamik DSVM ölçeklendirme 
 Proje gereksinimlerinizi karşılamak için DSVM yukarı ve aşağı ölçeklendirilebilir. Akşam veya hafta sonları VM kullanılacak gerekmiyorsa, yalnızca VM'yi kapatabilirsiniz [Azure portalında](https://portal.azure.com).
 
 > [!NOTE]
@@ -898,10 +898,23 @@ Benzer şekilde, VM işleme kapasitesi, gereksinimini azaltır, (örneğin: bir 
 
 ![VM örneği ayarları](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. Sanal makinenize ek araçları yükleyin
+## <a name="10-add-more-tools"></a>10. Daha fazla araç ekleyin
 Common data analytics gereken birçoğunu ele DSVM önceden oluşturulmuş çeşitli araçlar vardır. Önleme tarafından zaman gerek kalmadan yükleyip ortamlarınızda tek tek yapılandırıp kullanmanızı yalnızca kaynaklar için ödeme yaparak paradan tasarruf kazandırır.
 
 Analytics ortamınızı geliştirmek için bu makaledeki profili diğer Azure veri ve Analiz Hizmetleri kullanabilir. Bazı durumlarda, bazı özel üçüncü taraf araçları gibi ek araç gereksinimlerinizi gerektirebilir. İhtiyacınız olan yeni araçları yüklemek için sanal makine üzerinde tam yönetici erişimi var. Ayrıca, önceden yüklü R ve Python ile ek paketleri yükleyebilirsiniz. Python için ya da kullanabilirsiniz ```conda``` veya ```pip```. R için kullanabileceğiniz ```install.packages()``` R konsolunda veya IDE kullanın ve seçin "**paketleri** -> **paketlerini yükle...** ".
+
+## <a name="deep-learning"></a>Derin Öğrenme
+
+Framework tabanlı örneklere ek olarak bir dizi kapsamlı izlenecek yollar DLVM doğrulanmış de sağlanır. Bu izlenecek yollar, uygulamaları geliştirmeye yönelik ayrıntılı öğrenme görüntü ve metin/language understanding gibi etki alanlarındaki hemen başlayabileceğiniz yardımcı olur. Daha fazla uçtan uca öğretici farklı etki alanlarını ve teknoloji eklenmesi devam eder.   
+
+
+- [Farklı çerçeveler arasında sinir ağlarını çalıştırma](https://github.com/ilkarman/DeepLearningFrameworks): Kodu bir çerçeveden diğerine geçirmeyi gösteren kapsamlı bir anlatım. Ayrıca, modeli karşılaştırmak ve çerçeveleri arasında zaman performans çalıştırmak nasıl gösterir. 
+
+- [Görüntülerin içindeki ürünleri algılamaya yönelik bir uçtan uca çözüm oluşturmak için nasıl yapılır Kılavuzu](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Görüntü algılama, görüntülerin içindeki nesneleri bulup sınıflandırmanın bir tekniğidir. Bu teknoloji çok büyük ödül çoğu gerçek yaşam iş alanlarında getirmek için olasılığına sahiptir. Örneğin, Perakendeciler, müşterinin hangi ürünü raftan teslim alındı belirlemek için bu tekniği kullanabilirsiniz. Bu bilgiler sırayla depoları ürün envanterini yönetmenize yardımcı olur. 
+
+- [Derin öğrenme için ses](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Bu öğreticide, bir ses olay algılama için ayrıntılı öğrenme modeli eğitimi gösterilir [urban sesleri dataset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) ve ses verilerle çalışmak nasıl bir genel bakış sağlar.
+
+- [Metin belgelerinin sınıflandırması](https://github.com/anargyri/lstm_han): Bu kılavuzda iki farklı sinir ağ mimarisi oluşturma ve eğitme gösterilmektedir: Hiyerarşik dikkat ağı ve uzun kısa süreli bellek (LSTM) ağı. Bu sinir ağları metin belgeleri sınıflandırmak için derin öğrenmeye yönelik Keras API'si kullanın. Keras, en popüler derin öğrenme çerçevelerinin üçüne bir ön uca sahiptir: Microsoft Cognitive Toolkit, TensorFlow ve şano.
 
 ## <a name="summary"></a>Özet
 Microsoft Veri bilimi sanal makinesi üzerinde yapabileceğiniz şeylerden bazıları şunlardır. Bir etkin analiz ortamını yapmak için yapabileceğiniz çok daha fazla şey vardır.

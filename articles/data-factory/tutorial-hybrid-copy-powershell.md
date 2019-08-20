@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87b32fdef449945b1e8facac2ac5a51b4ef67972
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328298"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617578"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Öğretici: Verileri şirket içi SQL Server veritabanından Azure Blob depolamaya kopyalama
 Bu öğreticide, Azure PowerShell kullanarak verileri şirket içi SQL Server veritabanından bir Azure Blob depolama alanına kopyalayan bir veri fabrikası işlem hattı oluşturacaksınız. Verileri şirket içi ile bulut veri depoları arasında taşıyan, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturup kullanabilirsiniz. 
@@ -82,8 +82,6 @@ Bu öğreticide, Azure depolama hesabınızın adını ve anahtarını kullanır
 
 1. **Depolama hesabı** penceresinde **Erişim anahtarları**'nı seçin.
 
-    ![Depolama hesabı adını ve anahtarını alma](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-
 1. **Depolama hesabı adı** ve **key1** kutularında değerleri kopyalayın ve ardından onları öğreticide daha sonra kullanmak için Not Defteri'ne veya başka bir düzenleyiciye yapıştırın. 
 
 #### <a name="create-the-adftutorial-container"></a>Adftutorial kapsayıcını oluşturma 
@@ -99,7 +97,7 @@ Bu bölümde, Azure Blob depolama alanınızda **adftutorial** adlı bir blob ka
 
 1. **Yeni kapsayıcı** penceresinde, **Ad** kutusuna **adftutorial** girin ve ardından **Tamam**’ı seçin. 
 
-    ![Kapsayıcı adını girin](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+    ![Kapsayıcı adı girin](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
 1. Kapsayıcılar listesinde **adftutorial**’ı seçin.  
 
@@ -107,11 +105,10 @@ Bu bölümde, Azure Blob depolama alanınızda **adftutorial** adlı bir blob ka
 
 1. **adftutorial** öğesine ait **kapsayıcı** penceresini açık tutun. Öğreticinin sonundaki çıktıyı doğrulamak için bu sayfayı kullanırsınız. Data Factory bu kapsayıcıda çıktı klasörünü otomatik olarak oluşturduğundan sizin oluşturmanız gerekmez.
 
-    ![Kapsayıcı penceresi](media/tutorial-hybrid-copy-powershell/container-page.png)
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
-#### <a name="install-azure-powershell"></a>Azure PowerShell'i yükleme
+#### <a name="install-azure-powershell"></a>Azure PowerShell'i yükleyin
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -135,7 +132,7 @@ Makinenizde önceden yüklü değilse Azure PowerShell’in en son sürümünü 
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 
 1. Daha sonra PowerShell komutlarında kullanacağınız kaynak grubu adı için bir değişken tanımlayın. Aşağıdaki komut metnini PowerShell'e kopyalayın [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) için bir ad belirtin (çift tırnak içinde; örneğin, `"adfrg"`) ve ardından komutu çalıştırın. 
    
@@ -179,7 +176,7 @@ Makinenizde önceden yüklü değilse Azure PowerShell’in en son sürümünü 
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Veri fabrikası örnekleri oluşturmak için Azure’da oturum açarken kullandığınız kullanıcı hesabına *katkıda bulunan* veya *sahip* rolü atanmalı veya bu hesap Azure aboneliğinin *yöneticisi* olmalıdır.
-> * Data Factory kullanılabildiği şu anda Azure bölgelerinin listesi için aşağıdaki sayfada faiz ve ardından genişletin bölgeleri seçin **Analytics** bulunacak **Data Factory**: [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan veri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
+> * Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan veri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
 > 
 > 
 
@@ -415,7 +412,7 @@ Bu adımda, şirket içi SQL Server örneğinizi veri fabrikasına bağlarsını
     > [!IMPORTANT]
     > - SQL Server örneğinize bağlanmak için kullandığınız kimlik doğrulaması yöntemine dayalı bölümü seçin.
     > - **\<tümleştirme çalışma zamanı adı>** yerine tümleştirme çalışma zamanınızın adını koyun.
-    > - Dosyayı kaydetmeden önce **\<sunucuadı>**, **\<veritabanıadı>**, **\<kullanıcıadı>** ve **\<parola>** değerleri yerine SQL Server örneğinizin değerlerini koyun.
+    > - Dosyayı kaydetmeden önce **\<sunucuadı>** , **\<veritabanıadı>** , **\<kullanıcıadı>** ve **\<parola>** değerleri yerine SQL Server örneğinizin değerlerini koyun.
     > - Kullanıcı hesabınızda veya sunucu adında ters eğik çizgi karakteri (\\) kullanmanız gerekirse önüne kaçış karakterini (\\) koyun. Örneğin, *etkialanim\\\\kullanicim* şeklinde kullanın. 
 
 1. Hassas verileri (kullanıcı adı, parola ve benzeri) şifrelemek için `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet'ini çalıştırın.  

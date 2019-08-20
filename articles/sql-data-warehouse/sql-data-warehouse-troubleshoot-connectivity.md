@@ -10,72 +10,72 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d7f56b65db09232af4fe7e198675ea0cfd64a25
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595483"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575551"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
-Bu makalede, SQL veri ambarı'na bağlanma etrafında yaygın sorun giderme teknikleri listelenmektedir.
+Bu makalede, SQL veri ambarınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
 - [Hizmet kullanılabilirliğini denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Duraklatılmış veya ölçeklendirme işlemi için denetleyin.](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Güvenlik Duvarı ayarlarınızı denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Sanal ağ/Service uç noktasının ayarlarınızı kontrol edin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [En son sürücülere denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [Duraklama veya ölçeklendirme işlemini denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [Güvenlik duvarı ayarlarınızı denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [VNet/hizmet uç noktası ayarlarınızı denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [En son sürücüleri denetle](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
 - [Bağlantı dizenizi denetleyin](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
 - [Aralıklı bağlantı sorunları](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Genel hata iletileri](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Hizmet kullanılabilirliğini denetle
 
-Hizmet kullanılabilir olup olmadığını denetleyin. Azure Portal'da SQL data warehouse'a bağlanmaya çalıştığınız gidin. Soldaki İçindekiler panelinde tıklayarak **Tanıla ve problemleri çözmenize**.
+Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız SQL veri ambarına gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz**' e tıklayın.
 
-![Kaynak durumu seçin](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
+![Kaynak durumunu seçin](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL veri ambarınızın durumunu burada gösterilir. Hizmet olarak görünmüyorsa **kullanılabilir**, ek adımları denetleyin.
+SQL veri ambarınızın durumu burada gösterilir. Hizmet **kullanılabilir**olarak görüntülenmiyorsa, daha fazla adım denetleyin.
 
 ![Hizmet kullanılabilir](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Kaynak durumu gösteren veri ambarınız duraklatıldığı veya ölçeklendirme, veri Ambarınızı sürdürmek için yönergeleri izleyin.
+Kaynak sistem durumu, veri ambarınızın duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, veri Ambarınızı sürdürmeye yönelik yönergeleri izleyin.
 
-![Hizmet duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) kaynak durumu hakkında daha fazla bilgi şurada bulunabilir.
+![Hizmet duraklatılmış](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) kaynak durumu hakkındaki ek bilgileri burada bulabilirsiniz.
 
-## <a name="check-for-paused-or-scaling-operation"></a>Duraklatılmış veya ölçeklendirme işlemi için denetleyin.
+## <a name="check-for-paused-or-scaling-operation"></a>Duraklama veya ölçeklendirme işlemini denetle
 
-SQL veri ambarınız duraklatıldığı görmek için portalı veya ölçeklendirme kontrol edin.
+SQL veri ambarınız duraklatıldığında mi yoksa ölçeklendirmi olduğunu görmek için portalı denetleyin.
 
 ![Hizmet duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Gördüğünüz hizmetinizin duraklatılmadığı veya ölçeklendirme sırasında bakım zamanlamanızı değil görmek için kontrol edin. SQL veri ambarınız için portalda *genel bakış*, seçili bakım zamanlaması görürsünüz.
+Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SQL veri ambarınızın *genel bakış*portalındaki seçili bakım zamanlamasını görürsünüz.
 
-![Bakım zamanlaması genel bakış](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
+![Genel Bakış bakım zamanlaması](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Aksi takdirde, bu bakım için zamanlanmış bir olayı olmadığını doğrulamak için BT yöneticinize danışın. SQL veri ambarı sürdürmek için verilen adımları izleyin. [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. SQL veri ambarını duraklatmak için [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)özetlenen adımları izleyin.
 
-## <a name="check-your-firewall-settings"></a>Güvenlik Duvarı ayarlarınızı denetleyin
+## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarınızı denetleyin
 
-SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Kurumsal ağ içinden gelen bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe verilmeyebilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL veritabanı sunucunuza bağlanamazsınız. Güvenlik duvarı yapılandırmaları hakkında daha fazla bilgi bulunabilir [burada](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı müddetçe Azure SQL veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal)ulaşabilirsiniz.
 
-## <a name="check-your-vnetservice-endpoint-settings"></a>Sanal ağ/Service uç noktasının ayarlarınızı kontrol edin
+## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/hizmet uç noktası ayarlarınızı denetleyin
 
-Hataları 40914 ve 40615 alıyorsunuz olup [hata açıklaması ve burada çözümleme](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+40914 ve 40615 hatalarını alıyorsanız, [buraya hata açıklaması ve çözüm](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)bölümüne bakın.
 
-## <a name="check-for-the-latest-drivers"></a>En son sürücülere denetle
+## <a name="check-for-the-latest-drivers"></a>En son sürücüleri denetle
 
 ### <a name="software"></a>Yazılım
 
-SQL veri ambarı'na bağlanmak için en yeni araçları kullandığınızdan emin olmak için kontrol edin:
+SQL veri ambarınıza bağlanmak için en son araçları kullandığınızdan emin olun:
 
 * SSMS
 * Azure Data Studio
-* SQL Server veri Araçları (Visual Studio)
+* SQL Server Veri Araçları (Visual Studio)
 
 ### <a name="drivers"></a>Sürücüler
 
-En son sürücü sürümleri kullandığınızdan emin olmak için kontrol edin.  Sürücüleri daha eski bir sürümünü kullanarak, eski sürücüleri yeni özellikleri desteklemiyor olabilir gibi beklenmeyen davranışları neden olabilir.
+En son sürücü sürümlerini kullandığınızdan emin olun.  Eski sürücüler yeni özellikleri desteklemedikleri için sürücülerin eski bir sürümünü kullanmak beklenmeyen davranışlara neden olabilir.
 
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
@@ -84,7 +84,7 @@ En son sürücü sürümleri kullandığınızdan emin olmak için kontrol edin.
 
 ## <a name="check-your-connection-string"></a>Bağlantı dizenizi denetleyin
 
-Bağlantı Dizelerinizin düzgün ayarlandığından emin olun.  Aşağıda bazı örnekler verilmiştir.  Ek bilgiler bulabilirsiniz [bağlantı dizeleri burada](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Bağlantı Dizelerinizin doğru ayarlandığından emin olmak için denetleyin.  Aşağıda bazı örnekler verilmiştir.  [Burada, bağlantı dizeleri](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)etrafında ek bilgiler bulabilirsiniz.
 
 ADO.NET bağlantı dizesi
 
@@ -112,11 +112,11 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Aralıklı bağlantı sorunları
 
-Çok sayıda kuyruğa alınan istekler ile sunucuda ağır yük yaşıyorsanız, denetleyin. Ek kaynaklar için veri ambarınızın ölçeğini ölçeklendirmeniz gerekebilir.
+Sunucuda yüksek miktarda sıraya alınmış istek olan ağır yük olup olmadığınızı kontrol edin. Ek kaynaklar için veri Ambarınızı ölçeklendirmeniz gerekebilir.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 
-40914 ve 40615, görüyorsunuz [hata açıklaması ve burada çözümleme](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Hatalar 40914 ve 40615, [buradaki hata açıklamasına ve çözümüne](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)bakın.
 
-## <a name="still-having-connectivity-issues"></a>Hala bağlantı sorunları mı yaşıyorsunuz?
-Oluşturma bir [destek bileti](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) mühendislik ekibine desteklediğiniz şekilde.
+## <a name="still-having-connectivity-issues"></a>Hala bağlantı sorunları var mı?
+Mühendislik ekibinin sizi destekleyebilmesi için bir [destek bileti](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) oluşturun.
