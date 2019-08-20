@@ -7,7 +7,7 @@ metadata:
   description: 'Uygulamalarınıza, web sitelerinize ve botlarınıza, kullanıcılarınızın ihtiyaçlarını görmek, duymak, dile getirmek ve anlamak için doğal iletişim yöntemlerinden yararlanan akıllı algoritmalar oluşturmayı öğrenin. Öğreticiler, hızlı başlangıçlar, API başvuruları ve örnekler size bunu nasıl yapacağınızı gösterir.'
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 5/14/2019
+  ms.date: 8/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na
