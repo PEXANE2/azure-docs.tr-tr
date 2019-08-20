@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 884ded67c25aca78225baef2d7e4c5de1cc94fd0
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782283"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534668"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -22,6 +22,42 @@ Bu makalede, Güncelleştirme Yönetimi kullanırken üzerinde çalıştırabile
 Temeldeki sorunu belirlemede karma çalışan Aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md). Diğer tüm sorunlar için, olası sorunlar hakkında aşağıdaki ayrıntılı bilgilere bakın.
 
 ## <a name="general"></a>Genel
+
+### <a name="rp-register"></a>Senaryon Abonelikler için Otomasyon kaynak sağlayıcısı kaydedilemiyor
+
+#### <a name="issue"></a>Sorun
+
+Otomasyon hesabınızdaki çözümlerle çalışırken aşağıdaki hatayı alabilirsiniz.
+
+```error
+Error details: Unable to register Automation Resource Provider for subscriptions:
+```
+
+#### <a name="cause"></a>Nedeni
+
+Otomasyon kaynak sağlayıcısı abonelikte kayıtlı değil.
+
+#### <a name="resolution"></a>Çözüm
+
+Azure portal aşağıdaki adımları tamamlayarak Otomasyon kaynak sağlayıcılarını kaydedebilirsiniz:
+
+1. Alt Azure hizmeti listesinde **tüm hizmetler** ' e tıklayın ve ardından _genel_ hizmet grubundaki **abonelikler** ' i seçin.
+2. Aboneliğinizi seçin.
+3. _Ayarlar_altında **kaynak sağlayıcıları** ' na tıklayın.
+4. Kaynak sağlayıcıları listesinden **Microsoft. Automation** kaynak sağlayıcısının kayıtlı olduğundan emin olun.
+5. Sağlayıcı listelenmiyorsa, **Microsoft. Automation** sağlayıcısını altında [ ](/azure/azure-resource-manager/resource-manager-register-provider-errors)listelenen adımlarla kaydedin.
+
+### <a name="mw-exceeded"></a>Senaryon Güncelleştirme yönetimi zamanlandı, MaintenanceWindowExceeded hatasıyla başarısız oldu
+
+#### <a name="issue"></a>Sorun
+
+Güncelleştirmeler için varsayılan bakım penceresi 120 dakikadır. Bakım penceresini en fazla altı (6) saat veya 360 dakika olarak artırabilirsiniz.
+
+#### <a name="resolution"></a>Çözüm
+
+Başarısız olan zamanlanmış güncelleştirme dağıtımlarını düzenleyin ve bakım penceresini arttırın.
+
+Bakım pencereleri hakkında daha fazla bilgi için bkz. [Install Updates](../automation-update-management.md#install-updates).
 
 ### <a name="components-enabled-not-working"></a>Senaryon ' Güncelleştirme Yönetimi ' çözümünün bileşenleri etkinleştirildi ve şimdi bu sanal makine yapılandırılıyor
 
@@ -298,7 +334,31 @@ Düzeltme eki uygulama sorununu çözemezseniz, aşağıdaki günlük dosyasın�
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
-### <a name="other"></a>Senaryon Sorun yukarıda listelenmiyor
+## <a name="patches-are-not-installed"></a>Düzeltme ekleri yüklenmedi
+
+### <a name="machines-do-not-install-updates"></a>Makineler güncelleştirmeleri yüklemez
+
+* Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirilemiyorsa [sorun giderme kılavuzundaki olası hatalar listesine](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult) bakın.
+* Güncelleştirmeler yerel olarak çalıştırılıyorsa, ["VM'yi Güncelleştirme Yönetimi'nden kaldırma"](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management) bağlantısında sağlanan yönergeleri izleyerek makinedeki aracıyı kaldırmayı ve yeniden yüklemeyi deneyin.
+
+### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Güncelleştirmelerin kullanılabildiğini biliyorum, ancak makinelerimde gereken şekilde gösterilmiyorum
+
+* Bu durum genellikle makinelerin güncelleştirmeleri WSUS/SCCM üzerinden alacak şekilde yapılandırılmış olması ancak WSUS/SCCM tarafından güncelleştirmelerin onaylanmamış olması durumunda yaşanır.
+* Makinelerinizin WSUS/SCCM ile yapılandırılıp yapılandırılmadığını denetlemek için ["UseWUServer" kayıt defteri anahtarı ile bu belgenin "Kayıt Defterini Düzenleyerek Otomatik Güncelleştirmeleri Yapılandırma" bölümündeki kayıt defteri anahtarları arasında çapraz başvuru oluşturabilirsiniz](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**Güncelleştirmeler yüklenmiş görünüyor ancak makinemde bulamıyorum**
+
+* Güncelleştirmeler genellikle başka güncelleştirmelerle değiştirilir. Daha fazla bilgi için [Windows Update Sorun Giderme kılavuzunun "Güncelleştirme değiştirildi" bölümünü](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) inceleyin
+
+### <a name="installing-updates-by-classification-on-linux"></a>**Linux'da güncelleştirmeleri sınıflandırmaya göre yükleme**
+
+* Güncelleştirmeleri Linux'a sınıflandırmaya göre ("Kritik ve güvenlik güncelleştirmeleri") yüklemek, özellikle CentOS için önemli uyarılara tabidir. Bu [sınırlamalar Güncelleştirme Yönetimi'ne genel bakış sayfasında belirtilmiştir](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)
+
+### <a name="kb2267602-is-consistently--missing"></a>**KB2267602 tutarlı bir şekilde eksik**
+
+* KB2267602, [Windows Defender tanım güncelleştirmesidir](https://www.microsoft.com/wdsi/definitions). Her gün güncelleştirilir.
+
+## <a name="other"></a>Senaryon Sorun yukarıda listelenmiyor
 
 ### <a name="issue"></a>Sorun
 

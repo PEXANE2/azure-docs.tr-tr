@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Salesforce ile tümleştirme Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Salesforce arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1b49c84c242144764ff3770512f130091e97968
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ea87c1e0b6379afac6a9433adb0e301626e27811
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880270"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986178"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Öğretici: Salesforce ile tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide Salesforce 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Salesforce 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -63,20 +63,20 @@ Salesforce 'un Azure AD ile tümleştirilmesini yapılandırmak için, galeridek
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Salesforce** yazın.
 1. Sonuçlar panelinden **Salesforce** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce"></a>Salesforce için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Salesforce ile yapılandırın ve test edin. SSO 'nun çalışması için, Salesforce 'daki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Salesforce ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 2. **[SALESFORCE SSO 'Yu yapılandırma](#configure-salesforce-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-5. Kullanıcının Azure AD gösterimine bağlı olan Salesforce 'ta B. Simon 'un bir karşılığı olan **[Salesforce test kullanıcısı oluşturun](#create-salesforce-test-user)** .
-6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+    1. Kullanıcının Azure AD gösterimine bağlı olan Salesforce 'ta B. Simon 'un bir karşılığı olan **[Salesforce test kullanıcısı oluşturun](#create-salesforce-test-user)** .
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
@@ -115,7 +115,37 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-salesforce-sso"></a>Salesforce SSO 'yu yapılandırma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1.           **Oluştur**'a tıklayın.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+
+Bu bölümde, Salesforce 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Salesforce**' u seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-salesforce-sso"></a>Salesforce SSO 'yu yapılandırma
 
 1. Tarayıcınızda yeni bir sekme açın ve Salesforce yönetici hesabınızda oturum açın.
 
@@ -165,41 +195,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Birden fazla kimlik doğrulama hizmeti seçilirse, kullanıcılardan Salesforce ortamınızda çoklu oturum açmayı başlatırken, hangi kimlik doğrulama hizmetini kullanarak oturum açmasını istediğinizi seçmeleri istenir. Bunun gerçekleşmesini istemiyorsanız, **diğer tüm kimlik doğrulama hizmetlerini işaretlenmemiş olarak bırakmalısınız**.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
-
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
-
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
-
-Bu bölümde, Salesforce 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Salesforce**' u seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
-
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
 ### <a name="create-salesforce-test-user"></a>Salesforce test kullanıcısı oluştur
 
 Bu bölümde, Salesforce 'ta B. Simon adlı bir Kullanıcı oluşturulur. Salesforce, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten Salesforce 'ta yoksa, Salesforce 'a erişmeye çalıştığınızda yeni bir tane oluşturulur. Salesforce otomatik Kullanıcı sağlamayı da destekler, [burada](salesforce-provisioning-tutorial.md) otomatik Kullanıcı sağlamayı yapılandırma hakkında daha fazla ayrıntı bulabilirsiniz.
 
-### <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
@@ -236,3 +236,5 @@ Erişim panelinde Salesforce kutucuğuna tıkladığınızda, SSO 'yu ayarladı�
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Kullanıcı sağlamayı yapılandırma](salesforce-provisioning-tutorial.md)
+
+- [Azure AD ile Salesforce 'ı deneyin](https://aad.portal.azure.com)

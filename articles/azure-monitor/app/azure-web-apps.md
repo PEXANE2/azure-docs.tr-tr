@@ -100,7 +100,7 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2
 
 İstemci tarafı izleme, ASP.NET için kabul edilir. İstemci tarafı izlemeyi etkinleştirmek için:
 
-* Seçin **ayarları** > ** **Uygulama ayarları****
+* Seçin **ayarları** > ** **Uygulama ayarları** **
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
      Ada`APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -356,7 +356,7 @@ Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri v
 |`AppContainsDiagnosticSourceAssembly**:true`|Bu değer, uzantının uygulamada başvuru `System.Diagnostics.DiagnosticSource` algıladığını ve geri dönecek olduğunu gösterir.| Başvuruyu kaldırın.
 |`IKeyExists:false`|Bu değer, izleme anahtarının AppSetting `APPINSIGHTS_INSTRUMENTATIONKEY`'de mevcut olmadığını gösterir. Olası nedenler: Değerler yanlışlıkla kaldırılmış olabilir, Otomasyon betikteki değerleri ayarlamayı unuttu, vb. | Ayarın App Service uygulama ayarlarında bulunduğundan emin olun.
 
-### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED ve urlCompression desteklenmez
+### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED ve urlCompression desteklenmez
 
 İçeriğin kodlandığı durumlarda APPINSIGHTS_JAVASCRIPT_ENABLED = true kullanırsanız, şöyle bir hata alabilirsiniz: 
 

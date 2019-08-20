@@ -9,20 +9,17 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 8bc30d50772dffddca32d9f6e22c3d7cec566c70
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297145"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563035"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
-
-> [!NOTE] 
-> Linux ve Kapsayıcılar için Web App App Service için yönetilen kimlik desteği şu anda önizlemededir.
 
 > [!Important] 
 > App Service ve Azure Işlevleri için Yönetilen kimlikler, uygulamanız abonelikler/kiracılar arasında geçirilirse beklendiği gibi davranmaz. Uygulamanın, özelliği devre dışı bırakıp yeniden etkinleştirerek yapılabilecek yeni bir kimlik alması gerekir. Aşağıdaki [kimliği kaldırma](#remove) bölümüne bakın. Aşağı akış kaynakları, yeni kimliği kullanmak için erişim ilkelerinin güncelleştirilmesini de gerekecektir.
@@ -30,8 +27,8 @@ ms.locfileid: "68297145"
 Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. Azure Active Directory yönetilen bir kimlik, uygulamanızın Azure Key Vault gibi diğer AAD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. AAD 'deki Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
 Uygulamanıza iki tür kimlik verilebilir: 
-- **Sistem tarafından atanan bir kimlik** uygulamanıza bağlanır ve uygulamanız silinirse silinir. Uygulamanın yalnızca bir sistem tarafından atanmış kimliği olabilir. Sistem tarafından atanan kimlik desteği, Windows uygulamaları için genel kullanıma sunulmuştur. 
-- **Kullanıcı tarafından atanan bir kimlik** , uygulamanıza atanabilecek tek başına bir Azure kaynağıdır. Bir uygulamada birden çok kullanıcı tarafından atanan kimlik olabilir. Kullanıcı tarafından atanan kimlik desteği tüm uygulama türleri için önizleme aşamasındadır.
+- **Sistem tarafından atanan bir kimlik** uygulamanıza bağlanır ve uygulamanız silinirse silinir. Uygulamanın yalnızca bir sistem tarafından atanmış kimliği olabilir.
+- **Kullanıcı tarafından atanan bir kimlik** , uygulamanıza atanabilecek tek başına bir Azure kaynağıdır. Bir uygulamada birden çok kullanıcı tarafından atanan kimlik olabilir.
 
 ## <a name="adding-a-system-assigned-identity"></a>Sistem tarafından atanan kimlik ekleme
 
@@ -158,17 +155,11 @@ Site oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 Burada `<TENANTID>` ve`<PRINCIPALID>` , GUID 'ler ile değiştirilmiştir. Tenantıd özelliği, kimliğin ait olduğu AAD kiracısının ne olduğunu tanımlar. PrincipalId, uygulamanın yeni kimliği için benzersiz bir tanımlayıcıdır. AAD 'de, hizmet sorumlusu App Service veya Azure Işlevleri Örneğinizde verdiğiniz aynı ada sahiptir.
 
 
-## <a name="adding-a-user-assigned-identity-preview"></a>Kullanıcı tarafından atanan kimlik ekleme (Önizleme)
-
-> [!NOTE] 
-> Kullanıcı tarafından atanan kimlikler Şu anda önizlemededir. Sovereign bulutları henüz desteklenmiyor.
+## <a name="adding-a-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik ekleme
 
 Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik oluşturmanız ve ardından kaynak tanımlayıcısını uygulama yapılandırmaya eklemeniz gerekir.
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
-
-> [!NOTE] 
-> Bu portal deneyimi dağıtılıyor ve henüz tüm bölgelerde kullanılamayabilir.
 
 İlk olarak, Kullanıcı tarafından atanan bir kimlik kaynağı oluşturmanız gerekir.
 
@@ -180,9 +171,9 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 4. **Yönetilen kimlik**' i seçin.
 
-5. Kullanıcı tarafından **atanan (Önizleme)** sekmesinde **Ekle**' ye tıklayın.
+5. **Kullanıcı atandı** sekmesinde **Ekle**' ye tıklayın.
 
-6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'yi tıklatın.
+6. Daha önce oluşturduğunuz kimliği arayın ve seçin.           **Ekle**'yi tıklatın.
 
 ![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -388,6 +379,25 @@ const getToken = function(resource, apiver, cb) {
     rp(options)
         .then(cb);
 }
+```
+
+<a name="token-python"></a>Python 'da:
+
+```python
+import os
+import requests
+
+msi_endpoint = os.environ["MSI_ENDPOINT"]
+msi_secret = os.environ["MSI_SECRET"]
+
+def get_bearer_token(resource_uri, token_api_version):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+    head_msi = {'Secret':msi_secret}
+
+    resp = requests.get(token_auth_uri, headers=head_msi)
+    access_token = resp.json()['access_token']
+
+    return access_token
 ```
 
 <a name="token-powershell"></a>PowerShell 'de:

@@ -2,26 +2,22 @@
 title: Web Işleri ile arka plan görevleri çalıştırma-Azure App Service
 description: Web uygulamalarında Azure App Service Web Apps, API Apps veya Mobile Apps 'te arka plan görevleri çalıştırmak için nasıl kullanacağınızı öğrenin.
 services: app-service
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 55d040e96b92f73a632fd415220f9cf135335736
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851002"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945800"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
 
@@ -90,7 +86,7 @@ when making changes in one don't forget the other two.
    | **Türüyle** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Ölçeklendirme** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
 
-4.           **Tamam**'ı tıklatın.
+4. **Tamam**'ı tıklatın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
@@ -165,7 +161,7 @@ when making changes in one don't forget the other two.
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Türüyle** | Tetiklenmiş | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Tetikleyiciler** | Zamanlanmış | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
-   | **CRON Ifadesi** | 0 0/20 * * * * | [Cron ifadeleri](#cron-expressions) aşağıdaki bölümde açıklanmıştır. |
+   | **CRON Ifadesi** | 0 0/20 * * * * | [Cron ifadeleri](#ncrontab-expressions) aşağıdaki bölümde açıklanmıştır. |
 
 4. **Tamam**'ı tıklatın.
 

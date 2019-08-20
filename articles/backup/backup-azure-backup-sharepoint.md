@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 75916655f1b46cd1b84220cba9db441d54486927
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 875c2002d477a95b44ad1491cb716e2ef70697e7
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735656"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954843"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
 System Center Data Protection Manager (DPM) kullanarak Microsoft Azure için bir SharePoint grubunu diğer veri kaynaklarını yedeklemekten çok benzer şekilde yedekleyerek. Azure Backup günlük, haftalık, aylık veya yıllık yedekleme noktaları oluşturmak için yedekleme zamanlamasında esneklik sağlar ve çeşitli yedekleme noktaları için bekletme ilkesi seçenekleri sunar. DPM, hızlı kurtarma zamanı hedeflerine (RTO) yönelik yerel disk kopyalarını depolamanıza ve ekonomik, uzun süreli saklama için Azure 'a kopya depolamanıza olanak sağlar.

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945070"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623835"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -201,7 +201,7 @@ Bu hala işe yaramazsa, doğru izinleri almak için AAD yöneticinize başvurun.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Hiçbir işlem gerçekleşdiğimde ne olur?
 
-Ve artık herhangi bir bilgi `GET /configurations/{configurationName}` döndürmez ve çağrı artık depolama hesabı anahtarı veya küme parolası gibi hassas parametreleri döndürmez. `POST /configurations/gateway` `GET /configurations` Aynı, karşılık gelen SDK yöntemleri ve PowerShell cmdlet 'leri için de geçerlidir.
+Ve çağrıları artık herhangi bir bilgi `GET /configurations/{configurationName}` döndürmez ve çağrı artık depolama hesabı anahtarları veya küme parolası gibi hassas parametreleri döndürmez. `POST /configurations/gateway` `GET /configurations` Aynı, karşılık gelen SDK yöntemleri ve PowerShell cmdlet 'leri için de geçerlidir.
 
 Yukarıda bahsedilen Visual Studio, VSCode, IntelliJ veya çakışan küreler araçlarından birinin daha eski bir sürümünü kullanıyorsanız, güncelleştirene kadar artık çalışmaz.
 

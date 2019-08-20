@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile ServiceChannel | Microsoft Docs'
-description: Azure Active Directory ve ServiceChannel arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: ServiceChannel ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve ServiceChannel arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,223 +13,174 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedf625beabfb12a459a7fd7c2120250e267772c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 120dbefb6885489155a4b86fae429223766a06bc
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091051"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976082"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Öğretici: ServiceChannel ile Azure Active Directory Tümleştirme
+# <a name="tutorial-integrate-servicechannel-with-azure-active-directory"></a>Öğretici: ServiceChannel 'ı Azure Active Directory ile tümleştirin
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile ServiceChannel tümleştirme konusunda bilgi edinin.
-Azure AD ile ServiceChannel tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, ServiceChannel 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. ServiceChannel 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* ServiceChannel erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) ServiceChannel için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD 'de ServiceChannel erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla ServiceChannel 'da otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile ServiceChannel yapılandırmak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik ServiceChannel çoklu oturum açma etkin
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* ServiceChannel çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* ServiceChannel destekler **IDP** tarafından başlatılan
-* ServiceChannel destekler **zamanında** kullanıcı sağlama
+* ServiceChannel, **IDP** tarafından başlatılan SSO 'yu destekler
+* ServiceChannel **, tam zamanında** Kullanıcı sağlamasını destekler
 
 ## <a name="adding-servicechannel-from-the-gallery"></a>Galeriden ServiceChannel ekleme
 
-Azure AD'de ServiceChannel tümleştirmesini yapılandırmak için ServiceChannel Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+ServiceChannel 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize ServiceChannel eklemeniz gerekir.
 
-**Galeriden ServiceChannel eklemek için aşağıdaki adımları gerçekleştirin:**
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **ServiceChannel** yazın.
+1. Sonuçlar panelinden **ServiceChannel** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-servicechannel"></a>ServiceChannel için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu ServiceChannel ile yapılandırın ve test edin. SSO 'nun çalışması için, ServiceChannel içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu ServiceChannel ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+2. **[ServiceChannel SSO 'Yu yapılandırma](#configure-servicechannel-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Kullanıcının Azure AD gösterimine bağlı olan ServiceChannel 'da B. Simon 'a sahip olmak için **[ServiceChannel test kullanıcısı oluşturun](#create-servicechannel-test-user)** .
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-4. Arama kutusuna **ServiceChannel**seçin **ServiceChannel** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-    ![Sonuç listesinde ServiceChannel](common/search-new-app.png)
+1. [Azure Portal](https://portal.azure.com/), **ServiceChannel** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma ServiceChannel adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının ServiceChannel ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-Yapılandırma ve Azure AD çoklu oturum açma ServiceChannel ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+      a. **Tanımlayıcı** metin kutusuna değeri şöyle yazın:`http://adfs.<domain>.com/adfs/service/trust`
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[ServiceChannel çoklu oturum açmayı yapılandırma](#configure-servicechannel-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[ServiceChannel test kullanıcısı oluşturma](#create-servicechannel-test-user)**  - kullanıcı Azure AD gösterimini bağlı ServiceChannel Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
-
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
-
-Azure AD çoklu oturum açma ile ServiceChannel yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), **ServiceChannel** uygulama tümleştirme sayfasında **çoklu oturum açma**.
-
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
-
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
-
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında, aşağıdaki adımları gerçekleştirin:
-
-    ![ServiceChannel etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
-
-    a. İçinde **tanımlayıcı** metin kutusunda, değer olarak girin: `http://adfs.<domain>.com/adfs/service/trust`
-
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<customer domain>.servicechannel.com/saml/acs`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı ve yanıt URL'si ile güncelleştirin. Burada benzersiz dize değeri tanımlayıcıda kullanmanızı öneririz. İlgili kişi [ServiceChannel istemci Destek ekibine](https://servicechannel.zendesk.com/hc/en-us) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Burada, Tanımlayıcıdaki benzersiz dize değerini kullanmanızı öneririz. Bu değerleri almak için [ServiceChannel istemci destek ekibine](https://servicechannel.zendesk.com/hc/en-us) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. ServiceChannel uygulamanız SAML onaylamalarını özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde bekliyor. Varsayılan öznitelikler listesinde aşağıdaki ekran görüntüsünde gösterilmektedir oysa **NameIdentifier** ile eşlenmiş **user.userprincipalname**. ServiceChannel uygulama bekliyor **NameIdentifier** ile eşlenecek **user.mail**tıklayarak özellik eşlemesi düzenlemeniz gerekir böylece **Düzenle** simgesi ve değişiklik öznitelik eşlemesi.
+5. ServiceChannel uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. ServiceChannel uygulaması **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
-    ServiceChannel Kılavuzu başvurabilir [burada](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) talepler hakkında daha fazla rehberlik için.
+    Talepler hakkında daha fazla rehberlik için [buradaki](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) ServiceChannel kılavuzuna bakabilirsiniz.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
-    > Bkz: [RBAC ve Azure portalını kullanarak erişimini yönetme](../../role-based-access-control/role-assignments-portal.md) nasıl yapılandırılacağını öğrenmek için **rol** Azure AD'de.
+    > Azure AD 'de **rol** yapılandırma hakkında bilgi edinmek için bu [bağlantıya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) başvurun.
 
-6. Tam zamanında kullanıcı hazırlama, etkinleştirmeyi planlıyorsanız, ayrıca için, daha sonra aşağıdaki talep aşağıda gösterildiği gibi eklemeniz gerekir. **Rol** talep eşlenmesi gerekiyor **user.assignedroles** kullanıcı rolünü içerir. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin tablonun altındaki:
+6. Yukarıdakilerin yanı sıra, tam zamanında Kullanıcı sağlamayı etkinleştirmeyi planlıyorsanız, aşağıdaki talepleri aşağıda gösterildiği gibi eklemeniz gerekir. **Rol** talebinin Kullanıcı rolünü içeren **User. atansallar** ile eşlenmesi gerekir. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
     | Ad   |  Kaynak özniteliği |
     | ------ | --- |
-    | Rol   | User.assignedroles |
+    | Role   | Kullanıcı. atandroles |
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
+    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
+    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    c. Bırakın **Namespace** boş.
+    c. **Ad alanını** boş bırakın.
 
-    d. Kaynağı olarak **özniteliği**.
+    d. **Öznitelik**olarak kaynak seçin.
 
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
     f. Tıklayın **Tamam**
 
     g. **Kaydet**’e tıklayın.
 
-7. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-8. Üzerinde **ServiceChannel kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+6. **ServiceChannel ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
-
-    a. Oturum Açma URL'si:
-
-    b. Azure AD Tanımlayıcısı
-
-    c. Oturum Kapatma URL'si
-
-### <a name="configure-servicechannel-single-sign-on"></a>ServiceChannel tek oturum açmayı yapılandırın
-
-Çoklu oturum açmayı yapılandırma **ServiceChannel** tarafı, indirilen göndermek için ihtiyacınız **sertifika (Base64)** ve uygun Azure portalına kopyalanan URL'lerden [ServiceChannel desteği Takım](https://servicechannel.zendesk.com/hc/en-us). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üstünde.
-
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. İçinde **adı** alana **BrittaSimon**.
-  
-    b. İçinde **kullanıcı adı** alan türü `brittasimon@yourcompanydomain.extension`  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+    1. **Ad** alanına `B.Simon` girin.  
+    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+    1.           **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için ServiceChannel erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, ServiceChannel 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **ServiceChannel**.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde **ServiceChannel**.
-
-    ![Uygulamalar listesinde ServiceChannel bağlantı](common/all-applications.png)
-
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **ServiceChannel**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+## <a name="configure-servicechannel-sso"></a>ServiceChannel SSO 'yu yapılandırma
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+**ServiceChannel** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'Leri Azure Portal ' dan [ServiceChannel destek ekibine](https://servicechannel.zendesk.com/hc/)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
-### <a name="create-servicechannel-test-user"></a>ServiceChannel test kullanıcısı oluşturma
+### <a name="create-servicechannel-test-user"></a>ServiceChannel test kullanıcısı oluştur
 
-Uygulama, zaman kullanıcı sağlamayı ve kimlik doğrulaması kullanıcılar uygulamaya otomatik olarak oluşturulacak sonra sadece destekler. İçin tam kullanıcı hazırlama, temasa [ServiceChannel destek ekibi](https://servicechannel.zendesk.com/hc/en-us)
+Uygulama tam zamanında Kullanıcı sağlamayı ve kimlik doğrulama kullanıcılarının uygulamada otomatik olarak oluşturulmasını destekler. Tam Kullanıcı sağlama için lütfen [ServiceChannel destek ekibine](https://servicechannel.zendesk.com/hc/)başvurun.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim paneli ServiceChannel kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama ServiceChannel için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde ServiceChannel kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ServiceChannel öğesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

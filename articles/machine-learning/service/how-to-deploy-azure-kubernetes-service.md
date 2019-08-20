@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: bc9d3f6b461412f0e28cba3cb86d288085ffe500
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 490085da1e8f6b8e151168433836d59329887c6e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543581"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623954"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -59,6 +59,9 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 **Tahmini süre**: Yaklaşık 20 dakika.
 
 AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeye birden çok dağıtımlar için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
+
+> [!TIP]
+> Azure sanal ağını kullanarak AKS kümenizi güvenli hale getirmek istiyorsanız, önce sanal ağı oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure sanal ağ Ile güvenli deneme ve çıkarım](how-to-enable-virtual-network.md#aksvnet).
 
 Üretim yerine __geliştirme__, __doğrulama__ve __Test__ için bir aks kümesi oluşturmak istiyorsanız, geliştirme __testi__için __küme amacını__ belirtebilirsiniz.
 
@@ -115,6 +118,8 @@ Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1.12. # # ise, görün
 
 > [!TIP]
 > Mevcut AKS kümesi, Azure Machine Learning hizmeti çalışma alanınızdan bir Azure bölgesinde olabilir.
+>
+> Azure sanal ağını kullanarak AKS kümenizi güvenli hale getirmek istiyorsanız, önce sanal ağı oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure sanal ağ Ile güvenli deneme ve çıkarım](how-to-enable-virtual-network.md#aksvnet).
 
 > [!WARNING]
 > Bir çalışma alanına aks kümesi eklerken, `cluster_purpose` parametresini ayarlayarak kümeyi nasıl kullanacağınızı tanımlayabilirsiniz.
@@ -272,6 +277,7 @@ print(token)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Bir sanal ağda güvenli deneme ve çıkarım](how-to-enable-virtual-network.md)
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)

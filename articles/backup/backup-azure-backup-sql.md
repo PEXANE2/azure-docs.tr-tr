@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 744c954c9192f75489911f09a1ef7195c5bbd1fa
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: d564cc16a1261cdf71d783ce9f40e577177ff74c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689365"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954798"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 Bu makale, Azure Backup kullanarak SQL Server veritabanlarının yedeklenmesi için yapılandırma adımlarında size yol gösterir.
@@ -31,7 +31,7 @@ Başlamadan önce, iş yüklerini korumak için Microsoft Azure Backup kullanmay
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>SQL Server veritabanlarını Azure 'da korumak için bir yedekleme ilkesi oluşturma
 1. DPM sunucusunda, **koruma** çalışma alanına tıklayın.
-2. Araç şeridinde **Yeni ' ye** tıklayarak yeni bir koruma grubu oluşturun.
+2. Araç şeridinde yeni ' ye tıklayarak yeni bir koruma grubu oluşturun.
 
     ![Koruma grubu oluştur](./media/backup-azure-backup-sql/protection-group.png)
 3. DPM, bir **koruma grubu**oluşturma kılavuzumuzu içeren başlangıç ekranını gösterir.           **İleri**'ye tıklayın.
@@ -46,7 +46,7 @@ Başlamadan önce, iş yüklerini korumak için Microsoft Azure Backup kullanmay
     ![Veri koruma yöntemi-kısa süreli disk çevrimiçi & Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. **Kısa dönem hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin.
 
-    Burada, **bekletme aralığının** *5 gün*olarak ayarlandığını görtiğimiz **için, yedekleme** sıklığı her *15 dakikada* bir, yedeklemenin alındığı sıklık olarak ayarlanır. **Hızlı tam yedekleme** *8:00 P. M*olarak ayarlanır.
+    Burada, **bekletme aralığının** *5 gün*olarak ayarlandığını, **eşitleme sıklığının** her *15 dakikada*bir olarak ayarlandığını ve yedeklemenin ne sıklıkta yapılacağını görüyoruz. **Hızlı tam yedekleme** *8:00 P. M*olarak ayarlanır.
 
     ![Kısa vadeli hedefler](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -131,7 +131,7 @@ Başlamadan önce, iş yüklerini korumak için Microsoft Azure Backup kullanmay
 ## <a name="recover-a-sql-server-database-from-azure"></a>Azure 'dan SQL Server veritabanını kurtarma
 Korunan bir varlığı (SQL Server veritabanı) Azure 'dan kurtarmak için aşağıdaki adımlar gereklidir.
 
-1. DPM sunucusu yönetim konsolunu açın. DPM tarafından yedeklenen sunucuları görebileceğiniz **Kurtarma** çalışma alanı ' na gidin. Gerekli veritabanına (Bu durumda ReportServer $ MSDPM2012) gözatamazsınız. **Çevrimiçi**ile biten zaman Için bir **Kurtarma** seçin.
+1. DPM sunucusu yönetim konsolunu açın. DPM tarafından yedeklenen sunucuları görebileceğiniz **Kurtarma** çalışma alanı ' na gidin. Gerekli veritabanına (Bu durumda ReportServer $ MSDPM2012) gözatamazsınız. **Çevrimiçi**ile biten zamandan **Kurtarma** seçin.
 
     ![Kurtarma noktası seçin](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. Veritabanı adına sağ tıklayın ve **kurtar**' a tıklayın.

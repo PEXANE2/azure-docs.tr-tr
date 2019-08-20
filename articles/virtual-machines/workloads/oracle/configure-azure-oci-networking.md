@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2cab129556dcd0407793512f41f91311804abd0f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880108"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510207"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ile Oracle bulut altyapısı arasında doğrudan bir iç bağlantı kurma  
 
 [Tümleşik bir çok kiracılı deneyim](oracle-oci-overview.md) (Önizleme) oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)aracılığıyla Azure ile Oracle bulut altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect bağlantısı aracılığıyla müşteriler, iki bulut arasında düşük gecikme süresi, yüksek aktarım hızı, özel doğrudan bağlantı ile karşılaşabilir.
 
 > [!IMPORTANT]
-> Microsoft Azure ile OCı arasındaki bağlantı önizleme aşamasındadır. Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, bu özellik için önce Azure aboneliğinin beyaz listelenmesi gerekir. Abonelik Kimliğinizle bir e-posta oracleconnect@microsoft.com göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın.
+> Microsoft Azure ile OCı arasındaki bağlantı önizleme aşamasındadır. Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, Azure aboneliğinizin bu özellik için önce beyaz listelenmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)tamamlayarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, Microsoft 'un kendi takdirine bağlı olarak kullanılabilirliğine ve kısıtlanmasını sağlar. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış gösterilmektedir:
 

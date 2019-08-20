@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a19b97e36bc28e5e629391f799b69370cf0fa38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e31c875f31f118716feea0c73bc2ca70a4ecd9a5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737268"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954835"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 Microsoft Azure Backup sunucusu (MABS) kullanarak Microsoft Azure için bir SharePoint grubunu diğer veri kaynaklarını yedeklemekten çok aynı şekilde yedekleyerek. Azure Backup günlük, haftalık, aylık veya yıllık yedekleme noktaları oluşturmak için yedekleme zamanlamasında esneklik sağlar ve çeşitli yedekleme noktaları için bekletme ilkesi seçenekleri sunar. Ayrıca, hızlı kurtarma zamanı hedeflerine (RTO) yönelik yerel disk kopyalarını depolama ve ekonomik, uzun süreli saklama için Azure 'a kopya depolama yeteneği sağlar.

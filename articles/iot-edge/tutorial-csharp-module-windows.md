@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5a1e487b52cb6f146ccc7fd3208ecc90de9aa080
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb2a6933b711804f957056353d7d609dbdbbe5d5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840165"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036452"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları C# için IoT Edge modülü geliştirme
 
@@ -51,7 +51,7 @@ Bu öğreticiye başlamadan önce, [bir Windows cihazı için IoT Edge modülü 
 * [Azure IoT Edge çalıştıran bir Windows cihazı](quickstart.md).
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)gibi bir kapsayıcı kayıt defteri.
 * [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) uzantısıyla yapılandırıldı.
-* Windows kapsayıcıları çalıştıracak şekilde yapılandırılmış [Docker CE](https://docs.docker.com/install/) .
+* Windows kapsayıcıları çalıştıracak şekilde yapılandırılmış [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) .
 
 > [!TIP]
 > Visual Studio 2017 (sürüm 15,7 veya üzeri) kullanıyorsanız, plreada Visual Studio marketi 'nden VS 2017 için [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) indirin ve yükleyin

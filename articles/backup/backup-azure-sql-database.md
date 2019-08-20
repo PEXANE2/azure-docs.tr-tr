@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827651"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534227"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
@@ -22,9 +22,9 @@ SQL Server veritabanları, düşük kurtarma noktası hedefi (RPO) ve uzun süre
 
 Bu çözüm SQL veritabanlarınızın yedeklerini almak için SQL Native API 'lerden yararlanır.
 
-* Korumak istediğiniz SQL Server VM ve içindeki veritabanları için sorgulamak üzere belirttikten sonra, Azure Backup hizmet, VM 'ye ad `AzureBackupWindowsWorkload`  uzantısı tarafından bir iş yükü yedekleme uzantısı yükler.
+* Korumak istediğiniz SQL Server VM ve içindeki veritabanları için sorgulamak üzere belirttikten sonra, Azure Backup hizmet, VM 'ye ad `AzureBackupWindowsWorkload` uzantısı tarafından bir iş yükü yedekleme uzantısı yükler.
 * Bu uzantı, bir düzenleyici ve SQL eklentisi içerir. Düzenleyici, yedekleme, yedekleme ve geri yükleme gibi çeşitli işlemler için iş akışlarını tetiklemeden sorumlu olsa da, eklenti gerçek veri akışından sorumludur.
-* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı `NT SERVICE\AzureWLBackupPluginSvc`oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. Azure Backup, veritabanı `NT AUTHORITY\SYSTEM`bulma/sorgulama hesabından yararlanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](backup-azure-sql-database.md).
+* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı `NT SERVICE\AzureWLBackupPluginSvc`oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. Azure Backup, veritabanı `NT AUTHORITY\SYSTEM` bulma/sorgulama hesabından yararlanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](backup-azure-sql-database.md).
 * Seçili veritabanlarında korumayı Yapılandır ' ı etkinleştirdikten sonra, yedekleme hizmeti düzenleyiciyi yedekleme zamanlamaları ve diğer ilke ayrıntıları ile ayarlar; bu da uzantının yerel olarak VM 'de önbelleğe alınır.
 * Zamanlanan zamanda, düzenleyici eklenti ile iletişim kurar ve VDı kullanarak SQL Server 'dan yedekleme verilerini akışa başlar.  
 * Eklenti, verileri doğrudan kurtarma hizmetleri kasasına gönderir ve böylece bir hazırlama konumu gereksinimini ortadan kaldırır. Veriler, depolama hesaplarında Azure Backup hizmeti tarafından şifrelenir ve depolanır.
@@ -45,7 +45,7 @@ Başlamadan önce, aşağıdakileri doğrulayın:
 **Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen dağıtımlar** | SQL Market Azure VM 'Leri ve Market olmayan (SQL Server el ile yüklenmiş) VM 'Ler desteklenir.
-**Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS) <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu
+**Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS) <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu
 **Desteklenen işletim sistemleri** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux Şu anda desteklenmiyor.
 **Desteklenen SQL Server sürümleri** | [Burada](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)açıklandığı gibi 2017 SQL Server, SQL Server 2016 ve SPs SQL Server 2014 [](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2012.<br/><br/> Enterprise, Standard, Web, geliştirici, Express.
 **Desteklenen .NET sürümleri** | VM 'de yüklü .NET Framework 4.5.2 ve üzeri
@@ -58,7 +58,7 @@ Azure Backup, kısa bir süre önce [EOS SQL severs](https://docs.microsoft.com/
 2. .NET Framework 4.5.2 ve üzeri sanal makinede yüklü olmalıdır
 3. FCı ve yansıtmalı veritabanları için yedekleme desteklenmiyor
 
-Kullanıcılar, bu özellik için genel kullanıma sunulan zaman kadar ücretlendirilmeyecektir. Diğer tüm [özellik konuları ve sınırlamaları](#feature-consideration-and-limitations) bu sürümler için de geçerlidir. Bu durumda, [kayıt defteri anahtarını](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) ayarlamayı DAHIL eden SQL Server 2008 ve 2008 R2 üzerinde korumayı yapılandırmadan önce [önkoşullara](backup-sql-server-database-azure-vms.md#prerequisites) başvurun (özellik genel kullanıma sunulduğunda bu adım gerekli değildir).
+Kullanıcılar, genel kullanıma sunulduğunda bu özellik için ücretlendirilmeyecektir. Diğer tüm [özellik konuları ve sınırlamaları](#feature-consideration-and-limitations) bu sürümler için de geçerlidir. Bu durumda, [kayıt defteri anahtarını](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) ayarlamayı içeren 2008 ve 2008 R2 SQL Server 'lar üzerinde korumayı yapılandırmadan önce [önkoşullara](backup-sql-server-database-azure-vms.md#prerequisites) başvurun (özellik genel kullanıma sunulduğunda bu adım gerekli değildir).
 
 
 ## <a name="feature-consideration-and-limitations"></a>Özellik değerlendirmesi ve sınırlamaları
@@ -74,8 +74,8 @@ Kullanıcılar, bu özellik için genel kullanıma sunulan zaman kadar ücretlen
 - Çok sayıda dosya içeren veritabanları korunamaz. Desteklenen en fazla dosya sayısı **~ 1000**' dir.  
 - Bir kasadaki **~ 2000** SQL Server veritabanlarını yedekleyebilirsiniz. Daha fazla veritabanınız olması durumunda birden çok kasa oluşturabilirsiniz.
 - Yedeklemeyi tek bir go 'da en fazla **50** veritabanına yapılandırabilirsiniz; Bu kısıtlama, yedekleme yüklerini iyileştirmenize yardımcı olur.
-- En fazla **TB** boyutundaki veritabanlarını destekliyoruz; Bundan daha büyük boyutlarda performans sorunları çıkabilir.
-- Sunucu başına kaç veritabanının korunduğuna ilişkin bir fikir sahibi olmak için bant genişliği, VM boyutu, yedekleme sıklığı, veritabanı boyutu vb. gibi faktörleri göz önünde bulundurmanız gerekir. VM kaynaklarına ve yedekleme ilkesine göre sunucu başına sahip olabilirsiniz yaklaşık sayıda veritabanını sağlayan kaynak planlayıcısı 'nı [indirin](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) .
+- Boyutu **2 TB** 'a kadar olan veritabanlarını destekliyoruz; Bundan daha büyük boyutlarda performans sorunları çıkabilir.
+- Sunucu başına kaç veritabanının korunduğuna ilişkin bir fikir sahibi olmak için bant genişliği, VM boyutu, yedekleme sıklığı, veritabanı boyutu vb. gibi faktörleri göz önünde bulundurmanız gerekir. VM kaynaklarına ve yedekleme ilkesine göre sunucu başına sahip olabilirsiniz yaklaşık sayıda veritabanını sağlayan kaynak planlayıcısı 'nı [indirin](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) .
 - Kullanılabilirlik grupları söz konusu olduğunda, yedeklemeler, birkaç etkene göre farklı düğümlerden alınır. Bir kullanılabilirlik grubu için yedekleme davranışı aşağıda özetlenmiştir.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Her zaman açık kullanılabilirlik grupları durumunda yedekleme davranışı
@@ -83,7 +83,7 @@ Kullanıcılar, bu özellik için genel kullanıma sunulan zaman kadar ücretlen
 Yedeklemenin yalnızca bir AG düğümünde yapılandırılması önerilir. Yedekleme her zaman birincil düğümle aynı bölgede yapılandırılmalıdır. Diğer bir deyişle, her zaman, yedeklemeyi yapılandırdığınız bölgede bulunan birincil düğümün olması gerekir. AG 'nin tüm düğümleri yedeklemenin yapılandırıldığı bölgede yer alıyorsa sorun yoktur.
 
 **Bölgeler arası AG için**
-- Yedekleme tercihinden bağımsız olarak yedeklemeler, yedeklemenin yapılandırıldığı bölgede yer alan düğümlerden gerçekleşmeyecek. Bunun nedeni, çapraz bölge yedeklemelerinin desteklenmemelidir. Yalnızca 2 düğümünüz varsa ve ikincil düğüm diğer bölgede ise, Bu durumda, yedeklemeler birincil düğümden gerçekleşmeye devam edecektir (yedekleme tercihiniz ' ikincil yalnızca ' değilse).
+- Yedekleme tercihinden bağımsız olarak yedeklemeler, yedeklemenin yapılandırıldığı bölgede yer alan düğümlerden gerçekleşmeyecek. Bunun nedeni, çapraz bölge yedeklemelerinin desteklenmemelidir. Yalnızca iki düğümünüz varsa ve ikincil düğüm diğer bölgedeyse; Bu durumda, yedeklemeler birincil düğümden gerçekleşmeye devam edecektir (yedekleme tercihiniz ' ikincil yalnızca ' değilse).
 - Yük devretme işlemi, yedeklemenin yapılandırıldığı sunucudan farklı bir bölgede gerçekleşdiğinde, yedeklemeler başarısız olan bölgedeki düğümlerde başarısız olur.
 
 Yedekleme tercihine ve yedeklemeler türlerine (tam/değişiklik/günlük/salt kopya) bağlı olarak, yedeklemeler belirli bir düğümden alınır (birincil/ikincil).
@@ -147,7 +147,7 @@ Diğer tüm sürümler için aşağıdaki adımlarla izinleri onarın:
 
       ![Oturum aç-yeni iletişim kutusunda ara ' yı seçin.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **Tamam**'ı tıklatın.
+  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin.           **Tamam**'ı tıklatın.
 
       ![Bilinmeyen hizmet adını çözümlemek için adları denetle ' yi seçin](./media/backup-azure-sql-database/check-name.png)
 

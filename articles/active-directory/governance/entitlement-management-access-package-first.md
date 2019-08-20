@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489162"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032914"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) ilk erişim paketinizi oluşturma
 
@@ -44,7 +44,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Dahili bir kullanıcının erişim paketini nasıl isteyebileceğini gösterir
 > * Erişim isteğini onaylama
 
-Bir Azure AD Premium P2 veya Enterprise Mobility + Security E5 lisansınız yoksa ücretsiz bir [Enterprise Mobility + Security E5 denemesi](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)oluşturun.
+İlk erişim paketinizi oluşturma da dahil olmak üzere Azure Active Directory yetkilendirme yönetimi dağıtma işleminin adım adım bir gösterimi için aşağıdaki videoyu görüntüleyin:
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -52,6 +54,8 @@ Azure AD Yetkilendirme Yönetimi 'ni (Önizleme) kullanmak için aşağıdaki li
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5 lisansı
+
+Bir Azure AD Premium P2 veya Enterprise Mobility + Security E5 lisansınız yoksa ücretsiz bir [Enterprise Mobility + Security E5 denemesi](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)oluşturun.
 
 ## <a name="step-1-set-up-users-and-group"></a>1\. adım: Kullanıcıları ve grubu ayarlama
 
@@ -67,7 +71,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 1. Aşağıdaki iki kullanıcıyı oluşturun veya yapılandırın. Bu adları veya farklı adları kullanabilirsiniz. **Admin1** Şu anda oturum açmış olduğunuz Kullanıcı olabilir.
 
-    | Ad | Dizin rolü | Açıklama |
+    | Name | Dizin rolü | Açıklama |
     | --- | --- | --- |
     | **Admin1** | Genel yönetici<br/>-veya-<br/>Sınırlı yönetici (Kullanıcı Yöneticisi) | Yönetici ve onaylayan |
     | **Requestor1** | Kullanıcı | İç istek sahibi |
@@ -122,7 +126,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 1. **İleri** ' ye tıklayarak **ilke** sekmesini açın.
 
-1. **İlk Ilkeyi oluştur** ' a geç geçiş **yapın.**
+1. **İlk Ilkeyi oluştur** ' a geç geçişyapın.
 
     İlkeyi bir sonraki bölümde oluşturacaksınız.
 

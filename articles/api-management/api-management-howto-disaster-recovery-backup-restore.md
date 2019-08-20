@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498583"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932405"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management hizmet yedekleme ve geri yükleme kullanarak olağanüstü durum kurtarma uygulama
 
@@ -176,6 +176,7 @@ Yedekleme isteği yaparken aşağıdaki kısıtlamalara göz önünde edin:
 -   Yedekleme devam ederken, hizmet yönetiminde, SKU yükseltmesi veya düşürme, etki alanı adında değişiklik ve daha fazlası gibi **değişikliklerden kaçının** .
 -   Bir yedeklemenin geri yüklenmesi yalnızca, oluşturulduktan sonra **30 gün boyunca garanti edilir** .
 -   Analiz raporları oluşturmak için kullanılan **kullanım verileri** yedeklemeye **dahil değildir** . [Azure API Management REST API][azure api management rest api] kullanarak safekeeping için analiz raporlarını düzenli aralıklarla alın.
+-   Ayrıca, aşağıdaki öğeler yedekleme verilerinin bir parçası değildir: özel etki alanı SSL sertifikaları ve müşteri, geliştirici portalı içeriği ve sanal ağ tümleştirme ayarları tarafından karşıya yüklenen tüm ara veya kök sertifikalar.
 -   Hizmet yedeklemeleri gerçekleştirdiğiniz sıklık, kurtarma noktası hedefini etkiler. Bunu en aza indirmek için, API Management hizmetinize değişiklikler yaptıktan sonra düzenli yedeklemeler uygulamanızı ve isteğe bağlı yedeklemeler gerçekleştirmenizi öneririz.
 -   Yedekleme işlemi sırasında hizmet yapılandırmasında yapılan **değişiklikler** (örneğin, API 'ler, ilkeler ve geliştirici portalı görünümü), **yedeklemeden dışlanmayabilir ve kaybolacaktır**.
 -   Denetim düzlemine Azure depolama hesabına erişim **Izni verin** . Müşteri, yedekleme için depolama hesabında aşağıdaki gelen IP kümesini açmalı. 
