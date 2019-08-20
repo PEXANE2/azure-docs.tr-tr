@@ -4,8 +4,16 @@
   items:
     - name: Genel Bakış
       href: user-help-two-step-verification-overview.md
-    - name: Hesabımı ayarlama
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: İki öğeli doğrulama yöntemlerinizi ayarlama
+      items:
+        - name: Genel Bakış
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Authenticator uygulamasını ayarlama
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Mobil cihaz ayarlama
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Ofis telefonu ayarlama
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Ayarlarınızı yönetme
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Yardım alın

@@ -19,6 +19,10 @@
 - name: Kavramlar
   expanded: false
   items:
+    - name: Koşullu Erişimi Benimseme
+      href: howto-conditional-access-adoption-kit.md
+    - name: Sık kullanılan Koşullu Erişim İlkeleri
+      href: concept-conditional-access-policy-common.md
     - name: Koşullar
       href: conditions.md
     - name: Konum koşulları
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: En iyi uygulamalar
       href: best-practices.md
+    - name: Sık kullanılan Azure ilkesi şablonları
+      items:
+        - name: Yöneticiler için MFA gerektirme
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Azure yönetimi için MFA gerektirme
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Eski kimlik doğrulamasını engelleme
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Risk tabanlı Koşullu Erişim
+          href: howto-conditional-access-policy-risk.md
+        - name: MFA kaydı için güvenilen konum gerektirme
+          href: howto-conditional-access-policy-registration.md
+        - name: Erişimi konuma göre engelleme
+          href: howto-conditional-access-policy-location.md
+        - name: Uyumlu cihaz gerektirme
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Eski kimlik doğrulamasını engelleme
       href: block-legacy-authentication.md
     - name: MFA kaydı için Koşullu Erişim

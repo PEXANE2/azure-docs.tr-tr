@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a065f275321d16b9eaf82a02cb7da45c15aa82cc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383099"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616325"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Kimlik doğrulama, uygulamalar ve cihaz yönetimi için kullanıcı yardımı
 
@@ -92,8 +92,11 @@ Güvenlik bilgilerini ayarlayıp kullanma, iki aşamalı doğrulama, kendi parol
                     <div class="cardText">
                         <h3>İki aşamalı doğrulama yardımı</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time">İki aşamalı doğrulamayı ayarlama</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-auth-app">Authenticator uygulamasını ayarlama</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-phone-number">Mobil cihaz ayarlama</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-office-phone">Ofis telefonu ayarlama</a><br/>
                         <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-manage-settings">Ayarlarınızı yönetme</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-troubleshoot">Sık karşılaşılan sorunlar hakkında yardım alma</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">Oturum açma</a>
                         </p>
                     </div>

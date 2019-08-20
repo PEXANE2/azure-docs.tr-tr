@@ -111,15 +111,19 @@
         - name: Özel bulut için VMware sanal makineleri ayarlama
           items:
             - name: Azure’da VM oluşturma
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: Azure'da VM’leri yönetme
+              href: azure-manage-vm.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Ortamınızı güvenli hale getirme
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: Özel bulut yönetimi
           items:
+            - name: Özel Bulut ayrıcalıklarını yükseltme
+              href: escalate-privileges.md
             - name: İş yükü DNS ve DHCP ayarı
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: Geçiş için NSX Katman 2 VPN
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: Özel bulut ağı oluşturma
@@ -133,11 +137,11 @@
         - name: VMware platformu
           items:
             - name: Özel bulut izin modelini öğrenme
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter kimlik kaynakları
               href: set-vcenter-identity.md
             - name: VMware sanal makineleriyle Azure Application Gateway
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: Özel bulut vCenter sunucusunu vRealize otomasyon uç noktası olarak yapılandırma
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: İş yükü sanal makinelerini özel buluta geçirme
@@ -147,7 +151,7 @@
         - name: VMware ekosistemi
           items:
             - name: İş yükü sanal makinelerini yedekleme
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
             - name: VMware Horizon çözüm kılavuzu
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: Özel bulutunuz için vSAN şifrelemesini yapılandırma

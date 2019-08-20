@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: Apache Spark ile yerleşik analiz
           - href: /azure/cosmos-db/change-feed/
-            html: <p>Bir Azure Cosmos DB koleksiyonunda düzenlenme sırasına göre sıralanmış bir belge listesini okuyarak değişiklik akışı ile gerçek zamanlı analiz gerçekleştirin. </p>
+            html: <p>Bir Azure Cosmos kapsayıcısında düzenlenme sırasına göre sıralanmış bir belge listesini okuyarak değişiklik akışı ile gerçek zamanlı analiz gerçekleştirin. </p>
             image:
               src: media/index/change-feed-logo.png
             title: Akışı değiştirme

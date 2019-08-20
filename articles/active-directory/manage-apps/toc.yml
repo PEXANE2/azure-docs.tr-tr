@@ -29,6 +29,8 @@
           items:
             - name: Uygulama tümleştirmesini kullanmaya başlama
               href: plan-an-application-integration.md
+            - name: Erişim bölmesi dağıtımı planlama
+              href: access-panel-deployment-plan.md
             - name: Geliştiriciler için rehberlik
               href: developer-guidance-for-integrating-applications.md
         - name: Çoklu oturum açma

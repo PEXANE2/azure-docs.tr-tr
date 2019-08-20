@@ -273,6 +273,8 @@
       items:
         - name: Gen2'ye yükselt
           href: upgrade-to-latest-generation.md
+        - name: İşlemi yönetme
+          href: manage-compute-with-azure-functions.md
         - name: İş yükünüzü izleme - Portal
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: İş yükünüzü izleme - DMV’ler
