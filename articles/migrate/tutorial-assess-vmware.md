@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828290"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952094"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Azure geçişi ile VMware VM 'lerini değerlendirin: Sunucu Değerlendirmesi
 
@@ -180,8 +180,39 @@ Bu, bulmayı başlatır. Keşfedilen VM 'lerin meta verilerinde portalda görün
 
 ### <a name="scoping-discovery"></a>Kapsam bulma
 
-Bulma için kullanılan vCenter hesabının erişimi sınırlanarak bulma kapsamı oluşturulabilir. Kapsamı, veri merkezleri, kümeler, kümeler klasörü, konaklar, konaklar klasörü veya ayrı VM 'Ler vCenter Server şekilde ayarlayabilirsiniz. 
+Bulma için kullanılan vCenter hesabının erişimi sınırlanarak bulma kapsamı oluşturulabilir. Kapsamı, veri merkezleri, kümeler, kümeler klasörü, konaklar, konaklar klasörü veya ayrı VM 'Ler vCenter Server şekilde ayarlayabilirsiniz.
 
+Kapsamı ayarlamak için aşağıdaki adımları gerçekleştirmeniz gerekir:
+1.  VCenter Kullanıcı hesabı oluşturun.
+2.  Gerekli ayrıcalıklara sahip yeni bir rol tanımlayın. (<em>aracısız sunucu geçişi için gereklidir</em>)
+3.  VCenter nesnelerinde Kullanıcı hesabına izin atayın.
+
+**VCenter Kullanıcı hesabı oluşturma**
+1.  VCenter Server Yöneticisi olarak vSphere Web Istemcisinde oturum açın.
+2.   >  **Yönetim** > **SSO kullanıcıları ve grupları** **kullanıcıları** sekmesini tıklatın.
+3.  **Yeni Kullanıcı** simgesine tıklayın.
+4.  Yeni bir kullanıcı oluşturmak için gerekli bilgileri girin ve **Tamam**' a tıklayın.
+
+**Gerekli ayrıcalıklara sahip yeni bir rol tanımlayın** (<em>aracısız sunucu geçişi için gereklidir</em>)
+1.  VCenter Server Yöneticisi olarak vSphere Web Istemcisinde oturum açın.
+2.  **Yönetim** > **Rol Yöneticisi**' ne gidin.
+3.  Açılır menüden vCenter Server seçin.
+4.  **Rol oluştur** eylemi ' ne tıklayın.
+5.  Yeni rol için bir ad yazın. (örneğin, <em>Azure_Migrate</em>).
+6.  Bu [izinleri](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) yeni tanımlanan role atayın.
+7.            **Tamam**'ı tıklatın.
+
+**VCenter nesnelerinde izin atama**
+
+VCenter 'daki envanter nesnelerine atanmış bir role sahip vCenter Kullanıcı hesabına izin atamak için 2 yaklaşım vardır.
+- Sunucu değerlendirmesi için, bulunması gereken VM 'Lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına **salt okuma** rolü uygulanmalıdır. Tüm üst nesneler-konak, konaklar, küme, hiyerarşide veri merkezine kadar olan kümelerin bir klasörü dahil edilecek. Bu izinler hiyerarşideki alt nesnelere yayılmalıdır. 
+
+    Benzer şekilde sunucu geçişi için, Kullanıcı tanımlı bir rol ( <em>Azure _Migrate</em>olarak adlandırılabilir), bu [ayrıcalıklarla](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) geçirilecek VM 'lerin barındırıldığı tüm üst nesneler için vCenter Kullanıcı hesabına uygulanması gerekir.
+
+![İzin ata](./media/tutorial-assess-vmware/assign-perms.png)
+
+- Alternatif yaklaşım, Kullanıcı hesabını ve rolü veri merkezi düzeyinde atamak ve bunları alt nesnelere yaymalıdır. Ardından hesaba, bulmayı/geçirmeyi istemediğiniz her nesne için **erişim** rolü (örneğin, VM 'ler) verin. Bu yapılandırma, kısaberbir yapılandırmadır. Her yeni alt nesneye Ayrıca otomatik olarak üst öğeden devralınan erişim verildiğinden, bu, yanlışlıkla erişim denetimleri sunar. Bu nedenle, ilk yaklaşımı kullanmanızı öneririz.
+ 
 > [!NOTE]
 > Bugün, vCenter hesabının vCenter VM klasör düzeyinde erişimi varsa sunucu değerlendirmesi VM 'Leri bulamaz. Bulma işlemini VM klasörlerine göre yapmak istiyorsanız, vCenter hesabının bir VM düzeyinde salt okuma erişimi olduğundan emin olarak bunu yapabilirsiniz.  Bu, bunu nasıl yapacağınız hakkında yönergeler aşağıda verilmiştir:
 >
