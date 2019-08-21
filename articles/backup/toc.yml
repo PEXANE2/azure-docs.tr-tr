@@ -114,6 +114,8 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Azure Backup Sunucusu’ndan veri kurtarma
           href: backup-azure-alternate-dpm-server.md
+        - name: VMware VM’lerini Azure Backup Sunucusu ile geri yükleme
+          href: restore-azure-backup-server-vmware.md
     - name: Azure Stack üzerinde Azure Backup Sunucusu
       items:
         - name: Azure Backup Sunucusu’nu yükleme

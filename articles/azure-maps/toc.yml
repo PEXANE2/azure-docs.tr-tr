@@ -149,6 +149,8 @@
           href: display-feature-information-android.md
         - name: Kutucuk katmanı ekleme
           href: how-to-add-tile-layer-android-map.md
+    - name: Verilerle ilgili geri bildirim sağlama
+      href: how-to-use-feedback-tool.md
 - name: Başvuru
   items:
     - name: API ve parametre uzantıları

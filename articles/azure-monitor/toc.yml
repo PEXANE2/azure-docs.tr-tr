@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: Geçiş aracını kullanma
               href: platform/alerts-using-migration-tool.md
+            - name: Otomatik geçiş süreci
+              href: platform/alerts-automatic-migration.md
             - name: Klasik ölçüm uyarılarını yönetme
               href: platform/alerts-classic-portal.md
             - name: Resource Manager şablonunu kullanarak klasik ölçüm uyarısı

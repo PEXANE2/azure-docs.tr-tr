@@ -72,7 +72,7 @@
   items:
     - name: Sınıf laboratuvarları
       items:
-        - name: Laboratuvar hesabı oluşturma ve yapılandırma
+        - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)
           items:
             - name: Laboratuvar hesabı oluşturma ve yönetme
               href: classroom-labs/how-to-manage-lab-accounts.md
@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Paylaşılan görüntü galerisi ekleme ve kaldırma
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: 'Sınıf laboratuvarları oluşturma, yapılandırma ve kullanma'
+        - name: Sınıf laboratuvarı oluşturma ve yapılandırma (öğretmen)
           items:
             - name: Sınıf laboratuvarları oluşturma ve yönetme
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -90,8 +90,6 @@
               href: classroom-labs/how-to-create-manage-template.md
             - name: Kullanımı yapılandırma ve denetleme
               href: classroom-labs/how-to-configure-student-usage.md
-            - name: Sınıf laboratuvarlarına erişim
-              href: classroom-labs/how-to-use-classroom-lab.md
             - name: Zamanlamaları oluşturma ve yönetme
               href: classroom-labs/how-to-create-schedules.md
             - name: Bir şablon VM'sinin içinde birden çok VM ile ortam oluşturma
@@ -102,6 +100,10 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Sanal makineler için parola ayarlama veya sıfırlama
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+        - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)
+          items:
+            - name: Sınıf laboratuvarlarına erişim
+              href: classroom-labs/how-to-use-classroom-lab.md
     - name: DevTest Labs
       items:
         - name: Laboratuvar yapılandırma
@@ -120,6 +122,8 @@
               href: configure-lab-remote-desktop-gateway.md
             - name: Laboratuvarda duyuru yayınlama
               href: devtest-lab-announcements.md
+            - name: VM’lerde tarayıcı bağlantısını etkinleştirme
+              href: enable-browser-connection-lab-virtual-machines.md
             - name: Maliyet yönetimini yapılandırma
               href: devtest-lab-configure-cost-management.md
             - name: Otomatik kapatma bildirimleri gönderme
@@ -166,6 +170,8 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Paylaşılan görüntü galerisinden bir görüntüyü kullanarak VM oluşturma
               href: add-vm-use-shared-image.md
+            - name: Tarayıcı üzerinden sanal makinenize bağlanma
+              href: connect-virtual-machine-through-browser.md
             - name: PowerShell veya CLI kullanarak bir sanal makineyi başlatma veya durdurma
               href: use-command-line-start-stop-virtual-machines.md
             - name: Bir VM’yi yeniden başlatma
