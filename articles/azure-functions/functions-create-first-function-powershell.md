@@ -26,7 +26,7 @@ Bu hızlı başlangıç makalesi ilk kez oluşturma hakkında bilgi vermektedir 
 
 ![Visual Studio kod projesinde Azure işlevleri kodu](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
-Kullandığınız [Visual Studio Code için Azure işlevleri uzantısı] yerel olarak bir PowerShell işlevi oluşturmak için ve azure'da yeni bir işlev uygulaması dağıttınız. Uzantı şu an önizleme aşamasındadır. Daha fazla bilgi edinmek için [Visual Studio Code için Azure İşlevleri uzantısı] sayfasına bakın.
+Kullandığınız [Visual Studio Code için Azure işlevleri uzantısı] yerel olarak bir PowerShell işlevi oluşturmak için ve azure'da yeni bir işlev uygulaması dağıttınız. Uzantı şu an önizleme aşamasındadır. Daha fazla bilgi edinmek için [Visual Studio Code için Azure işlevleri uzantısı] sayfasına bakın.
 
 > [!NOTE]  
 > PowerShell desteği [Azure işlevleri uzantısı][Visual Studio Code için Azure işlevleri uzantısı] şu anda varsayılan olarak devre dışıdır. PowerShell desteğini etkinleştirme, bu makaledeki adımlarda biridir.
