@@ -65,7 +65,7 @@ Bağlı hizmet, bir veri deposuna bir veri fabrikasına bağlar. Bağlı hizmet 
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| accessKeyID |Gizli erişim anahtarı kimliği. |dize |Evet |
+| accessKeyID |Gizli erişim anahtarı kimliği. |string |Evet |
 | secretAccessKey |Gizli erişim anahtarı kendisi. |Şifrelenmiş gizli dize |Evet |
 
 >[!NOTE]
@@ -94,10 +94,10 @@ Tüm veri kümesi türleri (örneğin, SQL veritabanı, Azure blob ve Azure tabl
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| bucketName |S3 demetini adı. |Dize |Evet |
-| key |S3 nesnesinin anahtarı. |Dize |Hayır |
-| prefix |S3 nesnesinin anahtarı için önek. Seçili bir nesne anahtarları bu öneki ile başlayın. Yalnızca anahtar boş olduğunda geçerlidir. |Dize |Hayır |
-| version |S3 sürümü oluşturma etkinse, S3 nesnesinin sürümü. |Dize |Hayır |
+| bucketName |S3 demetini adı. |String |Evet |
+| key |S3 nesnesinin anahtarı. |String |Hayır |
+| prefix |S3 nesnesinin anahtarı için önek. Seçili bir nesne anahtarları bu öneki ile başlayın. Yalnızca anahtar boş olduğunda geçerlidir. |String |Hayır |
+| version |S3 sürümü oluşturma etkinse, S3 nesnesinin sürümü. |String |Hayır |
 | format | Şu biçim türlerini destekler: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ayarlama **türü** özelliği şu değerlerden biri olarak biçimine altında. Daha fazla bilgi için [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimine](data-factory-supported-file-and-compression-formats.md#json-format), [Avro biçimi](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format), ve [Parquet biçimi ](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümler. <br><br> Dosyaları olarak kopyalamak istiyorsanız-olan dosya temelli deposu arasında (ikili kopya), her iki girdi ve çıktı veri kümesi tanımları biçimi bölümünde atlayın. |Hayır | |
 | compression | Veri sıkıştırma düzeyi ve türünü belirtin. Desteklenen türler şunlardır: **GZip**, **Deflate**, **Bzıp2**, ve **ZipDeflate**. Desteklenen düzeyleri şunlardır: **En iyi** ve **hızlı**. Daha fazla bilgi için [dosya ve sıkıştırma biçimleri Azure Data factory'de](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır | |
 
