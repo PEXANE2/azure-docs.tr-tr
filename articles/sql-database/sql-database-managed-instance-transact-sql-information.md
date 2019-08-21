@@ -11,28 +11,30 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
-ms.translationtype: MT
+ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624020"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641007"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL veritabanı yönetilen örnek T-SQL Server 'den SQL farklılıkları
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
-Bu makalede, Azure SQL veritabanı yönetilen örneği ve şirket içi SQL Server veritabanı altyapısı arasındaki söz dizimi ve davranış farklılıkları özetlenmektedir ve açıklanmaktadır. Aşağıdaki konular ele alınmıştır:<a name="Differences"></a>
+Bu makalede, Azure SQL veritabanı yönetilen örneği ve şirket içi SQL Server veritabanı altyapısı arasındaki söz dizimi ve davranış farklılıkları özetlenmektedir ve açıklanmaktadır. Yönetilen örnek dağıtım seçeneği, şirket içi SQL Server veritabanı altyapısı ile yüksek uyumluluk sağlar. SQL Server veritabanı altyapısı özelliklerinin çoğu yönetilen bir örnekte desteklenir.
+
+![Geçiş](./media/sql-database-managed-instance/migration.png)
+
+Yönetilen örnekte tanıtılan bazı PaaS sınırlamaları ve SQL Server karşılaştırıldığında bazı davranış değişiklikleri vardır. Farklar aşağıdaki kategorilere ayrılmıştır:<a name="Differences"></a>
 
 - [Kullanılabilirlik](#availability) , [her zaman açık](#always-on-availability) ve yedeklemelerdeki farkları [](#backup)içerir.
 - [Güvenlik](#security) , [Denetim](#auditing), [sertifika](#certificates), [kimlik bilgileri](#credential), [şifreleme sağlayıcıları](#cryptographic-providers), [oturum açmalar ve kullanıcılar](#logins-and-users)ve [hizmet anahtarı ile hizmet ana anahtarı](#service-key-and-service-master-key)arasındaki farkları içerir.
 - [Yapılandırma](#configuration) , [arabellek havuzu genişletme](#buffer-pool-extension), [harmanlama](#collation), [Uyumluluk düzeyleri](#compatibility-levels), [veritabanı yansıtma](#database-mirroring), [veritabanı seçenekleri](#database-options), [SQL Server Agent](#sql-server-agent)ve [tablo seçeneklerindeki](#tables)farklılıkları içerir.
 - [İşlevler](#functionalities) şunlardır [bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [clr](#clr), [DBCC](#dbcc), [Dağıtılmış işlemler](#distributed-transactions), [genişletilmiş olaylar](#extended-events), [dış kitaplıklar](#external-libraries), [FILESTREAM ve FileTable](#filestream-and-filetable), [tam metin Anlamsal arama](#full-text-semantic-search), [bağlı sunucular](#linked-servers), [PolyBase](#polybase), [çoğaltma](#replication), [geri yükleme](#restore-statement), [Hizmet Aracısı](#service-broker), [saklı yordamlar, işlevler ve Tetikleyiciler](#stored-procedures-functions-and-triggers).
 - Sanal ağlar ve alt ağ yapılandırması gibi [ortam ayarları](#Environment) .
-- [Yönetilen örneklerde farklı davranışları olan özellikler](#Changes).
-- [Geçici sınırlamalar ve bilinen sorunlar](#Issues).
 
-Yönetilen örnek dağıtım seçeneği, şirket içi SQL Server veritabanı altyapısı ile yüksek uyumluluk sağlar. SQL Server veritabanı altyapısı özelliklerinin çoğu yönetilen bir örnekte desteklenir.
+Bu özelliklerin çoğu mimari kısıtlamalardır ve hizmet özelliklerini temsil eder.
 
-![Geçiş](./media/sql-database-managed-instance/migration.png)
+Bu sayfada Ayrıca, gelecekte çözümlenecek olan yönetilen örnekte bulunan [bilinen geçici sorunlar](#Issues) açıklanmaktadır.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -499,6 +501,18 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](http
 - `Extended stored procedures`, ve `sp_addextendedproc` içeren`sp_dropextendedproc`desteklenmez.   Bkz. [genişletilmiş saklı yordamlar](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` ve`sp_detach_db` desteklenmez. Bkz. [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)ve [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
+### <a name="system-functions-and-variables"></a>Sistem işlevleri ve değişkenler
+
+Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndürüyor:
+
+- `SERVERPROPERTY('EngineEdition')`8 değerini döndürür. Bu özellik yönetilen bir örneği benzersiz bir şekilde tanımlar. Bkz. [ServerProperty](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')`SQL Server için var olduğu gibi örnek kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz. [ServerProperty (' ÖrnekAdı ')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `@@SERVERNAME`tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz [.@SERVERNAME@](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
+- `SYS.SERVERS`"Name" ve "data_source" özellikleri gibi tam DNS `myinstance.domain.database.windows.net` "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `@@SERVICENAME`SQL Server için mevcut hizmet kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz [.@SERVICENAME@](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID`desteklenir. Azure AD oturum açma, sys. syslogins içinde değilse NULL değerini döndürür. Bkz. [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_SID`desteklenmez. Yanlış veriler döndürülür, bu geçici olarak bilinen bir sorundur. Bkz. [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+
 ## <a name="Environment"></a>Ortam kısıtlamaları
 
 ### <a name="subnet"></a>Subnet
@@ -513,33 +527,25 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](http
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
 - App Service ortamları, Logic Apps ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları küresel olarak bağlandığında farklı bölgelerdeki yönetilen örneklere erişemez [ eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
-### <a name="tempdb-size"></a>TEMPDB boyutu
+### <a name="tempdb"></a>'NIN
 
 Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başına 24 GB 'den büyük olamaz. İş açısından kritik katmanındaki `tempdb` en büyük boyut, örnek depolama boyutuyla sınırlıdır. `Tempdb`günlük dosyası boyutu, Genel Amaçlı ve İş Açısından Kritik katmanlarında 120 GB ile sınırlıdır. Bazı sorgular, üzerinde `tempdb` çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
 
-## <a name="Changes"></a>Davranış değişiklikleri
+### <a name="error-logs"></a>Hata günlükleri
 
-Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndürüyor:
+Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
-- `SERVERPROPERTY('EngineEdition')`8 değerini döndürür. Bu özellik yönetilen bir örneği benzersiz bir şekilde tanımlar. Bkz. [ServerProperty](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')`SQL Server için var olduğu gibi örnek kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz. [ServerProperty (' ÖrnekAdı ')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME`tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz [.@SERVERNAME@](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS`"Name" ve "data_source" özellikleri gibi tam DNS `myinstance.domain.database.windows.net` "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME`SQL Server için mevcut hizmet kavramı yönetilen bir örneğe uygulanamadığından NULL değerini döndürür. Bkz [.@SERVICENAME@](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`desteklenir. Azure AD oturum açma, sys. syslogins içinde değilse NULL değerini döndürür. Bkz. [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
-- `SUSER_SID`desteklenmez. Yanlış veriler döndürülür, bu geçici olarak bilinen bir sorundur. Bkz. [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+## <a name="Issues"></a>Bilinen sorunlar
 
-## <a name="Issues"></a>Bilinen sorunlar ve sınırlamalar
-
-### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişimleri, hizmet katmanı yükseltmesinden sonra çalışmıyor
+### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 
 **Güncel** Ağu 2019
 
-Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri teslim edemiyor. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. Diğer veritabanında GUID 'ye göre hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri ileti teslim edemeyecektir. `DIALOG`
+Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler **kaybolmaz** ve gönderici kuyruğunda bulunabilir. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. Diğer veritabanındaki hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri, hedef hizmete ileti iletileri teslim edilmesini durdurur. `DIALOG`
 
-**Sorunu** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın.
+**Sorunu** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın. Hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
 
-### <a name="some-aad-login-types-cannot-be-impersonated"></a>Bazı AAD oturum açma türlerine kimliğe bürünme yapılamaz
+### <a name="impresonification-of-aad-login-types-is-not-supported"></a>AAD oturum açma türlerinin ımprestozı desteklenmiyor
 
 **Güncel** 2019 Temmuz
 
@@ -547,11 +553,19 @@ Aşağıdaki AAD `EXECUTE AS USER` sorumluları `EXECUTE AS LOGIN` kullanılarak
 -   Diğer ad AAD kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
 - Aad uygulamaları ve hizmet sorumlularına göre AAD oturum açmaları ve kullanıcılar. Bu durumda `15517` ve `15406`aşağıdaki hatalar döndürülür.
 
+### <a name="database-email"></a>Veritabanı e-postası 
+
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail içinde parametre desteklenmiyor
 
 **Güncel** 2019 Nisan
 
 `@query` [Sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) yordamındaki parametresi çalışmıyor.
+
+### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir
+
+**Güncel** Mar 2019
+
+Bir otomatik yük devretme grubundaki bir veritabanında Işlem çoğaltması etkinleştirilmişse, yönetilen örnek Yöneticisi eski birincil üzerindeki tüm yayınları temizlemeli ve başka bir bölgeye yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırmalıdır. Daha fazla ayrıntı için bkz. [çoğaltma](#replication) .
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>AAD oturum açmaları ve kullanıcılar araçlar 'da desteklenmez
 
@@ -588,13 +602,7 @@ Bu örnekte, mevcut veritabanları çalışmaya devam eder ve yeni dosyalar ekle
 
 ### <a name="error-logs-arent-persisted"></a>Hata günlükleri kalıcı değil
 
-Yönetilen örnekte kullanılabilen hata günlükleri kalıcı değil ve boyutu en fazla depolama sınırına dahil değildir. Yük devretme gerçekleşirse hata günlükleri otomatik olarak silinebilir.
-
-### <a name="error-logs-are-verbose"></a>Hata günlükleri ayrıntılı
-
-Yönetilen bir örnek, ayrıntılı bilgileri hata günlüklerine koyar ve bunların çoğu ilgili değildir. 
-
-**Sorunu** İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+Yönetilen örnekte kullanılabilen hata günlükleri kalıcı değil ve boyutu en fazla depolama sınırına dahil değildir. Yük devretme gerçekleşirse hata günlükleri otomatik olarak silinebilir. Yönetilen örnek birkaç sanal makinede birkaç kez taşındığından, hata günlüğü geçmişinde boşluklar olabilir.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor
 
