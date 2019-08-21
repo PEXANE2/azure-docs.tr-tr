@@ -198,7 +198,7 @@ Azure geçişi projesinde çoğaltmakta olduğunuz ilk sanal makine ise, Azure g
 
 Portal bildirimlerinde iş durumunu izleyebilirsiniz.
 
-Çoğaltma durumunu, Azure geçişi 'nde  ****sunucuları çoğaltma** ' ya tıklayarak izleyebilirsiniz: Sunucu geçişi**.
+Çoğaltma durumunu, **Azure geçişi 'nde** sunucuları **çoğaltma ' ya tıklayarak izleyebilirsiniz: Sunucu geçişi**.
 ![Çoğaltmayı izleme](./media/tutorial-migrate-vmware/replicating-servers.png)
 
 
@@ -216,7 +216,7 @@ Delta çoğaltma başladığında, Azure 'a tam geçiş çalıştırmadan önce 
 Test geçişini aşağıdaki şekilde yapın:
 
 
-1. **Geçiş hedefleri** >  **** sunucularındaAzuregeçişi > : **Sunucu geçişi**, **geçirilen sunucuları test et**' e tıklayın.
+1. **Geçiş hedefleri** > **sunucularında** > **Azuregeçişi: Sunucu geçişi**, **geçirilen sunucuları test et**' e tıklayın.
 
      ![Geçirilen sunucuları test et](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
