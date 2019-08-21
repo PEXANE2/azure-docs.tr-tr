@@ -111,8 +111,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |metrics| Çağrılan işlem hattına geçirilecek işlem hattının parametre değerleri| Bağımsız değişken değerlerine yönelik bir JSON nesnesi eşleme parametre adları |
 | logs| Karmaşık tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, önce tanılama ayarlarını al işlemini gerçekleştirin. |
 | category| String| Günlük kategorileri ve bunların saklama ilkeleri dizisi |
-| timeGrain | String | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
-| enabled| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
+| zamandilimi | String | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
+| Etkinletir| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
 | retentionPolicy| Karmaşık tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Yalnızca depolama hesabı seçeneği için kullanılır.|
 | days| Int| Ölçüm veya günlüklerin saklanacağı gün sayısı. 0 değeri, günlükleri süresiz olarak tutar. Yalnızca depolama hesabı seçeneği için kullanılır. |
 
@@ -277,19 +277,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| Düzey |Dize | Tanılama günlüklerinin düzeyi. Düzey 4 her zaman etkinlik çalıştırma günlükleri için durumdur. | `4`  |
-| correlationId |Dize | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Dize | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| Dize| Etkinlik çalıştırmasının KIMLIĞI | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| Dize| İşlem hattı çalıştırmasının KIMLIĞI | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Dize | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Dize | Tanılama günlükleri kategorisi. Bu özelliği "Activityçalıştırmaları" olarak ayarlayın | `ActivityRuns` |
-|level| Dize | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
-|operationName| Dize |Durumu olan etkinliğin adı. Durum başlangıç sinyali ise, bu, olur `MyActivity -`. Durum bitiş `MyActivity - Succeeded` sinyaliyle, son durumu ise | `MyActivity - Succeeded` |
-|Ardışık Düzen adı| Dize | İşlem hattının adı | `MyPipeline` |
-|Özelliğinde| Dize | Etkinliğin adı | `MyActivity` |
-|Başlangıç| Dize | Etkinlik zaman aralığı, UTC biçiminde çalışma başlangıcı | `2017-06-26T20:55:29.5007959Z`|
-|end| Dize | Etkinlik zaman aralığı, UTC biçiminde çalışır. Etkinlik henüz bitmemişse (bir etkinliğin başlaması için tanılama günlüğü), varsayılan değeri `1601-01-01T00:00:00Z` ayarlanır.  | `2017-06-26T20:55:29.5007959Z` |
+| Düzey |String | Tanılama günlüklerinin düzeyi. Düzey 4 her zaman etkinlik çalıştırma günlükleri için durumdur. | `4`  |
+| correlationId |String | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|activityRunId| String| Etkinlik çalıştırmasının KIMLIĞI | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|pipelineRunId| String| İşlem hattı çalıştırmasının KIMLIĞI | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|resourceId| String | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|category| String | Tanılama günlükleri kategorisi. Bu özelliği "Activityçalıştırmaları" olarak ayarlayın | `ActivityRuns` |
+|level| String | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
+|operationName| String |Durumu olan etkinliğin adı. Durum başlangıç sinyali ise, bu, olur `MyActivity -`. Durum bitiş `MyActivity - Succeeded` sinyaliyle, son durumu ise | `MyActivity - Succeeded` |
+|Ardışık Düzen adı| String | İşlem hattının adı | `MyPipeline` |
+|Özelliğinde| String | Etkinliğin adı | `MyActivity` |
+|Başlangıç| String | Etkinlik zaman aralığı, UTC biçiminde çalışma başlangıcı | `2017-06-26T20:55:29.5007959Z`|
+|end| String | Etkinlik zaman aralığı, UTC biçiminde çalışır. Etkinlik henüz bitmemişse (bir etkinliğin başlaması için tanılama günlüğü), varsayılan değeri `1601-01-01T00:00:00Z` ayarlanır.  | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-logs-attributes"></a>İşlem hattı çalıştırma günlüğü öznitelikleri
 
@@ -323,18 +323,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| Düzey |Dize | Tanılama günlüklerinin düzeyi. Düzey 4, etkinlik çalıştırma günlüklerinin durumdur. | `4`  |
-| correlationId |Dize | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Dize | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|RunId| Dize| İşlem hattı çalıştırmasının KIMLIĞI | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Dize | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Dize | Tanılama günlükleri kategorisi. Bu özelliği "ardışık düzen eylemsizlik" olarak ayarlayın | `PipelineRuns` |
-|level| Dize | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
-|operationName| Dize |Durumu olan işlem hattının adı. İşlem hattı çalıştırması tamamlandığında, son durumu "işlem hattı-başarılı"| `MyPipeline - Succeeded` |
-|Ardışık Düzen adı| Dize | İşlem hattının adı | `MyPipeline` |
-|Başlangıç| Dize | Etkinlik zaman aralığı, UTC biçiminde çalışma başlangıcı | `2017-06-26T20:55:29.5007959Z`|
-|end| Dize | Etkinliğin sonu TimeSpan, UTC biçiminde çalışır. Etkinlik henüz bitmemişse (bir etkinliğin başlaması için tanılama günlüğü), varsayılan değeri `1601-01-01T00:00:00Z` ayarlanır.  | `2017-06-26T20:55:29.5007959Z` |
-|status| Dize | İşlem hattı çalıştırmasının son durumu (başarılı veya başarısız) | `Succeeded`|
+| Düzey |String | Tanılama günlüklerinin düzeyi. Düzey 4, etkinlik çalıştırma günlüklerinin durumdur. | `4`  |
+| correlationId |String | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|RunId| String| İşlem hattı çalıştırmasının KIMLIĞI | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|resourceId| String | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|category| String | Tanılama günlükleri kategorisi. Bu özelliği "ardışık düzen eylemsizlik" olarak ayarlayın | `PipelineRuns` |
+|level| String | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
+|operationName| String |Durumu olan işlem hattının adı. İşlem hattı çalıştırması tamamlandığında, son durumu "işlem hattı-başarılı"| `MyPipeline - Succeeded` |
+|Ardışık Düzen adı| String | İşlem hattının adı | `MyPipeline` |
+|Başlangıç| String | Etkinlik zaman aralığı, UTC biçiminde çalışma başlangıcı | `2017-06-26T20:55:29.5007959Z`|
+|end| String | Etkinliğin sonu TimeSpan, UTC biçiminde çalışır. Etkinlik henüz bitmemişse (bir etkinliğin başlaması için tanılama günlüğü), varsayılan değeri `1601-01-01T00:00:00Z` ayarlanır.  | `2017-06-26T20:55:29.5007959Z` |
+|status| String | İşlem hattı çalıştırmasının son durumu (başarılı veya başarısız) | `Succeeded`|
 
 #### <a name="trigger-run-logs-attributes"></a>Çalışma günlükleri özniteliklerini tetikleme
 
@@ -367,19 +367,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| Düzey |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için düzey 4 ' e ayarlanır. | `4`  |
-| correlationId |Dize | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Dize | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|Triggerıd| Dize| Tetikleyici çalıştırmasının KIMLIĞI | `08587023010602533858661257311` |
-|resourceId| Dize | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Dize | Tanılama günlükleri kategorisi. Bu özelliği "ardışık düzen eylemsizlik" olarak ayarlayın | `PipelineRuns` |
-|level| Dize | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
-|operationName| Dize |Başarıyla başlatılıp tetiklenmediğini son durumu olan tetikleyicinin adı. Sinyal başarılı olduysa "MyTrigger-Succeeded"| `MyTrigger - Succeeded` |
-|triggerName| Dize | Tetikleyicinin adı | `MyTrigger` |
-|triggerType| Dize | Tetikleyicinin türü (El Ile tetikleyici veya zamanlama tetikleyicisi) | `ScheduleTrigger` |
-|triggerEvent| Dize | Tetikleyicinin olayı | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|Başlangıç| Dize | Zaman aralığı, UTC biçiminde tetikleme tetiklemesi | `2017-06-26T20:55:29.5007959Z`|
-|status| Dize | Tetikleyicinin başarıyla başlatılıp başlatılmayacağını (başarılı veya başarısız) ilişkin nihai durum | `Succeeded`|
+| Düzey |String | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için düzey 4 ' e ayarlanır. | `4`  |
+| correlationId |String | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|Triggerıd| String| Tetikleyici çalıştırmasının KIMLIĞI | `08587023010602533858661257311` |
+|resourceId| String | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|category| String | Tanılama günlükleri kategorisi. Bu özelliği "ardışık düzen eylemsizlik" olarak ayarlayın | `PipelineRuns` |
+|level| String | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
+|operationName| String |Başarıyla başlatılıp tetiklenmediğini son durumu olan tetikleyicinin adı. Sinyal başarılı olduysa "MyTrigger-Succeeded"| `MyTrigger - Succeeded` |
+|triggerName| String | Tetikleyicinin adı | `MyTrigger` |
+|triggerType| String | Tetikleyicinin türü (El Ile tetikleyici veya zamanlama tetikleyicisi) | `ScheduleTrigger` |
+|triggerEvent| String | Tetikleyicinin olayı | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|Başlangıç| String | Zaman aralığı, UTC biçiminde tetikleme tetiklemesi | `2017-06-26T20:55:29.5007959Z`|
+|status| String | Tetikleyicinin başarıyla başlatılıp başlatılmayacağını (başarılı veya başarısız) ilişkin nihai durum | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics şeması
 
