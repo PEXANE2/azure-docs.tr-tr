@@ -105,14 +105,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama |
 | --- | --- | --- |
-| storageAccountId |Dize | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI |
-| serviceBusRuleId |Dize | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz Service Bus ad alanının Service Bus kural KIMLIĞI. Kural KIMLIĞI şu biçimdedir: "{Service Bus kaynak KIMLIĞI}/authorizationkuralkuralları/{Key Name}".|
+| storageAccountId |String | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI |
+| serviceBusRuleId |String | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz Service Bus ad alanının Service Bus kural KIMLIĞI. Kural KIMLIĞI şu biçimdedir: "{Service Bus kaynak KIMLIĞI}/authorizationkuralkuralları/{Key Name}".|
 | workspaceId | Karmaşık tür | Ölçüm zaman ve saklama ilkeleri dizisi. Şu anda bu özellik boştur. |
 |metrics| Çağrılan işlem hattına geçirilecek işlem hattının parametre değerleri| Bağımsız değişken değerlerine yönelik bir JSON nesnesi eşleme parametre adları |
 | logs| Karmaşık tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, önce tanılama ayarlarını al işlemini gerçekleştirin. |
-| category| Dize| Günlük kategorileri ve bunların saklama ilkeleri dizisi |
-| zamandilimi | Dize | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
-| Etkinletir| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
+| category| String| Günlük kategorileri ve bunların saklama ilkeleri dizisi |
+| timeGrain | String | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
+| enabled| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
 | retentionPolicy| Karmaşık tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Yalnızca depolama hesabı seçeneği için kullanılır.|
 | days| Int| Ölçüm veya günlüklerin saklanacağı gün sayısı. 0 değeri, günlükleri süresiz olarak tutar. Yalnızca depolama hesabı seçeneği için kullanılır. |
 
