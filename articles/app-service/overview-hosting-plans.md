@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932352"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636547"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service plana genel bakış
 
@@ -100,7 +100,7 @@ App Service planınız dilediğiniz zaman yukarı ve aşağı ölçeklendirilebi
 
 Aynı işlem tersine de geçerlidir. Daha yüksek bir katmanın özelliklerine veya özelliklerine artık ihtiyacınız olmadığını düşünüyorsanız, daha düşük bir katmana ölçeklendirebilirsiniz ve bu sayede paradan tasarruf edebilirsiniz.
 
-App Service planını ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](web-sites-scale.md).
+App Service planını ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md).
 
 Uygulamanız diğer uygulamalarla aynı App Service planalıyorsa, işlem kaynaklarını yalıtarak uygulamanın performansını geliştirmek isteyebilirsiniz. Uygulamayı ayrı bir App Service planına taşıyarak bunu yapabilirsiniz. Daha fazla bilgi için bkz. [bir uygulamayı başka bir App Service planına taşıma](app-service-plan-manage.md#move).
 

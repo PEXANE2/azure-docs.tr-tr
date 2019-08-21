@@ -1,65 +1,63 @@
 ---
-title: Azure portal - Azure Search bir Azure Search dizini oluşturma
-description: Azure portalında yerleşik dizin tasarımcıları kullanarak arama için dizin oluşturmayı öğrenin.
-manager: cgronlun
+title: Azure portal-Azure Search Azure Search dizin oluşturma
+description: Yerleşik bir portal Dizin tasarımcıları kullanarak Azure Search için dizin oluşturmayı öğrenin.
+manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 02/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6a2bac71c37cc750eb24e3492ecdcdf0b2333cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60817305"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638822"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>Portalda Azure Search dizini oluşturma
+# <a name="create-an-azure-search-index-in-the-portal"></a>Portalda Azure Search dizin oluşturma
 
-Azure Search'ü içeren yerleşik bir dizin Tasarımcısı prototipleri için yararlı portalında veya oluşturma bir [arama dizini](search-what-is-an-index.md) Azure Search hizmetinizde barındırılan. Araç, şema yapımı için kullanılır. Tanımı kaydedin, boş bir dizin tam olarak Azure Search'te ifade olur. Aranabilir verileri ile yüklediğiniz nasıl size bağlıdır.
+Azure Search, Portal 'da Prototiplerde faydalı olan yerleşik bir dizin tasarımcısını veya Azure Search hizmetinizde barındırılan bir [arama dizini](search-what-is-an-index.md) oluşturmayı içerir. Araç, şema oluşturma için kullanılır. Tanımı kaydettiğinizde boş bir dizin Azure Search ' de tam olarak ifade edilir. Aranabilir verilerle nasıl yüklenir?
 
-Dizin tasarımcısını dizin oluşturma için yalnızca bir yaklaşımdır. Programlı olarak kullanarak bir dizin oluşturabilirsiniz [.NET](search-create-index-dotnet.md) veya [REST](search-create-index-rest-api.md) API'leri.
+Dizin Tasarımcısı dizin oluşturmak için yalnızca bir yaklaşımdır. Programlama yoluyla, [.net](search-create-index-dotnet.md) veya [rest](search-create-index-rest-api.md) API 'lerini kullanarak bir dizin oluşturabilirsiniz.
 
 ## <a name="start-index-designer"></a>Dizin tasarımcısını Başlat
 
 1. [Azure portalında](https://portal.azure.com) oturum açın ve hizmet panosunu açın. Atlama çubuğundaki **Tüm hizmetler**’e tıklayarak geçerli abonelikteki mevcut "arama hizmetleri" için arama yapabilirsiniz. 
 
-2. Tıklayın **dizin** sayfanın üst kısmındaki komut çubuğunda bağlantı.
+2. Sayfanın en üstündeki komut çubuğunda **Dizin Ekle** bağlantısına tıklayın.
 
-   ![Komut çubuğunda dizin Bağlantı Ekle](media/search-create-index-portal/add-index.png "komut çubuğunda dizin Bağlantı Ekle")
+   ![Komut çubuğunda Dizin bağlantısı ekle](media/search-create-index-portal/add-index.png "Komut çubuğunda Dizin bağlantısı ekle")
 
-3. Azure Search dizininizi adlandırın. Dizin adları, dizin oluşturma ve sorgu işlemlerinde başvurulur. Dizin adı, dizinle yapılan bağlantılarda ve Azure Search REST API’sinde HTTP istekleri göndermek için kullanılan uç nokta URL’sinin bir parçasını oluşturur.
+3. Azure Search dizininizi adlandırın. Dizin adlarına dizin oluşturma ve sorgu işlemlerinde başvurulur. Dizin adı, dizinle yapılan bağlantılarda ve Azure Search REST API’sinde HTTP istekleri göndermek için kullanılan uç nokta URL’sinin bir parçasını oluşturur.
 
    * En başta bir harf kullanın.
    * Yalnızca küçük harfleri, rakamları veya kısa çizgileri ("-") kullanın.
    * Adı 60 karakterle sınırlayın.
 
-## <a name="add-fields"></a>Alanlar ekleme
+## <a name="add-fields"></a>Alan Ekle
 
-Dizin oluşturma, dizininizdeki aranabilir verileri tanımlayan bir *Alanlar koleksiyonunu* içerir. Tamamen alanlar koleksiyonu ayrı olarak karşıya yüklediğiniz belgelerin yapısını belirtir. Gerekli ve isteğe bağlı alanlar adlandırılmış ve yazılmış, alanın nasıl kullanılabileceğini belirleyen dizin öznitelikleriyle birlikte bir alanlar koleksiyonu içerir.
+Dizin oluşturma, dizininizdeki aranabilir verileri tanımlayan bir *Alanlar koleksiyonunu* içerir. Tamamen, alanlar koleksiyonu ayrı olarak karşıya yüklediğiniz belgelerin yapısını belirler. Alanlar koleksiyonu, alanın nasıl kullanılabileceğini belirleyecek dizin öznitelikleri ile adlandırılmış ve yazılan isteğe bağlı alanları içerir.
 
-1. Tam olarak karşıya yüklediğiniz, ayarı belgeleri belirtmek için alanlar ekleme bir [veri türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) her biri için. Örneğin, belgeler bir *otel kimliği*, *otel adı*, *adresi*, *Şehir*, ve *bölge*, dizindeki her biri için karşılık gelen bir alan oluşturun. Gözden geçirme [bölümüne alan tasarım kılavuzunu](#design) özniteliklerini ayarlama konusunda Yardım.
+1. Karşıya yükleyeceğiniz belgeleri tam olarak belirtmek için alanlar ekleyin, her biri için bir [veri türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) belirleyin. Örneğin, belgeler bir *otel kimliği*, *otel adı*, *Adres*, *şehir*ve *bölge*içeriyorsa, dizindeki her biri için karşılık gelen bir alan oluşturun. Öznitelikleri ayarlamayla ilgili yardım için [aşağıdaki bölümde yer alarak bulunan tasarım kılavuzunu](#design) gözden geçirin.
 
-2. Belirtin bir *anahtarı* Edm.String türünde alan. Bu alanın değerlerini her belgenin benzersiz şekilde tanımlamalıdır. Varsayılan olarak alan, *id* olarak adlandırılır, ancak [adlandırma kurallarına](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) uygun şekilde alanı yeniden adlandırabilirsiniz. Örneğin, alanlar koleksiyonu içerir, *otel kimliği*, Kiracı anahtarınızı için seçmelisiniz. Her Azure Search dizini için bir anahtar alan zorunludur ve dize olmalıdır.
+2. EDM. String türünde bir *anahtar* alanı belirtin. Bu alanın değerleri her belgeyi benzersiz şekilde tanımlamalıdır. Varsayılan olarak alan, *id* olarak adlandırılır, ancak [adlandırma kurallarına](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) uygun şekilde alanı yeniden adlandırabilirsiniz. Örneğin, alanlar koleksiyonunuz *otel kimliği*içeriyorsa, anahtarınız için bunu seçersiniz. Her Azure Search dizini için bir anahtar alan zorunludur ve dize olmalıdır.
 
-3. Her bir alan özniteliklerini ayarlayın. Dizin tasarımcısını veri türü için geçersiz olan herhangi bir özniteliği dahil değildir, ancak ne içerecek şekilde önerisi yoktur. Sonraki bölümde öznitelikleri neler olduğunu anlama açısından yönergeleri inceleyin.
+3. Her bir alanda öznitelikleri ayarlayın. Dizin Tasarımcısı, veri türü için geçersiz olan tüm öznitelikleri dışlar, ancak nelerin ekleneceğini tavsiye etmez. Özniteliklerin ne için olduğunu anlamak için sonraki bölümde yer alarak bulunan Kılavuzu gözden geçirin.
 
-    Azure Search API’si belgeleri, basit bir *oteller* dizinin yer aldığı kod örneklerini içerir. Aşağıdaki ekran görüntüsünde, dizin tanımı sırasında belirtilen Fransızca Dil çözümleyicisini içeren dizin tanımını görebilirsiniz, portalda uygulama olarak yeniden oluşturabilirsiniz.
+    Azure Search API’si belgeleri, basit bir *oteller* dizinin yer aldığı kod örneklerini içerir. Aşağıdaki ekran görüntüsünde, Dizin tanımı sırasında belirtilen Fransızca dil Çözümleyicisi de dahil olmak üzere dizin tanımını görebilirsiniz. Bu, portalda alıştırma olarak yeniden oluşturabilirsiniz.
 
-    ![Hotels tanıtım dizini](media/search-create-index-portal/field-definitions.png "Hotels tanıtım dizini")
+    ![Oteller tanıtım dizini](media/search-create-index-portal/field-definitions.png "Oteller tanıtım dizini")
 
-4. İşiniz bittiğinde tıklayın **Oluştur** kaydedip dizini oluşturmak için.
+4. İşiniz bittiğinde, dizini kaydetmek ve oluşturmak için **Oluştur** ' a tıklayın.
 
 <a name="design"></a>
 
-## <a name="set-attributes"></a>Öznitelikleri Ayarla
+## <a name="set-attributes"></a>Öznitelikleri ayarla
 
 İstediğiniz zaman yeni alanlar ekleyebilseniz de, dizinin ömrü boyunca mevcut alan tanımları kilitlenir. Bu nedenle geliştiriciler genellikle basit dizinler oluşturmak, fikirleri test etmek veya portal sayfalarını kullanarak bir ayarı bulmak için portalı kullanır. Dizini kolayca yeniden derleyebilmeniz için kod tabanlı bir yaklaşım izlerseniz, bir dizin tasarımı çerçevesinde sık sık yapılan yineleme daha verimli olur.
 
-Dizin kaydedilmeden önce çözümleyiciler ve öneri araçları alanlarla ilişkilendirilir. Oluşturmakta olduğunuz dizin tanımınıza dil Çözümleyicileri veya öneri Araçları eklemek emin olun.
+Dizin kaydedilmeden önce çözümleyiciler ve öneri araçları alanlarla ilişkilendirilir. Siz oluştururken Dizin tanımınıza dil Çözümleyicileri veya öneri araçları eklediğinizden emin olun.
 
 Dize alanları genellikle **Aranabilir** ve **Alınabilir** olarak işaretlenir. Arama sonuçlarını daraltmak için kullanılan alanlar arasında **Sıralanabilir**, **Filtrelenebilir** ve **Modellenebilir** alanları yer alır.
 
@@ -78,7 +76,7 @@ Alan öznitelikleri, bir alanın nasıl kullanıldığını; örneğin, tam meti
 
 Azure Search dizini oluşturduktan sonra bir sonraki adıma geçebilirsiniz: [aranabilir verileri dizine yükleme](search-what-is-data-import.md).
 
-Alternatif olarak, siz de ele geçirebilir bir [dizinlere daha ayrıntılı Görünüm](search-what-is-an-index.md). Alanlar koleksiyonuna ek olarak bir dizin, çözümleyicileri, öneri araçlarını, puanlama profillerini ve CORS ayarlarını da belirtir. Portal, en yaygın öğeleri tanımlamak için sekmeli sayfalar sağlar: Alanlar, çözümleyiciler ve öneri araçları. Başka öğeler oluşturmak veya değiştirmek için REST API’sini veya .NET SDK’sını kullanabilirsiniz.
+Alternatif olarak, [dizinlere daha ayrıntılı bir bakış](search-what-is-an-index.md)da alabilirsiniz. Alanlar koleksiyonuna ek olarak bir dizin, çözümleyicileri, öneri araçlarını, puanlama profillerini ve CORS ayarlarını da belirtir. Portal en yaygın öğeleri tanımlamaya yönelik sekmeli sayfalar sağlar: Alanlar, çözümleyiciler ve öneri araçları. Başka öğeler oluşturmak veya değiştirmek için REST API’sini veya .NET SDK’sını kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

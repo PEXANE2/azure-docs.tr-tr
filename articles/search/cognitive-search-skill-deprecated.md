@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 57dd8e47d44248270920e44268b99c98d399504d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841100"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635910"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Kullanım dışı bilişsel arama becerileri
 
@@ -25,7 +24,7 @@ Bu belge kullanım dışı kabul edilen bilişsel becerileri açıklar. İçerik
 * Beceri adı: Kullanım dışı bırakılacak yeteneğin adı, @odata.type özniteliğiyle eşlenir.
 * Son kullanılabilir API sürümü: Azure Search ortak API 'sinin, karşılık gelen kullanım dışı bırakılmış beceriye sahip becerileri ile oluşturulabileceği/güncelleştirilebilen son sürümü.
 * Destek sonu: Karşılık gelen yeteneğin desteklenmeyen kabul edildiği son gün. Daha önce oluşturulan becerileri hala çalışmaya devam etmelidir, ancak kullanıcıların kullanım dışı bir beceriye geçirilmesi önerilir.
-* Öneriler: Geçiş yolu, desteklenen bir yetenek kullanacak şekilde ilet. Kullanıcıların destek almaya devam etmek için önerileri izlemesi önerilir.
+* Öneri Geçiş yolu, desteklenen bir yetenek kullanacak şekilde ilet. Kullanıcıların destek almaya devam etmek için önerileri izlemesi önerilir.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft. yetenekler. Text. Namedentityrecognitionbeceri
 

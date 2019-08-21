@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 94035fda6b1dff491a69c0f0001019ccd753d4e8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ebf4f516b8f90ce2ba8b277281300ae3239821c5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816623"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640797"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -82,7 +82,7 @@ Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 [Yönetilen örnek kaynak limitlerdeki](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)donanım oluşturmaları arasındaki fark hakkında daha fazla bilgi bulabilirsiniz.
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık AustraliaEast bölgesinde desteklenmez.
+> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
 
 ## <a name="managed-instance-service-tiers"></a>Yönetilen örnek hizmeti katmanları
 

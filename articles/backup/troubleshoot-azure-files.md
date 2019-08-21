@@ -4,22 +4,21 @@ description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırası
 ms.service: backup
 author: dcurwin
 ms.author: dacurwin
-ms.date: 07/22/2019
+ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 486c0ae674f1549206b7aa3110faf31132c22f2a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639401"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637577"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure Dosya Paylaşımlarını yedekleme sorunlarını giderme
 Aşağıdaki tablolarda listelenen bilgilerle Azure Dosya Paylaşımları yedeklemesi kullanılırken karşılaşılan sorunları ve hataları giderebilirsiniz.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Önizleme sırasında Azure dosya paylaşımı yedeklemesine yönelik sınırlamalar
 Azure Dosya paylaşımları için yedekleme, Önizleme aşamasındadır. Hem genel amaçlı v1 hem de genel amaçlı v2 depolama hesaplarında Azure dosya paylaşımları desteklenir. Aşağıdaki yedekleme senaryoları, Azure dosya paylaşımları için desteklenmemektedir:
-- Sanal Ağların veya Güvenlik Duvarının etkin olduğu depolama hesaplarında Azure dosya paylaşımlarını koruyamazsınız.
 - Azure Backup kullanarak Azure dosyalarını korumak için kullanılabilir CLı yoktur.
 - Günlük zamanlanan maksimum yedekleme sayısı birdir.
 - Günlük zamanlanan maksimum istek üzerine yedekleme sayısı dörttür.
@@ -51,7 +50,6 @@ Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
 | Bu dosya paylaşımı için anlık görüntü sayısı üst sınırına ulaştınız, eski görüntülerin süresi dolduktan sonra yenilerini almanız mümkün olacaktır. | <ul><li> Bu hata, bir Dosya için birden fazla isteğe bağlı yedekleme oluşturduğunuzda oluşabilir. <li> Azure Backup tarafından alınanlar da dahil olmak üzere, Dosya paylaşımı başına 200 anlık görüntü sınırı söz konusudur. Zamanlanmış olan daha eski yedeklemeler (veya anlık görüntüler) otomatik olarak temizlenir. Üst sınıra ulaşılırsa isteğe bağlı yedeklemelerin (veya anlık görüntülerin) silinmesi gerekir.<li> Azure Dosyaları portalından isteğe bağlı yedeklemeleri (Azure dosya paylaşımı anlık görüntülerini) silin. **Not**: Azure Backup tarafından oluşturulan anlık görüntüleri silerseniz kurtarma noktalarını kaybedersiniz. |
 | Depolama hizmeti azaltması nedeniyle Dosya paylaşımını yedekleme veya geri yükleme başarısız oldu. Bunun sebebi, depolama hizmetinin, söz konusu depolama hesabına yönelik diğer istekleri işlemekle meşgul olmasından kaynaklanıyor olabilir.| Bir süre sonra işlemi yeniden deneyin. |
 | Hedef Dosya Paylaşımı Bulunamadı hatası ile geri yükleme başarısız oldu. | <ul><li>Seçilen Depolama Hesabının mevcut olduğundan ve Hedef Dosya paylaşımının silinmediğinden emin olun. <li> Depolama Hesabının, Dosya paylaşımı yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun. |
-| Sanal Ağların etkin olduğu Depolama Hesaplarında Azure Dosya Paylaşımları için Azure Backup şu an için desteklenmemektedir. | Başarılı yedeklemeler ve geri yükleme işlemleri için Depolama Hesabınızda Sanal Ağları devre dışı bırakın. |
 | Depolama hesabının Kilitli durumda olması nedeniyle Yedekleme veya Geri Yükleme işleri başarısız oldu. | Depolama Hesabı üzerindeki kilidi kaldırın veya okuma kilidi yerine silme kilidini kullanarak işlemi yeniden deneyin. |
 | Başarısız dosyaların sayısı, eşik değerinden daha fazla olduğu için kurtarma başarısız oldu. | <ul><li> Kurtarma hatası nedenleri bir dosyada listelenmektedir. (Yol, İş ayrıntılarında belirtilir.) Lütfen hataları giderin ve yalnızca başarısız dosyalar için geri yükleme işlemini yeniden deneyin. <li> Dosya geri yükleme hatalarının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması, <br/> - Üst dizinde başarısız dosyayla aynı ada sahip bir dizinin mevcut olması. |
 | Hiçbir dosya kurtarılamadığı için kurtarma başarısız oldu. | <ul><li> Kurtarma hatası nedenleri bir dosyada listelenmektedir. (Yol, İş ayrıntılarında belirtilir.) Hataları giderin ve yalnızca başarısız dosyalar için geri yükleme işlemlerini yeniden deneyin. <li> Dosya geri yükleme hatasının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması. <br/> - Üst dizinde başarısız dosyayla aynı ada sahip bir dizinin mevcut olması. |

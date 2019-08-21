@@ -1,7 +1,7 @@
 ---
-title: Soru-cevap Oluşturucu, soru-cevap Oluşturucu hizmeti - yükseltme
+title: Soru-Cevap Oluşturma hizmetinizi yükseltin-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Daha iyi kaynakları yönetmek için soru-cevap Oluşturucu hizmetlerinizi yükseltme veya paylaşın.
+description: Kaynakları daha iyi yönetmek için Soru-Cevap Oluşturma hizmetlerinizi paylaşma veya yükseltme.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,83 +10,83 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439759"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640478"
 ---
-# <a name="share-or-upgrade-your-qna-maker-service"></a>Soru-cevap Oluşturucu hizmetini veya paylaşın
-Daha iyi kaynakları yönetmek için soru-cevap Oluşturucu hizmetlerinizi yükseltme veya paylaşın. 
+# <a name="share-or-upgrade-your-qna-maker-service"></a>Soru-Cevap Oluşturma hizmetinizi paylaşma veya yükseltme
+Kaynakları daha iyi yönetmek için Soru-Cevap Oluşturma hizmetlerinizi paylaşma veya yükseltme. 
 
-Soru-cevap Oluşturucu yığınının tek tek bileşenler ilk oluşturulduktan sonra yükseltmeyi seçebilir. SKU seçimi ve bağımlı bileşenler ayrıntılarını görmek [burada](https://aka.ms/qnamaker-docs-capacity).
+İlk oluşturulduktan sonra Soru-Cevap Oluşturma yığının tek tek bileşenlerini yükseltmeyi seçebilirsiniz. Bağımlı bileşenlerin ve SKU seçiminin ayrıntılarına bakın. [](https://aka.ms/qnamaker-docs-capacity)
 
-## <a name="share-existing-services-with-qna-maker"></a>Soru-cevap Oluşturucu ile var olan hizmetleri paylaşın
+## <a name="share-existing-services-with-qna-maker"></a>Mevcut hizmetleri Soru-Cevap Oluşturma ile paylaşma
 
-Soru-cevap Oluşturucu, çeşitli Azure kaynakları oluşturur. Yönetim işlemlerini azaltmaya ve maliyet paylaşmasını yararlanmak için neleri görebileceği ve neleri paylaşamaz anlamak için aşağıdaki tabloyu kullanın:
+Soru-Cevap Oluşturma çeşitli Azure kaynakları oluşturur. Yönetim ve maliyet paylaşımının avantajlarından yararlanmak için aşağıdaki tabloyu kullanarak neleri paylaşabdiklerinizi ve neleri paylaşabileceğinizi öğrenin:
 
 |Hizmet|Paylaş|
 |--|--|
 |Bilişsel Hizmetler|X|
-|App service planı|✔|
+|Uygulama hizmeti planı|✔|
 |App Service|X|
 |Application Insights|✔|
 |Arama hizmeti|✔|
 
-## <a name="upgrade-qna-maker-management-sku"></a>Soru-cevap Oluşturucu Yönetimi SKU yükseltme
+## <a name="upgrade-qna-maker-management-sku"></a>Soru-Cevap Oluşturma yönetimi SKU 'SU yükselt
 
-Daha fazla sorular ve cevaplar, Bilgi Bankası'ndaki, ihtiyacınız olduğunda geçerli katmanınızı fiyatlandırma katmanı, soru-cevap Oluşturucu hizmetini yükseltin. 
+Bilgi tabanınızda, geçerli katmanınızın ötesinde daha fazla soru ve yanıt almanız gerektiğinde Soru-Cevap Oluşturma Hizmeti fiyatlandırma katmanınızı yükseltin. 
 
-Soru-cevap Oluşturucu yönetim SKU yükseltmek için:
+Soru-Cevap Oluşturma yönetim SKU 'sunu yükseltmek için:
 
-1. Azure Portalı'nda soru-cevap Oluşturucu kaynağınıza gidin ve seçin **fiyatlandırma katmanı**.
+1. Azure portal Soru-Cevap Oluşturma kaynağına gidin ve **fiyatlandırma katmanı**' nı seçin.
 
-    ![Soru-cevap Oluşturucu kaynak](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
+    ![Soru-Cevap Oluşturma kaynağı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-2. Uygun SKU ve ENTER tuşuna seçin **seçin**.
+2. Uygun SKU 'yu seçin ve **Seç**' e basın.
 
-    ![Soru-cevap Oluşturucu fiyatlandırması](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
+    ![Soru-Cevap Oluşturma fiyatlandırması](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>App Service'i Yükselt
+## <a name="upgrade-app-service"></a>App Service 'i yükselt
 
- Bilgi bankanızı istemci uygulamanıza ilişkin daha fazla isteklere hizmet gerektiğinde, app service fiyatlandırma katmanına yükseltin.
+ Bilgi tabanınızın istemci uygulamanızdan daha fazla istek sunması gerektiğinde, App Service fiyatlandırma katmanınızı yükseltin.
 
-Yapabilecekleriniz [ölçeği](https://docs.microsoft.com/azure/app-service/web-sites-scale) veya uygulama hizmeti ölçeklendirin.
+Uygulama hizmetinin [ölçeğini](https://docs.microsoft.com/azure/app-service/manage-scale-up) değiştirebilir veya azaltabilirsiniz.
 
-1. Azure portalında uygulama hizmeti kaynağına gidin ve seçin **ölçeği** veya **ölçeğini** gerektiği şekilde Seçenekler.
+1. Azure portal App Service kaynağına gidin ve gerektiğinde **ölçeği yukarı** veya **aşağı genişlet** seçeneğini belirleyin.
 
-    ![Soru-cevap Oluşturucu app service ölçek](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+    ![Soru-Cevap Oluşturma App Service ölçeği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-## <a name="upgrade-azure-search-service"></a>Azure arama hizmetini yükseltin
+## <a name="upgrade-azure-search-service"></a>Azure Search hizmetini yükselt
 
-Birçok bilgi bankaları planlama yaparken, Azure Search hizmetinizin fiyatlandırma katmanına yükseltin. 
+Birçok bilgi tabanınız olduğunu planlarken Azure Search hizmeti fiyatlandırma katmanınızı yükseltin. 
 
-Şu anda bir yerinde gerçekleştirmek mümkün değil Azure yükseltmesini SKU arayın. Ancak, yeni bir Azure Search'ü kaynak istenen SKU ile oluşturmak, yeni kaynak için verileri geri ve soru-cevap Oluşturucu yığına Bağla.
+Şu anda Azure Search SKU 'sunda yerinde yükseltme yapmak mümkün değildir. Ancak, istenen SKU ile yeni bir Azure Search kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve sonra Soru-Cevap Oluşturma yığınına bağlayabilirsiniz.
 
-1. Azure portalında yeni bir Azure Search'ü kaynak oluşturmak ve istenen SKU seçin.
+1. Azure portal yeni bir Azure Search kaynağı oluşturun ve istediğiniz SKU 'yu seçin.
 
-    ![Soru-cevap Oluşturucu Azure arama kaynak](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+    ![Azure Search kaynağı Soru-Cevap Oluşturma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-2. Dizinler, özgün Azure Search'ü kaynaktan yeni bir tane geri yükleyin. Yedekleme geri yükleme örnek kodu görmek [burada](https://github.com/pchoudhari/QnAMakerBackupRestore).
+2. Dizinleri özgün Azure Search kaynağından yeni bir kaynağa geri yükleyin. Yedekleme geri yükleme örnek koduna [buradan](https://github.com/pchoudhari/QnAMakerBackupRestore)bakın.
 
-3. Verileri geri yüklendikten sonra yeni Azure Search'ü kaynağa, select Git **anahtarları**ve Not **adı** ve **yönetici anahtarını**.
+3. Veriler geri yüklendikten sonra, yeni Azure Arama kaynağınız ' ne gidin, **anahtarlar**' ı seçin ve **adı** ve **yönetici anahtarı**' nı aklınızda olun.
 
-    ![Soru-cevap Oluşturucu Azure arama anahtarları](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
+    ![Azure Arama anahtarları Soru-Cevap Oluşturma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-4. Yeni Azure Search'ü kaynak için soru-cevap Oluşturucu yığın bağlamak için soru-cevap Oluşturucu App Service'e gidin.
+4. Yeni Azure Search kaynağını Soru-Cevap Oluşturma yığınına bağlamak için Soru-Cevap Oluşturma App Service 'e gidin.
 
-    ![Soru-cevap Oluşturucu appservice](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
+    ![Soru-Cevap Oluşturma appservice](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-5. Seçin **uygulama ayarları** değiştirin **AzureSearchName** ve **AzureSearchAdminKey** 3. adımdaki alanları.
+5. **Uygulama ayarları** ' nı seçin ve 3. adımdaki **AzureSearchName** ve **AzureSearchAdminKey** alanlarını değiştirin.
 
-    ![Soru-cevap Oluşturucu appservice ayarı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
+    ![Soru-Cevap Oluşturma appservice ayarı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
 6. App service'ı yeniden başlatın.
 
-    ![Soru-cevap Oluşturucu appservice yeniden başlatma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    ![Appservice 'i Soru-Cevap Oluşturma yeniden başlatma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Soru-cevap Oluşturucu API'si kullanma](../Quickstarts/csharp.md)
+> [Soru-Cevap Oluşturma API'si kullan](../Quickstarts/csharp.md)

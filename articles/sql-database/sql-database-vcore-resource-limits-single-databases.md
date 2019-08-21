@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: f69fc89fe5634c9467cf728c7ab5c4d8ac6c5c74
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6a29d1e001d4c647d5b975b7e746eced29962ee4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512306"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637256"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları
 
@@ -35,7 +35,7 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 ## <a name="general-purpose-service-tier-for-provisioned-compute"></a>Sağlanan işlem için hizmet katmanını Genel Amaçlı
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık AustraliaEast bölgesinde desteklenmez.
+> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
 
 ### <a name="gen4-compute-generation-part-1"></a>4\. nesil işlem oluşturma (Bölüm 1)
 
@@ -184,7 +184,7 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 ## <a name="business-critical-service-tier-for-provisioned-compute"></a>Sağlanan işlem için hizmet katmanını İş Açısından Kritik
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık AustraliaEast bölgesinde desteklenmez.
+> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
 
 ### <a name="gen4-compute-generation-part-1"></a>4\. nesil işlem oluşturma (Bölüm 1)
 

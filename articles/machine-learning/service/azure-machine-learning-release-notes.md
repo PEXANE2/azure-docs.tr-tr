@@ -10,18 +10,88 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: MT
+ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828626"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639939"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
 
 Bu makalede, Azure Machine Learning hizmet sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://aka.ms/aml-sdk) sayfasına gidin.
 
 Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Python v 1.0.57 için SDK Azure Machine Learning
++ **Yeni Özellikler**
+  + Automatedml tarafından tüketilebilmesi için etkinleştirildi `TabularDataset` . Hakkında `TabularDataset`daha fazla bilgi edinmek için lütfen https://aka.ms/azureml/howto/createdatasets adresini ziyaret edin.
+  
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **Oto ml-Client-Core-NativeClient**
+    + Bir hata düzeltildi, eğitim ve/veya doğrulama etiketleri (y ve y_valid), Pandas dataframe biçiminde sağlandığı halde bir sayısal tuş y dizisi olarak değil, ortaya çıktı.
+    + Yalnızca verileri `RawDataContext` `AutoMLBaseSettings` ve nesneyi gerektirecek şekilde oluşturmak için arabirimi güncelleştirildi.
+    +  Oto ml kullanıcılarına tahmin sırasında yeterince uzun olmayan eğitim serisini bırakmaya izin verin. -Oto ml kullanıcılarına, tahmin sırasında eğitim kümesinde mevcut olmayan test kümesinden graıns 'yi bırakması izin verin.
+  + **Azure-CLI-ml**
+    + Artık, Microsoft tarafından oluşturulan ve müşteri sertifikası için AKS kümesinde dağıtılan Puanlama uç noktası için SSL sertifikasını güncelleştirebilirsiniz.
+  + **azureml-oto ml-çekirdek**
+    + Eksik etiketlere sahip satırların düzgün şekilde kaldırılmadığı, oto ml 'deki bir sorun düzeltildi.
+    + Oto ml 'de geliştirilmiş hata günlüğü; Tam hata iletileri artık her zaman günlük dosyasına yazılır.
+    + Oto, `azureml-defaults` `azureml-explain-model`, ve`azureml-dataprep`dahil olmak üzere paket sabitlenmesini güncelleştirmiştir. Oto, paket uyuşmazlıkları ( `azureml-train-automl` paket hariç) üzerinde artık uyarı vermez.
+    + Zaman serisi 'te CV bölünmesinin eşit olmadığı, küme hesaplamasının başarısız olmasına neden olan bir sorun düzeltildi.
+    + Çapraz doğrulama eğitim türü için ensebir yineleme çalıştırırken, veri kümesinin tamamında eğitilen modelleri indirirken sorun yaşadığımızda, model ağırlıkları ve oylama 'ye beslendiği modeller arasında bir tutarsızlık vardı topluluğu.
+    + Bir hata düzeltildi, eğitim ve/veya doğrulama etiketleri (y ve y_valid), Pandas dataframe biçiminde sağlandığı halde bir sayısal tuş y dizisi olarak değil, ortaya çıktı.
+    + Giriş tablolarının Boole sütunlarında hiç karşılaşılmadığı zaman tahmin görevlerinde sorun düzeltildi.
+    + Oto ml kullanıcılarına tahmin sırasında yeterince uzun olmayan eğitim serisini bırakmaya izin verin. -Oto ml kullanıcılarına, tahmin sırasında eğitim kümesinde mevcut olmayan test kümesinden graıns 'yi bırakması izin verin.
+  + **azureml-çekirdek**
+    + Blob_cache_timeout parametresi sıralaması ile ilgili sorun düzeltildi.
+    + Dış sığdırma ve özel durum türlerini sistem hatalarına ekledi.
+    + Uzak çalıştırmalar için Key Vault gizli dizileri için destek eklendi. Çalışma alanınızda ilişkili olan anahtar kasasından gizli dizileri eklemek, almak ve listelemek için bir azureml. Core. keykasa. Keykasası sınıfı ekleyin. Desteklenen işlemler şunlardır:
+      + azureml. Core. Workspace. Workspace. Get _default_keykasa()
+      + azureml. Core. keykasa. Keykasası. set _secret (ad, değer)
+      + azureml. Core. keykasa. Keykasası. _gizli dizileri ayarla (secrets_dict)
+      + azureml. Core. keykasa. Keykasası. Get _secret (ad)
+      + azureml. Core. keykasa. Keykasası. Get _gizlilikler (secrets_list)
+      + azureml. Core. keykasa. Keykasa. list_secrets ()
+    + Varsayılan anahtar kasasını elde etmek ve Uzaktan çalıştırma sırasında gizli dizileri almak için ek Yöntemler:
+      + azureml. Core. Workspace. Workspace. Get _default_keykasa()
+      + azureml. Core. Run. Run. Get _secret (ad)
+      + azureml. Core. Run. Run. Get _gizlilikler (secrets_list)
+    + Gönderme-Hyperdrive CLı komutuna ek geçersiz kılma parametreleri eklendi.
+    + API çağrılarının güvenilirliğini artırmak, yaygın istekler Kitaplığı özel durumlarına yeniden denemeler genişletmektedir.
+    + Gönderilen bir çalışmadan çalıştırma göndermek için destek ekleyin.
+    + Dosya izleyicisinden, ilk belirtecinin süresi dolduktan sonra karşıya yükleme durdurmasına neden olan, süresi dolan son SAS belirteç sorunu düzeltildi.
+    + Veri kümesi Python SDK 'sında HTTP CSV/TSV dosyalarını içeri aktarma destekleniyor.
+    + Workspace. Setup () yöntemi kullanımdan kaldırıldı. Kullanıcılara gösterilen uyarı iletisi, bunun yerine Create () veya Get ()/from_config () kullanmayı önerir.
+    + Ortam eklendi. özel özel Python paketlerinin (. WHL) çalışma alanına yüklenmesini sağlayan ve ortamı derlemek/denemek için güvenli bir şekilde kullanarak, _private_pip_wheel () ekleyin.
+    + Artık, Microsoft tarafından oluşturulan ve müşteri sertifikası için AKS kümesinde dağıtılan Puanlama uç noktası için SSL sertifikasını güncelleştirebilirsiniz.
+  + **azureml-açıkla-model**
+    + Karşıya yükleme ile ilgili açıklamaları bir model KIMLIĞI eklemek için parametresi eklendi.
+    + Bellekteki `is_raw` açıklamaları etiketleme ve karşıya yükleme eklendi.
+    + Azureml-açıkla-model paketi için pytorch desteği ve Testleri eklendi.
+  + **azureml-OPENDATASET 'ler**
+    + Otomatik test ortamını algılayıp günlüğe kaydetmeyi destekler.
+    + Ülke ve ZIP tarafından nüfusu almak için sınıflar eklendi.
+  + **azureml-işlem hattı-çekirdek**
+    + Giriş ve çıkış bağlantı noktası tanımlarına etiket özelliği eklendi.
+  + **azureml-telemetri**
+    + Hatalı telemetri yapılandırması düzeltildi.
+  + **azureml-eğitme-oto ml**
+    + Kurulum hatasında hata düzeltildi, hata, kurulum çalıştırmasının "hatalar" alanında oturum açmamıştı ve bu nedenle üst çalıştırmada "hatalar" olarak depolanmadı.
+    + Eksik etiketlere sahip satırların düzgün şekilde kaldırılmadığı, oto ml 'deki bir sorun düzeltildi.
+    + Oto ml kullanıcılarına tahmin sırasında yeterince uzun olmayan eğitim serisini bırakmaya izin verin.
+    + Oto ml kullanıcılarına, tahmin sırasında eğitim kümesinde mevcut olmayan test kümesinden graıns 'yi bırakması için izin verin.
+    + Şimdi, yeni yapılandırma parametrelerinin değişiklikleri veya eklemeleri üzerinde herhangi bir sorun yaşamamak için, oto ml config 'ten arka uca geçiş yapar.
+  + **azureml-tren-çekirdek**
+    + PyTorch Estimator 'da Torch 1,2 desteği eklenmiştir.
+  + **azureml-pencere öğeleri**
+    + Sınıflandırma eğitimi için geliştirilmiş karışıklık matrisi grafikleri.
+
+### <a name="azure-portal"></a>Azure Portal
++ **Önizleme özelliği**
+  + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

@@ -1,24 +1,24 @@
 ---
-title: Kimlik doğrulaması dahil olmak üzere Azure depolama hizmetleri REST API işlemleri çağırma | Microsoft Docs
-description: Kimlik doğrulaması dahil olmak üzere Azure depolama hizmetleri REST API işlemleri çağırma
+title: Paylaşılan anahtar yetkilendirmesi ile Azure depolama hizmetleri REST API işlemlerini çağırma | Microsoft Docs
+description: Paylaşılan anahtar yetkilendirmesi kullanarak blob depolamaya bir istek yapmak için Azure depolama REST API kullanın.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989934"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640674"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Depolama REST API’sini kullanma
 
-Bu makalede, blob Storage hizmeti REST API 'Lerinin nasıl kullanılacağı ve hizmet çağrısının nasıl doğrulanabilmesi gösterilmektedir. REST hakkında hiçbir şey bilen bir geliştiricinin görünüm noktasından yazılmıştır ve bir REST çağrısının nasıl yapılacağını fikir vermez. Bir REST çağrısının başvuru belgelerine baktık ve bunu gerçek bir REST çağrısına nasıl çevitireceğiz: hangi alanlar nereye gidebileceği? REST çağrısını ayarlamayı öğrendikten sonra, diğer depolama hizmeti REST API 'Lerinden birini kullanmak için bu bilgilerden yararlanabilirsiniz.
+Bu makalede, blob Storage hizmeti REST API 'Lerinin nasıl kullanılacağı ve hizmete yapılan çağrıya nasıl yetki vereceğiniz gösterilmektedir. REST hakkında hiçbir şey bilen bir geliştiricinin görünüm noktasından yazılmıştır ve bir REST çağrısının nasıl yapılacağını fikir vermez. Bir REST çağrısının başvuru belgelerine baktık ve bunu gerçek bir REST çağrısına nasıl çevitireceğiz: hangi alanlar nereye gidebileceği? REST çağrısını ayarlamayı öğrendikten sonra, diğer depolama hizmeti REST API 'Lerinden birini kullanmak için bu bilgilerden yararlanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
@@ -267,12 +267,13 @@ Artık isteği oluşturmayı, hizmeti çağırmayı ve sonuçları ayrıştırma
 ## <a name="creating-the-authorization-header"></a>Yetkilendirme üst bilgisi oluşturuluyor
 
 > [!TIP]
-> Azure depolama artık Bloblar ve kuyruklar için Azure Active Directory (Azure AD) tümleştirmesini desteklemektedir. Azure AD, Azure depolama 'ya yönelik bir isteği yetkilendirmek için çok daha basit bir deneyim sunar. REST işlemlerini yetkilendirmek için Azure AD kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory Ile kimlik doğrulama](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Azure depolama ile Azure AD tümleştirmesi 'ne genel bakış için, bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
+> Azure depolama artık Bloblar ve kuyruklar için Azure Active Directory (Azure AD) tümleştirmesini desteklemektedir. Azure AD, Azure depolama 'ya yönelik bir isteği yetkilendirmek için çok daha basit bir deneyim sunar. REST işlemlerini yetkilendirmek için Azure AD kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory Ile yetkilendirme](/rest/api/storageservices/authorize-with-azure-active-directory). Azure depolama ile Azure AD tümleştirmesi 'ne genel bakış için, bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
 
-Kavramsal olarak (kod yok) [Azure depolama hizmetleri Için kimlik doğrulamanın](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)nasıl gerçekleştirileceğini açıklayan bir makale vardır.
+[Azure depolama 'ya Istekleri yetkilendirmek](/rest/api/storageservices/authorize-requests-to-azure-storage)için kavramsal (kod yok) açıklayan bir makale vardır.
+
 Bu makalenin tam olarak gerekli olduğunu ve kodu göstermesini görelim.
 
-Önce, paylaşılan anahtar kimlik doğrulaması kullanın. Yetkilendirme üst bilgisi biçimi şöyle görünür:
+Önce, paylaşılan anahtar yetkilendirmesi kullanın. Yetkilendirme üst bilgisi biçimi şöyle görünür:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
@@ -360,7 +361,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 Sorgu parametreleriniz varsa bu örnek bu parametreleri de içerir. Ayrıca, ek sorgu parametrelerini ve birden çok değer içeren sorgu parametrelerini de işleyen kod aşağıda verilmiştir. Bu kodu, tüm REST API 'Leri için çalışacak şekilde oluşturduğunuzu unutmayın. ListContainers yönteminin tümüne ihtiyacı olmasa bile tüm olasılıkları dahil etmek istiyorsunuz.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -571,3 +572,4 @@ Bu makalede, BLOB depolama REST API istek yapmayı öğrendiniz. İstek ile, kap
 * [Blob hizmeti REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Dosya hizmeti REST API](/rest/api/storageservices/file-service-rest-api)
 * [Kuyruk hizmeti REST API](/rest/api/storageservices/queue-service-rest-api)
+* [Tablo hizmeti REST API](/rest/api/storageservices/table-service-rest-api)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985145"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640083"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -65,9 +65,9 @@ Bu tabloyu kılavuz olarak kullan:
 |**BLOB depolama (hiyerarşik ad alanı)** | Azure AD & SAS |
 |**Dosya depolama** | Yalnızca SAS |
 
-### <a name="option-1-use-azure-ad"></a>Seçenek 1: Azure AD 'yi kullanma
+### <a name="option-1-use-azure-active-directory"></a>Seçenek 1: Azure Active Directory kullan
 
-Azure AD 'yi kullanarak her komuta bir SAS belirteci eklemek zorunda kalmak yerine kimlik bilgilerini bir kez sağlayabilirsiniz.  
+Azure Active Directory kullanarak, her komuta bir SAS belirteci eklemek yerine kimlik bilgilerini bir kez sağlayabilirsiniz.  
 
 > [!NOTE]
 > Geçerli sürümde, blob 'ları depolama hesapları arasında kopyalamayı planlıyorsanız, her kaynak URL 'ye bir SAS belirteci eklemeniz gerekir. SAS belirtecini yalnızca hedef URL 'den atlayabilirsiniz. Örnekler için bkz. [depolama hesapları arasında blobları kopyalama](storage-use-azcopy-blobs.md).
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> Bu örnekte gösterildiği gibi bir istem kullanmayı düşünün. Bu şekilde, istemci gizli anahtarı konsolunuzun komut geçmişinde görünmez. 
+> Bu örnekte gösterildiği gibi bir istem kullanmayı düşünün. Bu şekilde, parolanız konsolunuzun komut geçmişinde görünmez.  
 
 Sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
@@ -170,7 +170,7 @@ Ardından, `AZCOPY_SPA_CERT_PASSWORD` ortam değişkenini sertifika parolası ol
 > [!NOTE]
 > Bu değeri, işletim sisteminizin ortam değişkeni ayarlarında değil, komut isteminizden ayarladığınızdan emin olun. Bu şekilde, değer yalnızca geçerli oturum için kullanılabilir.
 
-Bu örnek, PowerShell 'de bunu nasıl yapakullanabileceğinizi gösterir.
+Bu örnek, PowerShell 'de bu görevi nasıl yapakullanabileceğinizi gösterir.
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"

@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: aa43fe6c7999b8fa73419916870f9dfca0c01e3d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601388"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636439"
 ---
 | Resource | [Tüketim planı](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service planı](../articles/azure-functions/functions-scale.md#app-service-plan) <sup>1</sup> |
 | --- | --- | --- | --- |
-| Ölçeği genişletme | Olay odaklı | Olay odaklı | [El ile/otomatik ölçeklendirme](../articles/app-service/web-sites-scale.md) | 
+| Ölçeği genişletme | Olay odaklı | Olay odaklı | [El ile/otomatik ölçeklendirme](../articles/app-service/manage-scale-up.md) | 
 | En yüksek örnek sayısı | 200 | 20 | 10-20 |
 |Varsayılan [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |5 | 30 |30<sup>2</sup> |
 |Maksimum [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | unbounded | sınırsız<sup>3</sup> |

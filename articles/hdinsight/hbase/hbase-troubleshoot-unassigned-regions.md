@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935438"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640219"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 'ta bölge sunucularıyla ilgili sorunlar
 
@@ -27,7 +27,7 @@ Komut çalıştırılırken `hbase hbck` şuna benzer bir hata iletisi görürs�
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Apache HBase Master kullanıcı arabiriminden, tüm bölge sunucularında dengesiz olan bölge sayısının görüldüğü düşünülebilir.
+Apache HBase Master kullanıcı arabiriminden, tüm bölge sunucularında dengesiz olan bölge sayısını görebilirsiniz. Ardından, bölge zincirindeki delikleri `hbase hbck` görmek için komutunu çalıştırabilirsiniz.
 
 ### <a name="cause"></a>Nedeni
 
@@ -39,13 +39,13 @@ Atamaları düzeltir. Atanmamış bölgeleri normal duruma geri getirmek için a
 
 1. SSH kullanarak HDInsight HBase kümesinde oturum açın.
 
-1. Zookeeper `hbase zkcli` Shell ile bağlanmak için komutunu çalıştırın.
+1. ZooKeeper `hbase zkcli` Shell ile bağlanmak için komutunu çalıştırın.
 
 1. `rmr /hbase/regions-in-transition` Veya`rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
 
 1. Komutu kullanarak `exit` Zookeeper kabuğu 'ndan çıkın.
 
-1. Ambarı Kullanıcı arabirimini açın ve Active HBase Master hizmeti 'ni ambarı 'ndan yeniden başlatın.
+1. Apache ambarı Kullanıcı arabirimini açın ve ardından etkin HBase Master hizmetini yeniden başlatın.
 
 1. Komutu `hbase hbck` yeniden çalıştırın (başka herhangi bir seçenek olmadan). Çıktıyı denetleyin ve tüm bölgelerin atandığından emin olun.
 
@@ -61,7 +61,7 @@ Bölge sunucuları başlatılamadı.
 
 Birden çok bölme dizini.
 
-1. Geçerli Wals listesini al: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Geçerli WALs listesini al: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
 1. `wals.out` Dosyayı inceleyin. Çok fazla sayıda bölme dizini varsa (*-bölme ile başlayarak), bu dizinler nedeniyle bölge sunucusu muhtemelen başarısız olur.
 

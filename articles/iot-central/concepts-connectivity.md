@@ -1,6 +1,6 @@
 ---
-title: Cihaz bağlantısı, Azure IOT Central | Microsoft Docs
-description: Bu makalede Azure IOT Central, cihaz bağlantısı ile ilgili temel kavramlar tanıtılmaktadır.
+title: Azure IoT Central cihaz bağlantısı | Microsoft Docs
+description: Bu makalede, Azure IoT Central cihaz bağlantısıyla ilgili temel kavramlar tanıtılmaktadır
 author: dominicbetts
 ms.author: dobett
 ms.date: 04/09/2019
@@ -8,204 +8,204 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d8b49b17698d3b527ceab88abdb1a37452f7a06
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693178"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638332"
 ---
-# <a name="device-connectivity-in-azure-iot-central"></a>Azure IOT Central, cihaz bağlantısı
+# <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central cihaz bağlantısı
 
-Bu makalede, Microsoft Azure IOT Central, cihaz bağlantısı ile ilgili temel kavramlar tanıtılmaktadır.
+Bu makalede Microsoft Azure IoT Central cihaz bağlantısıyla ilgili temel kavramlar tanıtılmaktadır.
 
-Azure IOT Central'ı kullanan [Azure IOT Hub cihazı sağlama hizmeti (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps) tüm cihaz kaydı ve bağlantı yönetmek için.
+Azure IoT Central, tüm cihaz kayıt ve bağlantılarını yönetmek için [azure IoT Hub cihaz sağlama hizmeti 'ni (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps) kullanır.
 
-DPS kullanarak sağlar:
+DPS kullanılması şunları sunar:
 
-- IOT Central ekleme ve uygun ölçekte bağlanan cihazların desteklemek için.
-- Cihaz oluşturmanız için kimlik bilgilerini ve IOT Central UI aracılığıyla cihaz kayıt olmadan cihazları çevrimdışı yapılandırma.
-- Paylaşılan erişim imzaları (SAS) kullanarak bağlanmak için cihazlar.
-- Endüstri standardı X.509 sertifikaları kullanarak bağlanmak için cihazlar.
-- Kendi cihazını kimlikleri IOT Central cihazlarını kaydetmek için kullanılacak. Kendi cihaz kimlikleri kullanarak mevcut arka ofis sistemleriyle tümleştirmeyi basitleştirir.
-- Cihazları IOT Central bağlamak için tek, tutarlı şekilde.
+- Cihazları ölçeklendirmeye ekleme ve bağlamayı desteklemek için IoT Central.
+- Cihazları IoT Central kullanıcı arabirimi aracılığıyla kaydetmeden cihaz kimlik bilgilerini oluşturup cihazları çevrimdışı olarak yapılandırabilirsiniz.
+- Paylaşılan erişim imzaları (SAS) kullanılarak bağlanacak cihazlar.
+- Endüstri standardı X. 509.440 sertifikalarını kullanarak bağlanacak cihazlar.
+- IoT Central cihazları kaydetmek için kendi cihaz kimliklerinizi kullanmanız gerekir. Kendi cihaz kimliklerinizin kullanılması, mevcut arka ofis sistemleriyle tümleştirmeyi basitleştirir.
+- Cihazları IoT Central bağlamak için tek ve tutarlı bir yol.
 
-Bu makalede aşağıdaki dört kullanım örnekleri:
+Bu makalede aşağıdaki dört kullanım durumu açıklanmaktadır:
 
-1. [SAS kullanarak tek bir cihazı hızlı bir şekilde bağlanın](#connect-a-single-device)
-1. [Cihazları uygun ölçekte SAS kullanarak bağlanma](#connect-devices-at-scale-using-sas)
-1. [Cihazları uygun ölçekte X.509 sertifikaları kullanarak bağlanma](#connect-devices-using-x509-certificates) bu üretim ortamları için önerilen yaklaşımdır.
-1. [İlk kayıt cihazları bağlayın](#connect-without-registering-devices)
+1. [SAS kullanarak tek bir cihazı hızlı bir şekilde bağlama](#connect-a-single-device)
+1. [SAS kullanarak cihazları ölçeklendirmeye bağlama](#connect-devices-at-scale-using-sas)
+1. [X. 509.440 sertifikalarını kullanarak cihazları ölçeklendirmeye bağlayın](#connect-devices-using-x509-certificates) bu, üretim ortamları için önerilen yaklaşımdır.
+1. [Önce cihazları kaydetmeden Bağlan](#connect-without-registering-devices)
 
-## <a name="connect-a-single-device"></a>Tek bir cihazı bağlayın
+## <a name="connect-a-single-device"></a>Tek bir cihazı bağlama
 
-Bu yaklaşım, IOT Central ile denemeler ya da cihazları test yararlıdır. Bir cihaz için bağlantı dizesi oluşturmak için IOT Central uygulamanızdan cihaz bağlantı bilgisini kullanın. Ayrıntılı adımlar için bkz. [bir Azure IOT Central uygulamasına bağlanmak için bir cihaz bağlantı dizesi oluşturmak nasıl](howto-generate-connection-string.md).
+Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıdır. Bir cihaz için bağlantı dizesi oluşturmak üzere IoT Central uygulamanızdaki cihaz bağlantı bilgilerini kullanabilirsiniz. Ayrıntılı adımlar için bkz. [Azure IoT Central uygulamasına bağlanmak için cihaz bağlantı dizesi oluşturma](howto-generate-connection-string.md).
 
-## <a name="connect-devices-at-scale-using-sas"></a>Cihazları uygun ölçekte SAS kullanarak bağlanma
+## <a name="connect-devices-at-scale-using-sas"></a>SAS kullanarak cihazları ölçeklendirmeye bağlama
 
-SAS kullanarak uygun ölçekte IOT Central aygıtlarını bağlamak için kaydetme ve ardından cihazları ayarlamak gerekir:
+Cihazları SAS kullanarak ölçeği IoT Central 'e bağlamak için, cihazları kaydetmeniz ve ayarlamanız gerekir:
 
-### <a name="register-devices-in-bulk"></a>Cihazları toplu kaydetme
+### <a name="register-devices-in-bulk"></a>Cihazları toplu olarak kaydetme
 
-Çok sayıda cihaz ile IOT Central uygulamanızı kaydetmek için bir CSV dosyasına kullanın [cihaz kimlikleri ve cihaz adları içeri aktarma](howto-manage-devices.md#import-devices).
+IoT Central uygulamanızla çok sayıda cihazı kaydetmek için, [cihaz kimliklerini ve cihaz adlarını içeri aktarmak](howto-manage-devices.md#import-devices)üzere bir CSV dosyası kullanın.
 
-İçeri aktarılan cihazlar için bağlantı bilgilerini almak için [IOT Central uygulamanızdan bir CSV dosyasını dışarı](howto-manage-devices.md#export-devices).
+İçeri aktarılan cihazların bağlantı bilgilerini almak için [IoT Central uygulamanızdan BIR CSV dosyası dışarı aktarın](howto-manage-devices.md#export-devices).
 
 > [!NOTE]
-> İlk bunları IOT Central kayıt olmadan cihazları nasıl bağlayabileceğini bilgi edinmek için [ilk kayıt cihazları olmadan Bağlan](#connect-without-registering-devices).
+> Cihazları öncelikle IoT Central kaydetmeden nasıl bağlayabileceğinizi öğrenmek için, bkz. [önce cihazları kaydetmeden Bağlan](#connect-without-registering-devices).
 
-### <a name="set-up-your-devices"></a>Cihazları ayarlama
+### <a name="set-up-your-devices"></a>Cihazlarınızı ayarlama
 
-Bağlanmak ve verileri için IOT, IOT Central uygulamasına göndermek için cihazlarınızı etkinleştirmek için cihaz kodunuzda dışarı aktarma dosyasından bağlantı bilgilerini kullanın. Cihazlar bağlama hakkında daha fazla bilgi için bkz. [sonraki adımlar](#next-steps).
+Cihazlarınızı IoT Central uygulamanıza bağlamak ve IoT 'e veri göndermek üzere cihaz kodunuzda dışarı aktarma dosyasından bağlantı bilgilerini kullanın. Cihazları bağlama hakkında daha fazla bilgi için bkz. [sonraki adımlar](#next-steps).
 
-## <a name="connect-devices-using-x509-certificates"></a>X.509 sertifikaları kullanarak cihazları bağlayın
+## <a name="connect-devices-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak cihazları bağlama
 
-Bir üretim ortamında, X.509 sertifikaları IOT Central için önerilen cihaz kimlik doğrulama mekanizması kullanmaktır. Daha fazla bilgi için bkz. [cihaz X.509 CA sertifikalarını kullanarak kimlik doğrulaması](../iot-hub/iot-hub-x509ca-overview.md).
+Bir üretim ortamında, X. 509.440 sertifikalarının kullanılması, IoT Central için önerilen cihaz kimlik doğrulama mekanizmasıdır. Daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](../iot-hub/iot-hub-x509ca-overview.md).
 
-Aşağıdaki adımlar, X.509 sertifikaları kullanarak IOT Central için cihazların bağlanacağı açıklanır:
+Aşağıdaki adımlarda, X. 509.440 sertifikaları kullanarak cihazların IoT Central nasıl bağlanacağı açıklanır:
 
-1. IOT Central uygulamanızdaki _ekleyebilir ve Ara doğrulayın ya da X.509 sertifikası kök_ cihaz sertifikalarını oluşturmak için kullanıyorsanız:
+1. IoT Central uygulamanızda cihaz sertifikaları oluşturmak için kullandığınız _Ara veya kök X. 509.440 sertifikasını ekleyin ve doğrulayın_ :
 
-    - Gidin **Yönetim > cihaz bağlantısı > Sertifikalar (X.509)** ve X.509 kök veya Ara sertifikayı yaprak cihaz sertifikalarını oluşturmak için kullandığınız ekleyin.
+    - **Yönetim > cihaz bağlantısı > Sertifikalar (X. 509.440)** sayfasına gidin ve yaprak cihaz sertifikalarını oluşturmak Için kullandığınız x. 509.440 root veya ara sertifika ekleyin.
 
       ![Bağlantı ayarları](media/concepts-connectivity/connection-settings.png)
 
-      Bir güvenlik ihlali varsa veya birincil sertifikanızın süresi dolacak şekilde ayarlanan kapalı kalma süresini azaltmak için ikincil sertifika'yı kullanın. Birincil sertifika güncelleştirilirken ikincil sertifika kullanarak cihaz sağlamayı devam edebilirsiniz.
+      Bir güvenlik ihlali varsa veya birincil sertifikanız süresi dolacak şekilde ayarlandıysa, kapalı kalma süresini azaltmak için ikincil sertifikayı kullanın. Birincil sertifikayı güncelleştirdiğinizde ikincil sertifikayı kullanarak cihaz sağlamaya devam edebilirsiniz.
 
-    - Sertifika sahipliğini doğrulayarak sertifikanın uploader sertifikanın özel anahtarı sahip olmasını sağlar. Sertifikayı doğrulamak için:
-        - Düğmeyi seçin **doğrulama kodu** bir kod oluşturmak için.
-        - Önceki adımda oluşturulan doğrulama kodunu içeren bir X.509 doğrulama sertifikası oluşturun. Sertifikayı bir .cer dosyası olarak kaydedin.
-        - İmzalı doğrulama sertifikasını karşıya yükleyin ve seçin **doğrulama**.
+    - Sertifika sahipliğinin doğrulanması, sertifikanın yükleyici 'nin sertifikanın özel anahtarına sahip olmasını sağlar. Sertifikayı doğrulamak için:
+        - Kod oluşturmak için **doğrulama kodu** ' nun yanındaki düğmeyi seçin.
+        - Önceki adımda oluşturduğunuz doğrulama koduyla bir X. 509.952 doğrulama sertifikası oluşturun. Sertifikayı bir. cer dosyası olarak kaydedin.
+        - İmzalı doğrulama sertifikasını karşıya yükleyin ve **Doğrula**' yı seçin.
 
           ![Bağlantı ayarları](media/concepts-connectivity/verify-cert.png)
 
-1. İçin bir CSV dosyası kullanma _almak ve cihazları kaydetme_ IOT Central uygulamanızdaki.
+1. IoT Central uygulamanızda _cihazları içeri ve dışarı aktarmak_ IÇIN bir CSV dosyası kullanın.
 
-1. _Cihazlarınızı ayarlayın._ Karşıya yüklenen bir kök sertifikayı kullanarak yaprak sertifikalar oluşturur. Kullanım **cihaz kimliği** yaprak sertifikalar CNAME değeri. Cihaz kimliği, tamamen küçük olmalıdır. Ardından hizmet bilgisi sağlama ile cihazlarınızı program. Bir cihaz ilk açıldığında DPS IOT Central uygulamanız için bağlantı bilgilerini alır.
+1. _Cihazlarınızı ayarlayın._ Karşıya yüklenen kök sertifikayı kullanarak yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki CNAME değeri olarak **CIHAZ kimliğini** kullanın. Cihaz KIMLIĞI küçük harf olmalıdır. Ardından cihazları sağlama hizmeti bilgileriyle programlayabilirsiniz. İlk için bir cihaz açıldığında, DPS IoT Central uygulamanızın bağlantı bilgilerini alır.
 
 ### <a name="further-reference"></a>Daha fazla başvuru
 
-- Örnek uygulama için [RaspberryPi.](https://aka.ms/iotcentral-docs-Raspi-releases)
+- RaspberryPi için örnek uygulama [.](https://aka.ms/iotcentral-docs-Raspi-releases)
 
-- [C'de, örnek cihaz istemcisi](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
+- [C 'de örnek cihaz istemcisi.](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ### <a name="for-testing-purposes-only"></a>Yalnızca test amaçlı
 
-Yalnızca test için bu yardımcı programlar CA sertifikaları ve cihaz sertifikaları oluşturmak için kullanabilirsiniz.
+Yalnızca test için bu yardımcı programları, CA sertifikaları ve cihaz sertifikaları oluşturmak için kullanabilirsiniz.
 
-- Bir DevKit cihaz kullanıyorsanız, bu [komut satırı aracı](https://aka.ms/iotcentral-docs-dicetool) sertifikaları doğrulamak için IOT Central uygulamanıza ekleyebileceğiniz bir CA sertifikası oluşturur.
+- Bir DevKit cihazı kullanıyorsanız, bu [komut satırı aracı](https://aka.ms/iotcentral-docs-dicetool) , sertifikaları doğrulamak için IoT Central uygulamanıza EKLEYEBILECEĞINIZ bir CA sertifikası oluşturur.
 
-- Bunu kullanın [komut satırı aracı](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) için:
-  - Bir sertifika zinciri oluşturun. 2\. adım GitHub makaleyi izleyin.
-  - Sertifikalar, IOT Central uygulamanızı karşıya yüklenecek .cer dosyası olarak kaydedin.
-  - Doğrulama sertifikası oluşturmak için IOT Central uygulamasına ilişkin doğrulama kodunu kullanın. 3\. adım GitHub makaleyi izleyin.
-  - Aracı için parametre olarak, cihaz kimliklerini kullanarak cihazlarınızı yaprak sertifikaları oluşturun. 4\. adım GitHub makaleyi izleyin.
+- Bu [komut satırı aracını](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) kullanarak şunları yapın:
+  - Bir sertifika zinciri oluşturun. GitHub makalesindeki 2. adımı izleyin.
+  - IoT Central uygulamanıza yüklemek için sertifikaları. cer dosyası olarak kaydedin.
+  - Doğrulama sertifikasını oluşturmak için IoT Central uygulamasındaki doğrulama kodunu kullanın. GitHub makalesindeki 3. adımı izleyin.
+  - Cihaz kimliklerinizi araç için bir parametre olarak kullanarak cihazlarınız için yaprak sertifikaları oluşturun. GitHub makalesindeki 4. adımı izleyin.
 
-## <a name="connect-without-registering-devices"></a>Cihazları kaydetme olmadan bağlayın
+## <a name="connect-without-registering-devices"></a>Cihazları kaydettirmeden Bağlan
 
-IOT Central sağlayan bir anahtar OEM'ler ilk olmadan bir IOT Central uygulamasına cihazlarını toplu üretmek için senaryodur kaydediliyor. Bir üretici uygun kimlik bilgilerini oluşturmak ve cihazları Fabrika yapılandırmanız gerekir. Bir cihaz ilk kez açtığında bir IOT Central uygulamasına otomatik olarak bağlanır. Önce stat veri gönderimi IOT Central operatörün cihaz onaylamanız gerekir.
+IoT Central temel bir senaryo, OEM 'Lerin, önce kaydolmadan bir IoT Central uygulamasına bağlanabilecek cihazları toplu olarak üretmesine yöneliktir. Üretici, uygun kimlik bilgilerini üretmeli ve fabrikadaki cihazları yapılandırmalıdır. Bir cihaz ilk kez açıldığında bir IoT Central uygulamasına otomatik olarak bağlanır. Bir IoT Central operatörü, verileri göndermeden önce cihazı onaylamalıdır.
 
-Aşağıdaki diyagramda, bu akış özetlenmektedir:
+Aşağıdaki diyagramda bu akış özetlenmektedir:
 
 ![Bağlantı ayarları](media/concepts-connectivity/device-connection-flow1.png)
 
-Aşağıdaki adımlarda, bu işlem daha ayrıntılı açıklanmıştır. Adımları olup olmadığını, SAS veya X.509 sertifikaları için cihaz kimlik doğrulamasını kullanıyorsanız bağlı olarak biraz farklılık gösterir:
+Aşağıdaki adımlarda bu işlem daha ayrıntılı olarak açıklanır. Bu adımlar, cihaz kimlik doğrulaması için SAS veya X. 509.440 sertifikaları kullanıyor olmanıza bağlı olarak biraz farklılık gösterir:
 
-1. Bağlantı ayarlarını yapılandırın:
+1. Bağlantı ayarlarınızı yapılandırın:
 
-    - **X.509 sertifikaları:** [Ekleme ve doğrulama kök/Ara sertifikayı](#connect-devices-using-x509-certificates) ve aşağıdaki adımda cihaz sertifikaları oluşturmak için kullanın.
-    - **SAS:** Birincil anahtarı kopyalayın. IOT Central uygulaması için Grup SAS anahtarını anahtardır. Aşağıdaki adımda cihaz SAS anahtarları oluşturmak için anahtarı kullanın.
-    ![SAS bağlantı ayarları](media/concepts-connectivity/connection-settings-sas.png)
+    - **X. 509.440 sertifikaları:** [Kök/ara sertifikayı ekleyin ve doğrulayın](#connect-devices-using-x509-certificates) ve aşağıdaki adımda cihaz sertifikalarını oluşturmak için kullanın.
+    - **'LARININ** Birincil anahtarı kopyalayın. Bu anahtar, IoT Central uygulaması için Grup SAS anahtarıdır. Aşağıdaki adımda cihaz SAS anahtarlarını oluşturmak için anahtarı kullanın.
+    ![Bağlantı ayarları SAS](media/concepts-connectivity/connection-settings-sas.png)
 
-1. Cihaz kimlik bilgileri oluştur
-    - **X.509 sertifikaları:** Kök veya Ara sertifikayı IOT Central uygulamanıza eklediğiniz kullanarak cihazlarınız için yaprak sertifikalar oluşturur. Küçük harf kullandığınızdan emin olun **cihaz kimliği** CNAME yaprak sertifikalar olarak. Sınama amacıyla yalnızca, bu kullanım için [komut satırı aracı](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) cihaz sertifikaları oluşturulacak.
-    - **SAS:** Bunu kullanın [komut satırı aracını](https://www.npmjs.com/package/dps-keygen) cihaz SAS anahtarları oluşturmak için. Gruplandırma **birincil anahtar** önceki adımdan. Cihaz kimliği küçük harf olması gerekir.
+1. Cihaz kimlik bilgilerinizi oluşturma
+    - **Sertifikalar X. 509.440:** IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Alt durum **CIHAZ kimliğini** , yaprak sertifikalarda CNAME olarak kullandığınızdan emin olun. Yalnızca test amaçlı olarak, cihaz sertifikaları oluşturmak için bu [komut satırı aracını](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) kullanın.
+    - **'LARININ** Cihaz SAS anahtarları oluşturmak için bu [komut satırı aracını](https://www.npmjs.com/package/dps-keygen) kullanın. Önceki adımda grup **birincil anahtarını** kullanın. Cihaz KIMLIĞI küçük harf olmalıdır.
 
-      Yüklenecek [tuşu Oluşturucu yardımcı programı](https://github.com/Azure/dps-keygen), aşağıdaki komutu çalıştırın:
+      [Anahtar Oluşturucu yardımcı programını](https://github.com/Azure/dps-keygen)yüklemek için şu komutu çalıştırın:
 
       ```cmd/sh
       npm i -g dps-keygen
       ```
 
-      Bir cihaz anahtarı grubu SAS birincil anahtarını oluşturmak için aşağıdaki komutu çalıştırın:
+      Grup SAS birincil anahtarından bir cihaz anahtarı oluşturmak için aşağıdaki komutu çalıştırın:
 
       ```cmd/sh
       dps-keygen -mk:<Primary_Key(GroupSAS)> -di:<device_id>
       ```
 
-1. Cihazları ayarlamak için her bir cihaza flash **kapsam kimliği**, **cihaz kimliği**, ve **X.509 cihazı sertifikası** veya **SAS anahtarı**.
+1. Cihazlarınızı ayarlamak için, her cihazı **kapsam kimliği**, **cihaz kimliği**ve **X. 509.440 cihaz sertifikası** veya **SAS anahtarı**ile birlikte Flash yapın.
 
-1. Ardından, IOT Central uygulamasına bağlanmak için cihazı açın. Bir cihaza geçtiğinizde, ilk IOT Central kayıt bilgileri almak için DPS bağlanır.
+1. Sonra, IoT Central uygulamanıza bağlanmak için cihazı açın. Bir cihaza geçtiğinizde, ilk olarak IoT Central kayıt bilgilerini almak için DPS 'e bağlanır.
 
-1. Bağlı cihaz ilk olarak görünür bir **ilişkilendirilmemiş cihaz** üzerinde **Device Explorer** sayfası. Sağlama durumu cihaz **kayıtlı**. **İlişkilendirme** uygun cihaz şablonu cihaza ve cihazı IOT Central uygulamanızı bağlamak için onaylayın. Cihaz IOT Hub'ından bir bağlantı dizesi alma ve veri göndermeye başlayın. Cihaz sağlama, artık tamamlandı ve sağlama durumunu şimdi **sağlanan**.
+1. Bağlı cihaz başlangıçta **Device Explorer** sayfasında **ilişkilendirilmemiş bir cihaz** olarak görüntülenir. Cihaz sağlama durumu **kaydedilir**. Cihazı uygun cihaz şablonuyla **ilişkilendirin** ve IoT Central uygulamanıza bağlanmak için cihazı onaylayın. Cihaz daha sonra IoT Hub bir bağlantı dizesi alabilir ve veri göndermeye başlayabilir. Cihaz sağlama artık tamamlanmıştır ve sağlama durumu artık **sağlandı**.
 
-## <a name="provisioning-status"></a>sağlama durumu
+## <a name="provisioning-status"></a>Sağlama durumu
 
-Ne zaman gerçek bir cihaz sağlama durumu değişiklikleri, IOT Central uygulaması'na aşağıdaki gibi bağlanır:
+Gerçek bir cihaz IoT Central uygulamasına bağlanırsa, sağlama durumu aşağıdaki gibi değişir:
 
-1. Cihaz durumu sağlama ilk **kayıtlı**. Cihaz IOT Central içinde oluşturulur ve bir cihaz kimliği vardır. Bu durum anlamına gelir Bir cihazın kayıtlı olduğunda:
-    - Yeni bir gerçek cihaz üzerinde eklenir **Device Explorer** sayfası.
-    - Bir cihaz kümesini kullanarak eklendiğinden **alma** üzerinde **Device Explorer** sayfası.
-    - Bir cihaz üzerinde el ile kayıtlı olmayan **Device Explorer** sayfasında, ancak geçerli kimlik bilgileriyle bağlı ve olarak görünür bir **Unassociated** cihazda **Device Explorer**sayfası.
+1. Cihaz sağlama durumu ilk olarak **kaydedilir**. Bu durum, cihazın IoT Central oluşturulduğu ve bir cihaz KIMLIĞINE sahip olduğu anlamına gelir. Bir cihaz şu durumlarda kaydedilir:
+    - **Device Explorer** sayfasına yeni bir gerçek cihaz eklenir.
+    - **Device Explorer** sayfasında **içeri aktarma** kullanılarak bir cihaz kümesi eklenir.
+    - Bir cihaz **Device Explorer** sayfasında el ile kaydedilmemiş, ancak geçerli kimlik bilgileriyle bağlandı ve **Device Explorer** sayfasında **ilişkilendirilmemiş** bir cihaz olarak görünüyor.
 
-1. Cihaz sağlama durumu değişikliklerini **sağlanan** sağlama adım tamamlandığında, geçerli kimlik bilgileri ile IOT Central uygulamasına bağlı cihaz. Bu adımda, cihaz IOT Hub'ından bir bağlantı dizesi alır. Cihaz artık IOT Hub'ına bağlanmak ve veri göndermeye başlayın.
+1. Geçerli kimlik bilgileriyle IoT Central uygulamanıza bağlı olan cihaz sağlama adımını tamamladığında cihaz sağlama durumu **sağlandı** olarak değişir. Bu adımda, cihaz IoT Hub bir bağlantı dizesi alır. Cihaz artık IoT Hub bağlanabilir ve veri göndermeye başlayabilir.
 
-1. Bir işleç bir cihaz engelleyebilirsiniz. Bir cihaz engellendiğinde, IOT Central uygulamanıza veri gönderemezsiniz. Engellenen cihazlar sağlama durumuna sahip **bloke**. Veri göndermeye devam etmeden önce operatörün cihaz sıfırlamanız gerekir. Bir cihaz sağlama durumunu döndürür önceki değerine, operatörün engellemesinin kaldırıldığı zaman **kayıtlı** veya **sağlanan**.
+1. Bir işleç, bir cihazı engelleyebilir. Bir cihaz engellendiğinde, IoT Central uygulamanıza veri gönderemeyecektir. Engellenen cihazların sağlama durumu **engellendi**. Bir operatör, verileri göndermeye başlamadan önce cihazı sıfırlamalıdır. Bir operatör bir cihazı engellerse, sağlama durumu önceki değerine geri döner, **kaydedilir** veya sağlanır.
 
 ## <a name="sdk-support"></a>SDK desteği
 
-Sizin için en kolay yolu Azure cihaz SDK'ları teklif cihazınızın kodunu uygulayın. Aşağıdaki cihaz SDK'ları kullanılabilir:
+Azure cihaz SDK 'Ları, cihaz kodunuzu uygulamanız için en kolay yolu sunar. Aşağıdaki cihaz SDK 'Ları kullanılabilir:
 
-- [C için Azure IOT SDK](https://github.com/azure/azure-iot-sdk-c)
-- [Python için Azure IOT SDK](https://github.com/azure/azure-iot-sdk-python)
-- [Azure IOT SDK'sı için Node.js](https://github.com/azure/azure-iot-sdk-node)
-- [Java için Azure IOT SDK](https://github.com/azure/azure-iot-sdk-java)
-- [.NET için Azure IOT SDK](https://github.com/azure/azure-iot-sdk-csharp)
+- [C için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-c)
+- [Python için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-python)
+- [Node. js için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
+- [Java için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
+- [.NET için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-csharp)
 
-Her cihaz, cihaz tanımlayan benzersiz bir bağlantı dizesi kullanarak bağlanır. Bir cihaz, yalnızca, kayıtlı olduğu IOT hub'ına bağlanabilir. Azure IOT Central uygulamanızda gerçek bir cihaz oluşturduğunuzda, bağlantı dizesini kullanarak oluşturmak ihtiyacınız olan bilgileri uygulamanın oluşturduğu `dps-keygen`.
+Her cihaz, cihazı tanımlayan benzersiz bir bağlantı dizesi kullanarak bağlanır. Bir cihaz yalnızca kayıtlı olan IoT Hub 'ına bağlanabilir. Azure IoT Central uygulamanızda gerçek bir cihaz oluşturduğunuzda, uygulama kullanarak `dps-keygen`bağlantı dizesi oluşturmak için gereken bilgileri oluşturur.
 
-### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK özelliklerinin ve IOT Hub bağlantı
+### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK özellikleri ve IoT Hub bağlantısı
 
-Tüm cihaz iletişimi IOT Hub ile IOT Hub bağlantı şunlardan kullanır:
+IoT Hub ile tüm cihaz iletişimi aşağıdaki IoT Hub bağlantı seçeneklerini kullanır:
 
-- [CİHAZDAN buluta ileti gönderme](../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [Cihaz ikizlerini](../iot-hub/iot-hub-devguide-device-twins.md)
+- [Cihazdan buluta mesajlaşma](../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [Cihaz ikikesi](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Azure IOT Central cihaz özellikleri açın IOT hub'ı özelliklerinden nasıl eşleştiği aşağıdaki tabloda özetlenmiştir:
+Aşağıdaki tabloda Azure IoT Central cihaz özelliklerinin IoT Hub özellikleriyle nasıl eşleme yapılacağı özetlenmektedir:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Ölçüm: Telemetri | CİHAZDAN buluta ileti gönderme |
-| Cihaz özellikleri | Özellikler cihaz çiftinin bildirilen |
+| Ölçümünü Telemetri | Cihazdan buluta mesajlaşma |
+| Cihaz özellikleri | Cihaz ikizi bildirilen özellikler |
 | Ayarlar | Cihaz ikizi istenen ve bildirilen özellikler |
 
-Cihaz SDK'ları kullanma hakkında daha fazla bilgi edinmek için aşağıdaki makalelerden birine örnek kod için bkz:
+Cihaz SDK 'larını kullanma hakkında daha fazla bilgi edinmek için aşağıdaki makalelerden birine bakın:
 
 - [Genel bir Node.js istemcisini Azure IoT Central uygulamanıza bağlama](howto-connect-nodejs.md)
-- [Azure IOT Central uygulamanıza bir Raspberry Pi cihazı bağlayın](howto-connect-raspberry-pi-python.md)
-- [Azure IOT Central uygulamanıza Devdiv'e Seti cihaz bağlayamama](howto-connect-devkit.md).
+- [Azure IoT Central uygulamanıza bir Raspberry PI cihazı bağlama](howto-connect-raspberry-pi-python.md)
+- [DevDiv Kit cihazını Azure IoT Central uygulamanıza bağlayın](howto-connect-devkit.md).
 
 ### <a name="protocols"></a>Protokoller
 
-Cihaz SDK'ları, bir IOT hub'ına bağlamak için aşağıdaki ağ protokollerini destekler:
+Cihaz SDK 'Ları, bir IoT Hub 'ına bağlanmak için aşağıdaki ağ protokollerini destekler:
 
 - MQTT
 - AMQP
 - HTTPS
 
-Bir seçme bu fark protokolleri ve yönergeleri hakkında bilgi için [iletişim protokolü seçme](../iot-hub/iot-hub-devguide-protocols.md).
+Bu fark protokolleri ve bir seçim hakkında rehberlik hakkında daha fazla bilgi için bkz. [iletişim protokolü seçme](../iot-hub/iot-hub-devguide-protocols.md).
 
-Cihazınızı desteklenen protokollerinin hiçbirini kullanamıyorsanız, Azure IOT Edge, dönüştürme protokolü için de kullanabilirsiniz. IOT Edge, işleme, Azure IOT Central uygulamadan uca boşaltmak için diğer zeka-üzerinde--edge senaryolarını destekler.
+Cihazınız desteklenen protokollerden herhangi birini kullanamıyorum, protokol dönüştürmesi yapmak için Azure IoT Edge kullanabilirsiniz. IoT Edge, Azure IoT Central uygulamasından kenara işlem yükünü devretmek için diğer uç zekası senaryolarını destekler.
 
 ## <a name="security"></a>Güvenlik
 
-Cihazlar ile Azure IOT Central arasında alınıp verilen tüm veriler şifrelenir. IOT Hub cihaz bakan IOT Hub uç noktaları birine bağlayan bir CİHAZDAN her isteğin kimliğini doğrular. Kimlik bilgileri kablo üzerinden değişimi önlemek için bir cihaz kimlik doğrulaması için imzalanmış belirteçleri kullanır. Daha fazla bilgi için bkz: [IOT hub'a erişimi denetleme](../iot-hub/iot-hub-devguide-security.md).
+Cihazlar ve Azure IoT Central arasında değiş tokuş edilen tüm veriler şifrelenir. IoT Hub, cihaza yönelik IoT Hub uç noktalarına bağlanan bir cihazdan her isteğin kimliğini doğrular. Bir cihaz, kimlik bilgilerinin bağlantı üzerinden değiş tokuşu yapmasını önlemek için imzalı belirteçleri kullanır. Daha fazla bilgi için bkz. [IoT Hub erişimi denetleme](../iot-hub/iot-hub-devguide-security.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IOT Central, cihaz bağlantısı hakkında öğrendiniz, önerilen sonraki adımlar şunlardır:
+Artık Azure IoT Central cihaz bağlantısı hakkında bilgi edindiğinize göre, önerilen sonraki adımlar aşağıda verilmiştir:
 
-- [Hazırlama ve DevKit cihazı bağlayın](howto-connect-devkit.md)
+- [Bir DevKit cihazını hazırlama ve bağlama](howto-connect-devkit.md)
 - [Raspberry Pi'yi hazırlama ve bağlama](howto-connect-raspberry-pi-python.md)
 - [Genel bir Node.js istemcisini Azure IoT Central uygulamanıza bağlama](howto-connect-nodejs.md)
-- [C SDK'SI: Cihaz istemci SDK'sı sağlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [C SDK: Cihaz Istemci SDK 'sını sağlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: b84e317745b7bd20f4862bd04584e42254a660d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566202"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640849"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Sanal çekirdek tabanlı satın alma modeli sınırlarını kullanan elastik havuzlar için kaynak sınırları
 
@@ -37,7 +37,7 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](sql-d
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Genel Amaçlı hizmet katmanı: Depolama boyutları ve işlem boyutları
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık AustraliaEast bölgesinde desteklenmez.
+> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Genel Amaçlı hizmet katmanı: Nesil 4 işlem platformu (Bölüm 1)
 
@@ -153,14 +153,14 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](sql-d
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>İş Açısından Kritik hizmet katmanı: Depolama boyutları ve işlem boyutları
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık AustraliaEast bölgesinde desteklenmez.
+> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>İş Açısından Kritik hizmet katmanı: Nesil 4 işlem platformu (Bölüm 1)
 
 |İşlem boyutu|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W oluşturma|4|4|4|4|4|4|
-|Sanal çekirdekler|1|2|3|4|5|6|
+|Sanal çekirdekler|1\.|2|3|4|5|6|
 |Bellek (GB)|7|14|21|28|35|42|
 |Havuz başına en fazla veritabanı|Bu işlem boyutu için yalnızca tek bir DBs destekleniyor|50|100|100|100|100|
 |Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|

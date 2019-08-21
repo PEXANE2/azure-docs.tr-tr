@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: b71cf55944c1049fa2c3ddca79f02a8b75b9b2ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
-ms.translationtype: MT
+ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563004"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639771"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -440,7 +440,7 @@ Bu bölüm aşağıdaki alt bölümleri içerir:
 
 Linux üzerinde App Service çalışan uygulama sunucusu, etki alanı yapılandırmasında değil tek başına modda çalışır. App Service planını ölçeklendirirseniz, her bir Yavama örneği tek başına sunucu olarak yapılandırılır.
 
-[Ölçek kuralları](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) ile uygulamanızı dikey veya yatay olarak ölçeklendirin ve [örnek sayınız arttırın](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+[Ölçek kuralları](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) ile uygulamanızı dikey veya yatay olarak ölçeklendirin ve [örnek sayınız arttırın](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="customize-application-server-configuration"></a>Uygulama sunucusu yapılandırmasını özelleştirme
 

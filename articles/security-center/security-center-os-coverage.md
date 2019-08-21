@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611957"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640795"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler
 
@@ -111,7 +111,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |------|------|-----|-----|
 | Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Evet |
 | System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
-| Trend Micro – Tüm sürümler | Windows Server Ailesi  | Hayır | Evet |
+| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Evet |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
 | McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
@@ -121,6 +121,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 
 > [!NOTE]
 > - Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell 3,0 (veya bir üst sürüm) sonrasında SCEP 'in yüklenmesini gerektirir.
+> - Derinlemesine güvenlik aracıları için Trend mikro koruma algılama desteklenir.  OfficeScan aracıları desteklenmez.
 
 ## <a name="supported-paas-features"></a>Desteklenen PaaS özellikleri
 

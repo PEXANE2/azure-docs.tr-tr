@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828337"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639995"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
@@ -72,7 +72,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     - Proje bölgesi yalnızca şirket içi VM 'lerden toplanan meta verileri depolamak için kullanılır.
     - VM 'Leri geçirirken farklı bir Azure hedef bölgesi seçebilirsiniz. Tüm Azure bölgeleri geçiş hedefi için desteklenir.
 
-7.           **İleri**'ye tıklayın.
+7. **İleri**'ye tıklayın.
 8. **Değerlendirme Seç aracında**Azure geçişi ' **ni seçin: Sunucu değerlendirmesi** > **İleri**.
 
     ![Azure geçişi projesi oluşturma](./media/tutorial-assess-hyper-v/assessment-tool.png)
@@ -128,17 +128,21 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
 İndirilen dosyayı içeri aktarın ve VM 'yi oluşturun.
 
-1. Sıkıştırılmış VHD dosyasını Hyper-V konağında gereç sanal makinesini barındıracak bir klasöre ayıklayın. Üç klasör ayıklanır.
+1. Sıkıştırılmış VHD dosyasını gereç VM 'sinin yerleştirileceği Hyper-V konağına indirdikten sonra, daraltılmış dosyayı ayıklayın.
+    - Ayıklanan konumda, dosya IP 'leri **AzureMigrateAppliance_VersionNumber**adlı bir klasöre geri dönüştürülemiyor.
+    - Bu klasör, **AzureMigrateAppliance_VersionNumber**olarak da adlandırılan bir alt klasör içerir.
+    - Bu alt klasör, daha fazla üç alt **görüntü**, **sanal sabit disk**ve **sanal makine**içerir.
+
 2. Hyper-V Yöneticisi 'Ni açın. **Eylemler**' de **sanal makineyi içeri aktar**' a tıklayın.
 
     ![VHD dağıtma](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. Sanal makineyi Içeri aktarma sihirbazında > **başlamadan önce** **İleri**' ye tıklayın.
-3. **Klasörü bul**' da ayıklanan VHD 'yi içeren klasörü belirtin. Ardından **İleri**'ye tıklayın.
+3. **Klasörü bul**' da, **sanal makineler** klasörünü seçin. Ardından **İleri**'ye tıklayın.
 1. **Sanal makine seç**bölümünde **İleri**' ye tıklayın.
 2. **Içeri aktarma türünü seçin**bölümünde **sanal makineyi Kopyala (yenı bir benzersiz kimlik oluştur)** seçeneğine tıklayın. Ardından **İleri**'ye tıklayın.
-3. **Hedef Seç**bölümünde varsayılan ayarı bırakın.           **İleri**'ye tıklayın.
-4. **Depolama klasörlerinde**varsayılan ayarı bırakın.           **İleri**'ye tıklayın.
+3. **Hedef Seç**bölümünde varsayılan ayarı bırakın. **İleri**'ye tıklayın.
+4. **Depolama klasörlerinde**varsayılan ayarı bırakın. **İleri**'ye tıklayın.
 5. **Ağ seçin**bölümünde, VM 'nin kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir.
 6. **Özet**bölümünde ayarları gözden geçirin. Ardından **son**' a tıklayın.
 7. Hyper-V Yöneticisi 'nde **sanal makineler**>, VM 'yi başlatın.

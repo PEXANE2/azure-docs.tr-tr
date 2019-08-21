@@ -2,20 +2,18 @@
 title: Katmanlar ve SKU 'lar için hizmet limitleri-Azure Search
 description: Kapasite planlaması ve Azure Search istek ve yanıtlara yönelik maksimum limitlerde kullanılan hizmet limitleri.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348305"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640619"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search hizmet limitleri
 Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınırlar, **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında [Azure Search](search-create-service-portal.md) sağlayıp sağlamadığınıza bağlıdır.
@@ -123,7 +121,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 
 <sup>3</sup> S3 HD Services Dizin Oluşturucu desteğini içermez.
 
-Beceri <sup>başına en fazla</sup> 30 yetenek.
+<sup></sup> beceri başına en fazla 30 yetenek.
 
 <sup>5</sup> bilişsel arama iş yükleri ve Azure Blob dizinlemesi içindeki görüntü analizi, normal metin dizinlemesi dışında daha kısa çalışma zamanına sahiptir Görüntü analizi ve doğal dil işleme, yoğun şekilde yoğundur ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Kuyruktaki diğer işlere bir fırsat sağlamak için çalışma süresi düşürüldü.  
 

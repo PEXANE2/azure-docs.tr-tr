@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934363"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639474"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Gizli uygulama ayarlarını bir Web uygulaması için güvenli bir şekilde Kaydet
 
@@ -23,7 +23,7 @@ Bu makalede, Azure uygulamaları için gizli uygulama yapılandırma ayarların�
 
 Geleneksel olarak tüm Web uygulaması yapılandırma ayarları, Web. config gibi yapılandırma dosyalarına kaydedilir. Bu uygulama, GitHub gibi genel kaynak denetimi sistemlerine bulut kimlik bilgileri gibi gizli ayarları denetlemeye yol açar. Bu arada, kaynak kodu değiştirmek ve geliştirme ayarlarını yeniden yapılandırmak için gerekli olan ek yük nedeniyle en iyi güvenlik uygulamasını izlemek zor olabilir.
 
-Geliştirme sürecinin güvenli olduğundan emin olmak için, uygulama gizli ayarlarını en az veya kaynak kodu değişikliğine güvenli bir şekilde kaydetmek üzere araç ve çerçeve kitaplıkları oluşturulmuştur.
+Geliştirme sürecinin güvenli olduğundan emin olmak için, uygulama gizli ayarlarını minimum veya kaynak kodu değişikliğiyle güvenli bir şekilde kaydetmek üzere araç ve çatı kitaplıkları oluşturulmuştur.
 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET ve .NET Core Uygulamaları
 
@@ -50,7 +50,7 @@ Bir proje geliştirmekte ve kaynak kodunu güvenli bir şekilde paylaşmanız ge
     ![Key Vault gizli dizi ekleyin](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > Visual Studio 2017 V 15.6 öncesinde, Visual Studio için Azure Hizmetleri kimlik doğrulama uzantısı 'nı yüklemenizi öneririz. Ancak, funcıonitesi Visual Studio içinde tümleştirildiği için artık kullanım dışıdır. Visual Studio 2017 ' nin eski bir sürümü kullanıyorsanız, bu işlevselliği yerel olarak kullanabilmeniz ve Visual Studio oturum açma kimliğini kullanarak anahtar kasasına erişmek için en az VS 2017 15,6 veya daha güncel güncelleştirmeleri güncelleştirmeniz önerilir.
+    > Visual Studio 2017 V 15.6 öncesinde, Visual Studio için Azure Hizmetleri kimlik doğrulama uzantısı 'nı yüklemenizi öneririz. Ancak işlevsellik Visual Studio içinde tümleştirildiği için artık kullanım dışıdır. Visual Studio 2017 ' nin eski bir sürümü kullanıyorsanız, bu işlevselliği yerel olarak kullanabilmeniz ve Visual Studio oturum açma kimliğini kullanarak anahtar kasasına erişmek için en az VS 2017 15,6 veya daha güncel güncelleştirmeleri güncelleştirmeniz önerilir.
     >
  
 4. Aşağıdaki NuGet paketlerini projenize ekleyin:
@@ -97,10 +97,10 @@ Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyors
 
 1. Aşağıdaki NuGet paketini projenize yükler
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. İzlemeye benzer bir dosya oluşturun. Bunu proje klasörünüzün dışında bir konuma kaydedin.
+2. Aşağıdakine benzer bir dosya oluşturun. Bunu proje klasörünüzün dışında bir konuma kaydedin.
 
     ```xml
     <root>
@@ -123,7 +123,7 @@ Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyors
     </configBuilders>
     ```
 
-4. AppSettings bölümünde gizli dizi yapılandırma oluşturucusunun kullanılması. Gizli bir değere sahip gizli dizi ayarı için herhangi bir giriş olduğundan emin olun.
+4. AppSettings bölümünde gizli dizi yapılandırma oluşturucusunun kullanılması. Gizli bir değere sahip gizli dizi ayarı için bir giriş olduğundan emin olun.
 
     ```xml
         <appSettings configBuilders="Secrets">

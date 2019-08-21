@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/01/2019
-ms.openlocfilehash: 4f3f1c22fa1dc05a66a8b6bf0179903a44cef9b6
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.date: 08/16/2019
+ms.openlocfilehash: 941a710e4c3be3e93263bb63a60c3e0fbcfc4fc4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737933"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638391"
 ---
 # <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta ' HBase hbck ' komutuyla zaman aşımları
 
@@ -23,19 +23,21 @@ Bölge atamalarını düzelterek `hbase hbck` komutla birlikte zaman aşımları
 
 ## <a name="cause"></a>Nedeni
 
-Buradaki olası neden, "geçiş sırasında" durumunda uzun bir süre içinde birkaç bölge olabilir. Bu bölgeler, Apache HBase Master kullanıcı arabiriminden çevrimdışı olarak görülebilir. Geçişe çalışan yüksek sayıda bölge nedeniyle HBase Master zaman aşımına uğrar ve bu bölgeleri çevrimiçi duruma geri getiremeyecektir.
+`hbck` Komutu kullandığınızda zaman aşımı sorunları için olası bir neden, "geçiş sürüyor" durumunda birkaç bölgenin uzun bir süre olması olabilir. Bu bölgeleri HBase Master Kullanıcı arabiriminde çevrimdışı olarak görebilirsiniz. Çok sayıda bölge geçişe çalıştığından HBase Master zaman aşımına uğrar ve bu bölgeleri yeniden çevrimiçi getiremeyebilirsiniz.
 
 ## <a name="resolution"></a>Çözüm
 
 1. SSH kullanarak HDInsight HBase kümesinde oturum açın.
 
-1. Zookeeper `hbase zkcli` Shell ile bağlanmak için komutunu çalıştırın.
+1. Apache ZooKeeper `hbase zkcli` Shell ile bağlanmak için komutunu çalıştırın.
 
 1. `rmr /hbase/regions-in-transition` Veya`rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
 
 1. Komutunu kullanarak `hbase zkcli` `exit` kabuktan çıkın.
 
-1. Ambarı Kullanıcı arabirimini açın ve Active HBase Master hizmeti 'ni ambarı 'ndan yeniden başlatın.
+1. Apache ambarı kullanıcı arabiriminden, etkin HBase Master hizmetini yeniden başlatın.
+
+1. `hbase hbck -fixAssignments` komutunu çalıştırın.
 
 1. Hiçbir bölgenin takılı olmadığından emin olmak için, bu bölümdeki HBase Master Kullanıcı arabirimi "geçiş sırasında bölgesi" ni izleyin.
 
@@ -43,8 +45,8 @@ Buradaki olası neden, "geçiş sırasında" durumunda uzun bir süre içinde bi
 
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+- Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

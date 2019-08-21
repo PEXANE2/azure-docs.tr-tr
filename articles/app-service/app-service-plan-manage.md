@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77d5e4ace14fb0071b6e01a01edbad0128382303
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953872"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639729"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure 'da App Service planını yönetme
 
@@ -97,7 +97,7 @@ Uygulamanızın çalıştırıldığı bölge, içinde bulunduğu App Service pl
 
 ## <a name="scale-an-app-service-plan"></a>App Service planını ölçeklendirme
 
-App Service planının fiyatlandırma katmanını ölçeklendirmek için bkz. [Azure 'da bir uygulamayı ölçeklendirme](web-sites-scale.md).
+App Service planının fiyatlandırma katmanını ölçeklendirmek için bkz. [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md).
 
 Bir uygulamanın örnek sayısını ölçeklendirmek için bkz. [Ölçek örneği sayısı el ile veya otomatik olarak](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
@@ -113,7 +113,7 @@ Beklenmeyen ücretlerden kaçınmak için, bir App Service planındaki son uygul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure 'da bir uygulamayı ölçeklendirme](web-sites-scale.md)
+> [Azure 'da bir uygulamayı ölçeklendirme](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

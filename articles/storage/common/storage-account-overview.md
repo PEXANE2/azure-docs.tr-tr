@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2adb2928772f97c2dc14b8ebe9eb2072cbc4a36d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985358"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640102"
 ---
 # <a name="azure-storage-account-overview"></a>Azure depolama hesabına genel bakış
 
@@ -143,12 +143,12 @@ Aşağıdaki yaklaşımlardan herhangi birini kullanarak Depolama hesabınızdak
 
 - **Azure Active Directory:** Blob ve kuyruk verilerine erişim için bir kullanıcının, grubun veya diğer kimliğin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) kimlik bilgilerini kullanın. Kimlik doğrulaması başarılı olursa Azure AD, Azure Blob depolama veya kuyruk depolama için isteği yetkilendirmede kullanılacak bir belirteç döndürür. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
 - **Paylaşılan anahtar yetkilendirmesi:** Azure depolama 'ya erişmek için uygulamanızın çalışma zamanında kullandığı bir bağlantı dizesi oluşturmak için depolama hesabı erişim anahtarınızı kullanın. Bağlantı dizesindeki değerler, Azure depolama 'ya geçirilen *Yetkilendirme* üst bilgisini oluşturmak için kullanılır. Daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](storage-configure-connection-string.md).
-- **Paylaşılan erişim imzası:** Azure AD kimlik doğrulaması kullanmıyorsanız, Depolama hesabınızdaki kaynaklara erişim yetkisi vermek için paylaşılan erişim imzası kullanın. Paylaşılan erişim imzası, URL 'de Azure depolama 'ya bir istek yetkilendirmek için gereken tüm bilgileri kapsülleyen bir belirteçtir. Depolama kaynağını, verilen izinleri ve izinlerin, paylaşılan erişim imzasının bir parçası olarak geçerli olduğu zaman aralığını belirtebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
+- **Paylaşılan erişim imzası:** Azure AD yetkilendirmesi kullanmıyorsanız, Depolama hesabınızdaki kaynaklara erişim yetkisi vermek için paylaşılan erişim imzası kullanın. Paylaşılan erişim imzası, URL 'de Azure depolama 'ya bir istek yetkilendirmek için gereken tüm bilgileri kapsülleyen bir belirteçtir. Depolama kaynağını, verilen izinleri ve izinlerin, paylaşılan erişim imzasının bir parçası olarak geçerli olduğu zaman aralığını belirtebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
 > Azure AD kimlik bilgilerini kullanarak kullanıcıların veya uygulamaların kimliğini doğrulamak, diğer yetkilendirme yolları üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır. 
 >
-> Microsoft, mümkün olduğunda Azure Depolama Blobu ve kuyruk uygulamaları için Azure AD kimlik doğrulaması kullanılmasını önerir.
+> Microsoft, mümkün olduğunda Azure Depolama Blobu ve kuyruk uygulamaları için Azure AD yetkilendirmesi kullanılmasını önerir.
 
 ## <a name="copying-data-into-a-storage-account"></a>Bir depolama hesabına veri kopyalama
 
@@ -173,7 +173,7 @@ Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Ser
 > [!IMPORTANT]
 > Bloblar, blobla birlikte istemci tarafı şifreleme depolama şifrelemesiyle ilgili meta veriler kullanılarak depolanır. İstemci tarafı şifreleme ile şifrelenmiş bir blobu kopyalarsanız, kopyalama işleminin başta şifreleme ile ilgili meta veriler olmak üzere blob meta verilerini koruduğundan emin olun. Bir blobu şifreleme meta verileri olmadan kopyalarsanız blob içeriği tekrar alınamaz. Şifrelemeyle ilgili meta veriler hakkında daha fazla bilgi için bkz. [Azure Depolama İstemci Tarafı Şifrelemesi](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="azure-importexport-service"></a>Azure İçeri/Dışarı Aktarma hizmeti
+### <a name="azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti
 
 Depolama hesabınıza aktarmak için büyük miktarda veriniz varsa Azure Içeri/dışarı aktarma hizmeti 'ni göz önünde bulundurun. Içeri/dışarı aktarma hizmeti, bir Azure veri merkezine disk sürücüleri göndererek büyük miktarlarda verileri Azure Blob depolama ve Azure dosyalarına güvenli bir şekilde aktarmak için kullanılır. 
 

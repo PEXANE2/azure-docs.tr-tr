@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 961c0de6856a9791f76be1ec609f176f1fbbf8fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567339"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641104"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -42,7 +42,7 @@ Azure SQL veritabanı yönetilen örneği iki donanım nesile dağıtılabilir: 
 | En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık AustraliaEast bölgesinde desteklenmez.
+> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
 
 ### <a name="service-tier-characteristics"></a>Hizmet katmanı özellikleri
 
@@ -124,7 +124,7 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
 
      ![Sorun türü kotası](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3.           **İleri**'ye tıklayın.
+3. **İleri**'ye tıklayın.
 4. Yeni destek isteği için **sorun sekmesinde** :
    - **Önem derecesi**için sorunun önem derecesini seçin.
    - **Ayrıntılar**için, sorununuz hakkında hata iletileri de dahil olmak üzere ek bilgiler sağlayın.
@@ -138,9 +138,9 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
      > - Kota artırdıktan sonra mevcut alt ağlardaki hizmet katmanı başına gereken sanal çekirdek sayısı (mevcut alt ağlardan herhangi birinin genişletilmesi gerekiyorsa).
      > - Yeni alt ağlar içinde gerekli yeni alt ağ sayısı ve hizmet katmanı başına toplam Vcore sayısı (yeni alt ağlarda yönetilen örnekler dağıtmanız gerekiyorsa).
 
-5.           **İleri**'ye tıklayın.
+5. **İleri**'ye tıklayın.
 6. Yeni destek isteği için kişi bilgileri sekmesinde, tercih edilen iletişim yöntemini (e-posta veya telefon) ve iletişim ayrıntılarını girin.
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
