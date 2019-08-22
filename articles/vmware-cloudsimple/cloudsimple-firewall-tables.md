@@ -1,23 +1,23 @@
 ---
-title: Güvenlik Duvarı tabloları-CloudSimple-Azure tarafından VMware çözümü
+title: CloudSimple-Firewall tabloları tarafından Azure VMware çözümü
 description: CloudSimple özel bulut güvenlik duvarı tabloları ve güvenlik duvarı kuralları hakkında bilgi edinin.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812670"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877709"
 ---
 # <a name="firewall-tables-overview"></a>Güvenlik Duvarı tablolarına genel bakış
 
-Bir güvenlik duvarı tablosu, özel bulut kaynaklarından gelen ve giden ağ trafiğini filtrelemek için kuralları listeler. Bunları bir VLAN veya alt ağa uygulayabilirsiniz. Daha sonra kurallar, bir kaynak ağ veya IP adresi ile hedef ağ veya IP adresi arasındaki ağ trafiğini denetler.
+Bir güvenlik duvarı tablosu, özel bulut kaynaklarından gelen ve giden ağ trafiğini filtrelemek için kuralları listeler. Bir VLAN/subnet 'e güvenlik duvarı tabloları uygulayabilirsiniz. Kurallar, bir kaynak ağ veya IP adresi ile hedef ağ veya IP adresi arasındaki ağ trafiğini denetler.
 
 ## <a name="firewall-rules"></a>Güvenlik duvarı kuralları
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda bir güvenlik duvarı kuralındaki parametreler açıklanma
 | Özellik | Ayrıntılar |
 | ---------| --------|
 | **Name** | Güvenlik duvarı kuralını ve amacını benzersiz bir şekilde tanımlayan bir ad. |
-| **Öncelik** | 100 ile 4096 arasında bir sayı, 100 en yüksek önceliğe sahip. Kurallar öncelik sırasına göre işlenir. Trafik bir kural eşleşmesi üzerine geldiğinde, kural işleme durduruluyor. Sonuç olarak, daha yüksek önceliklere sahip kurallarla aynı özniteliklere sahip olan daha düşük önceliklerle mevcut olan tüm kurallar işlenmez.  Çakışan kurallardan kaçınmak için dikkatli olmanız. |
+| **Öncelik** | 100 ile 4096 arasında bir sayı, 100 en yüksek önceliğe sahip. Kurallar öncelik sırasına göre işlenir. Trafik bir kural eşleşmesi ile karşılaştığında, kural işleme durduruluyor. Sonuç olarak, daha yüksek önceliklere sahip kurallarla aynı özniteliklere sahip düşük önceliklere sahip kurallar işlenmez.  Çakışan kurallardan kaçınmak için dikkatli olmanız. |
 | **Durum Izleme** | İzleme durum bilgisiz (özel bulut, Internet veya VPN) ya da durum bilgisi olan (genel IP) olabilir.  |
 | **Protokolü** | Seçenekler arasında, TCP veya UDP bulunur. ICMP gerekliyse, herhangi birini kullanın. |
 | **Yön** | Kuralın gelen veya giden trafiğe uygulanma seçeneği. |
@@ -53,7 +53,7 @@ Trafik akışı için ters yönde ek kurallar gerekebilir.  Aşağıdaki noktala
 
 Aşağıdaki varsayılan kurallar her güvenlik duvarı tablosunda oluşturulur.
 
-|Priority|Ad|Durum Izleme|Direction|Trafik türü|Protocol|Source|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|Action|
+|Priority|Name|Durum Izleme|Direction|Trafik türü|Protocol|Source|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|Tüm-Internet 'e izin ver|Durum bilgisi olan|Giden|Genel IP veya internet trafiği|Tümü|Any|Any|Any|Any|Allow|
 |65001|Reddet-tümü-internet 'ten|Durum bilgisi olan|Gelen|Genel IP veya internet trafiği|Tümü|Any|Any|Any|Any|Reddet|
@@ -62,4 +62,4 @@ Aşağıdaki varsayılan kurallar her güvenlik duvarı tablosunda oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Güvenlik Duvarı tablolarını ve kurallarını ayarlama](https://docs.azure.cloudsimple.com/firewall/)
+* [Güvenlik Duvarı tablolarını ve kurallarını ayarlama](firewall.md)

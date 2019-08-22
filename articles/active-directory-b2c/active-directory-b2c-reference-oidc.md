@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622067"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874126"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma
 
@@ -32,7 +32,7 @@ Azure AD B2C, standart OpenID Connect protokolünü basit kimlik doğrulaması v
 
 Web uygulamanızın kullanıcı kimliğini doğrulaması ve bir Kullanıcı akışı çalıştırması gerektiğinde, kullanıcıyı `/authorize` uç noktaya yönlendirebilir. Kullanıcı, Kullanıcı akışına bağlı olarak eylem gerçekleştirir.
 
-Bu istekte istemci, `scope` parametresindeki kullanıcıdan almaları gereken izinleri gösterir ve çalıştırılacak Kullanıcı akışını belirtir. Üç örnek, her biri farklı bir Kullanıcı akışı kullanan aşağıdaki bölümlerde (okunabilirlik için satır sonları ile) verilmiştir. Her isteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Bir tane varsa `fabrikamb2c` ve bir Kullanıcı akışı oluşturduysanız, kiracınızın adıyla değiştirebilirsiniz. Ayrıca, ' i de değiştirmeniz `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`gerekir. Bu istemci KIMLIĞINI, oluşturduğunuz uygulama kaydının uygulama KIMLIĞIYLE değiştirin. Ayrıca, ilke adını ()`{policy}`kiracınızda bulunan ilke adıyla (örneğin `b2c_1_sign_in`,) değiştirin.
+Bu istekte istemci, `scope` parametresindeki kullanıcıdan almaları gereken izinleri gösterir ve çalıştırılacak Kullanıcı akışını belirtir. İsteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Kiracınızın adıyla değiştirin `{tenant}` . Daha `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` önce kiracınıza kaydettiğiniz uygulamanın uygulama kimliğiyle değiştirin. Ayrıca, ilke adını ()`{policy}`kiracınızda bulunan ilke adıyla (örneğin `b2c_1_sign_in`,) değiştirin.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -48,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Kiracı | Evet | Azure AD B2C kiracınızın adı |
-| ilkesinin | Evet | Çalıştırılan Kullanıcı akışı. Azure AD B2C kiracınızda oluşturulan bir Kullanıcı akışının adıdır. Kullanıcı akışının adı ile `b2c_1_`başlamalıdır. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`, veya `b2c_1_edit_profile`. |
+| ilkesinin | Evet | Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`, veya `b2c_1_edit_profile`. |
 | client_id | Evet | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
 | nonce | Evet | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılan rastgele benzersiz bir dizedir. |
 | response_type | Evet | OpenID Connect için bir KIMLIK belirteci içermelidir. Web uygulamanız, bir Web API 'SI çağırmak için belirteçler de gerekiyorsa, kullanabilirsiniz `code+id_token`. |
@@ -274,14 +274,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | Kiracı | Evet | Azure AD B2C kiracınızın adı |
 | ilkesinin | Evet | Kullanıcıyı uygulamanızda imzalamak için kullanmak istediğiniz kullanıcı akışı. |
-| id_token_hint| Hayır | Son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirilecek daha önceden verilen bir KIMLIK belirteci. |
-| post_logout_redirect_uri | Hayır | Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti gösterir Azure AD B2C. |
+| id_token_hint| Hayır | Son kullanıcının istemci ile geçerli kimlik doğrulamalı oturum hakkında bir ipucu olarak oturum kapatma uç noktasına geçirilecek daha önceden verilen bir KIMLIK belirteci. , Uygulamasının Azure AD B2C uygulama `post_logout_redirect_uri` ayarlarınızda kayıtlı bir yanıt URL 'si olmasınısağlar.`id_token_hint` |
+| post_logout_redirect_uri | Hayır | Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti gösterir Azure AD B2C. Bir `id_token_hint`sağlamazsanız, bu URL 'yi Azure AD B2C uygulama ayarlarınıza bir yanıt URL 'si olarak kaydetmemelisiniz. |
 | state | Hayır | İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulamanın, istek ve yanıt `state` değerlerinin özdeş olduğunu doğrulaması gerekir. |
 
-### <a name="require-id-token-hint-in-logout-request"></a>Oturum kapatma isteğinde KIMLIK belirteci ipucu iste
+### <a name="secure-your-logout-redirect"></a>Logout yeniden yönlendirmenizi güvenli hale getirin
 
 Oturum kapatıldıktan sonra, uygulama için belirtilen yanıt URL 'lerinden bağımsız olarak, `post_logout_redirect_uri` Kullanıcı parametresinde belirtilen URI 'ye yönlendirilir. Ancak, geçerli `id_token_hint` bir `post_logout_redirect_uri` değer geçirilirse Azure AD B2C, değerinin yeniden yönlendirmeyi gerçekleştirmeden önce uygulamanın yapılandırılmış yeniden yönlendirme URI 'lerinden biriyle eşleştiğini doğrular. Uygulama için eşleşen bir yanıt URL 'SI yapılandırılmamışsa, bir hata iletisi görüntülenir ve Kullanıcı yeniden yönlendirilmez.
 
-### <a name="external-identity-provider-session"></a>Dış kimlik sağlayıcı oturumu
+### <a name="external-identity-provider-sign-out"></a>Dış kimlik sağlayıcısı oturumu kapatma
 
 Kullanıcının `end_session` uç noktaya yönlendirilerek, Azure AD B2C ile kullanıcının çoklu oturum açma durumu temizlenir, ancak Kullanıcı sosyal kimlik sağlayıcısı (IDP) oturumunun dışında imzalanmaz. Kullanıcı sonraki oturum açma sırasında aynı ıDP 'yi seçerse, kimlik bilgileri girilmeden bu kimlik doğrulaması yapılır. Kullanıcı uygulamanın oturumunu kapatmak isterse, Facebook hesabında oturumu kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar kullanılıyorsa, kullanıcının oturumu doğru şekilde sona erer.

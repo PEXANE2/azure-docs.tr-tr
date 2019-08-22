@@ -2,17 +2,17 @@
 title: SaaS karşılama API v2 | Azure Marketi
 description: Bu makalede, ilişkili karşılama v2 API 'Leri kullanılarak AppSource ve Azure Marketi üzerinde bir SaaS teklifinin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016038"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872801"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS karşılama API 'Leri, sürüm 2 
 
@@ -116,7 +116,7 @@ Genel olarak benzersiz tanımlayıcılar ([GUID 'ler](https://en.wikipedia.org/w
 
 *Yanıt kodları:*
 
-Kod: 200<br>
+Kodudur 200<br>
 Donuk belirteci bir SaaS aboneliğine çözümler. Yanıt gövdesi:
  
 
@@ -130,16 +130,16 @@ Donuk belirteci bir SaaS aboneliğine çözümler. Yanıt gövdesi:
 }
 ```
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek. x-MS-Market-belirteç eksik, hatalı biçimlendirilmiş veya süresi dolmuştur.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -179,7 +179,7 @@ Bir yayımcının tüm SaaS aboneliklerini listeler.
 
 *Yanıt kodları:*
 
-Kod: 200 <br/>
+Kodudur 200 <br/>
 Kimlik doğrulama belirtecine göre yayımcının tüm teklifleri için yayımcıyı ve ilgili abonelikleri alır.
 Yanıt yükü:<br>
 
@@ -218,10 +218,10 @@ Yanıt yükü:<br>
 
 Devamlılık belirteci yalnızca alınacak planların ek "sayfaları" varsa mevcut olacaktır. 
 
-Kod: 403 <br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor. 
+Kodudur 403 <br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor. 
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -257,7 +257,7 @@ Belirtilen SaaS aboneliğini alır. Lisans bilgilerini ve plan bilgilerini almak
 
 *Yanıt kodları:*
 
-Kod: 200<br>
+Kodudur 200<br>
 Tanımlayıcıdan SaaS aboneliğini alır. Yanıt yükü:<br>
 
 ```json
@@ -287,13 +287,13 @@ Response Body:
 }
 ```
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.<br> 
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.<br>
 
 ```json
@@ -327,7 +327,7 @@ Geçerli yayımcı için özel veya genel teklifler olup olmadığını bulmak i
 
 *Yanıt kodları:*
 
-Kod: 200<br>
+Kodudur 200<br>
 Bir müşteri için kullanılabilir planların bir listesini alır. Yanıt gövdesi:
 
 ```json
@@ -340,13 +340,13 @@ Bir müşteri için kullanılabilir planların bir listesini alır. Yanıt gövd
 }
 ```
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.<br> 
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor. <br> 
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor. <br> 
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.<br>
 
 ```json
@@ -388,19 +388,19 @@ Kod: 500<br>
 
 *Yanıt kodları:*
 
-Kod: 200<br>
+Kodudur 200<br>
 Aboneliği etkinleştirir.<br>
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek: doğrulama sorunları.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -451,19 +451,19 @@ Request Body:
 
 *Yanıt kodları:*
 
-Kod: 202<br>
+Kodudur 202<br>
 Planı değiştirme isteği kabul edildi. Ortağın, bir başarı veya başarısızlık tespit etmek için Işlem konumunu yoklamak üzere olması beklenir. <br>
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek: doğrulama sorunları.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -517,20 +517,20 @@ Request Body:
 
 *Yanıt kodları:*
 
-Kod: 202<br>
+Kodudur 202<br>
 Miktarı değiştirme isteği kabul edildi. Ortağın, bir başarı veya başarısızlık tespit etmek için Işlem konumunu yoklamak üzere olması beklenir. <br>
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek: doğrulama sorunları.
 
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -569,19 +569,19 @@ Belirtilen aboneliği kaldırın ve silin.
 
 *Yanıt kodları:*
 
-Kod: 202<br>
+Kodudur 202<br>
 İş ortağı bir SaaS aboneliğinin aboneliğini kaldırma çağrısını başlattı.<br>
 
-Kod: 400<br>
+Kodudur 400<br>
 **Delete** olmayan `allowedCustomerOperations`bir abonelikte silme.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -622,7 +622,7 @@ Geçerli yayımcı için bekleyen işlemleri listeler.
 
 *Yanıt kodları:*
 
-Kod: 200<br> Bir abonelikte bekleyen işlemlerin listesini alır. Yanıt yükü:
+Kodudur 200<br> Bir abonelikte bekleyen işlemlerin listesini alır. Yanıt yükü:
 
 ```json
 [{
@@ -640,16 +640,16 @@ Kod: 200<br> Bir abonelikte bekleyen işlemlerin listesini alır. Yanıt yükü:
 ```
 
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek: doğrulama sorunları.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br>
+Kodudur 500<br>
 İç sunucu hatası.
 
 ```json
@@ -685,7 +685,7 @@ Yayımcının belirtilen tetiklenmiş zaman uyumsuz işlemin durumunu `subscribe
 
 *Yanıt kodları:*<br>
 
-Kod: 200<br> Belirtilen bekleyen SaaS işlemini alır. Yanıt yükü:
+Kodudur 200<br> Belirtilen bekleyen SaaS işlemini alır. Yanıt yükü:
 
 ```json
 Response body:
@@ -704,16 +704,16 @@ Response body:
 
 ```
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek: doğrulama sorunları.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
  
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 500<br> İç sunucu hatası.
+Kodudur 500<br> İç sunucu hatası.
 
 ```json
 {
@@ -760,21 +760,21 @@ Bir işlemin durumunu, belirtilen değerlerle başarı veya başarısızlığı 
 
 *Yanıt kodları:*
 
-Kod: 200<br> İş ortağı tarafındaki bir işlemin tamamlandığını bilgilendirmek için bir çağrı. Örneğin, bu yanıt, koltuk veya planların değiştirilmesini işaret verebilir.
+Kodudur 200<br> İş ortağı tarafındaki bir işlemin tamamlandığını bilgilendirmek için bir çağrı. Örneğin, bu yanıt, koltuk veya planların değiştirilmesini işaret verebilir.
 
-Kod: 400<br>
+Kodudur 400<br>
 Hatalı istek: doğrulama sorunları.
 
-Kod: 403<br>
-Yetkilendirilmedi. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
+Kodudur 403<br>
+Erişilmesini. Kimlik doğrulama belirteci sağlanmamış veya geçersiz ya da istek geçerli yayımcıya ait olmayan bir alıcıyla erişmeye çalışıyor.
 
-Kod: 404<br>
+Kodudur 404<br>
 Bulunamadı.
 
-Kod: 409<br>
+Kodudur 409<br>
 Uzantıları. Örneğin, daha yeni bir işlem zaten yerine getirilir.
 
-Kod: 500<br> İç sunucu hatası.
+Kodudur 500<br> İç sunucu hatası.
 
 ```json
 {
@@ -790,7 +790,6 @@ Kod: 500<br> İç sunucu hatası.
 
 Yayımcının, kullanıcılarına hizmetinde değişiklik yapmak için bu SaaS hizmetinde bir Web kancası uygulaması gerekir. SaaS hizmetinin, Web kancası bildiriminde bir işlem yapmadan önce doğrulamak ve yetkilendirmek için Operations API 'sini çağırması beklenmektedir.
 
-Microsoft, güvenli iletişim sağlamak için, çağrının bir parçası olarak yetkilendirme üst bilgisinde Azure Active Directory JWT belirtecini içerir. SaaS sağlayıcılarının yalnızca geçerli çağrıların kabul edildiğinden emin olmak için [Microsoft Identity platform erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) makalesinde AÇıKLANDıĞı gibi JWT belirtecini doğrulaması önerilir.
 
 ```json
 {

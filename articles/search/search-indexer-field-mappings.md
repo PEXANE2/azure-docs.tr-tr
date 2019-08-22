@@ -3,19 +3,19 @@ title: Dizin oluşturucular kullanarak otomatik dizin oluşturma için alan eşl
 description: Alan adlarında ve veri gösterimlerinde farklılıklar için Azure Search Dizin Oluşturucu alan eşlemelerini hesaba göre yapılandırın.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 771a6e413cd08a338da41c09cd6a0da35e28e5e4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b64f6dcecb26e35689ad6f569ade6c7862f06f1a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840662"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648132"
 ---
 # <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Azure Search Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -189,7 +189,7 @@ Aşağıdaki tabloda, dizenin `00>00?00`farklı Base64 kodlamaları karşılaşt
 | Doldurma ile Base64 | `MDA+MDA/MDA=` | URL-güvenli karakterler kullanın ve doldurmayı kaldırın | Standart Base64 karakterlerini kullanın ve doldurma ekleyin |
 | Doldurma olmadan Base64 | `MDA+MDA/MDA` | URL kullanımı güvenli karakterler | Standart Base64 karakterlerini kullan |
 | URL-doldurma ile güvenli Base64 | `MDA-MDA_MDA=` | Doldurmayı kaldır | Doldurma Ekle |
-| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | None | Yok. |
+| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Yok. | Yok. |
 
 <a name="extractTokenAtPositionFunction"></a>
 

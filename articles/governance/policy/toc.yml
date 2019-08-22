@@ -249,9 +249,6 @@
         - name: Depolama dosya şifrelemesini güvence altına alma
           displayName: 'deny, all'
           href: samples/ensure-storage-file-encryption.md
-        - name: Depolama hesabı şifrelemesi iste
-          displayName: 'deny, builtin'
-          href: samples/require-storage-account-encryption.md
 - name: Kavramlar
   items:
     - name: Azure İlkesi tanım yapısı

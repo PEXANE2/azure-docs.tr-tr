@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3aaf943b5eecd9ec1853c09ea36156b98560d3d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884498"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648716"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Market görüntüsü kullanarak Azure kaynakları için yönetilen kimliğe sahip bir Terraform Linux sanal makinesi oluşturma
 
@@ -47,16 +47,16 @@ Linux Terraform sanal makinesi örneği oluşturma adımları aşağıda verilmi
 
 1. **Temel Bilgiler**
     
-   * **Ad**: Terraform sanal makinenizin adı.
-   * **Kullanıcı adı**: İlk hesap oturum açma kimliği
+   * **Ad**: Terrayform sanal makinenizin adı.
+   * **Kullanıcı adı**: İlk hesap oturum açma KIMLIĞI.
    * **Parola**: İlk hesap parolası. (Parola yerine SSH ortak anahtarı kullanabilirsiniz.)
-   * **Abonelik**: Makine oluşturulması ve fatura olduğu abonelik. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
+   * **Abonelik**: Makinenin oluşturulacağı ve faturalandırılabileceği abonelik. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
    * **Kaynak grubu**: Yeni veya mevcut bir kaynak grubu.
    * **Konum**: En uygun veri merkezi. Bu genellikle verilerinizin çoğunun bulunduğu veya en hızlı ağ erişimi için fiziksel konumunuza en yakın olan veri merkezidir.
 
 2. **Ek ayarlar**
 
-   * **Boyutu**: Sanal makine boyutu. 
+   * **Boyutu**: Sanal makinenin boyutu. 
    * **VM disk türü**: SSD veya HDD.
 
 3. **Terraform Özeti**
@@ -85,7 +85,7 @@ Katkıda bulunan izinleri sayesinde VM üzerindeki MSI, Terraform'u kullanarak V
 
 `. ~/tfEnv.sh`
 
-Yukarıdaki betikte [AZ CLI v 2.0 etkileşimli oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) mekanizması kullanılarak Azure kimlik doğrulaması gerçekleştirilir ve sanal makine Yönetilen Kimliğe aboneliğin tamamında katkıda bulunan izni atanır. 
+Yukarıdaki betikte [AZ CLI v 2.0 etkileşimli oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively) mekanizması kullanılarak Azure kimlik doğrulaması gerçekleştirilir ve sanal makine Yönetilen Kimliğe aboneliğin tamamında katkıda bulunan izni atanır. 
 
  VM, Terraform uzak durum arka ucuna sahiptir. Bunu Terraform dağıtımınızda etkinleştirmek için tfTemplate dizinindeki remoteState.tf dosyasını Terraform betiklerinin kök dizinine kopyalayın.  
 

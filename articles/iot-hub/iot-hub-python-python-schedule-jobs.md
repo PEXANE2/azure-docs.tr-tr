@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667945"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873279"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>İşleri zamanlama ve yayınlama (Python)
 
@@ -47,15 +47,17 @@ Bu öğreticinin sonunda iki Python uygulamanız vardır:
 
 **scheduleJobService.py**, sanal cihaz uygulamasında doğrudan bir yöntemi çağırır ve bir işi kullanarak Device ikizi 'ın istenen özelliklerini güncelleştirir.
 
-[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
-
-Önkoşullar için yükleme yönergeleri aşağıda verilmiştir.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 > [!NOTE]
 > **Python Için Azure ıOT SDK** , **iş** işlevlerini doğrudan desteklemez. Bu öğreticide, zaman uyumsuz iş parçacıkları ve zamanlayıcılar kullanan alternatif bir çözüm sunulmaktadır. Daha fazla güncelleştirme için, [Python Için Azure ıOT SDK](https://github.com/Azure/azure-iot-sdk-python) sayfasında **hizmet istemci SDK 'sı** özellik listesi ' ne bakın.
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -74,6 +76,10 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   >
 
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde yeni bir **simDevice.py** dosyası oluşturun.
 
@@ -158,9 +164,27 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+Bu makalede, bir cihazda doğrudan yöntem çağıran ve cihazı ikizi güncelleştiren bir arka uç hizmeti oluşturursunuz. Hizmet, bir cihazda doğrudan yöntem çağırmak için **hizmet Connect** iznine sahip olmalıdır. Ayrıca hizmet, kimlik kayıt defterini okuyup yazmak için **kayıt defteri okuma** ve **kayıt defteri yazma** izinlerine sahip olmalıdır. Yalnızca bu izinleri içeren bir varsayılan paylaşılan erişim ilkesi yoktur, bu nedenle bir tane oluşturmanız gerekir.
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+**Hizmet bağlantısı**, **kayıt defteri okuma**ve **kayıt defteri yazma** izinleri veren bir paylaşılan erişim ilkesi oluşturmak ve bu ilkeyle ilgili bir bağlantı dizesi almak için aşağıdaki adımları izleyin:
+
+1. IoT Hub 'ınızı [Azure Portal](https://portal.azure.com)açın. IoT Hub 'ınıza almanın en kolay yolu **kaynak grupları**seçmek, IoT Hub 'ınızın bulunduğu kaynak grubunu seçmek ve ardından kaynak listesinden IoT Hub 'ınızı seçmeniz gerekir.
+
+2. IoT Hub 'ınızın sol tarafındaki bölmede **paylaşılan erişim ilkeleri**' ni seçin.
+
+3. İlke listesinin üstündeki en üstteki menüden **Ekle**' yi seçin.
+
+4. **Paylaşılan erişim Ilkesi Ekle** bölmesinde, ilkeniz için açıklayıcı bir ad girin; Örneğin: *Serviceandregistryreadwrite*. **İzinler**altında **hizmet Connect** ve **kayıt defteri yazma** (kayıt defteri **yazma**seçeneğini belirlediğinizde**kayıt defteri okuma** otomatik olarak seçilir) seçeneğini belirleyin. Ardından **Oluştur**’u seçin.
+
+    ![Yeni bir paylaşılan erişim ilkesinin nasıl ekleneceğini göster](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. **Paylaşılan erişim ilkeleri** bölmesine geri döndüğünüzde, ilkeler listesinden yeni ilkenizi seçin.
+
+6. **Paylaşılan erişim anahtarları**altında, **bağlantı dizesi--birincil anahtar** için Kopyala simgesini seçin ve değeri kaydedin.
+
+    ![Bağlantı dizesinin nasıl alınacağını göster](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+IoT Hub paylaşılan erişim ilkeleri ve izinleri hakkında daha fazla bilgi için bkz. [erişim denetimi ve izinleri](./iot-hub-devguide-security.md#access-control-and-permissions).
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Bir doğrudan yöntem çağırmak ve bir cihaz ikizi özelliklerini güncelleştirmek için işleri zamanlama
 
@@ -172,9 +196,13 @@ Bu bölümde, doğrudan yöntem kullanan bir cihazda uzak **Lockkapısı** Başl
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   >
+
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde yeni bir **scheduleJobService.py** dosyası oluşturun.
 
-3. **ScheduleJobService.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
+3. **ScheduleJobService.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin. Yer tutucusunu `{IoTHubConnectionString}` , [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. Yer tutucusunu `{deviceId}` , [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kaydettiğiniz cihaz kimliğiyle değiştirin:
 
     ```python
     import sys

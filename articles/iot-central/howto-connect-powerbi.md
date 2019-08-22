@@ -1,101 +1,103 @@
 ---
-title: Azure IOT Central verilerinizi Power BI panosunda Görselleştirme | Microsoft Docs
-description: Power BI çözümü için Azure IOT Central, IOT Central verilerini Görselleştirme ve çözümleme için kullanın.
+title: Azure IoT Central verilerinizi Power BI panosunda görselleştirin | Microsoft Docs
+description: IoT Central verilerinizi görselleştirmek ve analiz etmek için Azure IoT Central Power BI çözümünü kullanın.
 ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 06/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 16d7691d59e0805c7f8cf565a599ca5e6a78a7cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053035"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877467"
 ---
-# <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Power BI panosunda, Azure IOT Central verilerini Görselleştirme ve çözümleme
+# <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 *Bu konu, Yöneticiler için geçerlidir.*
 
-![Power BI çözüm işlem hattı](media/howto-connect-powerbi/iot-continuous-data-export.png)
+![Power BI çözümü işlem hattı](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
-Power BI çözümü için Azure IOT Central, IOT cihazlarınızı performansını izlemek için güçlü bir Power BI panosu oluşturmak için kullanın. Power BI Panonuzda şunları yapabilirsiniz:
-- Cihazlarınızı zamanla gönderdiğiniz veri miktarını izleme
-- Telemetri, durumları ve etkinlikler arasında veri hacmi karşılaştırın
-- Ölçümler çok sayıda raporlama cihazları belirleyin
-- Cihaz ölçümleri'nin geçmiş eğilimleri gözlemleyin
-- Çok sayıda önemli olaylar göndermek sorunlu cihazları belirleyin
+IoT cihazlarınızın performansını izlemek üzere güçlü bir Power BI panosu oluşturmak için Azure IoT Central Power BI çözümünü kullanın. Power BI panonuzda şunları yapabilirsiniz:
+- Cihazların zaman içinde ne kadar veri gönderdiğini izleme
+- Telemetri, durumlar ve olaylar arasındaki veri hacmini karşılaştırın
+- Çok sayıda ölçümü raporlayan cihazları tanımla
+- Cihaz ölçümlerinin geçmiş eğilimlerini gözlemleyin
+- Çok sayıda kritik olay gönderen sorunlu cihazları tanımla
 
-Bu çözüm, Azure Blob Depolama hesabınızda veri alan bir işlem hattı ayarlar [verileri sürekli dışarı aktarma](howto-export-data.md). Bu veriler, Azure işlevleri, Azure Data Factory ve Azure SQL veritabanı için işlem ve veri dönüştürmek için aracılığıyla akar. Çıktı görselleştirilmiş ve çözümlenen bir Power BI raporundaki PBIX dosyası olarak indirebilirsiniz. Her bileşen, gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Bu nedenle tüm bu kaynakları Azure aboneliğinizde oluşturulur.
+Bu çözüm, Azure Blob Depolama hesabınızdaki verileri [sürekli veri dışa aktarma](howto-export-data.md)işleminden alan işlem hattını ayarlar. Bu veriler, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'na akar. Çıktı, bir PBIX dosyası olarak indirebileceğiniz bir Power BI raporunda görselleştirilir ve analiz edilebilir. Tüm bu kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
-## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Alma [Power BI çözümü için Azure IOT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) Microsoft appsource'tan.
+## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Microsoft AppSource [Azure IoT Central için Power BI çözümünü](https://aka.ms/iotcentralpowerbisolutiontemplate) alın.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Çözümünü ayarlama aşağıdakileri gerektirir:
+Çözümü ayarlamak için aşağıdakiler gereklidir:
 - Bir Azure aboneliğine erişim
-- Verileriniz dışarı [verileri sürekli dışarı aktarma](howto-export-data.md) IOT Central uygulamanızdan. Ölçümler, cihazları ve cihaz şablonu akışları en iyi Power BI panosu için etkinleştirmeniz önerilir.
+- IoT Central uygulamanızdan [sürekli veri dışa aktarma](howto-export-data.md) kullanarak verileri dışarı aktarın. Power BI panosundan en iyi şekilde yararlanmak için ölçümleri, cihazları ve cihaz şablonu akışlarını açmanızı öneririz.
 - Power BI Desktop (en son sürüm)
 - Power BI Pro (panoyu başkalarıyla paylaşmak istiyorsanız)
 
 ## <a name="reports"></a>Raporlar
 
-İki raporlar otomatik olarak oluşturulur. 
+İki rapor otomatik olarak oluşturulur. 
 
-İlk rapor, cihazların raporladığı ölçümleri bir geçmiş görünümünü gösterir ve ölçümleri ve ölçümler için en yüksek sayıda göndermiş cihazlar farklı türde keser.
+İlk rapor, cihazlar tarafından raporlanan ölçümlerin geçmiş bir görünümünü gösterir ve en yüksek ölçüm sayısını göndermiş olan farklı ölçüm türlerini ve cihazları ayırır.
 
 ![Power BI rapor sayfası 1](media/howto-connect-powerbi/template-page1-hasdata.PNG)
 
-İkinci raporun daha ayrıntılı olay türlerine geçiyor ve hataları ve Uyarıları bildirilen bir geçmiş görünümünü gösterir. Ayrıca, hangi cihazların, özellikle hata olayları ve uyarı olayları yanı sıra tüm en yüksek olay sayısı raporladığınız gösterir.
+İkinci rapor olayları daha ayrıntılı bir şekilde gösterir ve bildirilen hataların ve uyarıların geçmiş bir görünümünü gösterir. Ayrıca, hangi cihazların en yüksek sayıda olay olduğunu ve özel olarak hata olayları ve uyarı olaylarını bildirtiğinin de gösterildiği gösterilmektedir.
 
 ![Power BI rapor sayfası 2](media/howto-connect-powerbi/template-page2-hasdata.PNG)
 
 ## <a name="architecture"></a>Mimari
-Azure portalında oluşturulan tüm kaynakları erişilebilir. Her şeyi altında bir kaynak grubu olması gerekir.
+Oluşturulan tüm kaynaklara Azure portal erişilebilir. Her şeyin bir kaynak grubu altında olması gerekir.
 
-![Kaynak grubu, Azure Portal görünümü](media/howto-connect-powerbi/azure-deployment.PNG)
+![Kaynak grubunun Azure Portal görünümü](media/howto-connect-powerbi/azure-deployment.PNG)
 
-Her bir kaynağın ayrıntılarını ve nasıl kullanıldıkları, aşağıda tanımlanmıştır.
+Her bir kaynağın özellikleri ve nasıl kullanıldığı aşağıda açıklanmaktadır.
 
 ### <a name="azure-functions"></a>Azure İşlevleri
-Azure işlev uygulaması, her seferinde yeni bir dosya, BLOB depolamaya yazılır tetiklenen. İşlevler, alanların her ölçümleri, cihazları ve cihaz şablonları dosya içinden ayıklayın ve Azure Data Factory tarafından kullanılmak üzere birkaç Ara SQL tablolarının doldurur.
+Blob depolamaya her yeni dosya yazıldığında Azure Işlevi uygulaması tetiklenir. İşlevler her ölçüm, cihaz ve cihaz şablonu dosyasındaki alanları ayıklar ve Azure Data Factory tarafından kullanılacak birkaç ara SQL tablosunu doldurur.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory, bağlı hizmet olarak SQL veritabanına bağlanır. Bu verileri işlemek ve analiz tablolarda depolama saklı yordam etkinlikleri çalıştırır.
+Azure Data Factory, SQL veritabanına bağlı hizmet olarak bağlanır. Verileri işleyen ve analiz tablolarında depolayan saklı yordam etkinliklerini çalıştırır.
 
-### <a name="azure-sql-database"></a>Azure SQL Veritabanı
-Bu tablolar varsayılan raporları doldurmak için otomatik olarak oluşturulur. Power bı'da bu şemaları keşfedin ve bu verileri kendi Görselleştirmelerini de oluşturabilirler.
+### <a name="azure-sql-database"></a>Azure SQL Database
+Bu tablolar varsayılan raporları doldurmak için otomatik olarak oluşturulur. Power BI içinde bu şemaları keşfet ve bu veriler üzerinde kendi görselleştirmelerinizi oluşturabilirsiniz.
 
 | Tablo adı |
 |------------|
-|[analytics]. [Ölçümleri]|
-|[analytics]. [İletileri]|
-|[aşama]. [Ölçümleri]|
-|[analytics]. [Özellikleri]|
-|[analytics]. [PropertyDefinitions]|
-|[analytics]. [MeasurementDefinitions]|
-|[analytics]. [Cihazları]|
-|[analytics]. [DeviceTemplates]|
-|[dbo]. [date]|
-|[dbo]. [Defteriniz]|
+|[analiz]. Ölçümün|
+|[analiz]. Iletilerine|
+|[aşama]. Ölçümün|
+|[analiz]. Özelliklerinin|
+|[analiz]. [PropertyDefinitions]|
+|[analiz]. [MeasurementDefinitions]|
+|[analiz]. Cihazlarınız|
+|[analiz]. [DeviceTemplates]|
+|[dbo]. güncel|
+|[dbo]. Değişiklik izleme dosyanız|
 
 ## <a name="estimated-costs"></a>Tahmini maliyetler
 
-İlgili Azure maliyetleri (Azure işlevi, Data Factory, Azure SQL) tahmini aşağıdadır. Tüm fiyatlar ABD Doları cinsindendir. Her zaman en son fiyatları gerçek fiyatları almak için tek tek hizmetlerin görünmelidir böylece fiyatlar bölgeye göre değişir aklınızda bulundurun.
-Aşağıdaki varsayılan değerler (şeyler olarak ayarladıktan sonra aşağıdakilerden herhangi birini değiştirebilirsiniz) şablonunda sizin için ayarlanır:
+Bu, dahil edilen Azure maliyetlerinin (Azure Işlevi, Data Factory, Azure SQL) tahminidir. Tüm fiyatlar ABD Doları ' dir. Fiyatların bölgeye göre değişeceğini aklınızda bulundurun. bu nedenle, gerçek fiyatları almak için her zaman bireysel hizmetlerin en son fiyatlarını aramanız gerekir.
+Şablonda sizin için aşağıdaki varsayılanlar ayarlanır (bir şeyler kurulduktan sonra bunlardan herhangi birini değiştirebilirsiniz):
 
-- Azure işlevleri: App Service planı S1, $74.40/ ay
-- Azure SQL S1, ~$30/month
+- Azure Işlevleri: App Service plan S1, $74.40/ay
+- Azure SQL S1, ~ $30/ay
 
-İle çeşitli fiyatlandırma seçenekleri hakkında bilgilenmeli ve ihtiyaçlarınıza uyacak şekilde şeyler ince ayar yapmanızı öneririz.
+Çeşitli fiyatlandırma seçeneklerini öğrenmeniz ve gereksinimlerinize uyacak şekilde ince ayar şeyleri öğrenmeniz önerilir.
 
 ## <a name="resources"></a>Kaynaklar
 
-AppSource almak için ziyaret [Power BI çözümü için Azure IOT Central](https://aka.ms/iotcentralpowerbisolutiontemplate).
+[Azure IoT Central Power BI çözümünü](https://aka.ms/iotcentralpowerbisolutiontemplate)almak Için appsource 'u ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verilerinizi Power bı'da görselleştirin gerçekleştirmeyi öğrendiniz, önerilen sonraki adım aşağıda verilmiştir:
+Artık Power BI verilerinizi görselleştirmeyi öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
 > [Cihazları yönetme](howto-manage-devices.md)

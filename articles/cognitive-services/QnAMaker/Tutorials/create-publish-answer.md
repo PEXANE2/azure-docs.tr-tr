@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81492dcdd095762127baabda14da602c6698ef6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562895"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69646997"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Öğretici: Kullanarak C#Bilgi Bankası oluşturun ve soruyu yanıtlayın
 
@@ -30,7 +30,7 @@ Bu öğretici, program aracılığıyla bilgi bankası (KB) oluşturup yayımlam
 > * Curl kullanarak bilgi bankasını sorgulama
 
 
-Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
+Bu hızlı başlangıçta Soru-Cevap Oluşturma REST API 'Leri çağrıları yapılır:
 
 * [Bilgi bankası (KB) oluşturma](https://go.microsoft.com/fwlink/?linkid=2092179)
 * [İşlem Ayrıntılarını Alma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)

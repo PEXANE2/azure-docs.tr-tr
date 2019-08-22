@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815730"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873054"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modeliniz için ayarlama hiperparametreleri
 
@@ -325,11 +325,9 @@ Ayrıca, her birinin çalıştırmalar performans eğitim ilerledikçe görselle
 
 Ayrıca, performans ve bir paralel koordinatları çizim kullanarak tek tek hiperparametreleri değerleri arasındaki bağıntıyı görsel olarak belirleyebilirsiniz. 
 
-![Hiper parametre paralel koordinatları ayarlama](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
+[![Hiper parametre ayarlama paralel koordinatları](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Çalıştırmaları de Azure web portalında ayarlama tüm, Hiper parametre görselleştirebilirsiniz. Bir deney web portalında görüntüleme hakkında daha fazla bilgi için bkz. [nasıl izleneceğini denemeleri](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
-
-![Hiper parametre ayarlama portalı](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 
 ## <a name="find-the-best-model"></a>En iyi modeli bulun
 

@@ -2,7 +2,7 @@
 title: Arama sonuçlarıyla çalışma-Azure Search
 description: Arama sonuçlarını yapı ve sıralama, belge sayısı edinme ve Azure Search arama sonuçlarına içerik gezintisi ekleme.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974614"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647700"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Azure Search arama sonuçlarıyla çalışma
 Bu makalede, toplam sayımlar, belge alımı, sıralama düzenleri ve gezinti gibi bir arama sonuçları sayfasının standart öğelerinin nasıl uygulanacağı hakkında rehberlik sunulmaktadır. Arama sonuçlarınıza veri veya bilgi katkıda bulunan sayfayla ilgili seçenekler, Azure Search hizmetinize gönderilen [Arama belgesi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) istekleri aracılığıyla belirtilir. 

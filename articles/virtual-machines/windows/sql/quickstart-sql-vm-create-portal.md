@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb35cc99164cc8da047e8309d63bf7909abf4815
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 50297147d371898c35259bf4be59337eaa716579
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846023"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877891"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Hızlı Başlangıç: Azure Portal’da SQL Server 2017 Windows sanal makinesi oluşturma
 
@@ -42,16 +42,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Azure portalda **Kaynak oluştur**’u seçin. 
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **SQL sanal makineler** kutucuğunda **Ayrıntıları göster** ' i seçerek ek bilgileri görüntüleyebilirsiniz.
+1. **Ücretsiz SQL Server lisansını seçin: Açılan listeden Windows Server 2016** üzerinde SQL Server 2017 geliştiricisi.
 
-1. Arama alanına yazın `SQL Server 2017 Developer on Windows Server 2016`ve ENTER tuşuna basın. Windows Server 2016 üzerinde SQL Server 2017 seçeneğini genişletin. 
-
-1. **Ücretsiz SQL Server lisansını seçin: Windows Server 2016** üzerinde 2017 SQL Server Geliştirici görüntüsü. Geliştirme testi amacıyla kullanım için ücretsiz olan tam özellikli SQL Server sürümü olduğundan bu öğreticide Developer sürümü kullanılmıştır. Yalnızca çalışan VM'ler için ücret ödersiniz. Fiyatlandırma konusunda dikkate alınacak tüm noktalar için bkz. [SQL Server Azure VM’leri için fiyatlandırma kılavuzu](virtual-machines-windows-sql-server-pricing-guidance.md).
-
-   ![Yeni arama penceresi](./media/quickstart-sql-vm-create-portal/newsearch.png)
-
+   ![Yeni arama penceresi](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
 1. **Oluştur**’u seçin.
+
+   ![Yeni arama penceresi](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
 ## <a id="configure"></a> Temel ayrıntıları sağlama
 

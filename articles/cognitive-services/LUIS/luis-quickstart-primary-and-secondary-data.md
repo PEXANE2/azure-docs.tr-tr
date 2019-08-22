@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560340"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648616"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: Basit varlık ve tümcecik listesi ile adları Ayıkla
 
@@ -99,7 +99,7 @@ Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalin
 
     ![İş adı ve basit türü görünen basit varlık oluşturma açılır iletişim kutusu](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. Kalan söylerde, **iş varlığıyla işle** ilgili kelimeleri, sözcüğü veya tümceciği seçip açılır menüden **iş** öğesini seçerek işaretleyin. 
+1. Kalan söylerde, iş varlığıyla işle ilgili kelimeleri, sözcüğü veya tümceciği seçip açılır menüden **iş** öğesini seçerek işaretleyin. 
 
     [![Vurgulanan iş Varlık etiketleme LUIS ekran](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "vurgulanan iş Varlık etiketleme LUIS ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -137,7 +137,7 @@ Basit varlıkların, yüksek tahmine sahip olması için çok sayıda örnek ger
 
 1. Örnek söyleylerdeki işleri etiketleme
 
-    Başka bir amaca göre bir amaca göre daha fazla örnek elde edildiğinde, bu amaç en yüksek tahmin edilen Intext olma olasılığını daha yüksektir. 
+    Başka bir amaca göre bir amaç için daha fazla örnek elde edildiğinde, bu amaç en yüksek tahmini amaç olma olasılığının daha yüksektir. 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamaya yapılan değişikliklerin test edilebilir olması için uygulamayı eğitme 
 

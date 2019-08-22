@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816424"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876757"
 ---
 # <a name="remote-desktop-client-connections"></a>Uzak Masaüstü istemcisi bağlantıları
 
@@ -135,7 +135,7 @@ Bazen kullanıcılar kendi akışına ve yerel kaynaklarına erişebilir, ancak 
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hata: O_ADD_USER_TO_GROUP_FAILED/Kullanıcı = ≤ Kullanıcı adı ≥, Grup = uzak masaüstü kullanıcıları 'na eklenemedi. Neden: Win32. ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hata: O_ADD_USER_TO_GROUP_FAILED/Kullanıcı = ≤ Kullanıcı adı ≥, Grup = uzak masaüstü kullanıcıları 'na eklenemedi. Yüzden Win32. ERROR_NO_SUCH_MEMBER
 
 **Sağlamak** VM, Kullanıcı nesnesinin bulunduğu etki alanına katılmadı.
 
@@ -173,7 +173,7 @@ Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunlar
 - Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows Masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
+- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
 - Sorun giderme öğreticisine geçmek için bkz [. Öğretici: Kaynak Yöneticisi şablonu dağıtımlarıyla](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)ilgili sorunları giderin.
 - Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services, sanal makineler için parolaları ayarlama | Microsoft Docs
-description: Azure Lab Services'ın classroom Labs'de sanal makineler (VM) için parolaları ve öğrenin.
+title: Azure Lab Services VM 'Leri için parola ayarlama | Microsoft Docs
+description: Azure Lab Services derslik laboratuvarlarında sanal makineler (VM) için parolaları ayarlamayı ve sıfırlamayı öğrenin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,51 +11,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: c1564fadef35a20d0d87db8439ae1cc3dc923318
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: a4cb2abec429a790f493f95d3d16b2ff7b3eb445
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144091"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69645022"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs"></a>Ayarlama veya sınıf Labs'de sanal makineler için parola sıfırlama
-Bu makale, Vm'leri classroom Labs'de erişmek için ayar ve resettings parolaların farklı yol sunar. 
+# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-instructor"></a>Sınıf laboratuvarlarında sanal makineler için parola ayarlama veya sıfırlama (eğitmen)
+Laboratuvar sahibi (öğretmen), laboratuvar (Laboratuvar oluşturma Sihirbazı) oluşturma sırasında veya laboratuvar oluşturduktan sonra (panoda) VM 'Lerin parolasını ayarlayabilir/sıfırlayabilir. 
 
-## <a name="lab-owners-teachers"></a>Laboratuvar sahibini (Öğretmenler)
-Laboratuvar sahibi (Öğretmen) ayarlama / parola VM'ler için zaman (Laboratuvar Oluşturma Sihirbazı) Laboratuvar oluşturma veya (Pano üzerinde) laboratuvarı oluşturduktan sonra sıfırlama. 
+## <a name="set-password-at-the-time-of-lab-creation"></a>Laboratuvar oluşturma sırasında parola ayarla
+Laboratuvar sahibi (öğretmen) Laboratuvar oluşturma sihirbazının **kimlik bilgilerini ayarla** sayfasında laboratuvardaki VM 'ler için bir parola ayarlayabilir.
 
-### <a name="set-password-at-the-time-of-lab-creation"></a>Laboratuvar oluşturma sırasında parola ayarlayın
-Laboratuvar sahibi (Öğretmen) bir parola için Vm'leri Laboratuvardaki ayarlayabilirsiniz **kimlik bilgilerini ayarla** Laboratuvar Oluşturma Sihirbazı'nın sayfa.
+![Kimlik bilgilerini ayarla](../media/tutorial-setup-classroom-lab/set-credentials.png)
 
-![Kimlik bilgilerini ayarlama](../media/tutorial-setup-classroom-lab/set-credentials.png)
+Bu sayfadaki **tüm sanal makineler için aynı parolayı kullan** seçeneğini etkinleştirip devre dışı bırakarak bir öğretmen, laboratuvardaki tüm VM 'ler için aynı parolayı kullanmayı seçebilir veya öğrencilerin VM 'leri için parola değiştirmesine izin verebilir. Varsayılan olarak, bu ayar Ubuntu hariç tüm Windows ve Linux işletim sistemi görüntüleri için etkinleştirilmiştir. Bu ayar devre dışı bırakıldığında, sanal makineye ilk kez bağlanmaya çalıştıklarında öğrencilerden bir parola ayarlaması istenir. 
 
-Etkinleştirme/devre dışı bırakarak **tüm sanal makineler için kullanılan parolayı kullan** Laboratuvardaki tüm sanal makineler için aynı parolayı kullanın veya kendi Vm'leri için parolanın öğrencilerin izin vermek bu sayfada, bir Öğretmen seçeneği tercih edebilir. Varsayılan olarak, Ubuntu dışındaki tüm Windows ve Linux işletim sistemi görüntüleri için bu ayar etkinleştirilir. Bu ayar devre dışı bırakıldığında, Öğrenciler VM ilk kez bağlanmaya çalıştığınızda bir parola ayarlamanız istenir. 
-
-Laboratuvar sahibi bu parolayı (gerekirse) üzerinde sıfırlayabilir **yapılandırma şablonu** Laboratuvar Oluşturma Sihirbazı'nın sayfa. 
+Laboratuvar sahibi, Laboratuvar oluşturma sihirbazının **şablonu Yapılandır** sayfasında bu parolayı sıfırlayabilir (gerekirse). 
 
 ![Tamamlanmış şablon yapılandırma sayfası](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 
-Panoda Laboratuvar oluşturulduktan sonra Laboratuvar sahibi parolayı da sıfırlayabilirsiniz. 
+Laboratuvar sahibi, panoda laboratuvar oluşturulduktan sonra parolayı da sıfırlayabilir. 
 
-### <a name="reset-password-on-the-dashboard"></a>Panoda parola sıfırlama
+## <a name="reset-password-on-the-dashboard"></a>Panodaki parolayı sıfırlama
 
-1. Laboratuvar kutucuğuna taşma menüsü (dikey üç nokta) seçip **parolayı Sıfırla**. 
+1. Laboratuvar kutucuğunda Taşma menüsünü (dikey üç nokta) seçin ve **Parolayı Sıfırla**' yı seçin. 
 
-    ![Giriş sayfasında menüyü parola sıfırlama](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
-1. Üzerinde **parola ayarlama** iletişim kutusu, bir parola girin ve seçin **parola ayarlama**.
+    ![Giriş sayfasındaki parola sıfırlama menüsü](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
+1. **Parolayı ayarla** iletişim kutusunda bir parola girin ve **parolayı ayarla**' yı seçin.
     
-    ![Küme parolası iletişim kutusu](../media/how-to-set-virtual-machine-passwords/set-password.png)
-
-## <a name="lab-users-students"></a>Laboratuvar kullanıcıları (Öğrenciler)
-Laboratuvar oluşturma sırasında Laboratuvar sahibi etkinleştirmek veya devre dışı bırakabileceğiniz **tüm sanal makineler için kullanılan parolayı kullan**. Bu seçenek etkinleştirilirse, Öğrenciler parolanızı sıfırlayamazsınız. Öğretmen tarafından ayarlanan aynı parolayı labs'teki tüm sanal makineler gerekir. 
-
-Bu seçeneği devre dışıysa, kullanıcılar ilk kez VM'ye bağlanmaya çalışırken bir parola ayarlamanız gerekir. Kullanıcılar (Öğrenciler) seçtiğinizde **Connect** düğmesine Laboratuvar kutucuğa **sanal makinelerim** sayfasında, kullanıcı için VM parolasını ayarlamak için aşağıdaki iletişim kutusu görür: 
-
-![Öğrenci için parola sıfırlama](../media/how-to-set-virtual-machine-passwords/student-set-password.png)
-
-Öğrenci de ayarlayabilirsiniz parola taşma menüsü tıklayarak (**üç dikey noktayı**) Laboratuvar kutucuğa tıklayıp **parolayı Sıfırla**. 
+    ![Parolayı ayarla iletişim kutusu](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-(Laboratuvar sahibi olarak) diğer Öğrenci kullanım seçenekleri hakkında bilgi almak için yapılandırma, şu makaleye bakın: [Öğrenci kullanım yapılandırma](how-to-configure-student-usage.md).
+Sizin (Laboratuvar sahibi olarak) yapılandırabileceğiniz diğer öğrenci kullanım seçenekleri hakkında bilgi edinmek için aşağıdaki makaleye bakın: [Öğrenci kullanımını yapılandırın](how-to-configure-student-usage.md).
+
+Öğrencilerin VM 'lerinin parolalarını nasıl sıfırlayacaklarını öğrenmek için bkz. [sınıf laboratuvarlarında sanal makineler için parola ayarlama veya sıfırlama (öğrenciler)](how-to-set-virtual-machine-passwords-student.md).

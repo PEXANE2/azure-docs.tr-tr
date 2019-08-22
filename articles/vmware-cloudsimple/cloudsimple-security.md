@@ -1,19 +1,19 @@
 ---
-title: CloudSimple Hizmetleri için güvenlik
+title: Cloudsimple Hizmetleri için CloudSimple-Security tarafından Azure VMware çözümü
 description: CloudSimple hizmetlerinin güvenliği için paylaşılan sorumluluk modellerini açıklar
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 04/27/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ff1bd3c6e1f3cf98e92e10eecf972681ed6c7819
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f7afd3d4b03c55c6cd9878b7d22106eee371ba99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816185"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877916"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple güvenliğine genel bakış
 
@@ -23,21 +23,21 @@ Bu makalede, Azure VMware çözümünde CloudSimple hizmeti, altyapısı ve veri
 
 CloudSimple tarafından Azure VMware çözümü, güvenlik için paylaşılan bir sorumluluk modeli kullanır. Bulutta güvenilen güvenlik, müşterilerin ve Microsoft 'un bir hizmet sağlayıcısı olarak Microsoft tarafından sağlanan sorumlulukları aracılığıyla elde edilir. Bu sorumluluk matrisi daha yüksek güvenlik sağlar ve tek hata noktalarını ortadan kaldırır.
 
-## <a name="azure-infrastructure"></a>Azure altyapısı 
+## <a name="azure-infrastructure"></a>Azure altyapısı
 
 Azure altyapı güvenliği konuları, veri merkezleri ve ekipman konumunu içerir.
 
-### <a name="datacenter-security"></a>Veri merkezi güvenliği 
+### <a name="datacenter-security"></a>Veri merkezi güvenliği
 
-Microsoft, Azure 'u destekleyen fiziksel tesislerin tasarlanmasıyla, oluşturulmasına ve oluşturulmasına yönelik bir bölümün tamamına sahiptir. Bu ekip, son derece fiziksel güvenliği korumak için yatırım yapmış. Fiziksel güvenlik hakkında daha fazla bilgi için bkz. [Azure tesisler, şirket içi ve fiziksel güvenlik]https://docs.microsoft.com/azure/security/fundamentals/physical-security (.
+Microsoft, Azure 'u destekleyen fiziksel tesislerin tasarlanmasıyla, oluşturulmasına ve oluşturulmasına yönelik bir bölümün tamamına sahiptir. Bu ekip, son derece fiziksel güvenliği korumak için yatırım yapmış. Fiziksel güvenlik hakkında daha fazla bilgi için bkz. [Azure tesisler, şirket içi ve fiziksel güvenlik](../security/azure-physical-security.md).
 
 ### <a name="equipment-location"></a>Ekipman konumu
 
-Özel bulutlarınızı çalıştıran çıplak donanım donanımı, Azure veri merkezi konumlarında barındırılır. Bu donanımların bulunduğu kafeslere erişim kazanmak için biyometrik tabanlı iki öğeli kimlik doğrulaması gerekir.
+Özel bulutlarınızı çalıştıran çıplak donanım donanımı, Azure veri merkezi konumlarında barındırılır.  Ekipmanların olduğu yerlerde, erişim kazanmak için biyometrik tabanlı iki öğeli kimlik doğrulaması gerekir.
 
 ## <a name="dedicated-hardware"></a>Adanmış donanım
 
-CloudSimple hizmeti 'nin bir parçası olarak, tüm CloudSimple müşterileri, diğer kiracı donanımlarından fiziksel olarak yalıtılmış yerel olarak ayrılmış diskler içeren adanmış çıplak Konakları alırlar. Her düğümde vSAN ile birlikte bir ESXi Hiper Yöneticisi çalışır. Düğümler, müşteri tarafından adanmış VMware, vCenter ve NSX aracılığıyla yönetilir. Kiracılar arasında donanım paylaşılmayan ek bir yalıtım katmanı ve güvenlik koruması sağlar.
+CloudSimple hizmeti 'nin bir parçası olarak, tüm CloudSimple müşterileri, diğer kiracı donanımlarından fiziksel olarak yalıtılmış yerel ve ayrılmış diskler içeren adanmış çıplak konaklar alırlar. Her düğümde vSAN ile birlikte bir ESXi Hiper Yöneticisi çalışır. Düğümler, müşterinin adanmış VMware vCenter ve NSX aracılığıyla yönetilir. Kiracılar arasında donanım paylaşılmayan ek bir yalıtım katmanı ve güvenlik koruması sağlar.
 
 ## <a name="data-security"></a>Veri güvenliği
 
@@ -45,26 +45,27 @@ Müşteriler verilerinin denetimini ve sahipliğini tutar. Müşteri verilerinin
 
 ### <a name="data-protection-for-data-at-rest-and-data-in-motion-within-internal-networks"></a>Bekleyen veriler ve iç ağlarda hareket halindeki veriler için veri koruması
 
-Özel Bulut ortamındaki bekleyen veriler için vSAN şifrelemesini kullanabilirsiniz. vSAN şifrelemesi, kendi sanal ağınızda veya şirket içinde VMware sertifikalı dış anahtar yönetim sunucuları (KMS) ile birlikte kullanılabilir. Veri şifreleme anahtarlarını kendiniz denetlersiniz. VSphere, özel bulut içinde hareket halindeki veriler için vMotion trafiği içeren tüm VMkernel trafiği için kablo üzerinden veri şifrelemeyi destekler.
+Özel Bulut ortamındaki bekleyen veriler için vSAN şifrelemesini kullanabilirsiniz. vSAN şifrelemesi, kendi sanal ağınızda veya şirket içinde VMware sertifikalı dış anahtar yönetim sunucuları (KMS) ile birlikte kullanılabilir.  Veri şifreleme anahtarlarını kendiniz denetlersiniz. VSphere, özel bulut içinde hareket halindeki veriler için tüm vmkernel trafiği (vMotion trafiği dahil) için kablo üzerinden şifrelemeyi destekler.
 
-### <a name="data-protection-for-data-thats-required-to-move-through-public-networks"></a>Ortak ağlarda gezinmek için gereken veriler için veri koruması
+### <a name="data-protection-for-data-that-is-required-to-move-through-public-networks"></a>Ortak ağlarda gezinmek için gereken veriler için veri koruması
 
-Ortak ağlar üzerinden taşınan verileri korumak için özel bulutlarınız için IPSec ve SSL VPN tünelleri oluşturabilirsiniz. 128-Byte ve 256-Byte AES gibi yaygın şifreleme yöntemleri desteklenir. Kimlik doğrulama, yönetim erişimi ve müşteri verileri dahil olmak üzere yoldaki veriler SSH, TLS 1,2 ve güvenli RDP gibi standart şifreleme mekanizmalarıyla şifrelenir. Hassas bilgileri taşımaya yönelik iletişim standart şifreleme mekanizmalarını kullanır.
+Ortak ağlar üzerinden taşınan verileri korumak için özel bulutlarınız için IPSec ve SSL VPN tünelleri oluşturabilirsiniz. 128-Byte ve 256-Byte AES gibi yaygın şifreleme yöntemleri desteklenir. Aktarım içindeki veriler (kimlik doğrulama, yönetim erişimi ve müşteri verileri dahil) standart şifreleme mekanizmaları (SSH, TLS 1,2 ve Secure RDP) ile şifrelenir. Hassas bilgileri taşımaya yönelik iletişim standart şifreleme mekanizmalarını kullanır.
 
-### <a name="secure-disposal"></a>Güvenli elden çıkarma 
+### <a name="secure-disposal"></a>Güvenli elden çıkarma
 
-CloudSimple hizmetinizin süresi dolarsa veya sonlandırılırsa, verilerinizi kaldırmanın veya silmekten siz sorumlusunuz. CloudSimple Co, tüm müşteri verilerini Müşteri Anlaşmasında belirtilen şekilde silme veya geri döndürme konusunda, geçerli yasaların kişisel verilerin bir kısmını veya tamamını korumasının gerekli olduğu durumlar dışında, tüm müşteri verilerini silmek veya iade etmek için sizinle birlikte çalışır. Tüm kişisel verileri sürdürmek gerekirse, CloudSimple Verileri arşivler ve müşteri verilerinin daha fazla işlem yapmasını engellemek için makul ölçüler uygular.
+CloudSimple hizmetinizin süresi dolarsa veya sonlandırılırsa, verilerinizi kaldırmanız veya silmeniz sizin sorumluluğunuzdadır. CloudSimple, tüm müşteri verilerini, kişisel verilerin bir kısmını veya tümünü koruyacak şekilde CloudSimple 'ın gerekli yasaların gerektirdiği durumlar dışında, müşteri sözleşmesinde belirtilen şekilde silmek veya döndürmek için sizinle birlikte çalışır. Tüm kişisel verileri sürdürmek gerekirse, CloudSimple verileri arşivleyecektir ve müşteri verilerinin daha fazla işlemeden oluşmasını engellemek için makul ölçüler uygular.
 
-### <a name="data-location"></a>Veri konumu
+### <a name="data-location"></a>Veri Konumu
 
-Özel bulutlarınızı ayarlarken, dağıtıldığı Azure bölgesini seçersiniz. Veri geçişini veya site dışı veri yedeklemesini gerçekleştirmediğiniz takdirde VMware sanal makine verileri bu fiziksel veri merkezinden taşınmaz. Ayrıca, gereksinimlerinize uygun olan iş yüklerini ve verileri birden çok Azure bölgesinde depolamayı da barındırabilirsiniz.
+Özel bulutlarınızı ayarlarken, dağıtılacağı Azure bölgesini seçersiniz. Veri geçişini veya site dışı veri yedeklemesini gerçekleştirmediğiniz takdirde VMware sanal makine verileri bu fiziksel veri merkezinden taşınamaz. Ayrıca, gereksinimlerinize uygun olan iş yüklerini ve verileri birden çok Azure bölgesinde depolamayı da barındırabilirsiniz.
 
 Özel bulut hiper yakınsama düğümlerinde yerleşik olan müşteri verileri, kiracı yöneticisinin açık eylemi olmadan konumlara geçiş yapmaz. İş yüklerinizi yüksek oranda kullanılabilir bir şekilde uygulamak sizin sorumluluğunuzdadır.
 
 ### <a name="data-backups"></a>Veri yedeklemeleri
-CloudSimple, müşteri verilerini yedeklemeli veya arşivetmez. CloudSimple, yönetim sunucularının yüksek kullanılabilirliğini sağlamak için vCenter ve NSX verilerinin düzenli bir şekilde yedeklenmesini gerçekleştirir. Yedeklemeden önce tüm veriler, VMware API 'Leri kullanılarak vCenter kaynağında şifrelenir. Şifrelenmiş veriler bir Azure Blob 'una taşınır ve depolanır. Yedeklemeler için şifreleme anahtarları, Azure 'da CloudSimple sanal ağında çalışan, yüksek güvenlikli bir CloudSimple yönetilen kasasında depolanır.
 
-## <a name="network-security"></a>Ağ güvenliği
+CloudSimple, müşteri verilerini yedeklemeli veya arşivetmez. CloudSimple, yönetim sunucularının yüksek kullanılabilirliğini sağlamak için vCenter ve NSX verilerinin düzenli bir şekilde yedeklenmesini gerçekleştirir. Yedeklemeden önce tüm veriler, VMware API 'Leri kullanılarak vCenter kaynağında şifrelenir. Şifrelenmiş veriler Azure Blob 'a taşınır ve depolanır. Yedeklemeler için şifreleme anahtarları, Azure 'da CloudSimple sanal ağında çalışan yüksek güvenlikli bir CloudSimple yönetilen kasasında depolanır.
+
+## <a name="network-security"></a>Ağ Güvenliği
 
 CloudSimple çözümü, ağ güvenliği katmanlarını kullanır.
 
@@ -74,22 +75,16 @@ CloudSimple Hizmetleri, Azure tarafından sunulan temel ağ güvenliğinin üzer
 
 ### <a name="segmentation"></a>Segmentasyon
 
-CloudSimple hizmeti, özel bulut ortamınızdaki kendi özel ağlarınızla erişimi kısıtlayan mantıksal olarak ayrı katman 2 ağları içerir. Bir güvenlik duvarı kullanarak özel bulut ağlarınızı daha da koruyabilirsiniz. CloudSimple portalında, şirket içi bulut trafiği, özel bulut trafiği, Internet 'e yönelik genel trafik ve şirket içi ağ trafiği dahil tüm ağ trafiği için Doğu Batı ve Kuzey-Güney ağ trafiği denetim kuralları tanımlarsınız IPSec VPN veya Azure ExpressRoute bağlantısı üzerinden.
+CloudSimple hizmeti, özel bulut ortamınızdaki kendi özel ağlarınızla erişimi kısıtlayan mantıksal olarak ayrı katman 2 ağları içerir. Bir güvenlik duvarı kullanarak özel bulut ağlarınızı daha da koruyabilirsiniz. CloudSimple portalı, özel bulut trafiği, özel bulut trafiği, Internet 'e genel trafik ve IPSec VPN üzerinden şirket içi ağ trafiği dahil olmak üzere tüm ağ trafiği için tam ve NS ağ trafiği denetim kuralları tanımlamanızı sağlar veya ExpressRoute bağlantısı.
 
-## <a name="vulnerability-and-patch-management"></a>Güvenlik Açığı ve düzeltme eki yönetimi 
+## <a name="vulnerability-and-patch-management"></a>Güvenlik Açığı ve düzeltme eki yönetimi
 
-CloudSimple, yönetilen VMware yazılımının ESXi, vCenter ve NSX gibi düzenli güvenlik düzeltme ekiyle sorumludur.
+CloudSimple, yönetilen VMware yazılımının düzenli güvenlik düzeltme ekiyle (ESXi, vCenter ve NSX) sorumludur.
 
-## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
+## <a name="identity-and-access-management"></a>Kimlik ve Erişim Denetimi
 
-Müşteriler, tercih edilen çok faktörlü kimlik doğrulaması veya SSO kullanarak Azure hesabında (Azure Active Directory) kimlik doğrulaması yapabilir. Azure portal, CloudSimple portalını kimlik bilgilerini yeniden girmeye gerek kalmadan başlatabilirsiniz.
+Müşteriler, tercih edilen olarak Multi-Factor Authentication veya SSO kullanarak Azure hesabı (Azure AD 'de) için kimlik doğrulaması yapabilir. Azure portal, CloudSimple portalını kimlik bilgilerini yeniden girmeye gerek kalmadan başlatabilirsiniz.
 
-CloudSimple, özel bulut vCenter için bir kimlik kaynağının isteğe bağlı yapılandırmasını destekler. [Şirket içi kimlik kaynağını](https://docs.azure.cloudsimple.com/set-vcenter-identity), özel bulut için yeni bir kimlik kaynağını veya [Azure Active Directory](https://docs.azure.cloudsimple.com/azure-ad)kullanabilirsiniz.
+CloudSimple, özel bulut vCenter için bir kimlik kaynağının isteğe bağlı yapılandırmasını destekler. [Şirket içi kimlik kaynağını](set-vcenter-identity.md), özel bulut için yeni bir kimlik kaynağını veya [Azure AD](azure-ad.md)'yi kullanabilirsiniz.
 
-Varsayılan olarak, müşterilere özel buluttaki vCenter 'ın günlük işlemleri için gerekli olan ayrıcalıklar verilir. Bu izin düzeyi vCenter 'a yönetim erişimi içermez. Yönetim erişimi geçici olarak gerekliyse, yönetim görevlerini tamamladıktan sonra [ayrıcalıklarınızı](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges) sınırlı bir süre için ilerletebilirsiniz.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-* [Azure 'Da CloudSimple hizmeti oluşturmayı](quickstart-create-cloudsimple-service.md)öğrenin.
-* [Özel bulut oluşturmayı](https://docs.azure.cloudsimple.com/create-private-cloud/)öğrenin.
-* [Özel bir bulut ortamını yapılandırmayı](quickstart-create-private-cloud.md)öğrenin.
+Varsayılan olarak, müşterilere özel buluttaki vCenter 'ın günlük işlemleri için gerekli olan ayrıcalıklar verilir. Bu izin düzeyi vCenter 'a yönetim erişimi içermez. Yönetim erişimi geçici olarak gerekliyse, yönetim görevlerini tamamladıktan sonra [ayrıcalıklarınızı](escalate-private-cloud-privileges.md) sınırlı bir süre için ilerletebilirsiniz.

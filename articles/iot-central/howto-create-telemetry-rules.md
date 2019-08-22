@@ -1,6 +1,6 @@
 ---
-title: Oluşturma ve Azure IOT Central, uygulamanızda telemetri kurallarını yönetin | Microsoft Docs
-description: Azure IOT Central telemetri kuralları cihazlarınızı neredeyse gerçek zamanlı izleme ve otomatik olarak kural tetiklendiğinde, bir e-posta gönderme gibi eylemleri çağırmak için etkinleştirin.
+title: Azure IoT Central uygulamanızda telemetri kuralları oluşturma ve yönetme | Microsoft Docs
+description: Azure IoT Central telemetri kuralları, cihazlarınızı neredeyse gerçek zamanlı olarak izlemenizi ve kural tetiklendiğinde e-posta gönderme gibi eylemleri otomatik olarak çağırmayı sağlar.
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 06/09/2019
@@ -8,109 +8,111 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8684301b83e01989c745b63848995142cb766188
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ac8e488de11abc3471df836ca852cf3dc85c82f
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052976"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877357"
 ---
-# <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Bir telemetri kuralı oluşturabilir ve Azure IOT Central uygulamanızdaki bildirimleri ayarlama
+# <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda bir telemetri kuralı oluşturma ve bildirim ayarlama
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Bağlı cihazlarınızın uzaktan izlemek için Azure IOT Central kullanabilirsiniz. Azure IOT Central kuralları cihazlarınızı neredeyse gerçek zamanlı izleme ve otomatik eylemleri bir e-posta veya gibi Microsoft Flow tetiklemek etkinleştirin. Yalnızca birkaç tıklamayla, cihaz verilerinizi izleyin ve ilgili eylemi yapılandırmak istediğiniz koşulu tanımlayabilirsiniz. Bu makalede, cihaz tarafından gönderilen telemetri izlemek için kurallar oluşturma açıklanmaktadır.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Cihazlar, sayısal veriler CİHAZDAN göndermek için telemetri ölçüm kullanabilirsiniz. Seçili cihaz telemetrisi belirtilen eşiği aştığında bir telemetri kural tetikler.
+Bağlı cihazlarınızı uzaktan izlemek için Azure IoT Central kullanabilirsiniz. Azure IoT Central kuralları, cihazlarınızı neredeyse gerçek zamanlı olarak izlemenizi ve e-posta veya Microsoft Flow tetikleyici Gönder gibi eylemleri otomatik olarak çağırmayı sağlar. Yalnızca birkaç tıklamayla, cihaz verilerinizi izleyecek koşulu tanımlayabilir ve ilgili eylemi yapılandırabilirsiniz. Bu makalede, cihaz tarafından gönderilen Telemetriyi izlemek için kuralların nasıl oluşturulacağı açıklanmaktadır.
+
+Cihazlar, cihazdan sayısal veri göndermek için telemetri ölçümü kullanabilir. Bir telemetri kuralı, seçilen cihaz telemetrisi belirtilen eşiği aştığında tetikler.
 
 ## <a name="create-a-telemetry-rule"></a>Telemetri kuralı oluşturma
 
-Telemetri kuralı oluşturmak için cihaz şablonu en az bir telemetri ölçüm tanımlanmış olmalıdır. Bu örnek, sıcaklık ve nem telemetrisini gönderen bir refrigerated satış makine cihaz kullanır. Kural, cihaz tarafından bildirilen sıcaklık izler ve 80 derecenin üzerinde olduğunda bir e-posta gönderir.
+Bir telemetri kuralı oluşturmak için, cihaz şablonunda en az bir telemetri ölçümü tanımlanmış olmalıdır. Bu örnek, sıcaklık ve nem telemetrisi gönderen bir soğutma makinesi cihazı kullanır. Kural, cihaz tarafından bildirilen sıcaklığın izler ve 80 derecenin üzerinde kaldığında bir e-posta gönderir.
 
-1. Kullanarak **cihaz şablonları** sayfasında, kural ekleme cihaz şablonu gidin.
+1. **Cihaz şablonları** sayfasını kullanarak, kuralını eklemek istediğiniz cihaz şablonuna gidin.
 
-1. Herhangi bir kural henüz oluşturmadıysanız, aşağıdaki ekranı görürsünüz:
+1. Henüz bir kural oluşturmadıysanız aşağıdaki ekranı görürsünüz:
 
-    ![Henüz hiçbir kural](media/howto-create-telemetry-rules/rules_landing_page1.png)
+    ![Henüz kural yok](media/howto-create-telemetry-rules/rules_landing_page1.png)
 
-1. Üzerinde **kuralları** sekmesinde **+ yeni kural** kuralları oluşturmak için kullanabileceğiniz türlerini görmek için.
+1. **Kurallar** sekmesinde, oluşturabileceğiniz kural türlerini görmek Için **+ Yeni kural** ' ı seçin.
 
-1. Seçin **Telemetri** cihaz telemetrisi izlemek için bir kural oluşturmak için.
+1. Cihaz telemetrisini izlemek için bir kural oluşturmak üzere **telemetri** ' i seçin.
 
-    ![Kural türü](media/howto-create-telemetry-rules/rule_types1.png)
+    ![Kural türleri](media/howto-create-telemetry-rules/rule_types1.png)
 
-1. Bu cihaz şablonu kuralında tanımlamanıza yardımcı olacak bir ad girin.
+1. Bu cihaz şablonunda kuralı tanımlamanızı sağlayan bir ad girin.
 
-1. Bu şablon için oluşturulan tüm cihazlar için kuralın hemen etkinleştirmek için geçiş **Bu şablon için tüm cihazlar için etkinleştirme kuralı**.
+1. Bu şablon için oluşturulan tüm cihazların kuralını hemen etkinleştirmek için, **Bu şablon için tüm cihazlar kuralını etkinleştir**seçeneğini değiştirin.
 
-   ![Kural Ayrıntıları](media/howto-create-telemetry-rules/rule_detail1.png)
+   ![Kural ayrıntısı](media/howto-create-telemetry-rules/rule_detail1.png)
 
-    Kural cihaz şablonu altındaki tüm cihazlara otomatik olarak uygulanır.
+    Kural, cihaz şablonu altındaki tüm cihazlara otomatik olarak uygulanır.
 
-### <a name="configure-the-rule-conditions"></a>Kural koşulları yapılandırın
+### <a name="configure-the-rule-conditions"></a>Kural koşullarını yapılandırma
 
-Koşul, kural tarafından izlenen ölçütleri tanımlar.
+Koşul, kural tarafından izlenen kriterleri tanımlar.
 
-1. Seçin **+** yanındaki **koşullar** yeni bir koşul ekleme.
+1. Yeni **+** koşul eklemek için **koşulların** ileri ' yi seçin.
 
-1. İzlemek istediğiniz telemetri seçin **ölçüm** açılır.
+1. **Ölçüm** açılan listesinden izlemek istediğiniz Telemetriyi seçin.
 
-1. Ardından, **toplama**, **işleci**ve bir **eşiği** değeri.
-   - Toplama isteğe bağlıdır. Toplama, koşulu karşılayan her telemetri veri noktası için kural tetiklendiğinde. Kural neredeyse anında sıcaklık 80 ise tetikleyici sonra kural Tetikleyiciler için yapılandırılmışsa, örneğin, ne zaman cihaz sıcaklık > 80 bildirir.
-   - Bir toplama işlevi, ortalama, Min, maks gibi sayısı daha sonra seçilen kullanıcı sağlamalıdır bir **toplama zaman penceresi** üzerinden hangi koşulun değerlendirilmesi gerekir. Örneğin, ayarlarsanız "5 dakika" olarak döneme ve kural arar 80 ortalama sıcaklık en az 5 dakika boyunca 80 olduğunda kural tetiklendiğinde yukarıda ortalama sıcaklık. Kuralı değerlendirme sıklığı aynıdır **toplama zaman penceresi**, yani, bu örnekte, kural her 5 dakikada bir kez değerlendirilir.
+1. Sonra **toplama**, **işleç**' i seçin ve bir **eşik** değeri sağlayın.
+   - Toplama isteğe bağlıdır. Toplama olmadan kural, koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kural sıcaklık 80 üzerinde olduğunda kural tetiklenecek şekilde yapılandırıldıysa, cihaz sıcaklık > 80 ' i raporladığında kural neredeyse anında tetiklenir.
+   - Ortalama, min, Max, Count gibi bir toplama işlevi seçilirse, kullanıcının koşulun değerlendirilmesi gereken bir **toplama zaman penceresi** sağlaması gerekir. Örneğin, dönemi "5 dakika" olarak ayarlarsanız ve kuralınız 80 üzerinde ortalama sıcaklık alıyorsa, kural ortalama sıcaklık en az 5 dakika boyunca 80 ' in üzerinde olduğunda tetiklenir. Kural değerlendirme sıklığı **toplama zamanı penceresiyle**aynıdır, yani bu örnekte kural her 5 dakikada bir değerlendirilir.
 
      ![Koşul](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
      >[!NOTE]
-     >Birden fazla telemetri Ölçüm altında eklenebilir **koşul**. Birden çok koşulu belirtildiğinde, kural tetiklemek tüm koşulların karşılanması gerekir. Her koşulu, bir 'Ve' yan tümcesi tarafından örtük olarak katıldı. Her ölçü, toplam kullanırken toplanmalıdır.
+     >**Koşul**altında birden fazla telemetri ölçümü eklenebilir. Birden çok koşul belirtildiğinde kuralın tetiklenmesi için tüm koşulların karşılanması gerekir. Her bir koşullu ' ve ' yan tümcesiyle dolaylı olarak birleştirilir. Toplama kullanılırken, her ölçüm toplanmalıdır.
 
-### <a name="configure-actions"></a>Eylemleri Yapılandır
+### <a name="configure-actions"></a>Eylemleri yapılandırma
 
-Bu bölümde, kural tetiklendiğinde gerçekleştirilecek eylemleri ayarlamak işlemini göstermektedir. Eylemler kuralda belirtilen tüm koşulların doğru olarak değerlendirilebilmesi çağrılan.
+Bu bölümde, kural tetiklendiğinde yapılacak eylemlerin nasıl ayarlanacağı gösterilmektedir. Kuralda belirtilen tüm koşulların doğru olarak değerlendirilmesi durumunda eylemler çağrılır.
 
-1. Seçin **+** yanındaki **eylemleri**. Burada, kullanılabilir eylemler listesini görürsünüz.  
+1. **Eylemler '** in **yanındaki'ı+** seçin. Burada, kullanılabilir eylemlerin listesini görürsünüz.  
 
     ![Eylem Ekle](media/howto-create-telemetry-rules/add_action1.png)
 
-1. Seçin **e-posta** eylemi, bir geçerli e-posta adresi girerek **için** alan ve kural tetiklendiğinde e-postanın gövdesinde görüntülenen bir not girin.
+1. **E-posta** eylemini seçin, **to** alanına geçerli bir e-posta adresi girin ve kural tetiklendiğinde e-posta gövdesinde görüntülenecek bir notun sağlayın.
 
     > [!NOTE]
-    > E-postaları, yalnızca uygulamaya eklenen ve en az bir kez oturum kullanıcılara gönderilir. Daha fazla bilgi edinin [kullanıcı yönetimi](howto-administer.md) Azure IOT Central içinde.
+    > E-postalar yalnızca uygulamaya eklenmiş olan ve en az bir kez oturum açan kullanıcılara gönderilir. Azure IoT Central 'de [Kullanıcı yönetimi](howto-administer.md) hakkında daha fazla bilgi edinin.
 
-   ![Eylem yapılandırma](media/howto-create-telemetry-rules/configure_action1.png)
+   ![Eylemi Yapılandır](media/howto-create-telemetry-rules/configure_action1.png)
 
-1. Kuralı kaydetmek için seçin **Kaydet**. Kural, birkaç dakika içinde etkin hale gelir ve uygulamanıza gönderilen telemetri izlemeye başlar. Kuralda belirtilen koşul karşılandığında kural yapılandırılan e-posta eylemi tetikler.
+1. Kuralı kaydetmek için **Kaydet**' i seçin. Kural birkaç dakika içinde canlı olarak geçer ve uygulamanıza gönderilen izleme Telemetriyi başlatır. Kuralda belirtilen koşul karşılandığında, kural yapılandırılan e-posta eylemini tetikler.
 
-Diğer Eylemler gibi Microsoft Flow ve Web kancaları kuralı ekleyebilirsiniz. Kural başına en fazla 5 eylem ekleyebilirsiniz.
+Kurala Microsoft Flow ve Web kancaları gibi başka eylemler ekleyebilirsiniz. Kural başına en fazla 5 işlem ekleyebilirsiniz.
 
-- [Microsoft Flow eylem](howto-add-microsoft-flow.md) için Microsoft Flow bir iş akışında bir kuralı tetiklendiğinde kazandırın 
-- [Web kancası eylemi](howto-create-webhooks.md) bir kuralı tetiklendiğinde diğer hizmetleri bildirmek için
+- Bir kural tetiklendiğinde Microsoft Flow iş akışını başlatma [eylemi Microsoft Flow](howto-add-microsoft-flow.md) 
+- Bir kural tetiklendiğinde diğer hizmetlere bildirimde bulunan [Web kancası eylemi](howto-create-webhooks.md)
 
-## <a name="parameterize-the-rule"></a>Kural Parametreleştirme
+## <a name="parameterize-the-rule"></a>Kuralı Parametreleştirme
 
-Kuralları, gelen belirli değerlerinde türetilebilir **cihaz özelliklerini** parametre olarak. Parametreleri kullanarak, burada telemetri eşikleri farklı cihazlar için farklı senaryolarda yararlıdır. Kuralı oluşturduğunuzda, eşik gibi belirten bir cihaz özelliği seçin **Ideal en yüksek eşik**, 80 derece gibi mutlak bir değer sağlamak yerine. Kural yürütüldüğünde, cihaz telemetrisi cihaz özelliğinde ayarlanan değer ile eşleşir.
+Kurallar, **cihaz özelliklerinden** belirli özellikleri parametre olarak türetebilir. Farklı cihazlarda telemetri eşiklerinin değişebileceği senaryolarda, parametreleri kullanmak faydalıdır. Kuralı oluşturduğunuzda, 80 derece gibi mutlak bir değer sağlamak yerine, eşiği belirten, **en yüksek Ideal eşik**gibi bir cihaz özelliği seçin. Kural yürütüldüğünde, Device özelliğinde ayarlanan değer ile cihaz telemetrisiyle eşleşir.
 
-Parametreleri kullanarak, cihaz şablonunu yönetmek için kuralların sayısını azaltmak için etkili bir yoludur.
+Parametreleri kullanmak cihaz şablonu başına yönetilecek kural sayısını azaltmak için etkili bir yoldur.
 
-Eylemleri kullanarak yapılandırılabilir **cihaz özelliği** bir parametre olarak. Bir özellik olarak depolanan bir e-posta adresi sonra tanımlarken kullanılabilir **için** adresi.
+Eylemler, bir parametre olarak **Device özelliği** kullanılarak da yapılandırılabilir. Bir e-posta adresi özellik olarak depolanıyorsa,, adresini tanımlarken kullanabilirsiniz.
 
 ## <a name="delete-a-rule"></a>Kuralı silme
 
-Bir kural artık ihtiyacınız kalmadığında, kural açarak ve silmek **Sil**. Kural siliniyor cihaz şablonunu ve ilişkili tüm cihazlardan kaldırır.
+Artık bir kurala ihtiyacınız yoksa, kuralı açıp **Sil**' i seçerek silin. Kural silindiğinde cihaz şablonundan ve ilişkili tüm cihazlardan kaldırılır.
 
-## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Etkinleştirmek veya devre dışı bir cihaz şablonu için bir kural
+## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Cihaz şablonu için bir kuralı etkinleştirme veya devre dışı bırakma
 
-Cihaza gidin ve etkinleştirme veya devre dışı bırakmak istediğiniz kuralı seçin. İki durumlu **Bu şablon, tüm cihazlar için etkinleştirme kuralı** kuralda etkinleştirin veya cihaz şablonu ile ilişkili olan tüm cihazlar için kuralı devre dışı bırak düğmesi.
+Cihaza gidin ve etkinleştirmek veya devre dışı bırakmak istediğiniz kuralı seçin. Cihaz şablonuyla ilişkili tüm cihazların kuralını etkinleştirmek veya devre dışı bırakmak için kuraldaki **Bu şablonun tüm cihazları Için etkinleştir kuralını** açın.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Etkinleştirmek veya devre dışı bir cihaz için bir kural
+## <a name="enable-or-disable-a-rule-for-a-device"></a>Cihaz için bir kuralı etkinleştirme veya devre dışı bırakma
 
-Cihaza gidin ve etkinleştirme veya devre dışı bırakmak istediğiniz kuralı seçin. İki durumlu **bu cihaz için etkinleştirme kuralı** düğmesini etkinleştirin veya bu cihaz için kuralı devre dışı bırak.
+Cihaza gidin ve etkinleştirmek veya devre dışı bırakmak istediğiniz kuralı seçin. Bu cihazın kuralını etkinleştirmek veya devre dışı bırakmak için **Bu cihaz için kuralı etkinleştir** düğmesini değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IOT Central uygulamanızda kuralları oluşturulacağını öğrendiniz, bazı İleri Adım şunlardır:
+Azure IoT Central uygulamanızda kuralların nasıl oluşturulacağını öğrendiğinize göre, bir sonraki adım aşağıda verilmiştir:
 
-- [Microsoft Flow eylem kurallarında Ekle](howto-add-microsoft-flow.md)
-- [Web kancası eylem kurallarında Ekle](howto-create-webhooks.md)
-- [Bir veya daha fazla kurallardan çalıştırmak için birden fazla eylem grubu](howto-use-action-groups.md)
+- [Kurallara Microsoft Flow eylem ekleme](howto-add-microsoft-flow.md)
+- [Kurallarda Web kancası eylemi ekleme](howto-create-webhooks.md)
+- [Birden çok eylemi bir veya daha fazla kuralla çalışacak şekilde gruplandırma](howto-use-action-groups.md)
 - [Cihazlarınızı yönetme](howto-manage-devices.md)

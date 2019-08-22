@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976987"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873188"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin (Önizleme)
 
@@ -76,6 +76,8 @@ Enzenginler, uç nokta başına uygulanır. Belirli bir uç nokta için damgalı
 
 * En zenginler de dahil olmak üzere toplam ileti boyutu 256 KB 'yi aşamaz. İleti boyutu 256 KB 'yi aşarsa IoT Hub iletiyi bırakacak. İletiler bırakıldığında hataları tanımlamak ve hatalarını ayıklamak için [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanabilirsiniz. Örneğin, D2C. telemetri. çıkış. geçersiz izleyebilirsiniz.
 
+* İleti zenginleştirmelerinin dijital ikizi değişiklik olayları ( [ıot Tak ve Kullan genel önizlemenin](../iot-pnp/overview-iot-plug-and-play.md)parçası) için uygun değildir.
+
 ## <a name="pricing"></a>Fiyatlandırma
 
 İleti zenginleştirme, ek ücret ödemeden kullanılabilir. Şu anda bir IoT Hub ileti gönderdiğinizde ücretlendirilirsiniz. İleti birden çok uç noktaya gitse bile, bu ileti için yalnızca bir kez ücretlendirilirsiniz.
@@ -87,6 +89,8 @@ Bu özellik Önizleme sürümünde kullanılabilir ve Doğu ABD, Batı ABD, Bat�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İletileri bir IoT Hub yönlendirme hakkında daha fazla bilgi için şu makalelere göz atın:
+
+* [İleti geliştirmeleri öğreticisi](tutorial-message-enrichments.md)
 
 * [Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](iot-hub-devguide-messages-d2c.md)
 

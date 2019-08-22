@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067405"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875482"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Öğretici: Azure IoT Central kullanarak cihazlarınızı izleme
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Bu öğreticide, bir operatör olarak cihazlarınızı izlemek ve ayarlarınızı değiştirmek için Microsoft Azure IoT Central uygulamasını nasıl kullanacağınız gösterilmektedir.
 
@@ -41,7 +43,7 @@ Azure IoT Central, e-posta iletileri halinde cihazlara ilişkin bildirimler gön
 
 [Cihazınız için kurallar ve eylemler yapılandırma](tutorial-configure-rules.md) öğreticisinin sonunda aldığınız e-posta iletisini açın. E-postada **Cihazınızı açmak için buraya tıklayın**’ı seçin:
 
-![Uyarı bildirim e-postası](media/tutorial-monitor-devices/email.png)
+![Uyarı bildirimi e-postası](media/tutorial-monitor-devices/email.png)
 
 Önceki öğreticilerde oluşturduğunuz **Bağlı Klima-1** sanal cihazının **Cihaz** sayfası tarayıcıda açılır:
 
@@ -55,15 +57,15 @@ Cihaza ilişkin bilgileri görmek için **Pano** görünümünü seçin.
 
 ![Cihaz panosu](media/tutorial-monitor-devices/initial_screen.png)
 
-Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. Cihazın geçerli hedef sıcaklık atabilirsiniz **cihaz özelliklerini** Döşe. Hedef sıcaklığın çok yüksek olmasına karar verdiniz.
+Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. Cihaz **özellikleri** kutucuğunda cihaz için geçerli hedef sıcaklığını da görebilirsiniz. Hedef sıcaklığın çok yüksek olmasına karar verdiniz.
 
 ## <a name="remediate-an-issue"></a>Sorunu düzeltme
 
 Cihazın hedef sıcaklığını değiştirmek için **Ayarlar** sayfasını kullanın:
 
-1. **Ayarlar**'ı seçin. **Sıcaklığı Ayarla**’yı 75 olarak değiştirin. Yeni hedef sıcaklığı cihaza göndermek için **Güncelleştir**’i seçin. Cihaz ayarlarını değiştir onaylarsa, bir ayar durumu değişir **eşitlenen**:
+1. **Ayarlar**'ı seçin. **Sıcaklığı Ayarla**’yı 75 olarak değiştirin. Yeni hedef sıcaklığı cihaza göndermek için **Güncelleştir**’i seçin. Cihaz, ayarlar değişikliğini onayladığında, ayarın durumu **eşitlenmiş**olarak değişir:
 
-    ![Ayarları güncelleştirme](media/tutorial-monitor-devices/change_settings.png)
+    ![Ayarları güncelleştir](media/tutorial-monitor-devices/change_settings.png)
 
 2. **Pano**’yu seçin ve yeni ayar değerini doğrulayın:
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 4aadac343e023e68432741c1f1231bc0ec9fe0ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5e3b96d79ddef7940fd4029f9268e3040a63d2fb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990194"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875079"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları
 
@@ -728,7 +728,7 @@ Anahtarlar, Azure 'daki işlev uygulamanızın bir parçası olarak depolanır v
 
 ![Portalda işlev anahtarlarını yönetin.](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-Program aracılığıyla işlev anahtarlarını elde etmek için desteklenen bir API yok.
+[Anahtar yönetim API 'sini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)kullanarak işlev anahtarlarını programlama yoluyla elde edebilirsiniz.
 
 ### <a name="api-key-authorization"></a>API anahtarı yetkilendirmesi
 

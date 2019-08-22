@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/19/2019
 ms.author: v-adgera
-ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849295"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656516"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -26,6 +26,9 @@ Bu makalede, izlenecek başlıca en iyi yöntemler özetlenmektedir.
 > [!IMPORTANT]
 > IoT alanınız için maxhayvan güvenliği sağlamak üzere ek güvenlik kaynakları ' nı gözden geçirin. Cihaz satıcılarınızı eklediğinizden emin olun.
 
+> [!TIP]
+> IoT güvenlik tehditlerini ve güvenlik açıklarını algılamaya yardımcı olması için [IoT Için Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/asc-for-iot/) 'ni kullanın.
+
 ## <a name="iot-security-best-practices"></a>IoT güvenliği için en iyi uygulamalar
 
 IoT cihazlarınızı güvenle güvenli hale getirmeye yönelik bazı önemli uygulamalar şunlardır:
@@ -36,6 +39,7 @@ IoT cihazlarınızı güvenle güvenli hale getirmeye yönelik bazı önemli uyg
 > * Cihaz IP adresi filtrelemesi ve bağlantı noktası kısıtlamasının olası kullanımını göz önünde bulundurun.
 > * Performansı artırmak için g/ç ve cihaz bant genişliğini sınırlayın. Hız sınırlaması, hizmet reddi saldırılarını önlemek için güvenliği iyileştirebilir.
 > * Cihaz bellenimini güncel tutun.
+> * Geliştirme ve gelişmeye devam ettikleri için cihaz, ağ ve ağ geçidi güvenlik en iyi uygulamalarını düzenli olarak denetleyin ve inceleyin.
 
 IoT alanını güvenle güvenli hale getirmeye yönelik bazı önemli uygulamalar şunlardır:
 
@@ -43,6 +47,7 @@ IoT alanını güvenle güvenli hale getirmeye yönelik bazı önemli uygulamala
 > * Kaydedilmiş, depolanmış veya kalıcı verileri şifreleyin.
 > * Parolaların veya anahtarların düzenli aralıklarla değiştirilmesini veya yenilenmesini gerektir.
 > * Erişimi ve izinleri role göre dikkatle kısıtlayın. Aşağıda, [rol tabanlı erişim denetimi en iyi uygulamaları](#rbac) bölümüne bakın.
+> * Her ağdaki cihazların diğerlerinden yalıtılmış olması için bölünmüş bir ağ topolojisini göz önünde bulundurun.
 > * Güçlü şifreleme kullanın. Uzun parolalar gerektir ve güvenli protokoller ve iki öğeli kimlik doğrulama kullanın.
 
 [İzleme](./how-to-configure-monitoring.md) Her zamanki işlem aralığının dışında kalan aykırı ler, tehditler veya kaynak parametreleri için izlenecek IoT kaynakları. İzleme Yönetimi için Azure Analytics 'i kullanın.

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641007"
+ms.locfileid: "69644887"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
@@ -545,15 +545,13 @@ Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata g
 
 **Sorunu** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın. Hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
 
-### <a name="impresonification-of-aad-login-types-is-not-supported"></a>AAD oturum açma türlerinin ımprestozı desteklenmiyor
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>AAD oturum açma türlerinin ımpersonbirleşme işlemi desteklenmiyor
 
 **Güncel** 2019 Temmuz
 
 Aşağıdaki AAD `EXECUTE AS USER` sorumluları `EXECUTE AS LOGIN` kullanılarak veya kullanarak kimliğe bürünme desteklenmez:
 -   Diğer ad AAD kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
 - Aad uygulamaları ve hizmet sorumlularına göre AAD oturum açmaları ve kullanıcılar. Bu durumda `15517` ve `15406`aşağıdaki hatalar döndürülür.
-
-### <a name="database-email"></a>Veritabanı e-postası 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail içinde parametre desteklenmiyor
 

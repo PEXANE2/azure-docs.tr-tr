@@ -5,19 +5,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 17dc32f8948387b90229d3c4c07102cff98e3018
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4079b0cab0126a9750bbb91ca7046aa18dbe9ece
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562681"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657890"
 ---
 Form tanıyıcı, bu gereksinimleri karşılayan giriş belgelerinde çalışmaktadır:
 
 * Biçim JPG, PNG veya PDF olmalıdır (metin veya taranan). Metin katıştırılmış PDF 'Ler en iyisidir çünkü karakter ayıklama ve konumunda hata olasılığı yoktur.
 * PDF 'niz parola kilitliyse, göndermeden önce kilidi kaldırmanız gerekir.
 * Dosya boyutu 4 MB 'tan az olmalıdır.
-* Görüntüler için Boyutlar 50 x 50 piksel ve 4200 x 4200 piksel arasında olmalıdır.
+* Görüntüler için Boyutlar 600 x 100 piksel ve 4200 x 4200 piksel arasında olmalıdır.
 * Kağıt belgelerinden tarandığında, formlar yüksek kaliteli taramalar olmalıdır.
 * Metin Latin alfabesini (Ingilizce karakterler) kullanmalıdır.
 * Veriler, anahtar ve değer içermelidir.

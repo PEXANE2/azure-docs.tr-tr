@@ -1,73 +1,73 @@
 ---
-title: 'Örnek: AdventureWorks stok veritabanı - Azure Search modeli'
-description: Azure Search'te dizin oluşturma ve tam metin araması için düzleştirilmiş veri kümesine dönüştürme, ilişkisel bir veri modeli hakkında bilgi edinin.
+title: 'Örnek: AdventureWorks envanter veritabanını modelleyin-Azure Search'
+description: Azure Search ' de dizin oluşturma ve tam metin araması için, ilişkisel verileri nasıl modelleyeceğinizi ve düzleştirilmiş bir veri kümesine dönüştürmeyi öğrenin.
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
-ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61291918"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649911"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Örnek: Azure arama için stok AdventureWorks veritabanı modeli
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Örnek: Azure Search için AdventureWorks envanter veritabanını modelleyin
 
-Modelleme yapılandırılmış veritabanı bir verimli search dizinine içerik nadiren basit bir uygulamadır. Zamanlama ve değişiklik Yönetimi CPU'nun, arama dostu varlıklara kaynak satırları tablo katılmış durumlarına uzağa normal durumdan çıkarmayı zorluklarıyla vardır. Bu makalede kullanılabilir AdventureWorks örnek verileri aramak için veritabanı geçiş ortak deneyimlerinde vurgulamak için çevrimiçi olarak kullanır. 
+Yapılandırılmış veritabanı içeriğini verimli bir arama dizininde modellemenin nadiren basit bir uygulamadır. Zamanlamayı planlama ve değiştirme yönetimi, kaynak satırların tablo ile Birleşik durumlarından, arama kullanımı kolay varlıklara kadar uzaklaşmasına kadar zorluk sergilemesine yardımcı olabilir. Bu makalede, veritabanından aramaya yönelik geçişte yaygın deneyimler vurgulamak için bulunan AdventureWorks örnek verileri kullanılmaktadır. 
 
 ## <a name="about-adventureworks"></a>AdventureWorks hakkında
 
-Bir SQL Server örneğiniz varsa, AdventureWorks örnek veritabanı ile aşina olabilirsiniz. Ürün bilgileri açığa beş tablo bu veritabanında bulunan tabloları arasındadır.
+Bir SQL Server örneğiniz varsa, AdventureWorks örnek veritabanı hakkında bilgi sahibi olabilirsiniz. Bu veritabanına dahil olan tablolar arasında ürün bilgilerini açığa çıkaran beş tablo bulunur.
 
-+ **ProductModel**: adı
-+ **Ürün**: ad, renk, maliyet, boyut, ağırlık, görüntü, kategori (her satır için belirli bir ProductModel birleştirir)
++ **ProductModel**: Name
++ **Ürün**: ad, renk, maliyet, boyut, ağırlık, resim, kategori (her satır belirli bir ProductModel 'e katılır)
 + **ProductDescription**: Açıklama
-+ **ProductModelProductDescription**: yerel (her satır birleştiren bir ProductModel belirli bir ProductDescription belirli bir dil için)
++ **Productmodelproductdescription**: locale (her satır bir ProductModel 'e belirli bir dil için belirli bir ProductDescription öğesine katılır)
 + **ProductCategory**: ad, üst kategori
 
-Tüm bu verileri bir arama dizini alınan düzleştirilmiş satır içine birleştirme elinizdeki var. 
+Bu verilerin tümünün, bir arama dizinine alıngirilebilecek düzleştirilmiş bir satır kümesinde birleştirilmesi, bir görevdir. 
 
-## <a name="considering-our-options"></a>Seçeneklerimiz de göz önünde bulundurur
+## <a name="considering-our-options"></a>Seçeneklerimizi göz önünde bulundurarak
 
-Naïve yaklaşım (uygun yerlerde katılmış) ürün tablosundan tüm satırları beri Product tablosunda dizin için en belirli bilgilere sahip olacaktır. Ancak, bu yaklaşım bir sonuç kümesi içinde algılanan çoğaltmaları arama dizinine kullanıma. Örneğin, yol-650 modeli iki renkleri ve altı boyutlarını içinde kullanılabilir. "Yol bisiklet" için bir sorgu daha sonra aynı modelin yalnızca boyut ve renk tarafından ayrıştırılan on iki örnekleri tarafından direncin hakim olduğu. Diğer altı seyahat özgü modeller tüm arama nether'i dünyasına sahip: iki sayfa.
+Ürün tablosu en belirli bilgilere sahip olduğundan, Naïve yaklaşımı, ürün tablosundaki (uygun olduğunda) tüm satırları dizinlemek olacaktır. Ancak, bu yaklaşım arama dizinini bir sonuç kümesinde algılanan yinelemeleri ortaya çıkarır. Örneğin, Road-650 modeli iki renkli ve altı boyut olarak kullanılabilir. Daha sonra, "Road Bisiklet" sorgusu, yalnızca boyut ve renge göre ayırt edilecek şekilde, aynı modelin her iki örneği tarafından uzlaştırılır. Diğer altı Road 'e özgü modelin her biri arama: sayfa 2 ' nin doğrulayamadı dünyasına eşit olarak dağıtılır.
 
-  ![Ürün listesini](./media/search-example-adventureworks/products-list.png "ürünler listesi")
+  ![Ürün listesi](./media/search-example-adventureworks/products-list.png "Ürün listesi")
  
-Yol-650 modeli on iki seçenek olduğuna dikkat edin. Bire çok varlık satır en çok değer alanları veya öncesi aggregated değeri alanları arama dizini olarak temsil edilmektedir.
+Road-650 modelinin on iki seçeneğe sahip olduğuna dikkat edin. Bire çok varlık satırları en iyi, arama dizininde çok değerli alanlar veya önceden toplanmış değer alanları olarak temsil edilir.
 
-Bu sorunu çözme konusunda hedef dizin ProductModel tabloya hareket ettirmek kadar basit değil. Bunun yapılması, arama sonuçlarında gösterilen hala Product tablosunda önemli verileri yoksayın.
+Bu sorunu çözmek, hedef dizini ProductModel tablosuna taşımak kadar basit değildir. Bunun yapılması, ürün tablosundaki arama sonuçlarında hala temsil edilmesi gereken önemli verileri yoksayar.
 
-## <a name="use-a-collection-data-type"></a>Bir koleksiyon veri türü kullanın
+## <a name="use-a-collection-data-type"></a>Koleksiyon veri türü kullan
 
-Doğrudan bir paralel veritabanı modele sahip olmayan bir arama şeması özelliğini kullanmak için "doğru yaklaşım" şöyledir: **Collection(EDM.String)** . Bir koleksiyon veri türü bağımsız değişkenlerle yerine çok uzun bir listeniz kullanıldığında (tek) dizesi. Etiketleri veya anahtar sözcükler varsa, bu alan için bir koleksiyon veri türü kullanmanız gerekir.
+"Doğru yaklaşım" veritabanı modelinde doğrudan paralel olmayan bir arama şeması özelliğinden yararlanmadır: **Koleksiyon (EDM. String)** . Bir koleksiyon veri türü, çok uzun (tek) bir dize yerine tek tek dizelerin listesine sahip olduğunuzda kullanılır. Etiketlerde veya anahtar sözcüklerinizle karşılaşırsanız, bu alan için bir koleksiyon veri türü kullanırsınız.
 
-Birden çok değerli dizin alanları tanımlayarak **Collection(Edm.String)** "renk", "boyutu" ve "image" bulunabilecek yinelenen girişler diziniyle kirletmesini olmadan tutulan için model oluşturma ve filtreleme bilgilerdir. Benzer şekilde, dizin oluşturma sayısal ürün alanları için toplama işlevleri uygulamak **minListPrice** her tek ürün yerine **listPrice**.
+"Color", "size" ve "image" için **koleksiyonun (EDM. String)** çok değerli dizin alanlarını tanımlayarak, çift yönlü bilgiler, dizini yinelenen girdilerle yoklamadan ve filtrelemeye yönelik olarak tutulur. Benzer şekilde, her bir ürün **ListPrice**yerine **minlistprice** dizini oluşturmak Için toplama işlevlerini sayısal ürün alanlarına uygulayın.
 
-Bu yapılar ile dizin verildiğinde, "dağ bisikleti" için arama rengini, boyutunu ve en düşük fiyat gibi önemli meta verileri korurken ayrık bisiklet modelleri gösterebilir. Aşağıdaki ekran görüntüsünde, bir gösterim sağlar.
+Bu yapılarla bir dizin verildiğinde, "Sıradağlar bisikletleri" araması ayrı Bisiklet modellerini gösterir ve renk, boyut ve en düşük fiyat gibi önemli meta verileri korur. Aşağıdaki ekran görüntüsünde bir çizim sunulmaktadır.
 
-  ![Sıradağlar bisiklet araması örneği](./media/search-example-adventureworks/mountain-bikes-visual.png "Sıradağlar bisiklet arama örneği")
+  ![Sıradağlar Bisiklet arama örneği](./media/search-example-adventureworks/mountain-bikes-visual.png "Sıradağlar Bisiklet arama örneği")
 
-## <a name="use-script-for-data-manipulation"></a>Veri işleme için komut dosyası kullan
+## <a name="use-script-for-data-manipulation"></a>Veri işleme için betiği kullan
 
-Ne yazık ki, bu tür bir modelleme tek başına SQL deyimleri kolayca elde edilemeyecek. Bunun yerine verileri yüklemek ve ardından arama dostu JSON varlıklara eşleme için basit bir NodeJS komut dosyası kullanın.
+Ne yazık ki, bu tür modellemenin tek başına SQL deyimleri aracılığıyla kolayca elde edilemez. Bunun yerine, verileri yüklemek için basit bir NodeJS betiği kullanın ve ardından bunu arama dostu JSON varlıklarına eşleyin.
 
 Son veritabanı arama eşlemesi şöyle görünür:
 
-+ Model (Edm.String: aranabilir, filtrelenebilir, alınabilir) "ProductModel.Name" ndan
-+ description_en (Edm.String: aranabilir) modeli için "ProductDescription" den burada kültür = 'tr'
-+ Renk (Collection(Edm.String): aranabilir, filtrelenebilir, modellenebilir, alınabilir): "Product.Color" modeli için benzersiz değerler
-+ Boyut (Collection(Edm.String): aranabilir, filtrelenebilir, modellenebilir, alınabilir): "Product.Size" modeli için benzersiz değerler
-+ Görüntü (Collection(Edm.String): alınabilir): "Product.ThumbnailPhoto" modeli için benzersiz değerler
-+ minStandardCost (Edm.Double: sıralanabilir şekilde alınabilir, filtrelenebilir, modellenebilir): modeli için tüm "Product.StandardCost" toplam değer en az
-+ minListPrice (Edm.Double: sıralanabilir şekilde alınabilir, filtrelenebilir, modellenebilir): modeli için tüm "Product.ListPrice" toplam değer en az
-+ minWeight (Edm.Double: sıralanabilir şekilde alınabilir, filtrelenebilir, modellenebilir): modeli için tüm "Product.Weight" toplam değer en az
-+ Ürünler (Collection(Edm.String): aranabilir, filtrelenebilir, alınabilir): "Product.Name" modeli için benzersiz değerler
++ Model (EDM. String: aranabilir, filtrelenebilir, alınabilir) "ProductModel.Name" adresinden
++ Kültür = ' en ' olduğunda model için "ProductDescription" kaynağından description_en (EDM. String: aranabilir)
++ Color (koleksiyon (EDM. String): aranabilir, filtrelenebilir, çok yönlü tablo, alınabilir): model için "Product. Color" öğesinden benzersiz değerler
++ Boyut (koleksiyon (EDM. String): aranabilir, filtrelenebilir, çok yönlü tablo, alınabilir): model için "Product. size" benzersiz değerleri
++ Image (koleksiyon (EDM. String): alınabilir): model için "Product. ThumbnailPhoto" öğesinden benzersiz değerler
++ Mınstandardcost (EDM. Double: filtrelenebilir, çok yönlü tablo, sıralanabilir, alınabilir): model için en az "Product. StandardCost" öğesinin toplamı
++ minListPrice (EDM. Double: filtrelenebilir, çok yönlü tablo, sıralanabilir, alınabilir): model için en az "Product. ListPrice" öğesinin toplamı
++ minWeight (EDM. Double: filtrelenebilir, çok yönlü tablo, sıralanabilir, alınabilir): model için en az "Product. Weight" öğesinin toplamı
++ Ürünler (koleksiyon (EDM. String): aranabilir, filtrelenebilir, alınabilir): model için "Product.Name" öğesinden benzersiz değerler
 
-Ürün ve ProductDescription, kullanım ProductModel tabloyla katıldıktan sonra [lodash](https://lodash.com/) (veya LINQ C#) hızlı bir sonuç kümesi dönüştürmek için:
+ProductModel tablosunu Product ve ProductDescription ile katıldıktan sonra, sonuç kümesi 'ni hızlıca dönüştürmek için [lodash](https://lodash.com/) ( C#veya LINQ ın) kullanın:
 
 ```javascript
 var records = queryYourDatabase();
@@ -137,7 +137,7 @@ Sonuçta elde edilen JSON şöyle görünür:
 ]
 ```
 
-Son olarak, ilk kayıt kümesini döndürmek için SQL sorgu aşağıdadır. Kullandım [mssql](https://www.npmjs.com/package/mssql) NodeJS uygulamamı verileri yüklemek için npm modülünü.
+Son olarak, ilk kayıt kümesini döndürmek için SQL sorgusu aşağıda verilmiştir. Verileri NodeJS uygulamama yüklemek için [MSSQL](https://www.npmjs.com/package/mssql) NPM modülünü kullandım.
 
 ```T-SQL
 SELECT
@@ -163,6 +163,6 @@ WHERE
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Örnek: Azure Arama'daki çok düzeyli model sınıflandırmaları](search-example-adventureworks-multilevel-faceting.md)
+> [Örnek: Azure Search 'de çok düzeyli model sınıflandırmaları](search-example-adventureworks-multilevel-faceting.md)
 
 

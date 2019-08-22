@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/06/2018
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: c4f2994413fca07f4a168cf12ba7967b00b6b0e2
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3594828ff3a79242e1cfd4663c415d8de502a329
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668101"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872764"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>İşleri zamanlama ve yayınlama (.NET)
 
@@ -47,9 +47,12 @@ IoT Hub 'ınıza bağlanan ve **Lockkapısı** Direct metodunu uygulayan **Simul
 
 **Lockkapıya** doğrudan yöntemini çağırmak ve cihazı ikizi istenen özellikleri birden çok cihazda güncelleştirmek için Işleri kullanan **schedulejob** .
 
+## <a name="prerequisites"></a>Önkoşullar
+
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Visual Studio.
+* Visual Studio. Bu öğretici, Visual Studio 2017 kullanır.
+
 * Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
@@ -64,18 +67,18 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme yanıt veren bir .NET konsol uygulaması oluşturacaksınız.
 
-1. Visual Studio'da **Konsol Uygulaması** proje şablonunu kullanarak geçerli çözüme bir Visual C# Windows Klasik Masaüstü projesi ekleyin. Projeyi **SimulateDeviceMethods**olarak adlandırın.
-   
+1. Visual Studio 'da, **konsol uygulaması** proje C# şablonunu kullanarak yeni veya mevcut bir çözüme bir Visual Windows Klasik Masaüstü projesi ekleyin. Projeyi **SimulateDeviceMethods**olarak adlandırın.
+
     ![Yeni Visual C# Windows Klasik cihaz uygulaması](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
-    
-2. Çözüm Gezgini, **SimulateDeviceMethods** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** öğesine tıklayın.
+
+2. Çözüm Gezgini, **SimulateDeviceMethods** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
 
 3. **NuGet Paket Yöneticisi** penceresinde, **Araştır** ' ı seçin ve **Microsoft. Azure. Devices. Client**için arama yapın. **Microsoft. Azure. Devices. Client** paketini yüklemek için **Install** ' ı seçin ve kullanım koşullarını kabul edin. Bu yordam, [Azure IoT cihaz SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
-   
+
     ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
 4. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
-   
+
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
@@ -97,7 +100,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
         Console.WriteLine();
         Console.WriteLine("Locking Door!");
         Console.WriteLine("\nReturning response for method {0}", methodRequest.Name);
-            
+
         string result = "'Door was locked.'";
         return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
     }
@@ -115,7 +118,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
     ```
 
 8. Son olarak, aşağıdaki kodu **Main** yöntemine ekleyerek IoT Hub 'ınız bağlantısını açın ve Yöntem dinleyicisini başlatın:
-   
+
     ```csharp
     try
     {
@@ -140,12 +143,12 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
         Console.WriteLine("Error in sample: {0}", ex.Message);
     }
     ```
-        
-9. Çalışmanızı kaydedin ve çözümünüzü derleyin.         
+
+9. Çalışmanızı kaydedin ve çözümünüzü derleyin.
 
 > [!NOTE]
 > Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (bağlantı yeniden denemesi gibi) uygulamalısınız.
-> 
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
@@ -161,14 +164,14 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
     ![Yeni Visual C# Windows Klasik Masaüstü projesi](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
 
-2. Çözüm Gezgini, **Schedulejob** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** öğesine tıklayın.
+2. Çözüm Gezgini, **Schedulejob** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
 
 3. **NuGet Paket Yöneticisi** penceresinde, **Araştır**' ı seçin, Microsoft. **Azure. Devices**' i arayın, **Microsoft. Azure. Devices** paketini yüklemek için, **install** ' ı seçin ve kullanım koşullarını kabul edin. Bu adım, [Azure IoT hizmeti SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
     ![NuGet Paket Yöneticisi penceresi](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
 
 4. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
-    
+
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
@@ -213,7 +216,7 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
         CloudToDeviceMethod directMethod = 
           new CloudToDeviceMethod("LockDoor", TimeSpan.FromSeconds(5), 
           TimeSpan.FromSeconds(5));
-       
+
         JobResponse result = await jobClient.ScheduleDeviceMethodAsync(jobId,
             $"DeviceId IN ['{deviceId}']",
             directMethod,
@@ -250,7 +253,7 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
     > [!NOTE]
     > Sorgu sözdizimi hakkında daha fazla bilgi için [IoT Hub sorgu dili](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)' ne bakın.
-    > 
+    >
 
 10. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
 
@@ -275,17 +278,17 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
     Console.ReadLine();
     ```
 
-11. Çalışmanızı kaydedin ve çözümünüzü derleyin. 
+11. Çalışmanızı kaydedin ve çözümünüzü derleyin.
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. Visual Studio Çözüm Gezgini çözümünüze sağ tıklayın ve ardından **Oluştur**' a tıklayın. **Birden çok başlangıç projesi**. Listenin en `SimulateDeviceMethods` üstünde `ScheduleJob`ve sonrasında olduğundan emin olun. Her iki eylemini de **Başlangıç** olarak ayarlayın ve **Tamam 'a**tıklayın.
+1. Visual Studio Çözüm Gezgini, çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin. Ardından **birden çok başlangıç projesi**seçin. **SimulateDeviceMethods** listenin en üstünde ve sonra **schedulejob**' ın altında olduğundan emin olun. Her iki eylemini **Başlangıç** olarak ayarlayın ve **Tamam**' ı seçin.
 
-2. **Başlat** ' a tıklayarak veya **hata ayıklama** menüsüne gidip **hata ayıklamayı Başlat**' a tıklayarak projeleri çalıştırın.
+2. **Başlat** ' i seçerek veya **hata ayıklama** menüsüne gidip **hata ayıklamayı Başlat**' a tıklayarak projeleri çalıştırın.
 
-3. Çıktıyı hem cihazdan hem de arka uç uygulamalardan görürsünüz.
+3. Çıktıyı hem cihazın hem de arka uç uygulamalardan görürsünüz.
 
     ![İşleri zamanlamak için uygulamaları çalıştırma](./media/iot-hub-csharp-csharp-schedule-jobs/schedulejobs.png)
 

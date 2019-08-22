@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e62a0c1363acfedc1f059ac0e56fce0df68298f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532365"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874246"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kimlik doğrulaması ve yetkilendirme hata kodları
 
@@ -265,6 +265,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 | AADSTS700023 | Invalidresourcelessscope-girilen parametre kapsamı için girilen değer, erişim belirteci isteğinde geçerli değildir. |
 | AADSTS1000000 | UserNotBoundError-bağlama API 'SI, Azure AD kullanıcısının, henüz gerçekleşmemiş bir dış ıDP ile kimlik doğrulaması yapmasını gerektirir. |
 | AADSTS1000002 | BindCompleteInterruptError-bağlama başarıyla tamamlandı, ancak kullanıcının bilgilendirilmesi gerekiyor. |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled-uygulama devre dışı bırakıldı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
