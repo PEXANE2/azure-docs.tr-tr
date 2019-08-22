@@ -193,7 +193,7 @@ Hızla bir Azure blob depolama içine/dışına veri kopyalamak nasıl bakalım.
     3. Kaynak grubunu seçin **var olanı kullan** mevcut bir kaynak grubunu seçin (veya) seçmek için **Yeni Oluştur** için bir kaynak grubu için bir ad girin.
     4. Veri fabrikası için bir **konum** seçin.
     5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.
-    6.           **Oluştur**'a tıklayın.
+    6. **Oluştur**'a tıklayın.
 3. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:  ![Data factory giriş sayfası](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kopyalama Sihirbazı
@@ -208,7 +208,7 @@ Hızla bir Azure blob depolama içine/dışına veri kopyalamak nasıl bakalım.
     4. Ayarlarını koruyabilirsiniz **yinelenen desen**. Bu görev, bir sonraki adımda belirttiğiniz her gün başlangıç ve bitiş saatleri arasında çalışır.
     5. Değişiklik **başlangıç tarihi ve saati** için **21/04/2017**.
     6. Değişiklik **bitiş tarihi ve saati** için **04/25/2017**. Takvim göz atma yerine tarihi yazın isteyebilirsiniz.
-    8.           **İleri**'ye tıklayın.
+    8. **İleri**'ye tıklayın.
         ![Kopyalama aracı - Özellikler sayfası](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
 3. **Kaynak veri deposu** sayfasında **Azure Blob Storage** kutucuğuna tıklayın. Kopyalama görevine yönelik kaynak veri deposunu belirtmek için bu sayfayı kullanın. Yeni bir veri deposu belirtmek için mevcut bir veri deposu bağlı hizmetini kullanabilirsiniz (veya) yeni bir veri deposu belirtebilirsiniz. Mevcut bir bağlı hizmeti kullanmak için seçeceğiniz **mevcut bağlı hizmetlerden** ve doğru bağlı hizmeti seçin.
     ![Kopyalama aracı - kaynak veri deposu sayfası](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -217,7 +217,7 @@ Hızla bir Azure blob depolama içine/dışına veri kopyalamak nasıl bakalım.
     2. **Hesap seçme yöntemi** için **Azure aboneliklerinden** seçeneğinin belirlendiğini onaylayın.
     3. Azure aboneliğinizi seçin ya da koruma **Tümünü Seç** için **Azure aboneliği**.
     4. Seçili abonelikte bulunan Azure depolama hesapları listesinden bir **Azure depolama hesabı** seçin. Ayrıca depolama hesabı ayarlarını el ile girmeyi seçebilirsiniz **el ile girmek** seçeneğini **hesap seçme yöntemi**.
-    5.           **İleri**'ye tıklayın.  
+    5. **İleri**'ye tıklayın.  
         ![Kopyalama aracı - Azure Blob Depolama hesabı belirtin](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. **Girdi dosyası veya klasörü seçin** sayfasında:
     1. Çift **adfblobcontainer**.
@@ -228,7 +228,7 @@ Hızla bir Azure blob depolama içine/dışına veri kopyalamak nasıl bakalım.
     2. Ayarlı değil **dosyasını yinelemeli olarak kopyalama**. Hedefe kopyalanacak dosyaları klasörlerde yinelemeli olarak çapraz geçiş için bu seçeneği belirleyin.
     3. Sağlamadığı **ikili kopya** seçeneği. Hedef kaynak dosyasını ikili bir kopyasını gerçekleştirmek için bu seçeneği belirleyin. Bu kılavuz için sonraki sayfalarda daha fazla seçenek görebilmeniz için seçmeyin.
     4. Onaylayın **sıkıştırma türü** ayarlanır **hiçbiri**. Desteklenen biçimlerden birinde sıkıştırılmış Kaynak dosyalarınız varsa bu seçeneği için bir değer seçin.
-    5.           **İleri**'ye tıklayın.
+    5. **İleri**'ye tıklayın.
     ![Kopyalama aracı - girdi dosyası veya klasörü seçin](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. **Dosya biçimi ayarları** sayfasında sınırlayıcıları ve sihirbaz tarafından dosya ayrıştırılarak otomatik olarak algılanan düzeni görürsünüz.
     1. Aşağıdaki seçenekler onaylayın:  
@@ -250,7 +250,7 @@ Hızla bir Azure blob depolama içine/dışına veri kopyalamak nasıl bakalım.
     2. **Hesap seçme yöntemi** için **Azure aboneliklerinden** seçeneğinin belirlendiğini onaylayın.
     3. Azure **aboneliğinizi** seçin.
     4. Azure depolama hesabınızı seçin.
-    5.           **İleri**'ye tıklayın.
+    5. **İleri**'ye tıklayın.
 10. Üzerinde **çıktı dosyasını veya klasörünü seçin** sayfası:  
     1. belirtin **klasör yolu** olarak **adfblobconnector/output / {year} / {month} / {day}** . Girin **sekmesini**.
     1. İçin **yıl**seçin **yyyy**.
@@ -258,7 +258,7 @@ Hızla bir Azure blob depolama içine/dışına veri kopyalamak nasıl bakalım.
     1. İçin **gün**, kümesine olduğunu onaylayın **GG**.
     1. Onaylayın **sıkıştırma türü** ayarlanır **hiçbiri**.
     1. Onaylayın **kopyalama davranışı** ayarlanır **dosyaları Birleştir**. Aynı ada sahip çıkış dosyası zaten varsa, yeni içerik aynı dosyanın sonuna eklenir.
-    1.           **İleri**'ye tıklayın.
+    1. **İleri**'ye tıklayın.
        ![Kopyalama aracı - çıktı dosyasını veya klasörünü seçin](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Üzerinde **dosya biçimi ayarları** sayfasında, ayarları gözden geçirin ve tıklayın **sonraki**. Ek seçenekler burada bir üst bilgi çıkış dosyasına eklemek için biridir. Bu seçeneği belirlerseniz, bir üst bilgi satırı kaynak şemasından sütunların adlarıyla eklenir. Varsayılan sütun adları kaynağı için şema görüntülerken yeniden adlandırabilirsiniz. Örneğin, ilk sütun, ad ve Soyadı ikinci sütuna değiştirebilir. Ardından, çıktı dosyası şu adlara sahip bir üst bilgisiyle sütun adları olarak oluşturulur.
     ![Kopyalama aracı - hedef için dosya biçimi ayarları](media/data-factory-azure-blob-connector/file-format-destination.png)
