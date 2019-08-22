@@ -119,7 +119,7 @@ Aşağıdaki özellikler Dynamics bağlı hizmeti için desteklenir.
 | organizationName | Dynamics örneğinin kuruluş adı. | Evet |
 | authenticationType | Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. Belirtin **"Ifd"** Dynamics ile şirket içi IFD için. | Evet |
 | username | Dynamics bağlanmak için kullanıcı adı belirtin. | Evet |
-| password | Kullanıcı adı için belirtilen kullanıcı hesabı için parola belirtin. Bu alan ADF içinde güvenli bir şekilde depolayın veya Azure anahtar Kasası'nda parolayı depolamak için bir SecureString olarak işaretlemek seçin ve veri kopyalama gerçekleştirirken buradan çekme - daha fazla bilgi için kopyalama etkinliği izin [anahtar Kasası'nda kimlik bilgileri Store](store-credentials-in-key-vault.md). | Evet |
+| password | Kullanıcı adı için belirtilen kullanıcı hesabı için parola belirtin. Bu alan ADF içinde güvenli bir şekilde depolayın veya Azure anahtar Kasası'nda parolayı depolamak için bir SecureString olarak işaretlemek seçin ve veri kopyalama gerçekleştirirken buradan çekme - daha fazla bilgi için kopyalama etkinliği izin [Key Vault'nda kimlik bilgileri Store](store-credentials-in-key-vault.md). | Evet |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. | Kaynak, havuz için Evet Hayır |
 
 **Örnek: Dynamics ile şirket içi IFD IFD kimlik doğrulaması kullanma**
