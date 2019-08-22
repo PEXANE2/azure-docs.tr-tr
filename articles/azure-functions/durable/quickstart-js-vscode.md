@@ -65,7 +65,7 @@ Artık dayanıklı işlevlerini kullanmaya başlamak için üç işlev oluştura
 
     ![HTTP Başlangıç şablonu seçin](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Olarak varsayılan adı bırakın `DurableFunctionsHttpStart` basın *** Enter ** ardından **anonim** kimlik doğrulaması.
+3. Olarak varsayılan adı bırakın `DurableFunctionsHttpStart` basın ** **Enter** ardından **anonim** kimlik doğrulaması.
 
     ![Anonim kimlik doğrulamasını seçin](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

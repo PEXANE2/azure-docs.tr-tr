@@ -216,7 +216,7 @@ Müşteri için SAP bulutlarından veri kopyalarken aşağıdaki eşlemeler, ist
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| EDM. SByte | Int16 |
+| Edm.SByte | Int16 |
 | Edm.String | String |
 | EDM.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |

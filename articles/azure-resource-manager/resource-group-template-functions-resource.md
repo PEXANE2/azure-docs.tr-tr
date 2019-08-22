@@ -4,14 +4,14 @@ description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manage
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839264"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650425"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -57,7 +57,7 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft. Blockzincirine/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft. Blockzincirine/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Microsoft. BotService/botServices/Channels | listChannelWithKeys |
-| Microsoft.Cache/redis | [Listkeys'i](/rest/api/redis/redis/listkeys) |
+| Microsoft. Cache/redsıs | [Listkeys'i](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [Listkeys'i](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [listBuildSourceUploadUrl 'Si](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
@@ -634,7 +634,7 @@ Yukarıdaki örnekte, aşağıdaki biçimde bir nesne döndürür:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz veya aynı şablon içinde sağlanan olduğunda bu işlevi kullanın. 
 
@@ -646,43 +646,46 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz 
 | resourceGroupName |Hayır |dize |Geçerli kaynak grubu varsayılan değerdir. Başka bir kaynak grubunda kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
 | Kaynak türü |Evet |dize |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Evet |dize |Kaynağın adı. |
-| resourceName2 |Hayır |dize |Kaynak iç içe sonraki kaynak adı kesimi. |
+| resourceName2 |Hayır |dize |Gerekirse, sonraki kaynak adı segmenti. |
+
+Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
 ### <a name="return-value"></a>Dönüş değeri
 
 Tanımlayıcısı şu biçimde döndürülür:
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/Providers/{resourceprovidernamespace}/{resourcettypeınfo}/{resourceName}**
+
 
 ### <a name="remarks"></a>Açıklamalar
 
-[Abonelik düzeyinde bir dağıtım](deploy-to-subscription.md)ile kullanıldığında, `resourceId()` işlev yalnızca o düzeyde dağıtılan kaynakların kimliğini alabilir. Örneğin, bir ilke tanımı veya rol tanımının KIMLIĞINI alabilir, ancak bir depolama hesabının KIMLIĞINI alabilirsiniz. Bir kaynak grubuna dağıtımlar için, tersi doğru olur. Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI alamazsınız.
+Sağladığınız parametrelerin sayısı, kaynağın bir üst veya alt kaynak olduğunu ve kaynağın aynı abonelikte veya kaynak grubunda olup olmamasına göre farklılık gösterir.
 
-Belirttiğiniz parametre değerlerini kaynak geçerli dağıtım aynı abonelik ve kaynak grubunda olmasına göre değişir. Bir depolama hesabı aynı abonelikte ve kaynak grubu için kaynak Kimliğini almak için kullanın:
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-Bir depolama hesabı aynı abonelikte ancak farklı bir kaynak grubu için kaynak Kimliğini almak için kullanın:
+Aynı abonelik ve kaynak grubundaki bir üst kaynağın kaynak KIMLIĞINI almak için kaynağın türünü ve adını belirtin.
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Bir depolama hesabında farklı bir abonelikte ve kaynak grubu için kaynak Kimliğini almak için kullanın:
+Bir alt kaynağın kaynak KIMLIĞINI almak için, kaynak türündeki parçaların sayısına dikkat edin. Kaynak türünün her segmenti için bir kaynak adı belirtin. Segmentin adı, hiyerarşinin o parçası için var olan kaynağa karşılık gelir.
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+Aynı abonelikte ancak farklı kaynak grubunda bulunan bir kaynağın kaynak KIMLIĞINI almak için, kaynak grubu adını sağlayın.
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+Farklı bir abonelik ve kaynak grubundaki bir kaynağın kaynak KIMLIĞINI almak için abonelik KIMLIĞI ve kaynak grubu adını sağlayın.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Farklı bir kaynak grubuna bir veritabanı için kaynak Kimliğini almak için kullanın:
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+[Abonelik düzeyinde bir dağıtım](deploy-to-subscription.md)ile kullanıldığında, `resourceId()` işlev yalnızca o düzeyde dağıtılan kaynakların kimliğini alabilir. Örneğin, bir ilke tanımı veya rol tanımının KIMLIĞINI alabilir, ancak bir depolama hesabının KIMLIĞINI alabilirsiniz. Bir kaynak grubuna dağıtımlar için, tersi doğru olur. Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI alamazsınız.
 
 Abonelik kapsamında dağıtım yaparken abonelik düzeyinde bir kaynağın kaynak KIMLIĞINI almak için şunu kullanın:
 
