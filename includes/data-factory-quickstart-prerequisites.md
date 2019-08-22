@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234532"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648533"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,28 +38,24 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 ### <a name="azure-storage-account"></a>Azure depolama hesabı
 Bu hızlı başlangıçta, genel amaçlı Azure depolama hesabını (özel olarak Blob depolama) hem *kaynak* hem de *hedef* veri deposu olarak kullanırsınız. Genel amaçlı bir Azure depolama hesabınız yoksa oluşturma bilgileri için bkz. [Depolama hesabı oluşturma](../articles/storage/common/storage-quickstart-create-account.md). 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>Depolama hesabı adını ve hesap anahtarını alma
-Bu hızlı başlangıçta, Azure depolama hesabınızın adına ve anahtarına ihtiyacınız olacaktır. Aşağıdaki yordamda, depolama hesabınızın adını ve anahtarını alma adımlarını verilmiştir: 
+#### <a name="get-the-storage-account-name"></a>Depolama hesabı adını al
+Bu hızlı başlangıç için Azure depolama hesabınızın adına ihtiyacınız olacak. Aşağıdaki yordam, depolama hesabınızın adını almak için gereken adımları sağlar: 
 
 1. Bir Web tarayıcısında [Azure Portal](https://portal.azure.com) gidin ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
-2. **Tüm hizmetler** >  **** depolamadepolama > **hesapları**' nı seçin.
+2. **Tüm hizmetler** > depolamadepolama > **hesapları**' nı seçin.
 3. **Depolama hesapları** sayfasında, depolama hesabınız için filtre uygulayın (gerekirse) ve ardından depolama hesabınızı seçin. 
-4. *Hesap\<adı >*  - **depolama hesabı** sayfasının kenar çubuğundan ayarlar etiketine gidin ve erişim anahtarları ' nı seçin. Hesap adı > - **erişim tuşları** görünür.  *\<*
-
-   ![Depolama hesabı adını ve anahtarını alma](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. **Depolama hesabı adı** ve **key1** kutularının değerlerini panoya kopyalayın. Bunları Not Defteri’ne veya başka bir düzenleyiciye yapıştırın ve kaydedin. Bunları daha sonra bu hızlı başlangıçta kullanacaksınız.   
 
 #### <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
 Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsayıcısı oluşturursunuz.
 
-1.  >  ****  *Hesap\<adı >*  - erişim tuşları sayfasının kenar çubuğu ' ndan genel bakış**BLOB 'ları**' nı seçin.
-2. Hesap adı > **** Bloblar sayfasının araç çubuğunda kapsayıcı ' yı seçin.  *\<*  - 
-3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. Hesap adı > **** blob 'lar sayfası, kapsayıcılar listesinde adföğreticisi içerecek şekilde güncelleştirilir.  *\<*  - 
+1. Depolama hesabı sayfasında **genel bakış** > **BLOB 'ları**' nı seçin.
+2. Hesap adı > Bloblar sayfasının araç çubuğunda kapsayıcı ' yı seçin.  *\<*  - 
+3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. Hesap adı > blob 'lar sayfası, kapsayıcılar listesinde adföğreticisi içerecek şekilde güncelleştirilir.  *\<*  - 
 
    ![Kapsayıcılar listesi](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için bir giriş klasörü ve dosyası ekleyin
-Bu bölümde, yeni oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki **içerikle birlikte bir** dosya Düzenleyicisi oluşturun:
+Bu bölümde, yeni oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki içerikle birlikte bir dosya Düzenleyicisi oluşturun:
 
 ```emp.txt
 John, Doe
@@ -68,7 +64,7 @@ Jane, Doe
 
 Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut değilse, oluşturun.) Sonra Azure portal geri dönüp şu adımları izleyin:
 
-1. Kaldığınız yerden -  **** *Hesap adı > Blobları sayfasında, güncelleştirilmiş kapsayıcı listesinden adföğreticisi ' ni seçin. \<* (Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın, **tüm hizmetler** > **depolama** > **depolama hesapları**' nı seçin, depolama hesabınızı seçin ve ardından Bloblar ' ı seçin. **adföğreticisi.)**  > 
+1. Kaldığınız yerden -  *Hesap adı > Blobları sayfasında, güncelleştirilmiş kapsayıcı listesinden adföğreticisi ' ni seçin. \<* (Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın, **tüm hizmetler** > **depolama** > **depolama hesapları**' nı seçin, depolama hesabınızı seçin ve ardından Bloblar ' ı seçin. **adföğreticisi.)**  > 
 2. **Adföğreticisi** kapsayıcı sayfasının araç çubuğunda **karşıya yükle**' yi seçin.
 3. **Blobu karşıya yükle** sayfasında, **dosyalar** kutusunu seçin ve ardından, ve sonra da **. txt** dosyasını seçin.
 4. **Gelişmiş** başlık ' ı genişletin. Sayfa artık gösterildiği gibi görüntülenir:

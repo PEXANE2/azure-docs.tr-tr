@@ -1,13 +1,13 @@
 ---
-title: OData tam metin araması işlevi başvuru - Azure Search
-description: Search.ismatch ve Azure arama sorgularında search.ismatchscoring OData tam metin arama işlevleri.
+title: OData tam metin arama işlevi başvurusu-Azure Search
+description: OData tam metin arama işlevleri, arama. IsMatch ve Search. ısmatchpuanlama, Azure Search sorgularda.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,23 +19,23 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 158312a7afe88e7b9885376c5d28b01958acbbfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3b28c8799b09ddfe008df8539709c5a704ac6b4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079814"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648008"
 ---
-# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>Azure Search - OData tam metin arama işlevleri `search.ismatch` ve `search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>Azure Search `search.ismatch` ve içindeki OData tam metin arama işlevleri`search.ismatchscoring`
 
-Azure arama, tam metin araması bağlamında destekler [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) aracılığıyla `search.ismatch` ve `search.ismatchscoring` işlevleri. Bu işlevler, tam metin araması katı Boole yalnızca üst düzey kullanarak mümkün olmayan bir yolla filtreleme ile birleştirmek izin `search` parametresinin [arama API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Search, `search.ismatch` ve `search.ismatchscoring` işlevleri aracılığıyla [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) bağlamında tam metin aramayı destekler. Bu işlevler, tam metin aramasını, yalnızca `search` [Arama API](https://docs.microsoft.com/rest/api/searchservice/search-documents)'sinin en üst düzey parametresini kullanarak mümkün olmayan şekilde kesin Boole filtrelemeleri ile birleştirmenize olanak tanır.
 
 > [!NOTE]
-> `search.ismatch` Ve `search.ismatchscoring` işlevleri filtreleri, desteklenen yalnızca [arama API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents). İçinde desteklenmeyen [Öner](https://docs.microsoft.com/rest/api/searchservice/suggestions) veya [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API'leri.
+> Ve işlevleri yalnızca [Arama API 'sindeki](https://docs.microsoft.com/rest/api/searchservice/search-documents)filtrelerde desteklenir. `search.ismatchscoring` `search.ismatch` Bunlar, [öneri](https://docs.microsoft.com/rest/api/searchservice/suggestions) veya [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API 'lerinde desteklenmez.
 
 ## <a name="syntax"></a>Sözdizimi
 
-Aşağıdaki EBNF ([genişletilmiş Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) Dilbilgisi tanımlar `search.ismatch` ve `search.ismatchscoring` İşlevler:
+Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.ismatch` ve `search.ismatchscoring` işlevlerinin dilbilgisini tanımlar:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -51,76 +51,76 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-Bir etkileşimli söz dizim diyagramı görülmektedir de kullanılabilir:
+Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData söz dizimini diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> Bkz: [OData ifadesi söz dizimi başvurusu için Azure Search](search-query-odata-syntax-reference.md) tam EBNF için.
+> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
 
-### <a name="searchismatch"></a>search.ismatch
+### <a name="searchismatch"></a>Search. IsMatch
 
-`search.ismatch` İşlevi bir tam metin arama sorgusu bir filtre ifadesi bir parçası olarak değerlendirir. Arama sorgusuyla eşleşen belgelerin sonuç kümesinde döndürülür. Bu işlevin aşağıdaki aşırı kullanılabilir:
+`search.ismatch` İşlevi bir filtre ifadesinin parçası olarak bir tam metin arama sorgusu değerlendirir. Arama sorgusuyla eşleşen belgeler sonuç kümesinde döndürülür. Bu işlevin aşağıdaki aşırı yüklemeleri kullanılabilir:
 
 - `search.ismatch(search)`
 - `search.ismatch(search, searchFields)`
 - `search.ismatch(search, searchFields, queryType, searchMode)`
 
-Parametreleri aşağıdaki tabloda tanımlanmıştır:
+Parametreler aşağıdaki tabloda tanımlanmıştır:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Type | Açıklama |
 | --- | --- | --- |
-| `search` | `Edm.String` | Arama sorgusu (her ikisinde [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) Lucene sorgu söz dizimi). |
-| `searchFields` | `Edm.String` | Virgülle ayrılmış bir liste içinde arama yapmak aranabilir alanları; Varsayılan olarak dizindeki tüm aranabilir alanları. Kullanırken [arama fielded](query-lucene-syntax.md#bkmk_fields) içinde `search` parametresi alan Lucene sorgu geçersiz kılma tanımlayıcıları bu parametrede belirtilen herhangi bir alan. |
-| `queryType` | `Edm.String` | `'simple'` veya `'full'`; varsayılan olarak `'simple'`. Hangi sorgu dili kullanıldı belirtir `search` parametresi. |
-| `searchMode` | `Edm.String` | `'any'` veya `'all'`, varsayılan olarak `'any'`. Tüm arama, koşulları olup olmadığını gösteren `search` parametresi eşleşen, belgeyi bir eşleşme olarak saymak için. Kullanırken [Lucene Boole işleçleri](query-lucene-syntax.md#bkmk_boolean) içinde `search` parametresi, bunlar önceliklidir Bu parametre. |
+| `search` | `Edm.String` | Arama sorgusu ( [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) Lucene sorgu sözdiziminde). |
+| `searchFields` | `Edm.String` | Arama yapılacak aranabilir alanların virgülle ayrılmış listesi; dizindeki tüm aranabilir alanları varsayılan olarak belirler. `search` Parametresinde, alan [araması](query-lucene-syntax.md#bkmk_fields) kullanılırken, Lucene sorgusunda alan belirticileri bu parametrede belirtilen tüm alanları geçersiz kılar. |
+| `queryType` | `Edm.String` | `'simple'`veya `'full'`; varsayılan olarak `'simple'`olur. `search` Parametrede hangi sorgu dilinin kullanıldığını belirtir. |
+| `searchMode` | `Edm.String` | `'any'`ya `'all'`da varsayılan olarak `'any'`olur. Belgeyi eşleşme olarak saymak için `search` parametresindeki arama terimlerinin herhangi birinin veya tümünün eşleşmesi gerekip gerekmediğini gösterir. `search` Parametresindeki [Lucene Boolean işleçleri](query-lucene-syntax.md#bkmk_boolean) kullanıldığında, bu parametre üzerinden öncelikli olur. |
 
-Yukarıdaki tüm parametreleri karşılık gelen eşdeğerdir [istek parametrelerini arama API'si arama](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Yukarıdaki parametrelerin tümü, [Arama API 'sindeki karşılık gelen arama isteği parametrelerine](https://docs.microsoft.com/rest/api/searchservice/search-documents)eşdeğerdir.
 
-`search.ismatch` İşlevi türünde bir değer döndürür `Edm.Boolean`, diğer filtre alt ifadeleri kullanarak bir Boole değeri oluşturan olanak tanıyan [mantıksal işleçler](search-query-odata-logical-operators.md).
+İşlevi, Boolean [mantıksal işleçlerini](search-query-odata-logical-operators.md)kullanarak diğer `Edm.Boolean`filtre alt ifadeleriyle onu oluşturmanıza olanak sağlayan türünde bir değer döndürür. `search.ismatch`
 
 > [!NOTE]
-> Azure Search'ü kullanarak desteklemiyor `search.ismatch` veya `search.ismatchscoring` lambda ifadeleri iç. Başka bir deyişle, tam metin arama sonuçları aynı nesne üzerinde katı filtre eşleşme ile ilişkilendirebilmek nesne koleksiyonları üzerinde yazma filtreleri mümkün değildir. Bu sınırlama yanı sıra örnekleri hakkında daha fazla bilgi için bkz. [Azure Search'te toplama filtreleri sorun giderme](search-query-troubleshoot-collection-filters.md). Neden ilişkin daha ayrıntılı bilgi için bu sınırlama var, bkz: [Azure Search'te toplama filtreleri anlama](search-query-understand-collection-filters.md).
+> Azure Search lambda ifadelerinin kullanımını `search.ismatch` veya `search.ismatchscoring` içini desteklemez. Bu, tam metin arama eşleşmelerini aynı nesne üzerinde kesin filtre eşleşmeleri ile ilişkilendirebileceği nesne koleksiyonları üzerine filtre yazmak mümkün olmadığı anlamına gelir. Bu sınırlama ve örnekler hakkında daha fazla bilgi için bkz. [Azure Search koleksiyon filtrelerinde sorun giderme](search-query-troubleshoot-collection-filters.md). Bu sınırlamanın neden olduğu hakkında daha ayrıntılı bilgi için bkz. [Azure Search koleksiyon filtrelerini anlama](search-query-understand-collection-filters.md).
 
 
-### <a name="searchismatchscoring"></a>Search.ismatchscoring
+### <a name="searchismatchscoring"></a>arama. ısmatchpuanlama
 
-`search.ismatchscoring` Gibi işlev `search.ismatch` işlevinin döndürdükleriyle `true` tam metin arama sorgusuyla eşleşen belgeler için bir parametre olarak geçirilir. İlgi eşleşen belgelerin puan fark aralarında `search.ismatchscoring` sorgu durumunda sırada genel belge puanı katkıda `search.ismatch`, belge puanı değiştirilmez. Bu işlevin aşağıdaki aşırı gereksinimlerine aynı parametrelerle kullanılabilir `search.ismatch`:
+İşlevi gibi işlev, parametre olarak geçirilmiş tam metin arama sorgusuyla eşleşen belgeler için döndürür `true`. `search.ismatchscoring` `search.ismatch` Aralarındaki fark, `search.ismatchscoring` sorguyla eşleşen belgelerin ilgi puanının Genel belge puanına katkıda bulunmasını sağlar, ancak bu `search.ismatch`durumda belge puanı değiştirilmez. Bu işlevin aşağıdaki aşırı yüklemeleri, bunlarla özdeş `search.ismatch`olan parametrelerle kullanılabilir:
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-Hem `search.ismatch` ve `search.ismatchscoring` işlevleri aynı filtre ifadesinde kullanılabilir.
+`search.ismatch` Hem hem `search.ismatchscoring` de işlevleri aynı filtre ifadesinde kullanılabilir.
 
 ## <a name="examples"></a>Örnekler
 
-"Rıhtımının" sözcüğüyle belgeleri bulun. Bu filtre sorgusu aynıdır bir [arama isteği](https://docs.microsoft.com/rest/api/searchservice/search-documents) ile `search=waterfront`.
+"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile `search=waterfront`bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir.
 
     search.ismatchscoring('waterfront')
 
-Sözcük "hostel" büyük veya buna eşit 4 ya da "motel" word belgeleriyle derecelendirme ve 5'e eşit derecelendirme belgeleri bulun. Unutmayın, bu isteği değil ifade edilemez olmadan `search.ismatchscoring` işlevi.
+"Hostel" sözcüğünü içeren belgeleri bulun ve 4 ' e eşit veya daha büyük derecelendirme veya "Motel" sözcüğünü ve derecesi 5 ' e eşit olan belgeleri bulun. Not, bu istek `search.ismatchscoring` işlev olmadan ifade edilemedi.
 
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
-"Lüks" sözcüğü olmadan belgeleri bulun.
+"Merkezlerini" sözcüğü olmadan belge bul.
 
     not search.ismatch('luxury')
 
-Okyanusu ifade "Görünüm" veya 5 değerlendirmesi eşit belgeleri bulun. `search.ismatchscoring` Sorgu yalnızca alanları karşı yürütülür `HotelName` ve `Rooms/Description`.
+"Okyanus görünümü" veya derecelendirme 5 ' e eşit olan belgeleri bulun. Sorgu yalnızca alanlara `HotelName` ve ' `Rooms/Description`a karşı yürütülür. `search.ismatchscoring`
 
-Yalnızca ikinci yan tümcesi ayrım, eşleşen belgeler döndürülecek çok--ile hotels `Rating` 5'e eşit. Bunu yapmak için bu belgelere herhangi bir ifade puanlanmış bölümleri ile eşleşmedi, sıfıra eşit puanı döndürülür temizleyin.
+Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit olan `Rating` çok--oteller olarak döndürülür. Bu belgelerin, ifadenin puanlanmış parçalarından hiçbiriyle eşleşmediğinden emin olmak için, puanın sıfıra eşit olarak döndürülmeleri gerekir.
 
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
 
-Koşulları "otel" ve "havaalanı" birbirinden 5 sözcük ise açıklaması içinde olduğu ve burada İçilmez en az izin verilmez bulmanın bazı odaları. Bu sorgu kullanan [tam Lucene sorgu dili](query-lucene-syntax.md).
+"Otel" ve "Havaalanı" koşullarının, otel açıklamasına ait 5 sözcükten ve her odada en az bir kısmında izin verilmediği belgeleri bulun. Bu sorgu, [tam Lucene sorgu dilini](query-lucene-syntax.md)kullanır.
 
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search'te filtreler](search-filters.md)
-- [Azure Search için OData ifade dili genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Search belgeleri &#40;Azure arama hizmeti REST API'si&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Search filtreler](search-filters.md)
+- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

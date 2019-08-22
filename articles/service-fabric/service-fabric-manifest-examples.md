@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 10419240f730a6b68f1161f158f7f903a98a9933
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: dc3384821ddfba0a137a74297bc44903b6ed5d1d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035604"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650573"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric uygulama ve hizmet bildirimi örnekleri
 Bu bölüm, uygulama ve hizmet bildirimlerinin örneklerini içerir. Bu örneklerde önemli senaryolar gösterilmemelidir, ancak kullanılabilir farklı ayarlar ve bunların nasıl kullanılacağı gösterilir. 
@@ -39,7 +39,7 @@ Aşağıda, gösterilen özelliklerin ve bir parçası oldukları örnek bildiri
 |[Veri paketi bildirme](service-fabric-application-and-service-manifests.md)|[VotingData hizmeti bildirimi](service-fabric-manifest-example-reliable-services-app.md#votingdata-service-manifest)|
 |[Ortam değişkenlerini geçersiz kıl](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[Kapsayıcı uygulama bildirimi](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Kapsayıcı bağlantı noktasından konağa eşlemeyi yapılandırma](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)| [Kapsayıcı uygulama bildirimi](service-fabric-manifest-example-container-app.md#application-manifest)|
-|[Kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırma](service-fabric-get-started-containers.md#configure-container-registry-authentication)|[Kapsayıcı uygulama bildirimi](service-fabric-manifest-example-container-app.md#application-manifest)|
+|[Kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırma](service-fabric-get-started-containers.md#configure-container-repository-authentication)|[Kapsayıcı uygulama bildirimi](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Yalıtım modunu ayarla](service-fabric-get-started-containers.md#configure-isolation-mode)|[Kapsayıcı uygulama bildirimi](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[İşletim sistemi yapıya özgü kapsayıcı görüntülerini belirtme](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)|[Kapsayıcı uygulama bildirimi](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Ortam değişkenlerini ayarlama](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[Kapsayıcı FrontEndService hizmet bildirimi](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest), [kapsayıcı BackendService hizmeti bildirimi](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|

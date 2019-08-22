@@ -3,25 +3,25 @@ title: CloudSimple-CloudSimple bakımı ve güncelleştirmeleri tarafından Azur
 description: Zamanlanmış bakım ve güncelleştirmeler için CloudSimple hizmeti işlemini açıklar
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6eeecbecc89995c25e687cc6808ed3b0c5dc5c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816210"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877943"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple bakım ve güncelleştirmeleri
 
-Özel bulut ortamı, tek başarısızlık noktası olmayacak şekilde tasarlanmıştır:
+Özel bulut ortamı, tek hata noktası olmayacak şekilde tasarlanmıştır.
 
-* ESXi kümeleri, vSphere yüksek kullanılabilirliği ile yapılandırılır. Kümeler dayanıklılık için en az bir yedek düğüme sahip olacak şekilde boyutlandırılır.
+* ESXi kümeleri, vSphere yüksek kullanılabilirlik (HA) ile yapılandırılır. Kümeler dayanıklılık için en az bir yedek düğüme sahip olacak şekilde boyutlandırılır.
 * Gereksiz birincil depolama, tek bir hataya karşı koruma sağlamak için en az üç düğüm gerektiren vSAN tarafından sağlanır. vSAN, daha büyük kümeler için daha yüksek dayanıklılık sağlamak üzere yapılandırılabilir.
-* vCenter, PSC ve NSX Yöneticisi VM 'Leri, depolama hatasına karşı korunmak için RAID-10 depolama ilkesiyle yapılandırılır. Sanal makineler vSphere HA tarafından düğüm/ağ hatalarıyla korunmaktadır.
+* vCenter, PSC ve NSX Yöneticisi VM 'Leri, depolama hatasına karşı korunmak için RAID-10 depolama ile yapılandırılır. Sanal makineler vSphere HA tarafından düğüm/ağ hatalarıyla korunmaktadır.
 * ESXi konaklarının gereksiz fanları ve NIC 'Leri vardır.
 * TOR ve sırt geçişleri, dayanıklılık sağlamak için HA çiftlerine göre yapılandırılmıştır.
 
@@ -57,9 +57,9 @@ CloudSimple yedekler, bu VMware öğelerini özel bulutlarda tutar ve güncelle�
 CloudSimple yedeklemesi şunları içerir:
 
 * VCenter, PSC ve DVS kurallarının gece artımlı yedeklemeleri.
-* Uygulama katmanında bileşenleri yedeklemek için vCenter Native API 'lerinin kullanımı.
-* VMware yönetim yazılımının herhangi bir güncelleştirmesinden veya yükseltilmesiyle önce otomatik yedekleme.
-* Bir TLS 1.2 tarafından Azure 'a şifreli bir kanal üzerinden veri aktarımından önce, vCenter tarafından kaynak üzerinde veri şifreleme. Veriler, bölgeler arasında çoğaltılan bir Azure Blob 'unda depolanır.
+* uygulama katmanında bileşenleri yedeklemek için vCenter yerel API 'Leri.
+* VMware yönetim yazılımını güncelleştirmeden veya yükseltmeden önce otomatik yedekleme.
+* veriler TLS 1.2 ile şifrelenmiş bir kanal üzerinden Azure 'a aktarılmadan önce kaynaktaki vCenter veri şifrelemesi. Veriler, bölgeler arasında çoğaltılan bir Azure Blob 'unda depolanır.
 
 Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak geri yükleme isteğinde bulabilirsiniz.
 
@@ -67,7 +67,7 @@ Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 CloudSimple, çeşitli planlı bakım türlerini yapar.
 
-### <a name="backendinternal-maintenance"></a>Arka uç/Iç bakım
+### <a name="backendinternal-maintenance"></a>Arka uç/iç bakım
 
 Bu bakım genellikle fiziksel varlıkları yeniden yapılandırma veya yazılım düzeltme eklerini yükleme içerir. Hizmet verilen varlıkların normal tüketimini etkilemez. Her fiziksel rafa giden yedekli NIC 'lerle, normal ağ trafiği ve özel bulut işlemleri etkilenmez. Yalnızca kuruluşunuz, bakım aralığı sırasında tam yedekli bant genişliğini kullanmayı bekliyorsa, bir performans etkisi fark edebilirsiniz.
 
@@ -105,4 +105,4 @@ CloudSimple, VMware yazılım bileşenlerine üç aylık bakım güncelleştirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Veead kullanarak iş yükü VM 'Lerini yedekleyin](https://docs.azure.cloudsimple.com/backup-workloads-veeam/).
+[Veead kullanarak iş yükü VM 'lerini yedekleme](backup-workloads-veeam.md)

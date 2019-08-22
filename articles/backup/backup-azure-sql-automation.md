@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: e078c75911a332c7e70f3a578723735729b9e6b6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e6a1ec1d11404e6179fda919c58f581c3524c4d4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954492"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650331"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -167,6 +167,18 @@ Yedekleme ilkesi yedeklemeler için zamanlamayı ve yedekleme kurtarma noktalar�
 * [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)kullanarak varsayılan yedekleme ilkesi zamanlamasını görüntüleyin.
 * Yeni bir yedekleme ilkesi oluşturmak için [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) cmdlet 'ini kullanırsınız. Zamanlama ve bekletme ilkesi nesnelerini girin.
 
+Varsayılan olarak, bir başlangıç saati zamanlama Ilkesi nesnesinde tanımlanmıştır. Başlangıç saatini istenen başlangıç saatine dönüştürmek için aşağıdaki örneği kullanın. İstenen başlangıç saati UTC biçiminde de olmalıdır. Aşağıdaki örnek, günlük yedeklemeler için istenen başlangıç zamanının 01:00. UTC olduğunu varsayar.
+
+```powershell
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
+$UtcTime = Get-Date -Date "2019-03-20 01:30:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+> [!IMPORTANT]
+> Başlangıç saatini yalnızca 30 dakikalık katları olarak sağlamanız gerekir. Yukarıdaki örnekte, yalnızca "01:00:00" veya "02:30:00" olabilir. Başlangıç saati "01:15:00" olamaz
+
 Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Daha sonra bu değişkenleri yeni bir ilke (**Newsqlpolicy**) için parametre olarak kullanır. **Newsqlpolicy** günlük "Full" yedeklemesi alır, 180 gün boyunca saklar ve 2 saatte bir günlük yedeklemesi alır
 
 ```powershell
@@ -181,7 +193,7 @@ $NewSQLPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name "NewSQLPolicy
 Name                 WorkloadType       BackupManagementType BackupTime                Frequency                                IsDifferentialBackup IsLogBackupEnabled
                                                                                                                                 Enabled
 ----                 ------------       -------------------- ----------                ---------                                -------------------- ------------------
-NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 9:00:00 PM      Daily                                    False                True
+NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 AM      Daily                                    False                True
 ```
 
 ## <a name="enable-backup"></a>Yedeklemeyi etkinleştir
@@ -198,7 +210,7 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 Komut bu kaynağın bir ' yedekleme kapsayıcısı ' döndürür ve durum ' kaydedildi ' olarak değişir
 
 > [!NOTE]
-> Zorla parametresi verilmezse, kullanıcıdan ' Bu kapsayıcı için korumayı devre dışı bırakmak istiyor musunuz ' metnini bir metinle onaylamasını istenir. Lütfen bu metni yoksayın ve onaylamak için "Y" deyin. Bu bilinen bir sorundur ve zorla parametresinin metnini ve gereksinimini kaldırmak için çalışıyoruz
+> Zorla parametresi verilmezse, kullanıcıdan ' Bu kapsayıcı için korumayı devre dışı bırakmak istiyor musunuz ' metnini bir metinle onaylamasını istenir. Lütfen bu metni yoksayın ve onaylamak için "Y" deyin. Bu bilinen bir sorundur ve, zorla parametresinin metnini ve gereksinimini kaldırmak için çalışıyoruz.
 
 ### <a name="fetching-sql-dbs"></a>SQL DB 'Leri getiriliyor
 

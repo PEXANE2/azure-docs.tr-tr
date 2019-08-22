@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 4b2934c8b93ffb247661886cb2791c0719996aeb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 47db310f6affa6317a74020d182c521d65cd32f3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297178"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875239"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
 
@@ -155,8 +155,8 @@ Azure 'da bir App Service uygulamasına yayımlamak için git kullandığınızd
 |`Couldn't resolve host 'hostname'`|' Azure ' uzak için adres bilgileri yanlış.|İlişkili URL ile birlikte tüm uzaktan kumandalar listelemek için komutunukullanın.`git remote -v` ' Azure ' uzak için URL 'nin doğru olduğundan emin olun. Gerekirse, doğru URL 'YI kullanarak bu uzak kopyayı kaldırın ve yeniden oluşturun.|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Sırasında `git push`bir dal belirtmediniz veya ' de `push.default` `.gitconfig`değer ayarlamadıysanız.|Ana `git push` dalı belirterek yeniden çalıştırın:. `git push azure master`|
 |`src refspec [branchname] does not match any.`|' Azure ' uzak üzerinde ana öğe dışında bir dala gönderim girişiminde çalıştınız.|Ana `git push` dalı belirterek yeniden çalıştırın:. `git push azure master`|
-|`RPC failed; result=22, HTTP code = 5xx.`|HTTPS üzerinden büyük bir git deposu göndermeye çalışırsanız bu hata oluşabilir.|`postBuffer` Daha büyük olması için yerel makinedeki git yapılandırmasını değiştirin. Örneğin: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Gerekli modülleri belirten bir _Package. JSON_ dosyası Ile bir Node. js uygulaması dağıttınız.|Hatada daha fazla bağlam için bu hatadan önce hatailetilerinigözdengeçirin.`npm ERR!` Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Hatalı biçimlendirilmiş Package. JSON dosyası**:`npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />' NPM hatası! [modulename@version] PreInstall: \make || gmake\`|
+|`RPC failed; result=22, HTTP code = 5xx.`|HTTPS üzerinden büyük bir git deposu göndermeye çalışırsanız bu hata oluşabilir.|`postBuffer` Daha büyük olması için yerel makinedeki git yapılandırmasını değiştirin. Örneğin: `git config --global http.postBuffer 524288000`|
+|`Error - Changes committed to remote repository but your web app not updated.`|Gerekli modülleri belirten bir _Package. JSON_ dosyası Ile bir Node. js uygulaması dağıttınız.|Hatada daha fazla bağlam için bu hatadan önce hatailetilerinigözdengeçirin.`npm ERR!` Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Hatalı biçimlendirilmiş Package. JSON dosyası**:`npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />veya <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

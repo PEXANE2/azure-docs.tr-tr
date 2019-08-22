@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 24e340d25cb57f9a35f06f6dbd5a394d60a14fad
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/20/2019
+ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566425"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648353"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>SQL Data Sync ile birden fazla Bulut ve şirket içi veritabanı arasında veri eşitleme
 
 SQL Data Sync, birden çok SQL veritabanları ve SQL Server örnekleri arasında çift seçin verileri eşitleyin olanak sağlayan Azure SQL veritabanı üzerinde oluşturulmuş bir hizmettir.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen **örneğini desteklemez.**
+> Azure SQL Data Sync şu anda Azure SQL veritabanı yönetilen örneğini desteklemez.
 
 ## <a name="when-to-use-data-sync"></a>Veri Eşitleme kullanıldığı durumlar
 
@@ -118,6 +118,12 @@ Sağlama ve eşitleme grubu oluşturma, güncelleştirme ve silme işlemi sıras
 ### <a name="general-requirements"></a>Genel gereksinimler
 
 - Her tabloda bir birincil anahtarı olmalıdır. Herhangi bir satırın birincil anahtarı değerini değiştirmeyin. Bir birincil anahtar değerini değiştirmeniz gerekiyorsa, satır silin ve yeni birincil anahtar değeriyle yeniden oluşturun. 
+
+> [!IMPORTANT]
+> Mevcut bir birincil anahtarın değerini değiştirmek aşağıdaki hatalı davranışa neden olur:   
+>   - Eşit bir sorun bildirmese de, hub ve üye arasındaki veriler kaybolabilir.
+> - Birincil anahtar değişikliği nedeniyle izleme tablosu kaynaktan mevcut olmayan bir satır içerdiğinden eşitleme başarısız olabilir.
+
 - Anlık görüntü yalıtımı etkinleştirilmiş olması gerekir. Daha fazla bilgi için bkz. [SQL Server'da anlık görüntü yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Genel sınırlamalar

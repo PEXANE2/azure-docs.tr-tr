@@ -1,24 +1,21 @@
 ---
 title: Azure Işlevleri ölçeklendirme ve barındırma | Microsoft Docs
 description: Azure Işlevleri tüketim planı ve Premium plan arasında seçim yapma hakkında bilgi edinin.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure işlevleri, işlevler, tüketim planı, Premium plan, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636455"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874945"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -143,9 +140,6 @@ Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure S
 Tüketim ve Premium planlarında, Azure Işlevleri altyapısı, işlevlerinin tetiklendiği olay sayısına göre Işlevler ana bilgisayarının ek örneklerini ekleyerek CPU ve bellek kaynaklarını ölçeklendirir. Tüketim planında Işlevlerin ana bilgisayarının her örneği 1,5 GB bellek ve bir CPU ile sınırlıdır.  Ana bilgisayarın bir örneği, bir işlev uygulamasının tüm işlevleri bir örnek içinde kaynak paylaşır ve aynı anda ölçeklendirin. Aynı tüketim planını paylaşan işlev uygulamaları bağımsız olarak ölçeklendirilir.  Premium planda, plan boyutunuz söz konusu örnekteki plandaki tüm uygulamalar için kullanılabilir bellek ve CPU 'YU tespit edecektir.  
 
 İşlev kodu dosyaları, işlevin ana depolama hesabındaki Azure dosya paylaşımlarında depolanır. İşlev uygulamasının ana depolama hesabını sildiğinizde, işlev kodu dosyaları silinir ve kurtarılamaz.
-
-> [!NOTE]
-> Tüketim planında bir blob tetikleyicisi kullanırken, yeni Blobları işlerken 10 dakikalık bir gecikme olabilir. Bu gecikme, bir işlev uygulaması boşta kaldığında oluşur. İşlev uygulaması çalışmaya başladıktan sonra Bloblar hemen işlenir. Bu soğuk başlatma gecikmesini önlemek için Premium planı kullanın veya [Event Grid tetikleyiciyi](functions-bindings-event-grid.md)kullanın. Daha fazla bilgi için bkz. [BLOB tetikleme bağlama başvuru makalesi](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Çalışma zamanı ölçeklendirme
 

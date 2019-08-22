@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035341"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892016"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -29,9 +29,11 @@ Bir Azure sanal ağı (VNet) buluttaki kendi ağınızın bir gösterimidir. Azu
 
 Sanal ağları şu şekilde kullanın:
 
-* Özel bir özel bulut sanal ağı oluşturma bazen çözümünüz için şirket içi bir yapılandırmaya gerek kalmaz. Bir sanal ağ oluşturduğunuzda, VNet 'iniz içindeki hizmetleriniz ve VM 'Ler bulutta birbirleriyle doğrudan ve güvenli bir şekilde iletişim kurabilir. Çözümünüzün bir parçası olarak Internet iletişimi gerektiren VM 'Ler ve hizmetler için uç nokta bağlantıları yapılandırabilirsiniz.
-* Veri merkezinizi VNET 'Ler Ile güvenli bir şekilde genişletmek için, veri merkezi kapasitenizi güvenle ölçeklendirmek üzere geleneksel siteden siteye (S2S) VPN 'Ler oluşturabilirsiniz. S2S VPN 'Leri, kurumsal VPN Gateway ve Azure arasında güvenli bir bağlantı sağlamak için ıPSEC kullanır.
-* Karma bulut senaryolarını etkinleştirin VNET 'ler, bir dizi karma bulut senaryosunu destekleme esnekliği sağlar. Bulut tabanlı uygulamaları, ana bilgisayarlar ve UNIX sistemleri gibi herhangi bir şirket içi sistem türüne güvenli bir şekilde bağlayabilirsiniz.
+* Ayrılmış bir özel bulut sanal ağı oluşturun. Bazen çözümünüz için şirket içi bir yapılandırmaya gerek kalmaz. Bir sanal ağ oluşturduğunuzda, VNet 'iniz içindeki hizmetleriniz ve VM 'Ler bulutta birbirleriyle doğrudan ve güvenli bir şekilde iletişim kurabilir. Çözümünüzün bir parçası olarak Internet iletişimi gerektiren VM 'Ler ve hizmetler için uç nokta bağlantıları yapılandırabilirsiniz.
+
+* Veri merkezinizi güvenli bir şekilde genişletin. Sanal ağlar ile, veri merkezi kapasitenizi güvenli bir şekilde ölçeklendirmek için geleneksel siteden siteye (S2S) VPN 'Ler oluşturabilirsiniz. S2S VPN 'Leri, kurumsal VPN Gateway ve Azure arasında güvenli bir bağlantı sağlamak için ıPSEC kullanır.
+
+* Karma bulut senaryolarını etkinleştirin. VNET 'ler, bir dizi karma bulut senaryosunu destekleme esnekliği sağlar. Bulut tabanlı uygulamaları, ana bilgisayarlar ve UNIX sistemleri gibi herhangi bir şirket içi sistem türüne güvenli bir şekilde bağlayabilirsiniz.
 
 ### <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 Başlamak için [sanal ağ belgelerini](https://docs.microsoft.com/azure/virtual-network/) ziyaret edin. Bu içerik, tüm VNet özellikleri için genel bakış ve dağıtım bilgileri sağlar.

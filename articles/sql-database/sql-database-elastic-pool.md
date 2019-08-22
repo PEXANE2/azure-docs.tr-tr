@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510264"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876429"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastik havuzlar birden çok Azure SQL veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 
@@ -155,8 +155,14 @@ Havuza alınan veritabanları genellikle tek veritabanları için kullanılabile
 
 Azure portal esnek havuz oluşturabileceğiniz iki yol vardır.
 
-1. **Market** 'te **SQL elastik havuzu** arayarak veya SQL elastik havuzları dikey penceresinde **+ Ekle** ' ye tıklayarak elastik havuz oluşturabilirsiniz. Bu havuz sağlama iş akışı aracılığıyla yeni veya mevcut bir sunucu belirtebilirsiniz.
-2. Alternatif olarak, var olan bir SQL Server 'a gidip **Havuz oluştur** ' a tıklayarak bir elastik havuz oluşturarak bu sunucuya doğrudan bir havuz oluşturabilirsiniz. Buradaki tek fark, havuz sağlama iş akışı sırasında sunucuyu belirttiğiniz adımı atlar.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. Azure SQL listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek elastik havuzlarla ilgili ek bilgileri görüntüleyebilirsiniz.
+3. **Veritabanları** kutucuğunda **kaynak türü** açılan listesinde **Esnek havuz** ' ı seçin ve ardından **Oluştur**' u seçin.
+
+   ![Esnek havuz oluşturma](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. Alternatif olarak, var olan bir Azure SQL sunucusuna gidip **+ yeni havuz** ' a tıklayarak bir elastik havuz oluşturarak bu sunucuya doğrudan bir havuz oluşturabilirsiniz.
 
 > [!NOTE]
 > Sunucuda birden çok havuz oluşturabilirsiniz, ancak farklı sunuculardan aynı havuza veritabanı ekleyemezsiniz.

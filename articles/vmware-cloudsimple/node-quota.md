@@ -3,21 +3,21 @@ title: CloudSimple-CloudSimple düğüm kotasına göre Azure VMware çözümü
 description: CloudSimple düğümlerine ait kota sınırlarını ve kota artışı için nasıl istek yapılacağını açıklar
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e765d7c87f2f941a5e2d558b71c4e5a71d2df9b1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5da91f37d197e9d427343a09d0376076c356e92d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816680"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877809"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple düğüm kotası sınırları
 
-Aboneliğiniz CloudSimple hizmeti için etkinleştirildiğinde, sağlama için kullanılabilen varsayılan miktar dört düğüm olur.  Azure portal tüm [düğüm türlerini](cloudsimple-node.md) sağlayabilirsiniz.  Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gerekir.  Düğümleri sağladıysanız, ek düğümler sağlamaya çalıştığınızda bir hata görebilirsiniz.
+Aboneliğiniz CloudSimple hizmeti için etkinleştirildiğinde, satın alma için kullanılabilen varsayılan miktar dört düğüm olur.  Azure portal herhangi bir [düğüm türü](cloudsimple-node.md) satın alabilirsiniz.  Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gereklidir.  Düğümleri satın aldıysanız, ek düğümler satın almaya çalıştığınızda bir hata görebilirsiniz.
 
 ## <a name="quota-increase"></a>Kota artışı
 
@@ -40,5 +40,5 @@ Ayrıca, aboneliğinizdeki düğüm kotasını artırmak [azurevmwaresales@micro
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Düğüm sağla](create-nodes.md)
+* [Satın alma düğümleri](create-nodes.md)
 * [CloudSimple düğümlerine genel bakış](cloudsimple-node.md)

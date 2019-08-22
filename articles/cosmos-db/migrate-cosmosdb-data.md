@@ -7,18 +7,23 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624600"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648890"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 
 Azure Cosmos DB terabaytlarca veri depolayabilirler. Üretim iş yükünüzü Azure Cosmos DB taşımak için büyük ölçekli veri geçişi gerçekleştirebilirsiniz. Bu makalede büyük ölçekli verileri Azure Cosmos DB taşımaya ve sorunları gidermenize yardımcı olan ve Azure Cosmos DB verileri geçirmede size yardımcı olan araç hakkında sorunlar açıklanmaktadır. Bu durumda, müşteri SQL API Cosmos DB kullandı.  
 
 İş yükünün tamamını Azure Cosmos DB geçirmeden önce bölüm anahtarı seçimi, sorgu performansı ve veri modelleme gibi bazı yönleri doğrulamak üzere bir veri alt kümesini geçirebilirsiniz. Kavram kanıtı 'nı doğruladıktan sonra, tüm iş yükünü Azure Cosmos DB taşıyabilirsiniz.  
+
+Ayrıca, Azure Cosmos DB üzerinde uygulamalarınızı oluşturmayı veya geçirmeyi hızlandırmak için [Cosmos DB önyükleme programını](https://azurecosmosdb.github.io/CosmosBootstrap/) da kullanabilirsiniz. Bu programın bir parçası olarak, Azure Cosmos DB takımdan mühendisler projenize atanır ve verilerinizi Azure Cosmos DB geçirmenize yardımcı olur. Cosmos DB önyükleme programına kaydolmak için aşağıdaki düğmeye tıklayın:
+
+> [!div class="nextstepaction"]
+> [Önyükleme programını Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Veri geçiş araçları 
 
@@ -152,4 +157,7 @@ Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek içi
 * [.Net](bulk-executor-dot-net.md) ve [Java](bulk-executor-java.md)'daki toplu yürütücü kitaplığını kullanan örnek uygulamaları deneyerek daha fazla bilgi edinin. 
 * Toplu yürütücü kitaplığı, Cosmos DB Spark Bağlayıcısı ile tümleşiktir, daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md) makalesi.  
 * Büyük ölçekli geçişlerle ilgili ek yardım için "genel Danışma belgesi" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun. 
+* Azure Cosmos DB üzerinde uygulamalarınızı oluşturmayı veya geçirmeyi hızlandırmak için [Cosmos DB önyükleme programını](https://azurecosmosdb.github.io/CosmosBootstrap/) kullanın.
 
+> [!div class="nextstepaction"]
+> [Önyükleme programını Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)

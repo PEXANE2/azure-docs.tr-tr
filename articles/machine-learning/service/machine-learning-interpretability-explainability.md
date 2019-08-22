@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358653"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872397"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile model yorumlenebilirliği
 
@@ -69,7 +69,7 @@ __Doğrudan explainers__ , tümleşik kitaplıklardan gelir. SDK, ortak bir API 
 * **Permütasyon özelliği önem açıklama**: Permütasyon özelliği önem derecesi, [Breiman 'Nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgi çekici performans ölçüsünün ne kadarının azaldığından hesaplama. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur.
 
 * **Limon açıklama** (`contrib`): Limon SARıSı tabanlı açıklama, yerel yedek modeller oluşturmak için son teknoloji yerel yorumlanmış açıklamalar (LIME) algoritmasını kullanır. Genel yedek modellerinden farklı olarak, açık bir şekilde öngörülere yönelik olarak yerel yedek modellerine yönelik olarak, açık bir şekilde
-* **Han metin açıklama** (`contrib`): HAN Text açıklama, belirli bir siyah kutu metin modelinin metin verilerinden model açıklamalarını almak için hiyerarşik bir dikkat ağı kullanır. HAN yedek modelini belirli bir öğretmen modelinin öngörülen çıkışları üzerinde eğiyoruz. Corpus metin genelinde eğitimin üzerinde küresel bir şekilde eğitim ettikten sonra, açıklamalarının doğruluğunu artırmak için belirli bir belge için ince ayar adımı ekledik. HAN, tümce ve sözcük ilgilenilmesi için iki dikkat katmanıyla birlikte çift yönlü bir RNN kullanır. DNN, öğretmen modeli üzerinde eğitilirken ve belirli bir belge üzerinde ince ayar yaptıktan sonra, önemli katmanlardan önemli sözcükleri ayıklayabiliriz. HAN 'ın, metin verileri için LIME veya SHAP 'tan daha doğru olduğunu, ancak eğitim süresi bakımından daha pahalı olduğunu bulduk. Ancak, kullanıcıya yine de yavaş olsa da, bir yandan da bir yandan da bir sözcük katıştırmasını kullanarak ağı başlatma seçeneği sunarak eğitim sırasında geliştirmeler yaptık. Eğitim süresi, uzak bir Azure GPU VM 'sinde HAN çalıştırılarak önemli ölçüde artırılabilir. HAN 'in uygulanması, ' belge sınıflandırması için hiyerarşik dikkat ağları (Yang et al., 2016) ' ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)) ' de açıklanmaktadır.
+* **Han metin açıklama** (`contrib`): HAN Text açıklama, belirli bir siyah kutu metin modelinin metin verilerinden model açıklamalarını almak için hiyerarşik bir dikkat ağı kullanır. HAN yedek modelini belirli bir öğretmen modelinin öngörülen çıkışları üzerinde eğiyoruz. Corpus metin genelinde eğitimin üzerinde küresel bir şekilde eğitim ettikten sonra, açıklamalarının doğruluğunu artırmak için belirli bir belge için ince ayar adımı ekledik. HAN, tümce ve sözcük ilgilenilmesi için iki dikkat katmanıyla birlikte çift yönlü bir RNN kullanır. DNN, öğretmen modeli üzerinde eğitilirken ve belirli bir belge üzerinde ince ayar yaptıktan sonra, önemli katmanlardan önemli sözcükleri ayıklayabiliriz. HAN 'ın, metin verileri için LIME veya SHAP 'tan daha doğru olduğunu, ancak eğitim süresi bakımından daha pahalı olduğunu bulduk. Ancak, kullanıcıya yine de yavaş olsa da, bir yandan da bir yandan da bir sözcük katıştırmasını kullanarak ağı başlatma seçeneği sunarak eğitim sırasında geliştirmeler yaptık. Eğitim süresi, uzak bir Azure GPU VM 'sinde HAN çalıştırılarak önemli ölçüde artırılabilir. HAN 'in uygulanması, [' belge sınıflandırması Için hiyerarşik dikkat ağları (Yang et al., 2016) '](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)bölümünde açıklanmaktadır.
 
 
 __Meta explainers__ otomatik olarak uygun bir doğrudan açıklama seçer ve verilen model ve veri kümelerine göre en iyi açıklama bilgilerini oluşturur. Meta explainers, tümleştirdiğimiz veya geliştirdiğimiz tüm kitaplıkların (SHAP, LIME, benzeme vb.) faydalanır. SDK 'da kullanılabilen meta explainers şunlardır:

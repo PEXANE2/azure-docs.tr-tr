@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567357"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647208"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği ile çalışmaya başlama
 
@@ -55,8 +55,6 @@ Bu hızlı başlangıç, yönetilen bir örneğe hızlı bir şekilde veritaban�
 ## <a name="customize-network-environment"></a>Ağ ortamını özelleştirme
 
 Örnek, [Azure Portal](sql-database-managed-instance-get-started.md)kullanılarak oluşturulduğunda VNET/alt ağ otomatik olarak yapılandırılabilse de, VNET ve alt ağ parametrelerini yapılandırabileceğiniz Için yönetilen örnekler oluşturmaya başlamadan önce onu oluşturmak iyi olabilir. Ağ ortamını oluşturmanın ve yapılandırmanın en kolay yolu, size örneğin yerleştirileceği ağ ve alt ağı oluşturacak ve yapılandıracağı [Azure kaynak dağıtım](sql-database-managed-instance-create-vnet-subnet.md) şablonunu kullanmaktır. Yalnızca Azure Resource Manager dağıt düğmesine basmanız ve formu parametrelerle doldurmanız gerekir.
-
-Alternatif olarak, ağ oluşturma işlemini otomatik hale getirmek için [PowerShell betiğini](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) kullanabilirsiniz.
 
 Alternatif olarak, ağ oluşturulmasını otomatik hale getirmek için bu [PowerShell betiğini](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) de kullanabilirsiniz.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0f8942d92958ee8add9645239cc5664a4a96bb33
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533361"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648635"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
@@ -72,7 +72,7 @@ Aşağıdaki örnekte, bir cihaz bağlantılı olayının şeması gösterilmekt
 
 ### <a name="device-telemetry-schema"></a>Cihaz telemetri şeması
 
-Cihaz telemetri iletisi, contentType ' ın JSON ve Contentenkodlamaya ayarlanmış olarak, ileti [sistemi ÖZELLIKLERINDE](iot-hub-devguide-routing-query-syntax.md#system-properties)UTF-8 olarak ayarlanmış GEÇERLI bir JSON biçiminde olmalıdır. Bu ayarlanmamışsa, IoT Hub temel 64 kodlu biçimdeki iletileri yazar.
+Cihaz telemetri iletisi, kod [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties) **UTF-8** olarak ayarlanan ContentType ve **Application/JSON** olarak ayarlanmış geçerli bir JSON biçiminde olmalıdır. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır. İçerik kodlaması ayarlanmamışsa, IoT Hub iletileri temel 64 kodlu biçimde yazar.
 
 Event Grid, uç noktayı Event Grid olarak seçerek cihaz telemetri olaylarını zenginleştirebilirsiniz. Daha fazla bilgi için bkz. [Ileti zenginleştirme genel bakış](iot-hub-message-enrichments-overview.md).
 
@@ -174,9 +174,9 @@ IoT olaylarının konusu şu biçimi kullanır:
 devices/{deviceId}
 ```
 
-Event Grid Ayrıca, veri içeriği de dahil olmak üzere her bir olayın özniteliklerine filtrelemeye izin verir. Bu, telemetri iletisinin temel içeriğini hangi olayların dağıttığı seçmenizi sağlar. Örnekleri görüntülemek için lütfen [Gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bölümüne bakın. Telemetri ileti gövdesinde filtreleme için, kod [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)CONTENTTYPE öğesini JSON ve Contentenkodlamaya göre UTF-8 olarak ayarlamanız gerekir.
+Event Grid Ayrıca, veri içeriği de dahil olmak üzere her bir olayın özniteliklerine filtrelemeye izin verir. Bu, telemetri iletisinin temel içeriğini hangi olayların dağıttığı seçmenizi sağlar. Örnekleri görüntülemek için lütfen [Gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bölümüne bakın. Telemetri ileti gövdesinde filtreleme için, kod [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya göre **UTF-8** olarak ayarlamanız gerekir. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır.
 
-DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri olmayan olaylar için, abonelik oluşturulurken Event Grid filtrelemesi kullanılabilir. Telemetri olayları için, Event Grid ' deki filtrelemeye ek olarak, kullanıcılar da ileti yönlendirme sorgusu üzerinden cihaz iksi, ileti özellikleri ve gövdesinde filtre uygulayabilir. Cihaz telemetrisine Event Grid aboneliğinize göre IoT Hub varsayılan bir [yol](iot-hub-devguide-messages-d2c.md) oluşturacağız. Bu tek yol, tüm Event Grid aboneliklerinizi işleyebilir. Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)CONTENTTYPE öğesini JSON ve Contentenkodlamaya de UTF-8 olarak ayarlamanız gerekir.
+DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri olmayan olaylar için, abonelik oluşturulurken Event Grid filtrelemesi kullanılabilir. Telemetri olayları için, Event Grid ' deki filtrelemeye ek olarak, kullanıcılar da ileti yönlendirme sorgusu üzerinden cihaz iksi, ileti özellikleri ve gövdesinde filtre uygulayabilir. Cihaz telemetrisine Event Grid aboneliğinize göre IoT Hub varsayılan bir [yol](iot-hub-devguide-messages-d2c.md) oluşturacağız. Bu tek yol, tüm Event Grid aboneliklerinizi işleyebilir. Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya de **UTF-8** olarak ayarlamanız gerekir.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihaz bağlı ve cihaz bağlantısı kesilen olaylar için sınırlamalar
 

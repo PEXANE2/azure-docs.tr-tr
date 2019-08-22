@@ -7,12 +7,12 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986398"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877635"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 
@@ -221,9 +221,21 @@ Depolama öykünücüsü yerel bir SQL örneğinde çalışan bir Öykünülmü�
 
 ## <a name="storage-emulator-release-notes"></a>Depolama öykünücüsü sürüm notları
 
+### <a name="version-510"></a>Sürüm 5,10
+
+* Depolama öykünücüsü blob, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2019-07-07 sürümünü reddedemez.
+
+### <a name="version-59"></a>Sürüm 5,9
+
+* Depolama öykünücüsü blob, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2019-02-02 sürümünü reddedemez.
+
+### <a name="version-58"></a>Sürüm 5,8
+
+* Depolama öykünücüsü blob, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2018-11-09 sürümünü reddedemez.
+
 ### <a name="version-57"></a>Sürüm 5,7
 
-Günlüğe kaydetme etkinleştirildiyse çökmeye neden olacak bir hata düzeltildi.
+* Günlüğe kaydetme etkinleştirildiyse çökmeye neden olacak bir hata düzeltildi.
 
 ### <a name="version-56"></a>Sürüm 5,6
 
@@ -236,11 +248,11 @@ Günlüğe kaydetme etkinleştirildiyse çökmeye neden olacak bir hata düzelti
 
 ### <a name="version-54"></a>Sürüm 5,4
 
-Yükleme kararlılığını artırmak için, öykünücü artık yükleme zamanında bağlantı noktası ayırma girişiminde bulunmamaktadır. Bağlantı noktası ayırmaları isteniyorsa, bunu belirtmek için **Init** komutunun *-reserveports* seçeneğini kullanın.
+* Yükleme kararlılığını artırmak için, öykünücü artık yükleme zamanında bağlantı noktası ayırma girişiminde bulunmamaktadır. Bağlantı noktası ayırmaları isteniyorsa, bunu belirtmek için **Init** komutunun *-reserveports* seçeneğini kullanın.
 
 ### <a name="version-53"></a>Sürüm 5,3
 
-Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2017-07-29 sürümünü desteklemektedir.
+* Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında depolama hizmetlerinin 2017-07-29 sürümünü desteklemektedir.
 
 ### <a name="version-52"></a>Sürüm 5,2
 
@@ -249,7 +261,7 @@ Depolama öykünücüsü artık BLOB, kuyruk ve tablo hizmeti uç noktalarında 
 
 ### <a name="version-51"></a>Sürüm 5,1
 
-Depolama öykünücüsünün `DataServiceVersion` , hizmetin olmadığı bazı yanıtlara üstbilgiyi döndürdüğü bir hata düzeltildi.
+* Depolama öykünücüsünün `DataServiceVersion` , hizmetin olmadığı bazı yanıtlara üstbilgiyi döndürdüğü bir hata düzeltildi.
 
 ### <a name="version-50"></a>Sürüm 5,0
 

@@ -1,7 +1,7 @@
 ---
 title: 'Python öğreticisi: Bir AI zenginleştirme ardışık düzeninde bilişsel hizmetler çağırma-Azure Search'
 description: Bir Jupyter Python Not defteri kullanarak Azure Search ' de veri ayıklama, doğal dil ve görüntü AI işleme örneğini adım adım yapın. Ayıklanan veriler, sorgu tarafından dizine alınır ve kolayca erişilir.
-manager: cgronlun
+manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840927"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648880"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python öğreticisi: Azure Search dizin oluşturma ardışık düzeninde Bilişsel Hizmetler API'si çağrısı
 

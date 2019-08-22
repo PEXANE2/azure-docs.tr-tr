@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: aa5ff93b4f1f6392f753a88d57a072f542fc16e2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850186"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877264"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Öğretici: Azure IOT Central işlecin görünümünü özelleştirme
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Öğretici: Azure IoT Central işlecinin görünümünü özelleştirme
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Bu öğreticide, bir oluşturucu olarak uygulamanızın operatör görünümünü nasıl özelleştireceğiniz gösterilmektedir. Oluşturucu olarak uygulamada bir değişiklik yaptığınızda, Microsoft Azure IoT Central uygulamasında operatör görünümünün önizlemesini görebilirsiniz.
 
@@ -28,8 +30,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz ayarları düzeninizi yapılandırma
 > * Cihaz özellikleri düzeninizi yapılandırma
 > * Bir operatör olarak cihazın önizlemesini görme
-> * Varsayılan uygulama panonuza yapılandırın
-> * Önizleme operatör olarak varsayılan uygulama Panosu
+> * Varsayılan uygulama panonuzu yapılandırma
+> * Varsayılan uygulama panosunu operatör olarak önizleyin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,15 +42,15 @@ Başlamadan önce, önceki iki öğreticiyi tamamlamanız gerekir:
 
 ## <a name="configure-your-device-dashboard"></a>Cihaz panonuzu yapılandırma
 
-Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin gösterileceğini tanımlayabilirsiniz. İçinde [uygulamanızda yeni bir cihaz türü tanımlayan](tutorial-define-device-type.md) Öğreticisi, eklediğiniz bir çizgi grafik ve diğer bilgileri **bağlı bir klima** Pano.
+Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin gösterileceğini tanımlayabilirsiniz. [Uygulamanızda yeni bir cihaz türü tanımlayın](tutorial-define-device-type.md) öğreticide, **bağlantılı hava koşullayıcı** panosuna bir çizgi grafik ve başka bilgiler eklediniz.
 
-1. Düzenlenecek **bağlı bir klima** cihaz şablonu seçin **cihaz şablonları** sol gezinti menüsünde:
+1. **Bağlı hava** durumu cihaz şablonunu düzenlemek için sol gezinti menüsünde **cihaz şablonları** ' nı seçin:
 
-    ![Cihaz şablonlarını](media/tutorial-customize-operator/devicetemplates.png)
+    ![Cihaz şablonları sayfası](media/tutorial-customize-operator/devicetemplates.png)
 
-2. Cihaz panonuzu özelleştirebilir için seçin **bağlı klima (1.0.0)** oluşturduğunuz cihaz şablonu cihaz [uygulamanızda yeni bir cihaz türü tanımlayan](tutorial-define-device-type.md) öğretici.
+2. Cihaz panonuzu özelleştirmek için, [uygulama öğreticinizdeki yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) bölümünde oluşturduğunuz **bağlı AIR conditioner (1.0.0)** cihaz şablonu cihazını seçin.
 
-3. Pano düzenlemek için seçin **Pano** sekmesi.
+3. Panoyu düzenlemek için **Pano** sekmesini seçin.
 
 4. Panoya Ana Performans Göstergesi (KPI) kutucuğu eklemek için **KPI**'yı seçin:
 
@@ -56,8 +58,8 @@ Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin gösterileceğini tanı
 
     | Ayar     | Value |
     | ----------- | ----- |
-    | Ad        | En fazla sıcaklık |
-    | Zaman aralığı  | Geçen 1 hafta |
+    | Name        | En fazla sıcaklık |
+    | Zaman aralığı  | Son 1 hafta |
     | Ölçüm Türü | Telemetri |
     | Ölçüm | sıcaklık |
     | Toplama | Maksimum |
@@ -69,13 +71,13 @@ Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin gösterileceğini tanı
 
     ![KPI kutucuğu](media/tutorial-customize-operator/temperaturekpi.png)
 
-6. Panodaki bir kutucuğu taşımak veya yeniden boyutlandırmak için, fare işaretçisini kutucuğun üzerine getirin. Kutucuğu yeni bir konuma sürükleyin ya da yeniden boyutlandırın.
+6. Panodaki bir kutucuğu taşımak veya yeniden boyutlandırmak için, fare işaretçisini kutucuğun üzerine getirin. Kutucuğu yeni bir konuma sürükleyebilir veya yeniden boyutlandırabilirsiniz.
 
 ## <a name="configure-your-settings-layout"></a>Ayar düzeninizi değiştirme
 
-Oluşturucu olarak, cihaz ayarlarının operatör görünümünü de yapılandırabilirsiniz. Operatörün cihaz Ayarlar sekmesinde bir cihaz yapılandırmak için kullanır. Örneğin, operatöre bağlı klima için hedef sıcaklık için Ayarlar sekmesinde kullanır.
+Oluşturucu olarak, cihaz ayarlarının operatör görünümünü de yapılandırabilirsiniz. Bir operatör cihaz yapılandırmak için cihaz ayarları sekmesini kullanır. Örneğin, bir işleç bağlantılı hava koşullayıcı için hedef sıcaklığını ayarlamak üzere ayarlar sekmesini kullanır.
 
-1. Bağlı klima için ayarları düzenlemek için seçin **ayarları** sekmesi.
+1. Bağlı hava koşullarınızın ayar yerleşimini düzenlemek için **Ayarlar** sekmesini seçin.
 
 2. Ayar kutucuklarını taşıyabilir ve yeniden boyutlandırabilirsiniz:
 
@@ -83,23 +85,23 @@ Oluşturucu olarak, cihaz ayarlarının operatör görünümünü de yapılandı
 
 ## <a name="configure-your-properties-layout"></a>Özellikler düzeninizi yapılandırma
 
-Pano ve ayarlara ek olarak cihaz özelliklerinin operatör görünümünü de yapılandırabilirsiniz. Operatör, cihaz meta verilerini yönetmek için cihaz Özellikleri sekmesi kullanır. Örneğin, operatörün cihaz seri numarasını görüntülemek veya üreticisi için kişi ayrıntılarını güncelleştirmek için Özellikler sekmesinde kullanır.
+Pano ve ayarlara ek olarak cihaz özelliklerinin operatör görünümünü de yapılandırabilirsiniz. Bir operatör cihaz meta verilerini yönetmek için cihaz özellikleri sekmesini kullanır. Örneğin, bir operatör üreticinin cihaz seri numarasını veya güncelleştirme iletişim ayrıntılarını görüntülemek için Özellikler sekmesini kullanır.
 
-1. Bağlı klima için özelliklerini düzenlemek için seçin **özellikleri** sekmesi.
+1. Bağlı hava koşullarınızın Özellikler yerleşimini düzenlemek için **Özellikler** sekmesini seçin.
 
 2. Özellikler alanlarını taşıyabilir ve yeniden boyutlandırabilirsiniz:
 
     ![Özellikler düzenini değiştirme](media/tutorial-customize-operator/propertieslayout.png)
 
-## <a name="preview-the-device"></a>Cihaz önizlemesi
+## <a name="preview-the-device"></a>Cihazın önizlemesini görüntüleyin
 
-Kullandığınız **cihaz şablonları** Pano, ayarları ve özellikleri sekme için bir işleç özelleştirmek için sayfa. Kullandığınız **Device Explorer** sayfasını görüntüleyin ve cihaz şablonu kullanın.
+Bir işlecin Pano, ayarlar ve Özellikler sekmelerini özelleştirmek için **cihaz şablonları** sayfasını kullanın. Cihaz şablonunu görüntülemek ve kullanmak için **Device Explorer** sayfasını kullanın.
 
-1. Görüntüleyebilir ve bir operatör olarak bağlı bir klima şablonu kullanmak için gidin **Device Explorer** sayfasında ve bu IOT Central, şablondan oluşturulan sanal cihazı seçin:
+1. Bağlı hava koşullayıcı şablonunu bir operatör olarak görüntülemek ve kullanmak için **Device Explorer** sayfasına gidin ve şablonunuzda oluşturulan IoT Central sanal cihazı seçin:
 
-    ![Görüntüleme ve cihaz şablonu kullanma](media/tutorial-customize-operator/usetemplate.png)
+    ![Cihaz şablonunu görüntüleme ve kullanma](media/tutorial-customize-operator/usetemplate.png)
 
-2. Bu cihazın konumunu güncelleştirmek için seçin **özellikleri** ve konum kutucuk değeri düzenleyin. Ardından **Kaydet**:
+2. Bu cihazın konumunu güncelleştirmek için **Özellikler** ' i seçin ve konum kutucuğunda değeri düzenleyin. Sonra **Kaydet**' i seçin:
 
     ![Özellik değerini düzenleme](media/tutorial-customize-operator/editproperty.png)
 
@@ -113,37 +115,37 @@ Kullandığınız **cihaz şablonları** Pano, ayarları ve özellikleri sekme i
 
     ![Cihaz panosunun operatör görünümü](media/tutorial-customize-operator/operatordashboard.png)
 
-## <a name="configure-the-default-dashboard"></a>Varsayılan Pano yapılandırın
+## <a name="configure-the-default-dashboard"></a>Varsayılan panoyu yapılandırma
 
-Bir oluşturucu veya işleci bir Azure IOT Central uygulamasına oturum açtığında, uygulama Panosu görürler. Bir oluşturucu, bir işleç için en faydalı ve ilgili içerik için varsayılan Pano içeriğini yapılandırabilirsiniz.
+Bir Oluşturucu veya operatör bir Azure IoT Central uygulamasında oturum açtığında, uygulama panosunu görürler. Bir Oluşturucu olarak, varsayılan panonun içeriğini bir operatör için en yararlı ve ilgili içeriği içerecek şekilde yapılandırabilirsiniz.
 
 > [!NOTE]
-> Kullanıcılar ayrıca kendi kişisel panolar oluşturabilir ve varsayılan olarak seçin.
+> Kullanıcılar ayrıca kendi kişisel panoları oluşturabilir ve varsayılan olarak bir tane seçebilirler.
 
-1. Varsayılan uygulama Panosu özelleştirmek için gezinme **Pano** sayfasından seçim yapıp **Düzenle** üst sayfanın sağ. Panoya ekleyebilirsiniz nesnelerin bir kitaplığı ile bir paneli görüntülenir.
+1. Varsayılan uygulama panosunu özelleştirmek için **Pano** sayfasına gidin ve sayfanın sağ üst kısmında **Düzenle** ' yi seçin. Panoya ekleyebileceğiniz nesne kitaplığıyla bir panel görüntülenir.
 
     ![Pano sayfası](media/tutorial-customize-operator/builderhome.png)
 
-2. Pano özelleştirmek için kutucukları ekleme **Kitaplığı**. **Bağlantı**’yı seçin ve kuruluşunuzun web sitesinin ayrıntılarını ekleyin. Ardından **Kaydet**'i seçin:
+2. Panoyu özelleştirmek için **Kitaplıktan**kutucukları ekleyin. **Bağlantı**’yı seçin ve kuruluşunuzun web sitesinin ayrıntılarını ekleyin. Ardından **Kaydet**'i seçin:
 
-    ![Bağlantıyı panoya ekleme](media/tutorial-customize-operator/addlink.png)
+    ![Panoya bağlantı ekle](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Azure IoT Central uygulamanızdaki sayfalara bağlantılar da ekleyebilirsiniz. Örneğin, bir cihazın panosuna ya da ayarlar sayfasına bağlantı ekleyebilirsiniz.
 
-3. İsteğe bağlı olarak, **görüntü** ve Panonuzda görüntülemek için bir görüntü yükleyin. Görüntü ulaşmanıza olduğu için bu seçeneği belirlediğinizde bir URL olabilir:
+3. İsteğe bağlı olarak, **görüntü** ' i seçin ve panonuzda görüntülenecek bir resim yükleyin. Bir görüntü, seçtiğinizde gittiğiniz bir URL 'ye sahip olabilir:
 
     ![Panoya resim ekleme](media/tutorial-customize-operator/addimage.png)
 
     Daha fazla bilgi için bkz. [Görüntüleri hazırlama ve Azure IoT Central uygulamanıza yükleme](howto-prepare-images.md).
 
-## <a name="preview-the-dashboard"></a>Pano Önizleme
+## <a name="preview-the-dashboard"></a>Panonun önizlemesini görüntüleyin
 
-Uygulama Panosu operatör olarak önizlemesini görüntülemek için seçin **Bitti** üst sayfanın sağ.
+Uygulama panosunu bir operatör olarak önizlemek için sayfanın sağ üst kısmında **bitti** ' yi seçin.
 
 ![Tasarım Modunu Açma/Kapatma](media/tutorial-customize-operator/operatorviewhome.png)
 
-Bir oluşturucu olarak ayarladığınız URL'leri gitmek için bağlantı ve resim kutucukları seçebilirsiniz.
+Oluşturucu olarak ayarladığınız URL 'Lere gitmek için bağlantı ve görüntü kutucuklarını seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

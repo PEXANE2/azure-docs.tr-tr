@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 8227aa366c8f5149d4212e6cdd00e2745db84814
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f2397c67b71cc370a0a98d44bb02e5ee77551afb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881949"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650641"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -86,7 +86,7 @@ Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak i�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, Myresourcegroup adlı kaynak grubunda *Myvm* ADLı bir VM 'ye karşı özel Betik uzantısı 'nıçalıştırır. Örnek kaynak grubu adı, VM adı ve betiği çalıştırılacak şekilde değiştirin (https://raw.githubusercontent.com/me/project/hello.sh) kendi bilgileriniz ile). 
+Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, Myresourcegroup adlı kaynak grubunda *Myvm* ADLı bir VM 'ye karşı özel Betik uzantısı 'nıçalıştırır. Örnek kaynak grubu adı, VM adı ve betiği (https:\//RAW.githubusercontent.com/Me/Project/Hello.sh) kendi bilgileriniz ile değiştirin. 
 
 ```azurecli
 az vm extension set `

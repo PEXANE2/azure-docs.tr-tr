@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a7477fa312a172579c6b4717e9f679ac253e1b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823821"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648651"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory'deki yenilikler nelerdir?
 
@@ -36,6 +36,20 @@ Azure AD iyileştirmeleri düzenli olarak alır. İle en son gelişmeleri günce
 - Değişiklikleri planları
 
 Bu sayfaya ay güncelleştirilir, böylece bunu düzenli olarak tekrar ziyaret. Altı aydan eski olan öğelere bakıyorsanız, [Azure Active Directory yenilikler Için arşivde](whats-new-archive.md)bulabilirsiniz.
+
+---
+
+## <a name="august-2019"></a>Ağustos 2019
+
+### <a name="adalnet-ignores-the-msalnet-shared-cache-for-on-behalf-of-scenarios"></a>ADAL.NET, yerinde senaryolar için MSAL.NET paylaşılan önbelleğini yoksayar
+
+**Türüyle** Sabit  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
+**Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
+
+Azure AD kimlik doğrulama kitaplığı (ADAL.NET) sürüm 5.0.0-Preview sürümünden itibaren, uygulama geliştiricileri [Web uygulamaları ve Web API 'leri için hesap başına bir önbellek serileştirmelidir](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Aksi takdirde, bazı belirli kullanım durumları `UserAssertion`ile birlikte, [Şirket adına akışı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kullanan bazı senaryolar ayrıcalık yükselmesine neden olabilir. Bu güvenlik açığından kaçınmak için, ADAL.NET artık, için Microsoft kimlik doğrulama kitaplığı için DotNet (MSAL.NET) paylaşılan önbellek için Microsoft kimlik doğrulama kitaplığını yok sayar.
+
+Bu sorun hakkında daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kitaplığı ayrıcalık yükselmesi güvenlik açığı](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258).
 
 ---
 
@@ -69,7 +83,7 @@ Yeni Kullanıcı arabirimi değişiklikleri, **Uygulama Ekle** dikey penceresini
 
 **Türüyle** Değişiklik planı  
 **Hizmet kategorisi:** MFA  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 MFA sunucusu IP adresini [Office 365 IP adresi ve URL Web hizmetinden](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service)kaldırıyoruz. Şu anda güvenlik duvarı ayarlarınızı güncelleştirmek için bu sayfalara güveniyorsanız, Başlarken 'in **Azure Multi-Factor Authentication sunucusu güvenlik duvarı gereksinimleri** bölümünde belgelenen IP adreslerinin listesini de dahil ettiğinizden emin olmanız gerekir. [ Azure Multi-Factor Authentication sunucusu makalesiyle birlikte](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
 
@@ -78,7 +92,7 @@ MFA sunucusu IP adresini [Office 365 IP adresi ve URL Web hizmetinden](https://d
 ### <a name="app-only-tokens-now-require-the-client-app-to-exist-in-the-resource-tenant"></a>Yalnızca uygulama belirteçleri, artık istemci uygulamasının kaynak kiracısında var olmasını gerektiriyor
 
 **Türüyle** Sabit  
-**Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
 
 26 Temmuz 2019 ' de, [istemci kimlik bilgileri verme](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)yoluyla yalnızca uygulama belirteçleri sağlıyoruz. Daha önce, uygulamalar, istemci uygulamanın kiracıda olup olmamasına bakılmaksızın diğer uygulamaları çağırmak için belirteçleri alabilir. Bu davranışı, bazen Web API 'Leri olarak adlandırılan tek kiracılı kaynakların yalnızca kaynak kiracısında bulunan istemci uygulamaları tarafından çağrılabilir şekilde güncelleştirdik.
@@ -95,7 +109,7 @@ Daha fazla bilgi için bkz. [kimlik doğrulaması yenilikleri nelerdir?](https:/
 ### <a name="new-passwordless-sign-in-to-azure-ad-using-fido2-security-keys"></a>FIDO2 güvenlik anahtarları kullanılarak Azure AD 'de yeni parolasız oturum açma
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
 
 Azure AD müşterileri artık, kuruluşlarının kullanıcıları ve grupları için FIDO2 güvenlik anahtarlarını yönetmek üzere ilkeler ayarlayabilir. Son kullanıcılar aynı zamanda güvenlik anahtarlarını kendi kendine kaydedebilir, FIDO özellikli cihazlarda web sitelerindeki Microsoft hesaplarında oturum açmak için anahtarları kullanabilir ve Azure AD 'ye katılmış Windows 10 cihazlarında oturum açabilirler.
@@ -122,7 +136,7 @@ Uygulamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory ile Sa
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
 
@@ -170,7 +184,7 @@ Daha fazla bilgi için bkz. [Azure AD Domain Services Için güvenlik denetimler
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Self Servis Parola Sıfırlama  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Yeni kimlik doğrulama yöntemleri kullanım & öngörüleri raporları, Azure Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kuruluşunuzda nasıl kaydedildiği ve kullanıldığı hakkında bilgi almanıza yardımcı olabilir; Örneğin, kayıtlı sayısı dahil her özelliğe yönelik kullanıcılar, parolaları sıfırlamak için self servis parola sıfırlamasının ne sıklıkta kullanıldığı ve hangi yöntemin sıfırlanacağı.
 
@@ -182,7 +196,7 @@ Daha fazla bilgi için bkz. [kimlik doğrulama yöntemleri kullanımı & Öngör
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Identity Protection  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Tüm Azure AD yöneticileri artık riskli **Kullanıcılar** ve **riskli oturum açma** raporlarında gösterildiği gibi yeni güvenlik deneyimini kullanmaya başlamak için, **risk için işaretlenmiş kullanıcılar** raporu gibi mevcut güvenlik raporlarının en üstündeki başlığı seçebilirler. . Zaman içinde, tüm güvenlik raporları eski sürümlerden yeni sürümlere taşınır ve yeni raporlar aşağıdaki ek olanakları sağlar:
 
@@ -226,7 +240,7 @@ Daha fazla bilgi için bkz. [Konuk kullanıcılar için AD FS ve üçüncü tara
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
 
@@ -261,7 +275,7 @@ Daha fazla bilgi için bkz. [Azure AD portalındaki grupları yönetme](https://
 ### <a name="azure-ad-now-supports-static-query-parameters-in-reply-redirect-uris"></a>Azure AD artık yanıt (yeniden yönlendirme) URI 'Lerinde statik sorgu parametrelerini desteklemektedir
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
 
 Azure AD Apps artık, OAuth 2,0 istekleri için statik sorgu parametreleriyle (örneğin, `https://contoso.com/oauth2?idp=microsoft`) Yanıtla (yeniden yönlendirme) URI 'leri kaydedebilir ve kullanabilir. Statik sorgu parametresi, yanıt URI 'sinin diğer herhangi bir bölümünde olduğu gibi, yanıt URI 'Leri için dize eşlemeye tabidir. URL kodu çözülmüş yeniden yönlendirme URI 'si ile eşleşen kayıtlı bir dize yoksa, istek reddedilir. Yanıt URI 'SI bulunursa, statik sorgu parametresi dahil olmak üzere, kullanıcının yeniden yönlendirileceği tüm dize kullanılır.
@@ -276,7 +290,7 @@ Bir güvenlik riskini temsil ettiğinden dinamik yanıt URI 'Leri hala yasaktır
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Raporlanıyor  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Azure AD etkinlik günlüklerinin (denetim ve oturum açma raporları) artık Azure AD PowerShell modülü aracılığıyla kullanılabildiğini duyurmak için heyecanlıyız. Daha önce, MS Graph API uç noktaları kullanarak kendi betiklerinizi oluşturabilir ve şimdi bu özelliği PowerShell cmdlet 'lerine genişlettik.
 
@@ -288,7 +302,7 @@ Bu cmdlet 'leri kullanma hakkında daha fazla bilgi için bkz. [Raporlama Için 
 
 **Türüyle** Değişen özellik  
 **Hizmet kategorisi:** Raporlanıyor  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Denetim ve oturum açma günlüğü raporlarını, artık rapor ekranlarında sütun olarak eklemek zorunda kalmadan çeşitli filtreler uygulayabilmeniz için güncelleştirdik. Ayrıca, ekranda kaç filtre göstermek istediğinizi de seçebilirsiniz. Bu güncelleştirmeler, raporların daha kolay okunmasını ve gereksinimlerinize göre daha fazla kapsamlanmasını kolaylaştırmak için birlikte çalışır.
 
@@ -302,7 +316,7 @@ Bu güncelleştirmeler hakkında daha fazla bilgi için bkz. [Denetim günlükle
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Identity Protection  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Microsoft Graph için yeni riskDetections API 'sini duyurmaktan mutluluk duyuyoruz, artık genel önizlemede. Bu yeni API 'YI, kuruluşunuzun kimlik korumasıyla ilgili Kullanıcı ve oturum açma riski algılamalarının bir listesini görüntülemek için kullanabilirsiniz. Bu API 'yi, algılama türü, durumu, düzeyi ve daha fazlası hakkındaki ayrıntılar dahil, risk algılamalarınızı daha verimli bir şekilde sorgulamak için de kullanabilirsiniz.
 
@@ -328,7 +342,7 @@ Uygulamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory ile Sa
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
 
@@ -359,7 +373,7 @@ Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](https://
 ### <a name="company-branding-now-appears-on-sign-out-and-error-screens"></a>Şirket markası artık oturum kapatma ve hata ekranları üzerinde görünüyor
 
 **Türüyle** Değişen özellik  
-**Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
 
 Azure AD 'yi, şirket markasının artık oturum açma ve hata ekranlarında, oturum açma sayfasından da görünmesini sağlayacak şekilde güncelleştirdik. Bu özelliği açmak için herhangi bir şey yapmanız gerekmez, Azure AD yalnızca Azure portal **Şirket markası** alanında ayarlamış olduğunuz varlıkları kullanır.
@@ -372,7 +386,7 @@ Azure AD 'yi, şirket markasının artık oturum açma ve hata ekranlarında, ot
 
 **Türüyle** Kullanım Dışı  
 **Hizmet kategorisi:** MFA  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kuruluşunuzda Multi-Factor Authentication istemek isteyen yeni müşterilerin artık bulut tabanlı Azure Multi-Factor Authentication kullanması gerekir. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren müşteriler bir değişiklik görmez. Hala en son sürümü indirebilir, gelecekteki güncelleştirmeleri alabilir ve etkinleştirme kimlik bilgileri oluşturabilirsiniz.
 
@@ -398,7 +412,7 @@ TLS 1,0 ve TLS 1,1 ' nin kullanımdan kaldırılması 31 Ağustos 2019 tarihinde
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Artık aşağıdakiler hakkında bilgiler de dahil olmak üzere oturum açma verilerinizin uygulama merkezli bir görünümünü almak için Azure portal **Kurumsal uygulamalar** alanında bulunan kullanım ve Öngörüler raporunu kullanabilirsiniz:
 
@@ -416,7 +430,7 @@ Bu özellik hakkında daha fazla bilgi için [Azure Active Directory portalında
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Aşağıdaki bulut tabanlı uygulamalar için Kullanıcı hesaplarının oluşturulmasını, silinmesini ve güncelleştirilmesini otomatik hale getirmek için Azure AD sağlama hizmetini kullanmak üzere bu yeni öğreticilerini izleyin:
 
@@ -436,7 +450,7 @@ Otomatik Kullanıcı hesabı sağlama aracılığıyla kuruluşunuzun daha iyi g
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Yok  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Artık Azure AD 'de kimlik güvenli puanı özelliğini kullanarak kimlik güvenliğini izleyip geliştirebilirsiniz. Kimlik güvenli puanı özelliği, size yardımcı olması için tek bir pano kullanır:
 
@@ -453,7 +467,7 @@ Kimlik güvenliği puanı özelliği hakkında daha fazla bilgi için bkz. [Azur
 ### <a name="new-app-registrations-experience-is-now-available-general-availability"></a>Yeni Uygulama kayıtları deneyimi artık kullanıma sunuldu (genel kullanılabilirlik)
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Geliştirici Deneyimi
 
 Yeni [uygulama kayıtları](https://aka.ms/appregistrations) deneyimi artık genel kullanıma sunulmuştur. Bu yeni deneyim, Azure portal ve uygulama kayıt Portalı ' ndan bildiğiniz tüm önemli özellikleri içerir ve bunları aracılığıyla geliştirir:
@@ -472,7 +486,7 @@ Daha fazla bilgi için bkz. [Microsoft Identity platform](https://docs.microsoft
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Identity Protection  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Kullanıcıların risk geçmişini almak, riskli kullanıcıları kapatmak ve kullanıcıları tehlikeye atılmak üzere doğrulamak için riskli kullanıcılar API 'sini artık kullanacağınızı duyurmaktan memnuniyet duyuyoruz. Bu değişiklik, kullanıcılarınızın risk durumunu daha verimli bir şekilde güncelleştirmenize ve risk geçmişini anlamanıza yardımcı olur.
 
@@ -538,7 +552,7 @@ Daha fazla bilgi için bkz. [Office 365 grupları Için adlandırma Ilkesi zorla
 
 **Türüyle** Değişen özellik  
 **Hizmet kategorisi:** Raporlanıyor  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Azure AD etkinlik günlükleri için Microsoft Graph API uç noktası desteğinin genel kullanıma sunulduğunu duyurmaktan mutluluk duyuyoruz. Bu sürümle birlikte artık hem Azure AD denetim günlüklerinin hem de oturum açma günlüğü API 'Lerinin 1,0 sürümünü kullanabilirsiniz.
 
@@ -550,7 +564,7 @@ Daha fazla bilgi için bkz. [Azure AD denetim günlüğü API 'sine genel bakı�
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Koşullu Erişim  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması  
+**Ürün yeteneği:** Kimlik güvenliği & koruması  
 
 Yöneticiler artık Birleşik kayıt sayfası tarafından kullanılmak üzere koşullu erişim ilkeleri oluşturabilir. Bu, şu durumlarda kayda izin vermek için ilkeleri uygulamayı içerir:
 
@@ -568,13 +582,13 @@ Koşullu erişim ve parola sıfırlama hakkında daha fazla bilgi için [Azure A
 
 ## <a name="april-2019"></a>2019 Nisan
 
-### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>Yeni Azure AD tehdit zekası algılaması artık yenilendi Azure AD Kimlik Koruması
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Yeni Azure AD tehdit zekası algılaması artık Azure AD Kimlik Koruması bir parçası olarak sağlanıyor
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Azure AD Kimlik Koruması  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
-Azure AD tehdit zekası algılaması artık yenilenen Azure AD Kimlik Koruması sunulmaktadır. Bu yeni işlevsellik, belirli bir kullanıcı için olağandışı olan veya Microsoft 'un dahili ve dış tehdit bilgilerini temel alan bilinen saldırı desenleriyle tutarlı olan kullanıcı etkinliklerini belirtmenize yardımcı olur.
+Azure AD Threat Intelligence algılama artık güncelleştirilmiş Azure AD Kimlik Koruması özelliğinin bir parçası olarak sunulmaktadır. Bu yeni işlevsellik, Microsoft 'un dahili ve dış tehdit bilgileri kaynaklarına dayanan bilinen saldırı desenleriyle tutarlı olan belirli bir kullanıcı veya etkinliğin olağan dışı Kullanıcı etkinliklerini belirtmenize yardımcı olur.
 
 Azure AD Kimlik Koruması yenilenen sürümü hakkında daha fazla bilgi için, bkz. [dört ana Azure AD kimlik koruması geliştirmesi artık genel önizleme](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) bloguna ve [ne Azure Active Directory kimlik koruması (YENİLENDİ)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) makalenin. Azure AD tehdit zekası algılaması hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması risk olayları](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) makalesine bakın.
 
@@ -612,7 +626,7 @@ Daha fazla bilgi için bkz. [Office 365 grupları Için adlandırma Ilkesi zorla
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Raporlanıyor  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Azure AD etkinlik günlükleri ile görselleştirmelerle ilgili geri bildirimlerinizi ele almak için, Log Analytics yeni bir Öngörüler özelliği sunuyoruz. Bu özellik, çalışma kitapları adlı etkileşimli şablonlarımızı kullanarak Azure AD kaynaklarınız hakkında öngörüler elde etmenize yardımcı olur. Önceden oluşturulmuş bu çalışma kitapları, uygulamalar veya kullanıcılar için Ayrıntılar sağlayabilir ve şunları içerir:
 
@@ -684,7 +698,7 @@ Daha fazla bilgi için bkz. [eşitleme sırasında sorun giderme hataları](http
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Koşullu Erişim  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Uygulama koruma tabanlı koşullu erişim artık **Uygulama koruma Ilkesi gerektir** ilkesi kullanılarak kullanılabilir. Bu yeni ilke, aşağıdakileri önlemeye yardımcı olarak kuruluşunuzun güvenliğini artırmaya yardımcı olur:
 
@@ -702,7 +716,7 @@ Daha fazla bilgi için bkz. [koşullu erişim ile Cloud App erişimi için uygul
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Koşullu Erişim  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Azure AD çoklu oturum açma ve koşullu erişim için yeni destek sağlama dahil olmak üzere Microsoft Edge için Azure AD desteğimizi geliştirdik. Daha önce Microsoft Intune Managed Browser kullandıysanız, artık bunun yerine Microsoft Edge 'i kullanabilirsiniz.
 
@@ -715,7 +729,7 @@ Koşullu erişim kullanarak cihazlarınızı ve uygulamalarınızı ayarlama ve 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Azure Active Directory B2C 'da kimlik deneyimi çerçevesi ve özel ilke desteği artık kullanılabilir (GA)
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
+**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
 
 Artık Azure AD B2C, ölçeklendirerek ve Azure SLA 'umuz kapsamında desteklenen aşağıdaki görevler de dahil olmak üzere özel ilkeler oluşturabilirsiniz:
@@ -789,7 +803,7 @@ Artık şirket içi, SAML kimliği doğrulanmış uygulamalar için çoklu oturu
 ### <a name="client-apps-in-request-loops-will-be-interrupted-to-improve-reliability-and-user-experience"></a>İstek döngülerine yönelik istemci uygulamaları, güvenilirliği ve Kullanıcı deneyimini geliştirmek için kesintiye uğrar
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
+**Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
 
 İstemci uygulamaları kısa bir süre boyunca aynı oturum açma isteklerini yanlışlıkla verebilir. Bu istekler, başarılı olsun veya etmeksizin, tüm kullanıcılar için zayıf bir kullanıcı deneyimine ve ıDP 'nin bu iş yüklerini artırarak, tüm kullanıcılar için gecikme süresini artırarak ve ıDP kullanılabilirliğini azalttığından.
@@ -802,7 +816,7 @@ Bu güncelleştirme bir `invalid_grant` hata gönderir: `AADSTS50196: The server
 
 **Türüyle** Değişen özellik  
 **Hizmet kategorisi:** Raporlanıyor  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Okunabilirliği ve bilgilerinizi aramanızı artırmaya yardımcı olmak için yeni bir Azure AD **Denetim günlükleri** sayfası oluşturduk. Yeni **Denetim günlükleri** sayfasını görmek IÇIN Azure AD 'nin **etkinlik** bölümündeki **Denetim günlükleri** ' ni seçin.
 
@@ -816,7 +830,7 @@ Yeni **Denetim günlükleri** sayfası hakkında daha fazla bilgi için, bkz. [A
 
 **Türüyle** Değişen özellik  
 **Hizmet kategorisi:** Koşullu Erişim  
-**Ürün yeteneği:** Kimlik Güvenliği ve Koruması
+**Ürün yeteneği:** Kimlik güvenliği & koruması
 
 Yöneticilerin, yanlış yapılandırılmış koşullu erişim ilkeleri aracılığıyla kendi kiracılarından kendilerini yanlışlıkla kilitlemesini önlemeye yardımcı olmak için Azure portal yeni uyarılar ve güncelleştirilmiş rehberlik oluşturduk. Yeni rehberlik hakkında daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory hizmet bağımlılıkları nelerdir](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
@@ -836,7 +850,7 @@ Mevcut kullanım koşullarımızı, bir mobil cihazda kullanım koşullarını n
 
 **Türüyle** Değişen özellik  
 **Hizmet kategorisi:** Raporlanıyor  
-**Ürün yeteneği:** İzleme ve Raporlama
+**Ürün yeteneği:** & Raporlamayı izleme
 
 Artık Azure portal çok miktarda etkinlik günlüğünü doğrudan indirebilirsiniz. Bu güncelleştirme şunları yapmanızı sağlar:
 
@@ -872,7 +886,7 @@ Bu koşulları daha önce koşullu erişim ilkeleriniz üzerinde kullandıysanı
 
 ## <a name="february-2019"></a>Şubat 2019
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Yapılandırılabilir Azure AD SAML belirteci şifreleme (Genel önizleme) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Yapılandırılabilir Azure AD SAML belirteci şifrelemesi (Genel Önizleme) 
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
@@ -884,7 +898,7 @@ SAML belirteci şifrelemeyi yapılandırma hakkında daha fazla bilgi için bkz.
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Azure AD Erişim Gözden Geçirmelerini kullanarak gruplar veya uygulamalar için erişim incelemesi oluşturma
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri kullanarak gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Erişim Gözden Geçirmeleri  
@@ -896,7 +910,7 @@ Azure AD erişim gözden geçirmeleri kullanarak erişim incelemesi oluşturma h
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD uygulama galerisinde yeni Federasyon Uygulamaları kullanıma sunuldu - Şubat 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD uygulama galerisinde yeni Federasyon uygulamaları kullanılabilir-Şubat 2019
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
@@ -938,10 +952,10 @@ Gelişmiş kayıt deneyimi hakkında daha fazla bilgi için bkz. [Azure AD BIRLE
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Kullanıcı akışları için güncelleştirilmiş ilke yönetimi deneyimi
+### <a name="updated-policy-management-experience-for-user-flows"></a>Kullanıcı akışları için ilke yönetimi deneyimi güncelleştirildi
 
 **Türüyle** Değişen özellik  
-**Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
+**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
 
 Kullanıcı akışları (daha önce, yerleşik ilkeler) için ilke oluşturma ve yönetim işlemini daha kolay bir şekilde güncelleştirdik. Bu yeni deneyim artık tüm Azure AD kiracılarınız için varsayılandır.
@@ -952,10 +966,10 @@ Yeni ilke yönetimi deneyimi hakkında daha fazla bilgi için, [şimdi Azure AD 
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Azure AD B2C tarafından sağlanan belirli sayfa öğesi sürümlerini seçme
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Azure AD B2C tarafından sunulan belirli sayfa öğesi sürümlerini seçin
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
+**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
 
 Artık, Azure AD B2C tarafından sunulan sayfa öğelerinin belirli bir sürümünü seçebilirsiniz. Belirli bir sürümü seçerek, güncelleştirmelerinizi bir sayfada görüntülenmeden önce test edebilir ve öngörülebilir bir davranış sağlayabilirsiniz. Ayrıca, artık JavaScript özelleştirmeleriyle ilgili belirli sayfa sürümlerini zorunlu kılabilirsiniz. Bu özelliği açmak için Kullanıcı akışlarınızda **Özellikler** sayfasına gidin.
@@ -964,10 +978,10 @@ Sayfa öğelerinin belirli sürümlerini seçme hakkında daha fazla bilgi için
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>B2C için yapılandırılabilir son kullanıcı parola gereksinimleri (GA)
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>B2C için yapılandırılabilir Son Kullanıcı parolası gereksinimleri (GA)
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
+**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
 
 Artık kuruluşunuzun parola karmaşıklığını, yerel Azure AD parola ilkenizi kullanmak yerine son kullanıcılarınız için ayarlayabilirsiniz. Kullanıcı akışlarınızın **Özellikler** dikey penceresinde (önceki adıyla yerleşik ilkeleriniz), **basit** veya **güçlü**bir parola karmaşıklığı seçebilir veya **özel** bir gereksinim kümesi oluşturabilirsiniz.
@@ -976,10 +990,10 @@ Parola karmaşıklığı gereksinim yapılandırması hakkında daha fazla bilgi
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Özel markalı kimlik doğrulaması deneyimleri için yeni varsayılan şablonlar
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Özel markalı kimlik doğrulama deneyimleri için yeni varsayılan şablonlar
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
+**Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
 
 Kullanıcılarınız için özel bir markalı kimlik doğrulama deneyimi oluşturmak üzere Kullanıcı akışlarınızın **sayfa düzenleri** dikey penceresinde (daha önce yerleşik ilkeler olarak bilinir) bulunan yeni varsayılan şablonlarımızı kullanabilirsiniz.

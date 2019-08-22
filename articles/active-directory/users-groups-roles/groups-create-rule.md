@@ -1,6 +1,6 @@
 ---
-title: Dinamik bir grup oluşturun ve durum - Azure Active Directory denetleme | Microsoft Docs
-description: Azure portalında bir grup üyeliği kuralı oluşturmak durumunu denetlemek nasıl.
+title: Dinamik grup oluşturma ve durumu denetleme-Azure Active Directory | Microsoft Docs
+description: Azure portal bir grup üyeliği kuralı oluşturma, durumu denetleme.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,74 +9,74 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb4f9d2f78857231d0ecd81a2538a75b4b8a2f74
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472179"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650287"
 ---
-# <a name="create-a-dynamic-group-and-check-status"></a>Dinamik bir grup oluşturun ve durumunu denetle
+# <a name="create-a-dynamic-group-and-check-status"></a>Dinamik grup oluşturma ve durumu denetleme
 
-Azure Active Directory'de (Azure AD), kuralları, kullanıcı veya cihaz özelliğe göre grup üyeliği belirlemek için kullanabilirsiniz. Bu makalede, Azure portalında dinamik bir grup için bir kural ayarlamak anlatır.
-Dinamik üyelik güvenlik grupları veya Office 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, kullanıcı ve cihaz öznitelikleri ile üyelik kuralı bir eşleşme için değerlendirilir. Öznitelik, bir kullanıcı veya cihaz için değiştiğinde, kuruluştaki tüm dinamik Grup kurallarını üyelik değişiklikleri için işlenir. Kullanıcılara ve cihazlara eklenir veya bunlar bir grup koşulları karşılıyorsa kaldırılır.
+Azure Active Directory (Azure AD) ' de, Kullanıcı veya cihaz özelliklerine göre grup üyeliğini Belirleme kurallarını kullanabilirsiniz. Bu makalede, Azure portal bir dinamik grup için nasıl bir kural ayarlanacağı açıklanır.
+Dinamik üyelik güvenlik grupları veya Office 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Office 365 grupları yalnızca Kullanıcı grupları olabilir.
 
-Söz dizimi, desteklenen özellikler, işleçler ve değerleri için bir üyelik kuralı örnekleri için bkz. [Azure Active Directory'de gruplar için dinamik Üyelik kuralları](groups-dynamic-membership.md).
+Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve değerler örnekleri için bkz. [Azure Active Directory gruplar Için dinamik üyelik kuralları](groups-dynamic-membership.md).
 
 ## <a name="to-create-a-group-membership-rule"></a>Bir grup üyeliği kuralı oluşturmak için
 
-1. Oturum [Azure AD yönetim merkezini](https://aad.portal.azure.com) genel yönetici, Intune yönetici veya Kiracı Yöneticisi rolünde kullanıcı olan bir hesapla.
-2. Seçin **grupları**.
-3. Seçin **tüm grupları**seçip **yeni grup**.
+1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , Kiracıdaki genel yönetici, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla oturum açın.
+2. **Grupları**seçin.
+3. **Tüm gruplar**' ı seçin ve **Yeni Grup**' u seçin.
 
-   ![Yeni grubu eklemek için komutu seçin](./media/groups-create-rule/new-group-creation.png)
+   ![Yeni grup eklemek için komutu seçin](./media/groups-create-rule/new-group-creation.png)
 
-4. Üzerinde **grubu** sayfasında, bir ad ve yeni grup için bir açıklama girin. Seçin bir **üyelik türü** için kullanıcılara veya cihazlara tıklayın ve ardından **dinamik sorgu Ekle**. Basit bir kural oluşturmak için kural Oluşturucu'yu kullanabilirsiniz veya [kendiniz bir üyelik kuralı yazma](groups-dynamic-membership.md).
+4. **Grup** sayfasında, yeni grup için bir ad ve açıklama girin. Kullanıcılar veya cihazlar için bir **üyelik türü** seçin ve ardından **Dinamik sorgu Ekle**' yi seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Altıncı veya sonraki bir ifadeyi eklemek için metin kutusunu kullanmanız gerekir.
 
-   ![Dinamik Grup Üyeliği Kuralı Ekle](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Dinamik bir grup için üyelik kuralı ekle](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Üyelik sorgunuz için kullanılabilen özel uzantı özellikleri görmek için
-   1. Seçin **özel uzantı özelliklerini alma**
-   2. Uygulama Kimliğini girin ve ardından **yenileme özellikleri**. 
-6. Bir kural oluşturduktan sonra seçin **Sorgu Ekle** dikey pencerenin alt kısmındaki.
-7. Seçin **Oluştur** üzerinde **grubu** grubu oluşturmak için dikey pencere.
+5. Üyelik sorgunuz için kullanılabilen özel uzantı özelliklerini görmek için
+   1. **Özel uzantı özelliklerini al** seçeneğini belirleyin
+   2. Uygulama KIMLIĞI ' ni girin ve ardından **özellikleri Yenile**' yi seçin.
+6. Kuralı oluşturduktan sonra **Kaydet**' i seçin.
+7. Grubu oluşturmak için **Yeni Grup** sayfasında **Oluştur** ' u seçin.
 
-Girdiğiniz kuralı geçerli değilse, kural neden işlenemedi açıklama portalının sağ üst köşesinde görüntülenir. Bu hatayı düzeltmek nasıl dikkatli bir şekilde anlamak için okuyun.
+Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir açıklama, portalda bir Azure bildiriminde görüntülenir. Kuralı nasıl düzelteceğinizi anlamak için dikkatle okuyun.
 
-## <a name="turn-on-or-off-welcome-email"></a>Hoş Geldiniz e-posta açma veya kapatma
+## <a name="turn-on-or-off-welcome-email"></a>Hoş geldiniz e-postasını aç veya kapat
 
-Yeni bir Office 365 grubu oluşturulduğunda, gruba eklenen kullanıcılar Hoş Geldiniz bir bildirim gönderilir. Daha sonra bir kullanıcı veya cihaz herhangi bir özniteliği değiştirirseniz, kuruluştaki tüm dinamik Grup kurallarını üyelik değişiklikleri için işlenir. Eklenen kullanıcılar da ardından Hoş Geldiniz bildirimleri alır. Bu davranışı devre dışı bırakabilirsiniz [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+Yeni bir Office 365 Grubu oluşturulduğunda, gruba eklenen kullanıcılar bir hoş geldiniz e-posta bildirimi gönderilir. Daha sonra, bir kullanıcının veya cihazın herhangi bir özniteliği değişirse, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)'de devre dışı bırakabilirsiniz.
 
-## <a name="check-processing-status-for-a-rule"></a>Bir kural işleme durumunu denetleme
+## <a name="check-processing-status-for-a-rule"></a>Bir kural için işleme durumunu denetleme
 
-Durumu ve son güncelleştirme tarihi işleme üyelik gördüğünüz **genel bakış** grup için sayfa.
+Grubun **genel bakış** sayfasında Üyelik işleme durumu ve son güncelleştirilme tarihi ' ni görebilirsiniz.
   
   ![dinamik grup durumunu görüntüleme](./media/groups-create-rule/group-status.png)
 
-Aşağıdaki durum iletileri için gösterilen **üyelik işleme** durumu:
+**Üyelik işleme** durumu için aşağıdaki durum iletileri görüntülenebilir:
 
-* **Değerlendirme**:  Grup değişikliğinin alındı ve güncelleştirmeler değerlendirilir.
-* **İşleme**: Güncelleştirmeleri işlenmekte olan.
-* **Güncelleştirme tamamlandı**: İşleme tamamlandı ve geçerli tüm güncelleştirmeleri yapıldı.
-* **İşleme hatası**:  Üyelik Kuralı değerlendirilirken bir hata nedeniyle işlem tamamlanamadı.
-* **Güncelleştirme duraklatıldı**: Dinamik üyelik kuralı güncelleştirmeleri yönetici tarafından duraklatıldı. MembershipRuleProcessingState "Paused" olarak ayarlanır.
+* **Değerlendiriliyor**:  Grup değişikliği alındı ve güncelleştirmeler değerlendiriliyor.
+* **İşleme**: Güncelleştirmeler işleniyor.
+* **Güncelleştirme Tamam**: İşlem tamamlandı ve geçerli tüm güncelleştirmeler yapıldı.
+* **İşlem hatası**:  Üyelik kuralı değerlendirilirken bir hata nedeniyle işlem tamamlanamadı.
+* **Güncelleştirme duraklatıldı**: Dinamik üyelik kuralı güncelleştirmeleri yönetici tarafından duraklatıldı. MembershipRuleProcessingState, "duraklatıldı" olarak ayarlandı.
 
-Aşağıdaki durum iletileri için gösterilen **son güncelleştirme üyelik** durumu:
+**Üyelik son güncelleştirilme** durumu için aşağıdaki durum iletileri görüntülenebilir:
 
-* &lt;**Tarih ve saat**&gt;: Son üyelik güncelleştirildi.
-* **Devam eden**: Şu anda devam eden güncelleştirmelerin.
-* **Bilinmeyen**: Son güncelleştirme zamanı alınamıyor. Grubun yeni olabilir.
+* &lt;**Tarih ve saat**&gt;: Üyeliğin güncelleştirildiği son zaman.
+* **Devam ediyor**: Güncelleştirmeler Şu anda devam ediyor.
+* **Bilinmiyor**: Son güncelleştirme saati alınamıyor. Grup yeni olabilir.
 
-Belirli bir grup üyeliği kuralı işlenirken bir hata meydana gelirse, üzerindeki bir uyarı gösterilir **genel bakış sayfasında** grubu için. Hayır dinamik üyelik güncelleştirmeleri Kiracı içindeki tüm gruplar için daha sonra 24 saat için işlenebilir varsa bir uyarı üzerindeki gösterilir **tüm grupları**.
+Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. Kiracıdaki tüm gruplar için bekleyen dinamik üyelik güncelleştirmeleri, daha sonra 24 saat boyunca işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
 
-![hata iletisi uyarıları işleme](./media/groups-create-rule/processing-error.png)
+![işlem hata iletisi uyarıları](./media/groups-create-rule/processing-error.png)
 
-Bu makaleler, Azure Active Directory içinde grupları hakkında ek bilgi sağlar.
+Bu makaleler Azure Active Directory gruplar hakkında ek bilgiler sağlar.
 
 * [Var olan grupları görme](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Yeni grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)

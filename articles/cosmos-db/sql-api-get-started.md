@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ea3779ce7d4d77e6b0a55b8a00374b701a073b66
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614693"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876433"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturun
 
@@ -323,7 +323,7 @@ Uygulamanızı çalıştırmak için **F5** ' i seçin.
 Tebrikler! İki Azure Cosmos öğesini başarıyla oluşturdunuz.  
 
 ## <a id="Query"></a>Adım 7: Azure Cosmos DB kaynaklarını sorgula
-Azure Cosmos DB, her bir koleksiyonda depolanan JSON belgeleri için [zengin sorguların](sql-api-sql-query.md) gerçekleştirilmesini destekler. Aşağıdaki örnek kod, önceki adımda eklediğimiz öğelerde bir sorgunun nasıl çalıştırılacağını gösterir.
+Azure Cosmos DB, her kapsayıcıda depolanan JSON belgelerine karşı zengin [sorguları](sql-api-sql-query.md) destekler. Aşağıdaki örnek kod, önceki adımda eklediğimiz öğelerde bir sorgunun nasıl çalıştırılacağını gösterir.
 
 1. **Queryıtemsasync** yöntemini kopyalayın ve **Additemstocontainkıtemyıtemyıtemyıtemyıtemyıtem**
 

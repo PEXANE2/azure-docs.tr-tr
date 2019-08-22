@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: e652c8a67db686159a2c3fd48e2ea65888bcc10d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a31750d888410b9bdaea28bc5153152c426f1915
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816357"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877539"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Sorun çözümüne genel bakış, geri bildirim ve destek
 
@@ -51,7 +51,7 @@ Uzak Masaüstü istemcisi 'ni kullanarak bir kiracı ortamı ayarlarken karşıl
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
 - Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Uzak Masaüstü istemci bağlantıları](troubleshoot-client-connection.md).
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows Masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
 - Sorun giderme öğreticisine geçmek için bkz [. Öğretici: Kaynak Yöneticisi şablonu dağıtımlarıyla](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)ilgili sorunları giderin.
 - Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

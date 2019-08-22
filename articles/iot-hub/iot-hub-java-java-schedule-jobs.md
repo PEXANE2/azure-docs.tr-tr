@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 07/10/2017
-ms.openlocfilehash: ecbdbdd29a777a997c594f8119c1474a89e64a10
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 08/16/2019
+ms.openlocfilehash: 60d8d4594d76fbef36df0259940d4437e28280cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404194"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873433"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>İşleri zamanlama ve yayınlama (Java)
 
@@ -87,21 +87,23 @@ Bu bölümde, aşağıdakileri yapmak için işleri kullanan bir Java konsol uyg
 
 Uygulamayı oluşturmak için:
 
-1. Geliştirme makinenizde adlı `iot-java-schedule-jobs`boş bir klasör oluşturun.
+1. Geliştirme makinenizde **IoT-Java-Schedule-Jobs**adlı boş bir klasör oluşturun.
 
-2. Klasöründe, komut istemindeki aşağıdaki komutu kullanarak **Schedule-Jobs** adlı bir Maven projesi oluşturun. `iot-java-schedule-jobs` Bunun tek ve uzun bir komut olduğunu unutmayın:
+2. **IoT-Java-Schedule-Jobs** klasöründe, komut istemindeki aşağıdaki komutu kullanarak **Schedule-Jobs** adlı bir Maven projesi oluşturun. Bunun tek ve uzun bir komut olduğunu unutmayın:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+   ```cmd/sh
+   mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   ```
 
-3. Komut istemindeki `schedule-jobs` klasöre gidin.
+3. Komut istemindeki **zamanlama işleri** klasörüne gidin.
 
-4. Bir metin düzenleyicisi kullanarak `pom.xml` dosyayı `schedule-jobs` klasöründe açın ve **Bağımlılıklar** düğümüne aşağıdaki bağımlılığı ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Service-Client** paketini kullanmanıza olanak sağlar:
+4. Bir metin düzenleyicisi kullanarak, **Schedule-Jobs** klasöründeki **Pod. xml** dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Service-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.7.23</version>
+      <version>1.17.1</version>
       <type>jar</type>
     </dependency>
     ```
@@ -127,9 +129,9 @@ Uygulamayı oluşturmak için:
     </build>
     ```
 
-6. `pom.xml` Dosyayı kaydedin ve kapatın.
+6. **Pod. xml** dosyasını kaydedin ve kapatın.
 
-7. Bir metin düzenleyicisi kullanarak `schedule-jobs\src\main\java\com\mycompany\app\App.java` dosyayı açın.
+7. Bir metin düzenleyicisi kullanarak **Schedule-jobs\src\main\java\com\mycompany\app\App.Java** dosyasını açın.
 
 8. Aşağıdaki **içeri aktarma** deyimlerini dosyaya ekleyin:
 
@@ -264,7 +266,7 @@ Uygulamayı oluşturmak için:
     public static void main( String[] args ) throws Exception
     ```
 
-15. İki işi sırayla çalıştırmak ve izlemek için aşağıdaki kodu **Main** yöntemine ekleyin:
+15. İki işi sırayla çalıştırmak ve izlemek için **ana** yöntemdeki kodu aşağıdaki kodla değiştirin:
 
     ```java
     // Record the start time
@@ -291,36 +293,50 @@ Uygulamayı oluşturmak için:
     System.out.println("Shutting down schedule-jobs app");
     ```
 
-16. `schedule-jobs\src\main\java\com\mycompany\app\App.java` Dosyayı kaydet ve Kapat
+16. **Schedule-jobs\src\main\java\com\mycompany\app\App.Java** dosyasını Kaydet ve Kapat
 
-17. **Schedule-Jobs** uygulamasını oluşturun ve hataları düzeltin. Komut istemindeki `schedule-jobs` klasöre gidin ve aşağıdaki komutu çalıştırın:
+17. **Schedule-Jobs** uygulamasını oluşturun ve hataları düzeltin. Komut istemindeki **Schedule-Jobs** klasörüne gidin ve şu komutu çalıştırın:
 
-    `mvn clean package -DskipTests`
+    ```cmd/sh
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="create-a-device-app"></a>Cihaz uygulaması oluşturma
 
 Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yöntem çağrısını uygulayan bir Java konsol uygulaması oluşturursunuz.
 
-1. Komut istemindeki aşağıdaki komutu kullanarak  klasöründe,sanalcihazadlıbirMavenprojesi`iot-java-schedule-jobs` oluşturun. Bunun tek ve uzun bir komut olduğunu unutmayın:
+1. **IoT-Java-Schedule-Jobs** klasöründe, komut istemindeki aşağıdaki komutu kullanarak, **sanal cihaz** adlı bir Maven projesi oluşturun. Bunun tek ve uzun bir komut olduğunu unutmayın:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+   ```cmd/sh
+   mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   ```
 
-2. Komut istemindeki `simulated-device` klasöre gidin.
+2. Komut istemindeki **sanal cihaz** klasörüne gidin.
 
-3. Bir metin düzenleyicisi kullanarak `pom.xml` dosyayı `simulated-device` klasöründe açın ve **Bağımlılıklar** düğümüne aşağıdaki bağımlılıkları ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Device-Client** paketini kullanmanıza olanak sağlar:
+3. Bir metin düzenleyicisi kullanarak, **sanal cihaz** klasöründe **polım. xml** dosyasını açın ve aşağıdaki bağımlılıkları **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, IoT Hub 'ınız ile iletişim kurmak için uygulamanızdaki **IoT-Device-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.32</version>
+      <version>1.17.5</version>
     </dependency>
     ```
 
     > [!NOTE]
     > [Maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)kullanarak **IoT-Device-Client** ' ın en son sürümünü kontrol edebilirsiniz.
 
-4. **Bağımlılıklar** düğümünden sonra aşağıdaki **derleme** düğümünü ekleyin. Bu yapılandırma, Maven 'in uygulamayı derlemek için Java 1,8 kullanmasını söyler:
+4. Aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bu bağımlılık, bir NOP 'yi, cihaz istemci SDK 'Sı tarafından günlüğe kaydetmeyi uygulamak için kullanılan Apache [dolayısıyla slf4j](https://www.slf4j.org/) Logging façlade için yapılandırır. Bu yapılandırma isteğe bağlıdır, ancak bunu atlarsanız, uygulamayı çalıştırdığınızda konsolda bir uyarı görebilirsiniz. Cihaz istemcisi SDK 'sında günlüğe kaydetme hakkında daha fazla bilgi için bkz [](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging). *Java için Azure IoT cihaz SDK 'sı dosyası örnekleri* .
+
+    ```xml
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.28</version>
+    </dependency>
+    ```
+
+5. **Bağımlılıklar** düğümünden sonra aşağıdaki **derleme** düğümünü ekleyin. Bu yapılandırma, Maven 'in uygulamayı derlemek için Java 1,8 kullanmasını söyler:
 
     ```xml
     <build>
@@ -338,11 +354,11 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     </build>
     ```
 
-5. `pom.xml` Dosyayı kaydedin ve kapatın.
+6. **Pod. xml** dosyasını kaydedin ve kapatın.
 
-6. Bir metin düzenleyicisi kullanarak `simulated-device\src\main\java\com\mycompany\app\App.java` dosyayı açın.
+7. Bir metin düzenleyicisi kullanarak **Simulated-device\src\main\java\com\mycompany\app\App.Java** dosyasını açın.
 
-7. Aşağıdaki **içeri aktarma** deyimlerini dosyaya ekleyin:
+8. Aşağıdaki **içeri aktarma** deyimlerini dosyaya ekleyin:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -353,10 +369,10 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     import java.util.Scanner;
     ```
 
-8. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. IoT `{youriothubname}` hub 'ınızın adıyla ve `{yourdevicekey}` *cihaz kimliği oluşturma bölümünde oluşturduğunuz* cihaz anahtarı değeriyle değiştirme:
+9. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. Daha `{yourdeviceconnectionstring}` önce, [IoT Hub 'da yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde kopyaladığınız cihaz bağlantı dizesiyle değiştirin:
 
     ```java
-    private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
+    private static String connString = "{yourdeviceconnectionstring}";
     private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static final int METHOD_SUCCESS = 200;
     private static final int METHOD_NOT_DEFINED = 404;
@@ -364,7 +380,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
 
     Bu örnek uygulama, bir **DeviceClient** nesnesi örneğini oluşturduğunda **prokotol** değişkenini kullanır.
 
-9. Cihaza cihaz ikizi bildirimleri yazdırmak için, **uygulama** sınıfına aşağıdaki iç içe geçmiş sınıfı ekleyin:
+10. Cihaza cihaz ikizi bildirimleri yazdırmak için, **uygulama** sınıfına aşağıdaki iç içe geçmiş sınıfı ekleyin:
 
     ```java
     // Handler for device twin operation notifications from IoT Hub
@@ -375,7 +391,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     }
     ```
 
-10. Konsola doğrudan yöntem bildirimleri yazdırmak için aşağıdaki iç içe sınıfı **uygulama** sınıfına ekleyin:
+11. Konsola doğrudan yöntem bildirimleri yazdırmak için aşağıdaki iç içe sınıfı **uygulama** sınıfına ekleyin:
 
     ```java
     // Handler for direct method notifications from IoT Hub
@@ -386,7 +402,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     }
     ```
 
-11. IoT Hub doğrudan Yöntem çağrılarını işlemek için, aşağıdaki iç içe sınıfı **uygulama** sınıfına ekleyin:
+12. IoT Hub doğrudan Yöntem çağrılarını işlemek için, aşağıdaki iç içe sınıfı **uygulama** sınıfına ekleyin:
 
     ```java
     // Handler for direct method calls from IoT Hub
@@ -411,13 +427,13 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     }
     ```
 
-12. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
+13. **Ana** yöntem imzasını aşağıdaki `throws` yan tümceyi içerecek şekilde güncelleştirin:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
     ```
 
-13. Aşağıdaki kodu **Main** yöntemine ekleyin:
+14. **Main** yöntemindeki kodu aşağıdaki kodla değiştirin:
     * IoT Hub ile iletişim kurmak için bir cihaz istemcisi oluşturun.
     * Cihaz ikizi özelliklerini depolamak için bir **cihaz** nesnesi oluşturun.
 
@@ -435,7 +451,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     };
     ```
 
-14. Cihaz istemci hizmetlerini başlatmak için aşağıdaki kodu **Main** yöntemine ekleyin:
+15. Cihaz istemci hizmetlerini başlatmak için aşağıdaki kodu **Main** yöntemine ekleyin:
 
     ```java
     try {
@@ -453,7 +469,7 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     }
     ```
 
-15. Kullanıcının kapanmadan önce **ENTER** tuşuna basması için, **Main** yönteminin sonuna aşağıdaki kodu ekleyin:
+16. Kullanıcının kapanmadan önce **ENTER** tuşuna basması için, **Main** yönteminin sonuna aşağıdaki kodu ekleyin:
 
     ```java
     // Close the app
@@ -465,35 +481,41 @@ Bu bölümde, IoT Hub gönderilen istenen özellikleri işleyen ve doğrudan yö
     scanner.close();
     ```
 
-16. `simulated-device\src\main\java\com\mycompany\app\App.java` Dosyayı kaydedin ve kapatın.
+17. **Simulated-device\src\main\java\com\mycompany\app\App.Java** dosyasını kaydedin ve kapatın.
 
-17. **Sanal cihaz** uygulamasını oluşturun ve hataları düzeltin. Komut istemindeki `simulated-device` klasöre gidin ve aşağıdaki komutu çalıştırın:
+18. **Sanal cihaz** uygulamasını oluşturun ve hataları düzeltin. Komut istemindeki **sanal cihaz** klasörüne gidin ve şu komutu çalıştırın:
 
-    `mvn clean package -DskipTests`
+    ```cmd/sh
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 
 Artık konsol uygulamalarını çalıştırmaya hazırsınız.
 
-1. `simulated-device` Klasörde bir komut isteminde, istenen özellik değişiklikleri ve doğrudan Yöntem çağrıları için dinleme yapan cihaz uygulamasını başlatmak için aşağıdaki komutu çalıştırın:
+1. **Sanal cihaz** klasöründeki bir komut isteminde, istenen özellik değişiklikleri ve doğrudan Yöntem çağrıları için dinleme yapan cihaz uygulamasını başlatmak için aşağıdaki komutu çalıştırın:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+   ```cmd/sh
+   mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+   ```
 
-    ![Cihaz istemcisi başlar](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
+   ![Cihaz istemcisi başlar](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
 2. Bir komut isteminde `schedule-jobs` , iki işi çalıştırmak için **Schedule-Jobs** hizmet uygulamasını çalıştırmak için aşağıdaki komutu çalıştırın. İlk olarak, istenen özellik değerlerini ayarlar, ikincisi doğrudan yöntemini çağırır:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+   ```cmd\sh
+   mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+   ```
 
-    ![Java IoT Hub hizmet uygulaması iki iş oluşturuyor](./media/iot-hub-java-java-schedule-jobs/service-app-1.png)
+   ![Java IoT Hub hizmet uygulaması iki iş oluşturuyor](./media/iot-hub-java-java-schedule-jobs/service-app-1.png)
 
 3. Cihaz uygulaması, istenen özellik değişikliğini ve doğrudan yöntem çağrısını işler:
 
-    ![Cihaz istemcisi değişikliklere yanıt veriyor](./media/iot-hub-java-java-schedule-jobs/device-app-2.png)
+   ![Cihaz istemcisi değişikliklere yanıt veriyor](./media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure portalında yeni bir IoT hub'ı yapılandırdınız ve ardından IoT hub'ının kimlik kayıt defterinde bir cihaz kimliği oluşturdunuz. İki işi çalıştırmak için bir arka uç uygulaması oluşturdunuz. İlk iş istenen özellik değerlerini ve ikinci işi doğrudan yöntem olarak adlandırmıştı.
+Bu öğreticide, bir cihaza doğrudan yöntem zamanlamak ve Device ikizi 'in özelliklerinin güncelleştirilmesi için bir iş kullandınız.
 
 Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki kaynakları kullanın:
 

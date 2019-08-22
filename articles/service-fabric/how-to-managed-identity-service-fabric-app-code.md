@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f0944e9fddc0afb28f758ba7b16232330d3bc34d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635536"
+ms.locfileid: "69656617"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma (Önizleme)
 
@@ -60,7 +60,7 @@ burada:
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | MSI_ENDPOINT ortam değişkeni aracılığıyla sağlanmış Service Fabric uygulamalar için yönetilen kimlik uç noktası. |
 | `api-version` | Yönetilen kimlik belirteci hizmetinin API sürümünü belirten bir sorgu dizesi parametresi; Şu anda kabul edilen tek değer `2019-07-01-preview`, ve değiştirilebilir. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, verilen belirtecin `aud` (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama KIMLIĞI URI 'SI https://keyvault.azure.com/ olan Azure Key Vault erişmek için bir belirteç ister. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, verilen belirtecin `aud` (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama kimliği URI 'si https:\//keyvault.Azure.com/olan Azure Key Vault erişmek için bir belirteç ister. |
 | `Secret` | Çağıranın kimliğini doğrulamak için Service Fabric Hizmetleri için Service Fabric yönetilen kimlik belirteci hizmeti için gerekli olan bir HTTP istek üst bilgisi alanı. Bu değer, MSI_SECRET ortam değişkeni aracılığıyla SF Runtime tarafından sağlanır. |
 
 

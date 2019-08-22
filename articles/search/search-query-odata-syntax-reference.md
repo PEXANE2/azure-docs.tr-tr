@@ -1,13 +1,13 @@
 ---
-title: OData ifadesi söz dizimi başvurusu - Azure Search
-description: Resmi dilbilgisi ve dizilim belirtimi Azure arama sorguları OData ifadeler için.
+title: OData ifadesi söz dizimi başvurusu-Azure Search
+description: Azure Search sorgularında OData ifadeleri için biçimsel dilbilgisi ve sözdizimi belirtimi.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428650"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647486"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure Search için OData ifadesi söz dizimi başvurusu
+# <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure Search için OData ifade söz dizimi başvurusu
 
-Azure Search kullanan [OData ifadeleri](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) API boyunca parametre olarak. OData ifadeler için en yaygın olarak kullanılan `$orderby` ve `$filter` parametreleri. Bu ifadeler, birden çok yan tümceleri, İşlevler ve işleçler içeren karmaşık olabilir. Ancak, daha basit OData ifadeleri yolları birçok Azure Search REST API bölümlerinde kullanılan özellik ister. Örneğin, yol ifadelerini API'sindeki zaman listeleme alt alanlar gibi her yerde, karmaşık alanlarının alt alanlara başvurmak için kullanılan bir [öneri aracı](index-add-suggesters.md), [işlevi Puanlama](index-add-scoring-profiles.md), `$select` parametresi , hatta [fielded Search'te Lucene sorgu](query-lucene-syntax.md).
+Azure Search, API 'de [OData ifadelerini](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) parametre olarak kullanır. En yaygın olarak, OData ifadeleri `$orderby` ve `$filter` parametreleri için kullanılır. Bu ifadeler, birden çok yan tümce, işlev ve işleç içeren karmaşık olabilir. Ancak, Azure Search REST API birçok bölümünde Özellik yolları gibi basit OData ifadeleri de kullanılır. Örneğin, yol ifadeleri, API 'de alt alanlar, bir [Puanlama işlevi](index-add-scoring-profiles.md), `$select` parametre, hatta [](index-add-suggesters.md) [Lucene içindeki ara değerli arama gibi karmaşık alanların alt alanlarına başvurmak için kullanılır. sorgular](query-lucene-syntax.md).
 
-Bu makalede, bu formları resmi dilbilgisi kullanarak OData ifadelerin açıklanır. Ayrıca bir [etkileşimli çizimin](#syntax-diagram) dilbilgisi görsel olarak keşfedin yardımcı olmak için.
+Bu makalede, bir biçimsel dilbilgisi kullanılarak bu OData ifadelerinin tüm biçimleri açıklanmaktadır. Ayrıca, dilbilgisi görsel olarak araştırmanıza yardımcı olacak [etkileşimli bir diyagram](#syntax-diagram) de vardır.
 
-## <a name="formal-grammar"></a>Resmi dilbilgisi
+## <a name="formal-grammar"></a>Biçimsel dilbilgisi
 
-Biz bir EBNF kullanarak Azure Search tarafından desteklenen OData dil kümesini açıklayın ([genişletilmiş Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) Dilbilgisi. Kurallar, "yukarıdan aşağıya", en karmaşık ifadeleri ile başlayan ve daha basit ifadelere bozucu listelenir. Üst kısmında, Azure Search REST API'sine belirli parametrelere karşılık gelir dilbilgisi kurallar şunlardır:
+EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) dilbilgisi kullanılarak Azure Search tarafından desteklenen OData dilinin alt kümesini açıklayabilir. Kurallar, en karmaşık ifadelerle başlayarak "yukarıdan aşağı" listelenir ve bunları daha basit ifadelere bölmek için kullanılır. En üstte Azure Search REST API belirli parametrelere karşılık gelen dilbilgisi kurallarıdır:
 
-- [`$filter`](search-query-odata-filter.md), tarafından tanımlanan `filter_expression` kuralı.
-- [`$orderby`](search-query-odata-orderby.md), tarafından tanımlanan `order_by_expression` kuralı.
-- [`$select`](search-query-odata-select.md), tarafından tanımlanan `select_expression` kuralı.
-- Alan tarafından tanımlanan yollar `field_path` kuralı. Alan yolları API'si kullanılır. Bir dizinin en üst düzey ya da alanları ya da bir veya daha fazla alt alanlarla başvurabilir [karmaşık alan](search-howto-complex-data-types.md) üst öğelerinden.
+- [`$filter`](search-query-odata-filter.md), `filter_expression` kural tarafından tanımlanır.
+- [`$orderby`](search-query-odata-orderby.md), `order_by_expression` kural tarafından tanımlanır.
+- [`$select`](search-query-odata-select.md), `select_expression` kural tarafından tanımlanır.
+- `field_path` Kural tarafından tanımlanan alan yolları. Alan yolları API 'nin tamamında kullanılır. Bir dizinin en üst düzey alanlarına veya bir ya da daha fazla [karmaşık alan](search-howto-complex-data-types.md) öncülerine sahip alt alanlara başvurabilirler.
 
-EBNF'ye bir gözatılabilir sonra [söz dizim diyagramı görülmektedir](https://en.wikipedia.org/wiki/Syntax_diagram) dilbilgisi ve ilişkileri kurallarını arasında etkileşimli olarak keşfetmek sağlar.
+EBNF, dilbilgisi ve kuralları arasındaki ilişkileri etkileşimli bir şekilde keşfetmenizi sağlayan gözatılabilir bir [sözdizimi diyagramıdır](https://en.wikipedia.org/wiki/Syntax_diagram) .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>Söz dizimi diyagramı
+## <a name="syntax-diagram"></a>Sözdizimi diyagramı
 
-Azure arama tarafından desteklenen OData dil dilbilgisi görsel olarak araştırmak için etkileşimli söz dizim diyagramı görülmektedir deneyin:
+Azure Search tarafından desteklenen OData dil dilbilgisini görsel olarak araştırmak için etkileşimli sözdizimi diyagramını deneyin:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData söz dizimini diyagramı](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-- [Azure Search'te filtreler](search-filters.md)
-- [Search belgeleri &#40;Azure arama hizmeti REST API'si&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Search filtreler](search-filters.md)
+- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene sorgu söz dizimi](query-lucene-syntax.md)
-- [Azure Search'te Basit Sorgu söz dizimi](query-simple-syntax.md)
+- [Azure Search basit sorgu söz dizimi](query-simple-syntax.md)

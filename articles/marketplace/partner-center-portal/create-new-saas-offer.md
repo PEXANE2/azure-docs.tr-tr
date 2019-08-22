@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033558"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650709"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -302,12 +302,7 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 
     Yukarıdaki şöyle görünür:
 
-    <h1>Bu başlık 1 ' dir</h1> 
-    <h2>Bu başlık 2 ' dir</h2> 
-    <h3>Bu, başlık 3 ' ün</h3> 
-    <h4>Bu başlık 4 ' ün</h4> 
-    <h5>Bu başlık 5 ' tir</h5> 
-    <h6>Bu başlık 6 ' dır</h6> 
+    ![Örnek başlıklar](./media/heading.png)
 
 #### <a name="links"></a>Bağlantılar
 

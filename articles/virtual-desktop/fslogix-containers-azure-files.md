@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
-ms.translationtype: MT
+ms.openlocfilehash: 54d3f175e74b9f94c7845725e3d8f4531750df57
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947211"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877568"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -86,7 +86,7 @@ Windows sanal masaüstü, müşteriler tarafından kullanılmakta olan VM 'lerin
 Windows sanal masaüstü ortamınızın en iyi yöntemleri takip edin:
 
 - Azure dosyaları depolama hesabı, oturum ana bilgisayar VM 'Leri ile aynı bölgede olmalıdır.
-- Azure dosyaları izinleri, [gereksinimler profil kapsayıcılarında](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers)açıklanan izinlerle eşleşmelidir.
+- Azure dosyaları izinleri, [gereksinimler profil kapsayıcılarında](https://docs.microsoft.com/fslogix/overview#requirements)açıklanan izinlerle eşleşmelidir.
 - Her konak havuzunun aynı ana görüntüye göre aynı tür ve boyut VM 'si oluşturulması gerekir.
 - Yönetim, ölçeklendirme ve güncelleştirme yardımcı olması için her bir konak havuzu sanal makinesi aynı kaynak grubunda olmalıdır.
 - En iyi performans için, depolama çözümü ve FSLogix profili kapsayıcısı aynı veri merkezi konumunda olmalıdır.
@@ -99,6 +99,6 @@ Windows sanal masaüstü ortamı ayarlamak için aşağıdaki kılavuzlardan yar
 - Masaüstü Sanallaştırma çözümünüzü oluşturmaya başlamak için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md).
 - Windows sanal masaüstü kiracınızda bir konak havuzu oluşturmak için bkz. [Azure Marketi ile konak havuzu oluşturma](create-host-pools-azure-marketplace.md).
 - Bulutta tam olarak yönetilen dosya paylaşımları ayarlamak için bkz. [Azure dosyaları paylaşımını ayarlama](/articles/storage/files/storage-files-active-directory-enable.md).
-- FSLogix profil kapsayıcılarını yapılandırmak için bkz. [bir konak havuzu için Kullanıcı profili paylaşma ayarlama](create-host-pools-user-profile.md).
+- FSLogix profil kapsayıcılarını yapılandırmak için, bkz. bir [dosya paylaşımının kullanıldığı konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md).
 - Kullanıcıları bir konak havuzuna atamak için bkz. [Windows sanal masaüstü için uygulama gruplarını yönetme](manage-app-groups.md).
 - Windows sanal masaüstü kaynaklarınıza bir Web tarayıcısından erişmek için bkz. [Windows sanal masaüstüne bağlanma](connect-web.md).

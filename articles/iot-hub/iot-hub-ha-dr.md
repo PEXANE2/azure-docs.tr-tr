@@ -5,18 +5,18 @@ author: rkmanda
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 32caebf8ea216050427f4400102cf56ffc657b55
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875256"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876904"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma IoT Hub
 
-Dayanıklı bir IoT çözümünü uygulamaya yönelik ilk adım olarak mimarlar, geliştiriciler ve iş sahipleri oluşturmakta oldukları çözümlerin çalışma süresi hedeflerini tanımlamalıdır. Bu hedefler, öncelikle her senaryo için belirli iş hedeflerine göre tanımlanabilir. Bu bağlamda, [Azure Iş sürekliliği Technical Guidance](https://docs.microsoft.com/azure/architecture/resiliency/) makalesinde iş sürekliliği ve olağanüstü durum kurtarma hakkında bilgi almanıza yardımcı olacak genel bir çerçeve açıklanmaktadır. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](https://msdn.microsoft.com/library/dn251004.aspx) sayfası, yüksek KULLANıLABILIRLIK (ha) ve olağanüstü durum kurtarma (Dr) sağlamak için Azure uygulamalarına yönelik stratejiler hakkında mimari yönergeler sağlar.
+Dayanıklı bir IoT çözümünü uygulamaya yönelik ilk adım olarak mimarlar, geliştiriciler ve iş sahipleri oluşturmakta oldukları çözümlerin çalışma süresi hedeflerini tanımlamalıdır. Bu hedefler, öncelikle her senaryo için belirli iş hedeflerine göre tanımlanabilir. Bu bağlamda, [Azure Iş sürekliliği Technical Guidance](https://docs.microsoft.com/azure/architecture/resiliency/) makalesinde iş sürekliliği ve olağanüstü durum kurtarma hakkında bilgi almanıza yardımcı olacak genel bir çerçeve açıklanmaktadır. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) sayfası, yüksek KULLANıLABILIRLIK (ha) ve olağanüstü durum kurtarma (Dr) sağlamak için Azure uygulamalarına yönelik stratejiler hakkında mimari yönergeler sağlar.
 
 Bu makalede, özellikle IoT Hub hizmeti tarafından sunulan HA ve DR özellikleri ele alınmaktadır. Bu makalede ele alınan geniş bölgeler şunlardır:
 
@@ -41,7 +41,7 @@ IoT Hub hizmeti, hizmetin neredeyse tüm katmanlarında artıklıkları uygulaya
 
 Bir veri merkezinde güç kesintileri veya fiziksel varlıklar içeren diğer hatalardan dolayı genişletilmiş kesintiler yaşandığında bazı nadir durumlar olabilir. Bu tür olaylar, yukarıda açıklanan bölge içi HA yeteneğinin her zaman yardımcı olabileceği nadir bir durumdur. IoT Hub, bu tür genişletilmiş kesintilerden kurtarmak için birden çok çözüm sağlar. 
 
-Bu tür bir durumda müşterilere sunulan kurtarma seçenekleri "Microsoft tarafından başlatılan yük devretme" ve "el ile yük devretme" seçenekleridir. İkisi arasındaki temel fark, Microsoft 'un daha önce başlattığı ve kullanıcının ikincisini başlatmanızdır. Ayrıca, el ile yük devretme, Microsoft tarafından başlatılan yük devretme seçeneğiyle karşılaştırıldığında daha düşük bir kurtarma süresi hedefi (RTO) sağlar. Her seçenekle sunulan belirli RTOs aşağıdaki bölümlerde ele alınmıştır. Birincil bölgesinden bir IoT Hub 'ı yük devretme işlemi gerçekleştirmek için bu seçeneklerden biri çalıştırıldığında, hub ilgili [Azure coğrafi eşlenmiş bölgesinde](../best-practices-availability-paired-regions.md)tam olarak işlevsel hale gelir.
+Bu tür bir durumda müşterilere sunulan kurtarma seçenekleri [Microsoft tarafından başlatılan yük devretme](#microsoft-initiated-failover) ve [el ile yük devretme](#manual-failover)sağlar. İkisi arasındaki temel fark, Microsoft 'un daha önce başlattığı ve kullanıcının ikincisini başlatmanızdır. Ayrıca, el ile yük devretme, Microsoft tarafından başlatılan yük devretme seçeneğiyle karşılaştırıldığında daha düşük bir kurtarma süresi hedefi (RTO) sağlar. Her seçenekle sunulan belirli RTOs aşağıdaki bölümlerde ele alınmıştır. Birincil bölgesinden bir IoT Hub 'ı yük devretme işlemi gerçekleştirmek için bu seçeneklerden biri çalıştırıldığında, hub ilgili [Azure coğrafi eşlenmiş bölgesinde](../best-practices-availability-paired-regions.md)tam olarak işlevsel hale gelir.
 
 Bu yük devretme seçeneklerinin her ikisi de aşağıdaki kurtarma noktası hedeflerini (RPOs) sunar:
 
@@ -55,26 +55,24 @@ Bu yük devretme seçeneklerinin her ikisi de aşağıdaki kurtarma noktası hed
 | İşlem izleme iletileri |Tüm okunmamış iletiler kayboluyor |
 | Buluttan cihaza geri bildirim iletileri |Tüm okunmamış iletiler kayboluyor |
 
-<sup>1</sup> Buluttan cihaza iletiler ve üst işler, bu özelliğin önizleme sunumunda el ile yük devretmenin bir parçası olarak kurtarılmaz.
+<sup>1</sup> Buluttan cihaza iletiler ve üst işler, el ile yük devretmenin bir parçası olarak kurtarılmaz.
 
-IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka uç uygulamalardaki tüm işlemlerin el ile müdahale gerekmeden çalışmaya devam etmesi beklenir.
+IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka uç uygulamalardaki tüm işlemlerin el ile müdahale gerekmeden çalışmaya devam etmesi beklenir. Bu, cihazdan buluta iletilerinizin çalışmaya devam etmesi ve tüm cihaz kayıt defterinin bozulmadan emin olması anlamına gelir. Event Grid aracılığıyla yayılan olaylar, daha önce yapılandırılan ve bu Event Grid abonelikleri kullanılabilir olmaya devam eden abonelik (ler) i üzerinden tüketilebilir.
 
 > [!CAUTION]
 > - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Arka uç uygulamanızda Olay Hub 'ı ile uyumlu adı ve uç noktayı doğrudan kullanırsanız, işleme devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu adı ve uç noktasını getirerek](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) uygulamanızı yeniden yapılandırmanız gerekir.
 >
-> - Yük devretmeden sonra, Event Grid aracılığıyla yayılan olaylar, daha önce yapılandırılan Event Grid abonelikleri kullanılabilir olmaya devam ederken, daha önce yapılandırılmış abonelikler aracılığıyla tüketilebilir.
->
 > - BLOB depolama alanına yönlendirirken, tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için Blobları listeleyip daha sonra bu nesnelerin üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Blob 'ların listesini numaralandırma hakkında bilgi edinmek için bkz. [BLOB depolamaya yönlendirme](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
-### <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
+## <a name="microsoft-initiated-failover"></a>Microsoft tarafından başlatılan yük devretme
 
 Microsoft tarafından başlatılan yük devretme, etkilenen bir bölgeden gelen tüm IoT Hub 'larını ilgili coğrafi eşleştirilmiş bölgeye devretmek için Microsoft tarafından sık görülen durumlarda gerçekleştirilir. Bu işlem, varsayılan bir seçenektir (kullanıcıların hiçbir şekilde geri çevirmesine yol yoktur) ve kullanıcıdan müdahale gerektirmez. Microsoft bu seçeneğin ne zaman belirlendiğini belirleme hakkını saklı tutar. Bu mekanizma, kullanıcının hub 'ının yük devretmediği bir kullanıcı onayı içermez. Microsoft tarafından başlatılan yük devretme, 2-26 saat boyunca bir kurtarma süresi hedefi (RTO) içerir. 
 
 Büyük RTO, Microsoft 'un bu bölgedeki tüm etkilenen müşteriler adına yük devretme işlemini gerçekleştirmesi gerekir. Yaklaşık bir gün boyunca kapalı kalma süresine yol açmış daha az kritik bir IoT çözümü çalıştırıyorsanız, IoT çözümünüz için genel olağanüstü durum kurtarma hedeflerini karşılamak üzere bu seçeneğe bir bağımlılık uygulamanız gerekir. Bu işlem tetiklendikten sonra çalışma zamanının tamamen işlemsel hale gelmesi için geçen toplam süre, "kurtarma süresi" bölümünde açıklanmaktadır.
 
-### <a name="manual-failover-preview"></a>El ile yük devretme (Önizleme)
+## <a name="manual-failover"></a>El ile yük devretme
 
-İş çalışma süresi hedefleriniz, Microsoft tarafından başlatılan yük devretmesinin sağladığı RTO tarafından karşılanmıyorsa, yük devretme işlemini kendiniz tetiklemek için el ile yük devretmeyi kullanmayı düşünmelisiniz. Bu seçeneği kullanan RTO, 10 dakikadan birkaç saat arasında bir süre olabilir. RTO Şu anda yük devretmekte olan IoT Hub örneğine göre kayıtlı cihazların sayısının bir işlevidir. Yaklaşık 100.000 cihazı barındıran bir hub için RTO 'ın 15 dakikalık tahmini olmasını sağlayabilirsiniz. Bu işlem tetiklendikten sonra çalışma zamanının tamamen işlemsel hale gelmesi için geçen toplam süre, "kurtarma süresi" bölümünde açıklanmaktadır.
+İş çalışma süresi hedefleriniz, Microsoft 'un başlattığı yük devretmesinin sağladığı RTO tarafından karşılanmıyorsa, yük devretme işlemini kendiniz tetiklemek için el ile yük devretme kullanmayı düşünün. Bu seçeneği kullanan RTO, 10 dakikadan birkaç saat arasında bir süre olabilir. RTO Şu anda yük devretmekte olan IoT Hub örneğine göre kayıtlı cihazların sayısının bir işlevidir. Yaklaşık 100.000 cihazı barındıran bir hub için RTO 'ın 15 dakikalık tahmini olmasını sağlayabilirsiniz. Bu işlem tetiklendikten sonra çalışma zamanının tamamen işlemsel hale gelmesi için geçen toplam süre, "kurtarma süresi" bölümünde açıklanmaktadır.
 
 El ile yük devretme seçeneği, birincil bölgenin kapalı kalma süresi yaşamadan bağımsız olarak her zaman kullanılabilir. Bu nedenle, bu seçenek planlı yük devretme işlemleri gerçekleştirmek için kullanılabilir. Planlı Yük devretmelerin bir örnek kullanımı, düzenli yük devretme detaylarını gerçekleştirmenin bir örneğidir. Bir sözcük, planlı bir yük devretme işleminin, bu seçenek için RTO tarafından tanımlanan süre için Hub için kapalı kalma süresi ile sonuçlanmasına ve ayrıca yukarıdaki RPO tablosu tarafından tanımlanan bir veri kaybına neden olmasına neden olur. Gerçek bir olağanüstü durum oluştuğunda uçtan uca çözümlerinizi çalışır duruma getirme olanınızdan güvenle yararlanmak üzere planlı yük devretme seçeneğini düzenli aralıklarla çalıştırmak için bir test IoT Hub örneği ayarlamayı düşünebilirsiniz.
 
@@ -83,18 +81,18 @@ El ile yük devretme seçeneği, birincil bölgenin kapalı kalma süresi yaşam
 >
 > - El ile yük devretme, hub 'ınızı Azure coğrafi eşleştirilmiş bölgeler arasında kalıcı olarak geçirmek için bir mekanizma olarak kullanılmamalıdır. Bunun yapılması, eski birincil bölgede bulunan cihazlardan hub 'a karşı gerçekleştirilen işlemler için daha fazla gecikme süresine neden olur.
 
-### <a name="failback"></a>Yeniden çalışma
+## <a name="failback"></a>Yeniden çalışma
 
 Yük devretme eylemi başka bir kez tetiklenerek eski birincil bölgeye geri dönme elde edilebilir. Orijinal birincil bölgedeki genişletilmiş kesintiden kurtarmak için özgün yük devretme işlemi gerçekleştirildiyse, bu konum kesinti durumundan kurtarıldıktan sonra hub 'ın özgün konuma geri dönmesi önerilir.
 
 > [!IMPORTANT]
 > - Kullanıcılar günde yalnızca 2 başarılı yük devretme ve 2 başarılı yeniden çalışma işlemi gerçekleştirmeye izin verilir.
 >
-> - Geri yük devretme/yeniden çalışma işlemlerine geri izin verilmiyor. Kullanıcıların bu işlemler arasında 1 saat beklemesi gerekir.
+> - Geri yük devretme/yeniden çalışma işlemlerine geri izin verilmiyor. Bu işlemler arasında 1 saat beklemeniz gerekir.
 
-### <a name="time-to-recover"></a>Kurtarılacak süre
+## <a name="time-to-recover"></a>Kurtarılacak süre
 
-IoT Hub örneğinin FQDN (ve dolayısıyla bağlantı dizesi), yük devretme sonrası aynı kaldığı halde, temel alınan IP adresi değişir. Bu nedenle, yük devretme işlemi tetiklendikten sonra IoT Hub örneğiniz için gerçekleştirilen çalışma zamanı işlemleri için genel süre, aşağıdaki işlev kullanılarak ifade edilebilir.
+IoT Hub örneğinin FQDN (ve bu nedenle bağlantı dizesi), yük devretme sonrası aynı kaldığı halde, temel alınan IP adresi değişir. Bu nedenle, yük devretme işlemi tetiklendikten sonra IoT Hub örneğiniz için gerçekleştirilen çalışma zamanı işlemleri için genel süre, aşağıdaki işlev kullanılarak ifade edilebilir.
 
 Kurtarma zamanı = RTO [10 dk-2 saat, el ile yük devretme için | 2-26 saat | Microsoft tarafından başlatılan yük devretme için, istemci uygulaması tarafından alınan, önbelleğe alınmış IoT Hub IP adreslerini yenilemek için geçen süre.
 
@@ -127,13 +125,12 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Yok.|None|
+| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Yok.|Yok.|
 | El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Yok.|
 | Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|Hayır|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Hub hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
-
-* [IoT Hub 'Larını kullanmaya başlama (hızlı başlangıç)](quickstart-send-telemetry-dotnet.md)
 * [Azure IoT Hub nedir?](about-iot-hub.md)
+* [IoT Hub 'Larını kullanmaya başlama (hızlı başlangıç)](quickstart-send-telemetry-dotnet.md)
+* [Öğretici: IoT Hub 'ı için el ile yük devretme gerçekleştirme](tutorial-manual-failover.md)

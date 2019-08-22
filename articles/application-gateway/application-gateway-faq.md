@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740880"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891716"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -361,6 +360,13 @@ Ayrıca, Application Gateway erişim günlükleri için popüler [Goaccess](http
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>Arka uç durumunun bilinmeyen bir durum döndürmesine neden olabilir?
 
 Genellikle, arka uca erişim bir ağ güvenlik grubu (NSG), özel DNS veya uygulama ağ geçidi alt ağında Kullanıcı tanımlı yönlendirme (UDR) tarafından engellendiğinde bilinmeyen bir durum görürsünüz. Daha fazla bilgi için bkz. [Application Gateway Için arka uç sistem durumu, tanılama günlüğü ve ölçümler](application-gateway-diagnostics.md).
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>NSG akış günlüklerinin izin verilen trafiği göstermeyeceği bir durum var mı?
+
+Evet. Yapılandırmanız aşağıdaki senaryoda eşleşiyorsa NSG akış günlüklerinizin izin verilen trafiğini görmezsiniz:
+- Application Gateway v2 'yi dağıttıysanız
+- Application Gateway alt ağında bir NSG var
+- NSG akış günlüklerini bu NSG 'de etkinleştirdiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

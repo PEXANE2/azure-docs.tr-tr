@@ -1,41 +1,41 @@
 ---
-title: Azure Search Blob dizin oluşturucu - Azure Search ile dizin CSV BLOB'ları
-description: CSV blobları Azure Search dizini kullanarak tam metin araması için Azure Blob Depolama alanında gezinin. Dizin oluşturucular veri alımı Azure Blob Depolama gibi seçili veri kaynakları için otomatik hale getirin.
+title: CSV bloblarını Azure Search blob Indexer ile dizinle Azure Search
+description: Azure Search bir dizin kullanarak tam metin araması için Azure Blob depolamada CSV bloblarını gezin. Dizin oluşturucular, Azure Blob depolama gibi seçili veri kaynakları için veri alımını otomatik hale getirir.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b135fd1a0758567a7b504996bf442a913741fe59
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522909"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656767"
 ---
-# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search blob dizin oluşturucu ile CSV bloblarını dizine ekleme
+# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search blob Indexer ile CSV bloblarını dizine ekleme
 
 > [!Note]
-> Ayrıştırma modu delimitedText olduğunu Önizleme ve amaçlayan üretim kullanımı için değildir. [2019-05-06-Önizleme REST API sürümü](search-api-preview.md) bu özelliği sağlar. .NET SDK'sı desteği şu anda yoktur.
+> delimitedText ayrıştırma modu önizlemededir ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
 
-Varsayılan olarak, [Azure Search blob dizin oluşturucu](search-howto-indexing-azure-blob-storage.md) ayrıştırıyor sınırlandırılmış metin BLOB'ları tek bir metin parçası. Ancak, CSV verileri içeren BLOB'ları ile genellikle her satır ayrı bir belge olarak blob işlemesi gerektiğini istersiniz. Örneğin, aşağıdaki sınırlandırılmış metin göz önünde bulundurulduğunda, iki belgelere ayrıştırmak isteyebilirsiniz "id", "datePublished" ve "tags" alanlar içeren her: 
+Varsayılan olarak, [Azure Search blob Indexer](search-howto-indexing-azure-blob-storage.md) , ayrılmış metin bloblarını tek bir metin öbeği olarak ayrıştırır. Ancak, CSV verileri içeren bloblarla, genellikle blobdaki her satırı ayrı bir belge olarak değerlendirmek istersiniz. Örneğin, aşağıdaki sınırlandırılmış metin verildiğinde, her biri "ID", "Dateyayınlanan" ve "Tags" alanlarını içeren iki belgeye ayrıştırın: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Bu makalede, bir Azure Search blob indexerby ayarıyla CSV bloblarını ayrıştırmayı öğreneceksiniz `delimitedText` ayrıştırma modu. 
+Bu makalede `delimitedText` ayrıştırma modunu ayarlama indexerby blob Azure Search ile CSV bloblarını ayrıştırmanın nasıl yapılacağını öğreneceksiniz. 
 
 > [!NOTE]
-> Dizin Oluşturucu yapılandırma önerileri izleyin [bire çok dizin](search-howto-index-one-to-many-blobs.md) birden çok arama belgeden bir Azure blob çıktı olarak.
+> Birden çok arama belgesini bir Azure blobundan çıkarmak için [bire çok dizin oluşturma](search-howto-index-one-to-many-blobs.md) içindeki Dizin Oluşturucu yapılandırma önerilerini izleyin.
 
-## <a name="setting-up-csv-indexing"></a>CSV Dizin oluşturma ayarlama
-CSV bloblarını dizine oluşturun veya bir dizin oluşturucu tanımı ile güncelleştirmek için `delimitedText` üzerinde modu ayrıştırılırken bir [dizin oluşturucu oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer) isteği:
+## <a name="setting-up-csv-indexing"></a>CSV dizinlemeyi ayarlama
+CSV bloblarını indekslemek için, bir Dizin Oluşturucu `delimitedText` [oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer) isteğinde ayrıştırma moduyla bir Dizin Oluşturucu tanımı oluşturun veya güncelleştirin:
 
     {
       "name" : "my-csv-indexer",
@@ -43,27 +43,27 @@ CSV bloblarını dizine oluşturun veya bir dizin oluşturucu tanımı ile günc
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-`firstLineContainsHeaders` Her blobun ilk (boş olmayan) satır üst bilgileri içerdiğini gösterir.
-Blobları ilk üst bilgi satırı içermiyorsa, üst bilgiler dizin oluşturucu yapılandırmasında belirtilen: 
+`firstLineContainsHeaders`Her Blobun ilk (boş olmayan) satırın üstbilgiler içerdiğini belirtir.
+Blob 'lar bir başlangıç üst bilgisi satırı içermiyorsa, üst bilgiler Dizin Oluşturucu yapılandırmasında belirtilmelidir: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Sınırlayıcı karakter kullanarak özelleştirebileceğiniz `delimitedTextDelimiter` yapılandırma ayarı. Örneğin:
+`delimitedTextDelimiter` Yapılandırma ayarını kullanarak sınırlayıcı karakteri özelleştirebilirsiniz. Örneğin:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> Şu anda yalnızca UTF-8 kodlaması desteklenir. Diğer kodlamaları için destek gerekiyorsa, bunun için oy [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Şu anda yalnızca UTF-8 kodlaması desteklenir. Diğer kodlamalar için desteğe ihtiyacınız varsa [UserVoice](https://feedback.azure.com/forums/263029-azure-search)üzerinde oy verin.
 
 > [!IMPORTANT]
-> Ayrıştırma modu sınırlandırılmış metin kullandığınızda, Azure Search veri kaynağındaki tüm blobları CSV olacağını varsayar. CSV ve CSV olmayan bloblar bir karışımını aynı veri kaynağında desteklemeniz gerekiyorsa, lütfen için oy verin [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Sınırlandırılmış metin ayrıştırma modunu kullandığınızda Azure Search, veri kaynağınızdaki tüm Blobların CSV olacağını varsayar. Aynı veri kaynağında CSV ve CSV olmayan Blobların bir karışımını desteketmeniz gerekiyorsa lütfen [UserVoice](https://feedback.azure.com/forums/263029-azure-search)üzerinde oy verin.
 > 
 > 
 
-## <a name="request-examples"></a>Örnek istek
-Bu tüm koyarak birlikte eksiksiz yükü örnekler aşağıdadır. 
+## <a name="request-examples"></a>İstek örnekleri
+Tümünü bir araya getirmek, tüm yük örnekleri aşağıda verilmiştir. 
 
-Veri kaynağı: 
+DataSource 
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
     Content-Type: application/json
@@ -76,7 +76,7 @@ Veri kaynağı:
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
-Dizin Oluşturucu:
+Dizinleyic
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
     Content-Type: application/json
@@ -89,6 +89,6 @@ Dizin Oluşturucu:
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-search-better"></a>Azure Search iyileştirmemize yardımcı olun
-Özellik istekleri veya geliştirmeleri için fikriniz varsa, girdi sağlayın [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-search-better"></a>Azure Search daha iyi hale getirmemize yardımcı olun
+Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin.
 

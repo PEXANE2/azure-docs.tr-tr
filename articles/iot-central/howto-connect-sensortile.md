@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Central uygulamanızı SensorTile.box cihaz bağlayın | Microsoft Docs
-description: Bir cihaz geliştirici olarak, Azure IOT Central uygulamanıza SensorTile.box cihaz bağlanmayı öğreneceksiniz.
+title: SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlama | Microsoft Docs
+description: Bir cihaz geliştiricisi olarak, bir SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlamayı öğrenin.
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 04/24/2019
@@ -8,100 +8,102 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472250"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877442"
 ---
-# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Azure IOT Central uygulamanıza SensorTile.box cihazı bağlayın
+# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlama
 
-Bu makalede, Microsoft Azure IOT Central uygulamanıza SensorTile.box cihaz bağlayamama ek olarak, cihaz geliştirici olarak nasıl.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Bu makalede, bir cihaz geliştiricisi olarak, bir SensorTile. Box cihazını Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi açıklar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynakları gerekir:
+Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-* Bir SensorTile.box cihaz. Daha fazla bilgi için [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
-* Android Cihazınızda yüklü ST BLO algılayıcı uygulama yapabilecekleriniz [buradan indirin](https://play.google.com/store/apps/details?id=com.st.bluems). Daha fazla bilgi için bkz.: [ST BLO algılayıcısı](https://www.st.com/stblesensor)
-* Oluşturulan bir Azure IOT Central uygulamasına **DevKits** uygulama şablonu. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-* Ekleme **SensorTile.box** cihaz şablonu ederek, IOT Central uygulamasına **cihaz şablonları** tıklayarak sayfasında **+ yeni**, seçerek**SensorTile.box** şablonu.
+* SensorTile. Box cihazı. Daha fazla bilgi için bkz. [Sensortile. Box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
+* Android cihazınızda yüklü olan uygun olmayan algılayıcı uygulaması [buradan indirebilirsiniz](https://play.google.com/store/apps/details?id=com.st.bluems). Daha fazla bilgi için şu adresi ziyaret edin: [Yok edilebilir algılayıcı](https://www.st.com/stblesensor)
+* **Devkits** uygulama şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+* **Cihaz şablonları** sayfasını ziyaret edin ve **+ Yeni**' ye tıklayıp **sensortile. Box** şablonunu seçerek **sensortile. Box** cihaz şablonunu IoT Central uygulamanıza ekleyin.
 
-### <a name="get-your-device-connection-details"></a>Cihazınızı bağlantı ayrıntılarını Al
+### <a name="get-your-device-connection-details"></a>Cihaz bağlantınızın ayrıntılarını alın
 
-Azure IOT Central uygulamanızda gerçek bir CİHAZDAN ekleme **SensorTile.box** cihaz şablonu ve cihaz bağlantı ayrıntılarını not olun: **Kapsam kimliği**, **cihaz kimliği**, ve **birincil anahtar**:
+Azure IoT Central uygulamanızda, **Sensortile. Box** cihaz şablonundan gerçek bir cihaz ekleyin ve cihaz bağlantısı ayrıntılarını bir yere göz önünde alın: **Kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**:
 
-1. Device Explorer bir cihaz ekleyin. Seçin **+ yeni > gerçek** gerçek bir cihaz eklemek için.
+1. Device Explorer bir cihaz ekleyin. Gerçek bir cihaz eklemek için **+ yeni > Real** ' ı seçin.
 
-    * Bir küçük harf girin **cihaz kimliği**, veya önerilen **cihaz kimliği**.
-    * Girin bir **cihaz adı**, ya da önerilen adı kullanın
+    * Küçük bir **CIHAZ kimliği**girin veya ÖNERILEN **cihaz kimliğini**kullanın.
+    * Bir **Cihaz adı**girin veya önerilen adı kullanın
 
-    ![Cihaz Ekleme](media/howto-connect-sensortile/real-device.png)
+    ![Cihaz Ekle](media/howto-connect-sensortile/real-device.png)
 
-1. Cihaz bağlantı ayrıntılarını almak için **kapsam kimliği**, **cihaz kimliği**, ve **birincil anahtar**seçin **Connect** cihaz sayfasında.
+1. Cihaz bağlantısı ayrıntılarını, **kapsam kimliğini**, **cihaz kimliğini**ve **birincil anahtarı**almak için cihaz sayfasında **Bağlan** ' ı seçin.
 
     ![Bağlantı ayrıntıları](media/howto-connect-sensortile/connect-device.png)
 
-1. Bağlantı ayrıntılarını not edin. Sonraki adımda DevKit Cihazınızı hazırlarken geçici olarak internet'ten kesilirse.
+1. Bağlantı ayrıntılarını bir yere getirin. Bir sonraki adımda DevKit cihazınızı hazırlarken internet bağlantısı geçici olarak kesilir.
 
-## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Mobil uygulama ile SensorTile.box ayarlama
+## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Mobil uygulamayla SensorTile. Box 'ı ayarlama
 
-Bu bölümde, cihaza uygulama bellenim gönderme konusunda bilgi edinin. Ardından cihaz verilerini IOT Central Bluetooth düşük enerji (etkinleştir) bağlantısı kullanarak ST BLO algılayıcı mobil uygulamada gönderme.
+Bu bölümde, uygulama bellenimini cihaza nasıl gönderebileceğinizi öğreneceksiniz. Daha sonra, Bluetooth düşük enerji (BLE) bağlantısı kullanarak, ıBLE algılayıcı mobil uygulaması aracılığıyla IoT Central cihaz verileri gönderebilirsiniz.
 
-1. ST BLO algılayıcı uygulama açıp tuşuna **yeni uygulama oluştur** düğmesi.
+1. KULLANILABILIR algılayıcı uygulamasını açın ve **Yeni uygulama oluştur** düğmesine basın.
 
-    ![uygulama oluşturma](media/howto-connect-sensortile/create-app.png)
+    ![Uygulama oluştur](media/howto-connect-sensortile/create-app.png)
 
-1. Seçin **barometre** uygulama.
-1. Karşıya yükle düğmesine basın.
+1. **Barometer** uygulamasını seçin.
+1. Karşıya Yükle düğmesine basın.
 
-    ![Barometre karşıya yükleme](media/howto-connect-sensortile/barometer-upload.png)
+    ![Barometer karşıya yükle](media/howto-connect-sensortile/barometer-upload.png)
 
-1. İle SensorTile.box ilişkili YÜRÜT düğmesine basın.
-1. İşlem tamamlandığında SensorTile.box BLO üzerinde sıcaklık, baskısı ve nem akışları.
+1. Sensortuğunuz. Box ile ilişkili Play düğmesine basın.
+1. İşlem tamamlandığında SensorTile. Box sıcaklığın, basınç ve nem duyduğunu bir şekilde akıtılabilir.
 
-## <a name="connect-the-sensortilebox-to-the-cloud"></a>SensorTile.box buluta bağlayın
+## <a name="connect-the-sensortilebox-to-the-cloud"></a>SensorTile. Box 'ı buluta bağlayın
 
-Bu bölümde SensorTile.box mobil uygulamaya bağlanmak ve mobil uygulamanızı buluta bağlayın öğrenin.
+Bu bölümde, SensorTile. Box ' ı mobil uygulamaya bağlamayı ve mobil uygulamayı buluta bağlamayı öğreneceksiniz.
 
-1. Sol menüyü kullanarak seçin **bulut günlüğü** düğmesi.
+1. Sol menüyü kullanarak, **bulut günlüğü** düğmesini seçin.
 
     ![Bulut günlüğü](media/howto-connect-sensortile/cloud-logging.png)
 
-1. Seçin **Azure IOT Central** bulut sağlayıcısı olarak.
-1. Cihaz kimliği ve daha önce belirtildiği kapsam kimliği ekleyin.
+1. Bulut sağlayıcısı olarak **Azure IoT Central** ' yi seçin.
+1. Daha önce belirtilen cihaz KIMLIĞINI ve kapsam KIMLIĞINI ekleyin.
 
     ![Kimlik Bilgileri](media/howto-connect-sensortile/credentials.png)
 
-1. Seçin **uygulama anahtarı** radyo düğmesi.
-1. Tıklayın **Connect** ve telemetri verileri karşıya yüklemek istediğiniz seçin.
-1. Birkaç saniye sonra verileri IOT Central uygulama panosunda görünür.
+1. **Uygulama anahtarı** radyo düğmesini seçin.
+1. **Bağlan** ' a tıklayın ve karşıya yüklemek istediğiniz telemetri verilerini seçin.
+1. Birkaç saniye sonra, veriler IoT Central uygulama panosunda görüntülenir.
 
-## <a name="sensortilebox-device-template-details"></a>SensorTile.box cihaz şablonu ayrıntıları
+## <a name="sensortilebox-device-template-details"></a>SensorTile. Box cihaz şablonu ayrıntıları
 
-Aşağıdaki özelliklere sahip SensorTile.box cihaz şablondan oluşturulan bir uygulama:
+SensorTile. Box cihaz şablonundan oluşturulan, aşağıdaki özelliklere sahip bir uygulama:
 
 ### <a name="telemetry"></a>Telemetri
 
 | Alan adı     | Birimler  | Minimum | Maksimum | Ondalık basamak sayısı |
 | -------------- | ------ | ------- | ------- | -------------- |
-| Nem oranı       | %      | 30       | 90     | 1              |
-| Temp           | °C     | 0     | 40     | 1              |
+| Nem oranı       | %      | 30       | 90     | 1\.              |
+| kopyalar           | 20     | 0     | 40     | 1\.              |
 | basınç       | mbar    | 900     | 1100    | 2              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | Yönetim grubu     | -2000   | 2000    | 0              |
-| accelerometerY | Yönetim grubu     | -2000   | 2000    | 0              |
-| accelerometerZ | Yönetim grubu     | -2000   | 2000    | 0              |
-| gyroscopeX     | dps   | -3276   | 3276    | 1              |
-| gyroscopeY     | dps   | -3276   | 3276    | 1              |
-| gyroscopeZ     | dps   | -3276   | 3276    | 1              |
+| Ivometerx | mg     | -2000   | 2000    | 0              |
+| Iventery | mg     | -2000   | 2000    | 0              |
+| Ivometerz | mg     | -2000   | 2000    | 0              |
+| Jroscopex     | DPS   | -3276   | 3276    | 1\.              |
+| Jroscopey     | DPS   | -3276   | 3276    | 1\.              |
+| Jroscopez     | DPS   | -3276   | 3276    | 1\.              |
 | FFT_X     |    |    |     |               |
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IOT Central uygulamanıza bir SensorTile.box bağlanmak öğrendiniz, önerilen sonraki adıma öğrenmektir [nasıl bir özel cihaz şablonu ayarlama](howto-set-up-template.md) kendi IOT cihazını için.
+Azure IoT Central uygulamanıza bir SensorTile. Box bağlamayı öğrendiğinize göre, önerilen sonraki adım, kendi IoT cihazınız için [özel bir cihaz şablonu ayarlamayı](howto-set-up-template.md) öğrenmektedir.

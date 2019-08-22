@@ -2,7 +2,7 @@
 title: C#Hızlı başlangıç .NET SDK kullanarak dizin oluşturma, yükleme ve sorgulama-Azure Search
 description: .NET SDK Azure Search kullanarak C# dizin oluşturma, verileri yükleme ve sorguları çalıştırma hakkında açıklar.
 author: heidisteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 tags: azure-portal
 services: search
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.openlocfilehash: 6138df5b80f479a54683ec0408b832dd78bff8e4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 6a77ecd91c0d04f0b449d25686578784921987bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847088"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649808"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Hızlı Başlangıç: .NET SDK C# kullanarak Azure Search dizin oluşturma
 > [!div class="op_single_selector"]
@@ -73,7 +73,7 @@ Bu proje için `Microsoft.Azure.Search` NuGet paketinin 9. sürümünü ve en so
 
 1. `Microsoft.Azure.Search` Sürüm 9.0.1 veya üstünü arayıp seçin.
 
-1. Derlemeyi projenize ve çözümünüze eklemek için **sağdaki aç '** a tıklayın.
+1. Derlemeyi projenize ve çözümünüze eklemek için sağdaki aç ' a tıklayın.
 
 1. İçin `Microsoft.Extensions.Configuration.Json`tekrarlayın, sürüm 2.2.0 veya üzerini seçin.
 

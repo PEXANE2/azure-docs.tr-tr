@@ -1,195 +1,195 @@
 ---
 title: Güvenli Azure Bilgi İşlem Mimarisi
-description: Bu başvuru mimarisi için kurumsal düzeyde bir çevre ağı mimarisi, ağ sanal Gereçleri ve diğer araçları kullanır. Bu mimari Savunma Bakanlığı 's güvenli bulut bilgi işlem mimarisi işlevsel gereksinimlerini karşılamak üzere tasarlanmıştır. Tüm kuruluşlar için de kullanılabilir. Bu başvuru, Citrix veya F5 gereçler kullanan iki otomatik seçenekleri içerir.
+description: Kurumsal düzeyde bir DMZ mimarisine yönelik bu başvuru mimarisi, ağ sanal gereçlerini ve diğer araçları kullanır. Bu mimari, savunma 'nın güvenli bulut bilgi Işlem mimarisi Işlev gereksinimlerinin departmanını karşılayacak şekilde tasarlandı. Ayrıca, herhangi bir kuruluş için de kullanılabilir. Bu başvuru, Citrix veya F5 gereçlerini kullanan iki otomatik seçenek içerir.
 author: jahender
 ms.author: jahender
 ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a27eac3d4609f1054b0ef6a9417fe2f1ca53ae4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963238"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656638"
 ---
 # <a name="secure-azure-computing-architecture"></a>Güvenli Azure Bilgi İşlem Mimarisi
 
-ABD Savunma Bakanlığı (DoD) müşteriler iş yüklerini Azure'a dağıtmak, güvenli Sanal ağları ayarlayın ve DoD standartlar ve uygulama tarafından belirlenen hizmetler ve Güvenlik Araçları'nı yapılandırmak Kılavuzu istediniz. 
+ABD İş yüklerini Azure 'a dağıtan Savunma Bakanlığı (DoD) müşterileri, güvenli sanal ağlar ayarlamayı ve DoD standartları ve uygulaması tarafından kullanılabilen güvenlik araçlarını ve hizmetlerini yapılandırmayı istedi. 
 
-Derinlemesine bilgi sistemi Agency (DISA) yayımlanan [güvenli bulut bilgi işlem mimarisi (SCCA) işlevsel gereksinimlerini belge (FRD)](https://iasecontent.disa.mil/stigs/pdf/SCCA_FRD_v2-9.pdf) 2017'de. SCCA derinlemesine bilgi sistemi ağın (DISN) ve ticari bulut sağlayıcısı bağlantı noktaları güvenliğini sağlamak için işlevsel hedefler açıklanmaktadır. Nasıl iş açısından sahipleri güvenli bulut uygulamalarına bağlantı sınırında SCCA da açıklar. Ticari buluta bağlanan her DoD varlık içinde SCCA FRD ortaya konan yönergelere uyması gerekir.
+Savunma bilgileri sistem Kurumu (DıŞA), 2017 içinde [güvenli bulut bilgi Işlem mimarisi (SCCA) Işlevsel gereksinimler belgesi (FRD)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/SCCA_FRD_v2-9.pdf) yayımlandı. SCCA, savunma bilgileri sistem ağının (DISN) ve ticari bulut sağlayıcısı bağlantı noktalarının güvenliğini sağlamaya yönelik işlevsel hedefleri açıklar. SCCA Ayrıca, görev sahiplerinin bağlantı sınırında bulut uygulamalarının güvenliğini nasıl sağladığını açıklar. Ticari buluta bağlanan her DoD varlığı, SCCA FRD 'da belirtilen yönergeleri izlemelidir.
  
-SCCA dört bileşenden oluşur:
+SCCA 'da dört bileşen vardır:
  
-- Sınır bulut erişim noktası (BCAP)
+- Sınır bulutu erişim noktası (BCAP)
 - Sanal veri merkezi güvenlik yığını (VDSS)
-- Yönetilen sanal Veri Merkezi hizmeti (VDMS)
-- Güvenilir bulut kimlik bilgileri Yöneticisi (TCCM) 
+- Sanal veri merkezi yönetilen hizmeti (VDMS)
+- Güvenilen bulut kimlik bilgileri Yöneticisi (TCCM) 
 
-Microsoft Azure'da çalıştırmak IL4 hem IL5 iş yükleri için SCCA gereksinimleri karşılayacak bir çözüm geliştirdi. Bu Azure özgü çözüm güvenli Azure bilgi işlem mimarisi (SACA) olarak adlandırılır. SACA dağıtan müşteriler, uygun SCCA FRD ' dir. Bunlar, DoD müşteriler bunların bağlandıktan sonra iş yüklerini Azure'a taşımak etkinleştirebilirsiniz.
+Microsoft, hem IL4 hem de IL5 iş yükleri için Azure 'da çalışan SCCA gereksinimlerini karşılayan bir çözüm geliştirmiştir. Bu Azure 'a özel çözüm, güvenli Azure bilgi Işlem mimarisi (SACA) olarak adlandırılır. SACA dağıtan müşteriler, SCCA FRD ile uyumlu. Bu kişiler, bağlantı kurulduktan sonra DoD müşterilerinin iş yüklerini Azure 'a taşımasını olanaklı hale getiribilirler.
 
-SCCA rehberlik ve mimariler DoD müşterilerine özgü, ancak en son düzeltmeler SACA Yardım sivil müşterilere güvenilir Internet bağlantısı (TIC) yönergeleriyle uyumlu. En son düzeltmeler, ayrıca Azure ortamlarını korumak için güvenli DMZ uygulamak istediğiniz ticari müşterilere yardımcı olur.
+SCCA Kılavuzu ve mimarileri DoD müşterilerine özeldir, ancak SACA 'daki en son düzeltmeler, güvenilen Internet bağlantısı (TIC) kılavuzlarıyla uyumlu olacak şekilde tasarlanmıştır. En son düzeltmeler Ayrıca, Azure ortamlarını korumak üzere güvenli bir DMZ uygulamak isteyen ticari müşterilere yardımcı olur.
 
 
-## <a name="secure-cloud-computing-architecture-components"></a>Güvenli bulut bilgi işlem mimarisi bileşenleri
+## <a name="secure-cloud-computing-architecture-components"></a>Güvenli bulut bilgi Işlem mimarisi bileşenleri
 
 ### <a name="bcap"></a>BCAP
 
-BCAP amacı DISN bulut ortamında gerçekleştirilen saldırılardan koruma sağlamaktır. Yetkisiz giriş algılama ve önleme BCAP gerçekleştirir. Ayrıca, yetkisiz trafik çıkış filtreler. Bu bileşen SCCA diğer bileşenlerle birlikte bulunabilir. Bu bileşen, fiziksel donanım kullanarak dağıtma öneririz. BCAP güvenlik gereksinimleri aşağıdaki tabloda listelenmiştir.
+BCAP 'in amacı, bulut ortamındaki kaynaklı saldırıları korumamıza yardımcı olur. BCAP, yetkisiz giriş algılama ve önleme gerçekleştirir. Ayrıca, yetkisiz trafiğe filtre uygular. Bu bileşen, SCCA 'nın diğer bileşenleriyle birlikte bulunabilir. Bu bileşeni fiziksel donanım kullanarak dağıtmanızı öneririz. BCAP güvenlik gereksinimleri aşağıdaki tabloda listelenmiştir.
 
 #### <a name="bcap-security-requirements"></a>BCAP güvenlik gereksinimleri
 
-![BCAP gereksinimleri Matrisi](media/bcapreqs.png)
+![BCAP gereksinimleri matrisi](media/bcapreqs.png)
 
 
 ### <a name="vdss"></a>VDSS
 
-VDSS amacı, Azure'da barındırılan DoD görev sahibi uygulamaları korunmasını sağlamaktır. VDSS güvenlik işlemleri, toplu SCCA gerçekleştirir. Bu, Azure'da çalışan uygulamaları güvenli hale getirmek için trafik denetimi yapar. Bu bileşen, Azure ortamınızda sağlanabilir.
+VDSS amacı, Azure 'da barındırılan DoD görev sahibi uygulamalarının korunmasından oluşur. VDSS, SCCA 'daki güvenlik işlemlerinin toplu işlemini gerçekleştirir. Azure 'da çalışan uygulamaların güvenliğini sağlamak için trafik incelemesini çalıştırır. Bu bileşen Azure ortamınızda bulunabilir.
 
 #### <a name="vdss-security-requirements"></a>VDSS güvenlik gereksinimleri
 
-![VDSS gereksinimleri Matrisi](media/vdssreqs.png)
+![VDSS gereksinimler matrisi](media/vdssreqs.png)
 
 ### <a name="vdms"></a>VDMS
 
-VDMS amacı ana bilgisayar güvenliğini sağlar ve paylaşılan veri merkezi Hizmetleri. VDMS işlevlerini, SCCA hub'ında çalıştırabilirsiniz veya iş açısından sahibi kendi belirli bir Azure aboneliğinde bu parçaları dağıtabilirsiniz. Bu bileşen, Azure ortamınızda sağlanabilir.
+VDMS amacı, ana bilgisayar güvenliği ve paylaşılan veri merkezi hizmetleri sağlamaktır. VDMS işlevleri, SCCA 'nizin merkezinde çalıştırılabilir veya görev sahibi, kendi belirli Azure aboneliklerinde bu parçaların parçalarını dağıtabilir. Bu bileşen Azure ortamınızda bulunabilir.
 
 #### <a name="vdms-security-requirements"></a>VDMS güvenlik gereksinimleri
 
-![VDMS gereksinimleri Matrisi](media/vdmsreqs.png)
+![VDMS gereksinimler matrisi](media/vdmsreqs.png)
 
 
 ### <a name="tccm"></a>TCCM
 
-TCCM iş rolüdür. Bu kişi SCCA yönetmekten sorumludur. Görevleri vardır: 
+TCCM bir iş rolüdür. Bu kişi, SCCA 'Yı yönetmekten sorumludur. Görevleri şunlardır: 
 
-- Plan ve hesap erişim bulut ortamı için ilkeler oluşturun. 
-- Kimlik ve erişim yönetimi düzgün çalıştığından emin olun. 
-- Bulut kimlik bilgileri yönetim planı korur. 
+- Bulut ortamına hesap erişimi için planlar ve ilkeler oluşturun. 
+- Kimlik ve erişim yönetiminin düzgün şekilde çalıştığından emin olun. 
+- Bulut kimlik bilgileri yönetim planını koruyun. 
 
-Bu kişi tarafından yetki verme resmi tayin. BCAP VDSS ve VDMS TCCM işlerini gerçekleştirmek için gereken yetenekleri sağlar.
+Bu kişi, yetkilendirme resmi tarafından hazırlanmıştır. BCAP, VDSS ve VDMS, TCCM 'nin işlerini gerçekleştirmesi için ihtiyaç duyacağı özellikleri sağlar.
 
 #### <a name="tccm-security-requirements"></a>TCCM güvenlik gereksinimleri
 
-![TCCM gereksinimleri Matrisi](media/tccmreqs.png) 
+![TCCM gereksinimleri matrisi](media/tccmreqs.png) 
 
 ## <a name="saca-components-and-planning-considerations"></a>SACA bileşenleri ve planlama konuları 
 
-SACA başvuru mimarisinde, azure'da VDSS ve VDMS bileşenlerini dağıtmak ve TCCM etkinleştirmek için tasarlanmıştır. Bu mimari modülerdir. Tüm parçaları VDSS VDMS ve merkezi bir hub'ında Canlı çalıştırabilirsiniz. Bazı denetimler, görev sahibi alanı veya hatta şirket içi karşılanabilir. Microsoft, VDSS ve VDMS bileşenleri tüm görev açısından sahipleri üzerinden bağlanabilir merkezi bir sanal ağ içinde birlikte bulundur olmasını önerir. Aşağıdaki diyagram bu mimari gösterilir: 
+SACA başvuru mimarisi, VDSS ve VDMS bileşenlerini Azure 'da dağıtmak ve TCCM 'yi etkinleştirmek için tasarlanmıştır. Bu mimari modüler bir değer. Tüm VDSS ve VDMS parçaları merkezi bir hub 'da bulunabilir. Denetimlerden bazıları görev sahibi alanında veya hatta şirket içinde karşılanabileceği. Microsoft, VDSS ve VDMS bileşenlerini tüm görev sahiplerinin bağlanabilmesi için bir Merkezi Sanal ağda birlikte bulmanızı önerir. Aşağıdaki diyagramda bu mimari gösterilmektedir: 
 
 
 ![SACA başvuru mimarisi diyagramı](media/sacav2generic.png)
 
-SCCA uymalarını zorunlu tutar stratejisi ve teknik mimari planlarken, bunlar her müşteri etkilediğinden baştan aşağıdaki konuları göz önünde bulundurun. Aşağıdaki sorunlar, DoD müşterilerle ulaştık ve planlama ve yürütme yavaş eğilimindedir. 
+SCCA karmaşık pozisyon stratejinizi ve teknik mimarinizi planlarken, her müşteriyi etkilediği için başlangıçtan itibaren aşağıdaki konuları göz önünde bulundurun. Aşağıdaki sorunlar DoD müşterileri ile birlikte geldiğinden planlama ve yürütmeyi yavaşlatacak şekilde eğilimlidir. 
 
-#### <a name="which-bcap-will-your-organization-use"></a>Kuruluşunuz hangi BCAP kullanacak mısınız?
-   - DISA BCAP:
-        - DISA iki işletimsel BCAPs Pentagon ve kampı yakın, CA vardır. Üçüncü bir kısa süre içinde çevrimiçi olması planlanmaktadır. 
-        - Azure ExpressRoute devreleri için bağlantı DoD müşteriler tarafından kullanılabilen Azure DISA BCAPs tüm vardır. 
-        - DISA, Office 365 gibi bir hizmet (SaaS) araçları olarak Microsoft yazılımları için abone olmak istediğiniz DoD müşteriler için bir kurumsal düzeyde Microsoft eşleme oturumu vardır. DISA BCAP kullanarak, bağlantı ve SACA Örneğinize eşleme etkinleştirebilirsiniz. 
-    - Kendi BCAP derleme:
-        - Bu seçenek, birlikte bulunan veri merkezi alanında kiralama ve Azure ExpressRoute bağlantı hattı kurmak gerektirir. 
-        - Bu seçenek, ek onay gerektirir. 
-        - Ek onay ve fiziksel bir yapı çıkış nedeniyle, bu seçenek en çok zaman alır. 
-    - DISA BCAP kullanmanızı öneririz. Bu seçenek, kullanıma hazır, yerleşik yedeklilik var ve üzerinde bugün üretimde çalışan müşterilerin sahip.
+#### <a name="which-bcap-will-your-organization-use"></a>Kuruluşunuzun hangi BCAP kullanması gerekir?
+   - DIŞA BUCU:
+        - DıŞA, beşgen ve Camp Roberts, CA 'da iki işlemsel BCAPs 'e sahiptir. Üçüncü bir süre içinde çevrimiçi olacak şekilde planlanır. 
+        - KCaps 'in hepsi, Azure 'da DoD müşterileri tarafından bağlantı için kullanılabilecek Azure ExpressRoute devreleri vardır. 
+        - DıAS, Office 365 gibi Microsoft hizmet olarak yazılım (SaaS) araçlarına abone olmak isteyen DoD müşterileri için kurumsal düzeyde bir Microsoft eşleme oturumuna sahiptir. DıŞA BCAP 'i kullanarak, SACA örneğinizle bağlantı ve eşleme sağlayabilirsiniz. 
+    - Kendi BCAP 'nizi oluşturun:
+        - Bu seçenek, birlikte bulunan bir veri merkezinde alan kiralayabilmeniz ve Azure 'a bir ExpressRoute bağlantı hattı ayarlamanıza gerek duyar. 
+        - Bu seçenek ek onay gerektirir. 
+        - Ek onay ve fiziksel bir derleme nedeniyle bu seçenek en çok zaman alır. 
+    - DıŞA BCAP kullanmanızı öneririz. Bu seçenek hazır, yerleşik artıklığı vardır ve bugün üretimde çalışan müşterilere sahip olur.
 - DoD yönlendirilebilir IP alanı:
-    - Ucunuzdaki DoD yönlendirilebilir IP alanı kullanmanız gerekir. Azure'da özel IP alanı bu boşlukları bağlanmak için NAT'ı kullanma seçeneği kullanılabilir.
-    - IP alanı almak için DoD Ağ Bilgi Merkezi'nı (NIC) başvurun. Sistem/ağ onay işlemi (ek) gönderiminiz DISA ile bir parçası olarak gerekir. 
-    - Azure'da özel adres alanınızı bağlamak için NAT'ı kullanmayı planlıyorsanız, en az bir/24 gereken alt ağ adres alanının SACA dağıtma planladığınız her bölge için nıc'den atanmış.
+    - Kenarunuzda DoD yönlendirilebilir IP alanı kullanmanız gerekir. Bu alanları Azure 'da özel IP alanına bağlamak için NAT kullanma seçeneği kullanılabilir.
+    - IP alanı almak için DoD ağ bilgi merkezi (NIC) ile iletişim kurun. Bunun, sistem/ağ onay Işlemi (SNAP) gönderiminizin bir parçası olarak DıŞA 
+    - Azure 'da özel adres alanını bağlamak için NAT kullanmayı planlıyorsanız, SACA dağıtmayı planladığınız her bölge için NIC 'den atanan en az bir/24 alt ağ adresi alanı gerekir.
 - Yedeklilik:
-    - SACA örneği en az iki bölgeye dağıtın. DoD bulutta, hem kullanılabilir DoD bölgeler için dağıtmadan.
-    - En az iki BCAPs ayrı ExpressRoute bağlantı hatları aracılığıyla bağlanın. Her iki ExpressRoute bağlantı sonra her bölgenin SACA örneğe bağlanabilir. 
-- DoD bileşen özgü gereksinimler:
-    - Kuruluşunuz dışında SCCA gereksinimleri özel gereksinimleri var mı? Bazı kuruluşların belirli IP'ler gereksinimleri vardır.
+    - Bir SACA örneğini en az iki bölgeye dağıtın. DoD bulutu 'nda, hem kullanılabilir DoD bölgelerine dağıtın.
+    - Ayrı bir ExpressRoute devreleri aracılığıyla en az iki BCAPs 'e bağlanın. Her iki ExpressRoute bağlantısı da her bir bölgenin SACA örneğiyle bağlantılı olabilir. 
+- DoD bileşenine özgü gereksinimler:
+    - Kuruluşunuz SCCA gereksinimleri dışında belirli gereksinimlere sahip mi? Bazı kuruluşların belirli IP gereksinimleri vardır.
 - SACA modüler bir mimaridir:
-    - Yalnızca ortamınız için ihtiyacınız olan bileşenleri kullanın. 
-        - Tek katmanlı veya çok katmanlı ağ sanal gereçlerini dağıtma.
-        - Tümleşik IP'ler veya Getir kendi IP'ler kullanın.
-- Uygulamalarınız ve verileriniz, Savunma Bakanlığı etki düzeyi:
-    - SACA Örneğinizde IL5 Microsoft IL5 bölgelerde çalışan uygulamaların olasılığı varsa oluşturun. Örnek IL4 uygulamalar ve IL5 önünde kullanılabilir. IL5 uygulamanın büyük olasılıkla önünde IL4 SACA örneği akreditasyonu almazsınız.
+    - Yalnızca ortamınız için gereken bileşenleri kullanın. 
+        - Ağ sanal gereçlerini tek bir katmanda veya çok katmanlı olarak dağıtın.
+        - Tümleşik IP 'leri kullanın veya kendi IP 'lerini getirin.
+- Uygulamalarınızın ve verilerinizin DoD etkisi düzeyi:
+    - Microsoft IL5 bölgelerinde çalışan uygulamalar varsa, IL5 'de SACA örneğinizi oluşturun. Örnek, IL4 uygulamaları ve IL5 önünde kullanılabilir. Büyük olasılıkla bir IL5 uygulamasının önündeki IL4 SACA örneği, acstasyon almaz.
 
-#### <a name="which-network-virtual-appliance-vendor-will-you-use-for-vdss"></a>Hangi ağ sanal Gereci satıcısı için VDSS kullanacak mısınız?
-Daha önce bahsedildiği gibi çeşitli cihazları ve Azure hizmetlerini kullanarak bu SACA başvurusu oluşturabilirsiniz. Microsoft Çözüm şablonları F5 hem Citrix SACA mimariyi dağıtmak için otomatik hale getirmiştir. Bu çözümler, aşağıdaki bölümde ele alınmıştır.
+#### <a name="which-network-virtual-appliance-vendor-will-you-use-for-vdss"></a>VDSS için hangi ağ sanal gereç satıcısı kullanacağınızı kullanacaksınız?
+Daha önce bahsedildiği gibi, bu SACA başvurusunu çeşitli gereçler ve Azure hizmetlerini kullanarak oluşturabilirsiniz. Microsoft, SACA mimarisini hem F5 hem de Citrix ile dağıtmak için otomatikleştirilmiş çözüm şablonlarına sahiptir. Bu çözümler aşağıdaki bölümde ele alınmıştır.
 
-#### <a name="which-azure-services-will-you-use"></a>Hangi Azure hizmetlerinin kullanacaksınız?
-- Log analytics, ana bilgisayar tabanlı koruma ve Kimliklerini işlevselliği gereksinimlerini karşılayan Azure hizmetleri de vardır. Bazı hizmetler Microsoft IL5 bölgelerde genel kullanıma açık olmayan mümkündür. Bu durumda, bu Azure hizmetlerini gereksinimlerinizi karşılıyorsa, üçüncü taraf araçları kullanmanız gerekebilir. Alışık olduğunuz araçları ve Azure yerel araçları kullanmanın Uygulanabilirlik bakın.
-- Mümkün olduğu kadar Azure yerel Araçlar kullanmanızı öneririz. Bunlar, güvenlikten ödün bulut tasarlanmaları ve Azure platformunun geri kalanıyla sorunsuz şekilde tümleştirin. Azure yerel Araçlar çeşitli SCCA gereksinimlerini karşılamak için aşağıdaki listede kullanın:
+#### <a name="which-azure-services-will-you-use"></a>Hangi Azure hizmetlerini kullanacaksınız?
+- Log Analytics, ana bilgisayar tabanlı koruma ve KIMLIK işlevleri gereksinimlerini karşılayabilecek Azure hizmetleri vardır. Bazı Hizmetler Microsoft IL5 bölgelerinde genel kullanıma açık olmayabilir. Bu durumda, bu Azure hizmetleri gereksinimlerinizi karşılamazsa üçüncü taraf araçları kullanmanız gerekebilir. Rahatımız araçlara ve Azure Native Tooling kullanmanın rahatsıztığa bakın.
+- Mümkün olduğunca çok sayıda Azure yerel aracı kullanmanızı öneririz. Bulut güvenliği göz önünde bulundurularak derlenirler ve Azure platformunun geri kalanı ile sorunsuz bir şekilde tümleşir. Farklı SCCA gereksinimlerini karşılamak için aşağıdaki listede Azure yerel araçlarını kullanın:
 
     - [Azure İzleyici](https://docs.microsoft.com/azure/azure-monitor/overview )
     - [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) 
-    - [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) 
+    - [Azure ağ Izleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) 
     - [Azure Anahtar Kasası.](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 
     - [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-    - [Azure uygulama ağ geçidi](https://docs.microsoft.com/azure/application-gateway/overview)
-    - [Azure güvenlik duvarı](https://docs.microsoft.com/azure/firewall/overview) 
+    - [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview)
+    - [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/overview) 
     - [Azure ön kapısı](https://docs.microsoft.com/azure/frontdoor/front-door-overview)
-    - [Azure güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview)
+    - [Azure Güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview)
     - [Azure DDoS koruması](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
     - [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)
 - Boyutlandırma
-    - Boyutlandırma alıştırma tamamlanması gerekir. Ağ aktarım hızı gereksinimleri SACA örneği ile olabilir eş zamanlı bağlantı sayısını bakın. 
-    - Bu adım önemlidir. Sanal makinelerin boyutu ve SACA Örneğinizde kullandığınız farklı satıcıların sunduğu gerekli olan lisansları tanımlamak için yardımcı olur. 
-    - İyi maliyet analizi boyutlandırma alıştırmanın gerçekleştirilemez. Doğru boyutlandırma en iyi performans için de sağlar. 
+    - Bir boyutlandırma alıştırması tamamlanması gerekir. SACA örneği ve ağ aktarım hızı gereksinimleri ile sahip olabileceğiniz eşzamanlı bağlantı sayısına bakın. 
+    - Bu adım kritiktir. VM 'Leri boyutlandırmanıza ve SACA örneğiniz için kullandığınız çeşitli satıcıların gerektirdiği lisansları belirlemesine yardımcı olur. 
+    - Bu boyutlandırma alıştırması olmadan iyi bir maliyet analizi yapılamaz. Doğru boyutlandırma, en iyi performansa de olanak tanır. 
 
 
 ## <a name="most-common-deployment-scenario"></a>En yaygın dağıtım senaryosu
 
- Çeşitli Microsoft müşterilerine aracılığıyla tam dağıtım veya sahiplikten planlama SACA ortamlarını aşamalarında en az. Yaşadıkları deneyimleri en yaygın dağıtım senaryosu bir anlayış göstermiştir. Aşağıdaki diyagramda, en yaygın mimari gösterilmektedir: 
+ Birçok Microsoft müşterisi, tam dağıtımdan veya en azından SACA ortamlarının planlama aşamalarından çıktı. Deneyimleri, en yaygın dağıtım senaryosuna ilişkin Öngörüler ortaya çıkarır. Aşağıdaki diyagramda en yaygın mimari gösterilmektedir: 
 
 
 ![SACA başvuru mimarisi diyagramı](media/sacav2commonscenario.png) 
 
 
-Diyagramdan görebileceğiniz gibi DoD müşteriler genellikle iki DISA BCAPs abone. Bunlardan biri, Doğu Yakası üzerinde Batı Yakası ve diğer olduğu bulunur. Her DISA BCAP konumundan Azure ExpressRoute ile özel bir eş etkin. Ardından bu ExpressRoute eş sanal ağ geçidi DoD Doğu ve DoD Orta Azure bölgelerinde bağlanır. DoD Doğu ve DoD Orta Azure bölgelerinde SACA örneği dağıtılır. Tüm giriş ve çıkış trafiği, ExpressRoute bağlantısı DISA BCAP gelen ve giden üzerinden akar.
+Diyagramdan görebileceğiniz gibi DoD müşterileri genellikle DıŞA BCAPs 'in iki birine abone olur. Bunlardan biri Batı Yakası ve diğer yaşamda Doğu Yakası üzerinde bulunur. Her bir DıŞA bir ExpressRoute özel eşi, her bir DıŞA BCAP konumunda Azure için etkinleştirilmiştir. Bu ExpressRoute eşleri daha sonra DoD Doğu ve DoD merkezi Azure bölgelerindeki sanal ağ geçidine bağlanır. Bir SACA örneği DoD Doğu ve DoD merkezi Azure bölgelerinde dağıtılır. Tüm giriş ve çıkış trafiği, üzerinden ve ExpressRoute bağlantısı üzerinden DıŞA giden trafik üzerinden akar.
 
-Görev sahibi uygulamaları, bunlar uygulamalarına dağıtmayı planladığınız Azure bölgeleri seçin. Sanal ağ eşleme, uygulamanın sanal ağ SACA sanal ağa bağlanmak için kullandıkları. Ardından, zorlamalı tünel VDSS örneği aracılığıyla kendi tüm trafiği.
+Görev sahibi uygulamalar daha sonra uygulamalarını dağıtmayı planlayabilecekleri Azure bölgelerini seçer. Bu kişiler, uygulamasının sanal ağını SACA sanal ağına bağlamak için sanal ağ eşlemesi kullanır. Ardından, VDSS örneği aracılığıyla tüm trafiğini tünele zorlayacaktır.
 
-SCCA gereksinimlerini karşılayan çünkü bu mimari öneririz. Bu, kolayca ölçeklenebilir ve yüksek oranda kullanılabilir. Ayrıca, dağıtım ve yönetimini basitleştirir.
+SCCA gereksinimlerini karşıladığından bu mimariyi öneririz. Yüksek oranda kullanılabilir ve kolayca ölçeklenebilir. Ayrıca dağıtım ve yönetimi basitleştirir.
 
 ## <a name="automated-saca-deployment-options"></a>Otomatik SACA dağıtım seçenekleri
 
- Daha önceden belirtildiği gibi Microsoft, bir otomatik SACA altyapı şablonu oluşturmak için iki satıcılarla kurdu. İki şablon, aşağıdaki Azure bileşenlerini dağıtın: 
+ Daha önce belirtildiği gibi, Microsoft otomatik bir SACA altyapı şablonu oluşturmak için iki satıcı ile işbirliği yaptı. Her iki şablon da aşağıdaki Azure bileşenlerini dağıtır: 
 
-- SACA sanal ağ
+- SACA sanal ağı
     - Yönetim alt ağı
-        - Bu alt ağ bir Sıçrama kutusu olarak da bilinen yönetim VM'ler ve hizmetler dağıtıldığı, ' dir.
-        - VDMS alt ağ
-            - Bu alt ağ, VM'ler ve hizmetler için VDMS kullanılan dağıtıldığı ' dir.
-        - Güvenilmeyen ve güvenilir bir alt ağlar
-            - Sanal gereçler dağıtıldığı bu alt ağlardır.
+        - Bu alt ağ, bir geçiş kutuları olarak da bilinen yönetim VM 'lerinin ve hizmetlerinin dağıtıldığı yerdir.
+        - VDMS alt ağı
+            - Bu alt ağ, VDMS için kullanılan VM 'Lerin ve hizmetlerin dağıtıldığı yerdir.
+        - Güvenilmeyen ve güvenilen alt ağlar
+            - Bu alt ağlar, sanal gereçlerden dağıtılmakta olduğu yerdir.
         - Ağ geçidi alt ağı
-            - Bu alt ağ, ExpressRoute ağ geçidini dağıtıldığı ' dir.
-- Yönetim atlama kutusunda sanal makineler
-    - Bunlar ortamın bant dışı yönetimi için kullanılır.
-- Ağ sanal Gereçleri
-    - Her iki Citrix kullanın veya şablona göre dağıttığınız F5'e bağlı.
-- Genel IP'ler
-    - ExpressRoute çevrimiçi duruma getirilene kadar ön uç için kullanılır. Bu IP'ler, arka uç Azure özel adres alanınızı çevir.
-- Yol tabloları 
-    - Otomasyon işlemi sırasında uygulanan bu tablolar zorlamalı tünel tüm trafiği sanal gereçten yönlendirilen.
-- Azure yük dengeleyicileri - standart SKU
-    - Cihazları arasında trafiğin yükünü dengelemek için kullanılırlar.
+            - Bu alt ağ, ExpressRoute ağ geçidinin dağıtıldığı yerdir.
+- Yönetim hızlı geçiş kutusu sanal makineleri
+    - Ortamın bant dışı yönetimi için kullanılırlar.
+- Ağ sanal cihazları
+    - Dağıttığınız şablona göre Citrix veya F5 kullanın.
+- Ortak IP'ler
+    - ExpressRoute çevrimiçi duruma gelene kadar ön uç için kullanılırlar. Bu IP 'Ler, arka uç Azure özel adres alanına çeviri yapar.
+- Rota tabloları 
+    - Otomasyon sırasında uygulanan bu yol tabloları, Sanal Gereç aracılığıyla tüm trafiği tünele zorlar.
+- Azure yük dengeleyiciler-standart SKU
+    - Bunlar, gereçler genelinde trafiğin yükünü dengelemek için kullanılırlar.
 - Ağ güvenlik grupları
-    - Bunlar hangi trafik türlerini belirli uç noktalarına erişebilen denetlemek için kullanılır.
+    - Belirli uç noktalarda hangi trafik türlerinin geçebileceği denetlemek için kullanılırlar.
 
 
-### <a name="citrix-saca-deployment"></a>Citrix SACA dağıtım
+### <a name="citrix-saca-deployment"></a>Citrix SACA dağıtımı
 
-Citrix dağıtım şablonu, yüksek oranda kullanılabilir Citrix ADC gereçlerinde iki katman dağıtır. Bu mimari VDSS gereksinimlerini karşılar. 
+Citrix dağıtım şablonu, yüksek oranda kullanılabilir Citrix ADC gereçlerinin iki katmanını dağıtır. Bu mimari VDSS gereksinimlerini karşılar. 
 
 ![Citrix SACA diyagramı](media/citrixsaca.png)
 
 
-Citrix belgelerine ve dağıtım betiği için bkz: [bu GitHub bağlantı](https://github.com/citrix/netscaler-azure-templates/tree/master/templates/saca).
+Citrix belgeleri ve dağıtım betiği için [Bu GitHub bağlantısına](https://github.com/citrix/netscaler-azure-templates/tree/master/templates/saca)bakın.
 
 
- ### <a name="f5-saca-deployment"></a>F5 SACA dağıtım
+ ### <a name="f5-saca-deployment"></a>F5 SACA dağıtımı
 
-İki ayrı F5 dağıtım şablonları, iki farklı mimari kapsar. İlk şablon F5 gereçlerinde yalnızca bir katman, yüksek oranda kullanılabilir etkin-etkin yapılandırmada vardır. Bu mimari VDSS gereksinimlerini karşılar. İkinci şablon yüksek oranda kullanılabilir etkin-etkin F5s ikinci bir katmanı ekler. Bu ikinci katman, müşterilerin kendi IP'ler F5 katmanlar arasında F5 ayrı sağlar. Belirli IP'ler kullanım için önceden tanımlanmış tüm DoD bileşenleri vardır. Bu durumda, o mimaride F5 cihazlarda IP'ler içerdiğinden F5 gereçlerinde tek katman çoğu için çalışır.
+İki ayrı F5 dağıtım şablonu iki farklı mimariyi kapsar. İlk şablonda etkin-etkin yüksek kullanılabilirliğe sahip bir yapılandırmada yalnızca bir F5 gereçi katmanı vardır. Bu mimari VDSS gereksinimlerini karşılar. İkinci şablon, etkin-etkin yüksek oranda kullanılabilir F5s ikinci katmanını ekler. Bu ikinci katman, müşterilerin F5 katmanları arasındaki F5 'ten ayrı IP 'leri eklemesini sağlar. Tüm DoD bileşenlerinde kullanılmak üzere belirlenmiş belirli IP 'ler yoktur. Böyle bir durum söz konusu olduğunda, Bu mimaride F5 cihazlarındaki IP 'ler dahil olmak üzere F5 gereçlerinin tek katmanı çoğu için geçerlidir.
 
 ![F5 SACA diyagramı](media/f5saca.png)
 
-F5 belgeleri ve dağıtım betiği için bkz: [bu GitHub bağlantı](https://github.com/f5devcentral/f5-azure-saca).
+F5 belgeleri ve dağıtım betiği için [Bu GitHub bağlantısına](https://github.com/f5devcentral/f5-azure-saca)bakın.
 
 
 

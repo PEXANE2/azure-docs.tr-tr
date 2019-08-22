@@ -1,13 +1,13 @@
 ---
-title: OData search.in işlevi başvuru - Azure Search
-description: Azure arama sorgularında OData search.in işlevi.
+title: OData search.in işlev başvurusu-Azure Search
+description: Azure Search sorgularında OData search.in işlevi.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,32 +19,32 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a61291e547021077341a5f1b3db7422afa5b9440
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bac0205fa2de8378abaa4d9e8ba8e05ea69192e
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449979"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647933"
 ---
-# <a name="odata-searchin-function-in-azure-search"></a>OData `search.in` Azure Search işlevi
+# <a name="odata-searchin-function-in-azure-search"></a>Azure Search `search.in` OData işlevi
 
-Sık karşılaşılan bir senaryodur [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) her belge tek bir alanda birçok değerlerden birine eşit olup olmadığını denetlemek yollardan biridir. Örneğin, bazı uygulamaları nasıl uygulamak budur [güvenlik kırpma](search-security-trimming-for-azure-search.md) --asıl kimlikleri sorgu verme kullanıcıyı temsil eden bir listesiyle bir veya daha fazla asıl kimlikleri içeren bir alanda denetleyerek. Bu gibi bir sorguda kullanmak için yazma için tek yönlü [ `eq` ](search-query-odata-comparison-operators.md) ve [ `or` ](search-query-odata-logical-operators.md) işleçleri:
+[OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) yaygın bir senaryo, her bir belgedeki tek bir alanın olası birçok değerden birine eşit olup olmadığını denetlemenize olanak tanır. Örneğin, bu, bir veya daha fazla asıl kimliği içeren bir alanı, sorguyu veren kullanıcıyı temsil eden bir asıl kimlik listesine göre denetleyerek, bazı uygulamalar [güvenlik kırpması](search-security-trimming-for-azure-search.md) uygular. Bunun gibi bir sorgu yazmanın bir yolu, [`eq`](search-query-odata-comparison-operators.md) ve [`or`](search-query-odata-logical-operators.md) işleçlerini kullanmaktır:
 
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
 
-Ancak, kullanarak bunu yazmak için bir kısa bir yol yoktur `search.in` işlevi:
+Ancak, `search.in` işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır:
 
     group_ids/any(g: search.in(g, '123, 456, 789'))
 
 > [!IMPORTANT]
-> Daha kısa ve kolay okunur, kullanarak yanı sıra `search.in` de sağlar [performans avantajlarının](#bkmk_performance) ve belirli önler [boyut sınırlamaları filtre](search-query-odata-filter.md#bkmk_limits) yüzlerce veya binlerce değerleri filtreye eklenecek. Bu nedenle, kullanarak öneririz `search.in` eşitlik ifadeleridir, daha karmaşık bir ayrım yerine.
+> Daha kısa ve kolay okunması yanı sıra, kullanmak `search.in` da [performans avantajları](#bkmk_performance) sağlar ve filtreye dahil edilecek yüzlerce veya hatta binlerce değer olduğunda [filtrelerin belirli boyut sınırlamalarını](search-query-odata-filter.md#bkmk_limits) önler. Bu nedenle, daha karmaşık bir eşitlik ifadesi `search.in` birleşimi yerine kullanmanızı kesinlikle öneririz.
 
 > [!NOTE]
-> OData standardı 4.01 sürümünü kısa bir süre önce tanıtılan [ `in` işleci](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), benzer davranışlara sahip `search.in` Azure Search'te işlevi. Kullanmanız gerekir ancak, Azure Search bu işleci desteklemez `search.in` işlevini.
+> OData Standard sürüm 4,01, yakın zamanda Azure Search `search.in` işlevi gibi benzer davranışa sahip olan [ `in` işlecini](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)kullanıma sunmuştur. Ancak Azure Search bu işleci desteklemez, bu nedenle, bunun yerine `search.in` işlevini kullanmanız gerekir.
 
 ## <a name="syntax"></a>Sözdizimi
 
-Aşağıdaki EBNF ([genişletilmiş Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) Dilbilgisi tanımlar `search.in` işlevi:
+Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.in` işlevin dilbilgisini tanımlar:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -53,60 +53,60 @@ search_in_call ::=
     'search.in(' variable ',' string_literal(',' string_literal)? ')'
 ```
 
-Bir etkileşimli söz dizim diyagramı görülmektedir de kullanılabilir:
+Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData söz dizimini diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
+> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> Bkz: [OData ifadesi söz dizimi başvurusu için Azure Search](search-query-odata-syntax-reference.md) tam EBNF için.
+> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
 
-`search.in` Verilen değerlerin listesini birine eşit aralık değişkeni veya işlevi verilen dize alanı olup olmadığını test eder. Değişkeni ve listedeki her değer arasındaki aynı şekilde olarak büyük küçük harfe duyarlı bir biçimde belirlenir `eq` işleci. Bu nedenle bir ifade ister `search.in(myfield, 'a, b, c')` eşdeğerdir `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`dışında `search.in` çok daha iyi performans verir.
+İşlevi `search.in` , belirli bir dize alanı veya Aralık değişkeninin belirli bir değer listesinden birine eşit olup olmadığını sınar. Değişken ile listedeki her bir değer arasındaki eşitlik, `eq` işleçle aynı şekilde, büyük/küçük harf duyarlı bir biçimde belirlenir. Bu nedenle, gibi `search.in(myfield, 'a, b, c')` bir ifade ile `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`eşdeğerdir, ancak `search.in` bunun dışında daha iyi performans elde edilir.
 
-İki aşırı yükleme `search.in` işlevi:
+`search.in` İşlevin iki aşırı yüklemesi vardır:
 
 - `search.in(variable, valueList)`
 - `search.in(variable, valueList, delimiters)`
 
-Parametreleri aşağıdaki tabloda tanımlanmıştır:
+Parametreler aşağıdaki tabloda tanımlanmıştır:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Type | Açıklama |
 | --- | --- | --- |
-| `variable` | `Edm.String` | Bir dize alan başvurusu (veya bir aralık değişkeni bir dize koleksiyonu alanı durumda üzerinden burada `search.in` içinde kullanılan bir `any` veya `all` ifadesi). |
-| `valueList` | `Edm.String` | Eşleştirilecek değerleri ayrılmış listesini içeren bir dize `variable` parametresi. Varsa `delimiters` parametresi belirtilmezse, boşluk ve virgül varsayılan sınırlayıcı olarak kullanılır. |
-| `delimiters` | `Edm.String` | Burada her karakter olarak kabul ayırıcı olarak ayrıştırılırken bir dize `valueList` parametresi. Bu parametrenin varsayılan değeri `' ,'` tüm değerleri boşluk ve/veya aralarındaki virgüller ile ayrılması anlamına gelir. Değerlerinizin bu karakterleri içerdiğinden boşluk ve virgül dışındaki ayırıcıları kullanmanız gerekiyorsa, gibi başka bir sınırlayıcı belirtin `'|'` bu parametrede. |
+| `variable` | `Edm.String` | Bir dize alanı başvurusu (veya bir `search.in` `any` veya `all` ifadesi içinde kullanıldığı durumda bir dize koleksiyonu alanı üzerinde bir Aralık değişkeni). |
+| `valueList` | `Edm.String` | `variable` Parametresiyle eşleştirilecek bir değer listesi içeren bir dize. `delimiters` Parametresi belirtilmemişse, varsayılan sınırlayıcılar boşluk ve virgüldür. |
+| `delimiters` | `Edm.String` | `valueList` Parametre ayrıştırılırken her karakterin ayırıcı olarak kabul edildiği bir dize. Bu parametrenin varsayılan değeri, `' ,'` aralarında boşluk ve/veya virgüller içeren tüm değerlerin ayrılacağı anlamına gelir. Değerleriniz bu karakterleri içerdiğinden boşluklar ve virgüller dışında ayırıcılar kullanmanız gerekiyorsa, bu parametre gibi alternatif sınırlayıcılar `'|'` belirtebilirsiniz. |
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Performansı `search.in`
+### <a name="performance-of-searchin"></a>Performansı`search.in`
 
-Kullanırsanız `search.in`, ikinci parametre, yüzlerce veya binlerce değerlerinin listesini içerdiğinde saniyenin altındaki yanıt süresi bekleyebilirsiniz. Öğe sayısı için geçirebilirsiniz açık bir sınır yoktur `search.in`, ancak yine de en büyük istek boyutuyla sınırlıdır. Ancak, değerler sayısı arttıkça gecikme çıkarılır.
+Kullanırsanız `search.in`, ikinci parametre yüzlerce veya binlerce değerin listesini içerdiğinde alt ikinci yanıt süresini de bekleyebilir. İzin verilen en büyük istek boyutuyla sınırlı olsanız da, geçirebilmeniz `search.in`gereken öğe sayısı üzerinde açık bir sınır yoktur. Ancak, değer sayısı arttıkça gecikme artar.
 
 ## <a name="examples"></a>Örnekler
 
-Tüm hotels adlı 'Deniz görünümü motel' veya 'Bütçe otel' eşittir bulun. İfadeler, varsayılan sınırlayıcı olduğu alanları içerir. Alternatif bir sınırlayıcı tek tırnak işaretleri dize üçüncü parametresi olarak belirtebilirsiniz:  
+Adı ' Sea View Motel ' veya ' bütçe otel ' değerine eşit olan tüm oteller bulun. Tümcecikler varsayılan bir sınırlayıcı olan boşluklar içerir. Üçüncü dize parametresi olarak tek tırnak içinde alternatif bir sınırlayıcı belirtebilirsiniz:  
 
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
 
-Tüm hotels adlı eşittir 'Deniz görünümü motel' veya 'ile ayrılmış bütçe otel' Bul ' |'):
+Adı ' | ' ile ayrılmış ' Sea View Motel ' veya ' bütçe otel ' değerine eşit olan tüm oteller bulun:
 
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
 
-Etiket 'wifi' veya 'düşürürseniz sigorta atar' odaları ile tüm hotels bulun:
+' WiFi ' veya ' Tub ' etiketine sahip olan odaları içeren tüm oteller bulun:
 
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
 
-Bir eşleşme ifadeleri 'ısıtılan towel raflar' veya 'dahil hairdryer' gibi bir koleksiyon içinde etiketleri bulun.
+Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir koleksiyonda eşleşme bulun.
 
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Etiket 'motel' veya 'kabini' olmadan tüm hotels bulun:
+' Motel ' veya ' cabin' ' etiketi olmadan tüm otelleri bul:
 
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search'te filtreler](search-filters.md)
-- [Azure Search için OData ifade dili genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Search belgeleri &#40;Azure arama hizmeti REST API'si&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Search filtreler](search-filters.md)
+- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

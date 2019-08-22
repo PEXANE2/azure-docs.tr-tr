@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868827"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873160"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için bir çalışma alanı oluşturmak üzere bir Azure Resource Manager şablonu kullanma
 
@@ -71,8 +71,6 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
    * Kaynak grubu: Hizmetleri içerecek bir kaynak grubu seçin veya oluşturun.
    * Çalışma alanı adı: Oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
    * Konumuna Kaynakların oluşturulacağı konumu seçin.
-
-     ![Azure portal şablon parametreleri](media/how-to-create-workspace-template/template-parameters.png)
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

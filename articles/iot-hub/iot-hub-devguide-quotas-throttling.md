@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950538"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877163"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -25,6 +25,10 @@ Her Azure aboneliği en fazla 50 IoT Hub 'ına ve 1 ücretsiz hub 'a sahip olabi
 Her IoT hub'ı belirli bir katmanda belirli bir birim sayısıyla sağlanır. Katman ve birim sayısı, gönderebilmeniz gereken en fazla günlük ileti kotasını tespit edebilir. Günlük kotayı hesaplamak için kullanılan ileti boyutu, ücretsiz bir katman hub 'ı için 0,5 KB ve diğer tüm katmanlar için 4KB 'dir. Daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Katman Ayrıca IoT Hub tüm işlemlerde zorladığı azaltma sınırlarını belirler.
+
+### <a name="iot-plug-and-play"></a>IoT Tak ve Kullan
+
+Genel Önizleme sırasında IoT Tak ve Kullan cihazları Arabirim başına ayrı mesajlar gönderir ve bu da ileti kotasından doğru olarak sayılan ileti sayısını artırabilir.
 
 ## <a name="operation-throttles"></a>İşlem kısıtları
 

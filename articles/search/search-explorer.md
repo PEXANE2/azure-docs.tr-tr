@@ -1,7 +1,7 @@
 ---
 title: Azure portal Azure Search verileri sorgulamak için arama Gezgini aracı
 description: Azure Search dizinleri sorgulamak için arama Gezgini gibi Azure portal araçları kullanın. Gelişmiş sözdizimi ile arama terimleri veya tam nitelikli arama dizeleri girin.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 87e5ec82299ef9ddc8bc8756196bb2ace3d1f6f3
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414231"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649961"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search verileri sorgulamak için arama Gezgini 
 

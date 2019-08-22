@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Hub ileti yönlendirme sorgu | Microsoft Docs
-description: Geliştirici Kılavuzu - Azure IOT Hub ileti yönlendirme sorgusu söz dizimi.
+title: Azure IoT Hub ileti yönlendirmesinde sorgula | Microsoft Docs
+description: Geliştirici Kılavuzu-Azure IoT Hub ileti yönlendirme için sorgu söz dizimi.
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,24 +8,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400652"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877069"
 ---
-# <a name="iot-hub-message-routing-query-syntax"></a>IOT Hub ileti yönlendirme sorgusu söz dizimi
+# <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu sözdizimi
 
-İleti yönlendirme, farklı veri türleri yani yönlendirmek kullanıcıların sağlar, cihazın telemetri iletilerini, cihaz yaşam döngüsü olaylarını ve cihaz ikizi olayları çeşitli uç noktalar ile değiştirin. Sizin için önemli verileri almak için yönlendirme önce bu verileri zengin sorguların de uygulayabilirsiniz. Bu makalede, IOT Hub ileti yönlendirme sorgu dili açıklar ve bazı ortak sorgu kalıpları sağlar.
+İleti yönlendirme, kullanıcıların farklı veri türlerini, cihaz telemetri iletilerini, cihaz yaşam döngüsü olaylarını ve cihaz ikizi değişiklik olaylarını çeşitli uç noktalara yönlendirmesine olanak sağlar. Bu verilere, sizin için önemli olan verileri almak üzere yönlendirmeden önce zengin sorgular da uygulayabilirsiniz. Bu makalede IoT Hub ileti yönlendirme sorgu dili açıklanmakta ve bazı yaygın sorgu desenleri sunulmaktadır.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-İleti yönlendirme sorgu ileti özellikleri ve ileti gövdesi hem de cihaz ikizi etiketleri ve cihaz ikizi özelliklerini sağlar. İleti gövdesi JSON değil ise, ileti yönlendirme ileti yine de yönlendirebilirsiniz, ancak ileti gövdesi sorguları uygulanamaz.  Sorgular, burada bir Boolean true, sorgu kolaylaştırır Boolean ifadeler, tüm gelen veri yolları başarılı Boole false sorgu başarısız olursa ve veri yönlendirilir açıklanmıştır. İfade null veya tanımsız olur. false kabul edilir ve tanılama günlüklerinde arıza durumunda bir hata oluşturulur. Sorgu söz dizimi değerlendirilir ve kaydedilmesini rota için doğru olması gerekir.  
+İleti yönlendirme, ileti özellikleri ve ileti gövdesinde, Device ikizi etiketleri ve Device ikizi özellikleri ile sorgulama yapmanıza olanak sağlar. İleti gövdesi JSON değilse, ileti yönlendirme iletiyi yine de yönlendirebilir, ancak sorgular ileti gövdesine uygulanamıyor.  Sorgular Boole ifadesi olarak tanımlanır ve bu, tüm gelen verileri yönlendiren sorgunun başarılı olduğunu ve Boole false ' ın sorgu başarısız olduğunu ve veri yönlendirilmesini sağlar. İfade null veya tanımsız olarak değerlendirilirse, yanlış olarak değerlendirilir ve hata durumunda tanılama günlüklerinde bir hata oluşturulur. Yolun kaydedilmesi ve değerlendirilmesi için sorgu söz dizimi doğru olmalıdır.  
 
-## <a name="message-routing-query-based-on-message-properties"></a>İleti yönlendirme sorgu ileti özelliklerine bağlı 
+## <a name="message-routing-query-based-on-message-properties"></a>İleti özelliklerine dayanan ileti yönlendirme sorgusu 
 
-IOT hub'ı tanımlayan bir [ortak biçimi](iot-hub-devguide-messages-construct.md) CİHAZDAN buluta tüm protokoller üzerinde birlikte çalışabilirlik için Mesajlaşma için. IOT Hub ileti iletinin aşağıdaki JSON gösterimine varsayar. Sistem özellikleri tüm kullanıcılar için eklenir ve iletisinin içeriği tanımlayın. Kullanıcılar, iletiyi seçerek uygulama özellikleri ekleyebilirsiniz. IOT Hub CİHAZDAN buluta ileti büyük/küçük harfe olmadığından benzersiz özellik adlarını kullanmanızı öneririz. Aynı ada sahip birden çok özellikleri vardır, örneğin, IOT hub'ı yalnızca özelliklerinden gönderir.  
+IoT Hub, protokollerde birlikte çalışabilirlik için tüm cihazdan buluta mesajlaşma için [ortak bir biçim](iot-hub-devguide-messages-construct.md) tanımlar. IoT Hub ileti, iletinin aşağıdaki JSON gösterimini varsayar. Sistem özellikleri tüm kullanıcılar için eklenir ve iletinin içeriğini belirler. Kullanıcılar, iletiye seçmeli olarak uygulama özellikleri ekleyebilir. Cihazdan buluta mesajlaşma, büyük/küçük harfe duyarlı olmayan IoT Hub için benzersiz özellik adları kullanmanızı öneririz. Örneğin, aynı ada sahip birden fazla özellik varsa IoT Hub yalnızca özelliklerden birini gönderir.  
 
 ```json
 { 
@@ -49,50 +49,51 @@ IOT hub'ı tanımlayan bir [ortak biçimi](iot-hub-devguide-messages-construct.m
 
 ### <a name="system-properties"></a>Sistem özellikleri
 
-Sistem özellikleri içeriği ve iletilerin kaynak tanımlamanıza yardımcı olacaktır. 
+Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardımcı olur. 
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| contentType | string | Kullanıcının, iletinin içerik türünü belirtir. Sorgu ileti gövdesinde izin vermek için bu değer, uygulama/JSON ayarlanmalıdır. |
-| contentEncoding | string | Kullanıcı iletisi kodlama türünü belirtir. İzin verilen değerler şunlardır: UTF-8, UTF-16, UTF-32 contentType application/JSON değerine ayarlanırsa. |
-| ıothub bağlantı cihaz kimliği | string | Bu değer, IOT Hub tarafından ayarlanır ve cihaz Kimliğini tanımlar. Sorgulamak için aşağıdaki komutu kullanın `$connectionDeviceId`. |
-| iothub-enqueuedtime | string | Bu değer, IOT Hub tarafından ayarlanır ve gerçek enqueuing iletinin UTC saatini gösterir. Sorgulamak için aşağıdaki komutu kullanın `enqueuedTime`. |
+| contentType | dize | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
+| Contentenkodlamaya | dize | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
+| ıothub-bağlantı-cihaz kimliği | dize | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId`. |
+| ıothub-enqueuedtime | dize | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime`. |
+| ıothub-arabirim-adı | dize | Bu değer Kullanıcı tarafından ayarlanır ve telemetri iletisini uygulayan dijital ikizi arabiriminin adını temsil eder. Sorgulamak için kullanın `$interfaceName`. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. |
 
-Bölümünde anlatıldığı gibi [IOT Hub iletilerini](iot-hub-devguide-messages-construct.md), bir iletiye ek sistem özellikleri vardır. Ek olarak **contentType**, **contentEncoding**, ve **enqueuedTime**, **connectionDeviceId** ve  **connectionModuleId** da sorgulanabilir.
+[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. **ContentType**, **Contentenkodlamaya**ve **Enqueuedtime**'A ek olarak **connectiondeviceıd** ve **connectionmoduleıd** de sorgulanabilir.
 
 ### <a name="application-properties"></a>Uygulama özellikleri
 
-Uygulama özellikleri iletiye eklenen kullanıcı tanımlı dizelerdir. Bu alanlar isteğe bağlıdır.  
+Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu alanlar isteğe bağlıdır.  
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti sistemi özellikleri üzerinde bir sorgu ile önek gerekiyor `$` simgesi. Uygulama özelliklerini sorgular adlarına ile erişilir ve ön ekine sahip değil `$`simgesi. Bir uygulama özelliği adı ile başlıyorsa `$`, ardından IOT Hub için Sistem Özellikleri'nde arama yapar ve bulunamadığında ve ardından uygulama özellikleri görünür. Örneğin: 
+İleti sistemi özelliklerindeki bir sorgunun, `$` simgeye ön eki eklenmiş olması gerekir. Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve `$`sembol önüne kullanılmamalıdır. Bir uygulama özelliği adı ile `$`başlıyorsa, IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örneğin: 
 
-Sistem özelliği contentEncoding üzerinde sorgulama 
+Sistem özelliği Çekiştenkodlamaya göre sorgulamak için 
 
 ```sql
 $contentEncoding = 'UTF-8'
 ```
 
-Uygulama özelliği processingPath üzerinde sorgulamak için:
+Uygulama özelliği Işleme yolunda sorgulamak için:
 
 ```sql
 processingPath = 'hot'
 ```
 
-Bu sorguları birleştirmek için Boolean ifadeler ve İşlevler kullanabilirsiniz:
+Bu sorguları birleştirmek için, Boolean ifadeleri ve işlevleri kullanabilirsiniz:
 
 ```sql
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-Desteklenen işleçler tam bir listesi ve İşlevler listelenir [ifade ve koşullar](iot-hub-devguide-query-language.md#expressions-and-conditions)
+Desteklenen işleçlerin ve işlevlerin tam listesi [ifade ve koşullarda](iot-hub-devguide-query-language.md#expressions-and-conditions)gösterilmiştir.
 
-## <a name="message-routing-query-based-on-message-body"></a>İleti yönlendirme sorgu ileti gövdesinde tabanlı 
+## <a name="message-routing-query-based-on-message-body"></a>İleti gövdesine dayalı ileti yönlendirme sorgusu 
 
-İleti gövdesi üzerinde sorgulama yapmayı etkinleştirmek için ileti UTF-8, UTF-16 veya UTF-32 kodlanmış bir JSON biçiminde olmalıdır. `contentType` Ayarlanmalıdır `application/JSON` ve `contentEncoding` biri desteklenen UTF kodlamalarda sistem özelliği olarak. Bu özellik belirtilmezse, IOT Hub ileti üzerinde sorgu ifadesi değerlendirmez. 
+İleti gövdesinde sorgulamayı etkinleştirmek için ileti, UTF-8, UTF-16 veya UTF-32 ' de bir JSON kodlamalı olmalıdır. , `contentType` Sistem özelliğinde desteklenen UTF `application/JSON` kodlamalarının birine ve `contentEncoding` olarak ayarlanmalıdır. Bu özellikler belirtilmemişse, IoT Hub ileti gövdesinde sorgu ifadesini değerlendirmeyecektir. 
 
-Aşağıdaki örnek, doğru biçimlendirilmiş ve kodlanmış JSON gövdesi ile bir ileti oluşturma işlemi gösterilmektedir: 
+Aşağıdaki örnek, düzgün biçimlendirilmiş ve kodlanmış bir JSON gövdesi ile bir iletinin nasıl oluşturulacağını gösterir: 
 
 ```javascript
 var messageBody = JSON.stringify(Object.assign({}, {
@@ -143,7 +144,7 @@ deviceClient.sendEvent(message, (err, res) => {
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti gövdesi bir sorgu ile önek gerekiyor `$body`. Sorgu ifadesi içinde bir gövde başvuru, gövde dizi başvuru ya da birden fazla gövdesi başvuru kullanabilirsiniz. İleti sistemi özellikleri ve ileti uygulama özellikleri başvurusu, sorgu ifadesi gövdesi başvuru ayrıca birleştirebilirsiniz. Örneğin, tüm geçerli sorgu ifadeleri şunlardır: 
+İleti gövdesinde bir sorgunun ön eki `$body`olarak kullanılması gerekir. Sorgu ifadesinde gövde başvurusunu, gövde dizisi başvurusunu veya birden çok gövde başvurusunu kullanabilirsiniz. Sorgu ifadeniz Ayrıca ileti sistemi özellikleriyle bir gövde başvurusunu ve ileti uygulama özellikleri başvurusunu birleştirebilir. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -161,9 +162,9 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-## <a name="message-routing-query-based-on-device-twin"></a>İleti yönlendirme sorgu üzerinde cihaz ikizini tabanlı 
+## <a name="message-routing-query-based-on-device-twin"></a>Cihaz ikizi tabanlı ileti yönlendirme sorgusu 
 
-İleti yönlendirme sayesinde sorgulamak [cihaz İkizi](iot-hub-devguide-device-twins.md) etiketleri ve JSON nesneleri olan özellikleri. Modül ikizi üzerinde sorgulama desteklenmediğini unutmayın. Cihaz İkizi-etiketler ve özellikler bir örnek aşağıda gösterilmiştir.
+İleti yönlendirme, JSON nesneleri olan [cihaz ikizi](iot-hub-devguide-device-twins.md) etiketleri ve özellikleri üzerinde sorgulama yapmanızı sağlar. İkizi Module üzerinde sorgulama desteklenmiyor. Bir cihaz Ikizi etiketleri ve özellikleri aşağıda gösterilmiştir.
 
 ```JSON
 {
@@ -196,7 +197,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti gövdesi bir sorgu ile önek gerekiyor `$twin`. Sorgu ifadesi, ayrıca bir gövde başvuru, ileti sistemi özellikleri ve ileti uygulama özellikleri başvurusu ikizi etiketi veya Özellik Başvurusu birleştirebilirsiniz. Sorgu büyük küçük harfe duyarlı değil olarak etiketleri ve özellikleri benzersiz adlar kullanmanızı öneririz. Aynı zamanda kullanmadığınızdan `twin`, `$twin`, `body`, veya `$body`, özellik adları. Örneğin, tüm geçerli sorgu ifadeleri şunlardır: 
+İleti gövdesinde bir sorgunun ön eki `$twin`olarak kullanılması gerekir. Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Ayrıca `twin` `$twin` ,bir`$body`Özellik adları olarak, ,veya'ıkullanmaktankaçının.`body` Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -212,5 +213,5 @@ $twin.tags.deploymentLocation.floor = 1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Hakkında bilgi edinin [ileti yönlendirme](iot-hub-devguide-messages-d2c.md).
-* Deneyin [ileti yönlendirme öğretici](tutorial-routing.md).
+* [İleti yönlendirme](iot-hub-devguide-messages-d2c.md)hakkında bilgi edinin.
+* [İleti yönlendirme öğreticisini](tutorial-routing.md)deneyin.

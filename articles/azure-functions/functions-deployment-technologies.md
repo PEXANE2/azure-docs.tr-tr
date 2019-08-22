@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624140"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650451"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -60,7 +60,7 @@ Tetikleyicilerden herhangi birini değiştirdiğinizde, Işlevler altyapısını
 
 ### <a name="remote-build"></a>Uzak derleme
 
-Azure Işlevleri, ZIP dağıtımlarından sonra aldığı kodda derlemeleri otomatik olarak gerçekleştirebilir. Bu derlemeler, uygulamanızın Windows veya Linux üzerinde çalışıyor olmasına bağlı olarak biraz farklı davranır. Bir uygulama daha önce [paket modundan Çalıştır](run-functions-from-deployment-package.md) modunda çalışmak üzere ayarlandığında uzak derlemeler gerçekleştirilmez. 
+Azure Işlevleri, ZIP dağıtımlarından sonra aldığı kodda derlemeleri otomatik olarak gerçekleştirebilir. Bu derlemeler, uygulamanızın Windows veya Linux üzerinde çalışıyor olmasına bağlı olarak biraz farklı davranır. Bir uygulama daha önce [paket modundan Çalıştır](run-functions-from-deployment-package.md) modunda çalışmak üzere ayarlandığında uzak derlemeler gerçekleştirilmez. Uzak derlemeyi kullanmayı öğrenmek için, [ZIP dağıtımı](#zip-deploy)' na gidin.
 
 > [!NOTE]
 > Uzak derleme ile ilgili sorun yaşıyorsanız, bu durum uygulamanızın özellik kullanıma alınmadan önce oluşturulması olabilir (1 Ağustos 2019). Yeni bir işlev uygulaması oluşturmayı deneyin.
@@ -85,11 +85,11 @@ Uygulamalar Linux üzerinde uzaktan oluşturulduğunda, [dağıtım paketinden �
 
 ##### <a name="consumption-preview-plan"></a>Tüketim (Önizleme) planı
 
-Tüketim planında çalışan Linux işlev uygulamalarının, dağıtım seçeneklerini sınırlayan bir SCM/kudu sitesi yok. Ancak, tüketim planında çalışan Linux 'ta işlev uygulamaları uzak yapıları destekler. Bu uzak derlemeler [Oryx](https://github.com/microsoft/Oryx)kullanır.
+Tüketim planında çalışan Linux işlev uygulamalarının, dağıtım seçeneklerini sınırlayan bir SCM/kudu sitesi yok. Ancak, tüketim planında çalışan Linux 'ta işlev uygulamaları uzak yapıları destekler.
 
 ##### <a name="dedicated-and-premium-preview-plans"></a>Adanmış ve Premium (Önizleme) planları
 
-Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](functions-scale.md#app-service-plan) ve [Premium planda](functions-scale.md#premium-plan) Ayrıca sınırlı bir SCM/kudu sitesi de vardır ve bu, kendisi de [Oryx](https://github.com/microsoft/Oryx)'ın avantajlarından yararlanır.
+Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](functions-scale.md#app-service-plan) ve [Premium planda](functions-scale.md#premium-plan) Ayrıca sınırlı bir SCM/kudu sitesi de vardır.
 
 ## <a name="deployment-technology-details"></a>Dağıtım teknolojisi ayrıntıları
 
@@ -111,7 +111,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 >__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual STUDIO](functions-develop-vs.md#publish-to-azure)veya [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
 
-Uzak yapıyla bir ZIP dağıtımı gerçekleştirmek için aşağıdaki [çekirdek araçları](functions-run-local.md) komutunu kullanın:
+[Uzak yapıyla](#remote-build)bir ZIP dağıtımı gerçekleştirmek Için aşağıdaki [çekirdek araçları](functions-run-local.md) komutunu kullanın:
 
 ```bash
 func azure functionapp publish <app name> --build remote

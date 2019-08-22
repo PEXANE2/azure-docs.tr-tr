@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 49ee83e451e9d555a7fe5fca57bc58d6616334da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: b1aca591437738b29786f50c2a5291ab456f3416
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641062"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876686"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Azure CLı ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme
 Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini engelleyen ' de `/etc/fstab` geçersiz bir giriş olabilir. Bu makalede, herhangi bir hatayı onarmak üzere sanal sabit diskinizi başka bir Linux VM 'sine bağlamak için Azure CLı 'nın nasıl kullanılacağı açıklanır ve ardından özgün VM 'nizi yeniden oluşturabilirsiniz. 
@@ -39,7 +39,7 @@ Bu sorun giderme adımlarını gerçekleştirmek için, [az Login](/cli/azure/re
 > [!Important]
 > Bu makaledeki betikler yalnızca [yönetilen disk](../linux/managed-disks-overview.md)kullanan VM 'ler için geçerlidir. 
 
-Aşağıdaki örneklerde parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları ve `myResourceGroup` `myVM`içerir.
+Aşağıdaki örneklerde, `myResourceGroup` ve `myVM`gibi parametre adlarını kendi değerlerinizle değiştirin.
 
 ## <a name="determine-boot-issues"></a>Önyükleme sorunlarını belirleme
 SANAL makinenizin neden doğru şekilde önyüklenemediğini anlamak için seri çıktıyı inceleyin. Ortak bir örnek, içinde `/etc/fstab`geçersiz bir giriştir veya silinmekte veya taşınmakta olan temeldeki sanal sabit disk.
@@ -56,88 +56,70 @@ VM 'nin neden önyükleme başarısız olduğunu anlamak için seri çıktıyı 
 
 Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubundan adlı VM 'yi durduruyor:
 
-```powershell
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+```azurecli
+az vm stop --resource-group MyResourceGroup --name MyVm
 ```
-
-Sonraki adıma geçmeden önce VM 'nin silme işlemini tamamlamasını bekleyin.
-
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>VM 'nin işletim sistemi diskinden anlık görüntü oluşturma
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>Etkilenen VM 'nin işletim sistemi diskinden bir anlık görüntü alın
 
 Anlık görüntü, bir VHD 'nin tam ve salt okunurdur kopyasıdır. Bir sanal makineye bağlanamaz. Bir sonraki adımda, bu anlık görüntüden bir disk oluşturacağız. Aşağıdaki örnek, ' myvm ' adlı `mySnapshot` VM 'nin işletim sistemi diskinden adında bir anlık görüntü oluşturur. 
 
-```powershell
-$resourceGroupName = 'myResourceGroup' 
-$location = 'eastus' 
-$vmName = 'myVM'
-$snapshotName = 'mySnapshot'  
+```azurecli
+#Get the OS disk Id 
+$osdiskid=(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 
-#Get the VM
-$vm = get-azvm `
--ResourceGroupName $resourceGroupName `
--Name $vmName
-
-#Create the snapshot configuration for the OS disk
-$snapshot =  New-AzSnapshotConfig `
--SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
--Location $location `
--CreateOption copy
-
-#Take the snapshot
-New-AzSnapshot `
-   -Snapshot $snapshot `
-   -SnapshotName $snapshotName `
-   -ResourceGroupName $resourceGroupName 
+#creates a snapshot of the disk
+az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --name mySnapshot
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>Anlık görüntüden disk oluşturma
 
-Bu betik adlı `mysnapshot`anlık görüntüden adında bir yönetilen `newOSDisk` disk oluşturur.  
+Bu betik adlı `mySnapshot`anlık görüntüden adında bir yönetilen `myOSDisk` disk oluşturur.  
 
-```powershell
-#Set the context to the subscription Id where Managed Disk will be created
-#You can skip this step if the subscription is already selected
-
-$subscriptionId = 'yourSubscriptionId'
-
-Select-AzSubscription -SubscriptionId $SubscriptionId
-
+```azurecli
 #Provide the name of your resource group
-$resourceGroupName ='myResourceGroup'
+$resourceGroup=myResourceGroup
 
 #Provide the name of the snapshot that will be used to create Managed Disks
-$snapshotName = 'mySnapshot' 
+$snapshot=mySnapshot
 
 #Provide the name of the Managed Disk
-$diskName = 'newOSDisk'
+$osDisk=myNewOSDisk
 
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
-$diskSize = '128'
+$diskSize=128
 
-#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-$storageType = 'StandardLRS'
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType=Premium_LRS
 
-#Provide the Azure region (e.g. westus) where Managed Disks will be located.
-#This location should be same as the snapshot location
-#Get all the Azure location using command below:
-#Get-AzLocation
-$location = 'eastus'
+#Provide the OS type
+$osType=linux
 
-$snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
- 
-$diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
- 
-New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+#Provide the name of the virtual machine
+$virtualMachine=myVM
+
+#Get the snapshot Id 
+$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query [id] -o tsv)
+
+# Create a new Managed Disks using the snapshot Id.
+
+az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType --size-gb $diskSize --source $snapshotId
+
 ```
+
+Kaynak grubu ve kaynak anlık görüntüsü aynı bölgede değilse, çalıştırdığınızda `az disk create`"kaynak bulunamadı" hatasını alırsınız. Bu durumda, diski kaynak anlık görüntüsü `--location <region>` ile aynı bölgede oluşturmayı belirtmeniz gerekir.
+
 Artık özgün işletim sistemi diskinin bir kopyasına sahipsiniz. Sorun giderme amacıyla bu yeni diski başka bir Windows sanal makinesine bağlayabilirsiniz.
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>Yeni sanal sabit diski başka bir VM 'ye iliştirme
-Sonraki birkaç adımda, sorun giderme amacıyla başka bir VM kullanırsınız. Diskin içeriğini taramak ve düzenlemek için bu sorun giderme sanal makinesine diski iliştirin. Bu işlem, örneğin yapılandırma hatalarını düzeltmenize veya ek uygulama ya da sistem günlük dosyalarını incelemenizi sağlar. Sorun giderme amacıyla kullanmak için başka bir VM seçin veya oluşturun.
+Sonraki birkaç adımda, sorun giderme amacıyla başka bir VM kullanırsınız. Diskin içeriğini taramak ve düzenlemek için bu sorun giderme sanal makinesine diski iliştirin. Bu işlem, yapılandırma hatalarını düzeltmenize veya ek uygulama veya sistem günlük dosyalarını incelemenizi sağlar.
 
-Var olan sanal sabit diski [az VM yönetilmeyen disk Attach](/cli/azure/vm/unmanaged-disk)ile ekleyin. Var olan sanal sabit diski iliştirdiğinizde, önceki `az vm show` komutta elde edilen diskin URI 'sini belirtin. Aşağıdaki örnek, adlı `myVMRecovery` `myResourceGroup`kaynak grubunda adlı sorun giderme sanal makinesine var olan bir sanal sabit diski iliştirir:
+Bu betik, diski `myNewOSDisk` VM `MyTroubleshootVM`'ye ekler:
 
 ```azurecli
-az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
-    --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
+# Get ID of the OS disk that you just created.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Attach the disk to the troubleshooting VM
+az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
 ```
 ## <a name="mount-the-attached-data-disk"></a>Bağlı veri diskini bağlama
 
@@ -197,46 +179,30 @@ Hatalar çözümlendikten sonra, var olan sanal sabit diski sorun giderme sanal 
     sudo umount /dev/sdc1
     ```
 
-2. Artık sanal sabit diski VM 'den ayırın. SSH oturumundan sorun giderme sanal makinesine çıkın. Bağlı veri disklerini, [az VM yönetilmeyen disk listesi](/cli/azure/vm/unmanaged-disk)ile sorun giderme sanal makinesine listeleyin. Aşağıdaki örnek, adlı `myVMRecovery` `myResourceGroup`kaynak grubunda adlı sanal makineye bağlı veri disklerini listeler:
+2. Artık sanal sabit diski VM 'den ayırın. SSH oturumundan sorun giderme sanal makinesine çıkın:
 
     ```azurecli
-    azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
-        --query '[].{Disk:vhd.uri}' --output table
-    ```
-
-    Var olan sanal sabit diskinizin adını aklınızda edin. Örneğin, URI 'si **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** olan bir diskin adı **myvhd**'dir. 
-
-    Veri diskini VM 'nizden ayırın [az VM yönetilmeyen-disk Detach](/cli/azure/vm/unmanaged-disk). Aşağıdaki örnek, `myVHD` `myResourceGroup` kaynak grubunda adlı `myVMRecovery` VM 'den adlı diski ayırır:
-
-    ```azurecli
-    az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
-        --name myVHD
+    az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
     ```
 
 ## <a name="change-the-os-disk-for-the-affected-vm"></a>Etkilenen VM için işletim sistemi diskini değiştirme
 
-İşletim sistemi disklerini değiştirmek için Azure PowerShell kullanabilirsiniz. VM 'yi silip yeniden oluşturmanız gerekmez.
+İşletim sistemi disklerini değiştirmek için Azure CLı kullanabilirsiniz. VM 'yi silip yeniden oluşturmanız gerekmez.
 
-Bu örnek, adlı `myVM` VM 'yi durdurup yeni işletim sistemi diski olarak adlandırılan `newOSDisk` diski atar. 
+Bu örnek, adlı `myVM` VM 'yi durdurup yeni işletim sistemi diski olarak adlandırılan `myNewOSDisk` diski atar.
 
-```powershell
-# Get the VM 
-$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
+```azurecli
+# Stop the affected VM
+az vm stop -n myVM -g myResourceGroup
 
-# Make sure the VM is stopped\deallocated
-Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+# Get ID of the OS disk that is repaired.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 
-# Get the new disk that you want to swap in
-$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
-
-# Set the VM configuration to point to the new disk  
-Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
-
-# Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
-Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
+# Change the OS disk of the affected VM to "myNewOSDisk"
+az vm update -g myResourceGroup -n myVM --os-disk $myNewOSDiskid
 
 # Start the VM
-Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
+az vm start -n myVM -g myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

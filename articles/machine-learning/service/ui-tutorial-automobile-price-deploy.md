@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Bir machine learning modeli görsel arabirim ile dağıtma'
+title: 'Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma'
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti visual arabiriminde bir Tahmine dayalı analiz çözümü oluşturmayı öğrenin. Eğitme, Puanlama ve sürükleme kullanarak makine öğrenme modeli dağıtma ve modülleri bırakın. Bu öğreticide doğrusal regresyon kullanarak otomobil fiyatlarını tahmin etme bulunan iki bölümden oluşan bir bölümüdür.
+description: Azure Machine Learning hizmeti görsel arabiriminde tahmine dayalı analiz çözümü oluşturmayı öğrenin. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin eden iki bölümden oluşan bir serinin ikinci bölümüdür.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,121 +9,115 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839297"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891610"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: Bir machine learning modeli görsel arabirim ile dağıtma
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma
 
-Başkalarının içinde geliştirilen Tahmine dayalı bir model kullanmak için bir fırsat vermek [öğreticinin birinci kısmında](ui-tutorial-automobile-price-train-score.md), bir Azure web hizmeti olarak dağıtabilirsiniz. Şu ana kadar modelinizi eğitim ile denemeler. Artık, kullanıcı girişini temel alarak yeni tahminler üretmek için zamanı geldi. Öğreticinin bu bölümünde:
+Başkalarına [öğreticinin birinci kısmında](ui-tutorial-automobile-price-train-score.md)geliştirilen tahmine dayalı modeli kullanma şansı vermek için bunu bir Azure Web hizmeti olarak dağıtabilirsiniz. Şimdiye kadar, modelinize eğitim yapmaya çalıştık. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapabilirsiniz:
 
 > [!div class="checklist"]
-> * Bir model dağıtımına hazırlanma
+> * Bir modeli dağıtım için hazırlama
 > * Bir web hizmetini dağıtma
-> * Bir web hizmetini test edin
-> * Bir web hizmetini yönetme
+> * Web hizmetini test etme
+> * Bir Web hizmetini yönetme
 > * Web hizmetini kullanma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Tam [öğreticinin birinci kısmında](ui-tutorial-automobile-price-train-score.md) eğitme ve görsel bir arabirim machine learning modeli Puanlama hakkında bilgi edinmek için.
+Bir makine öğrenimi modelini görsel arabirimde eğitme ve puan alma hakkında bilgi edinmek için [öğreticiden birinin bir kısmını](ui-tutorial-automobile-price-train-score.md) doldurun.
 
 ## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 
-Bir web hizmeti olarak denemenizi dağıtmadan önce öncelikle dönüştürülecek olması, *eğitim denemesini* içine bir *Tahmine dayalı denemeye*.
+Denemenizi bir Web hizmeti olarak dağıtmadan önce, ilk olarak *eğitim denemenizi* bir tahmine *dayalı deneyle*dönüştürmeniz gerekir.
 
-1. Seçin **Tahmine dayalı denemeler oluşturma*** deneme tuvalinin altındaki.
+1. Deneme tuvalinin en altında, tahmine **dayalı denemeler oluştur**' u seçin.
 
-    ![Animasyonlu GIF gösteren bir eğitim denemesini öngörücü bir denemeye otomatik dönüştürme](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+    ![Tahmine dayalı bir deneye eğitim denemesinin otomatik dönüştürülmesini gösteren animasyonlu GIF](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-    Seçtiğinizde, **oluşturma Tahmine dayalı denemeye**, olacaklar:
+    Tahmine **dayalı deneme oluştur**' u seçtiğinizde birkaç şey meydana gelir:
     
-    * Eğitilen model olarak depolanan bir **eğitilen Model** modül paletindeki modülü. Bunun altında bulabilirsiniz **eğitilen modelleri**.
+    * Eğitilen model, modül paletinde **eğitilen bir model** modülü olarak depolanır. **Eğitilen modeller**altında bulabilirsiniz.
     * Eğitim için kullanılan modülleri kaldırılır; özellikle:
       * Model Eğitme
       * Verileri Bölme
       * Modeli Değerlendirme
-    * Kaydedilmiş eğitilen modeli yeniden denemenin eklenir.
-    * **Web hizmeti giriş** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller, model kullanıcı verilerinin burada girer ve nerede veriler döndürülür belirleyin.
+    * Kaydedilen eğitilen model denemeye geri eklenir.
+    * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller, Kullanıcı verilerinin modeli nereye giremeyeceğini ve verilerin döndürüldüğü yeri belirler.
 
-    **Eğitim denemesini** deneme tuvalinin üst kısmındaki yeni sekmeler altında kaydedilir.
+    **Eğitim** denemesi hala deneme tuvalinin en üstündeki yeni sekmelerin altına kaydedilir.
 
 1. Denemeyi çalıştırmak için **Run (Çalıştır)** düğmesine basın.
 
-1. Çıkışı seçin **Score Model** modülü ve select **sonuçlarını görüntüle** modelin hala çalıştığından emin olmak için. Özgün veriler görüntülenir, tahmin edilen Fiyat ("Puanlanmış etiketler") yanı sıra görebilirsiniz.
+1. **Puan modeli** modülünün çıkışını seçin ve modelin hala çalıştığını doğrulamak Için **sonuçları görüntüle** ' yi seçin. Orijinal verilerin görüntülendiğini ve tahmin edilen fiyat ("puanlanmış Etiketler") ile birlikte görebilirsiniz.
 
-Denemenizi gibi görünmelidir:  
+Denemeniz şu şekilde görünmelidir:  
 
-![Dağıtım için hazırlandıktan sonra deneme beklenen yapılandırmasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+![Dağıtım için hazırlandıktan sonra deneme sürümünün beklenen yapılandırmasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
 ## <a name="deploy-the-web-service"></a>Web hizmetini dağıtma
 
-1. Seçin **Web hizmeti Dağıt** tuval aşağıda.
+1. Tuvalin altında **Web Hizmeti Dağıt** ' ı seçin.
 
-1. Seçin **hedef işlem** web hizmetini çalıştırmak istiyor.
+1. Web hizmetinizi çalıştırmak istediğiniz **Işlem hedefini** seçin.
 
-    Şu anda görsel arabirim, yalnızca Azure Kubernetes Service (AKS) işlem hedefleri dağıtımı destekler. Görüntülenen iletişim kutusunda yer alan adımları kullanarak yeni bir AKS ortamını yapılandırmak ya da kullanılabilir AKS işlem hedeflerden durum da, machine learning hizmeti çalışma alanını seçin.
+    Şu anda, görsel arabirim yalnızca Azure Kubernetes Service (AKS) işlem hedeflerine dağıtımı destekler. Machine Learning hizmeti çalışma alanınızda kullanılabilir AKS işlem hedefleri arasından seçim yapabilir veya görüntülenen iletişim kutusunda bulunan adımları kullanarak yeni bir AKS ortamı yapılandırabilirsiniz.
 
-    ![Yeni işlem hedefi için bir olası yapılandırma gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+    ![Yeni bir işlem hedefi için olası bir yapılandırmayı gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
 
-1. Seçin **Web hizmetini dağıtma**. Dağıtım tamamlandığında, aşağıdaki bildirim görürsünüz. Dağıtım birkaç dakika sürebilir.
+1. **Web hizmetini dağıt**' ı seçin. Dağıtım tamamlandığında aşağıdaki bildirimi görürsünüz. Dağıtım birkaç dakika sürebilir.
 
-    ![Başarılı bir dağıtım için onay iletisi gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Başarılı bir dağıtımın onay iletisini gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
 
 ## <a name="test-the-web-service"></a>Web hizmetini test edin
 
-Test edebilir ve giderek görsel arabirim web hizmetlerinizi yönetme **Web Hizmetleri** sekmesi.
+**Web Hizmetleri** sekmesine giderek, Visual Interface Web hizmetlerinizi test edebilir ve yönetebilirsiniz.
 
-1. Web hizmeti bölümüne gidin. Adı ile dağıtılan web hizmeti göreceğiniz **Öğreticisi - otomobil fiyatını tahmin [Tahmine dayalı ifade]** .
+1. Web hizmeti bölümüne gidin. Ad öğreticisiyle dağıttığınız Web hizmeti 'ni görürsünüz **-otomobil Tahmini fiyatını tahmin edin [tahmine dayalı exp]** .
 
-     ![Vurgulanan son oluşturulan web hizmeti ile web hizmeti sekmesini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+     ![Son oluşturulan Web hizmeti vurgulanmış Web hizmeti sekmesini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
-1. Ek ayrıntıları görüntülemek için web hizmeti adı seçin.
+1. Ek ayrıntıları görüntülemek için Web hizmeti adını seçin.
 
-     ![Web hizmetinde kullanılabilir ek ayrıntılarını gösteren ekran görüntüsü görüntüleyin](./media/ui-tutorial-automobile-price-deploy/web-service-details.png)
+1. **Test**' i seçin.
 
-1. Seçin **Test**.
+    [![Web hizmeti testi sayfasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
 
-    ![Sayfasını test etme web hizmetini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
+1. Test verilerini girin veya oto dolgulu örnek verileri kullanın ve **Test**' i seçin.
 
-1. Giriş verileri test etme veya autofilled örnek verileri kullanarak ve seçin **Test**.
-
-    Test amaçlı istek web hizmetine gönderilir ve sonuçları sayfasında gösterilir. Giriş verileri için fiyat değerini oluşturulmasına rağmen tahmin değer oluşturmak için kullanılmaz.
+    Test isteği Web hizmetine gönderilir ve sonuçlar sayfada gösterilir. Giriş verileri için bir fiyat değeri oluşturulsa da tahmin değeri oluşturmak için kullanılmaz.
 
 ## <a name="consume-the-web-service"></a>Web hizmetini kullanma
 
-Kullanıcılar, artık Azure web hizmetiniz için API istekleri göndermek ve kendi yeni otomobil fiyatını tahmin etmek için sonuçlar alabilirsiniz.
+Kullanıcılar artık Azure Web hizmetinize API istekleri gönderebilir ve yeni otomobil fiyatlarını tahmin etmek için sonuçlar alabilir.
 
-**İstek/yanıt** -kullanıcı bir HTTP protokolünü kullanarak bir veya daha fazla satır otomobil veri hizmetine gönderir. Hizmet bir veya daha fazla sonuç kümeleri yanıt verir.
+**İstek/yanıt** -Kullanıcı, bir http protokolünü kullanarak bir veya daha fazla otomobil verilerini hizmete bir veya daha fazla satır gönderir. Hizmet bir veya daha fazla sonuç kümesiyle yanıt verir.
 
-REST çağrıları örnek bulabilirsiniz **Tüket** web hizmeti ayrıntıları sayfasının sekmesi.
+Örnek REST çağrılarını, Web hizmeti ayrıntıları sayfasının **tüketme** sekmesinde bulabilirsiniz.
 
-   ![Örnek bir REST gösteren ekran görüntüsü kullanıcıları Tüket sekmesinde bulabilir çağırın](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
+   ![Kullanıcıların tüketme sekmesinde bulabileceği örnek bir REST çağrısını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
 
-Gidin **API belge** daha fazla API Ayrıntıları bulmak için sekmesinde.
+Daha fazla API ayrıntısı bulmak için **API belge** sekmesine gidin.
 
-  ![Kullanıcılar API belge sekmesinde bulabilirsiniz ek API ayrıntıları gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
+## <a name="manage-models-and-deployments"></a>Modelleri ve dağıtımları yönetme
 
-## <a name="manage-models-and-deployments"></a>Modelleri ve dağıtımları yönetin
+Görsel arabirimde oluşturduğunuz modeller ve Web hizmeti dağıtımları Azure Machine Learning hizmet çalışma alanından da yönetilebilir.
 
-Modeller ve görsel arabirim içinde oluşturduğunuz web hizmeti dağıtımları da Azure Machine Learning hizmeti çalışma alanından yönetilebilir.
+1. Çalışma alanınızı [Azure Portal](https://portal.azure.com/)açın.  
 
-1. Çalışma alanınızda açın [Azure portalında](https://portal.azure.com/).  
+1. Çalışma alanınızda **modeller**' ı seçin. Sonra oluşturduğunuz denemeyi seçin.
 
-1. Çalışma alanınızı seçin **modelleri**. Ardından, oluşturduğunuz denemeyi seçin.
+    ![Azure portal 'de denemeleri 'e nasıl gidebileceğiniz gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
 
-    ![Azure portalında denemeleri gidin gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
+    Bu sayfada, modelle ilgili ek ayrıntılar görürsünüz.
 
-    Bu sayfada, model hakkında ek ayrıntılar görürsünüz.
+1. **Dağıtımları**seçin, modeli kullanan tüm Web hizmetlerini listeler. Web hizmeti adı ' nı seçin, Web hizmeti ayrıntısı sayfasına gider. Bu sayfada, Web hizmeti hakkında daha ayrıntılı bilgi edinebilirsiniz.
 
-    ![Azure portalında deneme istatistikleri ekran gösteren genel bakış](./media/ui-tutorial-automobile-price-deploy/model-details.png)
-
-1. Seçin **dağıtımları**, modeli kullanan tüm web hizmetleri listelenir. Web hizmeti adı seçin, web hizmeti ayrıntıları sayfasına geçer. Bu sayfada, web hizmeti daha ayrıntılı bilgi edinebilirsiniz.
-
-    ![Ekran ayrıntılı çalıştırma raporu](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)
+    [![Ekran görüntüsü ayrıntılı çalıştırma raporu](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -131,7 +125,7 @@ Modeller ve görsel arabirim içinde oluşturduğunuz web hizmeti dağıtımlar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, anahtar oluşturma, dağıtma ve makine öğrenme modeli visual arabiriminde kullanma adımları öğrendiniz. Diğer tür sorunları çözmek için görsel arabirim nasıl kullanabileceğiniz hakkında daha fazla bilgi için diğer bizim örnek denemeleri bakın.
+Bu öğreticide, Visual arabiriminde makine öğrenimi modeli oluşturma, dağıtma ve kullanma konusunda temel adımları öğrendiniz. Diğer sorun türlerini çözümlemek için görsel arabirimi nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için bkz. diğer örnek denemeleri.
 
 > [!div class="nextstepaction"]
 > [Kredi riski sınıflandırma örneği](ui-sample-classification-predict-credit-risk-cost-sensitive.md)

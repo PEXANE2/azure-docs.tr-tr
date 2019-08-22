@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641104"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874391"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -56,11 +56,13 @@ Yönetilen örnek iki hizmet katmanına sahiptir: Genel Amaçlı ve İş Açıs�
 | Maks. veritabanı boyutu | Örnek başına en fazla depolama boyutuna göre belirlenir | Örnek başına en fazla depolama boyutuna göre belirlenir |
 | Örnek başına en fazla veritabanı sayısı | 100 | 100 |
 | Örnek başına en fazla veritabanı dosyası sayısı | 280 kadar | veritabanı başına 32.767 dosya |
+| En büyük dosya boyutu | 8 TB | 4 TB |
 | Veri/günlük ıOPS (yaklaşık) | dosya başına 500-7.500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 k-110 K (1375/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
 | Günlük yazma verimlilik sınırı | Sanal çekirdek başına 3 MB/s<br/>Örnek başına en fazla 22 MB/sn | vCore başına 4 MB/s<br/>Örnek başına en fazla 48 MB/sn|
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Yok |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
 | En fazla tempDB boyutu | 192-1.920 GB (vCore başına 24 GB)<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | En büyük örnek depolama boyutuyla sınırlıdır. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
+| Bellek içi OLTP | Desteklenmiyor | Kullanılabilir |
 | En fazla oturum sayısı | 30000 | 30000 |
 
 > [!NOTE]

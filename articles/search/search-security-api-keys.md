@@ -2,7 +2,7 @@
 title: Yönetici ve sorgu oluşturma, yönetme ve güvenli hale getirme API anahtarları-Azure Search
 description: API anahtarları hizmet uç noktasına erişimi denetler. Yönetici anahtarları yazma erişimi verir. Salt okuma erişimi için sorgu anahtarları oluşturulabilir.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d3880ed367ebe33e04f37b139927b75e3d01b178
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a148ccccd156b0bf637a134758b3a1c8b9db70a7
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855776"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647897"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Azure Search hizmeti için API anahtarları oluşturma ve yönetme
 

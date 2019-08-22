@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637907"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872898"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -175,7 +175,7 @@ VM üzerinde çalışan veritabanlarını bulma:
    Yedekleme yüklerini iyileştirmek için Azure Backup bir yedekleme işinde en fazla veritabanı sayısını 50 olarak ayarlar.
 
      * 50 'den fazla veritabanını korumak için birden çok yedekleme yapılandırın.
-     * Tüm örneği [](#enable-auto-protection) veya Always on kullanılabilirlik grubunu etkinleştirmek için. **Oto koru** açılan listesinde **Açık**' ı seçin ve ardından **Tamam**' ı seçin.
+     * Tüm örneği veya Always on kullanılabilirlik grubunu [etkinleştirmek](#enable-auto-protection) Için, **oto koru** açılan listesinde **Açık**' ı seçin ve ardından **Tamam**' ı seçin.
 
     > [!NOTE]
     > [Otomatik koruma](#enable-auto-protection) özelliği, aynı anda var olan tüm veritabanlarında korumayı yalnızca bir kerede etkinleştirmez, ancak aynı zamanda bu örneğe veya kullanılabilirlik grubuna eklenen yeni veritabanlarını otomatik olarak korur.  

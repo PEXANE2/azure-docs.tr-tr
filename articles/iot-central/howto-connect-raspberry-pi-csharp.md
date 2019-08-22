@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Central uygulamanızı Raspberry Pi'yi bağlayın (C#) | Microsoft Docs
-description: Bir cihaz geliştirici olarak, Azure IOT Central kullanarak uygulama için bir Raspberry Pi bağlanma C#.
+title: Azure IoT Central uygulamanıza bir Raspberry Pi bağlama (C#) | Microsoft Docs
+description: Bir cihaz geliştiricisi olarak, kullanarak C#Raspberry Pi 'yi Azure IoT Central uygulamanıza bağlama.
 author: viv-liu
 ms.author: viviali
 ms.date: 04/15/2019
@@ -8,62 +8,64 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3feb0b2b50851903bbd6799f46d489879e62bf43
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714426"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876212"
 ---
-# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi'yi bağlanmak için Azure IOT Central, uygulama (C#)
+# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Azure IoT Central uygulamanıza bir Raspberry PI bağlama (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
 
-Bu makalede, Microsoft Azure IOT Central uygulamanıza C# programlama dilini kullanarak Raspberry Pi'yi bağlanmak için bir cihaz geliştirici olarak nasıl.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+Bu makalede, bir cihaz geliştiricisi olarak, C# programlama dilini kullanarak bir Raspberry Pi 'yi Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi açıklar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki bileşenleri gerekir:
+Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki bileşenlere ihtiyacınız vardır:
 
-* Oluşturulan bir Azure IOT Central uygulamasına **örnek Devkits** uygulama şablonu. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-* Raspbian işletim sistemi çalıştıran bir Raspberry Pi cihaz. Raspberry Pi internet'e bağlanabiliyor olmanız gerekir. Daha fazla bilgi için [Raspberry Pi'yi ayarlama](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+* **Örnek Devkits** uygulama şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+* Raspbian işletim sistemini çalıştıran bir Raspberry PI cihazı. Raspberry PI, internet 'e bağlanabilmelidir. Daha fazla bilgi için bkz. [Raspberry PI 'Nizi ayarlama](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
-## <a name="sample-devkits-application"></a>**Örnek Devkits** uygulama
+## <a name="sample-devkits-application"></a>**Örnek Devkits** uygulaması
 
-Oluşturulan uygulama **örnek Devkits** uygulama şablonu içeren bir **Raspberry Pi** cihaz şablonu aşağıdaki özelliklere sahip:
+**Örnek Devkits** uygulama şablonundan oluşturulan bir uygulama, aşağıdaki özelliklere sahip bir **Raspberry PI** cihaz şablonu içerir:
 
-- Telemetri, cihaz toplayacak aşağıdaki ölçüleri içerir:
-  - Nem oranı
+- Telemetri, cihazın toplayacağı aşağıdaki ölçüleri içerir:
+  - Nem
   - Sıcaklık
   - Basınç
-  - Magnetometer (X, Y, Z)
+  - Manyetik tometre (X, Y, Z)
   - İvme ölçer (X, Y, Z)
-  - Jiroskop (X, Y, Z)
+  - Jroscope (X, Y, Z)
 - Ayarlar
-  - Voltaj
+  - Geril
   - Geçerli
   - Fan hızı
-  - IR Aç/Kapat.
+  - IR geçişi.
 - Özellikler
-  - Numara cihaz özelliği öldürmüş
-  - Konum bulut özelliği
+  - Zar numarası cihaz özelliği
+  - Konum bulutu özelliği
 
-Cihaz şablon yapılandırmasının tam Ayrıntılar için bkz. [Raspberry Pi cihaz şablon ayrıntılarını](#raspberry-pi-device-template-details).
+Cihaz şablonunun yapılandırmasının tam ayrıntıları için, [Raspberry PI cihaz şablonu ayrıntılarına](#raspberry-pi-device-template-details)bakın.
 
 ## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
 
-Azure IOT Central uygulamanızda gerçek bir CİHAZDAN ekleme **Raspberry Pi** cihaz şablonu. Bağlantı ayrıntıları cihazın not edin (**kapsam kimliği**, **cihaz kimliği**, ve **birincil anahtar**). Daha fazla bilgi için [Azure IOT Central uygulamanıza gerçek bir cihaz eklemek](tutorial-add-device.md).
+Azure IoT Central uygulamanızda, **Raspberry PI** cihaz şablonundan gerçek bir cihaz ekleyin. Cihaz bağlantısı ayrıntılarını (**kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**) bir yere unutmayın. Daha fazla bilgi için bkz. [Azure IoT Central uygulamanıza gerçek bir cihaz ekleme](tutorial-add-device.md).
 
-### <a name="create-your-net-application"></a>.NET uygulamanızı oluşturun
+### <a name="create-your-net-application"></a>.NET uygulamanızı oluşturma
 
-Oluşturulur ve Masaüstü makinenizde cihaz uygulamayı test edin.
+Cihaz uygulamasını masaüstü makinenizde oluşturup test edersiniz.
 
-Aşağıdaki adımları tamamlamak için Visual Studio Code kullanabilirsiniz. Daha fazla bilgi için [C# ile çalışma](https://code.visualstudio.com/docs/languages/csharp).
+Aşağıdaki adımları tamamlayabilmeniz için Visual Studio Code kullanabilirsiniz. Daha fazla bilgi için bkz. [Ile C#çalışma ](https://code.visualstudio.com/docs/languages/csharp).
 
 > [!NOTE]
-> İsterseniz, farklı Kod Düzenleyicisi'ni kullanarak aşağıdaki adımları tamamlayabilirsiniz.
+> İsterseniz, farklı bir kod Düzenleyicisi kullanarak aşağıdaki adımları tamamlayabilirsiniz.
 
-1. .NET projenizi başlatın ve gerekli NuGet paketlerini eklemek için aşağıdaki komutları çalıştırın:
+1. .NET projenizi başlatmak ve gerekli NuGet paketlerini eklemek için aşağıdaki komutları çalıştırın:
 
    ```cmd/sh
    mkdir pisample
@@ -73,7 +75,7 @@ Aşağıdaki adımları tamamlamak için Visual Studio Code kullanabilirsiniz. D
    dotnet restore
    ```
 
-1. Açık `pisample` Visual Studio code'da klasörü. Açılacağını **pisample.csproj** proje dosyası. Ekleme `<RuntimeIdentifiers>` aşağıdaki kod parçacığında gösterilen etiketi:
+1. `pisample` Visual Studio Code klasörü açın. Ardından **pisample. csproj** proje dosyasını açın. Aşağıdaki kod parçacığında gösterilen etiketiekleyin:`<RuntimeIdentifiers>`
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
@@ -89,11 +91,11 @@ Aşağıdaki adımları tamamlamak için Visual Studio Code kullanabilirsiniz. D
     ```
 
     > [!NOTE]
-    > **Microsoft.Azure.Devices.Client** paketinin sürüm numarasını gösterilen olandan daha yüksek olabilir.
+    > **Microsoft. Azure. Devices. Client** Package sürüm numaranız gösterilenden daha yüksek olabilir.
 
-1. Kaydet **pisample.csproj**. Visual Studio Code geri yükleme komutu çalıştırmak isteyip istemediğinizi sorar kaldığınızda **geri**.
+1. **Pisample. csproj**öğesini kaydedin. Visual Studio Code restore komutunu yürütmenizi isterse, **geri yükle**' yi seçin.
 
-1. Açık **Program.cs** ve içeriğini aşağıdaki kodla değiştirin:
+1. **Program.cs** açın ve içeriğini şu kodla değiştirin:
 
     ```csharp
     using System;
@@ -265,13 +267,13 @@ Aşağıdaki adımları tamamlamak için Visual Studio Code kullanabilirsiniz. D
     ```
 
     > [!NOTE]
-    > Yer tutucuyu güncelleştirdiğinizden `{your device connection string}` sonraki adımda.
+    > Bir sonraki adımda yer `{your device connection string}` tutucuyu güncelleştirebilirsiniz.
 
-## <a name="run-your-net-application"></a>.NET uygulamanızı çalıştırın
+## <a name="run-your-net-application"></a>.NET uygulamanızı çalıştırma
 
-Cihaza özgü bağlantı dizenizi Azure IOT Central ile kimlik doğrulaması bir cihaz için kod ekleyin. Bu yönergeleri izleyin [cihaz bağlantı dizesini oluşturmak](howto-generate-connection-string.md) kullanarak **kapsam kimliği**, **cihaz kimliği**, ve **birincil anahtar** , yapılan bir daha önce not edin.
+Cihaza özel Bağlantı dizenizi, Azure IoT Central kimlik doğrulaması yapacak şekilde cihazın koduna ekleyin. Daha önce bir değişiklik yaptığınız **kapsam kimliği**, **cihaz kimliği**ve **birincil anahtarı** kullanarak [Cihaz bağlantı dizesi oluşturmak](howto-generate-connection-string.md) için bu yönergeleri izleyin.
 
-1. Değiştirin `{your device connection string}` içinde **Program.cs** oluşturduğunuz bağlantı dizesiyle dosya.
+1. Program.cs `{your device connection string}` dosyasında, oluşturduğunuz bağlantı dizesiyle değiştirin.
 
 1. Komut satırı ortamınızda aşağıdaki komutu çalıştırın:
 
@@ -280,22 +282,22 @@ Cihaza özgü bağlantı dizenizi Azure IOT Central ile kimlik doğrulaması bir
    dotnet publish -r linux-arm
    ```
 
-1. Kopyalama `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` Raspberry Pi cihazınıza klasör. Kullanabileceğiniz **scp** komut dosyaları, örneğin kopyalamak için:
+1. `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` Klasörü Raspberry PI cihazınıza kopyalayın. Dosyaları kopyalamak için **SCP** komutunu kullanabilirsiniz, örneğin:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
     ```
 
-    Daha fazla bilgi için [Raspberry Pi uzaktan erişim](https://www.raspberrypi.org/documentation/remote-access/).
+    Daha fazla bilgi için bkz. [Raspberry PI uzaktan erişim](https://www.raspberrypi.org/documentation/remote-access/).
 
-1. Raspberry Pi cihazınıza oturum açın ve bir kabuğunda aşağıdaki komutları çalıştırın:
+1. Raspberry PI cihazınızda oturum açın ve bir kabukta aşağıdaki komutları çalıştırın:
 
     ```cmd/sh
     sudo apt-get update
     sudo apt-get install libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libstdc++6 libunwind8 libuuid1 zlib1g
     ```
 
-1. Raspberry Pi'yi aşağıdaki komutları çalıştırın:
+1. Raspberry PI 'de aşağıdaki komutları çalıştırın:
 
     ```cmd/sh
     cd publish
@@ -303,62 +305,62 @@ Cihaza özgü bağlantı dizenizi Azure IOT Central ile kimlik doğrulaması bir
     ./pisample
     ```
 
-    ![Program başlangıcı](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
+    ![Program başlar](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
 
-1. Azure IOT Central uygulamanızda Raspberry Pi üzerinde çalışan kodu uygulaması ile nasıl etkileşim kurduğunu görebilirsiniz:
+1. Azure IoT Central uygulamanızda, Raspberry PI üzerinde çalışan kodun uygulamayla nasıl etkileşime gireceğini görebilirsiniz:
 
-   * Üzerinde **ölçümleri** sayfa gerçek cihazınız için telemetriyi görebilirsiniz.
-   * Üzerinde **özellikleri** sayfasında değeri bildirilen gördüğünüz **öldürmüş numarası** özelliği.
-   * Üzerinde **ayarları** sayfasında, Raspberry Pi voltaj ve giriş hızı gibi çeşitli ayarları değiştirebilirsiniz.
+   * Gerçek cihazınızın **ölçümler** sayfasında telemetri ' i görebilirsiniz.
+   * **Özellikler** sayfasında, bildirilen **zar numarası** özelliğinin değerini görebilirsiniz.
+   * **Ayarlar** sayfasında, Raspberry Pi üzerinde voltaj ve fan hızı gibi çeşitli ayarları değiştirebilirsiniz.
 
-     Aşağıdaki ekran görüntüsünde, ayar değişikliğini alma Raspberry Pi gösterir:
+     Aşağıdaki ekran görüntüsünde, ayar değişikliğini alan Raspberry PI gösterilmektedir:
 
-     ![Raspberry Pi ayar değişikliği alır](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Raspberry PI ayar değişikliğini alır](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
-## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi cihaz şablonu ayrıntıları
+## <a name="raspberry-pi-device-template-details"></a>Raspberry PI cihaz şablonu ayrıntıları
 
-Oluşturulan uygulama **örnek Devkits** uygulama şablonu içeren bir **Raspberry Pi** cihaz şablonu aşağıdaki özelliklere sahip:
+**Örnek Devkits** uygulama şablonundan oluşturulan bir uygulama, aşağıdaki özelliklere sahip bir **Raspberry PI** cihaz şablonu içerir:
 
 ### <a name="telemetry-measurements"></a>Telemetri ölçümleri
 
 | Alan adı     | Birimler  | Minimum | Maksimum | Ondalık basamak sayısı |
 | -------------- | ------ | ------- | ------- | -------------- |
 | Nem oranı       | %      | 0       | 100     | 0              |
-| Temp           | °C     | -40     | 120     | 0              |
+| kopyalar           | 20     | -40     | 120     | 0              |
 | basınç       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | Yönetim grubu     | -2000   | 2000    | 0              |
-| accelerometerY | Yönetim grubu     | -2000   | 2000    | 0              |
-| accelerometerZ | Yönetim grubu     | -2000   | 2000    | 0              |
-| gyroscopeX     | MDP'ler   | -2000   | 2000    | 0              |
-| gyroscopeY     | MDP'ler   | -2000   | 2000    | 0              |
-| gyroscopeZ     | MDP'ler   | -2000   | 2000    | 0              |
+| Ivometerx | mg     | -2000   | 2000    | 0              |
+| Iventery | mg     | -2000   | 2000    | 0              |
+| Ivometerz | mg     | -2000   | 2000    | 0              |
+| Jroscopex     | MDPS   | -2000   | 2000    | 0              |
+| Jroscopey     | MDPS   | -2000   | 2000    | 0              |
+| Jroscopez     | MDPS   | -2000   | 2000    | 0              |
 
 ### <a name="settings"></a>Ayarlar
 
-Sayısal ayarları
+Sayısal ayarlar
 
 | Display name | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | İlk |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Voltaj      | setVoltage | Volt | 0              | 0       | 240     | 0       |
-| Geçerli      | setCurrent | Amp  | 0              | 0       | 100     | 0       |
-| Fan hızı    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
+| Geril      | Setvoltaj | Çalışmıyorken | 0              | 0       | 240     | 0       |
+| Geçerli      | setCurrent | AMPS  | 0              | 0       | 100     | 0       |
+| Fan hızı    | Fanın hızı   | RPM   | 0              | 0       | 1000    | 0       |
 
-Geçiş ayarları
+Ayarları aç
 
-| Display name | Alan adı | Metni | Metin kapalı | İlk |
+| Display name | Alan adı | Metinde | Kapalı metin | İlk |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | AÇIK      | KAPALI      | Kapalı     |
+| IR           | Activateır | AÇIK      | KAPALI      | Kapalı     |
 
 ### <a name="properties"></a>Özellikler
 
-| Tür            | Display name | Alan adı | Veri türü |
+| Type            | Display name | Alan adı | Veri türü |
 | --------------- | ------------ | ---------- | --------- |
-| Cihaz özelliği | Sayı öldürmüş   | dieNumber  | number    |
+| Cihaz özelliği | Zar numarası   | dieNumber  | numarası    |
 | Text            | Location     | location   | Yok       |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Raspberry Pi'yi, Azure IOT Central uygulamasına bağlanmak öğrendiniz, önerilen sonraki adıma öğrenmektir nasıl [bir özel cihaz şablonu ayarlama](howto-set-up-template.md) kendi IOT cihazını için.
+Artık bir Raspberry Pi 'yi Azure IoT Central uygulamanıza bağlamayı öğrendiğinize göre, önerilen sonraki adım, kendi IoT cihazınız için [özel bir cihaz şablonu ayarlamayı](howto-set-up-template.md) öğrenirsiniz.

@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 10/06/2017
-ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/16/2019
+ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780847"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877102"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>İşleri zamanlama ve yayınlama (node. js)
 
@@ -48,9 +48,11 @@ Bu öğreticinin sonunda iki Node. js uygulamanız vardır:
 
 * sanal cihaz uygulamasında doğrudan bir yöntemi çağıran ve Device ikizi 'ın istenen özelliklerini bir iş kullanarak güncelleştiren **Schedulejobservice. js**.
 
+## <a name="prerequisites"></a>Önkoşullar
+
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Node. js sürüm 10.0. x veya sonraki sürümler [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Bu öğreticide Windows veya Linux 'ta Node. js ' nin nasıl yükleneceğini açıklar.
+* Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
@@ -68,39 +70,39 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
 
 1. **Simdevice**adlı yeni bir boş klasör oluşturun.  **Simdevice** klasöründe komut istemindeki aşağıdaki komutu kullanarak bir Package. JSON dosyası oluşturun.  Tüm varsayılanları kabul edin:
 
-   ```
+   ```console
    npm init
    ```
 
 2. **Simdevice** klasöründe komut istemindeki **Azure-IoT-Device** cihaz SDK paketini ve **Azure-IoT-Device-MQTT** paketini yüklemek için aşağıdaki komutu çalıştırın:
-   
-   ```
+
+   ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
 3. Bir metin düzenleyicisi kullanarak, **simdevice** klasöründe yeni bir **simdevice. js** dosyası oluşturun.
 
 4. **Simdevice. js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın.  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+5. Bir **connectionString** değişkeni ekleyin ve bir **İstemci** örneği oluşturmak için bunu kullanın. Yer tutucu `{yourDeviceConnectionString}` değerini, daha önce kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
+
+    ```javascript
+    var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. **Lockkapısı** metodunu işlemek için aşağıdaki işlevi ekleyin.
-   
-    ```
+
+    ```javascript
     var onLockDoor = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (err) {
@@ -109,14 +111,14 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         console.log('Locking Door!');
     };
     ```
 
 7. **Kilit kapısı** yöntemi için işleyiciyi kaydetmek üzere aşağıdaki kodu ekleyin.
 
-   ```
+   ```javascript
    client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -145,30 +147,30 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
 
 1. **Schedulejobservice**adlı yeni bir boş klasör oluşturun.  Komut istemindeki aşağıdaki komutu kullanarak **Schedulejobservice** klasöründe bir Package. JSON dosyası oluşturun.  Tüm varsayılanları kabul edin:
 
-    ```
+    ```console
     npm init
     ```
 
 2. Komut istemindeki **Schedulejobservice** klasöründe, **Azure-ıothub** cihaz SDK paketini ve **Azure-IoT-Device-MQTT** paketini yüklemek için aşağıdaki komutu çalıştırın:
-   
-    ```
+
+    ```console
     npm install azure-iothub uuid --save
     ```
 
 3. Bir metin düzenleyicisi kullanarak, **schedulejobservice** klasöründe yeni bir **schedulejobservice. js** dosyası oluşturun.
 
-4. **Dmpatterns_gscheduleJobServiceetstarted_service. js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
-   
-    ```
+4. Aşağıdaki ' gerektir ' deyimlerini **Schedulejobservice. js** dosyasının başlangıcına ekleyin:
+
+    ```javascript
     'use strict';
-   
+
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Aşağıdaki değişken bildirimlerini ekleyin ve yer tutucu değerlerini değiştirin:
-   
-    ```
+5. Aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde kopyaladığınız değerle değiştirin. `{iothubconnectionstring}` **Mydeviceıd**'den farklı bir cihaz kaydettiniz, bunu sorgu koşulunda değiştirdiğinizden emin olun.
+
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var queryCondition = "deviceId IN ['myDeviceId']";
     var startTime = new Date();
@@ -177,8 +179,8 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
     ```
 
 6. İşin yürütülmesini izlemek için kullanılan aşağıdaki işlevi ekleyin:
-   
-    ```
+
+    ```javascript
     function monitorJob (jobId, callback) {
         var jobMonitorInterval = setInterval(function() {
             jobClient.getJob(jobId, function(err, result) {
@@ -197,14 +199,14 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
     ```
 
 7. Cihaz yöntemini çağıran işi zamanlamak için aşağıdaki kodu ekleyin:
-   
-    ```
+  
+    ```javascript
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
         responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
-   
+
     var methodJobId = uuid.v4();
     console.log('scheduling Device Method job with id: ' + methodJobId);
     jobClient.scheduleDeviceMethod(methodJobId,
@@ -228,8 +230,8 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
     ```
 
 8. İşi cihaz ikizi güncelleştirmek üzere zamanlamak için aşağıdaki kodu ekleyin:
-   
-    ```
+
+    ```javascript
     var twinPatch = {
        etag: '*',
        properties: {
@@ -239,9 +241,9 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
            }
        }
     };
-   
+
     var twinJobId = uuid.v4();
-   
+
     console.log('scheduling Twin Update job with id: ' + twinJobId);
     jobClient.scheduleTwinUpdate(twinJobId,
                                 queryCondition,
@@ -270,18 +272,26 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı*
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
 1. **Simdevice** klasöründeki komut isteminde, önyükleme doğrudan metodunu dinlemeye başlamak için aşağıdaki komutu çalıştırın.
-   
-    ```
+
+    ```console
     node simDevice.js
     ```
 
 2. **Schedulejobservice** klasöründeki komut isteminde, kapıyı kilitlemek ve ikizi güncelleştirmek için işleri tetiklemek üzere aşağıdaki komutu çalıştırın.
-   
-    ```
+
+    ```console
     node scheduleJobService.js
     ```
 
-3. Konsolda doğrudan yönteme cihaz yanıtı görürsünüz.
+3. Doğrudan yönteme ve konsolundaki iş durumuna cihaz yanıtını görürsünüz.
+
+   Aşağıdaki, doğrudan yöntemine yönelik cihaz yanıtını göstermektedir:
+
+   ![Sanal cihaz uygulama çıkışı](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+
+   Aşağıda doğrudan yöntem ve cihaz ikizi güncelleştirmesi için hizmet zamanlama işleri ve tamamlanmayı çalıştıran işler gösterilmektedir:
+
+   ![Sanal cihaz uygulamasını çalıştırma](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Bildirim hub'ları güvenlik
-description: Bu konuda Azure bildirim hub'ları için güvenlik açıklanmaktadır.
+title: Notification Hubs güvenliği
+description: Bu konuda Azure Bildirim Hub 'ları için güvenlik açıklanmaktadır.
 services: notification-hubs
 documentationcenter: .net
 author: jwargo
@@ -14,42 +14,40 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431243"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891582"
 ---
-# <a name="notification-hubs-security"></a>Bildirim hub'ları güvenlik
+# <a name="notification-hubs-security"></a>Notification Hubs güvenliği
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu konuda, Azure Notification Hubs'ın güvenlik modeli açıklanır.
+Bu konuda Azure Notification Hubs 'in güvenlik modeli açıklanmaktadır.
 
-## <a name="shared-access-signature-security-sas"></a>Paylaşılan erişim imzası güvenlik (SAS)
+## <a name="shared-access-signature-security-sas"></a>Paylaşılan erişim Imzası güvenliği (SAS)
 
-Notification hubs'ı uygulayan bir varlık düzeyinde güvenlik şeması SAS (paylaşılan erişim imzası) çağrılır. Bu düzen, varlık üzerinde hakları 12 adede kadar yetkilendirme kuralları, bunların açıklaması bildirmek Mesajlaşma varlıkları sağlar.
+Notification Hubs SAS (paylaşılan erişim Imzası) adlı varlık düzeyinde bir güvenlik şeması uygular. Her kural, [güvenlik talepleri](#security-claims)bölümünde açıklandığı gibi bir ad, anahtar değer (paylaşılan gizlilik) ve bir haklar kümesi içerir. Bir Bildirim Hub 'ı oluştururken, otomatik olarak iki kural oluşturulur: bir **dinleme** haklarıyla (istemci uygulamanın kullandığı) ve biri **Tüm** haklara sahip (uygulamanın arka ucu tarafından kullanılır).
 
-Her kural açıklandığı gibi bir ad, bir anahtar değeri (paylaşılan gizli) ve hakları, bir dizi içeren [güvenlik talepleri](#security-claims). Bildirim hub'ı oluştururken, iki kuralları otomatik olarak oluşturulur: biriyle **dinleme** (istemci uygulamanın kullandığı) hakları ve bir **tüm** (uygulama arka ucu kullanan) hakları.
+İstemci uygulamalarından kayıt yönetimi gerçekleştirirken, bildirimler aracılığıyla gönderilen bilgiler hassas değilse (örneğin, hava durumu güncelleştirmeleri), bir Bildirim Hub 'ına erişmenin yaygın bir yolu, kuralın anahtar değerini istemci uygulamasına yalnızca dinleme erişimine vermektir. kuralın anahtar değerine, uygulama arka ucuna tam erişim vermek için.
 
-Kayıt Yönetimi aracılığıyla gönderilen bilgiler, istemci uygulamalardan gerçekleştirirken bildirimleri (örneğin, hava durumu güncelleştirmelerini) hassas değil, istemci uygulamaya anahtar değeri Kuralın yalnızca dinleme erişim vermek için bir bildirim hub'ı erişmek için yaygın bir yolu olan, ve uygulama arka ucu için anahtar değeri kural tam erişim vermek için.
+Uygulamalar, Windows Mağazası istemci uygulamalarına anahtar değerini katıştırmamalıdır, bunun yerine, istemci uygulamasının başlangıçta uygulama arka ucuna alabilmesi gerekir.
 
-Uygulamaları değil Windows Store istemci uygulamalara anahtar değeri ekleme, bunun yerine bir uygulama arka ucundan başlangıçta almak istemci uygulamanız.
-
-Anahtar ile **dinleme** erişim için herhangi bir etiket kaydetmek bir istemci uygulaması sağlar. Uygulamanız için belirli istemciler (örneğin, kullanıcı kimliklerini etiketleri göstermek) için belirli etiketlere kayıtları kısıtlamanız gerekiyorsa, uygulamanızın arka ucunu kayıtları gerçekleştirmeniz gerekir. Daha fazla bilgi için [kayıt yönetimi](notification-hubs-push-notification-registration-management.md). Bu şekilde, istemci uygulaması bildirim hub'ları doğrudan erişimi unutmayın.
+**Dinleme** erişimi olan anahtar, bir istemci uygulamanın herhangi bir etikete kaydolmaya izin verir. Uygulamanızın kayıtları belirli istemcilerle kısıtlanması gerekiyorsa (örneğin, Etiketler Kullanıcı kimliklerini temsil ediyorsa), uygulamanızın arka ucunuzun kayıtları gerçekleştirmesi gerekir. Daha fazla bilgi için bkz. [kayıt yönetimi](notification-hubs-push-notification-registration-management.md). Bu şekilde, istemci uygulamanın Notification Hubs doğrudan erişimine sahip olamayacağını unutmayın.
 
 ## <a name="security-claims"></a>Güvenlik talepleri
 
-Bildirim hub'ı işlemlerine izin için üç güvenlik taleplerini diğer varlıklara benzer şekilde: **Dinleme**, **Gönder**, ve **yönetme**.
+Diğer varlıklara benzer şekilde, üç güvenlik talebi için Bildirim Hub 'ı işlemlerine izin verilir: **Dinleyin**, **gönderin**ve **yönetin**.
 
-| İste   | Açıklama                                          | İzin verilen işlemleri |
+| Talep   | Açıklama                                          | İzin verilen işlemler |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Dinle  | Oluşturma/güncelleştirme, okuma ve tek kayıtları silme | Kayıt oluşturma/güncelleştirme<br><br>Kayıt okuma<br><br>Tüm kayıtlar için bir tanıtıcı okuyun<br><br>Kaydı Sil |
-| Gönder    | Bildirim hub'ına ileti gönderme                | İleti Gönder |
-| Yönetme  | Notification hubs'ı (PNS kimlik bilgilerini ve güvenlik anahtarları güncelleştirme dahil) ve okuma kayıtları etiketlere göre cRUDs |Oluşturma/güncelleştirme/okuma/silme bildirim hub'ları<br><br>Etikete göre kayıtlar okuyun |
+| Dinle  | Tek kayıt oluşturma/güncelleştirme, okuma ve silme | Kayıt oluştur/güncelleştir<br><br>Kaydı oku<br><br>Bir tanıtıcı için tüm kayıtları okuma<br><br>Kaydı Sil |
+| Gönder    | Bildirim Hub 'ına ileti gönderme                | İleti gönder |
+| Yönet  | Notification Hubs CRUDs (PNS kimlik bilgilerini güncelleştirme ve güvenlik anahtarları dahil) ve etiketlere göre kayıtları okuma |Bildirim Hub 'larını oluştur/güncelleştir/oku/Sil<br><br>Kayıtları etikete göre oku |
 
-Paylaşılan doğrudan bildirim Hub'ındaki yapılandırılmış anahtarlar notification Hubs ile belirteçleri oluşturan imza kabul eder.
+Notification Hubs, doğrudan Bildirim Hub 'ında yapılandırılmış paylaşılan anahtarlarla oluşturulan imza belirteçlerini kabul eder.
 
-Birden fazla ad alanı için bir bildirim göndermesini mümkün değildir. Ad alanları bildirim hub'ları için mantıksal kapsayıcı ve bildirimleri gönderme ile söz konusu değildir.
-Ad alanı düzeyinde erişim ilkeleri (kimlik) için ad alanı düzeyinde işlemler, örneğin kullanılabilir: bildirim hub'larını listeleme, oluşturma veya bildirim hub'ları silme, vb. Hub'ı düzeyinde erişim ilkeleri yalnızca bildirimleri göndermenizi sağlar.
+Birden fazla ad alanına bildirim göndermek mümkün değildir. Ad alanları, Bildirim Hub 'ları için mantıksal kapsayıcıdır ve bildirim göndermeye dahil değildir.
+Ad alanı düzeyinde erişim ilkeleri (kimlik bilgileri), ad alanı düzeyindeki işlemler için kullanılabilir (örneğin, Bildirim Hub 'ları listeleme, Bildirim Hub 'ları oluşturma veya silme vb.) Yalnızca hub düzeyi erişim ilkeleri bildirim göndermenizi sağlar.

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782638"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872757"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -95,7 +95,7 @@ Site Recovery anlık görüntüleri aşağıdaki gibi alır:
 
 Aşağıdaki tabloda farklı türlerde tutarlılık açıklanmaktadır.
 
-### <a name="crash-consistent"></a>Kilitlenmeyle tutarlı
+### <a name="crash-consistent"></a>Kilitlenme ile tutarlı
 
 **Açıklama** | **Ayrıntılar** | **Öneri**
 --- | --- | ---
@@ -139,6 +139,7 @@ VM 'ler için giden erişim URL 'lerle denetleniyorsa, bu URL 'Lere izin verin.
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
 IP adreslerini kullanarak VM 'Ler için giden bağlantıyı denetlemek üzere bu adreslere izin verin.
+Ağ bağlantısı gereksinimlerinin ayrıntılarının [ağ teknik incelemesi](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) 'nde bulunabileceğini lütfen unutmayın 
 
 #### <a name="source-region-rules"></a>Kaynak bölgesi kuralları
 

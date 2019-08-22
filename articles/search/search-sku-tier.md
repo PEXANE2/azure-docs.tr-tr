@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611974"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647357"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search için bir fiyatlandırma katmanı seçin
 
@@ -53,10 +53,10 @@ Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Sta
 
 Azure Search oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret alabilir:
 
-+ En düşük yapılandırmada hizmetin temel maliyeti
++ En düşük yapılandırmada hizmetin temel maliyeti (hizmet oluşturma)
 + Ölçeği artırma sırasında artımlı maliyet (çoğaltmalar veya bölümler ekleme)
-+ Giden veri aktarımı için bant genişliği ücretleri
-+ Bilişsel hizmetler kaynaklarından yararlanan bilişsel arama
++ Bant genişliği ücretleri (giden veri aktarımı) 
++ Bilişsel arama (AI zenginleştirme için bilişsel hizmetler, bilgi deposu için Azure depolama)
 
 ### <a name="service-costs"></a>Hizmet maliyetleri
 

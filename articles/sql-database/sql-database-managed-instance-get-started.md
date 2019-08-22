@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567525"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873886"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Hızlı Başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma
 
@@ -35,11 +35,11 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 Aşağıdaki adımlarda, yönetilen bir örnek oluşturma adımları gösterilmektedir.
 
-1. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin.
-2. **Yönetilen örneği**bulun ve ardından **Azure SQL yönetilen örneği**' ni seçin.
-3. **Oluştur**’u seçin.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. Azure SQL listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Yönetilen örnekler** kutucuğunda **Ayrıntıları göster** ' i seçerek Azure SQL veritabanı yönetilen örneği hakkındaki ek bilgileri görüntüleyebilirsiniz.
+3. **Oluştur**' u seçin.
 
-   ![Yönetilen örnek oluşturma](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Yönetilen örnek oluşturma](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. Aşağıdaki tablodaki bilgileri kullanarak, istenen bilgilerle **SQL yönetilen örnek** formunu doldurun.
 

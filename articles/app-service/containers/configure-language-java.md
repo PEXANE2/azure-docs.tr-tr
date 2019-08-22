@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 07d44bb54c288202d571f8e664822ecf9b4998be
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639771"
+ms.locfileid: "69647254"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -423,7 +423,7 @@ Bu konuyla ilgili daha fazla bilgi için lütfen veri erişimi ve [externalized 
 ## <a name="configure-java-ee-wildfly"></a>Java EE 'ı yapılandırma (Yavaya)
 
 > [!NOTE]
-> App Service Linux 'ta Java Enterprise Edition Şu anda önizleme aşamasındadır. Bu yığın üretime yönelik iş için önerilmez. Java ve Tomcat yığınlarımızla ilgili bilgiler.
+> App Service Linux 'ta Java Enterprise Edition Şu anda önizleme aşamasındadır. Bu yığın üretime yönelik iş için önerilmez.
 
 Linux üzerinde Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Linux tabanlı hizmette Java Enterprise (Java EE) uygulamalarını oluşturmalarına, dağıtmasına ve ölçeklendirmesine olanak tanır.  Temel Java kurumsal çalışma zamanı ortamı, açık kaynaklı bir uygulama [](https://wildfly.org/) sunucusudur.
 
@@ -434,7 +434,6 @@ Bu bölüm aşağıdaki alt bölümleri içerir:
 - [Modülleri ve bağımlılıkları yükler](#install-modules-and-dependencies)
 - [Veri kaynaklarını yapılandırma](#configure-data-sources)
 - [Mesajlaşma sağlayıcılarını etkinleştir](#enable-messaging-providers)
-- [Oturum yönetimi önbelleğe almayı yapılandırma](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>App Service ile ölçeklendirme
 
@@ -652,14 +651,121 @@ Veritabanı bağlantısını, yavalar ile yapılandırma hakkında daha fazla bi
 
 4. Modül XML tanımlayıcısı,. jar bağımlılıkları, Jpatron CLı komutları ve JMS sağlayıcısı için başlangıç betiği ile birlikte modüller ve bağımlılıklar yükleme bölümünde özetlenen adımları izleyin. Dört dosyanın yanı sıra, JMS kuyruğu ve konusu için JNDı adını tanımlayan bir XML dosyası da oluşturmanız gerekir. Başvuru yapılandırma dosyaları için [Bu depoya](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) bakın.
 
-### <a name="configure-session-management-caching"></a>Oturum yönetimi önbelleğe almayı yapılandırma
+## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Redin 'i Tomcat ile oturum önbelleği olarak kullanma
 
-Varsayılan olarak, Linux üzerinde App Service, mevcut oturumlardaki istemci isteklerinin uygulamanızın aynı örneğini yönlendirdiğinden emin olmak için oturum benzeşimi tanımlama bilgilerini kullanır. Bu varsayılan davranış yapılandırma gerektirmez ancak bazı sınırlamalara sahiptir:
+Tomcat 'i [redsıs Için Azure önbelleği](/azure/azure-cache-for-redis/)gibi bir dış oturum deposu kullanacak şekilde yapılandırabilirsiniz. Bu, bir kullanıcı uygulamanızın başka bir örneğine aktarıldığında (örneğin, otomatik ölçeklendirme, yeniden başlatma veya yük devretme gerçekleştiğinde) Kullanıcı oturumu durumunu korumanıza olanak sağlar.
 
-- Bir uygulama örneği yeniden başlatılırsa veya azaltılirse, uygulama sunucusundaki kullanıcı oturumu durumu kaybedilir.
-- Uygulamalarda uzun oturum zaman aşımı ayarları veya sabit sayıda kullanıcı varsa, yalnızca yeni oturumlar yeni başlatılan örneklere yönlendirildiğinden, bu yeni örneklerin yük alması biraz zaman alabilir.
+Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) uygulaması kullanacak şekilde yapılandırmanız gerekir. Aşağıdaki adımlarda bu işlem Özet [oturum Yöneticisi kullanılarak açıklanmıştır: redin-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) örnek olarak.
 
-Yavaya [Için Azure önbelleği](/azure/azure-cache-for-redis/)gibi bir dış oturum deposu kullanmak için yavayı yapılandırabilirsiniz. Oturum tanımlama bilgisi tabanlı yönlendirmeyi kapatmak ve yapılandırılmış bir yatin oturum deposunun girişim olmadan çalışmasına izin vermek için [mevcut ARR örnek benzeşim yapılandırmasını devre dışı bırakmanız](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) gerekir.
+1. Bir bash terminali açın ve aşağıdaki `export <variable>=<value>` ortam değişkenlerinin her birini ayarlamak için kullanın.
+
+    | Değişken                 | Value                                                                      |
+    |--------------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME       | App Service örneğinizi içeren kaynak grubunun adı.       |
+    | WEBAPP_NAME              | App Service örneğinizin adı.                                     |
+    | WEBAPP_PLAN_NAME         | App Service planınızın adı                                          |
+    | BÖLGE                   | Uygulamanızın barındırıldığı bölgenin adı.                           |
+    | REDIS_CACHE_NAME         | Redsıs örneği için Azure önbelleğinizin adı.                           |
+    | REDIS_PORT               | Redsıs önbelleğinizin dinlediği SSL bağlantı noktası.                             |
+    | REDIS_PASSWORD           | Örneğiniz için birincil erişim anahtarı.                                  |
+    | REDIS_SESSION_KEY_PREFIX | Uygulamanızdan gelen oturum anahtarlarını tanımlamak için belirttiğiniz bir değer. |
+
+    Hizmet örneğinizin **Özellikler** veya **erişim anahtarları** bölümlerine bakarak Azure Portal ad, bağlantı noktası ve erişim anahtarı bilgilerini bulabilirsiniz.
+
+2. Aşağıdaki içerikle uygulamanızın *src/Main/WebApp/meta-INF/Context. xml* dosyasını oluşturun veya güncelleştirin:
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Context path="">
+        <!-- Specify Redis Store -->
+        <Valve className="com.gopivotal.manager.SessionFlushValve" />
+        <Manager className="org.apache.catalina.session.PersistentManager">
+            <Store className="com.gopivotal.manager.redis.RedisStore"
+                   connectionPoolSize="20"
+                   host="${REDIS_CACHE_NAME}.redis.cache.windows.net"
+                   port="${REDIS_PORT}"
+                   password="${REDIS_PASSWORD}"
+                   sessionKeyPrefix="${REDIS_SESSION_KEY_PREFIX}"
+                   timeout="2000"
+            />
+        </Manager>
+    </Context>
+    ```
+
+    Bu dosya, uygulamanız için oturum Yöneticisi uygulamasını belirtir ve yapılandırır. Bu, önceki adımda ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
+
+3. Oturum yöneticisinin JAR dosyasını App Service örneğine yüklemek için FTP 'yi kullanın, bu dosyayı */Home/Tomcat/lib* dizinine koyarak yükleyin. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+4. App Service örneğiniz için [oturum benzeşimi tanımlama bilgisini](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) devre dışı bırakın. Bunu uygulamanızda gezinerek Azure portal yapabilir ve sonra, **yapılandırma > genel ayarları ARR benzeşimi >** seçeneğini **devre dışı**olarak ayarlayabilirsiniz. Alternatif olarak, aşağıdaki komutu kullanabilirsiniz:
+
+    ```azurecli
+    az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
+    ```
+
+    Varsayılan olarak App Service, mevcut oturumlardaki istemci isteklerinin uygulamanızın aynı örneğine yönlendirildiğinden emin olmak için oturum benzeşimi tanımlama bilgilerini kullanır. Bu varsayılan davranış yapılandırma gerektirmez, ancak uygulama örneğiniz yeniden başlatıldığında veya trafik başka bir örneğe yeniden yönlendirilbaşladığında Kullanıcı oturumu durumunu koruyamaz. Oturum tanımlama bilgisi tabanlı yönlendirmeyi kapatmak için [mevcut ARR örnek benzeşim yapılandırmasını devre dışı](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) bıraktığınızda, yapılandırılan oturum deposunun girişim olmadan çalışmasına izin verebilirsiniz.
+
+5. App Service örneğinizin **Özellikler** bölümüne gidin ve **ek giden IP adresleri**bulun. Bunlar, uygulamanız için tüm olası giden IP adreslerini temsil eder. Bunları bir sonraki adımda kullanmak üzere kopyalayın.
+
+6. Her IP adresi için, Redsıs örneği için Azure önbelleğinizin bir güvenlik duvarı kuralı oluşturun. Bunu, reddo örneğinizin **güvenlik duvarı** bölümünden Azure Portal yapabilirsiniz. Her kural için benzersiz bir ad belirtin ve **Başlangıç IP adresini** ve **bitiş IP adresı** değerlerini aynı IP adresi olarak ayarlayın.
+
+7. Redsıs örneğinizin **Gelişmiş ayarlar** bölümüne gidin ve **yalnızca SSL aracılığıyla erişime izin ver** ' i **Hayır**olarak ayarlayın. Bu, Azure altyapısı aracılığıyla App Service örneğinizin Redsıs önbelleğiyle iletişim kurmasını sağlar.
+
+8. Uygulamanızın `azure-webapp-maven-plugin` *Pod. xml* dosyasındaki yapılandırmayı, redsıs hesap bilgilerinize başvuracak şekilde güncelleştirin. Bu dosya, daha önce ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
+
+    Gerekirse, `1.7.0` [Azure App Service için Maven eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)güncel sürümüne geçin.
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
+            <appName>${WEBAPP_NAME}-${REGION}</appName>
+            <region>${REGION}</region>
+            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>REDIS_CACHE_NAME</name>
+                    <value>${REDIS_CACHE_NAME}</value>
+                </property>
+                <property>
+                    <name>REDIS_PORT</name>
+                    <value>${REDIS_PORT}</value>
+                </property>
+                <property>
+                    <name>REDIS_PASSWORD</name>
+                    <value>${REDIS_PASSWORD}</value>
+                </property>
+                <property>
+                    <name>REDIS_SESSION_KEY_PREFIX</name>
+                    <value>${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+                <property>
+                    <name>JAVA_OPTS</name>
+                    <value>-Xms2048m -Xmx2048m -DREDIS_CACHE_NAME=${REDIS_CACHE_NAME} -DREDIS_PORT=${REDIS_PORT} -DREDIS_PASSWORD=${REDIS_PASSWORD} IS_SESSION_KEY_PREFIX=${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+
+            </appSettings>
+
+        </configuration>
+    </plugin>
+    ```
+
+9. Uygulamanızı yeniden derleyin ve dağıtın.
+
+    ```bash
+    mvn package
+    mvn azure-webapp:deploy
+    ```
+
+Uygulamanız artık, oturum yönetimi için Redsıs önbelleğinizi kullanacaktır.
+
+Bu yönergeleri test etmek için kullanabileceğiniz bir örnek için GitHub 'da [ölçeklendirme-durum bilgisi olan Java-Web-App-on-Azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) deposuna bakın.
 
 ## <a name="docker-containers"></a>Docker kapsayıcıları
 

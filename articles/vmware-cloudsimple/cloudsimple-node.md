@@ -1,40 +1,40 @@
 ---
-title: CloudSimple-Azure tarafından VMware çözümüne yönelik düğümlere genel bakış
+title: CloudSimple-Nodes 'a göre Azure VMware çözümü genel bakış
 description: CloudSimple düğümleri ve kavramları hakkında bilgi edinin.
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812582"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877693"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple düğümlerine genel bakış
 
-Düğüm:
+Düğümler, özel bulutun yapı taşlarıdır. Düğüm:
 
-* VMware ESXi hiper yöneticinin yüklü olduğu adanmış bir çıplak işlem ana bilgisayarı  
-* Özel bulutlar oluşturmak için sağlayabileceğiniz veya ayırabileceğiniz bir bilgi işlem birimi  
-* CloudSimple hizmetinin kullanılabildiği bir bölgede sağlama veya ayırma için kullanılabilir
+* VMware ESXi hiper yöneticinin yüklü olduğu adanmış çıplak işlem Konağı  
+* Özel bulutlar oluşturmak için satın alabileceğiniz veya ayırabilmeniz için bir bilgi işlem birimi
+* CloudSimple hizmetinin kullanılabildiği bir bölgede satın alınabilir veya rezerve edilir
 
-Düğümler, özel bulutun yapı taşları oluşturuyor.  Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gerekir.  Özel bir bulutu genişletmek için ek düğümler ekleyin.  Mevcut bir kümeye düğüm ekleyebilirsiniz. Ya da Azure portal düğümleri sağlayarak ve CloudSimple hizmetiyle ilişkilendirerek yeni bir küme oluşturabilirsiniz.  Sağlanan tüm düğümler CloudSimple hizmeti altında görünür.  CloudSimple Portal 'da sağlanan düğümlerden özel bir bulut oluşturabilirsiniz.
+Satın alınan düğümlerden özel bir bulut oluşturursunuz. Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gerekir. Özel bir bulutu genişletmek için ek düğümler ekleyin.  Mevcut bir kümeye düğüm ekleyebilir veya Azure portal düğümleri satın alarak ve CloudSimple hizmetiyle ilişkilendirerek yeni bir küme oluşturabilirsiniz.  Satın alınan tüm düğümler CloudSimple hizmeti altında görünür.  
 
-## <a name="provisioned-nodes"></a>Sağlanan düğümler
+## <a name="purchased-nodes"></a>Satın alınan düğümler
 
-Sağlanan düğümler, Kullandıkça Öde kapasitesi sağlar. Sağlama düğümleri, VMware kümenizi isteğe bağlı olarak hızlıca ölçeklendirmenize yardımcı olur. Gerekli olan düğümleri ekleyebilir veya VMware kümenizi ölçeklendirmek için sağlanan bir düğümü silebilirsiniz. sağlanan düğümler aylık olarak faturalandırılır ve sağlandıkları aboneliğe ücretlendirilir:
+Satın alınan düğümler, Kullandıkça Öde kapasitesi sağlar. Düğüm satın alma, VMware kümenizi isteğe bağlı olarak hızlıca ölçeklendirmenize yardımcı olur. Gerekli olan düğümleri ekleyebilir veya VMware kümenizi ölçeklendirmek için satın alınan bir düğümü silebilirsiniz. Satın alınan düğümler aylık olarak faturalandırılır ve satın alındığı abonelik üzerinden ücretlendirilir.
 
 * Azure aboneliğiniz için kredi kartı ile ödeme yaparsanız, kart hemen faturalandırılır.
 * Faturaya göre faturalandırıldıysanız ücretler bir sonraki faturanızda görünür.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>CloudSimple düğümleri SKU 'SU tarafından VMware çözümü
 
-Aşağıdaki tür düğümleri sağlama veya ayırma için kullanılabilir.
+Satın alma veya rezervasyon için aşağıdaki düğüm türleri kullanılabilir.
 
 | SKU | CS28-Node | CS36-Node |
 |-----|-------------|-------------|
@@ -57,5 +57,5 @@ Aşağıdaki düğüm limitleri özel bulutlar için geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Düğüm sağlamayı](create-nodes.md) öğrenin
-* [Özel bulut](cloudsimple-private-cloud.md) hakkında bilgi edinin
+* [Düğümleri satın almayı](create-nodes.md) öğrenin
+* [Özel bulutlar](cloudsimple-private-cloud.md) hakkında bilgi edinin

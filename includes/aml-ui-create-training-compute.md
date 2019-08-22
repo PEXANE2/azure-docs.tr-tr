@@ -9,33 +9,31 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/06/2019
-ms.openlocfilehash: cf35651f7dd839e8792029851b9bfe278036624c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb84dc1b5bf3f756e484ef27aaa998ab6b94cc51
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188988"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891701"
 ---
-Bir deney işlem hedefi, çalışma alanınıza bağlı bir işlem kaynağı çalışır.  İşlem hedefi oluşturduktan sonra sonraki çalıştırmalar için yeniden kullanabilirsiniz.
+Bir deneme, çalışma alanınıza bağlı bir işlem kaynağı olan bir işlem hedefi üzerinde çalışır.  Bir işlem hedefi oluşturduktan sonra, gelecekteki çalıştırmalar için onu yeniden kullanabilirsiniz.
 
-1. Seçin **çalıştırma** kısımdaki denemeyi çalıştırın.
+1. Denemeyi çalıştırmak için en altta **Çalıştır** ' ı seçin.
 
-     ![Denemeyi çalıştırma](./media/aml-ui-create-training-compute/run-experiment.png)
-
-1. Zaman **Kurulum işlem hedefleri** iletişim kutusu açılır, çalışma alanınızı bir işlem kaynağı zaten varsa, seçebilirsiniz şimdi.  Aksi takdirde seçin **Yeni Oluştur**.
+1. **Kurulum Işlem hedefleri** iletişim kutusu göründüğünde, çalışma alanınızın zaten bir işlem kaynağı varsa, bunu şimdi seçebilirsiniz.  Aksi takdirde, **Yeni oluştur**' u seçin.
 
     > [!NOTE]
-    > Görsel arabirim yalnızca Machine Learning işlem hedefler üzerinde denemeler çalıştırabilirsiniz. Diğer işlem hedefleri gösterilmez.
+    > Görsel arabirim yalnızca Machine Learning İşlem hedeflerinde denemeleri çalıştırabilir. Diğer işlem hedefleri gösterilmeyecektir.
 
-1. İşlem kaynağı için bir ad belirtin.
+1. İşlem kaynağı için bir ad girin.
 
 1. **Çalıştır**'ı seçin.
 
     ![Kurulum işlem hedefi](./media/aml-ui-create-training-compute/set-compute.png)
 
-    İşlem kaynağı artık oluşturulur. Denemeyi sağ üst köşesinde bulunan durumunu görüntüleyin. 
+    İşlem kaynağı şimdi oluşturulacak. Denemenin sağ üst köşesindeki durumu görüntüleyin. 
 
     > [!NOTE]
-    > Bir işlem kaynağı oluşturmak için yaklaşık 5 dakika sürer. Kaynak oluşturulduktan sonra yeniden kullanmak ve gelecekteki çalışmalarını bu bekleme süresi atlayın.
+    > İşlem kaynağının oluşturulması yaklaşık 5 dakika sürer. Kaynak oluşturulduktan sonra yeniden kullanabilir ve gelecekteki çalıştırmalar için bu bekleme süresini atlayabilirsiniz.
     >
-    > Bilgi işlem maliyetinden tasarruf etmek boşta olduğunda 0 düğümlerini otomatik ölçeklendirme yapar.  Bir gecikmeden sonra yeniden kullandığınızda, yeniden eşitlenene kadar yeniden bekleme süresi yaklaşık 5 dakika karşılaşabilirsiniz.
+    > İşlem kaynağı, maliyeti kaydetmek için boşta kaldığında 0 düğüm için otomatik olarak ayarlanır.  Bir gecikmeden sonra yeniden kullandığınızda, yeniden ölçeklendirilirken yaklaşık 5 dakikalık bekleme süresi daha yaşayabilirsiniz.

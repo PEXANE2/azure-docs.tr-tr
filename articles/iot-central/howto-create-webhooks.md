@@ -1,6 +1,6 @@
 ---
-title: Web kancaları kurallarında Azure IOT Central oluşturun | Microsoft Docs
-description: Web kancaları, Azure IOT kuralları tetiklendiğinde diğer uygulamaları otomatik olarak bildirim sağlaması için Orta oluşturun.
+title: Azure IoT Central kurallar üzerinde Web kancaları oluşturun | Microsoft Docs
+description: Kurallar başlatıldığında diğer uygulamalara otomatik olarak bildirimde bulunan Azure IoT Central Web kancaları oluşturun.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/16/2019
@@ -8,40 +8,42 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fdeefdc1ec5372d6ac17f0f985ee0c50ce902e56
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 508e8b4b3a909e87f538f67b1ad9a5efdbcd9551
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165318"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876033"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Web kancası eylemleri kurallarında Azure IOT Central oluşturun
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central kurallarında Web kancası eylemleri oluşturma
 
-*Bu konu, Oluşturucular ve Yöneticiler için geçerlidir.*
+*Bu konu, oluşturucular ve yöneticiler için geçerlidir.*
 
-Web kancaları, diğer uygulama ve hizmetlere uzaktan izleme ve bildirimler için IOT Central uygulamanızın bağlamanızı sağlar. Web kancaları, diğer uygulama ve hizmetlerin bir kuralı tetiklendiğinde IOT Central uygulamanızda bağlantı otomatik olarak bildirin. Kural tetiklendiğinde IOT Central uygulamanız diğer uygulamanın HTTP uç noktasına bir POST isteği gönderir. Yük, cihaz ayrıntıları ve kural tetikleyici ayrıntılarını içerir.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-## <a name="set-up-the-webhook"></a>Web kancası ' ayarlayın
+Web kancaları, uzaktan izleme ve bildirimler için IoT Central uygulamanızı diğer uygulama ve hizmetlere bağlamanıza olanak tanır. Web kancaları, IoT Central uygulamanızda her bir kural tetiklendiğinde bağlandığınız diğer uygulama ve hizmetlere otomatik olarak bildirim gönderir. IoT Central uygulamanız, bir kural her tetiklendiğinde diğer uygulamanın HTTP uç noktasına bir POST isteği gönderir. Yük, cihaz ayrıntılarını ve kural tetikleyicisi ayrıntılarını içerir.
 
-Bu örnekte, Web kancalarını kullanma kuralları tetiklendiğinde bildirim almak için RequestBin için bağlanın.
+## <a name="set-up-the-webhook"></a>Web kancasını ayarlama
 
-1. Açık [RequestBin](https://requestbin.net/).
+Bu örnekte, kurallar Web kancaları kullanılarak başlatıldığında bildirim almak için RequestBin 'e bağlanırsınız.
 
-1. Yeni bir RequestBin ve kopyasını oluşturma **URL'sini**.
+1. [Requestbin](https://requestbin.net/)'i açın.
 
-1. Oluşturma bir [telemetri kural](howto-create-telemetry-rules.md) veya [olayı kuralı](howto-create-event-rules.md). Kuralı kaydetmek ve yeni bir eylem ekleyin.
+1. Yeni bir RequestBin oluşturun ve **BIN URL 'sini**kopyalayın.
+
+1. [Telemetri kuralı](howto-create-telemetry-rules.md) veya [olay kuralı](howto-create-event-rules.md)oluşturun. Kuralı kaydedin ve yeni bir eylem ekleyin.
 
     ![Web kancası oluşturma ekranı](media/howto-create-webhooks/webhookcreate.png)
 
-1. Web kancası eylemi seçin ve bir görünen ad girin ve URL'sini geri çağırma URL'si olarak yapıştırın.
+1. Web kancası eylemini seçin ve bir görünen ad girin ve bin URL 'sini geri çağırma URL 'si olarak yapıştırın.
 
-1. Kural kaydedin.
+1. Kuralı kaydedin.
 
-Artık kuralı tetiklendiğinde RequestBin içinde görünen yeni bir istek bakın.
+Artık kural tetiklendiğinde RequestBin ' de yeni bir istek göründüğünü görürsünüz.
 
-## <a name="payload"></a>Yükü
+## <a name="payload"></a>Yük
 
-Kural tetiklendiğinde, bir HTTP POST isteği bir json yükü ölçümleri, cihaz, kural ve uygulama ayrıntılarını içeren geri çağırma URL'si için yapılır. Telemetri kuralı için yük aşağıdaki gibi görünür:
+Bir kural tetiklendiğinde, geri çağırma URL 'sine ölçümler, cihaz, kural ve uygulama ayrıntıları ile bir JSON yükü içeren bir HTTP POST isteği yapılır. Bir telemetri kuralı için yük aşağıdaki gibi görünür:
 
 ```json
 {
@@ -91,10 +93,10 @@ Kural tetiklendiğinde, bir HTTP POST isteği bir json yükü ölçümleri, ciha
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Şu anda abone olma ve aboneliği, bir API aracılığıyla bu Web kancaları'ndan programlı hiçbir yolu yoktur.
+Şu anda bir API aracılığıyla bu Web kancalarını abone yapmanın/aboneliğini kaldırın bir programlama yolu yoktur.
 
-Bu özelliği geliştirmeye ilişkin fikirler varsa, önerilerinizi gönderin bizim [Uservoice forumumuzu](https://feedback.azure.com/forums/911455-azure-iot-central).
+Bu özelliği geliştirme hakkında fikirler varsa, önerilerinizi [UserVoice](https://feedback.azure.com/forums/911455-azure-iot-central)forumumuza gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ayarlama ve Web kancalarını kullanma öğrendiniz, önerilen sonraki keşfetmek için adımdır [Microsoft Flow, iş akışları oluşturarak](howto-add-microsoft-flow.md).
+Web kancalarını nasıl ayarlayıp kullanacağınızı öğrendiğinize göre, önerilen sonraki adım [Microsoft Flow iş akışı oluşturmayı](howto-add-microsoft-flow.md)araştırmaya yönelik olur.

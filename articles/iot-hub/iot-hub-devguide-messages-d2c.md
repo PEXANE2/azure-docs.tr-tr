@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2d4d39cc7b330794094745851856365ef54b42f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828191"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877180"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -39,7 +39,7 @@ Yerleşik uç noktadan (**iletiler/olaylar**) cihazdan buluta iletileri almak i�
 
 ### <a name="azure-blob-storage"></a>Azure Blob Depolama
 
-IoT Hub, [Apache avro](https://avro.apache.org/) BIÇIMINDEKI ve JSON biçimindeki verilerin Azure Blob depolama alanına yazılmasını destekler. JSON biçimini kodlama özelliği, IoT Hub kullanılabildiği tüm bölgelerde genel kullanıma sunulmuştur. Varsayılan değer AVRO ' dir. Kodlama biçimi yalnızca BLOB depolama uç noktası yapılandırıldığında ayarlanabilir. Biçim varolan bir uç nokta için düzenlenemiyor. JSON kodlaması kullanılırken, ileti [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties)CONTENTTYPE öğesini JSON ve CONTENTENENCODING olarak UTF-8 olarak ayarlamanız gerekir. Bu ayarlanmamışsa, IoT Hub temel 64 kodlu biçimdeki iletileri yazar. Kod oluşturma veya güncelleştirme REST API, özellikle [Routingstoragecontainerproperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)IoT Hub kullanarak kodlama biçimini seçebilirsiniz. Aşağıdaki diyagramda Azure portal kodlama biçiminin nasıl ayarlanacağı gösterilmektedir.
+IoT Hub, [Apache avro](https://avro.apache.org/) BIÇIMINDEKI ve JSON biçimindeki verilerin Azure Blob depolama alanına yazılmasını destekler. JSON biçimini kodlama özelliği, IoT Hub kullanılabildiği tüm bölgelerde genel kullanıma sunulmuştur. Varsayılan değer AVRO ' dir. Kodlama biçimi yalnızca BLOB depolama uç noktası yapılandırıldığında ayarlanabilir. Biçim varolan bir uç nokta için düzenlenemiyor. JSON kodlaması kullanılırken, ileti [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties)ContentType öğesini **Application/JSON** ve Contentenencoding olarak **UTF-8** olarak ayarlamanız gerekir. Bu değerlerin her ikisi de büyük/küçük harfe duyarsızdır. İçerik kodlaması ayarlanmamışsa, IoT Hub iletileri temel 64 kodlu biçimde yazar. Kod oluşturma veya güncelleştirme REST API, özellikle [Routingstoragecontainerproperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), Azure Portal, [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)IoT Hub kullanarak kodlama biçimini seçebilirsiniz. Aşağıdaki diyagramda Azure portal kodlama biçiminin nasıl ayarlanacağı gösterilmektedir.
 
 ![BLOB depolama uç noktası kodlama](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -53,7 +53,7 @@ Toplu iş iletileri IoT Hub ve yığın belirli bir boyuta ulaştığında veya 
 
 Herhangi bir dosya adlandırma kuralını kullanabilirsiniz, ancak listelenen tüm belirteçleri kullanmanız gerekir. Yazılacak veri yoksa IoT Hub boş bir bloba yazılır.
 
-BLOB depolama alanına yönlendirirken, tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için Blobları listeleyip daha sonra bu nesnelerin üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, [Microsoft tarafından başlatılan bir yük devretme](iot-hub-ha-dr.md#microsoft-initiated-failover) veya [el ile yük devretme](iot-hub-ha-dr.md#manual-failover-preview)IoT Hub değişebilir. Blobların listesini numaralandırmak için, [liste BLOBLARıNı API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Lütfen kılavuz olarak aşağıdaki örneğe bakın.
+BLOB depolama alanına yönlendirirken, tüm kapsayıcıların bölüm varsayımından okunmalarını sağlamak için Blobları listeleyip daha sonra bu nesnelerin üzerinde değişiklik yapmanızı öneririz. Bölüm aralığı, [Microsoft tarafından başlatılan bir yük devretme](iot-hub-ha-dr.md#microsoft-initiated-failover) veya [el ile yük devretme](iot-hub-ha-dr.md#manual-failover)IoT Hub değişebilir. Blobların listesini numaralandırmak için, [liste BLOBLARıNı API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Lütfen kılavuz olarak aşağıdaki örneğe bakın.
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -103,7 +103,7 @@ Azure portal > Ileti yönlendirme dikey penceresinde geri dönüş yolunu etkinl
 
 ## <a name="non-telemetry-events"></a>Telemetri olmayan olaylar
 
-Cihaz telemetrisine ek olarak, ileti yönlendirme cihaz ikizi değişiklik olayları ve cihaz yaşam döngüsü olaylarının gönderilmesini de sağlar. Örneğin, veri kaynağı **cihaz ikizi değişiklik olayları**olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihaz ikizi 'deki değişikliği içeren uç noktaya iletiler gönderir. Benzer şekilde, veri kaynağı **cihaz yaşam döngüsü olayları**olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihazın silinip silinmediğini veya oluşturulduğunu belirten bir ileti gönderilir. 
+Cihaz telemetrisine ek olarak, ileti yönlendirme Ayrıca cihaz ikizi değişiklik olayları, cihaz yaşam döngüsü olayları ve dijital ikizi değişiklik olayları (genel önizlemede) gönderilmesini sağlar. Örneğin, veri kaynağı **cihaz ikizi değişiklik olayları**olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihaz ikizi 'deki değişikliği içeren uç noktaya iletiler gönderir. Benzer şekilde, veri kaynağı **cihaz yaşam döngüsü olaylarına**ayarlanmış bir yol oluşturulduysa, IoT Hub cihazın silinip silinmediğini veya oluşturulduğunu belirten bir ileti gönderir. Son olarak, [ıot Tak ve Kullan genel önizleme](../iot-pnp/overview-iot-plug-and-play.md)kapsamında bir geliştirici, veri kaynağı olarak **dijital ikizi değişiklik olayları** olarak ayarlanmış yollar oluşturabilir IoT Hub ve bir Digital ikizi [özelliği](../iot-pnp/iot-plug-and-play-glossary.md) ayarlandığında veya değiştirildiğinde bir dijital [ikizi ](../iot-pnp/iot-plug-and-play-glossary.md)değiştirilir veya temel alınan cihaz ikizi için bir değişiklik olayı meydana gelir.
 
 IoT Hub Ayrıca, bu olaylara göre gerçek zamanlı tümleştirmeleri ve iş akışlarının otomatikleştirilmesini desteklemek üzere cihaz olaylarını yayımlamak için [Azure Event Grid ile tümleşir](iot-hub-event-grid.md) . Senaryonuza en uygun olanı öğrenmek için [ileti yönlendirme ve Event Grid arasındaki önemli farklılıkları](iot-hub-event-grid-routing-comparison.md) inceleyin.
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 7ab8ec9536af74102d2c9384ea3d0d0503f58f63
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816484"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877579"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -331,7 +331,7 @@ Ham hata örneği:
 Azure Marketi teklifini çalıştırıyorsanız, Windows sanal masaüstü 'nde düzgün şekilde kimlik doğrulaması yapmak için aşağıdaki parametrelerin değerlerini sağlayın:
 
 - Windows sanal masaüstü kiracı RDS sahibi: Hizmet sorumlusu
-- Uygulama Kimliği: Oluşturduğunuz yeni hizmet sorumlusunun uygulama kimliği
+- Uygulama KIMLIĞI: Oluşturduğunuz yeni hizmet sorumlusunun uygulama kimliği
 - Parola/parolayı onayla: Hizmet sorumlusu için oluşturduğunuz parola parolası
 - Azure AD kiracı KIMLIĞI: Oluşturduğunuz hizmet sorumlusunun Azure AD kiracı KIMLIĞI
 
@@ -348,7 +348,7 @@ GitHub Azure Resource Manager şablonu çalıştırıyorsanız, Windows sanal ma
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
 - Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Uzak Masaüstü istemci bağlantıları](troubleshoot-client-connection.md).
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows Masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
 - Sorun giderme öğreticisine geçmek için bkz [. Öğretici: Kaynak Yöneticisi şablonu dağıtımlarıyla](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)ilgili sorunları giderin.
 - Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

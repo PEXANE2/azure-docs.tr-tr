@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 8e7456eff3062ef6667e7b0022ea9740c397a493
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679241"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876511"
 ---
 > [!NOTE]
 > Bu belgede, 31 Temmuz 2019 ' de Azure Güvenlik Merkezi 'nden kullanımdan kaldırılan özelliklerin listesi ayrıntılı olarak listelenmektedir.
@@ -106,7 +106,7 @@ Güvenlik Merkezi, güvenlik tehditlerini belirlemenize yardımcı olmak için s
 
 **Güvenlik olayları eşlemesini git** düğmesini seçtiğinizde, tehdit bilgileri panosunu açarsınız. Tehdit bilgileri panosunu devre dışı ıyoruz.  
 
-![Tehdit bilgileri panosu][11]
+![Tehdit Zekası panosu][11]
 
 Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics 'de güvenlik uyarıları Haritası (Önizleme) ekranını açarsınız. Bu ekranı devre dışı ıyoruz.
 
@@ -160,7 +160,7 @@ Güvenlik Merkezi, [Azure 'da tümleşik güvenlik çözümlerini](https://docs.
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Kimlik Koruması](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Kullanımdan kaldırıldıktan sonra, kullanıcı arabiriminden veya API 'den önceki listede bahsedilen herhangi bir çözüm türünü ekleyemez veya değiştiremeyeceksiniz.
+Kullanımdan kaldırıldıktan sonra, kullanıcı arabiriminden veya API 'den önceki listede bahsedilen herhangi bir çözüm türünü ekleyemez veya değiştiremeyeceksiniz. Azure Güvenlik Merkezi, daha önce bahsedilen iş ortağı çözümlerinin yeni örneklerini bulamaz.
 
 Bağlı çözümleriniz varsa Azure Sentinel 'e geçiş yapmanız önerilir.
 
@@ -172,7 +172,7 @@ Azure Güvenlik Merkezi, [150 üzerinde önerilen kuralların](https://gallery.t
 
 Bu önizleme özelliğini devre dışı ıyoruz. Kullanımdan kaldırma tarihinden sonra, güvenlik yapılandırışlarınızı varsayılan değerlerine geri döndürmek isterseniz, [aşağıdaki yönergeleri](https://aka.ms/ascresetsecurityconfigurations) kullanarak API veya PowerShell aracılığıyla bunu yapabilirsiniz
 
-![Güvenlik yapılandırmasını düzenle][17]
+![Güvenlik yapılandırmalarını düzenle][17]
 
 ### <a name="edit-security-configurations---the-new-experience"></a>Güvenlik yapılandırmasını düzenleme-yeni deneyim
 

@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 638be5e62c523c478f139f13185edeb24995ab3f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848971"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877301"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Azure IoT Central IoT uygulamalarının hızla geliştirilmesini sağlar. Ölçümleri, ayarları veya özellikleri ekleyerek, düzenleyerek veya silerek cihaz şablonu tasarımlarınız üzerinde hızlıca yineleme yapabilirsiniz. Bu değişikliklerden bazıları şu anda bağlı olan cihazlar için zorlayıcıdır. Azure IoT Central, bu son değişiklikleri tanımlar ve bu güncelleştirmeleri cihazlara güvenle dağıtmak için bir yol sağlar.
 

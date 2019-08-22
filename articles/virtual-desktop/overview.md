@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7c331a4a7395069dc4dc3ab1dcfc89415be0898c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854446"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876771"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows sanal masaüstü önizlemesi nedir? 
 
@@ -81,7 +81,7 @@ Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
 
 * [Standart etki alanına katılmış](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) veya [karma ad 'ye katılmış](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Sanal makineler Azure AD 'ye katılmış olamaz.
-* Aşağıdaki [desteklenen işletim sistemi görüntülerinden](#supported-virtual-machine-os-image)birini çalıştırın.
+* Aşağıdaki [desteklenen işletim sistemi görüntülerinden](#supported-virtual-machine-os-images)birini çalıştırın.
 
 >[!NOTE]
 >Bir Azure aboneliğine ihtiyacınız varsa, bir [aylık ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/). Azure 'un ücretsiz deneme sürümünü kullanıyorsanız, Windows Server Active Directory Azure Active Directory ile eşitlenmiş halde tutmak için Azure AD Domain Services kullanmanız gerekir.
@@ -101,7 +101,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-image"></a>Desteklenen sanal makine işletim sistemi görüntüsü
+## <a name="supported-virtual-machine-os-images"></a>Desteklenen sanal makine işletim sistemi görüntüleri
 
 Windows sanal masaüstü aşağıdaki işletim sistemi görüntülerini destekler:
 

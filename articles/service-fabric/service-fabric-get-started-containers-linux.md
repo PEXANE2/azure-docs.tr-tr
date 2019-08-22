@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: atsenthi
-ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599559"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650664"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -181,28 +181,11 @@ Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı
 ![Kapsayıcılar için Service Fabric Yeoman oluşturucusu][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Kapsayıcı deposu kimlik doğrulamasını yapılandırma
- Kapsayıcınızın özel bir depoda kimlik doğrulaması yapması gerekiyorsa, `RepositoryCredentials` öğesini ekleyin. Bu makale için, myregistry.azurecr.io kapsayıcı kayıt defterine ait hesap adını ve parolayı ekleyin. İlkenin doğru hizmet paketine ait "ServiceManifestImport" etiketinin altına eklendiğinden emin olun.
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-Depo parolasını şifrelemenizi öneririz. Yönergeler için [Service Fabric uygulamalarda şifreli gizli dizileri yönetme](service-fabric-application-secret-management.md) bölümüne bakın.
-
-### <a name="configure-cluster-wide-credentials"></a>Küme genelinde kimlik bilgilerini yapılandırma
-[Belgelere bakın](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
+Kapsayıcı görüntüsü indirme için farklı kimlik doğrulama türlerini nasıl yapılandıracağınızı öğrenmek için bkz. [kapsayıcı deposu kimlik doğrulaması](configure-container-repository-credentials.md).
 
 ## <a name="configure-isolation-mode"></a>Yalıtım modunu yapılandırma
-6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve HyperV. Hyperv yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyperv yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğesindeki Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
+6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve Hyper-V. Hyper-V yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyper-V yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğesindeki Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
 
 ```xml
 <ServiceManifestImport>
@@ -398,7 +381,7 @@ Bu makalede kullanılan tam hizmet ve uygulama bildirimleri aşağıda verilmiş
 Yeoman kullanılarak zaten oluşturulmuş bir uygulamaya başka bir kapsayıcı hizmeti eklemek için aşağıdaki adımları uygulayın:
 
 1. Dizini mevcut uygulamanın kök dizinine değiştirin. Örneğin Yeoman tarafından oluşturulan uygulama `MyApplication` ise `cd ~/YeomanSamples/MyApplication` olacaktır.
-2.           `yo azuresfcontainer:AddService`'i çalıştırın.
+2. `yo azuresfcontainer:AddService`'i çalıştırın.
 
 <a id="manually"></a>
 

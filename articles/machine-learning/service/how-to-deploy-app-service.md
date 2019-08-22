@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: 84de9d53b19f5aa9b73570aa0d115d204e8b6596
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848209"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872383"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -26,17 +26,83 @@ Azure Machine Learning hizmetinden bir modeli Azure App Service Web uygulaması 
 
 Azure Machine Learning hizmeti ile, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu görüntü, veri alan bir Web hizmeti içerir, bunu modele gönderir ve ardından yanıtı döndürür. Azure App Service görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
 
+* Gelişmiş güvenlik için Gelişmiş [kimlik doğrulaması](/azure/app-service/configure-authentication-provider-aad) . Kimlik doğrulama yöntemleri hem Azure Active Directory hem de Multi-Factor auth içerir.
+* Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) .
 * İstemcilerle hizmet arasında güvenli iletişim için [SSL desteği](/azure/app-service/app-service-web-ssl-cert-load) .
-* Yeniden dağıtmak zorunda kalmadan birden çok örneğe [ölçeklendirin](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) .
-* Gelişmiş güvenlik için [Gelişmiş kimlik doğrulaması](/azure/app-service/configure-authentication-provider-aad) .
 
 Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi için bkz. [App Service genel bakış](/azure/app-service/overview).
+
+> [!IMPORTANT]
+> Dağıtılan modelinizle kullanılan Puanlama verilerini veya Puanlama sonuçlarını günlüğe kaydetmek istiyorsanız, bunun yerine Azure Kubernetes hizmetine dağıtmanız gerekir. Daha fazla bilgi için bkz. [Üretim modellerinizde veri toplama](how-to-enable-data-collection.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](tutorial-train-models-with-aml.md) .
-* Modelden oluşturulmuş bir Docker görüntüsü. Bir görüntünüz yoksa, bir görüntü oluşturmak için [görüntü sınıflandırması: modeli dağıt](tutorial-deploy-models-with-aml.md) ' ı kullanın.
+
+    > [!IMPORTANT]
+    > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
+    >
+    > * `ws`-Azure Machine Learning çalışma alanınız.
+    > * `model`-Dağıtılacak kayıtlı model.
+    > * `inference_config`-Modelin çıkarım yapılandırması.
+    >
+    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+
+## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
+
+Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki listede bir dağıtım için gereken temel öğeler açıklanmaktadır:
+
+* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
+
+    > [!IMPORTANT]
+    > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
+    >
+    > İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, istemciye döndürmeden önce yanıtı dönüştürebilir.
+
+    > [!IMPORTANT]
+    > Azure Machine Learning SDK, Web hizmeti için veri deposuna veya veri kümelerine erişim için bir yol sağlamaz. Dağıtım dışında depolanan verilere (örneğin, bir Azure depolama hesabında) erişmek için dağıtılan modele ihtiyacınız varsa, ilgili SDK 'yı kullanarak özel bir kod çözümü geliştirmeniz gerekir. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python).
+    >
+    > Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-run-batch-predictions.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
+
+    Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+
+* Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
+
+Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
+
+> [!IMPORTANT]
+> Azure App Service ile kullanım için bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
+>
+> ```python
+> from azureml.core import Environment
+> from azureml.core.environment import CondaDependencies
+>
+> # Create an environment and add conda dependencies to it
+> myenv = Environment(name="myenv")
+> # Enable Docker based environment
+> myenv.docker.enabled = True
+> # Build conda dependencies
+> myenv.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+> ```
+
+Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
+
+Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+
+> [!IMPORTANT]
+> Azure App Service ' ye dağıtım yaparken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
+
+## <a name="create-the-image"></a>Görüntü oluşturma
+
+Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur.
 
 ## <a name="deploy-image-as-a-web-app"></a>Web uygulaması olarak görüntü dağıtma
 
@@ -68,13 +134,10 @@ scoring_uri = "https://mywebapp.azurewebsites.net/score"
 
 headers = {'Content-Type':'application/json'}
 
-if service.auth_enabled:
-    headers['Authorization'] = 'Bearer '+service.get_keys()[0]
-
 print(headers)
     
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10], 
+    [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
 ]})
 
@@ -90,3 +153,4 @@ print(response.json())
 * Ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure 'Da otomatik ölçeklendirmeyi kullanmaya başlama](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
 * SSL desteği hakkında daha fazla bilgi için bkz. [Azure App SERVICE SSL sertifikası kullanma](/azure/app-service/app-service-web-ssl-cert-load).
 * Kimlik doğrulama hakkında daha fazla bilgi için bkz. [App Service uygulamanızı Azure Active Directory oturum açma bilgilerini kullanacak şekilde yapılandırma](/azure/app-service/configure-authentication-provider-aad).
+* [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)

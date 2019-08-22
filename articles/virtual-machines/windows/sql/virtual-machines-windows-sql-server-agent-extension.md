@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d95760745dc3554bc63271cedc63dcf3bf017c5c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59b5138950e0fb94ea0051fa9cfe9aa75cd7d770
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855213"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877801"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı uzantısını kullanarak Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
 > [!div class="op_single_selector"]
@@ -88,14 +88,17 @@ SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanmak için gereke
 PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüleyebilirsiniz: 
 
   ```powershell-interactive
-     //Get the SqlVirtualMachine
+     #Get the SqlVirtualMachine
      $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
      $sqlvm.Properties.sqlManagement
   ```
 
-NoAgent veya hafif IaaS uzantısının yüklü olduğu SQL Server VM 'Ler için, Azure portal kullanarak modu tam sürüme yükseltebilirsiniz. Düşürme mümkün değildir. Bunu yapmak için, SQL Server IaaS uzantısını tamamen kaldırmanız ve yeniden yüklemeniz gerekir. 
+*Hafif* IaaS uzantısının yüklü olduğu SQL Server VM 'ler, Azure Portal kullanarak modu _tam_ olarak yükseltebilir. _Aracı olmayan_ bir modda SQL Server VM 'ler, Işletim sistemi Windows 2008 R2 ve üzeri sürümlere yükseltildikten sonra _tam_ olarak yükseltilebilir. Bunun için düşürme yapılamaz, bunun için SQL IaaS uzantısını tamamen kaldırmanız ve yeniden yüklemeniz gerekir. 
 
 Aracı modunu tam olarak yükseltmek için: 
+
+
+# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
@@ -108,8 +111,33 @@ Aracı modunu tam olarak yükseltmek için:
 
     ![Sanal makinede SQL Server hizmetini yeniden başlatmak için kabul etmiş onay kutusu](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
 
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+
+Şu az CLı kod parçacığını çalıştırın:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki PowerShell kod parçacığını çalıştırın:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+
+---
+
+
 ##  <a name="installation"></a>Yükleme
-SQL Server IaaS uzantısı, [SQL VM kaynak sağlayıcısı](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider)ile SQL Server VM kaydettiğinizde yüklenir. Gerekirse, tam veya hafif mod kullanarak SQL Server IaaS aracısını el ile yükleyebilirsiniz. 
+SQL Server IaaS uzantısı, [SQL VM kaynak sağlayıcısı](virtual-machines-windows-sql-register-with-resource-provider.md)ile SQL Server VM kaydettiğinizde yüklenir. Gerekirse, tam veya hafif mod kullanarak SQL Server IaaS aracısını el ile yükleyebilirsiniz. 
 
 Tam modda SQL Server IaaS Aracısı uzantısı, Azure portal kullanarak SQL Server sanal makine Azure Marketi görüntülerinden birini sağladığınızda otomatik olarak yüklenir. 
 
@@ -119,10 +147,10 @@ SQL Server IaaS uzantısının tam modu, SQL Server VM tek bir örnek için tam 
 PowerShell kullanarak SQL Server IaaS aracısını tam mod ile birlikte yüklemesi:
 
   ```powershell-interactive
-     // Get the existing compute VM
+     #Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with 'Full' SQL Server IaaS agent
+     #Register the SQL Server VM with 'Full' SQL Server IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  
@@ -158,10 +186,10 @@ PowerShell kullanarak SQL Server IaaS aracısını basit mod ile birlikte yükle
 
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     /#Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
+     #Register the SQL Server VM with the 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  

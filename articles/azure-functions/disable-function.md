@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782228"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650488"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılaca�
 
 ## <a name="functions-2x---all-languages"></a>İşlevler 2. x-tüm diller
 
-2\. x fonksiyonlarının biçimindeki `AzureWebJobs.<FUNCTION_NAME>.Disabled`bir uygulama ayarı kullanarak bir işlevi devre dışı bırakabilirsiniz. Azure CLı kullanarak bu ayarı programlı bir şekilde oluşturabilir ve değiştirebilirsiniz. Bunu ayrıca [Azure Portal](https://portal.azure.com)Işlevinizin **Yönet** sekmesinden yapabilirsiniz. 
+2\. x fonksiyonlarının biçimindeki `AzureWebJobs.<FUNCTION_NAME>.Disabled`bir uygulama ayarı kullanarak bir işlevi devre dışı bırakabilirsiniz. Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
