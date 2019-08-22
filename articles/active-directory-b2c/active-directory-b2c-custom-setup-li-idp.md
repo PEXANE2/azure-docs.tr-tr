@@ -68,7 +68,7 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını 
 7. İlke anahtarı için bir **ad** girin. Örneğin: `LinkedInSecret`. *B2C_1A_* ön eki, anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 9. **Anahtar kullanımı**için öğesini seçin `Signature`.
-10.           **Oluştur**'a tıklayın.
+10. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -76,7 +76,7 @@ Kullanıcıların bir LinkedIn hesabı kullanarak oturum açmasını istiyorsan�
 
 Bir LinkedIn hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayın.
 
-1. Düzenleyicinizde *SocialAndLocalAccounts/* * TrustFrameworkExtensions. xml** * dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
+1. Düzenleyicinizde *SocialAndLocalAccounts/ ** TrustFrameworkExtensions. xml** *dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
 1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 1. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
@@ -225,7 +225,7 @@ Azure AD B2C ile iletişim, kiracınızda oluşturduğunuz bir uygulama aracıl�
 4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 5. Uygulama için bir ad girin, örneğin *testapp1*.
 6. **Web uygulaması/Web API 'si**için, `Yes`öğesini seçin ve ardından `https://jwt.ms` **yanıt URL 'si**için yazın.
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 
