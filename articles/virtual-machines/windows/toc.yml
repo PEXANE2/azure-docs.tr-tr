@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: Zamanlanmış olaylar
           href: scheduled-events.md
+        - name: Zamanlanmış olayları izleme
+          href: scheduled-event-service.md
         - name: Meta verileri izleme
           href: instance-metadata-service.md
         - name: İç içe yerleştirilmiş sanallaştırmayı etkinleştirme

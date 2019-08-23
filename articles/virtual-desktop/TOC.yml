@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: Windows Sanal Masaüstü oturum sahiplerine Windows lisansı uygulama
       href: apply-windows-license.md
-    - name: Ana bilgisayar havuzu için kullanıcı profili paylaşımı ayarlama
+    - name: Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
       href: create-host-pools-user-profile.md
+    - name: Azure NetApp Files kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
+      href: create-fslogix-profile-container.md
     - name: Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
       href: configure-host-pool-load-balancing.md
     - name: Ana VHD görüntüsünü hazırlama ve özelleştirme

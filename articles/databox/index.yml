@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557841"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650365"
 landingContent:
 - title: Data Box ailesi hakkında
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: Data Box için
       url: data-box-system-requirements.md
-    - text: Data Box Blob depolama için
-      url: data-box-system-requirements-rest.md
     - text: Data Box Disk için
       url: data-box-disk-system-requirements.md
     - text: Data Box Heavy için
       url: data-box-heavy-system-requirements.md
-- title: Data Box’ı dağıtma
+- title: Sıralama, ayarlama, kopyalama, döndürme
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Sipariş verme
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: Kablo
-      url: data-box-deploy-set-up.md
-    - text: SMB ile verilere bağlanma ve verileri kopyalama
-      url: data-box-deploy-copy-data.md
-    - text: Azure verilerini iade etme, karşıya yükleme, doğrulama
-      url: data-box-deploy-picked-up.md
-- title: Data Box Disk’i dağıtma
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Sipariş verme
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Kilit açma ve bağlanma
-      url: data-box-disk-deploy-set-up.md
-    - text: Verileri kopyalama ve doğrulama
-      url: data-box-disk-deploy-copy-data.md
-    - text: Azure verilerini iade etme, karşıya yükleme, doğrulama
-      url: data-box-disk-deploy-picked-up.md
-- title: Data Box Heavy’yi dağıtma
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Sipariş verme
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: Kablo
-      url: data-box-heavy-deploy-set-up.md
-    - text: SMB ile verilere bağlanma ve verileri kopyalama
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Azure verilerini iade etme, karşıya yükleme, doğrulama
-      url: data-box-heavy-deploy-picked-up.md
 - title: Cihaz yönetme
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure’da Data Box, Data Box Heavy
+    - text: Azure’da Data Box
       url: data-box-portal-admin.md
-    - text: Yerel kullanıcı arabirimi üzerinden Data Box, Data Box Heavy
-      url: data-box-local-web-ui-admin.md
     - text: Azure’da Data Box Disk
       url: data-box-portal-ui-admin.md
-- title: SSS
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: SSS - Data Box
-      url: data-box-faq.md
-    - text: SSS - Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Azure’da Data Box Heavy
+      url: data-box-portal-admin.md
 - title: Sorun giderme
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Data Box Blob depolama alanı
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Data Box Hakkında SSS Aracılığıyla
+      url: data-box-faq.md
+    - text: Data Box Disk Hakkında SSS Aracılığıyla
+      url: data-box-disk-faq.md
     - text: Destek bileti açma
       url: data-box-disk-contact-microsoft-support.md

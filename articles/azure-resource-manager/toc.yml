@@ -97,9 +97,6 @@
         - name: Şablonları modüllere ayırma
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: Gizli dizileri yönetme
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: Birden çok örnek oluşturma
           href: resource-group-create-multiple.md
         - name: Şablon uzantılarını kullanma
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: Birden çok kaynak grubuna veya aboneliğe dağıtma
           href: resource-manager-cross-resource-group-deployment.md
+    - name: Parametreleri sağlama
+      items:
+        - name: Parametre dosyası oluşturma
+          href: resource-manager-parameter-files.md
+        - name: Hassas değerleri geçirme
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: İşlem hatları ile VS projesi

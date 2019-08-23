@@ -102,7 +102,9 @@
           items:
             - name: Dinamik grup oluşturma
               href: groups-create-rule.md
-            - name: Dinamik grup kuralları
+            - name: Üyelik kuralını güncelleştirme
+              href: groups-update-rule.md
+            - name: Dinamik grup kuralları ve söz dizimi
               href: groups-dynamic-membership.md
             - name: Grup üyeliği türünü değiştirme
               href: groups-change-type.md

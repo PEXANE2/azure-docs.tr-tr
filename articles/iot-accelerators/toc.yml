@@ -251,14 +251,16 @@
   items:
     - name: Çözümler
       items:
-        - name: IoT çözüm hızlandırıcıları
-          href: /azure/iot-accelerators
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
     - name: Platform Hizmetleri
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
         - name: IoT Hizmet SDK’ları
@@ -267,18 +269,12 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT Cihaz SDK'ları
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Stream Analytics
-      href: /azure/stream-analytics/
-    - name: Event Hubs
-      href: /azure/event-hubs/
-    - name: Machine Learning
-      href: /azure/machine-learning/
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

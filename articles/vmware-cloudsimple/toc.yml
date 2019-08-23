@@ -12,7 +12,7 @@
       items:
         - name: Başlatma ve sağlama kapasitesi
           href: quickstart-create-cloudsimple-service.md
-        - name: Özel bulut ortamını yapılandırma
+        - name: Özel Bulut ortamını yapılandırma
           href: quickstart-create-private-cloud.md
         - name: Özel Bulut üzerinde VMware VM oluşturma
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
@@ -42,7 +42,7 @@
           href: cloudsimple-account.md
         - name: Etkinlik yönetimi
           href: cloudsimple-activity.md
-        - name: Özel bulut üzerinde VMware
+        - name: Özel Bulut üzerinde VMware
           href: vmware-components.md
         - name: Güvenliğe genel bakış
           href: cloudsimple-security.md
@@ -66,25 +66,25 @@
               href: create-nodes.md
             - name: Düğümleri silme
               href: delete-nodes.md
-        - name: Özel bulut kaynaklarını yönetme
+        - name: Özel Bulut kaynaklarını yönetme
           items:
-            - name: Özel bulut oluşturma
+            - name: Özel Bulut oluşturma
               href: create-private-cloud.md
-            - name: Özel bulutlarınızı yönetme
+            - name: Özel Bulutlarınızı yönetme
               href: manage-private-cloud.md
-            - name: Özel bulutu genişletme
+            - name: Özel Bulutu genişletme
               href: expand-private-cloud.md
-            - name: Özel bulutu küçültme
+            - name: Özel Bulutu küçültme
               href: shrink-private-cloud.md
             - name: Azure aboneliğinizi eşleme
               href: azure-subscription-mapping.md
             - name: Ayrıcalıkları yükseltme
               href: escalate-private-cloud-privileges.md
-            - name: Özel bulut silme
+            - name: Özel Bulutu silme
               href: delete-private-cloud.md
         - name: CloudSimple etkinliğini izleme
           href: monitor-activity.md
-        - name: Özel bulut ağı ayarlama
+        - name: Özel Bulut ağı ayarlama
           items:
             - name: VLAN ve alt ağlar oluşturma ve yönetme
               href: create-vlan-subnet.md
@@ -104,11 +104,11 @@
               href: account.md
             - name: Kullanıcı listesini görüntüleme
               href: users.md
-            - name: Özel bulut ile sanal ağ bağlantısı ayarlama
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+            - name: Özel Buluta yönelik sanal ağ bağlantısı ayarlama
+              href: virtual-network-connection.md
             - name: Kullanıcı profilinizi düzenleme
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
-        - name: Özel bulut için VMware sanal makineleri ayarlama
+        - name: Özel Bulut için VMware sanal makineleri ayarlama
           items:
             - name: Azure’da VM oluşturma
               href: azure-create-vm.md
@@ -124,11 +124,11 @@
               href: escalate-privileges.md
             - name: İş yükü DNS ve DHCP ayarı
               href: dns-dhcp-setup.md
-            - name: Geçiş için NSX Katman 2 VPN
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
+              href: migration-layer-2-vpn.md
         - name: Özel bulut ağı oluşturma
           items:
-            - name: Şirket içi ve özel bulut arasında VPN bağlantısı
+            - name: Şirket içi ile Özel Bulut arasında VPN bağlantısı
               href: set-up-vpn.md
             - name: ExpressRoute ile şirket içi ağ bağlantısı
               href: on-premises-connection.md
@@ -136,33 +136,37 @@
               href: azure-expressroute-connection.md
         - name: VMware platformu
           items:
-            - name: Özel bulut izin modelini öğrenme
+            - name: Özel Bulut izin modelini öğrenme
               href: learn-private-cloud-permissions.md
             - name: vCenter kimlik kaynakları
               href: set-vcenter-identity.md
             - name: VMware sanal makineleriyle Azure Application Gateway
               href: azure-application-gateway.md
-            - name: Özel bulut vCenter sunucusunu vRealize otomasyon uç noktası olarak yapılandırma
+            - name: Özel Bulut vCenter sunucusunu vRealize otomasyon uç noktası olarak yapılandırma
               href: configure-server-vrealize-automation-endpoint.md
-            - name: İş yükü sanal makinelerini özel buluta geçirme
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+            - name: İş yükü sanal makinelerini Özel Buluta geçirme
+              href: migrate-workloads.md
             - name: Azure'da VMware içinde Uygulama yüksek kullanılabilirliğini sağlama
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: Bir yük dengeleme çözümü seçin
+              href: load-balancers.md
         - name: VMware ekosistemi
           items:
             - name: İş yükü sanal makinelerini yedekleme
               href: backup-workloads-veeam.md
+            - name: 'Özel Bulutu, Zerto’yu kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
+              href: disaster-recovery-zerto.md
             - name: VMware Horizon çözüm kılavuzu
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
-            - name: Özel bulutunuz için vSAN şifrelemesini yapılandırma
+            - name: Özel Bulutunuz için vSAN şifrelemesini yapılandırma
               href: vsan-encryption.md
-            - name: CloudSimple özel bulutu üzerinde Oracle RAC dağıtımı
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: Oracle RAC için Özel Bulutunuzu iyileştirin
+              href: oracle-real-application-clusters.md
         - name: Azure Çekirdek Tümleştirmesi
           items:
             - name: Özel Bulut vCenter üzerinde Azure AD kimlik kaynağı
               href: azure-ad.md
             - name: ExpressRoute ile şirket içi ağ bağlantısı
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: ExpressRoute ile Azure Sanal ağ bağlantısı
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

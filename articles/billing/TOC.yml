@@ -179,12 +179,14 @@
   items:
     - name: Abonelik bulunamadı
       href: billing-no-subscriptions-found.md
+    - name: Ödeme sorunları
+      href: billing-troubleshoot-azure-payment-issues.md
     - name: Reddedilen kart
-      href: 'https://support.microsoft.com/en-us/help/4042960'
+      href: billing-troubleshoot-declined-card.md
     - name: Kaydolma sorunları
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: Oturum açma sorunları
-      href: 'https://support.microsoft.com/en-us/help/4042961'
+      href: billing-troubleshoot-azure-sign-up.md
+    - name: Abonelik oturum açma sorunları
+      href: billing-troubleshoot-sign-in-issue.md
     - name: Kurumsal maliyet görünümü devre dışı
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Desteğe başvurun

@@ -406,14 +406,16 @@
   items:
     - name: Çözümler
       items:
-        - name: IoT çözüm hızlandırıcıları
-          href: /azure/iot-accelerators
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
     - name: Platform Hizmetleri
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
         - name: IoT Hizmet SDK’ları

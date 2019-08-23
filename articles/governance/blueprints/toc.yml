@@ -101,6 +101,22 @@
         - name: Dağıtım adımları
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/deploy.md
+    - name: CAF Foundation
+      items:
+        - name: Genel Bakış
+          displayName: 'caf, foundation'
+          href: ./samples/caf-foundation/index.md
+        - name: Dağıtım adımları
+          displayName: 'caf, foundation, deploy'
+          href: ./samples/caf-foundation/deploy.md
+    - name: CAF Geçişi giriş bölgesi
+      items:
+        - name: Genel Bakış
+          displayName: 'caf, migrate, landing zone'
+          href: ./samples/caf-migrate-landing-zone/index.md
+        - name: Dağıtım adımları
+          displayName: 'caf, migrate, landing zone, deploy'
+          href: ./samples/caf-migrate-landing-zone/deploy.md
 - name: Kavramlar
   items:
     - name: Şema yaşam döngüsü

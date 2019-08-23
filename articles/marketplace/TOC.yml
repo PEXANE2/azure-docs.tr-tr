@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: Azure Active Directory kullanarak AppSource ve Market listesini etkinleştirme
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: Tümleşik Çözümler
+              href: ./integrated-solutions-for-publishers.md
         - name: En iyi pazarlama deneyimleri
           href: ./gtm-marketing-best-practices.md
           items:

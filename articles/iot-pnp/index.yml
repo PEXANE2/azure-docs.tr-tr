@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: IoT Tak Çalıştır Önizleme Belgeleri
+metadata:
+  title: 'IoT Tak Çalıştır Önizleme Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
+  description: 'Öğreticiler, API başvuruları, videolar ve diğer belgelerin yardımıyla IoT Tak Çalıştır’ı nasıl kullanacağınızı öğrenin.'
+  author: dominicbetts
+  manager: philmea
+  ms.service: iot-pnp
+  services: iot-pnp
+  ms.topic: landing-page
+  ms.date: 07/23/2019
+  ms.author: dobett
+abstract:
+  description: 'Herhangi bir cihaz kodu yazmadan, bulut çözümlerinin cihazınızı otomatik anlamasını ve cihazınızla etkileşime girmeye başlamasını sağlayan bir cihaz modeli tanımlamak amacıyla IoT Tak Çalıştır Önizleme’yi nasıl kullanacağınızı öğrenin. Öğreticiler, API başvuruları, videolar ve diğer belgeler, cihazları Azure IoT Central veya iş ortağı uygulamaları gibi bulut çözümlerine bağlamanıza yardımcı olur.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video-thumb-pnp-introduction.png
+      width: 250
+    title: 'IoT Tak Çalıştır’a giriş. (11:54)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
+    width: 250
+sections:
+  - title: 5 Dakikalık Hızlı Başlangıçlar
+    items:
+      - type: paragraph
+        text: <a href="quickstart-create-pnp-device">Cihaz oluşturmak amacıyla cihaz yetenek modelini nasıl kullanacağınızı</a> öğrenin.
+      - type: paragraph
+        text: <a href="quickstart-connect-pnp-device-solution">Cihazı çözümünüze nasıl bağlayacağınızı</a> öğrenin.
+  - title: Adım Adım Öğreticiler
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-pnp-visual-studio-code">Visual Studio Code kullanarak cihaz oluşturma</a>
+          - html: <a href="tutorial-build-device-certification">Sertifikasyon için hazır cihaz oluşturma</a>
+          - html: <a href="tutorial-certification-test">Cihazınız için sertifika alma</a>

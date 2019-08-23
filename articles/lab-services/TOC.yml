@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Paylaşılan görüntü galerisi ekleme ve kaldırma
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: Sınıf laboratuvarı oluşturma ve yapılandırma (öğretmen)
+        - name: Sınıf laboratuvarı oluşturma ve yapılandırma (eğitmen)
           items:
             - name: Sınıf laboratuvarları oluşturma ve yönetme
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -104,6 +104,10 @@
           items:
             - name: Sınıf laboratuvarlarına erişim
               href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Linux sanal makineleri için uzak masaüstü bağlantısını kullanma
+              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
+            - name: Sanal makineler için parola ayarlama veya sıfırlama
+              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
     - name: DevTest Labs
       items:
         - name: Laboratuvar yapılandırma

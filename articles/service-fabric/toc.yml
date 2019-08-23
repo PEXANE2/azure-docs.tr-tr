@@ -356,6 +356,8 @@
       href: service-fabric-concept-resource-model.md
     - name: Yönetilen Kimlik (önizleme)
       href: concepts-managed-identity.md
+    - name: Kapsayıcı deposu kimlik bilgilerini yapılandırma
+      href: configure-container-repository-credentials.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme ortamınızı kurma

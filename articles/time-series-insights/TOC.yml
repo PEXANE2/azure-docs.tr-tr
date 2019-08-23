@@ -146,30 +146,30 @@
   items:
     - name: Çözümler
       items:
-        - name: IoT Paketi önceden yapılandırılmış çözümler
-          href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Platform hizmetleri
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-accelerators
+    - name: Platform Hizmetleri
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
+        - name: IoT Hizmet SDK’ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Haritalar
           href: /azure/azure-maps
-        - name: Hizmet SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
-        - name: IoT cihaz SDK'ları
+        - name: IoT Cihaz SDK'ları
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Azure Stream Analytics
-      href: /azure/stream-analytics/
 - name: Kaynaklar
   items:
     - name: Müşteri verisi istekleri
