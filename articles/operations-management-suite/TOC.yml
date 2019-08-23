@@ -2,7 +2,7 @@
   items:
     - name: Aracı İzleme
       href: ../monitoring/index.md
-- name: başlarken
+- name: Başlarken
   items:
     - name: Azure İzleyici günlükleri
       href: ../log-analytics/log-analytics-get-started.md
@@ -74,8 +74,6 @@
               items:
                 - name: Kullanım
                   href: ../azure-monitor/insights/service-map.md
-                - name: Yapılandırma
-                  href: ../azure-monitor/insights/service-map-configure.md
                 - name: Operations Manager ile tümleştirme
                   href: ../azure-monitor/insights/service-map-scom.md
             - name: SQL Değerlendirmesi

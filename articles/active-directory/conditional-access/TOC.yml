@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: En iyi uygulamalar
       href: best-practices.md
-    - name: Sık kullanılan Azure ilkesi şablonları
+    - name: Sık kullanılan Koşullu Erişim İlkeleri
       items:
         - name: Yöneticiler için MFA gerektirme
           href: howto-conditional-access-policy-admin-mfa.md
