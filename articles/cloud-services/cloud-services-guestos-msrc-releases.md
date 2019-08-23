@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/2/2019
+ms.date: 8/19/2019
 ms.author: raiye
-ms.openlocfilehash: 6f7fc27674ad26d8de8dd5d0c6c801b269b0e686
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c27438dbbeffc0837c3d71d9bb532803655538b8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941701"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637542"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+
+## <a name="august-2019-guest-os"></a>Ağustos 2019 Konuk işletim sistemi
+
+>[!NOTE]
+>Ağustos Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Ağustos Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir.
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 19-08   |  [4512482]  |  Windows güvenliği   |  3,76  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4494175]  |  Mikro kod güncelleştirmesi   |  5,34  |  18 Haz 2019  |
+|  Rel 19-08   |  [4512517]  |  En son birikimli güncelleştirme   |  5,34  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4494174]  |  Mikro kod güncelleştirmesi   |  6.1  |  18 Haz 2019  |
+|  Rel 19-08   |  [4511553]  |  En son birikimli güncelleştirme   |  6.1  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4512486]  |  Windows güvenliği   |  2,89  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4512489]  |  Windows güvenliği   |  4,69  |  13 Ağu, 2019  |
+|  Rel 19-08   |  [4511872]  |  Internet Explorer    |  2,89, 3,76, 4,69  |  15 Ağu, 2019  |
+|  Rel 19-08   |  [4507449]  |  Güvenlik dışı   |  2,89  |  9 Temmuz 2019  |
+|  Rel 19-08   |  [4507000]  |  .NET 4.5.2 güvenlik dışı   |  3,76  |  12 Ağu, 2019  |
+|  Rel 19-08   |  [4507002]  |  .NET 3,5 güvenlik dışı   |  3,76  |  12 Ağu, 2019  |
+|  Rel 19-08   |  [4507462]  |  Güvenlik dışı   |  3,76  |  9 Temmuz 2019  |
+|  Rel 19-08   |  [4506999]  |  .NET 4.5.2 güvenlik dışı    |  4,69  |  12 Ağu, 2019  |
+|  Rel 19-08   |  [4507005]  |  .NET 3,5 güvenlik dışı    |  4,69  |  12 Ağu, 2019  |
+|  Rel 19-08   |  [4507448]  |  Güvenlik dışı   |  4,69  |  9 Temmuz 2019  |
+|  Rel 19-08   |  [4509091]  |  Hizmet yığını güncelleştirmesi   |  5,34  |  9 Temmuz 2019  |
+|  Rel 19-08   |  [4509095]  |  Hizmet yığını güncelleştirmesi   |  6.1  |  9 Temmuz 2019  |
+|  Rel 19-08   |  [4512937]  |  Hizmet yığını güncelleştirmesi   |  6.1  |  29 Temmuz 2019  |
+|  Rel 19-08   |  [4507004]  |  .NET 3.5.1 güvenlik dışı    |  2,89  |  12 Ağu, 2019  |
+|  Rel 19-08   |  [4504418]  |  Hizmet yığını güncelleştirmesi   |  3,76, 4,69  |  11 Temmuz 2019  |
+|  Rel 19-08   |  [4507001]  |  .NET 4.5.2 güvenlik dışı   |  2,89  |  12 Ağu, 2019  |
+|  Rel 19-08   |  [4507704]  |  Brezilya ve Fas için Windows 'ta DST ayarı   |  2,89, 3,76, 4,69, 5,34  |  13 Ağu, 2019  |
+
+[4512482]: https://support.microsoft.com/kb/4512482
+[4494175]: https://support.microsoft.com/kb/4494175
+[4512517]: https://support.microsoft.com/kb/4512517
+[4494174]: https://support.microsoft.com/kb/4494174
+[4511553]: https://support.microsoft.com/kb/4511553
+[4512486]: https://support.microsoft.com/kb/4512486
+[4512489]: https://support.microsoft.com/kb/4512489
+[4511872]: https://support.microsoft.com/kb/4511872
+[4507449]: https://support.microsoft.com/kb/4507449
+[4507000]: https://support.microsoft.com/kb/4507000
+[4507002]: https://support.microsoft.com/kb/4507002
+[4507462]: https://support.microsoft.com/kb/4507462
+[4506999]: https://support.microsoft.com/kb/4506999
+[4507005]: https://support.microsoft.com/kb/4507005
+[4507448]: https://support.microsoft.com/kb/4507448
+[4509091]: https://support.microsoft.com/kb/4509091
+[4509095]: https://support.microsoft.com/kb/4509095
+[4512937]: https://support.microsoft.com/kb/4512937
+[4507004]: https://support.microsoft.com/kb/4507004
+[4504418]: https://support.microsoft.com/kb/4504418
+[4507001]: https://support.microsoft.com/kb/4507001
+[4507704]: https://support.microsoft.com/kb/4507704
+
 
 ## <a name="july-2019-guest-os"></a>Temmuz 2019 Konuk işletim sistemi
 
