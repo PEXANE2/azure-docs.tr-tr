@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: MT
+ms.openlocfilehash: cd4acdd4009a94b51807a536c28b138b86d2aced
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575098"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971926"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows veri bilimi sanal makinesi üzerinde yapabileceğiniz on işlem
 
@@ -64,10 +64,6 @@ Python için bir IDE olan Visual Studio (PTVS) uzantısı önceden yüklenmiş i
 * Her sürüm için özel ortamlarda giderek oluşturma **Araçları** -> **Python Araçları** -> **Python ortamları** tıklayıp " **+ Özel**"in Visual Studio Community Edition
 * Bir açıklama girin ve ortam ön ek yolu olarak ayarlamak *c:\anaconda\envs\python2* Anaconda Python 2.7 için
 * Tıklayın **otomatik algıla** ve ardından **Uygula** ortam kaydedin.
-
-Özel ortam Kurulumu Visual Studio'da nasıl göründüğünü aşağıda verilmiştir.
-
-![Ekran görüntüsü, Visual Studio seçili Visual Studio için Python araçları ile](./media/vm-do-ten-things/PTVSSetup.png)
 
 Bkz: [PTVS dokümantasyonu](https://aka.ms/ptvsdocs) Python ortamları oluşturma hakkında daha fazla ayrıntı için.
 
@@ -219,7 +215,7 @@ Azure aboneliğinizi ve bulut kaynaklarınızı yönetmek için iki seçeneğini
 + **Azure PowerShell**: Windows PowerShell betikleri kullanın. Azure PowerShell 'i masaüstündeki bir kısayoldan veya "Microsoft Azure PowerShell" adlı başlangıç menüsünden çalıştırın. Tüm ayrıntılar için [Microsoft Azure PowerShell belgelerine](../../powershell-azure-resource-manager.md) bakın. 
 
 ## <a name="5-extend-storage-with-shared-file-systems"></a>5. Depolamayı paylaşılan dosya sistemleriyle genişletme
-Veri bilimcileri, büyük veri kümeleri, kod veya diğer kaynaklar takım içinde paylaşabilirsiniz. DSVM yaklaşık 45 GB kullanılabilir alan vardır. Depolama alanınızı genişletmek için Azure dosya Hizmeti'ne kullanabilirsiniz ve ya da bir veya daha fazla DSVM örneklerinde bağlayın veya bir REST API aracılığıyla erişebilirsiniz.  Ayrıca [Azure portalı](../../virtual-machines/windows/attach-managed-disk-portal.md) veya [Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) fazladan ayrılmış veri diskleri eklemek için. 
+Veri bilimcileri, büyük veri kümeleri, kod veya diğer kaynaklar takım içinde paylaşabilirsiniz. DSVM yaklaşık 45 GB kullanılabilir alan vardır. Depolama alanınızı genişletmek için Azure dosya Hizmeti'ne kullanabilirsiniz ve ya da bir veya daha fazla DSVM örneklerinde bağlayın veya bir REST API aracılığıyla erişebilirsiniz.  Ayrıca, [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) kullanabilir veya [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) kullanarak ek adanmış veri diskleri ekleyebilirsiniz. 
 
 > [!NOTE]
 > Azure dosya Hizmeti'ne paylaşımı maksimum alan 5 TB'dir ve tek tek dosya boyutu sınırını 1 TB'tır. 
@@ -295,8 +291,6 @@ Yerel dosyalarınızı ve blob depolama arasında veri taşımak için AzCopy ko
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
 Değiştirin **C:\myfolder** dosyanızı depolandığı yolu **mystorageaccount** blob depolama hesabı adı için **mycontainer** kapsayıcı adı için **depolama hesabı anahtarı** blob depolama erişim anahtarınızı için. Depolama hesabı kimlik bilgilerinizi bulabilirsiniz [Azure portalında](https://portal.azure.com).
-
-![Depolama hesabı anahtarları ve Azure portalında kapsayıcı bilgileri ekran görüntüsü](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 AzCopy komutu PowerShell'de veya komut isteminden çalıştırın. Bazı örnek kullanım AzCopy komutu aşağıdadır:
 
@@ -393,9 +387,7 @@ Azure Data Lake Store, büyük veri analizi iş yükleri ve uyumlu olan Hadoop d
 
 **Verileri sanal makineden Data Lake taşıyın: Azure Data Lake Gezgini**
 
-Kullanabileceğiniz **Azure Data Lake Explorer** sanal makinenizde yerel dosyaları verileri Data Lake depolama alanına yüklemek için.
-
-![Dosyaları karşıya yüklemek için Data Lake Explorer'ı kullanarak ekran görüntüsü](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+[Sanal makinenizdeki yerel dosyalardaki verileri Data Lake depolama alanına yüklemek](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)Için **Azure Data Lake Gezginini** kullanabilirsiniz.
 
 Ayrıca, veri taşıma ya da Azure Data Lake kullanarak hazır hale getirmek için veri işlem hattı oluşturabilirsiniz [Azure veri Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Bu [makale](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) veri oluşturma adımlarında size kılavuzluk etmesi için işlem hatları.
 
@@ -406,8 +398,6 @@ Verilerinizi Azure Blob Depolama alanında bulunuyorsa, U-SQL sorgusunu Azure de
 ![Veri Kaynağı Ekle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 Visual Studio'da blob depolama alanından verileri okuma, bazı veri işleme yapmak, özellik Mühendisliği ve Azure Data Lake veya Azure Blob Depolama için sonuç verileri çıktı. Blob depolama alanındaki verilere başvuruda bulunduğunuzda kullanın **wasb: / /** ; Azure Data Lake, kullanım verileri başvurduğunuzda **swbhdfs: / /**
-
-![Vurgulanan WASB girdiyle sorgusunun ekran görüntüsü](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Visual Studio'da aşağıdaki U-SQL sorguları kullanabilirsiniz:
 
@@ -486,7 +476,7 @@ Azure HDInsight, bulutta yönetilen bir Apache Hadoop, Spark, HBase ve Storm hiz
 
 ![HDInsight kümesine uzaktan erişimi etkinleştirin](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Bir Azure Machine Learning çalışma alanı oluşturun. Makine öğrenimi denemeleri bu Machine Learning çalışma alanında depolanır. Vurgulanmış seçenekleri Portalı'nda, aşağıdaki ekran görüntüsünde gösterildiği gibi seçin:
+* Bir Azure Machine Learning çalışma alanı oluşturun. Makine öğrenimi denemeleri bu Machine Learning çalışma alanında depolanır. Portalda vurgulanan seçenekleri aşağıdaki ekran görüntüsünde gösterildiği gibi seçin:
 
 ![Bir Azure Machine Learning çalışma alanı oluşturma](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -880,9 +870,7 @@ Artık Power BI veri modelinizde verilere sahip. Power BI desktop, aşağıdaki 
 
 ![Power BI desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-Raporlar ve veri modelini kullanarak görselleştirmeler oluşturmaya başlayabilirsiniz. Bu adımları takip edebilirsiniz [Power BI makalesinde](../../cosmos-db/powerbi-visualize.md#build-the-reports) bir rapor oluşturmak için. Çıktı aşağıdakine benzer bir rapordur.
-
-![Power BI Desktop rapor görünümü - Power BI Bağlayıcısı](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
+Raporlar ve veri modelini kullanarak görselleştirmeler oluşturmaya başlayabilirsiniz. Bu adımları takip edebilirsiniz [Power BI makalesinde](../../cosmos-db/powerbi-visualize.md#build-the-reports) bir rapor oluşturmak için.
 
 ## <a name="9-dynamic-dsvm-scaling"></a>9. Dinamik DSVM ölçeklendirme 
 Proje gereksinimlerinizi karşılamak için DSVM yukarı ve aşağı ölçeklendirilebilir. Akşam veya hafta sonları VM kullanılacak gerekmiyorsa, yalnızca VM'yi kapatabilirsiniz [Azure portalında](https://portal.azure.com).
@@ -894,9 +882,7 @@ Proje gereksinimlerinizi karşılamak için DSVM yukarı ve aşağı ölçeklend
 
 Bazı büyük ölçekli analiz işlemek ve daha fazla CPU ve/veya bellek ve/veya disk kapasitesine sahip olmanız gerekiyorsa, derin öğrenme, bellek kapasitesi ve disk türleri (katı hal sürücüleri dahil) VM boyutlarının CPU çekirdekleri, GPU tabanlı örnekler açısından büyük bir seçim bulabilirsiniz Bu, işlem ve bütçe gereksinimlerinizi karşılayın. Fiyatlandırma, saatlik işlem ile birlikte tam VM'lerin listesini edinilebilir [Azure sanal makineler fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/) sayfası.
 
-Benzer şekilde, VM işleme kapasitesi, gereksinimini azaltır, (örneğin: bir Hadoop veya Spark kümesi için önemli bir iş yükü taşındı), kümeden aşağı ölçeklendirilebilir [Azure portalında](https://portal.azure.com) ve sanal makine Örneğinize ayarlar. Bir ekran görüntüsü aşağıda verilmiştir.
-
-![VM örneği ayarları](./media/vm-do-ten-things/VMScaling.PNG)
+Benzer şekilde, VM işleme kapasitesi, gereksinimini azaltır, (örneğin: bir Hadoop veya Spark kümesi için önemli bir iş yükü taşındı), kümeden aşağı ölçeklendirilebilir [Azure portalında](https://portal.azure.com) ve sanal makine Örneğinize ayarlar. 
 
 ## <a name="10-add-more-tools"></a>10. Daha fazla araç ekleyin
 Common data analytics gereken birçoğunu ele DSVM önceden oluşturulmuş çeşitli araçlar vardır. Önleme tarafından zaman gerek kalmadan yükleyip ortamlarınızda tek tek yapılandırıp kullanmanızı yalnızca kaynaklar için ödeme yaparak paradan tasarruf kazandırır.

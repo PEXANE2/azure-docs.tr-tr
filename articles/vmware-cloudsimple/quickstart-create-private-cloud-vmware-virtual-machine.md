@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574650"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972393"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
 
@@ -143,7 +143,7 @@ CloudSimple portalındaki ağ sayfaları, güvenlik duvarı tabloları ve VM 'Le
 
     ![Genel IP](media/quick-create-pc-public-ip.png)
 
-Genel IP adresini ayırma görevi başlar. Görevin durumunu **etkinlik > görevler** sayfasında kontrol edebilirsiniz. Ayırma tamamlandığında, yeni giriş genel IP 'Ler sayfasında gösterilir. 
+Genel IP adresini ayırma görevi başlar. Görevin durumunu **etkinlik > görevler** sayfasında kontrol edebilirsiniz. Ayırma tamamlandığında, yeni giriş genel IP 'Ler sayfasında gösterilir.
 
 Bu IP adresinin eşlenmesi gereken VM 'nin, yukarıda belirtilen yerel adresle yapılandırılması gerekir. IP adresini yapılandırma yordamı VM işletim sistemine özgüdür. Doğru yordam için VM işletim sisteminizin belgelerine başvurun.
 
@@ -205,7 +205,7 @@ veya
 ```
 python3 -m http.server 80
 ```
-Masaüstünüzde bir tarayıcı başlatın ve VM 'nizin dosyalarına gözatmasını sağlamak için genel IP adresi bağlantı noktası 80 ' ye işaret edin. 
+Masaüstünüzde bir tarayıcı başlatın ve VM 'nizin dosyalarına gözatmasını sağlamak için genel IP adresi bağlantı noktası 80 ' ye işaret edin.
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Genel IP için varsayılan CloudSimple güvenlik duvarı kuralları
 

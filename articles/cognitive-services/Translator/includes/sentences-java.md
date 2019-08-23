@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a6c12a2fdc8616dd6f7107d11e8f6c77401811fb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968576"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906851"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 veya üzeri](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Translator Metin Çevirisi için Azure abonelik anahtarı
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle ile proje başlatma
 
@@ -44,7 +42,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "LengthSentence"
+    mainClassName = "BreakSentence"
 }
 repositories {
     mavenCentral()
@@ -65,11 +63,11 @@ Bu örnekte HTTP istekleri için OkHttp üzerinde bağımlılıklar ve JSON 'u i
 mkdir -p src/main/java
 ```
 
-Ardından, bu klasörde adlı `LengthSentence.java`bir dosya oluşturun.
+Ardından, bu klasörde adlı `BreakSentence.java`bir dosya oluşturun.
 
 ## <a name="import-required-libraries"></a>Gerekli kitaplıkları içeri aktar
 
-Bu `LengthSentence.java` içeri aktarma deyimlerini açın ve ekleyin:
+Bu `BreakSentence.java` içeri aktarma deyimlerini açın ve ekleyin:
 
 ```java
 import java.io.*;
@@ -85,22 +83,23 @@ import com.squareup.okhttp.*;
 İlk olarak, projeniz için bir ortak sınıf oluşturmanız gerekir:
 
 ```java
-public class LengthSentence {
+public class BreakSentence {
   // All project code goes here...
 }
 ```
 
-`LengthSentence` Sınıfa bu satırları ekleyin. İle `api-version`birlikte, giriş dilini tanımlayacağınızı fark edeceksiniz. Bu örnekte, Ingilizce olur.
+`BreakSentence` Sınıfa bu satırları ekleyin. İlk olarak, abonelik anahtarı ve uç nokta ortam değişkenlerinden okunmakta. Ardından, ile `api-version`birlikte, giriş dilini tanımlayacağınızı fark edeceksiniz. Bu örnekte, Ingilizce olur.
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
 Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>İstemci oluşturma ve istek oluşturma
 
-Örneği oluşturmak için bu satırı `LengthSentence` sınıfa ekleyin: `OkHttpClient`
+Örneği oluşturmak için bu satırı `BreakSentence` sınıfa ekleyin: `OkHttpClient`
 
 ```java
 // Instantiates the OkHttpClient.
@@ -145,8 +144,8 @@ Son adım bir istek yapmak ve yanıt almak için kullanılır. Bu satırları pr
 ```java
 public static void main(String[] args) {
     try {
-        LengthSentence lengthSentenceRequest = new LengthSentence();
-        String response = lengthSentenceRequest.Post();
+        BreakSentence breakSentenceRequest = new BreakSentence();
+        String response = BreakSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69625020"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972942"
 ---
 # <a name="azure-network-connections-overview"></a>Azure ağ bağlantılarına genel bakış
 
@@ -44,7 +44,6 @@ Azure ağ bağlantısı şunları yapmanıza olanak sağlar:
 Mevcut Azure ExpressRoute devrenizi CloudSimple bölgenize bağlayabilirsiniz. ExpressRoute Global Reach özelliği, iki devreleri birbirleriyle bağlamak için kullanılır.  Şirket içi ve CloudSimple ExpressRoute devreleri arasında bir bağlantı oluşturulur.  Bu bağlantı, şirket içi ağlarınızı özel bulut ağına genişletmenizi sağlar. CloudSimple ağınızdan alınan yollar, şirket içi ağınızla BGP aracılığıyla değiştirilir.
 
 ![Şirket içi ExpressRoute bağlantısı-Global Reach](media/cloudsimple-global-reach-connection.png)
-
 
 ## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>Şirket içi ağ ve Azure sanal ağı bağlantısı
 

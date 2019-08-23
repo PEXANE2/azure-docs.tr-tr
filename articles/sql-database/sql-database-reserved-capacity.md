@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781311"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972560"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL veritabanı ayrılmış kapasitesi ile SQL veritabanı işlem kaynakları için ön ödeme
 
@@ -70,6 +70,10 @@ Belirli sınırlamalara sahip rezervasyonları iptal edebilir, Exchange veya par
 ## <a name="vcore-size-flexibility"></a>vCore boyutu esnekliği
 
 vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performans katmanı ve bölgesi içinde ölçeği büyütme veya küçültme olanakları sağlar. SQL veritabanı ayrılmış kapasitesi Ayrıca, etkin veritabanlarınızı, normal işlemlerinizin (aynı bölge ve performans katmanı dahilinde) bir parçası olarak, ayrılan kapasiteyi kaybetmeden geçici olarak havuzlar halinde taşıma esnekliği sağlar sağlar. Ayırdığınızda uygulanmamış bir arabelleği tutarak, bütçenize aşmadan performans artışlarını etkin bir şekilde yönetebilirsiniz.
+
+## <a name="limitation"></a>Sınırlama
+
+DTU tabanlı (temel, standart veya Premium) SQL veritabanlarını ayıramazsınız.
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
 

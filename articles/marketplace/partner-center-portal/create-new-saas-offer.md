@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650709"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900127"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -153,23 +153,9 @@ Sınama sürücüsünü etkinleştirerek, müşterilerin teklifinizi sabit bir s
 
 ## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
 
-Teklifinizi markette listeleyerek ve Müşteri Ilişkileri yönetimi (CRM) sisteminizin dökümünü yaparak müşterilere doğrudan bağlanın ve müşteri iletişim bilgilerini bir müşterinin ilgilenmesini ifade ettikten veya dağıtabilmeniz için ürünüyle.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **Bir müşteri adayı hedefi seçin** (açılan menü): Müşteri adaylarını göndermemizi istediğiniz CRM sistemine bağlantı ayrıntılarını sağlayın. 
-
-İş Ortağı Merkezi, müşteri adayı yönetimi için aşağıdaki CRM sistemlerini destekler. Kurulum yönergeleri için bağlantıyı seçin.
-
-- Azure blob: iletişim e-postası, kapsayıcı adı ve depolama hesabı bağlantı dizesi belirtin. 
-- [Azure tablosu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) : iletişim e-postası ve depolama hesabı bağlantı dizesi belirtin. 
-- [DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – iletişim e-POSTASı, URL ve kimlik doğrulama modu (Office 365 veya Azure Active Directory) sağlayın.
-- [Https uç noktası](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – iletişim e-POSTASı ve HTTPS uç nokta URL 'si sağlayın 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) : iletişim e-postası, form kimliği, daha fazla hesap kimliği ve sunucu kimliği sağlar.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -iletişim e-postası ve kuruluş kimliği sağlayın. 
-
-#### <a name="additional-lead-management-resources"></a>Ek lider Yönetimi kaynakları
-- [Müşteri adayı yönetimi SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Ortak lider yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Müşteri adayı yönetimine genel bakış bir sayfalayıcı](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Daha fazla bilgi için bkz. [lider yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md) .
 
 Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 

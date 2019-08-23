@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990695"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900440"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)
 
@@ -44,7 +44,7 @@ Azure Identity istemci kitaplığı aracılığıyla Azure AD kimlik bilgileriyl
 
 Azure CLı ile bir hizmet sorumlusu oluşturmak ve RBAC rolü atamak için, [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) komutunu çağırın. Yeni hizmet sorumlusuna atamak için bir Azure depolama veri erişim rolü sağlayın. Rol, **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içermelidir. Azure depolama için sunulan yerleşik roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
-Ayrıca, rol atamasının kapsamını belirtin. Hizmet sorumlusu, depolama hesabı düzeyinde gerçekleştirilen bir işlem olan Kullanıcı temsili anahtarını oluşturur, bu nedenle rol atamasının depolama hesabı, kaynak grubu veya abonelik düzeyinde kapsamı belirlenmiş olması gerekir. Kullanıcı temsilciliğini oluşturmaya yönelik RBAC izinleri hakkında daha fazla bilgi için, [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)konusunun **RBAC ile izin atama** bölümüne bakın.
+Ayrıca, rol atamasının kapsamını belirtin. Hizmet sorumlusu, depolama hesabı düzeyinde gerçekleştirilen bir işlem olan Kullanıcı temsili anahtarını oluşturur, bu nedenle rol atamasının depolama hesabı, kaynak grubu veya abonelik düzeyinde kapsamı belirlenmiş olması gerekir. Kullanıcı temsilciliğini oluşturmaya yönelik RBAC izinleri hakkında daha fazla bilgi için, [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)konusunun **RBAC ile izin atama** bölümüne bakın.
 
 Hizmet sorumlusuna rol atamak için yeterli izniniz yoksa, hesap sahibine veya yöneticiden rol atamasını gerçekleştirmesini isteyebilirsiniz.
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Kullanıcı temsilciyi anahtar işlemi al](/rest/api/storageservices/get-user-delegation-key)
-- [Kullanıcı temsilciliğini oluşturma SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Kullanıcı temsilciliğini oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: bf86af16ce330be7119ecbeb24cedbcd31282735
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034038"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898872"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde desteklenen Kubernetes sürümleri
 
@@ -139,15 +139,17 @@ Aboneliğiniz ve bölgeniz için şu anda hangi sürümlerin kullanılabildiğin
 az aks get-versions --location eastus --output table
 ```
 
-Çıktı aşağıdaki örneğe benzer. Bu, Kubernetes sürüm *1.13.5* 'in kullanılabilir en son sürüm olduğunu gösterir:
+Çıktı aşağıdaki örneğe benzer. Bu, Kubernetes sürüm *1.14.6* 'in kullanılabilir en son sürüm olduğunu gösterir:
 
 ```
 KubernetesVersion    Upgrades
 -------------------  ------------------------
-1.14.5               None available
-1.13.9               1.14.5
-1.12.8               1.13.9
-1.12.7               1.12.8, 1.13.9
+1.14.6               None available
+1.14.5               1.14.6
+1.13.10              1.14.5, 1.14.6
+1.13.9               1.13.10, 1.14.5, 1.14.6
+1.12.8               1.13.9, 1.13.10
+1.12.7               1.12.8, 1.13.9, 1.13.10
 1.11.10              1.12.7, 1.12.8
 1.11.9               1.11.10, 1.12.7, 1.12.8
 1.10.13              1.11.9, 1.11.10

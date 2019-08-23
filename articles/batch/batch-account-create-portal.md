@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d4bf7b894a23f0054485ddb6dbb91c4df2122222
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324051"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907339"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure portalıyla Batch hesabı oluşturma
 
@@ -115,7 +115,7 @@ Kullanıcı aboneliği modunda, oluşturulacak Batch hesabı ile aynı kaynak gr
 
 Kullanıcı aboneliği modunda Batch hesabını oluştururken, Anahtar Kasası için kaynak grubunu kullanın. Havuz ayırma modu olarak **Kullanıcı aboneliğini** belirtin, anahtar kasasını seçin ve anahtar kasasına Azure Batch erişim izni vermek için kutuyu işaretleyin. 
 
-Anahtar kasasına el ile erişim izni vermeyi tercih ediyorsanız, anahtar kasasının **erişim ilkeleri** bölümüne gidin ve **Microsoft Azure Batch**' yi seçin. Açılan menüyü kullanarak **gizli izinleri** yapılandırın. Azure Batch, en az **Get**, **list**, **set**ve **Delete** izinleri olarak verilmelidir.
+Anahtar kasasına el ile erişim izni vermeyi tercih ediyorsanız, anahtar kasasının **erişim ilkeleri** bölümüne gidin ve **erişim ilkesi Ekle** ' yi seçin ve **Microsoft Azure Batch**arayın. Seçildikten sonra, açılan menüyü kullanarak **gizli izinleri** yapılandırmanız gerekecektir. Azure Batch, en az **Get**, **list**, **set**ve **Delete** izinleri olarak verilmelidir.
 
 ![Azure Batch için gizli izinler](./media/batch-account-create-portal/secret-permissions.png)
 

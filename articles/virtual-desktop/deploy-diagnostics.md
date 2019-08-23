@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 356b430e0bb9170999398eb8eb68ad31f2d5eeb6
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017315"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899698"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -106,7 +106,7 @@ Bu bölüm, önceki bölümde PowerShell betiği olmadan oluşturulan mevcut bir
     -   İşlemci bilgileri (\*)\\işlemci zamanı
     -   Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi
 
-[Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](/articles/azure-monitor/platform/data-sources-performance-counters.md)performans sayaçları hakkında daha fazla bilgi edinin.
+[Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](/azure/azure-monitor/platform/data-sources-performance-counters)performans sayaçları hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 >Yapılandırdığınız tüm ek sayaçlar, Tanılama Aracı 'nda gösterilmez. Tanılama aracında görünmesini sağlamak için aracın yapılandırma dosyasını yapılandırmanız gerekir. Bunu gelişmiş yönetimle birlikte nasıl yapacağınız hakkında yönergeler, daha sonraki bir tarihte GitHub 'da kullanılabilir.
@@ -189,7 +189,7 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
 Tanılama aracını kullanıcılarınız için kullanılabilir hale gelmeden önce, aşağıdaki izinlere sahip olduklarından emin olun:
 
-- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/azure/azure-monitor/platform/roles-permissions-security).
 -  Kullanıcıların ayrıca Windows sanal masaüstü kiracısı (RDS okuyucu rolü) için okuma erişimine ihtiyacı vardır. Daha fazla bilgi için bkz. [Windows sanal masaüstü önizlemesinde temsilci erişimi](delegated-access-virtual-desktop.md).
 
 Kullanıcılarınıza aşağıdaki bilgileri de vermeniz gerekir:
@@ -229,22 +229,22 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 - MantıksalDisk\*(\|)% boş alan:
 
     - Boş olan mantıksal disk üzerindeki toplam kullanılabilir alan yüzdesini görüntüler.
-    - Eşik: % 20 ' den az, sağlıksız olarak işaretlendi.
+    - Eşiği % 20 ' den az, sağlıksız olarak işaretlendi.
 
 - MantıksalDisk (C\\:) ort. Disk sırası uzunluğu:
 
     - Depolama sistemi koşullarını temsil eder.
-    - Eşik: 5 ' ten yüksek, sağlıksız olarak işaretlenir.
+    - Eşiği 5 ' ten yüksek, sağlıksız olarak işaretlenir.
 
 - Bellek (\*)\\kullanılabilir MBayt:
 
     - Sistem için kullanılabilir bellek.
-    - Eşik: 500 megabayttan az, sağlıksız olarak işaretlendi.
+    - Eşiği 500 megabayttan az, sağlıksız olarak işaretlendi.
 
 - İşlemci bilgileri (\*)\\işlemci zamanı:
 
-    - Eşik: % 80 ' den yüksek, sağlıksız olarak işaretlendi.
+    - Eşiği % 80 ' den yüksek, sağlıksız olarak işaretlendi.
 
 - [Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Eşik: 2000 MS 'den yüksek olmayan olarak işaretlenir.
+    - Eşiği 2000 MS 'den yüksek olmayan olarak işaretlenir.

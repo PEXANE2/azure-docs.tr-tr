@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 853d7f7bf9950640a824eee4ae3e044265b518f7
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016972"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898335"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure haritalar kullanarak IoT uzamsal analizlerini uygulama
 
@@ -290,6 +290,10 @@ Bu öğreticide kullanılan Azure Haritalar API 'Lerini araştırmak için, bkz.
 Azure haritalar REST API 'lerinin tüm listesi için bkz.:
 
 * [Azure haritalar REST API 'Leri](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+
+IoT Tak ve Kullan hakkında daha fazla bilgi edinmek için bkz.:
+
+* [IoT Tak ve Kullan](https://docs.microsoft.com/azure/iot-pnp)
 
 IoT için Azure Sertifikalı cihazların listesini almak için şu adresi ziyaret edin:
 

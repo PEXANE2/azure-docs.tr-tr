@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e8be1675dd2b400f89ab17fe85c037066302409
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927923"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906029"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -182,7 +182,7 @@ VM doğrudan internet bağlantısını izleyin ve kısıtlayın. Saldırganlar a
 **Ayrıntı**: Yalnızca merkezi ağ grubunun ağ kaynaklarına erişim izni olduğundan emin olmak için RBAC kullanın.
 
 **En iyi uygulama**: "Any" kaynak IP adresinden erişime izin veren sunulan VM 'Leri tanımlayabilir ve düzeltin.   
-**Ayrıntı**: Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi, ağ güvenlik gruplarınızı "Any" kaynak IP adresinden erişime izin veren bir veya daha fazla gelen kurala sahipse, internet 'e yönelik uç noktalar aracılığıyla erişimi kısıtlamanız önerilir. Güvenlik Merkezi, gerçekte erişmesi gereken kaynak IP adreslerine [erişimi kısıtlamak](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) için bu gelen kuralları düzenlemenizi önerir.
+**Ayrıntı**: Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi, ağ güvenlik gruplarınızı "Any" kaynak IP adresinden erişime izin veren bir veya daha fazla gelen kurala sahipse, internet 'e yönelik uç noktalar aracılığıyla erişimi kısıtlamanız önerilir. Güvenlik Merkezi, gerçekte erişmesi gereken kaynak IP adreslerine [erişimi kısıtlamak](../../security-center/security-center-network-recommendations.md) için bu gelen kuralları düzenlemenizi önerir.
 
 **En iyi uygulama**: Yönetim bağlantı noktalarını kısıtla (RDP, SSH).   
 **Ayrıntı**: [Tam zamanında (JIT) VM erişimi](../../security-center/security-center-just-in-time.md) , Azure VM 'lerinize gelen trafiği kilitlemek ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalma olasılığını azaltmak için kullanılabilir. JıT etkinleştirildiğinde, güvenlik merkezi bir ağ güvenlik grubu kuralı oluşturarak Azure VM 'lerinize gelen trafiği kilitler. Gelen trafiğin kilitlenebileceği sanal makine üzerindeki bağlantı noktalarını seçersiniz. Bu bağlantı noktaları JıT çözümü tarafından denetlenir.

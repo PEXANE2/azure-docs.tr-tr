@@ -1,21 +1,19 @@
 ---
 title: Visual Studio kullanarak Azure Işlevleri geliştirme | Microsoft Docs
 description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593228"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905674"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure Işlevleri geliştirme  
 
@@ -98,7 +96,7 @@ Işlevler çalışma zamanı, dahili olarak bir Azure depolama hesabı kullanır
 
 Depolama hesabı bağlantı dizesini ayarlamak için:
 
-1. Visual Studio 'da **Cloud Explorer**'ı açın, depolama **hesabı** > depolama hesabınızı**genişletin, ardından** **Özellikler** sekmesinde **birincil bağlantı dizesi** değerini kopyalayın.
+1. Visual Studio 'da **Cloud Explorer**'ı açın, depolama **hesabı** > depolama hesabınızı genişletin, ardından **Özellikler** sekmesinde **birincil bağlantı dizesi** değerini kopyalayın.
 
 2. Projenizde, Local. Settings. json dosyasını açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesine ayarlayın.
 
@@ -212,6 +210,9 @@ Bu, yeni uygulama ayarları ekleyebileceğiniz veya var olanları değiştirebil
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
 **Local** , yerel. Settings. JSON dosyasındaki bir ayar değerini temsil eder ve **uzak** , Azure 'daki işlev uygulamasındaki geçerli ayardır.  Yeni bir uygulama ayarı oluşturmak için **Ayar ekle** ' yi seçin. Bir ayar değerini **uzak** alana kopyalamak için **Yerel bağlantıdan Ekle değerini** kullanın. Bekleyen değişiklikler, **Tamam**' ı seçtiğinizde yerel ayarlar dosyasına ve işlev uygulamasına yazılır.
+
+> [!NOTE]
+> Varsayılan olarak, Local. Settings. JSON dosyası kaynak denetimine iade edilmez. Bu, kaynak denetiminden yerel bir Işlevler projesi kopyaladığınızda, projenin bir Local. Settings. JSON dosyasına sahip olmadığı anlamına gelir. Bu durumda, **uygulama ayarları** iletişim kutusunun beklendiği gibi çalışması için, proje kökünde yerel. Settings. json dosyasını el ile oluşturmanız gerekir. 
 
 Ayrıca, uygulama ayarlarını şu diğer yollarla da yönetebilirsiniz:
 

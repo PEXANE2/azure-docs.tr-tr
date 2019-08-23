@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946538"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899936"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>UK RESMI için Azure Güvenlik ve Uyumluluk Şeması-üç katmanlı IaaS Web uygulaması
 
@@ -186,7 +186,7 @@ Bu sanal ağlar ayrı kaynaklar olarak yönetilmeye devam eder, ancak bu sanal m
 
 [Azure sanal makinelerinde Windows Server Active Directory dağıtmaya yönelik yönergeler](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Active Directory tümleştirme**: Özel bir AD DS mimarisine alternatif olarak müşteriler, Azure 'da [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) tümleştirme veya [Active Directory Şirket içi bir ormana katılmış](/azure/architecture/reference-architectures/identity.md)olarak kullanmak isteyebilir.
+**Active Directory tümleştirme**: Özel bir AD DS mimarisine alternatif olarak müşteriler, Azure 'da [Azure Active Directory](/azure/architecture/reference-architectures/identity) tümleştirme veya [Active Directory Şirket içi bir ormana katılmış](/azure/architecture/reference-architectures/identity)olarak kullanmak isteyebilir.
 
 ### <a name="security"></a>Güvenlik
 
@@ -200,9 +200,9 @@ Müşteriler ayrıca yönetim VNet ve sıçrama kutusu 'na bağlanırken ortamı
 
 **IP aralıkları**: Mimarideki IP aralıkları önerilen aralıklardır. Müşterilerin kendi ortamlarını göz önünde bulundurmanız ve uygun aralıkları kullanması önerilir.
 
-**Karma bağlantı**: Bulut tabanlı iş yükleri, Azure VPN Gateway kullanarak ıPSEC VPN aracılığıyla şirket içi veri merkezine bağlanır. Müşteriler, Azure 'a bağlanmak için uygun bir VPN Gateway kullandıklarından emin olmalıdır. Örnek- [VPN Gateway Kaynak Yöneticisi şablonu](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Büyük veri gereksinimleriyle büyük ölçekli, görev açısından kritik iş yüklerini çalıştıran müşteriler, Microsoft bulut hizmetlerine özel ağ bağlantısı için [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) kullanan bir karma ağ mimarisini düşünmek isteyebilir.
+**Karma bağlantı**: Bulut tabanlı iş yükleri, Azure VPN Gateway kullanarak ıPSEC VPN aracılığıyla şirket içi veri merkezine bağlanır. Müşteriler, Azure 'a bağlanmak için uygun bir VPN Gateway kullandıklarından emin olmalıdır. Örnek- [VPN Gateway Kaynak Yöneticisi şablonu](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Büyük veri gereksinimleriyle büyük ölçekli, görev açısından kritik iş yüklerini çalıştıran müşteriler, Microsoft bulut hizmetlerine özel ağ bağlantısı için [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) kullanan bir karma ağ mimarisini düşünmek isteyebilir.
 
-**Kaygıları ayrımı**: Bu başvuru mimarisi, yönetim işlemleri ve iş işlemleri için sanal ağları ayırır. Ayrı sanal ağlar ve alt ağlar, [Microsoft bulut hizmetleri ve ağ güvenliği](/azure/architecture/vdc/networking-virtual-datacenter.md) en iyi yöntemlerinden sonraki ağ kesimleri arasında NSG 'ler kullanarak trafik giriş ve çıkış kısıtlamaları dahil trafik yönetimine izin verir.
+**Kaygıları ayrımı**: Bu başvuru mimarisi, yönetim işlemleri ve iş işlemleri için sanal ağları ayırır. Ayrı sanal ağlar ve alt ağlar, [Microsoft bulut hizmetleri ve ağ güvenliği](/azure/architecture/vdc/networking-virtual-datacenter) en iyi yöntemlerinden sonraki ağ kesimleri arasında NSG 'ler kullanarak trafik giriş ve çıkış kısıtlamaları dahil trafik yönetimine izin verir.
 
 **Kaynak yönetimi**: VM 'Ler, sanal ağlar ve yük dengeleyiciler gibi Azure kaynakları, bunları [Azure Kaynak gruplarında](../../azure-resource-manager/resource-group-overview.md)gruplandırarak yönetilir. Kaynak tabanlı Access Control rolleri, erişimi yalnızca yetkili kullanıcılara kısıtlamak için her bir kaynak grubuna atanabilir.
 

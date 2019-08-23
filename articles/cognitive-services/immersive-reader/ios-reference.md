@@ -1,20 +1,20 @@
 ---
 title: Modern okuyucu iOS SDK başvurusu
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Modern okuyucu iOS SDK 'Sı için başvuru
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: metan
+ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966591"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899409"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Modern Okuyucu SDK başvurusu
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Parametreler
 
-| Ad | Tür | Açıklama |
+| Name | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `navController` | Uıınavigationcontroller | İşlevin çağrıldığı iOS uygulaması için gezinti denetleyicisi. |
 | `token` | Dize | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |

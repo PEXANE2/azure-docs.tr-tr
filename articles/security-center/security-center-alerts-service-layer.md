@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aae2270417e0bb3bdf0dd847e2e09e7cb1999d39
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624777"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972461"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure hizmet katmanı için tehdit algılama
 
@@ -50,6 +50,10 @@ Güvenlik Merkezi ağ katmanı analizi, Azure çekirdek yönlendiricileri taraf�
 |**Kötü amaçlı bir adresle ağ iletişimi algılandı**|Örneklenmiş ağ trafiği analizi, olası bir komut ve denetim (C & C) sunucusuyla dağıtımınızdaki bir kaynaktan kaynaklanan iletişimi algıladı. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|
 
 Güvenlik Merkezi 'nin tehdit koruması uygulamak için ağla ilgili sinyalleri nasıl kullanabileceğini anlamak için bkz. [Azure Güvenlik Merkezi 'Nde BULUŞSAL DNS algılamaları](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
+
+>[!NOTE]
+>Azure Güvenlik Merkezi 'nde Azure ağ katmanı tehdit algılama uyarıları, VM oluşturulduktan sonra ilk saat boyunca oluşturulmaz.
+
 ## Azure Yönetim Katmanı (Azure Resource Manager) (Önizleme)<a name ="management-layer"></a>
 
 >[!NOTE]

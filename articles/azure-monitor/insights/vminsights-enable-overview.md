@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688241"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905586"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>VM'ler için Azure İzleyici etkinleştir (Önizleme) genel bakış
 
@@ -33,7 +33,10 @@ VM'ler için Azure İzleyici ayarlamak için:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce aşağıdaki bölümlerde yer alan bilgiler anladığınızdan emin olun.
+Başlamadan önce aşağıdaki bölümlerde yer alan bilgiler anladığınızdan emin olun. 
+
+>[!NOTE]
+>Bu bölümde açıklanan aşağıdaki bilgiler [hizmet eşlemesi çözümü](service-map.md)için de geçerlidir.  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -46,8 +49,8 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - Birleşik Krallık Güney
 - Batı Avrupa
 - Güneydoğu Asya
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Avustralya Doğu<sup>1</sup>
+- Avustralya Güneydoğu<sup>1</sup>
 
 <sup>1</sup> VM'ler için bu bölgede şu anda Azure İzleyici'nın sistem durumu özelliğini desteklemiyor.
 
@@ -153,6 +156,9 @@ VM'ler için Azure İzleyici harita özelliği, verileri Microsoft bağımlılı
 
 Tek bir Azure VM için VM'ler için Azure İzleyici etkinleştirmenize veya genişleme dağıtım yöntemini kullanmanıza bakılmaksızın aracıyı deneyimin bir parçası olarak yüklemek için Azure VM bağımlılık Aracısı uzantısı 'nı kullanın.
 
+>[!NOTE]
+>Bu bölümde açıklanan aşağıdaki bilgiler [hizmet eşlemesi çözümü](service-map.md)için de geçerlidir.  
+
 Karma ortamda, bağımlılık aracısını el ile indirip yükleyebilirsiniz. VM 'niz Azure dışında barındırılıyorsa, bir otomatik dağıtım yöntemi kullanın.
 
 Aşağıdaki tabloda, karma bir ortamda, eşleme özelliğini destekleyen bağlı kaynaklar açıklanmaktadır.
@@ -167,8 +173,8 @@ Bağımlılık aracısını şu konumlardan indirebilirsiniz:
 
 | Dosya | İşletim Sistemi | Sürüm | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 

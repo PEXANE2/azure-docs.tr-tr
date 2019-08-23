@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544571"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972660"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory
 
@@ -34,7 +34,7 @@ Bu kılavuzda, şirket içinde veya aboneliklerinizde sanal makineler çalışt�
 
 ## <a name="identity-source-options"></a>Kimlik kaynağı seçenekleri
 
-* [Çoklu oturum açma kimlik kaynağı olarak şirket Içi Active Directory ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
+* [Çoklu oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
 * [Özel bulutta yeni Active Directory ayarlama](#set-up-new-active-directory-on-a-private-cloud)
 * [Azure 'da Active Directory ayarlama](#set-up-active-directory-on-azure)
 
@@ -63,7 +63,7 @@ Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri k
 Önceki tabloda yer alan bilgilere sahip olduğunuzda, vCenter 'da çoklu oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleyebilirsiniz.
 
 > [!TIP]
-> <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">VMware belgeleri sayfasında</a>çoklu oturum açma kimlik kaynakları hakkında daha fazla bilgi bulabilirsiniz.
+> [VMware belgeleri sayfasında](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)çoklu oturum açma kimlik kaynakları hakkında daha fazla bilgi bulabilirsiniz.
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Özel bulutta yeni Active Directory ayarlama
 
@@ -83,7 +83,7 @@ Ayrıntılı adımlar için bkz. [Yeni bir Windows Server 2012 Active Directory 
 
 Active Directory ormanı ve etki alanını ayarladıktan sonra, yeni Active Directory için [vCenter 'a bir kimlik kaynağı ekleyebilirsiniz](#add-an-identity-source-on-vcenter) .
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Mevcut bir Active Directory ormanında yeni Active Directory Etki Alanı
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Mevcut bir Active Directory ormanında yeni Active Directory etki alanı
 
 Mevcut bir Active Directory ormanında yeni bir Active Directory etki alanı kurmak için şunlar gerekir:
 

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/21/2019
 ms.author: v-adgera
-ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873638"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904289"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
 
@@ -35,9 +35,9 @@ Yerel test ortamınızı hazırlamak için [Postman](https://www.getpostman.com/
 
 Azure Active Directory uygulamanızı OAuth 2,0 örtük izin akışını kullanacak şekilde yapılandırın.
 
-1. Yerel türde bir Azure AD uygulaması oluşturmak için [Bu hızlı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) başlangıçta bulunan adımları izleyin. Ya da var olan bir yerel uygulama kaydını yeniden kullanabilirsiniz.
+1. Azure AD uygulaması oluşturmak için [hızlı hızımızda](./quickstart-view-occupancy-dotnet.md) bulunan adımları izleyin. Ya da [eskı AAD dikey penceresini kullanarak yerel bir uygulama](./how-to-use-legacy-aad.md)oluşturun.
 
-1. **Gerekli izinler**altında **Ekle** ' yi seçin ve **API erişimi ekle**altına **Azure dijital TWINS** girin. Arama sonucunda API görüntülenmezse **Azure Smart Spaces** araması yapın. Ardından, **izinleri > temsilci Izinleri ver** ' i ve **bitti**' yi seçin.
+1. **API izinleri**altında **izin Ekle**' yi seçin. Ardından, **Kuruluşumun kullandığı API 'ler**altında **Azure Digital TWINS** . Arama sonucunda API görüntülenmezse **Azure Smart Spaces** araması yapın.  > Ardından, **temsilci izinleri**, oku**oku. yaz**ve **Ekle iznini**seçin.
 
     [![Uygulama kayıtlarını Azure Active Directory API Ekle](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
@@ -75,7 +75,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     | İzin Verme Türü | `Implicit` |
     | Geri çağırma URL'si | `https://www.getpostman.com/oauth2/callback` |
     | Kimlik doğrulama URL 'SI | 2\. adımdaki **yetkilendirme URL 'sini** kullanın |
-    | İstemci Kimliği | Önceki bölümde oluşturulan veya yeniden kullanılan Azure Active Directory uygulama için **uygulama kimliğini** kullanın |
+    | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
     | `Scope` | Boş bırakın |
     | State | Boş bırakın |
     | İstemci Kimlik Doğrulaması | `Send as Basic Auth header` |

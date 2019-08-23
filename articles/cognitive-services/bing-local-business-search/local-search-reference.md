@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881856"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906345"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing yerel Iş Arama API 'SI v7 başvurusu
 
@@ -70,12 +71,12 @@ Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.
 İstek aşağıdaki sorgu parametrelerini içerebilir. Gerekli parametreler için gereken sütuna bakın. Sorgu parametrelerini URL kodlamanız gerekir.  
   
   
-|Ad|Value|Type|Gerekli|  
+|Name|Value|Type|Gerekli|  
 |----------|-----------|----------|--------------|
 |<a name="count" />biriktirme|`offset` Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı.|Dize|Hayır|   
 |<a name="localCategories" />Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|Hayır|  
 |<a name="mkt" />mkt|Sonuçların geldiği pazar. <br /><br />Olası Pazar değerlerinin listesi için bkz. Pazar kodları.<br /><br /> **NOT:** Yerel Iş Arama API 'SI Şu anda yalnızca en-ABD pazar ve dilini desteklemektedir.<br /><br />|Dize|Evet|
-|<a name="offset"/>konumu|`count` Parametre tarafından belirtilen sonuçları başlatacak dizin.|Tamsayı|Hayır|  
+|<a name="offset"/>konumu|`count` Parametre tarafından belirtilen sonuçları başlatacak dizin.|Integer|Hayır|  
 |<a name="query" />ç|Kullanıcının arama terimi.|Dize|Hayır|  
 |<a name="responseformat" />responseFormat|Yanıt için kullanılacak medya türü. Aşağıdakiler, büyük/küçük harf duyarsız değerlerdir.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Varsayılan değer JSON ' dır. Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).<br /><br />  JsonLd belirtirseniz, yanıt gövdesi, arama sonuçlarını içeren JSON-LD nesnelerini içerir. JSON-LD hakkında daha fazla bilgi için bkz. [JSON-ld](https://json-ld.org/).|Dize|Hayır|  
 |<a name="safesearch" />safeSearch|Yetişkinlere yönelik içeriği filtrelemek için kullanılan bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>Yetişkinlere yönelik metin, resim veya video içeren Web sayfalarınıgeridöndürün.&mdash;<br /><br/></li><li>Orta&mdash;, yetişkinlere yönelik metinler içeren Web sayfalarını, yetişkinlere yönelik görüntüleri veya videoları geri döndürür.<br /><br/></li><li>Sıkı&mdash;metin, resim veya video içeren Web sayfaları döndürün.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **NOT:** İstek, Bing yetişkin ilkesinin katı olarak ayarlanmasını gerektiren `safeSearch` bir marketten geliyorsa, Bing `safeSearch` değeri yoksayar ve katı kullanır.<br/><br/>**NOT:** `site:` Sorgu işlecini kullanırsanız, `safeSearch` sorgu parametresinin ne şekilde ayarlandığına bakılmaksızın yanıtın yetişkinlere yönelik içerik içerebileceği bir şansınız vardır. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın. |Dize|Hayır|  
@@ -107,7 +108,7 @@ Oluşan hatayı tanımlar.
 ### <a name="errorresponse"></a>ErrorResponse  
 İstek başarısız olduğunda yanıtın içerdiği en üst düzey nesne.  
   
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_tür|İpucu yazın.|Dize|  
 |<a name="errors" />hatası|İsteğin başarısız olma nedenlerini betimleyen hataların listesi.|[Hata](#error) []|  
@@ -117,7 +118,7 @@ Oluşan hatayı tanımlar.
 ### <a name="license"></a>Lisans  
 Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.  
   
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |name|Lisansın adı.|Dize|  
 |url|Kullanıcının lisans hakkında daha fazla bilgi alabileceğiniz bir Web sitesinin URL 'SI.<br /><br /> Köprü oluşturmak için adı ve URL 'YI kullanın.|Dize|  
@@ -126,7 +127,7 @@ Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.
 ### <a name="link"></a>Bağlantı  
 Bir köprünün bileşenlerini tanımlar.  
   
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_tür|İpucu yazın.|Dize|  
 |text|Görüntü metni.|Dize|  
@@ -140,7 +141,7 @@ Bir yayımcıyı tanımlar.
   
 Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabileceğini unutmayın.  
   
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |name|Yayımcının adı.|Dize|  
 |url|Yayımcının Web sitesinin URL 'SI.<br /><br /> Yayımcının bir Web sitesi sağlayamadığını unutmayın.|Dize|  
@@ -150,7 +151,7 @@ Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabil
 ### <a name="place"></a>Yerleştir  
 Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.  
   
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_tür|Aşağıdakilerden birine ayarlanmış olabilecek tür İpucu:<br /><br /><ul><li>Otel</li><li>Yerel Iş<br /></li><li>Restoran</ul><li>|Dize|  
 |adres|Varlığın bulunduğu posta adresi.|PostalAddress|  
@@ -174,23 +175,23 @@ Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.
 
 ### <a name="identifiable"></a>Maya
 
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |id|Kaynak tanımlayıcısı|Dize|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Mainline gibi bir arama sonuçları grubunu tanımlar.
 
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |items|Grupta görüntülenecek arama sonuçlarının listesi.|Rankingıtem|
 
 ### <a name="rankingitem"></a>Rankingıtem
 Görüntülenecek bir arama sonuç öğesi tanımlar.
 
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
-|Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Tamsayı|
+|Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Integer|
 |answerType|Görüntülenecek öğeyi içeren yanıt. Örneğin, Haberler.<br /><br />SearchResponse nesnesinde yanıtı bulmak için türü kullanın. Tür, SearchResponse alanının adıdır.<br /><br /> Ancak, yanıt türünü yalnızca bu nesne değer alanını içeriyorsa kullanın; Aksi takdirde, yoksayabilirsiniz.|Dize|
 |Textualındex|Görüntülenecek textualAnswers içindeki yanıtın dizini.| İşaretsiz tamsayı|
 |value|Görüntülenecek yanıtı veya görüntülenecek yanıtın bir öğesini tanımlayan KIMLIK. KIMLIK bir yanıt tanımlarsa, yanıtın tüm öğelerini görüntüleyin.|Maya|
@@ -198,7 +199,7 @@ Görüntülenecek bir arama sonuç öğesi tanımlar.
 ### <a name="rankingresponse"></a>RankingResponse  
 Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini tanımlar.  
   
-|Ad|Value|  
+|Name|Value|  
 |----------|-----------|  
 |<a name="ranking-mainline" />Ana hat|Ana satırda görüntülenecek arama sonuçları.|  
 |<a name="ranking-pole" />kutup|En sık görülen işleme (örneğin, ana hat ve kenar çubuğu üzerinde görüntülenir) uygun olması gereken arama sonuçları.|  
@@ -209,7 +210,7 @@ Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini ta
   
 Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı olacağını unutmayın (HTTP durum kodu 200 Tamam); Ancak, yanıt gövdesi boş olur.  
   
-|Ad|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_tür|SearchResponse olarak ayarlanan tip ipucu.|Dize|  
 |yer|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  

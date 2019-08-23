@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558712"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904471"
 ---
 # <a name="get-started-with-device-management-net"></a>Cihaz yönetimini kullanmaya başlama (.NET)
 
@@ -34,7 +34,9 @@ Bu öğreticinin sonunda iki .NET konsol uygulamanız olacak:
 
 * **Triggerreboot**. Bu uygulama, sanal cihaz uygulamasında doğrudan bir yöntem çağırır, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
-Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Visual Studio.
 
@@ -81,7 +83,7 @@ Bu bölümde, bir doğrudan yöntem kullanan bir cihazda Uzaktan yeniden başlat
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu `{iot hub connection string}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ Bu bölümde, bir doğrudan yöntem kullanan bir cihazda Uzaktan yeniden başlat
 
 ## <a name="create-a-simulated-device-app"></a>Sanal cihaz uygulaması oluşturma
 
-Bu bölümde, aşağıdaki eylemleri gerçekleştirebilirsiniz:
+Bu bölümde şunları yapacaksınız:
 
 * Bulut tarafından çağrılan doğrudan bir yönteme yanıt veren bir .NET konsol uygulaması oluşturun.
 
@@ -164,11 +166,10 @@ Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, önceki bölümde not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu `{device connection string}` değerini, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)önceden not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ Sanal cihaz uygulamasını oluşturmak için aşağıdaki adımları izleyin:
    }
    ```
 
-1. Çözüm Gezgini, çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin. 
+1. Çözüm Gezgini, çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
 1. **Ortak özellikler** > **Başlangıç projesi**için **tek başlangıç projesi**' ni seçin ve ardından **SimulateManagedDevice** projesini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
 

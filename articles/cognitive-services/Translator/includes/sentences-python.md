@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: da411bad9e690fc4053fdf2bb9fa7fc9f0c4eae4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9c7385d3457f3f5dbed2633c20445bb9ef0b1638
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968548"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906827"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-Bu hızlı başlangıç şunları gerektirir:
-
-* Python 2.7.x veya 3.x
-* Translator Metin Çevirisi için Azure abonelik anahtarı
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
@@ -24,10 +21,7 @@ Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun.
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -35,27 +29,25 @@ import json
 
 İlk açıklama Python yorumlayıcısına UTF-8 kodlaması kullanması gerektiğini bildirir. Ardından bir ortam değişkeninden abonelik anahtarınızı okumak, HTTP isteğini yapılandırmak, benzersiz bir tanımlayıcı oluşturmak ve Translator Metin Çevirisi API'si tarafından döndürülen JSON yanıtını işlemek için gereken modüller içeri aktarılır.
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>Abonelik anahtarını, temel URL’yi ve yolu ayarlayın
+## <a name="set-the-subscription-key-endpoint-and-path"></a>Abonelik anahtarını, uç noktayı ve yolu ayarla
 
-Bu örnek, `TRANSLATOR_TEXT_KEY` ortam değişkeninden Translator Metin Çevirisi abonelik anahtarınızı okumaya çalışır. Ortam değişkenlerini bilmiyorsanız, `subscriptionKey` öğesini dize olarak ayarlayabilir ve koşul deyimini açıklama satırı yapabilirsiniz.
+Bu örnek, ortam değişkenlerinden Translator metin çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, bir dize ayarlayabilir ve koşullu deyimleri açıklama `subscription_key` `endpoint` olarak ayarlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
 ```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Metin Çevirisi genel uç noktası olarak `base_url`ayarlanır. `path`, `breaksentence` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
+Translator Metin Çevirisi genel uç noktası olarak `endpoint`ayarlanır. `path`, `breaksentence` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
 
 Bu örnekteki `params` değeri, sağlanan metnin dilini ayarlamak için kullanılır. `params`, `breaksentence` rotası için gerekli değildir. İstek dışında bırakılması halinde API, sağlanan metnin dilini algılamaya çalışır ve bu bilgiyi yanıtta bir güvenilirlik puanıyla birlikte iletir.
 
@@ -63,10 +55,9 @@ Bu örnekteki `params` değeri, sağlanan metnin dilini ayarlamak için kullanı
 > Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz [. Translator metin çevirisi API'si 3,0: Diller](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/breaksentence?api-version=3.0'
 params = '&language=en'
-constructed_url = base_url + path + params
+constructed_url = endpoint + path + params
 ```
 
 ## <a name="add-headers"></a>Üst bilgileri ekleme
@@ -77,7 +68,7 @@ Bu kod parçacığını projenize kopyalayın:
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Ocp-Apim-Subscription-Key': subscription_key,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

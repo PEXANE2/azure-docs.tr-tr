@@ -3,16 +3,16 @@ title: Sık karşılaşılan hataları giderme
 description: Azure Kaynak Grafmasıyla Azure kaynaklarını sorgulama sorunlarını giderme hakkında bilgi edinin.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480559"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900002"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Kaynak Grafiği 'ni kullanarak hatalarda sorun giderme
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>Senaryon Desteklenmeyen Içerik türü REST üst bilgisi
+
+#### <a name="issue"></a>Sorun
+
+Azure Kaynak grafiğini sorgulayan müşteriler REST API bir _500_ (Iç sunucu hatası) yanıtı alır.
+
+#### <a name="cause"></a>Nedeni
+
+Azure Kaynak Grafiği REST API yalnızca bir `Content-Type` **uygulama/JSON**'ı destekler. Bazı REST araçları veya aracıları, REST API tarafından desteklenmeyen **metin/düz**için varsayılan değer.
+
+#### <a name="resolution"></a>Çözüm
+
+Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, **Application/JSON**için yapılandırılmış REST API `Content-Type` üst bilgisine sahip olduğunu doğrulayın.
+### <a name="rest-403"></a>Senaryon Listedeki tüm abonelikler için okuma izni yok
+
+#### <a name="issue"></a>Sorun
+
+Azure Kaynak grafik sorgusuna sahip bir abonelik listesini açıkça geçiren müşteriler _403_ (yasak) yanıtını alır.
+
+#### <a name="cause"></a>Nedeni
+
+Müşterinin tüm sağlanmış abonelikler üzerinde okuma izni yoksa, uygun güvenlik haklarının olmaması nedeniyle istek reddedilir.
+
+#### <a name="resolution"></a>Çözüm
+
+Sorguyu çalıştıran müşterinin en azından okuma erişimine sahip olduğu abonelik listesine en az bir abonelik ekleyin. Daha fazla bilgi için bkz. [Azure Kaynak Grafında izinler](../overview.md#permissions-in-azure-resource-graph).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

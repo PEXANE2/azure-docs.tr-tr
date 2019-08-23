@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656336"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897352"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek için SSL kullanma
 
@@ -149,9 +149,9 @@ Ardından, DNS sunucunuzun web hizmetine işaret edecek şekilde güncelleştirm
   > [!WARNING]
   > Hizmeti Microsoft 'un bir sertifikasını kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirin. Değer otomatik olarak ayarlanmalıdır.
 
-  AKS kümesinin genel IP adresinin **yapılandırma** sekmesinde DNS 'i güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
+  Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
 
-  ![Azure Machine Learning hizmeti: SSL ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  [![Azure Machine Learning hizmeti: SSL ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>SSL sertifikasını güncelleştirme
 
@@ -230,9 +230,7 @@ Daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
 
 ## <a name="disable-ssl"></a>SSL 'yi devre dışı bırak
 
-Azure Kubernetes hizmetine dağıtılan bir modelde SSL 'yi devre dışı bırakmak için SDK veya CLı kullanabilirsiniz:
-
-**SDK 'Yı kullanma**
+Azure Kubernetes hizmetine dağıtılan bir modelin SSL 'yi devre dışı bırakmak için, bir `SslConfiguration` ile `status="Disabled"`oluşturun ve sonra bir güncelleştirme gerçekleştirin:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -246,12 +244,6 @@ aks_target = AksCompute(ws, clustername)
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
-```
-
-**CLI kullanma**
-
-```azurecli
- az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

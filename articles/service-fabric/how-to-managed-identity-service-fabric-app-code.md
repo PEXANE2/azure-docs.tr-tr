@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656617"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899763"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma (Önizleme)
 
@@ -23,7 +23,7 @@ Service Fabric uygulamalar, Azure Active Directory tabanlı kimlik doğrulaması
 > Yönetilen bir kimlik, kaynağı içeren abonelikle ilişkili olan ilgili Azure AD kiracısında bir Azure kaynağı ile hizmet sorumlusu arasındaki ilişkiyi temsil eder. Bu nedenle, Service Fabric bağlamında yönetilen kimlikler yalnızca Azure kaynakları olarak dağıtılan uygulamalar için desteklenir. 
 
 > [!IMPORTANT]
-> Service Fabric uygulamasının yönetilen kimliğini kullanmadan önce, istemci uygulamasına korunan kaynağa erişim verilmesi gerekir. Lütfen desteği denetlemek için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) listesine ve ardından ilgili hizmetin ilgilendiğiniz kaynaklara yönelik bir kimlik erişimi sağlamak için ilgili hizmetin belgelerine bakın. 
+> Service Fabric uygulamasının yönetilen kimliğini kullanmadan önce, istemci uygulamasına korunan kaynağa erişim verilmesi gerekir. Lütfen desteği denetlemek için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listesine ve ardından ilgili hizmetin ilgilendiğiniz kaynaklara yönelik bir kimlik erişimi sağlamak için ilgili hizmetin belgelerine bakın. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>REST API kullanarak erişim belirteci edinme
 Yönetilen kimlik için etkinleştirilmiş kümeler ' de Service Fabric çalışma zamanı, uygulamaların erişim belirteçlerini almak için kullanabileceği bir localhost uç noktasını kullanıma sunar. Uç nokta, kümenin her düğümünde kullanılabilir ve bu düğümdeki tüm varlıklar için erişilebilir. Yetkili çağıranlar, bu uç noktayı çağırarak ve bir kimlik doğrulama kodu sunarak erişim belirteçleri elde edebilir. kod, her ayrı hizmet kodu paketi etkinleştirmesi için Service Fabric çalışma zamanı tarafından oluşturulur ve bu hizmet kodu paketini barındıran işlemin ömrüne bağlanır.

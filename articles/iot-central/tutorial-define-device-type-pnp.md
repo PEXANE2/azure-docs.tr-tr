@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878015"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907344"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama (Önizleme özellikleri)
 
@@ -90,11 +90,11 @@ Aşağıdaki adımlarda, bir **ortam algılayıcı** cihazı için yetenek model
 
 1. Yeni bir cihaz şablonu eklemek için **cihaz şablonları** sayfasında **+ Yeni** ' yi seçin.
 
-1. Cihaz yetenek modelleri listesinden **özel** ' i seçin.
+1. Şablonlar listesinden **özel** ' i seçin.
 
 1. Cihaz şablonunuzun adı olarak **çevresel algılayıcı** girin.
 
-1. Bir JSON dosyasından yeni bir cihaz yetenek modeli oluşturmak için **yetenek modeli Içeri aktar** ' ı seçin. Yerel makinenizde **Environmentalsensorline. capabilitymodel. JSON** dosyasını kaydettiğiniz klasöre gidin. **Environmentalsensorline. capabilitymodel. JSON** dosyasını seçin ve ardından İçeri Aktar ' ı seçin. Çevresel algılayıcı yetenek modeli, **ortam algılayıcısı** ve **cihaz bilgileri** arabirimlerini içerir:
+1. Bir JSON dosyasından yeni bir cihaz yetenek modeli oluşturmak için **yetenek modeli Içeri aktar** ' ı seçin. Yerel makinenizde **Environmentalsensorline. capabilitymodel. JSON** dosyasını kaydettiğiniz klasöre gidin. **Environmentalsensorline. capabilitymodel. JSON** dosyasını seçin ve **Aç**' ı seçin. Çevresel algılayıcı yetenek modeli, **ortam algılayıcısı** ve **cihaz bilgileri** arabirimlerini içerir:
 
     ![Çevresel algılayıcı cihaz yeteneği modeli](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ Varsayılan görünümleri oluşturmak, önemli cihaz bilgilerinizi görselleşt
 
 Bir cihaz panosu, bir işlecin grafikleri ve ölçümleri kullanarak bir cihazı görselleştirmesine olanak sağlar. Oluşturucu olarak, bir cihaz panosunda hangi bilgilerin gösterileceğini tanımlayabilirsiniz. Cihazlar için birden çok Pano tanımlayabilirsiniz. Ortam algılayıcısı telemetrisini görselleştirmek üzere bir pano oluşturmak için, **Görünümler** ' i seçin ve ardından **cihazı görselleştirmeyi**seçin:
 
-1. Tüm cihaz özellikleri, bulut özellikleri, telemetri ve statik seçenekler sağ bölmede listelenir. Bu öğelerin herhangi birini görünüme sürükleyip bırakabilirsiniz. Görünüme bir özellik sürükleyin. Kutucuğu, dişli simgesini kullanarak yapılandırabilirsiniz.
+1. Tüm cihaz özellikleri, bulut özellikleri, telemetri ve statik Seçenekler **Özellikler**altında listelenmiştir. Bu öğelerin herhangi birini görünüme sürükleyip bırakabilirsiniz. **Parlaklık düzeyi** özelliğini görünüme sürükleyin. Kutucuğu, dişli simgesini kullanarak yapılandırabilirsiniz.
 
-1. Telemetriyi çiztireeden bir grafik eklemek için **nem** ve **sıcaklık**' yı ve ardından **Birleştir**' i seçin. Bu grafiği, pasta grafiği veya çubuk grafik gibi farklı bir biçimde görüntülemek için döşemenin en üstündeki **görselleştirmeyi Değiştir** düğmesini seçin.
+1. Telemetriyi çiztireeden bir grafik eklemek için **nem** ve **sıcaklık**' yı ve ardından **Birleştir**' i seçin. Bu grafiği, pasta grafiği veya çubuk grafik gibi farklı bir biçimde görüntülemek için kutucuğun en üstündeki **görselleştirmeyi Değiştir** düğmesini seçin.
 
 1. Görünümünüzü kaydetmek için **Kaydet** ' i seçin:
 
@@ -161,7 +161,7 @@ Bir cihaz formu, bir işlecin yazılabilir cihaz özelliklerini ve bulut özelli
 
 Ortam algılayıcısı özelliklerini görüntülemek ve düzenlemek için bir form oluşturmak için:
 
-1. **Cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
+1. **Ortam algılayıcı** şablonundaki **görünümlere** gidin. Yeni bir görünüm eklemek için **cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
 
 1. **Çevresel algılayıcı özellikleri**form adını girin.
 
@@ -169,10 +169,9 @@ Ortam algılayıcısı özelliklerini görüntülemek ve düzenlemek için bir f
 
 1. **Parlaklık düzeyini** ve **cihaz durumu** cihaz özelliklerini seçin. Ardından **Bölüm Ekle**' yi seçin. Bölümün başlığını **algılayıcı özellikleri**olacak şekilde düzenleyin. **Uygula**’yı seçin.
 
-1. **Kalan pil**, **cihaz modeli**, **bellenim sürümü**, **üretici**ve **seri numarası** cihaz özelliklerini seçin. Ardından **Bölüm Ekle**' yi seçin. Bölüm başlığını **cihaz özellikleri**olacak şekilde düzenleyin. **Uygula**’yı seçin.
+1. **Cihaz modelini**, **yazılım sürümünü**, **üreticiyi**ve **işlemci üreticisi** cihaz özelliklerini seçin. Ardından **Bölüm Ekle**' yi seçin. Bölüm başlığını **cihaz özellikleri**olacak şekilde düzenleyin. **Uygula**’yı seçin.
 
 1. Görünümünüzü kaydetmek için **Kaydet** ' i seçin.
-
 
 ## <a name="publish-device-template"></a>Cihaz şablonunu Yayımla
 

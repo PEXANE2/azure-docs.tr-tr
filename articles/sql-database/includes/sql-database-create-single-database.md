@@ -3,30 +3,31 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935034"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894129"
 ---
-Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını oluşturacaksınız.
+Bu adımda, bir Azure SQL veritabanı tek veritabanı oluşturacaksınız. 
 
 > [!IMPORTANT]
-> Bu makaledeki adımları gerçekleştirdiğiniz bilgisayarın genel IP adresini kullanmak için güvenlik duvarı kuralları ayarladığınızdan emin olun. 
+> Bu makaleyi tamamladıktan sonra, kullanmakta olduğunuz bilgisayarın genel IP adresini kullanmak için güvenlik duvarı kuralları ayarladığınızdan emin olun.
 >
-> Bilgi için bkz. [veritabanı düzeyinde güvenlik duvarı kuralı oluşturma](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) veya bilgisayarınızın sunucu düzeyinde güvenlik duvarı kuralı IÇIN kullanılan IP adresini belirleme bkz. [sunucu düzeyinde güvenlik duvarı oluşturma](../sql-database-server-level-firewall-rule.md).  
+> Bilgi için, bkz. [veritabanı düzeyinde güvenlik duvarı kuralı oluşturma](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) veya bilgisayarınızın sunucu düzeyinde güvenlik duvarı kuralı IÇIN kullanılan IP adresini belirleme bkz. [sunucu düzeyinde güvenlik duvarı oluşturma](../sql-database-server-level-firewall-rule.md).  
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
-1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-2. **Veritabanları** ' nı seçin ve SQL VERITABANı ' nı seçerek **SQL veritabanı oluştur** sayfasını açın.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
+3. **Oluştur**' u seçin.
 
-   ![Tek veritabanı oluşturma](../media/sql-database-get-started-portal/create-database-1.png)
+   ![Tek veritabanı oluşturma](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. **Temel bilgiler** sekmesinde, **proje ayrıntıları** bölümünde aşağıdaki değerleri yazın veya seçin:
 

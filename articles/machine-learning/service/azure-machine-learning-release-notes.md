@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656257"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971501"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
 
@@ -89,9 +89,18 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + **azureml-pencere öğeleri**
     + Sınıflandırma eğitimi için geliştirilmiş karışıklık matrisi grafikleri.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning Data Prep SDK v 1.1.12
++ **Yeni Özellikler**
+  + Dizelerin listesi artık `read_*` yöntemlere giriş olarak geçirilebilir.
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + , Spark 'ta `read_parquet` çalışırken performansı önemli ölçüde iyileştirildi.
+  + Belirsiz tarih biçimleri içeren `column_type_builder` tek bir sütun olması durumunda başarısız olan bir sorun düzeltildi.
+
 ### <a name="azure-portal"></a>Azure Portal
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
+  + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerektiğini unutmayın.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

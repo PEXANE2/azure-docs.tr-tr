@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952948"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970453"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatikleştirin
 
@@ -47,6 +47,7 @@ Bir Windows karma runbook çalışanı yüklemek ve yapılandırmak için iki y�
 Karma Runbook Worker dağıtmaya başlamadan önce [ağınızı planlama bilgilerini](#network-planning) gözden geçirin. Çalışanı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamlarınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [bir karma runbook çalışanındaki runbook 'ları](automation-hrw-run-runbooks.md) inceleyin.
 
 Bilgisayar, hem çözüm hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon Runbook 'larını desteklemek üzere otomasyon hesabınızdaki karma Runbook Worker grubuna eklenebilir. Bu işlev Karma Runbook Çalışanının 7.2.12024.0 sürümüne eklenmiştir.
+
 ## <a name="remove-a-hybrid-runbook-worker"></a>Karma runbook çalışanını kaldırma
 
 Bir gruptan bir veya daha fazla karma runbook çalışanı kaldırabilir veya gereksinimlerinize bağlı olarak grubu kaldırabilirsiniz. Bir karma runbook çalışanını şirket içi bir bilgisayardan kaldırmak için aşağıdaki adımları kullanın:
@@ -106,7 +107,7 @@ Aracı ve Azure Otomasyonu hizmeti arasındaki iletişim için bir ara sunucu ku
 
 Karma Runbook Worker rolünün Otomasyon ile iletişim kurması için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
 
-* Bağlantı Noktası: Giden internet erişimi için yalnızca TCP 443 gereklidir.
+* Bağ Giden internet erişimi için yalnızca TCP 443 gereklidir.
 * Genel URL: *. azure-automation.net
 * US Gov Virginia genel URL 'SI: *. azure-automation.us
 * Aracı hizmeti: https://\<Workspace ID\>. Agentsvc.Azure-Automation.net

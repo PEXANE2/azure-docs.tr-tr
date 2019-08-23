@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520003"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906045"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı hazırlama için Signagelive yapılandırma
 
@@ -56,8 +56,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Signagelive 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Signagelive üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1.  SCıM sağlamasını yapılandırmak için gereken gizli belirteci almak için [Signagelive](mailto:development@signagelive.com) 'e ulaşın.
-
+  SCıM sağlamasını yapılandırmak için gereken gizli belirteci almak için [Signagelive](mailto:development@signagelive.com) 'e ulaşın.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Galeriden Signagelive ekleme
 
@@ -86,7 +85,7 @@ Signagelive 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırm
 Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
 > [!TIP]
->  [Signagelive çoklu oturum](Signagelive-tutorial.md)açma öğreticisinde sunulan yönergeleri Izleyerek, BitaBIZ için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+>  Ayrıca, [Signagelive çoklu oturum](Signagelive-tutorial.md)açma öğreticisinde sunulan yönergeleri Izleyerek, SIGNAGELIVE için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Azure AD 'de Signagelive için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -106,7 +105,8 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kul
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici kimlik bilgileri bölümünün altında, ` https://samlapi.signagelive.com/scim/v2` **kiracı URL 'sini**girin. **Gizli belirteç** alanı ' nda, mühendislik geliştirme ekibi tarafından sunulan **taşıyıcı belirteç** değerini girin. Azure AD 'nin Signagelive 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Signagelive hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden ![deneyin kiracı URL + belirteci](common/provisioning-testconnection-tenanturltoken.png)
+5. Yönetici kimlik bilgileri bölümünün altında, ` https://samlapi.signagelive.com/scim/v2` **kiracı URL 'sini**girin. **Gizli belirteç** alanı ' nda, mühendislik geliştirme ekibi tarafından sunulan **taşıyıcı belirteç** değerini girin. Azure AD 'nin Signagelive 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Signagelive hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
@@ -144,9 +144,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kul
 
     ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Signagelive üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların ve/veya grupların sağlaması için ne kadar süreceğine ilişkin daha fazla bilgi için bkz. [kullanıcıları sağlamak için ne kadar sürer](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users). 
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+İlerlemeyi izlemek ve Signagelive üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunuzun bağlantılarını izlemek için **geçerli durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

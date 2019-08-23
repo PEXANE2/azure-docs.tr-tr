@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927849"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907904"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğine giriş
 ## <a name="overview"></a>Genel Bakış
@@ -270,6 +270,7 @@ Web uygulaması güvenlik duvarı, standart uygulama teslim denetimi (ADC) işle
 
 
 Web saldırılarına karşı korunacak merkezi bir web uygulaması, güvenlik yönetimini çok daha kolay hale getirir ve yetkisiz erişim tehditlerine karşı uygulamayı daha güvende tutar. Bir WAF çözümü, bilinen bir güvenlik açığına merkezi bir konumda düzeltme eki uygulayarak güvenlik tehdidine karşı, web uygulamalarının her birinin güvenliğini sağlamaya göre daha hızlı tepki verebilir. Var olan uygulama ağ geçitleri, web uygulaması güvenlik duvarı bulunan bir uygulama ağ geçidine kolaylıkla dönüştürülebilir.
+
 ### <a name="traffic-manager"></a>Traffic Manager
 Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) , farklı veri merkezlerindeki hizmet uç noktaları için Kullanıcı trafiğinin dağıtımını denetlemenize olanak tanır. Traffic Manager tarafından desteklenen hizmet uç noktaları, Azure VM 'Leri, Web Apps ve bulut hizmetlerini içerir. Traffic Manager’ı harici, Azure dışı uç noktalar için de kullanabilirsiniz. Traffic Manager, istemci isteklerini bir [trafik yönlendirme yöntemine](../../traffic-manager/traffic-manager-routing-methods.md) ve uç noktaların sistem durumuna göre en uygun uç noktaya yönlendirmek Için etki alanı adı sistemi 'NI (DNS) kullanır.
 
@@ -295,18 +296,8 @@ NSG 'ler için aşağıdaki tanılama günlüğü kategorilerini etkinleştirebi
 -   Kural sayacı: Her NSG kuralının, trafiği reddetme veya izin verme için kaç kez uygulanacağını gösteren girişleri içerir.
 
 ### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
-Güvenlik Merkezi tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur ve Azure kaynaklarınızın güvenliğini ve denetimini artırabilir. Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir. Güvenlik duvarları, ağ güvenlik grupları, gelen trafik kurallarını yapılandırma ve daha fazlasını çevreleyen ağ önerileri merkezi.
 
-Kullanılabilir ağ önerileri şunlardır:
-
--   [Yeni nesil güvenlik duvarı ekleme](../../security-center/security-center-add-next-generation-firewall.md) Güvenlik korumalarını artırmak için bir Microsoft iş ortağından yeni nesil güvenlik duvarı (NGFW) eklemenizi önerir
-
--   [Trafiği yalnızca NGFW aracılığıyla yönlendir](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) , NGFW aracılığıyla sanal makinenize gelen trafiğe zorlayan ağ güvenlik grubu (NSG) kurallarını yapılandırmanızı önerir.
-
--   [Alt ağlarda veya sanal makinelerde ağ güvenlik gruplarını etkinleştir](../../security-center/security-center-enable-network-security-groups.md) Alt ağlarda veya VM 'lerde NSG 'Leri etkinleştirmenizi önerir.
-
--   [Internet 'e yönelik uç nokta ile erişimi kısıtlama](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) NSG 'ler için gelen trafik kurallarını yapılandırmanızı önerir.
-
+[Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) , ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden [öneriler](../../security-center/security-center-recommendations.md) oluşturur.
 
 ## <a name="compute"></a>İşlem
 
@@ -354,7 +345,7 @@ Sistemlerin, uygulamaların ve verilerin güvenliğini sağlamak, kimlik tabanl�
 Microsoft, ürün ve hizmetlerinde kimlik ve erişim yönetimi için birden çok güvenlik uygulaması ve teknolojisini kullanır.
 -   [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) , kullanıcıların şirket içinde ve bulutta erişim için birden çok yöntem kullanmasını gerektirir. Kolay bir kimlik doğrulama seçenekleriyle, kullanıcılara basit bir oturum açma işlemi ile konairken güçlü kimlik doğrulaması sağlar.
 
--   [Microsoft Authenticator](https://aka.ms/authenticator) , hem Microsoft Azure Active Directory hem de Microsoft hesaplarıyla birlikte çalışarak Kullanıcı dostu bir Multi-Factor Authentication deneyimi sağlar ve wearables ve parmak izi tabanlı onaylar için destek içerir.
+-   [Microsoft Authenticator](https://aka.ms/authenticator) , hem Microsoft Azure Active Directory hem de Microsoft hesaplarıyla birlikte çalışarak kullanıcı dostu Multi-Factor Authentication deneyimi sağlar ve wearables ve parmak izi tabanlı onaylar için destek içerir.
 
 -   [Parola ilkesi zorlaması](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) , hatalı kimlik doğrulama denemesinden sonra uzunluğu ve karmaşıklık gereksinimlerini, zorla düzenli döndürmeyi ve hesap kilitlemeyi düzenleyerek geleneksel parolaların güvenliğini artırır.
 
@@ -369,7 +360,7 @@ Kapsamlı bir kimlik ve erişim yönetimi bulut çözümü olan [Azure Active Di
 
 | Ücretsiz/ortak özellikler     | Temel Özellikler    |Premium P1 özellikleri |Premium P2 özellikleri | Azure Active Directory JOIN – yalnızca Windows 10 ile ilgili özellikler|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Dizin nesneleri](../../active-directory/active-directory-whatis.md), [Kullanıcı/Grup Yönetimi (ekleme/güncelleştirme/silme)/Kullanıcı tabanlı sağlama, cihaz kaydı](../../active-directory/active-directory-whatis.md), [Çoklu oturum açma (SSO)](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları için self servis parola değişikliği](../../active-directory/active-directory-whatis.md), [bağlanma (eşitleme motoru Şirket içi dizinleri Azure Active Directory)](../../active-directory/active-directory-whatis.md), [güvenlik/kullanım raporlarını](../../active-directory/active-directory-whatis.md) genişletir       |   [Grup tabanlı erişim yönetimi/sağlama](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları Için self servis parola sıfırlama](../../active-directory/active-directory-whatis.md), [Şirket markası (oturum açma sayfaları/erişim paneli özelleştirmesi)](../../active-directory/active-directory-whatis.md), [uygulama proxy 'si](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Self servis grup ve uygulama yönetimi/self servis uygulama eklemeleri/Dinamik grupları](../../active-directory/active-directory-whatis.md), şirket içi geri yazma, Multi-Factor Authentication (bulut ve şirket ıçı (MFA sunucusu) ile Self Servis [parola sıfırlama/değiştirme/kilit açma](../../active-directory/active-directory-whatis.md) [ )](../../active-directory/active-directory-whatis.md), [MıM Cal + MIM sunucusu](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Grup hesapları için otomatik parola geçişi](../../active-directory/active-directory-whatis.md)|    [Kimlik koruması](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Bir cihazı Azure AD, Masaüstü SSO, Azure AD için Microsoft Passport, yönetici BitLocker kurtarma](../../active-directory/active-directory-whatis.md), [MDM otomatik kayıt, self servis BitLocker kurtarma, Azure AD katılımı aracılığıyla Windows 10 cihazlarına](../../active-directory/active-directory-whatis.md) ekleyin|
+|   [Dizin nesneleri](../../active-directory/active-directory-whatis.md), [Kullanıcı/Grup Yönetimi (ekleme/güncelleştirme/silme)/Kullanıcı tabanlı sağlama, cihaz kaydı](../../active-directory/active-directory-whatis.md), [Çoklu oturum açma (SSO)](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları için self servis parola değişikliği](../../active-directory/active-directory-whatis.md), [bağlanma (eşitleme motoru Şirket içi dizinleri Azure Active Directory)](../../active-directory/active-directory-whatis.md), [güvenlik/kullanım raporlarını](../../active-directory/active-directory-whatis.md) genişletir       |   [Grup tabanlı erişim yönetimi/sağlama](../../active-directory/active-directory-whatis.md), [bulut kullanıcıları Için self servis parola sıfırlama](../../active-directory/active-directory-whatis.md), [Şirket markası (oturum açma sayfaları/erişim paneli özelleştirmesi)](../../active-directory/active-directory-whatis.md), [uygulama proxy 'si](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Self servis grup ve uygulama yönetimi/self servis uygulama eklemeleri/Dinamik grupları](../../active-directory/active-directory-whatis.md), şirket içi geri yazma, Multi-Factor Authentication (bulut ve şirket ıçı (MFA sunucusu) [ile birlikte self servis parola sıfırlama/değiştirme/kilit açma](../../active-directory/active-directory-whatis.md) [ )](../../active-directory/active-directory-whatis.md), [MıM Cal + MIM sunucusu](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Grup hesapları için otomatik parola geçişi](../../active-directory/active-directory-whatis.md)|    [Kimlik koruması](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Bir cihazı Azure AD, Masaüstü SSO, Azure AD için Microsoft Passport, yönetici BitLocker kurtarma](../../active-directory/active-directory-whatis.md), [MDM otomatik kayıt, self servis BitLocker kurtarma, Azure AD katılımı aracılığıyla Windows 10 cihazlarına](../../active-directory/active-directory-whatis.md) ekleyin|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) , kuruluşunuzdaki çalışanlar tarafından kullanılan bulut uygulamalarını tanımlamanızı sağlayan Azure Active Directory Premium bir özelliğidir.
@@ -387,7 +378,7 @@ Kapsamlı bir kimlik ve erişim yönetimi bulut çözümü olan [Azure Active Di
 - [Azure Active Directory uygulama ara sunucusu](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) , şirket içinde barındırılan Web UYGULAMALARı için SSO ve güvenli uzaktan erişim sağlar.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Microsoft Azure güvenliği ile çalışmaya başlama](./https://docs.microsoft.com/azure/security)
+- [Microsoft Azure güvenliği ile çalışmaya başlama](https://docs.microsoft.com/azure/security)
 
 Azure’daki hizmet ve verilerinizin güvenliğini sağlamanıza yardımcı olması için kullanabileceğiniz Azure hizmetleri ve özellikleri
 

@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019145"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905931"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service için bir SSL sertifikası satın alın ve yapılandırın
 
@@ -50,7 +50,7 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 
 | Ayar | Açıklama |
 |-|-|
-| Ad | App Service sertifikanız için kolay bir ad. |
+| Name | App Service sertifikanız için kolay bir ad. |
 | Çıplak Etki Alanı Ana Bilgisayar Adı | Kök etki alanını burada belirtin. Verilen sertifika *hem* kök etki alanının `www` hem de alt etki alanının güvenliğini sağlar. Verilen sertifikada, ortak ad alanı kök etki alanını içerir ve konu alternatif adı alanı `www` etki alanını içerir. Yalnızca herhangi bir alt etki alanının güvenliğini sağlamak için burada alt etki alanının tam etki alanı adını belirtin (örneğin `mysubdomain.contoso.com`,).|
 | Subscription | Web uygulamasının barındırıldığı veri merkezi. |
 | Resource group | Sertifikayı içeren kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
@@ -71,7 +71,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 | Ayar | Açıklama |
 |-|-|
-| Ad | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
+| Name | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
 | Resource group | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Location | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -139,7 +139,7 @@ Yeniden anahtarlama işlemi tamamlandıktan sonra **Eşitle**' ye tıklayın. E�
 
 ## <a name="renew-certificate"></a>Sertifikayı yenile
 
-İstediğiniz zaman sertifikanızın otomatik yenilenmesini açmak için [App Service sertifikalar](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) sayfasında sertifikayı seçin ve ardından sol gezinti bölmesinde **Ayarları otomatik Yenile** ' ye tıklayın.
+İstediğiniz zaman sertifikanızın otomatik yenilenmesini açmak için [App Service sertifikalar](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) sayfasında sertifikayı seçin ve ardından sol gezinti bölmesinde **Ayarları otomatik Yenile** ' ye tıklayın. App Service sertifikaların varsayılan olarak 1 yıl geçerlilik süresi vardır.
 
 **Açık** ' i seçin ve **Kaydet**' e tıklayın. Otomatik yenileme açıksa sertifikalar, süresi dolmadan 60 gün önce otomatik olarak yenilenbaşlayabilir.
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516231"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972502"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
@@ -31,11 +31,13 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Tek önkoşul, önceki öğreticiyi, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmak içindir.
+Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
+
+Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek bir Jupyter Not defteri içinde kodu çalıştırırsınız. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
 
-Sınıfını içeri aktarın ve bu işlevi `config.json` `from_config().` kullanarak abonelik bilgilerinizi varsayılan olarak geçerli dizindeki JSON dosyasına bakar, ancak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `Workspace` kullanılarak `from_config(path="your/file/path")`. Bu Not defterini çalışma alanınızdaki bir bulut Not defteri sunucusunda çalıştırıyorsanız, dosya otomatik olarak kök dizinde olur.
+Sınıfını içeri aktarın ve bu işlevi `config.json` `from_config().` kullanarak abonelik bilgilerinizi varsayılan olarak geçerli dizindeki JSON dosyasına bakar, ancak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `Workspace` kullanılarak `from_config(path="your/file/path")`. Bir bulut Not defteri sunucusunda, dosya otomatik olarak kök dizinde bulunur.
 
 Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir.
 

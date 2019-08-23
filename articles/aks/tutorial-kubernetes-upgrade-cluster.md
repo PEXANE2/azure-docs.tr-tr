@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0986da64fda659b949d5d1e6cfae03df2daded19
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 9fe02c9b563259abb51a1a768c7facdf1bf601f7
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019149"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898831"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Service (AKS) ile Kubernetes 'i yükseltme
 
@@ -40,12 +40,12 @@ Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak han
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.13.9*' dir ve kullanılabilir sürümler *yükseltmeler* sütununda gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.13.10*' dir ve kullanılabilir sürümler *yükseltmeler* sütununda gösterilir.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.9           1.13.9             1.14.5
+default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
 ```
 
 ## <a name="upgrade-a-cluster"></a>Kümeyi yükseltme
@@ -58,16 +58,16 @@ Uygulama çalıştırma kesintisini en aza indirmek için AKS düğümleri dikka
 1. Yeni düğüm hazır olduğunda ve kümeye katıldığında, Kubernetes Zamanlayıcı üzerinde pod çalıştırmaya başlar.
 1. Eski düğüm silinir ve kümedeki bir sonraki düğüm Cordon ve boşalt işlemini başlatır.
 
-AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın. Aşağıdaki örnek, kümeyi Kubernetes sürüm *1.14.5*'ye yükseltir.
+AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın. Aşağıdaki örnek, kümeyi Kubernetes sürüm *1.14.6*'ye yükseltir.
 
 > [!NOTE]
-> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.12. x* ' den *1.13. x*' e yükseltebilirsiniz, ancak *1.12.8* 'den *1.14. x* ' e doğrudan yükseltemez. *1.12. x* ' den *1.14. x*' e yükseltmek için, ilk olarak *1.12. x* ' ten *1.13. x*' e yükseltin, sonra *1.13. x* ' den *1.14.* x ' e yükseltme gerçekleştirin
+> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.12. x* ' den *1.13. x*' e yükseltebilirsiniz, ancak *1.12. x* ' ten doğrudan *1.14. x* ' e yükseltemezsiniz. *1.12. x* ' den *1.14. x*' e yükseltmek için, ilk olarak *1.12. x* ' ten *1.13. x*' e yükseltin, sonra *1.13. x* ' den *1.14.* x ' e yükseltme gerçekleştirin
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.5
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
 ```
 
-Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık Reports *1.14.5*raporları gösterilmektedir:
+Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık Reports *1.14.6*raporları gösterilmektedir:
 
 ```json
 {
@@ -85,7 +85,7 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.5",
+  "kubernetesVersion": "1.14.6",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,12 +100,12 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.14.5*gösterilmektedir:
+Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.14.6*gösterilmektedir:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Küme silme

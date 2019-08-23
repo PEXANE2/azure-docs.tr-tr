@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fb91d6a9cdc56c88b424b7e0382f283c8b55dac9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 6dfd3bd86e55d19bf1c15486a502a4cbab3c96a8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234321"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905313"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ağ kaynaklarınızı koruyun
 Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
@@ -30,7 +30,7 @@ Bu makalede bir ağ güvenliği perspektifinden Azure kaynaklarınıza uygulanan
 > Ağ **iletişimi** sayfası, bir ağ perspektifinden Azure Kaynak sistem durumu hakkında ayrıntılı bilgi almanızı sağlar. Ağ eşlemesi ve Uyarlamalı ağ denetimleri yalnızca Azure Güvenlik Merkezi Standart katmanı için kullanılabilir. [Ücretsiz katmanı kullanıyorsanız, **eski ağı görüntülemek** ve ağ kaynağı önerilerini almak için düğmeye tıklayabilirsiniz](#legacy-networking).
 >
 
-Ağ  kaynakları hakkında daha fazla bilgi edinmek için, ağ kaynaklarınızın sistem durumu hakkında daha fazla bilgi almak üzere ayrıntılı olarak kullanabileceğiniz bölümlere genel bir bakış sağlar:
+Ağ kaynakları hakkında daha fazla bilgi edinmek için, ağ kaynaklarınızın sistem durumu hakkında daha fazla bilgi almak üzere ayrıntılı olarak kullanabileceğiniz bölümlere genel bir bakış sağlar:
 
 - Ağ eşlemesi (yalnızca Azure Güvenlik Merkezi Standart katmanı)
 - Uyarlamalı Ağ Sağlamlaştırma
@@ -39,7 +39,7 @@ Ağ  kaynakları hakkında daha fazla bilgi edinmek için, ağ kaynaklarınızı
  
 ![Ağ bölmesi](./media/security-center-network-recommendations/networking-pane.png)
 
-## <a name="network-map"></a>Ağ eşlemesi
+## <a name="network-map"></a>Ağ haritası
 Etkileşimli ağ eşlemesi, ağ kaynaklarınızı sağlamlaştırma konusunda öneriler ve Öngörüler sağlayan güvenlik Yerpaylaşımları içeren grafik bir görünüm sağlar. Eşlemeyi kullanarak Azure iş yüklerinizin ağ topolojisini, sanal makineleriniz ile alt ağlarınızla bağlantıları ve haritalardan belirli kaynaklara detaya gitme özelliğini ve bu kaynaklara yönelik önerileri görebilirsiniz.
 
 Ağ haritasını açmak için:
@@ -134,7 +134,7 @@ Bu topoloji görünümünde, ilk düzey sanal ağları görüntüler. İkinci ek
 
 ## <a name="network-recommendations"></a>Ağ önerileri
 
-|Öneri adı|Açıklama|Severity|Güvenlik puanı|Kaynak türü|
+|Öneri adı|Açıklama|severity|Güvenlik puanı|Kaynak türü|
 |----|----|----|----|----|----|
 |Alt ağ düzeyindeki ağ güvenlik grupları etkinleştirilmelidir|Alt ağlarınızda dağıtılan kaynakların ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.|Yüksek/orta|30|Subnet|
 |Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir|Sanal makinelerinizin ağ erişimini denetlemek için ağ güvenlik grupları 'nı etkinleştirin.|Yüksek/orta|30|Sanal makine|
@@ -152,7 +152,7 @@ DDoS koruma standardı etkinleştirilmelidir|DDoS koruma hizmeti standardını e
 ## <a name="see-also"></a>Ayrıca bkz.
 Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-* [Azure Güvenlik Merkezi'nde sanal makinelerinizi koruma](security-center-virtual-machine-recommendations.md)
+* [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 * [Azure Güvenlik Merkezi'nde uygulamalarınızı koruma](security-center-application-recommendations.md)
 * [Azure Güvenlik Merkezi'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
 

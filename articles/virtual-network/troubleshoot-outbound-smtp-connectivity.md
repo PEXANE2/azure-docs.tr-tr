@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935381"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972489"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure 'da giden SMTP bağlantısı sorunlarını giderme
 
@@ -38,7 +38,7 @@ Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik teklifleri için 
 
 15 Kasım 2017 ' den sonra oluşturulan Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelikler için, bu abonelikler içindeki VM 'lerden doğrudan gönderilen e-postaları engelleyen teknik kısıtlamalar olacaktır. Azure VM 'lerinden doğrudan dış e-posta sağlayıcılarına (kimliği doğrulanmış SMTP geçişi kullanmadan) e-posta gönderebilme olanağı istiyorsanız, kısıtlamayı kaldırmak için bir istek yapabilirsiniz. İstekler, Microsoft 'un kararına göre incelenip onaylanacaktır ve yalnızca ek sahtekarlık denetimleri yapıldıktan sonra verilecek. Bir istek yapmak için aşağıdaki sorun türünü kullanarak bir destek talebi açın: **Teknik** **sanal ağ** **bağlantısı** **e-posta gönderemez (SMTP/bağlantı noktası 25).**  >  >  >  Dağıtımınızın neden kimliği doğrulanmış bir geçiş kullanmak yerine doğrudan posta sağlayıcılarına e-posta göndermek zorunda olduğuna ilişkin ayrıntıları eklediğinizden emin olun.
 
-Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik dışlandıktan sonra ve VM 'Ler Azure portal ' & ' başlatıldı ' olarak durdurulduktan sonra, Bu abonelikteki tüm VM 'Ler ileri alınır. Muafiyet yalnızca istenen abonelik için geçerlidir.
+Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik dışlandıktan sonra ve VM 'Ler Azure portal ' & ' başlatıldı ' olarak durdurulduktan sonra, Bu abonelikteki tüm VM 'Ler ileri alınır. Muafiyet yalnızca istenen aboneliğe uygulanabilir ve yalnızca doğrudan internet 'e yönlendirilen sanal makine trafiği için geçerlidir. Azure [güvenlik duvarı](https://azure.microsoft.com/services/azure-firewall/) gibi Azure PaaS hizmetleri aracılığıyla yönlendirme bağlantı noktası 25 trafiği desteklenmez.
 
 > [!NOTE]
 > Microsoft, hizmet koşullarının ihlal edildiğini tespit ettiyse bu muafiyeti iptal etme hakkını saklı tutar.

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882007"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900202"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>MLflow ve Azure Machine Learning hizmeti (Önizleme) ile ölçümleri izleyin ve modeller dağıtın
 
@@ -27,6 +27,8 @@ Bu makalede, Azure Machine Learning hizmetiyle [Mlflow izleme](https://mlflow.or
 + MLflow denemeleri 'nizi Azure Machine Learning Web hizmeti olarak dağıtın. Web hizmeti olarak dağıtarak, Azure Machine Learning izleme ve veri DRI algılama işlevlerini üretim modellerinize uygulayabilirsiniz. 
 
 [Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izlemesi, öğreticinizi günlüğe kaydeden ve izleyen bir MLflow bileşeni olan, deneme ortamınızın, bir sanal makinede (yerel olarak, bir sanal makinede, uzak bilgi işlem kümesinde), Azure Databricks de olsa da,
+
+Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, bir sanal makine üzerinde yerel olarak, bilgisayarınızda veya Azure Databricks kümesinde yerel olarak veya bir küme üzerinde bulunan uzak bir işlem hedefinde olup olmadığını ve çalışma ölçümlerini ve mağaza modeli yapılarını izleyip izlemediğini gösteren bir deneme yapabilirsiniz. Azure Machine Learning çalışma alanınızda.
 
 ![Azure Machine Learning diyagramı ile mlflow](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -139,9 +141,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks çalıştırmalarını izleyin
 
-Azure Machine Learning hizmeti ile MLflow Izleme, Databrick çalıştırmalarınızın günlüğe kaydedilen ölçümlerini ve yapıtları Azure Machine Learning çalışma alanınıza depolamanıza olanak tanır.
+Azure Machine Learning hizmeti ile MLflow Izleme, Databricks 'ınızdan günlüğe kaydedilen ölçümleri ve yapıtları Azure Machine Learning çalışma alanınızda depolamanıza olanak tanır.
 
-Mlflow denemeleri Azure Databricks çalıştırmak için öncelikle bir [Azure Databricks çalışma alanı ve küme](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)oluşturmanız gerekir. Kümenizde, kümenizin gerekli işlevlere ve sınıflara erişebildiğinden emin olmak için, PyPI 'den *azureml-mlflow* kitaplığını yüklediğinizden emin olun.
+Mlflow denemeleri Azure Databricks çalıştırmak için öncelikle bir [Azure Databricks çalışma alanı ve küme](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) oluşturmanız gerekir
+
+Kümenizde, kümenizin gerekli işlevlere ve sınıflara erişebildiğinden emin olmak için, PyPI 'den *azureml-mlflow* kitaplığını yüklediğinizden emin olun.
 
 ### <a name="install-libraries"></a>Kitaplıkları yükler
 
@@ -210,9 +214,12 @@ ws.get_details()
 
 MLflow denemeleri 'in Azure Machine Learning Web hizmeti olarak dağıtımı, Azure Machine Learning model yönetimi ve veri drime özelliklerinden yararlanmanıza ve bunları üretim modellerinize uygulamanıza olanak tanır.
 
+Aşağıdaki diyagramda, MLflow dağıtım API 'SI ile, var olan MLflow modellerinizi bir Azure Machine Learning Web hizmeti olarak dağıtabileceğiniz, çerçeveler--PyTorch, TensorFlow, scikit-öğren, ONNX, vb. ve içindeki üretim modellerinizi yönetme çalışma alanınız.
+
 ![Azure Machine Learning diyagramı ile mlflow](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>Modelinizi günlüğe kaydedin
+
 Dağıtmadan önce, modelinize ve dağıtım için yol konumuna başvurabilmeniz için modelinizin kaydedildiğinden emin olun. Eğitim betiğinizdeki aşağıdaki [mlflow. sköğren. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) yöntemine benzer bir kod olmalıdır. Bu, modelinizi belirtilen çıktılar dizinine kaydeder. 
 
 ```python
@@ -227,7 +234,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>Önceki çalıştırınızdan model al
 
-İstenen çalıştırmayı almak için, çalışma KIMLIĞI ve modelin kaydedildiği çalışma geçmişinde yol gerekir. 
+İstenen çalıştırmayı almak için, çalışma KIMLIĞI ve modelin kaydedildiği çalışma geçmişi içindeki yol gereklidir. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -244,7 +251,7 @@ model_save_path = 'model'
 
 İşlevi `mlflow.azureml.build_image()` , kaydedilmiş modelden çerçeve duyarlı bir şekilde bir Docker görüntüsü oluşturur. Otomatik olarak çerçeveye özgü ınsınlama sarmalayıcı kodunu oluşturur ve paket bağımlılıklarını sizin için belirtir. Model yolunu, çalışma alanınızı, çalıştırma KIMLIĞINI ve diğer parametreleri belirtin.
 
-Aşağıdaki kodda, bir Scikit-öğren denemesi için model_uri yolu olarak *:/< Run. ıd >/Model çalıştırmaları* kullanarak bir Docker görüntüsü oluşturacağız.
+Aşağıdaki kod, bir Scikit-öğren denemesi için model_uri yolu olarak *:/< Run. ıd >/Model çalıştırmaları* kullanarak bir Docker görüntüsü oluşturur.
 
 ```python
 import mlflow.azureml
@@ -290,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>AKS’ye dağıtma
 
-AKS 'e dağıtmak için bir AKS kümesi oluşturmanız ve dağıtmak istediğiniz Docker görüntüsünü almanız gerekir. Bu örnekte, ACI dağıtımımız tarafından daha önce oluşturulan görüntünün üzerine getiriyoruz.
+AKS 'e dağıtmak için bir AKS kümesi oluşturmanız ve dağıtmak istediğiniz Docker görüntüsünü almanız gerekir. Bu örnekte, ACI dağıtımından önceden oluşturulmuş görüntüyü getirin.
 
-Önceki ACI dağıtımından görüntüyü almak için [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) sınıfını kullanıyoruz. 
+Önceki ACI dağıtımından görüntüyü almak için [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) sınıfını kullanın. 
 
 ```python
 from azureml.core.image import Image

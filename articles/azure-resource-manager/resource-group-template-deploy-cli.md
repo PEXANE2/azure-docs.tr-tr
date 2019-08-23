@@ -4,14 +4,14 @@ description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CL
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/12/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853840"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971023"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma
 
@@ -133,7 +133,7 @@ Belirtilen dağıtım başarılı olmalıdır.
 
 ## <a name="parameters"></a>Parametreler
 
-Parametre değerlerini geçirmek için satır içi parametreleri ya da bir parametre dosyasını kullanabilirsiniz. Bu makaledeki Yukarıdaki örneklerde satır içi parametreler gösterilmektedir.
+Parametre değerlerini geçirmek için satır içi parametreleri ya da bir parametre dosyasını kullanabilirsiniz.
 
 ### <a name="inline-parameters"></a>Satır içi parametreler
 
@@ -172,23 +172,7 @@ ArrayContent. JSON biçimi:
 
 Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre değerlerini içeren bir JSON dosyası kullanmayı daha kolay bulabilirsiniz. Parametre dosyası yerel bir dosya olmalıdır. Dış parametre dosyaları Azure CLı ile desteklenmez.
 
-Parametre dosyası aşağıdaki biçimde olmalıdır:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-Parametreler bölümünün, şablonunuzda tanımlanan parametreyle (storageAccountType) eşleşen bir parametre adı içerdiğine dikkat edin. Parametre dosyası, parametre için bir değer içerir. Bu değer, dağıtım sırasında otomatik olarak şablona geçirilir. Birden fazla parametre dosyası oluşturabilir ve sonra senaryo için uygun parametre dosyasını geçirebilirsiniz. 
-
-Önceki örneği kopyalayın ve adlı `storage.parameters.json`bir dosya olarak kaydedin.
+Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](resource-manager-parameter-files.md).
 
 Yerel bir parametre dosyasını geçirmek için, depolama `@` . Parameters. JSON adlı yerel bir dosya belirtmek için öğesini kullanın.
 
@@ -198,18 +182,6 @@ az group deployment create \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
-```
-
-### <a name="parameter-precedence"></a>Parametre önceliği
-
-Aynı dağıtım işleminde satır içi parametreleri ve yerel bir parametre dosyasını kullanabilirsiniz. Örneğin, yerel parametre dosyasında bazı değerler belirtebilir ve dağıtım sırasında satır içi diğer değerleri ekleyebilirsiniz. Hem yerel parametre dosyasında hem de satır içi bir parametre için değerler sağlarsanız, satır içi değer önceliklidir.
-
-```azurecli
-az group deployment create \
-  --resource-group testgroup \
-  --template-file demotemplate.json \
-  --parameters @demotemplate.parameters.json \
-  --parameters exampleArray=@arrtest.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Şablon dağıtımını test etme

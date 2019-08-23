@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228936"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905216"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -81,7 +81,7 @@ Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da önyükleme, tam Azure desteği sağlar. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
 Azure için hazır değil |  VM, Azure 'da önyüklenmez. Örneğin, bir VM 'nin 4 TB 'den fazla diski varsa, Azure üzerinde barındırılamaz. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
-Hazır olma durumu bilinmiyor | Azure geçişi, genellikle veri kullanılamadığından Azure hazırlığını tanımlayamıyor.
+Hazırlık bilinmiyor | Azure geçişi, genellikle veri kullanılamadığından Azure hazırlığını tanımlayamıyor.
 
 
 #### <a name="azure-vm-properties"></a>Azure VM özellikleri
@@ -216,7 +216,7 @@ Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
 
 > [!NOTE]
-> Aracıların yüklenmesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümünü [destekleyen, System Center Configuration Manager](https://www.intigua.com/getting-started-intigua-for-azure-migration)veya bir iş ortağı aracı gibi bir dağıtım aracı kullanabilirsiniz.
+> Aracıların yüklenmesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümünü destekleyen, System Center Configuration Manager veya bir iş ortağı aracı gibi bir [](https://www.intigua.com/getting-started-intigua-for-azure-migration)dağıtım aracı kullanabilirsiniz.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>MMA aracısını bir Windows makinesine yükler
@@ -227,7 +227,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
-5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın.           **İleri**'ye tıklayın.
+5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**'ye tıklayın.
 
 Aracıyı komut satırından veya System Center Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) .
 
@@ -244,8 +244,7 @@ MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fa
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager tarafından izlenen bir makineye MMA aracısını yükler
 
-System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinelerde MMA aracısını yüklemeye gerek yoktur. Hizmet Eşlemesi, gerekli bağımlılık verilerini toplamak için Operations Manager MMA ile tümleşir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Bağımlılık aracısının yüklenmesi gerekir.
-
+System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için MMA aracısını yüklemek gerekmiyor. Hizmet Eşlemesi, gerekli bağımlılık verilerini toplamak için Operations Manager MMA ile tümleşir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Bağımlılık aracısının yüklenmesi gerekir.
 
 ### <a name="install-the-dependency-agent"></a>Bağımlılık aracısını yükleme
 
@@ -254,9 +253,11 @@ System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinel
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) ve [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) işletim sistemleri için bağımlılık Aracısı desteği hakkında daha fazla bilgi edinin.
-- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) .
+- Windows ve Linux işletim sistemleri için [bağımlılık Aracısı desteği](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) hakkında daha fazla bilgi edinin.
+- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) .
 
+>[!NOTE]
+> Sistem önkoşulları ve bağımlılık aracısını dağıtma yöntemlerine genel bir bakış sağlamak için başvurulan VM'ler için Azure İzleyici makale, Hizmet Eşlemesi çözümü için de geçerlidir.
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Bağımlılık eşleme ile bir grup oluşturma
 

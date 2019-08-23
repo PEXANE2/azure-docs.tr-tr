@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 595f8a174e615fb08a042b0e9c4cfe6da6ac1b7e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773417"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899625"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak ADFS 'yi SAML kimlik sağlayıcısı olarak ekleyin
 
@@ -27,6 +27,7 @@ Bu makalede, Azure Active Directory (Azure AD) B2C 'de [özel ilkeler](active-di
 
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın.
 - Özel anahtarı olan bir Certificate. pfx dosyasına erişiminiz olduğundan emin olun. Kendi imzalı sertifikanızı oluşturup Azure AD B2C yükleyebilirsiniz. Azure AD B2C, SAML kimlik sağlayıcınıza gönderilen SAML isteğini imzalamak için bu sertifikayı kullanır.
+- Azure 'un. pfx dosya parolasını kabul edebilmesi için parola, AES256-SHA256 aksine Windows sertifika deposu dışarı aktarma yardımcı programı 'ndaki TripleDES-SHA1 seçeneğiyle şifrelenmelidir.
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
@@ -40,7 +41,7 @@ Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 6. **Seçenekler**için öğesini seçin `Upload`.
 7. İlke anahtarı için bir **ad** girin. Örneğin: `SamlCert`. Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
 8. Özel anahtarla Certificate. pfx dosyanıza gidin ve bu dosyayı seçin.
-9.           **Oluştur**'a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -195,7 +196,7 @@ Azure AD B2C ile iletişim, kiracınızda oluşturduğunuz bir uygulama aracıl�
 4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 5. Uygulama için bir ad girin, örneğin *testapp1*.
 6. **Web uygulaması/Web API 'si**için, `Yes`öğesini seçin ve ardından `https://jwt.ms` **yanıt URL 'si**için yazın.
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 ### <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 

@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 8b701a48a4508957b59c5100e6c2cfa3c1019f9d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ba30e66151024c52e5433a82204812b102b46bf3
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968639"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907060"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Hızlı Başlangıç: İki dilli sözlük ile sözcük arama
 
 Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca Translator Metin Çevirisi API'si kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

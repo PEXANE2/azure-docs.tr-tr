@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5d2247aab872a71f250bd0b4b52714e402d2102d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333870"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905207"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Kimlik Koruması risk olayları başvurusu
 
@@ -61,7 +61,7 @@ Hizmet koyu Web 'ten Kullanıcı kimlik bilgilerini edindiğinde, siteleri veya 
 
 Bu risk olayı türü, bir bot sunucusuyla etkin bir şekilde iletişim kuran bilinen kötü amaçlı yazılımlara karşı etkilenen IP adreslerinden oturum açma işlemlerini gösterir. Bu, Kullanıcı cihazının IP adreslerinin, bot sunucusu etkinken bir bot sunucusuyla iletişim içinde olan IP adresleriyle ilişkili olduğunu belirler.
 
-## <a name="unfamiliar-sign-in-properties"></a>Bilinmeyen oturum açma özellikleri
+## <a name="unfamiliar-sign-in-properties"></a>Bilmediğiniz oturum açma özellikleri
 
 **Algılama türü:** Gerçek zamanlı  
 **Eski ad:** Alışılmadık konumlardan oturum açma işlemleri
@@ -76,3 +76,8 @@ Bu algılamayı Ayrıca temel kimlik doğrulaması (veya eski protokoller) için
 **Eski ad:** Bu algılama, eski Azure AD Kimlik Koruması raporlarında (risk için işaretlenen kullanıcılar, risk olayları) ' sızdırılan kimlik bilgilerine sahip kullanıcılar ' olarak gösterilir
 
 Bu risk olayı türü, belirli bir kullanıcı için olağandışı olan veya Microsoft 'un dahili ve dış tehdit bilgileri kaynaklarını temel alan bilinen saldırı desenleriyle tutarlı olan kullanıcı etkinliklerini gösterir.
+
+## <a name="admin-confirmed-user-compromised"></a>Yönetici, kullanıcının güvenliğinin tehlikeye girdiğini onayladı
+
+**Algılama türü:** Çevrimdışı <br>
+Bu algılama, bir yöneticinin riskli kullanıcılar Kullanıcı arabiriminde veya riskyUsers API 'sini kullanarak ' Kullanıcı güvenliğinin aşılmasına karşı ' yı seçtiğinizi gösterir. Bu kullanıcının hangi yönetici tarafından tehlikede olduğunu görmek için kullanıcının risk geçmişini (UI veya API aracılığıyla) denetleyin.

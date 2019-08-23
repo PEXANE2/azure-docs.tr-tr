@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775186"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900643"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Dosyaları Data Box Edge C# taşımak için IoT Edge modülünü geliştirme
 
@@ -63,7 +63,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin.           **Oluştur**'a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
@@ -127,8 +127,10 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 2. **Filecopymodule ad alanının**en üstünde, daha sonra kullanılan türler için aşağıdaki using deyimlerini ekleyin. **Microsoft. Azure. Devices. Client. Transport. MQTT** , IoT Edge hub 'ına ileti göndermek için bir protokoldür.
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. **Inputfolderpath** ve **Outputfolderpath** değişkenini program sınıfına ekleyin.
 
@@ -140,7 +142,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. İleti gövdesini tanımlamak için **Fileevent** sınıfını ekleyin.
+4. Önceki adımdan hemen sonra, ileti gövdesini tanımlamak için **Fileevent** sınıfını ekleyin.
 
     ```
     /// <summary>
@@ -156,7 +158,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     }
     ```
 
-5. **Init** yöntemindeki kod, bir **ModuleClient** nesnesi oluşturur ve yapılandırır. Bu nesne, modülün ileti göndermek ve almak için MQTT protokolünü kullanarak yerel Azure IoT Edge çalışma zamanına bağlanmasını sağlar. Init yönteminde kullanılan bağlantı dizesi, IoT Edge çalışma zamanı tarafından modüle sağlanır. Kod, **input1** uç noktası aracılığıyla bir IoT Edge hub 'ından ileti almak Için bir dosya kopyası geri çağırması kaydeder.
+5. **Init yönteminde**, kod bir **moduleclient** nesnesi oluşturur ve yapılandırır. Bu nesne, modülün ileti göndermek ve almak için MQTT protokolünü kullanarak yerel Azure IoT Edge çalışma zamanına bağlanmasını sağlar. Init yönteminde kullanılan bağlantı dizesi, IoT Edge çalışma zamanı tarafından modüle sağlanır. Kod, **input1** uç noktası aracılığıyla bir IoT Edge hub 'ından ileti almak Için bir dosya kopyası geri çağırması kaydeder. **Init metodunu** aşağıdaki kodla değiştirin.
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     }
     ```
 
-6. **FileCopy**için kodu ekleyin.
+6. **Kanal iletisi yöntemi** için kodu kaldırın ve onun yerine, **FileCopy**için kodu ekleyin.
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     ```
 
 7. Bu dosyayı kaydedin.
+8. Ayrıca, bu proje için [varolan bir kod örneğini indirebilirsiniz](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Daha sonra, kaydettiğiniz dosyayı bu örnekteki **program.cs** dosyasına göre doğrulayabilirsiniz.
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge çözümünüzü derleyin
 
@@ -246,7 +249,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Kapsayıcı Kayıt defterinizden kopyaladığınız oturum açma sunucusunu ve Kullanıcı adını kullanın. 
+    Kapsayıcı Kayıt defterinizden kopyaladığınız oturum açma sunucusunu ve Kullanıcı adını kullanın.
 
     ![IoT Edge çözümü oluşturun ve gönderin](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 

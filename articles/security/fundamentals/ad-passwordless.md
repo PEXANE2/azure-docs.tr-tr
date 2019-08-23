@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934828"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899962"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory ile parolalar olmadan bir dünya
 
@@ -123,7 +123,7 @@ Microsoft Authenticator uygulaması, kullanıcıların kimliklerini doğrulamala
 
 Azure AD 'de passwordless oturum açmak için Microsoft Authenticator uygulamasını kullanmaya yönelik önkoşullar şunlardır:
 
-* Son kullanıcılar Azure Multi-Factor Authentication için etkinleştirildi
+* Son kullanıcılar Azure Multi-Factor Authentication etkinleştirildi
 
 * Uygulamanın dağıtımını kolaylaştırmak için Microsoft Intune veya bir üçüncü taraf mobil cihaz yönetimi (MDM) çözümünü kullanarak cihazlarını kaydetmeleri önerilir.
 
@@ -131,7 +131,7 @@ Bu gereksinimlerin karşılandığı varsayıldığında Yöneticiler, [Windows 
 
 Parolasız oturum açma 'nın yönetici tarafından etkinleştirildiği varsayıldığında, son kullanıcıların aşağıdaki gereksinimleri karşılaması gerekir:
 
-* Azure Multi-Factor Authentication 'a kaydolmuş
+* Azure Multi-Factor Authentication kayıtlı
 
 * İOS 8,0 veya üzerini çalıştıran cihazlarda yüklü Microsoft Authenticator en son sürümü veya Android 6,0 veya üzeri
 
@@ -184,7 +184,7 @@ Microsoft Authenticator kullanan passwordless kimlik doğrulaması, Iş için Wi
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Kullanıcı, Microsoft Authenticator kimlik bilgileriyle parolasız oturum açmayı yönetir
 
-[Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)Ile kullanıcılar Azure Multi-Factor Authentication ve self servis parola sıfırlamanın avantajlarından yararlanabilir ve bu avantajları alabilir. Kullanıcılar bu ayarları, [Profilim sayfamda](https://aka.ms/mysecurityinfo)gezinerek kaydeder ve yönetir. SSPR 'yi etkinleştirmenin yanı sıra, Birleşik kayıt birden çok kimlik doğrulama yöntemini ve eylemini destekler.
+[Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)ile, kullanıcılar hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlamasının avantajlarını kaydedebilir ve bunların avantajlarını alabilir. Kullanıcılar bu ayarları, [Profilim sayfamda](https://aka.ms/mysecurityinfo)gezinerek kaydeder ve yönetir. SSPR 'yi etkinleştirmenin yanı sıra, Birleşik kayıt birden çok kimlik doğrulama yöntemini ve eylemini destekler.
 
 ## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
 
@@ -226,7 +226,7 @@ Ayrıca, her bir kuruluşun bir güvenlik anahtarının kaybedilmesi veya çalı
 
 #### <a name="user-sets-up-fido2-security-key"></a>Kullanıcı FIDO2 güvenlik anahtarı ayarlıyor
 
-Yöneticiler [anahtarları el ile](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) sağlayabildiği ve bunları son kullanıcılara dağıtabilecek sırada, Windows 10 kılıt ekranında FIDO2 kimlik bilgisi sağlayıcısının sağlanması ve etkinleştirilmesi [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)üzerinden desteklenecektir. Ayrıca, yöneticilerin, donanım belirteci cihazlarını passwordless kimlik doğrulama yöntemi olarak etkinleştirmek için [Azure Portal](https://portal.azure.com/) kullanmaları gerekir.
+Yöneticiler [anahtarları el ile](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) sağlayabildiği ve bunları son kullanıcılara dağıtabilecek sırada, Windows 10 kılıt ekranında FIDO2 kimlik bilgisi sağlayıcısının sağlanması ve etkinleştirilmesi [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods)üzerinden desteklenecektir. Ayrıca, yöneticilerin, donanım belirteci cihazlarını passwordless kimlik doğrulama yöntemi olarak etkinleştirmek için [Azure Portal](https://portal.azure.com/) kullanmaları gerekir.
 
 FIDO2 güvenlik anahtarlarının dağıtımı, kullanıcıların anahtarlarını [Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)kullanarak kaydetmelerini de gerektirir. Birleşik kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Azure Multi-Factor Authentication hem de çoklu oturum açma parolası sıfırlamasının (SSPR) avantajlarından yararlanır.
 
@@ -343,4 +343,4 @@ Yaygın olarak erişilebilen cihazlarda Biyometri ve ortak anahtar şifrelemesi 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Passwordne olduğuna](../../active-directory/authentication/concept-authentication-passwordless.md) ilişkin genel bakış nedir?
-* [Azure AD 'de passwordless 'yi etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Azure AD 'de passwordless 'yi etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

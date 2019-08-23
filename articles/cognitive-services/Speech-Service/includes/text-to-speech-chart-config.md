@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/22/2019
 ms.author: dapine
-ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c87132c3ae41dec82e3493f9a0ee2397455ff881
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717230"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971336"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Metinden konuşmaya (alt grafik: grafikler/textToSpeech)
 
-"Şemsiye" grafiğini geçersiz kılmak için, öneki `textToSpeech.` daha özel hale getirmek için herhangi bir parametreye ekleyin. Örneğin, buna karşılık gelen parametreyi `textToSpeech.numberOfConcurrentRequest` geçersiz kılar. `numberOfConcurrentRequest`
+"Şemsiye" grafiğini geçersiz kılmak için, öneki `textToSpeech.` daha özel hale getirmek için herhangi bir parametreye ekleyin. Örneğin, karşılık gelen parametreyi `textToSpeech.numberOfConcurrentRequest` `numberOfConcurrentRequest`geçersiz kılacak şekilde geçersiz kılar.
 
 |Parametre|Açıklama|Varsayılan|
 | -- | -- | -- |
@@ -37,5 +37,6 @@ ms.locfileid: "67717230"
 | `image.args.apikey`istenir | Fatura bilgileri izlemek için kullanılır. ||
 | `service.type` | **Metin okuma** hizmeti 'Nin Kubernetes hizmet türü. Daha fazla ayrıntı için bkz. [Kubernetes hizmet türleri yönergeleri](https://kubernetes.io/docs/concepts/services-networking/service/) ve bulut sağlayıcısı desteğini doğrulayın. | `LoadBalancer` |
 | `service.port`|  **Metin okuma** hizmetinin bağlantı noktası. | `80` |
+| `service.annotations` | Hizmet meta verileri için **metinden konuşmaya** ek açıklamaları. Ek açıklamalar anahtar değer çiftleridir. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | [Yatay Pod otomatik Scaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) 'ın etkinleştirilip etkinleştirilmeyeceğini belirtir. İse `true`,Kuberneteskümesindedağıtılır. `text-to-speech-autoscaler` | `true` |
 | `service.podDisruption.enabled` | [Pod kesintisi bütçesinin](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) etkin olup olmadığı. İse `true`,Kuberneteskümesindedağıtılır. `text-to-speech-poddisruptionbudget` | `true` |

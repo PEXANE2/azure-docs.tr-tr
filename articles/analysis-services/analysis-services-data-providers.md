@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 973b097224b639a70d0904f1f82f2d95e3786d1f
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987493"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969582"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services bağlantı için istemci kitaplıkları
 
@@ -66,7 +66,7 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
 
  ADOMD.NET, Analysis Services verileri sorgulamak için kullanılan bir yönetilen veri istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. 
   
- Bir veritabanına bağlanırken, üç kitaplıkların hepsi için bağlantı dizesi özellikleri benzerdir. ADOMD.NET için tanımladığınız neredeyse tüm bağlantı dizeleri [Microsoft. AnalysisServices. AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) Ile de amo ve ANALYSIS SERVICES OLE DB sağlayıcısı (msolap) için de kullanılır. Daha fazla bilgi için bkz. [bağlantı dizesi &#40;özellikleri&#41;Analysis Services](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess).  
+ Bir veritabanına bağlanırken, üç kitaplıkların hepsi için bağlantı dizesi özellikleri benzerdir. ADOMD.NET için tanımladığınız neredeyse tüm bağlantı dizeleri [Microsoft. AnalysisServices. AdomdClient. AdomdConnection. ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) Ile de amo ve ANALYSIS SERVICES OLE DB sağlayıcısı (msolap) için de kullanılır. Daha fazla bilgi için bkz. [bağlantı dizesi &#40;özellikleri&#41;Analysis Services](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a>İstemci kitaplığı sürümünü belirleme   

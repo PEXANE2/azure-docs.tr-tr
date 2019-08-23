@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019688"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896992"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
 
@@ -116,8 +116,9 @@ Azure SQL veritabanı, yönetilen örnek veya SQL veri ambarı 'nda kapsanan bir
 
 Azure Active Directory kimlik doğrulaması, Azure AD kimliklerini kullanarak bir veritabanına bağlanmak için aşağıdaki yöntemleri destekler:
 
-- Tümleşik Windows kimlik doğrulaması kullanma
-- Azure AD asıl adı ve parolasını kullanma
+- Azure Active Directory parolası
+- Azure Active Directory tümleşik
+- MFA ile evrensel Azure Active Directory
 - Uygulama belirteci kimlik doğrulamasını kullanma
 
 Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum açmalar) için desteklenir (**genel önizleme**):
@@ -125,7 +126,6 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 - Azure Active Directory parolası
 - Azure Active Directory tümleşik
 - MFA ile evrensel Azure Active Directory
-- Azure Active Directory etkileşimli
 
 
 ### <a name="additional-considerations"></a>Diğer konular

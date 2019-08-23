@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84738d9de880e09177ebb5c060fbd7bbd4613006
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036819"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900091"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Yeni bir Dynamics 365 for Operations teklifi oluşturma
 
@@ -82,27 +82,11 @@ Aşağıdaki seçeneklerden seçim yapın:
 
 ## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
 
-Müşteri Ilişkileri yönetimi (CRM) sisteminizi birleştirerek müşterilere doğrudan bağlanın. Bunu yaptığınızda, bir Müşteri vade farkını ifade ettiğinizde veya ürününüzü dağıttığında müşteri iletişim bilgilerini alacaksınız.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-CRM sisteminizi bağlamak için **Bağlan**' ı seçin.
+Daha fazla bilgi için bkz. [lider yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md) .
 
-### <a name="choose-a-lead-destination"></a>Bir müşteri adayı hedefi seçin
-
-**Bağlan**' ı seçtikten sonra, CRM sisteminizi seçebileceğiniz ve bağlantı ayrıntılarını sağlayabileceğiniz bir açılan menü görürsünüz.
-
-İş Ortağı Merkezi, müşteri adayı yönetimi için aşağıdaki CRM sistemlerini destekler. Kurulum yönergeleri için bağlantıyı seçin.
-
-- [Azure tablosu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – depolama hesabı Bağlantı dizenizi belirtin. 
-- [Dynamics 365 for Customer Engagement (eski adıyla DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) ) Dynamics 365 örnek URL 'sini ve kimlik doğrulama kipini (Office 365 veya Azure Active Directory) sağlar.
-- [Https uç noktası](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – HTTPS uç nokta URL 'nizi girin. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) : sunucu kimliğinizi, daha fazla hesap kimliğini ve form kimliğini belirtin.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -kuruluşunuzun kimliğini belirtin.
-
-#### <a name="additional-lead-management-resources"></a>Ek lider Yönetimi kaynakları
-
-- [Müşteri adayı yönetimi SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Ortak lider yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Müşteri adayı yönetimine genel bakış bir sayfalayıcı](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ## <a name="properties"></a>Özellikler
 

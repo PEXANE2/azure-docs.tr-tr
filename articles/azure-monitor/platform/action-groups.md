@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405655"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898175"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -76,6 +76,11 @@ Bir eylem grubu oluşturduktan sonra, **izleyici** bölmesinin **eylem grupları
 > [!NOTE]
 > Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) bakın.  
 
+### <a name="automation-runbook"></a>Otomasyon Runbook'u
+Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-subscription-service-limits.md) bakın.
+
+Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir. 
+
 ### <a name="azure-app-push-notifications"></a>Azure uygulaması Anında İletme Bildirimleri
 Bir eylem grubunda sınırlı sayıda Azure uygulama eylemi olabilir.
 
@@ -87,6 +92,16 @@ E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesin
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
 
+### <a name="email-azure-resource-manager-role"></a>E-posta Azure Resource Manager rolü
+Abonelik rolü üyelerine e-posta gönderin.
+
+Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
+
+### <a name="function"></a>İşlev
+Eylem olarak yapılandırılan Işlev uygulamalarının işlev anahtarları, "AzureWebJobsSecretStorageType" uygulama ayarını "dosyalar" olarak yapılandırmak için şu anda v2 işlev uygulamaları gerektiren Işlevler API 'SI aracılığıyla okunurdur. Daha fazla bilgi için bkz. [Işlevler v2 'de anahtar yönetimi değişiklikleri]( https://aka.ms/funcsecrets).
+
+Bir eylem grubunda sınırlı sayıda Işlev eylemine sahip olabilirsiniz.
+
 ### <a name="itsm"></a>ITSM
 ITSM eylemi bir ıTSM bağlantısı gerektiriyor. ITSM [bağlantısı](../../azure-monitor/platform/itsmc-overview.md)oluşturmayı öğrenin.
 
@@ -95,51 +110,7 @@ Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir.
 ### <a name="logic-app"></a>Mantıksal Uygulama
 Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
-### <a name="function"></a>İşlev
-Eylem olarak yapılandırılan Işlev uygulamalarının işlev anahtarları, "AzureWebJobsSecretStorageType" uygulama ayarını "dosyalar" olarak yapılandırmak için şu anda v2 işlev uygulamaları gerektiren Işlevler API 'SI aracılığıyla okunurdur. Daha fazla bilgi için bkz. [Işlevler v2 'de anahtar yönetimi değişiklikleri]( https://aka.ms/funcsecrets).
-
-Bir eylem grubunda sınırlı sayıda Işlev eylemine sahip olabilirsiniz.
-
-### <a name="automation-runbook"></a>Otomasyon Runbook'u
-Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-subscription-service-limits.md) bakın.
-
-Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir. 
-
-### <a name="sms"></a>SMS
-Ek önemli bilgiler için bkz. bilgi ve [SMS uyarı davranışını](../../azure-monitor/platform/alerts-sms-behavior.md) [sınırlandırma](./../../azure-monitor/platform/alerts-rate-limiting.md) .
-
-Bir eylem grubunda sınırlı sayıda SMS eylemi olabilir.  
-
-### <a name="voice"></a>Ses
-Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
-
-Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
-
-### <a name="webhook"></a>Web Kancası
-Web kancaları aşağıdaki kurallar kullanılarak yeniden denenir. Aşağıdaki HTTP durum kodları döndürüldüğünde Web kancası çağrısı en fazla 2 kez yeniden denenir: 408, 429, 503, 504 veya HTTP uç noktası yanıt vermez. İlk yeniden deneme 10 saniye sonra yapılır. İkinci yeniden deneme 100 saniye sonra gerçekleşir. İki hatadan sonra, herhangi bir eylem grubu 30 dakika için uç noktayı çağırmaz. 
-
-Kaynak IP adresi aralıkları
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-Bu IP adreslerindeki değişikliklerle ilgili güncelleştirmeleri almak için, eylem grupları hizmeti hakkında bilgilendirici bildirimleri izleyen bir hizmet sistem durumu uyarısı yapılandırmanız önerilir.
-
-Bir eylem grubunda sınırlı sayıda Web kancası eylemi olabilir.
-
-#### <a name="secure-webhook"></a>Güvenli Web kancası
+### <a name="secure-webhook"></a>Güvenli Web kancası
 **Güvenli Web kancası işlevselliği Şu anda önizleme aşamasındadır.**
 
 Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
@@ -156,12 +127,12 @@ Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (W
     - PowerShell betiğinin değişken $myAzureADApplicationObjectId Azure AD uygulamanızın nesne KIMLIĞINI kullanacak şekilde değiştirin
     - Değiştirilen betiği çalıştırın.
     
-1. Eylem grubu Web kancası eylemini yapılandırın.
+1. Eylem grubu güvenli Web kancası eylemini yapılandırın.
     - Betikten $myApp. ObjectID değerini kopyalayın ve Web kancası eylem tanımındaki uygulama nesne KIMLIĞI alanına girin.
     
     ![Güvenli Web kancası eylemi](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Güvenli Web kancası PowerShell betiği
+#### <a name="secure-webhook-powershell-script"></a>Güvenli Web kancası PowerShell betiği
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -229,6 +200,41 @@ Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
+
+### <a name="sms"></a>SMS
+Ek önemli bilgiler için bkz. bilgi ve [SMS uyarı davranışını](../../azure-monitor/platform/alerts-sms-behavior.md) [sınırlandırma](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+Bir eylem grubunda sınırlı sayıda SMS eylemi olabilir.  
+
+### <a name="voice"></a>Ses
+Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
+
+Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
+
+### <a name="webhook"></a>Web Kancası
+Web kancaları aşağıdaki kurallar kullanılarak yeniden denenir. Aşağıdaki HTTP durum kodları döndürüldüğünde Web kancası çağrısı en fazla 2 kez yeniden denenir: 408, 429, 503, 504 veya HTTP uç noktası yanıt vermez. İlk yeniden deneme 10 saniye sonra yapılır. İkinci yeniden deneme 100 saniye sonra gerçekleşir. İki hatadan sonra, herhangi bir eylem grubu 30 dakika için uç noktayı çağırmaz. 
+
+Kaynak IP adresi aralıkları
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+Bu IP adreslerindeki değişikliklerle ilgili güncelleştirmeleri almak için, eylem grupları hizmeti hakkında bilgilendirici bildirimleri izleyen bir hizmet sistem durumu uyarısı yapılandırmanız önerilir.
+
+Bir eylem grubunda sınırlı sayıda Web kancası eylemi olabilir.
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

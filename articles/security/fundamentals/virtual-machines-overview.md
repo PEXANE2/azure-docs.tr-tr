@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 186a0b0d4025f7d8a8888a9a0d2d0bd8832cf2d9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726486"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899794"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
@@ -77,9 +77,9 @@ Daha da güçlü koruma için, [Windows Defender Gelişmiş tehdit koruması](ht
 * [Yönetim ve API 'Ler](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft tehdit koruması](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
-* [WDADTP 'yi kullanmaya başlama](/windows/security/threat-protection/windows-defender-atp/get-started)  
+* [WDADTP 'yi kullanmaya başlama](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
 * [WDADTP özelliklerine genel bakış](/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>Donanım güvenlik modülü
@@ -88,7 +88,7 @@ Anahtar güvenliğini iyileştirmek, şifreleme ve kimlik doğrulama korumaları
 
 Key Vault, anahtarlarınızı FIPS 140-2 2. Düzey standartlarıyla sertifikalanmış olan donanım güvenlik modüllerinde (HSM'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure Key Vault nedir?](/azure/key-vault/key-vault-overview)
 * [Azure Key Vault blogu](https://blogs.technet.microsoft.com/kv/)
@@ -99,7 +99,7 @@ Azure disk şifrelemesi, Windows ve Linux sanal makine disklerinizi şifrelemek 
 
 Çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için Azure Key Vault ile tümleşiktir. Sanal makine disklerindeki tüm verilerin Azure Storage 'da bekleyen olarak şifrelenmesini sağlar.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [IaaS VM 'Leri için Azure disk şifrelemesi](/azure/security/azure-security-disk-encryption-overview)
 * [Hızlı Başlangıç: Windows IaaS VM 'sini Azure PowerShell ile şifreleme](../azure-disk-encryption-linux-powershell-quickstart.md)
@@ -108,7 +108,7 @@ Daha fazla bilgi:
 
 Azure Backup, uygulama verilerinizi sıfır sermaye yatırımı ve en az işletim maliyetleriyle korumanıza yardımcı olan ölçeklenebilir bir çözümdür. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınızda hatalar oluşturabilir. Azure Backup, Windows ve Linux çalıştıran sanal makineleriniz korunur.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure Backup nedir?](/azure/backup/backup-introduction-to-azure-backup)
 * [Azure Backup hizmeti SSS](/azure/backup/backup-azure-backup-faq)
@@ -125,7 +125,7 @@ Site Recovery:
 * **İkincil veri merkezlerini ortadan kaldırır**: İkincil bir şirket içi siteye veya Azure 'a çoğaltabilirsiniz. Olağanüstü durum kurtarma için Azure 'un bir hedef olarak kullanılması, ikincil bir sitenin korunmasının maliyetini ve karmaşıklığını ortadan kaldırır. Çoğaltılan veriler Azure depolama 'da depolanır.
 * **Mevcut BCDR teknolojileriyle tümleştirilir**: Diğer uygulamaların BCDR özelliklerine sahip iş ortakları Site Recovery. Örneğin, kurumsal iş yüklerinin SQL Server arka ucunun korunmasına yardımcı olmak için Site Recovery kullanabilirsiniz. Bu, kullanılabilirlik gruplarının yük devretmesini yönetmek için SQL Server her zaman açık için yerel destek içerir.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure Site Recovery nedir?](/azure/site-recovery/site-recovery-overview)
 * [Azure Site Recovery nasıl çalışır?](/azure/site-recovery/site-recovery-components)
@@ -137,7 +137,7 @@ Sanal makinelerin ağ bağlantısı olması gerekir. Azure, bu gereksinimi deste
 
 Azure sanal ağı, fiziksel Azure ağ dokusunun üzerine oluşturulan mantıksal bir yapıdır. Her mantıksal Azure sanal ağı, diğer tüm Azure sanal ağlarından yalıtılmıştır. Bu yalıtım, dağıtımlarınızdaki ağ trafiğine diğer Microsoft Azure müşterilerin erişimine açık olmadığından emin olmanıza yardımcı olur.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure ağ güvenliğine genel bakış](network-overview.md)
 * [Sanal Ağ’a genel bakış](/azure/virtual-network/virtual-networks-overview)
@@ -152,7 +152,7 @@ Güvenlik Merkezi, sanal makinelerinizin güvenliğini en uygun hale getirmenize
 * Sanal makineler için [güvenlik önerileri](/azure/security-center/security-center-recommendations) sağlama. Örnek öneriler şunlardır: sistem güncelleştirmelerini uygulama, ACL uç noktalarını yapılandırma, kötü amaçlı yazılımdan koruma, ağ güvenlik gruplarını etkinleştirme ve disk şifrelemeyi uygulama.
 * Sanal makinelerinizin durumunu izleme.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure Güvenlik Merkezi'ne Giriş](/azure/security-center/security-center-intro)
 * [Azure Güvenlik Merkezi hakkında sık sorulan sorular](/azure/security-center/security-center-faq)
@@ -162,7 +162,7 @@ Daha fazla bilgi:
 
 Azure sanal makineleri, FıMMA, Fedrampa, HIPAA, PCI DSS Level 1 ve diğer önemli uyumluluk programları için sertifikalandırilmiştir. Bu sertifika, kendi Azure uygulamalarınızın uyumluluk gereksinimlerini karşılamasını ve işletmenizin çok çeşitli yurtiçi ve uluslararası mevzuata gereksinimlerini ele abilmesini kolaylaştırır.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Microsoft Güven Merkezi: Uyumluluk](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Güvenilir bulut: Güvenlik, gizlilik ve uyumluluk Microsoft Azure](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
@@ -175,7 +175,7 @@ Gizli bilgi işlem işlemleri, veriler "açık" olduğunda, verimli işleme içi
 
 TEEs, bir hata ayıklayıcıyla birlikte, verileri veya dışarıdaki içindeki işlemleri görüntülemenin bir yolu olmadığından emin olun. Bunlara, yalnızca yetkili kodun verilere erişmesine izin verildiğinden emin olun. Kod değiştirilirse veya üzerinde değişiklik yapılmışsa, işlemler reddedilir ve ortam devre dışı bırakılır. T, bu korumaların içindeki kodun yürütülmesi boyunca uygulanmasını zorlar.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure gizli bilgi işlem tanıtımı](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure gizli bilgi işlem](https://azure.microsoft.com/blog/azure-confidential-computing/)  

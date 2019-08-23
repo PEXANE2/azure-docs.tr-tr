@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296488"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905335"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme (Önizleme)
 Bu makale kullanıcılarınızın kimliğini ve erişim etkinliğini izleme amacıyla Azure Güvenlik Merkezi'ni kullanmanıza yardımcı olur.
@@ -110,16 +110,16 @@ Kullanılabilir kimlik & erişim önerilerini ve uygulamayı uyguladığınızda
 
 |Kaynak türü|Güvenlik puanı|Öneri|Açıklama|
 |----|----|----|----|
-|Subscription|50|MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için yönetici ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication 'ı (MFA) etkinleştirin.|
+|Subscription|50|MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için yönetici ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.|
 |Subscription|40|MFA, abonelik hesaplarınız üzerinde yazma izinlerine sahip olmalıdır|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication 'ı (MFA) etkinleştirin.|
 |Subscription|30|Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır|İzlenmeyen erişimi engellemek için aboneliğinizde sahip olan dış hesapları aboneliğinizden kaldırın.|
-|Subscription|30|MFA, okuma izinlerine sahip abonelik hesaplarınız üzerinde etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication 'ı (MFA) etkinleştirin.|
+|Subscription|30|MFA, okuma izinlerine sahip abonelik hesaplarınız üzerinde etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.|
 |Subscription|25|Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir|İzlenmeyen erişimi engellemek için aboneliğinizden yazma izinleri olan dış hesapları kaldırın. |
 |Subscription|20|Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır|Sahip olduğu kullanımdan kaldırılan hesapları aboneliklerinizden kaldırın.|
 |Subscription|5|Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır|Yalnızca geçerli kullanıcılara erişim sağlamak için aboneliklerinizden kullanım dışı hesapları kaldırın. |
 |Subscription|5|Aboneliğinize birden fazla sahip atanmalıdır|Yönetici erişiminin artıklığını sağlamak için birden fazla abonelik sahibi belirleyin.|
 |Subscription|5|Aboneliğiniz için en fazla 3 sahip belirtilmelidir|Güvenliği aşılmış bir sahibe göre ihlal olasılığını azaltmak için 3 ' ten az abonelik sahibi belirleyin.|
-|Key Vault|5|Key Vault tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. |
+|Anahtar kasası|5|Key Vault tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirmek ve bunları bir yıla kadar korur. Bu, etkinlik kayıtlarını araştırma amacıyla bir güvenlik olayı ortaya veya ağınızın tehlikeye yeniden oluşturmanıza olanak sağlar. |
 |Subscription|15|Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir|İzlenmeyen erişimi engellemek için aboneliğinizdeki okuma ayrıcalıklarına sahip dış hesapları kaldırın.| 
 
 > [!NOTE]
@@ -128,7 +128,7 @@ Kullanılabilir kimlik & erişim önerilerini ve uygulamayı uyguladığınızda
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-- [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-recommendations.md)
+- [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 - [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
 - [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi ve verilerinizi koruma](security-center-sql-service-recommendations.md)
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: 6a29d1e001d4c647d5b975b7e746eced29962ee4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 08/22/2019
+ms.openlocfilehash: 481419a5db6efd600d74851238cd1a12d8766186
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637256"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972540"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları
 
@@ -301,7 +301,7 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |GÇ gecikmesi (yaklaşık)|Belirlenecek|Belirlenecek|Belirlenecek|Belirlenecek|Belirlenecek|Belirlenecek|Belirlenecek|Belirlenecek|
 |Maksimum eş zamanlı çalışan (istek)|200|400|800|1600|2400|3200|4000|8000|
 |Maks. eş zamanlı oturum|30000|30000|30000|30000|30000|30000|30000|30000|
-|Çoğaltma sayısı|2|2|2|2|2|2|2|2|
+|İkincil çoğaltmalar|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Çoklu-AZ|Yok|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |Ölçeği okuyun|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Dahil edilen yedekleme depolaması |7|7|7|7|7|7|7|7|

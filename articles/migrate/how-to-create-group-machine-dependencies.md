@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598955"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906382"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Değerlendirme için bağımlılık görselleştirmesini ayarlama
 
@@ -37,9 +37,9 @@ Bağımlılık görselleştirmesi hakkında [daha fazla bilgi edinin](concepts-d
 **Özellikler** | **Not**
 --- | ---
 Kullanılabilirlik | Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
-Service Map | Bağımlılık görselleştirmesi Azure Izleyici günlüklerinde Hizmet Eşlemesi çözümünü kullanır. [Hizmet eşlemesi](../azure-monitor/insights/service-map-configure.md) , sunucular arasındaki bağlantıları otomatik olarak bulur ve gösterir.
-Aracılar | Bağımlılık görselleştirmesini kullanmak için, eşlemek istediğiniz makinelere birkaç aracı yükleyebilirsiniz:<br/> - [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md) Aracısı (daha önce Microsoft Monitoring Agent (MMA) olarak adlandırılır.<br/> -Hizmet Eşlemesi bağımlılık Aracısı.<br/><br/> Aracı yüklemesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümü olan System Center Configuration Manager veya [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)gibi bir iş ortağı aracı gibi bir dağıtım aracı kullanabilirsiniz.
-Dependency Agent | [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) ve [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)için bağımlılık Aracısı desteğini gözden geçirin.<br/><br/> Bağımlılık aracısını yüklemek için betikleri kullanma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) .
+Service Map | Bağımlılık görselleştirmesi Azure Izleyici 'de Hizmet Eşlemesi çözümünü kullanır. [Hizmet eşlemesi](../azure-monitor/insights/service-map.md) , sunucular arasındaki bağlantıları otomatik olarak bulur ve gösterir.
+Aracılar | Bağımlılık görselleştirmesini kullanmak için, eşlemek istediğiniz makinelere aşağıdaki aracıları yükleyebilirsiniz:<br/> - [Log Analytics aracı](../azure-monitor/platform/log-analytics-agent.md) Aracısı (daha önce Microsoft Monitoring Agent (MMA) olarak adlandırılır.<br/> - [Hizmet eşlemesi bağımlılık Aracısı](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Aracı yüklemesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümü olan System Center Configuration Manager veya [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)gibi bir iş ortağı aracı gibi bir dağıtım aracı kullanabilirsiniz.
+Dependency Agent | Windows ve Linux için [bağımlılık Aracısı desteğini](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) gözden geçirin.<br/><br/> Bağımlılık aracısını yüklemek için betikleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) .
 Log Analytics Aracısı (MMA) | MMA yükleme yöntemleri hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) .<br/><br/> System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinelerde MMA aracısını yüklemeniz gerekmez. Hizmet Eşlemesi Operations Manager tümleştirilir. [Buradaki](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)kılavuzlardan yararlanarak tümleştirmeyi etkinleştirebilirsiniz. Bununla birlikte, bağımlılık aracısının bu makinelere yüklenmesi gerekeceğini unutmayın.<br/><br/> Log Analytics Aracısı tarafından desteklenen Linux işletim sistemlerini [gözden geçirin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
 Değerlendirme grupları | Bağımlılıklarını görselleştirmek istediğiniz gruplar 10 ' dan fazla makine içermemelidir. 10 ' dan fazla makineniz varsa, bağımlılıkları görselleştirmek için bunları daha küçük gruplara ayırın.
 
@@ -86,7 +86,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
-5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın.           **İleri**'ye tıklayın.
+5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**'ye tıklayın.
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>Aracıyı bir Linux makinesine yükler
 

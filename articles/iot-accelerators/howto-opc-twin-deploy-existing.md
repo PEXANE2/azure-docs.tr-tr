@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302655"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972275"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC Ikizi 'yi mevcut bir projeye dağıtma
 
@@ -142,4 +142,4 @@ Kullanılacak AAD kiracısı.
 Artık OPC Ikizi 'i mevcut bir projeye dağıtmayı öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [OPC Istemcisi ve OPC PLC ile güvenli iletişim](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [OPC UA Client ve OPC UA PLC ile güvenli iletişim](howto-opc-vault-secure.md)

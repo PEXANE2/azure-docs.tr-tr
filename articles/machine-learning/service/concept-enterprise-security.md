@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946400"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897946"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için kurumsal güvenlik
 
@@ -31,7 +31,7 @@ Aynı için Azure Active Directory (Azure AD) yapılandırılmışsa çok faktö
 * İstemci, tüm Azure Machine Learning Hizmetleri & Azure Resource Manager belirteç sunar
 * Azure Machine Learning hizmeti, Kullanıcı işlemine bir Azure Machine Learning belirteci sağlar. Örneğin, Machine Learning İşlem. Bu belirteç, çalışma tamamlandıktan sonra Azure Machine Learning hizmetine (kapsamı çalışma alanına sınır) geri çağırmak için Kullanıcı işlemi tarafından kullanılır.
 
-![Azure Machine Learning hizmetinde kimlik doğrulamanın nasıl çalıştığını gösteren ekran görüntüsü](./media/enterprise-readiness/authentication.png)
+[![Azure Machine Learning hizmetinde kimlik doğrulamanın nasıl çalıştığını gösteren ekran görüntüsü](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web hizmeti dağıtımı için kimlik doğrulaması
 
@@ -185,7 +185,7 @@ Her çalışma alanı, Key Vault tüm anahtarlar, gizlilikler ve sertifikalara e
 
 Azure Izleyici ölçümleri, Azure Machine Learning hizmeti çalışma alanınızın ölçümlerini görüntülemek ve izlemek için kullanılabilir. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından __ölçümler__ bağlantısını kullanın.
 
-![Bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-metrics.png)
+[![Bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Ölçümler, çalıştırmalar, dağıtımlar ve kayıtlar hakkındaki bilgileri içerir.
 
@@ -197,7 +197,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de ölçümler](/azure/azure-monito
 
 Aşağıdaki ekran görüntüsünde bir çalışma alanı için etkinlik günlüğü gösterilmektedir:
 
-![Bir çalışma alanı altındaki etkinlik günlüğünü gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-activity-log.png)
+[![Bir çalışma alanı altındaki etkinlik günlüğünü gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Puanlama isteği ayrıntıları, çalışma alanı oluşturulurken kullanıcının aboneliğinde oluşturulan Application Insight 'da depolanır. Günlüğe kaydedilen bilgiler HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId, Duration vb. gibi alanları içerir.
 
@@ -220,14 +220,14 @@ Kullanıcı, desteklenen Azure Machine Learning hizmet istemcilerinden (CLı, Py
 
 Bir çalışma alanına bağlı diğer hesaplar (Azure Kubernetes hizmeti, VM vb.), gerektiğinde müşteriler tarafından da sağlanabilir.
 
-![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/create-workspace.png)
+[![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Kaynak kodunu kaydet (eğitim betikleri)
 
 Aşağıdaki diyagramda, kod anlık görüntüsü iş akışı gösterilmektedir.
 Bir Azure Machine Learning hizmet çalışma alanıyla ilişkili, kaynak kodu (eğitim betikleri) içeren dizinlerdir (denemeleri).  Bu betikler müşterinin yerel makinesinde ve bulutta depolanır (müşterinin aboneliği altındaki Azure Blob depolama alanında). Kod anlık görüntüleri, geçmiş denetimi için yürütme veya denetleme için kullanılır.
 
-![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/code-snapshot.png)
+[![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Eğitim
 
@@ -253,7 +253,7 @@ Aşağıdaki diyagramda eğitim iş akışı gösterilmektedir.
 
 Bu adım, eğitim sürecinin, *çalışma ölçümlerini* Cosmos DB depolanacağı Azure Machine Learning hizmetine geri yazdığı akışta gösterilmektedir. İstemciler, Cosmos DB çekme ölçümlerini alacak ve istemciye geri döndürecek Azure Machine Learning hizmeti çağırabilir.
 
-![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/training-and-metrics.png)
+[![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Web Hizmetleri oluşturma
 
@@ -267,7 +267,7 @@ Ayrıntıları aşağıda görebilirsiniz:
 * Puanlama isteği ayrıntıları, Kullanıcı aboneliğindeki Application Insight 'da depolanır
 * Telemetri ayrıca Microsoft/Azure aboneliğine gönderilir
 
-![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/inferencing.png)
+[![Çalışma alanı oluştur iş akışını gösteren ekran görüntüsü](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

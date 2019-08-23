@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 89c56496ed1f356ffedf4df93f1728bd4acda323
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639950"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899971"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search 'de "bilişsel arama" nedir?
 
@@ -51,7 +51,7 @@ Doğal dil ve görüntü işleme, veri alma aşamasında uygulanır, sonuçlar, 
 
   Ayrıca, önceden oluşturulmuş yetenekler metin bölme, birleştirme ve şekil işlemleri aracılığıyla içeriği yeniden yapılandırmak için de kullanılabilir.
 
-Özel yetenekler, formları tanıma gibi daha karmaşık senaryoları veya özel [Beceri Web arabirimine](cognitive-search-custom-skill-interface.md)sağladığınız ve kaydırabileceğiniz bir modeli kullanarak özel varlık algılamayı destekleyebilir. Özel yeteneklerin çeşitli örnekleri, [form tanıyıcı](), [Bing varlık arama API'si](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)tümleştirmesi ve [özel varlık tanıma](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)içerir.
+Özel yetenekler, formları tanıma gibi daha karmaşık senaryoları veya özel [Beceri Web arabirimine](cognitive-search-custom-skill-interface.md)sağladığınız ve kaydırabileceğiniz bir modeli kullanarak özel varlık algılamayı destekleyebilir. Özel yeteneklerin çeşitli örnekleri, [form tanıyıcı](/azure/cognitive-services/form-recognizer/overview), [Bing varlık arama API'si](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)tümleştirmesi ve [özel varlık tanıma](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)içerir.
 
 
 ## <a name="component-pipeline-of-cognitive-search"></a>Bilişsel arama bileşen işlem hattı
@@ -124,7 +124,7 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 
 Ücretsiz hizmetin öğrenme amacıyla önerilmesini öneririz, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Hem hızlı başlangıç hem de Öğreticiyi bir gün içinde çalıştırmak için, her iki alıştırmada de sığdırabilmeniz veya hızlı başlangıçta veya öğreticide kullandığınız dizin oluşturucuyu silebilmeniz için daha küçük bir dosya kümesi (10 belge) kullanın.
 
-**Adım 3: API 'YI gözden geçirme**
+**3. Adım: API 'YI gözden geçirme**
 
 Rest `api-version=2019-05-06` on istekleri veya .NET SDK kullanabilirsiniz. 
 

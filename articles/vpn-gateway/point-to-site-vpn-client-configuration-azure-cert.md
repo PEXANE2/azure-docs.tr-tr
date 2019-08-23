@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 07d48ed195f74c9aef5d34de1925ab8fc2a3ae21
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534158"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899920"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yapılandırma
 
@@ -133,13 +133,13 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
    ```
    sudo apt install network-manager-strongswan
    ```
-2. **Ağ Yöneticisi** simgesini (yukarı ok/aşağı ok) seçin ve ardından **Bağlantıları Düzenle**' yi seçin.
+2. **Ayarlar** ' ı ve ardından **ağ**' ı seçin.
 
    ![bağlantıları Düzenle](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. Yeni bir bağlantı oluşturmak için **Ekle** düğmesine tıklayın.
+3. Yeni bir bağlantı oluşturmak için **düğmeyetıklayın.+**
 
    ![bağlantı ekleme](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
-4. Açılan menüden **IPSec/Ikev2 (strongswa)** öğesini seçin ve ardından **Oluştur**' a tıklayın. Bu adımda, bağlantınızı yeniden adlandırabilirsiniz.
+4. Menüden **IPSec/Ikev2 (Strongswa)** öğesini seçin ve çift tıklayın. Bu adımda, bağlantınızın adını verebilirsiniz.
 
    ![bir bağlantı türü seçin](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
 5. İndirilen istemci yapılandırma dosyalarında bulunan **genel** klasörden **vpnsettings. xml** dosyasını açın. **VPNServer** adlı etiketi bulun ve ' azuregateway ' ile başlayıp '. cloudapp.net ' ile biten adı kopyalayın.
@@ -148,8 +148,8 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
 6. Bu adı, **ağ geçidi** bölümünde yer alan yeni VPN bağlantınızın **Adres** alanına yapıştırın. Sonra, **sertifika** alanının sonundaki klasör simgesini seçin, **genel** klasöre gidin ve **vpnserverroot** dosyasını seçin.
 7. Bağlantının **istemci** bölümünde, **kimlik doğrulaması**için **sertifika/özel anahtar**' ı seçin. **Sertifika** ve **özel anahtar**için, daha önce oluşturulmuş sertifikayı ve özel anahtarı seçin. **Seçenekler**' de, **Iç IP adresi iste**' yi seçin. ' A tıklayarak **Ekle**.
 
-   ![iç IP adresi iste](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
-8. **Ağ Yöneticisi** simgesine (yukarı ok/aşağı ok) tıklayın ve **VPN bağlantıları**üzerine gelin. Oluşturduğunuz VPN bağlantısını görürsünüz. Bağlantıyı başlatmak için tıklayın.
+   ![iç IP adresi iste](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
+8. Bağlantıyı açın.
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLı)
 

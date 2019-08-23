@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bd506bf1210692feb017f3b526c3b6d4bca36004
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c8fd5309f50cfc024083cb8a05d679d04bf112dc
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877419"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972259"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Azure IoT Central uygulamanıza bir Raspberry PI bağlama (Python)
 
@@ -29,6 +29,9 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki bileşenlere ihtiy
 
 * **Örnek Devkits** uygulama şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
 * Raspbian işletim sistemini çalıştıran bir Raspberry PI cihazı. Raspberry PI, internet 'e bağlanabilmelidir. Daha fazla bilgi için bkz. [Raspberry PI 'Nizi ayarlama](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
+
+> [!TIP]
+> Bir Raspberry PI cihazını ayarlama ve bu cihaza bağlanma hakkında bilgi edinmek için [Raspberry Pi 'yi kullanmaya başlama](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi) makalesini ziyaret edin
 
 ## <a name="sample-devkits-application"></a>**Örnek Devkits** uygulaması
 
@@ -63,12 +66,37 @@ Aşağıdaki adımlarda, örnek Python uygulamasının GitHub 'dan nasıl indiri
 * Azure IoT Central telemetri ve özellik değerlerini gönderir.
 * Azure IoT Central 'da yapılan ayar değişikliklerine yanıt verir.
 
-Cihazı yapılandırmak için [GitHub 'daki adım adım yönergeleri izleyin](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md).
+1. Raspberry PI Desktop 'tan ya da SSH kullanarak uzaktan Raspberry PI 'inizdeki bir kabuk ortamına bağlanın.
 
-1. Cihaz yapılandırıldığında, cihazınız Azure IoT Central telemetri ölçümleri göndermeye başlar.
+1. IoT Central Python istemcisini yüklemek için şu komutu çalıştırın:
+
+    ```sh
+    pip install iotc
+    ```
+
+1. Örnek Python kodunu indirin:
+
+    ```sh
+    curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+    ```
+
+1. İndirdiğiniz dosyayı düzenleyin ve `DEVICE_ID`, `SCOPE_ID`, ve `PRIMARY/SECONDARY device KEY` yer tutucuları, daha önce bir notunuz yaptığınız bağlantı değerleriyle değiştirin. `app.py` Yaptığınız değişiklikleri kaydedin.
+
+    > [!TIP]
+    > Raspberry Pi üzerindeki kabukta, **nano** ya da **VI** metin düzenleyicilerini kullanabilirsiniz.
+
+1. Örneği çalıştırmak için aşağıdaki komutu kullanın:
+
+    ```sh
+    python app.py
+    ```
+
+    Raspberry PI 'niz Azure IoT Central telemetri ölçümleri göndermeye başlıyor.
+
 1. Azure IoT Central uygulamanızda, Raspberry PI üzerinde çalışan kodun uygulamayla nasıl etkileşime gireceğini görebilirsiniz:
 
     * Gerçek cihazınızın **ölçümler** sayfasında, Raspberry Pi 'den gönderilen Telemetriyi görebilirsiniz.
+    * **Özellikler** sayfasında, **zar numarası** cihaz özelliğini görebilirsiniz.
     * **Ayarlar** sayfasında, Raspberry Pi üzerinde voltaj ve fan hızı gibi ayarları değiştirebilirsiniz. Raspberry Pi, değişikliği gösterdiğinde, ayar **eşitlenmiş**olarak gösterilir.
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry PI cihaz şablonu ayrıntıları

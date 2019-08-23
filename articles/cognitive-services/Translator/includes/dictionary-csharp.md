@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a56744173974b470999f846da49d144f2013fbb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968646"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907092"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Json.NET NuGet paketi](https://www.nuget.org/packages/Newtonsoft.Json/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), veya en sevdiğiniz metin düzenleyiciyi
-* Translator Metin Çevirisi için Azure abonelik anahtarı
+[!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>.NET Core projesi oluşturma
 
@@ -46,6 +43,31 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
+## <a name="get-subscription-information-from-environment-variables"></a>Ortam değişkenlerinden abonelik bilgilerini al
+
+`Program` Sınıfına aşağıdaki satırları ekleyin. Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
+
+```csharp
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
 ## <a name="create-a-function-to-get-alternate-translations"></a>Alternatif çeviriler almak için bir işlev oluşturma
 
 Sınıfı içinde adlı `AltTranslation`bir işlev oluşturun. `Program` Bu sınıf, sözlük kaynağını çağırmak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
@@ -60,14 +82,14 @@ static void AltTranslation()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>Abonelik anahtarını, ana bilgisayar adını ve yolu ayarla
+## <a name="construct-the-uri"></a>URI 'yi oluşturun
 
-Bu satırları `AltTranslation` işleve ekleyin. İle `api-version`birlikte, `route`için iki ek parametre eklenmiş olduğunu fark edeceksiniz. Bu parametreler, çeviri girişini ve çıkışını ayarlamak için kullanılır. Bu örnekte, bunlar İngilizce (`en`) ve İspanyolca (`es`).
+Bu satırları `AltTranslation` işleve ekleyin. İle `api-version`birlikte, iki ek parametre bildirildiğine dikkat edin. Bu parametreler, çeviri girişini ve çıkışını ayarlamak için kullanılır. Bu örnekte, bunlar İngilizce (`en`) ve İspanyolca (`es`).
 
 ```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/dictionary/lookup?api-version=3.0&from=en&to=es";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+string route = "/dictionary/lookup?api-version=3.0";
+static string params_ = "from=en&to=es";
+static string uri = endpoint + path + params_;
 ```
 
 Ardından, çevirmek istediğiniz metni içeren JSON nesnesini oluşturup serileştirmemiz gerekir. Dikkat edin, `body` dizide birden fazla nesne geçirebilirsiniz.
@@ -76,8 +98,6 @@ Ardından, çevirmek istediğiniz metni içeren JSON nesnesini oluşturup serile
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
-
-
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>İstemci örneği oluşturma ve bir istek oluşturma
 
@@ -109,7 +129,7 @@ Bu kodu öğesine `HttpRequestMessage`ekleyin:
 request.Method = HttpMethod.Post;
 
 // Construct the full URI
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(uri);
 
 // Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
@@ -142,7 +162,8 @@ Son adım, `AltTranslation()` `Main` işlevini çağırmak için kullanılır. �
 
 ```csharp
 AltTranslation();
-Console.ReadLine();
+Console.WriteLine("Press any key to continue.");
+Console.ReadKey();
 ```
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma

@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9dbe1751ac77f370991af75ea161247c21700ff2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886994"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972828"
 ---
-# <a name="delete-nodes-from-vmware-solution-by-cloudsimple---azure"></a>CloudSimple-Azure tarafından VMware çözümünden düğümleri silme
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümünden düğümleri silme
 
-CloudSimple düğümleri oluşturulduktan sonra ölçümlerdir.  Düğümlerin ölçümünü durdurmak için düğümlerin silinmesi gerekir.  Azure portal kullanılmayan düğümleri silersiniz. 
+CloudSimple düğümleri oluşturulduktan sonra ölçümlerdir.  Düğümlerin ölçümünü durdurmak için düğümlerin silinmesi gerekir.  Azure portal kullanılmayan düğümleri silersiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -25,7 +25,6 @@ Düğüm, yalnızca aşağıdaki koşullarda silinebilir:
 
 * Düğümlerle oluşturulan özel bir bulut silinir.  Özel bir bulutu silmek için bkz. [CloudSimple özel bulutu tarafından Azure VMware çözümünü silme](delete-private-cloud.md).
 * Özel bulutu daraltarak düğüm özel buluttan kaldırılmıştır.  Özel bulutu daraltmak için bkz. [CloudSimple özel bulutu tarafından Azure VMware çözümünü küçültme](shrink-private-cloud.md).
-
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

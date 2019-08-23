@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 52651ca592c4da9883768cd87e090985e17be47b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 287dbd3d6da4aa2bf5bd1da652cdeaeda3136321
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780914"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907715"
 ---
 # <a name="get-started-with-device-management-python"></a>Cihaz yönetimini kullanmaya başlama (Python)
 
@@ -49,7 +49,7 @@ Bu öğreticinin sonunda iki Python konsol uygulamanız vardır:
 
 ## <a name="create-a-simulated-device-app"></a>Sanal cihaz uygulaması oluşturma
 
-Bu bölümde şunları yapmanız gerekir:
+Bu bölümde şunları yapacaksınız:
 
 * Bulut tarafından çağrılan doğrudan bir yönteme yanıt veren bir Python konsol uygulaması oluşturma
 
@@ -57,9 +57,19 @@ Bu bölümde şunları yapmanız gerekir:
 
 * Cihazların ve en son yeniden başlatıldığı zaman cihaz ikizi sorgularını belirlemesine olanak tanımak için bildirilen özellikleri kullanın
 
-1. Bir metin düzenleyicisi kullanarak bir **dmpatterns_getstarted_device. Kopyala** dosyası oluşturun.
+1. Komut istemindeki **Azure-IoT-Device-Client** paketini yüklemek için aşağıdaki komutu çalıştırın:
 
-2. `import` **Dmpatterns_getstarted_device. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin.
+    ```cmd/sh
+    pip install azure-iothub-device-client
+    ```
+
+   > [!NOTE]
+   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   >
+
+2. Bir metin düzenleyicisi kullanarak çalışma dizininizde **dmpatterns_getstarted_device. Kopyala** adlı bir dosya oluşturun.
+
+3. `import` **Dmpatterns_getstarted_device. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin.
 
     ```python
     import random
@@ -70,7 +80,7 @@ Bu bölümde şunları yapmanız gerekir:
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-3. **CONNECTION_STRING** değişkeni ve istemci başlatması dahil olmak üzere değişkenler ekleyin.  Bağlantı dizesini, cihaz bağlantı dizeniz ile değiştirin.  
+4. **CONNECTION_STRING** değişkeni ve istemci başlatması dahil olmak üzere değişkenler ekleyin.  Yer tutucu `{deviceConnectionString}` değerini, cihaz bağlantı dizeniz ile değiştirin. Daha önce Bu bağlantı dizesini [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)bölümünde kopyaladınız.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -87,7 +97,7 @@ Bu bölümde şunları yapmanız gerekir:
     METHOD_CALLBACKS = 0
     ```
 
-4. Cihaza doğrudan yöntemi uygulamak için aşağıdaki işlev geri çağırmaları ekleyin.
+5. Cihaza doğrudan yöntemi uygulamak için aşağıdaki işlev geri çağırmaları ekleyin.
 
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -117,7 +127,7 @@ Bu bölümde şunları yapmanız gerekir:
         return device_method_return_value
     ```
 
-5. Doğrudan yöntem dinleyicisini başlatın ve bekleyin.
+6. Doğrudan yöntem dinleyicisini başlatın ve bekleyin.
 
     ```python
     def iothub_client_init():
@@ -150,7 +160,7 @@ Bu bölümde şunları yapmanız gerekir:
         iothub_client_sample_run()
     ```
 
-6. **Dmpatterns_getstarted_device. Kopyala** dosyasını kaydedin ve kapatın.
+7. **Dmpatterns_getstarted_device. Kopyala** dosyasını kaydedin ve kapatın.
 
 > [!NOTE]
 > Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
@@ -165,9 +175,19 @@ Bu bölümde şunları yapmanız gerekir:
 
 Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden başlatma işlemini başlatan bir Python konsol uygulaması oluşturacaksınız. Uygulama, bu cihazın son yeniden başlatma zamanını saptamak için Device ikizi sorgularını kullanır.
 
-1. Bir metin düzenleyicisi kullanarak bir **dmpatterns_getstarted_service. Kopyala** dosyası oluşturun.
+1. Komut istemindeki **Azure-IoT-Service-Client** paketini yüklemek için aşağıdaki komutu çalıştırın:
 
-2. `import` **Dmpatterns_getstarted_service. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin.
+    ```cmd/sh
+    pip install azure-iothub-service-client
+    ```
+
+   > [!NOTE]
+   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   >
+
+2. Bir metin düzenleyicisi kullanarak çalışma dizininizde **dmpatterns_getstarted_service. Kopyala** adlı bir dosya oluşturun.
+
+3. `import` **Dmpatterns_getstarted_service. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin.
 
     ```python
     import sys, time
@@ -176,7 +196,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-3. Aşağıdaki değişken bildirimlerini ekleyin. Yalnızca _Iothubconnectionstring_ ve _DeviceID_için yer tutucu değerlerini değiştirir.
+4. Aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu `{IoTHubConnectionString}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. Yer tutucu `{deviceId}` değerini, [IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde kaydettiğiniz cihaz kimliğiyle değiştirin.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -188,7 +208,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     WAIT_COUNT = 10
     ```
 
-4. Hedef cihazı yeniden başlatmak üzere cihaz yöntemini çağırmak için aşağıdaki işlevi ekleyin, sonra cihaz ikizlerini sorgulayın ve son yeniden başlatma süresini alın.
+5. Hedef cihazı yeniden başlatmak üzere cihaz yöntemini çağırmak için aşağıdaki işlevi ekleyin, sonra cihaz ikizlerini sorgulayın ve son yeniden başlatma süresini alın.
 
     ```python
     def iothub_devicemethod_sample_run():
@@ -239,7 +259,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
         iothub_devicemethod_sample_run()
     ```
 
-5. **Dmpatterns_getstarted_service. Kopyala** dosyasını kaydedin ve kapatın.
+6. **Dmpatterns_getstarted_service. Kopyala** dosyasını kaydedin ve kapatın.
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 
@@ -247,16 +267,24 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
 
 1. Komut isteminde, önyükleme doğrudan metodunu dinlemeye başlamak için aşağıdaki komutu çalıştırın.
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_device.py
     ```
 
 2. Başka bir komut isteminde aşağıdaki komutu çalıştırarak, son yeniden başlatma zamanını bulmak üzere cihaz ikizi için uzaktan yeniden başlatma ve sorguyu tetikleyin.
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_service.py
     ```
 
 3. Konsolda doğrudan yönteme cihaz yanıtı görürsünüz.
+
+   Aşağıda yeniden başlatma doğrudan yöntemine yönelik cihaz yanıtı gösterilmektedir:
+
+   ![Sanal cihaz uygulama çıkışı](./media/iot-hub-python-python-device-management-get-started/device.png)
+
+   Aşağıda, önyükleme doğrudan yöntemini çağıran hizmet gösterilmektedir ve cihaz ikizi durumu için yoklama yapılır:
+
+   ![Yeniden başlatma hizmeti çıkışını Tetikle](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/20/2019
 tags: connectors
-ms.openlocfilehash: 9e46c51ae06920bd57f272248f06020dfad380e7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326722"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907546"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps 'dan SAP sistemlerine bağlanma
 
@@ -109,48 +109,44 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    **Şirket içi SAP bağlantısı oluşturma**
 
-    1. SAP sunucunuzun bağlantı bilgilerini sağlayın. **Data Gateway** özelliği için, ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidini seçin.
+   SAP sunucunuzun bağlantı bilgilerini sağlayın. **Data Gateway** özelliği için, ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidini seçin. İşiniz bittiğinde **Oluştur**' u seçin. Logic Apps, bağlantının düzgün çalıştığından emin olmak için bağlantınızı kurar ve test eder.
 
-         - **Oturum açma türü** özelliği **uygulama sunucusu**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+   * **Oturum açma türü** özelliği **uygulama sunucusu**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
-            ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+     ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-         - **Oturum açma türü** özelliği **Grup**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+   * **Oturum açma türü** özelliği **Grup**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
-            ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+     ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-           Varsayılan olarak, şemaya karşı XML doğrulaması gerçekleştirerek geçersiz değerleri denetlemek için tanımlayıcı yazma kullanılır. Bu davranış, daha önce sorunları tespit etmenize yardımcı olabilir. **Güvenli yazma** seçeneği geriye dönük uyumluluk için kullanılabilir ve yalnızca dize uzunluğunu denetler. [Güvenli yazma seçeneği](#safe-typing)hakkında daha fazla bilgi edinin.
-
-    1. İşiniz bittiğinde **Oluştur**' u seçin.
-
-       Logic Apps, bağlantının düzgün çalıştığından emin olmak için bağlantınızı kurar ve test eder.
+   Varsayılan olarak, şemaya karşı XML doğrulaması gerçekleştirerek geçersiz değerleri denetlemek için tanımlayıcı yazma kullanılır. Bu davranış, daha önce sorunları tespit etmenize yardımcı olabilir. **Güvenli yazma** seçeneği geriye dönük uyumluluk için kullanılabilir ve yalnızca dize uzunluğunu denetler. [Güvenli yazma seçeneği](#safe-typing)hakkında daha fazla bilgi edinin.
 
 1. Şimdi SAP sunucunuzdaki bir eylemi bulun ve seçin.
 
-    1. **SAP eylemi** kutusunda klasör simgesini seçin. Dosya listesinden, kullanmak istediğiniz SAP iletisini bulun ve seçin. Listede gezinmek için okları kullanın.
+   1. **SAP eylemi** kutusunda klasör simgesini seçin. Dosya listesinden, kullanmak istediğiniz SAP iletisini bulun ve seçin. Listede gezinmek için okları kullanın.
 
-       Bu örnek, **Orders** türünde bir IDoc seçer.
+      Bu örnek, **Orders** türünde bir IDoc seçer.
 
-       ![IDoc eylemini bul ve Seç](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
+      ![IDoc eylemini bul ve Seç](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
 
-       İstediğiniz eylemi bulamazsanız, el ile bir yol girebilirsiniz, örneğin:
+      İstediğiniz eylemi bulamazsanız, el ile bir yol girebilirsiniz, örneğin:
 
-       ![IDoc eyleminin yolunu el ile sağlayın](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
+      ![IDoc eyleminin yolunu el ile sağlayın](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
 
-       > [!TIP]
-       > , İfade Düzenleyicisi aracılığıyla **SAP eylemi** değerini sağlayın. Bu şekilde, farklı ileti türleri için aynı eylemi kullanabilirsiniz.
+      > [!TIP]
+      > , İfade Düzenleyicisi aracılığıyla **SAP eylemi** değerini sağlayın. Bu şekilde, farklı ileti türleri için aynı eylemi kullanabilirsiniz.
 
-       IDOC işlemleri hakkında daha fazla bilgi için bkz. [IDOC işlemleri Için ileti şemaları](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+      IDOC işlemleri hakkında daha fazla bilgi için bkz. [IDOC işlemleri Için ileti şemaları](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-    1. Dinamik içerik listesinin görünmesi için **giriş iletisi** kutusunun içine tıklayın. Bu listeden, **BIR http isteği alındığında**altında **gövde** alanını seçin.
+   1. Dinamik içerik listesinin görünmesi için **giriş iletisi** kutusunun içine tıklayın. Bu listeden, **BIR http isteği alındığında**altında **gövde** alanını seçin.
 
-       Bu adım, HTTP Istek tetikleyicinizden gelen gövde içeriğini içerir ve bu çıktıyı SAP sunucunuza gönderir.
+      Bu adım, HTTP Istek tetikleyicinizden gelen gövde içeriğini içerir ve bu çıktıyı SAP sunucunuza gönderir.
 
-       !["Gövde" alanını seçin](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+      !["Gövde" alanını seçin](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
-       İşiniz bittiğinde, SAP eyleminiz Şu örneğe benzer şekilde görünür:
+      İşiniz bittiğinde, SAP eyleminiz Şu örneğe benzer şekilde görünür:
 
-       ![Tamamlanmış SAP eylemi](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+      ![Tamamlanmış SAP eylemi](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -217,17 +213,17 @@ Bu örnek, uygulama SAP sisteminden bir ileti aldığında tetiklenen bir mantı
 
    **Şirket içi SAP bağlantısı oluşturma**
 
-   - SAP sunucunuzun bağlantı bilgilerini sağlayın. **Data Gateway** özelliği için, ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidini seçin.
+   SAP sunucunuzun bağlantı bilgilerini sağlayın. **Data Gateway** özelliği için, ağ geçidi yüklemeniz için Azure Portal oluşturduğunuz veri ağ geçidini seçin. İşiniz bittiğinde **Oluştur**' u seçin. Logic Apps, bağlantının düzgün çalıştığından emin olmak için bağlantınızı kurar ve test eder.
 
-      - **Oturum açma türü** özelliği **uygulama sunucusu**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+   * **Oturum açma türü** özelliği **uygulama sunucusu**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
-         ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+     ![SAP uygulama sunucusu bağlantısı oluşturma](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - **Oturum açma türü** özelliği **Grup**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
+   * **Oturum açma türü** özelliği **Grup**olarak ayarlandıysa, genellikle isteğe bağlı olarak görüntülenen bu özellikler gereklidir:
 
-          ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+     ![SAP ileti sunucusu bağlantısı oluştur](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-      Varsayılan olarak, şemaya karşı XML doğrulaması gerçekleştirerek geçersiz değerleri denetlemek için tanımlayıcı yazma kullanılır. Bu davranış, daha önce sorunları tespit etmenize yardımcı olabilir. **Güvenli yazma** seçeneği geriye dönük uyumluluk için kullanılabilir ve yalnızca dize uzunluğunu denetler. [Güvenli yazma seçeneği](#safe-typing)hakkında daha fazla bilgi edinin.
+   Varsayılan olarak, şemaya karşı XML doğrulaması gerçekleştirerek geçersiz değerleri denetlemek için tanımlayıcı yazma kullanılır. Bu davranış, daha önce sorunları tespit etmenize yardımcı olabilir. **Güvenli yazma** seçeneği geriye dönük uyumluluk için kullanılabilir ve yalnızca dize uzunluğunu denetler. [Güvenli yazma seçeneği](#safe-typing)hakkında daha fazla bilgi edinin.
 
 1. SAP sistem yapılandırmanıza göre gerekli parametreleri sağlayın.
 
@@ -262,6 +258,41 @@ Mantıksal uygulamanız artık SAP sisteminizden ileti almaya hazırdır.
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin. Mantıksal uygulamanız için tüm yeni çalıştırmalar için **çalıştırma geçmişini** gözden geçirin.
 
 1. Tetikleyici çıkışları bölümünde SAP sisteminizden gönderilen iletiyi gösteren en son çalıştırmayı açın.
+
+## <a name="receive-idocs-packets-from-sap"></a>SAP 'den IDoc paketleri alma
+
+SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönderecek](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html)şekilde ayarlayabilirsiniz. IDOC paketlerini, SAP bağlayıcısını ve özellikle tetikleyiciyi almak için ek yapılandırma gerekmez. Ancak, bir ıDOC paketindeki her öğeyi tetikleme paketini aldıktan sonra işlemek için, paketi tek tek IDoc 'a bölmek için bazı ek adımlar gerekir.
+
+İşte, [ `xpath()` işlevi](./workflow-definition-language-functions-reference.md#xpath)kullanarak bir paketten tek tek IDoc 'ları nasıl ayıklayabileceğiniz gösterilmektedir: 
+
+1. Başlamadan önce SAP tetikleyicisine sahip bir mantıksal uygulama gerekir. Bu mantıksal uygulama henüz yoksa, [SAP tetikleyicisiyle bir mantıksal uygulama](#receive-from-sap)ayarlamak için bu konudaki önceki adımları izleyin. 
+
+   Örneğin:
+
+   ![SAP tetikleyicisi](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. Mantıksal uygulamanızın SAP 'den aldığı XML ıDOC 'ından kök ad alanını alın. Bu ad alanını XML belgesinden ayıklamak için, bir yerel dize değişkeni oluşturan ve bu ad alanını bir `xpath()` ifade kullanarak depolayan bir adım ekleyin:
+
+   `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
+
+   ![Ad alanı al](./media/logic-apps-using-sap-connector/get-namespace.png)
+
+1. Tek bir IDoc 'u ayıklamak için, bir dizi değişkeni oluşturan ve IDoc koleksiyonunu başka bir `xpath()` ifade kullanarak depolayan bir adım ekleyin:
+
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+
+   ![Öğelerin dizisini al](./media/logic-apps-using-sap-connector/get-array.png)
+
+   Dizi değişkeni, mantıksal uygulamanız için her bir ıDOC 'un koleksiyon üzerinde sıralama yaparak tek tek işlemesini sağlar. Bu örnekte, Logic App her ıDOC 'u bir döngü kullanarak bir SFTP sunucusuna aktarır:
+
+   ![IDOC gönder](./media/logic-apps-using-sap-connector/loop-batch.png)
+
+   Her IDoc 'un, bu durumda IDoc 'un aşağı akış uygulamasına veya SFTP sunucusuna göndermeden önce kök ad alanı `<Receive></Receive` ile birlikte, dosya içeriğinin bir öğe içinde sarmalanması neden olan kök ad alanını içermesi gerekir.
+
+> [!TIP]
+> Yeni bir mantıksal uygulama oluştururken mantıksal uygulama Tasarımcısı ' nda bu şablonu seçerek bu model için hızlı başlangıç şablonunu kullanabilirsiniz.
+>
+> ![Batch şablonu](./media/logic-apps-using-sap-connector/batch-template.png)
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>SAP 'de yapılar için şemalar oluşturma
 
@@ -457,10 +488,6 @@ Güçlü yazma kullanarak iletiler gönderdiğinizde, izin ve TIMS yanıtı eşl
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
 SAP bağlayıcısının Şu anda bilinen sorunları ve sınırlamaları aşağıda verilmiştir:
-
-* Yalnızca tek bir SAP çağrısı veya iletisi tRFC ile birlikte kullanılır. Aynı oturumda birden çok tRFC çağrısı yapma gibi BAPı COMMIT model desteklenmez.
-
-* SAP tetikleyicisi SAP 'den Batch IDoc 'Ları almayı desteklemez. Bu eylem, SAP sisteminiz ile veri ağ geçidi arasında RFC bağlantı hatasına yol açabilir.
 
 * SAP tetikleyicisi, veri ağ geçidi kümelerini desteklemez. Bazı yük devretme durumlarında, SAP sistemiyle iletişim kuran veri ağ geçidi düğümü etkin düğümden farklı olabileceğinden beklenmeyen davranışlara neden olur. Gönderme senaryolarında, veri ağ geçidi kümeleri desteklenir.
 

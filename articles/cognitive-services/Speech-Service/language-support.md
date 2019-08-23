@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815265"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970380"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Konuşma Hizmetleri için dil ve bölge desteği
 
@@ -24,40 +24,40 @@ Farklı diller farklı konuşma Hizmetleri işlevleri için desteklenir. Aşağ�
 
 ## <a name="speech-to-text"></a>Konuşmayı Metne Dönüştürme
 
-Hem Microsoft konuşma tanıma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Farklı düzeyde özelleştirme, her dil için kullanılabilir.
+Hem Microsoft konuşma tanıma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. Doğruluğu artırmak için, bir dil alt kümesi için, sesli ve ınsan etiketli yazılı döküm veya Ilgili metin karşıya yüklenirken özelleştirme sunulur: Tümceler.  Telaffuz özelleştirmesi Şu anda yalnızca en-US ve de de vardır. Özelleştirme hakkında daha fazla [](how-to-custom-speech.md)bilgi edinin.
 
-  Kod | Dil | [Akustik uyarlama](how-to-customize-acoustic-models.md) | [Dil uyarlama](how-to-customize-language-model.md) | [Söyleniş uyarlama](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar EG | Arapça (Mısır) modern standart | Hayır | Evet | Hayır
- CA-ES | Katalanca | Hayır | Hayır | Hayır
- v-DK | Danca (Danimarka) | Hayır | Hayır | Hayır
- de-DE | Almanca (Almanya) | Evet | Evet | Evet
- tr-AU | İngilizce (Avustralya) | Hayır | Evet | Hayır
- CA tr | İngilizce (Kanada) | Hayır | Evet | Hayır
- en-GB | İngilizce (Birleşik Krallık) | Hayır | Evet | Hayır
- tr-giriş | English (India) | Evet | Evet | Hayır
- tr NZ | İngilizce (Yeni Zelanda) | Hayır | Evet | Hayır 
- en-US | İngilizce (ABD) | Evet | Evet | Evet
- es-ES | İspanyolca (İspanya) | Evet | Evet | Hayır
- es-MX | İspanyolca (Meksika) | Hayır | Evet | Hayır
- FI-FI | Fince (Finlandiya) | Hayır | Hayır | Hayır
- fr-CA | Fransızca (Kanada) | Hayır | Evet | Hayır
- fr-FR | Fransızca (Fransa) | Evet | Evet | Hayır
- yüksek giriş | Hintçe (Hindistan) | Hayır | Evet | Hayır
- İt-IT | İtalyanca (İtalya) | Evet | Evet | Hayır
- ja-JP | Japonca (Japonya) | Hayır | Evet | Hayır
- ko-KR | Korece (Güney Kore) | Hayır | Evet | Hayır
- NB-yok | Norveççe (Bokmal) (Norveç) | Hayır | Hayır | Hayır
- NL-NL | Hollanda dili (Hollanda) | Hayır | Evet | Hayır
- pl-PL | Lehçe (Polonya) | Hayır | Hayır | Hayır
- pt-BR | Portekizce (Brezilya) | Evet | Evet | Hayır
- pt-PT | Portekizce (Portekiz) | Hayır | Evet | Hayır
- ru-RU | Rusça (Rusya) | Evet | Evet | Hayır
- sv-SE | İsveççe (İsveç) | Hayır | Hayır | Hayır
- zh-CN | Çince (Basitleştirilmiş Mandarin) | Evet | Evet | Hayır
- zh-HK | Çince (Cantoneo, geleneksel) | Hayır | Evet | Hayır
- zh-TW | Çince (Tayvan Mandarin) | Hayır | Evet | Hayır
- TH TH | Tayca (Tayland) | Hayır | Hayır | Hayır
+  Kod | Dil | Desteklenen | Özelleştirilebilir
+ ------|----------|---------------------|---------------------
+ ar EG | Arapça (Mısır) modern standart | Evet | Evet
+ CA-ES | Katalanca | Evet | Hayır
+ v-DK | Danca (Danimarka) | Evet | Hayır
+ de-DE | Almanca (Almanya) | Evet | Evet
+ tr-AU | İngilizce (Avustralya) | Evet | Evet
+ CA tr | İngilizce (Kanada) | Evet | Evet
+ en-GB | İngilizce (Birleşik Krallık) | Evet | Evet
+ tr-giriş | English (India) | Evet | Evet
+ tr NZ | İngilizce (Yeni Zelanda) | Evet | Evet
+ en-US | İngilizce (ABD) | Evet | Evet
+ es-ES | İspanyolca (İspanya) | Evet | Evet
+ es-MX | İspanyolca (Meksika) | Evet | Evet
+ FI-FI | Fince (Finlandiya) | Evet | Hayır
+ fr-CA | Fransızca (Kanada) | Evet | Evet
+ fr-FR | Fransızca (Fransa) | Evet | Evet
+ yüksek giriş | Hintçe (Hindistan) | Evet | Evet
+ İt-IT | İtalyanca (İtalya) | Evet | Evet
+ ja-JP | Japonca (Japonya) | Evet | Evet
+ ko-KR | Korece (Güney Kore) | Evet | Evet
+ NB-yok | Norveççe (Bokmal) (Norveç) | Evet | Hayır
+ NL-NL | Hollanda dili (Hollanda) | Evet | Evet
+ pl-PL | Lehçe (Polonya) | Evet | Hayır
+ pt-BR | Portekizce (Brezilya) | Evet | Evet
+ pt-PT | Portekizce (Portekiz) | Evet | Evet
+ ru-RU | Rusça (Rusya) | Evet | Evet
+ sv-SE | İsveççe (İsveç) | Evet | Hayır
+ zh-CN | Çince (Basitleştirilmiş Mandarin) | Evet | Evet
+ zh-HK | Çince (Cantoneo, geleneksel) | Evet | Evet
+ zh-TW | Çince (Tayvan Mandarin) | Evet | Evet
+ TH TH | Tayca (Tayland) | Evet | Hayır 
 
 
 ## <a name="text-to-speech"></a>Metin okuma

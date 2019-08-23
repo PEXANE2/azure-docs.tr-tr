@@ -1,7 +1,7 @@
 ---
-title: Özel bir Docker görüntüsü kullanarak modeller dağıtma
+title: Özel bir Docker temel görüntüsü ile modeller dağıtma
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmet modellerinizi dağıttığınızda özel bir Docker görüntüsü kullanmayı öğrenin. Eğitilen bir model dağıtıldığında, görüntüyü, Web sunucusunu ve hizmeti çalıştırmak için gereken diğer bileşenleri barındırmak için bir Docker görüntüsü oluşturulur. Azure Machine Learning hizmet sizin için varsayılan bir görüntü sağladığından, kendi görüntünüzü da kullanabilirsiniz.
+description: Azure Machine Learning hizmet modellerinizi dağıttığınızda özel bir Docker temel görüntüsünü nasıl kullanacağınızı öğrenin. Eğitilen bir model dağıtırken, modelinizi çıkarım için çalıştırmak üzere bir temel kapsayıcı görüntüsü dağıtılır. Azure Machine Learning hizmet sizin için varsayılan bir temel görüntü sağladığından, kendi temel görüntünüzü da kullanabilirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990513"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971513"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak model dağıtma
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 
-Eğitim modellerini Azure Machine Learning hizmetiyle dağıtırken özel bir Docker görüntüsü kullanmayı öğrenin.
+Eğitim modellerini Azure Machine Learning hizmeti ile dağıttığınızda özel bir Docker temel görüntüsünü nasıl kullanacağınızı öğrenin.
 
-Eğitilen bir modeli bir Web hizmetine veya IoT Edge cihaza dağıttığınızda, bir Docker görüntüsü oluşturulur. Bu görüntü modeli, Conda ortamını ve modeli kullanmak için gereken varlıkları içerir. Ayrıca, bir Web hizmeti olarak dağıtıldığında gelen istekleri işlemek için bir Web sunucusu ve Azure IoT Hub ile çalışmak için gereken bileşenleri içerir.
+Eğitilen bir modeli bir Web hizmetine veya IoT Edge cihaza dağıttığınızda, gelen istekleri işlemek için bir Web sunucusu içeren bir paket oluşturulur.
 
-Azure Machine Learning hizmet varsayılan bir Docker görüntüsü sağladığından bir tane oluşturmak için endişelenmenize gerek kalmaz. Ayrıca, _temel görüntü_olarak oluşturduğunuz özel bir görüntü de kullanabilirsiniz. Bir temel görüntü, bir dağıtım için görüntü oluşturulduğunda başlangıç noktası olarak kullanılır. Temel işletim sistemi ve bileşenleri sağlar. Dağıtım işlemi daha sonra modelinize, Conda ortamı ve diğer varlıklar gibi ek bileşenleri, dağıtılmadan önce görüntüye ekler.
+Azure Machine Learning hizmeti, bir tane oluşturma konusunda endişelenmenize gerek kalmaması için varsayılan bir Docker temel görüntüsü sağlar. Ayrıca, _temel görüntü_olarak oluşturduğunuz özel bir temel görüntü de kullanabilirsiniz. 
 
-Genellikle, bileşen sürümlerini denetlemek veya dağıtım sırasında zaman kazanmak istediğinizde özel bir görüntü oluşturursunuz. Örneğin, belirli bir Python, Conda veya başka bir bileşen sürümünde standartlaştırmak isteyebilirsiniz. Ayrıca, modelinize gereken yazılımı yükleme işleminin uzun sürme süresini de yüklemek isteyebilirsiniz. Temel görüntü oluştururken yazılımı yüklemek, her dağıtım için yüklemeniz gerekmediği anlamına gelir.
+Bir temel görüntü, bir dağıtım için görüntü oluşturulduğunda başlangıç noktası olarak kullanılır. Temel işletim sistemi ve bileşenleri sağlar. Dağıtım işlemi daha sonra modelinize, Conda ortamı ve diğer varlıklar gibi ek bileşenleri, dağıtılmadan önce görüntüye ekler.
+
+Genellikle, bağımlılıklarınızı yönetmek için Docker 'ı kullanmak istediğinizde, bileşen sürümleri üzerinde daha sıkı denetim sağlamak veya dağıtım sırasında zamandan tasarruf etmek istediğinizde özel bir temel görüntü oluşturursunuz. Örneğin, belirli bir Python, Conda veya başka bir bileşen sürümünde standartlaştırmak isteyebilirsiniz. Ayrıca, modelinize gereken yazılımı yükleme işleminin uzun sürme süresini de yüklemek isteyebilirsiniz. Temel görüntü oluştururken yazılımı yüklemek, her dağıtım için yüklemeniz gerekmediği anlamına gelir.
 
 > [!IMPORTANT]
 > Bir modeli dağıtırken, Web sunucusu veya IoT Edge bileşenleri gibi temel bileşenleri geçersiz kılamazsınız. Bu bileşenler, Microsoft tarafından sınanmış ve desteklenen, bilinen bir çalışma ortamı sağlar.
@@ -35,8 +37,8 @@ Genellikle, bileşen sürümlerini denetlemek veya dağıtım sırasında zaman 
 
 Bu belge iki bölüme ayrılmıştır:
 
-* Özel görüntü oluşturma: Özel görüntü oluşturma ve Azure CLı ve Machine Learning CLı kullanarak Azure Container Registry kimlik doğrulamasını yapılandırma konusunda yöneticilere ve DevOps 'a bilgi sağlar.
-* Özel görüntü kullan: Python SDK veya ML CLı 'dan eğitilen bir model dağıtıldığında, özel görüntüler kullanarak veri bilimcileri ve DevOps/MLOps hakkında bilgi sağlar.
+* Özel bir temel görüntü oluşturun: Özel görüntü oluşturma ve Azure CLı ve Machine Learning CLı kullanarak Azure Container Registry kimlik doğrulamasını yapılandırma konusunda yöneticilere ve DevOps 'a bilgi sağlar.
+* Özel bir temel görüntü kullanarak model dağıtma: Python SDK veya ML CLı 'dan eğitilen bir model dağıtıldığında, veri bilimcilerine ve DevOps/ML mühendislerine ilişkin bilgiler sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -47,7 +49,7 @@ Bu belge iki bölüme ayrılmıştır:
 * Internet üzerinden erişilebilen bir [Azure Container Registry](/azure/container-registry) veya başka bir Docker kayıt defteri.
 * Bu belgedeki adımlarda, model dağıtımının bir parçası olarak bir __çıkarım yapılandırma__ nesnesi oluşturma ve kullanma hakkında bilgi sahibi olduğunuz varsayılır. Daha fazla bilgi için, uygulamasının [dağıtılacağı ve nasıl yapılacağı hakkında](how-to-deploy-and-where.md#prepare-to-deploy)"dağıtmaya hazırlanma" bölümüne bakın.
 
-## <a name="create-a-custom-image"></a>Özel görüntü oluşturma
+## <a name="create-a-custom-base-image"></a>Özel bir temel görüntü oluşturma
 
 Bu bölümdeki bilgiler, Docker görüntülerini depolamak için bir Azure Container Registry kullandığınızı varsayar. Azure Machine Learning hizmeti için özel görüntüler oluşturmayı planlarken aşağıdaki denetim listesini kullanın:
 
@@ -109,7 +111,7 @@ Azure Machine Learning hizmetini kullanarak modeller zaten eğitilen veya dağı
 
     `<registry_name>` Değer, çalışma alanınızın Azure Container Registry adıdır.
 
-### <a name="build-a-custom-image"></a>Özel görüntü oluşturma
+### <a name="build-a-custom-base-image"></a>Özel bir temel görüntü oluşturma
 
 Bu bölümdeki adımlar, Azure Container Registry özel bir Docker görüntüsü oluşturma konusunda yol gösterir.
 
@@ -162,7 +164,7 @@ Azure Container Registry görüntü oluşturma hakkında daha fazla bilgi için 
 
 Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında daha fazla bilgi için, bkz. [ilk görüntünüzü özel bir Docker kapsayıcı kayıt defterine gönderme](/azure/container-registry/container-registry-get-started-docker-cli).
 
-## <a name="use-a-custom-image"></a>Özel görüntü kullanma
+## <a name="use-a-custom-base-image"></a>Özel bir temel görüntü kullanma
 
 Özel bir görüntü kullanmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
@@ -174,7 +176,7 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
     Bu bilgilere sahip değilseniz, görüntünüzü içeren Azure Container Registry için yöneticiye konuşun.
 
-### <a name="publicly-available-images"></a>Herkese açık görüntüler
+### <a name="publicly-available-base-images"></a>Genel kullanıma açık temel görüntüler
 
 Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şekilde erişilebilir bir depoda çeşitli Docker görüntüleri sağlar:
 

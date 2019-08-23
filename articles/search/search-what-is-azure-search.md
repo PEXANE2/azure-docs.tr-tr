@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558602"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899678"
 ---
 # <a name="what-is-azure-search"></a>Azure Search nedir?
 
-Azure Search, Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'Ler ve araçlar sağlayan bir hizmet olarak arama bir bulut çözümüdür. Özel kodunuz veri alımı (Dizin oluşturma) çağırır, sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, Azure Search işlevleri kullanılarak istemci kodunuzda tanımlanmıştır ve Azure Search oluşturduğunuz, sahip olduğunuz kalıcı bir dizin üzerinde sorgu yürütülede ve bu durumda depolanıyor.
+Azure Search, Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'Ler ve araçlar sağlayan bir hizmet olarak arama bir bulut çözümüdür. Özel kodunuz, bir dizin oluşturmak ve yüklemek için veri alımı (Dizin oluşturma) çağırır. Diğer taraftan, uygulama kodunuz sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, sizin oluşturduğunuz, sahip olduğunuz ve Azure Search depoladığınız kalıcı bir dizin üzerinde sorgu yürütme ile Azure Search işlevleri kullanılarak istemcinize göre tanımlanır.
 
 ![Azure Search mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search mimarisi")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 Bilgi alma sürecinin karmaşıklığını maskeleyen basit bir [REST API’si](/rest/api/searchservice/) veya [.NET SDK’sı](search-howto-dotnet-sdk.md) aracılığıyla bu işlev sunulur. Azure portalı, API’lere ek olarak dizinlerinizin prototipini oluşturma ve dizinlerinizi sorgulama araçlarıyla birlikte yönetim ve içerik yönetimi desteği sağlar. Hizmet bulutta çalıştığından, altyapı ve kullanılabilirlik Microsoft tarafından yönetilir.
 
@@ -36,7 +31,7 @@ Azure Search aşağıdaki uygulama senaryoları için uygundur:
 
 + Aramayla ilgili özelliklerin kolay uygulanması. Azure Search API 'Ler sorgu oluşturma, çok yönlü gezinme, filtreleri (coğrafi uzamsal arama dahil), eş anlamlı eşleme, typeahead sorguları ve ilgi ayarlamayı basitleştirir. Yerleşik özellikleri kullanarak, ticari Web araması altyapılarına benzer bir arama deneyimine yönelik son kullanıcı beklentilerini karşılamasını sağlayabilirsiniz.
 
-+ Yapılandırılmamış metinleri dizine ekleme veya görüntü dosyalarından metin ve bilgi ayıklama. Azure Search bilişsel arama özelliği, bir dizin oluşturma işlem hattına AI işleme ekliyor. Bazı yaygın kullanım örnekleri, taranmış belge üzerinde OCR, büyük belgeler üzerinden varlık tanıma ve anahtar tümceciği ayıklama, dil algılama ve metin çevirisi ve yaklaşım analizi içerir.
++ Yapılandırılmamış metinleri dizine ekleme veya görüntü dosyalarından metin ve bilgi ayıklama. Azure Search bilişsel [arama](cognitive-search-concept-intro.md) özelliği, bir dizin oluşturma Işlem hattına AI işleme ekliyor. Bazı yaygın kullanım örnekleri, taranmış belge üzerinde OCR, büyük belgeler üzerinden varlık tanıma ve anahtar tümceciği ayıklama, dil algılama ve metin çevirisi ve yaklaşım analizi içerir.
 
 + Dil gereksinimleri, Azure Search özel ve dil Çözümleyicileri kullanılarak karşılanır. Ingilizce olmayan içeriğiniz varsa Azure Search hem Lucene Çözümleyicileri hem de Microsoft 'un doğal dil işlemcilerini destekler. Ayrıca, vurguları, aksanların filtrelenmesi gibi ham içeriğin özel işlemesini elde etmek için de yapılandırabilirsiniz.
 
@@ -93,7 +88,9 @@ Bir dizin tanımladıktan sonra içeriği karşıya yüklemeye hazır olursunuz.
 Güncelleştirilmiş belgeleri dizine göndermek için kullanılan SDK veya REST API’leri aracılığıyla itme modeli sağlanır. JSON biçimini kullanarak hemen hemen her veri kümesinden verileri itebilirsiniz. Verileri yüklemeye ilişkin kılavuz için bkz. [Belgeler ekleme, güncelleştirme veya silme](/rest/api/searchservice/addupdate-or-delete-documents) veya [.NET SDK’sını kullanma](search-howto-dotnet-sdk.md).
 
 ### <a name="step-4-search"></a>4\. Adım: Ara
-Bir dizin doldurulduktan sonra, REST API’si veya .NET SDK’sı ile basit HTTP isteklerini kullanarak hizmet uç noktanıza [arama sorguları düzenleyebilirsiniz](/rest/api/searchservice/Search-Documents).
+Bir dizini doldurduktan sonra, [REST API](/rest/api/searchservice/Search-Documents) veya [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations)ile basit http isteklerini kullanarak hizmet uç noktanıza [arama sorguları](search-query-overview.md) verebilirsiniz.
+
+Kullanıcı girişi toplayan ve sonuçları işleyen bir Web sayfasını derlemek ve genişletmek için [ilk arama uygulamanızı oluşturun](tutorial-csharp-create-first-app.md) . Ayrıca, var olan bir dizini sorgulamak için Azure portal ' de etkileşimli REST çağrıları veya yerleşik [Arama Gezgini](search-explorer.md) [için Postman](search-get-started-postman.md) kullanabilirsiniz.
 
 ## <a name="how-it-compares"></a>Karşılaştırma
 

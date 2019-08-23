@@ -3,16 +3,16 @@ title: Geliştirme ve test için Azure depolama öykünücüsünü kullanma | Mi
 description: Azure depolama öykünücüsü, Azure depolama uygulamalarınızı geliştirmek ve test etmek için ücretsiz bir yerel geliştirme ortamı sağlar. İsteklerin nasıl yetkilendirildiğini, uygulamanızdan öykünücüye nasıl bağlanacağınızı ve komut satırı aracını nasıl kullanacağınızı öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/10/2018
+ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: a50b397ffe1cfc44d4234dcfbee1618e9fb2506c
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877635"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900353"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 

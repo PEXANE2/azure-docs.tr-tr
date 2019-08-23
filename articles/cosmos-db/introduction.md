@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384127"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905282"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
@@ -23,6 +23,11 @@ Azure Cosmos DB, Microsoft 'un genel olarak dağıtılmış, çok modelli verita
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB’yi ücretsiz olarak deneyin](https://azure.microsoft.com/try/cosmosdb/)
+
+Ayrıca, Azure Cosmos DB üzerinde uygulamalarınızı oluşturmayı veya geçirmeyi hızlandırmak için [Cosmos DB önyükleme programını](https://azurecosmosdb.github.io/CosmosBootstrap/) da kullanabilirsiniz. Bu programa kaydolduğunuzda, Azure Cosmos DB mühendisler projenize yardımcı olmak üzere atanır ve verilerinizi Azure Cosmos DB veya Azure Cosmos DB yeni uygulamalar oluşturmak için geçirmenize yardımcı olabilirler.
+
+> [!div class="nextstepaction"]
+> [Cosmos DB önyükleme programına kaydolun](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ![Azure Cosmos DB, Microsoft'un esnek ölçek genişletme, garantili düşük gecikme süresi, beş tutarlılık modeli ve kapsamlı SLA garantisi ile genel olarak dağıtılmış veritabanı hizmetidir](./media/introduction/azure-cosmos-db.png)
 

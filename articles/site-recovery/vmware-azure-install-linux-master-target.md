@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261429"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904407"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükler
 Sanal makinelerinizin yükünü Azure 'a devretmek için sanal makineleri şirket içi siteye geri alabilirsiniz. Yeniden yük devretmek için sanal makineyi Azure 'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için bir şirket içi ana hedef sunucusuna ihtiyacınız vardır. 
@@ -67,7 +67,7 @@ DVD sürücüsünde Ubuntu 16.04.2 minimal 64 bit ISO tutun ve sistemi başlatı
 
 1.  Tercih ettiğiniz dil olarak **İngilizce** ' yi seçin ve ardından **ENTER**' u seçin.
     
-    ![Dil Seçin](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Dil seç](./media/vmware-azure-install-linux-master-target/image1.png)
 1. **Ubuntu sunucusunu yükleyip** **ENTER**' u seçin.
 
     ![Ubuntu sunucusu yüklemeyi seçin](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -91,7 +91,7 @@ DVD sürücüsünde Ubuntu 16.04.2 minimal 64 bit ISO tutun ve sistemi başlatı
 
 1. Bir kullanıcı hesabı oluşturmak için Kullanıcı adını girip **devam**' ı seçin.
 
-      ![Kullanıcı hesabı oluşturma](./media/vmware-azure-install-linux-master-target/image9.png)
+      ![Bir kullanıcı hesabı oluşturun](./media/vmware-azure-install-linux-master-target/image9.png)
 
 1. Yeni Kullanıcı hesabının parolasını girip **devam**' ı seçin.
 
@@ -214,12 +214,11 @@ Linux kullanarak indirmek için şunu yazın:
 
 ### <a name="apply-custom-configuration-changes"></a>Özel yapılandırma değişikliklerini Uygula
 
-Özel yapılandırma değişikliklerini uygulamak için aşağıdaki adımları kullanın:
-
+Özel yapılandırma değişikliklerini uygulamak için, kök kullanıcı olarak aşağıdaki adımları kullanın:
 
 1. İkiliyi kaldırmak için aşağıdaki komutu çalıştırın.
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![Çalıştırılacak komutun ekran görüntüsü](./media/vmware-azure-install-linux-master-target/image16.png)
 
@@ -343,7 +342,7 @@ Yükleyiciyi çalıştırın. Aracının ana hedefte yüklü olduğunu otomatik 
 
 **Sürüm** alanının ana hedefin sürüm numarasını sunabilme durumunu görürsünüz.
 
-## <a name="common-issues"></a>Genel sorunlar
+## <a name="common-issues"></a>Sık karşılaşılan sorunlar
 
 * Ana hedef gibi yönetim bileşenlerinde Depolama vMotion 'ı etkinleştirdiğinizden emin olun. Ana hedef başarılı bir şekilde yeniden korunduktan sonra taşınırsa, sanal makine diskleri (VMDK) ayrılamıyor. Bu durumda yeniden çalışma başarısız olur.
 

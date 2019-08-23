@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5174b46bae5bbcc18f5a2575fb68cce1305507a3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a1a97e7521e9772b1d13049d42e67d7ac318fffc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826594"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907371"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanında SQL veritabanına veri kopyalama
 Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki işlem hattı, verileri Azure Blob Depolama alanından SQL veritabanına kopyalar. Bu öğreticideki yapılandırma düzeni, dosya tabanlı bir veri deposundan ilişkisel bir veri deposuna kopyalama için geçerlidir. Kaynak ve havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
@@ -172,6 +172,9 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 1. İşlem hattının bulunduğu sekmeye gidin ve **Havuz Veri Kümesi**’nde **OutputSqlDataset** seçeneğinin belirlendiğinden emin olun.
 
     ![İşlem hattı sekmesi](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+
+[Kopyalama etkinliğinde şema eşlemesini](copy-activity-schema-and-type-mapping.md) izleyerek kaynak şemasını isteğe bağlı hedef şemasına eşleyebilirsiniz
+    
 ## <a name="validate-the-pipeline"></a>İşlem hattını doğrulama
 İşlem hattını doğrulamak için araç çubuğundan **Doğrula**'yı seçin.
  

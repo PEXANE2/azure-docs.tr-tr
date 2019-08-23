@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535208"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982335"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -65,7 +65,7 @@ Genellikle, izleyiciler farklıdır:
 
 Bilişsel hizmet, sizin için eğitilen bir model sağlar. Bu, verileri ve algoritmayı bir REST API birlikte ve bir SDK 'dan kullanılabilir hale getirir. Senaryonuza bağlı olarak bu hizmeti dakikalar içinde de uygulayabilirsiniz.  Bilişsel hizmet, resimlerdeki metin veya öğe tanımlamalarında anahtar ifadeler gibi genel sorunlara yanıt verir. 
 
-Machine Learning, genellikle başarıyla uygulanması için daha uzun bir süre gerektiren bir işlemdir. Bu süre, bir bilişsel hizmet tarafından sunulan aynı işlevselliğe ulaşmak için veri toplama, Temizleme, dönüştürme, algoritma seçimi, model eğitimi ve dağıtım üzerinde harcanmıştır. Machine Learning sayesinde, yüksek düzeyde özelleştirilmiş veya belirli sorunlar dahil olmak üzere her türlü soruna yanıtlar vermek mümkündür. Bu makine öğrenimi sorunları aşağıdakilerden birini veya daha fazlasını gerektirir: konu, makine öğrenimi ve veri bilimi.
+Machine Learning, genellikle başarıyla uygulanması için daha uzun bir süre gerektiren bir işlemdir. Bu süre, bir bilişsel hizmet tarafından sunulan aynı işlevselliğe ulaşmak için veri toplama, Temizleme, dönüştürme, algoritma seçimi, model eğitimi ve dağıtım üzerinde harcanmıştır. Machine Learning sayesinde, yüksek düzeyde özelleştirilmiş ve/veya belirli sorunlara yanıt vermek mümkündür. Machine Learning sorunları, sorunun önemli ve verilerin yanı sıra veri bilimi 'nin uzmanlığı ile ilgili konular hakkında bilgi sahibi olmanızı gerektirir.
 
 ## <a name="what-kind-of-data-do-you-have"></a>Ne tür veriler kullanıyorsunuz?
 

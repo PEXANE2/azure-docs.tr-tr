@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717683"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972513"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -25,9 +25,30 @@ Site Recovery özellikleri için önerileriniz varsa, [görüşlerinizi duymak](
 
 Site Recovery güncelleştirme desteği ve yönergeleri için [Bu makaleyi gözden geçirin](service-updates-how-to.md) .
 
+## <a name="updates-august-2019"></a>Güncelleştirmeler (Ağustos 2019)
+
+### <a name="update-rollup-39"></a>Güncelleştirme paketi 39
+
+[Güncelleştirme paketi 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
+**Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
+
+Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
+
+**Özelliği** | **Ayrıntılar**
+--- | ---
+**Azure AD olmadan şifreleme** | Azure AD uygulaması olmayan şifreleme artık Windows çalıştıran yönetilen disklere yönelik Azure VM çoğaltma için desteklenmektedir.
+**Yük devretme için ağ kaynakları** | Başka bir bölgeye yük devrettikten sonra, ağ kaynağı ayarlarını (NSG 'ler, Yük Dengeleme, genel IP adresi) bir VM 'ye ekleyebilirsiniz. 
+
 ## <a name="updates-july-2019"></a>Güncelleştirmeler (Temmuz 2019)
 
-### <a name="update-rollup-38"></a>Güncelleştirme paketi 38
+### <a name="update-rollup-38"></a>Toplu güncelleştirme 38
 
 [Güncelleştirme paketi 38](https://support.microsoft.com/help/4513507/) aşağıdaki güncelleştirmeleri sağlar.
 

@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489765"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905710"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure 'da Hizmet Eşlemesi çözümü kullanma
-Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Sunucu Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
+
+Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Hizmet Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
 
 Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadır. Bu çözüme yönelik önkoşulları yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakışı etkinleştirme](vminsights-enable-overview.md#prerequisites). Özetlemek gerekirse, şunlar gerekir:
 
@@ -398,7 +399,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 | `MaliciousIp` |Remoteıp adresi |
 | `IndicatorThreadType` |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*,  *Listem*.   |
 | `Description` |Gözlemlenen tehdit açıklaması. |
-| `TLPLevel` |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
+| `TLPLevel` |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil*,, ve *kırmızı*. |
 | `Confidence` |Değerler *0 – 100*' dir. |
 | `Severity` |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
 | `FirstReportedDateTime` |Sağlayıcı göstergeyi ilk kez raporladı. |
@@ -407,7 +408,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 | `ReportReferenceLink` |Verilen bir observable ile ilgili raporların bağlantıları. |
 | `AdditionalInformation` |, Gözlemlenen tehdit hakkında, varsa ek bilgiler sağlar. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL kayıtları
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL kayıtları
 
 Bir *ServiceMapComputer_CL* türüne sahip kayıtlar hizmet eşlemesi aracıları olan sunucular için envanter verileri vardır. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
 
@@ -433,7 +434,7 @@ Bir *ServiceMapComputer_CL* türüne sahip kayıtlar hizmet eşlemesi aracılar�
 | `VirtualMachineName_s` | VM 'nin adı |
 | `BootTime_t` | Önyükleme saati |
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL tür kayıtları
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL tür kayıtları
 
 Bir *ServiceMapProcess_CL* türüne sahip kayıtlar, hizmet eşlemesi aracıları olan sunucularda TCP bağlantılı işlemlere yönelik envanter verileri vardır. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
 
@@ -554,16 +555,57 @@ Microsoft hizmet eşlemesi hizmeti kullanımınız vasıtasıyla kullanım ve pe
 
 Veri toplama ve kullanım hakkında daha fazla bilgi için bkz: [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [günlük aramaları](../../azure-monitor/log-query/log-query-overview.md) hakkında daha fazla bilgi edinin.
 
-
 ## <a name="troubleshooting"></a>Sorun giderme
 
-[Yapılandırma hizmet eşlemesi belge konusunun sorun giderme bölümüne]( service-map-configure.md#troubleshooting)bakın.
+Bu bölümde, yüklenmesini veya çalıştırılmasını hizmet eşlemesi herhangi bir sorun varsa, size yardımcı olabilir. Sorununuzu hala çözümleyememesi durumunda Microsoft Support'ne başvurun.
 
+### <a name="dependency-agent-installation-problems"></a>Bağımlılık Aracısı yükleme sorunları
+
+#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici için yeniden başlatma ister
+Bağımlılık Aracısı *genellikle* yükleme veya kaldırma sonrasında yeniden başlatma gerektirmez. Ancak, bazı nadir durumlarda, Windows Server bir yükleme işlemine devam etmek için bir yeniden başlatma gerektirir. Bu durum, bir bağımlılık olduğunda, genellikle Microsoft Visual C++ yeniden dağıtılabilir kitaplığı, kilitli bir dosya nedeniyle yeniden başlatma gerektirdiğinde oluşur.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>İleti "bağımlılık Aracısı yüklenemiyor: Visual Studio çalışma zamanı kitaplıkları yüklenemedi (kod = [code_number]) "görünür
+
+Microsoft Dependency Aracısı, Microsoft Visual Studio çalışma zamanı kitaplıkları oluşturulmuştur. Kitaplık yüklenirken bir sorun varsa bir ileti alırsınız. 
+
+Çalışma Zamanı Kitaplığı yükleyicileri %LOCALAPPDATA%\temp klasöründe günlükleri oluşturun. Dosya `dd_vcredist_arch_yyyymmddhhmmss.log`, *Arch* 'in `x86` veya `amd64` ve *yyyyaaggssddss* 'in, günlük oluşturulduğu tarih ve saat (24 saatlik saat) olduğu yerdir. Günlük yükleme engelleme sorunu hakkında ayrıntılar sağlar.
+
+Önce [en son çalışma zamanı kitaplıklarını](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yüklemek yararlı olabilir.
+
+Aşağıdaki tabloda, kod sayıları ve önerilen çözümler listelenmektedir.
+
+| Kod | Açıklama | Çözüm |
+|:--|:--|:--|
+| 0x17 | Kitaplık yükleyici, yüklü olmayan bir Windows update gerektirir. | En son kitaplık yükleyicisi günlüğe bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır `Error 0x80240017: Failed to execute MSU package,` gelmesi, KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows makalesinde evrensel C çalışma zamanı](https://support.microsoft.com/kb/2999226) 'nın Önkoşullar bölümündeki yönergeleri izleyin. Windows Update'i çalıştırın ve birden çok kez önkoşulları yüklemek için yeniden başlatma gerekebilir.<br><br>Microsoft Dependency aracı yükleyiciyi yeniden çalıştırın. |
+
+### <a name="post-installation-issues"></a>Yükleme sonrası sorunları
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Sunucu hizmeti haritada görünmüyor
+
+Bağımlılık aracısı yüklemeniz başarılı olduysa, ancak makinenizi Hizmet Eşlemesi çözümde görmezsiniz:
+* Bağımlılık Aracısı'nı başarıyla yüklü mü? Bu hizmet yüklü olup olmadığını denetliyor ve çalıştırarak doğrulayabilirsiniz.<br><br>
+**Windows**: **Microsoft bağımlılık Aracısı**adlı hizmeti arayın.
+**Linux**: Çalışan işlem **Microsoft-Dependency-Agent**' ı arayın.
+
+* [Log Analytics ücretsiz katmanda](https://azure.microsoft.com/pricing/details/monitor/)misiniz? Ücretsiz plan, beş adede kadar benzersiz Hizmet Eşlemesi makineye izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm makineler Hizmet Eşlemesi görünmez.
+
+* Sunucunuz Azure Izleyici günlüklerine günlük ve performans verileri gönderiyor mu? Azure Monitor\Logs ' e gidin ve bilgisayarınız için aşağıdaki sorguyu çalıştırın: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Sonuçlar arasında olaylar çeşitli mı aldınız? Verilerin güncel mi? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve çalışma alanıyla iletişim kuruyor. Aksi takdirde, makinenizde aracıyı kontrol edin: [Linux sorun giderme Için](../platform/agent-linux-troubleshoot.md) [Windows sorun giderme](../platform/agent-windows-troubleshoot.md) veya Log Analytics Aracısı Log Analytics Aracısı.
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Sunucu, hizmet eşlemesinde görünür ancak hiçbir işlem sahiptir
+
+Makinenizde Hizmet Eşlemesi görürseniz, ancak işlem veya bağlantı verisi yoksa, bağımlılık aracısının yüklü ve çalışır durumda olduğunu ancak çekirdek sürücüsünün yüklenmediğini gösterir. 
+
+(Windows) veya `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) öğesini kontrol edin. `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` Dosyanın son satırları çekirdek neden yüklenmedi belirtmeniz gerekir. Örneğin, çekirdek güncelleştirilmiş çekirdek Linux üzerinde desteklenmeyebilir.
 
 ## <a name="feedback"></a>Geri Bildirim
 

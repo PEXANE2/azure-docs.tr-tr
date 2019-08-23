@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872383"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897442"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -108,11 +108,11 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
 
 1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınızı seçin. __Genel bakış__ bölümünde, çalışma alanının Azure Container Registry erişmek Için __kayıt defteri__ bağlantısını kullanın.
 
-    ![Çalışma alanı için genel bakış ekran görüntüsü](media/how-to-deploy-app-service/workspace-overview.png)
+    [![Çalışma alanı için genel bakış ekran görüntüsü](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
 
 2. Azure Container Registry, __depolar__' ı seçin ve ardından dağıtmak istediğiniz __görüntü adını__ seçin. Dağıtmak istediğiniz sürüm için __...__ girişini seçin ve ardından __Web uygulamasına dağıtın__.
 
-    ![ACR 'den bir Web uygulamasına dağıtmanın ekran görüntüsü](media/how-to-deploy-app-service/deploy-to-web-app.png)
+    [![ACR 'den bir Web uygulamasına dağıtmanın ekran görüntüsü](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
 
 3. Web uygulaması oluşturmak için bir site adı, abonelik, kaynak grubu sağlayın ve App Service planını/konumunu seçin. Son olarak __Oluştur__' u seçin.
 
@@ -122,7 +122,7 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
 
 [Azure Portal](https://portal.azure.com), önceki adımda oluşturulan Web uygulamasını seçin. __Genel bakış__ bölümünden __URL 'yi__kopyalayın. Bu değer, hizmetin __temel URL 'sidir__ .
 
-![Web uygulaması için genel bakış ekran görüntüsü](media/how-to-deploy-app-service/web-app-overview.png)
+[![Web uygulaması için genel bakış ekran görüntüsü](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
 
 İstekleri modele geçiren Web hizmeti konumunda `{baseurl}/score`bulunur. Örneğin: `https://mywebapp.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
 
