@@ -213,7 +213,7 @@ Müşteri için SAP bulutlarından veri kopyalarken aşağıdaki eşlemeler, ist
 | Edm.Double | Double |
 | EDM. Single | Single |
 | EDM. Guid | Guid |
-| EDM. Int16 | Int16 |
+| EDM.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
