@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 569399b2b5f676e11cd6540126e0b26dc0d26198
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 1a42843cc81070cc284863b3736549576e32cb17
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992867"
+ms.locfileid: "70011870"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme
 Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -38,9 +38,9 @@ Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Azure Event Hubs için yerleşik RBAC rolleri
 Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek için aşağıdaki yerleşik RBAC rollerini sağlar:
 
-- [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview): Event Hubs kaynaklarına yönelik tüm erişimi sağlamak için bu rolü kullanın.
-- [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview): Event Hubs kaynaklarına gönderme erişimi vermek için bu rolü kullanın.
-- [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview): Event Hubs kaynaklarına erişim/alan erişimi sağlamak için bu rolü kullanın.
+- [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Event Hubs kaynaklarına yönelik tüm erişimi sağlamak için bu rolü kullanın.
+- [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Event Hubs kaynaklarına gönderme erişimi vermek için bu rolü kullanın.
+- [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Event Hubs kaynaklarına erişim/alan erişimi sağlamak için bu rolü kullanın.
 
 ## <a name="resource-scope"></a>Kaynak kapsamı 
 Bir güvenlik sorumlusuna RBAC rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı sağlamak için her zaman en iyi seçenektir.

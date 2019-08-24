@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951808"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013038"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde ML işlem hatları nelerdir?
 
@@ -69,7 +69,7 @@ Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel
 
 ## <a name="the-python-sdk-for-pipelines"></a>İşlem hatları için Python SDK'sı
 
-Tercih ettiğiniz IDE veya Jupyıter not defterlerinde ML işlem hatlarınızı oluşturmak için [Python SDK 'Yı kullanın](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) . Azure Machine Learning SDK'sı, sıralama ve hiçbir veri bağımlılık mevcut olduğunda işlem hatlarınızı adımları paralelleştirmek için zorunlu yapıları sunar. 
+Tercih ettiğiniz tümleşik geliştirme ortamında (IDE) veya Jupyıter not defterlerinde ML işlem hatlarınızı oluşturmak için [Python SDK 'Yı kullanın](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) . Azure Machine Learning SDK'sı, sıralama ve hiçbir veri bağımlılık mevcut olduğunda işlem hatlarınızı adımları paralelleştirmek için zorunlu yapıları sunar. 
 
 Bildirim temelli veriler bağımlılıkları kullanarak, görevlerinizi en iyi duruma getirebilirsiniz. SDK, veri aktarımı ve model yayımlama gibi ortak görevler için önceden oluşturulmuş modüller çerçevesini içerir. İşlem hatları arasında yeniden kullanılabilir özel adımları uygulayarak, kendi kurallarınızı modellemek için çerçeveyi genişletebilirsiniz. İşlem hedeflerini ve depolama kaynaklarını doğrudan SDK 'dan da yönetebilirsiniz.
 

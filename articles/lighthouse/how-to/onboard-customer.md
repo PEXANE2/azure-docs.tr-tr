@@ -4,15 +4,15 @@ description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri eklene
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934328"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012070"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -20,7 +20,7 @@ Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından a
 
 Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebilirsiniz. Daha sonra, yetkili bir Kullanıcı kiracınızda oturum açtığında, bu kullanıcı, her müşteri kiracısında oturum açmaya gerek kalmadan yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetkilendiribiliyor olabilir.
 
-Müşteri görevlendirmeleri genelinde etkileri izlemek için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Bu ilişkilendirmeyi, kaynakları yönettiğiniz her müşteri kiracısı için ayrı olarak gerçekleştirmeniz gerekeceğini unutmayın. 
 
 > [!NOTE]
 > Müşteriler, Azure Marketi 'Nde yayımladığınız bir yönetilen hizmet teklifi (genel veya özel) satın alındığında otomatik olarak eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan bir teklifle birlikte kullanabilirsiniz.
@@ -71,7 +71,7 @@ Müşteri, aboneliğin ekleme için aşağıdaki yollarla hazırlandığından e
 ### <a name="azure-portal"></a>Azure portal
 
 1. Azure portal aboneliği seçin.
-1. **Kaynak sağlayıcıları**' nı seçin.
+1. **Kaynak sağlayıcıları**’nı seçin.
 1. **Microsoft. ManagedServices** 'ın **kayıtlı**olarak görüntülendiğini doğrulayın.
 
 ### <a name="powershell"></a>PowerShell

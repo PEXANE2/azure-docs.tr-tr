@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 34b4192a75978e90ded7554491a522387f6c663f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650210"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013621"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal bir Linux sanal makinesi oluşturun
 
@@ -110,7 +110,7 @@ sudo apt-get -y install nginx
 
 İstediğiniz web tarayıcısını kullanarak varsayılan NGINX karşılama sayfasını görüntüleyin. Web adresi olarak VM 'nin genel IP adresini yazın. Genel IP adresini VM genel bakış sayfasında veya önceden kullandığınız SSH bağlantı dizesinde bulabilirsiniz.
 
-![Varsayılan NGINX sitesi](./media/quick-create-cli/nginx.png)
+![Varsayılan NGINX sitesi](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 9ea22dfc83883238923de06a764d7ef1f11cb475
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 818bebdb7555d1b515a5c4a3439d11d4a4766e56
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992997"
+ms.locfileid: "70011979"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
 Microsoft Azure kaynakları ve Azure Active Directory (Azure AD) tabanlı uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
@@ -26,9 +26,9 @@ Azure AD güvenlik sorumlusuna bir rol atandığında Azure bu güvenlik sorumlu
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Azure Event Hubs için yerleşik roller
 Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek için aşağıdaki yerleşik RBAC rollerini sağlar:
 
-- [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview): Event Hubs kaynaklarına yönelik tüm erişimi sağlamak için bu rolü kullanın.
-- [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview): Event Hubs kaynaklarına gönderme erişimi vermek için bu rolü kullanın.
-- [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview): Event Hubs kaynaklarına erişim sağlamak için bu rolü kullanın.   
+- [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Event Hubs kaynaklarına yönelik tüm erişimi sağlamak için bu rolü kullanın.
+- [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Event Hubs kaynaklarına gönderme erişimi vermek için bu rolü kullanın.
+- [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Event Hubs kaynaklarına erişim sağlamak için bu rolü kullanın.   
 
 > [!IMPORTANT]
 > Önizleme sürümümüzü, sahip veya katkıda bulunan rolüne Event Hubs veri erişimi ayrıcalıkları eklemeyi destekliyoruz. Bununla birlikte, sahip ve katkıda bulunan rolü için veri erişimi ayrıcalıkları artık onaylanmaz. Sahip veya katkıda bulunan rolü kullanıyorsanız, Azure Event Hubs veri sahibi rolünü kullanarak geçiş yapın.
@@ -74,7 +74,7 @@ Event Hubs kaynaklarını yetkilendirmek için Azure AD kullanmanın ilk adımı
 
 Aşağıdaki görüntüler, bir Web uygulamasını kaydetme adımlarını göstermektedir:
 
-![Bir uygulamayı kaydetme](./media/authenticate-application/app-registrations-register.png)
+![Bir uygulamayı kaydet](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, yeniden yönlendirme URI 'SI için geçerli bir URI belirtebilirsiniz. Yerel uygulamalar için, bu değerin gerçek bir URL olması gerekmez. Web uygulamaları için, yeniden yönlendirme URI 'si, belirteçlerin sağlandığı URL 'YI belirttiğinden geçerli bir URI olmalıdır.
@@ -95,7 +95,7 @@ Uygulamanın bir belirteç istenirken kimliğini kanıtlamak için bir istemci p
 1. Gizli dizi için bir açıklama sağlayın ve istenen süre sonu aralığını seçin.
 1. Yeni Gizliliğin değerini hemen güvenli bir konuma kopyalayın. Fill değeri size yalnızca bir kez görüntülenir.
 
-    ![Gizli anahtar](./media/authenticate-application/client-secret.png)
+    ![İstemci parolası](./media/authenticate-application/client-secret.png)
 
 
 ### <a name="client-libraries-for-token-acquisition"></a>Belirteç alımı için istemci kitaplıkları  

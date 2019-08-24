@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi 'nde güvenlik uyarıları | Microsoft Docs
-description: Bu konuda, güvenlik uyarıları ve Azure Güvenlik Merkezi 'nde bulunan farklı türler açıklanmaktadır.
+description: Bu konu başlığı altında, güvenlik uyarıları ve Azure Güvenlik Merkezi 'nde bulunan farklı türler açıklanmaktadır.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 25fb94afdfe68510c66cff130a3abc8b74d7311d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d905096432c6e05e5386631480e5cc45b5c890c5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647317"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013289"
 ---
-# <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik uyarıları
+# <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
-Bu makalede, Azure Güvenlik Merkezi 'nde (ASC) bulunan farklı güvenlik uyarısı türleri sunulmaktadır. Birçok farklı kaynak türü için çeşitli uyarılar vardır. ASC, hem Azure üzerinde dağıtılan kaynaklar hem de şirket içi ve karma bulut ortamlarında dağıtılan kaynaklar için uyarı oluşturur. 
+Azure Güvenlik Merkezi 'nde birçok farklı kaynak türü için çeşitli uyarılar vardır. Güvenlik Merkezi, Azure 'da dağıtılan ve ayrıca şirket içi ve hibrit bulut ortamlarında dağıtılan kaynaklar için uyarı oluşturur. 
 
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
 
@@ -31,24 +31,24 @@ Uyarılar, güvenlik merkezi 'nin kaynaklarınızın tehditleri algıladığınd
 
 ## <a name="how-does-security-center-detect-threats"></a>Güvenlik Merkezi tehditleri nasıl algılar?
 
-Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini toplar, çözümler ve tümleştirir. Güvenlik Merkezi, tehditleri belirlemek için genellikle birden çok kaynaktan gelen bilgileri ilişkilendirmek üzere bu bilgileri analiz eder.
+Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan ve ağınızdan gelen günlük verilerini toplar, çözümler ve tümleştirir. Ayrıca, güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümleri ile de birlikte kullanılabilir. Güvenlik Merkezi, tehditleri belirlemek için genellikle birden çok kaynaktan gelen bilgileri ilişkilendirmek üzere bu bilgileri analiz eder.
 
-ASC, Azure 'da dağıtılan veya diğer şirket içi ve hibrit bulut ortamlarında dağıtılan kaynakları izler. Tehditleri algılama ve yanıtlama hakkında daha fazla bilgi edinmek için bkz. [Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-detection-capabilities.md#asc-detects).
+Güvenlik Merkezi, kaynakları nerede olabileceğini her türlü ortamda izler. Tehditleri algılama ve yanıtlama hakkında daha fazla bilgi edinmek için bkz. [Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-detection-capabilities.md#asc-detects).
 
 ## <a name="security-alert-types"></a>Güvenlik uyarısı türleri
 
-Aşağıdaki konular, kaynak türlerine göre farklı ASC uyarılarında size rehberlik sağlar:
+Aşağıdaki konular, kaynak türlerine göre farklı uyarılarda size rehberlik sağlar:
 
-* [IaaS VM 'Leri sunucu uyarıları &](security-center-alerts-iaas.md)
+* [IaaS VM 'Leri ve sunucu uyarıları](security-center-alerts-iaas.md)
 * [Yerel işlem uyarıları](security-center-alerts-compute.md)
 * [Veri Hizmetleri uyarıları](security-center-alerts-data-services.md)
 
-Aşağıdaki konularda, Azure üzerinde dağıtılan kaynaklar için ek koruma katmanları uygulamak üzere güvenlik merkezi 'nin Azure altyapısıyla tümleştirerek topladığı farklı telemetrinin nasıl kullanıldığı açıklanmaktadır:
+Aşağıdaki konularda, Azure üzerinde dağıtılan kaynaklar için ek koruma katmanları uygulamak amacıyla, güvenlik merkezi 'nin Azure altyapısıyla tümleştirerek topladığı farklı Telemetriyi nasıl kullandığı açıklanmaktadır:
 
 * [Hizmet katmanı uyarıları](security-center-alerts-service-layer.md)
 * [Azure Güvenlik ürünleriyle tümleştirme](security-center-alerts-integration.md)
 
-## <a name="what-are-alert-incidents"></a>Uyarı olayları nelerdir?
+## <a name="what-are-security-incidents"></a>Güvenlik olayları nelerdir?
 
 Güvenlik olayı, her uyarıyı ayrı ayrı listelemek yerine ilgili uyarıların bir koleksiyonudur. Güvenlik Merkezi, farklı uyarıların ve düşük uygunlukta sinyallerin güvenlik olaylarına ilişkilendirilmesi için [bulut Akıllı uyarı bağıntısını](security-center-alerts-cloud-smart.md) kullanır.
 
@@ -56,27 +56,27 @@ Güvenlik Merkezi, olayları kullanarak bir saldırı kampanyasının ve tüm il
 
 ## <a name="get-started-with-alerts"></a>Uyarıları kullanmaya başlama
 
-ASC tarafından izlenen kaynaklar hakkında daha fazla bilgi edinmek ve ASC tarafından sunulan uyarılara nasıl yanıt verileceğini öğrenmek için aşağıdaki konulara bakın.
+Aşağıda, Güvenlik Merkezi tarafından izlenen kaynaklar hakkında daha fazla bilgi anlamanıza yardımcı olan makaleler ve sunulan uyarılara yanıt verme hakkında yönergeler sağlanmaktadır.
 
-* Hangi platformların ve özelliklerin ASC ile korunduğunu görmek için bkz. [Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler](security-center-os-coverage.md).  
-* Güvenlik olaylarını ve ASC 'nin bunlara nasıl yanıt vereceğini anlamak için bkz. [Azure Güvenlik Merkezi 'Nde güvenlik olaylarını işleme](security-center-incident.md). 
-* Aldığınız uyarıların nasıl yönetileceğini öğrenmek için bkz. [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md).
-* Güvenlik Merkezi 'nin düzgün şekilde yapılandırıldığını doğrulama ve bir test uyarısı alma hakkında bilgi için bkz. [Azure Güvenlik Merkezi 'Nde uyarılar doğrulaması](security-center-alert-validation.md).  
+* [Azure Güvenlik Merkezi tarafından desteklenen platformlar ve özellikler](security-center-os-coverage.md)  
+* [Azure Güvenlik Merkezi 'nde güvenlik olaylarını işleme](security-center-incident.md) 
+* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve ele alma](security-center-managing-and-responding-alerts.md)
+* [Azure Güvenlik Merkezi'nde Uyarıları Doğrulama](security-center-alert-validation.md)  
 
 
 ## <a name="upgrade-to-standard-for-advanced-detections"></a>Gelişmiş algılamalar için standart sürümüne yükseltme
 
 Gelişmiş algılamaları ayarlamak için Azure Güvenlik Merkezi Standart sürümüne yükseltme yapın. 
 
-1. Güvenlik Merkezi menüsünde **güvenlik ilkesi**' ni seçin.
-2. Standart katmana taşımak istediğiniz abonelikler için **Ayarları Düzenle**' ye tıklayın. 
+1. **Güvenlik Merkezi** menüsünde **güvenlik ilkesi**' ni seçin.
+2. Standart katmana taşımak istediğiniz abonelikler için **Ayarları Düzenle**' yi seçin. 
 3. Ayarlar sayfasında **fiyatlandırma katmanı**' nı seçin. 
-   Ayda ücretsiz bir deneme vardır. Daha fazla bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın. 
+   Ayda ücretsiz bir deneme vardır. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede Güvenlik Merkezi 'nde güvenlik uyarılarını ve farklı uyarı türlerini öğrendiniz. Daha fazla bilgi için aşağıdaki konulara bakın:
+Bu makalede, güvenlik merkezi 'nde bulunan farklı Uyarı türleri hakkında bilgi edindiniz. Daha fazla bilgi için bkz.
 
 * [Azure Güvenlik Merkezi planlama ve işlemler kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
-* [Azure Güvenlik MERKEZI SSS](https://docs.microsoft.com/azure/security-center/security-center-faq): Hizmet kullanımı ile ilgili sık sorulan soruları bulun.
+* [Azure Güvenlik Merkezi SSS](https://docs.microsoft.com/azure/security-center/security-center-faq)
 

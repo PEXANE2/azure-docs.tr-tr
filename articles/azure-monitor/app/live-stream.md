@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359424"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012748"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: 1 saniyelik gecikmeyle izleme & Tanıla
 
@@ -107,7 +107,12 @@ Belirli bir sunucu rolü örneğini izlemek isterseniz, sunucuya göre filtre uy
 ![Örneklenmiş canlı arızalar](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>SDK gereksinimleri
+
+### <a name="net"></a>.NET
 Özel Canlı Ölçüm Akışı, [Web için APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)'nın sürümü olan 2.4.0-Beta2 veya daha yeni bir sürümü ile kullanılabilir. NuGet Paket Yöneticisi 'nden "ön sürümü dahil et" seçeneğini belirtmeyi unutmayın.
+
+### <a name="nodejs"></a>Node.js
+Canlı Ölçüm Akışı, [Node. js için Application Insights SDK 'sının](https://npmjs.com/package/applicationinsights)sürüm 1.3.0 veya daha yeni bir sürümü ile kullanılabilir. Kodunuzda SDK 'yı `setSendLiveMetrics(true)` yapılandırırken kullanmayı unutmayın.
 
 ## <a name="secure-the-control-channel"></a>Denetim kanalının güvenliğini sağlama
 Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. İzleme anahtarına ek olarak, kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz.

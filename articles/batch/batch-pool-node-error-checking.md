@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 07/16/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9481263773cc919fecacce80191cf209ec2a1282
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359250"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012483"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -60,11 +60,11 @@ Otomatik ölçeklendirme değerlendirmesi hakkında daha fazla bilgi edinmek iç
 
 Düğüm içeren bir havuzu sildiğinizde, ilk toplu Işlem düğümleri siler. Daha sonra havuz nesnesinin kendisini siler. Havuz düğümlerinin silinmesi birkaç dakika sürebilir.
 
-Toplu işlem, silme **işlemi sırasında** [havuzun durumunu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
+Toplu işlem, silme işlemi sırasında [havuzun durumunu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
 
 ## <a name="pool-compute-node-errors"></a>Havuz işlem düğümü hataları
 
-Toplu Işlem, bir havuzdaki düğümleri başarıyla ayırdığında bile çeşitli sorunlar bazı düğümlerin sağlıksız olmasına ve görevleri çalıştıramamasına neden olabilir. Bu düğümler ücretlendirmeye devam etmektedir, bu nedenle kullanılamayan düğümler için ödeme yapmaktan kaçınmak için sorunları tespit etmek önemlidir.
+Toplu Işlem, bir havuzdaki düğümleri başarıyla ayırdığında bile çeşitli sorunlar bazı düğümlerin sağlıksız olmasına ve görevleri çalıştıramamasına neden olabilir. Bu düğümler ücretlendirmeye devam etmektedir, bu nedenle kullanılamayan düğümler için ödeme yapmaktan kaçınmak için sorunları tespit etmek önemlidir. Yaygın düğüm hatalarına ek olarak, geçerli [iş durumunu](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate) bilmek sorun giderme için yararlıdır.
 
 ### <a name="start-task-failures"></a>Başlangıç görevi arızaları
 
@@ -92,7 +92,7 @@ Bir havuzda bir veya daha fazla kapsayıcı başvurusu belirtebilirsiniz. Batch,
 
 ### <a name="node-in-unusable-state"></a>Kullanılamayan durumda düğüm
 
-Azure Batch, [düğüm durumunu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) birçok nedenden dolayı **kullanılamaz** olarak ayarlayabilir. Düğüm durumunun kullanım dışı olarak ayarlandığı **, görevler**düğüme zamanlanamaz ancak ücretlendirmeye devam eder.
+Azure Batch, [düğüm durumunu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) birçok nedenden dolayı **kullanılamaz** olarak ayarlayabilir. Düğüm durumunun kullanım dışı olarak ayarlandığı, görevler düğüme zamanlanamaz ancak ücretlendirmeye devam eder.
 
 **Kullanılamaz** durumdaki düğümler, ancak [hata](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) olmadan, toplu iş VM ile iletişim kuramayan anlamına gelir. Bu durumda Batch her zaman VM 'yi kurtarmaya çalışır. Toplu işlem, durumları **kullanılamaz**olsa bile uygulama paketlerini veya kapsayıcıları yükleyememiş VM 'leri otomatik olarak kurtarmaya çalışmaz.
 
@@ -118,7 +118,7 @@ Her havuz düğümünde çalışan Batch Aracısı işlemi, havuz düğümü sor
 
 ### <a name="node-disk-full"></a>Düğüm diski dolu
 
-Havuz düğümü VM 'si için geçici sürücü iş dosyaları, görev dosyaları ve paylaşılan dosyalar için Batch tarafından kullanılır. 
+Havuz düğümü VM 'si için geçici sürücü iş dosyaları, görev dosyaları ve paylaşılan dosyalar için Batch tarafından kullanılır.
 
 - Uygulama paketleri dosyaları
 - Görev kaynak dosyaları

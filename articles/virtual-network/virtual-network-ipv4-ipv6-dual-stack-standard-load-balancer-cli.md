@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağı 'nda Standart Load Balancer IPv6 ikili yığın uygulaması dağıtma-CLı
+title: Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure CLı kullanarak Azure sanal ağ 'da IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 7b231ded3fdae7553e101beff2ee77d82fe27e6e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f67494b229a14b66b593950903184e54e4a8ab8c
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269630"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013693"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure-virtual-network---cli-preview"></a>Azure sanal ağı 'nda Standart Load Balancer IPv6 ikili yığın uygulaması dağıtma-CLı (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı (Önizleme)
 
-Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırmasına sahip NIC 'Ler olan sanal makineler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. Çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
+Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı içeren bir çift yığın (IPv4 + IPv6) Standart Load Balancer uygulamasının nasıl dağıtılacağı gösterilmektedir, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir Standart Load Balancer, ile sanal makineler Çift IP yapılandırmasına, çift ağ güvenlik grubu kuralına ve çift genel IP 'ye sahip NIC 'Ler.
 
 > [!Important]
 > Azure sanal ağ için IPv6 ikili yığını şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -111,9 +111,9 @@ az network public-ip create \
 
 Bu bölümde, yük dengeleyici için çift ön uç IP (IPv4 ve IPv6) ve arka uç adres havuzunu yapılandırır ve ardından bir Standart Load Balancer oluşturursunuz.
 
-### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
+### <a name="create-load-balancer"></a>Yük dengeleyici oluştur
 
-**DsLbFrontEnd_v4**adlı bir ön uç havuzu içeren, [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı **dslb** adlı bir standart Load Balancer oluşturun, bu, IPv4 Genel IP adresiyle  **ilişkili dsLbBackEndPool_v4 adlı bir arka uç havuzu içerir** önceki adımda oluşturduğunuz dsPublicIP_v4. 
+**DsLbFrontEnd_v4**adlı bir ön uç havuzu içeren, [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı **dslb** adlı bir standart Load Balancer oluşturun, bu, IPv4 Genel IP adresiyle **ilişkili dsLbBackEndPool_v4 adlı bir arka uç havuzu içerir** önceki adımda oluşturduğunuz dsPublicIP_v4. 
 
 ```azurecli
 az network lb create \
@@ -182,7 +182,7 @@ az network lb rule create \
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 Bazı VM 'Leri dağıtmadan önce destekleyici ağ kaynakları (kullanılabilirlik kümesi, ağ güvenlik grubu, sanal ağ ve sanal NIC 'Ler) oluşturmanız gerekir. 
-### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
+### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
 Uygulamanızın kullanılabilirliğini artırmak için VM 'lerinizi bir kullanılabilirlik kümesine yerleştirin.
 
 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) komutunu kullanarak bir kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek, *Dsavset*adlı bir kullanılabilirlik kümesi oluşturur:
@@ -196,7 +196,7 @@ az vm availability-set create \
 --platform-update-domain-count 2  
 ```
 
-### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
+### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluştur
 
 VNet 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ güvenlik grubu oluşturun.
 
