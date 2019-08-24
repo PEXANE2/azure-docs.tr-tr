@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013656"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997909"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -206,6 +206,8 @@ Bazı örnekler:
 
 ### <a name="primary-metric"></a>Birincil Metrik
 Birincil ölçüm; Yukarıdaki örneklerde gösterildiği gibi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz birincil ölçüm seçtiğiniz görev türüne göre belirlenir. Kullanılabilir ölçümlerin listesi aşağıda verilmiştir.
+
+[Otomatik makine öğrenimi sonuçlarını anlamak](how-to-understand-automated-ml.md)için bunların belirli tanımları hakkında bilgi edinin.
 
 |Sınıflandırma | Regresyon | Zaman serisi tahmin
 |-- |-- |--

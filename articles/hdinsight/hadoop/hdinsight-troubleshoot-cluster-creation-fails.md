@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/06/2019
-ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/22/2019
+ms.openlocfilehash: 476b8cff23d09d81fe356a6445e27794b267d9a2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857254"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998100"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -29,7 +29,7 @@ Aşağıdaki sorunlar, küme oluşturma hatalarının en yaygın temel nedenlerd
 
 ## <a name="permissions-issues"></a>İzin sorunları
 
-Data Lake Storage Gen 2 kullanıyorsanız, HDInsight kümenize atanan kullanıcı tarafından atanan yönetilen kimliğin **Depolama Blobu veri katılımcısı** rolünde veya **Depolama Blobu veri sahibi rolünde**olduğundan emin olun. Tüm kurulum yönergeleri için bkz. [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) .
+Azure Data Lake Storage Gen 2 kullanıyorsanız ve "Bu istek bu izni kullanarak bu işlemi gerçekleştirme yetkisi yok" hatasını alırsanız, Azure portal açın, depolama hesabınıza gidin ve Access Control (ıAM) altında **depolama Blobun olduğundan emin olun Veri katılımcısı** veya **Depolama Blobu veri sahibi rolü** rolü, abonelik için **Kullanıcı tarafından atanan yönetilen kimliğe** erişim atamış. Ayrıntılı yönergeler için [Data Lake Storage 2. hesapta yönetilen kimlik Izinlerini ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) bölümüne bakın.
 
 Data Lake Storage Gen 1 kullanıyorsanız, kurulum ve yapılandırma yönergeleri bölümüne bakın. [](../hdinsight-hadoop-use-data-lake-store.md) Data Lake Storage Gen 1, HBase kümelerinde desteklenmez ve HDInsight sürüm 4,0 ' de desteklenmez.
 
@@ -73,6 +73,8 @@ Bir Express Route veya kendi özel DNS sunucunuz kullanıyorsanız bkz. [Azure H
 ## <a name="storage-account-name-restrictions"></a>Depolama hesabı adı kısıtlamaları
 
 Depolama hesabı adları 24 karakterden uzun olamaz ve özel bir karakter içeremez. Bu kısıtlamalar depolama hesabındaki varsayılan kapsayıcı adı için de geçerlidir.
+
+Diğer adlandırma kısıtlamaları da küme oluşturma için geçerlidir. Daha fazla bilgi için bkz. [küme adı kısıtlamaları](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name).
 
 ## <a name="service-outages"></a>Hizmet kesintileri
 

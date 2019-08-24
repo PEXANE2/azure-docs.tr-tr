@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847236"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991843"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. giriş
 
@@ -64,7 +64,7 @@ Eşdeğer varlıklar farklı kavramları açıklandığı aşağıda verilmişti
 | Kavram                                | Üst düzey kuruluş | Daha düşük bir düzenleme düzeyi                                            | Veri kapsayıcısı |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | BLOB'lar-genel amaçlı nesne depolama | Kapsayıcı              | Sanal dizin (SDK'sı yalnızca – sağlamaz atomik işleme) | Blob           |
-| ADLS Gen2 – depolama analizi          | Dosya sistemi             | Dizin                                                           | Dosya           |
+| ADLS Gen2 – depolama analizi          | Kapsayıcı            | Dizin                                                           | Dosya           |
 
 ## <a name="supported-open-source-platforms"></a>Açık kaynak platformlar desteklenir
 

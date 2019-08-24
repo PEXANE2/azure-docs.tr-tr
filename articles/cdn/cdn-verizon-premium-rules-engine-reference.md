@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 5fc611af75a7f733576f9343a4375fb56cacc030
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67593158"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996763"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Verizon Premium kuralları altyapı başvurusundan Azure CDN
 
@@ -56,7 +56,7 @@ Karakter | Açıklama
 \ | Bu tabloda belirtilen karakterlerden herhangi birini atlamak için ters eğik çizgi kullanılır. Bir ters eğik çizgi, önüne kaçılması gereken özel karakterden önce belirtilmelidir.<br/>Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar:`\*`
 % | Bir yüzde sembolü, URL kodlamasını göstermek için kullanılır (örneğin, `%20`).
 \* | Yıldız işareti bir veya daha fazla karakteri temsil eden bir joker karakterdir.
-Boşluk | Boşluk karakteri, bir eşleşme koşulunun belirtilen değerlerden veya desenlerden herhangi biri tarafından karşılanamayacağını gösterir.
+Uzay | Boşluk karakteri, bir eşleşme koşulunun belirtilen değerlerden veya desenlerden herhangi biri tarafından karşılanamayacağını gösterir.
 deeri | Tek bir teklifin özel anlamı yoktur. Ancak, bir değerin değişmez değer olarak değerlendirilip değerlendirilmeyeceğini göstermek için bir dizi tek tırnak kullanılır. Aşağıdaki yollarla kullanılabilir:<br><br/>-Belirtilen değerin karşılaştırma değerinin herhangi bir bölümüyle eşleşmesi durumunda eşleşme koşulunun karşılanmasına izin verir.  Örneğin, `'ma'` aşağıdaki dizelerin herhangi biriyle eşleşir: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/Business/Template. **ma**p<br /><br />-Özel bir karakterin sabit karakter olarak belirtilmesini sağlar. Örneğin, bir boşluk karakterini tek tırnak (yani, `' '` veya `'sample value'`) kümesi içinde çevreleyerek bir sabit boşluk karakteri belirtebilirsiniz.<br/>-Boş değer belirtilmesini sağlar. Bir dizi tek tırnak (' ') belirterek boş bir değer belirtin.<br /><br/>**Önemli:**<br/>-Belirtilen değer bir joker karakter içermiyorsa, otomatik olarak değişmez değer olarak değerlendirilir, bu da tek tırnak kümesini belirtmek için gerekli değildir.<br/>-Ters eğik çizgi bu tablodaki başka bir karakterle eşleşmezse, bir dizi tek tırnak içinde belirtildiğinde yok sayılır.<br/>-Sabit karakter olarak özel bir karakter belirtmenin diğer bir yolu da bir ters eğik çizgi (yani, `\`) kullanarak kaçış yöntemidir.
 
 ### <a name="regular-expressions"></a>Normal ifadeler
@@ -68,8 +68,10 @@ Normal ifadeler, metin değeri içinde aranan bir model tanımlar. Normal ifade 
 \ | Ters eğik çizgi, bu karakterin normal ifade anlamı yerine değişmez değer olarak işlenmesine neden olan karakteri izler. Örneğin, aşağıdaki sözdizimi bir yıldız işaretine çıkar:`\*`
 % | Bir yüzde sembolünün anlamı, kullanımına bağlıdır.<br/><br/> `%{HTTPVariable}`: Bu söz dizimi bir HTTP değişkenini tanımlar.<br/>`%{HTTPVariable%Pattern}`: Bu sözdizimi bir HTTP değişkenini ve bir sınırlayıcı olarak tanımlamak için bir yüzde simgesi kullanır.<br />`\%`: Bir yüzde sembolünü kaçış, bir sabit değer olarak veya URL kodlamasının (örneğin, `\%20`) kullanılmasına izin verir.
 \* | Bir yıldız işareti, önceki karakterin sıfır veya daha fazla kez eşleştirilmesini sağlar.
-Boşluk | Boşluk karakteri genellikle sabit karakter olarak değerlendirilir.
+Uzay | Boşluk karakteri genellikle sabit karakter olarak değerlendirilir.
 deeri | Tek tırnak, sabit karakter olarak değerlendirilir. Tek tırnak kümesinin özel anlamı yoktur.
+
+Normal ifadeleri destekleyen koşulların ve özelliklerin eşleşmesi, Perl uyumlu normal Ifadeler (PCRE) tarafından tanımlanan desenleri kabul eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

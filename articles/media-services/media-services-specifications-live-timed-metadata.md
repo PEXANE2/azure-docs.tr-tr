@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/2/2019
+ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 444d5ca996c014bdbf2e62cacf2563c7b63372e4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69015712"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991793"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
 
-Son Güncelleme Tarihi: 2019-07-02
+Son Güncelleme Tarihi: 2019-08-22
 
 ### <a name="conformance-notation"></a>Uygunluk gösterimi
 
@@ -74,6 +74,7 @@ Aşağıdaki belgeler, bu metinde başvuru aracılığıyla bu belgenin sağlama
 | [AMF0]            | ["Eylem Iletisi biçimi AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
 | [DASH-IF-IOP]     | DASH sektör Forumu birlikte çalışma kılavuzu v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
 | [HLS-TMD]         | HTTP Canlı Akışı için zamanlanmış meta veriler-[https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
+| [CMAF-ID3]         | [Ortak medya uygulaması biçiminde zamanlanmış meta veriler (CMAF)](https://aomediacodec.github.io/av1-id3/)
 | [ID3v2]           | ID3 etiket sürümü 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
 | [ISO-14496-12]    | ISO/IEC 14496-12: Bölüm 12 ISO temel medya dosyası biçimi, Onthedition 2012-07-15  |
 | [MPEGDASH]        | Bilgi teknolojisi-HTTP üzerinden dinamik uyarlamalı akış (DASH)--1. Bölüm: Medya sunusu açıklaması ve kesim biçimleri. 2014 Mayıs. Yayımladığı. 'DEKI https://www.iso.org/standard/65274.html |
@@ -95,21 +96,146 @@ Aşağıdaki belgeler, bu metinde başvuru aracılığıyla bu belgenin sağlama
 
 ## <a name="2-timed-metadata-ingest"></a>2. Zamanlanmış meta veri alma
 
-## <a name="21-rtmp-ingest"></a>2,1 RTMP alma
+Azure Media Services hem [RTMP] Kesintisiz Akış hem de [MS-SSTR-Ingest] protokolleri için gerçek zamanlı bant içi meta verileri destekler. Gerçek zamanlı meta veriler, özel olayları tanımlamak için kullanılabilir (JSON, Ikili, XML), Ayrıca, bir yayın akışındaki ad sinyali için ıD3 veya SCTE-35 gibi endüstri tanımlı biçimler kullanabilirsiniz. 
 
-[RTMP], [RTMP] akışı içine katıştırılmış, zaman aşımına uğramış meta veri sinyallerinin [AMF0] işaret iletileri olarak gönderilmesini sağlar. İpucu iletileri gerçek olay veya [SCTE35] ad splice Signal gerçekleşmesi için bir süre önce gönderilebilir. Bu senaryoyu desteklemek için, olayın gerçek saati, işaret iletisi içinde gönderilir. Daha fazla bilgi için bkz. [AMF0].
+Bu makalede, Media Services desteklenen alma protokollerini kullanarak özel olarak zaman aşımına uğramış meta veri sinyalleri içinde gönderme ayrıntıları sağlanmaktadır. Makalede ayrıca, HLS, DASH ve Kesintisiz Akış bildirimlerinin, zaman uyumlu olmayan meta veri sinyalleriyle nasıl ilişkili olduğu ve içerik CMAF (MP4 parçaları) veya HLS için aktarım akışı (TS) kesimleri kullanılarak bantta nasıl taşınacağı açıklanmaktadır. 
+
+Zaman aşımına uğramış meta veriler için genel kullanım örneği senaryoları şunlardır:
+
+ - Canlı bir olayda veya doğrusal yayında ad sonlarının tetiklenmesi için SCTE-35 ad sinyalleri
+ - Bir istemci uygulamasında (tarayıcı, iOS veya Android) olayları tetikleyesağlayan özel ıD3 meta verileri
+ - İstemci uygulamasında olayları tetiklemek için özel tanımlanmış JSON, Ikili veya XML meta verileri
+ - Live Encoder, IP kamerası veya drone telemetri telemetrisi
+ - Hareket, yüz algılama vb. gibi bir IP kamerasından gelen olaylar.
+ - Bir eylem kamerasından, drbir cihazdan veya taşınan cihazdan coğrafi konum bilgileri
+ - Şarkı şarkı sözleri
+ - Doğrusal canlı bir akışta program sınırları
+ - Canlı bir akışta görüntülenecek görüntüler veya genişletilmiş meta veriler
+ - Spor puanları veya oyun saati bilgileri
+ - Tarayıcıda videonun yanında görüntülenecek etkileşimli reklam paketleri
+ - Testler veya yoklamalar
+  
+Azure Media Services canlı olaylar ve Paketleyici, bu zaman aşımına uğramış meta veri sinyallerini alabilir ve bunları, HLS ve DASH gibi standartlara dayalı protokoller kullanarak istemci uygulamalarına ulaşan meta veri akışına dönüştürür.
+
+
+## <a name="21-rtmp-timed-metadata"></a>2,1 RTMP zamanlı meta veriler
+
+[RTMP] Protokolü, özel meta veriler ve SCTE-35 ad sinyalleri dahil çeşitli senaryolar için zamanlanmış meta veri sinyallerinin gönderilmesine izin verir. 
+
+Reklam sinyalleri (işaret iletileri) [RTMP] akışı içine katıştırılmış [AMF0] Cue iletileri olarak gönderilir. İpucu iletileri gerçek olay veya [SCTE35] ad splice Signal gerçekleşmesi için bir süre önce gönderilebilir. Bu senaryoyu desteklemek için, olayın gerçek saati, işaret iletisi içinde gönderilir. Daha fazla bilgi için bkz. [AMF0].
+
+Aşağıdaki [AMF0] komutları, RTMP alma için Azure Media Services tarafından desteklenir:
+
+- **Onuserdataevent** -özel meta veriler veya [ID3v2] için zamanlanmış meta veriler için kullanılır
+- **Onadcue** -canlı akıştaki tanıtım yerleşimi fırsatının sinyali için öncelikli olarak kullanılır. İki ipucu biçimi desteklenir, basit bir mod ve "SCTE-35" modu. 
+- **onCuePoint** -Live Encoder gibi belirli şirket içi donanım kodlayıcıları tarafından [SCTE35] ileti sinyali için desteklenir. 
+  
 
 Aşağıdaki tablolarda, Media Services hem "basit" hem de [SCTE35] ileti modlarını alacak olan AMF ileti yükünün biçimi açıklanmaktadır.
 
 [AMF0] iletisinin adı aynı türden birden çok olay akışını ayırt etmek için kullanılabilir.  Hem [SCTE-35] iletileri hem de "basit" modu için, AMF iletisinin adı [Adobe-Primetime] belirtiminde gerekli olduğu gibi "onAdCue" olmalıdır.  Aşağıda listelenmeyen tüm alanlar alma sırasında Azure Media Services yok sayılır.
 
-## <a name="211-rtmp-signal-syntax"></a>2.1.1 RTMP sinyal sözdizimi
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>"onUserDataEvent" kullanarak özel meta verilerle 2.1.1 RTMP
+
+Yukarı akış kodlayıcısından, IP kameranıza, drone 'dan veya RTMP protokolünü kullanarak cihazdan özel meta veri akışları sağlamak istiyorsanız, "onUserDataEvent" [AMF0] veri iletisi komut türünü kullanın.
+
+**"Onuserdataevent"** veri iletisi komutu, Media Services tarafından yakalanıp bant içi dosya biçiminde paketlenmesi ve ayrıca, HLS, çizgi ve Düzgünleştir bildirimleri için aşağıdaki tanıma sahip bir ileti yükü taşımalıdır.
+Her 0,5 saniyede bir (500 MS) zaman uyumlu olmayan veri iletileri göndermeniz önerilir. Çerçeve düzeyinde meta veriler sağlamanız gerekiyorsa, her ileti birden çok kareden meta verileri toplayabilir. Çoklu bit hızı akışları gönderiyorsanız, meta verileri tek bir bit hızında sağlamanız önerilir, bu da yalnızca bant genişliğini azaltmak ve video/ses işlemeyle ilgili girişimlerden kaçınmak için gerekir. 
+
+**"Onuserdataevent"** için yük BIR [MPEGDASH] EVENTSTREAM xml biçim iletisi olmalıdır. Bu, HLS veya DASH protokolleri üzerinden sunulan CMAF [MPEGCMAF] içeriği için bantta ' EMSG ' yükleri içinde taşınılabilen özel tanımlı şemaları kolayca geçirmeye olanak sağlar. Her DASH olay akışı iletisi, URN ileti düzeni tanımlayıcısı olarak işlev gören ve iletinin yükünü tanımlayan bir IBir tek düzen içerir. [Scte-35 https://aomedia.org/emsg/ID3 ] için "" [ID3v2] veya **urn: scte: scte35:2013: bin** gibi bazı şemalar, birlikte çalışabilirlik için sektör yarışma göre standartlaştırılmıştır. Herhangi bir uygulama sağlayıcısı, denetleyedikleri URL 'YI (sahip etki alanı) kullanarak kendi özel düzenlerini tanımlayabilir ve tercih ettikleri URL 'de bir belirtim sağlayabilir. Bir oyuncunun tanımlı düzen için bir işleyicisi varsa, bu, yükü ve Protokolü anlaması gereken tek bileşendir.
+
+[MPEG-DASH] EventStream XML yükünün şeması olarak tanımlanır (DASH ISO-ıEC-23009-1-3. sürüm). Şu anda yalnızca "EventStream" başına bir "EventType" değeri desteklendiğini unutmayın. **Eventstream**'de birden fazla olay sağlanıyorsa yalnızca ilk **olay** öğesi işlenir.
+
+```xml
+  <!-- Event Stream -->
+  <xs:complexType name="EventStreamType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attribute ref="xlink:actuate" default="onRequest"/>
+    <xs:attribute name="schemeIdUri" type="xs:anyURI" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="timescale" type="xs:unsignedInt"/>
+  </xs:complexType>
+  <!-- Event  -->
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="presentationTime" type="xs:unsignedLong" default="0"/>
+    <xs:attribute name="duration" type="xs:unsignedLong"/>
+    <xs:attribute name="id" type="xs:unsignedInt"/>
+    <xs:attribute name="contentEncoding" type="ContentEncodingType"/>
+    <xs:attribute name="messageData" type="xs:string"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+```
+
+
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>ID3 şema KIMLIĞI ve Base64 kodlamalı veri yüküne sahip örnek XML olay akışı.  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
+         <Event contentEncoding="Base64">
+          -- base64 encoded ID3v2 full payload here per [CMAF-TMD] --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>Özel şema KIMLIĞI ve Base64 kodlamalı ikili verileri içeren örnek olay akışı  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:binary">
+         <Event contentEncoding="Base64">
+          -- base64 encoded custom binary data message --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>Özel şema KIMLIĞI ve özel JSON ile örnek olay akışı  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:JSON">
+         <Event>
+          [
+            {"key1" : "value1"},
+            {"key2" : "value2"}
+          ]
+         </Event>
+   <EventStream>
+```
+
+### <a name="built-in-supported-scheme-id-uris"></a>Yerleşik desteklenen şema KIMLIĞI URI 'Leri
+| Şema KIMLIĞI URI 'SI                 |  Açıklama                                             |
+|-------------------------------|----------------------------------------------------------|
+| https://aomedia.org/emsg/ID3   | [ID3v2] meta verilerinin CMAF ile uyumlu [MPEGCMAF] parçalanmış MP4 içinde zaman aşımına uğramış bir meta veriler olarak nasıl taşınabilir açıklar. Daha fazla bilgi için bkz [. ortak medya uygulaması biçimindeki (CMAF) zaman aşımına uğrayan meta veriler](https://aomediacodec.github.io/av1-id3/) |
+
+### <a name="event-processing-and-manifest-signaling"></a>Olay işleme ve bildirim sinyali verme
+
+Geçerli bir **"Onuserdataevent"** olayının alınması sırasında, Azure Media Services EventStreamType ([MPEGDASH] içinde tanımlanmıştır) ile eşleşen GEÇERLI bir XML yükünü ARAYACAKTıR, XML yükünü ayrıştırır ve bır [MPEGCMAF] mp4 Fragment ' EMSG ' sürüm 1 kutusuna dönüştürür Canlı arşivdeki depolama ve Media Services Paketleyiciyi aktarma.   Paketleyici, canlı akıştaki ' EMSG ' kutusunu algılar ve şu şekilde görünür:
+
+- (a) "dinamik olarak paketleyin" HLS istemcilerinin HLS için zaman uyumsuz meta veri belirtimi [HLS-TMD] veya
+- (b) hmaf parçaları içinde HLS veya DASH aracılığıyla teslim etmek için ile geçiş yapın veya 
+- (c) Kesintisiz Akış [MS-SSTR] aracılığıyla teslim için bir seyrek izleme sinyaline dönüştürün.
+
+HLS için bant içi ' EMSG ' biçimine ek olarak, DASH (MPD) ve Kesintisiz Akış için bildirimler, bant içi olay akışlarına (Kesintisiz Akış aynı zamanda seyrek akış izleme olarak da bilinir) bir başvuru içerir. 
+
+Bireysel olaylar veya veri yükleri doğrudan HLS, kesik çizgi veya düzgün bildirimlerde çıktı DEĞILDIR. 
+
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>OnUserDataEvent olayları için ek bilgilendirici kısıtlamalar ve varsayılanlar
+
+- EventStream öğesinde zaman ölçeği ayarlanmamışsa, varsayılan olarak RTMP 1Khz zaman ölçeği kullanılır
+- OnUserDataEvent iletisinin teslimi her 500 MS Max ile sınırlıdır. Olayları daha sık gönderirseniz, bant genişliğini ve canlı akışın kararlılığını etkileyebilir
+
+## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>"onCuePoint" ile 2.1.2 'yi RTMP ad ipucu sinyali
 
 Azure Media Services, canlı akıştaki çeşitli gerçek zamanlı eşitlenmiş meta verileri göstermek için kullanılabilecek çeşitli [AMF0] ileti türlerini dinleyebilir ve yanıtlayabilir.  [Adobe-Primetime] belirtimi, "Simple" ve "SCTE-35" modu olarak adlandırılan iki işaret türünü tanımlar. "Basit" modu için Media Services, "basit mod" sinyali için tanımlanan tabloyla eşleşen bir yük kullanarak "onAdCue" adlı tek bir AMF ipucu iletisini destekler.  
 
 Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildirimine yapılacak temel bir "spliceOut" ad sinyalini işaret etmek için kullanılabilen RTMP "basit" mod "yükü gösterilmektedir. Bu, müşterinin karmaşık bir SCTE-35 tabanlı ad sinyal dağıtımı veya ekleme sistemine sahip olmadığı ve bir API aracılığıyla işaret iletisinde göndermek için temel bir şirket içi kodlayıcı kullandığı senaryolarda çok yararlı olur. Genellikle şirket içi kodlayıcı, bu sinyali tetiklemek için REST tabanlı bir API 'yi destekleyecektir. Bu, videoya bir ıDR çerçevesi ekleyerek ve yeni bir GOP başlatarak video akışını da "splice-Condition" olarak destekler.
 
-## <a name="212--simple-mode-ad-signaling-with-rtmp"></a>2.1.2 'yi basit mod ad sinyali RTMP ile
+## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>"onCuePoint"-basit mod ile 2.1.3 RTMP ad ipucu sinyali
 
 | Alan Adı | Alan türü | Gerekli mi? | Açıklamaları                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
@@ -121,7 +247,7 @@ Aşağıdaki bölümde, HLS, DASH ve Microsoft Kesintisiz Akış istemci bildiri
 
 ---
  
-## <a name="213-scte-35-mode-ad-signaling-with-rtmp"></a>RTMP ile 2.1.3 SCTE-35 modu ad sinyali
+## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>"onCuePoint"-SCTE-35 modu ile 2.1.4 RTMP ad ipucu sinyali
 
 Tam SCTE-35 yük iletisinin HLS veya DASH bildirimine taşınmasını gerektiren daha gelişmiş bir yayın üretim iş akışıyla çalışırken, [Adobe-Primetime] belirtiminin "SCTE-35 modunu" kullanmak en iyisidir.  Bu mod, şirket içi bir Live Encoder 'a doğrudan gönderilen bant içi SCTE-35 sinyallerini destekler ve daha sonra [Adobe-Primetime] belirtiminde belirtilen "SCTE-35 modunu" kullanarak, bu sinyalleri RTMP akışına kodluyor. 
 
@@ -132,14 +258,14 @@ Bu senaryoda, **"Onadcue"** [AMF0] ileti türü kullanılarak şirket içi kodla
 | Alan Adı | Alan türü | Gerekli mi? | Açıklamaları                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | 'yu        | Dize     | Gerekli | Olay iletisi.  [SCTE-35] iletileri için, iletilerin HLS, kesintisiz ve Dash istemcilerine gönderilmesi için Base64 kodlamalı [RFC4648] ikili splice_info_section () olması gerekır.                                              |
-| türü       | Dize     | Gerekli | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletilerinde, iletilerin HLS, sorunsuz ve Dash istemcilerine gönderilmesi için [Adobe-Primetime] ile uyumlu olması **gerekir** . Bu, **"scte35"** olmalıdır. İsteğe bağlı olarak, [SCTE-35] iletisini bildirmek için URN "urn: scte: scte35:2013: bin" de kullanılabilir. |
+| type       | Dize     | Gerekli | İleti düzenini tanımlayan bir URN veya URL. [SCTE-35] iletilerinde, iletilerin HLS, sorunsuz ve Dash istemcilerine gönderilmesi için [Adobe-Primetime] ile uyumlu olması **gerekir** . Bu, **"scte35"** olmalıdır. İsteğe bağlı olarak, [SCTE-35] iletisini bildirmek için URN "urn: scte: scte35:2013: bin" de kullanılabilir. |
 | id         | Dize     | Gerekli | Splice veya segment tanımlayan benzersiz bir tanımlayıcı. İletinin bu örneğini tanımlar.  Denk semantiklere sahip iletiler aynı değere sahip olacaktır.|
 | duration   | Number     | Gerekli | Biliniyorsa olay veya ad splice-segment süresi. Bilinmiyorsa, değer 0 olmalıdır .                                                                 |
 | elapsed    | Number     | İsteğe Bağlı | ' İ ayarlamak için [SCTE-35] ad sinyali yinelendiğinde, bu alan, splice başladıktan sonra geçen sunum süresi kadar olacaktır. Birimler kesirli saniyedir. [SCTE-35] modunda, bu değer, splice veya segment için belirtilen özgün süreyi aşabilirler.                                                  |
 | time       | Number     | Gerekli | Etkinliğin veya ad splice 'ın sunum süresi.  Sunum süresi ve süresi, [ISO-14496-12] Ek I içinde tanımlandığı şekilde, 1 veya 2 türündeki akış erişim noktalarıyla (SAP) hizalı **olmalıdır** . HLS çıkışı için saat ve süre, kesim sınırlarıyla hizalı **olmalıdır** . Aynı olay akışı içindeki farklı olay iletilerinin sunum süresi ve süresi çakışmamalıdır. Birimler kesirli saniyedir.
 
 ---
-## <a name="214-elemental-live-oncuepoint-ad-markers-with-rtmp"></a>RTMP ile 2.1.4 elete canlı "onCuePoint" ad Işaretçileri
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>On Live için 2.1.5 RTMP ad sinyali "onCuePoint" ile
 
 Dinamik şirket içi kodlayıcı, RTMP sinyalinde ad işaretçilerini destekler. Azure Media Services Şu anda yalnızca RTMP için "onCuePoint" ad Işaret türünü destekliyor.  Bu, "**ad_markers**" öğesini "onCuePoint" olarak ayarlayarak, elete Media Live Encoder ayarları veya API 'SINDEKI Adobe RTMP grup ayarlarından etkinleştirilebilir.  Ayrıntılar için lütfen bkz. canlı belgelere bakın. RTMP grubunda bu özelliğin etkinleştirilmesi, Azure Media Services tarafından işlenecek olan Adobe RTMP çıktılarına SCTE-35 sinyallerini geçirecek.
 
@@ -150,13 +276,13 @@ Dinamik şirket içi kodlayıcı, RTMP sinyalinde ad işaretçilerini destekler.
 |---------|---------|
 |  name     | Ad, elete Live tarafından '**scte35**' olmalıdır. |
 |time     |  Zaman çizelgesi sırasında, bir video dosyasında işaret noktasının gerçekleştiği saniye cinsinden süre |
-| türü     | İşaret noktası türü "**Event**" olarak ayarlanmalıdır. |
+| type     | İşaret noktası türü "**Event**" olarak ayarlanmalıdır. |
 | parameters | Kimliği ve süresi de dahil olmak üzere SCTE-35 iletisindeki bilgileri içeren, ilişkilendirilebilir ad/değer çifti dizeleri dizisi. Bu değerler Azure Media Services tarafından ayrıştırılır ve bildirim dekorasyonu etiketine dahildir.  |
 
 
 Bu ad işaretçisi modu kullanıldığında, HLS bildirim çıktısı Adobe "Simple" moduna benzerdir. 
 
-### <a name="215-cancellation-and-updates"></a>2.1.5 iptali ve güncelleştirmeleri
+### <a name="216-cancellation-and-updates"></a>2.1.6 iptali ve güncelleştirmeleri
 
 Aynı sunum süresi ve KIMLIĞIYLE birden çok ileti gönderilerek iletiler iptal edilebilir veya güncelleştirilir. Sunum süresi ve KIMLIĞI, olayı benzersiz şekilde tanımlar ve ön alma kısıtlamalarını karşılayan belirli bir sunum saati için alınan son ileti, üzerinde işlem yapılan bir iletidir. Güncelleştirilmiş olay, daha önce alınan iletilerin yerini alır. Ön rulme kısıtlaması dört saniyedir. Sunum zamanından önce en az dört saniye alınan iletiler tarihinde işlem görür.
 
@@ -465,6 +591,13 @@ RTMP alma için AMF iletisinin Cue özniteliği [SCTE-35] içinde tanımlanan Ba
 Uygulamanızı Azure Media Services platformu ile sınarken, bir kodlama LiveEvent üzerinde teste geçmeden önce lütfen önce "doğrudan geçişli" LiveEvent ile testi başlatın.
 
 ---
+
+## <a name="change-history"></a>Değişiklik geçmişi
+
+| Date     | Değişiklikler                                                                            |
+|----------|------------------------------------------------------------------------------------|
+| 07/2/19  | SCTE35 desteği için RTMP alma düzenlendi, elete Live için RTMP "onCuePoint" eklendi | 
+| 08/22/19 | Özel meta veriler için RTMP 'ye OnUserDataEvent eklemek üzere güncelleştirildi                         |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Media Services öğrenme yollarını görüntüleyin.

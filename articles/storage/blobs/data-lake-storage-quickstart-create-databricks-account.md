@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: a1e7ee4f81f2b40b804ee69c8366ca87c377e6ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855490"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992293"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Hızlı Başlangıç: Azure Data Lake Storage 2. Azure Databricks kullanarak verileri çözümleme
 
@@ -88,7 +88,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
-## <a name="create-storage-account-file-system"></a>Depolama hesabı dosya sistemi oluşturma
+## <a name="create-storage-account-container"></a>Depolama hesabı kapsayıcısı oluştur
 
 Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturacak ve ardından depolama hesabını yapılandırmak için kod parçacıklarını çalıştıracaksınız.
 
@@ -113,15 +113,15 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturacak
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   dbutils.fs.ls("abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
 
     > [!NOTE]
-    > Bu kod bloğu, OAuth kullanarak Data Lake Gen2 uç noktasına doğrudan erişir, ancak Databricks çalışma alanını Data Lake Storage 2. hesabınıza bağlamak için başka yollar vardır. Örneğin, OAuth kullanarak dosya sistemini bağlayabilir veya paylaşılan anahtarla doğrudan erişim kullanabilirsiniz. <br>Bu yaklaşımlara yönelik örnekleri görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
+    > Bu kod bloğu, OAuth kullanarak Data Lake Gen2 uç noktasına doğrudan erişir, ancak Databricks çalışma alanını Data Lake Storage 2. hesabınıza bağlamak için başka yollar vardır. Örneğin, OAuth kullanarak kapsayıcıyı bağlayabilir veya paylaşılan anahtarla doğrudan erişim kullanabilirsiniz. <br>Bu yaklaşımlara yönelik örnekleri görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
 
-5. Bu kod bloğunda, bu kod bloğundaki `storage-account-name` `password`, `appID`, ve `tenant-id` yer tutucu değerlerini hizmet sorumlusunu oluştururken topladığınız değerlerle değiştirin. `file-system-name` Yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir ada ayarlayın.
+5. Bu kod bloğunda, bu kod bloğundaki `storage-account-name` `password`, `appID`, ve `tenant-id` yer tutucu değerlerini hizmet sorumlusunu oluştururken topladığınız değerlerle değiştirin. `container-name` Yer tutucu değerini, kapsayıcıya vermek istediğiniz ada ayarlayın.
 
     > [!NOTE]
     > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
@@ -148,7 +148,7 @@ Hücrede, kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
 Verilerde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerçekleştirin.
 
-1. **small_radio_json.json** adlı örnek JSON veri dosyasındaki verileri kullanarak geçici tablo oluşturmak için bir SQL deyimi çalıştırın. Aşağıdaki kod parçacığında yer tutucu değerlerini dosya sisteminizin adı ve depolama hesabı adı ile değiştirin. Daha önceden oluşturduğunuz not defterini kullanarak kod parçacığını not defterindeki yeni bir kod hücresine yapıştırın ve sonra SHIFT + ENTER tuşlarına basın.
+1. **small_radio_json.json** adlı örnek JSON veri dosyasındaki verileri kullanarak geçici tablo oluşturmak için bir SQL deyimi çalıştırın. Aşağıdaki kod parçacığında yer tutucu değerlerini kapsayıcınızın adı ve depolama hesabı adı ile değiştirin. Daha önceden oluşturduğunuz not defterini kullanarak kod parçacığını not defterindeki yeni bir kod hücresine yapıştırın ve sonra SHIFT + ENTER tuşlarına basın.
 
     ```sql
     %sql
@@ -156,7 +156,7 @@ Verilerde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerç
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
+     path  "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
     )
     ```
 

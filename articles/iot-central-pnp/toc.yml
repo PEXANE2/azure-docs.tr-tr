@@ -119,6 +119,8 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
         - name: Konum Tabanlı Hizmetler

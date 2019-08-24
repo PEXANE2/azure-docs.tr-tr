@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569674"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991155"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -327,7 +327,7 @@ Azure AD yöneticisi 'nin düzgün şekilde ayarlandığını onaylamak için, A
 Azure AD tabanlı bir kapsanan veritabanı kullanıcısını (veritabanının sahibi olan Sunucu Yöneticisi dışında) sağlamak için veritabanına erişimi olan bir Azure AD kimliğiyle veritabanına bağlanın.
 
 > [!IMPORTANT]
-> Azure Active Directory kimlik doğrulaması desteği [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) ve Visual Studio 2015 ' de [SQL Server veri araçları](https://msdn.microsoft.com/library/mt204009.aspx) ile kullanılabilir. SSMS 'nin 2016 Ağustos sürümü, yöneticilerin telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi kullanarak çok faktörlü kimlik doğrulaması gerektirmesini sağlayan Active Directory evrensel kimlik doğrulaması desteğini de içerir.
+> Azure Active Directory kimlik doğrulaması desteği [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) ve Visual Studio 2015 ' de [SQL Server veri araçları](https://msdn.microsoft.com/library/mt204009.aspx) ile kullanılabilir. SSMS 'nin 2016 Ağustos sürümü, yöneticilerin telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi kullanarak Multi-Factor Authentication gerektirmesini sağlayan Active Directory evrensel kimlik doğrulaması desteğini de içerir.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>SSMS veya SSDT kullanarak bağlanmak için bir Azure AD kimliği kullanma
 
@@ -412,6 +412,9 @@ Daha fazla bilgi için bkz. [güvenlik blogu SQL Server](https://blogs.msdn.micr
 ### <a name="sqlcmd"></a>sqlcmd
 
 Aşağıdaki deyimler, [Indirme merkezinden](https://go.microsoft.com/fwlink/?LinkID=825643)erişilebilen sqlcmd sürüm 13,1 ' i kullanarak bağlanır.
+
+> [!NOTE]
+> `sqlcmd``-G` komutuyla sistem kimlikleriyle birlikte çalışmaz ve Kullanıcı sorumlusu oturum açması gerekir.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

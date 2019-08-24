@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233970"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991940"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Azure Stream Analytics kullanarak Olay Hub 'ınızdaki verileri işleme (Önizleme)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Olay Hub 'ınızdaki verileri işleme 
 Azure Stream Analytics hizmeti, Azure Event Hubs akış verilerini almak, işlemek ve analiz etmeyi kolaylaştırır, böylece gerçek zamanlı eylemler için güçlü öngörüler sağlar. Bu tümleştirme, hızlı bir şekilde bir etkin yol analizi işlem hattı oluşturmanıza olanak sağlar. Gelen verileri görselleştirmek ve bir Stream Analytics sorgusu yazmak için Azure portal kullanabilirsiniz. Sorgunuz hazırlandıktan sonra, bunu yalnızca birkaç tıklamayla üretime taşıyabilirsiniz. 
-
-> [!NOTE]
-> Bu özellik şu anda önizleme sürümündedir. 
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 Azure Event Hubs ve Azure Stream Analytics tümleştirmenin temel avantajları aşağıda verilmiştir: 

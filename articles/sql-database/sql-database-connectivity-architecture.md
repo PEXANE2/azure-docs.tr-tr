@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0e9bdb22baed74ef948f369f9259784900486860
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: daa9937294cb3ffa594d83fbd56777bc8af8900a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569083"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981471"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
 
@@ -38,7 +38,7 @@ Aşağıdaki adımlarda, bir bağlantının Azure SQL veritabanına nasıl kurul
 
 Azure SQL veritabanı, SQL veritabanı sunucusunun bağlantı ilkesi ayarı için aşağıdaki üç seçeneği destekler:
 
-- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar. Bağlantı sağlamak için istemciler, bağlantı 1433 noktası 11000-11999 ' deki yalnızca Azure SQL veritabanı ağ geçidi IP adreslerini değil, bağlantı noktaları için ağ güvenlik grupları (NSG [) ile bölge](../virtual-network/security-overview.md#service-tags)Içindeki tüm Azure IP adreslerine giden güvenlik duvarı kurallarına izin vermelidir. Paketler doğrudan veritabanına gittiğinden gecikme süresi ve aktarım hızı performansı artırılmıştır.
+- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar. Bağlantı sağlamak için istemciler, bağlantı 1433 noktası 11000-11999 ' deki yalnızca Azure SQL veritabanı ağ geçidi IP adreslerini değil, bağlantı noktaları için ağ güvenlik grupları [](../virtual-network/security-overview.md#service-tags)(NSG) ile bölge Içindeki tüm Azure IP adreslerine giden güvenlik duvarı kurallarına izin vermelidir. Paketler doğrudan veritabanına gittiğinden gecikme süresi ve aktarım hızı performansı artırılmıştır.
 - **Proxy** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla proxy olarak kullanılır. Bağlantıyı etkinleştirmek için, istemcinin yalnızca Azure SQL veritabanı ağ geçidi IP adreslerine (genellikle bölge başına iki IP adresi) izin veren giden güvenlik duvarı kurallarına sahip olması gerekir. Bu modun seçilmesi, iş yükünün doğasına bağlı olarak daha yüksek gecikme süresine ve düşük aktarım hızına yol açabilir. En düşük gecikme süresi `Redirect` ve en yüksek aktarım `Proxy` hızı için bağlantı ilkesi üzerinde bağlantı ilkesini kesinlikle öneririz.
 - **Varsayılanını** Bu, bağlantı ilkesini `Proxy` `Redirect`açıkça değiştirmediğiniz müddetçe, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. Etkin ilke, bağlantıların Azure (`Redirect`) içinden veya Azure (`Proxy`) dışında olup olmamasına bağlıdır.
 
@@ -58,51 +58,51 @@ Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan `Proxy`
 
 Aşağıdaki tabloda bölgeye göre ağ geçitlerinin IP adresleri listelenir. Bir Azure SQL veritabanına bağlanmak için ağ trafiğinin bölge için **Tüm** ağ geçitlerinden & izin vermeniz gerekir.
 
-Bundan sonra, her bölgeye daha fazla ağ geçidi ekleyeceğiz ve aşağıdaki tablonun kullanımdan kaldırılan ağ geçidi IP adresi sütununda ağ geçitlerini devre dışı bırakacağız. Aşağıdaki makalede verilen kullanımdan kaldırma işlemi hakkında daha fazla ayrıntı: [Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme](sql-database-gateway-migration.md)
+Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıları aşağıdaki makalede verilmiştir: [Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme](sql-database-gateway-migration.md)
 
 
-| Bölge Adı          | Ağ geçidi IP adresi | Kullanımdan kaldırılan ağ geçidi </br> IP adresi| Yetkisini alma hakkında notlar | 
-| --- | --- | --- | --- |
-| Avustralya Orta    | 20.36.105.0 | | |
-| Avustralya Central2   | 20.36.113.0 | | |
-| Avustralya Doğu       | 13.75.149.87, 40.79.161.1 | | |
-| Avustralya Güneydoğu | 191.239.192.109, 13.73.109.251 | | |
-| Güney Brezilya         | 104.41.11.5        |                 | |
-| Orta Kanada       | 40.85.224.249      |                 | |
-| Doğu Kanada          | 40.86.226.166      |                 | |
-| Orta ABD           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Çin Doğu           | 139.219.130.35     |                 | |
-| Çin Doğu 2         | 40.73.82.1         |                 | |
-| Çin Kuzey          | 139.219.15.17      |                 | |
-| Çin Kuzey 2        | 40.73.50.0         |                 | |
-| Doğu Asya            | 191.234.2.139, 52.175.33.150 |       | |
-| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Doğu ABD 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Fransa Orta       | 40.79.137.0, 40.79.129.1 |           | |
-| Almanya Orta      | 51.4.144.100       |                 | |
-| Almanya Kuzey Doğu   | 51.5.144.179       |                 | |
-| Hindistan Orta        | 104.211.96.159     |                 | |
-| Hindistan Güney          | 104.211.224.146    |                 | |
-| Hindistan Batı           | 104.211.160.80     |                 | |
-| Japonya Doğu           | 13.78.61.196, 40.79.184.8, 13.78.106.224 | 191.237.240.43 | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Japonya Batı           | 104.214.148.156, 40.74.100.192 | 191.238.68.11 | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Kore Orta        | 52.231.32.42       |                 | |
-| Kore Güney          | 52.231.200.86      |                 | |
-| Orta Kuzey ABD     | 23.96.178.199      | 23.98.55.75     | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Kuzey Avrupa         | 40.113.93.91       | 191.235.193.75  | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Güney Afrika Kuzey   | 102.133.152.0      |                 | |
-| Güney Afrika Batı    | 102.133.24.0       |                 | |
-| Orta Güney ABD     | 13.66.62.124       | 23.98.162.75    | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Güneydoğu Asya      | 104.43.15.0        | 23.100.117.95   | 1 Eylül 2019 ' den sonra bağlantı yok |
-| BAE Orta          | 20.37.72.64        |                 | |
-| BAE Kuzey            | 65.52.248.0        |                 | |
-| Birleşik Krallık Güney             | 51.140.184.11      |                 | |
-| Birleşik Krallık Batı              | 51.141.8.11        |                 | |
-| Batı Orta ABD      | 13.78.145.25       |                 | |
-| Batı Avrupa          | 40.68.37.158       | 191.237.232.75  | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Batı ABD              | 104.42.238.205     | 23.99.34.75     | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Batı ABD 2            | 13.66.226.202      |                 | |
-|                      |                    |                 | |
+| Bölge Adı          | Ağ geçidi IP adresleri |
+| --- | --- |
+| Avustralya Orta    | 20.36.105.0 |
+| Avustralya Central2   | 20.36.113.0 |
+| Avustralya Doğu       | 13.75.149.87, 40.79.161.1 |
+| Avustralya Güneydoğu | 191.239.192.109, 13.73.109.251 |
+| Güney Brezilya         | 104.41.11.5,191.233.200.14 |
+| Orta Kanada       | 40.85.224.249      |
+| Doğu Kanada          | 40.86.226.166      |
+| Orta ABD           | 13.67.215.62, 52.182.137.15 , 23.99.160.139, 104.208.16.96 | 
+| Çin Doğu           | 139.219.130.35     |
+| Çin Doğu 2         | 40.73.82.1         |
+| Çin Kuzey          | 139.219.15.17      |
+| Çin Kuzey 2        | 40.73.50.0         |
+| Doğu Asya            | 191.234.2.139, 52.175.33.150,13.75.32.4 |
+| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| Doğu ABD 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| Fransa Orta       | 40.79.137.0, 40.79.129.1 |
+| Almanya Orta      | 51.4.144.100       |
+| Almanya Kuzey Doğu   | 51.5.144.179       |
+| Hindistan Orta        | 104.211.96.159     |
+| Hindistan Güney          | 104.211.224.146    |
+| Hindistan Batı           | 104.211.160.80     |
+| Japonya Doğu           | 13.78.61.196, 40.79.184.8, 13.78.106.224 , 191.237.240.43, 40.79.192.5 | 
+| Japonya Batı           | 104.214.148.156, 40.74.100.192 | 191.238.68.11,40.74.97.10 | 
+| Kore Orta        | 52.231.32.42       |
+| Kore Güney          | 52.231.200.86      |
+| Orta Kuzey ABD     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| Kuzey Avrupa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| Güney Afrika Kuzey   | 102.133.152.0      |
+| Güney Afrika Batı    | 102.133.24.0       |
+| Orta Güney ABD     | 13.66.62.124 , 23.98.162.75, 104.214.16.32   | 
+| Güneydoğu Asya      | 104.43.15.0 , 23.100.117.95, 40.78.232.3   | 
+| BAE Orta          | 20.37.72.64        |
+| BAE Kuzey            | 65.52.248.0        |
+| Birleşik Krallık Güney             | 51.140.184.11      |
+| Birleşik Krallık Batı              | 51.141.8.11        |
+| Batı Orta ABD      | 13.78.145.25       |
+| Batı Avrupa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| Batı ABD              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
+| Batı ABD 2            | 13.66.226.202      |
+|                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL veritabanı bağlantı ilkesini değiştirme
 

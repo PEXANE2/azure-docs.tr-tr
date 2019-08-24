@@ -1,6 +1,6 @@
 ---
 title: Veri bilimi sanal makinesi havuzları - Azure | Microsoft Docs
-description: Bir takım için paylaşılan bir kaynak havuzları veri bilimi VM dağıtma
+description: DSVMs havuzlarını bir ekip için paylaşılan bir kaynak olarak dağıtma
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, team data science Process'i
 services: machine-learning
 documentationcenter: ''
@@ -16,30 +16,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: vijetaj
-ms.openlocfilehash: 44983de87ce2e774356bf506e3a868da922a3ba3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558051"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992027"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Veri bilimi sanal makineleri paylaşılan havuz oluşturma
 
-Bu makalede, paylaşılan bir havuz, veri bilimi sanal makineleri kullanır (Dsvm'leri) bir takım için nasıl oluşturabileceğiniz açıklanır. Paylaşılan bir havuz kullanmanın avantajlarını daha iyi kaynak kullanımı, paylaşma ve işbirliği dönüştüğünde, yönetim ve DSVM kaynaklarının daha etkin yönetim var. 
+Bu makalede, bir ekip için paylaşılan bir veri bilimi sanal makineleri havuzunun (DSVMs) nasıl oluşturulacağı açıklanmaktadır. Paylaşılan havuz kullanmanın avantajları, daha iyi kaynak kullanımı, daha kolay paylaşım ve işbirliği ve DSVM kaynaklarının daha etkili bir şekilde yönetilmesini içerir.
 
-Dsvm'leri havuzu oluşturmak için birçok yöntem ve teknolojileri kullanabilirsiniz. Bu makale etkileşimli VM 'Ler için havuzlara odaklanır. Alternatif bir yönetilen işlem altyapısı Azure Machine Learning Işlem olur. Daha fazla bilgi için bkz. [işlem hedeflerini ayarlama](../service/how-to-set-up-training-targets.md#amlcompute) .
+Dsvm'leri havuzu oluşturmak için birçok yöntem ve teknolojileri kullanabilirsiniz. Bu makale etkileşimli sanal makineler (VM 'Ler) için havuzlara odaklanır. Alternatif bir yönetilen işlem altyapısı Azure Machine Learning Işlem olur. Daha fazla bilgi için bkz. [işlem hedeflerini ayarlama](../service/how-to-set-up-training-targets.md#amlcompute).
 
 ## <a name="interactive-vm-pool"></a>Etkileşimli VM havuzu
 
-Tüm yapay ZEKA/veri bilimi ekibi tarafından paylaşılan etkileşimli VM'lerin bir havuz kullanılabilir her bir kullanıcı kümesi için ayrılmış bir örnek yerine DSVM örneğini oturum açmasına izin verir. Bu kurulum ile daha iyi kullanılabilirlik ve kaynakların daha etkili kullanımını yardımcı olur. 
+Tüm yapay ZEKA/veri bilimi ekibi tarafından paylaşılan etkileşimli VM'lerin bir havuz kullanılabilir her bir kullanıcı kümesi için ayrılmış bir örnek yerine DSVM örneğini oturum açmasına izin verir. Bu kurulum, kaynakların daha iyi kullanılabilirliğini ve daha etkili kullanımını sunar.
 
-Etkileşimli bir VM havuzu oluşturmak için kullandığınız teknoloji, [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Ölçek kümeleri, bir grup özdeş, yük dengeli ve otomatik ölçeklendirme Vm'leri oluşturmak ve yönetmek için kullanabilirsiniz. 
+Etkileşimli bir VM havuzu oluşturmak için [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) teknolojisini kullanırsınız. Ölçek kümeleri, bir grup özdeş, yük dengeli ve otomatik ölçeklendirme Vm'leri oluşturmak ve yönetmek için kullanabilirsiniz.
 
-Kullanıcı ana havuzuna ait IP ya da DNS adresine bağlanır. Ölçek oturum yollar ölçek kümesindeki bir kullanılabilir DSVM otomatik olarak ayarlayın. Kullanıcıların benzer bir ortam VM ne olursa olsun istediğiniz bunlar oturum açtığınızdan, VM ölçek kümesindeki tüm örnekleri bir Azure dosya paylaşımı veya bir NFS paylaşımına gibi bir paylaşılan ağ sürücüsü bağlayın. Kullanıcının paylaşılan çalışma normalde her örnekleri bağlanan paylaşılan dosya depolama tutulur. 
+Kullanıcı ana havuzuna ait IP ya da DNS adresine bağlanır. Ölçek oturum yollar ölçek kümesindeki bir kullanılabilir DSVM otomatik olarak ayarlayın. Kullanıcılar, oturum açtığı VM 'den bağımsız olarak tutarlı ve tanıdık bir ortam gerektirdiğinden, ölçek kümesindeki sanal makinenin tüm örnekleri, bir Azure dosya paylaşımında veya bir ağ dosya sistemi (NFS) paylaşımında olduğu gibi paylaşılan bir ağ sürücüsü bağlamalarından oluşur. Kullanıcının paylaşılan çalışma normalde her örnekleri bağlanan paylaşılan dosya depolama tutulur.
 
-Örnek bir Azure Resource Manager şablonu ölçek üzerinde Ubuntu DSVM örnekleriyle kümesi oluşturan bulabilirsiniz [GitHub](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Bir örnek [parametre dosyası](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) aynı konumda için Azure Resource Manager şablonudur. 
+Örnek bir Azure Resource Manager şablonu ölçek üzerinde Ubuntu DSVM örnekleriyle kümesi oluşturan bulabilirsiniz [GitHub](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Azure Resource Manager şablonu için aynı konumda bir [parametre dosyası](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) örneği bulacaksınız.
 
-Azure Resource Manager şablonu parametre dosyası için değerler Azure CLI'yi belirleyerek ölçek oluşturabilirsiniz. 
+Azure CLı 'de parametre dosyası değerlerini belirterek Azure Resource Manager şablondan ölçek kümesi oluşturabilirsiniz:
 
 ```
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
@@ -49,15 +49,15 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 * Parametre dosyası, Ölçek kümesi örneği için belirtilen değerlerle bir kopyası.
 * Sanal makine örneği sayısını.
 * Azure dosyaları için işaretçiler paylaşın.
-* Her VM'de bağlanacaktır depolama hesabı için kimlik bilgileri. 
+* Her VM'de bağlanacaktır depolama hesabı için kimlik bilgileri.
 
 Parametre dosyası, komutları yerel olarak başvuruluyor. Parametreleri, satır içi veya komut istemi onlar için de geçirebilirsiniz.  
 
-Yukarıdaki şablonu SSH ve Ubuntu Dsvm'leri arka uç havuzuna bir ön uç ölçek JupyterHub bağlantı noktasını etkinleştirir. Bir kullanıcı olarak, yalnızca VM'ye SSH veya JupyterHub normal şekilde oturum açın. Sanal makine örneklerine ölçeklendirilebilir veya aşağı dinamik olarak herhangi bir durum olması gerekir çünkü bağlı kaydedilmiş Azure dosyaları paylaşın. Windows Dsvm'leri havuzu oluşturmak için aynı yaklaşımı kullanabilirsiniz. 
+Yukarıdaki şablonu SSH ve Ubuntu Dsvm'leri arka uç havuzuna bir ön uç ölçek JupyterHub bağlantı noktasını etkinleştirir. Bir kullanıcı olarak, bir Secure Shell (SSH) veya jupi üzerinde sanal makinede normal şekilde oturum açın. VM örnekleri dinamik olarak ölçeklendirilebilir veya daha fazla azaltılabilen için, herhangi bir durum bağlı Azure dosyaları paylaşımında kaydedilmelidir. Windows Dsvm'leri havuzu oluşturmak için aynı yaklaşımı kullanabilirsiniz.
 
-[Azure dosyaları paylaşımına bağlandığı betik](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) de GitHub Azure DataScienceVM depoda kullanılabilir. Betik, Azure dosya paylaşımını parametre dosyasında belirtilen bağlama noktası bağlar. Betik, ilk kullanıcının giriş dizininde bağlı sürücü geçici bağlantılar da oluşturur. Bağlı Azure dosya paylaşımı içinde bir kullanıcıya özgü not defteri dizin geçici `$HOME/notebooks/remote` dizin kullanıcıların erişmek, çalıştırın ve kullanıcıların Jupyter not defterlerini kaydedin. Ek kullanıcılar her kullanıcının Jupyter çalışma Azure dosyaları paylaşımına işaret edecek şekilde sanal makine oluşturduğunuzda, aynı yöntemi kullanabilirsiniz. 
+[Azure dosyaları paylaşımına bağlandığı betik](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) de GitHub Azure DataScienceVM depoda kullanılabilir. Betik, Azure dosya paylaşımını parametre dosyasında belirtilen bağlama noktası bağlar. Betik, ilk kullanıcının giriş dizininde bağlı sürücü geçici bağlantılar da oluşturur. Azure dosya paylaşımındaki kullanıcıya özgü bir not defteri dizini, kullanıcıların Jupyter not defterlerini `$HOME/notebooks/remote` erişebilmeleri, çalıştırmaları ve kaydedebilmeleri için dizine geçici olarak bağlanır. Ek kullanıcılar her kullanıcının Jupyter çalışma Azure dosyaları paylaşımına işaret edecek şekilde sanal makine oluşturduğunuzda, aynı yöntemi kullanabilirsiniz.
 
-Sanal makine ölçek kümeleri, otomatik ölçeklendirmeyi destekler. Ek örnekleri oluşturmak ne zaman ve ne zaman örneğine ölçeklendirme kuralları ayarlayabilirsiniz. Örneğin, sıfır örneklere Vm'leri hiç kullanılmadığı zaman bulut donanım kullanım maliyet tasarrufu için ölçeği azaltabilirsiniz. Ayrıntılı adımlar için sanal makine ölçek kümeleri belgeleri sayfaları sağlamak [otomatik ölçeklendirme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+Sanal makine ölçek kümeleri, otomatik ölçeklendirmeyi destekler. Ne zaman ek örnekler oluşturulacağı ve örneklerin ne zaman Ölçeklendirilecek hakkında kurallar belirleyebilirsiniz. Örneğin, sıfır örneklere Vm'leri hiç kullanılmadığı zaman bulut donanım kullanım maliyet tasarrufu için ölçeği azaltabilirsiniz. Ayrıntılı adımlar için sanal makine ölçek kümeleri belgeleri sayfaları sağlamak [otomatik ölçeklendirme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

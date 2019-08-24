@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 530e37400881ace2de603aed6875ed236e45f2c7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847412"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992289"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama
 
@@ -28,11 +28,11 @@ Bu makalede Azure Depolama Gezgini için kullanmayı öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İşlemin en iyi şekilde belirtilmesini sağlamak için [Azure Depolama Gezgini hızlı](data-lake-storage-Explorer.md)başlangıçmızı tamamlamanızı istiyoruz. Bu, depolama hesabınızın en uygun durumda (dosya sistemi oluşturulmuş ve dosyaya yüklenen veriler) olmasını sağlar.
+İşlemin en iyi şekilde belirtilmesini sağlamak için [Azure Depolama Gezgini hızlı](data-lake-storage-Explorer.md)başlangıçmızı tamamlamanızı istiyoruz. Bu, depolama hesabınızın en uygun durumda (kapsayıcı oluşturulmuş ve karşıya yüklenen veriler) yer almasını sağlar.
 
 ## <a name="managing-access"></a>Erişimi yönetme
 
-Dosya sisteminizin kökünde izinleri ayarlayabilirsiniz. Bunu yapmak için, tek yapmanız gereken haklara sahip Azure Depolama Gezgini oturum açmanız gerekir (bağlantı dizesi ile aksine). Dosya sisteminize sağ tıklayın ve Izinleri Yönet iletişim kutusunu getirerek **Izinleri Yönet**' i seçin.
+Kapsayıcının kökündeki izinleri ayarlayabilirsiniz. Bunu yapmak için, tek yapmanız gereken haklara sahip Azure Depolama Gezgini oturum açmanız gerekir (bağlantı dizesi ile aksine). Kapsayıcıya sağ tıklayın ve Izinleri Yönet iletişim kutusunu getirerek **Izinleri Yönet**' i seçin.
 
 ![Microsoft Azure Depolama Gezgini-dizin erişimini yönetme](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

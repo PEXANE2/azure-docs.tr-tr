@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4d6c7665d281ff7c27fd8b61537804b6803b3b43
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 1634d7cd3dfe8d118e220fa8620ef6467c15ea2c
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360159"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983014"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -29,6 +29,12 @@ Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım v
 Aşağı akış cihazları şu üç yöntemden birini kullanarak IoT Hub kimlik doğrulaması yapabilir: simetrik anahtarlar (bazen paylaşılan erişim anahtarları olarak adlandırılır), X. 509.440 otomatik olarak imzalanan sertifikalar veya X. 509.440 sertifika yetkilisi (CA) imzalı sertifikalar. Kimlik doğrulama adımları, ağ geçidi ilişkisini bildirmek için küçük farklılıklar ile, IoT Edge olmayan bir cihazı IoT Hub kurmak için kullanılan adımlara benzerdir.
 
 Bu makaledeki adımlarda, Azure IoT Hub cihaz sağlama hizmeti ile otomatik sağlama değil el ile cihaz sağlama gösterilmektedir. 
+
+## <a name="prerequisites"></a>Önkoşullar
+
+[Bir IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)adımlarını uygulayın.
+
+Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazında config. YAML dosyasının **hostname** parametresinde bildirilmiştir. Bu makaledeki sertifikaları oluşturmak için kullanılır ve aşağı akış cihazlarının bağlantı dizesinde öğesine başvurulur. Ağ geçidi ana bilgisayar adının DNS veya ana bilgisayar dosya girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
 
 ## <a name="symmetric-key-authentication"></a>Simetrik anahtar kimlik doğrulaması
 
@@ -133,7 +139,7 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını bir saydam ağ
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Bu dosyalara IoT Hub bağlanan yaprak cihaz uygulamalarında başvuracağız. Sertifika dosyalarını taşımak için, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya prototipco](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   Bu dosyalara IoT Hub bağlanan yaprak cihaz uygulamalarında başvuracağız. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) 'nı kullanabilirsiniz. Aşağıdaki örnek, X. 509.440 otomatik imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar: 
 
@@ -187,7 +193,7 @@ Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir a�
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Bu dosyalara IoT Hub bağlanan yaprak cihaz uygulamalarında başvuracağız. Sertifika dosyalarını taşımak için, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya prototipco](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+   Bu dosyalara IoT Hub bağlanan yaprak cihaz uygulamalarında başvuracağız. Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension) 'nı kullanabilirsiniz. Aşağıdaki örnek, X. 509.952 CA imzalı kimlik doğrulaması ile yeni bir IoT cihazı oluşturur ve bir üst cihaz atar: 
 

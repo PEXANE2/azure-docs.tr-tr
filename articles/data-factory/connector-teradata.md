@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557875"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996579"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'dan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -189,7 +189,7 @@ Bu bölüm, Teradata kaynağı tarafından desteklenen özelliklerin bir listesi
 ### <a name="teradata-as-source"></a>Kaynak olarak Teradata
 
 >[!TIP]
->Veri bölümleme kullanarak Teradata 'tan verileri verimli bir şekilde yüklemek için [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın.
+>Veri bölümleme kullanarak Teradata 'tan verileri verimli bir şekilde yüklemek için [Teradata 'Den paralel kopyadan](#parallel-copy-from-teradata) daha fazla bilgi edinin.
 
 Teradata 'tan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
@@ -245,9 +245,9 @@ Data Factory Teradata Bağlayıcısı, Teradata 'den paralel olarak veri kopyala
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre yüklemek için Teradata kaynağınıza karşı paralel sorgular çalıştırır. Paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır. Her sorgu, Teradata veritabanınızdan verilerin bir kısmını alır.
+Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre yüklemek için Teradata kaynağınıza karşı paralel sorgular çalıştırır. Paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, Teradata veritabanınızdaki verilerin bir kısmını alır.
 
-Özellikle de Teradata veritabanınızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyayı etkinleştirmek iyi bir fikirdir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir:
+Özellikle de Teradata veritabanınızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyayı etkinleştirmek iyi bir fikirdir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazma işlemi geri çağrılır, bu durumda performans tek bir dosyaya yazılmasından daha iyidir.
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

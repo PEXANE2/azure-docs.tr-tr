@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: 2f39678e9fa0ed665863a94767240e2e37eace39
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: HT
+ms.openlocfilehash: f0d63b9e01b7e39b03e6a3b1e310b5fae0f8d25f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906200"
+ms.locfileid: "69982859"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Hızlı Başlangıç: Azure Logic Apps Azure portal ilk otomatikleştirilmiş iş akışınızı oluşturma
 
@@ -43,7 +43,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    | Özellik | Value | Açıklama |
    |----------|-------|-------------|
-   | **Name** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı veya `-` `)`, `(` `_` `.` ,,, karakter içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Name** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı`-`, kısa çizgi (), alt çizgi (`_`), parantez (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
    | **Location** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
@@ -99,7 +99,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 
 1. **Bir akış öğesi yayımlandığında** tetikleyicisi bölümünde **yeni adım**' ı seçin.
 
-   ![Eylem ekle](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
+   ![Eylem ekleme](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
 1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin.
 
@@ -171,7 +171,7 @@ Artık bu örneğe ihtiyacınız yoksa mantıksal uygulamanızı ve ilgili kayna
 
 1. Kaynak grubu adını onay olarak girin ve **Sil**' i seçin.
 
-   ![Silmeyi onayla](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
+   ![Silme işlemini onaylama](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.

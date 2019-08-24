@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 877769041d1587c6c1b0f4dbaff51d5a1a7924b5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907344"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997705"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama (Önizleme özellikleri)
 
@@ -70,7 +70,7 @@ IoT Tak ve Kullan de dahil olmak üzere önizleme özelliklerini kullanan yeni b
 
     Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
-[Iot Tak ve kullan](https://aka.ms/iot-pnp-docs) cihaz yetenek modelini Içeren **Environmentalsensorline. capabilitymodel. JSON** dosyasının yerel bir kopyasına de ihtiyacınız vardır. [Buradan](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)indirebilirsiniz. Sayfaya sağ tıklayın ve **farklı kaydet**' i seçin.
+[Iot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) cihaz yetenek modelini Içeren **Environmentalsensorline. capabilitymodel. JSON** dosyasının yerel bir kopyasına de ihtiyacınız vardır. [Buradan](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)indirebilirsiniz. Sayfaya sağ tıklayın ve **farklı kaydet**' i seçin.
 
 Dosyayı indirdikten sonra bir metin düzenleyicisinde açın ve iki örneğini `<YOUR_COMPANY_NAME_HERE>` adıyla değiştirin. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın.
 

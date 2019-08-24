@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ec25abbdaa160976928a9ea0fea29a4d1fbf823a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725615"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992138"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>SLES azure'daki SUSE Linux Enterprise Server üzerinde Pacemaker ayarlama
 
@@ -532,7 +532,7 @@ STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizme
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Sınır aracısı için özel bir rol oluşturun
 
-Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Başlatmak ve durdurmak için hizmet sorumlusu izinleri vermeniz gerekir (serbest bırakın) kümenin tüm sanal makineler. Özel rol zaten oluşturmadıysanız, bunu kullanarak oluşturabilirsiniz [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Başlatmak ve durdurmak için hizmet sorumlusu izinleri vermeniz gerekir (serbest bırakın) kümenin tüm sanal makineler. Özel rol zaten oluşturmadıysanız, bunu kullanarak oluşturabilirsiniz [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
 
 Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içeriği için aboneliklerinizi uyum, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 aboneliğinizin kimliği ile değiştirin. İkinci girdi, yalnızca bir aboneliğiniz varsa, ın AssignableScopes içinde kaldırın.
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567267"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998215"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL veritabanı ölçümleri ve tanılama günlüğü
 
@@ -111,7 +111,7 @@ Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek i
 
 1. Kendi başvurunuz için bir ayar adı girin.
 1. Akış Tanılama verileri için bir hedef kaynak seçin: **Depolama hesabına arşivleme**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
-1. Log Analytics için, **Yapılandır** ' ı seçin ve yeni çalışma alanı oluştur ' **u seçerek yeni**bir çalışma alanı oluşturun veya mevcut bir çalışma alanı seçin.
+1. Log Analytics için, **Yapılandır** ' ı seçin ve yeni çalışma alanı oluştur' u seçerek yeni bir çalışma alanı oluşturun veya mevcut bir çalışma alanı seçin.
 1. Elastik havuz tanılama telemetrisi onay kutusunu seçin: **Temel** ölçümler.
    ![Elastik havuzlar için tanılamayı yapılandırma](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. **Kaydet**’i seçin.
@@ -173,7 +173,7 @@ Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleşti
 
 1. Kendi başvurunuz için bir ayar adı girin.
 1. Akış Tanılama verileri için bir hedef kaynak seçin: **Depolama hesabına arşivleme**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
-1. Log Analytics için, **Yapılandır** ' ı seçin ve yeni çalışma alanı oluştur ' **u seçerek yeni**bir çalışma alanı oluşturun veya mevcut bir çalışma alanını kullanın.
+1. Log Analytics için, **Yapılandır** ' ı seçin ve yeni çalışma alanı oluştur' u seçerek yeni bir çalışma alanı oluşturun veya mevcut bir çalışma alanını kullanın.
 1. Örnek tanılama telemetrisi onay kutusunu seçin: **Resourceusagestats**.
    ![Yönetilen örnek için tanılamayı yapılandırma](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. **Kaydet**’i seçin.
@@ -344,9 +344,12 @@ Veritabanlarının, ölçüm kayıtlarını nerede Azure portal kullanarak yapı
 
 Elastik havuzlar veya yönetilen örnekler kullanıyorsanız, tanılama telemetrinin çalışma alanına akışını sağlamak için bu kaynaklarda tanılama ayarlarını da yapılandırmanız gerekir.
 
-### <a name="use-the-sql-analytics-solution"></a>SQL Analytics çözümünü kullanma
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>İzleme ve uyarma için SQL Analytics çözümünü kullanma
 
-SQL veritabanı kaynaklarınızı görüntülemek için SQL Analytics 'i hiyerarşik bir pano olarak kullanabilirsiniz. SQL Analytics çözümünü nasıl kullanacağınızı öğrenmek için bkz. SQL [Analytics çözümünü kullanarak SQL veritabanını izleme](../log-analytics/log-analytics-azure-sql.md).
+SQL veritabanı kaynaklarınızı görüntülemek için SQL Analytics 'i hiyerarşik bir pano olarak kullanabilirsiniz.
+
+- SQL Analytics çözümünü nasıl kullanacağınızı öğrenmek için bkz. SQL [Analytics çözümünü kullanarak SQL veritabanını izleme](../log-analytics/log-analytics-azure-sql.md).
+- SQL veritabanı ve yönetilen örnek için SQL Analytics 'e göre uyarıları ayarlamayı öğrenmek için bkz. [SQL veritabanı ve yönetilen örnek için uyarı oluşturma](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
 ## <a name="stream-into-event-hubs"></a>Event Hubs'a akış sağlama
 
@@ -441,9 +444,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |ResourceProvider|Kaynak sağlayıcının adı. Her MICROSOFT. SQL |
 |Category|Kategorinin adı. Her ResourceUsageStats |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her MANAGEDINSTANCES |
+|ResourceType|Kaynak türünün adı. Her MANAGEDINSTANCES |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Yönetilen örnek adı |
 |RESOURCEID|Kaynak URI 'SI |
 |SKU_s|Yönetilen örnek Ürün SKU 'SU |
@@ -467,9 +470,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her QueryStoreRuntimeStatistics |
 |OperationName|İşlemin adı. Her QueryStoreRuntimeStatisticsEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -518,9 +521,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her QueryStoreWaitStatistics |
 |OperationName|İşlemin adı. Her QueryStoreWaitStatisticsEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -556,9 +559,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Hatalar |
 |OperationName|İşlemin adı. Her ErrorEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -585,9 +588,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her DatabaseWaitStatistics |
 |OperationName|İşlemin adı. Her DatabaseWaitStatisticsEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -614,9 +617,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Zaman Aşımları |
 |OperationName|İşlemin adı. Her TimeoutEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -637,9 +640,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Öbekleri |
 |OperationName|İşlemin adı. Her BlockEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -661,9 +664,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Kilitlenmeler |
 |OperationName|İşlemin adı. Her DeadlockEvent |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -681,9 +684,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |ResourceProvider|Kaynak sağlayıcının adı. Her MICROSOFT. SQL |
 |Category|Kategorinin adı. Her Otomatik olarak ayarlama |
 |Resource|Kaynağın adı |
-|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|ResourceGroup|Veritabanı için kaynak grubunun adı |
+|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |LogicalDatabaseName_s|Veritabanının adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
@@ -715,3 +718,7 @@ Event Hubs hakkında bilgi edinmek için şunu okuyun:
 
 - [Azure Event Hubs nedir?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Event Hubs kullanmaya başlayın](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Log Analytics 'ten telemetri temelinde uyarı ayarlamayı öğrenmek için bkz.:
+
+- [SQL veritabanı ve yönetilen örnek için uyarı oluşturma](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534668"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982696"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -81,7 +81,7 @@ Bu hata aşağıdaki nedenlerden kaynaklanıyor olabilir:
 1. Güncelleştirme Yönetimi çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning) ' nı ziyaret edin.
 2. Kopyalanmış bir görüntü kullanıyorsanız:
    1. Log Analytics çalışma alanınızda, gösterilen kapsam yapılandırması `MicrosoftDefaultScopeConfig-Updates` için VM 'yi kayıtlı aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
-   2.           `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`'i çalıştırın.
+   2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`'i çalıştırın.
    3. Uygulamasını yeniden başlatmak için çalıştırın `Restart-Service HealthService` . `HealthService` Bu, anahtarı yeniden oluşturacak ve yeni bir UUID oluşturacak.
    4. Bu işe yaramazsa, önce görüntüyü Sysprep yapın ve bulduktan sonra MMA aracısını yükler.
 
@@ -339,7 +339,7 @@ Düzeltme eki uygulama sorununu çözemezseniz, aşağıdaki günlük dosyasın�
 ### <a name="machines-do-not-install-updates"></a>Makineler güncelleştirmeleri yüklemez
 
 * Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirilemiyorsa [sorun giderme kılavuzundaki olası hatalar listesine](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult) bakın.
-* Güncelleştirmeler yerel olarak çalıştırılıyorsa, ["VM'yi Güncelleştirme Yönetimi'nden kaldırma"](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management) bağlantısında sağlanan yönergeleri izleyerek makinedeki aracıyı kaldırmayı ve yeniden yüklemeyi deneyin.
+* Güncelleştirmeler yerel olarak çalıştırılıyorsa, ["VM'yi Güncelleştirme Yönetimi'nden kaldırma"](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management) bağlantısında sağlanan yönergeleri izleyerek makinedeki aracıyı kaldırmayı ve yeniden yüklemeyi deneyin.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Güncelleştirmelerin kullanılabildiğini biliyorum, ancak makinelerimde gereken şekilde gösterilmiyorum
 

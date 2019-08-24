@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515779"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995831"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı için kural sayfası
 Bu kural sayfası, Azure SQL Veri Ambarı çözümlerinizi oluşturmak için yardımcı ipuçları ve en iyi uygulamalar sağlar. Başlamadan önce, SQL Veri Ambarının ne olup ne olmadığını açıklayan [Azure SQL Veri Ambarı İş Yükü Düzenleri ve Anti Düzenleri](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) bölümünü okuyarak her bir adım hakkında daha ayrıntılı bilgi edinin.
@@ -41,7 +41,7 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
 | Dizinleme | Yığın |
-| Bölümleme | None |
+| Bölümleme | Yok. |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
 [Veri geçişi], [veri yükleme] ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) hakkında daha fazla bilgi edinin. 
@@ -96,9 +96,11 @@ ELT gerektiren hazırlama tabloları ile bölümlemeden yararlanabilirsiniz. Bu,
 
 ## <a name="incremental-load"></a>Artımlı yükleme
 
-Verilerinizi artımlı olarak yükleyecekseniz ilk olarak verilerinizi yüklemeye daha büyük kaynak sınıfları ayırdığınızdan emin olun. SQL Veri Ambarı’na ELT işlem hatlarınızı otomatikleştirmek için PolyBase ve ADF V2 kullanılmasını öneririz.
+Verilerinizi artımlı olarak yükleyecekseniz ilk olarak verilerinizi yüklemeye daha büyük kaynak sınıfları ayırdığınızdan emin olun.  Bu, kümelenmiş columnstore dizinleri olan tablolara yüklenirken özellikle önemlidir.  Daha fazla ayrıntı için bkz. [kaynak sınıfları](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) .  
 
-Geçmiş verilerinizdeki güncelleştirmelerin çoğu için ilk olarak ilgili verileri silin. Ardından yeni verileri toplu ekleyin. Bu iki adımlı yaklaşım daha verimli olur.
+SQL Veri Ambarı’na ELT işlem hatlarınızı otomatikleştirmek için PolyBase ve ADF V2 kullanılmasını öneririz.
+
+Geçmiş verilerinizde oluşan büyük toplu güncelleştirmeler için, INSERT, UPDATE ve DELETE kullanmak yerine bir tabloda tutmak istediğiniz verileri yazmak üzere bir [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) kullanmayı düşünün.
 
 ## <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
  Otomatik istatistikler genel olarak kullanılabilir oluncaya kadar SQL Veri Ambarı, istatistiklerin el ile bakımını gerektirir. Verilerinizde *önemli* değişiklikler olacağından, istatistiklerin güncelleştirilmesi önemlidir. Bu, sorgu planlarınızın iyileştirilmesine yardımcı olur. Tüm istatistiklerinizi tutmanız çok uzun sürerse, hangi sütunlarda istatistikler olduğu konusunda daha seçici olun. 

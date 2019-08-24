@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 90a9c67a11b54490b801ec65f691b4ae853ab4f2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972205"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997880"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -254,11 +254,11 @@ Seçenek listesini görüntülemek için komut satırına `CosmosDB.Emulator.exe
 |EnableTableEndpoint | Azure Tablo API'si etkinleştirilir | CosmosDB. öykünücü. exe/EnableTableEndpoint | |
 |TablePort | Azure Tablo uç noktası için kullanılacak bağlantı noktası numarası. Varsayılan değer 8902 ' dir. | Cosmosdb. öykünücü. exe/tableport =\<bağlantı noktası\> | \<bağlantı\>noktası: Tek bağlantı noktası numarası|
 | Dosyasına | Belirtilen dosyadan yetkilendirme anahtarını okuyun. Bir keyfile oluşturmak için/GenKeyFile seçeneğini kullanın | Cosmosdb. Emulator. exe/keyfile =\<dosya_adı\> | \<dosya_adı\>: Dosyanın yolu |
-| ResetDataPath | Belirtilen yoldaki tüm dosyaları yinelemeli olarak kaldırır. Bir yol belirtmezseniz, varsayılan olarak%LOCALAPPDATA%\CosmosDbEmulator olur | Cosmosdb. Emulator. exe/resetdatapath [=\<yol >] | \<yol\>: Dosya yolu  |
+| ResetDataPath | Belirtilen yoldaki tüm dosyaları yinelemeli olarak kaldırır. Bir yol belirtmezseniz, varsayılan olarak%LOCALAPPDATA%\CosmosDbEmulator olur | Cosmosdb. Emulator. exe/resetdatapath =\<yol > | \<yol\>: Dosya yolu  |
 | Başlangıçizler  |  Hata ayıklama izleme günlüklerini toplamaya başla. | CosmosDB. Emulator. exe/Startizlemeler | |
 | Durma Izlemeleri     | Hata ayıklama izleme günlüklerini toplamayı durdur. | CosmosDB. Emulator. exe/Stopizlemeleri  | |
 |Failonsslcertificatenameuyuşmazlığı | Varsayılan olarak, sertifika SAN 'ı öykünücü konağın etki alanı adını, yerel IPv4 adresini, ' localhost ' ve ' 127.0.0.1 ' içermiyorsa, öykünücü otomatik olarak imzalanan SSL sertifikasını yeniden oluşturur. Bu seçenekle öykünücü, bunun yerine başlangıçta başarısız olur. Ardından, yeni bir otomatik olarak imzalanan SSL sertifikası oluşturmak ve yüklemek için/GenCert seçeneğini kullanmanız gerekir. | CosmosDB. Emulator. exe/Failonsslcertificatenameuyuşmazlığı  | |
-| GenCert | Otomatik olarak imzalanan yeni bir SSL sertifikası oluşturun ve yükler. isteğe bağlı olarak, ağ üzerinden öykünücüye erişmek için ek DNS adlarının virgülle ayrılmış listesini de içeren bir liste. | Cosmosdb. Emulator. exe/gencert [ \<ek DNS adlarından\>oluşan virgülle ayrılmış liste] | |
+| GenCert | Otomatik olarak imzalanan yeni bir SSL sertifikası oluşturun ve yükler. isteğe bağlı olarak, ağ üzerinden öykünücüye erişmek için ek DNS adlarının virgülle ayrılmış listesini de içeren bir liste. | Cosmosdb. öykünücü. exe/gencert =\<DNS-adlar\> |\<DNS-adlar\>: Ek DNS adlarının isteğe bağlı virgülle ayrılmış listesi  |
 | DirectPorts |Doğrudan bağlantı için kullanılacak bağlantı noktalarını belirtir. Varsayılan değerler: 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<DirectPort\>: Virgülle ayrılmış 4 bağlantı noktası listesi |
 | Anahtar |Öykünücü için yetkilendirme anahtarı. Anahtar, 64 bayt vektörün base 64 kodlaması olmalıdır. | CosmosDB.Emulator.exe /Key:\<key\> | \<anahtar\>: Anahtar, 64 baytlık bir Vector öğesinin Base-64 kodlaması olmalıdır|
 | EnableRateLimiting | İstek oranını sınırlama davranışının etkinleştirildiğini belirtir. |CosmosDB.Emulator.exe /EnableRateLimiting | |

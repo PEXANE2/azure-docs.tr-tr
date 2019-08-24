@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c7251b24ccd15971a704b6b47288f49168b27039
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876350"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980889"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Azure 'da VM 'Leri ve diğer altyapıyı sağlamak için Terrayform 'u yükleyip yapılandırın
  
@@ -47,10 +47,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Terlarform 'un Azure 'a kaynak sağlamasını sağlamak için bir [Azure AD hizmet sorumlusu](/cli/azure/create-an-azure-service-principal-azure-cli)oluşturun. Hizmet sorumlusu, Azure aboneliğinizdeki kaynakları sağlamak için Teraform betiklerinizi verir.
 
-Birden çok Azure aboneliğiniz varsa, abonelik KIMLIĞI ve kiracı KIMLIĞI değerlerinin bir listesini almak için hesabınızı [az Account Show](/cli/azure/account#az-account-show) komutuyla sorgulayın:
+Birden çok Azure aboneliğiniz varsa, ilk olarak hesabınızı [az Account List](/cli/azure/account#az-account-list) ile sorgulayın ve abonelik kimliği ve Kiracı kimliği değerlerinin bir listesini alın:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Seçili bir aboneliği kullanmak için, bu oturum için aboneliği [az Account set](/cli/azure/account#az-account-set)ile ayarlayın. Ortam değişkenini, kullanmak istediğiniz aboneliğin döndürülen `id` alanın değerini tutacak şekilde ayarlayın: `SUBSCRIPTION_ID`

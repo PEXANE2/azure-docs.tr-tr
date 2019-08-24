@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 0884120c15b2e48566d1889400197e316bac9021
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 82c286ce60751775308d0f2c197d86785c4f0a14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907456"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991592"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -45,7 +45,7 @@ Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu
 
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
-Evrensel çoğaltma bölgelerine ek olarak, ana sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)daha fazla bilgi edinebilirsiniz.
+Evrensel çoğaltma bölgelerine ek olarak, ana sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
 
 Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları kullanıyorsanız, çoğaltmayı diğer bölgelerden biri yerine eşleştirilmiş bölgede oluşturmanızı öneririz. Eşleştirilmiş bölgeler eşzamanlı güncelleştirmeleri önleyin ve fiziksel yalıtımın ve veri fazlalığını önceliklendirir.  
 
@@ -113,7 +113,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 > [!NOTE]
 > Ana sunucu veya okuma çoğaltması yeniden başlatılırsa, yeniden başlatma ve yakalama için geçen süre çoğaltma gecikmesi ölçüsüne yansıtılır.
 
-## <a name="stop-replication"></a>Çoğaltmayı durdur
+## <a name="stop-replication"></a>Çoğaltmayı durdurma
 Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Durdur eylemi, çoğaltmanın yeniden başlatılmasına ve çoğaltma ayarlarını kaldırmasına neden olur. Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltma durdurulduktan sonra çoğaltma tek başına bir sunucu haline gelir. Tek başına sunucusundaki veriler, çoğaltma durdurma komutunun başlatıldığı zamanda çoğaltma üzerinde kullanılabilir olan veri. Tek başına sunucu, ana sunucu ile birlikte yakalamaz.
 
 > [!IMPORTANT]
@@ -124,19 +124,21 @@ Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Durdur eylemi, ço�
 
 [Bir çoğaltmaya çoğaltmayı durdurmayı](howto-read-replicas-portal.md)öğrenin.
 
-## <a name="fail-over"></a>Yük devretme
+## <a name="failover"></a>Yük devretme
 Ana ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
 
-Çoğaltma zaman uyumsuz olduğundan, ana ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, ana sunucuda çalışan iş yükünün ne kadar ağır olduğunu gösterir. Çoğu durumda, çoğaltma gecikmesi birkaç saniye ile birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
+Çoğaltma zaman uyumsuz olduğundan, ana ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, ana sunucu üzerinde çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniye ile birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması*gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
 
 > [!Tip]
-> Çoğaltmaya yük devretmek, çoğaltmayı ana bilgisayardan geri bağladığınızda oluşan gecikme, ne kadar verinin kaybedildiğine işaret eder.
+> Çoğaltmaya yük devretmek, çoğaltmayı ana bilgisayardan geri bağladığınızda oluşan gecikme, ne kadar veri kaybedildiğine işaret eder.
 
 Bir çoğaltmaya yük devretmek istediğinizde, 
 
-1. Çoğaltmaya çoğaltmayı durdur bu adım, çoğaltma sunucusunun yazmaları kabul etmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu yeniden başlatılır ve ana bilgisayardan kaldırılır. Çoğaltmayı Durdur ' u başlattığınızda, arka uç işleminin genellikle yaklaşık 2 dakika sürer. [Çoğaltmayı durdurma](#stop-replication)hakkında daha fazla bilgi edinin.
+1. Çoğaltmaya çoğaltmayı durdur<br/>
+   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu yeniden başlatılır ve ana bilgisayardan kaldırılır. Çoğaltmayı Durdur ' u başlattığınızda, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
     
-2. Uygulamanızı (eski) çoğaltmaya işaret edin her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı ana şablon yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
+2. Uygulamanızı (eski) çoğaltmaya işaret edin<br/>
+   Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı ana şablon yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
     
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
@@ -155,7 +157,7 @@ Bir okuma çoğaltması, PostgreSQL için yeni bir Azure veritabanı sunucusu ol
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 
 > [!IMPORTANT]
-> Ana ayar yeni bir değere güncellenmadan önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesini sağlar.
+> Ana ayar yeni bir değere güncellenmadan önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
 
 PostgreSQL, okuma çoğaltmasındaki `max_connections` parametrenin değerini ana değerden büyük veya ona eşit olacak şekilde gerektirir; Aksi takdirde, çoğaltma başlatılmaz. PostgreSQL `max_connections` için Azure veritabanı 'nda parametre değeri SKU 'yu temel alır. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda sınırlamalar](concepts-limits.md). 
 

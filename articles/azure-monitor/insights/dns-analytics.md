@@ -1,6 +1,6 @@
 ---
-title: Azure İzleyici'de DNS analizi çözümü | Microsoft Docs
-description: Ayarlama ve DNS altyapısında güvenlik, performans ve işlem öngörüleri toplamak için Azure İzleyici'de DNS analizi çözümü kullanın.
+title: Azure Izleyici 'de çözüm DNS Analizi | Microsoft Docs
+description: Güvenlik, performans ve işlemlerde DNS altyapısına Öngörüler toplamak için Azure Izleyici 'de DNS Analizi çözümünü ayarlayın ve kullanın.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60496500"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982582"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS analizi Önizleme çözümü, DNS altyapısıyla ilgili Öngörüler toplayın
 
 ![DNS analizi simgesi](./media/dns-analytics/dns-analytics-symbol.png)
 
-Bu makalede, ayarlama ve Azure DNS analizi çözümü, DNS altyapısı güvenlik, performans ve işlemleri hakkında Öngörüler elde etmek Azure İzleyici'de kullanın. açıklar.
+Bu makalede, güvenlik, performans ve işlemlerde DNS altyapısına Öngörüler toplamak için Azure Izleyici 'de Azure DNS Analytics çözümünün nasıl ayarlanacağı ve kullanılacağı açıklanmaktadır.
 
 DNS analiz etmenize yardımcı olur:
 
@@ -44,19 +44,19 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | --- | --- | --- |
 | [Windows aracıları](../platform/agent-windows.md) | Evet | Çözüm, Windows aracılarından DNS bilgilerini toplar. |
 | [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgi toplamaz. |
-| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Evet | Çözüm, bağlı Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Azure İzleyici Operations Manager Aracısı'ndan doğrudan bir bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Evet | Çözüm, bağlı Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
 | [Azure depolama hesabı](../platform/collect-azure-metrics-logs.md) | Hayır | Azure depolama çözümü tarafından kullanılmaz. |
 
 ### <a name="data-collection-details"></a>Veri koleksiyonu ayrıntıları
 
-Çözüm, Log Analytics aracısını yüklendiği DNS sunucularından DNS envanteri ve DNS ilgili olay verilerini toplar. Bu veriler daha sonra Azure İzleyici karşıya ve çözüm panosunda görüntülenen. DNS sunucuları, bölge ve kaynak kayıtları sayısı gibi envanterle ilişkili veri DNS PowerShell cmdlet'lerini çalıştırarak toplanır. Verileri iki günde bir kez güncelleştirilir. İlgili olay verileri neredeyse gerçek zamanlı olarak toplanan [analiz ve Denetim günlükleri](https://technet.microsoft.com/library/dn800669.aspx#enhanc) Gelişmiş DNS günlüğe kaydetme ve tanılama Windows Server 2012 R2 tarafından sağlanan.
+Çözüm, Log Analytics aracısını yüklendiği DNS sunucularından DNS envanteri ve DNS ilgili olay verilerini toplar. Bu veriler daha sonra Azure Izleyici 'ye yüklenir ve çözüm panosunda görüntülenir. DNS sunucuları, bölge ve kaynak kayıtları sayısı gibi envanterle ilişkili veri DNS PowerShell cmdlet'lerini çalıştırarak toplanır. Verileri iki günde bir kez güncelleştirilir. İlgili olay verileri neredeyse gerçek zamanlı olarak toplanan [analiz ve Denetim günlükleri](https://technet.microsoft.com/library/dn800669.aspx#enhanc) Gelişmiş DNS günlüğe kaydetme ve tanılama Windows Server 2012 R2 tarafından sağlanan.
 
 ## <a name="configuration"></a>Yapılandırma
 
 Çözümü yapılandırmak için aşağıdaki bilgileri kullanın:
 
 - Olmalıdır bir [Windows](../platform/agent-windows.md) veya [Operations Manager](../platform/om-agents.md) aracıyı izlemek istediğiniz her bir DNS sunucusunda.
-- DNS analizi çözümü Log Analytics çalışma alanınızdan ekleyebileceğiniz [Azure Marketi](https://aka.ms/dnsanalyticsazuremarketplace). Açıklanan işlemi ayrıca kullanabileceğiniz [Azure İzleyici'yi ekleyin çözüm galeri'sinden](solutions.md).
+- DNS analizi çözümü Log Analytics çalışma alanınızdan ekleyebileceğiniz [Azure Marketi](https://aka.ms/dnsanalyticsazuremarketplace). Ayrıca, [Çözüm Galerisi Azure izleyici çözümlerini ekleme](solutions.md)bölümünde açıklanan süreci de kullanabilirsiniz.
 
 Çözüm, daha fazla yapılandırma gerek olmadan veri toplamaya başlar. Ancak, veri toplamayı Özelleştir için şu yapılandırmayı kullanabilirsiniz.
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 Çözüm panosunda **yapılandırma** DNS analizi yapılandırma sayfasını açın. Yaptığınız değişikliklerin iki tür vardır:
 
-- **Güvenilen etki alanı adları**. Çözüm, tüm arama sorguları işlemez. Bu, etki alanı adı son eklerini bir beyaz liste tutar. Bu beyaz liste etki alanı adı sonekleri eşleşen etki alanı adlarını çözümlemeye arama sorguları, çözüm tarafından işlenmez. Azure İzleyici gönderilen verilerin iyileştirmek için izin verilenler listesinde etki alanı adları işlenmiyor yardımcı olur. Varsayılan Güvenilenler listesinde popüler genel etki alanı adları, www.google.com ve www.facebook.com gibi içerir. Kaydırarak tam varsayılan listesini görüntüleyebilir.
+- **Güvenilen etki alanı adları**. Çözüm, tüm arama sorguları işlemez. Bu, etki alanı adı son eklerini bir beyaz liste tutar. Bu beyaz liste etki alanı adı sonekleri eşleşen etki alanı adlarını çözümlemeye arama sorguları, çözüm tarafından işlenmez. Beyaz listeye alınan etki alanı adlarının işlenmemesi, Azure Izleyici 'ye gönderilen verileri iyileştirmenize yardımcı olur. Varsayılan Güvenilenler listesinde popüler genel etki alanı adları, www.google.com ve www.facebook.com gibi içerir. Kaydırarak tam varsayılan listesini görüntüleyebilir.
 
   Arama Öngörüler için görüntülemek istediğiniz herhangi bir etki alanı adı soneki eklemek üzere listeden değiştirebilirsiniz. İçin arama öngörülerini görüntülemek istemediğiniz herhangi bir etki alanı adı sonekini de kaldırabilirsiniz.
 
@@ -76,11 +76,11 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 Log Analytics çalışma alanınıza bağlanmak için Microsoft Monitoring Agent'ı kullanıyorsanız, aşağıdaki yönetim paketi yüklenir:
 
-- Microsoft DNS veri toplayıcı akıllı paketi (Microsoft.IntelligencePacks.Dns)
+- Microsoft DNS veri toplayıcı zekası paketi (Microsoft. ıntelligencepacks. DNS)
 
 Operations Manager yönetim grubunuzu Log Analytics çalışma alanınıza bağlıysa, bu çözümü eklediğinizde, aşağıdaki yönetim paketlerini Operations Manager'da yüklenir. Gerekli yapılandırma veya bakım bu yönetim paketlerinin yoktur:
 
-- Microsoft DNS veri toplayıcı akıllı paketi (Microsoft.IntelligencePacks.Dns)
+- Microsoft DNS veri toplayıcı zekası paketi (Microsoft. ıntelligencepacks. DNS)
 - Microsoft System Center Advisor DNS Analizi Yapılandırması (Microsoft.IntelligencePack.Dns.Configuration)
 
 Çözüm yönetim paketlerini güncelleştirme hakkında daha fazla bilgi için bkz. [Operations Manager'ı Log Analytics’e Bağlama](../platform/om-agents.md).
@@ -90,7 +90,7 @@ Operations Manager yönetim grubunuzu Log Analytics çalışma alanınıza bağl
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 
-DNS kutucuğu, verilerin toplandığı DNS sunucularının sayısını içerir. Ayrıca, istemciler tarafından son 24 saatte kötü niyetli alanları çözmek için yapılan isteklerinin sayısı da içerir. Kutucuğa tıkladığınızda, çözüm panosu açılır.
+DNS kutucuğu, verilerin toplandığı DNS sunucusu sayısını içerir. Ayrıca, istemciler tarafından son 24 saatte kötü niyetli alanları çözmek için yapılan isteklerinin sayısı da içerir. Kutucuğa tıkladığınızda, çözüm panosu açılır.
 
 ![DNS analizi kutucuğu](./media/dns-analytics/dns-tile.png)
 
@@ -182,11 +182,8 @@ Günlük araması sayfasında, bir sorgu oluşturabilirsiniz. Model denetimlerin
 
 ## <a name="feedback"></a>Geri Bildirim
 
-Geri bildirim size iki yolu vardır:
-
-- **UserVoice**. DNS analizi özellikleri üzerinde çalışmak için fikir gönderin. Ziyaret [Log Analytics UserVoice sayfa](https://aka.ms/dnsanalyticsuservoice).
-- **Bizim kohort katılın**. Her zaman yeni müşteriler yeni özelliklere erken erişim elde eder ve DNS analizi geliştirmemize yardımcı olmak için sunduğumuz kohortlar katılın etmeyle ilgilenen duyuyoruz. Bizim kohortlar katılımının ilgileniyorsanız doldurun [bu kısa bir ankete](https://aka.ms/dnsanalyticssurvey).
+Geri bildirim sağlamak için [Log Analytics UserVoice sayfasını](https://aka.ms/dnsanalyticsuservoice) ziyaret ederek DNS analizi özellikleri üzerinde çalışmak üzere fikirler gönderin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sorgu günlükleri](../log-query/log-query-overview.md) ayrıntılı DNS günlük kayıtları görüntülemek için.
+Ayrıntılı DNS günlüğü kayıtlarını görüntülemek için [sorgu günlükleri](../log-query/log-query-overview.md) .

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255d1be1c8cfaec366aee6964e41537f6b6c50d8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576621"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990524"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>Koşullu erişim: Uyumlu cihazlar gerektir
+# <a name="conditional-access-require-compliant-devices"></a>Koşullu erişim: Uyumlu cihaz gerektirme
 
 Microsoft Intune dağıtılan kuruluşlar, şu gibi uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir:
 
@@ -55,4 +55,4 @@ Aşağıdaki adımlar, kaynaklara erişen cihazların kuruluşunuzun Intune uyum
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 
-[Cihaz uyumluluk ilkeleri Azure AD ile çalışır](/intune/device-compliance-get-started.md#device-compliance-policies-work-with-azure-ad)
+[Cihaz uyumluluk ilkeleri Azure AD ile çalışır](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

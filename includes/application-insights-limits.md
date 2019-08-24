@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: 7bf9c338315f5013be815625b06d633567a801a0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912519"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982629"
 ---
 Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izleme anahtarı başına bazı sınırlar vardır. Limitler seçtiğiniz [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/application-insights/) bağlıdır.
 
@@ -21,7 +21,7 @@ Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izlem
 | --- | --- | --- |
 | Günlük toplam veri | 100 GB | Bir uç ayarlayarak verileri azaltabilirsiniz. Daha fazla veri gerekiyorsa, portalda 1.000 GB 'a kadar olan limiti artırabilirsiniz. 1\.000 GB 'tan büyük kapasiteler için adresine AIDataCap@microsoft.come-posta gönderin.
 | Azaltma | 32.000 olay/saniye | Sınır bir dakika içinde ölçülür.
-| Veri saklama | 90 gün | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/app/analytics.md) ve [Ölçüm Gezgini](../articles/azure-monitor/app/metrics-explorer.md) içindir.
+| Veri saklama | [30-730 gün](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)  | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/app/analytics.md) ve [Ölçüm Gezgini](../articles/azure-monitor/app/metrics-explorer.md) içindir.
 | [Çok adımlı kullanılabilirlik testi](../articles/azure-monitor/app/availability-multistep.md) ayrıntılı sonuçlarını saklama | 90 gün | Bu kaynak her adımın ayrıntılı sonuçlarını verir.
 | Maksimum telemetri öğesi boyutu | 64 kB |
 | Toplu iş başına maksimum telemetri öğesi | 64 K |

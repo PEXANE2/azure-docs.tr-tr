@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016386"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992229"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Büyük veri analizi Çözümlerinizi Azure Data Lake Storage 1. Azure Data Lake Storage 2. ' dan yükseltin
 
@@ -235,7 +235,7 @@ Yukarıdaki veri/meta veri kopyalama araçlarını eklemeden Data Lake Storage 2
 
 * ACL'ler kopyalamaz bir araç kullanmanız veya ACL'ler kopyalamak istemiyorsanız, ACL'leri uygun en üst düzey hedefte el ile ayarlamanız gerekir. Depolama Gezgini'ni kullanarak yapabilirsiniz. Bu ACL'ler böylece kopyalayabilirsiniz, klasör ve dosya bunları devralmasını varsayılan ACL'ler olduğundan emin olun.
 
-* Data Lake depolama Gen1 içinde ACL'leri ayarlayabilirsiniz en üst düzey hesabının kök dizininde ' dir. Ancak Data Lake Storage 2. ' de, ACL 'Leri ayarlayabileceğiniz en üst düzey, tüm hesap değil, bir dosya sistemindeki kök klasöründedir. Hesap düzeyinde varsayılan ACL'ler ayarlamak istiyorsanız, bu nedenle, Data Lake depolama Gen2 hesabınızdaki tüm dosya sistemleri kullananlar çoğaltmak gerekir.
+* Data Lake depolama Gen1 içinde ACL'leri ayarlayabilirsiniz en üst düzey hesabının kök dizininde ' dir. Ancak Data Lake Storage 2. ' de, ACL 'Leri ayarlayabileceğiniz en üst düzey, tüm hesap değil, bir kapsayıcıdaki kök klasöründedir. Hesap düzeyinde varsayılan ACL'ler ayarlamak istiyorsanız, bu nedenle, Data Lake depolama Gen2 hesabınızdaki tüm dosya sistemleri kullananlar çoğaltmak gerekir.
 
 * Dosya adlandırma kısıtlamaları, iki depolama sistemleri arasında farklılık gösterir. Bu fark özellikle ne zaman ilgili ikinci daha kısıtlamaları kısıtlı olduğundan, Data Lake depolama Gen1 için Data Lake depolama Gen2 ' kopyalama.
 

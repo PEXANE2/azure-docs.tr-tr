@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 21720ead788a505f86c4d35eb5a39943ff4a2e12
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742574"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981013"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure 'dan bir Linux VHD indirin
 
@@ -58,9 +58,9 @@ VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için 
 VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
 
 1.  [Azure Portal](https://portal.azure.com/) oturum açın.
-2.  Hub menüsünde, **Virtual Machines**’e tıklayın.
+2.  Sol taraftaki menüden **sanal makineler**' i seçin.
 3.  Listeden VM 'yi seçin.
-4.  VM 'nin dikey penceresinde **Durdur**' a tıklayın.
+4.  VM 'nin sayfasında **Durdur**' u seçin.
 
     ![VM 'yi durdur](./media/download-vhd/export-stop.png)
 
@@ -68,21 +68,21 @@ VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak 
 
 VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL 'si oluşturmanız gerekir. URL oluşturulduğunda, URL 'ye bir sona erme saati atanır.
 
-1.  VM 'nin dikey penceresinin menüsünde **diskler**' e tıklayın.
-2.  VM 'nin işletim sistemi diskini seçin ve ardından **disk dışarı aktar**' a tıklayın.
-3.  **URL Oluştur**' a tıklayın.
+1.  VM 'nin sayfasının menüsünde **diskler**' i seçin.
+2.  VM 'nin işletim sistemi diskini seçin ve ardından **disk dışarı aktar**' ı seçin.
+3.  **URL Oluştur**' u seçin.
 
     ![URL oluştur](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>VHD 'YI indir
 
-1.  Oluşturulan URL altında, VHD dosyasını Indir ' e tıklayın.
-
+1.  Oluşturulan URL altında **VHD dosyasını indir**' i seçin.
+**
     ![VHD 'YI indir](./media/download-vhd/export-download.png)
 
-2.  İndirmeyi başlatmak için tarayıcıda **Kaydet** ' e tıklamanız gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
+2.  İndirmeyi başlatmak için tarayıcıda **Kaydet** ' i seçmeniz gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
 
-    ![Tarayıcıda Kaydet ' e tıklayın](./media/download-vhd/export-save.png)
+    ![Tarayıcıda Kaydet ' i seçin](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

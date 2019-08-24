@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874391"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998208"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -42,7 +42,8 @@ Azure SQL veritabanı yönetilen örneği iki donanım nesile dağıtılabilir: 
 | En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
-> Yeni 4. nesil veritabanları artık Avustralya Doğu veya Brezilya Güney bölgelerinde desteklenmez.
+> - 4\. nesil donanım kullanıma alınıyor. 5. nesil donanımında yeni yönetilen örnekler dağıtmanız önerilir.
+> - Şu anda 4. nesil donanım aşağıdaki bölgelerde kullanılabilir: Kuzey Avrupa, Batı Avrupa, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Batı ABD 2, Orta ABD, Kanada Orta, Güney Hindistan, Güneydoğu Asya ve Kore Orta.
 
 ### <a name="service-tier-characteristics"></a>Hizmet katmanı özellikleri
 
@@ -80,8 +81,8 @@ Yönetilen örnek şu anda yalnızca aşağıdaki abonelik türlerinde dağıtı
 - [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Kullandıkça öde](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Bulut hizmeti sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
-- [Kurumsal Geliştirme ve test](https://azure.microsoft.com/offers/ms-azr-0148p/)
-- [Kullandıkça Öde geliştirme ve test](https://azure.microsoft.com/offers/ms-azr-0023p/)
+- [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
+- [Kullandıkça Öde Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio aboneleri için aylık Azure kredisine sahip abonelikler](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 
 ## <a name="regional-resource-limitations"></a>Bölgesel kaynak sınırlamaları
@@ -106,7 +107,7 @@ Aşağıdaki tabloda desteklenen abonelikler için varsayılan bölgesel sınır
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional ve MSDN Platformları|2|32|
 
-\*Dağıtımlarınızı planlarken, bir İş Açısından Kritik (BC) vCore (eklenen artıklık nedeniyle) bir Genel Amaçlı (GP) sanal çekirdekden daha fazla kapasite tükettiğini göz önünde bulundurun. Bu nedenle, hesaplamalarınız, 1 GP vCore = 1 sanal çekirdek birimi ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi için. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, yönetilen örneklerin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
+\*Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP sanal çekirdek = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birim. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, yönetilen örneklerin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
 
 \*\*Daha büyük alt ağ ve sanal çekirdek limitleri aşağıdaki bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 

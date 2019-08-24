@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: bbbb570cc042d5faa16b66c42aef9792b24fdb12
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854062"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991440"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Dinamik Paketleyiciyi kullanarak bildirimleri önceden filtreleme
 
@@ -48,7 +48,7 @@ REST örneği için bkz. [rest ile dosyaları karşıya yükleme, kodlama ve ak�
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>Video akışının bit hızını izleme
 
-Video akışının bit hızını izlemek için [Azure Media Player Demo sayfasını](https://aka.ms/azuremediaplayer) kullanabilirsiniz. Tanıtım sayfası **Tanılama sekmesinde Tanılama** bilgilerini görüntüler:
+Video akışının bit hızını izlemek için [Azure Media Player Demo sayfasını](https://aka.ms/azuremediaplayer) kullanabilirsiniz. Tanıtım sayfası tanılama sekmesinde Tanılama bilgilerini görüntüler:
 
 ![Azure Media Player tanılama][amp_diagnostics]
  
@@ -107,7 +107,7 @@ Filtrelenmiş varlık aşağıda verilmiştir:
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>Sunu penceresini ayarlama (DVR)
 
-Şu anda Azure Media Services, sürenin 5 dakika ile 25 saat arasında yapılandırılabileceği dairesel arşiv sunmaktadır. Bildirim filtrelemesi, arşiv üst kısmında medya silinmeden bir sıralı DVR penceresi oluşturmak için kullanılabilir. Yayımcılar 'ın canlı kenarlarla birlikte hareket etmek için sınırlı bir DVR penceresi sağlamak istediği birçok senaryo vardır ve aynı zamanda daha büyük bir arşivleme penceresi saklayın. Bir yayıncı, klipleri vurgulamak için DVR penceresindeki verileri kullanmak isteyebilir veya farklı cihazlar için farklı DVR pencereleri sağlamak isteyebilir. Örneğin, mobil cihazların çoğu büyük DVR pencerelerini işlemez (mobil cihazlar için 2 dakikalık bir DVR penceresi ve Masaüstü istemcileri için 1 saat olabilir).
+Şu anda Azure Media Services, sürenin 1 dakika-25 saat arasında yapılandırılabileceği dairesel arşiv sunmaktadır. Bildirim filtrelemesi, arşiv üst kısmında medya silinmeden bir sıralı DVR penceresi oluşturmak için kullanılabilir. Yayımcılar 'ın canlı kenarlarla birlikte hareket etmek için sınırlı bir DVR penceresi sağlamak istediği birçok senaryo vardır ve aynı zamanda daha büyük bir arşivleme penceresi saklayın. Bir yayıncı, klipleri vurgulamak için DVR penceresindeki verileri kullanmak isteyebilir veya farklı cihazlar için farklı DVR pencereleri sağlamak isteyebilir. Örneğin, mobil cihazların çoğu büyük DVR pencerelerini işlemez (mobil cihazlar için 2 dakikalık bir DVR penceresine ve Masaüstü istemcileri için bir saate sahip olabilirsiniz).
 
 ![DVR penceresi][dvr_filter]
 

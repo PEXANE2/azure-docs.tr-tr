@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b0c9d55846a0240dde92de16ea17e9403a112c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699228"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997778"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Toplu verileri Azure Dosya Eşitleme geçirme
 Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:
@@ -22,9 +22,10 @@ Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:
 
 Bu makalede, dosyaları Azure Dosya Eşitleme ile uyumlu olacak şekilde çevrimdışı geçirme açıklanmaktadır. Dosya çakışmalarını önlemek ve eşitlemeyi etkinleştirdikten sonra dosya ve klasör erişim denetim listelerini (ACL 'Ler) ve zaman damgalarını korumak için bu yönergeleri izleyin.
 
-## <a name="online-migration-tools"></a>Çevrimiçi geçiş araçları
-Bu makalede anladığımız işlem yalnızca Data Box için değil, diğer çevrimdışı geçiş araçları için de geçerlidir. Ayrıca AzCopy, Robocopy veya partner araçları ve hizmetleri gibi çevrimiçi araçlar için de kullanılabilir. Ancak ilk karşıya yükleme sınamasını aşmanız durumunda bu araçları Azure Dosya Eşitleme ile uyumlu bir şekilde kullanmak için bu makaledeki adımları izleyin.
+## <a name="migration-tools"></a>Geçiş araçları
+Bu makalede anladığımız işlem yalnızca Data Box için değil, diğer çevrimdışı geçiş araçları için de geçerlidir. Ayrıca, AzCopy, Robocopy veya iş ortağı araçları ve internet üzerinden doğrudan çalışan hizmetler gibi araçlar için de çalışır. Ancak, ilk karşıya yükleme sınamasını aşmak için, bu araçları Azure Dosya Eşitleme ile uyumlu bir şekilde kullanmak için bu makaledeki adımları izleyin.
 
+Bazı durumlarda, Azure Dosya Eşitleme benimsemadan önce bir Windows Server 'dan başka bir Windows Server 'a taşımanız gerekir. [Depolama geçiş hizmeti](https://aka.ms/storagemigrationservice) (SMS), bu konuda yardımcı olabilir. Azure Dosya Eşitleme (Windows Server 2012R2 ve üzerinde) tarafından desteklenen bir sunucu işletim sistemi sürümüne geçiş yapmanız gerekip gerekmediğini veya Azure Dosya Eşitleme için yeni bir sistem satın alırken yalnızca geçiş yapmanız gerekiyorsa, SMS 'nin migr 'nizin sağlanmasına yardımcı olacak çok sayıda özelliği ve avantajı vardır işlem sorunsuz şekilde yapılır.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Çevrimdışı veri aktarmak için araç kullanmanın avantajları
 Çevrimdışı geçiş için Data Box gibi bir aktarım aracı kullanmanın başlıca avantajları aşağıda verilmiştir:

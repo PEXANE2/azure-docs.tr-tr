@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737071"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982426"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -37,9 +37,10 @@ Bazı durumlarda Azure Backup hizmeti düzeltme yedeklemelerini tetikler. Otomat
 Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir; Ancak, bunu devre dışı bırakmak isterseniz aşağıdaki işlemleri gerçekleştirin:
 
   * SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe **ExtensionSettingsOverrides. JSON** dosyasını oluşturun veya düzenleyin.
-  *  **ExtensionSettingsOverrides. JSON**dosyasında *{"EnableAutoHealer": false}* ayarlayın.
+  * **ExtensionSettingsOverrides. JSON**dosyasında *{"EnableAutoHealer": false}* ayarlayın.
   * Değişikliklerinizi kaydedin ve dosyayı kapatın.
-  * SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.  
+  * SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server 'da kaç eşzamanlı yedeklemenin çalıştırıldığını denetleyebilir miyim?
 
@@ -71,12 +72,12 @@ Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca ba
 **Yedekleme işi** menüsü, yalnızca geçici yedekleme işlerini gösterir. Zamanlanan iş için [Azure izleyici 'yi kullanarak izlemeyi](backup-azure-monitoring-use-azuremonitor.md)kullanın.
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Gelecekteki veritabanları yedekleme için otomatik olarak eklendi mi?
-Evet, bu özelliği [otomatik koruma](backup-sql-server-database-azure-vms.md#enable-auto-protection)ile elde edebilirsiniz.  
+Evet, bu özelliği [otomatik koruma](backup-sql-server-database-azure-vms.md#enable-auto-protection)ile elde edebilirsiniz.  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Bir veritabanını bir yeniden korunan örnekten silersem, yedeklemelere ne olur?
 Bir veritabanı, bir yeniden korunan örnekten bırakılırsa, veritabanı yedeklemeleri hala denenir. Bu, silinen veritabanının **yedekleme öğeleri** altında sağlıksız olarak gösterilmeye başladığı ve hala korunduğu anlamına gelir.
 
-Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **silme verileriyle**  **yedeklemeyi durdurmaktır** .  
+Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **silme verileriyle** **yedeklemeyi durdurmaktır** .  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Otomatik korumalı bir veritabanının yedekleme işlemini durdurdum, davranışı ne olur?
 **Verileri koruma ile yedeklemeyi durdurursanız**, gelecekteki yedeklemeler gerçekleşmez ve var olan kurtarma noktaları değişmeden kalır. Veritabanı hala korumalı olarak kabul edilir ve **yedekleme öğeleri**altında gösterilir.

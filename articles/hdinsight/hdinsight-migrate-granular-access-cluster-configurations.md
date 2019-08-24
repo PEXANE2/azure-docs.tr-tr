@@ -6,23 +6,23 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/22/2019
+ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623835"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983027"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
-Hassas bilgileri almak için daha ayrıntılı rol tabanlı erişimi desteklemeye yönelik bazı önemli değişiklikler sunuyoruz. Bu değişikliklerin bir parçası olarak, [Etkilenen varlıkların/senaryolardan](#am-i-affected-by-these-changes)birini kullanıyorsanız bazı **Eylemler** gerekebilir.
+Hassas bilgileri almak için daha ayrıntılı rol tabanlı erişimi desteklemeye yönelik bazı önemli değişiklikler sunuyoruz. Bu değişikliklerin bir parçası olarak, [Etkilenen varlıkların/senaryolardan](#am-i-affected-by-these-changes)birini kullanıyorsanız bazı eylemler **3 Eylül 2019 '** de gerekebilir.
 
 ## <a name="what-is-changing"></a>Ne değişiyor?
 
 Daha önce gizli dizi, `*/read` izin, katkıda bulunan veya Reader [RBAC rollerinin](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), izne sahip herkes tarafından kullanılabildikleri sırada bulunan küme kullanıcıları tarafından HDInsight API 'si aracılığıyla elde edilebilir. Gizli dizileri, bir kullanıcının rolünden izin verilmelidir daha fazla yükseltilmiş erişim elde etmek için kullanılabilecek değerler olarak tanımlanır. Bunlar, küme ağ geçidi HTTP kimlik bilgileri, depolama hesabı anahtarları ve veritabanı kimlik bilgileri gibi değerleri içerir.
 
-Bu gizli bilgilere erişmek için `Microsoft.HDInsight/clusters/configurations/action` izin gerekir. Bu, artık okuyucu rolüne sahip kullanıcılar tarafından erişilemeyeceği anlamına gelir. Bu izne sahip roller katkıda bulunan, sahip ve yeni HDInsight küme Işletmeni rolü (aşağıda daha fazla).
+3 Eylül 2019 ' den başlayarak, bu gizli bilgilere erişmek için `Microsoft.HDInsight/clusters/configurations/action` izin gerekir, bu da artık okuyucu rolüne sahip kullanıcılar tarafından erişilemeyeceği anlamına gelir. Bu izne sahip roller katkıda bulunan, sahip ve yeni HDInsight küme Işletmeni rolü (aşağıda daha fazla).
 
 Ayrıca, katkıda bulunan veya sahip 'in yönetim izinleri verilmeden gizli dizileri alabilecek yeni bir [HDInsight küme işletmeni](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) rolü sunuyoruz. Özetlemek için:
 
@@ -59,13 +59,13 @@ Aşağıdaki API 'Ler değiştirilecek veya kullanım dışı bırakılacak:
 
 - [ **/Configurations/{configurationName} al**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (hassas bilgiler kaldırıldı)
     - Daha önce ayrı yapılandırma türlerini (parolalar dahil) almak için kullanılır.
-    - Bu API çağrısı artık gizli dizileri olan ayrı yapılandırma türleri döndürüyor. Gizli dizileri de içeren tüm yapılandırmaların elde edilmesi için yeni GÖNDERI/yapılandırma çağrısını kullanın. Yalnızca ağ geçidi ayarlarını almak için yeni POST/getGatewaySettings çağrısını kullanın.
+    - 3 Eylül 2019 ' den itibaren bu API çağrısı artık gizli dizileri olan ayrı yapılandırma türleri döndürüyor. Gizli dizileri de içeren tüm yapılandırmaların elde edilmesi için yeni GÖNDERI/yapılandırma çağrısını kullanın. Yalnızca ağ geçidi ayarlarını almak için yeni POST/getGatewaySettings çağrısını kullanın.
 - [ **/Configurations al**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) kullanım dışı
     - Daha önce tüm yapılandırmaların (gizli diziler dahil) alınması için kullanılır
-    - Bu API çağrısı artık desteklenecek. İleri doğru olan tüm yapılandırmaların elde etmek için yeni POST/Configurations çağrısını kullanın. Gizli parametrelere sahip yapılandırmaların elde edilmesi için, GET/configurations/{configurationName} çağrısını kullanın.
+    - 3 Eylül 2019 ' den itibaren bu API çağrısı kullanım dışı bırakılacak ve artık desteklenmeyecektir. İleri doğru olan tüm yapılandırmaların elde etmek için yeni POST/Configurations çağrısını kullanın. Gizli parametrelere sahip yapılandırmaların elde edilmesi için, GET/configurations/{configurationName} çağrısını kullanın.
 - [**Post/configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) kullanım dışı
     - Daha önce Ağ Geçidi kimlik bilgilerini güncelleştirmek için kullanılır.
-    - Bu API çağrısı kullanım dışı bırakılacak ve artık desteklenmiyor. Bunun yerine yeni POST/updateGatewaySettings komutunu kullanın.
+    - 3 Eylül 2019 ' den itibaren bu API çağrısı kullanım dışı bırakılacak ve artık desteklenmeyecektir. Bunun yerine yeni POST/updateGatewaySettings komutunu kullanın.
 
 Aşağıdaki değiştirme API 'Leri eklendi:</span>
 
@@ -201,7 +201,7 @@ Bu hala işe yaramazsa, doğru izinleri almak için AAD yöneticinize başvurun.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Hiçbir işlem gerçekleşdiğimde ne olur?
 
-Ve çağrıları artık herhangi bir bilgi `GET /configurations/{configurationName}` döndürmez ve çağrı artık depolama hesabı anahtarları veya küme parolası gibi hassas parametreleri döndürmez. `POST /configurations/gateway` `GET /configurations` Aynı, karşılık gelen SDK yöntemleri ve PowerShell cmdlet 'leri için de geçerlidir.
+3 Eylül 2019 ' den başlayarak, `GET /configurations` `POST /configurations/gateway` çağrılar artık herhangi bir bilgi `GET /configurations/{configurationName}` döndürmez ve çağrı artık depolama hesabı anahtarları veya küme parolası gibi hassas parametreleri döndürmez. Aynı, karşılık gelen SDK yöntemleri ve PowerShell cmdlet 'leri için de geçerlidir.
 
 Yukarıda bahsedilen Visual Studio, VSCode, IntelliJ veya çakışan küreler araçlarından birinin daha eski bir sürümünü kullanıyorsanız, güncelleştirene kadar artık çalışmaz.
 

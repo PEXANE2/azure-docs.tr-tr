@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880260"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995885"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central mimarisi (Önizleme özellikleri)
 
@@ -73,7 +73,7 @@ Azure IoT Central uygulamasında cihaz şablonları cihaz türlerinin davranış
 
 IoT Central önizleme uygulaması cihaz şablonunda:
 
-- **Cihaz yetenek modelleri** , gönderdiği telemetri, cihaz durumunu tanımlayan Özellikler ve cihazın yanıt verdiği komutları gibi bir cihazın yeteneklerini belirtir. Cihaz özellikleri bir veya daha fazla arabirimde düzenlenir. Cihaz yetenek modelleri hakkında daha fazla bilgi için bkz. [ıot Tak ve kullan](https://aka.ms/iot-pnp-docs) belgeleri.
+- **Cihaz yetenek modelleri** , gönderdiği telemetri, cihaz durumunu tanımlayan Özellikler ve cihazın yanıt verdiği komutları gibi bir cihazın yeteneklerini belirtir. Cihaz özellikleri bir veya daha fazla arabirimde düzenlenir. Cihaz yetenek modelleri hakkında daha fazla bilgi için bkz. [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) belgeleri.
 - **Bulut özellikleri** bir cihaz için IoT Central depolar özelliklerini belirtir. Bu özellikler yalnızca IoT Central depolanır ve hiçbir şekilde cihaza gönderilmez.
 - **Görünümler** , bir işlecin cihazları izlemesine ve yönetmesine izin vermek için oluşturucunun oluşturduğu panoları ve formları belirler.
 - **Özelleştirmeler** , oluşturucunun IoT Central uygulamayla daha uygun olması için cihaz yetenek modelindeki bazı tanımları geçersiz kılmasını sağlar.

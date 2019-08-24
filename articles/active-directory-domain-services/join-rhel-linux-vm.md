@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 0e3803edd47c3589652b3fedecd12125e3ff40b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b59bd7c7196ceb87da087967498eca6dda7c212b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612808"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990593"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 sanal makinesini yönetilen bir etki alanına ekleme
 Bu makalede, bir Red Hat Enterprise Linux (RHEL) 7 sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
@@ -84,7 +84,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
 1. AAD etki alanı Hizmetleri tarafından yönetilen etki alanını bulun. SSH terminalinizde aşağıdaki komutu yazın:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
     > * Etki alanı adını büyük harfle belirtin, aksi kinit başarısız olur.
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Makineyi etki alanına ekleyin. SSH terminalinizde aşağıdaki komutu yazın:
@@ -111,7 +111,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
     > VM 'niz etki alanına katılamediğinde, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 Makine yönetilen etki alanına başarıyla katıldığında bir ileti ("makinenin bölgeye başarıyla kaydedildi") almanız gerekir.
@@ -120,10 +120,10 @@ Makine yönetilen etki alanına başarıyla katıldığında bir ileti ("makinen
 ## <a name="verify-domain-join"></a>Etki alanına katılımı doğrula
 Makinenin yönetilen etki alanına başarıyla katılıp katılmadığını doğrulayın. Farklı bir SSH bağlantısı kullanarak etki alanına katılmış RHEL VM 'ye bağlanın. Bir etki alanı kullanıcı hesabı kullanın ve ardından Kullanıcı hesabının doğru çözümlenmiş olup olmadığını kontrol edin.
 
-1. SSH terminalinizde, SSH kullanarak etki alanına katılmış RHEL sanal makinesine bağlanmak için aşağıdaki komutu yazın. Yönetilen etki alanına ait bir etki alanı hesabı kullanın (örneğin, bu durumda 'bob@contoso.COM').)
+1. SSH terminalinizde, SSH kullanarak etki alanına katılmış RHEL sanal makinesine bağlanmak için aşağıdaki komutu yazın. Yönetilen etki alanına ait bir etki alanı hesabı kullanın (örneğin, bu durumda 'bob@CONTOSO.COM').)
     
     ```console
-    ssh -l bob@contoso.COM contoso-rhel.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-rhel.contoso.com
     ```
 
 2. SSH terminalinizde, giriş dizininin doğru şekilde başlatılmış olup olmadığını görmek için aşağıdaki komutu yazın.

@@ -12,7 +12,7 @@
     - name: IoT Hub’a cihaz bağlama
       href: quickstart-connect-pnp-device.md
     - name: IoT Central’a cihaz bağlama
-      href: 'https://aka.ms/iot-central-connect-qs'
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Çözümünüzde bir cihaza bağlanma
       href: quickstart-connect-pnp-device-solution.md
 - name: Öğreticiler
@@ -50,7 +50,7 @@
 - name: Başvuru
   items:
     - name: REST
-      href: 'https://aka.ms/iot-pnp-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
     - name: REST güvenlik belirteci oluşturma
       href: howto-generate-sas-token.md
 - name: İlgili
@@ -58,7 +58,7 @@
     - name: Çözümler
       items:
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central
         - name: IoT çözüm hızlandırıcıları
           href: /azure/iot-accelerators
     - name: Platform Hizmetleri

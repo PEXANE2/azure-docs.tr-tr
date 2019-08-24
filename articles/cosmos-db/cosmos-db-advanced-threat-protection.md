@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640407"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981743"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için Gelişmiş tehdit koruması
 
 Azure Cosmos DB için Gelişmiş tehdit koruması, Azure Cosmos DB hesaplara yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmadan bile tehditleri ele almanıza ve bunları Merkezi güvenlik izleme sistemleriyle tümleştirmenize olanak tanır.
 
-Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları  [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliğin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
+Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliğin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
 > [!NOTE]
 >
@@ -31,16 +31,16 @@ Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsay�
 
 ### <a name="set-up-atp-using-the-portal"></a>Portalı kullanarak ATP ayarlama
 
-1. Üzerinde  [https://portal.azure.com](https://portal.azure.com/)Azure Portal başlatın.
+1. Üzerinde [https://portal.azure.com](https://portal.azure.com/)Azure Portal başlatın.
 
 2. Azure Cosmos DB hesabından, **Ayarlar** menüsünden **Gelişmiş güvenlik**' i seçin.
 
     ![ATP ayarla](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3.  **Gelişmiş güvenlik** yapılandırması dikey penceresinde:
+3. **Gelişmiş güvenlik** yapılandırması dikey penceresinde:
 
     * **Gelişmiş tehdit koruması** seçeneğine tıklayarak **Açık**olarak ayarlayın.
-    * Yeni veya güncelleştirilmiş Gelişmiş tehdit koruması ilkesini kaydetmek için **Kaydet** ' e tıklayın.   
+    * Yeni veya güncelleştirilmiş Gelişmiş tehdit koruması ilkesini kaydetmek için **Kaydet** ' e tıklayın.   
 
 ### <a name="set-up-atp-using-rest-api"></a>REST API kullanarak ATP ayarlama
 
@@ -75,5 +75,5 @@ Uyarı ayrıntıları ve önerilen eylemlerle birlikte bir e-posta bildirimi de 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-*  [Tanılama günlüğü](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal) hakkında daha fazla bilgi edinin Azure Cosmos DB
-*  [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
+* [Tanılama günlüğü](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal) hakkında daha fazla bilgi edinin Azure Cosmos DB
+* [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin

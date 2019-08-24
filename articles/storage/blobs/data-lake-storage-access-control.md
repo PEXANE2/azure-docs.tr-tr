@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847355"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991903"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişim denetimi
 
@@ -31,7 +31,7 @@ Depolama hesabınızın kapsamındaki güvenlik sorumlularına roller atamayı �
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Rol atamalarının dosya ve dizin düzeyinde erişim denetim listelerindeki etkileri
 
-RBAC rol atamalarının kullanılması, erişim izinlerini denetlemek için güçlü bir mekanizmadır. Bu, ACL 'Lerle ilgili oldukça ayrıntılı bir mekanizmadır. RBAC için en küçük ayrıntı düzeyi dosya sistemi düzeyindedir ve bu, ACL 'Lere göre daha yüksek bir önceliğe göre değerlendirilir. Bu nedenle, bir dosya sisteminin kapsamındaki bir güvenlik sorumlusuna bir rol atarsanız, bu güvenlik sorumlusu, ACL atamalarından bağımsız olarak bu dosya sistemindeki tüm dizinler ve dosyalar için bu rolle ilişkili yetkilendirme düzeyine sahiptir.
+RBAC rol atamalarının kullanılması, erişim izinlerini denetlemek için güçlü bir mekanizmadır. Bu, ACL 'Lerle ilgili oldukça ayrıntılı bir mekanizmadır. RBAC için en küçük ayrıntı düzeyi kapsayıcı düzeyindedir ve bu, ACL 'Lere göre daha yüksek bir önceliğe göre değerlendirilir. Bu nedenle, bir kapsayıcı kapsamındaki bir güvenlik sorumlusuna bir rol atarsanız, bu güvenlik sorumlusu ACL atamalarından bağımsız olarak o kapsayıcıdaki tüm dizinler ve dosyalar için bu rolle ilişkili yetkilendirme düzeyine sahiptir.
 
 Bir güvenlik sorumlusu [yerleşik bir rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)aracılığıyla veya özel bir rol aracılığıyla RBAC veri izinleri verildiğinde, bu izinler bir isteğin yetkilendirilmesine göre önce değerlendirilir. İstenen işlem güvenlik sorumlusunun RBAC atamaları tarafından yetkilendirildiyse, yetkilendirme anında çözülür ve ek ACL denetimleri gerçekleştirilmez. Alternatif olarak, güvenlik sorumlusunun bir RBAC ataması yoksa veya isteğin işlemi atanan izinle eşleşmezse, güvenlik sorumlusunun istenen işlemi gerçekleştirme yetkisine sahip olup olmadığını belirlemesi için ACL denetimleri gerçekleştirilir.
 
@@ -81,7 +81,7 @@ Erişim ACL 'Leri ve varsayılan ACL 'Ler aynı yapıya sahiptir.
 
 ### <a name="levels-of-permission"></a>İzin düzeyleri
 
-Bir dosya sistemi nesnesindeki izinler **okuma**, **yazma**ve **yürütme**, aşağıdaki tabloda gösterildiği gibi dosyalar ve dizinler üzerinde de kullanılabilir:
+Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma**ve **yürütme**, aşağıdaki tabloda gösterildiği gibi dosyalar ve dizinler üzerinde de kullanılabilir:
 
 |            |    Dosya     |   Dizin |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ Bir dosya sistemi nesnesindeki izinler **okuma**, **yazma**ve **yürütme**, aş
 | **Yürütme (X)** | Data Lake Storage 2. bağlamında hiçbir şey anlamına gelmez | Bir dizinin alt öğelerinin çapraz geçişini yapmak için gereklidir |
 
 > [!NOTE]
-> Yalnızca ACL 'Leri kullanarak (RBAC olmadan) izin veriyorsanız ve bir hizmet sorumlusu bir dosyaya okuma veya yazma erişimi vermek için, hizmet sorumlusu **yürütme** izinlerini dosya sistemine ve klasörler hiyerarşisindeki her bir klasöre sağlamanız gerekir. dosyaya yol açabilir.
+> Yalnızca ACL 'Leri kullanarak (RBAC olmadan) izin veriyorsanız ve bir hizmet sorumlusu bir dosyaya okuma veya yazma erişimi vermek için, hizmet sorumlusu için kapsayıcıya ve klasör hiyerarşisindeki her bir klasöre hizmet sorumlusu **yürütme** izinleri vermeniz gerekir. dosyaya yol açabilir.
 
 #### <a name="short-forms-for-permissions"></a>İzinlerin kısaltmaları
 
@@ -154,7 +154,7 @@ POSIX ACL 'lerinde, her Kullanıcı bir *birincil grupla*ilişkilendirilir. Örn
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Yeni bir dosya veya dizin için sahip olan grup atanıyor
 
-* **Durum 1**: Kök dizin "/". Bu dizin bir Data Lake Storage 2. dosya sistemi oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, OAuth kullanılarak yapıldıysa dosya sistemini oluşturan kullanıcıya ayarlanır. Dosya sistemi paylaşılan anahtar, hesap SAS veya hizmet SAS kullanılarak oluşturulduysa, sahip ve sahip grubu **$superuser**olarak ayarlanır.
+* **Durum 1**: Kök dizin "/". Bu dizin Data Lake Storage 2. bir kapsayıcı oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, OAuth kullanılarak yapıldıysa kapsayıcıyı oluşturan kullanıcıya ayarlanır. Kapsayıcı paylaşılan anahtar, bir hesap SAS veya hizmet SAS kullanılarak oluşturulduysa, sahip ve sahip grubu **$superuser**olarak ayarlanır.
 * **Durum 2** (Diğer her durum): Yeni bir öğe oluşturulduğunda sahip olan grup üst dizinden kopyalanır.
 
 ##### <a name="changing-the-owning-group"></a>Sahip olan grubu değiştirme
@@ -216,13 +216,13 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 Erişim denetimi algoritmasında gösterildiği gibi, maske adlandırılmış kullanıcılar, sahip olan grup ve adlandırılmış gruplar için erişimi sınırlandırır.  
 
 > [!NOTE]
-> Yeni bir Data Lake Storage 2. dosya sistemi için, kök dizinin ("/") erişim ACL 'SI için maske, dizinler için 750 ve dosyalar için 640 ' i varsayılan olarak alır. Dosyalar yalnızca mağaza sistemindeki dosyalara ait olduğundan, X bitini almaz.
+> Yeni bir Data Lake Storage 2. kapsayıcısı için, kök dizinin ("/") erişim ACL 'SI için maske, dizinler için 750, dosyalar için 640 olarak varsayılan olarak. Dosyalar yalnızca mağaza sistemindeki dosyalara ait olduğundan, X bitini almaz.
 >
 > Maske, arama başına temelinde belirtilebilir. Bu, kümeler gibi farklı tüketim sistemlerinin dosya işlemleri için farklı etkin maskelerle çalışmasına izin verir. Belirli bir istekte bir maske belirtilmişse, varsayılan maskeyi tamamen geçersiz kılar.
 
 #### <a name="the-sticky-bit"></a>Yapışkan bit
 
-Yapışkan bit, POSIX dosya sisteminin daha gelişmiş bir özelliğidir. Data Lake Storage 2. bağlamında, yapışkan bitin gerekli olacağı pek olası bir olasılıktır. Özet ' te, bir dizinde yapışkan bit etkinse, alt öğe yalnızca alt öğenin sahibi olan kullanıcı tarafından silinebilir veya yeniden adlandırılabilir.
+Yapışkan bit, POSIX kapsayıcısının daha gelişmiş bir özelliğidir. Data Lake Storage 2. bağlamında, yapışkan bitin gerekli olacağı pek olası bir olasılıktır. Özet ' te, bir dizinde yapışkan bit etkinse, alt öğe yalnızca alt öğenin sahibi olan kullanıcı tarafından silinebilir veya yeniden adlandırılabilir.
 
 Yapışkan bit Azure portal gösterilmez.
 
@@ -291,7 +291,7 @@ Or
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Bir dosya veya dizinin sahibi kim?
 
-Bir dosya veya dizinin Oluşturucusu sahip olur. Kök dizin söz konusu olduğunda, bu dosya sistemini oluşturan kullanıcının kimliğidir.
+Bir dosya veya dizinin Oluşturucusu sahip olur. Kök dizin söz konusu olduğunda, bu kapsayıcıyı oluşturan kullanıcının kimliğidir.
 
 ### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Oluşturma sırasında bir dosyanın veya dizinin sahip olan grubu olarak hangi Grup ayarlandı?
 
@@ -320,7 +320,7 @@ Hizmet sorumlusu için doğru OID 'ye sahip olduğunuzda, OID 'yi eklemek ve OID
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage 2. ACL 'Leri devralmayı destekliyor mu?
 
-Azure RBAC atamaları devralınır. Atamalar, kaynak grubu ve depolama hesabı kaynaklarından dosya sistemi kaynağına doğru akar.
+Azure RBAC atamaları devralınır. Atamalar abonelik, kaynak grubu ve depolama hesabı kaynaklarından, kapsayıcı kaynağına doğru akar.
 
 ACL 'Ler aktarılmaz. Ancak, alt dizinler ve üst dizin altında oluşturulan dosyalar için ACL 'Ler ayarlamak üzere varsayılan ACL 'Ler kullanılabilir. 
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: MT
+ms.openlocfilehash: da5a71c75485f929ba9c4f510066df84d7a31996
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323619"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992161"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Toplu ölçümleri, uyarılar ve değerlendirme tanılama ve izleme günlükleri
 
@@ -48,6 +48,7 @@ Tüm Batch hesabı ölçümleri görüntülemek için:
 1. Portalında **tüm hizmetleri** > **Batch hesapları**ve ardından Batch hesabınızın adına tıklayın.
 2. Altında **izleme**, tıklayın **ölçümleri**.
 3. Bir veya daha fazla ölçüm seçin. İsterseniz, ek kaynak ölçümleri kullanarak seçme **abonelikleri**, **kaynak grubu**, **kaynak türü**, ve **kaynak** Açılır listeler.
+    * Count tabanlı ölçümler ("adanmış çekirdek sayısı" veya "düşük öncelikli düğüm sayısı" gibi) için "Ortalama" toplamayı kullanın. Olay tabanlı ölçümler ("havuz yeniden boyutlandırma tam olayları" gibi) için "say" toplamasını kullanın.
 
     ![Toplu ölçümleri](media/batch-diagnostics/metrics-portal.png)
 

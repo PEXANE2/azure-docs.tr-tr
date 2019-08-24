@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967431"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996648"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan açık hub aracılığıyla veri kopyalama
 
@@ -140,7 +140,7 @@ Ve SAP BW açık hub 'a veri kopyalamak için, veri kümesinin Type özelliğini
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği **Sapopenhubtable**olarak ayarlanmalıdır.  | Evet |
+| type | Type özelliği **Sapopenhubtable**olarak ayarlanmalıdır.  | Evet |
 | openHubDestinationName | Verilerin kopyalanacağı açık hub hedefinin adı. | Evet |
 | excludeLastRequest | Son isteğin kayıtlarının dışlanıp dışlanmayacağı. | Hayır (varsayılan değer **doğru**) |
 | baseRequestId | Delta yükleme isteğinin Kımlığı. Ayarlandıktan sonra yalnızca RequestId ile bu özelliğin değerinden **büyük** olan veriler alınır.  | Hayır |
@@ -174,7 +174,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 SAP BW açık hub 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Sapopenhubsource**olarak ayarlayın. Etkinlik **kaynağını** kopyalama bölümünde gerekli ek türe özgü özellik yoktur.
 
-Veri yüklemeyi hızlandırmak için kopyalama etkinliğini, SAP BW açık hub [`parallelCopies`](copy-activity-performance.md#parallel-copy) 'dan paralel olarak yüklemek için ayarlayabilirsiniz. Örneğin, dört olarak ayarlarsanız `parallelCopies` Data Factory eşzamanlı olarak dört RFC çağrısını yürütür ve her RFC çağrısı, DTP istek kimliği ve paket kimliği tarafından bölümlenen SAP BW açık hub tablosundan verilerin bir kısmını alır. Bu, benzersiz DTP istek KIMLIĞI + paket KIMLIĞI sayısının değerinden büyük `parallelCopies`olduğunda geçerlidir.
+Veri yüklemeyi hızlandırmak için kopyalama etkinliğini, SAP BW açık hub [`parallelCopies`](copy-activity-performance.md#parallel-copy) 'dan paralel olarak yüklemek için ayarlayabilirsiniz. Örneğin, dört olarak ayarlarsanız `parallelCopies` Data Factory eşzamanlı olarak dört RFC çağrısını yürütür ve her RFC çağrısı, DTP istek kimliği ve paket kimliği tarafından bölümlenen SAP BW açık hub tablosundan verilerin bir kısmını alır. Bu, benzersiz DTP istek KIMLIĞI + paket KIMLIĞI sayısının değerinden büyük `parallelCopies`olduğunda geçerlidir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazmak da daha da iyidir. Bu durumda, performans tek bir dosyaya yazılmasından daha iyidir.
 
 **Örnek:**
 

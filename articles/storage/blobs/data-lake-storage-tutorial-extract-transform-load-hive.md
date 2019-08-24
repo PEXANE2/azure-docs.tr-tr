@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 344dddb4e16f23ae40028c090c499d210adb8837
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855465"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992248"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Öğretici: Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -92,26 +92,26 @@ Bu bölümde, HDInsight kümenize verileri yükleyecek ve ardından bu verileri 
 
    Komut bir **. csv** dosyası ayıklar.
 
-4. Data Lake Storage 2. dosya sistemini oluşturmak için aşağıdaki komutu kullanın.
+4. Data Lake Storage 2. kapsayıcısını oluşturmak için aşağıdaki komutu kullanın.
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Yer tutucusunu `<file-system-name>` , dosya sisteminize vermek istediğiniz adla değiştirin.
+   Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz adla değiştirin.
 
    `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
 5. Bir dizin oluşturmak için aşağıdaki komutu kullanın.
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. *. Csv* dosyasını dizine kopyalamak için aşağıdaki komutu kullanın:
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    Dosya adı boşluk veya özel karakterler içeriyorsa dosya adı etrafında tırnak işareti kullanın.
@@ -128,7 +128,7 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir
    nano flightdelays.hql
    ```
 
-2. `<file-system-name>` Ve`<storage-account-name>` yer tutucularını dosya sisteminizle ve depolama hesabı adınızla değiştirerek aşağıdaki metni değiştirin. Sonra sağ fare tıklama düğmesi ile birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
+2. `<container-name>` Ve`<storage-account-name>` yer tutucuları kapsayıcınıza ve depolama hesabı adınızla değiştirerek aşağıdaki metni değiştirin. Sonra sağ fare tıklama düğmesi ile birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -160,14 +160,14 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -218,7 +218,7 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir
     GROUP BY origin_city_name;
     ```
 
-   Bu sorgu, hava durumundan kaynaklanan gecikmeler yaşayan şehirlerin bir listesini, ortalama gecikme süresi ile birlikte alır ve `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` konumuna kaydeder. Daha sonra, Sqoop bu konumdaki verileri okur ve Azure SQL Veritabanına aktarır.
+   Bu sorgu, hava durumundan kaynaklanan gecikmeler yaşayan şehirlerin bir listesini, ortalama gecikme süresi ile birlikte alır ve `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` konumuna kaydeder. Daha sonra, Sqoop bu konumdaki verileri okur ve Azure SQL Veritabanına aktarır.
 
 7. Beeline’dan çıkmak için isteme `!quit` girin.
 
@@ -300,7 +300,7 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
 
 ## <a name="export-and-load-the-data"></a>Verileri dışarı ve yükleme
 
-Önceki bölümlerde, dönüştürülen verileri konumda `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`kopyaladınız. Bu bölümde, verileri `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak için Sqoop 'yi kullanırsınız.
+Önceki bölümlerde, dönüştürülen verileri konumda `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`kopyaladınız. Bu bölümde, verileri `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak için Sqoop 'yi kullanırsınız.
 
 1. Sqoop’un SQL veritabanınızı görebildiğini doğrulamak için aşağıdaki komutu kullanın:
 
@@ -313,7 +313,7 @@ Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunuc
 2. **Hivesampletable** tablosundan **gecikme** tablosuna veri aktarmak için aşağıdaki komutu kullanın:
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    Sqoop, **gecikmeler** tablosunu içeren veritabanına bağlanır ve verileri `/tutorials/flightdelays/output` dizinden **gecikmeler** tablosuna aktarır.

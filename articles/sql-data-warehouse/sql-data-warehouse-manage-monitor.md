@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 07/23/2019
+ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f2dab34ea0ef64f4062819e9b2d475e6a226856b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: b67986fdc53a2b927f6481846ab179a826490c01
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405427"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995710"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV’leri kullanarak iş yükünüzü izleme
 Bu makalede, iş yükünüzü izlemek için dinamik yönetim görünümlerinin (DMVs) nasıl kullanılacağı açıklanır. Bu, Azure SQL veri ambarı 'nda sorgu yürütmeyi araştırmanın de içerir.
@@ -45,7 +45,7 @@ SQL Data Warehouse üzerinde yürütülen tüm sorgular [sys. DM _pdw_exec_reque
 
 Belirli bir sorgu için sorgu yürütme planlarını ve saatlerini araştırmak üzere izlenecek adımlar aşağıda verilmiştir.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>ADIM 1: Araştırmak istediğiniz sorguyu tanımla
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. ADIM: Araştırmak istediğiniz sorguyu tanımla
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -206,9 +206,11 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Büyük miktarda bellek kullanan bir sorgunuz varsa veya tempdb ayırmasından kaynaklanan bir hata mesajı alırsanız, genellikle [Select (CTAS) olarak](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) çok büyük bir Create Table [veya](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) son veri taşıma işlemi. Bu, genellikle son ekleme seçmeden önce dağıtılmış sorgu planında bir karıştırılmış Lemove işlemi olarak tanımlanabilir.
+Büyük miktarda bellek kullanan bir sorgunuz varsa veya tempdb ayırla ilgili bir hata iletisi aldıysanız, [Select (CTAS) olarak](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) çok büyük bir create table veya çalışan [Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) ifadesinin son veri taşıma işlemi. Bu, genellikle son ekleme seçmeden önce dağıtılmış sorgu planında bir karıştırılmış Lemove işlemi olarak tanımlanabilir.  Karışık taşıma işlemlerini izlemek için [sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) kullanın. 
 
-En yaygın risk azaltma, CTAS 'larınızı bölmek veya SELECT deyimini birden çok yük ifadesine eklemek için veri hacmi, düğüm başına 1 TB 'lık sınırı aşmayacak. Ayrıca, her bir düğümdeki tempdb 'yi azaltan daha fazla düğüm üzerinde tempdb boyutunu yayabilecek daha büyük bir boyuta ölçeklendirebilirsiniz. 
+En yaygın risk azaltma, CTAS 'larınızı bölmek veya SELECT deyimini birden çok yük ifadesine eklemek için veri hacmi, düğüm başına 1 TB 'lık sınırı aşmayacak. Ayrıca, her bir düğümdeki tempdb 'yi azaltan daha fazla düğüm üzerinde tempdb boyutunu yayabilecek daha büyük bir boyuta ölçeklendirebilirsiniz.
+
+CTAS ve INSERT SELECT deyimlerinin yanı sıra, yetersiz bellekle çalışan karmaşık sorgular tempdb içine taşıtabilecek ve sorguların başarısız olmasına neden olabilir.  Tempdb 'ye taşmamak için daha büyük bir [kaynak sınıfıyla](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) çalışmayı düşünün.
 
 ## <a name="monitor-memory"></a>Belleği izleme
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı için Gen2 'ten Gen3 'e ağ geçidi geçişi bildirimi | Microsoft Docs
+title: Azure SQL veritabanı için ağ geçidi trafik geçişi bildirimi | Microsoft Docs
 description: Makale, kullanıcılara Azure SQL veritabanı ağ geçitleri IP adreslerini geçirme hakkında bildirim sağlar
 services: sql-database
 ms.service: sql-database
@@ -10,23 +10,23 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568118"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981298"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 
-Azure altyapısı gelişdiğinde, Microsoft, olası en iyi müşteri deneyimini sağlamamızı sağlamak için donanımı düzenli olarak yenileyecek. Önümüzdeki aylarda, daha yeni donanım neslerine ve bazı bölgelerde daha eski donanımlar üzerinde oluşturulmuş ağ geçitlerinin yetkisini almayı planlıyoruz.  
+Azure altyapısı gelişdiğinde, Microsoft, olası en iyi müşteri deneyimini sağlamamızı sağlamak için donanımı düzenli olarak yenileyecek. Önümüzdeki aylarda, daha yeni donanım oluşturma, trafiği geçirme ve son olarak bazı bölgelerde daha eski donanımlar üzerinde oluşturulmuş ağ geçitlerinin yetkisini alma planlıyoruz.  
 
 Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde yapılan herhangi bir değişikliğe göre Azure portal iyi bir şekilde bildirilir. En güncel bilgiler [Azure SQL veritabanı ağ GEÇIDI IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) tablosunda tutulacaktır.
 
 ## <a name="impact-of-this-change"></a>Bu değişikliğin etkisi
 
-Ağ Geçidi yetki alma 'nın ilk turu 1 Eylül 2019 ' de aşağıdaki bölgelerde zamanlanır:
-
+Trafik geçişinin yeni ağ geçitlerine ilk turu, aşağıdaki bölgelerde **14 ekim 2019** için zamanlanır:
+- Güney Brezilya
 - Batı ABD
 - Batı Avrupa
 - East US
@@ -40,12 +40,14 @@ Ağ Geçidi yetki alma 'nın ilk turu 1 Eylül 2019 ' de aşağıdaki bölgelerd
 - Doğu ABD 2
 - Doğu Asya
 
-Kullanımdan kaldırılan IP adresi trafiği kabul etmeyi durdurur ve bölgedeki ağ geçitlerinden birine yeni bağlantı girişimleri yönlendirilir.
+Trafik geçişi, DNS 'nin SQL veritabanınız için çözümlediği genel IP adresini değiştirecek.
+Varsa bu sorundan etkilenirsiniz.
+- Şirket içi güvenlik duvarınızdaki belirli bir ağ geçidinin IP adresini sabit olarak kodlanmış
+- Hizmet uç noktası olarak Microsoft. SQL kullanan tüm alt ağlar, ancak ağ geçidi IP adresleriyle iletişim kuramaz
 
-Bu değişikliğin etkilerini göremezsiniz:
-
-- Yeniden yönlendirmeyi kullanan müşteriler bağlantı ilkesi olarak herhangi bir etkisi görmez.
-- Azure 'un içinden ve hizmet etiketlerinin kullanıldığı SQL veritabanı bağlantıları etkilenmez.
+Sahip olmanız durumunda etkilenmeyecektir. 
+- Bağlantı ilkesi olarak yeniden yönlendirme
+- Azure 'un içinden ve hizmet etiketlerini kullanarak SQL veritabanı 'na bağlantı
 - SQL Server için JDBC sürücüsünün desteklenen sürümleri kullanılarak yapılan bağlantılar, hiçbir etkisi görmez. Desteklenen JDBC sürümleri için bkz. [SQL Server Için MICROSOFT JDBC sürücüsü indirme](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Etkileniyorsanız yapmanız gerekenler

@@ -11,12 +11,12 @@ manager: carmonm
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: cffcfe53cf30d8fc34fdb27e50ef74e71700125a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 55843f9acaafa0c5963cfac735fdb92eeeacdc02
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68606814"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982923"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak B2B çözümleri için tümleştirme hesapları oluşturma ve yönetme
 
@@ -60,7 +60,7 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](https://docs.mi
 
    | Özellik | Gerekli | Value | Açıklama |
    |----------|----------|-------|-------------|
-   | **Name** | Evet | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı, örneğin "Fabrikam-Integration" |
+   | **Name** | Evet | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı, yalnızca harf, rakam`-`, kısa çizgi (), alt çizgi (`_`), parantez (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
    | **Abonelik** | Evet | <*Azure-subscription-name*> | Azure aboneliğinizin adı |
    | **Kaynak grubu** | Evet | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
    | **Fiyatlandırma Katmanı** | Evet | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
@@ -102,7 +102,7 @@ Artık mantıksal uygulamanız tümleştirme hesabınızdaki yapıtları ve XML 
 
 <a name="change-pricing-tier"></a>
 
-## <a name="change-pricing-tier"></a>Fiyatlandırma katmanını değiştir
+## <a name="change-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
 
 Bir tümleştirme hesabının [sınırlarını](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) artırmak için, varsa [daha yüksek bir fiyatlandırma katmanına yükseltebilirsiniz](#upgrade-pricing-tier). Örneğin, ücretsiz katmandan temel katmana veya Standart katmana yükseltebilirsiniz. Ayrıca, varsa [daha düşük bir katmana](#downgrade-pricing-tier)indirebilirsiniz. Daha fazla bilgi için fiyatlandırma bilgileri için aşağıdaki konulara bakın:
 

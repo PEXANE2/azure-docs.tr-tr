@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b08358680793ccdadca27c5f2aa57fbffe89b53a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973798"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997655"
 ---
-# <a name="how-to-run-the-opc-ua-certificate-management-service-securely"></a>OPC UA sertifika yönetimi hizmetini güvenli bir şekilde çalıştırma
+# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>OPC Kasası sertifika yönetimi hizmetini güvenli bir şekilde çalıştırma
 
-Bu makalede, OPC UA sertifika yönetimi hizmetinin Azure 'da güvenli bir şekilde çalıştırılması ve göz önünde bulundurulması gereken diğer güvenlik yönergeleri açıklanmaktadır.
+Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da güvenli bir şekilde çalıştırılması ve göz önünde bulundurulması gereken diğer güvenlik yönergeleri açıklanmaktadır.
 
 ## <a name="roles"></a>Roller
 
@@ -32,7 +32,7 @@ OPC kasa mikro hizmeti, farklı rollerin hizmetin çeşitli bölümlerine erişm
 
 ### <a name="certificate-management-service-roles"></a>Sertifika Yönetimi hizmet rolleri
 
-Mikro hizmet aşağıdaki rolleri tanımlar:
+OPC Kasası mikro hizmeti aşağıdaki rolleri tanımlar:
 
 - **Okuyucu**: Varsayılan olarak, Kiracıdaki tüm kimliği doğrulanmış kullanıcılar okuma erişimine sahiptir. 
   - Uygulamalar ve sertifika isteklerine yönelik okuma erişimi. Uygulamalar ve sertifika isteklerini listeleyebilir ve sorgulayabilir. Ayrıca, cihaz bulma bilgilerine ve genel sertifikalara okuma erişimiyle erişilebilir.
@@ -74,7 +74,7 @@ Sertifika verme işlemi, sertifika isteyenin ve sertifika onaylayan rolleri (ki�
 
 Yöneticiler ve onaylayanlar grubunun üyeliğini yetkilendirme gibi ayrıcalıklı rollerin atanması, sınırlı bir yetkili personel kümesiyle sınırlandırılmalıdır. Herhangi bir ayrıcalıklı rol değişikliği, 24 saat içinde erişimi iptal etmelidir. Son olarak, ayrıcalıklı rol atamalarının üç aylık esasına göre incelenmesi ve gereksiz veya süre dolmayan atamaların kaldırılması gerekir.
 
-### <a name="privileged-roles-should-use-two-factor-authentication"></a>Ayrıcalıklı roller Iki öğeli kimlik doğrulaması kullanmalıdır
+### <a name="privileged-roles-should-use-two-factor-authentication"></a>Ayrıcalıklı roller iki öğeli kimlik doğrulaması kullanmalıdır
 
 Çok faktörlü kimlik doğrulaması (Iki öğeli kimlik doğrulaması, MFA veya TFA), onaylayanlar ve yöneticilerin hizmete yönelik etkileşimli oturum açmaları için kullanılmalıdır.
 
@@ -132,14 +132,14 @@ IoT Edge cihazlarda, ana bilgisayar adları ve IP adresleri belgelenmelidir.
 
 CA hiyerarşisi belgelerinin, hizmet tarafından yönetilmeseler bile, tüm ilgili alt CA 'Lar, üst CA 'Lar ve kök CA 'lar dahil olmak üzere tüm çalıştırılan CA 'Ları içermesi gerekir. Tüm süre dolmayan CA sertifikalarının kapsamlı bir kümesi resmi belgeler yerine sağlanmayabilir.
 
-> [!IMPORTANT]
+> [!NOTE]
 > OPC Kasası örnek uygulaması, belgeleri için hizmette kullanılan ve üretilen tüm sertifikaların indirilmesini destekler.
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>Tüm sertifika yetkililerine (CAs) verilen sertifikaları belgeleme
 
 Son 12 ay içinde verilen tüm sertifikaların kapsamlı bir kümesi belgeler için sağlanmalıdır.
 
-> [!IMPORTANT]
+> [!NOTE]
 > OPC Kasası örnek uygulaması, belgeleri için hizmette kullanılan ve üretilen tüm sertifikaların indirilmesini destekler.
 
 ### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>Şifreleme anahtarlarını güvenli bir şekilde silmek için SOP 'yi belgeleyin
@@ -220,7 +220,7 @@ OPC Kasası mikro hizmeti SOP, [genel bakış](overview-opc-vault-architecture.m
 
 Sertifika iptal işlemi, [genel bakış](overview-opc-vault-architecture.md) ve belgeleri [yönetme](howto-opc-vault-manage.md) konularında açıklanmaktadır.
     
-### <a name="document-certification-authority-key-generation-ceremony"></a>Belge sertifika yetkilisi anahtar oluşturma seremonisi 
+### <a name="document-certification-authority-ca-key-generation-ceremony"></a>Belge sertifika yetkilisi (CA) anahtar oluşturma seremonisi 
 
 OPC Kasası mikro hizmetindeki sertifikayı veren CA anahtarı oluşturma işlemi, Azure Keykasasındaki güvenli depolama nedeniyle basitleştirilmiştir ve belgelerde [nasıl yönetileceği](howto-opc-vault-manage.md) açıklanmaktadır.
 

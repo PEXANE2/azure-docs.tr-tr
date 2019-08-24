@@ -11,44 +11,44 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/29/2019
+ms.date: 08/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 352b42099bcd832792aad2fa24dca3e14525dc06
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679166"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990642"
 ---
 # <a name="dynamic-packaging"></a>Dinamik paketleme
 
-Microsoft Azure Media Services birçok medya kaynak dosya biçimini, medya akış biçimlerini ve içerik koruma biçimlerini çeşitli istemci teknolojilerine (örneğin, iOS ve XBOX) dağıtmak için kullanılabilir. Bu istemciler farklı protokolleri anlamış, örneğin iOS için bir HTTP Canlı Akışı (HLS) biçimi gerekir ve Xbox Kesintisiz Akış gerektirir. HLS, MPEG DASH veya Kesintisiz Akış anlayan istemcilere sağlamak istediğiniz bir uyarlamalı bit hızı (çoklu bit hızı) MP4 (ISO tabanlı medya 14496-12) dosyası veya bir dizi Uyarlamalı bit hızı Kesintisiz Akış, dinamik özelliklerden yararlanabilirsiniz.  *Paketleme*. Paketleme, video çözünürlüğüne agtik, SD/HD/UHD-4K desteklenir.
+Microsoft Azure Media Services, tüm büyük cihazlara (örneğin, iOS ve Android cihazlar) ulaşmak için birçok medya kaynağı dosyası biçimini kodlamak ve bunları içerik korumasıyla ya da olmadan farklı akış protokolleriyle teslim etmek için kullanılabilir. Bu istemciler farklı protokolleri anlamış, örneğin iOS 'un HTTP Canlı Akışı (HLS) biçiminde ve Android cihazlarında HLS 'leri ve MPEG DASH 'i desteklemesi gerekir. Kaynak dosyalarınızı, uyarlamalı bit hızı akışı ile teslim edilmek üzere hazırlamak için, birden çok bit hızlı (Uyarlamalı bit hızı olarak da adlandırılır) MP4 (ISO Base Media 14496-12) dosyaları kümesiyle [kodlanmış](encoding-concept.md) olmaları gerekir. Bu MP4 dosyaları kümesinden, **dinamik paketleme**kullanarak HLS veya MPEG-DASH veya kesintisiz akış protokolleri aracılığıyla video gönderebilirsiniz.
 
 Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) , canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına, ortak akış medya protokollerinden birini (HLS veya) kullanarak doğrudan teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmeti temsil eder. TIRE). Dinamik paketleme, tüm **akış uç noktalarında** standart olan bir özelliktir (Standart veya Premium). 
 
-Dinamik paketlemeden yararlanmak için, uyarlamalı bit hızı MP4 dosyaları ve akış yapılandırma dosyaları (. ISM,. ismc,. MPI vb.) kümesine [sahip bir](assets-concept.md) varlığınız olması gerekir. Dosyaları almak için kullanabileceğiniz yöntemlerden biri, ara (kaynak) dosyanızı Media Services ile kodlamaktır. Kodlanmış varlıktaki videoları kayıttan yürütme için kullanılabilir hale getirmek için bir [akış Bulucu](streaming-locators-concept.md) oluşturmanız ve akış URL 'leri oluşturmanız gerekir. Daha sonra akış istemci bildiriminde (HLS, DASH veya kesintisiz) belirtilen biçime göre akışı seçtiğiniz protokolde alırsınız.
+**Dinamik paketlemeden**yararlanmak için, Media Services dinamik paketleme için gereken Uyarlamalı bit hızı MP4 dosyaları ve akış yapılandırma dosyaları kümesine sahip bir varlığınız olması gerekir. Dosyaları almak için kullanabileceğiniz yöntemlerden biri, ara (kaynak) dosyanızı Media Services ile kodlamaktır. Kodlanmış varlıktaki videoları kayıttan yürütme için kullanılabilir hale getirmek için bir **akış Bulucu** oluşturmanız ve akış URL 'leri oluşturmanız gerekir. Daha sonra akış istemci bildiriminde (HLS, MPEG DASH veya Kesintisiz Akış) belirtilen biçime göre akışı seçtiğiniz protokolde alırsınız.
 
 Bunu sonucunda, dosyaları yalnızca tek bir depolama biçiminde depolamanız ve buna göre ödeme yapmanız gerekir. Media Services hizmeti, istemciden gelen isteklere göre uygun yanıtı derler ve sunar. 
 
-Media Services, dinamik paketleme, canlı veya isteğe bağlı olarak akış yapıp etmeksizin kullanılır. 
+Media Services, dinamik paketleme, canlı veya isteğe bağlı videolar akışı yapıp kullanınızdan kullanılır. 
 
 > [!NOTE]
 > Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
 
 ## <a name="on-demand-streaming-workflow"></a>İsteğe bağlı akış iş akışı
 
-Dinamik paketleme ile isteğe bağlı akış Media Services için ortak bir iş akışı aşağıda verilmiştir:
+Aşağıda, dinamik paketleme 'ın Azure Media Services standart kodlayıcıyla birlikte kullanıldığı ortak bir Media Services akış iş akışı verilmiştir.
 
-1. Bir giriş veya kaynak dosyasını ( *Mezzanine* dosyası olarak adlandırılır) karşıya yükleyin. Örnek olarak MP4, MOV veya MXF dosyası verilebilir. 
-1. Mezzanine dosyanızı H., ve bu Uyarlamalı bit hızı kümelerine kodlayın. 
+1. QuickTime/MOV veya MXF dosyası gibi bir giriş dosyasını karşıya yükleyin (desteklenen biçimlerin listesi için [, Media Encoder Standard Desteklenen biçimleri](media-encoder-standard-formats.md)görüntüleyin. Bu, Mezzanine veya kaynak dosya olarak da adlandırılır.
+1. Mezzanine dosyanızı H. bir H.,/AAC MP4 Uyarlamalı bit hızı kümesine [kodlayın](#encode-to-adaptive-bitrate-mp4s) . 
 1. Uyarlamalı bit hızı MP4 kümesini içeren çıkış varlığını yayımlayın. Bir akış Bulucu oluşturarak yayımlayabilirsiniz.
-1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. Akış uç noktası, farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye önem kazanır.
+1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. **Akış uç noktası** , tüm bu farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye yöneliktir.
 
-Bu diyagramda, dinamik paketleme ile isteğe bağlı akış için iş akışı gösterilmektedir:
+Aşağıdaki diyagramda, dinamik paketleme iş akışı ile isteğe bağlı akış gösterilmektedir.
 
 ![Dinamik paketleme ile isteğe bağlı akış için bir iş akışının diyagramı](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-### <a name="encoding-to-adaptive-bitrate-mp4s"></a>Uyarlamalı bit hızı MP4 'leri kodlaması
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>Uyarlamalı bit hızı MP4 'leri kodlama
 
 Aşağıdaki makalelerde [Media Services bir videonun nasıl kodlanacağı](encoding-concept.md)örnekleri gösterilmektedir:
 
@@ -93,14 +93,15 @@ Bu teslim protokollerini, içeriğiniz için Media Services dinamik paketde kull
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Kesintisiz Akış| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="delivery-codecs-support"></a>Teslim codec bileşenleri desteği 
-
-### <a name="video-codecs"></a>Video codec bileşenleri
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen video codec bileşenleri
 
 Dinamik paketleme aşağıdaki video codec bileşenlerini destekler:
 * , [H.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) , (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) Ile kodlanmış video içeren MP4 dosyaları.
 
-### <a name="audio-codecs"></a>Ses codec bileşenleri
+> [!NOTE]
+> En fazla 4K çözünürlük ve 60 kare/saniye kare hızları, dinamik paketleme ile test edilmiştir. [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler. Bu konu amshelp@microsoft.com hakkında sorularınız varsa lütfen iletişim kurun. 
+
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Dinamik paketleme tarafından desteklenen ses codec bileşenleri
 
 Dinamik paketleme aşağıda açıklanan aşağıdaki ses protokollerini destekler:
 
@@ -109,7 +110,10 @@ Dinamik paketleme aşağıda açıklanan aşağıdaki ses protokollerini destekl
 
 Dinamik paketleme, [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) ses (eski bir codec) içeren dosyaları desteklemez.
 
-#### <a name="mp4-files"></a>MP4 dosyaları
+> [!NOTE]
+> [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla Dolby Digital Plus kodlamasını destekler. Bu konu amshelp@microsoft.com hakkında sorularınız varsa lütfen iletişim kurun. 
+
+### <a name="mp4-files"></a>MP4 dosyaları
 
 Dinamik paketleme, aşağıdaki protokollerle kodlanmış ses içeren MP4 dosyalarını destekler: 
 
@@ -126,7 +130,7 @@ Dinamik paketleme, aşağıdaki protokollerle kodlanmış ses içeren MP4 dosyal
     * DTS Express (DTO)
     * DTS-HD kayıpsız (çekirdek yok) (dtsl)
 
-#### <a name="multiple-audio-tracks"></a>Birden çok ses parçası
+### <a name="multiple-audio-tracks"></a>Birden çok ses parçası
 
 Dinamik paketleme, birden çok codec ve dilde birden çok ses parçası olan akış varlıkları için HLS çıkışı (sürüm 4 veya üzeri) için çok sayıda ses parçasını destekler.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c316e55700fc8a28ed39bea960a9fe2b2bbd4df1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 52f6e7ebb1cbae14878b1897bd8c59c73dd0f493
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900383"
+ms.locfileid: "69981018"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure portal bir Windows SQL Server sanal makinesi sağlama
 
@@ -77,7 +77,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
 | **SQL Server ayarları** |[SQL Server ayarlarını yapılandırma](#3-configure-sql-server-settings) |
 | **Gözden geçir + oluştur** | [Özeti gözden geçirme](#4-review--create) |
 
-## <a name="1-configure-basic-settings"></a>1. Temel ayarları yapılandırın
+## <a name="1-configure-basic-settings"></a>1. Temel ayarları yapılandırma
 
 
 **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
@@ -112,7 +112,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
    ![Gelen bağlantı noktası kuralları](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. İsteğe bağlı özellikleri yapılandır
+## <a name="2-configure-optional-features"></a>2. İsteğe bağlı özellikleri yapılandırma
 
 ### <a name="disks"></a>Diskler
 
@@ -122,7 +122,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
 * **Gelişmiş**' in altında, **yönetilen diskleri**kullan altında **Evet** ' i seçin.
 
    > [!NOTE]
-   > Microsoft, SQL Server için Yönetilen Diskleri önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış] [.. /managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla ayrıntı için bkz. [Kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma](../manage-availability.md).
+   > Microsoft, SQL Server için Yönetilen Diskleri önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla ayrıntı için bkz. [Kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma](../manage-availability.md).
 
 ![SQL VM disk ayarları](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -200,11 +200,11 @@ SQL Server Kimlik Doğrulamasını etkinleştirirseniz, bir **Oturum açma adı*
 SQL Server Kimlik Doğrulamasını etkinleştirmezseniz, SQL Server örneğine bağlanmak için VM’deki yerel Yönetici hesabını kullanabilirsiniz.
 
 
-### <a name="azure-key-vault-integration"></a>Azure Key Vault tümleştirmesi
+### <a name="azure-key-vault-integration"></a>Azure Anahtar Kasası tümleştirme
 
 Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları**' nı seçin ve **Azure Anahtar Kasası tümleştirmesi**' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
 
-![Azure Key Vault tümleştirmesi](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
+![Azure Anahtar Kasası tümleştirme](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 Aşağıdaki tabloda Azure Anahtar Kasası Tümleştirmeyi yapılandırmak için gereken parametreler listelenmektedir.
 

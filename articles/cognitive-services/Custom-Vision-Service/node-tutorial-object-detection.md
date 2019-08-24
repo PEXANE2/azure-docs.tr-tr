@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e3bf7b4fb60d81ff8883c2592de3739572bf2fa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946158"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997805"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme Node. js SDK 'Sı ile bir nesne algılama projesi oluşturma
 
@@ -26,20 +26,19 @@ Bu makalede, bir nesne algılama modeli oluşturmak için Node. js ile Özel Gö
 - [Node. js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
 - [NPM](https://www.npmjs.com/) yüklendi.
 
+[!INCLUDE [get-keys](includes/get-keys.md)]
+
+[!INCLUDE [node-get-images](includes/node-get-images.md)]
+
+
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Node. js için Özel Görüntü İşleme Hizmeti SDK 'larını yüklemek için aşağıdaki komutları çalıştırın:
+Projenize Node. js için Özel Görüntü İşleme Hizmeti SDK 'Ları yüklemek için aşağıdaki komutları çalıştırın:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
-
-Resimleri [Node. js örnekleriyle](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)indirebilirsiniz.
-
-[!INCLUDE [get-keys](includes/get-keys.md)]
-
-[!INCLUDE [node-get-images](includes/node-get-images.md)]
 
 ## <a name="add-the-code"></a>Kod ekleme
 
@@ -47,9 +46,10 @@ Tercih ettiğiniz proje dizininde *Sample. js* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
-Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki fark, **create_project** çağrısında belirtilen etki alanıdır.
+Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin ve sampleDataRoot Path değerini görüntü klasörü yolunuza ayarlayın. Uç nokta değerinin [Customvision.ai](https://www.customvision.ai/)adresinde oluşturduğunuz eğitim ve tahmin uç noktalarıyla eşleştiğinden emin olun. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki fark, **create_project** çağrısında belirtilen etki alanıdır.
 
 ```javascript
+const fs = require('fs');
 const util = require('util');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");

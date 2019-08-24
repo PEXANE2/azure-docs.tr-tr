@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3d10814858d38d61e5346a4eb0dfb3d3d24ad4c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568324"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981365"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>En son elastik veritabanı istemci kitaplığını kullanmak için bir uygulamayı yükseltme
 
-[Elastik veritabanı istemci kitaplığının](sql-database-elastic-database-client-library.md) yeni sürümleri, Nugetve Visual Studio 'Daki NuGetPackage Manager arabirimi aracılığıyla kullanılabilir. Yükseltmeler, istemci kitaplığının yeni özelliklerine yönelik hata düzeltmeleri ve destek içerir.
+[Elastik veritabanı istemci kitaplığının](sql-database-elastic-database-client-library.md) yeni sürümleri, NuGet ve Visual Studio 'Daki NuGet Paket Yöneticisi arabirimi aracılığıyla kullanılabilir. Yükseltmeler, istemci kitaplığının yeni özelliklerine yönelik hata düzeltmeleri ve destek içerir.
 
 **En son sürüm için:** [Microsoft. Azure. SQLDatabase. Elayapışscale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)öğesine gidin.
 

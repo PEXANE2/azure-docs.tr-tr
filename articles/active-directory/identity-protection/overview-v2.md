@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717278"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991069"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Kimlik Koruması (YENİLENDİ) nedir?
 
@@ -50,9 +50,9 @@ Azure AD Kimlik Koruması aşağıdaki risk olaylarını algılar:
 | --- | --- | --- |
 | Alışılmadık seyahat | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın. | Çevrimdışı |
 | Anonim IP adresi | Anonim IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). | Gerçek zamanlı |
-| Bilinmeyen oturum açma özellikleri | Belirtilen kullanıcı için son gördüğdiğimiz özelliklerle oturum açın. | Gerçek zamanlı |
+| Bilmediğiniz oturum açma özellikleri | Belirtilen kullanıcı için son gördüğdiğimiz özelliklerle oturum açın. | Gerçek zamanlı |
 | Kötü amaçlı yazılım bağlantısı içeren IP adresi | Kötü amaçlı yazılımdan bağlantılı IP adresinden oturum açın | Çevrimdışı |
-| Sızdırılan kimlik bilgileri | Bu risk olayı kullanıcının geçerli kimlik bilgilerinin sızdırıldığını gösterir | Çevrimdışı |
+| Sızdırılan kimlik bilgileri | Bu risk olayı, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir | Çevrimdışı |
 
 ## <a name="types-of-risk"></a>Risk türleri 
 
@@ -145,13 +145,17 @@ Daha fazla bilgi için bkz. [Azure Active Directory yönetici rolleri atama](../
 >[!NOTE]
 > Kimlik korumasının (yenilenmiş) genel önizlemesi sırasında, riskli kullanıcılar raporu ve riskli oturum açma bileşenleri raporuna yalnızca Azure AD Premium P2 müşterileri erişebilir.
 
-| Özellik | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Temel/ücretsiz |
-| --- | --- | --- | --- |
-| Kullanıcı riski ilkesi | Evet | Hayır | Hayır |
-| Oturum açma riski ilkesi | Evet | Hayır | Hayır |
-| Riskli kullanıcılar raporu | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
-| Riskli oturum açma işlemleri raporu | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
-| MFA kayıt ilkesi | Evet | Hayır | Hayır |
+| Özellik | Ayrıntılar | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Temel/ücretsiz |
+| --- | --- | --- | --- | --- |
+| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla) | Evet | Hayır | Hayır |
+| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla) | Evet | Hayır | Hayır |
+| Güvenlik raporları | Genel Bakış | Evet | Hayır | Hayır |
+| Güvenlik raporları | Riskli kullanıcılar | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
+| Güvenlik raporları | Riskli oturum açma işlemleri | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
+| Güvenlik raporları | Risk algılamaları | Tam erişim | Sınırlı bilgi | Hayır |
+| Bildirimler | Risk altındaki kullanıcılardan algılanan uyarılar | Evet | Hayır | Hayır |
+| Bildirimler | Haftalık özet | Evet | Hayır | Hayır |
+| | MFA kayıt ilkesi | Evet | Hayır | Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

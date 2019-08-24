@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928024"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997810"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin 
 
@@ -67,6 +67,9 @@ Aşağıdaki bölüm, karar ağacı kullanarak sizin için hangi kimlik doğrula
 
 ## <a name="decision-tree"></a>Karar ağacı
 
+> [!NOTE]
+> PTA, yalnızca UserPrincipalName farklı KIMLIK olarak seçilirse alternatif KIMLIK ile birlikte kullanılabilir. Yalnızca şirket içi UserPrincipalName, AD 'den AAD 'ye eşitlenir. Daha fazla bilgi için, ["userPrincipalName" yerine Kullanıcı adı olarak "ALTERNATIF kimlik" Ile geçiş kimlik doğrulaması desteği](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)' ne bakın.
+
 ![Azure AD kimlik doğrulaması karar ağacı](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 Karar sorularına ilişkin ayrıntılar:
@@ -108,7 +111,7 @@ Karar sorularına ilişkin ayrıntılar:
 
 Dağıtım adımları için [Parola karması eşitlemesini uygulama](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) bölümüne bakın.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Bulut kimlik doğrulaması: Geçişli Kimlik Doğrulaması  
+### <a name="cloud-authentication-pass-through-authentication"></a>Bulut kimlik doğrulaması: Doğrudan Kimlik Doğrulama  
 
 * **Çaba**. Geçişli kimlik doğrulaması için, var olan sunucularda bir veya daha fazla basit aracı yüklü olmalıdır (üç). Bu aracıların şirket içi AD etki alanı denetleyicileriniz dahil olmak üzere şirket içi Active Directory Domain Services erişimi olmalıdır. Internet 'e giden erişim ve etki alanı denetleyicilerinize erişim gerekir. Bu nedenle, aracıların bir çevre ağında dağıtılması desteklenmez. 
 
@@ -174,7 +177,7 @@ Aşağıdaki diyagramlarda, Azure AD hibrit kimlik çözümünüz ile kullanabil
 
 ## <a name="comparing-methods"></a>Yöntemleri karşılaştırma
 
-|US|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS'ye sahip federasyon|
+|US|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS ile Federasyon|
 |:-----|:-----|:-----|:-----|
 |Kimlik doğrulaması nerede gerçekleşir?|Bulutta|Şirket içi kimlik doğrulama Aracısı ile güvenli bir parola doğrulaması alışverişi sonrasında bulutta|Şirket içi|
 |Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Yok.|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|

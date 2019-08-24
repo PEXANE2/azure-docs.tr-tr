@@ -3,17 +3,17 @@ title: Resource Manager ve klasik dağıtım | Microsoft Docs
 description: Resource Manager dağıtım modeli ile klasik (veya Hizmet Yönetimi) dağıtım modeli arasındaki farklılıkları açıklar.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: overview
-ms.date: 11/15/2017
+ms.topic: conceptual
+ms.date: 08/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 773d369f23154a510624169b9329555a1f865320
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9356a1603a39f2ac4d18b27445bf0f8d3a555d7e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206309"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982467"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ve klasik dağıtım: Dağıtım modellerini ve kaynaklarınızın durumunu anlama
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlayın
 
 > [!NOTE]
 > Bu makalede sağlanan bilgiler, yalnızca klasik dağıtımdan Azure Resource Manager dağıtımına geçiş yaptığınızda kullanılır.
@@ -68,7 +68,7 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Ancak, Resource Manager cmdlet **Get-AzVM** yalnızca Resource Manager üzerinden dağıtılan sanal makinelerin döndürür. Aşağıdaki komut, klasik dağıtım ile oluşturulmuş sanal makineyi döndürmez.
+Ancak, **Get-AzVM** Kaynak Yöneticisi cmdlet 'i yalnızca Kaynak Yöneticisi aracılığıyla dağıtılan sanal makineleri döndürür. Aşağıdaki komut, klasik dağıtım ile oluşturulmuş sanal makineyi döndürmez.
 
 ```powershell
 Get-AzVM -ResourceGroupName ExampleGroup

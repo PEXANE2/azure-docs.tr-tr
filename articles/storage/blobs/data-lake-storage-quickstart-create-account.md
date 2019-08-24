@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2063dd22e3253b0707f6920f3a5c0c7a6bb01126
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617689"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992312"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage 2. depolama hesabı oluşturma
 
-Azure Data Lake Storage 2., Hadoop Dağıtılmış Dosya Sistemi (bir) ile çalışmak üzere uyarlanmış bir yerel dizin tabanlı dosya sistemi sağlayan [hiyerarşik bir ad alanını destekler](data-lake-storage-introduction.md) . HDFS'den Data Lake Storage Gen2 verilerine erişim [ABFS sürücüsü](data-lake-storage-abfs-driver.md) aracılığıyla sağlanabilir.
+Azure Data Lake Storage 2., Hadoop Dağıtılmış Dosya Sistemi (bir) ile çalışacak şekilde uyarlanmış yerel dizin tabanlı bir kapsayıcı sağlayan [hiyerarşik bir ad alanını destekler](data-lake-storage-introduction.md) . HDFS'den Data Lake Storage Gen2 verilerine erişim [ABFS sürücüsü](data-lake-storage-abfs-driver.md) aracılığıyla sağlanabilir.
 
 Bu hızlı başlangıçta [Azure portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) veya [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) kullanarak hesap oluşturma adımları gösterilmektedir.
 

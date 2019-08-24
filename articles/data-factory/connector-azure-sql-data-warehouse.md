@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614130"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996669"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure SQL veri ambarı veri kopyalayın 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -431,12 +431,14 @@ Gereksinimleri karşılanmadığı takdirde, Azure Data Factory ayarları denetl
 2. **Kaynak veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet**, **orc**veya **sınırlandırılmış bir metindir**:
 
    1. Klasör yolu joker karakter filtresi içermiyor.
-   2. Dosya adı tek bir dosyaya işaret eder veya ya `*` da `*.*`olur.
-   3. `rowDelimiter` olmalıdır **\n**.
-   4. `nullValue` ya da ayarlanmış **boş dize** ("") veya varsayılan olarak sola ve `treatEmptyAsNull` varsayılan sola veya ayarlamak true.
-   5. `encodingName` ayarlanır **utf-8**, varsayılan değer olan.
+   2. Dosya adı boş veya tek bir dosyaya işaret ediyor. Kopyalama etkinliğinde joker karakter dosya adı belirtirseniz, yalnızca veya `*` `*.*`olabilir.
+   3. `rowDelimiter`**varsayılan**, **\n**, **\r\n**veya **\r**'dir.
+   4. `nullValue`Varsayılan olarak bırakılır veya **boş dize** ("") olarak ayarlanır ve `treatEmptyAsNull` varsayılan olarak bırakılır ya da true olarak ayarlanır.
+   5. `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
    6. `quoteChar`, `escapeChar` ve`skipLineCount` belirtilmedi. PolyBase destek Atla olarak yapılandırılan üst bilgi satırı `firstRowAsHeader` ADF içinde.
    7. `compression` olabilir **sıkıştırma**, **GZip**, veya **Deflate**.
+
+3. Kaynağınız bir klasörse, `recursive` Copy etkinliğinin true olarak ayarlanması gerekir.
 
 ```json
 "activities":[
@@ -445,7 +447,7 @@ Gereksinimleri karşılanmadığı takdirde, Azure Data Factory ayarları denetl
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "BlobDataset",
+                "referenceName": "ParquetDataset",
                 "type": "DatasetReference"
             }
         ],
@@ -457,7 +459,11 @@ Gereksinimleri karşılanmadığı takdirde, Azure Data Factory ayarları denetl
         ],
         "typeProperties": {
             "source": {
-                "type": "BlobSource",
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSetting",
+                    "recursive": true
+                }
             },
             "sink": {
                 "type": "SqlDWSink",

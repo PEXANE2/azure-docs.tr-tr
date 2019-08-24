@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 59ac4b36a4bc2b3ff454b3a2ae98ce60f6bfcb5f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614256"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996603"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure veri fabrikasında kopyalama etkinliği
 
@@ -263,9 +263,6 @@ Bu örnekte, kopya çalıştırma sırasında, ADF Azure SQL DB 'nin yazma işle
 
 ## <a name="incremental-copy"></a>Artımlı kopyalama
 Data Factory, Delta verilerini bir kaynak veri deposundan bir havuz veri deposuna artımlı olarak kopyalamak için senaryoları destekler. Bkz: [öğretici: verileri artımlı olarak kopyalama](tutorial-incremental-copy-overview.md).
-
-## <a name="read-and-write-partitioned-data"></a>Bölümlenmiş veri okuma ve yazma
-Sürüm 1'de, Azure Data Factory SliceStart/SliceEnd/WindowStart/WindowEnd sistem değişkenlerini kullanarak bölümlenmiş verileri yazma veya okuma desteklenmiyor. Geçerli sürümde, parametrenin değeri bir işlem hattı parametresi ve tetikleyicinin başlangıç saati/zamanlanan saat'ı kullanarak bu davranışı elde edebilirsiniz. Daha fazla bilgi için [okumak veya yazmak nasıl veri bölümlenmiş](how-to-read-write-partitioned-data.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki Hızlı Başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle bakın:

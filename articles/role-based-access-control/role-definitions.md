@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ece5d8f9733dde57c2990bfbb6bb90305d8bc37d
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 2ec3872b9e11830f7891e98f5fc0182b99e1586d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977198"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997336"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure kaynakları için rol tanımlarını anlama
 
@@ -88,7 +88,7 @@ Yönetim işlemleri için rol tabanlı erişim denetimi, `Actions` bir rol tanı
 - Blob kapsayıcısı oluşturma, güncelleştirme veya silme
 - Bir kaynak grubunu ve tüm kaynaklarını Sil
 
-Yönetim erişimi verilerinize devralınmaz. Bu ayrım, joker karakter (`*`) içeren rollerin verilerinize sınırsız erişmesini önler. Örneğin, bir kullanıcı abonelik üzerinde bir [okuyucu](built-in-roles.md#reader) rolüne sahipse, depolama hesabını görüntüleyebilirler, ancak varsayılan olarak temel alınan verileri görüntüleyemez.
+Yönetim erişimi, kapsayıcı kimlik doğrulama yönteminin "Azure AD Kullanıcı hesabı" olarak ayarlandığı ve "erişim anahtarı" olmadığı için verilerinize devralınmaz. Bu ayrım, joker karakter (`*`) içeren rollerin verilerinize sınırsız erişmesini önler. Örneğin, bir kullanıcı abonelik üzerinde bir [okuyucu](built-in-roles.md#reader) rolüne sahipse, depolama hesabını görüntüleyebilirler, ancak varsayılan olarak temel alınan verileri görüntüleyemez.
 
 Daha önce, rol tabanlı erişim denetimi veri işlemleri için kullanılmadı. Kaynak sağlayıcıları arasında değişen veri işlemlerine yönelik yetkilendirme. Yönetim işlemleri için kullanılan rol tabanlı erişim denetimi yetkilendirme modeli, veri işlemlerine genişletildi.
 
@@ -158,7 +158,7 @@ Depolama için yönetim ve veri düzlemi güvenliği hakkında daha fazla bilgi 
 
 Veri işlemlerini görüntülemek ve bunlarla çalışmak için, araçların veya SDK 'ların doğru sürümlerine sahip olmanız gerekir:
 
-| Tool  | Version  |
+| Araç  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 veya üzeri |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 veya üzeri |

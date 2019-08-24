@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855438"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992272"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Öğretici: Spark kullanarak Azure Databricks Data Lake Storage 2. verilere erişme
 
@@ -124,18 +124,18 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 2. *. Csv* hesabındaki verileri kopyalamak için aşağıdaki komutu girin.
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin. `<csv-folder-path>`
 
    * `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-   * Yer tutucusunu `<file-system-name>` , dosya sisteminize vermek istediğiniz herhangi bir adla değiştirin.
+   * Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
 
-## <a name="create-a-file-system-and-mount-it"></a>Bir dosya sistemi oluşturun ve bağlayın
+## <a name="create-a-container-and-mount-it"></a>Kapsayıcı oluşturma ve bağlama
 
-Bu bölümde, depolama hesabınızda bir dosya sistemi ve bir klasör oluşturacaksınız.
+Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacaksınız.
 
 1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks hizmetine gidin ve **çalışma alanını Başlat**' ı seçin.
 
@@ -158,12 +158,12 @@ Bu bölümde, depolama hesabınızda bir dosya sistemi ve bir klasör oluşturac
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. Bu kod bloğunda, bu kod bloğundaki `appId` `tenant`, `password`, ve `storage-account-name` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. Yer tutucu `file-system-name` değerini, önceki adımda ADLS dosya sistemine verdiğiniz adla değiştirin.
+18. Bu kod bloğunda, bu kod bloğundaki `appId` `tenant`, `password`, ve `storage-account-name` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. Yer tutucu `container-name` değerini, önceki adımda kapsayıcısına verdiğiniz adla değiştirin.
 
 Bu değerleri, belirtilen yer tutucuları değiştirmek için kullanın.
 
@@ -173,7 +173,7 @@ Bu değerleri, belirtilen yer tutucuları değiştirmek için kullanın.
 
    * , `storage-account-name` Azure Data Lake Storage 2. depolama hesabınızın adıdır.
 
-   * Yer tutucusunu `file-system-name` , dosya sisteminize vermek istediğiniz herhangi bir adla değiştirin.
+   * Yer tutucusunu `container-name` , kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
 
    > [!NOTE]
    > Bir üretim ayarında parolanızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, parola yerine kod blosonra bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.

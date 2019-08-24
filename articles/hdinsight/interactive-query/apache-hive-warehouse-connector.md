@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826924"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983076"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
@@ -51,7 +51,7 @@ Azure HDInsight 'ta Spark ve etkileşimli sorgu kümesi arasında Hive ambarı b
 
         ![Spark2 ambarı yapılandırması](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. `spark.hadoop.hive.llap.daemon.service.hosts` **Gelişmiş Hive-Interactive-env**altındaki **LLAP uygulama adı** özelliğiyle aynı değere ayarlayın. Örneğin, `llap0`
+    1. \* `spark.hadoop.hive.llap.daemon.service.hosts` * Gelişmiş Hive-Interactive-site * * altındaki **Hive. LLAP. Daemon. Service. hosts** özelliği ile aynı değere ayarlanır. Örneğin, `@llap0`
 
     1. Etkileşimli `spark.sql.hive.hiveserver2.jdbc.url` sorgu kümesinde Hiveserver2 'e bağlanan JDBC bağlantı dizesine ayarlayın. Kümeniz için bağlantı dizesi aşağıdaki URI gibi görünür. `CLUSTERNAME`Spark Kümenizin adı ve `user` ve `password` parametreleri kümeniz için doğru değerlere ayarlanır.
 
@@ -231,7 +231,7 @@ Localhost bağlantı noktası 9999 üzerindeki bir Spark akışından Hive tablo
     1. **Hive**altındaki kümeniz için Hive hizmetine tıklayın.
         ![Ranger ilkesini uygulamadan önce demo tablosu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. **Maskeleme** sekmesine tıklayın ve ardından **Yeni ilke** ![ilkesi listesi ekleyin](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. İstenen bir ilke adı belirtin. Veritabanı seçin: **Varsayılan**, Hive tablosu: **demo**, Hive sütunu: **ad**, Kullanıcı: **Rsadmin2**, erişim türleri: **Select**ve **kısmi maske:** **maskeleme seç seçenek** menüsünden son 4 ' ü göster.           **Ekle**'yi tıklatın.
+    1. İstenen bir ilke adı belirtin. Veritabanı seçin: **Varsayılan**, Hive tablosu: **demo**, Hive sütunu: **ad**, Kullanıcı: **Rsadmin2**, erişim türleri: **Select**ve **kısmi maske:** **maskeleme seç seçenek** menüsünden son 4 ' ü göster. **Ekle**'yi tıklatın.
                 ![ilke listesi](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Tablonun içeriğini yeniden görüntüleyin. Ranger ilkesini uyguladıktan sonra sütunun yalnızca son dört karakterini görebiliriz.
 

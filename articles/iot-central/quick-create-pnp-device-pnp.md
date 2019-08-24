@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878323"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997727"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Hızlı Başlangıç: Bir IoT Tak ve Kullan cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-Bir _cihaz yetenek modeli_ (DCM) [IoT Tak ve kullan](https://aka.ms/iot-pnp-docs) cihazının yeteneklerini açıklar. IoT Central, cihaz ilk kez bağlandığında cihaz için bir cihaz şablonu ve görselleştirmeler oluşturmak üzere bir DCM kullanabilir. Bu hızlı başlangıçta şu işlemleri nasıl yapacağınız gösterilir:
+Bir _cihaz yetenek modeli_ (DCM) [IoT Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) cihazının yeteneklerini açıklar. IoT Central, cihaz ilk kez bağlandığında cihaz için bir cihaz şablonu ve görselleştirmeler oluşturmak üzere bir DCM kullanabilir. Bu hızlı başlangıçta şu işlemleri nasıl yapacağınız gösterilir:
 
 * DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için Visual Studio Code kullanın.
 * Windows 'da Cihaz kodunu çalıştırın ve IoT Central uygulamanıza bağlanma bölümüne bakın.

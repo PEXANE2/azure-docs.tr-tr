@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 630f92bc8cf5fb89626bfe4de4e4a575045c961a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6eb73c1c2b768d82143890415702950905f261f6
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880962"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997239"
 ---
 # <a name="use-visual-studio-code-to-create-an-iot-plug-and-play-device-that-connects-to-iot-central"></a>IoT Central bağlanan bir IoT Tak ve Kullan cihazı oluşturmak için Visual Studio Code kullanın
 
@@ -22,7 +22,7 @@ Bu nasıl yapılır kılavuzunda, nasıl yapılacağı gösterilmektedir:
 
 * Bir operatör olarak, Azure IoT Central uygulamanızda gerçek bir cihaz eklemek ve yapılandırmak için.
 
-* Bir cihaz geliştiricisi olarak, IoT Central uygulamanıza bağlanan bir [ıot Tak ve kullan](https://aka.ms/iot-pnp-docs) cihazı oluşturmak için Visual Studio Code kullanın.
+* Bir cihaz geliştiricisi olarak, IoT Central uygulamanıza bağlanan bir [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) cihazı oluşturmak için Visual Studio Code kullanın.
 
 IoT Central bağlanan cihazı tanımlamak için bir [cihaz yetenek modeli](./concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) kullanın. Bu kılavuzda, bir ortam algılayıcı cihazı tanımlayan bir model kullanırsınız.
 

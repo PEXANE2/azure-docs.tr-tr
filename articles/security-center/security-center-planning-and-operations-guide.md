@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/11/2019
+ms.date: 08/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a8033448c2db2ca30ece54b3367ecb60ecf12c3d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706249"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990699"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Güvenlik Merkezi planlama ve işlemler kılavuzu
 Bu kılavuz, kurumları Azure Güvenlik Merkezi'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenlik çözümleyicileri ve bulut yöneticilerine yöneliktir.
@@ -91,17 +91,17 @@ Yukarıda açıklanan Güvenlik Merkezi rolleri, Azure’un Depolama, Web ve Mob
 
 **Ali (BT Güvenliği)**
 
-* Abonelik sahibi/katkıda bulunanı veya Güvenlik Yöneticisi
+* Abonelik sahibi/katkıda bulunan veya Güvenlik Yöneticisi
 
 **Zehra (Güvenlik İşlemleri)**
 
 * Uyarıları görüntülemek için Abonelik Okuyucusu veya Güvenlik Okuyucusu
-* Uyarıları kapatmak için abonelik sahibi/katkıda bulunanı veya Güvenlik Yöneticisi gerekli
+* Abonelik sahibi/katkıda bulunan veya güvenlik yöneticisi uyarıları kapatmak için gereklidir
 
 **Salih (Güvenlik Analisti)**
 
 * Uyarıları görüntülemek için Abonelik Okuyucusu
-* Uyarıları kapatmak için abonelik sahibi/katkıda bulunan gerekli
+* Abonelik sahibi/bu katılımcı uyarıları kapatmak için gereklidir
 * Çalışma alanına erişim gerekli olabilir
 
 Dikkate alınması gereken bazı diğer önemli bilgiler:
@@ -121,7 +121,7 @@ Güvenlik ilkesi iş yüklerinizin istenen yapılandırmasını tanımlar ve şi
 
 Güvenlik Merkezi ilkeleri aşağıdaki bileşenleri içerir:
 - [Veri toplama](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): Aracı sağlama ve veri toplama ayarları.
-- [Güvenlik İlkesi](https://docs.microsoft.com/azure/security-center/security-center-policies): bir [Azure İlkesi](../governance/policy/overview.md) hangi denetimlerin izlenir ve Güvenlik Merkezi veya Azure İlkesi kullanımı, yeni tanımları oluşturmak için önerilen ek ilke tanımlama ve ilkeleri atamak belirler Yönetim grupları arasında.
+- [Güvenlik ilkesi](https://docs.microsoft.com/azure/security-center/security-center-policies): hangi denetimlerin güvenlik merkezi tarafından izleneceğini ve önerildiğini belirleyen bir [Azure ilkesidir](../governance/policy/overview.md) veya yeni tanımlar oluşturmak, ek ilkeler tanımlamak ve yönetim grupları arasında Ilkeler atamak için Azure ilkesi 'ni kullanın.
 - [E-posta bildirimleri](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): Güvenlik ilgili kişileri ve bildirim ayarları.
 - [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/security-center/security-center-pricing): Kapsam dahilindeki kaynaklar (abonelikler, kaynak grupları ve çalışma alanları için belirtilebilir) için kullanılabilecek olan Güvenlik Merkezi özelliklerini belirleyen ücretsiz veya standart fiyatlandırma katmanı.
 
@@ -134,7 +134,7 @@ Güvenlik Merkezi, Azure aboneliklerinizin her biri için otomatik olarak varsay
 Güvenlik ilkelerini yapılandırmadan önce her bir [güvenlik önerisini](https://docs.microsoft.com/azure/security-center/security-center-recommendations) gözden geçirip bu ilkelerin sahip olduğunuz çeşitli abonelikler ve kaynak grupları için uygun olup olmadığını belirleyin. Güvenlik Önerilerini ele almak için hangi eylemlerde bulunulacağını ve kuruluşunuzda yeni önerileri izlemekten ve gerekli adımların atılmasından kimin sorumlu olacağını anlamak da önemlidir.
 
 ## <a name="data-collection-and-storage"></a>Veri koleksiyonu ve depolama
-Azure Güvenlik Merkezi, Microsoft Monitoring Agent kullanır: sanal makinelerinizden güvenlik verilerini toplamak için Azure İzleyici hizmeti tarafından kullanılan aracının aynısı budur. Bu aracıdan [toplanan veriler](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection), Log Analytics çalışma alanlarınızda depolanır.
+Azure Güvenlik Merkezi, Azure Izleyici hizmeti tarafından kullanılan aracı, sanal makinelerinizden güvenlik verilerini toplamak için Microsoft Monitoring Agent kullanır. Bu aracıdan [toplanan veriler](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection), Log Analytics çalışma alanlarınızda depolanır.
 
 ### <a name="agent"></a>Aracı
 
@@ -156,8 +156,8 @@ Microsoft Monitoring Agent’tan Azure Güvenlik Merkezi adına toplanan veriler
 
 Azure portalında, Azure Güvenlik Merkezi tarafından oluşturulanlar dahil olmak üzere Log Analytics çalışma alanlarınızın listesine göz atabilirsiniz. Yeni çalışma alanları için bir ilgili kaynak grubu oluşturulur. İkisi de şu adlandırma kuralını izler:
 
-* Çalışma alanı: *DefaultWorkspace-[abonelik-kimliği]-[Bölge]*
-* Kaynak grubu: *DefaultResourceGroup-[Bölge]*
+* Alanında *DefaultWorkspace-[abonelik-KIMLIĞI]-[coğrafi]*
+* Kaynak grubu: *DefaultResourceGroup-[coğrafi]*
 
 Azure Güvenlik Merkezi tarafından oluşturulan çalışma alanları için veriler 30 gün boyunca tutulur. Mevcut çalışma alanları için elde tutma süresi, çalışma alanının fiyatlandırma katmanını temel alır. İsterseniz var olan bir çalışma alanını kullanabilirsiniz.
 
@@ -246,7 +246,7 @@ Gizliliği bozulmuş sistemi tanımladıktan sonra önceden oluşturulmuş olan 
 [Bir Olay Yanıtı için Azure Güvenlik Merkezi ve Microsoft Operations Management Suite’ten Yararlanma](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) videosunda, bu aşamaların her birinde Güvenlik Merkezi’nin nasıl kullanılabileceğini anlamanıza yardımcı olabilecek bazı tanıtımlar görebilirsiniz.
 
 > [!NOTE]
-> Olay Yanıtı işleminiz sırasında size yardımcı olması için Güvenlik Merkezi özelliklerini kullanma hakkında daha fazla bilgi için [Olay Yanıtı için Azure Güvenlik Merkezi’nden Yararlanma](security-center-incident-response.md) makalesini okuyun.
+> [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) hakkında daha fazla bilgi için bkz. Güvenlik Merkezi özelliklerini kullanarak olay yanıtlama sürecinizde size yardımcı olun.
 >
 >
 

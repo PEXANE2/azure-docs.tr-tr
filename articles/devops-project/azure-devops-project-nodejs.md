@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Azure DevOps projeleri ile Node.js için CI/CD işlem hattı oluşturma'
-description: DevOps projeleri, Azure'da kullanmaya başlamak kolaylaştırır. Birkaç hızlı adımda, tercih ettiğiniz bir Azure hizmetinde uygulama başlatmanıza yardımcı olur.
+title: 'Hızlı Başlangıç: Azure DevOps Projeleri ile Node. js için bir CI/CD işlem hattı oluşturma'
+description: DevOps Projeleri Azure 'u kullanmaya başlamanızı kolaylaştırır. Birkaç hızlı adımda, tercih ettiğiniz bir Azure hizmetinde uygulama başlatmanıza yardımcı olur.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -17,88 +17,88 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: dadc394e9c9ddb152923095de10b8f727310d3f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eeab0433310892f27b9cb2d2eb6f64e17e6f14ef
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554838"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991716"
 ---
-#  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Azure DevOps projeleri ile Node.js için CI/CD işlem hattı oluşturma 
+#  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Azure DevOps Projeleri ile Node. js için bir CI/CD işlem hattı oluşturma 
 
-Azure DevOps projeleri, Azure kaynaklarını oluşturan ve sürekli tümleştirme (CI) ve Node.js uygulamanızda Azure işlem hatları için sürekli teslim (CD) işlem hattı ayarlar basitleştirilmiş bir deneyim sunar.  
+Azure DevOps Projeleri, Azure kaynakları oluşturan ve Azure Pipelines ' de Node. js uygulamanız için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı ayarlayan basitleştirilmiş bir deneyim sunar.  
 
 Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) üzerinden ücretsiz edinebilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-DevOps projeleri, Azure işlem hatlarında bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluş oluşturun veya mevcut bir kuruluşa kullanın. DevOps projeleri, Azure kaynaklarını da tercih ettiğiniz bir Azure aboneliği oluşturur.
+DevOps Projeleri, Azure Pipelines bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps projeleri, Azure kaynaklarını da tercih ettiğiniz bir Azure aboneliği oluşturur.
 
 1. [Microsoft Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Sol bölmede seçin **kaynak Oluştur**ve ardından arama **DevOps projeleri**. 
+1. Sol bölmede, **kaynak oluştur**' u seçin ve ardından **DevOps Projeleri**arayın. 
 
     ![Sürekli Teslim yapılandırmasını başlatma](_img/azure-devops-project-nodejs/fullbrowser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Örnek uygulama ve Azure hizmeti seçme
 
-1. Node.js örnek uygulaması'nı seçin.  
+1. Node. js örnek uygulamasını seçin.  
     Node.js örnekleri birkaç uygulama çerçevesi seçeneği içerir.
 
-1. Varsayılan örnek Express.js çerçevedir. Varsayılan ayarı bırakın ve ardından **sonraki**.  
-    **Windows üzerinde Web App** varsayılan dağıtım hedefidir.  Daha önce seçtiğiniz uygulama çerçevesi, burada Azure hizmeti dağıtımı hedef türünü belirler.  
+1. Varsayılan örnek Framework Express. js ' dir. Varsayılan ayarı bırakın ve ardından **İleri**' yi seçin.  
+    **Windows üzerinde Web App** varsayılan dağıtım hedefidir.  Daha önce seçtiğiniz uygulama çerçevesi, burada kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler.  
 
-2. Varsayılan hizmet bırakın ve ardından **sonraki**.
+2. Varsayılan hizmeti bırakın ve ardından **İleri**' yi seçin.
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps ve Azure aboneliğinin yapılandırın 
 
-1. Yeni bir Azure DevOps kuruluş oluşturun veya mevcut bir kuruluşa seçin. 
+1. Yeni bir Azure DevOps organizasyonu oluşturun veya var olan bir kuruluşu seçin. 
 
-    a. Projeniz için bir ad seçin. 
+    a. Projeniz için bir ad girin.
 
-    b. Azure aboneliği ve konumu seçin, uygulamanız için bir ad seçin ve ardından **Bitti**.  
-    DevOps projeleri Pano, birkaç dakika sonra Azure portalında görüntülenir. Azure DevOps kuruluşunuzdaki bir depodaki örnek bir uygulama kümesi, bir derleme yürütülür ve uygulamanızı Azure'a dağıtılır. Bu pano, kod deposu, CI/CD işlem hattı ve uygulamanızı azure'da görünürlük sağlar.
+    b. Azure aboneliğinizi ve konumunuzu seçin, uygulamanız için bir ad girin ve **bitti**' yi seçin.  
+    Birkaç dakika sonra, DevOps Projeleri panosu Azure portal görüntülenir. Örnek uygulama, Azure DevOps kuruluşunuzda bir depoda ayarlanır, bir derleme yürütülür ve uygulamanız Azure 'a dağıtılır. Bu pano, kod deposu, CI/CD işlem hattı ve uygulamanızı azure'da görünürlük sağlar.
      
-3. Seçin **Gözat** çalışan uygulamanızı görüntülemek için.
+3. Çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
 
     ![Pano görünümü](_img/azure-devops-project-nodejs/dashboardnopreview.png) 
     
-DevOps projeleri otomatik olarak yapılandırılmış bir CI derleme ve yayın tetikleyicisi.  Artık en son iş web sitenizi otomatik olarak dağıtan bir CI/CD işlem ile bir Node.js uygulamasını bir ekip ile işbirliği yapmaya hazır.
+DevOps Projeleri bir CI derleme ve yayın tetikleyicisi otomatik olarak yapılandırıldı.  Artık en son çalışmalarınızı Web sitenize dağıtan bir CI/CD işlemiyle bir Node. js uygulamasında bir takımla işbirliği yapmaya hazırsınız.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Kod değişikliklerini işleme ve CI/CD’yi yürütme
 
-DevOps projeleri, Azure depoları veya GitHub Git deposu oluşturur. Depo görüntülemek ve uygulamanıza kod değişikliği yapmanız için aşağıdaki adımları uygulayın.
+DevOps Projeleri, Azure Repos veya GitHub 'da bir git deposu oluşturur. Depoyu görüntülemek ve uygulamanızda kod değişikliği yapmak için aşağıdaki adımları uygulayın.
 
-1. DevOps projeleri panosunun sol tarafta, ana dalınıza bağlantıyı seçin.  
+1. DevOps Projeleri panosunun sol tarafında, ana dalınızın bağlantısını seçin.  
 Bu bağlantı yeni oluşturulan Git deposuna bir görünüm açar.
 
-1. Depo kopya URL'si görüntülemek için seçin **kopya** üst sağında tarayıcı.   
+1. Depo kopyası URL 'sini görüntülemek için tarayıcının sağ üst köşesindeki **Kopyala** ' yı seçin.   
     Git deponuzu en sevdiğiniz IDE’de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişiklikleri yapıp doğrudan ana dala işlemek için web tarayıcısını kullanabilirsiniz.
 
-1. Tarayıcı sol tarafında Git **views/index.pug** dosya.
+1. Tarayıcının sol tarafında **Görünümler/index. Pug** dosyasına gidin.
 
-1. Seçin **Düzenle**, ardından H2 bölüm başlığı bir değişiklik yapın.  
-    Örneğin, **Azure DevOps Projesi ile hemen kullanmaya başlayın** yazın veya başka bir değişiklik yapın.
+1. **Düzenle**' yi seçin ve ardından H2 başlığında bir değişiklik yapın.  
+    Örneğin, **Azure DevOps Projeleri ile hemen kullanmaya** başlayın yazın veya başka bir değişiklik yapın.
 
 1. Seçin **işleme**ve ardından değişikliklerinizi kaydedin.
 
-1. Tarayıcınızda DevOps projeleri panoya gidin.   
-Devam eden bir yapı görmelisiniz. Yaptığınız değişiklikler otomatik olarak oluşturulur ve bir CI/CD işlem hattı dağıtılır.
+1. Tarayıcınızda DevOps Projeleri panosuna gidin.   
+Artık sürmekte olan bir derleme görmeniz gerekir. Yeni yaptığınız değişiklikler otomatik olarak bir CI/CD işlem hattı aracılığıyla oluşturulup dağıtılır.
 
 ## <a name="examine-the-azure-cicd-pipeline"></a>Azure CI/CD işlem hattını inceleme
 
-DevOps projeleri, önceki adımda, eksiksiz bir CI/CD işlem hattı otomatik olarak yapılandırılır. İşlem hattını gerektiği şekilde keşfedin ve özelleştirin. Derleme ile kendinizi alıştırın ve yayın işlem hatları için aşağıdaki adımları uygulayın.
+Önceki adımda, DevOps Projeleri otomatik olarak tam CI/CD işlem hattı yapılandırdı. İşlem hattını gerektiği şekilde keşfedin ve özelleştirin. Derleme ve yayın işlem hatları hakkında bilgi edinmek için aşağıdaki adımları uygulayın.
 
 1. DevOps projeleri panonun üst kısmında seçin **derleme işlem hatlarını**.  
-Bu bağlantı, bir tarayıcı sekmesi ve derleme işlem hattı yeni projeniz için açar.
+Bu bağlantı, yeni projeniz için bir tarayıcı sekmesi ve derleme işlem hattı açar.
 
-1. İşaret **durumu** alan ve ardından üç nokta (...) seçin.  
-    Bu eylem, yeni bir yapıyı kuyruğa, bir derleme duraklatma ve derleme işlem hattı düzenleme gibi birkaç etkinlik başlayabileceğiniz bir menü açılır.
+1. **Durum** alanını işaret edin ve ardından üç nokta (...) simgesini seçin.  
+    Bu eylem, yeni bir derlemeyi sıraya alma, bir derlemeyi duraklatma ve derleme işlem hattını düzenlemeyle çeşitli etkinlikleri başlatabileceğiniz bir menü açar.
 
 1. **Düzenle**’yi seçin.
 
 1. Bu bölmede, derleme işlem hattı için çeşitli görevleri inceleyebilirsiniz.  
-Derleme çeşitli Git deposundan kaynakları getirme gibi görevler gerçekleştirir, dağıtımları için kullanılan bağımlılıklarını geri yükleme ve yayımlama çıkarır.
+Derleme, git deposundan kaynak getirme, bağımlılıkları geri yükleme ve dağıtımlar için kullanılan çıkışları yayımlama gibi çeşitli görevler gerçekleştirir.
 
 1. Derleme işlem hattı üstünde derleme işlem hattı adı seçin.
 
@@ -113,11 +113,11 @@ Derleme çeşitli Git deposundan kaynakları getirme gibi görevler gerçekleşt
 1. **Saklama**’yı seçin.   
 Senaryonuza bağlı olarak, saklamak veya belirli bir sayıda derlemeleri kaldırmak için ilkeleri belirtebilirsiniz.
 
-1. Seçin **derleme ve yayın**ve ardından **yayınlar**.  
- DevOps projeleri, azure'da dağıtımlarını yönetmek için bir yayın ardışık düzeni oluşturur.
+1. **Build ve Release**' i seçin ve ardından **yayınlar**' ı seçin.  
+ DevOps Projeleri, Azure dağıtımlarını yönetmek için bir yayın işlem hattı oluşturur.
 
-1. Solda, yayın işlem hattınızı yanındaki üç nokta (...) seçin ve ardından **Düzenle**.  
-Sürüm ardışık yayın işlemini tanımlar.
+1. Sol tarafta, yayın işlem hattının yanındaki üç nokta (...) simgesini seçin ve ardından **Düzenle**' yi seçin.  
+Yayın işlem hattı yayın işlemini tanımlar.
 
 12. **Yapıtlar**’ın altında **Bırak**’ı seçin.  
     Önceki adımlarda incelediğiniz derleme işlem hattı, yapıt için kullanılan çıkışı üretir. 
@@ -127,7 +127,7 @@ Bu yayın işlem hattı yok her seferinde yeni bir derleme yapıtının kullanı
 
 
 1. Sol tarafta, seçin **görevleri**.   
-Dağıtım işleminizin gerçekleştiren etkinlikler görevlerdir. Bu örnekte, Azure App Service'e dağıtmak için bir görev oluşturulur.
+Dağıtım işleminizin gerçekleştiren etkinlikler görevlerdir. Bu örnekte, Azure App Service dağıtmak üzere bir görev oluşturulmuştur.
 
 
 1. Sağ tarafta seçin **yayınları görüntüleyebilir**.  
@@ -149,7 +149,7 @@ Azure App Service ve artık gerekmediğinde, oluşturduğunuz ilgili diğer kayn
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Derleme, CI/CD işlem yapılandırılmış ve yayın işlem hatları otomatik olarak oluşturulan. Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. CI/CD işlem hattı hakkında daha fazla bilgi için bkz:
+CI/CD işleminizi yapılandırdığınızda, derleme ve yayın işlem hatları otomatik olarak oluşturulmuştur. Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
 > [CD işlemini özelleştirme](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

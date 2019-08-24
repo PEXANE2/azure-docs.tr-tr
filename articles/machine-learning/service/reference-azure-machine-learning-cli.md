@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 05/02/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a82a44127a470b6366eeffc60c73f762d5a8f525
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348572"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996740"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için CLI uzantısını kullanma
 
@@ -112,7 +112,14 @@ Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakla
 
     Daha fazla bilgi için bkz. [az ml DataStore Attach-blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob).
 
-    
++ Dosyaları bir veri deposuna yükleyin.
+
+    ```azurecli-interactive
+    az ml datastore upload  -n datastorename -p sourcepath
+    ```
+
+    Daha fazla bilgi için bkz. [az ml DataStore upload](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload).
+
 + Bir AKS kümesini Işlem hedefi olarak ekleyin.
 
     ```azurecli-interactive
@@ -153,6 +160,42 @@ Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakla
     ```
 
     Daha fazla bilgi için bkz. [az ml deneme listesi](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+
+## <a name="environment-management"></a>Ortam yönetimi
+
+Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning hizmet [ortamlarının](how-to-configure-environment.md) nasıl oluşturulacağı, kaydedileceği ve listelebileceği gösterilmektedir:
+
++ Bir ortam için bir yapı iskelesi dosyaları oluşturun:
+
+    ```azurecli-interactive
+    az ml environment scaffold -n myenv -d myenvdirectory
+    ```
+
+    Daha fazla bilgi için bkz. [az ml Environment iskele](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold).
+
++ Bir ortamı kaydedin:
+
+    ```azurecli-interactive
+    az ml environment register -d myenvdirectory
+    ```
+
+    Daha fazla bilgi için bkz. [az ml Environment Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register).
+
++ Kayıtlı ortamları listeleyin:
+
+    ```azurecli-interactive
+    az ml environment list
+    ```
+
+    Daha fazla bilgi için bkz. [az ml Environment List](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list).
+
++ Kayıtlı bir ortamı indirin:
+
+    ```azurecli-interactive
+    az ml environment download -n myenv -d downloaddirectory
+    ```
+
+    Daha fazla bilgi için bkz. [az ml Environment Download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
 
 ## <a name="model-registration-profiling-deployment"></a>Model kaydı, profil oluşturma, dağıtım
 

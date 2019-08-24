@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616336"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992106"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleri (Önizleme) oluşturma ve erişme
 
@@ -26,7 +26,7 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
 * Veri kümeleri tarafından başvurulan **depolama alanındaki verilerin tek bir kopyasını saklayın** . 
 
-* Bağlantı dizesi veya veri yolu hakkında endişelenmeden **model eğitimi sırasında verilere kolayca erişin** .
+* Bağlantı dizeleri veya veri yolları hakkında endişelenmeden **model eğitimi sırasında verilere kolayca erişin** .
 
 * **Veri paylaşma & diğer kullanıcılarla işbirliği yapın** .
 
@@ -44,7 +44,8 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 > Bazı veri kümesi sınıflarının (Önizleme), [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca aşağıdaki dağıtımlarda desteklenir:  Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
 
 ## <a name="dataset-types"></a>Veri kümesi türleri
-Veri kümeleri, kullanıcıların eğitim aşamasında nasıl tükettiği hakkında çeşitli türlerde kategorilere ayrılır. Şu anda, belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eden Tabulardataset 'leri destekliyoruz. Bu, verileri bir Pandas DataFrame 'te yürütme yeteneği sağlar. TabularDataset CSV, TSV, Parquet dosyaları, SQL sorgu sonuçları vb. için oluşturulabilir. Listenin tamamı için lütfen belgelerimizi ziyaret edin.
+
+Veri kümeleri, kullanıcıların eğitim aşamasında nasıl tükettiği hakkında çeşitli türlerde kategorilere ayrılır. Şu anda, belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eden [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 'leri destekliyoruz. Bu, verileri bir Pandas DataFrame 'te yürütme yeteneği sağlar. CSV `TabularDataset` , TSV, Parquet dosyalarından bir nesne oluşturulabilir, SQL sorgu sonuçları vb. olabilir. Listenin tamamı için lütfen belgelerimizi ziyaret edin.
 
 Yaklaşan API değişiklikleri hakkında daha fazla bilgi edinmek için bkz. [Azure Machine Learning hizmeti nedir?](https://aka.ms/tabular-dataset) 
 
@@ -96,9 +97,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 | |Passengerıd|Kalan|PClass|Name|Komutu|Yaş|SibSp|Parch|Ticket|Tarifeli havayolu|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1\.|0|3|Braund, Mr. Owen HARRIS|erkek|22,0|1\.|0|A/5 21171|7,2500||P
+0|1\.|0|3|Braund, Mr. Owen HARRIS|erkek|22,0|1\.|0|A/5 21171|7,2500||S
 1\.|2|1\.|1\.|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1\.|0|BILGISAYAR 17599|71,2833|C85|C
-2|3|1\.|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||P
+2|3|1\.|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 ## <a name="register-datasets"></a>Veri kümelerini Kaydet
 
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>Eğitim sırasında verilerinize erişin
 
-Kayıtlı veri kümelerine, Azure Machine Learning işlem gibi işlem kümelerinde yerel olarak ve Uzaktan erişilebilir. Kayıtlı veri kümenize denemeleri üzerinden erişmek için, çalışma alanınızı ve kayıt kümenizi ada göre almak üzere aşağıdaki kodu kullanın. Sınıf üzerindeki yöntemi, varsayılan olarak çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. `get_by_name` `Dataset`
+Kayıtlı veri kümelerine, Azure Machine Learning işlem gibi işlem kümelerinde yerel olarak ve Uzaktan erişilebilir. Kayıtlı veri kümenize denemeleri üzerinden erişmek için, çalışma alanınızı ve kayıt kümenizi ada göre almak üzere aşağıdaki kodu kullanın. Sınıf üzerindeki yöntemi, varsayılan olarak çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) `Dataset`
 
 ```Python
 %%writefile $script_folder/train.py

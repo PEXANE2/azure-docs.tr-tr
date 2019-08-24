@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963458"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980490"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
@@ -35,7 +35,7 @@ Yeni bir ilke oluşturduğunuzda, hiçbir Kullanıcı, Grup, uygulama veya eriş
 
 İlkenizi çalışır hale getirmek için şunları yapılandırmanız gerekir:
 
-| Ne:           | Oluşturulacağı                                  | Kaydol |
+| Nesne           | Oluşturulacağı                                  | Kaydol |
 | :--            | :--                                  | :-- |
 | **Bulut uygulamaları** |Bir veya daha fazla uygulama seçin.  | Koşullu erişim ilkesinin hedefi, yetkili kullanıcıların bulut uygulamalarına nasıl erişebileceğini denetlemenize olanak sağlamaktır.|
 | **Kullanıcılar ve gruplar** | Seçtiğiniz bulut uygulamalarınıza erişim yetkisi olan en az bir kullanıcı veya grup seçin. | Hiçbir Kullanıcı ve grup atanmamış koşullu erişim ilkesi hiçbir şekilde tetiklenmez. |
@@ -87,7 +87,9 @@ Her oturum açma için, Azure Active Directory tüm ilkeleri değerlendirir ve k
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Koşullu erişim Exchange ActiveSync ile çalışıyor mu?
 
-Evet, bir koşullu erişim ilkesinde Exchange ActiveSync 'i bazı [sınırlamalar](block-legacy-authentication.md)ile kullanabilirsiniz. 
+Evet, Exchange ActiveSync 'i koşullu erişim ilkesinde kullanabilirsiniz.
+
+SharePoint Online ve Exchange Online gibi bazı bulut uygulamaları da eski kimlik doğrulama protokollerini destekler. Bir istemci uygulaması bir bulut uygulamasına erişmek için eski bir kimlik doğrulama protokolü kullanabilir, Azure AD bu erişim denemesinde koşullu erişim ilkesini zorunlu kılamaz. Bir istemci uygulamasının ilkelerin uygulanmasını atlamasını engellemek için, etkilenen bulut uygulamalarında yalnızca modern kimlik doğrulamayı etkinleştirip etkinleştiremeyeceğinizi denetlemeniz gerekir.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 uygulamalarıyla koşullu erişimi nasıl yapılandırmanız gerekir?
 

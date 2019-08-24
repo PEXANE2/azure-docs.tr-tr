@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898872"
+ms.locfileid: "69982706"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde desteklenen Kubernetes sürümleri
 
@@ -30,7 +30,6 @@ Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenin
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 Sürümdeki her bir sayı, önceki sürümle genel uyumluluğu gösterir:
@@ -39,7 +38,7 @@ Sürümdeki her bir sayı, önceki sürümle genel uyumluluğu gösterir:
 * Küçük sürümler, diğer küçük yayınlar ile geriye doğru uyumlu olan işlevsellik değişiklikleri yapıldığında değişir.
 * Geriye dönük olarak uyumlu hata düzeltmeleri yapıldığında düzeltme eki sürümleri değişir.
 
-Genel olarak, kullanıcılar çalıştırdıkları ikincil sürümün en son düzeltme eki sürümünü çalıştırmak için Endeavor gerekir. Örneğin, üretim kümeniz *1.13.6* üzerinde ise ve *1.13.7* *1,13* serisi için kullanılabilir en son düzeltme eki sürümündedir, kümenizin tamamen düzeltme eki uygulanmış ve desteklenen olduğundan emin olmak için *1.13.7* sürümüne yükseltmeniz gerekir.
+Genel olarak, kullanıcılar çalıştırdıkları ikincil sürümün en son düzeltme eki sürümünü çalıştırmak için Endeavor gerekir. Örneğin, üretim kümeniz *1.12.14* üzerinde ise ve *1.12.15* *1,12* serisi için kullanılabilir en son düzeltme eki sürümündedir , kümenizin tamamen düzeltme eki uygulanmış ve desteklenen olduğundan emin olmak için *1.12.15* sürümüne yükseltmeniz gerekir.
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes sürüm destek ilkesi
 
@@ -98,7 +97,7 @@ New Supported Version List
 > [!NOTE]
 > Müşteriler küme oluşturmayı, CI 'yi veya diğer otomatikleştirilmiş işleri Belirli bir düzeltme eki yayınlarına sabitleyemez. 
 
-### <a name="communications"></a>İletişim
+### <a name="communications"></a>Haberleşme
 
 * Kubernetes 'in yeni **İkincil** sürümleri için
   * Tüm kullanıcılar, yeni sürümden ve hangi sürümün kaldırılabileceği herkese açık bir şekilde bildirilir.

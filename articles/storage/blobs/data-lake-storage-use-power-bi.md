@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855478"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991569"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Azure Data Lake Storage 2. Power BI kullanarak verileri çözümleme
 
@@ -39,13 +39,13 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     ![Veri Al sayfası](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. **Azure Data Lake Storage 2.** iletişim kutusunda, dosya sistemi uç noktası biçimini kullanarak Azure Data Lake Storage 2. hesabınızın, dosya FileSystem veya alt klasörünün URL 'sini sağlayabilirsiniz. Data Lake Storage 2. URL 'leri aşağıdaki düzene `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` sahiptir ve ardından **Tamam**' a tıklayın.
+4. **Azure Data Lake Storage 2.** iletişim kutusunda, kapsayıcı uç nokta biçimini kullanarak Azure Data Lake Storage 2. hesabınıza, dosya sistemine veya alt klasörüne URL sağlayabilirsiniz. Data Lake Storage 2. URL 'leri aşağıdaki düzene `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` sahiptir ve ardından **Tamam**' a tıklayın.
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 
 5. Sonraki iletişim kutusunda, depolama hesabınızda oturum açmak için **oturum aç** ' a tıklayın. Kuruluşunuzun oturum açma sayfasına yönlendirilirsiniz. Hesapta oturum açmak için istemleri izleyin.
 
-    ![Sayfada oturum aç](media/data-lake-storage-use-power-bi/sign-in.png)
+    ![Oturum açma sayfası](media/data-lake-storage-use-power-bi/sign-in.png)
 
 6. Başarıyla oturum açtıktan sonra **Bağlan**' a tıklayın.
 

@@ -1,5 +1,5 @@
 ---
-title: Derin öğrenme ve makine öğrenimi ile giriş
+title: Derin öğrenme ve makine öğrenimi karşılaştırması
 titleSuffix: Azure Machine Learning service
 description: Derin öğrenme ve makine öğrenimi arasındaki ilişki ve yapay zeka kategorisine nasıl uyum sağladığını öğrenin. Bu makalede sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmini gibi derin öğrenme senaryoları nasıl çözeceği açıklanmaktadır.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934285"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982802"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimine giriş
+# <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
 
 Bu makale, derin öğrenme ile makine öğrenimi arasındaki ilişkiyi anlamanıza yardımcı olur. İki kavramın nasıl karşılaştırılacağını ve yapay zeka 'nın daha geniş kategorisine nasıl uyduğunu öğreneceksiniz. Son olarak, makalede sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmini gibi gerçek dünyada senaryolar için derin öğrenmenin nasıl uygulanabileceğini açıklanmaktadır.
 

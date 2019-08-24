@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
-ms.translationtype: MT
+ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017802"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981411"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli
 Bu makalede, bugün Microsoft Azure tarafından sunulan iki kuyruk türü arasındaki farklılıklar ve benzerlikler analiz edilir: Depolama kuyrukları ve Service Bus kuyrukları. Bu bilgileri kullanarak, ilgili teknolojileri karşılaştırabilir ve gereksinimlerinize en uygun çözümü seçerken daha bilinçli kararlar verebilirsiniz.
@@ -68,7 +68,7 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 | Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |
 | --- | --- | --- |
 | Sipariş garantisi |**Hayır** <br/><br>Daha fazla bilgi için "ek bilgiler" bölümündeki ilk nota bakın.</br> |**Evet-Ilk çıkar (FıFO)**<br/><br>(mesajlaşma oturumlarının kullanımı aracılığıyla) |
-| Teslimat garantisi |**En az bir kez** |**En az bir kez**<br/><br/>**En çok bir kez** |
+| Teslimat garantisi |**En az bir kez** |En **az bir kez** (PeekLock alma modunu kullanarak-bu varsayılandır) <br/><br/>**En çok bir kez** (ReceiveAndDelete alma modunu kullanarak) <br/> <br/> Çeşitli [alma modları](service-bus-queues-topics-subscriptions.md#receive-modes) hakkında daha fazla bilgi edinin  |
 | Atomik işlem desteği |**Hayır** |**Evet**<br/><br/> |
 | Alma davranışı |**Engellenmeyen**<br/><br/>(yeni bir ileti bulunmazsa hemen tamamlanır) |**Zaman aşımı ile/olmadan engelleme**<br/><br/>(uzun yoklama sağlar veya ["Comet tekniği"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Engellenmeyen**<br/><br/>(yalnızca .NET yönetilen API kullanımı aracılığıyla) |
 | Gönderme stili API 'SI |**Hayır** |**Evet**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) ve **OnMessage** oturumları .NET API 'si. |

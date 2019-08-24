@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 27a675982711f8d8f0b36ea0cc2600de45e97a6e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c96c8ef5e5bd9758cf270946da1e90bb12e8bca0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348465"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997998"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
 
@@ -127,26 +127,27 @@ Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu ad
     ```
     Bu örnekte, bağlı işletim sistemi diski F sürücüsüdür. doğru sürücü harfini kullandığınızdan emin olun. 
 
-    - Diskin kilidi, BEK anahtarı kullanılarak başarıyla açıldı. çözülebileceğiniz BitLocker sorununu ele alabiliriz. 
+8. BEK anahtarı kullanılarak diskin kilidi başarıyla açıldıktan sonra, diski kurtarma VM 'sinden ayırın ve ardından bu yeni işletim sistemi diskini kullanarak VM 'yi yeniden oluşturun.
 
-    - BEK anahtarının kullanılması diskin kilidini açmadığından, aşağıdaki komutu çalıştırarak BitLocker 'ı geçici olarak devre dışı bırakmak için korumayı Beklet ' i kullanabilirsiniz.
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Sanal makineyi dydıtem diskini kullanarak yeniden derleyecekseniz sürücünün tam olarak şifresinin çözülmesi gerekir. Bunu yapmak için aşağıdaki komutu çalıştırın:
+    > [!NOTE]
+    > Disk şifrelemesi kullanan VM 'Lerde işletim sistemi diskini değiştirme desteklenmez.
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  Diski Kurtarma VM 'sinden ayırın ve ardından diski etkilenen VM 'ye bir sistem diski olarak yeniden ekleyin. Daha fazla bilgi için bkz. [bir kurtarma VM 'sine işletim sistemi diski ekleyerek bir Windows sanal makinesi sorunlarını giderme](troubleshoot-recovery-disks-windows.md).
+9. Yeni VM hala normal olarak önyüklenemediğinde, sürücünün kilidini açtıktan sonra aşağıdaki adımlardan birini deneyin:
+
+    - Aşağıdakileri çalıştırarak BitLocker 'ı geçici olarak devre dışı bırakmak için korumayı askıya alın:
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - Sürücünün şifresini tamamen çözün. Bunu yapmak için aşağıdaki komutu çalıştırın:
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Anahtar şifreleme anahtarı senaryosu
 
 Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
 
 1. Oturum açmış kullanıcı hesabının, Kullanıcı Key Vault erişim ilkelerinde "sarmalanmamış" iznini gerektirdiğinden emin olun **| Anahtar izinleri | Şifreleme Işlemleri | Anahtar sarmalaması geri alınıyor**.
-2. Aşağıdaki komut dosyalarını bir öğesine kaydedin. PS1 dosyası:
+2. Aşağıdaki betiği bir dosyasına kaydedin. PS1 dosyası:
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +185,7 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -231,7 +233,7 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Parametreleri ayarlayın. Betik, BEK anahtarını oluşturmak için KEK parolasını işleyecek ve ardından kurtarma sanal makinesinde yerel bir klasöre kaydetmeyecektir.
+3. Parametreleri ayarlayın. Betik, BEK anahtarını oluşturmak için KEK parolasını işleyecek ve ardından kurtarma sanal makinesinde yerel bir klasöre kaydetmeyecektir. Betiği çalıştırdığınızda hata alırsanız, [komut dosyası sorun giderme](#script-troubleshooting) bölümüne bakın.
 
 4. Komut dosyası başladığında aşağıdaki çıktıyı görürsünüz:
 
@@ -254,17 +256,38 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
     ```
     Bu örnekte, bağlı işletim sistemi diski F sürücüsüdür. doğru sürücü harfini kullandığınızdan emin olun. 
 
-    - Diskin kilidi, BEK anahtarı kullanılarak başarıyla açıldı. çözülebileceğiniz BitLocker sorununu ele alabiliriz. 
+6. BEK anahtarı kullanılarak diskin kilidi başarıyla açıldıktan sonra, diski kurtarma VM 'sinden ayırın ve ardından bu yeni işletim sistemi diskini kullanarak VM 'yi yeniden oluşturun. 
 
-    - BEK anahtarının kullanılması diskin kilidini açmadığından, aşağıdaki komutu çalıştırarak BitLocker 'ı geçici olarak devre dışı bırakmak için korumayı Beklet ' i kullanabilirsiniz.
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Sanal makineyi dydıtem diskini kullanarak yeniden derleyecekseniz sürücünün tam olarak şifresinin çözülmesi gerekir. Bunu yapmak için aşağıdaki komutu çalıştırın:
+    > [!NOTE]
+    > Disk şifrelemesi kullanan VM 'Lerde işletim sistemi diskini değiştirme desteklenmez.
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. Yeni VM hala normal olarak önyüklenemediğinde, sürücünün kilidini açtıktan sonra aşağıdaki adımlardan birini deneyin:
 
-6. Diski Kurtarma VM 'sinden ayırın ve ardından diski etkilenen VM 'ye bir sistem diski olarak yeniden ekleyin. Daha fazla bilgi için bkz. [bir kurtarma VM 'sine işletim sistemi diski ekleyerek bir Windows sanal makinesi sorunlarını giderme](troubleshoot-recovery-disks-windows.md).
+    - Aşağıdaki komutu çalıştırarak BitLocker 'ı geçici olarak devre dışı bırakmak için korumayı askıya alın:
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - Sürücünün şifresini tamamen çözün. Bunu yapmak için aşağıdaki komutu çalıştırın:
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>Betik sorunlarını giderme
+
+**Hata: Dosya veya derleme yüklenemedi**
+
+ADAL derlemelerinin yollarının yanlış olduğu için bu hata oluşur. AZ Module yalnızca geçerli kullanıcı için yüklüyse, ADAL derlemeleri içinde `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`bulunur.
+
+Ayrıca, doğru yolu bulmak `Az.Accounts` için klasör araması yapabilirsiniz.
+
+**Hata: Get-AzKeyVaultSecret veya Get-AzKeyVaultSecret bir cmdlet 'in adı olarak tanınmıyor**
+
+Eski az PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultSecret` ve ile `Get-AzureKeyVaultSecret`değiştirmeniz gerekir.
+
+**Parametre örnekleri**
+
+| Parametreler  | Değer örneği  |Açıklamalar   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | Anahtarı depolayan anahtar kasasının adı |
+|$kekName   |MyKey   | VM 'yi şifrelemek için kullanılan anahtarın adı|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM anahtarının gizli anahtar adı|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. BEK |BEK dosyası yazmak için yol.|
+|$adTenant  |contoso.onmicrosoft.com   | Anahtar kasasını barındıran Azure Active Directory FQDN veya GUID 'SI |

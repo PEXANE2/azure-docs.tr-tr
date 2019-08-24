@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016063"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991883"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
 
@@ -31,11 +31,11 @@ Bir güvenlik grubuna izinler atandıktan sonra, gruptan kullanıcı ekleme veya
 
 ### <a name="security-for-groups"></a>Gruplar için güvenlik
 
-Siz veya kullanıcılarınızın hiyerarşik ad alanı etkinleştirilmiş bir depolama hesabındaki verilere erişmesi gerektiğinde, Azure Active Directory güvenlik grupları kullanmak en iyisidir. İle başlamak için önerilen bazı gruplar, dosya sisteminin köküne yönelik olarak **Readonlyusers**, **Writeaccessusers**ve **fullaccessusers** olabilir ve hatta anahtar alt dizinleri için ayrı ayrı olabilir. Daha sonra eklenebilen ancak henüz tanımlanmayan başka bir Kullanıcı grubu varsa, belirli klasörlere erişimi olan kukla güvenlik grupları oluşturmayı düşünebilirsiniz. Güvenlik grubunun kullanılması, binlerce dosyaya yeni izinler atarken uzun işlem süresini önlemenize olanak sağlar.
+Siz veya kullanıcılarınızın hiyerarşik ad alanı etkinleştirilmiş bir depolama hesabındaki verilere erişmesi gerektiğinde, Azure Active Directory güvenlik grupları kullanmak en iyisidir. İle başlamak için önerilen bazı gruplar, kapsayıcının köküne yönelik olarak **Readonlyusers**, **Writeaccessusers**ve **fullaccessusers** olabilir ve hatta anahtar alt dizinlerindekiler için ayrı ayrı olabilir. Daha sonra eklenebilen ancak henüz tanımlanmayan başka bir Kullanıcı grubu varsa, belirli klasörlere erişimi olan kukla güvenlik grupları oluşturmayı düşünebilirsiniz. Güvenlik grubunun kullanılması, binlerce dosyaya yeni izinler atarken uzun işlem süresini önlemenize olanak sağlar.
 
 ### <a name="security-for-service-principals"></a>Hizmet sorumluları için güvenlik
 
-Azure Active Directory hizmet sorumluları, genellikle Data Lake Storage 2. verilere erişmek için Azure Databricks gibi hizmetler tarafından kullanılır. Birçok müşteri için, tek bir Azure Active Directory hizmet sorumlusu yeterli olabilir ve Data Lake Storage 2. dosya sisteminin kökünde tam izinlere sahip olabilir. Diğer müşteriler, bir kümenin verilere tam erişimi olan ve yalnızca okuma erişimi olan başka bir kümenin olduğu farklı hizmet ilkelerine sahip birden çok küme gerektirebilir. 
+Azure Active Directory hizmet sorumluları, genellikle Data Lake Storage 2. verilere erişmek için Azure Databricks gibi hizmetler tarafından kullanılır. Birçok müşteri için, tek bir Azure Active Directory hizmet sorumlusu yeterli olabilir ve Data Lake Storage 2. kapsayıcısının kökünde tam izinlere sahip olabilir. Diğer müşteriler, bir kümenin verilere tam erişimi olan ve yalnızca okuma erişimi olan başka bir kümenin olduğu farklı hizmet ilkelerine sahip birden çok küme gerektirebilir. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 2. güvenlik duvarını etkinleştirme
 

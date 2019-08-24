@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571503"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982671"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>Rol tabanlı Access Control (RBAC) ve Privileged Identity Management (PıM)
 
@@ -27,7 +27,7 @@ Yüksek düzeyde RBAC uygulamak için üç bileşen gerekir:
 
 ![RBAC-genel bakış](media/rbac-overview.png)
 
-* **Güvenlik sorumluları**: Bir güvenlik sorumlusu aşağıdakilerden herhangi biri olabilir; Kullanıcı, Grup, [hizmet sorumluları veya [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Güvenlik sorumlularına Azure Active Directory grupları kullanılarak ayrıcalıklar atanmalıdır.
+* **Güvenlik sorumluları**: Bir güvenlik sorumlusu aşağıdakilerden herhangi biri olabilir; bir Kullanıcı, Grup, [hizmet sorumlusu](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)veya [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Güvenlik sorumlularına Azure Active Directory grupları kullanılarak ayrıcalıklar atanmalıdır.
 
 * **Rol tanımları**: Rol olarak da adlandırılan bir rol tanımı, izin koleksiyonudur. Bu izinler, rol tanımına atanan güvenlik sorumluları tarafından gerçekleştirilebilecek işlemleri tanımlar. Bu işlevsellik, Azure Kaynak rolleri ve Azure Active Directory yönetici rolleri tarafından sağlanır. Azure, özel rollerle genişletilebilir bir dizi yerleşik rol (bağlantı) ile birlikte gelir.
 

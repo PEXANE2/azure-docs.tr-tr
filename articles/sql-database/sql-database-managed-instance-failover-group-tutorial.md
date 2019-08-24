@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624979"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981380"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: Yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
@@ -26,7 +26,7 @@ Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makale
 > [!div class="checklist"]
 > - Birincil yönetilen örnek oluşturma
 > - Bir [Yük devretme grubunun](sql-database-auto-failover-group.md)parçası olarak ikincil bir yönetilen örnek oluşturun. 
-> - Test yük devretmesi
+> - Yük devretme testi
 
   > [!NOTE]
   > Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [yönetilen örnek yönetimi işlemleri](sql-database-managed-instance.md#managed-instance-management-operations). Yönetilen örneklerle yük devretme gruplarının kullanılması şu anda önizlemededir. 
@@ -47,7 +47,7 @@ Bu adımda, Azure portal kullanarak yük devretme grubunuz için kaynak grubunu 
 1. **SQL yönetilen örnek** oluşturma sayfasını başlatmak için **Oluştur** ' u seçin. 
 1. **Azure SQL veritabanı yönetilen örneği oluştur** sayfasında, **temel bilgiler** sekmesinde
     1. **Proje ayrıntıları**' nın altında, açılır listeden **aboneliğinizi** seçin ve ardından yeni kaynak grubu **oluşturmayı** seçin. Kaynak grubunuz `myResourceGroup`için gibi bir ad yazın. 
-    1. **Yönetilen örnek ayrıntıları**' nın altında, yönetilen örneğinizin adını ve yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. [Eşleştirilmiş bölge](/azure/best-practices-availability-paired-regions)içeren bir bölge seçtiğinizden emin olun. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
+    1. **Yönetilen örnek ayrıntıları**' nın altında, yönetilen örneğinizin adını ve yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
     1. **Yönetici hesabı**altında, gibi bir yönetici oturum açma `azureuser`ve karmaşık yönetici parolası sağlayın. 
 
     ![Birincil mı oluştur](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +79,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
     | **Name** |  İkincil yönetilen örnek tarafından kullanılacak sanal ağın adı (gibi `vnet-sql-mi-secondary`). |
     | **Adres alanı** | Sanal ağınız `10.128.0.0/16`için gibi adres alanı. | 
     | **Abonelik** | Birincil yönetilen örneğinizin ve kaynak grubunuzun bulunduğu abonelik. |
-    | **Bölge** | İkincil yönetilen örneğinizi dağıtacağınız konum; Bu, birincil yönetilen örneğe [eşlenmiş bir bölgede](/azure/best-practices-availability-paired-regions) olmalıdır.  |
+    | **Bölge** | İkincil yönetilen örneğinizi dağıtacağınız konum. |
     | **Alt ağ** | Alt ağınızın adı. `default`Varsayılan olarak sizin için sağlanır. |
     | **Adres aralığı**| Alt ağınızın adres aralığı. Bunun gibi, `10.128.0.0/24`birincil yönetilen örneğinizin sanal ağı tarafından kullanılan alt ağ adres aralığından farklı olması gerekir.  |
     | &nbsp; | &nbsp; |
@@ -92,7 +92,6 @@ Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu
 
 İkinci yönetilen örneğiniz şunları sağlamalıdır:
 - Boş olmalıdır. 
-- Birincil yönetilen örneğine karşılık gelen bir [eşleştirilmiş bölge](/azure/best-practices-availability-paired-regions) içinde yer alır. 
 - Birincil yönetilen örnekten farklı bir alt ağa ve IP aralığına sahip olmak. 
 
 İkincil yönetilen örneğinizi oluşturmak için aşağıdaki adımları izleyin: 
@@ -108,7 +107,7 @@ Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Kaynak grubu**| Birincil yönetilen örneğinizin bulunduğu kaynak grubu. |
     | **Yönetilen örnek adı** | Yeni ikincil yönetilen örneğinizin adı, örneğin`sql-mi-secondary`  | 
-    | **Bölge**| İkincil yönetilen örneğinizin [eşleştirilmiş bölge](/azure/best-practices-availability-paired-regions) konumu.  |
+    | **Bölge**| İkincil yönetilen örneğinizin konumu.  |
     | **Yönetilen örnek yöneticisi oturum açma** | Yeni ikincil yönetilen örneğiniz `azureuser`için kullanmak istediğiniz oturum açma gibi. |
     | **Parola** | Yeni ikincil yönetilen örnek için yönetici oturumu tarafından kullanılacak karmaşık bir parola.  |
     | &nbsp; | &nbsp; |
@@ -253,7 +252,7 @@ Bu öğreticide, iki yönetilen örnek arasında bir yük devretme grubu yapıla
 > [!div class="checklist"]
 > - Birincil yönetilen örnek oluşturma
 > - Bir [Yük devretme grubunun](sql-database-auto-failover-group.md)parçası olarak ikincil bir yönetilen örnek oluşturun. 
-> - Test yük devretmesi
+> - Yük devretme testi
 
 Yönetilen örneğinizle bağlantı kurmak ve yönetilen örneğiniz için bir veritabanını geri yüklemek için bir sonraki hızlı başlangıca ilerleyin: 
 

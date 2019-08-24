@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877579"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981087"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -53,7 +53,7 @@ Ham hata örneği:
 
 **Sağlamak** Oturum açmış olan kullanıcıya Azure Active Directory, TenantCreator rolü atanmaz.
 
-**Onar** [Azure Active Directory kiracınızdaki bir kullanıcıya TenantCreator uygulama rolünü atama](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant)bölümündeki yönergeleri izleyin. Yönergeleri tamamladıktan sonra, TenantCreator rolüne atanan bir Kullanıcı olacaktır.
+**Onar** [Azure Active Directory kiracınızdaki bir kullanıcıya TenantCreator uygulama rolünü atama](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)bölümündeki yönergeleri izleyin. Yönergeleri tamamladıktan sonra, TenantCreator rolüne atanan bir Kullanıcı olacaktır.
 
 ![Atanan TenantCreator rolü ekran görüntüsü.](media/TenantCreatorRoleAssigned.png)
 
@@ -314,7 +314,7 @@ Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcı Azure Multi-Factor Authentication (MFA) gerektirir
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcı Azure Multi-Factor Authentication (MFA) gerektiriyor
 
 ![Çok faktörlü kimlik doğrulaması (MFA) olmadığından dağıtımınızın ekran görüntüsü başarısız oldu](media/MFARequiredError.png)
 

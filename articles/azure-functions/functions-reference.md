@@ -1,23 +1,20 @@
 ---
 title: Azure Işlevleri geliştirmeye yönelik kılavuz | Microsoft Docs
 description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri geliştirmek için ihtiyacınız olan Azure Işlevleri kavramlarını ve tekniklerini öğrenin.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Geliştirici Kılavuzu, Azure işlevleri, işlevler, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874967"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982645"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Işlevleri Geliştirici Kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -44,7 +41,7 @@ Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yap
 }
 ```
 
-Daha fazla örnek için bkz. [function. JSON wiki sayfası](https://github.com/Azure/azure-functions-host/wiki/function.json).
+Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
 `bindings` Özelliği, hem Tetikleyicileri hem de bağlamaları yapılandırdığınız yerdir. Her bağlama birkaç ortak ayarı ve belirli bir bağlama türüne özgü bazı ayarları paylaşır. Her bağlama için aşağıdaki ayarlar gereklidir:
 
@@ -55,7 +52,7 @@ Daha fazla örnek için bkz. [function. JSON wiki sayfası](https://github.com/A
 | `name` |dize |İşlevdeki bağlantılı veriler için kullanılan ad. İçin C#bu bir bağımsız değişken adıdır; JavaScript için anahtar/değer listesindeki anahtardır. |
 
 ## <a name="function-app"></a>İşlev uygulaması
-Bir işlev uygulaması, Azure 'da işlevlerinizin çalıştırıldığı bir yürütme bağlamı sağlar. İşlev uygulaması, yönetilen, dağıtılan ve birlikte ölçeklenen bir veya daha fazla bağımsız işlevden oluşur. Bir işlev uygulamasındaki tüm işlevler aynı fiyatlandırma planını, sürekli dağıtımı ve çalışma zamanı sürümünü paylaşır. İşlev uygulamasını, işlevlerinizi düzenlemek ve topluca yönetmek için bir yol olarak düşünün. 
+Bir işlev uygulaması, Azure 'da işlevlerinizin çalıştırıldığı bir yürütme bağlamı sağlar. Bu nedenle, işlevleriniz için dağıtım ve yönetim birimidir. İşlev uygulaması, yönetilen, dağıtılan ve birlikte ölçeklenen bir veya daha fazla bağımsız işlevden oluşur. Bir işlev uygulamasındaki tüm işlevler aynı fiyatlandırma planı, dağıtım yöntemi ve çalışma zamanı sürümünü paylaşır. İşlev uygulamasını, işlevlerinizi düzenlemek ve topluca yönetmek için bir yol olarak düşünün. Daha fazla bilgi için bkz. [bir işlev uygulamasını yönetme](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
 > Bir işlev uygulamasındaki tüm işlevlerin aynı dilde yazılması gerekir. Azure Işlevleri çalışma zamanının [önceki sürümlerinde](functions-versions.md) bu gerekli değildir.

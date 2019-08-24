@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897650"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997959"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modelleri dağıtma
 
@@ -416,7 +416,20 @@ def run(request):
 
 Çıkarım yapılandırması, tahmine dayalı hale getirmek üzere modelin nasıl yapılandırılacağını açıklar. Bu yapılandırma, giriş betiğinizin bir parçası değil; Giriş betiğine başvurur ve dağıtım için gerekli tüm kaynakları bulmak için kullanılır. Daha sonra modeli dağıtmada kullanılır.
 
-Aşağıdaki örnek, bir çıkarım yapılandırmasının nasıl oluşturulacağını gösterir. Bu yapılandırma, çalışma zamanını, giriş betiğini ve (isteğe bağlı olarak) Conda ortam dosyasını belirtir:
+Çıkarım yapılandırması, dağıtımınız için gereken yazılım bağımlılıklarını tanımlamak için Azure Machine Learning ortamlar kullanabilir. Ortamlar, eğitim ve dağıtım için gereken yazılım bağımlılıklarını oluşturmanıza, yönetmenize ve yeniden kullanmanıza olanak tanır. Aşağıdaki örnek, çalışma alanınızdan bir ortamı yüklemeyi ve ardından çıkarım yapılandırmasıyla kullanmayı gösterir:
+
+```python
+from azureml.core import Environment
+from azureml.core.model import InferenceConfig
+
+deploy_env = Environment.get(workspace=ws,name="myenv",version="1")
+inference_config = InferenceConfig(entry_script="x/y/score.py",
+                                   environment=deploy_env)
+```
+
+Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
+
+Ayrıca, bir ortamı kullanmadan bağımlılıkları doğrudan belirtebilirsiniz. Aşağıdaki örnek, bir Conda dosyasından yazılım bağımlılıklarını yükleyen bir çıkarım yapılandırmasının nasıl oluşturulacağını gösterir:
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -468,10 +481,40 @@ Yerel, ACI ve AKS Web Hizmetleri için bu sınıfların her biri, öğesinden `a
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-> [!TIP]
-> Modelinizi bir hizmet olarak dağıtmadan önce en iyi CPU ve bellek gereksinimlerini öğrenmek için profili oluşturmanız gerekebilir. SDK ya da CLı kullanarak modelinize profil oluşturabilirsiniz. Daha fazla bilgi için [profile ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) ve [az ml model profil](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) başvurusuna bakın.
->
-> Model profil oluşturma sonuçları bir `Run` nesne olarak yayınlanır. Daha fazla bilgi için bkz. [Modelprofile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) sınıf başvurusu.
+#### <a name="profiling"></a>Profil Oluşturma
+
+Modelinizi bir hizmet olarak dağıtmadan önce en iyi CPU ve bellek gereksinimlerini öğrenmek için profili oluşturmanız gerekebilir. SDK ya da CLı kullanarak modelinize profil oluşturabilirsiniz. Aşağıdaki örneklerde SDK 'dan profil oluşturma işleminin nasıl kullanılacağı gösterilmektedir:
+
+> [!IMPORTANT]
+> Profil oluşturma kullanılırken, sağladığınız çıkarım yapılandırması bir Azure Machine Learning ortamına başvuramaz. Bunun yerine, `conda_file` `InferenceConfig` nesnenin parametresini kullanarak yazılım bağımlılıklarını tanımlayın.
+
+```python
+import json
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10]
+]})
+
+profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
+profile.wait_for_profiling(true)
+profiling_results = profile.get_results()
+print(profiling_results)
+```
+
+Bu kod, aşağıdaki metne benzer bir sonuç görüntüler:
+
+```python
+{'cpu': 1.0, 'memoryInGB': 0.5}
+```
+
+Model profil oluşturma sonuçları bir `Run` nesne olarak yayınlanır.
+
+CLı 'dan profil oluşturmayı kullanma hakkında daha fazla bilgi için, bkz. [az ml model profili](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
+
+Daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
+
+* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
+* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--model~s--inference-config--input-data-)
+* [Çıkarım yapılandırma dosyası şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Hedefe dağıt
 
@@ -742,7 +785,136 @@ Daha fazla örnek proje ve örnek için aşağıdaki örnek depolara bakın:
 * [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="package-models"></a>Paket modelleri
+
+Bazı durumlarda, modeli dağıtmadan bir Docker görüntüsü oluşturmak isteyebilirsiniz. Örneğin, [Azure App Service dağıtım için](how-to-deploy-app-service.md)plan yaptığınızda. Ya da görüntüyü indirmek ve yerel bir Docker yüklemesi üzerinde çalıştırmak isteyebilirsiniz. Görüntüyü oluşturmak, incelemek, onları değiştirmek ve el ile oluşturmak için kullanılan dosyaları da indirmek isteyebilirsiniz.
+
+Model paketleme, her ikisini de yapmanızı sağlar. Bir modeli Web hizmeti olarak barındırmak için gereken tüm varlıkları paketler ve tamamen oluşturulmuş bir Docker görüntüsünü ya da bir tane oluşturmak için gereken dosyaları indirmelerini sağlar. Model paketlemeyi kullanmanın iki yolu vardır:
+
+* __Paketlenmiş modeli indir__: Modeli ve bir Web hizmeti olarak barındırmak için gereken diğer dosyaları içeren bir Docker görüntüsü indirirler.
+* __Dockerfile oluştur__: Dockerfile, model, giriş betiği ve bir Docker görüntüsü oluşturmak için gereken diğer varlıkları indirirler. Daha sonra, görüntüyü yerel olarak oluşturmadan önce dosyaları inceleyebilir veya değişiklik yapabilirsiniz.
+
+Her iki paket de yerel bir Docker görüntüsü almak için kullanılabilir. 
+
+> [!TIP]
+> Bir paket oluşturmak, kayıtlı bir model ve çıkarım yapılandırması kullandığından model dağıtmaya benzer.
+
+> [!IMPORTANT]
+> Tamamen oluşturulmuş bir görüntüyü indirme ya da yerel olarak görüntü oluşturma gibi işlevler, geliştirme ortamınızda çalışan bir [Docker](https://www.docker.com) yüklemesi gerektirir.
+
+### <a name="download-a-packaged-model"></a>Paketlenmiş model indirme
+
+Aşağıdaki örnek, çalışma alanınız için Azure Container Registry kayıtlı olan bir görüntünün nasıl oluşturulacağını gösterir:
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz `package.pull()` . Bu komutun çıktısı görüntünün adını görüntüler. Örneğin: `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. İndirdikten sonra, yerel `docker images` görüntüleri listelemek için komutunu kullanın:
+
+```text
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+```
+
+Bu görüntüyü kullanarak yerel bir kapsayıcı başlatmak için, Shell veya komut satırından adlandırılmış bir kapsayıcı başlatmak üzere aşağıdaki komutu kullanın. Değeri, `docker images` komuttan döndürülen görüntü kimliğiyle değiştirin: `<imageid>`
+
+```bash
+docker run -p 6789:5001 --name mycontainer <imageid>
+```
+
+Bu komut, adlı `myimage`görüntünün en son sürümünü başlatır. 6789 yerel bağlantı noktasını, Web hizmetinin dinlediği kapsayıcıda bağlantı noktasına eşler (5001). Ayrıca, bu adı `mycontainer` kapsayıcıya atar ve bu da daha kolay durmayı kolaylaştırır. Başlatıldıktan sonra istekleri `http://localhost:6789/score`gönderebilirsiniz.
+
+### <a name="generate-dockerfile-and-dependencies"></a>Dockerfile ve bağımlılıkları oluştur
+
+Aşağıdaki örnek, resmi yerel olarak derlemek için gereken dockerfile, model ve diğer varlıkların nasıl indirileceğini gösterir. `generate_dockerfile=True` Parametresi, tam olarak oluşturulmuş bir görüntü değil, dosyaları istediğinizi gösterir:
+
+```python
+package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
+package.wait_for_creation(show_output=True)
+# Download the package
+package.save("./imagefiles")
+# Get the Azure Container Registry that the model/dockerfile uses
+acr=package.get_container_registry()
+print("Address:", acr.address)
+print("Username:", acr.username)
+print("Password:", acr.password)
+```
+
+Bu kod, görüntüyü `imagefiles` dizine oluşturmak için gereken dosyaları indirir. Kayıt dosyalarında bulunan dockerfile, Azure Container Registry depolanan bir temel görüntüye başvurur. Yerel Docker yüklemenizde görüntü oluştururken, bu kayıt defterine kimlik doğrulamak için adresi, Kullanıcı adını ve parolayı kullanmanız gerekir. Yerel bir Docker yüklemesi kullanarak görüntüyü derlemek için aşağıdaki adımları kullanın:
+
+1. Bir kabuk veya komut satırı oturumundan, Azure Container Registry ile Docker kimlik doğrulaması yapmak için aşağıdaki komutu kullanın. , `<address>` Ve`<username>` değerlerinikullanılarak`package.get_container_registry()`alınan değerlerle değiştirin: `<password>`
+
+    ```bash
+    docker login <address> -u <username> -p <password>
+    ```
+
+2. Görüntüyü oluşturmak için aşağıdaki komutu kullanın. Dosyalarını `<imagefiles>` kaydettiğiniz`package.save()` dizinin yoluyla değiştirin:
+
+    ```bash
+    docker build --tag myimage <imagefiles>
+    ```
+
+    Bu komut, görüntü adını olarak `myimage`ayarlar.
+
+Görüntünün derlendiğini doğrulamak için `docker images` komutunu kullanın. Listede `myimage` görüntü görmeniz gerekir:
+
+```text
+REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
+myimage         latest              739f22498d64        3 minutes ago       1.43GB
+```
+
+Bu görüntüye göre yeni bir kapsayıcı başlatmak için aşağıdaki komutu kullanın:
+
+```bash
+docker run -p 6789:5001 --name mycontainer myimage:latest
+```
+
+Bu komut, adlı `myimage`görüntünün en son sürümünü başlatır. 6789 yerel bağlantı noktasını, Web hizmetinin dinlediği kapsayıcıda bağlantı noktasına eşler (5001). Ayrıca, bu adı `mycontainer` kapsayıcıya atar ve bu da daha kolay durmayı kolaylaştırır. Başlatıldıktan sonra istekleri `http://localhost:6789/score`gönderebilirsiniz.
+
+### <a name="example-client-to-test-the-local-container"></a>Yerel kapsayıcıyı test eden örnek istemci
+
+Aşağıdaki kod, kapsayıcında kullanılabilecek bir Python istemcisi örneğidir:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = 'http://localhost:6789/score'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [ 1,2,3,4,5,6,7,8,9,10 ],
+            [ 10,9,8,7,6,5,4,3,2,1 ]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+Diğer programlama dillerinde daha fazla örnek istemci için bkz. [Web Hizmetleri olarak dağıtılan modelleri](how-to-consume-web-service.md)kullanma.
+
+### <a name="stop-the-docker-container"></a>Docker kapsayıcısını durdur
+
+Kapsayıcıyı durdurmak için, farklı bir kabuktan veya komut satırından aşağıdaki komutu kullanın:
+
+```bash
+docker kill mycontainer
+```
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
+
 Dağıtılmış bir web hizmetini silmek için kullanın `service.delete()`.
 Kayıtlı bir model silmek için kullanın `model.delete()`.
 

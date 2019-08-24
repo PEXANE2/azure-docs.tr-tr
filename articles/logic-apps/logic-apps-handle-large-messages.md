@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035592"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69989918"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
 
@@ -128,7 +128,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
    | Uç nokta yanıt üst bilgisi alanı | Type | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
    | **x-MS-öbek boyutu** | Integer | Hayır | Önerilen öbek boyutu (bayt) |
-   | **Location** | Dize | Hayır | HTTP PATCH iletilerinin gönderileceği URL konumu |
+   | **Location** | Dize | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
 3. Mantıksal uygulamanız, bu bilgileri içeren, izleme HTTP PATCH iletileri oluşturur ve gönderir:
@@ -148,7 +148,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Type | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **Aralığı** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
+   | **Aralık** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
    | **x-MS-öbek boyutu** | Integer | Hayır | Önerilen öbek boyutu (bayt) |
    ||||
 

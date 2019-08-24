@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage 2. verileri yönetmek için Azure Depolama Gezgini kullanma
-description: Bu hızlı başlangıçta, bir Azure Data Lake Storage 2. hesabında bir dosya sistemi ve bir dizin ve dosya oluşturmak için Azure Depolama Gezgini kullanmayı öğreneceksiniz. Ardından, dosyanın yerel bilgisayarınıza nasıl indirileceği ve tüm dosyanın bir dizinde nasıl görüntüleneceği hakkında bilgi edineceksiniz.
+description: Bu hızlı başlangıçta, bir Azure Data Lake Storage 2. hesabında bir kapsayıcı oluşturmak için Azure Depolama Gezgini kullanmayı ve bir dizin ve bir dosyayı öğrenirsiniz. Ardından, dosyanın yerel bilgisayarınıza nasıl indirileceği ve tüm dosyanın bir dizinde nasıl görüntüleneceği hakkında bilgi edineceksiniz.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855602"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991413"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage 2. hesabındaki verileri yönetmek için Azure Depolama Gezgini kullanma
 
@@ -41,13 +41,13 @@ Bağlantı kurulduğunda Azure Depolama Gezgini yüklenir ve **Gezgin** sekmesi 
 
 ![Microsoft Azure Depolama Gezgini - Bağlan penceresi](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
-## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
+## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
 Blob 'lar her zaman bir dizine yüklenir. Bu, blob gruplarını bilgisayarınızdaki dosyaları klasörler halinde düzenlediğiniz gibi düzenleyebilmenizi sağlar.
 
-Bir dizin oluşturmak için, devam adımında oluşturduğunuz depolama hesabını genişletin. **BLOB kapsayıcısı**' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin. Dosya sisteminiz için ad girin. Tamamlandığında, dosya sistemini oluşturmak için **ENTER** tuşuna basın. Blob dizini başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcısı** klasörü altında görüntülenir.
+Bir dizin oluşturmak için, devam adımında oluşturduğunuz depolama hesabını genişletin. **BLOB kapsayıcısı**' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin. Kapsayıcının adını girin. Tamamlandığında, kapsayıcıyı oluşturmak için **ENTER** tuşuna basın. Blob dizini başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcısı** klasörü altında görüntülenir.
 
-![Microsoft Azure Depolama Gezgini-dosya sistemi oluşturma](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Microsoft Azure Depolama Gezgini-kapsayıcı oluşturma](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>Blob 'ları dizine yükleme
 

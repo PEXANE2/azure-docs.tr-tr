@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9073e00f5c3702e43665541bd8ff9e66c2bc505b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968507"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991107"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
@@ -103,25 +103,28 @@ Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
 Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
 
-## <a name="step-3-register-the-native-app-and-grant-access-to-the-api"></a>3\. adım: Yerel uygulamayı kaydetme ve API 'ye erişim izni verme
+## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>3\. adım: Rapor hizmetlerine Power BI Mobil erişim izni verme
 
-Yerel uygulamalar, bir platformda veya cihazda kullanılmak üzere geliştirilen programlardır. Power BI mobil uygulamanın bir API 'ye bağlanabilmesi ve bu API 'ye erişebilmesi için önce Azure AD 'ye kaydetmeniz gerekir.  
+Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi için önce Azure AD 'de doğru şekilde kaydolmanız gerekir.  
 
-1. [Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama bölümünde adım 2 ' yi](application-proxy-configure-native-client-application.md#step-2-register-your-native-application)uygulayarak uygulamayı Azure AD 'ye kaydedin.
+1. Azure Active Directory **genel bakış** sayfasında **uygulama kayıtları**' i seçin.
+2. **Tüm uygulamalar** sekmesinin altında 2. adımda oluşturduğunuz uygulamayı arayın.
+3. Uygulamayı seçin ve **kimlik doğrulaması**' nı seçin.
+4. Kullanmakta olduğunuz platforma göre aşağıdaki yeniden yönlendirme URI 'Lerini ekleyin.
 
-   Power BI Mobil **iOS**için uygulamayı kaydederken aşağıdaki yeniden yönlendirme URI 'lerini ekleyin:
+   Uygulamayı Power BI Mobil **iOS**için kaydederken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Power BI Mobil **Android**için uygulama kaydederken aşağıdaki yeniden yönlendirme URI 'lerini ekleyin:
+   Uygulamayı Power BI Mobil **Android**için kaydederken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
    - `urn:ietf:wg:oauth:2.0:oob`
 
    > [!IMPORTANT]
-   > Uygulamanın düzgün çalışması için yeniden yönlendirme URI 'Lerinin eklenmesi gerekir.
+   > Uygulamanın düzgün çalışması için yeniden yönlendirme URI 'Lerinin eklenmesi gerekir. Bunu hem iOS hem de Android için yapılandırıyorsanız yalnızca **tek** bir uygulamayı kaydetmeniz ve hem iOS hem de Android Için yeniden yönlendirme URI 'leri eklemeniz gerekir. Her platform için ayrı uygulamalar gerekiyorsa, her iki uygulama için yeniden yönlendirme URI 'si: `mspbi-adal://com.microsoft.powerbimobile` eklemeniz gerekir.
 
-Yerel uygulamanızı kaydettirdiğiniz için, bu durumda, uygulama proxy 'Si aracılığıyla yayınlanan rapor hizmetlerine erişmek için dizininizde diğer uygulamalara erişim izni verebilirsiniz. Adım 3 ' teki [adımları izleyin: Proxy uygulamanıza](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)erişim izni verin.
+2. Yerel uygulamanızı kaydettirdiğiniz için, bu durumda, uygulama proxy 'Si aracılığıyla yayınlanan rapor hizmetlerine erişmek için dizininizde diğer uygulamalara erişim izni verebilirsiniz. Adım 3 ' teki [adımları izleyin: Proxy uygulamanıza](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)erişim izni verin.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4\. Adım: Power BI Mobil uygulamasından bağlanma
 

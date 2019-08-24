@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950673"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991804"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
@@ -32,7 +32,7 @@ BLOB depolama API 'leri Azure Data Lake Gen2 API 'Leri ile birlikte kullanılabi
 
 Bunlardan herhangi biri blob API 'Leri kullanıyorsa ve hesabınıza yüklediğiniz tüm içerikle çalışmak üzere bunları kullanmak istiyorsanız iki seçeneğiniz vardır.
 
-* **Seçenek 1**: Blob API 'Leri Azure Data Lake Gen2 API 'Leri ile birlikte çalışabilir hale gelene kadar BLOB depolama hesabınızda hiyerarşik bir ad alanı etkinleştirmeyin. Hiyerarşik ad alanı olmadan bir depolama hesabı kullanmak, dizin ve dosya sistemi erişim denetim listeleri gibi belirli özelliklere Data Lake Storage 2. erişiminizin olmadığı anlamına gelir.
+* **Seçenek 1**: Blob API 'Leri Azure Data Lake Gen2 API 'Leri ile birlikte çalışabilir hale gelene kadar BLOB depolama hesabınızda hiyerarşik bir ad alanı etkinleştirmeyin. Hiyerarşik ad alanı olmadan bir depolama hesabı kullanmak, dizin ve kapsayıcı erişim denetim listeleri gibi belirli özelliklere Data Lake Storage 2. erişiminizin olmadığı anlamına gelir.
 
 * **Seçenek 2**: [Data Lake Storage üzerindeki çoklu protokol erişiminin](data-lake-storage-multi-protocol-access.md)genel önizlemesine kaydolun. Blob API 'Leri çağıran araç ve uygulamaların yanı sıra, tanılama günlükleri gibi BLOB depolama özellikleri de hiyerarşik bir ad alanı olan hesaplarla çalışabilir.
 

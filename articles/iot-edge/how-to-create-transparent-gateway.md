@@ -4,17 +4,17 @@ description: Azure IOT Edge cihazı, aşağı akış cihazlardan bilgi işleyebi
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698615"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982949"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Saydam bir ağ geçidi olarak görev yapacak bir IOT Edge cihazı yapılandırma
 
@@ -52,8 +52,6 @@ Aşağıdaki adımlar, sertifikaları oluşturma ve bunları ağ geçidine doğr
 Bir ağ geçidi olarak yapılandırmak için Azure IOT Edge cihazı. Aşağıdaki işletim sistemlerinden biri için IoT Edge yükleme adımlarını kullanın:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
-
-Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazında config. YAML dosyasının **hostname** parametresinde bildirilmiştir. Bu makaledeki sertifikaları oluşturmak için kullanılır ve aşağı akış cihazlarının bağlantı dizesinde öğesine başvurulur. Ağ geçidi ana bilgisayar adının DNS veya ana bilgisayar dosya girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
 
 ## <a name="generate-certificates-with-windows"></a>Windows ile sertifikalar oluşturma
 
@@ -142,15 +140,18 @@ Bu bölümde, üç sertifikaları oluşturma ve bunları bir zincirinde bağlay�
    Bu betik komutu birkaç sertifika ve anahtar dosyası oluşturur, ancak bu makalenin ilerleyen kısımlarında bir sonraki bölümüne başvuracağız:
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. Aşağıdaki komutla IoT Edge cihaz CA sertifikasını ve özel anahtarı oluşturun. Ağ Geçidi cihazında ıotedge\config.exe dosyasında bulunan ağ geçidi ana bilgisayar adını sağlayın. Ağ geçidi ana bilgisayar adı, dosyaları adlandırmak için ve sertifika oluşturma sırasında kullanılır. 
+2. Aşağıdaki komutla IoT Edge cihaz CA sertifikasını ve özel anahtarı oluşturun. CA sertifikası için bir ad sağlayın (örneğin, **Myedgedeviceca**). Ad, dosya adlandırmak için ve sertifika oluşturma sırasında kullanılır. 
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway hostname>"
+   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
    Bu betik komutu, bu makalede daha sonra başvurabileceğiniz iki sertifika ve anahtar dosyası oluşturur:
-   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >**Myedgedeviceca**dışında bir ad sağlarsanız, bu komut tarafından oluşturulan sertifikalar ve anahtarlar bu adı yansıtır. 
 
 Artık sertifikalara sahip olduğunuza [göre, ağ geçidine sertifika yüklemeye](#install-certificates-on-the-gateway) Şimdi atlayın
 
@@ -193,6 +194,8 @@ Bu bölümde, üç sertifikaları oluşturma ve bunları bir zincirinde bağlay�
 
 1. Kök CA sertifikasını ve bir ara sertifikayı oluşturun. Bu sertifikalar yerleştirilir  *\<WRKDIR >* .
 
+   Bu çalışma dizininde zaten kök ve ara sertifikalar oluşturduysanız, bu betiği yeniden çalıştırmayın. Bu betiği yeniden çalıştırmak var olan sertifikaların üzerine yazacak. Bunun yerine, sonraki adıma geçin. 
+
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
@@ -200,15 +203,18 @@ Bu bölümde, üç sertifikaları oluşturma ve bunları bir zincirinde bağlay�
    Betik birkaç sertifika ve anahtar oluşturur. Bir sonraki bölümde başvurabileceğiniz bir tane olduğunu unutmayın:
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. Aşağıdaki komutla IoT Edge cihaz CA sertifikasını ve özel anahtarı oluşturun. Gateway cihazında ıotedge/config. YAML dosyasında bulunan ağ geçidi ana bilgisayar adını sağlayın. Ağ geçidi ana bilgisayar adı, dosyaları adlandırmak için ve sertifika oluşturma sırasında kullanılır. 
+2. Aşağıdaki komutla IoT Edge cihaz CA sertifikasını ve özel anahtarı oluşturun. CA sertifikası için bir ad sağlayın (örneğin, **Myedgedeviceca**). Ad, dosya adlandırmak için ve sertifika oluşturma sırasında kullanılır. 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
+   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
    Betik birkaç sertifika ve anahtar oluşturur. Bir sonraki bölümde başvurabileceğiniz iki örneğini unutmayın: 
-   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >**Myedgedeviceca**dışında bir ad sağlarsanız, bu komut tarafından oluşturulan sertifikalar ve anahtarlar bu adı yansıtır. 
 
 ## <a name="install-certificates-on-the-gateway"></a>Sertifika ağ geçidi yükleme
 
@@ -216,8 +222,8 @@ Bir sertifika zinciri yaptığınız, IOT Edge ağ geçidi cihazında yükleyin 
 
 1. Aşağıdaki dosyaları kopyalayın  *\<WRKDIR >* . Bunları herhangi bir IOT Edge cihazı kaydedin. IOT Edge cihazınız olarak hedef dizine başvuracağınız  *\<CERTDIR >* . 
 
-   * Cihaz CA sertifikası-  `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * Cihaz CA özel anahtarı- `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * Cihaz CA sertifikası-  `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * Cihaz CA özel anahtarı- `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
    * Kök CA-`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
    Sertifika dosyalarını taşımak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.  Sertifikaları IoT Edge cihazında oluşturduysanız, bu adımı atlayabilir ve çalışma dizininin yolunu kullanabilirsiniz.
@@ -233,16 +239,16 @@ Bir sertifika zinciri yaptığınız, IOT Edge ağ geçidi cihazında yükleyin 
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * Linux: 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 

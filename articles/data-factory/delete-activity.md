@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
-ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.date: 08/20/2019
+ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335656"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996314"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği silme
 
@@ -44,6 +44,7 @@ Silme etkinliğini kullanmaya yönelik bazı öneriler aşağıda verilmiştir:
 -   [Azure Blob Depolama](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md)
+-   [Azure Dosya Depolama](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>Dosya sistemi veri depoları
 
@@ -51,6 +52,7 @@ Silme etkinliğini kullanmaya yönelik bazı öneriler aşağıda verilmiştir:
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Google bulut depolaması](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -115,12 +117,12 @@ Silme etkinliğinin sonuçlarını görebileceğiniz ve izleyebileceğiniz iki y
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete etkinliğinin örnek günlük dosyası
 
-| Ad | Category | Durum | Hata |
+| Name | Category | Durum | Hata |
 |:--- |:--- |:--- |:--- |
-| Test1/yyy. JSON | Dosya | Silinmiş |  |
-| Test2/hello789. txt | Dosya | Silinmiş |  |
-| Test2/test3/hello000. txt | Dosya | Silinmiş |  |
-| test2/test3/zzz.json | Dosya | Silinmiş |  |
+| Test1/yyy. JSON | Dosya | Silme |  |
+| Test2/hello789. txt | Dosya | Silme |  |
+| Test2/test3/hello000. txt | Dosya | Silme |  |
+| test2/test3/zzz.json | Dosya | Silme |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Delete etkinliğini kullanma örnekleri
 

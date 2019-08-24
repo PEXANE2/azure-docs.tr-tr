@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534398"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982751"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
 Bu öğreticide, tek bir kod satırı yazmadan Azure portal (Önizleme) içinde ilk otomatik makine öğrenimi denemenizi oluşturmayı öğreneceksiniz. Bu örnek, bir istemcinin bir mali kurum ile sabit bir depozito 'e abone olup olmadığını tahmin etmek için bir sınıflandırma modeli oluşturur.
 
-Azure Machine Learning hizmetinin ve Azure portal otomatik makine öğrenimi özelliklerini kullanarak otomatik makine öğrenimi işlemine başlarsınız. Algoritma seçimi ve hyperparameter ayarı sizin için yapılır. Otomatik makine öğrenimi tekniği, kriterinize göre en iyi modeli bulana kadar birçok algoritma ve hiper parametre kombinasyonu üzerinde yinelenir.
+Otomatik makine öğrenimi sayesinde yoğun zamanda yoğun görevleri otomatik hale getirebilirsiniz. Otomatikleştirilmiş makine öğrenimi, seçtiğiniz başarı ölçümünü temel alarak en iyi modeli bulmanıza yardımcı olmak üzere birçok algoritma ve hiper parametre kombinasyonu üzerinde hızlı bir şekilde yinelenir.
 
-Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
+Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure Machine Learning bir hizmet çalışma alanı yapılandırın.
-> * Deneme oluşturma.
-> * Sınıflandırma modelini otomatik eğitme.
-> * Eğitim çalışma ayrıntılarını görüntüleyin.
+> * Azure Machine Learning hizmet çalışma alanı oluşturun.
+> * Otomatik makine öğrenimi denemesinin çalıştırın.
+> * Deneme ayrıntılarını görüntüleyin.
 > * Model dağıtma.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
-* [ **Bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) veri dosyasını indirin. **Y** sütunu, bir müşterinin, daha sonra bu öğreticide tahmine yönelik hedef sütun olarak tanımlanan sabit bir dönem yatırma abone olup olmadığını gösterir. 
+* [**Bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) veri dosyasını indirin. **Y** sütunu, bir müşterinin, daha sonra bu öğreticide tahmine yönelik hedef sütun olarak tanımlanan sabit bir dönem yatırma abone olup olmadığını gösterir. 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>Deneme oluşturma
+## <a name="create-and-run-the-experiment"></a>Deneme oluşturma ve çalıştırma
 
 Bu adımlar, birincil ölçümünüzün ve model türünün seçilmesi için veri seçiminden ayarlanan denemenize kılavuzluk sağlar. 
 
@@ -50,8 +49,6 @@ Bu adımlar, birincil ölçümünüzün ve model türünün seçilmesi için ver
 Otomatik Machine Learning için ilk denemenizin olduğu **Için otomatik Machine Learning ekranına hoş geldiniz** ' i görürsünüz.
 
     ![Azure portal gezinti bölmesi](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. **Deneme oluştur**' u seçin. Ardından deneme adı olarak **My-1-oto ml-deney** i girin.
 
@@ -72,14 +69,11 @@ Otomatik Machine Learning için ilk denemenizin olduğu **Için otomatik Machine
 
 1. **Karşıya yükle** ' yi seçin ve varsayılan kapsayıcıya yüklemek için yerel bilgisayarınızdan **bankmarketing_train. csv** dosyasını seçin. Genel Önizleme yalnızca yerel dosya yüklemelerini ve Azure Blob depolama hesaplarını destekler. Karşıya yükleme tamamlandığında, listeden dosyayı seçin. 
 
-    [![Veri dosyası seç](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. **Önizleme** sekmesi, bu deneme için verilerimizi daha fazla yapılandırmamızı sağlar.
 
     **Önizleme** sekmesinde, verilerin üstbilgiler içerdiğini belirtin. Hizmet varsayılan olarak eğitimin tüm özelliklerini (sütunları) dahil eder. Bu örnekte, sağa kaydırın ve **day_of_week** özelliğini **yoksayın** .
 
     ![Önizleme sekmesi yapılandırması](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > Sıfır minimum düğümü olan hesaplalarla veri profili oluşturma kullanılamıyor.
@@ -96,16 +90,14 @@ Otomatik Machine Learning için ilk denemenizin olduğu **Için otomatik Machine
     Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam tamamlamayı bitmeden önce sonlanır: <br> *Eğitim iş süresi (dakika)* : 5  <br> *En fazla yineleme sayısı*: 10 
     Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.
     Doğrulama| Çapraz doğrulama sayısı için K-katlama çapraz doğrulamayı ve **2** ' yi seçin. 
-    Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı için **5** ' i seçin.
+    Eşzamanlılık| Maksimum eşzamanlı yineleme sayısı için **5** ' i seçin.
 
    >[!NOTE]
    > Bu deneme için, yineleme eşiğine göre ölçüm veya en fazla çekirdek ayarlayamıyoruz. Ayrıca algoritmaların test edilmeye engel olmaz.
 
 1. Denemeyi çalıştırmak için **Başlat** ' ı seçin.
 
-   Deneme başladığında, en üstte aşağıdaki durumu içeren bir boş **çalıştırma ayrıntısı** ekranı görürsünüz. 
-
-      ![Hazırlama Çalıştır](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   Deneme başladığında, en üstte aşağıdaki durumu içeren bir boş **çalıştırma ayrıntısı** ekranı görürsünüz.
       
 Deneme hazırlama işlemi birkaç dakika sürer. İşlem tamamlandığında, durum iletisi **çalışmaya çalışıyor**olarak değişir.
 
@@ -137,11 +129,9 @@ Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en
     
 1. **Dağıt**'ı seçin.
 
-    Dağıtım başarıyla tamamlandığında aşağıdaki ileti görünür:
-
-    ![Dağıtım Tamam](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    Dağıtım başarıyla tamamlandığında dağıtım tamamlandı iletisi görüntülenir.
     
-    Artık tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır.
+Artık tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -167,7 +157,6 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 
 > [!div class="nextstepaction"]
 > [Web hizmeti kullanma](how-to-consume-web-service.md)
-
 
 + [Ön işleme](how-to-create-portal-experiments.md#preprocess)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.

@@ -1,5 +1,5 @@
 ---
-title: Azure Sanal Makineleri hakkında veri toplama | Microsoft Docs
+title: Azure Izleyici ile Azure sanal makinesinden veri toplama | Microsoft Docs
 description: Log Analytics Aracısı VM Uzantısını etkinleştirmeyi ve Log Analytics ile Azure VM’lerinizden veri toplamayı etkinleştirmeyi öğrenin.
 services: log-analytics
 documentationcenter: log-analytics
@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 1a61c0f96f62712bbd2500b2e80fd08565990bbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874903"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992143"
 ---
-# <a name="collect-data-about-azure-virtual-machines"></a>Azure sanal makineleri hakkında veri toplama
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinesinden veri toplama
 
-[Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), doğrudan Azure sanal makinelerinizden ve ortamınızdaki diğer kaynaklardan verileri ayrıntılı analiz ve bağıntı için tek bir depoda toplayabilir. Bu hızlı başlangıçta birkaç kolay adımda Azure Linux veya Windows VM’lerinizi nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir.  
+[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için Azure sanal makinelerinizden doğrudan bir Log Analytics çalışma alanına veri toplayabilir. [Windows](../../virtual-machines/extensions/oms-windows.md) ve [LINUX](../../virtual-machines/extensions/oms-linux.md) için Log Analytics VM uzantısının yüklenmesi, Azure izleyici 'nin Azure sanal makinelerinizden veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla VM uzantısını kullanarak Azure Linux veya Windows sanal makinelerinizdeki verileri nasıl yapılandıracağınız ve toplayacağınız gösterilmektedir.  
  
 Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılmaktadır. Yoksa VM hızlı başlangıçlarımızı izleyerek bir [Windows VM](../../virtual-machines/windows/quick-create-portal.md) veya bir [Linux VM](../../virtual-machines/linux/quick-create-cli.md) oluşturabilirsiniz.
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılma
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
+1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
     ![Azure portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
@@ -55,7 +55,7 @@ Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlem
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analytics aracısını Log Analytics VM Uzantısı ile yüklersiniz. Uzantıyı kullanmak yükleme işlemini kolaylaştırır ve aracıyı belirttiğiniz Log Analytics çalışma alanına veri göndermek üzere otomatik olarak yapılandırır. Ayrıca aracı otomatik olarak yükseltilerek her zaman en yeni özellik ve düzeltmelere sahip olmanız sağlanır. Devam etmeden önce VM çalışıyor olun Aksi takdirde işlemi başarıyla tamamlamak başarısız olur.  
+Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analytics aracısını Log Analytics VM Uzantısı ile yüklersiniz. Uzantıyı kullanmak yükleme işlemini kolaylaştırır ve aracıyı belirttiğiniz Log Analytics çalışma alanına veri göndermek üzere otomatik olarak yapılandırır. Aracı Ayrıca yeni bir sürüm yayınlandığında otomatik olarak yükseltilir ve en son özelliklere ve düzeltmelere sahip olmanızı sağlar. Devam etmeden önce VM çalışıyor olun Aksi takdirde işlemi başarıyla tamamlamak başarısız olur.  
 
 >[!NOTE]
 >Linux için Log Analytics aracısı birden fazla Log Analytics çalışma alanına raporlamak için yapılandırılamaz. 
@@ -74,7 +74,7 @@ Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analyt
 
 ## <a name="collect-event-and-performance-data"></a>Olay ve performans verilerini toplama
 
-Log Analytics uzun süreli analiz ve raporlama için belirttiğiniz Windows olay günlükleri veya Linux Syslog ve performans sayaçlarından olayları toplayarak belirli bir koşul algılandığında işlem yapabilir. Windows sistem günlüğü ve Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
+Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windows olay günlüklerinden veya Linux Syslog ve performans sayaçlarından olayları toplayabilir ve belirli bir koşul algılandığında işlem yapabilir. Windows sistem günlüğü ve Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
 
 ### <a name="data-collection-from-windows-vm"></a>Windows VM’den veri toplama
 
@@ -124,15 +124,15 @@ Log Analytics uzun süreli analiz ve raporlama için belirttiğiniz Windows olay
 
 Veri toplamayı etkinleştirdiyseniz, şimdi hedef VM’lerden verileri görmek için basit bir günlük araması örneği çalıştıralım.  
 
-1. Azure portalında, Log Analytics’e gidip önceden oluşturduğunuz çalışma alanını seçin.
+1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. **Günlük araması** kutucuğunu seçin ve günlük araması bölmesinde, sorgu alanı türü `Perf` ' nde, ENTER tuşuna basın veya sorgu alanının sağındaki arama düğmesini seçin.
+2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' `Perf` ni yazın ve **Çalıştır**' ı seçin.
 
-    ![Log Analytics günlük araması sorgu örneği](./media/quick-collect-azurevm/log-analytics-portal-perf-query.png) 
+    ![Log Analytics günlük araması sorgu örneği](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-Örneğin, aşağıdaki resimdeki sorgu 735 performans kaydı döndürdü.  Sonuçlarınız önemli ölçüde daha az olacaktır.
+    Örneğin, aşağıdaki görüntüdeki sorgu 10.000 performans kaydı döndürdü. Sonuçlarınız önemli ölçüde daha az olacaktır.
 
-![Log Analytics günlük araması sonucu](media/quick-collect-azurevm/log-analytics-search-perf.png)
+    ![Log Analytics günlük araması sonucu](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

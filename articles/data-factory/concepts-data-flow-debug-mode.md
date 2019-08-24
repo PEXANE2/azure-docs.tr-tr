@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014517"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991932"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -53,7 +53,14 @@ Hata ayıklama tarihinde, veri Önizleme sekmesi alt panelde açılır. Üzerind
 
 ![Veri önizleme](media/data-flow/datapreview.png "Veri önizleme")
 
+> [!NOTE]
+> Dosya kaynakları, okunan satırları değil yalnızca gördüğünüz satırları sınırlar. Çok büyük veri kümelerinde, bu dosyanın küçük bir bölümünü almanız ve test etmeniz için kullanmanız önerilir. Dosya veri kümesi türü olan her kaynak için hata ayıklama ayarlarında geçici bir dosya seçebilirsiniz.
+
 Veri akışında hata ayıklama modunda çalışırken verileriniz havuz dönüşümüne yazılmaz. Bir hata ayıklama oturumu, dönüştürmelerinizi için bir test bandı işlevi sunacak şekilde tasarlanmıştır. Hata ayıklama sırasında havuzlar gerekli değildir ve veri akışınız içinde yok sayılır. Havuzınızdaki verilerin yazılmasını test etmek isterseniz, veri akışını bir Azure Data Factory işlem hattından yürütün ve bir işlem hattından hata ayıklama yürütmesini kullanın.
+
+### <a name="testing-join-conditions"></a>Test ekleme koşulları
+
+Birim testi katıldığında, varsa veya Arama dönüşümlerine göre, testiniz için küçük bir bilinen veri kümesi kullandığınızdan emin olun. Testinizde kullanılacak geçici bir dosya ayarlamak için yukarıdaki hata ayıklama ayarları seçeneğini kullanabilirsiniz. Bu, büyük bir veri kümesinden satırları sınırlandırırken veya örneklenirken, hangi satırların ve hangi anahtarların test için akışa okunacağını tahmin edemediği için gereklidir. Sonuç belirleyici değildir, yani JOIN koşullarınızın başarısız olabileceği anlamına gelir.
 
 ### <a name="quick-actions"></a>Hızlı eylemler
 

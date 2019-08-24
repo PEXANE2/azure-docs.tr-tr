@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 4722cda0506493671ff872d75e7376f3de74b1b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886656"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981231"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 
@@ -33,6 +33,7 @@ ms.locfileid: "68886656"
 
 - Sanal ağ güvenlik duvarı kuralları:-Azure sınırları içindeki belirli bir sanal ağdan gelen trafiğe izin vermek için bu özelliği kullanın
 
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 ## <a name="allow-azure-services"></a>Azure hizmetlerine izin ver 
 [Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturma sırasında, bu ayar işaretsiz bırakılır.

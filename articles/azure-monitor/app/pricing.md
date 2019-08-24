@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/19/2019
+ms.date: 08/22/2019
 ms.author: dalek
-ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624384"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982596"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -65,30 +65,43 @@ Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın 
 
 ![Sol menüde Faturalandırma ' i seçin.](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Veri hızı
-Göndereceğiniz verilerin hacmi üç şekilde sınırlıdır:
+## <a name="managing-your-data-volume"></a>Veri hacminin yönetilmesi 
 
-* **Örnekleme**: , Ölçümlerde en az deformasyon ile sunucunuz ve istemci uygulamalarından gönderilen telemetri miktarını azaltmak için örnekleme kullanabilirsiniz. Örnekleme, göndereceğiniz veri miktarını ayarlamak için kullanabileceğiniz birincil araçtır. [Örnekleme özellikleri](../../azure-monitor/app/sampling.md)hakkında daha fazla bilgi edinin. 
-* **Günlük üst sınır**: Azure portal Application Insights kaynak oluşturduğunuzda, günlük üst sınır 100 GB/gün olarak ayarlanır. Visual Studio 'da bir Application Insights kaynağı oluşturduğunuzda, varsayılan değer küçüktür (yalnızca 32,3 MB/gün). Günlük uç varsayılan, testi kolaylaştırmak için ayarlanır. Kullanıcının uygulamayı üretime dağıtmadan önce günlük üst sınırı oluşturması amaçlanmıştır. 
-
-    Yüksek trafikli bir uygulama için daha yüksek bir en yüksek değer istemediğiniz müddetçe en büyük sınır 1.000 GB/gün olur. 
-
-    Günlük ucunu ayarlarken dikkatli kullanın. Amacınızı *hiçbir şekilde günlük tepesine vurmamanız*gerekir. Günlük üst sınıra ulaşırsanız, günün geri kalanı için verileri kaybeder ve uygulamanızı izleyemezsiniz. Günlük ucunu değiştirmek için, **günlük hacim Cap** seçeneğini kullanın. Bu seçeneğe **kullanım ve tahmini maliyetler** bölmesinde erişebilirsiniz (Bu, makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır).
-    Application Insights için kullanılamayacak kredi içeren bazı abonelik türlerinde kısıtlama kaldırdık. Daha önce, aboneliğin bir harcama limiti varsa, günlük sınır iletişim kutusunda harcama limitini kaldırma ve günlük ucunun 32,3 MB/gün dışında bir şekilde çıkarılması için yönergeler vardır.
-* **Daraltma**: Daraltma, veri hızını saniyede 32.000 olay ile sınırlandırır, izleme anahtarı başına 1 dakikadan fazla.
-
-*Uygulamamın azaltma oranını aşması durumunda ne olur?*
-
-* Uygulamanızın gönderdiği veri hacmi her dakikada değerlendirilir. Dakika boyunca ortalama saniye başına oranı aşarsa, sunucu bazı istekleri reddeder. SDK verileri arabelleğe alır ve sonra yeniden göndermeyi dener. Birkaç dakika içinde bir aşırı gerilim yayın. Uygulamanız sürekli olarak verileri daraltma hızından daha fazla gönderirse, bazı veriler bırakılır. (ASP.NET, Java ve JavaScript SDK 'Ları verileri bu şekilde yeniden göndermeyi dener; diğer SDK 'lar yalnızca daraltılmış verileri de bırakabilir.) Daraltma gerçekleşirse, bunun oluştuğunu bildiren bir bildirim uyarısı görürsünüz.
-
-*Nasıl yaparım? Uygulamamın ne kadar veri gönderdiğini öğrenmek mi istiyorsunuz?*
-
-Uygulamanızın ne kadar veri gönderdiğini görmek için aşağıdaki seçeneklerden birini kullanabilirsiniz:
+Uygulamanızın ne kadar veri gönderdiğini anlamak için şunları yapabilirsiniz:
 
 * Günlük veri hacmi grafiğini görmek için **kullanım ve tahmini maliyet** bölmesine gidin. 
 * Ölçüm Gezgini ' de yeni bir grafik ekleyin. Grafik ölçümü için, **veri noktası birimi**' ni seçin. **Gruplamayı**açın ve **veri türüne**göre gruplandırın.
+* `systemEvents` Veri türünü kullanın. Örneğin, son gün içinde alınan veri hacmini görmek için sorgu şöyle olacaktır:
 
-## <a name="reduce-your-data-rate"></a>Veri Hızınızı azaltın
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Bu sorgu, veri birimlerinde uyarı ayarlamak için bir [Azure günlük uyarısında](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) kullanılabilir. 
+
+Göndereceğiniz verilerin hacmi üç şekilde yönetilebilir:
+
+* **Örnekleme**: , Ölçümlerde en az deformasyon ile sunucunuz ve istemci uygulamalarından gönderilen telemetri miktarını azaltmak için örnekleme kullanabilirsiniz. Örnekleme, göndereceğiniz veri miktarını ayarlamak için kullanabileceğiniz birincil araçtır. [Örnekleme özellikleri](../../azure-monitor/app/sampling.md)hakkında daha fazla bilgi edinin.
+ 
+* **Günlük üst sınır**: Azure portal Application Insights kaynak oluşturduğunuzda, günlük üst sınır 100 GB/gün olarak ayarlanır. Visual Studio 'da bir Application Insights kaynağı oluşturduğunuzda, varsayılan değer küçüktür (yalnızca 32,3 MB/gün). Günlük uç varsayılan, testi kolaylaştırmak için ayarlanır. Kullanıcının uygulamayı üretime dağıtmadan önce günlük üst sınırı oluşturması amaçlanmıştır. 
+
+    Yüksek trafikli bir uygulama için daha yüksek bir en yüksek değer istemediğiniz müddetçe en büyük sınır 1.000 GB/gün olur. 
+    
+    Günlük Cap hakkındaki uyarı e-postaları, Application Insights kaynağınız için bu rollerin üyesi olan hesaba gönderilir: "ServiceAdmin", "AccountAdmin", "CoAdmin", "Owner".
+
+    Günlük ucunu ayarlarken dikkatli kullanın. Amacınızı *hiçbir şekilde günlük tepesine vurmamanız*gerekir. Günlük üst sınıra ulaşırsanız, günün geri kalanı için verileri kaybeder ve uygulamanızı izleyemezsiniz. Günlük ucunu değiştirmek için, **günlük hacim Cap** seçeneğini kullanın. Bu seçeneğe **kullanım ve tahmini maliyetler** bölmesinde erişebilirsiniz (Bu, makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır).
+    
+    Application Insights için kullanılamayacak kredi içeren bazı abonelik türlerinde kısıtlama kaldırdık. Daha önce, aboneliğin bir harcama limiti varsa, günlük sınır iletişim kutusunda harcama limitini kaldırma ve günlük ucunun 32,3 MB/gün dışında bir şekilde çıkarılması için yönergeler vardır.
+    
+* **Daraltma**: Daraltma, veri hızını saniyede 32.000 olay ile sınırlandırır, izleme anahtarı başına 1 dakikadan fazla. Uygulamanızın gönderdiği veri hacmi her dakikada değerlendirilir. Dakika boyunca ortalama saniye başına oranı aşarsa, sunucu bazı istekleri reddeder. SDK verileri arabelleğe alır ve sonra yeniden göndermeyi dener. Birkaç dakika içinde bir aşırı gerilim yayın. Uygulamanız sürekli olarak verileri daraltma hızından daha fazla gönderirse, bazı veriler bırakılır. (ASP.NET, Java ve JavaScript SDK 'Ları verileri bu şekilde yeniden göndermeyi dener; diğer SDK 'lar yalnızca daraltılmış verileri de bırakabilir.) Daraltma gerçekleşirse, bunun oluştuğunu bildiren bir bildirim uyarısı görürsünüz.
+
+## <a name="reduce-your-data-volume"></a>Veri haciminizi azaltma
+
 Veri haciminizi azaltmak için yapabileceğiniz bazı şeyler aşağıda verilmiştir:
 
 * [Örnekleme](../../azure-monitor/app/sampling.md)kullanın. Bu teknoloji, ölçümlerinizi azaltmadan veri hızınızı azaltır. Aramada ilgili öğeler arasında gezinme özelliğini kaybetmezsiniz. Sunucu uygulamalarında örnekleme otomatik olarak çalışır.

@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/28/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: c971e84a12b23625326d63b3493395f1d1381937
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853984"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996905"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Linux üzerinde Azure App Service Python uygulaması oluşturma (Önizleme)
 
@@ -41,7 +41,7 @@ Cloud Shell'de bir quickstart dizini oluşturun ve o dizine geçin.
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Ardından, örnek uygulama deposunu quickstart dizininize kopyalamak için aşağıdaki komutu çalıştırın.
@@ -165,7 +165,7 @@ Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Linux'ta App Service hizmetindeki yerleşik Python görüntüsü şu anda Önizleme aşamasındadır ve uygulamanızı başlatmak için kullanılan komutu özelleştirebilirsiniz. Ayrıca bunun yerine özel bir kapsayıcı kullanarak üretim aşamasında Python uygulamaları oluşturabilirsiniz.
+Linux üzerinde App Service yerleşik Python görüntüsü şu anda önizleme aşamasındadır ve uygulamanızı başlatmak için kullanılan komutu özelleştirebilirsiniz. Ayrıca bunun yerine özel bir kapsayıcı kullanarak üretim aşamasında Python uygulamaları oluşturabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Öğretici: PostgreSQL ile Python uygulaması](tutorial-python-postgresql-app.md)

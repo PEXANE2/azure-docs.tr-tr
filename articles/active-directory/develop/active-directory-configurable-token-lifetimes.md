@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 08/22/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6aa209b6e99be406634e01be47c6dd9572d62a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853428"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980437"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -81,15 +81,15 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 ### <a name="configurable-token-lifetime-properties"></a>Yapılandırılabilir belirteç ömrü özellikleri
 | Özellik | İlke Özellik dizesi | Ekranlarını | Varsayılan | Minimum | Maksimum |
 | --- | --- | --- | --- | --- | --- |
-| Erişim belirteci ömrü |AccessTokenLifetime<sup>4</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
+| Erişim belirteci ömrü |AccessTokenLifetime<sup>2</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
 | Tek faktörlü yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 | Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
-| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsingsolaktör<sup>2</sup> |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
-| Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor<sup>3</sup> |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Tek faktörlü oturum belirteci maksimum yaşı |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
+| Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
-* <sup>4</sup> Microsoft ekipleri web istemcisinin çalışması için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla olması önerilir.
+* <sup>2</sup> Microsoft ekipleri web istemcisinin çalışması için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla olması önerilir.
 
 ### <a name="exceptions"></a>Özel durumlar
 | Özellik | Ekranlarını | Varsayılan |

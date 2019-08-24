@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321663"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996807"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanında HTTPS 'yi yapılandırma
 
@@ -130,7 +130,7 @@ Azure CDN’ye, Azure Key Vault hesabınızdaki sertifikalara (gizli dizi) eriş
 
     ![Erişim ilkesi ayarları](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. **Gizli dizi izinleri** bölümünde **Al** seçeneğini belirleyerek CDN’nin sertifikaları alması ve listelemesi için bu izinleri gerçekleştirmesine izin verin. 
+3. **Gizli dizi Izinleri al** ' ı seçin, sonra CDN 'nin sertifikaları almak ve listelemek üzere bu izinleri gerçekleştirmesini sağlamak için **Sertifika izinlerini** alın ve listeleyin. 
 
 4. **Tamam**’ı seçin. 
 
@@ -174,7 +174,7 @@ Kendi sertifikanızı kullanıyorsanız etki alanı doğrulaması gerekmez.
 
 CNAME kaydınız, *Ad*’ın özel etki alanınız, *Değer*’in ise CDN uç noktası ana bilgisayar adınız olduğu aşağıdaki biçimde olmalıdır:
 
-| Ad            | Tür  | Value                 |
+| Name            | Tür  | Value                 |
 |-----------------|-------|-----------------------|
 | < www. contoso. com > | CNAME | contoso.azureedge.net |
 

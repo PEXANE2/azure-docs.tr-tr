@@ -1,5 +1,5 @@
 ---
-title: OPC Kasası sertifika yönetimi hizmetini yönetme-Azure | Microsoft Docs
+title: OPC Kasası sertifika hizmetini yönetme-Azure | Microsoft Docs
 description: OPC Kasası kök CA sertifikalarını ve Kullanıcı izinlerini yönetin.
 author: mregen
 ms.author: mregen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6e53914b16bc126cdab7300d918dbb7b6b868728
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4420e5b0d895f8ea30dbd39fc50dd7480d57d086
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973811"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995989"
 ---
-# <a name="how-to-manage-the-opc-ua-certificate-service"></a>OPC UA sertifika hizmetini yönetme
+# <a name="how-to-manage-the-opc-vault-certificate-service"></a>OPC Kasası sertifika hizmetini yönetme
 
-Bu makalede, Azure 'daki OPC UA sertifika yönetimi hizmeti için yönetim görevleri, veren CA sertifikalarını yenileme, sertifika Iptal listesinin (CRL) nasıl yenileneceği ve Kullanıcı erişiminin nasıl verileceği ve iptal edileceği açıklanmaktadır.
+Bu makalede, Azure 'daki OPC Kasası sertifika yönetimi hizmeti için yönetim görevleri, veren CA sertifikalarını yenileme, sertifika Iptal listesinin (CRL) nasıl yenileneceği ve Kullanıcı erişiminin nasıl verileceği ve iptal edileceği açıklanmaktadır.
 
 ## <a name="create-or-renew-the-root-ca-certificate"></a>Kök CA sertifikası oluşturma veya yenileme
 
@@ -64,7 +64,7 @@ Rol tanımlarının ayrıntılı bir açıklaması için [Roller](howto-opc-vaul
 
 Varsayılan olarak, Kiracıdaki kimliği doğrulanmış bir Kullanıcı hizmette ' okuyucu ' olarak oturum açabilir. Daha yüksek ayrıcalıklı roller, Azure portal veya PowerShell kullanarak el ile yönetim gerektirir.
 
-### <a name="add-user"></a>Kullanıcı Ekle
+### <a name="add-user"></a>Kullanıcı ekle
 
 1. Azure portal `portal.azure.com`açın.
 2. Öğesine `Azure Active Directory` /gidin. `Enterprise applications`
@@ -76,7 +76,7 @@ Varsayılan olarak, Kiracıdaki kimliği doğrulanmış bir Kullanıcı hizmette
 8. `Assign` Düğmeye basın.
 9. `Administrator` Veya`Approver` rolündeki kullanıcılar için Azure Key Vault erişim ilkeleri eklemeye devam edin.
 
-### <a name="remove-user"></a>Kullanıcı Kaldır
+### <a name="remove-user"></a>Kullanıcıyı kaldır
 
 1. Azure portal `portal.azure.com`açın.
 2. Öğesine `Azure Active Directory` /gidin. `Enterprise applications`
@@ -86,7 +86,7 @@ Varsayılan olarak, Kiracıdaki kimliği doğrulanmış bir Kullanıcı hizmette
 6. `Remove` Düğmeye basın.
 7. Kaldırılan yöneticileri ve onaylayanları Azure Key Vault ilkelerden kaldırın.
 
-### <a name="add-user-access-policy-to-azure-key-vault"></a>Azure Key Vault Kullanıcı erişim Ilkesi Ekle
+### <a name="add-user-access-policy-to-azure-key-vault"></a>Azure Key Vault Kullanıcı erişim ilkesi Ekle
 
 **Onaylayanlar** ve **Yöneticiler**için ek erişim ilkeleri gerekir.
 
@@ -122,7 +122,7 @@ Varsayılan olarak, hizmet kimliğinin, yükseltilmiş işlemleri veya değişik
 11. Tıklatın `Ok`.
 12. `Save`değişikliklerine.
 
-### <a name="remove-user-access-policy-from-azure-key-vault"></a>Azure Key Vault Kullanıcı erişim Ilkesini kaldırma
+### <a name="remove-user-access-policy-from-azure-key-vault"></a>Azure Key Vault Kullanıcı erişim ilkesini kaldırma
 
 1. Azure portal `portal.azure.com`açın.
 2. Dağıtım sırasında kullanılan OPC kasanıza `resourceGroupName`gidin.

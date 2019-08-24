@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: rimman
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c739a6e79cab14ecc8e5a4be23c551d2774cbbd8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 31273105c2f4de6950eae6a66c50264803197642
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933987"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981867"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Çarpıcı anlık ileti kullanarak verileri Azure Cosmos DB Cassandra API hesabına geçirme
 
@@ -43,7 +43,7 @@ Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesa
 
    |Ayar | Değer | Açıklama |
    | ---| ---| ---|
-   |Anlık ileti dağıtım türü |Bağımsız | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın. | 
+   |Anlık ileti dağıtım türü |Tek Başına | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın. | 
    | Çarpıcı anlık ileti kümesinin adı|    < Striim_cluster_Name >|  Çarpıcı anlık ileti kümesinin adı.|
    | Anlık ileti kümesi parolası|   < Striim_cluster_password >|  Küme için parola.|
 

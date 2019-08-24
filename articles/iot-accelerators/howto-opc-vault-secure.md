@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a819e0b5a0da92137451eedbf84fe06d22879568
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: ae10bb3488c21b6637163e333231e95a18c652bf
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973785"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996073"
 ---
-# <a name="how-to-use-the-opc-ua-certificate-management-service"></a>OPC UA sertifika yönetimi hizmetini kullanma
+# <a name="how-to-use-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini kullanma
 
 Bu makalede, uygulamaların nasıl kaydedileceği ve OPC UA cihazlarınız için imzalı uygulama sertifikalarının nasıl giderileceği açıklanmaktadır.
 

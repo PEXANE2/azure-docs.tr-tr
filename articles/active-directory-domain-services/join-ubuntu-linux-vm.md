@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612283"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990586"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 'daki bir Ubuntu sanal makinesini yönetilen bir etki alanına katma
 Bu makalede Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
@@ -88,7 +88,7 @@ Sonra, sanal makinede etki alanına katılması için gereken paketleri yükler.
 3. Kerberos yüklemesi sırasında, pembe bir ekran görürsünüz. ' Krb5-User ' paketinin yüklenmesi bölge adı (tüm büyük harfle) için istemde bulunur. Yükleme,/etc/kronb5,confiçindeki [Realm] ve [domain_realm] bölümlerini yazar.
 
     > [!TIP]
-    > Yönetilen etki alanının adı contoso.com ise, bölge olarak contoso.COM girin. Bölge adının büyük harfle belirtilmiş olması gerektiğini unutmayın.
+    > Yönetilen etki alanının adı contoso.com ise, bölge olarak CONTOSO.COM girin. Bölge adının büyük harfle belirtilmiş olması gerektiğini unutmayın.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Linux sanal makinesinde NTP (ağ zaman Protokolü) ayarlarını yapılandırma
@@ -121,7 +121,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
 1. AAD etki alanı Hizmetleri tarafından yönetilen etki alanını bulun. SSH terminalinizde aşağıdaki komutu yazın:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Makineyi etki alanına ekleyin. SSH terminalinizde aşağıdaki komutu yazın:
@@ -149,7 +149,7 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
     > VM 'niz etki alanına katılamediğinde, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 Makine yönetilen etki alanına başarıyla katıldığında bir ileti ("makinenin bölgeye başarıyla kaydedildi") almanız gerekir.
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Etki alanına katılımı doğrula
 Makinenin yönetilen etki alanına başarıyla katılıp katılmadığını doğrulayın. Farklı bir SSH bağlantısı kullanarak etki alanına katılmış Ubuntu VM 'sine bağlanın. Bir etki alanı kullanıcı hesabı kullanın ve ardından Kullanıcı hesabının doğru çözümlenmiş olup olmadığını kontrol edin.
 
-1. SSH terminalinizde, SSH kullanarak etki alanına katılmış Ubuntu sanal makinesine bağlanmak için aşağıdaki komutu yazın. Yönetilen etki alanına ait bir etki alanı hesabı kullanın (örneğin, bu durumda 'bob@contoso.COM').)
+1. SSH terminalinizde, SSH kullanarak etki alanına katılmış Ubuntu sanal makinesine bağlanmak için aşağıdaki komutu yazın. Yönetilen etki alanına ait bir etki alanı hesabı kullanın (örneğin, bu durumda 'bob@CONTOSO.COM').)
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. SSH terminalinizde, giriş dizininin doğru şekilde başlatılmış olup olmadığını görmek için aşağıdaki komutu yazın.

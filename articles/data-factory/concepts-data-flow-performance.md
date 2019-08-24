@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404614"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992338"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -117,6 +117,10 @@ Bu simgeye tıkladığınızda, veri akışınız için yürütme planı ve sonr
 * ADF 'nin kaç bölüm kullanacağı üzerinde denetim yapabilirsiniz. Her kaynak & havuz dönüştürmesinin yanı sıra her bir dönüştürme için de bir bölümleme düzeni ayarlayabilirsiniz. Daha küçük dosyalar için, "tek bölüm" seçimini seçtiğinizde, küçük dosyalarınızın bölümlenmesi için Spark sorulmaya kıyasla daha iyi ve hızlı bir şekilde çalışabilir.
 * Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, "hepsini bir kez deneme" ve bölüm sayısını ayarlama seçeneklerinden birini belirleyebilirsiniz.
 * Verilerinizi araştırdığınızda ve iyi bir karma anahtar olabilecek sütunlarınızın olduğunu görürseniz, karma bölümlendirme seçeneğini kullanın.
+* Veri önizleme ve ardışık düzen Hata ayıklamasında hata ayıklarken, dosya tabanlı kaynak veri kümeleri için sınır ve örnekleme boyutlarının, okunan satır sayısına değil, yalnızca döndürülen satır sayısına uygulanacağını unutmayın. Hata ayıklama yürütmelerinin performansını etkileyebilir ve muhtemelen akışın başarısız olmasına neden olabileceğinden, bu dikkat edilmesi önemlidir.
+* Hata ayıklama kümelerinin varsayılan olarak küçük tek düğümlü kümeler olduğunu unutmayın, bu nedenle hata ayıklama için geçici küçük dosyaları kullanın. Hata ayıklama ayarları ' na gidin ve geçici bir dosya kullanarak verilerinizin küçük bir alt kümesini işaret edin.
+
+![Hata ayıklama ayarları](media/data-flow/debugsettings3.png "Hata ayıklama ayarları")
 
 ### <a name="file-naming-options"></a>Dosya adlandırma seçenekleri
 

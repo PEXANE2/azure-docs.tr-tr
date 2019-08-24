@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 151eb535e70bd485c978ac21539c784bbea0a532
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9331473402ddd22180df3b404824969360d48164
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973236"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995826"
 ---
 # <a name="opc-vault-architecture"></a>OPC Kasası mimarisi
 
@@ -64,7 +64,7 @@ OPC Kasası mikro hizmeti, OPC UA uygulamalarına yönelik şirkete özgü bir C
 - Her CA sertifikası için iptal listesi, gizli olarak Key Vault da depolanır. Bir uygulamanın kaydı kaldırıldıktan sonra, bir yönetici tarafından CRL 'de uygulama sertifikası da iptal edilir.
 - Toplu ve tek sertifika iptali desteklenir.
 
-### <a name="certificate-request"></a>Sertifika Isteği
+### <a name="certificate-request"></a>Sertifika isteği
 Bir sertifika isteği, OPC UA uygulaması için "sertifika Imzalama Isteği" (CSR) kullanarak yeni bir anahtar çifti veya imzalı bir sertifika oluşturmak için iş akışını uygular. 
 - İstek, konu veya CSR gibi bilgileri içeren bir veritabanında ve OPC UA uygulamasına bir başvuru olarak depolanır. 
 - Hizmette iş mantığı, isteği uygulama veritabanında depolanan bilgilere karşı doğrular. Örneğin, veritabanındaki uygulama URI 'Si CSR içindeki uygulama URI 'Siyle eşleşmelidir.
@@ -88,3 +88,10 @@ Bir fabrika ağı küresel bulma sunucusunu desteklemek için OPC Kasası modül
 ## <a name="yet-unsupported-features"></a>Henüz desteklenmeyen özellikler
 
 **(*)** henüz desteklenmiyor.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+OPC Kasası mimarisini öğrendiğinize göre, aşağıda önerilen sonraki adım verilmiştir:
+
+> [!div class="nextstepaction"]
+> [OPC Kasası oluşturma ve dağıtma](howto-opc-vault-deploy.md)

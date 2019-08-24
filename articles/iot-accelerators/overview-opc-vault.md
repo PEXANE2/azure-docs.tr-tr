@@ -1,6 +1,6 @@
 ---
-title: OPC kasası - Azure nedir | Microsoft Docs
-description: OPC kasası genel bakış
+title: OPC Kasası nedir?-Azure | Microsoft Docs
+description: OPC kasasına genel bakış
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,25 +8,32 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 40a9016ac7a10175b51f0fb6f072dd089bde3a51
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606290"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997298"
 ---
-# <a name="what-is-opc-vault"></a>OPC kasası nedir?
+# <a name="what-is-opc-vault"></a>OPC Kasası nedir?
 
-Kasa OPC yapılandırma, kaydetme ve sertifika yaşam döngüsü OPC UA sunucusu ve istemci uygulamalarını bulutta yönetme bir mikro hizmetidir. Bu makalede, OPC kasanın basit kullanım durumları açıklanmaktadır.
+OPC Kasası, buluttaki OPC UA sunucusu ve istemci uygulamaları için sertifika yaşam döngüsünü yapılandırabileceğiniz, kaydedebildiğiniz ve yönetebilen bir mikro hizmettir. Bu makalede OPC kasasının basit kullanım durumları açıklanmaktadır.
 
 ## <a name="certificate-management"></a>Sertifika yönetimi
 
-Örneğin, kendi OPC UA sunucunuz, yeni oluşturulan istemci uygulamaya bağlanmak bir üretim şirketi gerekir. Üretici ilk erişim sunucu makinesinin yaptığında, bir hata iletisi hemen istemci uygulamaya güvenli olmadığını belirtmek için OPC UA sunucu uygulaması gösterilmektedir. Bu mekanizma vicious atölyede deşifre etme engelleyen herhangi bir uygulamada yetkisiz erişimi önlemek için OPC UA server makinesi içinde yerleşik olarak bulunur.
+Örneğin, bir üretim şirketinin OPC UA sunucu makinesini yeni oluşturulan istemci uygulamasına bağlanması gerekir. Üretici, sunucu makinesine ilk erişimi yaptığında, istemci uygulamanın güvenli olmadığını belirtmek için OPC UA sunucu uygulamasında hemen bir hata iletisi gösterilir. Bu mekanizma, tüm yetkisiz uygulama erişimini engellemek için OPC UA sunucu makinesinde oluşturulmuştur ve bu da, mağaza katında çarpıcı bir şekilde çalışmaya engel olur.
 
-## <a name="application-security-management"></a>Uygulama güvenlik yönetimi
-Profesyonel bir güvenlik OPC kasa mikro hizmet OPC kasa sertifika kayıt defteri, depolama ve yaşam döngüsü yönetimi için tüm işlevlere sahip olduğu herhangi bir istemci uygulama ile iletişim kurmak OPC UA sunucusu kolayca etkinleştirmek için kullanır. Artık bir OPC UA sunucusuna güvenli bir şekilde bağlıdır, bu yeni oluşturulan istemci uygulamasına iletişim kurabilir
+## <a name="application-security-management"></a>Uygulama güvenliği yönetimi
+Bir güvenlik uzmanı, OPC UA sunucusunun herhangi bir istemci uygulamasıyla iletişim kurmasını sağlamak için OPC kasamikro hizmetini kullanır, çünkü OPC Kasası sertifika kayıt defteri, depolama ve yaşam döngüsü yönetimi için tüm işlevlere sahiptir. Artık OPC UA sunucusu güvenli bir şekilde bağlı olduğundan, yeni oluşturulan istemci uygulamasıyla iletişim kurabilir
 
-## <a name="the-complete-opc-vault-architecture"></a>Tüm OPC kasa mimarisi
-Aşağıdaki diyagramda, tüm OPC kasa mimarisi gösterilmektedir.
+## <a name="the-complete-opc-vault-architecture"></a>Tüm OPC Kasası mimarisi
+Aşağıdaki diyagramda, tüm OPC Kasası mimarisi gösterilmektedir.
 
-![OPC kasa mimarisi](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC Kasası mimarisi](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Artık OPC kasası ve kullanımları hakkında bilgi edindiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
+
+> [!div class="nextstepaction"]
+> [OPC Kasası mimarisi](overview-opc-vault-architecture.md)

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b626f906738e3a6e65053408cfdc2002d459a6e2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: MT
+ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973863"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997639"
 ---
-# <a name="build-and-deploy-the-opc-ua-certificate-management-service"></a>OPC UA sertifika yönetimi hizmetini derleme ve dağıtma
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
 
-Bu makalede, OPC UA sertifika yönetimi hizmetinin Azure 'da nasıl dağıtılacağı açıklanır.
+Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da nasıl dağıtılacağı açıklanır.
 
 > [!NOTE]
 > Dağıtım ayrıntıları ve yönergeleri hakkında daha fazla bilgi için GitHub [OPC Kasası deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
@@ -59,20 +59,20 @@ ya da bir tam komut satırı girin:
 7. Bu dağıtım ile geliştirmeyi planlıyorsanız, Swagger Kullanıcı arabirimini etkinleştirmek `-development 1` ve hata ayıklama yapılarını dağıtmak için ekleyin.
 6. Aboneliğinizde oturum açmak ve ek bilgi sağlamak için betikteki yönergeleri izleyin.
 9. Başarılı bir derleme ve dağıtım işleminden sonra şu iletiyi görmeniz gerekir:
+   ```
+   To access the web client go to:
+   https://myResourceGroup.azurewebsites.net
 
-```
-To access the web client go to:
-https://myResourceGroup.azurewebsites.net
+   To access the web service go to:
+   https://myResourceGroup-service.azurewebsites.net
 
-To access the web service go to:
-https://myResourceGroup-service.azurewebsites.net
+   To start the local docker GDS server:
+   .\myResourceGroup-dockergds.cmd
 
-To start the local docker GDS server:
-.\myResourceGroup-dockergds.cmd
+   To start the local dotnet GDS server:
+   .\myResourceGroup-gds.cmd
+   ```
 
-To start the local dotnet GDS server:
-.\myResourceGroup-gds.cmd
-```
 Sorunlarla karşılaşalım durumunda [aşağıdaki](#troubleshooting-deployment-failures)adımları izleyin.
 
 8. En sevdiğiniz tarayıcıyı açın ve uygulama sayfasını açın:`https://myResourceGroup.azurewebsites.net`
@@ -86,7 +86,7 @@ Yalnızca Web uygulaması ikili dosyalarını yeniden dağıtmak da mümkündür
 
 Dağıtım başarılı olduktan sonra Hizmetleri kullanmaya başlayabilirsiniz: [OPC Kasası sertifika yönetimi hizmetini yönetme](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-services-from-the-subscription"></a>Sertifika yönetimi hizmetlerini abonelikten silme
+## <a name="delete-the-certificate-management-service-from-the-subscription"></a>Sertifika Yönetimi hizmetini abonelikten silme
 
 1. Azure portal oturum açın: `https://portal.azure.com`.
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.

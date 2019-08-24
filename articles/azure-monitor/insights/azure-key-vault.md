@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849209"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997697"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Izleyici 'de Azure Key Vault Analytics çözümü
 
@@ -103,28 +103,28 @@ Aşağıdaki tabloda, verilerin Azure Key Vault için nasıl toplandığı hakk�
 ## <a name="azure-monitor-log-records"></a>Azure Izleyici günlük kayıtları
 Azure Key Vault çözümü, Azure Tanılama içindeki [auditevent günlüklerinden](../../key-vault/key-vault-logging.md) toplanan bir tür **Anahtar Kasası** olan kayıtları analiz eder.  Bu kayıtların özellikleri aşağıdaki tabloda verilmiştir:  
 
-| Özellik | Description |
+| Özellik | Açıklama |
 |:--- |:--- |
-| Type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| Callerıpaddress |İsteği yapan istemcinin IP adresi |
-| Category | *AuditEvent* |
-| CorrelationId |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
-| Ort |Milisaniye cinsinden REST API'si isteğini sunmak için geçen süre. Bu süre ağ gecikmesini içermez, bu nedenle istemci tarafında ölçmeniz gereken süre bu süre ile eşleşmeyebilir. |
-| httpStatusCode_d |İstek tarafından döndürülen HTTP durum kodu (örneğin, *200*) |
-| id_s |İsteğin benzersiz KIMLIĞI |
-| identity_claim_appid_g | Uygulama KIMLIĞI için GUID |
-| OperationName |[Azure Key Vault günlük kaydı](../../key-vault/key-vault-logging.md) bölümünde belgelendiği şekilde işlemin adı |
-| OperationVersion |İstemci tarafından istenen REST API sürümü (örneğin *2015-06-01*) |
-| requestUri_s |İsteğin URI 'si |
-| Resource |Anahtar kasasının adı |
-| ResourceGroup |Anahtar kasasının kaynak grubu |
-| RESOURCEID |Azure Resource Manager Kaynak Kimliği. Key Vault günlükleri için, bu Key Vault kaynak KIMLIĞIDIR. |
-| ResourceProvider |*MICROSOFT. KEYVAULT* |
-| KaynakTürü | *KASALARI* |
-| ResultSignature |HTTP durumu (örneğin, *Tamam*) |
-| ResultType |REST API isteğin sonucu (örneğin, *başarılı*) |
-| SubscriptionId |Key Vault içeren aboneliğin Azure abonelik KIMLIĞI |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |İsteği yapan istemcinin IP adresi |
+| `Category` | *AuditEvent* |
+| `CorrelationId` |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
+| `DurationMs` |Milisaniye cinsinden REST API'si isteğini sunmak için geçen süre. Bu süre ağ gecikmesini içermez, bu nedenle istemci tarafında ölçmeniz gereken süre bu süre ile eşleşmeyebilir. |
+| `httpStatusCode_d` |İstek tarafından döndürülen HTTP durum kodu (örneğin, *200*) |
+| `id_s` |İsteğin benzersiz KIMLIĞI |
+| `identity_claim_appid_g` | Uygulama KIMLIĞI için GUID |
+| `OperationName` |[Azure Key Vault günlük kaydı](../../key-vault/key-vault-logging.md) bölümünde belgelendiği şekilde işlemin adı |
+| `OperationVersion` |İstemci tarafından istenen REST API sürümü (örneğin *2015-06-01*) |
+| `requestUri_s` |İsteğin URI 'si |
+| `Resource` |Anahtar kasasının adı |
+| `ResourceGroup` |Anahtar kasasının kaynak grubu |
+| `ResourceId` |Azure Resource Manager Kaynak Kimliği. Key Vault günlükleri için, bu Key Vault kaynak KIMLIĞIDIR. |
+| `ResourceProvider` |*MICROSOFT. KEYVAULT* |
+| `ResourceType` | *KASALARI* |
+| `ResultSignature` |HTTP durumu (örneğin, *Tamam*) |
+| `ResultType` |REST API isteğin sonucu (örneğin, *başarılı*) |
+| `SubscriptionId` |Key Vault içeren aboneliğin Azure abonelik KIMLIĞI |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Eski Key Vault çözümünden geçiş
 2017 Ocak 'ta, Key Vault günlüklerin Log Analytics değiştirme biçimi değiştirildi. Bu değişiklikler aşağıdaki avantajları sağlar:
