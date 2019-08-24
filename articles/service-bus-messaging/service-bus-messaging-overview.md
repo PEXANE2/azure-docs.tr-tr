@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988485"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013130"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
-Microsoft Azure Service Bus, tam olarak yönetilen bir kuruluş olan [tümleştirme](https://azure.com/integration) ileti Aracısı. Service Bus, en sık olarak uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve zaman uyumsuz veri ve durum aktarımı için güvenilir ve güvenli bir platformdur. Veriler, farklı uygulamalar ve hizmetler arasında *iletiler* kullanılarak aktarılır. JSON, XML veya yalnızca metin içerebilir, ikili biçimde bir iletidir. 
+Microsoft Azure Service Bus, tam olarak yönetilen bir kurumsal [tümleştirme](https://azure.com/integration) ileti aracısıdır. Service Bus, en sık olarak uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve zaman uyumsuz veri ve durum aktarımı için güvenilir ve güvenli bir platformdur. Veriler, farklı uygulamalar ve hizmetler arasında *iletiler* kullanılarak aktarılır. Bir ileti ikili biçimindedir, bu da JSON, XML veya yalnızca metin içerebilir. 
 
 Yaygın olarak kullanılan bazı mesajlaşma senaryoları:
 
@@ -39,7 +39,7 @@ Ad alanı, tüm mesajlaşma bileşenlerini kapsayan bir kapsayıcıdır. Tek bir
 
 ![Kuyruk](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Sıralarındaki iletileri sıralanır ve zaman damgalı işle. Kabul edildikten sonra ileti yedekli depolama alanında güvenli bir şekilde tutulur. İletileri teslim edilir *çekme* istek iletileri sunan modu.
+Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalanır. Kabul edildikten sonra ileti yedekli depolama alanında güvenli bir şekilde tutulur. İletiler istek üzerine iletiler teslim eden *çekme* modunda teslim edilir.
 
 ## <a name="topics"></a>Konular
 
@@ -93,11 +93,11 @@ Aboneler, bir konu başlığından hangi iletileri almak istediklerini tanımlay
 
 ### <a name="duplicate-detection"></a>Yineleme algılama
 
-Bir hata oluşursa, istemcinin bir gönderme işleminin sonucu hakkında herhangi bir şüpheli neden [yinelenen algılama](duplicate-detection.md) aynı iletinin ve kuyruk veya konuda yeniden göndermesini sağlayarak bu durumlar dışında şüpheli alır Yinelenen kopyalar atar.
+İstemcinin bir gönderme işleminin sonucu hakkında şüpheli olmasına neden olan bir hata oluşursa, [çoğaltılan algılama](duplicate-detection.md) , gönderenin aynı iletiyi yeniden göndermesini sağlayarak bu durumlardan yararlanır ve sıra veya konu, herhangi bir yinelemeyi iptal eder serisi.
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>Azure kaynakları için SAS, RBAC ve Yönetilen kimlikler
 
-Service Bus, [Paylaşılan Erişim İmzaları](service-bus-sas.md) (SAS), [Rol Tabanlı Erişim Denetimi](service-bus-role-based-access-control.md) (RBAC) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md) gibi güvenlik protokollerini destekler.
+Service Bus, [Paylaşılan Erişim İmzaları](service-bus-sas.md) (SAS), [Rol Tabanlı Erişim Denetimi](authenticate-application.md) (RBAC) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md) gibi güvenlik protokollerini destekler.
 
 ### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
 
@@ -129,4 +129,4 @@ Service Bus mesajlaşmasını kullanmaya başlamak için aşağıdaki makalelere
 * Azure Service Bus [Standart ve Premium](https://azure.microsoft.com/pricing/details/service-bus/) katmanları ve bunların fiyatlandırması hakkında daha fazla bilgi edinin
 * [Azure Service Bus Premium katmanının performansı ve gecikme süresi](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * [.NET](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md) ve [JMS](service-bus-java-how-to-use-jms-api-amqp.md) hızlı başlangıçlarını deneyin
-* [Service Bus Explorer ile Service Bus kaynaklarını yönetme](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Service Bus Gezgini ile Service Bus kaynaklarını yönetme](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

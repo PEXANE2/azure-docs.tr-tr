@@ -10,18 +10,21 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847978"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011515"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 
 Bu makalede, bir Web hizmeti olarak GPU özellikli bir modeli dağıtmak için Azure Machine Learning hizmetini nasıl kullanacağınız öğretilir. Bu makaledeki bilgiler, Azure Kubernetes Service (AKS) üzerinde bir model dağıtmaya dayalıdır. AKS kümesi, çıkarım için model tarafından kullanılan bir GPU kaynağı sağlar.
 
 Çıkarım veya model Puanlama, dağıtılan modelin tahminleri yapmak için kullanıldığı aşamadır. CPU yerine GPU 'Ları kullanmak, yüksek bir paralelleştirilebilir hesaplama üzerinde performans avantajları sunar.
+
+> [!IMPORTANT]
+> GPU çıkarımı yalnızca Azure Kubernetes hizmetinde desteklenir.
 
 > [!TIP]
 > Bu makaledeki kod parçacıkları bir TensorFlow modelini görebilse de, bilgileri GPU 'ları destekleyen herhangi bir Machine Learning çerçevesine uygulayabilirsiniz.

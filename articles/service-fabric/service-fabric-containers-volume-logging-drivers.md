@@ -1,5 +1,5 @@
 ---
-title: Service Fabric Azure dosyaları birim sürücüsü (Önizleme) | Microsoft Docs
+title: Service Fabric Azure dosyaları birim sürücüsü (GA) | Microsoft Docs
 description: Service Fabric, kapsayıcıınızdan birimleri yedeklemek için Azure dosyalarının kullanılmasını destekler. Bu, şu anda önizleme aşamasındadır.
 services: service-fabric
 author: athinanthny
@@ -9,18 +9,20 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: eb45dda9886450d217355d876ae35af954d99845
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955589"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013491"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure dosyaları birim sürücüsü
-Azure Files Volume eklentisi, Docker kapsayıcıları için [Azure dosya](/azure/storage/files/storage-files-introduction) tabanlı birimler sağlayan bir [Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) eklentisidir. Bu Docker birim eklentisi, Service Fabric kümelerine dağıtılabilen bir Service Fabric uygulaması olarak paketlenir. Amacı, kümeye dağıtılan diğer Service Fabric kapsayıcı uygulamaları için Azure dosya tabanlı birimler sağlamaktır.
+Docker kapsayıcıları için [Azure dosya](/azure/storage/files/storage-files-introduction) tabanlı birimler sağlayan bir [Docker birimi](https://docs.docker.com/engine/extend/plugins_volume/) eklentisi artık **GA (genel kullanıma sunuldu)** .
+
+Bu Docker birim eklentisi, Service Fabric kümelerine dağıtılabilen bir Service Fabric uygulaması olarak paketlenir. Amacı, kümeye dağıtılan diğer Service Fabric kapsayıcı uygulamaları için Azure dosya tabanlı birimler sağlamaktır.
 
 > [!NOTE]
-> Azure Files Volume eklentisinin sürüm 6.5.516.9494, bu belgeyle kullanılabilen bir önizleme sürümüdür. Önizleme sürümü olarak, üretim ortamlarında kullanılması desteklenmez.
+> Azure Files Volume eklentisinin sürümü 6.5.661.9590, GA (genel kullanıma sunuldu) bir sürümdür. 
 >
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -119,11 +121,11 @@ Kapsayıcılarınız için birimleri sağlayan Service Fabric uygulaması [Servi
 4. Bu uygulamayı oluşturun, **listenport** uygulama parametre değerine yakın bir uyarı ödeyerek. Bu değer, Azure Files Volume eklentisinin Docker Daemon 'dan istekleri dinlediği bağlantı noktasıdır. Uygulamaya girilen bağlantı noktasının ClusterManifest 'deki VolumePluginPorts ile eşleştiğinden ve kümenin veya uygulamalarınızın kullandığı diğer bağlantı noktalarıyla çakışmadığından emin olun.
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494  -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -136,11 +138,11 @@ Yukarıdaki 1-3 adımlarını izleyin [.](/azure/service-fabric/service-fabric-c
  Azure dosyaları toplu eklenti uygulaması için varsayılan hizmet örneği sayısı-1 ' dir. Bu, kümedeki her düğüme dağıtılan bir hizmetin bir örneği olduğu anlamına gelir. Ancak, Azure dosyaları toplu eklenti uygulamasını yerel bir geliştirme kümesine dağıttığınızda, hizmet örneği sayısı 1 olarak belirtilmelidir. Bu, **InstanceCount** uygulama parametresi aracılığıyla yapılabilir. Bu nedenle, yerel bir geliştirme kümesinde Azure dosyaları toplu eklenti uygulaması oluşturma komutu şunlardır:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>Uygulamalarınızı birimi kullanacak şekilde yapılandırma

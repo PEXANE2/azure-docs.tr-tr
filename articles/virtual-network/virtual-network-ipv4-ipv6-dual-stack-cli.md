@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı
+title: Azure-CLı 'de temel Load Balancer kullanarak bir IPv6 ikili yığın uygulaması dağıtma
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure CLı kullanarak Azure sanal ağ 'da IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 75af2012c4e6287a2fbe76098c2a325e6c9ae2ef
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 265a14fa216741a5a5994389e671e7558a527261
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640685"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013723"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Temel Load Balancer-CLı (Önizleme) kullanarak bir IPv6 çift yığın uygulaması dağıtma
 
-Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırmasına sahip NIC 'Ler olan sanal makineler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. Çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
+Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, ikili (IPv4 + IPv6) ön uç yapılandırmalarına sahip temel bir Load Balancer ve NIC 'leri olan VM 'Ler içeren bir çift yığın (IPv4 + IPv6) Load Balancer uygulamasının nasıl dağıtılacağı gösterilmektedir. Bu, çift bir IP yapılandırmasına, çift ağ güvenlik grubu kuralına ve ikili genel IP 'Lere sahiptir.
+
+Standart Load Balancer kullanarak bir çift yığın (ıPV4 + IPv6) uygulaması dağıtmak için bkz. [Azure CLI kullanarak standart Load Balancer Ile IPv6 ikili yığın uygulaması dağıtma](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
 > [!Important]
 > Azure sanal ağ için IPv6 ikili yığını şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

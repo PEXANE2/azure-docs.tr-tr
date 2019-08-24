@@ -12,16 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249856"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012831"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Azure 'da temel Load Balancer bir IPv6 ikili yığın uygulaması dağıtma-şablon (Önizleme)
 
-Bu makale, için geçerli Azure Resource Manager VM şablonunun parçası olan IPv6 yapılandırma görevlerinin bir listesini sağlar. IPv4 ve IPv6 alt ağları içeren bir çift yığın sanal ağı, Azure 'da çift bir yığın (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP 'si olan NIC 'leri olan VM 'Ler içeren bir çift yığın (IPv4 + IPv6) uygulaması dağıtmak için bu makalede açıklanan şablonu kullanın yapılandırma, ağ güvenlik grubu ve genel IP 'Ler. 
+Bu makale, için geçerli Azure Resource Manager VM şablonunun parçası olan IPv6 yapılandırma görevlerinin bir listesini sağlar. IPv4 ve IPv6 alt ağları içeren çift yığın sanal ağını içeren temel Load Balancer bir çift yığın (IPv4 + IPv6) uygulaması dağıtmak için bu makalede açıklanan şablonu kullanın, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip temel bir Load Balancer, ile sanal makinelere Çift IP yapılandırmasına, ağ güvenlik grubuna ve genel IP 'Lere sahip NIC 'Ler.
+
+Standart Load Balancer kullanarak bir çift yığın (ıPV4 + IPv6) uygulaması dağıtmak için, bkz. [Standart Load Balancer şablonuyla IPv6 ikili yığın uygulaması dağıtma](ipv6-configure-standard-load-balancer-template-json.md).
 
 ## <a name="required-configurations"></a>Gerekli yapılandırma
 
@@ -176,7 +178,7 @@ Bir ağ sanal gereci kullanıyorsanız, yönlendirme tablosuna IPv6 yolları ekl
 ```
 
 ## <a name="sample-vm-template-json"></a>Örnek VM şablonu JSON
-Azure sanal ağı 'nda Azure Resource Manager şablonu kullanarak bir IPv6 çift yığın uygulaması dağıtmak için, [burada](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)örnek şablonu görüntüleyin.
+Azure Resource Manager şablonu kullanarak Azure sanal ağ 'da temel Load Balancer bir IPv6 çift yığın uygulaması dağıtmak için, [burada](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)örnek şablonu görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

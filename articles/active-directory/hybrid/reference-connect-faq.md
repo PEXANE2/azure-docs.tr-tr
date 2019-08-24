@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014189"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011307"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -270,3 +270,7 @@ Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız 
 * [Azure AD Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)'ye giderek Teknik sorular ve yanıtlar arayın veya kendi sorularınızı sorun.
 
 [Azure AD için destek alın](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**S: Eşitleme adımı hatalarından sonra neden 6311 ve 6401 olaylarını görüyorum?**
+
+Olaylar 6311- **sunucu, geri çağırma işlemi gerçekleştirirken beklenmeyen bir hatayla karşılaştı** ve 6401- **Yönetim aracısı denetleyicisi beklenmeyen bir hatayla karşılaştı** -eşitleme adımı hatasından sonra her zaman günlüğe kaydedilir. Bu hataları gidermek için, eşitleme adımı hatalarını temizlemeniz gerekir.  Daha fazla bilgi için bkz. [eşitleme sırasında hata giderme](tshoot-connect-sync-errors.md) ve [Azure AD Connect eşitleme Ile nesne eşitleme sorunlarını giderme](/tshoot-connect-objectsync.md)

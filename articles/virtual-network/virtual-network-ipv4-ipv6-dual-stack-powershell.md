@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-PowerShell
+title: Azure-PowerShell 'de temel Load Balancer kullanarak IPv6 ikili yığın uygulaması dağıtma
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure PowerShell kullanarak Azure sanal ağ 'da IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: b9a6b0ee6796acc2b9adc88480f6933af413e4e6
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260857"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011442"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Azure 'da IPv6 ikili yığın uygulaması dağıtma-PowerShell (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Temel Load Balancer PowerShell (Önizleme) kullanarak bir IPv6 çift yığın uygulaması dağıtma
 
-Bu makalede, çift yığın sanal ağı ve alt ağı içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırmasına sahip NIC 'Ler olan sanal makineler, ağ güvenlik grubu ve genel IP 'Ler.
+Bu makalede, çift yığın sanal ağı ve alt ağı içeren bir çift yığın (IPv4 + IPv6) uygulamasını temel Load Balancer dağıtma, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip temel bir Load Balancer, ve içeren NIC 'leri olan sanal makineler Çift IP yapılandırması, ağ güvenlik grubu ve genel IP 'Ler.
+
+Standart Load Balancer kullanarak bir çift yığın (ıPV4 + IPv6) uygulaması dağıtmak için, bkz. [Azure PowerShell kullanarak standart Load Balancer bir IPv6 ikili yığın uygulaması dağıtma](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 
 > [!Important]
 > Azure sanal ağ için IPv6 desteği şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -152,7 +154,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
   -BackendPort 80
 ```
 
-### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
+### <a name="create-load-balancer"></a>Yük dengeleyici oluştur
 
 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile temel Load Balancer oluşturun. Aşağıdaki örnek, önceki adımlarda oluşturduğunuz IPv4 ve IPv6 ön uç IP yapılandırması, arka uç havuzları ve yük dengeleme kurallarını kullanarak *Myloadbalancer* adlı bir genel temel Load Balancer oluşturur:
 
@@ -170,7 +172,7 @@ $lb = New-AzLoadBalancer `
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 Bazı VM 'Leri dağıtmadan ve dengeleyicinizi test etmeden önce, destekleyici ağ kaynakları (kullanılabilirlik kümesi, ağ güvenlik grubu, sanal ağ ve sanal NIC 'Ler) oluşturmanız gerekir. 
-### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
+### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
 Uygulamanızın yüksek oranda kullanılabilir olmasını sağlamak için VM’lerinizi bir kullanılabilirlik kümesine yerleştirin.
 
 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)ile bir kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek *myAvailabilitySet* adında bir kullanılabilirlik kümesi oluşturur:
@@ -185,7 +187,7 @@ $avset = New-AzAvailabilitySet `
   -Sku aligned
 ```
 
-### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
+### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluştur
 
 VNET 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ güvenlik grubu oluşturun.
 

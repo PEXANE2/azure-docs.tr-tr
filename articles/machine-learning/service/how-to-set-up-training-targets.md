@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d9d6dc8a980c543aa1a94c0ed4e9ae845769567
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
-ms.translationtype: HT
+ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997896"
+ms.locfileid: "70011574"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>İşlem hedeflerine yönelik model eğitiminin ayarlama 
 
@@ -432,6 +432,8 @@ Aynı denemeyi, [amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma 
 * Denemesi, `Estimator` [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md)bölümünde gösterildiği gibi bir nesneyle birlikte gönder.
 * [CLI uzantısını kullanarak](reference-azure-machine-learning-cli.md#experiments)bir deneme gönderir.
 * [Vs Code uzantısı](how-to-vscode-tools.md#train-and-tune-models)aracılığıyla bir deneme gönderir.
+
+<a id="gitintegration"></a>
 
 ## <a name="git-tracking-and-integration"></a>Git izleme ve Tümleştirme
 

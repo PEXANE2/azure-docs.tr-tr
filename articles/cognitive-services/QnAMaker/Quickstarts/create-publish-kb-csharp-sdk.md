@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: diberry
-ms.openlocfilehash: 686bdf834efd637db49a7b51dc2bf7effa1eb4cb
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2902e63f65db3883d6d8f442db273d19f60e82a8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839974"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012783"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>Hızlı Başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplığı
 
@@ -186,7 +186,7 @@ Uygulama dizininizde DotNet `run` komutuyla uygulamayı çalıştırın.
 dotnet run
 ```
 
-[Bu hızlı başlangıç için kaynak kodu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.css) soru-cevap oluşturma C# örnekleri GitHub deposunda mevcuttur.
+[Bu hızlı başlangıç için kaynak kodu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs) soru-cevap oluşturma C# örnekleri GitHub deposunda mevcuttur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

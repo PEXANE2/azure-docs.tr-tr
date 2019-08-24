@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery yapılandırması başka bir Azure bölgesine taşınıyor | Microsoft Docs
+title: Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma | Microsoft Docs
 description: Site Recovery yapılandırmasını başka bir Azure bölgesine taşımaya yönelik kılavuz
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,70 +8,73 @@ ms.topic: tutorial
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: ba0e2577d6fb8bac66322917936fe06825af0d96
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: 2cf06a0c4e35d22cbad260201183516db2f07436
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708301"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013456"
 ---
-# <a name="moving-recovery-services-vault-and--azure-site-recovery-configuration-to-another-azure-region"></a>Kurtarma Hizmetleri kasasını ve Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma
+# <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Kurtarma Hizmetleri kasasını ve Azure Site Recovery yapılandırmasını başka bir Azure bölgesine taşıma
 
-Mevcut Azure kaynaklarınızı bir bölgeden başka yönetilebilirlik, idare nedenlerinden veya şirket merbilirlerinin/alımlarından kaynaklanan nedenlerle taşımak istediğiniz çeşitli senaryolar vardır. Azure VM 'Leri taşırken taşımak isteyebileceğiniz ilgili kaynaklardan biri aynı durum için olağanüstü durum kurtarma yapılandırması olur. Mevcut bir olağanüstü durum kurtarma yapılandırmasını bir bölgeden diğerine taşımanın ilk sınıf yolu yoktur. Bu aslında hedef bölgenizi kaynak VM bölgenize göre yapılandırdığınıza ve bunu değiştirmeye karar verirken, hedef bölgenin daha önce var olan yapılandırmalarının yeniden kullanılamaz ve sıfırlanması gerekir. Bu makale, olağanüstü durum kurtarma kurulumunu yeniden yapılandırmak ve farklı bir bölgeye taşımak için adım adım işlemi tanımlar.
+Mevcut Azure kaynaklarınızı bir bölgeden diğerine taşımak isteyebileceğiniz çeşitli senaryolar vardır. Bu örnekler yönetilebilirlik, idare nedenleri veya şirket birleşmeleri ve alımlar nedeniyle yapılır. Azure VM 'lerinizi taşırken taşımak isteyebileceğiniz ilgili kaynaklardan biri olağanüstü durum kurtarma yapılandırması olur. 
+
+Mevcut bir olağanüstü durum kurtarma yapılandırmasını bir bölgeden diğerine taşımanın ilk sınıf yolu yoktur. Bunun nedeni, hedef bölgenizi kaynak VM bölgenize göre yapılandırdığınıza bağlıdır. Kaynak bölgeyi değiştirmeye karar verirken, hedef bölgenin daha önce var olan yapılandırmalarının yeniden kullanılması ve sıfırlanması gerekir. Bu makale, olağanüstü durum kurtarma kurulumunu yeniden yapılandırmak ve farklı bir bölgeye taşımak için adım adım işlemi tanımlar.
 
 Bu belgede şunları yapmanız gerekir:
 
 > [!div class="checklist"]
-> * Taşıma için önkoşulları doğrulama
-> * Azure Site Recovery tarafından kullanılan kaynakları belirler 
-> * Çoğaltmayı devre dışı bırakma
-> * Kaynakları Sil 
-> * VM 'Lerin yeni kaynak bölgesine bağlı olarak Site Recovery 'yi yeniden kurun.
+> * Taşıma için önkoşulları doğrulayın.
+> * Azure Site Recovery tarafından kullanılan kaynakları belirler.
+> * Çoğaltmayı devre dışı bırakın.
+> * Kaynakları silin.
+> * VM 'Lerin yeni kaynak bölgesine göre Site Recovery ayarlayın.
 
 > [!IMPORTANT]
-> Şu anda bir kurtarma hizmetleri kasasını ve DR yapılandırmasını farklı bir bölgeye taşımak için birinci sınıf yolu yoktur, bu belge, çoğaltmayı devre dışı bırakma ve yeni bölgede sıfırlama sürecinde müşteriye kılavuzluk eder.
+> Şu anda, kurtarma hizmetleri kasasını ve olağanüstü durum kurtarma yapılandırmasını farklı bir bölgeye taşımak için birinci sınıf bir yol yoktur. Bu makale, çoğaltmayı devre dışı bırakma ve yeni bölgede ayarlama sürecinde size rehberlik eder.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VM 'lerini farklı bir bölgeye taşımayı denemeden önce olağanüstü durum kurtarma yapılandırmasını kaldırıp sildiğinizden emin olun. 
 
-> [!NOTE]
-> Azure VM için yeni hedef bölgeniz olağanüstü durum kurtarma hedefi bölgesiyle aynıysa, mevcut çoğaltma yapılandırmanızı kullanabilir ve [burada](azure-to-azure-tutorial-migrate.md) bahsedilen adımlara göre hareket edebilirsiniz 
+  > [!NOTE]
+  > Azure VM için yeni hedef bölgeniz olağanüstü durum kurtarma hedefi bölgesiyle aynıysa, mevcut çoğaltma yapılandırmanızı kullanabilir ve taşıyabilirsiniz. [Azure IaaS VM 'lerini başka bir Azure bölgesine taşıma](azure-to-azure-tutorial-migrate.md)bölümündeki adımları izleyin.
 
-- Bilinçli bir karar verirken ve sanal makinenizin, VM 'nin taşınması tamamlanana kadar olağanüstü durumlara karşı korunmadığından emin olun. 
+- Bilinçli bir karar verirken ve paydaşların bilgilendirilmesi olduğunuzdan emin olun. VM 'nin taşınması tamamlanana kadar VM 'niz olağanüstü durumlara karşı korunmaz.
 
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Azure Site Recovery tarafından kullanılan kaynakları belirler
-VM 'Ler hala çoğaltılırken ilgili kaynakları belirlemek daha kolay olacağı için, bir sonraki adıma geçmeden önce bu adımı yapmanız önerilir
+Bir sonraki adıma geçmeden önce bu adımı yapmanızı öneririz. VM 'Ler çoğaltılırken ilgili kaynakları belirlemek daha kolay.
 
-Çoğaltmakta olan her bir Azure VM için, **korumalı öğeler** > **çoğaltılan öğeler**>**özellikleri** ' ne gidin ve aşağıdaki kaynakları tanımla
+Çoğaltılan her bir Azure VM için, **korumalı öğeler** > **çoğaltılan öğeler** > **özelliklerine** gidin ve aşağıdaki kaynakları tanımla:
 
 - Hedef kaynak grubu
 - Önbellek depolama hesabı
-- Hedef depolama hesabı (yönetilmeyen disk tabanlı Azure VM olması durumunda) 
+- Hedef depolama hesabı (yönetilmeyen disk tabanlı bir Azure VM 'si olması durumunda) 
 - Hedef ağ
 
 
-## <a name="disable-existing-disaster-recovery-configuration"></a>Mevcut olağanüstü durum kurtarma yapılandırmasını devre dışı bırak
+## <a name="disable-the-existing-disaster-recovery-configuration"></a>Mevcut olağanüstü durum kurtarma yapılandırmasını devre dışı bırak
 
-1. **Kurtarma Hizmetleri kasasına** gitme 
-2.  **Korunan öğeler** > **çoğaltılan öğeler**bölümünde, **çoğaltmayı devre dışı bırakmak**> makineye sağ tıklayın.
-3. Taşımak istediğiniz tüm VM 'Ler için bunu tekrarlayın.
+1. Kurtarma Hizmetleri kasasına gidin.
+2. **Korunan öğeler** > **çoğaltılan öğeler**bölümünde makineye sağ tıklayın ve **çoğaltmayı devre dışı bırak**' ı seçin.
+3. Taşımak istediğiniz tüm VM 'Ler için bu adımı tekrarlayın.
+
 > [!NOTE]
-> Mobility hizmeti korumalı sunuculardan kaldırılmaz, el ile kaldırmanız gerekir. Sunucuyu yeniden korumayı planlıyorsanız Mobility hizmetini kaldırmayı atlayabilirsiniz.
+> Mobility hizmeti korunan sunuculardan kaldırılmaz. El ile kaldırmanız gerekir. Sunucuyu yeniden korumayı planlıyorsanız Mobility hizmetini kaldırmayı atlayabilirsiniz.
 
 ## <a name="delete-the-resources"></a>Kaynakları Sil
 
-1. **Kurtarma Hizmetleri kasasına** git
-2. **Sil** 'e tıklayın
-3. [Önceki adımda](#identify-the-resources-that-were-used-by-azure-site-recovery) tanımlanan diğer tüm kaynakları silmeye devam edin
+1. Kurtarma Hizmetleri kasasına gidin.
+2. **Sil**’i seçin.
+3. [Daha önce tanımlamış](#identify-the-resources-that-were-used-by-azure-site-recovery)olduğunuz diğer tüm kaynakları silin.
  
 ## <a name="move-azure-vms-to-the-new-target-region"></a>Azure VM 'lerini yeni hedef bölgeye taşıma
 
-Azure VM 'lerini hedef bölgeye taşımak için gereksiniminize bağlı olarak aşağıda bahsedilen adımları izleyin.
+Azure VM 'lerini hedef bölgeye taşıma gereksiniminize bağlı olarak bu makalelerdeki adımları izleyin:
 
 - [Azure VM’lerini başka bir bölgeye taşıma](azure-to-azure-tutorial-migrate.md)
 - [Azure VM'lerini Kullanılabilirlik Alanlarına taşıma](move-azure-VMs-AVset-Azone.md)
 
-## <a name="re-set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>VM 'Lerin yeni kaynak bölgesine göre Site Recovery yeniden kurun
+## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>VM 'Ler için yeni kaynak bölgeye göre Site Recovery ayarlama
 
-[Burada](azure-to-azure-tutorial-enable-replication.md) bahsedilen adımlar kullanılarak yeni bölgeye taşınmış olan Azure VM 'leri için olağanüstü durum kurtarmayı yapılandırın
+[Azure VM 'leri için olağanüstü durum kurtarmayı ayarlama](azure-to-azure-tutorial-enable-replication.md)bölümündeki adımları izleyerek yeni bölgeye taşınan Azure VM 'leri için olağanüstü durum kurtarmayı yapılandırın.

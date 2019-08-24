@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağ 'da standart yük dengeleyici ile bir IPv6 çift yığın uygulaması dağıtma-Kaynak Yöneticisi şablonu (Önizleme)
+title: Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-Kaynak Yöneticisi şablonu (Önizleme)
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure Resource Manager VM şablonlarını kullanarak Azure sanal ağı 'nda Standart Load Balancer IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
@@ -12,16 +12,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: fa39285eea14856db1bceba9e90f92b19afabfd0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295422"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012844"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---template-preview"></a>Azure 'da Standart Load Balancer IPv6 ikili yığın uygulaması dağıtma-şablon (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-şablon (Önizleme)
 
-Bu makale, için geçerli Azure Resource Manager VM şablonunun parçası olan IPv6 yapılandırma görevlerinin bir listesini sağlar. IPv4 ve IPv6 alt ağları içeren bir çift yığın sanal ağı, Azure 'da çift bir yığın (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP 'si olan NIC 'leri olan VM 'Ler içeren bir çift yığın (IPv4 + IPv6) uygulaması dağıtmak için bu makalede açıklanan şablonu kullanın yapılandırma, ağ güvenlik grubu ve genel IP 'Ler. 
+Bu makale, için geçerli Azure Resource Manager VM şablonunun parçası olan IPv6 yapılandırma görevlerinin bir listesini sağlar. IPv4 ve IPv6 alt ağları içeren bir çift yığın sanal ağı içeren ve ikili (IPv4 + IPv6) ön ucuna sahip bir Standart Load Balancer Azure 'da Standart Load Balancer kullanarak çift yığın (IPv4 + IPv6) uygulaması dağıtmak için bu makalede açıklanan şablonu kullanın yapılandırmalar, NIC 'leri olan ve çift IP yapılandırmasına, ağ güvenlik grubuna ve genel IP 'Lere sahip VM 'Ler. 
 
 ## <a name="required-configurations"></a>Gerekli yapılandırma
 

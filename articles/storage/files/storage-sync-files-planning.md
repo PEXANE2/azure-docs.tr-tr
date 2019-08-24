@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699332"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013530"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
-Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
+Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede Azure Dosya Eşitleme dağıtımı için önemli noktalar açıklanmaktadır. Ayrıca, [bir Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md)okumanızı öneririz. 
 
@@ -149,7 +149,7 @@ Sonuçları CSV 'de göstermek için:
 | \\Eşitleme | Eşitleme klasörü |
 
 ### <a name="failover-clustering"></a>Yük Devretme Kümelemesi
-Windows Server Yük Devretme Kümelemesi, "genel kullanım için dosya sunucusu" dağıtım seçeneği için Azure Dosya Eşitleme tarafından desteklenir. Yük Devretme Kümelemesi, "uygulama verileri için genişleme dosya sunucusu" (SOFS) veya kümelenmiş paylaşılan birimler (CSV) üzerinde desteklenmez.
+Windows Server Yük Devretme Kümelemesi, "genel kullanım için dosya sunucusu" dağıtım seçeneği için Azure Dosya Eşitleme tarafından desteklenir. Yük Devretme Kümelemesi, "uygulama verileri için Genişleme Dosya Sunucusu" (SOFS) veya kümelenmiş paylaşılan birimlerde (CSV) desteklenmez.
 
 > [!Note]  
 > Eşitlemenin doğru çalışması için, bir yük devretme kümesindeki her düğümde Azure Dosya Eşitleme aracısının yüklü olması gerekir.
@@ -254,12 +254,15 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | East US | Virginia |
 | Doğu ABD 2 | Virginia |
 | Fransa Orta | Paris |
-| Kore Orta| Seoul |
-| Kore Güney| Busan |
+| Fransa Güney * | Marseille |
+| Kore Orta | Seoul |
+| Kore Güney | Busan |
 | Japonya Doğu | Tokyo, Saitama |
 | Japonya Batı | Osaka |
 | Orta Kuzey ABD | Illinois |
 | Kuzey Avrupa | İrlanda |
+| Güney Afrika Kuzey | Johannesburg |
+| Güney Afrika Batı * | Cape Town |
 | Orta Güney ABD | Texas |
 | Güney Hindistan | Chennai |
 | Güneydoğu Asya | Singapur |
@@ -274,6 +277,8 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Batı ABD 2 | Washington |
 
 Azure Dosya Eşitleme, yalnızca depolama eşitleme hizmeti ile aynı bölgedeki bir Azure dosya paylaşımıyla eşitlemeyi destekler.
+
+Yıldız işaretleri ile işaretlenmiş bölgeler için, bu bölgelerde Azure depolama 'ya erişim istemek üzere Azure desteği 'ne başvurmanız gerekir. İşlem [Bu belgede](https://azure.microsoft.com/global-infrastructure/geographies/)özetlenmiştir.
 
 ### <a name="azure-disaster-recovery"></a>Azure olağanüstü durum kurtarma
 Azure bölgesinin kaybedilmesine karşı korunmak için, Azure Dosya Eşitleme [coğrafi olarak yedekli depolama artıklığı](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) seçeneğiyle tümleştirilir. GRS depolama, birincil bölgedeki depolama alanı arasında zaman uyumsuz blok çoğaltma kullanarak çalışır ve bu da eşleştirilmiş ikincil bölgede depolama alanı. Bir Azure bölgesinin geçici veya kalıcı olarak çevrimdışı çalışmasına neden olan bir olağanüstü durum durumunda, Microsoft depolama 'yı eşleştirilmiş bölgeye devreder. 
@@ -296,12 +301,15 @@ Coğrafi olarak yedekli depolama ve Azure Dosya Eşitleme arasında yük devretm
 | East US             | Batı ABD            |
 | Doğu ABD 2           | Orta ABD         |
 | Fransa Orta      | Fransa Güney       |
+| Fransa Güney        | Fransa Orta     |
 | Japonya Doğu          | Japonya Batı         |
 | Japonya Batı          | Japonya Doğu         |
 | Kore Orta       | Kore Güney        |
 | Kore Güney         | Kore Orta      |
 | Kuzey Avrupa        | Batı Avrupa        |
 | Orta Kuzey ABD    | Orta Güney ABD   |
+| Güney Afrika Kuzey  | Güney Afrika Batı  |
+| Güney Afrika Batı   | Güney Afrika Kuzey |
 | Orta Güney ABD    | Orta Kuzey ABD   |
 | Güney Hindistan         | Orta Hindistan      |
 | Güneydoğu Asya      | Doğu Asya          |

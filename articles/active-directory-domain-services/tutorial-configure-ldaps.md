@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: f575dd882c217badb3320b85229149d9793ceb5f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619267"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011358"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -286,7 +286,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Azure AD DS yönetilen bir etki alanı için Güvenli LDAP bağlama ve test etme
 
 > [!div class="nextstepaction"]
-> [Azure AD Domain Services yönetilen bir etki alanında eşitlemenin nasıl çalıştığını öğrenin](synchronization.md)
+> [Karma Azure AD ortamı için Parola karması eşitlemesini yapılandırma](tutorial-configure-password-hash-sync.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

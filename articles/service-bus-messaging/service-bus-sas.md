@@ -4,7 +4,6 @@ description: Paylaşılan erişim Imzaları ile ilgili Service Bus erişim denet
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,20 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2018
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: d2cd7c8e24571f66fa73ceaa9a70ce33d6105e9c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017748"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013061"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
 *Paylaşılan erişim imzaları* (SAS) Service Bus mesajlaşma için birincil güvenlik mekanizmasıdır. Bu makalede SAS ve bunların nasıl çalıştığı ve bunların platformdan bağımsız bir şekilde nasıl kullanılacağı açıklanmaktadır.
 
 SAS koruyucuları, yetkilendirme kurallarına göre Service Bus erişimi sağlar. Bunlar bir ad alanında ya da bir mesajlaşma varlığında (geçiş, kuyruk veya konu) yapılandırılır. Yetkilendirme kuralı bir ada sahiptir, belirli haklara göre ilişkilendirilir ve bir çift şifreleme anahtarı taşır. Bir SAS belirteci oluşturmak için Service Bus SDK aracılığıyla veya kendi kodunuzda kural adını ve anahtarını kullanın. İstemci daha sonra istenen işlem için kanıtlamak üzere Service Bus belirtecini geçirebilir.
+
+> [!NOTE]
+> Azure Service Bus, Azure Active Directory (Azure AD) kullanarak bir Service Bus ad alanına ve varlıklarına erişim yetkisi verme desteği sağlar. Azure AD tarafından döndürülen OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, belirteçlerin kodunuzda depolanması ve olası güvenlik açıklarına karşı risk altında olması gerekmez.
+>
+> Microsoft, mümkün olduğunda Azure Service Bus uygulamalarınızın Azure AD 'yi kullanmasını önerir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+> - [Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme](authenticate-application.md).
+> - [Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>SAS 'ye Genel Bakış
 
@@ -57,7 +63,7 @@ Bir Service Bus ad alanı oluşturduğunuzda, ad alanı için **RootManageShared
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Paylaşılan erişim Imzası kimlik doğrulaması yapılandırması
 
-[Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) kuralını Service Bus ad alanları, kuyruklar veya konular üzerinde yapılandırabilirsiniz. Bir Service Bus abonelikte [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) yapılandırması şu anda desteklenmiyor, ancak aboneliklerde erişim sağlamak için bir ad alanı veya konu üzerinde yapılandırılan kuralları kullanabilirsiniz. Bu yordamı gösteren bir çalışan örnek için [Azure Service Bus sıraları yönetme](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule) örneğine bakın.
+[Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) kuralını Service Bus ad alanları, kuyruklar veya konular üzerinde yapılandırabilirsiniz. Bir Service Bus abonelikte [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) yapılandırması şu anda desteklenmiyor, ancak aboneliklerde erişim sağlamak için bir ad alanı veya konu üzerinde yapılandırılan kuralları kullanabilirsiniz. Bu yordamı gösteren bir çalışan örnek için, [Service Bus abonelikleri Ile paylaşılan erişim imzası (SAS) kimlik doğrulamasını kullanma](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) örneği ' ne bakın.
 
 !['LARININ](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -88,7 +94,7 @@ Belirteç, karma değeri aynı parametrelerle yeniden hesaplanabilmesi, böylece
 
 Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, `http://<namespace>.servicebus.windows.net/<entityPath>` veya `sb://<namespace>.servicebus.windows.net/<entityPath>`,,,. `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` 
 
-**URI [yüzde kodlamalı](/dotnet/api/system.web.httputility.urlencode?view=netframework-4.8)olmalıdır.**
+**URI [yüzde kodlamalı](https://msdn.microsoft.com/library/4fkewx0t.aspx)olmalıdır.**
 
 İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/contosoTopics/T1` veya `http://contoso.servicebus.windows.net` önceki örnekte.
 
@@ -104,8 +110,8 @@ Bir anahtarın güvenliğinin aşıldığını biliyorsanız veya kuşkulanıyor
 
 Aşağıdaki gibi açıklanan senaryolar, yetkilendirme kurallarının yapılandırılması, SAS belirteçlerinin oluşturulması ve istemci yetkilendirmesi içerir.
 
-Yapılandırmayı gösteren ve SAS yetkilendirmesi kullanan bir Service Bus uygulamasının tam çalışma örneği için GitHub deponuzda aşağıdaki örneğe bakın: [Azure Service Bus kuyruklarını yönetme](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule).
- 
+Yapılandırmayı gösteren ve SAS yetkilendirmesi kullanan bir Service Bus uygulamasının tam çalışma örneği için, bkz. [Service Bus Ile paylaşılan erişim imzası kimlik doğrulaması](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Ad alanlarında veya konularda güvenli Service Bus aboneliklerde yapılandırılan SAS Yetkilendirme kurallarının kullanımını gösteren ilgili bir örnek buradan edinilebilir: [Service Bus abonelikleri Ile paylaşılan erişim imzası (SAS) kimlik doğrulamasını kullanma](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Bir varlıktaki paylaşılan erişim yetkilendirme kurallarına erişme
 
 Service Bus .NET Framework kitaplıklarıyla, karşılık gelen bir Service Bus kuyruğu veya konu başlığında yapılandırılan [Microsoft. ServiceBus. Messaging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) nesnesine karşılık gelen [](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) [Queuedescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) veya [topicdescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription).

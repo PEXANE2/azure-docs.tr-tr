@@ -9,22 +9,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774668"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012587"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure aboneliğiniz için faturaya göre ödeme yapın
 
-Faturaya göre öde ' ye geçerseniz, fatura tarihinin 30 gün içinde Çek/tel aktarımı ile faturalandırıldığınız anlamına gelir. Azure aboneliğiniz için faturaya göre ödeme yapmayı uygun hale gelmesi için Azure desteği 'ne bir istek gönderebilirsiniz. İsteğiniz onaylandıktan sonra, [Azure Portal](https://portal.azure.com)fatura ödeme (Çek/tel aktarımı) seçeneğine geçebilirsiniz.
+Faturaya göre öde ' ye geçerseniz, fatura tarihinin 30 gün içinde Çek/tel aktarımı ile faturalandırıldığınız anlamına gelir. Azure aboneliğinizi faturayla ödemeye uygun duruma gelmek için, Azure desteğine bir istek gönderin. İsteğiniz onaylandıktan sonra, [Azure Portal](https://portal.azure.com)fatura ödeme (Çek/tel aktarımı) seçeneğine geçebilirsiniz.
 
 > [!IMPORTANT]
 > * Fatura ödemesi (Çek/tel aktarımı) yalnızca iş hesaplarında kullanılabilir.
-> * Fatura ödeme geçmeden önce tüm bekleyen ücretleri ödemelidir.
+> * Fatura ödemelerinde geçiş yapmadan önce tüm bekleyen ücretleri ödeyin.
+> * Şu anda, fatura ödemesi Çin 'de Global Azure için desteklenmez.
 
 ## <a name="request-to-pay-by-invoice"></a>Faturaya göre ödeme isteği
 
@@ -64,7 +65,7 @@ Faturaya göre öde ' ye geçerseniz, fatura tarihinin 30 gün içinde Çek/tel 
          Specific region & series of Subscription:
 
     - **Şirket adı** ve **Şirket adresi** , Azure hesabı için verdiğiniz bilgilerle eşleşmelidir. Bilgileri görüntülemek veya güncelleştirmek için bkz. [Azure hesap profili bilgilerinizi değiştirme](billing-how-to-change-azure-account-profile.md).
-    - Kredi sınırının onaylanabilmesi için faturalandırma iletişim bilgilerinizi Azure portal eklemeniz gerekir. İletişim ayrıntıları, şirketin hesaplarının borç veya finans departmanıyla ilişkili olmalıdır. Faturalandırma iletişim bilgilerini güncelleştirmek için [Azure Hesap Merkezi](https://account.azure.com/Profile)adresine gidin.
+    - Kredi sınırının onaylanabilmesi için faturalandırma iletişim bilgilerinizi Azure portal ekleyin. İletişim ayrıntıları, şirketin hesaplarının borç veya finans departmanıyla ilişkili olmalıdır. Faturalandırma iletişim bilgilerini güncelleştirmek için [Azure Hesap Merkezi](https://account.azure.com/Profile)adresine gidin.
 
 6. İletişim bilgilerinizi ve tercih edilen iletişim yöntemini seçip **Oluştur**'a tıklayın.
 
@@ -74,18 +75,18 @@ Faturaya göre öde ' ye geçerseniz, fatura tarihinin 30 gün içinde Çek/tel 
 
 Faturaya göre ödeme yapmayı onayladıktan sonra, Azure portal fatura ödeme (Çek/tel aktarımı) seçeneğine geçebilirsiniz.
 
-Bir Microsoft Online Services program hesabınız varsa, Azure aboneliğinizi denetim/hat aktarımına geçirebilirsiniz. Bir Microsoft Müşteri anlaşmanız varsa, faturalandırma profilinizi denetim/tel aktarım için değiştirebilirsiniz. [Hesap türünü nasıl denetleyeceğinizi öğrenin](#check-access-to-a-microsoft-customer-agreement).
+Microsoft Online Services Program hesabınız varsa, Azure aboneliğinizi çek/havale yoluyla ödemeye geçirebilirsiniz. Bir Microsoft Müşteri anlaşmasıyla faturalandırma profilinizi denetim/tel aktarımına geçirebilirsiniz. [Hesap türünü nasıl denetleyeceğinizi öğrenin](#check-access-to-a-microsoft-customer-agreement).
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure aboneliğini denetim/tel aktarımına geçir
 
-Azure aboneliğinizi fatura ödemenize (Çek/tel aktarımı) geçirmek için aşağıdaki adımları izleyin. **Fatura ödemenize geçtiğinizde (Çek/tel aktarımı), kredi kartına geri**dönemezsiniz.
+Azure aboneliğinizi fatura ödemenize (Çek/tel aktarımı) geçirmek için aşağıdaki adımları izleyin. **Fatura ödemenize (Çek/tel aktarımı) geçtiğinizde, kredi kartına geri**dönemezsiniz.
 
 1. [Azure Portal](https://portal.azure.com) hesap yöneticisi olarak oturum açın.
 1. **Maliyet yönetimi + faturalandırma**için arama yapın.
 
     ![Aramayı gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/search.png)
 
-1. Fatura ödemesine geçmek istediğiniz aboneliği seçin.
+1. Faturalı ödemeye geçirmek istediğiniz aboneliği seçin.
 1. **Ödeme yöntemleri**'ni seçin.
 1. Komut çubuğunda, **faturaya göre öde** düğmesine tıklayın.
 
@@ -93,7 +94,7 @@ Azure aboneliğinizi fatura ödemenize (Çek/tel aktarımı) geçirmek için aş
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Faturalandırma profilini denetim/tel aktarımına geçir
 
-Bir faturalandırma profilini denetim/tel aktarım için değiştirmek üzere aşağıdaki adımları izleyin. Lütfen yalnızca Azure 'a kaydolan kişi, bir faturalandırma profilinin varsayılan ödeme yöntemini değiştirebileceğinizi unutmayın.
+Bir faturalandırma profilini denetim/tel aktarım için değiştirmek üzere aşağıdaki adımları izleyin. Yalnızca Azure 'a kaydolan kişi, bir faturalandırma profilinin varsayılan ödeme yöntemini değiştirebilir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Arama **maliyet Yönetimi + faturalandırma**.
@@ -106,7 +107,7 @@ Bir faturalandırma profilini denetim/tel aktarım için değiştirmek üzere a�
 
    ![Menüdeki ödeme yöntemlerini gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Çek/tel aktarımı ile ödeme yapmayı uygun hale getirdiğini belirten mavi başlık ' a tıklayın.
+1. Çek/tel aktarımı ile ödeme yapmayı uygun olduğunuzu belirten mavi başlığa tıklayın.
 
     ![Denetim/tel 'ya geçiş yapmak için mavi başlık gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 

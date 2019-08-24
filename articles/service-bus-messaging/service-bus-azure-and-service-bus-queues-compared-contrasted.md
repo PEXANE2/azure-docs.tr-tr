@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981411"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013231"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli
 Bu makalede, bugün Microsoft Azure tarafından sunulan iki kuyruk türü arasındaki farklılıklar ve benzerlikler analiz edilir: Depolama kuyrukları ve Service Bus kuyrukları. Bu bilgileri kullanarak, ilgili teknolojileri karşılaştırabilir ve gereksinimlerinize en uygun çözümü seçerken daha bilinçli kararlar verebilirsiniz.
@@ -52,7 +52,9 @@ Belirli bir çözüm için hangi sıraya alma teknolojisinin amacına uygun oldu
 * Uygulamanızın iletileri paralel uzun süreli akışlar olarak işlemesini istiyorsunuz (ileti, iletideki [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) özelliği kullanılarak bir akışla ilişkilendirilir). Bu modelde, tüketim uygulamasındaki her düğüm, iletiler yerine akışlar için bir kullanıcı tarafından kabul edilebilir. Bir akış tüketen bir düğüme verildiğinde, düğüm işlemleri kullanarak uygulama akış durumunun durumunu inceleyebilir.
 * Çözümünüz, bir kuyruktan birden çok ileti gönderirken veya alırken işlemsel davranış ve kararlılık gerektirir.
 * Uygulamanız 64 KB 'ı aşan iletileri işler, ancak 256 KB sınırına büyük olasılıkla yaklaşımlar.
-* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için bkz. [rol tabanlı Access Control Active Directory (Önizleme)](service-bus-role-based-access-control.md)
+* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+    - [Yönetilen kimliklerle kimlik doğrulama](service-bus-managed-service-identity.md)
+    - [Uygulamadan kimlik doğrulama](authenticate-application.md)
 * Sıra boyutunuz 80 GB 'tan büyük büyümez.
 * AMQP 1,0 standartları tabanlı mesajlaşma protokolünü kullanmak istiyorsunuz. AMQP hakkında daha fazla bilgi için bkz. [SERVICE Bus AMQP 'ye genel bakış](service-bus-amqp-overview.md).
 * Sıra tabanlı noktadan noktaya iletişimden, her biri veya tümünün bağımsız kopyalarını alan ek alıcıların (aboneler) sorunsuz tümleştirilmesine olanak tanıyan bir ileti değişimi düzenine kadar son bir geçiş yapabilirsiniz. sıraya gönderilen iletiler. İkincisi, Service Bus tarafından yerel olarak sağlanmış yayımla/abone olma özelliğine başvurur.

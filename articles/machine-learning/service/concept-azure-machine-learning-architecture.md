@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8987c14fab141a71ba2dd9f1ed228a56ce419bce
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982833"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011639"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning hizmeti nasıl kullanılır: Mimari ve kavramlar
 
@@ -73,7 +73,7 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#ml-pipelines">ML işlem hatları</a>
 + <a href="#logging">Logging</a>
 
-### <a name="workspaces"></a>Çalışma Alanları
+### <a name="workspaces"></a>Çalışma Alanı
 
 [Çalışma alanı](concept-workspace.md) Azure Machine Learning hizmeti için en üst düzey kaynaktır. Azure Machine Learning hizmeti kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanını başkalarıyla paylaşabilirsiniz. Çalışma alanlarının ayrıntılı bir açıklaması için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
 
@@ -151,7 +151,7 @@ Bir örnek için bkz [. Öğretici: Azure Machine Learning hizmeti](tutorial-tra
 
 ### <a name="runs"></a>Çalıştırmalar
 
-Aşağıdaki bilgileri içeren bir kaydı bir çalıştırmadır:
+Bir çalıştırma, bir eğitim betiğinin tek yürütülmesinden oluşur. Azure Machine Learning tüm çalıştırmaları kaydeder ve aşağıdaki bilgileri depolar:
 
 * Çalıştırma (zaman damgası, süre vb.) için meta veriler
 * Betiğinizin günlüğe kaydettiği ölçümler

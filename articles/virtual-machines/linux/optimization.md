@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad512baad86133cc1aad80438a6b68d2a31a6cc6
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640752"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013602"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
 Bir Linux sanal makinesi (VM) oluşturmak, komut satırından veya portaldan kolayca yapılır. Bu öğreticide, Microsoft Azure platformunda performansını en iyi duruma getirecek şekilde ayarlamış olduğunuzdan emin olmanız gösterilmektedir. Bu konu, Ubuntu sunucu sanal makinesini kullanır, ancak aynı zamanda [kendi görüntülerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makinesi de oluşturabilirsiniz.  
@@ -53,7 +53,7 @@ Yüksek IOPS iş yükleri ile ilgilenirken ve diskleriniz için standart depolam
 ## <a name="your-vm-temporary-drive"></a>VM geçici sürücünüz
 Varsayılan olarak, bir VM oluşturduğunuzda, Azure size bir işletim sistemi diski ( **/dev/sda**) ve geçici bir disk ( **/dev/sdb**) sağlar.  Eklediğiniz tüm ek diskler **/dev/SDC**, **/dev/sdd**, **/dev/SDE** vb. olarak gösterilir. Geçici diskinizdeki tüm veriler ( **/dev/sdb**) dayanıklı değildir ve VM yeniden boyutlandırma, yeniden dağıtma veya bakım gibi belırlı olaylar sanal makinenizin yeniden başlatılmasını zorlarsa kaybolabilir.  Geçici diskinizin boyutu ve türü, dağıtım zamanında seçtiğiniz VM boyutuyla ilgilidir. Tüm Premium boyut sanal makineleri (DS, G ve DS_V2 serisi) geçici sürücü, 48k IOPS 'ye kadar ek performans için yerel bir SSD tarafından desteklenir. 
 
-## <a name="linux-swap-file"></a>Linux takas dosyası
+## <a name="linux-swap-partition"></a>Linux takas bölümü
 Azure VM 'niz bir Ubuntu veya CoreOS görüntüsünden ise, CustomData kullanarak Cloud-init ' e Cloud-config gönderebilirsiniz. Cloud-init kullanan [özel bir Linux görüntüsünü karşıya](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) yüklediyseniz, Cloud-init kullanarak takas bölümlerini de yapılandırırsınız.
 
 Ubuntu bulut görüntülerinde, takas bölümünü yapılandırmak için Cloud-init ' i kullanmanız gerekir. Daha fazla bilgi için bkz. [Azureswappartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
@@ -127,6 +127,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Daha yüksek g/Ops elde etmek için yazılım RAID kullanma
 İş yükleriniz tek bir diskin sağlayabileceğinden daha fazla IOPS gerektiriyorsa, birden çok diskin yazılım RAID yapılandırmasını kullanmanız gerekir. Azure, yerel yapı katmanında zaten disk esnekliği gerçekleştirdiğinden, RAID-0 dizme yapılandırmasından en yüksek düzeyde performans elde edersiniz.  Azure ortamında diskler sağlayın ve oluşturun ve sürücüleri bölümlemeden, biçimlendirmeden ve bağlamadan önce Linux sanal makinenize ekleyin.  Azure 'da Linux sanal makinenizde yazılım RAID kurulumunu yapılandırma hakkında daha fazla bilgi için, **[Linux 'Ta yazılım yapılandırma](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** belgesinde bulunabilir.
+
+Geleneksel RAID yapılandırmasına alternatif olarak, bir dizi fiziksel diski tek bir şeritli mantıksal depolama biriminde yapılandırmak için mantıksal birim Yöneticisi 'Ni (LVM) yüklemeyi de tercih edebilirsiniz. Bu yapılandırmada, okuma ve yazma işlemleri, birim grubunda bulunan birden çok diske dağıtılır (RAID0 benzer). Performans nedenleriyle, büyük olasılıkla mantıksal birimlerinizi, okuma ve yazma işlemlerinin tüm ekli veri disklerinizi kullanmasını sağlayacak şekilde eklemek isteyeceksiniz.  Azure 'daki Linux VM 'niz üzerinde bir şeritli mantıksal birim yapılandırma hakkında daha fazla ayrıntı, **[Azure belgesindeki bir LINUX sanal makinesinde bulunan LVM yapılandırma](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** bölümünde bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Tüm iyileştirme tartışmalarında olduğu gibi, değişikliğin etkisini ölçmek için her değişiklikten önce ve sonra testler gerçekleştirmeniz gerektiğini unutmayın.  İyileştirme, ortamınızdaki farklı makinelerde farklı sonuçlar içeren adım adım bir işlemdir.  Bir yapılandırma için ne işe yarar, diğerleri için çalışmayabilir.

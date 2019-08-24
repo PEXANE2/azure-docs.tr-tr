@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644981"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012271"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
@@ -55,11 +55,38 @@ Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm labora
 2. Aşağıdaki adımlardan birini yapın: 
     1. **Windows** sanal makineleri için **RDP** dosyasını sabit diske kaydedin. Sanal makineye bağlanmak için RDP dosyasını açın. Makine üzerinde oturum açmak için eğitimci/Mesleme makinenizden aldığınız **Kullanıcı adı** ve **parolayı** kullanın. 
     3. **Linux** sanal makinelerinde, bunlara bağlanmak için **SSH** veya **RDP** (etkinse) kullanabilirsiniz. Daha fazla bilgi için bkz. [Linux makineleri için Uzak Masaüstü bağlantısını etkinleştirme](how-to-enable-remote-desktop-linux.md). 
+    1. Laboratuvar VM 'sine bağlanmak için bir **Mac** kullanıyorsanız, sonraki bölümdeki yönergeleri izleyin. 
+
+## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Mac üzerinde RDP kullanarak VM 'nin Kullanıcı arabirimine bağlanma
+Bu bölümde, bir öğrencinin RDP kullanarak bir Mac 'ten bir VM 'nin Kullanıcı arabirimine (UI) nasıl bağlanabileceği gösterilmektedir. Aşağıda, ayrıntıları izleyen hızlı adımlar verilmiştir: 
+
+1. Mac 'inizde Microsoft Uzak Masaüstü 'yi.
+2. RDP kullanarak Mac 'Inizden bir VM Kullanıcı arabirimine bağlanın. 
+
+### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Mac 'e Microsoft Uzak Masaüstü yüklemesi
+1. Mac 'inizde App Store ' u açın ve **Microsoft Uzak Masaüstü**arayın.
+
+    ![Microsoft Uzak Masaüstü](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. En son Microsoft Uzak Masaüstü sürümünü yükler. 
+
+### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>RDP kullanarak Mac 'Inizden VM 'nin Kullanıcı arabirimine erişin
+1. **Microsoft Uzak Masaüstü** yüklü olan bilgisayarınızda indirilen **RDP** dosyasını açın. VM 'ye bağlanmaya başlamalıdır. 
+
+    ![VM Kullanıcı arabirimine bağlanma](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Aşağıdaki hatayı alırsanız **devam** ' ı seçin. 
+
+    ![Sertifika hatası](../media/how-to-use-classroom-lab/certificate-error.png)
+1. VM 'nin Kullanıcı arabirimini görmeniz gerekir. 
+
+    > [!NOTE]
+    > Aşağıdaki örnek bir CentOS Linux sanal makinesi içindir. 
+
+    ![VM KULLANICI ARABIRIMI](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>İlerleme çubuğu 
 Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-usage.md#set-quotas-for-users) sayısına göre kullanılan saat sayısını gösterir. Bu süre, laboratuvarın zamanlanan saatine ek olarak size ayrılan ek süredir. İlerleme çubuğunun rengi ve ilerleme çubuğunun altındaki metin, aşağıdaki senaryolara göre farklılık gösterir:
 
-- Bir sınıf devam ediyorsa (sınıfının zamanlaması dahilinde), ilerleme çubuğu, kota saatlerini temsil eden bir şekilde gri renkte görünür. 
+- Bir sınıf devam ediyorsa (sınıfının zamanlaması dahilinde), kota saatlerini göstermek için ilerleme çubuğu gri olur. 
 
     ![Gri renkte ilerleme çubuğu](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
 - Bir kota atanmamışsa (sıfır saat), **sınıflar sırasında kullanılabilen metin yalnızca** ilerleme çubuğunun yerine gösterilir. 

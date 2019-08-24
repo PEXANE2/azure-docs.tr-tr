@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899731"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013385"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -54,15 +54,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 | [Otomasyon Runbook Işleci](#automation-runbook-operator) | Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. |
 | [Avere Katılımcısı](#avere-contributor) | , Bir avere vFXT kümesi oluşturabilir ve yönetebilir. |
 | [Avere Işleci](#avere-operator) | Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır |
-| [Azure Event Hubs veri sahibi (Önizleme)](#azure-event-hubs-data-owner-preview) | Azure Event Hubs kaynaklarına tam erişim sağlar. |
-| [Azure Event Hubs veri alıcısı (Önizleme)](#azure-event-hubs-data-receiver-preview) | Azure Event Hubs kaynaklarına erişim izni verir. |
-| [Azure Event Hubs veri gönderici (Önizleme)](#azure-event-hubs-data-sender-preview) | Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. |
+| [Azure Event Hubs veri sahibi](#azure-event-hubs-data-owner) | Azure Event Hubs kaynaklarına tam erişim sağlar. |
+| [Azure Event Hubs veri alıcısı](#azure-event-hubs-data-receiver) | Azure Event Hubs kaynaklarına erişim izni verir. |
+| [Azure Event Hubs veri gönderici](#azure-event-hubs-data-sender) | Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. |
 | [Azure Kubernetes hizmet kümesi yönetici rolü](#azure-kubernetes-service-cluster-admin-role) | Küme Yöneticisi kimlik bilgisi eylemini listeleyin. |
 | [Azure Kubernetes hizmet kümesi Kullanıcı rolü](#azure-kubernetes-service-cluster-user-role) | Küme kullanıcı kimlik bilgilerini Listele eylemi. |
 | [Azure haritalar veri okuyucu (Önizleme)](#azure-maps-data-reader-preview) | Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. |
-| [Veri sahibini Azure Service Bus (Önizleme)](#azure-service-bus-data-owner-preview) | Azure Service Bus kaynaklara tam erişim sağlar. |
-| [Azure Service Bus veri alıcısı (Önizleme)](#azure-service-bus-data-receiver-preview) | Azure Service Bus kaynaklarına erişim izni verir. |
-| [Azure Service Bus veri gönderici (Önizleme)](#azure-service-bus-data-sender-preview) | Azure Service Bus kaynaklarına erişim izni verir. |
+| [Azure Service Bus veri sahibi](#azure-service-bus-data-owner) | Azure Service Bus kaynaklara tam erişim sağlar. |
+| [Azure Service Bus veri alıcısı](#azure-service-bus-data-receiver) | Azure Service Bus kaynaklarına erişim izni verir. |
+| [Veri Göndericisini Azure Service Bus](#azure-service-bus-data-sender) | Azure Service Bus kaynaklarına erişim izni verir. |
 | [Kayıt sahibini Azure Stack](#azure-stack-registration-owner) | Azure Stack kayıtlarını yönetmenizi sağlar. |
 | [Yedek Katılımcısı](#backup-contributor) | Yedekleme hizmetini yönetmenizi sağlar, ancak kasaların oluşturamaz ve başkalarına erişim izni verebilir |
 | [Yedekleme Işletmeni](#backup-operator) | Yedekleme kaldırma, kasa oluşturma ve başkalarına erişim verme dışında yedekleme hizmetlerini yönetmenizi sağlar |
@@ -556,7 +556,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Azure Event Hubs veri sahibi (Önizleme)
+## <a name="azure-event-hubs-data-owner"></a>Azure Event Hubs veri sahibi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +571,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Azure Event Hubs veri alıcısı (Önizleme)
+## <a name="azure-event-hubs-data-receiver"></a>Azure Event Hubs veri alıcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +586,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Azure Event Hubs veri gönderici (Önizleme)
+## <a name="azure-event-hubs-data-sender"></a>Azure Event Hubs veri gönderici
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +646,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Veri sahibini Azure Service Bus (Önizleme)
+## <a name="azure-service-bus-data-owner"></a>Azure Service Bus veri sahibi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +661,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus veri alıcısı (Önizleme)
+## <a name="azure-service-bus-data-receiver"></a>Azure Service Bus veri alıcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +678,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Azure Service Bus veri gönderici (Önizleme)
+## <a name="azure-service-bus-data-sender"></a>Veri Göndericisini Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

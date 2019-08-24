@@ -4,17 +4,16 @@ description: Azure Service Bus mesajlaşma değerlendirmesi için güvenlik özn
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
-author: msmbaldwin
-manager: barbkess
+author: axisc
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: aschhab
+ms.openlocfilehash: 875754282f9e7a2b8dd92b0eb2d7e277ac842696
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443890"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013101"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için güvenlik öznitelikleri
 
@@ -52,7 +51,7 @@ Bu makale, Azure Service Bus mesajlaşma 'da yerleşik olarak bulunan güvenlik 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
 | Authentication| Evet | [Azure Active Directory yönetilen hizmet kimliği](service-bus-managed-service-identity.md)ile yönetilir; bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md).|
-| Authorization| Evet | [RBAC](service-bus-role-based-access-control.md) (Önizleme) ve SAS belirteci aracılığıyla yetkilendirmeyi destekler; bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md). |
+| Authorization| Evet | [RBAC](authenticate-application.md) ve SAS belirteci aracılığıyla yetkilendirmeyi destekler; bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md). |
 
 
 

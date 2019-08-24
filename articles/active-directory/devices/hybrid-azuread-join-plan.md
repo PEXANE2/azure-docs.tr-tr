@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562109"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011681"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -87,11 +87,13 @@ Sistem Hazırlama Aracı 'nı (Sysprep) kullanıyorsanız ve yükleme için **Wi
 
 Ek VM 'Ler oluşturmak için bir sanal makine (VM) anlık görüntüsüne güvenmek istiyorsanız, anlık görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir VM 'den olmadığından emin olun.
 
-Windows 10 etki alanına katılmış cihazlarınız kiracınızda zaten [Azure AD kayıtlıysa](overview.md#getting-devices-in-azure-ad) , hibrit Azure AD JOIN 'i etkinleştirmeden önce bu durumu kaldırmanız önerilir. Windows 10 1809 sürümünden bu iki durumdan kaçınmak için aşağıdaki değişiklikler yapılmıştır:
+Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azure AD](overview.md#getting-devices-in-azure-ad) Ise, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazın iki durumuna yol açabilir. Bu senaryoyu otomatik olarak çözmek için Windows 10 1803 ' e (KB4489894 uygulanmış olan) veya üstüne yükseltmeniz önerilir. 1803 öncesi sürümlerde, hibrit Azure AD JOIN 'i etkinleştirmeden önce Azure AD kayıtlı durumunu el ile kaldırmanız gerekecektir. 1803 ve üzeri sürümlerde, bu iki durumdan kaçınmak için aşağıdaki değişiklikler yapılmıştır:
 
-- Cihaz hibrit Azure AD 'ye katılmış olduktan sonra mevcut Azure AD kayıtlı durumu otomatik olarak kaldırılır.
+- <i>Cihaz hibrit Azure AD 'ye katılmış olduktan sonra</i>mevcut Azure AD kayıtlı durumu otomatik olarak kaldırılır.
 - Bu kayıt defteri anahtarını ekleyerek, etki alanına katılmış cihazın Azure AD 'ye kaydedilmesini engelleyebilirsiniz-Hklm\software\policies\microsoft\windows\workplacejoın, "Blockaadworkplacejoın" = DWORD: 00000001.
-- Bu değişiklik artık KB4489894 uygulanmış Windows 10 1803 sürümünde kullanılabilir. Ancak, Iş için Windows Hello 'yu yapılandırdıysanız, ikili durum temizleme işleminden sonra kullanıcının Iş için Windows Hello 'yu yeniden kurulumu gerekir.
+- Windows 10 1803 ' de, Iş için Windows Hello yapılandırılmışsa, ikili durum temizleme sonrasında kullanıcının Iş için Windows Hello 'Yu yeniden kurulumu gerekir. Bu sorun KB4512509 ile giderilmiştir
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6f7175e24f4eb85229847470bc37a6224ac6dd6e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248181"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013680"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure’da CentOS tabanlı bir sanal makine hazırlama
 
@@ -174,11 +174,14 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
 
     Alternatif olarak, RPM 'yi sanal makinenize yüklemek için [LIS indirme sayfasındaki](https://go.microsoft.com/fwlink/?linkid=403033) el ile yükleme talimatlarını izleyebilirsiniz.
 
-12. Azure Linux aracısını ve bağımlılıklarını yükler:
+12. Azure Linux aracısını ve bağımlılıklarını yükler. Waagent hizmetini başlatma ve etkinleştirme:
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
+    sudo service waagent start
+    sudo chkconfig waagent on
     ```
+
 
     Walınuxagent paketi NetworkManager ve NetworkManager-GNOME paketlerini, adım 3 ' te açıklandığı şekilde kaldırıldıklarında kaldırır.
 
