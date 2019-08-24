@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967726"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012821"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Hızlı Başlangıç: Soru-Cevap Oluşturma API'si Service Portal 'ı kullanarak Bilgi Bankası oluşturma
 
@@ -45,24 +45,21 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     ![Kümesi veri kaynakları](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Hizmetinize vermek bir **adı.** Yinelenen adları ve özel karakterler desteklenir.
-    - URL için ayıklanan istediğiniz verileri ekleyin. Desteklenen kaynakları türleri hakkında daha fazla bilgi [burada](../Concepts/data-sources-supported.md).
-    - Ayıklanan istediğiniz veri dosyalarını karşıya yükleyin. Bkz: [fiyatlandırma bilgileri](https://aka.ms/qnamaker-pricing) kaç belgeleri görmek için ekleyebilirsiniz.
-    - Bankalarıyla el ile eklemek istiyorsanız, atlayabilirsiniz **4. adım** önceki görüntüde gösterildiği.
+1. Hizmetinize gibi `my first kb`bir **ad** verin. Yinelenen adları ve özel karakterler desteklenir.
 
-1. Ekleme **Chit sohbet** , KB. Her birini seçerek, bot için CHIT-chat desteği eklemeyi seçin. 
+1. Soru-cevap oluşturma sorun giderme sayfasını URL olarak ekleyin: `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`, ardından öğesini seçin. `+ Add URL` Desteklenen kaynakları türleri hakkında daha fazla bilgi [burada](../Concepts/data-sources-supported.md). Bu hızlı başlangıçta, ayıklanmak istediğiniz veriler için **dosyaları karşıya yüklemeyin** . Bkz: [fiyatlandırma bilgileri](https://aka.ms/qnamaker-pricing) kaç belgeleri görmek için ekleyebilirsiniz.
 
-    ![KB 'ye sohbet ekleyin](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. Bir  **_profesyonel_ ÇıT-** KB 'nize sohbet ekleyin. 
 
 1. Seçin **, KB oluşturma**.
 
     ![KB oluşturma](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. Ayıklanacak veri birkaç dakika sürer.
+1. Verilerin ayıklanabilmesi birkaç dakika sürebilir.
 
     ![Ayıklama](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. Bilgi bankanızı başarıyla oluşturulduğunda yönlendirilirsiniz **Bilgi Bankası** sayfası.
+1. Bilgi tabanınız başarıyla oluşturulduğunda, **Bilgi Bankası** sayfasına yönlendirilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
