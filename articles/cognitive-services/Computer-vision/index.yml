@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Görüntü İşleme API'si Belgeleri
 metadata:
-  title: API Belgeleri - Görüntü İşleme - Azure Bilişsel Hizmetler | Microsoft Docs
+  title: API Belgeleri - Görüntü İşleme
+  titleSuffix: Azure Cognitive Services
   description: Görüntü İşlemeyi kullanarak görüntüleri işleme ve bilgi döndürme hakkında bilgi edinin. Öğreticilerde API kullanan uygulamaların nasıl derleneceği gösterilmektedir.
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/26/2019
   ms.author: nitinme

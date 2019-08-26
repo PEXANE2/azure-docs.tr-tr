@@ -149,6 +149,8 @@
       items:
         - name: OPC Twin Mimarisi
           href: overview-opc-twin-architecture.md
+        - name: OPC Vault Mimarisi
+          href: overview-opc-vault-architecture.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Bağlı Fabrika
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC Vault
           items:
-            - name: OPC Vault'u mevcut projeye dağıtma
-              items:
-                - name: OPC istemcisi ile OPC PLC’nin güvenli iletişimi
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Güvenli OPC UA istemci ve OPC UA sunucu uygulaması
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: OPC Vault'u sıfırdan dağıtma
-              href: howto-opc-vault-deploy-scratch.md
+            - name: OPC Vault hizmetini dağıtma
+              href: howto-opc-vault-deploy.md
+            - name: OPC Vault hizmetini yönetme
+              href: howto-opc-vault-manage.md
+            - name: OPC Vault ile OPC UA cihaz iletişiminin güvenliğini sağlama
+              href: howto-opc-vault-secure.md
+            - name: OPC Vault hizmetini güvenli çalıştırma
+              href: howto-opc-vault-secure-ca.md
         - name: OPC Yayımcısı
           items:
             - name: OPC Yayımcısını Yapılandırma

@@ -3,15 +3,14 @@ documentType: LandingData
 title: Bing Yazım Denetimi API'si Belgeleri
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Bing Yazım Denetimi API’si Belgeleri - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Docs'
+  title: 'Bing Yazım Denetimi API''si Belgeleri - Öğreticiler, API Başvurusu'
+  titleSuffix: Azure Cognitive Services
   description: Metin belgelerine yönelik önerilen düzeltileri elde etmek için Bing Yazım Denetimi API’sini kullanmayı öğrenin. Öğreticilerde API kullanan uygulamaların nasıl derleneceği gösterilmektedir.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

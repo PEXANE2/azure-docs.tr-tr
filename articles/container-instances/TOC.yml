@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Bağlayıcı
+      href: /connectors/aci
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

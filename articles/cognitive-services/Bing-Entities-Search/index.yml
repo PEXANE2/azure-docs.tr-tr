@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Bing Varlık Arama Belgeleri
 metadata:
-  title: 'Bing Varlık Arama API''si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları | Microsoft Docs'
+  title: 'Bing Varlık Arama API’si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları'
+  titleSuffix: Azure Cognitive Services
   description: 'Kişiler, yerler veya tanımlanan diğer konularla ilgili bilgiler edinmek için Bing Varlık Arama API’si nasıl kullanılır? Öğreticilerde bu hizmeti kullanan uygulamaların nasıl derleneceği açıklanmaktadır.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

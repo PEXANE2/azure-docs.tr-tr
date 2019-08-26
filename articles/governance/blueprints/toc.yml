@@ -27,6 +27,12 @@
     - name: Dizin oluşturma
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: CIS Microsoft Azure Foundations Benchmark
+      items:
+        - name: Genel Bakış
+          href: ./samples/cis-azure-1.1.0/index.md
+        - name: Öneri eşlemesi
+          href: ./samples/cis-azure-1.1.0/control-mapping.md
     - name: IRS 1075
       items:
         - name: Genel Bakış

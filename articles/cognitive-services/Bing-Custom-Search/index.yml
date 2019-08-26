@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Bing Özel Arama Belgeleri
 metadata:
-  title: 'Bing Özel Arama API''si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvurusu - Microsoft Bilişsel Hizmetler | Microsoft Docs'
+  title: 'Bing Özel Arama API’si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları'
+  titleSuffix: Azure Cognitive Services
   description: Özel bir arama deneyimi oluşturmak için Bing Özel Arama portalını ve API'sini kullanmayı öğrenin
   services: cognitive-services
   author: v-deken
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: v-deken

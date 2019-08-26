@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Form Tanıma Belgeleri
 metadata:
-  title: API Belgeleri - Form Tanıma - Azure Bilişsel Hizmetler | Microsoft Docs
+  title: API Belgeleri - Form Tanıma
+  titleSuffix: Azure Cognitive Services
   description: Form belgelerinizden akıllıca anahtar değeri ayıklamak için Form Tanıma kullanmayı öğrenin.
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley

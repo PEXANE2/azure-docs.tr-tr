@@ -7,19 +7,158 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 07/22/2019
+ms.date: 08/21/2019
 ms.topic: hub-page
-ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 13bd9d8c9b5c8337e616b315187242633fce8308
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442831"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971419"
 ---
 <div id="main" class="v2">
 <h1>Azure Bilişsel Hizmetler Belgeleri</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Uygulamalarınıza, web sitelerinize ve botlarınıza, kullanıcılarınızın ihtiyaçlarını görmek, duymak, dile getirmek ve anlamak için doğal iletişim yöntemlerinden yararlanan akıllı algoritmalar oluşturmayı öğrenin. Öğreticiler, hızlı başlangıçlar, API başvuruları ve örnekler size bunu nasıl yapacağınızı gösterir.</p>
         <p> Her hizmetin, tam olarak eğitilen bir modelden tamamen özelleştirilebilir bir modele kadar değişen kendi <a href="/azure/cognitive-services/language-support">dil desteği</a> ve <a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">veri modeli gereksinimleri</a> vardır. 
+
+
+<h2>Başlarken</h2>
+<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+        <li>
+            <a href="/azure/cognitive-services/welcome/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_overview.svg" alt="Learn about Azure Cognitive Services and how to use the different APIs to build intelligent apps." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Bilişsel Hizmetler nedir?</h3>
+                                <p>Azure Bilişsel Hizmetler hakkında bilgi edinin ve akıllı uygulamalar derlemek için farklı API'leri kullanmayı öğrenin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="Learn where Azure Cognitive Services fits in with other Azure offerings for machine learning." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Bilişsel Hizmetler ve makine öğrenmesi</h3>
+                                <p>Azure Bilişsel Hizmetler’in, makine öğrenmesine yönelik diğer Azure teklifleriyle birlikte nasıl çalıştığını öğrenin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-apis-create-account/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/account-management.svg" alt="Learn how to create an Azure Cognitive Services resource." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Bilişsel Hizmetler kaynağı oluşturma</h3>
+                                <p>Azure Bilişsel Hizmetler kaynağı oluşturmayı öğrenin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/language-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/mic-abc.svg" alt="Learn about the human languages supported by Cognitive Services APIs." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Bilişsel Hizmetler dil desteği</h3>
+                                <p>Bilişsel Hizmetler API'lerinin desteklediği insan dilleri hakkında bilgi edinin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/virtual-containers.svg" alt="Learn how to use Azure Cognitive Services in Containers." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Kapsayıcılarda Bilişsel Hizmetleri Kullanma</h3>
+                                <p>Kapsayıcılarda Azure Bilişsel Hizmetleri kullanmayı öğrenin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/authentication/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/account-management.svg" alt="Learn how to authenticate API requests to Azure Cognitive Services." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>İsteğin kimliğini doğrulama</h3>
+                                <p>Azure Bilişsel Hizmetler için API isteklerinin kimliğini doğrulamayı öğrenin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/grad-hat.svg" alt="Up your game with a module or learning path tailored to today's developer and technology masterminds and designed to prepare you for industry-recognized Microsoft certifications." />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Microsoft Learn</h3>
+                                <p>Günümüzün geliştirici ve teknoloji dehalarına uyarlanmış ve sizi sektörde tanınan Microsoft sertifikalarına hazırlamak için tasarlanmış bir modül veya öğrenme yoluyla çalışmanızı başlatın.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+</ul>
+
 
 
 <h2>Bilişsel Hizmetler API’leri</h2>
@@ -29,7 +168,8 @@ ms.locfileid: "68442831"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Görüntü İşleme API'si</h3>
+                        <h3>Görsel</h3>
+                        <h4>Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.</h4><br>
                         <p><a href="/azure/cognitive-services/computer-vision/">Görüntü İşleme</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Özel Görüntü İşleme Hizmeti</a></p>
                         <p><a href="/azure/cognitive-services/face/">Yüz Tanıma API’si</a></p>
@@ -46,7 +186,8 @@ ms.locfileid: "68442831"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Konuşma API'si</h3>
+                        <h3>Konuşma</h3>
+                        <h4>Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.</h4><br>
                         <p><a href="/azure/cognitive-services/speech-service">Konuşma Hizmetleri</a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Konuşmacı Tanıma&nbsp;<sup style="font-size:70%">ÖNİZLEME</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speech/home"><span>Bing Konuşma API'si&nbsp;<sup style="font-size:70%">KULLANIMDAN KALDIRILIYOR</sup></span></a></p>
@@ -61,7 +202,8 @@ ms.locfileid: "68442831"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Dil API'si</h3>
+                        <h3>Dil</h3>
+                        <h4>Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.</h4><br>
                         <p><a href="/azure/cognitive-services/immersive-reader"><span>Tam Ekran Okuyucu&nbsp;<sup style="font-size:70%">ÖNİZLEME</sup></span></a></p>                        <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
                         <p><a href="/azure/cognitive-services/qnamaker/index">Soru-Cevap Oluşturma</a></p>
                         <p><a href="/azure/cognitive-services/text-analytics/">Metin Analizi</a></p>
@@ -76,7 +218,8 @@ ms.locfileid: "68442831"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Arama API’si</h3>
+                        <h3>Arama</h3>
+                        <h4>Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.</h4><br>
                         <p><a href="/azure/cognitive-services/bing-news-search/">Bing Haber Arama</a></p>
                         <p><a href="/azure/cognitive-services/Bing-Video-Search/">Bing Video Arama</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/">Bing Web Araması</a></p>
@@ -98,6 +241,7 @@ ms.locfileid: "68442831"
                 <div class="card">
                     <div class="cardText">
                         <h3>Karar API’si</h3>
+                        <h4>Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.</h4><br>
                         <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Anomali Algılayıcısı&nbsp;<sup style="font-size:70%">ÖNİZLEME</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
                         <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Kişiselleştirme&nbsp;<sup style="font-size:70%">ÖNİZLEME</sup></span></a></p>
@@ -109,123 +253,6 @@ ms.locfileid: "68442831"
 </ul>
 </div>
 
-<h2>Başlarken</h2>
-<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
-        <li>
-            <a href="/azure/cognitive-services/welcome/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_overview.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Bilişsel Hizmetler nedir?</h3>
-                                <p>Azure Bilişsel Hizmetler hakkında bilgi edinin ve akıllı uygulamalar derlemek için farklı API'leri kullanmayı öğrenin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_get-started.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Bilişsel Hizmetler ve makine öğrenmesi</h3>
-                                <p>Azure Bilişsel Hizmetler’in, makine öğrenmesine yönelik diğer Azure teklifleriyle birlikte nasıl çalıştığını öğrenin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-apis-create-account/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_get-started.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Bilişsel Hizmetler hesabı oluşturma</h3>
-                                <p>Azure Bilişsel Hizmetler hesabı oluşturmayı öğrenin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/authentication/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>İsteğin kimliğini doğrulama</h3>
-                                <p>Azure Bilişsel Hizmetler için isteklerin kimliğini doğrulamayı öğrenin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/language-support/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Bilişsel Hizmetler dil desteği</h3>
-                                <p>Bilişsel Hizmetler API'lerinin desteklediği insan dilleri hakkında bilgi edinin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure/cognitive-services/cognitive-services-container-support/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Kapsayıcılarda Bilişsel Hizmetleri Kullanma</h3>
-                                <p>Kapsayıcılarda Azure Bilişsel Hizmetleri kullanmayı öğrenin.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-</ul>
 <h2>5 Dakikalık Hızlı Başlangıçlar</h2>
 <ul class="cardsF panelContent singlePanelContent cols cols3" style="display:flex!important;">
     <li>
@@ -396,4 +423,48 @@ ms.locfileid: "68442831"
     </li>
 </ul>
 
-
+<h2>Ek kaynaklar</h2>
+<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services">PowerShell</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/">REST API'ler</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3></h3>
+                        <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet">.Net</a></p>
+                        <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices">Go</a></p>
+                        <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable">Java</a></p>
+                        <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest">Node.js</a></p>
+                        <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python">Python</a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+</div>

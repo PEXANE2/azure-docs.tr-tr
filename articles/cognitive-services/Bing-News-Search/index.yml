@@ -1,17 +1,15 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
 title: Bing Haber Arama API'si Belgeleri
-titleSuffix: Azure Cognitive Services
 metadata:
-  title: 'Bing Haber Arama API''si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları | Microsoft Docs'
+  title: 'Bing Haber Arama API’si Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları'
+  titleSuffix: Azure Cognitive Services
   description: Web’de haber aramak için Bing Haber Arama API'sinin nasıl kullanılacağını öğrenin.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

@@ -263,6 +263,10 @@
               href: integrate-environments-devops-pipeline.md
             - name: Azure Pipelines derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
               href: use-devtest-labs-build-release-pipelines.md
+        - name: DevTest Labs'i genişletme
+          items:
+            - name: DevTest Labs'i genişletmek için Azure İşlevleri'ni kullanma
+              href: extend-devtest-labs-azure-functions.md
         - name: Laboratuvarların kullanımını bildirme
           href: report-usage-across-multiple-labs-subscriptions.md
         - name: Kuruluşta DevTest Labs

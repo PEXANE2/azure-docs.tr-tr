@@ -116,7 +116,7 @@
           href: licensing-groups-resolve-problems.md
         - name: Kullanıcıları grup lisanslamaya geçirme
           href: licensing-groups-migrate-users.md
-        - name: Kullanıcı lisanslarını değiştirme
+        - name: Kullanıcının lisanslarını değiştirme
           href: licensing-groups-change-licenses.md
         - name: İlave senaryolar
           href: licensing-group-advanced.md

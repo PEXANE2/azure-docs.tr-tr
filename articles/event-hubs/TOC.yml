@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: Güvenlik
       items:
-        - name: Azure kaynakları için yönetilen kimlik
-          href: event-hubs-managed-service-identity.md
-        - name: Rol Tabanlı Erişim Denetimi (önizleme)
-          href: event-hubs-role-based-access-control.md
-        - name: Kimlik doğrulama ve güvenlik modeline genel bakış
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Yetkilendirme
+          items:
+            - name: Azure Event Hubs'a erişimi yetkilendirme
+              href: authorize-access-event-hubs.md
+            - name: Azure Active Directory'ye erişimi yetkilendirme
+              href: authorize-access-azure-active-directory.md
+            - name: Paylaşılan erişim imzasıyla erişimi yetkilendirme
+              href: authorize-access-shared-access-signature.md
+        - name: Kimlik Doğrulaması
+          items:
+            - name: Azure Active Directory ile kimlik doğrulama
+              items:
+                - name: Yönetilen kimlikle kimlik doğrulaması
+                  href: authenticate-managed-identity.md
+                - name: Uygulamadan kimlik doğrulaması yapma
+                  href: authenticate-application.md
+            - name: Paylaşılan erişim imzasıyla kimlik doğrulaması yapma
+              href: authenticate-shared-access-signature.md
         - name: Güvenlik Öznitelikleri
           href: event-hubs-security-attributes.md
     - name: AMQP 1.0 protokol kılavuzu
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Event Hubs Ad Alanında Sanal Ağ Tümleştirmesi ve Güvenlik Duvarları
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma
+          href: configure-customer-managed-key.md
     - name: Sorun giderme
       items:
         - name: Özel durumlar

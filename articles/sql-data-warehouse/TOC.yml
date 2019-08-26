@@ -253,14 +253,20 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Bağlantı dizeleri
           href: sql-data-warehouse-connection-strings.md
-        - name: Visual Studio SSDT yükleme
-          href: sql-data-warehouse-install-visual-studio.md
-        - name: Visual Studio SSDT ile sorgulama
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: SSMS ile Sorgulama
-          href: sql-data-warehouse-query-ssms.md
-        - name: SQLCMD ile bağlanma ve sorgulama
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Değişiklik yönetimi ve dağıtımı
+          items:
+            - name: Visual Studio SSDT yükleme
+              href: sql-data-warehouse-install-visual-studio.md
+            - name: Kaynak denetimi tümleştirmesi
+              href: sql-data-warehouse-source-control-integration.md
+        - name: Bağlanma ve sorgulama
+          items:
+            - name: Visual Studio SSDT
+              href: sql-data-warehouse-query-visual-studio.md
+            - name: SSMS
+              href: sql-data-warehouse-query-ssms.md
+            - name: sqlcmd
+              href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: İş yükü yönetimi
       items:
         - name: İş yükünüzü çözümleme

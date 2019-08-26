@@ -54,7 +54,7 @@
           href: cloudsimple-faq.md
     - name: Öğreticiler
       items:
-        - name: CloudSimple Hizmeti oluşturma
+        - name: CloudSimple hizmeti oluşturma
           href: create-cloudsimple-service.md
         - name: CloudSimple portalına erişim
           href: access-cloudsimple-portal.md
@@ -106,8 +106,6 @@
               href: users.md
             - name: Özel Buluta yönelik sanal ağ bağlantısı ayarlama
               href: virtual-network-connection.md
-            - name: Kullanıcı profilinizi düzenleme
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Özel Bulut için VMware sanal makineleri ayarlama
           items:
             - name: Azure’da VM oluşturma
@@ -147,7 +145,7 @@
             - name: İş yükü sanal makinelerini Özel Buluta geçirme
               href: migrate-workloads.md
             - name: Azure'da VMware içinde Uygulama yüksek kullanılabilirliğini sağlama
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
             - name: Bir yük dengeleme çözümü seçin
               href: load-balancers.md
         - name: VMware ekosistemi
@@ -156,8 +154,10 @@
               href: backup-workloads-veeam.md
             - name: 'Özel Bulutu, Zerto’yu kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
               href: disaster-recovery-zerto.md
+            - name: 'Özel Bulutu, VMware SRM kullanarak olağanüstü durum kurtarma sitesi olarak yapılandırma'
+              href: disaster-recovery-site-recovery-manager.md
             - name: VMware Horizon çözüm kılavuzu
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: Özel Bulutunuz için vSAN şifrelemesini yapılandırma
               href: vsan-encryption.md
             - name: Oracle RAC için Özel Bulutunuzu iyileştirin

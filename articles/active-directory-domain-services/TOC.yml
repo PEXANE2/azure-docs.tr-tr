@@ -17,12 +17,16 @@
       href: tutorial-create-management-vm.md
     - name: Güvenli LDAP'yi yapılandırma
       href: tutorial-configure-ldaps.md
+    - name: Parola karması eşitlemeyi yapılandırma
+      href: tutorial-configure-password-hash-sync.md
 - name: Örnekler
   items:
     - name: Azure PowerShell kullanarak Azure AD DS örneği oluşturma
       href: powershell-create-instance.md
 - name: Kavramlar
   items:
+    - name: Yaygın dağıtım senaryoları
+      href: scenarios.md
     - name: Azure AD DS eşitlemesinin işleyiş biçimi
       href: synchronization.md
     - name: Parola karması eşitleme nasıl çalışır?
@@ -37,8 +41,6 @@
   items:
     - name: Genel ayarları yapılandırma
       items:
-        - name: Parola karması eşitlemeyi etkinleştirme
-          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
         - name: Azure AD’den kapsamlı eşitleme yapılandırma
           href: scoped-synchronization.md
         - name: Kuruluş birimi (OU) oluşturma
@@ -47,8 +49,6 @@
           href: create-gmsa.md
     - name: Azure AD DS planı
       items:
-        - name: Genel senaryolar
-          href: scenarios.md
         - name: Sanal ağ konusunda dikkat edilmesi gerekenler
           href: network-considerations.md
     - name: Azure AD DS'yi yönetme

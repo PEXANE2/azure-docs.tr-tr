@@ -350,3 +350,5 @@
       href: reference-connect-adsynctools.md
     - name: ADConnectivityTools Başvurusu
       href: reference-connect-adconnectivitytools.md
+    - name: msExchUserHoldPolicies ve cloudMSExchUserHoldPolicies
+      href: reference-connect-msexchuserholdpolicies.md

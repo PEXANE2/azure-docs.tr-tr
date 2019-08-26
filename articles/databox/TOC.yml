@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 - Kopyalama ve doğrulama
               href: data-box-disk-deploy-copy-data.md
-            - name: '4 - İade etme, karşıya yükleme, doğrulama'
+            - name: 4 - Döndürme
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 - Karşıya yüklemeyi doğrulama
+              href: data-box-disk-deploy-upload-verify.md
         - name: Kavramlar
           items:
             - name: Gereksinimleri inceleme
