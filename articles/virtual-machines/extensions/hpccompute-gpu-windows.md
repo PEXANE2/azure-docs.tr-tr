@@ -75,8 +75,8 @@ Aşağıdaki JSON şema uzantısı gösterir.
 | Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | dize |
-| type | NvidiaGpuDriverWindows | dize |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
