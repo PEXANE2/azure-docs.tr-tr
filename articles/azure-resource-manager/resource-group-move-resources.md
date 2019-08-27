@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624552"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035547"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -35,8 +35,6 @@ Bir kaynağı taşımadan önce yapmanız gereken bazı önemli adımlar vardır
    * [Ağ taşıma Kılavuzu](./move-limitations/networking-move-limitations.md)
    * [Kurtarma Hizmetleri taşıma Kılavuzu](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Sanal makineler taşıma Kılavuzu](./move-limitations/virtual-machines-move-limitations.md)
-
-   Hedef kaynak grubu bir sanal ağ içeriyorsa, bu kaynaklar taşımaya dahil olmadığında bile, bağımlı kaynaklarının durumu taşımayı engelleyebilirler. Daha fazla bilgi için bkz. [ağ taşıma Kılavuzu](./move-limitations/virtual-network-move-limitations.md).
 
 1. Kaynak ve hedef abonelikler etkin olmalıdır. Devre dışı bırakılmış bir hesabı etkinleştirirken sorun yaşıyorsanız, [bir Azure destek isteği oluşturun](../azure-supportability/how-to-create-azure-support-request.md). Seçin **abonelik yönetimi** sorun türü için.
 

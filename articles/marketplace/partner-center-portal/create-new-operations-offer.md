@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e711e94a4ac8098137456c2ae5bf018107687354
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900091"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033213"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Yeni bir Dynamics 365 for Operations teklifi oluşturma
 
@@ -339,11 +339,11 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ## <a name="supplemental-content"></a>Ek içerik
 
-Bu sayfa teklifiniz hakkında ek gerekli bilgileri sağlamanıza olanak tanır.
+Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
 
 ### <a name="validation-assets"></a>Doğrulama varlıkları
 
-Bu bölüme bir özelleştirme analizi raporu (otomobıl) yüklemeniz gerekir. Bu rapor, özelleştirme ve uzantı modelleriniz analiz edilirken, önceden tanımlanmış en iyi yöntem kuralları kümesine göre oluşturulur.
+Bu bölüme bir [Özelleştirme analizi raporu (otomobil)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) yüklemeniz gerekir. Bu rapor, özelleştirme ve uzantı modelleriniz analiz edilirken, önceden tanımlanmış en iyi yöntem kuralları kümesine göre oluşturulur.
 
 Bu dosya. xls veya. xlsx biçiminde olmalıdır. Birden fazla raporunuz varsa, tüm raporları içeren bir. zip dosyasını karşıya yükleyebilirsiniz.
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499653"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033317"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -80,6 +80,8 @@ Her müşteri için kusursuz bir çözüm veya öneri olmasa da, aşağıdaki ya
 Yetkilendirme Yönetimi, erişim incelemeleri, Privileged Identity Management ve Kullanım koşulları kullanmaya başlamak için Azure portal **kimlik** yönetimi 'nin Başlarken sekmesini de denetleyebilirsiniz.
 
 ![Identity Idare Başlarken](./media/identity-governance-overview/getting-started.png)
+
+Kimlik yönetimi özellikleriyle ilgili geri bildiriminiz varsa, görüşlerinizi göndermek için Azure portal **geri bildirimde bulunun?** öğesine tıklayın. Ekip geri bildirimlerinizi düzenli olarak inceler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Windows sanal makinelerinize yönelik bakım bildirimlerini ayarlama | Microsoft Docs
-description: Azure sanal makineleriniz için zamanlanmış bakım bildirimleri ayarlamayı öğrenin.
+title: Azure 'da Windows VM 'leriniz için zamanlanmış olayları izleme | Microsoft Docs
+description: Zamanlanan olaylar için Azure sanal makinelerinizi izlemeyi öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657417"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051847"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>VM 'nizi etkileyen bakım hakkında bildirimler ayarlama
+# <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
 
 Güncelleştirmeler, hizmetlerin güvenli ve güncel kalmasını sağlamak için her gün farklı Azure bölümlerine uygulanır. Planlı güncelleştirmelere ek olarak planlanmamış olaylar da oluşabilir. Örneğin, herhangi bir donanım performansında azalma veya hata algılanırsa Azure hizmetlerinin planlanmamış bakım gerçekleştirmesi gerekebilir. Dinamik geçiş, güncelleştirmeleri koruyan ve genel olarak güncelleştirmelerin etkisinden katı bir çubuk tutarak, bu olaylar çoğu zaman müşterilere saydamdır ve bir etkisi yoktur ve sanal makine donmasına neden olur. Ancak bazı uygulamalarda, sanal makine donmasına karşın birkaç saniye bir etkiye neden olabilir. Yaklaşan Azure bakımı hakkında daha fazla bilgi için bu uygulamalar için en iyi deneyimi elde etmek önemlidir. [Zamanlanan olaylar hizmeti](scheduled-events.md) , yaklaşan bakım hakkında bildirim almak için size bir programlama arabirimi sağlar ve bakımı sorunsuz bir şekilde işlemenizi sağlar. 
 

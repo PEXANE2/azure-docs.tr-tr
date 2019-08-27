@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/16/2019
-ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575784"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035766"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -279,6 +279,9 @@ Yukarıdaki yapılandırma, otomatik yük devretmenin ön uç bileşenlerinden g
    > Yanlış yapılandırılmış NSG güvenlik kuralları, veritabanı kopyalama işlemlerinin takılmasına yol açar.
 
 7. İkincil örnek, doğru DNS bölge KIMLIĞIYLE yapılandırılır. DNS bölgesi, yönetilen bir örneğin bir özelliğidir ve KIMLIĞI ana bilgisayar adı adresine dahildir. Bölge KIMLIĞI, her VNet 'te ilk yönetilen örnek oluşturulduğunda rastgele bir dize olarak oluşturulur ve aynı KIMLIK aynı alt ağdaki diğer tüm örneklere atanır. Atandıktan sonra DNS bölgesi değiştirilemez. Aynı yük devretme grubuna dahil edilen yönetilen örnekler, DNS bölgesini paylaşmalıdır. Bu, ikincil örneği oluştururken birinci örneğin bölge KIMLIĞINI DnsZonePartner parametresinin değeri olarak geçirerek gerçekleştirirsiniz. 
+
+   > [!NOTE]
+   > Yönetilen örnek ile yük devretme gruplarını yapılandırmaya ilişkin ayrıntılı bir öğretici için bkz. [bir yük devretme grubuna yönetilen örnek ekleme](sql-database-managed-instance-failover-group-tutorial.md).
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Birincil veritabanını yükseltme veya eski sürüme indirme
 

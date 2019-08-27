@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: aad42ea891b671bd481322d8b499d375ca06a7dc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5d13e7375c9e3cd874bc61b686ff2549c38da1f3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512647"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036359"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Güvenlik Merkezi ve Azure Sanal Makineler
 [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Aboneliklerinizde, tümleşik güvenlik izleme ve ilke yönetimi sağlar; normal koşullarda gözden kaçabilecek tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş ekosistemiyle çalışır.
@@ -59,8 +59,6 @@ Güvenlik ilkesi, belirtilen abonelik veya kaynak grubundaki kaynaklar için ön
 
 > [!NOTE]
 > Kullanılabilen her bir **Önleme ilkesi** hakkında daha fazla bilgi için [Güvenlik ilkeleri ayarlama](tutorial-security-policy.md) makalesine bakın.
-> 
-> 
 
 ## <a name="manage-security-recommendations"></a>Güvenlik önerilerini yönetme
 Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde öneriler oluşturur. Gerekli denetimlerin yapılandırılması işlemi boyunca öneriler size rehberlik eder.
@@ -90,7 +88,7 @@ Bir aboneliğin kaynakları için [güvenlik ilkelerini](tutorial-security-polic
 ![Güvenlik durumu](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Güvenlik uyarılarını yönetme ve yanıtlama
-Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Güvenlik Merkezi, sorunu hızlıca araştırıp olası saldırıları düzeltmeye yönelik öneriler sağlamanıza yardımcı olmak amacıyla, çeşitli [algılama özelliklerinden](security-center-detection-capabilities.md) yararlanarak öncelik sırasına koyulmuş güvenlik uyarıları oluşturabilir.
+Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Güvenlik Merkezi, sorunu hızlıca araştırıp olası saldırıları düzeltmeye yönelik öneriler sağlamanıza yardımcı olmak amacıyla, çeşitli [algılama özelliklerinden](security-center-alerts-overview.md#detect-threats) yararlanarak öncelik sırasına koyulmuş güvenlik uyarıları oluşturabilir.
 
 ![Güvenlik uyarıları](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

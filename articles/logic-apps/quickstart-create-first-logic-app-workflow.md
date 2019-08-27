@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: f0d63b9e01b7e39b03e6a3b1e310b5fae0f8d25f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: d6c7f04d35a91e30a98ec403b6811a2be0aaee20
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982859"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051687"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Hızlı Başlangıç: Azure Logic Apps Azure portal ilk otomatikleştirilmiş iş akışınızı oluşturma
 
@@ -99,7 +100,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 
 1. **Bir akış öğesi yayımlandığında** tetikleyicisi bölümünde **yeni adım**' ı seçin.
 
-   ![Eylem ekleme](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
+   ![Eylem ekle](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
 1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin.
 
@@ -171,7 +172,7 @@ Artık bu örneğe ihtiyacınız yoksa mantıksal uygulamanızı ve ilgili kayna
 
 1. Kaynak grubu adını onay olarak girin ve **Sil**' i seçin.
 
-   ![Silme işlemini onaylama](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
+   ![Silmeyi onayla](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.

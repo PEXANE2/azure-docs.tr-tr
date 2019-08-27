@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534536"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035226"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -36,7 +36,7 @@ Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScrip
 > [!IMPORTANT]
 > Uygulamanıza Application Insights JavaScript SDK 'Sı eklemek için aşağıdaki yöntemlerden birini kullanmanız yeterlidir. NPM tabanlı kurulumu kullanırsanız, kod parçacığı tabanlı kurulumu kullanmayın. Aynı zamanda, kod parçacığı tabanlı yaklaşımı kullanırken ters senaryo için de, NPM tabanlı kurulum 'u kullanmayın. 
 
-### <a name="npm-based-setup"></a>NPM tabanlı kurulum 
+### <a name="npm-based-setup"></a>NPM tabanlı kurulum
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ dataset
 2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak şununla sondan düzeltildi`.map`
 3. Kaynak haritalarını Azure portal çağrı yığınına sürükleyip bırakın![](https://i.imgur.com/Efue9nU.gif)
 
-## <a name="application-insights-web-basic"></a>Application Insights Web temel
+### <a name="application-insights-web-basic"></a>Application Insights Web temel
 
 Hafif bir deneyim için Application Insights temel sürümünü yükleyebilirsiniz
 ```

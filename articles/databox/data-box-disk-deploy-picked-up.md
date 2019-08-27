@@ -6,17 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 08/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6dcd55cc2c269024179e450d789df544bb8ff9a9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012913"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035698"
 ---
+::: zone target="chromeless"
+
+# <a name="return-azure-data-box-disk"></a>Dönüş Azure Data Box Disk 
+
+::: zone-end
+
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>Öğretici: Dönüş Azure Data Box Disk 
@@ -29,13 +34,14 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Data Box Disk'i Microsoft'a gönderme
 > * Farklı bölgelerde Data Box Disk seçin
 
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce [öğreticiyi tamamladığınızdan emin olun: Azure Data Box Disk verileri kopyalayın ve doğrulayın](data-box-disk-deploy-copy-data.md).
 
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk'i geri gönderme
+
+::: zone-end
 
 1. Veri doğrulama tamamlandıktan sonra diskleri çıkarın. Bağlantı kablolarını çıkarın.
 2. Tüm diskleri ve bağlantı kablolarını kabarcıklı naylona sarın ve bunları sevkiyat kutusuna yerleştirin. Aksesuarlar yoksa ücretler uygulanabilir.
@@ -45,15 +51,25 @@ Başlamadan önce [öğreticiyi tamamladığınızdan emin olun: Azure Data Box 
 
 Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir.
 
+
+
+- [CIHAZı ABD ve Kanada 'ya DÖNDÜRÜRKEN UPS ile bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+- [Avrupa için DHL ile birlikte bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-europe) ve Web sitesini ziyaret edin ve Airway fatura numarasını belirtin.
+- [Avustralya 'da bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
+- Asya ve Japonya, Kore ve Singapur gibi [ülkeler için bir çekme planı zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-asia) .
+
+::: zone target="chromeless"
+
+Aboneliğiniz, taşımalarınız tarafından alındıktan sonra, Portal güncelleştirmelerinde sipariş durumu ve izleme KIMLIĞI görüntülenir.
+
+::: zone-end
+
 ## <a name="pick-up-in-us-canada"></a>ABD, Kanada 'da seçin
 
 Cihazı ABD veya Kanada 'Ya döndürürken aşağıdaki adımları uygulayın.
 
 1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket hasar görmüşse veya kaybolursa:
     - Genel Bakış ' a gidin **> sevkiyat etiketini indirin** ve bir dönüş sevk etiketi indirin.
-
-        ![Sevkiyat etiketini indirin](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Cihazdaki etiketi afden düzeltir.
 
 2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
@@ -64,33 +80,20 @@ Cihazı ABD veya Kanada 'Ya döndürürken aşağıdaki adımları uygulayın.
     - İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
     - Toplama zamanlamak yerine, en yakın bırakma konumundaki Data Box Disk de bırakabilirsiniz.
 
-
 ## <a name="pick-up-in-europe"></a>Avrupa 'da seçin
 
 Cihazı Avrupa 'ya döndürürken aşağıdaki adımları uygulayın.
 
 1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket hasar görmüşse veya kaybolursa:
     - Genel Bakış ' a gidin **> sevkiyat etiketini indirin** ve bir dönüş sevk etiketi indirin.
-
-        ![Sevkiyat etiketini indirin](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Cihazdaki etiketi afden düzeltir.
 
 2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
 3. Cihazı Avrupa'da DHL ile iade ediyorsanız, DHL'in web sitesini ziyaret edip bir havayolu fatura numarası belirterek toplama isteğinde bulunun.
-4. DHL Express web sitesine ülke/bölge ' ye gidin ve **bir Courier Collection > eReturn sevkıyatı**seçin.
-
-    ![DHL iade sevk irsaliyesi](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. DHL Express web sitesine ülke/bölge ' ye gidin ve **bir Courier Collection > eReturn sevkıyatı**seçin.    
 3. Konşimento numarasını belirtin ve toplama ayarlaması yapmak için **Toplama Zamanlama**'ya tıklayın.
 
-      ![Toplamayı zamanla](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-## <a name="pick-up-in-asia-pacific"></a>Asya Pasifik olarak seçin
-
-Bu bölge, Japonya, Kore, Avustralya ve Singapur 'da toplama yönergelerini içerir.
-
-### <a name="pick-up-in-australia"></a>Avustralya 'da seçin
+## <a name="pick-up-in-australia"></a>Avustralya 'da seçin
 
 Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. Tüm gelen sevkiyatlar gelişmiş bir bildirime sahip olmalıdır. Avustralya 'da toplama için aşağıdaki adımları uygulayın.
 
@@ -100,6 +103,10 @@ Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. T�
     - Sipariş adı
     - Adres
     - Kişi adı
+
+## <a name="pick-up-in-asia"></a>Asya 'da seçin
+
+Toplama yönergeleri, Japonya, Kore ve Singapur için farklıdır.
 
 ### <a name="pick-up-in-japan"></a>Japonya 'da seçin
 
@@ -159,6 +166,8 @@ Gerekirse, aşağıdaki bilgileri izleyerek Quantium çözüm desteği (Japonca 
 3. Courier 'e el ile. 
 
 
+::: zone target="docs"
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide aşağıdaki Azure Data Box Disk konularını öğrendiniz:
@@ -175,24 +184,5 @@ Data Box Disk 'den Azure depolama hesabına veri yükleme işleminin nasıl doğ
 ::: zone-end
 
 
-::: zone target="chromeless"
-
-# <a name="return-the-disk-to-azure"></a>Diski Azure 'a döndürün
-
-1. Veri doğrulama işlemi tamamlandıktan sonra diskleri çıkarın. Bağlantı kablolarını çıkarın.
-2. Tüm diskleri ve bağlantı kablolarını kabarcıklı naylona sarın ve bunları sevkiyat kutusuna yerleştirin. Aksesuarlar yoksa ücretler uygulanabilir.
-    - Ambalajını ilk sevkıyatla yeniden kullanın.  
-    - İyi güvenli bir kabarcıklanmasını sarması kullanarak disk paketetmenizi öneririz.
-    - Kutunun içindeki tüm hareketleri azaltmak için Sığdırma 'nin Snug olduğundan emin olun.
-
-3. Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir.
-
-    - [CIHAZı ABD ve Kanada 'ya DÖNDÜRÜRKEN UPS ile bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-    - [Avrupa için DHL ile birlikte bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-europe) ve Web sitesini ziyaret edin ve Airway fatura numarasını belirtin.
-    - Avustralya, Japonya, Kore ve Singapur gibi [Avustralya-Pasifik bölgesindeki ülkeler için bir çekme planı zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific) .
-
-Aboneliğiniz, taşımalarınız tarafından alındıktan sonra, Portal güncelleştirmelerinde sipariş durumu ve izleme KIMLIĞI görüntülenir.
-
-::: zone-end
 
 

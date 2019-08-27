@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558627"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050603"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlarla Azure API Management kullanma
 Azure sanal ağları (VNet), erişimi denetlediğiniz internet 'e yönelik bir yönlendirilebilir ağa Azure kaynaklarınızı yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgileri başlatın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -140,7 +140,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
 + **SMTP geçişi**: `smtpi-co1.msn.com`Ana bilgisayar `smtpi-ch1.msn.com` ,`smtpi-sin.msn.com` , ve altında çözümlenen SMTP geçişi için giden ağ bağlantısı. `smtpi-db3.msn.com``ies.global.microsoft.com`
 
-+ **Geliştirici PORTALı CAPTCHA**: Geliştirici portalının ana bilgisayar `client.hip.live.com`altında çözümlenen CAPTCHA için giden ağ bağlantısı.
++ **Geliştirici PORTALı CAPTCHA**: Ana bilgisayarlar `client.hip.live.com` ve `partner.hip.live.com`altında çözümlenen geliştirici portalının CAPTCHA için giden ağ bağlantısı.
 
 + **Azure Portal tanılama**: Bir sanal ağ içinden API Management uzantısı kullanılırken Azure Portal tanılama günlüklerinin akışını etkinleştirmek için, 443 numaralı bağlantı noktasına giden erişim `dc.services.visualstudio.com` gerekir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorunları gidermeye yardımcı olur.
 

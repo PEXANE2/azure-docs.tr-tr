@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Tak ve Kullan önizleme cihazını IoT Central 'a bağlama | Microsoft Docs
+title: IoT Tak ve Kullan önizleme cihazını Azure IoT Central bağlayın | Microsoft Docs
 description: Cihaz kodu oluşturmak için bir cihaz yetenek modeli kullanın. Ardından Cihaz kodunu çalıştırın, cihaz IoT Central uygulamasına bağlanma sayfasına bakın ve otomatik olarak oluşturulan görünümleri kullanın.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997727"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048964"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Hızlı Başlangıç: Bir IoT Tak ve Kullan cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
 

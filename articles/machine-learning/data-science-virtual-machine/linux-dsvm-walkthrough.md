@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574974"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051641"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>İle bir Linux veri bilimi sanal makinesi Azure üzerinde veri bilimi
 Bu izlenecek yol, Linux veri bilimi sanal makinesi ile çeşitli genel veri bilimi görevlerini gerçekleştirmek nasıl gösterir. Linux veri bilimi sanal makinesi (DSVM) veri analizi ve makine öğrenimi için yaygın olarak kullanılan araçları koleksiyonu ile önceden yüklenmiş olan Azure üzerinde kullanılabilir bir sanal makine görüntüsüdür. Anahtar yazılım bileşenleri içinde listelenen [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md) konu. VM görüntüsü, yüklemek ve araçların her biri ayrı ayrı yapılandırmak zorunda kalmadan, dakikalar içinde veri bilimi yapmaya başlayın kolaylaştırır. Kolayca VM'yi, gerekirse ölçeği ve kullanımda olmadığında durdurun. Bu nedenle bu kaynak, esnek ve maliyet açısından verimli içindir.
@@ -36,7 +36,7 @@ Linux veri bilimi sanal makinesi kullanabilmeniz için önce aşağıdakilere sa
 
 * Bir **Azure aboneliği**. Zaten bir yoksa, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
 * A [ **Linux veri bilimi sanal makinesi**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Bu VM sağlama hakkında daha fazla bilgi için bkz: [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
-* [X2Go](https://wiki.x2go.org/doku.php) bilgisayarınızda yüklü ve XFCE oturum açıldı. Yükleme ve yapılandırma hakkında bilgi için bir **X2Go istemci**, bkz: [yükleme ve yapılandırma X2Go istemci](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) bilgisayarınızda yüklü ve XFCE oturum açıldı. **X2Go istemcisi**yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [X2Go istemcisini yükleme ve yapılandırma](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
 * Hakkında gfx.xrender.enabled bayrağı daha yumuşak kaydırma deneyimi için geçiş: sanal makineleri FireFox tarayıcısı yapılandırmada. [Buradan daha fazla bakın. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Ayrıca geçiş göz önünde bulundurun *mousewheel.enable_pixel_scrolling* false. [Buradaki yönergeleri.](https://support.mozilla.org/questions/981140)
 * Bir **AzureML hesabı**. Yeni hesap için kaydolun biri yoksa, [AzureML giriş sayfası](https://studio.azureml.net/). Başlamanıza yardımcı olmak için ücretsiz kullanım katman mevcuttur.
 

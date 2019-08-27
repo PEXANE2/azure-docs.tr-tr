@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b688218b871a5f652e7f4de172d23f1b1fb0aa5c
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624295"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035516"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Azure kaynaklarını yeni kaynak grubuna veya aboneliğe taşıma sorunlarını giderme
 
@@ -43,7 +43,9 @@ Mümkün olduğunda, kesme büyük ayrı taşıma işlemlerini taşır. Tek bir 
 
 ## <a name="resource-not-in-succeeded-state"></a>Kaynak başarılı değil durumunda
 
-Kaynak başarılı bir durumda olmadığından, bir kaynağın taşınamayacağını belirten bir hata iletisi alırsanız, gerçekten taşımayı engelleyen bir bağımlı kaynak olabilir. Bkz. [bağımlı kaynakların durumu](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
+Kaynak başarılı bir durumda olmadığından, bir kaynağın taşınamayacağını belirten bir hata iletisi aldığınızda, gerçekten taşımayı engelleyen bir bağımlı kaynak olabilir.
+
+Kaynak veya hedef kaynak grubu bir sanal ağ içeriyorsa, sanal ağ için tüm bağımlı kaynakların durumları taşıma sırasında denetlenir. Bu kaynaklardan herhangi biri başarısız durumdaysa taşıma engellenir. Örneğin, sanal ağ kullanan bir sanal makine başarısız olduysa, taşıma engellenir. Sanal makine, taşınmakta olan kaynaklardan biri olmadığında ve taşıma için kaynak gruplarından birinde yer alsa bile taşıma engellenir. Bu sorundan kaçınmak için, kaynaklarınızı sanal ağı olmayan bir kaynak grubuna taşıyın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

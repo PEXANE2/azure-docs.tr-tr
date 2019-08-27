@@ -3,19 +3,20 @@ title: Öğretici-e-postaları ve ekleri işlemeyi otomatikleştirme-Azure Logic
 description: Öğretici-Azure Logic Apps, Azure depolama ve Azure Işlevleri ile e-postaları ve ekleri işleyen otomatik iş akışları oluşturma
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
-manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: d203f5f10c7a24b63693a7fe5d6387be284d5034
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982991"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051782"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Öğretici: Azure Logic Apps ile e-postaları ve ekleri işlemeyi otomatikleştirme
 
@@ -180,7 +181,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
 4. **Yeni İşlev** bölmesinin **Ad** alanına `RemoveHTMLFunction` girin. **Yetkilendirme düzeyi**'ni **İşlev** olarak bırakın ve **Oluştur**'u seçin.
 
-   ![İşlevinizi adlandırma](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
+   ![İşlevinizi adlandırın](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
 5. Düzenleyici açıldıktan sonra şablon kodunu bu örnek kodla değiştirin; böylece HTML kaldırılır ve sonuçlar çağırana döndürülür:
 

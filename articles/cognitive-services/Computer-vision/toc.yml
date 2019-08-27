@@ -147,6 +147,8 @@
           href: computer-vision-how-to-install-containers.md
         - name: Kapsayıcıları yapılandırma
           href: computer-vision-resource-container-config.md
+        - name: Kubernetes ve Helm ile kullanma
+          href: deploy-computer-vision-on-premises.md
         - name: Kapsayıcı örnekleri kullanma
           href: deploy-computer-vision-on-container-instances.md
     - name: Görüntü İşleme Bağlı Hizmetini kullanma

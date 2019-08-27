@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735534"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034559"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
@@ -106,9 +106,9 @@ Genel önizlemeye aşağıdaki şekilde katılın:
 
 1. 2\. adımda **yedeklemeyi Yapılandır**' a tıklayın.
 2. **Yedeklenecek öğeleri seçin**' de, korumak istediğiniz tüm veritabanlarını seçin > **Tamam**' a tıklayın.
-3.  **** Yedekleme > İlkesi ' nde**yedekleme ilkesi**' ni seçin ve aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
+3. Yedekleme > İlkesi ' nde**yedekleme ilkesi**' ni seçin ve aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
 4. İlkeyi oluşturduktan sonra **yedekleme** menüsünde **yedeklemeyi etkinleştir**' e tıklayın.
-5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
+5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
 ### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
 

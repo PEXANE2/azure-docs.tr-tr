@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/22/2019
-ms.openlocfilehash: 476b8cff23d09d81fe356a6445e27794b267d9a2
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 08/26/2019
+ms.openlocfilehash: 84dc0115edcab07036b43d5fa19310918f7a2408
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998100"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035976"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -29,9 +29,9 @@ Aşağıdaki sorunlar, küme oluşturma hatalarının en yaygın temel nedenlerd
 
 ## <a name="permissions-issues"></a>İzin sorunları
 
-Azure Data Lake Storage Gen 2 kullanıyorsanız ve "Bu istek bu izni kullanarak bu işlemi gerçekleştirme yetkisi yok" hatasını alırsanız, Azure portal açın, depolama hesabınıza gidin ve Access Control (ıAM) altında **depolama Blobun olduğundan emin olun Veri katılımcısı** veya **Depolama Blobu veri sahibi rolü** rolü, abonelik için **Kullanıcı tarafından atanan yönetilen kimliğe** erişim atamış. Ayrıntılı yönergeler için [Data Lake Storage 2. hesapta yönetilen kimlik Izinlerini ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) bölümüne bakın.
+Azure Data Lake Storage 2. kullanıyorsanız ve hatayı ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```alıyorsanız, Azure Portal açın, depolama hesabınıza gidin ve Access Control (IAM) altında, **Depolama Blobu verilerinin katkıda** bulunduğundan veya **depolama blobunun Veri sahibi** rolü, abonelik Için **Kullanıcı tarafından atanan yönetilen kimliğe** erişim atamış. Ayrıntılı yönergeler için [Data Lake Storage 2. hesapta yönetilen kimlik Izinlerini ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) bölümüne bakın.
 
-Data Lake Storage Gen 1 kullanıyorsanız, kurulum ve yapılandırma yönergeleri bölümüne bakın. [](../hdinsight-hadoop-use-data-lake-store.md) Data Lake Storage Gen 1, HBase kümelerinde desteklenmez ve HDInsight sürüm 4,0 ' de desteklenmez.
+Azure Data Lake Storage 1. kullanıyorsanız, kurulum ve yapılandırma yönergeleri bölümüne bakın. [](../hdinsight-hadoop-use-data-lake-store.md) Data Lake Storage 1., HBase kümelerinde desteklenmez ve HDInsight sürüm 4,0 ' de desteklenmez.
 
 Azure Storage kullanıyorsanız, küme oluşturma sırasında depolama hesabı adının geçerli olduğundan emin olun.
 

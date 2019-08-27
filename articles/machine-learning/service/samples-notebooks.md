@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772567"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035937"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyıter Not defterleri ile Azure Machine Learning hizmetini keşfet
 
@@ -67,4 +67,4 @@ Azure Machine Learning hizmetin neler yapabileceğini öğrenmek için [örnek n
 
 - [Eğitmek ve bir görüntü sınıflandırma modeli MNIST ile dağıtma](tutorial-train-models-with-aml.md)
 
-- [Veri hazırlama ve NYC taksi veri kümesiyle bir regresyon modeli eğitmek için otomatik makine öğrenimi kullanıyor](tutorial-data-prep.md)
+- [Veri hazırlama ve NYC taksi veri kümesiyle bir regresyon modeli eğitmek için otomatik makine öğrenimi kullanıyor](tutorial-auto-train-models.md)

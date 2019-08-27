@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647254"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034897"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -402,7 +402,7 @@ Son olarak, sürücü JARs ' ı Tomcat Sınıfyoluna yerleştirip App Service ye
 
     Alternatif olarak, bir FTP istemcisini kullanarak JDBC sürücüsünü karşıya yükleyebilirsiniz. [FTP kimlik bilgilerinizi almak için bu yönergeleri](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)izleyin.
 
-2. Sunucu düzeyinde bir veri kaynağı oluşturduysanız App Service Linux uygulamasını yeniden başlatın. Tomcat, güncelleştirilmiş `CATALINA_HOME` yapılandırmayı `/home/tomcat/conf` sıfırlayacak ve kullanacak şekilde başlatılır.
+2. Sunucu düzeyinde bir veri kaynağı oluşturduysanız App Service Linux uygulamasını yeniden başlatın. Tomcat, güncelleştirilmiş `CATALINA_BASE` yapılandırmayı `/home/tomcat` sıfırlayacak ve kullanacak şekilde başlatılır.
 
 ### <a name="spring-boot"></a>Spring Boot
 

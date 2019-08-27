@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516140"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036334"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -70,7 +70,7 @@ Bir kullanılabilirlik alanı kullanılamaz hale geldiğinde Azure, DNS yeniden 
 Bir hata tüm birincil bölgeyi etkiliyorsa, Microsoft öncelikle birincil bölgeyi geri yüklemeyi dener. Geri yükleme mümkün değilse, ikincil bölgenin yeni birincil bölge haline gelmesi için Microsoft, ikincil bölgeye yük devreder. Depolama hesabında RA-GZRS etkinse, bu senaryo için tasarlanan uygulamalar, yük devretmeyi beklerken ikincil bölgeden okuyabilir. Depolama hesabında RA-GZRS etkin değilse, yük devretme tamamlanana kadar uygulamalar ikincili okuyamayacak.
 
 > [!NOTE]
-> GZRS ve RA-GZRS Şu anda yalnızca ABD Doğu 2 bölgesinde önizlemededir. Müşteri tarafından yönetilen hesap yük devretmesi (Önizleme) ABD Doğu 2 içinde henüz kullanılamadığından müşteriler şu anda GZRS ve RA-GZRS hesaplarıyla hesap yük devretme olaylarını yönetemez. Önizleme sırasında, Microsoft GZRS ve RA-GZRS hesaplarını etkileyen tüm yük devretme olaylarını yönetir.
+> GZRS ve RA-GZRS Şu anda yalnızca ABD Doğu bölgesinde önizlemededir. Müşteri tarafından yönetilen hesap yük devretmesi (Önizleme) ABD Doğu 2 içinde henüz kullanılamadığından müşteriler şu anda GZRS ve RA-GZRS hesaplarıyla hesap yük devretme olaylarını yönetemez. Önizleme sırasında, Microsoft GZRS ve RA-GZRS hesaplarını etkileyen tüm yük devretme olaylarını yönetir.
 
 Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltıldığından, birincil bölgeyi etkileyen bir hata, birincil bölge kurtarılamazsa veri kaybına neden olabilir. Birincil bölgeye en son yazma işlemleri ile ikincil bölgeye son yazma arasındaki Aralık, kurtarma noktası hedefi (RPO) olarak bilinir. RPO, verilerin kurtarılabileceği noktayı gösterir. Azure depolama, genellikle 15 dakikadan daha kısa bir RPO 'ya sahiptir, ancak şu anda verilerin ikincil bölgeye çoğaltılmasının ne kadar sürdüğü konusunda bir SLA yoktur.
 

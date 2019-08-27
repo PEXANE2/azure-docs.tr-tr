@@ -1,6 +1,6 @@
 ---
-title: Azure'da Kurumsal için yönetici rollerini anlama | Microsoft Docs
-description: Azure'da Kurumsal yönetici rolleri hakkında bilgi edinin.
+title: Azure 'da Enterprise için yönetici rollerini anlama | Microsoft Docs
+description: Azure 'da Kurumsal Yönetici rolleri hakkında bilgi edinin.
 services: billing
 documentationcenter: ''
 author: adpick
@@ -13,93 +13,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
-ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370722"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034536"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure Kurumsal Anlaşma Azure yönetici rollerini anlama
+# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure 'da Azure Kurumsal Anlaşma yönetim rollerini anlama
 
-Kuruluşunuzun kullanım yönetmek ve Azure harcamalarınızı yardımcı olmak için bir Kurumsal Anlaşma'ile (EA) müşterileri, beş farklı yönetim rolleri atayabilirsiniz:
+Kuruluşunuzun kullanımını ve harcamalarınızı yönetmeye yardımcı olmak için bir Kurumsal Anlaşma (EA) olan Azure müşterileri beş ayrı yönetim rolü atayabilir:
 
 - Kuruluş Yöneticisi
-- Kuruluş Yöneticisi (salt okunur)
+- Kuruluş Yöneticisi (salt okuma)
 - Bölüm Yöneticisi
-- Departman Yöneticisi (salt okunur)
+- Bölüm Yöneticisi (salt okuma)
 - Hesap Sahibi
  
-Bu roller belirli Azure Kurumsal anlaşmalar yönetmeye ve Azure kaynaklarına erişimi denetlemek için sahip yerleşik roller yanı sıra. Daha fazla bilgi için [Azure kaynakları için yerleşik roller](../role-based-access-control/built-in-roles.md).
+Bu roller, Azure Kurumsal sözleşmelerini yönetmeye özgüdür ve Azure 'un kaynaklara erişimi denetleyecek yerleşik rollere ek niteliğindedir. Daha fazla bilgi için bkz. [Azure kaynakları Için yerleşik roller](../role-based-access-control/built-in-roles.md).
 
-Aşağıdaki bölümlerde, her rolün özellikleri ve sınırlamaları açıklanmaktadır.
+Aşağıdaki bölümler her rolün sınırlamalarını ve yeteneklerini anlatmaktadır.
 
 ## <a name="user-limit-for-admin-roles"></a>Yönetici rolleri için Kullanıcı sınırı
 
-|Rol| Kullanıcı sınırı|
+|Role| Kullanıcı sınırı|
 |---|---|
 |Kuruluş Yöneticisi|Sınırsız|
-|Kuruluş Yöneticisi (salt okunur)|Sınırsız|
+|Kuruluş Yöneticisi (salt okuma)|Sınırsız|
 |Bölüm Yöneticisi|Sınırsız|
-|Departman Yöneticisi (salt okunur)|Sınırsız|
-|Hesap Sahibi|hesap başına 1<sup>1</sup>|
+|Bölüm Yöneticisi (salt okuma)|Sınırsız|
+|Hesap Sahibi|Hesap başına 1<sup>1</sup>|
 
-<sup>1</sup> her hesabı benzersiz bir Microsoft hesabı ya da iş veya Okul hesabı gerektirir.
+<sup>1</sup> her hesap için benzersiz bir Microsoft hesabı veya iş veya okul hesabı gerekir.
 
-## <a name="organization-structure-and-permissions-by-role"></a>Kuruluş yapısı ve rol izinleri
+## <a name="organization-structure-and-permissions-by-role"></a>Role göre kuruluş yapısı ve izinleri
 
-|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okunur)|Bölüm Yöneticisi|Departman Yöneticisi (salt okunur)|Hesap Sahibi|
+|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okuma)|Bölüm Yöneticisi|Bölüm Yöneticisi (salt okuma)|Hesap Sahibi|
 |---|---|---|---|---|---|
-|Görünüm kuruluş yöneticileri|✔|✔|✘|✘|✘|
-|Kuruluş Yöneticileri Ekle Kaldır|✔|✘|✘|✘|✘|
-|Bildirim ilgili kişileri görüntüle<sup>2</sup> |✔|✔|✘|✘|✘|
-|Bildirim ilgili kişileri ekleyip<sup>2</sup> |✔|✘|✘|✘|✘|
-|Oluşturun ve Departmanlar yönetin |✔|✘|✘|✘|✘|
-|Görünüm departman yöneticilerinin|✔|✔|✔|✔|✘|
-|Ekleme veya departman yöneticilerinin kaldırma|✔|✔|✔|✘|✘|
-|Kayıt görünümü hesapları |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
-|Kayıt için hesapları ekleyin ve hesap sahibini değiştirme|✔|✘|✔<sup>3</sup>|✘|✘|
-|Abonelikler ve Abonelik izinlerine oluşturun ve yönetin|✘|✘|✘|✘|✔|
+|Kuruluş yöneticilerini görüntüle|✔|✔|✘|✘|✘|
+|Kuruluş yöneticileri ekleme veya kaldırma|✔|✘|✘|✘|✘|
+|Bildirim kişilerini görüntüle<sup>2</sup> |✔|✔|✘|✘|✘|
+|Bildirim kişilerini Ekle veya Kaldır<sup>2</sup> |✔|✘|✘|✘|✘|
+|Departmanlar oluşturma ve yönetme |✔|✘|✘|✘|✘|
+|Bölüm yöneticilerini görüntüle|✔|✔|✔|✔|✘|
+|Bölüm yöneticileri ekleme veya kaldırma|✔|✘|✔|✘|✘|
+|Kayıt içindeki hesapları görüntüleme |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
+|Kayıt hesabına Hesap ekleme ve hesap sahibini değiştirme|✔|✘|✔<sup>3</sup>|✘|✘|
+|Abonelikler ve abonelik izinleri oluşturma ve yönetme|✘|✘|✘|✘|✔|
 
-- <sup>2</sup> bildirim ilgili kişileri Azure Kurumsal anlaşmasına hakkında iletişim e-posta gönderilir.
-- <sup>3</sup> departmanınız hesaplarına görev sınırlıdır.
+- <sup>2</sup> bildirim kişileri Azure Kurumsal Anlaşma ile ilgili e-posta iletişimleri gönderilir.
+- <sup>3</sup> görev, departmanınızdaki hesaplarla sınırlıdır.
 
 
-## <a name="usage-and-costs-access-by-role"></a>Kullanımı ve maliyetleri erişim rolüne göre
+## <a name="usage-and-costs-access-by-role"></a>Role göre kullanım ve maliyet erişimi
 
-|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okunur)|Bölüm Yöneticisi|Departman Yöneticisi (salt okunur) |Hesap Sahibi|
+|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okuma)|Bölüm Yöneticisi|Bölüm Yöneticisi (salt okuma) |Hesap Sahibi|
 |---|---|---|---|---|---|
-|Parasal taahhüt dahil olmak üzere görünümü kredi bakiyesi|✔|✔|✘|✘|✘|
-|Harcama kotalarını görünümü bölümü|✔|✔|✘|✘|✘|
-|Departman harcama kotalarını ayarla|✔|✘|✘|✘|✘|
-|Kuruluşunuzun Kurumsal Anlaşma fiyat listesini görüntüleme|✔|✔|✘|✘|✘|
-|Kullanım ve maliyet ayrıntılarını görüntüle|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
-|Azure portalında kaynakları yönetme|✘|✘|✘|✘|✔|
+|Parasal taahhüt dahil kredi bakiyesini görüntüleme|✔|✔|✘|✘|✘|
+|Bölüm harcama kotalarını görüntüle|✔|✔|✘|✘|✘|
+|Departman harcama kotalarını ayarlama|✔|✘|✘|✘|✘|
+|Kuruluşun EA fiyat listesini görüntüle|✔|✔|✘|✘|✘|
+|Kullanım ve maliyet ayrıntılarını görüntüleme|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
+|Azure portal kaynaklarını yönetme|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> kuruluş yöneticisi etkinleştirmenizi istemektedir **DA ücretleri görüntüle** Enterprise Portal'da ilkesi. Departman Yöneticisi daha sonra bölümü için maliyet ayrıntılarını görebilirsiniz.
-- <sup>5</sup> kuruluş yöneticisi etkinleştirmenizi istemektedir **AO ücretleri görüntüle** Enterprise Portal'da ilkesi. Hesap sahibi, daha sonra hesabı için maliyet ayrıntılarını görebilirsiniz.
+- <sup>4</sup> Enterprise Portal 'Da da kuruluş yöneticisinin **da görüntüleme ücretleri** ilkesini etkinleştirmesi gerekir. Departman Yöneticisi daha sonra departmanın maliyet ayrıntılarını görebilir.
+- <sup>5</sup> Enterprise Portal 'Da, kuruluş yöneticisinin **Ao görüntüleme ücretleri** ilkesini etkinleştirmesi gerekir. Hesap sahibi daha sonra hesabın maliyet ayrıntılarını görebilir.
 
 
-## <a name="pricing-in-azure-portal"></a>Azure portalında fiyatlandırması
+## <a name="pricing-in-azure-portal"></a>Azure portal fiyatlandırma
 
-Azure portalında yönetici rolünüz ve ilkeleri görüntüle ücretleri Kurumsal yönetici tarafından nasıl ayarlanacağını bağlı olarak farklı fiyatlandırma görebilirsiniz. Azure portalında gördüğünüz fiyatlandırma etkileyen iki ilke Enterprise Portal'da şunlardır:
+Yönetim rolünüze ve görüntüleme ücretleri ilkelerinin Kurumsal Yönetici tarafından nasıl ayarlandığına bağlı olarak Azure portal farklı fiyatlar görebilirsiniz. Enterprise Portal 'daki Azure portal gördüğünüz fiyatlandırmayı etkileyen iki ilke şunlardır:
 
-- DA ücretleri görüntüle
-- Saniye başına AO ücretleri görüntüle
+- DA görüntüleme ücretleri
+- AO görüntüleme ücretleri
 
-Bu ilkeler hakkında bilgi edinmek için bkz: [Azure için fatura bilgilerini erişimi yönetme](billing-manage-access.md).
+Bu ilkeleri ayarlamayı öğrenmek için bkz. [Azure için faturalandırma bilgilerine erişimi yönetme](billing-manage-access.md).
 
-Aşağıdaki tabloda, Azure portalında Kurumsal Anlaşma yönetici rolleri, görünüm ücretleri İlkesi, Azure portalında ve fiyatlandırma gördüğünüz rol tabanlı erişim denetimi (RBAC) rolü arasındaki ilişki gösterilmektedir. Kuruluş yöneticisi her zaman, kuruluşun EA fiyatlandırmaya göre kullanım ayrıntıları görür. Ancak, departman Yöneticisi ve hesap sahibi görünümü ücret ilke ve bunların RBAC rolü dayanan farklı fiyatlandırma görünümleri bakın. Aşağıdaki tabloda listelenen departman yöneticisi rolü, departman Yöneticisi ve departman (salt okunur) yönetici rolleri için ifade eder.
+Aşağıdaki tabloda Kurumsal Anlaşma yönetici rolleri, görüntüleme ücretleri ilkesi, Azure portal rol tabanlı erişim denetimi (RBAC) rolü ve Azure portal gördüğünüz fiyatlandırma arasındaki ilişki gösterilmektedir. Kurumsal Yönetici, her zaman kuruluşun EA fiyatlandırmasına göre kullanım ayrıntılarını görür. Ancak, Departman Yöneticisi ve hesap sahibi, görünüm ücreti ilkesini ve bunların RBAC rolünü temel alan farklı fiyatlandırma görünümlerini görür. Aşağıdaki tabloda listelenen Departman Yöneticisi rolü, hem bölüm yöneticisi hem de Departman Yöneticisi (salt okuma) rollerine başvurur.
 
-|Kurumsal Anlaşma yöneticisi rolü|Rolü için ücretleri ilkeyi görüntüle|RBAC rolü|Fiyatlandırmayı görüntüleyin|
+|Yönetici rolü Kurumsal Anlaşma|Rol için ücret ilkesini görüntüle|RBAC rolü|Fiyatlandırma görünümü|
 |---|---|---|---|
-|Hesap sahibi veya departman Yöneticisi|Etkin ✔|Sahip|Kuruluşunuzun Kurumsal Anlaşma fiyatlandırması|
-|Hesap sahibi veya departman Yöneticisi|✘ devre dışı bırakıldı|Sahip|Perakende fiyatlandırması|
-|Hesap sahibi veya departman Yöneticisi|Etkin ✔ |Yok|Fiyatlandırma yok|
-|Hesap sahibi veya departman Yöneticisi|✘ devre dışı bırakıldı |Yok|Fiyatlandırma yok|
-|None|Geçerli değil |Sahip|Perakende fiyatlandırması|
+|Hesap sahibi veya Departman Yöneticisi|✔ Etkin|Sahip|Kuruluşun EA fiyatlandırması|
+|Hesap sahibi veya Departman Yöneticisi|✘ Devre dışı|Sahip|Perakende fiyatlandırması|
+|Hesap sahibi veya Departman Yöneticisi|✔ Etkin |yok|Fiyatlandırma yok|
+|Hesap sahibi veya Departman Yöneticisi|✘ Devre dışı |yok|Fiyatlandırma yok|
+|Yok.|Geçerli değil |Sahip|Perakende fiyatlandırması|
 
-Kuruluş yöneticisi rolünü ayarlayın ve görünümü olan Kurumsal Portal'a erişim ilkelerinde ücretleri. Azure portalında RBAC rolü güncelleştirilebilir. Daha fazla bilgi için [RBAC ve Azure portalını kullanarak erişimini yönetme](../role-based-access-control/role-assignments-portal.md).
+Kurumsal yönetici rolünü ve görüntüleme ücretleri ilkelerini Enterprise Portal ' da ayarlarsınız. RBAC rolü Azure portal güncelleştirilebilen olabilir. Daha fazla bilgi için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

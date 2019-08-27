@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639777"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034957"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde küme düğümleri için çıkış trafiğini önizleme ve gerekli bağlantı noktalarına ve hizmetlere erişimi denetleme
 
@@ -85,15 +85,13 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 |----------------------------|-----------|----------|
 | *. HCP. \<Location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. Konumu aks kümenizin dağıtıldığı bölge ile değiştirin. *\<\>* |
 | *. tun. \<Location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000 | Bu adres, API sunucusu uç noktasıdır. Konumu aks kümenizin dağıtıldığı bölge ile değiştirin. *\<\>* |
-| aksrepos.azurecr.io        | HTTPS: 443 | Bu adres Azure Container Registry (ACR) içindeki görüntülere erişmek için gereklidir. |
+| aksrepos.azurecr.io        | HTTPS: 443 | Bu adres Azure Container Registry (ACR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan üçüncü taraf resimleri/grafikleri (örneğin, ölçüm sunucusu, çekirdek DNS vb.) içerir|
 | *.blob.core.windows.net    | HTTPS: 443 | Bu adres, ACR 'de depolanan görüntülerin arka uç deposudur. |
-| mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. |
+| mcr.microsoft.com          | HTTPS: 443 | Bu adres, Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri, kümenin yükseltilmesi ve ölçeklendirilmesi sırasında kümenin çalışması için gerekli olan ilk taraf görüntülerini/grafikleri (örneğin, Moby, vb.) içerir |
 | *.cdn.mscr.io              | HTTPS: 443 | Bu adres, Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | Management.Azure.com       | HTTPS: 443 | Bu adres, Kubernetes GET/PUT işlemleri için gereklidir. |
 | login.microsoftonline.com  | HTTPS: 443 | Bu adres Azure Active Directory kimlik doğrulaması için gereklidir. |
-| api.snapcraft.io           | HTTPS: 443, HTTP: 80 | Bu adres, Linux düğümlerine ek paketler yüklemek için gereklidir. |
 | ntp.ubuntu.com             | UDP: 123   | Bu adres, Linux düğümlerinde NTP zaman eşitlemesi için gereklidir. |
-| *. docker.io                | HTTPS: 443 | Bu adres, tünel ön öğesine gereken kapsayıcı görüntülerini çekmek için gereklidir. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>AKS kümeleri için isteğe bağlı önerilen adresler ve bağlantı noktaları
 
@@ -103,7 +101,7 @@ AKS kümelerinin doğru çalışması için aşağıdaki FQDN/uygulama kurallar�
 
 | FQDN                                    | Port      | Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında      |
 |-----------------------------------------|-----------|----------|
-| *. ubuntu.com                            | HTTP: 80   | Bu adres, Linux küme düğümlerinin gerekli güvenlik düzeltme eklerini ve güncelleştirmelerini indirmesini sağlar. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com                           | HTTP: 80   | Bu adres, Linux küme düğümlerinin gerekli güvenlik düzeltme eklerini ve güncelleştirmelerini indirmesini sağlar. |
 | packages.microsoft.com                  | HTTPS: 443 | Bu adres, önbelleğe alınmış *apt-get* işlemleri Için kullanılan Microsoft paketleri deposudur. |
 | dc.services.visualstudio.com            | HTTPS: 443 | Azure Izleyici kullanarak doğru ölçümler ve izleme için önerilir. |
 | *.opinsights.azure.com                  | HTTPS: 443 | Azure Izleyici kullanarak doğru ölçümler ve izleme için önerilir. |

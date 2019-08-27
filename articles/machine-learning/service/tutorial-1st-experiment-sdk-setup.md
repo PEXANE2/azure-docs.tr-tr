@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 54fc87f02ca058e17de3a65627bc76fd7d9cac11
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971544"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051670"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Öğretici: İlk ML denemenizi oluşturmaya başlayın
 
@@ -73,7 +73,10 @@ VM 'niz çalıştıktan sonra, Jupyter Web arabirimini başlatmak için **Not de
     > [!TIP]
     > Bu klasör, dizüstü makınenın kendisi yerine çalışma alanınızdaki [depolama kapsayıcısında](concept-workspace.md#resources) bulunur.  Not defteri sanal makinesini silebilir ve çalışmalarınızı devam edebilirsiniz.  Daha sonra yeni bir not defteri VM 'si oluşturduğunuzda, bu dosya aynı klasöre yüklenir. Çalışma alanınızı başkalarıyla paylaşıyorsanız, klasörünüzü görürler ve onu görürsünüz.
 
-1. `samples-*` Alt dizini açın, sonra Aç`tutorials/tutorial-1st-experiment-sdk-train.ipynb` 
+1. `samples-*` Alt dizini açın, sonra Aç`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+> [!Warning]
+> > Aynı adı `tutorial-1st-experiment-sdk-train.ipynb` **değil** `.yml` , dosyayı açtığınızdan emin olun. 
 
 Öğreticinin **ikinci bölümünde** , bir makine öğrenimi modelini eğitebilmeniz `tutorial-1st-experiment-sdk-train.ipynb` için kodu çalıştırırsınız.
 

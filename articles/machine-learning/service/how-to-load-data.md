@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd60d9f9bee55ef1342fe344e8b4f2f64e313331
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4bd6605a6a217d6bcdd243ff1d4f7bb6017ca0ef
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360982"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036062"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK ile verileri yükleme ve okuma
 Bu makalede, veri yükleme Azure Machine Learning Data Prep SDK 'sını kullanarak farklı yöntemler öğreneceksiniz.  SDK'sı dahil olmak üzere birden çok veri alımı özellikleri destekler:
@@ -321,4 +321,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Belirli bir senaryoyu çözme örneği için bkz. Azure Machine Learning Data Prep SDK [öğreticisi](tutorial-data-prep.md)
+* Daha fazla ayrıntı için Azure Machine Learning Data Prep SDK [başvuru belgelerine](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#dataprep) bakın.

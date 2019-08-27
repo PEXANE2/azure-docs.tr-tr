@@ -1,31 +1,35 @@
 ---
-ms.openlocfilehash: 2c0a93e9e8a45285ee24562d8272175d62490d31
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717304"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051216"
 ---
-### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve resimler
+### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
-Aşağıdaki tablolarda kullanılabilir kapsayıcı görüntülerini Azure Bilişsel hizmetler tarafından sunulan kapsamlı bir listesi var.
+Aşağıdaki tablolar, Azure bilişsel hizmetler tarafından sunulan kullanılabilir kapsayıcı görüntülerinin kapsamlı bir listesidir.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Genel (kapsayıcı kayıt defteri: `mcr.microsoft.com`)
+#### <a name="public-container-registry-mcrmicrosoftcom"></a>Ortak (kapsayıcı kayıt defteri `mcr.microsoft.com`:)
 
-| Hizmet | Kapsayıcı | Depo/görüntü adı |
+Microsoft Container Registry bilişsel hizmetler için tüm genel kullanılabilirlik (GA) kapsayıcılarını barındırır.
+
+| Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `azure-cognitive-services/luis` |
-| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Anahtar İfade Ayıklama | `azure-cognitive-services/keyphrase` |
-| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Dil Algılama  | `azure-cognitive-services/language` |
-| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Duygu Analizi | `azure-cognitive-services/sentiment` |
+| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Anahtar İfade Ayıklama | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
+| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Dil Algılama | `mcr.microsoft.com/azure-cognitive-services/language` |
+| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Duygu Analizi | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Genel Önizleme (kapsayıcı kayıt defteri: `containerpreview.azurecr.io`)
+#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Genel Önizleme (kapsayıcı kayıt defteri `containerpreview.azurecr.io`:)
 
-| Hizmet | Kapsayıcı | Depo/görüntü adı |
+Kapsayıcı Önizleme kayıt defteri, henüz genel kullanıma ilerlemedi (GA) olmayan bilişsel hizmetler için "genel önizleme" kapsayıcılarını barındırır. Bu kapsayıcılar, bunları kullanabilmesi için bir erişim için resmi bir istek gerektirir.
+
+| Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
-| [Anomali algılayıcısı](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomali Algılayıcısı | `microsoft/cognitive-services-anomaly-detector` |
-| [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Metin tanıma | `microsoft/cognitive-services-recognize-text` |
-| [Yüz tanıma](../../face/face-how-to-install-containers.md) | Yüz | `microsoft/cognitive-services-face` |
-| [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `microsoft/cognitive-services-form-recognizer` |
-| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md) | Konuşmayı Metne Dönüştürme | `microsoft/cognitive-services-speech-to-text` |
-| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md) | Metin okuma | `microsoft/cognitive-services-text-to-speech` |
+| [Anomali algılayıcısı](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomali Algılayıcısı | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
+| [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Metin Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text` |
+| [Yüz tanıma](../../face/face-how-to-install-containers.md) | Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md) | Konuşmayı Metne Dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
+| [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md) | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |

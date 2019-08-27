@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Tak ve Kullan önizleme cihazı oluşturma | Microsoft Docs
+title: IoT Tak ve Kullan önizleme cihazı oluşturma | Microsoft Docs
 description: Cihaz kodu oluşturmak için bir cihaz yetenek modeli kullanın. Ardından, cihaz kodunu çalıştırın ve cihazın IoT Hub bağlanmasına bakın.
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7cfa6e63f74233e9a3fab8f235584fdbe01e67d9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878218"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050125"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Hızlı Başlangıç: IoT Tak ve Kullan cihazı oluşturmak için cihaz yetenek modeli kullanma
 

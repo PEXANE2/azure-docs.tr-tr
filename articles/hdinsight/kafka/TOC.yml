@@ -38,6 +38,8 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
+    - name: Depolama seçeneklerini karşılaştırın
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: Nasıl yapılır
   items:
     - name: Otomatik konu oluşturmayı etkinleştirme

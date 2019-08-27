@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2b33c35b1e4f83c30e2efdf64aed0b5f2035c79b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980809"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032089"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD) B2C, her [kimlik doğrulama akışını](active-directory-b2c-apps.md)işlediği için çeşitli türlerde güvenlik belirteçleri yayar. Bu belge, her bir belirteç türünün biçimini, güvenlik özelliklerini ve içeriğini açıklar.
+Azure Active Directory B2C (Azure AD B2C), her [kimlik doğrulama akışını](active-directory-b2c-apps.md)işlediği için çeşitli türlerde güvenlik belirteçleri yayar. Bu belge, her bir belirteç türünün biçimini, güvenlik özelliklerini ve içeriğini açıklar.
 
 ## <a name="token-types"></a>Belirteç türleri
 
@@ -40,7 +40,7 @@ Aşağıdaki belirteçler Azure AD B2C ile iletişim için kullanılır:
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Uygulamanızın Azure AD B2C aldığı güvenlik belirteçleri, `/authorize` veya `/token` uç noktalarından gelebilir. `/authorize` Uç noktadan kimlik belirteçleri elde edildiğinde, bu, genellikle JavaScript tabanlı Web uygulamalarında oturum açan kullanıcılar için kullanılan [örtülü akış](active-directory-b2c-reference-spa.md)kullanılarak yapılır. `/token` Uç noktadan kimlik belirteçleri elde edildiğinde, bu, belirteci tarayıcıdan gizli tutan [gizli kod akışı](active-directory-b2c-reference-oidc.md)kullanılarak yapılır.
+Uygulamanızın Azure AD B2C aldığı güvenlik belirteçleri, `/authorize` veya `/token` uç noktalarından gelebilir. `/authorize` Uç noktadan kimlik belirteçleri alınırsa, genellikle JavaScript tabanlı Web uygulamalarında oturum açan kullanıcılar için kullanılan [örtük akış](active-directory-b2c-reference-spa.md)kullanılarak yapılır. `/token` Uç noktadan kimlik belirteçleri alınırsa, belirteci tarayıcıdan gizli tutan [yetkilendirme kodu akışı](active-directory-b2c-reference-oidc.md#get-a-token)kullanılarak yapılır.
 
 ## <a name="claims"></a>Talepler
 
@@ -50,10 +50,10 @@ KIMLIK belirteçlerdeki talepler belirli bir sırada döndürülmez. Yeni talepl
 
 Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen erişim belirteçlerinde bekleneceğiniz talepler listelenmektedir.
 
-| Name | İste | Örnek değer | Açıklama |
+| Name | Talep | Örnek değer | Açıklama |
 | ---- | ----- | ------------- | ----------- |
 | Hedef kitle | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Belirtecin amaçlanan alıcısını tanımlar. Azure AD B2C için hedef kitle uygulama KIMLIĞIDIR. Uygulamanız bu değeri doğrulamalıdır ve eşleşmezse belirteci reddeder. Hedef kitle, kaynak ile eşanlamlıdır. |
-| Veren | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Ayrıca, kullanıcının kimliğinin doğrulandığı dizini tanımlar. Uygulamanızın, uygun uç noktadan geldiğinden emin olmak için veren talebini doğrulaması gerekir. |
+| Sertifikayı Veren | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Ayrıca, kullanıcının kimliğinin doğrulandığı dizini tanımlar. Uygulamanızın, uygun uç noktadan geldiğinden emin olmak için veren talebini doğrulaması gerekir. |
 | Verilen: | `iat` | `1438535543` | Belirtecin verildiği zaman, dönem süresi cinsinden temsil edilir. |
 | Sona erme zamanı | `exp` | `1438539443` | Belirtecin, dönem zamanında temsil edilen geçersiz hale geldiği zaman. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. |
 | Önce değil | `nbf` | `1438535543` | Belirtecin geçerli hale geldiği zaman, dönem süresi cinsinden temsil edilir. Bu zaman, genellikle belirtecin verildiği zaman ile aynıdır. Uygulamanızın belirteç ömrünün geçerliliğini doğrulamak için bu talebi kullanması gerekir. |

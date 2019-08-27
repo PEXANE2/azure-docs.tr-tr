@@ -3,17 +3,17 @@ title: SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlama | Mic
 description: Bir cihaz geliştiricisi olarak, bir SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlamayı öğrenin.
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 04/24/2019
+ms.date: 08/24/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3d804b1e14d1b79266a74340e8682f1bf03d8f30
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877442"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050545"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile. Box cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -34,7 +34,7 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyac
 
 Azure IoT Central uygulamanızda, **Sensortile. Box** cihaz şablonundan gerçek bir cihaz ekleyin ve cihaz bağlantısı ayrıntılarını bir yere göz önünde alın: **Kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**:
 
-1. Device Explorer bir cihaz ekleyin. Gerçek bir cihaz eklemek için **+ yeni > Real** ' ı seçin.
+1. Cihazlardan cihaz ekleyin. Gerçek bir cihaz eklemek için **+ yeni > Real** ' ı seçin.
 
     * Küçük bir **CIHAZ kimliği**girin veya ÖNERILEN **cihaz kimliğini**kullanın.
     * Bir **Cihaz adı**girin veya önerilen adı kullanın

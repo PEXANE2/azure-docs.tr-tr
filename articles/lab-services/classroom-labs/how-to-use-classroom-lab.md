@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012271"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032008"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
@@ -57,31 +57,28 @@ Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm labora
     3. **Linux** sanal makinelerinde, bunlara bağlanmak için **SSH** veya **RDP** (etkinse) kullanabilirsiniz. Daha fazla bilgi için bkz. [Linux makineleri için Uzak Masaüstü bağlantısını etkinleştirme](how-to-enable-remote-desktop-linux.md). 
     1. Laboratuvar VM 'sine bağlanmak için bir **Mac** kullanıyorsanız, sonraki bölümdeki yönergeleri izleyin. 
 
-## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Mac üzerinde RDP kullanarak VM 'nin Kullanıcı arabirimine bağlanma
-Bu bölümde, bir öğrencinin RDP kullanarak bir Mac 'ten bir VM 'nin Kullanıcı arabirimine (UI) nasıl bağlanabileceği gösterilmektedir. Aşağıda, ayrıntıları izleyen hızlı adımlar verilmiştir: 
+## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Mac üzerinde RDP kullanarak VM 'ye bağlanma
+Bu bölümde, bir öğrencinin RDP kullanarak Mac 'ten bir VM 'ye nasıl bağlanabildiği gösterilmektedir.
 
-1. Mac 'inizde Microsoft Uzak Masaüstü 'yi.
-2. RDP kullanarak Mac 'Inizden bir VM Kullanıcı arabirimine bağlanın. 
-
-### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Mac 'e Microsoft Uzak Masaüstü yüklemesi
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>1\. adım: Mac 'e Microsoft Uzak Masaüstü yüklemesi
 1. Mac 'inizde App Store ' u açın ve **Microsoft Uzak Masaüstü**arayın.
 
     ![Microsoft Uzak Masaüstü](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. En son Microsoft Uzak Masaüstü sürümünü yükler. 
 
-### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>RDP kullanarak Mac 'Inizden VM 'nin Kullanıcı arabirimine erişin
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>2\. adım: RDP kullanarak Mac 'Inizden VM 'ye erişme
 1. **Microsoft Uzak Masaüstü** yüklü olan bilgisayarınızda indirilen **RDP** dosyasını açın. VM 'ye bağlanmaya başlamalıdır. 
 
-    ![VM Kullanıcı arabirimine bağlanma](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Aşağıdaki hatayı alırsanız **devam** ' ı seçin. 
+    ![VM’ye bağlanma](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Aşağıdaki uyarıyı alırsanız **devam** ' ı seçin. 
 
-    ![Sertifika hatası](../media/how-to-use-classroom-lab/certificate-error.png)
-1. VM 'nin Kullanıcı arabirimini görmeniz gerekir. 
+    ![Sertifika uyarısı](../media/how-to-use-classroom-lab/certificate-error.png)
+1. VM 'yi görmeniz gerekir. 
 
     > [!NOTE]
     > Aşağıdaki örnek bir CentOS Linux sanal makinesi içindir. 
 
-    ![VM KULLANICI ARABIRIMI](../media/how-to-use-classroom-lab/vm-ui.png)
+    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>İlerleme çubuğu 
 Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-usage.md#set-quotas-for-users) sayısına göre kullanılan saat sayısını gösterir. Bu süre, laboratuvarın zamanlanan saatine ek olarak size ayrılan ek süredir. İlerleme çubuğunun rengi ve ilerleme çubuğunun altındaki metin, aşağıdaki senaryolara göre farklılık gösterir:

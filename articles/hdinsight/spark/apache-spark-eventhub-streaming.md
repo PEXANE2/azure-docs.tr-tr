@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489800"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049486"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Öğretici: HDInsight 'ta Azure Event Hubs ve Apache Spark kullanarak işçleri işleme
 
@@ -46,7 +46,7 @@ Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz.
 
     |Özellik |Value |
     |---|---|
-    |Ad|Uygulama adını belirtin. Bu öğretici için kullanılan değer **HDISparkStreamApp0423**. Bu ad benzersiz bir ad olmalıdır.|
+    |Name|Uygulama adını belirtin. Bu öğretici için kullanılan değer **HDISparkStreamApp0423**. Bu ad benzersiz bir ad olmalıdır.|
     |Açıklama|Uygulamanın kısa bir açıklamasını sağlayın. Bu öğretici için kullanılan değer **basit bir HDInsight Spark akış uygulamasıdır**.|
     |Web sitesi|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici `http://www.contoso.com`için kullanılan değer.|
     |Geri çağırma URL'si|Boş bırakabilirsiniz.|
@@ -82,7 +82,7 @@ Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
     |Özellik |Value |
     |---|---|
-    |Ad|Olay Hub 'ı için bir ad girin.  Bu öğretici için kullanılan değer **myeventhubns20180403**.|
+    |Name|Olay Hub 'ı için bir ad girin.  Bu öğretici için kullanılan değer **myeventhubns20180403**.|
     |Fiyatlandırma katmanı|**Standart**' ı seçin.|
     |Subscription|Uygun aboneliğinizi seçin.|
     |Resource group|Açılan listeden var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin.|
@@ -135,7 +135,7 @@ Bir Jupyter Not defteri oluşturun ve bunu **Sendtweetstoeventhub**olarak adland
 
     ```
     %%configure
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
 2. Aşağıdaki `<Event hub name>`kodu `<Event hub namespace connection string>`, ,,`<CONSUMER SECRET>`,, ve`<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek düzenleyin. `<CONSUMER KEY>` `<ACCESS TOKEN>` Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
@@ -217,7 +217,7 @@ Başka bir Jupyter Not defteri oluşturun ve bunu **ReadTweetsFromEventHub**olar
 
     ```
     %%configure -f
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
 2. Aşağıdaki `<Event hub name>`kodu, ve `<Event hub namespace connection string>` değerlerini uygun değerlerle değiştirin. Olay Hub 'ınızdan çilleri okumak için düzenlenmiş kodu çalıştırın:

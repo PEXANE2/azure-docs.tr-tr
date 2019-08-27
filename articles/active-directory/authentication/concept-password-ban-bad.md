@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853049"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032887"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Kuruluşunuzdaki hatalı parolaları kaldırın
 
@@ -39,7 +39,7 @@ Azure AD 'de herhangi bir kiracıda herhangi bir kullanıcı için yeni bir paro
 > [!NOTE]
 > Cyber-Dolandırıcılar, saldırılarına karşı benzer stratejileri de kullanır. Bu nedenle Microsoft bu listenin içeriğini herkese açık bir şekilde yayımlamaz.
 
-## <a name="custom-banned-password-list"></a>Özel yasaklanmış parola listesi
+## <a name="custom-banned-password-list"></a>Özel yasaklanan parola listesi
 
 Bazı kuruluşlar, Microsoft 'un özel yasaklanmış parola listesini çağırdığı genel yasaklanmış parola listesinin üzerine kendi özelleştirmelerini ekleyerek güvenliği daha da geliştirmek isteyebilir. Microsoft bu listeye eklenen koşulların birincil olarak kuruluşa özgü koşullara odaklanmasını önerir, örneğin:
 
@@ -121,7 +121,7 @@ Belirsiz eşleştirme, genel veya özel yasaklanmış parola listelerinde buluna
 
 Örnek: "abcdef" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını aşağıdakilerden biriyle değiştirmeye çalıştığını varsayın:
 
-' abcdeg '    *(son karakter ' f ' iken ' g ' olarak değiştirildi)* ' abcdefg '   *' (bitiş* ' f ') ' abcde '     *(sondaki ' f ' sonunda silindi)*
+' abcdeg ' *(son karakter ' f ' iken ' g ' olarak değiştirildi)* ' abcdefg ' *' (bitiş* ' f ') ' abcde ' *(sondaki ' f ' sonunda silindi)*
 
 Yukarıdaki parolaların her biri, yasaklanmış "abcdef" parolasıyla özellikle eşleşmez. Ancak, her örnek yasaklanmış ' abcdef ' teriminin 1. bir düzenleme uzaklığı içinde olduğundan, hepsi "abcdef" ile eşleşme olarak kabul edilir.
 

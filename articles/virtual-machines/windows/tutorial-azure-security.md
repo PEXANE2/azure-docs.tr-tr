@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3f45389cd4cef160f8778ea6ba6e530a970dac07
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a601792198b6efb1b3c24e3a3270c3faf78f2635
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908024"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036358"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi 'ni kullanma
 
@@ -105,7 +105,7 @@ Tüm önerilerin listesini göstermek için:
 
 ## <a name="view-detected-threats"></a>Algılanan tehditleri görüntüleme
 
-Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama özellikleri hakkında ayrıntılı bilgi için [Azure Güvenlik Merkezi algılama özellikleri](../../security-center/security-center-detection-capabilities.md) konusuna bakın.
+Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama özellikleri hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezi tehditleri nasıl algılar?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
 Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu daha yüksek fiyatlandırma katmanına geçtiğinizde **ücretsiz deneme sürümü** kullanılabilir. 
 

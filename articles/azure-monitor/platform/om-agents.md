@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543053"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035625"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -47,8 +47,8 @@ Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 * Azure Izleyici yalnızca System Center Operations Manager 2016 veya üstünü destekler, Operations Manager 2012 SP1 UR6 'DAKI veya üzeri ve Operations Manager 2012 R2 UR2 veya üzeri. Operations Manager 2012 SP1 UR7 ve Operations Manager 2012 R2 UR3'e ara sunucu desteği eklenmiştir.
 * System Center Operations Manager 2016 ABD kamu bulutuyla tümleştirilirken güncelleştirme paketi 2 veya sonraki bir sürüme sahip güncelleştirilmiş bir danışman yönetim paketi gerekir. System Center Operations Manager 2012 R2, güncelleştirme paketi 3 veya sonraki sürümlere sahip güncelleştirilmiş bir danışman yönetim paketi gerektirir.
 * Tüm Operations Manager aracılarının en düşük destek gereksinimlerini karşılaması gerekir. Aracıların en düşük güncelleştirmede olduğundan emin olun, aksi halde Windows Agent iletişimi başarısız olabilir ve Operations Manager olay günlüğünde hata oluşturabilir.
-* Log Analytics çalışma alanı. Daha fazla bilgi için [Log Analytics çalışma alanına genel bakış](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)konusunu inceleyin.   
-* [Log Analytics katkıda bulunan rolünün](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)bir üyesi olan bir hesapla Azure 'da kimlik doğrulaması yapabilirsiniz.
+* Log Analytics çalışma alanı. Daha fazla bilgi için [Log Analytics çalışma alanına genel bakış](design-logs-deployment.md)konusunu inceleyin. 
+* [Log Analytics katkıda bulunan rolünün](manage-access.md#manage-access-using-azure-permissions)bir üyesi olan bir hesapla Azure 'da kimlik doğrulaması yapabilirsiniz.
 
 * Desteklenen bölgeler-bir Log Analytics çalışma alanına bağlanmak için System Center Operations Manager tarafından yalnızca aşağıdaki Azure bölgeleri desteklenir:
     - Batı Orta ABD

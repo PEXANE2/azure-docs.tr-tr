@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93f78cf07cd4815e5b17ffd3953db121adb6535
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558829"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049060"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği oluşturacaksınız. Kimlik kayıt defterinde bir girişi olmadığı takdirde bir cihaz bir hub 'a bağlanamaz. Daha fazla bilgi için, [IoT Hub geliştirici kılavuzunun](../articles/iot-hub/iot-hub-devguide-identity-registry.md)"kimlik kayıt defteri" bölümüne bakın.
+Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği oluşturacaksınız. Kimlik kayıt defterinde bir girişi olmadığı takdirde bir cihaz bir hub 'a bağlanamaz. Daha fazla bilgi için [IoT Hub Geliştirici Kılavuzu](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations)' na bakın.
 
 1. IoT Hub 'ınız gezinti menüsünde **IoT cihazları**' nı açın ve ardından IoT Hub 'ınıza bir cihaz eklemek için **Yeni** ' yi seçin.
 

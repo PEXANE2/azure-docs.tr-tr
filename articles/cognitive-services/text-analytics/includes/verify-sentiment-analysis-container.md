@@ -1,27 +1,27 @@
 ---
-title: Yaklaşım Analizi kapsayıcısı örneğini doğrulama
+title: Yaklaşım Analizi kapsayıcı örneğini doğrulama
 titleSuffix: Azure Cognitive Services
-description: Yaklaşım Analizi kapsayıcısı örneğini doğrulamayı öğrenin.
+description: Yaklaşım Analizi kapsayıcı örneğini doğrulamayı öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: cbc5ad63dd944eb53d3a8052e75744cb5c3709ea
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377407"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051179"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>Yaklaşım Analizi kapsayıcısı örneğini doğrulama
+## <a name="verify-the-sentiment-analysis-container-instance"></a>Yaklaşım Analizi kapsayıcı örneğini doğrulama
 
 1. **Genel bakış** sekmesini SEÇIN ve IP adresini kopyalayın.
 1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
 
-    ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleme](../media/how-tos/container-instance/swagger-docs-on-container.png).
+    ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleme](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
 1. Kapsayıcının Swagger sayfasına gitmek için **hizmet API 'Si açıklaması** bağlantısını seçin.
 
@@ -63,11 +63,11 @@ ms.locfileid: "68377407"
     }
     ```
 
-1. **Showstats** öğesini true olarak ayarlayın.
+1. **Showstats** öğesini olarak `true`ayarlayın.
 
 1. Metnin yaklaşımını belirlemek için **Yürüt** ' ü seçin.
 
-    Kapsayıcıda paketlenmiş model, 0 ile 1 arasında değişen bir puan üretir; burada 0 negatif ve 1 pozitif olur.
+    Kapsayıcıda paketlenmiş model, 0 ile 1 arasında değişen bir puan üretir; burada 0 negatif yaklaşım ve 1 pozitif yaklaşım olur.
 
     Döndürülen JSON yanıtı, güncelleştirilmiş metin girişi için yaklaşım içerir:
 
@@ -93,4 +93,4 @@ ms.locfileid: "68377407"
     }
     ```
 
-Artık yanıt yükünün JSON verilerinin belgesini `id` özgün istek yükü belgesiyle `id`ilişkilendirebiliriz. Büyüktür `.98` puanı, kesin pozitif bir yaklaşım olduğunu gösterir.
+Artık yanıt yükünün JSON verilerinin belgesini `id` özgün istek yükü belgesiyle `id`ilişkilendirebiliriz. Daha büyük bir yaklaşım, `0.98` çok fazla pozitif bir yaklaşım olduğunu gösterir.

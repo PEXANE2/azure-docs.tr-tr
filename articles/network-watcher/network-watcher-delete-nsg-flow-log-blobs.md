@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6b6227827e8d1efbb1d20899cd08315c4cbb0150
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875205"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036306"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüğü depolama bloblarını silme
 
@@ -135,5 +135,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Sonraki adımlar
+- Müşteriler, [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) veya [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) kullanarak betiği çalıştırmayı otomatik hale getirebilir
 - NSG günlüğü hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları (NSG 'ler) Için Azure izleyici günlükleri](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972502"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051634"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
@@ -33,7 +33,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
 
-Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek bir Jupyter Not defteri içinde kodu çalıştırırsınız. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
+Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek bir Jupyter Not defteri `tutorials/tutorial-1st-experiment-sdk-train.ipynb` içinde kodu çalıştırırsınız. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
 
@@ -41,6 +41,8 @@ Sınıfını içeri aktarın ve bu işlevi `config.json` `from_config().` kullan
 
 Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir.
 
+> [!TIP]
+> Jupi Not defterleriyle yeni başladıysanız, kod hücresine tıklayarak kodu çalıştırın ve hücreleri tek seferde çalıştırmak için **SHIFT + enter 'A basın** . Alternatif olarak, tüm not defterini aynı anda çalıştırmak için üstteki menü çubuğunda bulunan **hücre** ' ye ve ardından **Tümünü Çalıştır**' a tıklayın.
 
 ```python
 from azureml.core import Workspace

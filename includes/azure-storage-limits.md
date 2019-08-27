@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e692b4704d14a1f0d18f2a3be7397a13a969bc40
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: d5ce4c094da3a411168c7fe4c282b15ceac7bb86
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371782"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036797"
 ---
-Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş *sınırı,* bir depolama hesabına gönderilen isteklerin tüm verilerini ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan yanıtların tüm verilerine başvurur.
+Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş sınırı, bir depolama hesabına gönderilen isteklerin tüm verilerini ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan yanıtların tüm verilerine başvurur.
 
 | Resource | Varsayılan limit |
 | --- | --- |
@@ -45,5 +45,5 @@ Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları i�
 
 Uygulamanızın ihtiyaçları tek bir depolama hesabının ölçeklenebilirlik hedeflerini aşarsa, uygulamanızı birden çok depolama hesabı kullanacak şekilde oluşturabilirsiniz. Daha sonra veri nesnelerinizi bu depolama hesaplarında bölümleyebilirsiniz. Toplu fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-Tüm depolama hesapları, bir düz ağ topolojisinde çalışır ve ne zaman oluşturulduklarında bağımsız olarak bu makalede özetlenen ölçeklenebilirlik ve performans hedeflerini destekler. Azure depolama düz ağ mimarisi ve ölçeklenebilirlik hakkında daha fazla bilgi için bkz [. Microsoft Azure depolama: Güçlü tutarlılığı](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)olan yüksek oranda kullanılabilir bir bulut depolama hizmeti.
+Tüm depolama hesapları, bir düz ağ topolojisinde çalışır ve ne zaman oluşturulduklarında bağımsız olarak bu makalede özetlenen ölçeklenebilirlik ve performans hedeflerini destekler. Azure depolama düz ağ mimarisi ve ölçeklenebilirlik hakkında daha fazla bilgi için bkz [. Microsoft Azure depolama: Güçlü tutarlılığı](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)olan yüksek oranda kullanılabilir bir bulut depolama hizmeti.
 

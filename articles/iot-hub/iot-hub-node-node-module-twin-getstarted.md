@@ -6,15 +6,15 @@ manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
-ms.devlang: node
+ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 5c168de40aa76be7494e70875eb2ac6323c1130e
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2ef4047b5dcb0658f4bc48da41ff4e177386fa40
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668324"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048589"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub Module kimliği ve Module ikizi (node. js) ile çalışmaya başlama
 
@@ -118,7 +118,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
 
     ```
 
-Bu uygulama, Myfirstdevice KIMLIĞI ile bir cihaz kimliği ve myfirstdevice adlı cihaz altında **myfirstmodule** kimliğiyle bir modül kimliği **oluşturur.** (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
+Bu uygulama, Myfirstdevice KIMLIĞI ile bir cihaz kimliği ve myfirstdevice adlı cihaz altında **myfirstmodule** kimliğiylebir modül kimliği oluşturur. (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
 
 Node Add. js kullanarak bunu çalıştırın. Bu, size cihaz kimliğiniz için bir bağlantı dizesi ve modül Kimliğiniz için bir tane sağlar.
 

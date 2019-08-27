@@ -1,184 +1,184 @@
 ---
-title: Azure IOT Central ile özel analiz genişletin | Microsoft Docs
-description: Bir çözüm geliştirici olarak, bir IOT Central uygulamasına özel analiz ve görselleştirmeler yapmak için yapılandırın. Bu çözüm, Azure Databricks kullanır.
+title: Azure IoT Central özel Analize genişletin | Microsoft Docs
+description: Çözüm geliştiricisi olarak, bir IoT Central uygulamasını özel analiz ve görselleştirmeler yapmak üzere yapılandırın. Bu çözüm Azure Databricks kullanır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e039e2b8d9c183b5bfee1bee47e4addc4c873bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f9b255e8aa370184ec244ed418f02e55fc149b3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743448"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049175"
 ---
-# <a name="extend-azure-iot-central-with-custom-analytics"></a>Azure IOT Central ile özel analizi genişletme
+# <a name="extend-azure-iot-central-with-custom-analytics"></a>Azure IoT Central özel çözümlemeler ile genişletme
 
-Bu nasıl yapılır kılavuzunda, bir çözüm geliştirici olarak gösteren özel analiz ve görselleştirmeler ile IOT Central uygulamanızı genişletme. Örnekte bir [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) IOT Central telemetri akışını analiz ve görselleştirmeler gibi oluşturmak için çalışma alanı [kutusunda çizimleri](https://wikipedia.org/wiki/Box_plot).
+Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızın özel analizler ve görselleştirmeler ile nasıl genişletileceği gösterilmektedir. Örnek, IoT Central telemetri akışını analiz etmek ve [kutu çizimleri](https://wikipedia.org/wiki/Box_plot)gibi görselleştirmeler oluşturmak için bir [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) çalışma alanı kullanır.
 
-Bu nasıl yapılır kılavuzunda IOT Central zaten ile getirebileceği ötesine genişletmek gösterilmektedir [yerleşik analiz araçları](howto-create-analytics.md).
+Bu nasıl yapılır Kılavuzu, [yerleşik analiz araçlarıyla](howto-create-analytics.md)daha önce yapabilecekleri IoT Central nasıl uzatılamayacak hakkında sizi gösterir.
 
-Nasıl yapılır bu kılavuzda şunların nasıl yapılır:
+Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 
-* Stream kullanarak bir IOT Central uygulama telemetri *verileri sürekli dışarı aktarma*.
-* Analiz etmek ve cihaz telemetrisi çizmek için bir Azure Databricks ortam oluşturun.
+* *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
+* Cihaz telemetrisini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Nasıl yapılır bu kılavuzdaki adımları tamamlamak için etkin bir Azure aboneliği gerekir.
+Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-### <a name="iot-central-application"></a>IOT Central uygulamasına
+### <a name="iot-central-application"></a>IoT Central uygulaması
 
-Bir IOT Central uygulamasından oluşturma [Azure IOT Central - uygulamalarım](https://aka.ms/iotcentral) sayfası aşağıdaki ayarlara sahip:
+[Azure IoT Central-uygulamalarım](https://aka.ms/iotcentral) sayfasından aşağıdaki ayarlarla bir IoT Central uygulaması oluşturun:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
 | Ödeme planı | Kullandıkça Öde |
-| Uygulama şablonu | Contoso Örneği |
-| Uygulama adı | Varsayılan değeri kabul edin veya kendi ad seçin |
-| URL'si | Varsayılan değeri kabul edin veya kendi benzersiz URL ön eki seçin |
-| Dizin | Azure Active Directory kiracınızın |
+| Uygulama şablonu | Örnek Contoso |
+| Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
+| URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
+| Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
-| Bölge | Doğu ABD |
+| Bölge | East US |
 
-Örnekler ve ekran görüntüleri bu makaleyi kullanın **Doğu ABD** bölge. Size yakın bir konum seçin ve tüm kaynaklarınız aynı bölgede oluşturduğunuzdan emin olun.
+Bu makaledeki örnekler ve ekran görüntüleri **Doğu ABD** bölgesini kullanır. Size yakın bir konum seçin ve tüm kaynaklarınızı aynı bölgede oluşturduğunuzdan emin olun.
 
-### <a name="resource-group"></a>Kaynak grubu
+### <a name="resource-group"></a>Resource group
 
-Kullanım [bir kaynak grubu oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.ResourceGroup) adlı **IoTCentralAnalysis** oluşturduğunuz diğer kaynakları içerecek. Azure kaynaklarınızı IOT Central uygulamanız ile aynı konumda oluşturun.
+Oluşturduğunuz diğer kaynakları içerecek şekilde **IoTCentralAnalysis** adlı [bir kaynak grubu oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.ResourceGroup) kullanın. Azure kaynaklarınızı IoT Central uygulamanızla aynı konumda oluşturun.
 
 ### <a name="event-hubs-namespace"></a>Event Hubs ad alanı
 
-Kullanım [bir Event Hubs ad alanı oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.EventHub) aşağıdaki ayarlara sahip:
+Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.EventHub) kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
-| Ad    | Ad alanı adı seçin |
+| Name    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
-| Abonelik | Aboneliğiniz |
-| Kaynak grubu | IoTCentralAnalysis |
-| Location | Doğu ABD |
-| İşleme Birimleri | 1 |
+| Subscription | Aboneliğiniz |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
+| İşleme Birimleri | 1\. |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks çalışma alanı
 
-Kullanım [Azure Databricks hizmeti oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.Databricks) aşağıdaki ayarlara sahip:
+Aşağıdaki ayarlarla [Azure Databricks bir hizmet oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.Databricks) kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
-| Çalışma alanı adı    | Çalışma alanınızın adının seçin |
-| Abonelik | Aboneliğiniz |
-| Kaynak grubu | IoTCentralAnalysis |
-| Location | Doğu ABD |
+| Çalışma alanı adı    | Çalışma alanınızın adını seçin |
+| Subscription | Aboneliğiniz |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Fiyatlandırma Katmanı | Standart |
 
-Gerekli kaynaklardan oluşturduğunuz zaman, **IoTCentralAnalysis** kaynak grubu, aşağıdaki ekran görüntüsüne benzer görünür:
+Gerekli kaynakları oluşturduğunuzda, **IoTCentralAnalysis** kaynak grubunuz aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![IOT Central analiz kaynak grubu](media/howto-create-custom-analytics/resource-group.png)
+![IoT Central analiz kaynak grubu](media/howto-create-custom-analytics/resource-group.png)
 
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-Sürekli olarak olay hub'ına telemetri dışarı aktarmak için bir IOT Central uygulamasına yapılandırabilirsiniz. Bu bölümde, IOT Central uygulamanızdan telemetri almak için bir olay hub'ı oluşturun. Olay hub'ı işleme için Stream Analytics işinizi telemetri gönderir.
+Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dışarı aktarmak için yapılandırabilirsiniz. Bu bölümde, IoT Central uygulamanızdan telemetri almak için bir olay hub 'ı oluşturursunuz. Olay Hub 'ı işleme için Stream Analytics işinize telemetri sunar.
 
-1. Azure portalında Event Hubs ad alanınıza gidin ve seçin **+ olay hub'ı**.
-1. Olay hub'ınızı adlandırın **centralexport**seçip **Oluştur**.
-1. Event hubs ad alanınızdaki listesinde seçin **centralexport**. Ardından **paylaşılan erişim ilkeleri**.
-1. **+ Ekle** öğesini seçin. Adlı bir ilke oluşturun **dinleme** ile **dinleme** talep.
-1. İlke hazır olduğunda, listeden seçin ve ardından kopyalama **bağlantı dizesi-birincil anahtar** değeri.
-1. Bu bağlantı dizesini not edin, olay hub'ından okumak için Databricks not defteri yapılandırdığınızda, daha sonra kullanın.
+1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı**seçin.
+1. Olay Hub 'ınızı **centralexport**olarak adlandırın ve **Oluştur**' u seçin.
+1. Ad uzayındaki Olay Hub 'ları listesinde **centralexport**' yi seçin. Ardından **paylaşılan erişim ilkeleri**' ni seçin.
+1. **+ Ekle** öğesini seçin. **Dinleme** talebini **dinle** adlı bir ilke oluşturun.
+1. İlke hazır olduğunda, listeden seçin ve ardından **bağlantı dizesinin birincil anahtar** değerini kopyalayın.
+1. Bu bağlantı dizesini not alın, daha sonra Databricks not defterinizi Olay Hub 'ından okumak üzere yapılandırdığınızda bu bağlantıyı kullanın.
 
-Event Hubs ad alanınız şu ekran görüntüsüne benzer görünür:
+Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
 ![Event Hubs ad alanı](media/howto-create-custom-analytics/event-hubs-namespace.png)
 
-## <a name="configure-export-in-iot-central"></a>IOT Central dışa aktarma yapılandırma
+## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma
 
-Gidin [IOT Central uygulamasına](https://aka.ms/iotcentral) Contoso şablondan bir şablondan oluşturulmuştur. Bu bölümde, kendi benzetilmiş aygıtlardan olay hub'ınıza telemetri akışı için uygulamayı yapılandırma. Dışarı aktarma yapılandırmak için:
+Contoso şablonundan oluşturduğunuz [IoT Central uygulamasına](https://aka.ms/iotcentral) gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
-1. Gidin **verileri sürekli dışarı aktarma** sayfasında **+ yeni**, ardından **Azure Event Hubs**.
-1. Dışarı aktarma yapılandırın, ardından seçmek için aşağıdaki Ayaları kullanın **Kaydet**:
+1. **Sürekli veri dışa aktarma** sayfasına gidin ve **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
+1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
-    | Görünen ad | Event Hubs'a Aktar |
+    | Görünen Ad | Event Hubs'a Aktar |
     | Enabled | Açık |
-    | Event Hubs ad alanı | Event Hubs ad alanınızın adı |
+    | Event Hubs ad alanı | Event Hubs ad alanı adınız |
     | Olay hub'ı | centralexport |
     | Ölçümler | Açık |
     | Cihazlar | Kapalı |
-    | Cihaz şablonları | Kapalı |
+    | Cihaz Şablonları | Kapalı |
 
-![Verileri sürekli dışarı aktarma yapılandırması](media/howto-create-custom-analytics/cde-configuration.png)
+![Sürekli veri dışa aktarma yapılandırması](media/howto-create-custom-analytics/cde-configuration.png)
 
-Dışarı aktarma durumunu tamamlanana kadar bekleyin **çalıştıran** devam etmeden önce.
+Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
 
 ## <a name="configure-databricks-workspace"></a>Databricks çalışma alanını yapılandırma
 
-Azure portalında, Azure Databricks hizmetinize gidin ve seçin **çalışma alanını Başlat**. Yeni bir sekme tarayıcınızda açılır ve çalışma alanınıza imzalar.
+Azure portal, Azure Databricks hizmetinize gidin ve **çalışma alanını Başlat**' ı seçin. Tarayıcınızda yeni bir sekme açılır ve çalışma alanınızda oturum açar.
 
 ### <a name="create-a-cluster"></a>Küme oluşturma
 
-Üzerinde **Azure Databricks** sayfasında, ortak görevler, seçim listesi altında **yeni kümeye**.
+**Azure Databricks** sayfasında, ortak görevler listesi altında **Yeni küme**' ı seçin.
 
-Bilgileri aşağıdaki tabloda, kümenizi oluşturmak için kullanın:
+Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
 | Küme Adı | centralanalysis |
-| Küme modunu | Standart |
-| Databricks çalışma zamanı sürümü | 5.3 (Scala 2.11, Spark 2.4.0) |
-| Python sürümü | 3 |
+| Küme modu | Standart |
+| Databricks Runtime sürümü | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Python Sürümü | 3 |
 | Otomatik Ölçeklendirmeyi Etkinleştirme | Hayır |
-| Dakika işlem yapılmadıktan sonra Sonlandır | 30 |
-| Çalışan türü | Standard_DS3_v2 |
-| Çalışanlar | 1 |
-| Sürücü türü | Çalışanla aynı |
+| İşlem yapılmadan dakika sonra Sonlandır | 30 |
+| Çalışan Türü | Standard_DS3_v2 |
+| Çalışanlar | 1\. |
+| Sürücü türü | Çalışan ile aynı |
 
-Küme oluşturma birkaç dakika sürer, küme oluşturma devam etmeden önce tamamlanmasını bekleyin.
+Bir küme oluşturmak birkaç dakika sürebilir, devam etmeden önce küme oluşturma işleminin tamamlanmasını bekleyin.
 
-### <a name="install-libraries"></a>Kitaplıkları yükleme
+### <a name="install-libraries"></a>Kitaplıkları yükler
 
-Üzerinde **kümeleri** sayfasında, küme durumunu tamamlanana kadar bekleyin **çalıştıran**.
+**Kümeler** sayfasında, küme durumu **çalışmaya**kadar bekleyin.
 
-Aşağıdaki adımlar kümesine örneğinizi gereken kitaplığı içeri aktarma gösterir:
+Aşağıdaki adımlarda, örnek ihtiyaçlarınızı kümeye aktarma işlemi gösterilmektedir:
 
-1. Üzerinde **kümeleri** sayfasında, durumu kadar bekleyin **centralanalysis** etkileşimli küme **çalıştıran**.
+1. **Kümeler** sayfasında, **centralanalysis** etkileşimli kümesinin durumunun **çalışıp çalışmadığını**bekleyin.
 
-1. Kümeyi seçin ve ardından **kitaplıkları** sekmesi.
+1. Kümeyi seçin ve ardından **Kitaplıklar** sekmesini seçin.
 
-1. Üzerinde **kitaplıkları** sekmesini, **yükleme yeni**.
+1. **Kitaplıklar** sekmesinde **Yeni yüklensin**' i seçin.
 
-1. Üzerinde **kitaplık yükleme** sayfasında **Maven** kitaplık kaynağı.
+1. **Kitaplığı yükler** sayfasında, kitaplık kaynağı olarak **Maven** ' ı seçin.
 
-1. İçinde **koordinatları** metin kutusuna şu değeri girin: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. **Koordinatlar** metin kutusuna aşağıdaki değeri girin:`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
-1. Seçin **yükleme** kümede kitaplığını yüklemek için.
+1. Kitaplığı kümeye yüklemek için **yüklemeyi** seçin.
 
-1. Kitaplık durumunu sunulmuştur **yüklü**:
+1. Kitaplık durumu şimdi **yüklendi**:
 
-    ![Yüklü kitaplığı](media/howto-create-custom-analytics/cluster-libraries.png)
+    ![Kitaplık yüklendi](media/howto-create-custom-analytics/cluster-libraries.png)
 
-### <a name="import-a-databricks-notebook"></a>Bir Databricks not defteri alma
+### <a name="import-a-databricks-notebook"></a>Databricks Not defterini içeri aktarma
 
-Python kodunu analiz edin ve görselleştirin, IOT Central telemetri içeren bir Databricks not defteri içeri aktarmak için aşağıdaki adımları kullanın:
+IoT Central telemetrinizi analiz etmek ve görselleştirmek için Python kodunu içeren bir Databricks Not defteri 'ni içeri aktarmak için aşağıdaki adımları kullanın:
 
-1. Gidin **çalışma** Databricks ortamınızdaki sayfası. Hesap adınızın yanındaki açılır menüyü seçin ve sonra **alma**.
+1. Databricks ortamınızdaki **çalışma alanı** sayfasına gidin. Hesap adınızın yanındaki açılan menüyü seçin ve ardından **Içeri aktar**' ı seçin.
 
-1. Aşağıdaki adresi girin ve bir URL'den içeri aktarmak için seçin: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Bir URL 'den içeri aktarmayı seçin ve şu adresi girin:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
-1. Not Defteri içeri aktarmayı tercih **alma**.
+1. Not defterini içeri aktarmak için **Içeri aktar**' ı seçin.
 
-1. Seçin **çalışma** içeri aktarılan not defteri görüntülemek için:
+1. İçeri aktarılan Not defterini görüntülemek için **çalışma alanını** seçin:
 
-    ![İçeri aktarılan not defteri](media/howto-create-custom-analytics/import-notebook.png)
+    ![İçeri aktarılan Not defteri](media/howto-create-custom-analytics/import-notebook.png)
 
-1. Daha önce kaydettiğiniz Event Hubs bağlantı dizesi eklemek için ilk Python hücre kodunu düzenleyin:
+1. Daha önce kaydettiğiniz Event Hubs bağlantı dizesini eklemek için ilk Python hücresindeki kodu düzenleyin:
 
     ```python
     from pyspark.sql.functions import *
@@ -190,43 +190,43 @@ Python kodunu analiz edin ve görselleştirin, IOT Central telemetri içeren bir
     }
     ```
 
-## <a name="run-analysis"></a>Analizini Çalıştır
+## <a name="run-analysis"></a>Analizi Çalıştır
 
-Analizi çalıştırmak için Not defterini kümeye eklemeniz gerekir:
+Analizi çalıştırmak için, Not defterini kümeye eklemeniz gerekir:
 
-1. Seçin **Detached** seçip **centralanalysis** kümesi.
+1. **Ayrılmış** ' i seçin ve ardından **centralanalysis** kümesini seçin.
 1. Küme çalışmıyorsa başlatın.
-1. Not defterini başlatmak için Çalıştır düğmesi seçin.
+1. Not defterini başlatmak için Çalıştır düğmesini seçin.
 
-Son hücresinde bir hata görebilirsiniz. Bu durumda, önceki hücreleri çalışıp denetleyin, bazı verileri depolama alanına yazılacak bir dakika bekleyin ve ardından son hücreye yeniden çalıştırın.
+Son hücrede bir hata görebilirsiniz. Bu durumda, önceki hücrelerin çalıştığını denetleyin, bazı verilerin depolama alanına yazılmasını bekleyip bir dakika bekleyin ve ardından son hücreyi yeniden çalıştırın.
 
-### <a name="view-smoothed-data"></a>Düzleştirilmiş veri görüntüleme
+### <a name="view-smoothed-data"></a>Düzleştirilmiş verileri görüntüleme
 
-Not defterinde hücre 14 çalışırken ortalama nem oranı cihaz türüne göre bir çizim görmek için aşağı kaydırın. Akış telemetri ulaştığında Bu çizim sürekli olarak güncelleştirir:
+Not defteri 'nde, cihaz türüne göre geçen ortalama nem sayısını görmek için 14 hücresine kaydırın. Bu çizim, akış telemetri geldiğinde sürekli güncelleştirmeler:
 
-![Telemetri çizim düzleştirilmiş](media/howto-create-custom-analytics/telemetry-plot.png)
+![Düzleştirilmiş telemetri çizimi](media/howto-create-custom-analytics/telemetry-plot.png)
 
-Not defterinde grafiği yeniden boyutlandırabilirsiniz.
+Not defterinde grafiğin boyutunu değiştirebilirsiniz.
 
-### <a name="view-box-plots"></a>Görünüm kutusu çizer
+### <a name="view-box-plots"></a>Görünüm kutusu çizimleri
 
-Not defterinde hücre 20 görmek için aşağı kaydırın [kutusunda çizimleri](https://en.wikipedia.org/wiki/Box_plot). Bunları güncelleştirmek için hücre yeniden şekilde kutusu çizimleri statik verilere dayanır:
+Not defteri 'nde, [kutu çizimleri](https://en.wikipedia.org/wiki/Box_plot)görmek için aşağı kaydırın. Kutu çizimleri, statik verileri temel alır, böylece onları güncelleştirmek için hücreyi yeniden çalıştırmanız gerekir:
 
-![Kutusu çizer](media/howto-create-custom-analytics/box-plots.png)
+![Kutu çizimleri](media/howto-create-custom-analytics/box-plots.png)
 
-Not defterinde çizimleri yeniden boyutlandırabilirsiniz.
+Not defterindeki çizimleri yeniden boyutlandırabilirsiniz.
 
-## <a name="tidy-up"></a>Çatalınızdan
+## <a name="tidy-up"></a>Tidy yukarı
 
-Bu nasıl yapılır sonra çatalınızdan ve gereksiz maliyetleri önlemek için silin **IoTCentralAnalysis** Azure portalında kaynak grubu.
+Bu nasıl yapılır ve gereksiz maliyetlerin önüne geçmek için Azure portal **IoTCentralAnalysis** kaynak grubunu silin.
 
-IOT Central uygulamadan silebilirsiniz **Yönetim** uygulama içinde sayfa.
+Uygulama içindeki **Yönetim** sayfasından IoT Central uygulamasını silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır kılavuzunda öğrendiğiniz nasıl yapılır:
+Bu nasıl yapılır kılavuzunda şunları öğrenirsiniz:
 
-* Stream kullanarak bir IOT Central uygulama telemetri *verileri sürekli dışarı aktarma*.
-* Analiz etmek ve telemetri verilerini çizmek için bir Azure Databricks ortam oluşturun.
+* *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
+* Telemetri verilerini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
-Size özel analytics oluşturmayı biliyorsanız, önerilen sonraki adıma öğrenmektir nasıl [Görselleştir ve Azure IOT Central bir Power BI panosunda çözümlemek](howto-connect-powerbi.md).
+Artık özel analizler oluşturmayı bildiğinize göre, önerilen sonraki adım [Azure IoT Central verilerinizi Power BI panosunda görselleştirmeyi ve çözümlemeyi](howto-connect-powerbi.md)öğrenmektir.

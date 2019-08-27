@@ -1,20 +1,20 @@
 ---
-title: Azure depolama ile çalışmaya yönelik araçlar | Microsoft Docs
-description: Azure depolama verilerinizi görüntülemenize/bunlarla etkileşime geçmesini sağlayan araçların listesi.
+title: Azure depolama ile çalışmaya yönelik araçlar
+description: Azure depolama verilerinizi görüntülemenize ve bunlarla etkileşime geçmesini sağlayan araçların listesi.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 08/26/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 11838a50d70d1b9a0216505e9ef0958d3b18bdac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68665745"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035257"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage İstemci Araçları
 Azure Storage kullanıcıları, Azure depolama istemci aracını kullanarak verilerini görüntülemek/bunlarla etkileşime geçmek ister. Aşağıdaki tablolarda, bunu yapmanıza imkan tanıyan bir dizi araç listeliyoruz. Veri soyutlamasını listeleme ve/veya erişim olanağı sağlıyorsa, her bloğa bir "X" koyuyoruz. Tablo ayrıca araçların serbest olup olmadığını gösterir. "Deneme", ücretsiz bir deneme olduğunu gösterir ancak tam ürün ücretsizdir. "Y/N" bir sürümün ücretsiz olduğunu, satın alma için farklı bir sürüm bulunduğunu belirtir.
@@ -122,20 +122,6 @@ Aşağıdaki üçüncü taraf araçları tarafından talep edilen işlevleri vey
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate Azure Gezgini</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>E</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td><a href="https://github.com/sebagomez/azurestorageexplorer">Azure Web Depolama Gezgini</a></td>
     <td>X</td>
     <td>X</td>
@@ -157,7 +143,7 @@ Aşağıdaki üçüncü taraf araçları tarafından talep edilen işlevleri vey
     <td></td>
     <td></td>
     <td>X</td>
-    <td>Y/N</td>
+    <td>E/H</td>
     <td></td>
     <td>X</td>
     <td></td>

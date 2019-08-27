@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 7cda51870a98b2606a0133a61ad6f786e7e9324a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: 58dd9ade749458facd6f11682af0b730258a7584
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900147"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033244"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>PowerApps teklifi & müşteri için yeni bir Dynamics 365 oluşturun
 
@@ -353,7 +353,7 @@ Test sürücüsünü sizin adınıza dağıtmak için lütfen benzersiz ve benze
 
 ## <a name="supplemental-content"></a>Ek içerik
 
-Bu sayfa teklifiniz hakkında ek gerekli bilgileri sağlamanıza olanak tanır.
+Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
 
 ### <a name="key-usage-scenario"></a>Anahtar kullanımı senaryosu
 

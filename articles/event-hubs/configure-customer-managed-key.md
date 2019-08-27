@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 794f8f136521acbb51139b9e781a30c71a1560e6
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992763"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035903"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -63,7 +63,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
         ![Oluştur/Içeri Aktar düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
     1. Oluşturma **seçeneklerini** belirleyin ve anahtara bir ad verin.
 
-        ![Bir anahtar oluşturma](./media/configure-customer-managed-key/create-key.png) 
+        ![Anahtar oluşturma](./media/configure-customer-managed-key/create-key.png) 
     1. Şimdi, açılan listeden şifrelemek için Event Hubs ad alanıyla ilişkilendirmek üzere bu anahtarı seçebilirsiniz. 
 
         ![Anahtar kasasından anahtar seçin](./media/configure-customer-managed-key/select-key-from-key-vault.png)
@@ -170,7 +170,7 @@ Aşağıda, BYOK şifrelemesi etkinleştirildiğinde aranacak ortak hatalar kodl
 > BYOK şifrelemesini kullanan bir ad alanında coğrafi DR 'yi etkinleştirmek için, eşleştirme için ikincil ad alanı adanmış bir kümede olmalıdır ve üzerinde sistem tarafından atanmış bir yönetilen kimlik etkin olmalıdır. Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!NOTE]
-> BYOK şifreli Event Hubs ad alanları için, önizleme sürümünde sanal ağ (VNet) hizmet uç noktaları desteklenmez. 
+> Sanal ağ (VNet) hizmet uç noktaları Event Hubs ad alanınız için Azure Key Vault yapılandırılmışsa BYOK desteklenmez. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

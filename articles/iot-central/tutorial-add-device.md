@@ -3,18 +3,18 @@ title: Azure IoT Central uygulamasına gerçek bir cihaz ekleme | Microsoft Docs
 description: Bir işleç olarak Azure IoT Central uygulamanıza gerçek bir cihaz ekleyin.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 04/23/2019
+ms.date: 08/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 03fd31333a97290a5e8a00029867fc4e73a0cdd7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8731d66c9d2dca0043307ac2f6a0d1828aeaa275
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875601"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050522"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme
 
@@ -47,7 +47,7 @@ Geliştirme makinenize [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üstü
 
 Uygulamanıza gerçek bir cihaz eklemek için, [Yeni bir cihaz türü belirleme](tutorial-define-device-type.md) öğreticisinde oluşturduğunuz **Bağlı Klima** cihaz şablonunu kullanırsınız.
 
-1. İşleç olarak yeni bir cihaz eklemek için sol gezinti menüsünde **Device Explorer**’ı seçin:
+1. Yeni bir cihazı operatör olarak eklemek için sol gezinti menüsünde **cihazlar** ' ı seçin:
 
    ![Bağlı klimayı gösteren Device Explorer sayfası](media/tutorial-add-device/explorer.png)
 

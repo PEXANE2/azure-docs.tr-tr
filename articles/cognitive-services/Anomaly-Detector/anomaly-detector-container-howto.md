@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e3f6ad4338863fcbb35bad4f286b71993cf6fa2a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c2ff2c745ebed8385df0d351c6d43faf5ab1b9d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854826"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050067"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Anomali algılayıcı kapsayıcılarını yükleyip çalıştırın
 
@@ -98,7 +98,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 Üç kapsayıcının herhangi birini çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır:
 
-| Yer tutucu | Değer |
+| Yer tutucu | Value |
 |-------------|-------|
 |{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure portal anomali algılayıcı anahtarları sayfasında kullanılabilir.  |
 |{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri Azure portal anomali algılayıcısı Genel Bakış sayfasında bulunur.|
@@ -156,7 +156,7 @@ Sonraki her kapsayıcı farklı bir bağlantı noktasında olmalıdır.
 
 Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
 
-Kapsayıcı API 'leri için https://localhost:5000 Konağı kullanın.
+Kapsayıcı API 'leri için http://localhost:5000 Konağı kullanın.
 
 <!--  ## Validate container is running -->
 

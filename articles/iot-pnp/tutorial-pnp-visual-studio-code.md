@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Tak ve Kullan önizleme cihazı oluşturma ve test etme | Microsoft Docs
+title: IoT Tak ve Kullan önizleme cihazı oluşturma ve test etme | Microsoft Docs
 description: Bir cihaz geliştiricisi olarak, IoT Tak ve Kullan önizleme cihazı için yeni bir cihaz yetenek modeli oluşturmak ve test etmek üzere VS Code nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5a03eea84d0d68f06b432014fc4374e799914d67
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 10eb9655371177a52d1c1a5a9118665015076b35
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878078"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047987"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Öğretici: Visual Studio Code kullanarak cihaz yetenek modeli oluşturma ve test etme
 

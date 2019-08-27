@@ -17,6 +17,8 @@
       href: apache-hbase-tutorial-get-started-linux.md
 - name: Kavramlar
   items:
+    - name: Depolama seçeneklerini karşılaştırın
+      href: ../hdinsight-hadoop-compare-storage-options.md
     - name: HDInsight uygulamaları yükleme
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Küme kapasitesi planlama

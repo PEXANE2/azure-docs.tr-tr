@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624094"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036310"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
@@ -28,11 +28,16 @@ Yapılandırma uygulamak henüz mümkün değildir.
 
 Bir sanal makine içinde ayarlarını denetlemek için bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir. Uzantı geçerli ilke ataması ve karşılık gelen yapılandırma tanımını indirir.
 
-### <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını kaydetme
+### <a name="limits-set-on-the-exension"></a>Bir şekilde ayarlanan sınırlar
+
+Uzantının makinede çalışan etkileyen uygulamalarla sınırlı olması için, Konuk yapılandırmasının CPU kullanımının% 5 ' inden fazlasını aşmasına izin verilmez.
+Bu, Microsoft tarafından "yerleşik" olarak ve müşteriler tarafından yazılan özel yapılandırmalarda sunulan yapılandırmalara yönelik doğru BOH ' dir.
+
+## <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını kaydetme
 
 Konuk yapılandırma kullanabilmeniz için kaynak sağlayıcısını kaydetmeniz gerekir. Portal veya PowerShell aracılığıyla kaydedebilirsiniz. Bir konuk yapılandırma ilkesinin atanması Portal üzerinden yapıldığında kaynak sağlayıcı otomatik olarak kaydedilir.
 
-#### <a name="registration---portal"></a>Kayıt - Portal
+### <a name="registration---portal"></a>Kayıt - Portal
 
 Azure portalı üzerinden Konuk yapılandırması için kaynak sağlayıcısını kaydetmek için aşağıdaki adımları izleyin:
 
@@ -44,7 +49,7 @@ Azure portalı üzerinden Konuk yapılandırması için kaynak sağlayıcısın�
 
 1. Filtre uygulamak veya bulduktan kadar kaydırın **Microsoft.GuestConfiguration**, ardından **kaydetme** aynı satırda.
 
-#### <a name="registration---powershell"></a>Kayıt - PowerShell
+### <a name="registration---powershell"></a>Kayıt - PowerShell
 
 PowerShell üzerinden Konuk yapılandırması için kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
@@ -53,7 +58,7 @@ PowerShell üzerinden Konuk yapılandırması için kaynak sağlayıcısını ka
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-### <a name="validation-tools"></a>Doğrulama Araçları
+## <a name="validation-tools"></a>Doğrulama Araçları
 
 Sanal makinenin içinde denetim çalıştırmak için yerel Araçlar Konuk yapılandırma istemcisi kullanır.
 
@@ -68,7 +73,7 @@ Aşağıdaki tabloda, desteklenen her işletim sisteminde kullanılan yerel Ara�
 
 Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Konuk ataması alındıktan sonra ayarlar 15 dakikalık bir aralıkta denetlenir. Sonuçlar, Denetim tamamlandıktan hemen sonra Konuk yapılandırma kaynak sağlayıcısına gönderilir. Bir ilke [değerlendirme tetikleyicisi](../how-to/get-compliance-data.md#evaluation-triggers) gerçekleştiğinde, makinenin durumu Konuk yapılandırma kaynak sağlayıcısına yazılır. Bu, Azure Ilkesinin Azure Resource Manager özelliklerini değerlendirmesini sağlar. İsteğe bağlı bir Azure Ilke değerlendirmesi, Konuk yapılandırma kaynak sağlayıcısından en son değeri alır. Ancak, sanal makine içindeki yapılandırmanın yeni bir denetimini tetiklemez.
 
-### <a name="supported-client-types"></a>Desteklenen istemci türleri
+## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
 Aşağıdaki tabloda, desteklenen işletim sistemi listesini Azure görüntülerinde gösterilmektedir:
 
@@ -89,7 +94,7 @@ Aşağıdaki tabloda, desteklenen işletim sistemi listesini Azure görüntüler
 
 Windows Server nano Server hiçbir sürümde desteklenmez.
 
-### <a name="guest-configuration-extension-network-requirements"></a>Konuk yapılandırma uzantısı ağ gereksinimleri
+## <a name="guest-configuration-extension-network-requirements"></a>Konuk yapılandırma uzantısı ağ gereksinimleri
 
 Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için, sanal makinelerin **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişimi olması gerekir. Azure 'da özel bir sanal ağ kullanıyorsanız ve giden trafiğe izin vermezseniz, özel durumların [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları kullanılarak yapılandırılması gerekir. Şu anda Azure Ilke Konuk yapılandırması için bir hizmet etiketi yok.
 
@@ -100,7 +105,7 @@ IP adresi listelerinde [Microsoft Azure veri MERKEZI IP aralıklarını](https:/
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
-Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **Denetim** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** tanımı, sanal makineyi Konuk yapılandırma Aracısı ve diğer bileşenleriyle [doğrulama araçlarını](#validation-tools)destekleyecek şekilde hazırlamak için kullanılır.
+Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** tanımı, sanal makineyi Konuk yapılandırma Aracısı ve diğer bileşenleriyle [doğrulama araçlarını](#validation-tools)destekleyecek şekilde hazırlamak için kullanılır.
 
 **Deployıfnotexists** ilke tanımı doğrular ve düzeltir aşağıdaki öğeleri:
 
@@ -111,18 +116,18 @@ Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployi
 
 **Deployifnotexists** ataması uyumlu değilse, bir [Düzeltme görevi](../how-to/remediate-resources.md#create-a-remediation-task) kullanılabilir.
 
-**Deployifnotexists** ataması uyumlu olduktan sonra **Denetim** ilkesi ataması, yapılandırma atamasının uyumlu veya uyumsuz olup olmadığını anlamak için yerel doğrulama araçlarını kullanır.
+**Deployifnotexists** ataması uyumlu olduğunda, **auditınotexists** ilke ataması, yapılandırma atamasının uyumlu veya uyumsuz olduğunu anlamak için yerel doğrulama araçlarını kullanır.
 Doğrulama Aracı sonuçları Konuk yapılandırma istemciye sağlar. İstemci, Konuk yapılandırma kaynak sağlayıcısı kullanılabilir hale getirir Konuk uzantısına sonuçları iletir.
 
 Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianceStatus** rapor uyumluluk özelliğini **Uyumluluk** düğümü. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> **Denetim** ilkesinin sonuçları döndürmesi Için **Deployifnotexists** ilkesi gerekir.
-> **Deployifnotexists**olmadan, **Denetim** ilkesi "0/0" kaynağını durum olarak gösterir.
+> Uıınotexists ilkesi, sonuçları döndürmek için bu ilke için gereklidir.
+> **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
 
-Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. [Önizleme] adlı *yerleşik girişim: Linux ve Windows sanal makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Windows için altı **Deployifnotexists** ve **Denetim** çiftleri ve Linux için üç çift vardır. Her durumda, yalnızca hedef mantıksal tanımındaki doğrular işletim sistemine göre değerlendirilir [ilke kuralı](definition-structure.md#policy-rule) tanımı.
+Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. [Önizleme] adlı *yerleşik girişim: Linux ve Windows sanal makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. Her durumda, yalnızca hedef mantıksal tanımındaki doğrular işletim sistemine göre değerlendirilir [ilke kuralı](definition-structure.md#policy-rule) tanımı.
 
-## <a name="multiple-assignments"></a>Birden çok atama
+### <a name="multiple-assignments"></a>Birden çok atama
 
 Konuk yapılandırma ilkeleri Şu anda yalnızca sanal makine başına aynı Konuk atamasının atanmasını, Ilke ataması farklı parametreler kullanıyor olsa bile destekler.
 

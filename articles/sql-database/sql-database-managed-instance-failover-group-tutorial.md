@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981380"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035796"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: Yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
@@ -26,10 +26,12 @@ Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makale
 > [!div class="checklist"]
 > - Birincil yönetilen örnek oluşturma
 > - Bir [Yük devretme grubunun](sql-database-auto-failover-group.md)parçası olarak ikincil bir yönetilen örnek oluşturun. 
-> - Yük devretme testi
+> - Test yük devretmesi
 
   > [!NOTE]
-  > Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [yönetilen örnek yönetimi işlemleri](sql-database-managed-instance.md#managed-instance-management-operations). Yönetilen örneklerle yük devretme gruplarının kullanılması şu anda önizlemededir. 
+  > - Bu öğreticide, kaynakları [yönetilen örnek için yük devretme grupları ayarlamaya yönelik önkoşullara](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)sahip olduğunuzdan emin olun. 
+  > - Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [yönetilen örnek yönetimi işlemleri](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - Yönetilen örneklerle yük devretme gruplarının kullanılması şu anda önizlemededir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -96,7 +98,7 @@ Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu
 
 İkincil yönetilen örneğinizi oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](http://portal.azure.com), **kaynak oluştur** ' u seçin ve *Azure SQL yönetilen örneği*' ni arayın. 
+1. [Azure Portal](https://portal.azure.com), **kaynak oluştur** ' u seçin ve *Azure SQL yönetilen örneği*' ni arayın. 
 1. Microsoft tarafından yayımlanan **Azure SQL yönetilen örnek** seçeneğini seçin ve ardından sonraki sayfada **Oluştur** ' u seçin.
 1. **Azure SQL veritabanı yönetilen örneği oluştur** sayfasının **temel bilgiler** sekmesinde, ikincil yönetilen örneğinizi yapılandırmak için gerekli alanları doldurun. 
 
@@ -252,7 +254,7 @@ Bu öğreticide, iki yönetilen örnek arasında bir yük devretme grubu yapıla
 > [!div class="checklist"]
 > - Birincil yönetilen örnek oluşturma
 > - Bir [Yük devretme grubunun](sql-database-auto-failover-group.md)parçası olarak ikincil bir yönetilen örnek oluşturun. 
-> - Yük devretme testi
+> - Test yük devretmesi
 
 Yönetilen örneğinizle bağlantı kurmak ve yönetilen örneğiniz için bir veritabanını geri yüklemek için bir sonraki hızlı başlangıca ilerleyin: 
 

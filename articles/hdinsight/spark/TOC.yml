@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ambari ve Azure İzleyici günlükleriyle küme kullanılabilirliğini izleme
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Depolama seçeneklerini karşılaştırın
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma

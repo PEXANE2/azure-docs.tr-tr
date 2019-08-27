@@ -12,19 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 339a4f93d45b3d3b3e242aa735ce4b737a9292f0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694303"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035952"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning veri hazırlığı SDK'sı ile verileri dönüştürün
 
 Bu makalede, `azureml-dataprep` paketini kullanarak farklı veri dönüştürme yöntemleri öğrenirsiniz. Paket, sütun eklemeyi, istenmeyen satırları veya sütunları filtrelemeyi ve ımpute eksik değerleri daha kolay hale getirmek için işlevler sunar. [Azureml-dataprep paketi](https://aka.ms/data-prep-sdk)için tam başvuru belgelerine bakın.
 
 > [!Important]
-> Yeni bir çözüm oluşturuyorsanız, verilerinizi dönüştürmek için Azure Machine Learning veri [kümelerini](how-to-explore-prepare-data.md) (Önizleme) deneyin, verileri anlık görüntü yapın ve sürümü tutulan veri kümesi tanımlarını depolayın. Veri kümeleri, veri hazırlama SDK 'sının bir sonraki sürümüdür ve AI çözümlerinde veri kümelerini yönetmek için genişletilmiş işlevler sunar. Bir veri kümesi oluşturmak `azureml-dataprep` için `azureml-datasets` paketini kullanmak yerine dönüşümlerinizde bir veri akışı oluşturmak için paketini kullanırsanız, anlık görüntüleri veya sürümlenmiş veri kümelerini daha sonra kullanamazsınız.
+> Yeni bir çözüm oluşturuyorsanız, verilerinizi dönüştürmek için Azure Machine Learning veri [kümelerini](how-to-explore-prepare-data.md) (Önizleme) deneyin, verileri anlık görüntü yapın ve sürümü tutulan veri kümesi tanımlarını depolayın. Veri kümeleri, veri hazırlama SDK 'sının bir sonraki sürümüdür ve AI çözümlerinde veri kümelerini yönetmek için genişletilmiş işlevler sunar.
+> Bir veri kümesi oluşturmak `azureml-dataprep` için `azureml-datasets` paketini kullanmak yerine dönüşümlerinizde bir veri akışı oluşturmak için paketini kullanırsanız, anlık görüntüleri veya sürümlenmiş veri kümelerini daha sonra kullanamazsınız.
 
 Bu nasıl yapılır, aşağıdaki görevler için örnekler gösterir:
 
@@ -345,7 +346,7 @@ Satırları filtrele, kullanın `filter()`. Bu yöntem, Azure Machine Learning v
 
 Bu örnekte, `dflow.filter(col('Tip_amount') > 0)` sütunları içeren yeni bir veri akışı döndüren değerini `Tip_amount` 0'dan büyük.
 
-> [!NOTE] 
+> [!NOTE]
 > `Tip_amount` ilk karşı diğer sayısal değerleri karşılaştırma bir ifade oluşturmak sağlıyor sayısal, dönüştürülür.
 
 ```python
@@ -517,4 +518,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Belirli bir senaryoyu çözme örneği için bkz. Azure Machine Learning Data Prep SDK [öğreticisi](tutorial-data-prep.md)
+* Daha fazla ayrıntı için Azure Machine Learning Data Prep SDK [başvuru belgelerine](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#dataprep) bakın.

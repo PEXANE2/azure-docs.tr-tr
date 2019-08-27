@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 016d004a538a1313ca31f36b46e961098051785c
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260608"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051717"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Azure Logic Apps ile posta listesi isteklerini yönetme
 
@@ -37,17 +38,17 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Üst düzey tamamlanmış mantıksal uygulama](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
 
-Azure aboneliğiniz yoksa başlamadan önce <a href="https://azure.microsoft.com/free/" target="_blank">ücretsiz bir Azure hesabı için kaydolun</a>.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * MailChimp hesabı. Mantıksal uygulamanızın onaylanan üyelerin e-posta adreslerini ekleyebileceği "test-members-ML" adlı bir liste oluşturun. Hesabınız yoksa, [ücretsiz bir hesap için kaydolun](https://login.mailchimp.com/signup/) ve [liste oluşturmayı](https://us17.admin.mailchimp.com/lists/#) öğrenin. 
 
-* Office 365 Outlook veya Outlook.com'dan onay iş akışlarını destekleyen bir e-posta hesabı. Bu makalede Office 365 Outlook kullanılır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
+* Onay iş akışlarını destekleyen Office 365 Outlook veya Outlook.com ile bir e-posta hesabı. Bu makalede Office 365 Outlook kullanılır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-Azure hesabınızın kimlik bilgileriyle <a href="https://portal.azure.com" target="_blank">Azure portalında</a> oturum açın.
+Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
@@ -79,7 +80,7 @@ Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni veriler 
 
 1. Tasarımcıda arama kutusuna "e-posta geldiğinde" yazın. E-posta sağlayıcınızın tetikleyicisini seçin: **<*eposta-sağlayıcınız*> - Yeni e-posta geldiğinde**
    
-   ![E-posta sağlayıcısı için şu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![E-posta sağlayıcısı için bu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Azure iş veya okul hesapları için Office 365 Outlook girişini seçin.
    * Kişisel Microsoft hesapları için Outlook.com girişini seçin.
@@ -112,7 +113,7 @@ Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni veriler 
    Mantıksal uygulamanız çalışıyor ancak gelen e-postanızı denetleme dışında bir işlem gerçekleştirmiyor. 
    Şimdi, tetikleyici etkinleştirildiğinde gerçekleştirilecek bir eylem ekleyin.
 
-## <a name="send-approval-email"></a>Onay e-postası gönderme
+## <a name="send-approval-email"></a>Onay e-postası gönder
 
 Artık tetikleyiciniz olduğuna göre, isteği onaylamak veya reddetmek üzere e-posta gönderen bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) ekleyin. 
 
@@ -183,7 +184,7 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
 Şimdi, onaylanan üyeyi posta listenize ekleyen bir eylem ekleyin.
 
 1. Koşulun **True ise** dalı içinde **Eylem ekle**’yi seçin.
-"Mailchimp" için arama yapın ve şu eylemi seçin: **MailChimp - listeye üye Ekle**
+"MailChimp" araması yapın ve şu eylemi seçin: **MailChimp-listeye üye ekleme**
 
    !["MailChimp - Listeye üye ekle" öğesini seçin](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -196,7 +197,7 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
    | **Liste Kimliği** | test-members-ML | MailChimp posta listenizin adı | 
-   | **Durumu** | abone olundu | Yeni üyenin abonelik durumu. Daha fazla bilgi için bkz. <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">MailChimp API'siyle aboneleri yönetme</a>. | 
+   | **Durumu** | abone olundu | Yeni üyenin abonelik durumu. Daha fazla bilgi için bkz. [MailChimp API'siyle aboneleri yönetme](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). | 
    | **E-posta Adresi** | <*yeni-üye-eposta-adresi*> | Parametre listesinden veya dinamik içerik listesinden, **Yeni posta geldiğinde** bölümünde **Kimden**’i seçin. Bu, yeni üyenin e-posta adresinde verilir. 
    |  |  |  | 
 
@@ -248,8 +249,8 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
    | **To** | <*eposta-adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. | 
-   | **Subject** | <*başarı-epostası-konusu*> | Başarı e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarılı oldu! Üye 'test-members-ML için' eklendi: **E-posta adresi**" | 
-   | **Gövde** | <*başarı-e-postası-gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanları seçin:  <p>"Yeni üye 'test-members-ML ' Listesine katıldı: **E-posta adresi**"</br>"Üye katılım durumu: **Durum**" | 
+   | **Subject** | <*başarı-epostası-konusu*> | Başarı e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarılı oldu! Üye ' test-Members-ML ' öğesine eklendi: **E-posta adresi**" | 
+   | **Gövde** | <*başarı-e-postası-gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanları seçin:  <p>"Yeni üye ' test-Members-ML ' öğesine katıldı: **E-posta adresi**"</br>"Üye katılım durumu: **Durum**" | 
    | | | | 
 
 5. Mantıksal uygulamanızı kaydedin.
@@ -273,7 +274,7 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
    | **To** | <*eposta-adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. | 
-   | **Subject** | <*başarısızlık-epostası-konusu*> | Başarısızlık e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarısız oldu, üye 'test-members-ML için' eklenmedi: **E-posta adresi**" | 
+   | **Subject** | <*başarısızlık-epostası-konusu*> | Başarısızlık e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarısız, üye ' test-Members-ML ' öğesine eklenmedi: **E-posta adresi**" | 
    | **Gövde** | <*başarısızlık-epostası-gövdesi*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>"Üye zaten eklenmiş olabilir. MailChimp hesabınızı denetleyin." | 
    | | | | 
 

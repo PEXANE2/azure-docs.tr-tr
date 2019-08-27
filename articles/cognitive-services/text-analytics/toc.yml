@@ -69,15 +69,9 @@
         - name: Kapsayıcıları yapılandırma
           href: text-analytics-resource-container-config.md
         - name: Kapsayıcı örnekleri kullanma
-          items:
-            - name: Yaklaşım analizi
-              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
+          href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes hizmetini kullanma (AKS)
-          items:
-            - name: Dil algılama
-              href: how-tos/use-language-detection-on-aks.md
-            - name: Yaklaşım analizi
-              href: how-tos/use-sentiment-analysis-on-aks.md
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: Metin Analizi Bağlı Hizmetini kullanma
       href: vs-text-connected-service.md
 - name: Başvuru

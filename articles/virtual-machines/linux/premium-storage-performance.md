@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 70da3509ce44fe260f8010ccf6eb1d2192ca6e73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 79bd41c08a566b55efb4a29084847848e001629f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695492"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036037"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
@@ -27,3 +27,12 @@ Başlamadan önce Premium Storage 'a yeni başladıysanız, önce [IaaS VM 'leri
 
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
+
+Diskinizin kıyaslanmaya bakıyorsanız, [bir diski sınama](disks-benchmarks.md)hakkındaki makalemize bakın.
+
+Kullanılabilir disk türleri hakkında daha fazla bilgi edinin: [Bir disk türü seçin](disks-types.md)  
+
+SQL Server kullanıcılar için SQL Server performans En Iyi yöntemleri hakkında makaleleri okuyun:
+
+* [Azure sanal makineler 'de SQL Server için En Iyi performans uygulamaları](../windows/sql/virtual-machines-windows-sql-performance.md)
+* [Azure Premium Depolama, Azure VM 'de SQL Server için en yüksek performansı sağlar](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

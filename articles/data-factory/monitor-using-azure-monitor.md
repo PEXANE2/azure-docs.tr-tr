@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | logs| Karmaşık tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, önce tanılama ayarlarını al işlemini gerçekleştirin. |
 | category| String| Günlük kategorileri ve bunların saklama ilkeleri dizisi |
 | zamandilimi | String | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
-| Etkinletir| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
+| enabled| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
 | retentionPolicy| Karmaşık tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Yalnızca depolama hesabı seçeneği için kullanılır.|
 | days| Int| Ölçüm veya günlüklerin saklanacağı gün sayısı. 0 değeri, günlükleri süresiz olarak tutar. Yalnızca depolama hesabı seçeneği için kullanılır. |
 

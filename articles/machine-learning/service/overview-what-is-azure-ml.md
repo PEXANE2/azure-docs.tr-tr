@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018240"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035848"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning hizmeti nedir?
 
@@ -108,8 +108,9 @@ Azure hizmetlerinde harcayabileceğiniz krediler alırsınız. Krediler bittikte
 - Başlamak için [Machine Learning bir hizmet çalışma alanı oluşturun](how-to-manage-workspace.md) .
 
 - Tam uzunluklu öğreticileri izleyin:
+  + [Çalışma alanı oluşturma ve ilk ML modelinizi eğitme](tutorial-1st-experiment-sdk-setup.md)
   + [Azure Machine Learning hizmeti ile görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md)
-  + [Regresyon modelini otomatik olarak eğitme için verileri hazırlayın ve otomatik makine öğrenimi kullanın](tutorial-data-prep.md)
+
 
 - Makine öğrenmesi senaryolarınızı derlemek, iyileştirmek ve yönetmek için [makine öğrenmesi işlem hatları](/azure/machine-learning/service/concept-ml-pipelines) hakkında bilgi edinin.
 

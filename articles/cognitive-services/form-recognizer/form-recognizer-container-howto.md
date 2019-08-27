@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 3db63be8856b5bd57323ecd0be767d09032404e9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741882"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051196"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form tanıyıcı kapsayıcıları yükleyip çalıştırın
 
@@ -37,7 +37,7 @@ Form tanıyıcı kapsayıcılarını kullanmadan önce, aşağıdaki önkoşulla
 |Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.|
 |Azure CLI| [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi konağa yükler.|
-|Görüntü İşleme API'si kaynağı| Taranmış belge ve görüntüleri işlemek için bir Görüntü İşleme kaynağınız olması gerekir. Metin Tanıma özelliğine bir Azure kaynağı (REST API veya SDK) ya da bilişsel hizmetler-tanı- *metin* [kapsayıcısı](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)olarak erişebilirsiniz. Olağan faturalandırma ücretleri uygulanır. <br><br>Görüntü İşleme kaynağınız için hem API anahtarını hem de uç noktalarını geçirin (Azure bulut veya bilişsel hizmetler kapsayıcısı). Bu API anahtarını ve uç noktayı **{COMPUTER_VISION_API_KEY}** ve **{COMPUTER_VISION_ENDPOINT_URI}** olarak kullanın.<br><br> Bilişsel *Hizmetler-tanı-metin* kapsayıcısını kullanırsanız, şunları yaptığınızdan emin olun:<br><br>Form tanıyıcı kapsayıcısı için görüntü işleme anahtarınız, bilişsel `docker run` *Hizmetler-Recognize-metin* kapsayıcısının görüntü işleme komutunda belirtilen anahtardır.<br>Faturanızı, kapsayıcının uç noktasıdır (örneğin, `https://localhost:5000`). Hem Görüntü İşleme kapsayıcısını hem de form tanıyıcı kapsayıcısını aynı konakta kullanıyorsanız, her ikisi de varsayılan bağlantı noktası olan *5000*ile başlatılamaz.  |
+|Görüntü İşleme API'si kaynağı| Taranmış belge ve görüntüleri işlemek için bir Görüntü İşleme kaynağınız olması gerekir. Metin Tanıma özelliğine bir Azure kaynağı (REST API veya SDK) ya da bilişsel hizmetler-tanı- *metin* [kapsayıcısı](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)olarak erişebilirsiniz. Olağan faturalandırma ücretleri uygulanır. <br><br>Görüntü İşleme kaynağınız için hem API anahtarını hem de uç noktalarını geçirin (Azure bulut veya bilişsel hizmetler kapsayıcısı). Bu API anahtarını ve uç noktayı **{COMPUTER_VISION_API_KEY}** ve **{COMPUTER_VISION_ENDPOINT_URI}** olarak kullanın.<br><br> Bilişsel *Hizmetler-tanı-metin* kapsayıcısını kullanırsanız, şunları yaptığınızdan emin olun:<br><br>Form tanıyıcı kapsayıcısı için görüntü işleme anahtarınız, bilişsel `docker run` *Hizmetler-Recognize-metin* kapsayıcısının görüntü işleme komutunda belirtilen anahtardır.<br>Faturanızı, kapsayıcının uç noktasıdır (örneğin, `http://localhost:5000`). Hem Görüntü İşleme kapsayıcısını hem de form tanıyıcı kapsayıcısını aynı konakta kullanıyorsanız, her ikisi de varsayılan bağlantı noktası olan *5000*ile başlatılamaz.  |
 |Form tanıyıcı kaynağı |Bu kapsayıcıları kullanmak için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure **form tanıyıcı** kaynağı. Her iki değer de Azure portal **form tanıyıcıya** genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcının başlaması için her iki değer de gereklidir.<br><br>**{FORM_RECOGNIZER_API_KEY}** : Anahtarlar sayfasındaki kullanılabilir iki kaynak anahtardan biri<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : Genel Bakış sayfasında belirtilen bitiş noktası|
 
 ## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme

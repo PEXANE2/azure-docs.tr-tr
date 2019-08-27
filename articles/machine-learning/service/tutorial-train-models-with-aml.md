@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534790"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036203"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: Veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>Mevcut bir işlem kaynağı oluşturma veya iliştirme
+### <a name="create-or-attach-an-existing-compute-target"></a>Mevcut bir işlem hedefi oluşturun veya ekleyin
 
 Yönetilen bir hizmet olan Azure Machine Learning Işlem kullanarak, veri bilimcileri, Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitebilir. Örnek olarak GPU desteği olan VM 'Ler sayılabilir. Bu öğreticide eğitim ortamınız olarak Azure Machine Learning Işlem oluşturursunuz. Aşağıdaki kod, çalışma alanınızda zaten mevcut değilse sizin için işlem kümelerini oluşturur.
 
- **İşlem oluşturma yaklaşık beş dakika sürer.** İşlem çalışma alanında zaten varsa, kod onu kullanır ve oluşturma işlemini atlar.
+ **İşlem hedefinin oluşturulması yaklaşık beş dakika sürer.** İşlem kaynağı zaten çalışma alanında ise, kod onu kullanır ve oluşturma işlemini atlar.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ Artık bu görüntülerin nasıl göründüğü ve beklenen tahmin sonucu hakkı
 
 ### <a name="upload-data-to-the-cloud"></a>Verileri buluta yükleme
 
-Şimdi bu verileri yerel makinenizden Azure 'a yükleyerek verileri uzaktan erişilebilir hale getirebilirsiniz. Böylece, uzak eğitim için erişilebilir. Veri deposu, verileri karşıya yüklemeniz veya indirmeniz için çalışma alanınız ile ilişkili uygun bir yapıdır. Ayrıca, uzaktan işlem hedeflerinizi kullanarak etkileşimde bulunabilirsiniz. Azure Blob depolama hesabı tarafından desteklenir.
+Eğitim verilerini not defterinizin üzerinde çalıştığı bilgisayarda indirdiniz ve kullandınız.  Sonraki bölümde, uzak Azure Machine Learning Işlem sırasında bir modeli eğitecaksınız.  Ayrıca, uzaktan işlem kaynağının verilerinize erişmesi gerekir. Erişim sağlamak için verilerinizi çalışma alanım ile ilişkili Merkezi bir veri deposuna yükleyin. Bu veri deposu, Azure veri merkezi 'nde olduğu gibi bulutta uzak işlem hedefleri kullanılırken hızlı erişim sağlar.
 
-Mnist dosyaları, veri deposunun kökünde adlı `mnist` bir dizine yüklenir:
+Mnist dosyalarını veri deposunun kökünde adlı `mnist` bir dizine yükleyin. Daha fazla bilgi için bkz. [veri mağazalarınızın verilerine erişme](how-to-access-data.md) .
 
 ```python
 ds = ws.get_default_datastore()

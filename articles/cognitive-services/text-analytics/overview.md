@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697629"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032669"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -81,7 +81,7 @@ Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taş
 
 ## <a name="data-limits"></a>Veri sınırları
 
-Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli sınır, her belge için 5.120 karakterdir; daha büyük belgeleri analiz etmeniz gerekiyorsa, bunları daha küçük parçalara ayırın. Sınırı yine de yükseltmeye ihtiyacınız varsa gereksinimleriniz üzerinde konuşmak için [bize ulaşın](https://azure.microsoft.com/overview/sales-number/).
+Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli sınır, her belge için 5.120 karakterdir; daha büyük belgeleri analiz etmeniz gerekiyorsa, bunları daha küçük parçalara ayırın.
 
 | Sınır | Value |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ Oran sınırınız fiyatlandırma katmanınızda farklılık gösterecektir.
 
 | Katman          | İstek/saniye | Dakika başına istek |
 |---------------|---------------------|---------------------|
-| Çoklu hizmet | 1000                | 1000                |
+| S/Multi-Service | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

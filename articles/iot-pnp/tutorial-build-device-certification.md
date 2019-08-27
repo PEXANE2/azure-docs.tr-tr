@@ -1,5 +1,5 @@
 ---
-title: Sertifika için HAZIRAN bir Azure IoT Tak ve Kullan önizleme cihazı oluşturun | Microsoft Docs
+title: Sertifika için Ready bir IoT Tak ve Kullan önizleme cihazı oluşturun | Microsoft Docs
 description: Bir cihaz geliştiricisi olarak, sertifika için HAZIRAN IoT Tak ve Kullan önizleme cihazını nasıl oluşturabileceğiniz hakkında bilgi edinin.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878099"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047898"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sertifika için hazırlamış bir IoT Tak ve Kullan önizleme cihazı oluşturun
 
@@ -124,7 +124,7 @@ Cihazı onaylamak için, [Azure IoT cihaz sağlama hizmeti (DPS)](https://docs.m
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>Model bilgilerini ve SDK bilgi arabirimlerini uygulama
 
-Azure IoT cihaz SDK 'Sı, model bilgilerini ve SDK bilgi arabirimlerini uygular. VS Code içinde kod üretme işlevini kullanırsanız, cihaz kodunuz Azure IoT Tak ve Kullan cihaz SDK 'sını kullanır.
+Azure IoT cihaz SDK 'Sı, model bilgilerini ve SDK bilgi arabirimlerini uygular. VS Code içinde kod üretme işlevini kullanırsanız, cihaz kodunuz IoT Tak ve Kullan cihaz SDK 'sını kullanır.
 
 Azure IoT cihaz SDK 'sını kullanmayı tercih ederseniz, kendi uygulamanız için SDK kaynak kodunu başvuru olarak kullanabilirsiniz.
 

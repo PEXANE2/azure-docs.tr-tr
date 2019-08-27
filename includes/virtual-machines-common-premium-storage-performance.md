@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817256"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036021"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -111,7 +111,7 @@ PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiz
 
 Premium depolamada çalışan bir uygulamanın performansını etkileyen ana faktörler, GÇ isteklerinin, VM boyutunun, disk boyutunun, disk sayısının, disk önbelleği, çoklu iş parçacığı ve sıra derinliği unsurlardır. Bu faktörlerden bazılarını sistem tarafından sunulan KBS ile kontrol edebilirsiniz. Çoğu uygulama, GÇ boyutunu ve sıra derinliğini doğrudan değiştirme seçeneği sunmayabilir. Örneğin, SQL Server kullanıyorsanız, GÇ boyutunu ve sıra derinliğini seçemezsiniz. SQL Server en iyi GÇ boyutunu ve sıra derinliği değerlerini en iyi performansı elde etmek için seçer. Performans ihtiyaçlarını karşılamak üzere uygun kaynakları sağlayabilmeniz için, uygulama performansındaki her iki tür faktörün etkilerini anlamak önemlidir.
 
-Bu bölümde, uygulama performansınızı iyileştirmek için ne kadar ihtiyacınız olduğunu belirlemek için oluşturduğunuz uygulama gereksinimleri denetim listesine bakın. Buna bağlı olarak, bu bölümden hangi faktörleri ayarlamanız gerektiğini belirleyebileceksiniz. Uygulama performansındaki her bir faktörün etkilerini bir şekilde uygulamak için, uygulama kurulumunda benchişaretleme araçları 'nı çalıştırın. Windows ve Linux VM 'lerinde ortak benchişaretleme araçları çalıştırma adımları için bu makalenin sonundaki Benchişaretleme bölümüne bakın.
+Bu bölümde, uygulama performansınızı iyileştirmek için ne kadar ihtiyacınız olduğunu belirlemek için oluşturduğunuz uygulama gereksinimleri denetim listesine bakın. Buna bağlı olarak, bu bölümden hangi faktörleri ayarlamanız gerektiğini belirleyebileceksiniz. Uygulama performansındaki her bir faktörün etkilerini bir şekilde uygulamak için, uygulama kurulumunda benchişaretleme araçları 'nı çalıştırın. Windows ve Linux VM 'lerinde ortak bir değerlendirme aracı çalıştırma adımları için, sonda bağlı olan Benchişaretleme makalesine başvurun.
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS 'yi, aktarım hızını ve gecikme süresini bir bakışta iyileştirin
 
@@ -166,7 +166,7 @@ IOPS 'yi ve bant genişliğini tek bir Premium Depolama diskinin en büyük değ
 > [!NOTE]
 > IOPS 'yi veya üretilen Iş üretimini artırdıkça, diğerini artırarak diskin veya VM 'nin aktarım hızı veya ıOPS limitlerinin isabet aldığınızdan emin olun.
 
-Uygulama performansı üzerinde GÇ boyutunun etkilerini sağlamak için, VM 'niz ve disklerinizde benchişaretleme araçları çalıştırabilirsiniz. Birden çok test çalıştırması oluşturun ve etkiyi görmek için her çalıştırma için farklı GÇ boyutu kullanın. Daha fazla bilgi için bu makalenin sonundaki Benchişaretleme bölümüne bakın.
+Uygulama performansı üzerinde GÇ boyutunun etkilerini sağlamak için, VM 'niz ve disklerinizde benchişaretleme araçları çalıştırabilirsiniz. Birden çok test çalıştırması oluşturun ve etkiyi görmek için her çalıştırma için farklı GÇ boyutu kullanın. Daha fazla ayrıntı için, sonda bağlı olan Benchişaretleme makalesine başvurun.
 
 ## <a name="high-scale-vm-sizes"></a>Yüksek ölçekli VM boyutları
 
@@ -256,7 +256,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| None |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Yok. |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | SaltOkunur |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
@@ -387,11 +387,3 @@ Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanılabilir disk türleri hakkında daha fazla bilgi edinin:
-
-* [Bir disk türü seçin](../articles/virtual-machines/windows/disks-types.md)  
-
-SQL Server kullanıcılar için SQL Server performans En Iyi yöntemleri hakkında makaleleri okuyun:
-
-* [Azure sanal makineler 'de SQL Server için En Iyi performans uygulamaları](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Depolama, Azure VM 'de SQL Server için en yüksek performansı sağlar](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

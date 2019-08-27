@@ -1,6 +1,6 @@
 ---
 title: Örnekler ve izlenecek yollar için veri bilimi sanal makineleri - Azure | Microsoft Docs
-description: Örnekler ve ortak görevler ve senaryolar ile veri bilimi sanal makinesi yerine getirmeyi öğretin izlenecek yollar hakkında bilgi edinin.
+description: Bu örnekler ve izlenecek yollar sayesinde, Veri Bilimi Sanal Makinesi ortak görevleri ve senaryoları nasıl işleyeceğinizi öğrenin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 documentationcenter: ''
@@ -16,47 +16,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 57ebefb11d23c5ea18d5859ca494944e6a845e04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565321"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047842"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Veri bilimi sanal makineleri üzerinde örnekleri
 
-Örnek kod kapsamlı Azure veri bilimi sanal makineleri içerir. Jupyter Not defterlerinden ve betikler Python ve r gibi dillerde biçiminde örnek kodu. 
+Azure veri bilimi sanal makineleri (DSVMs) kapsamlı bir örnek kod kümesi içerir. Bu örneklerde, Python ve R gibi dillerdeki Jupyıter Not defterleri ve betikler bulunur.
 > [!NOTE]
-> Jupyter not defterleri, veri bilimi sanal makinelerde çalıştırma hakkında daha fazla bilgi için bkz. [erişim Jupyter](#access-jupyter) bölümü.
+> Veri bilimi sanal makinelerinizde Jupyıter not defterlerini çalıştırma hakkında daha fazla bilgi için bkz. [Access jupi](#access-jupyter) Section.
 
 ## <a name="quick-reference-of-samples"></a>Örnekler, hızlı başvuru
 | Örnek kategorisi | Açıklama | Konumlar |
 | ------------- | ------------- | ------------- |
-| R dili  | R örnekleri, Azure bulut veri depoları ile bağlanma gibi senaryolar açıklanmaktadır. Bunlar aynı zamanda açık kaynak R ile Microsoft R. karşılaştırma yapılacağı açıklanmaktadır Ve bunlar üzerindeki Microsoft R Server veya SQL Server Modellerinizi nasıl faaliyete geçireceğinizi açıklar. <br/> [R dili](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
-| Python dil  | Python örnekleri, Azure bulut veri depoları ile bağlanma ve Azure Machine Learning ile çalışmak nasıl gibi senaryolar açıklanmaktadır.  <br/> [Python dil](#python-language) | <br/>`~notebooks` <br/><br/>|
-| Julia diline  | Çizim ve derin öğrenme Julia ayrıntıları Julia örnek. Bu ayrıca arama C ve Python Julia'dan açıklar. <br/> [Julia diline](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
-| Azure Machine Learning  | Makine öğrenimi ve derin öğrenme ile Machine Learning modelleri oluşturun. Modelleri her yerde dağıtın. Otomatik makine öğrenimi ve akıllı hiper parametre ayarı kullanın. Model yönetimi ve dağıtılmış eğitimi de kullanır. <br/> [Machine Learning](#azureml) | <br/>`~notebooks/AzureML`<br/> <br/>|
-| PyTorch Not Defterleri  | Derin sinir ağları PyTorch tabanlı kullanma örnekleri öğrenme. Başlangıç not defterlerini aralığından Gelişmiş senaryolar için.  <br/> [PyTorch Not Defterleri](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
-| TensorFlow  |  Farklı bir sinir ağı örnekleri ve teknikleri TensorFlow çerçevesi kullanılarak uygulanır. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft Bilişsel Araç Seti <br/>   | Derin öğrenme Microsoft Bilişsel Araç Seti ekibi tarafından yayımlanan örnekleri.  <br/> [Bilişsel Araç Seti](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
-| Caffe2 | Derin sinir ağları caffe2 tabanlı kullanma örnekleri öğrenme. Birkaç not defterlerini kullanıcılar caffe2 ile nasıl etkin kullanılacağı hakkında bilgi edinin. Görüntü önceden işleme ve veri kümesi oluşturma örneklerindendir. Bunlar ayrıca regresyon ve önceden eğitilmiş modeller kullanmayı içerir. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
-| H2O   | Gerçek dünya senaryoları sorunlar için H2O kullanın Python tabanlı örnekler. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| SparkML dil  | PySpark ve MMLSpark--Apache Spark üzerinde Apache Spark için Microsoft Machine Learning ile Spark MLLib toolkit özelliklerini kullanma örnekleri 2.x.  <br/> [SparkML dil](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
-| XGBoost | Standart makine öğrenimi XGBoost örnekleri sınıflandırma ve regresyon gibi senaryolar için. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
+| R dili  | Örnekler, Azure tabanlı bulut veri depoları ile bağlanma ve açık kaynaklı R ve Microsoft Machine Learning Server karşılaştırma gibi senaryolar gösterir. Ayrıca, Microsoft Machine Learning Server ve SQL Server modelleri nasıl kullanıma sunulabileceğini açıklar. <br/> [R dili](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
+| Python dil  | Örnek olarak, Azure tabanlı bulut veri depoları ile bağlanma ve Azure Machine Learning ile çalışma gibi senaryolar açıklanmaktadır.  <br/> [Python dil](#python-language) | <br/>`~notebooks` <br/><br/>|
+| Julia diline  | Julia 'da çizim ve derin öğrenme hakkında ayrıntılı bir açıklama sağlar. Ayrıca, Julia 'dan C ve Python 'un nasıl çağrılacağını açıklar. <br/> [Julia diline](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
+| Azure Machine Learning  | Machine Learning ile makine öğrenimi ve derin öğrenme modelleri oluşturmayı gösterir. Modelleri her yerde dağıtın. Otomatik makine öğrenimi ve akıllı hiper parametre ayarı kullanın. Model yönetimi ve dağıtılmış eğitimi de kullanır. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
+| PyTorch Not Defterleri  | PyTorch tabanlı sinir ağlarını kullanan derin öğrenme örnekleri. Başlangıç not defterlerini aralığından Gelişmiş senaryolar için.  <br/> [PyTorch Not Defterleri](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
+| TensorFlow  |  TensorFlow çerçevesi kullanılarak uygulanan çeşitli sinir ağ örnekleri ve teknikleri. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
+| Microsoft Bilişsel Araç Seti <br/>   | Microsoft 'ta Cognitive Toolkit ekibi tarafından yayımlanan derin öğrenme örnekleri.  <br/> [Bilişsel Araç Seti](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
+| Caffe2 | Caffe2 tabanlı sinir ağlarını kullanan derin öğrenme örnekleri. Birçok Not defteri, kullanıcılara Caffe2 ve verimli bir şekilde nasıl kullanılacağını öğrenmiştir. Örnek olarak, görüntü ön işleme ve veri kümesi oluşturma sayılabilir. Ayrıca gerileme ve önceden eğitilen modellerin nasıl kullanılacağı de dahil değildir. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
+| H2O   | Gerçek dünyada sorun senaryoları için H2O kullanan Python tabanlı örnekler. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
+| SparkML dil  | PySpark ve MMLSpark aracılığıyla Apache Spark MLLib araç seti özelliklerini kullanan örnekler: Apache Spark 2. x üzerindeki Apache Spark için Microsoft Machine Learning.  <br/> [SparkML dil](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
+| XGBoost | Sınıflandırma ve gerileme gibi senaryolar için XGBoost içindeki standart makine öğrenimi örnekleri. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
 ## <a name="access-jupyter"></a>Erişim Jupyter 
 
-Jupyter erişmek için seçin `Jupyter` Masaüstü veya uygulama menüsündeki simgesi. Veri bilimi sanal makineleri sürümlerinde Linux Jupyter da erişebilirsiniz. Bir web tarayıcısından ziyaret ederek uzaktan erişebilirsiniz `https://<Full Domain Name or IP Address of the DSVM>:8000` ubuntu'da.
+Jupiter 'a erişmek için masaüstü veya uygulama menüsünde **Jupiter** simgesini seçin. Ayrıca, jupi 'nin bir DSVM 'nin Linux sürümünde de erişebilirsiniz. Bir Web tarayıcısından uzaktan erişmek için Ubuntu 'a `https://<Full Domain Name or IP Address of the DSVM>:8000` gidin.
 
-Özel durumlar ekleyip bir tarayıcı erişim Jupyter kullanılabilir hale getirmek için aşağıdaki ekran görüntüsüne bakın.
+Özel durumlar eklemek ve Jupyter erişimini bir tarayıcıdan kullanılabilir hale getirmek için aşağıdaki kılavuzu kullanın:
 
 
 ![Jupyter özel durumunu etkinleştirin](./media/ubuntu-jupyter-exception.png)
 
 
-Oturum açma bilgilerinizi aynı parolaya veri bilimi sanal makineleri için oturum açın.
+Veri Bilimi Sanal Makinesi oturum açmak için kullandığınız parolayla oturum açın.
 <br/>
 
 **Jupyter giriş**
@@ -71,8 +71,8 @@ Oturum açma bilgilerinizi aynı parolaya veri bilimi sanal makineleri için otu
 ## <a name="julia-language"></a>Julia diline 
 <br/>![Julia örnekleri](./media/julia-samples.png)<br/>
 
-## <a name="azureml"></a>AzureML 
-<br/>![AzurekML örnekleri](./media/azureml-samples.png)<br/>
+## <a name="azure-machine-learning"></a>Azure Machine Learning 
+<br/>![Azure Machine Learning örnekleri](./media/azureml-samples.png)<br/>
 
 ## <a name="pytorch"></a>PyTorch
 <br/>![PyTorch örnekleri](./media/pytorch-samples.png)<br/>

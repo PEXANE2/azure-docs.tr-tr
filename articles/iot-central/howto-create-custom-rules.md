@@ -1,172 +1,172 @@
 ---
-title: Özel kurallar ve bildirimleri ile Azure IOT Central genişletin | Microsoft Docs
-description: Bir çözüm geliştirici olarak, bir cihazın telemetri göndermesini durdurur, e-posta bildirimleri göndermek için bir IOT Central uygulamasına yapılandırın. Bu çözüm, Azure Stream Analytics ve Azure işlevleri kullanır.
+title: Azure IoT Central özel kurallar ve bildirimler ile genişletin | Microsoft Docs
+description: Çözüm geliştiricisi olarak, bir cihaz telemetri göndermeyi durdurduğu zaman e-posta bildirimleri göndermek için bir IoT Central uygulaması yapılandırın. Bu çözüm Azure Stream Analytics ve Azure Işlevlerini kullanır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c31fa96457a3945c39fcc34770cb6783af3b81e8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742408"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049104"
 ---
-# <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Azure IOT Central bildirim gönderen özel kurallar ile genişletme
+# <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Azure IoT Central bildirim gönderen özel kurallarla genişletme
 
-Bu nasıl yapılır kılavuzunda, bir çözüm geliştirici olarak gösteren özel kurallar ve bildirimler ile IOT Central uygulamanızı genişletme. Bu örnek, bir cihazın telemetri göndermesini durdurur, operatörün bildirim göndererek gösterir. Çözüm bir [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) bir cihazın telemetri göndermesini durduğunda algılamak için sorgu. Stream Analytics kullanan iş [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) bildirim göndermek için e-kullanarak [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
+Bu nasıl yapılır kılavuzunda, çözüm geliştiricisi olarak, IoT Central uygulamanızı özel kurallarla ve bildirimlerle genişletmenin nasıl genişletileceği gösterilmektedir. Örnek, bir cihaz telemetri göndermeyi durdurduğu zaman bir işlece bildirim göndermeyi gösterir. Çözüm, bir cihazın telemetri göndermeyi durdurduğunu algılamak için bir [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) sorgusu kullanır. Stream Analytics işi, [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)kullanarak bildirim e-postaları göndermek Için [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) 'ni kullanır.
 
-Bu nasıl yapılır kılavuzunda IOT Central zaten yerleşik kurallar ve Eylemler ile getirebileceği ötesine genişletmek gösterilmektedir.
+Bu nasıl yapılır Kılavuzu, yerleşik kurallar ve eylemlerle daha önce neler yapabileceğini IoT Central nasıl genişletebileceğinizi gösterir.
 
-Nasıl yapılır bu kılavuzda şunların nasıl yapılır:
+Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 
-* Stream kullanarak bir IOT Central uygulama telemetri *verileri sürekli dışarı aktarma*.
-* Veri gönderen bir cihaza durdurduğunda algılar bir Stream Analytics sorgu oluşturun.
-* SendGrid Hizmetleri ve Azure işlevleri'ni kullanarak bir e-posta bildirimi gönderin.
+* *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
+* Bir cihazın veri göndermeyi durdurduğunu algılayan bir Stream Analytics sorgusu oluşturun.
+* Azure Işlevleri ve SendGrid hizmetlerini kullanarak e-posta bildirimi gönderin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Nasıl yapılır bu kılavuzdaki adımları tamamlamak için etkin bir Azure aboneliği gerekir.
+Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-### <a name="iot-central-application"></a>IOT Central uygulamasına
+### <a name="iot-central-application"></a>IoT Central uygulaması
 
-Bir IOT Central uygulamasından oluşturma [Azure IOT Central - uygulamalarım](https://aka.ms/iotcentral) sayfası aşağıdaki ayarlara sahip:
+[Azure IoT Central-uygulamalarım](https://aka.ms/iotcentral) sayfasından aşağıdaki ayarlarla bir IoT Central uygulaması oluşturun:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
 | Ödeme planı | Kullandıkça Öde |
-| Uygulama şablonu | Contoso Örneği |
-| Uygulama adı | Varsayılan değeri kabul edin veya kendi ad seçin |
-| URL'si | Varsayılan değeri kabul edin veya kendi benzersiz URL ön eki seçin |
-| Dizin | Azure Active Directory kiracınızın |
+| Uygulama şablonu | Örnek Contoso |
+| Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
+| URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
+| Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
-| Bölge | Doğu ABD |
+| Bölge | East US |
 
-Örnekler ve ekran görüntüleri bu makaleyi kullanın **Doğu ABD** bölge. Size yakın bir konum seçin ve tüm kaynaklarınız aynı bölgede oluşturduğunuzdan emin olun.
+Bu makaledeki örnekler ve ekran görüntüleri **Doğu ABD** bölgesini kullanır. Size yakın bir konum seçin ve tüm kaynaklarınızı aynı bölgede oluşturduğunuzdan emin olun.
 
-### <a name="resource-group"></a>Kaynak grubu
+### <a name="resource-group"></a>Resource group
 
-Kullanım [bir kaynak grubu oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.ResourceGroup) adlı **DetectStoppedDevices** oluşturduğunuz diğer kaynakları içerecek. Azure kaynaklarınızı IOT Central uygulamanız ile aynı konumda oluşturun.
+Oluşturduğunuz diğer kaynakları içerecek şekilde, **Detectstoppeddevices** adlı [bir kaynak grubu oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.ResourceGroup) kullanın. Azure kaynaklarınızı IoT Central uygulamanızla aynı konumda oluşturun.
 
 ### <a name="event-hubs-namespace"></a>Event Hubs ad alanı
 
-Kullanım [bir Event Hubs ad alanı oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.EventHub) aşağıdaki ayarlara sahip:
+Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.EventHub) kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
-| Ad    | Ad alanı adı seçin |
+| Name    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
-| Abonelik | Aboneliğiniz |
-| Kaynak grubu | DetectStoppedDevices |
-| Location | Doğu ABD |
-| İşleme Birimleri | 1 |
+| Subscription | Aboneliğiniz |
+| Resource group | DetectStoppedDevices |
+| Location | East US |
+| İşleme Birimleri | 1\. |
 
-### <a name="stream-analytics-job"></a>Stream Analytics işi
+### <a name="stream-analytics-job"></a>Akış Analizi işi
 
-Kullanım [bir Stream Analytics işi oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) aşağıdaki ayarlara sahip:
+Aşağıdaki ayarlarla [bir Stream Analytics işi oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
-| Ad    | İşinizin adı seçin |
-| Abonelik | Aboneliğiniz |
-| Kaynak grubu | DetectStoppedDevices |
-| Location | Doğu ABD |
+| Name    | İş adınızı seçin |
+| Subscription | Aboneliğiniz |
+| Resource group | DetectStoppedDevices |
+| Location | East US |
 | Barındırma ortamı | Bulut |
 | Akış birimleri | 3 |
 
 ### <a name="function-app"></a>İşlev uygulaması
 
-Kullanım [bir işlev uygulaması oluşturmak için Azure portalını](https://portal.azure.com/#create/Microsoft.FunctionApp) aşağıdaki ayarlara sahip:
+Aşağıdaki ayarlara sahip [bir işlev uygulaması oluşturmak için Azure Portal](https://portal.azure.com/#create/Microsoft.FunctionApp) kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
-| Uygulama adı    | İşlev uygulamanızın adı seçin |
-| Abonelik | Aboneliğiniz |
-| Kaynak grubu | DetectStoppedDevices |
-| İşletim Sistemi | Windows |
-| Barındırma planı | Tüketim Planı |
-| Location | Doğu ABD |
-| Çalışma zamanı yığını | .NET |
+| Uygulama adı    | İşlev uygulamanızın adını seçin |
+| Subscription | Aboneliğiniz |
+| Resource group | DetectStoppedDevices |
+| OS | Windows |
+| Barındırma Planı | Tüketim Planı |
+| Location | East US |
+| Çalışma Zamanı Yığını | .NET |
 | Depolama | Yeni oluştur |
 
 ### <a name="sendgrid-account"></a>SendGrid hesabı
 
-Kullanım [SendGrid hesabı oluşturmak için Azure portalını](https://portal.azure.com/#create/Sendgrid.sendgrid) aşağıdaki ayarlara sahip:
+Aşağıdaki ayarlarla [bir SendGrid hesabı oluşturmak için Azure Portal](https://portal.azure.com/#create/Sendgrid.sendgrid) kullanın:
 
-| Ayar | Değer |
+| Ayar | Value |
 | ------- | ----- |
-| Ad    | SendGrid hesabınızın adını seçin |
-| Parola | Bir parola oluşturun |
-| Abonelik | Aboneliğiniz |
-| Kaynak grubu | DetectStoppedDevices |
+| Name    | SendGrid hesabınızın adını seçin |
+| istemcisiyle yönetilen bir cihaz için) | Parola oluşturma |
+| Subscription | Aboneliğiniz |
+| Resource group | DetectStoppedDevices |
 | Fiyatlandırma katmanı | F1 Ücretsiz |
 | İletişim bilgileri | Gerekli bilgileri doldurun |
 
-Tüm gerekli kaynakları oluşturduğunuz zaman, **DetectStoppedDevices** kaynak grubu, aşağıdaki ekran görüntüsüne benzer görünür:
+Gerekli tüm kaynakları oluşturduktan sonra, **Detectstoppeddevices** kaynak grubunuz aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![Durdurulan cihazları kaynak grubu algılayın](media/howto-create-custom-rules/resource-group.png)
+![Durdurulan cihazların kaynak grubunu Algıla](media/howto-create-custom-rules/resource-group.png)
 
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-Sürekli olarak olay hub'ına telemetri dışarı aktarmak için bir IOT Central uygulamasına yapılandırabilirsiniz. Bu bölümde, IOT Central uygulamanızdan telemetri almak için bir olay hub'ı oluşturun. Olay hub'ı işleme için Stream Analytics işinizi telemetri gönderir.
+Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dışarı aktarmak için yapılandırabilirsiniz. Bu bölümde, IoT Central uygulamanızdan telemetri almak için bir olay hub 'ı oluşturursunuz. Olay Hub 'ı işleme için Stream Analytics işinize telemetri sunar.
 
-1. Azure portalında Event Hubs ad alanınıza gidin ve seçin **+ olay hub'ı**.
-1. Olay hub'ınızı adlandırın **centralexport**seçip **Oluştur**.
+1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı**seçin.
+1. Olay Hub 'ınızı **centralexport**olarak adlandırın ve **Oluştur**' u seçin.
 
-Event Hubs ad alanınız şu ekran görüntüsüne benzer görünür:
+Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
 ![Event Hubs ad alanı](media/howto-create-custom-rules/event-hubs-namespace.png)
 
-## <a name="get-sendgrid-api-key"></a>SendGrid API anahtarı alma
+## <a name="get-sendgrid-api-key"></a>SendGrid API anahtarı al
 
-İşlev uygulamanız, e-posta iletileri göndermek için SendGrid API anahtarı gerekir. SendGrid API anahtarı oluşturmak için:
+İşlev uygulamanız, e-posta iletileri göndermek için bir SendGrid API anahtarına ihtiyaç duyuyor. SendGrid API anahtarı oluşturmak için:
 
-1. Azure portalında, SendGrid hesabınıza gidin. Ardından **Yönet** SendGrid hesabınıza erişmek için.
-1. SendGrid hesabınızı seçin **ayarları**, ardından **API anahtarları**. Seçin **API anahtarı oluşturma**:
+1. Azure portal SendGrid hesabınıza gidin. Ardından, SendGrid hesabınıza erişmek için **Yönet** ' i seçin.
+1. SendGrid hesabınızda **Ayarlar**' ı ve ardından **API anahtarları**' nı seçin. **API anahtarı oluştur**' a tıklayın:
 
     ![SendGrid API anahtarı oluşturma](media/howto-create-custom-rules/sendgrid-api-keys.png)
 
-1. Üzerinde **API anahtarı oluştur** adlı bir anahtar oluşturun, sayfa **AzureFunctionAccess** ile **tam erişim** izinleri.
-1. API anahtarını not edin, işlev uygulamanızı yapılandırırken gerekir.
+1. **API anahtarı oluştur** sayfasında, **tam erişim** izinleriyle **AzureFunctionAccess** adlı bir anahtar oluşturun.
+1. API anahtarını, işlev uygulamanızı yapılandırırken ihtiyacınız olduğunu bir yere getirin.
 
-## <a name="define-the-function"></a>Fonksiyon tanımlayın
+## <a name="define-the-function"></a>İşlevi tanımlayın
 
-Bu çözüm, Stream Analytics işi durdurulmuş bir cihaz algıladığında e-posta bildirimi göndermek için bir Azure işlev uygulaması kullanır. İşlev uygulamanızı oluşturmak için:
+Bu çözüm, Stream Analytics işi durdurulmuş bir cihaz algıladığında e-posta bildirimi göndermek için bir Azure Işlevleri uygulaması kullanır. İşlev uygulamanızı oluşturmak için:
 
-1. Azure portalında gidin **App Service** örneğini **DetectStoppedDevices** kaynak grubu.
-1. Seçin **+** yeni bir işlev oluşturmak için.
-1. Üzerinde **bir geliştirme ORTAMI seçin** sayfasında **portal** seçip **devam**.
-1. Üzerinde **bir işlev oluşturma** sayfasında **Web kancası + API** seçip **Oluştur**.
+1. Azure portal, **Detectstoppeddevices** kaynak grubundaki **App Service** örneğine gidin.
+1. Yeni **+** bir işlev oluşturmak için seçin.
+1. **BIR GELIŞTIRME ortamı seçin** sayfasında **Portal '** ı seçin ve ardından **devam**' ı seçin.
+1. **Işlev oluştur** sayfasında, **Web kancası + API** ' yi seçin ve ardından **Oluştur**' u seçin.
 
-Çağrılan bir varsayılan işlev portalın oluşturduğu **HttpTrigger1**:
+Portal **HttpTrigger1**adlı varsayılan bir işlev oluşturur:
 
 ![Varsayılan HTTP tetikleyici işlevi](media/howto-create-custom-rules/default-function.png)
 
-### <a name="configure-function-bindings"></a>İşlev bağlamaları yapılandırma
+### <a name="configure-function-bindings"></a>İşlev bağlamalarını yapılandırma
 
-SendGrid ile e-posta göndermek için işlevinizi bağlamalarını şu şekilde yapılandırmak gerekir:
+SendGrid ile e-posta göndermek için, işlevinizin bağlamalarını aşağıdaki gibi yapılandırmanız gerekir:
 
-1. Seçin **tümleştir**, çıktı seçin **HTTP ($return)** ve ardından **Sil**.
-1. Seçin **+ yeni çıkış**, ardından **SendGrid**ve ardından **seçin**. Seçin **yükleme** SendGrid uzantıyı yüklemek için.
-1. Yükleme tamamlandığında seçin **işlev dönüş değeri kullan**. Geçerli bir ekleme **adresine** e-posta bildirimleri almak için.  Geçerli bir ekleme **adresinden** e-posta gönderen olarak kullanılacak.
-1. Seçin **yeni** yanındaki **SendGrid API anahtarı uygulama ayarı**. Girin **SendGridAPIKey** key ve not ettiğiniz daha önce değeri olarak SendGrid API anahtarı. Ardından **Oluştur**’u seçin.
-1. Seçin **Kaydet** işleviniz için SendGrid bağlamaları kaydetmek için.
+1. **Tümleştirme**' i seçin, çıkış **http ($Return)** öğesini seçin ve ardından **Sil**' i seçin.
+1. **+ Yeni çıkış**' ı seçin, sonra **SendGrid**' i ve ardından **Seç**' i seçin. SendGrid uzantısını yüklemek için **yüklemeyi** seçin.
+1. Yükleme tamamlandığında, **işlev dönüş değeri kullan**' ı seçin. E-posta bildirimleri almak için geçerli bir **Adres** ekleyin.  E-posta gönderici olarak kullanılacak geçerli bir **Kimden adresi** ekleyin.
+1. **SendGrid API anahtarı uygulama ayarının**yanındaki **Yeni** ' yi seçin. Anahtar olarak **Sendgridapikey** ve daha önce değer olarak not ettiğiniz SENDGRID API anahtarını girin. Ardından **Oluştur**’u seçin.
+1. İşleviniz için SendGrid bağlamalarını kaydetmek için **Kaydet** ' i seçin.
 
-Tümleştirme ayarları, aşağıdaki ekran görüntüsüne benzer görünür:
+Tümleştirme ayarları aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
 ![İşlev uygulaması tümleştirmeleri](media/howto-create-custom-rules/function-integrate.png)
 
 ### <a name="add-the-function-code"></a>İşlev kodunu ekleyin
 
-İşlevinizi uygulamak için ekleme C# gelen HTTP istek ayrıştırılamıyor ve şu şekilde e-postaları göndermek için kod:
+İşlevinizi uygulamak için, gelen HTTP C# isteğini ayrıştırmak ve e-postaları şu şekilde göndermek üzere kodu ekleyin:
 
-1. Seçin **HttpTrigger1** değiştirin ve işlev uygulamanızda işlevi C# kodu aşağıdaki kodla:
+1. İşlev uygulamanızda **HttpTrigger1** işlevini seçin ve C# kodu şu kodla değiştirin:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -206,23 +206,23 @@ Tümleştirme ayarları, aşağıdaki ekran görüntüsüne benzer görünür:
     }
     ```
 
-    Yeni kod kaydedene kadar bir hata iletisi görebilirsiniz.
+    Yeni kodu kaydetene kadar bir hata iletisi görebilirsiniz.
 
-1. Seçin **Kaydet** işlevini kaydetmek için.
+1. İşlevi kaydetmek için **Kaydet** ' i seçin.
 
-### <a name="test-the-function-works"></a>İşlevin çalıştığını test
+### <a name="test-the-function-works"></a>İşlevin çalışması test et
 
-Portalda işlevi test etmek için öncelikle seçin **günlükleri** altındaki Kod Düzenleyicisi. Ardından **Test** sağ tarafındaki Kod Düzenleyicisi. Aşağıdaki JSON olarak kullanmak **istek gövdesi**:
+İşlevi portalda test etmek için önce kod düzenleyicisinin alt kısmındaki **Günlükler** ' i seçin. Ardından kod düzenleyicisinin sağ tarafındaki **Test** ' i seçin. **İstek gövdesi**olarak aşağıdaki JSON 'ı kullanın:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
 ```
 
-İşlev günlük iletilerini görünür **günlükleri** paneli:
+İşlev günlüğü iletileri **Günlükler** panelinde görüntülenir:
 
-![Günlük çıktısını işlevi](media/howto-create-custom-rules/function-app-logs.png)
+![İşlev günlüğü çıkışı](media/howto-create-custom-rules/function-app-logs.png)
 
-Birkaç dakika sonra **için** e-posta adresi aşağıdaki içeriğe sahip bir e-posta alır:
+Birkaç dakika sonra, e- posta adresi aşağıdaki içeriğe sahip bir e-posta alır:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -233,31 +233,31 @@ test-device-2   2019-05-02T14:23:50.717Z
 test-device-3   2019-05-02T14:24:28.919Z
 ```
 
-## <a name="add-stream-analytics-query"></a>Stream Analytics sorgusu ekleme
+## <a name="add-stream-analytics-query"></a>Stream Analytics sorgusu Ekle
 
-Bu çözüm, 120 saniye boyunca telemetri gönderen bir cihaza durduğunda algılamak için bir Stream Analytics sorgusu kullanır. Sorgu, giriş olarak olay hub'ından telemetriyi kullanır. İş, sorgu sonuçları işlev uygulamasına gönderir. Bu bölümde, Stream Analytics işi yapılandırın:
+Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurduğunu algılamak için bir Stream Analytics sorgusu kullanır. Sorgu, giriş olarak olay hub 'ından Telemetriyi kullanır. İş, sorgu sonuçlarını işlev uygulamasına gönderir. Bu bölümde Stream Analytics işini yapılandırırsınız:
 
-1. Azure portalında, Stream analytics işi altında gidin **işleri topolojisi** seçin **girişleri**, seçin **+ akış Girişi Ekle**ve ardından **olay Hub**.
-1. Daha önce oluşturduğunuz olay hub'ı kullanarak giriş yapılandırmak için aşağıdaki tablodaki bilgileri kullanın ve ardından **Kaydet**:
+1. Azure portal, Stream Analytics işiniz ' nde, **işler topolojisi** ' ndeki **giriş**' i seçin, **+ akış girişi Ekle**' yi seçin ve ardından **Olay Hub**'ı ' nı seçin.
+1. Daha önce oluşturduğunuz Olay Hub 'ını kullanarak girişi yapılandırmak için aşağıdaki tablodaki bilgileri kullanın ve ardından **Kaydet**' i seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
-    | Girdi diğer adı | centraltelemetry |
-    | Abonelik | Aboneliğiniz |
-    | Olay hub'ı ad alanı | Olay hub'ı ad alanı |
-    | Olay Hub'ı adı | Var olanı - kullan **centralexport** |
+    | Girdi diğer adı | merkezileştirme telemetrisi |
+    | Subscription | Aboneliğiniz |
+    | Olay hub'ı ad alanı | Olay Hub 'ı ad alanınız |
+    | Olay Hub'ı adı | Var olan- **centralexport** kullanma |
 
-1. Altında **işleri topolojisi**seçin **çıkışları**, seçin **+ Ekle**ve ardından **Azure işlevi**.
-1. Çıkış yapılandırın ve ardından aşağıdaki tablodaki bilgileri kullanın **Kaydet**:
+1. **İşler topolojisi**altında **çıktılar**' i seçin, **+ Ekle**' yi seçin ve ardından **Azure işlevi**' ni seçin.
+1. Çıktıyı yapılandırmak için aşağıdaki tablodaki bilgileri kullanın ve ardından **Kaydet**' i seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
     | Çıktı diğer adı | EmailNotification |
-    | Abonelik | Aboneliğiniz |
-    | İşlev uygulaması | İşlev uygulamanızı |
+    | Subscription | Aboneliğiniz |
+    | İşlev uygulaması | İşlev uygulamanız |
     | İşlev  | HttpTrigger1 |
 
-1. Altında **işleri topolojisi**seçin **sorgu** ve varolan bir sorguyu aşağıdaki SQL ile değiştirin:
+1. **İşler topolojisi**altında **sorgula** ' yı seçin ve mevcut sorguyu aşağıdaki SQL ile değiştirin:
 
     ```sql
     with
@@ -299,38 +299,38 @@ Bu çözüm, 120 saniye boyunca telemetri gönderen bir cihaza durduğunda algı
     ```
 
 1. **Kaydet**’i seçin.
-1. Stream Analytics işi başlatmak için **genel bakış**, ardından **Başlat**, ardından **artık**, ardından **Başlat**:
+1. Stream Analytics işi başlatmak için **genel bakış**' ı ve ardından **Başlat**' ıve ardından **Başlat**' ı seçin:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
 
-## <a name="configure-export-in-iot-central"></a>IOT Central dışa aktarma yapılandırma
+## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma
 
-Gidin [IOT Central uygulamasına](https://aka.ms/iotcentral) Contoso şablondan bir şablondan oluşturulmuştur. Bu bölümde, kendi benzetilmiş aygıtlardan olay hub'ınıza telemetri akışı için uygulamayı yapılandırma. Dışarı aktarma yapılandırmak için:
+Contoso şablonundan oluşturduğunuz [IoT Central uygulamasına](https://aka.ms/iotcentral) gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
-1. Gidin **verileri sürekli dışarı aktarma** sayfasında **+ yeni**, ardından **Azure Event Hubs**.
-1. Dışarı aktarma yapılandırın, ardından seçmek için aşağıdaki Ayaları kullanın **Kaydet**:
+1. **Sürekli veri dışa aktarma** sayfasına gidin ve **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
+1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | ------- | ----- |
-    | Görünen ad | Event Hubs'a Aktar |
+    | Görünen Ad | Event Hubs'a Aktar |
     | Enabled | Açık |
-    | Event Hubs ad alanı | Event Hubs ad alanınızın adı |
+    | Event Hubs ad alanı | Event Hubs ad alanı adınız |
     | Olay hub'ı | centralexport |
     | Ölçümler | Açık |
     | Cihazlar | Kapalı |
-    | Cihaz şablonları | Kapalı |
+    | Cihaz Şablonları | Kapalı |
 
-![Verileri sürekli dışarı aktarma yapılandırması](media/howto-create-custom-rules/cde-configuration.png)
+![Sürekli veri dışa aktarma yapılandırması](media/howto-create-custom-rules/cde-configuration.png)
 
-Dışarı aktarma durumunu tamamlanana kadar bekleyin **çalıştıran** devam etmeden önce.
+Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
 
 ## <a name="test"></a>Test etme
 
-Çözümü test etmek için IOT Central'ndan verileri sürekli dışarı aktarma durdurulmuş sanal cihazlar için devre dışı bırakabilirsiniz:
+Çözümü test etmek için, IoT Central 'den sanal olarak durdurulan cihazlara sürekli veri vermeyi devre dışı bırakabilirsiniz:
 
-1. IOT Central uygulamanıza gidin **verileri sürekli dışarı aktarma** sayfasından seçim yapıp **dışarı aktarmak için Event Hubs** yapılandırmasını dışarı aktarma.
-1. Ayarlama **etkin** için **kapalı** ve **Kaydet**.
-1. En az iki dakika sonra **için** e-posta adresi içerik aşağıdaki gibi görünen bir veya daha fazla e-postaları alır:
+1. IoT Central uygulamanızda, **sürekli veri dışa aktarma** sayfasına gidin ve dışarı aktar **Event Hubs** dışarı aktarma yapılandırması ' nı seçin.
+1. **Etkin** olarak ayarlayın ve **Kaydet**' i seçin.
+1. En az iki dakika sonra, e -posta adresi aşağıdaki örnek içerik gibi görünen bir veya daha fazla e-posta alır:
 
     ```txt
     The following device(s) have stopped sending telemetry:
@@ -339,18 +339,18 @@ Dışarı aktarma durumunu tamamlanana kadar bekleyin **çalıştıran** devam e
     7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
     ```
 
-## <a name="tidy-up"></a>Çatalınızdan
+## <a name="tidy-up"></a>Tidy yukarı
 
-Bu nasıl yapılır sonra çatalınızdan ve gereksiz maliyetleri önlemek için silin **DetectStoppedDevices** Azure portalında kaynak grubu.
+Bu nasıl yapılır ve gereksiz maliyetlere engel olmak için, Azure portal **Detectstoppeddevices** kaynak grubunu silin.
 
-IOT Central uygulamadan silebilirsiniz **Yönetim** uygulama içinde sayfa.
+Uygulama içindeki **Yönetim** sayfasından IoT Central uygulamasını silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır kılavuzunda öğrendiğiniz nasıl yapılır:
+Bu nasıl yapılır kılavuzunda şunları öğrenirsiniz:
 
-* Stream kullanarak bir IOT Central uygulama telemetri *verileri sürekli dışarı aktarma*.
-* Veri gönderen bir cihaza durdurduğunda algılar bir Stream Analytics sorgu oluşturun.
-* SendGrid Hizmetleri ve Azure işlevleri'ni kullanarak bir e-posta bildirimi gönderin.
+* *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
+* Bir cihazın veri göndermeyi durdurduğunu algılayan bir Stream Analytics sorgusu oluşturun.
+* Azure Işlevleri ve SendGrid hizmetlerini kullanarak e-posta bildirimi gönderin.
 
-Özel kurallar ve bildirimleri oluşturmak nasıl artık bildiğinize göre önerilen sonraki adıma öğrenmektir nasıl [genişletmek Azure IOT Central özel analizlerle](howto-create-custom-analytics.md).
+Artık özel kurallar ve bildirimler oluşturmayı bildiğinize göre, önerilen sonraki adım [Azure IoT Central özel](howto-create-custom-analytics.md)analizler Ile nasıl uzatıleyeceğinizi öğrenmelidir.

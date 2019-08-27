@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 07/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 483288869e0eda20010108b8293c5964ff9571c2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012899"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049984"
 ---
 ::: zone target="docs"
 
@@ -30,6 +29,16 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Disklere bağlanma ve destek anahtarı alma
 > * Windows istemcide disklerin kilidini açma
 > * Linux istemcide disklerin kilidini açma
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk paketini açın, bağlayın ve açın
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -283,7 +292,7 @@ Disklerin kilidini açmak için herhangi bir sorunla karşılaşırsanız, bkz. 
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  **Genel > cihaz ayrıntılarından** elde ettiğiniz geçiş anahtarını Azure Portal sağlayın. Diske atanan sürücü harfi görüntülenir. 
+    -  **> genel Azure Portal cihaz ayrıntılarından** geçiş anahtarını alın ve burada sağlayın. Diske atanan sürücü harfi görüntülenir. 
 4. Linux istemcisindeki disklerin kilidini açmak için bir Terminal açın. Yazılımı indirdiğiniz klasöre gidin. Bu dosyaları yürütebilmeniz için dosya izinlerini değiştirmek üzere aşağıdaki komutları yazın: 
 
     ```
@@ -295,7 +304,7 @@ Disklerin kilidini açmak için herhangi bir sorunla karşılaşırsanız, bkz. 
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Data Box Disk Kilidi Açma aracını çalıştırın. **Genel > cihaz ayrıntılarına**giderek Azure Portal geçiş anahtarını sağlayın. İsteğe bağlı olarak, kilidini açmak için tek tırnak içindeki BitLocker şifreli birimlerinin bir listesini belirtin.
+    Data Box Disk Kilidi Açma aracını çalıştırın. **> genel Azure Portal cihaz ayrıntılarından** geçiş anahtarını alın ve burada sağlayın. İsteğe bağlı olarak, kilidini açmak için tek tırnak içindeki BitLocker şifreli birimlerinin bir listesini belirtin.
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’

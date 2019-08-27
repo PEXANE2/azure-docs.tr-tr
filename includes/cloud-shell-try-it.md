@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: f443b11207f6844bcffc1c7963209bc315f725b4
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 75860e5f53c8a8539632d27dd6202c7fa53ad76a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "69623875"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047986"
 ---
 ## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell kullanma
 
@@ -25,8 +25,10 @@ Azure Cloud Shell başlatmak için:
 
 Bu makaledeki kodu Azure Cloud Shell çalıştırmak için:
 
-1. Cloud Shell'i açın.
-1. Kodu kopyalamak için bir kod bloğunda **Kopyala** düğmesini seçin. 
-1. Kodu Windows ve Linux 'ta **CTRL**+**SHIFT**+**v** veya MacOS 'ta **cmd**+**Shift**+**v** ile Cloud Shell oturumuna yapıştırın. 
-1. Kodu çalıştırmak için **ENTER** tuşuna basın.
+1. Cloud Shell başlatın.
 
+1. Kodu kopyalamak için bir kod bloğunda **Kopyala** düğmesini seçin.
+
+1. Kodu Windows ve Linux 'ta **CTRL**+**SHIFT**+**v** veya MacOS 'ta **cmd**+**Shift**+**v** ile Cloud Shell oturumuna yapıştırın.
+
+1. Kodu çalıştırmak için **ENTER** tuşuna basın.

@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515290"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035717"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL veritabanı sunucusuz (Önizleme)
 
@@ -136,7 +136,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 |Veritabanı kopyalama|Kopya olarak veritabanı oluşturun.<br>BACPAC dosyasına dışarı aktarın.|
 |SQL Data Sync|Yapılandırılabilir bir zamanlamaya göre çalışan ya da el ile gerçekleştirilen merkez ve üye veritabanları arasında eşitleme|
 |Belirli veritabanı meta verilerini değiştirme|Yeni veritabanı etiketleri ekleniyor.<br>Maksimum sanal çekirdekler, en az sanal çekirdek veya oto duraklatma gecikmesi değiştiriliyor.|
-|SQL Server Management Studio (SSMS)|SSMS sürüm 18 ' i kullanma ve sunucudaki herhangi bir veritabanı için yeni bir sorgu penceresi açma, aynı sunucuda otomatik duraklatılmış bir veritabanını sürdürecek. IntelliSense ile SSMS sürüm 17.9.1 kullanılıyorsa bu davranış oluşmaz.|
+|SQL Server Management Studio (SSMS)|18,1 'den önceki SSMS sürümlerinin kullanılması ve sunucudaki herhangi bir veritabanı için yeni bir sorgu penceresinin açılması, aynı sunucuda otomatik olarak duraklatılan tüm veritabanlarını sürdürür. SSMS sürüm 18,1 veya üzeri kullanılıyorsa bu davranış oluşmaz.|
 
 Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
 
@@ -165,7 +165,7 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
    |Parametre|Değer seçimleri|Varsayılan değer|
    |---|---|---|---|
    |En düşük sanal çekirdekler|Herhangi biri {0,5, 1, 2, 4} maksimum sanal çekirdekleri aşmıyor|0,5 sanal çekirdekler|
-   |Oto duraklatma gecikmesi|Minimum: 60 dakika (1 saat)<br>Maksimum: 10080 dakika (7 gün)<br>Halinde 60 dakika<br>Oto duraklamayı devre dışı bırak:-1|60 dakika|
+   |Oto duraklatma gecikmesi|En düşük 60 dakika (1 saat)<br>Çok 10080 dakika (7 gün)<br>Halinde 60 dakika<br>Oto duraklamayı devre dışı bırak:-1|60 dakika|
 
 > [!NOTE]
 > Var olan bir veritabanını sunucusuz 'e taşımak veya işlem boyutunu değiştirmek için T-SQL kullanmak, şu anda desteklenmemektedir ancak Azure portal veya PowerShell aracılığıyla yapılabilir.

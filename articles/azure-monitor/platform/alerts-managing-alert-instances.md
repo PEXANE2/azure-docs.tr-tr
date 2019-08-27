@@ -1,6 +1,6 @@
 ---
 title: Uyarı örneklerini yönetme
-description: Azure uyarı örneklerinde yönetme
+description: Azure genelinde uyarı örneklerini yönetme
 author: anantr
 services: monitoring
 ms.service: azure-monitor
@@ -8,39 +8,42 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbc7d37ce311d203ee051b5a23632d2bf401e27a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551881"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034837"
 ---
 # <a name="manage-alert-instances"></a>Uyarı örneklerini yönetme
-İle [uyarı deneyimi birleşik](https://aka.ms/azure-alerts-overview) Azure İzleyici'de artık tüm, farklı uyarı türleri tek bir cam bölmeyle içinde birden çok abonelik kapsayan azure'daki görebilirsiniz. Bu makalede, uyarı örneklerinin nasıl görüntüleyebileceğiniz aracılığıyla gösterilmektedir ve derinlemesine sorun giderme için belirli uyarı örneklerini bulmak için portalı.
+Azure Izleyici 'de [birleştirilmiş uyarılar deneyimiyle](https://aka.ms/azure-alerts-overview) birlikte, birden çok aboneliği tek bir bölmeden kapsayan Azure 'daki farklı uyarı tiplerinizi görebilirsiniz. Bu makalede, uyarı örneklerinizi nasıl görüntüleyebileceğinizi ve sorun giderme amacıyla belirli uyarı örneklerini bulmak için portala nasıl derinlemesine bir bakış yapılacağı gösterilmektedir.
 
-1. Uyarılar sayfasına gelirsiniz başlamanın üç yolu vardır.
+> [!NOTE]
+   >  Yalnızca son 30 gün içinde oluşturulan uyarılara UX veya REST API 'Leri aracılığıyla erişilebilir.
 
-   + İçinde [portalı](https://portal.azure.com/)seçin **İzleyici** ve izleme bölümü altında - **uyarılar**.  
+1. Uyarılar sayfasında üç farklı yol vardır
+
+   + [Portalda](https://portal.azure.com/) **izleyici** ' yi seçin ve izleyici bölümünde **Uyarılar**' ı seçin.  
      ![İzleme](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + Belirli bir bağlamında uyarılardan gidebilirsiniz **kaynak**. Bir kaynak açıldıktan sonra izleme bölümüne, içindekiler tablosu gezinmek ve seçin **uyarılar**, bu belirli kaynak ile ilgili uyarılar için önceden filtrelenen giriş sayfası ile.
+   + Belirli bir **kaynak**bağlamı içinden uyarılara gidebilirsiniz. Bir kaynak açıldığında, Izleme bölümüne içindekiler tablosunda ilerleyin ve **Uyarılar**' ı seçerek giriş sayfası söz konusu kaynaktaki uyarılar için önceden filtrelenmiş olur.
    
      ![İzleme](media/alerts-managing-alert-instances/alert-resource.JPG)
     
-   + Belirli bir bağlamında uyarılardan gidebilirsiniz **kaynak grubu**. Bir kaynak grubu açıldıktan sonra izleme bölümüne, içindekiler tablosu gezinmek ve seçin **uyarılar**, giriş sayfası, belirli bir kaynak grubu ile ilgili uyarılar için önceden filtrelenen ile.    
+   + Belirli bir **kaynak grubunun**bağlamı içinden uyarılara gidebilirsiniz. Bir kaynak grubu açıldıktan sonra Izleme bölümüne içindekiler tablosuna gidin ve **Uyarılar**' ı seçerek, giriş sayfası söz konusu kaynak grubundaki uyarılar için önceden filtrelenmiş olur.    
    
      ![İzleme](media/alerts-managing-alert-instances/alert-rg.JPG)
 
-1. Üzerinde ulaşırsınız **uyarılar özeti** sayfasında, Azure genelinde tüm uyarı örnekleri genel bir bakış sağlar. Özet görünümü seçerek değiştirebilirsiniz **birden çok abonelik** (en fazla 5) veya genelinde filtreleme **kaynak grupları**, belirli **kaynakları**, veya **zaman aralıkları**. Toplam uyarı ya da herhangi bir önem derecesi bantları uyarıları için liste görünümüne gitmek için tıklayın.     
-   ![Uyarılar özeti](media/alerts-managing-alert-instances/alerts-summary.jpg)
+1. Uyarı **Özeti** sayfasına inirsiniz, bu da Azure genelinde tüm uyarı örneklerinizin genel bir görünümünü sağlar. Özet görünümünü **birden çok abonelik** (en fazla 5) seçerek veya **kaynak grupları**, belirli **kaynaklar**veya **zaman aralıklarında**filtreleyerek değiştirebilirsiniz. Uyarılarınızın liste görünümüne gitmek için toplam uyarı veya önem derecesindeki herhangi birine tıklayın.     
+   ![Uyarı Özeti](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-1. Üzerinde ulaşırsınız **tüm uyarıları** sayfasında göreceğiniz uyarı tüm örnekleri kullanıma listelenen Azure. Bir uyarı bildirimine portala gelen, hakkında uyarı örneğinin daraltmak kullanılabilir filtreleri kullanabilirsiniz. (**Not**: herhangi bir önem derecesi bantları tıklayarak sayfaya geliyorsa, geldiğinde listesi için önem derecesi önceden filtre uygulanmış olacaktır). Önceki sayfada kullanılabilir filtreleri dışında şimdi de izleme hizmeti (örneğin, ölçümler için Platform), (tetiklenen veya çözülmüş) izleme koşulu, önem derecesi, uyarı durumu (yeni/onaylanır/kapalı) veya akıllı grubu kimliğini temel alarak filtreleyebilirsiniz
+1. Tüm Uyarılar sayfasında, Azure 'da listelenen tüm uyarı örneklerini görebileceğiniz **her şey** gösterilir. Portala bir uyarı bildirimi geliyorsa, bu belirli uyarı örneğinde daraltmak için kullanılabilen filtreleri kullanabilirsiniz. (**Unutmayın**: herhangi bir önem derecesindeki herhangi birine tıklayarak sayfaya ulaşdıysanız, bu önem derecesine göre listenin ön filtresi yapılır). Önceki sayfada bulunan süzgeçlerden ayrı olarak, artık izleme hizmeti (örneğin, ölçümler için Platform), izleme koşulu (tetiklenen veya çözüldü), önem derecesi, uyarı durumu (yeni/onaylanmış/kapalı) veya akıllı Grup KIMLIĞI ' ne göre de filtre uygulayabilirsiniz.
 
-   ![Tüm uyarılar](media/alerts-managing-alert-instances/all-alerts.jpg)
+   ![Tüm Uyarılar](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
-   >  Herhangi bir önem derecesi bantları tıklayarak sayfaya geliyorsa, bu sayfada geldiğinde listesi için önem derecesi önceden filtre uygulanmış olacaktır.
+   >  Herhangi bir önem derecesindeki herhangi birine tıklayarak sayfaya gelmişse, bu sayfada bir işlem yaptığınızda liste bu önem derecesine göre önceden filtrelenir.
  
-1. Uyarı herhangi bir örneğe tıklayarak açılır **uyarı ayrıntıları** sayfasında, ilgili uyarı örneğinin bilgilerine yakından için izin verme.   
+1. Herhangi bir uyarı örneğine tıkladığınızda **Uyarı ayrıntıları** sayfası açılır ve bu belirli uyarı örneği hakkında daha fazla bilgi alabilirsiniz.   
    ![Uyarı ayrıntıları](media/alerts-managing-alert-instances/alert-details.jpg)  
 

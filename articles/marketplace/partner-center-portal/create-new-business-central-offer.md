@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900155"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033272"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni bir Dynamics 365 Iş Merkezi teklifi oluşturma
 
@@ -354,7 +354,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ## <a name="supplemental-content"></a>Ek içerik
 
-Bu sayfa teklifiniz hakkında ek gerekli bilgileri sağlamanıza olanak tanır.
+Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
 
 ### <a name="target-release"></a>Hedef yayın
 
@@ -362,19 +362,19 @@ Microsoft Dynamics Business 'in hangi sürümünü, çözümünüzün hedefledi�
 
 ### <a name="supported-editions"></a>Desteklenen sürümler
 
-Çözümünüzün Microsoft Dynamics 365 Business Central 'ın Essentials ve/veya Premium sürümünü destekleyip desteklemediğini belirtin. En az bir değer seçilmelidir.
+Teklifiniz Microsoft Dynamics 365 Business Central 'ın Premium sürümünü gerektiriyorsa yalnızca **Premium** ' u seçin. Aksi takdirde, hem **Essentials** hem de **Premium**' u seçin.
 
 ### <a name="key-usage-scenario"></a>Anahtar kullanımı senaryosu
 
-Teklifinizin bir `.pdf` belge (. PDF biçiminde) içinde listelenen anahtar kullanımı senaryolarını listeleyen bir dosyayı karşıya yükleyin. Burada listelenen tüm senaryolar, Market için teklifinizi onaylamadan önce doğrulama takımımız tarafından doğrulanabilir.
+Teklifinizin bir belge (. `.pdf` PDF biçiminde) içinde listelenen anahtar kullanımı senaryolarını listeleyen bir dosya yüklemeniz gerekir. Burada listelenen tüm senaryolar, Market için teklifinizi onaylamadan önce doğrulama takımımız tarafından doğrulanabilir.
 
 ### <a name="app-tests-automation"></a>Uygulama testleri Otomasyonu
 
-Ayrıca buraya bir **uygulama testleri Otomasyon** dosyası yükleyin (. app).
+İsteğe bağlı olarak bir **uygulama testleri Otomasyon** dosyası yükleyebilirsiniz (. app).
 
 ### <a name="test-accounts"></a>Test hesapları
 
-Sertifika ekibimizin teklifinizi doğru bir şekilde gözden geçirmesi için bir test hesabı gerekiyorsa, **Test hesaplarınızın** bilgileriyle bir. PDF,. doc veya. docx dosyası yükleyin.
+Sertifika ekibimizin teklifinizi doğru bir şekilde gözden geçirmesi için bir test hesabı gerekiyorsa, **test hesabı** bilgilerinizi içeren bir. PDF,. doc veya. docx dosyasını yükleyin.
 
 ## <a name="publish"></a>Yayımlama
 

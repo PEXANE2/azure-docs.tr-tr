@@ -7,34 +7,35 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 9bf34fd48c3a4a9a9672ac162f63dcce118b2c0a
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d1a155845f5c04817611fb14f4a973527e3e039b
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668180"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050423"
 ---
 # <a name="get-started-with-device-twins-net"></a>Cihaz ikizlerini kullanmaya başlama (.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Bu öğreticinin sonunda şu .NET konsol uygulamalarına sahip olursunuz:
+Bu öğreticide, şu .NET konsol uygulamalarını oluşturursunuz:
 
-* Bir cihaz kimliği ve sanal cihaz uygulamanızı bağlamak için ilişkili güvenlik anahtarı oluşturan bir .NET uygulaması olan **Createdeviceıdentity**.
+* **Createdeviceıdentity**. Bu uygulama, sanal cihaz uygulamanızı bağlamak için bir cihaz kimliği ve ilişkili güvenlik anahtarı oluşturur.
 
-* Etiket ve sorgu cihaz TWINS 'i ekleyen bir .NET arka uç uygulaması olan **Addtagsandquery**.
+* **Addtagsandquery**. Bu arka uç uygulaması Etiketler ve sorgular cihaz TWINS 'i ekler.
 
-* Daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan bir cihazın benzetimini yapan ve bağlantı koşulunu raporlayan bir .NET cihaz uygulaması olan **Reportconnectivity**.
+* **Reportconnectivity**. Bu cihaz uygulaması, daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan bir cihazın benzetimini yapar ve bağlantı koşulunu raporlar.
 
 > [!NOTE]
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
-> 
+>
 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
+Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 * Visual Studio.
-* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+
+* Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -52,32 +53,36 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="create-the-service-app"></a>Hizmet uygulaması oluşturma
 
-Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini C#ekleyen bir .NET konsol uygulaması (kullanarak) oluşturursunuz. Ardından, IoT Hub 'ında depolanan cihaz TWINS 'i, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
+Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini C#ekleyen bir .NET konsol uygulaması oluşturursunuz. Ardından, IoT Hub 'ında depolanan cihaz TWINS 'i, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
 
-1. Visual Studio'da **Konsol Uygulaması** proje şablonunu kullanarak geçerli çözüme bir Visual C# Windows Klasik Masaüstü projesi ekleyin. Projeyi **Addtagsandquery**olarak adlandırın.
-   
-    ![Yeni Visual C# Windows Klasik Masaüstü projesi](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
+1. Visual Studio 'da **Yeni proje oluştur**' u seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-2. Çözüm Gezgini, **Addtagsandquery** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** öğesine tıklayın.
+1. **Yeni projenizi yapılandırın**bölümünde **Addtagsandquery**adlı projeyi adlandırın.
 
-3. **NuGet Paket Yöneticisi** penceresinde, **Araştır** ' ı seçin ve **Microsoft. Azure. Devices**' i arayın. **Microsoft. Azure. Devices** paketini yüklemek için **yükler** ' i seçin ve kullanım koşullarını kabul edin. Bu yordam, [Azure IoT hizmeti SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
-   
-    ![NuGet Paket Yöneticisi penceresi](./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png)
+    ![AddTagsAndQuery projenizi yapılandırma](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
-4. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Çözüm Gezgini, **Addtagsandquery** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
+
+1. **Araştır** ' ı seçin ve **Microsoft. Azure. Devices**' i arayın ve seçin. **Yükle**’yi seçin.
+
+    ![NuGet Paket Yöneticisi penceresi](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
+
+   Bu adım, [Azure IoT hizmeti SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
+
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
 
     ```csharp  
     using Microsoft.Azure.Devices;
     ```
 
-5. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini alırken](#get-the-iot-hub-connection-string)daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub bağlantı dizesini alırken](#get-the-iot-hub-connection-string)daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
 
     ```csharp  
     static RegistryManager registryManager;
     static string connectionString = "{iot hub connection string}";
     ```
 
-6. **Program** sınıfına aşağıdaki yöntemi ekleyin:
+1. **Program** sınıfına aşağıdaki yöntemi ekleyin:
 
     ```csharp  
     public static async Task AddTagsAndQuery()
@@ -106,14 +111,14 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini C#e
           string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
     }
     ```
-   
-    **Registrymanager** sınıfı, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, ilk olarak **Registrymanager** nesnesini başlatır ve ardından **mydeviceıd**için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
-   
-    Güncelleştirme sonrasında, iki sorgu yürütülür: İlki yalnızca **Redmond43** tesisinde bulunan cihazların cihaz ikelerini seçer ve ikincisi ise yalnızca hücresel ağ üzerinden de bağlı olan cihazları seçecek şekilde sorguyu iyileştirir.
-   
-    Önceki kodun **sorgu** nesnesini oluşturduğunda, en fazla döndürülen belge sayısını belirtir. **Sorgu** nesnesi, tüm sonuçları almak Için **Getnextastwınasync** yöntemlerini birden çok kez çağırmak için kullanabileceğiniz bir **HasMoreResults** Boolean özelliği içerir. **Getnextasjson** adlı bir yöntem, Device-wins olmayan sonuçlar (örneğin, toplama sorgularının sonuçları) için kullanılabilir.
 
-7. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
+    **Registrymanager** sınıfı, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, ilk olarak **Registrymanager** nesnesini başlatır ve ardından **mydeviceıd**için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
+
+    Güncelleştirme sonrasında, iki sorgu yürütülür: İlki yalnızca **Redmond43** tesisinde bulunan cihazların cihaz ikelerini seçer ve ikincisi ise yalnızca hücresel ağ üzerinden de bağlı olan cihazları seçecek şekilde sorguyu iyileştirir.
+
+    Önceki kod, **sorgu** nesnesini oluşturduğunda, en fazla döndürülen belge sayısını belirtir. **Sorgu** nesnesi, tüm sonuçları almak Için **Getnextastwınasync** yöntemlerini birden çok kez çağırmak için kullanabileceğiniz bir **HasMoreResults** Boolean özelliği içerir. **Getnextasjson** adlı bir yöntem, Device-wins olmayan sonuçlar (örneğin, toplama sorgularının sonuçları) için kullanılabilir.
+
+1. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
 
     ```csharp  
     registryManager = RegistryManager.CreateFromConnectionString(connectionString);
@@ -122,10 +127,8 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini C#e
     Console.ReadLine();
     ```
 
-8. Çözüm Gezgini, **Başlangıç projelerini ayarla...** ' yı açın ve **Addtagsandquery** projesi **eyleminin** **başladı**olduğundan emin olun. Çözümü oluşturun.
+1. **Addtagsandquery** projesine sağ tıklayıp **Hata Ayıkla**' yı ve ardından **Yeni örnek Başlat**' ı seçerek bu uygulamayı çalıştırın. **Redmond43** ' de bulunan tüm cihazları isteyen sorgunun sonuçlarında bir cihaz görmeniz gerekir ve sonuçları hücresel ağ kullanan cihazlara kısıtlayan sorgu için yok.
 
-9. **Addtagsandquery** projesine sağ tıklayıp **Hata Ayıkla**' yı ve ardından **Yeni örnek Başlat**' ı seçerek bu uygulamayı çalıştırın. **Redmond43** ' de bulunan tüm cihazları isteyen sorgunun sonuçlarında bir cihaz görmeniz gerekir ve sonuçları hücresel ağ kullanan cihazlara kısıtlayan sorgu için yok.
-   
     ![Penceredeki sorgu sonuçları](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
 Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgunun sonucunu değiştiren bir cihaz uygulaması oluşturacaksınız.
@@ -134,17 +137,17 @@ Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgun
 
 Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygulaması oluşturun ve ardından, bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olan bilgileri içerecek şekilde günceller.
 
-1. Visual Studio'da **Konsol Uygulaması** proje şablonunu kullanarak geçerli çözüme bir Visual C# Windows Klasik Masaüstü projesi ekleyin. Projeyi **Reportconnectivity**olarak adlandırın.
-   
-    ![Yeni Visual C# Windows Klasik cihaz uygulaması](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
-    
-2. Çözüm Gezgini, **Reportconnectivity** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet...** öğesine tıklayın.
+1. Visual Studio'da **dosya** > **yeni** > **proje**. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-3. **NuGet Paket Yöneticisi** penceresinde, **Araştır** ' ı seçin ve **Microsoft. Azure. Devices. Client**için arama yapın. **Microsoft. Azure. Devices. Client** paketini yüklemek için **Install** ' ı seçin ve kullanım koşullarını kabul edin. Bu yordam, [Azure IoT cihaz SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
-   
-    ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
+1. **Yeni projenizi yapılandırın**bölümünde, proje **reportconnectivity**olarak adlandırın. **Çözüm**Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
 
-4. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Çözüm Gezgini, **Reportconnectivity** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
+
+1. **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**’yi seçin.
+
+   Bu adım, [Azure IoT cihaz SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
+
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;
@@ -152,15 +155,14 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygul
     using Newtonsoft.Json;
     ```
 
-5. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, önceki bölümde not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
+1. **Program** sınıfına aşağıdaki alanları ekleyin. Yer tutucu değerini, [IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde not ettiğiniz cihaz bağlantı dizesiyle değiştirin.
 
     ```csharp  
-    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;
-      DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
 
-6. **Program** sınıfına aşağıdaki yöntemi ekleyin:
+1. **Program** sınıfına aşağıdaki yöntemi ekleyin:
 
     ```csharp
     public static async void InitClient()
@@ -183,7 +185,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygul
 
     **İstemci** nesnesi, cihazdan cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Yukarıda gösterilen kod, **istemci** nesnesini başlatır ve ardından **mydeviceıd**için cihaz ikizi alır.
 
-7. **Program** sınıfına aşağıdaki yöntemi ekleyin:
+1. **Program** sınıfına aşağıdaki yöntemi ekleyin:
 
     ```csharp  
     public static async void ReportConnectivity()
@@ -207,9 +209,9 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygul
     }
     ```
 
-   Yukarıdaki kod, **Mydeviceıd**'nin bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
+   Yukarıdaki kod, **Mydeviceıd** öğesinin bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
 
-8. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
+1. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
 
     ```csharp
     try
@@ -226,24 +228,28 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygul
     Console.ReadLine();
     ```
 
-9. Çözüm Gezgini, **Başlangıç projelerini ayarla...** ' yı açın ve **Reportconnectivity** projesi **eyleminin** **başladı**olduğundan emin olun. Çözümü oluşturun.
+1. Çözüm Gezgini, çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin.
 
-10. **Reportconnectivity** projesine sağ tıklayıp **Hata Ayıkla**' yı ve ardından **Yeni örnek Başlat**' ı seçerek bu uygulamayı çalıştırın. İkizi bilgilerini almayı ve sonra *bildirilen bir özellik*olarak bağlantı göndermeyi görmeniz gerekir.
-   
+1. **Ortak özellikler** > **Başlangıç projesinde** **birden çok başlangıç**projesi seçin. **Reportconnectivity**için **eylem**olarak **Başlat** ' ı seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.  
+
+1. **Reportconnectivity** projesine sağ tıklayıp **Hata Ayıkla**' yı seçip **Yeni örnek Başlat**' ı seçerek bu uygulamayı çalıştırın. Uygulamanın ikizi bilgilerini alarak ve sonra ***bildirilen bir özellik***olarak bağlantı göndererek uygulamayı görmeniz gerekir.
+
     ![Bağlantı raporlamak için cihaz uygulamasını çalıştırma](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
-       
-11. Cihaz bağlantı bilgilerini raporladığı için, her iki sorgu da görünmelidir. Sorguları yeniden çalıştırmak için .NET **Addtagsandquery** uygulamasını çalıştırın. **Mydeviceıd** bu kez sorgu sonuçlarında görünmelidir.
-   
+
+   Cihaz bağlantı bilgilerini raporladıktan sonra, her iki sorgu de görünmelidir.
+
+1. **Addtagsandquery** projesine sağ tıklayın ve sorguları yeniden çalıştırmak için **Hata Ayıkla** > **Yeni örnek Başlat** ' ı seçin. Bu kez, **Mydeviceıd** her iki sorgu sonucunda görünmelidir.
+
     ![Cihaz bağlantısı başarıyla bildirildi](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, Azure portalında yeni bir IoT hub'ı yapılandırdınız ve ardından IoT hub'ının kimlik kayıt defterinde bir cihaz kimliği oluşturdunuz. Cihaz meta verilerini bir arka uç uygulamasından Etiketler olarak eklediniz ve cihaz ikizi cihaz bağlantı bilgilerini raporlamak için bir sanal cihaz uygulaması yazmış olursunuz. Ayrıca, bu bilgilerin SQL benzeri IoT Hub sorgu dilini kullanarak nasıl sorgulanalınacağını da öğrendiniz.
 
-Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki kaynakları kullanın:
+Aşağıdaki kaynaklardan daha fazla bilgi edinebilirsiniz:
 
-* [bir cihazdan IoT Hub 'ına telemetri gönder](quickstart-send-telemetry-dotnet.md) öğreticisine sahip cihazlardan telemetri gönderin.
+* Cihazlardan telemetri gönderme hakkında bilgi edinmek için bkz. [bir cihazdan IoT Hub 'a telemetri gönderme](quickstart-send-telemetry-dotnet.md) öğreticisi.
 
-* [cihazları yapılandırmak için istenen özellikleri kullan](tutorial-device-twins.md) öğreticisiyle cihaz ikizi 'nin istenen özelliklerini kullanarak cihazları yapılandırın öğreticisi
+* Device ikizi 'ın istenen özelliklerini kullanarak cihazların nasıl yapılandırılacağını öğrenmek için, [cihazları yapılandırmak için istenen özellikleri kullanma](tutorial-device-twins.md) öğreticisini inceleyin.
 
-* cihazları etkileşimli olarak (kullanıcı denetimli bir uygulamadan bir fanı açmak gibi) [doğrudan Yöntemler](quickstart-control-device-dotnet.md) öğreticisini kullanarak kontrol edin.
+* Kullanıcı denetimli bir uygulamadan bir fanı açmak gibi cihazları etkileşimli olarak denetleme hakkında bilgi edinmek için [doğrudan Yöntemler kullanma](quickstart-control-device-dotnet.md) öğreticisine bakın.

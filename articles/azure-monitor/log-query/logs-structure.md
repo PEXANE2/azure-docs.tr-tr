@@ -5,14 +5,14 @@ services: log-analytics
 author: bwren
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/16/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813854"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034865"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
@@ -46,7 +46,7 @@ union withsource = table *
 Oluşturdukları tabloların ayrıntıları için her bir veri kaynağı için belgelere bakın. Örnek olarak, [aracı veri kaynakları](../platform/agent-data-sources.md), [tanılama günlükleri](../platform/diagnostic-logs-schema.md)ve [izleme çözümleri](../insights/solutions-inventory.md)için makaleler bulunur.
 
 ### <a name="workspace-permissions"></a>Çalışma alanı izinleri
-Çalışma alanındaki verilere erişim sağlama hakkında ayrıntılar için bkz. [çalışma alanı izinleri ve kapsamı](../platform/manage-access.md#manage-accounts-and-users) . Çalışma alanına erişim vermeye ek olarak, [tablo DÜZEYI RBAC](../platform/manage-access.md#table-level-rbac)kullanarak tek tek tablolarla erişimi sınırlayabilirsiniz.
+Çalışma alanındaki verilere erişim sağlama önerilerini ve erişim denetimi stratejisini anlamak için bkz. [Azure Izleyici günlükleri dağıtımı tasarlama](../platform/design-logs-deployment.md) . Çalışma alanına erişim vermeye ek olarak, [tablo DÜZEYI RBAC](../platform/manage-access.md#table-level-rbac)kullanarak tek tek tablolarla erişimi sınırlayabilirsiniz.
 
 ## <a name="application-insights-application"></a>Application Insights uygulaması
 Application Insights bir uygulama oluşturduğunuzda, Azure Izleyici günlüklerinde ilgili bir uygulama otomatik olarak oluşturulur. Veri toplamak için yapılandırma gerekmez ve uygulama sayfa görünümleri, istekler ve özel durumlar gibi izleme verilerini otomatik olarak yazar.

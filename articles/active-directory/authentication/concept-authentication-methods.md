@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561311"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051435"
 ---
-# <a name="what-are-authentication-methods"></a>Kimlik doğrulama yöntemleri nelerdir?
+# <a name="what-are-authentication-methods"></a>Kimlik doğrulaması yöntemleri nelerdir?
 
 Yönetici olarak, Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini seçme, kullanıcıların birden çok kimlik doğrulama yöntemini kaydetmesini gerektirmesini öneririz. Bir kullanıcı için kimlik doğrulama yöntemi kullanılabilir olmadığında, başka bir yöntemle kimlik doğrulaması seçebilirler.
 
-Yöneticiler, SSPR ve MFA kullanıcıları tarafından hangi kimlik doğrulama yöntemlerinin kullanılabildiği ilke ' de tanımlayabilir. Bazı kimlik doğrulama yöntemleri, tüm özellikler için kullanılamayabilir. İlkelerinizi yapılandırma hakkında daha fazla bilgi için, [self servis parola sıfırlamayı başarıyla alma](howto-sspr-deployment.md) ve [bulut tabanlı bir Azure Multi-Factor Authentication planlama](howto-mfa-getstarted.md) makalesine bakın
+Yöneticiler, SSPR ve MFA kullanıcıları tarafından hangi kimlik doğrulama yöntemlerinin kullanılabildiği ilke ' de tanımlayabilir. Bazı kimlik doğrulama yöntemleri, tüm özellikler için kullanılamayabilir. İlkelerinizi yapılandırma hakkında daha fazla bilgi için [self servis parola sıfırlama](howto-sspr-deployment.md) ve [bulut tabanlı bir Azure Multi-Factor Authentication planlama](howto-mfa-getstarted.md) makalesine bakın.
 
 Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönteminden fazlasını seçmesini olanaklı kılmanızı sağlar.
 
@@ -60,41 +60,41 @@ Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte
 
 ### <a name="predefined-questions"></a>Önceden tanımlanmış sorular
 
-* Eşiniz/partneriniz ile hangi şehirde tanıştınız?
-* Anneniz ve babanız hangi şehirde tanışmış?
-* Size en yakın kardeşiniz hangi şehirde yaşıyor?
-* Babanız hangi şehirde doğdu?
-* İlk işiniz hangi şehirdeydi?
-* Anneniz hangi şehirde doğmuş?
-* 2000 yılına girilen yılbaşında hangi şehirdeydiniz?
-* Lisede en sevdiğiniz öğretmeninizin soyadı neydi?
-* Başvurduğunuz ancak gitmediğiniz üniversitenin adı nedir?
-* İlk evlilik davetinizi verdiğiniz yerin adı nedir?
-* Babanızın ikinci adı nedir?
+* İlk eşiniz/iş ortağınızı hangi şehirle karşıladınız?
+* Ebeveynleriniz hangi şehirle buluşmış?
+* En yakın eşdüzey ağınız hangi şehirde etkin?
+* Babalar hangi şehirde doğdu?
+* İlk işiniz hangi şehirdir?
+* Anneniz hangi şehirde doğdu?
+* Yeni yıl 2000 ' de hangi şehirdeydiniz?
+* Yüksek okulda en sevdiğiniz öğretmenin soyadı nedir?
+* Uyguladığınız bir üniversite adı nedir, ancak katılmadınız mı?
+* İlk evlilik alıyeninizi dağıttığınız yerin adı nedir?
+* Babalar ikinci adı nedir?
 * En sevdiğiniz yemek nedir?
-* Annenizin annesinin adı ve soyadı nedir?
+* Anneannenizin en Annenizin adı ve soyadı nedir?
 * Annenizin ikinci adı nedir?
 * En eski eşdüzey Doğum günün ayı ve yılı nedir? (örn. Kasım 1985)
-* En büyük kardeşinizin ikinci adı nedir?
-* Babanızın babasının adı ve soyadı nedir?
-* En küçük kardeşinizin ikinci adı nedir?
-* Altıncı sınıfta hangi okula gittiniz?
+* En eski eşdüzey öğenin ikinci adı nedir?
+* Babanızın babalar adı ve soyadı nedir?
+* Kardeşinizin eşdüzey ortaınızın ikinci adı nedir?
+* Altıncı sınıf için hangi okula katıldınız?
 * Çocukluğunuzdaki en iyi arkadaşınızın adı ve soyadı neydi?
-* İlk partnerinizin adı ve soyadı neydi?
-* En sevdiğiniz ilkokul öğretmeninizin soyadı neydi?
-* İlk arabanızın veya motosikletinizin markası ve modeli neydi?
-* İlk gittiğiniz okulun adı neydi?
-* Doğduğunuz hastanenin adı neydi?
-* Çocukluğunuzda oturduğunuz ilk evin sokak adı neydi?
-* Çocukluk kahramanınızın adı neydi?
-* En sevdiğiniz doldurulmuş hayvanınızın adı neydi?
+* İlk önemli olan ilk ve soyadı neydi?
+* En sevdiğiniz sınıf okul öğretmeninizin soyadı neydi?
+* İlk arabalarınızın veya otodöngünüzün marka ve modeli neydi?
+* Katıldığınız ilk okulunuzun adı neydi?
+* Doğmakta olduğunuz hastanın adı neydi?
+* İlk çocukluk evin sokak adı neydi?
+* Çocukluğunuzdaki kahraman 'ın adı neydi?
+* En sevdiğiniz peluş ya da bir hayvan adı neydi?
 * İlk evcil hayvanınızın adı neydi?
-* Çocukluğunuzdaki takma adınız neydi?
-* Lisede en sevdiğiniz spor neydi?
+* Çocukluk takma ad nedir?
+* Yüksek okulda en sevdiğiniz spor nedir?
 * İlk işiniz neydi?
-* Çocukluğunuzda kullandığınız telefon numarasının son dört rakamı neydi?
-* Küçükken, büyüdüğünüzde ne olmak istiyordunuz?
-* Tanıştığınız en ünlü kişi kim?
+* Çocukluk telefon numaranız için son dört basamak neydi?
+* Küçükken, büyüyken ne yapmak istiyorsunuz?
+* Şimdiye kadar tanıştığınız en ünlü kişi kim?
 
 Önceden tanımlanmış tüm güvenlik soruları, kullanıcının tarayıcı yerel ayarlarına bağlı olarak Office 365 dillerinin tam kümesine çevrilir ve yerelleştirilir.
 
@@ -195,6 +195,8 @@ Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNu
 >
 > Parola sıfırlama, telefon uzantılarını desteklemez. \+ 1 4255551234X12345 biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
 
+Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
+
 #### <a name="text-message"></a>SMS Mesajı
 
 Bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Devam etmek için oturum açma arabiriminde belirtilen doğrulama kodunu girin.
@@ -245,7 +247,7 @@ Telefon numarası kullanan kimlik doğrulama yöntemleriyle ilgili yaygın sorun
 
 Tarayıcı olmayan bazı uygulamalar Multi-Factor Authentication 'ı desteklemez, bir Kullanıcı Multi-Factor Authentication için etkinleştirildiyse ve tarayıcı olmayan uygulamaları kullanmaya çalışırsanız, kimlik doğrulaması yapamaz. Uygulama parolası, kullanıcıların kimlik doğrulamaya devam etmesine izin verir
 
-Kullanıcı başına MFA aracılığıyla değil, koşullu erişim ilkeleri aracılığıyla çok faktörlü kimlik doğrulamasını zorunlu kılabilirsiniz, uygulama parolaları oluşturamazsınız. Erişimi denetlemek için koşullu erişim ilkelerini kullanan uygulamalar, uygulama parolalara gerek kalmaz.
+Kullanıcı başına MFA aracılığıyla değil, koşullu erişim ilkeleri aracılığıyla Multi-Factor Authentication zorunlu kılabilirsiniz, uygulama parolaları oluşturamazsınız. Erişimi denetlemek için koşullu erişim ilkelerini kullanan uygulamalar, uygulama parolalara gerek kalmaz.
 
 Kuruluşunuz Azure AD ile SSO için federe ise ve Azure MFA 'yı kullanacaksanız, aşağıdaki ayrıntıları göz önünde bulundurun:
 
@@ -259,7 +261,7 @@ Kuruluşunuz Azure AD ile SSO için federe ise ve Azure MFA 'yı kullanacaksanı
 
 [Kuruluşunuz için self servis parola sıfırlamayı etkinleştirin](quickstart-sspr.md)
 
-[Kuruluşunuzda Azure Multi-Factor Authentication 'ı etkinleştirme](howto-mfa-getstarted.md)
+[Kuruluşunuz için Azure Multi-Factor Authentication etkinleştirme](howto-mfa-getstarted.md)
 
 [Kiracınızda Birleşik kayıt özelliğini etkinleştirme](howto-registration-mfa-sspr-combined.md)
 
