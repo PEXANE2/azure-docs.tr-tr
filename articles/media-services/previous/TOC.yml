@@ -49,6 +49,15 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: Nasıl yapılır
   items:
+    - name: Eski bileşenler
+      href: legacy-components.md
+      items:
+        - name: Azure Medya Kodlayıcısı’ndan geçiş
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: Windows Azure Medya Kodlayıcısı’ndan geçiş
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
     - name: Yönetme
       items:
         - name: Hesaplar

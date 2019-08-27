@@ -179,6 +179,9 @@
         - name: Hiperparametreleri ayarlama
           displayName: parameter
           href: how-to-tune-hyperparameters.md
+        - name: Eğitim sırasında Key Vault’u kullanma
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
     - name: Denemeleri izleme ve denetleme
       items:
         - name: 'Çalıştırmaları başlatma, izleme ve iptal etme'
