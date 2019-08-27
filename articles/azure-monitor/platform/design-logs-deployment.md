@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883214"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034733"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
 
@@ -71,7 +71,7 @@ Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen fakt�
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
-| [İzinler](manage-access.md#manage-accounts-and-users) | Çalışma alanı veya kaynak için bir kişiye veya kullanıcı grubuna uygulanan izinler. Kullanıcının erişimi olacak verileri tanımlar. |
+| [İzinler](manage-access.md) | Çalışma alanı veya kaynak için bir kişiye veya kullanıcı grubuna uygulanan izinler. Kullanıcının erişimi olacak verileri tanımlar. |
 | [Tablo düzeyi RBAC](manage-access.md#table-level-rbac) | Erişim modundan veya erişim denetimi modundan bağımsız olarak tüm kullanıcılara uygulanan isteğe bağlı ayrıntılı izinler. Bir kullanıcının erişebileceği veri türlerini tanımlar. |
 
 ## <a name="access-mode"></a>Erişim modu
@@ -105,7 +105,7 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 | | Çalışma alanı-bağlam | Kaynak bağlamı |
 |:---|:---|:---|
 | Her bir model kim içindir? | Yönetim Merkezi. Veri toplamayı ve çok çeşitli kaynaklara erişmesi gereken kullanıcıları yapılandırması gereken yöneticiler. Şu anda Azure dışındaki kaynaklar için günlüklere erişmesi gereken kullanıcılar için de gereklidir. | Uygulama takımları. İzlenmekte olan Azure kaynaklarının yöneticileri. |
-| Kullanıcı günlükleri görüntülemek için ne gerekir? | Çalışma alanı izinleri. Bkz. [hesapları ve kullanıcıları yönetme](manage-access.md#manage-accounts-and-users)Içindeki **çalışma alanı izinleri** . | Kaynağa yönelik okuma erişimi. Bkz. [hesapları ve kullanıcıları yönetme](manage-access.md#manage-accounts-and-users)içindeki **kaynak izinleri** . İzinler devralınabilir (örneğin, kapsayan kaynak grubundan) veya doğrudan kaynağa atanabilir. Kaynak için günlüklere izin verilecek izinler otomatik olarak atanır. |
+| Kullanıcı günlükleri görüntülemek için ne gerekir? | Çalışma alanı izinleri. [Çalışma alanı izinlerini kullanarak erişimi yönetme](manage-access.md#manage-access-using-workspace-permissions)Içindeki **çalışma alanı izinlerine** bakın. | Kaynağa yönelik okuma erişimi. Bkz. [Azure izinleri kullanarak erişimi yönetme](manage-access.md#manage-access-using-azure-permissions)içindeki **kaynak izinleri** . İzinler devralınabilir (örneğin, kapsayan kaynak grubundan) veya doğrudan kaynağa atanabilir. Kaynak için günlüklere izin verilecek izinler otomatik olarak atanır. |
 | İzinlerin kapsamı nedir? | Alanında. Çalışma alanına erişimi olan kullanıcılar, çalışma alanındaki tüm günlükleri izinleri olan tablolardan sorgulayabilir. Bkz. [tablo erişim denetimi](manage-access.md#table-level-rbac) | Azure kaynağı. Kullanıcı herhangi bir çalışma alanından erişimi olan belirli kaynaklar, kaynak grupları veya abonelikler için günlükleri sorgulayabilir, ancak diğer kaynakların günlüklerini sorgulayamaz. |
 | Kullanıcı günlüklere nasıl erişebilir? | <ul><li>**Günlükleri** **Azure izleyici** menüsünden başlatın.</li></ul> <ul><li>**Log Analytics çalışma alanlarından** **günlükleri** başlatın.</li></ul> <ul><li>Azure Izleyici [çalışma kitaplarından](../visualizations.md#workbooks).</li></ul> | <ul><li>Azure kaynağı menüsündeki **günlükleri** Başlat</li></ul> <ul><li>**Günlükleri** **Azure izleyici** menüsünden başlatın.</li></ul> <ul><li>**Log Analytics çalışma alanlarından** **günlükleri** başlatın.</li></ul> <ul><li>Azure Izleyici [çalışma kitaplarından](../visualizations.md#workbooks).</li></ul> |
 
@@ -128,7 +128,7 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
     > [!NOTE]
     > Bir kullanıcının çalışma alanında yalnızca kaynak izinleri varsa, çalışma alanına yalnızca çalışma alanı erişim modunun **kaynak veya çalışma alanı Izinlerini kullanacak**şekilde ayarlandığını varsayarak kaynak bağlam modunu kullanarak erişebilirler.
 
-Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu tanımlama](manage-access.md#define-access-control-mode).
+Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu yapılandırma](manage-access.md#configure-access-control-mode).
 
 ## <a name="recommendations"></a>Öneriler
 

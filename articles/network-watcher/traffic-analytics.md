@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: dbc0829adc29848c9047368295a2ade589834e8b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620130"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70031865"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -178,6 +178,8 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 2. **Akış günlükleri sürümü**için *sürüm 2* ' yi seçin. Sürüm 2, akış oturumu istatistikleri içerir (bayt ve paket)
 3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. Depolama alanınız "Data Lake Storage 2. hiyerarşik ad alanı etkin değil" özelliğinin true olarak ayarlandığından emin olun. Ayrıca, NSG akış Günlükleri güvenlik duvarı olan bir depolama hesabında depolanamaz. 
 4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın.
+> [!IMPORTANT]
+> Şu anda ağ Izleyicisi için ağ [güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) , bekletme ilkesi ayarlarına göre blob depolamadan otomatik olarak silinmediği bir sorun vardır. Sıfır olmayan bir bekletme ilkeniz varsa, herhangi bir ücret ödemeden kaçınmak için saklama süresini aşan depolama bloblarını düzenli aralıklarla silmenizi öneririz. NSG akış günlüğü depolama blogunu silme hakkında daha fazla bilgi için bkz. [NSG akış günlüğü depolama Bloblarını silme](network-watcher-delete-nsg-flow-log-blobs.md).
 5. **Trafik Analizi durumu**Için *Açık '* ı seçin.
 6. İşleme aralığını seçin. Seçim yapmanız temelinde, akış günlüklerinizi depolama hesabından toplanacak ve Trafik Analizi tarafından işlenir. Her 1 saatte bir veya 10 dakikada bir işleme aralığı seçebilirsiniz.
 7. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

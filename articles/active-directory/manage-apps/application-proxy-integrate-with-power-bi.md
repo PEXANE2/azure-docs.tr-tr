@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991107"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035137"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
@@ -103,28 +103,27 @@ Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
 Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
 
-## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>3\. adım: Rapor hizmetlerine Power BI Mobil erişim izni verme
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>3\. adım: Uygulamanın yanıt URI 'sini değiştirme
 
-Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi için önce Azure AD 'de doğru şekilde kaydolmanız gerekir.  
+Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi için önce adım 2 ' de otomatik olarak oluşturulan uygulama kaydını yapılandırmanız gerekir. 
 
 1. Azure Active Directory **genel bakış** sayfasında **uygulama kayıtları**' i seçin.
 2. **Tüm uygulamalar** sekmesinin altında 2. adımda oluşturduğunuz uygulamayı arayın.
 3. Uygulamayı seçin ve **kimlik doğrulaması**' nı seçin.
 4. Kullanmakta olduğunuz platforma göre aşağıdaki yeniden yönlendirme URI 'Lerini ekleyin.
 
-   Uygulamayı Power BI Mobil **iOS**için kaydederken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
+   Uygulamayı Power BI Mobil **iOS**için yapılandırırken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Uygulamayı Power BI Mobil **Android**için kaydederken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
+   Uygulamayı Power BI Mobil **Android**için yapılandırırken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > Uygulamanın düzgün çalışması için yeniden yönlendirme URI 'Lerinin eklenmesi gerekir. Bunu hem iOS hem de Android için yapılandırıyorsanız yalnızca **tek** bir uygulamayı kaydetmeniz ve hem iOS hem de Android Için yeniden yönlendirme URI 'leri eklemeniz gerekir. Her platform için ayrı uygulamalar gerekiyorsa, her iki uygulama için yeniden yönlendirme URI 'si: `mspbi-adal://com.microsoft.powerbimobile` eklemeniz gerekir.
-
-2. Yerel uygulamanızı kaydettirdiğiniz için, bu durumda, uygulama proxy 'Si aracılığıyla yayınlanan rapor hizmetlerine erişmek için dizininizde diğer uygulamalara erişim izni verebilirsiniz. Adım 3 ' teki [adımları izleyin: Proxy uygulamanıza](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)erişim izni verin.
+   > Uygulamanın düzgün çalışması için yeniden yönlendirme URI 'Lerinin eklenmesi gerekir. Uygulamayı hem iOS hem de Android Power BI Mobil için yapılandırıyorsanız, genel Istemci türündeki aşağıdaki yeniden yönlendirme URI 'sini (mobil & Masaüstü) iOS için yapılandırılan yeniden yönlendirme URI 'Leri listesine ekleyin: `urn:ietf:wg:oauth:2.0:oob`.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4\. Adım: Power BI Mobil uygulamasından bağlanma
 

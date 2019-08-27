@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302258"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034746"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
 
@@ -79,7 +79,7 @@ Cosmos DB ölçümlerinde bulunan tüm klasik uyarılar, bu ölçümlerde uyarı
 - Http 3xx
 - Http 400
 - Http 401
-- İç sunucu hatası
+- İç Sunucu Hatası
 - Dakikada tüketilen maksimum RUPD
 - Saniyede en fazla ru
 - Mongo sayısı başarısız Istekler
@@ -205,9 +205,9 @@ Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 | Klasik uyarılarda ölçüm | Yeni uyarılardaki eşdeğer ölçüm | Açıklamalar|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
-| Veri boyutu | Veri kullanımı| |
+| Veri Boyutu | Veri kullanımı| |
 | Belge sayısı | DocumentCount||
-| Dizin boyutu | Indexusage||
+| Dizin Boyutu | Indexusage||
 | Mongo sayımı Istek ücreti| "CommandName" = "Count" boyutuyla Mongorequestücret||
 | Mongo sayımı Istek hızı | Dimension "CommandName" = "Count" olan MongoRequestsCount||
 | Mongo silme Isteği ücreti | Dimension "CommandName" = "Sil" olacak mongorequestücret||
@@ -217,7 +217,7 @@ Cosmos DB için, eşdeğer ölçümler aşağıda gösterildiği gibidir:
 | Mongo sorgu Isteği ücreti | "CommandName" = "Find" boyutuyla Mongorequestücretle||
 | Mongo sorgu Isteği hızı | Dimension ile MongoRequestsCount "CommandName" = "Find"||
 | Mongo güncelleştirme Isteği ücreti | Dimension "CommandName" = "Update" ile mongorequestücret||
-| Hizmet kullanılamıyor| ServiceAvailability||
+| Hizmet Kullanılamıyor| ServiceAvailability||
 | TotalRequestUnits | TotalRequestUnits||
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Denk eylem grupları oluşturma
@@ -256,13 +256,20 @@ Abonelik düzeyinde katkıda bulunan Izleme katılımcısı rolü olan herhangi 
 
 [Geçişi tetikledikten](alerts-using-migration-tool.md)sonra, geçiş işleminin tamamlandığını veya sizin için herhangi bir eylemin gerekli olduğunu bildirmek için verdiğiniz adreste e-posta alacaksınız. Bu bölümde bazı yaygın sorunlar ve bunlarla ilgilenme işlemleri açıklanmaktadır.
 
-### <a name="validation-failed"></a>Doğrulama başarısız oldu
+### <a name="validation-failed"></a>Doğrulama başarısız
 
 Aboneliğinizdeki klasik uyarı kurallarında yapılan bazı son değişiklikler nedeniyle abonelik geçirilemez. Bu sorun geçicidir. Geçiş durumu, geçiş **için** birkaç gün geri alındıktan sonra geçişi yeniden başlatabilirsiniz.
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>İlke veya kapsam kilidi kurallarınızı geçirmemizi önler
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Kapsam kilidi kurallarınızı geçirmemizi önler
 
-Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak, kaynak oluşturmamızı engellediği bir ilke ya da kapsam kilidi vardır. İlke veya kapsam kilidine bağlı olarak, bazı veya tüm kurallar geçirilemez. Bu sorunu, kapsam kilidini veya ilkeyi geçici olarak kaldırarak ve geçişi yeniden tetikleyerek çözebilirsiniz.
+Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak, bir kapsam kilidi, kaynak oluşturmamızı veya silmenizi önleyebilir. Kapsam kilidine bağlı olarak, bazı veya tüm kurallar geçirilemez. [Geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenen abonelik, kaynak grubu veya kaynak için kapsam kilidini kaldırarak ve geçişi yeniden tetikleyerek bu sorunu çözebilirsiniz. Kapsam kilidi devre dışı bırakılamaz ve geçiş işlemi süresince kaldırılması gerekir. [Kapsam kilitlerini yönetme hakkında daha fazla bilgi edinin](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Kurallarınızı geçirmemizi engelleyen ' Reddet ' efektli ilke
+
+Geçişin bir parçası olarak yeni ölçüm uyarıları ve yeni eylem grupları oluşturulur ve ardından klasik uyarı kuralları silinir. Ancak bir ilke, kaynak oluşturmamızı önleyebilir. İlkeye bağlı olarak, bazı veya tüm kurallar geçirilemez. İşlemi engelleyen ilkeler [geçiş aracında](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)listelenir. Bu sorunu aşağıdakilerden birini yaparak çözün:
+
+- İlke atamasından geçiş işleminin süresi boyunca abonelikler veya kaynak grupları hariç tutulur. [İlkeleri dışlama kapsamını yönetme hakkında daha fazla bilgi edinin](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
+- ' Audit ' veya ' append ' etkisini kaldırma veya değiştirme (örneğin, eksik etiketlerle ilgili sorunları çözebilen). [İlkeleri yönetme etkisi hakkında daha fazla bilgi edinin](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
