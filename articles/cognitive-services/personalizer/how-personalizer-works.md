@@ -9,16 +9,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663907"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034385"
 ---
 # <a name="how-personalizer-works"></a>Kişiselleştirme nasıl çalışır?
 
-Kişiselleştirici, bir bağlamda hangi eylemin kullanılacağını saptamak için makine öğrenimini kullanır. Her öğrenme döngüsünün, **işleme ve** **yeniden** arama yoluyla kendisine gönderdiğiniz veriler üzerinde özel olarak eğitilen bir modeli vardır. Her öğrenme döngüsü birbirleriyle tamamen bağımsızdır. Kişiselleştirmek istediğiniz her bir bölüm veya davranış için bir öğrenme döngüsü oluşturun.
+Kişiselleştirici, bir bağlamda hangi eylemin kullanılacağını saptamak için makine öğrenimini kullanır. Her öğrenme döngüsünün, işleme ve **yeniden** arama yoluyla kendisine gönderdiğiniz veriler üzerinde özel olarak eğitilen bir modeli vardır. Her öğrenme döngüsü birbirleriyle tamamen bağımsızdır. Kişiselleştirmek istediğiniz her bir bölüm veya davranış için bir öğrenme döngüsü oluşturun.
 
 Her döngü için, geçerli bağlamı temel alarak **Rank API 'sini** şu şekilde çağırın:
 
@@ -163,7 +163,7 @@ Kişiselleştirme altyapılarını, kişiselleştirici ile kullanabilirsiniz:
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Uygulamanıza içerik korumaları ekleme
 
-Uygulamanız kullanıcılara gösterilen içerikte büyük sapmaya izin veriyorsa ve bu içeriklerin bazıları güvenli olmayabilir veya bazı kullanıcılar için uygun değilse, kullanıcılarınızın kabul edilebilir olarak görmesini engellemek için doğru korumalarının sağlandığından emin olmak için önceden planlamanız gerekir içeriði. Korumaları uygulamak için en iyi model şunlardır: Korumaları uygulamak için en iyi model şunlardır:
+Uygulamanız kullanıcılara gösterilen içerikte büyük sapmaya izin veriyorsa ve bu içeriklerin bazıları güvenli olmayabilir veya bazı kullanıcılar için uygun değilse, kullanıcılarınızın kabul edilebilir olarak görmesini engellemek için doğru korumalarının sağlandığından emin olmak için önceden planlamanız gerekir içeriði. Korumaları uygulamak için en iyi model şunlardır:
     * Derecelendirmek için eylemlerin listesini alın.
     * Hedef kitle için önemli olmayan olanları filtreleyin.
     * Yalnızca bu uygulanabilir eylemleri derecelendir.

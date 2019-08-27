@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564586"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034489"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Metin Tanıma kapsayıcıları yükleyip çalıştırma
 
-Görüntü işleme metni tanı kısmı, bir Docker kapsayıcısı da sunulur. Algılayıp farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazılı metni Ayıkla verir.  
+Görüntü işleme metni tanı kısmı, bir Docker kapsayıcısı da sunulur. Algılayıp farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazılı metni Ayıkla verir.
+
 > [!IMPORTANT]
 > Metni Tanı kapsayıcı şu anda yalnızca İngilizce ile çalışır.
 
@@ -38,7 +39,7 @@ Metin Tanıma kapsayıcıları kullanmadan önce aşağıdaki önkoşulları kar
 
 ## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Ana bilgisayar
 
@@ -46,16 +47,7 @@ Metin Tanıma kapsayıcıları kullanmadan önce aşağıdaki önkoşulları kar
 
 ### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
 
-Aşağıdaki tabloda, her bir Metin Tanıma kapsayıcısı için ayrılacak minimum ve önerilen CPU çekirdekleri ve bellek açıklanmaktadır.
-
-| Kapsayıcı | Minimum | Önerilen |TPS<br>(En düşük, en yüksek)|
-|-----------|---------|-------------|--|
-|Metin Tanıma|1 çekirdek, 8 GB bellek, 0,5 TPS|2 çekirdek, 8 GB bellek, 1 TPS|0,5, 1|
-
-* Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
-* TPS-saniye başına işlem
-
-Çekirdek ve bellek, `--cpus` `docker run` komutunun bir parçası `--memory` olarak kullanılan ve ayarlarına karşılık gelir.
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
 
@@ -87,7 +79,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır:
 
-| Yer tutucu | Değer |
+| Yer tutucu | Value |
 |-------------|-------|
 |{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure `Cognitive Services` anahtarları sayfasında kullanılabilir.  |
 |{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri. Örnek:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
