@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774939"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018230"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
 
@@ -53,8 +53,11 @@ Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**, **St
 
 Herhangi bir katmana ve sürümüne yükseltebilir ve buradan indirgeme yapabilirsiniz. Yükseltme veya eski sürüme düşürme, bazı özellikleri (örneğin, sanal ağlar veya çok bölgeli dağıtım), Premium katmandan standart veya temel sürümüne düşürülerek kaldırabileceğini unutmayın.
 
->[!NOTE]
->Yükseltmesi veya ölçeği işlemi uygulamak için 15 ila 45 dakika sürebilir. İşiniz bittiğinde size bildirilir.
+> [!NOTE]
+> Yükseltmesi veya ölçeği işlemi uygulamak için 15 ila 45 dakika sürebilir. İşiniz bittiğinde size bildirilir.
+
+> [!NOTE]
+> **Tüketim** katmanındaki API Management hizmeti trafiğe göre otomatik olarak ölçeklendirilir.
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Yükseltmek ve ölçeklendirmek için Azure portal kullanın
 

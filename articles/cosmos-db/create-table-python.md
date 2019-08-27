@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Tablo API'si ile Python - Azure Cosmos DB"
+title: "Hızlı Başlangıç: Python ile Tablo API'si Azure Cosmos DB"
 description: Bu hızlı başlangıçta Azure portalı ve Python ile uygulama oluşturmak için Azure Cosmos DB Tablo API’sinin nasıl kullanılacağı gösterilmektedir
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833076"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020145"
 ---
-# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Hızlı Başlangıç: API uygulaması, Python ve Azure Cosmos DB ile tablo oluşturma
+# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Hızlı Başlangıç: Python ve Azure Cosmos DB Tablo API'si uygulama oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -35,7 +35,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Buna ek olarak:
 
-* Visual Studio yüklü 2019 yoksa, indirip kullanabilirsiniz **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Visual Studio kurulumu sırasında **Azure geliştirme** ve **Python geliştirme** iş yüklerini seçtiğinizden emin olun.
+* Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirme** ve **Python geliştirme** iş yüklerini seçtiğinizden emin olun.
 * Ayrıca **Python geliştirme** iş yükünde Python 2 seçeneğini belirleyin veya [python.org](https://www.python.org/downloads/release/python-2712/) adresinden Python 2.7’yi indirin.
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
@@ -82,7 +82,7 @@ Buna ek olarak:
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin. Bu, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır. 
 
-1. [Azure portalında](https://portal.azure.com/) **Bağlantı Dizesi**’ne tıklayın. 
+1. [Azure portalında](https://portal.azure.com/) **Bağlantı Dizesi**’ni seçin. 
 
     ![Bağlantı Dizesi bölmesindeki CONNECTION STRING’i kopyalama ve görüntüleme](./media/create-table-python/connection-string.png)
 
@@ -100,7 +100,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. Visual Studio'nun **Çözüm Gezgini** bölümünde projeye sağ tıklayın, geçerli Python ortamını seçin ve sağ tıklayın.
 
-2. Python Paketini Yükle'yi seçip **azure-storage-table** yazın
+2. Python paketini yükler ' i seçin ve ardından **Azure-Storage-Table** girin
 
 3. Uygulamayı çalıştırmak için F5'e basın. Uygulamanız tarayıcınızda görüntülenir. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 2ff4364fdb0f24ca08a77279d569c0f03de9bb24
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: c7306de4af7f958ef8f89dac41a5e08209916432
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996854"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020203"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı tamamlamak için:
 
 ## <a name="download-the-sample-locally"></a>Örnekleri yerel makineye indirme
 
-Bir terminal penceresinde, örnek uygulamayı yerel makinenize kopyalamak ve örnek kodun bulunduğu dizine gitmek için aşağıdaki komutları çalıştırın.
+Bir Terminal penceresinde, örnek uygulamayı yerel makinenize kopyalamak ve örnek kodu içeren dizine gitmek için aşağıdaki komutları çalıştırın.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -65,7 +65,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-Bir web tarayıcısı açın ve `http://localhost:5000/` konumundaki örnek uygulamaya gidin.
+Bir Web tarayıcısı açın ve konumundaki `http://localhost:5000/`örnek uygulamaya gidin.
 
 Sayfada gösterilen örnek uygulamada **Merhaba Dünya!** iletisini görürsünüz.
 
@@ -158,7 +158,7 @@ Python örnek kodu, yerleşik bir görüntüyle Linux üzerinde App Service çal
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Kodu yerel makinede güncelleştirme ve yeniden dağıtma
 
-Cloud Shell, Cloud Shell düzenleyiciyi açmak `code application.py` için yazın.
+Cloud Shell, Cloud Shell düzenleyiciyi açmak `code application.py` için girin.
 
 ![Kod application.py](media/quickstart-python/code-applicationpy.png)
 
@@ -184,7 +184,7 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan ta
 
 Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin.
 
-Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri**' ni seçin ve ardından Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/quickstart-python/app-service-list.png)
 

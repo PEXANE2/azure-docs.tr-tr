@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951915"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020196"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması oluşturma
 
@@ -140,13 +140,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Bir tarayıcıda `http://localhost:8000` sayfasına gidin. İletiyi `No polls are available.`görmeniz gerekir. 
+`http://localhost:8000` Bir tarayıcıda adresine gidin. İletiyi `No polls are available.`görmeniz gerekir. 
 
-Son adımda `http://localhost:8000/admin` oluşturduğunuz yönetici kullanıcısını kullanarak öğesine gidin ve oturum açın. **Soruların** yanına **Ekle** ' ye tıklayın ve bazı seçimlerle bir yoklama sorusu oluşturun.
+Son adımda oluşturduğunuz yönetici kullanıcısını kullanarak adresine gidin veoturumaçın.`http://localhost:8000/admin` **Sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 ![Yerel olarak çalışan Python Docgo uygulaması](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-`http://localhost:8000` Tekrar gidin ve görünen yoklama sorusunu görüntüleyin.
+`http://localhost:8000` Tekrar gidin ve görünen yoklama sorusuna bakın.
 
 Docgo örnek uygulaması, Kullanıcı verilerini veritabanında depolar. Bir anket sorusu eklerken başarılı olursanız, uygulamanız yerel PostgreSQL veritabanına veri yazıyor.
 
@@ -269,13 +269,13 @@ Yönetici Kullanıcı oluşturulduktan sonra Docgo sunucusunu çalıştırın.
 python manage.py runserver
 ```
 
-Tekrar ' `http://localhost:8000` ye gidin. İletiyi `No polls are available.` bir daha görmeniz gerekir. 
+Yeniden ' `http://localhost:8000` ye gidin. İletiyi `No polls are available.` bir daha görmeniz gerekir. 
 
 Oluşturduğunuz yönetici `http://localhost:8000/admin` kullanıcısını kullanarak öğesine gidin ve oturum açın ve daha önce olduğu gibi bir yoklama sorusu oluşturun.
 
 ![Yerel olarak çalışan Python Docgo uygulaması](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-`http://localhost:8000` Tekrar gidin ve görünen yoklama sorusunu görüntüleyin. Uygulamanız artık Azure 'da veritabanına veri yazıyor.
+`http://localhost:8000` Tekrar gidin ve görünen yoklama sorusuna bakın. Uygulamanız artık Azure 'da veritabanına veri yazıyor.
 
 ## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
@@ -386,7 +386,7 @@ Daha önce oluşturduğunuz yoklama sorusunu görmeniz gerekir.
 
 App Service, varsayılan olarak tarafından `manage.py startproject` oluşturulan her alt dizinde bir _wsgi.py_ arayarak deponuzdaki bir docgo projesi algılar. Dosyayı bulduğunda, Docgo Web uygulamasını yükler. App Service Python uygulamalarını nasıl yüklediği hakkında daha fazla bilgi için bkz. [yerleşik Python görüntüsünü yapılandırma](how-to-configure-python.md).
 
-' A gidin ve oluşturduğunuz yönetici kullanıcı ile oturum açın. `<app-name>.azurewebsites.net` İsterseniz, bazı daha fazla yoklama soruları oluşturmayı deneyin.
+`<app-name>.azurewebsites.net` ' A gidin ve oluşturduğunuz yönetici kullanıcı ile oturum açın. İsterseniz, bazı daha fazla yoklama soruları oluşturmayı deneyin.
 
 ![Yerel olarak çalışan Python Docgo uygulaması](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -400,7 +400,7 @@ App Service, varsayılan olarak tarafından `manage.py startproject` oluşturula
 
 Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com) gidin.
 
-Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri**' ni ve ardından Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/tutorial-python-postgresql-app/app-resource.png)
 

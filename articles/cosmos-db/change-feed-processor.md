@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: aecad80bb1b1e95b07b9df4105547406ff76b84c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991531"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018775"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB akış işlemcisini değiştirme 
 
@@ -76,7 +76,9 @@ Giriş sırasında belirtildiği gibi, değişiklik akışı işlemcisi, işlem 
 
 Bu üç koşul geçerliyse, değişiklik akışı işlemcisi, eşit bir dağıtım algoritması kullanarak, tüm çalışan örnekler ve paralel hale getirmek işlem genelindeki kira kapsayıcısındaki tüm kiraları dağıtır. Tek bir kiralamanın belirli bir zamanda yalnızca bir örneğe ait olması, en fazla örnek sayısının kira sayısına eşit olması için.
 
-Örnekler büyüyebilir ve küçülebilir ve değişiklik akışı işlemcisi, uygun şekilde yeniden dağıtarak yükü dinamik olarak ayarlar.
+Örnek sayısı büyüyebilir ve küçülebilir ve değişiklik akışı işlemcisi, uygun şekilde yeniden dağıtarak yükü dinamik olarak ayarlar.
+
+Üstelik, değişiklik akışı işlemcisi, verimlilik veya depolama arttıkça dinamik olarak kapsayıcılar ölçeğinde değişiklik yapabilir. Kapsayıcınız büyüdükçe, değişiklik akışı işlemcisi, kiralamaları dinamik olarak artırarak ve yeni kiraları mevcut örnekler arasında dağıtarak bu senaryoları saydam olarak gerçekleştirir.
 
 ## <a name="change-feed-and-provisioned-throughput"></a>Akışı ve sağlanan aktarım hızını değiştirme
 

@@ -11,16 +11,16 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569058"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018961"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 
-Veri bulma & sınıflandırması (Şu anda önizleme aşamasında), Azure SQL veritabanı 'nda yerleşik olarak bulunan gizli verileri**korumak** , **sınıflandırmak**ve **etiketleme** &  **için yerleşik**gelişmiş yetenekler sağlar. erişebileceğiniz.
+Veri bulma & sınıflandırması, veritabanlarınızdaki hassas verileri**korumak** , **sınıflandırmak**ve **etiketleme** & için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş yetenekler sağlar.
 En hassas verilerinizi (iş, finans, sağlık, kişisel olarak tanımlanabilir veriler (PII) vb.) bulmak ve sınıflandırmak, kurumsal bilgi koruma hazırünüzde bir özetleme rolü oynayabilir. Bu, için altyapı işlevi görebilir:
 
 - Veri gizliliği standartları ve mevzuat uyumluluk gereksinimlerini karşılamanıza yardımcı olma.
@@ -76,7 +76,7 @@ Kiracı genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kulla
 
 1. [Azure Portal](https://portal.azure.com) gidin.
 
-2. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. Gelişmiş veri güvenliğini etkinleştirmek için tıklayın ve ardından **veri bulma & sınıflandırma (Önizleme)** kartına tıklayın.
+2. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. Gelişmiş veri güvenliğini etkinleştirmek için tıklayın ve ardından **veri bulma & sınıflandırma** kartına tıklayın.
 
    ![Bir veritabanını tarayın](./media/sql-data-discovery-and-classification/data_classification.png)
 

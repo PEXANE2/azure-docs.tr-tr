@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 09/25/2018
-ms.openlocfilehash: 1bccfd8ac363b21053c45ed489e943a1b488f41f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 08/27/2019
+ms.openlocfilehash: 5ffe9de6ecb740a2d8445e88a478e718585eb5d1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68566516"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018897"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 
@@ -40,8 +40,12 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak SQL veritabanı veya SQL veri
    ![1mfa-universal-connect][1]  
 2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu, biçimde `user_name@domain.com`doldurun.  
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
-3. Konuk Kullanıcı olarak bağlanıyorsanız, **Seçenekler**' e tıklamanız ve **bağlantı özelliği** iletişim kutusunda **ad etkı alanı adını veya Kiracı kimliği** kutusunu doldurmanız gerekir. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
-   ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
+3. Konuk Kullanıcı olarak bağlanıyorsanız, SMS 18. x veya daha sonraki bir sürümü tarafından otomatik olarak tanıyacağından, Konuk kullanıcılar için AD etki alanı adını veya kiracı KIMLIĞI alanını doldurmanız artık gerekmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
+   ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
+
+   Ancak, SSMS 17. x veya daha eski bir sürümle Konuk Kullanıcı olarak bağlanıyorsanız, **Seçenekler**' e tıklamanız ve **bağlantı özelliği** iletişim kutusunda, **ad etkı alanı adını veya Kiracı kimliği** kutusunu doldurmanız gerekir.
+   ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
+
 4. SQL veritabanı ve SQL veri ambarı için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com), kutuyu denetlemeniz ve geçerli ad etki alanı adını ya da kiracı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
 5. **Hesapta oturum açma** iletişim kutusu göründüğünde, Azure Active Directory kimliğinizin hesabını ve parolasını girin. Bir Kullanıcı Azure AD ile federe bir etki alanının parçasıysa parola gerekli değildir.  
    ![2mfa-oturum açma][2]  

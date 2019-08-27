@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 636518688aec1f514b551e34219acfc1c9e81aec
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
-ms.translationtype: HT
+ms.openlocfilehash: 984e7ed82ba81d8c40688efd0a0a06e095be7c06
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965392"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018978"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -64,7 +64,7 @@ Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://githu
 | 11 Haziran 2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2 Temmuz 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
 | 29 Temmuz 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
-
+| 23 Ağu 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Sürüm notları](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
 
 ## <a name="previous-versions"></a>Önceki sürümler
 

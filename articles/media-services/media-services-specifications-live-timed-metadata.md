@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991793"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019093"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Canlı akışta zamanlanmış meta verileri sinyal alma 
 
@@ -98,7 +98,7 @@ Aşağıdaki belgeler, bu metinde başvuru aracılığıyla bu belgenin sağlama
 
 Azure Media Services hem [RTMP] Kesintisiz Akış hem de [MS-SSTR-Ingest] protokolleri için gerçek zamanlı bant içi meta verileri destekler. Gerçek zamanlı meta veriler, özel olayları tanımlamak için kullanılabilir (JSON, Ikili, XML), Ayrıca, bir yayın akışındaki ad sinyali için ıD3 veya SCTE-35 gibi endüstri tanımlı biçimler kullanabilirsiniz. 
 
-Bu makalede, Media Services desteklenen alma protokollerini kullanarak özel olarak zaman aşımına uğramış meta veri sinyalleri içinde gönderme ayrıntıları sağlanmaktadır. Makalede ayrıca, HLS, DASH ve Kesintisiz Akış bildirimlerinin, zaman uyumlu olmayan meta veri sinyalleriyle nasıl ilişkili olduğu ve içerik CMAF (MP4 parçaları) veya HLS için aktarım akışı (TS) kesimleri kullanılarak bantta nasıl taşınacağı açıklanmaktadır. 
+Bu makalede, Azure Media Services için desteklenen alma protokollerini kullanarak özel zamanlı meta veri sinyalleri gönderme ayrıntıları sağlanmaktadır. Makalede ayrıca, HLS, DASH ve Kesintisiz Akış bildirimlerinin, zaman uyumlu olmayan meta veri sinyalleriyle nasıl ilişkili olduğu ve içerik CMAF (MP4 parçaları) veya HLS için aktarım akışı (TS) kesimleri kullanılarak bantta nasıl taşınacağı açıklanmaktadır. 
 
 Zaman aşımına uğramış meta veriler için genel kullanım örneği senaryoları şunlardır:
 
@@ -122,7 +122,7 @@ Azure Media Services canlı olaylar ve Paketleyici, bu zaman aşımına uğramı
 
 [RTMP] Protokolü, özel meta veriler ve SCTE-35 ad sinyalleri dahil çeşitli senaryolar için zamanlanmış meta veri sinyallerinin gönderilmesine izin verir. 
 
-Reklam sinyalleri (işaret iletileri) [RTMP] akışı içine katıştırılmış [AMF0] Cue iletileri olarak gönderilir. İpucu iletileri gerçek olay veya [SCTE35] ad splice Signal gerçekleşmesi için bir süre önce gönderilebilir. Bu senaryoyu desteklemek için, olayın gerçek saati, işaret iletisi içinde gönderilir. Daha fazla bilgi için bkz. [AMF0].
+Reklam sinyalleri (işaret iletileri) [RTMP] akışı içine katıştırılmış [AMF0] Cue iletileri olarak gönderilir. İpucu iletileri gerçek olay veya [SCTE35] ad splice Signal gerçekleşmesi için bir süre önce gönderilebilir. Bu senaryoyu desteklemek için, olayın gerçek sunum zaman damgası, işaret iletisi içinde gönderilir. Daha fazla bilgi için bkz. [AMF0].
 
 Aşağıdaki [AMF0] komutları, RTMP alma için Azure Media Services tarafından desteklenir:
 
@@ -139,8 +139,8 @@ Aşağıdaki tablolarda, Media Services hem "basit" hem de [SCTE35] ileti modlar
 
 Yukarı akış kodlayıcısından, IP kameranıza, drone 'dan veya RTMP protokolünü kullanarak cihazdan özel meta veri akışları sağlamak istiyorsanız, "onUserDataEvent" [AMF0] veri iletisi komut türünü kullanın.
 
-**"Onuserdataevent"** veri iletisi komutu, Media Services tarafından yakalanıp bant içi dosya biçiminde paketlenmesi ve ayrıca, HLS, çizgi ve Düzgünleştir bildirimleri için aşağıdaki tanıma sahip bir ileti yükü taşımalıdır.
-Her 0,5 saniyede bir (500 MS) zaman uyumlu olmayan veri iletileri göndermeniz önerilir. Çerçeve düzeyinde meta veriler sağlamanız gerekiyorsa, her ileti birden çok kareden meta verileri toplayabilir. Çoklu bit hızı akışları gönderiyorsanız, meta verileri tek bir bit hızında sağlamanız önerilir, bu da yalnızca bant genişliğini azaltmak ve video/ses işlemeyle ilgili girişimlerden kaçınmak için gerekir. 
+**"Onuserdataevent"** veri iletisi komutu, Media Services tarafından yakalanıp bant içi dosya biçiminde paketlenmesi ve HLS, DASH ve kesintisiz akış için bildirim almak üzere aşağıdaki tanım ile bir ileti yükü taşımalıdır.
+Her 0,5 saniye (500ms) veya canlı akışla ilgili kararlılık sorunlarından daha sık, zaman aşımına uğramamış veri iletileri göndermeniz önerilir. Çerçeve düzeyinde meta veriler sağlamanız gerekiyorsa, her ileti birden çok kareden meta verileri toplayabilir. Çoklu bit hızı akışları gönderiyorsanız, meta verileri tek bir bit hızında sağlamanız önerilir, bu da yalnızca bant genişliğini azaltmak ve video/ses işlemeyle ilgili girişimlerden kaçınmak için gerekir. 
 
 **"Onuserdataevent"** için yük BIR [MPEGDASH] EVENTSTREAM xml biçim iletisi olmalıdır. Bu, HLS veya DASH protokolleri üzerinden sunulan CMAF [MPEGCMAF] içeriği için bantta ' EMSG ' yükleri içinde taşınılabilen özel tanımlı şemaları kolayca geçirmeye olanak sağlar. Her DASH olay akışı iletisi, URN ileti düzeni tanımlayıcısı olarak işlev gören ve iletinin yükünü tanımlayan bir IBir tek düzen içerir. [Scte-35 https://aomedia.org/emsg/ID3 ] için "" [ID3v2] veya **urn: scte: scte35:2013: bin** gibi bazı şemalar, birlikte çalışabilirlik için sektör yarışma göre standartlaştırılmıştır. Herhangi bir uygulama sağlayıcısı, denetleyedikleri URL 'YI (sahip etki alanı) kullanarak kendi özel düzenlerini tanımlayabilir ve tercih ettikleri URL 'de bir belirtim sağlayabilir. Bir oyuncunun tanımlı düzen için bir işleyicisi varsa, bu, yükü ve Protokolü anlaması gereken tek bileşendir.
 
@@ -226,7 +226,7 @@ Bireysel olaylar veya veri yükleri doğrudan HLS, kesik çizgi veya düzgün bi
 
 ### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>OnUserDataEvent olayları için ek bilgilendirici kısıtlamalar ve varsayılanlar
 
-- EventStream öğesinde zaman ölçeği ayarlanmamışsa, varsayılan olarak RTMP 1Khz zaman ölçeği kullanılır
+- EventStream öğesinde zaman ölçeği ayarlanmamışsa, varsayılan olarak RTMP 1 kHz zaman ölçeği kullanılır
 - OnUserDataEvent iletisinin teslimi her 500 MS Max ile sınırlıdır. Olayları daha sık gönderirseniz, bant genişliğini ve canlı akışın kararlılığını etkileyebilir
 
 ## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>"onCuePoint" ile 2.1.2 'yi RTMP ad ipucu sinyali

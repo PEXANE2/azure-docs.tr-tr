@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 07/12/2019
-ms.openlocfilehash: 701c266705c16198f35cddc36cdf1d431331c2d2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 07/31/2019
+ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847951"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019108"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -220,9 +220,32 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > Kapsam dışına ilerlediği için alt çalıştırmalar otomatik olarak tamamlandı olarak işaretlenir.
 
-Ayrıca, alt çalıştırmalarını tek tek başlatabilirsiniz, ancak her oluşturma bir ağ çağrısıyla sonuçlandığından, bir toplu iş gönderilmesi daha az verimlidir.
+Çok sayıda alt çalışma oluşturmak için [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) yöntemini kullanın. Her oluşturma bir ağ çağrısıyla sonuçlandığından, bir toplu iş oluşturmak, bunlardan birini oluşturmaktan daha etkilidir.
 
-Belirli bir üst öğenin alt çalıştırmalarını sorgulamak için [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) yöntemini kullanın.
+### <a name="submit-child-runs"></a>Alt çalıştırmaları gönder
+
+Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, her biri farklı işlem hedeflerinde çalışan, ortak üst çalışma KIMLIĞI ile bağlanan üst ve alt çalıştırma hiyerarşileri oluşturmanızı sağlar.
+
+[' Submit_child () '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) metodunu kullanarak bir alt çalıştırmayı bir üst çalıştırma içinden gönderebilirsiniz. Bunu üst çalıştırma komut dosyasında yapmak için, çalıştırma bağlamını alın ve bağlam örneğinin ' ' submit_child ' ' ' metodunu kullanarak alt çalışmayı gönderebilirsiniz.
+
+```python
+## In parent run script
+parent_run = Run.get_context()
+child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
+parent_run.submit_child(child_run_config)
+```
+
+Bir alt çalıştırma içinde, üst çalıştırma KIMLIĞINI görüntüleyebilirsiniz:
+
+```python
+## In child run script
+child_run = Run.get_context()
+child_run.parent.id
+```
+
+### <a name="query-child-runs"></a>Alt çalıştırmaları sorgula
+
+Belirli bir üst öğenin alt çalıştırmalarını sorgulamak için [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) yöntemini kullanın. ' ' ' Özyinelemeli = true ' ' ' bağımsız değişkeni, iç içe geçmiş alt ağacı ve alt öğeleri sorgulamanızı sağlar.
 
 ```python
 print(parent_run.get_children())

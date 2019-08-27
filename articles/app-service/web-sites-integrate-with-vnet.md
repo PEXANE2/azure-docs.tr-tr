@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7246a0223e156abd866594c65542069944601b01
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740905"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018246"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 Bu belgede Azure App Service sanal ağ tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanmaktadır. [Azure sanal ağları][VNETOverview] (VNet 'ler), internet 'ten yönlendirilebilir olmayan bir ağa birçok Azure kaynağınız yerleştireklemenize olanak tanır.  
@@ -84,8 +84,9 @@ Bu özellik önizleme aşamasındadır ancak Windows uygulama üretim iş yükle
 * Uygulama ve VNet aynı bölgede olmalıdır
 * Tümleşik bir uygulamayla VNet 'i silemezsiniz. Önce tümleştirmeyi kaldırmanız gerekir 
 * App Service planı başına yalnızca bir bölgesel VNet tümleştirmesi olabilir. Aynı App Service planındaki birden çok uygulama aynı VNet 'i kullanabilir. 
+* Bölgesel VNet tümleştirmesi kullanan bir uygulama varken, bir uygulamanın veya App Service planının aboneliğini değiştiremezsiniz
 
-Her bir App Service plan örneği için bir adres kullanılır. Uygulamanızı 5 örneğe ölçeklendirdiyseniz, bu 5 adres kullanılır. Alt ağ boyutu atamadan sonra değiştirilemediğinden, uygulamanızın ulaşabileceği ölçeğe uyum sağlayacak kadar büyük bir alt ağ kullanmanız gerekir. 20 örneğe ölçeklendirilmiş bir Premium App Service planına uyum sağlayacak şekilde, 32 adresi içeren bir/27, önerilen boyutdur.
+Her bir App Service plan örneği için bir adres kullanılır. Uygulamanızı 5 örneğe ölçeklendirdiyseniz 5 adres kullanılır. Alt ağ boyutu atamadan sonra değiştirilemediğinden, uygulamanızın ulaşabileceği ölçeğe uyum sağlayacak kadar büyük bir alt ağ kullanmanız gerekir. 64 adresi olan bir/26 önerilen boyutdir. App Service planının boyutunu değiştirmediyseniz, 32 adres içeren a/27, Premium App Service plan 20 örneklerine sahip olur. Bir App Service planını yukarı veya aşağı ölçeklendirirseniz, kısa bir süre için birçok adrese iki kez ihtiyacınız vardır. 
 
 Daha önce başka bir App Service planında bulunan uygulamalar tarafından zaten bağlı olan bir VNet 'e erişmek için başka bir App Service planındaki uygulamalarınızın, önceden var olan VNet tümleştirmesi tarafından kullanılandan farklı bir alt ağ seçmeniz gerekir.  
 
@@ -102,6 +103,8 @@ Daha önce başka bir App Service planında bulunan uygulamalar tarafından zate
    ![VNet ve alt ağ seçin][7]
 
 Uygulamanız VNet 'iniz ile tümleştirildiğinde, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. 
+
+Bölgesel VNet tümleştirmesi, tümleştirme alt ağınızın Microsoft. Web 'e devredilmesini gerektirir.  VNet tümleştirme Kullanıcı arabirimi, alt ağı Microsoft. Web 'e otomatik olarak devredebilir. Hesabınız bunu ayarlamak için yeterli ağ izinlerine sahip değilse, alt ağı temsilci olarak atamak için tümleştirme alt ağlarınızın özniteliklerini ayarlayabilen bir kişiye ihtiyacınız olacaktır. Tümleştirme alt ağını el ile atamak için Azure sanal ağ alt ağı Kullanıcı arabirimine gidin ve Microsoft. Web için temsilci belirleyin.
 
 Uygulamanızın VNet bağlantısını kesmek için **bağlantıyı kes**' i seçin. Bu işlem Web uygulamanızı yeniden başlatacak. 
 
@@ -249,7 +252,7 @@ Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımına yönelik üç
 
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Özelliği kolayca ayarlanabilir, bu da deneyiminizin ücretsiz olacağı anlamına gelmez. İstenen uç noktanıza erişmede sorun yaşamanız gerekir, bu, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamanızın kudu konsoluna ulaşmak için Araçlar-> kudu ' ye gidin. Bu, [SiteName]. scm. azurewebsites. net ' e gittiğinin aynısıdır. Bu açıldıktan sonra hata ayıklama konsolu sekmesine gidin. Daha sonra Azure portal barındırılan konsola ulaşmak için Araçlar-> konsoluna gidin. 
+Özelliği kolayca ayarlanabilir, bu da deneyiminizin ücretsiz olacağı anlamına gelmez. İstenen uç noktanıza erişmede sorun yaşamanız gerekir, bu, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamanızın kudu konsoluna ulaşmak için Araçlar-> kudu ' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendiğinde, hata ayıklama konsolu sekmesine gidin. Daha sonra Azure portal barındırılan konsola ulaşmak için Araçlar-> konsoluna gidin. 
 
 #### <a name="tools"></a>Araçlar
 Araçlar **ping**, **nslookup** ve **tracert** , güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void 'yi dolduracak şekilde iki ayrı araç eklenmiştir. DNS işlevselliğini test etmek için, nameresolver. exe adlı bir araç ekledik. Sözdizimi şöyledir:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036251"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019124"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme Aracısı için sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -71,6 +71,12 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 7.0.
 
 - Daha büyük dosya paylaşma boyutları için destek
     - Daha büyük Azure dosya paylaşımlarının önizlemesi sayesinde dosya eşitleme için destek limitlerimizi de artırıyoruz. Bu ilk adımda Azure Dosya Eşitleme artık tek bir eşitleme ad alanında en fazla 25 TB ve 50milyon dosyayı desteklemektedir. Büyük dosya paylaşma önizlemesine uygulamak için bu formu https://aka.ms/azurefilesatscalesurvey doldurmanız gerekir. 
+- Depolama hesaplarında güvenlik duvarı ve sanal ağ ayarı desteği
+    - Azure Dosya Eşitleme artık depolama hesaplarında güvenlik duvarını ve sanal ağ ayarını desteklemektedir. Dağıtımınızı güvenlik duvarı ve sanal ağ ayarıyla çalışacak şekilde yapılandırmak için bkz. [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+- Azure dosya paylaşımında değiştirilen dosyaları hemen eşitlemeye yönelik PowerShell cmdlet 'i
+    - Azure dosya paylaşımında değiştirilen dosyaları hemen eşitlemek için Invoke-AzStorageSyncChangeDetection PowerShell cmdlet 'i Azure dosya paylaşımındaki değişikliklerin algılanmasını el ile başlatmak için kullanılabilir. Bu cmdlet, bazı otomatik işlem türlerinin Azure dosya paylaşımında değişiklik yapmakta olduğu veya değişikliklerin bir yönetici tarafından yapıldığı (dosya ve dizinleri paylaşıma taşıma gibi) olduğu senaryolar için tasarlanmıştır. Son Kullanıcı değişiklikleri için, Azure Dosya Eşitleme aracısını IaaS sanal makinesine yüklemek ve son kullanıcıların IaaS VM 'si aracılığıyla dosya paylaşımında erişimi olması önerilir. Bu şekilde, tüm değişiklikler Invoke-AzStorageSyncChangeDetection cmdlet 'ini kullanmaya gerek kalmadan diğer aracılara hızla eşitlenir. Daha fazla bilgi için bkz. [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) belgeleri.
+- Eşitleme olmayan dosyalarla karşılaşırsanız, geliştirilmiş Portal deneyimi
+    - Eşitleme başarısız olan dosyalarınız varsa, artık portalda geçici ve kalıcı hatalar arasında ayrım yaptık. Geçici hatalar genellikle yönetici eylemine gerek kalmadan kendilerini çözer. Örneğin, o anda kullanılmakta olan bir dosya, dosya tanıtıcısı kapatılıncaya kadar eşitlenmez. Kalıcı hatalar için, artık her bir hatadan etkilenen dosya sayısını gösteririz. Kalıcı hata sayısı aynı zamanda bir eşitleme grubundaki tüm sunucu uç noktalarının eşitlenmeyen dosyalar sütununda de görüntülenir.
 - Azure Backup dosya düzeyinde geri yükleme geliştirildi
     - Azure Backup kullanılarak geri yüklenen tek dosyalar artık algılanır ve sunucu uç noktası ile daha hızlı eşitlenir.
 - Geliştirilmiş bulut katmanlama geri çağırma cmdlet güvenilirliği 

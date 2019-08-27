@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610001"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020248"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Trafik Analizi şema ve veri toplama
 
@@ -32,7 +32,7 @@ Trafik Analizi, bulut ağlarında Kullanıcı ve uygulama etkinliğine görünü
 
 ### <a name="data-aggregation"></a>Veri toplama
 
-1. "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki NSG 'lerdeki tüm akış günlükleri, Trafik Analizi tarafından işlenmeden önce blob olarak depolama hesabındaki bir dakikalık aralıklarla yakalanır. 
+1. "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki NSG 'lerdeki tüm akış günlükleri, Trafik Analizi tarafından işlenmeden önce blob olarak depolama hesabındaki bir dakikalık aralıklarla yakalanır.
 2. Trafik Analizi varsayılan işleme aralığı 60 dakikadır. Bu, her 60 dakikalık Trafik Analizi, toplama için Blobların depolama alanından çekmeyeceği anlamına gelir. Seçilen Aralık 10 dakika ise, Trafik Analizi her 10 dakikada bir depolama hesabından blob 'ları seçer.
 3. Aynı kaynak IP, hedef IP, hedef bağlantı noktası, NSG adı, NSG kuralı, akış yönü ve Aktarım Katmanı Protokolü (TCP veya UDP) olan akışlar (unutmayın: Kaynak bağlantı noktası toplama için hariç tutulur) Trafik Analizi tarafından tek bir akışta kümelendirilebilir
 4. Bu tek kayıt, Trafik Analizi tarafından Log Analytics kaydedilir (aşağıdaki bölümde bulunan Ayrıntılar). Bu işlem, en fazla 1 saat sürer.
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Trafik Analizi şemasında kullanılan alanlar
+  > [!IMPORTANT]
+  > Trafik Analizi şeması 22 Ağustos 2019 tarihinde güncelleştirilmiştir. Yeni şema, kaynakları daha basit hale getiren FlowDirection alanını ayrıştırma gereksinimini ortadan kaldırmak için kaynak ve hedef IP 'Leri de sağlar. </br>
+  > FASchemaVersion_s, 1 ' den 2 ' ye güncelleştirildi. </br>
+  > Kullanım dışı alanlar: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > Yeni alanlar: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > Kullanım dışı bırakılan alanlar 22 Kasım 2019 tarihine kadar kullanılabilir olacaktır.
 
 Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tarafından düzenlenmiş veriler üzerinde özel sorgular çalıştırabilir ve aynı üzerinde uyarılar ayarlayabilirsiniz.
 
@@ -94,7 +100,7 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Trafik Analizi verileri tablosu
 | SubType_s | FlowLog | Akış günlüklerinin alt türü. Yalnızca "FlowLog" kullanın, SubType_s 'in diğer değerleri ürünün iç işleyişi içindir |
-| FASchemaVersion_s |   1\.   | Şema sürümü. NSG akış günlüğü sürümünü yansıtmıyor |
+| FASchemaVersion_s |   2   | Şema sürümü. NSG akış günlüğü sürümünü yansıtmıyor |
 | TimeProcessed_t   | UTC olarak tarih ve saat  | Trafik Analizi depolama hesabından ham akış günlüklerinin işlendiği zaman |
 | FlowIntervalStartTime_t | UTC olarak tarih ve saat |  Akış günlüğü işleme aralığının başlangıç saati. Bu, akış aralığının ölçülmüş olduğu süredir |
 | FlowIntervalEndTime_t | UTC olarak tarih ve saat | Akış günlüğü işleme aralığının bitiş saati |
@@ -111,7 +117,8 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | FlowDirection_s | * I = gelen<br> * O = giden | Akış günlüğü başına NSG/çıkış akışı yönü |
 | FlowStatus_s  | * A = NSG kuralına Izin verilir <br> * D = NSG kuralı tarafından reddedildi  | Akış günlüğü başına NSG tarafından engellenen akışın durumu |
 | NSGList_s | \<SUBSCRİPTİONID >\/< RESOURCEGROUP_NAME >\/< NSG_NAME > | Flow ile ilişkili ağ güvenlik grubu (NSG) |
-| NSGRules_s | \<Dizin değeri 0) > < NSG_RULENAME >\<akış yönü >\<Flow durumu >\<flowcount processedbyrule > |  Bu akışa izin verilen veya reddedilen NSG kuralı |
+| NSGRules_s | \<Dizin değeri 0) >\|\<NSG_RULENAME >\|\<akış yönü >\|Flowdurumu\|>\<flowcountprocessedbyrule\<> |  Bu akışa izin verilen veya reddedilen NSG kuralı |
+| NSGRule_s | NSG_RULENAME |  Bu akışa izin verilen veya reddedilen NSG kuralı |
 | NSGRuleType_s | * Kullanıcı tanımlı * varsayılan |   Akış tarafından kullanılan NSG kuralının türü |
 | MACAddress_s | MAC adresi | Akışın yakalandığı NIC 'in MAC adresi |
 | Subscription_s | Bu alana Azure sanal ağ/ağ arabirimi/sanal makine aboneliği doldurulur | Yalnızca FlowType = S2S, P2S, Azucumhuriyeti, ExternalPublic, MaliciousFlow ve UnknownPrivate akış türleri için geçerlidir (yalnızca bir tarafın Azure olduğu akış türleri) |
@@ -151,6 +158,8 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 | OutboundBytes_d | NSG kuralının uygulandığı ağ arabiriminde yakalanan olarak gönderilen bayt sayısı | Bu yalnızca NSG akış günlüğü şemasının 2. sürümü için doldurulur |
 | CompletedFlows_d  |  | Bu, yalnızca NSG akış günlüğü şemasının 2. sürümü için sıfır olmayan değer ile doldurulur |
 | PublicIPs_s | < PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS >\|\<\<\| \<OUTBOUND_BYTES>\|INBOUND_BYTES>\< | Çubuklar ile ayrılmış girişler |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS\|\<\< >\|OUTBOUND_BYTES\<>\|INBOUND_BYTES>\< | Çubuklar ile ayrılmış girişler |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_\|\<\< PAKETLER >\|\<OUTBOUND_BYTES >\|INBOUND_BYTES\<> | Çubuklar ile ayrılmış girişler |
 
 ### <a name="notes"></a>Notlar
 
@@ -165,7 +174,7 @@ Trafik Analizi, Log Analytics üzerine kurulmuştur, böylece Trafik Analizi tar
 1. MaliciousFlow-IP adreslerinden biri Azure sanal ağına aittir, diğer IP adresi Azure 'da olmayan bir genel IP ve bu işlem aralığı için Trafik Analizi tüketen ASC akışlarında kötü amaçlı olarak bildirildi FlowIntervalStartTime_t "ve" FlowIntervalEndTime_t ".
 1. UnknownPrivate-IP adreslerinden biri Azure sanal ağına aittir, ancak diğer IP adresleri, RFC 1918 ' de tanımlandığı şekilde özel IP aralığına aittir ve müşterinin sahip olduğu bir siteye veya Azure sanal ağına Trafik Analizi tarafından eşlenemedi.
 1. Bilinmiyor – akışlardaki IP adreslerinden birinin Azure 'daki müşteri topolojisi ile şirket içi (site) arasında eşleme yapılamıyor.
-1. Bazı alan adlarına _s veya _D eklenir. Bunlar kaynağı ve hedefi işaret etmez.
+1. Bazı alan adları s veya \_ \_d ile eklenir. Bunlar kaynak ve hedefi işaret etmez ancak sırasıyla veri türleri dize ve ondalık olduğunu gösterir.
 
 ### <a name="next-steps"></a>Sonraki Adımlar
 Sık sorulan soruların yanıtlarını almak için bkz. [Traffic ANALYTICS SSS](traffic-analytics-faq.md) , işlevlerle ilgili ayrıntıları görmek için bkz. [Trafik Analizi belgeleri](traffic-analytics.md)

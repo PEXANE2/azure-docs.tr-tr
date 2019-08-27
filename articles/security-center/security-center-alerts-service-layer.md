@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/18/2019
+ms.date: 8/25/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 5458d26172123f0f6cb9914a04ec05b3163a084f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: bc1b2a07f15ca98da7750c85cd25f2c5766c9bb5
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013281"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018176"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure hizmet katmanı için tehdit algılama
 
@@ -52,7 +52,7 @@ Güvenlik Merkezi ağ katmanı analizi, Azure çekirdek yönlendiricileri taraf�
 Güvenlik Merkezi 'nin tehdit koruması uygulamak için ağla ilgili sinyalleri nasıl kullanabileceğini anlamak için bkz. [Azure Güvenlik Merkezi 'Nde BULUŞSAL DNS algılamaları](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 >[!NOTE]
->Azure Güvenlik Merkezi 'nde Azure ağ katmanı tehdit algılama uyarıları, VM oluşturulduktan sonra ilk saat boyunca oluşturulmaz.
+>Azure Güvenlik Merkezi 'nde Azure ağ katmanı tehdit algılama uyarıları yalnızca, şüpheli bir iletişimin gerçekleştiği saatin tamamında aynı IP adresi atanmış sanal makinelerde oluşturulur. Bu, sanal makinelerin yanı sıra, yönetilen hizmetin bir parçası olarak müşterinin aboneliğinde oluşturulan sanal makineler için de geçerlidir (örneğin, AKS, Databricks).
 
 ## Azure Yönetim Katmanı (Azure Resource Manager) (Önizleme)<a name ="management-layer"></a>
 
