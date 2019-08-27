@@ -311,8 +311,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Apache Spark iş başarısızlıkları - InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Yavaş Apache Spark işleri - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Yavaş Apache Spark işleri - depolama kapsayıcısı
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException özel durumu
