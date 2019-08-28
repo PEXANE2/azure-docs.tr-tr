@@ -238,7 +238,7 @@
     - name: Hizmet olarak Platform
       items:
         - name: Hizmet olarak platform belgeleri
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: İş sürekliliği
           href: sql-database-business-continuity.md
         - name: Yüksek kullanılabilirlik
