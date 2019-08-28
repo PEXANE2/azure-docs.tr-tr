@@ -207,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: Rol tabanlı erişim denetimi kullanma
           href: api-management-role-based-access-control.md
+        - name: API Management örneklerini geçirme
+          href: api-management-howto-migrate.md
         - name: Azure kaynakları için yönetilen kimlikleri kullanma
           href: api-management-howto-use-managed-service-identity.md
         - name: Service Fabric ile tümleştirme

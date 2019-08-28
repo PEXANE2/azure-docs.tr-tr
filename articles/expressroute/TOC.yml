@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: ExpressRoute Global Reach hakkında
       href: expressroute-global-reach.md
+    - name: Azure'ı genel buluta bağlama
+      href: expressroute-connect-azure-to-public-cloud.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
       items:
         - name: Önsöz ve Test Kurulumu

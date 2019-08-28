@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: Güvenliği artırmak için önerileri kullanın
       href: security-center-using-recommendations.md
-    - name: Tehditleri algılama
-      href: security-center-detection-capabilities.md
-    - name: Güvenlik uyarılarını yönetme
-      href: security-center-managing-and-responding-alerts.md
-    - name: Güvenlik olayları
-      href: security-center-incident.md
     - name: Kiracılar arası yönetim
       href: security-center-cross-tenant-management.md
-    - name: Tehdit algılama uyarıları
+    - name: Tehdit algılama uyarıları ve olayları
       items:
         - name: Güvenlik uyarılarına genel bakış
           href: security-center-alerts-overview.md
+        - name: Güvenlik uyarılarını yönetme
+          href: security-center-managing-and-responding-alerts.md
+        - name: Güvenlik olaylarını yönetme
+          href: security-center-incident.md
         - name: VM’ler ve sunucular için tehdit algılama
           href: security-center-alerts-iaas.md
         - name: Bulutta yerel bilgi işlem için tehdit algılama

@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: Regresyon (NYC Taxi verileri)
           items:
-            - name: 1. Verileri modelleme için hazırlama
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. ML modelini otomatik olarak eğitme
+            - name: ML modelini otomatik olarak eğitme
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: Görsel arabirim
@@ -260,7 +257,7 @@
     - name: Yeniden kullanılabilir iş akışları oluşturma
       displayName: pipelines
       items:
-        - name: ML işlem hatları
+        - name: Python’da ML işlem hatları oluşturma
           href: how-to-create-your-first-pipeline.md
         - name: CI/CD için Azure Pipelines
           displayName: 'continuous, integration, delivery'
