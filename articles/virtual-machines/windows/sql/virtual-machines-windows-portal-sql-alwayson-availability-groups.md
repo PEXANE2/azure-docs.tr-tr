@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 9751ae97f96d2041a4106a41bb782a80dd9c8ba9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100724"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure sanal makinelerinde Always on kullanılabilirlik gruplarını otomatik olarak yapılandırın: Resource Manager
 
@@ -84,7 +83,7 @@ Aşağıdaki ekran görüntüsünde, tamamlanmış bir **temel bilgiler** dikey 
 
 ![Temel](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
-          **Tamam**'ı tıklatın.
+**Tamam**'ı tıklatın.
 
 ### <a name="domain-and-network-settings"></a>Etki alanı ve ağ ayarları
 Bu Azure Galeri şablonu, bir etki alanı ve etki alanı denetleyicileri oluşturur. Ayrıca bir ağ ve iki alt ağ oluşturur. Şablon, mevcut bir etki alanında veya sanal ağda sunucu oluşturamaz. Sonraki adım etki alanı ve ağ ayarlarını yapılandırır.
@@ -117,7 +116,7 @@ Gerekirse, bu değerleri değiştirebilirsiniz. Bu öğreticide, önceden ayarla
 
 ![kullanılabilirlik grubu ayarları](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
-          **Tamam**'ı tıklatın.
+**Tamam**'ı tıklatın.
 
 ### <a name="virtual-machine-size-storage-settings"></a>Sanal makine boyutu, depolama ayarları
 **VM boyutu, depolama ayarları**üzerinde SQL Server bir sanal makine boyutu seçin ve diğer ayarları gözden geçirin.

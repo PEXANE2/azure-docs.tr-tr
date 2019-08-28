@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 05b761dbf9f58f6afca6459e28d2fecca9aa7b06
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878309"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099493"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Azure IoT Central uygulaması oluşturma (Önizleme özellikleri)
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta IoT Tak ve Kullan gibi Önizleme özelliklerini kullan
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Azure IoT Central [Uygulama Yöneticisi](https://aka.ms/iotcentral) sayfasına gidin. Sonra bir Microsoft kişisel veya iş veya okul hesabıyla oturum açın.
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesine gidin. Sonra bir Microsoft kişisel veya iş veya okul hesabıyla oturum açın.
 
 Yeni bir Azure IoT Central uygulaması oluşturmaya başlamak için **Yeni Uygulama**'yı seçin. Bu bağlantı sizi **uygulama oluşturma** sayfasına götürür.
 
@@ -55,4 +55,4 @@ IoT Tak ve Kullan gibi Önizleme özelliklerini içeren yeni bir Azure IoT Centr
 Bu hızlı başlangıçta, Önizleme özelliklerini kullanan bir IoT Central uygulaması oluşturdunuz. Önerilen sonraki adım:
 
 > [!div class="nextstepaction"]
-> [IoT Central'da bir tura katılın](overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](./tutorial-define-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

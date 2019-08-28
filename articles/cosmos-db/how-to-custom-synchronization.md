@@ -3,15 +3,15 @@ title: Azure Cosmos DB ' de daha yüksek kullanılabilirlik ve performans için 
 description: Azure Cosmos DB ' de daha yüksek kullanılabilirlik ve performans için iyileştirmek üzere özel eşitleme uygulamayı öğrenin.
 author: rimman
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: 0f630c2139d1d7d391d6c5578e5e7f378e56dcb4
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8fce14496b9f8fa17f2dbfd04b7ea42f1495a8a9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013779"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093348"
 ---
 # <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Daha yüksek kullanılabilirlik ve performans için iyileştirmek üzere özel eşitleme uygulayın
 

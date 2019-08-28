@@ -1,5 +1,5 @@
 ---
-title: Linux'ta - Azure App Service'e Giriş | Microsoft Docs
+title: Linux 'ta App Service 'ye giriş-Azure | Microsoft Docs
 description: Linux’ta Azure App Service hakkında bilgi edinin.
 keywords: azure app service, linux, oss
 services: app-service
@@ -11,21 +11,20 @@ ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6bca1b067f5ec667e8b5da92a182a5618582b2f3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617440"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071319"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux’ta Azure App Service’e Giriş
 
-[Azure App Service](../overview.md) Web siteleri ve web uygulamalarını barındırmak için iyileştirilmiş tam olarak yönetilen bir işlem platformudur. Müşteriler Linux’ta App Service’i kullanarak desteklenen uygulama yığınları için Linux’ta yerel olarak web uygulamaları barındırabilir. [Dilleri](#languages) bölümde şu anda desteklenen uygulama yığınları listelenmiştir.
+[Azure App Service](../overview.md) , Web sitelerini ve Web uygulamalarını barındırmak için optimize edilmiş, tam olarak yönetilen bir işlem platformudur. Müşteriler Linux’ta App Service’i kullanarak desteklenen uygulama yığınları için Linux’ta yerel olarak web uygulamaları barındırabilir. [Diller](#languages) bölümü, şu anda desteklenen uygulama yığınlarını listeler.
 
 ## <a name="languages"></a>Languages
 
@@ -33,12 +32,12 @@ Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşit
 
 | Dil | Desteklenen Sürümler |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 8.12, 9.4, 10.1, 10.10, 10.14 |
-| Java * | Tomcat 8.5, 9.0, Java SE WildFly 14 (tüm çalışan JRE 8) |
-| PHP | 5.6, 7.0, 7.2, 7.3 |
-| Python | 2.7, 3.6, 3.7 |
-| .NET Core | 1.0, 1.1, 2.0, 2.1, 2.2 |
-| Ruby | 2.3, 2.4, 2.5, 2.6 |
+| Node.js | 4,4, 4,5, 4,8, 6,2, 6,6, 6,9, 6,10, 6,11, 8,0, 8,1, 8,2, 8,8, 8,9, 8,11, 8,12, 9,4, 10,1, 10,10, 10,14 |
+| Java * | Tomcat 8,5, 9,0, Java VAI, yada 14 (tüm JRE 8 çalıştıran) |
+| PHP | 5,6, 7,0, 7,2, 7,3 |
+| Python | 2,7, 3,6, 3,7 |
+| .NET Core | 1,0, 1,1, 2,0, 2,1, 2,2 |
+| Ruby | 2,3, 2,4, 2,5, 2,6 |
 
 ## <a name="deployments"></a>Dağıtımlar
 
@@ -71,13 +70,13 @@ Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşit
 
 Azure portalı, yalnızca şu anda Kapsayıcılar için Web App ile kullanılabilen özellikleri gösterir. Yeni özellikler etkinleştirildikçe portalda görünmeye başlayacaktır.
 
-Linux'ta App Service ile desteklenen yalnızca [ücretsiz, temel, standart ve Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) app service planları ve olmayan bir [paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) katmanı. Zaten Linux dışı Web App'ler barındıran bir App Service planında bir Linux Web uygulaması oluşturulamıyor.  
+Linux üzerinde App Service yalnızca [ücretsiz, temel, standart ve Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service planlarında desteklenir ve [paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) bir katmana sahip değildir. Linux olmayan Web Apps barındırmakta olan bir App Service planında Linux Web uygulaması oluşturamazsınız.  
 
-Geçerli bir sınırlama göre aynı kaynak grubunun aynı bölgede Windows ve Linux uygulamaları karıştırılamaz.
+Aynı kaynak grubu için geçerli bir sınırlamaya bağlı olarak, aynı bölgedeki Windows ve Linux uygulamalarını karıştıramazsınız.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. Oturum `stdout` ve `stderr` etkinleştirmeniz gerekiyor, kapsayıcıdan **Docker kapsayıcı günlüğe kaydetme** altında **uygulama hizmeti günlükleri**. Ayar, hemen geçerli olur. App Service, değişikliği algılar ve kapsayıcı otomatik olarak yeniden başlatır.
+Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. Kapsayıcısını `stdout` ve`stderr` kapsayıcısından günlüğe kaydetmek için **App Service günlükleri**altında **Docker kapsayıcı günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
 
 SCM sitesine **Geliştirme Araçları** menüsündeki **Gelişmiş Araçlar**’dan erişebilirsiniz.
 
@@ -96,7 +95,7 @@ Aşağıdaki makaleler farklı dillerde yazılmış web uygulamalarıyla Linux't
 * [Go](quickstart-docker-go.md)
 * [Birden çok kapsayıcılı uygulamalar](quickstart-multi-container.md)
 
-Linux'ta App Service hakkında daha fazla bilgi için bkz:
+Linux üzerinde App Service hakkında daha fazla bilgi için bkz.:
 
 * [Linux’ta App Service hakkında SSS](app-service-linux-faq.md)
 * [Linux'ta App Service için SSH desteği](app-service-linux-ssh-support.md)

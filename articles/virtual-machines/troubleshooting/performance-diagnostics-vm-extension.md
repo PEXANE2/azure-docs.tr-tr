@@ -10,16 +10,15 @@ tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f9a50b0e5dd4e96c9235348bbfaae1d8a6e54d53
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f933a7414771d5e485498ef909a7dea8e0b1210c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846611"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090376"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
 
@@ -71,7 +70,7 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API sürümü.
 |publisher|Microsoft. Azure. performance. Diagnostics|Uzantı için yayımcı ad alanı.
-|türü|AzurePerformanceDiagnostics|VM uzantısının türü.
+|type|AzurePerformanceDiagnostics|VM uzantısının türü.
 |typeHandlerVersion|1.0|Uzantı işleyicisinin sürümü.
 |Performanslı Orceni|temel|Verilerin yakalanması için performans senaryosu. Geçerli değerler şunlardır: **Basic**, **vmslow**, **azurefiles**ve **Custom**.
 |traceDurationInSeconds|300|İzleme seçeneklerinden herhangi biri seçilirse izlemelerin süresi.

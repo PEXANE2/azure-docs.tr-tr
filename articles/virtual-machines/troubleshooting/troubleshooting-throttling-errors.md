@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: 6ae14edb7fa6b44f7c3bb961ffbcceb26eb9dee3
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: db1c6e8e4f1e98db08d5f7ff0ef218fa42d25860
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875452"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103293"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API azaltma hatalarında sorun giderme 
 
@@ -36,7 +35,7 @@ Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla
 | Üstbilgi                            | Değer biçimi                           | Örnek                               | Açıklama                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-MS-ratelimit-kalan-kaynak |```<source RP>/<policy or bucket>;<count>```| Microsoft. COMPUTE/HighCostGet3Min; 159 | Bu isteğin hedefi dahil olmak üzere kaynak demeti veya işlem grubunu kapsayan Azaltma ilkesi için kalan API çağrısı sayısı                                                                   |
-| x-MS-istek ücreti               | ```<count>```                             | 1                                     | Bu HTTP isteğinin geçerli ilke sınırına doğru "ücretlendirilen" çağrı sayısı. Bu en genellikle 1 ' dir. Bir sanal makine ölçek kümesinin ölçeklendirilmesi gibi Batch istekleri birden fazla sayı ücretlendirilmesine sahip olabilir. |
+| x-MS-istek ücreti               | ```<count>```                             | 1\.                                     | Bu HTTP isteğinin geçerli ilke sınırına doğru "ücretlendirilen" çağrı sayısı. Bu en genellikle 1 ' dir. Bir sanal makine ölçek kümesinin ölçeklendirilmesi gibi Batch istekleri birden fazla sayı ücretlendirilmesine sahip olabilir. |
 
 
 Bir API isteğinin birden fazla daraltma ilkesine tabi olabileceğini unutmayın. Her ilke için ayrı `x-ms-ratelimit-remaining-resource` bir üst bilgi olacaktır. 

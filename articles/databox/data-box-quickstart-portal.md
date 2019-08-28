@@ -6,21 +6,43 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405562"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098777"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Azure Data Box'ı dağıtma
+::: zone target="docs"
+
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure Data Box dağıtma
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Azure portal kullanarak Azure Data Box Disk kullanmaya başlama
+
+::: zone-end
+
+::: zone target="docs"
 
 Bu hızlı başlangıçta Azure portalı kullanarak Azure Data Box'ı dağıtma adımları anlatılmaktadır. Adımlar kablolama, yapılandırma ve Azure'a yükleyebilmesi için verileri Data Box'a kopyalama işlemlerinden oluşur. Hızlı başlangıç Azure portalında ve cihazın yerel web kullanıcı arabiriminde gerçekleştirilir.
 
-Ayrıntılı adım adım dağıtım ve izleme yönergeleri için Git [Öğreticisi: Azure Data Box'ı sırası](data-box-deploy-ordered.md)
+Ayrıntılı adım adım dağıtım ve izleme yönergeleri için [Öğreticiye gidin: Sipariş Azure Data Box](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+Bu kılavuzda, Azure Data Box Azure portal kullanılarak nasıl dağıtılacağı açıklanır. Bu adımlarda önkoşulları gözden geçirin ve cihazınızı bağlayın ve Azure 'a yükleyecek şekilde verileri cihazınıza kopyalayın.
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
@@ -41,6 +63,31 @@ Başlamadan önce:
     - Bir RJ-45 CAT 6 ağ kablosu (MGMT ağ arabirimi ile kullanın)
     - Bir RJ-45 CAT 6A VEYA bir RJ-45 CAT 6 ağ kablosu (sırasıyla 10 Gb/sn veya 1 Gb/sn olarak yapılandırılmış DATA 3 ağ arabirimi ile birlikte kullanın)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Başlamadan önce şunları yaptığınızdan emin olun:
+
+1. [Öğretici tamamlandı: Order Azure Data Box](data-box-deploy-ordered.md).
+2. Data Box alındı ve portaldaki sipariş durumu **teslim edildi**. 
+3. [Data Box güvenlik yönergeleri](data-box-safety.md)incelendi.
+4. 100-TB depolama cihazımız ile kullanılmak üzere bir topraklanmış güç kablosu alındı.
+5. Data Box üzerine kopyalamak istediğiniz verilerin bulunduğu bir konak bilgisayara erişim. Ana bilgisayarınız:
+    - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
+    - Yüksek hızlı ağa bağlısınız. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanılabilir ancak kopyalama hızı etkilenir. 
+6. Data Box yerleştirmek için düz bir yüzeye erişin. Cihazı bir standart raf rafındaki düz veya yukarı doğru yerleştirmek için, rafta bir 7U yuvası gerekir.
+7. Data Box ana bilgisayara bağlamak için aşağıdaki kabloları temin.
+    - Bir veya daha fazla 10-GbE SFP + Twinax bakır veya SFP + fiber optik kablo (DATA 1, DATA 2 Network Interfaces ile kullanın). Daha fazla bilgi için, Mellanox ConnectX®-3 Pro EN çift bağlantı noktası 10GBASE-T bağdaştırıcıları w/PCI Express 3,0 ağ arabirimiyle uyumlu olan, [Mellanox 'den desteklenen kablolar ve anahtarlar listesine](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) bakın.
+    - Bir RJ-45 CAT 6 ağ kablosu (MGMT ağ arabirimi ile kullanın)
+    - Bir RJ-45 CAT 6A VEYA bir RJ-45 CAT 6 ağ kablosu (sırasıyla 10 Gb/sn veya 1 Gb/sn olarak yapılandırılmış DATA 3 ağ arabirimi ile birlikte kullanın)
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
@@ -55,6 +102,8 @@ Bu adım yaklaşık 5 dakika sürer.
 4. Sipariş ayrıntılarını ve sevkiyat bilgilerini girin. Hizmet bölgenizde kullanılabilir durumdaysa bildirim e-posta adreslerini girin, özeti gözden geçirin ve siparişi oluşturun.
 
 Sipariş oluşturulduktan sonra cihaz gönderilmek üzere hazırlanır.
+
+
 
 ## <a name="cable"></a>Kablo 
 
@@ -91,7 +140,7 @@ Bu adımın tamamlanması yaklaşık 5-7 dakika sürer.
 3. Azure portalından alınan parolayı kullanarak oturum açın. Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata görürsünüz. Web sayfasına ilerlemek için tarayıcıya özel yönergeleri izleyin.
 4. Varsayılan olarak, 10 Gb/sn (veya 1 Gb/sn) veri arabirimi için ağ ayarları DHCP olarak yapılandırılır. Gerekirse, bu arabirimi statik olarak yapılandırabilir ve bir IP adresi sağlayabilirsiniz. 
 
-## <a name="copy-data"></a>Veri kopyalama
+## <a name="copy-data"></a>Verileri kopyalama
 
 Bu işlemi tamamlamak için gereken süre verilerinizin boyutuna ve ağın hızına göre değişir.
  
@@ -132,5 +181,7 @@ Bu hızlı başlangıçta Azure'a veri aktarımı konusunda yardım almak için 
 
 > [!div class="nextstepaction"]
 > [Azure portalını kullanarak Data Box'ı yönetme](data-box-portal-admin.md)
+
+::: zone-end
 
 

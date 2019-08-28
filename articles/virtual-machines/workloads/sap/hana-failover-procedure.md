@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad7cfbac1dffdab4af7afc26c98c0582bc376c99
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: c2c8483948deae41edbe3922dc77361ba2c58a94
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494332"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099859"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Olağanüstü durum kurtarma yük devretme yordamı
 
@@ -43,7 +42,7 @@ Yük devretmesinin birden fazla SAP HANA olması istiyorsanız, azure_hana_dr_fa
 Ayrıca, gerçek çoğaltma ilişkisini etkilemeden DR yük devretmesini test edebilirsiniz. Yük devretme testi gerçekleştirmek için, [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)'nda "test Dr yük devretmesi-azure_hana_test_dr_failover" bölümündeki adımları izleyin. 
 
 >[!IMPORTANT]
->**Yük devretmeyi test etme**IŞLEMI aracılığıyla Dr sitesinde oluşturduğunuz örnek üzerinde herhangi bir üretim *işlemini çalıştırmayın.* Komut azure_hana_test_dr_failover, birincil siteyle ilişkisi olmayan bir birim kümesi oluşturur. Sonuç olarak, birincil siteye geri eşitleme mümkün *değildir* . 
+>**Yük devretmeyi test etme**IŞLEMI aracılığıyla Dr sitesinde oluşturduğunuz örnek üzerinde herhangi bir üretim işlemini çalıştırmayın. Komut azure_hana_test_dr_failover, birincil siteyle ilişkisi olmayan bir birim kümesi oluşturur. Sonuç olarak, birincil siteye geri eşitleme mümkün *değildir* . 
 
 Sınanacak birden çok SAP HANA örneğine sahip olmak istiyorsanız, betiği birkaç kez çalıştırın. İstendiğinde, yük devretme için sınamak istediğiniz örneğin SAP HANA SID 'sini girin. 
 

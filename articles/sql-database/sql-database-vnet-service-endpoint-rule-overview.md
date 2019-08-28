@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 03/12/2019
-ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/27/2019
+ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840466"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098916"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Veritabanı sunucuları için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 
@@ -31,44 +31,7 @@ Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için b
 
 Yalnızca bir sanal ağ kuralı oluşturursanız, [Bu makalenin ilerleyen kısımlarında yer](#anchor-how-to-by-using-firewall-portal-59j)alarak adım adım ve açıklama ' ya geçebilirsiniz.
 
-<a name="anch-terminology-and-description-82f" />
-
-## <a name="terminology-and-description"></a>Terminoloji ve açıklama
-
-**Sanal ağ:** Azure aboneliğinizle ilişkili sanal ağlarınız olabilir.
-
-**Alt ağ** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
-
-**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası][vm-virtual-network-service-endpoints-overview-649d] , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
-
-**Sanal ağ kuralı:** SQL veritabanı sunucunuz için bir sanal ağ kuralı, SQL veritabanı sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanınızın ACL 'sinde olması için alt ağın **Microsoft. SQL** tür adını içermesi gerekir.
-
-Bir sanal ağ kuralı, SQL veritabanı sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
-
-## <a name="benefits-of-a-virtual-network-rule"></a>Bir sanal ağ kuralının avantajları
-
-İşlem yapana kadar, alt ağlardaki VM 'Ler SQL veritabanınıza iletişim kuramaz. İletişim kuran bir eylem, bir sanal ağ kuralı oluşturma işlemi olur. VNet kuralı yaklaşımını seçmeye yönelik korvaale, güvenlik duvarı tarafından sunulan rekabet güvenlik seçeneklerini içeren bir karşılaştırma ve kontrast tartışması gerektirir.
-
-### <a name="a-allow-access-to-azure-services"></a>A. Azure hizmetlerine erişime izin ver
-
-Güvenlik Duvarı bölmesinde, **Azure hizmetlerine erişime Izin ver**etiketli bir **açık/kapalı** düğmesi vardır. **Açık** ayarı tüm Azure IP adreslerinden ve tüm Azure alt ağlarının iletişimlerine izin verir. Bu Azure IP 'Leri veya alt ağları size ait olmayabilir. Bu ayar, SQL veritabanınızın olmasını istediğiniz büyük olasılıkla daha açıktır. Sanal ağ kuralı özelliği, daha ayrıntılı bir denetim sağlar.
-
-### <a name="b-ip-rules"></a>B. IP kuralları
-
-SQL veritabanı güvenlik duvarı, iletişimlerin SQL veritabanı 'na kabul edileceği IP adresi aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışında olan kararlı IP adresleri için çok uygundur. Ancak, Azure özel ağı içindeki birçok düğüm *dinamik* IP adresleriyle yapılandırılır. SANAL makinenizin yeniden başlatılması gibi dinamik IP adresleri değişebilir. Bir güvenlik duvarı kuralında, bir üretim ortamında dinamik bir IP adresi belirtmek de bu şekilde yapılır.
-
-VM 'niz için bir *statik* IP adresı alarak IP seçeneğini hurda yapabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
-
-Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamamlandığında maliyetli hale gelir. Sanal ağ kuralları kurmak ve yönetmek daha kolaydır.
-
-> [!NOTE]
-> Henüz bir alt ağda SQL veritabanınız olamaz. Azure SQL veritabanı sunucunuz, sanal ağınızdaki bir alt ağda bulunan bir düğümse, sanal ağ içindeki tüm düğümler SQL veritabanınıza iletişim kurabilir. Bu durumda, VM 'niz herhangi bir sanal ağ kuralına veya IP kuralına gerek duymadan SQL veritabanı ile iletişim kurabilir.
-
-Ancak, Eylül 2017 itibariyle Azure SQL veritabanı hizmeti henüz bir alt ağa atanabilecek hizmetler arasında değil.
-
-<a name="anch-details-about-vnet-rules-38q" />
+<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Sanal ağ kuralları hakkında ayrıntılar
 
@@ -141,27 +104,7 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>' Azure hizmetlerinin sunucuya erişmesine Izin ver ' öğesinin kaldırılmasına etkisi
 
-Birçok kullanıcı, Azure hizmetlerinin Azure SQL sunucularından **sunucuya erişmesine Izin ver** ' i kaldırmak ve VNET güvenlik duvarı kuralıyla değiştirmek ister.
-Ancak bunu kaldırmak aşağıdaki özellikleri etkiler:
-
-### <a name="import-export-service"></a>İçeri aktarma hizmeti al
-
-Azure SQL veritabanı Içeri aktarma verme hizmeti, Azure 'daki VM 'lerde çalışır. Bu VM 'Ler VNet 'iniz içinde değildir ve bu nedenle veritabanınıza bağlanırken bir Azure IP 'si alın. **Azure hizmetlerinin sunucuya erişmesine Izin ver** kaldırıldığında, bu VM 'ler veritabanlarınıza erişemez.
-Soruna geçici bir çözüm bulabilirsiniz. DACFx API kullanarak doğrudan kodunuzda BACPAC içeri aktarma veya dışarı aktarma işlemini çalıştırın. Bunun, güvenlik duvarı kuralını ayarladığınız sanal ağ alt ağında olan bir VM 'de dağıtıldığından emin olun.
-
-### <a name="sql-database-query-editor"></a>SQL veritabanı sorgu Düzenleyicisi
-
-Azure SQL veritabanı sorgu Düzenleyicisi, Azure 'daki sanal makinelere dağıtılır. Bu VM 'Ler VNet 'iniz içinde değil. Bu nedenle VM 'Ler, veritabanınıza bağlanırken bir Azure IP 'si alır. **Azure hizmetlerinin sunucuya erişmesine Izin ver**kaldırıldığında, bu VM 'ler veritabanlarınıza erişemez.
-
-### <a name="table-auditing"></a>Tablo denetimi
-
-Mevcut olduğunda, SQL veritabanınızda denetimi etkinleştirmenin iki yolu vardır. Azure SQL Server hizmet uç noktalarını etkinleştirdikten sonra tablo denetimi başarısız olur. Burada risk azaltma, blob denetimine geçmadır.
-
-### <a name="impact-on-data-sync"></a>Veri eşitlemeye etkisi
-
-Azure SQL veritabanı, Azure IP 'Leri kullanarak veritabanlarınıza bağlanan veri eşitleme özelliğine sahiptir. Hizmet uç noktaları kullanılırken, Azure hizmetlerinin SQL veritabanı sunucunuza yönelik sunucu erişimine erişmesine **Izin ver** ' i kapatamayacaksınız. Bu, veri eşitleme özelliğini keser.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>VNet hizmet uç noktalarını Azure depolama ile kullanmanın etkileri
 
@@ -174,6 +117,7 @@ PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yükleme
 #### <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
@@ -182,12 +126,12 @@ PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yükleme
 3.  Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) bakın.
  
 #### <a name="steps"></a>Adımlar
-1. PowerShell 'de **SQL veritabanı sunucunuzu** Azure ACTIVE DIRECTORY (AAD) ile kaydedin:
+1. PowerShell 'de Azure SQL veri ambarı örneğinizi Azure Active Directory (AAD) barındırarak **azure SQL Server kaydettirin** :
 
    ```powershell
    Connect-AzAccount
    Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
    1. Bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
@@ -196,7 +140,7 @@ PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yükleme
    > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)kullanarak **v2 'ye yükseltmeniz** gerekir.
    > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)bakın.
     
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' ye tıklayın. SQL veritabanı sunucunuza **Depolama Blobu veri katılımcısı** RBAC rolü atayın.
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' ye tıklayın. Azure SQL veri Ambarınızı, adım 1 ' de olduğu gibi Azure Active Directory 'ye (AAD) kaydettiğiniz Azure SQL Server **Depolama Blobu veri katılımcısı** RBAC rolü atayın.
 
    > [!NOTE] 
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)bakın.

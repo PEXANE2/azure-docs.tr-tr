@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile bir Abonelikteki tüm VM'ler hakkında bilgi toplamak | Microsoft Docs
-description: PowerShell ile bir Abonelikteki tüm VM'ler hakkında bilgi toplayın
+title: PowerShell ile bir abonelikteki tüm VM 'Ler hakkında ayrıntılı bilgi toplayın | Microsoft Docs
+description: PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -9,25 +9,24 @@ editor: v-miegge
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: b4828b34a089a59e630aaaf7652e8623b3e2c7b8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b51c0f7a9fbeadfd0ff79e4578bddad052466b13
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659716"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090781"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile bir Abonelikteki tüm VM'ler hakkında bilgi toplayın
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
 
-Bu betik, VM adı, kaynak grubu adı, bölge, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve belirtilen Abonelikteki sanal makinelerin genel IP adresi içeren bir csv oluşturur.
+Bu betik VM adı, kaynak grubu adı, bölge, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve belirtilen abonelikteki VM 'Lerin genel IP adresini içeren bir CSV oluşturur.
 
-Yoksa bir [Azure aboneliği](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), oluşturun bir [ücretsiz bir hesap](https://azure.microsoft.com/free) başlamadan önce.
+[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
@@ -71,14 +70,14 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Betik açıklaması
-Bu betik, bir csv dışarı aktarma Vm'leri ayrıntılarını bir aboneliği oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, bir abonelikteki VM 'lerin ayrıntılarının CSV dışa aktarılmasını oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 |Komut|Notlar|
 |-|-|
-|[AzSubscription seçin](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Kiracı, abonelik ve ortam cmdlet'leri için geçerli oturumda kullanılacak ayarlar.|
+|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Geçerli oturumda kullanılacak cmdlet 'lerin kiracı, abonelik ve ortamını ayarlar.|
 |[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Bir sanal makinenin özelliklerini alır.|
 |[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Genel bir IP adresi alır.|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Bir ağ arabirimi alır.|
+|[Get-Aznetworkınterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Bir ağ arabirimini alır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

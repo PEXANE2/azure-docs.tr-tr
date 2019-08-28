@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035796"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103065"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: Yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
@@ -40,13 +40,15 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 - Bir Azure aboneliği, henüz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) . 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1-kaynak grubu ve birincil yönetilen örnek oluşturma
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1-kaynak grubu ve birincil yönetilen örnek oluşturma
 Bu adımda, Azure portal kullanarak yük devretme grubunuz için kaynak grubunu ve birincil yönetilen örneği oluşturacaksınız. 
 
-1. [Azure portal](https://portal.azure.com) oturum açın. 
-1. Azure portal sol üst köşesinde **kaynak oluşturmayı** seçin. 
-1. Arama `managed instance` kutusuna yazın ve Azure SQL yönetilen örneği seçeneğini belirleyin. 
-1. **SQL yönetilen örnek** oluşturma sayfasını başlatmak için **Oluştur** ' u seçin. 
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
+1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
+
+    ![Yönetilen örnek seçin](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. **Azure SQL veritabanı yönetilen örneği oluştur** sayfasında, **temel bilgiler** sekmesinde
     1. **Proje ayrıntıları**' nın altında, açılır listeden **aboneliğinizi** seçin ve ardından yeni kaynak grubu **oluşturmayı** seçin. Kaynak grubunuz `myResourceGroup`için gibi bir ad yazın. 
     1. **Yönetilen örnek ayrıntıları**' nın altında, yönetilen örneğinizin adını ve yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
@@ -98,8 +100,12 @@ Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu
 
 İkincil yönetilen örneğinizi oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com), **kaynak oluştur** ' u seçin ve *Azure SQL yönetilen örneği*' ni arayın. 
-1. Microsoft tarafından yayımlanan **Azure SQL yönetilen örnek** seçeneğini seçin ve ardından sonraki sayfada **Oluştur** ' u seçin.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
+1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
+
+    ![Yönetilen örnek seçin](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. **Azure SQL veritabanı yönetilen örneği oluştur** sayfasının **temel bilgiler** sekmesinde, ikincil yönetilen örneğinizi yapılandırmak için gerekli alanları doldurun. 
 
    Aşağıdaki tabloda, ikincil yönetilen örnek için gereken değerler gösterilmektedir:
@@ -209,9 +215,8 @@ Bağlantıyı yapılandırmak için aşağıdaki adımları izleyin:
 ## <a name="7---create-a-failover-group"></a>7-yük devretme grubu oluşturma
 Bu adımda, yük devretme grubunu oluşturacak ve yönetilen örneklerin her ikisini de ekleyecek. 
 
-1. [Azure Portal](https://portal.azure.com), **tüm hizmetler** ' e gidin `managed instance` ve arama kutusuna yazın. 
-1. Seçim Sol taraftaki gezinti çubuğunuza kısayol olarak yönetilen örnekler eklemek için **SQL yönetilen örneklerinin** yanındaki yıldızı seçin. 
-1. **SQL yönetilen örnekler** ' i `sql-mi-primary`seçin ve birincil yönetilen örneğinizi (gibi) seçin. 
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. İlk bölümde oluşturduğunuz birincil yönetilen örneği (örneğin `sql-mi-primary`,) seçin. 
 1. **Ayarlar**altında, **örnek yük devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin. 
 
    ![Yük devretme grubu ekleme](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 46f4e1b3df5f1c77a57d432297685d6d1a0a14a8
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d71d71c4d289235e5b67a5201c1f7417274b8fca
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405807"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072321"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
 
@@ -37,7 +36,7 @@ Her bir API Management hizmet örneği, hizmet örneği için genel olan adland�
 
 Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-management/api-management-policy-expressions)içerebilir. Örneğin, değeri `Expression` geçerli tarih ve saati içeren bir dize döndüren bir ilke deyimidir. Adlandırılmış değer `Credential` gizli olarak işaretlenir, bu nedenle değeri varsayılan olarak görüntülenmez.
 
-| Ad       | Value                      | Secret | Tags          |
+| Name       | Value                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Value      | 42                         | False  | önemli sayılar |
 | Kimlik bilgisi | ••••••••••••••••••••••     | Doğru   | güvenlik      |
@@ -53,7 +52,7 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-manage
 
     Ad ve değer gerekli değerlerdir. Bu özellik değeri bir gizli dizi ise, bu gizli bir onay kutusu olup olmadığına bakın. Adlandırılmış değerlerinizi organize etmenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket girin ve Kaydet ' e tıklayın.
 
-4.           **Oluştur**'a tıklayın.
+4. **Oluştur**'a tıklayın.
 
 Özellik oluşturulduktan sonra, özelliği üzerine tıklayarak düzenleyebilirsiniz. Özellik adını değiştirirseniz, bu özelliğe başvuruda bulunan tüm ilkeler, yeni adı kullanacak şekilde otomatik olarak güncelleştirilir.
 

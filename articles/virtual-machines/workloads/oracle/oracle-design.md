@@ -9,22 +9,21 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348313"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100123"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure’da Oracle veritabanı tasarlama ve dağıtma
 
-## <a name="assumptions"></a>Çoğu
+## <a name="assumptions"></a>Varsayımlar
 
 - Bir Oracle veritabanını Şirket içinden Azure 'a geçirmeyi planlıyorsunuz.
 - Geçirmek istediğiniz Oracle Database için [Tanılama paketi](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)

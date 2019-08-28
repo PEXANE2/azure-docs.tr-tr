@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871918"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092677"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın
 
@@ -127,17 +127,15 @@ Bu yapılandırma bilgileri kümesi, genel görünümden korunması gereken hass
 }
 ```
 
-Ad | Value
+Name | Value
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
 storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu `https://core.windows.net`'na sahiptir. Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
-storageAccountSasToken | Ekleme, oluşturma, listeleme, güncelleştirme ve yazma izinleri`ss='bt'`(`sp='acluw'`) veren kapsayıcılar ve nesneler (`srt='co'`) için geçerli olan blob ve tablo Hizmetleri () için bir [Hesap SAS belirteci](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) . Önde gelen soru işareti (? *) eklemeyin.*
+storageAccountSasToken | Ekleme, oluşturma, listeleme, güncelleştirme ve yazma izinleri`ss='bt'`(`sp='acluw'`) veren kapsayıcılar ve nesneler (`srt='co'`) için geçerli olan blob ve tablo Hizmetleri () için bir [Hesap SAS belirteci](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) . Önde gelen soru işareti (?) eklemeyin.
 mdsdHttpProxy | seçim Uzantının belirtilen depolama hesabına ve uç noktaya bağlanmasını sağlamak için HTTP proxy bilgileri gerekir.
 sinksConfig | seçim Ölçüm ve olayların sunulabilecek alternatif hedeflerin ayrıntıları. Uzantı tarafından desteklenen her bir veri havuzunun belirli ayrıntıları, izleyen bölümlerde ele alınmıştır.
 
-
-> [!NOTE]
-> Uzantıyı bir Azure dağıtım şablonuyla dağıttığınızda, depolama hesabı ve SAS belirtecinin önceden oluşturulması ve ardından şablona geçirilmesi gerekir. Bir VM 'yi, depolama hesabını dağıtamazsınız ve uzantıyı tek bir şablonda yapılandıramıyoruz. Bir şablon içinde SAS belirteci oluşturma şu anda desteklenmiyor.
+Bir Kaynak Yöneticisi şablonu içinde SAS belirteci almak için **Listaccountsas** işlevini kullanın. Örnek bir şablon için bkz. [list işlev örneği](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
 
 Gerekli SAS belirtecini Azure portal aracılığıyla kolayca oluşturabilirsiniz.
 
@@ -167,10 +165,10 @@ Oluşturulan SAS 'yi storageAccountSasToken alanına kopyalayın; Baştaki soru 
 
 Bu isteğe bağlı bölüm, uzantının topladığı bilgileri gönderdiği ek hedefleri tanımlar. "Sink" dizisi her ek veri havuzu için bir nesne içerir. "Type" özniteliği nesnedeki diğer öznitelikleri belirler.
 
-Öğe | Değer
+Öğe | Value
 ------- | -----
 name | Bu havuza uzantı yapılandırmasında başka bir yerde başvurmak için kullanılan bir dize.
-türü | Tanımlanmakta olan havuz türü. Bu türün örneklerinde diğer değerleri (varsa) belirler.
+type | Tanımlanmakta olan havuz türü. Bu türün örneklerinde diğer değerleri (varsa) belirler.
 
 Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekler: EventHub ve JsonBlob.
 
@@ -229,7 +227,7 @@ Bu yapı, uzantı tarafından toplanan bilgileri denetleyen çeşitli ayarlar bl
 }
 ```
 
-Öğe | Değer
+Öğe | Value
 ------- | -----
 StorageAccount | Verilerin uzantı tarafından yazıldığı depolama hesabının adı. [Korunan ayarlarda](#protected-settings)belirtilen adla aynı olmalıdır.
 mdsdHttpProxy | seçim [Korumalı ayarlarınızdaki](#protected-settings)gibi. Ayarlanırsa, ortak değer özel değer tarafından geçersiz kılınır. [Korumalı ayarlar](#protected-settings)' da, parola gibi gizli dizi içeren ara sunucu ayarlarını yerleştirin.
@@ -252,12 +250,12 @@ Kalan öğeler aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 
 Bu isteğe bağlı yapı, Azure ölçümleri hizmetine ve diğer veri havuzları 'na teslime ilişkin ölçüm ve günlüklerin toplanması için denetim sağlar. Ya da ya da `performanceCounters` `syslogEvents` ikisini birden belirtmeniz gerekir. `metrics` Yapıyı belirtmeniz gerekir.
 
-Öğe | Değer
+Öğe | Value
 ------- | -----
 eventVolume | seçim Depolama tablosu içinde oluşturulan bölüm sayısını denetler. `"Large"` ,`"Medium"`, Veya`"Small"`' den biri olmalıdır. Belirtilmemişse, varsayılan değer `"Medium"`.
 Samplerateınseconds | seçim Ham (toplanmayan) ölçümler koleksiyonu arasındaki varsayılan Aralık. Desteklenen en küçük örnek oranı 15 saniyedir. Belirtilmemişse, varsayılan değer `15`.
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>ölçümler
 
 ```json
 "metrics": {
@@ -269,7 +267,7 @@ Samplerateınseconds | seçim Ham (toplanmayan) ölçümler koleksiyonu arasınd
 }
 ```
 
-Öğe | Değer
+Öğe | Value
 ------- | -----
 resourceId | VM 'nin veya VM 'nin ait olduğu sanal makine ölçek kümesinin Azure Resource Manager kaynak KIMLIĞI. Bu ayar, yapılandırmada bir JsonBlob havuzu kullanılıyorsa da belirtilmelidir.
 scheduledTransferPeriod | Toplam ölçümlerin hesaplanacağı ve Azure ölçümlerine aktarılacağı sıklık, bir 8601 zaman aralığı olarak ifade edilir. En küçük aktarım süresi 60 saniyedir, yani PT1M. En az bir scheduledTransferPeriod belirtmeniz gerekir.
@@ -312,7 +310,7 @@ Bu isteğe bağlı bölüm, ölçüm koleksiyonunu denetler. Ham örnekler her b
 Öğe | Value
 ------- | -----
 yapma | seçim LAD 'nin toplanmış ölçüm sonuçları gönderdiği havuz adlarının virgülle ayrılmış bir listesi. Tüm toplanan ölçümler listelenen her havuza yayımlanır. Bkz. [Sinksconfig](#sinksconfig). Örnek: `"EHsink1, myjsonsink"`.
-türü | Ölçümün gerçek sağlayıcısını tanımlar.
+type | Ölçümün gerçek sağlayıcısını tanımlar.
 sınıf | "Counter" ile birlikte, sağlayıcının ad alanı içinde belirli ölçümü tanımlar.
 counter | "Class" ile birlikte, sağlayıcının ad alanı içinde belirli bir ölçümü tanımlar.
 Onay Belirleyicisi | Azure ölçümleri ad alanı içindeki belirli ölçüyü tanımlar.
@@ -410,7 +408,7 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 
 Öğe | Value
 ------- | -----
-file | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
+dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
 table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 

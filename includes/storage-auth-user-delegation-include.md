@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 2ea936ba489024648583cf22c5ab73ae06bb1537
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f3b9f6c27fb8d423350eac5d286c9859ad6fbd37
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69011979"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70104308"
 ---
 ## <a name="about-the-user-delegation-sas-preview"></a>Kullanıcı temsili SAS (Önizleme) hakkında
 
 Bir kapsayıcıya veya bloba erişim için bir SAS belirteci, Azure AD kimlik bilgileri veya hesap anahtarı kullanılarak güvenliği sağlanmış olabilir. Azure AD kimlik bilgileriyle güvenliği sağlanmış bir SAS, Kullanıcı adına SAS imzalamak için kullanılan OAuth 2,0 belirtecinin istendiği için Kullanıcı temsili SAS olarak adlandırılır.
 
-Microsoft, Azure AD kimlik bilgilerini, daha kolay tehlikeye giren hesap anahtarını kullanmak yerine en iyi güvenlik uygulaması olarak mümkün olduğunca kullanmanızı önerir. Uygulama tasarımınız paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için Kullanıcı temsili SAS oluşturmak için Azure AD kimlik bilgilerini kullanın. Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](/rest/api/storageservices/create-a-user-delegation-sas).
+Microsoft, Azure AD kimlik bilgilerini, daha kolay tehlikeye giren hesap anahtarını kullanmak yerine en iyi güvenlik uygulaması olarak mümkün olduğunca kullanmanızı önerir. Uygulama tasarımınız paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için Kullanıcı temsili SAS oluşturmak için Azure AD kimlik bilgilerini kullanın. Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas).
 
 > [!NOTE]
 > Kullanıcı temsili SAS önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır.

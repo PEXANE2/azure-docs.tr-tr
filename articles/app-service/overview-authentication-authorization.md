@@ -10,18 +10,17 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030844"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087977"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure Uygulama Hizmeti’nde kimlik doğrulaması ve yetkilendirme
 
@@ -109,7 +108,7 @@ Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 | Adım | Sağlayıcı SDK 'Sı olmadan | Sağlayıcı SDK ile |
 | - | - | - |
 | 1. Kullanıcı oturum açma | İstemcisini olarak `/.auth/login/<provider>`yeniden yönlendirir. | İstemci kodu, kullanıcıyı doğrudan sağlayıcının SDK 'Sı ile imzalar ve bir kimlik doğrulama belirteci alır. Bilgi için sağlayıcının belgelerine bakın. |
-| 2. Kimlik doğrulaması sonrası | Sağlayıcı istemciyi öğesine `/.auth/login/<provider>/callback`yeniden yönlendirir. | İstemci kodu, sağlayıcıya `/.auth/login/<provider>` doğrulama için [olan belirteci gönderir](app-service-authentication-how-to.md#validate-tokens-from-providers) . |
+| 2. Kimlik doğrulama sonrası | Sağlayıcı istemciyi öğesine `/.auth/login/<provider>/callback`yeniden yönlendirir. | İstemci kodu, sağlayıcıya `/.auth/login/<provider>` doğrulama için [olan belirteci gönderir](app-service-authentication-how-to.md#validate-tokens-from-providers) . |
 | 3. Kimliği doğrulanmış oturum oluştur | App Service, yanıta kimliği doğrulanmış tanımlama bilgisi ekler. | App Service, kendi kimlik doğrulama belirtecini istemci koduna döndürür. |
 | 4. Kimliği doğrulanmış içerik hizmeti | İstemci sonraki isteklerde kimlik doğrulama tanımlama bilgisi içerir (otomatik olarak tarayıcı tarafından işlenir). | İstemci kodu, `X-ZUMO-AUTH` kimlik doğrulama belirtecini üst bilgide gösterir (Mobile Apps istemci SDK 'ları tarafından otomatik olarak işlenir). |
 

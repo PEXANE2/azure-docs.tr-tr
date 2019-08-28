@@ -1,6 +1,6 @@
 ---
-title: Azure'da OpenShift kapsayıcı platformu dağıtma | Microsoft Docs
-description: Azure'da OpenShift kapsayıcı platformu dağıtın.
+title: Azure 'da OpenShift kapsayıcı platformunu dağıtma | Microsoft Docs
+description: Azure 'da OpenShift kapsayıcı platformunu dağıtın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,64 +9,63 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 48c462edf6c7b17c3a538b6ce0cb28609628d75f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65411555"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091770"
 ---
-# <a name="deploy-openshift-container-platform-in-azure"></a>Azure'da OpenShift kapsayıcı platformu dağıtma
+# <a name="deploy-openshift-container-platform-in-azure"></a>Azure 'da OpenShift kapsayıcı platformunu dağıtma
 
-Azure'da OpenShift kapsayıcı platformu dağıtmak için birkaç yöntemden birini kullanabilirsiniz:
+Azure 'da OpenShift kapsayıcı platformunu dağıtmak için birkaç yöntemden birini kullanabilirsiniz:
 
-- Gerekli Azure altyapı bileşenlerini el ile dağıtın ve izleyin [OpenShift kapsayıcı platformu belgeleri](https://docs.openshift.com/container-platform).
-- Mevcut bir kullanabilirsiniz [Resource Manager şablonu](https://github.com/Microsoft/openshift-container-platform/) , OpenShift kapsayıcı platformu küme dağıtımını basitleştirir.
-- Başka bir seçenek kullanmaktır [Azure Marketi'nde teklif](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+- Gerekli Azure altyapı bileşenlerini el ile dağıtabilir ve ardından [OpenShift kapsayıcı platformu belgelerini](https://docs.openshift.com/container-platform)takip edebilirsiniz.
+- OpenShift kapsayıcı platformu kümesinin dağıtımını kolaylaştıran mevcut bir [Kaynak Yöneticisi şablonunu](https://github.com/Microsoft/openshift-container-platform/) da kullanabilirsiniz.
+- Diğer bir seçenek de [Azure Market Teklifini](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)kullanmaktır.
 
-Red Hat aboneliklerini tüm seçenekler için gereklidir. Dağıtım sırasında Red Hat Enterprise Linux örneği Red Hat aboneliğe kayıtlı ve OpenShift kapsayıcı platformu için yetkilendirmeleri içeren havuzu kimliğine bağlı.
-Bir geçerli Red Hat Abonelik Yöneticisi (RHSM) kullanıcı adı, parola ve havuzu kimliği olduğundan emin olun Bir etkinleştirme anahtarı, kuruluş kimliği ve Havuz kimliği kullanabilirsiniz Oturum açarak bu bilgileri doğrulayabilirsiniz https://access.redhat.com.
+Tüm seçenekler için, Red Hat aboneliği gerekir. Dağıtım sırasında Red Hat Enterprise Linux örneği Red Hat aboneliğine kaydedilir ve OpenShift kapsayıcı platformu için yetkilendirmeleri içeren havuz KIMLIĞINE eklenir.
+Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI kullanabilirsiniz. Bu bilgileri, ' de https://access.redhat.com oturum açarak doğrulayabilirsiniz.
 
 
-## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>OpenShift kapsayıcı platformu Resource Manager şablonu kullanarak dağıtma
+## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>OpenShift kapsayıcı platformu Kaynak Yöneticisi şablonu kullanarak dağıtma
 
-### <a name="private-clusters"></a>Özel kümeleri
+### <a name="private-clusters"></a>Özel kümeler
 
-Özel OpenShift kümelerini dağıtma gerektirir (web Konsolu) ana yük dengeleyiciye veya için ilişkili bir genel IP sahip birden fazla değil ınfra yük dengeleyici (yönlendirici).  Özel bir küme genellikle özel bir DNS sunucusu (varsayılan Azure DNS), özel etki alanı adı (contoso.com gibi) ve önceden tanımlanmış bir sanal ağ kullanır.  Özel kümeler için tüm uygun alt ağları ve DNS sunucusu ayarlarını ile sanal ağınızda önceden yapılandırmanız gerekir.  Ardından **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference**, ve  **existingNodeSubnetReference** kullanmak için mevcut alt ağı küme tarafından belirtmek için.
+Özel OpenShift kümelerini dağıtmak, ana yük dengeleyici (Web Konsolu) veya Infra yük dengeleyici (yönlendirici) ile ilişkilendirilmiş genel bir IP 'yi kullanmaktan daha fazlasını gerektirir.  Özel bir küme genellikle özel bir DNS sunucusu (varsayılan Azure DNS değil), özel bir etki alanı adı (örneğin, contoso.com) ve önceden tanımlanmış sanal ağlar kullanır.  Özel kümeler için, Sanal ağınızı, uygun tüm alt ağlar ve DNS sunucusu ayarları önceden ile yapılandırmanız gerekir.  Ardından, küme tarafından kullanılacak mevcut alt ağı belirtmek için **Existingmastersubnetreference**, **existingInfraSubnetReference**, **Existingcnssubnetreference**ve **existingnodesubnetreference** kullanın.
 
-Özel ana seçtiyseniz (**masterClusterType**özel =), bir statik özel IP için belirtilmesi gerekiyor **masterPrivateClusterIp**.  Bu IP ana yük dengeleyicinin ön ucu atanır.  IP kullanımda ve ana alt ağ için CIDR içinde olmalıdır.  **masterClusterDnsType** "özel" ve asıl için DNS adı sağlanmalıdır ayarlanmalıdır **masterClusterDns**.  DNS adı ve ana düğüm üzerinde konsoluna erişmek için kullanılan statik özel IP harita gerekir.
+Özel ana öğe seçilirse (**Masterclustertype**= Private), **masterprivateclusterıp**IÇIN statik bir özel IP belirtilmelidir.  Bu IP, ana yük dengeleyicinin ön ucuna atanacak.  IP, ana alt ağ için CıDR içinde olmalı ve kullanımda olmalıdır.  **Masterclusterdnstype** , "Custom" olarak ayarlanmalıdır ve **masterclusterdns**için ana DNS adı belirtilmelidir.  DNS adı statik özel IP ile eşlenmelidir ve ana düğümlerde konsola erişmek için kullanılacaktır.
 
-Özel yönlendirici seçtiyseniz (**routerClusterType**özel =), bir statik özel IP için belirtilmesi gerekiyor **routerPrivateClusterIp**.  Bu IP ön ucunu atanacak ınfra yük dengeleyici.  IP CIDR için içinde olmalıdır ınfra alt ağ ve kullanımda.  **routingSubDomainType** yönlendirme için sağlanmalıdır için "özel" ve joker DNS adına ayarlanmalıdır **routingSubDomain**.  
+Özel yönlendirici seçilmişse (**Routerclustertype**= Private), **routerprivateclusterıp**IÇIN statik bir özel IP belirtilmelidir.  Bu IP, Infra yük dengeleyicinin ön ucuna atanır.  IP, Infra alt ağı için CIDR içinde olmalı ve kullanımda olmalıdır.  **Routingsubdomaintype** , "Custom" olarak ve yönlendirme için joker karakter DNS adı belirtilmelidir.  
 
-Özel asıl ve özel yönlendirici seçtiyseniz, özel etki alanı adı da için girilmelidir **domainName**
+Özel ana bilgisayarlar ve özel yönlendirici seçilirse, özel etki alanı adının de **domainName** için girilmesi gerekir
 
-Başarılı dağıtımdan sonra savunma düğümü yapabileceğiniz ssh içine bir genel IP ile yalnızca düğümüdür.  Ana düğüm ortak erişimi için yapılandırılmış olsa bile, bunlar için ssh kullanıma sunulmaz erişim.
+Dağıtım başarılı olduktan sonra savunma düğümü, SSH ile kullanabileceğiniz tek bir genel IP 'nin bulunduğu düğümdür.  Ana düğümler genel erişim için yapılandırılmış olsa bile, SSH erişimi için sunulmazlar.
 
-Resource Manager şablonu kullanarak dağıtmak için giriş parametreleri sağlamak için bir parametre dosyası kullanın. Daha fazla dağıtımı özelleştirmek için GitHub depo çatalını oluşturmanız ve uygun öğeleri değiştirin.
+Kaynak Yöneticisi şablonu kullanarak dağıtmak için, giriş parametrelerini sağlamak üzere bir parametreler dosyası kullanırsınız. Dağıtımı daha fazla özelleştirmek için GitHub deposunun çatalını yapın ve uygun öğeleri değiştirin.
 
-Bazı ortak özelleştirme seçenekleri içerir, ancak bunlarla sınırlı değildir:
+Bazı yaygın özelleştirme seçenekleri şunlardır, ancak bunlarla sınırlı değildir:
 
-- Savunma VM boyutu (azuredeploy.json değişkeninde)
-- Adlandırma kuralları (azuredeploy.json değişkenlerinde)
-- OpenShift küme özellikleri, hosts dosyasını (deployOpenShift.sh) değiştirme
+- Savunma VM boyutu (azuredeploy. JSON içinde değişken)
+- Adlandırma kuralları (azuredeploy. JSON içindeki değişkenler)
+- OpenShift küme özellikleri, Hosts dosyası aracılığıyla değiştirildi (deployOpenShift.sh)
 
-### <a name="configure-the-parameters-file"></a>Parametre dosyasını yapılandırın
+### <a name="configure-the-parameters-file"></a>Parametreler dosyasını yapılandırma
 
-[OpenShift kapsayıcı platformu şablon](https://github.com/Microsoft/openshift-container-platform) sahip birden fazla dalı OpenShift kapsayıcı platformu farklı sürümleri için kullanılabilir.  Gereksinimlerinize göre doğrudan deposundan dağıtabilirsiniz veya deponun çatalını oluşturup dağıtmadan önce şablonları veya betik özel değişiklikleri yapın.
+[OpenShift kapsayıcı platformu şablonunda](https://github.com/Microsoft/openshift-container-platform) , OpenShift kapsayıcı platformunun farklı sürümleri için kullanılabilen birden çok dal vardır.  Gereksinimlerinize bağlı olarak, depoyu doğrudan depodan dağıtabilir veya dağıtmadan önce şablonlarda veya betiklerinizde özel değişiklikler yapabilirsiniz.
 
-Kullanım `appId` değerinden daha önce oluşturduğunuz için hizmet sorumlusu `aadClientId` parametresi.
+Daha önce `aadClientId` parametresi için oluşturduğunuz hizmet sorumlusunun değerinikullanın.`appId`
 
-Aşağıdaki örnek, tüm gerekli girişleri ile azuredeploy.parameters.json adlı bir parametre dosyası gösterir.
+Aşağıdaki örnek, tüm gerekli girişlerle azuredeploy. Parameters. JSON adlı bir parametre dosyasını gösterir.
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -243,79 +242,79 @@ Aşağıdaki örnek, tüm gerekli girişleri ile azuredeploy.parameters.json adl
 }
 ```
 
-Parametreleri özel bilgileri ile değiştirin.
+Parametreleri kendi özel bilgileriniz ile değiştirin.
 
-Farklı sürümleri, bu nedenle kullandığınız dal için gerekli parametreleri doğrulayın farklı parametreler olabilir.
+Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle kullandığınız dal için gerekli parametreleri doğrulayın.
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Parameters.json dosyasının açıklaması
+### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Parameters. JSON dosyası açıklanıyor
 
-| Özellik | Açıklama | Geçerli seçenekler şunlardır: | Varsayılan Değer |
+| Özellik | Açıklama | Geçerli seçenekler | Default Value |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | Yapıtları (json, betikleri, vb.) için URL |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
-| `location` | Kaynakların dağıtılacağı azure bölgesi |  |  |
-| `masterVmSize` | Ana VM'nin boyutu. Azuredeploy.json dosyasında listelenen izin verilen VM boyutları arasından seçin |  | Standard_E2s_v3 |
-| `infraVmSize` | Boyutu Infra VM. Azuredeploy.json dosyasında listelenen izin verilen VM boyutları arasından seçin |  | Standard_D4s_v3 |
-| `nodeVmSize` | Uygulama düğümüne VM boyutu. Azuredeploy.json dosyasında listelenen izin verilen VM boyutları arasından seçin |  | Standard_D4s_v3 |
-| `cnsVmSize` | Kapsayıcı yerel depolama (CNS) düğümü VM boyutu. Azuredeploy.json dosyasında listelenen izin verilen VM boyutları arasından seçin |  | Standard_E4s_v3 |
-| `osImageType` | Kullanılacak RHEL görüntüsü. defaultgallery: İsteğe bağlı; Market: üçüncü taraf görüntüsü | defaultgallery <br> Market | defaultgallery |
-| `marketplaceOsImage` | Varsa `osImageType` Market ve ardından 'Yayımcı', 'teklif', 'sku', 'sürümü' Market teklifi için uygun değerleri girin. Bu parametre bir nesne türü. |  |  |
-| `storageKind` | Kullanılacak depolama türü  | Yönetilen<br> Yönetilmeyen | Yönetilen |
-| `openshiftClusterPrefix` | Tüm düğümleri için konak adları yapılandırmak için kullanılan önek küme.  1 ila 20 karakter |  | mycluster |
-| `minoVersion` | OpenShift kapsayıcı platformu 3.11 dağıtmak için ikincil sürümü |  | 69 |
-| `masterInstanceCount` | Dağıtmak için ana düğüm sayısı | 1, 3, 5 | 3 |
-| `infraInstanceCount` | Sayısı altyapısı dağıtmak için düğümleri | 1, 2, 3 | 3 |
+| `_artifactsLocation`  | Yapıtlar URL 'SI (JSON, betikler, vb.) |  |  https:\//RAW.githubusercontent.com/Microsoft/OpenShift-Container-platform/Master  |
+| `location` | Kaynakların dağıtılacağı Azure bölgesi |  |  |
+| `masterVmSize` | Ana VM 'nin boyutu. Azuredeploy. json dosyasında listelenen izin verilen VM boyutlarından birini seçin |  | Standard_E2s_v3 |
+| `infraVmSize` | Infra VM 'sinin boyutu. Azuredeploy. json dosyasında listelenen izin verilen VM boyutlarından birini seçin |  | Standard_D4s_v3 |
+| `nodeVmSize` | Uygulama düğümü VM 'sinin boyutu. Azuredeploy. json dosyasında listelenen izin verilen VM boyutlarından birini seçin |  | Standard_D4s_v3 |
+| `cnsVmSize` | Kapsayıcı yerel depolama (CNS) düğüm VM 'sinin boyutu. Azuredeploy. json dosyasında listelenen izin verilen VM boyutlarından birini seçin |  | Standard_E4s_v3 |
+| `osImageType` | Kullanılacak RHEL görüntüsü. defaultgallery: Isteğe bağlı; Market: üçüncü taraf görüntü | defaultgallery <br> market | defaultgallery |
+| `marketplaceOsImage` | Market `osImageType` ise, Market teklifinin ' Yayımcı ', ' teklif ', ' SKU ' ve ' sürüm ' için uygun değerleri girin. Bu parametre bir nesne türüdür |  |  |
+| `storageKind` | Kullanılacak depolamanın türü  | lebilmesi<br> yönetilmeyen | lebilmesi |
+| `openshiftClusterPrefix` | Tüm düğümlerde konak adlarını yapılandırmak için kullanılan küme öneki.  1 ila 20 karakter arasında |  | MyCluster |
+| `minoVersion` | Dağıtım için OpenShift kapsayıcı platformu 3,11 ' ün ikincil sürümü |  | 69 |
+| `masterInstanceCount` | Dağıtılacak ana düğüm sayısı | 1, 3, 5 | 3 |
+| `infraInstanceCount` | Dağıtılacak Infra düğümlerinin sayısı | 1, 2, 3 | 3 |
 | `nodeInstanceCount` | Dağıtılacak düğüm sayısı | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
-| `cnsInstanceCount` | Dağıtılacak CNS düğüm sayısı | 3, 4 | 3 |
-| `osDiskSize` | İşletim sistemi diski (GB cinsinden) sanal makine için boyutu | 64, 128, 256, 512, 1024, 2048 | 64 |
-| `dataDiskSize` | Docker birimi (GB cinsinden) için düğümler eklemek için veri diski boyutu | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
-| `cnsGlusterDiskSize` | (GB cinsinden glusterfs tarafından kullanılmak CNS düğümleri eklemek için veri diski boyutu | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
-| `adminUsername` | Hem işletim sistemi (VM) oturum açma ve ilk OpenShift kullanıcı için yönetici kullanıcı adı |  | ocpadmin |
-| `enableMetrics` | Ölçümleri sağlar. Daha fazla kaynak altyapısı VM için doğru boyutu şekilde seçin. ölçüm gerektirir | true <br> false | false |
-| `enableLogging` | Günlük kaydını etkinleştirin. elasticsearch pod gerektirir 8 GB RAM şekilde Infra VM için uygun bir boyut seçin | true <br> false | false |
+| `cnsInstanceCount` | Dağıtılacak CNS node sayısı | 3, 4 | 3 |
+| `osDiskSize` | VM için işletim sistemi diskinin boyutu (GB olarak) | 64, 128, 256, 512, 1024, 2048 | 64 |
+| `dataDiskSize` | Docker birimi için düğümlere iliştirilecek veri diski boyutu (GB olarak) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
+| `cnsGlusterDiskSize` | GlusterFS tarafından kullanılmak üzere CNS Nodes 'a iliştirilecek veri diski boyutu (GB olarak | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
+| `adminUsername` | Hem işletim sistemi (VM) oturum açma hem de ilk OpenShift kullanıcısı için Yönetici Kullanıcı adı |  | ocpadmin |
+| `enableMetrics` | Ölçümleri etkinleştirin. Ölçümler daha fazla kaynak gerektirir, bu nedenle Infra sanal makinesi için uygun boyutu seçin | true <br> false | false |
+| `enableLogging` | Günlüğe kaydetmeyi etkinleştirin. elagra Search Pod, 8 GB RAM gerektirdiğinden Infra VM için uygun boyutu seçin | true <br> false | false |
 | `enableCNS` | Kapsayıcı yerel depolamayı etkinleştir | true <br> false | false |
-| `rhsmUsernameOrOrgId` | Red Hat Abonelik Yöneticisi kullanıcı adı veya kuruluş kimliği |  |  |
-| `rhsmPoolId` | OpenShift yetkilendirmelere işlem düğümlerinin içeren Red Hat Abonelik Yöneticisi Havuz kimliği |  |  |
-| `rhsmBrokerPoolId` | OpenShift yetkilendirmelere ve altyapısı yöneticileri için düğümleri içeren Red Hat Abonelik Yöneticisi Havuz kimliği. Farklı bir havuz kimliği yoksa, 'rhsmPoolId' olarak aynı Havuz kimliği girin |  |
-| `sshPublicKey` | SSH ortak anahtarınızı buraya kopyalayın. |  |  |
-| `keyVaultSubscriptionId` | Key Vault içeren aboneliği abonelik kimliği |  |  |
+| `rhsmUsernameOrOrgId` | Red Hat abonelik Yöneticisi Kullanıcı adı veya kuruluş KIMLIĞI |  |  |
+| `rhsmPoolId` | İşlem düğümleri için OpenShift yetkilendirmelerinizi içeren Red Hat abonelik Yöneticisi havuz KIMLIĞI |  |  |
+| `rhsmBrokerPoolId` | Ana bilgisayarlar ve Infra düğümleri için OpenShift yetkilendirmelerinizi içeren Red Hat abonelik Yöneticisi havuz kimliği. Farklı havuz kimliğiniz yoksa, ' rhsmPoolId ' ile aynı havuz KIMLIĞINI girin |  |
+| `sshPublicKey` | SSH ortak anahtarınızı buraya kopyalayın |  |  |
+| `keyVaultSubscriptionId` | Key Vault içeren aboneliğin abonelik KIMLIĞI |  |  |
 | `keyVaultResourceGroup` | Key Vault içeren kaynak grubunun adı |  |  |
-| `keyVaultName` | Oluşturduğunuz anahtar kasasının adı |  |  |
+| `keyVaultName` | Oluşturduğunuz Key Vault adı |  |  |
 | `enableAzure` | Azure bulut sağlayıcısını etkinleştir | true <br> false | true |
-| `aadClientId` | Azure Active Directory istemci da için hizmet sorumlusu uygulama kimliği olarak bilinen kimliği |  |  |
-| `domainName` | (Eğer varsa) kullanılacak özel etki alanı adı adı. "None" değilse için dağıtımı tam olarak özel kümeye ayarlayın |  | Yok |
-| `masterClusterDnsType` | OpenShift web Konsolu için etki alanı türü. 'default' kullanacağı ana DNS etiketi altyapısı genel IP. 'custom', kendi adınızı tanımlamanızı sağlar | default <br> Özel | default |
-| `masterClusterDns` | 'Custom' için seçtiyseniz, OpenShift web konsoluna erişmek için kullanılacak özel DNS adı `masterClusterDnsType` |  | Console.contoso.com |
-| `routingSubDomainType` | Varsa 'nipio' ayarlayın `routingSubDomain` nip.io kullanır.  Yönlendirme için kullanmak istediğiniz kendi etki alanınız varsa 'custom' kullanın | nipio <br> Özel | nipio |
-| `routingSubDomain` | 'Custom' için seçtiyseniz, yönlendirme için kullanmak istediğiniz joker DNS adı `routingSubDomainType` |  | Apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Yeni bir sanal ağ oluşturma veya var olan bir sanal ağı kullanmayı seçin | Mevcut <br> yeni | yeni |
-| `virtualNetworkResourceGroupName` | 'New' için seçtiyseniz, yeni sanal ağın kaynak grubunun adı `virtualNetworkNewOrExisting` |  | resourceGroup().name |
-| `virtualNetworkName` | Yeni sanal ağının 'new' için seçtiyseniz oluşturmak için ad `virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `aadClientId` | Hizmet sorumlusu için uygulama KIMLIĞI olarak da bilinen Azure Active Directory Istemci KIMLIĞI |  |  |
+| `domainName` | Kullanılacak özel etki alanı adının adı (varsa). Tam özel küme dağıtmadığı takdirde "none" olarak ayarlayın |  | yok |
+| `masterClusterDnsType` | OpenShift web konsolunun etki alanı türü. ' default ', ana Infra genel IP DNS etiketini kullanır. ' Custom ' kendi adınızı tanımlamanızı sağlar | default <br> özel | default |
+| `masterClusterDns` | İçin ' özel ' seçtiyseniz OpenShift web konsoluna erişmek için kullanılacak özel DNS adı`masterClusterDnsType` |  | console.contoso.com |
+| `routingSubDomainType` | ' Nipio ' olarak ayarlanırsa, `routingSubDomain` Nip.io kullanır.  Yönlendirme için kullanmak istediğiniz kendi etki alanınız varsa ' Custom ' kullanın | nipio <br> özel | nipio |
+| `routingSubDomain` | İçin ' Custom ' seçtiyseniz, yönlendirme için kullanmak istediğiniz joker karakter DNS adı`routingSubDomainType` |  | apps.contoso.com |
+| `virtualNetworkNewOrExisting` | Mevcut bir sanal ağın kullanılıp kullanılmayacağını seçin veya yeni bir sanal ağ oluşturun | Mevcut <br> yeni | yeni |
+| `virtualNetworkResourceGroupName` | İçin ' yeni ' seçtiyseniz yeni sanal ağın kaynak grubunun adı`virtualNetworkNewOrExisting` |  | resourceGroup().name |
+| `virtualNetworkName` | İçin ' yeni ' seçtiyseniz oluşturulacak yeni sanal ağın adı`virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Yeni sanal ağın adres ön eki |  | 10.0.0.0/14 |
 | `masterSubnetName` | Ana alt ağın adı |  | mastersubnet |
-| `masterSubnetPrefix` | İçin ana alt ağ - olarak kullanılan CIDR addressPrefix bir alt kümesi olması gerekir |  | 10.1.0.0/16 |
-| `infraSubnetName` | Adını ınfra alt ağ |  | infrasubnet |
-| `infraSubnetPrefix` | İçin kullanılan CIDR ınfra alt ağ - addressPrefix bir alt kümesi olması gerekir |  | 10.2.0.0/16 |
-| `nodeSubnetName` | Düğüm alt ağın adı |  | nodesubnet |
-| `nodeSubnetPrefix` | Düğümü için alt ağ - olarak kullanılan CIDR addressPrefix bir alt kümesi olması gerekir |  | 10.3.0.0/16 |
-| `existingMasterSubnetReference` | Ana düğüm için mevcut alt ağı tam başvuru. Yeni sanal ağ oluşturuyorsanız gerekmeyen / alt ağ |  |  |
-| `existingInfraSubnetReference` | Başvuru için mevcut alt düğümleri ınfra tam. Yeni sanal ağ oluşturuyorsanız gerekmeyen / alt ağ |  |  |
-| `existingCnsSubnetReference` | Mevcut alt ağı CNS düğümlerin tam başvuru. Yeni sanal ağ oluşturuyorsanız gerekmeyen / alt ağ |  |  |
-| `existingNodeSubnetReference` | Mevcut alt ağı işlem düğümleri için tam başvuru. Yeni sanal ağ oluşturuyorsanız gerekmeyen / alt ağ |  |  |
-| `masterClusterType` | Küme özel veya genel ana düğüm kullanıp kullanmayacağını belirtin. Özel seçilirse, bir genel IP aracılığıyla İnternet'e ana düğüm sunulmamasını. Bunun yerine, belirtilen özel IP kullanır `masterPrivateClusterIp` | Genel <br> özel | Genel |
-| `masterPrivateClusterIp` | Özel ana düğüm seçilirse, ardından özel bir IP adresi kullanmak için ana düğümleri için iç yük dengeleyici tarafından belirtilmesi gerekir. Bu statik bir IP CIDR bloğu ana alt ağ için ve zaten kullanımda içinde olması gerekir. Genel ana düğüm seçtiyseniz, bu değer kullanılmayacak ancak yine de belirtilmesi gerekir |  | 10.1.0.200 |
-| `routerClusterType` | Küme özel veya ortak altyapısı düğümleri kullanıp kullanmayacağını belirtin. Özel seçilirse, bir genel IP aracılığıyla İnternet'e düğümleri ınfra sunulmamasını. Bunun yerine, belirtilen özel IP kullanır `routerPrivateClusterIp` | Genel <br> özel | Genel |
-| `routerPrivateClusterIp` | Özel düğümler ınfra seçilir ve ardından için özel bir IP adresi belirtilmelidir için iç yük dengeleyici tarafından ınfra düğümleri kullanın. Bu statik bir IP CIDR bloğu ana alt ağ için ve zaten kullanımda içinde olması gerekir. Ortak altyapısı Seçili düğüm, bu değer kullanılmayacak ancak yine de belirtilmesi gerekir |  | 10.2.0.200 |
-| `routingCertType` | Yönlendirme etki alanı veya varsayılan otomatik olarak imzalanan sertifika için özel sertifika kullanma - yönergeleri **özel sertifikaları** bölümü | selfsigned <br> Özel | selfsigned |
-| `masterCertType` | Ana etki alanı veya varsayılan otomatik olarak imzalanan sertifika için özel sertifika kullanma - yönergeleri **özel sertifikaları** bölümü | selfsigned <br> Özel | selfsigned |
+| `masterSubnetPrefix` | Ana alt ağ için kullanılan CıDR, Addresspredüzeltmesini alt kümesi olmalıdır |  | 10.1.0.0/16 |
+| `infraSubnetName` | Infra alt ağının adı |  | infrasubnet |
+| `infraSubnetPrefix` | Infra alt ağı için kullanılan CIDR-addresspredüzeltmesinin bir alt kümesi olması gerekir |  | 10.2.0.0/16 |
+| `nodeSubnetName` | Düğüm alt ağının adı |  | nodesubnet |
+| `nodeSubnetPrefix` | Düğüm alt ağı için kullanılan CıDR-Addresspredüzeltmesini 'nin bir alt kümesi olması gerekir |  | 10.3.0.0/16 |
+| `existingMasterSubnetReference` | Ana düğümler için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
+| `existingInfraSubnetReference` | Infra düğümleri için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
+| `existingCnsSubnetReference` | CNS Nodes için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
+| `existingNodeSubnetReference` | İşlem düğümleri için mevcut alt ağa tam başvuru. Yeni vNet/alt ağ oluşturulmadığında gerekli değildir |  |  |
+| `masterClusterType` | Kümenin özel veya ortak ana düğümler kullanıp kullanmadığını belirtin. Özel seçilirse, ana düğümler genel bir IP aracılığıyla Internet 'e gösterilmez. Bunun yerine, içinde belirtilen özel IP 'yi kullanır`masterPrivateClusterIp` | genel <br> özel | genel |
+| `masterPrivateClusterIp` | Özel ana düğümler seçilirse, ana düğümlerin iç yük dengeleyici tarafından kullanılmak üzere özel bir IP adresinin belirtilmesi gerekir. Bu statik IP, ana alt ağ için CıDR bloğunda olmalıdır ve zaten kullanımda olmalıdır. Ortak ana düğümler seçilirse, bu değer kullanılmaz ancak yine de belirtilmesi gerekir |  | 10.1.0.200 |
+| `routerClusterType` | Kümenin özel veya genel Infra düğümleri kullanıp kullanmayacağını belirtin. Özel seçilirse, Infra düğümleri Internet 'e genel bir IP üzerinden gösterilmez. Bunun yerine, içinde belirtilen özel IP 'yi kullanır`routerPrivateClusterIp` | genel <br> özel | genel |
+| `routerPrivateClusterIp` | Özel Infra düğümleri seçilirse, Infra düğümleri için iç yük dengeleyici tarafından kullanılmak üzere özel bir IP adresinin belirtilmesi gerekir. Bu statik IP, ana alt ağ için CıDR bloğunda olmalıdır ve zaten kullanımda olmalıdır. Ortak Infra düğümleri seçilirse, bu değer kullanılmaz ancak yine de belirtilmesi gerekir |  | 10.2.0.200 |
+| `routingCertType` | Yönlendirme etki alanı veya varsayılan otomatik olarak imzalanan sertifika için özel sertifika kullan- **özel sertifikalar** bölümündeki yönergeleri izleyin | selfsigned <br> özel | selfsigned |
+| `masterCertType` | Ana etki alanı için özel sertifika veya varsayılan otomatik olarak imzalanan sertifika kullan- **özel sertifikalar** bölümündeki yönergeleri izleyin | selfsigned <br> özel | selfsigned |
 
 <br>
 
 ### <a name="deploy-using-azure-cli"></a>Azure CLI’yi kullanarak dağıtma
 
 > [!NOTE] 
-> Aşağıdaki komut, Azure CLI'yı 2.0.8 gerektirir veya üzeri. CLI sürümü ile doğrulayabilirsiniz `az --version` komutu. CLI sürümünü güncelleştirmek için bkz: [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLI sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-Aşağıdaki örnek, OpenShift kümeyi ve tüm ilgili kaynakları myOpenShiftCluster ile bir dağıtım adı openshiftrg, adlı bir kaynak grubuna dağıtır. Şablon, doğrudan GitHub deposunu ve adlı azuredeploy.parameters.json dosyasının dosya kullanılan yerel bir parametre olarak başvuruluyor.
+Aşağıdaki örnek, OpenShift kümesini ve tüm ilgili kaynakları openkaydırıcı adlı bir kaynak grubunda myOpenShiftCluster dağıtım adı ile dağıtır. Şablona doğrudan GitHub deposundan başvurulur ve azuredeploy. Parameters. JSON dosyası adlı bir yerel parametreler dosyası kullanılır.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -323,7 +322,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Dağıtım, dağıtılan düğüm ve yapılandırılan seçeneklerin, toplam sayısına göre tamamlamak için en az 60 dakika sürer. OpenShift Konsolu URL'sini ve savunma DNS FQDN dağıtım tamamlandığında terminale yazdırır.
+Dağıtım, dağıtılan toplam düğüm sayısına ve yapılandırılmış seçeneklere bağlı olarak en az 60 dakika sürer. Dağıtım tamamlandığında, OpenShift konsolunun savunma DNS FQDN 'si ve URL 'si terminale yazdırılır.
 
 ```json
 {
@@ -332,11 +331,11 @@ Dağıtım, dağıtılan düğüm ve yapılandırılan seçeneklerin, toplam say
 }
 ```
 
-Dağıtım tamamlamak ekleyin bekleniyor komut satırı bağlamanın istemiyorsanız `--no-wait` grubu dağıtımı için seçenekleri biri olarak. Dağıtım çıkışı, Azure portalında kaynak grubu için Dağıtım bölümündeki alınabilir.
+Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, Grup dağıtımına yönelik seçeneklerden birini ekleyin `--no-wait` . Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
 
-## <a name="connect-to-the-openshift-cluster"></a>OpenShift kümeye bağlanma
+## <a name="connect-to-the-openshift-cluster"></a>OpenShift kümesine bağlanma
 
-Dağıtım tamamlandığında, bağlantı, dağıtım çıktı bölümünden alın. OpenShift konsoluna tarayıcınızla kullanarak bağlanma **OpenShift Konsolu URL'si**. Ayrıca savunma ana bilgisayara SSH kullanabilirsiniz. Yönetici kullanıcı adı clusteradmin ve savunma genel IP DNS FQDN bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com olduğu yerde bir örneği verilmiştir:
+Dağıtım tamamlandığında, dağıtımın çıkış bölümünden bağlantıyı alın. **OpenShift konsol URL**'sini kullanarak, tarayıcınızla OpenShift konsoluna bağlanın. Ayrıca, savunma ana bilgisayarına SSH de ekleyebilirsiniz. Aşağıda Yönetici Kullanıcı adının kümeyöneticisi olduğu ve savunma genel IP DNS FQDN 'sinin bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com olduğu bir örnek verilmiştir:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -344,7 +343,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kullanım [az grubu Sil](/cli/azure/group) komutunu kullanarak kaynak grubunu, OpenShift küme kaldırmak için ve artık gerekmediğinde tüm ilgili kaynakları.
+Kaynak grubunu, OpenShift kümesini ve artık gerekli olmadığında tüm ilgili kaynakları kaldırmak için [az Group Delete](/cli/azure/group) komutunu kullanın.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -353,5 +352,5 @@ az group delete --name openshiftrg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Dağıtım sonrası görevler](./openshift-post-deployment.md)
-- [Azure'da OpenShift dağıtım sorunlarını giderme](./openshift-troubleshooting.md)
+- [Azure 'da OpenShift dağıtımında sorun giderme](./openshift-troubleshooting.md)
 - [OpenShift kapsayıcı platformu ile çalışmaya başlama](https://docs.openshift.com/container-platform)

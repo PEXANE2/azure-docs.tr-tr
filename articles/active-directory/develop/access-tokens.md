@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: fasttrack-edit
+ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b935f8bb15357e0ca79665b5620be5778ad3c554
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512512"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074320"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -170,7 +170,7 @@ Azure AD tarafından verilen belirteçler, RSA 256 gibi sektör standardı asime
 }
 ```
 
-Talep, belirteci imzalamak için kullanılan algoritmayı gösterir, `kid` talep ise belirteci imzalamak için kullanılan belirli ortak anahtarı gösterir. `alg`
+Talep, belirteci imzalamak için kullanılan algoritmayı gösterir, `kid` talep ise belirteci doğrulamak için kullanılan belirli ortak anahtarı gösterir. `alg`
 
 Azure AD, belirli bir zamanda belirli bir ortak özel anahtar çiftleri kümesinden herhangi birini kullanarak bir id_token imzalayamayabilir. Azure AD, olası anahtar kümesini düzenli aralıklarla döndürür, bu nedenle uygulamanızın bu anahtar değişikliklerini otomatik olarak işleyecek şekilde yazılması gerekir. Azure AD tarafından kullanılan ortak anahtarlarda güncelleştirmelerin her 24 saatte bir denetlenmesi için makul bir sıklık vardır.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991546"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074385"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
 
@@ -177,63 +177,7 @@ Bu bölümde, HDInsight ile kullanılan Hortonçalışmalar veri platformu dağ�
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Kümeler için varsayılan düğüm yapılandırması ve sanal makine boyutları
 
-Aşağıdaki tablolarda HDInsight kümeleri için varsayılan sanal makine (VM) boyutları listelenmektedir.  Bu grafik, HDInsight kümelerini dağıtmak üzere PowerShell veya Azure CLı betikleri oluştururken kullanılacak VM boyutlarını anlamak için gereklidir.
-
-> [!NOTE]
-> Veri disklerine sahip tek küme türleri, hızlandırılmış yazma özelliği etkinleştirilmiş Kafka ve HBase kümelerdir. HDInsight bu senaryolarda P30 ve S30 disk boyutlarını destekler.
-
-> [!IMPORTANT]  
-> Bir kümede 32 ' den fazla çalışan düğümüne ihtiyacınız varsa, en az 8 çekirdek ve 14 GB RAM içeren bir baş düğüm boyutu seçmeniz gerekir.
-
-* Brezilya Güney ve Japonya Batı hariç tüm desteklenen bölgeler:
-
-|Küme türü|Hadoop|HBase|Interactive Query|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|Baş: varsayılan VM boyutu|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|Baş: önerilen VM boyutları|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|Çalışan: varsayılan VM boyutu|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|Aracı başına 2 S30 disk ile 4 D12v2|
-|Çalışan: önerilen VM boyutları|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|ZooKeeper: varsayılan VM boyutu||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|ZooKeeper: önerilen VM boyutları||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|ML Hizmetleri: varsayılan VM boyutu||||||D4 v2||
-|ML Hizmetleri: önerilen VM boyutu||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* Yalnızca Brezilya Güney ve Japonya Batı (v2 boyutu yok):
-
-  | Küme türü | Hadoop | HBase | Interactive Query |Storm | Spark | ML Services |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Baş: varsayılan VM boyutu |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Baş: önerilen VM boyutları |D3<br/> D4<br/> D12 |D3<br/> D4<br/> D12  | D13<br/> D14 |A3<br/> ADET<br/> A5 |D12<br/> D13<br/> D14 |D12<br/> D13<br/> D14 |
-  | Çalışan: varsayılan VM boyutu |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | Çalışan: önerilen VM boyutları |D3<br/> D4<br/> D12 |D3<br/> D4<br/> D12  | D13<br/> D14 |D3<br/> D4<br/> D12 |D4<br/> D12<br/> D13<br/> D14 | D4<br/> D12<br/> D13<br/> D14 |
-  | ZooKeeper: varsayılan VM boyutu | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: önerilen VM boyutları | |Y2<br/> A3<br/> A4 | |Y2<br/> A3<br/> A4 | | |
-  | ML Hizmetleri: varsayılan VM boyutları | | | | | |D4 |
-  | ML Hizmetleri: önerilen VM boyutları | | | | | |D4<br/> D12<br/> D13<br/> D14 |
-
-> [!NOTE]
-> - Baş, fırtınası kümesi türü için *Nimbus* olarak bilinir.
-> - Çalışan, fırtınası kümesi türü için *Gözetmen* olarak bilinir.
-> - Çalışan, HBase küme türü için *bölge* olarak bilinir.
+Kümeniz için seçilecek sanal makine SKU 'Larının hakkında daha fazla bilgi için bkz. [Azure HDInsight küme yapılandırması ayrıntıları](hdinsight-supported-node-configuration.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [HDInsight üzerinde Apache Hadoop, Spark ve daha fazlası için küme kurulumu](hdinsight-hadoop-provision-linux-clusters.md)

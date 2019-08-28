@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 302f60680d909f39af4573ec38ac8b76993392cd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695550"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103532"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Öğretici: Yedekleme ve azure'da Linux sanal makineler için dosyaları geri yükleme
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Öğretici: Azure 'da Linux sanal makineleri için dosyaları yedekleme ve geri yükleme
 
 Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yükleme yaptığınızda VM’nin tamamını veya belirli dosyaları geri yükleyebilirsiniz. Bu makalede tek bir dosyanın nginx çalıştıran bir Linux VM’ye nasıl geri yükleneceği açıklanır. Kullanılabilecek bir VM’niz zaten yoksa [Linux hızlı başlangıcını](quick-create-cli.md) kullanarak VM oluşturabilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -94,8 +93,8 @@ Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfas�
 7. Listeden VM’yi seçin.
 8. VM dikey penceresinde, **Ayarlar** bölümünden **Yedekleme**’ye tıklayın. **Yedekleme** dikey penceresi açılır. 
 9. Dikey pencerenin üst tarafındaki menüde **Dosya Kurtarma** seçeneğini belirleyin. **Dosya Kurtarma** dikey penceresi açılır.
-10. İçinde **1. adım: Kurtarma noktası seçin**, açılan listeden bir kurtarma noktası seçin.
-11. İçinde **2. adım: Göz atmak ve dosyaları kurtarmak için betiği indirme**, tıklayın **yürütülebilir dosyayı indir** düğmesi. İndirilen dosyayı yerel bilgisayarınıza kaydedin.
+10. **Adım 1: Kurtarma noktası**' nı seçin, açılan listeden bir kurtarma noktası seçin.
+11. 2 **. Adım: Dosyaları**indirmek ve kurtarmak için betiği indirin, **çalıştırılabilir dosyayı indir** düğmesine tıklayın. İndirilen dosyayı yerel bilgisayarınıza kaydedin.
 7. Betik dosyasını yerel olarak indirmek için **Betiği indir**’e tıklayın.
 8. Bir Bash istemi açıp aşağıdaki ifadeyi yazın. Bunu yazarken *Linux_myVM_05-05-2017.sh* kısmını indirdiğiniz betiğin asıl yolu ve dosyasıyla, *azureuser* kısmını VM’nin kullanıcı adıyla ve *13.69.75.209* kısmını ise VM’nizin genel IP adresi ile değiştirin.
     
@@ -156,7 +155,7 @@ Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfas�
 
     ![Varsayılan nginx web sayfası](./media/tutorial-backup-vms/nginx-working.png)
 
-18. Yerel bilgisayarınızda Azure portalında hem de tarayıcı sekmesine dönün **3. adım: Kurtarma işleminden sonra diskleri çıkarma** tıklayın **diskleri çıkar** düğmesi. Bu adımı gerçekleştirmeyi unutursanız takma noktası ile bağlantı 12 saatin sonunda otomatik olarak kesilir. Bu 12 saatin ardından yeni takma noktası oluşturmak için yeni bir betik indirmeniz gerekir.
+18. Yerel bilgisayarınızda, Azure Portal için tarayıcı sekmesine dönün ve **adım 3: Kurtarma** işleminden sonra diskleri çıkarma **diskleri** çıkar düğmesine tıklayın. Bu adımı gerçekleştirmeyi unutursanız takma noktası ile bağlantı 12 saatin sonunda otomatik olarak kesilir. Bu 12 saatin ardından yeni takma noktası oluşturmak için yeni bir betik indirmeniz gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

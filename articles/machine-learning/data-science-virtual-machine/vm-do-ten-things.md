@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2effbd5fec1bbe32bcd6f599d2c2cbba66f33bdb
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 33f1d102f128f7e63d625132c9d3c3834955747b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998079"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099442"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows veri bilimi sanal makinesi üzerinde yapabileceğiniz on işlem
 
@@ -207,7 +207,7 @@ ep <- endpoints(ws, s)
 ans = consume(ep, sleepstudy)$ans
 ```
 
-[Machine Learning studio 'de R paketleri](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning.md)hakkında daha fazla bilgi görüntüleyin.
+[Machine Learning studio 'de R paketleri](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning)hakkında daha fazla bilgi görüntüleyin.
 
 ## <a name="manage-azure-resources"></a>Azure kaynaklarını yönetme
 DSVM yalnızca, sanal makinede analiz çözümünüzü yerel olarak oluşturmanıza izin vermez. Ayrıca, Azure bulut platformunda hizmetlere erişmenize de olanak tanır. Azure, DSVM 'nizden yönetebileceğiniz ve erişebileceğiniz çeşitli işlem, depolama, veri analizi ve diğer hizmetler sağlar.

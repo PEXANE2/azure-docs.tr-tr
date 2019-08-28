@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 78fb48d2584e94e5c38a4648f1ae41e566637601
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0d5f04d9c0cc6dcd8a784ae7a816d93e2aab30aa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875591"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099481"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central uygulaması oluşturma
 
@@ -24,7 +24,7 @@ _Oluşturucu_ olarak, Azure IoT Central kullanıcı arabirimini kullanarak Micro
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Azure IoT Central [Uygulama Yöneticisi](https://aka.ms/iotcentral) sayfasına gidin. Microsoft kişisel ya da iş veya okul hesabıyla oturum açmalısınız.
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesine gidin. Microsoft kişisel ya da iş veya okul hesabıyla oturum açmalısınız.
 
 Yeni bir Azure IoT Central uygulaması oluşturmaya başlamak için **Yeni Uygulama**'yı seçin. Bu sizi **Uygulama Oluştur** sayfasına götürür.
 
@@ -58,4 +58,4 @@ Yeni bir Azure IoT Central uygulaması oluşturmak için:
 Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. Önerilen sonraki adım:
 
 > [!div class="nextstepaction"]
-> [IoT Central'da bir tura katılın](overview-iot-central-tour.md)
+> [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](./tutorial-define-device-type.md)

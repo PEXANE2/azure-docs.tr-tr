@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure PowerShell ile Azure sanal makineleri yönetme | Microsoft Docs
+title: Öğretici-Azure sanal makinelerini Azure PowerShell yönetme | Microsoft Docs
 description: Bu öğreticide RBAC, ilkeler, kilitler ve etiketler uygulayarak Azure sanal makinelerini yönetmek için Azure PowerShell’i kullanma hakkında bilgi edineceksiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -9,17 +9,16 @@ editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 74f8ad6935c0d6776dcad6f24e7e92318f7aba4a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c551e5c61c091e46870efcc8bffcb669aa78ea9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100325"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows sanal makine yönetimi hakkında bilgi edinin
 
@@ -61,7 +60,7 @@ Sanal makine çözümlerini yönetmek için yaygın olarak gereken erişimi sağ
 
 Kullanıcılara rolleri tek tek atamak yerine, benzer eylemlerde bulunması gereken kullanıcılar için bir Azure Active Directory grubu kullanmak genellikle daha kolaydır. Ardından, bu grubu uygun role atayabilirsiniz. Bu makalede sanal makineyi yönetmek için var olan bir grubu kullanın veya portalı kullanarak [bir Azure Active Directory grubu oluşturun](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Yeni grup oluşturma veya var olan bir tek, kullanım bulma sonra [yeni AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) kaynak grubu için sanal makine Katılımcısı rolü için Azure Active Directory grubu atamak için komutu.  
+Yeni bir grup oluşturduktan veya var olan bir grubu bulduktan sonra, Azure Active Directory grubunu kaynak grubu için sanal makine katılımcısı rolüne atamak üzere [New-Azroleatama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) komutunu kullanın.  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -71,13 +70,13 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Belirten bir hata alırsanız **asıl \<GUID > dizinde yok**, yeni Grup Azure Active Directory yayılan edilmemiş. Komutu tekrar çalıştırmayı deneyin.
+Asıl GUID 'yi belirten bir hata alırsanız  **>dizindeyoksa,yenigrupAzureActiveDirectorygenelindeyayılmaz\<** . Komutu tekrar çalıştırmayı deneyin.
 
 Genellikle, kullanıcıların dağıtılmış kaynakları yönetmek için atandığından emin olmak üzere *Ağ Katılımcısı* ve *Depolama Hesabı Katılımcısı* için işlemi yinelemeniz gerekir. Bu makalede, söz konusu adımları atlayabilirsiniz.
 
 ## <a name="azure-policy"></a>Azure İlkesi
 
-[Azure İlkesi](../../governance/policy/overview.md) abonelikteki tüm kaynakların şirket standartlarına uyduğundan emin olmanıza yardımcı olur. Aboneliğinizde zaten birkaç ilke tanımı mevcuttur. Kullanılabilir ilke tanımlarını görmek için [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) komutu:
+[Azure İlkesi](../../governance/policy/overview.md) abonelikteki tüm kaynakların şirket standartlarına uyduğundan emin olmanıza yardımcı olur. Aboneliğinizde zaten birkaç ilke tanımı mevcuttur. Kullanılabilir ilke tanımlarını görmek için [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) komutunu kullanın:
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -89,7 +88,7 @@ Mevcut ilke tanımlarını göreceksiniz. İlke türü **Yerleşik** veya **Öze
 * Sanal makineler için SKU'ları sınırlama.
 * Yönetilen diskler kullanmayan sanal makineleri denetleme.
 
-Aşağıdaki örnekte, görünen ada göre üç ilke tanımı alırsınız. Kullandığınız [yeni AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) tanımlar kaynak grubuna atamak için komutu. Bazı ilkeler için, izin verilen değerleri belirtmek üzere parametre değerleri sağlayın.
+Aşağıdaki örnekte, görünen ada göre üç ilke tanımı alırsınız. Bu tanımları kaynak grubuna atamak için [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) komutunu kullanabilirsiniz. Bazı ilkeler için, izin verilen değerleri belirtmek üzere parametre değerleri sağlayın.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -143,7 +142,7 @@ Dağıtımınız tamamlandıktan sonra çözüme daha fazla yönetim ayarı uygu
 
 [Kaynak kilitleri](../../azure-resource-manager/resource-group-lock-resources.md), kuruluşunuzdaki kullanıcıların kritik kaynakları yanlışlıkla silmesini veya değiştirmesini önler. Rol tabanlı erişim denetiminin aksine, kaynak kilitleri tüm kullanıcılar ve roller için bir kısıtlama uygular. Kilit düzeyini *CanNotDelete* veya *ReadOnly* olarak ayarlayabilirsiniz.
 
-Sanal makine ve ağ güvenlik grubu kilitlemek için kullanmak [yeni AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) komutu:
+Sanal makineyi ve ağ güvenlik grubunu kilitlemek için [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) komutunu kullanın:
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -175,7 +174,7 @@ Azure kaynaklarınızı mantıksal olarak kategorilere ayırmak için [etiketler
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Bir sanal makineye etiketleri uygulamak için [kümesi AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) komutu:
+Etiketleri bir sanal makineye uygulamak için [set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) komutunu kullanın:
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -189,7 +188,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>Kaynakları etikete göre bulma
 
-Kaynakları bir etiket adı ve değeri bulmak için kullanın [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) komutu:
+Etiket adı ve değeri olan kaynakları bulmak için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) komutunu kullanın:
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -207,7 +206,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kilit kaldırılana kadar kilitli ağ güvenlik grubu silinemez. Kilidi kaldırmak için [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) komutu:
+Kilit kaldırılana kadar kilitli ağ güvenlik grubu silinemez. Kilidi kaldırmak için [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) komutunu kullanın:
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -220,7 +219,7 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-Artık gerekli değilse [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) komutunu kaynak grubunu, VM'yi ve tüm ilgili kaynakları.
+Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

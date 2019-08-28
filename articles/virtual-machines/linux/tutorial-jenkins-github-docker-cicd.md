@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d8ef524121f41129d842cfdf9822fe6a19c71810
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3d0b67227c8e80f23f111ec889f8cb1541b15f94
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709562"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100761"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Öğretici: Jenkins, GitHub ve Docker ile azure'da bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Öğretici: Azure 'da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma
 
 Uygulama geliştirme sürecinin derleme ve test aşamasını otomatikleştirmek için bir sürekli tümleştirme ve dağıtım (CI/CD) işlem hattı kullanabilirsiniz. Bu öğreticide, aşağıdakileri öğrenerek bir Azure sanal makinesinde CI/CD işlem hattı oluşturursunuz:
 
@@ -109,7 +108,7 @@ Güvenlik nedeniyle, Jenkins yüklemesini başlatmak için VM’nizde bir metin 
 ssh azureuser@<publicIps>
 ```
 
-Jenkins kullanarak çalıştığını doğrulamak `service` komutu:
+Şu `service` komutu kullanarak Jenkins 'nin çalıştığını doğrulayın:
 
 ```bash
 $ service jenkins status
@@ -140,7 +139,7 @@ Dosya henüz kullanılamıyorsa cloud-init tarafından Jenkins ve Docker yüklem
 - **Kaydet ve Bitir**’i seçin
 - Jenkins hazır olduktan sonra **Jenkins kullanmaya başla**’yı seçin
   - Jenkins kullanmaya başladığınızda web tarayıcınız boş bir sayfa görüntülerse, Jenkins hizmetini yeniden başlatın. SSH oturumundan `sudo service jenkins restart` yazın ve web tarayıcınızı yenileyin.
-- Gerekirse, Jenkins için kullanıcı adı ve oluşturduğunuz parola ile oturum açın.
+- Gerekirse, Jenkins 'de oluşturduğunuz Kullanıcı adı ve parolayla oturum açın.
 
 
 ## <a name="create-github-webhook"></a>GitHub web kancası oluşturma
@@ -148,13 +147,13 @@ GitHub tümleştirmesini yapılandırmak için Azure örnek deposundan [Node.js 
 
 Oluşturduğunuz çatalın içinde bir web kancası oluşturun:
 
-- Seçin **ayarları**, ardından **Web kancaları** sol taraftaki.
-- Seçin **Web kancası Ekle**, enter *Jenkins* filtre kutusuna.
-- İçin **yük URL'si**, girin `http://<publicIps>:8080/github-webhook/`. Sondaki / karakterini eklemeyi unutmayın
-- İçin **içerik türü**seçin *application/x-www-form-urlencoded işlemek*.
-- İçin **hangi olayların bu Web kancası tetiklemenin ister misiniz?** seçin *yalnızca anında iletme olay.*
-- Ayarlama **etkin** için işaretlenmiş.
-- Tıklayın **Web kancası Ekle**.
+- **Ayarlar**' ı seçin ve ardından sol taraftaki **Web kancaları** ' nı seçin.
+- **Web kancası Ekle**' yi seçin ve ardından, filtre kutusuna *Jenkins* yazın.
+- **Yük URL 'si**için girin `http://<publicIps>:8080/github-webhook/`. Sondaki / karakterini eklemeyi unutmayın
+- **İçerik türü**için *Application/x-www-form-urlencoded*öğesini seçin.
+- **Bu Web kancasını tetiklemek istediğiniz olayları seçin?** *yalnızca anında iletme olayını seçin.*
+- **Etkin** olarak işaretlendi olarak ayarlayın.
+- **Web kancası Ekle**' ye tıklayın.
 
 ![GitHub web kancasını çatalı oluşturulan deponuza ekleyin](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 

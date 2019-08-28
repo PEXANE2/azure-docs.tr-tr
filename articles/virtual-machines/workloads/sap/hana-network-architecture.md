@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01001336e166d5eb2c7dff845b80da2174225a25
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234423"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099728"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (büyük örnekler) ağ mimarisi
 
@@ -76,7 +75,7 @@ Azure 'da SAP dağıtımları arasındaki farklar şunlardır:
 
 HANA büyük örnek damgalarının 3. düzeltmesi sayesinde, VM 'Ler ve HANA büyük örnek birimleri arasında karşılaşılan ağ gecikmesi, tipik bir sanal makineden VM ağına gidiş dönüş gecikmesinden daha yüksek olabilir. Azure bölgesine bağlı olarak, ölçülen değerler, [SAP notunun altında ortalama olarak sınıflandırılan 0,7-MS gidiş dönüş gecikmesini aşabilir #1100926-SSS: Ağ performansı](https://launchpad.support.sap.com/#/notes/1100926/E). Bir Azure VM ve HANA büyük örnek birimi arasında ağ gidiş dönüş gecikmesini ölçmek için Azure bölgesine ve aracına bağımlıdır, ölçülen gecikme süresi 2 milisaniyeye kadar olabilir. Bununla birlikte, müşteriler SAP HANA tabanlı üretim SAP uygulamalarını SAP HANA büyük örnek üzerinde başarıyla dağıtır. Azure HANA büyük örneğinde iş işlemlerinizi iyice test ettiğinizden emin olun. ExpressRoute hızlı yolu adlı yeni bir işlev, Azure 'daki yalnızca HANA büyük örnekler ve uygulama katmanı VM 'Leri arasındaki ağ gecikmesini azaltabilir (aşağıya bakın). 
 
-Hana büyük örnek damgalarının 4. düzeltmesi sayesinde, Hana büyük örnek damgasına yakınlık halinde dağıtılan Azure VM 'ler arasındaki ağ gecikmesi, [SAP notunda belgelendiği gibi ortalama veya daha iyi bir sınıflandırmadan fazlasını karşılayamadı. 1100926-SSS: Azure ExpressRoute hızlı yolu yapılandırıldıysa ağ performansı](https://launchpad.support.sap.com/#/notes/1100926/E) (aşağıya bakın). Azure VM 'Leri, düzeltme 4 ' ün büyük örnek birimlerine yakın bir yerde dağıtmak için [Azure yakınlık yerleşimi gruplarından](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)yararlanabilirsiniz. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimlerinin SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında açıklanacaktır ](sap-proximity-placement-scenarios.md).
+Hana büyük örnek damgalarının 4. düzeltmesi sayesinde, Hana büyük örnek damgasına yakınlık halinde dağıtılan Azure VM 'ler arasındaki ağ gecikmesi, [SAP notunda belgelendiği gibi ortalama veya daha iyi bir sınıflandırmadan buluşmasına neden olur. #1100926-SSS: Azure ExpressRoute hızlı yolu yapılandırıldıysa ağ performansı](https://launchpad.support.sap.com/#/notes/1100926/E) (aşağıya bakın). Azure VM 'Leri, düzeltme 4 ' ün büyük örnek birimlerine yakın bir yerde dağıtmak için [Azure yakınlık yerleşimi gruplarından](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)yararlanabilirsiniz. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimlerinin SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında açıklanacaktır ](sap-proximity-placement-scenarios.md).
 
 VM 'Ler ve HANA büyük örnek arasında kararlı ağ gecikmesi sağlamak için, ExpressRoute ağ geçidi SKU 'SU seçeneği gereklidir. Şirket içi ve VM 'Ler arasındaki trafik desenlerinden farklı olarak, VM 'Ler ve HANA büyük örnek arasındaki trafik deseni, iletilmek üzere küçük ancak yüksek miktarda istek ve veri birimi geliştirebilir. Bu tür artışlarıyla 'yi işlemek için UltraPerformance Gateway SKU 'sunun kullanımını önemle öneririz. HANA büyük örnek SKU 'Larının tür II sınıfı için, UltraPerformance ağ geçidi SKU 'sunun ExpressRotue Gateway olarak kullanılması zorunludur.
 
@@ -136,7 +135,7 @@ Varsayılan dağıtım, Azure 'daki SAP HANA için üç ağ yönlendirme hakkın
 
 * Olağanüstü durum kurtarma için iki farklı Azure bölgesinde dağıtılan HANA büyük örnek birimleriniz varsa, geçmişte aynı geçici yönlendirme kısıtlamaları uygulanır. Diğer bir deyişle, bir bölgedeki bir HANA büyük örnek biriminin IP adresleri (örneğin, ABD Batı), başka bir bölgede dağıtılan bir HANA büyük örnek birimine yönlendirilmedi (örneğin, ABD Doğu). Bu kısıtlama, bölgeler genelinde Azure ağ eşleme kullanımını veya HANA büyük örnek birimlerini sanal ağlara bağlayan ExpressRoute devrelerinin çapraz bağlantı sağlamasından bağımsızdır. Grafik gösterimi için, "birden çok bölgede HANA büyük örnek birimlerini kullanma" bölümündeki şekle bakın. Dağıtılan mimariyle birlikte gelen bu kısıtlama, HANA sistem çoğaltmasının olağanüstü durum kurtarma işlevselliği olarak hemen kullanılmasını yasaklamıştır. Son değişiklikler için ' birden çok bölgede HANA büyük örnek birimlerini kullanma ' bölümüne bakın. 
 
-* Azure (büyük örnekler) birimlerindeki SAP HANA, HANA büyük örnek dağıtımı istenirken gönderdiğiniz sunucu IP havuzu adres aralığından atanmış bir IP adresine sahiptir. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) altyapısı ve bağlantısı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Bu IP adresine Azure sanal ağlarını HANA büyük örneklerine bağlayan Azure abonelikleri ve devresi aracılığıyla erişilebilir. Bu sunucu IP havuzu adres aralığından atanan IP adresi doğrudan donanım birimine atanır. Bu çözümün ilk dağıtımında olduğu gibi, artık NAT *aracılığıyla atanmaz.* 
+* Azure (büyük örnekler) birimlerindeki SAP HANA, HANA büyük örnek dağıtımı istenirken gönderdiğiniz sunucu IP havuzu adres aralığından atanmış bir IP adresine sahiptir. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) altyapısı ve bağlantısı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Bu IP adresine Azure sanal ağlarını HANA büyük örneklerine bağlayan Azure abonelikleri ve devresi aracılığıyla erişilebilir. Bu sunucu IP havuzu adres aralığından atanan IP adresi doğrudan donanım birimine atanır. Bu çözümün ilk dağıtımında olduğu gibi, artık NAT aracılığıyla atanmaz. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>HANA büyük örneklerine doğrudan yönlendirme
 Varsayılan olarak, HANA büyük örnek birimleri ve şirket içi ya da iki farklı bölgede dağıtılan HANA büyük örnek yönlendirmesi arasında geçişli yönlendirme çalışmaz. Bu tür geçişli yönlendirmeyi etkinleştirmek için çeşitli olanaklar vardır.
@@ -173,7 +172,7 @@ ExpressRoute Global Reach etkinleştirme hakkında daha fazla bilgi için, [sana
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA büyük örneğinin Internet bağlantısı
-HANA büyük örneğinin doğrudan  internet bağlantısı yok. Örnek olarak, bu kısıtlama işletim sistemi görüntüsünü doğrudan işletim sistemi satıcısına kaydetme yeteneğinizi kısıtlayabilir. Yerel SUSE Linux Enterprise Server abonelik yönetim aracı sunucunuz veya Red Hat Enterprise Linux abonelik Yöneticisi ile çalışmanız gerekebilir.
+HANA büyük örneğinin doğrudan internet bağlantısı yok. Örnek olarak, bu kısıtlama işletim sistemi görüntüsünü doğrudan işletim sistemi satıcısına kaydetme yeteneğinizi kısıtlayabilir. Yerel SUSE Linux Enterprise Server abonelik yönetim aracı sunucunuz veya Red Hat Enterprise Linux abonelik Yöneticisi ile çalışmanız gerekebilir.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM 'Ler ve HANA büyük örnek arasında veri şifreleme
 HANA büyük örneği ve VM 'Ler arasında aktarılan veriler şifrelenmez. Ancak, yalnızca HANA DBMS yan ve JDBC/ODBC tabanlı uygulamalar arasındaki değişim için trafik şifrelemeyi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [SAP tarafından bu belgelere](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)bakın.

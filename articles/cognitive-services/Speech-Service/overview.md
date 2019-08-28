@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624272"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068839"
 ---
 # <a name="what-are-the-speech-services"></a>Konuşma Tanıma Hizmetleri nelerdir?
 
@@ -84,12 +84,10 @@ Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını 
 
 Azure konuşma Hizmetleri yerleşik modellerle iyi çalışmaktadır, ancak ürün veya ortamınızın deneyimini daha fazla özelleştirmek ve ayarlamak isteyebilirsiniz. Özelleştirme seçenekleri, akustik model ayarlamalarından markanızla ilgili benzersiz ses yazı tiplerine kadar değişir. Özel bir model oluşturduktan sonra Azure konuşma hizmetlerinden herhangi biriyle kullanabilirsiniz.
 
-| Konuşma Hizmeti | Model | Açıklama |
-|----------------|-------|-------------|
-| Konuşmayı Metne Dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
-| | [Dil modeli](how-to-customize-language-model.md) | Alana özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir dökümü geliştirmek için özel bir dil modeli oluşturun. |
-| | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, bir sözcük veya terimin fonetik biçimini tanımlayabilir ve görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş koşullarını işlemek için kullanışlıdır. Başlamak için ihtiyacınız olan telaffuz dosya--basit .txt dosyası. |
-| Metin Okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
+| Konuşma Hizmeti | Platform | Açıklama |
+|----------------|-------------|-------------|
+| Konuşmayı Metne Dönüştürme | [Özel konuşma tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma tarzı, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşın. |
+| Metin Okuma | [Özel ses](https://aka.ms/customvoice) | Konuşma verileriniz kullanılabilir olduğunda, metinden konuşmaya uygulamanız için tanınabilir, tek bir tür sesi oluşturun. Ses çıkışlarını bir dizi parametre kümesini ayarlayarak daha fazla hassas ayarlamalar yapabilirsiniz. |
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 

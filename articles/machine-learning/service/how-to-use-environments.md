@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb9281af16dc8e4b4544cb18a2aae51aa3d9be27
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576283"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098945"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Eğitim ve dağıtım için ortamları oluşturma ve yönetme
 
@@ -95,7 +95,7 @@ myenv = Environment.from_existing_conda_environment(name = "myenv",
 
 ### <a name="automatically-create-environments"></a>Ortamları otomatik olarak oluştur
 
-[Gönderme ()]() yöntemiyle bir eğitim çalıştırarak otomatik olarak bir ortam oluşturun. Bir eğitim çalıştırması gönderdiğinizde, yeni ortam oluşturma, gerekli bağımlılıkların boyutuna bağlı olarak birkaç dakika sürebilir. 
+Gönderme () yöntemiyle bir eğitim çalıştırarak otomatik olarak bir ortam oluşturun. Bir eğitim çalıştırması gönderdiğinizde, yeni ortam oluşturma, gerekli bağımlılıkların boyutuna bağlı olarak birkaç dakika sürebilir. 
 
 Çalıştırmayı göndermeden önce çalıştırma yapılandırmanızda bir ortam belirtmezseniz, sizin için varsayılan bir ortam oluşturulur.
 

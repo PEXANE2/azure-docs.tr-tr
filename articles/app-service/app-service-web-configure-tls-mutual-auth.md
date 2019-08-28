@@ -1,6 +1,6 @@
 ---
-title: TLS karşılıklı kimlik doğrulama - Azure App Service'ı yapılandırma
-description: TLS üzerinde istemci sertifikası kimlik doğrulaması kullanmak için uygulamanızı yapılandırmayı öğrenin.
+title: TLS karşılıklı kimlik doğrulamasını Yapılandırma-Azure App Service
+description: Uygulamanızı TLS üzerinde istemci sertifikası kimlik doğrulamasını kullanacak şekilde yapılandırmayı öğrenin.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,41 +10,40 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852457"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088167"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamayı yapılandırma
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamasını yapılandırma
 
-Kimlik doğrulaması için farklı türlerde etkinleştirerek Azure App Service uygulamanıza erişimi kısıtlayabilirsiniz. İstemci isteği TLS/SSL üzerinden olduğunda istemci sertifika istemek ve sertifikayı doğrulamak için bunu yapmanın bir yolu var. Bu mekanizma, TLS karşılıklı kimlik doğrulaması veya istemci sertifikası kimlik doğrulaması olarak adlandırılır. Bu makalede, istemci sertifikası kimlik doğrulaması kullanmak için uygulamanızı ayarlayın gösterilmektedir.
+Azure App Service uygulamanıza erişimi, farklı kimlik doğrulama türlerini etkinleştirerek kısıtlayabilirsiniz. Bunu yapmanın bir yolu, istemci isteği TLS/SSL üzerinden olduğunda ve sertifikayı doğrulayacağından istemci sertifikası isteğidir. Bu mekanizmaya TLS karşılıklı kimlik doğrulaması veya istemci sertifikası kimlik doğrulaması adı verilir. Bu makalede, uygulamanızın istemci sertifikası kimlik doğrulamasını kullanmak üzere nasıl ayarlanacağı gösterilmektedir.
 
 > [!NOTE]
-> Sitenizi HTTP ve HTTPS değil üzerinden erişirseniz, herhangi bir istemci sertifikası almazsınız. Uygulamanızın istemci sertifikası gerektiriyorsa, bu nedenle, istekleri, uygulamanız için HTTP üzerinden izin vermemelidir.
+> Sitenize HTTPS değil, HTTP üzerinden eriştiğinizde hiçbir istemci sertifikası almazsınız. Bu nedenle, uygulamanız için istemci sertifikaları gerekiyorsa, HTTP üzerinden uygulamanıza yönelik isteklere izin vermeniz gerekir.
 >
 
-## <a name="enable-client-certificates"></a>İstemci sertifikaları etkinleştir
+## <a name="enable-client-certificates"></a>İstemci sertifikalarını etkinleştir
 
-İstemci sertifikaları gerektirmek için uygulamanızı ayarlayın için ayarlanacak ihtiyacınız `clientCertEnabled` uygulamanıza ayarını `true`. Ayar için aşağıdaki komutu çalıştırın [Cloud Shell](https://shell.azure.com).
+Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için uygulamanızın `clientCertEnabled` ayarını olarak `true`ayarlamanız gerekir. Ayarı ayarlamak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="access-client-certificate"></a>Erişim istemci sertifikası
+## <a name="access-client-certificate"></a>İstemci sertifikasına erişin
 
-App Service'te, SSL sonlandırma isteği ön uç yük dengeleyicide'olmuyor. Uygulama kodunuzda istek iletirken [etkin istemci sertifikaları](#enable-client-certificates), App Service eklediği bir `X-ARR-ClientCert` istemci sertifikası istek üstbilgisi. App Service ile bu istemci sertifikasını uygulamanıza iletme dışında herhangi bir şey yapmaz. İstemci sertifikasını doğrulamak için uygulama kodunuz sorumludur.
+App Service, isteğin SSL sonlandırması ön uç yük dengeleyicisinde gerçekleşir. [İstemci sertifikaları etkinken](#enable-client-certificates)isteği uygulama kodunuza iletirken, istemci sertifikasıyla bir `X-ARR-ClientCert` istek üst bilgisini App Service çıkartır. App Service, bu istemci sertifikası ile uygulamanıza iletilmesinin dışında hiçbir şey yapmaz. Uygulama kodunuz, istemci sertifikasını doğrulamaktan sorumludur.
 
-ASP.NET için istemci sertifikası aracılığıyla **HttpRequest.ClientCertificate** özelliği.
+ASP.NET için, istemci sertifikasına **HttpRequest. ClientCertificate** özelliği aracılığıyla erişilebilir.
 
-Diğer uygulama yığınları için (Node.js, PHP vb.), istemci sertifikasının bir base64 kodlu değer uygulamanızda kullanılabilir `X-ARR-ClientCert` isteği üstbilgisi.
+Diğer uygulama yığınları (node. js, php, vb.) için, istemci sertifikası, `X-ARR-ClientCert` istek üstbilgisinde Base64 kodlamalı bir değer aracılığıyla uygulamanızda kullanılabilir.
 
 ## <a name="aspnet-sample"></a>ASP.NET örneği
 
@@ -170,9 +169,9 @@ Diğer uygulama yığınları için (Node.js, PHP vb.), istemci sertifikasının
     }
 ```
 
-## <a name="nodejs-sample"></a>Node.js örnek
+## <a name="nodejs-sample"></a>Node. js örneği
 
-Aşağıdaki Node.js örnek kodu alır `X-ARR-ClientCert` üstbilgi ve kullandığı [düğüm oluşturmasına](https://github.com/digitalbazaar/forge) PEM base64 ile kodlanmış dize bir sertifika nesnesine dönüştürmek ve doğrulamak için:
+Aşağıdaki Node. js örnek kodu, `X-ARR-ClientCert` üstbilgiyi alır ve Base64 kodlamalı PEM dizesini bir sertifika nesnesine dönüştürmek ve doğrulamak için [node-Forge](https://github.com/digitalbazaar/forge) kullanır:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -190,7 +189,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity

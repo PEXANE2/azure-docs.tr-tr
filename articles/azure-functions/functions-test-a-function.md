@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure işlevleri, İşlevler, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari, test etme
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 800c9db245007047b2dc17b3f270737254ed42d7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479730"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085119"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kodunuzu Azure işlevleri'nde test stratejileri
 
@@ -29,7 +28,7 @@ Aşağıdaki içeriği hedef farklı dilleri ve ortamları yönelik iki farklı 
 - [C#xUnit ile Visual Studio](#c-in-visual-studio)
 - [VS code'da Jest ile JavaScript](#javascript-in-vs-code)
 
-Örnek depoyu kullanılabilir [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
+Örnek depo [GitHub](https://github.com/Azure-Samples/azure-functions-tests)' da kullanılabilir.
 
 ## <a name="c-in-visual-studio"></a>C#Visual Studio'da
 Aşağıdaki örnek nasıl oluşturulacağını açıklar bir C# işlev uygulamanız Visual Studio'da çalıştırma ve test [xUnit](https://xunit.github.io).
@@ -43,8 +42,8 @@ Ortamınızı ayarlamak için bir işlev oluşturun ve uygulamayı test etme. A�
 1. [Yeni bir işlev uygulaması oluşturma](./functions-create-first-azure-function.md) ve adlandırın *işlevleri*
 2. [Bir HTTP işlev şablonu oluşturma](./functions-create-first-azure-function.md) ve adlandırın *HttpTrigger*.
 3. [Şablondan Zamanlayıcı bir işlev oluşturma](./functions-create-scheduled-function.md) ve adlandırın *TimerTrigger*.
-4. [XUnit Test uygulama oluşturma](https://xunit.github.io/docs/getting-started-dotnet-core) tıklayarak Visual Studio'da **Dosya > Yeni > Proje > Visual C# > .NET Core > xUnit Test projesi** ve adlandırın *Functions.Test*. 
-5. Test uygulamadan bir başvuru eklemek için Nuget kullanma [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+4. Visual Studio 'da [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) **> yeni > projesi > Visual C# > .NET Core > xUnit test projesi** ve adı *Functions. test*. 
+5. [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) test uygulamasından bir başvuru eklemek için NuGet kullanın
 6. [Başvuru *işlevleri* uygulama](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) gelen *Functions.Test* uygulama.
 
 ### <a name="create-test-classes"></a>Test sınıfları oluşturma
@@ -55,7 +54,7 @@ Her işlev bir örneğini alır [ILogger](https://docs.microsoft.com/dotnet/api/
 
 `ListLogger` Sınıfı uygulamak için tasarlanmıştır `ILogger` arabirim ve iç değerlendirmesi sırasında bir test için ileti listesi de tutun.
 
-**Sağ** üzerinde *Functions.Test* seçin ve uygulama **Ekle > sınıfı**, adlandırın **NullScope.cs** ve aşağıdaki kodu girin:
+*İşlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **NullScope.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 using System;
@@ -73,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-Ardından, **sağ** üzerinde *Functions.Test* seçin ve uygulama **Ekle > sınıfı**, adlandırın **ListLogger.cs** girin Aşağıdaki kodu:
+Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **ListLogger.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,11 +110,11 @@ namespace Functions.Tests
 
 `ListLogger` Sınıfın uyguladığı aşağıdaki üyeleri tarafından sözleşmeleri yapılır gibi `ILogger` arabirimi:
 
-- **BeginScope**: Kapsamları, günlüğe kaydetme için bağlam ekleyin. Bu durumda, test yalnızca statik örneğine noktaları `NullScope` test işlevine izin veren sınıfı.
+- **BeginScope**: Kapsamlar günlüğe kaydetme uygulamanıza bağlam ekler. Bu durumda, test, test işlevine izin vermek için yalnızca `NullScope` sınıftaki statik örneği işaret eder.
 
-- **IsEnabled**: Varsayılan değer olarak `false` sağlanır.
+- **IsEnabled**: Varsayılan değeri `false` sağlanır.
 
-- **Günlük**: Bu yöntem sağlanan kullanan `formatter` iletiyi biçimlendirmek için işlev ve ortaya çıkan metni ekler `Logs` koleksiyonu.
+- **Günlüğe kaydet**: Bu yöntem, iletiyi biçimlendirmek `formatter` için sağlanan işlevi kullanır ve sonra elde edilen metni `Logs` koleksiyona ekler.
 
 `Logs` Koleksiyon öğesinin bir örneğiyse `List<string>` ve oluşturucuda başlatılır.
 
@@ -196,13 +195,13 @@ namespace Functions.Tests
 ```
 `TestFactory` Sınıfı aşağıdaki üyelere uygular:
 
-- **Veri**: Bu özellik döndürür bir [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) örnek verileri koleksiyonu. Anahtar-değer çiftlerinin bir sorgu dizesinde geçirilen değerleri temsil eder.
+- **Veri**: Bu özellik örnek verilerden oluşan bir [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) koleksiyonu döndürür. Anahtar-değer çiftlerinin bir sorgu dizesinde geçirilen değerleri temsil eder.
 
-- **CreateDictionary**: Bu yöntem, anahtar/değer çifti bağımsız değişken olarak kabul eder ve yeni bir `Dictionary` oluşturmak için kullanılan `QueryCollection` sorgu dizesi değerlerini temsil etmek için.
+- **CreateDictionary**: Bu yöntem, bağımsız değişken olarak bir anahtar/değer çiftini kabul eder ve `Dictionary` sorgu dizesi değerlerini `QueryCollection` temsil etmek için oluşturmak üzere yeni bir değer döndürür.
 
-- **CreateHttpRequest**: Bu yöntem ile belirtilen sorgu dizesi parametreleri başlatılan bir HTTP isteği oluşturur.
+- **Createhttprequest**: Bu yöntem, belirtilen sorgu dizesi parametreleriyle başlatılan bir HTTP isteği oluşturur.
 
-- **CreateLogger**: Günlükçü türüne göre bu yöntem test etmek için kullanılan bir Günlükçü sınıf döndürür. `ListLogger` Günlüğe kaydedilen iletilere değerlendirmesi testlerinde kullanılabilecek izler.
+- **Creategünlükçü**: Bu yöntem, günlükçü türü temelinde test için kullanılan bir günlükçü sınıfı döndürür. `ListLogger` Günlüğe kaydedilen iletilere değerlendirmesi testlerinde kullanılabilecek izler.
 
 Ardından, **sağ** üzerinde *Functions.Test* seçin ve uygulama **Ekle > sınıfı**, adlandırın **FunctionsTests.cs** girin Aşağıdaki kodu:
 
@@ -247,13 +246,13 @@ namespace Functions.Tests
 ```
 Bu sınıfta uygulanır üyeleri şunlardır:
 
-- **Http_trigger_should_return_known_string**: Bu test bir istek sorgu dizesi değerlerini oluşturur `name=Bill` HTTP işlevi ve beklenen yanıt verilir denetimleri.
+- **Http_trigger_should_return_known_string**: Bu test, bir http işlevine sorgu dizesi değerleriyle `name=Bill` bir istek oluşturur ve beklenen yanıtın döndürülüp döndürülmediğini denetler.
 
-- **Http_trigger_should_return_string_from_member_data**: Bu test xUnit öznitelikleri HTTP işlevi örnek verilerini sağlamak için kullanır.
+- **Http_trigger_should_return_string_from_member_data**: Bu test, HTTP işlevine örnek veriler sağlamak için xUnit özniteliklerini kullanır.
 
-- **Timer_should_log_message**: Bu test örneği oluşturur `ListLogger` ve Zamanlayıcı işleve geçirir. İşlevi çalıştırıldığında, günlük, beklenen bir ileti mevcut olduğundan emin olmak için denetlenir.
+- **Timer_should_log_message**: Bu test bir örneği `ListLogger` oluşturur ve bir Zamanlayıcı işlevlerine geçirir. İşlevi çalıştırıldığında, günlük, beklenen bir ileti mevcut olduğundan emin olmak için denetlenir.
 
-Uygulama ayarları, testlerinizi erişmek istiyorsanız, kullanabileceğiniz [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Testlerinizde uygulama ayarlarına erişmek istiyorsanız [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)kullanabilirsiniz.
 
 ### <a name="run-tests"></a>Testleri çalıştırma
 
@@ -377,6 +376,6 @@ Ardından, test ve basın bir kesme noktası ayarlamak **F5**.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İşlevleriniz için otomatik testler yazmak öğrendiniz, bu kaynakları ile devam edin:
-- [El ile olmayan HTTP ile tetiklenen bir işlev çalıştırın](./functions-manually-run-non-http.md)
+- [HTTP ile tetiklenen bir işlevi el ile çalıştırma](./functions-manually-run-non-http.md)
 - [Azure işlevleri hata işleme](./functions-bindings-error-pages.md)
 - [Azure işlevi olay Kılavuzu tetikleyicisi yerel hata ayıklama](./functions-debug-event-grid-trigger-local.md)

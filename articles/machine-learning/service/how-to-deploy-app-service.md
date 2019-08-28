@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/01/2019
-ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/27/2019
+ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114290"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -38,6 +38,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](tutorial-train-models-with-aml.md) .
 
     > [!IMPORTANT]
@@ -97,34 +98,151 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 
 Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
 
+> [!NOTE]
+> Kod parçacığı, kayıtlı bir `model` model içerdiğini `inference_config` ve çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+
 ```python
+from azureml.core import Model
+
 package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
+# Display the package location/ACR path
+print(package.location)
 ```
 
-Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur.
+Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package:<imagename>`. Örneğin: `myml08024f78fd10.azurecr.io/package:20190827151241`.
+
+> [!IMPORTANT]
+> Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
 
 ## <a name="deploy-image-as-a-web-app"></a>Web uygulaması olarak görüntü dağıtma
 
-1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınızı seçin. __Genel bakış__ bölümünde, çalışma alanının Azure Container Registry erişmek Için __kayıt defteri__ bağlantısını kullanın.
+1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. Daha `<acrinstance>` önce ' den `package.location`döndürülen bir değer ile değiştirin: 
 
-    [![Çalışma alanı için genel bakış ekran görüntüsü](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
+    ```azurecli-interactive
+    az acr credential show --name <myacr>
+    ```
 
-2. Azure Container Registry, __depolar__' ı seçin ve ardından dağıtmak istediğiniz __görüntü adını__ seçin. Dağıtmak istediğiniz sürüm için __...__ girişini seçin ve ardından __Web uygulamasına dağıtın__.
+    Bu komutun çıktısı aşağıdaki JSON belgesine benzer:
 
-    [![ACR 'den bir Web uygulamasına dağıtmanın ekran görüntüsü](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
+    ```json
+    {
+    "passwords": [
+        {
+        "name": "password",
+        "value": "Iv0lRZQ9762LUJrFiffo3P4sWgk4q+nW"
+        },
+        {
+        "name": "password2",
+        "value": "=pKCxHatX96jeoYBWZLsPR6opszr==mg"
+        }
+    ],
+    "username": "myml08024f78fd10"
+    }
+    ```
 
-3. Web uygulaması oluşturmak için bir site adı, abonelik, kaynak grubu sağlayın ve App Service planını/konumunu seçin. Son olarak __Oluştur__' u seçin.
+    __Kullanıcı adı__ ve __parolalardan__biri için değeri kaydedin.
 
-    ![Yeni Web uygulaması iletişim kutusunun ekran görüntüsü](media/how-to-deploy-app-service/web-app-for-containers.png)
+1. Hizmeti dağıtmaya yönelik bir kaynak grubunuz veya App Service planınız yoksa, aşağıdaki komutlar her ikisinin de nasıl oluşturulacağını gösterir:
+
+    ```azurecli-interactive
+    az group create --name myresourcegroup --location "West Europe"
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
+    ```
+
+    Bu örnekte, __temel__ bir Fiyatlandırma Katmanı (`--sku B1`) kullanılır.
+
+    > [!IMPORTANT]
+    > Azure Machine Learning hizmeti tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
+
+1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. `package.location` Ve `<acrinstance>` değerlerinidahaöncedöndürülendeğerlerledeğiştirin`<imagename>` :
+
+    ```azurecli-interactive
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    ```
+
+    Bu komut aşağıdaki JSON belgesine benzer bilgiler döndürür:
+
+    ```json
+    { 
+    "adminSiteName": null,
+    "appServicePlanName": "myplanname",
+    "geoRegion": "West Europe",
+    "hostingEnvironmentProfile": null,
+    "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myplanname",
+    "kind": "linux",
+    "location": "West Europe",
+    "maximumNumberOfWorkers": 1,
+    "name": "myplanname",
+    < JSON data removed for brevity. >
+    "targetWorkerSizeId": 0,
+    "type": "Microsoft.Web/serverfarms",
+    "workerTierName": null
+    }
+    ```
+
+    > [!IMPORTANT]
+    > Bu noktada, Web uygulaması oluşturulmuştur. Ancak, görüntüyü içeren Azure Container Registry kimlik bilgilerini sağlamadıysanız, Web uygulaması etkin değildir. Bir sonraki adımda, kapsayıcı kayıt defteri için kimlik doğrulama bilgilerini sağlarsınız.
+
+1. Web uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak üzere aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. `package.location` Ve `<acrinstance>` değerlerinidahaöncedöndürülendeğerlerledeğiştirin`<imagename>` . `<username>` Ve`<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
+
+    ```azurecli-interactive
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    ```
+
+    Bu komut aşağıdaki JSON belgesine benzer bilgiler döndürür:
+
+    ```json
+    [
+    {
+        "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+        "slotSetting": false,
+        "value": "false"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_URL",
+        "slotSetting": false,
+        "value": "https://myml08024f78fd10.azurecr.io"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+        "slotSetting": false,
+        "value": "myml08024f78fd10"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+        "slotSetting": false,
+        "value": null
+    },
+    {
+        "name": "DOCKER_CUSTOM_IMAGE_NAME",
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+    }
+    ]
+    ```
+
+Bu noktada, Web uygulaması görüntüyü yüklemeye başlar.
+
+> [!IMPORTANT]
+> Görüntünün yüklenmesi birkaç dakika sürebilir. İlerlemeyi izlemek için aşağıdaki komutu kullanın:
+>
+> ```azurecli-interactive
+> az webapp log tail --name <app-name> --resource-group myresourcegroup
+> ```
+>
+> Görüntü yüklendikten ve site etkin olduktan sonra, günlüğü belirten `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`bir ileti görüntüler.
+
+Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisayar adını bulabilirsiniz:
+
+```azurecli-interactive
+az webapp show --name <app-name> --resource-group myresourcegroup
+```
+
+Bu komut, aşağıdaki ana bilgisayar adına `<app-name>.azurewebsites.net`benzer bilgileri döndürür. Bu değeri, hizmetin __temel URL__ 'sinin bir parçası olarak kullanın.
 
 ## <a name="use-the-web-app"></a>Web uygulamasını kullanma
 
-[Azure Portal](https://portal.azure.com), önceki adımda oluşturulan Web uygulamasını seçin. __Genel bakış__ bölümünden __URL 'yi__kopyalayın. Bu değer, hizmetin __temel URL 'sidir__ .
-
-[![Web uygulaması için genel bakış ekran görüntüsü](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
-
-İstekleri modele geçiren Web hizmeti konumunda `{baseurl}/score`bulunur. Örneğin: `https://mywebapp.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
+İstekleri modele geçiren Web hizmeti konumunda `{baseurl}/score`bulunur. Örneğin: `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
 
 ```python
 import requests
@@ -134,8 +252,6 @@ scoring_uri = "https://mywebapp.azurewebsites.net/score"
 
 headers = {'Content-Type':'application/json'}
 
-print(headers)
-    
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]

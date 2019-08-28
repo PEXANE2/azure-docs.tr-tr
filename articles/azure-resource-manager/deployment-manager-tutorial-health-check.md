@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898130"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095825"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Dağıtım Yöneticisi sistem durumu denetimi kullanma (Genel Önizleme)
 
@@ -235,8 +235,8 @@ Bu bölümün amacı, dağıtım şablonunda bir sistem durumu denetimi adımın
 
 Öğreticiyi basitleştirmek için, topoloji şablonu ve yapıtlar aşağıdaki konumlarda paylaşılır, böylece kendi kopyanızı hazırlamanız gerekmez. Kendinizinkini kullanmak istiyorsanız [öğreticideki yönergeleri izleyin: Kaynak Yöneticisi şablonlarla](./deployment-manager-tutorial.md)Azure dağıtım Yöneticisi kullanın.
 
-* Topoloji şablonu:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* Yapıt deposu:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Topoloji şablonu: https:\//armtutorials.blob.Core.Windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.JSON
+* Yapıt deposu: https:\//armtutorials.blob.Core.Windows.net/admtutorial/ArtifactStore
 
 Topolojiyi dağıtmak için, Cloud Shell 'i açmak için **dene** ' yi seçin ve ardından PowerShell betiğini yapıştırın.
 
@@ -265,8 +265,8 @@ Kaynakları görmek için **Gizli türleri göster** seçeneği belirlenmelidir.
 
 Öğreticiyi basitleştirmek için, düzeltilmiş piyasaya çıkma şablonu aşağıdaki konumlarda paylaşılır, böylece kendi kopyanızı hazırlamanız gerekmez. Kendinizinkini kullanmak istiyorsanız [öğreticideki yönergeleri izleyin: Kaynak Yöneticisi şablonlarla](./deployment-manager-tutorial.md)Azure dağıtım Yöneticisi kullanın.
 
-* Topoloji şablonu:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* Yapıt deposu:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Topoloji şablonu: https:\//armtutorials.blob.Core.Windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.JSON
+* Yapıt deposu: https:\//armtutorials.blob.Core.Windows.net/admtutorial/ArtifactStore
 
 [Durum denetimi hizmeti simülatörü oluşturma](#create-a-health-check-service-simulator)bölümünde oluşturduğunuz sağlıksız durum URL 'sini kullanın. **Managedıdentityıd**için bkz. [Kullanıcı tarafından atanan yönetilen kimliği oluşturma](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
 

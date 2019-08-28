@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1431a46bf0981ee7ca3ecd06be9d7ebc35f05982
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032736"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084916"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -64,7 +64,7 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 ### <a name="windows-down-level-devices"></a>Windows alt düzey cihazlar
 
 - Windows 8.1
-- Windows 7. Windows 7 ile ilgili destek bilgileri için lütfen [Windows 7 ' nin sona ermek](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support) üzere bu makaleye bakın
+- Windows 7. Windows 7 ile ilgili destek bilgileri için lütfen [Windows 7 ' nin sona ermek](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support) üzere bu makaleye bakın
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2

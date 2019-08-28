@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3395159e1427fa3d174b62c74c777d2f2ddd4900
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721673"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072901"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme'de sorun giderin
-Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
+Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makale, Azure Dosya Eşitleme dağıtımınızda karşılaşabileceğiniz sorunları gidermenize ve çözmenize yardımcı olmak için tasarlanmıştır. Ayrıca, sorunla daha derin bir şekilde araştırılması durumunda sistemden önemli günlüklerin nasıl toplanacağını da anlatılmaktadır. Sorunuzun yanıtını görmüyorsanız, aşağıdaki kanallarla (yürüyen sırada) bizimle iletişim kurmanız gerekir:
 
@@ -41,7 +41,7 @@ Bir Active Directory etki alanı denetleyicisine, PDC rolü sahibinin bir Window
 
 Bu sorunu gidermek için, PDC rolünü Windows Server 2012 R2 veya daha yeni bir sürümünü çalıştıran başka bir etki alanı denetleyicisine aktarın ve ardından eşitleme 'yi çalıştırın.
 
-<a id="server-registration-prerequisites"></a>**Sunucu kaydı aşağıdaki iletiyi görüntüler: "Önkoşulların" eksik olması "**
+<a id="server-registration-prerequisites"></a>**Sunucu kaydı aşağıdaki iletiyi görüntüler: "Önkoşullar eksik"**
 
 Bu ileti, PowerShell 5,1 ' de az veya Azurerd PowerShell modülü yüklü değilse görüntülenir. 
 
@@ -163,7 +163,7 @@ Bu sorun, depolama eşitleme Izleyicisi işlemi çalışmıyorsa veya sunucu, pr
 
 Bu sorunu çözmek için aşağıdaki adımları gerçekleştirin:
 
-1. Sunucuda Görev Yöneticisi'ni açın ve Depolama Eşitleme İzleyicisi (AzureStorageSyncMonitor.exe) işleminin çalıştığından emin olun. İşlem çalışmıyorsa önce sunucuyu yeniden başlatmayı deneyin. Sunucuyu yeniden başlatmak sorunu çözmezse, en son Azure Dosya Eşitleme [aracı sürümüne](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)yükseltin.
+1. Sunucuda Görev Yöneticisi'ni açın ve Depolama Eşitleme İzleyicisi (AzureStorageSyncMonitor.exe) işleminin çalıştığından emin olun. İşlem çalışmıyorsa önce sunucuyu yeniden başlatmayı deneyin. Sunucunun yeniden başlatılması sorunu çözmezse en son Azure Dosya Eşitleme [aracısı sürümüne](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) yükseltin.
 2. Güvenlik duvarının ve proxy ayarlarının doğru yapılandırıldığını doğrulayın:
     - Sunucu bir güvenlik duvarının arkasındaysa 443 numaralı bağlantı noktası üzerinden giden bağlantılara izin verildiğinden emin olun. Güvenlik Duvarı trafiği belirli etki alanlarıyla kısıtlarsa, güvenlik duvarı [belgelerinde](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) listelenen etki alanlarının erişilebilir olduğunu doğrulayın.
     - Sunucu bir proxy 'nin arkasındaysa, proxy [belgelerindeki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)adımları izleyerek makine genelinde veya uygulamaya özel proxy ayarlarını yapılandırın.
@@ -350,7 +350,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saat deva
 | **Hata dizesi** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Düzeltme gerekli** | Hayır |
 
-Eylem gerekmiyor. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Değişiklik algılama işlemi, geri yükleme tamamlandıktan ve süre dosya paylaşımındaki dosya sayısına dayandıktan hemen sonra çalışır.
+İşlem yapmanız gerekmez. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Değişiklik algılama işlemi, geri yükleme tamamlandıktan ve süre dosya paylaşımındaki dosya sayısına dayandıktan hemen sonra çalışır.
 
 <a id="-2147216747"></a>**Eşitleme veritabanı kaldırıldığından eşitleme başarısız oldu.**  
 
@@ -521,7 +521,7 @@ Kuruluşunuz bir SSL Sonlandırıcı proxy kullanıyorsa veya kötü amaçlı bi
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Bu kayıt defteri değeri ayarlandığında Azure Dosya Eşitleme aracısı, verileri sunucu ile bulut hizmeti arasında aktarırken yerel olarak güvenilen herhangi bir SSL sertifikasını kabul eder.
+Bu kayıt defteri değerini ayarlayarak Azure Dosya Eşitleme Aracısı, sunucu ile bulut hizmeti arasında veri aktarırken yerel olarak güvenilen tüm SSL sertifikalarını kabul eder.
 
 <a id="-2147012894"></a>**Hizmetle bir bağlantı kurulamadı.**  
 
@@ -634,7 +634,7 @@ Bu hata, Azure dosya paylaşımında doğrudan değişiklikler olduğu ve deği�
 | | |
 |-|-|
 | **HRESULT** | 0x80c8023b |
-| **HRESULT (ondalık)** | -2134364145 |
+| **HRESULT (ondalık)** | -2134375877 |
 | **Hata dizesi** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Düzeltme gerekli** | Evet |
 | | |
@@ -662,7 +662,7 @@ Dosya başına eşitleme hatalarının çok fazla olması durumunda, eşitleme o
 | **Hata dizesi** | ECS_E_SYNC_INVALID_PATH |
 | **Düzeltme gerekli** | Evet |
 
-Yolun var olduğundan, yerel bir NTFS biriminde bulunduğundan ve bir yeniden ayrıştırma noktası veya mevcut bir sunucu uç noktası olmadığından emin olun.
+Yolun var olduğundan, yerel bir NTFS biriminde olduğundan ve bir yeniden ayrıştırma noktası ya da var olan sunucu uç noktası olmadığından emin olun.
 
 <a id="-2134375817"></a>**Filtre sürücüsü sürümü Aracı sürümüyle uyumlu olmadığından eşitleme başarısız oldu**  
 
@@ -684,7 +684,7 @@ Bu hata, yüklenen bulut katmanlama filtresi sürücüsü (Storagessync. sys) s�
 | **Hata dizesi** | ECS_E_SERVICE_UNAVAILABLE |
 | **Düzeltme gerekli** | Hayır |
 
-Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Bu hata Azure Dosya Eşitleme hizmeti yeniden kullanılabilir olduğunda otomatik olarak çözümlenir.
+Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Azure Dosya Eşitleme hizmeti yeniden kullanılabilir olduğunda bu hata otomatik olarak çözümlenir.
 
 <a id="-2146233088"></a>**Bir özel durum nedeniyle eşitleme başarısız oldu.**  
 
@@ -897,7 +897,7 @@ if ($fileShare -eq $null) {
 
     **Karma dosya eşitleme hizmeti** listede görünmezse, aşağıdaki adımları uygulayın:
 
-    -           **Ekle**'yi tıklatın.
+    - **Ekle**'yi tıklatın.
     - **Rol** alanında, **okuyucu ve veri erişimi**' ni seçin.
     - **Seç** alanına **karma dosya eşitleme hizmeti**yazın, rolü seçin ve **Kaydet**' e tıklayın.
 

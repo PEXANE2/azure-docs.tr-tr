@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 96fde6ade45bb92036fbc9ac803eebd50640bf85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013439"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102881"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Geçişi: Sık sorulan sorular (SSS)
 
@@ -157,7 +157,7 @@ Bağımlılık görselleştirmesini kullanmak için, değerlendirmek istediğini
 
 Her makineye aşağıdaki aracıları yüklemeniz gerekir:
 - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).
-- [Bağımlılık Aracısı](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure).
+- [Bağımlılık Aracısı](../azure-monitor/platform/agents-overview.md#dependency-agent).
 - İnternet bağlantısı olmayan makineleriniz varsa Log Analytics ağ geçidini indirip yüklemeniz gerekir.
 
 Bağımlılık görselleştirmesi kullanmadığınız takdirde bu aracılara ihtiyacınız yoktur.

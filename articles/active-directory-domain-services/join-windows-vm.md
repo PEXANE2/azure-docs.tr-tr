@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612436"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073899"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Öğretici: Windows Server sanal makinesini yönetilen bir etki alanına ekleme
 
@@ -153,15 +153,23 @@ Oluşturulan VM ve bir RDP bağlantısı kurmak için Windows Server sanal makin
 1. Azure AD DS yönetilen etki alanına katma işlemini gerçekleştirmek için VM 'yi yeniden başlatın.
 
 > [!TIP]
-> Ayrıca, PowerShell kullanarak bir VM 'yi [Add-Computer][add-computer] cmdlet 'i ile de etki alanına katabilirsiniz. Aşağıdaki örnek *contoso* etki alanına katılır ve sonra VM 'yi yeniden başlatır. İstendiğinde, *Azure AD DC Administrators* grubuna ait bir kullanıcının kimlik bilgilerini girin:
+> PowerShell kullanarak bir VM 'yi [Add-Computer][add-computer] cmdlet 'i ile etki alanına katabilirsiniz. Aşağıdaki örnek *contoso* etki alanına katılır ve sonra VM 'yi yeniden başlatır. İstendiğinde, *Azure AD DC Administrators* grubuna ait bir kullanıcının kimlik bilgilerini girin:
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> Bir VM 'ye bağlanmadan ve bağlantıyı el ile yapılandırarak bir VM 'ye katılarak, [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell cmdlet 'inin kullanımını da keşfedebilirsiniz.
 
 Windows Server VM yeniden başlatıldıktan sonra, Azure AD DS yönetilen etki alanında uygulanan tüm ilkeler sanal makineye gönderilir. Ayrıca, uygun etki alanı kimlik bilgilerini kullanarak Windows Server VM 'de da oturum açabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Sonraki öğreticide, Azure AD DS yönetilen etki alanını yönetmenize olanak sağlayan yönetim araçlarını yüklemek için bu Windows Server VM 'sini kullanırsınız. Bu öğretici serisinde devam etmek istemiyorsanız, [RDP 'yi devre dışı bırakmak](#disable-rdp) veya [VM 'yi silmek](#delete-the-vm)için aşağıdaki Temizleme adımlarını gözden geçirin. Aksi takdirde, [sonraki öğreticiye geçin](#next-steps).
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Azure AD DS yönetilen etki alanından VM 'yi kaldırın
+
+VM 'yi Azure AD DS yönetilen etki alanından kaldırmak için, [sanal makineyi bir etki alanına katmak](#join-the-vm-to-the-azure-ad-ds-managed-domain)üzere adımları yeniden izleyin. Azure AD DS yönetilen etki alanına katılmak yerine, varsayılan *çalışma grubu*gibi bir çalışma grubuna katılmayı seçin. VM yeniden başlatıldıktan sonra, bilgisayar nesnesi Azure AD DS yönetilen etki alanından kaldırılır.
+
+VM 'yi etki alanından çıkmadan [silerseniz](#delete-the-vm) , yalnız bırakılmış bir bilgisayar nesnesi Azure AD DS ' de bırakılır.
 
 ### <a name="disable-rdp"></a>RDP 'yi devre dışı bırak
 
@@ -231,3 +239,4 @@ Azure AD DS yönetilen etki alanınızı yönetmek için Active Directory Yönet
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

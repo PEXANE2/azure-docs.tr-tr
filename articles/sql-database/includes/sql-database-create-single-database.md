@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894129"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099078"
 ---
 Bu adımda, bir Azure SQL veritabanı tek veritabanı oluşturacaksınız. 
 
@@ -23,7 +23,7 @@ Bu adımda, bir Azure SQL veritabanı tek veritabanı oluşturacaksınız.
 
 Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
 2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
 3. **Oluştur**' u seçin.
 
@@ -43,7 +43,7 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
        - **Sunucu adı**: Benzersizlik `mysqlserver`için bazı sayılarla birlikte yazın.
        - **Sunucu Yöneticisi oturum açma**: `azureuser`yazın.
        - **Parola**: Parola gereksinimlerini karşılayan karmaşık bir parola yazın.
-       - **Konum**: Açılan kutudan, `West US 2`gibi bir konum seçin.
+       - **Konum**: Açılan kutudan, `West US`gibi bir konum seçin.
 
          ![Yeni sunucu](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

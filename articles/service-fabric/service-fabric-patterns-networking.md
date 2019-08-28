@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 0a411e0fe3b89eaaa19f4e18f5e614b03dd1d682
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599424"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073943"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric ağ desenleri
 Azure Service Fabric kümenizi diğer Azure ağ özellikleriyle tümleştirebilirsiniz. Bu makalede, aşağıdaki özellikleri kullanan kümelerin nasıl oluşturulacağını göstereceğiz:
@@ -604,6 +604,10 @@ Bu senaryoda, var olan tek düğümlü tür dış yük dengeleyiciyi başlatın 
     ```
 
 Dağıtımdan sonra kaynak grubunda iki yük dengeleyicileri görebilirsiniz. Yük dengeleyiciler ' e gözattığınızda genel IP adresi ve yönetim uç noktaları (bağlantı noktaları 19000 ve 19080) ortak IP adresine atanır. Ayrıca, iç yük dengeleyiciye atanan statik iç IP adresini ve uygulama uç noktasını (bağlantı noktası 80) görebilirsiniz. Her iki yük dengeleyicisi de aynı sanal makine ölçek kümesi arka uç havuzunu kullanır.
+
+## <a name="notes-for-production-workloads"></a>Üretim iş yükleri için notlar
+
+Yukarıdaki GitHub şablonları, temel SKU 'SU olan Azure Standart Load Balancer (SLB) için varsayılan SKU ile çalışacak şekilde tasarlanmıştır. Bu SLB 'ın SLA 'sı yoktur, bu nedenle üretim iş yükleri için standart SKU 'nun kullanılması gerekir. Bunun hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](/azure/load-balancer/load-balancer-standard-overview). SLB için standart SKU kullanan herhangi bir Service Fabric kümesi, her bir düğüm türünün bağlantı noktası 443 ' de giden trafiğe izin veren bir kurala sahip olduğundan emin olmalıdır. Bu, küme kurulumunu tamamlaması için gereklidir ve bu tür bir kural olmadan herhangi bir dağıtım başarısız olur. Yukarıdaki "iç bir" yük dengeleyicinin örneğinde, bağlantı noktası 443 ' e giden trafiğe izin veren bir kuralla ek bir dış yük dengeleyici eklenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Küme oluşturma](service-fabric-cluster-creation-via-arm.md)

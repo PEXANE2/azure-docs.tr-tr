@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b4b70a45758f697c469895bcef6ea8d203065e26
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853968"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098535"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -186,8 +185,8 @@ Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-to
 - **Microsoft hesabı**: [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md) `wl.offline_access` kapsamı seçin.
 - **Azure Active Directory**: ' [https://resources.azure.com](https://resources.azure.com)De, aşağıdaki adımları uygulayın:
     1. Sayfanın üst kısmında **oku/yaz**' ı seçin.
-    2. Sol tarayıcıda, **abonelikler** >  **_\<Abonelik\_adı_** ResourceGroupskaynak > grubu ' na gidin. >  **_\<\_ ad\_>_** **Microsoft. Web**  >  siteleriuygulamaadı> > yapılandırma **_sağlayıcıları\<\__**  >  >  >  >  **authsettings öğesine tıklayın**. 
-    3.           **Düzenle**‘ye tıklayın.
+    2. Sol tarayıcıda, **abonelikler** >  **_\<Abonelik\_adı_** ResourceGroupskaynak > grubu ' na gidin. >  **_\<\_ ad\_>_** **Microsoft. Web** >  siteleriuygulamaadı> > yapılandırma **_sağlayıcıları\<\__**  >  >  >  >  **authsettings öğesine tıklayın**. 
+    3. **Düzenle**‘ye tıklayın.
     4. Aşağıdaki özelliği değiştirin. _\<Uygulamakimliği\_>_ , erişmek istediğiniz hizmetin Azure Active Directory uygulama kimliğiyle değiştirin.
 
         ```json

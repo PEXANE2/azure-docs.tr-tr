@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 04/16/2019
-ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 08/22/2019
+ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569501"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065995"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
-Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki, OMS çalışma alanınızda veya Event Hubs bir denetim günlüğüne yazar. Ayrıca Denetim:
+Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için denetim, veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar, Log Analytics çalışma alanı veya Event Hubs. Ayrıca Denetim:
 
 - Yönetmelikli uyumluluğu korumanıza, veritabanı etkinliklerini anlamanıza ve işle ilgili endişeleri veya şüpheli güvenlik ihlallerini gösterebilen tutarsızlıklar ve bozukluklar elde etmenize yardımcı olur.
 
@@ -121,11 +121,22 @@ Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
 
 - [Azure Portal](https://portal.azure.com)kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
 
-    ![Denetim günlüklerini görüntüle](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Denetim günlüklerini görüntüle](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- Ardından, **denetim kayıtları** sayfasının en üstünde **OMS 'de aç** ' a tıkladığınızda, Log Analytics içinde Günlükler görünümü açılır. burada, zaman aralığını ve arama sorgusunu özelleştirebilirsiniz.
+- Ardından, günlükleri görüntülemenin iki yolu vardır:
+    
+    **Denetim kayıtları** sayfasının en üstündeki **Log Analytics** ' a tıkladığınızda, Log Analytics çalışma alanındaki Günlükler görünümü açılır. burada, zaman aralığını ve arama sorgusunu özelleştirebilirsiniz.
+    
+    ![Log Analytics çalışma alanında aç](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![Log Analytics aç](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    **Denetim kayıtları** sayfasının en üstündeki **Görünüm panosunu** tıklatmak, güvenlik öngörülerine gidebileceğiniz, hassas verilere erişim ve daha fazlasını ekleyebileceğiniz denetim günlükleri bilgilerini gösteren bir pano açar. Bu Pano, verilerinize yönelik güvenlik öngörüleri elde etmenize yardımcı olmak için tasarlanmıştır.
+    Ayrıca zaman aralığını ve arama sorgusunu özelleştirebilirsiniz. 
+    ![Log Analytics panosunu görüntüle](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+
+    ![Log Analytics panosu](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics güvenlik öngörüleri](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
 
 - Alternatif olarak, Log Analytics dikey penceresinden denetim günlüklerine de erişebilirsiniz. Log Analytics çalışma alanınızı açın ve **genel** bölümünde **Günlükler**' e tıklayın. Denetim günlüklerini görüntülemek için *"SQLSecurityAuditEvents" araması* yapın gibi basit bir sorgu ile başlayabilirsiniz.
     Buradan, denetim günlüğü verilerinizde gelişmiş aramalar çalıştırmak için [Azure izleyici günlüklerini](../log-analytics/log-analytics-log-search.md) de kullanabilirsiniz. Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](../log-analytics/log-analytics-log-search.md).
@@ -257,7 +268,7 @@ Ek filtreleme için WHERE yan tümcesi desteğiyle genişletilmiş ilke:
 - [Veritabanı *genişletilmiş* denetim ilkesini al](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Sunucu *genişletilmiş* denetim ilkesini al](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>ARM şablonları kullanarak SQL veritabanı denetimini yönetme
+## <a id="subheading-10"></a>Azure Resource Manager şablonları kullanarak SQL veritabanı denetimini yönetme
 
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şablonları kullanarak Azure SQL veritabanı denetimini aşağıdaki örneklerde gösterildiği gibi yönetebilirsiniz:
 

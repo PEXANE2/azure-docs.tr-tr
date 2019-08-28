@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932227"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073859"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -67,6 +67,8 @@ Bu katman, kullanıcı eşzamanlılığının elastik olmasını gerektiren ve h
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* Tüm bölgelerde kullanılamaz.  
 
@@ -82,34 +84,35 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1\.    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1\.     |
 |Doğu ABD 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Doğu ABD 2     |     S8, S9   |    1\.    |
+|Doğu ABD 2     |     S8, S9, S8v2, S9v2   |    1\.    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1\.     |
 |Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1\.     |
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1\.     |
 |Batı Orta ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|Batı ABD     |    S8, S9   |    2  |
+|Batı ABD     |    S8, S9, S8v2, S9v2   |    2  |
 |Batı ABD 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|Batı ABD 2    |    S8, S9  |    1\.     |
+|Batı ABD 2    |    S8, S9, S8v2, S9v2  |    1\.     |
 
 ### <a name="europe"></a>Avrupa
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
+|Kuzey Avrupa     |    S8v2, S9v2      |    3     |
 |Birleşik Krallık Güney     |    B1, B2, S0, S1, S2, S4, D1      |     1\.    |
 |Batı Avrupa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Batı Avrupa    |   S8, S9  |  1\.  |
+|Batı Avrupa    |   S8, S9, S8v2, S9v2  |  1\.  |
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Avustralya Doğu     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Avustralya Doğu     |    S8, S9    |    1\.     |
+|Avustralya Doğu     |    S8, S9, S8v2, S9v2    |    1\.     |
 |Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1\.     |
 |Japonya Doğu     |   B1, B2, S0, S1, S2, S4, D1       |    1\.     |
-|Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1\.      |
+|Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1\.      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1\.     |
 
 ## <a name="scale-to-your-needs"></a>Gereksinimlerinize göre ölçeklendirin
@@ -246,7 +249,7 @@ Azure Analysis Services belgeleri ayrıca [GitHub Sorunları](https://docs.micro
 
 ## <a name="blogs"></a>Bloglar
 
-Her şey çok hızlı gelişiyor. [Analysis Services ekip blogunu](https://blogs.msdn.microsoft.com/analysisservices/) ve [Azure blogunu](https://azure.microsoft.com/blog/) ziyaret ederek en son bilgileri edinin.
+Her şey çok hızlı gelişiyor. [Power BI blogundan](https://powerbi.microsoft.com/blog/category/analysis-services/) ve [Azure blogundan](https://azure.microsoft.com/blog/)en son bilgileri alın.
 
 ## <a name="community"></a>Topluluk
 

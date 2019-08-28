@@ -1,6 +1,6 @@
 ---
-title: Azure Windows Vm'leri için yedekleme seçeneklerini genel bakış | Microsoft Docs
-description: Azure Windows sanal makineler için yedekleme seçeneklerini genel bakış.
+title: Azure Windows VM 'Leri için genel bakış yedekleme seçenekleri | Microsoft Docs
+description: Azure Windows sanal makineleri için yedekleme seçeneklerine genel bakış.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,20 +9,19 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 431c4defe5fd2a7d6d9929fbad3705956c815deb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f145ae8e32f361acc6ef22d7b05d1de8e87a295a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719288"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089479"
 ---
-# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure'da sanal makineler için yedekleme ve geri yükleme seçenekleri
-Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Bağlı olarak, kullanım örneği VM'ler için kullanılabilen çeşitli yedekleme seçenekleri vardır.
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için yedekleme ve geri yükleme seçenekleri
+Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Kullanım durumunuza bağlı olarak, VM 'Ler için kullanılabilen birkaç yedekleme seçeneği vardır.
 
 [!INCLUDE [virtual-machines-common-backup-recovery](../../../includes/virtual-machines-common-backup-recovery.md)]

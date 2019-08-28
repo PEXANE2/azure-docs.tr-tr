@@ -6,17 +6,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: ''
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 4d7538d064e27e34c33fd92bc6dfcdaba7a1efc1
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533564"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087687"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
 
@@ -77,7 +76,7 @@ Dışarı aktarmayı **hızlı** modda gerçekleştirmek için şu adımları iz
  
     ![PowerApps ve Microsoft Flow Express dışa aktarma](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3.           **Tamam**'ı tıklatın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
+3. **Tamam**'ı tıklatın. Özel bağlayıcı artık kurulmuştur ve belirlediğiniz ortama eklenir.
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>El ile dışarı aktarma kullan
@@ -114,7 +113,7 @@ API tanımını PowerApps ve Microsoft Flow aktarmak için şu adımları izleyi
 
 4. **Genel** sekmesinde, openapı tanımından gelen bilgileri gözden geçirin.
 
-5. **Güvenlik** sekmesinde, kimlik doğrulama ayrıntılarını sağlamanız istenirse, kimlik doğrulama türü için uygun değerleri girin.           **Devam**'a tıklayın.
+5. **Güvenlik** sekmesinde, kimlik doğrulama ayrıntılarını sağlamanız istenirse, kimlik doğrulama türü için uygun değerleri girin. **Devam**'a tıklayın.
 
     ![Güvenlik sekmesi](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227402"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073868"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Office 365 ' de çok coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
@@ -32,7 +32,7 @@ Varsayılan olarak, kullanıcılarınız için Office 365 kaynakları, Azure AD 
 **Preferreddatalocation**özniteliğini ayarlayarak bir kullanıcının coğrafi bölge tanımlayabilirsiniz. Kullanıcının posta kutusu ve OneDrive gibi Office 365 kaynaklarına, kullanıcıyla aynı coğrafi bölgede ve kuruluşunuzun tamamı için tek bir kiracıya sahip olabilirsiniz.
 
 > [!IMPORTANT]
-> Çoklu coğrafi bölge, en az 500 Office 365 hizmet aboneliğine sahip olan müşteriler tarafından kullanılabilir. Ayrıntılar için lütfen Microsoft temsilcinize başvurun.
+> Çoklu coğrafi bölge, şu anda etkin bir Kurumsal Anlaşma ve en az 500 Office 365 hizmet aboneliği olan müşteriler tarafından kullanılabilir. Ayrıntılar için lütfen Microsoft temsilcinize başvurun.
 >
 >
 
@@ -128,20 +128,20 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Öznitelik | Value | Ayrıntılar |
     | --- | --- | --- |
-    | Ad | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
+    | Name | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
     | Açıklama | *Özel bir açıklama sağlayın* |  |
     | Bağlı sistem | *Şirket içi Active Directory bağlayıcısını seçme* |  |
     | Bağlı sistem nesne türü | **Kullanıcısını** |  |
     | Meta veri deposu nesne türü | **Kişiler** |  |
-    | Bağlantı türü | **Birleştir** |  |
+    | Bağlantı Türü | **Birleştir** |  |
     | Öncellik | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
 
 5. Tüm nesneleri dahil etmek için **kapsam filtresini** boş tutun. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 6. **Dönüştürme sekmesine**gidin ve aşağıdaki dönüştürme kuralını uygulayın:
 
-    | Akış türü | Target özniteliği | Source | Bir kez Uygula | Birleştirme türü |
+    | Akış türü | Hedef öznitelik | Source | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştirme |
+    |Doğrudan | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştirme |
 
 7. Gelen kuralı oluşturmak için **Ekle**' yi seçin.
 
@@ -157,12 +157,12 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
     | Öznitelik | Value | Ayrıntılar |
     | ----- | ------ | --- |
-    | Ad | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
+    | Name | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
     | Açıklama | *Bir açıklama girin* ||
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcısını** ||
     | Meta veri deposu nesne türü | **Kişiler** ||
-    | Bağlantı türü | **Birleştir** ||
+    | Bağlantı Türü | **Birleştir** ||
     | Öncellik | *1 – 99 arasında bir sayı seçin* | 1 – 99 özel eşitleme kuralları için ayrılmıştır. Başka bir eşitleme kuralı tarafından kullanılan bir değer seçmeyin. |
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren tek bir kapsam filtresi grubu ekleyin:
@@ -176,9 +176,9 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
 6. **Dönüştürme** sekmesine gidin ve aşağıdaki dönüştürme kuralını uygulayın:
 
-    | Akış türü | Target özniteliği | Source | Bir kez Uygula | Birleştirme türü |
+    | Akış türü | Hedef öznitelik | Source | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştirme |
+    | Doğrudan | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştirme |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye kapatın.
 

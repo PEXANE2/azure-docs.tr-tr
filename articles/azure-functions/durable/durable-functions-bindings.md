@@ -1,33 +1,32 @@
 ---
-title: Dayanıklı işlevler - Azure için bağlamaları
-description: Tetikleyiciler ve bağlamalar için Azure işlevleri için dayanıklı işlevler uzantısını kullanma
+title: Dayanıklı İşlevler için bağlamalar-Azure
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısı için Tetikleyiciler ve bağlamaları kullanma.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 678e370977cadae642207f91a02136404fb6c34e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710542"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087547"
 ---
-# <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı işlevler (Azure işlevleri) için bağlamaları
+# <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
-[Dayanıklı işlevler](durable-functions-overview.md) uzantısı orchestrator ve etkinlik işlevlerin yürütülmesini denetlemenize iki yeni tetikleyici bağlamaları tanıtır. Dayanıklı işlevler çalışma zamanı için bir istemci olarak davranan bir çıkış bağlaması da tanıtılmaktadır.
+[Dayanıklı işlevler](durable-functions-overview.md) uzantısı, Orchestrator ve etkinlik işlevlerinin yürütülmesini denetleyen iki yeni tetikleyici bağlama sunar. Ayrıca, Dayanıklı İşlevler çalışma zamanı için istemci görevi gören bir çıkış bağlaması da sunar.
 
-## <a name="orchestration-triggers"></a>Orchestration Tetikleyicileri
+## <a name="orchestration-triggers"></a>Düzenleme Tetikleyicileri
 
-Orchestration tetikleyici dayanıklı orchestrator işlevleri yazmanızı sağlar. Bu tetikleyici yeni orchestrator işlevi örneklerin başlatılmasını ve "bir görevi beklemekten" mevcut orchestrator işlevi örnekleri sürdürme destekler.
+Orchestration tetikleyicisi, dayanıklı Orchestrator işlevlerini yazmanıza olanak sağlar. Bu tetikleyici, yeni Orchestrator işlev örneklerinin başlamasını ve "bekleyen" bir görevi olan mevcut Orchestrator işlev örneklerinin devam ettirmeyi destekler.
 
-Azure işlevleri için Visual Studio Araçları kullandığınızda, orchestration tetikleyici kullanılarak yapılandırılan [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .NET özniteliği.
+Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda Orchestration tetikleyicisi, [Orchestrationtriggerattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .net özniteliği kullanılarak yapılandırılır.
 
-Komut dosyası dilleri içinde orchestrator işlevleri yazdığınızda (örneğin, JavaScript veya C# komut dosyası), orchestration tetikleyici aşağıdaki JSON nesnesinde tanımlanan `bindings` dizisi *function.json* Dosya:
+Komut dosyası dillerinde Orchestrator işlevlerini yazdığınızda (örneğin, JavaScript veya C# Scripting), düzenleme tetikleyicisi, `bindings` *function. JSON* dosyasının dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -38,35 +37,35 @@ Komut dosyası dilleri içinde orchestrator işlevleri yazdığınızda (örneğ
 }
 ```
 
-* `orchestration` orchestration adıdır. Bu orchestrator işlevi yeni örneklerini başlamak istediğinizde, istemcileri kullanması gereken değer budur. Bu özellik isteğe bağlıdır. Belirtilmezse, işlevin adını kullanılır.
+* `orchestration`Orchestration 'un adıdır. Bu, bu Orchestrator işlevinin yeni örneklerini başlatmak istediklerinde istemcilerin kullanması gereken değerdir. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
 
-Dahili olarak Bu tetikleyici bağlama kuyrukları işlev uygulaması için varsayılan depolama hesabında bir dizi yoklar. Bu kuyruklar açıkça bağlama özelliklerinde yapılandırılmamış neden olan uzantı iç uygulama Ayrıntıları ' dir.
+Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
 
-### <a name="trigger-behavior"></a>Tetikleyici davranışı
+### <a name="trigger-behavior"></a>Tetikleme davranışı
 
-Bazı düzenleme tetikleyicisi ile ilgili notlar şunlardır:
+Düzenleme tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
-* **Tek iş parçacığı** -tek dağıtıcı iş parçacığı, bir tek ana bilgisayar örneği üzerindeki tüm orchestrator işlevi yürütme için kullanılır. Bu nedenle, orchestrator işlev kodunu verimlidir ve tüm g/ç gerçekleştirmez sağlamak önemlidir. Bu iş parçacığı dayanıklı işlevler özel görev türleri üzerinde bekleyen zaman dışında herhangi bir zaman uyumsuz iş yapmaz sağlamak önemlidir.
-* **Poison ileti işleme** -düzenleme Tetikleyicileri içinde zehirli ileti desteği yoktur.
-* **Mesaj görünürlük** -düzenleme tetikleyici iletileri sıradan çıkarılan ve yapılandırılabilir bir süre için görünmez tutulur. İşlev uygulaması çalışır ve iyi durumda olduğu sürece bu iletiler görünürlüğünü otomatik olarak yenilenir.
-* **Dönüş değerleri** -değerler için JSON seri hale getirilmiş ve orchestration geçmiş tablosu, Azure tablo depolamadaki kalıcı döndürür. Bu dönüş değerleri bağlama, daha sonra açıklanan düzenleme istemcisi tarafından sorgulanabilir.
-
-> [!WARNING]
-> Orchestrator işlevleri hiçbir zaman herhangi bir giriş veya çıktı bağlaması düzenleme dışında bağlama tetikleyin. Bunun yapılması, bu bağlantıları tek iş parçacığı oluşturma ve g/ç kurallarına uyma değil çünkü dayanıklı görev uzantısı sorunlara neden olma olasılığı vardır.
+* **Tek iş parçacığı** oluşturma-tek bir konak örneğindeki tüm Orchestrator işlev yürütmesi için tek bir dağıtıcı iş parçacığı kullanılır. Bu nedenle, Orchestrator işlev kodunun etkin olduğundan ve herhangi bir g/ç gerçekleştirmediğinden emin olmak önemlidir. Bu iş parçacığının Dayanıklı İşlevler özel görev türlerinde beklerken zaman uyumsuz bir iş gerektirmediğinden emin olmak da önemlidir.
+* **Zehirli ileti işleme** -düzenleme tetikleyicilerinde bir zarar iletisi desteği yoktur.
+* **İleti görünürlüğü** -düzenleme tetikleyici iletileri kuyruğa alınır ve yapılandırılabilir bir süre boyunca görünmez tutulur. İşlev uygulaması çalıştığı ve sağlıklı olduğu sürece bu iletilerin görünürlüğü otomatik olarak yenilenir.
+* **Dönüş değerleri** -dönüş değerleri JSON olarak serileştirilir ve Azure Tablo depolama alanındaki Orchestration geçmişi tablosunda kalıcı hale getirilir. Bu dönüş değerleri, daha sonra açıklanan Orchestration istemci bağlaması tarafından sorgulanabilir.
 
 > [!WARNING]
-> JavaScript orchestrator işlevlerin hiçbir zaman bildirilmelidir `async`.
+> Orchestrator işlevleri, düzenleme tetikleyicisi bağlaması dışında herhangi bir giriş veya çıkış bağlamasını asla kullanmamalıdır. Bunun yapılması, bu bağlamalar tek iş parçacığı ve g/ç kurallarına uymadığı için dayanıklı görev uzantısıyla ilgili sorunlara neden olabilir.
 
-### <a name="trigger-usage-net"></a>Tetikleyici kullanım (.NET)
+> [!WARNING]
+> JavaScript Orchestrator işlevleri asla bildirilmelidir `async`.
 
-Destekler bağlama düzenleme tetikleyici hem giriş hem de çıkarır. Çıkış işleme ve girişi hakkında bilmeniz gereken bazı noktalar şunlardır:
+### <a name="trigger-usage-net"></a>Kullanım tetiklemesi (.NET)
 
-* **girişleri** -.NET düzenleme işlevleri desteği yalnızca [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) parametre türü. İşlev imzası doğrudan girişlerinde seri durumdan çıkarma desteklenmiyor. Kod kullanmalıdır [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) veya `getInput` işlev giriş orchestrator getirilecek yöntemi (JavaScript). Bu giriş, JSON seri hale getirilebilir türler olmalıdır.
-* **çıkaran** -girişleri yanı sıra çıkış değerleri düzenleme Tetikleyicileri destekler. İşlev dönüş değeri, çıkış değeri atamak için kullanılır ve JSON seri hale getirilebilir olması gerekir. .NET işlevi döndürürse `Task` veya `void`, `null` değeri çıktı olarak kaydedilir.
+Düzenleme tetikleyicisi bağlaması hem giriş hem de çıkışları destekler. Giriş ve çıkış işleme hakkında daha fazla bilgi edinmek için aşağıdaki noktalara dikkat edin:
 
-### <a name="trigger-sample"></a>Tetikleyici örnek
+* **girişler** -.net Orchestration işlevleri parametre türü olarak yalnızca [Durableorchestrationcontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 'i destekler. Doğrudan işlev imzasında girişlerin serisini kaldırma desteklenmez. Kod, Orchestrator işlev girişlerini getirmek için [getınput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)( `getInput` .net) veya (JavaScript) metodunu kullanmalıdır. Bu girişler JSON serileştirilebilir türler olmalıdır.
+* **çıktılar** -düzenleme Tetikleyicileri, çıkış değerlerinin yanı sıra girdileri de destekler. İşlevin dönüş değeri, çıkış değerini atamak için kullanılır ve JSON ile seri hale getirilebilir olmalıdır. Bir .NET işlevi veya `Task` `void`döndürürse, bir `null` değer çıktı olarak kaydedilir.
 
-Basit bir "Merhaba Dünya" orchestrator işlevi aşağıdaki gibi görünmelidir bir örnek verilmiştir:
+### <a name="trigger-sample"></a>Tetikleyici örneği
+
+Aşağıda, en basit "Merhaba Dünya" Orchestrator işlevinin nasıl görünebileceğini bir örnek verilmiştir:
 
 #### <a name="c"></a>C#
 
@@ -79,7 +78,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 ```javascript
 const df = require("durable-functions");
@@ -91,12 +90,12 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> `context` JavaScript nesne DurableOrchestrationContext temsil etmiyor ancak [işlevi bağlamı bir bütün olarak.](../functions-reference-node.md#context-object). Orchestration yöntemleri aracılığıyla erişebileceğiniz `context` nesnenin `df` özelliği.
+> JavaScript içindeki nesne, durableorchestrationcontext, ancak [işlev bağlamını bir bütün olarak temsil etmez.](../functions-reference-node.md#context-object) `context` Düzenleme yöntemlerine `context` `df` nesnenin özelliği aracılığıyla erişebilirsiniz.
 
 > [!NOTE]
-> JavaScript düzenleyicileri kullanması gereken `return`. `durable-functions` Kitaplığı çağırmadan üstlenir `context.done` yöntemi.
+> JavaScript düzenleyicilerinin kullanması `return`gerekir. `durable-functions` Kitaplık ,`context.done` yöntemi çağırma işlemini gerçekleştirir.
 
-İşte bu nedenle bir etkinlik işlevinin nasıl çağrıldığını gösteren bir "Hello World" örnek etkinlik İşlevler, çoğu orchestrator işlev çağırın:
+Çoğu Orchestrator işlevi etkinlik işlevlerini çağırır, bu nedenle bir etkinlik işlevinin nasıl çağrılacağını gösteren bir "Merhaba Dünya" örneği aşağıda verilmiştir:
 
 #### <a name="c"></a>C#
 
@@ -111,7 +110,7 @@ public static async Task<string> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 ```javascript
 const df = require("durable-functions");
@@ -125,11 +124,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="activity-triggers"></a>Etkinlik Tetikleyicileri
 
-Etkinlik tetikleyici orchestrator işlevleri tarafından çağrılan işlevleri yazmanızı sağlar.
+Etkinlik tetikleyicisi, Orchestrator işlevleri tarafından çağrılan işlevleri yazmanıza olanak sağlar.
 
-Visual Studio kullanıyorsanız, etkinlik tetikleyici kullanılarak yapılandırılan [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET özniteliği.
+Visual Studio kullanıyorsanız, etkinlik tetikleyicisi [Activitytriggerattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .net özniteliği kullanılarak yapılandırılır.
 
-Geliştirme için VS Code veya Azure portalını kullanıyorsanız, etkinlik Tetikleyici tarafından aşağıdaki JSON nesnesinde tanımlanan `bindings` dizisi *function.json*:
+Geliştirme için vs Code veya Azure Portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -140,33 +139,33 @@ Geliştirme için VS Code veya Azure portalını kullanıyorsanız, etkinlik Tet
 }
 ```
 
-* `activity` Etkinlik adıdır. Bu, bu etkinlik işlevi çağırmak için orchestrator işlevlerini kullanan değerdir. Bu özellik isteğe bağlıdır. Belirtilmezse, işlevin adını kullanılır.
+* `activity`etkinliğin adıdır. Bu, Orchestrator işlevlerinin bu etkinlik işlevini çağırmak için kullandığı değerdir. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
 
-Dahili olarak bir işlev uygulaması için varsayılan depolama hesabını sırada Bu tetikleyici bağlama yoklar. Bir iç uygulama ayrıntısı bağlama özellikleri açıkça yapılandırılmadı neden olan uzantı kuyruğudur.
+Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir kuyruğu yoklar. Bu kuyruk, uzantının iç uygulama ayrıntısı olduğundan, bağlama özelliklerinde açıkça yapılandırılmamış olabilir.
 
-### <a name="trigger-behavior"></a>Tetikleyici davranışı
+### <a name="trigger-behavior"></a>Tetikleme davranışı
 
-Etkinlik tetikleyicisi ile ilgili bazı notlar şunlardır:
+Etkinlik tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
-* **İş parçacığı** -düzenleme tetikleyici, etkinlik Tetikleyicileri iş parçacığı etrafında herhangi bir kısıtlama yok veya g/ç. Normal işlevler gibi işlenebilir.
-* **Poison ileti işleme** -etkinlik Tetikleyicileri içinde zehirli ileti desteği yoktur.
-* **Mesaj görünürlük** -etkinlik tetikleyici iletileri sıradan çıkarılan ve yapılandırılabilir bir süre için görünmez tutulur. İşlev uygulaması çalışır ve iyi durumda olduğu sürece bu iletiler görünürlüğünü otomatik olarak yenilenir.
-* **Dönüş değerleri** -değerler için JSON seri hale getirilmiş ve orchestration geçmiş tablosu, Azure tablo depolamadaki kalıcı döndürür.
+* **Iş parçacığı** oluşturma tetikleyicisinden farklı olarak, etkinlik tetikleyicilerinin iş parçacığı veya g/ç etrafında herhangi bir kısıtlama yoktur. Bunlar, normal işlevler gibi davranılanırlar.
+* **Zehirli ileti işleme** -etkinlik tetikleyicilerinde bir zarar iletisi desteği yoktur.
+* **İleti görünürlüğü** -etkinlik tetikleyicisi iletileri kuyruğa alınır ve yapılandırılabilir bir süre boyunca görünmez tutulur. İşlev uygulaması çalıştığı ve sağlıklı olduğu sürece bu iletilerin görünürlüğü otomatik olarak yenilenir.
+* **Dönüş değerleri** -dönüş değerleri JSON olarak serileştirilir ve Azure Tablo depolama alanındaki Orchestration geçmişi tablosunda kalıcı hale getirilir.
 
 > [!WARNING]
-> Depolama arka ucu etkinlik işlevler için bir uygulama ayrıntısı olduğunu ve kullanıcı kodu bu depolama varlıklarla doğrudan etkileşimde bulunmamalıdır.
+> Etkinlik işlevleri için depolama arka ucu, bir uygulama ayrıntısı ve Kullanıcı kodu bu depolama varlıklarıyla doğrudan etkileşmemelidir.
 
-### <a name="trigger-usage-net"></a>Tetikleyici kullanım (.NET)
+### <a name="trigger-usage-net"></a>Kullanım tetiklemesi (.NET)
 
-Destekler bağlama etkinlik tetikleyicisi girişlerinin hem, yalnızca düzenleme tetikleyicisi gibi çıkarır. Çıkış işleme ve girişi hakkında bilmeniz gereken bazı noktalar şunlardır:
+Etkinlik tetikleyicisi bağlaması, tıpkı düzenleme tetikleyicisi gibi giriş ve çıkışları destekler. Giriş ve çıkış işleme hakkında daha fazla bilgi edinmek için aşağıdaki noktalara dikkat edin:
 
-* **girişleri** -.NET etkinliği işlevleri yerel olarak kullanan [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) parametre türü. Alternatif olarak, bir etkinlik işlevi, JSON seri hale getirilebilir parametre türü ile bildirilebilir. Kullanırken `DurableActivityContext`, çağırabilirsiniz [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) getirmek ve seri durumdan etkinlik işlevi için giriş.
-* **çıkaran** -etkinlik işlevlerini destekleyen girişleri yanı sıra çıkış değerleri. İşlev dönüş değeri, çıkış değeri atamak için kullanılır ve JSON seri hale getirilebilir olması gerekir. .NET işlevi döndürürse `Task` veya `void`, `null` değeri çıktı olarak kaydedilir.
-* **meta veri** -.NET etkinliği işlevleri için bağlayabilirsiniz bir `string instanceId` parametresini üst düzenleme örneğinin Kimliğini alın.
+* **girişler** -.net etkinlik işlevleri, bir parametre türü olarak [durableactivitycontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) kullanımını yerel olarak kullanır. Alternatif olarak, bir etkinlik işlevi JSON ile seri hale getirilebilir olan herhangi bir parametre türüyle bildirilebilecek. Kullandığınızda `DurableActivityContext`, etkinlik işlevi girişini getirmek ve seri durumdan çıkarmak için [\<getınput T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) çağırabilirsiniz.
+* **çıktılar** -etkinlik işlevleri, çıkış değerlerinin yanı sıra girdileri de destekler. İşlevin dönüş değeri, çıkış değerini atamak için kullanılır ve JSON ile seri hale getirilebilir olmalıdır. Bir .NET işlevi veya `Task` `void`döndürürse, bir `null` değer çıktı olarak kaydedilir.
+* **meta veri** -.net etkinlik işlevleri, üst düzenleme `string instanceId` örnek kimliğini almak için bir parametreye bağlanabilir.
 
-### <a name="trigger-sample"></a>Tetikleyici örnek
+### <a name="trigger-sample"></a>Tetikleyici örneği
 
-Basit bir "Merhaba Dünya" etkinlik işlevi nasıl görünebileceğini gösteren bir örnek verilmiştir:
+Aşağıda basit bir "Merhaba Dünya" etkinlik işlevinin nasıl görünebileceğini bir örnek verilmiştir:
 
 #### <a name="c"></a>C#
 
@@ -179,7 +178,7 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
-.NET için varsayılan parametre türü `ActivityTriggerAttribute` bağlamanın `DurableActivityContext`. Ancak, aynı işlevi olarak Basitleştirilmiş böylece doğrudan JSON-serializeable için bağlama desteği (ilkel türler), ayrıca türleri .NET etkinliği Tetikleyicileri aşağıdaki gibidir:
+.Net `ActivityTriggerAttribute` bağlaması için varsayılan parametre türü ' dir `DurableActivityContext`. Ancak, .NET etkinliği Tetikleyicileri doğrudan JSON-serializlenebilir türlere (ilkel türler dahil) bağlamayı da destekler, bu nedenle aynı işlev aşağıdaki gibi basitleştirilebilir:
 
 ```csharp
 [FunctionName("SayHello")]
@@ -189,7 +188,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 ```javascript
 module.exports = async function(context) {
@@ -197,7 +196,7 @@ module.exports = async function(context) {
 };
 ```
 
-Aynı işlevin şu şekilde Basitleştirilmiş böylece JavaScript bağlamaları ayrıca ek parametreler geçirilebilir:
+JavaScript bağlamaları ek parametreler olarak da geçirilebilir, bu nedenle aynı işlev şu şekilde basitleştirilebilir:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -207,9 +206,9 @@ module.exports = async function(context, name) {
 
 ### <a name="passing-multiple-parameters"></a>Birden çok parametre geçirme
 
-Bir etkinlik işlevine birden çok parametreler doğrudan geçirilecek mümkün değildir. Bu durumda bir nesneler dizisi geçirin veya kullanmak için önerilir [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) .NET nesneleri.
+Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değildir. Bu durumda, bir dizi nesnenin veya .NET 'teki [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini kullanmanın önerisi.
 
-Aşağıdaki örnek, yeni özellikleri kullanarak [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) ile eklenen [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+Aşağıdaki örnek, [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)ile eklenen [valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -243,19 +242,19 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 }
 ```
 
-## <a name="orchestration-client"></a>Düzenleme istemcisi
+## <a name="orchestration-client"></a>Orchestration istemcisi
 
-Düzenleme istemcisi bağlama orchestrator işlevleri ile etkileşim işlevleri yazmanızı sağlar. Örneğin, aşağıdaki yollarla düzenleme örneklerinde davranabilir:
+Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen işlevler yazmanızı sağlar. Örneğin, düzenleme örnekleri üzerinde aşağıdaki yollarla işlem yapabilirsiniz:
 
 * Bunları başlatın.
-* Bunların durumunu sorgulayın.
-* Bunları sonlandırın.
-* Çalıştırdıkları sırada için olayları gönderirsiniz.
+* Durumlarını sorgulayın.
+* Sonlandırın.
+* Olayları çalışırken onlara gönderin.
 * Örnek geçmişini temizle.
 
-Visual Studio kullanıyorsanız, orchestration istemciye kullanarak bağlayabilirsiniz [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET özniteliği.
+Visual Studio kullanıyorsanız, düzenleme istemcisine [Orchestrationclientattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .net özniteliğini kullanarak bağlanabilirsiniz.
 
-Komut dosyası dilleri kullanıyorsanız (örneğin *.csx* veya *.js* dosyaları) için geliştirme, düzenleme tetikleyici aşağıdaki JSON nesnesinde tarafından tanımlanan `bindings` dizisi  *Function.JSON*:
+Geliştirme için betik dilleri (örn. *CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -267,32 +266,32 @@ Komut dosyası dilleri kullanıyorsanız (örneğin *.csx* veya *.js* dosyaları
 }
 ```
 
-* `taskHub` -Birden çok işlev uygulamaları burada aynı depolama hesabını paylaşmak ancak birbirinden yalıtılmış olmasına gerek senaryolarda kullanılır. Belirtilmezse, varsayılan değerden `host.json` kullanılır. Bu değer, hedef orchestrator işlevleri tarafından kullanılan değerle eşleşmelidir.
-* `connectionName` -Depolama hesabı bağlantı dizesi içeren bir uygulama ayarı adı. Bu bağlantı dizesi tarafından temsil edilen bir depolama hesabı hedef orchestrator işlevleri tarafından kullanılan hizmet örneğiyle aynı olmalıdır. Belirtilmezse, varsayılan depolama hesabı bağlantı dizesi bir işlev uygulaması için kullanılır.
+* `taskHub`-Birden çok işlevli uygulamanın aynı depolama hesabını paylaştığı ancak birbirinden yalıtılması gereken senaryolarda kullanılır. Belirtilmemişse, varsayılan değer `host.json` kullanılır. Bu değer, hedef Orchestrator işlevleri tarafından kullanılan değerle aynı olmalıdır.
+* `connectionName`-Depolama hesabı bağlantı dizesi içeren bir uygulama ayarının adı. Bu bağlantı dizesi tarafından temsil edilen depolama hesabı, hedef Orchestrator işlevlerinin kullandığı aynı olmalıdır. Belirtilmemişse, işlev uygulaması için varsayılan depolama hesabı bağlantı dizesi kullanılır.
 
 > [!NOTE]
-> Çoğu durumda, bu özellikleri atlamak ve varsayılan davranışı Uygula öneririz.
+> Çoğu durumda, bu özellikleri atlamanızı ve varsayılan davranışa güvenmenizi öneririz.
 
-### <a name="client-usage"></a>İstemci kullanım
+### <a name="client-usage"></a>İstemci kullanımı
 
-.NET işlevleri'nde, genellikle bağlamak `DurableOrchestrationClient`, size sağlayan tam erişim için tüm istemci dayanıklı işlevler tarafından desteklenen API'ler. JavaScript'te, aynı API'leri tarafından sunulan `DurableOrchestrationClient` döndürülen nesne `getClient`. İstemci nesnesi API'leri şunlardır:
+.Net işlevlerinde, genellikle dayanıklı işlevler tarafından desteklenen tüm `DurableOrchestrationClient`istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. JavaScript 'te, aynı API 'ler tarafından `DurableOrchestrationClient` `getClient`döndürülen nesne tarafından gösterilir. İstemci nesnesindeki API 'Ler şunları içerir:
 
 * [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
 * [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
-* [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
+* [Sonlandırateasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
 * [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
-* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_) (şu anda yalnızca .NET)
+* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_) (Şu anda yalnızca .NET)
 
-Alternatif olarak, .NET işlevleri adlarınıza bağlayabileceğiniz `IAsyncCollector<T>` burada `T` olduğu [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) veya `JObject`.
+Alternatif olarak, .net işlevleri `IAsyncCollector<T>` [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) veya `JObject`olduğu yere `T` bağlanabilir.
 
-Bkz: [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) bu işlemler hakkında daha fazla ayrıntı için API belgeleri.
+Bu işlemlerle ilgili ek ayrıntılar için bkz. [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API 'si belgeleri.
 
 > [!WARNING]
-> JavaScript içinde yerel olarak geliştirirken, ortam değişkenini ayarlamak gerekir `WEBSITE_HOSTNAME` için `localhost:<port>`, örn. `localhost:7071` yöntemleri kullanmak üzere `DurableOrchestrationClient`. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> JavaScript 'te yerel olarak geliştirme yaparken, ortam değişkenini `WEBSITE_HOSTNAME` `localhost:<port>`, EX olarak ayarlamanız gerekir. `localhost:7071`üzerinde `DurableOrchestrationClient`yöntemleri kullanmak için. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="client-sample-visual-studio-development"></a>İstemci örneği (Visual Studio geliştirme)
 
-"HelloWorld" düzenleme başlatan bir örnek kuyruk ile tetiklenen bir işlev aşağıda verilmiştir.
+Aşağıda, "HelloWorld" düzenlemesini başlatan örnek bir Queue-tetiklenen işlev verilmiştir.
 
 ```csharp
 [FunctionName("QueueStart")]
@@ -307,7 +306,7 @@ public static Task Run(
 
 ### <a name="client-sample-not-visual-studio"></a>İstemci örneği (Visual Studio değil)
 
-Geliştirme için Visual Studio kullanmıyorsanız, aşağıdakileri oluşturabilirsiniz *function.json* dosya. Bu örnek, bağlama dayanıklı düzenleme istemcinin kullandığı kuyruk ile tetiklenen bir işlev yapılandırma işlemi gösterilmektedir:
+Geliştirme için Visual Studio kullanmıyorsanız, aşağıdaki *function. JSON* dosyasını oluşturabilirsiniz. Bu örnek, dayanıklı düzenleme istemci bağlamasını kullanan bir Queue-tetiklenen işlevin nasıl yapılandırılacağını gösterir:
 
 ```json
 {
@@ -327,11 +326,11 @@ Geliştirme için Visual Studio kullanmıyorsanız, aşağıdakileri oluşturabi
 }
 ```
 
-Yeni orchestrator işlevi örnekleri dile özgü örnekleri aşağıda verilmiştir.
+Yeni Orchestrator işlev örnekleri Başlatan dile özgü örnekler aşağıda verilmiştir.
 
 #### <a name="c-sample"></a>C# örneği
 
-Aşağıdaki örnek, bir C# betik işlevini yeni bir işlev örneği başlatmak için bağlama dayanıklı düzenleme istemcisi kullanmayı gösterir:
+Aşağıdaki örnek, bir C# betik işlevinden yeni bir işlev örneği başlatmak için dayanıklı düzenleme istemci bağlamasının nasıl kullanılacağını gösterir:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -344,7 +343,7 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 
 #### <a name="javascript-sample"></a>JavaScript örneği
 
-Aşağıdaki örnek bir JavaScript işlevinden yeni bir işlev örneği başlatmak için bağlama dayanıklı düzenleme istemcisi kullanmayı gösterir:
+Aşağıdaki örnek, bir JavaScript işlevinden yeni bir işlev örneği başlatmak için dayanıklı düzenleme istemci bağlamasının nasıl kullanılacağını gösterir:
 
 ```javascript
 const df = require("durable-functions");
@@ -355,7 +354,7 @@ module.exports = async function (context) {
 };
 ```
 
-Örnekleri başlatma hakkında daha fazla ayrıntı bulunabilir [örnek Yönetim](durable-functions-instance-management.md).
+[Örnek yönetimi](durable-functions-instance-management.md)'nde, başlatma örnekleri hakkında daha fazla ayrıntı bulunabilir.
 
 <a name="host-json"></a>
 
@@ -366,4 +365,4 @@ module.exports = async function (context) {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Denetim noktası oluşturma ve yeniden yürütme davranışları hakkında bilgi edinin](durable-functions-checkpointing-and-replay.md)
+> [Checkişaret ve yeniden yürütme davranışları hakkında bilgi edinin](durable-functions-checkpointing-and-replay.md)

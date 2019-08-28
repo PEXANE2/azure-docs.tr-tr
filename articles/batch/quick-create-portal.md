@@ -5,17 +5,16 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 33455a95dff946676e3dfffbd2737ed36be59c64
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322358"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094116"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal ilk Batch işinizi çalıştırma
 
@@ -83,7 +82,7 @@ Batch, havuzu hemen oluşturur ancak işlem düğümlerinin ayrılması ve başl
 
 Birkaç dakika sonra havuzun durumu **Sabit** olur ve düğümler başlar. Düğümlerin durumunu denetlemek için **Düğümler**'i seçin. Bir düğümün durumu **Boşta** olduğunda görevleri çalıştırmaya hazırdır. 
 
-## <a name="create-a-job"></a>Bir iş oluşturma
+## <a name="create-a-job"></a>İş oluştur
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Başlangıçta iş hiçbir görev içermez. 
 
@@ -91,7 +90,7 @@ Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. B
 
 2. *myjob* adlı bir **İş Kimliği** girin. **Havuz** menüsünde *mypool*’u seçin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
-   ![Bir iş oluşturma][job_create]
+   ![İş oluştur][job_create]
 
 İş oluşturulduktan sonra **Görevler** sayfası açılır.
 

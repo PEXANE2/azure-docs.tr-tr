@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935065"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092821"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma
 
@@ -106,6 +106,10 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 ## <a name="preparing-secondary-database-for-failover"></a>İkincil veritabanı yük devretme için hazırlanıyor
 
 Uygulamanızın yük devretmeden sonra yeni birincil sunucuya hemen erişebildiğinden emin olmak için ikincil sunucunuzun ve veritabanınızın kimlik doğrulama gereksinimlerinin doğru yapılandırıldığından emin olun. Ayrıntılar için bkz. [olağanüstü durum kurtarma sonrasında SQL veritabanı güvenliği](sql-database-geo-replication-security-config.md). Yük devretmeden sonra uyumluluğu güvence altına almak için ikincil veritabanındaki yedekleme bekletme ilkesinin birincili ile eşleştiğinden emin olun. Bu ayarlar veritabanının bir parçası değildir ve çoğaltılmaz. Varsayılan olarak, ikincil değer yedi günlük bir varsayılan bir saklama süresi ile yapılandırılır. Ayrıntılar için bkz. [SQL veritabanı otomatik yedeklemeleri](sql-database-automated-backups.md).
+
+> [!IMPORTANT]
+> Veritabanınız bir yük devretme grubunun üyesiyse, coğrafi çoğaltma faiover komutunu kullanarak yük devretmesini başlatamazsınız. Grup için yük devretme komutunu kullanmayı düşünün. Tek bir veritabanının yük devretmesine ihtiyacınız varsa, önce onu yük devretme grubundan kaldırmanız gerekir. Ayrıntılar için bkz. [Yük devretme grupları](sql-database-auto-failover-group.md) . 
+
 
 ## <a name="configuring-secondary-database"></a>İkincil veritabanını yapılandırma
 

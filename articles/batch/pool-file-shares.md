@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 8c9d041648408b05b7cd160d5aea9dfb33ac061d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: cd185035640bf0beaa54fa6a0f4d92a33837442b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322374"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093977"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Bir Batch havuzu ile Azure dosya paylaşma kullanma
 
@@ -54,7 +53,7 @@ Batch 'de, bir görev Windows düğümünde her çalıştırıldığında payla�
 * **Kullanıcı adı**: Azure\\\\storageAccountName, örneğin, Azure*mystorageaccountname* \>\<
 * **Parola**: \<Storageaccountkeytedhends in = = >, örneğin, *xxxxxxxxxxxxxxxxxxxxx = =*
 
-Aşağıdaki komut, *mystorageaccountname* depolama hesabındaki bir *dosya paylaşımını* *S:* sürücüsü olarak takar:
+Aşağıdaki komut, mystorageaccountname depolama hesabındaki bir dosya paylaşımını *S:* sürücüsü olarak takar:
 
 ```
 net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\mystorageaccountname XXXXXXXXXXXXXXXXXXXXX==
@@ -131,7 +130,7 @@ Ardından, aşağıdaki kimlik `mount` bilgilerini sağlayarak dosya paylaşım�
 * **Kullanıcı adı**: \<storageAccountName\>, örneğin, *mystorageaccountname*
 * **Parola**: \<Storageaccountkeytedhends in = = >, örneğin, *xxxxxxxxxxxxxxxxxxxxx = =*
 
-Aşağıdaki komut, */mnt/myazurefileshare*konumundaki *mystorageaccountname* depolama hesabındaki bir *dosya paylaşımını takar* : 
+Aşağıdaki komut, */mnt/myazurefileshare*konumundaki *mystorageaccountname* depolama hesabındaki bir dosya paylaşımını takar: 
 
 ```
 mount -t cifs //mystorageaccountname.file.core.windows.net/myfileshare /mnt/MyAzureFileShare -o vers=3.0,username=mystorageaccountname,password=XXXXXXXXXXXXXXXXXXXXX==,dir_mode=0777,file_mode=0777,serverino && ls /mnt/MyAzureFileShare
