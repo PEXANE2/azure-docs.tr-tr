@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622261"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061364"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Sık sorulan sorular (SSS)
 
@@ -43,11 +43,9 @@ Uygulamalar için Kullanıcı hesaplarının her zaman bir kaydolma Kullanıcı 
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Şu anda hangi sosyal kimlik sağlayıcılarını destekliyoruz? Gelecekte hangi olanları desteklemeyi planlıyorsunuz?
 
-Şu anda Facebook, Google +, LinkedIn, Amazon, Twitter (Önizleme), WeChat (Önizleme), Weibo (Önizleme) ve QQ (Önizleme) ' yi destekliyoruz. Müşteri talebine göre diğer popüler sosyal kimlik sağlayıcıları için destek ekleyeceğiz.
+Şu anda Amazon, Facebook, GitHub (Önizleme), Google, LinkedIn, Microsoft hesabı (MSA), QQ (Önizleme), Twitter, WeChat (Önizleme) ve Weibo (Önizleme) gibi birçok sosyal kimlik sağlayıcısını destekliyoruz. Müşteri talebine bağlı diğer popüler sosyal kimlik sağlayıcıları için destek eklemeyi değerlendiriyoruz.
 
-Azure AD B2C [özel ilkeler](active-directory-b2c-overview-custom.md)için de destek eklenmiştir. Bu özel ilkeler, bir geliştiricinin [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) veya SAML 'yi destekleyen herhangi bir kimlik sağlayıcısıyla kendi ilkelerini oluşturmalarına olanak tanır.
-
-[Özel ilke başlangıç paketimizi](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)inceleyerek özel ilkeleri kullanmaya başlayın.
+Azure AD B2C Ayrıca [özel ilkeleri](active-directory-b2c-overview-custom.md)destekler. Özel ilkeler, [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) veya SAML 'yi destekleyen herhangi bir kimlik sağlayıcısı için kendi ilkenizi oluşturmanızı sağlar. [Özel ilke başlangıç paketimizi](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)inceleyerek özel ilkeleri kullanmaya başlayın.
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Farklı sosyal kimlik sağlayıcılarından tüketiciler hakkında daha fazla bilgi toplamak için kapsamları yapılandırabilir miyim?
 

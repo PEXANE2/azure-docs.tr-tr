@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533460"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061393"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
@@ -58,16 +58,11 @@ Windows çalıştıran düğümler için aşağıdaki sürümler desteklenir:
 - Windows 8.1
 - Windows 7
 
-[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) tek başına Ürün SKU 'Su istenen durum yapılandırmasına sahip değil, bu nedenle PowerShell DSC veya Azure Otomasyonu durum yapılandırması tarafından yönetilemez.
+[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) tek başına Ürün SKU 'Su Istenen durum yapılandırması, PowerShell DSC veya Azure Otomasyonu durum yapılandırması tarafından yönetilebilmesi için bu uygulamayı içermiyor.
 
 Linux çalıştıran düğümler için aşağıdaki distrolar/sürümler desteklenir:
 
-DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) tüm Linux dağıtımlarını destekler:
-
-Dağıtım | Version
--|-
-Debian  | tüm sürümler
-Ubuntu  | 18,04
+DSC Linux uzantısı, [desteklenen Linux dağıtımları](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)altında listelenen tüm Linux dağıtımlarını destekler.
 
 ### <a name="dsc-requirements"></a>DSC gereksinimleri
 
@@ -79,7 +74,7 @@ Azure 'da çalışan tüm Linux düğümleri için ekleme sırasında [Linux Iç
 
 Düğümleriniz özel bir ağda bulunuyorsa, otomasyon ile iletişim kurmak için durum yapılandırması (DSC) için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
 
-* Bağlantı Noktası: Giden internet erişimi için yalnızca TCP 443 gereklidir.
+* Bağ Giden internet erişimi için yalnızca TCP 443 gereklidir.
 * Genel URL: *. azure-automation.net
 * US Gov Virginia genel URL 'SI: *. azure-automation.us
 * Aracı hizmeti: https://\<Workspace ID\>. Agentsvc.Azure-Automation.net

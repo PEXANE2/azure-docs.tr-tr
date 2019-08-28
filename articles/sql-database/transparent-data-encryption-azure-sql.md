@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967913"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061927"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL veritabanı ve veri ambarı için saydam veri şifrelemesi
 
 Saydam veri şifrelemesi (TDE), bekleyen verileri şifreleyerek kötü niyetli çevrimdışı etkinlik tehditlerine karşı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure veri ambarı ' nı korumanıza yardımcı olur. Uygulamada değişiklik gerektirmeden, bekleyen veritabanı, ilişkili yedeklemeler ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemleri gerçekleştirir. Varsayılan olarak, TDE, tüm yeni dağıtılan Azure SQL veritabanları için etkinleştirilmiştir. TDE, SQL veritabanında mantıksal **ana** veritabanını şifrelemek için kullanılamaz.  **Ana** veritabanı, Kullanıcı veritabanlarında TDE işlemleri gerçekleştirmek için gereken nesneleri içerir.
 
-TDE 'nın Azure SQL yönetilen örneği, Azure SQL veritabanı 'nın eski veritabanları veya Azure SQL veri ambarı için el ile etkinleştirilmesi gerekiyor.  
+TDE 'nin Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SQL veri ambarı 'nın eski veritabanları için el ile etkinleştirilmesi gerekiyor.
+Restore ile oluşturulan yönetilen örnek veritabanları kaynak veritabanından şifreleme durumunu devralma.
 
 Saydam veri şifrelemesi, veritabanı şifreleme anahtarı adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Bu veritabanı şifreleme anahtarı, saydam veri şifreleme koruyucusu tarafından korunuyor. Koruyucu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya Azure Key Vault (Kendi Anahtarını Getir) içinde depolanan bir asimetrik anahtardır. Saydam veri şifreleme koruyucusunu Azure SQL veritabanı ve veri ambarı için sunucu düzeyinde ve Azure SQL yönetilen örneği için örnek düzeyinde ayarlarsınız. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
 

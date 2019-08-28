@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667840"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062038"
 ---
 # <a name="get-started-with-device-twins-python"></a>Cihaz ikizlerini kullanmaya başlama (Python)
 
@@ -49,11 +49,15 @@ Bu öğreticinin sonunda iki Python konsol uygulamanız olacaktır:
 
 Bu bölümde, **{DEVICE ID}** ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Python konsol uygulaması oluşturacaksınız. Ardından, IoT Hub 'ında depolanan cihaz TWINS 'i, Redmond 'da bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
 
-1. Komut istemini açın ve **Python için Azure IoT Hub Hizmeti SDK’sını** aşağıda gösterildiği gibi yükleyin. SDK’yı yükledikten sonra komut istemini kapatın.
+1. Çalışma dizininizde, bir komut istemi açın ve **Python Için Azure IoT Hub hizmet SDK 'sını**yükledikten sonra.
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   >
 
 2. Bir metin düzenleyicisi kullanarak yeni bir **AddTagsAndQuery.py** dosyası oluşturun.
 
@@ -66,7 +70,7 @@ Bu bölümde, **{DEVICE ID}** ile ilişkili cihaz ikizi konum meta verilerini ek
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. `[IoTHub Connection String]` Ve`[Device Id]` için yer tutucusunu, IoT Hub için bağlantı dizesiyle ve önceki bölümlerde oluşturduğunuz cihaz kimliğiyle değiştirerek aşağıdaki kodu ekleyin.
+4. Aşağıdaki kodu ekleyin. `[IoTHub Connection String]` [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `[Device Id]` [Yeni bir cihazı IoT Hub 'ına kaydetmek](#register-a-new-device-in-the-iot-hub)için kaydettiğiniz cihaz kimliğiyle değiştirin.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ Bu bölümde, **{DEVICE ID}** ile ilişkili cihaz ikizi konum meta verilerini ek
 
 5. Aşağıdaki kodu **AddTagsAndQuery.py** dosyasına ekleyin:
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ Bu bölümde, **{DEVICE ID}** ile ilişkili cihaz ikizi konum meta verilerini ek
 
     **Redmond43** ' de bulunan tüm cihazları isteyen sorgunun sonuçlarında bir cihaz görmeniz gerekir ve sonuçları hücresel ağ kullanan cihazlara kısıtlayan sorgu için yok.
 
-    ![Redmond 'daki tüm cihazları gösteren ilk sorgu](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![Redmond 'daki tüm cihazları gösteren ilk sorgu](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgunun sonucunu değiştiren bir cihaz uygulaması oluşturacaksınız.
 
@@ -151,11 +155,15 @@ Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgun
 
 Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python konsol uygulaması oluşturursunuz ve ardından cihaz ikizi 'nin bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
 
-1. Komut istemini açın ve **Python için Azure IoT Hub Hizmeti SDK’sını** aşağıda gösterildiği gibi yükleyin. SDK’yı yükledikten sonra komut istemini kapatın.
+1. Çalışma dizininizde bir komut isteminden, **Python Için Azure IoT Hub Service SDK 'sını**yükledikten sonra:
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Azure-ıothub-Service-Client ve Azure-ıothub-Device-Client için PIP paketleri şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
+   >
 
 2. Bir metin düzenleyicisi kullanarak yeni bir **ReportConnectivity.py** dosyası oluşturun.
 
@@ -167,7 +175,7 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. Önceki bölümlerde oluşturduğunuz IoT Hub cihazı için bağlantı dizesiyle `[IoTHub Device Connection String]` birlikte yer tutucusunu değiştirerek aşağıdaki kodu ekleyin.
+4. Aşağıdaki kodu ekleyin. Yer tutucu `[IoTHub Device Connection String]` değerini, [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     **İstemci** nesnesi, cihazdan cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, **istemci** nesnesini başlattıktan sonra cihazınızla ilgili cihaz ikizi alır ve bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
 
@@ -248,7 +256,7 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
 
     Cihaz ikikinin güncelleştirildiğinden onay görmeniz gerekir.
 
-    ![güncelleştirme TWINS](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![güncelleştirme TWINS](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. Cihaz bağlantı bilgilerini raporladığı için, her iki sorgu da görünmelidir. Geri dönüp sorguları yeniden çalıştırın:
 
@@ -258,7 +266,7 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
 
     Bu kez, **{DEVICE ID}** hesabınız her iki sorgu sonucunda da görünmelidir.
 
-    ![İkinci sorgu](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![İkinci sorgu](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034746"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061564"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
 
@@ -36,7 +36,7 @@ Araç neredeyse tüm [Klasik uyarı kurallarını](monitoring-classic-retirement
 - Bazı Cosmos DB ölçümlerinde klasik uyarı kuralları. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#cosmos-db-metrics) bakın.
 - Tüm klasik sanal makinelerde ve bulut hizmetleri ölçümlerinde klasik uyarı kuralları (Microsoft. ClassicCompute/virtualMachines ve Microsoft. ClassicCompute/domainNames/yuvalar/roller). Bu makalenin ilerleyen kısımlarında [ayrıntılara](#classic-compute-metrics) bakın.
 
-Aboneliğiniz klasik bu kurallara sahipse, bunları el ile geçirmeniz gerekir. Otomatik geçiş sağlayabilmemiz için, bu türlerin mevcut, klasik tüm ölçüm uyarıları, Haziran 2020 ' e kadar çalışmaya devam edecektir. Bu uzantı, yeni uyarılara geçiş yapmak için size zaman kazandırır. Ancak, 2019 Ağustos 'Tan sonra yeni bir klasik uyarı oluşturulamaz.
+Aboneliğiniz klasik bu kurallara sahipse, bunları el ile geçirmeniz gerekir. Otomatik geçiş sağlayabilmemiz için, bu türlerin mevcut, klasik tüm ölçüm uyarıları, Haziran 2020 ' e kadar çalışmaya devam edecektir. Bu uzantı, yeni uyarılara geçiş yapmak için size zaman kazandırır. Ayrıca, yukarıdaki listelenen özel durumlar üzerinde 2020 Haziran 'a kadar klasik yeni uyarılar oluşturmaya devam edebilirsiniz. Ancak, diğer her şey için 2019 Ağustos 'Tan sonra yeni bir klasik uyarı oluşturulamaz.
 
 > [!NOTE]
 > Yukarıda listelenen özel durumların yanı sıra, klasik uyarı kurallarınız da geçersiz olabilir. Bunlar, [kullanım dışı ölçümlerde](#classic-alert-rules-on-deprecated-metrics) veya silinmiş kaynaklardakiler, gönüllü geçiş sırasında geçirilmeyecektir. Otomatik geçiş gerçekleştiğinde, bu tür geçersiz klasik uyarı kuralları silinir.

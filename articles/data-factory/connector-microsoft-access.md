@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 2010799dd590808a2c5be7d9e2330bd60e2c7913
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 79a960b106cc9de4116e8e59b2fa17f48c896221
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842497"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061460"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ve Microsoft Access veri depolarından veri kopyalama
 
@@ -33,6 +33,9 @@ Bu Microsoft Access bağlayıcısını kullanmak için şunları yapmanız gerek
 
 - Şirket içinde barındırılan bir Integration Runtime ayarlayın. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makale Ayrıntılar için.
 - Integration Runtime makinesindeki veri deposu için Microsoft Access ODBC sürücüsünü yükler.
+
+>[!NOTE]
+>ODBC sürücüsünün Microsoft Access 2016 sürümü bu bağlayıcı ile çalışmıyor. Bunun yerine sürücü sürüm 2013 veya 2010 kullanın.
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -121,7 +124,7 @@ Microsoft Access uyumlu veri deposundan veri kopyalamak için, etkinlik **kayna�
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **MicrosoftAccessSource** | Evet |
-| query | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"` | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| query | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"` | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 

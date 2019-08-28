@@ -1,6 +1,6 @@
 ---
-title: Azure veri fabrikasında kopyalama etkinliği | Microsoft Docs
-description: Azure Data Factory kopyalama etkinliği, verileri desteklenen kaynak veri deposundan desteklenen bir havuz veri deposuna kopyalamak için kullanabileceğiniz öğrenin.
+title: Etkinliği Azure Data Factory Kopyala | Microsoft Docs
+description: Azure Data Factory kopyalama etkinliği hakkında bilgi edinin. Desteklenen bir kaynak veri deposundan verileri desteklenen bir havuz veri deposuna kopyalamak için kullanabilirsiniz.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,39 +12,37 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 59ac4b36a4bc2b3ff454b3a2ae98ce60f6bfcb5f
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8af5673ff0ffef7306a13eceda86f879b5b31413
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996603"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060679"
 ---
-# <a name="copy-activity-in-azure-data-factory"></a>Azure veri fabrikasında kopyalama etkinliği
+# <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
-## <a name="overview"></a>Genel Bakış
-
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-data-movement-activities.md)
 > * [Geçerli sürüm](copy-activity-overview.md)
 
-Azure Data Factory'de arasında veri depoları şirket içindeki ve buluttaki veri kopyalamak için kopyalama etkinliği'ni kullanabilirsiniz. Veriler kopyalandıktan sonra başka etkinlikler kullanılarak daha fazla dönüştürülebilir ve analiz edilebilir. Kopyalama etkinliği, dönüştürme ve iş zekası (BI) ve uygulama tüketimini analiz sonuçları yayımlamak için de kullanabilirsiniz.
+Azure Data Factory, şirket içinde ve bulutta bulunan veri depoları arasında veri kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Verileri kopyaladıktan sonra, diğer etkinlikleri kullanarak daha fazla dönüşüm ve analiz yapabilirsiniz. Ayrıca, iş zekası (BI) ve uygulama tüketimine yönelik dönüştürme ve analiz sonuçlarını yayımlamak için kopyalama etkinliğini kullanabilirsiniz.
 
-![Kopyalama etkinliği rolü](media/copy-activity-overview/copy-activity.png)
+![Kopyalama etkinliğinin rolü](media/copy-activity-overview/copy-activity.png)
 
-Kopyalama Etkinliği yürütüldüğünde bir [Integration Runtime](concepts-integration-runtime.md). Farklı veri kopyalama senaryosunda, Integration Runtime farklı türleri yararlanılabilir olabilir:
+Kopyalama etkinliği bir [tümleştirme çalışma zamanı](concepts-integration-runtime.md)üzerinde yürütülür. Farklı veri kopyalama senaryolarında farklı türlerde tümleştirme çalışma zamanları kullanabilirsiniz:
 
-* Her iki IP 'den internet üzerinden herkese açık olan veri depoları arasında veri kopyalarken kopyalama etkinliği güvenli, güvenilir, ölçeklenebilir ve [küresel olarak kullanılabilir](concepts-integration-runtime.md#integration-runtime-location) **Azure Integration Runtime**tarafından güçlenebilir.
-* Bulunan şirket içi verileri kopyalama/veri depolarına veya ayarlamak gereken erişim denetimi (örneğin, Azure sanal ağı) içeren bir ağda olduğunda bir **tümleşik çalışma zamanı barındırabileceğiniz** veri kopyalama olanağı.
+* Herhangi bir IP 'den internet üzerinden herkese açık olarak erişilebilen iki veri deposu arasında veri kopyalarken kopyalama etkinliği için Azure tümleştirme çalışma zamanı ' nı kullanabilirsiniz. Bu tümleştirme çalışma zamanı güvenli, güvenilir, ölçeklenebilir ve [küresel olarak kullanılabilir](concepts-integration-runtime.md#integration-runtime-location).
+* Şirket içinde veya erişim denetimi olan bir ağda (örneğin, bir Azure sanal ağı) bulunan veri depolarından ve buralardan veri kopyalarken, kendi kendine barındırılan tümleştirme çalışma zamanı ayarlamanız gerekir.
 
-Tümleştirme çalışma zamanı her kaynak ve havuz veri deposu ile ilişkilendirilmesi gerekir. Hakkında ayrıntılı bilgi edinin. kopyalama etkinliği [kullanılacak IR'yi belirler](concepts-integration-runtime.md#determining-which-ir-to-use).
+Tümleştirme çalışma zamanının her kaynak ve havuz veri deposuyla ilişkilendirilmesi gerekir. Kopyalama etkinliğinin hangi tümleştirme çalışma zamanının kullanılacağını nasıl belirlediği hakkında bilgi için bkz. [HANGI IR kullanacağınızı belirleme](concepts-integration-runtime.md#determining-which-ir-to-use).
 
-Kopyalama etkinliği, verileri bir kaynaktan havuza kopyalamak için aşağıdaki aşamalara üzerinden gider. Kopyalama etkinliği'ni destekleyen hizmet:
+Verileri bir kaynaktan havuza kopyalamak için kopyalama etkinliğini çalıştıran hizmet şu adımları gerçekleştirir:
 
 1. Bir kaynak veri deposundan veri okur.
-2. Serileştirme/seri durumundan çıkarma, sıkıştırma/açma, sütun eşleme, vb. gerçekleştirir. Bunu, giriş veri kümesi, çıktı veri kümesi ve kopyalama etkinliği yapılandırmalarına göre bu işlemleri yapar.
+2. Serileştirme/seriyi kaldırma, sıkıştırma/açma, sütun eşleme vb. gerçekleştirir. Giriş veri kümesi, çıkış veri kümesi ve kopyalama etkinliğinin yapılandırmasına bağlı olarak bu işlemleri gerçekleştirir.
 3. Veri havuz/hedef veri deposuna yazar.
 
-![Kopyalama Etkinliği’ne Genel Bakış](media/copy-activity-overview/copy-activity-overview.png)
+![Kopyalama etkinliğine genel bakış](media/copy-activity-overview/copy-activity-overview.png)
 
 ## <a name="supported-data-stores-and-formats"></a>Desteklenen veri depoları ve biçimler
 
@@ -52,33 +50,46 @@ Kopyalama etkinliği, verileri bir kaynaktan havuza kopyalamak için aşağıdak
 
 ### <a name="supported-file-formats"></a>Desteklenen dosya biçimleri
 
-Kopyalama etkinliği için kullanabileceğiniz **olarak dosya kopyalama-olan** içinde çalışması verilerin kopyalandığı verimli bir şekilde tüm serileştirme/seri kaldırma, iki dosya tabanlı veri depoları arasında.
+Dosyaları kopyalamak için kopyalama etkinliğini iki dosya tabanlı veri deposu arasında olduğu gibi kullanabilirsiniz. Bu durumda, veriler serileştirme veya serisini kaldırma olmadan etkin bir şekilde kopyalanır.
 
-Kopyalama etkinliği, belirtilen biçimlerdeki dosyaları okumayı ve yazmayı de destekler: **Text, JSON, avro, ORC ve Parquet**, dosyaları aşağıdaki codec bileşenleriyle sıkıştırma ve açma: **Gzip, söndür, bzip2 ve Zipsöndür**. Bkz: [desteklenen dosya ve sıkıştırma biçimleri](supported-file-formats-and-compression-codecs.md) ayrıntılarla.
+Kopyalama etkinliği Ayrıca bu biçimlerdeki dosyaları okuyabilir ve bunlara yazabilir:
+- Text
+- JSON
+- Avro
+- ORC
+- Parquet
 
-Örneğin, aşağıdaki kopyalama etkinlikleri yapabilirsiniz:
+Kopyalama etkinliği, dosyaları şu codec bileşenleriyle sıkıştırabilir ve açabilir: 
+- Gzip
+- Deflate
+- Bzip2
+- Zipsöndür
 
-* Verileri şirket içi SQL Server kopyalayın ve Parquet biçiminde Azure Data Lake Storage 2. yazın.
-* Dosyaları (CSV) metin biçiminde şirket içi dosya sisteminden kopyalama ve Azure Blob Avro biçiminde yazmak.
-* ZIP dosyalarını şirket içi dosya sisteminden kopyalayın ve Azure Data Lake Storage 2. ' ye açıp açın.
-* Verileri Azure Blobundan GZip sıkıştırılmış metni (CSV) biçiminde kopyalayın ve Azure SQL veritabanı'na yazın.
-* Serileştirme/seri durumdan çıkarma veya sıkıştırma/açma ile ilgili birçok durum daha vardır.
+Daha fazla bilgi için bkz. [Desteklenen dosya ve sıkıştırma biçimleri](supported-file-formats-and-compression-codecs.md).
+
+Örneğin, aşağıdaki kopyalama etkinliklerini yapabilirsiniz:
+
+* Şirket içi SQL Server veritabanından veri kopyalayın ve verileri Parquet biçiminde Azure Data Lake Storage 2. yazın.
+* Metin (CSV) biçimindeki dosyaları şirket içi bir dosya sisteminden kopyalayın ve avro biçiminde Azure Blob depolama alanına yazın.
+* ZIP dosyalarını şirket içi bir dosya sisteminden kopyalayın, sıkıştırmasını açıp Azure Data Lake Storage 2. yazın.
+* Verileri Azure Blob depolama alanından gzip sıkıştırılmış metin (CSV) biçiminde kopyalayın ve Azure SQL veritabanı 'na yazın.
+* Serileştirme/seri durumdan çıkarma veya sıkıştırma/sıkıştırmayı gerektiren çok sayıda etkinlik.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Kopyalama etkinliği'ni destekleyen hizmet genel olarak bölgelerinde kullanılabilir durumdadır ve coğrafyalar listelenen [Azure Integration Runtime konumları](concepts-integration-runtime.md#integration-runtime-location). Dünya çapında topolojisi genellikle bölgeler arası atlama önler verimli veri taşıma sağlar. Bkz: [bölgelere göre Hizmetler](https://azure.microsoft.com/regions/#services) Data Factory veri taşıma bir bölge ve kullanılabilirlik için.
+Kopyalama etkinliğini sağlayan hizmet, [Azure tümleştirme çalışma zamanı konumlarında](concepts-integration-runtime.md#integration-runtime-location)listelenen bölgelerde ve coğrafi olarak genel kullanıma sunulmuştur. Dünya çapında topolojisi genellikle bölgeler arası atlama önler verimli veri taşıma sağlar. Belirli bir bölgedeki Data Factory ve veri hareketinin kullanılabilirliğini denetlemek için bkz. [bölgelere göre ürünler](https://azure.microsoft.com/regions/#services) .
 
 ## <a name="configuration"></a>Yapılandırma
 
-Azure veri fabrikasında kopyalama etkinliği kullanmak için yapmanız:
+Kopyalama etkinliğini Azure Data Factory kullanmak için şunları yapmanız gerekir:
 
-1. **Kaynak veri deposu ve havuz veri deposu için bağlı hizmetler oluşturacaksınız.** Yapılandırma ve desteklenen özellikleri bağlayıcı makalenin "bağlı hizmet özellikleri" bölümüne bakın. Desteklenen bağlayıcı listesinde bulabilirsiniz [desteklenen veri depoları ve biçimler](#supported-data-stores-and-formats) bölümü.
-2. **Kaynak ve havuz için veri kümeleri oluşturun.** Yapılandırma ve desteklenen özellikleri hakkında ' "veri kümesi özellikleri" başlıklı kaynak ve havuz bağlayıcı makalelerine bakın.
-3. **Kopyalama etkinliği ile işlem hattı oluşturursunuz.** Sonraki bölümde, bir örnek sağlar.
+1. **Kaynak veri deposu ve havuz veri deposu için bağlı hizmetler oluşturun.** Yapılandırma bilgileri ve desteklenen özellikler için bağlayıcı makalesinin "bağlı hizmet özellikleri" bölümüne bakın. Desteklenen bağlayıcıların listesini, bu makalenin [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats) bölümünde bulabilirsiniz.
+2. **Kaynak ve havuz için veri kümeleri oluşturun.** Yapılandırma bilgileri ve desteklenen özellikler için kaynak ve havuz bağlayıcı makalelerinin "veri kümesi özellikleri" bölümlerine bakın.
+3. **Kopyalama etkinliğiyle bir işlem hattı oluşturun.** Sonraki bölümde, bir örnek sağlar.
 
 ### <a name="syntax"></a>Sözdizimi
 
-Kopyalama etkinliği, aşağıdaki şablon desteklenen özelliklerin kapsamlı bir liste içerir. Senaryonuza uygun olanları belirtin.
+Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kapsamlı bir listesini içerir. Senaryonuza uygun olanları belirtin.
 
 ```json
 "activities":[
@@ -126,75 +137,75 @@ Kopyalama etkinliği, aşağıdaki şablon desteklenen özelliklerin kapsamlı b
 ]
 ```
 
-### <a name="syntax-details"></a>Söz dizimi ayrıntıları
+#### <a name="syntax-details"></a>Söz dizimi ayrıntıları
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| type | Copy etkinliğinin Type özelliği şu şekilde ayarlanmalıdır: **Kopyala** | Evet |
-| inputs | Kaynak verileri hangi noktalara oluşturduğunuz veri kümesi belirtin. Kopyalama etkinliği, yalnızca tek bir giriş destekler. | Evet |
-| outputs | Havuz veri hangi noktalara oluşturduğunuz veri kümesi belirtin. Kopyalama etkinliği, yalnızca tek bir çıktı destekler. | Evet |
-| typeProperties | Kopyalama etkinliği yapılandırmak için özellikler grubu. | Evet |
-| source | Kopyalama kaynağı türü ve karşılık gelen özelliklere veri almak nasıl belirtin.<br/><br/>"Kopyalama etkinliğinin özellikleri" bölümündeki bağlayıcı makalede listelenen daha ayrıntılı bilgi [desteklenen veri depoları ve biçimler](#supported-data-stores-and-formats). | Evet |
-| sink | Kopyalama Havuz türü ve karşılık gelen özelliklere veri yazma konusunda belirtin.<br/><br/>"Kopyalama etkinliğinin özellikleri" bölümündeki bağlayıcı makalede listelenen daha ayrıntılı bilgi [desteklenen veri depoları ve biçimler](#supported-data-stores-and-formats). | Evet |
-| translator | Kaynak havuzu için açıkça bir sütun eşlemelerini belirtin. Varsayılan kopyalama davranışı gereksinimi yerine getiremiyor uygulanır.<br/><br/>Ayrıntıları öğrenin [şema ve veri türü eşlemesi](copy-activity-schema-and-type-mapping.md). | Hayır |
-| dataIntegrationUnits | ' In powerfulness belirtin [Azure Integration Runtime](concepts-integration-runtime.md) veri kopyalama olanağı. Eski veri taşıma birimleri (DMU) bulut olarak bilinir. <br/><br/>Ayrıntıları öğrenin [veri tümleştirme birimleri](copy-activity-performance.md#data-integration-units). | Hayır |
-| parallelCopies | Kopyalama etkinliği, havuz için veri kaynağı ve veri yazma ait okunurken kullanılacak istediğiniz paralellik belirtin.<br/><br/>Ayrıntıları öğrenin [paralel kopyalama](copy-activity-performance.md#parallel-copy). | Hayır |
-| enableStaging<br/>stagingSettings | Verileri kaynaktan havuza doğrudan kopyalamak yerine bir blob depolamada geçici verileri hazırlamak için seçin.<br/><br/>Yararlı senaryoları ve yapılandırma ayrıntılarını öğrenmek [kopyalama aşamalı](copy-activity-performance.md#staged-copy). | Hayır |
-| enableskipıncompatiblerow<br/>redirectıncompatiblerowsettings| Havuz kaynaktan veri kopyalama sırasında uyumsuz satırların işlemek nasıl seçin.<br/><br/>Ayrıntıları öğrenin [hataya dayanıklılık](copy-activity-fault-tolerance.md). | Hayır |
+| type | Kopyalama etkinliği için,`Copy` | Evet |
+| inputs | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Evet |
+| outputs | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Evet |
+| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Evet |
+| source | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/><br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| sink | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/><br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| translator | Kaynak havuzu için açıkça bir sütun eşlemelerini belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/><br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
+| dataIntegrationUnits | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/><br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance.md#data-integration-units). | Hayır |
+| parallelCopies | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/><br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance.md#parallel-copy). | Hayır |
+| enableStaging<br/>stagingSettings | Verileri kaynaktan havuza doğrudan kopyalamak yerine, blob depolamada geçici verilerin gösterilip gösterilmeyeceğini belirtin.<br/><br/>Faydalı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için bkz. [aşamalı kopya](copy-activity-performance.md#staged-copy). | Hayır |
+| enableskipıncompatiblerow<br/>redirectıncompatiblerowsettings| Kaynaktan havuza veri kopyaladığınızda uyumsuz satırları nasıl işleyeceğinizi seçin.<br/><br/>Daha fazla bilgi için bkz. [hata toleransı](copy-activity-fault-tolerance.md). | Hayır |
 
 ## <a name="monitoring"></a>İzleme
 
-Kopyalama etkinliği Azure Data Factory "Yazar ve İzleyici" kullanıcı arabiriminde veya programlama yoluyla çalıştırmasının izleyebilirsiniz.
+Azure Data Factory **Author & İzleyici** Kullanıcı arabirimindeki veya program aracılığıyla kopyalama etkinliğini izleyebilirsiniz.
 
 ### <a name="monitor-visually"></a>Görsel olarak izleme
 
-Kopyalama etkinliği çalıştırmasının görsel olarak izlemek için veri fabrikanıza gidin -> **yazar ve İzleyici** -> **İzleyici sekmesi**, işlem hattı listesini çalıştırır bir"Etkinlikçalıştırmalarınıgörüntüle"bağlantısınabakın **Eylemler** sütun.
+Kopyalama etkinliği çalıştırmasını görsel olarak izlemek için veri fabrikanıza gidin ve sonra **yazar & İzleyicisi**' ne gidin. **İzleme** sekmesinde, eylemler sütunundaki **etkinlik çalıştırmasını görüntüle** düğmesinin bulunduğu **işlem** hattı çalıştırmaları listesini görürsünüz:
 
 ![İşlem hattı çalıştırmalarını izleme](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
-Bu işlem hattı çalıştırmasını etkinlikler listesini görmek için tıklayın. İçinde **eylemleri** sütun kopyalama etkinliği giriş, çıkış, (kopyalama etkinliği çalıştırma başarısız olursa) hataları ve ayrıntıları bağlantılar bulunur.
+İşlem hattı çalıştırmasında etkinliklerin listesini görmek için **etkinlik çalıştırmalarını görüntüle** ' yi seçin. **Eylemler** sütununda, kopyalama etkinliği girişi, çıkışı, hataları (kopyalama etkinliği başarısız olursa) bağlantılarını ve ayrıntıları görürsünüz:
 
 ![Etkinlik çalıştırmalarını izleme](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Tıklayın "**ayrıntıları**" altında bağlantı **eylemleri** kopyalama etkinliği'nin yürütme ayrıntıları ve performans özelliklerini görmek için. Bu havuz için kaynak, aktarım hızı, karşılık gelen süre ile geçtiği ve yapılandırmaları kopyalama senaryonuz için kullanılan adımları dahil olmak üzere birim/satır/dosyaları veri kopyalanan bilgiler gösterir.
+Kopyalama etkinliğinin yürütme ayrıntılarını ve performans özelliklerini görmek için **Eylemler** sütunundaki **Ayrıntılar** düğmesini seçin. Birim/satır sayısı/kaynaktan havuz, aktarım hızı, kopyalama etkinliğinin ilgili sürelerine ve kopyalama senaryonuz için kullanılan yapılandırmalara kadar olan veri sayısı gibi bilgiler görürsünüz.
 
 >[!TIP]
->Bazı senaryolarda, kopyalama izleme sayfasının en üstünde "**performans ayarlama ipuçları**" ' nı da görürsünüz. bu durum, büyük/veya büyük/veya kopya aktarım hızını artırmak için bu şekilde nelerin değişeceklerini gösteren bir örnek görürsünüz. [](#performance-and-tuning)
+>Bazı senaryolarda, kopyalama izleme sayfasının en üstünde **performans ayarlama ipuçları** da görürsünüz. Bu ipuçları, belirlenen performans sorunlarını ve kopyalama aktarım hızını artırmak için nelerin değiştirileceği hakkında bilgi sağlar. Bir örnek için, bu makalenin [performans ve ayarlama](#performance-and-tuning) bölümüne bakın.
 
-**Örnek: Azure Data Lake Store için Amazon S3'ten kopyalama**
-![İzleyici etkinlik çalışma ayrıntıları](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
+**Örnek: Amazon S3 'ten Azure Data Lake Store**
+![izleyici etkinliğine kopyalama etkinliği çalıştırma ayrıntıları](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
 
-**Örnek: Azure SQL veritabanından Azure SQL veri ambarı'nı kullanarak kopyalama için hazırlanan kopyalama**
-![İzleyici etkinlik çalışma ayrıntıları](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
+**Örnek: Azure SQL veritabanından Azure SQL veri ambarına, hazırlanan kopya**
+![İzleyici etkinliği çalıştırma ayrıntıları ile kopyalama](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
 
 ### <a name="monitor-programmatically"></a>Program aracılığıyla izleyin
 
-Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de, etkinlik çalıştırma sonucu-> çıkışı bölümünde de döndürülür. Kapsamlı bir liste aşağıda verilmiştir; Yalnızca kopya senaryonuza uygun ayarlara gösterilir. Çalıştırılan Etkinlik izleme hakkında bilgi edinin [hızlı başlangıç bölümünde izleme](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
+Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de, **etkinlik çalıştırma sonuç** > **çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalıştırmalarını izleme hakkında daha fazla bilgi için bkz. işlem [hattı çalıştırmasını izleme](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
 | Özellik adı  | Açıklama | Birim |
 |:--- |:--- |:--- |
-| dataRead | Kaynaktan okunan veri boyutu | Int64 değeri **bayt** |
-| dataWritten | Havuz için yazılan veri boyutu | Int64 değeri **bayt** |
-| filesRead | Dosya depolama'yı veri kopyalama işlemi sırasında kopyalanan dosyaların sayısıdır. | Int64 değeri (birim) |
-| filesWritten | Dosya depolama alanına veri kopyalama işlemi sırasında kopyalanan dosyaların sayısıdır. | Int64 değeri (birim) |
-| Kaynakcepeakconnections | Kopyalama etkinliği çalışması sırasında kaynak veri deposuna kurulan en fazla eşzamanlı bağlantı sayısı. | Int64 değeri (birim) |
-| sinkPeakConnections | Kopyalama etkinliği çalışması sırasında veri deposuna havuz için kurulan maksimum eşzamanlı bağlantı sayısı. | Int64 değeri (birim) |
+| dataRead | Kaynaktan okunan veri miktarı. | Int64 değeri, bayt cinsinden |
+| dataWritten | Havuza yazılan veri miktarı. | Int64 değeri, bayt cinsinden |
+| filesRead | Dosya depolamadan kopyalama sırasında kopyalanan dosya sayısı. | Int64 değeri (birim) |
+| filesWritten | Dosya depolama alanına kopyalama sırasında kopyalanan dosya sayısı. | Int64 değeri (birim) |
+| Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim) |
+| sinkPeakConnections | Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim) |
 | rowsRead | Kaynaktan okunan satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
-| rowsCopied | Havuza kopyalandığı satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
-| rowsSkipped | İki tanesinden uyumsuz satırların sayısı. True olarak Ayarla "Enableskipıncompatiblerow" tarafından özelliğini kapatabilirsiniz. | Int64 değeri (birim) |
-| copyDuration | Kopyanın süresi. | Int32 değeri saniye |
-| throughput | Verilerin aktarıldığı oran. | Kayan noktalı sayı olarak **KB/sn** |
-| Kaynakcepeakconnections | Kopyalama sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri |
-| sinkPeakConnections| Kopyalama sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri |
-| sqlDwPolyBase | PolyBase, SQL veri ambarı'na veri kopyalama işlemi sırasında kullanılıyorsa. | Boole |
-| redshiftUnload | UNLOAD veri Redshift'ten kopyalarken kullanılıyorsa. | Boole |
-| hdfsDistcp | Verileri HDFS kopyalarken DistCp kullanılıyorsa. | Boole |
-| effectiveIntegrationRuntime | Etkinlik çalıştırma, biçiminde güçlendirmek için kullanılan tümleştirme Runtime(s) show `<IR name> (<region if it's Azure IR>)`. | Metin (dize) |
+| rowsCopied | Havuza kopyalanmış satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
+| rowsSkipped | Atlanan uyumsuz satır sayısı. Doğru ayarı `enableSkipIncompatibleRow` yaparak, uyumsuz satırların atlanmasını sağlayabilirsiniz. | Int64 değeri (birim) |
+| copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
+| throughput | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
+| Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
+| sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
+| sqlDwPolyBase | Veriler SQL veri ambarı 'na kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole değeri |
+| redshiftUnload | Redshift öğesinden veri kopyalanırken KALDıRMA kullanılıp kullanılmayacağını belirtir. | Boole değeri |
+| hdfsDistcp | Veriler, ne zaman bir sunucudan kopyalanırsa kullanılır. | Boole değeri |
+| effectiveIntegrationRuntime | Etkinlik çalıştırmasının gücü için kullanılan tümleştirme çalışma zamanı (IR) veya çalışma zamanları (biçiminde `<IR name> (<region if it's Azure IR>)`). | Metin (dize) |
 | usedDataIntegrationUnits | Kopyalama sırasında etkili veri tümleştirme birimi. | Int32 değeri |
 | usedParallelCopies | Kopyalama sırasında etkili parallelCopies. | Int32 değeri |
-| redirectRowPath | Blob depolamada Atlanan uyumsuz satırların günlük yolu "Redirectıncompatiblerowsettings" altında yapılandırın. Aşağıdaki örnekte bakın. | Metin (dize) |
-| executionDetails | Kopyalama etkinliği, geçer aşamaları ve ilgili adımlarda, süre, kullanılan yapılandırmaları, vb. hakkında daha fazla bilgi. Bu bölümde, değişiklik gösterebileceği için ayrıştırılacak önermedi.<br/><br/>ADF Ayrıca, bölümündeki `detailedDurations`ilgili adımlarda harcanan ayrıntılı süreleri (saniye cinsinden) raporlar. Bu adımların süreleri özeldir ve yalnızca belirtilen kopyalama etkinliği çalıştırmasına uygulananlar görünür:<br/>- **Sıraya alma süresi** (`queuingDuration`): Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. Şirket içinde barındırılan IR kullanıyorsanız ve bu değer büyükse, IR kapasitesini ve kullanımını kontrol etmeyi ve iş yükünüze göre ölçeği artırma/genişletme seçeneğini önerin. <br/>- **Kopyalama öncesi betik süresi** (`preCopyScriptDuration`): IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Kopyalama öncesi betiği yapılandırırken uygulayın. <br/>- **İlk bayta kadar süre** (`timeToFirstByte`): Önceki adımın bitişi ile kaynak veri deposundan ilk baytı alan IR arasındaki geçen süre. Dosya tabanlı olmayan kaynak için geçerlidir. Bu değer büyükse, sorguyu veya sunucuyu denetleyip iyileştirmek için öneri önerin.<br/>- **Aktarım süresi** (`transferDuration`): Önceki adımın sonu ile IR 'nin tüm verileri kaynaktan havuza aktarma arasındaki geçen süre. | Array |
-| Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için [performans ve ayarlama](#performance-and-tuning) bölümüne bakın. | Array |
+| redirectRowPath | `redirectIncompatibleRowSettings` Özellikte yapılandırdığınız blob depolamadaki uyumsuz satırların yolu. Bu makalenin ilerleyen kısımlarında [hata toleransı](#fault-tolerance) bölümüne bakın. | Metin (dize) |
+| executionDetails | Kopyalama etkinliğinin aşamaları hakkında daha fazla ayrıntı ve ilgili adımlar, süreler, konfigürasyonlar vb. Bu bölümü değiştirebileceğinden, bu bölümü ayrıştırmayı önermiyoruz.<br/><br/>Data Factory Ayrıca, altında `detailedDurations`çeşitli aşamalarda harcanan ayrıntılı süreleri (saniye cinsinden) raporlar. Bu adımların süreleri özeldir. Yalnızca verilen kopyalama etkinliği için uygulanan süreler görüntülenir:<br/>**Sıraya alma süresi** (`queuingDuration`): Kopyalama etkinliğinin tümleştirme çalışma zamanı üzerinde gerçekten başlamasından önceki zaman miktarı. Şirket içinde barındırılan bir IR kullanırsanız ve bu değer büyükse, IR kapasitesini ve kullanımını kontrol edin ve iş yükünüze göre ölçeği büyütme veya genişletme. <br/>**Kopyalama öncesi betik süresi** (`preCopyScriptDuration`): Kopyalama etkinliği IR üzerinde başlar ve kopyalama etkinliği, havuz veri deposundaki kopyalama öncesi betiğini çalıştırmayı bitirdiğinde geçen süre. Kopyalama öncesi betiği yapılandırdığınızda uygulanır. <br/>**İlk bayta kalan süre** (`timeToFirstByte`): Önceki adımın sonu ile IR 'nin kaynak veri deposundan ilk baytı aldığı zaman arasında geçen süre. Dosya tabanlı olmayan kaynaklar için geçerlidir. Bu değer büyükse, sorguyu veya sunucuyu denetleyin ve iyileştirin.<br/>**Aktarım süresi** (`transferDuration`): Önceki adımın sonu ile IR 'nin tüm verileri kaynaktan havuza aktarmasıyla geçen süre. | Array |
+| Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için bkz. [performans ve ayarlama](#performance-and-tuning) . | Array |
 
 ```json
 "output": {
@@ -243,30 +254,30 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri de, etk
 
 ## <a name="schema-and-data-type-mapping"></a>Şema ve veri türü eşlemesi
 
-Bkz: [şema ve veri türü eşlemesi](copy-activity-schema-and-type-mapping.md), kopyalama etkinliği havuz için kaynak verilerinizi nasıl eşlendiğini açıklar.
+Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşleme](copy-activity-schema-and-type-mapping.md) .
 
 ## <a name="fault-tolerance"></a>Hataya dayanıklılık
 
-Varsayılan olarak, kopyalama etkinliği verileri kopyalamayı durduruyor ve kaynak ve havuz arasında uyumsuz verilerle karşılaştığında bir hata döndürür. Açıkça atlayın ve uyumsuz satırları oturum ve yalnızca kopyalama başarılı olmak için bu uyumlu veri kopyalamak için yapılandırabilirsiniz. Bkz: [kopyalama etkinliği hataya dayanıklılık](copy-activity-fault-tolerance.md) hakkında daha fazla bilgi.
+Varsayılan olarak, kopyalama etkinliği verileri kopyalamayı ve kaynak veri satırları havuz Veri satırlarıyla uyumsuz olduğunda bir hata döndürür. Kopyalamanın başarılı olması için kopyalama etkinliğini, uyumsuz satırları atlayıp günlüğe kaydetmek ve yalnızca uyumlu verileri kopyalamak üzere yapılandırabilirsiniz. Ayrıntılar için bkz. [kopyalama etkinliği hata toleransı](copy-activity-fault-tolerance.md) .
 
 ## <a name="performance-and-tuning"></a>Performans ve ayar
 
-Bkz: [kopyalama etkinliği performansı ve ayarlama Kılavuzu](copy-activity-performance.md), Azure Data factory'deki veri taşıma (kopyalama etkinliği) performansını etkileyen önemli faktörlerin açıklar. Ayrıca, iç test sırasında gözlemlenen performans listeler ve kopyalama etkinliği performansı iyileştirmek için çeşitli yollar ele alınmaktadır.
+[Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu](copy-activity-performance.md) , Azure Data Factory ' deki kopyalama etkinliği aracılığıyla veri hareketinin performansını etkileyen temel faktörleri açıklar. Ayrıca, test sırasında gözlemlenen performans değerlerini listeler ve kopyalama etkinliğinin performansının nasıl iyileştirileceği açıklanır.
 
-Bazı durumlarda, ADF 'de bir kopyalama etkinliği yürüttüğünüzde, aşağıdaki örnekte gösterildiği gibi [kopyalama etkinliği izleme sayfasının](#monitor-visually) en üstünde "**performans ayarlama ipuçları**" nı doğrudan görürsünüz. Yalnızca verilen kopya çalıştırması için tanımlanan performans sorunlarını söyetmez, ancak kopyalama aktarım hızını artırmak için bu şekilde ne değişeceklerini de kılavuzluk eder. Performans ayarlama ipuçları şu anda, verileri Azure SQL veri ambarı 'na kopyalarken, veri deposu tarafındaki kaynak performans sorunu olduğunda Azure Cosmos DB RU veya Azure SQL VERITABANı DTU 'yu artırmak, gereksiz hazırlanmamış kaldırma Kopyala, vs. Performans ayarlama kuralları da kademeli olarak zenginleşmelidir.
+Bazı senaryolarda, Data Factory bir kopyalama etkinliği çalıştırdığınızda, aşağıdaki örnekte gösterildiği gibi [kopyalama etkinliği izleme sayfasının](#monitor-visually)en üstünde **performans ayarlama ipuçları** görürsünüz. İpuçları, belirtilen kopya çalıştırması için tanımlanan performans sorunlarını bildirir. Ayrıca kopyalama aktarım hızını artırmak için nelerin değiştirileceği hakkında bilgiler sağlar. Performans ayarlama ipuçları şu anda, verileri Azure SQL veri ambarı 'na kopyalarken PolyBase kullanma, veri deposu tarafındaki kaynağın performans sorunu ve kaldırılması durumunda Azure Cosmos DB ru veya Azure SQL veritabanı DTU 'ları gereksiz hazırlanmış kopyalar.
 
-**Örnek: performans ayarlama ipuçları ile Azure SQL DB 'ye kopyalama**
+**Örnek: Performans ayarlama ipucuyla birlikte Azure SQL veritabanına kopyalama**
 
-Bu örnekte, kopya çalıştırma sırasında, ADF Azure SQL DB 'nin yazma işlemlerini yavaşlatan yüksek bir DTU kullanımına ulaştığını fark eder, bu nedenle Azure SQL DB katmanını daha DTU ile artırma önerisi.
+Bu örnekte, bir kopya çalıştırması sırasında, Data Factory havuz Azure SQL veritabanı 'nda yüksek DTU kullanımını izler. Bu durum, yazma işlemlerini yavaşlatır. Öneri, Azure SQL veritabanı katmanındaki DTU 'ları artırmaya yönelik bir öneridir:
 
 ![Performansı ayarlama ipuçlarıyla izleme kopyalama](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Artımlı kopyalama
-Data Factory, Delta verilerini bir kaynak veri deposundan bir havuz veri deposuna artımlı olarak kopyalamak için senaryoları destekler. Bkz: [öğretici: verileri artımlı olarak kopyalama](tutorial-incremental-copy-overview.md).
+Data Factory, Delta verilerini bir kaynak veri deposundan bir havuz veri deposuna artımlı olarak kopyalamanızı sağlar. Ayrıntılar için bkz [. Öğretici: Verileri](tutorial-incremental-copy-overview.md)artımlı olarak kopyalama.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki Hızlı Başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle bakın:
 
-- [Verileri bir konumdan aynı Azure Blob depolama alanındaki başka bir konuma kopyalayın.](quickstart-create-data-factory-dot-net.md)
-- [Verileri Azure Blob depolama alanından Azure SQL veritabanı'na kopyalayın.](tutorial-copy-data-dot-net.md)
-- [Verileri şirket içi SQL Server'dan Azure'a kopyalama](tutorial-hybrid-copy-powershell.md)
+- [Verileri bir konumdan aynı Azure Blob depolama hesabındaki başka bir konuma kopyalama](quickstart-create-data-factory-dot-net.md)
+- [Azure Blob depolamadan Azure SQL veritabanı 'na veri kopyalama](tutorial-copy-data-dot-net.md)
+- [Şirket içi SQL Server veritabanından Azure 'a veri kopyalama](tutorial-hybrid-copy-powershell.md)

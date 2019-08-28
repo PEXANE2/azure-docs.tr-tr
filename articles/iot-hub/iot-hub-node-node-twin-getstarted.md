@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: edbeffebd1f4ee41d8a2bdaddcdc7d84cbe1affe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780941"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060719"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Cihaz ikizlerini kullanmaya başlama (node. js)
 
@@ -29,7 +29,9 @@ Bu öğreticinin sonunda iki Node. js konsol uygulamanız olacaktır:
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
 >
 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Node. js sürüm 10.0. x veya üzeri.
 
@@ -53,28 +55,28 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Node. js konsol uygulaması oluşturacaksınız. Daha sonra, IoT Hub 'ında depolanan cihaz TWINS 'sini, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
 
-1. **Addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir Package. JSON dosyası oluşturun. Tüm varsayılanları kabul edin:
+1. **Addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir Package. JSON dosyası oluşturun. `--yes` Parametresi tüm varsayılanları kabul eder.
 
-    ```
-    npm init
+    ```cmd/sh
+    npm init --yes
     ```
 
 2. Komut istemindeki **addtagsandqueryapp** klasöründe, **Azure-ıothub** paketini yüklemek için aşağıdaki komutu çalıştırın:
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
 
 3. Bir metin düzenleyicisi kullanarak **addtagsandqueryapp** klasöründe yeni bir **Addtagsandquery. js** dosyası oluşturun.
 
-4. Aşağıdaki kodu **Addtagsandquery. js** dosyasına ekleyin ve **{IoT Hub bağlantı dizesi}** yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin:
+4. Aşağıdaki kodu **Addtagsandquery. js** dosyasına ekleyin. `{iot hub connection string}` [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
 
    ``` javascript
         'use strict';
         var iothub = require('azure-iothub');
         var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
-   
+
         registry.getTwin('myDeviceId', function(err, twin){
             if (err) {
                 console.error(err.constructor.name + ': ' + err.message);
@@ -87,7 +89,7 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
                       }
                     }
                 };
-   
+
                 twin.update(patch, function(err) {
                   if (err) {
                     console.error('Could not update twin: ' + err.constructor.name + ': ' + err.message);
@@ -116,7 +118,7 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
                     console.log("Devices in Redmond43: " + results.map(function(twin) {return twin.deviceId}).join(','));
                 }
             });
-   
+
             query = registry.createQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
             query.nextAsTwin(function(err, results) {
                 if (err) {
@@ -130,17 +132,17 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
 
     Önceki kod iki sorgu yürütür: İlki yalnızca **Redmond43** tesisinde bulunan cihazların cihaz ikelerini seçer ve ikincisi ise yalnızca hücresel ağ üzerinden de bağlı olan cihazları seçecek şekilde sorguyu iyileştirir.
 
-    Önceki kod, **sorgu** nesnesini oluşturduğunda, en fazla döndürülen belge sayısını belirtir. **Sorgu** nesnesi, tüm sonuçları almak Için **Nextastwin** yöntemlerini birden çok kez çağırmak için kullanabileceğiniz bir **hasMoreResults** Boolean özelliği içerir. **Daha sonra** adlı bir yöntem, cihaz ikikesi olmayan sonuçlar için, örneğin toplama sorgularının sonuçları için kullanılabilir.
+    Kod **sorgu** nesnesini oluşturduğunda, ikinci parametrede döndürülen en fazla belge sayısını belirtir. **Sorgu** nesnesi, tüm sonuçları almak Için **Nextastwin** yöntemlerini birden çok kez çağırmak için kullanabileceğiniz bir **hasMoreResults** Boolean özelliği içerir. **Daha sonra** adlı bir yöntem, cihaz ikikileri, örneğin toplama sorgularının sonuçları gibi, cihaz WINS olmayan sonuçlar için kullanılabilir.
 
 6. Uygulamayı ile çalıştırın:
 
-    ```
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
    **Redmond43** ' de bulunan tüm cihazları isteyen sorgunun sonuçlarında bir cihaz görmeniz gerekir ve sonuçları hücresel ağ kullanan cihazlara kısıtlayan sorgu için yok.
-   
-    ![Sorgu sonuçlarındaki bir cihaza bakın](media/iot-hub-node-node-twin-getstarted/service1.png)
+
+   ![Sorgu sonuçlarındaki bir cihaza bakın](media/iot-hub-node-node-twin-getstarted/service1.png)
 
 Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgunun sonucunu değiştiren bir cihaz uygulaması oluşturacaksınız.
 
@@ -148,36 +150,36 @@ Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgun
 
 Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol uygulaması oluşturursunuz ve ardından Device ikizi 'ın bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
 
-1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe, komut istemindeki aşağıdaki komutu kullanarak yeni bir Package. JSON dosyası oluşturun. Tüm varsayılanları kabul edin:
-   
-    ```
-    npm init
+1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe, komut istemindeki aşağıdaki komutu kullanarak yeni bir Package. JSON dosyası oluşturun. `--yes` Parametresi tüm varsayılanları kabul eder.
+
+    ```cmd/sh
+    npm init --yes
     ```
 
-2. **Reportconnectivity** klasöründe komut istemindeki **Azure-IoT-Device**ve **Azure-IoT-Device-MQTT** paketini yüklemek için aşağıdaki komutu çalıştırın:
-   
-    ```
+2. **Reportconnectivity** klasöründe komut istemindeki **Azure-IoT-Device**ve **Azure-IoT-Device-MQTT** paketlerini yüklemek için aşağıdaki komutu çalıştırın:
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
 3. Bir metin düzenleyicisi kullanarak, **reportconnectivity** klasöründe yeni bir **reportconnectivity. js** dosyası oluşturun.
 
-4. Aşağıdaki kodu **Reportconnectivity. js** dosyasına ekleyin ve **{Device bağlantı dizesi}** yer tutucusunu, **mydeviceıd** cihaz kimliğini oluştururken kopyaladığınız cihaz bağlantı dizesiyle değiştirin:
+4. **Reportconnectivity. js** dosyasına aşağıdaki kodu ekleyin. `{device connection string}` [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de **mydeviceıd** cihaz kimliğini oluştururken kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
 
-    ```
+    ```javascript
         'use strict';
         var Client = require('azure-iot-device').Client;
         var Protocol = require('azure-iot-device-mqtt').Mqtt;
-   
+
         var connectionString = '{device connection string}';
         var client = Client.fromConnectionString(connectionString, Protocol);
-   
+
         client.open(function(err) {
         if (err) {
             console.error('could not open IotHub client');
         }  else {
             console.log('client opened');
-   
+
             client.getTwin(function(err, twin) {
             if (err) {
                 console.error('could not get twin');
@@ -187,7 +189,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol u
                         type: 'cellular'
                     }
                 };
-   
+
                 twin.properties.reported.update(patch, function(err) {
                     if (err) {
                         console.error('could not update twin');
@@ -206,7 +208,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol u
 
 5. Cihaz uygulamasını çalıştırma
 
-    ```   
+    ```cmd/sh
         node ReportConnectivity.js
     ```
 
@@ -214,7 +216,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol u
 
 6. Cihaz bağlantı bilgilerini raporladığı için, her iki sorgu da görünmelidir. **Addtagsandqueryapp** klasörüne dönün ve sorguları yeniden çalıştırın:
 
-    ```   
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 374e86409be08f1f9859b3e325dda57080b89dbf
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034001"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061851"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
@@ -32,7 +32,7 @@ Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Pod güvenlik ilkelerini kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
+Pod güvenlik ilkelerini kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -136,7 +136,7 @@ Bu varsayılan ilkelerin, kendi Pod güvenlik ilkelerinizi oluşturmaya başlama
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>AKS kümesinde test kullanıcısı oluşturma
 
-Varsayılan olarak, [az aks Get-Credentials][az-aks-get-credentials] komutunu kullandığınızda aks kümesi için *yönetici* kimlik bilgileri ve `kubectl` yapılandırmaya eklenir. Yönetici Kullanıcı, Pod güvenlik ilkelerinin zorlanmasını atlar. AKS kümeleriniz için Azure Active Directory tümleştirme kullanırsanız, ilkelerin eylemde uygulanmasını görmek için yönetici olmayan bir kullanıcının kimlik bilgileriyle oturum açın. Bu makalede, AKS kümesinde kullanabileceğiniz bir sınama Kullanıcı hesabı oluşturalım.
+Varsayılan olarak, [az aks Get-Credentials][az-aks-get-credentials] komutunu kullandığınızda, aks kümesi için *yönetici* kimlik bilgileri, `kubectl` yapılandırmaya eklenir. Yönetici Kullanıcı, Pod güvenlik ilkelerinin zorlanmasını atlar. AKS kümeleriniz için Azure Active Directory tümleştirme kullanırsanız, ilkelerin eylemde uygulanmasını görmek için yönetici olmayan bir kullanıcının kimlik bilgileriyle oturum açın. Bu makalede, AKS kümesinde kullanabileceğiniz bir sınama Kullanıcı hesabı oluşturalım.
 
 [Kubectl Create Namespace][kubectl-create] komutunu kullanarak test kaynakları için *PSP-aks* adlı bir örnek ad alanı oluşturun. Ardından, [kubectl Create ServiceAccount][kubectl-create] komutunu kullanarak *yönetici olmayan-User* adlı bir hizmet hesabı oluşturun:
 
@@ -443,7 +443,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 ```
 
 > [!NOTE]
-> Bu makalenin ilk adımında, AKS kümesinde Pod güvenlik ilkesi özelliği etkinleştirilmiştir. Önerilen uygulama, kendi ilkelerinizi tanımladıktan sonra yalnızca Pod güvenlik ilkesi özelliğini etkinleştirmeiydi. Bu, Pod güvenlik ilkesi özelliğini etkinleştirdiğiniz aşamadır. Bir veya daha fazla özel ilke tanımlanmış ve Kullanıcı hesapları bu ilkelerle ilişkili. Artık Pod güvenlik ilkesi özelliğini güvenle açabilir ve varsayılan ilkelerden kaynaklanan sorunları en aza indirmiş olursunuz.
+> Bu makalenin ilk adımında, AKS kümesinde Pod güvenlik ilkesi özelliği etkinleştirilmiştir. Önerilen uygulama, kendi ilkelerinizi tanımladıktan sonra yalnızca Pod güvenlik ilkesi özelliğini etkinleştirmeiydi. Bu, Pod güvenlik ilkesi özelliğini etkinleştirdiğiniz aşamadır. Bir veya daha fazla özel ilke tanımlanmış ve Kullanıcı hesapları bu ilkelerle ilişkili. Artık Pod güvenlik ilkesi özelliğini güvenle etkinleştirebilir ve varsayılan ilkelerden kaynaklanan sorunları en aza indirmenize izin verebilirsiniz.
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Ayrıcalıksız bir pod oluşturmayı yeniden test edin
 

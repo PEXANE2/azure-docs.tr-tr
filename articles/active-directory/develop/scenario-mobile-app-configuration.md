@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414856"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061410"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran mobil uygulama-kod yapılandırması
 
-Uygulamanızı oluşturduktan sonra uygulamanın uygulama kaydı sırasında aldığınız parametrelerden kodu nasıl yapılandıracağınızı öğreneceksiniz. Mobil uygulamalarda, bu uygulamaları oluşturmak için kullanılan çerçeveye ekleme yapmak zorunda olan bazı karmaşık bilgiler de vardır
+Uygulamanızı oluşturduktan sonra, uygulamanın kayıt parametrelerini kullanarak kodu nasıl yapılandıracağınızı öğreneceksiniz. Mobil uygulamalarda, bu uygulamaları oluşturmak için kullanılan çerçeveye ekleme yapmak zorunda olan bazı karmaşık bilgiler de vardır
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>Mobil uygulamaları destekleyen MSAL kitaplıkları
 
@@ -38,7 +38,7 @@ Mobil uygulamaları destekleyen Microsoft kitaplıkları şunlardır:
 
 ## <a name="configuring-the-application"></a>Uygulamayı yapılandırma
 
-Mobil uygulamalar msal 'in `PublicClientApplication` sınıfını kullanır. Bunun örneği şöyledir:
+Mobil uygulamalar `PublicClientApplication` sınıfını kullanır. Bunun örneği şöyledir:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ Aşağıdaki paragrafta, Xamarin. iOS, Xamarin. Android ve UWP uygulamaları iç
 
 #### <a name="instantiating-the-application"></a>Uygulamanın örneğini oluşturma
 
-Xamarin veya UWP 'de, uygulamayı örneketmenin en kolay yolu aşağıdaki gibidir. burada `ClientId` , uygulamanın GUID 'sidir.
+Xamarin veya UWP 'de, uygulamayı örneketmenin en kolay yolu aşağıdaki gibidir; burada `ClientId` , kayıtlı uygulamanızın GUID 'sidir.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-Android 'de, `CurrentActivityPlugin` [burada](https://github.com/jamesmontemagno/CurrentActivityPlugin)size önerilir.  Ardından, `PublicClientApplication` Oluşturucu kodunuz şöyle görünür:
+Android 'de, `CurrentActivityPlugin` [burada](https://github.com/jamesmontemagno/CurrentActivityPlugin)kullanmanız önerilir.  Ardından, `PublicClientApplication` Oluşturucu kodunuz şöyle görünür:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ Son olarak, Android 'de tarayıcılar hakkında daha fazla bilgi edinmek için b
 
 #### <a name="uwp-specific-considerations"></a>UWP 'e özgü konular
 
-UWP 'de kurumsal ağları kullanabilirsiniz. UWP özellikleri hakkında daha fazla bilgi için bkz. [msal.NET ile ilgili Evrensel Windows platformu özel noktalar](msal-net-uwp-considerations.md).
+UWP 'de kurumsal ağları kullanabilirsiniz. UWP ile MSAL kitaplığını kullanma hakkında daha fazla bilgi için, bkz. [msal.net 'e özgü hususlar Evrensel Windows platformu](msal-net-uwp-considerations.md).
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Aracıyı kullanmak için uygulamayı yapılandırma
 
@@ -186,7 +186,7 @@ Bu yöntem, uygulama her başlatıldığında çağrılır ve aracıdan gelen ya
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>3\. adım: UIViewController () ayarlama
 
-Xamarin iOS ile normalde bir nesne penceresi ayarlamanız gerekmez, ancak bu durumda bir aracıdan yanıt göndermek ve almak için yapmanız gerekir. Hala içinde `AppDelegate.cs`, bir ViewController ayarlayın.
+Xamarin iOS sayesinde normalde bir nesne penceresi ayarlamanız gerekmez, ancak bu durumda bir aracıdan yanıt göndermek ve almak için yapmanız gerekir. Hala içinde `AppDelegate.cs`, bir ViewController ayarlayın.
 
 Nesne penceresini ayarlamak için aşağıdakileri yapın:
 

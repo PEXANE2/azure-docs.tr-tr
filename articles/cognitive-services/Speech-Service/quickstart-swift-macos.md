@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: c1407e8a133013054ef33d4fe55fb8ecb46de654
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 64f02a33a3aeecddf751b8293542776bf5819574
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035689"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061891"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak macOS 'ta Swift 'ta konuşmayı tanıma
 
@@ -65,16 +65,22 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
-1. HelloWorld projesinin içindeki `helloworld` dizine yeni bir üst bilgi `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` dosyası yerleştirin ve aşağıdaki kodu buna yapıştırın:[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. HelloWorld projesinin içindeki `helloworld` dizine yeni bir üst bilgi `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` dosyası yerleştirin ve aşağıdaki kodu buna yapıştırın:
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. Hedef `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` *-C köprüleme üst* bilgi alanı ![üst bilgisi özelliklerindeki HelloWorld hedefine ait Swift proje ayarlarına köprü üstbilgisine göreli yolu ekleyin](media/sdk/qs-swift-macos-bridging-header.png)
-1. Otomatik olarak oluşturulan `AppDelegate.swift` dosyanın içeriğini şu şekilde değiştirin:[!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
+1. Aşağıdaki şekilde otomatik oluşturulan `AppDelegate.swift` dosyasının içeriğini değiştirin:
+
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
 1. İçinde `AppDelegate.swift`, dizesini `YourSubscriptionKey` abonelik anahtarınızla değiştirin.
 1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili bölgeyle değiştirin (örneğin, `westus` ücretsiz deneme aboneliği için).
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK 'Yı bir CocoaPod olarak yükler
 
 1. [Yükleme yönergeleri](https://guides.cocoapods.org/using/getting-started.html)bölümünde açıklandığı gibi CocoaPod Dependency Manager 'ı yükleme.
-1. Örnek uygulamanızın dizinine gidin (`helloworld`). Bu dizine, adı `Podfile` ve aşağıdaki içeriğe sahip bir metin dosyası yerleştirin:[!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
+1. Örnek uygulamanızın dizinine gidin (`helloworld`). Bu dizine, adı `Podfile` ve aşağıdaki içeriğe sahip bir metin dosyası yerleştirin:
+
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
 1. Terminaldeki `pod install`dizine gidin ve komutunu çalıştırın. `helloworld` Bu işlem, bağımlılık `helloworld.xcworkspace` olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki şekilde kullanılacaktır.
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma

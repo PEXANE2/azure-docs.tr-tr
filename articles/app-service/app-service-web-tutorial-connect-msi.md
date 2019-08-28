@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2cf5e0f6da52670d383a1d1508dc7bcc7847831f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 8a0b974e9b64d477e53c37757b4f2fa952befba2
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824559"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061870"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service Azure SQL veritabanı bağlantısını güvenli hale getirme
 
@@ -58,9 +58,11 @@ Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak i
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="grant-azure-ad-user-access-to-database"></a>Azure AD kullanıcısına veritabanı erişimi verme
+## <a name="grant-database-access-to-azure-ad-user"></a>Azure AD kullanıcısına veritabanı erişimi verme
 
-İlk olarak, SQL veritabanı sunucusunun Active Directory yöneticisi olarak bir Azure AD kullanıcısı atayarak SQL veritabanı 'na Azure AD kimlik doğrulamasını etkinleştirin. Bu Kullanıcı, Azure aboneliğinize kaydolmak için kullandığınız Microsoft hesabı farklıdır. Oluşturduğunuz, içeri aktardığınız, eşitlediği veya Azure AD 'ye davet ettiğiniz bir kullanıcı olmalıdır. İzin verilen Azure AD kullanıcıları hakkında daha fazla bilgi için bkz. [SQL veritabanı 'Nda Azure AD özellikleri ve sınırlamaları](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). 
+İlk olarak, SQL veritabanı sunucusunun Active Directory yöneticisi olarak bir Azure AD kullanıcısı atayarak SQL veritabanı 'na Azure AD kimlik doğrulamasını etkinleştirin. Bu Kullanıcı, Azure aboneliğinize kaydolmak için kullandığınız Microsoft hesabı farklıdır. Oluşturduğunuz, içeri aktardığınız, eşitlediği veya Azure AD 'ye davet ettiğiniz bir kullanıcı olmalıdır. İzin verilen Azure AD kullanıcıları hakkında daha fazla bilgi için bkz. [SQL veritabanı 'Nda Azure AD özellikleri ve sınırlamaları](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations).
+
+Azure AD kiracınızda henüz bir kullanıcı yoksa, [Azure Active Directory kullanarak Kullanıcı ekleme veya silme](../active-directory/fundamentals/add-users-azure-active-directory.md)adımlarını izleyerek bir tane oluşturun.
 
 Kullanarak [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) Azure AD kullanıcısının nesne kimliğini bulun ve  *\<Kullanıcı-asıl-adı >* değiştirin. Sonuç bir değişkene kaydedilir.
 
@@ -71,7 +73,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Azure AD 'deki tüm Kullanıcı asıl adlarının listesini görmek için, öğesini çalıştırın `az ad user list --query [].userPrincipalName`.
 >
 
-Bu Azure AD kullanıcısını Cloud Shell komut kullanarak [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) Active Directory yönetici olarak ekleyin. Aşağıdaki komutta  *\<sunucu adı >* değiştirin.
+Bu Azure AD kullanıcısını Cloud Shell komut kullanarak [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) Active Directory yönetici olarak ekleyin. Aşağıdaki komutta  *\<sunucu adı >* yerine SQL veritabanı sunucu `.database.windows.net` adını (sonek olmadan) değiştirin.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -170,7 +172,10 @@ var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
 conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
-Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı sunucusunu daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız.
+> [!TIP]
+> Bu tanıtım kodu açıklık için zaman uyumludur. Daha fazla bilgi için bkz. [oluşturucular Için zaman uyumsuz kılavuz](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#constructors).
+
+Bu, SQL veritabanına bağlanmak için gereken her şey. Visual Studio 'da hata ayıklarken, kodunuz [Visual Studio 'Yu ayarlama](#set-up-visual-studio)bölümünde YAPıLANDıRDıĞıNıZ Azure AD kullanıcısını kullanır. SQL veritabanı sunucusunu daha sonra App Service uygulamanızın yönetilen kimliğinden bağlantıya izin verecek şekilde ayarlayacaksınız. `AzureServiceTokenProvider` Sınıfı, belirteci bellekte önbelleğe alır ve süresi dolmadan hemen önce Azure AD 'den alır. Belirteci yenilemek için özel kod gerekmez.
 
 Uygulamayı `Ctrl+F5` yeniden çalıştırmak için yazın. Tarayıcınızdaki aynı CRUD uygulaması artık Azure AD kimlik doğrulamasını kullanarak doğrudan Azure SQL veritabanına bağlanıyor. Bu kurulum, Visual Studio 'dan veritabanı geçişleri çalıştırmanızı sağlar.
 

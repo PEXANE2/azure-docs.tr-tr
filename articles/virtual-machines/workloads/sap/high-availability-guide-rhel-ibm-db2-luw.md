@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: bed56f169e2a985b23b3bca96c32f7caba596432
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036651"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061509"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,15 +517,19 @@ DB2 HADR yapılandırmasını oluşturmadan önce yüklemeyi gerçekleştirdiyse
 JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma aracını kullanın. J2EE yapılandırma aracı bir grafik araç olduğundan, X sunucusunun yüklü olması gerekir:
  
 1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve yürütün:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
-1.Sol çerçevede **Güvenlik deposu**' nu seçin.
-1.Sağ çerçevede, anahtar JDBC/havuz/\<SAPSID>/URL ' yi seçin.
-1.JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
-1.**Ekle**' yi seçin.
-1.Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
-1.Yapılandırma aracını kapatın.
-1.Java örneğini yeniden başlatın.
+    
+    <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
+1. Sol çerçevede **Güvenlik deposu**' nu seçin.
+1. Sağ çerçevede, anahtarı `jdbc/pool/\<SAPSID>/url`seçin.
+1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
+    
+    <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
+1. **Add (Ekle)** seçeneğini belirleyin.
+1. Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
+1. Yapılandırma aracını kapatın.
+1. Java örneğini yeniden başlatın.
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>HADR kurulumu için Günlük arşivlemeyi yapılandırma
 HADR kurulumu için DB2 Günlük arşivlemeyi yapılandırmak üzere, hem birincil hem de bekleme veritabanını tüm günlük Arşivi konumlarından otomatik günlük alma özelliğine sahip olacak şekilde yapılandırmanızı öneririz. Hem birincil hem de bekleme veritabanının günlük arşivi dosyalarını, veritabanı örneklerinden birinin günlük dosyalarını arşivleyebileceğiniz tüm günlük Arşivi konumlarından alabilmesi gerekir. 

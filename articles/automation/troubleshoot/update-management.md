@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982696"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061337"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -278,6 +278,7 @@ Tüm özel durum iletisini görmek için kırmızı renkte görüntülenecek öz
 |`0x8024001E`| Hizmet veya sistem kapatıldığından güncelleştirme işlemi tamamlanamadı.|
 |`0x8024002E`| Windows Update hizmeti devre dışı bırakıldı.|
 |`0x8024402C`     | Bir WSUS sunucusu kullanıyorsanız, kayıt defteri anahtarı `WUServer` `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` için `WUStatusServer` kayıt defteri değerlerinin doğru WSUS sunucusuna sahip olduğundan emin olun.        |
+|`0x80072EE2`|Ağ bağlantısı sorunu veya yapılandırılmış bir WSUS sunucusuyla iletişim sorunu. WSUS ayarlarını denetleyip istemciden erişilebilir olduğundan emin olun.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update hizmeti 'nin (wuauserv) çalıştığından ve devre dışı bırakılmadığından emin olun.        |
 |Diğer tüm genel durumlar     | Internet 'te olası çözümler için arama yapın ve yerel BT desteğiniz ile çalışın.         |
 

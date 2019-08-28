@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567625"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060665"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uygulamanızı Azure SQL Veritabanı Yönetilen Örneği'ne bağlayın
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama
 
 Bugün, uygulamanızı nasıl ve nerede barındırmanıza karar verirken birden çok seçeneğiniz vardır.
 
@@ -69,8 +69,8 @@ Müşteriler tarafından uygulanan başka bir senaryo da VPN ağ geçidinin ayr�
 
 Temel altyapıyı ayarladıktan sonra, VPN Gateway yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları**altında aşağıdaki belirli değişiklikleri yapın.
 
-1. VPN ağ geçidini barındıran VNet 'de, eşlemeler **' e gidin**, ardından yönetilen örnek eşlenmiş VNet bağlantısı ' na gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
-2. Yönetilen örneği barındıran VNet 'de, eşlemeler **' e gidin**, sonra eşlenen vnet bağlantısına VPN Gateway ve ardından **uzak ağ geçitlerini kullan**' a tıklayın.
+1. VPN ağ geçidini barındıran VNet 'de, eşlemeler ' e gidin, ardından yönetilen örnek eşlenmiş VNet bağlantısı ' na gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
+2. Yönetilen örneği barındıran VNet 'de, eşlemeler ' e gidin,sonra eşlenen vnet bağlantısına VPN Gateway ve ardından **uzak ağ geçitlerini kullan**' a tıklayın.
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service barındırılan bir uygulamayı bağlama
 
@@ -141,9 +141,9 @@ Yönetilen örneğe bağlanmak istiyorsanız, araçların ve sürücülerin aşa
 | --- | --- |
 |.NET Framework | 4.6.1 (veya .NET Core) |
 |ODBC sürücüsü| v17 |
-|PHP Sürücüsü| 5.2.0 |
+|PHP sürücüsü| 5.2.0 |
 |JDBC sürücüsü| 6.4.0 |
-|Node. js sürücüsü| 2.1.1 |
+|Node.js sürücüsü| 2.1.1 |
 |OLEDB sürücüsü| 18.0.2.0 |
 |SSMS| 18,0 veya [üzeri](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) veya üzeri |

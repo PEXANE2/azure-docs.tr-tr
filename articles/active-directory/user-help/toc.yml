@@ -1,5 +1,5 @@
 - name: Kullanıcı Yardım Belgeleri
-  href: index.md
+  href: index.yml
 - name: İki aşamalı doğrulama yardımı
   items:
     - name: Genel Bakış

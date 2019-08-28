@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741670"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061640"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -72,8 +72,8 @@ Log Analytics çalışma alanınızdan:
 
 Office 365 aboneliğinizden:
 
-- Kullanıcı Adı: Yönetici hesabının e-posta adresi.
-- Kiracı Kimliği: Office 365 aboneliğinin benzersiz KIMLIĞI.
+- Nitelen Yönetici hesabının e-posta adresi.
+- Kiracı KIMLIĞI: Office 365 aboneliğinin benzersiz KIMLIĞI.
 - İstemci KIMLIĞI: Office 365 istemcisini temsil eden 16 karakterlik dize.
 - İstemci parolası: Kimlik doğrulaması için gereken şifreli dize.
 
@@ -83,45 +83,46 @@ Office 365 aboneliğinizden:
 
 1. [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
 1. **Azure Active Directory** seçip **uygulama kayıtları**.
-1. **Yeni uygulama kaydı**’na tıklayın.
+1. **Yeni kayıt**' ye tıklayın.
 
     ![Uygulama kaydı ekle](media/solution-office-365/add-app-registration.png)
-1. Bir uygulama **adı** ve **oturum açma URL 'si**girin.  Ad açıklayıcı olmalıdır.  URL `http://localhost` için kullanın ve **uygulama türü** için _Web uygulamasını/API_ 'yi koruyun
+1. Bir uygulama **adı**girin. **Desteklenen hesap türleri**için **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) hesaplar '** ı seçin.
     
     ![Uygulama oluştur](media/solution-office-365/create-application.png)
-1. **Oluştur** ' a tıklayın ve uygulama bilgilerini doğrulayın.
+1. **Kaydet** ' e tıklayın ve uygulama bilgilerini doğrulayın.
 
     ![Kayıtlı uygulama](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Office 365 için uygulama yapılandırma
 
-1. Ayarlar menüsünü açmak için **Ayarlar** ' a tıklayın.
-1. Seçin **özellikleri**. **Multi-tenanted** _değerini Evet_olarak değiştirin.
+1. **Kimlik doğrulaması** ' nı seçin ve **Desteklenen hesap türleri**altında **herhangi bir kuruluş DIZININDEKI (herhangi bir Azure ad dizini-Multitenant) hesapların** seçildiğini doğrulayın.
 
     ![Ayarlar çok kiracılı](media/solution-office-365/settings-multitenant.png)
 
-1. **Ayarlar** menüsünde **gerekli izinler** ' i seçin ve ardından **Ekle**' ye tıklayın.
-1. **BIR API seçin** ve ardından **Office 365 Yönetim API 'leri**' ne tıklayın. **Office 365 Yönetim API 'leri**' ne tıklayın. Tıklayın **seçin**.
+1. **API izinleri** ' ni seçin ve ardından **bir izin ekleyin**.
+1. **Office 365 Yönetim API 'leri**' ne tıklayın. 
 
     ![API Seçin](media/solution-office-365/select-api.png)
 
-1. **Izinleri seçin** altında hem **uygulama Izinleri** hem de **temsilci izinleri**için aşağıdaki seçenekleri belirtin:
-   - Kuruluşunuza ilişkin hizmet durumu bilgilerini okur
-   - Kuruluşunuz için etkinlik verilerini okuyun
-   - Kuruluşunuza ilişkin etkinlik raporlarını okur
+1. **Uygulamanız gereken izin türü altında?** uygulama **izinleri** ve **temsilci izinleri**için aşağıdaki seçenekleri belirtin:
+   - Kuruluşunuzun hizmet durumu bilgilerini okuyun
+   - Kuruluşunuzun etkinlik verilerini okuyun
+   - Kuruluşunuz için etkinlik raporlarını okuyun
 
-     ![API Seçin](media/solution-office-365/select-permissions.png)
+     ![API Seçin](media/solution-office-365/select-permissions-01.png)![API Seçin](media/solution-office-365/select-permissions-02.png)
 
-1. **Seç** ' e ve ardından **bitti**' ye tıklayın.
-1. **Izin ver** ' e tıklayın ve doğrulama istendiğinde **Evet** ' e tıklayın.
+1. **Izin Ekle**' ye tıklayın.
+1. **Yönetici onayı ver** ' e tıklayın ve doğrulama istendiğinde **Evet** ' e tıklayın.
 
-    ![İzinleri verme](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Uygulama için bir anahtar ekleme
+### <a name="add-a-secret-for-the-application"></a>Uygulama için gizli dizi ekleme
 
-1. **Ayarlar** menüsünde **anahtarlar** ' ı seçin.
+1. **Sertifikalar &** ve ardından **yeni istemci parolası**' nı seçin.
+
+    ![Anahtarlar](media/solution-office-365/secret.png)
+ 
 1. Yeni anahtar için bir **Açıklama** ve **süre** yazın.
-1. **Kaydet** ' e tıklayın ve ardından oluşturulan **değeri** kopyalayın.
+1. **Ekle** ' ye tıklayın ve ardından oluşturulan **değeri** kopyalayın.
 
     ![Anahtarlar](media/solution-office-365/keys.png)
 

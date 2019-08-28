@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034559"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060714"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
 [Azure Backup](backup-overview.md) , SAP HANA veritabanlarının Azure 'a yedeklenmesini destekler.
 
 > [!NOTE]
-> Bu özellik şu anda genel önizleme aşamasındadır. Şu anda üretime hazırlanma ve garantili bir SLA 'Sı yok. 
+> Bu özellik şu anda genel önizleme aşamasındadır. Şu anda üretime hazırlanma ve garantili bir SLA 'Sı yok.
 
 ## <a name="scenario-support"></a>Senaryo desteği
 
@@ -32,8 +32,11 @@ ms.locfileid: "70034559"
 ### <a name="current-limitations"></a>Geçerli sınırlamalar
 
 - Yalnızca Azure VM 'lerinde çalışan SAP HANA veritabanlarını yedekleyebilirsiniz.
-- Azure portal SAP HANA yedeklemeyi yalnızca yapılandırabilirsiniz. Özellik PowerShell, CLı veya REST API ile yapılandırılamaz.
-- Veritabanlarını yalnızca genişleme modunda yedekleyebilirsiniz.
+- Yalnızca tek bir Azure VM 'de çalışan SAP HANA örneğini yedekleyebilirsiniz. Aynı Azure VM 'de birden çok HANA örneği şu anda desteklenmiyor.
+- Veritabanlarını yalnızca genişleme modunda yedekleyebilirsiniz. Ölçeği genişletme, birden çok Azure sanal makinesi üzerindeki bir HANA örneği şu anda yedekleme için desteklenmiyor.
+- Genişletilmiş sunucuda dinamik katmanlama ile SAP HANA örneğini yedeklenemez, yani başka bir düğümde bulunan dinamik katmanlama. Bu aslında, desteklenmeyen bir ölçeğe sahiptir.
+- Aynı sunucuda dinamik katmanlama etkinken SAP HANA örneğini yedeklenemez. Dinamik katmanlama Şu anda desteklenmiyor.
+- Azure portal SAP HANA yedeklemeyi yalnızca yapılandırabilirsiniz. Özellik PowerShell, CLı ile yapılandırılamaz.
 - Veritabanı günlüklerini 15 dakikada bir yedekleyebilirsiniz. Günlük yedeklemeleri, veritabanı için başarılı bir tam yedekleme işlemi tamamlandıktan sonra yalnızca Flow 'a başlar.
 - Tam ve fark yedeklemeleri gerçekleştirebilirsiniz. Artımlı yedekleme şu anda desteklenmiyor.
 - Yedekleme ilkesini, SAP HANA yedeklemeleri için uyguladıktan sonra değiştiremezsiniz. Farklı ayarlarla yedeklemek istiyorsanız yeni bir ilke oluşturun veya farklı bir ilke atayın.
@@ -44,23 +47,16 @@ ms.locfileid: "70034559"
 
 Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin olun:
 
-1. SAP HANA veritabanını çalıştıran VM 'de, resmi Microsoft [.NET Core çalışma zamanı 2,1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) paketini yüklersiniz. Aşağıdakilere dikkat edin:
-    - Yalnızca **DotNet-Runtime-2,1** paketine ihtiyacınız vardır. **Aspnetcore-Runtime-2,1**' a ihtiyacınız yoktur.
-    - VM 'nin internet erişimi yoksa, sayfada belirtilen Microsoft paket akışından DotNet-Runtime-2,1 (ve tüm bağımlı RPMs) için bir çevrimdışı önbellek belirtin veya sağlayın.
-    - Paket yüklemesi sırasında bir seçenek belirtmeniz istenebilir. Varsa **Çözüm 2**' yi belirtin.
-
-        ![Paket yükleme seçeneği](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. VM 'de, aşağıdaki gibi, zypper kullanarak resmi SLES paketinden/medyasından ODBC sürücü paketlerini yükleyip etkinleştirin:
+1. SAP HANA veritabanını çalıştıran VM 'de, aşağıdaki gibi, zypper kullanarak resmi SLES paketinden/medyasından ODBC sürücü paketlerini yükleyip etkinleştirin:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. [Aşağıdaki](#set-up-network-connectivity)yordamda açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
+2. [Aşağıdaki](#set-up-network-connectivity)yordamda açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
 
-4. HANA 'nın kök kullanıcı olarak yüklendiği sanal makinede ön kayıt betiğini çalıştırın. Betik, akışta [portalda](#discover-the-databases) verilmiştir ve [doğru izinleri](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)ayarlamak için gereklidir.
+3. HANA 'nın kök kullanıcı olarak yüklendiği sanal makinede ön kayıt betiğini çalıştırın. Betik, akışta [portalda](#discover-the-databases) verilmiştir ve [doğru izinleri](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)ayarlamak için gereklidir.
 
 ### <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 
@@ -68,6 +64,7 @@ Tüm işlemler için SAP HANA VM, Azure genel IP adresleri için bağlantı gere
 
 - Azure veri merkezleri için [IP adresi aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653) indirebilir ve ardından bu IP adreslerine erişime izin verebilirsiniz.
 - Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, tüm Azure genel IP adreslerine izin vermek için Azurecsesli [hizmet etiketini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanabilirsiniz. NSG kurallarını değiştirmek için [set-AzureNetworkSecurityRule cmdlet 'ini](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) kullanabilirsiniz.
+- 443 bağlantı noktası, aktarım HTTPS üzerinden olduğundan beyaz listeye eklenmelidir.
 
 ## <a name="onboard-to-the-public-preview"></a>Genel önizlemeye ekleme
 
@@ -79,8 +76,6 @@ Genel önizlemeye aşağıdaki şekilde katılın:
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -182,6 +177,15 @@ Azure Backup ile yedeklenen bir veritabanının yerel yedeklemesini (HANA Studio
     - **Log_backup_using_backint** **değerini true**olarak ayarlayın.
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>Protected 1,0 DBs 'yi 2,0 olarak yükseltme
+
+SAP HANA 1,0 DBs 'yi koruyorsanız ve 2,0 ' ye yükseltmek istiyorsanız, aşağıda özetlenen adımları gerçekleştirin.
+
+- ESKI SDC DB için verileri koru ile korumayı durdurun.
+- Ön kayıt betiğini (SID ve MDC) doğru ayrıntılarla yeniden çalıştırın. 
+- Uzantıyı yeniden Kaydet (yedekleme-> Görünümü ayrıntıları-> ilgili Azure VM 'yi > yeniden Kaydet ' i seçin). 
+- Aynı VM için veritabanlarını yeniden keşfet ' e tıklayın. Bu, 2. adımdaki yeni DBs 'Leri doğru ayrıntılarla (SDC değil, SYSTEMDB ve kiracı DB) göstermelidir. 
+- Bu yeni veritabanlarını koruyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
