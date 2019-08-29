@@ -47,7 +47,7 @@ Salesforce pazarlama bağlantılı bulut hizmeti için aşağıdaki özellikleri
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbulutu** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarbulutu** | Evet |
 | clientId | Salesforce Marketing Cloud uygulama ile ilişkili istemci kimliği.  | Evet |
 | clientSecret | Salesforce Marketing Cloud uygulamayla ilişkili gizli. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
