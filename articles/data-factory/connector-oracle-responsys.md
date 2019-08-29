@@ -44,7 +44,7 @@ Oracle Responsys bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Responsys** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Responsys** | Evet |
 | endpoint | Respopnsys sunucu uç noktası  | Evet |
 | clientId | Responsys uygulama ile ilişkili istemci kimliği.  | Evet |
 | clientSecret | Responsys uygulamayla ilişkili gizli. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
