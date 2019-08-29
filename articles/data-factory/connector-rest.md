@@ -59,7 +59,7 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | **Type** özelliği **RESTService**olarak ayarlanmalıdır. | Evet |
+| type | **Type** özelliği **RESTService**olarak ayarlanmalıdır. | Evet |
 | url | REST hizmetinin temel URL 'SI. | Evet |
 | enableServerCertificateValidation | Uç noktaya bağlanılırken sunucu tarafı SSL sertifikasının doğrulanması gerekip gerekmediğini belirtir. | Hayır<br /> (varsayılan değer **true**'dur) |
 | authenticationType | REST hizmetine bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Aadserviceprincipal** ve **managedserviceıdentity**. Daha fazla özellik ve örnekte sırasıyla aşağıdaki ilgili bölümlere bakın. | Evet |
