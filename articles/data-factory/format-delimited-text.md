@@ -28,7 +28,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| türü             | Dataset öğesinin type özelliği ayarlanmalıdır **DelimitedText**. | Evet      |
+| type             | Dataset öğesinin type özelliği ayarlanmalıdır **DelimitedText**. | Evet      |
 | location         | Dosya konumunu ayarlar. Her dosya tabanlı bağlayıcı kendi konum türü ve desteklenen özellikleri altında `location`. **Makale bağlayıcı -> veri kümesi özellikleri bölümündeki ayrıntılara bakın**. | Evet      |
 | columnDelimiter  | Bir dosyadaki sütunları ayırmak için kullanılan karakter. Şu anda çok char sınırlayıcısı, yalnızca veri akışı eşleme ancak kopyalama etkinliği için desteklenir. <br>Varsayılan değer **virgülle `,`** , sütun sınırlayıcısı anlamına sınırlayıcı, satırın tamamını tek bir sütun olarak alınır boş dize olarak tanımlanır. | Hayır       |
 | rowDelimiter     | Tek bir karakter veya "\r\n" bir dosyadaki satırları ayırmak için kullanılır.<br>Aşağıdaki değerlerden herhangi birini varsayılan değer: **okunur: ["\r\n", "\r", "\n"]** , ve **"\n" veya "\r\n" yazma** eşleme veri akışı ve kopyalama etkinliği. <br>Zaman `rowDelimiter` yok (boş dize), sınırlayıcı kümesi `columnDelimiter` de tüm içeriği tek bir değer değerlendirilecek yani olarak sınırlayıcı (boş dize) olarak ayarlanmalıdır. | Hayır       |
