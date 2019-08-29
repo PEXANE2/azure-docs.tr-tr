@@ -33,8 +33,8 @@ Geçerli bir Azure işlev dönüş türü olan `JObject`. (Aklınızda [JArray](
 | **Özellik** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
 | type   | Type özelliği ayarlanmalıdır: **AzureFunction** | evet |
-| işlevi uygulama URL'si | Azure işlev uygulaması için URL. Biçim `https://<accountname>.azurewebsites.net`. Bu URL'yi altında değerdir **URL** bölümünde Azure portalında işlev uygulamanızı görüntülerken  | evet |
-| işlev tuşu | Azure işlevi için erişim anahtarı. Tıklayarak **Yönet** bölüm için ilgili işlevi ve ya da kopyalama **işlev anahtarı** veya **ana bilgisayar anahtarı**. Buradan daha fazla bilgi edinin: [Azure işlevleri HTTP Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | evet |
+| function app url | Azure işlev uygulaması için URL. Biçim `https://<accountname>.azurewebsites.net`. Bu URL'yi altında değerdir **URL** bölümünde Azure portalında işlev uygulamanızı görüntülerken  | evet |
+| function key | Azure işlevi için erişim anahtarı. Tıklayarak **Yönet** bölüm için ilgili işlevi ve ya da kopyalama **işlev anahtarı** veya **ana bilgisayar anahtarı**. Buradan daha fazla bilgi edinin: [Azure işlevleri HTTP Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | evet |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure işlev etkinliği
@@ -42,12 +42,12 @@ Geçerli bir Azure işlev dönüş türü olan `JObject`. (Aklınızda [JArray](
 | **Özellik**  | **Açıklama** | **İzin verilen değerler** | **Gerekli** |
 | --- | --- | --- | --- |
 | name  | İşlem hattındaki etkinliğin adı  | String | evet |
-| türü  | 'AzureFunctionActivity' etkinlik türünde | String | evet |
-| Bağlı hizmet | Azure bağlantılı işlev hizmet için karşılık gelen Azure işlev uygulaması  | Bağlı hizmet başvurusu | evet |
-| İşlev adı  | Azure işlev uygulaması bu etkinlik çağıran işlevin adı | String | evet |
+| type  | 'AzureFunctionActivity' etkinlik türünde | String | evet |
+| linked service | Azure bağlantılı işlev hizmet için karşılık gelen Azure işlev uygulaması  | Bağlı hizmet başvurusu | evet |
+| function name  | Azure işlev uygulaması bu etkinlik çağıran işlevin adı | String | evet |
 | method  | İşlev çağrısı için REST API yöntemi | Dize türleri desteklenir: "POST", "PUT GET"   | evet |
-| üst bilgi  | Gönderilen istek için üstbilgiler. Örneğin, türü ve dili, bir istek üzerinde ayarlanan için: "üst": {"Accept-Language": "en-us", "Content-Type": "application/json"} | Dize (veya dizenin ifadenin resulttype'ı ile) | Hayır |
-| Gövde  | işlev API yöntemi istekle birlikte gönderilen gövdesi  | Dize (veya dizenin ifadenin resulttype'ı ile) veya nesne.   | PUT/POST yöntemleri için gerekli |
+| header  | Gönderilen istek için üstbilgiler. Örneğin, türü ve dili, bir istek üzerinde ayarlanan için: "üst": {"Accept-Language": "en-us", "Content-Type": "application/json"} | Dize (veya dizenin ifadenin resulttype'ı ile) | Hayır |
+| body  | işlev API yöntemi istekle birlikte gönderilen gövdesi  | Dize (veya dizenin ifadenin resulttype'ı ile) veya nesne.   | PUT/POST yöntemleri için gerekli |
 |   |   |   | |
 
 İstek yükü şemayı [istek yükü şeması](control-flow-web-activity.md#request-payload-schema) bölümü.
