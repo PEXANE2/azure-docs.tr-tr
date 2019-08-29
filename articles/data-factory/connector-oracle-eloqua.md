@@ -44,7 +44,7 @@ Aşağıdaki özellikler, Oracle Eloqua bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Eloqua** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Eloqua** | Evet |
 | endpoint | Eloqua sunucu uç noktası. Eloqua desteklediği uç noktanızı, oturum açma belirlemek için birden çok veri merkezinde https://login.eloqua.com bilginizle, ardından kopyalama **ana URL** desenini ile yeniden yönlendirilen URL'de bölümü `xxx.xxx.eloqua.com`. | Evet |
 | username | Eloqua hesabınızın biçiminde kullanıcı adını ve site adı: `SiteName\Username` örn `Eloqua\Alice`.  | Evet |
 | password | Kullanıcı adına karşılık gelen parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
