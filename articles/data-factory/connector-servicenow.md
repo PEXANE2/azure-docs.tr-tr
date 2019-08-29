@@ -41,7 +41,7 @@ Servicenow'ı bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **ServiceNow** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **ServiceNow** | Evet |
 | endpoint | ServiceNow sunucu uç noktası (`http://<instance>.service-now.com`).  | Evet |
 | authenticationType | Kullanılacak kimlik doğrulaması türü. <br/>İzin verilen değerler şunlardır: **Temel**, **OAuth2** | Evet |
 | username | Temel ve OAuth2 kimlik doğrulaması için ServiceNow sunucusuna bağlanmak için kullanılan kullanıcı adı.  | Evet |
