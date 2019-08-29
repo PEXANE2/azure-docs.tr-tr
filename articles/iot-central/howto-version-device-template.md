@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877301"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100898"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
 
@@ -50,7 +50,7 @@ Aşağıdaki listede, yeni bir sürüm gerektirebilecek Kullanıcı eylemleri a�
 
 Sürüm değişikliği olduğunda kurallara ve cihaz panolarına ne olur?
 
-**Kurallar** , özelliklere bağımlı olan koşullar içerebilir. Bu özelliklerden birini veya birkaçını kaldırdıysanız, bu kurallar yeni cihaz şablonu sürümünüzde bozulabilir. Kuralları onarmak için bu belirli kurallara gidebilir ve koşulları güncelleştirebilirsiniz. Önceki sürümünüz için kurallar hiçbir etki olmadan çalışmalıdır.
+Cihaz şablonunun önceki sürümündeki **kurallar** değişmeden çalışmaya devam eder. Kurallar yeni cihaz şablonu sürümüne otomatik olarak geçirilmez. Yeni şablon sürümünde her zamanki gibi kurallar oluşturabilirsiniz. Daha fazla bilgi için bkz. [telemetri oluşturma kuralı ve Azure IoT Central uygulama](howto-create-telemetry-rules.md) nasıl yapılır makalesindeki bildirimleri ayarlama.
 
 **Cihaz panoları** çeşitli kutucuk türleri içerebilir. Bazı kutucuklar ayarlar ve özellikler içerebilir. Bir kutucukta kullanılan bir özellik veya ayar kaldırıldığında, kutucuk tamamen veya kısmen bozulur. Kutucuğa gidebilir ve kutucuğu kaldırarak ya da kutucuğun içeriğini güncelleştirerek sorunu çözebilirsiniz.
 

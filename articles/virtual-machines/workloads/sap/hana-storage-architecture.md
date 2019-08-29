@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b303a18d481ae1a682d81d87e7c14060ffdfaf14
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869190"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099641"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (büyük örnekler) depolama mimarisi
 
@@ -89,7 +88,7 @@ Birden çok SAP HANA örneği çalıştırmanın birkaç örneği aşağıdaki g
 
 Başka Çeşitlemeler de vardır. 
 
-## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
+## <a name="encryption-of-data-at-rest"></a>Bekleyen veri şifrelemesi
 HANA büyük örnek için kullanılan depolama, 2018 yılı bitmesinden bu yana disklerde depolanan veriler için saydam şifrelemeyi kullanır. Önceki dağıtımlarda birimleri şifrelenmiş olarak almayı seçebilirsiniz. Bu seçeneğe karşı karar verirseniz, çevrimiçi olarak şifrelenen birimleri almayı isteyebilirsiniz. Şifrelenmeyen şifreli birimlerden geçiş işlemi saydamdır ve kapalı kalma süresi gerektirmez. 
 
 SKU 'ların tür ı sınıfı ile, önyükleme LUN ' de depolanan birim şifrelenir. 3\. düzeltme 3 HANA büyük örnek Damgalarında, HANA büyük örnek SKU 'Larının tür II sınıfını kullanarak önyükleme LUN 'unu OS yöntemleriyle şifrelemeniz gerekir. Düzeltme 4 HANA büyük örnek damgaları ' nda, tür II birimleri kullanılarak önyükleme LUN 'si depolanır ve varsayılan olarak geri kalanı şifrelenir. 

@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ead1dfdce4bf3a803eee46a536dc7062626640d9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3f5186f456003c341af41fc6067f3b5c08acb2b4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078879"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
 [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) , Azure 'un sağladığı yüksek kullanılabilirliğe sahip özelliklerden biridir. Kullanılabilirlik Alanları kullanmak, Azure üzerinde SAP iş yüklerinin genel kullanılabilirliğini geliştirir. Bu özellik bazı [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)zaten kullanılabilir. Gelecekte, daha fazla bölgede kullanıma sunulacaktır.
@@ -113,7 +112,7 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
   - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
   - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
     
-    Şu anda, Microsoft genişleme dosya sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
+    Şu anda Microsoft Genişleme Dosya Sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
 - Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
 - Kritik iş süreçlerine yönelik çalışma süresi tutarlılığı elde etmek için, SAP Batch sunucu grupları, SAP oturum açma grupları veya RFC grupları ' nı kullanarak, belirli toplu işleri ve kullanıcıları, etkin DBMS örneğiyle bölge içinde olan uygulama örneklerine yönlendirmeyi deneyebilirsiniz. Ancak, bir yük devretme durumunda, bu grupları etkin DB VM 'si ile bölgedeki VM 'lerde çalışan örneklere el ile taşımanız gerekir.  
 - Her bölgede etkin olmayan iletişim kutusu örnekleri dağıtmak isteyebilirsiniz. Bu, uygulama örneklerinizin parçası tarafından kullanılan bir bölgenin hizmet dışı olması durumunda eski kaynak kapasitesine anında geri dönüş sağlamak için kullanılır.
@@ -138,7 +137,7 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
     - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
     - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
     
-  Şu anda, Microsoft genişleme dosya sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
+  Şu anda Microsoft Genişleme Dosya Sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
 - Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
 - Bir bölge hatası durumunda uygulama kaynaklarını başlatabilmeniz için pasif bölgeye (bir DBMS bakış noktasından) etkin olmayan VM 'Ler dağıtmanız gerekir.
     - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) Şu anda, etkin VM 'leri bölgeler arasında etkin olmayan VM 'lere çoğaltamaz. 
@@ -168,7 +167,7 @@ Bu yapılandırma için aşağıdaki noktalar geçerlidir:
     - Windows için, [Azure 'da bir küme paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDEKI SAP ASCS/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)bölümünde belgelendiği gıbı, SIOS Dataman kullanan bir küme çözümüdür.
     - SUSE Linux için, [SUSE Linux Enterprise Server üzerinde Azure VM 'LERINDE NFS Için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)makalesinde belgelenen şekilde oluşturulmuş bir NFS paylaşımıdır.
 
-  Şu anda, Microsoft genişleme dosya sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
+  Şu anda Microsoft Genişleme Dosya Sunucusu kullanan çözüm, SAP [Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşımının KULLANıLDıĞı SAP yüksek kullanılabilirlik Için Azure altyapısını hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)bölümünde belgelendiği gibi, bölgeler arasında desteklenmez.
 - Üçüncü bölge, [SUSE Linux Paceoluşturucu kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) veya ek uygulama örnekleri oluşturmak için SBD cihazını barındırmak üzere kullanılır.
 
 

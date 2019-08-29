@@ -6,16 +6,15 @@ documentationcenter: na
 author: ggailey777
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: 96dbe9b15831a349afc0e68c15c39c1cb31b1032
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b6a2347ff79268cdaf54993952d59bd700b781bc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444062"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095956"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
@@ -61,7 +60,7 @@ Aşağıda, Azure Blob depolamada barındırılan bir. zip dosyasından çalış
 
 [ZIP dağıtımı][Zip deployment for Azure Functions] , işlev uygulaması projenizi `wwwroot` dizine dağıtmanıza olanak sağlayan bir Azure App Service özelliğidir. Proje bir. zip dağıtım dosyası olarak paketlenmiştir. Paketinizi `d:\home\data\SitePackages` klasöre dağıtmak için aynı API 'ler kullanılabilir. Uygulama ayarı `d:\home\data\SitePackages` değeri ile, ZIP dağıtım API 'leri dosyaları `d:\home\site\wwwroot`içine ayıklamak yerine paketini klasörüne kopyalar. `1` `WEBSITE_RUN_FROM_PACKAGE` Ayrıca `packagename.txt` dosyayı da oluşturur. İşlev uygulaması daha sonra yeniden başlatma sonrasında paketten çalıştırılır ve `wwwroot` salt okunurdur. ZIP dağıtımı hakkında daha fazla bilgi için bkz. [Azure işlevleri Için zip dağıtımı](deployment-zip-push.md).
 
-## <a name="adding-the-websiterunfrompackage-setting"></a>WEBSITE_RUN_FROM_PACKAGE ayarı ekleme
+## <a name="adding-the-website_run_from_package-setting"></a>WEBSITE_RUN_FROM_PACKAGE ayarı ekleme
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

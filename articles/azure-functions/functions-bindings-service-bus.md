@@ -8,16 +8,15 @@ manager: gwallace
 keywords: Azure işlevleri, İşlevler, olay işleme dinamik işlem, sunucusuz mimari
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774708"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114372"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure işlevleri için Azure Service Bus bağlamaları
 
@@ -646,7 +645,7 @@ Bir ServiceBue bağlama tanımı, *türünün* olarak `serviceBus`ayarlandığı
 }
 ```
 
- *_\__ İnit.\_Kopyala*içinde, `set` yöntemine bir değer geçirerek bir ileti yazabilirsiniz.
+*_\__ İnit.\_Kopyala*içinde, `set` yöntemine bir değer geçirerek bir ileti yazabilirsiniz.
 
 ```python
 import azure.functions as func
@@ -715,14 +714,19 @@ C# ve C# betiği aşağıdaki parametre türleri için çıkış bağlaması kul
 * `out T paramName` - `T` JSON seri hale getirilebilir bir tür olabilir. Parametre değeri null ise, işlev işlevleri ileti ile null bir nesne oluşturur.
 * `out string` -İşlev parametre değeri null ise işlevleri oluşturmaz bir ileti.
 * `out byte[]` -İşlev parametre değeri null ise işlevleri oluşturmaz bir ileti.
-* `out BrokeredMessage` -İşlev parametre değeri null ise işlevleri oluşturmaz bir ileti.
+* `out BrokeredMessage`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
+* `out Message`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x Işlevleri için)
 * `ICollector<T>` veya `IAsyncCollector<T>` - birden çok ileti oluşturmak için. Çağırdığınızda bir ileti oluşturulur `Add` yöntemi.
 
-Zaman uyumsuz işlevleri'nde dönüş değerini kullanın veya `IAsyncCollector` yerine bir `out` parametresi.
+C# İşlevlerle çalışırken:
 
-Bu parametreleri için Azure işlevleri sürüm olan 1.x; 2.x için kullanıyorsanız [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) yerine `BrokeredMessage`.
+* Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir `out` parametre yerine olması gerekir.
 
-JavaScript'te, kuyruk veya konu kullanarak erişim `context.bindings.<name from function.json>`. İçin bir dize, bir bayt dizisi veya bir Javascript nesnesi (JSON'a seri durumdan) atayabilirsiniz `context.binding.<name>`.
+* Oturum kimliğine erişmek için bir [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
+
+JavaScript'te, kuyruk veya konu kullanarak erişim `context.bindings.<name from function.json>`. ' A bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON içine serisi) `context.binding.<name>`atayabilirsiniz.
+
+C# Diller dışında, oturum etkin bir kuyruğa ileti göndermek için yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://docs.microsoft.com/azure/service-bus-messaging) kullanın.
 
 ## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
 

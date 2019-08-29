@@ -10,16 +10,15 @@ ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: cfb4bda597b2b7ab4658244c46253f5118723402
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774800"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073813"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management erişim kısıtlama ilkeleri
 
@@ -61,14 +60,14 @@ Bir isteğin belirtilen bir http üst bilgisine sahip olmasını zorlamak için 
 
 ### <a name="elements"></a>Öğeler
 
-| Ad         | Açıklama                                                                                                                                   | Gerekli |
+| Name         | Açıklama                                                                                                                                   | Gerekli |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | onay üst bilgisi | Kök öğe.                                                                                                                                 | Evet      |
 | value        | İzin verilen HTTP üst bilgisi değeri. Birden çok değer öğesi belirtildiğinde, değerlerden herhangi biri bir eşleşme olduğunda denetim başarı olarak kabul edilir. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                       | Açıklama                                                                                                                                                            | Gerekli | Varsayılan |
+| Name                       | Açıklama                                                                                                                                                            | Gerekli | Varsayılan |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | başarısız-denetim-hata-ileti | Üst bilgi yoksa veya geçersiz bir değere sahip değilse, HTTP yanıt gövdesinde döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir. | Evet      | Yok     |
 | başarısız-Check-httpcode      | Üst bilgi yoksa veya geçersiz bir değere sahip değilse döndürülecek HTTP durum kodu.                                                                                        | Evet      | Yok     |
@@ -121,7 +120,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="elements"></a>Öğeler
 
-| Ad      | Açıklama                                                                                                                                                                                                                                                                                              | Gerekli |
+| Name      | Açıklama                                                                                                                                                                                                                                                                                              | Gerekli |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | Set-limit | Kök öğe.                                                                                                                                                                                                                                                                                            | Evet      |
 | api       | Ürünün içindeki API 'lerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrısı hız limitleri bağımsız olarak uygulanır. `name` Ya`id`da ile API 'ye başvurulabilir. Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
@@ -129,7 +128,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad           | Açıklama                                                                                           | Gerekli | Varsayılan |
+| Name           | Açıklama                                                                                           | Gerekli | Varsayılan |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Hız sınırının uygulanacağı API 'nin adı.                                                | Evet      | Yok     |
 | çağrı          | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period`. | Evet      | Yok     |
@@ -186,13 +185,13 @@ Aşağıdaki örnekte, hız sınırı arayan IP adresine göre anahtarlanır.
 
 ### <a name="elements"></a>Öğeler
 
-| Ad      | Açıklama   | Gerekli |
+| Name      | Açıklama   | Gerekli |
 | --------- | ------------- | -------- |
 | Set-limit | Kök öğe. | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                | Açıklama                                                                                           | Gerekli | Varsayılan |
+| Name                | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | çağrı               | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period`. | Evet      | Yok     |
 | sayaç anahtarı         | Hız limiti ilkesi için kullanılacak anahtar.                                                             | Evet      | Yok     |
@@ -233,7 +232,7 @@ Aşağıdaki örnekte, ilke yalnızca tek IP adresinden veya belirtilen IP adres
 
 ### <a name="elements"></a>Öğeler
 
-| Ad                                      | Açıklama                                         | Gerekli                                                       |
+| Name                                      | Açıklama                                         | Gerekli                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | IP filtresi                                 | Kök öğe.                                       | Evet                                                            |
 | adres                                   | Üzerinde filtreleneceği tek bir IP adresi belirtir.   | En az bir `address` veya `address-range` öğe gereklidir. |
@@ -241,7 +240,7 @@ Aşağıdaki örnekte, ilke yalnızca tek IP adresinden veya belirtilen IP adres
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                                      | Açıklama                                                                                 | Gerekli                                           | Varsayılan |
+| Name                                      | Açıklama                                                                                 | Gerekli                                           | Varsayılan |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | Adres aralığı = "Address" to = "Address" | Erişimine izin vermek veya erişimi reddetmek için bir IP adresleri aralığı.                                        | `address-range` Öğe kullanıldığında gereklidir. | Yok     |
 | IP-Filter Action = "fordeklarasyonu izin ver &#124; "    | Belirtilen IP adresleri ve aralıkları için çağrılara izin verilip verilmeyeceğini belirtir. | Evet                                                | Yok     |
@@ -288,7 +287,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="elements"></a>Öğeler
 
-| Ad      | Açıklama                                                                                                                                                                                                                                                                                  | Gerekli |
+| Name      | Açıklama                                                                                                                                                                                                                                                                                  | Gerekli |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | kota     | Kök öğe.                                                                                                                                                                                                                                                                                | Evet      |
 | api       | Ürün içindeki API 'lerde çağrı kotası uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrı kotaları bağımsız olarak uygulanır. `name` Ya`id`da ile API 'ye başvurulabilir. Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
@@ -296,7 +295,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad           | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
+| Name           | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | Kotanın uygulandığı API veya işlemin adı.                                             | Evet                                                              | Yok     |
 | bant genişliği      | İçinde belirtilen zaman aralığında izin verilen en büyük toplam kilobayt sayısı `renewal-period`. | `calls` Yada`bandwidth`her ikisi de belirtilmelidir. | Yok     |
@@ -350,13 +349,13 @@ Aşağıdaki örnekte, kota çağıran IP adresine göre anahtarlanır.
 
 ### <a name="elements"></a>Öğeler
 
-| Ad  | Açıklama   | Gerekli |
+| Name  | Açıklama   | Gerekli |
 | ----- | ------------- | -------- |
 | kota | Kök öğe. | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
+| Name                | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bant genişliği           | İçinde belirtilen zaman aralığında izin verilen en büyük toplam kilobayt sayısı `renewal-period`. | `calls` Yada`bandwidth`her ikisi de belirtilmelidir. | Yok     |
 | çağrı               | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period`.     | `calls` Yada`bandwidth`her ikisi de belirtilmelidir. | Yok     |
@@ -534,7 +533,7 @@ Bu örnek, belirteç talep değerine göre işlemlere erişim yetkisi vermek iç
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                            | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli                                                                         | Varsayılan                                                                           |
+| Name                            | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli                                                                         | Varsayılan                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Saat eğ                      | TimeSpan. Belirteç Verenin ve API Management örneğinin sistem saatleri arasında beklenen en uzun süreyi belirtmek için kullanın.                                                                                                                                                                                                                                                                                                               | Hayır                                                                               | 0 saniye                                                                         |
 | başarısız-doğrulama-hata-ileti | JWT doğrulamadan geçemezse HTTP yanıt gövdesine döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir.                                                                                                                                                                                                                                                                                                 | Hayır                                                                               | Varsayılan hata iletisi, "JWT yok" gibi doğrulama sorununa bağlıdır. |

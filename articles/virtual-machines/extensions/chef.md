@@ -1,6 +1,6 @@
 ---
-title: Azure Vm'leri için Chef uzantısı | Microsoft Docs
-description: Chef istemci Chef VM uzantısı kullanarak bir sanal makine dağıtın.
+title: Azure VM 'Leri için Chef uzantısı | Microsoft Docs
+description: Chef Istemcisini bir sanal makineye Chef VM uzantısını kullanarak dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -10,34 +10,33 @@ tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0ed042b3b004fd43bc03304c3042c2ac3e1a6482
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706096"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092564"
 ---
-# <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM uzantısı
+# <a name="chef-vm-extension-for-linux-and-windows"></a>Linux ve Windows için Chef VM Uzantısı
 
-Chef Software, Linux ve Windows için fiziksel ve sanal sunucu yapılandırmalarının yönetilmesine olanak sağlayan bir DevOps otomasyon platformu sunar. Chef VM uzantısı, sanal makineler üzerinde Chef sağlayan bir uzantısıdır.
+Chef Software, Linux ve Windows için fiziksel ve sanal sunucu yapılandırmalarının yönetilmesine olanak sağlayan bir DevOps otomasyon platformu sunar. Chef VM uzantısı, sanal makinelerde Chef sağlayan bir uzantıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Tüm Chef VM uzantısı desteklenen [uzantısı desteklenen işletim sistemlerine](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) azure'da.
+Chef VM uzantısı, Azure 'da [desteklenen tüm uzantı](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) sistemlerinde desteklenir.
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Chef VM uzantısı, hedef sanal makine Chef istemci yükü content delivery Network'te (CDN) almak için internet'e bağlı gerektirir.  
+Chef VM uzantısı, içerik teslim ağından (CDN) Chef Istemci yükünü almak için hedef sanal makinenin internet 'e bağlanmasını gerektirir.  
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON şema için Chef VM uzantısı gösterir. Uzantı, Chef sunucusu için en az Chef sunucu URL'si, doğrulama istemci adını ve doğrulama anahtarı gerektirir; Bu değerleri bulunabilir `knife.rb` başlangıç-kit.zip yüklediğinizde, indirilen dosyada [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) veya tek başına [Chef sunucusu](https://downloads.chef.io/chef-server). Doğrulama anahtarı hassas verileri olarak değerlendirilip olduğundan, altında yapılandırılmalıdır **protectedSettings** öğesi, hedef sanal makinede yalnızca şifresi çözülür anlamına gelir.
+Aşağıdaki JSON, Chef VM uzantısının şemasını gösterir. Uzantı en az Chef sunucu URL 'SI, doğrulama Istemci adı ve Chef sunucusu için doğrulama anahtarı gerektirir; Bu değerler, `knife.rb` [Chef otomatikleştir](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) veya tek başına [Chef sunucusu](https://downloads.chef.io/chef-server)yüklediğinizde indirilen Starter-Kit. zip dosyasındaki dosyada bulunabilir. Doğrulama anahtarı gizli veriler olarak değerlendirilmelidir, ancak bu, yalnızca hedef sanal makinede şifresi çözülebilecek olan **Protectedsettings** öğesi altında yapılandırılmalıdır.
 
 ```json
 {
@@ -68,24 +67,24 @@ Aşağıdaki JSON şema için Chef VM uzantısı gösterir. Uzantı, Chef sunucu
 
 ### <a name="core-property-values"></a>Çekirdek özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü
+| Name | Değer / örnek | Veri Türü
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | dize |
-| türü | `LinuxChefClient` (Linux), `ChefClient` (Windows) | dize |
+| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | dize |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ayarlar
 
-| Ad | Değer / örnek | Veri Türü | Gerekli mi?
+| Name | Değer / örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | E |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | dize | E |
+| Settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | E |
+| Settings/bootstrap_options/validation_client_name | `myorg-validator` | dize | E |
 | settings/runlist | `recipe[mycookbook::default]` | dize | E |
 
-### <a name="protected-settings"></a>Korumalı ayarları
+### <a name="protected-settings"></a>Korumalı ayarlar
 
-| Ad | Örnek | Veri Türü | Gerekli mi?
+| Name | Örnek | Veri Türü | Gerekli mi?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | dize | E |
 
@@ -103,15 +102,15 @@ Aşağıdaki JSON şema için Chef VM uzantısı gösterir. Uzantı, Chef sunucu
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Şablonları, bir veya daha fazla sanal makine dağıtın, Chef istemciyi yüklemek, Chef sunucu ve gerçekleştirme tarafından tanımlandığı gibi ilk yapılandırma sunucusuna bağlanmak için kullanılabilir [çalıştırma listesi](https://docs.chef.io/run_lists.html)
+Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Şablonlar bir veya daha fazla sanal makineyi dağıtmak, Chef Istemcisini yüklemek, Chef sunucusuna bağlanmak ve [çalışma listesi](https://docs.chef.io/run_lists.html) tarafından tanımlandığı şekilde sunucuda ilk yapılandırmayı gerçekleştirmek için kullanılabilir
 
-Chef VM uzantısı içeren örnek bir Resource Manager şablonu bulunabilir [Azure hızlı başlama Galerisi](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Chef VM uzantısını içeren örnek bir Kaynak Yöneticisi şablonu [Azure hızlı başlangıç galerisinde](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)bulunabilir.
 
 Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/resource-manager-template-child-resource.md).
 
 ## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
-Azure CLI, Chef VM uzantısı için mevcut bir VM'yi dağıtmak için kullanılabilir. Değiştirin **validation_key** doğrulama anahtarınızı içeriğiyle (Bu dosyanın şu şekilde bir `.pem` uzantısı).  Değiştirin **validation_client_name**, **chef_server_url** ve **run_list** bu değerlerle `knife.rb` dosyasında, başlangıç Seti.
+Azure CLı, Chef VM uzantısını mevcut bir VM 'ye dağıtmak için kullanılabilir. **Validation_key** değerini doğrulama anahtarınızın içeriğiyle değiştirin (Bu dosya bir `.pem` uzantı olarak).  **Validation_client_name**, **chef_server_url** ve **run_list** değerlerini, başlatıcı seinizdeki `knife.rb` dosyadaki değerlerle değiştirin.
 
 ```azurecli
 az vm extension set \
@@ -149,9 +148,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 | Hata Kodu | Anlamı | Olası eylemi |
 | :---: | --- | --- |
-| 51 | Bu uzantı sanal makinenin işletim sisteminde desteklenmiyor | |
+| 51 | Bu uzantı, sanal makinenin işletim sisteminde desteklenmiyor | |
 
-Ek bilgiler bulunabilir [Chef VM uzantısı Benioku](https://github.com/chef-partners/azure-chef-extension).
+Ek sorun giderme bilgileri [Chef VM Uzantısı Benioku](https://github.com/chef-partners/azure-chef-extension)dosyasında bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

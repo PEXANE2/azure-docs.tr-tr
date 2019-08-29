@@ -10,17 +10,16 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: a77a41500a9c22aa25d3de396e73a5b2e4c0c419
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 41084c3532e29b3a52c121d48226c5a45857d5dc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033899"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088243"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırma
 
@@ -84,7 +83,7 @@ Artık App Service uygulamanızda kimlik doğrulaması için Azure Active Direct
 2. Sol gezinti bölmesinde **uygulama kayıtları**' yi seçin. En üstteki **Yeni uygulama kaydı** ' na tıklayın.
 4. **Oluştur** sayfasında, uygulama kaydınız Için bir **ad** girin. **Uygulama türü**' nde **Yerel** ' i seçin.
 5. **Yeniden yönlendirme URI 'si** kutusunda, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasını girin. Bu değer değerine benzer *https://contoso.azurewebsites.net/.auth/login/done* olmalıdır. Bir Windows uygulaması oluşturuyorsanız bunun yerine URI olarak [paket SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) 'sini kullanın.
-5.           **Oluştur**'a tıklayın.
+5. **Oluştur**'a tıklayın.
 6. Uygulama kaydı eklendikten sonra açmak için seçin. **Uygulama kimliğini** bulun ve bu değeri bir yere unutmayın.
 7. **Tüm ayarlar** > **gerekli izinler** > Addbir > **API Seç**' e tıklayın.
 8. Daha önce aramak için kaydettiğiniz App Service uygulamasının adını yazın, sonra seçin ve **Seç**' e tıklayın.

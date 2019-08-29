@@ -10,16 +10,15 @@ ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a42028891f0a8677127221c8ed4cff73a22103a
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fa5e84ba62896969458b84cf014e2b35ee869df7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498544"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072180"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
 Bu makalede, ilke ifadeleri sözdizimi 7 C# ' dir. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
@@ -66,7 +65,7 @@ Tek deyim ifadeleri içine alınmıştır `@(expression)`, burada `expression` i
 ```
 
 ## <a name="PolicyExpressionsUsage"></a>Kullanımıyla
-İfadeler, herhangi [bir API Management ilkesinde](api-management-policies.md) öznitelik değerleri veya metin değerleri olarak kullanılabilir (ilke başvurusu aksini belirtmedikleri sürece).
+İfadeler, herhangi bir API Management ilkesinde öznitelik değerleri veya metin değerleri olarak kullanılabilir [](api-management-policies.md) (ilke başvurusu aksini belirtmedikleri sürece).
 
 > [!IMPORTANT]
 > İlke ifadelerini kullandığınızda, ilke tanımlandığında ilke ifadelerinin yalnızca sınırlı doğrulaması vardır. İfadeler çalışma zamanında ağ geçidi tarafından yürütülür, ilke ifadeleri tarafından oluşturulan tüm özel durumlar bir çalışma zamanı hatasına neden oluşur.
@@ -156,7 +155,7 @@ Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve 
 |System. Security. Cryptography. SymmetricAlgorithm|Tümü|
 |System. Security. Cryptography. X509Certificates. PublicKey|Tümü|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Tümü|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Ad|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
 |System. Security. Cryptography. X509Certificates. X509Certificate|Tümü|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Tümü|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Tümü|
@@ -210,18 +209,18 @@ Adlı `context` bir değişken, her ilke [ifadesinde](api-management-policy-expr
 
 |Bağlam değişkeni|İzin verilen Yöntemler, Özellikler ve parametre değerleri|
 |----------------------|-------------------------------------------------------|
-|context|[API](#ref-context-api): [Iapi](#ref-iapi)<br /><br /> [Dağıtım](#ref-context-deployment)<br /><br /> Geçecek Zaman damgası ve geçerli saat değeri arasındaki zaman aralığı<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [İşlem](#ref-context-operation)<br /><br /> [Ürünüyle](#ref-context-product)<br /><br /> [İstek](#ref-context-request)<br /><br /> No GUID-benzersiz istek tanımlayıcısı<br /><br /> [Yanıt](#ref-context-response)<br /><br /> [Abonelik](#ref-context-subscription)<br /><br /> Zaman damgası: DateTime-isteğin alındığı zaman içinde nokta<br /><br /> İzleme: bool-izlemenin açık veya kapalı olup olmadığını gösterir <br /><br /> [Kullanıcısını](#ref-context-user)<br /><br /> [Değişkenler](#ref-context-variables): IReadOnlyDictionary < dize, nesne ><br /><br /> void trace (ileti: dize)|
+|context|[API](#ref-context-api): [Iapi](#ref-iapi)<br /><br /> [Dağıtım](#ref-context-deployment)<br /><br /> Geçecek Zaman damgası ve geçerli saat değeri arasındaki zaman aralığı<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [İşlem](#ref-context-operation)<br /><br /> [Ürünüyle](#ref-context-product)<br /><br /> [İstek](#ref-context-request)<br /><br /> No GUID-benzersiz istek tanımlayıcısı<br /><br /> [Yanıt](#ref-context-response)<br /><br /> [Abonelik](#ref-context-subscription)<br /><br /> İlişkin DateTime-isteğin alındığı zaman içinde nokta<br /><br /> İzleme: bool-izlemenin açık veya kapalı olup olmadığını gösterir <br /><br /> [Kullanıcısını](#ref-context-user)<br /><br /> [Değişkenler](#ref-context-variables): IReadOnlyDictionary < dize, nesne ><br /><br /> void trace (ileti: dize)|
 |<a id="ref-context-api"></a>bağlam. 'Sindeki|Kimlik: dize<br /><br /> IsCurrentRevision: bool<br /><br />  Ad: dize<br /><br /> Yol: dize<br /><br /> Düzeltme: dize<br /><br /> ServiceUrl [Iurl](#ref-iurl)<br /><br /> Sürüm: dize |
 |<a id="ref-context-deployment"></a>bağlam. Dağıtmak|Bölge: dize<br /><br /> HizmetAdı: dize<br /><br /> Sertifika IReadOnlyDictionary < dize, X509Certificate2 >|
 |<a id="ref-context-lasterror"></a>bağlam. LastError|Kaynak: dize<br /><br /> Neden: dize<br /><br /> İleti: dize<br /><br /> Kapsam: dize<br /><br /> Bölüm: dize<br /><br /> Yol: dize<br /><br /> PolicyId: dize<br /><br /> Bağlam hakkında daha fazla bilgi için. LastError, bkz. [hata işleme](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>bağlam. Çalışmasını|Kimlik: dize<br /><br /> Yöntem: dize<br /><br /> Ad: dize<br /><br /> UrlTemplate: dize|
-|<a id="ref-context-product"></a>bağlam. Ürünüyle|GetVersionEx IEnumerable <[ıapi 'si](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Gruplar: IEnumerable <[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Ad: dize<br /><br /> Durum: enum ProductState {Notyayýmlandý}<br /><br /> SubscriptionLimit: int?<br /><br /> Abonelik gerekli: bool|
-|<a id="ref-context-request"></a>bağlam. İsteyen|Gövde: [Imessagebody](#ref-imessagebody) veya `null` isteğin gövdesi yok.<br /><br /> Sertifika: System. Security. Cryptography. X509Certificates. X509Certificate2<br /><br /> [Üst bilgiler](#ref-context-request-headers): IReadOnlyDictionary < dize, dize [] ><br /><br /> IPAddress: dize<br /><br /> MatchedParameters: IReadOnlyDictionary < dize, dize ><br /><br /> Yöntem: dize<br /><br /> OriginalUrl: [Iurl](#ref-iurl)<br /><br /> URL: [Iurl](#ref-iurl)|
+|<a id="ref-context-product"></a>bağlam. Ürünüyle|GetVersionEx IEnumerable <[ıapi 'si](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Gruplandıran IEnumerable <[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Ad: dize<br /><br /> Durum: enum ProductState {Notyayýmlandý}<br /><br /> SubscriptionLimit: int?<br /><br /> Abonelik gerekli: bool|
+|<a id="ref-context-request"></a>bağlam. İsteyen|Bölümü [Imessagebody](#ref-imessagebody) veya `null` isteğin gövdesi yok.<br /><br /> Sertifika System. Security. Cryptography. X509Certificates. X509Certificate2<br /><br /> [Üst bilgiler](#ref-context-request-headers): IReadOnlyDictionary < dize, dize [] ><br /><br /> IPAddress: dize<br /><br /> MatchedParameters: IReadOnlyDictionary < dize, dize ><br /><br /> Yöntem: dize<br /><br /> OriginalUrl: [Iurl](#ref-iurl)<br /><br /> 'Deki [Iurl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>dize bağlamı. Request. Headers. GetValueOrDefault (headerName: String, defaultValue: String)|headerName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış istek üst bilgisi değerlerini döndürür veya `defaultValue` üst bilgi bulunamadı.|
-|<a id="ref-context-response"></a>bağlam. Yanıtıyla|Gövde: [Imessagebody](#ref-imessagebody)<br /><br /> [Üst bilgiler](#ref-context-response-headers): IReadOnlyDictionary < dize, dize [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: dize|
+|<a id="ref-context-response"></a>bağlam. Yanıtıyla|Bölümü [Imessagebody](#ref-imessagebody)<br /><br /> [Üst bilgiler](#ref-context-response-headers): IReadOnlyDictionary < dize, dize [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: dize|
 |<a id="ref-context-response-headers"></a>dize bağlamı. Response. Headers. GetValueOrDefault (headerName: String, defaultValue: String)|headerName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış yanıt üst bilgisi değerlerini döndürür veya `defaultValue` üst bilgi bulunamadı.|
-|<a id="ref-context-subscription"></a>bağlam. Aboneliğiniz|CreatedTime Datetime<br /><br /> EndDate Hem?<br /><br /> Kimlik: dize<br /><br /> Anahtar: dize<br /><br /> Ad: dize<br /><br /> PrimaryKey: String<br /><br /> SecondaryKey: dize<br /><br /> Başlangıç Hem?|
-|<a id="ref-context-user"></a>bağlam. Kullanıcısını|E-posta: dize<br /><br /> FirstName: dize<br /><br /> Gruplar: IEnumerable <[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Lerinizde IEnumerable <[ıuserıdentity](#ref-iuseridentity)\><br /><br /> LastName: dize<br /><br /> Note: dize<br /><br /> RegistrationDate: Datetime|
+|<a id="ref-context-subscription"></a>bağlam. Aboneliğiniz|CreatedTime DateTime<br /><br /> EndDate Hem?<br /><br /> Kimlik: dize<br /><br /> Anahtar: dize<br /><br /> Ad: dize<br /><br /> PrimaryKey: String<br /><br /> SecondaryKey: dize<br /><br /> Başlangıç Hem?|
+|<a id="ref-context-user"></a>bağlam. Kullanıcısını|E-posta: dize<br /><br /> FirstName: dize<br /><br /> Gruplandıran IEnumerable <[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Lerinizde IEnumerable <[ıuserıdentity](#ref-iuseridentity)\><br /><br /> LastName: dize<br /><br /> Note: dize<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>Iapi|Kimlik: dize<br /><br /> Ad: dize<br /><br /> Yol: dize<br /><br /> Ekledikten IEnumerable < dizesi\><br /><br /> ServiceUrl [Iurl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>Igroup|Kimlik: dize<br /><br /> Ad: dize|
 |<a id="ref-imessagebody"></a>Imessagebody|< T\>olarak (preservecontent: bool = false): Burada T: String, Byte [], JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `T`Ve `context.Request.Body.As<T>` yöntemleri`context.Response.Body.As<T>` , belirli bir türdeki bir istek ve yanıt iletisi gövdelerini okumak için kullanılır. Varsayılan olarak, yöntemi özgün ileti gövdesi akışını kullanır ve çağrıldıktan sonra kullanılamaz hale getirir. Yöntemin gövde akışının bir kopyası üzerinde çalışmasını sağlayarak bunu önlemek için `preserveContent` parametresini olarak `true`ayarlayın. Bir örnek görmek için [buraya](api-management-transformation-policies.md#SetBody) gidin.|

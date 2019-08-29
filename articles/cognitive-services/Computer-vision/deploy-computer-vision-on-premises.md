@@ -1,5 +1,5 @@
 ---
-title: Kubernetes ve helk-Görüntü İşleme ile kullanma
+title: Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 titleSuffix: Azure Cognitive Services
 description: Görüntü İşleme kapsayıcısını bir Azure Container Instance 'a dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 8/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5befba9bdc44a594363dba86c0c2d082a9b44cdd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036632"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068979"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Kubernetes ve Helm ile kullanma
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
 Şirket içi Görüntü İşleme Kapsayıcılarınızı yönetmenin bir seçeneği, Kubernetes ve Held 'yi kullanmaktır. Metin Tanıma kapsayıcı görüntüsünü tanımlamak için Kubernetes ve Held kullanarak bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan hizmetleri nasıl test ettireceğiz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [metin tanıma kapsayıcıları yükleyip çalıştırma](computer-vision-how-to-install-containers.md).
 

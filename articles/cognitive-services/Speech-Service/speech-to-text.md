@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558845"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068852"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -63,13 +63,7 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 ## <a name="customization"></a>Özelleştirme
 
-Konuşma Hizmetleri tarafından kullanılan evrensel modele ek olarak, deneyiminiz için özel akustik, dil ve telaffuz modeller de oluşturabilirsiniz. Özelleştirme seçeneklerinin bir listesi aşağıda verilmiştir:
-
-| Model | Açıklama |
-|-------|-------------|
-| [Akustik model](how-to-customize-acoustic-models.md) | Uygulamanızın, araçlarınızın veya cihazlarınızın belirli bir ortamda belirli bir kayıt koşullarına sahip bir araç veya fabrika gibi kullanılması durumunda özel bir akustik model oluşturma işlemi yararlı olur. Örnek olarak aksanlı konuşma, belirli arka plan görüntüleri veya kayıt için belirli bir mikrofonun kullanılması verilebilir. |
-| [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
-| [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, bir sözcük veya terimin fonetik biçimini tanımlayabilir ve görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş koşullarını işlemek için kullanışlıdır. Başlamak için ihtiyacınız olan telaffuz dosya--basit .txt dosyası. |
+Konuşma Hizmetleri tarafından kullanılan standart taban çizgisi modeline ek olarak, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşmak için, kullanılabilir verilerle modelleri gereksinimlerinize göre özelleştirebilirsiniz. [özel konuşma tanıma](how-to-custom-speech.md)
 
 > [!NOTE]
 > Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).

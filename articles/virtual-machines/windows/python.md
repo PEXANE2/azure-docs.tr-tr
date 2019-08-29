@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: a132cf28b0ccd30b3f7e854e46763ce99372ddfe
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361154"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102490"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -41,7 +40,7 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **Python geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özette, **Python 3 64-bit (3.6.0)** ' in sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak Python iş yükünü ekleyebilirsiniz.
 2. Visual Studio 'yu yükleyip başlattıktan sonra **Dosya** > **Yeni** > **Proje**' ye tıklayın.
-3. **Şablonlar**   Python python uygulaması ' na tıklayın, projenin adı için mypyıthonproject girin, projenin konumunu seçin ve ardından Tamam ' a tıklayın. >  > 
+3. **Şablonlar**Python python uygulaması ' na tıklayın, projenin adı için mypyıthonproject girin, projenin konumunu seçin ve ardından Tamam ' a tıklayın. >  > 
 
 ## <a name="install-packages"></a>Paketleri yükleme
 

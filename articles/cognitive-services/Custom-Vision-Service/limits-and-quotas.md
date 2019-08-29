@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 37921c655cc3c5de5c3c5079eda47fb7513fdf9f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 878e2b03e21c18ef4ee845251e91642037c6c5ff
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560936"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114657"
 ---
 # <a name="limits-and-quotas"></a>Limitler ve kotalar
 
@@ -37,7 +37,13 @@ Her proje için bir proje ve etiket için eğitim görüntülerinin sayısının
 |Depolama olmadan [tahmin](https://go.microsoft.com/fwlink/?linkid=865445) Işlemleri (saniye başına işlem)|2|20|
 |[Traınproject](https://go.microsoft.com/fwlink/?linkid=865446) (Saniye başına API çağrısı)|2|10|
 |[DIĞER API çağrıları](https://go.microsoft.com/fwlink/?linkid=865446) (Saniye başına işlem)|10|10|
+|Kabul edilen görüntü türleri|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
+|Piksel cinsinden en az görüntü yüksekliği/genişliği|256 (bkz. nota bakın)|256 (bkz. nota bakın)|
+|Piksel cinsinden en fazla görüntü yüksekliği/genişliği|sınırsız|sınırsız|
 |En fazla görüntü boyutu (eğitim resmi yüklemesi) |6 MB|6 MB|
 |En fazla görüntü boyutu (tahmin)|4 MB|4 MB|
 |Nesne algılama eğitim görüntüsü başına en fazla bölge|200|200|
 |Sınıflandırma görüntüsü başına en fazla etiket|30|30|
+
+> [!NOTE]
+> 256 pikselden küçük resimler kabul edilir ancak ölçeklendirilir.

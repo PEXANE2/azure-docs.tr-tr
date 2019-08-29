@@ -1,124 +1,123 @@
 ---
-title: En iyi uygulamalar için Azure işlevleri | Microsoft Docs
-description: Azure işlevleri için en iyi uygulamaları ve desenleri öğrenin.
+title: Azure Işlevleri için en iyi uygulamalar | Microsoft Docs
+description: Azure Işlevleri için en iyi uygulamaları ve desenleri öğrenin.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: jeconnoc
-keywords: Azure işlevleri, desenler, en iyi uygulama, İşlevler, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari
+keywords: Azure işlevleri, desenler, en iyi uygulama, işlevler, olay işleme, Web kancaları, dinamik işlem, sunucusuz mimari
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104686"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097534"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure işlevleri'nin güvenilirliği ve performansı en iyi duruma getirme
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansını ve güvenilirliğini iyileştirin
 
-Bu makalede performans ve güvenilirliğini geliştirmek için rehberlik sağlanır, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamaları. 
+Bu makale, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamalarınızın performansını ve güvenilirliğini artırmaya yönelik rehberlik sağlar. 
 
 ## <a name="general-best-practices"></a>Genel en iyi yöntemler
 
-En iyi oluşturma ve Azure işlevleri'ni kullanarak sunucusuz çözümlerinizi mimari aşağıda verilmiştir.
+Azure Işlevleri 'ni kullanarak sunucusuz çözümlerinizi oluşturma ve mimarinizi geliştirme konusunda en iyi yöntemler aşağıda verilmiştir.
 
-### <a name="avoid-long-running-functions"></a>İşlevleri uzun süre çalışan kaçının
+### <a name="avoid-long-running-functions"></a>Uzun süre çalışan işlevlerden kaçının
 
-Büyük ve uzun süre çalışan işlevler beklenmeyen zaman aşımı sorunlara neden olabilir. Bir işlevin birçok Node.js bağımlılıklar nedeniyle büyüyebilir. Bağımlılıkları alma beklenmeyen zaman aşımlarına neden artan yükleme süreleri de neden olabilir. Bağımlılıklar hem de açık ve örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modülü kendi ek modüller yükleyebilir.  
+Büyük ve uzun süre çalışan işlevler, beklenmeyen zaman aşımı sorunlarına neden olabilir. Bir işlev, çok sayıda Node. js bağımlılığı nedeniyle büyük olabilir. Bağımlılıkları içeri aktarmak, beklenmedik zaman aşımları ile sonuçlanan daha fazla yükleme süresi de oluşmasına neden olabilir. Bağımlılıklar hem açık hem de örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modül kendi ek modüllerini yükleyebilir.  
 
-Mümkün olduğunda, yeniden düzenleme büyük işlevleri daha küçük işlevine, iş birlikte ayarlar ve hızlı yanıtlar döndürür. Örneğin, bir Web kancası veya HTTP tetikleyici işlevi belirli bir süre içinde bir bildirim yanıt gerektirebilir; anlık bir yanıt gerektirecek şekilde için Web kancaları yaygındır. HTTP tetikleyicisi yükü kuyruğu tetikleme işlevi tarafından işlenecek bir kuyruğun içine geçirebilirsiniz. Bu yaklaşım, gerçek iş ertele ve anlık bir yanıt döndürür olanak tanır.
-
-
-### <a name="cross-function-communication"></a>İşlev iletişim arası
-
-[Dayanıklı işlevler](durable/durable-functions-concepts.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md) durumu geçişleri ve birden çok işlevi arasındaki iletişim yönetmek için tasarlanmıştır.
-
-Dayanıklı işlevler veya Logic Apps ile birden çok işlevleri tümleştirmek için kullanılıyorsa, genellikle çapraz işlevi iletişimi için depolama kuyruklarını kullanma bir en iyi uygulamadır.  Ana nedeni, depolama kuyruklarına ucuz ve sağlamak için çok daha kolay olmasıdır. 
-
-Tek bir depolama kuyruğuna iletiler 64 KB boyutunda sınırlıdır. İşlevleri arasında daha büyük iletiler geçirmek gerekiyorsa, 256 KB'a kadar standart katmandaki bir Azure Service Bus kuyruk iletisi desteklemek için kullanılabilir boyutları ve Premium katmanda 1 MB'a kadar.
-
-Service Bus konu başlıklarına ileti işleme önce filtreleme gerektiriyorsa yararlı olur.
-
-Olay hub'ları, yüksek hacimli iletişim desteklemek kullanışlıdır.
+Mümkün olduğunda, büyük işlevleri birlikte çalışarak daha küçük işlev kümelerine yeniden düzenleyin ve yanıtları hızlı bir şekilde geri döndürün. Örneğin, bir Web kancası veya HTTP tetikleyici işlevi belirli bir zaman sınırı içinde bir bildirim yanıtı gerektirebilir; Web kancalarının anında yanıt gerektirmesi için yaygındır. HTTP tetikleyici yükünü bir kuyruk tetikleyicisi işlevi tarafından işlenmek üzere bir kuyruğa geçirebilirsiniz. Bu yaklaşım, gerçek işi ertelemenizi ve anında yanıt döndürmesini sağlar.
 
 
-### <a name="write-functions-to-be-stateless"></a>Durum bilgisiz olarak işlevler yazma 
+### <a name="cross-function-communication"></a>Çapraz işlev iletişimi
 
-İşlevleri durum bilgisiz ve mümkünse etkili. Tüm gerekli durum bilgilerini verilerinizle ilişkilendirin. Örneğin, işlenmekte olan büyük olasılıkla haritamın ilişkili bir sipariş `state` üyesi. Bir işlev, işlev durum bilgisiz kalırken, durumunu temel alan bir sipariş işlem gerçekleştirilemedi. 
+[Dayanıklı işlevler](durable/durable-functions-concepts.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , durum geçişlerini ve birden çok işlev arasındaki iletişimi yönetmek için oluşturulmuştur.
 
-Idempotent işlevleri Zamanlayıcı tetikleyici ile özellikle önerilir. Kesinlikle günde bir kez çalıştırılması gereken bir şey varsa, gün içinde dilediğiniz zaman ile aynı sonuçları çalıştırabilmeniz gibi yazın. Belirli bir gün için hiçbir iş olduğunda işlev çıkabilirsiniz. Ayrıca bir önceki tamamlanması başarısız çalıştırırsanız, sonraki çalıştırma kaldığı yukarı seçmeniz gerekir.
+Birden çok işlevle tümleştirilecek Dayanıklı İşlevler veya Logic Apps kullanmıyorsanız, genellikle çoklu işlev iletişimi için depolama kuyrukları kullanmak en iyi uygulamadır.  Ana neden, depolama kuyrukları ve sağlanması çok daha kolaydır. 
+
+Depolama sırasındaki tek tek mesajlar boyut olarak 64 KB ile sınırlıdır. İşlevler arasında daha büyük iletiler geçirmeniz gerekiyorsa, Standart katmanda 256 KB 'ye kadar olan ileti boyutlarını desteklemek için bir Azure Service Bus kuyruğu ve Premium katmanında en fazla 1 MB kullanılabilir.
+
+Service Bus konular, işlemeden önce ileti filtrelemesini gerekli kıldıysanız yararlıdır.
+
+Olay Hub 'ları, yüksek hacimli iletişimleri desteklemek için faydalıdır.
 
 
-### <a name="write-defensive-functions"></a>Savunma işlevler yazma
+### <a name="write-functions-to-be-stateless"></a>İşlevleri durum bilgisiz olacak şekilde yaz 
 
-İşlevinizi dilediğiniz zaman bir özel durum karşılaşabilirsiniz varsayılır. Sonraki yürütme sırasında bir önceki başarısız noktadan devam etme olanağı ile işlevlerinizi tasarlayın. Aşağıdaki eylemleri gerektiren bir senaryo düşünün:
+İşlevler, mümkünse durum bilgisiz ve ıdempotent olmalıdır. Gerekli durum bilgilerini verileriniz ile ilişkilendirin. Örneğin, işlenen bir sıra, muhtemelen ilişkili `state` bir üyeye sahip olabilir. İşlev durum bilgisiz olmaya devam ederken bir işlev bu duruma göre bir sırayı işleyebilir. 
 
-1. Bir db 10.000 satır için sorgu.
-2. Her biri için bir kuyruk iletisi oluşturmak daha fazla işlemek için bir satır aşağı satır.
+Idempotent işlevleri, özellikle Zamanlayıcı tetikleyicilerle önerilir. Örneğin, her gün bir kez çalışması gereken bir şeydir varsa, aynı sonuçlara sahip gün içinde herhangi bir zaman çalışabilmesi için yazın. Belirli bir gün için iş olmadığında işlev çıkabilir. Ayrıca, önceki bir çalıştırmanın tamamlanmadıysa, sonraki çalıştırmanın kaldığınız yerden devam etmesi gerekir.
+
+
+### <a name="write-defensive-functions"></a>Savunma işlevlerini yaz
+
+İşlevinizin istediğiniz zaman bir özel durumla karşılaşdığını varsayın. Bir sonraki yürütme sırasında işlevlerinizi önceki bir başarısızlık noktasından devam etme özelliğiyle tasarlayın. Aşağıdaki eylemleri gerektiren bir senaryo düşünün:
+
+1. Bir veritabanında 10.000 satırı sorgulayın.
+2. Bu satırların her biri için çizgi üzerinde daha fazla işlem yapmak üzere bir kuyruk iletisi oluşturun.
  
-Nasıl karmaşık sisteminize bağlı olarak, size sahip olabilir: hatalı davranmakta söz konusu aşağı akış hizmetleriyle ağ kesintileri veya kota sınırları ulaşıldığında, vb. Bunların tümü, işlevinizi herhangi bir zamanda etkileyebilir. İşlevleriniz için hazırlıklı olmak için tasarım gerekir.
+Nasıl karmaşık sisteminize bağlı olarak, size sahip olabilir: hatalı davranmakta söz konusu aşağı akış hizmetleriyle ağ kesintileri veya kota sınırları ulaşıldığında, vb. Tüm bunlar, işlevinizi dilediğiniz zaman etkileyebilir. İşlevlerinizi hazırlanmakta olacak şekilde tasarlamanız gerekir.
 
-İlgili öğelerin 5.000 işlem için bir kuyruğun içine ekledikten sonra bir hata oluşması durumunda, kodunuzu nasıl tepki vermez? Tamamladığınıza göre bir kümedeki öğeleri izleyin. Aksi halde, sonraki açışınızda tekrar bunları ekleyebilirsiniz. Bu, iş akışınızı üzerinde önemli bir etkiye sahip olabilir. 
+İşlenmek üzere bu öğelerin 5.000 ' i bir sıraya ekledikten sonra bir hata oluşursa, kodunuz nasıl tepki veriyor? Tamamladığınız bir küme içindeki öğeleri izleyin. Aksi halde, bir dahaki sefer yeniden ekleyebilirsiniz. Bu, iş akışınız üzerinde ciddi bir etkiye sahip olabilir. 
 
-Kuyruk öğesi zaten işlendi, işlevinizi bir İşlemsiz olmasını sağlar.
+Bir kuyruk öğesi zaten işlendiyse, işlevinizin işlem dışı çalışmasına izin verin.
 
-Azure işlevleri platform kullandığınız bileşenleri için zaten sağlanan savunma önlemleri yararlanın. Örneğin, **zehirli iletileri işleme** belgelerindeki [Azure depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Azure Işlevleri platformunda kullandığınız bileşenler için zaten sağlanmış olan savunma ölçülerinin avantajlarından yararlanın. Örneğin, bkz. [Azure depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#trigger---poison-messages)belgelerinde **Poison Queue iletilerini işleme** . 
 
-## <a name="scalability-best-practices"></a>Ölçeklenebilirlik en iyi uygulamalar
+## <a name="scalability-best-practices"></a>Ölçeklenebilirlik en iyi uygulamaları
 
-Nasıl örnekleri işlev uygulamanızın ölçeğini etkileyen bir dizi etkene vardır. Ayrıntılar için belgelerinde verilmiştir [işlevi ölçeklendirme](functions-scale.md).  Bir işlev uygulaması, en iyi ölçeklenebilirlik sağlamak için en iyi yöntemlerden bazıları aşağıda verilmiştir.
+İşlev uygulamanızın nasıl ölçeklenmesi etkileyebilecek bir dizi etken vardır. Ayrıntılar, [işlev ölçeklendirmeyle](functions-scale.md)ilgili belgelerde verilmiştir.  Aşağıda, bir işlev uygulamasının en iyi şekilde ölçeklenebilirliğini sağlamak için bazı en iyi yöntemler verilmiştir.
 
-### <a name="share-and-manage-connections"></a>Paylaşın ve bu bağlantıları yönetme
+### <a name="share-and-manage-connections"></a>Bağlantıları paylaşma ve yönetme
 
-Mümkün olduğunda, dış kaynaklara yeniden kullanın.  Bkz: [Azure işlevleri'nde bağlantılarını yönetme](./manage-connections.md).
+Mümkün olduğunda dış kaynaklarla bağlantıları yeniden kullanın.  Bkz. [Azure işlevlerinde bağlantıları yönetme](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Test ve üretim kodu aynı işlev uygulamasında bir arada kullanmayın
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Aynı işlev uygulamasında test ve üretim kodunu karıştırmayın
 
-Bir işlev uygulaması işlevlerinde kaynakları paylaşır. Örneğin, bellek paylaşılır. Üretim ortamında bir işlev uygulaması kullanıyorsanız, test ile ilgili işlevler ve kaynaklar için eklemeyin. Bu, üretim kodu yürütme sırasında beklenmeyen ek yükü neden olabilir.
+İşlev uygulaması içindeki işlevler kaynakları paylaşır. Örneğin, bellek paylaşılır. Üretimde bir işlev uygulaması kullanıyorsanız, bu uygulamaya test ile ilgili işlevler ve kaynaklar eklemeyin. Üretim kodu yürütme sırasında beklenmeyen yüke neden olabilir.
 
-Üretim işlev uygulamalarınızı yüklemek dikkatli olun. Bellek, uygulamadaki her bir işlevin üzerinden ortalaması alınır.
+Üretim işlevi uygulamalarınızda ne yüklediklerinizi dikkatli olun. Uygulamadaki her bir işlevde bellek ortalaması.
 
-Birden çok .NET işlevlerde başvurulan paylaşılan bir derleme varsa, ortak paylaşılan bir klasöre yerleştirin. Bütünleştirilmiş kod aşağıdaki örneğe benzer bir ifade ile C# betik (.csx) kullanıyorsanız, başvuru: 
+Çoklu .NET işlevlerinde başvurulan paylaşılan bir derlemeniz varsa, bunu ortak bir paylaşılan klasöre koyun. C# Betik (. CSX) kullanılıyorsa aşağıdaki örneğe benzer bir ifadeyle derlemeye başvurun: 
 
     #r "..\Shared\MyAssembly.dll". 
 
-Aksi takdirde, yanlışlıkla işlevler arasında farklı şekilde davranan birden çok test sürümleri aynı ikilinin dağıtmak kolaydır.
+Aksi halde, işlevleri arasında farklı şekilde davranan aynı ikilinin birden çok test sürümünü yanlışlıkla dağıtmak kolaydır.
 
-Ayrıntılı günlük üretim kodunda kullanmayın. Bu olumsuz bir etkisi vardır.
+Üretim kodunda ayrıntılı günlük kullanmayın. Bu, olumsuz bir performans etkisine sahiptir.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Zaman uyumsuz kodu kullanır ancak çağrıları engellemekten kaçınacak
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Zaman uyumsuz kod kullan ancak çağrı engellemeyi önleyin
 
-Zaman uyumsuz programlama önerilen bir en iyi yöntemdir. Bununla birlikte, her zaman başvuran kaçının `Result` özelliği veya arama `Wait` metodunda bir `Task` örneği. Bu yaklaşım için iş parçacığı tükenmesi neden olabilir.
+Zaman uyumsuz programlama önerilen en iyi uygulamadır. Ancak, her zaman bir `Result` `Task` örnek üzerinde özelliğe veya `Wait` çağırma yöntemine başvurulmaktan kaçının. Bu yaklaşım iş parçacığı tükenmesine yol açabilir.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda batch'de ileti alma
+### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda toplu iş içinde ileti alma
 
-Olay hub'ı gibi bazı Tetikleyicileri toplu iletiler üzerinde tek bir çağrı alma etkinleştirin.  Toplu ileti işleme, çok daha iyi performans sahiptir.  Maksimum toplu işlem boyutu yapılandırabilirsiniz `host.json` dosya içinde ayrıntılı olarak [host.json başvurusu belgeleri](functions-host-json.md)
+Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almayı sağlar.  Toplu işlem iletilerinin çok daha iyi performansı vardır.  `host.json` Dosyadaki en büyük toplu iş boyutunu, [Host. JSON başvuru belgelerinde](functions-host-json.md) açıklandığı şekilde yapılandırabilirsiniz.
 
-C# işlevlerine bir türü kesin belirlenmiş diziye türünü değiştirebilirsiniz.  Örneğin, yerine, `EventData sensorEvent` yöntem imzası olabilir `EventData[] sensorEvent`.  Diğer diller için açıkça kardinalite özelliği ayarlayın gerekir, `function.json` için `many` toplu işleme etkinleştirmek için [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+İşlevler C# için türü türü kesin belirlenmiş bir dizi olarak değiştirebilirsiniz.  Örneğin, yöntem imzası yerine `EventData sensorEvent` olabilir. `EventData[] sensorEvent`  Diğer diller için, `function.json` [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)toplu işi etkinleştirmek için ' de `many` kardinalite özelliğini açık olarak ayarlamanız gerekir.
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konak davranışlarını daha iyi eşzamanlılık işlemek için yapılandırma
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Eşzamanlılık daha iyi işlemek için konak davranışlarını yapılandırın
 
-`host.json` İşlev uygulaması dosyasında konak çalışma ve tetikleyici davranışlarını yapılandırmasını sağlar.  Toplu işlem davranışları yanı sıra birkaç tetikleyici için eşzamanlılık yönetebilirsiniz.  Genellikle bu seçenekler değerleri ayarlama, her bir örneği ölçek çağrılan işlevlerin gereksinimlerini karşılamak için uygun şekilde yardımcı olabilir.
+İşlev `host.json` uygulamasındaki dosya, ana bilgisayar çalışma zamanı ve tetikleyici davranışları yapılandırmasına izin verir.  İşleme davranışlarına ek olarak, bir dizi tetikleyici için eşzamanlılık yönetebilirsiniz.  Genellikle bu seçeneklerdeki değerlerin ayarlanması, her bir örneğin, çağrılan işlevlerin taleplerine uygun şekilde ölçeklendirilmesine yardımcı olabilir.
 
-İçinde uygulama uygulamasında tüm işlevleri arasında ayarları hosts dosyasında bir *tek örnek* işlevin. Örneğin, bir işlev uygulaması ile 2 HTTP işlevler vardı ve eş zamanlı istek 25 olarak ayarlamanızı, ya da HTTP tetikleyicisi isteğine paylaşılan 25 eş zamanlı istekler sayılacaktır.  Bu işlev uygulaması için 10 örneğe ölçeği, 2 işlevleri etkili bir şekilde 250 eş zamanlı istek izin (10 örneğe * örnek başına 25 eş zamanlı istek).
+Hosts dosyasındaki ayarlar, işlevin *tek bir örneği* içinde, uygulamadaki tüm işlevler arasında geçerlidir. Örneğin, 2 HTTP işlevlerine sahip bir işlev uygulamanız varsa ve eşzamanlı istekler 25 olarak ayarlandıysa, HTTP tetikleyicisine yönelik bir istek paylaşılan 25 eşzamanlı istek için doğru sayılır.  Bu işlev uygulaması 10 örneğe ölçeklenirse, 2 işlev 250 eşzamanlı istek (10 örnek * örnek başına 25 eşzamanlı istek) etkin bir şekilde izin verir.
 
-**HTTP eşzamanlılık konak seçenekleri**
+**HTTP eşzamanlılık ana bilgisayar seçenekleri**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-Diğer ana bilgisayar yapılandırma seçenekleri bulunabilir [ana bilgisayar yapılandırma belgesindeki](functions-host-json.md).
+Diğer konak yapılandırma seçenekleri [, ana bilgisayar yapılandırma belgesinde](functions-host-json.md)bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Azure işlevleri'nde bağlantılarını yönetme](manage-connections.md)
-* [Azure App Service en iyi uygulamaları](../app-service/app-service-best-practices.md)
+* [Azure Işlevlerinde bağlantıları yönetme](manage-connections.md)
+* [En iyi Azure App Service uygulamalar](../app-service/app-service-best-practices.md)

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876744"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073925"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -34,39 +34,45 @@ VM 'Leri etki alanına eklerken sorun yaşıyorsanız bu yönergeleri izleyin.
 
 **Sağlamak** Azure Resource Manager şablon arabirimi düzeltmeleriyle kimlik bilgileri girildiğinde oluşturulan bir yazım hatası vardı.
 
-**Onar** Kimlik bilgilerini düzeltmek için bu yönergeleri izleyin.
+**Onar** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
-1. VM 'Leri bir etki alanına el ile ekleyin.
-2. Kimlik bilgileri onaylandıktan sonra yeniden dağıtın. Bkz. [PowerShell ile konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-3. [Mevcut bir WINDOWS sanal MAKINESINI ad etki alanına birleştiren](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)bir şablon kullanarak VM 'leri etki alanına katın.
+- VM 'Leri bir etki alanına el ile ekleyin.
+- Kimlik bilgileri onaylandıktan sonra şablonu yeniden dağıtın. Bkz. [PowerShell ile konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- [Mevcut bir WINDOWS sanal MAKINESINI ad etki alanına birleştiren](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)bir şablon kullanarak VM 'leri etki alanına katın.
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Hata: Kullanıcı girişi beklenirken zaman aşımı
 
 **Sağlamak** Etki alanı katılımı tamamlamaya yönelik hesap Multi-Factor Authentication 'a (MFA) sahip olabilir.
 
-**Onar** Etki alanına katılımı tamamlamaya yönelik bu yönergeleri izleyin.
+**Onar** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
-1. Hesap için MFA 'yı geçici olarak kaldırın.
-2. Bir hizmet hesabı kullanın.
+- Hesap için MFA 'yı geçici olarak kaldırın.
+- Bir hizmet hesabı kullanın.
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Hata: Sağlama sırasında kullanılan hesabın işlemi tamamlamaya yönelik izinleri yok
 
 **Sağlamak** Kullanılmakta olan hesabın, uyumluluk ve yönetmelikler nedeniyle VM 'Leri etki alanına katma izni yok.
 
-**Onar** Bu yönergeleri izleyin.
+**Onar** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
-1. Yönetici grubunun üyesi olan bir hesap kullanın.
-2. Kullanılan hesaba gerekli izinleri verin.
+- Yönetici grubunun üyesi olan bir hesap kullanın.
+- Kullanılan hesaba gerekli izinleri verin.
 
 ### <a name="error-domain-name-doesnt-resolve"></a>Hata: Etki alanı adı çözümlenmiyor
 
-**Neden 1:** VM 'Ler, etki alanının bulunduğu sanal ağ (VNET) ile ilişkilendirilmemiş bir kaynak grubudur.
+**Neden 1:** VM 'Ler, etki alanının bulunduğu sanal ağ (VNET) ile ilişkilendirilmemiş bir sanal ağ üzerinde bulunuyor.
 
 **1. Çözüm:** VM 'Lerin sağlandığı VNET ile etki alanı denetleyicisinin (DC) çalıştığı VNET arasında VNET eşlemesi oluşturun. Bkz. [sanal ağ eşlemesi oluşturma-kaynak yöneticisi, farklı abonelikler](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
 
-**Neden 2:** AadService (AADS) kullanılırken DNS girdileri ayarlanmamış.
+**Neden 2:** Azure Active Directory Domain Services (Azure AD DS) kullanırken, sanal ağın DNS sunucusu ayarları, yönetilen etki alanı denetleyicilerini işaret etmek üzere güncellenir.
 
-**2. Çözüm:** Etki alanı hizmetlerini ayarlamak için bkz. [Enable Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
+**2. Çözüm:** Azure AD DS içeren sanal ağın DNS ayarlarını güncelleştirmek için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+
+**Neden 3:** Ağ arabiriminin DNS sunucusu ayarları, sanal ağda uygun DNS sunucusunu göstermiyor.
+
+**3. Çözüm:** Çözümlemek için, [DNS sunucularını değiştirme] bölümündeki adımları izleyerek aşağıdaki eylemlerden birini gerçekleştirin.
+- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) adımları ile **özel** olarak DEĞIŞTIRIN ve sanal ağda DNS sunucularının özel IP adreslerini belirtin.
+- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)adımları ile **sanal ağdan devralacak** şekilde değiştirin, ardından sanal ağın DNS sunucusu ayarlarını [değiştirme DNS sunucuları](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)adımlarından adımları değiştirin.
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows sanal masaüstü Aracısı ve Windows sanal masaüstü önyükleme yükleyicisi yüklü değil
 

@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879610"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114259"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Tak ve Kullan önizleme ortak arabirimleri
 
-Tüm IoT Tak ve Kullan cihazlarının bazı ortak arabirimleri uygulaması beklenir. Ortak arabirimler, tutarlı işlevler sağladığından IoT çözümlerinin avantajına sahiptir. [Sertifika](tutorial-build-device-certification.md) , cihazınızın birkaç ortak arabirimi uygulamasını gerektirir. Genel model deposundan ortak arabirim tanımlarını alabilirsiniz.
+Tüm IoT Tak ve Kullan cihazlarının bazı ortak arabirimleri uygulaması beklenir. Ortak arabirimler, tutarlı işlevler sağladığından IoT çözümlerinin avantajına sahiptir. [Sertifika](tutorial-build-device-certification.md) , cihazınızın birkaç ortak arabirimi uygulamasını gerektirir. Ortak model deposundan ortak arabirim tanımlarını elde edebilirsiniz.
 
 ## <a name="summary-of-common-interfaces"></a>Ortak arabirimlerin Özeti
 
@@ -35,7 +35,7 @@ Tüm IoT Tak ve Kullan cihazlarının bazı ortak arabirimleri uygulaması bekle
 
 ### <a name="cli"></a>CLI
 
-Genel model deposundan ortak arabirimleri almak için Azure CLı için Azure IoT uzantısı 'nı kullanabilirsiniz.
+Ortak model deposundan ortak arabirimleri almak için Azure CLı için Azure IoT uzantısı 'nı kullanabilirsiniz.
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -49,9 +49,9 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT Tak ve Kullan seçin: Model deposu** komutunu açın. **Genel model deposu**' nu seçin. Genel model deposu VS Code açılır.
+1. **Tak ve kullan** girin ve ardından **IoT Tak ve Kullan seçin: Model deposu** komutunu açın. **Ortak depoyu**seçin. Ortak model deposu VS Code açılır.
 
-1. Genel model deposunda, ara alanına arabirim adını girin.
+1. Ortak model deposunda, ara alanına arabirim adını girin.
 
 1. Arabirimin yerel bir kopyasını oluşturmak için arama sonuçlarında bunu seçin ve ardından **İndir**' i seçin.
 

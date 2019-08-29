@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935182"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113588"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
@@ -43,7 +43,7 @@ Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, Azure SQL 
 
 Aşağıdaki iş zamanlama teknolojileri Azure SQL veritabanı 'nda kullanılabilir:
 
-- **SQL Aracısı işleri** , yönetilen örnekte kullanılabilen, klasik ve bir test SQL Server iş zamanlama bileşenidir. SQL Aracısı Işleri tek veritabanlarında kullanılamaz.
+- **SQL Aracısı işleri** , yönetilen örnekte kullanılabilen, klasik ve bir test SQL Server iş zamanlama bileşenidir. SQL Aracısı Işleri Azure SQL tek veritabanlarında kullanılamıyor.
 - **Elastik veritabanı işleri (Önizleme)** bir veya birden çok Azure SQL veritabanında özel Işler çalıştıran iş zamanlama hizmetlerdir.
 
 SQL Aracısı (Şirket içi ve SQL veritabanı yönetilen örneği 'nin bir parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı ve SQL veri ambarı 'ndaki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer.

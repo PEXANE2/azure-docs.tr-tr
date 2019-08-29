@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/02/2019
+ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013385"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114666"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -70,6 +70,8 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 | [Faturalama okuyucusu](#billing-reader) | Faturalandırma verilerine okuma erişimi sağlar |
 | [BizTalk Katılımcısı](#biztalk-contributor) | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez. |
 | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar |
+| [Blueprint Katılımcısı](#blueprint-contributor) | Şema tanımlarını yönetebilir, ancak atamazsınız. |
+| [Blueprint Işleci](#blueprint-operator) | Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Not: Bu yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında geçerlidir. |
 | [CDN uç noktası Katılımcısı](#cdn-endpoint-contributor) | CDN uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. |
 | [CDN uç nokta okuyucusu](#cdn-endpoint-reader) | CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz. |
 | [CDN profili Katılımcısı](#cdn-profile-contributor) | CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. |
@@ -139,7 +141,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 | [Depolama Blobu veri Katılımcısı](#storage-blob-data-contributor) | Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama Blobu veri sahibi](#storage-blob-data-owner) | , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama Blobu veri okuyucusu](#storage-blob-data-reader) | Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
-| [Depolama Blobu Delegator](#storage-blob-delegator) | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilecek Kullanıcı temsili anahtarını alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). |
+| [Depolama Blobu Delegator](#storage-blob-delegator) | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). |
 | [Depolama dosyası veri SMB paylaşımında katkıda bulunan](#storage-file-data-smb-share-contributor) | SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma ve silme erişimine izin verir |
 | [Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan](#storage-file-data-smb-share-elevated-contributor) | SMB üzerinden Azure depolama dosya paylaşımlarında NTFS izin erişimini okuma, yazma, silme ve değiştirme sağlar |
 | [Depolama dosyası veri SMB paylaşma okuyucusu](#storage-file-data-smb-share-reader) | SMB üzerinden Azure dosya paylaşımında okuma erişimine izin verir |
@@ -948,6 +950,44 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
+## <a name="blueprint-contributor"></a>Blueprint Katılımcısı
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Şema tanımlarını yönetebilir, ancak atamazsınız. |
+> | **Kimlik** | 41077137-e803-4205-871C-5a86e6a753b4 |
+> | **Eylemler** |  |
+> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
+> | Microsoft. Blueprint/planlar/* | Şema tanımlarını veya şema yapılarını oluşturun ve yönetin. |
+> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
+> | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | *seçim* |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="blueprint-operator"></a>Blueprint Işleci
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Not: Bu yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında geçerlidir. |
+> | **Kimlik** | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | **Eylemler** |  |
+> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
+> | Microsoft. Blueprint/Blueprintasbir/* | Şema atamaları oluşturun ve yönetin. |
+> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
+> | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | *seçim* |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
 ## <a name="cdn-endpoint-contributor"></a>CDN Uç Noktası Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1268,7 +1308,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Eylemler** |  |
 > | Microsoft. tüketim/* |  |
 > | Microsoft. CostManagement/* |  |
-> | Microsoft. faturalandırma/Billingdönemler/okuma | Kullanılabilir fatura dönemlerini listeler |
+> | Microsoft. faturalandırma/Billingdönemler/okuma |  |
 > | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1291,7 +1331,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Eylemler** |  |
 > | Microsoft. tüketim/*/Read |  |
 > | Microsoft. CostManagement/*/Read |  |
-> | Microsoft. faturalandırma/Billingdönemler/okuma | Kullanılabilir fatura dönemlerini listeler |
+> | Microsoft. faturalandırma/Billingdönemler/okuma |  |
 > | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1899,6 +1939,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.Insights/Register/Action | Microsoft Insights sağlayıcısını kaydedin |
 > | Microsoft. Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Web testlerini okuma/yazma/silme Application Insights. |
+> | Microsoft. Insights/çalışma kitapları/* |  |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Log Analytics çözüm paketlerini okuma/yazma/silme. |
 > | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/* | Log Analytics kayıtlı aramalarını okuma/yazma/silme. |
 > | Microsoft. Operationalınsights/çalışma alanları/arama/eylem | Arama sorgusu yürütür |
@@ -2474,6 +2515,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. SQL/ManagedInstances/Databases/sensitivityLabels/* |  |
 > | Microsoft. SQL/ManagedInstances/veritabanları/ |  |
 > | Microsoft. SQL/ManagedInstances/Securityalcertpolicies/* |  |
+> | Microsoft. SQL/ManagedInstances/Databases/transparentDataEncryption/* |  |
 > | Microsoft. SQL/ManagedInstances/ |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL Server denetim ilkeleri oluşturma ve yönetme |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL Server denetim ayarı oluşturma ve yönetme |
@@ -2494,6 +2536,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL Server veritabanı güvenlik uyarısı ilkeleri oluşturma ve yönetme |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | SQL Server veritabanı güvenlik ölçümleri oluşturma ve yönetme |
 > | Microsoft. SQL/Servers/veritabanları/sensitivityLabels/* |  |
+> | Microsoft. SQL/Servers/veritabanları/transparentDataEncryption/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |

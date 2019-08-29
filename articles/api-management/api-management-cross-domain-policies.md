@@ -10,16 +10,15 @@ ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 86c61679a73f03f7e54bba746107685796ec07c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073716"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management etki alanları arası ilkeler
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -54,7 +53,7 @@ API 'yi Adobe Flash ve Microsoft Silverlight tarayıcı tabanlı istemcilerden e
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |etki alanları arası|Kök öğe. Alt öğeler, [Adobe etki alanları arası ilke dosyası belirtimine](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)uymalıdır.|Evet|
 
@@ -123,7 +122,7 @@ Bu örnek, alma ve GÖNDERI dışında özel üst bilgileri veya yöntemleri ola
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |CORS|Kök öğe.|Evet|Yok|
 |izin verilen-kaynaklar|Etki `origin` alanları arası istekler için izin verilen kaynakları tanımlayan öğeleri içerir. `allowed-origins`herhangi bir kaynağa izin vermek `origin` için belirten `*` tek bir öğe veya bir URI içeren bir ya da `origin` daha fazla öğe içerebilir.|Evet|Yok|
@@ -136,7 +135,7 @@ Bu örnek, alma ve GÖNDERI dışında özel üst bilgileri veya yöntemleri ola
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |izin ver-kimlik bilgileri|Ön kontrol yanıtındaki üst bilgi bu özniteliğin değerine ayarlanır ve istemcinin etki alanları arası isteklerde kimlik bilgilerini gönderme yeteneğini etkiler. `Access-Control-Allow-Credentials`|Hayır|false|
 |ön kontrol-sonuç-en yüksek yaş|Ön kontrol yanıtında üst bilgi bu özniteliğin değerine ayarlanır ve Kullanıcı aracısının ön uçuş yanıtını önbelleğe alma yeteneğini etkiler. `Access-Control-Max-Age`|Hayır|0|
@@ -168,13 +167,13 @@ Geri çağırma parametresini `?cb=XXX` eklerseniz, bir JSONP sonucu döndürür
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |JSONP|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |geri arama-parametre-adı|Etki alanları arası JavaScript işlev çağrısı, işlevin bulunduğu tam etki alanı adıyla önekli.|Evet|Yok|
 

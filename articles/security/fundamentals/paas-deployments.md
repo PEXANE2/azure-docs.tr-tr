@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726817"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098634"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -103,7 +103,7 @@ Mümkünse, bir Azure sanal ağındaki sanal özel ağları kullanma gibi diğer
 
 Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodu geliştirmenin hata olabilir. Geliştiricilerinizin çoğu güvenlik uzmanı değildir ve kimlik doğrulama ve yetkilendirme konusunda en son gelişmeleri göz önünde bulundurulmamalıdır. Ticari kod (örneğin, Microsoft 'tan) genellikle yaygın olarak güvenlik gözden geçirilir.
 
-İki öğeli kimlik doğrulaması kullanın. Kimlik doğrulama ve parola türlerinde bulunan güvenlik zayıflarını önlediği için iki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır. Azure Yönetim (portal/uzak PowerShell) arabirimlerine ve müşteriye yönelik hizmetlere erişim, [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)kullanmak üzere tasarlanmalı ve yapılandırılmalıdır.
+İki öğeli kimlik doğrulaması kullanın. Kimlik doğrulama ve parola türlerinde bulunan güvenlik zayıflarını önlediği için iki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır. Hem Azure Yönetim (portal/uzak PowerShell) arabirimlerine hem de müşteriye yönelik hizmetlere erişim, [azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)kullanmak üzere tasarlanmalı ve yapılandırılmalıdır.
 
 OAuth2 ve Kerberos gibi standart kimlik doğrulama protokollerini kullanın. Bu protokoller kapsamlı bir şekilde incelendi ve büyük olasılıkla kimlik doğrulama ve yetkilendirme için platform kitaplıklarınızın bir parçası olarak uygulandı.
 
@@ -116,7 +116,7 @@ Aşağıdaki tabloda, Ilerleme tehditleri listelenmekte ve Azure özelliklerini 
 | --- | --- | --- |
 | Sızdır | Authentication | HTTPS bağlantıları gerektir. |
 | Kurcalama | Bütünlük | SSL sertifikalarını doğrulayın. |
-| Kar | İnkar edilemez | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin. |
+| Kar | Red olmayan | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin. |
 | Bilgilerin açığa çıkması | Gizlilik | Bekleyen hassas verileri [hizmet sertifikaları](/rest/api/appservice/certificates)kullanarak şifreleyin. |
 | Hizmet reddi | Kullanılabilirlik | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. |
 | Ayrıcalık yükseltme | Authorization | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)kullanın. |
@@ -139,7 +139,7 @@ App Service kullanmak için en iyi yöntemler aşağıda verilmiştir.
 **Ayrıntı**: [App Service ortamı](/azure/app-service/environment/intro) , gelen kaynak IP adreslerini ağ güvenlik grupları aracılığıyla kısıtlamanıza yardımcı olan bir sanal ağ tümleştirme özelliğine sahiptir. Sanal ağlar, erişimi denetlediğiniz internet olmayan, yönlendirilebilir bir ağa Azure kaynakları yerleştiretkinleştirmenizi sağlar. Daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](/azure/app-service/web-sites-integrate-with-vnet).
 
 **En iyi uygulama**: App Service ortamlarınızın güvenlik durumunu izleyin.   
-**Ayrıntı**: App Service ortamlarınızı izlemek için Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden [öneriler](/azure/security-center/security-center-virtual-machine-recommendations) oluşturur.
+**Ayrıntı**: App Service ortamlarınızı izlemek için Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden [öneriler](../../security-center/security-center-virtual-machine-protection.md) oluşturur.
 
 > [!NOTE]
 > İzleme App Service önizleme aşamasındadır ve yalnızca güvenlik merkezi 'nin [Standart katmanında](/azure/security-center/security-center-pricing) kullanılabilir.

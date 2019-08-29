@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 52f6e7ebb1cbae14878b1897bd8c59c73dd0f493
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981018"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102219"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure portal bir Windows SQL Server sanal makinesi sağlama
 
@@ -37,21 +36,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önceden yapılandırılmış birkaç görüntüden birini seçebilirsiniz. Aşağıdaki adımlarda SQL Server 2017 görüntülerinden birini seçme gösterilmektedir.
 
-1. Hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Ayrıntıları göster**' i seçerek ek bilgileri görüntüleyebilirsiniz. 
+1. **SQL sanal makineler** kutucuğunda SQL Server resim arama kutusuna yazın  **`2017` ve ücretsiz SQL Server Lisansı ' nı seçin: Açılır listeden 2017 geliştirici Windows Server 2016** üzerinde SQL Server. 
 
-1. Azure portalında **Kaynak oluştur**’a tıklayın. Portalda **Yeni** penceresi açılır.
 
-1. **Yeni** penceresinde **İşlem**’e ve ardından **Tümünü gör**’e tıklayın.
-
-1. Arama alanına **SQL Server 2017** yazın ve ENTER tuşuna basın.
-
-1. Filtre açılan listeleri ' nde, **Işletim sistemi** Için _Windows Server 2016_ ' i seçin ve **Yayımcı**olarak _Microsoft_ ' u seçin. 
-
-     ![Yeni İşlem penceresi](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
-
-1. Kullanılabilir SQL Server görüntülerini gözden geçirin. Her görüntü bir SQL Server sürümü ve işletim sistemi tanımlar.
-
-1. Ücretsiz SQL Server Lisansı adlı **görüntüyü seçin: Windows Server 2016**üzerinde 2017 SQL Server geliştirici.
+   ![SQL VM görüntüsünü seçin](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
 
    > [!TIP]
    > Geliştirici sürümü, geliştirme testi için SQL Server tam özellikli, ücretsiz bir sürümü olduğundan Bu izlenecek yolda kullanılır. Yalnızca çalışan VM'ler için ücret ödersiniz. Ancak, bu kılavuzda kullanılacak görüntülerden herhangi birini seçebilirsiniz. Kullanılabilir görüntülerin açıklaması için [SQL Server Windows sanal makineleri genel bakış](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)bölümüne bakın.
@@ -61,7 +51,6 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
    >
    > Bu seçeneklerle ilgili daha fazla bilgi için bkz. [SQL Server Azure VM’leri için fiyatlandırma kılavuzu](virtual-machines-windows-sql-server-pricing-guidance.md).
 
-1. **Dağıtım modeli seçin** altında, **Resource Manager**’ın seçili olduğunu doğrulayın. Yeni sanal makineler için önerilen dağıtım modeli Resource Manager’dır. 
 
 1. **Oluştur**’u seçin.
 
@@ -77,7 +66,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
 | **SQL Server ayarları** |[SQL Server ayarlarını yapılandırma](#3-configure-sql-server-settings) |
 | **Gözden geçir + oluştur** | [Özeti gözden geçirme](#4-review--create) |
 
-## <a name="1-configure-basic-settings"></a>1. Temel ayarları yapılandırma
+## <a name="1-configure-basic-settings"></a>1. Temel ayarları yapılandırın
 
 
 **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
@@ -112,7 +101,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
    ![Gelen bağlantı noktası kuralları](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. İsteğe bağlı özellikleri yapılandırma
+## <a name="2-configure-optional-features"></a>2. İsteğe bağlı özellikleri yapılandır
 
 ### <a name="disks"></a>Diskler
 
@@ -200,11 +189,11 @@ SQL Server Kimlik Doğrulamasını etkinleştirirseniz, bir **Oturum açma adı*
 SQL Server Kimlik Doğrulamasını etkinleştirmezseniz, SQL Server örneğine bağlanmak için VM’deki yerel Yönetici hesabını kullanabilirsiniz.
 
 
-### <a name="azure-key-vault-integration"></a>Azure Anahtar Kasası tümleştirme
+### <a name="azure-key-vault-integration"></a>Azure Key Vault tümleştirmesi
 
 Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları**' nı seçin ve **Azure Anahtar Kasası tümleştirmesi**' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
 
-![Azure Anahtar Kasası tümleştirme](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
+![Azure Key Vault tümleştirmesi](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 Aşağıdaki tabloda Azure Anahtar Kasası Tümleştirmeyi yapılandırmak için gereken parametreler listelenmektedir.
 

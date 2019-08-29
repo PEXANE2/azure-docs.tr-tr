@@ -10,16 +10,15 @@ ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: bd31d711c58a63b5c15712c1774d48433c62f18d
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774968"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073733"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulama ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -49,13 +48,13 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |kimlik doğrulama-temel|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Evet|Yok|
 |password|Temel kimlik bilgisinin parolasını belirtir.|Evet|Yok|
@@ -89,13 +88,13 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Ad|Açıklama|Gerekli|  
+|Name|Açıklama|Gerekli|  
 |----------|-----------------|--------------|  
 |kimlik doğrulama-sertifika|Kök öğe.|Evet|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Ad|Açıklama|Gerekli|Varsayılan|  
+|Name|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|İstemci sertifikası için parmak izi.|`thumbprint` Ya`certificate-id` da mevcut olmalıdır.|Yok|  
 |sertifika kimliği|Sertifika kaynağı adı.|`thumbprint` Ya`certificate-id` da mevcut olmalıdır.|Yok|  
@@ -133,13 +132,13 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Ad|Açıklama|Gerekli|  
+|Name|Açıklama|Gerekli|  
 |----------|-----------------|--------------|  
 |kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Evet|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Ad|Açıklama|Gerekli|Varsayılan|  
+|Name|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
 |resource|Dizisinde. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI URI 'SI.|Evet|Yok|  
 |çıkış-belirteç-değişken-adı|Dizisinde. Bir nesne türü `string`olarak belirteç değeri alacak bağlam değişkeninin adı. |Hayır|Yok|  

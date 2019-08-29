@@ -9,20 +9,19 @@ editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: gwallace
-ms.openlocfilehash: be8bfd8b6a0ba8afa43869366b4482e1b202727f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876328"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100793"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terrayform ile Azure 'da tamamen bir Linux sanal makine altyapısı oluşturma
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform ile Azure'da eksiksiz bir Linux sanal makine altyapısı oluşturma
 
 Terrayform, Azure 'da tüm altyapı dağıtımlarını tanımlamanızı ve oluşturmanızı sağlar. Azure kaynaklarını tutarlı, tekrarlanabilir bir şekilde oluşturup yapılandıran, Kullanıcı tarafından okunabilen bir biçimde Terrayform şablonları oluşturursunuz. Bu makalede, tüm Linux ortamının nasıl oluşturulduğu ve Terrayform ile destekleyici kaynakların nasıl oluşturulduğu gösterilir. Ayrıca, [Terrayform 'U yüklemeyi ve yapılandırmayı](terraform-install-configure.md)da öğrenebilirsiniz.
 
@@ -88,7 +87,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ```
 
 
-## <a name="create-public-ip-address"></a>Genel IP adresi oluştur
+## <a name="create-public-ip-address"></a>Ortak IP adresi oluştur
 Internet üzerindeki kaynaklara erişmek için, VM 'nize bir genel IP adresi oluşturun ve atayın. Aşağıdaki bölüm *Mypublicıp*adlı BIR genel IP adresi oluşturur:
 
 ```tf
@@ -414,7 +413,7 @@ Terrayform şablonunuz oluşturulduktan sonra, birinci adım Terrayform 'u başl
 terraform init
 ```
 
-Bir sonraki adım, Terrayform 'nun şablonu incelemesinin ve doğrulayacaktır. Bu adım, istenen kaynakları Terrayform tarafından kaydedilen durum bilgileriyle karşılaştırır ve ardından planlı yürütmeyi çıkartır. Kaynaklar Azure *'da oluşturulmaz.*
+Bir sonraki adım, Terrayform 'nun şablonu incelemesinin ve doğrulayacaktır. Bu adım, istenen kaynakları Terrayform tarafından kaydedilen durum bilgileriyle karşılaştırır ve ardından planlı yürütmeyi çıkartır. Kaynaklar Azure 'da oluşturulmaz.
 
 ```bash
 terraform plan

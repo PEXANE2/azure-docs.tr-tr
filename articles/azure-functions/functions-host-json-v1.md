@@ -1,40 +1,39 @@
 ---
-title: Azure işlevleri için Host.JSON başvurusu 1.x
-description: Azure işlevleri host.json dosyasıyla v1 çalışma zamanı için başvuru belgeleri.
+title: Azure Işlevleri 1. x için Host. JSON başvurusu
+description: V1 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c169d9cc774a2c6264ba1520240005f13ba9d2da
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62107083"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096448"
 ---
-# <a name="hostjson-reference-for-azure-functions-1x"></a>Azure işlevleri için Host.JSON başvurusu 1.x
+# <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için Host. JSON başvurusu
 
-> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure işlevleri çalışma zamanı sürümünü seçin: "]
+> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-host-json-v1.md)
 > * [Sürüm 2](functions-host-json.md)
 
-*Host.json* meta veri dosyası, tüm işlevler bir işlev uygulaması için etkileyen genel yapılandırma seçenekleri içerir. Bu makalede, v1 çalışma zamanı için kullanılabilen ayarları listelenir. JSON şemasını altındadır http://json.schemastore.org/host.
+*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host.
 
 > [!NOTE]
-> Bu makalede, Azure işlevleri için olan 1.x.  İşlevlerde host.json başvurusu için 2.x bkz [Azure işlevleri için host.json başvurusu 2.x](functions-host-json.md).
+> Bu makalede, Azure işlevleri için olan 1.x.  2\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 2. x](functions-host-json.md).
 
-Başka bir işlev uygulaması yapılandırma seçenekleri yönetilir, [uygulama ayarları](functions-app-settings.md).
+Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
-Bazı host.json ayarları yalnızca yerel olarak çalıştırırken kullanılan [local.settings.json](functions-run-local.md#local-settings-file) dosya.
+Bazı Host. JSON ayarları yalnızca [yerel. Settings. JSON](functions-run-local.md#local-settings-file) dosyasında yerel olarak çalıştırılırken kullanılır.
 
-## <a name="sample-hostjson-file"></a>Örnek host.json dosyası
+## <a name="sample-hostjson-file"></a>Örnek Host. JSON dosyası
 
-Aşağıdaki örnek *host.json* dosyaları belirtilen tüm olası seçeneklerin sahiptir.
+Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
 
 
 ```json
@@ -107,9 +106,9 @@ Aşağıdaki örnek *host.json* dosyaları belirtilen tüm olası seçeneklerin 
 }
 ```
 
-Bu makalenin aşağıdaki bölümlerde, her bir üst düzey özellik açıklanmaktadır. Tümü aksi belirtilmediği sürece isteğe bağlıdır.
+Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmaktadır. Aksi belirtilmedikçe tümü isteğe bağlıdır.
 
-## <a name="aggregator"></a>Toplayıcı
+## <a name="aggregator"></a>'yı
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -123,13 +122,13 @@ Bu makalenin aşağıdaki bölümlerde, her bir üst düzey özellik açıklanma
 
 ## <a name="eventhub"></a>eventHub
 
-İçin yapılandırma ayarlarını [olay hub'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md).
+[Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md)için yapılandırma ayarları.
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>işlevler
+## <a name="functions"></a>işlevleri
 
-Proje ana çalışan işlevlerin listesi. Boş bir dizi tüm işlevleri çalıştırma anlamına gelir. Kullanılmak üzere tasarlanmış yalnızca [yerel olarak çalışan](functions-run-local.md). Azure işlev uygulamaları bunun yerine adımları izlemelidir [işlevleri Azure işlevleri'nde devre dışı bırakma](disable-function.md) belirli işlevleri yerine bu ayarı devre dışı bırakmak için.
+İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
 ```json
 {
@@ -139,7 +138,7 @@ Proje ana çalışan işlevlerin listesi. Boş bir dizi tüm işlevleri çalış
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Tüm İşlevler için zaman aşımı süresini gösterir. Sunucusuz bir tüketim planı geçerli aralık 1 saniye için 10 dakika olan ve varsayılan değer 5 dakikadır. App Service planı, genel bir sınır yoktur ve varsayılan çalışma zamanı sürümüne bağlıdır.
+Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır. Bir App Service planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır.
 
 ```json
 {
@@ -147,9 +146,9 @@ Tüm İşlevler için zaman aşımı süresini gösterir. Sunucusuz bir tüketim
 }
 ```
 
-## <a name="healthmonitor"></a>Durum İzleme
+## <a name="healthmonitor"></a>healthMonitor
 
-İçin yapılandırma ayarlarını [konak sistem durumu İzleyicisi](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+[Konak sistem durumu izleyicisinin](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor)yapılandırma ayarları.
 
 ```
 {
@@ -165,25 +164,25 @@ Tüm İşlevler için zaman aşımı süresini gösterir. Sunucusuz bir tüketim
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|enabled|true|Özelliğin etkin olup olmadığını belirtir. | 
-|healthCheckInterval|10 saniye|Düzenli arka plan sistem arasındaki zaman aralığını denetler. | 
-|healthCheckWindow|2 dakika|İle birlikte kullanılan kayan zaman penceresini `healthCheckThreshold` ayarı.| 
-|healthCheckThreshold|6|En fazla kaç kez, bir konak geri dönüştürme başlatılmadan önce sistem durumu denetimi başarısız olabilir.| 
-|counterThreshold|0.80|Eşik, bir performans sayacı sağlıksız olarak kabul edilir.| 
+|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
+|healthCheckWindow|2 dakika|`healthCheckThreshold` Ayarla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
+|Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 
 ## <a name="http"></a>http
 
-İçin yapılandırma ayarlarını [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md).
+[Http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md)için yapılandırma ayarları.
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 
-*Sürümü yalnızca 1.x.*
+*Yalnızca sürüm 1. x.*
 
-Bir proje konak için benzersiz kimliği. Tireler ile küçük harf GUID kaldırılabilir. Yerel olarak çalışan gereklidir. Azure'da çalışan bir kimlik değeri ayarlanmadı öneririz. Azure'da bir kimliği otomatik olarak oluşturulan olduğunda `id` atlanır. 
+Bir iş konağının benzersiz KIMLIĞI. Kesik çizgileri kaldırılmış küçük bir harf olabilir. Yerel olarak çalıştırılırken gereklidir. Azure 'da çalışırken, bir KIMLIK değeri ayarlamanıza önerilir. Kimliği atlandığında Azure `id` 'da otomatik olarak bir kimlik oluşturulur. 
 
-Birden fazla işlev uygulaması arasında bir depolama hesabını paylaşmak, her işlev uygulaması farklı olduğundan emin olun `id`. Atlayabilirsiniz `id` özelliği veya her işlevi uygulamanın el ile ayarlamanız `id` için farklı bir değer. Zamanlayıcı tetikleyicisi depolama kilidi olacağına dair yalnızca bir zamanlayıcı örneği birden çok örneği için bir işlev uygulaması kullanıma ölçeklendirildiğinde emin olmak için kullanır. İki işlev uygulamaları aynı paylaşıyorsa `id` ve her bir zamanlayıcı tetikleyicisi kullanan, tek bir zamanlayıcı çalışır.
+Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir işlev uygulamasının farklı `id`olduğundan emin olun. `id` Özelliği atlayabilir veya her bir işlev `id` uygulamasını farklı bir değere el ile ayarlayabilirsiniz. Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olacağını sağlamak için bir depolama kilidi kullanır. İki işlev uygulaması aynı `id` şekilde paylaşıyorsa ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
 
 ```json
 {
@@ -191,9 +190,9 @@ Birden fazla işlev uygulaması arasında bir depolama hesabını paylaşmak, he
 }
 ```
 
-## <a name="logger"></a>Günlükçü
+## <a name="logger"></a>Medi
 
-Tarafından yazılan günlükler için filtreleme denetimlerini bir [ILogger nesne](functions-monitoring.md#write-logs-in-c-functions) ya da [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
+Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [Context. log](functions-monitoring.md#write-logs-in-javascript-functions)tarafından yazılmış günlükler için filtrelemeyi denetler.
 
 ```json
 {
@@ -212,13 +211,13 @@ Tarafından yazılan günlükler için filtreleme denetimlerini bir [ILogger nes
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|categoryFilter|yok|Kategoriye göre filtreleme belirtir| 
-|defaultLevel|Information|Belirtilen değil tüm kategorileri için `categoryLevels` dizi, bu düzeyde ve yukarıdaki günlükleri Application Insights'a Gönder.| 
-|categoryLevels|yok|Her kategori için Application Insights'a gönderme için en düşük günlük düzeyi belirtir kategoriler dizisi. Burada belirtilen kategori aynı değeri ile başlayan tüm kategorileri denetler ve daha uzun değerleri önceliklidir. Yukarıdaki örnekte *host.json* dosyası günlüğüne "Host.Aggregator" ile başlayan tüm kategorileri `Information` düzeyi. "Ana" gibi "Host.Executor" ile başlayan diğer tüm kategorileri oturum `Error` düzeyi.| 
+|categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
+|defaultLevel|Information|`categoryLevels` Dizide belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıya Application Insights için gönderin.| 
+|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler, oturum açma `Error` düzeyinde.| 
 
-## <a name="queues"></a>Kuyruklar
+## <a name="queues"></a>klarında
 
-İçin yapılandırma ayarlarını [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md).
+[Depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md)için yapılandırma ayarları.
 
 ```json
 {
@@ -234,15 +233,15 @@ Tarafından yazılan günlükler için filtreleme denetimlerini bir [ILogger nes
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|maxPollingInterval|60000|Kuyruk yoklamaları arasındaki milisaniye cinsinden en büyük aralık.| 
-|visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığını başarısız olur.| 
-|batchSize|16|İşlevler çalışma zamanı aynı anda alır ve paralel olarak işler sıra iletilerinin sayısı. İşlenmekte olan sayı ne zaman alır aşağı `newBatchThreshold`, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlıyor. Eş zamanlı iletileri işlev işlenen sayısı, bu nedenle `batchSize` artı `newBatchThreshold`. Bu sınır, ayrı ayrı her kuyruk ile tetiklenen bir işlev için de geçerlidir. <br><br>Paralel yürütme bir kuyruğa alınan iletileri önlemek istiyorsanız, ayarlayabileceğiniz `batchSize` 1. Ancak, bu ayar yalnızca tek bir sanal makineye (VM) işlev uygulamanızın çalıştırdığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması için birden çok VM Ölçeklendirmesi eşitlenene, her VM her kuyruk ile tetiklenen bir işlev bir örneğini çalıştırabilirsiniz.<br><br>En fazla `batchSize` 32'dir. | 
-|maxDequeueCount|5|Kaç defa zehirli kuyruğuna taşınmadan önce bir iletiyi işlemeyi deneyin.| 
-|newBatchThreshold|batchSize/2|Bu sayıya aynı anda işlenmekte olan ileti sayısını alır olduğunda, başka bir toplu iş çalışma zamanı alır.| 
+|maxPollingInterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
+|visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur.| 
+|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı öğesine `newBatchThreshold`doğru aldığında, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı artı `batchSize` `newBatchThreshold`olur. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, 1 olarak ayarlayabilirsiniz `batchSize` . Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>Maksimum `batchSize` değer 32 ' dir. | 
+|maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.| 
+|newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.| 
 
 ## <a name="servicebus"></a>serviceBus
 
-Bir yapılandırma ayarı için [Service Bus Tetikleyicileri ve bağlamaları](functions-bindings-service-bus.md).
+[Service Bus Tetikleyicileri ve bağlamaları](functions-bindings-service-bus.md)yapılandırma ayarı.
 
 ```json
 {
@@ -260,9 +259,9 @@ Bir yapılandırma ayarı için [Service Bus Tetikleyicileri ve bağlamaları](f
 |prefetchCount|yok|Varsayılan temel alınan MessageReceiver tarafından kullanılacak PrefetchCount.| 
 |autoRenewTimeout|00:05:00|En uzun süre içinde otomatik olarak ileti kilidi yenilenir.| 
 
-## <a name="singleton"></a>singleton
+## <a name="singleton"></a>adet
 
-Singleton kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için [GitHub sorunu tekil desteği hakkında daha fazla](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bkz. [Singleton desteği hakkında GitHub sorunu](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -278,17 +277,17 @@ Singleton kilit davranışı için yapılandırma ayarları. Daha fazla bilgi i�
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|İşlev düzeyi kilit için geçen süre. Kilitler otomatik olarak yenilenecek.| 
-|listenerLockPeriod|00:01:00|Dinleyici kilit alınması için dönem.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta bir dinleyici kilidi aldıysanız uygulanamadı dinleyici kilit kurtarma için kullanılan zaman aralığı.| 
-|lockAcquisitionTimeout|00:01:00|En uzun süreyi çalışma zamanı kilit dener.| 
-|lockAcquisitionPollingInterval|yok|Kilidi alma girişimi arasındaki zaman aralığı.| 
+|Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
+|listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
+|Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
+|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="tracing"></a>İzleme
+## <a name="tracing"></a>izleniyor
 
-*Sürüm 1.x*
+*Sürüm 1. x*
 
-Yapılandırma ayarlarını kullanarak oluşturduğunuz günlükleri için bir `TraceWriter` nesne. Bkz: [C# günlüğü](functions-reference-csharp.md#logging) ve [Node.js günlük](functions-reference-node.md#writing-trace-output-to-the-console).
+Bir `TraceWriter` nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları. Bkz [ C# . Logging](functions-reference-csharp.md#logging) ve [Node. js günlüğü](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {
@@ -301,12 +300,12 @@ Yapılandırma ayarlarını kullanarak oluşturduğunuz günlükleri için bir `
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|consoleLevel|info|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off`, `error`, `warning`, `info`, ve `verbose`.|
-|fileLoggingMode|debugOnly|Dosya günlüğü için izleme düzeyi. Seçenekler `never`, `always`, `debugOnly`.| 
+|consoleLevel|info|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off`, `error`, `warning` ,`info`, ve `verbose`.|
+|fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. `never`Seçenekler, `always`,. `debugOnly`| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Bir dizi [kod dizinlerini paylaşılan](functions-reference-csharp.md#watched-directories) , izlenen değişiklikleri.  Bu dizinler kod değiştirildiğinde, değişiklikleri işlevleriniz tarafından seçilir, sağlar.
+Değişiklikler için izlenmesi gereken bir [paylaşılan kod dizinleri](functions-reference-csharp.md#watched-directories) kümesi.  Bu dizinlerdeki kod değiştirildiğinde, değişikliklerin işlevleriniz tarafından çekilmesini sağlar.
 
 ```json
 {
@@ -317,7 +316,7 @@ Bir dizi [kod dizinlerini paylaşılan](functions-reference-csharp.md#watched-di
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Host.json dosya güncelleştirme hakkında bilgi edinin](functions-reference.md#fileupdate)
+> [Host. json dosyasını güncelleştirme hakkında bilgi edinin](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Ortam değişkenleri içindeki genel ayarlara bakın](functions-app-settings.md)
+> [Ortam değişkenlerinde genel ayarları gör](functions-app-settings.md)

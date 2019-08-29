@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 7893c8e8b8d67b4b63bd9d6bb5a71552e95c9125
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850239"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100959"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-IoT Central [Uygulama Yöneticisi](https://aka.ms/iotcentral) sayfasından IoT Central uygulamalar oluşturup yönetmek yerine, uygulamalarınızı yönetmek için [Azure Portal](https://portal.azure.com) kullanabilirsiniz.
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) web sitesinde IoT Central uygulamaları oluşturup yönetmek yerine uygulamalarınızı yönetmek için [Azure Portal](https://portal.azure.com) kullanabilirsiniz.
 
 ## <a name="create-iot-central-applications"></a>IoT Central uygulamaları oluşturma
 
@@ -39,7 +39,7 @@ Arama sonuçlarındaki **uygulama satırı IoT Central** öğesini seçin.
 
 ![Yönetim Portalı: IoT Central kaynağı](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-Formdaki tüm alanları doldurur. Bu form, IoT Central [Uygulama Yöneticisi](https://aka.ms/iotcentral) sayfasında uygulama oluşturmak için doldurduğunuz forma benzer. Daha fazla bilgi için [IoT Central uygulaması oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı bölümüne bakın.
+Formdaki tüm alanları doldurur. Bu form, [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde uygulama oluşturmak için doldurduğunuz forma benzer. Daha fazla bilgi için [IoT Central uygulaması oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı bölümüne bakın.
 
 ![Yönetim Portalı: IoT Central kaynak oluşturma](media/howto-manage-iot-central-from-portal/image1a.png)  
 

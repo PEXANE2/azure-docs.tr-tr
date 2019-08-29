@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335980"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099402"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -61,7 +61,7 @@ Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-netwo
 
   * **Geliştirici SKU 'su**: 4 ' e kadar standart hesap veya toplam 5 Standart hesap. Temel hesap yok.
 
-Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz. 
+Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
 
 Premium ıSE SKU 'SU için, temel birim sabit kapasiteye sahiptir, bu nedenle daha fazla işleme gerekiyorsa, oluşturma sırasında veya [daha sonra daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). Geliştirici ıSE SKU 'SU daha fazla ölçek birimi ekleme yeteneğine sahip değildir. ISE 'de çalışan Logic Apps veri bekletme maliyetlerine tabi değildir.
 
@@ -162,7 +162,7 @@ Mantıksal uygulamanızın depolama tüketimini izlemenize yardımcı olması i�
 
 1. **Mantıksal uygulama çalıştırma ayrıntıları** bölmesinde, eylemler tablosunda, her eylemin durumunu ve süresini listeleyen, görüntülemek istediğiniz eylemi seçin.
 
-1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve **çıkış bağlantısı** **altında sırasıyla** görüntülenecek olan giriş ve çıkış boyutlarını bulun.
+1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve **çıkış bağlantısı**altında sırasıyla görüntülenecek olan giriş ve çıkış boyutlarını bulun .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
