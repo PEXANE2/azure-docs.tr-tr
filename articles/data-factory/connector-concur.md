@@ -47,7 +47,7 @@ Concur bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Concur** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Concur** | Evet |
 | clientId | Concur Uygulama Yönetimi tarafından sağlanan uygulama client_id.  | Evet |
 | username | Concur hizmete erişmek için kullandığınız kullanıcı adı.  | Evet |
 | password | Kullanıcı adı alanında sağlanan kullanıcı adı için karşılık gelen parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
