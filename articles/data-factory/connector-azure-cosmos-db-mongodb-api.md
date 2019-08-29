@@ -48,7 +48,7 @@ Aşağıdaki özellikler, Azure Cosmos DB MongoDB bağlı hizmeti için API 'SI 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | **Type** özelliği **Cosmosdbmongodbapı**olarak ayarlanmalıdır. | Evet |
+| type | **Type** özelliği **Cosmosdbmongodbapı**olarak ayarlanmalıdır. | Evet |
 | connectionString |MongoDB için Azure Cosmos DB API 'niz için bağlantı dizesi belirtin. Azure portal, Cosmos DB dikey pencere > birincil veya ikincil bağlantı dizeniz ile >, düzeniyle `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`bulabilirsiniz. <br/><br />Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
 | database | Erişmek istediğiniz veritabanının adı. | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel bir ağda yer alıyorsa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Bu özellik belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
