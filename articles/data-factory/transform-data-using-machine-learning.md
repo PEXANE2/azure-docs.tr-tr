@@ -128,9 +128,9 @@ Aşağıdaki JSON kod parçacığında, bir Azure Machine Learning Batch Executi
 | :---------------- | :--------------------------------------- | :------- |
 | name              | İşlem hattındaki etkinliğin adı     | Evet      |
 | description       | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| türü              | Data Lake Analytics U-SQL etkinliği için etkinlik türdür **AzureMLBatchExecution**. | Evet      |
+| type              | Data Lake Analytics U-SQL etkinliği için etkinlik türdür **AzureMLBatchExecution**. | Evet      |
 | linkedServiceName | Bağlı hizmeti Azure Machine learning'e bağlı hizmetler. Bu bağlı hizmeti hakkında bilgi edinmek için [işlem bağlı Hizmetleri](compute-linked-services.md) makalesi. | Evet      |
-| Webserviceınputs  | Azure Machine Learning Web hizmeti girişleri adlarını eşleme anahtar, değer çiftleri. Anahtarı, yayımlanan Azure Machine Learning Web hizmeti içinde tanımlanan giriş parametreleri eşleşmelidir. Giriş Blob konumları belirten bir Azure depolama bağlı hizmetleri ve FilePath özellikleri çifti değerdir. | Hayır       |
+| eebserviceınputs  | Azure Machine Learning Web hizmeti girişleri adlarını eşleme anahtar, değer çiftleri. Anahtarı, yayımlanan Azure Machine Learning Web hizmeti içinde tanımlanan giriş parametreleri eşleşmelidir. Giriş Blob konumları belirten bir Azure depolama bağlı hizmetleri ve FilePath özellikleri çifti değerdir. | Hayır       |
 | webServiceOutputs | Azure Machine Learning Web hizmeti çıkışları adlarını eşleme anahtar, değer çiftleri. Anahtarı, yayımlanan Azure Machine Learning Web hizmeti içinde tanımlanan çıkış parametreleri eşleşmelidir. Değer, bir Azure depolama bağlı hizmetleri ve dosya yolu: çıkış belirten özellikleri çifti Blob konumları. | Hayır       |
 | globalParameters  | Azure Machine Learning studio toplu yürütme Hizmeti uç noktası için geçirilecek anahtar, değer çiftleri. Anahtarları yayımlanan Azure Machine Learning studio web hizmeti tanımlı web hizmeti parametrelerini adları eşleşmelidir. Azure Machine Learning studio toplu yürütme isteği GlobalParameters özelliğinde değerleri geçirilir | Hayır       |
 
