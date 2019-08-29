@@ -44,7 +44,7 @@ Oracle hizmet bağlantılı bulut hizmeti için aşağıdaki özellikleri destek
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **OracleServiceCloud** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **OracleServiceCloud** | Evet |
 | host | Oracle hizmet bulut örneğinin URL'si.  | Evet |
 | username | Oracle hizmet Bulutu sunucusuna erişmek için kullandığınız kullanıcı adı.  | Evet |
 | password | Kullanıcı adı anahtarı sağlanan kullanıcı adı için karşılık gelen parola. Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
