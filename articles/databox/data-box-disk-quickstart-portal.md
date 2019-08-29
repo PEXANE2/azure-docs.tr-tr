@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035632"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126007"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70035632"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Azure portal kullanarak Azure Data Box Disk kullanmaya başlama
+## <a name="get-started-with-azure-data-box-disk"></a>Azure Data Box Disk kullanmaya başlayın 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 ::: zone target="chromeless"
 
-Bu hızlı başlangıçta Azure portalı kullanarak Azure Data Box Disk'i dağıtma adımları anlatılmaktadır. Adımlar, Azure 'a yüklenecek şekilde Önkoşulları Gözden geçirme, disklerin kilidini açma, disklere bağlanma ve verileri kopyalama işlemlerini içerir.
+Bu kılavuzda Azure Data Box Disk Azure portal nasıl dağıtılacağı açıklanır. Adımlarda Önkoşulları Gözden geçirme, disklerin kilidini açma ve verileri disklere bağlama ve verileri Azure 'a yükleyecek şekilde disklere kopyalama işlemleri dahildir.
 
 ::: zone-end
 
@@ -60,7 +60,7 @@ Başlamadan önce:
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Öğreticiyi kullanarak Data Box disk siparişinizi yerleştirdiniz: Order Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Disklerinizi aldınız ve portaldaki iş durumu **Teslim Edildi** olarak güncelleştirildi.

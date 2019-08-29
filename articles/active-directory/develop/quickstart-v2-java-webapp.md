@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: de2a59f878e0c0258b0619895d8f4c8bfd0670a8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036433"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125471"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı Başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -34,10 +34,9 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 
 > ## <a name="prerequisites"></a>Önkoşullar
 > Bu örneği çalıştırmak için şunlar gerekir: 
-> - Bir internet bağlantısı.
-> - Çalışan bir Java ve Maven yüklemesi.
-> - Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz [. Azure AD kiracısı alma.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-
+> - Java Development Kit (JDK) 8 veya üzeri ve Maven.
+> - Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz [. Azure AD kiracısı alma.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
+>
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
@@ -143,5 +142,22 @@ Aşağıdaki kodu MSAL4J kullanacağınız dosyanın en üstüne ekleyerek MSAL4
 ```
 import com.microsoft.aad.msal4j.*;
 ```
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+İzinler ve onay hakkında daha fazla bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [İzinler ve onay](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
+
+Bu senaryoya yönelik kimlik doğrulama akışı hakkında daha fazla bilgi edinmek için bkz. OAuth 2,0 yetkilendirme kodu akışı:
+
+> [!div class="nextstepaction"]
+> [Yetkilendirme kodu OAuth akışı](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+
+Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

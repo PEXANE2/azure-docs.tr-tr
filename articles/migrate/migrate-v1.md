@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905216"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142076"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -201,7 +201,7 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 1. Bir projeye Log Analytics çalışma alanı iliştirmek için, **genel bakış**' a, **temelleri**>, **yapılandırma gerekiyor**' a tıklayın.
 2. Yeni bir çalışma alanı oluşturabilir veya var olan bir çalışma alanı ekleyebilirsiniz:
   - Yeni bir çalışma alanı oluşturmak için bir ad belirtin. Çalışma alanı, geçiş projesiyle aynı [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) içindeki bir bölgede oluşturulur.
-  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca, [desteklenen bir hizmet eşlemesi bölgesinde](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)oluşturulan çalışma alanları listelenir. Bir çalışma alanı eklemek için çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
+  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca, [desteklenen bir hizmet eşlemesi bölgesinde](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)oluşturulan çalışma alanları listelenir. Bir çalışma alanı eklemek için çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
 
 > [!NOTE]
 > Bir geçiş projesiyle ilişkili çalışma alanını değiştiremezsiniz.

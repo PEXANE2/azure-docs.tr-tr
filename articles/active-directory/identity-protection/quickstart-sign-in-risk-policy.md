@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335311"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127694"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Hızlı Başlangıç: Azure Active Directory Kimlik Koruması ile oturum riski algılandığında erişimi engelleyin  
 
@@ -34,7 +34,7 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
 - **Azure AD Premium P2 Edition** -Azure AD kimlik koruması erişimi bir Azure AD Premium P2 özelliğidir. 
 - **Kimlik koruması** -bu hızlı başlangıçtaki senaryo kimlik korumasının etkinleştirilmesini gerektirir. Kimlik korumasını nasıl etkinleştireceğinizi bilmiyorsanız, bkz. [Azure Active Directory kimlik koruması etkinleştirme](../identity-protection/enable.md).
-- **Tor tarayıcısı** - [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) , gizliliğinizi çevrimiçi korumanıza yardımcı olacak şekilde tasarlanmıştır. Kimlik koruması, orta düzeyde risk düzeyine sahip **anonım IP adreslerinden oturum açma**işlemleri olarak bir Tor tarayıcısından oturum açma işlemi algılar. Daha fazla bilgi için bkz. [Azure Active Directory risk olayları](../reports-monitoring/concept-risk-events.md).  
+- **Tor tarayıcısı** - [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) , gizliliğinizi çevrimiçi korumanıza yardımcı olacak şekilde tasarlanmıştır. Kimlik koruması, orta düzeyde risk düzeyine sahip **anonım IP adreslerinden oturum açma**işlemleri olarak bir Tor tarayıcısından oturum açma işlemi algılar. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
 - **Charon adlı bir test hesabı** -test hesabı oluşturmayı bilmiyorsanız, bkz. [Yeni Kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Oturum açma bilgilerinizi test etme 
@@ -48,11 +48,11 @@ Bu adımın amacı, test hesabınızın Tor tarayıcısını kullanarak kiracın
 
 ## <a name="create-your-conditional-access-policy"></a>Koşullu erişim ilkenizi oluşturma 
 
-Bu hızlı başlangıçtaki senaryo, **anonım IP adresleri** risk olayından algılanan bir oturum açma işlemleri oluşturmak Için Tor tarayıcısından bir oturum açma kullanır. Bu risk olayının risk düzeyi Orta. Bu risk olayına yanıt vermek için oturum açma riski koşulunu orta olarak ayarlarsınız. 
+Bu hızlı başlangıçtaki senaryo, **anonım IP adreslerinden** gelen bir oturum açma riskini tespit etmek Için bir Tor tarayıcısından oturum açma kullanır. Bu risk algılamada risk düzeyi Orta. Bu risk algılamasına yanıt vermek için oturum açma riski koşulunu orta olarak ayarlarsınız. 
 
 Bu bölümde, gerekli oturum açma riski koşullu erişim ilkesinin nasıl oluşturulacağı gösterilmektedir. İlkenizde şunları ayarlayın:
 
-|Ayar |Değer|
+|Ayar |Value|
 |---     | --- |
 | Kullanıcılar  | Alain Charon  |
 | Koşullar | Oturum açma riski, orta ve üstü |
@@ -81,7 +81,7 @@ Bu bölümde, gerekli oturum açma riski koşullu erişim ilkesinin nasıl oluş
 
 İlkenizi test etmek için, Tor tarayıcısı kullanılırken [Azure Portal](https://portal.azure.com) bir **alan** olarak oturum açmayı deneyin. Oturum açma denemeniz, koşullu erişim ilkeniz tarafından engellenmelidir.
 
-![Çok öğeli kimlik doğrulama](./media/quickstart-sign-in-risk-policy/203.png)
+![Multi-factor authentication](./media/quickstart-sign-in-risk-policy/203.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

@@ -3,16 +3,16 @@ title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848431"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146110"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure şemaları hizmetine genel bakış
 
@@ -106,21 +106,30 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 > [!NOTE]
 > Şema atamaları abonelikte oluşturulduğundan şema atama ve atamasını kaldırma izinlerinin abonelik kapsamında verilmesi veya abonelik kapsamında devralınması gerekir.
 
-Yukarıdaki tüm izinler **sahip** rolüne dahildir. **Katkıda** bulunan rolü, şema ve DELETE şema izinleri oluşturur, ancak şema atama izinlerine sahip değildir. Bu yerleşik roller güvenlik gereksinimlerinize uygun değilse [özel rol](../../role-based-access-control/custom-roles.md) oluşturabilirsiniz.
+Aşağıdaki yerleşik roller kullanılabilir:
+
+|RBAC rolü | Açıklama |
+|-|-|
+|[Sahip](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
+|[Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |
+|[Blueprint Katılımcısı](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Şema tanımlarını yönetebilir, ancak atamazsınız. |
+|[Blueprint Işleci](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Varolan yayımlanmış şemaları atayabilir, ancak yeni şema tanımları oluşturamaz. Blueprint ataması, yalnızca atama Kullanıcı tarafından atanan yönetilen kimlikle yapıldığında işe yarar. |
+
+Bu yerleşik roller güvenlik gereksinimlerinize uygun değilse [özel rol](../../role-based-access-control/custom-roles.md) oluşturabilirsiniz.
 
 > [!NOTE]
 > Sistem tarafından atanan yönetilen kimlik kullanılıyorsa, Azure şemaları için hizmet sorumlusu, dağıtımı etkinleştirmek için atanan abonelikte **sahip** rolünü gerektirir. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. Kullanıcı tarafından atanan yönetilen kimlik kullanılıyorsa, yalnızca şema atamasını oluşturan kullanıcının **sahip** izinlerine ihtiyacı vardır.
 
 ## <a name="naming-limits"></a>Adlandırma sınırları
 
-Aşağıda, belirli alanlar için mevcut kısıtlamaların bir listesi verilmiştir:
+Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
 |Object|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Blueprint|Ad|harfler, rakamlar, tireler ve noktalar|48|
+|Blueprint|Name|harfler, rakamlar, tireler ve noktalar|48|
 |Blueprint|Version|harfler, rakamlar, tireler ve noktalar|20|
-|Şema ataması|Ad|harfler, rakamlar, tireler ve noktalar|90|
-|Blueprint yapıtı|Ad|harfler, rakamlar, tireler ve noktalar|48|
+|Şema ataması|Name|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Name|harfler, rakamlar, tireler ve noktalar|48|
 
 ## <a name="video-overview"></a>Videoya genel bakış
 

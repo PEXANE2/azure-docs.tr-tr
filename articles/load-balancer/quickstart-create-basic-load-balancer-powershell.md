@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 58b36265a5e440dbf33a5d6fb85e791abbd006a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129070"
 ---
 # <a name="get-started"></a>Hızlı başlangıç Azure PowerShell kullanarak ortak yük dengeleyici oluşturma
 
@@ -129,7 +129,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 -BackendPort 3389
 ```
 
-### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
+### <a name="create-load-balancer"></a>Yük dengeleyici oluştur
 
 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile temel Load Balancer oluşturun. Aşağıdaki örnek, önceki adımlarda oluşturduğunuz ön uç IP yapılandırmasını, arka uç havuzunu, sistem durumu araştırmasını, yük dengeleme kuralını ve NAT kurallarını kullanarak myLoadBalancer adlı genel bir Temel Yük Dengeleyici oluşturur:
 
@@ -168,7 +168,7 @@ $vnet = New-AzVirtualNetwork `
   -Subnet $subnetConfig
 ```
 
-### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
+### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluştur
 
 Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu oluşturun.
 
@@ -268,7 +268,7 @@ VM’ler için [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Artık [New-AzVM](/powershell/module/az.compute/new-azvm)Ile VM 'leri oluşturabilirsiniz. Aşağıdaki örnekte, zaten mevcut değilse iki VM ve gerekli sanal ağ bileşenleri oluşturulur. Bu örnekte, önceki adımda oluşturulan NIC 'ler (*VM1* ve *VM2*), aynı adlara *sahip olduğundan ve* aynı sanal ağa  (*myvnet*) atandıklarından ve alt ağ (*Mysubnet*). Ayrıca, NIC 'Ler yük dengeleyicinin arka uç havuzuyla ilişkilendirildiğinden, sanal makineler otomatik olarak arka uç havuzuna eklenir.
+Artık [New-AzVM](/powershell/module/az.compute/new-azvm)Ile VM 'leri oluşturabilirsiniz. Aşağıdaki örnekte, zaten mevcut değilse iki VM ve gerekli sanal ağ bileşenleri oluşturulur. Bu örnekte, önceki adımda oluşturulan NIC 'ler (*VM1* ve *VM2*), aynı adlara sahip olduğundan ve aynı sanal ağa (*myvnet*) atandıklarından ve alt ağ (*Mysubnet*). Ayrıca, NIC 'Ler yük dengeleyicinin arka uç havuzuyla ilişkilendirildiğinden, sanal makineler otomatik olarak arka uç havuzuna eklenir.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -295,40 +295,37 @@ Her iki arka uç VM’ye de aşağıdaki gibi bir özel web sayfası ile IIS yü
 
 1. Yük Dengeleyicinin Genel IP adresini alın. `Get-AzPublicIPAddress` kullanarak, Yük Dengeleyicinin Genel IP adresini alın.
 
-   ```azurepowershell-interactive
-    Get-AzPublicIPAddress `
-    -ResourceGroupName "myResourceGroupLB" `
-    -Name "myPublicIP" | select IpAddress
-   ```
-2. Önceki adımda elde ettiğiniz Genel IP adresini kullanarak VM1 ile bir uzak masaüstü bağlantısı oluşturun. 
+    ```azurepowershell-interactive
+    Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
+    ```
 
-   ```azurepowershell-interactive
+2. **Yerel makinenizde, bu adım için bir komut istemi veya PowerShell penceresi açın**.  Önceki adımda elde ettiğiniz Genel IP adresini kullanarak VM1 ile bir uzak masaüstü bağlantısı oluşturun. 
 
-      mstsc /v:PublicIpAddress:4221  
-  
-   ```
+    ```azurepowershell-interactive
+    mstsc /v:PublicIpAddress:4221  
+    ```
+
 3. RDP oturumunu başlatmak için *VM1* kimlik bilgilerini girin.
 4. VM1’de Windows PowerShell’i başlatın ve IIS sunucusunu yükleyip varsayılan htm dosyasını güncelleştirmek için aşağıdaki komutları kullanın.
+
     ```azurepowershell-interactive
-    # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
-    
-    #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+        # Install IIS
+          Install-WindowsFeature -name Web-Server -IncludeManagementTools
+        
+        # Remove default htm file
+          remove-item  C:\inetpub\wwwroot\iisstart.htm
+        
+        # Add custom htm file
+          Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
 5. *myVM1* ile RDP bağlantısını kapatın.
-6. `mstsc /v:PublicIpAddress:4222` komutunu çalıştırarak *myVM2* ile bir RDP bağlantısı oluşturun ve *VM2* için adım 4’ü yineleyin.
+6. Komut çalıştırarak`mstsc /v:PublicIpAddress:4222` myVM2 ile **Yerel makinenizde bir RDP bağlantısı oluşturun** ve *VM2*için 4. adımı yineleyin.
 
 ## <a name="test-load-balancer"></a>Yük dengeleyiciyi test etme
 [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)ile yük dengeleyicinizin genel IP adresini alın. Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
 
 ```azurepowershell-interactive
-Get-AzPublicIPAddress `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Name "myPublicIP" | select IpAddress
+Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
 ```
 
 Sonra da genel IP adresini bir web tarayıcısına girebilirsiniz. Aşağıdaki örnekteki gibi yük dengeleyicinin trafiği dağıttığı VM’nin ana bilgisayar adının dahil olduğu web sitesi görüntülenir:

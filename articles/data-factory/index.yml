@@ -5,8 +5,8 @@ metadata:
   title: 'Azure Data Factory Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
   description: Data Factory hizmetini kullanarak analiz için şirket içinden ve buluttan ya da ters yönde veri aktarmaya yönelik otomatik veri işlem hatları ayarlama hakkında bilgi edinin.
   services: data-factory
-  author: sharonlo101
-  ms.author: shlo
+  author: djpmsft
+  ms.author: daperlov
   manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na

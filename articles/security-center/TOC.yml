@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: Güvenlik açığı değerlendirmesi yüklü değil
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Ağ Güvenlik Gruplarını Etkinleştirme
-          href: security-center-enable-network-security-groups.md
         - name: Tehdit raporları
           href: security-center-threat-report.md
         - name: Özel uyarılar
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Logic Apps playbook’ları
           href: security-center-playbooks.md
-        - name: Etkinlikleri görüntüleme
-          href: security-center-events-dashboard.md
         - name: Arama
           href: security-center-search.md
         - name: Planlama ve işlemler

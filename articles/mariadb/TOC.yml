@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Sunucu yönetme
+      items:
+        - name: Azure portal
+          href: howto-create-manage-server-portal.md
     - name: Güvenlik duvarı kuralları
       items:
         - name: Azure portal
@@ -123,6 +127,8 @@
       items:
         - name: Azure portal
           href: howto-auto-grow-storage-portal.md
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
     - name: Sunucu günlüklerine erişme
       items:
         - name: Yavaş sorgu günlükleri

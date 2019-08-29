@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335397"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125668"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Kimlik Koruması nedir?
 
@@ -45,10 +45,10 @@ Azure Active Directory Kimlik Koruması, bir izleme ve raporlama aracından daha
 - Oturum açma risk düzeylerini hesaplama
 - Kullanıcı risk düzeylerini hesaplama
 
-**Risk olaylarını araştırma:**
+**Risk algılamalarını araştırma:**
 
-- Risk olayları için bildirimler gönderme
-- İlgili ve bağlamsal bilgileri kullanarak Risk olaylarını araştırma
+- Risk algılamaları için bildirimler gönderme
+- İlgili ve bağlamsal bilgileri kullanarak risk algılamalarını araştırma
 - Araştırmalar izlemek için temel iş akışları sağlama
 - Parola sıfırlama gibi Düzeltme eylemlerine kolay erişim sağlama
 
@@ -76,10 +76,10 @@ Daha ayrıntılı bilgi için bkz. [Azure Active Directory yönetici rolleri ata
 
 Yapılandırmanızı analiz Azure Active Directory Kimlik Koruması ve Kullanıcı kimliklerinizde etki verebilen güvenlik açıklarını algılar. Daha ayrıntılı bilgi için bkz. [Azure Active Directory kimlik koruması algılanan güvenlik açıkları](vulnerabilities.md).
 
-### <a name="risk-events"></a>Risk olayları
+### <a name="risk-detections"></a>Risk algılamaları
 
-Azure Active Directory, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Sistem algılanan her şüpheli eylem için bir kayıt oluşturur. Bu kayıtlar, risk olayları olarak da bilinir.  
-Daha ayrıntılı bilgi için bkz. [Azure Active Directory risk olayları](../active-directory-identity-protection-risk-events.md).
+Azure Active Directory, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Sistem algılanan her şüpheli eylem için bir kayıt oluşturur. Bu kayıtlar risk algılamaları olarak da bilinir.  
+Daha fazla ayrıntı için bkz. [risk algılamalarını Azure Active Directory](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Araştırma
 
@@ -89,10 +89,10 @@ Kimlik koruması ile ilgili yolculukta, genellikle kimlik koruma panosu ile baş
 
 Pano şunlara erişmenizi sağlar:
 
-- Risk, **risk olayları** ve **güvenlik açıkları** olarak **işaretlenen kullanıcılar**gibi raporlar
+- **Risk için Işaretlenmiş kullanıcılar**, **risk algılamaları** ve **güvenlik açıkları** gibi raporlar
 - **Güvenlik Ilkelerinizin**, **bildirimlerin** ve **Multi-Factor Authentication kaydının** yapılandırması gibi ayarlar
 
-Genellikle düzeltme veya azaltma adımlarının gerekli olup olmadığına ve kimliğin nasıl olduğunu belirlemek amacıyla bir risk olayından ilgili etkinlikleri, günlükleri ve diğer ilgili bilgileri gözden geçirme işlemi olan araştırma için başlangıç noktasıdır. güvenliği aşılmış ve riskli kimliğin nasıl kullanıldığını anlayın.
+Genellikle düzeltme veya azaltma adımlarının gerekli olup olmadığına ve kimliğin nasıl olduğunu belirlemek için, risk algılamasıyla ilgili etkinlikleri, günlükleri ve diğer ilgili bilgileri gözden geçirme süreciniz olan araştırma için başlangıç noktasıdır. güvenliği aşılmış ve riskli kimliğin nasıl kullanıldığını anlayın.
 
 Araştırma etkinliklerinizi e-posta başına gönderilen Azure Active Directory [bildirimlerine](notifications.md) bağlayabilirsiniz.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717532"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614152"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlayın
 
@@ -90,7 +90,7 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Coğrafi çoğaltma ve çoklu yönetici ile faturalandırma örnekleri  
 
-Dünyanın herhangi bir yerindeki Azure bölgelerini dilediğiniz zaman Azure Cosmos DB veritabanı hesabınıza ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos DB veritabanları ve kapsayıcılar için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise toplam tek bir yazma bölgesiyle yapılandırılan (a) Azure Cosmos veritabanı hesabınız için sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazma işlemi yapabilen tüm bölgeler T x 'e eşit (N + 1) RU/sn 'ye eşittir anı. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok yöneticili yapılandırma) maliyetleriyle sağlanan aktarım hızı, 100 RU/sn başına (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
+Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise toplam tek bir yazma bölgesiyle yapılandırılan (a) Azure Cosmos veritabanı hesabınız için sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazma işlemi yapabilen tüm bölgeler T x 'e eşit (N + 1) RU/sn 'ye eşittir anı. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok yöneticili yapılandırma) maliyetleriyle sağlanan aktarım hızı, 100 RU/sn başına (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Faturalandırma örneği: çok bölgeli Azure Cosmos hesabı, tek bölgede yazma işlemleri
 
@@ -216,7 +216,7 @@ Daha sonra faturanızı ayın sonundan önce önceden tahmin etmek istediğiniz 
 |----|----|----|----|
 |İşlem Türü| İstek/sn| Ort. RU/istek| RUs gerekli|
 |Yazma| 100 | 5 | 500|
-|Okuma| 400| 1| 400|
+|Okuma| 400| 1\.| 400|
 
 Toplam RU/sn: 500 + 400 = 900 saatlik maliyet: 900/100 * $0,008 = $0,072 verimlilik için aylık maliyet bekleniyor (31 gün varsayılıyor): $0,072 * 24 * 31 = $53,57
 
@@ -228,7 +228,7 @@ Aylık toplam maliyet = depolama için aylık maliyet ve toplam verimlilik için
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB ayrılmış kapasite ile faturalama
 
-Azure Cosmos DB ayrılmış kapasite, tüm Azure bölgelerindeki tüm Azure Cosmos DB veritabanlarına ve kapsayıcılara (herhangi bir API veya veri modeli için) uygulanabilen, sağlanan aktarım hızını önceden (bir ayrılmış kapasite veya bir ayırma) satın almanıza olanak sağlar. Sağlanan aktarım hızı fiyatı bölge başına değiştiğinden, ayrılmış kapasiteyi indirimle satın aldığınız Parasal kredi olarak düşünmenize yardımcı olur. Bu, her bölgedeki ilgili fiyata sağlanan aktarım hızı için üzerinden çizilebilirler. Örneğin, 50-K RU/sn ile sağlanan tek bir kapsayıcıya sahip bir Azure Cosmos hesabınız olduğunu ve küresel olarak çoğaltılan iki bölgeyi Doğu ABD ve Japonya Doğu. Kullandıkça Öde seçeneğini belirlerseniz, ödeme yaparsınız:  
+Azure Cosmos DB ayrılmış kapasite, tüm Azure bölgelerindeki tüm Azure Cosmos veritabanlarına ve kapsayıcılara (API veya veri modeli için) uygulanabilen, sağlanan aktarım hızını önceden (bir ayrılmış kapasite veya bir ayırma) satın almanıza olanak sağlar. Sağlanan aktarım hızı fiyatı bölge başına değiştiğinden, ayrılmış kapasiteyi indirimle satın aldığınız Parasal kredi olarak düşünmenize yardımcı olur. Bu, her bölgedeki ilgili fiyata sağlanan aktarım hızı için üzerinden çizilebilirler. Örneğin, 50-K RU/sn ile sağlanan tek bir kapsayıcıya sahip bir Azure Cosmos hesabınız olduğunu ve küresel olarak çoğaltılan iki bölgeyi Doğu ABD ve Japonya Doğu. Kullandıkça Öde seçeneğini belirlerseniz, ödeme yaparsınız:  
 
 * Doğu ABD: 50-K RU/sn için, bu bölgedeki her 100 RU/sn hızında $0,008 
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a2420f98bb07686b548dc6641df77dd0fdf7028b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562801"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128042"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı Başlangıç: Python API 'SI ile ilk Batch işinizi çalıştırma
 
@@ -47,7 +47,7 @@ GitHub’dan [örnek uygulamayı indirin veya kopyalayın](https://github.com/Az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-`python_quickstart_client.py` Python betiğini içeren dizine gidin.
+Python betiğini `python_quickstart_client.py`içeren dizine gidin.
 
 Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 
@@ -230,7 +230,7 @@ for task in tasks:
 
 Uygulama kendi oluşturduğu depolama kapsayıcısını otomatik olarak siler ve Batch havuzu ve işini silme seçeneğini sunar. Zamanlanmış bir iş olmasa bile, düğümler çalışırken havuz için sizden ücret alınır. Havuz artık gerekli değilse silin. Havuzu sildiğinizde düğümler üzerindeki tüm görev çıkışları silinir. 
 
-Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse silin. Azure portalında bu işlemi yapmak için Batch hesabına ait kaynak grubunu seçin ve **Kaynak Grubunu Sil**’e tıklayın.
+Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse silin. Azure portal için, Batch hesabının kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

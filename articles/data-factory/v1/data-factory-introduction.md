@@ -1,27 +1,26 @@
 ---
 title: Bir veri tümleştirme hizmeti olan Data Factory’ye giriş | Microsoft Belgeleri
-description: 'Azure Data Factory nedir öğrenin: Taşımayı ve dönüştürmeyi düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmetidir.'
+description: 'Azure Data Factory ne olduğunu öğrenin: Veri taşıma ve dönüştürme işlemlerini düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmeti.'
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: aed073e7d65f193c4123106ba1ae3f4f442965e1
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836307"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139517"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
-> [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-introduction.md)
 > * [Sürüm 2 (geçerli sürüm)](../introduction.md)
 
@@ -119,7 +118,7 @@ Bağlı hizmetler Data Factory'de iki nedenle kullanılır:
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory varlıkları arasındaki ilişki
 
-![Diyagram: Veri fabrikası, bir bulut veri tümleştirme hizmeti - temel kavramlar](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Çizimindeki Bulut veri tümleştirme hizmeti Data Factory, temel kavramlar](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 Şu anda Batı ABD, Doğu ABD ve Kuzey Avrupa bölgelerinde veri fabrikaları oluşturabilirsiniz. Ancak, verileri veri depoları arasında taşımak ve işlem hizmetlerini kullanarak verileri işlemek amacıyla veri fabrikası başka Azure bölgelerindeki veri depolarına ve işlem hizmetlerine erişebilir.

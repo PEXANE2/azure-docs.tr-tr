@@ -259,6 +259,8 @@
               href: sql-data-warehouse-install-visual-studio.md
             - name: Kaynak denetimi tümleştirmesi
               href: sql-data-warehouse-source-control-integration.md
+            - name: Sürekli tümleştirme ve dağıtım
+              href: sql-data-warehouse-continuous-integration-and-deployment.md
         - name: Bağlanma ve sorgulama
           items:
             - name: Visual Studio SSDT

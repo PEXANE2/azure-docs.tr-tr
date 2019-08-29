@@ -8,23 +8,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156960"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140980"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak bir Azure veri fabrikası oluşturma
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak Azure Veri Fabrikası oluşturma
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-resource-manager-template.md)
 
-Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure veri fabrikasını nasıl oluşturacağınız ve izleyeceğiniz açıklanmaktadır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Hakkında bir öğretici için **dönüştürme** Azure Data Factory kullanarak verileri görmek [Öğreticisi: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
+Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure veri fabrikasını nasıl oluşturacağınız ve izleyeceğiniz açıklanmaktadır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz [. Öğretici: Spark](transform-data-using-spark.md)kullanarak verileri dönüştürme.
 
 > [!NOTE]
 > Bu makale, Data Factory hizmetine ayrıntılı giriş bilgileri sağlamaz. Azure Data Factory hizmetine giriş bilgileri için bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -43,7 +43,7 @@ Azure Resource Manager şablonları hakkında genel bir bilgi almak için bkz. [
 
 Aşağıdaki bölümde, öğreticiyi hızlıca geçip şablonu test etmeniz için Data Factory varlıklarını tanımlamaya yönelik tam bir Resource Manager şablonu verilmektedir. Her bir Data Factory varlığının nasıl tanımlandığını anlamak için [Şablondaki Data Factory varlıkları](#data-factory-entities-in-the-template) bölümüne bakın.
 
-Data Factory kaynaklarını bir şablonda özelliklerini ve JSON söz dizimi hakkında bilgi edinmek için bkz. [Microsoft.DataFactory kaynak türleri](/azure/templates/microsoft.datafactory/allversions).
+Bir şablondaki Data Factory kaynakların JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. DataFactory kaynak türleri](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>Data Factory JSON
 
@@ -369,9 +369,9 @@ DeploymentDebugLogLevel :
 - Kopyalama etkinliği içeren işlem hattı
 - İşlem hattını tetikleyen tetikleyici
 
-Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyici başlatmanın yollarından biri kullanılacak **başlangıç AzDataFactoryV2Trigger** PowerShell cmdlet'i. Aşağıdaki yordamda ayrıntılı adımlar verilmektedir:
+Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yöntemlerinden biri **Start-AzDataFactoryV2Trigger** PowerShell cmdlet 'ini kullanmaktır. Aşağıdaki yordamda ayrıntılı adımlar verilmektedir:
 
-1. PowerShell penceresinde kaynak grubunun adını tutacak bir değişken oluşturun. Aşağıdaki komutu PowerShell penceresine kopyalayıp ENTER tuşuna basın. Bir yeni AzResourceGroupDeployment komutu için farklı bir kaynak grubu adı belirttiyseniz değeri burada güncelleştirin.
+1. PowerShell penceresinde kaynak grubunun adını tutacak bir değişken oluşturun. Aşağıdaki komutu PowerShell penceresine kopyalayıp ENTER tuşuna basın. New-AzResourceGroupDeployment komutu için farklı bir kaynak grubu adı belirttiyseniz, değeri burada güncelleştirin.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -403,7 +403,7 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyici başlatmanın yol
     ```
     
     Tetikleyicinin çalışma zamanı durumunun **Durduruldu** olduğuna dikkat edin.
-5. **Tetikleyiciyi başlatın**. Tetikleyici, şablonda tanımlanan işlem hattını belirtilen saatte çalıştırır. Diğer bir deyişle, bu komutu öğleden sonra 2:25’te yürüttüyseniz, tetikleyici işlem hattını ilk kez öğleden sonra 3’te çalıştırır. Ardından, saatlik belirttiğiniz bitiş zamanı tetikleyicisinin kadar işlem hattını çalışır.
+5. **Tetikleyiciyi başlatın**. Tetikleyici, şablonda tanımlanan işlem hattını belirtilen saatte çalıştırır. Diğer bir deyişle, bu komutu öğleden sonra 2:25’te yürüttüyseniz, tetikleyici işlem hattını ilk kez öğleden sonra 3’te çalıştırır. Sonra, işlem hattını tetikleyici için belirlediğiniz bitiş zamanına kadar saatlik olarak çalıştırır.
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -417,7 +417,7 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyici başlatmanın yol
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Get-AzDataFactoryV2Trigger komutunu tekrar çalıştırarak tetikleyicinin başlatıldığını onaylayın.
+6. Tetikleyiciyi, Get-AzDataFactoryV2Trigger komutunu yeniden çalıştırarak başlatıldığını onaylayın.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -452,13 +452,13 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyici başlatmanın yol
     ![İşlem hattı çalıştırmasını izleme](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
 
     > [!IMPORTANT]
-    > İşlem hattı çalıştırmaları yalnızca saat başı çalıştığını görürsünüz (örneğin: 4'te, 5'te, 6 AM, vs.). Zaman sonraki saate ulaştığında listeyi yenilemek için araç çubuğunda **Yenile**’ye tıklayın.
+    > İşlem hattı çalıştırmalarını yalnızca saat saatinde görürsünüz (örneğin: 4, 5, 10:00, vb.). Zaman sonraki saate ulaştığında listeyi yenilemek için araç çubuğunda **Yenile**’ye tıklayın.
 
 5. **Eylemler** sütunundaki bağlantıya tıklayın.
 
     ![İşlem hattı eylemleri bağlantısı](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görürsünüz. Bu hızlı başlangıçta, işlem hattı yalnızca bir etkinlik türü içerir: Kopyalayın. Bu nedenle, bu etkinliğe ait bir çalıştırma görürsünüz.
+6. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görürsünüz. Bu hızlı başlangıçta, işlem hattının türünde yalnızca bir etkinliği vardır: Kopya. Bu nedenle, bu etkinliğe ait bir çalıştırma görürsünüz.
 
     ![Etkinlik çalıştırmaları](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. **Çıktı** sütunu altındaki bağlantıya tıklayın. Kopyalama işleminin çıktısını bir **Çıktı** penceresinde görürsünüz. Tam çıktıyı görmek için ekranı kapla düğmesine tıklayın. Ekranı kaplayan çıktı penceresini veya çıktıyı kapatabilirsiniz.
@@ -507,7 +507,7 @@ AzureStorageLinkedService, Azure depolama hesabınızı veri fabrikasına bağla
 }
 ```
 
-ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullanır. Bu parametrelerin değerleri bir yapılandırma dosyası kullanılarak geçirilir. Tanım ayrıca şu değişkenleri kullanır: şablonda tanımlanan azureStorageLinkedService ve dataFactoryName.
+ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullanır. Bu parametrelerin değerleri bir yapılandırma dosyası kullanılarak geçirilir. Tanım ayrıca şablonda tanımlanan değişkenleri kullanır: azureStorageLinkedService ve dataFactoryName.
 
 #### <a name="azure-blob-input-dataset"></a>Azure blob girdi veri kümesi
 
@@ -605,7 +605,7 @@ Verileri bir Azure blob veri kümesinden başka bir Azure blob veri kümesine ko
 
 #### <a name="trigger"></a>Tetikleyici
 
-İşlem hattını saatte bir kez çalıştıran bir tetikleyici tanımlayın. Dağıtılan tetikleyici durdurulmuş durumdadır. Kullanarak tetikleyiciyi başlatın **başlangıç AzDataFactoryV2Trigger** cmdlet'i. Tetikleyiciler hakkında daha fazla bilgi için [İşlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md#triggers) makalesine bakın.
+İşlem hattını saatte bir kez çalıştıran bir tetikleyici tanımlayın. Dağıtılan tetikleyici durdurulmuş durumdadır. **Start-AzDataFactoryV2Trigger** cmdlet 'ini kullanarak tetikleyiciyi başlatın. Tetikleyiciler hakkında daha fazla bilgi için [İşlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md#triggers) makalesine bakın.
 
 ```json
 {

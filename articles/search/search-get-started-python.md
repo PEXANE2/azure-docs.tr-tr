@@ -1,7 +1,7 @@
 ---
 title: "Python hızlı başlangıç: REST API 'Leri kullanarak dizin oluşturma, yükleme ve sorgulama-Azure Search"
 description: Python, jupi Notebook ve Azure Search REST API kullanarak dizin oluşturma, verileri yükleme ve sorguları çalıştırma işlemlerinin nasıl yapılacağını açıklar.
-ms.date: 07/11/2019
+ms.date: 08/28/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 352d26a1f3e781f7dbb6e502caea44bdb45b398a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656801"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129397"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Hızlı Başlangıç: Jupyıter not defterlerini kullanarak Python 'da Azure Search dizin oluşturma
 > [!div class="op_single_selector"]
@@ -71,6 +71,8 @@ Bu görevde, bir Jupyter Not defteri başlatın ve Azure Search bağlanabildiği
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
+
+   ConnectionError `"Failed to establish a new connection"`alırsanız, API anahtarının bir birincil veya ikincil yönetici anahtarı olduğunu ve tüm baştaki ve sondaki karakterlerin (`?` ve `/`) hazır olduğunu doğrulayın.
 
 1. Üçüncü hücrede, isteği formüle yazın. Bu GET isteği, arama hizmetinizin dizinler koleksiyonunu hedefler ve mevcut dizinlerin ad özelliğini seçer.
 
