@@ -61,7 +61,7 @@ Aşağıdaki JSON kod parçacığında, bir Azure Machine Learning Batch Executi
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | İşlem hattındaki etkinliğin adı     | Evet      |
 | description                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| türü                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türdür **AzureMLUpdateResource**. | Evet      |
+| type                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türdür **AzureMLUpdateResource**. | Evet      |
 | linkedServiceName             | Azure Machine Learning bağlı updateResourceEndpoint özelliği içeren hizmeti. | Evet      |
 | trainedModelName              | İçinde Web hizmeti denemesinde güncelleştirilecek olan eğitilen Model modülünün adını | Evet      |
 | trainedModelLinkedServiceName | Güncelleştirme işlemi tarafından karşıya yüklenen olan ilearner dosyasını barındıran Azure depolama bağlı hizmetin adı | Evet      |
