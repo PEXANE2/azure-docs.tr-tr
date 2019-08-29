@@ -56,8 +56,8 @@ Hizmet sorumlusu kimlik doğrulaması, aşağıdaki özellikleri belirterek kull
 | Özellik                | Açıklama                              | Gerekli |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Uygulamanın istemci kimliği belirtin.     | Evet      |
-| **serviceprincipalkey değerleri** | Uygulama anahtarını belirtin.           | Evet      |
-| **Kiracı**              | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Azure portalının sağ üst köşedeki fare getirerek geri alabilirsiniz. | Evet      |
+| **serviceprincipalkey** | Uygulama anahtarını belirtin.           | Evet      |
+| **tenant**              | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Azure portalının sağ üst köşedeki fare getirerek geri alabilirsiniz. | Evet      |
 
 **Örnek: Hizmet sorumlusu kimlik doğrulaması**
 ```json
@@ -121,15 +121,15 @@ Aşağıdaki tabloda, adları ve açıklamaları bu etkinliğe özgü olan özel
 | :------------------ | :--------------------------------------- | :------- |
 | name                | İşlem hattındaki etkinliğin adı     | Evet      |
 | description         | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| türü                | Data Lake Analytics U-SQL etkinliği için etkinlik türdür **DataLakeAnalyticsU SQL**. | Evet      |
+| type                | Data Lake Analytics U-SQL etkinliği için etkinlik türdür **DataLakeAnalyticsU SQL**. | Evet      |
 | linkedServiceName   | Azure Data Lake analytics'e bağlı hizmeti. Bu bağlı hizmeti hakkında bilgi edinmek için [işlem bağlı Hizmetleri](compute-linked-services.md) makalesi.  |Evet       |
-| ScriptPath          | U-SQL komut dosyasını içeren klasörün yolu. Dosyanın adı büyük/küçük harfe duyarlıdır. | Evet      |
+| scriptPath          | U-SQL komut dosyasını içeren klasörün yolu. Dosyanın adı büyük/küçük harfe duyarlıdır. | Evet      |
 | scriptLinkedService | Bağlı bağlantı hizmeti **Azure Data Lake Store** veya **Azure depolama** data factory'ye betiği içeren | Evet      |
 | degreeOfParallelism | Aynı anda işi çalıştırmak için kullanılan düğümlerin sayısı. | Hayır       |
-| öncelik            | Sıraya alınan tüm önce çalıştırılması gerektiğini belirler. Alt sayısı, öncelik o kadar yüksektir. | Hayır       |
-| parametreler          | U-SQL betiğe geçirilecek parametreler.    | Hayır       |
+| priority            | Sıraya alınan tüm önce çalıştırılması gerektiğini belirler. Alt sayısı, öncelik o kadar yüksektir. | Hayır       |
+| parameters          | U-SQL betiğe geçirilecek parametreler.    | Hayır       |
 | runtimeVersion      | Çalışma zamanı sürümünü kullanmak için U-SQL altyapısı. | Hayır       |
-| CompilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır: **Anlam:** Yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirmek **tam:** Sözdizimi denetimi, en iyi duruma getirme, kod oluşturma, vb. dahil olmak üzere tam derleme gerçekleştirmek **SingleBox:** TargetType ayarıyla SingleBox tam derleme gerçekleştirin. Bu özellik için bir değer belirtmezseniz, sunucunun en iyi derleme modu belirler. | Hayır |
+| compilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır: **Anlam:** Yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirmek **tam:** Sözdizimi denetimi, en iyi duruma getirme, kod oluşturma, vb. dahil olmak üzere tam derleme gerçekleştirmek **SingleBox:** TargetType ayarıyla SingleBox tam derleme gerçekleştirin. Bu özellik için bir değer belirtmezseniz, sunucunun en iyi derleme modu belirler. | Hayır |
 
 Bkz: [SearchLogProcessing.txt](#sample-u-sql-script) betik tanımı. 
 
