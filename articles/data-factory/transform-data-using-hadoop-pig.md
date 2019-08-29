@@ -60,10 +60,10 @@ Azure Data Factory kullanmaya yeni başladıysanız, okumak [Azure Data Factory'
 | ------------------- | ---------------------------------------- | -------- |
 | name                | Etkinliğin adı                     | Evet      |
 | description         | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| türü                | Hive etkinliği için etkinlik türü HDinsightPig olduğu. | Evet      |
+| type                | Hive etkinliği için etkinlik türü HDinsightPig olduğu. | Evet      |
 | linkedServiceName   | Data Factory öğesinde bağlantılı hizmet olarak HDInsight kümesine başvuru kayıtlı. Bu bağlı hizmeti hakkında bilgi edinmek için [işlem bağlı Hizmetleri](compute-linked-services.md) makalesi. | Evet      |
 | scriptLinkedService | Bir Azure depolama bağlı hizmeti başvuru yürütülecek Pig betiği depolamak için kullanılır. Bu bağlı hizmeti belirtmezseniz, Azure depolama bağlı HDInsight bağlı hizmette tanımlanan hizmeti kullanılır. | Hayır       |
-| ScriptPath          | ScriptLinkedService tarafından başvurulan Azure storage'da depolanan betik dosyasının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
+| scriptPath          | ScriptLinkedService tarafından başvurulan Azure storage'da depolanan betik dosyasının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
 | getDebugInfo        | Günlük dosyaları Azure depolama için ne zaman kopyalanır belirtir HDInsight küme tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen. İzin verilen değerler: None, her zaman veya hata. Varsayılan değer: Yok. | Hayır       |
 | arguments           | Hadoop işi için bağımsız değişkenleri dizisini belirtir. Bağımsız değişkenleri, her görev için komut satırı bağımsız değişkenleri geçirilir. | Hayır       |
 | defines             | Parametreler, Pig betiği içinde başvurmak için anahtar/değer çiftleri belirtin. | Hayır       |
