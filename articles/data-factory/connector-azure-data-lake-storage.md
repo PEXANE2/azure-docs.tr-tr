@@ -216,7 +216,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| türü       | Veri kümesinde `location` bulunan tür özelliğinin **AzureBlobFSLocation**olarak ayarlanması gerekir. | Evet      |
+| type       | Veri kümesinde `location` bulunan tür özelliğinin **AzureBlobFSLocation**olarak ayarlanması gerekir. | Evet      |
 | fileSystem | Data Lake Storage 2. dosya sistemi adı.                              | Hayır       |
 | folderPath | Verilen dosya sistemi altındaki bir klasörün yolu. Klasörleri filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları 'nda belirtin. | Hayır       |
 | fileName   | Verilen fileSystem + folderPath altındaki dosya adı. Dosyaları filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları 'nda belirtin. | Hayır       |
