@@ -44,7 +44,7 @@ Google AdWords bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **GoogleAdWords** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **GoogleAdWords** | Evet |
 | clientCustomerID | Rapor verileri getirmek istediğiniz AdWords hesabını istemci müşteri kimliği.  | Evet |
 | developerToken | Geliştirici belirteç AdWords API'ye erişim için kullandığınız yönetici hesabı ile ilişkili.  Bu alanı, ADF 'de güvenli bir şekilde depolamak veya Azure Key Vault parolayı depolamak için bir SecureString olarak işaretlemeyi seçebilir ve veri kopyalama işlemini gerçekleştirirken ADF kopyalama etkinliği çekmeye izin verebilir. [Key Vault mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
 | authenticationType | Kimlik doğrulaması için kullanılan OAuth 2.0 kimlik doğrulama mekanizması. ServiceAuthentication yalnızca şirket içinde barındırılan IR üzerinde kullanılabilir <br/>İzin verilen değerler şunlardır: **Serviceauthentication**, **userauthentication** | Evet |
