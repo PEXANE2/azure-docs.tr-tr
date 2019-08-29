@@ -69,7 +69,7 @@ Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Etkinliğin adı                     | Evet      |
 | description               | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| türü                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Evet      |
+| type                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Evet      |
 | linkedServiceName         | **Azure SQL veritabanı** veya **Azure SQL veri ambarı** 'na veya Data Factory bağlı hizmet olarak kaydedilmiş **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
 | storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Evet      |
 | storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. Parametre `"param1": { "value": "param1Value","type":"param1Type" }` değerlerini ve veri kaynağı tarafından desteklenen türlerini geçirmek için kullanın. Bir parametre için null değer geçirmeniz gerekiyorsa, (tüm `"param1": { "value": null }` küçük harf) seçeneğini kullanın. | Hayır       |
