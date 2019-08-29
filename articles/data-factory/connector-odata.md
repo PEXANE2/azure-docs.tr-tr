@@ -52,7 +52,7 @@ OData bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | **Type** özelliği **OData**olarak ayarlanmalıdır. |Evet |
+| type | **Type** özelliği **OData**olarak ayarlanmalıdır. |Evet |
 | url | OData hizmetinin kök URL 'SI. |Evet |
 | authenticationType | OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Windows**, **Aadserviceprincipal**ve **managedserviceıdentity**. Kullanıcı tabanlı OAuth desteklenmez. | Evet |
 | userName | Belirtin **userName** temel veya Windows kimlik doğrulamasını kullanır. | Hayır |
