@@ -56,7 +56,7 @@ Dynamics AX bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | **Type** özelliği **DynamicsAx**olarak ayarlanmalıdır. |Evet |
+| type | **Type** özelliği **DynamicsAx**olarak ayarlanmalıdır. |Evet |
 | url | Dynamics AX (veya Dynamics 365 finans ve Operations) örneği OData uç noktası. |Evet |
 | servicePrincipalId | Uygulamanın istemci kimliği belirtin. | Evet |
 | servicePrincipalKey | Uygulama anahtarını belirtin. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
