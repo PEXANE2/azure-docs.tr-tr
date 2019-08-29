@@ -64,7 +64,7 @@ Bkz: [Pig](transform-data-using-hadoop-pig.md) ve [Hive](transform-data-using-ha
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Etkinliğin adı                     | Evet      |
 | description       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| türü              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce olduğu. | Evet      |
+| type              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce olduğu. | Evet      |
 | linkedServiceName | Data Factory öğesinde bağlantılı hizmet olarak HDInsight kümesine başvuru kayıtlı. Bu bağlı hizmeti hakkında bilgi edinmek için [işlem bağlı Hizmetleri](compute-linked-services.md) makalesi. | Evet      |
 | className         | Yürütülecek sınıfı adı         | Evet      |
 | jarLinkedService  | Bir Azure depolama bağlı hizmeti başvuru Jar dosyalarını depolamak için kullanılır. Bu bağlı hizmeti belirtmezseniz, Azure depolama bağlı HDInsight bağlı hizmette tanımlanan hizmeti kullanılır. | Hayır       |
