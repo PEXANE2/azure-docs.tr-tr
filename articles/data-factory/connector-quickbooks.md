@@ -46,7 +46,7 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **QuickBooks** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **QuickBooks** | Evet |
 | endpoint | QuickBooks Online sunucu uç noktası. (diğer bir deyişle, quickbooks.api.intuit.com)  | Evet |
 | companyId | Yetkilendirmek için QuickBooks şirket şirket kimliği. Şirket kodu bulma hakkında daha fazla bilgi için bkz. [şirket Kimliğimi nasıl bulabilirim?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Evet |
 | consumerKey | OAuth 1.0 kimlik doğrulaması için tüketici anahtarı. | Evet |
