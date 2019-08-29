@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Veri Bilimi Sanal Makinesi Belgeleri
+title: Azure Veri Bilimi Sanal Makinesi belgeleri
 metadata:
-  title: Veri Bilimi Sanal Makineleriyle İlgili Belgeler - Azure
-  description: Azure bulutunda veri bilimi için oluşturulmuş deneysel bir ortam olan Veri Bilimi Sanal Makinesi’ni kullanmayı öğrenin. Gelişmiş analiz için akıllı uygulamalar derlemeye hızla başlamanız için birçok popüler veri bilimi araçları ve diğer araçlar önceden yüklenip yapılandırılmıştır.
+  title: Veri Bilimi Sanal Makinesi belgeleri - Azure
+  description: 'Azure bulutunda veri bilimi için oluşturulmuş deneysel bir ortam olan Veri Bilimi Sanal Makinesi’ni kullanmayı öğrenin. Popüler veri bilimi ve makine öğrenmesi araçları önceden yüklenir ve önceden yapılandırılır. Bu tasarım, size gelişmiş analiz için akıllı uygulamalar oluşturma konusunda avantaj sağlar.'
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: Azure Veri Bilimi Sanal Makinesi (DSVM) veri bilimi ve makine öğrenmesi araçları içeren özel bir VM görüntüsüdür. Bu VM’yi kullanarak akıllı gelişmiş analitik uygulamalar oluşturabilirsiniz. <a href="overview.md">Daha fazla bilgi edinin...</a>
+  description: Azure Veri Bilimi Sanal Makinesi (DSVM) veri bilimi ve makine öğrenmesi araçları içeren özel bir VM görüntüsüdür. Gelişmiş analiz için akıllı uygulamalar oluşturmak amacıyla bu VM’yi kullanabilirsiniz. <a href="overview.md">Daha fazla bilgi edinin</a>.
 sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
+  - title: 5 dakikalık hızlı başlangıçlar
     items:
       - type: paragraph
-        text: 'Windows veya Linux tabanlı bir Veri Bilimi VM’sini nasıl ayarlayacağınızı öğrenin:'
+        text: 'Windows veya Linux tabanlı bir Veri Bilimi Sanal Makinesini nasıl ayarlayacağınızı öğrenin:'
       - type: paragraph
         text: <b>Windows DSVM</b>
       - type: list
@@ -35,7 +35,7 @@ sections:
           - html: <a href="linux-dsvm-intro">Linux CentOS DSVM’si ayarlama</a>
           - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu DSVM’si ayarlama</a>
           - html: <a href="linux-dsvm-walkthrough">Bir Linux DSVM’sini kullanma</a>
-  - title: Diğer Azure Machine Learning Teknolojileri
+  - title: Diğer Azure Machine Learning teknolojileri
     items:
       - type: paragraph
         text: 'Azure Machine Learning’de kullanılabilen diğer teknolojiler:'

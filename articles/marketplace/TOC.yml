@@ -60,6 +60,8 @@
         - name: Market avantajlarınız
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Ortak satış iş ortağı etkileşimi
+              href: ./marketplace-co-sell.md
             - name: Tercih edilen çözümler
               href: ./preferred-solutions.md
             - name: Tümleşik çözümler
@@ -490,6 +492,13 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Teklifinizin test sürüşünü yapın
           href: ./partner-center-portal/test-drive.md
+        - name: Ortak satış seçeneği
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          items:
+            - name: Ülke ve bölge kodları
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: Eyalet kodları
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: Yayın durumu
       href: ./partner-center-portal/publishing-status.md
     - name: Mevcut teklifleri güncelleştirme

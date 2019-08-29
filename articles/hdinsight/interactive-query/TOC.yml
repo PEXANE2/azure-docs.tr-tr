@@ -281,6 +281,8 @@
           maintainContext: true
 - name: Başvuru
   items:
+    - name: Desteklenen düğüm yapılandırmaları
+      href: ../hdinsight-supported-node-configuration.md
     - name: Kod örnekleri
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

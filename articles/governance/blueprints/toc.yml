@@ -30,6 +30,11 @@
     - name: Dizin oluşturma
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: Kanada Federal PBMM
+      items:
+        - name: Denetim eşlemesi
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/control-mapping.md
     - name: CIS Microsoft Azure Foundations Benchmark
       items:
         - name: Genel Bakış
