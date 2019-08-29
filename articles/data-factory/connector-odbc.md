@@ -192,7 +192,7 @@ ODBC uyumlu veri deposuna veri kopyalamak için kopyalama etkinliğindeki havuz 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun Type özelliği şu şekilde ayarlanmalıdır: **OdbcSink** | Evet |
+| type | Kopyalama etkinliği havuzunun Type özelliği şu şekilde ayarlanmalıdır: **OdbcSink** | Evet |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00:30:00" (30 dakika). |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler.<br/>İzin verilen değerler: Integer (satır sayısı). |Hayır (varsayılan 0-otomatik olarak algılanır) |
 | preCopyScript |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
