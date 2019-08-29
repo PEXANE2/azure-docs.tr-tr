@@ -59,7 +59,7 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü |Type özelliği **SalesforceServiceCloud**olarak ayarlanmalıdır. |Evet |
+| type |Type özelliği **SalesforceServiceCloud**olarak ayarlanmalıdır. |Evet |
 | environmentUrl | Salesforce hizmeti bulut örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"`. <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"`. <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"`. |Hayır |
 | username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
 | password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
