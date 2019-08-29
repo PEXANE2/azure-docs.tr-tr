@@ -60,10 +60,10 @@ Bir uygulamanın iş mantığı, burada bir durumdan diğerine taşımak için i
 | Description | İş akışı tanımı. | Hayır | 255 |
 | Initiators | Koleksiyonu [ApplicationRoles](#application-roles). İş akışında sözleşmeleri oluşturmak için yetkili kullanıcılara atanan roller. | Evet | |
 | StartState | İş akışı yapının başlangıç durumunun adı. | Evet | |
-| Özellikler | Koleksiyonu [tanımlayıcıları](#identifiers). Araç zinciri kapalı veya bir kullanıcı görselleştirilen okunabilir temsil veri karşılaşırsınız. | Evet | |
-| Oluşturucusu | İş akışı örneği oluşturmak için giriş parametrelerini tanımlar. | Evet | |
-| İşlevler | Bir koleksiyonu [işlevleri](#functions) akışında çalıştırılabilir. | Evet | |
-| Durumlar | İş akışı koleksiyonunu [durumları](#states). | Evet | |
+| Properties | Koleksiyonu [tanımlayıcıları](#identifiers). Araç zinciri kapalı veya bir kullanıcı görselleştirilen okunabilir temsil veri karşılaşırsınız. | Evet | |
+| Constructor | İş akışı örneği oluşturmak için giriş parametrelerini tanımlar. | Evet | |
+| Functions | Bir koleksiyonu [işlevleri](#functions) akışında çalıştırılabilir. | Evet | |
+| States | İş akışı koleksiyonunu [durumları](#states). | Evet | |
 
 Bir örnek için bkz. [yapılandırma dosyası örneği](#configuration-file-example).
 
@@ -73,16 +73,16 @@ Desteklenen veri türleri.
 
 | Tür | Description |
 |-------|-------------|
-| Adresi  | Blok zinciri adres türü gibi *sözleşmeleri* veya *kullanıcılar*. |
+| address  | Blok zinciri adres türü gibi *sözleşmeleri* veya *kullanıcılar*. |
 | array    | Tek düzey dizi türü tamsayı, bool, para ve zaman. Diziler, statik veya dinamik olabilir. Kullanım **ElementType** dizinin içindeki öğelerin veri türü belirtmek için. Bkz: [örnek yapılandırma](#example-configuration-of-type-array). |
 | bool     | Boole veri türü. |
-| Sözleşme | Sözleşme türü adresi. |
-| Sabit listesi     | Adlandırılmış değerler numaralandırılmış kümesi. Enum türü kullanırken, ayrıca EnumValues listesini belirtin. Her değer 255 karakterle sınırlıdır. Geçerli değer üst karakterler ve küçük harfler (A-Z, a-z) ve sayılar (0-9). Bkz: [örnek yapılandırma ve kullanım Solidity](#example-configuration-of-type-enum). |
+| contract | Sözleşme türü adresi. |
+| enum     | Adlandırılmış değerler numaralandırılmış kümesi. Enum türü kullanırken, ayrıca EnumValues listesini belirtin. Her değer 255 karakterle sınırlıdır. Geçerli değer üst karakterler ve küçük harfler (A-Z, a-z) ve sayılar (0-9). Bkz: [örnek yapılandırma ve kullanım Solidity](#example-configuration-of-type-enum). |
 | int      | Tamsayı veri türü. |
 | money    | Para veri türü. |
 | state    | İş akışı durumu. |
-| string  | Dize veri türü. 4000 karakter üst sınırı. Bkz: [örnek yapılandırma](#example-configuration-of-type-string). |
-| kullanıcı     | Türü kullanıcı adresi. |
+| string   | Dize veri türü. 4000 karakter üst sınırı. Bkz: [örnek yapılandırma](#example-configuration-of-type-string). |
+| user     | Türü kullanıcı adresi. |
 | time     | Saat veri türü. |
 |`[ Application Role Name ]`| Uygulama rolünde belirtilen herhangi bir ad. Rol türü kullanıcıların sınırlar. |
 
