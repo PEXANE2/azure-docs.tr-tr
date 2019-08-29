@@ -100,7 +100,7 @@ Dynamics AX 'ten veri kopyalamak için veri kümesinin **Type** özelliğini **D
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin **Type** özelliği **Dynamicsaxresource**olarak ayarlanmalıdır. | Evet |
+| type | Veri kümesinin **Type** özelliği **Dynamicsaxresource**olarak ayarlanmalıdır. | Evet |
 | path | Dynamics AX OData varlığının yolu. | Evet |
 
 **Örnek**
@@ -134,7 +134,7 @@ Dynamics AX 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** tür
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği **Dynamicsaxsource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **Dynamicsaxsource**olarak ayarlanmalıdır. | Evet |
 | query | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"?$select=Name,Description&$top=5"`.<br/><br/>**Not**: Bağlayıcı, verileri birleştirilmiş URL 'den kopyalar: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
 **Örnek**

@@ -81,7 +81,7 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin **Type** özelliği **Cosmosdbmongodbapicollection**olarak ayarlanmalıdır. |Evet |
+| type | Veri kümesinin **Type** özelliği **Cosmosdbmongodbapicollection**olarak ayarlanmalıdır. |Evet |
 | collectionName |Azure Cosmos DB koleksiyonunun adı. |Evet |
 
 **Örnek**
@@ -115,7 +115,7 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbmongodbapısource**olarak ayarlanmalıdır. |Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbmongodbapısource**olarak ayarlanmalıdır. |Evet |
 | filter | Sorgu işleçlerini kullanarak seçim filtresini belirtir. Bir koleksiyondaki tüm belgeleri döndürmek için, bu parametreyi atlayın veya boş bir belge ({}) geçirin. | Hayır |
 | cursorMethods. Project | Projeksiyon için belgelere döndürülecek alanları belirtir. Eşleşen belgelerdeki tüm alanları döndürmek için bu parametreyi atlayın. | Hayır |
 | cursorMethods. Sort | Sorgunun eşleşen belgeleri döndürdüğü sırayı belirtir. [İmleç. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)öğesine bakın. | Hayır |
@@ -170,7 +170,7 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun **Type** özelliği **CosmosDbMongoDbApiSink**olarak ayarlanmalıdır. |Evet |
+| type | Kopyalama etkinliği havuzunun **Type** özelliği **CosmosDbMongoDbApiSink**olarak ayarlanmalıdır. |Evet |
 | writeBehavior |Azure Cosmos DB'ye veri yazmak açıklar. İzin verilen değerler: **Ekle** ve **upsert**.<br/><br/>Davranışını **upsert** aynı Kimliğe sahip bir belge zaten varsa belge değiştirmek üzere; Aksi takdirde, belge ekleyin.<br /><br />**Not**: Özgün belgede veya sütun eşlemesinde bir KIMLIK belirtilmemişse, Data Factory otomatik olarak bir belge KIMLIĞI oluşturur. İçin emin olmanız gerekir, yani **upsert** beklendiği şekilde çalışması için belgeyi bir kimliği vardır. |Hayır<br />(varsayılan değer **Ekle**) |
 | writeBatchSize | **Writebatchsize** özelliği, her toplu işte yazılacak belgelerin boyutunu denetler. Performansı artırmak ve belge boyutunuz büyükse değeri azaltmak için **Writebatchsize** değerini artırmayı deneyebilirsiniz. |Hayır<br />(varsayılan değer **10.000**) |
 | writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. İzin verilen değer TimeSpan değeridir. | Hayır<br/>(varsayılan değer **00:30:00** -30 dakikadır) |

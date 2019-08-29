@@ -175,7 +175,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 | Özellik    | Açıklama                                                  | Gerekli |
 | ----------- | ------------------------------------------------------------ | -------- |
-| türü        | DataSet `location` içinde Type özelliği **httpserverlocation**olarak ayarlanmalıdır. | Evet      |
+| type        | DataSet `location` içinde Type özelliği **httpserverlocation**olarak ayarlanmalıdır. | Evet      |
 | relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI.       | Hayır       |
 
 > [!NOTE]
@@ -216,7 +216,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin **Type** özelliği **httpfile**olarak ayarlanmalıdır. | Evet |
+| type | Veri kümesinin **Type** özelliği **httpfile**olarak ayarlanmalıdır. | Evet |
 | relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. | Hayır |
 | requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |
 | additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
@@ -283,7 +283,7 @@ Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri 
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| türü                     | Altındaki `storeSettings` Type özelliği **httpreadsetting**olarak ayarlanmalıdır. | Evet      |
+| type                     | Altındaki `storeSettings` Type özelliği **httpreadsetting**olarak ayarlanmalıdır. | Evet      |
 | requestMethod            | HTTP yöntemi. <br>İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır       |
 | Addtionalüstbilgileri         | Ek HTTP istek üstbilgileri.                             | Hayır       |
 | Istek gövdesi              | HTTP isteğinin gövdesi.                               | Hayır       |
@@ -340,7 +340,7 @@ Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği **httpsource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **httpsource**olarak ayarlanmalıdır. | Evet |
 | httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir.  | Hayır |
 
 **Örnek**

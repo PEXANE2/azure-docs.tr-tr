@@ -45,7 +45,7 @@ En basit yapısında, bir şablon aşağıdaki öğelere sahiptir:
 | [variables](#variables) |Hayır |Şablon dil ifadelerini basitleştirmek için şablonda JSON parçaları olarak kullanılan değerler. |
 | [functions](#functions) |Hayır |Şablon içinde kullanılabilen Kullanıcı tanımlı işlevler. |
 | [resources](#resources) |Evet |Bir kaynak grubunda veya abonelikte dağıtılan veya güncellenen kaynak türleri. |
-| [outputs](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerler. |
+| [çıkışı](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerler. |
 
 Her öğenin ayarlayabileceğiniz özellikleri vardır. Bu makalede, şablonun bölümleri daha ayrıntılı olarak açıklanmaktadır.
 
@@ -676,7 +676,7 @@ Aşağıdaki örnek, bir çıkış tanımı yapısını gösterir:
 |:--- |:--- |:--- |
 | outputName |Evet |Çıkış değeri adı. Geçerli bir JavaScript tanımlayıcı olmalıdır. |
 | condition |Hayır | Bu çıkış değerinin döndürülüp döndürülmeyeceğini belirten Boolean değeri. Ne `true`zaman, bu değer dağıtımın çıktısına dahil edilir. Ne `false`zaman, bu dağıtım için çıkış değeri atlanır. Belirtilmediğinde, varsayılan değer `true`. |
-| türü |Evet |Çıkış değeri türü. Çıkış değerleri şablon giriş parametreleri aynı türlerini destekler. Çıktı türü için **SecureString** belirtirseniz, değer dağıtım geçmişinde gösterilmez ve başka bir şablondan alınamaz. Birden fazla şablonda gizli bir değer kullanmak için, gizli anahtarı bir Key Vault depolayın ve parametre dosyasındaki gizli dizi başvurusu yapın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](resource-manager-keyvault-parameter.md). |
+| type |Evet |Çıkış değeri türü. Çıkış değerleri şablon giriş parametreleri aynı türlerini destekler. Çıktı türü için **SecureString** belirtirseniz, değer dağıtım geçmişinde gösterilmez ve başka bir şablondan alınamaz. Birden fazla şablonda gizli bir değer kullanmak için, gizli anahtarı bir Key Vault depolayın ve parametre dosyasındaki gizli dizi başvurusu yapın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](resource-manager-keyvault-parameter.md). |
 | value |Evet |Değerlendirilen ve çıkış değeri döndürülen şablon dili ifadesi. |
 
 ### <a name="define-and-use-output-values"></a>Tanımlama ve çıkış değerlerini kullanma

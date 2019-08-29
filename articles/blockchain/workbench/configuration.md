@@ -81,7 +81,7 @@ Desteklenen veri türleri.
 | int      | Tamsayı veri türü. |
 | money    | Para veri türü. |
 | state    | İş akışı durumu. |
-| string   | Dize veri türü. 4000 karakter üst sınırı. Bkz: [örnek yapılandırma](#example-configuration-of-type-string). |
+| string  | Dize veri türü. 4000 karakter üst sınırı. Bkz: [örnek yapılandırma](#example-configuration-of-type-string). |
 | user     | Türü kullanıcı adresi. |
 | time     | Saat veri türü. |
 |`[ Application Role Name ]`| Uygulama rolünde belirtilen herhangi bir ad. Rol türü kullanıcıların sınırlar. |
@@ -170,7 +170,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ```
 
-## <a name="constructor"></a>Oluşturucusu
+## <a name="constructor"></a>Constructor
 
 Bir iş akışı örneği için giriş parametrelerini tanımlar.
 
@@ -203,7 +203,7 @@ Bir iş akışı örneği için giriş parametrelerini tanımlar.
 }
 ```
 
-## <a name="functions"></a>İşlevler
+## <a name="functions"></a>Functions
 
 İş akışını yürütülebilecek işlevleri tanımlar.
 
@@ -251,7 +251,7 @@ Bir iş akışı örneği için giriş parametrelerini tanımlar.
 
 ```
 
-## <a name="states"></a>Durumlar
+## <a name="states"></a>States
 
 Bir iş akışındaki benzersiz durumlar koleksiyonudur. Her durum, iş mantığı'nın denetim akışı bir adımda yakalar. 
 

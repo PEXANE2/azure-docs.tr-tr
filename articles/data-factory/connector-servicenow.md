@@ -80,7 +80,7 @@ Servicenow'ı verileri kopyalamak için dataset öğesinin type özelliği ayarl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ServiceNowObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ServiceNowObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -110,7 +110,7 @@ Servicenow'ı verileri kopyalamak için kopyalama etkinliği için kaynak türü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ServiceNowSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ServiceNowSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Actual.alm_asset"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 Şema ve sütun için ServiceNow sorguda belirtirken, aşağıdakilere dikkat edin ve **başvurmak [performans ipuçları](#performance-tips) kopyalama performans olduğu çıkarımında üzerinde**.

@@ -107,7 +107,7 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 | version                      | HDInsight kümesinin sürümü. Belirtilmemişse, geçerli HDInsight tanımlı varsayılan sürümü kullanılıyor. | Hayır       |
 | hostsubscriptionıd           | HDInsight kümesi oluşturmak için kullanılan Azure abonelik KIMLIĞI. Belirtilmemişse, Azure oturum açma bağlamınızın abonelik KIMLIĞINI kullanır. | Hayır       |
 | clusterNamePrefix           | HDI küme adının ön eki, küme adının sonuna bir zaman damgası otomatik olarak eklenir| Hayır       |
-| sparkVersion                 | Küme türü "Spark" ise Spark sürümü | Hayır       |
+| Mini sürüm                 | Küme türü "Spark" ise Spark sürümü | Hayır       |
 | additionalLinkedServiceNames | Data Factory hizmeti tarafından sizin adınıza kaydettirilebilmeleri için HDInsight bağlı hizmeti için ek depolama hesapları belirtir. Bu depolama hesaplarının, linkedServiceName tarafından belirtilen depolama hesabıyla aynı bölgede oluşturulan HDInsight kümesiyle aynı bölgede olması gerekir. | Hayır       |
 | osType                       | İşletim sisteminin türü. İzin verilen değerler şunlardır: Linux ve Windows (yalnızca HDInsight 3,3 için). Linux varsayılandır. | Hayır       |
 | hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetinin adı. İsteğe bağlı HDInsight kümesi, Azure SQL veritabanı, meta veri deposu olarak kullanılarak oluşturulur. | Hayır       |
@@ -286,7 +286,7 @@ Kendi HDInsight kümenizi Data Factory kaydetmek için bir Azure HDInsight bağl
 ### <a name="properties"></a>Özellikler
 | Özellik          | Açıklama                                                  | Gerekli |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| türü              | Type özelliği **HDInsight**olarak ayarlanmalıdır.            | Evet      |
+| type              | Type özelliği **HDInsight**olarak ayarlanmalıdır.            | Evet      |
 | clusterUri        | HDInsight kümesinin URI 'SI.                            | Evet      |
 | kullanıcı adı          | Mevcut bir HDInsight kümesine bağlanmak için kullanılacak kullanıcının adını belirtin. | Evet      |
 | password          | Kullanıcı hesabı için parola belirtin.                       | Evet      |
@@ -346,7 +346,7 @@ Azure Batch Service ' i yeni biliyorsanız aşağıdaki konulara bakın:
 ### <a name="properties"></a>Özellikler
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| türü              | Type özelliği **AzureBatch**olarak ayarlanmalıdır. | Evet      |
+| type              | Type özelliği **AzureBatch**olarak ayarlanmalıdır. | Evet      |
 | accountName       | Azure Batch hesabının adı.         | Evet      |
 | accessKey         | Azure Batch hesabı için erişim anahtarı.  | Evet      |
 | batchUri          | Azure Batch hesabınızın URL 'SI, https://*batchaccountname. Region*. Batch.Azure.com biçiminde. | Evet      |
@@ -425,7 +425,7 @@ Bir Azure Data Lake Analytics işlem hizmetini bir Azure Data Factory 'ye bağla
 
 | Özellik             | Açıklama                              | Gerekli                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| türü                 | Type özelliği şu şekilde ayarlanmalıdır: **AzureDataLakeAnalytics**. | Evet                                      |
+| type                 | Type özelliği şu şekilde ayarlanmalıdır: **AzureDataLakeAnalytics**. | Evet                                      |
 | accountName          | Azure Data Lake Analytics hesap adı.  | Evet                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI 'SI.           | Hayır                                       |
 | subscriptionId       | Azure abonelik kimliği                    | Hayır                                       |
@@ -486,7 +486,7 @@ Databricks iş yüklerini (Not defterleri) çalıştırmak için kullanacağın�
 | Özellik             | Açıklama                              | Gerekli                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Bağlı hizmetin adı               | Evet   |
-| türü                 | Type özelliği şu şekilde ayarlanmalıdır: **AzureDatabricks**. | Evet                                      |
+| type                 | Type özelliği şu şekilde ayarlanmalıdır: **AzureDatabricks**. | Evet                                      |
 | etki alanı               | Databricks çalışma alanının bölgesine göre uygun şekilde Azure bölgesini belirtin. Örnek: https://eastus.azuredatabricks.net | Evet                                 |
 | accessToken          | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) bulunabilir  | Evet                                       |
 | Existingclusterıd    | Bu kümedeki tüm işleri çalıştırmak için var olan bir kümenin küme KIMLIĞI. Bu, önceden oluşturulmuş bir etkileşimli küme olmalıdır. Yanıt vermeyi durdurduğunda kümeyi el ile yeniden başlatmanız gerekebilir. Databricks daha fazla güvenilirlik sağlamak için işleri yeni kümeler üzerinde çalıştırmaya öneriyor. Databricks çalışma alanı-> kümeleri-> Etkileşimli küme adı-> Yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla ayrıntı](https://docs.databricks.com/user-guide/clusters/tags.html) | Hayır 

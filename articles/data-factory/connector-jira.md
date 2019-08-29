@@ -81,7 +81,7 @@ Jıra verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **J
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Jırak nesnesi** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Jırak nesnesi** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -111,7 +111,7 @@ Jıra verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayar
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Jırak kaynağı** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Jırak kaynağı** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

@@ -201,7 +201,7 @@ OData 'ten veri kopyalamak için, veri kümesinin **Type** özelliğini **ODataR
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin **Type** özelliği **ODataResource**olarak ayarlanmalıdır. | Evet |
+| type | Veri kümesinin **Type** özelliği **ODataResource**olarak ayarlanmalıdır. | Evet |
 | path | OData kaynağının yolu. | Evet |
 
 **Örnek**
@@ -236,7 +236,7 @@ OData 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği, **relationalsource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği, **relationalsource**olarak ayarlanmalıdır. | Evet |
 | query | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"$select=Name,Description&$top=5"`.<br/><br/>**Not**: OData Bağlayıcısı Birleşik URL 'den verileri kopyalar: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
 **Örnek**

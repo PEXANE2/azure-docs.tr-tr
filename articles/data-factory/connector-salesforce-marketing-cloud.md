@@ -84,7 +84,7 @@ Salesforce pazarlama Buluttan veri kopyalamak için dataset öğesinin type öze
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SalesforceMarketingCloudObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SalesforceMarketingCloudObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -114,7 +114,7 @@ Salesforce pazarlama Buluttan veri kopyalamak için kopyalama etkinliği için k
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarcloudsource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Salesforcepazarcloudsource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

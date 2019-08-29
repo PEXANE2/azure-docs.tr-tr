@@ -82,7 +82,7 @@ Concur verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ConcurObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ConcurObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 
@@ -113,7 +113,7 @@ Concur verileri kopyalamak için kopyalama etkinliği için kaynak türünü aya
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ConcurSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ConcurSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Opportunities where Id = xxx "`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

@@ -56,8 +56,8 @@ Hizmet sorumlusu kimlik doğrulaması, aşağıdaki özellikleri belirterek kull
 | Özellik                | Açıklama                              | Gerekli |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Uygulamanın istemci kimliği belirtin.     | Evet      |
-| **serviceprincipalkey** | Uygulama anahtarını belirtin.           | Evet      |
-| **tenant**              | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Azure portalının sağ üst köşedeki fare getirerek geri alabilirsiniz. | Evet      |
+| **serviceprincipalkey değerleri** | Uygulama anahtarını belirtin.           | Evet      |
+| **Kiracı**              | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Azure portalının sağ üst köşedeki fare getirerek geri alabilirsiniz. | Evet      |
 
 **Örnek: Hizmet sorumlusu kimlik doğrulaması**
 ```json

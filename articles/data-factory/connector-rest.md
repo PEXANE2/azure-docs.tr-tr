@@ -173,7 +173,7 @@ REST 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | DataSet 'in **Type** özelliği **restresource**olarak ayarlanmalıdır. | Evet |
+| type | DataSet 'in **Type** özelliği **restresource**olarak ayarlanmalıdır. | Evet |
 | relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. | Hayır |
 | requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |
 | additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
@@ -236,7 +236,7 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği **restsource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **restsource**olarak ayarlanmalıdır. | Evet |
 | httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir.  | Hayır |
 | Requestınterval | Sonraki sayfa için istek gönderilmeden önce beklenecek süre. Varsayılan değer **00:00:01** ' dir |  Hayır |
 

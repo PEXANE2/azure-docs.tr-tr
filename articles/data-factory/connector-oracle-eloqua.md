@@ -79,7 +79,7 @@ Oracle Eloqua verileri kopyalamak için dataset öğesinin type özelliği ayarl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Eloquanesne** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Eloquanesne** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -109,7 +109,7 @@ Oracle Eloqua verileri kopyalamak için kopyalama etkinliği için kaynak türü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Eloquakaynak** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Eloquakaynak** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Accounts"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

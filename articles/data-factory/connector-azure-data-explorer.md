@@ -106,7 +106,7 @@ Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | **Type** özelliği **AzureDataExplorerTable** olarak ayarlanmalıdır | Evet |
+| type | **Type** özelliği **AzureDataExplorerTable** olarak ayarlanmalıdır | Evet |
 | table | Bağlı hizmetin başvurduğu tablonun adı. | Havuz için Evet; Kaynak için Hayır |
 
 **DataSet özellikleri örneği**
@@ -138,7 +138,7 @@ Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağında
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSource** | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSource** | Evet |
 | query | Bir [KQL biçiminde](/azure/kusto/query/)verilen salt okunurdur bir istek. Özel KQL sorgusunu başvuru olarak kullanın. | Evet |
 | queryTimeout | Sorgu isteğinin zaman aşımına uğramadan önce beklenecek bekleme süresi. Varsayılan değer 10 dakikadır (00:10:00); izin verilen en büyük değer 1 saattir (01:00:00). | Hayır |
 | Kesilmesi | Döndürülen sonuç kümesinin kesilme edilip edilmeyeceğini belirtir. Varsayılan olarak, sonuç 500.000 kayıt veya 64MB sonra kesilir. Etkinliğin uygun bir davranışı için kesme kesinlikle önerilir. |Hayır |
@@ -185,7 +185,7 @@ Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun **Type** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSink** | Evet |
+| type | Kopyalama etkinliği havuzunun **Type** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSink** | Evet |
 | ınestionmappingname | Kusto tablosundaki önceden oluşturulmuş **[eşlemenin](/azure/kusto/management/mappings#csv-mapping)** adı. Sütunları kaynaktan Azure Veri Gezgini eşlemek için CSV/JSON/avro biçimleri de dahil olmak üzere **[tüm desteklenen kaynak depoları/formatları](copy-activity-overview.md#supported-data-stores-and-formats)** için geçerlidir. kopyalama etkinliği [sütun eşlemesini](copy-activity-schema-and-type-mapping.md) (örtülü olarak ada veya açıkça yapılandırılmış olarak) kullanabilirsiniz ve /veya Azure Veri Gezgini eşlemeleri. | Hayır |
 
 **Örnek:**

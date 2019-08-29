@@ -81,7 +81,7 @@ Azure Search verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **AzureSearchIndex** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **AzureSearchIndex** | Evet |
 | indexName | Azure Search dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Search olması gerekir. | Evet |
 
 **Örnek:**
@@ -113,7 +113,7 @@ Azure Search içine veri kopyalamak için kopyalama etkinliğindeki kaynak tür�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **AzureSearchIndexSink** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **AzureSearchIndexSink** | Evet |
 | writeBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).<br/><br/>İzin verilen değerler şunlardır: **Birleştirme** (varsayılan) ve **karşıya yükleyin**. | Hayır |
 | writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri Azure Search dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) .<br/><br/>İzin verilen değerler: tamsayı 1 ile 1.000 arasında; Varsayılan değer 1000 ' dir. | Hayır |
 

@@ -233,7 +233,7 @@ Veya Azure SQL veritabanı 'ndan veri kopyalamak için aşağıdaki özellikler 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | DataSet 'in **Type** özelliği **Azuressqltable**olarak ayarlanmalıdır. | Evet |
+| type | DataSet 'in **Type** özelliği **Azuressqltable**olarak ayarlanmalıdır. | Evet |
 | tableName | Bağlı hizmetin başvurduğu Azure SQL veritabanı örneğindeki tablonun veya görünümün adı. | Kaynak, havuz için Evet Hayır |
 
 #### <a name="dataset-properties-example"></a>Veri kümesi özellikleri örneği
@@ -266,7 +266,7 @@ Azure SQL veritabanından veri kopyalamak için aşağıdaki özellikler, etkinl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının **Type** özelliği **Azuressqlsource**olarak ayarlanmalıdır. "SqlSource" türü, geriye dönük uyumluluk için hala desteklenmektedir. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **Azuressqlsource**olarak ayarlanmalıdır. "SqlSource" türü, geriye dönük uyumluluk için hala desteklenmektedir. | Evet |
 | sqlReaderQuery | Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. | Hayır |
 | sqlReaderStoredProcedureName | Kaynak tablo verilerini okuyan saklı yordamın adı. Son SQL deyim bir SELECT deyimi saklı yordam içinde olmalıdır. | Hayır |
 | storedProcedureParameters | Saklı yordamın parametreleri.<br/>İzin verilen değerler, ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. | Hayır |
@@ -372,7 +372,7 @@ Azure SQL veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun **Type** özelliği **Azuressqlsink**olarak ayarlanmalıdır. "SqlSink" türü, geriye dönük uyumluluk için hala destekleniyor. | Evet |
+| type | Kopyalama etkinliği havuzunun **Type** özelliği **Azuressqlsink**olarak ayarlanmalıdır. "SqlSink" türü, geriye dönük uyumluluk için hala destekleniyor. | Evet |
 | writeBatchSize | *Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/> İzin verilen değer **tamsayı** (satır sayısı). Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır |
 | writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/> İzin verilen değer **timespan**. Örnek olarak "00:30:00" (30 dakika) bulunur. | Hayır |
 | preCopyScript | Azure SQL veritabanı 'na veri yazmadan önce çalıştırılacak kopyalama etkinliği için bir SQL sorgusu belirtin. Her kopya çalıştırması için yalnızca bir kez çağrılır. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanın. | Hayır |

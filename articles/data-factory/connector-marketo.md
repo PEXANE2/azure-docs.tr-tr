@@ -82,7 +82,7 @@ Marketo'dan veri kopyalamak için dataset öğesinin type özelliği ayarlamak *
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Menkul ToObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Menkul ToObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -112,7 +112,7 @@ Marketo'dan veri kopyalamak için kopyalama etkinliği için kaynak türünü ay
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Pazartokaynak** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Pazartokaynak** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Activitiy_Types"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

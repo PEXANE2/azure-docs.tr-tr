@@ -137,7 +137,7 @@ Ve Salesforce hizmeti bulutuna veri kopyalamak için aşağıdaki özellikler de
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği **SalesforceServiceCloudObject**olarak ayarlanmalıdır.  | Evet |
+| type | Type özelliği **SalesforceServiceCloudObject**olarak ayarlanmalıdır.  | Evet |
 | objectApiName | Verilerin alınması için Salesforce nesne adı. | Kaynak, havuz için Evet Hayır |
 
 > [!IMPORTANT]
@@ -166,7 +166,7 @@ Ve Salesforce hizmeti bulutuna veri kopyalamak için aşağıdaki özellikler de
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği **Relationaltable**olarak ayarlanmalıdır. | Evet |
+| type | Veri kümesinin Type özelliği **Relationaltable**olarak ayarlanmalıdır. | Evet |
 | tableName | Salesforce hizmeti bulutundaki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -179,7 +179,7 @@ Salesforce hizmeti bulutundaki verileri kopyalamak için, etkinlik **kaynağın�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği **SalesforceServiceCloudSource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği **SalesforceServiceCloudSource**olarak ayarlanmalıdır. | Evet |
 | query |Verileri okumak için özel sorguyu kullanın. [Salesforce nesne sorgu dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SORGUSUNU veya SQL-92 sorgusunu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu görüntüleyin. Sorgu belirtilmemişse, veri kümesindeki "objectApiName" içinde belirtilen Salesforce hizmeti bulut nesnesinin tüm verileri alınır. | Hayır (veri kümesindeki "objectApiName" belirtilmişse) |
 | readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | Hayır |
 
@@ -226,7 +226,7 @@ Verileri Salesforce hizmeti bulutuna kopyalamak için, kopyalama etkinliği **ha
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun Type özelliği **SalesforceServiceCloudSink**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği havuzunun Type özelliği **SalesforceServiceCloudSink**olarak ayarlanmalıdır. | Evet |
 | writeBehavior | İşlem için yazma davranışı.<br/>İzin verilen değerler **Insert** ve **upsert**. | Hayır (varsayılan değer ekler) |
 | externalIdFieldName | Upsert işlem için dış KIMLIK alanının adı. Belirtilen alanın Salesforce hizmeti bulut nesnesinde "dış kimlik alanı" olarak tanımlanması gerekir. Karşılık gelen giriş verilerinde NULL değer bulunamaz. | "Upsert" için Evet |
 | writeBatchSize | Her toplu işte Salesforce hizmeti bulutuna yazılan verilerin satır sayısı. | Hayır (varsayılan değer 5.000) |

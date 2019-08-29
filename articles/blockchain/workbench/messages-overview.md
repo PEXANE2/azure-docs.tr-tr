@@ -219,7 +219,7 @@ Yeni bir sözleşme eylem oluşturur.
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | İstemci tarafından sağlanan GUID |
 | userChainIdentifier      | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum bu kullanıcının adresidir **zincirinde** adresi. |
-| ContractLedgerIdentifier | Genel muhasebe sözleşme adresi |
+| contractLedgerIdentifier | Genel muhasebe sözleşme adresi |
 | version                  | Uygulamanın sürümü. Etkin bir uygulama birden çok sürümünü varsa gereklidir. Aksi takdirde sürüm isteğe bağlıdır. Uygulama sürümü hakkında daha fazla bilgi için bkz. [Azure Blockchain Workbench uygulama sürümü](version-app.md). |
 | WorkflowFunctionName     | İş akışı işlevinin adı |
 | parametreler               | Sözleşme oluşturma için giriş parametreleri |
@@ -257,7 +257,7 @@ Blockchain Workbench'i şu alanlara sahip bir yanıt döndürür:
 | **Ad**              | **Açıklama**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
 | requestId             | İstemci tarafından sağlanan GUID|
-| ContractId            | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
+| contractId            | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
 | connectionId          | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion  | Mesajlaşma şema sürümü |
 | messageName           | **CreateContractActionUpdate** |
@@ -453,8 +453,8 @@ Bir sözleşme hakkında bilgi içerir. İleti sözleşmesi özelliklere sahip b
 | Blockıd'si | Azure Blockchain Workbench içinde blok için benzersiz tanımlayıcı |
 | BlockHash | Blok karma |
 | modifyingTransactions | [Değişiklik işlemleri](#modifying-transaction-information) Sözleşmesi |
-| ContractId | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
-| ContractLedgerIdentifier | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
+| contractId | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
+| contractLedgerIdentifier | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
 | contractProperties | [Sözleşme özellikleri](#contract-properties) |
 | isNewContract | Bu sözleşmeyi yeni oluşturulmuş olup olmadığını gösterir. Olası değerler şunlardır: true: Bu sözleşme oluşturulan yeni bir sözleşme oluştu. false: Bu sözleşmenin bir sözleşme güncelleştirmesidir. |
 | connectionId | Bağlantı için benzersiz tanımlayıcı |
@@ -564,8 +564,8 @@ Bir sözleşme işlevi çağrıldığında işlev adı, parametreleri giriş ve 
 |------|-------------|
 | EventName                   | **ContractFunctionInvocation** |
 | Çağıran                      | [Arayan bilgileri](#caller-information) |
-| ContractId                  | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
-| ContractLedgerIdentifier    | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
+| contractId                  | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
+| contractLedgerIdentifier    | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
 | functionName                | İşlevin adı |
 | parametreler                  | [Parametre bilgileri](#parameter-information) |
 | İşlem                 | İşlem bilgileri |

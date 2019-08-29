@@ -77,7 +77,7 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir ***\*kaynak\**** böl�
 
 | Özellik       | Açıklama                                                  | Gerekli |
 | -------------- | ------------------------------------------------------------ | -------- |
-| türü           | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır **DelimitedTextSource**. | Evet      |
+| type           | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır **DelimitedTextSource**. | Evet      |
 | formatSettings | Özellikler grubu. Başvurmak **sınırlandırılmış metin okuma ayarları** aşağıdaki tabloda. | Hayır       |
 | storeSettings  | Bir veri deposundan veri okuma özellikleri grubudur. Her dosya tabanlı kendi desteklenen bir okuma ayarlarında bağlayıcının `storeSettings`. **Kopyalama etkinliği özellikler bölümü -> bağlayıcı makalede ayrıntılara bakın**. | Hayır       |
 
@@ -85,7 +85,7 @@ Desteklenen **sınırlandırılmış metin okuma ayarları** altında `formatSet
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| türü          | FormatSettings türünü ayarlamak **DelimitedTextReadSetting**. | Evet      |
+| type          | FormatSettings türünü ayarlamak **DelimitedTextReadSetting**. | Evet      |
 | skipLineCount | Sayısını gösteren **boş** veri giriş dosyalarından okuma sırasında atlanacak satır. <br>Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. | Hayır       |
 
 ### <a name="delimited-text-as-sink"></a>Havuz olarak sınırlandırılmış metin
@@ -94,7 +94,7 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir ***\*havuz\**** bölü
 
 | Özellik       | Açıklama                                                  | Gerekli |
 | -------------- | ------------------------------------------------------------ | -------- |
-| türü           | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır **DelimitedTextSink**. | Evet      |
+| type           | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır **DelimitedTextSink**. | Evet      |
 | formatSettings | Özellikler grubu. Başvurmak **sınırlandırılmış metin yazma ayarları** aşağıdaki tabloda. |          |
 | storeSettings  | Bir veri deposuna veri yazmaya yönelik özellikler grubu. Her dosya tabanlı kendi desteklenen yazma ayarlarında bağlayıcının `storeSettings`. **Kopyalama etkinliği özellikler bölümü -> bağlayıcı makalede ayrıntılara bakın**. | Hayır       |
 
@@ -102,7 +102,7 @@ Desteklenen **sınırlandırılmış metin yazma ayarları** altında `formatSet
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| türü          | FormatSettings türünü ayarlamak **DelimitedTextWriteSetting**. | Evet                                                   |
+| type          | FormatSettings türünü ayarlamak **DelimitedTextWriteSetting**. | Evet                                                   |
 | fileExtension | Örneğin çıkış dosyalarının adı için kullanılan dosya uzantısı `.csv`, `.txt`. Olmalıdır belirtilen `fileName` çıktısında belirtilmemiş DelimitedText veri kümesi. | Çıkış veri kümesinde dosya adı belirtilmemişse, Evet |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özellikleri eşleme
