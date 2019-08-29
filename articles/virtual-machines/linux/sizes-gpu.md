@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM boyutları hızlandırılmış - işlem | Microsoft Docs
-description: Azure'da Linux sanal makineler için kullanılabilir boyutları listeler farklı GPU İyileştirildi. Vcpu, veri diskleri ve NIC yanı sıra bu serideki boyutları için depolama aktarım hızı ve ağ bant sayısı hakkında bilgiler listelenir.
+title: Azure Linux VM boyutları-hızlandırılmış işlem | Microsoft Docs
+description: Azure 'da Linux sanal makineleri için kullanılabilen farklı GPU iyileştirilmiş boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 64cbcd375840d78916810abf9ccb8478ef9a1359
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708841"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082125"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU için iyileştirilmiş sanal makine boyutları
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU iyileştirilmiş sanal makine boyutları
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
@@ -31,22 +30,22 @@ ms.locfileid: "67708841"
 
 ## <a name="supported-distributions-and-drivers"></a>Desteklenen dağıtımlar ve sürücüler
 
-Linux çalıştıran Azure N serisi sanal makineler, GPU özelliklerine yararlanmak için NVIDIA GPU sürücülerine yüklenmesi gerekir. [NVIDIA GPU sürücüsünün uzantısı](../extensions/hpccompute-gpu-linux.md) bir N serisi sanal makinesinde uygun NVIDIA CUDA veya kılavuz sürücüleri yükler. Yükleme veya uzantısını Azure portalı veya Azure CLI veya Azure Resource Manager şablonları gibi araçları kullanarak yönetin. Bkz: [NVIDIA GPU sürücüsünün uzantı belgesini](../extensions/hpccompute-gpu-linux.md) desteklenen dağıtımları ve dağıtım adımları için. VM uzantıları hakkında genel bilgi için bkz: [Azure sanal makine uzantıları ve özellikleri](../extensions/overview.md).
+Linux çalıştıran Azure N serisi VM 'lerinin GPU Özellikleri avantajlarından yararlanmak için NVıDıA GPU sürücüleri yüklenmelidir. [NVıDıA GPU sürücü uzantısı](../extensions/hpccompute-gpu-linux.md) , bir N serisi VM 'ye uygun NVIDIA CUDA veya kılavuz sürücülerini yükleme. Azure CLı veya Azure Resource Manager şablonları gibi Azure portal veya araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen dağıtımlar ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](../extensions/hpccompute-gpu-linux.md) bakın. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](../extensions/overview.md).
 
-NVIDIA GPU sürücüleri el ile yüklemek isterseniz, bkz. [Linux için N serisi GPU sürücü kurulumu](n-series-driver-setup.md) desteklenen dağıtımları, sürücüler ve yükleme ve doğrulama adımlarını.
+NVıDıA GPU sürücülerini el ile yüklemeyi tercih ederseniz desteklenen dağıtımlar, sürücüler ve yükleme ve doğrulama adımları için bkz. [Linux Için N SERISI GPU sürücü kurulumu](n-series-driver-setup.md) .
 
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* X yüklememeniz sunucusu ya da kullanan diğer sistemlerle `Nouveau` Ubuntu NC VM'lerin sürücüsü. NVIDIA GPU sürücüleri yüklemeden önce devre dışı bırakmanız `Nouveau` sürücü.  
+* X Server 'ı veya Ubuntu NC VM 'lerinde `Nouveau` sürücüyü kullanan başka sistemleri yüklememelisiniz. NVIDIA GPU sürücülerini yüklemeden önce `Nouveau` sürücüyü devre dışı bırakmanız gerekir.  
 
-## <a name="other-sizes"></a>Diğer boyutları
+## <a name="other-sizes"></a>Diğer boyutlar
 - [Genel amaçlı](sizes-general.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
-- [Önceki nesil](sizes-previous-gen.md)
+- [Önceki nesiller](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hakkında daha fazla bilgi [Azure işlem birimleri (ACU)](acu.md) Azure SKU'ları arasında işlem performansını karşılaştırmanıza yardımcı olabilir.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

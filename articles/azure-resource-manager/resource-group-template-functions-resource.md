@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650425"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095761"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -188,7 +188,7 @@ Kaynak adı kullanarak bir kaynak belirtin veya [ResourceId işlevi](#resourceid
 
 Koşullu olarak dağıtılan bir kaynakta bir **liste** işlevi kullanıyorsanız, işlev, kaynak dağıtılmasa bile değerlendirilir. **List** işlevi mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtıldığında değerlendirildiğinden emin olmak için **IF** işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve List kullanan bir örnek şablon için [IF işlevine](resource-group-template-functions-logical.md#if) bakın.
 
-### <a name="example"></a>Örnek
+### <a name="list-example"></a>Liste örneği
 
 Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) nasıl çıktılar bölümünü bir depolama hesabı birincil ve ikincil anahtarları döndürüleceğini gösterir. Ayrıca, depolama hesabı için bir SAS belirtecini döndürür. 
 
@@ -284,7 +284,7 @@ Desteklenen her türü, şu biçimde döndürülür:
 
 Döndürülen değerleri dizi sıralama garantisi yoktur.
 
-### <a name="example"></a>Örnek
+### <a name="providers-example"></a>Sağlayıcılar örneği
 
 Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) sağlayıcısı işlevinin nasıl kullanılacağını gösterir:
 
@@ -433,7 +433,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` değil
 
-### <a name="example"></a>Örnek
+### <a name="reference-example"></a>Başvuru örneği
 
 Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) kaynak dağıtır ve o kaynağa başvuruyor.
 
@@ -600,7 +600,7 @@ Bir ortak resourceGroup işlevin kaynak grubu ile aynı konumda kaynakları olu�
 
 Kaynak grubundaki etiketleri bir kaynağa uygulamak için resourceGroup işlevini de kullanabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubundan etiket uygulama](resource-group-using-tags.md#apply-tags-from-resource-group).
 
-### <a name="example"></a>Örnek
+### <a name="resource-group-example"></a>Kaynak grubu örneği
 
 Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) kaynak grubunun özelliklerini döndürür.
 
@@ -737,7 +737,7 @@ Genellikle, bu işlev bir alternatif bir kaynak grubuna bir depolama hesabı vey
 }
 ```
 
-### <a name="example"></a>Örnek
+### <a name="resource-id-example"></a>Kaynak KIMLIĞI örneği
 
 Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) kaynak grubunda bir depolama hesabı kaynak kimliği döndürür:
 
@@ -795,7 +795,7 @@ Geçerli dağıtım için abonelik ayrıntılarını döndürür.
 }
 ```
 
-### <a name="example"></a>Örnek
+### <a name="subscription-example"></a>Abonelik örneği
 
 Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) abonelik işlevini çağırdı çıkışları bölümünde gösterir. 
 

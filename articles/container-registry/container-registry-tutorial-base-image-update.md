@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7cd278143ffe482cb51f76b1019413e97a777a3a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 23b0990be7f215d9cc443c5549ae38de86826d17
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981823"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114610"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Öğretici: Azure Container Registry 'de temel görüntü güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
@@ -72,7 +72,16 @@ Temel görüntü güncelleştirildiğinde, yeni özellik ve düzeltmelerin eklen
 
 ### <a name="tasks-triggered-by-a-base-image-update"></a>Bir temel görüntü güncelleştirmesi tarafından tetiklenen görevler
 
-* Şu anda, bir Dockerfile dosyasındaki görüntü yapıları için ACR görevi aynı Azure Container Registry, genel Docker Hub deposu veya Microsoft Container Registry ortak depolarındaki temel görüntülerle ilgili bağımlılıkları algılar. `FROM` Deyimde belirtilen temel görüntü bu konumlardan birinde yer alıyorsa ACR görevi, temel aldığı her seferinde görüntünün yeniden oluşturulmasını sağlamak için bir kanca ekler.
+* Bir Dockerfile dosyasındaki görüntü yapıları için ACR görevi aşağıdaki konumlarda temel görüntülerde bağımlılıkları algılar:
+
+  * Görevin çalıştığı aynı Azure Container kayıt defteri
+  * Aynı bölgedeki başka bir Azure Kapsayıcı kayıt defteri 
+  * Docker Hub 'da ortak depo 
+  * Microsoft Container Registry genel depo
+
+   `FROM` Deyimde belirtilen temel görüntü bu konumlardan birinde yer alıyorsa ACR görevi, temel aldığı her seferinde görüntünün yeniden oluşturulmasını sağlamak için bir kanca ekler.
+
+* Şu anda ACR görevleri yalnızca uygulama (*çalışma zamanı*) görüntüleri için temel görüntü güncelleştirmelerini izler. Çok aşamalı Dockerfiles 'da kullanılan ara (*buildtime*) görüntüleri için temel görüntü güncelleştirmelerini izlemez.  
 
 * [Az ACR Task Create][az-acr-task-create] komutuyla bir ACR görevi oluşturduğunuzda, varsayılan olarak görev, bir temel görüntü güncelleştirmesi tarafından tetikleyici için *etkinleştirilmiştir* . Diğer bir deyişle, `base-image-trigger-enabled` özelliği true olarak ayarlanır. Bir görevde bu davranışı devre dışı bırakmak istiyorsanız, özelliği false olarak güncelleştirin. Örneğin, şu [az ACR Task Update][az-acr-task-update] komutunu çalıştırın:
 

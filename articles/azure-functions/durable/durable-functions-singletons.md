@@ -1,29 +1,28 @@
 ---
-title: Dayanıklı işlevler - Azure için teklileri
-description: Teklileri Azure işlevleri için dayanıklı işlevler uzantısını kullanma
+title: Dayanıklı İşlevler-Azure için tekton
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısında tekton kullanımı.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9bf9687f60e649fee98869ef263117177ad5efd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683796"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097923"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı işlevler (Azure işlevleri) içindeki tekil düzenleyicileri
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler içindeki tekil düzenleyiciler (Azure Işlevleri)
 
-Arka plan işleri genellikle emin olmanız gerekir, aynı anda belirli bir orchestrator yalnızca bir örneğini çalıştırır. Bu yapılabilir [dayanıklı işlevler](durable-functions-overview.md) belirli bir atayarak kimliği bir orchestrator için onu oluştururken örneği.
+Arka plan işleri için genellikle belirli bir Orchestrator örneğinin aynı anda çalıştığından emin olmanız gerekir. Bu, bir Orchestrator 'a belirli bir örnek KIMLIĞI atanırken bir Orchestrator 'a atanarak [dayanıklı işlevler](durable-functions-overview.md) yapılabilir.
 
 ## <a name="singleton-example"></a>Tek örnek
 
-Aşağıdaki C# ve JavaScript örnekler bir singleton arka plan iş düzenleme oluşturan bir HTTP tetikleyici işlevi. Bu yalnızca bir örneği belirtilen örnek kimliği için mevcut kodu sağlar.
+Aşağıdaki C# ve JavaScript örnekleri, tek bir arka plan işi düzenlemesi oluşturan bir http tetikleyici işlevi gösterir. Kod, belirtilen örnek KIMLIĞI için yalnızca bir örneğin mevcut olmasını sağlar.
 
 ### <a name="c"></a>C#
 
@@ -56,7 +55,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 Function.json dosyası aşağıda verilmiştir:
 ```json
@@ -112,17 +111,17 @@ module.exports = async function(context, req) {
 };
 ```
 
-Varsayılan olarak, GUID rastgele Kimlikleridir örneği oluşturulur. Ancak bu durumda, örnek kimliği rota verileri URL'den geçirilir. Kod çağrıları [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) veya `getStatus` belirtilen Kimliğe sahip bir örneği zaten çalışıp çalışmadığını denetlemek için (JavaScript). Aksi takdirde, bu kimliğe sahip bir örneği oluşturulur
+Varsayılan olarak, örnek kimlikleri rastgele oluşturulan GUID 'lerdir. Ancak bu durumda, örnek KIMLIĞI URL 'den rota verilerinde geçirilir. Kod, belirtilen kimliğe sahip bir örneğinC#zaten çalışır `getStatus` durumda olup olmadığını denetlemek için [getstatusasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) () veya (JavaScript) öğesini çağırır. Aksi takdirde, bu KIMLIKLE bir örnek oluşturulur.
 
 > [!WARNING]
-> JavaScript içinde yerel olarak geliştirirken, ortam değişkenini ayarlamak gerekir `WEBSITE_HOSTNAME` için `localhost:<port>`, örn. `localhost:7071` yöntemleri kullanmak üzere `DurableOrchestrationClient`. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> JavaScript 'te yerel olarak geliştirme yaparken, ortam değişkenini `WEBSITE_HOSTNAME` `localhost:<port>`, EX olarak ayarlamanız gerekir. `localhost:7071`üzerinde `DurableOrchestrationClient`yöntemleri kullanmak için. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 > [!NOTE]
-> Bu örnekte, olası bir yarış durumu yoktur. İki örneğini **HttpStartSingle** eşzamanlı olarak yürütün, her iki işlev çağrıları başarılı olarak bildirir, ancak yalnızca bir düzenleme örneği gerçekten başlayacak. Gereksinimlerinize bağlı olarak, bu istenmeyen yan etkileri olabilir. Bu nedenle, hiçbir iki isteği Bu tetikleyici işlevi eşzamanlı olarak yürütebilir sağlamak önemlidir.
+> Bu örnekte olası bir yarış durumu var. İki tane **Httpstartone** örneği aynı anda yürütülecektir, her iki işlev çağrısı de başarıyı bildirir ancak yalnızca bir düzenleme örneği başlatılır. Gereksinimlerinize bağlı olarak, bu istenmeyen yan etkilere sahip olabilir. Bu nedenle, bu tetikleyici işlevini aynı anda yürütebilmesi için iki isteğin olmadığından emin olmanız önemlidir.
 
-Uygulama ayrıntılarını orchestrator işlevi gerçekten önemli değil. Başlatan ve tamamlanan bir normal orchestrator işlevi olabilir veya sürekli çalışan bir olabilir (diğer bir deyişle, bir [dış düzenleme](durable-functions-eternal-orchestrations.md)). Aynı anda çalışan yalnızca bir örneğine olan önemli noktasıdır.
+Orchestrator işlevinin uygulama ayrıntıları aslında önemi yoktur. Bu, başlayan ve tamamlanmış normal bir Orchestrator işlevi olabilir ya da sonsuza kadar (yani, bir [Eternal düzenleme](durable-functions-eternal-orchestrations.md)) çalışan bir düzenleyici olabilir. Önemli nokta, tek seferde çalışan yalnızca bir örnek vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Alt düzenlemeleri çağırma hakkında bilgi edinin](durable-functions-sub-orchestrations.md)
+> [Alt düzenlemeleri çağırmayı öğrenin](durable-functions-sub-orchestrations.md)
