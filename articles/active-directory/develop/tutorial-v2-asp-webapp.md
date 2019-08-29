@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a9fb68fff492b6f3b00825b1fae91310f091a3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033384"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113642"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -485,8 +485,15 @@ Web uygulamalarının Web API 'Lerini nasıl çağırabileceğinizi öğrenin.
 
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Bu hızlı başlangıç kılavuzunda kullanılan uygulamayı oluşturmayı öğrenin
 
+Microsoft Identity platformu ile Web API 'Lerini çağıran Web uygulamaları hakkında daha fazla bilgi edinin:
+
 > [!div class="nextstepaction"]
-> [Web API 'Lerini çağıran Web uygulamaları]( https://aka.ms/msal-net-authorization-code)
+> [Web API 'Lerini çağıran Web uygulamaları](scenario-web-app-sign-user-overview.md)
+
+Microsoft Graph çağıran Web uygulamaları oluşturmayı öğrenin:
+
+> [!div class="nextstepaction"]
+> [Microsoft Graph ASP.NET öğreticisi](https://docs.microsoft.com/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

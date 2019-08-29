@@ -11,26 +11,25 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d9e3fc52b9cdf5126cb8d58778a59b8e8691f80a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b943a4476a6b0d639353816337deea96eb14fe24
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708146"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101696"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturup dağıtma
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturun ve dağıtın
 
-Bu öğreticide, kullanılabilirlik ve kullanılabilirlik kümeleri kullanarak sanal makinelerinizi (VM) güvenilirliğini artırma konusunda bilgi edinin. Kullanılabilirlik kümeleri, Azure'da dağıttığınız VM'lerin birden fazla düğümde, yalıtılmış bir donanım, bir kümedeki dağıtıldığından emin olun. 
+Bu öğreticide, kullanılabilirlik kümelerini kullanarak sanal makinelerinizin (VM) kullanılabilirliğini ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure 'da dağıttığınız VM 'Lerin bir kümede birden çok, yalıtılmış donanım düğümüne dağıtıldığından emin olun. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Kullanılabilirlik kümesi oluşturma
+> * Kullanılabilirlik kümesi oluştur
 > * Kullanılabilirlik kümesinde sanal makine oluşturma
 > * Kullanılabilir sanal makine boyutlarını denetleme
 > * Azure Danışmanı’nı denetleme
@@ -38,9 +37,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="availability-set-overview"></a>Kullanılabilirlik kümesine genel bakış
 
-Bir kullanılabilirlik kümesi dağıtıldıkları VM kaynakları birbirinden yalıtmak için bir mantıksal gruplama yeteneğidir. Azure VM'ler, birden çok fiziksel sunucuda çalıştırma bir kullanılabilirlik kümesi içinde eklediğinden emin olur, raflar, depolama birimi ve ağ anahtarları işlem. Bir donanım veya yazılım hatası oluşursa yalnızca sanal makinelerinizin bir alt etkilenir ve genel çözümünüzün işletimsel kalır. Kullanılabilirlik kümeleri, güvenilir bulut çözümleri oluşturmak için gereklidir.
+Kullanılabilirlik kümesi, dağıtılan VM kaynaklarını birbirinden yalıtmak için bir mantıksal gruplama özelliğidir. Azure, bir kullanılabilirlik kümesi içinde yerleştirdiğiniz VM 'Lerin birden çok fiziksel sunucuda, bilgi işlem raflarında, depolama birimlerinde ve ağ anahtarlarında çalıştığından emin olmanızı sağlar. Bir donanım veya yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesi etkilenir ve genel çözümünüz çalışır durumda kalır. Kullanılabilirlik kümeleri, güvenilir bulut çözümleri oluşturmak için gereklidir.
 
-Dört adet ön uç web sunucusuna ve iki adet arka uç sanal makineye sahip olabileceğiniz tipik bir sanal makine tabanlı çözümü düşünelim. Azure ile sanal makinelerinizi dağıtmadan önce iki kullanılabilirlik kümesi tanımlamak istersiniz: bir web katmanı ve geri katmanı için bir tane. Yeni bir VM oluşturduğunuzda, kullanılabilirlik kümesi parametre olarak belirtin. Azure Vm'lerini birden fazla fiziksel donanım kaynağı arasında yalıtılır emin olur. Sunucularınızın birini çalıştıran fiziksel donanımı bir sorun varsa, bunlar farklı bir donanım üzerinde olduğundan diğer örneklerin sunucularınızın çalışmaya devam edeceği bildirin.
+Dört adet ön uç web sunucusuna ve iki adet arka uç sanal makineye sahip olabileceğiniz tipik bir sanal makine tabanlı çözümü düşünelim. Azure ile, sanal makinelerinizi dağıtmadan önce iki kullanılabilirlik kümesi tanımlamak istersiniz: bir Web katmanı ve diğeri arka katman için. Yeni bir VM oluşturduğunuzda, kullanılabilirlik kümesini parametre olarak belirtirsiniz. Azure, VM 'Lerin birden fazla fiziksel donanım kaynağı arasında yalıtılmasını sağlar. Sunucularınızdaki bir fiziksel donanımda bir sorun varsa, farklı donanımlarda olduklarından sunucularınızın diğer örneklerinin çalışmaya devam edecek olduğunu bilirsiniz.
 
 Azure’da güvenilir sanal makine tabanlı çözümleri dağıtmak istediğinizde Kullanılabilirlik Kümelerini kullanın.
 
@@ -50,11 +49,11 @@ Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabilece�
 
 Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
+## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
 
 Konumdaki donanım, birden çok etki alanına ve hata etki alanına bölünmüştür. **Güncelleştirme etki alanı**, aynı anda yeniden başlatılabilen bir VM grubu ve temel alınan fiziksel donanımdır. Aynı **hata etki alanında** bulunan VM’ler, ortak güç kaynağı ve ağ anahtarıyla birlikte ortak depolama alanını paylaşır.  
 
-Kullanarak bir kullanılabilirlik kümesi oluşturabileceğiniz [yeni AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset). Bu örnekte, hem güncelleştirme ve hata etki alanları sayısıdır *2* ve kullanılabilirlik kümesi adlı *myAvailabilitySet*.
+[New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)kullanarak bir kullanılabilirlik kümesi oluşturabilirsiniz. Bu örnekte, hem güncelleştirme hem de hata etki alanlarının sayısı *2* ' dir ve kullanılabilirlik kümesi *myAvailabilitySet*olarak adlandırılır.
 
 Bir kaynak grubu oluşturun.
 
@@ -64,7 +63,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-Kullanarak bir yönetilen kullanılabilirlik kümesi oluşturma [yeni AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) ile `-sku aligned` parametresi.
+`-sku aligned` Parametresiyle [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) kullanarak yönetilen bir kullanılabilirlik kümesi oluşturun.
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -77,10 +76,10 @@ New-AzAvailabilitySet `
 ```
 
 ## <a name="create-vms-inside-an-availability-set"></a>Kullanılabilirlik kümesi içinde sanal makineler oluşturma
-VM'lerin kullanılabilirlik donanım arasında doğru dağıtılmış emin olmak için kümesi içinde oluşturulması gerekir. Varolan bir VM'yi kullanılabilirlik oluşturulduktan sonra kümesine eklenemiyor. 
+Donanım genelinde doğru şekilde dağıtıldığından emin olmak için VM 'Lerin kullanılabilirlik kümesi içinde oluşturulması gerekir. Mevcut bir VM oluşturulduktan sonra bir kullanılabilirlik kümesine ekleyemezsiniz. 
 
 
-Bir VM oluşturduğunuzda, [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm), kullandığınız `-AvailabilitySetName` parametresini kullanarak kullanılabilirlik kümesinin adını belirtin.
+[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile bir VM oluşturduğunuzda, kullanılabilirlik kümesinin adını belirtmek için `-AvailabilitySetName` parametresini kullanın.
 
 İlk olarak, VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
@@ -88,7 +87,7 @@ Bir VM oluşturduğunuzda, [New-AzVM](https://docs.microsoft.com/powershell/modu
 $cred = Get-Credential
 ```
 
-Artık ile iki VM oluşturma [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) de kullanılabilirlik kümesinde.
+Şimdi kullanılabilirlik kümesinde [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Ile iki VM oluşturun.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -108,13 +107,13 @@ for ($i=1; $i -le 2; $i++)
 
 İki VM’yi de oluşturup yapılandırmak birkaç dakika sürer. Tamamlandığında, temel alınan donanım arasında dağıtılmış iki sanal makineye sahip olursunuz. 
 
-Kullanılabilirlik giderek portalda kümesini bakmak, **kaynak grupları** > **myResourceGroupAvailability** > **myAvailabilitySet**, sanal makinelerin iki hata arasında dağıtılır ve güncelleştirme etki alanı nasıl görmeniz gerekir.
+**MyResourceGroupAvailability** > myAvailabilitySet > kaynak gruplarına giderek portaldaki kullanılabilirlik kümesine baktığınızda, VM 'lerin iki hata ve güncelleştirme arasında nasıl dağıtıldığını görmeniz gerekir etki alanları.
 
 ![Portaldaki kullanılabilirlik kümesi](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>Kullanılabilir sanal makine boyutlarını denetleme 
 
-Daha sonra kullanılabilirlik kümesine daha fazla sanal makine ekleyebilirsiniz; ancak donanımda hangi sanal makine boyutlarının kullanılabilir olduğunu bilmeniz gerekir. Kullanım [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) tüm küme kullanılabilirlik kümesi için donanımı kullanılabilir boyutları listelemek için.
+Daha sonra kullanılabilirlik kümesine daha fazla sanal makine ekleyebilirsiniz; ancak donanımda hangi sanal makine boyutlarının kullanılabilir olduğunu bilmeniz gerekir. Kullanılabilirlik kümesi için donanım kümesindeki tüm kullanılabilir boyutları listelemek için [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) komutunu kullanın.
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -124,9 +123,9 @@ Get-AzVMSize `
 
 ## <a name="check-azure-advisor"></a>Azure Danışmanı’nı denetleme 
 
-Azure Danışmanı, Vm'lerinizin kullanılabilirliğini geliştirmeye yönelik daha fazla bilgi almak için de kullanabilirsiniz. Azure Danışmanı, yapılandırmanızı ve kullanım telemetrinizi analiz sonra maliyet verimliliği, performans, kullanılabilirlik ve Azure kaynaklarınızın güvenliğini geliştirmenize yardımcı olabilecek çözümler önerir.
+Ayrıca, sanal makinelerinizin kullanılabilirliğini geliştirme hakkında daha fazla bilgi edinmek için Azure Danışmanı 'nı kullanabilirsiniz. Azure Advisor yapılandırma ve kullanım telemetrinizi analiz ederek Azure kaynaklarınızın maliyet verimliliğini, performansını, kullanılabilirliğini ve güvenliğini artırmanıza yardımcı olabilecek çözümler önerir.
 
-[Azure portal](https://portal.azure.com)’ında oturum açın, **Tüm hizmetler**’i seçin ve **Danışman** yazın. Danışman Panosu, seçili abonelik için kişiselleştirilmiş öneriler gösterir. Daha fazla bilgi için bkz. [Azure Danışmanı’nı kullanmaya başlayın](../../advisor/advisor-get-started.md).
+[Azure portal](https://portal.azure.com)’ında oturum açın, **Tüm hizmetler**’i seçin ve **Danışman** yazın. Danışman panosu, seçili abonelik için kişiselleştirilmiş önerileri gösterir. Daha fazla bilgi için bkz. [Azure Danışmanı’nı kullanmaya başlayın](../../advisor/advisor-get-started.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -134,7 +133,7 @@ Azure Danışmanı, Vm'lerinizin kullanılabilirliğini geliştirmeye yönelik d
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Kullanılabilirlik kümesi oluşturma
+> * Kullanılabilirlik kümesi oluştur
 > * Kullanılabilirlik kümesinde sanal makine oluşturma
 > * Kullanılabilir sanal makine boyutlarını denetleme
 > * Azure Danışmanı’nı denetleme

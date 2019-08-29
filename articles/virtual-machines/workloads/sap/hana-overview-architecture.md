@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2076778751161d5763d7bd0643cfe8f71a5f522
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869209"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101176"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
@@ -29,7 +28,7 @@ Altyapı damgası içindeki müşteri yalıtımı, kiracılar içinde gerçekle�
 
 - **Ağ iletişimi**: Altyapı yığınındaki müşterilerin, müşteri tarafından atanan kiracı başına sanal ağlar aracılığıyla yalıtımı. Tek bir müşteriye bir kiracı atanır. Müşterinin birden çok kiracının olması olabilir. Kiracıların ağ yalıtımı, kiracılar aynı müşteriye ait olsa bile, altyapı damgası düzeyindeki kiracılar arasındaki ağ iletişimini yasaklar.
 - **Depolama bileşenleri**: Depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtımı. Depolama birimleri, yalnızca bir depolama sanal makinesine atanabilir. Bir depolama sanal makinesi, SAP HANA TDı sertifikalı altyapı yığınında yalnızca tek bir kiracıya atanır. Sonuç olarak, bir depolama sanal makinesine atanan depolama birimlerine yalnızca belirli bir ve ilgili kiracıdan erişilebilir. Bunlar farklı dağıtılan kiracılar arasında görünür değildir.
-- **Sunucu veya konak**: Bir sunucu veya konak birimi, müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan bir sunucu veya konak, tek bir kiracıya atanan atomik çıplak bir işlem birimidir. Bir konak veya sunucuyu başka bir müşteriyle paylaştırmanıza neden olabilecek *bir donanım bölümlendirme* veya yumuşak bölümlendirme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya bağlanır. Bir kiracı, özel olarak atanmış farklı SKU 'Lara ait bir veya birden çok sunucu birimine sahip olabilir.
+- **Sunucu veya konak**: Bir sunucu veya konak birimi, müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan bir sunucu veya konak, tek bir kiracıya atanan atomik çıplak bir işlem birimidir. Bir konak veya sunucuyu başka bir müşteriyle paylaştırmanıza neden olabilecek bir donanım bölümlendirme veya yumuşak bölümlendirme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya bağlanır. Bir kiracı, özel olarak atanmış farklı SKU 'Lara ait bir veya birden çok sunucu birimine sahip olabilir.
 - Azure 'daki bir SAP HANA (büyük örnekler) altyapı damgasında, ağ, depolama ve işlem düzeyindeki kiracı kavramları aracılığıyla birçok farklı kiracı dağıtılır ve birbirlerine karşı yalıtılır. 
 
 

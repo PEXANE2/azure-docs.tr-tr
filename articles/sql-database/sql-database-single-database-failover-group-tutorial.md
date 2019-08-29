@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935012"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099139"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Öğretici: Bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme
 
@@ -61,16 +61,15 @@ Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azu
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin. 
 
 
-1. [Azure Portal](https://portal.azure.com)sol üst köşesindeki **tüm hizmetler** ' i seçin. 
-1. Arama `sql servers` kutusuna yazın. 
-1. Seçim SQL Server ' ın yanındaki yıldız simgesini seçerek SQL Server **'lar** ' ı seçin ve sol taraftaki Gezinti bölmenizi ekleyin. 
-    
-    ![SQL sunucularını bulma](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. 2 `mySampleDatbase`. bölümde oluşturulan tek veritabanını (gibi) seçin. 
+1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
 
-1. **SQL Server** ' ı seçin ve Bölüm 1 ' de oluşturduğunuz sunucuyu (örneğin `mysqlserver`,) seçin.
+   ![Tek veritabanı için açık sunucu](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve sonra yeni bir yük devretme grubu oluşturmak için **Grup Ekle** ' yi seçin. 
 
-    ![Yeni Yük devretme grubu Ekle](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Yeni Yük devretme grubu Ekle](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
     - **Yük devretme grubu adı**: Benzersiz bir yük devretme grubu adı (örneğin `failovergrouptutorial`,) yazın. 
@@ -78,16 +77,16 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanını
         - **Sunucu adı**: İkincil sunucu için, `mysqlsecondary`gibi benzersiz bir ad yazın. 
         - **Sunucu Yöneticisi oturum açma**: Türüyle`azureuser`
         - **Parola**: Parola gereksinimlerini karşılayan karmaşık bir parola yazın.
-        - **Konum**: Doğu ABD 2 gibi açılan kutudan bir konum seçin. Bu konum, birincil sunucunuz ile aynı konumda olamaz.
+        - **Konum**: Açılan kutudan, `East US`gibi bir konum seçin. Bu konum, birincil sunucunuz ile aynı konumda olamaz.
 
     > [!NOTE]
     > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
     
-      ![Yük devretme grubu için ikincil sunucu oluşturma](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+      ![Yük devretme grubu için ikincil sunucu oluşturma](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
    - **Grup Içindeki veritabanları**: İkincil bir sunucu seçildikten sonra bu seçeneğin kilidi açılabilir. **Eklenecek veritabanlarını seçmek** ve sonra Bölüm 1 ' de oluşturduğunuz veritabanını seçmek için bu seçeneği belirleyin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
         
-    ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -99,12 +98,12 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınız�
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
    # $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   # $location = "West US 2"
+   # $location = "West US"
    # $adminLogin = "azureuser"
    # $password = "PWD27!"+(New-Guid).Guid
    # $serverName = "mysqlserver-$(Get-Random)"
    # $databaseName = "mySampleDatabase"
-   $drLocation = "East US 2"
+   $drLocation = "East US"
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
@@ -194,16 +193,21 @@ Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure por
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak yük devretmeyi test edin. 
 
-1. [Azure Portal](https://portal.azure.com)içindeki **SQL** Server sunucunuza gidin. 
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. 2 `mySampleDatbase`. bölümde oluşturulan tek veritabanını (gibi) seçin. 
+1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
+
+   ![Tek veritabanı için açık sunucu](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve ardından Bölüm 2 ' de oluşturduğunuz yük devretme grubunu seçin. 
   
-   ![Portaldan yük devretme grubunu seçin](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![Portaldan yük devretme grubunu seçin](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. 
 1. Örnek tek veritabanınızı içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin. 
 1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin. 
 
-   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
 1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin. 

@@ -1,6 +1,6 @@
 ---
 title: Chef ile Azure sanal makine dağıtımı | Microsoft Docs
-description: Otomatik sanal makine dağıtımı ve yapılandırması Microsoft Azure üzerinde Chef kullanmayı öğrenin
+description: Chef kullanarak Microsoft Azure otomatik sanal makine dağıtımı ve yapılandırması yapma hakkında bilgi edinin
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
@@ -11,56 +11,55 @@ ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719283"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080063"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef ile Azure sanal makine dağıtımını otomatikleştirme
 
-Chef, Otomasyon sunmaya yönelik harika bir araçtır ve istenen durum yapılandırmaları.
+Chef, otomasyon ve istenen durum yapılandırmalarının gönderimi için harika bir araçtır.
 
-En son bulut API sürümüyle, Chef, sağlama ve yapılandırma durumları tek bir komut ile dağıtım olanağı sağlayan Azure ile sorunsuz tümleştirme sağlar.
+En son bulut API sürümü sayesinde Chef, Azure ile sorunsuz tümleştirme sağlarken, tek bir komut aracılığıyla yapılandırma durumlarını sağlama ve dağıtma olanağı sunar.
 
-Bu makalede, Azure sanal makineleri sağlayın ve rehberlik bir ilke veya "Kılavuzu" oluşturma ve ardından bir Azure sanal makinesi için bu kılavuzu dağıtmak için Chef ortamınızı ayarlayın.
+Bu makalede, Azure sanal makinelerini sağlamak ve bir ilke veya "tanımlama kitabı" oluşturup bu tanıtım rehberini bir Azure sanal makinesine dağıtmak için Chef ortamınızı ayarlarsınız.
 
 ## <a name="chef-basics"></a>Chef temelleri
-Başlamadan önce [Chef temel kavramlarını gözden](https://www.chef.io/chef).
+Başlamadan önce, [Chef 'in temel kavramlarını gözden geçirin](https://www.chef.io/chef).
 
 Aşağıdaki diyagramda, üst düzey Chef mimarisi gösterilmektedir.
 
 ![][2]
 
-Chef, üç ana mimari bileşeni vardır: Chef sunucusu, Chef istemci (node) ve Chef iş istasyonu.
+Chef 'in üç ana mimari bileşeni vardır: Chef sunucusu, Chef Istemcisi (node) ve Chef Iş Istasyonu.
 
-Chef sunucusu yönetim noktasıdır ve Chef sunucu için iki seçenek vardır: barındırılan bir çözüm ya da şirket içi bir çözüm.
+Chef sunucusu yönetim noktasıdır ve Chef sunucusu için iki seçenek vardır: barındırılan bir çözüm veya şirket içi bir çözüm.
 
-Chef istemci (node) yönettiğiniz sunucularında yer alan aracısıdır.
+Chef Istemcisi (node), yönettiğiniz sunucularda bulunan aracıdır.
 
-Chef adı için her iki yönetim iş istasyonu, burada ilkeleri oluşturun ve yönetimi komutları ve Chef Araçları'nın yazılım paketi yürütmek iş istasyonu.
+İlke oluşturduğunuz ve yönetim komutlarını ve Chef araçlarının yazılım paketini yürütebileceğiniz yönetici iş istasyonunun adı olan Chef Iş Istasyonu.
 
-Genellikle, gördüğünüz _istasyonunuzu_ eylemler gerçekleştirmek burada konumu olarak ve _Chef iş istasyonu_ yazılım paketi için.
-Örneğin, bir parçası olarak Bıçağı komutu indirirsiniz _Chef iş istasyonu_, Bıçak komutları çalıştırmanız _istasyonunuzu_ altyapısını yönetme.
+Genellikle, _iş istasyonunuzu_ yazılım paketi için eylemleri ve _Chef iş istasyonunu_ gerçekleştirdiğiniz konum olarak görürsünüz.
+Örneğin, bıis komutunu _Chef Iş istasyonunun_bir parçası olarak indirirsiniz, ancak altyapıyı yönetmek için _iş istasyonunuzdan_ bıı komutlarını çalıştırırsınız.
 
-Chef, ayrıca "Tarif kitapları" ve etkili bir şekilde ilkeler tanımlayın ve sunucular için geçerli olan "tarif" kullanır.
+Chef Ayrıca, tanımlandığımız ve sunucular için uygulama yaptığımız ilkeler olan "yemek defterleri" ve "yemek tarifleri" kavramlarını da kullanır.
 
 ## <a name="preparing-your-workstation"></a>İş istasyonunuzu hazırlama
 
-İlk olarak, Chef yapılandırma dosyalarını ve tarif kitapları depolamak için bir dizin oluşturarak iş istasyonunuzu hazırlama.
+İlk olarak, Chef yapılandırma dosyalarını ve tanıtım defterlerini depolamak için bir dizin oluşturarak iş istasyonunuzu hazırlayın.
 
-C:\Chef adlı bir dizin oluşturun.
+C:\chefadlı bir dizin oluşturun.
 
-En son yükleyip [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm istasyonunuzu açın.
+En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürümünü iş istasyonunuza indirin ve yükleyin.
 
 ## <a name="configure-azure-service-principal"></a>Azure hizmet sorumlusunu yapılandırma
 
-İçinde bir hizmet koşulları ve Azure hizmet sorumlusu basit hesabıdır.   Bizim Chef iş istasyonundan Azure kaynaklarını oluşturmanıza yardımcı olmak için size bir hizmet sorumlusu kullanıyor olacaksınız.  Gerekli izinlerle ilgili hizmet sorumlusu oluşturmak için şu PowerShell içinde aşağıdaki komutları çalıştırmanız gerekir:
+En basit şartlar ve Azure hizmet sorumlusu bir hizmet hesabıdır.   Chef Iş Istasyonumuzdan Azure kaynakları oluşturmamıza yardımcı olmak için bir hizmet sorumlusu kullanacağız.  Gerekli izinlerle ilgili hizmet sorumlusunu oluşturmak için PowerShell 'de aşağıdaki komutları çalıştırmanız gerekir:
  
 ```powershell
 Login-AzureRmAccount
@@ -71,46 +70,46 @@ New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
 ```
 
-Lütfen bir Subscriptionıd, Tenantıd, ClientID ve istemci gizli anahtarı (yukarıda belirlenen parola) not edin, bu daha sonra ihtiyacınız olacak. 
+Lütfen SubscriptionID, Tenantıd, ClientID ve Istemci gizli anahtarını (yukarıdaki ayarladığınız parola) bir yere göz atın. bu işlemin daha sonra olması gerekir. 
 
-## <a name="setup-chef-server"></a>Chef Sunucusu Kurulumu
+## <a name="setup-chef-server"></a>Chef sunucusu kurma
 
-Bu kılavuzda, barındırılan Chef için abone, varsayılmaktadır.
+Bu kılavuzda, barındırılan Chef 'e kaydolmanız varsayılmaktadır.
 
-Chef sunucusu zaten kullanıyorsanız, şunları yapabilirsiniz:
+Zaten bir Chef sunucusu kullanmıyorsanız şunları yapabilirsiniz:
 
-* Kaydolun [barındırılan Chef](https://manage.chef.io/signup), Chef ile başlamanın en hızlı yolu olduğu.
-* Tek başına Chef sunucusu aşağıdaki linux tabanlı makinesine SCVMM yüklemek [yükleme yönergeleri](https://docs.chef.io/install_server.html) gelen [Chef belgeleri](https://docs.chef.io/).
+* Chef ile çalışmaya başlamanın en hızlı yolu olan [barındırılan Chef](https://manage.chef.io/signup)'e kaydolun.
+* [Chef belgelerinden](https://docs.chef.io/) [yükleme yönergelerini](https://docs.chef.io/install_server.html) izleyerek Linux tabanlı makineye tek başına Chef sunucusu yükleme.
 
-### <a name="creating-a-hosted-chef-account"></a>Chef barındırılan hesabı oluşturma
+### <a name="creating-a-hosted-chef-account"></a>Barındırılan Chef hesabı oluşturma
 
-Chef barındırılan hesap için kaydolun [burada](https://manage.chef.io/signup).
+[Burada](https://manage.chef.io/signup)barındırılan bir Chef hesabına kaydolun.
 
-Kayıt işlemi sırasında yeni bir kuruluş oluşturun istenir.
+Kaydolma işlemi sırasında yeni bir kuruluş oluşturmanız istenir.
 
 ![][3]
 
-Kuruluşunuz oluşturulduktan sonra Başlangıç setini indirin.
+Kuruluşunuz oluşturulduktan sonra, başlangıç paketini indirin.
 
 ![][4]
 
 > [!NOTE]
-> Anahtarlarınızı sıfırlanacak uyarı bir istem alırsanız, sahip olduğumuz olarak henüz yapılandırılmamış olan herhangi bir mevcut altyapı olarak devam etmek uygundur.
+> Anahtarlarınızın sıfırlandığını bildiren bir uyarı alırsanız, henüz var olan bir altyapı yapılandırıldığımızda devam etmeniz normaldir.
 >
 
-Bu başlangıç Seti zip dosyası kuruluş yapılandırma dosyalarını ve kullanıcı anahtarı içeren `.chef` dizin.
+Bu başlatıcı seti ZIP dosyası, `.chef` dizindeki kuruluş yapılandırma dosyalarını ve Kullanıcı anahtarınızı içerir.
 
-`organization-validator.pem` Ayrı ayrı, özel anahtarı olduğundan ve özel anahtarları Şef sunucusunda değil depolanmalıdır indirilmelidir. Gelen [Chef yönetme](https://manage.chef.io/)Yönetim bölümüne gidin ve "Sıfırlama doğrulama ayrı olarak indirmek dosyayı sağlayan anahtarı" seçin. Dosyayı c:\chef için kaydedin.
+Özel anahtar olduğu ve özel anahtarların Chef sunucusunda depolanmamalıdır olması nedeniyle ayrı olarak indirilmelidir.`organization-validator.pem` [Chef Yönet](https://manage.chef.io/)'ten Yönetim bölümüne gidin ve ayrı olarak indirmeniz için bir dosya sağlayan "doğrulama anahtarını Sıfırla" yı seçin. Dosyayı c:\chefdizinine kaydedin.
 
-### <a name="configuring-your-chef-workstation"></a>Chef istasyonunuzu yapılandırma
+### <a name="configuring-your-chef-workstation"></a>Chef iş istasyonunuzu yapılandırma
 
-C:\chef için chef starter.zip içeriğini ayıklayın.
+Chef-Starter. zip içeriğini c:\chefdizinine ayıklayın.
 
-Chef starter\chef deposu altındaki tüm dosyaları kopyalayın\.c:\chef dizininize chef.
+Chef-starter\chef-repo\.Chef altındaki tüm dosyaları c:\chef dizininize kopyalayın.
 
-Kopyalama `organization-validator.pem` c:\Downloads kaydedilmişse c:\chef için dosya
+C:\downloads klasörüne kaydedilirse dosyayı c:\chef dizinine kopyalayın `organization-validator.pem`
 
-Dizininizi aşağıdaki örnek gibi görünmelidir.
+Dizininiz artık aşağıdaki örneğe benzer şekilde görünmelidir.
 
 ```powershell
     Directory: C:\Users\username\chef
@@ -128,13 +127,13 @@ d-----    12/6/2018   5:38 PM           roles
 -a----    12/6/2018   5:38 PM      2341 README.md
 ```
 
-Artık c:\chef kökündeki beş dosya ve dört dizinleri (boş bir chef deposu dizini dahil) olmalıdır.
+Artık c:\chefroot dizininde beş dosya ve dört dizin (boş Chef-repo dizini dahil) olmalıdır.
 
-### <a name="edit-kniferb"></a>Edit knife.rb
+### <a name="edit-kniferb"></a>Bıçak. RB 'yi Düzenle
 
-PEM dosyaları kuruluşunuz ve iletişim için yönetim özel anahtarları içeren ve Bıçak yapılandırmanızı knife.rb dosyası içerir. Knife.rb dosyasını düzenlemeniz gerekir.
+PEK dosyaları, iletişim için kuruluşunuzu ve yönetim özel anahtarlarını içerir ve bıçak. rb dosyası bıçak yapılandırmanızı içerir. Bıçak. RB dosyasını düzenlememiz gerekir.
 
-Knife.rb dosyayı dilediğiniz düzenleyicide açın. Değiştirilmemiş dosya gibi görünmelidir:
+Bıçak. RB dosyasını istediğiniz düzenleyicide açın. Değiştirilmemiş dosya şuna benzemelidir:
 
 ```rb
 current_dir = File.dirname(__FILE__)
@@ -146,24 +145,24 @@ chef_server_url     "https://api.chef.io/organizations/myorg"
 cookbook_path       ["#{current_dir}/cookbooks"]
 ```
 
-Aşağıdaki bilgiler için knife.rb ekleyin:
+Aşağıdaki bilgileri bıçak. RB 'nize ekleyin:
 
-validation_client_name   "myorg-validator"
+validation_client_name "MyOrg-Validator"
 
-validation_key           "#{current_dir}/myorg.pem"
+validation_key "# {current_dir}/MyOrg.exe"
 
-knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
+bıçak [: azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
 
-knife[:azure_subscription_id] =   "11111111-bbbbb-cccc-1111-222222222222"
+bıçak [: azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
 
-knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
+bıçak [: azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
 
-knife[:azure_client_secret] =     "#1234p$wdchef19"
+bıçak [: azure_client_secret] = "#1234p $wdchef 19"
 
 
-Bu satırlar Bıçak c:\chef\cookbooks altında tarif kitapları dizine başvurur ve ayrıca Azure işlemleri sırasında oluşturulan Azure hizmet sorumlusu kullanan sağlayacaktır.
+Bu satırlar, bıçak 'nin c:\chef\pişirbook altında bulunan kitaplar dizinine başvurduğundan ve ayrıca Azure işlemleri sırasında oluşturduğunuz Azure hizmet sorumlusunu kullandığından emin olur.
 
-Knife.rb dosyanız artık aşağıdaki örneğe benzer görünmelidir:
+Bıçak. RB dosyanız şimdi aşağıdaki örneğe benzer şekilde görünmelidir:
 
 ![][14]
 
@@ -189,14 +188,14 @@ knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
 knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
-## <a name="install-chef-workstation"></a>Chef iş istasyonu yükleyin
+## <a name="install-chef-workstation"></a>Chef Iş Istasyonunu yükler
 
-Ardından, [yükleyip](https://downloads.chef.io/chef-workstation/) Chef iş istasyonu.
-Chef iş istasyonunun varsayılan konumu yükleyin. Bu yükleme birkaç dakika sürebilir.
+Sonra Chef Iş Istasyonunu [indirip yükleyin](https://downloads.chef.io/chef-workstation/) .
+Chef Iş Istasyonunu varsayılan konum olarak yükler. Bu yükleme birkaç dakika sürebilir.
 
-Masaüstünde, bir "FA Chef ürünlerle etkileşime geçmek için gerekir aracı ile yüklenen bir ortam olan PowerShell" görürsünüz. FA PowerShell yeni geçici komutlar gibi kullanılabilir hale getirir `chef-run` gibi de Geleneksel Chef CLI komutları `chef`. Chef iş istasyonu ve Chef Araçlar'ın yüklü sürümü görmek `chef -v`. Chef iş istasyonu uygulamadan "Hakkında Chef iş istasyonu"'i seçerek, iş istasyonu sürümünüzü kontrol edebilirsiniz.
+Masaüstünde, Chef ürünleriyle etkileşimde bulunmak için ihtiyacınız olan araçla yüklenmiş bir ortam olan "CW PowerShell" i görürsünüz. FA PowerShell, gibi yeni geçici komutlar `chef-run` ve gibi geleneksel Chef CLI komutları `chef`sağlar. Yüklü Chef Iş Istasyonu ve Chef araçları `chef -v`sürümüne bakın. Ayrıca, Chef Iş Istasyonu uygulamasındaki "Chef Workstation" seçeneğini belirleyerek Iş Istasyonu sürümünüzü kontrol edebilirsiniz.
 
-`chef --version` şunun gibi döndürülmesi gerekir:
+`chef --version`şöyle bir şey döndürmelidir:
 
 ```
 Chef Workstation: 0.4.2
@@ -209,27 +208,27 @@ Chef Workstation: 0.4.2
 ```
 
 > [!NOTE]
-> Yolun sırası önemlidir! Değilse, opscode yolları doğru sırayla sorunları olacaktır.
+> Yolun sırası önemlidir! Opscode yollarınız doğru sırada değilse sorunlarla karşılaşacaktır.
 >
 
 Devam etmeden önce iş istasyonunuzu yeniden başlatın.
 
-### <a name="install-knife-azure"></a>Bıçak Azure'ı yükleme
+### <a name="install-knife-azure"></a>Bıçak Azure 'ı yükler
 
-Bu öğreticide, sanal makineyle etkileşim kurmak için Azure Resource Manager kullanmakta olduğunuz varsayılır.
+Bu öğreticide, sanal makineli etkileşimde bulunmak için Azure Resource Manager kullandığınızı varsayılmaktadır.
 
-Bıçak Azure uzantıyı yükleyin. Bu, "Azure eklentisiyle" Bıçak sağlar.
+Bıçak Azure uzantısını yükler. Bu, "Azure eklentisi" ile bıçak sağlar.
 
 Aşağıdaki komutu çalıştırın.
 
     chef gem install knife-azure ––pre
 
 > [!NOTE]
-> En son dizi API'si erişim sağlayan Bıçak Azure eklentisi en son RC sürümünü alıyorsunuz – öncesi bağımsız değişkeni sağlar.
+> – Pre bağımsız değişkeni, en son API kümesine erişim sağlayan bıçak Azure eklentisinin en son RC sürümünü almanızı sağlar.
 >
 >
 
-Bağımlılık sayısı da aynı anda yüklenecek olasıdır.
+Aynı zamanda aynı anda bir dizi bağımlılığı da yüklenecektir.
 
 ![][8]
 
@@ -237,23 +236,23 @@ Her şeyin doğru şekilde yapılandırıldığından emin olmak için aşağıd
 
     knife azurerm server list
 
-Her şeyin doğru şekilde yapılandırıldıysa, kullanılabilir Azure görüntüleri kaydırın listesini görürsünüz.
+Her şey doğru yapılandırılmışsa, kullanılabilecek Azure görüntülerinin bir listesini görürsünüz.
 
-Tebrikler. İş istasyonunuzu ayarlayın!
+Tebrikler. İş istasyonunuz ayarlandı!
 
-## <a name="creating-a-cookbook"></a>Kılavuzu oluşturma
+## <a name="creating-a-cookbook"></a>Bir tanımlama kitabı oluşturma
 
-Kılavuzu Chef tarafından yönetilen istemcinizdeki yürütmek istediğiniz komutları kümesini tanımlamak için kullanılır. Kılavuzu oluşturma basit, tek **chef Oluşturma Kılavuzu** Kitapçığı şablonu oluşturmak için komutu. Bu kılavuzu IIS otomatik olarak dağıtan bir web sunucusu için ' dir.
+Bir tanımlama kitabı, yönetilen istemcinizdeki yürütmek istediğiniz bir komut kümesini tanımlamak için Chef tarafından kullanılır. Bir tanımlama kitabı oluşturmak basit, tek yapmanız gereken, tanımlama kitabı şablonunu oluşturmak için **Chef tanıtım rehberini** oluşturma komutunu kullanmaktır. Bu kılavuz kitabı, IIS 'yi otomatik olarak dağıtan bir Web sunucusu içindir.
 
 C:\Chef dizininiz altında aşağıdaki komutu çalıştırın.
 
     chef generate cookbook webserver
 
-Bu komut bir dizi C:\Chef\cookbooks\webserver dizin altında dosya oluşturur. Ardından, Chef istemcisi yönetilen bir sanal makinede yürütülecek komut kümesini tanımlar.
+Bu komut, C:\chef\pişirbooks\webserverdizininde bir dosya kümesi oluşturur. Ardından, Chef istemcisinin yönetilen sanal makinede yürütmesi için komut kümesi tanımlayın.
 
-Komut dosyası default.rb içinde depolanır. Bu dosyada, IIS yükler, IIS başlayıp wwwroot klasörü için bir şablon dosyası kopyalar komut kümesini tanımlar.
+Komutlar default. RB dosyasında depolanır. Bu dosyada, IIS 'yi yükleyen bir komutlar kümesi tanımlayın, IIS 'yi başlatır ve bir şablon dosyasını Wwwroot klasörüne kopyalar.
 
-C:\chef\cookbooks\webserver\recipes\default.rb dosyasını değiştirin ve aşağıdaki satırları ekleyin.
+C:\chef\cookbooks\webserver\recipes\default.RB dosyasını değiştirin ve aşağıdaki satırları ekleyin.
 
     powershell_script 'Install IIS' do
          action :run
@@ -272,27 +271,27 @@ C:\chef\cookbooks\webserver\recipes\default.rb dosyasını değiştirin ve aşa�
 İşiniz bittiğinde dosyayı kaydedin.
 
 ## <a name="creating-a-template"></a>Şablon oluşturma
-Bu adımda, default.html sayfası olarak kullanılan için bir şablon dosyası oluşturacaksınız.
+Bu adımda, varsayılan. html sayfası olarak kullanılacak bir şablon dosyası oluşturacaksınız.
 
-Şablon oluşturmak için aşağıdaki komutu çalıştırın:
+Şablonu oluşturmak için aşağıdaki komutu çalıştırın:
 
     chef generate template webserver Default.htm
 
-Gidin `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` dosya. Bazı basit bir "Merhaba Dünya" HTML kod ekleyerek dosyasını düzenleyin ve ardından dosyayı kaydedin.
+`C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` Dosyasına gidin. Daha basit bir "Merhaba Dünya" HTML kodu ekleyerek dosyayı düzenleyin ve ardından dosyayı kaydedin.
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>Kılavuzu Chef sunucuya yükleyin.
-Bu adımda, bir kopyasını Kılavuzu, yerel makinede oluşturdunuz ve Chef barındırılan sunucuya yükleyin oluşturun. Karşıya sonra Kitapçığı altında görünür **ilke** sekmesi.
+## <a name="upload-the-cookbook-to-the-chef-server"></a>Tanıtım rehberini Chef sunucusuna yükleme
+Bu adımda, yerel makinede oluşturduğunuz tanıtım rehberinin bir kopyasını oluşturursunuz ve bu dosyayı Chef barındırılan sunucusuna yüklersiniz. Karşıya yüklendikten sonra, tanımlama kitabı **ilke** sekmesinin altında görüntülenir.
 
     knife cookbook upload webserver
 
 ![][9]
 
-## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Bıçak Azure ile bir sanal makine dağıtma
-Bir Azure sanal makinesine dağıtın ve IIS web hizmeti ve varsayılan web sayfasını yükleyen "Web sunucusu" kılavuzu uygulayın.
+## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Bıçak Azure ile sanal makine dağıtma
+Bir Azure sanal makinesini dağıtın ve IIS Web hizmetini ve varsayılan Web sayfasını yükleyecek "Web sunucusu" tanımlama kitabı ' nı uygulayın.
 
-Bunu yapmak için kullanmanız **Bıçak azurerm sunucusu oluşturma** komutu.
+Bunu yapmak için **bıçak azurere sunucu oluştur** komutunu kullanın.
 
-Örnek komut, sonraki görünür.
+Sonraki bir komutun örneği görüntülenir.
 
     knife azurerm server create `
     --azure-resource-group-name rg-chefdeployment `
@@ -310,34 +309,34 @@ Bunu yapmak için kullanmanız **Bıçak azurerm sunucusu oluşturma** komutu.
     -r "recipe[webserver]"
 
 
-Yukarıdaki örnekte, Batı ABD bölgesinde yüklü Windows Server 2016 ile Standard_DS2_v2 sanal makine oluşturacaksınız. Belirli değişkenleri değiştirin ve çalıştırın.
+Yukarıdaki örnekte, Batı ABD bölgesinde Windows Server 2016 yüklü bir Standard_DS2_v2 sanal makinesi oluşturulur. Belirli değişkenlerinizi değiştirin ve çalıştırın.
 
 > [!NOTE]
-> Komut satırı aracılığıyla ben ayrıca uç ağ filtresi kuralları – tcp uç noktaları parametresini kullanarak otomatikleştirme. 80 ve web sayfası ve RDP oturumu erişim sağlamak için 3389 numaralı bağlantı noktalarını açık.
+> Komut satırı ile, – TCP-endpoints parametresini kullanarak uç nokta ağı filtre kurallarınızı otomatikleştirdim. Web sayfası ve RDP oturumuna erişim sağlamak için 80 ve 3389 bağlantı noktalarını açdım.
 >
 >
 
-Komutu çalıştırdıktan sonra makinenizin sağlamak başlamak görmek için Azure portalına gidin.
+Komutu çalıştırdığınızda, makinenizin sağlamaya başlamasını görmek için Azure portal gidin.
 
 ![][15]
 
-Komut istemi görünür.
+Sonraki komut istemi görüntülenir.
 
 ![][16]
 
-Dağıtım tamamlandıktan sonra dağıtım tamamlandığında yeni bir sanal makinenin genel IP adresi görüntülenir, bu kopyalayabilir ve bir web tarayıcısına yapıştırın ve dağıttığınız Web sitesini görüntülemek. Şu sanal makine dağıtılırken dışarıdan kullanılabilir olması, böylece biz 80 numaralı bağlantı noktasını açıldı.   
+Dağıtım tamamlandıktan sonra, yeni sanal makinenin genel IP adresi dağıtımın tamamlanmasında görüntülenir, bunu kopyalayabilir ve bir Web tarayıcısına yapıştırabilir ve dağıttığınız Web sitesini görüntüleyebilirsiniz. Sanal makineyi dağıttığımız için bağlantı noktası 80 ' i açtık, dışarıdan kullanılabilir olmalıdır.   
 
 ![][11]
 
-Bu örnek, creative HTML kodu kullanır.
+Bu örnek, Creative HTML kodunu kullanır.
 
-Ayrıca düğümün durumu görüntüleyebilirsiniz [Chef yönetme](https://manage.chef.io/). 
+Ayrıca, düğümün durum [Chef Manage](https://manage.chef.io/)' i görüntüleyebilirsiniz. 
 
 ![][17]
 
-Bağlantı noktası 3389 üzerinden Azure portalından bir RDP oturumu aracılığıyla bağlanabilirsiniz unutmayın.
+3389 numaralı bağlantı noktası üzerinden Azure portal bir RDP oturumu aracılığıyla da bağlanabilirsiniz.
 
-Teşekkür ederiz! Git ve altyapınızı Azure ile kod yolculuğu olarak bugün başlayın!
+Teşekkür ederiz! Azure 'la bugün kod yolculuğuna gidin ve altyapınızı başlatın!
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

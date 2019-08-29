@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: c2544bd2be683b731c3dac0bea651d4b64dff75e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a11dec8998a77153cd10b6caf72f5885c69b70c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323199"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094761"
 ---
 # <a name="pool-resize-complete-event"></a>Havuz yeniden boyutlandırma tamamlama olayı
 
@@ -48,7 +47,7 @@ ms.locfileid: "68323199"
 |targetDedicated|Int32|Havuz için istenen işlem düğümlerinin sayısı.|
 |Enableotomatik ölçeklendirme|Bool|Havuz boyutunun zaman içinde otomatik olarak görüntülenip görüntülenmeyeceğini belirtir.|
 |isAutoPool|Bool|Havuzun bir işin oto havuzu mekanizması aracılığıyla oluşturulup oluşturulmayacağını belirtir.|
-|startTime|Datetime|Havuz yeniden boyutlandırmanın başladığı zaman.|
-|endTime|Datetime|Havuzun yeniden boyutlandırılması zamanı tamamlandı.|
+|startTime|DateTime|Havuz yeniden boyutlandırmanın başladığı zaman.|
+|endTime|DateTime|Havuzun yeniden boyutlandırılması zamanı tamamlandı.|
 |resultCode|Dize|Yeniden boyutlandırmanın sonucu.|
 |Sonuç iletisi|Dize|Yeniden boyutlandırma hatası, sonucun ayrıntılarını içerir.<br /><br /> Yeniden boyutlandırma başarıyla tamamlanırsa işlemin başarılı olduğunu bildirir.|

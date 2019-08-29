@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: f893e417420b26dcb56e0d84551fbad3577b8fdb
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874869"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083089"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
 
@@ -41,7 +40,7 @@ Bu makalede, Linux üzerinde çalışan bir Linux DB2 için IBM DB2 pureScale 'y
 Ortamınız için en iyi DB2 pureScale mimarisine karar vermenize yardımcı olmak üzere boyutlandırmayı tam olarak tahmin etmenizi ve bir varsayım yapmanızı öneririz. Kaynak sistemde, DB2 z/OS Parallel sysplex veri paylaşımı mimarisi, Kupın yapılandırması ve dağıtılmış veri tesis (DDF) kullanım istatistikleri ile göz önünde bulundurduğunuzdan emin olun.
 
 > [!NOTE]
-> Bu makalede, DB2 geçişine yönelik bir yaklaşım açıklanmaktadır, ancak diğerleri vardır. Örneğin, DB2 pureScale, sanallaştırılmış şirket içi ortamlarda da çalıştırılabilir. IBM, çeşitli yapılandırmalarda Microsoft Hyper-V üzerinde DB2 'yi destekler. Daha fazla bilgi için bkz. IBM bilgi merkezindeki [DB2 Porescale sanallaştırma mimarisi](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) .
+> Bu makalede, DB2 geçişine yönelik bir yaklaşım açıklanmaktadır, ancak diğerleri vardır. Örneğin, DB2 pureScale, sanallaştırılmış şirket içi ortamlarda da çalıştırılabilir. IBM, çeşitli yapılandırmalarda Microsoft Hyper-V DB2 'yi destekler. Daha fazla bilgi için bkz. IBM bilgi merkezindeki [DB2 Porescale sanallaştırma mimarisi](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) .
 
 ## <a name="architecture"></a>Mimari
 

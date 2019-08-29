@@ -7,24 +7,23 @@ manager: cfowler
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563035"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098483"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
 > [!Important] 
 > App Service ve Azure Işlevleri için Yönetilen kimlikler, uygulamanız abonelikler/kiracılar arasında geçirilirse beklendiği gibi davranmaz. Uygulamanın, özelliği devre dışı bırakıp yeniden etkinleştirerek yapılabilecek yeni bir kimlik alması gerekir. Aşağıdaki [kimliği kaldırma](#remove) bölümüne bakın. Aşağı akış kaynakları, yeni kimliği kullanmak için erişim ilkelerinin güncelleştirilmesini de gerekecektir.
 
-Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. Azure Active Directory yönetilen bir kimlik, uygulamanızın Azure Key Vault gibi diğer AAD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. AAD 'deki Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
+Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. Azure Active Directory’de yönetilen bir kimlik, uygulamanızın Azure Key Vault gibi AAD korumalı kaynaklara kolayca ulaşmasını sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. AAD 'deki Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
 Uygulamanıza iki tür kimlik verilebilir: 
 - **Sistem tarafından atanan bir kimlik** uygulamanıza bağlanır ve uygulamanız silinirse silinir. Uygulamanın yalnızca bir sistem tarafından atanmış kimliği olabilir.
@@ -173,7 +172,7 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 5. **Kullanıcı atandı** sekmesinde **Ekle**' ye tıklayın.
 
-6. Daha önce oluşturduğunuz kimliği arayın ve seçin.           **Ekle**'yi tıklatın.
+6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'yi tıklatın.
 
 ![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-user.png)
 

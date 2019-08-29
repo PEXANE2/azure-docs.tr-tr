@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27f7a9b576263b97c251306c9817b85c31041739
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312235"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101317"
 ---
 # <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
@@ -132,7 +131,7 @@ Azure 'da SAP HANA yüklü Linux işletim sistemi (büyük örnekler), yedekleme
 
 SAP HANA yüklerken SAP HANA HDB istemcisini HANA büyük örnek birimlerine yüklemek sizin sorumluluğunuzdadır.
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>2\. adım: /Etc/ssh/SSH\_yapılandırmasını değiştirme
+### <a name="step-2-change-the-etcsshssh_config"></a>2\. adım: /Etc/ssh/SSH\_yapılandırmasını değiştirme
 
 Bu adım, [Azure 'daki SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)'nda "depolama Ile iletişimi etkinleştir" bölümünde açıklanmaktadır.
 
@@ -214,7 +213,7 @@ Tutulan anlık görüntü sayısı, komut dosyası çağrısında bir parametre 
 ## <a name="snapshot-strategies"></a>Anlık görüntü stratejileri
 Farklı türler için anlık görüntülerin sıklığı, HANA büyük örnek olağanüstü durum kurtarma işlevini kullanmanıza bakılmaksızın değişir. Bu işlevsellik, depolama anlık görüntülerinin sıklık ve yürütme dönemlerinde özel öneriler gerektirebilecek depolama anlık görüntülerini kullanır. 
 
-Aşağıdaki önemli noktalar ve önerilerle, örnek olarak HANA büyük örneklerin sunduğu olağanüstü durum kurtarma *işlevini kullanmayın.* Bunun yerine, yedeklemelerin olması için depolama anlık görüntülerini kullanır ve son 30 gün için noktadan noktaya kurtarma sağlayabileceksiniz. Anlık görüntü ve boşluk sayısının sınırlamaları verildiğinde, aşağıdaki gereksinimleri göz önünde bulundurun:
+Aşağıdaki önemli noktalar ve önerilerle, örnek olarak HANA büyük örneklerin sunduğu olağanüstü durum kurtarma işlevini kullanmayın. Bunun yerine, yedeklemelerin olması için depolama anlık görüntülerini kullanır ve son 30 gün için noktadan noktaya kurtarma sağlayabileceksiniz. Anlık görüntü ve boşluk sayısının sınırlamaları verildiğinde, aşağıdaki gereksinimleri göz önünde bulundurun:
 
 - Noktadan noktaya kurtarma için kurtarma süresi.
 - Kullanılan alan.
@@ -331,7 +330,7 @@ Betiği bu ayarla çalıştırırsanız, yeni depolama anlık görüntüsünü i
  >[!NOTE]
  > Bu betik, yalnızca bir saatten daha eski anlık görüntüler varsa, anlık görüntü sayısını azaltır. Betik, bir saatten daha eski olan anlık görüntüleri silmez. Bu kısıtlamalar, sunulan isteğe bağlı olağanüstü durum kurtarma işleviyle ilgilidir.
 
-Bir anlık görüntü kümesini artık,  ****yedekleme ön eki** ile korumak istemiyorsanız, komut dosyasını saklama numarası olarak **0** ile çalıştırın. Bu etiketle eşleşen tüm anlık görüntüler daha sonra kaldırılır. Tüm anlık görüntülerin kaldırılması, HANA büyük örnek olağanüstü durum kurtarma işlevinin yeteneklerini etkileyebilir.
+Bir anlık görüntü kümesini artık, ** Yedekleme ön eki ile korumak istemiyorsanız , komut dosyasını saklama numarası olarak **0** ile çalıştırın. Bu etiketle eşleşen tüm anlık görüntüler daha sonra kaldırılır. Tüm anlık görüntülerin kaldırılması, HANA büyük örnek olağanüstü durum kurtarma işlevinin yeteneklerini etkileyebilir.
 
 Belirli anlık görüntüleri silmek için ikinci bir seçenek betiği `azure_hana_snapshot_delete`kullanmaktır. Bu betik, HANA Studio 'da bulunan ya da anlık görüntü adının kendisi aracılığıyla HANA yedekleme KIMLIĞI kullanılarak bir anlık görüntüyü veya anlık görüntü kümesini silmek için tasarlanmıştır. Şu anda yedekleme KIMLIĞI yalnızca **Hana** anlık görüntü türü için oluşturulan anlık görüntülere bağlıdır. Tür **günlüklerinin** anlık görüntü yedeklemeleri ve **önyüklemesi** SAP HANA bir anlık görüntü gerçekleştirmez, bu nedenle bu anlık görüntüler için hiçbir yedekleme kimliği bulunamadı. Anlık görüntü adı girilirse, girilen anlık görüntü adıyla eşleşen farklı birimlerdeki tüm anlık görüntüleri arar. 
 

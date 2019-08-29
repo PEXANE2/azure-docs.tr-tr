@@ -6,21 +6,20 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478404"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081665"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Öğretici: Jenkins ve Azure DevOps hizmetlerini kullanarak uygulamanızı azure'da Linux sanal makineleri dağıtma
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Öğretici: Jenkins ve Azure DevOps Services kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
 Sürekli tümleştirme (CI) ve sürekli dağıtım (CD), kodunuzu derleyebileceğiniz, yayınlayabileceğiniz ve dağıtabileceğiniz bir işlem hattı oluşturur. Azure DevOps Services, Azure’a dağıtım için eksiksiz ve tam özellikli bir dizi CI/CD otomasyon aracı sağlar. Jenkins, CI/CD otomasyonu sağlayan, popüler bir üçüncü taraf CI/CD sunucu tabanlı aracıdır. Bulut uygulamanızı ve hizmetinizi nasıl sunacağınızı özelleştirmek için Azure DevOps Services ve Jenkins’i birlikte kullanabilirsiniz.
 
@@ -35,7 +34,7 @@ bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/relea
 > * Azure DevOps Services tümleştirmesi için Jenkins’i yapılandırın.
 > * Jenkins hizmet uç noktası oluşturma.
 > * Azure sanal makineleri için dağıtım grubu oluşturma.
-> * Bir Azure işlem hatları yayın işlem hattı oluşturursunuz.
+> * Azure Pipelines bir yayın işlem hattı oluşturun.
 > * El ile ve CI ile tetiklenen dağıtımlar yürütme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -68,7 +67,7 @@ Bu uygulamanın çatalını oluşturun ve bu öğreticinin daha sonraki adımlar
 
 ## <a name="configure-jenkins-plug-ins"></a>Jenkins eklentilerini yapılandırma
 
-İlk olarak, iki Jenkins eklentileri yapılandırmanız gerekir: **NodeJS** ve **VS Team Services ile sürekli dağıtım**.
+İlk olarak, iki Jenkins eklentisi yapılandırmanız gerekir: **NodeJS** ve **vs Team Services sürekli dağıtımı**.
 
 1. Jenkins hesabınızı açın ve **Manage Jenkins** (Jenkins’i yönet) seçeneğini belirleyin.
 2. **Manage Jenkins** (Jenkins’i yönet) sayfasında **Manage Plugins** (Eklentileri yönet) seçeneğini belirleyin.
@@ -141,7 +140,7 @@ Yayın işlem hattının sanal makinenize dağıtılabilmesi için Azure DevOps 
 8. Yüklemeden sonra sizden dağıtım grubu etiketleri istenir. Varsayılanları kabul edin.
 9. Azure DevOps Services’ta, **Dağıtım Grupları** bölümündeki **Hedefler** kısmında yeni kaydettiğiniz sanal makinenizin olup olmadığını denetleyin.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Bir Azure işlem hatları yayın işlem hattı oluşturma
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Azure Pipelines yayın işlem hattı oluşturma
 
 Yayın işlem hattı, Azure Pipelines’ın uygulamayı dağıtmak için kullandığı işlemi belirtir. Bu örnekte, bir kabuk betiği yürütürsünüz.
 
@@ -164,7 +163,7 @@ Azure Pipelines’da yayın işlem hattı oluşturmak için:
 
 1. **+ Yayın**’ı seçin ve **Yayın Oluştur** seçeneğini belirleyin.
 2. Vurgulanan açılır listede tamamladığınız derlemeyi seçin ve **Kuyruk** seçeneğini belirleyin.
-3. Açılır iletide yayın bağlantısını seçin. Örneğin: "Yayın **-1 yayını** oluşturuldu."
+3. Açılır iletide yayın bağlantısını seçin. Örneğin: "Yayın **sürümü-1** oluşturuldu."
 4. Yayın konsolu çıktısını izlemek için **Günlükler** sekmesini açın.
 5. Tarayıcınızda, dağıtım grubunuza eklediğiniz sunuculardan birinin URL’sini açın. Örneğin, **http://{your-server-ip-address}** girin.
 6. Kaynak Git deposuna gidin ve app/views/index.jade dosyasındaki **h1** başlığının içeriklerini, değiştirilen bazı metinlerle değiştirin.

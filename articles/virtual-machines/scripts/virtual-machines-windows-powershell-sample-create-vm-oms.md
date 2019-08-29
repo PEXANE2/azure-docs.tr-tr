@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell betik örneği - Azure İzleyici günlükleri | Microsoft Docs
-description: Azure PowerShell betik örneği - Azure İzleyici ile günlüğe kaydeder.
+title: Azure PowerShell betik örneği-Azure Izleyici günlükleri | Microsoft Docs
+description: Azure PowerShell betik örneği-Azure Izleyici günlükleri
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 83a93e9c24b34a0a081e18946fa3ff21bd06a61d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 16c92d80bb299c73e662b63b5ebb3abc955005a2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695561"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080796"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>PowerShell ile bir Azure İzleyici VM oluşturma 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>PowerShell ile Azure Izleyici VM oluşturma 
 
 Bu betik bir Azure Sanal Makinesi oluşturur, Log Analytics aracısını yükler ve sistemi bir Log Analytics çalışma alanına kaydeder. Betik çalıştıktan sonra sanal makine Azure İzleyici’de görünür. Ayrıca Log Analytics çalışma alanı kimliği ve çalışma alanı anahtarını güncelleştirmeniz gerekir.
 
@@ -51,7 +50,7 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve ağ güvenlik grubuna bağlar. Bu komut ayrıca 80 numaralı bağlantı noktasını açar ve yönetici kimlik bilgilerini ayarlar. |
-| [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Sanal makineye bir VM uzantısı ekleyin. |
+| [Set-Azvmexgeri](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Sanal makineye bir VM uzantısı ekleyin. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

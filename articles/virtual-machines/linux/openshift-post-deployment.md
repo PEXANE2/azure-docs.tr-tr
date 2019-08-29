@@ -1,6 +1,6 @@
 ---
-title: Dağıtım sonrası görevleri Azure üzerinde OpenShift | Microsoft Docs
-description: Bir OpenShift kümesi dağıtıldıktan sonra ek görevler için.
+title: Azure dağıtım sonrası görevlerinde OpenShift | Microsoft Docs
+description: Bir OpenShift kümesi dağıtıldıktan sonra için ek görevler.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,41 +9,40 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac93f08a5e93fefaa1de82a7d86a2cfdf3e6aa6d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771366"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091748"
 ---
 # <a name="post-deployment-tasks"></a>Dağıtım sonrası görevler
 
-OpenShift küme dağıtıldıktan sonra ek öğelerini yapılandırabilirsiniz. Bu makalede ele alınmıştır:
+Bir OpenShift kümesi dağıttıktan sonra ek öğeleri yapılandırabilirsiniz. Bu makalede ele alınmıştır:
 
-- Azure Active Directory (Azure AD) kullanarak çoklu oturum açmayı yapılandırma
-- OpenShift izlemek için Azure İzleyici günlüklerine yapılandırma
-- Ölçümler ve günlüğe kaydetme yapılandırma
-- Açık hizmet Aracısı (OSBA) Azure için yükleme
+- Azure Active Directory kullanarak çoklu oturum açmayı yapılandırma (Azure AD)
+- OpenShift 'i izlemek için Azure Izleyici günlüklerini yapılandırma
+- Ölçümleri ve günlüğü yapılandırma
+- Azure için açık Hizmet Aracısı nasıl yüklenir (OSBA)
 
-## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak çoklu oturum açmayı yapılandırın
+## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Azure Active Directory kullanarak çoklu oturum açmayı yapılandırma
 
-Azure Active Directory kimlik doğrulaması için kullanmak için önce bir Azure AD uygulama kaydı oluşturmanız gerekir. Bu işlem iki adımdan oluşur: uygulama kaydı oluşturma ve izinlerini yapılandırma.
+Kimlik doğrulaması için Azure Active Directory kullanmak için önce bir Azure AD uygulama kaydı oluşturmanız gerekir. Bu işlem iki adımdan oluşur: uygulama kaydını oluşturma ve izinleri yapılandırma.
 
-### <a name="create-an-app-registration"></a>Bir uygulama kaydı oluşturma
+### <a name="create-an-app-registration"></a>Uygulama kaydı oluşturma
 
-Bu adımlar, uygulama kaydı ve izinler ayarlamak üzere GUI (portal) oluşturmak için Azure CLI'yı kullanın. Uygulama kaydı oluşturmak için şu beş bilgilere ihtiyacınız vardır:
+Bu adımlar, uygulama kaydını oluşturmak için Azure CLı ve izinleri ayarlamak için GUI (portal) kullanır. Uygulama kaydını oluşturmak için aşağıdaki beş bilgi parçasına ihtiyacınız vardır:
 
-- Görünen ad: Uygulama kayıt adı (örneğin, OCPAzureAD)
-- Giriş sayfası: (Örneğin, OpenShift Konsolu URL'si https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Tanımlayıcı URI'si: (Örneğin, OpenShift Konsolu URL'si https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Yanıt URL'si: Genel URL ve uygulama kayıt adı (örneğin, ana https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- Parola: Güvenli parola (güçlü bir parola kullanın)
+- Görünen ad: Uygulama kaydı adı (örneğin, OCPAzureAD)
+- Giriş sayfası: OpenShift konsol URL 'SI (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Tanımlayıcı URI 'SI: OpenShift konsol URL 'SI (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Yanıt URL 'SI: Ana genel URL ve uygulama kaydı adı (örneğin, https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Parolayı Güvenli parola (güçlü parola kullanın)
 
 Aşağıdaki örnek, önceki bilgileri kullanarak bir uygulama kaydı oluşturur:
 
@@ -51,7 +50,7 @@ Aşağıdaki örnek, önceki bilgileri kullanarak bir uygulama kaydı oluşturur
 az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com/console --password {Strong Password}
 ```
 
-Komut başarılı olursa, bir JSON çıkışı benzer alın:
+Komut başarılı olursa şuna benzer bir JSON çıkışı alırsınız:
 
 ```json
 {
@@ -71,39 +70,39 @@ Komut başarılı olursa, bir JSON çıkışı benzer alın:
 }
 ```
 
-Sonraki adım için komuttan döndürülen AppID özelliğini not edin.
+Sonraki bir adım için komuttan döndürülen AppID özelliğini bir yere göz atın.
 
 Azure portalında:
 
-1. Seçin **Azure Active Directory** > **uygulama kaydı**.
-2. Uygulama kaydınızı (örneğin, OCPAzureAD) arayın.
-3. Sonuçlarda uygulama kaydını tıklayın.
-4. Altında **ayarları**seçin **gerekli izinler**.
-5. Altında **gerekli izinler**seçin **Ekle**.
+1. **Azure Active Directory** > **uygulama kaydı**' nı seçin.
+2. Uygulama kaydınızı arayın (örneğin, OCPAzureAD).
+3. Sonuçlarda uygulama kaydı ' na tıklayın.
+4. **Ayarlar**altında **gerekli izinler**' i seçin.
+5. **Gerekli izinler**altında **Ekle**' yi seçin.
 
    ![Uygulama kaydı](media/openshift-post-deployment/app-registration.png)
 
-6. 1\. Adım'a tıklayın: API seçin ve ardından **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)** . Tıklayın **seçin** altındaki.
+6. 1\. Adım: API 'yi seçin ve ardından **Windows Azure Active Directory (Microsoft. Azure. ActiveDirectory)** öğesine tıklayın. En altta **Seç** ' e tıklayın.
 
-   ![Uygulama kaydı API seçimi](media/openshift-post-deployment/app-registration-select-api.png)
+   ![Uygulama kaydı API 'SI seçme](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. Adım 2: İzinleri seçin, **oturum açın ve kullanıcı profilini okuma** altında **Temsilcili izinler**ve ardından **seçin**.
+7. 2\. Adım: Izinleri seçin, oturum aç ' ı seçin ve **temsilci izinleri**altında **Kullanıcı profilini okuyun** ve ardından **Seç**' e tıklayın.
 
-   ![Uygulama kaydı erişim](media/openshift-post-deployment/app-registration-access.png)
+   ![Uygulama kaydı erişimi](media/openshift-post-deployment/app-registration-access.png)
 
 8. **Done** (Bitti) öğesini seçin.
 
-### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift Azure AD kimlik doğrulamasını yapılandırma
+### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD kimlik doğrulaması için OpenShift yapılandırma
 
-OpenShift bir kimlik doğrulama sağlayıcısı olarak Azure AD'yi kullanacak şekilde yapılandırmak için tüm ana düğümler üzerinde /etc/origin/master/master-config.yaml dosyasının düzenlenmesi gerekir.
+OpenShift 'i Azure AD 'yi bir kimlik doğrulama sağlayıcısı olarak kullanacak şekilde yapılandırmak için,/etc/Origin/Master/Master-config.exe adlı tüm ana düğümlerde düzenlenmelidir.
 
-Aşağıdaki CLI komutunu kullanarak Kiracı Kimliğini bulun:
+Aşağıdaki CLı komutunu kullanarak kiracı KIMLIĞINI bulun:
 
 ```azurecli
 az account show
 ```
 
-Yaml dosyasında aşağıdaki satırları bulun:
+YAML dosyasında aşağıdaki satırları bulun:
 
 ```yaml
 oauthConfig:
@@ -121,7 +120,7 @@ oauthConfig:
       kind: HTPasswdPasswordIdentityProvider
 ```
 
-Önceki satırları hemen sonra aşağıdaki satırları ekleyin:
+Önceki satırlardan hemen sonra aşağıdaki satırları ekleyin:
 
 ```yaml
   - name: <App Registration Name>
@@ -147,37 +146,37 @@ oauthConfig:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Metni doğru altında identityProviders hizalar emin olun. Aşağıdaki CLI komutunu kullanarak Kiracı Kimliğini bulun: ```az account show```
+Metnin IdentityProviders altında doğru şekilde hizalandığından emin olun. Aşağıdaki CLı komutunu kullanarak kiracı KIMLIĞINI bulun:```az account show```
 
-Tüm ana düğüm üzerinde OpenShift Yöneticisi hizmetlerini yeniden başlatın:
+Openshıft ana hizmetlerini tüm ana düğümlerde yeniden başlatın:
 
 ```bash
 sudo /usr/local/bin/master-restart api
 sudo /usr/local/bin/master-restart controllers
 ```
 
-OpenShift konsolunda, artık kimlik doğrulaması için iki seçenek görürsünüz: htpasswd_auth ve [uygulama kaydı].
+OpenShift konsolunda, kimlik doğrulaması için şu iki seçenek görürsünüz: htpasswd_auth ve [uygulama kaydı].
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>Azure İzleyici ile izleme OpenShift günlüğe kaydeder
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile OpenShift 'i izleme
 
-OpenShift için Log Analytics aracısını eklemenin üç yolu vardır.
-- Linux için Log Analytics aracısını doğrudan her OpenShift düğümüne yükleme
-- Azure İzleyicisi VM uzantısı her OpenShift düğümde etkinleştir
-- Log Analytics aracısını bir OpenShift arka plan programı kümesi olarak yükleme
+Log Analytics aracısını OpenShift 'e eklemenin üç yolu vardır.
+- Her OpenShift düğümüne Linux için Log Analytics aracısını doğrudan yüklemeyi
+- Her OpenShift düğümünde Azure Izleyici VM uzantısını etkinleştirin
+- Log Analytics aracısını OpenShift daemon olarak kurma
 
-Tam Okuma [yönergeleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) daha fazla ayrıntı için.
+Daha fazla ayrıntı için tam [yönergeleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) okuyun.
 
-## <a name="configure-metrics-and-logging"></a>Ölçümler ve günlüğe kaydetme yapılandırın
+## <a name="configure-metrics-and-logging"></a>Ölçümleri ve günlüğü yapılandırma
 
-Bir daldaki bağlı olarak, OpenShift kapsayıcı platformu ve OKD için Azure Resource Manager şablonları ölçümlerini etkinleştirme ve yüklemenin bir parçası günlüğe kaydetme için giriş parametrelerini sağlayabilir.
+Dala bağlı olarak, OpenShift kapsayıcı platformu ve OKD için Azure Resource Manager şablonları, yükleme işleminin bir parçası olarak ölçümleri ve günlüğe kaydetmeyi etkinleştirmek için giriş parametreleri sağlayabilir.
 
-OpenShift kapsayıcı platformu Market teklifi, Ölçümler ve Küme yükleme sırasında günlük kaydını etkinleştirmek için bir seçenek de sağlar.
+OpenShift kapsayıcı platformu marketi teklifi, küme yüklemesi sırasında ölçümleri ve günlüğü etkinleştirmek için de bir seçenek sağlar.
 
-Varsa ölçümleri / küme yüklenmesi sırasında günlük kaydının etkin değildi, olaydan sonra kolayca etkinleştirilebilir.
+Küme yüklemesi sırasında ölçümler/günlüğe kaydetme etkinleştirilmemişse, bu, aslında kolayca etkinleştirilebilir.
 
-### <a name="azure-cloud-provider-in-use"></a>Azure bulut sağlayıcısı kullanın
+### <a name="azure-cloud-provider-in-use"></a>Azure bulut sağlayıcısı kullanımda
 
-SSH savunma düğüm veya ilk ana düğüm (şablon ve dal kullanımda göre) için dağıtım sırasında sağlanan kimlik bilgilerini kullanarak. Aşağıdaki komutu yürütün:
+Dağıtım sırasında belirtilen kimlik bilgilerini kullanarak savunma düğümüne veya ilk ana düğüme (kullanılan şablona ve kullanılan dala göre) SSH. Aşağıdaki komutu verin:
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -189,7 +188,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>Azure bulut sağlayıcısı kullanımda
+### <a name="azure-cloud-provider-not-in-use"></a>Azure bulut sağlayıcısı kullanımda değil
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -199,13 +198,13 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-## <a name="install-open-service-broker-for-azure-osba"></a>Açık hizmet Aracısı (OSBA) Azure'ı yükleme
+## <a name="install-open-service-broker-for-azure-osba"></a>Azure için Open Hizmet Aracısı 'yi (OSBA) yükler
 
-Hizmet Aracısı'nı açmak için Azure veya OSBA, sağlar OpenShift doğrudan Azure bulut hizmetleri sağlama. OSBA Azure için açık hizmet Aracısı API uygulaması içinde. Açık hizmet Aracısı tanımlayan bir bulut yerel uygulamalarını bulut sağlayıcılarının kilit açma olmadan bulut hizmetlerini yönetmek için kullanabilirsiniz için ortak dil belirtimi API'dir.
+Azure için Hizmet Aracısı açın veya OSBA, doğrudan OpenShift 'ten Azure Cloud Services sağlamanıza olanak tanır. OSBA Azure için açık bir Hizmet Aracısı API uygulamasıdır. Açık Hizmet Aracısı API 'SI, bulut Yerel uygulamalarının, bulut hizmetlerini kilitleme olmadan yönetmek için kullanabileceği bulut sağlayıcıları için ortak bir dil tanımlayan bir belirtimdir.
 
-OSBA üzerinde OpenShift yüklemek için buradaki yönergeleri izleyin: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+OpenShift üzerinde OSBA yüklemek için burada bulunan yönergeleri izleyin: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
 > [!NOTE]
-> Yalnızca OpenShift proje şablonunu ve tüm yükleme bölümleri değil'ndaki adımları tamamlayın.
+> Tüm yükleme bölümünün değil, yalnızca OpenShift proje şablonu bölümündeki adımları uygulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
