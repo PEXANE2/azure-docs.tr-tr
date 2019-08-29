@@ -93,7 +93,7 @@ Google Cloud Storage bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| türü       | DataSet `location` içinde Type özelliği **AmazonS3Location**olarak ayarlanmalıdır. | Evet      |
+| type       | DataSet `location` içinde Type özelliği **AmazonS3Location**olarak ayarlanmalıdır. | Evet      |
 | bucketName | S3 demetini adı.                                          | Evet      |
 | folderPath | Verilen demet altındaki klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
 | fileName   | Belirtilen demet + folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
