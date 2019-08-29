@@ -44,7 +44,7 @@ Jıra bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **JIRA** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **JIRA** | Evet |
 | host | Jıra hizmeti IP adresi veya ana bilgisayar adı. (örneğin, jira.example.com)  | Evet |
 | port | Jıra sunucusunun istemci bağlantıları için dinlemek üzere kullandığı TCP bağlantı noktası. Varsayılan 443 HTTPS veya 8080 HTTP bağlanılıyorsa bağlanılıyorsa değerdir.  | Hayır |
 | username | Jıra hizmete erişmek için kullandığınız kullanıcı adı.  | Evet |
