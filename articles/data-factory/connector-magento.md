@@ -44,7 +44,7 @@ Magento bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Magento** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Magento** | Evet |
 | host | Magento örneğinin URL'si. (diğer bir deyişle, 192.168.222.110/magento3)  | Evet |
 | accessToken | Magento erişim belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
