@@ -62,7 +62,7 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | İşlem hattındaki bir etkinliğin adı.    | Evet      |
 | description           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| türü                  | Spark etkinliği için etkinlik HDInsightSpark türüdür. | Evet      |
+| type                  | Spark etkinliği için etkinlik HDInsightSpark türüdür. | Evet      |
 | linkedServiceName     | HDInsight Spark bağlı üzerinde Spark programını çalıştırır hizmetin adı. Bu bağlı hizmeti hakkında bilgi edinmek için [işlem bağlı Hizmetleri](compute-linked-services.md) makalesi. | Evet      |
 | SparkJobLinkedService | Azure depolama bağlı iş dosyası, bağımlılıklar ve günlükleri Spark tutan hizmeti.  Bu özellik için bir değer belirtmezseniz, HDInsight kümesi ile ilişkili depolama kullanılır. Bu özelliğin değeri yalnızca bir Azure depolama bağlı hizmeti olabilir. | Hayır       |
 | rootPath              | Azure Blob kapsayıcısı ve Spark dosyasını içeren klasör. Dosya adı büyük/küçük harfe duyarlıdır. Klasör yapısına bakın (sonraki bölümde) bölümünde bu klasör yapısını hakkındaki ayrıntılar için. | Evet      |
