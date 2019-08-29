@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846597"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090183"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
 GRUB, büyük olasılıkla bir VM 'yi önyüklerken göreceğiniz ilk şey olan, genel olarak birleştirilmiş bir önyükleme yükleyicidir. İşletim sistemi başlatılmadan önce gösterdiği için SSH aracılığıyla erişilebilir değildir. GRUB 'den önyükleme yapılandırmanızı, diğer şeyler arasında tek kullanıcı modunda önyüklenecek şekilde değiştirebilirsiniz.
@@ -133,7 +132,7 @@ Varsayılan olarak Ubuntu görüntüleri, GRUB ekranını otomatik olarak göste
 1. Seçtiğiniz `/etc/default/grub` bir metin düzenleyicisinde açın
 1. `GRUB_HIDDEN_TIMEOUT=1` Satırı açıklama
 1. Şöyle bir çizgi olduğundan emin olun`GRUB_TIMEOUT_STYLE=menu`
-1.           `sudo update-grub`'i çalıştırın.
+1. `sudo update-grub`'i çalıştırın.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 'da tek kullanıcı modu
 Ubuntu, normal şekilde önyükleme yapmam durumunda sizi otomatik olarak tek kullanıcı moduna bırakacak. Tek kullanıcı moduna el ile girmek için aşağıdaki yönergeleri kullanın:

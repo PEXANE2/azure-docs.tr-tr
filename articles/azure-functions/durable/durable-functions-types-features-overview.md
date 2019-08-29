@@ -1,110 +1,109 @@
 ---
-title: İşlev türleri ve dayanıklı işlevler uzantısını Azure işlevleri'nin özellikleri
-description: İşlevleri ve Azure işlevleri'nde bir dayanıklı işlevler düzenleme işlevi işlevi iletişimi destekleyen türleri hakkında daha fazla bilgi edinin.
+title: Azure Işlevleri Dayanıklı İşlevler uzantısı 'ndaki işlev türleri ve özellikleri
+description: Azure Işlevlerinde bir Dayanıklı İşlevler düzenleme bölümünde işlev-işlev iletişimini destekleyen işlev ve rol türleri hakkında bilgi edinin.
 services: functions
 author: jeffhollan
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 0d3087c768a02bb5c647fc0d10db3aa4274804f4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812840"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097752"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Dayanıklı işlevler türleri ve özellikleri (Azure işlevleri)
+# <a name="durable-functions-types-and-features-azure-functions"></a>Dayanıklı İşlevler türleri ve özellikleri (Azure Işlevleri)
 
-Dayanıklı işlevler uzantısıdır [Azure işlevleri](../functions-overview.md). Dayanıklı işlevler için işlev yürütme durum bilgisi olan düzenleme kullanabilirsiniz. Dayanıklı bir işlevi farklı Azure işlevlerini yapılan bir çözümdür. İşlevleri farklı roller bir kalıcı işlevi düzenleme oynatabilirsiniz. 
+Dayanıklı İşlevler, [Azure işlevleri](../functions-overview.md)'nin bir uzantısıdır. İşlev yürütmenin durum bilgisi düzenlemesi için Dayanıklı İşlevler kullanabilirsiniz. Dayanıklı bir işlev, farklı Azure işlevlerinden oluşan bir çözümdür. İşlevler, dayanıklı bir işlev düzenlemesi içinde farklı roller oynayabilir. 
 
-Bu makalede, bir dayanıklı işlevler düzenleme kullanabileceğiniz işlevlerin türlerine genel bakış sağlar. Makale işlevleri bağlanmak için kullanabileceğiniz bazı ortak desenleri içerir. Dayanıklı işlevler uygulama geliştirme zorluklarınızın çözmenize nasıl yardımcı olabileceğini öğrenin.
+Bu makale, Dayanıklı İşlevler düzenleme içinde kullanabileceğiniz işlev türlerine genel bir bakış sunar. Makale, işlevleri bağlamak için kullanabileceğiniz bazı yaygın desenler içerir. Dayanıklı İşlevler uygulama geliştirme güçlüklerinizi çözmenize nasıl yardımcı olabileceğini öğrenin.
 
-![Dayanıklı işlevler türlerini gösteren görüntü][1]  
+![Dayanıklı işlevlerin türlerini gösteren bir görüntü][1]  
 
-## <a name="types-of-durable-functions"></a>Dayanıklı işlevler türleri
+## <a name="types-of-durable-functions"></a>Dayanıklı işlev türleri
 
-Azure işlevleri'nde dört dayanıklı işlevi türlerini kullanabilirsiniz: etkinlik, orchestrator, varlık ve istemci.
+Azure Işlevlerinde dört dayanıklı işlev türü kullanabilirsiniz: etkinlik, Orchestrator, varlık ve istemci.
 
 ### <a name="activity-functions"></a>Etkinlik işlevleri
 
-Etkinlik, temel birim dayanıklı işlevi düzenleme iş işlevlerdir. Etkinlik işlevler ve işlemde düzenlenen görevleri işlevlerdir. Örneğin, bir sipariş işlemek için kalıcı bir işlev oluşturabilirsiniz. Stok denetimi, müşteri ücretlendirme ve bir oluşturma görevleri içerir. Her görev, bir etkinlik işlevi olacaktır. 
+Etkinlik işlevleri, dayanıklı bir işlev düzenleme içinde temel iş birimidir. Etkinlik işlevleri, işlemde düzenlenmiş işlevler ve görevlerdir. Örneğin, bir siparişi işlemek için dayanıklı bir işlev oluşturabilirsiniz. Görevler, envanteri denetlemeyi, müşteriyi borçlandırmayı ve bir sevkiyat oluşturmayı içerir. Her görev bir etkinlik işlevi olur. 
 
-Etkinlik işlevleri bunları yapabileceğiniz iş türünü sınırlı değildir. Herhangi bir etkinlik işlevi yazabilirsiniz [dayanıklı işlevler destekleyen dil](durable-functions-overview.md#language-support). Dayanıklı görev framework çağrılan etkinlik her işlevi en az bir kez düzenleme sırasında yürütülecek garanti eder.
+Etkinlik işlevleri, bunlarda yapabileceğiniz iş türünde Kısıtlanmamış. Desteklenen herhangi bir dilde bir etkinlik işlevi yazabilirsiniz [dayanıklı işlevler](durable-functions-overview.md#language-support). Dayanıklı görev çerçevesi, her çağrılan etkinlik işlevinin düzenleme sırasında en az bir kez yürütüleceğini garanti eder.
 
-Kullanım bir [etkinlik tetikleyici](durable-functions-bindings.md#activity-triggers) etkinlik işlevi tetikleyebilirsiniz. Alma .NET işlevlerini bir [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) bir parametre olarak. Ayrıca, tetikleyici girişlerinde işlevine geçirmek için başka bir nesne bağlayabilirsiniz. JavaScript'te bir giriş aracılığıyla erişebileceğiniz `<activity trigger binding name>` özelliği [ `context.bindings` nesne](../functions-reference-node.md#bindings).
+Etkinlik işlevini tetiklemek için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-triggers) kullanın. .NET işlevleri bir [Durableactivitycontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) parametresini parametre olarak alır. Ayrıca, tetiklemeyi bir işleve geçirilecek başka bir nesneye de bağlayabilirsiniz. JavaScript 'te, `<activity trigger binding name>` [ `context.bindings` nesne](../functions-reference-node.md#bindings)üzerindeki özelliği aracılığıyla bir girişe erişebilirsiniz.
 
-Etkinlik işlevinizi orchestrator değerleri geri dönebilirsiniz. Göndermek ya da çok sayıda değeri bir etkinlik işlevinden geri dönme, kullanabileceğiniz [diziler veya diziler](durable-functions-bindings.md#passing-multiple-parameters). Orchestration örneğinden yalnızca bir etkinlik işlevi tetikleyebilirsiniz. Bir etkinlik işlevi ve başka bir işlev (örneğin, bir HTTP tetiklemeli işlevin) bazı kod paylaşabilir olsa da, her işlevin yalnızca bir tetikleyiciye sahip olabilir.
+Etkinlik işleviniz Ayrıca verileri Orchestrator 'a döndürebilir. Etkinlik işlevinden çok sayıda değer gönderirseniz veya döndürürler, [Tanımlama grupları veya diziler](durable-functions-bindings.md#passing-multiple-parameters)kullanabilirsiniz. Bir etkinlik işlevini yalnızca bir Orchestration örneğinden tetikleyebilirsiniz. Bir etkinlik işlevi ve başka bir işlev (HTTP ile tetiklenen bir işlev gibi) bazı kodları paylaşabilse de, her bir işlev yalnızca bir tetikleyicisine sahip olabilir.
 
-Daha fazla bilgi ve örnekler için bkz: [etkinlik işlevlerini](durable-functions-bindings.md#activity-triggers).
+Daha fazla bilgi ve örnekler için bkz. [etkinlik işlevleri](durable-functions-bindings.md#activity-triggers).
 
 ### <a name="orchestrator-functions"></a>Orchestrator işlevleri
 
-Orchestrator işlevleri nasıl eylemleri yürütülür ve Eylemler yürütüldüğü sırada açıklanmaktadır. Orchestrator işlevler kod düzenleme açıklayın (C# veya JavaScript) gösterildiği gibi [dayanıklı işlevler desenleri ve teknik kavramlar](durable-functions-concepts.md). Düzenleme Eylemler dahil olmak üzere, birçok farklı türde olabilir [etkinlik işlevlerini](#activity-functions), [alt düzenlemeleri](#sub-orchestrations), [dış olayları beklemeyi](#external-events)ve [zamanlayıcılar](#durable-timers). Orchestrator işlevleri ile de çalışabilirler [varlık işlevleri](#entity-functions).
+Orchestrator işlevleri, eylemlerin nasıl yürütüleceğini ve eylemlerin yürütülme sırasını açıklamaktadır. Orchestrator işlevleri,C# [dayanıklı işlevler desenleri ve teknik kavramlar](durable-functions-concepts.md)bölümünde gösterildiği gibi kodda (veya JavaScript) Orchestration 'u anlatmaktadır. Bir düzenleme, [etkinlik işlevleri](#activity-functions), [alt](#sub-orchestrations)düzenlemeler dahil olmak üzere çok sayıda farklı eylem türüne sahip olabilir, [dış olaylar için bekliyor](#external-events)ve [zamanlayıcılar](#durable-timers). Orchestrator işlevleri de [varlık işlevleriyle](#entity-functions)etkileşime geçebilir.
 
-Bir düzenleyici işlevi tarafından tetiklenmesi gerekir bir [düzenleme tetikleyici](durable-functions-bindings.md#orchestration-triggers).
+Bir düzenleyici işlevi bir [düzenleme tetikleyicisi](durable-functions-bindings.md#orchestration-triggers)tarafından tetiklenmelidir.
 
-Bir orchestrator tarafından başlatılan bir [orchestrator istemci](#client-functions). Herhangi bir kaynaktan (HTTP, kuyruk, olay akışının) orchestrator tetikleyebilirsiniz. Her bir örneğini düzenleme örneği tanımlayıcısı var. Örneği tanımlayıcısı veya kullanıcı tarafından oluşturulan otomatik olarak oluşturulan (önerilen) olabilir. Örneği tanımlayıcısı için kullanabileceğiniz [örnekleri yönetme](durable-functions-instance-management.md) düzenleme.
+Orchestrator [istemcisi](#client-functions)tarafından bir Orchestrator başlatılır. Orchestrator 'ı herhangi bir kaynaktan (HTTP, kuyruk, olay akışı) tetikleyebilirsiniz. Bir Orchestration 'un her örneğinin bir örnek tanımlayıcısı vardır. Örnek tanımlayıcısı otomatik olarak oluşturulabilir (önerilir) veya Kullanıcı tarafından oluşturulmuş olabilir. Düzenleme [örneklerini yönetmek](durable-functions-instance-management.md) için örnek tanımlayıcısı ' nı kullanabilirsiniz.
 
-Daha fazla bilgi ve örnekler için bkz: [düzenleme Tetikleyicileri](durable-functions-bindings.md#orchestration-triggers).
+Daha fazla bilgi ve örnekler için bkz. [düzenleme Tetikleyicileri](durable-functions-bindings.md#orchestration-triggers).
 
 ###  <a name="entity-functions"></a>Varlık işlevleri (Önizleme)
 
-Varlık işlevleri tanımlayın okuma ve küçük parçaları olarak bilinen durumunu güncelleştirmek için işlemleri *dayanıklı varlıkları*. Bir özel tetikleyici türü işlevleriyle orchestrator işlevler gibi varlık işlevlerdir *varlık tetikleyici*. Orchestrator işlevleri farklı olarak, belirli bir kod kısıtlamalardan varlık işlevleri yoktur. Varlık işlevlerini de yönetmek durumu açıkça örtük olarak durumu aracılığıyla denetim akışını temsil eden yerine.
+Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
 
 > [!NOTE]
-> Varlık işlevlerini ve ilgili işlevleri, yalnızca kullanılabilir, dayanıklı işlevler 2.0 ve üzeri.
+> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
 
 Varlık işlevleri hakkında daha fazla bilgi için bkz. [varlık işlevleri](durable-functions-preview.md#entity-functions) önizleme özelliği belgeleri.
 
 ### <a name="client-functions"></a>İstemci işlevleri
 
-İstemci, düzenlemeleri ve varlıkların örnekleri oluşturma ve yönetme tetiklenen işlevler işlevlerdir. Dayanıklı işlevler ile etkileşim kurmak için giriş noktası etkili bir şekilde değildirler. Herhangi bir kaynakta (HTTP, kuyruk, olay akışının.) bir istemci işlevi tetikleyebilirsiniz. Bir istemci işlevini kullanan [düzenleme istemcisi bağlama](durable-functions-bindings.md#orchestration-client) dayanıklı düzenlemeleri ve varlıklar oluşturmak ve yönetmek için.
+İstemci işlevleri, düzenleme ve varlık örnekleri oluşturan ve yöneten işlevler tetiklenir. Dayanıklı İşlevler etkileşimde bulunmak için etkin bir giriş noktasıdır. İstemci işlevini herhangi bir kaynaktan (HTTP, kuyruk, olay akışı vb.) tetikleyebilirsiniz. İstemci işlevi, sürekli düzenlemeler ve varlıklar oluşturmak ve yönetmek için [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client) kullanır.
 
-En temel istemci işlevi bir düzenleyici işlevi başlar ve ardından onay durumu yanıt döndüren bir HTTP tetiklemeli işlevin örneğidir. Bir örnek için bkz. [HTTP API URL'si bulma](durable-functions-http-api.md#http-api-url-discovery).
+Bir istemci işlevinin en temel örneği, bir Orchestrator işlevi Başlatan HTTP ile tetiklenen bir işlevdir ve sonra bir denetim durumu yanıtı döndürür. Bir örnek için bkz. [http API URL 'si bulma](durable-functions-http-api.md#http-api-url-discovery).
 
-Daha fazla bilgi ve örnekler için bkz: [düzenleme istemcisi](durable-functions-bindings.md#orchestration-client).
+Daha fazla bilgi ve örnekler için bkz. [Orchestration Client](durable-functions-bindings.md#orchestration-client).
 
-## <a name="features-and-patterns"></a>Özellikler ve desenleri
+## <a name="features-and-patterns"></a>Özellikler ve desenler
 
-Sonraki bölümlerde düzenleri dayanıklı işlevler türleri ve özellikleri açıklar.
+Sonraki bölümlerde Dayanıklı İşlevler türlerinin özellikleri ve desenleri açıklanır.
 
 ### <a name="sub-orchestrations"></a>Alt düzenlemeler
 
-Orchestrator işlevleri etkinlik işlevlerini çağırabilir, ancak diğer orchestrator işlevleri de çağırabilirsiniz. Örneğin, bir kitaplık dışında daha büyük bir düzenleme orchestrator işlevlerin oluşturabilirsiniz. Ya da bir düzenleyici işlevi birden çok örneği paralel olarak çalıştırılabilir.
+Orchestrator işlevleri etkinlik işlevlerini çağırabilir, ancak diğer Orchestrator işlevlerini de çağırabilir. Örneğin, bir Orchestrator işlevleri kitaplığından daha büyük bir düzenleme oluşturabilirsiniz. Ya da, bir Orchestrator işlevinin birden fazla örneğini paralel olarak çalıştırabilirsiniz.
 
-Daha fazla bilgi ve örnekler için bkz: [alt düzenlemeleri](durable-functions-sub-orchestrations.md).
+Daha fazla bilgi ve örnekler için bkz. [alt](durable-functions-sub-orchestrations.md)düzenlemeler.
 
 ### <a name="durable-timers"></a>Dayanıklı zamanlayıcılar
 
-[Dayanıklı işlevler](durable-functions-overview.md) sağlar *dayanıklı zamanlayıcılar* , orchestrator işlevlerinde gecikmelere uygulamak veya zaman uyumsuz işlemleri zaman aşımları ayarlamak için kullanabilirsiniz. Dayanıklı zamanlayıcılar orchestrator işlevleri yerine kullanmak `Thread.Sleep` ve `Task.Delay` (C#) veya `setTimeout()` ve `setInterval()` (JavaScript).
+[Dayanıklı işlevler](durable-functions-overview.md) , gecikme süreleri uygulamak veya zaman uyumsuz eylemlerde zaman aşımları ayarlamak için Orchestrator işlevlerinde kullanabileceğiniz *dayanıklı zamanlayıcılar* sağlar. `Thread.Sleep` C#Ve ()`setTimeout()` veya ve`setInterval()` (JavaScript) yerine Orchestrator işlevlerinde dayanıklı zamanlayıcılar kullanın. `Task.Delay`
 
-Daha fazla bilgi ve örnekler için bkz: [dayanıklı zamanlayıcılar](durable-functions-timers.md).
+Daha fazla bilgi ve örnekler için bkz. [dayanıklı zamanlayıcılar](durable-functions-timers.md).
 
 ### <a name="external-events"></a>Dış olaylar
 
-Orchestrator işlevleri düzenleme örneğini güncelleştirmek dış olaylar için bekleyebilirsiniz. Dayanıklı işlevler bu özellik, genellikle insan etkileşimi veya diğer dış geri çağırmaları işlemek için kullanışlıdır.
+Orchestrator işlevleri, dış olayların bir düzenleme örneğini güncelleştirmesini bekleyebilir. Bu Dayanıklı İşlevler özelliği genellikle insan etkileşimini veya diğer dış geri çağırmaları işlemek için yararlıdır.
 
-Daha fazla bilgi ve örnekler için bkz: [dış olayları](durable-functions-external-events.md).
+Daha fazla bilgi ve örnekler için bkz. [dış olaylar](durable-functions-external-events.md).
 
 ### <a name="error-handling"></a>Hata işleme
 
-Dayanıklı işlevler düzenlemeleri uygulamak için kodu kullanın. Hata işleme özelliklerini programlama dilini kullanabilirsiniz. Desenler ister `try` / `catch` çalışma alanınızı düzenleme. 
+Dayanıklı İşlevler düzenlemeleri uygulamak için kodu kullanın. Programlama dilinin hata işleme özelliklerini kullanabilirsiniz. Orchestration 'inizdeki çalışma gibi `try` / `catch` desenler. 
 
-Dayanıklı işlevler ayrıca yerleşik yeniden deneme ilkeleri ile gelir. Bir eylem, gecikme ve bir özel durum oluştuğunda etkinlikler otomatik olarak yeniden deneyin. Yeniden deneme düzenleme terk olmadan geçici özel durumları işlemek için kullanabilirsiniz.
+Dayanıklı İşlevler Ayrıca, yerleşik yeniden deneme ilkeleriyle de gelir. Bir eylem, bir özel durum oluştuğunda etkinlikleri otomatik olarak erteleyebilir ve yeniden deneyebilir. Yeniden denemeleri, düzenleme yapılmadan geçici özel durumları işlemek için kullanabilirsiniz.
 
-Daha fazla bilgi ve örnekler için bkz: [hata işleme](durable-functions-error-handling.md).
+Daha fazla bilgi ve örnekler için bkz. [hata işleme](durable-functions-error-handling.md).
 
-### <a name="cross-function-app-communication"></a>Çapraz işlev uygulaması iletişimi
+### <a name="cross-function-app-communication"></a>İşlev işlevleri arası uygulama iletişimi
 
-Tek bir işlev uygulaması bağlamında bir kalıcı düzenleme çalıştırmasına rağmen düzenlemeleri arasında birçok işlev uygulamaları koordine etmek için desenler kullanabilirsiniz. Uygulamalar arası iletişimi, HTTP üzerinden oluşabilir, ancak her etkinlik için dayanıklı framework kullanarak iki uygulama arasında dayanıklı bir işlemi yine de koruyabilir anlamına gelir.
+Sürekli bir düzenleme tek bir işlev uygulaması bağlamında çalışsa da, birçok işlev uygulamasındaki düzenlemeleri koordine etmek için desenleri kullanabilirsiniz. Platformlar arası iletişim HTTP üzerinden gerçekleşebilir, ancak her etkinlik için dayanıklı Framework 'ün kullanılması, iki uygulama arasında dayanıklı bir işlem sürdürmenize yol açabilir.
 
-Aşağıdaki örnekler, çapraz işlev uygulaması düzenleme göstermektedir C# ve JavaScript. Her örnekte dış düzenleme bir etkinlik başlar. Başka bir etkinliği alır ve durumunu döndürür. Orchestrator durumu olmasını bekler `Complete` devam etmeden önce.
+Aşağıdaki örneklerde, ve JavaScript 'de C# işlev işlevleri arası uygulama düzenlemesi gösterilmektedir. Her örnekte, bir etkinlik dış Orchestration 'u başlatır. Başka bir etkinlik alır ve durumunu döndürür. Orchestrator, durumun devam etmeden önce olmasını `Complete` bekler.
 
-Çapraz işlev uygulaması düzenleme bazı örnekleri aşağıda verilmiştir:
+İşlevleri arası uygulama düzenleme örnekleri aşağıda verilmiştir:
 
 #### <a name="c"></a>C#
 
@@ -157,7 +156,7 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 ```javascript
 const df = require("durable-functions");
@@ -217,10 +216,10 @@ module.exports = async function(context, statusUrl) {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için dayanıklı ilk işlevinizi oluşturma [ C# ](durable-functions-create-first-csharp.md) veya [JavaScript](quickstart-js-vscode.md).
+Başlamak için, veya [C#](durable-functions-create-first-csharp.md) [JavaScript](quickstart-js-vscode.md)'te ilk dayanıklı işlevinizi oluşturun.
 
 > [!div class="nextstepaction"]
-> [Dayanıklı işlevler hakkında daha fazla bilgi](durable-functions-bindings.md)
+> [Dayanıklı İşlevler hakkında daha fazla bilgi edinin](durable-functions-bindings.md)
 
 <!-- Media references -->
 [1]: media/durable-functions-types-features-overview/durable-concepts.png

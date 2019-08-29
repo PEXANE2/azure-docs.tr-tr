@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 501aeb60eba1d94b4c5882a7c6cbfa8d0359e44d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033910"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114418"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -28,7 +28,7 @@ Bu makalede, AKS 'deki Windows Server düğümlerine yönelik bazı sınırlamal
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Kubernetes 'te Windows Server için sınırlamalar
 
-Windows Server kapsayıcıları, Windows tabanlı bir kapsayıcı ana bilgisayarında çalıştırılmalıdır. AKS 'de Windows Server kapsayıcıları çalıştırmak için, Konuk işletim sistemi olarak [Windows Server çalıştıran bir düğüm havuzu oluşturabilirsiniz][windows-node-cli] . Pencere sunucusu düğüm havuzu desteği, Kubernetes projesinde yukarı akış Windows Server 'ın bir parçası olan bazı sınırlamalar içerir. Bu sınırlamalar AKS 'e özgü değildir. Kubernetes 'te Windows Server için bu yukarı akış desteği hakkında daha fazla bilgi için, bkz. [Kubernetes 'Teki Windows Server kapsayıcıları](https://docs.microsoft.com/azure/aks/windows-node-limitations).
+Windows Server kapsayıcıları, Windows tabanlı bir kapsayıcı ana bilgisayarında çalıştırılmalıdır. AKS 'de Windows Server kapsayıcıları çalıştırmak için, Konuk işletim sistemi olarak [Windows Server çalıştıran bir düğüm havuzu oluşturabilirsiniz][windows-node-cli] . Pencere sunucusu düğüm havuzu desteği, Kubernetes projesinde yukarı akış Windows Server 'ın bir parçası olan bazı sınırlamalar içerir. Bu sınırlamalar AKS 'e özgü değildir. Kubernetes 'te Windows Server için bu yukarı akış desteği hakkında daha fazla bilgi için, bkz. [Kubernetes 'Teki Windows Server kapsayıcıları](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations).
 
 Kubernetes içindeki Windows Server kapsayıcıları için aşağıdaki yukarı akış sınırlamaları AKS ile ilgilidir:
 

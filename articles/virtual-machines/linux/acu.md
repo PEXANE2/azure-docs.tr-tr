@@ -1,6 +1,6 @@
 ---
-title: İşlem birimi Azure'nün genel bakış | Microsoft Docs
-description: İşlem birimleri Linux için Azure kavramının genel bakış. ACU CPU performansı Azure SKU'ları arasında karşılaştırma bir yol sağlar.
+title: Azure Işlem birimine genel bakış | Microsoft Docs
+description: Linux için Azure işlem birimleri kavramına genel bakış. ACU, Azure SKU 'Larında CPU performansını karşılaştırmak için bir yol sağlar.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,25 +9,24 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: 521674c2e7839d89aefde8779763a7cf059dc261
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e0ec84f2e7423310119981b74a52c3e751af8d19
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668599"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084142"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure işlem birimi (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 
 
-Farklı boyutları hakkında daha fazla bilgi için bağlantılar şunlardır:
+Farklı boyutlar hakkında daha fazla bilgi için bağlantılar aşağıda verilmiştir:
 - [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)

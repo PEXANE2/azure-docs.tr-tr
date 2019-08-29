@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d16c5b6304f598440fe4d70648dd652f0dcf06ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362297"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089928"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP İstemci hizmetini devre dışı olduğundan, Azure sanal makinelerinde RDP olamaz
 
@@ -29,16 +28,16 @@ Bu makalede bir sorun sanal DHCP İstemci hizmetini devre dışı bırakıldıkt
 ## <a name="symptoms"></a>Belirtiler
 VM'yi DHCP İstemci hizmetini devre dışı olduğundan, Azure'da bir VM ile RDP bağlantısı yapamazsınız. Ne zaman iade ekran [önyükleme tanılaması](../troubleshooting/boot-diagnostics.md) Azure Portal'da, VM normal önyüklenir ve kimlik bilgileri oturum açma ekranında bekleyeceği görürsünüz. Uzaktan olay günlüklerini VM ile Olay Görüntüleyicisi'ni kullanarak görüntüleyin. DHCP istemci hizmeti kullanmaya değil veya başlatılamıyor görürsünüz. Aşağıdaki örnek bir oturum:
 
-**Oturum adı**: Sistem </br>
-**Kaynak**: Hizmet Denetimi Yöneticisi </br>
-**Tarih**: 16/12/2015 11:19:36: 00 </br>
-**Olay Kimliği**: 7022 </br>
-**Görev kategorisi**: None </br>
+**Günlük adı**: Sistem </br>
+**Kaynak**: Hizmet denetimi Yöneticisi </br>
+**Tarih**: 12/16/2015 11:19:36 </br>
+**Olay kimliği**: 7022 </br>
+**Görev kategorisi**: Yok. </br>
 **Düzey**: Hata </br>
 **Anahtar sözcükler**: Klasik</br>
 **Kullanıcı**: Yok </br>
 **Bilgisayar**: myvm.cosotos.com</br>
-**Açıklama**: DHCP istemci hizmeti başlatılırken askıya alındı.</br>
+**Açıklama**: DHCP Istemci hizmeti başlatılırken askıda kaldı.</br>
 
 Resource Manager Vm'leri için olay 7022 aşağıdaki komutu kullanarak günlükleri için sorgu seri erişim konsol özelliğini kullanabilirsiniz:
 

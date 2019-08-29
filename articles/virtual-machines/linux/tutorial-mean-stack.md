@@ -9,26 +9,25 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6d870e5eedf362a6c929216735c8b5e9240aaa4f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708492"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081513"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure'da bir Linux sanal makinesi üzerinde MongoDB, Express, AngularJS ve Node.js (MEAN) yığını oluşturun
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da bir Linux sanal makinesinde MongoDB, Express, AngularJS ve Node. js (Ortalama) yığını oluşturma
 
 Bu öğreticide, Azure’da bir Linux sanal makinesi (VM) üzerinde MongoDB, Express, AngularJS ve Node.js (MEAN) yığınının nasıl uygulanacağı gösterilmektedir. Oluşturduğunuz MEAN yığını bir veritabanına kitap eklenmesine, veritabanındaki kitapların silinmesine ve listelenmesine olanak sağlar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Linux VM oluşturma
+> * Linux VM'i oluşturma
 > * Node.js yükleme
 > * MongoDB yükleme ve sunucuyu ayarlama
 > * Express’i yükleme ve sunucuya rotalar ayarlama
@@ -40,7 +39,7 @@ Bu öğreticide, Azure’da bir Linux sanal makinesi (VM) üzerinde MongoDB, Exp
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-linux-vm"></a>Linux VM oluşturma
+## <a name="create-a-linux-vm"></a>Linux VM'i oluşturma
 
 [az group create](https://docs.microsoft.com/cli/azure/group) komutuyla bir kaynak grubu oluşturun ve [az vm create](https://docs.microsoft.com/cli/azure/vm) komutuyla bir Linux sanal makinesi oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -343,7 +342,7 @@ sudo apt-get install -y nodejs
 Bu öğreticide, Linux sanal makinesi üzerinde MEAN yığınını kullanarak kitap kayıtlarını takip eden bir web uygulaması oluşturdunuz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Linux VM oluşturma
+> * Linux VM'i oluşturma
 > * Node.js yükleme
 > * MongoDB yükleme ve sunucuyu ayarlama
 > * Express’i yükleme ve sunucuya rotalar ayarlama

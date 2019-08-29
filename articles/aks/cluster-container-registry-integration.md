@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034965"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114246"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Önizleme-Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması yapma
 
@@ -59,7 +59,7 @@ Bu adımın tamamlanması birkaç dakika sürebilir.
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>Mevcut AKS kümeleri için ACR tümleştirmesi oluşturma
 
-ACR **-Name** ve **ACR-Resource-ID** için geçerli değerler sunarak ACR 'yi mevcut ACR kümeleriyle tümleştirin.
+Aşağıdaki gibi **ACR-Name** veya **ACR-Resource-id** için geçerli değerler sağlayarak mevcut bir ACR 'yi mevcut aks kümeleriyle tümleştirin.
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>

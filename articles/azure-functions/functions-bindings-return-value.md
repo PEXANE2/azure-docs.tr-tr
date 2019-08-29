@@ -1,36 +1,35 @@
 ---
-title: Bir Azure işlevi dönüş değerini kullanarak
-description: Azure işlevleri için dönüş değerleri yönetmeyi öğrenin
+title: Azure Işlevinden dönüş değeri kullanma
+description: Azure Işlevleri için dönüş değerlerini yönetmeyi öğrenin
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 03cf85ab12a8f64d639c09db5ea75002b258aa84
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480275"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086417"
 ---
-# <a name="using-the-azure-function-return-value"></a>Azure işlev dönüş değeri kullanma
+# <a name="using-the-azure-function-return-value"></a>Azure Işlevi dönüş değerini kullanma
 
-Bu makalede, nasıl iş dönüş değerleri açıklanmaktadır. bir işlev içinde.
+Bu makalede, dönüş değerlerinin bir işlev içinde nasıl çalıştığı açıklanmaktadır.
 
-Bir işlev dönüş değerine sahip dillerde bağlayabilirsiniz [çıktı bağlaması](./functions-triggers-bindings.md#binding-direction) dönüş değeri için:
+Dönüş değerine sahip dillerde bir işlev [Çıkış bağlamasını](./functions-triggers-bindings.md#binding-direction) bir dönüş değerine bağlayabilirsiniz:
 
-* Bir C# sınıf kitaplığında, yöntemin dönüş değerini çıkış bağlama özniteliğini uygulayın.
-* Diğer dillerde ayarlamak `name` özelliğinde *function.json* için `$return`.
+* Bir C# sınıf kitaplığında, çıkış bağlama özniteliğini yöntem dönüş değerine uygulayın.
+* Diğer dillerde, `name` *function. JSON* içindeki özelliğini olarak `$return`ayarlayın.
 
-Dönüş değeri, birden çok çıkış bağlamaları varsa, bunlardan yalnızca biri için kullanın.
+Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 
-C# ve C# betiği için bir çıkış bağlaması veri göndermek için alternatif yöntemler, `out` parametreleri ve [toplayıcısı nesneleri](functions-reference-csharp.md#writing-multiple-output-values).
+Ve C# C# betikte, bir `out` çıkış bağlamasına veri göndermenin alternatif yolları parametreler ve [toplayıcı nesneleridir](functions-reference-csharp.md#writing-multiple-output-values).
 
-Dönüş değeri kullanımını gösteren dile özgü örneğe bakın:
+Döndürülen değerin kullanımını gösteren dile özgü örneğe bakın:
 
 * [C#](#c-example)
 * [C# betiği (.csx)](#c-script-example)
@@ -38,9 +37,9 @@ Dönüş değeri kullanımını gösteren dile özgü örneğe bakın:
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
-## <a name="c-example"></a>C# örneği
+## <a name="c-example"></a>C#örneğinde
 
-Dönüş değeri için zaman uyumsuz örneği tarafından izlenen bir çıkış bağlaması kullanan aşağıda verilmiştir; C# kodu:
+Aşağıda, C# bir çıkış bağlaması için dönüş değerini kullanan ve ardından zaman uyumsuz bir örnek olan kod verilmiştir:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -64,9 +63,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C# betiği örneği
+## <a name="c-script-example"></a>C#betik örneği
 
-Çıkış bağlaması işte *function.json* dosyası:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -77,7 +76,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-Zaman uyumsuz örneği tarafından izlenen C# betik kodu, şu şekildedir:
+C# Komut dosyası kodu, ardından zaman uyumsuz bir örnek tarafından verilmiştir:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -97,9 +96,9 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F#Örnek
+## <a name="f-example"></a>F#örneğinde
 
-Çıkış bağlaması işte *function.json* dosyası:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -121,7 +120,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 ## <a name="javascript-example"></a>JavaScript örneği
 
-Çıkış bağlaması işte *function.json* dosyası:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -132,7 +131,7 @@ let Run(input: WorkItem, log: ILogger) =
 }
 ```
 
-JavaScript'te, ikinci parametresinin, dönüş değeri gider `context.done`:
+JavaScript 'te, dönüş değeri için `context.done`ikinci parametreye gider:
 
 ```javascript
 module.exports = function (context, input) {
@@ -142,9 +141,9 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Python örnek
+## <a name="python-example"></a>Python örneği
 
-Çıkış bağlaması işte *function.json* dosyası:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -154,7 +153,7 @@ module.exports = function (context, input) {
     "path": "output-container/{id}"
 }
 ```
-Python kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -168,4 +167,4 @@ def main(input: azure.functions.InputStream) -> str:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure işlevleri bağlama hataları işleme](./functions-bindings-errors.md)
+> [Azure Işlevleri bağlama hatalarını işleme](./functions-bindings-errors.md)

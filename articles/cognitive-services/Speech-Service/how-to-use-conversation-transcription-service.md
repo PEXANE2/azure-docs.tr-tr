@@ -10,22 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559458"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066425"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile çok katılımcı konuşmaları
 
-Konuşma SDK 'sının konuşma **API 'si** , veya `PullStream` `PushStream`kullanarak konuşma Hizmetleri için ses akışı yaparak katılımcıları ekleme, kaldırma ve tanımanıza olanak sağlayan toplantılar/konuşmalar sağlar.
+Konuşma SDK 'sının konuşma API 'si, veya `PullStream` `PushStream`kullanarak konuşma Hizmetleri için ses akışı yaparak katılımcıları ekleme, kaldırma ve tanımanıza olanak sağlayan toplantılar/konuşmalar sağlar.
 
 ## <a name="limitations"></a>Sınırlamalar
 
 * Konuşma dökümü Windows, Linux ve Android C++'de C#,, ve Java için desteklenir.
 * ROOBO DevKit, konuşmacı kimliği için verimli bir şekilde kullanılabilecek dairesel çok mikrofonli bir dizi sağlayan konuşma dökümlerini oluşturmaya yönelik desteklenen donanım ortamıdır. [Daha fazla bilgi için bkz. konuşma CIHAZLARı SDK](speech-devices-sdk.md).
-* Konuşma dökümü için konuşma SDK 'Sı desteği, 16 bit 16 kHz PCM ses içeren sekiz kanallı ses çekme ve gönderme modu akışlarının kullanımıyla sınırlandırılmıştır.
+* Konuşma dökümü için konuşma SDK 'Sı desteği, 16 bit 16 kHz PCM sesinin 8 kanallı ses çekme ve gönderme modu akışlarıyla sınırlandırılmıştır. Şu anda yalnızca bu setleri 8 kanallı ses yakalama için desteklenir:
+   * [ROOBO akıllı ses dairesel 7-MIC DK](https://ddk.roobo.com/)
+   * [Azure Kinect dk](https://azure.microsoft.com/en-in/services/kinect-dk/).
 * Şu bölgelerde "en-US" ve "zh-CN" dillerinde konuşma dökümü şu anda kullanılabilir: merkezileştirme ve eastasıu.
 
 ## <a name="prerequisites"></a>Önkoşullar

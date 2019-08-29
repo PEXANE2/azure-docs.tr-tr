@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 043623869163a27cdbbdd7115fca43486577ca7d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a5ccf527850e1c05c5d7e273ada905d65d64cee4
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599448"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073953"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Nasıl yapılır: Visual Studio 2019 kullanarak Azure Service Fabric 'da Windows kapsayıcılarında hata ayıklama
 
@@ -81,4 +81,4 @@ Service Fabric ve olası çözünürlüklere yönelik hata ayıklama kapsayıcı
     Visual Studio, .NET ve .NET Core için konsol ve ASP.NET proje türlerini destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Service Fabric ve kapsayıcıların özellikleri hakkında daha fazla bilgi edinmek için, bkz. Service Fabric kapsayıcılara genel bakış] (Service-Fabric-containers-overview.md).
+Service Fabric ve kapsayıcıların özellikleri hakkında daha fazla bilgi edinmek için bkz. [Service Fabric kapsayıcılara genel bakış](service-fabric-containers-overview.md).

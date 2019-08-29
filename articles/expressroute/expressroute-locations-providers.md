@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: be3917d7943f808292e5ed15978a3d6aefd3afb5
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 2be56f5308fd16d0e20003b0038fdcb12503a574
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891842"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074449"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -200,7 +200,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 | **Londra** | BICS, Equinx, Eunetçalışma, Telecity | Bezeq International Ltd., CoreAzure, Epsilon telekomünikasyon Limited, üstel E, HSO, NexGen Networks, Proximus, Tamares Teley, Zain |
 | **Los Angeles** | Equinix |Crown kalele, SPI kurumsal, Transtelco |
 | **Madrid** | Level3 | Zertia |
-| **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Cogeco eşi 1, Roçüler, ZiRrO |
+| **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Aptum teknolojileri, Roger, ZiRrO |
 | **New York** |Equinix, Megaport | ALCE Iş, Crown role, SPI Enterprise, Webair |
 | **Paris** | Equinix | Proximus |
 | **Quebec City** | Megaport | Fibrenoire |
@@ -211,7 +211,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 | **Slough** | Equinix | HSO|
 | **Sidney** | Megaport | Macquarie Telecom Group|
 | **Tokyo** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
-| **Toronto** | Equinix, Megaport | Airgate Technologies Inc., Beanfield Metroconnect, Cogeco peer 1, IVedha Inc, Roger, Thinktel, ZiRrO|
+| **Toronto** | Equinix, Megaport | Airgate Technologies Inc., Beanfield Metroconnect, Aptum Technologies, IVedha Inc, Roger, Thinktel, ZiRrO|
 | **Washington DC** |Equinix | Allet Iş, BICS, Cox Iş, Crown, GTT Communications Inc, Epsilon telekomünikasyon Limited, Masergy, Wınsırla |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute sistem tümleştiricileri

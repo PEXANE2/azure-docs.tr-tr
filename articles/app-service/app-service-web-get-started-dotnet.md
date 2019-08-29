@@ -1,6 +1,6 @@
 ---
-title: Oluşturma C# ASP.NET Core web uygulaması - Azure App Service | Microsoft Docs
-description: Varsayılan dağıtarak Azure App Service'te Web uygulamalarını çalıştırma hakkında bilgi edinin C# ASP.NET Core web uygulaması.
+title: ASP.NET Core C# Web uygulaması oluşturma-Azure App Service | Microsoft Docs
+description: Varsayılan C# ASP.NET Core Web uygulamasını dağıtarak Azure App Service Web Apps 'i nasıl çalıştıracağınızı öğrenin.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -10,17 +10,16 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b64fd653a737201921ad481c50e2a72dc00cd912
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854631"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071743"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure’da ASP.NET Core web uygulaması oluşturma
 
@@ -28,7 +27,7 @@ ms.locfileid: "60854631"
 > Bu makalede bir uygulamanın Windows üzerinde App Service'e dağıtımı yapılır. _Linux_ üzerinde App Service'e dağıtım yapmak için bkz. [Linux üzerinde App Service'te .NET Core web uygulaması oluşturma](./containers/quickstart-dotnetcore.md). 
 >
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, Azure App Service web uygulamasına ilk ASP.NET Core dağıtma gösterilmektedir. İşlemi tamamladığınızda, App Service planı ve dağıtılmış web uygulaması ile bir App Service uygulaması içeren bir kaynak grubu gerekir.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, ilk ASP.NET Core Web uygulamanızın Azure App Service nasıl dağıtılacağı gösterilmektedir. İşiniz bittiğinde, dağıtılan bir Web uygulamasına sahip bir App Service planından ve App Service uygulamasından oluşan bir kaynak grubunuz olacaktır.
 
 ![](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
@@ -105,7 +104,7 @@ Kaynak grubunuzu **myResourceGroup** olarak adlandırıp **Tamam**’ı seçin.
 |-|-|-|
 |App Service Planı| myAppServicePlan | App Service planının adı. |
 | Location | Batı Avrupa | Web uygulamasının barındırıldığı veri merkezi. |
-| Boyut | Ücretsiz | [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), barındırma özelliklerini belirler. |
+| Size | Ücretsiz | [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), barındırma özelliklerini belirler. |
 
 **Tamam**’ı seçin.
 
@@ -147,11 +146,11 @@ Yayımlama tamamlandığında Visual Studio, web uygulamasının URL’si ile bi
 
 ![Azure’da güncelleştirilmiş ASP.NET web uygulaması](./media/app-service-web-get-started-dotnet/web-app-running-live-updated.png)
 
-## <a name="manage-the-azure-app"></a>Azure uygulaması yönetme
+## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
 Web uygulamasını yönetmek için <a href="https://portal.azure.com" target="_blank">Azure portalına</a> gidin.
 
-Sol menüden **uygulama hizmetleri**ve ardından Azure uygulamanızın adını seçin.
+Sol menüden **uygulama hizmetleri**' ni seçin ve ardından Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-dotnet/access-portal.png)
 

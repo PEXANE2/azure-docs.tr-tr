@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68607967"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099551"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure için SAP LaMa bağlayıcısı
 
@@ -99,12 +98,12 @@ Hizmet sorumlusu kullanarak Azure kaynaklarınızı varsayılan olarak erişim i
 
 SAP bir Web sitesini açın ve altyapıya gidin. Sekme bulut yöneticileri ' ne gidin ve Ekle ' ye tıklayın. Microsoft Azure Bulut Bağdaştırıcısı seçin ve Ileri ' ye tıklayın. Aşağıdaki bilgileri girin:
 
-* Etiket: Bağlayıcı örneği için bir ad seçin
-* Kullanıcı Adı: Hizmet Sorumlusu Uygulama Kimliği
-* Parola: Hizmet sorumlusu anahtarı/parolası
+* Etiketin Bağlayıcı örneği için bir ad seçin
+* Kullanıcı adı: Hizmet Sorumlusu Uygulama Kimliği
+* Parolayı Hizmet sorumlusu anahtarı/parolası
 * URL: Varsayılanı tut https://management.azure.com/
 * İzleme aralığı (saniye): En az 300 olmalıdır
-* Abonelik Kimliği: Azure abonelik kimliği
+* Abonelik KIMLIĞI: Azure abonelik kimliği
 * Azure Active Directory kiracı KIMLIĞI: Active Directory kiracının KIMLIĞI
 * Proxy Konağı: SAP 'nin internet 'e bağlanması için bir proxy olması gerekiyorsa, proxy 'nin ana bilgisayar adı
 * Proxy bağlantı noktası: Ara sunucu TCP bağlantı noktası
@@ -504,12 +503,12 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Uygulama sunucusu yüklemesi sırasında hatalar ve uyarılar
 
 * Sapınst adımını yürütme hatası: getProfileDir
-  * HATA: (Adım tarafından bildirilen son hata: Modül çağrısında ESAPinstException yakalandı: Adım Doğrulayıcısı ' | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | INSID | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' bir hata bildirdi: \As1-ascs\sapmnt\as1\sys\profile düğümü \\yok. Bu sorunu çözmek için Sapınst 'yi etkileşimli modda başlatın
+  * HATAYLA (Adım tarafından bildirilen son hata: Modül çağrısında ESAPinstException yakalandı: Adım Doğrulayıcısı ' | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | INSID | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' bir hata bildirdi: \As1-ascs\sapmnt\as1\sys\profile düğümü \\yok. Bu sorunu çözmek için Sapınst 'yi etkileşimli modda başlatın
   * Çözüm  
     SWPM 'nin profile erişimi olan bir kullanıcı ile çalıştığından emin olun. Bu Kullanıcı, uygulama sunucusu Yükleme Sihirbazı 'nda yapılandırılabilir
 
 * Sapınst adımını yürütme hatası: askUnicode
-  * HATA: (Adım tarafından bildirilen son hata: Modül çağrısında ESAPinstException yakalandı: Adım Doğrulayıcısı ' | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | INSID | 0 | NW_getUnicode | ind | ind | ind | ind | UNICODE | 0 | Askunıcode ' bir hata bildirdi: Bu sorunu çözmek için Sapınst 'yi etkileşimli modda başlatın
+  * HATAYLA (Adım tarafından bildirilen son hata: Modül çağrısında ESAPinstException yakalandı: Adım Doğrulayıcısı ' | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | INSID | 0 | NW_getUnicode | ind | ind | ind | ind | UNICODE | 0 | Askunıcode ' bir hata bildirdi: Bu sorunu çözmek için Sapınst 'yi etkileşimli modda başlatın
   * Çözüm  
     Son SAP çekirdeği kullanıyorsanız, SWPM, sistemin artık ASCS 'nin ileti sunucusunu kullanarak bir Unicode sistem olup olmadığını belirleyemez. Daha fazla bilgi için bkz. SAP Note [2445033] .  
     Bu sorun, yeni bir destek paketinde/SAP 'nin düzeltme ekinde düzeltilecektir.  

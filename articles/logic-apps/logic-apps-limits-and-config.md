@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900217"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099422"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -105,6 +105,8 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 ### <a name="integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE)
 
+Premium SKU için üretilen iş sınırları aşağıda verilmiştir:
+
 | Name | Sınır | Notlar |
 |------|-------|-------|
 | Taban birimi yürütme sınırı | Altyapı kapasitesi% 80 ' a ulaştığında sistem kısıtlanıyor | Ayda ~ 4.000 eylem yürütmelerinin sayısını sağlar; Bu, ayda ~ 160.000.000 eylem yürütmeleri | |
@@ -113,6 +115,9 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 ||||
 
 Normal işlemede Bu limitlerin üzerine gitmek veya bu limitlerin üzerine gidebilecek yük testi çalıştırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) .
+
+> [!NOTE]
+> Bu SKU 'nun ölçeklendirme için herhangi bir hizmet düzeyi sözleşmesi (SLA) veya özelliği olmadığı için, [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayımlanmış sınırlara sahip değildir. Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
 
 <a name="request-limits"></a>
 
@@ -181,10 +186,10 @@ Her Azure aboneliği şu tümleştirme hesabı sınırlarına sahiptir:
 
 * [Geliştirici veya Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'un her BIR Ise, 5 Toplam tümleştirme hesabıyla sınırlıdır:
 
-  | ISE SKU 'SU | Sınır |
-  |---------|-------|
-  | **Premium** | yalnızca toplam 5- [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) , ücretsiz veya temel yok |
-  | **Geliştirici** | 5 Toplam-ücretsiz (1 ile sınırlı), standart veya her ikisi, ancak temel yok |
+  | ISE SKU 'SU | Tümleştirme hesabı limitleri |
+  |---------|----------------------------|
+  | **Premium** | tek bir standart hesap dahil olmak üzere yalnızca 5 Toplam [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) hesap. Ücretsiz veya temel hesaba izin verilmez. |
+  | **Geliştirici** | 5 Toplam- [ücretsiz](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 hesap ile sınırlı) ve [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) birleştirilmiş veya tüm standart hesaplar. Temel hesaplara izin verilmez. Deneme, geliştirme ve test için [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) kullanın, ancak üretim veya performans testi için kullanmayın. |
   |||
 
 Ek maliyetler, bir ıSE 'ye dahil olan tümleştirme hesaplarının ötesine eklediğiniz tümleştirme hesapları için geçerlidir. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).

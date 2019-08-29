@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abe04a88f3337ed26b98815b5633fd5d719b7ce3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2d6170dead4e8577cea6883ffea25b90ebe39b88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079003"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure planlama ve dağıtım denetim listesi üzerinde SAP iş yükü 
 
@@ -58,7 +57,7 @@ Bu aşamada, SAP iş yükünün Azure genel bulutuna geçirilmesi planlanmaktad�
     6.  Yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisi
         1.  Yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisinin benzer şekilde görünmesi için, RTO ve RPO tabanlı ' i tanımlama
         2.  Aynı bölgedeki yüksek kullanılabilirlik için, istenen DBMS 'nin Azure 'da sunmasına ne olduğunu denetleyin. Çoğu DBMS, üretim sistemleri için önerdiğimiz, zaman uyumlu bir etkin bekleme, zaman uyumlu yöntemler sunar. Ayrıca, [SAP iş yükü ve ilgili belgeler Için Azure sanal MAKINELERI DBMS dağıtımı hakkında bazı hususlar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) ile başlayan farklı VERITABANLARıNA yönelik SAP ile ilgili belgelere bakın
-            1.  Örneğin, [burada](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) SQL Server açıklananlar gıbı, DBMS katmanının paylaşılan disk yapılandırmasıyla Windows Yük devretme kümesi hizmeti 'ni **kullanmak desteklenmez.** Bunun yerine, şunun gibi çözümler:
+            1.  Örneğin, [burada](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) SQL Server açıklananlar gıbı, DBMS katmanının paylaşılan disk yapılandırmasıyla Windows Yük devretme kümesi hizmeti 'ni kullanmak desteklenmez. Bunun yerine, şunun gibi çözümler:
                 1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
                 2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [HANA sistem çoğaltması](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -159,7 +158,7 @@ Pilot, proje planlama ve hazırlığı için daha önce veya paralel olarak çal
    3.  Şifrelenmesi gereken tüm kaynakların şifrelendiğinden emin olun. Sertifikaları yedeklemek, depolamak ve bu sertifikalara erişmek ve şifrelenmiş varlıkları geri yüklemek için süreçler tanımlayın ve yürütün. 
    4.  Bir işletim sistemi destek noktasından mümkün olduğunda, [Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) 'ni ve/veya işletim sistemi diskleri için kullanın
    5.  Çok fazla şifreleme katmanı kullanıldığını kontrol edin. Azure disk şifrelemesi 'ni ve ardından DBMS Saydam veritabanı şifreleme yöntemlerinden en üst bir kısmını kullanmak için sınırlı bir anlam getirir
-6. Performans testi
+6. Performans Testi
    1.  SAP izleme ve ölçümlerine dayalı SAP 'de, ilk 10 çevrimiçi raporu, geçerli olduğu durumlarda geçerli uygulamayla karşılaştırın 
    2.  SAP izleme ve ölçümlerine dayalı SAP 'de, en iyi 10 toplu işi geçerli olduğu durumlarda geçerli uygulamayla karşılaştırın 
    3.  SAP izleme ve ölçümlerine dayalı SAP 'de, arabirimler aracılığıyla veri aktarımlarını SAP sistemine karşılaştırın. Aktarımın, Şirket içinden Azure 'a geçmek gibi farklı konumlar arasında gittiğini bildiğiniz arabirimlere odaklanın 
@@ -179,7 +178,7 @@ Bu aşamada, başarılı bir pilot veya PoC sonrasında, üretim dışı SAP sis
 5.  Artmasıyla, dağıtımlarınıza uygulanabilecek yeni işlevler için [Channel9](https://channel9.msdn.com/) gibi kanallar hakkında Microsoft sunumlarının Azure belgelerini denetleyin
 6.  Yeni VM SKU 'Ları veya yeni desteklenen işletim sistemi ve DBMS sürümü için destek Not [#1928533](https://launchpad.support.sap.com/#/notes/1928533) gibi Azure Ile ilgili SAP notlarını kontrol edin. Yeni VM türlerini fiyatlandırma sırasında daha eski VM türleriyle karşılaştırın, bu nedenle VM 'Leri en iyi fiyat/performans oranıyla dağıtabileceksiniz
 7.  Azure için desteklenen VM 'lerde, bu VM 'lerde desteklenen işletim sistemi yayınlarına ve desteklenen SAP ve DBMS yayınlarına hiçbir değişiklik olmadığından emin olmak için SAP destek notları, SAP HANA donanım dizini ve SAP PAM 'deki kaynakları doğrulayın
-8.  Azure 'daki yeni HANA sertifikalı SKU ['ları inceleyin ve](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) fiyatları, planladıklarıyla karşılaştırın ve sonunda daha iyi fiyat performansına sahip birimleri almak için değiştirin 
+8.  Azure [](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 'DAKI yeni Hana sertifikalı SKU 'ları inceleyin ve fiyatları, planladıklarıyla karşılaştırın ve sonunda daha iyi fiyat performansına sahip birimleri almak için değiştirin 
 9.  Dağıtım betiklerinizi yeni VM türlerini kullanacak şekilde uyarlayın ve Azure 'un kullanmak istediğiniz yeni özelliklerini ekleyin
 10. Altyapı dağıtımından sonra, sap desteği notuna [#500235](https://launchpad.support.sap.com/#/notes/500235) ve sap destek notuna [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E), SAP uygulama KATMANı VM 'si ve DBMS VM arasındaki ağ gecikmesini test edin ve değerlendirin. Sonuçları, SAP desteği notunun [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikme Kılavuzu ' na göre değerlendirin. Ağ gecikmesi orta ve iyi bir aralıkta olmalıdır. [Burada](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir. [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) ve [Azure 'da altyapı yapılandırması ve Işlemler SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) için önemli olmayan kısıtlamaların olmadığından emin olun
 11. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md) makalesinde açıklandığı gibi, sanal makinelerin doğru [Azure yakınlık yerleşimi grubu](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) kullanılarak dağıtıldığından emin olun

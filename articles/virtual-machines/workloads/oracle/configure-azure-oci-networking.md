@@ -8,18 +8,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 2cab129556dcd0407793512f41f91311804abd0f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510207"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100132"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ile Oracle bulut altyapısı arasında doğrudan bir iç bağlantı kurma  
 
@@ -64,7 +63,7 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
     * **Sağlayıcı hizmet anahtarı**' nda ExpressRoute hizmet anahtarını yapıştırın.
     * **BIRINCIL BGP IP adresi** ve **İkincil BGP IP** adresi için ıkıncı/30 özel IP adresi alanı için önceki bir adımda yer alan Ilk/30 özel IP adresi alanını kullanın.
         * Oracle BGP IP adresi (birincil ve ikincil) için iki aralığın ilk kullanışlı adresini ve ikinci adresi Müşteri BGP IP adresine (FastConnect perspektifinden) atayın. İlk kullanılan IP adresi/30 adres alanındaki ikinci IP adresidir (ilk IP adresi Microsoft tarafından ayrılmıştır).
-    *           **Oluştur**'a tıklayın.
+    * **Oluştur**'a tıklayın.
 1. Yönlendirme tablosunu kullanarak, dinamik yönlendirme ağ geçidi aracılığıyla Oracle kiracınız kapsamındaki sanal bulut ağına FastConnect bağlantısını tamamen yapın.
 1. Azure 'a gidin ve ExpressRoute devrenizin **sağlayıcının durumunun** **sağlandı** olarak değiştirildiğinden ve **Azure Private** türünde bir eşlemenin sağlandığından emin olun. Bu, aşağıdaki adımlarla ilgili bir önkoşul değildir.
 

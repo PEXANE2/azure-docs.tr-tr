@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "67710192"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098759"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -669,7 +668,7 @@ Bir Azure sanal makinesi için birden çok sanal ağ arabirim kartı (vNIC) tan�
 * [PowerShell kullanarak çoklu NIC VM 'Leri dağıtma][virtual-network-deploy-multinic-arm-ps]
 * [Azure CLı kullanarak çoklu NIC VM 'Leri dağıtma][virtual-network-deploy-multinic-arm-cli]
 
-#### <a name="site-to-site-connectivity"></a>Konumdan Konuma Bağlantı
+#### <a name="site-to-site-connectivity"></a>Siteden siteye bağlantı
 
 Şirketler arası, Azure VM 'Leri ve bir saydam ve kalıcı VPN bağlantısıyla bağlanmış şirket Içi bir işlemdir. Azure 'da en yaygın SAP dağıtım deseninin olması beklenmektedir. Varsayım, Azure 'daki SAP örneklerine sahip işlem yordamlarının ve işlemlerin saydam bir şekilde çalışmasını sağlamalıdır. Bu, Azure 'daki bir geliştirme sisteminden, şirket içinde dağıtılan bir test sistemine yapılan değişiklikleri aktarmak için, bu sistemlerden ve SAP aktarım yönetimi sistemi 'ni (TMS) kullanmanın yanı sıra bu sistemlerden de yazdırabilmeniz gerektiği anlamına gelir. Siteden siteye geçici olarak [Bu makalede][vpn-gateway-create-site-to-site-rm-powershell] daha fazla belge bulabilirsiniz
 

@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3bf9ba52bc4071755918b842da477384dcd38973
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323499"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095157"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
 
@@ -85,7 +84,7 @@ Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sa
 
 * Select dizesine benzer şekilde, genişletme dizesi belirli verilerin liste sorgu sonuçlarına dahil edilip edilmeyeceğini denetler.
 * Expand dize yalnızca liste işleri, iş zamanlamaları, görevler ve havuzlar üzerinde kullanıldığında desteklenir. Şu anda yalnızca istatistik bilgilerini destekler.
-* Tüm özellikler gerekli olduğunda ve Select String belirtilmediğinde, istatistik bilgilerini almak için *genişletme dizesi kullanılmalıdır* . Bir SELECT dizesi, özelliklerin bir alt kümesini almak için kullanılırsa, `stats` Select dizesinde belirtilebilir ve genişletme dizesinin belirtilmesi gerekmez.
+* Tüm özellikler gerekli olduğunda ve Select String belirtilmediğinde, istatistik bilgilerini almak için genişletme dizesi kullanılmalıdır. Bir SELECT dizesi, özelliklerin bir alt kümesini almak için kullanılırsa, `stats` Select dizesinde belirtilebilir ve genişletme dizesinin belirtilmesi gerekmez.
 * Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin döndürülmesini belirtir: `stats`.
 
 > [!NOTE]
@@ -144,7 +143,7 @@ List<CloudPool> testPools =
 > 
 
 ## <a name="batch-rest-to-net-api-mappings"></a>Toplu iş geri kalanı .NET API eşlemeleri
-Filtre içindeki Özellik adları, Select ve *Genişlet dizeleri,* hem ad hem de durum ' da REST API karşılamalarını yansıtmalıdır. Aşağıdaki tablolar, .NET ve REST API karşılıkları arasında eşlemeler sağlar.
+Filtre içindeki Özellik adları, Select ve Genişlet dizeleri, hem ad hem de durum ' da REST API karşılamalarını yansıtmalıdır. Aşağıdaki tablolar, .NET ve REST API karşılıkları arasında eşlemeler sağlar.
 
 ### <a name="mappings-for-filter-strings"></a>Filtre dizeleri için eşlemeler
 * **.Net liste yöntemleri**: Bu sütundaki .NET API yöntemlerinin her biri, bir [Odatadetaillevel][odata] nesnesini parametre olarak kabul eder.

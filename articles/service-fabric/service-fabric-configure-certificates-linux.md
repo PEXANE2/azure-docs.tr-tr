@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a5a67133d52a0cdc0cc082ab85c1cc791c13ad5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876572"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102989"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux kümelerinde sertifikalar ve güvenlik
 
@@ -43,7 +42,7 @@ Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-mani
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType kullanma
 
-.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu (.net Java `X509Credentials` )[türünde](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)[](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials`(.net Java) buna karşılık gelir.[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)/
+.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu (.net Java `X509Credentials` )[](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)türünde[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)[](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` (/.net Java) buna karşılık gelir.
 
 **X509** başvurusu, sertifikayı bir sertifika deposunda konumlandırır. Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir:
 
@@ -72,7 +71,7 @@ Aşağıdaki XML, bu stile dayalı bir **TransportSettings** bölümünü göste
 </Section>
 ```
 
-### <a name="using-x5092-securitycredentialstype"></a>X509_2 SecurityCredentialsType kullanma
+### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType kullanma
 
 Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu, `X509Credentials2` (Java)[](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)türüne `SecurityCredentials` karşılık gelir.[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials) 
 

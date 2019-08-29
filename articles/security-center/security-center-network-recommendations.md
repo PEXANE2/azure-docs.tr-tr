@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6dfd3bd86e55d19bf1c15486a502a4cbab3c96a8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905313"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101023"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ağ kaynaklarınızı koruyun
 Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
@@ -153,7 +153,6 @@ DDoS koruma standardı etkinleştirilmelidir|DDoS koruma hizmeti standardını e
 Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
 
 * [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
-* [Azure Güvenlik Merkezi'nde uygulamalarınızı koruma](security-center-application-recommendations.md)
 * [Azure Güvenlik Merkezi'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:

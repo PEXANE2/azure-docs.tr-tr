@@ -1,6 +1,6 @@
 ---
-title: Azure'da Linux VM'ler için altyapı Otomasyon araçları kullanma | Microsoft Docs
-description: Oluşturmak ve azure'da Linux sanal makineleri yönetmek için Ansible, Chef, Puppet, Terraform ve Packer altyapı Otomasyon araçlarını kullanmayı öğrenin
+title: Azure 'da Linux sanal makineleri için altyapı Otomasyonu araçlarını kullanma | Microsoft Docs
+description: Azure 'da Linux sanal makineleri oluşturmak ve yönetmek için anormal, Chef, Pupevcil hayvan, Terkform ve Packer gibi altyapı Otomasyonu araçlarını nasıl kullanacağınızı öğrenin
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,17 +9,16 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 808f671b108fa2e06e3be919372647b391f809eb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: da476c1f0c1b64a0689f401ebb215fe8888b9921
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083062"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

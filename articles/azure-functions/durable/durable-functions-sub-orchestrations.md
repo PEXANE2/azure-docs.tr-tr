@@ -1,33 +1,32 @@
 ---
-title: Dayanıklı işlevler - Azure için alt düzenlemeleri
-description: Dayanıklı işlevler uzantısında düzenlemeleri Azure işlevleri için düzenlemeleri çağırmanıza yapma.
+title: Dayanıklı İşlevler için alt düzenlemeler-Azure
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki genişletmelerin nasıl çağrılacağını çağırma.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab9a5714a7ef24b51957bd48b1b67240cf13adb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 868efad58e14fd817729f0aa9ac785bc0f960867
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730251"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087028"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı işlevler (Azure işlevleri) içinde alt düzenlemeleri
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler alt düzenlemeler (Azure Işlevleri)
 
-Etkinlik işlevlerini çağırma ek olarak orchestrator işlevleri diğer orchestrator işlevleri çağırabilir. Örneğin, bir kitaplık dışında daha büyük bir düzenleme orchestrator işlevlerin oluşturabilirsiniz. Ya da bir düzenleyici işlevi birden çok örneği paralel olarak çalıştırılabilir.
+Orchestrator işlevleri, etkinlik işlevlerini çağırmanın yanı sıra diğer Orchestrator işlevlerini de çağırabilir. Örneğin, bir Orchestrator işlevleri kitaplığından daha büyük bir düzenleme oluşturabilirsiniz. Alternatif olarak, bir Orchestrator işlevinin birden fazla örneğini paralel olarak çalıştırabilirsiniz.
 
-Bir düzenleyici işlevi çağrılarak başka bir düzenleyici işlevi çağırabilir [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) veya [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) .NET, yöntemler veya `callSubOrchestrator` veya `callSubOrchestratorWithRetry` JavaScript yöntemleri. [Hata işleme & maaş](durable-functions-error-handling.md#automatic-retry-on-failure) makalede otomatik yeniden deneme hakkında daha fazla bilgi bulunur.
+Orchestrator işlevi, .net `callSubOrchestrator` `callSubOrchestratorWithRetry` 'teki [callsuborchestratoraysync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) veya [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) yöntemlerini ya da JavaScript içindeki yöntemleri çağırarak başka bir Orchestrator işlevini çağırabilir. [& Dengeleme makalesindeki hata işleme](durable-functions-error-handling.md#automatic-retry-on-failure) otomatik yeniden deneme hakkında daha fazla bilgi içerir.
 
-Alt orchestrator İşlevler, arayanın açısından etkinlik işlevleri gibi davranır. Bir değer döndürürler bir özel durum ve üst Düzenleyici işlevi tarafından bekleniyor olabilir.
+Alt Orchestrator işlevleri, çağıranın perspektifinden yalnızca etkinlik işlevleri gibi davranır. Bunlar bir değer döndürebilir, bir özel durum oluşturabilir ve üst Orchestrator işlevi tarafından beklelenebilir.
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki örnekte, bir IOT ("nesnelerin interneti") senaryo gösterilmektedir sağlanması gereken birden çok cihaz olduğu. Aşağıdaki gibi görünebilir CİHAZDAN her biri için yapılması gereken belirli bir düzenleme vardır:
+Aşağıdaki örnekte, sağlanması gereken birden çok cihaz olduğu IoT ("Nesnelerin İnterneti") senaryosu gösterilmektedir. Cihazların her biri için gerçekleşmesi gereken belirli bir düzenleme vardır ve bu, aşağıdakine benzer şekilde görünebilir:
 
 ### <a name="c"></a>C#
 
@@ -50,7 +49,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 ```javascript
 const df = require("durable-functions");
@@ -71,9 +70,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Bu orchestrator işlevi olarak kullanılabilir-olan tek seferlik cihaz sağlama veya daha büyük bir düzenleme parçası olabilir. İkinci durumda, üst orchestrator işlevi örneklerini zamanlayabilirsiniz `DeviceProvisioningOrchestration` kullanarak `CallSubOrchestratorAsync` (C#) veya `callSubOrchestrator` (JavaScript) API.
+Bu Orchestrator işlevi, tek seferlik cihaz sağlama için olduğu gibi kullanılabilir veya daha büyük bir düzenleme parçası olabilir. İkinci durumda `DeviceProvisioningOrchestration` , üst Orchestrator işlevi `CallSubOrchestratorAsync` (C#) veya `callSubOrchestrator` (JavaScript) API 'sini kullanarak örnekleri zamanlayabilir.
 
-Paralel olarak birden çok orchestrator işlevleri çalıştırma gösteren bir örnek aşağıda verilmiştir.
+Birden çok Orchestrator işlevinin paralel olarak nasıl çalıştırılacağını gösteren bir örnek aşağıda verilmiştir.
 
 ### <a name="c"></a>C#
 
@@ -98,7 +97,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2.x işlevleri)
+### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
 ```javascript
 const df = require("durable-functions");
@@ -122,4 +121,4 @@ module.exports = df.orchestrator(function*(context) {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Görev merkezleri nedir ve nasıl yapılandırılacakları öğrenin](durable-functions-task-hubs.md)
+> [Görev hub 'larının ne olduğunu ve bunların nasıl yapılandırılacağını öğrenin](durable-functions-task-hubs.md)

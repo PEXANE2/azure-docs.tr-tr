@@ -9,7 +9,6 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
@@ -17,16 +16,16 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 02dd1b293d250b1adf09325fa36e01f176722599
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f4aec031d9ba8a162b022541c6e4cb35ce976a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708461"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081500"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Öğretici - Azure CLI ile Azure disklerini yönetme
 
-Azure sanal makineleri (VM) işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir VM oluşturduğunuzda, bir disk boyutu ve yapılandırmasını beklenen iş yüküne uygun seçmek önemlidir. Bu öğreticide, VM disklerini dağıtma ve yönetme işlemleri gösterilir. Şunları öğreneceksiniz:
+Azure sanal makineleri (VM) işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir VM oluşturduğunuzda, beklenen iş yüküne uygun bir disk boyutu ve yapılandırma seçmek önemlidir. Bu öğreticide, VM disklerini dağıtma ve yönetme işlemleri gösterilir. Şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İşletim sistemi diskleri ve geçici diskler
@@ -52,7 +51,7 @@ Uygulamaları yüklemek ve verileri depolamak için başka veri diskleri ekleneb
 
 ## <a name="vm-disk-types"></a>VM disk türleri
 
-Azure diskleri, iki tür sağlar standart ve Premium.
+Azure, standart ve Premium olmak üzere iki tür disk sağlar.
 
 ### <a name="standard-disk"></a>Standart disk
 
@@ -69,9 +68,9 @@ Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden �
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
-Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
+Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell'i açmak için seçmeniz **deneyin** bir kod bloğunun sağ üst köşesinde öğesinden. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/bash) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/bash) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme
 
@@ -179,11 +178,11 @@ Artık disk yapılandırıldığında göre SSH oturumunu kapatabilirsiniz.
 exit
 ```
 
-## <a name="take-a-disk-snapshot"></a>Disk anlık görüntüsünü alma
+## <a name="take-a-disk-snapshot"></a>Disk anlık görüntüsü al
 
-Bir disk anlık görüntüsü aldığınızda, Azure diskin belirli bir noktadaki salt okunur kopyasını oluşturur. Azure VM anlık görüntüleri, yapılandırma değişiklikleri yapmadan önce VM’nin durumunu hızla kaydetmenize yardımcı olur. Bir sorun veya hata durumunda, sanal makine bir anlık görüntü kullanılarak geri yüklenebilir. VM birden fazla disk içeriyorsa her bir disk için diğerlerinden bağımsız olarak bir anlık görüntü alınır. Uygulamayla tutarlı yedekler almak için disk anlık görüntülerini almadan önce VM’yi durdurmayı göz önünde bulundurun. Bunun yerine VM çalışırken otomatik olarak yedeklemeyi sağlayan [Azure Backup hizmetini](/azure/backup/) kullanabilirsiniz.
+Bir disk anlık görüntüsü aldığınızda, Azure diskin belirli bir noktadaki salt okunur kopyasını oluşturur. Azure VM anlık görüntüleri, yapılandırma değişiklikleri yapmadan önce VM’nin durumunu hızla kaydetmenize yardımcı olur. Bir sorun veya hata durumunda VM, anlık görüntü kullanılarak geri yüklenebilir. VM birden fazla disk içeriyorsa her bir disk için diğerlerinden bağımsız olarak bir anlık görüntü alınır. Uygulamayla tutarlı yedekler almak için disk anlık görüntülerini almadan önce VM’yi durdurmayı göz önünde bulundurun. Bunun yerine VM çalışırken otomatik olarak yedeklemeyi sağlayan [Azure Backup hizmetini](/azure/backup/) kullanabilirsiniz.
 
-### <a name="create-snapshot"></a>Anlık görüntü oluşturma
+### <a name="create-snapshot"></a>Anlık görüntü oluştur
 
 Sanal makine diski anlık görüntüsü oluşturmadan önce diskin kimliği veya adı gerekir. Disk kimliğini döndürmek için [az vm show](/cli/azure/vm#az-vm-show) komutunu kullanın. Bu örnekte sonraki adımda kullanılabilmesi için disk kimliği bir değişken içinde saklanır.
 

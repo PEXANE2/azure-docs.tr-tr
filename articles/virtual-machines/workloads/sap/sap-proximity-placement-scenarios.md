@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235203"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077979"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikme süresi için Azure Yakınlık Yerleştirme Grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu mimarilerin bu hassasiyetinin nedeni, uygulama katmanında çoğu iş mantığının yürütüldüğü olgusuna yöneliktir. İş mantığını yürütmenin bir sonucu olarak SAP uygulama katmanı, bir saniyede binlerce ve on binlerce üzerinde yüksek frekansta veritabanı katmanına sorgular. Çoğu durumda, bu sorguların doğası basittir. Genellikle, veritabanı katmanında 500 mikrosaniye 'den az veya daha az bir şekilde yürütülebilir. Uygulama katmanından veritabanı katmanına bu tür bir sorgu göndermek için ağ üzerinde harcanan süre, iş süreçlerini yürütmek için gereken sürenin büyük bir etkisi vardır. Ağ gecikmesi ile olan bu duyarlılık, en iyi ağ gecikmesini sağlamak için SAP dağıtım projelerinde zamanın nerede harcanması gerektiğine neden olur. [SAP Note #1100926-SSS: Ağ performansı](https://launchpad.support.sap.com/#/notes/1100926/E), SAP, ağ gecikmesini sınıflandırmasına ilişkin bazı yönergeler yayımladı.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615390"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066091"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'de farklı API'ler ile ilgili sık sorulan sorular
 
@@ -31,6 +31,12 @@ Her bir Azure Cosmos kapsayıcısını, saniye başına iş hacmi temelinde sağ
 Anahtar/değer (tablo) sütunlu, belge ve graf verilerini modelleri tüm yerel olarak (bir Atom, kayıt ve dizileri) ARS nedeniyle desteklenen Azure Cosmos DB yerleşik olarak tasarlayın. Atom, kayıt ve dizileri kolayca eşlenen ve çeşitli veri modelleri için öngörülen. Modellerin bir alt kümesine yönelik API 'Ler Şu anda kullanılabilir (SQL, MongoDB, tablo ve Gremlin) ve ek veri modellerine özgü olan diğerleri gelecekte kullanılabilir olacaktır.
 
 Azure Cosmos DB, bir şema şemadan bağımsız dizinleme altyapısı otomatik olarak tüm verilerin herhangi bir şema veya ikincil dizinler ' geliştiriciden gerek kalmadan alır, şemalardan sahiptir. Altyapı, dizin ve sorgu işleme alt sistemlerin depolama düzeni ayırın (ters, sütunlu, ağacı) mantıksal dizin düzenleri kümesi kullanır. Cosmos DB kablo protokolleri ve API'leri bir dizi Genişletilebilir biçimde destekler ve verimli bir şekilde çekirdek veri modeli (1) ve (2) birden fazla veri modelini yerel olarak destekleyen benzersiz olarak özellikli getirerek mantıksal dizin düzenleri çevirmek olanağı da vardır.
+
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Verilerinize erişmek için birden çok API kullanabilir miyim?
+
+Azure Cosmos DB, Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanı hizmetidir. Çoklu modelin birden çok API 'yi ve birden çok veri modelini desteklediği Azure Cosmos DB, farklı API 'Ler depolama ve tel protokolü için farklı veri biçimleri kullanır. Örneğin, SQL JSON kullanıyorsa MongoDB, EDM kullanır, Cassandra, CQL kullanır ve Gremlin, boson kullanır. Sonuç olarak, belirli bir hesaptaki verilere tüm erişim için aynı API 'YI kullanmanızı öneririz.
+
+Her API, birlikte çalışabilen Gremlin ve SQL API 'SI dışında bağımsız olarak çalışır.
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB HIPAA ile uyumlu mu?
 

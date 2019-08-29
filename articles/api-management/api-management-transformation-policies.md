@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442244"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073291"
 ---
 # <a name="api-management-transformation-policies"></a>API Management dönüştürme ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -70,13 +69,13 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |JSON-XML|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |uygula|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -Always-her zaman dönüştürme uygula.<br />-Content-Type-JSON-yalnızca Response Content-Type üstbilgisi JSON varlığını gösteriyorsa Dönüştür.|Evet|Yok|
 |göz önünde bulundurun-üst bilgi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -true-istek Accept üst bilgisinde JSON isteniyorsa dönüştürme uygulayın.<br />-false-dönüştürmeyi her zaman Uygula.|Hayır|true|
@@ -114,13 +113,13 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |XML-JSON|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |denetlenmesi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -JavaScript kullanımı kolay-dönüştürülen JSON, JavaScript geliştiricilerine kolay bir form içerir.<br />-Direct-dönüştürülmüş JSON orijinal XML belgesinin yapısını yansıtır.|Evet|Yok|
 |uygula|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -her zaman daima Dönüştür.<br />-Content-Type-XML-yalnızca Response Content-Type üstbilgisi XML varlığını gösteriyorsa Dönüştür.|Evet|Yok|
@@ -150,13 +149,13 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |bul ve Değiştir|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |from|Aranacak dize.|Evet|Yok|
 |to|Değiştirme dizesi. Arama dizesini kaldırmak için sıfır uzunluğunda bir değiştirme dizesi belirtin.|Evet|Yok|
@@ -188,7 +187,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |yeniden yönlendirme-içerik-URL 'ler|Kök öğe.|Evet|
 
@@ -261,13 +260,13 @@ Bu örnekte ilke, bir Service Fabric arka ucuna, bölüm anahtarı olarak UserID
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |set-backend-service|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |taban URL 'si|Yeni arka uç hizmeti temel URL 'SI.|`base-url` Bunlardan`backend-id` biri mevcut olmalıdır.|Yok|
 |arka uç kimliği|Yönlendirileceği arka ucun tanımlayıcısı. (Arka uç varlıkları [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilir.)|`base-url` Bunlardan`backend-id` biri mevcut olmalıdır.|Yok|
@@ -397,13 +396,13 @@ Bu örnekte ilke, bir Service Fabric arka ucuna, bölüm anahtarı olarak UserID
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |gövde kümesi|Kök öğe. Gövde metnini veya gövde döndüren ifadeleri içerir.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |şablon|Set Body ilkesinin çalışacağı şablon oluşturma modunu değiştirmek için kullanılır. Şu anda desteklenen tek değer:<br /><br />-sıvı-Set Body ilkesi likit şablon oluşturma altyapısını kullanacaktır |Hayır||
 
@@ -504,14 +503,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Set-Header|Kök öğe.|Evet|
 |value|Ayarlanacak üst bilginin değerini belirtir. Aynı ada sahip birden çok üstbilgi için ek `value` öğeler ekleyin.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |var-eylem|Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|manızı|
 |name|Ayarlanacak üst bilginin adını belirtir.|Evet|Yok|
@@ -564,16 +563,16 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Set-Query-Parameter|Kök öğe.|Evet|
 |value|Ayarlanacak sorgu parametresinin değerini belirtir. Aynı ada sahip birden çok sorgu parametresi için ek `value` öğeler ekleyin.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
-|Ad|Açıklama|Gerekli|Varsayılan|
+|Name|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|var-eylem|Sorgu parametresi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-var olan parametrenin değerini değiştirir.<br />-Skip-var olan sorgu parametresi değerinin yerini almaz.<br />-Append-değeri varolan sorgu parametresi değerine ekler.<br />-Delete-sorgu parametresini istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, sorgu parametresi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|manızı|
+|var-eylem|Sorgu parametresi önceden belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-var olan parametrenin değerini değiştirir.<br />-Skip-var olan sorgu parametresi değerinin yerini almaz.<br />-Append-değeri varolan sorgu parametresi değerine ekler.<br />-Delete-sorgu parametresini istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, sorgu parametresi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|manızı|
 |name|Ayarlanacak sorgu parametresinin adını belirtir.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
@@ -643,7 +642,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |yeniden yazma-URI|Kök öğe.|Evet|
 
@@ -712,7 +711,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |XSL dönüştürme|Kök öğe.|Evet|
 |parametre|Dönüşümde kullanılan değişkenleri tanımlamak için kullanılır|Hayır|

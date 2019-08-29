@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658108"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073704"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Geliştirici portalı sayfalarının stilini özelleştirme
 
@@ -40,8 +39,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
-+ Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
-+ Ayrıca şu öğreticiyi tamamlayın: [İçeri aktarma ve ilk API'nizi yayımlama](import-and-publish.md).
++ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
++ Ayrıca, aşağıdaki öğreticiyi de tamamlayabilirsiniz: [Ilk API 'Nizi Içeri aktarın ve yayımlayın](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +56,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     **Stilleri**’i kullanarak özelleştirebileceğiniz tüm öğeler sayfada görüntülenir
 5. **Geliştirici portalı görünümünü özelleştirmek için değişken değerleri değiştirin:** alanında "headings-color" değerini girin.
 
-    **\@Başlıklarının rengi** öğesi sayfada görüntülenir. Bu değişken metnin rengini denetler.
+    Sayfada  **başlıklar-Coloröğesigörünür.\@** Bu değişken metnin rengini denetler.
 
     ![stili özelleştir](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. İçin alana tıklayın  **\@başlıklarının rengi** değişkeni. 
+6. Başlıklar-Color değişkeninin alanına  **\@** tıklayın. 
     
     Renk seçici açılır menüsü açılır.
 7. Renk seçici açılır menüsünden yeni bir renk seçin.

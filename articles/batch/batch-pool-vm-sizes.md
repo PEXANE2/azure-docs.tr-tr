@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fd88f8e9b32b3fe5a0d7ab0caf233098ea19fde0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323099"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094664"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -39,30 +38,30 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 
 Listelenen tüm promosyon veya önizleme VM boyutları destek için garanti edilmez.
 
-| VM Serisi  | Desteklenen boyutlar | Batch hesabı havuzu ayırma modu<sup>1</sup> |
+| VM serisi  | Desteklenen boyutlar | Batch hesabı havuzu ayırma modu<sup>1</sup> |
 |------------|---------|-----------------|
 | Temel A serisi | Basic_A0 *hariç* tüm boyutlar (a0) | Any |
 | A Serisi | Standard_A0 *hariç* tüm boyutlar | Any |
 | Av2 Serisi | Tüm Boyutlar | Any |
-| B serisi | Yok. | Kullanılamaz |
-| DC serisi | None | Kullanılamaz |
+| B serisi | Yok. | Yok |
+| DC serisi | Yok. | Yok |
 | Dv2, Dsv2 serisi | Tüm Boyutlar | Any |
 | Dv3, Dsv3 serisi | Tüm Boyutlar | Any |
-| [Bellek için iyileştirilmiş Boyutlar](../virtual-machines/linux/sizes-memory.md) | Yok. | Kullanılamaz |
+| [Bellek için iyileştirilmiş Boyutlar](../virtual-machines/linux/sizes-memory.md) | Yok. | Yok |
 | Fsv2-serisi | Tüm Boyutlar | Any |
 | H Serisi | Tüm Boyutlar | Any |
 | HB Serisi<sup>2</sup> | Tüm Boyutlar | Any |
 | HC Serisi<sup>2</sup> | Tüm Boyutlar | Any |
 | Ls serisi | Tüm Boyutlar | Any |
-| Lsv2 serisi | Yok. | Kullanılamaz |
+| Lsv2 serisi | Yok. | Yok |
 | M serisi | Standard_M64ms (yalnızca düşük öncelikli), Standard_M128s (yalnızca düşük öncelikli) | Any |  
 | NCv2-serisi<sup>2</sup> | Tüm Boyutlar | Any |
 | NCv3-serisi<sup>2</sup> | Tüm Boyutlar | Any |
 | ND serisi<sup>2</sup> | Tüm Boyutlar | Any |
 | NDv2 serisi | Tüm Boyutlar | Kullanıcı aboneliği modu |
 | NV serisi | Tüm Boyutlar | Any |
-| NVv3 serisi | None | Kullanılamaz |
-| SAP HANA | Yok. | Kullanılamaz |
+| NVv3 serisi | Yok. | Yok |
+| SAP HANA | Yok. | Yok |
 
 <sup>1</sup> bazı yeni VM serileri başlangıçta kısmen desteklenir. Bu VM Serisi, **havuz ayırma modu** **Kullanıcı aboneliğine**ayarlanmış olan Batch hesapları tarafından tahsis edilebilir. Batch hesabı yapılandırması hakkında daha fazla bilgi için bkz. [Batch hesaplarını yönetme](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . **Kullanıcı aboneliği** Batch hesapları için kısmen desteklenen bu VM serisine nasıl kota isteneceğini öğrenmek için [Kotalar ve sınırlar](batch-quota-limit.md) bölümüne bakın.  
 
@@ -72,7 +71,7 @@ Listelenen tüm promosyon veya önizleme VM boyutları destek için garanti edil
 
 Bulut hizmeti yapılandırmasındaki toplu iş havuzları aşağıdakiler **dışında** [Cloud Services için tüm VM boyutlarını](../cloud-services/cloud-services-sizes-specs.md) destekler:
 
-| VM Serisi  | Desteklenmeyen Boyutlar |
+| VM serisi  | Desteklenmeyen Boyutlar |
 |------------|-------------------|
 | A Serisi   | Çok küçük       |
 | Av2 Serisi | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |

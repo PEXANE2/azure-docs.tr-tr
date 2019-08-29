@@ -9,18 +9,17 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 7aaf29ddf52fb07524aa972f12ca18c235a40928
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351530"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072086"
 ---
-# <a name="failed-to-update-api-management-service-hostnames"></a>API Management hizmetinde ana bilgisayar adları güncelleştirilemedi
+# <a name="failed-to-update-api-management-service-hostnames"></a>API Management hizmeti ana bilgisayar adları güncelleştirilemedi
 
 Bu makalede, Azure API Management hizmeti için özel bir etki alanı eklediğinizde karşılaşabileceğiniz "API Management hizmet ana bilgisayar adları güncelleştirilemedi" hatası açıklanır. Bu makalede, sorunu çözmenize yardımcı olacak sorun giderme adımları sunulmaktadır.
 
@@ -46,9 +45,9 @@ Bu sorunu çözmek için şu adımları izleyin:
 1. API Management hizmet listede yoksa, **erişim Ilkesi Ekle**' yi seçin ve ardından aşağıdaki erişim ilkesini oluşturun:
     - **Şablondan Yapılandır**: Yok.
     - **Asıl seçin**: API Management hizmetinin adını arayın ve listeden seçin
-    - **Anahtar izinleri**: None
+    - **Anahtar izinleri**: Yok.
     - **Gizli dizi izinleri**: Al
-    - **Sertifika izinleri**: None
+    - **Sertifika izinleri**: Yok.
 1. Erişim ilkesini oluşturmak için **Tamam ' ı** seçin.
 1. Seçin **Kaydet** değişiklikleri kaydedin.
 

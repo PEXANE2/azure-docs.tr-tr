@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 7a3cdab8e05a873e67788a72350d1bf3fde3cd18
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018196"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099464"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -88,7 +88,8 @@ Bu tabloda, sanal ağınızda ıSE 'nin kullandığı ve bu bağlantı noktalar�
 | Azure Traffic Manager iletişimi | Gelen | 443 | AzureTrafficManager | VirtualNetwork | |
 | Logic Apps Designer-Dynamic özellikleri | Gelen | 454 | İnternet | VirtualNetwork | İstekler, [Bu bölgedeki Logic Apps erişim uç noktası gelen IP adreslerinden](../logic-apps/logic-apps-limits-and-config.md#inbound)gelir. |
 | App Service yönetimi bağımlılığı | Gelen | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Bağlayıcı dağıtımı | Gelen | 454, 3443 | İnternet | VirtualNetwork | Bağlayıcıları dağıtmak ve güncelleştirmek için gereklidir. Bu bağlantı noktasını kapatmak veya engellemek ıSE dağıtımlarının başarısız olmasına neden olur ve bağlayıcı güncelleştirmelerinin veya düzeltmelerinin yapılmasını önler. |
+| Bağlayıcı dağıtımı | Gelen | 454 | AzureConnectors | VirtualNetwork | Bağlayıcıları dağıtmak ve güncelleştirmek için gereklidir. Bu bağlantı noktasını kapatmak veya engellemek ıSE dağıtımlarının başarısız olmasına neden olur ve bağlayıcı güncelleştirmelerinin veya düzeltmelerinin yapılmasını önler. |
+| Bağlayıcı İlkesi dağıtımı | Gelen | 3443 | İnternet | VirtualNetwork | Bağlayıcıları dağıtmak ve güncelleştirmek için gereklidir. Bu bağlantı noktasını kapatmak veya engellemek ıSE dağıtımlarının başarısız olmasına neden olur ve bağlayıcı güncelleştirmelerinin veya düzeltmelerinin yapılmasını önler. |
 | Azure SQL bağımlılığı | Giden | 1433 | VirtualNetwork | SQL | |
 | Azure Kaynak Durumu | Giden | 1886 | VirtualNetwork | AzureMonitor | Kaynak Durumu sistem durumunu yayımlama için |
 | API Management yönetim uç noktası | Gelen | 3443 | APIManagement | VirtualNetwork | |

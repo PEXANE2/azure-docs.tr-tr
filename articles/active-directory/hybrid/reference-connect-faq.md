@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011307"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084871"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -273,4 +273,4 @@ Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız 
 
 **S: Eşitleme adımı hatalarından sonra neden 6311 ve 6401 olaylarını görüyorum?**
 
-Olaylar 6311- **sunucu, geri çağırma işlemi gerçekleştirirken beklenmeyen bir hatayla karşılaştı** ve 6401- **Yönetim aracısı denetleyicisi beklenmeyen bir hatayla karşılaştı** -eşitleme adımı hatasından sonra her zaman günlüğe kaydedilir. Bu hataları gidermek için, eşitleme adımı hatalarını temizlemeniz gerekir.  Daha fazla bilgi için bkz. [eşitleme sırasında hata giderme](tshoot-connect-sync-errors.md) ve [Azure AD Connect eşitleme Ile nesne eşitleme sorunlarını giderme](/tshoot-connect-objectsync.md)
+Olaylar 6311- **sunucu, geri çağırma işlemi gerçekleştirirken beklenmeyen bir hatayla karşılaştı** ve 6401- **Yönetim aracısı denetleyicisi beklenmeyen bir hatayla karşılaştı** -eşitleme adımı hatasından sonra her zaman günlüğe kaydedilir. Bu hataları gidermek için, eşitleme adımı hatalarını temizlemeniz gerekir.  Daha fazla bilgi için bkz. [eşitleme sırasında hata giderme](tshoot-connect-sync-errors.md) ve [Azure AD Connect eşitleme Ile nesne eşitleme sorunlarını giderme](tshoot-connect-objectsync.md)

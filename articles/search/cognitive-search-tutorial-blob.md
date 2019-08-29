@@ -1,450 +1,482 @@
 ---
-title: 'REST öğreticisi: Bir AI zenginleştirme ardışık düzeninde bilişsel hizmetler çağırma-Azure Search'
-description: Veri ayıklama için Azure Search dizin oluşturma, doğal dil ve görüntü AI işleme örneğinde, Postman ve REST API kullanarak JSON blob 'ları üzerinden dönüştürme işleminin bir örneğini adım adım yapın.
+title: 'REST öğreticisi: Bilişsel arama kullanarak bir AI zenginleştirme işlem hattı oluşturun Azure Search'
+description: Postman ve Azure Search REST API 'Lerini kullanarak JSON Bloblarındaki içerikler üzerinde metin ayıklama ve doğal dil işleme örneğinde adım adım ilerleyin.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 07fd1bbab68dc9abcd6e7f8df7f36f7977ff5b3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638912"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102776"
 ---
-# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST öğreticisi: Azure Search dizin oluşturma ardışık düzeninde Bilişsel Hizmetler API'si çağrısı
+# <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Öğretici: Bilişsel arama ile "yapılandırılmamış içerik" yapısına yapı ekleyin
 
-Bu öğreticide, *bilişsel becerileri* kullanarak Azure Search’te programlama veri zenginleştirmesi mekanizmasını öğrenirsiniz. Yetenekler, bilişsel hizmetler 'de doğal dil işleme (NLP) ve görüntü analizi özellikleri tarafından desteklenir. Beceri kompozisyonu ve yapılandırması aracılığıyla bir görüntünün veya taranan belge dosyasının metin ve metin gösterimlerini ayıklayabilirsiniz. Ayrıca dili, varlıkları, anahtar tümcecikleri ve daha fazlasını tespit edebilirsiniz. Nihai sonuç, bir dizin oluşturma işlem hattında AI zenginleri ile oluşturulan bir Azure Search dizininde zengin ek içeriğe sahiptir. 
-
-Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için REST API çağrıları yaparsınız:
+Yapılandırılmamış metin veya görüntü içeriğiniz varsa, Azure Search bilişsel [arama](cognitive-search-concept-intro.md) özelliği, tam metin arama veya bilgi araştırma senaryoları için faydalı olan bilgileri ayıklamanızı ve yeni içerik oluşturmanıza yardımcı olabilir. Bilişsel arama, görüntü dosyalarını (JPG, PNG, TIFF) işleyebilse de, bu öğretici Word tabanlı içeriğe odaklanmasına karşın sorgularda, modellerde ve filtrelerde kullanabileceğiniz yeni alanlar ve bilgiler oluşturmak için dil algılamayı ve metin analizlerini uygular.
 
 > [!div class="checklist"]
-> * Bir dizine giden yolda örnek verileri zenginleştiren dizin oluşturma işlem hattı oluşturma
-> * Yerleşik becerileri uygulama: varlık tanıma, dil algılama, metin işleme, anahtar tümcecik ayıklama
-> * Bir beceri kümesindeki çıktılara girişleri eşleyerek becerilerin nasıl birbirine zincirleneceğini öğrenme
-> * İstekleri yürütme ve sonuçları gözden geçirme
-> * Daha fazla geliştirme için dizini ve dizin oluşturucuları sıfırlama
+> * Azure Blob depolamada PDF, MD, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
+> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı oluşturun.
+> * Çıktıyı depolamak için bir dizin tanımlayın (ham içerik ve ardışık düzen tarafından oluşturulan ad-değer çiftleri).
+> * Dizini oluşturmak ve yüklemek için işlem hattını yürütün.
+> * Tam metin aramasını ve zengin sorgu söz dizimini kullanarak içeriği keşfedebilirsiniz.
 
-Çıktı, Azure Search üzerinde tam metin araması yapılabilir bir dizindir. [Eş anlamlılar](search-synonyms.md), [puanlama profilleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [çözümleyiciler](search-analyzers.md) ve [filtreler](search-filters.md) gibi diğer standart özelliklerle dizini geliştirebilirsiniz.
+Bu izlenecek yolu tamamlamak için birkaç hizmete, Ayrıca, REST API çağrısı yapmak için [Postman masaüstü uygulamasını](https://www.getpostman.com/) veya başka bir Web Testi aracını kullanmanız gerekir. 
 
-Bu öğretici ücretsiz hizmette çalışır, ancak ücretsiz işlem sayısı günde 20 belge ile sınırlıdır. Bu öğreticiyi aynı günde birden çok kez çalıştırmak istiyorsanız, daha fazla çalıştırmaya uyabilmeniz için daha küçük bir dosya kümesi kullanın.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-> [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
->
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [Azure Search fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+## <a name="download-files"></a>Dosyaları indirme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+1. Bu [OneDrive klasörünü](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) açın ve sol üst köşedeki dosyaları bilgisayarınıza kopyalamak için **İndir** ' e tıklayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
 
-Aşağıdaki hizmetler, Araçlar ve veriler bu öğreticide kullanılır. 
+## <a name="1---create-services"></a>1-hizmet oluşturma
 
-+ Örnek verileri depolamak için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Depolama hesabının Azure Search aynı bölgede bulunduğundan emin olun.
+Bu izlenecek yol, verileri sağlamak üzere dizin oluşturma ve sorgular, AI zenginleştirme için bilişsel hizmetler ve Azure Blob depolama için Azure Search kullanır. Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgedeki ve kaynak grubundaki tüm üç hizmeti oluşturun. Uygulamada, Azure depolama hesabınız herhangi bir bölgede olabilir.
 
-+ [Postman masaüstü uygulaması](https://www.getpostman.com/) , Azure Search için REST çağrıları yapmak için kullanılır.
+### <a name="start-with-azure-storage"></a>Azure Storage 'ı kullanmaya başlama
 
-+ [Örnek veriler](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) , küçük bir dosya kümesi farklı türlerden oluşur. 
+1. [Azure Portal oturum açın](https://portal.azure.com/) ve **+ kaynak oluştur**' a tıklayın.
 
-+ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu öğretici için ücretsiz bir hizmet kullanabilirsiniz.
+1. *Depolama hesabı* araması yapın ve Microsoft 'un depolama hesabı teklifi ' ni seçin.
 
-## <a name="get-a-key-and-url"></a>Anahtar ve URL al
+   ![Depolama hesabı oluştur](media/cognitive-search-tutorial-blob/storage-account.png "Depolama hesabı oluştur")
 
-REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. İkisini de içeren bir arama hizmeti oluşturulur. Bu nedenle aboneliğinize Azure Search hizmetini eklediyseniz gerekli bilgileri almak için aşağıdaki adımları izleyin:
+1. Temel bilgiler sekmesinde, aşağıdaki öğeler gereklidir. Diğer her şey için varsayılanları kabul edin.
 
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+   + **Kaynak grubu**. Mevcut bir tane seçin veya yeni bir tane oluşturun, ancak bunları topluca yönetebilmeniz için tüm hizmetler için aynı grubu kullanın.
 
-1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+   + **Depolama hesabı adı**. Aynı türde birden fazla kaynağınız olabileceğini düşünüyorsanız, tür ve bölgeye göre belirsizliği ortadan kaldırmak için adı kullanın, örneğin *blobstoragewestus*. 
 
-![Http uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "Http uç noktası ve erişim anahtarı al")
+   + **Konum**. Mümkünse Azure Search ve bilişsel hizmetler için kullanılan aynı konumu seçin. Tek bir konum, bant genişliği ücretlerini oylar.
 
-Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
+   + **Hesap türü**. Varsayılan, *StorageV2 (genel amaçlı v2)* seçeneğini belirleyin.
 
-## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
+1. Hizmeti oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
-Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. Kaynak veriler, [Azure Search dizin oluşturucunun](search-indexer-overview.md) desteklenen bir veri kaynağı türünden gelmelidir. Azure Tablo Depolaması bilişsel arama için desteklenmiyor. Bu alıştırmada, birden çok içerik türünü göstermek için blob depolama kullanırız.
+1. Oluşturulduktan sonra genel bakış sayfasını açmak için **Kaynağa Git** ' e tıklayın.
 
-1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, Bloblar ' a tıklayınve ardından **+ Container**' a tıklayın.
+1. **Bloblar** hizmeti ' ne tıklayın.
 
-1. Örnek veri içeren [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
+1. Bir kapsayıcı oluşturmak ve *COG-Search-demo*olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
 
-1. Kapsayıcı oluşturulduktan sonra dosyayı açın ve önceki bir adımda indirdiğiniz örnek dosyaları karşıya yüklemek için komut çubuğunda **karşıya yükle** ' yi seçin.
+1. *COG-Search-demo* ' i seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Görüntü olmayan dosyaların tümünü seçin. 7 dosyasına sahip olmanız gerekir. Karşıya yüklemek için **Tamam** 'ı tıklatın.
 
-   ![Azure blob depolamadaki kaynak dosyalar](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Örnek dosyaları karşıya yükle](media/cognitive-search-tutorial-blob/sample-files.png "Örnek dosyaları karşıya yükle")
 
-1. Örnek dosyalar yüklendikten sonra Blob depolamanız için bir bağlantı dizesi ve kapsayıcı adını alın. Azure portalda depolama hesabınıza giderek bunu yapabilirsiniz. **Erişim anahtarları** bölümünde **Bağlantı Dizesi** alanını kopyalayın.
+1. Azure Storage 'tan çıkmadan önce, Azure Search bir bağlantıyı formülleştirmek için bir bağlantı dizesi alın. 
 
-   Bağlantı dizesi, aşağıdaki örneğe benzer bir URL olmalıdır:
+   1. Depolama hesabınızın genel bakış sayfasına geri gidin (örnek olarak *blobstragewestus* kullandık). 
+   
+   1. Sol gezinti bölmesinde **erişim anahtarları** ' nı seçin ve bağlantı dizelerinden birini kopyalayın. 
+
+   Bağlantı dizesi, aşağıdaki örneğe benzer bir URL 'dir:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
-Paylaşılan erişim imzası sağlama gibi, bağlantı dizesini belirtmenin başka birçok yolu vardır. Veri kaynağı kimlik bilgileri hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Depolama Alanı dizinini oluşturma](search-howto-indexing-azure-blob-storage.md#Credentials).
+1. Bağlantı dizesini Not defteri 'ne kaydedin. Daha sonra veri kaynağı bağlantısını ayarlarken gerekecektir.
 
-## <a name="set-up-postman"></a>Postman’i ayarlama
+### <a name="cognitive-services"></a>Bilişsel Hizmetler
+
+Bilişsel arama içindeki AI zenginleştirme, doğal dil ve görüntü işleme için Metin Analizi ve Görüntü İşleme dahil bilişsel hizmetler tarafından desteklenir. Amacınız gerçek bir prototipi veya projeyi tamamlayacaksa, bu noktada bilişsel hizmetler sağlama (Azure Search ile aynı bölgede), böylece dizin oluşturma işlemlerine iliştirebilirsiniz.
+
+Ancak, bu alıştırma için Azure Search kaynak sağlamayı atlayabilirsiniz, çünkü arka planda bilişsel hizmetlere bağlanabilir ve Dizin Oluşturucu başına 20 ücretsiz işlem sağlar. Bu öğretici 7 işlem kullandığından, ücretsiz ayırma yeterlidir. Daha büyük projeler için, Kullandıkça öde, bu hizmetleri, Kullandıkça öde, bu hizmetler için sağlama bölümüne planlayın. Daha fazla bilgi için bkz. bilişsel [Hizmetler iliştirme](cognitive-search-attach-cognitive-services.md).
+
+### <a name="azure-search"></a>Azure Search
+
+Üçüncü bileşen, [portalda oluşturabileceğiniz](search-create-service-portal.md)Azure Search. Bu izlenecek yolu tamamlamak için ücretsiz katmanı kullanabilirsiniz. 
+
+Azure Blob depolamada olduğu gibi, erişim anahtarını toplamak için biraz zaman ayırın. Ayrıca, istekleri raporlamaya başladığınızda, her bir isteğin kimliğini doğrulamak için kullanılan uç nokta ve yönetici API 'si anahtarını sağlamanız gerekir.
+
+### <a name="get-an-admin-api-key-and-url-for-azure-search"></a>Azure Search için yönetici API anahtarı ve URL 'SI alın
+
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net`, hizmet adınız `mydemo`olur.
+
+2. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+
+    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
+
+![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+
+Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
+
+## <a name="2---set-up-postman"></a>2-Postman 'ı ayarlama
 
 Postman’i başlatın ve bir HTTP isteği ayarlayın. Bu aracı hakkında bilginiz varsa bkz. [Postman kullanarak Azure Search REST API 'Leri araştırma](search-get-started-postman.md).
 
-Bu öğreticide kullanılan istek metotları **gönderi**, **PUT**ve **Get**. Üst bilgi anahtarları "Content-Type", "Application/JSON" olarak ve bir "api-Key" olarak Azure Search hizmetinizin Yönetici anahtarına ayarlanır. Gövde, çağrınızın gerçek içeriklerini yerleştirdiğiniz yerdir. 
+Bu öğreticide kullanılan istek metotları **gönderi**, **PUT**ve **Get**. Arama hizmetinize dört API çağrısı yapmak için yöntemlerini kullanacaksınız: bir veri kaynağı, bir beceri, dizin ve Dizin Oluşturucu oluşturun.
 
-  ![Yarı yapılandırılmış arama](media/search-semi-structured-data/postmanoverview.png)
+Üst bilgilerde, "Content-Type" olarak `application/json` ayarlayın ve Azure Search hizmetinizin Yönetici API anahtarına ayarlayın. `api-key` Üst bilgileri ayarladıktan sonra bu alýþtýrmadaki her istek için kullanabilirsiniz.
 
-Veri kaynağı, Beceri, dizin ve Dizin Oluşturucu oluşturmak için arama hizmetinize dört API çağrısı yapmak üzere Postman kullanıyoruz. Veri kaynağı, depolama hesabınıza ve JSON verilerinize yönelik bir işaretçi içerir. Arama hizmetiniz, veriler yüklenirken bağlantı kurar.
+  ![Postman istek URL 'si ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'si ve üstbilgisi")
 
+## <a name="3---create-the-pipeline"></a>3-işlem hattını oluşturma
 
-## <a name="create-a-data-source"></a>Bir veri kaynağı oluşturun
+Azure Search, dizin oluşturma (veya veri alımı) sırasında AI işleme oluşur. İzlenecek yolun bu bölümü dört nesne oluşturur: veri kaynağı, Dizin tanımı, Beceri, Dizin Oluşturucu. 
 
-Hizmetleriniz ve kaynak dosyalarınız hazırlandığına göre şimdi dizin oluşturma işlem hattınızın bileşenlerini derlemeye başlayabilirsiniz. Azure Search’e, dış kaynak verilerinin nasıl alınacağını bildiren bir [veri kaynağı nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-data-source) ile başlayın.
+### <a name="step-1-create-a-data-source"></a>1\. adım: Bir veri kaynağı oluşturun
 
-İstek üst bilgisinde, Azure Search hizmetini oluştururken kullandığınız hizmet adını ve arama hizmetiniz için oluşturulan api-anahtarını sağlayın. İstek gövdesinde, blob kapsayıcı adını ve bağlantı dizesini belirtin.
+[Veri kaynağı nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , dosyaları içeren blob kapsayıcısına bağlantı dizesi sağlar.
 
-### <a name="sample-request"></a>Örnek İstek
-```http
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
-Content-Type: application/json
-api-key: [admin key]
-```
-#### <a name="request-body-syntax"></a>İstek Gövdesi Sözdizimi
-```json
-{
-  "name" : "demodata",
-  "description" : "Demo files to demonstrate cognitive search capabilities.",
-  "type" : "azureblob",
-  "credentials" :
-  { "connectionString" :
-    "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
-  },
-  "container" : { "name" : "<your blob container name>" }
-}
-```
-İsteği gönderin. Web testi aracı, 201 durum kodunu döndürerek işlemin başarılı olduğunu onaylamalıdır. 
+1. **Post** 'u ve aşağıdaki URL 'yi kullanarak hizmet adını hizmetinizin gerçek adıyla değiştirin.
 
-Bu ilk isteğiniz olduğundan, veri kaynağının Azure Search’te oluşturulduğunu onaylamak için Azure portalını denetleyin. Arama hizmeti panosu sayfasında, veri kaynakları listesinin yeni bir öğe olduğunu doğrulayın. Portal sayfasının yenilenmesi için birkaç dakika beklemeniz gerekebilir. 
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   ```
 
-  ![Portaldaki veri kaynakları kutucuğu](./media/cognitive-search-tutorial-blob/data-source-tile.png "Portaldaki veri kaynakları kutucuğu")
+1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın ve öğesini depolama `connectionString` hesabınızın gerçek bağlantısıyla değiştirin. 
 
-Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-version=2019-05-06`, uç nokta üzerinde olmalıdır, `api-key`, Üst bilgide `Content-Type` öğesinden sonra gelmelidir ve değeri bir arama hizmeti için geçerli olmalıdır. Bu öğreticide kalan adımlar için üst bilgiyi kullanabilirsiniz.
+   Kapsayıcı adını da düzenlemeyi unutmayın. Önceki bir adımda kapsayıcı adı için "COG-Search-demo" önerilir.
 
-## <a name="create-a-skillset"></a>Beceri kümesi oluşturma
-
-Bu adımda, verilerinize uygulamak istediğiniz bir zenginleştirme adımları kümesini tanımlarsınız. Her zenginleştirme adımını *beceri* olarak ve zenginleştirme adımları kümesini de *beceri kümesi* olarak adlandırabilirsiniz. Bu öğretici, beceri için yerleşik bilişsel [becerileri](cognitive-search-predefined-skills.md) kullanır:
-
-+ İçeriğin dilini tanımlamak için [Dil Algılama](cognitive-search-skill-language-detection.md).
-
-+ Anahtar tümcecik ayıklama becerisini çağırmadan önce büyük içeriği daha küçük öbeklere ayırmak için [Metni Böl](cognitive-search-skill-textsplit.md). Anahtar tümcecik ayıklama, 50.000 veya daha az karakterden oluşan girişi kabul eder. Bu sınıra uymak için örnek dosyaların birkaç tanesinin bölünmesi gerekir.
-
-+ Blob kapsayıcısında bulunan içerikten kuruluşların adlarını ayıklamak için [varlık tanıma](cognitive-search-skill-entity-recognition.md) .
-
-+ Üst anahtar tümcecikleri çekmek için [Anahtar İfade Ayıklama](cognitive-search-skill-keyphrases.md). 
-
-### <a name="sample-request"></a>Örnek İstek
-Bu REST çağrısını yapmadan önce, aracınız çağrılar arasında istek üst bilgisini korumuyorsa aşağıdaki istekte yer alan hizmet adını ve yönetici anahtarını değiştirmeyi unutmayın. 
-
-Bu istek bir beceri kümesi oluşturur. Bu öğreticinin geri kalanında beceri kümesi adı ```demoskillset``` olarak ifade edilir.
-
-```http
-PUT https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
-api-key: [admin key]
-Content-Type: application/json
-```
-#### <a name="request-body-syntax"></a>İstek Gövdesi Sözdizimi
-```json
-{
-  "description":
-  "Extract entities, detect language and extract key-phrases",
-  "skills":
-  [
+    ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
+      "name" : "cog-search-demo-ds",
+      "description" : "Demo files to demonstrate cognitive search capabilities.",
+      "type" : "azureblob",
+      "credentials" :
+      { "connectionString" :
+        "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-ACCOUNT-KEY>;"
+      },
+      "container" : { "name" : "<YOUR-BLOB-CONTAINER-NAME>" }
+    }
+    ```
+1. İsteği gönderin. Başarıyı onaylayan 201 durum kodunu görmeniz gerekir. 
+
+Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-version=2019-05-06`, uç nokta üzerinde olmalıdır, `api-key`, Üst bilgide `Content-Type` öğesinden sonra gelmelidir ve değeri bir arama hizmeti için geçerli olmalıdır. Sözdiziminin doğru olduğundan emin olmak için JSON belgesini çevrimiçi bir JSON doğrulayıcısı aracılığıyla çalıştırmak isteyebilirsiniz. 
+
+### <a name="step-2-create-a-skillset"></a>2\. adım: Beceri kümesi oluşturma
+
+[Beceri nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-skillset) , içeriğinize uygulanan bir zenginleştirme adımları kümesidir. 
+
+1. **PUT** ve aşağıdaki URL 'yi kullanın ve hizmet adını hizmetinizin gerçek adıyla değiştirin.
+
+    ```http
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    ```
+
+1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Bu beceri, aşağıdaki yerleşik becerilerden oluşur.
+
+   | İmde                 | Açıklama    |
+   |-----------------------|----------------|
+   | [Varlık tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
+   | [Dil algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
+   | [Metin bölme](cognitive-search-skill-textsplit.md)  | Anahtar tümceciği ayıklama becerisi çağrılmadan önce büyük içeriği daha küçük parçalara ayırır. Anahtar tümcecik ayıklama, 50.000 veya daha az karakterden oluşan girişi kabul eder. Bu sınıra uymak için örnek dosyaların birkaç tanesinin bölünmesi gerekir. |
+   | [Anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md) | En üstteki anahtar tümceleri çeker. |
+
+   Her beceri, belge içeriğinde yürütülür. İşleme sırasında Azure Search, farklı dosya biçimlerinden içerik okumak için her bir belgeyi çözer. Kaynak dosyadan gelen, bulunan metin, oluşturulan ```content``` alanına her belge için birer birer yerleştirilir. Bu nedenle, girdi olur ```"/document/content"```.
+
+   Anahtar tümceciği ayıklama için, büyük dosyaları sayfalara bölmek üzere metin Bölümlendirici yeteneği kullandığımızda, anahtar tümceciği ayıklama becerinin ```"document/pages/*"``` ```"/document/content"```bağlamı, yerine (belgedeki her sayfa için) olur.
+
+    ```json
+    {
+      "description": "Extract entities, detect language and extract key-phrases",
+      "skills":
+      [
         {
-          "name": "text", "source": "/document/content"
-        }
-      ],
-      "outputs": [
+          "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+          "categories": [ "Person", "Organization", "Location" ],
+          "defaultLanguageCode": "en",
+          "inputs": [
+            { "name": "text", "source": "/document/content" }
+          ],
+          "outputs": [
+            { "name": "persons", "targetName": "persons" },
+            { "name": "organizations", "targetName": "organizations" },
+            { "name": "locations", "targetName": "locations" }
+          ]
+        },
         {
-          "name": "organizations", "targetName": "organizations"
+          "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
+          "inputs": [
+            { "name": "text", "source": "/document/content" }
+          ],
+          "outputs": [
+            { "name": "languageCode", "targetName": "languageCode" }
+          ]
+        },
+        {
+          "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+          "textSplitMode" : "pages",
+          "maximumPageLength": 4000,
+          "inputs": [
+            { "name": "text", "source": "/document/content" },
+            { "name": "languageCode", "source": "/document/languageCode" }
+          ],
+          "outputs": [
+            { "name": "textItems", "targetName": "pages" }
+          ]
+        },
+        {
+          "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+          "context": "/document/pages/*",
+          "inputs": [
+            { "name": "text", "source": "/document/pages/*" },
+            { "name":"languageCode", "source": "/document/languageCode" }
+          ],
+          "outputs": [
+            { "name": "keyPhrases", "targetName": "keyPhrases" }
+          ]
         }
       ]
-    },
+    }
+    ```
+    Beceri kümesinin grafiksel gösterimi aşağıda gösterilmektedir. 
+
+    ![Beceri kümesini anlama](media/cognitive-search-tutorial-blob/skillset.png "Beceri kümesini anlama")
+
+1. İsteği gönderin. Postman, başarıyı onaylayan 201 durum kodunu döndürmelidir. 
+
+> [!NOTE]
+> Çıktılar bir dizine eşlenebilir, aşağı akış becerisine yönelik giriş olarak kullanılır veya dil kodunda olduğu gibi her iki şekilde de kullanılabilir. Dizinde bir dil kodu, filtreleme için yararlıdır. Giriş olarak dil kodu, sözcük bölünmesiyle ilgili dilbilgisi kurallarını bildirmek için metin analizi becerileri tarafından kullanılır. Beceri kümesi temelleri hakkında daha fazla bilgi için bkz. [Beceri kümesini tanımlama](cognitive-search-defining-skillset.md).
+
+### <a name="step-3-create-an-index"></a>3\. adım: Dizin oluşturma
+
+Bir [Dizin](https://docs.microsoft.com/rest/api/searchservice/create-index) , içeriğinizin fiziksel ifadelerini oluşturmak için kullanılan şemayı, ters dizinler ve Azure Search içindeki diğer yapılar için sağlar. Bir dizinin en büyük bileşeni, veri türü ve özniteliklerin Azure Search içeriği ve davranışları belirlerken alanlar koleksiyonudur.
+
+1. Dizininizi adlandırmak için, **PUT** ve aşağıdaki URL 'yi kullanarak hizmet adınızı hizmetinizin gerçek adıyla değiştirin.
+
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   ```
+
+1. İstek **gövdesi**' nde aşağıdaki JSON tanımını kopyalayın. `content` Alan, belgenin kendisini depolar. , `languageCode` `keyPhrases`Ve içinekalanlar,beceritarafındanoluşturulanyenibilgileri(alanlarvedeğerler)temsileder.`organizations`
+
+    ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
-      "inputs": [
+      "fields": [
         {
-          "name": "text", "source": "/document/content"
-        }
-      ],
-      "outputs": [
+          "name": "id",
+          "type": "Edm.String",
+          "key": true,
+          "searchable": true,
+          "filterable": false,
+          "facetable": false,
+          "sortable": true
+        },
         {
-          "name": "languageCode",
-          "targetName": "languageCode"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
-      "textSplitMode" : "pages",
-      "maximumPageLength": 4000,
-      "inputs": [
+          "name": "metadata_storage_name",
+          "type": "Edm.String",
+          "searchable": false,
+          "filterable": false,
+          "facetable": false,
+          "sortable": false
+        },
         {
-          "name": "text",
-          "source": "/document/content"
+          "name": "content",
+          "type": "Edm.String",
+          "sortable": false,
+          "searchable": true,
+          "filterable": false,
+          "facetable": false
         },
         {
           "name": "languageCode",
-          "source": "/document/languageCode"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "textItems",
-          "targetName": "pages"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
-      "context": "/document/pages/*",
-      "inputs": [
-        {
-          "name": "text", "source": "/document/pages/*"
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "facetable": false
         },
-        {
-          "name":"languageCode", "source": "/document/languageCode"
-        }
-      ],
-      "outputs": [
         {
           "name": "keyPhrases",
-          "targetName": "keyPhrases"
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "filterable": false,
+          "facetable": false
+        },
+        {
+          "name": "persons",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "sortable": false,
+          "filterable": true,
+          "facetable": true
+        },
+        {
+          "name": "organizations",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "sortable": false,
+          "filterable": true,
+          "facetable": true
+        },
+        {
+          "name": "locations",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "sortable": false,
+          "filterable": true,
+          "facetable": true
         }
       ]
     }
-  ]
-}
-```
+    ```
 
-İsteği gönderin. Web testi aracı, 201 durum kodunu döndürerek işlemin başarılı olduğunu onaylamalıdır. 
+1. İsteği gönderin. Postman, başarıyı onaylayan 201 durum kodunu döndürmelidir. 
 
-#### <a name="explore-the-request-body"></a>İstek gövdesini keşfetme
+### <a name="step-4-create-and-run-an-indexer"></a>4\. Adım: Dizin Oluşturucu oluşturma ve çalıştırma
 
-Her bir sayfa için anahtar tümcecik ayıklama becerisinin nasıl uygulandığına dikkat edin. Bağlamı ```"document/pages/*"``` olarak ayarlayarak, belge/sayfa dizisinin her üyesi (belgedeki her sayfa) için bu zenginleştiriciyi çalıştırırsınız.
+[Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/create-indexer) , işlem hattını sürücüler. Şimdiye kadar oluşturduğunuz üç bileşen (veri kaynağı, Beceri, dizin) bir dizin oluşturucunun girdileri olur. Azure Search dizin oluşturucunun oluşturulması, tüm işlem hattının hareket halinde yer aldığı olaydır. 
 
-Her beceri, belge içeriğinde yürütülür. İşleme sırasında Azure Search, farklı dosya biçimlerinden içerik okumak için her bir belgeyi çözer. Kaynak dosyadan gelen, bulunan metin, oluşturulan ```content``` alanına her belge için birer birer yerleştirilir. Bu nedenle, girişi ```"/document/content"``` olarak ayarlayın.
+1. Dizin oluşturucuyu adlandırmak için **PUT** ve aşağıdaki URL 'yi kullanın ve hizmet adını hizmetinizin gerçek adıyla değiştirin.
 
-Beceri kümesinin grafiksel gösterimi aşağıda gösterilmektedir. 
+   ```http
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   ```
 
-![Beceri kümesini anlama](media/cognitive-search-tutorial-blob/skillset.png "Beceri kümesini anlama")
+1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Alan eşleme öğelerine dikkat edin; Bu eşlemeler veri akışını tanımladıklarından önemlidir. 
 
-Çıktılar bir dizine eşlenebilir, aşağı akış becerisine yönelik giriş olarak kullanılır veya dil kodunda olduğu gibi her iki şekilde de kullanılabilir. Dizinde bir dil kodu, filtreleme için yararlıdır. Giriş olarak dil kodu, sözcük bölünmesiyle ilgili dilbilgisi kurallarını bildirmek için metin analizi becerileri tarafından kullanılır.
+   , `fieldMappings` Bir dizindeki hedef alanlara veri kaynağından içerik gönderen beceri önce işlenir. Dizine var olan, değiştirilmemiş içeriği göndermek için alan eşlemelerini kullanacaksınız. Alan adları ve türleri her iki uçta da aynıysa, hiçbir eşleme gerekmez.
 
-Beceri kümesi temelleri hakkında daha fazla bilgi için bkz. [Beceri kümesini tanımlama](cognitive-search-defining-skillset.md).
+   , `outputFieldMappings` Yetenekler tarafından oluşturulan alanlara yöneliktir ve bu nedenle beceri çalıştıktan sonra işlenir. Belge çözme veya `sourceFieldNames` zenginleştirme onları oluşturana kadar ' deki `outputFieldMappings` başvuruları yok. `targetFieldName` , Dizin şemasında tanımlanan, dizindeki bir alandır.
 
-## <a name="create-an-index"></a>Dizin oluşturma
-
-Bu bölümde, aranabilir dizine dahil edilecek alanları ve her bir alana ilişkin arama özniteliklerini belirterek dizin şemasını tanımlarsınız. Alanlar bir türe sahiptir ve alanın nasıl kullanıldığını (aranabilir, sıralanabilir vb.) belirleyen öznitelikleri alabilir. Bir dizindeki alan adlarının, kaynaktaki alan adlarıyla tamamen aynı olması gerekmez. Sonraki bir adımda, kaynak-hedef alanlarını bağlamak için dizin oluşturucuda alan eşlemeleri eklersiniz. Bu adım için, arama uygulamanızla ilgili alan adlandırma kurallarını kullanarak dizini tanımlayın.
-
-Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
-
-| alan adları: | `id`       | content   | languageCode | keyPhrases         | organizations     |
-|--------------|----------|-------|----------|--------------------|-------------------|
-| field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
-
-
-### <a name="sample-request"></a>Örnek İstek
-Bu REST çağrısını yapmadan önce, aracınız çağrılar arasında istek üst bilgisini korumuyorsa aşağıdaki istekte yer alan hizmet adını ve yönetici anahtarını değiştirmeyi unutmayın. 
-
-Bu istek bir dizin oluşturur. Bu öğreticinin geri kalanında ```demoindex``` dizin adını kullanın.
-
-```http
-PUT https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
-#### <a name="request-body-syntax"></a>İstek Gövdesi Sözdizimi
-
-```json
-{
-  "fields": [
+    ```json
     {
-      "name": "id",
-      "type": "Edm.String",
-      "key": true,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false,
-      "sortable": true
-    },
-    {
-      "name": "content",
-      "type": "Edm.String",
-      "sortable": false,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "languageCode",
-      "type": "Edm.String",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "keyPhrases",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "organizations",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
+      "name":"cog-search-demo-idxr",    
+      "dataSourceName" : "cog-search-demo-ds",
+      "targetIndexName" : "cog-search-demo-idx",
+      "skillsetName" : "cog-search-demo-ss",
+      "fieldMappings" : [
+        {
+          "sourceFieldName" : "metadata_storage_path",
+          "targetFieldName" : "id",
+          "mappingFunction" :
+            { "name" : "base64Encode" }
+        },
+        {
+          "sourceFieldName" : "metadata_storage_name",
+          "targetFieldName" : "metadata_storage_name",
+          "mappingFunction" :
+            { "name" : "base64Encode" }
+        },
+        {
+          "sourceFieldName" : "content",
+          "targetFieldName" : "content"
+        }
+      ],
+      "outputFieldMappings" :
+      [
+        {
+          "sourceFieldName" : "/document/persons",
+          "targetFieldName" : "persons"
+        },
+        {
+          "sourceFieldName" : "/document/organizations",
+          "targetFieldName" : "organizations"
+        },
+        {
+          "sourceFieldName" : "/document/locations",
+          "targetFieldName" : "locations"
+        },
+        {
+          "sourceFieldName" : "/document/pages/*/keyPhrases/*",
+          "targetFieldName" : "keyPhrases"
+        },
+        {
+          "sourceFieldName": "/document/languageCode",
+          "targetFieldName": "languageCode"
+        }
+      ],
+      "parameters":
+      {
+        "maxFailedItems":-1,
+        "maxFailedItemsPerBatch":-1,
+        "configuration":
+        {
+          "dataToExtract": "contentAndMetadata",
+          "parsingMode": "default",
+          "firstLineContainsHeaders": false,
+          "delimitedTextDelimiter": ","
+        }
+      }
     }
-  ]
-}
-```
-İsteği gönderin. Web testi aracı, 201 durum kodunu döndürerek işlemin başarılı olduğunu onaylamalıdır. 
+    ```
 
-Dizin tanımlama hakkında daha fazla bilgi için bkz. [Dizin Oluşturma (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+1. İsteği gönderin. Postman, başarılı işlemeyi onaylayan 201 durum kodunu döndürmelidir. 
 
+   Bu adımın tamamlanması birkaç dakika sürebilir. Veri kümesi küçük olsa da, analiz becerileri bilgi işlem açısından yoğundur. 
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Dizin oluşturucu oluşturma, alanları eşleme ve dönüştürmeler yürütme
-
-Şu ana kadar bir veri kaynağı, beceri kümesi ve dizin oluşturdunuz. Bu üç bileşen, her bir parçayı birlikte tek bir çok aşamalı işleme çeken [dizin oluşturucunun](search-indexer-overview.md) parçası olur. Bunları bir dizin oluşturucu birbirine bağlamak için alan eşlemeleri tanımlamanız gerekir. 
-
-+ FieldMappings, Beceri öğesinden önce işlenir, kaynak alanları veri kaynağından bir dizindeki hedef alanlara eşleniyor. Alan adları ve türleri her iki uçta da aynıysa, hiçbir eşleme gerekmez.
-
-+ OutputFieldMappings, Beceri sonrasında işlenir ve belge çözme veya zenginleştirene kadar mevcut olmayan sourceFieldNames öğesine başvuruda bulunur. TargetFieldName, dizindeki bir alandır.
-
-Çıkışlara girişlerin takılmasının yanı sıra, veri yapılarını düzleştirmek için alan eşlemelerini de kullanabilirsiniz. Daha fazla bilgi için bkz. [zenginleştirilmiş alanları aranabilir bir dizine eşleme](cognitive-search-output-field-mapping.md).
-
-### <a name="sample-request"></a>Örnek İstek
-
-Bu REST çağrısını yapmadan önce, aracınız çağrılar arasında istek üst bilgisini korumuyorsa aşağıdaki istekte yer alan hizmet adını ve yönetici anahtarını değiştirmeyi unutmayın. 
-
-Ayrıca, dizin oluşturucunuzun adını sağlayın. Bu öğreticinin geri kalanında bunu ```demoindexer``` olarak ifade edebilirsiniz.
-
-```http
-PUT https://[servicename].search.windows.net/indexers/demoindexer?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
-#### <a name="request-body-syntax"></a>İstek Gövdesi Sözdizimi
-
-```json
-{
-  "name":"demoindexer", 
-  "dataSourceName" : "demodata",
-  "targetIndexName" : "demoindex",
-  "skillsetName" : "demoskillset",
-  "fieldMappings" : [
-    {
-      "sourceFieldName" : "metadata_storage_path",
-      "targetFieldName" : "id",
-      "mappingFunction" :
-        { "name" : "base64Encode" }
-    },
-    {
-      "sourceFieldName" : "content",
-      "targetFieldName" : "content"
-    }
-  ],
-  "outputFieldMappings" :
-  [
-    {
-      "sourceFieldName" : "/document/organizations",
-      "targetFieldName" : "organizations"
-    },
-    {
-      "sourceFieldName" : "/document/pages/*/keyPhrases/*",
-      "targetFieldName" : "keyPhrases"
-    },
-    {
-      "sourceFieldName": "/document/languageCode",
-      "targetFieldName": "languageCode"
-    }
-  ],
-  "parameters":
-  {
-    "maxFailedItems":-1,
-    "maxFailedItemsPerBatch":-1,
-    "configuration":
-    {
-      "dataToExtract": "contentAndMetadata",
-      "imageAction": "generateNormalizedImages"
-    }
-  }
-}
-```
-
-İsteği gönderin. Web testi aracı, 201 durum kodunu döndürerek işlemin başarılı olduğunu onaylamalıdır. 
-
-Bu adımın tamamlanması birkaç dakika sürebilir. Veri kümesi küçük olsa da, analiz becerileri bilgi işlem açısından yoğundur. Görüntü analizi gibi bazı beceriler uzun sürer.
-
-> [!TIP]
+> [!NOTE]
 > Bir dizin oluşturucu oluşturulduğunda, işlem hattı çağrılır. Verilere ulaşılırken, eşleme girişleri ve çıktıları veya işlemlerin sırası ile ilgili sorun olursa bunlar bu aşamada görüntülenir. İşlem hattını, kod veya betik değişiklikleriyle yeniden çalıştırmak için önce nesneleri bırakmanız gerekebilir. Daha fazla bilgi için bkz. [Sıfırlama ve yeniden çalıştırma](#reset).
 
-#### <a name="explore-the-request-body"></a>İstek gövdesini keşfetme
+#### <a name="about-indexer-parameters"></a>Dizin Oluşturucu parametreleri hakkında
 
-Betik, ```"maxFailedItems"``` değerini -1 olarak ayarlayarak dizin oluşturma motoruna, veri içeri aktarma sırasında hataları yoksaymasını bildirir. Demo veri kaynağında çok az belge olduğundan bu yararlıdır. Daha büyük bir veri kaynağı için değeri, 0’dan daha büyük bir değere ayarlarsınız.
+Betik, ```"maxFailedItems"``` değerini -1 olarak ayarlayarak dizin oluşturma motoruna, veri içeri aktarma sırasında hataları yoksaymasını bildirir. Bu, tanıtım verileri kaynağında çok az sayıda belge olduğu için kabul edilebilir. Daha büyük bir veri kaynağı için değeri, 0’dan daha büyük bir değere ayarlarsınız.
 
-Ayrıca yapılandırma parametrelerinde ```"dataToExtract":"contentAndMetadata"``` deyimine de dikkat edin. Bu deyim, dizin oluşturucuya, farklı dosya biçimlerinden içeriği ve her bir dosyayla ilgili meta verileri otomatik olarak ayıklamasını bildirir. 
+Bu ```"dataToExtract":"contentAndMetadata"``` ifade, dizin oluşturucunun, her dosyayla ilgili meta verilerin yanı sıra farklı dosya biçimlerinden içeriği otomatik olarak ayıklamasını söyler. 
 
 İçerik ayıklandığında, veri kaynağında bulunan görüntülerden metni ayıklamak için ```imageAction``` değerini ayarlayabilirsiniz. ```"imageAction":"generateNormalizedImages"``` Yapılandırma, OCR becerisi ve metin birleştirme beceriyle birlikte kullanıldığında, dizin oluşturucunun görüntülerden metin ayıklamasını söyler (örneğin, trafiğin "Durdur" sözcüğünün oturum açmasını durdurur) ve içerik alanının bir parçası olarak katıştırmasını söyler. Bu davranış hem belgelerde gömülü olan görüntüler (örneğin, bir PDF’teki görüntü) hem de veri kaynağında bulunan görüntüler (örneğin, bir JPG dosyası) için geçerlidir.
 
-## <a name="check-indexer-status"></a>Dizin oluşturucu durumunu denetleme
+## <a name="4---monitor-indexing"></a>4-dizin oluşturmayı izleme
 
-Dizin oluşturucu tanımlandıktan sonra, isteği gönderdiğinizde otomatik olarak çalıştırılır. Tanımladığınız bilişsel becerilere bağlı olarak dizin oluşturma beklediğinizden uzun sürebilir. Dizin oluşturucunun halen çalışıp çalışmadığını öğrenmek için aşağıdaki isteği göndererek dizin oluşturucu durumunu denetleyin.
+Dizin oluşturma ve zenginleştirme, oluşturma Dizin Oluşturucu isteğini gönderdikten hemen sonra. Tanımladığınız bilişsel becerilere bağlı olarak, dizin oluşturma biraz zaman alabilir. Dizin oluşturucunun halen çalışıp çalışmadığını öğrenmek için aşağıdaki isteği göndererek dizin oluşturucu durumunu denetleyin.
 
-```http
-GET https://[servicename].search.windows.net/indexers/demoindexer/status?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
+1. Dizin oluşturucuyu adlandırmak için, **Get** ve aşağıdaki URL 'yi kullanın ve hizmet adını hizmetinizin gerçek adıyla değiştirin.
 
-Yanıt, dizin oluşturucunun çalışıp çalışmadığını size bildirir. Dizin oluşturma işlemi tamamlandıktan sonra, STATUS uç noktasına yönelik başka bir HTTP GET kullanarak, zenginleştirme sırasında oluşan hata ve uyarıların raporlarını görün.  
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   ```
 
-Uyarılar bazı kaynak dosya ve beceri birleşimleri için geneldir ve her zaman bir sorunu belirtmez. Bu öğreticide, uyarılar zararsızdır (örneğin, JPEG dosyalarında bir metin girişi yok). Dizin oluşturma sırasında oluşan uyarılar hakkında ayrıntılı bilgi için durum yanıtını gözden geçirebilirsiniz.
- 
-## <a name="query-your-index"></a>Dizininizi sorgulama
+1. Dizin oluşturucunun çalışıp çalışmadığını öğrenmek veya hata ve uyarı bilgilerini görüntülemek için yanıtı gözden geçirin.  
 
-Dizin oluşturma işlemi tamamlandıktan sonra tek tek alanların içeriklerini döndüren sorgular çalıştırın. Azure Search varsayılan olarak ilk 50 sonucu döndürür. Varsayılan değerin düzgün çalışması için örnek veriler küçüktür. Ancak, büyük veri kümeleriyle çalışırken, daha fazla sonuç döndürmek için sorgu dizesine parametreleri dahil etmeniz gerekebilir. Yönergeler için bkz. [Azure Search’te sonuçların sayfasını oluşturma](search-pagination-page-layout.md).
+Ücretsiz katmanı kullanıyorsanız, şu ileti bekleniyor: ' "belgenizden içerik veya meta veri ayıklanamadı. Ayıklanan metin ' 32768 ' karakter "olarak kesildi. Bu ileti, boş katmandaki blob dizinlemesi, karakter ayıklamaya karşı bir[32K sınırına](search-limits-quotas-capacity.md#indexer-limits)sahip olduğundan görüntülenir. Bu ileti, daha yüksek katmanlarda bu veri kümesi için görmezsiniz. 
 
-Doğrulama adımı olarak, tüm alanlar için dizini sorgulayın.
+> [!NOTE]
+> Uyarılar bazı senaryolarda ortaktır ve her zaman bir sorun göstermez. Örneğin, bir blob kapsayıcısı görüntü dosyaları içeriyorsa ve işlem hattı görüntüleri işetmez, görüntülerin işlenmediğini belirten bir uyarı alırsınız.
 
-```http
-GET https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
+## <a name="5---search"></a>5-arama
 
-Çıktı, her bir alanın adını, türünü ve özniteliklerini içeren dizin şemasıdır.
+Artık yeni alanlar ve bilgiler oluşturduğunuza göre, tipik bir arama senaryosuyla ilişkili olduğu için bilişsel arama değerini anlamak üzere bazı sorgular çalıştıralım.
 
-`organizations` gibi tek bir alanın tüm içeriklerini döndürmek için ikinci bir `"*"` sorgusu gönderin.
+Tüm belgenin tek `content` bir alana paketlendiği blob içeriğiyle başladığımızda geri çekin. Bu alanda arama yapabilir ve sorgularınızdaki eşleşmeleri bulabilirsiniz.
 
-```http
-GET https://[servicename].search.windows.net/indexes/demoindex/docs?search=*&$select=organizations&api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
+1. Bir terim veya tümceciğin örneklerini aramak için, bir terim veya tümcecik örnekleri aramak üzere, **Get** ve aşağıdaki URL 'yi kullanarak, hizmet adını hizmetinizin gerçek adıyla değiştirerek, `content` alan ve eşleşen belgelerin sayısını döndüren bir terim veya tümcecik için arama yapın.
 
-Bu alıştırmada içerik, languageCode, keyPhrases ve kuruluşlar için yineleyin. Virgülle ayrılmış bir liste kullanarak `$select` aracılığıyla birden fazla alan döndürebilirsiniz.
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   ```
+   
+   Bu sorgunun sonuçları, bir blob Dizin oluşturucuyu bilişsel arama işlem hattı olmadan kullandıysanız alacağınız aynı sonucu veren belge içeriğini döndürür. Bu alan aranabilir, ancak modelleri, filtreleri veya otomatik tamamlamayı kullanmak istiyorsanız, kullanılamaz.
 
-Sorgu dizesinin karmaşıklık ve uzunluğuna bağlı olarak GET veya POST dizesini kullanabilirsiniz. Daha fazla bilgi için bkz. [REST API kullanarak sorgu](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+   ![İçerik alanı çıkışı](media/cognitive-search-tutorial-blob/content-output.png "İçerik alanı çıkışı")
+   
+1. İkinci sorgu için, işlem hattı (kişiler, kuruluşlar, konumlar, languageCode) tarafından oluşturulan yeni alanlardan bazılarını döndürün. Kısaltma için keyPhrases yok eteceğiz, ancak bu değerleri görmek istiyorsanız dahil etmelisiniz.
 
+   ```http
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   ```
+   $Select deyimindeki alanlar bilişsel hizmetler 'in doğal dil işleme özellikleri ' nden oluşturulan yeni bilgiler içerir. Tahmin edebileceğiniz gibi, sonuçlar ve belgelerde çeşitlerdeki bazı gürültü vardır, ancak birçok örnekte analitik modeller doğru sonuçlar üretir.
 
+   Aşağıdaki görüntüde, Microsoft 'ta CEO rolü varsayıldığında Satya Nadella 'nın açık harfinin sonuçları gösterilmektedir.
+
+   ![Ardışık düzen çıkışı](media/cognitive-search-tutorial-blob/pipeline-output.png "Ardışık düzen çıkışı")
+
+1. Bu alanlardan nasıl yararlanabileceği hakkında daha fazla bilgi için, konuma göre eşleşen belge toplamayı döndürmek üzere bir model parametresi ekleyin.
+
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   ``` 
+
+   Bu örnekte, her konum için 2 veya 3 eşleşme vardır.
+
+   ![Model çıkışı](media/cognitive-search-tutorial-blob/facet-output.png "Model çıkışı")
+   
+
+1. Bu son örnekte, organizasyonlar koleksiyonuna bir filtre uygulayın ve NASDAQ tabanlı filtre ölçütlerine yönelik iki eşleşme döndürerek.
+
+   ```http
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   ```
+
+Bu sorgular, bilişsel arama tarafından oluşturulan yeni alanlara sorgu söz dizimi ve filtreler ile çalışmanın birkaç yolunu gösterir. Daha fazla sorgu örneği için bkz. [arama belgeleri REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [basit sözdizimi sorgu örnekleri](search-query-simple-examples.md)ve [tam Lucene sorgu örnekleri](search-query-lucene-examples.md).
 
 <a name="reset"></a>
 
@@ -454,16 +486,14 @@ Sorgu dizesinin karmaşıklık ve uzunluğuna bağlı olarak GET veya POST dizes
 
 Yeni tanımlarla belgelerinizin yeniden dizinini oluşturmak için:
 
-1. Dizini silerek kalıcı verileri kaldırın. Dizin oluşturucuyu silerek hizmetinizde yeniden oluşturun.
-2. Bir beceri kümesi ve dizin tanımını değiştirin.
-3. İşlem hattını çalıştırmak için hizmet üzerinde yeniden bir dizin ve dizin oluşturucu oluşturun. 
+1. Dizin oluşturucuyu, dizini ve beceri silin.
+2. Nesneleri Değiştir.
+3. İşlem hattını çalıştırmak için hizmetinize yeniden oluşturun. 
 
-Dizinleri, Dizin oluşturucuyu ve becerileri silmek için portalı kullanabilirsiniz.
+Dizinleri, Dizin oluşturucuyu ve becerileri silmek için portalı kullanabilir ya da **Sil** ' i kullanabilir ve her bir nesnenin URL 'sini sağlayabilirsiniz. Aşağıdaki komut bir dizin oluşturucuyu siler.
 
 ```http
-DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
+DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
 ```
 
 Silme işlemi başarılı olduğunda durum kodu 204 döndürülür.
@@ -476,7 +506,7 @@ Bu öğreticide, veri kaynağı, beceri kümesi, dizin ve dizin oluşturucu gibi
 
 Girişler ve çıktılar yoluyla becerileri zincirleme mekanizmalarının ve beceri kümesi tanımının yanı sıra [önceden tanımlanmış beceriler](cognitive-search-predefined-skills.md) sunulmuştur. İşlem hattındaki zenginleştirilmiş değerleri bir Azure Search hizmetinde aranabilir bir dizine yönlendirmek için dizin oluşturucu tanımında `outputFieldMappings` gerektiğini öğrendiniz.
 
-Son olarak, daha fazla yineleme için sonuçların nasıl test edileceğini ve sistemin nasıl sıfırlanacağını öğrendiniz. Dizine karşı sorgular düzenlendiğinde, zenginleştirilmiş dizin oluşturma işlem hattı tarafından oluşturulan çıktının döndürüldüğünü öğrendiniz. Bu yayında, iç yapıları (sistem tarafından oluşturulan zenginleştirilmiş belgeler) görüntüleme mekanizması vardır. Ayrıca dizin oluşturucu durumunun nasıl denetleneceğini ve işlem hattı yeniden çalıştırılmadan önce hangi nesnelerin silineceğini de öğrendiniz.
+Son olarak, daha fazla yineleme için sonuçların nasıl test edileceğini ve sistemin nasıl sıfırlanacağını öğrendiniz. Dizine karşı sorgular düzenlendiğinde, zenginleştirilmiş dizin oluşturma işlem hattı tarafından oluşturulan çıktının döndürüldüğünü öğrendiniz. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

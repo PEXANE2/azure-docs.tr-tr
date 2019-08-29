@@ -6,18 +6,17 @@ author: mscurrell
 manager: gwallace
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 90c8f3779283c23a98bac9d36fde2641c15afafe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323470"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095190"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch ile düşük öncelikli VM’ler kullanma
 
@@ -124,7 +123,7 @@ Havuz düğümlerinin, düğümün adanmış veya düşük öncelikli bir VM olu
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Bir havuzdaki bir veya daha fazla düğüm, önayarlandığında, havuzdaki bir liste düğümleri işlemi yine de bu düğümleri döndürür. Geçerli düşük öncelikli düğümlerin sayısı değişmeden kalır, ancak söz konusu düğümlerin durumları, yok **edilmiş duruma ayarlanır** . Toplu iş VM 'Leri bulmaya çalışır ve başarılı olursa düğümler, yeni düğümler gibi, görev yürütmesi için kullanılabilir hale gelmeden önce durumlar **oluşturarak** ve sonra da **başlatılıyor** .
+Bir havuzdaki bir veya daha fazla düğüm, önayarlandığında, havuzdaki bir liste düğümleri işlemi yine de bu düğümleri döndürür. Geçerli düşük öncelikli düğümlerin sayısı değişmeden kalır, ancak söz konusu düğümlerin durumları, yok edilmiş duruma ayarlanır. Toplu iş VM 'Leri bulmaya çalışır ve başarılı olursa düğümler, yeni düğümler gibi, görev yürütmesi için kullanılabilir hale gelmeden önce durumlar **oluşturarak** ve sonra da **başlatılıyor** .
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Düşük öncelikli VM 'Ler içeren bir havuzu ölçeklendirme
 
@@ -158,10 +157,10 @@ Havuz otomatik ölçeklendirme formülü, düşük öncelikli VM 'Leri aşağıd
 
 VM 'Ler zaman zaman değiştirilebilir; Önalım gerçekleştiğinde Batch şunları yapar:
 
--   Üzerinde olan VM 'Lerin durumları, yok edilmiş **olarak güncelleştirilir**.
+-   Üzerinde olan VM 'Lerin durumları, yok edilmişolarak güncelleştirilir.
 -   Görevler, önceden bırakılan düğüm VM 'lerinde çalışıyorsa, bu görevler yeniden kuyruğa ve yeniden çalıştırılır.
 -   VM, sanal makinede yerel olarak depolanan verilerin kaybedilmesi için etkin şekilde silinir.
--   Havuz, kullanılabilir düşük öncelikli düğümlerin hedef sayısına sürekli ulaşmaya çalışır. Değiştirme kapasitesi bulunduğunda düğümler kimliklerini tutar, ancak görev zamanlama için kullanılabilir olmadan **önce durumlar** **oluşturularak** başlatılır.
+-   Havuz, kullanılabilir düşük öncelikli düğümlerin hedef sayısına sürekli ulaşmaya çalışır. Değiştirme kapasitesi bulunduğunda düğümler kimliklerini tutar, ancak görev zamanlama için kullanılabilir olmadan önce durumlar **oluşturularak** başlatılır.
 -   Önalım sayıları Azure portal bir ölçüm olarak kullanılabilir.
 
 ## <a name="metrics"></a>Ölçümler

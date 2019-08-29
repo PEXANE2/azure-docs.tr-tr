@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996807"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114504"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanında HTTPS 'yi yapılandırma
 
@@ -312,6 +312,9 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 
     Microsoft, uygulamanıza yalnızca SNI istemci isteklerinin gönderildiğini algılarda mevcut etki alanlarınız önümüzdeki aylarda kademeli olarak tek sertifikaya geçirilecektir. Microsoft, uygulamanıza SNI harici istemci isteklerinin gönderildiğini algılarsa etki alanlarınız IP tabanlı TLS/SSL ile SAN sertifikasında kalacaktır. Her durumda hizmetinizde veya SNI ya da SNI harici olduğuna bakılmaksızın istemci istekleriniz için sunulan destekte kesinti olmayacaktır.
 
+7. *Sertifika yenilemesi kendi sertifikanızı getir ile nasıl çalışır?*
+
+    Yeni bir sertifikanın PoP altyapısına dağıtılmasını sağlamak için yeni sertifikanızı Azure Anahtar Kasası 'na yüklemeniz, ardından Azure CDN SSL ayarlarınızda en yeni sertifika sürümünü seçip Kaydet ' e tıklayın. Azure CDN, yeni güncelleştirilmiş CERT propogate. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
