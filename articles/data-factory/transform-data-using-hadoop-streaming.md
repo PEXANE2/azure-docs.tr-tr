@@ -72,15 +72,15 @@ Azure Data Factory kullanmaya yeni başladıysanız, okumak [Azure Data Factory'
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Etkinliğin adı                     | Evet      |
 | description       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| türü              | Hadoop akış etkinliğinde'için Hdınsightstreaming etkinlik türüdür | Evet      |
+| type              | Hadoop akış etkinliğinde'için Hdınsightstreaming etkinlik türüdür | Evet      |
 | linkedServiceName | Data Factory öğesinde bağlantılı hizmet olarak HDInsight kümesine başvuru kayıtlı. Bu bağlı hizmeti hakkında bilgi edinmek için [işlem bağlı Hizmetleri](compute-linked-services.md) makalesi. | Evet      |
-| Eşleyici            | Yürütülebilir Eşleyici adını belirtir | Evet      |
-| Azaltıcı           | Yürütülebilir Azaltıcı adını belirtir | Evet      |
-| birleştirici          | Birleştirici yürütülebilir adını belirtir | Hayır       |
+| mapper            | Yürütülebilir Eşleyici adını belirtir | Evet      |
+| reducer           | Yürütülebilir Azaltıcı adını belirtir | Evet      |
+| combiner          | Birleştirici yürütülebilir adını belirtir | Hayır       |
 | fileLinkedService | Bir Azure depolama bağlı hizmeti başvuru Eşleyici birleştirici ve azaltıcı programların depolamak için kullanılır. Bu bağlı hizmeti belirtmezseniz, Azure depolama bağlı HDInsight bağlı hizmette tanımlanan hizmeti kullanılır. | Hayır       |
-| dosya yolu          | Yol dizisi Eşleştiricisi için Birleştirici, sağlamak ve Azure Depolama'da depolanan Azaltıcı programlar fileLinkedService tarafından başvurulan. Bu yol büyük/küçük harfe duyarlıdır. | Evet      |
-| giriş             | Giriş dosyası WASB yolu Eşleştiricisi belirtir. | Evet      |
-| çıkış            | Çıkış dosyası WASB yolu için Azaltıcı belirtir. | Evet      |
+| filePath          | Yol dizisi Eşleştiricisi için Birleştirici, sağlamak ve Azure Depolama'da depolanan Azaltıcı programlar fileLinkedService tarafından başvurulan. Bu yol büyük/küçük harfe duyarlıdır. | Evet      |
+| inputs             | Giriş dosyası WASB yolu Eşleştiricisi belirtir. | Evet      |
+| outputs            | Çıkış dosyası WASB yolu için Azaltıcı belirtir. | Evet      |
 | getDebugInfo      | Günlük dosyaları Azure depolama için ne zaman kopyalanır belirtir HDInsight küme tarafından kullanılan (veya) scriptLinkedService tarafından belirtilen. İzin verilen değerler: None, her zaman veya hata. Varsayılan değer: Yok. | Hayır       |
 | arguments         | Hadoop işi için bağımsız değişkenleri dizisini belirtir. Bağımsız değişkenleri, her görev için komut satırı bağımsız değişkenleri geçirilir. | Hayır       |
 | defines           | Parametreler içinde Hive betiğine başvurmak için anahtar/değer çiftleri belirtin. | Hayır       | 
