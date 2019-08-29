@@ -47,7 +47,7 @@ Marketo bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Marketo** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Marketo** | Evet |
 | endpoint | Marketo sunucu uç noktası. (yani 123-ABC-321.mktorest.com)  | Evet |
 | clientId | İstemci kimliği Marketo hizmetinizin.  | Evet |
 | clientSecret | Marketo hizmetinizin istemci gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
