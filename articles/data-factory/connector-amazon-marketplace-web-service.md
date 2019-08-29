@@ -44,7 +44,7 @@ Amazon Market Web bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **AmazonMWS** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **AmazonMWS** | Evet |
 | endpoint | (Diğer bir deyişle, mws.amazonservices.com) Amazon MWS sunucu uç noktası  | Evet |
 | marketplaceID | Verileri almak istediğiniz Amazon Market ID. Virgül ile ayırarak birden çok Market kimlikleri veri almak için (`,`). (diğer bir deyişle, A2EUQ1WTGCTBG2)  | Evet |
 | sellerID | Amazon satıcı kimliği  | Evet |
