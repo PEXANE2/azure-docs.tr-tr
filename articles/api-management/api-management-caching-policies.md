@@ -10,16 +10,15 @@ ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2b74c0d8dc0daa7bb86c2884f5e574fdc579ba44
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442390"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072619"
 ---
 # <a name="api-management-caching-policies"></a>API Management önbelleğe alma ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -101,7 +100,7 @@ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.m
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Cache-arama|Kök öğe.|Evet|
 |üst bilgiye göre değişiklik|Belirtilen üst bilgi başına, kabul etme, kabul-karakter, kabul-kodlama, kabul-dil, yetkilendirme, beklenen, kimden, ana bilgisayar, IF-Match gibi bir değer için önbelleğe alma yanıtı başlatın.|Hayır|
@@ -109,7 +108,7 @@ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.m
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad                           | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
+| Name                           | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | Allow-Private-Response-Caching | Olarak `true`ayarlandığında, yetkilendirme üst bilgisi içeren isteklerin önbelleğe alınmasına izin verir.                                                                                                                                                                                                                                                                        | Hayır       | false             |
 | önbelleğe alma türü               | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal`yerleşik API Management önbelleğini kullanmak için<br />- `external`Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external`yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
@@ -180,13 +179,13 @@ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.m
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |önbellek-mağaza|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
+| Name             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | duration         | Önbellekte belirtilen, önbelleğe alınmış girişlerin yaşam süresi (saniye cinsinden).                                                                                                                                                                                                                                                                                                   | Evet      | Yok               |
 
@@ -223,13 +222,13 @@ Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management 'Da �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Önbellek-arama-değer|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
+| Name             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | önbelleğe alma türü | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal`yerleşik API Management önbelleğini kullanmak için<br />- `external`Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external`yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
 | Varsayılan değer    | Önbellek anahtarı arama bir isabetsizlik ile sonuçlanacaksa değişkene atanacak bir değer. Bu öznitelik belirtilmemişse, `null` atanır.                                                                                                                                                                                                           | Hayır       | `null`            |
@@ -266,13 +265,13 @@ Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management 'Da �
 
 ### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Cache-Store-değer|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
+| Name             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | önbelleğe alma türü | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal`yerleşik API Management önbelleğini kullanmak için<br />- `external`Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external`yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
 | duration         | Değer, saniye cinsinden belirtilen Duration değeri için önbelleğe alınır.                                                                                                                                                                                                                                                                                 | Evet      | Yok               |
@@ -305,13 +304,13 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 #### <a name="elements"></a>Öğeler
 
-|Ad|Açıklama|Gerekli|
+|Name|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Cache-Remove-Value|Kök öğe.|Evet|
 
 #### <a name="attributes"></a>Öznitelikler
 
-| Ad             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
+| Name             | Açıklama                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | önbelleğe alma türü | Özniteliğin aşağıdaki değerleri arasında seçim yapın:<br />- `internal`yerleşik API Management önbelleğini kullanmak için<br />- `external`Dış önbelleği [azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklanan şekilde kullanmak için,<br />- `prefer-external`yapılandırılmışsa veya iç önbellekte değilse dış önbelleği kullanmak için. | Hayır       | `prefer-external` |
 | key              | Önbellekten kaldırılacak daha önce önbelleğe alınmış değerin anahtarı.                                                                                                                                                                                                                                                                                        | Evet      | Yok               |

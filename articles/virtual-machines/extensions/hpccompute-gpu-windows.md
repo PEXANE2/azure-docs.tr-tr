@@ -1,6 +1,6 @@
 ---
-title: NVIDIA GPU sürücüsünün uzantısı - Azure Windows sanal makineleri | Microsoft Docs
-description: N serisi NVIDIA GPU sürücülerini yüklemek için Microsoft Azure uzantısı, Windows çalıştıran VM'ler işlem.
+title: NVıDıA GPU sürücü uzantısı-Azure Windows VM 'Leri | Microsoft Docs
+description: Windows çalıştıran N serisi işlem VM 'lerine NVıDıA GPU sürücülerini yüklemek için Microsoft Azure uzantısı.
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
@@ -8,33 +8,32 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 004d6125de6762303db91f3a5ef9ffa16e6e501f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c44722403967f3563472692f97cb2a114e6294cd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705948"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084456"
 ---
-# <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows için NVIDIA GPU sürücüsünün uzantısı
+# <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows için NVıDıA GPU sürücü uzantısı
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu uzantı, Windows N serisi Vm'lerde NVIDIA GPU sürücüleri yükler. VM ailesi bağlı olarak, uzantı CUDA veya kılavuz sürücüleri de yükler. NVIDIA yüklediğinizde bu uzantıyı kullanan sürücüler, kabul etme ve koşullarını kabul etmiş [NVIDIA son kullanıcı lisans sözleşmesi](https://go.microsoft.com/fwlink/?linkid=874330). Yükleme işlemi sırasında sürücü kurulumu tamamlamak için VM yeniden başlatılabilir.
+Bu uzantı, Windows N serisi VM 'Lere NVıDıA GPU sürücülerini yüklüyor. VM ailesine bağlı olarak, uzantı CUDA veya KıLAVUZ sürücülerini de yüklüyor. Bu uzantıyı kullanarak NVıDıA sürücülerini yüklediğinizde, [NVIDIA Son Kullanıcı Lisans sözleşmesinin](https://go.microsoft.com/fwlink/?linkid=874330)şartlarını kabul etmiş ve kabul etmiş olursunuz. Yükleme işlemi sırasında, sanal makine, Sürücü kurulumunu tamamlayacak şekilde yeniden başlayabilir.
 
-El ile yükleme yönergeleri sürücüleri ve geçerli desteklenen sürümler kullanılabilir [burada](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup).
-Bir uzantı NVIDIA GPU sürücüleri yüklemek de kullanılabilir [Linux N serisi Vm'lerde](hpccompute-gpu-linux.md).
+Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili yönergeler [burada](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)bulunabilir.
+[Linux N serisi VM 'LERE](hpccompute-gpu-linux.md)NVIDIA GPU sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Bu uzantı şu OSs destekler:
+Bu uzantı aşağıdaki OSs 'yi destekler:
 
 | Dağıtım | Version |
 |---|---|
@@ -44,11 +43,11 @@ Bu uzantı şu OSs destekler:
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Microsoft Azure uzantısı için NVIDIA GPU sürücüleri, hedef sanal Makineyi internet'e bağlı ve erişimi gerektirir.
+NVıDıA GPU sürücüleri için Microsoft Azure uzantısı, hedef sanal makinenin internet 'e bağlı ve erişime sahip olmasını gerektirir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON şema uzantısı gösterir.
+Aşağıdaki JSON uzantı için şemayı gösterir.
 
 ```json
 {
@@ -72,10 +71,10 @@ Aşağıdaki JSON şema uzantısı gösterir.
 
 ### <a name="properties"></a>Özellikler
 
-| Ad | Değer / örnek | Veri Türü |
+| Name | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
+| publisher | Microsoft. HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
@@ -84,11 +83,11 @@ Aşağıdaki JSON şema uzantısı gösterir.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu 
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Şablonları, bir veya daha fazla dağıtım sonrası yapılandırma gerektiren sanal makineler dağıtırken idealdir.
+Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Dağıtım sonrası yapılandırması gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir.
 
 Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-Aşağıdaki örnek, uzantıyı sanal makine kaynağı içinde iç içe varsayar. İç içe uzantısı kaynak, JSON yerleştirildi `"resources": []` sanal makinenin nesne.
+Aşağıdaki örnek, uzantının sanal makine kaynağının içinde iç içe olduğunu varsayar. İç içe uzantısı kaynak, JSON yerleştirildi `"resources": []` sanal makinenin nesne.
 
 ```json
 {
@@ -142,7 +141,7 @@ az vm extension set `
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı dağıtım durumuyla ilgili veriler, Azure portalından ve Azure PowerShell ve Azure CLI kullanılarak alınabilir. Belirli bir VM'nin için uzantıları dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
+Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure PowerShell ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -152,7 +151,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Uzantı yürütme çıktısı, aşağıdaki dizine kaydedilir:
+Uzantı yürütme çıkışı şu dizine kaydedilir:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
@@ -163,11 +162,11 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | Hata Kodu | Anlamı | Olası eylemi |
 | :---: | --- | --- |
 | 0 | İşlem başarılı |
-| 1\. | İşlem başarılı. Yeniden başlatma gerekiyor. |
-| 100 | İşlem değil, desteklenen veya tamamlanamadı. | Olası nedenler: PowerShell sürümü desteklenmiyor, VM boyutu, veri indirme hatası bir N-serisi VM değil. Hatanın nedenini belirlemek için günlük dosyalarına bakın. |
+| 1\. | İşlem başarılı oldu. Yeniden başlatma gerekiyor. |
+| 100 | İşlem desteklenmiyor veya tamamlanamadı. | Olası nedenler: PowerShell sürümü desteklenmiyor, VM boyutu bir N serisi VM değil, verileri indirirken hata oluştu. Hatanın nedenini öğrenmek için günlük dosyalarını denetleyin. |
 | 240, 840 | İşlem zaman aşımı. | İşlemi yeniden deneyin. |
-| -1 | Özel durum oluştu. | Özel durumun nedenini belirlemek için günlük dosyalarına bakın. |
-| -5 x | İşlem nedeniyle yeniden başlatma kesildi. | VM'yi yeniden başlatın. Yükleme yeniden başlatıldıktan sonra devam edecek. Kaldırma el ile çağrılmalıdır. |
+| -1 | Özel durum oluştu. | Özel durumun nedenini öğrenmek için günlük dosyalarını denetleyin. |
+| -5x | İşlem, bekleyen yeniden başlatma nedeniyle kesildi. | VM 'yi yeniden başlatın. Yükleme yeniden başlatıldıktan sonra devam edecek. Kaldırma işlemi el ile çağrılmalıdır. |
 
 
 ### <a name="support"></a>Destek
@@ -175,6 +174,6 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uzantıları hakkında daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri Windows için](features-windows.md).
+Uzantılar hakkında daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](features-windows.md).
 
-N serisi VM'ler hakkında daha fazla bilgi için bkz. [GPU için iyileştirilmiş sanal makine boyutları](../windows/sizes-gpu.md).
+N serisi VM 'Ler hakkında daha fazla bilgi için bkz. [GPU iyileştirilmiş sanal makine boyutları](../windows/sizes-gpu.md).

@@ -1,6 +1,6 @@
 ---
 title: Öğretici - Azure’da cloud-init ile bir Linux VM’si yapılandırma | Microsoft Docs
-description: Bu öğreticide, Linux sanal makineleri, Azure'da ilk önyüklenmesini özelleştirmek için cloud-init ve Key Vault kullanmayı öğrenin
+description: Bu öğreticide, Cloud-init ve Key Vault kullanarak Azure 'da ilk kez önyükleme yaparken Linux VM 'lerini nasıl özelleştireceğinizi öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d56aa1c9b86542df3c2a7154669856686823e1dd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7215a8f169a878b10663347cf9560d822c6aa7e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708595"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081777"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
 
@@ -131,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Web uygulamasını test etme
-Artık bir web tarayıcısı açın ve girin *http:\/\/\<Publicıpaddress >* adres çubuğundaki. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
+Artık bir Web tarayıcısı açıp adres çubuğuna *http:\/\/\<publicıpaddress >* yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
 
 ![Çalışan NGINX sitesini görüntüleme](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -262,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Güvenli web uygulamasını test etme
-Artık bir web tarayıcısı açın ve girin *https:\/\/\<Publicıpaddress >* adres çubuğundaki. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https:\/\/\<publicıpaddress >* girebilirsiniz. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

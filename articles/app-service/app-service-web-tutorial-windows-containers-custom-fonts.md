@@ -1,6 +1,6 @@
 ---
-title: Windows kapsayıcı (Önizleme) - Azure App Service ile ASP.NET uygulaması derleme | Microsoft Docs
-description: Azure App Service özel bir Windows kapsayıcısı dağıtma ve kapsayıcıdaki özel yazılım dağıtma hakkında bilgi edinin.
+title: Windows kapsayıcısı ile ASP.NET uygulaması derleme (Önizleme)-Azure App Service | Microsoft Docs
+description: Özel bir Windows kapsayıcısını Azure App Service 'ye dağıtmayı ve kapsayıcıda özel yazılım dağıtmayı öğrenin.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 15a1e388b17a66bf22fc0fd51744cb0aaa1b36d4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415519"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071512"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows kapsayıcısı kullanarak bir ASP.NET uygulamasını Azure App Service'e geçirme (Önizleme)
 
@@ -34,7 +33,7 @@ Bu öğreticiyi tamamlamak için:
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub hesabı için kaydolma</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows'u yükleyin</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 yükleme</a> ile **ASP.NET ve web geliştirme** ve **Azure geliştirme** iş yükleri. Visual Studio 2019 zaten yüklediyseniz:
+- **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
     - **Yardım** > **Güncelleştirmeleri Denetle**'ye tıklayarak Visual Studio'daki en son güncelleştirmeleri yükleyin.
     - **Araçlar** > **Araçları ve Özellikleri Al**'a tıklayarak iş yüklerini Visual Studio’ya ekleyin.
 
@@ -111,7 +110,7 @@ Yayımlama sihirbazında **Kapsayıcı Kayıt Defteri** > **Yeni Azure Azure Con
 
 **Yeni Azure Container Registry oluştur** iletişim kutusunda **Hesap ekle**’yi seçin ve Azure aboneliğinizde oturum açın. Oturumunuz zaten açıksa, açılan menüden istediğiniz aboneliği içeren hesabı seçin.
 
-![Oturum açın: Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
+![Azure'da oturum açma](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
 
 ### <a name="configure-the-registry"></a>Kayıt defterini yapılandırma
 
@@ -128,11 +127,11 @@ Yeni kapsayıcı kayıt defterini aşağıdaki tabloda bulunan değerleri kullan
 
 Bir terminal penceresi açılır ve görüntü dağıtımı ilerleme durumunu görüntüler. Dağıtımın tamamlanmasını bekleyin.
 
-## <a name="sign-in-to-azure"></a>Oturum açın: Azure
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
 
-## <a name="create-a-web-app"></a>Web uygulaması oluşturun
+## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
 Soldaki menüden **Kaynak oluştur** > **Web** > **Kapsayıcılar için Web Uygulaması**'nı seçin.
 

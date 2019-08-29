@@ -1,6 +1,6 @@
 ---
-title: Azure Windows VM boyutları - önceki nesil | Microsoft Docs
-description: Boyutlarına önceki nesil için azure'da Windows sanal makineleri listeler.
+title: Azure Windows VM boyutları-önceki nesiller | Microsoft Docs
+description: Azure 'da Windows sanal makineleri için kullanılabilen önceki boyut türlerini listeler.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 30b2d042d3f8e77e04dfb83c21509e423bf208e5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 43fecfcdbb381588f0c717b7ca771c23c19f367d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710154"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088470"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
 
@@ -28,11 +27,11 @@ ms.locfileid: "67710154"
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
+## <a name="older-generations-of-virtual-machine-sizes"></a>Daha eski nesil sanal makine boyutları
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
-## <a name="other-sizes"></a>Diğer boyutları
+## <a name="other-sizes"></a>Diğer boyutlar
 
 - [Genel amaçlı](sizes-general.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)
@@ -43,4 +42,4 @@ ms.locfileid: "67710154"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında daha fazla bilgi [Azure işlem birimleri (ACU)](acu.md) Azure SKU'ları arasında işlem performansını karşılaştırmanıza yardımcı olabilir.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

@@ -1,6 +1,6 @@
 ---
-title: Windows için Azure Disk şifrelemesi | Microsoft Docs
-description: Azure Disk şifrelemesi, bir sanal makine uzantısı kullanarak bir Windows sanal makinesine dağıtır.
+title: Windows için Azure disk şifrelemesi | Microsoft Docs
+description: Bir sanal makine uzantısı kullanarak bir Windows sanal makinesine Azure disk şifrelemesi dağıtır.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
@@ -8,46 +8,45 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 11394f692765cc1df5db0eb5c0dd06425026505d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706109"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092638"
 ---
-# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows (Microsoft.Azure.Security.AzureDiskEncryption) için Azure Disk şifrelemesi
+# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryption)
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Disk şifrelemesi, Windows çalıştıran Azure sanal makinelerinde tam disk şifreleme sağlamak için BitLocker'ı kullanır.  Bu çözüm, disk şifreleme anahtarlarını ve gizli anahtar kasası aboneliğinizi yönetmek için Azure Key Vault ile tümleşiktir. 
+Azure disk şifrelemesi, Windows çalıştıran Azure sanal makinelerinde tam disk şifrelemesi sağlamak için BitLocker 'ı kullanır.  Bu çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşiktir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Önkoşullar tam bir listesi için bkz. [Azure Disk şifrelemesi önkoşulları](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Önkoşulların tam listesi için bkz [. Azure disk şifrelemesi önkoşulları.](
+../../security/azure-security-disk-encryption-prerequisites.md)
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Şu anda Windows sürümlerinin bir listesi için bkz. [Azure Disk şifrelemesi önkoşulları](../../security/azure-security-disk-encryption-prerequisites.md).
+Şu anda Windows sürümlerinin listesi için bkz. [Azure disk şifrelemesi önkoşulları](../../security/azure-security-disk-encryption-prerequisites.md).
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Azure Disk şifrelemesi, erişim için Active Directory, Key Vault, depolama ve paket yönetim uç noktalarını Internet bağlantısı gerektirir.  Ağ güvenlik ayarları hakkında daha fazla bilgi için bkz. [Azure Disk şifrelemesi önkoşulları](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Azure disk şifrelemesi, Active Directory, Key Vault, depolama ve paket yönetim uç noktalarına erişim için Internet bağlantısı gerektirir.  Ağ güvenliği ayarları hakkında daha fazla bilgi için [bkz. Azure disk](
+../../security/azure-security-disk-encryption-prerequisites.md)şifrelemesi önkoşulları.
 
-## <a name="extension-schemata"></a>Uzantı şemaların
+## <a name="extension-schemata"></a>Uzantı şemaların serileştirilmesi
 
-Azure Disk şifrelemesi için iki şemaların vardır: v1.1, Azure Active Directory (AAD) özellikleri ve v0.1 kullanmaz daha yeni ve önerilen şema, AAD özellikleri gerektiren daha eski bir şema. Kullanmakta olduğunuz uzantısı için karşılık gelen şema sürümü kullanmanız gerekir: şema v1.1 uzantısı sürüm 1.1, uzantı sürümü 0,1 AzureDiskEncryption için şema v0.1 AzureDiskEncryption için.
+Azure disk şifrelemesi için iki şemaların serileştirilmesi vardır: v 1.1, daha yeni ve Azure Active Directory (AAD) özellikleri kullanmayan, önerilen bir şema ve AAD özellikleri gerektiren eski bir şema. Kullanmakta olduğunuz uzantıya karşılık gelen şema sürümünü kullanmanız gerekir: AzureDiskEncryption uzantısı sürüm 1,1 için şema v 1.1, AzureDiskEncryption uzantısı sürümü 0,1 için şema v 0,1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Şema v1.1: Hiçbir AAD (önerilir)
+### <a name="schema-v11-no-aad-recommended"></a>Şema v 1.1: AAD yok (önerilir)
 
-V1.1 şeması önerilir ve Azure Active Directory özelliklerini gerektirmez.
+V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 
 ```json
 {
@@ -74,11 +73,11 @@ V1.1 şeması önerilir ve Azure Active Directory özelliklerini gerektirmez.
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Şema v0.1: AAD ile 
+### <a name="schema-v01-with-aad"></a>Şema v 0.1: AAD ile 
 
-0,1 şema gerektirir `aadClientID` ve her iki `aadClientSecret` veya `AADClientCertificate`.
+0,1 şeması ve ya `aadClientID` `aadClientSecret` `AADClientCertificate`da gerektirir.
 
-Kullanarak `aadClientSecret`:
+Şunu `aadClientSecret`kullanarak:
 
 ```json
 {
@@ -108,7 +107,7 @@ Kullanarak `aadClientSecret`:
 }
 ```
 
-Kullanarak `AADClientCertificate`:
+Şunu `AADClientCertificate`kullanarak:
 
 ```json
 {
@@ -144,37 +143,37 @@ Kullanarak `AADClientCertificate`:
 | Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | dize |
-| türü | AzureDiskEncryptionForLinux | dize |
-| typeHandlerVersion | 0.1, 1.1 | int |
+| publisher | Microsoft. Azure. Security | dize |
+| type | AzureDiskEncryptionForLinux | dize |
+| typeHandlerVersion | 0,1, 1,1 | int |
 | (0,1 Şeması) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0,1 Şeması) AADClientSecret | password | dize |
-| (0,1 Şeması) AADClientCertificate | thumbprint | dize |
-| DiskFormatQuery | {"dev_path": "", "name": "","file_system": ""} | JSON sözlüğü |
+| (0,1 şeması) AADClientSecret | password | dize |
+| (0,1 şeması) AADClientCertificate | thumbprint | dize |
+| DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | dize | 
-| KeyEncryptionAlgorithm | 'OAEP RSA', 'RSA-OAEP-256', 'RSA1_5' | dize |
-| KeyEncryptionKeyURL | url | dize |
+| KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | dize |
+| KeyEncryptionKeyURL 'Si | url | dize |
 | KeyVaultURL | url | dize |
-| (isteğe bağlı) Parola | password | dize | 
+| seçim Deyimi | password | dize | 
 | SequenceVersion | uniqueidentifier | dize |
-| VolumeType | İşletim sistemi, veri, tüm | dize |
+| Birimtürü | İşletim sistemi, veri, tümü | dize |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
-Şablonu dağıtım örneği için bkz: [ galeri görüntüsünden yeni şifrelenmiş bir Windows VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
+Şablon dağıtımı örneği için, bkz. [Galeri görüntüsünden yeni bir şifrelenmiş WINDOWS VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
 
 ## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
 
-Yönergeler için en [Azure CLI belgeleri](/cli/azure/vm/encryption?view=azure-cli-latest). 
+Yönergeleri en son [Azure CLI belgelerinde](/cli/azure/vm/encryption?view=azure-cli-latest)bulabilirsiniz. 
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Başvurmak [Azure Disk şifrelemesi sorun giderme kılavuzu](../../security/azure-security-disk-encryption-tsg.md).
+[Azure disk şifrelemesi sorun giderme kılavuzu](../../security/azure-security-disk-encryption-tsg.md)'na bakın.
 
 ### <a name="support"></a>Destek
 
 Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uzantıları hakkında daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri Windows için](features-windows.md).
+Uzantılar hakkında daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](features-windows.md).

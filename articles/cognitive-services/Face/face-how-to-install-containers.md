@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7ab921d889c48ccd8be469328e2690cb1cb2d8b2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050046"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114859"
 ---
 # <a name="install-and-run-face-containers"></a>Yüz kapsayıcıları yükleyip çalıştırma
 
@@ -150,7 +150,6 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 
 Bu makalede, Yüz Tanıma API'si kapsayıcıları indirme, yükleme ve çalıştırma ile ilgili kavramları ve iş akışını öğrendiniz. Özet:
 
-* Yüz Tanıma API'si, Docker için anahtar tümceciği ayıklama, dil algılama ve yaklaşım analizi sağlayan üç Linux kapsayıcısı sağlar.
 * Kapsayıcı görüntüleri Azure Container Registry indirilir.
 * Docker kapsayıcı görüntüleri çalıştırın.
 * Kapsayıcının ana bilgisayar URI 'sini belirterek Yüz Tanıma API'si kapsayıcılarındaki işlemleri çağırmak için REST API ya da SDK kullanabilirsiniz.

@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 31b05ec4fa68c3d4804000caee94b62432bdaed9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557771"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065897"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi veri keşif ve görselleştirme araçları
 
-Veri bilimi 'nde önemli bir adım verileri anlamaktır. Görselleştirme ve veri araştırma araçları, verilerin öğrenilmesini hızlandırmaya yardımcı olur. Bu anahtar adımını daha kolay hale getirmek için DSVM 'de sunulan bazı araçlar aşağıda verilmiştir. 
+Veri bilimi 'nde, anahtar verileri anlamaktır. Görselleştirme ve veri araştırma araçları, verilerin öğrenilmesini hızlandırmaya yardımcı olur. Veri Bilimi Sanal Makinesi (DSVM) üzerinde sunulan aşağıdaki araçlar, bu anahtar adımını daha kolay hale getirir.
 
 ## <a name="apache-drill"></a>Apache ayrıntıya
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Büyük veriler üzerinde açık kaynak SQL sorgu altyapısı    |
+| Nedir?   | Büyük verilerde açık kaynaklı SQL sorgu altyapısı    |
 | Desteklenen DSVM sürümleri      | Windows, Linux  |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?      |  `/dsvm/tools/drill*` Yalnızca katıştırılmış modda yüklenir   |
-| Tipik kullanımları      |  ETL gerekmeden SITU veri araştırması. CSV, JSON, ilişkisel tablolar, Hadoop gibi farklı veri kaynaklarını ve biçimleri sorgulama     |
-| Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu  <br/> [10 dakika içinde detaya gitmeyi kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| DSVM ilgili araçları      |   Rattle, WEKA, SQL Server Management Studio      |
+| DSVM 'de nasıl yapılandırılır ve yüklenir?      |  `/dsvm/tools/drill*` Yalnızca katıştırılmış modda yüklenir   |
+| Tipik kullanımları      |  Ayıklama, dönüştürme, yükleme (ETL) gerekmeden yerinde veri araştırması için. CSV, JSON, ilişkisel tablolar ve Hadoop gibi farklı veri kaynaklarını ve biçimleri sorgulayın.     |
+| Kullanma ve çalıştırma      | Masaüstü kısayolu  <br/> [10 dakika içinde detaya gitmeyi kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| DSVM 'deki ilgili araçlar      |   Rattle, WEKA, SQL Server Management Studio      |
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |  WEKA, veri araştırma görevleri için makine öğrenimi algoritmalarının bir koleksiyonudur. Algoritmalar doğrudan bir veri kümesine uygulanabilir veya kendi Java kodınızdan çağrılabilir. Weka veri ön işleme, Sınıflandırma, regresyon, kümeleme, ilişkilendirme kuralları ve görselleştirme araçları içerir. |
+| Nedir?   |  Veri araştırma görevleri için makine öğrenimi algoritmalarının koleksiyonu. Bu algoritmalar doğrudan bir veri kümesine uygulanabilir veya kendi Java kodınızdan çağrılabilir. WEKA, veri ön işleme, sınıflandırma, gerileme, kümeleme, ilişkilendirme kuralları ve görselleştirme için araçlar içerir. |
 | Desteklenen DSVM sürümleri     | Windows, Linux     |
-| Tipik kullanımları      | Genel ML aracı     |
-| Kullanma / çalıştırın nasıl?      | Windows 'ta, Başlat menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın, ardından uygulamalar-> Geliştirme-> WEKA ' a gidin. |
+| Tipik kullanımları      | Genel makine öğrenme aracı     |
+| Kullanma ve çalıştırma      | Windows üzerinde Başlat menüsünde Weka arayın. Linux 'ta X2Go ile oturum açın ve ardından WEKA > Uygulama > Geliştirme ' ye gidin. |
 | Örneklere bağlantılar      | [Weka örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| DSVM ilgili araçları      |LightGBM, Rattle, Xgboost   |
+| DSVM 'deki ilgili araçlar      |LightGBM, Rattle, Xgboost   |
 
 ## <a name="rattle"></a>Çıngırağı
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   R kullanarak veri madenciliği için grafik kullanıcı arabirimi   |
+| Nedir?   |   R kullanarak veri madenciliği için grafik kullanıcı arabirimi (GUI)   |
 | Desteklenen DSVM sürümleri     | Windows, Linux     |
 | Tipik kullanımları      | R için genel UI veri araştırma aracı    |
-| Kullanma / çalıştırın nasıl?      | Kullanıcı Arabirimi aracıdır. Windows 'da bir komut Istemi başlatın, r ' yi çalıştırın ve ardından R 'nin `rattle()`içinde çalıştırın. Linux 'ta X2Go ile bağlanın, bir Terminal başlatın, R 'yi çalıştırın ve ardından R 'nin içinde `rattle()`çalıştırın. |
+| Kullanma ve çalıştırma      | Kullanıcı Arabirimi aracıdır. Windows üzerinde, bir komut istemi açın, R çalıştırın ve ardından R içinde öğesini çalıştırın `rattle()`. Linux 'ta X2Go ile bağlanın, bir Terminal başlatın, R çalıştırın ve ardından R içinde çalıştırın `rattle()`. |
 | Örneklere bağlantılar      | [Çıngırağı](https://togaware.com/onepager/) |
-| DSVM ilgili araçları      |LightGBM, Weka, Xgboost   |
+| DSVM 'deki ilgili araçlar      |LightGBM, Weka, Xgboost   |
 
 ## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Etkileşimli veri görselleştirmesi ve BI aracı    |
+| Nedir?   | Etkileşimli veri görselleştirme ve BI aracı    |
 | Desteklenen DSVM sürümleri      | Windows  |
-| Tipik kullanımları      |  Veri Görselleştirme ve panolar oluşturma   |
-| Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio Code, Juno      |
+| Tipik kullanımları      |  Veri görselleştirme ve pano oluşturma   |
+| Kullanma ve çalıştırma      | Masaüstü kısayolu (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
+| DSVM 'deki ilgili araçlar      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

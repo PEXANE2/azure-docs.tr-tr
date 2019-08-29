@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234462"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099810"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
 Bu belge, [Hana büyük örneklerinin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [Azure Portal](https://portal.azure.com) nasıl sunulduğunu ve sizin Için dağıtılan Hana büyük örnek birimleri ile Azure Portal aracılığıyla hangi etkinliklerin yapılabileceğini anlatmaktadır. Azure portal 'daki HANA büyük örneklerin görünürlüğü, şu anda genel önizlemede olan HANA büyük örnekleri için bir Azure Kaynak sağlayıcısı aracılığıyla sunulmaktadır
@@ -93,7 +92,7 @@ Dağıtılan her bir HANA büyük örnek birimi için otomatik olarak oluşturul
 Üstbilginin sağ sütunundaki ek bir alan, HANA büyük örnek biriminin güç durumu hakkında bilgi verir.
 
 > [!NOTE]
-> Güç durumu, donanım biriminin açık veya kapalı olup olmadığını açıklar. Çalışır duruma sahip olan işletim sistemi hakkında bilgi vermez. Bir HANA büyük örnek birimini yeniden başlattığınızda, birim durumunun başlangıç durumuna geçmeye **başlamak** **için değiştiği** küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
+> Güç durumu, donanım biriminin açık veya kapalı olup olmadığını açıklar. Çalışır duruma sahip olan işletim sistemi hakkında bilgi vermez. Bir HANA büyük örnek birimini yeniden başlattığınızda, birim durumunun başlangıç durumuna geçmeye **başlamak**için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
 > 
 
 ' Daha fazla ' düğmesine basarsanız ek bilgiler gösterilir. Bir ek bilgi, HANA büyük örnek damgasının, ' de dağıtılan birimin düzeltmesini görüntülüyor. HANA büyük örnek damgalarının farklı düzeltmeleri için [Azure 'da SAP HANA nedir (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) makalesine bakın
@@ -118,7 +117,7 @@ Bölüm **özellikleri** , örnekleri size geldiğinde alacağınız önemli bil
 
 ![Azure portal içindeki HLI özelliklerinin üst bölümü](./media/hana-li-portal/portal-properties-top.png)
 
-İlk birkaç veri öğesi, genel bakış ekranında zaten gördünüz. Ancak verilerin önemli bir kısmı, ilk dağıtılan birimler kullanıma alındığı için aldığınız ExpressRoute bağlantı hattı KIMLIĞIDIR. Bazı destek durumlarında, bu verileri isteyip istemediğiniz sorulur. Ekran görüntüsünün en altında önemli bir veri girişi gösterilmektedir. Görüntülenen veriler, depolama alanınızı HANA büyük örnek yığınında kiracınızda yalıtarak NFS depolama kafasının IP adresidir  . Bu IP adresi, [depolama anlık görüntü yedeklemeleri için yapılandırma dosyasını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)düzenlediğinizde de gereklidir. 
+İlk birkaç veri öğesi, genel bakış ekranında zaten gördünüz. Ancak verilerin önemli bir kısmı, ilk dağıtılan birimler kullanıma alındığı için aldığınız ExpressRoute bağlantı hattı KIMLIĞIDIR. Bazı destek durumlarında, bu verileri isteyip istemediğiniz sorulur. Ekran görüntüsünün en altında önemli bir veri girişi gösterilmektedir. Görüntülenen veriler, depolama alanınızı HANA büyük örnek yığınında kiracınızda yalıtarak NFS depolama kafasının IP adresidir . Bu IP adresi, [depolama anlık görüntü yedeklemeleri için yapılandırma dosyasını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)düzenlediğinizde de gereklidir. 
 
 Özellik bölmesinde aşağı kaydırdığınızda, HANA büyük örnek biriminiz için benzersiz bir kaynak KIMLIĞI veya dağıtıma atanan abonelik KIMLIĞI gibi ek veriler alırsınız.
 
@@ -130,7 +129,7 @@ Linux işletim sisteminin yeniden başlatılmasını başlatırken, IŞLETIM sis
 Yeniden Başlat düğmesine basarken birimi gerçekten yeniden başlatmak isteyip istemediğiniz sorulur. "Evet" düğmesine basarak onaylamanız durumunda birim yeniden başlatılır.
 
 > [!NOTE]
-> Yeniden başlatma işleminde, birim durumunun başlangıç durumuna geçmeye **başlamak** **için değiştiği** küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
+> Yeniden başlatma işleminde, birim durumunun başlangıç durumuna geçmeye **başlamak**için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
 
 > [!IMPORTANT]
 > HANA büyük örnek biriminizdeki bellek miktarına bağlı olarak, donanımın ve işletim sisteminin yeniden başlatılması ve yeniden başlatılması bir saate kadar sürebilir

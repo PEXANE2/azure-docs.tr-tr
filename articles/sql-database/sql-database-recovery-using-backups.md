@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/30/2019
-ms.openlocfilehash: 55d60ec332515fcfa3deb565a4a770027681537a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/27/2019
+ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566972"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103111"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Otomatik veritabanı yedeklemeleri kullanarak bir Azure SQL veritabanını kurtarma
 
@@ -37,7 +37,7 @@ Standart veya Premium hizmet katmanını kullanırken, geri yüklenen bir verita
 - Veritabanının en büyük boyutu 500 GB 'den büyükse, P11 – P15 to S4-S12 veya P1 – P6 geri yükleyin.
 - Veritabanının en büyük boyutu 250 GB 'den büyükse P1 – P6 to S4-S12 ' i geri yükleyin.
 
-Geri yüklenen veritabanının en büyük boyutu hedef veritabanının hizmet katmanına ve performans düzeyine dahil edilen depolama miktarından daha büyükse, ek maliyet ICursor olur. Dahil edilen miktarın üzerinde sağlanan ek depolama alanı ekstra olarak ücretlendirilir. Ek depolamanın fiyatlandırma ayrıntıları için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan alanın gerçek miktarı, dahil edilen depolama miktarından daha azsa, en fazla veritabanı boyutunu dahil edilen miktara ayarlayarak bu ekstra maliyetten kaçınabilirsiniz.
+Geri yüklenen veritabanının en büyük boyutu hedef veritabanının hizmet katmanına ve performans düzeyine dahil edilen depolama miktarından daha büyükse, ek maliyet tahakkuk edilir. Dahil edilen miktarın üzerinde sağlanan ek depolama alanı ekstra olarak ücretlendirilir. Ek depolamanın fiyatlandırma ayrıntıları için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan alanın gerçek miktarı, dahil edilen depolama miktarından daha azsa, en fazla veritabanı boyutunu dahil edilen miktara ayarlayarak bu ekstra maliyetten kaçınabilirsiniz.
 
 > [!NOTE]
 > [Otomatik veritabanı yedeklemeleri](sql-database-automated-backups.md) , bir [veritabanı kopyası](sql-database-copy.md)oluştururken kullanılır.
@@ -113,7 +113,7 @@ Silinen bir veritabanını Azure portal kullanarak kurtarmak için, sunucunuza y
 
 Her bir Azure bölgesindeki sunucuda bir SQL veritabanını, en son coğrafi çoğaltılan yedeklerden geri yükleyebilirsiniz. Coğrafi geri yükleme, kaynak olarak coğrafi olarak çoğaltılan bir yedeklemeyi kullanır. Veritabanı veya veri merkezi bir kesinti nedeniyle erişilemez olsa bile istenebilir.
 
-Coğrafi geri yükleme, veritabanınız barındırma bölgesindeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Veritabanını başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Bir yedeklemenin ne zaman alındığı ve farklı bir bölgedeki Azure blobuna coğrafi olarak çoğaltılma arasında bir gecikme vardır. Sonuç olarak, geri yüklenen veritabanı orignal veritabanının arkasında bir saate kadar sürebilir. Aşağıdaki çizimde veritabanının başka bir bölgedeki son kullanılabilir yedekten geri yüklenmesi gösterilmektedir.
+Coğrafi geri yükleme, veritabanınız barındırma bölgesindeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Veritabanını başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Bir yedeklemenin ne zaman alındığı ve farklı bir bölgedeki Azure blobuna coğrafi olarak çoğaltılma arasında bir gecikme vardır. Sonuç olarak, geri yüklenen veritabanı özgün veritabanının arkasında bir saate kadar sürebilir. Aşağıdaki çizimde veritabanının başka bir bölgedeki son kullanılabilir yedekten geri yüklenmesi gösterilmektedir.
 
 ![coğrafi geri yükleme](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -127,7 +127,7 @@ Bir coğrafi-ikincil üzerinde noktadan noktaya geri yükleme şu anda desteklen
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Azure portal kullanarak coğrafi geri yükleme
 
-Bir veritabanını [DTU tabanlı model tutma süresi](sql-database-service-tiers-dtu.md) sırasında veya [sanal çekirdek tabanlı model tutma süresi](sql-database-service-tiers-vcore.md) Azure Portal kullanarak coğrafi olarak geri yüklemek için SQL veritabanları sayfasını açın ve ardından **Ekle**' ye tıklayın. **Kaynak Seç** metin kutusunda **Yedekle**' yi seçin. Kurtarmada ve seçtiğiniz sunucuda kurtarmanın gerçekleştirileceği yedeği belirtin.
+Azure portal kullanarak bir veritabanını coğrafi olarak geri yüklemek için SQL veritabanları sayfasını açın ve ardından **Ekle**' ye tıklayın. **Kaynak Seç** metin kutusunda **Yedekle**' yi seçin. Kurtarmada ve seçtiğiniz sunucuda kurtarmanın gerçekleştirileceği yedeği belirtin.
 
 > [!Note]
 > Azure portal kullanılarak coğrafi geri yükleme yönetilen örnekte kullanılamaz. Lütfen bunun yerine PowerShell kullanın.

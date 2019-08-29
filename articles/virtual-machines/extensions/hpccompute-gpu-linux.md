@@ -1,6 +1,6 @@
 ---
-title: NVIDIA GPU sürücüsünün uzantısı - Azure Linux sanal makineleri | Microsoft Docs
-description: N serisi NVIDIA GPU sürücülerini yüklemek için Microsoft Azure uzantısı, Linux çalıştıran Vm'leri işlem.
+title: NVıDıA GPU sürücü uzantısı-Azure Linux VM 'Leri | Microsoft Docs
+description: Linux çalıştıran N serisi işlem VM 'lerine NVıDıA GPU sürücülerini yüklemek için Microsoft Azure uzantısı.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
@@ -8,48 +8,47 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: c15948fd9e9acc1e1efeb536939002f179402d5a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706708"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092323"
 ---
-# <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux için NVIDIA GPU sürücüsünün uzantısı
+# <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux için NVıDıA GPU sürücü uzantısı
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu uzantı, Linux N serisi Vm'lerde NVIDIA GPU sürücüleri yükler. VM ailesi bağlı olarak, uzantı CUDA veya kılavuz sürücüleri de yükler. NVIDIA yüklediğinizde bu uzantıyı kullanan sürücüler, kabul etme ve koşullarını kabul etmiş [NVIDIA son kullanıcı lisans sözleşmesi](https://go.microsoft.com/fwlink/?linkid=874330). Yükleme işlemi sırasında sürücü kurulumu tamamlamak için VM yeniden başlatılabilir.
+Bu uzantı, Linux N serisi VM 'Lere NVıDıA GPU sürücülerini yüklüyor. VM ailesine bağlı olarak, uzantı CUDA veya KıLAVUZ sürücülerini de yüklüyor. Bu uzantıyı kullanarak NVıDıA sürücülerini yüklediğinizde, [NVIDIA Son Kullanıcı Lisans sözleşmesinin](https://go.microsoft.com/fwlink/?linkid=874330)şartlarını kabul etmiş ve kabul etmiş olursunuz. Yükleme işlemi sırasında, sanal makine, Sürücü kurulumunu tamamlayacak şekilde yeniden başlayabilir.
 
-El ile yükleme yönergeleri sürücüleri ve geçerli desteklenen sürümler kullanılabilir [burada](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
-Bir uzantı NVIDIA GPU sürücüleri yüklemek de kullanılabilir [Windows N serisi Vm'lerde](hpccompute-gpu-windows.md).
+Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili yönergeler burada [](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)bulunabilir.
+[Windows N serisi VM 'LERE](hpccompute-gpu-windows.md)NVIDIA GPU sürücülerini yüklemek için de bir uzantı kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Bu uzantı, belirli işletim sistemi sürümü için sürücü desteğine bağlı olarak aşağıdaki işletim sistemi dağıtım paketlerini destekler.
+Bu uzantı, belirli işletim sistemi sürümü için sürücü desteğine bağlı olarak aşağıdaki işletim sistemi destekleri 'nı destekler.
 
 | Dağıtım | Version |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
-| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
+| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
+| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Microsoft Azure uzantısı için NVIDIA GPU sürücüleri, hedef sanal Makineyi internet'e bağlı ve erişimi gerektirir.
+NVıDıA GPU sürücüleri için Microsoft Azure uzantısı, hedef sanal makinenin internet 'e bağlı ve erişime sahip olmasını gerektirir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON şema uzantısı gösterir.
+Aşağıdaki JSON uzantı için şemayı gösterir.
 
 ```json
 {
@@ -73,22 +72,22 @@ Aşağıdaki JSON şema uzantısı gösterir.
 
 ### <a name="properties"></a>Özellikler
 
-| Ad | Değer / örnek | Veri Türü |
+| Name | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | dize |
+| publisher | Microsoft. HpcCompute | string |
 | type | NvidiaGpuDriverLinux | dize |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Ayarlar
 
-Tüm ayarlar isteğe bağlıdır. Varsayılan davranış çekirdek güncelleştirmeyi olmasa bile sürücü yükleme için gerekli, en son desteklenen sürücü ve CUDA Araç Seti (uygunsa gibi) yükleyin.
+Tüm ayarlar isteğe bağlıdır. Varsayılan davranış, sürücü yüklemesi için gerekli değilse çekirdeği güncelleştirmemelidir, desteklenen en son sürücüyü ve CUDA araç setini (varsa) yükler.
 
-| Ad | Açıklama | Default Value | Geçerli Değerler | Veri Türü |
+| Name | Açıklama | Default Value | Geçerli Değerler | Veri Türü |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Çekirdek sürücüsü yüklemesi için gerekli değildir, güncelleştirme | false | true, false | boolean |
-| driverVersion | NV: Kılavuz sürücü sürümü<br> NC/ND: CUDA Araç Seti sürüm. Seçilen CUDA için en son sürücüleri otomatik olarak yüklenir. | latest | KILAVUZ: "430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | dize |
-| installCUDA | CUDA Toolkit'i yükle. NC/ND serisi VM'ler için yalnızca ilgilidir. | true | true, false | boolean |
+| updateOS | Sürücü yüklemesi için gerekli olmasa bile çekirdeği Güncelleştir | false | true, false | boolean |
+| driverVersion | DÜZENLEME KıLAVUZ sürücüsü sürümü<br> NC/ND: CUDA araç seti sürümü. Seçilen CUDA için en son sürücüler otomatik olarak yüklenir. | latest | ÇIZGISI "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | dize |
+| ınstallcuda | CUDA araç setini yükler. Yalnızca NC/ND serisi VM 'Ler için geçerlidir. | true | true, false | boolean |
 
 
 ## <a name="deployment"></a>Dağıtım
@@ -96,11 +95,11 @@ Tüm ayarlar isteğe bağlıdır. Varsayılan davranış çekirdek güncelleşti
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu 
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Şablonları, bir veya daha fazla dağıtım sonrası yapılandırma gerektiren sanal makineler dağıtırken idealdir.
+Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Dağıtım sonrası yapılandırması gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir.
 
 Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-Aşağıdaki örnek, uzantıyı sanal makine kaynağı içinde iç içe varsayar. İç içe uzantısı kaynak, JSON yerleştirildi `"resources": []` sanal makinenin nesne.
+Aşağıdaki örnek, uzantının sanal makine kaynağının içinde iç içe olduğunu varsayar. İç içe uzantısı kaynak, JSON yerleştirildi `"resources": []` sanal makinenin nesne.
 
 ```json
 {
@@ -139,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki örnek, yukarıdaki Azure Resource Manager ve PowerShell örnekleri yansıtır ve ayrıca varsayılan olmayan sürücü yüklemesi için örnek olarak özel ayarları ekler. Özellikle, işletim sistemi çekirdek güncelleştirir ve belirli bir CUDA Araç Seti sürüm sürücü yükler.
+Aşağıdaki örnekte, yukarıdaki Azure Resource Manager ve PowerShell örnekleri yansıtıdakiler ve varsayılan olmayan sürücü yüklemesi için örnek olarak özel ayarlar da eklenir. Özellikle, işletim sistemi çekirdeğini güncelleştirir ve belirli bir CUDA Araç Seti sürüm sürücüsü yüklenir.
 
 ```azurecli
 az vm extension set `
@@ -158,7 +157,7 @@ az vm extension set `
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı dağıtım durumuyla ilgili veriler, Azure portalından ve Azure PowerShell ve Azure CLI kullanılarak alınabilir. Belirli bir VM'nin için uzantıları dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
+Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure PowerShell ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için aşağıdaki komutu çalıştırın.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -176,15 +175,15 @@ Uzantı yürütme çıkış aşağıdaki dosyasına kaydedilir:
 
 ### <a name="exit-codes"></a>Çıkış kodları
 
-| Çıkış kodu | Anlamı | Olası eylemi |
+| Çıkış Kodu | Anlamı | Olası eylemi |
 | :---: | --- | --- |
 | 0 | İşlem başarılı |
-| 1\. | Uzantı yanlış kullanımı | Yürütme çıktı günlüğüne bakın |
-| 10 | Linux Tümleştirme hizmetleri Hyper-V ve Azure'da kullanılabilir veya yüklü değil | Lspci onay çıktısı |
-| 11 | NVIDIA GPU üzerinde bu VM boyutu bulunamadı. | Kullanım bir [desteklenen VM boyutu ve işletim sistemi](../linux/n-series-driver-setup.md) |
+| 1\. | Uzantının yanlış kullanımı | Yürütme çıkış günlüğünü denetle |
+| 10 | Hyper-V ve Azure için Linux Tümleştirme Hizmetleri kullanılabilir değil veya yüklü değil | Lspcı çıkışını denetle |
+| 11 | NVıDıA GPU bu VM boyutunda bulunamadı | Desteklenen bir [VM boyutu ve işletim sistemi](../linux/n-series-driver-setup.md) kullan |
 | 12 | Görüntü teklifi desteklenmiyor |
-| 13 | VM boyutu desteklenmiyor | N serisi VM dağıtmak için kullanın |
-| 14 | İşlem başarısız | Yürütme çıktı günlüğüne bakın |
+| 13 | VM boyutu desteklenmiyor | Dağıtmak için N serisi VM kullanma |
+| 14 | İşlem başarısız oldu | Yürütme çıkış günlüğünü denetle |
 
 
 ### <a name="support"></a>Destek
@@ -192,6 +191,6 @@ Uzantı yürütme çıkış aşağıdaki dosyasına kaydedilir:
 Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uzantıları hakkında daha fazla bilgi için bkz. [Linux yönelik sanal makine uzantılarına ve özelliklerine](features-linux.md).
+Uzantılar hakkında daha fazla bilgi için bkz. [Linux Için sanal makine uzantıları ve özellikleri](features-linux.md).
 
-N serisi VM'ler hakkında daha fazla bilgi için bkz. [GPU için iyileştirilmiş sanal makine boyutları](../linux/sizes-gpu.md).
+N serisi VM 'Ler hakkında daha fazla bilgi için bkz. [GPU iyileştirilmiş sanal makine boyutları](../linux/sizes-gpu.md).

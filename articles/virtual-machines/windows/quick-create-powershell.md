@@ -9,23 +9,22 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2c176ec9b7a2216eeb61e3f8fd4ef4b182b255a1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 0a8e6ab04cbb1c5a3ef9be299a08380912aad7ef
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722912"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088789"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: PowerShell ile azure'da Windows sanal makine oluşturma
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Hızlı Başlangıç: Azure 'da PowerShell ile Windows sanal makinesi oluşturma
 
-Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak Azure’da Windows Server 2016 çalıştıran bir sanal makinenin (VM) nasıl dağıtılacağı gösterilir. Ayrıca VM'ye RDP olur ve sanal uygulamalı olarak göstermek için IIS web sunucusunu yükleyin.
+Azure PowerShell modülü, PowerShell komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure PowerShell modülü kullanarak Azure’da Windows Server 2016 çalıştıran bir sanal makinenin (VM) nasıl dağıtılacağı gösterilir. Ayrıca VM 'ye yönelik RDP ve IIS Web sunucusunu yükleyerek VM 'nin eylemde görünmesini sağlayabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -38,7 +37,7 @@ Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i se
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Bir Azure kaynak grubu oluşturun [yeni AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -46,9 +45,9 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-İle bir VM [yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Kaynakların her biri için adlar sağlayın ve `New-AzVM` cmdlet, zaten yoksa oluşturur.
+[New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)Ile bir VM oluşturun. Her bir kaynak için ad sağlayın ve cmdlet henüz `New-AzVM` yoksa, oluşturur.
 
-İstendiğinde, bir kullanıcı adı ve sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola sağlayın:
+İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir Kullanıcı adı ve parola girin:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -66,7 +65,7 @@ New-AzVm `
 
 Dağıtım tamamlandıktan sonra RDP VM'ye bağlanır. VM'nizin çalışmasını görmek için, IIS web sunucusu yüklenir.
 
-Sanal makinenin genel IP adresini görmek için [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet:
+VM 'nin genel IP adresini görmek için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet 'ini kullanın:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -100,7 +99,7 @@ Sanal makinenizde İnternet’ten IIS yüklenmiş ve 80 numaralı bağlantı nok
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet'ini kaynak grubunu, VM'yi ve tüm ilgili kaynakları kaldırmak için:
+Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

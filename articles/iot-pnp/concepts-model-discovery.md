@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4ab1d45e27762ef05ab7ec74c98ab0b0b934cbf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880559"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114267"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı uygulama
 
@@ -24,7 +24,7 @@ IoT çözümünün iki geniş kategorisi vardır: bilinen bir IoT Tak ve Kullan 
 
 Bu kavram makalesinde, model bulmanın her iki çözüm türünde nasıl uygulanacağı açıklanır.
 
-## <a name="model-discovery"></a>Model bulma
+## <a name="model-discovery"></a>Model keşfi
 
 IoT Tak ve Kullan cihazı, IoT Hub 'ınıza ilk kez bağlanırsa, bir model bilgileri telemetri iletisi gönderir. Bu ileti, cihazın uyguladığı arabirimlerin kimliklerini içerir. Çözümünüzün cihazla çalışması için, bu kimlikleri çözmesi ve her arabirim için tanımları alması gerekir.
 
@@ -69,9 +69,9 @@ Model temelli bir IoT çözümü oluşturmak için IoT Tak ve Kullan arabirimi t
 1. Cihaz tarafından uygulanan yetenek modeli ve arabirimlerin kimliklerini almak için bulma telemetri iletisini okuyun.
 1. Her KIMLIK için, cihazın yeteneklerini bulmak için tam JSON dosyasını okuyun.
 1. Çözümünüz tarafından daha önce alınan JSON dosyalarını depolamak için oluşturduğunuz önbellekte her arabirimin mevcut olup olmadığını denetleyin.
-1. Daha sonra, bu KIMLIĞE sahip bir arabirimin genel model deposunda mevcut olup olmadığını denetleyin. Daha fazla bilgi için bkz. [Genel model deposu](howto-manage-models.md).
-1. Arabirim genel model deposunda yoksa, bunu çözümünüz tarafından bilinen özel model depolarında arayın. Özel bir model deposuna erişmek için bir bağlantı dizesine ihtiyacınız vardır. Daha fazla bilgi için bkz. [özel model deposu](howto-manage-models.md).
-1. Genel model deposundaki veya özel bir model deposundaki tüm arabirimleri bulamıyorsanız, cihazın arabirim tanımını sağlayıp sağlayabileceğinizi kontrol edebilirsiniz. Bir cihaz, arabirim dosyalarını komutla alma hakkında bilgi yayımlamak için standart [ModelDefinition](concepts-common-interfaces.md) arabirimini uygulayabilir.
+1. Daha sonra, bu KIMLIĞE sahip bir arabirimin ortak model deposunda mevcut olup olmadığını denetleyin. Daha fazla bilgi için bkz. [ortak model deposu](howto-manage-models.md).
+1. Arabirim ortak model deposunda yoksa, çözümü çözümünüz tarafından bilinen tüm şirket modeli depolarında aramaya çalışın. Bir şirket modeli deposuna erişmek için bir bağlantı dizesine ihtiyacınız vardır. Daha fazla bilgi için bkz. [Şirket modeli deposu](howto-manage-models.md).
+1. Tüm arabirimleri ortak model deposunda veya bir şirket modeli deposunda bulamıyorsanız, cihazın arabirim tanımını sağlayıp sağlayabileceğinizi kontrol edebilirsiniz. Bir cihaz, arabirim dosyalarını komutla alma hakkında bilgi yayımlamak için standart [ModelDefinition](concepts-common-interfaces.md) arabirimini uygulayabilir.
 1. Cihaz tarafından uygulanan her arabirim için JSON dosyaları buldıysanız, cihazın yeteneklerini sıralayabilirsiniz. Kullanıcıların cihazla etkileşime geçmesini sağlamak için daha önce yazdığınız mantığı kullanın.
 1. İstediğiniz zaman, cihazın yetenek modeli KIMLIĞINI ve arabirim kimliklerini almak için dijital TWINS API 'sini çağırabilirsiniz.
 

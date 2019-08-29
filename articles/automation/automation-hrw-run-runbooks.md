@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10262e50fff2903d7caf242304145a2ab93dbcd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970611"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087569"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde runbook çalıştırma
 
 Azure Otomasyonu 'nda çalışan runbook 'ların yapısında ve karma Runbook Worker üzerinde çalışan runbook 'larda farklılık yoktur. En çok büyük olasılıkla kullandığınız runbook 'lar farklı olabilir. Bu fark, karma bir runbook worker 'ı hedefleyen runbook 'ların genellikle yerel bilgisayardaki kaynakları, dağıtıldığı Yerel ortamdaki kaynaklara göre yönetmesidir. Azure Otomasyonu 'ndaki runbook 'lar genellikle Azure bulutundaki kaynakları yönetir.
 
-Bir karma runbook çalışanı üzerinde çalıştırılacak runbook 'ları yazdığınızda, karma çalışanı barındıran makinede runbook 'ları düzenlemeniz ve test etmeniz gerekir. Konak makinede, yerel kaynakları yönetmeniz ve erişmeniz için ihtiyacınız olan tüm PowerShell modülleri ve ağ erişimi vardır. Karma çalışan makinesinde bir runbook test edildikten sonra, karma çalışanında çalışmak için kullanılabilir olduğu Azure Otomasyonu ortamına yükleyebilirsiniz. Windows için yerel sistem hesabı veya Linux üzerinde özel bir kullanıcı hesabı `nxautomation` altında çalışan işlerin bilmesi önemlidir. Linux 'ta bu, `nxautomation` hesabın modüllerinizi depoladığınız konuma erişiminin olduğundan emin olmanız gerektiği anlamına gelir. [Install-Module]() cmdlet 'ini kullandığınızda, `naxautomation` hesabın erişimi olduğunu onaylamak için **ALLUSERS** `-Scope` parametresini parametresi olarak belirtin.
+Bir karma runbook çalışanı üzerinde çalıştırılacak runbook 'ları yazdığınızda, karma çalışanı barındıran makinede runbook 'ları düzenlemeniz ve test etmeniz gerekir. Konak makinede, yerel kaynakları yönetmeniz ve erişmeniz için ihtiyacınız olan tüm PowerShell modülleri ve ağ erişimi vardır. Karma çalışan makinesinde bir runbook test edildikten sonra, karma çalışanında çalışmak için kullanılabilir olduğu Azure Otomasyonu ortamına yükleyebilirsiniz. Windows için yerel sistem hesabı veya Linux üzerinde özel bir kullanıcı hesabı `nxautomation` altında çalışan işlerin bilmesi önemlidir. Linux 'ta bu, `nxautomation` hesabın modüllerinizi depoladığınız konuma erişiminin olduğundan emin olmanız gerektiği anlamına gelir. [Install-Module](/powershell/module/powershellget/install-module) cmdlet 'ini kullandığınızda, `naxautomation` hesabın erişimi olduğunu onaylamak için **ALLUSERS** `-Scope` parametresini parametresi olarak belirtin.
 
 Linux üzerinde PowerShell hakkında daha fazla bilgi için bkz. [Windows dışı platformlarda PowerShell Için bilinen sorunlar](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
