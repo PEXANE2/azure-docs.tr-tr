@@ -44,7 +44,7 @@ Aşağıdaki özellikler, HubSpot bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **HubSpot** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **HubSpot** | Evet |
 | clientID | Hubspot uygulamanızla ilişkili istemci kimliği.  | Evet |
 | clientSecret | Hubspot uygulamanızla ilişkili istemci gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | accessToken | Başlangıçta tümleştirmenizi OAuth kimlik doğrulaması yapılırken alınan erişim belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
