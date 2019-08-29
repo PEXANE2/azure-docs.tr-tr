@@ -68,7 +68,7 @@ Azure Veri Gezgini bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | **Type** özelliği **AzureDataExplorer** olarak ayarlanmalıdır | Evet |
+| type | **Type** özelliği **AzureDataExplorer** olarak ayarlanmalıdır | Evet |
 | endpoint | Biçiminde olacak şekilde `https://<clusterName>.<regionName>.kusto.windows.net`Azure Veri Gezgini kümesinin uç nokta URL 'si. | Evet |
 | database | Veritabanının adı. | Evet |
 | tenant | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)normalde "**yetkili kimliği**" olarak bildiğiniz şeydir. Azure portal, fareyi sağ üst köşesinde bulunan fareyle girerek alın. | Evet |
