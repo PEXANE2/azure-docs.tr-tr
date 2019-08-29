@@ -58,7 +58,7 @@ Azure Data Lake Store bağlı hizmeti için aşağıdaki özellikler desteklenir
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Özelliğin AzureDataLakeStore olarak ayarlanması gerekir. `type` | Evet |
+| type | Özelliğin AzureDataLakeStore olarak ayarlanması gerekir. `type` | Evet |
 | dataLakeStoreUri | Azure Data Lake Store hesabı hakkında bilgi. Bu bilgiler aşağıdaki biçimlerden birini alır: `https://[accountname].azuredatalakestore.net/webhdfs/v1` veya `adl://[accountname].azuredatalakestore.net/`. | Evet |
 | subscriptionId | Data Lake Store hesabının ait olduğu Azure abonelik KIMLIĞI. | Havuz için gerekli |
 | resourceGroupName | Data Lake Store hesabının ait olduğu Azure Kaynak grubu adı. | Havuz için gerekli |
