@@ -153,8 +153,8 @@ Blockchain Workbench'i şu alanlara sahip bir yanıt döndürür:
 | **Ad**                 | **Açıklama**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
 | requestId                | İstemci tarafından sağlanan GUID                                                             |
-| ContractId               | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
-| ContractLedgerIdentifier | Genel muhasebe sözleşme adresi                                            |
+| contractId               | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
+| contractLedgerIdentifier | Genel muhasebe sözleşme adresi                                            |
 | connectionId             | Blok zinciri bağlantı için benzersiz tanımlayıcı                               |
 | messageSchemaVersion     | Mesajlaşma şema sürümü                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
