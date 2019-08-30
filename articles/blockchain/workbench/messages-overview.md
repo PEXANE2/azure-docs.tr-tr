@@ -221,7 +221,7 @@ Yeni bir sözleşme eylem oluşturur.
 | userChainIdentifier      | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum bu kullanıcının adresidir **zincirinde** adresi. |
 | contractLedgerIdentifier | Genel muhasebe sözleşme adresi |
 | version                  | Uygulamanın sürümü. Etkin bir uygulama birden çok sürümünü varsa gereklidir. Aksi takdirde sürüm isteğe bağlıdır. Uygulama sürümü hakkında daha fazla bilgi için bkz. [Azure Blockchain Workbench uygulama sürümü](version-app.md). |
-| WorkflowFunctionName     | İş akışı işlevinin adı |
+| workflowFunctionName     | İş akışı işlevinin adı |
 | parametreler               | Sözleşme oluşturma için giriş parametreleri |
 | connectionId             | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion     | Mesajlaşma şema sürümü |
@@ -383,8 +383,8 @@ Tek tek bloklar hakkında bilgi içerir. *BlockMessage* blok düzeyi bilgileri i
 
 | Ad | Açıklama |
 |------|-------------|
-| Blok | İçeren [bilgi engelle](#block-information) |
-| işlem | Bir koleksiyon içeren [işlem bilgilerini](#transaction-information) blok için |
+| block | İçeren [bilgi engelle](#block-information) |
+| transactions | Bir koleksiyon içeren [işlem bilgilerini](#transaction-information) blok için |
 | connectionId | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü |
 | messageName | **BlockMessage** |
@@ -394,21 +394,21 @@ Tek tek bloklar hakkında bilgi içerir. *BlockMessage* blok düzeyi bilgileri i
 
 | Ad              | Açıklama |
 |-------------------|-------------|
-| Blockıd'si           | Azure Blockchain Workbench içinde blok için benzersiz tanımlayıcı |
-| BlockNumber       | Genel bir blok için benzersiz tanımlayıcı |
-| BlockHash         | Blok karma |
+| blockId           | Azure Blockchain Workbench içinde blok için benzersiz tanımlayıcı |
+| blockNumber       | Genel bir blok için benzersiz tanımlayıcı |
+| blockHash         | Blok karma |
 | previousBlockHash | Önceki blok karması |
-| BlockTimestamp    | Bloğun zaman damgası |
+| blockTimestamp    | Bloğun zaman damgası |
 
 #### <a name="transaction-information"></a>İşlem bilgileri
 
 | Ad               | Açıklama |
 |--------------------|-------------|
-| TransactionID      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
-| TransactionHash    | Genel muhasebe üzerinde işlem karması |
+| transactionId      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
+| transactionHash    | Genel muhasebe üzerinde işlem karması |
 | from               | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| -                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
-| ProvisioningStatus | Geçerli işlem için sağlama işlemini durumunu tanımlar. Olası değerler şunlardır: </br>0 – işlem veritabanı API'si tarafından oluşturuldu</br>1 – işlem defterine gönderildi</br>2 – işlem için bir kayıt defteri başarıyla kaydedildi</br>3 veya 4 - işlem için bir kayıt defteri kaydedilemedi</br>5 - işlem için bir kayıt defteri başarıyla yürütüldü |
+| to                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| provisioningStatus | Geçerli işlem için sağlama işlemini durumunu tanımlar. Olası değerler şunlardır: </br>0 – işlem veritabanı API'si tarafından oluşturuldu</br>1 – işlem defterine gönderildi</br>2 – işlem için bir kayıt defteri başarıyla kaydedildi</br>3 veya 4 - işlem için bir kayıt defteri kaydedilemedi</br>5 - işlem için bir kayıt defteri başarıyla yürütüldü |
 
 Örnek bir *BlockMessage* blok zinciri workbench'ten:
 
@@ -450,8 +450,8 @@ Bir sözleşme hakkında bilgi içerir. İleti sözleşmesi özelliklere sahip b
 
 | Ad | Açıklama |
 |------|-------------|
-| Blockıd'si | Azure Blockchain Workbench içinde blok için benzersiz tanımlayıcı |
-| BlockHash | Blok karma |
+| blockId | Azure Blockchain Workbench içinde blok için benzersiz tanımlayıcı |
+| blockHash | Blok karma |
 | modifyingTransactions | [Değişiklik işlemleri](#modifying-transaction-information) Sözleşmesi |
 | contractId | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
 | contractLedgerIdentifier | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
@@ -466,16 +466,16 @@ Bir sözleşme hakkında bilgi içerir. İleti sözleşmesi özelliklere sahip b
 
 | Ad               | Açıklama |
 |--------------------|-------------|
-| TransactionID | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
-| TransactionHash | Genel muhasebe üzerinde işlem karması |
+| transactionID | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
+| transactionHash | Genel muhasebe üzerinde işlem karması |
 | from | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| - | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| to | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 
 #### <a name="contract-properties"></a>Sözleşme özellikleri
 
 | Ad               | Açıklama |
 |--------------------|-------------|
-| WorkflowPropertyId | Azure Blockchain Workbench içinde iş akışı özellik için benzersiz tanımlayıcı |
+| workflowPropertyId | Azure Blockchain Workbench içinde iş akışı özellik için benzersiz tanımlayıcı |
 | name | İş akışı özelliğin adı |
 | value | İş akışı özelliğinin değeri |
 
@@ -562,13 +562,13 @@ Bir sözleşme işlevi çağrıldığında işlev adı, parametreleri giriş ve 
 
 | Ad | Açıklama |
 |------|-------------|
-| EventName                   | **ContractFunctionInvocation** |
-| Çağıran                      | [Arayan bilgileri](#caller-information) |
+| eventName                   | **ContractFunctionInvocation** |
+| caller                      | [Arayan bilgileri](#caller-information) |
 | contractId                  | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
 | contractLedgerIdentifier    | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
 | functionName                | İşlevin adı |
-| parametreler                  | [Parametre bilgileri](#parameter-information) |
-| İşlem                 | İşlem bilgileri |
+| parameters                  | [Parametre bilgileri](#parameter-information) |
+| transaction                 | İşlem bilgileri |
 | inTransactionSequenceNumber | İşlem bloğundaki sıra numarası |
 | connectionId                | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion        | Mesajlaşma şema sürümü |
@@ -579,7 +579,7 @@ Bir sözleşme işlevi çağrıldığında işlev adı, parametreleri giriş ve 
 
 | Ad | Açıklama |
 |------|-------------|
-| türü | Arayanın gibi bir kullanıcı veya sözleşme türü |
+| type | Arayanın gibi bir kullanıcı veya sözleşme türü |
 | id | Arayanın içinde Azure Blockchain Workbench için benzersiz tanımlayıcı |
 | ledgerIdentifier | Çağrı üzerinde genel benzersiz tanıtıcısı |
 
