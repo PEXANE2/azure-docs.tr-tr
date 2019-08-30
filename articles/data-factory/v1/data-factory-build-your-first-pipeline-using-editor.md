@@ -213,11 +213,11 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
 
    | Özellik | Altında iç içe geçmiş | Açıklama |
    |:--- |:--- |:--- |
-   | türü | properties |Veriler blob depolamada yer aldığından, type özelliği **AzureBlob** olarak ayarlanır. |
+   | type | properties |Veriler blob depolamada yer aldığından, type özelliği **AzureBlob** olarak ayarlanır. |
    | linkedServiceName | format |Daha önce oluşturduğunuz AzureStorageLinkedService hizmetine başvurur. |
    | folderPath | typeProperties | Blob kapsayıcısını ve giriş bloblarını içeren klasörü belirtir. | 
    | fileName | typeProperties |Bu özellik isteğe bağlıdır. Bu özelliği atarsanız, tüm folderPath dosyaları seçilir. Bu öğreticide yalnızca input.log dosyası işlenir. |
-   | türü | format |Günlük dosyaları metin biçiminde olduğundan **TextFormat** seçeneğini kullanın. |
+   | type | format |Günlük dosyaları metin biçiminde olduğundan **TextFormat** seçeneğini kullanın. |
    | columnDelimiter | format |Günlük dosyalarındaki sütunlar virgül karakteri (`,`) ile ayrılır. |
    | frequency/interval | availability |Sıklığın **Month**, aralığın **1** olarak ayarlanmış olması, girdi dilimlerinin aylık olarak kullanılabileceği anlamına gelir. |
    | external | properties | Bu özellik, giriş verileri bu işlem hattı tarafından oluşturulmadıysa **true** olarak ayarlanır. Bu öğreticide, input.log dosyası bu işlem hattı tarafından oluşturulmadığından, özelliği **true** olarak ayarlayacağız. |
