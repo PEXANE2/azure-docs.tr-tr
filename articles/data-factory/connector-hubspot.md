@@ -87,7 +87,7 @@ HubSpot veri kopyalamak için dataset öğesinin type özelliği ayarlamak **Hub
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **HubspotObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **HubspotObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -117,7 +117,7 @@ HubSpot veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarla
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **HubspotSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **HubspotSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Companies where Company_Id = xxx"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**
