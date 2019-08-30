@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 06/26/2019
-ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
-ms.translationtype: HT
+ms.date: 08/29/2019
+ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147848"
+ms.locfileid: "70164335"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Sanal çekirdek hizmet katmanları arasında seçim yapın ve DTU hizmeti katmanlarından geçiş yapın
 
 Sanal çekirdek (vCore) tabanlı satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak ölçeklendirmenize, şirket içi performansı eşleşmenize ve fiyatı iyileştirmenize olanak tanır. Ayrıca, donanım üretimini seçmenizi sağlar:
 
-- **4. nesil**: Intel E5-2673 v3 (Haswell) 2,4-GHz işlemcileri, sanal çekirdek = 1 PP (fiziksel çekirdek), her çekirdek için 7 GB, ekli SSD 'yi temel alan en fazla 24 mantıksal CPU
-- **5. nesil**: Intel E5-2673 v4 (çok Iyi) 2,3-GHz işlemcileri, sanal çekirdek = 1 LP (hiper iş parçacığı), 5,1 GB, çekirdek başına hızlı ve VM SSD 'yi temel alan 80 adede kadar mantıksal CPU
+- **4. nesil**: Intel E5-2673 v3 (Haswell) 2,4-GHz işlemcileri, sanal çekirdek = 1 PP (fiziksel çekirdek), vCore başına 7 GB, bağlı SSD 'yi temel alan en fazla 24 mantıksal CPU
+- **5. nesil**: Intel E5-2673 v4 (çok Iyi) 2,3-GHz işlemcileri, vCore = 1 LP (hiper iş parçacığı) 5,1, sağlanan işlem için Vcore başına 80 GB ve sunucusuz işlem için vCore başına 24 GB 'a kadar mantıksal CPU
 
 4\. nesil donanım, vCore başına önemli ölçüde daha fazla bellek sunar. Ancak, 5. nesil donanım, işlem kaynaklarını çok daha yüksek bir şekilde ölçeklendirmenize olanak tanır.
 
@@ -44,9 +44,9 @@ Aşağıdaki tabloda üç katman arasındaki farklar açıklanmaktadır:
 |---|---|---|---|
 |En uygun olduğu durum|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar.|Yüksek g/ç gereksinimlerine sahip iş uygulamaları. Birkaç yalıtılmış çoğaltma kullanarak hatalara en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.|
 |İşlem|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek<br/>**Sunucusuz işlem**:<br/>5\. nesil 0,5-16 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|
-|Bellek|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB<br/>**Sunucusuz işlem**:<br/>5\. nesil Sanal çekirdek başına 3 GB|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB |**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB|
-|Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Tek veritabanı sunucusuz işlem**:<br/>5 GB-1 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
-|G/ç verimlilik (yaklaşık)|**Tek veritabanı**: maksimum 7000 ıOPS ile vCore başına 500 ıOPS.<br/>**Yönetilen örnek**: [Dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|200.000 maksimum ıOPS ile çekirdek başına 5000 ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|
+|Bellek|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB<br/>**Sunucusuz işlem**:<br/>5\. nesil VCore başına en fazla 24 GB|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB |**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB|
+|Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
+|G/ç verimlilik (yaklaşık)|**Tek veritabanı ve elastik havuz**: 500 ıOPS, vCore başına en fazla 40000 ıOPS.<br/>**Yönetilen örnek**: [Dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|çekirdek başına 5000 ıOPS, en fazla 200.000 maksimum ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|
 |Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
 |Bellek içi|Desteklenmiyor|Desteklenen|Desteklenmiyor|

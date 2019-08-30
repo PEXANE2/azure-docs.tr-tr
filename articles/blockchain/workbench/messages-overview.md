@@ -118,7 +118,7 @@ Yeni bir sözleşmeyi oluşturur.
 | applicationName      | Uygulamanın adı |
 | version              | Uygulamanın sürümü. Etkin bir uygulama birden çok sürümünü varsa gereklidir. Aksi takdirde sürüm isteğe bağlıdır. Uygulama sürümü hakkında daha fazla bilgi için bkz. [Azure Blockchain Workbench uygulama sürümü](version-app.md). |
 | workflowName         | İş akışının adı |
-| parametreler           | Sözleşme oluşturma için giriş parametreleri |
+| parameters           | Sözleşme oluşturma için giriş parametreleri |
 | connectionId         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü |
 | messageName          | **CreateContractRequest** |
@@ -222,7 +222,7 @@ Yeni bir sözleşme eylem oluşturur.
 | contractLedgerIdentifier | Genel muhasebe sözleşme adresi |
 | version                  | Uygulamanın sürümü. Etkin bir uygulama birden çok sürümünü varsa gereklidir. Aksi takdirde sürüm isteğe bağlıdır. Uygulama sürümü hakkında daha fazla bilgi için bkz. [Azure Blockchain Workbench uygulama sürümü](version-app.md). |
 | workflowFunctionName     | İş akışı işlevinin adı |
-| parametreler               | Sözleşme oluşturma için giriş parametreleri |
+| parameters               | Sözleşme oluşturma için giriş parametreleri |
 | connectionId             | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion     | Mesajlaşma şema sürümü |
 | messageName              | **CreateContractActionRequest** |
@@ -407,7 +407,7 @@ Tek tek bloklar hakkında bilgi içerir. *BlockMessage* blok düzeyi bilgileri i
 | transactionId      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
 | transactionHash    | Genel muhasebe üzerinde işlem karması |
 | from               | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| to                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| -                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 | provisioningStatus | Geçerli işlem için sağlama işlemini durumunu tanımlar. Olası değerler şunlardır: </br>0 – işlem veritabanı API'si tarafından oluşturuldu</br>1 – işlem defterine gönderildi</br>2 – işlem için bir kayıt defteri başarıyla kaydedildi</br>3 veya 4 - işlem için bir kayıt defteri kaydedilemedi</br>5 - işlem için bir kayıt defteri başarıyla yürütüldü |
 
 Örnek bir *BlockMessage* blok zinciri workbench'ten:
@@ -466,10 +466,10 @@ Bir sözleşme hakkında bilgi içerir. İleti sözleşmesi özelliklere sahip b
 
 | Ad               | Açıklama |
 |--------------------|-------------|
-| transactionID | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
+| transactionId | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
 | transactionHash | Genel muhasebe üzerinde işlem karması |
 | from | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| to | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| - | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 
 #### <a name="contract-properties"></a>Sözleşme özellikleri
 
@@ -594,8 +594,8 @@ Bir sözleşme işlevi çağrıldığında işlev adı, parametreleri giriş ve 
 
 | Ad               | Açıklama |
 |--------------------|-------------|
-| TransactionID      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
-| TransactionHash    | Genel muhasebe üzerinde işlem karması |
+| transactionId      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
+| transactionHash    | Genel muhasebe üzerinde işlem karması |
 | from               | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
 | -                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 
@@ -642,7 +642,7 @@ Workbench için bir uygulama yüklendiğinde adı ve sürümü gibi bilgileri i�
 
 | Ad | Açıklama |
 |------|-------------|
-| EventName | **ApplicationIngestion** |
+| eventName | **ApplicationIngestion** |
 | ApplicationId | Azure Blockchain Workbench içindeki uygulama için benzersiz tanımlayıcı |
 | applicationName | Uygulama adı |
 | ApplicationDisplayName | Uygulama görünen adı |
@@ -688,7 +688,7 @@ Workbench için bir uygulama yüklendiğinde adı ve sürümü gibi bilgileri i�
 |------|-------------|
 | id | Azure Blockchain Workbench içinde uygulama iş akışı işlevi için benzersiz tanımlayıcı |
 | name | İşlev adı |
-| parametreler | İşlevi için parametreler |
+| parameters | İşlevi için parametreler |
 
 ##### <a name="workflow-state-information"></a>İş akışı durumu bilgileri
 
@@ -704,7 +704,7 @@ Workbench için bir uygulama yüklendiğinde adı ve sürümü gibi bilgileri i�
 |------|-------------|
 | id | Azure Blockchain Workbench içinde uygulama iş akışı özelliği için benzersiz tanımlayıcı |
 | name | Özellik adı |
-| türü | Özellik türü |
+| type | Özellik türü |
 
 Örnek bir *EventMessage ApplicationIngestion* blok zinciri workbench'ten:
 
@@ -836,7 +836,7 @@ Bir kullanıcı rol ataması ve karşılık gelen uygulama ve rol adını gerçe
 
 | Ad | Açıklama |
 |------|-------------|
-| EventName | **RoleAssignment** |
+| eventName | **RoleAssignment** |
 | ApplicationId | Azure Blockchain Workbench içindeki uygulama için benzersiz tanımlayıcı |
 | applicationName | Uygulama adı |
 | ApplicationDisplayName | Uygulama görünen adı |
@@ -861,7 +861,7 @@ Bir kullanıcı rol ataması ve karşılık gelen uygulama ve rol adını gerçe
 | Ad | Açıklama |
 |------|-------------|
 | id | Azure Blockchain Workbench içinde kullanıcının benzersiz tanımlayıcısı |
-| türü | Atayan türü |
+| type | Atayan türü |
 | ChainIdentifier | Genel muhasebe kullanıcının benzersiz tanımlayıcısı |
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment atanan
@@ -869,7 +869,7 @@ Bir kullanıcı rol ataması ve karşılık gelen uygulama ve rol adını gerçe
 | Ad | Açıklama |
 |------|-------------|
 | id | Azure Blockchain Workbench içinde kullanıcının benzersiz tanımlayıcısı |
-| türü | Atanan türü |
+| type | Atanan türü |
 | ChainIdentifier | Genel muhasebe kullanıcının benzersiz tanımlayıcısı |
 
 Örnek bir *EventMessage RoleAssignment* blok zinciri workbench'ten:

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125211"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172045"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -202,7 +202,7 @@ Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, 
 1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolanızı girip yeni bir parola girin ve onaylayın.
 1. Seçin **gönderme**.
 
-Yeni parolanın Azure AD DS 'de kullanılabilmesi için parolanızı değiştirdikten birkaç dakika sürer. Yaklaşık 20 dakika sonra, yönetilen etki alanına katılmış bilgisayarlarda oturum açmak için yeni parolayı kullanabilirsiniz.
+Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına katılmış bilgisayarlarda başarıyla oturum açması için parolanızı değiştirdikten birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

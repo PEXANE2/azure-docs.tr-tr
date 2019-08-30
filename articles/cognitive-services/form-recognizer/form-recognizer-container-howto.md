@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051196"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164546"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form tanıyıcı kapsayıcıları yükleyip çalıştırın
 
@@ -58,28 +58,25 @@ Her form tanıyıcı kapsayıcısı için ayrılacak en düşük ve önerilen CP
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
-|bilişsel-hizmetler-form-tanıyıcı | 2 çekirdek, 4 GB bellek | 4 çekirdek, 8 GB bellek |
+| Form Tanıma | 2 çekirdek, 4 GB bellek | 4 çekirdek, 8 GB bellek |
+| Metin Tanıma | 1 çekirdek, 8 GB bellek | 2 çekirdek, 8 GB bellek |
 
 * Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
-* TPS-saniye başına işlem
 * Çekirdek ve bellek, `--cpus` `docker run` komutunun bir parçası `--memory` olarak kullanılan ve ayarlarına karşılık gelir.
 
 > [!Note]
 > En düşük ve önerilen değerler, konak makine kaynakları *değil* , Docker sınırlarına dayanır.
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>docker pull komutuyla kapsayıcı görüntüsünü al
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>docker pull komutuyla kapsayıcı görüntülerini alın
 
-Form tanıyıcı için kapsayıcı görüntüleri aşağıdaki depoda bulunabilir:
+**Form tanıyıcı** ve **metin tanıma** tekliflerinin kapsayıcı görüntüleri aşağıdaki kapsayıcı kayıt defterinde bulunabilir:
 
-| Kapsayıcı | Havuz |
+| Kapsayıcı | Tam görüntü adı |
 |-----------|------------|
-| bilişsel-hizmetler-form-tanıyıcı | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Metin Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-`cognitive-services-recognize-text` [Kapsayıcısını](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)kullanmak istiyorsanız, form tanıyıcı hizmeti yerine, doğru kapsayıcı adıyla `docker pull` komutunu kullandığınızdan emin olun: 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+Her iki kapsayıcıya de ihtiyacınız olacak, lütfen **tanıyıcı metin** kapsayıcısının [Bu makalenin dışında ayrıntılı](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) olduğunu unutmayın.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Form tanıyıcı kapsayıcısını almak için aşağıdaki komutu kullanın:
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>Metin Tanıma kapsayıcısı için Docker Pull
+
+#### <a name="recognize-text"></a>Metin Tanıma
+
+Metin Tanıma kapsayıcısını almak için aşağıdaki komutu kullanın:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma

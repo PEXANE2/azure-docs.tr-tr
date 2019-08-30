@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/29/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014438"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172881"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -236,6 +236,8 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |UserMaxStandByReplicaCount |Int, varsayılan değer 1 ' dir |Dinamik|Sistemin Kullanıcı Hizmetleri için sakladığı varsayılan en fazla bekleme çoğaltması sayısı. |
 |UserReplicaRestartWaitDuration |Saniye cinsinden süre, varsayılan değer 60,0 \* 30 ' dur |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Kalıcı bir çoğaltma geçtiğinde; Windows Fabric, çoğaltmanın yeni değiştirme çoğaltmaları oluşturmadan önce geri gelmesi için bu süreyi bekler (Bu durum, durumun bir kopyasını gerektirir). |
 |UserStandByReplicaKeepDuration |Saniye cinsinden süre, varsayılan değer 3600,0 \* 24 \* ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Kalıcı bir çoğaltma eski durumdan geri geldiğinde zaten değiştirilmiş olabilir. Bu süreölçer, bir FM 'in bekleme çoğaltmasını iptal etmeden önce ne kadar süreyle tutacağına ilişkin süreyi belirler. |
+|Waitforınbuildreplicasafetychecktimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (60 * 10)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. İsteğe bağlı Waitforınbuildreplica güvenlik denetimi zaman aşımı için yapılandırma girişi. Bu yapılandırma, düğüm etkinleştirmeleri ve yükseltmeleri için Waitforınbuildreplica güvenlik denetiminin zaman aşımını tanımlar. Aşağıdakilerden biri doğruysa, bu güvenlik denetimi başarısız olur:-bir birincil oluşturuluyor ve ft Target çoğaltma kümesi boyutu > 1-geçerli çoğaltma yapıda ise ve kalıcı ise-bu, geçerli birincil ise ve yeni bir çoğaltma derleniyorsa, bu güvenlik denetimi atlanacak Önceki koşullardan biri hala doğru olsa bile zaman aşımı süresi dolarsa, kullanılır. |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (60.0 * 10)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. İsteğe bağlı Waitforyeniden yapılandırma güvenlik denetimi zaman aşımı için yapılandırma girişi. Bu yapılandırma, düğüm değişimleri ve yükseltmeleri için Waitforyeniden yapılandırma güvenlik denetiminin zaman aşımını tanımlar. Denetlenen çoğaltma, yeniden yapılandırma altındaki bir bölümün parçasıysa, bu güvenlik denetimi başarısız olur. Bölüm hala yeniden yapılandırma altındaysa bile, bu zaman aşımı süresi dolduktan sonra güvenlik denetimi atlanır.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 

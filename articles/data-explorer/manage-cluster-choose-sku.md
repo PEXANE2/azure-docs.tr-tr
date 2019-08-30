@@ -1,18 +1,18 @@
 ---
 title: Azure Veri Gezgini kümeniz için doğru VM SKU 'sunu seçin
 description: Bu makalede, Azure Veri Gezgini kümesi için en uygun SKU boyutunu seçme açıklanmaktadır.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515734"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186739"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümeniz için doğru VM SKU 'sunu seçin 
 
@@ -83,7 +83,7 @@ Azure Veri Gezgini kümesi VM 'lerinin teknik belirtimleri aşağıdaki tabloda 
 |L16s_1| depolama ile iyileştirilmiş | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1000
 
 * Azure Veri Gezgini [Listsku 'larını](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)kullanarak bölge BAŞıNA GÜNCELLEŞTIRILMIŞ VM SKU listesini görüntüleyebilirsiniz. 
-* [Çeşitli Işlem SKU 'ları](/azure/virtual-machines/windows/sizes-compute)hakkında daha fazla bilgi edinin. 
+* [Çeşitli SKU 'lar](/azure/virtual-machines/windows/sizes)hakkında daha fazla bilgi edinin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,58 +1,74 @@
 ---
-title: Microsoft Azure Data Box Disk sistem gereksinimleri | Microsoft Docs
-description: Yazılım ve ağ, Azure Data Box Disk gereksinimleri hakkında bilgi edinin
+title: Data Box Disk sistem gereksinimlerini Microsoft Azure | Microsoft Docs
+description: Azure Data Box Disk için yazılım ve ağ gereksinimleri hakkında bilgi edinin
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 10ddf4c42ac5aa2d1cffd7cbca6930896103d2c5
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147773"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172710"
 ---
+::: zone target="docs"
+
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk sistem gereksinimleri
 
-Bu makalede, Microsoft Azure Data Box Disk çözümünüz için ve Data Box Disk için bağlanan istemciler için önemli sistem gereksinimlerini açıklar. Önce Data Box Disk dağıtın ve ardından geri gerekirse dağıtım ve sonraki işlemi sırasında başvurduğu bilgileri dikkatlice gözden öneririz.
+Bu makalede, Microsoft Azure Data Box Disk çözümünüz ve Data Box Disk bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box Disk dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
 
-Sistem gereksinimleri, diskler, desteklenen depolama hesapları ve depolama türleri için bağlanan istemciler için desteklenen platformları içerir.
+Sistem gereksinimleri, disklere, desteklenen depolama hesaplarına ve depolama türlerine bağlanan istemciler için desteklenen platformları içerir.
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınız var. İstemci bilgisayarınızda:
+
+- Desteklenen bir işletim sistemi çalıştırın.
+- Diğer gerekli yazılımların yüklü olmasını gerektirir.
+
+::: zone-end
 
 ## <a name="supported-operating-systems-for-clients"></a>İstemciler için desteklenen işletim sistemleri
 
-Diskin kilidini açmak ve istemcileri aracılığıyla veri kopyalama işlemi için Data Box Disk bağlı için desteklenen işletim sistemlerinin bir listesi aşağıdadır.
+Data Box Disk bağlı istemciler aracılığıyla disk kilidi açma ve veri kopyalama işlemi için desteklenen işletim sistemlerinin bir listesi aşağıda verilmiştir.
 
-| **İşletim sistemi** | **Test edilen sürüm** |
+| **İşletim sistemi** | **Sınanan sürümler** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
 | Windows (64-bit) |7, 8, 10 |
-|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04 18.04 <br> 8,11, 9 <br> 7.0 <br> 6,5, 6,9, 7,0, 7,5 |  
 
-## <a name="other-required-software-for-windows-clients"></a>Windows istemcileri için diğer gerekli yazılımı
+## <a name="other-required-software-for-windows-clients"></a>Windows istemcileri için gereken diğer yazılımlar
 
-Windows İstemcisi için aşağıdakileri de yüklü olması gerekir.
+Windows istemcisi için, aşağıdakilerin de yüklenmesi gerekir.
 
 | **Yazılım**| **Sürüm** |
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework'ün |5.0|
+| Windows Management Framework |5.0|
 | BitLocker| - |
 
-## <a name="other-required-software-for-linux-clients"></a>Diğer gerekli yazılımı Linux istemcileri
+## <a name="other-required-software-for-linux-clients"></a>Linux istemcileri için gereken diğer yazılımlar
 
-Linux istemcisi için aşağıdaki gerekli yazılımı Data Box Disk araç takımı yükler:
+Linux istemcisi için Data Box Disk araç takımı, aşağıdaki gerekli yazılımları yüklerse:
 
-- dislocker
+- disdolabı
 - OpenSSL
+
+::: zone target="docs"
 
 ## <a name="supported-connection"></a>Desteklenen bağlantı
 
-İstemci bilgisayar verilerini içeren bir USB 3.0 veya üzeri bir bağlantı noktası olmalıdır. Diskleri bu istemci tarafından sağlanan kablosu kullanarak bağlanın.
+Verileri içeren istemci bilgisayar, USB 3,0 veya üzeri bir bağlantı noktasına sahip olmalıdır. Diskler, bu istemciye, belirtilen kablo aracılığıyla bağlanır.
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 
@@ -61,26 +77,28 @@ Data Box Disk için desteklenen depolama türlerinin bir listesi aşağıda veri
 | **Depolama hesabı** | **Notlar** |
 | --- | --- |
 | Klasik | Standart |
-| Genel Amaçlı  |Standart; V1 ve V2 desteklenir. Sık ve seyrek erişimli katmanları desteklenir. |
-| BLOB Depolama hesabı | |
+| Genel Amaçlı  |Stand V1 ve v2 desteklenir. Hem sık hem de Cool katmanları desteklenir. |
+| BLOB depolama hesabı | |
 
 >[!NOTE]
-> Azure Data Lake depolama Gen 2 hesapları desteklenmez.
+> Azure Data Lake Storage Gen 2 hesapları desteklenmez.
 
 
 ## <a name="supported-storage-types-for-upload"></a>Karşıya yükleme için desteklenen depolama türleri
 
-Data Box Disk kullanarak Azure'a karşıya için desteklenen depolama türlerinin bir listesi aşağıda verilmiştir.
+Data Box Disk kullanılarak Azure 'a yüklenmek üzere desteklenen depolama türlerinin bir listesi aşağıda verilmiştir.
 
 | **Dosya biçimi** | **Notlar** |
 | --- | --- |
-| Azure blok blobu | |
-| Azure sayfa blobu  | |
+| Azure Blok Blobu | |
+| Azure Sayfa Blobu  | |
 | Azure Dosyaları  | |
 | Yönetilen Diskler | |
 
 
 ## <a name="next-step"></a>Sonraki adım
 
-* [Azure Data Box Disk dağıtma](data-box-disk-deploy-ordered.md)
+* [Azure Data Box Disk dağıtın](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

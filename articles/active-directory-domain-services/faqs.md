@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b079d311e357f4dfb94e55fbca3cafdec198ade9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124671"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171897"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Sık Sorulan Sorular (SSS)
 Bu sayfa Azure Active Directory Domain Services hakkında sık sorulan soruları yanıtlar. Güncelleştirmeleri yeniden denetlemeye devam edin.
@@ -79,7 +79,7 @@ Hayır. Yönetilen etki alanında yönetim ayrıcalıkları verilmemiş. Etki al
 Hayır. Grup üyelikleri, Azure AD Domain Services tarafından hizmet verilen etki alanlarında değiştirilemez. Aynı Kullanıcı öznitelikleri için de geçerlidir. Ancak, Azure AD 'de ya da şirket içi etki alanında Grup üyeliklerini veya Kullanıcı özniteliklerini değiştirebilirsiniz. Bu değişiklikler Azure AD Domain Services ile otomatik olarak eşitlenir.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD dizinimde, yönetilen etki alanım 'da görünür hale gelen değişiklikler için ne kadar sürer?
-Azure AD Kullanıcı arabirimi veya PowerShell kullanılarak Azure AD dizininizde yapılan değişiklikler, yönetilen etki alanınız ile eşitlenir. Bu eşitleme işlemi arka planda çalışır. İlk eşitleme tamamlandıktan sonra, Azure AD 'de yönetilen etki alanına yansıtılmalıdır ve bu değişiklikler genellikle yaklaşık 20 dakika sürer.
+Azure AD Kullanıcı arabirimi veya PowerShell kullanılarak Azure AD dizininizde yapılan değişiklikler, yönetilen etki alanınız ile otomatik olarak eşitlenir. Bu eşitleme işlemi arka planda çalışır. Bu eşitlemenin tüm nesne değişikliklerini tamamlaması için tanımlı bir zaman aralığı yok.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services tarafından belirtilen yönetilen etki alanının şemasını genişletebilir miyim?
 Hayır. Şema, yönetilen etki alanı için Microsoft tarafından yönetilir. Şema uzantıları Azure AD Domain Services tarafından desteklenmez.

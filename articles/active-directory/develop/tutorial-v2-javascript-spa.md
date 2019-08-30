@@ -1,6 +1,6 @@
 ---
 title: Azure AD v 2.0 JavaScript tek sayfalı uygulama (SPA) destekli kurulum | Microsoft Docs
-description: JavaScript SPA uygulamalarının Azure Active Directory v 2.0 uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilen
+description: JavaScript SPA uygulamaları, Azure Active Directory v 2.0 uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilir
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -16,25 +16,28 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cee0884ef20ef9cfd63d81d6f223705d34c65ccb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 2c11fc43098346d8afa9557f0de9df1c0a739bcc
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511809"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172014"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
-Bu kılavuzda, bir JavaScript tek sayfalı uygulamasının (SPA) kişisel, iş ve okul hesaplarında nasıl oturum açıp Microsoft Identity platform uç noktasından erişim belirteçleri gerektiren API 'Leri veya diğer API 'Leri nasıl Microsoft Graph arayacağı gösterilmektedir.
+Bu kılavuzda bir JavaScript tek sayfalı uygulamanın (SPA) nasıl kullanılabileceğini gösterilmektedir:
+- Kişisel hesapların yanı sıra iş ve okul hesaplarında oturum açın 
+- Erişim belirteci alma
+- *Microsoft Identity platform uç noktasından* erişim belirteçleri GEREKTIREN Microsoft Graph API 'sini veya diğer API 'leri çağırma
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 
-![Bu öğreticiler tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
 <!--start-collapse-->
-### <a name="more-information"></a>Daha Fazla Bilgi
+### <a name="more-information"></a>Daha fazla bilgi
 
-Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryo için, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Belirteç alma ve yenileme işlemleri Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından gerçekleştirilir.
+Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Belirteç alma ve yenileme işlemleri Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından gerçekleştirilir.
 
 <!--end-collapse-->
 
@@ -48,8 +51,8 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 |[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript önizlemesi için Microsoft kimlik doğrulama kitaplığı|
 
 > [!NOTE]
-> *msal. js* , kişisel, okul ve iş hesaplarının oturum açmasını ve belirteçleri almasını sağlayan *Microsoft Identity platform uç noktasını* hedefler. *Microsoft Identity platform uç noktasında* [bazı sınırlamalar](azure-ad-endpoint-comparison.md#limitations)vardır.
-> V 1.0 ve v 2.0 uç noktaları arasındaki farkları anlamak için [uç nokta karşılaştırma kılavuzunu](azure-ad-endpoint-comparison.md)okuyun.
+> *Msal. js* , kişisel hesapların ve okulun ve iş hesaplarının oturum açmasını ve belirteçleri almasını sağlayan Microsoft Identity platform uç noktasını hedefler. Microsoft Identity platform uç noktasında [bazı sınırlamalar](azure-ad-endpoint-comparison.md#limitations)vardır.
+> V 1.0 ve v 2.0 uç noktaları arasındaki farkları anlamak için [uç nokta karşılaştırma kılavuzuna](azure-ad-endpoint-comparison.md)bakın.
 
 <!--end-collapse-->
 
@@ -57,11 +60,11 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 
 > Bunun yerine bu örneğin projesini indirmeyi tercih et mi? Aşağıdakilerden birini yapın:
 > 
-> - Projeyi Node. js gibi yerel bir Web sunucusuyla çalıştırmak için [Proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+> - Projeyi Node. js gibi yerel bir Web sunucusu kullanarak çalıştırmak için [Proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
-> - Seçim Projeyi IIS sunucusuyla çalıştırmak için [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+> - Seçim Projeyi Microsoft Internet Information Services (IIS) sunucusunu kullanarak çalıştırmak için, [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 >
-> Daha sonra kod örneğini yürütmeden önce yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
+> Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -74,18 +77,17 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 ## <a name="create-your-project"></a>Projenizi oluşturma
 
 > ### <a name="option-1-nodejs-or-other-web-servers"></a>Seçenek 1: Node. js veya diğer Web sunucuları
-> [Node. js](https://nodejs.org/en/download/)' yi yüklediğinizden emin olun ve ardından aşağıdakileri yapın:
-> - Uygulamanızı barındırmak için bir klasör oluşturun.
+> [Node. js](https://nodejs.org/en/download/) ' nin yüklü olduğundan emin olun ve ardından uygulamanızı barındırmak için bir klasör oluşturun.
 >
 > ### <a name="option-2-visual-studio"></a>Seçenek 2: Visual Studio
-> Visual Studio kullanıyorsanız ve yeni bir proje oluşturuyorsanız, şunları yapın:
+> Visual Studio kullanıyorsanız ve yeni bir proje oluşturuyorsanız, şu adımları izleyin:
 > 1. Visual Studio'da **dosya** > **yeni** > **proje**.
 > 1. **Visual C#\Web** bölümünde **ASP.NET Web Uygulaması (.NET Framework)** girişini seçin.
 > 1. Uygulamanız için bir ad girin ve ardından **Tamam**' ı seçin.
 > 1. **Yeni ASP.NET Web uygulaması**altında **boş**' ı seçin.
 
 ## <a name="create-the-spa-ui"></a>SPA Kullanıcı arabirimini oluşturma
-1. JavaScript SPA 'niz için bir *index. html* dosyası oluşturun. Visual Studio kullanıyorsanız, projeyi (proje kök klasörü) seçin, sağ tıklayın ve**Yeni öğe** >  **Ekle** > **HTML sayfasını**seçin ve dosya *index. html*olarak adlandırın.
+1. JavaScript SPA 'niz için bir *index. html* dosyası oluşturun. Visual Studio kullanıyorsanız, projeyi (proje kök klasörü) seçin. Sağ tıklayın ve**Yeni öğe** > **HTML sayfası** **Ekle** > ' yi seçin ve dosya *index. html*olarak adlandırın.
 
 1. *İndex. html* dosyasında aşağıdaki kodu ekleyin:
 
@@ -114,7 +116,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Kullanıcı oturumu açmak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanın
 
-1. Aşağıdaki kodu `index.html` `<script></script>` etiketleri içinde dosyanıza ekleyin:
+Aşağıdaki kodu `index.html` `<script></script>` etiketleri içinde dosyanıza ekleyin:
 
     ```javascript
     var msalConfig = {
@@ -257,36 +259,35 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
     ```
 
 <!--start-collapse-->
-### <a name="more-information"></a>Daha Fazla Bilgi
+### <a name="more-information"></a>Daha fazla bilgi
 
-Bir Kullanıcı ilk kez **oturum aç** düğmesine tıkladıktan sonra, `signIn` yöntemi kullanıcının oturum açmasını çağırır. `loginPopup` Bu yöntem, kullanıcının kimlik bilgilerini sorması ve doğrulamak için *Microsoft Identity platform uç noktasıyla* bir açılan pencere açmaya neden olur. Başarılı bir oturum açma işleminin sonucu olarak, Kullanıcı özgün *Dizin. html* sayfasına yeniden yönlendirilir ve bir belirteç alınır, tarafından `msal.js` işlenir ve belirteçte bulunan bilgiler önbelleğe alınır. Bu belirteç, *kimlik belirteci* olarak bilinir ve Kullanıcı ile ilgili Kullanıcı görünen adı gibi temel bilgileri içerir. Herhangi bir amaçla bu belirteç tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini garantilemek için bu belirtecin arka uç sunucunuz tarafından doğrulanması gerekir.
+Kullanıcı **oturum aç** düğmesini ilk kez seçtikten sonra, `signIn` yöntemi kullanıcının oturum açmasını çağırır. `loginPopup` Bu yöntem, kullanıcının kimlik bilgilerini sormak ve doğrulamak için *Microsoft Identity platform uç noktasıyla* bir açılır pencere açar. Başarılı bir oturum açma işleminden sonra, Kullanıcı özgün *index. html* sayfasına yeniden yönlendirilir. Bir belirteç alınır, tarafından `msal.js`işlenir ve belirteçte bulunan bilgiler önbelleğe alınır. Bu belirteç, *kimlik belirteci* olarak bilinir ve Kullanıcı ile ilgili Kullanıcı görünen adı gibi temel bilgileri içerir. Herhangi bir amaçla bu belirteç tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini garantilemek için bu belirtecin arka uç sunucunuz tarafından doğrulanması gerekir.
 
-Bu kılavuz tarafından oluşturulan Spa, Kullanıcı `acquireTokenSilent` profili bilgileri için `acquireTokenPopup` Microsoft Graph API 'sini sorgulamak üzere kullanılan bir *erişim belirteci* almak için ve/veya çağırır. KIMLIK belirtecini doğrulayan bir örneğe ihtiyacınız varsa, GitHub 'da [Şu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-DotNet-WebApi-v2 örnek") örnek uygulamasına göz atın; örnek, belirteç doğrulaması için bir ASP.NET Web API 'si kullanır.
+Bu kılavuz tarafından oluşturulan Spa, Kullanıcı `acquireTokenSilent` profili bilgileri için `acquireTokenPopup` Microsoft Graph API 'sini sorgulamak üzere kullanılan bir *erişim belirteci* almak için ve/veya çağırır. KIMLIK belirtecini doğrulayan bir örneğe ihtiyacınız varsa GitHub 'da [Bu](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-DotNet-WebApi-v2 örnek") örnek uygulamasına göz atın. Örnek, belirteç doğrulaması için bir ASP.NET Web API 'SI kullanır.
 
 #### <a name="getting-a-user-token-interactively"></a>Kullanıcı belirtecini etkileşimli olarak alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemek istemezsiniz. bu nedenle, belirteçleri almak için en fazla *Acquiretokensilent* kullanılmalıdır. Kullanıcıların Microsoft Identity platform uç noktası ile etkileşime geçmesini zorunlu kılmak için bazı durumlar vardır. bazı örnekler şunlardır:
+İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örneklere şunlar dahildir:
 
-- Parolanın süresi dolduğundan kullanıcıların kimlik bilgilerini yeniden girmesi gerektiğinde
-- Uygulamanız kullanıcının onaylaması gereken bir kaynağa erişim istediğinde
-- İki faktörlü kimlik doğrulama gerektiğinde
+- Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
+- Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
+- İki öğeli kimlik doğrulaması gereklidir.
 
-*Acquiretokenpopup* ' ı çağırmak sonuçları, kullanıcıların kimlik bilgilerini onaylayarak kullanıcılara etkileşimde bulunmak gereken bir açılan pencere penceresinde (veya *Acquiretokenredirect* sonuçları, kullanıcıları Microsoft Identity platform uç noktasına yönlendirirken) gerekli kaynağa onay veya iki öğeli kimlik doğrulamayı tamamlama.
+*Acquiretokenpopup* çağrısı, bir açılır pencere açar (veya *Acquiretokenredirect* kullanıcıları Microsoft Identity platform uç noktasına yönlendirir). Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
 
 #### <a name="getting-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-Yöntemi `acquireTokenSilent` , Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. ( `loginPopup` Veya `loginRedirect`) ilk kez yürütüldükten sonra, `acquireTokenSilent` sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için kullanılan yöntem, istek veya yenileme belirteçleri sessizce yapılır.
-`acquireTokenSilent`Bazı durumlarda başarısız olabilir; Örneğin, kullanıcının parolasının süresi sona erer. Uygulamanız bu özel durumu iki şekilde işleyebilir:
+Yöntemi `acquireTokenSilent` , Kullanıcı etkileşimi olmadan belirteç alımı ve yenilemeyi işler. ( `loginPopup` Veya `loginRedirect`) ilk kez yürütüldükten sonra, `acquireTokenSilent` sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. (Belirteçleri istek veya yenileme çağrısı sessizce yapılır.) `acquireTokenSilent` bazı durumlarda başarısız olabilir. Örneğin, kullanıcının parolasının kullanım süreniz olabilir. Uygulamanız bu özel durumu iki şekilde işleyebilir:
 
-1. Hemen öğesine `acquireTokenPopup` çağrı yapın ve bu, kullanıcıdan oturum açmasını ister. Bu model yaygın olarak, uygulamada kullanıcının kullanabileceği kimliği doğrulanmamış içerik olmayan çevrimiçi uygulamalarda kullanılır. Bu Kılavuzlu kurulum tarafından oluşturulan örnek bu düzeni kullanır.
+1. Hemen için `acquireTokenPopup` bir çağrı yapın, bu da Kullanıcı oturum açma istemi tetikler. Bu model yaygın olarak, uygulamada kullanıcının kullanabileceği kimliği doğrulanmamış içerik olmayan çevrimiçi uygulamalarda kullanılır. Bu Kılavuzlu kurulum tarafından oluşturulan örnek bu düzeni kullanır.
 
-2. Uygulamalar, kullanıcıya etkileşimli bir oturum açma gerektiğini belirten bir görsel gösterge de oluşturabilir, böylece Kullanıcı, oturum açmak için doğru zamanı seçebilir veya uygulama daha sonra yeniden deneyebilir `acquireTokenSilent` . Bu, genellikle kullanıcı uygulamanın kesintiye uğramadan diğer işlevlerini kullanabilmesi durumunda kullanılır. Örneğin, uygulamada kimliği doğrulanmamış içerik mevcuttur. Bu durumda, Kullanıcı, korunan kaynağa erişmek veya güncel olmayan bilgileri yenilemek için ne zaman oturum açmak istediğine karar verebilir.
+2. Uygulamalar, kullanıcıya etkileşimli bir oturum açma gerektiğini belirten bir görsel gösterge de oluşturabilir, böylece Kullanıcı, oturum açmak için doğru zamanı seçebilir veya uygulama daha sonra yeniden deneyebilir `acquireTokenSilent` . Bu, genellikle kullanıcı uygulamanın kesintiye uğramadan diğer işlevlerini kullanabilmesi durumunda kullanılır. Örneğin, uygulamada kimliği doğrulanmamış içerik bulunabilir. Bu durumda, Kullanıcı, korunan kaynağa erişmek veya güncel olmayan bilgileri yenilemek için ne zaman oturum açmak istediğinize karar verebilir.
 
 > [!NOTE]
-> Bu hızlı başlangıç, `loginRedirect` Internet `acquireTokenRedirect` Explorer tarayıcısı tarafından açılan pencerelerin işlenmesiyle ilgili bilinen bir [sorundan](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) dolayı, kullanılan tarayıcı Internet Explorer olduğunda ve yöntemlerini kullanır.
+> Bu hızlı başlangıç, `loginRedirect` Internet `acquireTokenRedirect` Explorer kullanılan tarayıcı olduğunda ve yöntemlerini kullanır. Internet Explorer 'ın açılır pencereleri işleme yöntemiyle ilgili [bilinen bir sorun](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) nedeniyle bu uygulamayı izliyoruz.
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Yeni Edindiğiniz belirteci kullanarak Microsoft Graph API 'sini çağırın
+## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Yeni aldığınız belirteci kullanarak Microsoft Graph API 'sini çağırın
 
 Aşağıdaki kodu `index.html` `<script></script>` etiketleri içinde dosyanıza ekleyin:
 
@@ -304,9 +305,9 @@ function callMSGraph(theUrl, accessToken, callback) {
 ```
 <!--start-collapse-->
 
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Korunan bir API 'ye karşı REST çağrısı yapma hakkında daha fazla bilgi
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Korunan bir API 'ye karşı REST çağrısı yapma hakkında daha fazla bilgi
 
-Bu kılavuz tarafından oluşturulan örnek uygulamada, `callMSGraph()` yöntemi, bir belirteç gerektiren korumalı bir kaynağa karşı http `GET` isteği oluşturmak için kullanılır ve sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine*ekler. Bu kılavuz tarafından oluşturulan örnek uygulama için kaynak, kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API *Me* uç noktasıdır.
+Bu kılavuz tarafından oluşturulan örnek uygulamada, `callMSGraph()` yöntemi, bir belirteç gerektiren korumalı bir kaynağa karşı http `GET` isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine*ekler. Bu kılavuz tarafından oluşturulan örnek uygulama için, kaynak, kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API *Me* uç noktasıdır.
 
 <!--end-collapse-->
 
@@ -327,22 +328,22 @@ Aşağıdaki kodu `index.html` `<script></script>` etiketleri içinde dosyanıza
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
+1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve ardından değeri Web sunucunuza dayalı uygulama URL 'si olarak ayarlayın. 
+1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listeden **Web** platformunu seçin ve ardından değeri Web sunucunuza bağlı olan uygulama URL 'si olarak ayarlayın.
 
-   Visual Studio ve Node. js ' de yeniden yönlendirme URL 'sini ayarlama ve alma hakkında daha fazla bilgi için sonraki iki bölüme bakın.
+   Node. js ve Visual Studio için yeniden yönlendirme URL 'sini ayarlama ve alma hakkında daha fazla bilgi için, aşağıdaki "Node. js için yeniden yönlendirme URL 'SI ayarlama" bölümüne bakın ve [Visual Studio için bir yeniden yönlendirme URL 'Si ayarlayın](#set-a-redirect-url-for-visual-studio).
 
 1. **Kaydol**’u seçin.
 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
-1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir, çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
+1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
 1. **Kaydet**’i seçin.
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>Node. js için yeniden yönlendirme URL 'SI ayarlama
-> Node. js için, *Server. js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici, başvuru için 30662 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka bir bağlantı noktasını da kullanabilirsiniz. 
+> Node. js için, *Server. js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici 30662 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka herhangi bir bağlantı noktasını kullanabilirsiniz.
 >
 > Uygulama kayıt bilgilerinde bir yeniden yönlendirme URL 'SI ayarlamak için, **uygulama kayıt** bölmesine dönün ve aşağıdakilerden birini yapın:
 >
@@ -350,15 +351,14 @@ Aşağıdaki kodu `index.html` `<script></script>` etiketleri içinde dosyanıza
 > - Özel bir TCP bağlantı noktası kullanıyorsanız kullanın *`http://localhost:<port>/`*  *\<(bağlantı noktası >* özel TCP bağlantı noktası numarasıdır).
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>Visual Studio için yeniden yönlendirme URL 'SI ayarlama
-> Visual Studio için yeniden yönlendirme URL 'sini almak için aşağıdakileri yapın:
-> 1. İçinde **Çözüm Gezgini**, projeyi seçin.
+> Visual Studio için yeniden yönlendirme URL 'sini almak için aşağıdaki adımları izleyin:
+> 1. Çözüm Gezgini'nde projeyi seçin.
 >
->    **Özellikler** penceresi açılır. Açık değilse **F4**tuşuna basın.
+>    **Özellikler** penceresi açılır. Değilse, F4 tuşuna basın.
 >
 >    ![JavaScriptSPA projesi Özellikler penceresi](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)
 >
 > 1. **URL** değerini kopyalayın.
- 
 > 1. **Uygulama kayıt** bölmesine dönün ve kopyalanmış değeri **yeniden yönlendirme URL 'si**olarak yapıştırın.
 
 #### <a name="configure-your-javascript-spa"></a>JavaScript SPA 'nizi yapılandırma
@@ -403,7 +403,7 @@ Visual Studio kullanmıyorsanız, Web sunucunuzun başlatıldığından emin olu
 
 ### <a name="test-with-visual-studio"></a>Visual Studio ile test
 
-Visual Studio kullanıyorsanız, proje çözümünü seçin ve ardından F5 ' i seçerek projenizi çalıştırın. Tarayıcı, http://<span></span>localhost: {Port} konumu olarak açılır ve **oturum aç** düğmesi görünür olmalıdır.
+Visual Studio kullanıyorsanız, proje çözümünü seçin ve F5 tuşuna basarak projenizi çalıştırın. Tarayıcı, http://<span></span>localhost: {Port} konumu olarak açılır ve **oturum aç** düğmesi görünür olmalıdır.
 
 ## <a name="test-your-application"></a>Uygulamanızı test edin
 
@@ -419,21 +419,21 @@ Uygulamanızda ilk kez oturum açtığınızda profilinize erişim vermeniz ve o
 
 ### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüle
 
-Oturum açtıktan sonra, Kullanıcı profili bilgileriniz sayfada görüntülenen Microsoft Graph API yanıtında döndürülür.
+Oturum açtıktan sonra, Kullanıcı profili bilgileriniz görüntülenen Microsoft Graph API yanıtında döndürülür:
 
 ![Microsoft Graph API çağrısının sonuçları](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 
-Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Read* kapsamını gerektirir. Bu kapsam, kayıt portalı 'nda kayıtlı her uygulamada varsayılan olarak otomatik olarak eklenir. Microsoft Graph için diğer API 'Ler ve arka uç sunucunuza yönelik özel API 'Ler için ek kapsamlar gerekebilir. Örneğin, Microsoft Graph API 'SI, kullanıcıların takvimlerini listelemek için *takvimler. Read* Scope 'u gerektirir.
+Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Read* kapsamını gerektirir. Varsayılan olarak, bu kapsam kayıt portalı 'nda kayıtlı her uygulamaya otomatik olarak eklenir. Microsoft Graph için diğer API 'Ler ve arka uç sunucunuza yönelik özel API 'Ler için ek kapsamlar gerekebilir. Örneğin, Microsoft Graph API 'SI, kullanıcının takvimlerini listelemek için *takvimlerin. Read* kapsamını gerektirir.
 
 Kullanıcının takvimlerine bir uygulama bağlamında erişmek için, *takvimler.* uygulama kayıt bilgilerine, temsilci olarak oku iznini ekleyin. Ardından, *takvimlere. Read* kapsamını `acquireTokenSilent` çağrıya ekleyin.
 
 >[!NOTE]
 >Kapsam sayısını artırdıkça kullanıcıdan ek Yarışması istenebilir.
 
-Bir arka uç API 'SI bir kapsam gerektirmiyorsa (önerilmez), belirteçleri elde etmek için aramalarındaki kapsam olarak *ClientID* 'yi kullanabilirsiniz.
+Bir arka uç API 'SI bir kapsam gerektirmiyorsa (önerilmez), belirteçleri almak için çağrılarındaki kapsam olarak *ClientID* 'yi kullanabilirsiniz.
 
 <!--end-collapse-->
 

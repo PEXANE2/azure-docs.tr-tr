@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 32628296c5d43a11371b486abc426da2e243d0a7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: HT
+ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138220"
+ms.locfileid: "70163723"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Market kullanarak ana bilgisayar havuzu oluşturma
 
@@ -26,7 +26,11 @@ Bu öğreticide, bir Microsoft Azure Market teklifi kullanarak Windows sanal mas
 > * VM 'Leri Active Directory etki alanına katın.
 > * VM 'Leri Windows sanal masaüstü ile kaydedin.
 
-Başlamadan önce, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+Başlamadan önce, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) . Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

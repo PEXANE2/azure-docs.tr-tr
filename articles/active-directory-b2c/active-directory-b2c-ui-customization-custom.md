@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927305"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171910"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme
 
@@ -65,17 +65,16 @@ Bu HTML içeriğini blob depolamada barındırmak için aşağıdakileri yapın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Hub** menüsünde, **Yeni** > **depolama** > **depolama hesabı**' nı seçin.
-3. Depolama hesabınız için benzersiz bir **ad** girin.
-4. **Dağıtım modeli** **Kaynak Yöneticisi**kalabilirler.
-5. **Hesap türünü** **BLOB depolama alanı**olarak değiştirin.
-6. **Performans** **Standart**kalabilirler.
-7. **Çoğaltma** , **RA-GRS**kalabilir.
-8. **Erişim katmanı** , **sık**kalabilir.
-9. **Depolama hizmeti şifrelemesi** **devre dışı**kalabilir.
-10. Depolama hesabınız için bir **abonelik** seçin.
-11. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
-12. Depolama hesabınız için **coğrafi konumu** seçin.
-13. Depolama hesabını oluşturmak için **Oluştur**’a tıklayın.  
+3. Depolama hesabınız için bir **abonelik** seçin.
+4. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
+5. Depolama hesabınız için benzersiz bir **ad** girin.
+6. Depolama hesabınız için **coğrafi konumu** seçin. 
+7. **Dağıtım modeli** **Kaynak Yöneticisi**kalabilirler.
+8. **Performans** **Standart**kalabilirler.
+9. **Hesap türünü** **BLOB depolama alanı**olarak değiştirin.
+10. **Çoğaltma** , **RA-GRS**kalabilir.
+11. **Erişim katmanı** , **sık**kalabilir. 
+12. Depolama hesabı oluşturmak için **gözden geçir + oluştur** ' a tıklayın.  
     Dağıtım tamamlandıktan sonra, **depolama hesabı** dikey penceresi otomatik olarak açılır.
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma

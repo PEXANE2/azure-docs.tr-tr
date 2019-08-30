@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: c804dd7b73ea4a51c02c8b342a4ac60d992ec7c5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310686"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164529"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry desteklenen içerik biçimleri
 
@@ -29,11 +29,17 @@ Aşağıdaki Docker kapsayıcı görüntü biçimleri desteklenir:
 
 ## <a name="oci-images"></a>OCı görüntüleri
 
-Azure Container Registry, [Açık kapsayıcı girişimi (OCI) görüntü biçimi belirtimini](https://github.com/opencontainers/image-spec/blob/master/spec.md)karşılayan görüntüleri de destekler. Paketleme biçimleri, [Singularımage Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/)içerir.
+Azure Container Registry, [Açık kapsayıcı girişimi (OCI) görüntü biçimi belirtimini](https://github.com/opencontainers/image-spec/blob/master/spec.md)karşılayan görüntüleri destekler. Paketleme biçimleri, [Singularımage Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/)içerir.
+
+## <a name="oci-artifacts"></a>OCı yapıtları
+
+Azure Container Registry, kapsayıcı görüntülerini ve diğer içerik türlerini (yapıtları) depolamak, paylaşmak, güvenli hale getirmek ve dağıtmak için satıcı tarafsız, buluttan bağımsız bir belirtim olan [OCI dağıtım belirtimini](https://github.com/opencontainers/distribution-spec)destekler. Belirtim, bir kayıt defterinin kapsayıcı görüntülerine ek olarak çok çeşitli yapıtları depolamasına izin verir. Yapıtları göndermek ve çekmek için yapıtı uygun araçları kullanın. Bir örnek için bkz. [Azure Container Registry kullanarak BIR OCI yapıtı gönderme ve çekme](container-registry-oci-artifacts.md).
+
+OCı yapıtları hakkında daha fazla bilgi edinmek için bkz. [depolama (ORAS) deposu olarak OCI kayıt defteri](https://github.com/deislabs/oras) ve GitHub 'Daki [OCI yapıtları](https://github.com/opencontainers/artifacts) deposu.
 
 ## <a name="helm-charts"></a>Helb grafikleri
 
-Azure Container Registry, Kubernetes için uygulamaları hızlı bir şekilde yönetmek ve dağıtmak üzere kullanılan bir paketleme biçimi olan [helk grafikleri](https://helm.sh/)için depolar barındırabilir. [Held Client](https://docs.helm.sh/using_helm/#installing-helm) Version 2.11.0 veya üzeri desteklenir.
+Azure Container Registry, Kubernetes için uygulamaları hızlı bir şekilde yönetmek ve dağıtmak üzere kullanılan bir paketleme biçimi olan [helk grafikleri](https://helm.sh/)için depolar barındırabilir. [Held Client](https://docs.helm.sh/using_helm/#installing-helm) sürüm 2 (2.11.0 veya üzeri) desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

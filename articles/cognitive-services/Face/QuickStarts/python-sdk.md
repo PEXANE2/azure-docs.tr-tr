@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707372"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164777"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Hızlı Başlangıç: Python için yüz istemci kitaplığı
 
@@ -71,7 +71,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 Aşağıdaki sınıflar ve arabirimler, yüz Python SDK 'sının önemli özelliklerinden bazılarını işler.
 
-|Ad|Açıklama|
+|Name|Açıklama|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
 |[Çok yönlü Işlemler](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
@@ -135,7 +135,7 @@ Aşağıdaki kod, üç farklı **kişi** nesnesi Ile bir **persongroup** oluştu
 
 ### <a name="create-persongroup"></a>Kişilik grubu oluştur
 
-Bu senaryoya geçmek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Bu senaryoda ilerlemek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
 Bu görüntü grubu üç farklı kişiye karşılık gelen üç yüz görüntüsü kümesini içerir. Kod, üç **kişi** nesnesini tanımlar ve bunları, `woman` `man`ve `child`ile başlayan resim dosyalarıyla ilişkilendirir.
 
@@ -161,7 +161,7 @@ Yüzleri atadıktan sonra, **kişi** nesnelerinin her biriyle ilişkili görsel 
 
 ## <a name="identify-a-face"></a>Yüz tanıma
 
-Aşağıdaki kod, birden çok yüzü olan bir görüntü alır ve görüntüdeki her kişinin kimliğini bulmak için arama yapar. Algılanan her bir yüzü, her birinin kendileriyle ilişkili birçok yüzü bulunan farklı **kişi** nesnelerinin bir veritabanı olan bir **persongroup**ile karşılaştırır. 
+Aşağıdaki kod, birden çok yüzü olan bir görüntü alır ve görüntüdeki her kişinin kimliğini bulmak için arama yapar. Algılanan her yüzü, yüz özellikleri bilinen farklı **kişi** nesnelerinin bir veritabanı olan bir **persongroup**ile karşılaştırır.
 
 > [!IMPORTANT]
 > Bu örneği çalıştırmak için, önce [bir kişi grubu oluştur ve eğitme](#create-and-train-a-person-group)bölümünde kodu çalıştırmanız gerekir.
@@ -188,7 +188,7 @@ Bu örnekte, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-
 
 İlk olarak, yüz kaynağına sahip ikinci bir Azure aboneliğine sahip olmanız gerekir; Bunu, [Kurulum](#setting-up) bölümündeki adımları izleyerek yapabilirsiniz. 
 
-Sonra, betiğinizin en üstüne yakın olan aşağıdaki değişkenleri oluşturun. Ayrıca, Azure hesabınızın abonelik KIMLIĞI için de yeni ortam değişkenleri ve yeni (hedef) hesabınızın anahtar ve abonelik KIMLIĞI için de oluşturmanız gerekir. 
+Sonra, betiğinizin en üstüne yakın olan aşağıdaki değişkenleri oluşturun. Ayrıca, Azure hesabınızın abonelik KIMLIĞI için yeni ortam değişkenleri ve yeni (hedef) hesabınızın anahtar, uç noktası ve abonelik KIMLIĞI için de oluşturmanız gerekir. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 

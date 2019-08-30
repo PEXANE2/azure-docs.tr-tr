@@ -4,15 +4,15 @@ description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri eklene
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012070"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165037"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Müşterinin aboneliğinin ekleme için kayıtlı olduğundan emin olun
-
-Her aboneliğin, **Microsoft. ManagedServices** kaynak sağlayıcısını el ile kaydederek ekleme için yetkilendirilmiş olması gerekir. Müşteri, [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md)bölümünde özetlenen adımları izleyerek bir abonelik kaydedebilir.
-
-Müşteri, aboneliğin ekleme için aşağıdaki yollarla hazırlandığından emin olabilir.
-
-### <a name="azure-portal"></a>Azure portal
-
-1. Azure portal aboneliği seçin.
-1. **Kaynak sağlayıcıları**’nı seçin.
-1. **Microsoft. ManagedServices** 'ın **kayıtlı**olarak görüntülendiğini doğrulayın.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Bu, aşağıdakine benzer sonuçlar döndürmelidir:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Bu, aşağıdakine benzer sonuçlar döndürmelidir:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Burada açıklanan işlemi kullanarak abonelik (veya bir abonelik içindeki bir veya daha fazla kaynak grubu) ekleme sırasında, **Microsoft. ManagedServices** kaynak sağlayıcısı bu abonelik için kaydedilir.
 
 ## <a name="define-roles-and-permissions"></a>Rolleri ve izinleri tanımlama
 
@@ -129,8 +74,6 @@ Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı grupları k
 > Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip ve [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) iznine sahip yerleşik roller hariç Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi Yöneticisi yerleşik rolü, aşağıda açıklandığı gibi sınırlı kullanım için desteklenir. Özel roller ve [Klasik abonelik yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) de desteklenmez.
 
 Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz her Kullanıcı, Kullanıcı grubu veya hizmet sorumlusu için KIMLIK değerlerini bilmeniz gerekir. Ayrıca, atamak istediğiniz her bir yerleşik rol için rol tanımı KIMLIĞI gerekir. Henüz yoksa, bunları aşağıdaki yollarla alabilirsiniz.
-
-
 
 ### <a name="powershell"></a>PowerShell
 

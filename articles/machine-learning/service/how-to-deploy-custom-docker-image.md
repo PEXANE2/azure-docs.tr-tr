@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971513"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183565"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 
@@ -23,7 +23,7 @@ Eğitim modellerini Azure Machine Learning hizmeti ile dağıttığınızda öze
 
 Eğitilen bir modeli bir Web hizmetine veya IoT Edge cihaza dağıttığınızda, gelen istekleri işlemek için bir Web sunucusu içeren bir paket oluşturulur.
 
-Azure Machine Learning hizmeti, bir tane oluşturma konusunda endişelenmenize gerek kalmaması için varsayılan bir Docker temel görüntüsü sağlar. Ayrıca, _temel görüntü_olarak oluşturduğunuz özel bir temel görüntü de kullanabilirsiniz. 
+Azure Machine Learning hizmeti, bir tane oluşturma konusunda endişelenmenize gerek kalmaması için varsayılan bir Docker temel görüntüsü sağlar. Ayrıca, belirli bir temel görüntü seçmek için Azure Machine Learning hizmet __ortamlarını__ kullanabilir veya sağladığınız özel bir tane kullanabilirsiniz.
 
 Bir temel görüntü, bir dağıtım için görüntü oluşturulduğunda başlangıç noktası olarak kullanılır. Temel işletim sistemi ve bileşenleri sağlar. Dağıtım işlemi daha sonra modelinize, Conda ortamı ve diğer varlıklar gibi ek bileşenleri, dağıtılmadan önce görüntüye ekler.
 
@@ -193,6 +193,8 @@ Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şeki
 > [!IMPORTANT]
 > CUDA veya TensorRT kullanan Microsoft görüntülerinin yalnızca Microsoft Azure hizmetlerinde kullanılması gerekir.
 
+Daha fazla bilgi için bkz. [Azure Machine Learning hizmet kapsayıcıları](https://github.com/Azure/AzureML-Containers).
+
 > [!TIP]
 >__Modelinize Azure Machine Learning işlem üzerinde eğitim varsa__, __sürüm 1.0.22 veya__ Azure Machine Learning SDK 'sının bir üstünü kullanarak eğitim sırasında bir görüntü oluşturulur. Bu görüntünün adını saptamak için kullanın `run.properties["AzureML.DerivedImageName"]`. Aşağıdaki örnek, bu görüntünün nasıl kullanılacağını gösterir:
 >
@@ -203,29 +205,50 @@ Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şeki
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile görüntü kullanma
 
-Özel bir görüntü kullanmak için, `base_image` [çıkarım yapılandırma nesnesinin](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) özelliğini görüntünün adresine ayarlayın:
+**Çalışma alanınızın Azure Container Registry**depolanan bir görüntüyü veya genel olarak **erişilebilen bir kapsayıcı kayıt defterini**kullanmak için aşağıdaki [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) özniteliklerini ayarlayın:
+
++ `docker.enabled=True`
++ `docker.base_image`: Görüntünün kayıt defterine ve yoluna ayarlanır.
 
 ```python
-# use an image from a registry named 'myregistry'
-inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
+from azureml.core import Environment
+# Create the environment
+myenv = Environment(name="myenv")
+# Enable Docker and reference an image
+myenv.docker.enabled = True
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Bu biçim, çalışma alanınız ve genel olarak erişilebilen kapsayıcı kayıt defterleri için Azure Container Registry depolanan her iki görüntü için de geçerlidir. Örneğin, aşağıdaki kod Microsoft tarafından sunulan varsayılan bir görüntü kullanır:
+Çalışma alanınızda olmayan __özel bir kapsayıcı kayıt defterinden__ bir görüntü kullanmak için, deponun adresini ve Kullanıcı adını ve `docker.base_image_registry` parolayı belirtmek için öğesini kullanmanız gerekir:
 
 ```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+# Set the container registry information
+myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
+myenv.docker.base_image_repository.username = "username"
+myenv.docker.base_image_repository.password = "password"
 ```
 
-Çalışma alanınızda olmayan __özel bir kapsayıcı kayıt defterinden__ bir görüntü kullanmak için, deponun adresini ve Kullanıcı adını ve parolayı belirtmeniz gerekir:
+Ortamı tanımladıktan sonra, model ve Web hizmeti 'nin çalışacağı çıkarım ortamını tanımlamak için bunu bir [ınısenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) nesnesiyle birlikte kullanın.
 
 ```python
-# Use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
+from azureml.core.model import InferenceConfig
+# Use environment in InferenceConfig
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
+
+Bu noktada, dağıtıma devam edebilirsiniz. Örneğin, aşağıdaki kod parçacığı, çıkarım yapılandırması ve özel görüntü kullanarak bir Web hizmetini yerel olarak dağıtır:
+
+```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+Dağıtım hakkında daha fazla bilgi için bkz. [Azure Machine Learning Service ile modelleri dağıtma](how-to-deploy-and-where.md).
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Machine Learning CLı ile görüntü kullanma
 

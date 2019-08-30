@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 94784ee9a72d11e168828f1543cbe62219ac4a74
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a64276de3e535c8b7724927ce2e257542cc9e01a
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097950"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164400"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Dayanıklı İşlevler 2,0 Preview (Azure Işlevleri)
 
@@ -354,7 +354,7 @@ Dayanıklı görev çerçevesi, [Azure depolama](https://github.com/Azure/durabl
     "durableTask": {
       "hubName": <string>,
       "storageProvider": {
-        "emulator": { }
+        "emulator": { "enabled": true }
       }
     }
   }

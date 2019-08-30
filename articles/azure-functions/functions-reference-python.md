@@ -13,30 +13,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 16cf6704096f8c1534777ffb1958d2fa858374db
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615894"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170545"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
-Bu makale, Python kullanarak Azure Işlevleri geliştirmeye giriş niteliğindedir. Aşağıdaki içerik [Azure işlevleri geliştirici kılavuzunu](functions-reference.md)zaten okuduğunuzu varsayar.
+Bu makale, Python kullanarak Azure Işlevleri geliştirmeye giriş niteliğindedir. Aşağıdaki içerik [Azure işlevleri geliştirici kılavuzunu](functions-reference.md)zaten okuduğunuzu varsayar. 
+
+Python 'da tek başına Işlev örnek projeleri için bkz. [Python işlevleri örnekleri](/samples/browse/?products=azure-functions&languages=python). 
 
 ## <a name="programming-model"></a>Programlama modeli
 
-Azure Işlevi, Python betiğinizde girişi işleyen ve çıkış üreten bir durum bilgisiz yöntemi olmalıdır. Varsayılan olarak, çalışma zamanı metodun `main()` `__init__.py` dosyada çağrılan genel bir yöntem olarak uygulanması beklenir.
-
-`scriptFile` *Function. JSON* dosyasında ve `entryPoint` özelliklerini belirterek varsayılan yapılandırmayı değiştirebilirsiniz. Örneğin, aşağıdaki _function. JSON_ , çalışma zamanına Azure işlevinizin giriş noktası `customentry()` olarak _Main.py_ dosyasındaki yöntemini kullanmasını söyler.
-
-```json
-{
-  "scriptFile": "main.py",
-  "entryPoint": "customentry",
-  ...
-}
-```
+Azure Işlevleri, bir işlevin girişi işleyen ve çıkış üreten Python betikinizde durum bilgisiz bir yöntem olmasını bekler. Varsayılan olarak, çalışma zamanı metodun `main()` `__init__.py` dosyada çağrılan genel bir yöntem olarak uygulanması beklenir. Ayrıca, [alternatif bir giriş noktası da belirtebilirsiniz](#alternate-entry-point).
 
 Tetikleyiciler ve bağlamalardan alınan veriler, Function `name` *. JSON* dosyasında tanımlanan özelliği kullanarak Yöntem öznitelikleri aracılığıyla işleve bağlanır. Örneğin, aşağıdaki _function. JSON_ ADLı `req`bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır:
 
@@ -66,7 +58,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-İsteğe bağlı olarak, IntelliSense ve kod düzenleyiciniz tarafından sunulan özelliklerin otomatik olarak tamamlanmasını sağlamak için, öznitelik türlerini ve dönüş türünü, Python türü ek açıklamalarını kullanarak işlevinde da bildirebilirsiniz. 
+Ayrıca öznitelik türlerini ve dönüş türünü, Python türü ek açıklamalarını kullanarak işlevde açıkça bildirebilirsiniz. Bu, birçok Python kod Düzenleyicisi tarafından sunulan IntelliSense ve otomatik tamamlama özelliklerini kullanmanıza yardımcı olur.
 
 ```python
 import azure.functions
@@ -79,9 +71,23 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python) paketinde bulunan Python ek açıklamalarını kullanın.
 
+## <a name="alternate-entry-point"></a>Alternatif giriş noktası
+
+İsteğe bağlı olarak `scriptFile` *function. JSON* dosyasında ve `entryPoint` özelliklerini belirterek bir işlevin varsayılan davranışını değiştirebilirsiniz. Örneğin, aşağıdaki _function. JSON_ , çalışma zamanına Azure işlevinizin giriş noktası `customentry()` olarak _Main.py_ dosyasındaki yöntemini kullanmasını söyler.
+
+```json
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
+
 ## <a name="folder-structure"></a>Klasör yapısı
 
-Python Işlevleri projesi için klasör yapısı aşağıdaki gibi görünür:
+Python Işlevleri projesinin klasör yapısı aşağıdaki örneğe benzer şekilde görünür:
 
 ```
  FunctionApp
@@ -227,12 +233,48 @@ Konsola farklı izleme düzeylerinde yazmanıza izin veren ek günlüğe kaydetm
 
 | Yöntem                 | Açıklama                                |
 | ---------------------- | ------------------------------------------ |
-| açmak. **kritik (_ileti_)**   | Kök günlükçü üzerinde düzeyi KRITIK olan bir ileti yazar.  |
-| açmak. **hata (_ileti_)**   | Kök günlükçü üzerinde düzey hatası olan bir ileti yazar.    |
-| açmak. **uyarı (_ileti_)**    | Kök günlükçü üzerinde düzey uyarısı olan bir ileti yazar.  |
-| açmak. **bilgi (_ileti_)**    | Kök günlükçü üzerinde düzey bılgısıne sahip bir ileti yazar.  |
-| açmak. **Hata Ayıkla (_ileti_)** | Kök günlükçü üzerinde düzey hata ayıklama içeren bir ileti yazar.  |
+| **`critical(_message_)`**   | Kök günlükçü üzerinde düzeyi KRITIK olan bir ileti yazar.  |
+| **`error(_message_)`**   | Kök günlükçü üzerinde düzey hatası olan bir ileti yazar.    |
+| **`warning(_message_)`**    | Kök günlükçü üzerinde düzey uyarısı olan bir ileti yazar.  |
+| **`info(_message_)`**    | Kök günlükçü üzerinde düzey bılgısıne sahip bir ileti yazar.  |
+| **`debug(_message_)`** | Kök günlükçü üzerinde düzey hata ayıklama içeren bir ileti yazar.  |
 
+Günlüğe kaydetme hakkında daha fazla bilgi edinmek için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+
+## <a name="http-trigger-and-bindings"></a>HTTP tetikleyicisi ve bağlamaları
+
+HTTP tetikleyicisi, function. Jon dosyasında tanımlanmıştır. Bağlamanın `name` , işlevindeki adlandırılmış parametreyle eşleşmesi gerekir. Önceki örneklerde bir bağlama adı `req` kullanılır. Bu parametre bir [HttpRequest] nesnesidir ve bir [HttpResponse] nesnesi döndürülür.
+
+[HttpRequest] nesnesinden istek üst bilgilerini, sorgu parametrelerini, yol parametrelerini ve ileti gövdesini alabilirsiniz. 
+
+Aşağıdaki örnek, [Python Için http tetikleyici şablonundan](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)verilmiştir. 
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    headers = {"my-http-header": "some-value"}
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+            
+    if name:
+        return func.HttpResponse(f"Hello {name}!", headers=headers)
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             headers=headers, status_code=400
+        )
+```
+
+Bu işlevde, `name` sorgu parametresinin değeri, [HttpRequest] nesnesinin `params` parametresinden elde edilir. JSON kodlu ileti gövdesi, `get_json` yöntemi kullanılarak okundu. 
+
+Benzer şekilde, döndürülen `status_code` [HttpResponse] nesnesindeki `headers` yanıt iletisi için ve kullanabilirsiniz.
+                                                              
 ## <a name="async"></a>Eş
 
 Azure işlevinizi, `async def` ifadesini kullanarak zaman uyumsuz bir eş yordam olarak yazmanızı öneririz.
@@ -245,7 +287,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Main () işlevi zaman uyumlu ise (niteleyici yoksa `async` ) işlevi bir `asyncio` iş parçacığı havuzunda otomatik olarak çalıştırdık.
+Main () işlevi zaman uyumlu (niteleyici yok) ise, işlevi bir `asyncio` iş parçacığı havuzunda otomatik olarak çalıştırdık.
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -297,6 +339,26 @@ def main(req):
     # ... use CACHED_DATA in code
 ```
 
+## <a name="environment-variables"></a>Ortam değişkenleri
+
+Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara `import os` , `setting = os.environ["setting-name"]`ve kullanarak erişebilirsiniz.
+
+Aşağıdaki örnek, adlı `myAppSetting`anahtar ile [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings)alır:
+
+```python
+import logging
+import os
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Get the setting named 'myAppSetting'
+    my_app_setting_value = os.environ["myAppSetting"]
+    logging.info(f'My app setting value:{my_app_setting_value}')
+```
+
+Yerel geliştirme için, uygulama ayarları [yerel. Settings. json dosyasında tutulur](functions-run-local.md#local-settings-file).  
+
 ## <a name="python-version-and-package-management"></a>Python sürümü ve paket yönetimi
 
 Şu anda Azure Işlevleri yalnızca Python 3.6. x 'i destekliyor (resmi Cpyıthon dağılımı).
@@ -336,9 +398,9 @@ Yerel olarak oluşturmak ve gerekli ikilileri yapılandırmak için, [Docker](ht
 func azure functionapp publish <app name> --build-native-deps
 ```
 
-Temel araçlar, [MCR.Microsoft.com/Azure-Functions/Python](https://hub.docker.com/r/microsoft/azure-functions/) görüntüsünü yerel makinenizde bir kapsayıcı olarak çalıştırmak için Docker 'ı kullanır. Bu ortamı kullanarak, Azure 'a nihai dağıtıma paketlemeden önce, kaynak dağıtımından gerekli modüller oluşturup yükler.
+Temel araçlar, [MCR.Microsoft.com/Azure-Functions/Python](https://hub.docker.com/r/microsoft/azure-functions/) görüntüsünü yerel makinenizde bir kapsayıcı olarak çalıştırmak için Docker 'ı kullanır. Bu ortamı kullanarak, Azure 'a son dağıtım için paketlemeden önce, kaynak dağıtımından gerekli modülleri oluşturup yükler.
 
-Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure DevOps Işlem hatlarını kullanın](functions-how-to-azure-devops.md). 
+Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure Pipelines kullanın](functions-how-to-azure-devops.md). 
 
 ## <a name="unit-testing"></a>Birim Testi
 
@@ -462,6 +524,39 @@ class TestFunction(unittest.TestCase):
 
 Tüm bilinen sorunlar ve özellik istekleri [GitHub sorunları](https://github.com/Azure/azure-functions-python-worker/issues) listesi kullanılarak izlenir. Bir sorunla karşılaşırsanız ve sorunu GitHub 'da bulamazsanız, yeni bir sorun açın ve sorunun ayrıntılı bir açıklamasını ekleyin.
 
+### <a name="cross-origin-resource-sharing"></a>Çıkış noktaları arası kaynak paylaşma
+
+Azure Işlevleri, çıkış noktaları arası kaynak paylaşımını (CORS) destekler. CORS, [portalda](functions-how-to-use-azure-function-app-settings.md#cors) ve [Azure CLI](/cli/azure/functionapp/cors)aracılığıyla yapılandırılır. CORS izin verilen kaynaklar listesi, işlev uygulaması düzeyinde geçerlidir. CORS etkinken yanıtlar `Access-Control-Allow-Origin` üstbilgiyi içerir. Daha fazla bilgi için bkz. [Çıkış noktaları arası kaynak paylaşma](functions-how-to-use-azure-function-app-settings.md#cors).
+
+İzin verilen çıkış noktaları listesi [Şu anda](https://github.com/Azure/azure-functions-python-worker/issues/444) Python işlev uygulamaları için desteklenmemektedir. Bu sınırlama nedeniyle, aşağıdaki örnekte gösterildiği gibi http işlevlerinizin `Access-Control-Allow-Origin` başlığını açıkça ayarlamanız gerekir:
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Define the allow origin headers.
+    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
+
+    # Set the headers in the response.
+    return func.HttpResponse(
+            f"Allowed origin '{headers}'.",
+            headers=headers, status_code=200
+    )
+``` 
+
+OPTIONS HTTP yöntemini desteklemek için function. JSON dosyanızı da güncelleştirdiğinizden emin olun:
+
+```json
+    ...
+      "methods": [
+        "get",
+        "post",
+        "options"
+      ]
+    ...
+```
+
+Bu yöntem, Chrome tarayıcısı tarafından izin verilen çıkış noktaları listesine anlaşmak için kullanılır. 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
@@ -473,3 +568,7 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [HTTP ve Web kancası bağlamaları](functions-bindings-http-webhook.md)
 * [Kuyruk depolama bağlamaları](functions-bindings-storage-queue.md)
 * [Zamanlayıcı tetikleyicisi](functions-bindings-timer.md)
+
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

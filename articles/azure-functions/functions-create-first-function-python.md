@@ -1,8 +1,6 @@
 ---
 title: Azure 'da HTTP ile tetiklenen bir işlev oluşturma
 description: Azure işlevleri çekirdek araçları ve Azure CLI kullanarak Azure'da ilk Python uygulamanızı oluşturma konusunda bilgi edinin.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 04/24/2019
@@ -10,13 +8,13 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+manager: gwallace
+ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575451"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170863"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure 'da HTTP ile tetiklenen bir işlev oluşturma
 
@@ -28,7 +26,7 @@ Bu makale, Azure Işlevleri için iki hızlı başlangıçın birincsahiptir. Bu
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-+ [Python 3,6](https://www.python.org/downloads/)' ü yükler.
++ [Python 3.6. x](https://www.python.org/downloads/)'i yükler.
 
 + [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1575 veya sonraki bir sürümü yükler.
 
@@ -104,7 +102,7 @@ Aşağıdaki dosyaları içeren _Httptrigger_ adlı bir alt klasör oluşturulur
 
 Aşağıdaki komut, Azure 'daki aynı Azure Işlevleri çalışma zamanını kullanarak yerel olarak çalışan işlev uygulamasını başlatır.
 
-```bash
+```console
 func host start
 ```
 
@@ -134,7 +132,7 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+        HttpTrigger: http://localhost:7071/api/HttpTrigger
 
 [8/27/2018 10:38:27 PM] Host started (29486ms)
 [8/27/2018 10:38:27 PM] Job host started
@@ -168,7 +166,33 @@ Bu komut Ayrıca, günlükleri izlemek ve görüntülemek için kullanılabilece
 
 Artık yerel işlevler projenizi Azure 'daki işlev uygulamasına yayımlamaya hazırsınız.
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+## <a name="deploy-the-function-app-project-to-azure"></a>İşlev uygulaması projesini Azure'a dağıtma
+
+İşlev uygulaması Azure 'da oluşturulduktan sonra, proje kodunuzu Azure 'a dağıtmak için [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) çekirdek Araçlar komutunu kullanabilirsiniz. Bu örneklerde, önceki adımda `<APP_NAME>` uygulamanızın adıyla değiştirin.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
+
+Seçeneği `--build remote` , Python projenizi dağıtım paketindeki dosyalardan Azure 'da uzaktan oluşturur. 
+
+Aşağıdakine benzer bir çıktı görürsünüz ve bu, okunabilirlik için kesildi:
+
+```output
+Getting site publishing info...
+...
+
+Preparing archive...
+Uploading content...
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+```
+
+Yalnızca Azure 'da işlevinizi `HttpTrigger`test etmek için kullanabileceğiniz değerinikopyalayın.`Invoke url` URL, işlev anahtarınız `code` olan bir sorgu dizesi değeri içeriyor. Bu anahtar başkalarının Azure 'da HTTP tetikleyici uç noktanızı aramasını zorlaştırır.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

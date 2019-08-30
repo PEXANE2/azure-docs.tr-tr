@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613315"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183153"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Kullanıcı geçişi
 
@@ -139,7 +139,9 @@ Azure AD **uygulama Kimliğinizle** değerideğiştirin.`$AppId`
 
 ## <a name="step-2-pre-migration-application-sample"></a>2\. adım: Geçiş öncesi uygulama örneği
 
-[Örnek kodu indirip çalıştırın][UserMigrationSample]. Bu dosyayı bir. zip dosyası olarak indirebilirsiniz.
+Geçiş öncesi kod örneğini, topluluk tarafından tutulan `azure-ad-b2c/user-migration` GitHub deposunda bulabilirsiniz:
+
+[Azure-AD-B2C/Kullanıcı geçişi/geçiş öncesi][UserMigrationSample-code] GitHub
 
 ### <a name="step-21-edit-the-migration-data-file"></a>Adım 2,1: Geçiş verileri dosyasını düzenleme
 
@@ -364,7 +366,7 @@ Günlük bilgilerini neredeyse gerçek zamanlı olarak görüntüleyebilir ve iz
 
 ## <a name="optional-download-the-complete-policy-files"></a>Seçim Tüm ilke dosyalarını indirin
 
-[Özel ilkeleri kullanmaya başlama][B2C-GetStartedCustom] Kılavuzu ' nu tamamladıktan sonra, kendi özel ilke dosyalarınızı kullanarak senaryonuzu oluşturmanızı öneririz. Başvurunuz için [örnek ilke dosyaları][UserMigrationSample]sağladık.
+[Özel ilkeleri kullanmaya başlama][B2C-GetStartedCustom] Kılavuzu ' nu tamamladıktan sonra, kendi özel ilke dosyalarınızı kullanarak senaryonuzu oluşturmanızı öneririz. Başvurunuz için [örnek ilke dosyaları][UserMigrationSample-policy]sağladık.
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2
@@ -375,4 +377,5 @@ Günlük bilgilerini neredeyse gerçek zamanlı olarak görüntüleyebilir ve iz
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration
+[UserMigrationSample-code]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/source-code
+[UserMigrationSample-policy]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/policy

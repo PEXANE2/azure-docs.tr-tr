@@ -7,55 +7,54 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 988dfd0337f8cedd992b55aa32e07a73f35d964d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877343"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182550"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications bağımsız yazılım satıcısı (ISV) bağlama programı ekleme Kılavuzu
 
-[Business Applications ISV Connect program](https://partner.microsoft.com/solutions/business-applications/isv-overview) amaçlar, *Dynamics 365 müşteri katılımı ile modern, bulut tabanlı, iş kolu (LOB) çözümleri oluşturma ve bağımsız yazılım satıcılarının (ISV 'ler) genel başarısını hızlandırmaya ve PowerApps* (DYNAMICS CE teklifleri) veya *Dynamics 365 finans ve işlemler* (Dynamics Ops teklifleri). Burada nasıl bir parçası olacak.
+[Business Applications ISV Connect program](https://partner.microsoft.com/solutions/business-applications/isv-overview) amaçlar, *Dynamics 365 müşteri katılımı ile modern, bulut tabanlı, iş kolu (LOB) çözümleri oluşturma ve bağımsız yazılım satıcılarının (ISV 'ler) genel başarısını hızlandırmaya ve PowerApps* ("DYNAMICS CE teklifleri") veya *Dynamics 365 finans ve işlemler* ("Dynamics Ops teklifleri"). Burada nasıl bir parçası olacak.
 
 > [!IMPORTANT]
 > *Dynamics 365 müşteri katılımı*olan mevcut ISV iş ortakları, *finans ve işlemler için Dynamics 365*ve *PowerApps* uygulamaları, bir önceki ekleme adımlarını **15 Ekim 2019** [Microsoft AppSource](https://appsource.microsoft.com)kaldırılan mevcut teklifler.
 
-Business Applications ISV Connect programının [Teknik, pazarlama ve satış öncesi avantajlarından](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview) yararlanmak için, var olan ISV iş ortaklarının ( *Dynamics CE* ve *Ops* teklifleriyle) tamamlanmasını istiyoruz Aşağıdaki adımlar: 
+Business Applications ISV Connect programının [Teknik, pazarlama ve satış öncesi avantajlarından](https://partner.microsoft.com/solutions/business-applications/isv-overview) yararlanmak için, mevcut ISV iş ortaklarına ( *Dynamics CE* ve *Ops* teklifleriyle) Aşağıdaki adımlar:
 
- - Iş Ortağı Merkezi 'nin ticari Market programında [hesabınızı ayarlama](#set-up-your-microsoft-partner-center-account)
- - Business Applications ISV Connect programına [katılım için hüküm ve koşulları kabul edin](#sign-the-business-applications-isv-program-addendum)
- - [Faturalandırma bilgilerinizi belirtin](#set-up-your-billing-information)ve
- - [Uygulamanızı](#recertify-your-application) Microsoft AppSource Için yeniden yapılandırın
+- [Microsoft Iş Ortağı Merkezi hesabınızı ayarlayın](#set-up-your-microsoft-partner-center-account).
+- [Business Applications eki kabul edin](#accept-the-business-applications-isv-program-addendum).
+- [Faturalandırma bilgilerinizi ayarlayın](#set-up-your-billing-information).
+- [Uygulamanızı yeniden toplayın](#recertify-your-application).
 
 > [!IMPORTANT]
-> Varolan bir teklifte değişiklik yapmadan önce yukarıdaki adımların tümünü tamamlamalısınız (tekliflerinizin, bu kadar *bulut iş ortağı portalı* için kullanılabilir olmayacaktır).
+> Varolan bir teklifte değişiklikler yayımlamadan önce yukarıdaki adımların tümünü tamamlamalısınız.
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Microsoft Iş Ortağı Merkezi hesabınızı ayarlama
 
-[Iş Ortağı Merkezi](https://partner.microsoft.com) , yenı Business Applications ISV Connect programı için hesap ayarlarınızı yönetme yerdir.
+[Iş Ortağı Merkezi](https://partner.microsoft.com) , ISV Connect programı için hesap ayarlarınızı yönetme yerdir.
 
 > [!NOTE]
-> Bu adım, verilen hesabınız için Bulut İş Ortağı Portalı bir *sahip* rolü gerektirir.
+> Bu adım, Iş Ortağı Merkezi 'nde verilen hesabınız için Bulut İş Ortağı Portalı ve *sahip* ya da *yönetici* rolü için bir *sahip* rolü gerektirir.
 
-Dynamics CE ve/veya Dynamics Ops tekliflerini zaten yayımladıysanız, büyük olasılıkla Bulut İş Ortağı Portalı (CPP) hesabınız Iş Ortağı Merkezi 'nde zaten geçirilmiş ve etkinleştirilmiştir. Aksi takdirde, Iş Ortağı Merkezi hesabınızı CPP yayımcı profilinizden el ile etkinleştirebilirsiniz.
+Dynamics CE veya Dynamics Ops tekliflerini zaten yayımladıysanız, büyük olasılıkla Bulut İş Ortağı Portalı (CPP) hesabınız Iş Ortağı Merkezi 'nde zaten geçirilmiş ve etkinleştirilmiştir. Aksi takdirde, Iş Ortağı Merkezi hesabınızı CPP yayımcı profilinizden el ile etkinleştirebilirsiniz.
 
 1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)' de **Yayımcı profili** sayfanızda oturum açın.
-
 2. Hesap ayarlarınızın Iş Ortağı Merkezi 'ne geçirildiğini gösteren bir başlık görürseniz bir sonraki bölüme geçin. Aksi takdirde, Iş Ortağı Merkezi hesabınızı etkinleştirmek isteyip istemediğinizi soran başlığı seçin.
 
-Daha fazla bilgi için bkz. [*bulut iş ortağı portalı 'Dan Iş ortağı merkezine hesap geçişi*](../partner-center-portal/account-migration-from-cpp-to-pc.md).
+Daha fazla bilgi için bkz. [bulut iş ortağı portalı 'Dan Iş ortağı merkezine hesap geçişi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
 
-## <a name="sign-the-business-applications-isv-program-addendum"></a>Business Applications ISV program ekine kaydolun
+## <a name="accept-the-business-applications-isv-program-addendum"></a>Business Applications ISV program eki 'ni kabul edin
 
 Bu programa katılım, *Business Applications eki*incelemenizi ve kabul etmenizi gerektirir.
 
 > [!NOTE]
 > Bu adım, hesabınızın yasal sözleşmeleri imzalamasını sağlamak için Iş Ortağı Merkezi 'nde bir *sahip* veya *yönetici* rolü gerektirir. Önceki adımda [Iş Ortağı Merkezi hesabınızı etkinleştirerek](#set-up-your-microsoft-partner-center-account) bulut iş ortağı portalı hesap geçişinizi tamamladıysanız, Izinleriniz de Iş Ortağı Merkezi ' ne geçirilir.
 
-1. Adresine gidin https://partner.microsoft.com/dashboard/account/agreements (ve istendiğinde iş ortağı merkezi 'nde oturum açın).
+1. [Iş Ortağı Merkezi panosuna](https://partner.microsoft.com/dashboard/account/agreements) gidin ve Istendiğinde Iş Ortağı Merkezi ' nde oturum açın.
 
-2. **Ticari Market**başlığı altında **Microsoft Business Applications ISV eki** ' ni bulun.
+2. **Ticari Market**başlığı altında **Microsoft Business Applications ISV eki**' ni bulun.
 
 3. Sürüm bağlantısını seçin ve sözleşmeyi görüntüleyin.
 
@@ -84,20 +83,19 @@ Faturalandırma profilinizi dilediğiniz zaman güncelleştirebilirsiniz, ancak 
 
 ## <a name="recertify-your-application"></a>Uygulamanızı yeniden toplayın
 
-Yukarıdaki adımları tamamladıktan sonra, mevcut Dynamics 365 CE ve Dynamics 365 Ops tekliflerinizin Bulut İş Ortağı Portalı (sayfayı yenilemeniz gerekebilir) ' de düzenlenmek üzere kullanıma sunulacaktır. Ayrıca, CPP aracılığıyla yeni teklifler de oluşturabilirsiniz.
+Yukarıdaki adımları tamamladıktan sonra, mevcut Dynamics CE ve Dynamics Ops tekliflerinizin Iş Ortağı Merkezi 'nde düzenlenmesine uygun olması gerekir. Ayrıca, Iş Ortağı Merkezi aracılığıyla yeni teklifler de oluşturabilirsiniz.
 
-Business Applications ISV Connect programında kayıt için son adım, mevcut uygulamalarınızı yeniden tanımlamak.
+Business Applications ISV Connect programında kayıt için son adım, mevcut uygulamalarınızın yeniden belirlenir.
 
-1. Uygulamanızı AppSource 'a yeniden tanımlamak için [adımları izleyin](https://partner.microsoft.com/en-us/solutions/business-applications/isv-publish) .
-
-2. Bulut İş Ortağı Portalı için [Yeni bir teklif oluşturun ve yayımlayın](manage-offers/cpp-manage-offers.md) . Bu, tamamen yeni bir teklif olacak ve var olan birinin yerini almaz.
+1. Uygulamanızı AppSource 'a geri yüklemek için [Bu adımları izleyin](https://partner.microsoft.com/solutions/business-applications/isv-publish) .
+2. [Yeni bir teklif oluşturun ve yayımlayın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Bu teklif tamamen yeni bir teklif olacak ve mevcut bir tane yerine geçmez.
 
 ## <a name="further-info"></a>Daha fazla bilgi
 
 Hesabınız hakkında yardım almak için hesap yöneticinize danışın veya [Microsoft Iş ortağı desteği](https://partner.microsoft.com/support) ile iletişime geçin. Business Applications ISV Connect programı ve Microsoft Iş Ortağı Merkezi hakkında genel bilgi için bkz.:
 
 #### <a name="business-applications-for-isvs-online-article"></a>ISV 'Ler için Business Applications (çevrimiçi makale)
-https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview
+https://partner.microsoft.com/solutions/business-applications/isv-overview
 
 #### <a name="overview-of-the-new-program-for-business-applications-isvs-pdf"></a>Business Applications ISV 'Ler için yeni programa genel bakış (PDF)
 https://aka.ms/BizAppsISVProgram
@@ -107,4 +105,3 @@ https://assetsprod.microsoft.com/business-applications-partner-faq.pdf
 
 #### <a name="upcoming-program-for-business-applications-isvs-blog-post"></a>Business Applications ISV 'Ler için yaklaşan program (blog gönderisi)
 https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/
-

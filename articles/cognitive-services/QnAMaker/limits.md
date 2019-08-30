@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423462"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165016"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -44,19 +44,31 @@ Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlant
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 
+### <a name="by-azure-search-pricing-tier"></a>Azure Search fiyatlandırma katmanına göre
+
 Bilgi Bankası başına en fazla meta veri alanı sayısı **[Azure Search katmanı limitlerinizi](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** temel alır.
 
 |**Azure arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Soru-cevap Oluşturucu hizmeti (genelinde tüm KB'leri) başına en fazla meta veri alanları|1000|100 *|1000|1000|1000|1000|
 
+### <a name="by-name-and-value"></a>Ada ve değere göre
+
+Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağıdaki tabloda listelenmiştir.
+
+|Öğe|İzin verilen karakterler|Regex model eşleşmesi|En fazla karakter|
+|--|--|--|--|
+|Name|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_`adında|`^[a-zA-Z0-9_]+$`|100|
+|Value|Hariç her şeye izin verir<br>`:`üste<br>`|`(dikey boru)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik sınırları
 Bilgi Bankası'nda içeriği genel sınırlamaları:
 * Yanıt metninin uzunluğu: 25,000
 * Soru metninin uzunluğu: 1000
 * Meta veri anahtarı/değer metninin uzunluğu: 100
-* Meta veri adı için desteklenen karakterler: Harfler, rakamlar ve _  
-* Meta veri değeri için desteklenen karakterler: Şunlar hariç: ve | 
+* Meta veri adı için desteklenen karakterler: Harfler, rakamlar ve`_`  
+* Meta veri değeri için desteklenen karakterler: Ve dışında `:` tümü`|` 
 * Dosya adı uzunluğu: 200
 * Desteklenen dosya biçimleri: ".tsv", ".pdf", ".txt", ".docx", ".xlsx".
 * Alternatif soruların maksimum sayısı: 300

@@ -1,7 +1,7 @@
 ---
 title: Genel Bakış coğrafi yapay zeka veri bilimi sanal makinesi
 titleSuffix: Azure
-description: Coğrafi yapay zeka veri bilimi sanal makinesi, coğrafi veri ile çalışmak için Arcgıs Pro sağlar. Ayrıca, makine öğrenimi ve yapay zeka ile çalışmak için Python, R ve veri bilimi tookits da sağlar.
+description: Coğrafi yapay zeka veri bilimi sanal makinesi, coğrafi veri ile çalışmak için Arcgıs Pro sağlar. Machine Learning ve yapay zeka (AI) ile çalışmaya yönelik Python, R ve veri bilimi araç takımları de sağlar.
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
 services: machine-learning
 documentationcenter: ''
@@ -17,39 +17,39 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/05/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2f9572e58ec53d53025a02e42818488a838732d0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 05596ea9a4456b73ec1e398e4a27ec3a49457cd9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591963"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172865"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka veri bilimi sanal Makinesi'ne giriş
 
-Azure **coğrafi AI veri bilimi sanal makinesi** (coğrafi-DSVM) Microsoft'un veri bilimi sanal makineden analiz özellikleri Jeo-uzamsal sunar. Özellikle, yapay ZEKA ve veri bilimi araç Setleri, bu VM genişletir [veri bilimi sanal makinesi](overview.md) ESRI, pazar payında lider ekleyerek [Arcgıs Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi.
+Coğrafi yapay zeka Veri Bilimi Sanal Makinesi (coğrafi AI Veri Bilimi VM'si veya coğrafi-DSVM olarak da bilinir), Azure Veri Bilimi Sanal Makinesi (DSVM) üzerinden Jeo-uzamsal analiz özellikleri sunar. Özellikle, bu VM, ERSı 'dan pazar lideri ArcGIS [Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi ekleyerek [DSVM](overview.md) 'deki AI ve veri bilimi araç kitlerinin kapsamını genişletir.
 
-Coğrafi AI veri bilimi sanal makinesi, ESRI ile Microsoft arasındaki işbirliğini kaynaklanan kullanıma sunan bir üründür. Sonucu yeteneği sağlayan güçlü bir ortam oluşturulur.
+ Coğrafi AI Veri Bilimi VM'si, ESRI ve Microsoft arasındaki işbirliğini içermeyen bir ürün sunumudur. Sonucu yeteneği sağlayan güçlü bir ortam oluşturulur.
 
-- Veri bilimi araçlarını ve en popüler AI ile verileri keşfedin
-- istatistiksel çözümlemeler coğrafi ya da uzamsal verilerle geçerlidir
-- Makine öğrenimi ve derin öğrenme algoritmalarını kullanarak Tahmine dayalı analiz modellerini eğitin
-- Zengin görselleştirme oluşturma
+- En popüler AI ve veri bilimi araçlarıyla verileri araştırma
+- Coğrafi veya uzamsal yönleri olan verilere istatistiksel analizler uygulama
+- Makine öğrenimi ve derin öğrenme algoritmalarını kullanarak tahmine dayalı analiz için modelleri eğitme
+- Zengin görselleştirmeler oluşturma
 
-Windows 2016 veri bilimi sanal makinesi üzerinde desteklenir. Python ve R arabirimlerine Arcgıs programlı erişim, yapay ZEKA uygulamaları Jeo-uzamsal analiz etkinleştirme coğrafi-DSVM üzerinde önceden yapılandırılmış. Jupyter not defteri örnekleri de yardımcı olmak için verilmiştir, Jeo-uzamsal zeka ile Harmanlanmış bir yapay ZEKA uygulamaları oluşturmaya başlayın.
+Veri Bilimi VM'si coğrafi AI, Windows 2016 DSVM 'de desteklenir. ArcGIS için Python ve R arabirimleri, coğrafi DSVM 'de önceden yapılandırılmıştır ve AI uygulamalarınızda Jeo-uzamsal analizine programlı erişim sağlar. Ayrıca, Jeo-uzamsal zeka ile kullanılan AI uygulamaları oluşturmaya başlamanıza yardımcı olmak için Jupyter Notebook örnekler sağlanır.
 
 
 ## <a name="why-geo-ai-data-science-vm"></a>Neden coğrafi AI veri bilimi VM'si? 
 
-Coğrafi konum ve konum bilgileri ile verilerinizi tümleştirme, güçlü ve yeni bir boyut giderek IOT cihazları ile izleme eklenmiş bir dünyada anlamak için getirir. Çok çeşitli uygulamalar hukuki society neredeyse her segmentinde ticari olsun, mevcut kamu, akademik veya not yetkilendirilip kâr etkinlikler. Jeo-uzamsal analiz toplama, yönetme ve coğrafi konum tabanlı ve veri ve bu tür veriler önemini benzersiz içgörüler sağlayan güçlü görselleştirme analizi için güçlü araçlar sağlar. 
+Coğrafya ve konum bilgilerinin verilerinize tümleştirilmesi, IoT cihazlarıyla giderek daha fazla izlenen bir dünya 'yi anlamak için güçlü bir yeni boyut sunar. Neredeyse her bir hukuki topluluğu, ticari, Kamu, akademik veya kar amacı olmayan çok sayıda uygulama vardır. Jeo-uzamsal analizler, coğrafi ve konum tabanlı verileri toplamak, yönetmek ve analiz etmek için güçlü araçlar sağlar. Ayrıca, bu tür verilerin anlam halinde benzersiz Öngörüler sağlayan güçlü bir görselleştirme sunar.
 
-[Veri bilimi sanal makinesi (DSVM)](overview.md) Microsoft'tan popüler deneme ve yapay ZEKA, makine öğrenimi ve veri bilimi araçlarıyla sağlar modelleme ortamı azure'da,. Bu platformları ve araçlarıyla hemen üretken olmanıza yardımcı olmak için tüm bir kolayca önceden yapılandırılmış. 
+Microsoft 'tan [veri bilimi sanal makinesi (DSVM)](overview.md) , bir aı, Machine Learning ve veri bilimi araçlarının bir konağını sağlayan Azure 'da popüler bir deneme ve modelleme ortamıdır. Bu platformlar ve araçlar, kolayca üretken olmanıza yardımcı olacak şekilde önceden yapılandırılmıştır.
 
-Azure Bulutu ve Jeo-uzamsal analiz yazılımlarını ölçeklenebilirliğini Tahmine dayalı bir veri bilimi sanal makinesi yeteneklerini birleştirerek [ESRI](https://www.esri.com), veri uzmanları ve analistleri Jeo-uzamsal artık üretken bir platformdan diğerine sahip Bu verilerden yeni bilgiler edinmek ve yeni fırsatlarını belirlemek. 
+Coğrafi AI Veri Bilimi VM'si, DSVM 'nin tahmine dayalı yeteneklerini Azure bulutunun ölçeklenebilirliğini ve [Esri](https://www.esri.com)'deki Jeo uzamsal analiz yazılımlarını birleştirir. Bu şekilde tümleştirme tümleştirmesi, veri bilimcilerinin ve jeo-uzamsal analistlerini, verilerinden yeni zeka bilgileri elde etmek ve yeni fırsatları belirlemek için üretken bir platform sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Coğrafi AI veri bilimi VM sağlama ve aşağıdaki konularda rehberliğinde kullanmaya başlama:
+Coğrafi bir AI Veri Bilimi VM'si sağlayın ve aşağıdaki kaynaklardaki kılavuzlarla kullanmaya başlayın:
 
 * [Coğrafi AI veri bilimi sanal makinesi sağlama](provision-geo-ai-dsvm.md)
 * [Coğrafi AI veri bilimi VM'si kullanma](use-geo-ai-dsvm.md)

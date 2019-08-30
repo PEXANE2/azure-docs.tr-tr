@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3955995ed1a7a48cfe323db5bf0e767446d89534
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534417"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164051"
 ---
 1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
@@ -37,7 +37,10 @@ ms.locfileid: "69534417"
 
 1. Çalışma alanını yapılandırmayı tamamladıktan sonra **Oluştur**' u seçin. 
 
-   Çalışma alanını oluşturmak birkaç dakika sürebilir.
+   > [!Warning] 
+   > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
 
-   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
+   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 
+ 
+ 1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 

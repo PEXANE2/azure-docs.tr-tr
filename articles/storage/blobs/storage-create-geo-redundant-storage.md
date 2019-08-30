@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 0ccd57e1614f23d775df2fe8e963d2cc7f9a4358
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 124b10607f710ddfb76787eac09dea7ec6ffc03c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360742"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173062"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -120,7 +120,7 @@ git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 [Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyayı ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Node. js uygulaması içerir.
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
+git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 ```
 
 ---
@@ -393,7 +393,7 @@ def response_callback(response):
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java Ile v10 arasındaki SDK](#tab/java-v10)
 
-Java Ile v10 arasındaki SDK ile, geri çağırma işleyicilerinin tanımlanması gereksizdir ve SDK artık v7 SDK 'sından bazı temel farklılıklara sahiptir. LocationMode **yerine ikincil bir**işlem hattına sahipsiniz. **RequestRetryOptions** aracılığıyla ikincil bir işlem hattı tanımlayabilir ve tanımlanmışsa, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına izin verir.
+Java Ile v10 arasındaki SDK ile, geri çağırma işleyicilerinin tanımlanması gereksizdir ve SDK artık v7 SDK 'sından bazı temel farklılıklara sahiptir. LocationMode yerine ikincil bir işlem hattına sahipsiniz. **RequestRetryOptions** aracılığıyla ikincil bir işlem hattı tanımlayabilir ve tanımlanmışsa, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına izin verir.
 
 ```java
 // We create pipeline options here so that they can be easily used between different pipelines

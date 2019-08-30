@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 82c2c6d7ac347949a7cf24226fdb0095313ee689
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
-ms.translationtype: HT
+ms.openlocfilehash: 52d7eb035ed06c368214b8b5cb7ef583cd99b51b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147677"
+ms.locfileid: "70161994"
 ---
 # <a name="get-started-with-device-management-java"></a>Cihaz yönetimini kullanmaya başlama (Java)
 
@@ -53,9 +53,9 @@ Bu öğreticinin sonunda iki Java konsol uygulamanız vardır:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Java SE 8. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Java 'nın nasıl yükleneceğini açıklar.
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
-* Maven 3. [Geliştirme ortamınızı hazırlayın](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) , bu öğretici Için [Maven](https://maven.apache.org/what-is-maven.html) 'nin Windows veya Linux 'ta nasıl yükleneceğini açıklar.
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 

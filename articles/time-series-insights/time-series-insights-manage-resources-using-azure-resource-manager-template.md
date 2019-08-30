@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaa169714006ec948a5790ed5841f9dcf52c2a23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3e22df76124185c1e23f04f59145e12a1fec023
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846657"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164255"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
 
@@ -33,7 +33,7 @@ Time Series Insights aşağıdaki kaynakları destekler:
 
 Kaynak Yöneticisi şablonu, bir kaynak grubundaki kaynakların altyapısını ve yapılandırmasını tanımlayan bir JSON dosyasıdır. Aşağıdaki belgeler şablon dosyalarını daha ayrıntılı bir şekilde anlatmaktadır:
 
-- [Azure Resource Manager genel bakış-Şablon dağıtımı](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Azure Resource Manager şablonu dağıtımı](../azure-resource-manager/template-deployment-overview.md)
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/resource-group-template-deploy.md)
 - [Microsoft. Timeseriesınsights kaynak türleri](/azure/templates/microsoft.timeseriesinsights/allversions)
 

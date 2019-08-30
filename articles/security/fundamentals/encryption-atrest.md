@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: barclayn
-ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875090"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182799"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -254,14 +254,16 @@ Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelli
 
 Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) özelliği aracılığıyla desteklenir. Always Encrypted, istemci tarafından oluşturulan ve depolanan bir anahtarı kullanır. Müşteriler ana anahtarı bir Windows sertifika deposunda, Azure Key Vault veya yerel bir donanım güvenlik modülünde depolayabilirler. SQL Server Management Studio kullanarak, SQL kullanıcıları hangi sütunu şifrelemek için kullanmak istediğiniz anahtarı seçer.
 
-#### <a name="encryption-model-and-key-management"></a>Şifreleme modeli ve anahtar yönetimi
+#### <a name="encryption-model-and-key-management-table"></a>Şifreleme modeli ve anahtar yönetimi tablosu
 
-| **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı** |**Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**| **İstemci-yönetilen kullanarak istemci tarafı** | **AI ve Machine Learning**   |
-|--------------------|-------------------|----------------------|--------------------|
+|                                  |                    | **Şifreleme modeli ve anahtar yönetimi** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen kullanarak istemci tarafı**      |
+| **AI ve Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Evet                | -                  | -                  |
 | Azure Machine Learning Hizmeti   | Evet                | -                  | -                  |
 | Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048 bit | -               |
-| Power BI                         | Evet                | Önizleme, RSA 2048 bit | -               |
+| Power BI                         | Evet                | Önizleme, RSA 2048 bit | -                  |
 | **Analizler**                    |                    |                    |                    |
 | Azure Stream Analytics           | Evet                | -                  | -                  |
 | Event Hubs                       | Evet                | -                  | -                  |
@@ -282,7 +284,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Azure SQL Database               | Evet                | Evet, RSA 2048 bit  | Evet                |
 | MariaDB için Azure SQL veritabanı   | Evet                | -                  | -                  |
 | MySQL için Azure SQL veritabanı     | Evet                | -                  | -                  |
-| PostgreSQL için Azure SQL veritabanı | Evet                | -                  | -                 |
+| PostgreSQL için Azure SQL veritabanı | Evet                | -                  | -                  |
 | Azure SQL Veri Ambarı         | Evet                | Evet, RSA 2048 bit  | Evet                |
 | SQL Server Stretch Database      | Evet                | Evet, RSA 2048 bit  | Evet                |
 | Tablo Depolama                    | Evet                | -                  | Evet                |

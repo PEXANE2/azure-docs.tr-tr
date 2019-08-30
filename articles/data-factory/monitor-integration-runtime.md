@@ -55,8 +55,8 @@ Aşağıdaki tabloda bir Azure tümleştirme çalışma zamanının olası durum
 
 | Durum | Açıklamalar/senaryolar | 
 | ------ | ------------------ |
-| Çevrimiçi | Azure tümleştirme çalışma zamanı çevrimiçi ve kullanılabilir hale gelmiştir. | 
-| Çevrimdışı | Azure Integration Runtime bir iç hata nedeniyle çevrimdışı. |
+| Online | Azure tümleştirme çalışma zamanı çevrimiçi ve kullanılabilir hale gelmiştir. | 
+| Offline | Azure Integration Runtime bir iç hata nedeniyle çevrimdışı. |
 
 ## <a name="self-hosted-integration-runtime"></a>Kendinden konak tümleştirme çalışma zamanı
 Bu bölüm Get-AzDataFactoryV2IntegrationRuntime cmdlet 'i tarafından döndürülen özelliklerle ilgili açıklamalar sağlar. 
@@ -74,7 +74,7 @@ Aşağıdaki tabloda **her düğüm**Için izleme özelliklerinin açıklamalar�
 | Durum | Genel olarak barındırılan tümleştirme çalışma zamanının ve her düğümün durumu. Örnek: Çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için sonraki bölüme bakın. | 
 | Version | Şirket içinde barındırılan tümleştirme çalışma zamanının ve her düğümün sürümü. Şirket içinde barındırılan tümleştirme çalışma zamanının sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Şirket içinde barındırılan tümleştirme çalışma zamanı kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal şirket içinde barındırılan tümleştirme çalışma zamanı ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). | 
 | Uygun bellek | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
-| CPU kullanımı | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. |
+| CPU utilization | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. |
 | Ağ (ın/out) | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
 | Eşzamanlı Işler (çalışıyor/limit) | **Çalışıyor**. Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. <br/><br/>**Sınır**. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU, bellek veya ağ kullanımda olsa bile etkinlikler zaman aşımına uğradıkça, Gelişmiş senaryolarda eşzamanlı iş yürütülmesini ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu yetenek, tek düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı ile de kullanılabilir. |
 | Role | Çok düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı – dağıtıcı ve çalışan içinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı çalışan düğümlerine göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. Dağıtıcı düğümü de bir çalışan düğümüdür. |
@@ -94,8 +94,8 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 
 | Durum | Description |
 | ------ | ------------------ | 
-| Çevrimiçi | Düğüm Data Factory hizmetine bağlandı. |
-| Çevrimdışı | Düğüm çevrimdışı. |
+| Online | Düğüm Data Factory hizmetine bağlandı. |
+| Offline | Düğüm çevrimdışı. |
 | Yükseltiliyor | Düğüm otomatik olarak güncelleştiriliyor. |
 | Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya bir kimlik bilgisi eşitleme sorunuyla kaynaklanıyor olabilir. |
 | Etkin Değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır. |
@@ -108,8 +108,8 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 | Durum | Description |
 | ------ | ----------- | 
 | Kayıt gerekiyor | Henüz şirket içinde barındırılan tümleştirme çalışma zamanına hiçbir düğüm kaydedilmemiş. |
-| Çevrimiçi | Tüm düğümler çevrimiçi. |
-| Çevrimdışı | Çevrimiçi düğüm yok. |
+| Online | Tüm düğümler çevrimiçi. |
+| Offline | Çevrimiçi düğüm yok. |
 | Sınırlı | Bu şirket içinde barındırılan tümleştirme çalışma zamanındaki düğümlerin hepsi sağlıklı durumda değil. Bu durum, bazı düğümlerin kapatılmış olabileceğini belirten bir uyarıdır. Bu durum, dağıtıcı/çalışan düğümündeki bir kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir. |
 
 Ayrıntılı şirket içinde barındırılan tümleştirme çalışma zamanı özelliklerini ve cmdlet 'inin yürütülmesi sırasında anlık görüntü değerlerini içeren JSON yükünü getirmek için **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 'ini kullanın.
@@ -160,7 +160,7 @@ Azure-SSIS Integration Runtime, SSIS paketlerinizi çalıştırmak için adanmı
 | Özellik/durum | Description |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS tümleştirme çalışma zamanının oluşturulduğu UTC saati. |
-| Düğümler | Azure-SSIS tümleştirme çalışma zamanının ayrılan/kullanılabilir düğümleri, düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eylem yapılabilir hatalar ile. |
+| Nodes | Azure-SSIS tümleştirme çalışma zamanının ayrılan/kullanılabilir düğümleri, düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eylem yapılabilir hatalar ile. |
 | Diğer hatalar | Azure-SSIS tümleştirme çalışma zamanı 'nda düğüme özgü olmayan işlem yapılabilir hatalar. |
 | LastOperation | Azure-SSIS tümleştirme çalışma zamanmağınızda son başlatma/durdurma işleminin sonucu başarısız olursa, işlem yapılabilir hata (ler). |
 | State | Azure-SSIS tümleştirme çalışma zamanının genel durumu (ilk/başlangıç/başlatma/durdurma/durdurma). |

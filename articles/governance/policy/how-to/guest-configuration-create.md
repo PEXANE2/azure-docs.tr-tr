@@ -7,20 +7,20 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
-ms.translationtype: HT
+ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146116"
+ms.locfileid: "70164914"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
-Konuk yapılandırması, Azure sanal makinelerinin denetlenmesine yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/dsc) (DSC) kaynak modülünü kullanır. DSC yapılandırması, sanal makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, Ilke etkisi **denetimi** tetiklenir ve sanal makine **uyumlu**değil olarak kabul edilir.
+Konuk yapılandırması, Azure makinelerini denetlemeye yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/dsc) (DSC) kaynak modülünü kullanır. DSC yapılandırması, makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
 
-[Azure Ilke Konuk yapılandırması](/azure/governance/policy/concepts/guest-configuration) yalnızca sanal makinelerin içindeki ayarları denetlemek için kullanılabilir. Sanal makineler içindeki ayarların düzeltilmesi henüz kullanılamıyor.
+[Azure Ilke Konuk yapılandırması](/azure/governance/policy/concepts/guest-configuration) , yalnızca makineler içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz kullanılamamaktadır.
 
-Bir Azure sanal makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
+Bir Azure makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 
 > [!IMPORTANT]
 > Konuk yapılandırması olan özel ilkeler bir önizleme özelliğidir.
@@ -133,18 +133,18 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **Yol**: Çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
 - **Chefprofilepath**: InSpec profilinin tam yolu. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
 
-Tamamlanmış paketin, yönetilen sanal makineler tarafından erişilebilen bir konumda depolanması gerekir. GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ekleyebilirsiniz. Ayrıca, özel bir ağdaki sanal makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
+Tamamlanmış paketin, yönetilen sanal makineler tarafından erişilebilen bir konumda depolanması gerekir. GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ekleyebilirsiniz. Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>Konuk yapılandırma paketlerinde gizli dosyalarla çalışma
 
 Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizli dizileri yönetmenin en iyi yolu Azure Key Vault ' de depoındır. Bu tasarım özel DSC kaynakları içinde uygulanır.
 
-İlk olarak, Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Kimlik, sanal makineler tarafından Key Vault depolanan gizli dizileri erişmek için kullanılır. Ayrıntılı adımlar için, bkz. [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+İlk olarak, Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Kimlik, Key Vault ' de depolanan gizli dizileri erişmek için makineler tarafından kullanılır. Ayrıntılı adımlar için, bkz. [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Ardından Key Vault bir örnek oluşturun. Ayrıntılı adımlar için bkz. [gizli anahtar PowerShell 'ı ayarlama ve alma](../../../key-vault/quick-create-powershell.md).
 Kullanıcı tarafından atanan kimlik erişimine Key Vault ' de depolanan gizli dizileri sağlamak için örneğe izinler atayın. Ayrıntılı adımlar için bkz. [gizli dizi ayarlama ve alma](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Ardından, Kullanıcı tarafından atanan kimliği sanal makinenize atayın. Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+Ardından, Kullanıcı tarafından atanan kimliği makinenize atayın. Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Ölçek ' te, Azure Ilkesi aracılığıyla Azure Resource Manager kullanarak bu kimliği atayın. Ayrıntılı adımlar için bkz. [bir şablon kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
 Son olarak, özel kaynağınız içinde, makinede bulunan belirteci kullanarak Key Vault erişmek için yukarıda oluşturulan istemci KIMLIĞINI kullanın. Key Vault örneğinin ve URL 'si kaynağa özellikler olarak geçirilebilir, böylece kaynağın birden çok ortamda güncellenmesi gerekmez veya değerler değiştirilmeleri gerekir. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
@@ -165,7 +165,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>Konuk yapılandırma paketini test etme
 
-Yapılandırma paketini oluşturduktan ve Azure 'a yayımlamadan önce, iş istasyonunuzdan veya CI/CD ortamınızdan paketin işlevlerini test edebilirsiniz. Guestconfiguration modülü, Azure sanal makineleri `Test-GuestConfigurationPackage` içinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı yükleyen bir cmdlet içerir. Bu çözümü kullanarak, faturalandırılan test/QA/üretim ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
+Yapılandırma paketini oluşturduktan ve Azure 'a yayımlamadan önce, iş istasyonunuzdan veya CI/CD ortamınızdan paketin işlevlerini test edebilirsiniz. Guestconfiguration modülü, Azure makinelerinde kullanıldığı `Test-GuestConfigurationPackage` gibi geliştirme ortamınıza aynı aracıyı yükleyen bir cmdlet içerir. Bu çözümü kullanarak, faturalandırılan test/QA/üretim ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -187,7 +187,7 @@ Parametrelerle test etme hakkında daha fazla bilgi için, [özel konuk yapılan
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Ilke tanımı ve girişim dağıtım dosyalarını oluşturma
 
-Konuk yapılandırması özel ilke paketi oluşturulup sanal makineler tarafından erişilebilen bir konuma yüklendikten sonra, Azure Ilkesi için konuk yapılandırma ilkesi tanımını oluşturun. Cmdlet `New-GuestConfigurationPolicy` , genel olarak erişilebilen bir konuk yapılandırması özel ilke paketi alır ve bir **auditınotexists** ve **deployifnotexists** ilke tanımı oluşturur. İlke tanımlarının her ikisini de içeren bir ilke girişim tanımı da oluşturulur.
+Konuk yapılandırması özel ilke paketi oluşturulduktan ve makineler tarafından erişilebilen bir konuma yüklendikten sonra, Azure Ilkesi için konuk yapılandırma ilkesi tanımını oluşturun. Cmdlet `New-GuestConfigurationPolicy` , genel olarak erişilebilen bir konuk yapılandırması özel ilke paketi alır ve bir **auditınotexists** ve **deployifnotexists** ilke tanımı oluşturur. İlke tanımlarının her ikisini de içeren bir ilke girişim tanımı da oluşturulur.
 
 Aşağıdaki örnek, Windows için bir konuk yapılandırması özel ilke paketinden belirtilen yolda ilke ve girişim tanımlarını oluşturur ve bir ad, açıklama ve sürüm sağlar:
 
@@ -220,7 +220,7 @@ Aşağıdaki dosyalar tarafından `New-GuestConfigurationPolicy`oluşturulmuştu
 
 Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
 
-Özel bir ilke projesi için bu komutu kullanmak istiyorsanız, bu dosyalarda değişiklik yapabilirsiniz. Bir örnek, sanal makineler için belirli bir etiketin mevcut olup olmadığını değerlendirmek için ' If ' bölümünü değiştiriyor. İlke oluşturma hakkında ayrıntılı bilgi için bkz. [Program aracılığıyla ilke oluşturma](./programmatically-create.md).
+Özel bir ilke projesi için bu komutu kullanmak istiyorsanız, bu dosyalarda değişiklik yapabilirsiniz. Bir örnek, makineler için belirli bir etiketin mevcut olup olmadığını değerlendirmek için ' If ' bölümünü değiştiriyor. İlke oluşturma hakkında ayrıntılı bilgi için bkz. [Program aracılığıyla ilke oluşturma](./programmatically-create.md).
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Özel Konuk yapılandırma ilkelerinde parametreleri kullanma
 
@@ -337,7 +337,7 @@ Aracı kullanma hakkında ayrıntılı bilgi için hızlı başlangıç makalesi
 Konuk yapılandırması özel ilkeleri varsayılan olarak, ilke paketinin denetlenmekte olan sunucu tarafından okunana yayımlandığında ' de değiştirilmediğini doğrulamak için SHA256 karmasını kullanır.
 İsteğe bağlı olarak, müşteriler paketleri imzalamak ve konuk yapılandırma uzantısını yalnızca imzalı içeriğe izin verecek şekilde zorlamak için bir sertifika da kullanabilir.
 
-Bu senaryoyu etkinleştirmek için, gerçekleştirmeniz gereken iki adım vardır. İçerik paketini imzalamak için cmdlet 'ini çalıştırın ve kodun imzalanmasını gerektiren sanal makinelere bir etiket ekleyin.
+Bu senaryoyu etkinleştirmek için, gerçekleştirmeniz gereken iki adım vardır. İçerik paketini imzalamak için cmdlet 'ini çalıştırın ve kodun imzalanmasını gerektirecek makinelere bir etiket ekleyin.
 
 İmza doğrulama özelliğini kullanmak için, paketini yayımlanmadan önce `Protect-GuestConfigurationPackage` imzalamak üzere cmdlet 'ini çalıştırın. Bu cmdlet ' kod Imzalama ' sertifikası gerektirir.
 
@@ -353,17 +353,17 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 - **Privategpgkeypath**: Özel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
 - **Publicgpgkeypath**: Genel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
 
-Guestconfiguration Aracısı, sertifika ortak anahtarının Windows makinelerde "güvenilen kök sertifika yetkilileri" bölümünde ve Linux makinelerdeki yolunda `/usr/local/share/ca-certificates/extra` bulunmasını bekler. İmzalanan içeriğin doğrulanması için düğüm için, özel ilkeyi uygulamadan önce, sanal makineye sertifika ortak anahtarını yükler. Bu işlem, VM içindeki herhangi bir teknik veya Azure Ilkesi kullanılarak gerçekleştirilebilir. Burada örnek bir şablon [verilmiştir](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+Guestconfiguration Aracısı, sertifika ortak anahtarının Windows makinelerde "güvenilen kök sertifika yetkilileri" bölümünde ve Linux makinelerdeki yolunda `/usr/local/share/ca-certificates/extra` bulunmasını bekler. İmzalanan içeriğin doğrulanması için düğüm için, özel ilkeyi uygulamadan önce makineye ortak anahtarı yükler. Bu işlem, VM içindeki herhangi bir teknik veya Azure Ilkesi kullanılarak gerçekleştirilebilir. Burada örnek bir şablon [verilmiştir](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
 Key Vault erişim ilkesi, dağıtım sırasında Işlem Kaynak sağlayıcısının sertifikalara erişmesine izin vermelidir. Ayrıntılı adımlar için bkz. [Azure Resource Manager sanal makineler için Key Vault ayarlama](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
-Aşağıda, bir imzalama sertifikasından ortak anahtarı dışa aktarmak için sanal makineye içeri aktarmak üzere bir örnek verilmiştir.
+Aşağıda, bir imzalama sertifikasından ortak anahtarı dışarı aktarmak için makineye aktarmak üzere bir örnek verilmiştir.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Linux sanal makineleri ile kullanmak üzere GPG anahtarları oluşturmaya yönelik iyi bir başvuru, GitHub 'da [Yeni BIR gpg anahtarı oluşturan](https://help.github.com/en/articles/generating-a-new-gpg-key)bir makale tarafından sağlanır.
+Linux makinelerle kullanılmak üzere GPG anahtarları oluşturmaya yönelik iyi bir başvuru, GitHub 'daki bir makale tarafından sağlanır ve [Yeni BIR gpg anahtarı](https://help.github.com/en/articles/generating-a-new-gpg-key)oluşturur.
 
 İçeriğiniz yayımlandıktan sonra, kod imzasının gerekli olması gereken tüm sanal `GuestConfigPolicyCertificateValidation` makinelere ad `enabled` ve değer içeren bir etiket ekleyin. Bu etiket, Azure Ilkesi kullanılarak ölçeklendirerek teslim edilebilir. [Uygula etiketine ve varsayılan değer](../samples/apply-tag-default-value.md) örneğine bakın.
 Bu etiket oluşturulduktan sonra `New-GuestConfigurationPolicy` cmdlet kullanılarak oluşturulan ilke tanımı, Konuk yapılandırma uzantısı aracılığıyla gereksinimi mümkün bir şekilde sunar.

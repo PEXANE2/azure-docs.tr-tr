@@ -3,16 +3,16 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 599d3f97ea30b096999d754a995af2ba660c0bc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951974"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186163"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -72,20 +72,22 @@ Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 ça
 
 MARS aracısını, şirket içi makinelerde ve Azure VM 'lerde çalışan bazı işletim sistemlerinde doğrudan Azure 'a yedeklemek için kullanabilirsiniz. İşletim sistemleri 64 bit olmalıdır ve en son hizmet paketlerini ve güncelleştirmelerini çalıştırıyor olmalıdır. Aşağıdaki tabloda bu işletim sistemleri özetlenmektedir:
 
-**İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** 
---- | --- | --- 
-Windows 10 (Enterprise, Pro, Home) | Evet | Hayır
-Windows 8.1 (Enterprise, Pro)| Evet |Hayır
-Windows 8 (Enterprise, Pro) | Evet | Hayır
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet | Hayır
-Windows Server 2016 (Standard, Datacenter, Essentials) | Evet | Evet
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Evet | Evet
-Windows Server 2012 (Standard, Datacenter, Foundation) | Evet | Evet
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Evet | Evet
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Evet | Hayır
-Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır
+**İşletim sistemi** | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**
+--- | --- | --- | ---
+Windows 10 (Enterprise, Pro, Home) | Evet | Hayır |  Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8.1 (Enterprise, Pro)| Evet |Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 8 (Enterprise, Pro) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
+Windows Server 2016 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Evet | Evet |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Evet | Evet | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Evet | Hayır | -.NET 3,5, .NET 4,5 <br> -Windows PowerShell <br> -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) <br> -Sanal sunucu 2005 tabanı + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Evet | Evet | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
 Daha fazla bilgi için bkz. [desteklenen MABS ve DPM işletim sistemleri](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
 
 ## <a name="backup-limits"></a>Yedekleme limitleri
 

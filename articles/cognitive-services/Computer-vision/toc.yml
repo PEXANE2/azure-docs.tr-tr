@@ -133,12 +133,6 @@
       href: concept-detecting-adult-content.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Görüntü İşleme’yi kullanma
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
     - name: Görüntü İşleme API’sini çağırma
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Kapsayıcıları kullanma

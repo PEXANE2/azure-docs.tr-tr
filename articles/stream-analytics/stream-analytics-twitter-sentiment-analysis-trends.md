@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/9/2019
-ms.openlocfilehash: a0dd2499f3ddfaa1cd22a58e058c6adb7e40fd7e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.date: 07/09/2019
+ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620019"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173164"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics 'de gerçek zamanlı Twitter yaklaşım Analizi
 
@@ -61,7 +61,7 @@ Bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alanına bir olay hub '
 
     ![Yeni bir olay hub 'ı oluşturmak için dikey pencere](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 
 ### <a name="grant-access-to-the-event-hub"></a>Olay Hub 'ına erişim izni verme
@@ -79,7 +79,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
     ![Yeni Olay Hub 'ı erişim ilkesi oluşturmak için dikey pencere](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.            **Oluştur**'a tıklayın.
+4.  **Oluştur**'a tıklayın.
 
 5.  İlke dağıtıldıktan sonra, paylaşılan erişim ilkeleri listesinde buna tıklayın.
 
@@ -199,7 +199,7 @@ Artık Tweet olayları Twitter 'dan gerçek zamanlı olarak akışa alındığı
 
     ![Yeni bir Stream Analytics işi oluşturma](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3.           **Oluştur**'a tıklayın.
+3. **Oluştur**'a tıklayın.
 
     İş oluşturulur ve Portal iş ayrıntılarını görüntüler.
 
@@ -220,7 +220,7 @@ Artık Tweet olayları Twitter 'dan gerçek zamanlı olarak akışa alındığı
 
      ![Akış Analizi işi için yeni giriş oluştur](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3.           **Oluştur**'a tıklayın.
+3. **Oluştur**'a tıklayın.
 
 
 ## <a name="specify-the-job-query"></a>İş sorgusunu belirtin
@@ -305,7 +305,7 @@ Bu nasıl yapılır kılavuzunda, toplanan Tweet olaylarını iş sorgusundan Az
     
      ![Stream Analytics işi için "yeni çıkış" dikey penceresi](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4.           **Oluştur**'a tıklayın. 
+4. **Oluştur**'a tıklayın. 
 
     Azure, depolama hesabı oluşturur ve otomatik olarak bir anahtar oluşturur. 
 

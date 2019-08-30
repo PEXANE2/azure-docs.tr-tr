@@ -1,22 +1,20 @@
 ---
 title: Hızlı Başlangıç-tarayıcıda JavaScript ve HTML kullanarak Azure depolamada blob oluşturma
-description: Bir HTML sayfasında JavaScript kullanarak blobları karşıya yüklemek, listelemek ve silmek için bir BlobService örneğini kullanma hakkında bilgi edinin.
+description: HTML sayfasında JavaScript kullanarak Blobları karşıya yüklemeyi, listeleyeceğinizi ve silmeyi öğrenin.
 services: storage
-keywords: depolama, javascript, html
 author: KarlErickson
 ms.custom: mvc
 ms.service: storage
 ms.author: karler
-ms.reviewer: seguler
-ms.date: 05/20/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: ea5dfe2261be4512d4ba8edda1e7fbd5219a50c0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986874"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172826"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -38,7 +36,7 @@ Web uygulamanızın istemciden bir blob depolamaya erişebilmesi için, hesabın
 
 Azure portalına geri dönün depolama hesabınızı seçin. Yeni bir CORS kuralı tanımlamak için, **Ayarlar** bölümüne gidin ve **CORS** bağlantısına tıklayın. Ardından, **Ekle** düğmesine tıklayarak **CORS kuralı ekle** penceresini açın. Bu hızlı başlangıçta bir açık CORS kuralı oluşturacaksınız:
 
-![Azure Blob Depolama Hesabı CORS ayarları](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
+![Azure Blob Depolama Hesabı CORS ayarları](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
 Aşağıdaki tabloda her bir CORS ayarı açıklanmakta ve kuralı tanımlamak için kullanılan değerler anlatılmaktadır.
 

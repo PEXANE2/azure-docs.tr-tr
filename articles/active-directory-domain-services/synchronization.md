@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011284"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171937"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
 
@@ -30,7 +30,7 @@ Aşağıdaki diyagramda, eşitlemenin Azure AD DS, Azure AD ve isteğe bağlı b
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Azure AD 'den Azure AD DS eşitleme
 
-Kullanıcı hesapları, grup üyelikleri ve kimlik bilgisi karmaları Azure AD 'den Azure AD DS bir şekilde eşitlenir. Bu eşitleme işlemi otomatiktir. Bu eşitleme işlemini yapılandırmanız, izlemeniz veya yönetmeniz gerekmez. İlk eşitleme, Azure AD dizinindeki nesne sayısına bağlı olarak birkaç güne kadar birkaç saat sürebilir. İlk eşitleme tamamlandıktan sonra, Azure AD 'de parola veya öznitelik değişiklikleri gibi yapılan değişiklikler Azure AD DS 'nin güncelleştirilmesini yaklaşık 20-30 dakika sürer.
+Kullanıcı hesapları, grup üyelikleri ve kimlik bilgisi karmaları Azure AD 'den Azure AD DS bir şekilde eşitlenir. Bu eşitleme işlemi otomatiktir. Bu eşitleme işlemini yapılandırmanız, izlemeniz veya yönetmeniz gerekmez. İlk eşitleme, Azure AD dizinindeki nesne sayısına bağlı olarak birkaç güne kadar birkaç saat sürebilir. İlk eşitleme tamamlandıktan sonra, Azure AD 'de parola veya öznitelik değişiklikleri gibi yapılan değişiklikler otomatik olarak Azure AD DS eşitlenir.
 
 Eşitleme işlemi tasarım tarafından tek yönlü/tek yönlü olur. Azure AD DS 'den Azure AD 'ye geri yapılan değişikliklerin geriye doğru eşitlenmesi yoktur. Azure AD DS yönetilen etki alanı, oluşturabileceğiniz özel OU 'Lar dışında büyük ölçüde salt okunurdur. Azure AD DS yönetilen bir etki alanı içindeki Kullanıcı özniteliklerinde, Kullanıcı parolalarında veya grup üyeliklerinde değişiklik yapamazsınız.
 

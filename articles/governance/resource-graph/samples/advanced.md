@@ -1,19 +1,19 @@
 ---
 title: Gelişmiş sorgu örnekleri
-description: VMSS kapasite, kullanılan, tüm etiketleri listeleme gibi bazı gelişmiş sorgular çalıştırmak için Azure kaynak Graph eşleşen sanal makineleri ile normal ifadeler kullanın.
+description: Sanal makine ölçek kümesi kapasitesi, kullanılan tüm etiketleri listeleme ve normal ifadelerle eşleşen sanal makineler dahil bazı gelişmiş sorguları çalıştırmak için Azure Kaynak Grafiği ' ni kullanın.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5742d4c14d2599b3efa73e427a5d418e5ef1c1e
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691977"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164895"
 ---
 # <a name="advanced-resource-graph-queries"></a>Gelişmiş Kaynak Grafiği sorguları
 
@@ -22,7 +22,7 @@ Azure Kaynak Grafiği ile sorguları anlamanın il adımı, [Sorgu Dili](../conc
 Aşağıdaki gelişmiş sorguları inceleyeceğiz:
 
 > [!div class="checklist"]
-> - [Sanal makine ölçek kümesi kapasitesini ve boyutunu alma](#vmss-capacity)
+> - [Sanal makine ölçek kümesi kapasitesini ve boyutunu al](#vmss-capacity)
 > - [Tüm etiket adlarını listeleme](#list-all-tags)
 > - [Normal ifade tarafından eşleştirilen sanal makineler](#vm-regex)
 
@@ -72,8 +72,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Normal ifade tarafından eşleştirilen sanal makineler
 
-Bu sorgu, [normal ifadeyle](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ olarak bilinir) eşleşen sanal makineleri arar.
-**Eşleşen normal ifade \@**  olan eşleştirmek için normal ifade tanımlamak sağlıyor `^Contoso(.*)[0-9]+$`. Bu normal ifade tanımı şöyle açıklanmıştır:
+Bu sorgu, [normal ifadeyle](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ olarak bilinir) eşleşen sanal makineleri arar. **Eşleşen Regex \@**  , `^Contoso(.*)[0-9]+$`eşleşecek olan Regex tanımlamanızı sağlar, yani.
+Bu normal ifade tanımı şöyle açıklanmıştır:
 
 - `^` - Eşleşme dizenin başında başlamalıdır.
 - `Contoso` - Büyük/küçük harfe duyarlı dize.
@@ -99,6 +99,22 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```azurepowershell-interactive
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
+
+## <a name="displaynames"></a>Ad ile kiracı ve abonelik adlarını ekleyin
+
+Bu sorgu, sonuçlara **subscriptiondisplayname** ve **Tenantdisplayname** eklemek için _DisplayNames_ seçeneğiyle birlikte yeni **içerme** parametresini kullanır. Bu parametre yalnızca Azure CLı ve Azure PowerShell için kullanılabilir.
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> Sorgu döndürülen özellikleri belirtmek için **Proje** kullanmıyorsa, **Subscriptiondisplayname** ve **tenantdisplayname** , sonuçlara otomatik olarak eklenir.
+> Sorgu **projeyi**kullanıyorsa, _DisplayName_ alanlarının her biri **projeye** açık bir şekilde eklenmelidir veya **Include** parametresi kullanılsa bile sonuçlarda döndürülmezler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

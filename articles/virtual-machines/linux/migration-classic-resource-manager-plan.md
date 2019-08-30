@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 76d47353c5b81d7ed735f11a81e3e77514054076
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3cf262f2c2f14ea66a40facfd5b32139fc648e47
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082636"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165320"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager harika özellikler sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları çok önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir. 
@@ -192,7 +192,7 @@ Göz önüne almanız gerekenler:
 Artık Azure Resource Manager hangi hizmetlerde etkinleştirmek istediğinizi bilerek yapın.  Birçok müşteri, Azure ortamları için aşağıda etkileyici bilgi bulur:
 
 - [Rol tabanlı Access Control](../../role-based-access-control/overview.md).
-- Daha [kolay ve daha denetimli dağıtıma yönelik şablonlar Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md#template-deployment).
+- Daha [kolay ve daha denetimli dağıtıma yönelik şablonlar Azure Resource Manager](../../azure-resource-manager/template-deployment-overview.md).
 - [Etiketler](../../azure-resource-manager/resource-group-using-tags.md).
 - [Etkinlik denetimi](../../azure-resource-manager/resource-group-audit.md)
 - [Azure Ilkeleri](../../governance/policy/overview.md)

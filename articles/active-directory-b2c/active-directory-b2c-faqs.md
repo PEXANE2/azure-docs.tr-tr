@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061364"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183178"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Sık sorulan sorular (SSS)
 
@@ -143,7 +143,7 @@ Azure AD B2C kiracınızı silmek için şu adımları izleyin:
 1. **Tüm uygulamaları görüntüle** seçeneğini belirleyin
 1. **B2C-Extensions-App**adlı uygulamayı seçin, **Sil**' i seçin ve istendiğinde **Evet** ' i seçin.
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
-1. **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
+1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.
 1. **Azure kaynakları Için erişim yönetimi**altında **Evet**' i seçin ve ardından **Kaydet**' i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.

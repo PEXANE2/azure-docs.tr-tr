@@ -4,19 +4,19 @@ description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011857"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165259"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
-Bu makalede, Azure Market kaynak yönetimi için eklendi olmak üzere teklifi satın alan bir müşteriyi etkinleştirerek [bulut iş ortağı portalı](https://cloudpartner.azure.com/)kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'ne genel veya özel yönetilen bir hizmet teklifini yayımlamayı öğreneceksiniz.
+Bu makalede, Azure Market 'e kaynak eklemek için teklifi satın alan bir müşteriyi etkinleştirmek üzere [bulut iş ortağı portalı](https://cloudpartner.azure.com/)kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'ne genel veya özel yönetilen bir hizmet teklifini yayımlamayı öğreneceksiniz. yönetme.
 
 > [!NOTE]
 > Bu teklifleri oluşturmak ve yayımlamak için [Iş Ortağı Merkezi 'nde](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) geçerli bir hesabınız olması gerekir. Zaten bir hesabınız yoksa [kaydolma işlemi](https://aka.ms/joinmarketplace) , Iş Ortağı Merkezi 'nde hesap oluşturma ve ticari Market programına kaydolma adımlarında size yol açacaktır. Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) .
@@ -127,6 +127,65 @@ Bu bilgileri ekledikten sonra Kaydet ' i seçin **.**
 ## <a name="publish-your-offer"></a>Teklifinizi yayımlayın
 
 Sağladığınız tüm bilgileri memnun olduktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu işlem hakkında daha fazla bilgi için bkz. [Azure Marketi ve AppSource tekliflerini yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+
+## <a name="the-customer-onboarding-process"></a>Müşteri ekleme işlemi
+
+Müşteri teklifinizi eklediğinde, bir [veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini](view-manage-service-providers.md#delegate-resources) alacak ve bu, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olacaktır. Bir müşteri bir teklifi kabul etmiş, ancak henüz hiç kaynak temsilcisi yoksa, Azure portal [**hizmet sağlayıcılar**](view-manage-service-providers.md) sayfasının en üstünde **sağlayıcı teklifleri** bölümünün üst kısmında bir not görür.
+
+Abonelik (veya abonelik içindeki kaynak grupları) eklendi, **Microsoft. ManagedServices** kaynak sağlayıcısını el ile kaydederek, aboneliğin ekleme için yetkilendirilmiş olması gerekir. Katkıda bulunan veya sahip rolü olan müşterinin kiracısındaki bir Kullanıcı, [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md)bölümünde belirtilen adımları izleyerek bunu yapabilir.
+
+Daha sonra müşteri, aboneliğin ekleme için aşağıdaki yollarla hazırlandığından emin olabilir.
+
+### <a name="azure-portal"></a>Azure portal
+
+1. Azure portal aboneliği seçin.
+1. **Kaynak sağlayıcıları**’nı seçin.
+1. **Microsoft. ManagedServices** 'ın **kayıtlı**olarak görüntülendiğini doğrulayın.
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+Bu, aşağıdakine benzer sonuçlar döndürmelidir:
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+Bu, aşağıdakine benzer sonuçlar döndürmelidir:
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

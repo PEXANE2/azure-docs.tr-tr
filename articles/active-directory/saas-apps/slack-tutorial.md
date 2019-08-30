@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e15f704fc9604bd18a1f4848e84065fc507314
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563072"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Öğretici: Bolluk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -47,6 +47,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Bolluk, **SP** tarafından başlatılan SSO 'yu destekler
 * Bolluk **, tam zamanında** Kullanıcı sağlamayı destekler
 * Bolluk [ **Otomatik** Kullanıcı sağlamasını destekler](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial)
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-slack-from-the-gallery"></a>Galeriden bolluk ekleme
 
@@ -91,36 +94,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [bolluk istemci destek ekibine](https://slack.com/help/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Bolluk uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > **E-posta adresi** atanmış kullanıcılarınız bir Office365 lisansı üzerinde değilse, **Kullanıcı. e-posta** talebi SAML belirtecinde görünmez. Bu durumlarda Kullanıcı. **userPrincipalName** ' i **Kullanıcı. e-posta** öznitelik değeri olarak kullanmak yerine **benzersiz tanımlayıcı** olarak kullanmanızı öneririz.
-
-1. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
-
-    | Name | Kaynak özniteliği |
-    | --- | --- |
-    | first_name | Kullanıcı. |
-    | last_name | User. soyadı |
-    | Kullanıcı. e-posta | Kullanıcı. Mail |
-    | User. UserName | User. UserPrincipalName |
-
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
-
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
-
-    c. **Ad alanını** boş bırakın.
-
-    d. **Öznitelik**olarak kaynak seçin.
-
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
-
-    f. Tıklayın **Tamam**
-
-    g. **Kaydet**’e tıklayın.
-
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
@@ -139,7 +112,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -187,7 +160,7 @@ Bu bölümde, bolluk erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 ### <a name="create-slack-test-user"></a>Bolluk test kullanıcısı oluşturma
 
-Bu bölümün amacı, bolluk içinde Britta Simon adlı bir Kullanıcı oluşturmaktır. Bolluk, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa bolluk 'e erişme girişimi sırasında yeni bir Kullanıcı oluşturulur. Bolluk, otomatik Kullanıcı sağlamayı da destekler, Ayrıca, otomatik Kullanıcı [](slack-provisioning-tutorial.md) sağlamayı yapılandırma hakkında daha fazla ayrıntı bulabilirsiniz.
+Bu bölümün amacı, boşluk olarak B. Simon adlı bir Kullanıcı oluşturmaktır. Bolluk, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa bolluk 'e erişme girişimi sırasında yeni bir Kullanıcı oluşturulur. Bolluk, otomatik Kullanıcı sağlamayı da destekler, Ayrıca, otomatik Kullanıcı [](slack-provisioning-tutorial.md) sağlamayı yapılandırma hakkında daha fazla ayrıntı bulabilirsiniz.
 
 > [!NOTE]
 > Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [bolluk destek ekibine](https://slack.com/help/contact)başvurmanız gerekir.

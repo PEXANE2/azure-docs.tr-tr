@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850991"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183579"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway için arka uç sistem durumu, tanılama günlükleri ve ölçümler
 
@@ -105,7 +105,7 @@ Uygulama ağ geçitlerini yönetmek ve sorunlarını gidermek için Azure 'da fa
 Günlüklerinizi depolamak için kullanabileceğiniz üç seçenek vardır:
 
 * **Depolama hesabı**: Depolama hesapları, Günlükler daha uzun bir süre boyunca depolandığında ve gerektiğinde incelenip günlüklerde en iyi şekilde kullanılır.
-* **Olay Hub 'ları**: Olay Hub 'ları, kaynaklarınızda uyarı almak için diğer güvenlik bilgileri ve olay yönetimi (SEıM) araçlarıyla tümleştirme için harika bir seçenektir.
+* **Olay Hub 'ları**: Olay Hub 'ları, kaynaklarınızda uyarı almak için diğer güvenlik bilgileri ve olay yönetimi (SıEM) araçlarıyla tümleştirme için harika bir seçenektir.
 * **Azure izleyici günlükleri**: Azure Izleyici günlükleri, uygulamanızın genel gerçek zamanlı izleme için en iyi şekilde kullanılır veya eğilimleri göz yormaktadır.
 
 ### <a name="enable-logging-through-powershell"></a>PowerShell aracılığıyla günlüğü etkinleştir
