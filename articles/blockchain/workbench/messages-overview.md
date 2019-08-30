@@ -69,7 +69,7 @@ Blockchain Workbench'i şu alanlara sahip bir yanıt döndürür:
 | connectionId          | Blok zinciri bağlantı için benzersiz tanımlayıcı|
 | messageSchemaVersion  | Mesajlaşma şema sürümü |
 | messageName           | **CreateUserUpdate** |
-| status                | Kullanıcı oluşturma isteği durumu.  Başarılı, değer olup olmadığını **başarı**. Hata durumunda değerdir **hatası**.     |
+| status                | Kullanıcı oluşturma isteği durumu.  Başarılı, değer olup olmadığını **Success**. Hata durumunda değerdir **Failure**.     |
 | additionalInformation | Ek bilgi sağlanan temel durumu |
 
 Örnek başarılı **oluşturacağı** Blockchain Workbench'i gelen yanıt:
