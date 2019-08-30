@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 08/30/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126007"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186701"
 ---
 ::: zone target="docs"
 
@@ -40,7 +41,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 ::: zone target="chromeless"
 
-Bu kılavuzda Azure Data Box Disk Azure portal nasıl dağıtılacağı açıklanır. Adımlarda Önkoşulları Gözden geçirme, disklerin kilidini açma ve verileri disklere bağlama ve verileri Azure 'a yükleyecek şekilde disklere kopyalama işlemleri dahildir.
+Bu kılavuz, Azure portal Azure Data Box Disk kullanma adımlarında size yol gösterir. Bu kılavuz, aşağıdaki soruların yanıtlanmasına yardımcı olur.
 
 ::: zone-end
 
@@ -60,17 +61,16 @@ Başlamadan önce:
 
 ::: zone target="chromeless"
 
-### <a name="prerequisites"></a>Önkoşullar
-
-- [Öğreticiyi kullanarak Data Box disk siparişinizi yerleştirdiniz: Order Azure Data Box Disk](data-box-disk-deploy-ordered.md).
-- Disklerinizi aldınız ve portaldaki iş durumu **Teslim Edildi** olarak güncelleştirildi.
-- Aldığınız disk sayısını ve disk başına bir bağlantı kablosu olduğunu denetlediyseniz.
-- Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınız var. İstemci bilgisayarınızda:
-
-    - Desteklenen bir [işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)çalıştırın.
-    - Bir Windows istemcisi ise, [diğer gerekli yazılımların](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) yüklü olmasını gerektirir.
+> [!div class="checklist"]
+>
+> - **Önkoşulları Gözden geçirin**: Disk ve kabloların sayısını, işletim sistemini ve diğer yazılımları denetleyin.
+> - **Bağlan ve kilidini aç**: Cihazı bağlayın ve verileri kopyalamak için diskin kilidini açın.
+> - **Verileri diske kopyalayın ve doğrulayın**: Verileri disklere, önceden düzenlenen klasörlere kopyalayın.
+> - **Diskleri döndürün**: Diskleri depolama hesabınıza yüklenen Azure veri merkezine döndürün.
+> - **Azure 'daki verileri doğrulayın**: Kaynak Tarih sunucusundan silmeden önce verilerinizin depolama hesabınıza yüklendiğini doğrulayın.
 
 ::: zone-end
+
 
 ::: zone target="docs"
 
