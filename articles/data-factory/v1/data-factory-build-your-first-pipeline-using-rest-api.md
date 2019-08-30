@@ -174,7 +174,7 @@ Aşağıdaki tabloda, kod parçacığında kullanılan JSON özellikleri için a
 | type |Günlük dosyaları metin biçiminde olduğundan TextFormat kullanacağız. |
 | columnDelimiter |Günlük dosyalarındaki sütunlar virgül (,) ile ayrılmıştır. |
 | frequency/interval |frequency Ay, interval de 1 olarak ayarlanmıştır; girdi dilimlerinin aylık olarak kullanılabileceğini belirtir. |
-| dış |bu özellik, girdi verileri Data Factory hizmetiyle oluşturulmadıysa true olarak ayarlanır. |
+| external |bu özellik, girdi verileri Data Factory hizmetiyle oluşturulmadıysa true olarak ayarlanır. |
 
 ### <a name="outputdatasetjson"></a>outputdataset.json
 
