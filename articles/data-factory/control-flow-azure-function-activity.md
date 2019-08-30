@@ -33,8 +33,8 @@ Azure işlevinin dönüş türü geçerli `JObject`bir olmalıdır. ( [Jarray](h
 | **Özellik** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
 | type   | Type özelliği şu şekilde ayarlanmalıdır: **AzureFunction** | evet |
-| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. `https://<accountname>.azurewebsites.net`Biçim. Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
-| işlev anahtarı | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını**kopyalayın. Daha fazla bilgi edinin: [Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | evet |
+| function app url | Azure İşlev Uygulaması URL 'SI. `https://<accountname>.azurewebsites.net`Biçim. Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
+| function key | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını**kopyalayın. Daha fazla bilgi edinin: [Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | evet |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure Işlevi etkinliği
@@ -43,10 +43,10 @@ Azure işlevinin dönüş türü geçerli `JObject`bir olmalıdır. ( [Jarray](h
 | --- | --- | --- | --- |
 | name  | İşlem hattındaki etkinliğin adı  | Dize | evet |
 | type  | Etkinliğin türü ' AzureFunctionActivity ' | Dize | evet |
-| bağlı hizmet | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | evet |
-| işlev adı  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | evet |
+| linked service | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | evet |
+| function name  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | evet |
 | yöntemi  | İşlev çağrısı için REST API yöntemi | Dize desteklenen türler: "AL", "POST", "PUT"   | evet |
-| üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
+| header  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
 | body  | işlevin API metoduna isteğiyle birlikte gönderilen gövde  | Dize (veya dize resultType 'ı olan ifade) veya nesne.   | PUT/POST yöntemleri için gereklidir |
 |   |   |   | |
 
