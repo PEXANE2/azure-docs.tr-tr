@@ -54,11 +54,11 @@ Windows için:
 | producerInterval | TimeSpan | Olay üreticisi çalışan aralığı. |
 | consumerınterval | TimeSpan | Olay tüketicisi çalışan aralığı. |
 | highPriorityQueueSizePercentage | 0 < numarası < 1 | Yüksek öncelikli iletiler için ayrılan toplam önbelleğin bölümü. |
-| logLevel | "Off", "önemli", "Error", "Warning", "Information", "Debug"  | Bu önem derecesine sahip ve yukarıdaki günlük iletileri hata ayıklama konsolunda günlüğe kaydedilir (Linux 'ta syslog). |
-| Dosya LogLevel |  "Off", "önemli", "Error", "Warning", "Information", "Debug"| Bu önem derecesine sahip olan ve yukarıdaki günlük iletileri, dosyaya (Linux 'ta syslog) kaydedilir. |
-| diagnosticVerbosityLevel | "None", "Some", "tümü", | Tanılama olaylarının ayrıntı düzeyi. Hiçbiri-tanılama olayları gönderilmez, yüksek önem taşıyan bazı tanılama olayları gönderilir, tüm Günlükler de tanılama olayları olarak gönderilir. |
+| logLevel | "Off", "Fatal", "Error", "Warning", "Information", "Debug"  | Bu önem derecesine sahip ve yukarıdaki günlük iletileri hata ayıklama konsolunda günlüğe kaydedilir (Linux 'ta syslog). |
+| fileLogLevel |  "Off", "Fatal", "Error", "Warning", "Information", "Debug"| Bu önem derecesine sahip olan ve yukarıdaki günlük iletileri, dosyaya (Linux 'ta syslog) kaydedilir. |
+| diagnosticVerbosityLevel | "None", "Some", "ALL", | Tanılama olaylarının ayrıntı düzeyi. Hiçbiri-tanılama olayları gönderilmez, yüksek önem taşıyan bazı tanılama olayları gönderilir, tüm Günlükler de tanılama olayları olarak gönderilir. |
 | logFilePath | Dosya yolu | FileLogLevel > kapalıysa Günlükler bu dosyaya yazılır. |
-| defaultEventPriority | "Yüksek", "düşük", "kapalı" | Varsayılan olay önceliği. |
+| defaultEventPriority | "High", "Low", "Off" | Varsayılan olay önceliği. |
 
 ### <a name="generalconfig-example"></a>General. config örneği
 ```XML
@@ -82,15 +82,15 @@ Windows için:
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar | 
 |:-----------|:---------------|:--------|
-| moduleName | dize | Güvenlik modülü kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
-| deviceId | dize | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). || schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
-| gatewayHostname | dize | Azure IoT Hub 'ının konak adı. Genellikle <-Hub >. Azure-devices.net |
-| filePath | dize-dosyanın yolu | Kimlik doğrulama parolasını içeren dosyanın yolu.|
-| türü | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifikadır, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
-| identity | "DPS", "Module", "cihaz" | Kimlik doğrulaması kimliği-kimlik doğrulama, DPS aracılığıyla yapılırsa, modül kimlik bilgileri kullanılarak kimlik doğrulaması yapıldığında modül veya cihaz kimlik bilgileri kullanılarak kimlik doğrulaması yapılmışsa kullanılır.
-| certificateLocationKind |  "YerelDosya", "Mağaza" | YerelDosya sertifika bir dosyada depolanıyorsa, sertifika bir sertifika deposunda bulunuyorsa mağaza. |
-| idScope | dize | DPS KIMLIK kapsamı |
-| registrationId | dize  | DPS cihaz kayıt KIMLIĞI. |
+| moduleName | string | Güvenlik modülü kimliğinin adı. Bu ad, cihazdaki modül kimliği adına karşılık gelmelidir. |
+| deviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). || schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
+| gatewayHostname | string | Azure IoT Hub 'ının konak adı. Genellikle <-Hub >. Azure-devices.net |
+| filePath | string - dosyanın yolu | Kimlik doğrulama parolasını içeren dosyanın yolu.|
+| type | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifikadır, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
+| identity | "DPS", "Module", "Device" | Kimlik doğrulaması kimliği-kimlik doğrulama, DPS aracılığıyla yapılırsa, modül kimlik bilgileri kullanılarak kimlik doğrulaması yapıldığında modül veya cihaz kimlik bilgileri kullanılarak kimlik doğrulaması yapılmışsa kullanılır.
+| certificateLocationKind |  "LocalFile", "Store" | YerelDosya sertifika bir dosyada depolanıyorsa, sertifika bir sertifika deposunda bulunuyorsa mağaza. |
+| idScope | string | DPS KIMLIK kapsamı |
+| registrationId | string  | DPS cihaz kayıt KIMLIĞI. |
 |
 
 ### <a name="authenticationconfig-example"></a>Authentication. config örneği
