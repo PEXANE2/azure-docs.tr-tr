@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102881"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142212"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Geçişi: Sık sorulan sorular (SSS)
 
@@ -172,7 +172,7 @@ Hayır, bağımlılık görselleştirmesi verilemiyor. Ancak Azure geçişi bağ
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Microsoft Monitoring Agent (MMA) ve bağımlılık aracısının yüklenmesini nasıl otomatikleştirebilirim?
 
-[Aracıları yüklemek için bu betiği](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
+[Bağımlılık aracısını yüklemek için bu betiği](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
 
 Betiklerin yanı sıra, aracıları dağıtmak için System Center Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını da kullanabilirsiniz.
 
@@ -183,8 +183,7 @@ Betiklerin yanı sıra, aracıları dağıtmak için System Center Configuration
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Bağımlılık Aracısı tarafından hangi işletim sistemleri destekleniyor?
 
-- [Bağımlılık Aracısı tarafından desteklenen Windows işletim sistemlerinin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)listesini görüntüleyin.
-- [Bağımlılık Aracısı tarafından desteklenen Linux işletim sistemlerinin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)listesini görüntüleyin.
+[VM'ler için Azure izleyici desteklediği Windows ve Linux işletim sistemlerinin](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)listesini görüntüleyin.
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Bir saatten uzun bir süre boyunca Azure geçişi bağımlılıklarını görselleştirebilir miyim?
 Hayır. Bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmiş olarak belirli bir tarihe kadar geri dönerek, bir ay olarak geri dönebilirsiniz, ancak görselleştirme için en uzun süre bir saat olabilir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencere için görüntüleyebilirsiniz. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.

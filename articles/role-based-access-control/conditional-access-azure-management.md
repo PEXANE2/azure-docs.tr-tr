@@ -15,14 +15,17 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899719"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142824"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Koşullu erişimle Azure yönetimine erişimi yönetme
+
+> [!CAUTION]
+> Azure yönetimine erişimi yönetmek üzere bir ilke ayarlamadan önce Koşullu erişimin nasıl çalıştığını anladığınızdan emin olun. Portala kendi erişiminizi engelleyebilen koşullar oluşturduğunuzdan emin olun.
 
 Azure Active Directory (Azure AD) koşullu erişim, belirttiğiniz belirli koşullara göre bulut uygulamalarına erişimi denetler. Erişime izin vermek için ilkedeki gereksinimlerin karşılanıp karşılanmadığını temel alarak erişime izin veren veya erişimi engelleyen koşullu erişim ilkeleri oluşturabilirsiniz. 
 
@@ -44,7 +47,5 @@ Oluşturduğunuz ilke, aşağıdakiler de dahil olmak üzere tüm Azure Yönetim
 
 İlkenin Azure Resource Manager API 'yi çağıran Azure PowerShell için geçerli olduğunu unutmayın. Microsoft Graph çağıran [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)için de geçerlidir.
 
-> [!CAUTION]
-> Azure yönetimine erişimi yönetmek üzere bir ilke ayarlamadan önce Koşullu erişimin nasıl çalıştığını anladığınızdan emin olun. Portala kendi erişiminizi engelleyebilen koşullar oluşturduğunuzdan emin olun.
 
 Koşullu erişimin nasıl ayarlanacağı ve kullanılacağı hakkında daha fazla bilgi için [Azure Active Directory 'de koşullu erişim](../active-directory/active-directory-conditional-access-azure-portal.md)konusuna bakın.

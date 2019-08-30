@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0f1a2e0bad39b54edc153416e4120bbc6912578c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532934"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125460"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Temel ilke: Son Kullanıcı koruması (Önizleme)
 
@@ -24,7 +24,7 @@ Yönetici hesaplarının, çok faktörlü kimlik doğrulamasıyla (MFA) korunmas
 
 Güvenlik ve kullanılabilirlik açısından makul bir dengeyi elde etmek için kullanıcılardan her oturum açtıklarında uyarılmamalıdır. Aynı konumdan aynı cihazdan oturum açma gibi normal kullanıcı davranışlarını yansıtan kimlik doğrulama istekleri, düşük bir uzlaşmaya karşı risk altında olabilir. Yalnızca riskli olarak kabul edilen ve hatalı aktörün özelliklerini gösteren oturum açma işlemleri, MFA güçlükleri ile birlikte sorulmalıdır.
 
-Son Kullanıcı koruması, tüm yönetici rolleri dahil olmak üzere bir dizindeki tüm kullanıcıları koruyan risk tabanlı MFA [temel ilkesidir](concept-baseline-protection.md) . Bu ilkenin etkinleştirilmesi, tüm kullanıcıların kimlik doğrulayıcı uygulamasını kullanarak MFA 'ya kaydolmanızı gerektirir. Kullanıcılar MFA kayıt isteminde 14 gün boyunca yok sayabilir, sonrasında MFA 'ya kaydoluncaya kadar oturum açmalarını engellenecektir. MFA için kaydolduktan sonra kullanıcılardan yalnızca riskli oturum açma girişimleri sırasında MFA sorulur. Güvenliği aşılmış Kullanıcı hesapları, parolaları sıfırlanana ve risk olayları kapatıldıktan kadar engellenir.
+Son Kullanıcı koruması, tüm yönetici rolleri dahil olmak üzere bir dizindeki tüm kullanıcıları koruyan risk tabanlı MFA [temel ilkesidir](concept-baseline-protection.md) . Bu ilkenin etkinleştirilmesi, tüm kullanıcıların kimlik doğrulayıcı uygulamasını kullanarak MFA 'ya kaydolmanızı gerektirir. Kullanıcılar MFA kayıt isteminde 14 gün boyunca yok sayabilir, sonrasında MFA 'ya kaydoluncaya kadar oturum açmalarını engellenecektir. MFA için kaydolduktan sonra kullanıcılardan yalnızca riskli oturum açma girişimleri sırasında MFA sorulur. Güvenliği aşılmış Kullanıcı hesapları, parolaları sıfırlanana ve risk algılamaları kapatıldığından engellenir.
 
 > [!NOTE]
 > Bu ilke, Konuk hesapları dahil tüm kullanıcılar için geçerlidir ve tüm uygulamalarda oturum açarken değerlendirilir.
@@ -33,7 +33,7 @@ Son Kullanıcı koruması, tüm yönetici rolleri dahil olmak üzere bir dizinde
 
 Microsoft 'un sızdırılan kimlik bilgisi hizmeti, müşterilerimizin korunmasına yardımcı olmak için herkese açık Kullanıcı adı/parola çiftleri buluyor. Kullanıcılarımızdan biriyle eşleşiyorsa, bu hesabın güvenliğini hemen güvence altına almaya yardımcı olur. Sızdırılan kimlik bilgilerine sahip olarak tanımlanan kullanıcıların güvenliği aşılmış. Bu kullanıcıların, parolaları sıfırlanana kadar oturum açması engellenir.
 
-Bir Azure AD Premium Lisansı atanan kullanıcılar, özelliği dizinde etkinleştirilmişse self servis parola sıfırlama (SSPR) üzerinden erişimi geri yükleyebilir. Premium lisansına sahip olmayan kullanıcıların, el ile parola sıfırlaması gerçekleştirmesi ve bayraklı Kullanıcı riski olayını kapatması için bir yöneticiye başvurması gerekir.
+Bir Azure AD Premium Lisansı atanan kullanıcılar, özelliği dizinde etkinleştirilmişse self servis parola sıfırlama (SSPR) üzerinden erişimi geri yükleyebilir. Premium lisansına sahip olmayan kullanıcılar el ile parola sıfırlama işlemi gerçekleştirmek ve bayraklı Kullanıcı riski algılamayı kapatmak için bir yöneticiye başvurmalıdır.
 
 ### <a name="steps-to-unblock-a-user"></a>Kullanıcının engellemesini kaldırma adımları
 

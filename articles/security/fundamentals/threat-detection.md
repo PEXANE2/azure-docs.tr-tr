@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036186"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129274"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure Gelişmiş tehdit algılama
 
@@ -30,13 +30,13 @@ Azure, uygulama dağıtımlarınızın gereksinimlerini karşılamak için güve
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Kimlik Koruması
 
-[Azure AD kimlik koruması](../../active-directory/identity-protection/overview.md) , kuruluşunuzun kimliklerini etkileyebilecek risk olaylarına ve olası güvenlik açıklarına genel bir bakış sağlayan bir [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) Edition özelliğidir. Kimlik koruması, [Azure AD anormal etkinlik raporları](../../active-directory/active-directory-reporting-azure-portal.md)aracılığıyla kullanılabilen mevcut Azure AD anomali algılama yeteneklerini kullanır ve gerçek zamanlı anormallikleri tespit eden yeni risk olayı türlerini tanıtır.
+[Azure AD kimlik koruması](../../active-directory/identity-protection/overview.md) , kuruluşunuzun kimliklerini etkileyebilecek risk algılamaları ve olası güvenlik açıklarına genel bir bakış sağlayan bir [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) Edition özelliğidir. Kimlik koruması, [Azure AD anormal etkinlik raporları](../../active-directory/active-directory-reporting-azure-portal.md)aracılığıyla kullanılabilen mevcut Azure AD anomali algılama yeteneklerini kullanır ve gerçek zamanlı anormallikleri tespit eden yeni risk algılama türlerini tanıtır.
 
 ![Azure AD Kimlik Koruması diyagramı](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Kimlik koruması, bir kimliğin tehlikede olduğunu gösterebilen anormallikleri ve risk olaylarını algılamak için uyarlamalı makine öğrenme algoritmaları ve buluşsal yöntemler kullanır. Bu verileri kullanarak, kimlik koruması, bu risk olaylarını araştırmak ve uygun düzeltme ya da risk azaltma eylemi gerçekleştirmek için raporlar ve uyarılar oluşturur.
+Kimlik koruması, bir kimliğin tehlikede olduğunu gösterebilen anormallikleri ve risk algılamalarını tespit etmek için uyarlamalı makine öğrenme algoritmaları ve buluşsal yöntemler kullanır. Bu verileri kullanarak, kimlik koruması, bu risk algılamalarını araştırmak ve uygun düzeltme ya da risk azaltma eylemi gerçekleştirmek için raporlar ve uyarılar oluşturur.
 
-Azure Active Directory Kimlik Koruması, bir izleme ve raporlama aracından daha fazla. Kimlik koruması, risk olaylarına göre her bir kullanıcı için bir Kullanıcı risk düzeyi hesaplar ve böylece, kuruluşunuzun kimliklerini otomatik olarak korumak için risk tabanlı ilkeler yapılandırabilirsiniz.
+Azure Active Directory Kimlik Koruması, bir izleme ve raporlama aracından daha fazla. Risk algılamaları temelinde, kimlik koruması her bir kullanıcı için bir Kullanıcı risk düzeyi hesapladığında, böylece kuruluşunuzun kimliklerini otomatik olarak korumak için risk tabanlı ilkeleri yapılandırabilirsiniz.
 
 Bu risk tabanlı ilkeler, Azure Active Directory ve [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)tarafından sunulan diğer [koşullu erişim denetimlerine](../../active-directory/active-directory-conditional-access-azure-portal.md) ek olarak, parola sıfırlama ve Multi-Factor içeren Uyarlamalı düzeltme eylemlerini otomatik olarak engelleyebilir veya sunabilir kimlik doğrulama zorlaması.
 
@@ -46,14 +46,14 @@ Azure Active Directory Kimlik Koruması, bir izleme ve raporlama aracından daha
 
 Azure kimlik koruması 'nın hesaplarınız ve kimliklerinizin güvenliğini sağlamaya yardımcı olabilecek bazı yollarla ilgili örnekler şunlardır:
 
-[Risk olayları ve riskli hesaplar algılanıyor](../../active-directory/identity-protection/overview.md)
--   Makine öğrenimi ve buluşsal kuralları kullanarak altı riskli olay türünü tespit edin.
+[Risk algılamaları ve riskli hesaplar algılanıyor](../../active-directory/identity-protection/overview.md)
+-   Makine öğrenimi ve buluşsal kuralları kullanarak altı riskli algılama türünü tespit edin.
 -   Kullanıcı risk düzeylerini hesaplayın.
 -   Güvenlik açıklarını vurgulayarak genel güvenlik duruşunu geliştirmek için özel öneriler sağlar.
 
-[Risk olaylarını araştırma](../../active-directory/identity-protection/overview.md)
--   Risk olayları için bildirimleri gönderin.
--   İlgili ve bağlamsal bilgileri kullanarak Risk olaylarını araştırın.
+[Risk algılamalarını araştırma](../../active-directory/identity-protection/overview.md)
+-   Risk algılamaları için bildirimleri gönderin.
+-   İlgili ve bağlamsal bilgileri kullanarak risk algılamalarını araştırın.
 -   Araştırmalar izlemek için temel iş akışları sağlayın.
 -   Parola sıfırlama gibi Düzeltme eylemlerine kolay erişim sağlar.
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614212"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125583"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services'i kullanarak bir HDInsight kümesi ile Kurumsal Güvenlik Paketi yapılandırma
 
@@ -22,12 +22,12 @@ Kurumsal Güvenlik Paketi (ESP) kümeleri, Azure HDInsight kümelerinde çoklu K
 Bu makalede, Azure Active Directory Domain Services (Azure AD DS) kullanarak bir HDInsight kümesini ESP ile yapılandırmayı öğreneceksiniz.
 
 > [!NOTE]  
-> ESP, şu küme türleri için HDInsight 3,6 ve 4,0 ' de genel kullanıma sunulmuştur: Apache Spark, etkileşimli, Apache Hadoop ve HBase. Apache Kafka küme türü için ESP önizlemededir.
+> ESP, şu küme türleri için HDInsight 3,6 ve 4,0 ' de genel kullanıma sunulmuştur: Apache Spark, etkileşimli, Hadoop ve HBase. Apache Kafka küme türü için ESP yalnızca en iyi çaba desteğiyle önizlemededir. ESP GA tarihi (1 Ekim 2018) öncesinde oluşturulan ESP kümeleri desteklenmez.
 
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS 'yi etkinleştirme
 
 > [!NOTE]  
-> Yalnızca kiracı yöneticileri Azure AD-DS 'yi etkinleştirme ayrıcalıklarına sahiptir. Küme depolaması Azure Data Lake Storage (ADLS) Gen1 veya Gen2 ise, yalnızca temel Kerberos kimlik doğrulamaları kullanılarak kümeye erişmesi gereken kullanıcılar için Multi-Factor Authentication 'ı (MFA) devre dışı bırakmanız gerekir. Belirli kullanıcılar için MFA 'yı yalnızca HDInsight küme VNET IP aralığına erişirken devre dışı bırakmak için [Güvenilen IP 'leri](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) veya [koşullu erişimi](../../active-directory/conditional-access/overview.md) kullanabilirsiniz. Koşullu erişim kullanıyorsanız lütfen HDInsight VNET üzerinde AD hizmeti uç noktasının etkinleştirildiğinden emin olun.
+> Yalnızca kiracı yöneticileri Azure AD-DS 'yi etkinleştirme ayrıcalıklarına sahiptir. Küme depolaması Azure Data Lake Storage (ADLS) Gen1 veya Gen2 ise, yalnızca temel Kerberos kimlik doğrulamaları kullanarak kümeye erişmesi gereken kullanıcılar için Multi-Factor Authentication (MFA) seçeneğini devre dışı bırakmanız gerekir. Belirli kullanıcılar için MFA 'yı yalnızca HDInsight küme VNET IP aralığına erişirken devre dışı bırakmak için [Güvenilen IP 'leri](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) veya [koşullu erişimi](../../active-directory/conditional-access/overview.md) kullanabilirsiniz. Koşullu erişim kullanıyorsanız lütfen HDInsight VNET üzerinde AD hizmeti uç noktasının etkinleştirildiğinden emin olun.
 >
 > Küme depolama alanı Azure Blob depolama (te) ise, MFA 'yı devre dışı bırakın.
 

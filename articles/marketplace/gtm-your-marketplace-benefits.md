@@ -1,76 +1,76 @@
 ---
-title: Go-To-Market Hizmetleri - Market Avantajlarınızı | Azure
-description: Go-To-Market Hizmetleri - yayımcılar kullanabileceği Microsoft kaynakları, bu bölümde açıklanmıştır.
+title: Pazara yönelik hizmetler-Market avantajlarınız | Mavisi
+description: Go-to-market Services-yayımcıların kullanabileceği Microsoft kaynakları bu bölümde açıklanmıştır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02fcda2d851ddefa1c592bf0b5b09d5e5d59828f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909695"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128219"
 ---
-# <a name="your-marketplace-benefits"></a>Market Avantajlarınızı
+# <a name="your-marketplace-benefits"></a>Market avantajlarınız
 
-Yayımlama sürecinizi bir parçası olarak, teklifiniz için teknik ve pazarlama varlıklar oluşturmanız gerekir. Sonuç olarak, Azure Market ve AppSource yayımcıların, teklifiniz müşteri etkileşimi geliştirmek için kullanabileceğiniz teknik ve pazarlama avantajları vardır. Teknik kaynaklar aşağıda yararlı bulabilirsiniz.
+Yayımlama yolculuğunun bir parçası olarak teklifiniz için teknik ve pazarlama varlıkları oluşturmanız gerekir. Sonuç olarak, Azure Marketi ve AppSource yayımcılarının teklifinizle müşteri etkileşimini geliştirmek için kullanabileceği teknik ve pazarlama avantajları vardır. Aşağıdaki teknik kaynakları yararlı bulabilirsiniz.
 
-## <a name="technical-resources-provided-by-microsoft"></a>Microsoft tarafından sağlanan teknik kaynaklar
+## <a name="technical-resources-provided-by-microsoft"></a>Microsoft tarafından sunulan teknik kaynaklar
 
-Teklifinizi oluştururken, çok çeşitli Microsoft kaynaklar, teknik bir uzmanla danışmanlık veya bir Market özgü çözümü test etmek için destek alma gibi yararlanabilir.
+Teklifinizi oluştururken, teknik bir uzman ile danışmanlık ya da Market 'e özgü bir çözümün test edilmesi için destek alma gibi birçok Microsoft kaynaklarından yararlanabilirsiniz.
 
-Teknik kaynaklar herhangi bir zamanda kullanılabilir.  Aşağıdaki tabloda avantajları listeler:
+Teknik kaynaklar dilediğiniz zaman kullanılabilir.  Aşağıdaki tabloda avantajlar listelenmiştir:
 
 ![](./media/marketplace-publishers-guide/technical-benefit-table.png)
 
 ## <a name="how-to-access-microsoft-resources"></a>Microsoft kaynaklarına erişme
 
-Git pazara açılma avantajları bir teklif yayımlanan iş ortakları için erişilebilir. 
+Pazara sunma avantajlarına, yakın zamanda bir teklif yayımlayan iş ortakları tarafından erişilebilir. 
 
-1. Ekleme: [Kayıt](https://azuremarketplace.microsoft.com/sell) Destek kaynakları ekleme ve bulut iş ortağı portalına erişmek için.
-2. Microsoft marketleri danışmanlığı: Bu yararlanmak [ücretsiz danışmanlığı](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) Market uygulamanızda mimarisi planlamanıza yardımcı olacak.
-3. Market forumları için: Doğrudan Microsoft çalışanları ve diğer Market iş ortakları için sorularınızı sormak [Market Forumu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
-4. Teknik Destek: Yardım menüsünden kullanmak [bulut iş ortağı portalı](https://cloudpartner.azure.com/) destek Market ile ilgili sorularınızı Yardım almak için. 
-5. AAD tümleştirmesi ve geliştirme ve test sponsorluk: bir transactable (dağıtılabilir ve faturalanabilir teklifi ile) Canlı geçtiğinizde de tutulursunuz. Git pazara açılma avantajları ile çalışmaya başlama öğrenmek için sonraki bölüme bakın.
+1. Ekleme Bulut İş Ortağı Portalı erişim ve destek kaynaklarına ekleme için [kaydolun](https://azuremarketplace.microsoft.com/sell) .
+2. Microsoft markette danışmanın: Market 'te uygulamanızın mimarisini planlamaya yardımcı olması için bu [ücretsiz danışmandan](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) yararlanın.
+3. Market forumları: Sorularınıza doğrudan Microsoft çalışanları ve [Market forumundaki](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)diğer Market iş ortakları için soru sorun.
+4. Teknik destek: Market ile ilgili destek sorularınızı hakkında yardım almak için [bulut iş ortağı portalı](https://cloudpartner.azure.com/) Yardım menüsünü kullanın. 
+5. AAD tümleştirme ve geliştirme ve test Sponsorluk: bir transactable (dağıtılabilir ve faturalanabilir teklif) ile canlı olduğunuzda kabul edersiniz. Pazara sunma avantajlarına nasıl başlacağınız hakkında daha fazla bilgi için bir sonraki bölüme bakın.
 
-## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Market'te Git pazara açılma (GTM) avantajları
+## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Market 'te pazara sunma (GTM) avantajları
 
-Azure Market ve AppSource hem yeni kayıtlara Microsoft GTM Hizmetleri ekibimizle aracılığıyla ücretsiz Market Avantajlarımız almaya uygundur. Bu takım, listelerini iyileştirmek ve çözümlerinizi Microsoft Market'te için tanıma artırmak yardımcı olur.
+Hem Azure Marketi 'nde hem de AppSource 'ta yeni listeler, Microsoft GTM Hizmetleri takımımız aracılığıyla ücretsiz Market GTM avantajları almaya uygundur. Bu ekip, listelerinizi iyileştirmenize ve Microsoft Market 'teki çözümleriniz için tanımayı artırmanıza yardımcı olur.
 
-| Vitrin | Kullanılabilir ek avantajlar |
+| Vitrin | Ek kullanılabilir avantajlar |
 |:--- |:--- |
-| AppSource |  Microsoft Gold iş ortaklarına <br> Teklifler transact-Market kazandırır <br> Deneme uygulamaları |
-| Azure Marketi | Teklifler transact-Market kazandırır <br> Deneme tekliflerinden |
+| AppSource |  Microsoft Gold iş ortakları <br> Transact teklifleri – Market remarleri <br> Deneme uygulamaları |
+| Azure Marketi | Transact teklifleri – Market remarleri <br> Deneme teklifleri |
 
-GTM destek şablonları, web içeriği, eğitim ve işletmenizi tanıtmak için Araçlar içerir.
+GTM desteğiniz, işinizi yükseltmek için şablonlar, Web içeriği, eğitim ve araçlar içerir.
 
-Bu avantajlara erişmek için ihtiyacınız olacak:
+Bu avantajlara erişmek için şunları yapmanız gerekir:
 
-1. Bir teklifi Azure Market veya Appsource'ta yayımlama.
-2. Pazarlama kişi girdiğinizden emin olun **iletişim bilgilerini** teklifinizi kısmı. Bu, bir catch tüm diğer adı yerine özel bir pazarlama kaynak olmalıdır. (yani, kullanmaktan kaçının "Destek\@", "bilgi\@", "pazarlama\@", vb..)
+1. Azure Market veya AppSource 'ta bir teklif yayımlayın.
+2. Teklifinizin **kişi bilgileri** bölümüne bir pazarlama kişisi girdiğinizden emin olun. Bu, bir catch-all diğer adından farklı olarak özel bir pazarlama kaynağı olmalıdır. (yani, "support\@", "Info\@", "Marketing\@" vb.)
 
-Liste, deneme veya Transact-Market ödül teklifini, çözüm durumu temelinde kendi kendine yardım kaynaklarını içeren bir e-posta veya danışmanlığı çağrısı ile ayrılmış bir Engagement Yöneticisi bir davet alırsınız. Aramayı başlatmak için herhangi bir şey yapmanız gerekmez; Market Onboarding ekibi, sağladığınız bilgileri temel alarak ulaşır [bulut iş ortağı portalı](https://cloudpartner.azure.com/).
+Çözüm durumunuz temel alınarak, liste, deneme veya Transact-Market depolarının yanı da, kendi kendine yardım kaynaklarına sahip bir e-posta veya adanmış bir katılım Yöneticisi ile bir Danışma çağrısına yönelik bir davet alacaksınız. Çağrıyı başlatmak için herhangi bir şey yapmanız gerekmez — Market ekleme ekibi, [bulut iş ortağı portalı](https://cloudpartner.azure.com/)sağladığınız bilgilere göre size ulaşacaktır.
 
-Teklifleri Market'te büyüdükçe kullanabileceğiniz etkinlikler kapsamını genişletir. Temel düzeyde iyileştirme önerileri ve yükseltme dökümleri alın.  Bu listeleri, çözüm durumu (liste, deneme veya Transact - Market ödül), seçilen Market ve Microsoft iş ortağı uzmanlığı başarı göre ek pazarlama avantajları için de uygundur.
+Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler bir temel düzey iyileştirme önerisi ve yükseltmesi alır.  Bu listeler ayrıca çözüm durumuna (liste, deneme veya Transact-Market reyenine), seçilen Market 'e ve Microsoft Iş ortağı uzmanlığına göre ek pazarlama avantajları için de uygundur.
 
-Aşağıdaki tabloda, liste ve deneme teklifleri için uygunluk gereksinimlerini özetler:
+Aşağıdaki tablo, liste ve deneme teklifleri için uygunluk gereksinimlerini özetler:
 
 ![](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-\* Silver veya gold uzmanlığı gerektirir. <br>
-\*\* Gold uzmanlığı gerektirir. <br>
-\*\*\* Gold uzmanlığına sahip ve ortak satışa hazır iş ortağı listeleri de gerektirir. <br>
-^ Yalnızca, Azure Marketi'nde geçerli transact.
+\*Gümüş veya altın uzmanlık gerektirir. <br>
+\*\*Altın uzmanlık gerektirir. <br>
+\*\*\*Altın uzmanlık ve ortak satış Iş ortağı listelerine hazırlık gerektirir. <br>
+Yalnızca ^ Transact, Azure Marketi için geçerlidir.
 
-## <a name="marketplace-rewards-for-transact-partners"></a>Market ödül transact iş ortakları için
+## <a name="marketplace-rewards-for-transact-partners"></a>Transact iş ortakları için Market depoları
 
-Market ödül avantajları tam listesini görüntülenebilir [programı Özet slaytları](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM).
+Market reslarının avantajlarının tam listesi [Program Özet slaytlarında](https://aka.ms/marketplacerewards)görüntülenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Oturum [bulut iş ortağı portalı](https://cloudpartner.azure.com/) oluşturmak ve teklifinizi yapılandırmak için.
+Teklifinizi oluşturmak ve yapılandırmak için [bulut iş ortağı portalı](https://cloudpartner.azure.com/) oturum açın.
 
 ---

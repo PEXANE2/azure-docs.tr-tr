@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989629"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127138"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD denetim etkinliği başvurusu
 
@@ -65,11 +65,11 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Erişim Gözden Geçirmeleri|Program denetiminin bağlantısını kaldırma|
 |Erişim Gözden Geçirmeleri|Erişim Gözden Geçirmesini Güncelleştirme|
 |Erişim Gözden Geçirmeleri|Azure AD erişim Incelemelerini güncelleştirme ekleme durumu|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirmesi posta bildirimi için ayarları güncelleştir|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme sayısı ayarını güncelleştir|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme gün cinsinden yineleme sayısı ayarını güncelleştir|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme bitiş türü ayarını güncelleştir|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme türü ayarını güncelleştir|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirmesi posta bildirimi ayarlarını güncelleştirme|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yinelenme sayısı ayarını Güncelleştir|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme gün cinsinden yineleme süresini Güncelleştir ayarı|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme bitiş türü ayarını Güncelleştir|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme türü ayarını Güncelleştir|
 |Erişim Gözden Geçirmeleri|Erişim gözden geçirmesi anımsatıcı için ayarları güncelleştir|
 |Erişim Gözden Geçirmeleri|Program güncelleştirme|
 |Erişim Gözden Geçirmeleri|İstek onayını güncelleştirme|
@@ -348,10 +348,10 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 
 |Denetim Kategorisi|Etkinlik|
 |---|---|
-|Yönetim Birimi Yönetimi|Tek bir risk olayı türünü indirme|
+|Yönetim Birimi Yönetimi|Tek bir risk algılama türünü indirin|
 |Yönetim Birimi Yönetimi|Yöneticileri ve haftalık özet katılımı durumunu indirme|
-|Yönetim Birimi Yönetimi|Tüm risk olayı türlerini indirme|
-|Yönetim Birimi Yönetimi|Ücretsiz kullanıcı risk olaylarını indirme|
+|Yönetim Birimi Yönetimi|Tüm risk algılama türlerini indir|
+|Yönetim Birimi Yönetimi|Ücretsiz Kullanıcı risk algılamalarını indirin|
 |Yönetim Birimi Yönetimi|Riskli olduğu belirlenen kullanıcıları indirme|
 |Uygulama Yönetimi|İşlenen toplu davetler|
 |Uygulama Yönetimi|Karşıya yüklenen toplu davetler|
@@ -517,11 +517,11 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |---|---|
 |Grup Yönetimi|İstek onayı isteğini gözden geçirme|
 |Grup Yönetimi|Erişim Gözden Geçirmesini Güncelleştirme|
-|Grup Yönetimi|Erişim gözden geçirmesi posta bildirimi için ayarları güncelleştir|
-|Grup Yönetimi|Erişim gözden geçirme yineleme sayısı ayarını güncelleştir|
-|Grup Yönetimi|Erişim gözden geçirme gün cinsinden yineleme sayısı ayarını güncelleştir|
-|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme bitiş türü ayarını güncelleştir|
-|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme türü ayarını güncelleştir|
+|Grup Yönetimi|Erişim gözden geçirmesi posta bildirimi ayarlarını güncelleştirme|
+|Grup Yönetimi|Erişim gözden geçirme yinelenme sayısı ayarını Güncelleştir|
+|Grup Yönetimi|Erişim gözden geçirme gün cinsinden yineleme süresini Güncelleştir ayarı|
+|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme bitiş türü ayarını Güncelleştir|
+|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme türü ayarını Güncelleştir|
 
 
 

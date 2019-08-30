@@ -4,7 +4,7 @@ description: Azure sanal makineleri ve sanal makine ölçek kümeleri için iki 
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: gwallace
+manager: borisb
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4e0c91096d5efdcc9639a7127126d8e4b89ef068
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f6e08f113e29b44e4ec94d14624d62c1c3d48d45
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090153"
+ms.locfileid: "70124476"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure seri konsolu
 
@@ -49,34 +49,6 @@ Windows için seri konsol belgeleri için bkz. [Windows Için seri konsol](../wi
 - VM 'niz veya sanal makine ölçek kümesi örneğinizin tarihinde `ttys0`seri çıkış için yapılandırılması gerekir. Bu, Azure görüntüleri için varsayılandır, ancak bunu özel görüntülerde çift denetlemek isteyeceksiniz. Ayrıntılar [aşağıda](#custom-linux-images)verilmiştir.
 
 
-## <a name="get-started-with-the-serial-console"></a>Seri konsol ile çalışmaya başlama
-VM 'Lerin ve sanal makine ölçek kümesinin seri konsoluna yalnızca Azure portal aracılığıyla erişilebilir:
-
-### <a name="serial-console-for-virtual-machines"></a>Sanal makineler için seri konsol
-VM 'Ler için seri konsol, Azure portal **destek + sorun giderme** bölümündeki **seri konsol** tıklamakla açıktır.
-  1. [Azure portalı](https://portal.azure.com) açın.
-
-  1. **Tüm kaynaklara** gidin ve bir sanal makine seçin. VM 'nin genel bakış sayfası açılır.
-
-  1. Ekranı aşağı kaydırarak **destek + sorun giderme** seçin ve bölüm **seri konsol**. Seri konsolu ile yeni bir bölme açılır ve bağlantısını başlatır.
-
-     ![Linux seri konsol penceresi](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için seri konsol
-Seri konsol, sanal makine ölçek kümeleri için örnek başına temelinde kullanılabilir. **Seri konsol** düğmesini görmeden önce bir sanal makine ölçek kümesinin tek örneğine gitmeniz gerekir. Sanal makine ölçek kümesinde önyükleme tanılaması etkinleştirilmemişse, sanal makine ölçek kümesi modelinizi önyükleme tanılamayı etkinleştirecek şekilde güncelleştirdiğinizden emin olun ve ardından seri konsoluna erişmek için tüm örnekleri yeni modele yükseltin.
-  1. [Azure portalı](https://portal.azure.com) açın.
-
-  1. **Tüm kaynaklara** gidin ve bir sanal makine ölçek kümesi seçin. Sanal makine ölçek kümesi için genel bakış sayfası açılır.
-
-  1. **Örneklere** git
-
-  1. Bir sanal makine ölçek kümesi örneği seçin
-
-  1. **Destek + sorun giderme** bölümünde **seri konsol**' yi seçin. Seri konsolu ile yeni bir bölme açılır ve bağlantısını başlatır.
-
-     ![Linux sanal makine ölçek kümesi seri konsolu](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-
 > [!NOTE]
 > Seri konsol, yapılandırılmış bir parolası olan yerel bir kullanıcı gerektirir. Yalnızca bir SSH ortak anahtarı ile yapılandırılan VM 'Ler veya sanal makine ölçek kümeleri seri konsolunda oturum açamaz. Parolası olan bir yerel kullanıcı oluşturmak için, Azure portal **Parolayı Sıfırla** ' yı seçerek portalda bulunan [VMAccess uzantısını](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)kullanın ve parolası olan bir yerel kullanıcı oluşturun.
 > Ayrıca, [tek kullanıcı modunda önyüklemek IÇIN GRUB 'yi kullanarak](./serial-console-grub-single-user-mode.md)hesabınızdaki yönetici parolasını sıfırlayabilirsiniz.
@@ -97,7 +69,7 @@ SUSE        | Azure 'da kullanılabilen yeni SLES görüntülerine, varsayılan 
 Oracle Linux        | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
 
 ### <a name="custom-linux-images"></a>Özel Linux görüntüleri
-Özel Linux sanal makinenizin seri konsolunu etkinleştirmek için, */etc/ınittab* dosyasındaki konsol erişimini etkinleştirin ve üzerinde `ttyS0`bir Terminal çalıştırın. Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`
+Özel Linux sanal makinenizin seri konsolunu etkinleştirmek için, */etc/ınittab* dosyasındaki konsol erişimini etkinleştirin ve üzerinde `ttyS0`bir Terminal çalıştırın. Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102` Ayrıca ttyS0 üzerinde bir Getty oluşturmanız gerekebilir. Bu, ile `systemctl start serial-getty@ttyS0.service`yapılabilir.
 
 Ayrıca, seri çıkış için hedef olarak ttyS0 eklemek isteyeceksiniz. Özel bir görüntünün seri konsoluyla çalışacak şekilde yapılandırılması hakkında daha fazla bilgi için bkz. [Azure 'da bir LINUX VHD oluşturma ve yükleme](https://aka.ms/createuploadvhd#general-linux-system-requirements)konusunda genel sistem gereksinimleri.
 
@@ -114,47 +86,8 @@ SSH yapılandırma sorunları | Seri konsola erişin, ayarları değiştirin. Se
 Önyükleme yükleyicisi ile etkileşim kurma | Linux sanal makinenizin içindeki GRUB 'ye erişmek için VM 'nizi seri konsol dikey penceresinden yeniden başlatın. Daha fazla ayrıntı ve belirli bilgiler için bkz. çevirmeli [ve tek kullanıcı moduna erişmek için seri konsol kullanma](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Seri konsolunu devre dışı bırakma
-Varsayılan olarak, tüm aboneliklerde seri konsol erişimi etkindir. Seri konsolunu abonelik düzeyinde ya da VM/sanal makine ölçek kümesi düzeyinde devre dışı bırakabilirsiniz. Seri konsolunun çalışması için bir VM 'de önyükleme Tanılamanın etkin olması gerektiğini unutmayın.
 
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>VM/sanal makine ölçek kümesi düzeyi devre dışı
-Seri konsol, önyükleme tanılaması ayarı devre dışı bırakılarak belirli bir VM veya sanal makine ölçek kümesi için devre dışı bırakılabilir. VM 'nin veya sanal makine ölçek kümesinin seri konsolunu devre dışı bırakmak için Azure portal önyükleme tanılamayı devre dışı bırakın. Bir sanal makine ölçek kümesinde seri konsol kullanıyorsanız, sanal makine ölçek kümesi örneklerinizi en son modele yükseltdiğinizden emin olun.
-
-> [!NOTE]
-> Etkinleştirmek veya seri konsol bir abonelik için devre dışı bırakmak için abonelik için yazma izinleri olmalıdır. Bu izinler, yönetici veya sahip rollerini içerir. Özel roller ayrıca yazma izinlerine sahip olabilir.
-
-### <a name="subscription-level-disable"></a>Abonelik düzeyinde devre dışı bırak
-Seri konsol tüm bir abonelik için devre dışı bırakılabilir [devre dışı konsol REST API çağrısı](/rest/api/serialconsole/console/disableconsole). Bu eylem, aboneliğe katkıda bulunan düzey erişimi veya üzerini gerektirir. Kullanabileceğiniz **deneyin** işlevi devre dışı bırakın ve bir abonelik için seri konsol etkinleştirmek için bu API belgeleri sayfasında kullanılabilir. **SubscriptionID**IÇIN abonelik kimliğinizi girin, **varsayılan**için **varsayılan değer** girin ve **Çalıştır**' ı seçin. Azure CLI komutları henüz kullanılamamaktadır.
-
-Seri konsolunu bir abonelik için yeniden etkinleştirmek üzere [konsol REST API etkinleştir çağrısını](/rest/api/serialconsole/console/enableconsole)kullanın.
-
-![REST API'yi deneyin](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
-
-Alternatif olarak, devre dışı bırakma, etkinleştirme ve seri konsol bir abonelik için devre dışı durumunu görüntülemek için Cloud Shell'de aşağıdaki bash komutları kümesini kullanabilirsiniz:
-
-* Bir abonelik için seri konsol devre dışı durumunu almak için:
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
-    ```
-* Seri konsol bir abonelik için devre dışı bırakmak için:
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-* Seri konsol bir abonelik için etkinleştirmek için:
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
+Varsayılan olarak, tüm aboneliklerde seri konsol erişimi etkindir. Seri konsolunu abonelik düzeyinde ya da VM/sanal makine ölçek kümesi düzeyinde devre dışı bırakabilirsiniz. Ayrıntılı yönergeler için [Azure seri konsolunu etkinleştir ve devre dışı bırak](./serial-console-enable-disable.md)' ı ziyaret edin.
 
 ## <a name="serial-console-security"></a>Seri konsol güvenlik
 
@@ -184,18 +117,6 @@ Kullanım **sekmesini** anahtar klavyenizde seri konsol arabirimi Azure portalı
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Bir ekran okuyucuyla seri konsol kullanma
 Seri konsol ekran okuyucu desteği yerleşik olarak sahiptir. Açık bir ekran okuyucu ile geçici olarak gezinmek sesli ekran okuyucu tarafından okunacak şu anda seçili düğme için alternatif metin izin verir.
-
-## <a name="errors"></a>Hatalar
-Geçici hataların çoğu olduğundan, bağlantınızı yeniden deneniyor genellikle bunları düzeltebilir. Aşağıdaki tabloda, hataları ve risk azaltma işlemleri listesini gösterir. Bu hatalar ve azaltmaları hem VM 'Ler hem de sanal makine ölçek kümesi örnekleri için geçerlidir.
-
-Hata                            |   Risk azaltma
-:---------------------------------|:--------------------------------------------|
-Önyükleme tanılama ayarları alınamadı  *&lt;VMNAME&gt;* . Seri konsol kullanmak için bu VM için o önyükleme tanılaması etkin emin olun. | Sanal makine olduğundan emin olun [önyükleme tanılaması](boot-diagnostics.md) etkin.
-Durdurulan serbest bırakılmış durumda vm'dir. VM'yi başlatın ve seri konsol bağlantısı yeniden deneyin. | Seri konsoluna erişmek için VM 'nin başlatılmış bir durumda olması gerekir.
-Bu VM 'yi seri konsol ile kullanmak için gerekli izinlere sahip değilsiniz. En az olduğundan emin olun sanal makine Katılımcısı rolü izinleri.| Seri konsol erişimi için bazı izinler gerekir. Daha fazla bilgi için [önkoşulları](#prerequisites).
-Önyükleme tanılaması depolama hesabı için kaynak grubu belirlenemiyor  *&lt;STORAGEACCOUNTNAME&gt;* . Bu VM için önyükleme tanılaması etkin ve bu depolama hesabına erişiminiz olduğunu doğrulayın. | Seri konsol erişimi için bazı izinler gerekir. Daha fazla bilgi için [önkoşulları](#prerequisites).
-Web yuvası kapalı veya açılamadı. | Beyaz listeye gerekebilir `*.console.azure.com`. Daha ayrıntılı ancak uzun yaklaşımdır beyaz listeye [Microsoft Azure veri merkezi IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653), nispeten düzenli olarak değiştiği.
-Bu sanal makinenin önyükleme tanılaması depolama hesabı erişirken "Yasak" yanıt karşılaşıldı. | Önyükleme tanılamalarının bir hesap güvenlik duvarı olmadığından emin olun. İşleve seri konsol için bir erişilebilir önyükleme tanılaması depolama hesabı gereklidir.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 Seri konsol ile ilgili bazı sorunlar farkında duyuyoruz. Bu sorunlar ve risk azaltma için adımlar listesi aşağıda verilmiştir. Bu sorunlar ve azaltmaları, hem VM 'Ler hem de sanal makine ölçek kümesi örnekleri için geçerlidir.
@@ -241,7 +162,7 @@ A. Görüntünüzü seri konsol erişimi için büyük olasılıkla yanlış yap
 
 **SORU. Seri konsol sanal makine ölçek kümeleri için kullanılabilir mi?**
 
-A. Evet öyle! Bkz. [Sanal Makine Ölçek Kümeleri Için seri konsol](#serial-console-for-virtual-machine-scale-sets)
+A. Evet öyle! Bkz. [Sanal Makine Ölçek Kümeleri Için seri konsol](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
 **SORU. VM 'yi veya sanal makine ölçek kümesini yalnızca SSH anahtarı kimlik doğrulaması kullanarak ayarladım, VM/sanal makine ölçek kümesi örneğine bağlanmak için hala seri konsolunu kullanabilir miyim?**
 

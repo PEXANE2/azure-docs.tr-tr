@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: ed90c22fa8c5b94567a9886ca71c9b35fbb103f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624619"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137335"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -145,7 +145,12 @@ Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya ekle
 Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet tarafından reddedilir.
 
 > [!WARNING]
-> Sürüm **1.0.0** öncesinde Python IÇIN Azure SQL SDK 'sının tüm sürümleri **, 29 Şubat 2016**tarihinde kullanımdan kalkmıştı. 
+> Sürüm **1.0.0** ÖNCESI SQL API için Python SDK 'sının tüm sürümleri **, 29 Şubat 2016**tarihinde kullanımdan kalkmıştı. 
+> 
+> 
+
+> [!WARNING]
+> SQL API için Python SDK 'sının tüm 1. x ve 2. x sürümleri **30 ağustos 2020**tarihinde kullanımdan kaldırılacaktır. 
 > 
 > 
 
@@ -155,27 +160,27 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |15 Kasım 2018 |--- |
 | [3.0.1](#3.0.1) |Eki 04, 2018 |--- |
-| [2.3.3](#2.3.3) |08 Eyl, 2018 |--- |
-| [2.3.2](#2.3.2) |08 Mayıs 2018 |--- |
-| [2.3.1](#2.3.1) |21 Aralık 2017 |--- |
-| [2.3.0](#2.3.0) |10 Kasım 2017 |--- |
-| [2.2.1](#2.2.1) |29 Eyl, 2017 |--- |
-| [2.2.0](#2.2.0) |10 Mayıs 2017 |--- |
-| [2.1.0](#2.1.0) |01 Mayıs 2017 |--- |
-| [2.0.1](#2.0.1) |30 Ekim 2016 |--- |
-| [2.0.0](#2.0.0) |29 Eylül 2016 |--- |
-| [1.9.0](#1.9.0) |07 Temmuz 2016 |--- |
-| [1.8.0](#1.8.0) |14 Haziran 2016 |--- |
-| [1.7.0](#1.7.0) |26 Nisan 2016 |--- |
-| [1.6.1](#1.6.1) |08 Nisan 2016 |--- |
-| [1.6.0](#1.6.0) |29 Mart 2016 |--- |
-| [1.5.0](#1.5.0) |03 Ocak 2016 |--- |
-| [1.4.2](#1.4.2) |06 Ekim 2015 |--- |
-| 1.4.1 |06 Ekim 2015 |--- |
-| [1.2.0](#1.2.0) |06 Ağustos 2015 |--- |
-| [1.1.0](#1.1.0) |09 Temmuz 2015 |--- |
-| [1.0.1](#1.0.1) |25 Mayıs 2015 |--- |
-| [1.0.0](#1.0.0) |07 Nisan 2015 |--- |
+| [2.3.3](#2.3.3) |08 Eyl, 2018 |30 Ağustos 2020 |
+| [2.3.2](#2.3.2) |08 Mayıs 2018 |30 Ağustos 2020 |
+| [2.3.1](#2.3.1) |21 Aralık 2017 |30 Ağustos 2020 |
+| [2.3.0](#2.3.0) |10 Kasım 2017 |30 Ağustos 2020 |
+| [2.2.1](#2.2.1) |29 Eyl, 2017 |30 Ağustos 2020 |
+| [2.2.0](#2.2.0) |10 Mayıs 2017 |30 Ağustos 2020 |
+| [2.1.0](#2.1.0) |01 Mayıs 2017 |30 Ağustos 2020 |
+| [2.0.1](#2.0.1) |30 Ekim 2016 |30 Ağustos 2020 |
+| [2.0.0](#2.0.0) |29 Eylül 2016 |30 Ağustos 2020 |
+| [1.9.0](#1.9.0) |07 Temmuz 2016 |30 Ağustos 2020 |
+| [1.8.0](#1.8.0) |14 Haziran 2016 |30 Ağustos 2020 |
+| [1.7.0](#1.7.0) |26 Nisan 2016 |30 Ağustos 2020 |
+| [1.6.1](#1.6.1) |08 Nisan 2016 |30 Ağustos 2020 |
+| [1.6.0](#1.6.0) |29 Mart 2016 |30 Ağustos 2020 |
+| [1.5.0](#1.5.0) |03 Ocak 2016 |30 Ağustos 2020 |
+| [1.4.2](#1.4.2) |06 Ekim 2015 |30 Ağustos 2020 |
+| 1.4.1 |06 Ekim 2015 |30 Ağustos 2020 |
+| [1.2.0](#1.2.0) |06 Ağustos 2015 |30 Ağustos 2020 |
+| [1.1.0](#1.1.0) |09 Temmuz 2015 |30 Ağustos 2020 |
+| [1.0.1](#1.0.1) |25 Mayıs 2015 |30 Ağustos 2020 |
+| [1.0.0](#1.0.0) |07 Nisan 2015 |30 Ağustos 2020 |
 | 0.9.4-prelease |14 Ocak 2015 |29 Şubat 2016 |
 | 0.9.3-prelease |09 Aralık 2014 |29 Şubat 2016 |
 | 0.9.2-prelease |25 Kasım 2014 |29 Şubat 2016 |

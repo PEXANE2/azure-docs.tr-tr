@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334005"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126517"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Kimlik Koruması SSS
 
 Bu makale Azure Active Directory (Azure AD) kimlik koruması hakkında sık sorulan soruların yanıtlarını içerir. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md). 
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Neden bazı risk olayları "kapalı (sistem)" durumuna sahip?
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Bazı risk algılamaları neden "kapalı (sistem)" durumuna sahip?
 
-**C:** Bu risk olayları kimlik koruması tarafından algılandı ve daha sonra olaylar riskli olarak değerlendirilmediği için kapatıldı. Bu olaylar kullanıcının risk düzeyine doğru sayılmaz. 
+**C:** Bu risk algılamaları kimlik koruması tarafından algılandı ve daha sonra olaylar riskli olarak değerlendirilmediği için kapatıldı. Bu olaylar kullanıcının risk düzeyine doğru sayılmaz. 
 
 ---
 

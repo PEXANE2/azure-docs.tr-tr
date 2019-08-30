@@ -1,26 +1,25 @@
 ---
-title: Azure Data factory'de etkinlik filtre | Microsoft Docs
-description: Filtre etkinliği girişleri filtreler.
+title: Azure Data Factory etkinliği filtreleme | Microsoft Docs
+description: Filtre etkinliği girdileri filtreler.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: shlo
-ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7e2e735baa7e40b4170d3397327e90fc1a5d2d5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60554856"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141666"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Azure Data factory'de filtre etkinliği
-Bir filtre ifadesi bir giriş dizisine uygulamak için bir işlem hattındaki bir filtre etkinliği kullanabilirsiniz. 
+# <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği filtrele
+Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre etkinliklerini kullanabilirsiniz. 
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -39,14 +38,14 @@ Bir filtre ifadesi bir giriş dizisine uygulamak için bir işlem hattındaki bi
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | Adını `Filter` etkinlik. | String | Evet
-türü | Ayarlanmalıdır **filtre**. | String | Evet
-condition | Giriş filtreleme için kullanılacak koşul. | İfade | Evet
-items | Filtre uygulanması gereken giriş dizisi. | İfade | Evet
+name | `Filter` Etkinliğin adı. | Dize | Evet
+type | **Filter**olarak ayarlanmalıdır. | Dize | Evet
+condition | Girişi filtrelemek için kullanılacak koşul. | İfade | Evet
+items | Filtrenin uygulanması gereken giriş dizisi. | İfade | Evet
 
 ## <a name="example"></a>Örnek
 
-Bu örnekte, işlem hattı iki etkinlik içerir: **Filtre** ve **ForEach**. Filtre etkinliği, Giriş dizisinin 3'ten büyük bir değere sahip öğeleri için filtre uygulamak için yapılandırılır. ForEach etkinliği filtrelenmiş değerleri yinelenir ve geçerli değeri tarafından belirtilen saniye bekler.
+Bu örnekte, işlem hattının iki etkinliği vardır: **Filter** ve **foreach**. Filtre etkinliği, giriş dizisini 3 ' ten büyük bir değere sahip öğeler için filtrelemek üzere yapılandırılmıştır. ForEach etkinliği daha sonra filtrelenmiş değerler üzerinde yinelenir ve geçerli değer tarafından belirtilen saniye sayısını bekler.
 
 ```json
 {
@@ -92,7 +91,7 @@ Bu örnekte, işlem hattı iki etkinlik içerir: **Filtre** ve **ForEach**. Filt
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen diğer denetim akışı etkinlikleri bakın: 
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
 - [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Yürütme Etkinliği](control-flow-execute-pipeline-activity.md)

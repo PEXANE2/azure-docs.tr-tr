@@ -11,12 +11,12 @@ manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 939f08fd16cf27e641cf6436a00396ad2db8e6c3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499553"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126385"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Nasıl Yapılır: Azure Multi-Factor Authentication kayıt ilkesini yapılandırma
 
@@ -26,12 +26,12 @@ Azure AD Kimlik Koruması, bir koşullu erişim ilkesini, hangi modern kimlik do
 
 ## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Azure Multi-Factor Authentication kayıt ilkesi nedir?
 
-Azure Multi-Factor Authentication, yalnızca bir Kullanıcı adı ve paroladan fazlasını kullandığınızı doğrulamak için bir yol sağlar. Kullanıcı oturum açma işlemlerinin ikinci bir güvenlik katmanını sağlar. Kullanıcıların MFA istemlerine yanıt verebilmeleri için önce Azure Multi-Factor Authentication 'a kaydolmaları gerekir.
+Azure Multi-Factor Authentication, yalnızca bir Kullanıcı adı ve paroladan fazlasını kullandığınızı doğrulamak için bir yol sağlar. Kullanıcı oturum açma işlemlerinin ikinci bir güvenlik katmanını sağlar. Kullanıcıların MFA istemlerine yanıt verebilmeleri için önce Azure Multi-Factor Authentication 'e kaydolmaları gerekir.
 
 Kullanıcı oturum açma işlemleri için Azure Multi-Factor Authentication gerektirmenizi öneririz, çünkü:
 
 - Bir dizi kolay doğrulama seçeneği ile güçlü kimlik doğrulaması sunar
-- Kimlik koruması 'ndaki risk olaylarını korumak ve kurtarmak için kuruluşunuzu hazırlarken bir anahtar rol oynar
+- Kimlik koruması 'ndaki risk algılamalarını korumak ve kurtarmak için kuruluşunuzu hazırlarken bir anahtar rol oynar
 
 MFA hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication nedir?](../authentication/howto-mfa-getstarted.md)
 

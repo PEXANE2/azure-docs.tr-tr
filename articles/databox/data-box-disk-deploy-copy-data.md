@@ -6,19 +6,31 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 796335fddf6107284b589d70094ff4f5a0e3acd5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
-ms.translationtype: MT
+ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147936"
 ---
 ::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Öğretici: Azure Data Box Disk verileri kopyalama ve doğrulama
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Azure Data Box Disk verileri kopyalama ve doğrulama
+
+Diskler bağlandıktan ve kilidi açıldıktan sonra, kaynak veri sunucunuzdaki verileri disklere kopyalayabilirsiniz. Veri kopyalama işlemi tamamlandıktan sonra, kopyaladığınız veriler gerekir. Doğrulama, verilerin daha sonra Azure 'a başarıyla yüklenmesini sağlar.
+
+::: zone-end
+
+::: zone target="docs"
 
 Bu öğreticide ana bilgisayarınızdan veri kopyalama ve veri bütünlüğünü doğrulamak için sağlama toplamı oluşturma adımları anlatılmaktadır.
 
@@ -294,19 +306,18 @@ Data Box Disk'i iade etme ve Azure'a yüklenen verileri doğrulama adımları ha
 
 ::: zone target="chromeless"
 
-## <a name="copy-data-to-disks"></a>Disklere veri kopyalama
+### <a name="copy-data-to-disks"></a>Disklere veri kopyalama
 
 Data Box Disk bağlanıp bilgisayarınızdan veri kopyalamak için aşağıdaki adımları uygulayın.
 
 1. Kilidi açılan sürücünün içeriğini görüntüleyin. Sürücüdeki önceden düzenlenen klasörlerin ve alt klasörlerin listesi, Data Box Disk sırası yerleştirilirken seçilen seçeneklere bağlı olarak değişir.
 2. Verileri uygun veri biçimine karşılık gelen klasörlere kopyalayın. Örneğin, yapılandırılmamış verileri *Blok Blobu* klasörü, VHD veya vhdx verileri Için *pageblob* klasörüne ve dosyaları *AzureFile*klasörüne kopyalayın. Veri biçimi uygun klasörle (depolama türü) eşleşmiyorsa, daha sonraki bir adımda Azure 'a yüklenen veriler başarısız olur.
 
-    - Tüm kapsayıcıların, Blobların ve dosyaların [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) ve [Azure nesne boyutu sınırlarına](data-box-disk-limits.md#azure-object-size-limits)uyduğundan emin olun. Bu kurallara veya sınırlara uyulmazsa, verileri Azure 'a yükleme başarısız olur.
-    - BlockBlob ve PageBlob klasörlerinin altındaki her klasör için Azure depolama hesabında bir kapsayıcı oluşturulur. *Blockblob* ve *pageblob* klasörlerinin altındaki tüm dosyalar, Azure depolama hesabı altında $root varsayılan bir kapsayıcıya kopyalanır. 
-    - $Root kapsayıcısındaki tüm dosyalar her zaman blok blob 'ları olarak yüklenir.
-    - Dosyaları *AzureFile* klasörü içindeki bir klasöre kopyalayın. *AzureFile* klasöründeki bir alt klasör bir FileShare oluşturur. Doğrudan *AzureFile* klasörüne kopyalanan dosyalar başarısız olur ve blok Blobları olarak karşıya yüklenir.
-    - Kök dizinde dosya ve klasörler varsa veri kopyalama işlemine başlamadan önce bunları farklı bir klasöre taşımanız gerekir.
+    - Tüm kapsayıcıların, Blobların ve dosyaların [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) ve [Azure nesne boyutu sınırlarına](data-box-disk-limits.md#azure-object-size-limits)uyduğundan emin olun. Bu kurallara veya sınırlara uyulmazsa, verileri Azure 'a yükleme başarısız olur.     
     - Siparişinizin depolama hedeflerinden biri olarak yönetilen diskleri varsa, bkz. [yönetilen diskler](data-box-disk-limits.md#managed-disk-naming-conventions)için adlandırma kuralları.
+    - BlockBlob ve PageBlob klasörlerinin altındaki her klasör için Azure depolama hesabında bir kapsayıcı oluşturulur. *Blockblob* ve *pageblob* klasörlerinin altındaki tüm dosyalar, Azure depolama hesabı altında $root varsayılan bir kapsayıcıya kopyalanır. $Root kapsayıcısındaki tüm dosyalar her zaman blok blob 'ları olarak yüklenir.
+    - *AzureFile* klasörü içinde bir alt klasör oluşturun. Bu alt klasör, buluttaki bir FileShare ile eşlenir. Dosyaları alt klasöre kopyalayın. Doğrudan *AzureFile* klasörüne kopyalanan dosyalar başarısız olur ve blok Blobları olarak karşıya yüklenir.
+    - Kök dizinde dosya ve klasörler varsa veri kopyalama işlemine başlamadan önce bunları farklı bir klasöre taşımanız gerekir.
 
 3. Dosya Gezgini ile sürükleyip bırakmayı veya verilerinizi kopyalamak için Robocopy gibi herhangi bir SMB uyumlu dosya kopyalama aracını kullanın. Birden çok kopyalama işi aşağıdaki komut kullanılarak başlatılabilir:
 
@@ -317,13 +328,13 @@ Data Box Disk bağlanıp bilgisayarınızdan veri kopyalamak için aşağıdaki 
 
 Birden çok disk kullandığınızda ve tüm disklerde bölünmesi ve kopyalanması gereken büyük bir veri kümesine sahip olduğunuzda, [bölme ve kopyalama](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks) için isteğe bağlı prosedürü kullanın.
 
-## <a name="validate-data"></a>Verileri doğrulama
+### <a name="validate-data"></a>Verileri doğrulama
 
 Verilerinizi doğrulamak için aşağıdaki adımları uygulayın.
 
 1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
 2. Dosyalarınızı doğrulamak ve sağlama toplamı oluşturmak için 2 seçeneğini kullanın. Bu adım verilerinizin boyutuna bağlı olarak uzun sürebilir. Doğrulama ve sağlama toplamı alma sırasında herhangi bir hata olursa size bildirilir ve hata günlüklerine bir bağlantı sunulur.
 
-    Veri doğrulama hakkında daha fazla bilgi için bkz. [verileri doğrulama](data-box-disk-deploy-copy-data.md#validate-data). Doğrulama sırasında hata yaşarsanız bkz. [doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).
+    Veri doğrulama hakkında daha fazla bilgi için bkz. [verileri doğrulama](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Doğrulama sırasında hata yaşarsanız bkz. [sorun giderme doğrulama hataları](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: target = "_blank"}.
 
 ::: zone-end

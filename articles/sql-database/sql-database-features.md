@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2a14140a395e8ccd2bf0092d5922d639914b01a7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900416"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135281"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Özellik Karşılaştırması: Azure SQL veritabanı SQL Server karşılaştırması
 
@@ -160,6 +160,16 @@ Azure SQL veritabanı, verilerinizi yönetmenize yardımcı olabilecek çeşitli
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Evet | Evet |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Hayır- [genişletilmiş olaylara](sql-database-xevent-db-diff-from-svr.md) bakın | Evet |
 | [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Hayır |
+
+## <a name="migration-methods"></a>Geçiş yöntemleri
+
+Verilerinizi SQL Server, Tek Veritabanı ve yönetilen örnek veritabanları arasında taşımak için farklı geçiş yöntemleri kullanabilirsiniz. Bazı yöntemler **çevrimiçi** ve geçiş çalışırken kaynak üzerinde yapılan tüm değişiklikleri kullanıma alır, **çevrimdışı** metotlarda geçiş devam ederken kaynaktaki verileri değiştirme iş yükünüzü durdurmanız gerekir.
+
+| **Kaynak** | **Tek veritabanı ve elastik havuz** | **Yönetilen örnek** |
+| --- | --- | --- |
+| SQL Server (Şirket içi, AzureVM, Amazon RDS) | **Çevrimiç** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimiç** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Yerel yedekleme/geri yükleme, [bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
+| Tek veritabanı | **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp |
+| Yönetilen Örnek | **Çevrimiç** [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) | **Çevrimiç** [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Çoklu örnek zaman çizelgesi geri yüklemesi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) veya [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [yerel yedekleme/geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [bacpac dosyası (Içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

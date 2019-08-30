@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: fa1e7fcf89ccc06e429831191ba5dfce3cf33797
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7fea6d16c8846909a8ce9bb33aae74ce343018fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828322"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142314"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Geçişi sorunlarını giderme
 
@@ -206,10 +206,10 @@ Bir veya daha fazla disk uyumsuz | VM 'ye bağlı bir veya daha fazla disk, Azur
 Bir veya daha fazla uygun olmayan ağ bağdaştırıcısı. | Kullanılmayan ağ bağdaştırıcılarını geçişten önce makineden kaldırın.
 Disk sayısı, sınırı aşıyor | Kullanılmayan diskleri geçişten önce makineden kaldırın.
 Disk boyutu, sınırı aşıyor | Azure Geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemez ve Premium disk sınırlarına (32 TB) göre diskleri değerlendirir. Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş yapmadan önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) .
-Disk, belirtilen konumda kullanılamıyor | Geçirmeden önce diskin hedef konumunda olduğundan emin olun.
-Disk, belirtilen çoğaltma için kullanılamıyor | Disk, değerlendirme ayarlarında tanımlanan artıklık depolama türünü kullanmalıdır (varsayılan olarak LRS).
+Belirtilen konumda disk yok | Geçirmeden önce diskin hedef konumunda olduğundan emin olun.
+Belirtilen artıklık için disk kullanılamıyor | Disk, değerlendirme ayarlarında tanımlanan artıklık depolama türünü kullanmalıdır (varsayılan olarak LRS).
 Bir iç hata nedeniyle disk uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
-Gerekli çekirdeklere ve belleğe sahip VM bulunamadı | Azure uygun bir VM türü bulamadı. Geçirmeden önce şirket içi makinenin bellek ve çekirdek sayısını azaltın.
+Gerekli çekirdek ve bellek içeren VM bulunamadı | Azure uygun bir VM türü bulamadı. Geçirmeden önce şirket içi makinenin bellek ve çekirdek sayısını azaltın.
 Bir iç hata nedeniyle VM uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Bir iç hata nedeniyle bir veya daha fazla disk için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Bir iç hata nedeniyle bir veya daha fazla ağ bağdaştırıcısı için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
@@ -271,7 +271,7 @@ Ve [MMA tarafından desteklenen Linux işletim sistemlerinin bir listesi](https:
 
 ### <a name="what-operating-systems-does-the-dependency-agent-support"></a>Bağımlılık Aracısı hangi işletim sistemlerini destekler?
 
-[Bağımlılık Aracısı tarafından desteklenen Windows işletim sistemlerinin bir listesi aşağıda verilmiştir](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems). [Bağımlılık Aracısı tarafından desteklenen Linux işletim sistemlerinin bir listesi aşağıda verilmiştir](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+[Aşağıda [VM'ler için Azure izleyici desteklediği Windows ve Linux işletim sistemlerinin](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)bir listesi verilmiştir.
 
 ### <a name="i-cant-visualize-dependencies-in-azure-migrate-for-more-than-a-one-hour-duration"></a>Azure geçişi 'ndeki bağımlılıkları bir saatlik süre için görselleştirilemiyor.
 Azure geçişi 'nde, en fazla bir saatlik süreye kadar bağımlılıkları görselleştirebilirsiniz. Azure geçişi, son ayın belirli bir tarihine geri dönmenize izin verse de, bağımlılıkları görselleştirebileceğiniz en uzun süre bir saattir.

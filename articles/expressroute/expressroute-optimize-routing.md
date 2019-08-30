@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854306"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141861"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute Yönlendirmeyi En iyi Duruma Getirme
 Birden çok ExpressRoute bağlantı hattına sahip olduğunuzda, Microsoft'a bağlanmak için birden fazla yolunuz vardır. Sonuç olarak, yetersiz yönlendirme olabilir, diğer bir deyişle, trafiğinizin Microsoft’a ulaşması ve Microsoft’un ağınıza ulaşması daha uzun bir yol alabilir. Ne kadar uzun ağ yolu, o kadar yüksek gecikme. Gecikmenin uygulama performansı ve kullanıcı deneyimi üzerinde doğrudan etkisi vardır. Bu makale, bu sorunu gösterir ve standart yönlendirme teknolojilerini kullanarak yönlendirmenin nasıl iyileştirileceğini açıklar.
@@ -75,7 +75,7 @@ Bu sorunun iki çözümü vardır. Birinci yol Los Angeles ofisiniz için ABD Ba
 İkinci çözüm, her iki ExpressRoute bağlantı hattında iki öneki de tanıtmaya devam etmeniz ve buna ek olarak, hangi önekin hangi ofisinize daha yakın olduğu ile ilgili bize ipucu vermenizdir. BGP AS Yolu eklenmesini desteklediğimizden, yönlendirmeyi etkilemek için önekiniz için AS Yolu’nu yapılandırabilirsiniz. Bu örnekte, bu önek (ağımız bu önek yolunun batıdan daha kısa olacağını düşüneceğinden) için hedeflenen trafikte ABD Batı’daki ExpressRoute bağlantı hattını tercih edeceğimizden, ABD Doğu’daki 172.2.0.0/31 AS YOLU’nu uzatabilirsiniz. Benzer şekilde, ABD Doğu ExpressRoute bağlantı hattını tercih edeceğimiz için, ABD Batı’daki 172.2.0.2/31 için AS YOLU’nu uzatabilirsiniz. Her iki ofis için de yönlendirme en iyi duruma getirilmiştir. Bu tasarımla, bir ExpressRoute bağlantı hattı bozuk ise, Exchange Online başka bir ExpressRoute bağlantı hattı ve WAN’ınız aracılığıyla yine de size ulaşabilir. 
 
 > [!IMPORTANT]
-> Microsoft Eşlemesi’nde alınan önekler için AS YOLU’ndaki özel AS numaralarını kaldırırız. Microsoft Eşlemesi için yönlendirmeyi etkilemek amacıyla AS YOLU’nda ortak AS numaraları eklemeniz gerekir.
+> Özel bir AS numarası kullanarak eşleme yaparken Microsoft eşlemelerinde alınan öneklerin AS YOLUNDAKI özel AS numaralarını kaldırdık. Microsoft eşlemesi için yönlendirmeyi etkilemek üzere AS yolunda ortak bir AS ile eş ve genel AS numaraları eklemeniz gerekir.
 > 
 > 
 

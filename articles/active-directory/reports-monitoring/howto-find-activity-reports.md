@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988297"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127385"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure portal etkinlik raporlarını bulma
 
@@ -112,29 +112,29 @@ Kullanıcı adına veya uygulama adına filtreleyerek uygulama kullanımı hakk�
 
 ### <a name="anomalous-activity-reports"></a>Anormal etkinlik raporları
 
-Anormal etkinlik raporları, Azure AD 'nin tespit ve rapor etbildiği güvenlikle ilgili risk olayları hakkında bilgi sağlar.
+Anormal etkinlik raporları, Azure AD 'nin tespit ve rapor etbildiği güvenlikle ilgili risk algılamaları hakkında bilgiler sağlar.
 
-Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure Portal ilgili risk olay türleri listelenmektedir. Daha fazla bilgi için bkz. [Azure Active Directory risk olayları](concept-risk-events.md).  
+Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure Portal ilgili risk algılama türleri listelenmektedir. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](concept-risk-events.md).  
 
 
-| Azure AD anormal etkinlik raporu |  Kimlik koruması risk olayı türü|
+| Azure AD anormal etkinlik raporu |  Kimlik koruması risk algılama türü|
 | :--- | :--- |
 | Sızan kimlik bilgilerine sahip kullanıcılar | Sızdırılan kimlik bilgileri |
 | Düzensiz oturum açma etkinliği | Alışılmadık konumlara imkansız seyahat |
 | Muhtemelen virüs bulaşmış cihazlardan gerçekleştirilen oturum açma işlemleri | Bulaşma olan cihazlardan oturum açma işlemleri|
 | Bilinmeyen kaynaklardan gerçekleştirilen oturum açma işlemleri | Anonim IP adreslerinden oturum açma işlemleri |
-| Şüpheli etkinliğin olduğu IP adreslerinden oturum açma işlemleri | Şüpheli etkinliğin olduğu IP adreslerinden oturum açma işlemleri |
+| Şüpheli etkinlik gösteren IP adreslerinden gerçekleştirilen oturum açma işlemleri | Şüpheli etkinlik gösteren IP adreslerinden gerçekleştirilen oturum açma işlemleri |
 | - | Alışılmadık konumlardan oturum açma işlemleri |
 
-Aşağıdaki Azure AD anormal etkinlik güvenlik raporları Azure Portal risk olayları olarak dahil edilmez:
+Aşağıdaki Azure AD anormal etkinlik güvenlik raporları Azure Portal risk algılamaları olarak dahil edilmez:
 
 * Birden çok hatadan sonra gerçekleştirilen oturum açma işlemleri
 * Birden çok coğrafyadan gerçekleştirilen oturum açma işlemleri
 
 
-### <a name="detected-risk-events"></a>Algılanan risk olayları
+### <a name="detected-risk-detections"></a>Algılanan risk algılamaları
 
-Algılanan risk olayları hakkında raporlara, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **güvenlik** bölümünde erişebilirsiniz. Algılanan risk olayları aşağıdaki raporlarda izlenir:   
+Algılanan risk algılamaları hakkındaki raporlara, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **güvenlik** bölümünde erişebilirsiniz. Algılanan risk algılamaları aşağıdaki raporlarda izlenir:   
 
 - [Risk altındaki kullanıcılar](concept-user-at-risk.md)
 - [Riskli oturum açma işlemleri](concept-risky-sign-ins.md)

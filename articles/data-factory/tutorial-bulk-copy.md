@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 88fd480f87c3a33af1d16e57d6687d739dc1ec7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5d0807fb03c8518286a369f50df62f0ec0b23c2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123406"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140774"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 Bu öğreticide **Azure SQL Veritabanından Azure SQL Veri Ambarı'na birkaç tabloyu kopyalama** işlemi gösterilmektedir. Aynı düzeni diğer kopyalama senaryolarında da uygulayabilirsiniz. Örneğin, SQL Server/Oracle’dan Azure SQL Veritabanı/Veri Ambarı/Azure Blob’a tablo kopyalama, Blob’dan Azure SQL Veritabanı tablolarına farklı yollar kopyalama.
@@ -73,7 +72,7 @@ Hem SQL Veritabanı hem de SQL Veri Ambarı için Azure hizmetlerinin SQL sunucu
 2. Sunucunuzu seçin ve **AYARLAR** altındaki **Güvenlik Duvarı**’na tıklayın.
 3. **Güvenlik Duvarı ayarları** sayfasında **Azure hizmetlerine erişime izin ver** için **AÇIK**’a tıklayın.
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 
 1. **PowerShell**’i başlatın. Bu öğreticide sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir.
 
@@ -92,7 +91,7 @@ Hem SQL Veritabanı hem de SQL Veri Ambarı için Azure hizmetlerinin SQL sunucu
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Çalıştırma **kümesi AzDataFactoryV2** cmdlet'i bir veri fabrikası oluşturursunuz. Komutu yürütmeden önce yer tutucuları kendi değerlerinizle değiştirin. 
+2. Bir veri fabrikası oluşturmak için **set-AzDataFactoryV2** cmdlet 'ini çalıştırın. Komutu yürütmeden önce yer tutucuları kendi değerlerinizle değiştirin. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -109,7 +108,7 @@ Hem SQL Veritabanı hem de SQL Veri Ambarı için Azure hizmetlerinin SQL sunucu
         ```
 
     * Data Factory örnekleri oluşturmak için Azure aboneliğinde Katkıda Bulunan veya Yönetici rolünüz olmalıdır.
-    * Data Factory kullanılabildiği şu anda Azure bölgelerinin listesi için aşağıdaki sayfada faiz ve ardından genişletin bölgeleri seçin **Analytics** bulunacak **Data Factory**: [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+    * Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
@@ -117,7 +116,7 @@ Bu öğreticide sırasıyla kaynak, havuz ve hazırlama blob’u için veri depo
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Kaynak Azure SQL Veritabanı bağlı hizmetini oluşturma
 
-1. Adlı bir JSON dosyası oluşturun **C:\adftutorials\ınccopymultitabletutorial** içinde **C:\ADFv2TutorialBulkCopy** klasöründe aşağıdaki içeriğe sahip: (Zaten yoksa ADFv2TutorialBulkCopy klasör oluşturun.)
+1. **C:\adfv2tutorialbulkcopy klasöründe** klasöründe aşağıdaki Içeriğe sahip **Azuressqldatabaselinkedservice. JSON** adlı bir JSON dosyası oluşturun: (Henüz yoksa, ADFv2TutorialBulkCopy klasörünü oluşturun.)
 
     > [!IMPORTANT]
     > &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; ve &lt;password&gt; sözcüklerini Azure SQL Veritabanınızın değerleriyle değiştirin.
@@ -139,7 +138,7 @@ Bu öğreticide sırasıyla kaynak, havuz ve hazırlama blob’u için veri depo
 
 2. **Azure PowerShell**’de **ADFv2TutorialBulkCopy** klasörüne geçin.
 
-3. Çalıştırma **kümesi AzDataFactoryV2LinkedService** bağlı hizmetini oluşturmak için cmdlet: **AzureSqlDatabaseLinkedService**. 
+3. Bağlı hizmeti oluşturmak için **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın: **Azuressqldatabaselinkedservice**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -176,7 +175,7 @@ Bu öğreticide sırasıyla kaynak, havuz ve hazırlama blob’u için veri depo
     }
     ```
 
-2. Bağlı hizmet oluşturmak için: **AzureSqlDWLinkedService**çalıştırın **kümesi AzDataFactoryV2LinkedService** cmdlet'i.
+2. Bağlı hizmeti oluşturmak için: **Azuresqldwlinkedservice**, **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -215,7 +214,7 @@ Bu öğreticide Azure Blob depolamayı daha iyi bir kopyalama performansı için
     }
     ```
 
-2. Bağlı hizmet oluşturmak için: **AzureStorageLinkedService**çalıştırın **kümesi AzDataFactoryV2LinkedService** cmdlet'i.
+2. Bağlı hizmeti oluşturmak için: **AzureStorageLinkedService**, **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -254,7 +253,7 @@ Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri k
     }
     ```
 
-2. Veri kümesini oluşturmak için: **AzureSqlDatabaseDataset**çalıştırın **kümesi AzDataFactoryV2Dataset** cmdlet'i.
+2. Veri kümesini oluşturmak için: **Azuressqldatabasedataset**, **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -272,7 +271,7 @@ Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri k
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Havuz SQL Veri Ambarı için veri kümesi oluşturma
 
-1. Adlı bir JSON dosyası oluşturun **C:\adfv2tutorialbulkcopy** içinde **C:\ADFv2TutorialBulkCopy** klasöründe aşağıdaki içeriğe sahip: "tableName" ayarlanmış bir parametre olarak, bu veri kümesine başvuran kopyalama etkinliği daha sonra veri kümesine gerçek değeri geçirir.
+1. **C:\adfv2tutorialbulkcopy klasöründe** klasöründe aşağıdaki Içeriğe sahip **Azuresqldwdataset. JSON** adlı bir JSON dosyası oluşturun: "TableName" parametresi olarak ayarlanır, daha sonra bu veri kümesine başvuruda bulunan kopyalama etkinliği gerçek değeri veri kümesine geçirir.
 
     ```json
     {
@@ -298,7 +297,7 @@ Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri k
     }
     ```
 
-2. Veri kümesini oluşturmak için: **AzureSqlDWDataset**çalıştırın **kümesi AzDataFactoryV2Dataset** cmdlet'i.
+2. Veri kümesini oluşturmak için: **Azuresqldwdataset**, **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -390,7 +389,7 @@ Bu işlem hattı parametre olarak tablo listesini alır. Listedeki her bir tablo
     }
     ```
 
-2. İşlem hattını oluşturmak için: **Iterateandcopysqltables**çalıştırın **kümesi AzDataFactoryV2Pipeline** cmdlet'i.
+2. İşlem hattını oluşturmak için: **Iterateandcopysqltables**, **set-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -466,7 +465,7 @@ Bu işlem hattı iki adım gerçekleştirir:
     }
     ```
 
-2. İşlem hattını oluşturmak için: **GetTableListAndTriggerCopyData**çalıştırın **kümesi AzDataFactoryV2Pipeline** cmdlet'i.
+2. İşlem hattını oluşturmak için: **Gettablelistandtriggercopydata**, **set-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

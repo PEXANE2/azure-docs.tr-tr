@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693883"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125336"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özelliği dağıtım kılavuzu
 
@@ -53,9 +53,9 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 | [Bulut tabanlı kullanıcı hesapları için düzenli parola sıfırlamaları devre dışı bırak](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Düzenli parola sıfırlama, kullanıcılarınızın mevcut parolalarını artırmasını teşvik eder. Microsoft 'un parola Kılavuzu belgesi ' nde yer alan yönergeleri kullanın ve şirket içi ilkenizi yalnızca bulutta bulunan kullanıcılara yansıtın. | Azure AD Ücretsiz |
 | [Akıllı kilitleme Azure Active Directory özelleştirme](../authentication/howto-password-smart-lockout.md) | Bulut tabanlı kullanıcılardan gelen kilitlenmelerini, şirket içi Active Directory kullanıcılarına çoğaltılmalarını durdurun | |
 | [AD FS için extranet akıllı kilitlemeyi etkinleştir](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS Extranet kilitleme, deneme yanılma, parola tahmin saldırılarına karşı koruma sağlar, ancak geçerli AD FS kullanıcıların hesaplarını kullanmaya devam etmesine izin verir. | |
-| [Koşullu erişim ilkelerini kullanarak Azure AD Multi-Factor Authentication 'ı dağıtma](../authentication/howto-mfa-getstarted.md) | Kullanıcıların koşullu erişim ilkelerini kullanarak gizli uygulamalara erişirken iki adımlı doğrulama gerçekleştirmesini gerektir. | Azure AD Premium P1 |
+| [Koşullu erişim ilkelerini kullanarak Azure AD Multi-Factor Authentication dağıtma](../authentication/howto-mfa-getstarted.md) | Kullanıcıların koşullu erişim ilkelerini kullanarak gizli uygulamalara erişirken iki adımlı doğrulama gerçekleştirmesini gerektir. | Azure AD Premium P1 |
 | [Azure Active Directory kimlik Koruması'nı etkinleştir](../identity-protection/enable.md) | Kuruluşunuzdaki kullanıcılar için riskli oturum açma işlemlerinin ve güvenliği aşılmış kimlik bilgilerinin izlenmesini etkinleştirin. | Azure AD Premium P2 |
-| [Çok faktörlü kimlik doğrulaması ve parola değişikliklerini tetiklemek için risk olaylarını kullanma](../authentication/tutorial-risk-based-sspr-mfa.md) | Multi-Factor Authentication, parola sıfırlama ve oturum açma işlemlerini riske göre engelleme gibi olayları tetikleyemeyen Otomasyonu etkinleştirin. | Azure AD Premium P2 |
+| [Çok faktörlü kimlik doğrulaması ve parola değişikliklerini tetiklemek için risk algılamalarını kullanma](../authentication/tutorial-risk-based-sspr-mfa.md) | Multi-Factor Authentication, parola sıfırlama ve oturum açma işlemlerini riske göre engelleme gibi olayları tetikleyemeyen Otomasyonu etkinleştirin. | Azure AD Premium P2 |
 | [Self Servis parola sıfırlama ve Azure AD multi-Factor Authentication (Önizleme) için yakınsanmış kaydını etkinleştirin](../authentication/concept-registration-mfa-sspr-converged.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2\. Aşama: Kullanıcıları içeri aktarma, eşitlemeyi etkinleştirme ve cihazları yönetme

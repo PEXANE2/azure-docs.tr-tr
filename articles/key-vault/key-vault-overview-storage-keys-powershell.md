@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562541"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136574"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault yönetilen depolama hesabı-PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562541"
 > - Depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayın. 
 > - Azure 'da çalışırken bir [Azure ad yönetilen kimliği](/azure/active-directory/managed-identities-azure-resources/) kullanın. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini tamamen kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
 > - Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için rol tabanlı Access Control (RBAC) kullanın.
+> - Depolama hesabına AAD erişimi, henüz olduğu gibi tablolara erişmek için çalışmaz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Anahtar yeniden oluşturmayı etkinleştir
 
-Depolama hesabı anahtarlarınızı düzenli aralıklarla yeniden oluşturmak Key Vault isterseniz, yeniden oluşturma dönemi ayarlayabilirsiniz. Aşağıdaki örnekte, üç günün yeniden oluşturma dönemini ayarlayacağız. Üç gün sonra, Key Vault ' KEY1 ' öğesini yeniden oluşturacak ve etkin anahtarı ' key2 ' iken ' KEY1 ' olarak takas edecek.
+Depolama hesabı anahtarlarınızı düzenli aralıklarla yeniden oluşturmak Key Vault isterseniz, yeniden oluşturma dönemi ayarlayabilirsiniz. Aşağıdaki örnekte, üç günün yeniden oluşturma dönemini ayarlayacağız. Üç gün sonra, Key Vault ' key2 ' öğesini yeniden oluşturacak ve etkin anahtarı ' key2 ' iken ' KEY1 ' olarak takas edecek.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

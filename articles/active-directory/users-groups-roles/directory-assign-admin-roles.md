@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 93532b1b40dc138a234d5433591a2ba79167194e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034985"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135567"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -123,7 +123,7 @@ Aşağıdaki Yönetici rolleri kullanılabilir:
 
 * **[Cihaz Yöneticisi](#device-administrators)** : Bu rol, yalnızca [cihaz ayarları](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)'nda ek bir yerel yönetici olarak atanmak üzere kullanılabilir. Bu role sahip kullanıcılar, Azure Active Directory katılmış tüm Windows 10 cihazlarında yerel makine yöneticileri haline gelir. Azure Active Directory cihaz nesnelerini yönetme yeteneğine sahip değildir. 
 
-* **[Dizin okuyucuları](#directory-readers)** : Bu, yalnızca [onay çerçevesini](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)desteklemeyen eski uygulamalara atanması gereken bir roldür. Kullanıcılara atamayın.
+* **[Dizin okuyucuları](#directory-readers)** : Bu, yalnızca [onay çerçevesini](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)desteklemeyen eski uygulamalara atanması gereken bir roldür. Bu roldeki kullanıcılar, temel dizin bilgilerini okuyabilir. Bu rol için kullanılmalıdır: 1) belirli bir konuk kullanıcıları kümesine, tüm konuk kullanıcılara vermek yerine okuma erişimi verme. 2) "Azure AD portalına erişimi yalnızca yöneticilerle kısıtla" seçeneği "Evet" olarak ayarlandığında, yönetici olmayan kullanıcıların belirli bir kümesini Azure portalına verme izni veriliyor. 3) whereDirectory. Read dizinine hizmet sorumlusu erişimi verme. All bir seçenek değildir.
 
 * **[Dizin eşitleme hesapları](#directory-synchronization-accounts)** : Kullanmayın. Bu rol, Azure AD Connect hizmetine otomatik olarak atanır ve başka bir kullanım için tasarlanmamıştır veya desteklenmez.
 
@@ -658,7 +658,7 @@ Bu role atanan kullanıcılar, Azure AD 'ye katılmış cihazlarda yerel Yöneti
 | Microsoft. AAD. Directory/groupSettingTemplates/Basic/Read | Azure Active Directory groupSettingTemplates üzerindeki temel özellikleri okuyun. |
 
 ### <a name="directory-readers"></a>Dizin Okuyucuları
-Temel dizin bilgilerini okuyabilir. Uygulamalara erişim vermek için, kullanıcılara yönelik değildir.
+Temel dizin bilgilerini okuyabilir. Bu roldeki kullanıcılar, temel dizin bilgilerini okuyabilir. Bu rol için kullanılmalıdır: 1) belirli bir konuk kullanıcıları kümesine, tüm konuk kullanıcılara vermek yerine okuma erişimi verme. 2) "Azure AD portalına erişimi yalnızca yöneticilerle kısıtla" seçeneği "Evet" olarak ayarlandığında, yönetici olmayan kullanıcıların belirli bir kümesini Azure portalına verme izni veriliyor. 3) whereDirectory. Read dizinine hizmet sorumlusu erişimi verme. All bir seçenek değildir.
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |

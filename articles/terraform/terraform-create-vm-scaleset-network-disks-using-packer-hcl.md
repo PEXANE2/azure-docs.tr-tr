@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884970"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138336"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform kullanarak özel bir Packer görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 
@@ -44,7 +44,7 @@ Boş bir dizinde aşağıdaki adları kullanarak üç yeni dosya oluşturun:
 
 - ```variables.tf``` Bu dosya, şablonda kullanılan değişkenlerin değerini içerir.
 - ```output.tf``` Bu dosya, dağıtım sonrasında görüntülenen ayarı tanımlar.
-- ```vmss.tf``` Bu dosya, dağıtmakta olduğunuz altyapının kodunu içerir.
+- ```vmss.tf```Bu dosya, dağıtmakta olduğunuz altyapının kodunu içerir.
 
 ##  <a name="create-the-variables"></a>Değişkenleri oluşturma 
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ NGINX yüklü ve sağlaması kaldırılmış bir Ubuntu görüntüsü oluşturma
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Altyapıyı düzenleyerek sanal makine ölçek kümesini ekleme
 
 Bu adımda önceden dağıttığınız ağ üzerinde aşağıdaki kaynakları oluşturacaksınız:
-- Uygulamayı sunmak ve 4. adımda dağıtılan genel IP adresine eklemek için Azure yük dengeleyici
+- Uygulamayı sunacak ve daha önce dağıtılan genel IP adresine ekleyecek Azure yük dengeleyici.
 - Uygulamayı sunmak ve önceden yapılandırılan genel IP adresine eklemek için bir Azure yük dengeleyici ve kurallar.
-- Yük dengeleyiciye atanacak Azure arka uç adres havuzu 
-- Uygulama tarafından kullanılan ve yük dengeleyici üzerinde yapılandırılan sistem durumu yoklama bağlantı noktası 
-- Önceden dağıtılan sanal ağ üzerinde çalışan ve yük dengeleyicinin arkasında bulunan bir sanal makine ölçek kümesi
-- Özel görüntüden yüklenen ve sanal makine ölçek kümesi düğümlerinde bulunan [Nginx](https://nginx.org/)
+- Azure arka uç adres havuzu ve yük dengeleyiciye atayın.
+- Uygulama tarafından kullanılan ve yük dengeleyicide yapılandırılan bir sistem durumu araştırması bağlantı noktası.
+- Daha önce dağıtılan VNET üzerinde çalışan yük dengeleyicinin arkasında çalışan bir sanal makine ölçek kümesi.
+- Özel görüntüden yüklenen sanal makine ölçeğinin düğümlerinde [NGINX](https://nginx.org/) .
 
 
 `vmss.tf` dosyasının sonuna aşağıdaki kodu ekleyin.
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

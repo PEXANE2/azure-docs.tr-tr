@@ -7,22 +7,22 @@ author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 8cf72ba2fff65cf3382344fd2851c9c6027676c2
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635897"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128184"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
 
 **Görüntü analizi** özelliği, görüntü içeriğine göre zengin bir görsel özellikler kümesini ayıklar. Örneğin, bir görüntüden açıklamalı alt yazı oluşturabilir, Etiketler oluşturabilir veya ünlüleri ve yer işaretlerini tanımlayabilir. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. 
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> Küçük birimler (20 işlem altında) Azure Search ücretsiz olarak yürütülebilir, ancak daha büyük iş yükleri faturalanabilir bilişsel [Hizmetler kaynağı iliştirmesini](cognitive-search-attach-cognitive-services.md)gerektirir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
 > Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [Azure Search fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
@@ -37,9 +37,8 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
 | defaultLanguageCode   |  Döndürülecek dili gösteren bir dize. Hizmet, belirtilen bir dilde tanıma sonuçları döndürür. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/><br/>Desteklenen diller şunlardır: <br/>*en* -İngilizce (varsayılan) <br/> *zh* -Basitleştirilmiş Çince|
-|visualFeatures |   Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li> *Kategoriler* -bilişsel Hizmetler [belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li><li>*Açıklama* -tam İngilizce cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li> *ImageType* -resmin küçük resim veya çizgi çizimi olduğunu algılar.</li><li>  *Color* -vurgu rengini, baskın rengi ve görüntünün siyah & beyaz olduğunu belirler.</li><li>*yetişkin* -görüntünün doğası halinde pornografik (çıplaklık veya bir sex Yasası gösterir) olduğunu algılar. Cinsel ve kışkırtıcı içerik de algılanır.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır.|
-| details   | Hangi alana özgü ayrıntıların dönebileceğini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır: <ul><li>*ünlüler* -görüntüde algılanırsa ünlülikler tanımlar.</li><li>yer *işaretleri* -görüntüde algılanırsa yer işaretlerini tanımlar.</li></ul>
- |
+|visualFeatures |   Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li><li>*Açıklama* -tam İngilizce cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>    *ImageType* -resmin küçük resim veya çizgi çizimi olduğunu algılar.</li><li>  *Color* -vurgu rengini, baskın rengi ve görüntünün siyah & beyaz olduğunu belirler.</li><li>*yetişkin* -görüntünün doğası halinde pornografik (çıplaklık veya bir sex Yasası gösterir) olduğunu algılar. Cinsel ve kışkırtıcı içerik de algılanır.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır.|
+| details   | Hangi alana özgü ayrıntıların dönebileceğini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır: <ul><li>*ünlüler* -görüntüde algılanırsa ünlülikler tanımlar.</li><li>yer *işaretleri* -görüntüde algılanırsa yer işaretlerini tanımlar. </li></ul> |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
@@ -49,7 +48,8 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 
 
-##  <a name="sample-definition"></a>Örnek tanım
+##  <a name="sample-skill-definition"></a>Örnek yetenek tanımı
+
 ```json
         {
             "description": "Extract image analysis.",
@@ -316,7 +316,17 @@ Parametreler büyük/küçük harfe duyarlıdır.
             "targetFieldName": "faces"
         }
 ```
+### <a name="variation-on-output-field-mappings-nested-properties"></a>Çıkış alanı eşlemelerinde çeşitleme (iç içe Özellikler)
 
+Yalnızca yer işaretleri veya ünlüler gibi alt düzey özelliklerle çıkış alanı eşlemelerini tanımlayabilirsiniz. Bu durumda, Dizin şemanızın özel olarak dikkat edilecek bir alana sahip olduğundan emin olun.
+
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
+            "targetFieldName": "landmarks"
+        }
+```
 ##  <a name="sample-input"></a>Örnek giriş
 
 ```json
@@ -493,6 +503,22 @@ Aşağıdaki hata durumlarında hiçbir öğe ayıklanmaz.
 | NotSupportedVisualFeature  | Belirtilen özellik türü geçerli değil. |
 | NotSupportedImage | Desteklenmeyen görüntü, örneğin alt pornografi. |
 | Invaliddetails | Etki alanına özgü desteklenmeyen model. |
+
+Şuna benzer `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`bir hata alırsanız yolu denetleyin. Her iki ünlüler ve yer işaretleri altında `detail`özelliklerdir.
+
+```json
+"categories":[  
+      {  
+         "name":"building_",
+         "score":0.97265625,
+         "detail":{  
+            "landmarks":[  
+               {  
+                  "name":"Forbidden City",
+                  "confidence":0.92013400793075562
+               }
+            ]
+```
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

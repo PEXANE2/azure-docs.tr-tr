@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582389"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140762"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
 Bu öğreticide, değişim verileri şirket içi SQL Server’daki birden çok tablodan Azure SQL Veritabanına yükleyen bir Azure veri fabrikası işlem hattı oluşturacaksınız.    
@@ -175,9 +174,9 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL veritabanında veri türleri ve ek saklı yordamlar oluşturma
 SQL veritabanınızda iki saklı yordam ve iki veri türü oluşturmak için aşağıdaki sorguyu çalıştırın. Bunlar, kaynak tablodaki verileri hedef tablolarla birleştirmek için kullanılır.
 
-Yolculuğunuza başlamak kolaylaştırmak için doğrudan bu depolanan bir tablo değişkeni değişim verileri geçirme yordamları kullanın ve ardından bunları hedef depolama alanına birleştirin. "Büyük" bazı delta satırlar (100'den fazla) tablo değişkeninde depolanan bekleniyor değil, dikkatli olun.  
+Yolculuğun başlamasını kolaylaştırmak için, bu saklı yordamları doğrudan bir tablo değişkeni aracılığıyla içindeki Delta verileri geçirerek ve ardından bunları hedef depoda birleştirerek kullanırız. Tablo değişkeninde bir "büyük" sayıda Delta satırı (100 ' den fazla) beklenmediğinden emin olun.  
 
-Hedef, geçici bir "Hazırlama" tabloya delta veri kopyalamak için kopyalama etkinliği kullanmanızı ilk depolamak ve ardından kendi saklı yordam tablosu vari kullanmadan oluşturulan hedef deposuna çok sayıda değişim satırları birleştirmek gerekiyorsa öneririz "Hazırlama" tablosundan "son" tabloyu birleştirmek üzere kullanabilirsiniz. 
+Hedef depoda çok sayıda Delta satırını birleştirmeniz gerekiyorsa, tüm Delta verileri önce hedef depodaki geçici bir "hazırlama" tablosuna kopyalamak için kopyalama etkinliği 'ni kullanmanızı ve ardından tablo VARI ' nı kullanmadan kendi saklı yordamınıza sahip olup olmadığını öneririz bunları "hazırlama" tablosundan "son" tablosuna birleştirebiliyor. 
 
 
 ```sql
@@ -228,7 +227,7 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. Soldaki menüde **Yeni**, **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
@@ -251,8 +250,8 @@ END
 1. **Sürüm** için **V2 (Önizleme)** öğesini seçin.
 1. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 1. **Panoya sabitle**’yi seçin.     
-1. **Oluştur**’a tıklayın.      
-1. Panoda durumuna sahip aşağıdaki kutucuğu görürsünüz: **Veri Fabrikası dağıtılıyor**. 
+1. **Oluştur**'a tıklayın.      
+1. Panoda şu durumu içeren kutucuğu görürsünüz: **Veri Fabrikası dağıtılıyor**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
@@ -281,7 +280,7 @@ END
 1. **Ad** için **MySelfHostedIR** adını girip **İleri**’ye tıklayın. 
 
    ![Şirket içinde barındırılan IR adı](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Tıklayın **bu bilgisayarda hızlı kurulumu başlatmak için buraya tıklayın** içinde **1. seçenek: Hızlı Kurulum** bölümü. 
+1. 1\. **seçenekte **Bu bilgisayar için hızlı kurulumu başlatmak üzere buraya tıklayın ' e** tıklayın: Hızlı Kurulum** bölümü. 
 
    ![Hızlı kurulum bağlantısına tıklayın](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. **Tümleştirme Çalışma Zamanı (Şirket İçinde Barındırılan) Hızlı Kurulum** penceresinde **Kapat**’a tıklayın. 
@@ -305,7 +304,7 @@ Bu adımda, şirket içi SQL Server veritabanınızı veri fabrikasına bağlars
     ![Yeni Bağlı Hizmet düğmesi](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
 1. **Yeni Bağlı Hizmet** penceresinde **SQL Server**’ı seçip **Devam**’a tıklayın. 
 
-    ![SQL Server'ı seçin](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
+    ![SQL Server'ı Seçme](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
 1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **SqlServerLinkedService** adını girin. 
@@ -326,7 +325,7 @@ Son adımda, kaynak SQL Server veritabanınızı veri fabrikasına bağlamak iç
 1. **Bağlantılar** penceresinde **Tümleştirme Çalışma Zamanları** sekmesinden **Bağlı Hizmetler** sekmesine geçip **+ Yeni**’ye tıklayın.
 
     ![Yeni Bağlı Hizmet düğmesi](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
-1. **Yeni Bağlı Hizmet** penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın. 
+1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın. 
 1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureSqlDatabaseLinkedService** adını girin. 
@@ -352,7 +351,7 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
    ![Yeni Veri Kümesi menüsü](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. **Yeni Veri Kümesi** penceresinde **SQL Server**’ı seçip **Son**’a tıklayın. 
 
-   ![SQL Server'ı seçin](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
+   ![SQL Server'ı Seçme](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
 1. Web tarayıcısında veri kümesinin yapılandırılması için yeni bir sekme açıldığını görürsünüz. Ayrıca, ağaç görünümünde de bir veri kümesi görürsünüz. Alttaki Özellikler penceresinin **Genel** sekmesinde **Ad** için **SourceDataset** adını girin. 
 
    ![Kaynak veri kümesi - ad](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
@@ -493,9 +492,9 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     ![Kopyalama Etkinliği - havuz ayarları](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Aşağıdaki adımları uygulayın:
 
-    1. İçinde **veri kümesi** özelliği için **SinkTableName** parametre girin `@{item().TABLE_NAME}`.
-    1. İçin **saklı yordam adı** özelliği girin `@{item().StoredProcedureNameForMergeOperation}`.
-    1. İçin **tablo türü** özelliği girin `@{item().TableType}`.
+    1. **DataSet** özelliğinde, **sinktablename** parametresi için girin `@{item().TABLE_NAME}`.
+    1. **Saklı yordam adı** özelliği için girin `@{item().StoredProcedureNameForMergeOperation}`.
+    1. **Tablo türü** özelliği için girin `@{item().TableType}`.
 
 
         ![Kopyalama Etkinliği - parametreler](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -514,10 +513,10 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     1. **Parametreyi içeri aktar**’ı seçin. 
     1. Parametreler için aşağıdaki değerleri belirtin: 
 
-        | Ad | Tür | Değer | 
+        | Name | Tür | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Saklı Yordam Etkinliği - saklı yordam ayarları](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. Sol bölmede **Yayımla**'ya tıklayın. Bu eylem, oluşturduğunuz varlıkları Data Factory hizmetinde yayımlar. 

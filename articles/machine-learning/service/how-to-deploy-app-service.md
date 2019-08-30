@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114290"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147899"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Web uygulamanızı yapılandırma hakkında daha fazla bilgi için [Linux 'ta App Service](/azure/app-service/containers/) bakın.
-* Ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure 'Da otomatik ölçeklendirmeyi kullanmaya başlama](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* SSL desteği hakkında daha fazla bilgi için bkz. [Azure App SERVICE SSL sertifikası kullanma](/azure/app-service/app-service-web-ssl-cert-load).
-* Kimlik doğrulama hakkında daha fazla bilgi için bkz. [App Service uygulamanızı Azure Active Directory oturum açma bilgilerini kullanacak şekilde yapılandırma](/azure/app-service/configure-authentication-provider-aad).
+* [Linux belgelerindeki App Service](/azure/app-service/containers/) Web uygulamanızı yapılandırmayı öğrenin.
+* [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
+* [Azure App Service BIR SSL sertifikası kullanın](/azure/app-service/app-service-web-ssl-cert-load).
+* [App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırın](/azure/app-service/configure-authentication-provider-aad).
 * [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)

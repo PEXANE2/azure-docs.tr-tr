@@ -1,38 +1,38 @@
 ---
-title: Azure Data factory'de değişken etkinlik ekleme | Microsoft Docs
-description: Bir veri fabrikası ardışık düzeninde tanımlanan var olan bir dizi değişkenine bir değer eklemek için değişken Ekle etkinliği ayarlamayı öğrenin
+title: Azure Data Factory değişken etkinliğini Ekle | Microsoft Docs
+description: Bir Data Factory işlem hattında tanımlanmış var olan bir dizi değişkenine değer eklemek için değişken ekleme etkinliğinin nasıl ayarlanacağını öğrenin
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557231"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141718"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data factory'de değişken etkinlik ekleme
+# <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini sona Ekle
 
-Değişken Ekle etkinliği, bir veri fabrikası ardışık düzeninde tanımlanan var olan bir dizi değişkenine bir değer eklemek için kullanın.
+Bir Data Factory işlem hattında tanımlanmış var olan bir dizi değişkenine değer eklemek için değişken ekleme etkinliğini kullanın.
 
 ## <a name="type-properties"></a>Tür özellikleri
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-name | İşlem hattındaki etkinliğin adı | Evet
+name | İşlem hattının etkinlik adı | Evet
 description | Etkinliğin ne yaptığını açıklayan metin | hayır
-türü | Etkinlik AppendVariable türüdür | evet
-value | Belirtilen bir değişkene eklemek için kullanılan dize değişmez değer veya ifade nesne değeri | evet
-Değişkenadı | Etkinlik, değişkeni değiştirilecek değişkeni adı 'Array' türünde olmalıdır | evet
+type | Etkinlik türü AppendVariable | evet
+value | Belirtilen değişkene eklemek için kullanılan dize sabiti veya ifade nesnesi değeri | evet
+variableName | Etkinliğe göre değiştirilecek değişkenin adı, değişkenin ' Array ' türünde olması gerekir | evet
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen bir ilgili denetim akışı etkinliği hakkında bilgi edinin: 
+Data Factory tarafından desteklenen ilgili bir denetim akışı etkinliği hakkında bilgi edinin: 
 
-- [Değişkenini ayarla etkinliğinin](control-flow-set-variable-activity.md)
+- [Değişken etkinliğini ayarla](control-flow-set-variable-activity.md)

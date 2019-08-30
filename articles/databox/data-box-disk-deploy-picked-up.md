@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035698"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135050"
 ---
 ::: zone target="chromeless"
 
-# <a name="return-azure-data-box-disk"></a>Dönüş Azure Data Box Disk 
+## <a name="return-azure-data-box-disk"></a>Dönüş Azure Data Box Disk 
 
 ::: zone-end
 
@@ -49,22 +49,9 @@ Başlamadan önce [öğreticiyi tamamladığınızdan emin olun: Azure Data Box 
     - İyi güvenli bir kabarcıklanmasını sarması kullanarak disk paketetmenizi öneririz.
     - Kutunun içindeki tüm hareketleri azaltmak için Sığdırma 'nin Snug olduğundan emin olun.
 
-Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir.
+Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir. Yönergeler, Asya 'daki ABD/Kanada, Avustralya veya ülkeler için farklıdır.
 
-
-
-- [CIHAZı ABD ve Kanada 'ya DÖNDÜRÜRKEN UPS ile bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-- [Avrupa için DHL ile birlikte bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-europe) ve Web sitesini ziyaret edin ve Airway fatura numarasını belirtin.
-- [Avustralya 'da bir toplama zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
-- Asya ve Japonya, Kore ve Singapur gibi [ülkeler için bir çekme planı zamanlayın](data-box-disk-deploy-picked-up.md#pick-up-in-asia) .
-
-::: zone target="chromeless"
-
-Aboneliğiniz, taşımalarınız tarafından alındıktan sonra, Portal güncelleştirmelerinde sipariş durumu ve izleme KIMLIĞI görüntülenir.
-
-::: zone-end
-
-## <a name="pick-up-in-us-canada"></a>ABD, Kanada 'da seçin
+### <a name="pick-up-in-us-canada"></a>ABD, Kanada 'da seçin
 
 Cihazı ABD veya Kanada 'Ya döndürürken aşağıdaki adımları uygulayın.
 
@@ -80,7 +67,7 @@ Cihazı ABD veya Kanada 'Ya döndürürken aşağıdaki adımları uygulayın.
     - İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
     - Toplama zamanlamak yerine, en yakın bırakma konumundaki Data Box Disk de bırakabilirsiniz.
 
-## <a name="pick-up-in-europe"></a>Avrupa 'da seçin
+### <a name="pick-up-in-europe"></a>Avrupa 'da seçin
 
 Cihazı Avrupa 'ya döndürürken aşağıdaki adımları uygulayın.
 
@@ -93,7 +80,7 @@ Cihazı Avrupa 'ya döndürürken aşağıdaki adımları uygulayın.
 4. DHL Express web sitesine ülke/bölge ' ye gidin ve **bir Courier Collection > eReturn sevkıyatı**seçin.    
 3. Konşimento numarasını belirtin ve toplama ayarlaması yapmak için **Toplama Zamanlama**'ya tıklayın.
 
-## <a name="pick-up-in-australia"></a>Avustralya 'da seçin
+### <a name="pick-up-in-australia"></a>Avustralya 'da seçin
 
 Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. Tüm gelen sevkiyatlar gelişmiş bir bildirime sahip olmalıdır. Avustralya 'da toplama için aşağıdaki adımları uygulayın.
 
@@ -104,11 +91,11 @@ Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. T�
     - Adres
     - Kişi adı
 
-## <a name="pick-up-in-asia"></a>Asya 'da seçin
+### <a name="pick-up-in-asia"></a>Asya 'da seçin
 
 Toplama yönergeleri, Japonya, Kore ve Singapur için farklıdır.
 
-### <a name="pick-up-in-japan"></a>Japonya 'da seçin
+#### <a name="pick-up-in-japan"></a>Japonya 'da seçin
 
 1. Şirket adı ve adres bilgilerinizi, gönderici bilgileriniz olarak konsinye notuna yazın.
 2. Aşağıdaki e-posta şablonunu kullanarak e-posta Quantium çözümü.
@@ -135,7 +122,7 @@ Gerekirse, aşağıdaki bilgileri izleyerek Quantium çözüm desteği (Japonca 
 - E-posta:Customerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-### <a name="pick-up-in-korea"></a>Kore 'de Seç
+#### <a name="pick-up-in-korea"></a>Kore 'de Seç
 
 1. Dönüş konsinye notuna dahil ettiğinizden emin olun.
 2. Konsinye senedi mevcut olduğunda çekme isteği istemek için:
@@ -149,13 +136,10 @@ Gerekirse, aşağıdaki bilgileri izleyerek Quantium çözüm desteği (Japonca 
     3. Courier koleksiyon için ulaşmazsa, diğer düzenlemeler için *Quantium çözümlerini Uluslararası* yardım hattını çağırın. 
     4. İstek telefon aracılığıyla yapılırsa bir onaylama onayı alırsınız.
 
-### <a name="pick-up-in-singapore"></a>Singapur 'ta seçin
+#### <a name="pick-up-in-singapore"></a>Singapur 'ta seçin
 
 1. Sevkiyat etiketini yazdırın ve kutunun üzerine ekleyin. Etiket hasar görmüşse veya kaybolursa:
     - **Genel bakış > sevkiyat etiketini indirme** ve iade sevkiyat etiketi edinme bölümüne gidin.
-
-        ![Sevkiyat etiketini indirin](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Cihazdaki etiketi afden düzeltir. Etiketin görünür olduğundan emin olun.
 
 2. Toplama istemek için:

@@ -1,20 +1,20 @@
 ---
-title: Python kullanarak bir Azure Veri Gezgini kümesi ile veritabanı oluşturma
-description: Python kullanarak bir Azure Veri Gezgini küme ve veritabanı oluşturmayı öğrenin.
+title: Python kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturma
+description: Python kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturmayı öğrenin.
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: caac53aec08e234f320ee4278a5a58bbc62bff68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3f58e596db26c04a8f3be4f87eb129fadf5e328
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494573"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141749"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python kullanarak bir Azure Veri Gezgini kümesi ile veritabanı oluşturma
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
@@ -24,7 +24,7 @@ ms.locfileid: "66494573"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure veri gezginini kullanmak için ilk küme oluşturma ve bu kümede bir veya daha fazla veritabanı oluşturun. Ardından karşı sorgular çalıştırabileceği şekilde onlara bir veritabanına (yükle) veri alın. Bu makalede, bir küme ve bir veritabanı Python kullanarak oluşturun.
+Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, Python kullanarak bir küme ve veritabanı oluşturursunuz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 ## <a name="install-python-package"></a>Python paketini yükle
 
-Azure Veri Gezgini (Kusto) için Python paketini yüklemek için Python alt yolu olan bir komut istemi açın. Şu komutu çalıştırın:
+Azure Veri Gezgini Python paketini yüklemek için (kusto), yolunda Python içeren bir komut istemi açın. Şu komutu çalıştırın:
 
 ```
 pip install azure-mgmt-kusto
@@ -65,23 +65,23 @@ pip install azure-mgmt-kusto
 
    |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | küme_adı | *mykustocluster* | İstenen kümenizin adıdır.|
-   | SKU | *D13_v2* | Kümeniz için kullanılan SKU. |
+   | cluster_name | *mykustocluster* | Kümenizin istenen adı.|
+   | sku | *D13_v2* | Kümeniz için kullanılacak SKU. |
    | resource_group_name | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
 
-    Küme kapasitesi gibi kullanabileceğiniz ek isteğe bağlı parametre yok.
+    Küme kapasitesi gibi kullanabileceğiniz ek isteğe bağlı parametreler vardır.
     
-1. Ayarlama [ *kimlik bilgilerinizi*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)
+1. [ *Kimlik bilgilerinizi* ayarlama](/azure/python/python-sdk-azure-authenticate)
 
-1. Kümenizi başarıyla oluşturulup oluşturulmadığını kontrol etmek için aşağıdaki komutu çalıştırın:
+1. Kümenizin başarıyla oluşturulup oluşturulmayacağını denetlemek için şu komutu çalıştırın:
 
     ```Python
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Sonuç içeriyorsa `provisioningState` ile `Succeeded` değer sonra küme başarıyla oluşturuldu.
+Sonuç `provisioningState` değeri`Succeeded` ile içeriyorsa, küme başarıyla oluşturuldu.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümede veritabanı oluşturma
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesinde veritabanı oluşturma
 
 1. Aşağıdaki komutu kullanarak veritabanınızı oluşturun:
 
@@ -103,11 +103,11 @@ Sonuç içeriyorsa `provisioningState` ile `Succeeded` değer sonra küme başar
 
    |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | küme_adı | *mykustocluster* | Veritabanının oluşturulacağı, kümenizin adıdır.|
-   | database_name | *mykustodatabase* | Veritabanınızın adı.|
+   | cluster_name | *mykustocluster* | Veritabanının oluşturulacağı Kümenizin adı.|
+   | veritabanı | *mykustodatabase* | Veritabanınızın adı.|
    | resource_group_name | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
-   | soft_delete_period | *3650 gün 0:00:00* | Verileri sorgulamak kullanılabilen tutulacak süre miktarı. |
-   | hot_cache_period | *3650 gün 0:00:00* | Veriler önbellekte tutulacak süre miktarı. |
+   | soft_delete_period | *3650 gün, 0:00:00* | Verilerin sorgu için kullanılabilir kalacağı zaman miktarı. |
+   | hot_cache_period | *3650 gün, 0:00:00* | Verilerin önbellekte tutulacağı zaman miktarı. |
 
 1. Oluşturduğunuz veritabanını görmek için aşağıdaki komutu çalıştırın:
 
@@ -115,12 +115,12 @@ Sonuç içeriyorsa `provisioningState` ile `Succeeded` değer sonra küme başar
     database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)
     ```
 
-Artık bir küme ve bir veritabanı vardır.
+Artık bir kümeniz ve veritabanınız var.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-* Diğer makalelerimize takip etmeyi planlıyorsanız, oluşturduğunuz kaynakları tutun.
-* Kaynakları temizlemek için kümeyi silin. Bir küme sildiğinizde, tüm veritabanları da siler. Kümenizi silmek için aşağıdaki komutu kullanın:
+* Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları saklayın.
+* Kaynakları temizlemek için kümeyi silin. Bir kümeyi sildiğinizde, içindeki tüm veritabanlarını da siler. Kümenizi silmek için aşağıdaki komutu kullanın:
 
     ```Python
     cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
@@ -128,4 +128,4 @@ Artık bir küme ve bir veritabanı vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gezgini Python kitaplığı kullanarak veri alma](python-ingest-data.md)
+* [Azure Veri Gezgini Python kitaplığını kullanarak verileri alma](python-ingest-data.md)

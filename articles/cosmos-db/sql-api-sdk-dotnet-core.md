@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779159"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142626"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB .NET Core SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -251,9 +251,21 @@ Azure Cosmos DB .NET Core Önizleme SDK'sı özellik eşliği ile en son sürüm
 
 Bu SDK ile ilgili sorularınız varsa, [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)' a gönderin veya [GitHub deposunda](https://github.com/Azure/azure-documentdb-dotnet/issues)bir sorun yapın.
 
-## <a name="release--retirement-dates"></a>Yayın ve sona erme tarihlerini
+## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar.
 
-| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
+Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
+
+Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler hizmet tarafından reddedilir.
+
+> [!WARNING]
+> SQL API için .NET Core SDK tüm **1. x** sürümleri **30 Ağustos 2020**tarihinde kullanımdan kaldırılacaktır.
+> 
+>
+<br/>
+
+
+| Version | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [2.5.1](#2.5.1) |02 Temmuz 2019 |--- |
 | [2.4.1](#2.4.1) |20 Haziran 2019 |--- |
@@ -268,26 +280,26 @@ Bu SDK ile ilgili sorularınız varsa, [StackOverflow](https://stackoverflow.com
 | [2.1.1](#2.1.1) |27 Eylül 2018'den |--- |
 | [2.1.0](#2.1.0) |21 Eylül 2018 |--- |
 | [2.0.0](#2.0.0) |07 Eylül 2018'den |--- |
-| [1.9.1](#1.9.1) |09 Mart 2018 |--- |
-| [1.8.2](#1.8.2) |21 Şubat 2018 |--- |
-| [1.8.1](#1.8.1) |05 Şubat 2018 |--- |
-| [1.7.1](#1.7.1) |16 Kasım 2017 |--- |
-| [1.7.0](#1.7.0) |10 Kasım 2017 |--- |
-| [1.6.0](#1.6.0) |17 Ekim 2017 |--- |
-| [1.5.1](#1.5.1) |02 Ekim 2017 |--- |
-| [1.5.0](#1.5.0) |10 Ağustos 2017 |--- | 
-| [1.4.1](#1.4.1) |07 Ağustos 2017 |--- |
-| [1.4.0](#1.4.0) |02 Ağustos 2017 |--- |
-| [1.3.2](#1.3.2) |12 Haziran 2017 |--- |
-| [1.3.1](#1.3.1) |23 Mayıs 2017 |--- |
-| [1.3.0](#1.3.0) |10 Mayıs 2017 |--- |
-| [1.2.2](#1.2.2) |19 Nisan 2017 |--- |
-| [1.2.1](#1.2.1) |29 Mart 2017 |--- |
-| [1.2.0](#1.2.0) |25 Mart 2017 |--- |
-| [1.1.2](#1.1.2) |20 Mart 2017 |--- |
-| [1.1.1](#1.1.1) |14 Mart 2017 |--- |
-| [1.1.0](#1.1.0) |16 Şubat 2017 |--- |
-| [1.0.0](#1.0.0) |21 aralık 2016 |--- |
+| [1.9.1](#1.9.1) |09 Mart 2018 |30 Ağustos 2020 |
+| [1.8.2](#1.8.2) |21 Şubat 2018 |30 Ağustos 2020 |
+| [1.8.1](#1.8.1) |05 Şubat 2018 |30 Ağustos 2020 |
+| [1.7.1](#1.7.1) |16 Kasım 2017 |30 Ağustos 2020 |
+| [1.7.0](#1.7.0) |10 Kasım 2017 |30 Ağustos 2020 |
+| [1.6.0](#1.6.0) |17 Ekim 2017 |30 Ağustos 2020 |
+| [1.5.1](#1.5.1) |02 Ekim 2017 |30 Ağustos 2020 |
+| [1.5.0](#1.5.0) |10 Ağustos 2017 |30 Ağustos 2020 | 
+| [1.4.1](#1.4.1) |07 Ağustos 2017 |30 Ağustos 2020 |
+| [1.4.0](#1.4.0) |02 Ağustos 2017 |30 Ağustos 2020 |
+| [1.3.2](#1.3.2) |12 Haziran 2017 |30 Ağustos 2020 |
+| [1.3.1](#1.3.1) |23 Mayıs 2017 |30 Ağustos 2020 |
+| [1.3.0](#1.3.0) |10 Mayıs 2017 |30 Ağustos 2020 |
+| [1.2.2](#1.2.2) |19 Nisan 2017 |30 Ağustos 2020 |
+| [1.2.1](#1.2.1) |29 Mart 2017 |30 Ağustos 2020 |
+| [1.2.0](#1.2.0) |25 Mart 2017 |30 Ağustos 2020 |
+| [1.1.2](#1.1.2) |20 Mart 2017 |30 Ağustos 2020 |
+| [1.1.1](#1.1.1) |14 Mart 2017 |30 Ağustos 2020 |
+| [1.1.0](#1.1.0) |16 Şubat 2017 |30 Ağustos 2020 |
+| [1.0.0](#1.0.0) |21 aralık 2016 |30 Ağustos 2020 |
 | [0.1.0-Preview](#0.1.0-preview) |15 Kasım 2016 |31 Aralık 2016 |
 
 ## <a name="see-also"></a>Ayrıca Bkz.

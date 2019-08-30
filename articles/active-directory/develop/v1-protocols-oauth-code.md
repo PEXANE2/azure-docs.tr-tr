@@ -17,14 +17,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834707"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135718"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 kod verme akışını kullanarak Azure Active Directory web uygulamalarına erişimi yetkilendirme
+
+> [!NOTE]
+>  Sunucuya çağırmayı planladığınız kaynağı söylemezseniz, sunucu bu kaynak için koşullu erişim ilkelerini tetiklemez. Bu nedenle MFA tetikleyicisine sahip olmak için, URL 'nize bir kaynak eklemeniz gerekir. 
+>
 
 Azure Active Directory (Azure AD), Azure AD kiracınızdaki Web uygulamalarına ve Web API 'Lerine erişim yetkisi verme olanağı sağlamak için OAuth 2,0 kullanır. Bu kılavuz dilden bağımsızdır ve [Açık kaynaklı kitaplıklarımızın](active-directory-authentication-libraries.md)HIÇBIRINI kullanmadan http iletilerinin nasıl gönderileceğini ve alınacağını açıklar.
 
@@ -278,6 +282,8 @@ RFC 6750 belirtimi, yanıtta WWW-Authenticate üst bilgisini ve taşıyıcı şe
 Erişim belirteçleri kısa süreli olduğundan, kaynaklara erişmeye devam etmek için süreleri dolduktan sonra yenilenmelidir. Bunu, `/token` uç noktaya `access_token` başka bir `POST` istek göndererek yenileyebilirsiniz, `code`ancak bu kez, `refresh_token` yerine öğesini sağlar.  Yenileme belirteçleri, istemcinize erişim izni verilen tüm kaynaklar için geçerlidir. bu nedenle, için bir istekte `resource=https://graph.microsoft.com` verilen yenileme belirteci, için `resource=https://contoso.com/api`yeni bir erişim belirteci istemek üzere kullanılabilir. 
 
 Yenileme belirteçlerinin belirtilen ömürleri yok. Genellikle, yenileme belirteçlerinin yaşam süreleri nispeten uzundur. Ancak, bazı durumlarda belirteçleri yenileme süre sonu, iptal etme veya istenen eylem için yeterli ayrıcalıklara sahip değil. Uygulamanızın belirteç verme uç noktası tarafından döndürülen hataları beklemesi ve işlemesi gerekir.
+
+[!NOTE] Erişim belirteci yaşam süreleri şurada bulunabilir: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties Erişim belirteçleri için varsayılan değer 1 saattir ve yenileme belirteçleri için varsayılan değer 90 gündür. Bu yaşam süreleri, belirteç yaşam sürelerinin uygun şekilde yapılandırılması ile değiştirilebilir. 
 
 Yenileme belirteci hatası ile bir yanıt aldığınızda, geçerli yenileme belirtecini atın ve yeni bir yetkilendirme kodu veya erişim belirteci isteyin. Özellikle, yetkilendirme kodu verme akışında bir yenileme belirteci kullanırken, `interaction_required` veya `invalid_grant` hata kodlarıyla bir yanıt alırsanız yenileme belirtecini atın ve yeni bir yetkilendirme kodu isteyin.
 

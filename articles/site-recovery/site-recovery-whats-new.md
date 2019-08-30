@@ -5,25 +5,36 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972513"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146909"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
 [Azure Site Recovery](site-recovery-overview.md) hizmeti sürekli olarak güncelleştirilir ve geliştirilmiştir. Güncel kalabilmeniz için, bu makalede en son yayınlar, yeni özellikler ve yeni içerikler hakkında bilgi verilmektedir. Bu sayfa düzenli olarak güncelleştirilir.
 
-Site Recovery özellikleri için önerileriniz varsa, [görüşlerinizi duymak](https://feedback.azure.com/forums/256299-site-recovery)isteriz.
+[Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) kanalında Site Recovery güncelleştirme bildirimlerini izleyip abone olabilirsiniz.
 
+## <a name="supported-updates"></a>Desteklenen Güncelleştirmeler
 
-## <a name="installing-updates"></a>Güncelleştirmeleri yükleme
+Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en son yayınlanan sürümdür. Bunlar aşağıdaki tabloda özetlenmiştir.
 
-Site Recovery güncelleştirme desteği ve yönergeleri için [Bu makaleyi gözden geçirin](service-updates-how-to.md) .
+**Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı** 
+--- | --- | --- | --- | ---
+[Toplu 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[Toplu 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+[Toplu 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
+[Toplu 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
+[Toplu 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
+        
+
+Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
+
 
 ## <a name="updates-august-2019"></a>Güncelleştirmeler (Ağustos 2019)
 

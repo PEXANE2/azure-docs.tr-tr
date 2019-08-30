@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: e0dea5fcc7860e8653d542653e279010f8ede200
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: bd3f31f4247a9d80615634a64fee0c6eb3297fe5
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898845"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147237"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Öğretici: Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -83,13 +83,16 @@ AKS kümeleri Kubernetes rol tabanlı erişim denetimlerini (RBAC) kullanabilir.
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --service-principal <appId> \
     --client-secret <password> \
     --generate-ssh-keys
 ```
 
 Birkaç dakika sonra dağıtım tamamlanır ve AKS dağıtımı hakkında JSON biçimli bilgileri döndürür.
+
+> [!NOTE]
+> Kümenizin güvenilir bir şekilde çalışmasını sağlamak için en az 2 (iki) düğüm çalıştırmanız gerekir.
 
 ## <a name="install-the-kubernetes-cli"></a>Kubernetes CLI'yi yükleme
 

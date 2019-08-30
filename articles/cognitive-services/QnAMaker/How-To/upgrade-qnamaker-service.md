@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
-ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ba9c2cd5a85e02a7dd4b1091a050d76e94861964
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640478"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147098"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Soru-Cevap Oluşturma hizmetinizi paylaşma veya yükseltme
 Kaynakları daha iyi yönetmek için Soru-Cevap Oluşturma hizmetlerinizi paylaşma veya yükseltme. 
@@ -26,13 +26,14 @@ Kaynakları daha iyi yönetmek için Soru-Cevap Oluşturma hizmetlerinizi payla�
 
 Soru-Cevap Oluşturma çeşitli Azure kaynakları oluşturur. Yönetim ve maliyet paylaşımının avantajlarından yararlanmak için aşağıdaki tabloyu kullanarak neleri paylaşabdiklerinizi ve neleri paylaşabileceğinizi öğrenin:
 
-|Hizmet|Paylaş|
-|--|--|
-|Bilişsel Hizmetler|X|
-|Uygulama hizmeti planı|✔|
-|App Service|X|
-|Application Insights|✔|
-|Arama hizmeti|✔|
+|Hizmet|Paylaş|Reason|
+|--|--|--|
+|Bilişsel Hizmetler|X|Tasarım tarafından mümkün değil|
+|Uygulama hizmeti planı|✔|Bir App Service planı için ayrılan sabit disk alanı. Diğer uygulamalar, aynı App Service planını paylaşıyorsanız, önemli disk alanını kullanın, QnAMaker App Service sorunlar halinde çalışacaktır.|
+|App Service|X|Tasarım tarafından mümkün değil|
+|Application Insights|✔|Paylaşılabilir|
+|Arama hizmeti|✔|1. `testkb` qnamaker hizmeti için ayrılmış bir addır, diğerleri tarafından kullanılamaz.<br>2. Ad `synonym-map` ile eş anlamlı eşleme qnamaker hizmeti için ayrılmıştır.<br>3. Yayınlanan KBs sayısı arama hizmeti katmanıyla sınırlıdır. Kullanılabilir ücretsiz dizinler varsa, diğer hizmetler bunu kullanabilir.|
+
 
 ## <a name="upgrade-qna-maker-management-sku"></a>Soru-Cevap Oluşturma yönetimi SKU 'SU yükselt
 

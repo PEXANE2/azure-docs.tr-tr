@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 049fc534c6bf3d777268363968ac2a8b92ca8d1c
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904459"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147439"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Cihaz yönetimini kullanmaya başlama (node. js)
 
@@ -34,8 +34,6 @@ Bu öğreticinin sonunda iki Node. js konsol uygulaması vardır:
 * **dmpatterns_getstarted_service. js**, sanal cihaz uygulamasında doğrudan bir yöntemi çağırır, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
 ## <a name="prerequisites"></a>Önkoşullar
-
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
 

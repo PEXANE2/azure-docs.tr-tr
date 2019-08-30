@@ -1,7 +1,7 @@
 ---
-title: 'Puanlama modeli: Modül başvurusu'
+title: 'Puan modeli: Modül başvurusu'
 titleSuffix: Azure Machine Learning service
-description: Model Puanlama modülü eğitilmiş bir sınıflandırma veya regresyon modelini kullanarak Öngörüler oluşturmak için Azure Machine Learning hizmetinde kullanmayı öğrenin.
+description: Eğitilen bir sınıflandırma veya regresyon modeli kullanarak tahmin oluşturmak için Azure Machine Learning hizmetinde puan modeli modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,48 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f8f7bfcbbf013f2cf32957772086d7e44d31e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029273"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128511"
 ---
 # <a name="score-model-module"></a>Score Model (Model Puanlama) modülü
 
-Bu makalede bir modül, Azure Machine Learning hizmeti için görsel arabirim (Önizleme).
+Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
-Eğitilmiş bir sınıflandırma veya regresyon modelini kullanarak Öngörüler oluşturmak için bu modülü kullanın.
+Eğitilen bir sınıflandırma veya regresyon modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
 
 ## <a name="how-to-use"></a>Nasıl kullanılır
 
-1. Ekleme **Score Model** denemenizi modülü.
+1. Deneme uygulamanıza **puan modeli** modülünü ekleyin.
 
-2. Eğitilen bir modelin ve yeni girdi verilerini içeren bir veri kümesi ekleyin. 
+2. Eğitilen bir model ve yeni giriş verileri içeren bir veri kümesi ekleyin. 
 
-    Veriler, eğitilen modeli kullandığınız türü ile uyumlu bir biçimde olmalıdır. Giriş veri kümesi şemasını ayrıca genellikle modeli eğitmek için kullanılan veri şeması ile eşleşmesi gerekir.
+    Verilerin, kullanmakta olduğunuz eğitilen model türüyle uyumlu bir biçimde olması gerekir. Giriş veri kümesinin şeması da genellikle modeli eğitmek için kullanılan verilerin şemasıyla aynı olmalıdır.
 
 3. Denemeyi çalıştırın.
 
 ## <a name="results"></a>Sonuçlar
 
-Puanları kullanarak kümesi oluşturduktan sonra [Score Model](./score-model.md):
+[Puan modeli](./score-model.md)kullanarak bir puan kümesi oluşturduktan sonra:
 
-+ Ölçümleri modelin doğruluğunu (performans) değerlendirmesi için kullanılan bir dizi oluşturmak için.  puanlanmış veri kümesine bağlanıp [Evaluate Model](./evaluate-model.md), 
-+ Modül sağ tıklayıp **Görselleştir** sonuçlarının bir örnek görmek için.
-+ Bir veri kümesine sonuçları kaydedin.
++ Modelin doğruluğunu (performans) değerlendirmek için kullanılan bir dizi ölçüm oluşturmak için.  [modeli değerlendirmek](./evaluate-model.md)için puanlanmış veri kümesini bağlayabilirsiniz, 
++ Modüle sağ tıklayın ve sonuçların bir örneğini görmek için **Görselleştir** ' i seçin.
++ Sonuçları bir veri kümesine kaydedin.
 
-Puan veya tahmin edilen değer, model ve girişinizi bağlı olarak birçok farklı biçimlerde olabilir:
+Puan veya tahmin edilen değer, modele ve giriş verilerinize bağlı olarak birçok farklı biçimde olabilir:
 
-- Sınıflandırma modelleri için [Score Model](./score-model.md) sınıfı yanı sıra tahmin edilen değerin olasılığı için tahmin edilen bir değer çıkarır.
-- Regresyon modelleri için [Score Model](./score-model.md) yalnızca tahmin edilen sayısal değer oluşturur.
-- Görüntü sınıflandırma modellerini için görüntü ya da belirli bir özellik bulundu olup olmadığını gösteren bir Boole değeri nesnenin sınıfını puanı olabilir.
+- Sınıflandırma modelleri için, [puan modeli](./score-model.md) , sınıf için tahmin edilen değerin yanı sıra öngörülen değerin olasılığını verir.
+- Regresyon modelleri için, [puan modeli](./score-model.md) yalnızca öngörülen sayısal değeri oluşturur.
+- Görüntü sınıflandırma modelleri için, puan görüntüdeki nesnenin sınıfı veya belirli bir özelliğin bulunup bulunmadığını gösteren bir Boole olabilir.
 
-## <a name="publish-scores-as-a-web-service"></a>Puanları bir web hizmeti olarak yayımlama
+## <a name="publish-scores-as-a-web-service"></a>Puanları Web hizmeti olarak yayımlama
 
-Puanlama yaygın kullanımı, Tahmine dayalı web hizmeti bir parçası olarak çıkış getirmektir. Daha fazla bilgi için Bu öğreticide bir Azure Machine Learning deneme temel bir web hizmeti oluşturma bakın:
+Puanlama kullanımı, bir tahmine dayalı Web hizmetinin parçası olarak çıktıyı döndürmemelidir. Daha fazla bilgi için, Azure Machine Learning bir denemeye göre Web hizmeti oluşturma hakkında şu öğreticiye bakın:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [kullanılabilir modül kümesini](module-reference.md) Azure Machine Learning hizmetine. 
+Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 

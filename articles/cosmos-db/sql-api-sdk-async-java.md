@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 3bee473adde9c4762cf400dff6190eb76a4cc8d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 156699b8d8c1a645961f4e919bdd843d995a3d18
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624700"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142637"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için zaman uyumsuz Java SDK Azure Cosmos DB: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -152,9 +152,13 @@ Yeni özellikleri ve işlevselliği ve iyileştirmeler yalnızca geçerli SDK's�
 
 Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm istekleri hizmet tarafından reddedilir.
 
+> [!WARNING]
+> SQL API için zaman uyumsuz Java SDK 'sının tüm **1. x** sürümleri **30 Ağustos 2020**tarihinde kullanımdan kaldırılacaktır.
+> 
+>
 <br/>
 
-| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
+| Version | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
 | [2.4.3](#2.4.3) |5 Mar, 2019|--- |
 | [2.4.2 sections](#2.4.2) |1 Mar, 2019|--- |
@@ -169,9 +173,9 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 | [2.1.0](#2.1.0) |5 Eylül 2018'den|--- |
 | [2.0.1](#2.0.1) |16 Ağustos 2018|--- |
 | [2.0.0](#2.0.0) |20 Haziran 2018|--- |
-| [1.0.2](#1.0.2) |18 Mayıs 2018|--- |
-| [1.0.1](#1.0.1) |20 Nisan 2018|--- |
-| [1.0.0](#1.0.0) |27 Şubat 2018|--- |
+| [1.0.2](#1.0.2) |18 Mayıs 2018|30 Ağustos 2020 |
+| [1.0.1](#1.0.1) |20 Nisan 2018|30 Ağustos 2020 |
+| [1.0.0](#1.0.0) |27 Şubat 2018|30 Ağustos 2020 |
 
 ## <a name="faq"></a>SSS
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

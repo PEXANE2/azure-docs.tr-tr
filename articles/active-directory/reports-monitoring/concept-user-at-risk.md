@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989831"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127646"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure portal risk için işaretlenen kullanıcılar raporu
 
-Azure Active Directory (Azure AD), kullanıcı hesaplarınızla ilgili kuşkulu eylemleri algılar. Algılanan her eylem için, [risk olayı](concept-risk-events.md) adlı bir kayıt oluşturulur.
+Azure Active Directory (Azure AD), kullanıcı hesaplarınızla ilgili kuşkulu eylemleri algılar. Algılanan her eylem için, [risk algılama](concept-risk-events.md) adlı bir kayıt oluşturulur.
 
 [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresini seçip **güvenlik** bölümüne giderek güvenlik raporlarına erişebilirsiniz. 
 
-Algılanan risk olayları aşağıdakileri hesaplamak için kullanılır:
+Algılanan risk algılamaları şunları hesaplamak için kullanılır:
 
 - **Riskli oturum açma işlemleri** - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
 
 - **Riskli oldukları belirlenen kullanıcılar** - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
 
-Bu risk olaylarını tetikleyen ilkelerin nasıl yapılandırılacağını öğrenmek için bkz. [Kullanıcı risk ilkesini yapılandırma](../identity-protection/howto-user-risk-policy.md). 
+Bu risk algılamalarını tetikleyen ilkelerin nasıl yapılandırılacağını öğrenmek için bkz. [Kullanıcı risk ilkesini yapılandırma](../identity-protection/howto-user-risk-policy.md). 
 
 ![Riskli Oturum Açma İşlemleri](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Azure Active Directory'nin tüm sürümlerinde size riskli oldukları belirlenen
 
 - **Azure Active Directory ücretsiz ve temel sürümlerde**, risk için işaretlenen kullanıcıların bir listesini alırsınız. 
 
-- Ayrıca, **Azure Active Directory Premium 1** sürümü, her rapor için algılanan temeldeki bazı risk olaylarını incelemenizi sağlar. 
+- Ayrıca, **Azure Active Directory Premium 1** sürümü, her rapor için algılanan temel risk algılamalarını incelemenizi sağlar. 
 
-- **Azure Active Directory Premium 2** sürümü, tüm temel risk olayları hakkında en ayrıntılı bilgileri sağlar ve ayrıca, yapılandırılmış risk düzeylerine otomatik olarak yanıt veren güvenlik ilkeleri yapılandırmanıza da olanak tanır.
+- **Azure Active Directory Premium 2** sürümü, tüm temel risk algılamaları hakkında en ayrıntılı bilgileri sağlar ve ayrıca, yapılandırılmış risk düzeylerine otomatik olarak yanıt veren güvenlik ilkelerini yapılandırmanıza olanak tanır.
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Azure AD ücretsiz ve temel sürümleri için risk altındaki kullanıcılar raporu
@@ -73,7 +73,7 @@ Azure AD Premium sürümlerinde risk için işaretlenmiş kullanıcılar raporu 
 
 - Tehlikeye girmiş olabilecek kullanıcı hesaplarının listesi 
 
-- Algılanan [risk olayı türleri](concept-risk-events.md) hakkında toplu bilgiler
+- Algılanan [risk algılama türleri](concept-risk-events.md) hakkında toplu bilgiler
 
 - Raporu indirme seçeneği
 
@@ -87,13 +87,13 @@ Bir kullanıcıyı seçtiğinizde bu kullanıcıya ilişkin, aşağıdakileri ge
 
 - Kullanıcının parolasını sıfırlayabilirsiniz.
 
-- Tüm olayları kapatabilirsiniz.
+- Tüm olayları kapat
 
-- Kullanıcıya ilişkin bildirilmiş risk olaylarını araştırabilirsiniz. 
+- Kullanıcı için bildirilen risk algılamalarını araştırın. 
 
 ![Riskli Oturum Açma İşlemleri](./media/concept-user-at-risk/324.png)
 
-Bir risk olayını araştırmak için listeden bir olay seçerek bu olayın **Ayrıntılar** dikey penceresini açın. **Ayrıntılar** dikey penceresinde, risk olayını elle kapatma ve elle kapatılmış risk olayını yeniden etkinleştirme seçenekleri sunulur. 
+Risk algılamayı araştırmak için listeden birini seçerek bu risk algılamada **Ayrıntılar** dikey penceresini açın. **Ayrıntılar** dikey penceresinde, bir risk algılamayı el ile kapatma veya el ile kapatılan risk algılamayı yeniden etkinleştirme seçeneğiniz vardır. 
 
 ![Riskli Oturum Açma İşlemleri](./media/concept-user-at-risk/325.png)
 

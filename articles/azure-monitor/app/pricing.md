@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.author: dalek
-ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f2ea87f237fa5cca8a4b1f6773d2b47729cfb5b0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982596"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147545"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -147,6 +147,9 @@ Gerçek örnekleme oranını öğrenmek için, nereye uygulandığını fark etm
 Her bir tutulan kaydında, `itemCount` temsil ettiği özgün kayıt sayısını belirtir. 1 + önceki atılan kayıtların sayısına eşittir. 
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
+
+> [!NOTE]
+> Olası bir sorunu ele alırken bu özelliği geçici olarak kaldırdık.  PARÇAAL-Eylül 2019 tarafından geri dönecek.
 
 Application Insights kaynakları için varsayılan saklama 90 gündür. Her bir Application Insights kaynağı için farklı saklama dönemleri seçilebilir. Kullanılabilir saklama dönemlerinin tam kümesi 30, 60, 90, 120, 180, 270, 365, 550 veya 730 günleridir. 
 

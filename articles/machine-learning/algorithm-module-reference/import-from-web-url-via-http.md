@@ -1,7 +1,7 @@
 ---
-title: "HTTP üzerinden Web URL'den içeri aktar: Modül başvurusu"
+title: "HTTP aracılığıyla Web URL 'sinden içeri aktar: Modül başvurusu"
 titleSuffix: Azure Machine Learning service
-description: Bir machine learning denemesinden kullanmak için genel bir Web sayfasından veri okumak için HTTP modülü, Azure Machine Learning hizmeti aracılığıyla Web URL'si alma kullanmayı öğrenin.
+description: Bir makine öğrenimi denemesinin kullanımı için genel bir Web sayfasından veri okumak üzere Azure Machine Learning hizmetindeki HTTP modülü aracılığıyla Web URL 'sinden Içeri aktarmayı nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,73 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411436"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128746"
 ---
-# <a name="import-from-web-url-via-http-module"></a>Web URL HTTP modülü içeri aktarın.
+# <a name="import-from-web-url-via-http-module"></a>HTTP modülü aracılığıyla Web URL 'sinden içeri aktar
 
-Bu makalede bir modül, Azure Machine Learning hizmeti için görsel arabirim (Önizleme).
+Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
-Bir machine learning denemesinden kullanmak için genel bir Web sayfasından veri okumak için bu modülü kullanın.
+Bir makine öğrenimi denemesinin kullanımı için genel bir Web sayfasından veri okumak için bu modülü kullanın.
 
-Bir web sayfasında yayımlanan veriler aşağıdaki kısıtlamalar geçerlidir:
+Bir Web sayfasında yayımlanan veriler için aşağıdaki kısıtlamalar geçerlidir:
 
-- Verileri desteklenen biçimlerden birinde olmalıdır: CSV, TSV, ARFF'ye veya SvmLight. Diğer veri hatalara neden olur.
-- Kimlik doğrulaması gerekli veya desteklenir. Verilerin genel kullanıma açık olması gerekir. 
+- Veriler desteklenen biçimlerden birinde olmalıdır: CSV, TSV, ARFF veya SvmLight. Diğer veriler hatalara neden olur.
+- Kimlik doğrulaması gerekli değil veya desteklenmiyor. Verilerin genel kullanıma açık olması gerekir. 
 
-Veri almanın iki yolu vardır: veri kaynağı kurma Sihirbazı'nı kullanın veya el ile yapılandırın.
+Veri almanın iki yolu vardır: Sihirbazı kullanarak veri kaynağını ayarlama veya el ile yapılandırma.
 
-## <a name="use-the-data-import-wizard"></a>Veri İçeri Aktarma Sihirbazı'nı kullanma
+## <a name="use-the-data-import-wizard"></a>Veri alma Sihirbazı 'nı kullanma
 
-1. Ekleme **verileri içeri aktarma** denemenizi modülü. Modül içinde arabiriminde bulabilirsiniz **veri giriş ve çıkış** kategorisi.
+1. **Veri alma** modülünü denemenize ekleyin. Modülü, **veri girişi ve çıkış** kategorisinde arabiriminde bulabilirsiniz.
 
-2. Tıklayın **veri içeri aktarma sihirbazını başlatma** ve HTTP üzerinden Web URL'si seçin.
+2. **Veri alma Sihirbazı 'Nı Başlat** ' a tıklayın ve http aracılığıyla Web URL 'si seçin.
 
-3. URL'yi yapıştırın ve bir veri biçimi seçin.
+3. URL 'ye yapıştırın ve bir veri biçimi seçin.
 
 4. Yapılandırma tamamlandığında.
 
-Mevcut bir veri bağlantısı düzenlemek için sihirbazı yeniden başlatın. Sıfırdan yeniden başlatmak zorunda kalmazsınız sihirbazın önceki tüm yapılandırma ayrıntılarını yükler.
+Var olan bir veri bağlantısını düzenlemek için Sihirbazı yeniden başlatın. Sihirbaz, sıfırdan tekrar başlamak zorunda kalmaması için önceki tüm yapılandırma ayrıntılarını yükler
 
-## <a name="manually-set-properties-in-the-import-data-module"></a>El ile verileri içeri aktarma modülü kümesi özellikleri
+## <a name="manually-set-properties-in-the-import-data-module"></a>Verileri Içeri aktarma modülündeki özellikleri el ile ayarlama
 
-Aşağıdaki adımları el ile içeri aktarma kaynak nasıl yapılandırılacağı açıklanmaktadır.
+Aşağıdaki adımlarda, içeri aktarma kaynağının el ile nasıl yapılandırılacağı açıklanır.
 
-1. Ekleme [verileri içeri aktarma](import-data.md) denemenizi modülü. Modül içinde arabiriminde bulabilirsiniz **veri giriş ve çıkış** kategorisi.
+1. [Veri alma](import-data.md) modülünü denemenize ekleyin. Modülü, **veri girişi ve çıkış** kategorisinde arabiriminde bulabilirsiniz.
 
-2. İçin **veri kaynağı**seçin **Web URL'si HTTP üzerinden**.
+2. **Veri kaynağı**için **http üzerinden Web URL 'si**seçeneğini belirleyin.
 
-3. İçin **URL**yüklemek istediğiniz verileri içeren sayfanın tam URL'yi yapıştırın veya yazın.
+3. **URL**için, yüklemek istediğiniz verileri içeren SAYFANıN tam URL 'sini yazın veya yapıştırın.
 
-    URL ve site URL'sini ve dosya adı ve uzantısını yüklemek için gerekli verileri içeren sayfasına ile tam yolu içermesi gerekir.
+    URL, yüklenecek verileri içeren sayfaya site URL 'sini ve tam yolu dosya adı ve uzantısıyla birlikte içermelidir.
 
-    Örneğin, makine öğrenimi California Üniversitesi, Irvine deposu Iris veri kümesinden şu sayfaya içerir:
+    Örneğin, aşağıdaki sayfa, University of California, Irvine 'nın makine öğrenimi deposundaki Iris veri kümesini içerir:
 
     `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
-4. İçin **veri biçimi**, bir desteklenen veri biçimlerini listeden seçin.
+4. **Veri biçimi**için, listeden desteklenen veri biçimlerinden birini seçin.
 
-    Her zaman önceden veri biçimini belirlemek için kontrol etmenizi öneririz. UC Irvine sayfanın CSV biçimi kullanır. Diğer desteklenen veri biçimlerini, TSV, ARFF'ye ve SvmLight ' dir.
+    Biçimi belirlemede önce verileri her zaman denetlemeniz önerilir. UC Irvine sayfası CSV biçimini kullanır. Desteklenen diğer veri biçimleri, TSV, ARFF ve SvmLight.
 
-5. Verileri CSV veya TSV biçimindedir kullanırsanız **dosya üst bilgi satırı içeriyor** kaynak veriler bir üst bilgi satırı içeriyorsa olup olmadığını belirtmek için seçeneği. Üst bilgi satırı sütun adları atamak için kullanılır.
+5. Veriler CSV veya TSV biçimindeyse, kaynak verilerin bir başlık satırı içerip içermediğini göstermek için **dosyanın üst bilgi satırı** seçeneğini kullanın. Başlık satırı, sütun adlarını atamak için kullanılır.
 
-6. Seçin **kullanın, sonuçları önbelleğe** çok değiştirmek için verileri beklemiyoruz veya yeniden yüklemeyi önlemek istiyorsanız verileri her zaman seçenekleri denemeyi çalıştırın.
+6. Verilerin büyük ölçüde değişmeyeceğini veya her denemeyi her çalıştırdığınızda verileri yeniden yüklemeyi önlemek istiyorsanız **önbelleğe alınmış sonuçları kullan** seçeneğini belirleyin.
 
-    Bu seçenek belirlendiğinde, denemeyi modülü çalıştırılır ve bundan sonra veri kümesinin önbelleğe alınmış bir sürümü kullanan veri ilk zaman yükler.
+    Bu seçenek belirlendiğinde, deneme, verileri modül ilk kez çalıştırıldığında yükler ve bundan sonra veri kümesinin önbelleğe alınmış bir sürümünü kullanır.
 
-    Veri kümesini deneme kümesinin her yinelemede yeniden yüklemek istiyorsanız, seçimini **kullanın, sonuçları önbelleğe** seçeneği. Parametre herhangi bir değişiklik varsa, sonuçları yeniden ayrıca [verileri içeri aktarma](import-data.md).
+    Veri kümesini deneme veri kümesinin her yinelemesinde yeniden yüklemek istiyorsanız, **önbelleğe alınmış sonuçları kullan** seçeneğinin işaretini kaldırın. [Içeri aktarma verileri](import-data.md)parametrelerinde herhangi bir değişiklik varsa sonuçlar da yeniden yüklenir.
 
 7. Denemeyi çalıştırın.
 
 ## <a name="results"></a>Sonuçlar
 
-Tamamlandığında, çıkış veri kümesi tıklayıp **Görselleştir** verileri başarıyla içeri aktarıldı görmek için.
+Tamamlandığında, çıktı veri kümesine tıklayın ve verilerin başarıyla içeri aktarılmadığını görmek için **Görselleştir** ' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [kullanılabilir modül kümesini](module-reference.md) Azure Machine Learning hizmetine. 
+Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 

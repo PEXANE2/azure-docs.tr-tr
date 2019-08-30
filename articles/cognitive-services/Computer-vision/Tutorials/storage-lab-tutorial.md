@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597860"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137548"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Öğretici: Azure depolama 'da görüntü meta verileri oluşturmak için Görüntü İşleme kullanma
 
@@ -46,7 +46,8 @@ Azure hesabınız için bir Görüntü İşleme kaynağı oluşturmanız gerekir
 
 1. Sonra kaynak grubunuzun menüsüne gidin ve yeni oluşturduğunuz Görüntü İşleme API'si aboneliğine tıklayın. **Uç nokta** altındaki URL 'yi bir yere kopyalamak için bir süre içinde kolayca alabilirsiniz. Ardından **erişim anahtarlarını göster**' e tıklayın.
 
-    ![Uç nokta URL 'SI ve erişim anahtarları bağlantısı olan Azure portal sayfası](../Images/copy-vision-endpoint.png)
+    ![Uç nokta URL 'SI ve erişim anahtarları bağlantısı](../Images/copy-vision-endpoint.png) olan Azure Portal sayfası[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 
 1. Sonraki pencerede, **anahtar 1** değerini panoya kopyalayın.
 

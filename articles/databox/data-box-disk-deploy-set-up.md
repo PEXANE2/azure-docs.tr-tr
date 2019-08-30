@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049984"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126141"
 ---
 ::: zone target="docs"
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ::: zone target="chromeless"
 
-# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk paketini açın, bağlayın ve açın
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk paketini açın, bağlayın ve açın
 
 ::: zone-end
 
@@ -313,7 +313,9 @@ Disklerin kilidini açmak için herhangi bir sorunla karşılaşırsanız, bkz. 
 
 Diskin kilidi açıldıktan sonra, diskin içeriğini görüntüleyebilirsiniz.
 
-Disklerin nasıl ayarlanacağı ve kilidini açabileceksiniz hakkında daha fazla bilgi için bkz [. Öğretici: Azure Data Box Disk](data-box-disk-deploy-set-up.md)Unpack, Connect ve unlock.
+Diskleri ayarlama hakkında daha fazla bilgi için, [Data Box disk paketini açma](data-box-disk-deploy-set-up.md#unpack-your-disks)bölümüne gidin.
+
+Disklerin kilidini açma hakkında daha fazla bilgi için [Windows Istemcisinde kilit açma Data Box disk](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)gidin.
 
 ::: zone-end
 

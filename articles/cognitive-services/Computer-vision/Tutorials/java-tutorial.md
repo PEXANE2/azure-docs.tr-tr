@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: fc3a4bb1fad836d8f3dadd5a06169b705ef4d4fc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4fdafee622a67582787829bb63331a8d0225506f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881249"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137486"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>REST API ve Java ile Görüntü İşleme özelliklerini kullanma
 
@@ -44,7 +44,7 @@ Bu öğretici, NetBeans IDE kullanılarak geliştirilmiştir. Özellikle, [burad
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Görüntü İşleme API’sine abone olma ve abonelik anahtarı alma
 
-Örneği oluşturmadan önce, Azure bilişsel hizmetler 'in bir parçası olan Görüntü İşleme API'si abone olmanız gerekir. Abonelik ve anahtar yönetimi ayrıntıları için bkz. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/). Bu öğreticide hem birincil hem de ikincil anahtarlar kullanılabilir.
+Örneği oluşturmadan önce, Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Hizmet uç noktası URL 'sini de göz atın.
 
 ## <a name="acquire-incomplete-tutorial-project"></a>Tamamlanmamış öğretici projesi al
 

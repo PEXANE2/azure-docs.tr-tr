@@ -3,8 +3,8 @@ title: SQL Server VM 'Leri için depolama yapılandırması | Microsoft Docs
 description: Bu konu, Azure 'un sağlama sırasında (Kaynak Yöneticisi dağıtım modeli) SQL Server VM 'Ler için depolamayı nasıl yapılandırdığını açıklamaktadır. Ayrıca, mevcut SQL Server sanal makinelerinize yönelik depolamayı nasıl yapılandırabileceğinizi açıklar.
 services: virtual-machines-windows
 documentationcenter: na
-author: ninarn
-manager: craigg
+author: MashaMSFT
+manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
-ms.author: ninarn
-ms.openlocfilehash: 5a8b6c9885099ed549f7f29d7f2096de5983d9d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.author: mathoma
+ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100394"
+ms.locfileid: "70123833"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 'Ler için depolama yapılandırması
 

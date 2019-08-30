@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934591"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129292"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliği teknik özellikleri
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) güvenlik avantajları şunlardır:
 
 - Önceden tümleştirilmiş binlerce SaaS uygulaması da dahil olmak üzere uygulamalarınıza çoklu oturum açma erişimi sağlayın.
 
-- Hem şirket içi hem de bulut uygulamaları için kurallara dayalı çok faktörlü kimlik doğrulamasını zorlayarak uygulama erişimi güvenliğini etkinleştirin.
+- Hem şirket içi hem de bulut uygulamaları için kurallara dayalı Multi-Factor Authentication zorlayarak uygulama erişimi güvenliğini etkinleştirin.
 
 - Azure AD Uygulama Ara Sunucusu aracılığıyla şirket içi Web uygulamalarına güvenli uzaktan erişim sağlayın.
 
@@ -73,7 +73,7 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 - Çoklu oturum açma
 
-- Çok öğeli kimlik doğrulama
+- Multi-factor authentication
 
 - Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
@@ -95,9 +95,9 @@ Birçok kuruluş, son kullanıcı üretkenliği için Office 365, Box ve Salesfo
 
 Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/active-directory-enterprise-apps-manage-sso.md) .
 
-#### <a name="multi-factor-authentication"></a>Çok öğeli kimlik doğrulama
+#### <a name="multi-factor-authentication"></a>Multi-factor authentication
 
-[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik bir ikinci güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
+[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
@@ -147,7 +147,7 @@ Azure AD Privileged Identity Management şunları yapmanızı sağlar:
 
 #### <a name="identity-protection"></a>Kimlik koruması
 
-[Azure AD kimlik koruması](../../active-directory/identity-protection/overview.md) , risk olaylarına ve kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarına birleştirilmiş bir görünüm sağlayan bir güvenlik hizmetidir. Kimlik koruması mevcut Azure Active Directory anomali algılama yeteneklerini kullanır (Azure AD 'nin Anomus etkinlik raporları aracılığıyla kullanılabilir) ve gerçek zamanlı anormallikleri tespit eden yeni risk olayı türlerini tanıtır.
+[Azure AD kimlik koruması](../../active-directory/identity-protection/overview.md) , risk algılamaları ve kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarına birleştirilmiş bir görünüm sağlayan bir güvenlik hizmetidir. Kimlik koruması mevcut Azure Active Directory anomali algılama yeteneklerini kullanır (Azure AD 'nin Anomus etkinlik raporları aracılığıyla kullanılabilir) ve gerçek zamanlı anormallikleri tespit eden yeni risk algılama türlerini tanıtır.
 
 ## <a name="secure-resource-access"></a>Güvenli kaynak erişimi
 
@@ -386,7 +386,7 @@ Ayrıca, denetim listesi:
 
 ![güvenlik doğrulaması (Algıla)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Azure operasyonel güvenlik, Microsoft güvenlik geliştirme yaşam döngüsü (SDL), Microsoft Güvenlik Yanıt Merkezi programı da dahil olmak üzere Microsoft 'a özgü çeşitli yetenekler aracılığıyla elde edilen bilgileri içeren bir çerçeve üzerine kurulmuştur. ve siber güvenlik tehdidi yatay olarak ayrıntılı bir şekilde tanıma.
+Azure operasyonel güvenlik, Microsoft Güvenlik Yanıt Merkezi programı da dahil Microsoft Security Development Lifecycle (SDL) olmak üzere Microsoft 'a özgü çeşitli yetenekler aracılığıyla elde edilen bilgileri içeren bir çerçeve üzerine kurulmuştur. ve siber güvenlik tehdidi yatay olarak ayrıntılı bir şekilde tanıma.
 
 ### <a name="microsoft-azure-monitor"></a>Microsoft Azure İzleyicisi
 

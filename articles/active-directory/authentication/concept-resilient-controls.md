@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779684"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125121"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -80,12 +80,12 @@ Bu örnek ilke kümesi, **appusers**'daki seçili kullanıcılara, güvenilen bi
 * İlke 1: Hedef grupları dışındaki kişilere erişimi engelle
   * Kullanıcılar ve gruplar: Tüm kullanıcıları dahil et. AppUsers, CoreAdmins ve acil bir Gencyaccess hariç tut
   * Bulut uygulamaları: Tüm uygulamaları Ekle
-  * Durumunda (Hiçbiri)
+  * Durumunda Seçim
   * Denetim ver: Engelle
 * İlke 2: MFA veya güvenilir cihaz gerektiren AppUsers 'a erişim izni verin.
   * Kullanıcılar ve gruplar: AppUsers dahil. CoreAdmins ve acil bir Gencyaccess hariç tut
   * Bulut uygulamaları: Tüm uygulamaları Ekle
-  * Durumunda (Hiçbiri)
+  * Durumunda Seçim
   * Denetim ver: Erişim verin, çok faktörlü kimlik doğrulaması gerektir, cihazın uyumlu olmasını gerektir. Birden çok denetim için: Seçili denetimlerden birini gerektir.
 
 ### <a name="contingencies-for-user-lockout"></a>Kullanıcı kilitleme için kıdurumlar
@@ -140,28 +140,28 @@ Aşağıdaki örnek: **Örnek A-iş açısından kritik Işbirliği uygulamalar�
 **Örnek A-iş açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek için acil durum CA ilkeleri:**
 
 * İlke 1: Exchange ve SharePoint için etki alanına katılmış cihazlar gerektir
-  * Adı: EM001-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [1/4]-Exchange SharePoint-karma Azure AD JOIN gerektir
+  * Ad: EM001-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [1/4]-Exchange SharePoint-karma Azure AD JOIN gerektir
   * Kullanıcılar ve gruplar: Kıgencyaccess ekleyin. CoreAdmins ve acil bir Gencyaccess hariç tut
   * Bulut uygulamaları: Exchange Online ve SharePoint Online
   * Durumunda Any
   * Denetim ver: Etki alanına katılmış iste
   * Durum: Devre dışı
 * İlke 2: Windows dışındaki platformları engelle
-  * Adı: EM002-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [2/4]-Exchange SharePoint-Windows dışında erişimi engelle
+  * Ad: EM002-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [2/4]-Exchange SharePoint-Windows dışında erişimi engelle
   * Kullanıcılar ve gruplar: Tüm kullanıcıları dahil et. CoreAdmins ve acil bir Gencyaccess hariç tut
   * Bulut uygulamaları: Exchange Online ve SharePoint Online
   * Durumunda Cihaz platformu tüm platformları Içerir, Windows 'u hariç tut
   * Denetim ver: Engelle
   * Durum: Devre dışı
 * İlke 3: CorpNetwork dışındaki ağları engelle
-  * Adı: EM003-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [3/4]-Exchange SharePoint-şirket ağı dışında erişimi engelle
+  * Ad: EM003-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [3/4]-Exchange SharePoint-şirket ağı dışında erişimi engelle
   * Kullanıcılar ve gruplar: Tüm kullanıcıları dahil et. CoreAdmins ve acil bir Gencyaccess hariç tut
   * Bulut uygulamaları: Exchange Online ve SharePoint Online
   * Durumunda Konumlar her konum Içerir, CorpNetwork ağını hariç tutun
   * Denetim ver: Engelle
   * Durum: Devre dışı
 * İlke 4: EAS 'i açıkça engelle
-  * Adı: EM004-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [4/4]-tüm kullanıcılar için Exchange-Block EAS
+  * Ad: EM004-ACIL DURUMDA ETKINLEŞTIR: MFA kesintisi [4/4]-tüm kullanıcılar için Exchange-Block EAS
   * Kullanıcılar ve gruplar: Tüm kullanıcıları dahil et
   * Bulut uygulamaları: Exchange Online 'ı Ekle
   * Durumunda İstemci uygulamaları: Exchange Active Sync
@@ -182,14 +182,14 @@ Bu sonraki örnekte, **örnek B-Salesforce 'a mobil erişime izin veren CA ilkel
 **Örnek B-yedek CA ilkeleri:**
 
 * İlke 1: Salesyedek takımda bulunmayan herkesi engelle
-  * Adı: EM001-ACIL DURUMDA ETKINLEŞTIR: Cihaz uyumluluğu kesintisi [1/2]-Salesforce-Salesforceyedek hariç tüm kullanıcıları engelle
+  * Ad: EM001-ACIL DURUMDA ETKINLEŞTIR: Cihaz uyumluluğu kesintisi [1/2]-Salesforce-Salesforceyedek hariç tüm kullanıcıları engelle
   * Kullanıcılar ve gruplar: Tüm kullanıcıları dahil et. SalesAdmins ve Salesforcedımı hariç tut
   * Bulut uygulamaları: Satış.
   * Durumunda Yok.
   * Denetim ver: Engelle
   * Durum: Devre dışı
 * İlke 2: Mobil dışındaki herhangi bir platformdan Satış ekibini engelleyin (saldırı yüzeyini azaltmak için)
-  * Adı: EM002-ACIL DURUMDA ETKINLEŞTIR: Cihaz uyumluluğu kesintisi [2/2]-Salesforce-iOS ve Android dışında tüm platformları engelle
+  * Ad: EM002-ACIL DURUMDA ETKINLEŞTIR: Cihaz uyumluluğu kesintisi [2/2]-Salesforce-iOS ve Android dışında tüm platformları engelle
   * Kullanıcılar ve gruplar: Salesforceyedek öğesini dahil edin. SalesAdmins hariç tut
   * Bulut uygulamaları: Salesforce
   * Durumunda Cihaz platformu tüm platformları Içerir, iOS ve Android 'i hariç tutun
@@ -232,7 +232,7 @@ Bir kesinti sırasında hangi azaltmaları veya kıgenlerle kullanıldığına b
 1. Değişiklik denetimi stratejinizin bir parçası olarak, erişim denetimleri tam olarak çalışır duruma geldiğinde, uyguladığınız tüm kıtları geri almak için her değişikliği ve önceki durumu belgeleyin.
 2. Kötü amaçlı aktörlerin, MFA 'yı devre dışı bıraktığınız sırada parola spreyi veya kimlik avı saldırıları aracılığıyla parola toplama girişiminde bulunduğunu varsayın Ayrıca, kötü aktörlerin bu pencere sırasında denenmeyen herhangi bir kaynağa daha önce erişim vermediği parolalara zaten sahip olması gerekebilir. Yöneticiler gibi kritik kullanıcılar için, MFA 'yı devre dışı bırakmadan önce parolalarını sıfırlayarak bu riski kısmen azaltabilirsiniz.
 3. MFA 'nın devre dışı bırakıldığı zaman ne işe erişebileceğini belirlemek için tüm oturum açma etkinliklerini arşivleyin.
-4. Bu pencere sırasında [raporlanan tüm risk olaylarını önceliklendirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
+4. Bu pencere sırasında [raporlanan tüm risk algılamalarını önceliklendirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
 
 ## <a name="after-a-disruption"></a>Kesintiden sonra
 
@@ -242,7 +242,7 @@ Hizmet geri yüklendikten sonra, kesintiye uğramasından sonra, etkinleştirile
 2. Acil durum ilkelerinizi devre dışı bırakın. 
 3. Yaptığınız diğer değişiklikleri geri alın ve kesinti sırasında belgelenir.
 4. Acil durum erişim hesabı kullandıysanız, kimlik bilgilerini yeniden oluşturmayı ve acil durum erişim hesabı yordamlarınızın bir parçası olarak yeni kimlik bilgileri ayrıntılarını fiziksel olarak güvenli hale getirmeyi unutmayın.
-5. Şüpheli etkinlik kesintiye uğradıktan sonra [raporlanan tüm risk olaylarını](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) önceliklendirmeye devam edin.
+5. Şüpheli etkinlik kesintiye uğradıktan sonra [raporlanan tüm risk algılamalarını](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) önceliklendirmeye devam edin.
 6. Bir kullanıcı kümesini hedeflemek için [PowerShell kullanılarak](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçleri iptal edildiğinde, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunun yapılması, geri yüklenen ilkelerin denetimini yeniden kimlik doğrulaması ve karşılamaları için zorlayacaktır.
 
 ## <a name="emergency-options"></a>Acil durum seçenekleri
@@ -254,7 +254,7 @@ Kuruluşunuz Kullanıcı başına MFA eski ilkelerini kullanıyorsa, aşağıdak
    1. Giden IP adresi envanteriniz yoksa veya şirket ağı içinde ve dışında erişimi etkinleştirmek istiyorsanız 0.0.0.0/1 ve 128.0.0.0/1 belirterek tüm IPv4 adres alanını güvenilir IP 'Ler olarak ekleyebilirsiniz.
 
 >[!IMPORTANT]
- > Erişimi engellemeyi kaldırmak için güvenilen IP adreslerini genişletirseniz, IP adresleriyle ilişkili risk olayları (örneğin, imkansız seyahat veya bilmediğiniz konumlar) oluşturulmaz.
+ > Erişimi engellemeyi kaldırmak için güvenilen IP adreslerini genişletirseniz, IP adresleriyle ilişkili risk algılamaları (örneğin, imkansız seyahat veya bilmediğiniz konumlar) oluşturulmaz.
 
 >[!NOTE]
  > Azure MFA için [Güvenilen IP 'lerin](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) yapılandırılması yalnızca [Azure AD Premium lisanslarla](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)kullanılabilir.

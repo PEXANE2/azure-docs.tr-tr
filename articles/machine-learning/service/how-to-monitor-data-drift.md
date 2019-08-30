@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623974"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128272"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
@@ -178,16 +178,7 @@ Değişikliklerini katsayısını uyarma eşiğini ayarlayıp bir e-posta adresi
 
 ## <a name="retrain-your-model-after-drift"></a>Modelinizi drsonra yeniden eğitme
 
-Veri kayması dağıtılan modelinizin performansını olumsuz yönde etkilediğinde, modelin yeniden eğitilmesi zaman alabilir. Aşağıdaki [ Yöntem,eski](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-) ve yeni eğitim veri kümeleri arasında nelerin değiştiğini bir kez daha sunar. `diff()` 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-Önceki kodun çıktısına göre modelinize yeniden eğitebilmeniz gerekebilir. Bunu yapmak için, aşağıdaki adımlarla devam edin.
+Veri kayması dağıtılan modelinizin performansını olumsuz yönde etkilediğinde, modelin yeniden eğitilmesi zaman alabilir. Bunu yapmak için, aşağıdaki adımlarla devam edin.
 
 * Toplanan verileri araştırın ve yeni modeli eğmek için verileri hazırlayın.
 * Eğitim ve test verilerine ayırın.

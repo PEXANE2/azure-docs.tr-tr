@@ -1,119 +1,136 @@
 ---
-title: Web panosu ile bir Azure Kubernetes Service kümesini yönetme
-description: Azure Kubernetes Service (AKS) kümesini yönetmek için yerleşik Kubernetes web kullanıcı Arabirimi Panosu kullanmayı öğrenin
+title: Web panosu ile bir Azure Kubernetes hizmet kümesini yönetme
+description: Azure Kubernetes hizmeti (AKS) kümesini yönetmek için yerleşik Kubernetes Web Kullanıcı arabirimi panosunu nasıl kullanacağınızı öğrenin
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 0de2f285b5eca88a098a2d7cfe1608ad2f0db71b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615232"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126871"
 ---
-# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) Kubernetes web panosuna erişme
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
-Kubernetes temel yönetim işlemlerini için kullanılabilecek bir web Pano içerir. Bu pano, temel sistem durumu ve uygulamalarınız için ölçümleri görüntüleme, oluşturma ve Hizmetleri dağıtın ve mevcut uygulamaları düzenlemek olanak tanır. Bu makalede, Azure CLI kullanarak Kubernetes panosuna erişme işlemi gösterilir ve ardından, bazı temel Pano işlemleri aracılığıyla size yol gösterir.
+Kubernetes, temel yönetim işlemleri için kullanılabilen bir Web panosu içerir. Bu pano uygulamalarınızın temel sistem durumunu ve ölçümlerini görüntülemenize, hizmetler oluşturmanıza ve dağıtmanıza ve mevcut uygulamaları düzenlemenize olanak tanır. Bu makalede, Azure CLı kullanarak Kubernetes panosuna nasıl erişebileceğiniz gösterilmektedir ve sonra bazı temel Pano işlemlerinde size kılavuzluk eder.
 
-Kubernetes panosunu hakkında daha fazla bilgi için bkz. [Kubernetes Web kullanıcı Arabirimi Panosu][kubernetes-dashboard].
+Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panosu][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu belgedeki adımlarda bir AKS kümesi oluşturduğunuz ve belirledik varsayılır bir `kubectl` kümeyle bağlantı. Bir AKS kümesi oluşturmak için ihtiyacınız varsa bkz [AKS hızlı başlangıçları][aks-quickstart].
+Bu belgede açıklanan adımlarda bir aks kümesi oluşturduğunuz ve kümeyle bir `kubectl` bağlantı oluşturmuş olduğunuz varsayılmaktadır. AKS kümesi oluşturmanız gerekiyorsa bkz. [aks hızlı][aks-quickstart]başlangıcı.
 
-Ayrıca Azure CLI sürüm 2.0.46 veya üzerini yüklemiş ve yapılandırmış olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Gerekirse yüklemek veya yükseltmek bkz [Azure CLI yükleme][install-azure-cli].
+Ayrıca Azure CLI sürüm 2.0.46 veya üzerini yüklemiş ve yapılandırmış olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
-## <a name="start-the-kubernetes-dashboard"></a>Kubernetes panosunu başlatmak
+## <a name="start-the-kubernetes-dashboard"></a>Kubernetes panosunu başlatma
 
-Kubernetes panosunu başlatmak için [az aks Gözat][az-aks-browse] komutu. Aşağıdaki örnekte adlı Küme için Pano açılır *myAKSCluster* adlı kaynak grubunda *myResourceGroup*:
+Kubernetes panosunu başlatmak için [az aks zat][az-aks-browse] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı küme için panoyu açar:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Bu komut, Kubernetes API ile geliştirme sisteminizde arasındaki bir proxy oluşturur ve bir web tarayıcı Kubernetes panosunu açar. Bir web tarayıcı Kubernetes panosunu açık değilse, Azure CLI, genellikle belirtilen URL adresini kopyalayıp yapıştırın `http://127.0.0.1:8001`.
+Bu komut, geliştirme sisteminiz ile Kubernetes API 'niz arasında bir ara sunucu oluşturur ve Kubernetes panosuna bir Web tarayıcısı açar. Bir Web tarayıcısı Kubernetes panosuna açılmazsa, genellikle `http://127.0.0.1:8001`Azure CLı 'de belirtilen URL adresini kopyalayıp yapıştırın.
 
-![Kubernetes web panonun genel bakış sayfası](./media/kubernetes-dashboard/dashboard-overview.png)
+![Kubernetes Web panosunun oturum açma sayfası](./media/kubernetes-dashboard/dashboard-login.png)
 
-### <a name="for-rbac-enabled-clusters"></a>Kümeler için RBAC etkin
+Kümenizin panosunda oturum açmak için aşağıdaki seçenekleriniz vardır:
 
-AKS kümenizi RBAC, kullanıyorsa bir *ClusterRoleBinding* Pano doğru bir şekilde erişebilmeniz için önce oluşturulması gerekir. Varsayılan olarak, Kubernetes panosunu en az okuma erişimi ile dağıtılır ve RBAC erişim hataları görüntüler. Kubernetes panosuna erişim düzeyini belirlemek için kullanıcı tarafından sağlanan kimlik bilgileri şu anda desteklemiyor, bunun yerine hizmet hesabına verilen rolleri kullanır. Ek erişim izni vermek bir Küme Yöneticisi seçebilirsiniz *kubernetes panosunu* hizmet hesabı, ancak bu ayrıcalık yükseltme için vektör olabilir. Daha ayrıntılı bir düzeyde erişim sağlamak için Azure Active Directory kimlik doğrulaması tümleştirebilirler.
-
-Bağlama oluşturmak için kullanın [kubectl oluşturma clusterrolebinding][kubectl-create-clusterrolebinding] komutu aşağıdaki örnekte gösterildiği gibi. 
+* Bir [kubeconfig dosyası][kubeconfig-file]. [Az aks Get-Credentials][az-aks-get-credentials]komutunu kullanarak bir kubeconfig dosyası oluşturabilirsiniz.
+* [Hizmet hesabı belirteci][aks-service-accounts] veya kullanıcı belirteci gibi bir belirteç. [AAD etkin kümeler][aad-cluster]üzerinde bu BELIRTEÇ bir AAD belirteci olur. Kubeconfig `kubectl config view` dosyanızdaki belirteçleri listelemek için öğesini kullanabilirsiniz. AKS kümesiyle kullanılmak üzere bir AAD belirteci oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme][aad-cluster].
+* *Atla*' ya tıkladığınızda kullanılan varsayılan pano hizmeti hesabı.
 
 > [!WARNING]
-> Bu örnek bağlama herhangi bir ek kimlik doğrulama bileşeni geçerli değildir ve güvensiz kullanımına neden olabilir. Kubernetes panosunu herkese açık erişim URL'si. Kubernetes panosunu genel olarak açığa çıkarmayın.
+> Kullanılan kimlik doğrulama yönteminden bağımsız olarak, Kubernetes panosunu herkese açık bir şekilde kullanıma sunmayın.
+> 
+> Kubernetes panosu için kimlik doğrulaması ayarlarken, varsayılan pano hizmeti hesabı üzerinde bir belirteç kullanmanız önerilir. Bir belirteç, her kullanıcının kendi izinlerini kullanmasına izin verir. Varsayılan pano hizmeti hesabını kullanmak, bir kullanıcının kendi izinlerini atlamasına ve bunun yerine hizmet hesabını kullanmasına izin verebilir.
+> 
+> Varsayılan pano hizmeti hesabını kullanmayı seçerseniz ve AKS kümeniz RBAC kullanıyorsa, panoya doğru şekilde erişebilmeniz için bir *Clusterrolebinding* oluşturulması gerekir. Varsayılan olarak, Kubernetes panosu, en az okuma erişimiyle dağıtılır ve RBAC erişim hatalarını görüntüler. Bir Küme Yöneticisi, *Kubernetes-Dashboard* hizmet hesabına ek erişim izni vermeyi seçebilir ancak bu, ayrıcalık yükseltme için bir vektör olabilir. Ayrıca, daha ayrıntılı bir erişim düzeyi sağlamak için Azure Active Directory kimlik doğrulamasını tümleştirebilirsiniz.
 >
-> Kubernetes Panosu wiki görmek için farklı kimlik doğrulama yöntemlerini kullanarak daha fazla bilgi için [erişim denetimleri][dashboard-authentication].
+> Bir bağlama oluşturmak için aşağıdaki örnekte gösterildiği gibi [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] komutunu kullanın. **Bu örnek bağlama, ek kimlik doğrulama bileşenleri uygulamaz ve güvenli olmayan kullanıma yol açabilir.**
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
+> 
+> Artık, RBAC özellikli kümenizdeki Kubernetes panosuna erişebilirsiniz. Kubernetes panosunu başlatmak için, önceki adımda açıklandığı gibi [az aks zat][az-aks-browse] komutunu kullanın.
+>
+> Kümeniz RBAC kullanmıyorsa, *Clusterrolebinding*oluşturulması önerilmez.
+> 
+> Farklı kimlik doğrulama yöntemlerini kullanma hakkında daha fazla bilgi için [erişim denetimlerinde][dashboard-authentication]Kubernetes Pano wiki bölümüne bakın.
 
-```console
-kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
-```
+Oturum açmak için bir yöntem seçtikten sonra Kubernetes panosu görüntülenir. *Belirteç* veya *atlama*kullanmayı seçerseniz, Kubernetes panosu kümeye erişmek için o anda oturum açmış kullanıcının izinlerini kullanacaktır.
 
-Kubernetes panosunu RBAC özellikli kümenizde artık erişebilirsiniz. Kubernetes panosunu başlatmak için [az aks Gözat][az-aks-browse] önceki adımda açıklandığı komutu.
+![Kubernetes Web panosunun genel bakış sayfası](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Kubernetes panosunu karmaşıklığını yönetim görevlerinin nasıl azaltabilirsiniz görmek için bir uygulama oluşturalım. Metin girişi, bir YAML dosyası sağlayarak veya Grafik Sihirbazı ile Kubernetes panodan bir uygulama oluşturabilirsiniz.
+Kubernetes panosunun yönetim görevlerinin karmaşıklığını ne şekilde azaltabilmesine bakmak için bir uygulama oluşturalım. Metin girişi, YAML dosyası veya grafik Sihirbazı aracılığıyla Kubernetes panosundan bir uygulama oluşturabilirsiniz.
 
-Bir uygulama oluşturmak için aşağıdaki adımları tamamlayın:
+Bir uygulama oluşturmak için aşağıdaki adımları izleyin:
 
-1. Seçin **Oluştur** üst sağ pencerede düğmesi.
-1. Grafik Sihirbazı'nı kullanmayı tercih **uygulama oluşturma**.
-1. Dağıtım için bir ad sağlayın *nginx*
-1. Gibi kullanmanız kapsayıcı görüntüsü için bir ad girin *nginx:1.15.5*
-1. Web trafiği için 80 numaralı bağlantı noktasını kullanıma sunmak için bir Kubernetes hizmeti oluşturun. Altında **hizmet**seçin **dış**, enter **80** bağlantı noktası ve hedef bağlantı noktası.
-1. Hazır olduğunuzda seçin **Dağıt** uygulamayı oluşturmak için.
+1. Sağ üst penceredeki **Oluştur** düğmesini seçin.
+1. Grafik Sihirbazı 'nı kullanmak için, **bir uygulama oluşturmayı**seçin.
+1. Dağıtım için *NGINX* gibi bir ad sağlayın
+1. Kullanılacak kapsayıcı resminin adını girin, örneğin *NGINX: 1.15.5*
+1. Web trafiği için 80 bağlantı noktasını kullanıma sunmak üzere bir Kubernetes hizmeti oluşturursunuz. **Hizmet**altında, **dış**' i seçin ve hem bağlantı noktası hem de hedef bağlantı noktası için **80** girin.
+1. Hazırlandığınızda, uygulamayı oluşturmak için **Dağıt** ' ı seçin.
 
-![Kubernetes web panosunda uygulama dağıtma](./media/kubernetes-dashboard/create-app.png)
+![Kubernetes Web panosunda uygulama dağıtma](./media/kubernetes-dashboard/create-app.png)
 
-Bir veya iki Kubernetes hizmetine atanan genel bir dış IP adresi için dakika sürer. Sol taraftaki boyutu altında **bulma ve Yük Dengeleme** seçin **Hizmetleri**. Dahil olmak üzere, uygulamanızın hizmet listelenir *dış uç noktalar*, aşağıdaki örnekte gösterildiği gibi:
+Kubernetes hizmetine genel bir dış IP adresinin atanması için bir dakika veya iki zaman alır. Sol boyuttaki **bulma ve yük dengeleme** altında **Hizmetler**' i seçin. Aşağıdaki örnekte gösterildiği gibi, uygulamanızın hizmeti *dış uç noktalar*dahil olmak üzere listelenir:
 
-![Hizmet ve uç nokta listesini görüntüleyin](./media/kubernetes-dashboard/view-services.png)
+![Hizmet ve uç noktaların listesini görüntüle](./media/kubernetes-dashboard/view-services.png)
 
-Uç nokta adresini bir web tarayıcısı penceresinde varsayılan NGINX sayfasını açmak için seçin:
+Varsayılan NGıNX sayfasına bir Web tarayıcı penceresi açmak için uç nokta adresini seçin:
 
-![Dağıtılan uygulamanın varsayılan NGINX sayfasını görüntüle](./media/kubernetes-dashboard/default-nginx.png)
+![Dağıtılan uygulamanın varsayılan NGıNX sayfasını görüntüleme](./media/kubernetes-dashboard/default-nginx.png)
 
 ## <a name="view-pod-information"></a>Pod bilgilerini görüntüle
 
-Kubernetes panosunu temel ölçümleri izleme ve sorun giderme günlükleri gibi bilgileri sağlar.
+Kubernetes panosu, Günlükler gibi temel izleme ölçümleri ve sorun giderme bilgileri sağlayabilir.
 
-Uygulama pod'ları hakkında daha fazla bilgi için seçin **pod'ların** sol menüdeki. Kullanılabilir pod'ların listesi gösterilir. Seçin, *ngınx* pod kaynak tüketimi gibi bilgileri görüntülemek için:
+Uygulama yığınlarınız hakkında daha fazla bilgi görmek için sol taraftaki menüden **pods** ' yi seçin. Kullanılabilir Pod 'lerin listesi gösterilir. Kaynak tüketimi gibi bilgileri görüntülemek için *NGINX* Pod 'nizi seçin:
 
 ![Pod bilgilerini görüntüle](./media/kubernetes-dashboard/view-pod-info.png)
 
-## <a name="edit-the-application"></a>Uygulamayı Düzenle
+## <a name="edit-the-application"></a>Uygulamayı düzenleme
 
-Oluşturma ve görüntüleme uygulamaları yanı sıra Kubernetes panosunu, düzenlemek ve güncelleştirme uygulama dağıtımları için kullanılabilir. Uygulama için ek yedeklilik sağlamak için şimdi NGINX yineleme sayısını artırın.
+Uygulamaları oluşturmanın ve görüntülemenin yanı sıra, Kubernetes panosu, uygulama dağıtımlarını düzenlemek ve güncelleştirmek için kullanılabilir. Uygulama için ek artıklık sağlamak üzere NGıNX çoğaltmalarının sayısını artalım.
 
-Bir dağıtım düzenlemek için:
+Bir dağıtımı düzenlemek için:
 
-1. Seçin **dağıtımları** soldaki menüden seçin, *ngınx* dağıtım.
-1. Seçin **Düzenle** üst sağ gezinti çubuğunda.
-1. Bulun `spec.replica` değeri, adresindeki geçici olarak 20 satır. Uygulama için yineleme sayısını artırmak için bu değeri değiştirmek *1* için *3*.
-1. Seçin **güncelleştirme** ne zaman hazır.
+1. Sol taraftaki menüden **dağıtımlar** ' ı seçin ve ardından *NGINX* dağıtımınızı seçin.
+1. Sağ üst gezinti çubuğunda **Düzenle** ' yi seçin.
+1. `spec.replica` Değeri, 20. satırın etrafında bulun. Uygulamanın çoğaltma sayısını artırmak için bu değeri *1* ' den *3*' e değiştirin.
+1. Hazırsanız **Güncelleştir** ' i seçin.
 
-![Yineleme sayısını güncelleştirmek için dağıtımı düzenleyin](./media/kubernetes-dashboard/edit-deployment.png)
+![Kopyaların sayısını güncelleştirmek için dağıtımı düzenleyin](./media/kubernetes-dashboard/edit-deployment.png)
 
-Yeni pod çoğaltma kümesi içinde oluşturulması birkaç dakika sürer. Sol taraftaki menüden seçin **çoğaltma kümeleri**ve ardından, *ngınx* çoğaltma kümesi. Pod'ların listesini artık aşağıdaki örnek çıktıda gösterildiği gibi güncelleştirilmiş yineleme sayısını yansıtır:
+Yeni Pod 'lerin bir çoğaltma kümesi içinde oluşturulması birkaç dakika sürer. Sol taraftaki menüde, **çoğaltma kümeleri**' ni seçin ve ardından *NGINX* çoğaltma kümesini seçin. Aşağıdaki örnek çıktıda gösterildiği gibi, Pod listesi artık güncelleştirilmiş çoğaltma sayısını yansıtır:
 
-![Çoğaltma kümesi hakkındaki bilgileri görüntüleyin](./media/kubernetes-dashboard/view-replica-set.png)
+![Çoğaltma kümesi hakkındaki bilgileri görüntüle](./media/kubernetes-dashboard/view-replica-set.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kubernetes Panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web kullanıcı Arabirimi Panosu][kubernetes-dashboard].
+Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panosu][kubernetes-dashboard].
 
 <!-- LINKS - external -->
-[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubeconfig-file]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 [kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 <!-- LINKS - internal -->
+[aad-cluster]: ./azure-ad-integration-cli.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
-[install-azure-cli]: /cli/azure/install-azure-cli
+[aks-service-accounts]: ./concepts-identity.md#kubernetes-service-accounts
+[az-account-get-access-token]: /cli/azure/account?view=azure-cli-latest#az-account-get-access-token
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[install-azure-cli]: /cli/azure/install-azure-cli

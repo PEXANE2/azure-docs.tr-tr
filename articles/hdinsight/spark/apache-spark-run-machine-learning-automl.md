@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354864"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141175"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark otomatik makine öğrenimi (otomatik ml) ile Azure Machine Learning iş yüklerini çalıştırma
 
@@ -34,7 +34,7 @@ Alternatif olarak, Zeppelin not defterlerini kullanarak oto ml 'yi de kullanabil
 
 ## <a name="authentication-for-workspace"></a>Çalışma alanı için kimlik doğrulaması
 
-Çalışma alanı oluşturma ve deneme gönderimi bir kimlik doğrulama belirteci gerektirir. Bu belirteç, bir [Azure AD uygulaması](../../active-directory/develop/app-objects-and-service-principals.md)kullanılarak oluşturulabilir. Hesapta Multi-Factor Authentication etkinleştirilmemişse, gerekli kimlik doğrulama belirtecini oluşturmak için bir [Azure AD kullanıcısı](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python) da kullanılabilir.  
+Çalışma alanı oluşturma ve deneme gönderimi bir kimlik doğrulama belirteci gerektirir. Bu belirteç, bir [Azure AD uygulaması](../../active-directory/develop/app-objects-and-service-principals.md)kullanılarak oluşturulabilir. Hesapta Multi-Factor Authentication etkinleştirilmemişse, gerekli kimlik doğrulama belirtecini oluşturmak için bir [Azure AD kullanıcısı](/azure/python/python-sdk-azure-authenticate) da kullanılabilir.  
 
 Aşağıdaki kod parçacığı, bir **Azure AD uygulaması**kullanarak bir kimlik doğrulama belirteci oluşturur.
 

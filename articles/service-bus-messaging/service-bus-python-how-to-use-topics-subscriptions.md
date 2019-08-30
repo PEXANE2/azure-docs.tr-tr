@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360821"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141894"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Python ile Service Bus konuları ve abonelikleri kullanma
 
@@ -39,7 +39,7 @@ Bu makale, Service Bus konu başlıklarını ve aboneliklerini kullanmayı açı
 
     > [!NOTE]
     > Bu hızlı başlangıçta **Python** kullanarak konu için bir **Konu** ve bir **abonelik** oluşturacaksınız. 
-3. [Azure Python paketini][Azure Python package]yükler. Bkz. [Python Yükleme Kılavuzu](../python-how-to-install.md).
+3. [Azure Python paketini][Azure Python package]yükler. Bkz. [Python Yükleme Kılavuzu](/azure/python/python-sdk-azure-install).
 
 ## <a name="create-a-topic"></a>Konu oluştur
 
@@ -161,7 +161,7 @@ Parametreler, parametre `peek_lock` **false**olarak ayarlandığında okunduklar
 
 İletiyi alma işleminin bir parçası olarak okuma ve silme davranışı en basit modeldir ve bir hata olduğunda uygulamanın bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonuç verir. Bu davranışı anlamak için, tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-Parametresi true olarak ayarlanırsa, Receive iki aşamalı bir işlem haline gelir ve bu, eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar.  `peek_lock` Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), `delete` **ileti** nesnesine metodu çağırarak alma işleminin ikinci aşamasını tamamlar. `delete` Yöntemi iletiyi tüketildiği gibi işaretler ve abonelikten kaldırır.
+Parametresi true olarak ayarlanırsa, Receive iki aşamalı bir işlem haline gelir ve bu, eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. `peek_lock` Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), `delete` **ileti** nesnesine metodu çağırarak alma işleminin ikinci aşamasını tamamlar. `delete` Yöntemi iletiyi tüketildiği gibi işaretler ve abonelikten kaldırır.
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)

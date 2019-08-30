@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: MT
+ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637279"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147848"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Sanal çekirdek hizmet katmanları arasında seçim yapın ve DTU hizmeti katmanlarından geçiş yapın
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda üç katman arasındaki farklar açıklanmaktadır:
 ||**Genel amaçlı**|**İş açısından kritik**|**Hiper ölçekli**|
 |---|---|---|---|
 |En uygun olduğu durum|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar.|Yüksek g/ç gereksinimlerine sahip iş uygulamaları. Birkaç yalıtılmış çoğaltma kullanarak hatalara en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.|
-|İşlem|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek<br/>**Sunucusuz işlem**:<br/>5\. nesil 0,5-4 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|
+|İşlem|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek<br/>**Sunucusuz işlem**:<br/>5\. nesil 0,5-16 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|
 |Bellek|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB<br/>**Sunucusuz işlem**:<br/>5\. nesil Sanal çekirdek başına 3 GB|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB |**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB|
 |Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Tek veritabanı sunucusuz işlem**:<br/>5 GB-1 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
 |G/ç verimlilik (yaklaşık)|**Tek veritabanı**: maksimum 7000 ıOPS ile vCore başına 500 ıOPS.<br/>**Yönetilen örnek**: [Dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|200.000 maksimum ıOPS ile çekirdek başına 5000 ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|

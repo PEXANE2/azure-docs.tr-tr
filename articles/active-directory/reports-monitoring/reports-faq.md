@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987912"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127017"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
@@ -37,7 +37,7 @@ Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan sor
 
 **S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD güvenlik raporlarını (IP adreslerinden gelen kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi), raporlama sistemlerimize programlama yoluyla çekmek için uç nokta API 'lerini kullanıyorum. Ne geçiş yapmam gerekir?**
 
-**C:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk olayları API](../identity-protection/graph-get-started.md) 'sini kullanabilirsiniz. Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk olaylarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli MS Graf yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
+**C:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk algılama API](../identity-protection/graph-get-started.md) 'sini kullanabilirsiniz. Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli MS Graf yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
 
 ---
 
@@ -107,7 +107,7 @@ Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan sor
 
 ## <a name="risky-sign-ins"></a>Riskli oturum açma işlemleri
 
-**S: Kimlik koruması 'nda bir risk olayı var, ancak oturum açma raporlarında ilgili oturum açma raporuna bakmıyorum. Bu beklensin mi?**
+**S: Kimlik koruması 'nda bir risk algılama işlemi var, ancak oturum açma raporlarında ilgili oturum açma raporuna bakmıyor. Bu beklensin mi?**
 
 **C:** Evet, kimlik koruması etkileşimli veya etkileşimli olmayan tüm kimlik doğrulama akışları için risk değerlendirir. Ancak, yalnızca oturum açma işlemleri raporu yalnızca etkileşimli oturum açma işlemlerini gösterir.
 
@@ -115,7 +115,7 @@ Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan sor
 
 **S: Nasıl yaparım?, Azure portal bir oturum açma veya kullanıcının neden riskli olarak işaretlendiğinden emin misiniz?**
 
-**C:** Bir **Azure AD Premium** aboneliğiniz varsa, risk altında Kullanıcı olarak **işaretlenen kullanıcıları** seçerek veya **riskli oturum açma** işlemleri raporundaki bir kaydı seçerek temeldeki risk olayları hakkında daha fazla bilgi edinebilirsiniz. **Ücretsiz** veya **temel** aboneliğiniz varsa, kullanıcılar risk ve riskli oturum açma işlemleri raporlarında görüntülenebilir, ancak temel risk olay bilgilerini göremezsiniz.
+**C:** **Azure AD Premium** aboneliğiniz varsa, **risk açısından işaretlenen kullanıcılar** ' ı seçerek veya **riskli oturum açma** işlemleri raporundaki bir kaydı seçerek temeldeki risk algılamaları hakkında daha fazla bilgi edinebilirsiniz. **Ücretsiz** veya **temel** aboneliğiniz varsa, kullanıcılar risk ve riskli oturum açma raporları raporlarını görüntüleyebilir, ancak temel risk algılama bilgilerini göremezsiniz.
 
 ---
 
@@ -125,7 +125,7 @@ Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan sor
 
 ---
 
-**S: "Risk olayı" ek risk ile oturum açma "," işaret ediyor "olarak mı?**
+**S: Risk algılama "ek risk ile oturum açma algılandı" anlamı nedir?**
 
 **C:** Ortamınızdaki tüm riskli oturum açma bilgileri hakkında bilgi vermek için, "ek risk algılandı" işlevleri, Azure AD Kimlik Koruması abonelere özel algılamalar için oturum açma işlemleri için yer tutucu olarak çalışır.
 

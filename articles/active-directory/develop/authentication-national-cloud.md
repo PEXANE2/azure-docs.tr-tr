@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abaf8c910710000930f4e0ab6200d0ebd75b8d46
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835201"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135866"
 ---
 # <a name="national-clouds"></a>Ulusal bulutlar
 
@@ -68,9 +68,6 @@ Uygun bölgeye özgü temel URL 'YI kullanarak Azure AD yetkilendirmesi veya bel
   - Belirteç ortak uç noktası `https://login.microsoftonline.de/common/oauth2/token`.
 
 Tek kiracılı uygulamalarda, önceki URL 'Lerdeki "ortak" i kiracı KIMLIĞINIZLE veya adınızla değiştirin. `https://login.microsoftonline.de/contoso.com` bunun bir örneğidir.
-
-> [!NOTE]
-> [Azure AD v 2.0 yetkilendirme]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) ve belirteç uç noktaları yalnızca küresel hizmet için kullanılabilir. Ulusal bulut dağıtımları için desteklenmez.
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API 'SI
 

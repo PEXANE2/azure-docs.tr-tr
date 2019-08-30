@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874246"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135750"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kimlik doğrulaması ve yetkilendirme hata kodları
 
@@ -194,6 +194,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 | AADSTS90019 | MissingTenantRealm-Azure AD, istekten kiracı tanımlayıcısını belirleyemedi. |
 | AADSTS90022 | Authenticatedınvalidprincipalnameformat-asıl ad biçimi geçerli değil veya beklenen `name[/host][@realm]` biçimi karşılamıyor. Asıl ad gereklidir, ana bilgisayar ve bölge isteğe bağlıdır ve null olarak ayarlanabilir. |
 | AADSTS90023 | Invalidrequest-kimlik doğrulama hizmeti isteği geçerli değil. |
+| AADSTS9002313 | Invalidrequest-Istek hatalı oluşturulmuş veya geçersiz. -Burada sorun, belirli bir uç nokta isteğiyle ilgili bir sorun olduğu için verilmiştir. Bu sorunun önerisi, oluşan hatanın Fiddler izlemesini almak ve isteğin gerçekten doğru şekilde biçimlendirilip biçimlendirilmediğini görmek için. |
 | AADSTS90024 | Requestdostgetexceedebir-geçici bir hata oluştu. Yeniden deneyin. |
 | AADSTS90033 | MsodsServiceUnavailable-Microsoft çevrimiçi dizin hizmeti (MSODS) kullanılamıyor. |
 | AADSTS90036 | MsodsServiceUnretryableFailure-MSODS tarafından barındırılan WCF hizmetinden beklenmedik, yeniden denenmeyen bir hata oluştu. Hata hakkında daha fazla bilgi almak için [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md). |

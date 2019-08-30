@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f244c28b99c429fef5641bb4fc399e09fd451069
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334036"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126567"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Nasıl Yapılır: Azure Active Directory kimlik koruması 'nda risk ilkelerini yapılandırma (yenileme)
 
-Azure AD, riskli olabilecek kimlikler için göstergeler olan risk olaylarını algılar. Risk ilkelerini yapılandırarak, algılama sonuçlarına yönelik otomatikleştirilmiş yanıtları tanımlayabilirsiniz:
+Azure AD, riskli olabilecek kimlikler için göstergeler olan risk algılamalarını algılar. Risk ilkelerini yapılandırarak, algılama sonuçlarına yönelik otomatikleştirilmiş yanıtları tanımlayabilirsiniz:
 
-- Oturum açma riski ilkesiyle, kullanıcının oturum açması sırasında algılanan gerçek zamanlı risk olaylarına bir yanıt yapılandırabilirsiniz. 
+- Oturum açma riski ilkesiyle, kullanıcının oturum açması sırasında algılanan gerçek zamanlı risk algılamalarını bir yanıt yapılandırabilirsiniz. 
 - Kullanıcı risk ilkesiyle, bir kullanıcı için zaman içinde algılanan tüm etkin kullanıcı risklerine yanıt yapılandırabilirsiniz.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Oturum açma riski ilkesi nedir?
 
-Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Örneğin, anonim bir IP adresi kullanılarak yapılan oturum açma işlemi mi, yoksa bilmediğiniz bir konumdan başlatılan oturum açma mı? Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk olayları olarak da bilinir. Azure AD, oturum açma sırasında algılanan risk olaylarına bağlı olarak bir değeri hesaplar. Bu değer, oturum açmanın meşru Kullanıcı tarafından gerçekleştirilmediğini (düşük, orta, yüksek) temsil eder. Olasılığa, **oturum açma risk düzeyi**denir.
+Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Örneğin, anonim bir IP adresi kullanılarak yapılan oturum açma işlemi mi, yoksa bilmediğiniz bir konumdan başlatılan oturum açma mı? Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk algılamaları olarak da bilinir. Azure AD, oturum açma sırasında algılanan risk algılamalarını temel alarak bir değeri hesaplar. Bu değer, oturum açmanın meşru Kullanıcı tarafından gerçekleştirilmediğini (düşük, orta, yüksek) temsil eder. Olasılığa, **oturum açma risk düzeyi**denir.
 
 Oturum açma risk ilkesi, belirli bir oturum açma risk düzeyi için yapılandırabileceğiniz otomatik bir yanıttır. Yanıtlarınızda kaynaklarınıza erişimi engelleyebilir veya erişim kazanmak için Multi-Factor Authentication (MFA) sınamasını geçirmeyi zorunlu kılabilirsiniz.
 
-Kullanıcı, oturum açma risk ilkesi tarafından tetiklenen bir MFA isteğini başarıyla tamamladığında, oturum açmanın meşru kullanıcıdan kaynaklandığı kimlik korumasına geri bildirimde bulunun. Bu nedenle, MFA isteğini tetikleyen oturum açma risk olayı otomatik olarak kapatılır ve kimlik koruması, bu olayın Kullanıcı riski yükselmesine katkıda bulunmak için izin vermez. Oturum açma riski ilkesinin etkinleştirilmesi riskli oturum açma işlemlerinin, kullanıcıların MFA için istendiğinde kendi kendini düzeltmesine ve ardından ilişkili riskli oturum açma işlemini otomatik olarak kapatmaya izin vererek, riskli oturum açma görünümündeki sürekliliği azaltabilir.
+Kullanıcı, oturum açma risk ilkesi tarafından tetiklenen bir MFA isteğini başarıyla tamamladığında, oturum açmanın meşru kullanıcıdan kaynaklandığı kimlik korumasına geri bildirimde bulunun. Bu nedenle, MFA isteminin tetiklediği oturum açma riski algılama otomatik olarak kapatılır ve kimlik koruması, bu olayın Kullanıcı riski yükselmesine katkıda bulunmak için izin vermez. Oturum açma riski ilkesinin etkinleştirilmesi riskli oturum açma işlemlerinin, kullanıcıların MFA için istendiğinde kendi kendini düzeltmesine ve ardından ilişkili riskli oturum açma işlemini otomatik olarak kapatmaya izin vererek, riskli oturum açma görünümündeki sürekliliği azaltabilir.
 
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Nasıl yaparım? oturum açma risk ilkesine erişin mi?
    
@@ -93,9 +93,9 @@ Oturum açma risk ilkesi:
 
 ## <a name="what-is-a-user-risk-policy"></a>Kullanıcı risk ilkesi nedir?
 
-Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk olayları olarak da bilinir. Bazı risk olayları gerçek zamanlı olarak algılanırken, daha fazla zaman gerektiren risk olayları da vardır. Örneğin, normal konumlara karşı imkansız bir yolculuğu algılamak için, sistemin normal davranışı hakkında bilgi edinmek için ilk öğrenme dönemi 14 gün gerektirir. Algılanan risk olaylarını çözümlemek için çeşitli seçenekler vardır. Örneğin, bireysel risk olaylarını el ile çözümleyebilir veya bir oturum açma riski veya Kullanıcı riski koşullu erişim ilkesi kullanarak bunları çözülebilir.
+Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk algılamaları olarak da bilinir. Bazı risk algılamaları gerçek zamanlı olarak algılanırken, daha fazla zaman gerektiren risk algılamaları da vardır. Örneğin, normal konumlara karşı imkansız bir yolculuğu algılamak için, sistemin normal davranışı hakkında bilgi edinmek için ilk öğrenme dönemi 14 gün gerektirir. Algılanan risk algılamalarını çözümlemek için çeşitli seçenekler vardır. Örneğin, tek tek risk algılamalarını el ile çözümleyebilir veya bir oturum açma riski veya Kullanıcı riski koşullu erişim ilkesi kullanarak bunları çözümleirsiniz.
 
-Bir kullanıcı için algılanan ve çözümlenemeyen tüm risk olayları etkin risk olayları olarak bilinir. Bir kullanıcıyla ilişkili etkin risk olayları Kullanıcı riski olarak bilinir. Azure AD, Kullanıcı riskine bağlı olarak, bir kullanıcının tehlikeye girdiği bir olasılığı (düşük, orta, yüksek) hesaplar. Olasılığa Kullanıcı risk düzeyi denir.
+Bir kullanıcı için algılanan ve çözülmediği tüm risk algılamaları etkin risk algılamaları olarak bilinir. Bir kullanıcıyla ilişkili etkin risk algılamaları, Kullanıcı riski olarak bilinir. Azure AD, Kullanıcı riskine bağlı olarak, bir kullanıcının tehlikeye girdiği bir olasılığı (düşük, orta, yüksek) hesaplar. Olasılığa Kullanıcı risk düzeyi denir.
 
 ![Kullanıcı riskleri](./media/howto-configure-risk-policies/11031.png)
 
@@ -139,8 +139,8 @@ Risk düzeyine bağlı olarak oturum açarken kullanıcıları engellemek için 
 
 Oturum açmayı engelleme:
 
-* Etkilenen Kullanıcı için Yeni Kullanıcı risk olaylarının oluşturulmasını engeller
-* Yöneticilerin, kullanıcının kimliğini etkileyen risk olaylarını el ile düzeltmesini ve güvenli bir duruma geri yüklemesini sağlar
+* Etkilenen Kullanıcı için Yeni Kullanıcı risk algılamaları oluşturulmasını engeller
+* Yöneticilerin, kullanıcının kimliğini etkileyen risk algılamalarını el ile düzeltmesini ve güvenli bir duruma geri yüklemesini sağlar
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

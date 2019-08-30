@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d1b3e2f36256164420ae6b2e699f0ef48e2e78
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576556"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125440"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Koşullu erişim: Risk tabanlı koşullu erişim
+# <a name="conditional-access-risk-based-conditional-access"></a>Koşullu erişim: Risk tabanlı Koşullu Erişim
 
-Azure AD Premium P2 lisanslarına sahip kuruluşlar, Azure AD Kimlik Koruması risk olaylarını ekleyerek koşullu erişim ilkeleri oluşturabilir. Kutudan çıkan üç varsayılan ilke vardır. 
+Azure AD Premium P2 lisanslarına sahip kuruluşlar, Azure AD Kimlik Koruması riskli algılamaları dahil koşullu erişim ilkeleri oluşturabilir. Kutudan çıkan üç varsayılan ilke vardır. 
 
-* Tüm kullanıcıların Azure Multi-Factor Authentication 'a kaydolmesini gerektir.
+* Tüm kullanıcıların Azure Multi-Factor Authentication kaydolması gerekir.
 * Yüksek riskli kullanıcılar için parola değişikliği gerektir.
 * Orta veya yüksek oturum açma riski olan kullanıcılar için Multi-Factor Authentication gerektir.
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Tüm kullanıcıların Azure Multi-Factor Authentication 'a kaydolmesini gerektir
+## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Tüm kullanıcıların Azure Multi-Factor Authentication kaydolmesini gerektir
 
-Bu ilkeyi etkinleştirmek, tüm kullanıcıların Azure Multi-Factor Authentication 'a 14 gün içinde kaydolmesini gerektirir. 
+Bu ilkeyi etkinleştirmek, tüm kullanıcıların Azure Multi-Factor Authentication için 14 gün içinde kaydolmanızı gerektirir. 
 
 1. **Azure Portal** oturum açın.
 1. **Tüm hizmetler**'e tıklayıp **Azure AD Kimlik Koruması**'na gidin.

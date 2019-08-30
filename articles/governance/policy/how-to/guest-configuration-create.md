@@ -7,18 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543502"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146116"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
 Konuk yapılandırması, Azure sanal makinelerinin denetlenmesine yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/dsc) (DSC) kaynak modülünü kullanır. DSC yapılandırması, sanal makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, Ilke etkisi **denetimi** tetiklenir ve sanal makine **uyumlu**değil olarak kabul edilir.
 
-[Azure Ilke Konuk yapılandırması](/azure/governance/policy/concepts/guest-configuration) yalnızca sanal makinelerin içindeki ayarları denetlemek için kullanılabilir. Sanal makinelerin içindeki ayarların düzeltilmesi henüz mevcut değil.
+[Azure Ilke Konuk yapılandırması](/azure/governance/policy/concepts/guest-configuration) yalnızca sanal makinelerin içindeki ayarları denetlemek için kullanılabilir. Sanal makineler içindeki ayarların düzeltilmesi henüz kullanılamıyor.
 
 Bir Azure sanal makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 
@@ -142,7 +142,7 @@ Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizl
 İlk olarak, Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Kimlik, sanal makineler tarafından Key Vault depolanan gizli dizileri erişmek için kullanılır. Ayrıntılı adımlar için, bkz. [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Ardından Key Vault bir örnek oluşturun. Ayrıntılı adımlar için bkz. [gizli anahtar PowerShell 'ı ayarlama ve alma](../../../key-vault/quick-create-powershell.md).
-Kullanıcı tarafından atanan kimlik erişimine Key Vault ' de depolanan gizli dizileri sağlamak için örneğe izinler atayın. Ayrıntılı adımlar için bkz. [gizli dizi ayarlama ve alma](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault).
+Kullanıcı tarafından atanan kimlik erişimine Key Vault ' de depolanan gizli dizileri sağlamak için örneğe izinler atayın. Ayrıntılı adımlar için bkz. [gizli dizi ayarlama ve alma](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
 Ardından, Kullanıcı tarafından atanan kimliği sanal makinenize atayın. Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Ölçek ' te, Azure Ilkesi aracılığıyla Azure Resource Manager kullanarak bu kimliği atayın. Ayrıntılı adımlar için bkz. [bir şablon kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
@@ -318,11 +318,11 @@ Azure 'da oluşturulan ilke ve girişim tanımlarıyla, son adım girişimi atay
 
 Özel içerik paketinizi kullanarak özel bir Azure Ilkesi yayımladıktan sonra, yeni bir sürüm yayınlamak istiyorsanız, güncelleştirilmeleri gereken iki alan vardır.
 
-- **Sürüm**: Cmdlet `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.  Bu, uzantının paketin güncelleştirildiğini tanıması için yeni ilke dosyasındaki Konuk yapılandırma atamasının sürümünü güncelleştirir.
-- **contentHash**: Bu, `New-GuestConfigurationPolicy` cmdlet 'i tarafından otomatik olarak güncelleştirilir.  Tarafından `New-GuestConfigurationPackage`oluşturulan paketin karma değeridir.  Bu, `.zip` yayımladığınız dosya için doğru olmalıdır.  Yalnızca `contentUri` Özellik güncelleştirilirse (örneğin, birisi portalın ilke tanımında el ile değişiklik yapabildiği durumlarda), uzantı içerik paketini kabul etmez.
+- **Sürüm**: `New-GuestConfigurationPolicy` Cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.  Özelliği, uzantının paketin güncelleştirildiğini tanıması için, yeni ilke dosyasındaki Konuk yapılandırma atamasının sürümünü güncelleştirir.
+- **contentHash**: Bu özellik, `New-GuestConfigurationPolicy` cmdlet 'i tarafından otomatik olarak güncelleştirilir.  Tarafından `New-GuestConfigurationPackage`oluşturulan paketin karma değeridir.  Özelliği, yayımladığınız `.zip` dosya için doğru olmalıdır.  Yalnızca `contentUri` Özellik güncelleştirilirse (örneğin, birisi portalın ilke tanımında el ile değişiklik yapabildiği durumlarda), uzantı içerik paketini kabul etmez.
 
 Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır.
-Bu, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin olacak.
+Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows grup ilkesi içeriğini Azure Ilke Konuk yapılandırması 'na dönüştürme
 
@@ -330,7 +330,7 @@ Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen du
 DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı.
 Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz.
 Aracı kullanma hakkında ayrıntılı bilgi için hızlı başlangıç makalesine [bakın: Grup ilkesi DSC](/powershell/dsc/quickstarts/gpo-quickstart)'ye dönüştürün.
-İçerik dönüştürüldükten sonra, bir pakcage oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olacaktır.
+İçerik dönüştürüldükten sonra, bir paket oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olacaktır.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>SEÇIM Konuk yapılandırma paketleri imzalanıyor
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616012"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147194"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -100,6 +100,9 @@ Temel düğüm işletim sistemi Ayrıca, kendi temel işlevlerini tamamlaması i
 ### <a name="node-pools"></a>Düğüm havuzları
 
 Aynı yapılandırmanın düğümleri, *düğüm havuzlarında*birlikte gruplandırılır. Bir Kubernetes kümesi bir veya daha fazla düğüm havuzu içerir. Düğüm ve boyutun ilk sayısı, *varsayılan bir düğüm havuzu*oluşturan bir aks kümesi oluşturduğunuzda tanımlanır. AKS 'deki bu varsayılan düğüm havuzu, aracı düğümlerinizi çalıştıran temel VM 'Leri içerir. Birden çok düğüm havuzu desteği şu anda AKS 'de önizlemededir.
+
+> [!NOTE]
+> Kümenizin güvenilir bir şekilde çalışmasını sağlamak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmanız gerekir.
 
 Bir AKS kümesini ölçeklendirerek veya yükselttiğinizde, eylem varsayılan düğüm havuzunda gerçekleştirilir. Ayrıca belirli bir düğüm havuzunu ölçeklendirmeyi veya yükseltmeyi de tercih edebilirsiniz. Yükseltme işlemleri için, tüm düğümler başarıyla yükseltilene kadar, çalışan kapsayıcılar düğüm havuzundaki diğer düğümlerde zamanlanır.
 
