@@ -58,7 +58,7 @@ Aşağıdaki tabloda, Azure Search bağlantılı hizmete özgü JSON öğelerini
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| türü | Type özelliği ayarlanmalıdır: **AzureSearch**. | Evet |
+| type | Type özelliği ayarlanmalıdır: **AzureSearch**. | Evet |
 | url | Azure Search hizmeti için URL. | Evet |
 | key | Azure Search hizmeti için yönetici anahtarı. | Evet |
 
@@ -68,7 +68,7 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| türü | Type özelliği ayarlanmalıdır **AzureSearchIndex**.| Evet |
+| type | Type özelliği ayarlanmalıdır **AzureSearchIndex**.| Evet |
 | indexName | Azure Search dizininin adı. Veri fabrikası, Dizin oluşturulmaz. Azure Search'te dizin varolmalıdır. | Evet |
 
 
@@ -100,7 +100,7 @@ Aşağıdaki tabloda, bir Azure Search veri türü veya desteklenip desteklenmed
 
 | Azure Search veri türü | Azure Search'ü havuz desteklenen |
 | ---------------------- | ------------------------------ |
-| Dize | E |
+| String | E |
 | Int32 | E |
 | Int64 | E |
 | Double | E |
