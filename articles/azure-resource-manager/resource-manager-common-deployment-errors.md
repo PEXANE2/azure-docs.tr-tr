@@ -6,14 +6,14 @@ author: tfitzmac
 keywords: Dağıtım hatası, Azure dağıtımı, Azure 'a dağıtma
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638539"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194368"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme
 
@@ -41,7 +41,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | ImageNotFound | VM görüntüsü ayarlarını kontrol edin. |  |
 | Inusesubnetcannotbedeleted | Bir kaynağı güncelleştirmeye çalışırken bu hatayı alabilir ve kaynak silinerek ve oluşturularak istek işlenir. Tüm değiştirilmeyen değerleri belirttiğinizden emin olun. | [Güncelleştirme kaynağı](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | Invalidauthenticationtokentenant | Uygun kiracı için erişim belirteci alın. Yalnızca hesabınızın ait olduğu kiracının belirtecini alabilir. | |
-| InvalidContentLink | Büyük olasılıkla kullanılamayan iç içe bir şablona bağlantı yapmaya çalıştınız. İç içe geçmiş şablon için verdiğiniz URI 'yi iki kez kontrol edin. Şablon bir depolama hesabında varsa, URI 'nin erişilebilir olduğundan emin olun. Bir SAS belirteci geçirmeniz gerekebilir. | [Bağlantılı şablonlar](resource-group-linked-templates.md) |
+| InvalidContentLink | Büyük olasılıkla kullanılamayan iç içe bir şablona bağlantı yapmaya çalıştınız. İç içe geçmiş şablon için verdiğiniz URI 'yi iki kez kontrol edin. Şablon bir depolama hesabında varsa, URI 'nin erişilebilir olduğundan emin olun. Bir SAS belirteci geçirmeniz gerekebilir. Şu anda, [Azure Storage güvenlik duvarının](../storage/common/storage-network-security.md)arkasındaki bir depolama hesabında bulunan bir şablona bağlayamazsınız. Şablonunuzu GitHub gibi başka bir depoya taşımayı düşünün. | [Bağlantılı şablonlar](resource-group-linked-templates.md) |
 | InvalidParameter | Bir kaynak için verdiğiniz değerlerden biri beklenen değerle eşleşmiyor. Bu hata, birçok farklı koşulun oluşmasına neden olabilir. Örneğin, bir parola yetersiz olabilir veya bir blob adı yanlış olabilir. Hata iletisi hangi değerin düzeltilmesi gerektiğini göstermelidir. | |
 | Invalidrequestcontent | Dağıtım değerleri, tanınmayan ya da gerekli değerler eksik olan değerleri içerir. Kaynak türü için değerleri onaylayın. | [Şablon başvurusu](/azure/templates/) |
 | Invalidrequestformat | Dağıtımı çalıştırırken hata ayıklama günlüğünü etkinleştirin ve isteğin içeriğini doğrulayın. | [Hata ayıklama günlüğü](#enable-debug-logging) |
