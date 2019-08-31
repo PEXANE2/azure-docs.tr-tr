@@ -4,16 +4,16 @@ description: Azure Time Series Insights ortamından verileri sorgulayan ve işle
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720876"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194251"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Öğretici: Azure Time Series Insights tek sayfalı web uygulaması oluşturma
 
@@ -127,6 +127,10 @@ Bu öğretici, örnek uygulamanın Time Series Insights ortamındaki verileri de
 
       [![Visual Studio-yayımlama profili bölmesi](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. Yeni bir Azure App Service örneğini yayımlamayı veya var olan bir örneği kullanmayı seçin.
+
+      [![Bir Azure App Service örneği seçin](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. Uygulamayı yayımlamak için kullanmak istediğiniz aboneliği seçin. **Tsispaapp** projesini seçin. Sonra **Tamam**’ı seçin.
 
       [![Visual Studio-yayımlama profili App Service bölmesi](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ Bu öğretici, örnek uygulamanın Time Series Insights ortamındaki verileri de
 
    1. Başarılı bir yayımlama günlüğü, Visual Studio **çıktı** bölmesinde görünür. Dağıtım tamamlandığında, Visual Studio Web uygulamasını bir tarayıcı sekmesinde açar ve oturum açmayı ister. Başarılı oturum açma işleminden sonra Time Series Insights denetimleri verilerle doldurulur.
 
+   1. Web uygulamanıza gidin ve işlenmiş Time Series Insights görsel verilerini görüntülemek için oturum açın.
+
+      [![Barındırılan Web uygulamasını gözden geçirme](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>Sorun giderme  
 
 Hata kodu/durumu | Açıklama
 ---------------------| -----------
-*AADSTS50011: Uygulama için kaydedilmiş bir yanıt adresi yok.* | Azure AD kaydında **yanıt URL 'si** özelliği eksik. Azure AD uygulama kaydınız için **Ayarlar** > **yanıt URL 'lerine** gidin. **Yeniden yönlendirme URI 'sinin** **Adım 2** ' de veya [Azure AD 'yi kullanmak için uygulamayı](#register-with-azure-ad) kaydettiğinizde **Adım 4** ' te belirtme seçeneğine sahip olduğunuzu doğrulayın.
-*AADSTS50011: İstekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: '\<Uygulama kimliği GUID > '.* | [Derleme ve yayımlama](#build-and-publish) içindeki **6. adımda** >  belirtilenbuWebuygulamasınıAzureADuygulamakaydınızdaayarlaryanıtURL'lerialtındabelirtilendeğerleaynı`postLogoutRedirectUri` olmalıdır. |
+*AADSTS50011: Uygulama için kaydedilmiş bir yanıt adresi yok.* | Azure AD kaydında bir **yeniden YÖNLENDIRME URI** özelliği eksik. Azure AD uygulama kaydınız için **kimlik doğrulama** > **yeniden yönlendirme URI 'leri** bölümüne gidin. **Yeniden yönlendirme URI 'sinin** **Adım 2** ' de veya [Azure AD 'yi kullanmak için uygulamayı](#register-with-azure-ad) kaydettiğinizde **Adım 4** ' te belirtme seçeneğine sahip olduğunuzu doğrulayın.
+*AADSTS50011: İstekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: '\<Uygulama kimliği GUID > '.* |  > Derlemeveyayımlama içindeki **6. adımda** [](#build-and-publish) belirtilenWebuygulamasınıAzureADuygulamakaydındakikimlikdoğrulamayenidenyönlendirmeURI'lerialtındabelirtilendeğerleaynı`postLogoutRedirectUri` olmalıdır. |
 Web uygulaması yüklenir, ancak biçimlendirilmiş, salt metin oturum açma sayfasına beyaz bir arka plana sahiptir. | [Web uygulamasını derleme ve yayımlama](#build-and-publish) içindeki **6. adımda** açıklanan yolların doğru olduğundan emin olun. Web uygulaması .css dosyalarını bulamadığında sayfa stili doğru şekilde uygulanmaz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

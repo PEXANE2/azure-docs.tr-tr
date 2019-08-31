@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b6c9e50334a25b505655a49a02cd98165d04740b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 269d13e0b64d2da7a21316b16c88acde46ba1722
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164958"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194630"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
@@ -130,6 +130,11 @@ Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanım
 ### <a name="multiple-assignments"></a>Birden çok atama
 
 Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk atamasının atanmasını, Ilke ataması farklı parametreler kullanıyor olsa bile destekler.
+
+## <a name="built-in-resource-modules"></a>Yerleşik kaynak modülleri
+
+Konuk yapılandırma uzantısı yüklendiğinde, en son DSC kaynak modülleri sürümüne ' GuestConfiguration ' PowerShell modülü dahildir. Bu modül, [Guestconfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/)modül sayfasından ' el ile indirme ' bağlantısı kullanılarak PowerShell Galerisi indirilebilir.
+'. Nupkg ' dosya biçimi, sıkıştırmayı açmak ve gözden geçirmek için '. zip ' olarak yeniden adlandırılabilir.
 
 ## <a name="client-log-files"></a>İstemci günlük dosyaları
 

@@ -1,35 +1,29 @@
 ---
-title: Örnekler ve izlenecek yollar için veri bilimi sanal makineleri - Azure | Microsoft Docs
+title: Örnekler & izlenecek yollar
+titleSuffix: Azure Data Science Virtual Machine
 description: Bu örnekler ve izlenecek yollar sayesinde, Veri Bilimi Sanal Makinesi ortak görevleri ve senaryoları nasıl işleyeceğinizi öğrenin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: vijetaj
-ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047842"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195670"
 ---
-# <a name="samples-on-data-science-virtual-machines"></a>Veri bilimi sanal makineleri üzerinde örnekleri
+# <a name="samples-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde örnekler
 
 Azure veri bilimi sanal makineleri (DSVMs) kapsamlı bir örnek kod kümesi içerir. Bu örneklerde, Python ve R gibi dillerdeki Jupyıter Not defterleri ve betikler bulunur.
 > [!NOTE]
 > Veri bilimi sanal makinelerinizde Jupyıter not defterlerini çalıştırma hakkında daha fazla bilgi için bkz. [Access jupi](#access-jupyter) Section.
 
-## <a name="quick-reference-of-samples"></a>Örnekler, hızlı başvuru
+## <a name="available-samples"></a>Kullanılabilir örnekler
 | Örnek kategorisi | Açıklama | Konumlar |
 | ------------- | ------------- | ------------- |
 | R dili  | Örnekler, Azure tabanlı bulut veri depoları ile bağlanma ve açık kaynaklı R ve Microsoft Machine Learning Server karşılaştırma gibi senaryolar gösterir. Ayrıca, Microsoft Machine Learning Server ve SQL Server modelleri nasıl kullanıma sunulabileceğini açıklar. <br/> [R dili](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|

@@ -1,30 +1,23 @@
 ---
 title: Ayrıntılı öğrenme & AI çerçeveleri
-titleSuffix: Azure Data Science Virtual Machines
-description: TensorFlow, PyTorch, keras, Caffe, MXNet, Horovod, Theano, Chainer gibi Azure Veri Bilimi Sanal Makinesi derin öğrenme çerçeveleri ve araçları.
+titleSuffix: Azure Data Science Virtual Machine
+description: TensorFlow, PyTorch, keras, Caffe, MXNet, Horovod, Theano, Chainer gibi Azure Veri Bilimi Sanal Makinesi 'da sunulan derin öğrenme çerçeveleri ve araçları.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 08/11/2019
-ms.author: vijetaj
-ms.openlocfilehash: 3c9510b99bbdc7db292ecdc0bf59aadc305cf0c8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bcf5228b6d6055c4b2e716ca6b34878a3bb3b870
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035833"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192180"
 ---
-# <a name="deep-learning-and-ai-frameworks"></a>Derin Öğrenme ve AI çerçeveleri
+# <a name="deep-learning-and-ai-frameworks-for-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 [Veri bilimi sanal makinesi](https://aka.ms/dsvm) (dsvm), tahmine dayalı analiz ve görüntü ve dil anlama gibi bilişsel Özellikler Ile yapay zeka (AI) uygulamaları oluşturmaya yardımcı olacak çok sayıda derin öğrenme çerçevesini destekler.
 
 DSVM 'de bulunan derin öğrenme çerçeveleri şunları içerir:

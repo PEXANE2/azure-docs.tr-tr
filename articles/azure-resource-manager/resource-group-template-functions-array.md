@@ -3,15 +3,15 @@ title: Azure Resource Manager şablon işlevleri-diziler ve nesneler | Microsoft
 description: Diziler ve nesnelerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: ec671c8698676b237021352e963ba08e0ddfe47e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cd4a74a9e9e9bb1c91a0a7a103a1cfb861fa7770
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698214"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194418"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dizi ve nesne işlevleri
 
@@ -185,7 +185,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | stringOutput | Dize | default |
 | ıntoutput | Int | 1\. |
@@ -303,7 +303,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | Içtoutput | Dize | önek-5yıj4yıjf5mbg72 |
 
@@ -392,7 +392,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | Doğru |
 | stringFalse | Bool | False |
@@ -699,7 +699,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"One": "a", "üç": "c"} |
 | arrayOutput | Array | ["iki", "üç"] |
@@ -771,7 +771,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boole değeri | Doğru |
@@ -1001,7 +1001,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | ıntoutput | Int | 5 |
@@ -1370,7 +1370,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"One": "a", "iki": "b", "üç": "C2", "dört": "d", "beş": "e"} |
 | arrayOutput | Array | ["bir", "iki", "üç", "dört"] |

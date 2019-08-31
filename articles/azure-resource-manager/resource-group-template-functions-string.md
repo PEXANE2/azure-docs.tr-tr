@@ -3,15 +3,15 @@ title: Azure Resource Manager şablon işlevleri-dize | Microsoft Docs
 description: Dizelerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698189"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194767"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dize işlevleri
 
@@ -175,7 +175,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | base64Output | Dize | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Dize | Bir iki üç |
@@ -329,7 +329,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | döndürülmesini | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -943,7 +943,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | üç |
 | stringOutput | Dize | e |
@@ -1134,7 +1134,7 @@ Aşağıdaki örnek şablonda, yeni tanımlayıcı içeren bir parametre göster
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Ad | Tür | Değer |
+| Name | Tür | Value |
 | ---- | ---- | ----- |
 | guidOutput | dize | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1177,7 +1177,7 @@ Aşağıdaki örnek, bir depolama hesabı için benzersiz bir ad oluşturmak üz
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Ad | Tür | Değer |
+| Name | Tür | Value |
 | ---- | ---- | ----- |
 | nameOutput | dize | storagenziwvyru7uxie |
 
@@ -1228,7 +1228,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | stringOutput | Dize | 0000000123 |
 
@@ -1348,7 +1348,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["üç"] |
 | stringOutput | Dize | 2 3 |
@@ -1407,7 +1407,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["bir", "iki", "üç"] |
 | secondOutput | Array | ["bir", "iki", "üç"] |
@@ -1543,7 +1543,7 @@ Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | objectOutput | Dize | {"valueA": 10, "valueB": "örnek metin"} |
 | arrayOutput | Dize | ["a", "b", "c"] |
@@ -1606,7 +1606,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | substringOutput | Dize | iki |
 
@@ -1775,7 +1775,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Ad | Tür | Value |
 | ---- | ---- | ----- |
 | Toharfe çıkışı | Dize | Bir iki üç |
 | Toüsteçıkış | Dize | BİR İKİ ÜÇ |
@@ -2145,7 +2145,7 @@ Aşağıdaki örnek şablonda tarih saat değeri için farklı biçimler göster
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Ad | Tür | Value |
+| Name | Tür | Value |
 | ---- | ---- | ----- |
 | utcOutput | dize | 20190305T175318Z |
 | Utckısaltoutput | dize | 03/05/2019 |

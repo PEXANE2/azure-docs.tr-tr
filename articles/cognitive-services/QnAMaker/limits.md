@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c7b0dc39d2da403383f245b9ff3227734c58cbbe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165016"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193492"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -90,8 +90,4 @@ Bunlar, her güncelleştirme eylemi sınırlarını temsil eder; diğer bir deyi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet katmanlarını ne zaman ve nasıl değiştireceğinizi öğrenin:
-
-* [Soru-cevap oluşturma](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Bilgi tabanınızda daha fazla kaynak dosyası veya daha büyük belge kullanmanız gerektiğinde, geçerli katmanınızın ötesinde Soru-Cevap Oluşturma Hizmeti fiyatlandırma katmanınızı yükseltin.
-* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Bilgi tabanınızın istemci uygulamanızdan daha fazla istek sunması gerektiğinde, App Service fiyatlandırma katmanınızı yükseltin.
-* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Birçok bilgi tabanınız olduğunu planlarken Azure Search hizmeti fiyatlandırma katmanınızı yükseltin.
+[Hizmet fiyatlandırma katmanlarının](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)ne zaman ve nasıl değiştirileceğini öğrenin.

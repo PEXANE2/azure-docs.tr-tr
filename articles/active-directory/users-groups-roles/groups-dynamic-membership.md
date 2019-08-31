@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650244"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194602"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -27,30 +27,32 @@ Azure Active Directory (Azure AD) ' de, gruplar için dinamik üyelikleri etkinl
 
 Bir kullanıcının veya cihazın herhangi bir özniteliği değiştiğinde, sistem, değişikliğin herhangi bir grup ekleme veya kaldırma tetikleyip tetikleyemeyeceğini görmek için bir dizindeki tüm dinamik grup kurallarını değerlendirir. Bir kullanıcı veya cihaz bir gruptaki bir kuralı karşılıyorsa, bu grubun üyesi olarak eklenir. Kuralı artık karşılamadığı takdirde bunlar kaldırılır. Dinamik bir grubun bir üyesini el ile ekleyemez veya kaldıramazsınız.
 
-* Cihazlar veya kullanıcılar için dinamik bir grup oluşturabilirsiniz, ancak hem Kullanıcı hem de cihaz içeren bir kural oluşturamazsınız.
-* Cihaz sahiplerinin özniteliklerini temel alan bir cihaz grubu oluşturamazsınız. Cihaz Üyelik kuralları yalnızca cihaz özniteliklerine başvurabilir.
+- Cihazlar veya kullanıcılar için dinamik bir grup oluşturabilirsiniz, ancak hem Kullanıcı hem de cihaz içeren bir kural oluşturamazsınız.
+- Cihaz sahiplerinin özniteliklerini temel alan bir cihaz grubu oluşturamazsınız. Cihaz Üyelik kuralları yalnızca cihaz özniteliklerine başvurabilir.
 
 > [!NOTE]
 > Bu özellik bir veya daha fazla dinamik grubun üyesi olan her benzersiz kullanıcı için Azure AD Premium P1 lisansı gerektirir. Kullanıcılara, dinamik grupların üyesi olmaları için lisans atamanız gerekmez, ancak bu gibi tüm kullanıcıları kapsayacak şekilde Kiracıdaki en az sayıda lisansa sahip olmanız gerekir. Örneğin, kiracınızdaki tüm dinamik gruplarda toplam 1.000 benzersiz kullanıcınız varsa, lisans gereksinimini karşılamak için Azure AD Premium P1 için en az 1.000 lisansa sahip olmanız gerekir.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Üyelik kuralının gövdesini oluşturma
+## <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
 
-Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kuralı, doğru veya yanlış bir sonuç elde eden bir ikili ifadedir. Basit bir kuralın üç bölümü şunlardır:
+Azure AD, önemli kurallarınızı daha hızlı bir şekilde oluşturmak ve güncelleştirmek için bir kural Oluşturucusu sağlar. Kural Oluşturucu, en fazla beş ifadeye kadar oluşturmayı destekler. Kural Oluşturucu, birkaç basit ifadeye sahip bir kural oluşturulmasını kolaylaştırır, ancak her kuralı yeniden oluşturmak için kullanılamaz. Kural Oluşturucu oluşturmak istediğiniz kuralı desteklemiyorsa, metin kutusunu kullanabilirsiniz.
 
-* Özellik
-* Operator
-* Value
+Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş kuralların veya sözdizimi örnekleri verilmiştir:
 
-İfade içindeki parçaların sırası, söz dizimi hatalarından kaçınmak için önemlidir.
+- Beşten fazla ifadeye sahip kural
+- Doğrudan raporlar kuralı
+- [İşleç önceliğini](groups-dynamic-membership.md#operator-precedence) ayarlama
+- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin`(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
+> [!NOTE]
+> Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
 
-Azure AD, önemli kurallarınızı daha hızlı bir şekilde oluşturmak ve güncelleştirmek için bir kural Oluşturucusu sağlar. Kural Oluşturucusu en fazla beş kuralı destekler. Altıncı ve sonraki bir kural terimi eklemek için metin kutusunu kullanmanız gerekir. Daha fazla adım adım yönergeler için bkz. [dinamik grubu güncelleştirme](groups-update-rule.md).
+Daha fazla adım adım yönergeler için bkz. [dinamik grubu güncelleştirme](groups-update-rule.md).
 
-   ![Dinamik bir grup için üyelik kuralı ekle](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Dinamik bir grup için üyelik kuralı ekle](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-### <a name="rules-with-a-single-expression"></a>Tek bir ifade içeren kurallar
+### <a name="rule-syntax-for-a-single-expression"></a>Tek bir ifade için kural sözdizimi
 
 Tek bir ifade, üyelik kuralının en basit biçimidir ve yalnızca yukarıda belirtilen üç bölümden oluşur. Tek bir ifade içeren bir kural şuna benzer: `Property Operator Value`, burada özelliğin sözdizimi Object. Property adıdır.
 
@@ -62,13 +64,23 @@ user.department -eq "Sales"
 
 Parantezler tek bir ifade için isteğe bağlıdır. Üyelik kuralınız gövdesinin toplam uzunluğu 2048 karakteri aşamaz.
 
+# <a name="constructing-the-body-of-a-membership-rule"></a>Üyelik kuralının gövdesini oluşturma
+
+Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kuralı, doğru veya yanlış bir sonuç elde eden bir ikili ifadedir. Basit bir kuralın üç bölümü şunlardır:
+
+- Özellik
+- Operator
+- Value
+
+İfade içindeki parçaların sırası, söz dizimi hatalarından kaçınmak için önemlidir.
+
 ## <a name="supported-properties"></a>Desteklenen özellikler
 
 Üyelik kuralı oluşturmak için kullanılabilecek üç tür özellik vardır.
 
-* Boole değeri
-* Dize
-* Dize koleksiyonu
+- Boole değeri
+- Dize
+- Dize koleksiyonu
 
 Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı özellikleri verilmiştir.
 
@@ -119,7 +131,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 
 Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurallar](#rules-for-devices).
 
-## <a name="supported-operators"></a>Desteklenen işleçler
+## <a name="supported-expression-operators"></a>Desteklenen ifade işleçleri
 
 Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunların sözdizimi listelenmektedir. İşleçler, kısa çizgi (-) öneki ile veya bu önek olmadan kullanılabilir.
 
@@ -297,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Aşağıdaki ipuçları, kuralı düzgün şekilde kullanmanıza yardımcı olabilir.
 
-* **Yönetıcı kimliği** , YÖNETICININ nesne kimliğidir. Bu, yöneticinin **profilinde**bulunabilir.
-* Kuralın çalışması için, kiracınızdaki kullanıcılar için **Manager** özelliğinin doğru ayarlandığından emin olun. Kullanıcının **profilindeki**geçerli değeri kontrol edebilirsiniz.
-* Bu kural yalnızca yöneticinin doğrudan raporlarını destekler. Diğer bir deyişle, yöneticinin doğrudan raporlarının *ve* raporlarının bulunduğu bir grup oluşturamazsınız.
-* Bu kural diğer üyelik kurallarıyla birleştirilemez.
+- **Yönetıcı kimliği** , YÖNETICININ nesne kimliğidir. Bu, yöneticinin **profilinde**bulunabilir.
+- Kuralın çalışması için, kiracınızdaki kullanıcılar için **Manager** özelliğinin doğru ayarlandığından emin olun. Kullanıcının **profilindeki**geçerli değeri kontrol edebilirsiniz.
+- Bu kural yalnızca yöneticinin doğrudan raporlarını destekler. Diğer bir deyişle, yöneticinin doğrudan raporlarının *ve* raporlarının bulunduğu bir grup oluşturamazsınız.
+- Bu kural diğer üyelik kurallarıyla birleştirilemez.
 
 ### <a name="create-an-all-users-rule"></a>"Tüm kullanıcılar" kuralı oluşturma
 
@@ -373,8 +385,8 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
 
 Bu makaleler Azure Active Directory gruplar hakkında ek bilgiler sağlar.
 
-* [Var olan grupları görme](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Yeni grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Bir grubun ayarlarını yönetme](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Bir grubun üyeliklerini yönetme](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](groups-create-rule.md)
+- [Var olan grupları görme](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Yeni grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Bir grubun ayarlarını yönetme](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Bir grubun üyeliklerini yönetme](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](groups-create-rule.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012821"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193572"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Hızlı Başlangıç: Soru-Cevap Oluşturma API'si Service Portal 'ı kullanarak Bilgi Bankası oluşturma
 
@@ -67,7 +67,7 @@ Bilgi Bankası ile işiniz bittiğinde Soru-Cevap Oluşturma portalında kaldır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Maliyet tasarrufu ölçüleri için, Soru-Cevap Oluşturma için oluşturulan tüm Azure kaynaklarını [paylaşabilirsiniz](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) .
+Maliyet tasarrufu ölçüleri için, Soru-Cevap Oluşturma için oluşturulan tüm Azure kaynaklarını [paylaşabilirsiniz](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker) .
 
 > [!div class="nextstepaction"]
-> [Sohbet chit kişisel Ekle](./chit-chat-knowledge-base.md)
+> [Meta verilerle soru ekleme](../quickstarts/add-question-metadata-portal.md)

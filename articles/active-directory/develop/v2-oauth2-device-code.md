@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297653"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192724"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 cihaz kod akışı
 
@@ -35,7 +35,7 @@ Microsoft Identity platformu, kullanıcıların akıllı TV, IoT cihazı veya ya
 >
 > Bir Azure AD kiracısına davet edilen kişisel hesaplar cihaz akışı iznini yalnızca kiracı bağlamında kullanabilir.
 >
-> Ek bir not olarak, `verification_uri_complete` yanıt alanı şu anda dahil değildir veya desteklenmez.  
+> Ek bir not olarak, `verification_uri_complete` yanıt alanı şu anda dahil değildir veya desteklenmez.  Bunun nedeni, bkz. Standart, cihaz kod akışı standardının isteğe `verification_uri_complete` bağlı bir parçası olarak listelenmiş görürsünüz.
 
 > [!NOTE]
 > Microsoft Identity platform uç noktası, tüm Azure Active Directory senaryolarını ve özelliklerini desteklemez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594697"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195211"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Görsel Arama API’si nedir?
 
-Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir görüntüyü karşıya yükleyebilir veya bir URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntü içeren Web sayfaları ve daha fazlasını içerir. Bing Görsel Arama API'si tarafından döndürülen Öngörüler, Bing.com/images 'de gösterilenlere benzerdir.
+Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir görüntüyü karşıya yükleyebilir veya bir URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntü içeren Web sayfaları ve daha fazlasını içerir. Bing Görsel Arama API'si tarafından döndürülen Öngörüler, Bing.com/images 'de gösterilenlere benzerdir. 
 
 [Bing resim arama API'si](../bing-image-search/overview.md)kullanıyorsanız, bir görüntüyü karşıya yüklemek yerine, bu API 'nin arama Bing Görsel Arama sonuçlarındaki öngörüleri belirteçlerini kullanabilirsiniz.
 
@@ -38,6 +38,7 @@ Bing Görsel Arama kullanarak aşağıdaki öngörüleri bulabilirsiniz:
 | İlgili aramalar                     | Başkaları tarafından yapılan veya görüntünün içeriğini temel alan ilgili aramalar.            |
 | Görüntüyü içeren Web sayfaları     | Giriş görüntüsünü içeren Web sayfaları.            |
 | Lerini                              | Giriş görüntüsünde gösterilen çanağı oluşturmak için Tarifler içeren Web sayfaları.            |
+| Varlıklar                             | İyi bilinen kişiler, Yerlerim ve şeyler. |
 
 Bing Görsel Arama, öngörülere ek olarak, giriş görüntüsünden elde edilen çeşitli terimleri (Etiketler) döndürür. Etiketler, kullanıcıların görüntüde bulunan kavramları keşfetmesine olanak tanır. Örneğin, giriş görüntüsü faur Athlete ise etiketlerden biri Athlete adı olabilir, başka bir etiket de spor olabilir. Ya da, giriş görüntüsü bir Apple pasta ise, Etiketler Apple pasta, Pyalar ve teknoloji olabilir.
 

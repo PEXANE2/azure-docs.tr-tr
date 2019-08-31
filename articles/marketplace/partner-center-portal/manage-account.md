@@ -1,18 +1,18 @@
 ---
 title: Iş Ortağı Merkezi 'nde ticari Market hesabını yönetme
 description: Iş Ortağı Merkezi 'nde ticari Market hesabını yönetmeyi öğrenin.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f0557f21e791dd22df16451003d5efcfc72c56b4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 08/30/2019
+ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164729"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194271"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme 
 
@@ -149,7 +149,7 @@ Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle Izleme S
 
 İş Ortağı Merkezi, çok kullanıcılı hesap erişimi ve yönetimi için [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) kullanır. Kuruluşunuzun Azure AD, kayıt işleminin bir parçası olarak Iş Ortağı Merkezi hesabınızla otomatik olarak ilişkilendirilir. 
 
-## <a name="manage-users"></a>Kullanıcıları Yönet
+## <a name="manage-users"></a>Kullanıcıları yönet
 
 Iş Ortağı Merkezi 'nin ( **Hesap ayarları**altında) **Kullanıcılar** bölümü, iş ortağı merkezi hesabınıza erişimi olan kullanıcıları, grupları ve Azure AD UYGULAMALARıNı yönetmek için Azure AD 'yi kullanmanızı sağlar. Kullanıcıları yönetmek için [iş hesabınızla](./company-work-accounts.md) (ILIŞKILI Azure AD kiracısı) oturum açmış olmanız gerektiğini unutmayın. Farklı bir iş hesabındaki/Kiracıdaki kullanıcıları yönetmek için, oturumu kapatıp bu iş hesabı/kiracısında **yönetici** izinlerine sahip bir kullanıcı olarak yeniden oturum açmanız gerekir. 
 
@@ -223,7 +223,7 @@ Kullanıcılarınızın, parolasını değiştirmesi gerekiyorsa, Kullanıcı he
 3.  Geçici bir parola dahil olmak üzere, kullanıcının oturum açma bilgilerini gösteren bir onay sayfası görüntülenir. Bu sayfadan ayrıldıktan sonra geçici parolaya erişemeyeceksiniz, bu bilgileri yazdırdığınızdan veya kopyalamanız ve kullanıcıya sunduğunuzdan emin olun.
 
 
-## <a name="manage-groups"></a>Grupları Yönet
+## <a name="manage-groups"></a>Grupları yönet
 
 Gruplar, birden fazla kullanıcı rolünü ve izinlerini birlikte denetlemenize olanak tanır.
 
@@ -305,9 +305,15 @@ Azure AD uygulamanız Microsoft Azure AD verileri okuyup yazıyorsa, anahtar ger
 Şirketinizin kullanıcılarına, Iş Ortağı Merkezi ' nde ticari Market programı için aşağıdaki roller ve izinler atanabilir. 
 
 |**Rol**|**İzinler**|
-|----------------------------------|:---------------------------------|
-
-| Yönetici | • vergi ve ödeme ayarları dışında tüm Microsoft hesabı özelliklerine erişebilir |      | • Kullanıcıları, rolleri ve iş hesaplarını (kiracılar) yönetebilir | | Geliştirici | • teklifleri yönetebilir ve yayımlayabilir |      | • Bazı yayımcı raporlarını görüntüleyebilir | | Genel yönetici | • ticari Market ile ilgili değil | | İş katılımcısı | • ticari Market ile ilgili değil | | Mali katkı | • ticari Market ile ilgili değil | | Pazar layıcı | • ticari Market ile ilgili değil |
+|----------------------------------|---------------------------------|
+|Yöneticisi|-Vergi ve ödeme ayarları dışında tüm Microsoft hesabı özelliklerine erişebilir|
+|      |-Kullanıcıları, rolleri ve iş hesaplarını (kiracılar) yönetebilir|
+|Geliştirici|-Teklifleri yönetebilir ve yayımlayabilir|
+|      |-Bazı yayımcı raporlarını görebilir|
+|Genel yönetici|-Ticari Market ile ilgili değil|
+|İş Katılımcısı|-Ticari Market ile ilgili değil|
+|Mali katkıda bulunan|-Ticari Market ile ilgili değil|
+|Pazarlamacısıdır|-Ticari Market ile ilgili değil|
 
 Azure Active Directory (AD), bulut çözümü sağlayıcısı (CSP), Denetim Masası satıcısı (CPV), Konuk kullanıcılar veya Microsoft İş Ortağı Ağı (MPN) gibi Iş Ortağı Merkezi alanlarında rol ve izinleri yönetme hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini atama ve Iş Ortağı Merkezi 'nde izinleri](https://docs.microsoft.com/partner-center/permissions-overview).
 

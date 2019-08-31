@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.localizationpriority: high
+ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172710"
+ms.locfileid: "70194438"
 ---
 ::: zone target="docs"
 
@@ -27,12 +28,13 @@ Sistem gereksinimleri, disklere, desteklenen depolama hesaplarına ve depolama t
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Önkoşullar
+# <a name="review-prerequisites"></a>Önkoşulları gözden geçirin
 
-Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınız var. İstemci bilgisayarınızda:
+1. Öğreticiyi kullanarak Data Box Disk sipariş etmeniz gerekir: Azure Data Box Disk sıralayın. Disklerinizi ve disk başına bir bağlantı kablosunu aldınız.
+2. Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınız var. İstemci bilgisayarınızda:
 
-- Desteklenen bir işletim sistemi çalıştırın.
-- Diğer gerekli yazılımların yüklü olmasını gerektirir.
+    - Desteklenen bir işletim sistemi çalıştırın.
+    - Diğer gerekli yazılımların yüklü olmasını gerektirir.
 
 ::: zone-end
 
