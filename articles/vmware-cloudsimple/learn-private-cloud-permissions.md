@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab74b37fa8adc58f8641893b4168f71c453b0fdd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972700"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194132"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple özel bulut izin modeli VMware vCenter
 
@@ -24,7 +24,7 @@ CloudSimple, özel bulut ortamına tam yönetici erişimini korur. Her CloudSimp
 Özel bir bulut oluştururken, özel buluttaki nesneleri yönetmek için **bulut sahibi rol** erişimi Ile vCenter çoklu oturum açma etki alanında bir **cloudowner** kullanıcısı oluşturulur. Bu Kullanıcı ayrıca ek [vCenter kimlik kaynakları](set-vcenter-identity.md)ve diğer kullanıcıları özel bulut vCenter 'a da ayarlayabilir.
 
 > [!NOTE]
-> Cloudsimple özel bulut vCenter 'niz için varsayılan kullanıcı, `cloudowner@cloudsimple.local` şirket içi vCenter ile bağlantı kurmadan özel bir bulut oluşturulduğunda oluşturulur.
+> Cloudsimple özel bulut vCenter 'niz için varsayılan kullanıcı, cloudowner@cloudsimple.local özel bir bulut oluşturulduğunda oluşturulur.
 
 ## <a name="user-groups"></a>Kullanıcı Grupları
 

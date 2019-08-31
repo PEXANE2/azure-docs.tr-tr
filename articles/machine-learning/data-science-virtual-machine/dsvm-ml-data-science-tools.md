@@ -1,34 +1,29 @@
 ---
-title: Makine öğrenimi ve veri bilimi araçları - Azure | Microsoft Docs
+title: Machine Learning & veri bilimi araçları
+titleSuffix: Azure Data Science Virtual Machine
 description: Makine öğrenimi araçları ve çerçeveleri veri bilimi sanal makinesi üzerinde önceden yüklenmiş hakkında bilgi edinin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d823eb615f983190ee6974ee3012f069309ca753
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565242"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195647"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>Makine öğrenimi ve veri bilimi araçları
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
 Azure veri bilimi sanal makineleri zengin bir araç olan ve kitaplıklar için machine learning (ML), Python, R ve Julia'nın gibi popüler dilde kullanılabilir. 
 
 ML araçları ve kitaplıkları üzerinde veri bilimi sanal makineleri bazıları aşağıda verilmiştir. 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK'sı
+## <a name="azure-machine-learning-sdk-for-python"></a>Python için SDK Azure Machine Learning
+[Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)'nın tam başvurusuna bakın.
 |    |           |
 | ------------- | ------------- |
 | Nedir?   |   Azure Machine Learning, geliştirmek ve ML modelleri dağıtmak için kullanabileceğiniz bir bulut hizmetidir. Oluşturmak, eğitmek, ölçeklendirme ve Python SDK'sı kullanılarak bunların yönetilmesi, Modellerinizi izleyebilirsiniz. Modelleri kapsayıcıları olarak dağıtma ve bulutta, şirket içinde veya Azure IOT Edge üzerinde çalıştırın.   |

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172881"
+ms.locfileid: "70191755"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -649,6 +649,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |AADClusterApplication|dize, varsayılan değer ""|Statik|Kümeyi temsil eden Web API 'SI uygulama adı veya KIMLIĞI |
 |AADLoginEndpoint|dize, varsayılan değer ""|Statik|Azure Kamu "https:\//Login.microsoftonline.us" gibi varsayılan olmayan ortamlar için belirtilen AAD oturum açma uç noktası, varsayılan Azure Commercial |
 |AADTenantId|dize, varsayılan değer ""|Statik|Kiracı KIMLIĞI (GUID) |
+|AcceptExpiredPinnedClusterCertificate|bool, varsayılan değer FALSE|Dinamik|Parmak izi tarafından tanımlanan, zaman aşımına uğradı küme sertifikalarının kabul edilip edilmeyeceğini belirten bayrak yalnızca küme sertifikaları için geçerlidir; Bu nedenle, kümeyi canlı tutmak için. |
 |Adminclientcertparmak Izleri|dize, varsayılan değer ""|Dinamik|Yönetici rolünde istemciler tarafından kullanılan sertifikaların parmak izleri. Bu, virgülle ayrılmış bir ad listesidir. |
 |AADTokenEndpointFormat|dize, varsayılan değer ""|Statik|Azure Kamu "https:\//Login.microsoftonline.us/{0}" gibi varsayılan olmayan ortamlar için belirtilen AAD belirteci uç noktası, varsayılan Azure Commercial |
 |Adminclientclaim|dize, varsayılan değer ""|Dinamik|Yönetici istemcilerinden beklenen tüm olası talepler; Clientclaim ile aynı biçim; Bu liste, Clientclaim 'e dahili olarak eklenir; Bu nedenle, aynı girdileri Clientclaim 'e de eklemeniz gerekmez. |

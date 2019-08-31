@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311696"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194391"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Bağlı, şablonları Azure kaynakları dağıtılırken iç içe kullanma
 
@@ -479,6 +479,8 @@ done
 Bağlı şablonun dışarıdan kullanılabilir olsa da, genel kullanıma sunuldu olması gerekmez. Yalnızca depolama hesabı sahibi tarafından erişilebilir bir özel depolama hesabına şablonunuza ekleyebilirsiniz. Ardından, dağıtım sırasında erişim sağlamak için paylaşılan erişim imzası (SAS) belirteci oluşturun. URI için bağlı şablonun SAS belirtecini ekleyin. SAS belirteci dahil olmak üzere bağlı şablon URI'si, belirteci güvenli bir dize olarak geçirilen olsa bile, dağıtım işlemleri günlüğe kaydedilir. Etkilenme sınırlamak için bir belirteç sona erme tarihi ayarlayın.
 
 Parametre dosyasını bir SAS belirteci üzerinden erişim için sınırlı olabilir.
+
+Şu anda [Azure Storage güvenlik duvarının](../storage/common/storage-network-security.md)arkasındaki bir depolama hesabındaki bir şablona bağlayamazsınız.
 
 Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirteci geçirilecek gösterilmektedir:
 

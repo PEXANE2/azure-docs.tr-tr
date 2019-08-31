@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135718"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193222"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 kod verme akışını kullanarak Azure Active Directory web uygulamalarına erişimi yetkilendirme
 
@@ -179,7 +179,7 @@ Başarılı bir yanıt şöyle görünebilir:
 
 | Parametre | Açıklama |
 | --- | --- |
-| access_token |İmzalı JSON Web Token (JWT) olarak istenen [erişim belirteci](access-tokens.md) . Uygulama, bir Web API 'SI gibi güvenli kaynak üzerinde kimlik doğrulaması yapmak için bu belirteci kullanabilir. |
+| access_token |İstenen erişim belirteci.  Bu, opak bir dizedir; kaynağın alma beklediği görünüme bağlıdır ve istemcinin istemci tarafından görünmesi için tasarlanmamıştır. Uygulama, bir Web API 'SI gibi güvenli kaynak üzerinde kimlik doğrulaması yapmak için bu belirteci kullanabilir. |
 | token_type |Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz [. OAuth 2.0 yetkilendirme çerçevesi: Taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Erişim belirtecinin geçerli olduğu süre (saniye cinsinden). |
 | expires_on |Erişim belirtecinin süre sonu. Tarih, 1970-01-01T0:0: 0Z UTC 'den sona erme zamanına kadar saniye sayısı olarak gösterilir. Bu değer, önbelleğe alınmış belirteçlerin ömrünü belirlemede kullanılır. |
@@ -283,8 +283,6 @@ Erişim belirteçleri kısa süreli olduğundan, kaynaklara erişmeye devam etme
 
 Yenileme belirteçlerinin belirtilen ömürleri yok. Genellikle, yenileme belirteçlerinin yaşam süreleri nispeten uzundur. Ancak, bazı durumlarda belirteçleri yenileme süre sonu, iptal etme veya istenen eylem için yeterli ayrıcalıklara sahip değil. Uygulamanızın belirteç verme uç noktası tarafından döndürülen hataları beklemesi ve işlemesi gerekir.
 
-[!NOTE] Erişim belirteci yaşam süreleri şurada bulunabilir: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties Erişim belirteçleri için varsayılan değer 1 saattir ve yenileme belirteçleri için varsayılan değer 90 gündür. Bu yaşam süreleri, belirteç yaşam sürelerinin uygun şekilde yapılandırılması ile değiştirilebilir. 
-
 Yenileme belirteci hatası ile bir yanıt aldığınızda, geçerli yenileme belirtecini atın ve yeni bir yetkilendirme kodu veya erişim belirteci isteyin. Özellikle, yetkilendirme kodu verme akışında bir yenileme belirteci kullanırken, `interaction_required` veya `invalid_grant` hata kodlarıyla bir yanıt alırsanız yenileme belirtecini atın ve yeni bir yetkilendirme kodu isteyin.
 
 Bir yenileme belirteci kullanarak yeni bir erişim belirteci almak için **kiracıya özgü** uç noktaya yönelik örnek bir istek ( **ortak** uç nokta da kullanabilirsiniz) şöyle görünür:
@@ -352,3 +350,6 @@ Başarılı bir belirteç yanıtı şöyle görünür:
 | correlation_id |İsteğe ait, bileşenler genelinde tanılamada yardımcı olabilecek benzersiz bir tanımlayıcı. |
 
 Hata kodlarının ve önerilen istemci eyleminin açıklaması için bkz. [belirteç uç noktası hataları Için hata kodları](#error-codes-for-token-endpoint-errors).
+
+## <a name="next-steps"></a>Sonraki adımlar
+Azure AD v 1.0 uç noktası ve Web uygulamalarınıza ve Web API 'Lerine kimlik doğrulama ve yetkilendirme ekleme hakkında daha fazla bilgi edinmek için bkz. [örnek uygulamalar](sample-v1-code.md).

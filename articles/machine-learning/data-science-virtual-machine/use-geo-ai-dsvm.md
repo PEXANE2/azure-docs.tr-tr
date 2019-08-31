@@ -1,27 +1,21 @@
 ---
-title: Azure coğrafi yapay zeka veri bilimi sanal makinesi - kullanarak | Microsoft Docs
+title: Coğrafi AI kullanma
+titleSuffix: Azure Data Science Virtual Machine
 description: Coğrafi AI veri bilimi sanal makinesi verilerini çözümleme ve Jeo-uzamsal verileri temel alan modelleri oluşturmak için kullanmayı öğrenin.
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 22c0d7d604ca41044d2d969d4ddbd2ae1a4d23d5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 01238885e68a39ff713bd346a9206668e16e7ee4
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170494"
+ms.locfileid: "70195290"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka veri bilimi sanal makinesi kullanma
 
@@ -47,7 +41,7 @@ Temel Veri Bilimi VM'si makine öğrenimi ve derin öğrenme çerçevesi tabanl�
 
 2. [R ile Jeo-uzamsal analizler ile çalışmaya](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)başlama: [Arcgisbinding](https://github.com/R-ArcGIS/r-bridge) kitaplığı tarafından sağlanan ArcGIS için R arabirimini kullanarak Jeo-uzamsal verilerle çalışmayı gösteren bir giriş örneği. 
 
-3. [Piksel düzeyinde Land kullanım sınıflandırması](https://github.com/Azure/pixel_level_land_classification): Giriş olarak havadan oluşan bir görüntüyü kabul eden ve bir Land Kapla etiketi döndüren derin bir sinir ağ modelinin nasıl oluşturulacağını gösteren bir öğretici. Kara-kapak etiketlerinin örnekleri, ve *su*. Model görüntüdeki gibi her piksel etiketini döndürür. Model, Microsoft açık kaynak [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) ayrıntılı öğrenme çerçevesi kullanılarak oluşturulmuştur.
+3. [Piksel düzeyinde Land kullanım sınıflandırması](https://github.com/Azure/pixel_level_land_classification): Giriş olarak havadan oluşan bir görüntüyü kabul eden ve bir Land Kapla etiketi döndüren derin bir sinir ağ modelinin nasıl oluşturulacağını gösteren bir öğretici. Kara-kapak etiketlerinin örnekleri, ve *su*. Model görüntüdeki gibi her piksel etiketini döndürür. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
