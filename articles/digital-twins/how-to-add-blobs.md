@@ -53,14 +53,14 @@ JSON blob meta verileri aşağıdaki modele uyar:
 
 | Öznitelik | Type | Açıklama |
 | --- | --- | --- |
-| **parentId** | Dize | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
-| **name** |Dize | Blob için insan dostu bir ad |
-| **type** | Dize | Blob türü- *Type* ve *TypeId* kullanılamaz  |
-| **Türü** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
-| **subtype** | Dize | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
-| **Alt TypeId** | Tamsayı | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
-| **description** | Dize | Blobun özelleştirilmiş açıklaması |
-| **sharing** | Dize | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
+| **parentId** | String | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
+| **name** |String | Blob için insan dostu bir ad |
+| **type** | String | Blob türü- *Type* ve *TypeId* kullanılamaz  |
+| **typeId** | Integer | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
+| **subtype** | String | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
+| **subtypeId** | Integer | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
+| **description** | String | Blobun özelleştirilmiş açıklaması |
+| **sharing** | String | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
 
 Blob meta verileri her zaman **içerik türü** `application/json` olan ilk öbek olarak veya `.json` dosya olarak sağlanır. Dosya verileri ikinci öbekte sağlanır ve desteklenen herhangi bir MIME türünde olabilir.
 
