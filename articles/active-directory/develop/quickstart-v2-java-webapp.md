@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182957"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211881"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı Başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -35,7 +35,6 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 > ## <a name="prerequisites"></a>Önkoşullar
 > Bu örneği çalıştırmak için şunlar gerekir: 
 > - Java Development Kit (JDK) 8 veya üzeri ve Maven.
-> - Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz [. Azure AD kiracısı alma.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme

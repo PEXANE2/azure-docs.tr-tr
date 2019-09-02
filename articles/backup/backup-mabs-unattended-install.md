@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bce7aeebee729ed253d39720ef520880c261a22
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639653"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210159"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Katılımsız Azure Backup Sunucusu yüklemesi çalıştırma
 
@@ -26,7 +26,7 @@ Azure Backup Sunucusu v1 yüklüyorsanız bu adımlar uygulanmaz.
 
 2. Aşağıdaki kodu MABSSetup. ini dosyasına yapıştırın. Köşeli ayracın içindeki metni (\< \>), ortamınızdaki değerlerle değiştirin. Aşağıdaki metin bir örnektir:
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -49,7 +49,7 @@ Azure Backup Sunucusu v1 yüklüyorsanız bu adımlar uygulanmaz.
 
 3. Dosyayı kaydedin. Sonra, yükleme sunucusundaki yükseltilmiş bir komut isteminde şu komutu girin:
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 

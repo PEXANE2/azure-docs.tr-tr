@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/8/2018
+ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3dcf2188fd4fed211c96d4cc5241044d32ab6577
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: ab65a1bf371ff8581f347403b49fafed6697374c
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737164"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210236"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırmak için bu makaleyi kullanın.
@@ -35,7 +35,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
     ![Koruma grubu oluştur](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure Backup Sunucusu, koruma grubu Sihirbazı 'nı başlatır, bu da **koruma grubu**oluşturma konusunda size yol gösterir.           **İleri**'ye tıklayın.
+    Azure Backup Sunucusu, koruma grubu Sihirbazı 'nı başlatır, bu da **koruma grubu**oluşturma konusunda size yol gösterir. **İleri**'ye tıklayın.
 
 3. **Koruma grubu türünü seçin** ekranında **sunucular**' ı seçin.
 
@@ -62,9 +62,9 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
    >
    >
 
-7. **Disk ayırmayı İncele** ekranında, kullanılabilir genel depolama alanını ve olası disk alanını doğrulayın.           **İleri**'ye tıklayın.
+7. **Disk ayırmayı İncele** ekranında, kullanılabilir genel depolama alanını ve olası disk alanını doğrulayın. **İleri**'ye tıklayın.
 
-8. **Çoğaltma oluşturma yöntemini seçin**kısmında ilk kurtarma noktanızı oluşturmayı seçin. Bant genişliği yığmasını veya ağ üzerinden bir kez daha kaçınmak için ilk yedeklemeyi el ile (ağ dışı) aktarabilirsiniz. İlk yedeklemenin aktarılmasını beklemek isterseniz, ilk aktarım için saati belirtebilirsiniz.           **İleri**'ye tıklayın.
+8. **Çoğaltma oluşturma yöntemini seçin**kısmında ilk kurtarma noktanızı oluşturmayı seçin. Bant genişliği yığmasını veya ağ üzerinden bir kez daha kaçınmak için ilk yedeklemeyi el ile (ağ dışı) aktarabilirsiniz. İlk yedeklemenin aktarılmasını beklemek isterseniz, ilk aktarım için saati belirtebilirsiniz. **İleri**'ye tıklayın.
 
     ![İlk çoğaltma yöntemi](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -136,13 +136,13 @@ Korunan bir varlığı (SQL Server veritabanı) Azure 'dan kurtarmak için aşa�
 2. Veritabanı adına sağ tıklayın ve **kurtar**' a tıklayın.
 
     ![Azure 'dan kurtarma](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS, kurtarma noktasının ayrıntılarını gösterir.           **İleri**'ye tıklayın. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin.           **İleri**'ye tıklayın.
+3. MABS, kurtarma noktasının ayrıntılarını gösterir. **İleri**'ye tıklayın. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. **İleri**'ye tıklayın.
 
     ![Özgün konuma kurtar](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Bu örnekte, MABS veritabanını başka bir SQL Server örneğine veya tek başına bir ağ klasörüne kurtarır.
 
-4. **Kurtarma seçeneklerini belirtin** ekranında, kurtarma tarafından kullanılan bant genişliğini azaltmak için ağ bant genişliği kullanımı azaltma gibi kurtarma seçeneklerini belirleyebilirsiniz.           **İleri**'ye tıklayın.
+4. **Kurtarma seçeneklerini belirtin** ekranında, kurtarma tarafından kullanılan bant genişliğini azaltmak için ağ bant genişliği kullanımı azaltma gibi kurtarma seçeneklerini belirleyebilirsiniz. **İleri**'ye tıklayın.
 
 5. **Özet** ekranında, şu ana kadar sunulan tüm kurtarma yapılandırmasını görürsünüz. **Kurtar**' ı tıklatın.
 

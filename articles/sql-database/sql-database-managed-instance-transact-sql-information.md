@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644887"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209641"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
@@ -338,6 +338,10 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 - `CREATE ASSEMBLY FROM FILE`desteklenmez. Bkz. [dosyadan derleme oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`dosyalara başvurulamıyor. Bkz. [alter assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Veritabanı Postası (db_mail)
+ - `sp_send_dbmail`parametresi kullanılarak @file_attachments ataçler gönderilemiyor. Yerel dosya sistemi ve genişletilmiş paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
+ - `@query` Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
+ 
 ### <a name="dbcc"></a>DBCC
 
 SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde desteklenmez.
@@ -536,6 +540,14 @@ Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başın
 Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Bilinen sorunlar
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Güvenli bağlantı (SSL) kullanılarak dış posta sunucularına kimlik doğrulamak yapılamaz
+
+**Güncel** Ağu 2019
+
+[Güvenli bağlantı (SSL) kullanılarak yapılandırılan](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) veritabanı postası, Azure dışındaki bazı e-posta sunucularında kimlik doğrulaması yapamaz. Bu, yakında çözümlenecek olan güvenlik yapılandırması sorununa neden olur.
+
+**Sorunu** Güvenli bağlantı (SSL) geçici kaldırma, sorun çözülene kadar veritabanı posta yapılandırmasını oluşturur. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 

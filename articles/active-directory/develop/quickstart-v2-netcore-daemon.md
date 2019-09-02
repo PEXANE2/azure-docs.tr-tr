@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b6d01802fd819471a9cfb382166e6293261ca
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852887"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211867"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Hızlı Başlangıç: Uygulamanın kimliğini kullanarak bir konsol uygulamasından belirteç alma ve Microsoft Graph API 'SI çağırma
 
@@ -39,9 +39,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
-> * Çaba [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Kitabında [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır: Express (aşağıdaki 1. seçenek) ve El Ile (seçenek 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
@@ -80,12 +78,12 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2\. adım: Visual Studio projenizi indirin
 
-[Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3\. adım: Visual Studio projenizi yapılandırma
 
 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
-1. Visual Studio- **Daemon-Console. sln** (isteğe bağlı) çözümünü açın.
+1. Visual Studio- **1-Call-MSGraph\daemon-Console.sln** (isteğe bağlı) çözümünü açın.
 1. **AppSettings. JSON** öğesini `ClientId` `Tenant` düzenleyin ve alanların değerlerini ve `ClientSecret` aşağıdaki ile değiştirin:
 
     ```json
@@ -145,7 +143,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 Visual Studio kullanıyorsanız, uygulamayı çalıştırmak için **F5** tuşuna basın, aksi takdirde uygulamayı komut istemi veya konsol aracılığıyla çalıştırın:
 
 ```console
-cd {ProjectFolder}\daemon-console
+cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
@@ -166,7 +164,7 @@ MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Ide
  Visual Studio 'nun **Paket Yöneticisi konsolunda**aşağıdaki komutu çalıştırarak msal.net yükleyebilirsiniz:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
 ```
 
 Alternatif olarak, Visual Studio kullanmıyorsanız projenize MSAL eklemek için aşağıdaki komutu çalıştırabilirsiniz:
@@ -221,8 +219,15 @@ Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](h
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+Daemon uygulamaları hakkında daha fazla bilgi için bkz. senaryo giriş sayfası
+
 > [!div class="nextstepaction"]
-> [.NET Core Daemon örneği](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+> [Web API 'Lerini çağıran Daemon uygulaması](scenario-daemon-overview.md)
+
+Daemon uygulaması öğreticisi için bkz.:
+
+> [!div class="nextstepaction"]
+> [Daemon .NET Core konsol öğreticisi](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 İzinler ve onay hakkında daha fazla bilgi edinin:
 
@@ -233,9 +238,6 @@ Bu senaryoya yönelik kimlik doğrulama akışı hakkında daha fazla bilgi edin
 
 > [!div class="nextstepaction"]
 > [İstemci kimlik bilgileri OAuth akışı](v2-oauth2-client-creds-grant-flow.md)
-
-> [!div class="nextstepaction"]
-> [MSAL.NET ile istemci kimlik bilgileri akışları](https://aka.ms/msal-net-client-credentials)
 
 Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
 

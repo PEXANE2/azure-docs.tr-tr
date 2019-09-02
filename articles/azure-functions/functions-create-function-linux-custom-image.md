@@ -1,22 +1,19 @@
 ---
 title: Linux üzerinde özel görüntü kullanarak Azure Işlevleri oluşturma
 description: Özel bir Linux görüntüsü üzerinde çalışan Azure İşlevleri oluşturmayı öğrenin.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562924"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210185"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
@@ -56,7 +53,7 @@ Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
 ## <a name="create-the-local-function-app-project"></a>Yerel işlev uygulaması projesi oluşturma
 
-Geçerli yerel dizinin `MyFunctionProj` klasöründe bir işlev uygulaması projesi oluşturmak için komut satırından aşağıdaki komutu çalıştırın.
+Geçerli yerel dizinin `MyFunctionProj` klasöründe bir işlev uygulaması projesi oluşturmak için komut satırından aşağıdaki komutu çalıştırın. Bir Python projesi için [sanal ortamda çalıştırıyor olmanız gerekir](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ func init MyFunctionProj --docker
 
 * `dotnet`: bir .NET Core sınıf kitaplığı projesi (. csproj) oluşturur.
 * `node`: bir JavaScript projesi oluşturur.
-* `python`: bir Python projesi oluşturur.
+* `python`: bir Python projesi oluşturur.  
 
 Komut yürütüldüğünde, aşağıdaki çıktıya benzer bir şey görürsünüz:
 

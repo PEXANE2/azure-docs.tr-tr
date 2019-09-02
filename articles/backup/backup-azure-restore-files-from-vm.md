@@ -7,14 +7,14 @@ manager: carmonm
 keywords: öğe düzeyinde kurtarma; Azure VM yedeğinden dosya kurtarma; Azure VM 'den dosyaları geri yükleme
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
+ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954601"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210360"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -68,7 +68,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
     - download.microsoft.com
     - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
         - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.com (Azure genel geos için)
-        - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.cn (Azure Çin için)
+        - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.cn (Azure Çin 21Vianet için)
         - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.us (Azure ABD kamu için)
         - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.de (Azure Almanya için)
     - giden bağlantı noktası 3260

@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/7/2018
+ms.date: 09/07/2018
 ms.author: dacurwin
-ms.openlocfilehash: c8e0ddb788d5e155bfaa511b1012cc8d8e62aab5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689102"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210330"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak dosyaları Windows 'a geri yükleme
 
@@ -77,12 +77,12 @@ Yanlışlıkla bir dosyayı silmiş ve aynı makineye geri yüklemek istiyorsan�
     ![Kopya vurgulanmış şekilde Windows Gezgini 'nin ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
 
-9. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' **ı seçin.** Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
+9. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' ı seçin. Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
 
     ![Veri Kurtarma Sihirbazı 'nın dosyaları tarama ve kurtarma sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Çıkar **' ı**seçmezseniz kurtarma birimi, bağlanalındığı zamandan itibaren 6 saat boyunca takılmış olarak kalır. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
+    > Çıkar ' ı seçmezseniz kurtarmabirimi, bağlanalındığı zamandan itibaren 6 saat boyunca takılmış olarak kalır. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
     >
 
 
@@ -142,12 +142,12 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
     ![Kopya vurgulanmış şekilde Windows Gezgini 'nin ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' **ı seçin.** Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
+12. İşiniz bittiğinde, **dosyaları tarayın ve kurtar** sayfasında, çıkar ' ı seçin. Ardından, birimi çıkarmak istediğinizi onaylamak için **Evet** ' i seçin.
 
     ![Veri Kurtarma Sihirbazı 'nın dosyaları tarama ve kurtarma sayfasında ekran görüntüsü](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Çıkar **' ı**seçmezseniz kurtarma birimi, bağlanalındığı zamandan itibaren 6 saat boyunca takılmış olarak kalır. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
+    > Çıkar ' ı seçmezseniz kurtarmabirimi, bağlanalındığı zamandan itibaren 6 saat boyunca takılmış olarak kalır. Ancak, devam eden bir dosya kopyalama durumunda bağlama süresi en fazla 24 saate genişletilir. Birim bağlıyken hiçbir yedekleme işlemi çalıştırılmayacak. Birim bağlandığında, kurtarma birimi kaldırıldıktan sonra çalıştırılacak şekilde zamanlanan tüm yedekleme işlemleri çalıştırılır.
     >
 
 ## <a name="next-steps"></a>Sonraki adımlar

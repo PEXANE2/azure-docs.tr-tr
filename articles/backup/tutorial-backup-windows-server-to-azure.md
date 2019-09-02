@@ -6,15 +6,15 @@ manager: carmonm
 keywords: windows server yedekleme; windows server’ı yedekleme; yedekleme ve olağanüstü durum kurtarma
 ms.service: backup
 ms.topic: tutorial
-ms.date: 8/22/2018
+ms.date: 08/22/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0a8a4795cf35402ebecbf6838aaeb5f17768aa06
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: f72e43eab51708365895d37c30d08ff823f93626
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467048"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210101"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server’ı Azure’da Yedekleme
 
@@ -97,7 +97,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı, Windows Server ile Kurtarm
  
 4. İstendiğinde, Windows Server’dan yedeklemeleri şifrelemek için bir şifreleme parolası sağlayın. Kaybolması durumunda Microsoft parolayı kurtaramadığından parolayı güvenli bir konuma kaydedin.
 
-5.           **Son**'a tıklayın. 
+5. **Son**'a tıklayın. 
 
 ## <a name="configure-backup-and-retention"></a>Yedekleme ve Bekletmeyi Yapılandırma
 
@@ -113,7 +113,7 @@ Windows Server’da, Azure’daki yedeklemelerin ne zaman gerçekleşeceğini za
 
 4. **Öğeleri Ekle**’ye tıklayın ve açılan iletişim kutusundan **Sistem Durumu**’nu ve yedeklemek istediğiniz dosyaları veya klasörleri seçin. Daha sonra, **Tamam**'a tıklayın.
 
-5.           **İleri**'ye tıklayın.
+5. **İleri**'ye tıklayın.
 
 6. **Yedekleme Zamanlamasını Belirtin (Sistem Durumu)** sayfasında, Sistem Durumu için yedeklemelerin tetiklenmesinin gerektiği günün saatini veya haftayı belirtin ve **İleri**’ye tıklayın.
 
