@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172280"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208010"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry’de coğrafi çoğaltma
 
@@ -97,8 +97,19 @@ ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye ba�
 * Coğrafi olarak çoğaltılan bir kayıt defterindeki her bölge, ayarlandıktan sonra bağımsızdır. Azure Container Registry SLA 'Lar, coğrafi olarak çoğaltılan her bölge için geçerlidir.
 * Coğrafi olarak çoğaltılan bir kayıt defterinden görüntü gönderdiğinizde veya çektiğinizde, arka planda Azure Traffic Manager, isteği size en yakın bölgede bulunan kayıt defterine gönderir.
 * En yakın bölgeye bir görüntü veya etiket güncelleştirmesi gönderdikten sonra, Azure Container Registry bildirimlerin ve katmanların seçtiğiniz kalan bölgelere çoğaltılması biraz zaman alır. Daha büyük resimler daha küçük olanlara çoğaltılmak için daha uzun sürer. Görüntüler ve Etiketler, son tutarlılık modeliyle çoğaltma bölgeleri arasında eşitlenir.
-* Coğrafi olarak çoğaltılan bir kayıt defterine gönderim güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
+* Coğrafi olarak çoğaltılan bir çekme güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
 
+## <a name="delete-a-replica"></a>Bir çoğaltmayı silme
+
+Kayıt defteriniz için bir çoğaltma yapılandırdıktan sonra, artık gerekmiyorsa, istediğiniz zaman silebilirsiniz. Azure CLı 'deki [az ACR çoğaltma Delete](/cli/azure/acr/replication#az-acr-replication-delete) komutu gibi Azure Portal veya diğer araçları kullanarak bir çoğaltmayı silin.
+
+Azure portal bir çoğaltmayı silmek için:
+
+1. Azure Container Registry gidin ve **çoğaltmalar**' ı seçin.
+1. Bir çoğaltmanın adını seçin ve **Sil**' i seçin. Çoğaltmayı silmek istediğinizi onaylayın.
+
+> [!NOTE]
+> Kayıt defterinin *giriş bölgesindeki* kayıt defteri çoğaltmasını silemezsiniz, yani kayıt defterini oluşturduğunuz konum. Yalnızca kayıt defterinin kendisini silerek giriş çoğaltmasını silebilirsiniz.
 
 ## <a name="geo-replication-pricing"></a>Coğrafi çoğaltma fiyatlandırması
 

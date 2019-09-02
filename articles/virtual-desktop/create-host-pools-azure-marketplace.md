@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163723"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208390"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Market kullanarak ana bilgisayar havuzu oluşturma
 
@@ -44,7 +44,7 @@ Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak i�
 2. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
 3. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
 
-Uygun dikey pencereler için bilgi girmek üzere yönergeleri izleyin.
+Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümdeki yönergeleri izleyin.
 
 ### <a name="basics"></a>Temel
 
@@ -56,6 +56,9 @@ Uygun dikey pencereler için bilgi girmek üzere yönergeleri izleyin.
 4. Yeni **Oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
 5. **Konum**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
 6. **Tamam**’ı seçin.
+
+>[!IMPORTANT]
+>Saf Azure Active Directory Domain Services ve Azure Active Directory çözümü kullanıyorsanız, etki alanına ekleme ve kimlik bilgisi hatalarından kaçınmak için konak havuzunuzu Azure Active Directory Domain Services ile aynı bölgede dağıttığınızdan emin olun.
 
 ### <a name="configure-virtual-machines"></a>Sanal makineleri yapılandırma
 

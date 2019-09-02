@@ -407,7 +407,7 @@ Tek tek bloklar hakkında bilgi içerir. *BlockMessage* blok düzeyi bilgileri i
 | transactionId      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
 | transactionHash    | Genel muhasebe üzerinde işlem karması |
 | from               | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| -                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| to                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 | provisioningStatus | Geçerli işlem için sağlama işlemini durumunu tanımlar. Olası değerler şunlardır: </br>0 – işlem veritabanı API'si tarafından oluşturuldu</br>1 – işlem defterine gönderildi</br>2 – işlem için bir kayıt defteri başarıyla kaydedildi</br>3 veya 4 - işlem için bir kayıt defteri kaydedilemedi</br>5 - işlem için bir kayıt defteri başarıyla yürütüldü |
 
 Örnek bir *BlockMessage* blok zinciri workbench'ten:
@@ -469,7 +469,7 @@ Bir sözleşme hakkında bilgi içerir. İleti sözleşmesi özelliklere sahip b
 | transactionId | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
 | transactionHash | Genel muhasebe üzerinde işlem karması |
 | from | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| - | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| to | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 
 #### <a name="contract-properties"></a>Sözleşme özellikleri
 
@@ -597,7 +597,7 @@ Bir sözleşme işlevi çağrıldığında işlev adı, parametreleri giriş ve 
 | transactionId      | Azure Blockchain Workbench içinde işlem için benzersiz tanımlayıcı |
 | transactionHash    | Genel muhasebe üzerinde işlem karması |
 | from               | Genel muhasebe işlem kaynağı için benzersiz tanımlayıcısı |
-| -                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
+| to                 | İşlem hedefi için bir kayıt defteri benzersiz tanımlayıcısı |
 
 Örnek bir *EventMessage ContractFunctionInvocation* blok zinciri workbench'ten:
 

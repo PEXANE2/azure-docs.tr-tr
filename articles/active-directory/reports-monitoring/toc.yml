@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: Riskli oturum açma işlemleri
       href: concept-risky-sign-ins.md
-    - name: Risk olayları
+    - name: Risk algılamaları
       href: concept-risk-events.md
     - name: Risk altındaki kullanıcılar
       href: concept-user-at-risk.md
+    - name: Sağlama günlükleri
+      href: concept-provisioning-logs.md
     - name: Raporlama API’leri
       href: concept-reporting-api.md
     - name: Azure İzleyici'deki Azure AD günlükleri

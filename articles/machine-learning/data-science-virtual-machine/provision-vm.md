@@ -1,28 +1,22 @@
 ---
-title: Windows veri bilimi sanal makinesi oluşturma
-titleSuffix: Azure
+title: 'Hızlı Başlangıç: Windows oluştur'
+titleSuffix: Azure Data Science Virtual Machine
 description: Yapılandırma ve analiz için Azure'da bir veri bilimi sanal makinesi oluşturma ve makine öğrenimi.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: vijetaj
-ms.openlocfilehash: 2b328ccf63259c7faf4debdc07313d24381313a5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047690"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195299"
 ---
-# <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure 'da bir Windows Veri Bilimi Sanal Makinesi sağlama
+# <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Hızlı Başlangıç: Azure 'da Windows Veri Bilimi Sanal Makinesi ayarlama
 
 Microsoft Windows Veri Bilimi Sanal Makinesi (DSVM), Azure 'da bir Windows Server 2016 sanal makinesi (VM) görüntüsüdür. Bu, önceden yüklenmiş ve veri analizi ve makine öğrenimi araçları ile yapılandırılmış olarak gelir.
 

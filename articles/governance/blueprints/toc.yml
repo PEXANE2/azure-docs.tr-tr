@@ -156,6 +156,9 @@
     - name: Mevcut atamaları portaldan güncelleştirme
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: Ortamınızı Blueprint İşleci için yapılandırma
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: Şemaları Kod Olarak Yönetme (topluluk)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: Sorun giderme

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560662"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207336"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: Language Understanding ile etkin bir Web uygulaması bot kullanınC#
 
@@ -54,7 +54,7 @@ Dil C# anlama (Luu) ile tümleştirilmiş bir sohbet bot oluşturmak için kulla
     |Uygulama adı|Ad, robotunuz buluta dağıtıldığında alt etki alanı olarak kullanılır (örneğin humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, örneğin `luis-csharp-bot-johnsmith`|
     |Robot şablonu|Bot Framework ayarları - sonraki tabloya bakın|
     |LUIS Uygulaması konumu|LUIS kaynak bölgesi ile aynı olmalıdır|`westus`|
-    |Uygulama hizmeti planı/Konumu|Belirtilen varsayılan değerden değiştirmeyin.|
+    |Uygulama hizmeti planı/konumu|Belirtilen varsayılan değerden değiştirmeyin.|
     |Application Insights|Belirtilen varsayılan değerden değiştirmeyin.|
     |Microsoft uygulama KIMLIĞI ve parolası|Belirtilen varsayılan değerden değiştirmeyin.|
 
@@ -80,7 +80,7 @@ Bot hizmeti oluşturma işlemi, amaçlar ve örnek dıklarla yeni bir LUO uygula
 |--|--|
 |Kitap kolu|`Travel to Paris`|
 |İptal|`bye`|
-|None|Uygulamanın etki alanı dışındaki her şey.|
+|Yok.|Uygulamanın etki alanı dışındaki her şey.|
 
 ## <a name="test-the-bot-in-web-chat"></a>Bot Web Chat test edin.
 
@@ -347,7 +347,7 @@ Visual Studio'da robotu başlatın. Web uygulaması robotunun `http://localhost:
 
 1. Bot öykünücüsünde aşağıdaki utterance girerek bir uçuş yapın: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 

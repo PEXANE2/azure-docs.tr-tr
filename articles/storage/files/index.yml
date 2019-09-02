@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Dosyaları
+summary: Azure Dosyalar, bulutta tam olarak yönetilen, platformlar arası dosya paylaşımları sunar. Bu paylaşımlara Sunucu İleti Bloğu (SMB) protokolü aracılığıyla erişilebilir.
+metadata:
+  title: Azure Dosyaları
+  description: Dosya paylaşımlarını Windows, Linux ve macOS üzerinde çalışacak şekilde bulutta veya şirket içinde bağlayın. Yerel erişim için Azure dosya paylaşımlarını Windows sunucularında Azure Dosya Eşitleme ile önbelleğe alın.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 06764b43d46dc4fee51ac58254e2d2578257f096
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143059"
+landingContent:
+- title: Azure Dosyaları hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Dosyalar planlama kılavuzu
+      url: storage-files-planning.md
+    - text: Azure Dosya Eşitleme planlama kılavuzu
+      url: storage-sync-files-planning.md
+    - text: Azure Dosyaları nedir?
+      url: storage-files-introduction.md
+- title: Başlarken
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Dosya paylaşımları oluşturma/kullanma - Windows
+      url: storage-files-quick-create-use-windows.md
+    - text: Premium dosya paylaşımları oluşturma
+      url: storage-how-to-create-premium-fileshare.md
+    - text: Azure Dosya Eşitleme ile sunucunuzu yönetme
+      url: storage-sync-files-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Windows dosya sunucularını Azure Dosya Eşitleme ile genişletme
+      url: storage-sync-files-extend-servers.md
+- title: Sorun giderme
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Dosyalar Windows sorunlarını giderme
+      url: storage-troubleshoot-windows-file-connection-problems.md
+    - text: Azure Dosyalar Linux sorunlarını giderme
+      url: storage-troubleshoot-linux-file-connection-problems.md
+    - text: Azure Dosyalar performans sorunlarını giderme
+      url: storage-troubleshooting-files-performance.md
+    - text: Azure Dosyalar Eşitleme sorunlarını giderme
+      url: storage-sync-files-troubleshoot.md

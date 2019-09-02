@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/11/2018
-ms.openlocfilehash: 6688fa6bc3180ef878992e1e06b0ac6e90f27ee2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 985d38b75ca99e85c8b066427ecea9eb4d3e90f2
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141532"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194458"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -52,7 +52,7 @@ Bilgi üretim sistemi oluşturmanın ilk adımı hizmet olarak yazılım (SaaS) 
 
 Data Factory olmadığında, kuruluşların bu veri kaynaklarını ve işleme çalışmalarını tümleştirmek için özel veri taşıma bileşenleri oluşturması veya özel hizmetler yazması gerekir. Bu tür sistemleri tümleştirmenin ve bakımını yapmanın maliyeti yüksektir. Buna ek olarak bu sistemlerde tamamen yönetilebilir bir hizmetin sunduğu kurumsal sınıf izleme, uyarı oluşturma ve denetim özellikleri mevcut değildir.
 
-Data Factory ile, veri işlem hattında [Kopyalama Etkinliği](copy-activity-overview.md)’ni kullanarak hem şirket içinde hem de buluttaki kaynak veri depolarını daha fazla analiz için merkezi bir veri deposuna taşıyabilirsiniz. Örneğin, Azure Data Lake Store'da veri toplayabilir ve daha sonra Azure Data Lake Analytics işlem hizmetini kullanarak verileri dönüştürebilirsiniz. Verileri Azure Blob depolama alanından toplayıp daha sonra Azure HDInsight Hadoop kümesi kullanarak da dönüştürebilirsiniz.
+Data Factory ile, veri işlem hattında [Kopyalama Etkinliği](copy-activity-overview.md)’ni kullanarak hem şirket içinde hem de buluttaki kaynak veri depolarını daha fazla analiz için merkezi bir veri deposuna taşıyabilirsiniz. Örneğin, Azure Data Lake Storage verileri toplayabilir ve Azure Data Lake Analytics bir işlem hizmeti kullanarak verileri daha sonra dönüştürebilirsiniz. Verileri Azure Blob depolama alanından toplayıp daha sonra Azure HDInsight Hadoop kümesi kullanarak da dönüştürebilirsiniz.
 
 ### <a name="transform-and-enrich"></a>Dönüştürme ve zenginleştirme
 Veriler buluttaki merkezi bir veri deposuna sunulduktan sonra toplanan verileri HDInsight Hadoop, Spark, Data Lake Analytics ve Machine Learning gibi işlem hizmetlerini kullanarak işleyin veya dönüştürün. Üretim ortamlarının güvenilir verilerle beslenmesi için sürdürülebilir ve denetlenebilir bir zamanlamaya göre dönüştürülmüş verileri güvenilir bir şekilde üretmeniz gerekir.

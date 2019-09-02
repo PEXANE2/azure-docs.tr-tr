@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991173"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207301"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights ile veri toplama, tutma ve depolama
 
@@ -100,7 +100,7 @@ Siz ve ekip üyeleriniz tarafından dışarıya aktarılabilir ve diğer konumla
 Microsoft, yalnızca hizmeti sağlamak için verileri kullanır.
 
 ## <a name="where-is-the-data-held"></a>Veriler nerede tutulur?
-* ABD, Avrupa veya Güneydoğu Asya. Yeni bir Application Insights kaynağı oluştururken konum ' u seçebilirsiniz. 
+* Yeni bir Application Insights kaynağı oluştururken konum ' u seçebilirsiniz. [Burada](https://azure.microsoft.com/global-infrastructure/services/?products=all)bölge başına Application Insights kullanılabilirliği hakkında daha fazla bilgi edinebilirsiniz.
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Uygulamamın ABD, Avrupa veya Güneydoğu Asya 'da barındırılması anlamına geliyor mu?
 * Hayır. Uygulamanız, kendi şirket içi konaklarınızdaki veya buluttaki herhangi bir yerde çalıştırılabilir.
@@ -239,9 +239,9 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcılar |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcı |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıkları<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
-| [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcılar |
+| [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcı |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfa<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özelliklerinin** |

@@ -1,30 +1,23 @@
 ---
-title: Genel Bakış coğrafi yapay zeka veri bilimi sanal makinesi
-titleSuffix: Azure
-description: Coğrafi yapay zeka veri bilimi sanal makinesi, coğrafi veri ile çalışmak için Arcgıs Pro sağlar. Machine Learning ve yapay zeka (AI) ile çalışmaya yönelik Python, R ve veri bilimi araç takımları de sağlar.
+title: Coğrafi yapay zeka nedir?
+titleSuffix: Azure Data Science Virtual Machine
+description: Coğrafi yapay zeka Veri Bilimi Sanal Makinesi, coğrafi verilerle çalışmaya yönelik ArcGIS Pro ve ML ve AI ile çalışmaya yönelik Python, R ve veri bilimi araç takımları sağlar.
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 05596ea9a4456b73ec1e398e4a27ec3a49457cd9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172865"
+ms.locfileid: "70195591"
 ---
-# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka veri bilimi sanal Makinesi'ne giriş
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
 
 Coğrafi yapay zeka Veri Bilimi Sanal Makinesi (coğrafi AI Veri Bilimi VM'si veya coğrafi-DSVM olarak da bilinir), Azure Veri Bilimi Sanal Makinesi (DSVM) üzerinden Jeo-uzamsal analiz özellikleri sunar. Özellikle, bu VM, ERSı 'dan pazar lideri ArcGIS [Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi ekleyerek [DSVM](overview.md) 'deki AI ve veri bilimi araç kitlerinin kapsamını genişletir.
 

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124904"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207143"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde görevleri temsilci seçme (Önizleme)
 
@@ -117,6 +117,7 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 | [Bulut uygulaması Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  |  | :heavy_check_mark: |  |
 | Kullanıcı | Katalog sahibi | Yalnızca Grup sahibi ise | Yalnızca Grup sahibi ise | Yalnızca uygulama sahibi ise |  |
 
+Bir görev için en düşük ayrıcalıklı rolü öğrenmek için, [Azure Active Directory ' de yönetici görevine göre yönetici rollerine](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)de başvurabilirsiniz.
 
 ## <a name="add-a-catalog-creator"></a>Katalog Oluşturucu Ekleme
 

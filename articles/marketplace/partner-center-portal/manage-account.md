@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194271"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207978"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme 
 
@@ -151,7 +151,7 @@ Daha fazla bilgi için bkz. [Azure müşteri kullanımını GUID 'Lerle Izleme S
 
 ## <a name="manage-users"></a>Kullanıcıları yönet
 
-Iş Ortağı Merkezi 'nin ( **Hesap ayarları**altında) **Kullanıcılar** bölümü, iş ortağı merkezi hesabınıza erişimi olan kullanıcıları, grupları ve Azure AD UYGULAMALARıNı yönetmek için Azure AD 'yi kullanmanızı sağlar. Kullanıcıları yönetmek için [iş hesabınızla](./company-work-accounts.md) (ILIŞKILI Azure AD kiracısı) oturum açmış olmanız gerektiğini unutmayın. Farklı bir iş hesabındaki/Kiracıdaki kullanıcıları yönetmek için, oturumu kapatıp bu iş hesabı/kiracısında **yönetici** izinlerine sahip bir kullanıcı olarak yeniden oturum açmanız gerekir. 
+Iş Ortağı Merkezi 'nin ( **Hesap ayarları**altında) **Kullanıcılar** bölümü, iş ortağı merkezi hesabınıza erişimi olan kullanıcıları, grupları ve Azure AD UYGULAMALARıNı yönetmek için Azure AD 'yi kullanmanızı sağlar. Kullanıcıları yönetmek için [iş hesabınızla](./company-work-accounts.md) (ILIŞKILI Azure AD kiracısı) oturum açmış olmanız gerekir. Farklı bir iş hesabındaki/Kiracıdaki kullanıcıları yönetmek için, oturumu kapatıp bu iş hesabı/kiracısında **yönetici** izinlerine sahip bir kullanıcı olarak yeniden oturum açmanız gerekir. 
 
 İş hesabınızla (Azure AD kiracısı) oturum açtıktan sonra şunları yapabilirsiniz:
 - [Kullanıcı ekleme veya kaldırma](#add-or-remove-users)
@@ -300,20 +300,19 @@ Azure AD uygulamanız Microsoft Azure AD verileri okuyup yazıyorsa, anahtar ger
 4.  Daha fazla anahtar oluşturmak istiyorsanız **başka bir anahtar Ekle**' yi seçin.
 
 
-### <a name="define-user-roles-and-permissions"></a>Kullanıcı rollerini ve izinleri tanımlama
+## <a name="define-user-roles-and-permissions"></a>Kullanıcı rollerini ve izinleri tanımlama
 
-Şirketinizin kullanıcılarına, Iş Ortağı Merkezi ' nde ticari Market programı için aşağıdaki roller ve izinler atanabilir. 
+Şirketinizin kullanıcılarına, Iş Ortağı Merkezi 'nde ticari Market programı için aşağıdaki roller ve izinler atanabilir:
 
-|**Rol**|**İzinler**|
-|----------------------------------|---------------------------------|
-|Yöneticisi|-Vergi ve ödeme ayarları dışında tüm Microsoft hesabı özelliklerine erişebilir|
-|      |-Kullanıcıları, rolleri ve iş hesaplarını (kiracılar) yönetebilir|
-|Geliştirici|-Teklifleri yönetebilir ve yayımlayabilir|
-|      |-Bazı yayımcı raporlarını görebilir|
-|Genel yönetici|-Ticari Market ile ilgili değil|
-|İş Katılımcısı|-Ticari Market ile ilgili değil|
-|Mali katkıda bulunan|-Ticari Market ile ilgili değil|
-|Pazarlamacısıdır|-Ticari Market ile ilgili değil|
+- **Manager**
+  - Vergi ve ödeme ayarları hariç tüm Microsoft hesabı özelliklerine erişebilir
+  - Kullanıcıları, rolleri ve iş hesaplarını (kiracılar) yönetebilir
+- **Geliştirici**
+  - Teklifleri yönetebilir ve yayımlayabilir
+  - Bazı yayımcı raporlarını görüntüleyebilir
+
+> [!NOTE]
+> Genel yönetici, Iş katılımcısı, mali katkı ve Pazar layıcı rolleri ticari Market programında kullanılmaz ve ilişkili izinleri yoktur.
 
 Azure Active Directory (AD), bulut çözümü sağlayıcısı (CSP), Denetim Masası satıcısı (CPV), Konuk kullanıcılar veya Microsoft İş Ortağı Ağı (MPN) gibi Iş Ortağı Merkezi alanlarında rol ve izinleri yönetme hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini atama ve Iş Ortağı Merkezi 'nde izinleri](https://docs.microsoft.com/partner-center/permissions-overview).
 

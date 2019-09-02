@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a0cf557cec0f20d257c3c70290e2d74f077d881a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593857"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70197200"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
@@ -25,7 +25,7 @@ ms.locfileid: "68593857"
     | ------------ |  -------------------------------------------------- |
     | **Azure Işlevleri tüketim planı** |   Projenizi bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](../articles/azure-functions/functions-scale.md). | 
     | **Yeni oluştur** | Azure 'da, ilgili kaynaklarla yeni bir işlev uygulaması oluşturulur. **Varolanı Seç**'i seçtiğinizde, yerel projedeki dosyalar Azure'da mevcut işlev uygulamasındaki tüm dosyaların üzerine yazılır. Bu seçeneği yalnızca mevcut işlev uygulamasına yeniden güncelleştirme yayımlarken kullanın. |
-    | **Paket dosyasından Çalıştır** | İşlev uygulamanız, [paket Çalıştır](../articles/azure-functions/run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu, işlevlerinizi çalıştırmanın önerilen yoludur ve daha iyi performans elde edilir. |
+    | **Paket dosyasından Çalıştır** | İşlev uygulamanız, [paket Çalıştır](../articles/azure-functions/run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu, işlevlerinizi çalıştırmanın önerilen yoludur ve daha iyi performans elde edilir. Bu seçeneği kullanmadığınız durumlarda, Azure 'da yayımlamadan önce işlev uygulaması projenizin yerel olarak çalışmasını durdurduğunuzdan emin olun. |
 
 
 3. **Yayımla**’yı seçin. Visual Studio 'dan Azure hesabınızda zaten oturum açmadıysanız **oturum aç**' ı seçin. Ayrıca, ücretsiz bir Azure hesabı da oluşturabilirsiniz.

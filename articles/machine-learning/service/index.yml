@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure Machine Learning Hizmeti Belgeleri
 metadata:
   title: 'Azure Machine Learning Service Belgeleri – Öğreticiler, API başvurusu | Microsoft Docs'
-  description: 'Azure Machine Learning hizmeti, hızla veri hazırlamanız ve makine öğrenmesi modellerini eğitip dağıtmanız için SDK’lar ve hizmetler sağlar. Otomatik ölçeklendirme bilgi işlemi ve işlem hatları ile üretkenliği artırıp maliyetleri düşürün. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın. Hızlı başlangıçlar ve öğreticilerimizle kullanmaya başlayın.'
+  description: 'Azure Machine Learning hizmeti, makine öğrenmesi modellerini eğitip dağıtmanız için SDK’lar ve hizmetler sağlar. Otomatik ölçeklendirme bilgi işlemi ve işlem hatları ile üretkenliği artırıp maliyetleri düşürün. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın. Hızlı başlangıçlar ve öğreticilerimizle kullanmaya başlayın.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -16,7 +16,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: 'Azure Machine Learning hizmeti, hızla veri hazırlamanız ve makine öğrenmesi modellerini eğitip dağıtmanız için SDK’lar ve hizmetler sağlar. Otomatik ölçeklendirme bilgi işlemi ve işlem hatları ile üretkenliği ve maliyetleri geliştirin. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın. Hızlı başlangıçlar ve öğreticilerimizle kullanmaya başlayın.'
+  description: 'Azure Machine Learning hizmeti, makine öğrenmesi modellerini eğitip dağıtmanız için SDK’lar ve hizmetler sağlar. Otomatik ölçeklendirme bilgi işlemi ve işlem hatları ile üretkenliği ve maliyetleri geliştirin. PyTorch, TensorFlow ve scikit-learn gibi açık kaynak Python çerçeveleri aracılığıyla bu özellikleri kullanın. Hızlı başlangıçlar ve öğreticilerimizle kullanmaya başlayın.'
   aside:
     image:
       alt: null
@@ -30,7 +30,7 @@ sections:
   - title: Adım Adım Öğreticiler
     items:
       - type: paragraph
-        text: 'Veri hazırlamayı, deneyleri ayarlamayı ve makine öğrenmesi modellerinizi eğitip kullanıma hazır hale getirmeyi öğrenin.'
+        text: Denemeleri ayarlamayı ve makine öğrenmesi modellerinizi eğitip kullanıma hazır hale getirmeyi öğrenin.
       - type: paragraph
         text: 'Makine öğrenmesi için kullanımı kolay, kod içermeyen bir arabirim olan <b>Azure portalını kullanma</b>:'
       - type: list

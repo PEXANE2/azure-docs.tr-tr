@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: f5db715ecb7d5523f5f52a356198eb547f69d4f8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194305"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208099"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine hesap geçişi
 
@@ -26,13 +26,13 @@ Belirli bir hesap için CPP içinde sahip rolüne sahip bir kullanıcı değilse
 
 Hesap geçiş işleminizi başlatmak için başlık üzerine tıklayın. Aşağıdaki öğeleri girmeniz bekleniyor:
 
-### <a name="work-e-mail-address"></a>İş e-posta adresi
+### <a name="work-email-address"></a>İş e-posta adresi
 
 Çoğu durumda, CPP oturumu açmak için kullandığınız e-posta adresiyle oturum açın. Belirli durumlarda, farklı bir e-posta adresinin kullanılması gerekir:
 
-* Microsoft hesabı: CPP hesabı bir Microsoft hesabı ise, MPN KIMLIĞI kayıtlı olan kiracı ile ilişkili geçerli bir iş e-posta adresi girmeniz gerekir. 
+* Microsoft hesabı: CPP hesabı bir Microsoft hesabı ise, MPN KIMLIĞI kayıtlı olan kiracı ile ilişkili geçerli bir iş e-posta adresi girmeniz gerekir.
 
-* Kiracı uyumsuzluğu: İş e-posta adresiniz, CPP hesabınızda bulunan Microsoft İş Ortağı Ağı KIMLIĞIYLE ilişkili kiracıya ait değilse bir hata görürsünüz. Bu hatadan ilerlemek için kiracıyla ilişkili bir e-posta adresi girin. Bir hata iletisi, kiracının adını sağlar. 
+* Kiracı uyumsuzluğu: İş e-posta adresiniz, CPP hesabınızda bulunan Microsoft İş Ortağı Ağı KIMLIĞIYLE ilişkili kiracıya ait değilse bir hata görürsünüz. Bu hatadan ilerlemek için kiracıyla ilişkili bir e-posta adresi girin. Bir hata iletisi, kiracının adını sağlar.
 
 ### <a name="sign-up-for-microsoft-partner-network-program"></a>Microsoft İş Ortağı Ağı programa kaydolun
 

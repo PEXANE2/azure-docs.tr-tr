@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173064"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208352"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -92,7 +92,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **Salt okuma yük devretme ilkesi**
 
-  Varsayılan olarak, salt okunurdur dinleyicinin yük devretmesi devre dışıdır. İkincil çevrimdışıyken, birincil performans performansının etkilenmemesini sağlar. Bununla birlikte, ikincil kurtarılana kadar salt okuma oturumlarının bağlanamadığı anlamına gelir. Salt okuma oturumları için kapalı kalma süresini kabul edemez ve birincil olarak hem salt okunurdur hem de okuma/yazma trafiği için birincil olarak birincil olarak kullanmak istiyorsanız, salt okuma dinleyicisi için yük devretmeyi etkinleştirebilirsiniz. Bu durumda, ikincil kullanılabilir değilse salt okuma trafiği otomatik olarak birincil olarak yönlendirilir.
+  Varsayılan olarak, salt okunurdur dinleyicinin yük devretmesi devre dışıdır. İkincil çevrimdışıyken, birincil performans performansının etkilenmemesini sağlar. Bununla birlikte, ikincil kurtarılana kadar salt okuma oturumlarının bağlanamadığı anlamına gelir. Salt okuma oturumları için kapalı kalma süresini kabul edemez ve birincil olarak hem salt okunurdur hem de okuma-yazma trafiği için birincil olarak birincil olarak kullanmak istiyorsanız, salt okuma dinleyicisi için yük devretmeyi etkinleştirebilirsiniz `AllowReadOnlyFailoverToPrimary` özelliğini yapılandırarak. Bu durumda, ikincil kullanılabilir değilse salt okuma trafiği otomatik olarak birincil olarak yönlendirilir.
 
 - **Planlı Yük devretme**
 
@@ -112,7 +112,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **Veri kaybı olan yetkisiz kullanım süresi**
 
-  Birincil ve ikincil veritabanları zaman uyumsuz çoğaltma kullanılarak eşitlendiğinden, yük devretme veri kaybına neden olabilir. Otomatik yük devretme ilkesini, uygulamanızın veri kaybına karşı dayanıklılığını yansıtacak şekilde özelleştirebilirsiniz. **GracePeriodWithDataLossHours**yapılandırarak, sistemin sonuç olarak veri kaybına neden olan yük devretmeyi başlatmadan önce bekleyeceği süreyi kontrol edebilirsiniz.
+  Birincil ve ikincil veritabanları zaman uyumsuz çoğaltma kullanılarak eşitlendiğinden, yük devretme veri kaybına neden olabilir. Otomatik yük devretme ilkesini, uygulamanızın veri kaybına karşı dayanıklılığını yansıtacak şekilde özelleştirebilirsiniz. Yapılandırarak `GracePeriodWithDataLossHours`, sistemin, sonuç olarak veri kaybına neden olan yük devretmeyi başlatmadan önce ne kadar bekleyeceğini kontrol edebilirsiniz.
 
 - **Çoklu yük devretme grupları**
 
@@ -155,7 +155,7 @@ Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandır�
 
 - **Salt okunurdur iş yükü için salt okunurdur dinleyicisi kullanın**
 
-  Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için sunucu URL 'si `<fog-name>.secondary.database.windows.net` olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, **Applicationamacını = ReadOnly**kullanarak bağlantı dizesi okuma hedefini belirtmeniz önerilir.
+  Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için sunucu URL 'si `<fog-name>.secondary.database.windows.net` olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, kullanarak `ApplicationIntent=ReadOnly`bağlantı dizesi okuma hedefini belirtmeniz önerilir. Yük devretme sonrasında salt okuma iş yükünün yeniden bağlanabildiğinden emin olmak istiyorsanız veya ikincil sunucunun çevrimdışı olması durumunda, yük devretme ilkesinin `AllowReadOnlyFailoverToPrimary` özelliğini yapılandırdığınızdan emin olun. 
 
 - **Performans düşüklüğüne hazırlıklı olun**
 
@@ -166,7 +166,7 @@ Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandır�
 
 - **Veri kaybına hazırlanma**
 
-  Bir kesinti algılanırsa SQL, **GracePeriodWithDataLossHours**tarafından belirttiğiniz dönemi bekler. Varsayılan değer 1 saattir. Veri kaybını uygun hale getirmek için **GracePeriodWithDataLossHours** , 24 saat gibi yeterince büyük bir sayı olarak ayarladığınızdan emin olun. İkincil sunucudan birinciye yeniden yük devretmek için el ile grup yük devretmesini kullanın.
+  Bir kesinti algılanırsa, SQL tarafından `GracePeriodWithDataLossHours`belirttiğiniz dönem için bekler. Varsayılan değer 1 saattir. Veri kaybını bilmiyorsanız, 24 saat gibi yeterince büyük bir sayıya ayarladığınızdan `GracePeriodWithDataLossHours` emin olun. İkincil sunucudan birinciye yeniden yük devretmek için el ile grup yük devretmesini kullanın.
 
   > [!IMPORTANT]
   > 800 veya daha az DTU ile esnek havuzlar ve coğrafi çoğaltma kullanan 250 ' den fazla veritabanı, daha uzun planlı yük devretme ve performans düşüklükiyle ilgili sorunlarla karşılaşabilir.  Bu sorunların, yazma yoğunluklu iş yükleri, coğrafi çoğaltma uç noktaları Coğrafya tarafından yaygın olarak ayrıldığı veya her veritabanı için birden çok ikincil uç nokta kullanıldığı durumlarda oluşma olasılığı daha yüksektir.  Bu sorunların belirtileri, coğrafi çoğaltma gecikmesi zaman içinde arttıkça belirtilir.  Bu gecikme, [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)kullanılarak izlenebilir.  Bu sorunlar oluşursa, azaltmaları, havuz DTU sayısını artırmayı veya aynı havuzdaki coğrafi çoğaltılan veritabanlarının sayısını azaltmayı içerir.
@@ -305,10 +305,10 @@ Bu dizi, daha düşük bir SKU 'daki ikincil öğenin aşırı yüklendiği ve y
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Kritik verilerin kaybını önlemek
 
-Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi kaydettikten hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. Çağırma **sp_wait_for_database_copy_sync** , son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. **sp_wait_for_database_copy_sync** , belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
+Geniş alan ağlarının yüksek gecikmesi nedeniyle, sürekli kopyalama zaman uyumsuz bir çoğaltma mekanizması kullanır. Zaman uyumsuz çoğaltma, bir hata oluşursa, bazı veri kaybını korumasız hale getirir. Ancak, bazı uygulamalar veri kaybı gerektirmez. Bu kritik güncelleştirmeleri korumak için, bir uygulama geliştiricisi işlemi kaydettikten hemen sonra [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) sistem yordamını çağırabilir. Çağırma `sp_wait_for_database_copy_sync` , son kaydedilen işlem ikincil veritabanına iletilene kadar çağıran iş parçacığını engeller. Ancak, iletilen işlemlerin yeniden çalınmasını ve ikincil üzerinde gerçekleşmesini beklemez. `sp_wait_for_database_copy_sync`belirli bir sürekli kopyalama bağlantısının kapsamına alınır. Birincil veritabanında bağlantı hakları olan herhangi bir Kullanıcı, bu yordamı çağırabilir.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** , yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. Bir **sp_wait_for_database_copy_sync** yordam çağrısının neden olduğu gecikme önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
+> `sp_wait_for_database_copy_sync`Yük devretmeden sonra veri kaybını önler, ancak okuma erişimi için tam eşitlemeyi garanti etmez. Bir `sp_wait_for_database_copy_sync` yordam çağrısının neden olduğu gecikme önemli olabilir ve çağrı sırasında işlem günlüğünün boyutuna bağlıdır.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Yük devretme grupları ve zaman içinde bir noktaya geri yükleme
 

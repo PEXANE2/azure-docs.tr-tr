@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: 42d3a4a0840e7241666f66a09e7e6b11342cbfbc
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182273"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208250"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET uygulamasından Azure Search kullanma
 
@@ -579,7 +579,7 @@ SDK, belgeleri serileştirmek ve seri durumdan çıkarmak için JSON.NET kullan�
 * Kodunuzda kodunuzun ve alan adlarınızın Özellik adları arasında eşleme yapın.
 * Belge alanlarına özellikleri eşlemek için kullanılabilecek özel öznitelikler oluşturun.
 
-GitHub üzerinde Azure Search .NET SDK için birim testlerinde özel serileştirme uygulama örneklerini bulabilirsiniz. [Bu klasör](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)iyi bir başlangıç noktasıdır. Özel serileştirme testleri tarafından kullanılan sınıfları içerir.
+GitHub üzerinde Azure Search .NET SDK için birim testlerinde özel serileştirme uygulama örneklerini bulabilirsiniz. [Bu klasör](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models)iyi bir başlangıç noktasıdır. Özel serileştirme testleri tarafından kullanılan sınıfları içerir.
 
 ### <a name="searching-for-documents-in-the-index"></a>Dizinde belge arama
 Örnek uygulamadaki son adım, dizinde bazı belgeleri aramak içindir:

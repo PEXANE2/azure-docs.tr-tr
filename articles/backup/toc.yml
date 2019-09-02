@@ -70,6 +70,8 @@
       href: backup-architecture.md
     - name: Rol Tabanlı Access Control
       href: backup-rbac-rs-vault.md
+    - name: Bulut iş yükleri için güvenlik
+      href: backup-azure-security-feature-cloud.md
     - name: Karma yedeklemeler için güvenlik
       href: backup-azure-security-feature.md
     - name: Çevrimdışı yedeklemeyi yapılandırma

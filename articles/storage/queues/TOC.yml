@@ -1,9 +1,9 @@
-- name: Azure Storage Belgeleri
-  href: /azure/storage/
+- name: Azure Kuyrukları Depolama Belgeleri
+  href: /azure/storage/queues/
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Azure Kuyrukları nedir?
+    - name: Azure kuyrukları nedir?
       href: storage-queues-introduction.md
 - name: Hızlı Başlangıçlar
   items:

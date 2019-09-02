@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0940d307d78236fea1a232c1e7c60a296ba46c62
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931616"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195164"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Verileri bağlamak ve sorgulamak için Python kullanma
 Bu hızlı başlangıçta [Python](https://python.org) kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Mac OS, Ubuntu Linux ve Windows platformlarındaki veritabanında yer alan verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanır. Bu konuda, Python kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
@@ -63,8 +63,8 @@ Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birin
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
-3. Sunucunun adına tıklayın.
+2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
+3. Sunucu adını seçin.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  ![MySQL için Azure Veritabanı sunucu adı](./media/connect-python/1_server-overview-name-login.png)
 

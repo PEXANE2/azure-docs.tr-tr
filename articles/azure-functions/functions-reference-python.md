@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 16cf6704096f8c1534777ffb1958d2fa858374db
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170545"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207215"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -378,6 +378,8 @@ pip install -r requirements.txt
 ## <a name="publishing-to-azure"></a>Azure 'da yayımlama
 
 Yayımlamaya hazırsanız, tüm bağımlılıklarınızın proje dizininizin kökünde bulunan *requirements. txt* dosyasında listelendiğinden emin olun. Azure Işlevleri bu bağımlılıkları [Uzaktan](functions-deployment-technologies.md#remote-build) oluşturabilir.
+
+Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir.  
 
 Azure 'a dağıtmak ve uzak bir derleme gerçekleştirmek için aşağıdaki komutu kullanın:
 

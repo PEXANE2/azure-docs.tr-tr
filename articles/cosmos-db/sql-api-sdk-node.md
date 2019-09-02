@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142569"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207965"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Node. js SDK Azure Cosmos DB: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -414,7 +414,7 @@ Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya ekle
 Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm istekleri hizmet tarafından reddedilir.
 
 > [!WARNING]
-> SQL API için düğüm SDK 'sının tüm **1. x** sürümleri **30 Ağustos 2020**tarihinde kullanımdan kaldırılacaktır.
+> SQL API için düğüm istemci SDK 'sının tüm **1. x** sürümleri **30 Ağustos 2020**tarihinde kullanımdan kaldırılacaktır. Bu, yalnızca istemci tarafı düğüm SDK 'sını etkiler ve sunucu tarafı betikleri (saklı yordamlar, Tetikleyiciler ve UDF 'ler) etkilemez.
 > 
 >
 <br/>
