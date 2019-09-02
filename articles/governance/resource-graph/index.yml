@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 05/06/2019
+  ms.date: 08/25/2019
   ms.author: dacoulte
 abstract:
   description: Azure Kaynak Grafı belgeleri büyük ölçekteki kaynaklarınızı keşfetmek için yapılandırma gerçekleştirmenize ve sorgu dilini öğrenmenize yardımcı olur.
@@ -20,6 +20,11 @@ sections:
       - type: list
         style: icon48
         items:
+          - image:
+              alt: Azure Kaynak Grafı Gezgini
+              src: ./media/arg_explorer.svg
+            text: Kaynak Grafı Gezgini
+            href: first-query-portal.md
           - image:
               alt: Azure CLI
               src: ./media/cli.svg

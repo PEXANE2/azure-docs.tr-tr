@@ -8,7 +8,9 @@
   items:
     - name: Yeni bilgi bankası oluşturma
       href: How-To/create-knowledge-base.md
-    - name: Bilgi bankasından yanıt alın
+    - name: Meta verilerle soru ekleme
+      href: quickstarts/add-question-metadata-portal.md
+    - name: Yanıt alma
       items:
         - name: Postman'i kullanma
           href: Quickstarts/get-answer-from-kb-using-postman.md
@@ -40,7 +42,7 @@
               href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
-        - name: Bilgi bankasından yanıt alın
+        - name: Yanıt alma
           items:
             - name: 'C#'
               href: Quickstarts/get-answer-from-knowledge-base-csharp.md
@@ -125,20 +127,15 @@
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Hizmeti yönetme
       items:
-        - name: Soru-Cevap Oluşturma hizmetini ayarlama
+        - name: Kaynakları yönetme
           href: How-To/set-up-qnamaker-service-azure.md
-        - name: Bilgi bankanız hakkında analizler alma
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Analiz alma
           href: How-To/get-analytics-knowledge-base.md
-        - name: Anahtarları yönetme
-          href: How-To/key-management.md
-        - name: Soru-Cevap Oluşturma dağıtımınız için kapasite seçme
+        - name: Kapasite seçme
           href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: Soru-Cevap Oluşturma hizmetinizi yükseltme
-          href: How-To/upgrade-qnamaker-service.md
-        - name: Soru-Cevap Oluşturma için iş sürekliliği oluşturma
+        - name: İş sürekliliği planı oluşturma
           href: How-To/business-continuity-plan.md
-        - name: Soru-Cevap Oluşturma çalışma zamanı için sorun giderme ve güncelleştirme
-          href: How-To/troubleshooting-runtime.md
     - name: REST API’yi kullanma
       items:
         - name: 'C#'

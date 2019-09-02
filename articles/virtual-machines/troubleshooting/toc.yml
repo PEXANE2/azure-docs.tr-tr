@@ -97,8 +97,9 @@
 - name: VM’yi yeniden başlatma veya yeniden boyutlandırma
   href: restart-resize-error-troubleshooting.md
 - name: Seri Konsol
-  href: serial-console-overview.md
   items:
+    - name: Seri Konsola genel bakış
+      href: serial-console-overview.md
     - name: Linux için Seri Konsol
       href: serial-console-linux.md
       items:

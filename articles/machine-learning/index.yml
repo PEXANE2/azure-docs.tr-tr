@@ -41,7 +41,7 @@ sections:
       - items:
           - html: <a href="service/tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme</a>
           - html: <a href="service/tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitme ve dağıtma</a>
-          - html: <a href="service/tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlama ve otomatik ML kullanma</a>
+          - html: <a href="service/tutorial-auto-train-models">Taksi ücretlerini tahmin etmek için otomatik ML kullanma</a>
         style: unordered
         type: list
       - text: 'Modellerinizi kullanma:'

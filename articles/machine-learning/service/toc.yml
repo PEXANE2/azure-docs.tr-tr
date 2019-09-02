@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: Görsel arabirim
       items:
-        - name: Regresyon modelini eğitme
+        - name: 1. Regresyon modelini eğitme
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: Regresyon modelini dağıtma
+        - name: 2. Regresyon modelini dağıtma
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Otomatik makine öğrenimi

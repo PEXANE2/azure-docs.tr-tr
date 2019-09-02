@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme.</a>
           - html: <a href="tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitin ve dağıtın.</a>
-          - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlayın ve otomatik ML kullanın.</b></a>
+          - html: <a href="tutorial-auto-train-models">Taksi ücretlerini tahmin etmek için otomatik ML kullanma.</b></a>
           - html: <a href="how-to-run-batch-predictions">Büyük veri kümelerinde ML işlem hatlarıyla toplu tahminler çalıştırın.</b></a>
   - title: Örnekler
     items:
