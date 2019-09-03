@@ -56,9 +56,9 @@ JSON blob meta verileri aşağıdaki modele uyar:
 | **parentId** | String | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
 | **name** |String | Blob için insan dostu bir ad |
 | **type** | String | Blob türü- *Type* ve *TypeId* kullanılamaz  |
-| **Türü** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
+| **typeId** | Integer | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
 | **subtype** | String | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
-| **Alt TypeId** | Tamsayı | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
+| **subtypeId** | Integer | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
 | **description** | String | Blobun özelleştirilmiş açıklaması |
 | **sharing** | String | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
 
@@ -114,9 +114,9 @@ Ayrı olarak döndürülen blob 'lar aşağıdaki JSON şemasına uygundur:
 | **name** |String | Blob için insan dostu bir ad |
 | **parentId** | String | Blobun ile ilişkilendirilecek üst varlık (boşluklar, cihazlar veya kullanıcılar) |
 | **type** | String | Blob türü- *Type* ve *TypeId* kullanılamaz  |
-| **Türü** | Tamsayı | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
+| **typeId** | Integer | Blob türü KIMLIĞI- *Type* ve *TypeId* kullanılamaz |
 | **subtype** | String | Blob alt türü- *Subtype* ve *subtypeıd* kullanılamaz |
-| **Alt TypeId** | Tamsayı | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
+| **subtypeId** | Integer | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
 | **sharing** | String | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
 | **description** | String | Blobun özelleştirilmiş açıklaması |
 | **Contentınfos** | Array | Sürüm dahil yapılandırılmamış meta veri bilgilerini belirtir |
