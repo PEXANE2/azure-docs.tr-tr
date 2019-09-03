@@ -651,7 +651,7 @@ Değer belirtimi: ASP aspx PHP HTML
 
 Bu eşleştirme koşulu, aşağıdaki uzantılarla biten URL 'Leri bulduğunda karşılanır:
 
-- \
+- .asp
 - .aspx
 - . php
 - . html

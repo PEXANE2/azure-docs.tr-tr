@@ -45,7 +45,7 @@ En basit yapısında, bir şablon aşağıdaki öğelere sahiptir:
 | [variables](#variables) |Hayır |Şablon dil ifadelerini basitleştirmek için şablonda JSON parçaları olarak kullanılan değerler. |
 | [functions](#functions) |Hayır |Şablon içinde kullanılabilen Kullanıcı tanımlı işlevler. |
 | [resources](#resources) |Evet |Bir kaynak grubunda veya abonelikte dağıtılan veya güncellenen kaynak türleri. |
-| [çıkışı](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerler. |
+| [outputs](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerler. |
 
 Her öğenin ayarlayabileceğiniz özellikleri vardır. Bu makalede, şablonun bölümleri daha ayrıntılı olarak açıklanmaktadır.
 
