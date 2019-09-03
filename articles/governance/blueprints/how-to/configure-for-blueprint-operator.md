@@ -1,5 +1,5 @@
 ---
-title: Ortamınızı bir Blueprint Işleci için yapılandırma
+title: Ortamınızı Blueprint İşleci için yapılandırma
 description: Azure ortamınızı Blueprint Işleci yerleşik rol tabanlı erişim denetimi (RBAC) rolüyle kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,14 +7,14 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8c39eadc6f1448e19ffee6d741cc50a7b6e09475
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70148615"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231885"
 ---
-# <a name="configure-your-environment-for-a-blueprint-operator"></a>Ortamınızı bir Blueprint Işleci için yapılandırma
+# <a name="configure-your-environment-for-a-blueprint-operator"></a>Ortamınızı Blueprint İşleci için yapılandırma
 
 Şema tanımlarınızın ve şema atamalarının yönetimi farklı takımlara atanabilir. Bir işlem ekibinin, merkezi olarak denetlenen şema tanımlarının atamalarını yönetmekten sorumlu olması halinde, bir mimarın ve idare ekibinin, şema tanımlarınızın yaşam döngüsü yönetiminden sorumlu olması yaygındır.
 
@@ -40,7 +40,7 @@ Birinci adım, şema atamak için şema **operatörü** rolünü hesaba veya gü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

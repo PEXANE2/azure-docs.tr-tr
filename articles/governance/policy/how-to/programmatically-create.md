@@ -7,17 +7,16 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d158950749a9704276a666b58101bb5ad9dcbc42
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979305"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232628"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programlı olarak ilkeler oluşturma ve uyumluluk verilerini görüntüleyin
 
-Bu makalede, program aracılığıyla oluşturma ve ilkeleri yönetme gösterilmektedir. Azure ilke tanımları, kaynaklarınız üzerinden farklı kuralları ve etkileri uygular. Zorlama kaynakları, Kurumsal standartlarınız ve hizmet düzeyi sözleşmeleri ile uyumluluğu sürdürün, emin olur.
+Bu makalede, program aracılığıyla oluşturma ve ilkeleri yönetme gösterilmektedir. Azure Ilke tanımları, kaynaklarınız üzerinde farklı kurallar ve etkiler uygular. Zorlama kaynakları, Kurumsal standartlarınız ve hizmet düzeyi sözleşmeleri ile uyumluluğu sürdürün, emin olur.
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [uyumluluk verilerini alma](getting-compliance-data.md).
 
@@ -29,9 +28,9 @@ Başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
 1. Henüz yapmadıysanız [ARMClient](https://github.com/projectkudu/ARMClient)’ı yükleyin. Bu, HTTP isteklerini Azure Resource Manager tabanlı API’lere gönderen bir araçtır.
 
-1. Azure PowerShell modülünün en son sürüme güncelleştirin. Bkz: [Azure PowerShell modülü yükleme](/powershell/azure/install-az-ps) ayrıntılı bilgi için. En son sürümü hakkında daha fazla bilgi için bkz. [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
+1. Azure PowerShell modülünüzü en son sürüme güncelleştirin. Ayrıntılı bilgi için bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps) . En son sürümü hakkında daha fazla bilgi için bkz. [Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
-1. Aboneliğinizin kaynak sağlayıcısı ile çalışır durumda olduğunu doğrulamak için Azure PowerShell kullanarak Azure ilke görüşleri kaynak sağlayıcısını kaydedin. Bir kaynak sağlayıcısını kaydetmek için kaynak sağlayıcısı kaydetme işlemini çalıştırma izni olmalıdır. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
+1. Aboneliğinizin kaynak sağlayıcısıyla birlikte çalışıp çalışmadığını doğrulamak için Azure PowerShell kullanarak Azure Policy Insights kaynak sağlayıcısını kaydedin. Bir kaynak sağlayıcısını kaydetmek için kaynak sağlayıcısı kaydetme işlemini çalıştırma izni olmalıdır. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -77,7 +76,7 @@ Kaynaklarınızın daha iyi görünürlük ilk adım, ilkeleri, kaynaklarınız 
    ```
 
    Adlı bir ilke tanımı komut oluşturur _denetim depolama hesapları açık ortak ağlara_.
-   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için bkz. [yeni AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
+   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
    Konum parametre olmadan çağrıldığında `New-AzPolicyDefinition` varsayılanlarını ilke tanımı oturumları bağlam seçili abonelikte kaydediliyor. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 
@@ -94,15 +93,15 @@ Kaynaklarınızın daha iyi görünürlük ilk adım, ilkeleri, kaynaklarınız 
 
    Değiştirin _ContosoRG_ hedeflenen kaynak grubunuzun adı.
 
-   **Kapsam** parametresi `New-AzPolicyAssignment` yönetim grubuna, aboneliğe, kaynak grubuna ya da tek bir kaynak ile çalışır. Parametresi bir tam kaynak yolu kullanır, **ResourceId** özelliği `Get-AzResourceGroup` döndürür. Desenini **kapsam** her kapsayıcı aşağıdaki gibidir. Değiştirin `{rName}`, `{rgName}`, `{subId}`, ve `{mgName}` kaynak adınız ile kaynak grubu adı, abonelik kimliği ve yönetim grubu adı, sırasıyla.
-   `{rType}` ile değiştirilmesi **kaynak türü** kaynağın gibi `Microsoft.Compute/virtualMachines` bir VM için.
+   ' Deki `New-AzPolicyAssignment` kapsam parametresi, yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi bir tam kaynak yolu kullanır, **ResourceId** özelliği `Get-AzResourceGroup` döndürür. Desenini **kapsam** her kapsayıcı aşağıdaki gibidir. ,,, Ve `{rName}` 'ıkaynakadı,kaynakgrubuadı,abonelikkimliğiveyönetimgrubuadıyladeğiştirin.`{mgName}` `{rgName}` `{subId}`
+   `{rType}`kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
 
-   - Kaynak- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Kaynak`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Kaynak grubu- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Aboneliği- `/subscriptions/{subId}/`
    - Yönetim grubu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Azure Resource Manager PowerShell modülü kullanarak kaynak ilkelerini yönetmeyle ilgili daha fazla bilgi için bkz. [Az.Resources](/powershell/module/az.resources/#policies).
+Azure Resource Manager PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>ARMClient kullanarak bir ilke tanımı oluşturma ve atama
 
@@ -148,7 +147,7 @@ Azure Resource Manager PowerShell modülü kullanarak kaynak ilkelerini yönetme
 
    Önceki {Subscriptionıd}, abonelikte ya da {Managementgroupıd} Kimliğine sahip kimliği ile değiştirin, [yönetim grubu](../../management-groups/overview.md).
 
-   Sorgu yapısı hakkında daha fazla bilgi için bkz. [Azure ilke tanımları – oluşturma veya güncelleştirme](/rest/api/resources/policydefinitions/createorupdate) ve [ilke tanımları – oluşturma veya güncelleştirme, yönetim grubu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   Sorgunun yapısı hakkında daha fazla bilgi için bkz. [Azure Ilke tanımları – oluşturma veya güncelleştirme](/rest/api/resources/policydefinitions/createorupdate) ve [Ilke tanımları – Yönetim grubunda Oluştur veya Güncelleştir](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 Bir ilke ataması oluşturma ve kaynak grubu düzeyinde ilke tanımını atamak için aşağıdaki yordamı kullanın.
 
@@ -210,12 +209,12 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
    ```
 
    Adlı bir ilke tanımı komut oluşturur _denetim depolama hesapları açık ortak ağlara_.
-   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için bkz. [az ilke tanımını oluşturma](/cli/azure/policy/definition#az-policy-definition-create).
+   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [az Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create).
 
    Konum parametre olmadan çağrıldığında `az policy definition creation` varsayılanlarını ilke tanımı oturumları bağlam seçili abonelikte kaydediliyor. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 
-   - **--Abonelik** -farklı bir aboneliğe kaydedin. Gerektiren bir _GUID_ abonelik kimliği değerini veya bir _dize_ aboneliği adı için bir değer.
-   - **--Yönetim grubu** -bir yönetim grubuna kaydedin. Gerektiren bir _dize_ değeri.
+   - **--Subscription** -farklı bir aboneliğe kaydedin. Abonelik KIMLIĞI için bir _GUID_ değeri veya abonelik adı için bir _dize_ değeri gerektirir.
+   - **--Yönetim-Group** -bir yönetim grubuna Kaydet. Gerektiren bir _dize_ değeri.
 
 1. Bir ilke ataması oluşturmak için aşağıdaki komutu kullanın. Örnek bilgiler, değiştirin &lt; &gt; kendi değerlerinizle semboller.
 
@@ -223,14 +222,14 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   **--Kapsam** parametresi `az policy assignment create` yönetim grubuna, aboneliğe, kaynak grubuna ya da tek bir kaynak ile çalışır. Parametresi bir tam kaynak yolunu kullanır. Desenini **--kapsam** her kapsayıcı aşağıdaki gibidir. Değiştirin `{rName}`, `{rgName}`, `{subId}`, ve `{mgName}` kaynak adınız ile kaynak grubu adı, abonelik kimliği ve yönetim grubu adı, sırasıyla. `{rType}` ile değiştirilmesi **kaynak türü** kaynağın gibi `Microsoft.Compute/virtualMachines` bir VM için.
+   ' Deki `az policy assignment create` **--scope** parametresi yönetim grubu, abonelik, kaynak grubu veya tek bir kaynakla birlikte geçerlidir. Parametresi tam kaynak yolunu kullanır. Her kapsayıcının **kapsam** için olan model aşağıdaki gibidir. ,,, Ve `{rName}` 'ıkaynakadı,kaynakgrubuadı,abonelikkimliğiveyönetimgrubuadıyladeğiştirin.`{mgName}` `{rgName}` `{subId}` `{rType}`kaynağın **kaynak türüyle** (örneğin, `Microsoft.Compute/virtualMachines` bir VM için) değiştirilmelidir.
 
-   - Kaynak- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Kaynak`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Kaynak grubu- `/subscriptions/{subID}/resourceGroups/{rgName}`
    - Aboneliği- `/subscriptions/{subID}`
    - Yönetim grubu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Aşağıdaki komutla PowerShell kullanarak Azure ilke tanım kimliği alabilirsiniz:
+Aşağıdaki komutla PowerShell kullanarak Azure Ilke tanımı KIMLIĞI ' ni edinebilirsiniz:
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -249,7 +248,7 @@ Azure CLI ile kaynak ilkeleri nasıl yönetebileceğiniz hakkında daha fazla bi
 Bu makaledeki sorgular ve komutları hakkında daha fazla bilgi için aşağıdaki makaleleri inceleyin.
 
 - [Azure REST API kaynakları](/rest/api/resources/)
-- [Azure PowerShell modülleri](/powershell/module/az.resources/#policies)
+- [Azure PowerShell modüller](/powershell/module/az.resources/#policies)
 - [Azure CLI'yı ilke komutları](/cli/azure/policy?view=azure-cli-latest)
-- [Azure ilke görüşleri kaynak sağlayıcısı REST API Başvurusu](/rest/api/policy-insights)
+- [Azure Policy Insights kaynak sağlayıcısı REST API başvurusu](/rest/api/policy-insights)
 - [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).

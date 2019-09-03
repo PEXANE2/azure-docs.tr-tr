@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827327"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231135"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi aleti
 
@@ -60,7 +60,7 @@ Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri 
 
 **Veri** | **Counter** | **Değerlendirme etkisi**
 --- | --- | ---
-CPU kullanımı | CPU. Usage. Average | Önerilen VM boyutu/maliyet
+CPU utilization | CPU. Usage. Average | Önerilen VM boyutu/maliyet
 Bellek kullanımı | mem. kullanım. Ortalama | Önerilen VM boyutu/maliyet
 Disk okuma üretilen işi (MB/saniye) | virtualDisk. Read. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
 Disk yazma işleme (MB/saniye) | virtualDisk. Write. Average | Disk boyutu, depolama maliyeti, VM boyutu için hesaplama
@@ -71,6 +71,9 @@ NIC yazma üretimi (MB/saniye) | net. iletilmiş. Average  |VM boyutu için hesa
 
 
 ## <a name="collected-metadata-vmware"></a>Toplanan meta veriler-VMware
+
+> [!NOTE]
+> Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam listesini aşağıda bulabilirsiniz.
 
@@ -89,7 +92,7 @@ Bellek (MB) | 'nin. Config. Hardware. MemoryMB
 Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
 Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
-CPU kullanımı | CPU. Usage. Average
+CPU utilization | CPU. Usage. Average
 Bellek kullanımı |mem. kullanım. Ortalama
 **Disk başına Ayrıntılar** | 
 Disk anahtarı değeri | dis. Anahtar
@@ -109,7 +112,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Ad | kapsayıcı. GetType (). Ada
+Name | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -122,6 +125,9 @@ VM başına ana bilgisayar ayrıntıları | (HostSystem) kapsayıcısı). 'Nın
 
 
 ## <a name="collected-performance-data-hyper-v"></a>Toplanan performans verileri-Hyper-V
+
+> [!NOTE]
+> Azure geçişi gereci tarafından bulunan meta veriler, uygulamalarınızı Azure 'a geçirirken, Azure uygunluk analizi, uygulama bağımlılığı Analizi ve maliyet planlaması gerçekleştirerek uygulamalarınızı doğru boyuta getirmenize yardımcı olmak için kullanılır. Microsoft bu verileri, herhangi bir lisans uyumluluğu denetimine göre kullanmaz.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM performans verileri aşağıda verilmiştir.
 

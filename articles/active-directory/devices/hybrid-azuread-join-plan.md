@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084916"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231279"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -64,10 +64,10 @@ Windows masaüstü işletim sistemi çalıştıran cihazlarda desteklenen sürü
 ### <a name="windows-down-level-devices"></a>Windows alt düzey cihazlar
 
 - Windows 8.1
-- Windows 7. Windows 7 ile ilgili destek bilgileri için lütfen [Windows 7 ' nin sona ermek](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support) üzere bu makaleye bakın
+- Windows 7. Windows 7 ile ilgili destek bilgileri için bkz. [Windows 7 Için destek sonlandırılıyor](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
 - Windows Server 2012 R2
 - Windows Server 2012
-- Windows Server 2008 R2
+- Windows Server 2008 R2. Windows Server 2008 ve 2008 R2 hakkında Destek bilgileri için bkz. [Windows Server Için hazırlanma 2008 destek sonu](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 İlk planlama adımı olarak, ortamınızı gözden geçirmeniz ve Windows alt düzey cihazlarını desteklemeniz gerekip gerekmediğini belirlemeniz gerekir.
 

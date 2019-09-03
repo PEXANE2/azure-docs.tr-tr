@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182607"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231057"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Öğretici: İlk ML denemenizi oluşturmaya başlayın
 
@@ -24,16 +24,14 @@ Bu öğreticide, Jupyıter not defterlerinde çalışan Azure Machine Learning P
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Sonraki öğreticide kullanmak üzere bir Machine Learning çalışma alanı oluşturun.
+> * Sonraki öğreticide kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
 > * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış bir bulut tabanlı Jupyter Not defteri VM 'si oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
-
-Bu öğretici için tek önkoşul bir Azure aboneliğidir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz SDK 'daki kolayca tüketilen bir nesneye sahiptir. Zaten bir Azure Machine Learning Service çalışma alanınız varsa, [sonraki bölüme](#azure)atlayın. Aksi takdirde, şimdi bir tane oluşturun.
+Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz SDK 'daki kolayca tüketilen bir nesneye sahiptir. Zaten bir Azure Machine Learning Service çalışma alanınız varsa, [sonraki bölüme](#azure)atlayın. Aksi takdirde, şimdi bir tane oluşturun.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -58,10 +56,7 @@ Jupyıter not defterlerini kullanmaya başlamak için çalışma alanınızdan b
 1. Ardından **Oluştur**’u seçin. SANAL makinenizin ayarlanması biraz zaman alabilir.
 
 1. Durum **çalışıyor**olarak değişene kadar bekleyin.
-
-### <a name="launch-jupyter-web-interface"></a>Jupyıter Web arabirimini Başlat
-
-VM 'niz çalıştıktan sonra, Jupyter Web arabirimini başlatmak için **Not defteri VM 'leri** bölümünü kullanın.
+   VM 'niz çalıştıktan sonra, Jupyter Web arabirimini başlatmak için **Not defteri VM 'leri** bölümünü kullanın.
 
 1. VM 'niz için **URI** sütununda **Jupyıter** ' ı seçin.
 
@@ -69,14 +64,6 @@ VM 'niz çalıştıktan sonra, Jupyter Web arabirimini başlatmak için **Not de
 
    Bağlantı, Not defteri sunucunuzu başlatır ve yeni bir tarayıcı sekmesinde Jupyter Not defteri Web sayfasını açar.  Bu bağlantı yalnızca VM 'yi oluşturan kişi için çalışır. Çalışma alanının her bir kullanıcısının kendi sanal makinesini oluşturması gerekir.
 
-1. Jupyter Not defteri Web sayfasında, Kullanıcı adınızı içeren üstteki KlasörAdı öğesini seçin.  
-
-   Bu klasör, Not defteri VM 'sinin kendisi yerine çalışma alanı [depolama hesabında](concept-workspace.md#resources) bulunur.  Not defteri VM 'sini silerseniz, işinizi yine de devam edeceksiniz.  Daha sonra yeni bir not defteri VM 'si oluşturduğunuzda, bu dosya aynı klasöre yüklenir. Çalışma alanınızı başkalarıyla paylaşıyorsanız, klasörünüzü görürler ve onu görürsünüz.
-
-1. `samples-*` Alt dizini açın ve ardından Jupyter Not defterini açın`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > > Aynı adı `tutorial-1st-experiment-sdk-train.ipynb` **değil** `.yml` , dosyayı açtığınızdan emin olun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

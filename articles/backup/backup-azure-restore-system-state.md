@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/18/2017
+ms.date: 08/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: beac49585239a1ecc15588a6c8160bc34c84c6ad
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689138"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210321"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -124,9 +124,9 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 
 1. Sunucunuzu *Dizin Hizmetleri onarım modunda*yeniden başlatmak için aşağıdaki komutları kullanın. Yükseltilmiş bir komut isteminde:
 
-    ```
-    PS C:\> Bcdedit /set safeboot dsrepair
-    PS C:\> Shutdown /r /t 0
+    ```cmd
+    Bcdedit /set safeboot dsrepair
+    Shutdown /r /t 0
     ```
 
 2. Yeniden başlatmadan sonra Windows Server Yedekleme ek bileşenini açın. Ek bileşenin nerede yüklü olduğunu bilmiyorsanız, bilgisayarı veya sunucuyu **Windows Server yedekleme**arayın.
@@ -189,14 +189,14 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa, Wi
 
 5. Komut istemi 'ni yönetici modunda açtığınızda, sistem durumu yedekleme sürümlerini almak için aşağıdaki komutu çalıştırın.
 
-    ```
+    ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
     ![Sistem durumu yedekleme sürümlerini al](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Yedeklemede kullanılabilir tüm birimleri almak için aşağıdaki komutu çalıştırın.
 
-    ```
+    ```cmd
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
@@ -204,7 +204,7 @@ Sistem durumunu uygulamaya yönelik önceki işlem başarıyla tamamlanmazsa, Wi
 
 7. Aşağıdaki komut, sistem durumu yedeklemesinin parçası olan tüm birimleri kurtarır. Bu adımın yalnızca sistem durumunun parçası olan kritik birimleri kurtardığını unutmayın. Tüm sistem dışı veriler silinir.
 
-    ```
+    ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
      ![Sistem durumu yedekleme sürümlerini al](./media/backup-azure-restore-system-state/winre-6.png)

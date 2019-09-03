@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7f3a3ac2559e23eecbab46cb801f73fb09c20211
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036454"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231897"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Hızlı Başlangıç: PowerShell ile Azure Blueprint tanımlama ve atama
 
@@ -397,7 +397,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](./concepts/lifecycle.md) hakkında bilgi edinin.
+- [Şema yaşam döngüsü](./concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](./concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](./concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](./concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

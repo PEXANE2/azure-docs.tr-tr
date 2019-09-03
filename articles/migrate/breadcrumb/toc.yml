@@ -5,3 +5,10 @@
     - name: Geçiş
       tocHref: /azure/
       topicHref: /azure/migrate/index
+- name: Azure
+  tocHref: /sql/
+  topicHref: /azure/index
+  items:
+    - name: Geçiş
+      tocHref: /sql/dma/
+      topicHref: /azure/migrate/index

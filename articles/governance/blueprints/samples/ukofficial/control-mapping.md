@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515619"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231638"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
@@ -35,11 +35,11 @@ Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmaların�
 
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
-- Otomasyon hesabı değişkenlerinin şifrelenmesi gerekir
+- Otomasyon hesabı değişkenleri şifrelenmelidir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
-- SQL veritabanı saydam veri şifrelemesi dağıt
+- SQL DB saydam veri şifrelemesini dağıtma
 - Data Lake Store hesaplarında şifreleme gerektir
 - İzin verilen konumlar ("UK Güney" ve "UK Batı" için sabit olarak kodlanmış)
 - Kaynak grupları için izin verilen konumlar ("UK Güney" ve "UK Batı" olarak kodlanmıştır)
@@ -58,9 +58,9 @@ Bu şema, eksik Endpoint Protection, eksik sistem güncelleştirmeleri, işletim
 
 Bu şema, Kısıtlanmamış erişim, beyaz liste etkinliği ve tehditler üzerinde koruyucu izleme sağlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi varlıklarını korumanıza yardımcı olur.
 
-- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
+- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
-- SQL sunucularına Tehdit Algılama dağıt
+- SQL Server 'lar üzerinde tehdit algılamayı dağıtma
 - Windows Server için varsayılan Microsoft IaaS kötü amaçlı yazılımdan koruma uzantısını dağıt
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 güvenli Kullanıcı Yönetimi/10 kimliği ve kimlik doğrulaması
@@ -111,13 +111,13 @@ Bu şema ayrıca Azure ilke tanımlarını atayarak Azure kaynaklarına erişimi
 - \[Önizleme\]: Parolasız hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
-- Yönetilen diskler kullanmayan VM'leri denetle
+- Yönetilen diskleri kullanmayan VM 'Leri denetleme
 
 ## <a name="11-external-interface-protection"></a>11 harici arabirim koruması
 
 Uygun güvenli Kullanıcı yönetimi için 25 ' ten fazla ilke kullanmaktan başka, bu şema, kısıtlanmamış depolama hesaplarını izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak hizmet arabirimlerini yetkisiz erişimden korumanıza yardımcı olur. Sınırsız erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir. Bu şema ayrıca sanal makinelerde Uyarlamalı uygulama denetimleri sağlayan bir ilke atar.
 
-- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
+- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
 
 ## <a name="12-secure-service-administration"></a>12 güvenli hizmet yönetimi
@@ -153,10 +153,10 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
-- SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server Level denetim ayarlarını denetleme
 - \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
 - \[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
-- Sanal ağlar oluşturulduğunda ağ izleyicisi dağıt
+- Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -168,7 +168,7 @@ UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre,
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

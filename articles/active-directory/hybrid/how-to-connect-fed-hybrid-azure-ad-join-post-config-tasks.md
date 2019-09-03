@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032690"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231246"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılmada yapılandırma sonrası görevler
 
@@ -31,12 +31,12 @@ Kuruluşunuzu karma Azure AD JOIN için yapılandırmak üzere Azure AD Connect 
 Windows 10 ve Windows Server 2016 çalıştıran etki alanına katılmış tüm cihazlar, tüm yapılandırma adımları tamamlandıktan sonra otomatik olarak Azure AD 'ye kaydedilir. Bu otomatik kayıt yerine denetimli bir dağıtımı tercih ediyorsanız, otomatik dağıtımı seçerek etkinleştirmek veya devre dışı bırakmak için Grup İlkesi kullanabilirsiniz.  Bu Grup ilkesi, diğer yapılandırma adımları başlatılmadan önce ayarlanmalıdır:
 * Active Directory bir Grup İlkesi nesnesi oluşturun.
 * Adlandırın (ex-hibrit Azure AD JOIN).
-* Düzenle & şuraya git:  Bilgisayar Yapılandırma > Ilkeleri Yönetim Şablonları > Windows bileşenleri > cihaz kaydı >.
+* Düzenle ve şuraya git:  Bilgisayar Yapılandırma > Ilkeleri Yönetim Şablonları > Windows bileşenleri > cihaz kaydı >.
 
 >[!NOTE]
 >2012R2 için ilke ayarları, **bilgisayar yapılandırması > ilkeler > Yönetim Şablonları > Windows bileşenleri > Workplace Join > çalışma alanına katılma istemci bilgisayarları**
 
-* Bu ayarı devre dışı bırak:  Etki alanına katılmış bilgisayarları cihaz olarak kaydedin.
+* Bu ayarı etkinleştir:  Etki alanına katılmış bilgisayarları cihaz olarak kaydedin.
 * Uygula ve Tamam ' a tıklayın.
 * GPO 'YU tercih ettiğiniz konuma (kuruluş birimi, güvenlik grubu veya tüm cihazların etki alanı) bağlayın.
 

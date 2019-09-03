@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: dee813cbe1da6a6300f65b7005bf4a4b0226112a
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208699"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231049"
 ---
 1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
@@ -28,9 +28,7 @@ ms.locfileid: "70208699"
 
 1. Başlamak için **Machine Learning hizmet çalışma alanı** bölmesinde **Oluştur** ' u seçin.
 
-  
-
-1. Yeni çalışma alanınızı, çalışma alanı adı, abonelik, kaynak grubu ve konum sağlayarak yapılandırın.
+1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
    Alan|Açıklama 
    ---|---

@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515694"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232678"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
@@ -25,7 +25,7 @@ Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. 
 
 Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ağları yönetmenize ve denetlemenize yardımcı olur. Çok izin verilen kurallar istenmeyen ağ erişimine izin verebilir ve incelenmelidir. Bu şema, korumasız uç noktaları, uygulamaları ve depolama hesaplarını izleyen bir Azure ilke tanımı atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
 
-- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
+- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h ve 6.5.3 şifreleme koruması
@@ -34,22 +34,22 @@ Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullan
 
 - İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- API Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
-- Otomasyon hesabı değişkenlerinin şifrelenmesi gerekir
+- Otomasyon hesabı değişkenleri şifrelenmelidir
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir
 - Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir
 - Service Fabric kümelerinde ClusterProtectionLevel özelliği EncryptAndSign olarak ayarlanmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
-- SQL veritabanı saydam veri şifrelemesi dağıt
+- SQL DB saydam veri şifrelemesini dağıtma
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 ve 11.2.1 güvenlik açığı taraması ve sistem güncelleştirmeleri
 
 Bu şema, Azure 'da eksik sistem güncelleştirmelerini, işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur Güvenlik Merkezi. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar.
 
 - Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
-- Windows Server için varsayılan Microsoft IaaSAntimalware uzantısını dağıt
+- Windows Server için varsayılan Microsoft ıaasantimalware uzantısını dağıt
 - SQL Server 'Lar üzerinde tehdit algılamayı dağıtma
 - Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir
 - Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -75,7 +75,7 @@ servislere.
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
-- Özel RBAC kurallarının kullanımını denetleyin
+- Özel RBAC kurallarının kullanımını denetleme
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 sürümlü ve 8.1.5 en az ayrıcalık ve Kullanıcı erişim haklarının Incelenmesi
 
@@ -112,7 +112,7 @@ Tanılama günlükleri, Azure kaynakları içinde gerçekleştirilen işlemlere 
 
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
-- SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server Level denetim ayarlarını denetleme
 - SQL sunucularına Denetim dağıt
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
@@ -134,7 +134,7 @@ PCI-DSS v 3.2.1 Blueprint denetim eşlemesini gözden geçirdiğinize göre, gen
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

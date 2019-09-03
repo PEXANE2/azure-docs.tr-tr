@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
+ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 259c20aead3bbe7b44c59efe031a079ba80e2905
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135050"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232958"
 ---
 ::: zone target="chromeless"
 
@@ -49,7 +50,7 @@ Başlamadan önce [öğreticiyi tamamladığınızdan emin olun: Azure Data Box 
     - İyi güvenli bir kabarcıklanmasını sarması kullanarak disk paketetmenizi öneririz.
     - Kutunun içindeki tüm hareketleri azaltmak için Sığdırma 'nin Snug olduğundan emin olun.
 
-Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir. Yönergeler, Asya 'daki ABD/Kanada, Avustralya veya ülkeler için farklıdır.
+Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir. Yönergeler ABD/Kanada, Avrupa Birliği (AB), Avustralya veya Asya ülkeleri için farklıdır.
 
 ### <a name="pick-up-in-us-canada"></a>ABD, Kanada 'da seçin
 

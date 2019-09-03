@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: juliako
-ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845893"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232603"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -27,6 +27,43 @@ ms.locfileid: "68845893"
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlev
+
+## <a name="august-2019"></a>Ağustos 2019
+ 
+### <a name="video-indexer-deployed-in-uk-south"></a>UK Güney Video Indexer dağıtıldı
+
+Artık UK Güney bölgesinde Video Indexer ücretli bir hesap oluşturabilirsiniz.
+
+### <a name="new-editorial-shot-type-insights-available"></a>Yeni düzenleme resmi türü Öngörüler mevcuttur
+
+Video görüntüleriyle eklenen yeni Etiketler, bunları, içerik oluşturma iş akışında kullanılan yaygın düzenleme tümcecikleriyle tanımlamak için düzenleme "görüntü türleri" sağlar: en çok closeup, wiup, geniş, orta, iki görüntü, dış mek, ınkapılı, sol yüz ve sağ yüz ( JSON).
+
+### <a name="new-people-and-locations-entities-extraction-available"></a>Yeni kişiler ve konumlar varlıkları ayıklama kullanılabilir
+
+Video Indexer, videonun OCR ve dökümünü kullanarak doğal dil işleme (NLP) aracılığıyla adlandırılmış konumları ve kişileri tanımlar. Video Indexer, belirli konumların (örneğin, Eiffel kulede) veya kişilerden (örneğin John tikan) bir videoda nasıl çağrılmakta olduğunu tanımak için makine öğrenimi algoritmasını kullanır.
+
+### <a name="keyframes-extraction-in-native-resolution"></a>Yerel çözünürlükte ana kare ayıklama
+
+Video Indexer tarafından ayıklanan ana kareler, videonun özgün çözünürlüğünde kullanılabilir.
+ 
+### <a name="ga-for-training-custom-face-models-from-images"></a>Görüntülerdeki özel yüz modellerini eğitmek için GA
+
+Önizleme modundan aşağı (API ile ve portalda kullanılabilir) taşınan görüntülerden eğitim yüzeyleri.
+
+> [!NOTE]
+> "GA Önizleme" geçişi ile ilgili bir fiyatlandırma etkisi yoktur.
+
+### <a name="hide-gallery-toggle-option"></a>Galeri değiştirme seçeneğini gizle
+
+Kullanıcı, portalda Galeri sekmesini gizlemeyi seçebilir (örnekler sekmesini gizlemeye benzer).
+ 
+### <a name="maximum-url-size-increased"></a>En büyük URL boyutu artırıldı
+
+Video dizinleme sırasında 4096 (2048 yerine) URL sorgu dizesi desteği.
+ 
+### <a name="support-for-multi-lingual-projects"></a>Çok dilli projeler için destek
+
+Projeler artık farklı dillerde (yalnızca API) dizin oluşturulmuş videolar temel alınarak oluşturulabilir.
 
 ## <a name="july-2019"></a>2019 Temmuz
 

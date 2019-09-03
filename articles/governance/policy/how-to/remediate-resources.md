@@ -7,24 +7,23 @@ ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: ba015a1d5183fcf27cfcc05ef1d0cd838201e91e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88ecb782598cabacc29f97ee3225a5abf280a84
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077111"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232336"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure İlkesi ile uyumlu olmayan kaynakları Düzelt
 
-İçin uyumlu olmayan kaynakları bir **Deployıfnotexists** İlkesi koyabilir ile uyumlu bir duruma **düzeltme**. Azure İlkesi'ı çalıştırmaya yönlendirerek düzeltme gerçekleştirilir **Deployıfnotexists** atanan ilke mevcut kaynaklarınız üzerindeki etkisi. Bu makalede, anlama ve düzeltme Azure İlkesi ile gerçekleştirmek için gerekli olan adımları gösterilmektedir.
+İçin uyumlu olmayan kaynakları bir **Deployıfnotexists** İlkesi koyabilir ile uyumlu bir duruma **düzeltme**. Düzeltme, Azure Ilkesini, var olan kaynaklarınızın atanmış ilkesinin **Deployifnotexists** efektini çalıştıracak şekilde karşılaştırarak gerçekleştirilir. Bu makalede, Azure Ilkesini anlamak ve düzeltmeyi gerçekleştirmek için gereken adımlar gösterilir.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Düzeltme güvenliği nasıl çalışır
 
-Azure İlkesi çalıştırıldığında şablonu **Deployıfnotexists** ilke tanımı, mevcut bunu kullanarak bir [yönetilen kimliği](../../../active-directory/managed-identities-azure-resources/overview.md).
-Azure İlkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimlik vermek üzere hangi rolleri hakkında ayrıntılar olmalıdır. Yönetilen kimlik rolleri eksikse, ilke veya girişim ataması sırasında bu hata görüntülenir. Atama başlatıldıktan sonra portalı kullanırken, Azure ilkesi otomatik olarak yönetilen kimlik listelenen rollere izin vermiş olursunuz.
+Azure Ilkesi, şablonu **Deployifnotexists** ilke tanımında çalıştırdığında, bu, [yönetilen bir kimlik](../../../active-directory/managed-identities-azure-resources/overview.md)kullanılarak yapılır.
+Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimlik rolleri eksikse, ilke veya girişim ataması sırasında bu hata görüntülenir. Portal kullanılırken, Azure Ilkesi, atama başlatıldıktan sonra yönetilen kimliğe listelenen roller için otomatik olarak izin verir.
 
 ![Yönetilen kimlik - eksik rol](../media/remediate-resources/missing-role.png)
 
@@ -53,7 +52,7 @@ az role definition list --name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>Yönetilen kimlik el ile yapılandırma
 
-Portalı kullanarak bir atama oluştururken, Azure ilkesi hem yönetilen kimlik oluşturur ve içinde tanımlanan rolleri verir **roleDefinitionIds**. Aşağıdaki durumlarda, yönetilen bir kimlik oluşturmak ve izinleri atamak için adımları el ile yapılması gerekir:
+Portalı kullanarak bir atama oluştururken, Azure Ilkesi yönetilen kimliği oluşturur ve rol **Definitionıds**içinde tanımlanan rollere izin verir. Aşağıdaki durumlarda, yönetilen bir kimlik oluşturmak ve izinleri atamak için adımları el ile yapılması gerekir:
 
 - (Örneğin, Azure PowerShell) SDK'sı kullanırken
 - Atama kapsamı dışında bir kaynağa şablon tarafından değiştirildiğinde
@@ -83,7 +82,7 @@ $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL D
 
 ### <a name="grant-defined-roles-with-powershell"></a>PowerShell ile rol verme tanımlanan
 
-Gerekli rolleri verilmeden önce yeni bir yönetilen kimlik Azure Active Directory aracılığıyla çoğaltma tamamlamanız gerekir. Çoğaltma tamamlandıktan sonra aşağıdaki örnekte ilke tanımında yinelenen `$policyDef` için **roleDefinitionIds** ve kullandığı [yeni AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) yeni yönetilen kimlik vermek için roller.
+Gerekli rolleri verilmeden önce yeni bir yönetilen kimlik Azure Active Directory aracılığıyla çoğaltma tamamlamanız gerekir. Çoğaltma tamamlandıktan sonra aşağıdaki örnek, `$policyDef` **roledefinitionıds** için içindeki ilke tanımını yineler ve yeni yönetilen kimliğe roller vermek için [New-azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanır.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -127,7 +126,7 @@ Rol atama için yönetilen kimlik eklemek için aşağıdaki adımları izleyin:
 
 ## <a name="create-a-remediation-task"></a>Düzeltme görev oluşturma
 
-### <a name="create-a-remediation-task-through-portal"></a>Portal üzerinden düzeltme görev oluşturma
+### <a name="create-a-remediation-task-through-portal"></a>Portal aracılığıyla düzeltme görevi oluşturma
 
 Değerlendirme, ilke atamasıyla sırasında **Deployıfnotexists** etkisi, uyumlu olmayan kaynakları olup olmadığını belirler. Uyumlu olmayan kaynakları bulunduğunda ayrıntıları sağlanır **düzeltme** sayfası. Uyumlu olmayan kaynakları olan ilkeleri listesinde birlikte tetiklemeye yönelik seçeneği olan bir **düzeltme görev**. Bir dağıtımın ne oluşturur, bu seçenek, **Deployıfnotexists** şablonu.
 
@@ -135,11 +134,11 @@ Oluşturmak için bir **düzeltme görev**, şu adımları izleyin:
 
 1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
-   ![Tüm hizmetler ilkesinde arayın](../media/remediate-resources/search-policy.png)
+   ![Tüm hizmetlerde Ilke ara](../media/remediate-resources/search-policy.png)
 
 1. Seçin **düzeltme** Azure İlkesi sayfasının sol tarafındaki.
 
-   ![Düzeltme İlkesi sayfasında seçin](../media/remediate-resources/select-remediation.png)
+   ![Ilke sayfasında düzeltme ' yi seçin](../media/remediate-resources/select-remediation.png)
 
 1. Tüm **Deployıfnotexists** uyumlu olmayan kaynakları olan ilke atamaları eklenir **düzeltmeye yönelik ilkeler** sekmesi ve veri tablosu. Bir ilkeyle uyumlu olmayan kaynakları tıklayın. **Yeni bir düzeltme görev** sayfası açılır.
 
@@ -148,11 +147,11 @@ Oluşturmak için bir **düzeltme görev**, şu adımları izleyin:
 
 1. Üzerinde **yeni bir düzeltme görev** sayfasında, kaynakları kullanarak düzeltmek için filtre **kapsam** alt kaynakları burada ilkenin atandığı seçmek için üç nokta simgesini (aşağı ayrı kaynak dahil nesneler). Ayrıca, **konumları** daha da fazla filtrelemek için kaynakları açılır. Yalnızca kaynak tabloda listelenen düzeltilebilir.
 
-   ![Düzelt - düzeltmek için kaynakları seçin](../media/remediate-resources/select-resources.png)
+   ![Düzelt-hangi kaynakların düzeltileceği seçin](../media/remediate-resources/select-resources.png)
 
 1. Kaynakları tıklayarak filtrelendi sonra düzeltme görevi Başlat **düzelt**. İlke uyumluluk sayfası açılacak **düzeltme görevleri** görevleri ilerleme durumunu göstermek için sekmesinde.
 
-   ![Düzeltme - düzeltme görevlerin ilerlemesini](../media/remediate-resources/task-progress.png)
+   ![Düzeltme görevlerinin ilerlemesini düzelt](../media/remediate-resources/task-progress.png)
 
 1. Tıklayarak **düzeltme görev** İlkesi uyumluluk sayfasından ilerleme durumu hakkında ayrıntılı bilgi edinmek için. Görev için kullanılan filtreleme düzeltilen kaynakların listesini birlikte gösterilir.
 
@@ -162,9 +161,9 @@ Oluşturmak için bir **düzeltme görev**, şu adımları izleyin:
 
 Dağıtılan kaynakları aracılığıyla bir **düzeltme görev** eklenir **dağıtılan kaynakların** uyumluluk İlkesi sayfasının bir sekmesinde.
 
-### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLI aracılığıyla bir düzeltme görev oluşturun
+### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLı aracılığıyla bir düzeltme görevi oluşturma
 
-Oluşturmak için bir **düzeltme görev** Azure CLI ile kullanmak `az policy remediation` komutları. Değiştirin `{subscriptionId}` yerine abonelik Kimliğinizi ve `{myAssignmentId}` ile **Deployıfnotexists** ilke ataması kimliği.
+Azure CLI ile bir **Düzeltme görevi** oluşturmak için `az policy remediation` komutlarını kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployifnotexists** ilke atama Kimliğinizle değiştirin.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -173,11 +172,11 @@ Oluşturmak için bir **düzeltme görev** Azure CLI ile kullanmak `az policy re
 az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
 ```
 
-Diğer düzeltme komutları ve örnekler için bkz. [az İlkesi düzeltme](/cli/azure/policy/remediation) komutları.
+Diğer düzeltme komutları ve örnekleri için, [az Policy düzeltme](/cli/azure/policy/remediation) komutlarına bakın.
 
-### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell aracılığıyla bir düzeltme görev oluşturun
+### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell aracılığıyla düzeltme görevi oluşturma
 
-Oluşturmak için bir **düzeltme görev** Azure PowerShell ile kullanma `Start-AzPolicyRemediation` komutları. Değiştirin `{subscriptionId}` yerine abonelik Kimliğinizi ve `{myAssignmentId}` ile **Deployıfnotexists** ilke ataması kimliği.
+Azure PowerShell bir **Düzeltme görevi** oluşturmak için `Start-AzPolicyRemediation` komutları kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployifnotexists** ilke atama Kimliğinizle değiştirin.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -186,13 +185,13 @@ Oluşturmak için bir **düzeltme görev** Azure PowerShell ile kullanma `Start-
 Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
 ```
 
-Diğer düzeltme cmdlet ve örnekler için bkz. [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) modülü.
+Diğer düzeltme cmdlet 'leri ve örnekleri için bkz. [az. Policınsıghts](/powershell/module/az.policyinsights/#policy_insights) modülü.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme örneklere [Azure ilkesi örnekleri](../samples/index.md).
+- [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
-- Anlamak için nasıl [programlı olarak ilkeler oluşturma](programmatically-create.md).
-- Bilgi edinmek için nasıl [uyumluluk verilerini alma](getting-compliance-data.md).
-- Bir yönetim grubu olan gözden geçirme [kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](getting-compliance-data.md)öğrenin.
+- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

@@ -476,8 +476,6 @@
               items:
                 - name: SharePoint siteleri
                   href: app/sharepoint.md
-                - name: Dynamics CRM
-                  href: app/sample-mscrm.md
                 - name: Windows masaüstü
                   href: app/windows-desktop.md
         - name: Kapsayıcılar

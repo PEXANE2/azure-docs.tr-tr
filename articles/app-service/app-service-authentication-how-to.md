@@ -4,21 +4,21 @@ description: App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirmey
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098535"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231964"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -130,7 +130,7 @@ Tam nitelikli URL 'Ler kullanılırken, URL aynı etki alanında barındırılı
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-[Azure Cloud Shell](../cloud-shell/quickstart.md)aşağıdaki komutu çalıştırmanız gerekir:
+[Azure Cloud Shell](../cloud-shell/quickstart.md)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -197,7 +197,7 @@ Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-to
 
 Sağlayıcınız yapılandırıldıktan sonra, belirteç deposundaki [erişim belirtecinin yenileme belirtecini ve sona erme zamanını bulabilirsiniz](#retrieve-tokens-in-app-code) . 
 
-Erişim belirtecinizi dilediğiniz zaman yenilemek için, yalnızca herhangi `/.auth/refresh` bir dilde çağrı yapın. Aşağıdaki kod parçacığı bir JavaScript istemcisinden erişim belirteçlerinizi yenilemek için jQuery kullanır.
+Erişim belirtecinizi dilediğiniz zaman yenilemek için herhangi bir dilde çağrı `/.auth/refresh` yapmanız yeterlidir. Aşağıdaki kod parçacığı bir JavaScript istemcisinden erişim belirteçlerinizi yenilemek için jQuery kullanır.
 
 ```JavaScript
 function refreshTokens() {
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Oturum açma hesaplarının etki alanını sınırlayın
 
-Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_, _Live.com_ve _hotmail.com_ hesaplarına izin verir. Azure Active Directory, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Bu davranış, bir _Outlook.com_ hesabı olan herkesin erişmesini istemediğiniz bir iç uygulama için istenmeyen bir durum olabilir. Oturum açma hesaplarının etki alanı adını sınırlandırmak için aşağıdaki adımları izleyin.
+Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_, _Live.com_ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanıza (örneğin `contoso.com`,) doğrudan hızlandırmak isteyebilirsiniz. Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
 
 İçinde [https://resources.azure.com](https://resources.azure.com), **abonelikler** >  **_Abonelikadı\_ ResourceGroups kaynağı ' na gidin\<_**  >  >  **_\<\_ Grup\_ adı >_** **sağlayıcılar Microsoft.** Websiteleri >  **_uygulama adı>\_\<_**  >  >  >  >  **yapılandırma** **authsettings öğesine tıklayın**.  >  
 
@@ -239,6 +239,54 @@ Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+Bu ayar, `domain_hint` sorgu dizesi parametresini, oturum açma yeniden yönlendirme URL 'sine ekler. 
+
+> [!IMPORTANT]
+> Yeniden yönlendirme URL 'sini aldıktan sonra istemcinin `domain_hint` parametresini kaldırması ve sonra farklı bir etki alanı ile oturum açması mümkündür. Bu işlev kullanışlı olsa da, bir güvenlik özelliği değildir.
+>
+
+## <a name="authorize-or-deny-users"></a>Kullanıcılara yetki verme veya reddetme
+
+App Service en basit yetkilendirme durumu (yani, kimliği doğrulanmamış istekleri reddetme) ile ilgilenirken, uygulamanız yalnızca belirli bir kullanıcı grubuyla erişimi sınırlandırma gibi daha ayrıntılı yetkilendirme davranışı gerektirebilir. Belirli durumlarda, oturum açmış kullanıcıya izin vermek veya erişimi reddetmek için özel uygulama kodu yazmanız gerekir. Diğer durumlarda, App Service veya kimlik sağlayıcınız kod değişikliği gerektirmeden yardım edebilir.
+
+- [Sunucu düzeyi](#server-level-windows-apps-only)
+- [Kimlik sağlayıcısı düzeyi](#identity-provider-level)
+- [Uygulama düzeyi](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Sunucu düzeyi (yalnızca Windows uygulamaları)
+
+Herhangi bir Windows uygulaması için, *Web. config* dosyasını düzenleyerek IIS Web sunucusunun yetkilendirme davranışını tanımlayabilirsiniz. Linux uygulamaları IIS kullanmaz ve *Web. config*üzerinden yapılandırılamaz.
+
+1. Gidin `https://<app-name>.scm.azurewebsites.net/DebugConsole`
+
+1. App Service dosyalarınızın tarayıcı Gezgini ' nde, *site/Wwwroot ' ya*gidin. Bir *Web. config* yoksa, **+** **yeni dosya**' yı seçerek  > oluşturun. 
+
+1. *Web. config dosyasını* düzenlemek için kurşun kalem ' i seçin. Aşağıdaki yapılandırma kodunu ekleyin ve **Kaydet**' e tıklayın. *Web. config* zaten mevcutsa, `<authorization>` öğeyi içindeki her şeyi eklemeniz yeterlidir. `<allow>` Öğesinde izin vermek istediğiniz hesapları ekleyin.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Kimlik sağlayıcısı düzeyi
+
+Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örneğin:
+
+- [Azure App Service](configure-authentication-provider-aad.md)için, [Kurumsal düzeyde ERIŞIMI](../active-directory/manage-apps/what-is-access-management.md) doğrudan Azure AD 'de yönetebilirsiniz. Yönergeler için bkz. [kullanıcının bir uygulamaya erişimini kaldırma](../active-directory/manage-apps/methods-for-removing-user-access.md).
+- [Google](configure-authentication-provider-google.md)için, bir [kuruluşa](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) ait Google API projeleri yalnızca kuruluşunuzdaki kullanıcılara erişime izin verecek şekilde yapılandırılabilir (bkz. [Google 'ın **OAuth 2,0** destek sayfasını ayarlama](https://support.google.com/cloud/answer/6158849?hl=en)).
+
+### <a name="application-level"></a>Uygulama düzeyi
+
+Diğer düzeylerin herhangi biri ihtiyacınız olan yetkilendirmeyi sağlamıyorsa veya platformunuz veya kimlik sağlayıcınız desteklenmiyorsa, [Kullanıcı taleplerine](#access-user-claims)göre kullanıcılara yetki vermek için özel kod yazmanız gerekir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]

@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640133"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231195"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Öğretici: Tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 
@@ -58,7 +58,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="create-firewall-rules"></a>Güvenlik duvarı kuralları oluşturma
 
-SQL veritabanları, Azure 'daki güvenlik duvarları tarafından korunur. Varsayılan olarak, diğer Azure hizmetlerinden gelen bağlantılar dışında sunucu ve veritabanına yönelik tüm bağlantılar reddedilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı sunucu düzeyi ve veritabanı düzeyinde güvenlik duvarı kuralları](sql-database-firewall-configure.md).
+SQL veritabanları, Azure 'daki güvenlik duvarları tarafından korunur. Varsayılan olarak, sunucu ve veritabanına yönelik tüm bağlantılar reddedilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı sunucu düzeyi ve veritabanı düzeyinde güvenlik duvarı kuralları](sql-database-firewall-configure.md).
 
 En güvenli yapılandırma için **Azure hizmetlerine erişime Izin ver** ' i **kapalı** olarak ayarlayın. Ardından, bağlanması gereken kaynak için bir Azure VM veya bulut hizmeti gibi [ayrılmış BIR IP (klasik dağıtım)](../virtual-network/virtual-networks-reserved-public-ip.md) oluşturun ve yalnızca bu IP adresinin güvenlik duvarı üzerinden erişimine izin verin. [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) dağıtım modelini kullanıyorsanız, her kaynak için adanmış BIR genel IP adresi gereklidir.
 
@@ -87,9 +87,6 @@ Sunucu düzeyinde bir güvenlik duvarı kuralı kurmak için:
    1. **Tamam** ' ı seçin ve **güvenlik duvarı ayarları** sayfasını kapatın.
 
 Artık sunucuda belirtilen IP adresine veya IP adresi aralığına sahip herhangi bir veritabanına bağlanabilirsiniz.
-
-> [!IMPORTANT]
-> Varsayılan olarak, SQL veritabanı güvenlik duvarı üzerinden erişim, **Azure hizmetlerine erişime Izin ver**altında tüm Azure hizmetleri için etkinleştirilmiştir. Tüm Azure hizmetlerine erişimi devre dışı bırakmak için **kapalı** ' yı seçin.
 
 ### <a name="setup-database-firewall-rules"></a>Kurulum veritabanı güvenlik duvarı kuralları
 

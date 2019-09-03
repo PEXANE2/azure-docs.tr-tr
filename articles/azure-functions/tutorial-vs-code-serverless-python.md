@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170704"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233113"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Visual Studio Code ile Azure Işlevlerine Python dağıtma
 
@@ -207,7 +207,7 @@ Kodun önemli bölümleri aşağıdaki gibidir:
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
-1. İşlevler projesini oluşturduğunuzda Visual Studio Code uzantısı, ' de **Python işlevlerine Ekle**adlı tek bir yapılandırma içeren `.vscode/launch.json` ' de bir başlatma yapılandırması oluşturur. Bu yapılandırma, projeyi başlatmak için F5 'e basabilir veya hata ayıklama Gezginini kullanmanıza olanak sağlar:
+1. İşlevler projesini oluşturduğunuzda Visual Studio Code uzantısı, ' de **Python işlevlerine Ekle**adlı tek bir yapılandırma içeren `.vscode/launch.json` ' de bir başlatma yapılandırması oluşturur. Bu yapılandırma, projeyi başlatmak için yalnızca **F5** 'i seçebileceğiniz veya hata ayıklama Gezginini kullanabileceğiniz anlamına gelir:
 
     ![Işlev başlatma yapılandırmasını gösteren gezgin hata ayıkla](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -393,7 +393,7 @@ Portalda yaptığınız herhangi bir değişikliği veya **Azure Gezgini** 'ni *
     }
     ```
 
-1. F5 tuşuna basarak veya hata**ayıklamayı Başlat** menü komutunu > seçerek hata ayıklayıcıyı başlatın. **Çıkış** penceresinde artık her iki uç nokta de projenizde gösterilmektedir:
+1. **F5** ' i seçerek veya hata**ayıklamayı Başlat** menü > komutunu seçerek hata ayıklayıcıyı başlatın. **Çıkış** penceresinde artık her iki uç nokta de projenizde gösterilmektedir:
 
     ```output
     Http Functions:
@@ -479,15 +479,15 @@ Bu bölümde, bu öğreticide daha önce oluşturulan HttpExample işlevine bir 
             )
     ```
 
-1. Bu değişiklikleri yerel olarak test etmek için F5 'e basarak veya hata**ayıklamayı Başlat** menü komutunu seçerek > Visual Studio Code hata ayıklayıcıyı yeniden başlatın. **Çıkış** penceresinde olduğu gibi, projenizdeki uç noktaları göstermemelidir.
+1. Bu değişiklikleri yerel olarak test etmek için **F5** ' i seçerek veya hata**ayıklamayı Başlat** menü komutunu seçerek > Visual Studio Code hata ayıklayıcıyı yeniden başlatın. **Çıkış** penceresinde olduğu gibi, projenizdeki uç noktaları göstermemelidir.
 
 1. Bir tarayıcıda, httpexample uç noktasına `http://localhost:7071/api/HttpExample?name=VS%20Code` bir istek oluşturmak için URL 'yi ziyaret ederek sıraya bir ileti de yazmanız gerekir.
 
 1. İletinin "outqueue" kuyruğuna yazıldığını doğrulamak için (bağlamada adlandırılmış olarak), üç yöntemden birini kullanabilirsiniz:
 
-    1. [Azure Portal](https://portal.azure.com)oturum açın ve işlevler projenizi içeren kaynak grubuna gidin. Bu kaynak grubu içinde, yerel ve proje için depolama hesabına gidin ve **Kuyruklar**' a gidin. Bu sayfada, günlüğe kaydedilen tüm iletileri görüntülemesi gereken "outqueue" ("outqueue") bölümüne gidin.
+    1. [Azure Portal](https://portal.azure.com)oturum açın ve işlevler projenizi içeren kaynak grubuna gidin. Bu kaynak grubunda, projenin depolama hesabını bulup açın ve **Kuyruklar**' a gidin. Bu sayfada, tüm günlüğe kaydedilen iletileri görüntülemesi gereken "outqueue" seçeneğine gidin.
 
-    1. Visual Studio ile tümleşen Azure Depolama Gezgini, [Visual Studio Code kullanarak Işlevleri Azure depolama 'Ya bağlama](functions-add-output-binding-storage-queue-vs-code.md)bölümünde açıklandığı gibi, özellikle de [Çıkış kuyruğunu İncele bölümünü inceleyerek](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) , sırayı inceleyin ve inceleyin.
+    1. Bu sırayı, Visual Studio ile tümleşen Azure Depolama Gezgini, [Visual Studio Code kullanarak Işlevleri Azure depolama 'Ya bağlama](functions-add-output-binding-storage-queue-vs-code.md)bölümünde açıklandığı gibi, özellikle de [çıkış sırasını İnceleme](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) bölümünü kullanarak açın ve inceleyin.
 
     1. Depolama kuyruğunu [sorgulama](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue)bölümünde açıklandığı gibi, depolama kuyruğunu sorgulamak IÇIN Azure CLI 'yi kullanın.
     

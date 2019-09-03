@@ -5,18 +5,18 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491752"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232195"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery ile hangi iş yüklerini koruyabilirsiniz?
 
-Bu makalede iş yükleri ve uygulamalar için olağanüstü durum kurtarma ile Koruyabileceğiniz [Azure Site Recovery](site-recovery-overview.md) hizmeti.
+Bu makale, [Azure Site Recovery](site-recovery-overview.md) hizmetiyle olağanüstü durum kurtarma için koruyabileceğiniz iş yüklerini ve uygulamaları açıklar.
 
 
 
@@ -35,13 +35,13 @@ Site Recovery, uygulama düzeyinde koruma ve kurtarmaya şu yollarla katkıda bu
 * Desteklenen makinede çalışan iş yükleri için uygulaması belirsiz çoğaltma.
 * En önemli iş uygulamalarının ihtiyaçlarını karşılamak üzere 30 saniye kadar kısa RPO değerleriyle neredeyse tamamen zaman uyumlu çoğaltma.
 * Tek veya çok katmanlı uygulamalar için uygulamayla tutarlı anlık görüntüler.
-* AD çoğaltma, SQL AlwaysOn, Exchange veritabanı kullanılabilirlik grupları (Dag'ler) dahil olmak üzere diğer uygulama düzeyi çoğaltma teknolojileriyle ortaklık yanı sıra SQL Server AlwaysOn ile tümleştirme.
+* AD Çoğaltma, SQL AlwaysOn, Exchange veritabanı kullanılabilirlik grupları (dag 'ler) dahil olmak üzere SQL Server AlwaysOn ve diğer uygulama düzeyi çoğaltma teknolojileriyle iş ortaklığı ile tümleştirme.
 * Uygulama yığınınızın tümünü tek tıklamayla kurtarmanıza ve harici betiklerin yanı sıra kendi eylemlerinizi de dahil etmenize olanak sağlayan esnek kurtarma planları.
 * Site Recovery'de ve Azure'da bulunan, IP adreslerini ayırabilme, yük dengelemeyi yapılandırabilme ve düşük RTO ağ geçişleri için Azure Traffic Manager ile tümleştirme özelliklerini içeren, uygulama ağ gereksinimlerini basitleştirmeye yönelik gelişmiş ağ yönetimi.
 * İndirilebilen ve kurtarma planlarıyla tümleştirilebilen üretime hazır ve uygulamaya özgü betikler sağlayan zengin bir otomasyon kitaplığı.
 
 ## <a name="workload-summary"></a>İş yükü özeti
-Site Recovery, desteklenen bir makinede çalışan herhangi bir uygulamayı çoğaltabilir. Ayrıca, uygulamaya özgü ek testler yapmak için ürün ekipleriyle de ortaklıklar kurduk.
+Site Recovery, desteklenen bir makinede çalışan herhangi bir uygulamayı çoğaltabilir. Ayrıca, tabloda belirtilen uygulamalar için ek test yürütmek üzere ürün ekipleriyle işbirliği yaptık.
 
 | **İş yükü** |**Azure VM’lerini Azure’a çoğaltma** |**Hyper-V VM'lerini ikincil bir siteye çoğaltma** | **Hyper-V VM'lerini Azure'a çoğaltma** | **VMware VM'lerini ikincil bir siteye çoğaltma** | **VMware VM'lerini Azure'a çoğaltma** |
 | --- | --- | --- | --- | --- |---|

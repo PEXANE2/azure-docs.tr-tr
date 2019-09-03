@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051634"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231109"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
@@ -34,6 +34,29 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
 
 Öğreticinin bu bölümünde, birinci bölüm sonunda açılan örnek bir Jupyter Not defteri `tutorials/tutorial-1st-experiment-sdk-train.ipynb` içinde kodu çalıştırırsınız. Bu makalede, not defterindeki aynı koda adım adım yol gösterilir.
+
+## <a name="launch-jupyter-web-interface"></a>Jupyıter Web arabirimini Başlat
+
+1. Azure portal çalışma alanı sayfanızda, sol taraftaki **Not defteri VM** 'lerini seçin.
+
+1. Bu öğreticinin birinci bölümünde oluşturduğunuz VM için **URI** sütununda **jupo** ' ı seçin.
+
+    ![Jupyter Not defteri sunucusunu başlatma](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   Bağlantı, Not defteri sunucunuzu başlatır ve yeni bir tarayıcı sekmesinde Jupyter Not defteri Web sayfasını açar.  Bu bağlantı yalnızca VM 'yi oluşturan kişi için çalışır. Çalışma alanının her bir kullanıcısının kendi sanal makinesini oluşturması gerekir.
+
+1. Jupyter Not defteri Web sayfasında, Kullanıcı adınızı içeren üstteki KlasörAdı öğesini seçin.  
+
+
+   Bu klasör, Not defteri VM 'sinin kendisi yerine çalışma alanı [depolama hesabında](concept-workspace.md#resources) bulunur.  Not defteri VM 'sini silerseniz, işinizi yine de devam edeceksiniz.  Daha sonra yeni bir not defteri VM 'si oluşturduğunuzda, bu dosya aynı klasöre yüklenir. Çalışma alanınızı başkalarıyla paylaşıyorsanız, klasörünüzü görürler ve onu görürsünüz.
+
+1. `samples-*` Alt dizini açın ve ardından Jupyter Not defterini açın`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+   > [!Warning]
+   > > Aynı adı `tutorial-1st-experiment-sdk-train.ipynb` **değil** `.yml` , dosyayı açtığınızdan emin olun. 
+
+1. Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  Kodu çalıştırmak istiyorsanız şimdi not defterine geçin.
+
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
 

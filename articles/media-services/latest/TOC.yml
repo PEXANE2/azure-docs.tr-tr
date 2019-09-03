@@ -48,6 +48,7 @@
       items:
         - name: Varlıklar
           href: assets-concept.md
+          displayName: naming
     - name: Encoding
       items:
         - name: Genel Bakış
@@ -162,6 +163,7 @@
               href: job-error-codes.md
     - name: v2’den v3’e geçiş kılavuzu
       href: migrate-from-v2-to-v3.md
+      displayName: naming
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Başlarken

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 5883c1aa20af106dd39bffc95036ee90f312ffea
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051599"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231024"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -96,7 +96,7 @@ Media Services v3 sürümünde canlı akış iş akışını anlamak için önce
     * Canlı etkinliği durdurun. Canlı etkinlik durdurulduktan sonra ücret ödemeyecektir. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
     * Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı etkinlik durdurulmuş durumdaysa, hiçbir ücret ödemeyecektir.
 
-Canlı olay durdurulduğunda olayları otomatik olarak isteğe bağlı içeriğe dönüştürür. Olayı durdurduktan ve sildikten sonra dahi, varlığı silmeniz sürece, kullanıcılar arşivlenen içeriğinizin isteğe bağlı içerik olarak akışını gerçekleştirebilir. Bir olay tarafından kullanılıyorsa varlık silinemez; önce olayın silinmesi gerekir.
+Canlı çıktının Arşivlenmesi gereken varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. Durdurulduğunda canlı çıktıları otomatik olarak kaldırmak için, bir [Removeoutputsonstop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) isteğe bağlı bayrağını kullanabilirsiniz. 
 
 > [!TIP]
 > [Canlı akış öğreticisine](stream-live-tutorial-with-api.md)bakın. makalede yukarıda açıklanan adımları uygulayan kod incelandı.

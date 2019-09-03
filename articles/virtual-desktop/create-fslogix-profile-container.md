@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051991"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233260"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -218,7 +218,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu ANF-SMB-3863.gt1107.onmicrosoft.com \\\\ANF-Vol ' dır \\).
 
-   Bu klasör içinde, aşağıdaki örnekteki gibi bir profil VHD 'SI olmalıdır.
+   Bu klasör içinde, aşağıdaki örnekte olduğu gibi bir profil VHD (veya VHDX) olmalıdır.
 
    ![Bağlama yolundaki klasörün içindekilerin ekran görüntüsü. İçinde, "Profile_ssbb" adlı tek bir VHD dosyası.](media/mount-path-folder.png)
 

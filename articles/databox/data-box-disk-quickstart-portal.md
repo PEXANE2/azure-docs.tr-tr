@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186701"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232899"
 ---
 ::: zone target="docs"
 
@@ -67,7 +67,7 @@ Başlamadan önce:
 > - **Bağlan ve kilidini aç**: Cihazı bağlayın ve verileri kopyalamak için diskin kilidini açın.
 > - **Verileri diske kopyalayın ve doğrulayın**: Verileri disklere, önceden düzenlenen klasörlere kopyalayın.
 > - **Diskleri döndürün**: Diskleri depolama hesabınıza yüklenen Azure veri merkezine döndürün.
-> - **Azure 'daki verileri doğrulayın**: Kaynak Tarih sunucusundan silmeden önce verilerinizin depolama hesabınıza yüklendiğini doğrulayın.
+> - **Azure 'daki verileri doğrulayın**: Kaynak veri sunucusundan silmeden önce verilerinizin depolama hesabınıza yüklendiğini doğrulayın.
 
 ::: zone-end
 

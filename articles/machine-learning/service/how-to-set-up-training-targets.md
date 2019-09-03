@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195566"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231093"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 
@@ -422,6 +422,19 @@ az ml folder attach
 ```
 
 Bu komut, farklı işlem `.azureml` hedeflerine yönelik yapılandırma dosyalarını çalıştıran şablon içeren bir alt klasör oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
+
+### <a name="structure-of-run-configuration-file"></a>Çalışma yapılandırma dosyasının yapısı
+
+Çalışma yapılandırma dosyası, aşağıdaki bölümlerle, YAML olarak biçimlendirilir
+ * Çalıştırılacak betiği ve bağımsız değişkenlerini
+ * İşlem hedefi adı, "yerel" veya çalışma alanı altında bir işlem adı.
+ * Çalıştırmayı yürütmek için Parametreler: Framework, dağıtılmış çalıştırmalar için Communicator, maksimum süre ve işlem düğümleri sayısı.
+ * Ortam bölümü. Bu bölümdeki alanların ayrıntıları için [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md) bölümüne bakın.
+   * Çalıştırma için yüklenecek Python paketlerini belirtmek için [Conda ortam dosyası](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)oluşturun ve __Condadbağımlıcıesfile__ alanını ayarlayın.
+ * Günlük dosyası klasörünü belirtmek ve çıkış toplamayı etkinleştirmek veya devre dışı bırakmak ve geçmiş anlık görüntülerini çalıştırmak için geçmiş ayrıntılarını çalıştırın.
+ * Seçili çerçeveye özgü yapılandırma ayrıntıları.
+ * Veri başvurusu ve veri deposu ayrıntıları.
+ * Yeni bir küme oluşturmak için Machine Learning İşlem özgü yapılandırma ayrıntıları.
 
 ### <a name="create-an-experiment"></a>Deneme oluşturma
 

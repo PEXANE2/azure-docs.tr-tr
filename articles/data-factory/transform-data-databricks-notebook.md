@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: djpmsft
-ms.author: daperlov
+author: nabhishek
+ms.author: abnarain
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: db437c7699c7fddc2b04175537446f53c4c4bc85
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140824"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233067"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Not defteri çalıştırarak verileri dönüştürme
 
@@ -111,6 +111,19 @@ Yukarıdaki databricks etkinlik tanımında şu kitaplık türlerini belirtirsin
 ```
 
 Daha ayrıntılı bilgi için bkz. kitaplık türleri için [Databricks belgeleri](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) .
+
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Not defterleri ve Data Factory arasında parametreleri geçirme
+
+Databricks etkinliğinde *Baseparameters* özelliğini kullanarak, Veri Fabrikası parametrelerini not defterlerine geçirebilirsiniz. 
+
+Belirli durumlarda, veri fabrikasında denetim akışı (koşullu denetimler) için kullanılabilecek veya aşağı akış etkinlikleri tarafından tüketilen (boyut sınırı 2MB), belirli değerleri not defteri 'nden Data Factory 'ye geri geçirmeniz gerekebilir. 
+
+1. Not defterinizde [dbutils. Not defteri. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) ve karşılık gelen "ReturnValue" de Data Factory 'ye döndürülür.
+
+2. Veri fabrikasında, gibi bir ifade `'@activity('databricks notebook activity name').output.runOutput'`kullanarak çıktıyı kullanabilirsiniz. 
+
+   > [!IMPORTANT]
+   > JSON nesnesi geçirçalışıyorsanız, özellik adlarını ekleyerek değerleri alabilirsiniz. Örnek: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks 'te bir kitaplığı karşıya yükleme
 

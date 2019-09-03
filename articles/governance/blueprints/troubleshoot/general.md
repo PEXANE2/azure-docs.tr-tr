@@ -1,75 +1,74 @@
 ---
 title: Sık karşılaşılan hataları giderme
-description: Oluşturma, atama ve şemaları kaldırma sorunlarını giderme hakkında bilgi edinin.
+description: Şemaları oluşturma, atama ve kaldırma ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cbefcbadc14c1249d2783f1539e40c99c3be66c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60874969"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231556"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Kullanarak Azure şemaları hatalarıyla ilgili sorunları giderme
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
-Oluştururken ya da bir blueprint'i atama hatalarla karşılaşırsanız çalıştırabilirsiniz. Bu makalede, oluşabilecek çeşitli hataları ve bunların nasıl çözüleceğine açıklanır.
+Şemaları oluştururken veya atarken hatalarla karşılaşabilirsiniz. Bu makalede, oluşabilecek çeşitli hatalar ve bunların nasıl çözümleneceği açıklanmaktadır.
 
-## <a name="finding-error-details"></a>Bulma hatası ayrıntıları
+## <a name="finding-error-details"></a>Hata ayrıntılarını bulma
 
-Birçok hata, bir şema bir kapsama atama sonucunu olacaktır. Atama başarısız olduğunda, şema dağıtımı başarısız hakkında ayrıntılar sağlar. Bu bilgiler, böylece sonraki dağıtım başarılı olduktan ve düzeltilebilir sorunu gösterir.
+Birçok hata, bir kapsamda şema atamanın sonucu olacaktır. Bir atama başarısız olduğunda, şema başarısız dağıtım hakkında ayrıntılar sağlar. Bu bilgiler sorunu çözülecektir ve sonraki dağıtım başarılı olur.
 
-1. Seçin **tüm hizmetleri** sol bölmesinde. Arayın ve seçin **şemaları**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Seçin **şemaları atanan** blueprint ataması başarısız atamanın bulmak için filtre uygulamak için arama kutusunu kullanın ve sol sayfasında. Tablosu atamaları göre de sıralayabilirsiniz **sağlama durumu** tüm başarısız atamalar görmek için sütun gruplandırıldığı.
+1. Sol taraftaki sayfadan **atanan** şemalar ' ı seçin ve başarısız atamayı bulmak için şema atamalarını filtrelemek için arama kutusunu kullanın. Ayrıca, tüm başarısız atamaları birlikte gruplanmış olarak görmek için Atamalar tablosunu **sağlama durumu** sütununa göre sıralayabilirsiniz.
 
-1. Sol tıklatma ile şema üzerinde _başarısız_ durumu veya sütuna sağ tıklayıp **atama ayrıntıları görüntüle**.
+1. _Hatalı_ duruma sahip şema üzerine sol tıklayın veya sağ tıklayıp **atama ayrıntılarını görüntüle**' yi seçin.
 
-1. Atama başarısız oldu uyarı kırmızı bir başlık blueprint ataması sayfanın en üstündeki ' dir. Daha fazla bilgi almak için başlık herhangi bir yere tıklayın.
+1. Atamanın başarısız olduğu kırmızı bir başlık, BLUEPRINT atama sayfasının en üstünde yer alan bir uyarı. Daha fazla ayrıntı edinmek için başlık üzerinde herhangi bir yere tıklayın.
 
-Blueprint bir bütün olarak değil ve bir yapıt tarafından neden olduğu hata yaygındır. Bir yapının bir Key Vault oluşturur ve Azure İlkesi, anahtar kasası oluşturmayı engeller, tüm atama başarısız olur.
+Hatanın bir bütün olarak değil bir yapıtın neden olması yaygındır. Bir yapıt Key Vault oluşturursa ve Azure Ilkesi Key Vault oluşturmayı engelliyorsa, tüm atama başarısız olur.
 
-## <a name="general-errors"></a>Genel hata
+## <a name="general-errors"></a>Genel hatalar
 
-### <a name="policy-violation"></a>Senaryo: İlke ihlali
-
-#### <a name="issue"></a>Sorun
-
-Şablon dağıtımı ilke ihlali nedeniyle başarısız oldu.
-
-#### <a name="cause"></a>Nedeni
-
-Bir ilke için pek çok dağıtımı ile çakışıyor:
-
-- Oluşturulan kaynak (genellikle SKU veya konum kısıtlamaları) ilkesi tarafından kısıtlanıyor
-- Dağıtım, ilke (etiketlerle yaygındır) tarafından yapılandırılan alanlar ayarlama
-
-#### <a name="resolution"></a>Çözüm
-
-Hata ayrıntılarında ilkelerle çakışmadığından biçimde şemayı değiştirin. Bu değişiklik mümkün değilse, alternatif bir seçenek şema çakışıyor İlkesi artık, bu nedenle değiştirilen bir ilke ataması kapsamı sağlamaktır.
-
-### <a name="escape-function-parameter"></a>Senaryo: Blueprint parametresi bir işlev değil
+### <a name="policy-violation"></a>Senaryon İlke Ihlali
 
 #### <a name="issue"></a>Sorun
 
-İşlevleri şema parametreleri yapıtları iletilmeden önce işlenir.
+İlke ihlali nedeniyle şablon dağıtımı başarısız oldu.
 
 #### <a name="cause"></a>Nedeni
 
-Blueprint parametresi geçirmeden kullanan bir işlev gibi `[resourceGroup().tags.myTag]`, dinamik işlevi yerine yapıt üzerinde ayarlanan işlevi gören sonucunu bir yapıt sonuçlanır.
+Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
+
+- Oluşturulan kaynak ilkeyle kısıtlıdır (genellikle SKU veya konum kısıtlamaları)
+- Dağıtım, ilke tarafından yapılandırılan alanları ayarlıyor (etiketlerle ortak)
 
 #### <a name="resolution"></a>Çözüm
 
-Bir işlev aracılığıyla bir parametre olarak geçirmek için tüm dize ile kaçış `[` blueprint parametresi şuna benzer şekilde `[[resourceGroup().tags.myTag]`. Kaçış karakteri değeri bir dize olarak şema işleme sırasında değerlendirilecek şemaları neden olur. Blueprint beklendiği gibi dinamik olarak izin veren yapıt üzerinde ardından işlev yerleştirir. Daha fazla bilgi için [şablon dosya yapısı - söz dizimi](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
+Şema, hata ayrıntılarında ilkelerle çakışmayacak şekilde değiştirin. Bu değişiklik mümkün değilse, ilke atamasının kapsamının, şema ile çakışmadan, artık ilkeyle çakışmamasını sağlamak için alternatif bir seçenek bulunur.
+
+### <a name="escape-function-parameter"></a>Senaryon Blueprint parametresi bir işlevdir
+
+#### <a name="issue"></a>Sorun
+
+İşlevler olan Blueprint parametreleri yapıtlara geçirilmeden önce işlenir.
+
+#### <a name="cause"></a>Nedeni
+
+Bir yapıtı gibi bir işlevi `[resourceGroup().tags.myTag]`kullanan bir şema parametresini geçirmek, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
+
+#### <a name="resolution"></a>Çözüm
+
+Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi `[` , şema parametresi gibi `[[resourceGroup().tags.myTag]`görünen şekilde kaçış. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [şablon dosya yapısı-söz dizimi](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediniz veya sorununuzu çözmenize yüklenemiyor, daha fazla destek için aşağıdaki kanalları birini ziyaret edin:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-- Aracılığıyla Azure uzmanlarından cevaplar [Azure forumları](https://azure.microsoft.com/support/forums/).
+- Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 - [@AzureSupport](https://twitter.com/azuresupport) hesabı ile bağlantı kurun. Bu resmi Microsoft Azure hesabı, müşteri deneyimini geliştirmek için Azure topluluğunu doğru kaynaklara ulaştırır: yanıtlar, destek ve uzmanlar.
-- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) seçip **alma desteği**.
+- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

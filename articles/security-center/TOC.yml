@@ -4,8 +4,10 @@
   items:
     - name: Güvenlik Merkezi hakkında
       href: security-center-intro.md
-    - name: Güvenlik Merkezi’nin desteklenen platformları ve özellikleri
+    - name: Desteklenen platformlar
       href: security-center-os-coverage.md
+    - name: Desteklenen özellikler
+      href: security-center-services.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

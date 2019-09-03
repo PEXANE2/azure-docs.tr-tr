@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845660"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230973"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -151,7 +151,7 @@ Azure 'a çoğaltılan şirket içi VM 'Lerin bu tabloda özetlenen Azure VM ger
 **Bileşen** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
 Konuk işletim sistemi | Site Recovery, [Azure tarafından desteklenen](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)tüm işletim sistemlerini destekler.  | Desteklenmiyorsa önkoşul denetimi başarısız olur.
-Konuk işletim sistemi mimarisi | 64 bit | Desteklenmiyorsa önkoşul denetimi başarısız olur.
+Konuk işletim sistemi mimarisi | 32-bit (Windows Server 2008)/64-bit | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 İşletim sistemi disk boyutu | 1\. nesil VM 'Ler için 2.048 GB 'a kadar.<br/><br/> 2\. nesil VM 'Ler için 300 GB 'a kadar.  | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 İşletim sistemi disk sayısı | 1\. | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 Veri diski sayısı | 16 veya daha az  | Desteklenmiyorsa önkoşul denetimi başarısız olur.
@@ -166,13 +166,13 @@ VM türü | 1\. nesil<br/><br/> 2\. nesil--Windows | Temel bir işletim sistemi 
 
 ## <a name="recovery-services-vault-actions"></a>Kurtarma Hizmetleri Kasası eylemleri
 
-**Eylem** |  **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
+**Eylem** |  **VMM ile Hyper-V** | **VMM olmadan Hyper-V**
 --- | --- | ---
 Kasayı kaynak grupları arasında taşıma<br/><br/> Abonelikler içinde ve genelinde | Hayır | Hayır
 Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma<br/><br/> Abonelikler içinde ve genelinde | Hayır | Hayır
 
 > [!NOTE]
-> Hyper-VM 'Lerin Şirket içinden Azure 'a çoğaltma (SCVMM olmadan yönetilen), Hyper-V sitesi veya SCVMM için geçerli olan tek bir AD kiracıya çoğaltabilirsiniz.
+> Hyper-VM 'Leri Şirket içinden Azure 'a çoğalttığınızda, belirli bir ortamdan (Hyper-V sitesi veya Hyper-V ' d e, uygun şekilde) yalnızca bir AD kiracıya çoğaltabilirsiniz.
 
 
 ## <a name="provider-and-agent"></a>Sağlayıcı ve aracı

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899698"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233242"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -154,7 +154,7 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 
 Tanılama aracı için Azure Kaynak Yönetimi şablonunu dağıtmak için:
 
-1.  GitHub Azure RDS-templates sayfasına gidin.
+1.   [GitHub Azure RDS-templates sayfasına](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)gidin.
 2.  Şablonu Azure 'a dağıtın ve şablondaki yönergeleri izleyin. Aşağıdaki bilgilerin kullanılabilir olduğundan emin olun:
 
     -   İstemci kimliği

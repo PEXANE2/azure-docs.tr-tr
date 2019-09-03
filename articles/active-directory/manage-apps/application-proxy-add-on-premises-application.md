@@ -12,12 +12,12 @@ ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd5b1ffa2d66135e0068ef9f459843d616351c19
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162607"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231265"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -69,7 +69,7 @@ TLS 1.2 etkinleştirmek için:
 1. Sunucuyu yeniden başlatın.
 
 > [!IMPORTANT]
-> Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, yalnızca TLS 1,2 protokollerine erişimi sınırlamak üzere uygulama proxy 'Si hizmetine yönelik güncelleştirmeler yapıyoruz. Müşteri hazırlığı değişikliklerine bağlı olarak, yalnızca TLS 1,2 protokollerini kullanan müşterilere giderek bu değişiklikten herhangi bir etkisi görmez. TLS 1,0 ve 1,1 kullanımdan kaldırma 2019, 31 Ağustos 'ta tamamlanır ve müşteriler bu değişikliğe hazırlanmak için öncelikli bir bildirim alır. Bu değişikliğe hazırlanmak için tüm istemci-sunucu ve tarayıcı-sunucu birleşimlerinin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) için hazırlanma.
+> Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) için hazırlanma.
 
 ## <a name="prepare-your-on-premises-environment"></a>Şirket içi ortamınızı hazırlama
 

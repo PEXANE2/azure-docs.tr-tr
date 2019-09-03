@@ -1,10 +1,10 @@
 ---
-title: Azure Güvenlik Merkezi tarafından desteklenen özellikler ve platformlar | Microsoft Docs
-description: Bu belge, Azure Güvenlik Merkezi tarafından desteklenen özelliklerin ve platformların bir listesini sağlar.
+title: Azure Güvenlik Merkezi tarafından desteklenen platformlar | Microsoft Docs
+description: Bu belge, Azure Güvenlik Merkezi tarafından desteklenen platformların bir listesini sağlar.
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
@@ -12,28 +12,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/03/2019
+ms.date: 8/29/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c094ef5f3e7c7bfa96f95264e137fd8938296bb4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640795"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232210"
 ---
-# <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler
+# <a name="supported-platforms"></a>Desteklenen platformlar 
 
-Hem klasik hem de Kaynak Yöneticisi dağıtım modelleri ve Bilgisayarları kullanılarak oluşturulan sanal makineler (VM) için güvenlik durumu izleme ve öneriler mevcuttur.
+## Sanal makineler/sunucular<a name="vm-server"></a>
+
+Güvenlik Merkezi, farklı türlerde karma ortamlarda sanal makineleri/sunucuları destekler:
+
+* Yalnızca Azure
+* Azure ve şirket içi
+* Azure ve diğer bulutlar
+* Azure, diğer bulutlar ve şirket içi
+
+Azure Güvenlik Merkezi, Azure aboneliği üzerinde etkinleştirilen bir Azure ortamında, abonelik içinde dağıtılan IaaS kaynaklarını otomatik olarak keşfeder.
 
 > [!NOTE]
-> Azure kaynakları için [Klasik ve Kaynak Yöneticisi dağıtım modelleri](../azure-classic-rm.md) hakkında daha fazla bilgi edinin.
->
+> Güvenlik özelliklerinin tam kümesini almak için, Azure Güvenlik Merkezi tarafından kullanılan ve [Azure Güvenlik Merkezi 'ne veri göndermek üzere doğru şekilde yapılandırılmış](security-center-enable-data-collection.md#manual-agent) [Log Analytics aracısına](../azure-monitor/platform/agents-overview.md#log-analytics-agent)sahip olmanız gerekir.
 
-## <a name="platforms-that-support-the-data-collection-agent"></a>Veri toplama aracısını destekleyen platformlar 
-Bu bölümde, Azure Güvenlik Merkezi tarafından kullanılan Log Analytics aracısının çalıştırılabileceği platformlar listelenmektedir.
 
-### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows bilgisayarları ve VM 'Ler için desteklenen platformlar
-Aşağıdaki Windows işletim sistemleri desteklenir:
+Aşağıdaki bölümlerde, Azure Güvenlik Merkezi tarafından kullanılan [Log Analytics aracısının](../azure-monitor/platform/agents-overview.md#log-analytics-agent)üzerinde çalıştığı desteklenen sunucu işletim sistemleri listelenmektedir.
+
+### Windows Server işletim sistemleri<a name="os-windows"></a>
 
 * Windows Server 2019
 * Windows Server 2016
@@ -43,16 +50,14 @@ Aşağıdaki Windows işletim sistemleri desteklenir:
 * Windows Server 2008
 
 > [!NOTE]
-> Windows Defender ATP ile tümleştirme yalnızca Windows Server 2012 R2 ve Windows Server 2016 ' i destekler.
+> Microsoft Defender ATP ile tümleştirme yalnızca Windows Server 2012 R2 ve Windows Server 2016 ' i destekler.
 
-### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux bilgisayarlar ve VM 'Ler için desteklenen platformlar
+Yukarıda listelenen Windows işletim sistemlerine yönelik desteklenen özellikler hakkında daha fazla bilgi edinmek için bkz. [sanal makine/sunucu tarafından desteklenen özellikler](security-center-services.md##vm-server-features).
 
-Aşağıdaki Linux işletim sistemleri desteklenir:
-
-> [!NOTE]
-> Desteklenen Linux işletim sistemlerinin listesi sürekli olarak değiştiğinden, tercih ediyorsanız, Desteklenen sürümlerin en güncel listesini görüntülemek için [buraya](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) tıklayın ve bu konunun son yayımlandığı tarihten sonra değişiklikler olması gerekir.
+### Linux işletim sistemleri<a name="os-linux"></a>
 
 64 bit
+
 * CentOS 6 ve 7
 * Amazon Linux 2017,09
 * Oracle Linux 6 ve 7
@@ -68,103 +73,57 @@ Aşağıdaki Linux işletim sistemleri desteklenir:
 * Borçlu GNU/Linux 8 ve 9
 * Ubuntu Linux 14,04 LTS ve 16,04 LTS
 
-## <a name="vms-and-cloud-services"></a>VM 'Ler ve Cloud Services
-Bulut hizmetinde çalışan VM 'Ler de desteklenir. Yalnızca üretim yuvalarında çalışan Cloud Services Web ve çalışan rolleri izlenir. Bulut hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure Cloud Services 'ye genel bakış](../cloud-services/cloud-services-choose-me.md).
-
-
-## <a name="supported-iaas-features"></a>Desteklenen IaaS özellikleri
-
-> [!div class="mx-tableFixed"]
-> 
-
-|Sunucusu|Windows|||Linux|||Fiyatlandırma|
-|----|----|----|----|----|----|----|----|
-|**Ortam**|**Azure**||**Azure dışı**|**Azure**||**Azure dışı**||
-||**Sanal Makine**|**Sanal makine ölçek kümesi**||**Sanal Makine**|**Sanal makine ölçek kümesi**|
-|VMBA tehdit algılama uyarıları|✔|✔|✔|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
-|Ağ tabanlı tehdit algılama uyarıları|✔|✔|X|✔|✔|X|Standart|
-|Windows Defender ATP tümleştirme|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Standart|
-|Eksik düzeltme ekleri|✔|✔|✔|✔|✔|✔|Boş|
-|Güvenlik yapılandırmaları|✔|✔|✔|✔|✔|✔|Boş|
-|Endpoint Protection değerlendirmesi|✔|✔|✔|X|X|X|Boş|
-|JIT VM erişimi|✔|X|X|✔|X|X|Standart|
-|Uyarlamalı uygulama denetimleri|✔|X|✔|✔|X|✔|Standart|
-|FIM|✔|✔|✔|✔|✔|✔|Standart|
-|Disk şifrelemesi değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
-|Üçüncü taraf dağıtımı|✔|X|X|✔|X|X|Boş|
-|NSG değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
-|Dosya daha az tehdit algılama|✔|✔|✔|X|X|X|Standart|
-|Ağ haritası|✔|✔|X|✔|✔|X|Standart|
-|Uyarlamalı ağ denetimleri|✔|✔|X|✔|✔|X|Standart|
-|Mevzuat uyumluluk panosu & raporları|✔|✔|✔|✔|✔|✔|Standart|
-|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|X|X|X|✔|✔|✔|Standart|
-
-### <a name="supported-endpoint-protection-solutions"></a>Desteklenen Endpoint Protection çözümleri
-
-Aşağıdaki tabloda bir matrisi verilmiştir:
- - Her çözümü sizin için yüklemek üzere Azure Güvenlik Merkezi 'ni kullanıp kullanmayacağınızı belirtir.
- - Güvenlik Merkezi 'nin hangi Endpoint Protection çözümlerini keşfedebileceği. Bu uç nokta koruma çözümlerinden biri bulunursa, güvenlik merkezi bir tane yüklemeyi önermez.
-
-Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bilgi için bkz. [Endpoint Protection değerlendirme ve öneriler](security-center-endpoint-protection.md).
-
-| Endpoint Protection| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
-|------|------|-----|-----|
-| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Evet |
-| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
-| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Evet |
-| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
-| McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
-| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
-| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes **\***  |
-
- **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili Log Analytics çalışma alanında kullanılabilir ve Azure Güvenlik Merkezi portalında yansıtılmamaktadır.
-
 > [!NOTE]
-> - Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell 3,0 (veya bir üst sürüm) sonrasında SCEP 'in yüklenmesini gerektirir.
-> - Derinlemesine güvenlik aracıları için Trend mikro koruma algılama desteklenir.  OfficeScan aracıları desteklenmez.
+> Desteklenen Linux işletim sistemlerinin listesi sürekli olarak değiştiğinden, tercih ediyorsanız, Desteklenen sürümlerin en güncel listesini görüntülemek için [buraya](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) tıklayın ve bu konunun son yayımlandığı tarihten sonra değişiklikler olması gerekir.
 
-## <a name="supported-paas-features"></a>Desteklenen PaaS özellikleri
+Yukarıda listelenen Linux işletim sistemleri için desteklenen özellikler hakkında daha fazla bilgi edinmek için bkz. [sanal makine/sunucu tarafından desteklenen özellikler](security-center-services.md##vm-server-features).
 
+### Yönetilen sanal makine Hizmetleri<a name="virtual-machine"></a>
 
-|Hizmet|Öneriler (ücretsiz)|Tehdit algılama (Standart)|
-|----|----|----|
-|SQL|✔| ✔|
-|PostgreSQL|✔| ✔|
-|MySQL|✔| ✔|
-|Azure Blob depolama hesapları|✔| ✔|
-|Uygulama hizmetleri|✔| ✔|
-|Cloud Services|✔| X|
-|Sanal Ağlar|✔| NA|
-|Alt ağlar|✔| NA|
-|NIC’ler|✔| NA|
-|NSG|✔| NA|
-|Subscription|✔ * *| ✔|
-|Batch|✔| NA|
-|Service Fabric|✔| NA|
-|Otomasyon hesabı|✔| NA|
-|Yük dengeleyici|✔| NA|
-|Ara|✔| NA|
-|Service bus|✔| NA|
-|Stream Analytics|✔| NA|
-|Olay hub'ı|✔| NA|
-|Logic Apps|✔| NA|
-|Depolama hesabı|✔| NA|
-|Redis|✔| NA|
-|Data Lake Analytics|✔| NA|
-|Anahtar kasası|✔| NA|
+Sanal makineler, Azure Kubernetes (AKS), Azure Databricks ve daha fazlası gibi bazı Azure yönetilen hizmetlerin bir parçası olarak da bir müşteri aboneliğinde oluşturulur. Bu sanal makineler de Azure Güvenlik Merkezi tarafından bulunur ve Log Analytics Aracısı yukarıda listelenen desteklenen [Windows/Linux işletim sistemlerine](#os-windows)göre yüklenebilir ve yapılandırılabilir.
 
+### Cloud Services<a name="cloud-services"></a>
 
+Bulut hizmetinde çalışan sanal makineler de desteklenir. Yalnızca üretim yuvalarında çalışan Cloud Services Web ve çalışan rolleri izlenir. Bulut hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure Cloud Services 'ye genel bakış](../cloud-services/cloud-services-choose-me.md).
 
+## PaaS hizmetleri<a name="paas-services"></a>
 
-\*Bu özellikler Şu anda genel önizlemede desteklenmektedir.
+Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından desteklenir:
 
-\*\*AAD önerileri yalnızca standart abonelikler için kullanılabilir
+* SQL
+* PostGreSQL
+* MySQL
+* CosmosDB
+* Depolama hesabı
+* App Service
+* İşlev
+* Bulut Hizmeti
+* Sanal ağ
+* Subnet
+* NIC
+* NSG
+* Batch hesabı
+* Service Fabric hesabı
+* Otomasyon hesabı
+* Yük dengeleyici
+* Ara
+* Service bus ad alanı
+* Stream Analytics
+* Olay hub’ı ad alanı
+* Logic Apps
+* Redis
+* Data Lake Analytics
+* Data Lake Store
+* Anahtar kasası
 
-
+Yukarıdaki PaaS kaynakları listesinin desteklenen özellikleri hakkında daha fazla bilgi edinmek için bkz. [PaaS hizmetleri tarafından desteklenen özellikler](security-center-services.md#paas-services).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Güvenlik Merkezi 'nin verileri ve Log Analytics aracısını nasıl topladığı](security-center-enable-data-collection.md)hakkında bilgi edinin.
+- [Güvenlik Merkezi 'nin verileri nasıl yönettiğini ve korumalarını](security-center-data-security.md)öğrenin.
 - [Azure Güvenlik Merkezi 'ni benimsemek için tasarım konularını nasıl planlayacağınızı ve anlayacağınızı](security-center-planning-and-operations-guide.md)öğrenin.
-- [Azure Güvenlik Merkezi 'Nde VM 'ler & Sunucular Için tehdit algılama](security-center-alerts-iaas.md)hakkında daha fazla bilgi edinin.
+- [Farklı bulut ortamları için kullanılabilen özellikler](security-center-services.md)hakkında bilgi edinin.
+- [Azure Güvenlik Merkezi 'Nde VM 'ler & sunucular için tehdit algılama](security-center-alerts-iaas.md)hakkında daha fazla bilgi edinin.
 - [Azure Güvenlik Merkezi 'ni kullanma hakkında sık sorulan soruları](security-center-faq.md)bulun.
 - [Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini](https://blogs.msdn.com/b/azuresecurity/)bulun.
