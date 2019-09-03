@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347411"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213595"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Öğretici: Cloud Security dokusunu Azure Active Directory ile tümleştirin
 
@@ -104,7 +104,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-5.   **İmzalama**  ****  **** seçeneklerini gereksiniminize göre değiştirmek için, SAML imzalama sertifikası iletişim kutusunu açmak için Düzenle düğmesine tıklayın. 
+5. **İmzalama** seçeneklerini gereksiniminize göre değiştirmek Için, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![SAML yanıtı](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -131,7 +131,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -153,7 +153,7 @@ Bu bölümde, bulut güvenlik dokusuna erişim vererek Azure çoklu oturum açma
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>Cloud Security Fabric test kullanıcısını oluşturma
 
-Bu bölümde, bulut güvenlik dokusunda B. Simon adlı bir Kullanıcı oluşturacaksınız. Cloud Security Fabric platformunda kullanıcıları eklemek için [Cloud Security Fabric destek ekibi](mailto:support@cloudlock.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, bulut güvenlik dokusunda B. Simon adlı bir Kullanıcı oluşturacaksınız. Cloud Security Fabric platformunda kullanıcıları eklemek için [Cloud Security Fabric destek ekibi](mailto:support@cloudlock.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 
