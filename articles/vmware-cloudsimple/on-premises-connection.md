@@ -8,18 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee359b76072da3caee9ae1f5fab3d0fc28d25c0e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972681"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240724"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma
 
 Zaten bir dış konumdan (örneğin, şirket içi) Azure 'da Azure ExpressRoute bağlantınız varsa, bunu CloudSimple ortamınıza bağlayabilirsiniz. Bunu, iki ExpressRoute devresine bağlanmasına izin veren bir Azure özelliği aracılığıyla yapabilirsiniz. Bu yöntem, iki ortam arasında güvenli, özel, yüksek bant genişliği, düşük gecikme süreli bir bağlantı oluşturur.
 
 [![Şirket içi ExpressRoute bağlantısı-Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
+
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Şirket içinden Global Reach bağlantı kurmak için bir **/29** ağ adresi bloğu gerekir.  /29 adres alanı, ExpressRoute devreleri arasında transit ağı için kullanılır.  Transit ağı, Azure sanal ağlarınız, şirket içi ağlar veya CloudSimple özel bulut ağlarıyla çakışmamalıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -65,3 +69,8 @@ ExpressRoute bağlantısı kurmak için ExpressRoute bağlantı hattınızı bir
     * Sorun türü: **Hizmet isteği**
     * Sorun alt türü: **Şirket içinde ExpressRoute bağlantısı oluşturma**
     * Ayrıntılar bölmesinde kopyaladığınız ve kaydettiğiniz kaynak KIMLIĞI ve yetkilendirme anahtarını sağlayın.
+    * Transit ağı için bir/29 ağ adresi alanı belirtin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Azure ağ bağlantıları hakkında daha fazla bilgi](cloudsimple-azure-network-connection.md)  

@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934432"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259200"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Hızlı Başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
 
@@ -101,7 +101,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Key Vault Ana Sayfası](https://azure.microsoft.com/services/key-vault/)
-* [Azure Key Vault Belgeleri](index.yml)
-* [Node için Azure SDK](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Azure REST API Başvurusu](https://docs.microsoft.com/rest/api/keyvault/)
+Bu hızlı başlangıçta bir Azure Resource Manager şablonu kullanarak bir anahtar kasası ve gizli dizi oluşturdunuz ve dağıtımı doğruladı. Key Vault ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+
+- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
+- [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin
+- [Anahtarlar, gizlilikler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında daha fazla bilgi alın
+- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault

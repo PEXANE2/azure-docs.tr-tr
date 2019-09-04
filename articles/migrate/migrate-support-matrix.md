@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 99ef5c8a4a4291dd1b9d047da9006623dacd0b53
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 3fb36eb9b8507903d1aee00b82c375685a4dfa6c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147874"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279464"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -56,7 +56,7 @@ CorentTech | Geçiş | [Daha fazla bilgi edinin](https://www.corenttech.com/).
 Subscription | Bir abonelikte birden çok Azure geçişi projesi oluşturabilirsiniz.
 Azure izinleri | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
 VMware Sanal Makineleri  | Tek bir projede en fazla 35.000 VMware VM 'yi değerlendirin.
-Hyper-V Sanal Makineleri | Tek bir projede 10.000 adede kadar Hyper-V VM 'yi değerlendirin.
+Hyper-V Sanal Makineleri | Tek bir projede 35.000 adede kadar Hyper-V VM 'yi değerlendirin.
 
 Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
 

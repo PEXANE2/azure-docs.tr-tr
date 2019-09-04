@@ -7,12 +7,12 @@ ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 54a4da8e6d2720086b86c3573623f9dac2469ea4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f5c2b58fc6877bc196eb98faab88712f474523cb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232930"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241334"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı Başlangıç: REST API ile Azure Blueprint Tanımlama ve Atama
 
@@ -27,8 +27,6 @@ ms.locfileid: "70232930"
 > - Bir aboneliğe atanmış olan şemayı kaldırma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started-with-rest-api"></a>REST API'sini kullanmaya başlama
 
@@ -438,7 +436,7 @@ Bir şemanın kendisini kaldırmak için aşağıdaki REST API işlemini kullan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](./concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](./concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](./concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](./concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](./concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

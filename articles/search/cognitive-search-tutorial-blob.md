@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: bb37c9106149397f50e84b340b1be1189e0de7d1
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186274"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274122"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Öğretici: Bilişsel arama ile "yapılandırılmamış içerik" yapısına yapı ekleyin
 
@@ -22,10 +22,10 @@ Yapılandırılmamış metin veya görüntü içeriğiniz varsa, Azure Search bi
 
 > [!div class="checklist"]
 > * Azure Blob depolamada PDF, MD, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
-> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı oluşturun.
+> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı tanımlayın.
 > * Çıktıyı depolamak için bir dizin tanımlayın (ham içerik ve ardışık düzen tarafından oluşturulan ad-değer çiftleri).
-> * Dizini oluşturmak ve yüklemek için işlem hattını yürütün.
-> * Tam metin aramasını ve zengin sorgu söz dizimini kullanarak içeriği keşfedebilirsiniz.
+> * Dönüşümleri ve Analizi başlatmak ve dizini oluşturmak ve yüklemek için işlem hattını yürütün.
+> * Tam metin aramasını ve zengin sorgu söz dizimini kullanarak sonuçları keşfedebilirsiniz.
 
 Bu izlenecek yolu tamamlamak için birkaç hizmete, Ayrıca, REST API çağrısı yapmak için [Postman masaüstü uygulamasını](https://www.getpostman.com/) veya başka bir Web Testi aracını kullanmanız gerekir. 
 
@@ -427,7 +427,7 @@ Dizin oluşturma ve zenginleştirme, oluşturma Dizin Oluşturucu isteğini gön
 
 1. Dizin oluşturucunun çalışıp çalışmadığını öğrenmek veya hata ve uyarı bilgilerini görüntülemek için yanıtı gözden geçirin.  
 
-Ücretsiz katmanı kullanıyorsanız, şu ileti bekleniyor: ' "belgenizden içerik veya meta veri ayıklanamadı. Ayıklanan metin ' 32768 ' karakter "olarak kesildi. Bu ileti, boş katmandaki blob dizinlemesi, karakter ayıklamaya karşı bir[32K sınırına](search-limits-quotas-capacity.md#indexer-limits)sahip olduğundan görüntülenir. Bu ileti, daha yüksek katmanlarda bu veri kümesi için görmezsiniz. 
+Ücretsiz katmanı kullanıyorsanız, şu ileti bekleniyor: ' "belgenizden içerik veya meta veri ayıklanamadı. Ayıklanan metin ' 32768 ' karakter "olarak kesildi. Bu ileti, boş katmandaki blob dizinlemesi,[karakter ayıklamaya karşı bir 32K sınırına](search-limits-quotas-capacity.md#indexer-limits)sahip olduğundan görüntülenir. Bu ileti, daha yüksek katmanlarda bu veri kümesi için görmezsiniz. 
 
 > [!NOTE]
 > Uyarılar bazı senaryolarda ortaktır ve her zaman bir sorun göstermez. Örneğin, bir blob kapsayıcısı görüntü dosyaları içeriyorsa ve işlem hattı görüntüleri işetmez, görüntülerin işlenmediğini belirten bir uyarı alırsınız.

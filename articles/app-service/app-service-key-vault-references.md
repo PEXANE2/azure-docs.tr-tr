@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088178"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258609"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma (Önizleme)
 
@@ -184,3 +184,27 @@ Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi gör�
 
 > [!NOTE] 
 > Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak, `WEBSITE_ENABLE_SYNC_UPDATE_SITE` uygulama ayarını dahil ettiğimiz için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
+
+## <a name="troubleshooting-key-vault-references"></a>Key Vault başvuruları sorunlarını giderme
+
+Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için değeri `@Microsoft.KeyVault(...)` sözdizimine sahip bir ortam değişkeni oluşturulacak anlamına gelir. Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
+
+En yaygın olarak, bunun nedeni [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)yanlış yapılandırılmasından kaynaklanır. Bununla birlikte, aynı zamanda bir gizli dizi yok veya başvurunun kendisi bir sözdizimi hatası olabilir.
+
+Sözdizimi doğruysa, yerleşik bir algılayıcı kullanarak geçerli çözüm durumunu denetleyerek hata nedenlerini görüntüleyebilirsiniz.
+
+### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
+
+1. Portalda uygulamanıza gidin.
+2. **Tanılamayı Tanıla ve çöz '** ü seçin.
+3. **Kullanılabilirlik ve performans** ' ı seçin ve **Web uygulaması** ' nı seçin.
+4. **Uygulama ayarları tanılamayı Key Vault** bulun ve **daha fazla bilgi**'ye tıklayın.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Azure Işlevleri için algılayıcısının kullanımı
+
+1. Portalda uygulamanıza gidin.
+2. **Platform özellikleri** ' ne gidin.
+3. **Tanılamayı Tanıla ve çöz '** ü seçin.
+4. **Kullanılabilirlik ve performans** ' ı seçin ve **işlev uygulaması çalışmıyor veya raporlama hataları** ' nı seçin.
+5. **Uygulama ayarları tanılamayı Key Vault** ' ye tıklayın.

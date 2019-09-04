@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: 'Azure Cosmos DB, anahtar teslimi genel dağıtım ve saydam çoklu ana kaynak çoğaltma özelliğiyle tam olarak yönetilen bir veritabanı hizmetidir. Veritabanınızdaki işlem verileri üzerinde genel olarak dağıtılmış, düşük gecikme süreli operasyon ve analiz iş yükleri ile yapay zeka çalıştırın. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, Azure Cosmos DB’yi kullanmayı öğrenin.'
   aside:

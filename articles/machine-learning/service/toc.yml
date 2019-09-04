@@ -1,5 +1,5 @@
 - name: Azure Machine Learning Hizmeti Belgeleri
-  href: index.yml
+  href: ../index.yml
 - name: Genel Bakış
   expanded: true
   items:

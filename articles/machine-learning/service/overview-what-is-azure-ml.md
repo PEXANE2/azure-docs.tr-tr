@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035848"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278122"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning hizmeti nedir?
 
@@ -35,9 +35,12 @@ Verileri bulun ve hazırlayın, modelleri eğitme ve test edin ve şu gibi zengi
 + [Bu örnek Not defterleri](https://aka.ms/aml-notebooks) gibi kendi kodunuzu yazmak Için [SDK 'Ları](https://docs.microsoft.com/azure/machine-learning/service/#reference) kullandığınız [jupyıter Not defterleri](https://jupyter.org)
 + [Visual Studio Code uzantısı](how-to-vscode-tools.md)
 
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
+
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile neler yapabilirim?
 
-Açık kaynaklı Python paketleriyle <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK 'sını</a> kullanın veya bir Azure Machine Learning hizmetinde yüksek düzeyde doğru makine öğrenimi ve derin öğrenme modelleri derlemek ve eğmek için [görsel arabirimi (Önizleme)](ui-tutorial-automobile-price-train-score.md) kullanın Alanında.
+Açık kaynaklı Python paketleriyle <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK 'sını</a> kullanın veya bir Azure Machine Learning hizmetinde yüksek düzeyde doğru makine öğrenimi ve derin öğrenme modelleri derlemek ve eğmek için [görsel arabirimi (Önizleme)](ui-tutorial-automobile-price-train-score.md) kullanın Alanında.
 
 Açık kaynaklı Python paketlerinde kullanılabilen, <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-öğren</a>, <a href="https://www.tensorflow.org" target="_blank">TensorFlow</a>, <a href="https://pytorch.org" target="_blank">Pytorch</a>ve <a href="https://mxnet.io" target="_blank">mxnet</a>gibi birçok makine öğrenimi bileşeni arasından seçim yapabilirsiniz.
 
@@ -45,7 +48,7 @@ Kodu yazarken veya görsel arabirimini kullandığınızda, en iyi çözümü bu
 
 ### <a name="code-first-experience"></a>Kod ilk deneyim
 
-<a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK 'sını</a> kullanarak yerel makinenizde eğitim başlatın ve ardından buluta ölçeklendirin. Azure Machine Learning Işlem ve [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)gibi birçok kullanılabilir [işlem hedefi](how-to-set-up-training-targets.md)ile ve [Gelişmiş hyperparameter ayarlama hizmetleriyle](how-to-tune-hyperparameters.md), bulutun gücünü kullanarak daha iyi modeller oluşturabilirsiniz.
+<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK 'sını</a> kullanarak yerel makinenizde eğitim başlatın ve ardından buluta ölçeklendirin. Azure Machine Learning Işlem ve [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)gibi birçok kullanılabilir [işlem hedefi](how-to-set-up-training-targets.md)ile ve [Gelişmiş hyperparameter ayarlama hizmetleriyle](how-to-tune-hyperparameters.md), bulutun gücünü kullanarak daha iyi modeller oluşturabilirsiniz.
 
 SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train-models.md) getirebilirsiniz.
 
@@ -63,7 +66,7 @@ Kod ücretsiz eğitim için şunu deneyin:
 
 Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power BI aracılığıyla kolayca kullanabilirsiniz. Daha fazla bilgi için, [nasıl dağıtılacağı ve nerede yapılacağı](how-to-deploy-and-where.md)hakkındaki makaleye bakın.
 
-Ardından, [Python için Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk) veya [Azure Portal](https://portal.azure.com/)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
+Ardından, [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) veya [Azure Portal](https://portal.azure.com/)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
 
 Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) veya [zaman uyumsuz](how-to-run-batch-predictions.md) olarak büyük miktarlarda veri alabilir.
 
@@ -80,7 +83,7 @@ Azure Machine Learning hizmetini kullanmaya başlamak için bkz. [sonraki adıml
 
 [Machine Learning Studio](../studio/what-is-ml-studio.md) , kod yazmaya gerek kalmadan makine öğrenimi çözümlerini oluşturabileceğiniz, test ettiğiniz ve dağıtabileceğiniz, birlikte çalışan, sürükle ve bırak görsel çalışma alanıdır. Önceden oluşturulmuş ve önceden yapılandırılmış makine öğrenimi algoritmalarını ve veri işleme modüllerini, ayrıca özel bir işlem platformunu kullanır.
 
-Azure Machine Learning hizmet, veri hızla geliştirmek, makine öğrenimi modellerini eğitmek ve dağıtmak Için hem SDK 'lar hem de bir görsel arabirim (Önizleme) sağlar. Bu görsel arabirim (Önizleme) Studio 'ya benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun aksine, görsel arabirim kendi işlem kaynaklarınızı kullanır ve Azure Machine Learning hizmeti ile tamamen tümleşiktir.
+Azure Machine Learning hizmet, veri hızla geliştirmek, makine öğrenimi modellerini eğitmek ve dağıtmak için **hem SDK 'lar hem de** bir görsel arabirim (Önizleme) sağlar. Bu görsel arabirim (Önizleme) Studio 'ya benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun aksine, görsel arabirim kendi işlem kaynaklarınızı kullanır ve Azure Machine Learning hizmeti ile tamamen tümleşiktir.
 
 Hızlı bir karşılaştırma aşağıda verilmiştir.
 
@@ -101,7 +104,7 @@ Visual Interface 'i (Önizleme) öğreticiyle [deneyin: Görsel arabirim](ui-tut
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-Azure hizmetlerinde harcayabileceğiniz krediler alırsınız. Krediler bittikten sonra hesabı tutabilir ve [ücretsiz Azure hizmetlerini](https://azure.microsoft.com/free/) kullanabilirsiniz. Açıkça ayarlarınızı değiştirip ücretlendirme istemediğiniz sürece kredi kartınız asla ücretlendirilmez. Veya ücretli Azure hizmetleri için kullanabileceğiniz her ay kredileri veren [MSDN abone avantajlarını etkinleştirin](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+Azure hizmetlerinde harcayabileceğiniz krediler alırsınız. Krediler bittikten sonra hesabı tutabilir ve [ücretsiz Azure hizmetlerini](https://azure.microsoft.com/free/) kullanabilirsiniz. Açıkça ayarlarınızı değiştirip ücretlendirme istemediğiniz sürece kredi kartınız asla ücretlendirilmez. Veya ücretli Azure hizmetleri için kullanabileceğiniz her ay [kredileri veren MSDN abone avantajlarını etkinleştirin](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

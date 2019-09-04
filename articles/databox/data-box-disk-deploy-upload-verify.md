@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 08/22/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e36f009422307b3b70091775d2288ee710839172
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a4d814ab5b1f26a6a2b871a850fd5e3153e256f5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014184"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240285"
 ---
 ::: zone target="docs"
 
@@ -70,20 +70,40 @@ Kaynaktan silmeden önce verilerinizin depolama hesaplarında olduğundan emin o
       ![Yönetilen diskler için kaynak grubu](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
   - Bir VHDX veya dinamik/fark kayıt VHD 'SI kopyaladıysanız, VHDX/VHD, bir Blok Blobu olarak hazırlama depolama hesabına yüklenir. **Blob > hazırlama depolama hesabınıza** gidin ve ardından uygun kapsayıcıyı seçin-Standardssd, standardhdd veya PremiumSSD. VHDX/VHD 'ler, hazırlama depolama hesabınızda blok Blobları olarak gösterilmelidir.
+  
+::: zone-end
 
-Verilerin Azure'a yüklendiğini doğrulamak için aşağıdaki adımları izleyin:
+::: zone target="chromeless"
+
+# <a name="verify-data-upload-to-azure"></a>Azure'a verilerin yüklendiğini doğrulama
+
+Veriler Azure 'a yüklendikten sonra, kaynaktan silmeden önce verilerinizin depolama hesaplarına ait olduğundan emin olun. Verileriniz şu durumda olabilir:
+
+- Azure depolama hesabınız. Data Box'a veri kopyaladığınızda, türlerine bağlı olarak bu veriler Azure Depolama hesabınızda aşağıdaki yollardan birine yüklenir.
+
+    - **Blok Blobları ve sayfa Blobları için**: https://< storage_account_name >. blob. Core. Windows.<containername>NET//Files/a.txt
+
+    - **Azure dosyaları için**: https://< storage_account_name >. File. Core. Windows. net/<sharename>/Files/a.txt
+
+- Yönetilen disk kaynak grubunuz. Yönetilen diskler oluştururken, VHD 'ler sayfa Blobları olarak yüklenir ve ardından yönetilen disklere dönüştürülür. Yönetilen diskler, sipariş oluşturma sırasında belirtilen kaynak gruplarına iliştirilir.
+
+::: zone-end
+
+Verilerin Azure 'a yüklendiğini doğrulamak için aşağıdaki adımları uygulayın:
 
 1. Disk siparişinizle ilişkilendirilmiş depolama hesabına gidin.
 2. **Blob hizmeti > Bloblara göz atın** seçeneğine gidin. Kapsayıcı listesi gösterilir. *BlockBlob* ve *PageBlob* klasörlerinin altında oluşturduğunuz alt klasöre karşılık olarak, depolama hesabınızda aynı adlı kapsayıcılar oluşturulur.
     Klasör adları Azure adlandırma kurallarına uymuyorsa, Azure'a veri yükleme işlemi başarısız olur.
 
-4. Veri kümesinin tamamının yüklendiğini doğrulamak için, Microsoft Azure Depolama Gezgini'ni kullanın. Disk kiralama siparişine karşılık gelen depolama hesabını ekleyin ve ardından blob kapsayıcılarının listesine bakın. Bir kapsayıcı seçin, **…Diğer** düğmesine tıklayın ve sonra da **Klasör istatistikleri**'ne tıklayın. **Etkinlikler** bölmesinde, blob sayısı ve toplam blob boyutu gibi o klasöre özgü istatistikler görüntülenir. Bayt cinsinden toplam blob boyutu, veri kümesinin boyutuyla eşleşmelidir.
+3. Veri kümesinin tamamının yüklendiğini doğrulamak için, Microsoft Azure Depolama Gezgini'ni kullanın. Data Box Disk sırasına karşılık gelen depolama hesabını ekleyin ve ardından blob kapsayıcıları listesine bakın. Bir kapsayıcı seçin, **…Diğer** düğmesine tıklayın ve sonra da **Klasör istatistikleri**'ne tıklayın. **Etkinlikler** bölmesinde, blob sayısı ve toplam blob boyutu gibi o klasöre özgü istatistikler görüntülenir. Bayt cinsinden toplam blob boyutu, veri kümesinin boyutuyla eşleşmelidir.
 
     ![Depolama Gezgini'nde klasör istatistikleri](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Data Box Disk'ten verileri silinme
 
 Kopyalama tamamlandıktan ve verilerin Azure depolama hesabında olduğunu doğruladıktan sonra, diskler NıST standardına göre güvenli bir şekilde silinir.
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -101,22 +121,6 @@ Azure portalı yoluyla Data Box Disk'i yönetmeyi öğrenmek için bir sonraki n
 
 ::: zone-end
 
-::: zone target="chromeless"
 
-# <a name="verify-data-upload-to-azure"></a>Azure'a verilerin yüklendiğini doğrulama
-
-Veriler Azure 'a yüklendikten sonra, kaynaktan silmeden önce verilerinizin depolama hesaplarına ait olduğundan emin olun. Verileriniz şu durumda olabilir:
-
-- Azure depolama hesabınız. Data Box'a veri kopyaladığınızda, türlerine bağlı olarak bu veriler Azure Depolama hesabınızda aşağıdaki yollardan birine yüklenir.
-
-    - **Blok Blobları ve sayfa Blobları için**: https://< storage_account_name >. blob. Core. Windows.<containername>NET//Files/a.txt
-
-    - **Azure dosyaları için**: https://< storage_account_name >. File. Core. Windows. net/<sharename>/Files/a.txt
-
-    Alternatif olarak Azure portalda Azure depolama hesabınıza gidip oradan ilerleyebilirsiniz.
-
-- Yönetilen disk kaynak grubunuz. Yönetilen diskler oluştururken, VHD 'ler sayfa Blobları olarak yüklenir ve ardından yönetilen disklere dönüştürülür. Yönetilen diskler, sipariş oluşturma sırasında belirtilen kaynak gruplarına iliştirilir.
-
-::: zone-end
 
 

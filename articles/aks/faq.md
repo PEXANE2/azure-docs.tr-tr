@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 6d122b3ac1504db0a2d22fea749c6c94174e4ff9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233150"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241789"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
 
@@ -116,6 +116,8 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 
 Hizmet düzeyi sözleşmesinde (SLA), sağlayıcı, yayımlanan hizmet düzeyi karşılanmazsa müşteriyi hizmetin maliyeti olarak tarafımızca kuruluşlarımız kabul eder. AKS ücretsizdir, tarafımızca kuruluşlarımız için kullanılabilir maliyet yok, bu nedenle AKS 'in resmi SLA 'Sı yok. Ancak, AKS, Kubernetes API sunucusu için en az% 99,5 kullanılabilirlik düzeyini korumak üzere arar.
 
+Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) okuyun.
+
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Neden Maxpod 'yi 30 altında ayarlayamıyorum?
 
 Aks 'de, Azure CLI ve Azure Resource Manager `maxPods` şablonlarını kullanarak kümeyi oluştururken değeri ayarlayabilirsiniz. Ancak, hem Kubenet hem de Azure CNı, *en az bir değer* gerektirir (oluşturma sırasında doğrulama):
@@ -204,6 +206,7 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
 
 <!-- LINKS - external -->
 

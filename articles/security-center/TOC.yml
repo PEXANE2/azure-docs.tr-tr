@@ -131,24 +131,16 @@
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Tehdit raporları
           href: security-center-threat-report.md
-        - name: Özel uyarılar
-          href: security-center-custom-alert.md
         - name: Güvenilirlik puanı uyarısı
           href: security-center-confidence-score.md
-        - name: Güvenlik uyarıları haritası ve tehdit bilgileri
-          href: security-center-threat-intel.md
         - name: Araştırma
           href: security-center-investigation.md
         - name: Araştırma kullanıcı verilerini yönetme
           href: security-center-investigation-user-data.md
         - name: Logic Apps playbook’ları
           href: security-center-playbooks.md
-        - name: Arama
-          href: security-center-search.md
         - name: Planlama ve işlemler
           href: security-center-planning-and-operations-guide.md
-        - name: Güvenlik yapılandırmalarını özelleştirme
-          href: security-center-customize-os-security-config.md
 - name: Başvuru
   items:
     - name: REST API'leri

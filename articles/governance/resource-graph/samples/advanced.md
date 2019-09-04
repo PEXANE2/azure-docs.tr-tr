@@ -7,12 +7,12 @@ ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f02a6917240fa9200167a244f7f93f895be3e63f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 33c67f77a26e2a4fc97d7f5483aad53c121e117b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232667"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239012"
 ---
 # <a name="advanced-resource-graph-queries"></a>Gelişmiş Kaynak Grafiği sorguları
 
@@ -24,10 +24,9 @@ Aşağıdaki gelişmiş sorguları inceleyeceğiz:
 > - [Sanal makine ölçek kümesi kapasitesini ve boyutunu al](#vmss-capacity)
 > - [Tüm etiket adlarını listeleme](#list-all-tags)
 > - [Normal ifade tarafından eşleştirilen sanal makineler](#vm-regex)
+> - [Ad ile kiracı ve abonelik adlarını ekleyin](#displaynames)
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Dil desteği
 

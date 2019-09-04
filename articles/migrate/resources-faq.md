@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142212"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279494"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Geçişi: Sık sorulan sorular (SSS)
 
@@ -27,7 +27,7 @@ Bu makalede, Azure geçişi hakkında sık sorulan sorular yanıtlanmaktadır. B
 
 Azure geçişi, geçiş işlemini başlatmak, makinelerin ve iş yüklerinin bulmayı ve değerlendirmesini izlemek, makinelerin ve iş yüklerinin Azure 'a geçişini yürütmek ve izlemek için merkezi bir merkez sağlar. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) bir olağanüstü durum kurtarma çözümüdür. Azure geçişi sunucu geçişi, şirket içi makinelerin geçiş ve geçiş için geçiş senaryolarını etkinleştirmek üzere arka uçta Azure Site Recovery kullanır.
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure geçişi gereci (VMware/fiziksel sunucular)
+## <a name="azure-migrate-appliance"></a>Azure Geçişi aleti
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Azure geçişi gereci Azure 'a nasıl bağlanır?
 
@@ -87,6 +87,9 @@ Hyper-V için bulma, Hyper-V ana bilgisayar kimlik bilgilerini kullanır. VM 'Le
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>Tek bir geçiş gereci ile kaç VM keşfedebilirim?
 
 En fazla 10.000 VMware VM ve tek bir geçiş gereci olan en fazla 5.000 Hyper-V VM 'Leri bulabilirsiniz. Şirket içi ortamınızda daha fazla makineniz varsa, [Hyper-V](scale-hyper-v-assessment.md) ve [VMware](scale-vmware-assessment.md) değerlendirmesini nasıl ölçeklentireceğinizi öğrenin.
+
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Azure geçişi gerecini projeden silebilir miyim?
+Şu anda projeden gereç silme desteklenmiyor. Gereci silmenin tek yolu, Gereç ile ilişkili olan ancak diğer kayıtlı gereçlere, bulunan envanter, değerlendirmelere ve diğer tüm Azure yapıtlarına de silinecek olan Azure geçiş projesi olan kaynak grubunu silmektir. kaynak grubundaki projeyle ilişkili.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi
 

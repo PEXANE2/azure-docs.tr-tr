@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/12/2019
-ms.openlocfilehash: 41670b74cdc6205ed7e02431dd10de8bea2d2858
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.date: 09/01/2019
+ms.openlocfilehash: e0a9f4fa6ca5ff7447d2ffaef3eab2f3c54fdeae
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68001203"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241252"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-container-and-items-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portal ile bir Azure Cosmos hesabı, kapsayıcısı ve öğeleri oluşturun
 
@@ -28,7 +28,7 @@ ms.locfileid: "68001203"
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Azure Cosmos DB, bir bütün olarak genel dağıtım ve yatay Azure Cosmos DB ölçek özelliğinden yararlanan anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için kullanabilirsiniz. 
 
-Bu hızlı başlangıçta Azure portal kullanarak Azure Cosmos DB bir [SQL API](sql-api-introduction.md) hesabı oluşturma, bir belge veritabanı ve koleksiyon oluşturma ve koleksiyona veri ekleme işlemlerinin nasıl yapılacağı gösterilmiştir. 
+Bu hızlı başlangıçta Azure portal kullanarak Azure Cosmos DB bir [SQL API](sql-api-introduction.md) hesabı oluşturma, bir belge veritabanı ve kapsayıcı oluşturma ve kapsayıcıya veri ekleme işlemlerinin nasıl yapılacağı gösterilmiştir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,24 +42,24 @@ Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-<a id="create-collection-database"></a>
-## <a name="add-a-database-and-a-collection"></a>Veritabanı ve koleksiyon ekleme 
+<a id="create-container-database"></a>
+## <a name="add-a-database-and-a-container"></a>Veritabanı ve kapsayıcı ekleme 
 
-Veritabanı ve koleksiyon oluşturmak için Azure portal Veri Gezgini kullanabilirsiniz. 
+Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabilirsiniz. 
 
 1.  Azure Cosmos DB hesabı sayfanızda sol gezinti **Veri Gezgini** seçin ve ardından **yeni kapsayıcı**' yı seçin. 
     
     **Kapsayıcı Ekle** penceresini görmek için sağa kaydırmanız gerekebilir.
     
-    ![Azure portalındaki Veri Gezgini, koleksiyon Ekle bölmesi](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Azure portal Veri Gezgini, kapsayıcı bölmesi Ekle](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  **Kapsayıcı Ekle** bölmesinde, yeni koleksiyon için ayarları girin.
+1.  **Kapsayıcı Ekle** bölmesinde, yeni kapsayıcının ayarlarını girin.
     
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
     |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adı 1 ila 255 karakter içermeli ve içeremezler `/, \\, #, ?`, veya bir boşluk. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
     |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
-    |**Kapsayıcı KIMLIĞI**|Öğeler|Yeni koleksiyonunuzun adı olarak *Öğeler* girin. Koleksiyon kimlikleri, veritabanı adlarıyla aynı karakter gereksinimlerine sahiptir.|
+    |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimlikleri, veritabanı adlarıyla aynı karakter gereksinimlerine sahiptir.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
 
     

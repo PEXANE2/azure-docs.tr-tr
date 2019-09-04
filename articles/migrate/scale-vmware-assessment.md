@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 0d279781cdc27dbf2140c0100d84de5128c6a3d5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868673"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279420"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda VMware VM 'lerini değerlendirin
 
@@ -48,7 +48,8 @@ Planlama için bu tabloda özetlenen limitleri kullanın.
 **Planlama** | **Limitler**
 --- | --- 
 **Azure geçişi projeleri** | Bir projede en fazla 35.000 VM 'yi değerlendirin.
-**Azure geçişi gereci** | Bir gereç yalnızca tek bir vCenter Server bağlanabilir.<br/><br/> Bir gereç, yalnızca tek bir Azure geçişi projesiyle ilişkilendirilebilir.<br/> Bir gereç, bir vCenter Server en fazla 10.000 VM bulabilir.
+**Azure geçişi gereci** | Bir gereç, bir vCenter Server en fazla 10.000 VM bulabilir.<br/> Bir gereç yalnızca tek bir vCenter Server bağlanabilir.<br/> Bir gereç, yalnızca tek bir Azure geçişi projesiyle ilişkilendirilebilir.<br/>  Herhangi bir sayıda gereç, tek bir Azure geçişi projesiyle ilişkilendirilebilir. <br/><br/> 
+**Grup** | Tek bir gruba en fazla 35.000 VM ekleyebilirsiniz.
 **Azure geçişi değerlendirmesi** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 Bu limitlerin göz önünde bulundurularak bazı örnek dağıtımlar verilmiştir:
@@ -58,8 +59,8 @@ Bu limitlerin göz önünde bulundurularak bazı örnek dağıtımlar verilmişt
 ---|---|---
 Biriyle | < 10.000 | Bir Azure geçişi projesi.<br/> Tek gereç.<br/> Bulma için bir vCenter hesabı. | Gereci ayarlama, bir hesapla vCenter Server bağlanma.
 Biriyle | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | Her 10.000 VM için gereç ayarlayın.<br/><br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
-Birden çok | < 10.000 |  Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Bulma için bir vCenter hesabı. | Gereçlerini ayarlama, bir hesapla vCenter Server bağlama.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
-Birden çok | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | VCenter Server bulma < 10.000 VM 'Leri varsa, her vCenter Server için bir gereç kurun.<br/><br/> VCenter Server bulma > 10.000 VM 'Ler için, her 10.000 sanal makine için bir gereç kurun.<br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
+Birden Çok | < 10.000 |  Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Bulma için bir vCenter hesabı. | Gereçlerini ayarlama, bir hesapla vCenter Server bağlama.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
+Birden Çok | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | VCenter Server bulma < 10.000 VM 'Leri varsa, her vCenter Server için bir gereç kurun.<br/><br/> VCenter Server bulma > 10.000 VM 'Ler için, her 10.000 sanal makine için bir gereç kurun.<br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
 
 
 ## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Çok kiracılı bir ortamda bulmayı planlayın
@@ -109,4 +110,4 @@ Bu makalede şunları yapacaksınız:
 > * Bir Azure geçişi projesi oluşturdunuz ve değerlendirmeler çalıştırıldı
 > * Geçişe hazırlanmayla ilgili değerlendirmeler gözden geçirildi.
 
-Şimdi, değerlendirmelerin nasıl hesaplanacağını ve değerlendirmelerin nasıl [değiştirileceğini](how-to-modify-assessment.md) [öğrenin](concepts-assessment-calculation.md) .
+Şimdi, değerlendirmelerin nasıl hesaplanacağını ve [değerlendirmelerin nasıl değiştirileceğini](how-to-modify-assessment.md) [öğrenin](concepts-assessment-calculation.md) .

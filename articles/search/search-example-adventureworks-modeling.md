@@ -1,27 +1,27 @@
 ---
 title: 'Örnek: AdventureWorks envanter veritabanını modelleyin-Azure Search'
 description: Azure Search ' de dizin oluşturma ve tam metin araması için, ilişkisel verileri nasıl modelleyeceğinizi ve düzleştirilmiş bir veri kümesine dönüştürmeyi öğrenin.
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649911"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274030"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Örnek: Azure Search için AdventureWorks envanter veritabanını modelleyin
 
-Yapılandırılmış veritabanı içeriğini verimli bir arama dizininde modellemenin nadiren basit bir uygulamadır. Zamanlamayı planlama ve değiştirme yönetimi, kaynak satırların tablo ile Birleşik durumlarından, arama kullanımı kolay varlıklara kadar uzaklaşmasına kadar zorluk sergilemesine yardımcı olabilir. Bu makalede, veritabanından aramaya yönelik geçişte yaygın deneyimler vurgulamak için bulunan AdventureWorks örnek verileri kullanılmaktadır. 
+Azure Search, düzleştirilmiş bir satır kümesini [Dizin oluşturma (veri alma) ardışık düzenine](search-what-is-an-index.md)girdi olarak kabul eder. Kaynak verileriniz SQL Server ilişkisel bir veritabanından kaynaklanıyorsa, bu makalede, bir örnek olarak AdventureWorks örnek veritabanını kullanarak dizin oluşturma öncesinde düzleştirilmiş bir satır kümesi oluşturmaya yönelik bir yaklaşım gösterilmektedir.
 
 ## <a name="about-adventureworks"></a>AdventureWorks hakkında
 
-Bir SQL Server örneğiniz varsa, AdventureWorks örnek veritabanı hakkında bilgi sahibi olabilirsiniz. Bu veritabanına dahil olan tablolar arasında ürün bilgilerini açığa çıkaran beş tablo bulunur.
+Bir SQL Server örneğiniz varsa, [AdventureWorks örnek veritabanı](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)hakkında bilgi sahibi olabilirsiniz. Bu veritabanına dahil olan tablolar arasında ürün bilgilerini açığa çıkaran beş tablo bulunur.
 
 + **ProductModel**: Name
 + **Ürün**: ad, renk, maliyet, boyut, ağırlık, resim, kategori (her satır belirli bir ProductModel 'e katılır)
@@ -29,7 +29,7 @@ Bir SQL Server örneğiniz varsa, AdventureWorks örnek veritabanı hakkında bi
 + **Productmodelproductdescription**: locale (her satır bir ProductModel 'e belirli bir dil için belirli bir ProductDescription öğesine katılır)
 + **ProductCategory**: ad, üst kategori
 
-Bu verilerin tümünün, bir arama dizinine alıngirilebilecek düzleştirilmiş bir satır kümesinde birleştirilmesi, bir görevdir. 
+Bu verilerin tümünün bir arama dizinine girebileceği bir düzleştirilmiş satır kümesine birleştirilmesi, bu örneğin amacı olur. 
 
 ## <a name="considering-our-options"></a>Seçeneklerimizi göz önünde bulundurarak
 
@@ -43,7 +43,7 @@ Bu sorunu çözmek, hedef dizini ProductModel tablosuna taşımak kadar basit de
 
 ## <a name="use-a-collection-data-type"></a>Koleksiyon veri türü kullan
 
-"Doğru yaklaşım" veritabanı modelinde doğrudan paralel olmayan bir arama şeması özelliğinden yararlanmadır: **Koleksiyon (EDM. String)** . Bir koleksiyon veri türü, çok uzun (tek) bir dize yerine tek tek dizelerin listesine sahip olduğunuzda kullanılır. Etiketlerde veya anahtar sözcüklerinizle karşılaşırsanız, bu alan için bir koleksiyon veri türü kullanırsınız.
+"Doğru yaklaşım" veritabanı modelinde doğrudan paralel olmayan bir arama şeması özelliğinden yararlanmadır: **Koleksiyon (EDM. String)** . Bu yapı Azure Search dizin şemasında tanımlanmıştır. Bir koleksiyon veri türü, çok uzun (tek) bir dize yerine ayrı dizelerin bir listesini temsil etmeniz gerektiğinde kullanılır. Etiketlerde veya anahtar sözcüklerinizle karşılaşırsanız, bu alan için bir koleksiyon veri türü kullanırsınız.
 
 "Color", "size" ve "image" için **koleksiyonun (EDM. String)** çok değerli dizin alanlarını tanımlayarak, çift yönlü bilgiler, dizini yinelenen girdilerle yoklamadan ve filtrelemeye yönelik olarak tutulur. Benzer şekilde, her bir ürün **ListPrice**yerine **minlistprice** dizini oluşturmak Için toplama işlevlerini sayısal ürün alanlarına uygulayın.
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > [Örnek: Azure Search 'de çok düzeyli model sınıflandırmaları](search-example-adventureworks-multilevel-faceting.md)
-
-

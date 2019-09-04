@@ -16,12 +16,12 @@ ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207182"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241444"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -72,7 +72,7 @@ Azure AD Privileged Identity Management (PıM), Azure AD, Azure ve diğer Micros
 
 ## <a name="least-privileged-roles"></a>En az ayrıcalıklı roller
 
-PıM kullanmak, kullanıcının yönetim izinlerinin ek güvenlik için kısıtlanmasını sağlar. Aşağıda, Azure AD Identity idare özellikleri 'nde yapılandırma için en az ayrıcalıklı Dizin rolleri verilmiştir: 
+Kimlik yönetimi 'nde Yönetim görevlerini gerçekleştirmek için en az ayrıcalıklı rolü kullanmak en iyi uygulamadır. Bu görevleri gerçekleştirmek için gerektiğinde bir rolü etkinleştirmek üzere Azure AD PıM kullanmanızı öneririz. Aşağıda, kimlik Idare özelliklerini yapılandırmak için en az ayrıcalıklı dizin rolü verilmiştir: 
 
 | Özellik | En az ayrıcalıklı rol |
 | ------- | --------------------- |
