@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657079"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242426"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Azure kaydolma sorunlarını giderme
 
@@ -106,7 +106,7 @@ Doğru oturum açma kimlik bilgilerini kullandığınızdan emin olun. Ardından
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Açık abonelikte yeni Azure etkinleştirilemiyor
 
-Açık abonelikte bir Azure oluşturmak için, kendisiyle ilişkili açık belirteçte en az bir Azure olan geçerli bir çevrimiçi hizmet etkinleştirme (OSA) anahtarınız olmalıdır. OSA anahtarınız yoksa, [Microsoft Pinpoint](http://pinpoint.microsoft.com/)' te listelenen Microsoft iş ortaklarından biriyle iletişime geçin.
+Açık abonelikte bir Azure oluşturmak için, kendisiyle ilişkili açık belirteçte en az bir Azure olan geçerli bir çevrimiçi hizmet etkinleştirme (OSA) anahtarınız olmalıdır. OSA anahtarınız yoksa, [Microsoft Pinpoint](https://pinpoint.microsoft.com/)' te listelenen Microsoft iş ortaklarından biriyle iletişime geçin.
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Hata: *Azure aboneliği için uygun değilsiniz*
 

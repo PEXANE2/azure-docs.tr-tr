@@ -4,14 +4,14 @@ description: Azure Cosmos DB'de kapsayıcı oluşturmayı öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: mjbrown
-ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 876e35e320e37081cf6e6f89fda4f31af8713571
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093470"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240756"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı oluşturma
 
@@ -25,15 +25,15 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni koleksiyon**' u seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
-   * Bir koleksiyon KIMLIĞI girin.
+   * Bir kapsayıcı KIMLIĞI girin.
    * Bir bölüm anahtarı girin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
-![Yeni koleksiyon vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![Yeni kapsayıcı vurgulanmış şekilde Veri Gezgini bölmesinin ekran görüntüsü](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI
 
@@ -41,15 +41,15 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni koleksiyon**' u seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
-   * Bir koleksiyon KIMLIĞI girin.
+   * Bir kapsayıcı KIMLIĞI girin.
    * Parça anahtarı girin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
    * **Tamam**’ı seçin.
 
-![MongoDB için Azure Cosmos DB API 'nin ekran görüntüsü, koleksiyon Ekle iletişim kutusu](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![MongoDB için Azure Cosmos DB API 'nin ekran görüntüsü, kapsayıcı ekleme iletişim kutusu](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra API
 

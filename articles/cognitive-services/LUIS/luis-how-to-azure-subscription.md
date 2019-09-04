@@ -1,7 +1,7 @@
 ---
-title: Abonelik anahtarları-LUSıS
+title: Yazma ve çalışma zamanı anahtarlarını kullanma-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Ücretsiz ilk 1000 uç nokta sorgularını kullanmak için abonelik anahtarları oluşturmanız gerekmez. Bir HTTP 403 veya 429 biçiminde bir hatalı _Kota_ hatası alırsanız, anahtar oluşturmanız ve uygulamanıza atamanız gerekir.
+description: Language Understanding (LUU) ilk kez kullandığınızda, yazma anahtarı oluşturmanız gerekmez. Uygulamayı yayımlamayı ve sonra çalışma zamanı uç noktanızı kullanmayı amaçlıyorsanız, çalışma zamanı anahtarını uygulamaya oluşturup atamanız gerekir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,133 +9,106 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 1f8b84722c881cee1fe196e5a614b58cf3c19031
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932852"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257025"
 ---
-# <a name="using-subscription-keys-with-your-luis-app"></a>LUIS uygulamanız ile abonelik anahtarlarını kullanma
+# <a name="using-authoring-and-runtime-resource-keys"></a>Yazma ve çalışma zamanı kaynak anahtarlarını kullanma
 
-Language Understanding (LUU) ilk kez kullandığınızda, abonelik anahtarları oluşturmanız gerekmez. İle başlamak için 1000 uç nokta sorgusu vermiş olursunuz. 
-
-Test ve yalnızca prototip için ücretsiz katman (F0) kullanın. Üretim sistemleri için bir [Ücretli](https://aka.ms/luis-price-tier) katmanı. Kullanmayın [anahtar yazma](luis-concept-keys.md#authoring-key) için üretim uç noktası sorgular.
-
+Yazma ve çalışma zamanı kaynakları, LUSıS uygulamanız ve tahmin uç noktanıza kimlik doğrulaması sağlar.
 
 <a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Azure portal tahmin uç noktası çalışma zamanı kaynağı oluşturma
+LUU portalında oturum açtığınızda, devam etmeyi seçebilirsiniz:
 
-[Tahmin uç noktası kaynağını](get-started-portal-deploy-app.md#create-the-endpoint-resource) Azure Portal oluşturursunuz. Bu kaynak yalnızca Endpoint tahmin sorguları için kullanılmalıdır. Uygulamada değişiklik yazmak için bu kaynağı kullanmayın.
+* ücretsiz [deneme anahtarı](#trial-key) ; yazma ve birkaç tahmin uç nokta sorgusu sağlar.
+* Yeni bir Azure LUSıS yazma kaynağı-yeni bir kaynak oluşturun. Bu, bir tahmin uç noktası kaynağıyla aynı değildir. 
 
-Bir Language Understanding kaynağı veya bilişsel hizmetler kaynağı oluşturabilirsiniz. Bir Language Understanding kaynağı oluşturuyorsanız, kaynak türünü Kaynak adına erteetmeniz iyi bir uygulamadır. 
 
-<a name="programmatic-key" ></a>
-<a name="authoring-key" ></a>
-<a name="endpoint-key" ></a>
-<a name="use-endpoint-key-in-query" ></a>
-<a name="api-usage-of-ocp-apim-subscription-key" ></a>
-<a name="key-limits" ></a>
-<a name="key-limit-errors" ></a>
-<a name="key-concepts"></a>
-<a name="authoring-key"></a>
-<a name="create-and-use-an-endpoint-key"></a>
-<a name="assign-endpoint-key"></a>
-<a name="assign-resource"></a>
+<a name="starter-key"></a>
 
-### <a name="using-resource-from-luis-portal"></a>LUSıS portalından kaynak kullanma
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>LUSıS portalında oturum açın ve yazmaya başlayın
 
-Kaynağı LUO portalından kullanıyorsanız, anahtarınızı ve konumunuzu bilmeniz gerekmez. Bunun yerine, kaynak kiracınızı, aboneliğinizi ve kaynak adınızı bilmeniz gerekir.
+1. [Luo portalında](https://www.luis.ai) oturum açın ve kullanım koşullarını kabul edin.
+1. Hangi tür bir LUSıS yazma anahtarını kullanmak istediğinizi seçerek LUSıS uygulamanızı başlatın: ücretsiz deneme anahtarı veya yeni Azure LUSıS yazma anahtarı. 
 
-Bir kaynağı LUU portalında LUSıS uygulamanıza [atadıktan](#assign-resource-key-to-luis-app-in-luis-portal) sonra, anahtar ve konum, bölümün **anahtarlarını ve uç nokta ayarlarını** Yönet sayfasında sorgu tahmini uç nokta URL 'sinin bir parçası olarak sağlanır.
- 
-### <a name="using-resource-from-rest-api-or-sdk"></a>REST API veya SDK 'dan kaynak kullanma
+    ![Language Understanding yazma kaynağı türünü seçin](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-Kaynağı REST API veya SDK 'dan kullanıyorsanız, anahtarınızı ve konumunuzu bilmeniz gerekir. Bu bilgiler, kaynağın genel bakış ve anahtarlar sayfalarındaki Azure portal **ve son nokta ayarlarını** yönetme sayfasındaki sorgu tahmini uç nokta URL 'sinin bir parçası olarak sağlanır.
+1. Kaynak seçim sürecinizle işiniz bittiğinde [Yeni bir uygulama oluşturun](luis-how-to-start-new-app.md#create-new-app-in-luis). 
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>LUSıS portalında LUSıS uygulamasına kaynak anahtarı atama
+## <a name="trial-key"></a>Deneme anahtarı
 
-LUHER yeni kaynak oluşturduğunuzda, [kaynağı Luo uygulamasına atamanız](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız takdirde bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha yüksek sayıda tahmin sorgusu desteklemek için yeni bir kaynak oluşturabilirsiniz.
+Deneme (başlangıç) anahtarı sizin için verilmiştir. Tahmin uç noktası çalışma zamanını sorgulamak için, bir ayda 1000 'e kadar sorgu için kimlik doğrulama anahtarınız olarak kullanılır. 
 
-<!-- content moved to luis-reference-regions.md, need replacement links-->
-<a name="regions-and-keys"></a>
-<a name="publishing-to-europe"></a>
-<a name="publishing-to-australia"></a>
+Bu, hem **Kullanıcı ayarları** sayfasında hem de Luo portalındaki **Manage-> Azure Resources** sayfalarında görülebilir. 
 
-### <a name="unassign-resource"></a>Kaynak atamasını Kaldır
-Uç nokta ataması, Azure'dan silinmez. Yalnızca LUIS bağlantısı kesilebilir. 
+Tahmin uç noktanızı yayımlamaya hazır olduğunuzda, başlangıç anahtar işlevini değiştirmek için yazma ve tahmin çalışma zamanı anahtarlarını oluşturun ve atayın. 
 
-Uç noktası anahtarı atanmamış veya uygulamaya atanmamış herhangi için uç nokta URL'sini, bir hata döndürür istek: `401 This application cannot be accessed with the current subscription`. 
+## <a name="create-resources-in-the-azure-portal"></a>Azure portal kaynak oluşturma
 
-### <a name="include-all-predicted-intent-scores"></a>Amaç tüm tahmin edilen puanları içerir
-**INCLUDE tüm hedefi puanları tahmin** onay kutusu her amacını tahmin puanını dahil etmek uç nokta sorgu yanıt verir. 
+1. [Azure Portal](https://azure.microsoft.com/free/) oturum açın. 
+1. **+ Kaynak oluştur**’u seçin.
+1. Arama kutusuna `Language understanding` yazın.
+1. Oluşturma işlemini başlatmak için **Oluştur**'u seçin. 
+1. Bir yazma ve tahmin uç noktası çalışma zamanı anahtarı oluşturmak için **her Ikisini de** oluşturun. 
+1. Kaynağı oluşturmak için gereken bilgileri girin ve ardından **Oluştur** ' u seçerek işlemi sona erdirin.
 
-Bu ayar, sohbet botu veya döndürülen ıntents puanları temel alarak programlı karar vermek için arama LUIS uygulamanızı sağlar. Genellikle üst iki amacı en ilginç var. En çok puan hiçbiri hedefi yok hedefi ve diğer yüksek puanlı amacını arasında kesin bir seçim yapar izleme bir soru sorun, sohbet botu seçebilirsiniz ise. 
+    ![Dil anlama kaynağı oluşturma](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-Hedefleri ve puanlarını Ayrıca, uç nokta günlükleri dahil. Yapabilecekleriniz [dışarı](luis-how-to-start-new-app.md#export-app) Bu günlükleri ve puanları analiz edin. 
+    |Name|Amaç|
+    |--|--|
+    |Kaynak adı| Yazma ve tahmin uç noktası sorgularınız için URL 'nin bir parçası olarak kullanılan özel bir ad.|
+    |Abonelik adı| kaynak için faturalandırılacak abonelik.|
+    |Resource group| Seçtiğiniz veya oluşturduğunuz özel bir kaynak grubu adı. Kaynak grupları, Azure kaynaklarını aynı bölgede erişim ve yönetim için gruplandıreklemenize olanak tanır.|
+    |Yazma konumu|Modelinizle ilişkili bölge.|
+    |Fiyatlandırma Katmanı yazma|Fiyatlandırma Katmanı, saniye başına en fazla işlemi ve ayı belirler.|
+    |Çalışma zamanı konumu|Yayımlanmış tahmin uç noktası çalışma zamanı ile ilişkili bölge.|
+    |Çalışma zamanı Fiyatlandırma Katmanı|Fiyatlandırma Katmanı, saniye başına en fazla işlemi ve ayı belirler.|
 
-```JSON
-{
-  "query": "book a flight to Cairo",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.5223427
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.5223427
-    },
-    {
-      "intent": "BookFlight",
-      "score": 0.372391433
-    }
-  ],
-  "entities": []
-}
-```
+    Her iki kaynak de oluşturulduktan sonra, kaynakları LUU portalındaki atayın.
 
-### <a name="enable-bing-spell-checker"></a>Bing yazım denetimi etkinleştir 
-İçinde **uç nokta URL'si ayarları**, **Bing yazım denetleyicisi** geçiş sözcüklerin tahmin önce düzeltmek LUIS sağlar. Oluşturma bir  **[Bing yazım denetimi anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** . 
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Tüm uygulamalar için LUO portalında bir yazma kaynağı atama
 
-**SpellCheck = true** QueryString parametresini ve **Bing-yazım denetimi-abonelik-Key = {YOUR_BING_KEY_HERE}** öğesini ekleyin. Değiştirin `{YOUR_BING_KEY_HERE}` Bing yazım denetleyicisi anahtarınızı.
+Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kaynağı atayabilirsiniz. Aşağıdaki yordam, tüm uygulamaları tek bir yazma kaynağına atar.
 
-```JSON
-{
-  "query": "Book a flite to London?",
-  "alteredQuery": "Book a flight to London?",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.780123
-  },
-  "entities": []
-}
-```
+1. [Lui portalında](https://www.luis.ai)oturum açın.
+1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin. 
 
-### <a name="publishing-regions"></a>Yayımlama bölgeleri
+## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
-Yayımlama hakkında daha fazla bilgi [bölgeleri](luis-reference-regions.md) yayımlama çalıştırmasına dahil olmak üzere [Avrupa](luis-reference-regions.md#publishing-to-europe), ve [Avustralya](luis-reference-regions.md#publishing-to-australia). Yayımlama bölgeler bölge geliştirme farklıdır. Yazma bölgesinde sorgu uç nokta için istediğiniz yayımlama bölgeyi karşılık gelen bir uygulama oluşturun.
+Aşağıdaki yordamı kullanarak bir uygulamaya tek bir kaynak, yazma veya tahmin uç noktası çalışma zamanı atayabilirsiniz.
 
-## <a name="assign-resource-without-luis-portal"></a>LUIS portalı olmadan kaynak atayın
+1. [Luo portalında](https://www.luis.ai)oturum açın, sonra **uygulamalarım** listesinden bir uygulama seçin.
+1. **Yönet-> Azure kaynakları** sayfasına gidin.
 
-Bir CI/CD işlem hattı gibi Otomasyon amacıyla bir LUIS uygulaması LUIS kaynağa atamasını otomatik hale getirmek isteyebilirsiniz. Bunu yapmak için aşağıdaki adımları gerçekleştirmeniz gerekir:
+    ![Uygulamaya bir kaynak atamak için LUU portalında Manage-> Azure kaynaklarını seçin.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+
+1. Tahmin veya yazma kaynağı sekmesini seçin, ardından **tahmin kaynağı Ekle** veya **yazma kaynağı Ekle** düğmesini seçin. 
+1. Doğru kaynağı bulmak için formdaki alanları seçin ve ardından **Kaydet**' i seçin.  
+
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>LUO portalını kullanmadan çalışma zamanı kaynağı atama
+
+CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zamanı kaynağının bir LUU uygulamasına atanmasını otomatikleştirmek isteyebilirsiniz. Bunu yapmak için aşağıdaki adımları gerçekleştirmeniz gerekir:
 
 1. Azure Resource Manager bu belirteci alma [Web sitesi](https://resources.azure.com/api/token?plaintext=true). Bu belirtecin süresi dolacak şekilde hemen kullanın. İstek, bir Azure Resource Manager belirtecini döndürür.
 
     ![Azure Resource Manager belirteci iste ve Azure Resource Manager belirteci al](./media/luis-manage-keys/get-arm-token.png)
 
-1. LUIS kaynakları abonelikler arasında istek için belirteci kullanın [azure alma LUIS API'si hesapları](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), kullanıcı hesabınızın erişebilir. 
+1. Kullanıcı hesabınızın erişimi olan [Get lusıs Azure hesapları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)'sinden, halsıs çalışma zamanı kaynaklarını abonelikler arasında istemek için belirteci kullanın. 
 
     Bu POST API'sini aşağıdaki ayarları gerektirir:
 
     |Üst bilgi|Değer|
     |--|--|
     |`Authorization`|Değerini `Authorization` olduğu `Bearer {token}`. Belirteç değeri sözcük gelmelidir fark `Bearer` ve boşluk.| 
-    |`Ocp-Apim-Subscription-Key`|[Anahtar yazma](luis-how-to-account-settings.md).|
+    |`Ocp-Apim-Subscription-Key`|Yazma anahtarınız.|
 
     Bu API bir LUIS aboneliğiniz, abonelik kimliği, kaynak grubu ve kaynak adı, hesap adı olarak döndürülen dahil olmak üzere JSON nesne dizisi döndürür. LUIS uygulaması için atama LUIS kaynak dizideki bir öğe bulur. 
 
@@ -146,12 +119,34 @@ Bir CI/CD işlem hattı gibi Otomasyon amacıyla bir LUIS uygulaması LUIS kayna
     |Tür|Ayar|Değer|
     |--|--|--|
     |Üst bilgi|`Authorization`|Değerini `Authorization` olduğu `Bearer {token}`. Belirteç değeri sözcük gelmelidir fark `Bearer` ve boşluk.|
-    |Üst bilgi|`Ocp-Apim-Subscription-Key`|[Anahtar yazma](luis-how-to-account-settings.md).|
-    |Üst bilgi|`Content-type`|`application/json`|
+    |Üstbilgi|`Ocp-Apim-Subscription-Key`|Yazma anahtarınız.|
+    |Üstbilgi|`Content-type`|`application/json`|
     |Sorgu dizesi|`appid`|LUIS app kimliği. 
     |Gövde||{"Azuresubscriptionıd": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>"ResourceGroup": "resourcegroup-2"<br>"AccountName": "luıs-uswest-S0-2"}|
 
     Bu API, başarılı olduğunda, 201 - oluşturuldu durumuna döndürür. 
+
+## <a name="unassign-resource"></a>Kaynak atamasını Kaldır
+
+1. [Luo portalında](https://www.luis.ai)oturum açın, sonra **uygulamalarım** listesinden bir uygulama seçin.
+1. **Yönet-> Azure kaynakları** sayfasına gidin.
+1. Tahmin veya yazma kaynağı sekmesini seçin ve kaynağın **atamasını Kaldır** düğmesini seçin. 
+
+Bir kaynağın atamasını kaldırdığınızda, Azure 'dan silinmez. Yalnızca LUIS bağlantısı kesilebilir. 
+
+## <a name="reset-authoring-key"></a>Yazma anahtarını Sıfırla
+
+**[Kaynak geçişi](luis-migration-authoring.md) yapılan uygulamalar yazmak için**: yazma anahtarınız tehlikeye atılırsa, bu yazma kaynağının **anahtarlar** sayfasındaki Azure Portal anahtarı sıfırlayın. 
+
+**Henüz geçirilmeyen uygulamalar için**: anahtar, lusıs portalındaki tüm uygulamalarınızda sıfırlanır. Uygulamalarınızı yazma API 'Leri aracılığıyla yazardıysanız, OCP-apim-Subscription-Key değerini yeni anahtar olarak değiştirmeniz gerekir.
+
+## <a name="regenerate-azure-key"></a>Azure anahtarını yeniden üret
+
+**Anahtarlar** sayfasında Azure Portal Azure anahtarlarını yeniden oluşturun.
+
+## <a name="delete-account"></a>Hesabı sil
+
+Bkz: [veri depolama ve Temizleme](luis-concept-data-storage.md#accounts) hesabınızı sildiğinizde, hangi verilerin silinir hakkında bilgi için.
 
 ## <a name="change-pricing-tier"></a>Fiyatlandırma katmanını değiştir
 
@@ -163,39 +158,16 @@ Bir CI/CD işlem hattı gibi Otomasyon amacıyla bir LUIS uygulaması LUIS kayna
     ![LUIS ödeme katmanınızı değiştirin](./media/luis-usage-tiers/plans.png)
 1.  Fiyat değişikliği tamamlandıktan sonra bir açılır pencere yeni fiyatlandırma katmanına doğrular. 
     ![LUIS ödeme katmanınızı doğrulayın](./media/luis-usage-tiers/updated.png)
-1. Unutmayın [Bu uç noktası anahtarı atama](#assign-endpoint-key) üzerinde **Yayımla** sayfasında ve tüm uç nokta sorguları kullanın. 
+1. Unutmayın [Bu uç noktası anahtarı atama](#assign-a-resource-to-an-app) üzerinde **Yayımla** sayfasında ve tüm uç nokta sorguları kullanın. 
 
-## <a name="fix-http-status-code-403-and-429"></a>HTTP durum kodunu onarma 403 ve 429
+## <a name="viewing-azure-resource-metrics"></a>Azure Kaynak ölçümlerini görüntüleme
 
-Fiyatlandırma katmanınız için saniye başına işlemleri veya aylık işlem sayısını aşarsanız 403 ve 429 hata durum kodları alırsınız.
-
-### <a name="when-you-receive-an-http-403-error-status-code"></a>HTTP 403 hata durum kodu aldığınızda
-
-Tüm bu ücretsiz 1000 uç nokta sorgularını kullandığınızda veya fiyatlandırma katmanınızın aylık işlem kotasını aşarsanız, bir HTTP 403 hata durum kodu alırsınız. 
-
-Bu hatayı onarmak için [fiyatlandırma katmanınızı](luis-how-to-azure-subscription.md#change-pricing-tier) daha yüksek bir katmana değiştirmeniz veya [Yeni bir kaynak oluşturup](get-started-portal-deploy-app.md#create-the-endpoint-resource) [uygulamanıza atamanız](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)gerekir.
-
-Bu hata için çözümler şunlardır:
-
-* [Azure Portal](https://portal.azure.com), Language Understanding kaynağınızın **kaynak yönetimi-> fiyatlandırma katmanında**, fiyatlandırma katmanınızı daha yüksek bir TPS katmanına değiştirin. Kaynağınız Language Understanding uygulamanıza zaten atanmışsa Language Understanding portalında herhangi bir şey yapmanız gerekmez.
-*  Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
-
-### <a name="when-you-receive-an-http-429-error-status-code"></a>HTTP 429 hata durum kodu aldığınızda
-
-Bu durum kodu, işlemleriniz fiyatlandırma katmanınızı aştığında döndürülür.  
-
-Çözümler şunlardır:
-
-* En yüksek katmanda değilseniz [fiyatlandırma katmanınızı artırabilirsiniz](#change-pricing-tier).
-* Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
-* Bu durum kodunu aldığınızda, istemci uygulama isteklerinizi sizin uyguladığınız bir [yeniden deneme ilkesiyle](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) geçit olarak kullanabilirsiniz. 
-
-## <a name="viewing-summary-usage"></a>Özet kullanımı görüntüleme
+### <a name="viewing-azure-resource-summary-usage"></a>Azure Kaynak Özeti kullanımını görüntüleme
 Azure'da LUIS kullanım bilgilerini görüntüleyebilirsiniz. **Genel bakış** sayfası çağrı ve hata dahil olmak üzere son Özet bilgilerini gösterir. Bir LUIS uç nokta isteği yapıyorsa, hemen izleyin **genel bakış sayfasında**, gösterilecek kullanım beş dakika bekleyin.
 
 ![Özet kullanımı görüntüleme](./media/luis-usage-tiers/overview.png)
 
-## <a name="customizing-usage-charts"></a>Kullanım grafikleri özelleştirme
+### <a name="customizing-azure-resource-usage-charts"></a>Azure Kaynak kullanımı grafiklerini özelleştirme
 Ölçümleri verilerine daha ayrıntılı bir görünüm sağlar.
 
 ![Varsayılan ölçümleri](./media/luis-usage-tiers/metrics-default.png)
@@ -204,7 +176,7 @@ Zaman dilimi ve ölçü türü için ölçüm grafikleri yapılandırabilirsiniz
 
 ![Özel ölçümler](./media/luis-usage-tiers/metrics-custom.png)
 
-## <a name="total-transactions-threshold-alert"></a>Toplam işlem eşiği Uyarısı
+### <a name="total-transactions-threshold-alert"></a>Toplam işlem eşiği Uyarısı
 Belirli bir işlem eşiği, örneğin 10.000 işlem ulaştığınız zaman bilmek istiyorsanız, bir uyarı oluşturabilirsiniz. 
 
 ![Varsayılan Uyarıları](./media/luis-usage-tiers/alert-default.png)
@@ -213,4 +185,7 @@ Belirli bir işlem eşiği, örneğin 10.000 işlem ulaştığınız zaman bilme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Nasıl kullanacağınızı öğrenin [sürümleri](luis-how-to-manage-versions.md) değişiklikleri LUIS uygulamanızı yönetme.
+* Sürümlerin uygulama yaşam döngüsünü denetlemek için [nasıl](luis-how-to-manage-versions.md) kullanılacağını öğrenin.
+* Kaynak üzerinde [yazma kaynağı](/luis-concept-keys.md#authoring-key) ve [katkıda bulunanlar](luis-concept-keys.md#contributions-from-other-authors) dahil olmak üzere kavramları anlayın.
+* Yazma ve çalışma zamanı kaynakları [oluşturmayı](luis-how-to-azure-subscription.md) öğrenin
+* Yeni [yazma kaynağına](luis-migration-authoring.md) geçir 

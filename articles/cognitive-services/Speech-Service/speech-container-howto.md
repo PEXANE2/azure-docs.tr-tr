@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741874"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241026"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
@@ -25,8 +25,8 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 |İşlev|Özellikler|En son|
 |-|-|--|
-|Konuşmayı Metne Dönüştürme| <li>Sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla metin içine ekleyin.|1.1.3|
-|Metin Okuma| <li>Metni, doğal sesli konuşmaya dönüştürür. düz metin girişi veya konuşma sen, biçimlendirme dili (SSML) ile. |1.1.0|
+|Konuşmayı Metne Dönüştürme| <li>Sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla metin içine ekleyin.|1.2.0|
+|Metin Okuma| <li>Metni, doğal sesli konuşmaya dönüştürür. düz metin girişi veya konuşma sen, biçimlendirme dili (SSML) ile. |1.2.0|
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -101,10 +101,10 @@ Dışındaki `latest` tüm Etiketler, yerel ayar kapsayıcısını `<culture>` g
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-Aşağıdaki tabloda, kapsayıcının 1.1.3 sürümünde **konuşmayı metne** yönelik desteklenen yerel ayarlar listelenmiştir:
+Aşağıdaki tabloda, kapsayıcının 1.2.0 sürümünde **konuşmayı metne** yönelik desteklenen yerel ayarlar listelenmiştir:
 
 |Dil yerel ayarı|Tags|
 |--|--|
@@ -129,10 +129,10 @@ Dışındaki `latest` tüm Etiketler aşağıdaki biçimdedir; `<culture>` burad
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-Aşağıdaki tabloda, kapsayıcının 1.1.0 sürümünde **metinden konuşmaya** için desteklenen yerel ayarlar listelenmektedir:
+Aşağıdaki tabloda, kapsayıcının 1.2.0 sürümünde **metinden konuşmaya** için desteklenen yerel ayarlar listelenmektedir:
 
 |Dil yerel ayarı|Tags|Desteklenen sesler|
 |--|--|--|

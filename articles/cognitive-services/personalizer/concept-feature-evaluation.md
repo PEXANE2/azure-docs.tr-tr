@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d03c5f66f760a2bea9f99501cec478831a347c5d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668729"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242425"
 ---
 # <a name="feature-evaluation"></a>Özellik değerlendirmesi
 
@@ -32,9 +32,9 @@ Daha önemli özelliklerin modelde daha güçlü ağırlıkları vardır. Bu öz
 
 ## <a name="getting-feature-importance-evaluation"></a>Özellik önem değerlendirmesi alınıyor
 
-Özellik önem sonuçlarını görmek için bir değerlendirme çalıştırmanız gerekir. Özellik önemi hakkındaki sonuç bilgileri, geçerli kişiselleştirici çevrimiçi modelini temsil eder. Değerlendirme, değerlendirme döneminin bitiş tarihinde kaydedilen modelin Özellik önem derecesini analiz eder. 
+Özellik önem sonuçlarını görmek için bir değerlendirme çalıştırmanız gerekir. Değerlendirme, değerlendirme süresi boyunca gözlemlenen özellik adlarına dayanarak, insanlarca okunabilir Özellik etiketleri oluşturur.
 
-Değerlendirme, değerlendirme süresi boyunca gözlemlenen özellik adlarına dayanarak, insanlarca okunabilir Özellik etiketleri oluşturur.
+Özellik önemi hakkındaki sonuç bilgileri, geçerli kişiselleştirici çevrimiçi modelini temsil eder. Değerlendirme, geçerli çevrimiçi öğrenme ilkesiyle değerlendirme sırasında yapılan tüm eğitime başladıktan sonra değerlendirme döneminin bitiş tarihinde kaydedilen modelin Özellik önemini analiz eder. 
 
 Özellik önem sonuçları, değerlendirme sırasında sınanan veya oluşturulan diğer ilkeleri ve modelleri temsil etmez.  Değerlendirme, değerlendirme döneminin sonundan sonra Kişiselleştiriciye gönderilen özellikleri içermez.
 

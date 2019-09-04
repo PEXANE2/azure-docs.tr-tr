@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2a540606a6f9cfa790a2244628e7f0b7bef35986
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4356d9e1cd3d6f1a924603f7405d612814d35859
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639267"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256926"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>LUSıS uygulamanız için yazma çevrimi
 LUIS, en iyi modeli değişiklikleri, utterance örnekler, yayımlama ve veri toplamayı yinelemeli bir döngüyle uç nokta sorgularından öğrenir. 
@@ -38,12 +38,12 @@ LUIS için utterance atayarak uygulamanızın etki ilgili olmayan konuşma yok s
 ## <a name="train-and-publish-the-app"></a>Uygulamayı eğitme ve yayımlama
 Her bir amaca göre 15 ila 30 farklı yere sahip olduktan sonra, etiketli gerekli varlıklar sayesinde [, daha sonra](luis-how-to-train.md) [yayımlamanız](luis-how-to-publish-app.md)gerekir. Yayımlama başarılı bildirimden bağlantı uç noktalarınızı almak için kullanın. Uygulamanızı, ihtiyacınız olan [uç nokta bölgelerinde](luis-reference-regions.md) kullanılabilir olacak şekilde oluşturup yayımladığınızdan emin olun. 
 
-## <a name="https-endpoint-testing"></a>HTTPS uç noktasını sınama
-LUIS uygulamanızı HTTPS uç noktasından test edebilirsiniz. Uç noktadan test etmek, LUSıS 'nin [Gözden geçirme](luis-how-to-review-endpoint-utterances.md)için düşük güvenilirliğe sahip herhangi bir noktayı seçmesine olanak tanır.  
+## <a name="https-prediction-endpoint-testing"></a>HTTPS tahmin uç noktası testi
+LUSıS uygulamanızı HTTPS tahmin uç noktasından test edebilirsiniz. Tahmin uç noktasından test etmek, LUSıS 'nin [Gözden geçirme](luis-how-to-review-endpoint-utterances.md)için düşük güvenilirliğe sahip herhangi bir noktayı seçmesine olanak sağlar.  
 
 ## <a name="recycle"></a>Geri dönüştür
 
-Geliştirme döngüsünü işiniz bittiğinde, yeniden başlayabilirsiniz. [İnceleme bitiş noktası uttersları](luis-how-to-review-endpoint-utterances.md) lu, düşük güvenilirlikle işaretlendi. Bu konuşma amacı hem de varlık için denetleyin. Konuşma gözden sonra İnceleme listesi boş olmalıdır.  
+Geliştirme döngüsünü işiniz bittiğinde, yeniden başlayabilirsiniz. [İnceleme tahmini uç noktası utterations](luis-how-to-review-endpoint-utterances.md) lu, düşük güvenilirlikle işaretlendi. Bu konuşma amacı hem de varlık için denetleyin. Konuşma gözden sonra İnceleme listesi boş olmalıdır.  
 
 Geçerli sürümü yeni bir sürüme [kopyalamayı](luis-concept-version.md#clone-a-version) düşünün ve sonra yazma değişikliklerinizi yeni sürümde başlatın. 
 
@@ -53,4 +53,4 @@ Geçerli sürümü yeni bir sürüme [kopyalamayı](luis-concept-version.md#clon
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kavramları hakkında bilgi edinin [işbirliği](luis-concept-collaborator.md).
+Kavramları hakkında bilgi edinin [işbirliği](luis-concept-keys.md).

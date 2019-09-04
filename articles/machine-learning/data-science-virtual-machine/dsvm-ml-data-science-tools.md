@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d823eb615f983190ee6974ee3012f069309ca753
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195647"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278774"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
 Azure veri bilimi sanal makineleri zengin bir araç olan ve kitaplıklar için machine learning (ML), Python, R ve Julia'nın gibi popüler dilde kullanılabilir. 
@@ -24,15 +24,16 @@ ML araçları ve kitaplıkları üzerinde veri bilimi sanal makineleri bazılar�
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Python için SDK Azure Machine Learning
 [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)'nın tam başvurusuna bakın.
+
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   Azure Machine Learning, geliştirmek ve ML modelleri dağıtmak için kullanabileceğiniz bir bulut hizmetidir. Oluşturmak, eğitmek, ölçeklendirme ve Python SDK'sı kullanılarak bunların yönetilmesi, Modellerinizi izleyebilirsiniz. Modelleri kapsayıcıları olarak dağıtma ve bulutta, şirket içinde veya Azure IOT Edge üzerinde çalıştırın.   |
-| Desteklenen sürümler     | Windows (Conda ortamı: AzureML), Linux (Conda ortamı: py36)    |
-| Tipik kullanımları      | Genel ML platformu      |
-| Nasıl, yapılandırılmış yüklü mü?      |  GPU desteğine sahip yüklü   |
-| Kullanma veya çalıştırın      | Python SDK'sını ve Azure CLI. Conda ortama etkinleştirme `AzureML` Windows Edition *veya* için `py36` Linux Edition.      |
-| Örnekler için bağlantı      | Örnek Jupyter not defterleri dahil edilecek `AzureML` not defterlerini altında dizin.  |
-| İlgili araçları      | Visual Studio kodu, Jupyter   |
+| Nedir? |   Azure Machine Learning, geliştirmek ve ML modelleri dağıtmak için kullanabileceğiniz bir bulut hizmetidir. Oluşturmak, eğitmek, ölçeklendirme ve Python SDK'sı kullanılarak bunların yönetilmesi, Modellerinizi izleyebilirsiniz. Modelleri kapsayıcıları olarak dağıtma ve bulutta, şirket içinde veya Azure IOT Edge üzerinde çalıştırın. |
+| Desteklenen sürümler  | Windows (Conda ortamı: AzureML), Linux (Conda ortamı: py36) |
+| Tipik kullanımları      | Genel ML platformu  |
+| Nasıl, yapılandırılmış yüklü mü? |  GPU desteğine sahip yüklü |
+| Kullanma veya çalıştırın | Python SDK'sını ve Azure CLI. Conda ortama etkinleştirme `AzureML` Windows Edition *veya* için `py36` Linux Edition.  |
+| Örnekler için bağlantı | Örnek Jupyter not defterleri dahil edilecek `AzureML` not defterlerini altında dizin.  |
+| İlgili araçları  | Visual Studio kodu, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

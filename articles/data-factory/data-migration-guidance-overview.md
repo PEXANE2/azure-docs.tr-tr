@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 6b13eab0824307ef42f25d52a293f0f22818c1aa
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210026"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258995"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın 
 
@@ -61,3 +61,4 @@ Veri geçişini iki hafta içinde (geçiş penceresi) gerçekleştirmek istiyors
 
 - [AWS S3 'ten Azure 'a veri geçirme](data-migration-guidance-s3-azure-storage.md)
 - [Şirket içi Hadoop kümesinden Azure 'a veri geçirme](data-migration-guidance-hdfs-azure-storage.md)
+- [Şirket içi Netezza sunucusundan Azure 'a veri geçirme](data-migration-guidance-netezza-azure-sqldw.md)

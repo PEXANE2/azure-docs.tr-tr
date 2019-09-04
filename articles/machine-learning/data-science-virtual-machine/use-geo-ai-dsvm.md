@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 01238885e68a39ff713bd346a9206668e16e7ee4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2d7532c51e2963c0dc9f8d02e7a0e32864e80f92
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195290"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278427"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka veri bilimi sanal makinesi kullanma
 
@@ -41,7 +41,7 @@ Temel Veri Bilimi VM'si makine öğrenimi ve derin öğrenme çerçevesi tabanl�
 
 2. [R ile Jeo-uzamsal analizler ile çalışmaya](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)başlama: [Arcgisbinding](https://github.com/R-ArcGIS/r-bridge) kitaplığı tarafından sağlanan ArcGIS için R arabirimini kullanarak Jeo-uzamsal verilerle çalışmayı gösteren bir giriş örneği. 
 
-3. [Piksel düzeyinde Land kullanım sınıflandırması](https://github.com/Azure/pixel_level_land_classification): Giriş olarak havadan oluşan bir görüntüyü kabul eden ve bir Land Kapla etiketi döndüren derin bir sinir ağ modelinin nasıl oluşturulacağını gösteren bir öğretici. Kara-kapak etiketlerinin örnekleri, ve *su*. Model görüntüdeki gibi her piksel etiketini döndürür. 
+3. [Piksel düzeyinde Land kullanım sınıflandırması](https://github.com/Azure/pixel_level_land_classification): Giriş olarak havadan oluşan bir görüntüyü kabul eden ve bir Land Kapla etiketi döndüren derin bir sinir ağ modelinin nasıl oluşturulacağını gösteren bir öğretici. Kara-kapak etiketlerinin örnekleri *, ve* *su*. Model görüntüdeki gibi her piksel etiketini döndürür. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -49,4 +49,3 @@ Temel Veri Bilimi VM'si makine öğrenimi ve derin öğrenme çerçevesi tabanl�
 Veri bilimi sanal makinesi kullanan ek örnekleri şuradan ulaşılabilir:
 
 * [Örnekler](dsvm-samples-and-walkthroughs.md)
-

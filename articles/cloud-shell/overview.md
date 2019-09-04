@@ -12,19 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: f3d7edf21edf116732eceb332cb8725a0dee85dc
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742024"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240853"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell Genel Bakış
-Azure Cloud Shell, Azure kaynaklarını yönetmeye yönelik etkileşimli, tarayıcıda erişilebilen bir kabuktur.
-Çalışma biçiminize en uygun kabuk deneyimini seçme esnekliği sağlar.
-Linux kullanıcıları Bash deneyimini, Windows kullanıcıları ise PowerShell’i tercih edebilir.
+Azure Cloud Shell, Azure kaynaklarını yönetmeye yönelik etkileşimli, kimliği doğrulanmış, tarayıcıda erişilebilen bir kabuktur.
+Bu, bash veya PowerShell gibi çalıştığınız yönteme en uygun kabuk deneyimini seçme esnekliğini sağlar.
 
 Aşağıya tıklayarak shell.azure.com 'tan deneyin.
 

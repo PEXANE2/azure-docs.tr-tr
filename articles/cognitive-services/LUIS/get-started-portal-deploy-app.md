@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564067"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257085"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı Başlangıç: LUI portalında uygulama dağıtma
 
@@ -38,9 +38,9 @@ Tahmin uç noktası kaynağını Azure portal oluşturursunuz. Bu kaynak yalnız
 
 1. Aboneliği aşağıdaki ayarlarla yapılandırın:
 
-   |Ayar|Değer|Amaç|
+   |Ayar|Value|Amaç|
    |--|--|--|
-   |Ad|`my-cognitive-service-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
+   |Name|`my-cognitive-service-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
    |Subscription|Aboneliğiniz|Hesabınızla ilişkili aboneliklerden birini seçin.|
    |Location|**Batı ABD**|Bu kaynak için Azure bölgesi.|
    |Fiyatlandırma katmanı|**S0**|Bu kaynak için varsayılan fiyatlandırma katmanı.|
@@ -59,11 +59,11 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
 1. [Luo portalında](https://www.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
 
-1. Sağ üst menüdeki **Yönet** ' i seçin ve ardından **anahtarlar ve uç noktalar**' ı seçin.
+1. Sağ üst menüdeki **Yönet** ' i seçin ve ardından **Azure kaynakları**' nı seçin.
 
-1. LUO eklemek için **kaynak ata +** ' yı seçin.
+1. LUO eklemek için **tahmin kaynağı Ekle**' yi seçin.
 
-   [![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
 
@@ -87,7 +87,7 @@ Uygulamayı test etmeye hazırsanız eğitme. Geçerli eğitilen sürümün sorg
 
 1. Yeni kaynak adınızla ilişkili uç nokta URL 'sini seçin. Bu eylem, tahmin uç noktası çalışma zamanına `GET` istek yapmak için doğru şekilde oluşturulmuş bir URL ile bir Web tarayıcısı açar.
 
-1. URL 'nin sonundaki sorgu için kısa ve kullanıcının utterine GET isteğine eklendiği yerdir.  `q=` `q=`Sonrasında, önceki hızlı başlangıç noktasında kullanılan aynı kullanıcı adını girin:
+1. URL 'nin sonundaki sorgu için kısa ve kullanıcının utterine GET isteğine eklendiği yerdir. `q=` `q=`Sonrasında, önceki hızlı başlangıç noktasında kullanılan aynı kullanıcı adını girin:
 
     ```Is there a form named hrf-234098```
 

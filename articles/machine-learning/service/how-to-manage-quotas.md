@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991985"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278060"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Yönetme ve Azure kaynakları için kota isteği
 
@@ -78,7 +78,7 @@ Düşük öncelikli bir düğümdeki <sup>2</sup> iş, bir kapasite kısıtlamas
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları
 Azure Machine Learning işlem hatları için, bir işlem hattındaki adım sayısı ve bir abonelikte bölge başına yayınlanan işlem hattı sayısı için bir kota sınırı vardır.
 - İşlem hattında izin verilen en fazla adım sayısı 30.000 ' dir
-- Her ay abonelik başına yayımlanan işlem hattı sayısı üst sınırı 100.000 ' dir
+- Her ay abonelik başına yayınlanan işlem hattı tarafından tetiklenen en fazla zamanlama tabanlı çalıştırma ve BLOB çeklerinin toplamı 100.000 ' dir.
 
 > [!NOTE]
 > Bu sınırı artırmak istiyorsanız [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.

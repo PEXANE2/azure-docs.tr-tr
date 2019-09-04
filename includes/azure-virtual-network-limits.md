@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903953"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242789"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** üzerinden yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
@@ -51,7 +51,7 @@ ms.locfileid: "69903953"
 | --- | --- | --- |
 | Genel IP adresleri-dinamik | Temel için 1.000. |Desteğe başvurun. |
 | Genel IP adresleri-statik | Temel için 1.000. |Desteğe başvurun. |
-| Genel IP adresleri-statik | Standart için 200.|Desteğe başvurun. |
+| Genel IP adresleri-statik | Standart için 1.000.|Desteğe başvurun. |
 | Genel IP öneki uzunluğu | /28 | Desteğe başvurun. |
 
 #### <a name="load-balancer"></a>Yük dengeleyici sınırları

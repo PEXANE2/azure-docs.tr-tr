@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: a5fe77ace5f745911bb9085dd6996a8d21fe265f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879047"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274483"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Mürekkep Tanıma API’sine mürekkep verisi gönderme 
 
@@ -82,7 +82,7 @@ Tanınma sonuçlarının daha fazla olması, mürekkep vuruşlarının birbirler
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Windows Ink ile mürekkep tanıyıcı API 'sini tümleştirme
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) , farklı bir cihaz yelpazilerinde dijital mürekkep deneyimlerini etkinleştirmek için araçlar ve teknolojiler sağlar. Dijital mürekkep vuruşlarını görüntüleyen ve yorumlayan uygulamalar oluşturmak için Windows Ink platformunu mürekkep tanıma API 'SI ile birleştirebilirsiniz.
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) , farklı bir cihaz yelpazilerinde dijital mürekkep deneyimlerini etkinleştirmek için araçlar ve teknolojiler sağlar. Dijital mürekkep vuruşlarını görüntüleyen ve yorumlayan uygulamalar oluşturmak için Windows Ink platformunu mürekkep tanıyıcı API 'SI ile birleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

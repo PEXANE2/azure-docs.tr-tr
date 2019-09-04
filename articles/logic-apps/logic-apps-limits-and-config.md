@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099422"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242360"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -260,11 +260,9 @@ Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam ed
 
 Aynı bölgedeki tüm mantıksal uygulamalar aynı IP adresi aralıklarını kullanır. Mantıksal uygulamalarınızın [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle doğrudan yaptığı çağrıları desteklemek için, Logic Apps hizmeti tarafından kullanılan *Tüm* [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarlarını ayarlayın , mantıksal uygulamalarınızın bulunduğu bölgelere göre. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır. 
 
-[Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır.
+[Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır. Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps için, [Bu bağlantı noktalarını açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)emin olun.
 
-Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps için, [Bu bağlantı noktalarını açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)emin olun.
-
-[Azure Kamu](../azure-government/documentation-government-overview.md) ve [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)için, bağlayıcılar için ayrılmış IP adresleri şu anda kullanılamıyor.
+Özel Bağlayıcılar, [Azure Kamu](../azure-government/documentation-government-overview.md)ve [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)için, sabit veya ayrılmış IP adresleri kullanılamaz.
 
 > [!IMPORTANT]
 >

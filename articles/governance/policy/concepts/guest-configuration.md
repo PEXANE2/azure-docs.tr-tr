@@ -7,30 +7,28 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 054f9ed21ee0d7ef725c2b7eee8174c53374b5bc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232266"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274942"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
 Azure Ilkesi, Azure kaynaklarını denetlemeye ve [düzeltmelere](../how-to/remediate-resources.md) ek olarak, bir makine içindeki ayarları denetleyebilir. Doğrulama Konuk yapılandırma uzantısı ve istemci tarafından gerçekleştirilir. İstemcisi aracılığıyla uzantısı gibi işletim sistemi yapılandırması, uygulama yapılandırması veya varlığı, ortam ayarlarını ve diğer ayarlarını doğrular.
 
-Azure Ilke Konuk yapılandırması şu anda yalnızca makinenin içindeki setler için bir denetim gerçekleştirir.
+Azure Ilke Konuk yapılandırması şu anda yalnızca makinenin içindeki ayarların bir denetimini gerçekleştirir.
 Yapılandırma uygulamak henüz mümkün değildir.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>Uzantı ve istemci
 
 Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkindir. Uzantı geçerli ilke ataması ve karşılık gelen yapılandırma tanımını indirir.
 
-### <a name="limits-set-on-the-exension"></a>Bir şekilde ayarlanan sınırlar
+### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
 Uzantının makinede çalışan etkileyen uygulamalarla sınırlı olması için, Konuk yapılandırmasının CPU kullanımının% 5 ' inden fazlasını aşmasına izin verilmez.
-Bu, Microsoft tarafından "yerleşik" olarak ve müşteriler tarafından yazılan özel yapılandırmalarda sunulan yapılandırmalara yönelik doğru BOH ' dir.
+Bu, hem Microsoft tarafından "yerleşik" olarak sunulan yapılandırmalarda ve müşteriler tarafından yazılan özel yapılandırmalarda geçerlidir.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını kaydetme
 
@@ -121,7 +119,7 @@ Doğrulama Aracı sonuçları Konuk yapılandırma istemciye sağlar. İstemci, 
 Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianceStatus** rapor uyumluluk özelliğini **Uyumluluk** düğümü. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Uıınotexists ilkesi, sonuçları döndürmek için bu ilke için gereklidir.
+> **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir.
 > **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
 
 Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. [Önizleme] adlı *yerleşik girişim: Linux ve Windows makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. Her durumda, yalnızca hedef mantıksal tanımındaki doğrular işletim sistemine göre değerlendirilir [ilke kuralı](definition-structure.md#policy-rule) tanımı.
@@ -145,6 +143,32 @@ Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ver
 
 , Geçerli sürüm numarasını belirtir.`<version>`
 
+### <a name="collecting-logs-remotely"></a>Günlükleri uzaktan toplama
+
+Konuk yapılandırma yapılandırmalarının veya modüllerinin sorun gidermede ilk adım, [Konuk yapılandırma paketini test](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)etme `Test-GuestConfigurationPackage` bölümündeki adımları izleyerek cmdlet 'ini kullanmalıdır.  Bu başarılı olmazsa, istemci günlüklerinin toplanması sorunları tanılamanıza yardımcı olabilir.
+
+#### <a name="windows"></a>Windows
+
+Windows makinelerdeki günlük dosyalarından bilgi yakalamak için Azure VM çalıştırma komutunu kullanmak istiyorsanız, aşağıdaki örnek PowerShell betiği yararlı olabilir. Betiği Azure portalından çalıştırma veya Azure PowerShell kullanma hakkında daha fazla bilgi için, bkz. [Run komutuyla WINDOWS sanal makinenizde PowerShell betikleri çalıştırma](../../../virtual-machines/windows/run-command.md).
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Linux makinelerdeki günlük dosyalarından bilgi yakalamak için Azure VM çalıştırma komutunu kullanmak istiyorsanız, aşağıdaki örnek Bash betiği yararlı olabilir. Betiği Azure portalından çalıştırma veya Azure CLı kullanma hakkında ayrıntılı bilgi için bkz. [Run komutuyla LINUX sanal makinenizde Shell betikleri çalıştırma](../../../virtual-machines/linux/run-command.md)
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
+
 ## <a name="guest-configuration-samples"></a>Konuk yapılandırma örnekleri
 
 Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılabilir:
@@ -159,5 +183,5 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/index.md)ile yönetim grubunun ne olduğunu inceleyin.

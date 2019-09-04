@@ -7,12 +7,12 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 869be11639fd4e957a991cadb44f2714875ddf7e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232715"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239154"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -27,8 +27,6 @@ Uyumluluk üzerinde yöntemleri bakarak önce uyumluluk bilgilerini güncelleşt
 
 > [!WARNING]
 > Uyumluluk durumu **kayıtlı değil**olarak bildiriliyorsa, **Microsoft. policınghts** kaynak sağlayıcısı 'nın kayıtlı olduğunu ve kullanıcının RBAC ' de açıklandığı gibi uygun rol tabanlı erişim denetimi (RBAC) izinlerine sahip olduğunu doğrulayın. [ Azure Ilkesi](../overview.md#rbac-permissions-in-azure-policy).
-
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Değerlendirme Tetikleyicileri
 
@@ -177,7 +175,7 @@ $response
 
 ### <a name="summarize-results"></a>Sonuçlarını özetleme
 
-REST API ile kapsayıcı, tanımını veya atamasını özetleme gerçekleştirilebilir. Azure Policy Insight 'ın [abonelik Özeti](/rest/api/policy-insights/policystates/summarizeforsubscription)kullanılarak abonelik düzeyinde özetlemeye bir örnek aşağıda verilmiştir:
+REST API ile kapsayıcı, tanımını veya atamasını özetleme gerçekleştirilebilir. Azure Policy Insight 'ın abonelik Özeti kullanılarak abonelik düzeyinde [özetlemeye](/rest/api/policy-insights/policystates/summarizeforsubscription)bir örnek aşağıda verilmiştir:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -415,7 +413,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-Aboneliğinize bağlı `AzureActivity` [etkinlik günlüğü Analizi çözümünden](../../../azure-monitor/platform/activity-log-collect.md) sahip bir `AzureActivity` [Log Analytics çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa, basit kusto sorguları ve ' ı kullanarak değerlendirme döngüsünün uyumsuzluk sonuçlarını da görüntüleyebilirsiniz. tablosundan. Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
+Aboneliğinize bağlı [etkinlik günlüğü Analizi çözümünden](../../../azure-monitor/platform/activity-log-collect.md) sahip `AzureActivity` `AzureActivity` bir [Log Analytics çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa, basit kusto sorguları ve ' ı kullanarak değerlendirme döngüsünün uyumsuzluk sonuçlarını da görüntüleyebilirsiniz. tablosundan. Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
 
 
 ![Azure Izleyici günlüklerini kullanarak Azure Ilke uyumluluğu](../media/getting-compliance-data/compliance-loganalytics.png)
@@ -426,5 +424,5 @@ Aboneliğinize bağlı `AzureActivity` [etkinlik günlüğü Analizi çözümün
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
-- [Uyumlu olmayan kaynakları](remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

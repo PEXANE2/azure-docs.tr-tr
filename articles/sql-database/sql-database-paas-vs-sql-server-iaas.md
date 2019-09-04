@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: f303e6ba30b8b68f1bed4c5bcacd746932cbe156
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 998318ad1418c1076676725af03bd7f33c963b3a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873823"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279929"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Azure SQL 'de doğru dağıtım seçeneğini belirleyin
 
@@ -33,7 +33,7 @@ Azure ile şirket içi SQL Server veritabanlarının karşılaştırmasına yön
 
 Diyagramda görüldüğü gibi, her teklif, altyapının üzerinde sahip olduğunuz yönetim düzeyiyle ve maliyet verimliliği derecesine göre ayırdedilir.
 
-Azure 'da, SQL Server iş yüklerinizin barındırılan bir hizmet ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) veya barındırılan bir altyapı ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) olarak çalışmasını sağlayabilirsiniz. PaaS 'de, her dağıtım seçeneğinde birden çok dağıtım seçeneğiniz ve hizmet katmanınız vardır. PaaS veya IaaS arasında seçim yaparken sormanız gereken önemli soru, veritabanınızı yönetmek, düzeltme eklerini uygulamak, yedeklemeleri gerçekleştirmek veya bu işlemleri Azure 'a atamak istiyor musunuz?
+Azure 'da, SQL Server iş yüklerinizin barındırılan bir hizmet ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) veya barındırılan bir altyapı ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) olarak çalışmasını sağlayabilirsiniz. PaaS 'de, her dağıtım seçeneğinde birden çok dağıtım seçeneğiniz ve hizmet katmanınız vardır. PaaS veya IaaS arasında seçim yaparken yapmanız gereken önemli soru, veritabanınızı yönetmek, düzeltme eki uygulamak ve yedeklemeleri gerçekleştirmek istiyor musunuz ya da bu işlemleri Azure 'a atamak istiyor musunuz?
 
 Yanıta bağlı olarak aşağıdaki seçenekleriniz vardır:
 

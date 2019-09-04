@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 71fa4b590b41324536d740da5205977c0cefc448
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186509"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241845"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Öğreticide Birden çok veri kaynağından gelen verileri tek bir Azure Search dizininde birleştirme
 
@@ -46,7 +46,7 @@ Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanıl�
 
 1. GitHub 'da örnek depoyu bulun: [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. **Kopyala veya indir** ' i seçin ve deponun özel yerel kopyasını yapın.
-1. Visual Studio 'Yu açın ve henüz yüklenmemişse Microsoft Azure Search NuGet paketini yükleme. **Araçlar** menüsünde **NuGet Paket Yöneticisi** ' ni ve ardından **çözüm için NuGet Paketlerini Yönet...** ' i seçin. Araştır sekmesini seçin ve arama kutusuna "Azure Search" yazın. Listede (sürüm 9.0.1 veya üzeri) göründüğünde **Microsoft. Azure. Search** uygulamasını yükler. Yüklemeyi tamamlaması için ek iletişim kutularına tıklamacaksınız.
+1. Visual Studio 'Yu açın ve henüz yüklenmemişse Microsoft Azure Search NuGet paketini yükleme. **Araçlar** menüsünde **NuGet Paket Yöneticisi** ' ni ve ardından **çözüm için NuGet Paketlerini Yönet...** ' i seçin. Araştır sekmesini **seçin ve arama** kutusuna "Azure Search" yazın. Listede (sürüm 9.0.1 veya üzeri) göründüğünde **Microsoft. Azure. Search** uygulamasını yükler. Yüklemeyi tamamlaması için ek iletişim kutularına tıklamacaksınız.
 
     ![Azure kitaplıklarını eklemek için NuGet kullanma](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -70,7 +70,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. [Azure Portal oturum açın](https://portal.azure.com)ve Azure Cosmos DB hesabınıza genel bakış sayfasına gidin.
 
-1. Menü çubuğundan kapsayıcı Ekle ' ye tıklayın. "Yeni veritabanı oluştur" öğesini belirtin ve **otel-odalar-DB**adını kullanın. Koleksiyon adı için **otel odaları** ve bölüm anahtarı için **/Hotelıd** girin. Veritabanını ve kapsayıcıyı oluşturmak için **Tamam** ' ı tıklatın.
+1. Menü çubuğundan kapsayıcı Ekle ' ye tıklayın. "Yeni veritabanı oluştur" öğesini belirtin ve **otel-odalar-DB**adını kullanın. Koleksiyon adı için **oteller** ve bölüm anahtarı için **/Hotelıd** girin. Veritabanını ve kapsayıcıyı oluşturmak için **Tamam** ' ı tıklatın.
 
    ![Azure Cosmos DB kapsayıcısı Ekle](media/tutorial-multiple-data-sources/cosmos-add-container.png "Azure Cosmos DB kapsayıcısı ekleme")
 
@@ -86,7 +86,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 ## <a name="prepare-sample-blob-data"></a>Örnek blob verilerini hazırlama
 
-1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, Bloblar ' a tıklayınve ardından **+ Container**' a tıklayın.
+1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, **Bloblar**' a tıklayın ve ardından **+ Container**' a tıklayın.
 
 1. Örnek otel odası JSON dosyalarını depolamak için **otel odaları** adlı [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 

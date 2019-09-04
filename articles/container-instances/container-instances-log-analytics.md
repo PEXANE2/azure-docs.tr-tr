@@ -5,23 +5,26 @@ services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: article
-ms.date: 07/09/2019
+ms.topic: overview
+ms.date: 09/02/2019
 ms.author: danlep
-ms.openlocfilehash: 9b57775040251312c8afbff5983a52ae9d14e6c6
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1c4846414036e86d460d9abe0bd93e785e710395
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172486"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258448"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı örneği günlüğü
 
-Log Analytics çalışma alanları, günlük verilerinin yalnızca Azure kaynaklarından değil, aynı zamanda diğer bulutlardaki kaynakları ve kaynakları depolama ve sorgulama için merkezi bir konum sağlar. Azure Container Instances, Azure Izleyici günlüklerine veri göndermeye yönelik yerleşik destek içerir.
+Log Analytics çalışma alanları, günlük verilerinin yalnızca Azure kaynaklarından değil, aynı zamanda diğer bulutlardaki kaynakları ve kaynakları depolama ve sorgulama için merkezi bir konum sağlar. Azure Container Instances, Azure Izleyici günlüklerine Günlükler ve olay verileri göndermek için yerleşik destek içerir.
 
-Azure Izleyici günlüklerine kapsayıcı örneği verileri göndermek için bir kapsayıcı grubu oluştururken bir Log Analytics çalışma alanı KIMLIĞI ve çalışma alanı anahtarı belirtmeniz gerekir. Aşağıdaki bölümlerde, günlüğe yazma etkin bir kapsayıcı grubu ve sorgulama günlükleri oluşturma açıklanmaktadır.
+Azure Izleyici günlüklerine kapsayıcı grubu günlüğü ve olay verileri göndermek için bir kapsayıcı grubu oluştururken bir Log Analytics çalışma alanı KIMLIĞI ve çalışma alanı anahtarı belirtmeniz gerekir. Aşağıdaki bölümlerde, günlüğe yazma etkin bir kapsayıcı grubu ve sorgulama günlükleri oluşturma açıklanmaktadır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+> [!NOTE]
+> Şu anda, Linux kapsayıcı örneklerinden yalnızca Log Analytics olay verileri gönderebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -99,30 +102,43 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 Komutu verdikten kısa bir süre sonra, Azure’dan dağıtım ayrıntılarını içeren bir yanıt almanız gerekir.
 
-## <a name="view-logs-in-azure-monitor-logs"></a>Günlükleri Azure Izleyici günlüklerinde görüntüleme
+## <a name="view-logs"></a>Günlükleri görüntüleme
 
-Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portalında görünmesi birkaç dakika (en fazla 10) alabilir. Kapsayıcı grubunun günlüklerini görüntülemek için:
+Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portalında görünmesi birkaç dakika (en fazla 10) alabilir. `ContainerInstanceLog_CL` Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için:
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Genel**altında **Günlükler** ' i seçin  
-1. Aşağıdaki sorguyu yazın:`search *`
+1. Aşağıdaki sorguyu yazın:`ContainerInstanceLog_CL | limit 50`
 1. **Çalıştır** 'ı seçin
 
-`search *` sorgusu tarafından görüntülenen birkaç sonuç görmeniz gerekir. İlk olarak herhangi bir sonuç görmüyorsanız, birkaç dakika bekleyin ve sonra sorguyu yürütmek için **Çalıştır** düğmesini seçin. Varsayılan olarak, günlük girişleri **tablo** biçiminde görüntülenir. Daha sonra ayrı bir günlük girdisinin içeriğini görmek için bir satırı genişletebilirsiniz.
+Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak herhangi bir sonuç görmüyorsanız, birkaç dakika bekleyin ve sonra sorguyu yürütmek için **Çalıştır** düğmesini seçin. Varsayılan olarak, günlük girişleri **tablo** biçiminde görüntülenir. Daha sonra ayrı bir günlük girdisinin içeriğini görmek için bir satırı genişletebilirsiniz.
 
 ![Azure portalında Günlük Araması sonuçları][log-search-01]
+
+## <a name="view-events"></a>Etkinlikleri görüntüleme
+
+Ayrıca, Azure portal kapsayıcı örnekleri için olayları görüntüleyebilirsiniz. Olaylar, örneğin oluşturulduğu ve başlatıldığı zamanı içerir. `ContainerEvent_CL` Tablodaki olay verilerini görüntülemek için:
+
+1. Azure portalında Log Analytics çalışma alanınıza gidin
+1. **Genel**altında **Günlükler** ' i seçin  
+1. Aşağıdaki sorguyu yazın:`ContainerEvent_CL | limit 50`
+1. **Çalıştır** 'ı seçin
+
+Sorgu tarafından gösterilecek birkaç sonuç görmeniz gerekir. İlk olarak herhangi bir sonuç görmüyorsanız, birkaç dakika bekleyin ve sonra sorguyu yürütmek için **Çalıştır** düğmesini seçin. Varsayılan olarak, girdiler **tablo** biçiminde görüntülenir. Ardından, tek bir girdinin içeriğini görmek için bir satırı genişletebilirsiniz.
+
+![Azure portal olay arama sonuçları][log-search-02]
 
 ## <a name="query-container-logs"></a>Kapsayıcı günlüklerini sorgulama
 
 Azure Izleyici günlükleri, büyük olasılıkla binlerce günlük çıktı satırı üzerinden bilgi çekmek için kapsamlı bir [sorgu dili][query_lang] içerir.
 
-Azure Container Instances günlüğe yazma aracı girdileri Log Analytics çalışma alanınızın `ContainerInstanceLog_CL` tablosuna gönderir. Bir sorgunun temel yapısı bir kaynak tablo (`ContainerInstanceLog_CL`) ve bunu izleyen dikey çizgi karakteriyle (`|`) ayrılmış bir işleç dizisidir. Sonuçları daraltmak ve gelişmiş işlevleri gerçekleştirmek için çeşitli işleçleri zincirleyebilirsiniz.
+Bir sorgunun temel yapısı, kaynak tablo (Bu makalede `ContainerInstanceLog_CL` veya `ContainerEvent_CL`) ve ardından Kanal karakteriyle (`|`) ayrılmış bir dizi işleçten oluşur. Sonuçları daraltmak ve gelişmiş işlevleri gerçekleştirmek için çeşitli işleçleri zincirleyebilirsiniz.
 
-Örnek sorgu sonuçları görmek için, aşağıdaki sorguyu sorgu metni kutusuna yapıştırın ("Eski dil dönüştürücüyü göster" altında) ve sorguyu yürütmek için **ÇALIŞTIR** düğmesini seçin. Bu sorgu "Message" alanı "warn" sözcüğünü içeren tüm günlük girdilerini gösterir:
+Örnek sorgu sonuçlarını görmek için, aşağıdaki sorguyu sorgu metin kutusuna yapıştırın ve sorguyu yürütmek için **Çalıştır** düğmesini seçin. Bu sorgu "Message" alanı "warn" sözcüğünü içeren tüm günlük girdilerini gösterir:
 
 ```query
 ContainerInstanceLog_CL
-| where Message contains("warn")
+| where Message contains "warn"
 ```
 
 Daha karmaşık sorgular da desteklenir. Örneğin, bu sorgu yalnızca son saat içinde "mycontainergroup001" kapsayıcı grubu için oluşturulan günlük girdilerini görüntüler:
@@ -151,6 +167,7 @@ Kapsayıcı örneği CPU ve bellek kaynaklarını izleme hakkında daha fazla bi
 
 <!-- IMAGES -->
 [log-search-01]: ./media/container-instances-log-analytics/portal-query-01.png
+[log-search-02]: ./media/container-instances-log-analytics/portal-query-02.png
 
 <!-- LINKS - External -->
 [fluentd]: https://hub.docker.com/r/fluent/fluentd/

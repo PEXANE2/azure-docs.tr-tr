@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623821"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241815"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli nedir?
 Service Fabric uygulamaların Azure Resource Manager aracılığıyla Service Fabric kümenize dağıtılması önerilir. Bu yöntem, JSON 'daki uygulama ve Hizmetleri tanımlamaya ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtmanıza olanak tanır. Uygulamaları PowerShell veya Azure CLı aracılığıyla dağıtmanın ve yönetmenin aksine, kümenin kullanıma başlamasını beklemeniz gerekmez. Uygulama kaydetme, hazırlama ve dağıtma işlemlerinin tümü tek bir adımda gerçekleşebilir. Bu, kümenizdeki uygulama yaşam döngüsünü yönetmek için kullanılabilecek en iyi yöntemdir. Daha fazla bilgi için [en iyi uygulamalara](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)bakın.
@@ -41,7 +41,7 @@ Kaynak Yöneticisi şablondan uygulama dağıtmak, uygulama görüntüsünü haz
 ![Depolama hesabı oluşturma][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Depolama hesabını yapılandırma 
-Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturmanız gerekir. Azure portal, uygulamalarınızı depolamak istediğiniz depolama hesabına gidin. Bloblar dikey penceresini seçin ve **kapsayıcı Ekle** düğmesine tıklayın. Blob ortak erişim düzeyiyle yeni bir kapsayıcı ekleyin.
+Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturmanız gerekir. Azure portal, uygulamalarınızı depolamak istediğiniz depolama hesabına gidin. **Bloblar** dikey penceresini seçin ve **kapsayıcı Ekle** düğmesine tıklayın. Blob ortak erişim düzeyiyle yeni bir kapsayıcı ekleyin.
    
 ![Blob oluştur][CreateBlob]
 
@@ -154,6 +154,10 @@ Uygulama kaynak modeli hakkında bilgi alın:
 
 * [Service Fabric bir uygulama modelleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
 * [Uygulama ve hizmet bildirimlerini Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+
+## <a name="see-also"></a>Ayrıca Bkz.
+* [En iyi uygulamalar](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [Uygulamaları ve Hizmetleri Azure kaynakları olarak yönetme](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

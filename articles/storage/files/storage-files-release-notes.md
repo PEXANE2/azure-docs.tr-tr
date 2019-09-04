@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7286d8465d857b24c72c46e9d671abb83ccefc21
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019124"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259349"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme Aracısı için sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -35,14 +35,12 @@ Azure Dosya Eşitleme aracısı aşağıdaki sürümleri destekler:
 | Nisan 2019 güncelleştirme paketi- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 Nisan 2019 | Desteklenen |
 | Mart 2019 güncelleştirme paketi- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 Mart 2019 | Desteklenen |
 | V5 sürümü- [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 Şubat 2019 | Desteklenen |
-| Ocak 2019 güncelleştirme paketi- [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 14 Ocak 2019 | Desteklenen |
-| Aralık 2018 güncelleştirme paketi- [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10 Aralık 2018 | Desteklenen |
-| Aralık 2018 güncelleştirme paketi | 4.1.0.0 | 4 Aralık 2018'e | Desteklenen |
-| V4 sürümü | 4.0.1.0 | 13 Kasım 2018 | Desteklenen |
-| Eylül 2018 güncelleştirme paketi | 3.3.0.0 | 24 Eylül 2018 | Desteklenen-Aracı sürümünün sonunda 19 Ağustos 2019 tarihinde sona erecektir |
-| Ağustos 2018 güncelleştirme paketi | 3.2.0.0 | 15 Ağustos 2018 | Desteklenen-Aracı sürümünün sonunda 19 Ağustos 2019 tarihinde sona erecektir |
-| Genel kullanılabilirlik | 3.1.0.0 | 19 Temmuz 2018 | Desteklenen-Aracı sürümünün sonunda 19 Ağustos 2019 tarihinde sona erecektir |
-| Süre dolma aracıları | 1.1.0.0-3.0.13.0 | Yok | Desteklenmez-1 Ekim 2018 ' de Aracı sürümleri zaman aşımına uğradı |
+| Ocak 2019 güncelleştirme paketi- [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 14 Ocak 2019 | Desteklenen-Aracı sürümünün 5 Kasım 2019 tarihinde dolacağı |
+| Aralık 2018 güncelleştirme paketi- [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10 Aralık 2018 | Desteklenen-Aracı sürümünün 5 Kasım 2019 tarihinde dolacağı |
+| Aralık 2018 güncelleştirme paketi | 4.1.0.0 | 4 Aralık 2018'e | Desteklenen-Aracı sürümünün 5 Kasım 2019 tarihinde dolacağı |
+| V4 sürümü | 4.0.1.0 | 13 Kasım 2018 | Desteklenen-Aracı sürümünün 5 Kasım 2019 tarihinde dolacağı |
+| V3 sürümü | 3.1.0.0 - 3.4.0.0 | Desteklenmiyor | Desteklenmiyor-Aracı sürümleri 19 Ağustos 2019 tarihinde zaman aşımına uğradı |
+| Ön GA aracıları | 1.1.0.0-3.0.13.0 | Yok | Desteklenmez-1 Ekim 2018 ' de Aracı sürümleri zaman aşımına uğradı |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -70,7 +68,7 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 7.0.
 ### <a name="improvements-and-issues-that-are-fixed"></a>Düzeltilen geliştirmeler ve sorunlar
 
 - Daha büyük dosya paylaşma boyutları için destek
-    - Daha büyük Azure dosya paylaşımlarının önizlemesi sayesinde dosya eşitleme için destek limitlerimizi de artırıyoruz. Bu ilk adımda Azure Dosya Eşitleme artık tek bir eşitleme ad alanında en fazla 25 TB ve 50milyon dosyayı desteklemektedir. Büyük dosya paylaşma önizlemesine uygulamak için bu formu https://aka.ms/azurefilesatscalesurvey doldurmanız gerekir. 
+    - Daha büyük Azure dosya paylaşımlarının önizlemesi sayesinde dosya eşitleme için destek limitlerimizi de artırıyoruz. Bu ilk adımda Azure Dosya Eşitleme artık tek bir eşitleme ad alanında en fazla 25 TB ve 50.000.000 dosyayı desteklemektedir. Büyük dosya paylaşma önizlemesine uygulamak için bu formu https://aka.ms/azurefilesatscalesurvey doldurmanız gerekir. 
 - Depolama hesaplarında güvenlik duvarı ve sanal ağ ayarı desteği
     - Azure Dosya Eşitleme artık depolama hesaplarında güvenlik duvarını ve sanal ağ ayarını desteklemektedir. Dağıtımınızı güvenlik duvarı ve sanal ağ ayarıyla çalışacak şekilde yapılandırmak için bkz. [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 - Azure dosya paylaşımında değiştirilen dosyaları hemen eşitlemeye yönelik PowerShell cmdlet 'i
@@ -177,7 +175,7 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısının sürüm 6.0.0.
   - Bulut katmanlaması ve dosya geri çağırma bilgilerini almak için artık iki yeni sunucu yerel PowerShell cmdlet 'leri kullanılabilir. Bunlar, sunucuda bulunan iki olay kanalından günlüğe kaydetme bilgileri alırlar:
     - Get-StorageSyncFileTieringResult, tüm dosyaları ve bu nedenle katmanlanmayan ve neden olan yollarını listeler.
     - Get-StorageSyncFileRecallResult, tüm dosya geri çağırma olaylarını raporlar. Geri çekilen her dosyayı ve onun yolunu, bu geri çekmenin başarısını veya hatasını listeler.
-  - Varsayılan olarak, her iki olay kanalı da 1 MB 'a kadar saklayabilir; olay kanalı boyutunu artırarak bildirilen dosya miktarını artırabilirsiniz.
+  - Varsayılan olarak, her iki olay kanalı da 1 MB 'a kadar saklayabilir. olay kanalının boyutunu artırarak bildirilen dosya miktarını artırabilirsiniz.
 - FIPS modu desteği
   - Azure Dosya Eşitleme artık Azure Dosya Eşitleme aracısının yüklü olduğu sunucularda FIPS modunu etkinleştirmeyi desteklemektedir.
     - Sunucunuzda FIPS modunu etkinleştirmeden önce, sunucunuza Azure Dosya Eşitleme Aracısı ve [PackageManagement modülünü](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) yüklersiniz. Sunucuda FIPS zaten etkinse, [PackageManagement modülünü](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) sunucunuza [el ile indirin](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download) .
@@ -265,7 +263,7 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 5.0.
 - Yinelenen verileri kaldırma desteği
     - Yinelenen verileri kaldırma, Windows Server 2016 ve Windows Server 2019 ' de etkinleştirilen bulut katmanlaması ile tam olarak desteklenmektedir. Bulut katmanlaması etkinleştirilmiş bir birimde yinelenenleri kaldırma özelliğinin etkinleştirilmesi, daha fazla depolama sağlamaya gerek kalmadan şirket içi daha fazla dosya önbelleğe almanızı sağlar.
 - Çevrimdışı veri aktarımı desteği (örn. Data Box aracılığıyla)
-    - Büyük miktarlardaki verileri dilediğiniz gibi Azure Dosya Eşitleme içine kolayca geçirin. Azure Data Box, AzCopy ve hatta üçüncü taraf geçiş Hizmetleri ' ni seçebilirsiniz. Verilerinizi Azure 'a almak için büyük miktarlarda bant genişliği kullanmaya gerek yoktur, Data Box olması durumunda buraya posta gönderin! Daha fazla bilgi için bkz. [çevrimdışı veri aktarımı belgeleri](https://aka.ms/AFS/OfflineDataTransfer).
+    - Büyük miktarlardaki verileri dilediğiniz gibi Azure Dosya Eşitleme içine kolayca geçirin. Azure Data Box, AzCopy ve hatta üçüncü taraf geçiş hizmetleri seçebilirsiniz. Verilerinizi Azure 'a almak için büyük miktarlarda bant genişliği kullanmaya gerek yoktur, Data Box olması durumunda buraya posta gönderin! Daha fazla bilgi için bkz. [çevrimdışı veri aktarımı belgeleri](https://aka.ms/AFS/OfflineDataTransfer).
 - İyileştirilmiş eşitleme performansı
     - Aynı birimde birden çok sunucu uç noktası olan müşteriler bu sürümden önce yavaş eşitleme performansına neden olmuş olabilir. Azure Dosya Eşitleme, açık tanıtıcıların bulunduğu dosyaları eşitlemek için sunucuda günde bir kez geçici bir VSS anlık görüntüsü oluşturur. Eşitleme artık bir VSS eşitleme oturumu etkinken bir birimde birden çok sunucu uç noktası eşitlemesini destekler. VSS eşitleme oturumunun tamamlanmasını beklemek için eşitleme, birimdeki diğer sunucu uç noktalarında devam edebilir.
 - Portalda geliştirilmiş izleme
@@ -420,75 +418,4 @@ Aşağıdaki öğeler eşitlenmez ancak sistem normal şekilde çalışmaya deva
 - Tarih tabanlı bulut katmanlama ilkesi ayarı, belirtilen gün sayısı içinde erişiliyorsa önbelleğe alınması gereken dosyaları belirtmek için kullanılır. Daha fazla bilgi için bkz. [bulut katmanlaması genel bakış](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering#afs-force-tiering).
 - Katmanlanmış bir dosya Robocopy kullanılarak başka bir konuma kopyalanırsa, elde edilen dosya katmanlanmaz. Robocopy bu özniteliği kopyalama işlemlerine yanlışlıkla dahil ettiği için çevrimdışı özniteliği ayarlanmış olabilir.
 - Robocopy kullanarak dosyaları kopyalarken dosya zaman damgalarını korumak için/MıR seçeneğini kullanın. Bu, eski dosyaların son erişilen dosyalardan daha önce katmanlı olmasını sağlayacaktır.
-- SMB'nin dosya meta verilerini önbelleğe hatalı bir şekilde alması nedeniyle dosya özellikleri bir SMB istemcisinden görüntülenirken çevrimdışı özniteliği hatalı şekilde ayarlanmış görünebilir.
-
-## <a name="agent-version-3300"></a>Aracı sürümü 3.3.0.0
-Aşağıdaki sürüm notları, 24 Eylül 2018 ' de yayınlanan Azure Dosya Eşitleme aracısının sürüm 3.3.0.0 içindir. Bu notlar, sürüm 3.1.0.0 için listelenen sürüm notlarına ek niteliğindedir.
-
-Bu sürümde düzeltilen sorunların listesi:
-- Azure Dosya Eşitleme Aracısı 3,1 veya 3,2 sürümüne yükseltildikten sonra kayıtlı sunucu durumu "çevrimdışı" görüntülenir.
-- Depolama eşitleme Aracısı (FileSyncSvc) hizmeti, uzun yolları olan dosyalar nedeniyle çöküyor.
-- Sunucu kaydı hata vererek başarısız olur: Dosya veya derleme Kailani. AFS. StorageSyncProtocol. v3 dosyası yüklenemedi.
-
-## <a name="agent-version-3200"></a>Aracı sürümü 3.2.0.0
-Aşağıdaki sürüm notları, 15 Ağustos 2018 ' den yayınlanan Azure Dosya Eşitleme aracısının sürüm 3.2.0.0 yöneliktir. Bu notlar, sürüm 3.1.0.0 için listelenen sürüm notlarına ek niteliğindedir.
-
-Bu sürüm aşağıdaki çözümü içerir:
-- Eşitleme, bellek sızıntısı nedeniyle bellek yetersiz hatası (0x8007000E) ile başarısız oluyor
-
-## <a name="agent-version-3100"></a>Aracı sürümü 3.1.0.0
-Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 3.1.0.0 yöneliktir (19 Temmuz 2018 ' de yayımlanmıştır).
-
-### <a name="evaluation-tool"></a>Değerlendirme aracı
-Azure Dosya Eşitleme dağıtılmadan önce, Azure Dosya Eşitleme değerlendirme aracını kullanarak sisteminizle uyumlu olup olmadığını değerlendirmelisiniz. Bu araç, desteklenmeyen karakterler veya desteklenmeyen bir işletim sistemi sürümü gibi dosya sisteminizle ve veri kümesiyle ilgili olası sorunları denetleyen bir Azure PowerShell cmdlet 'i. Yükleme ve kullanım yönergeleri için, planlama kılavuzundaki [değerlendirme aracı](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) bölümüne bakın. 
-
-### <a name="agent-installation-and-server-configuration"></a>Aracı yükleme ve sunucu yapılandırması
-Azure Dosya Eşitleme aracısının Windows Server ile nasıl yükleneceği ve yapılandırılacağı hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme dağıtımı planlama](storage-sync-files-planning.md) ve [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md).
-
-- Aracı yükleme paketinin yükseltilmiş (yönetici) izinlerle yüklenmesi gerekir.
-- Aracı Windows Server Core veya nano sunucu dağıtım seçeneklerinde desteklenmez.
-- Aracı yalnızca Windows Server 2016 ve Windows Server 2012 R2 üzerinde desteklenir.
-- Aracı için en az 2 GB fiziksel bellek gerekir.
-- Depolama eşitleme Aracısı (FileSyncSvc) hizmeti, sistem birimi bilgileri (SVı) dizini sıkıştırılmış bir birimde bulunan sunucu uç noktalarını desteklemez. Bu yapılandırma beklenmeyen sonuçlara neden olacak.
-- FIPS modu desteklenmiyor ve devre dışı bırakılmalıdır. 
-
-### <a name="interoperability"></a>Birlikte çalışabilirlik
-- Çevrimdışı özniteliğe dikkat edip ilgili dosyaların içeriğini okumayı atlamadıkları sürece katmanlı dosyalara erişen virüsten koruma, yedekleme ve diğer amaçlı uygulamalar istenmeyen geri çekme durumlarına neden olabilir. Daha fazla bilgi için bkz. [sorun giderme Azure dosya eşitleme](storage-sync-files-troubleshoot.md).
-- Dosya Sunucusu Kaynak Yöneticisi (FSRM) veya diğer dosya filtrelerini kullanmayın. Dosya filtreleri, dosyalar dosya filtresi nedeniyle engellendiğinde sonsuz eşitleme hatalarına neden olabilir.
-- Azure Dosya Eşitleme aracısının yüklü olduğu bir sunucuda Sysprep çalıştırmak desteklenmez ve beklenmeyen sonuçlara yol açabilir. Aracı yüklemesi ve sunucu kaydı, sunucu görüntüsünü dağıttıktan ve Sysprep Mini Kurulumu tamamlandıktan sonra gerçekleşmelidir.
-- Yinelenen verileri kaldırma ve bulut katmanlaması aynı birimde desteklenmez.
-
-### <a name="sync-limitations"></a>Eşitleme sınırlamaları
-Aşağıdaki öğeler eşitlenmez ancak sistem normal şekilde çalışmaya devam eder:
-- 2\.048 karakterden uzun yollar.
-- 2 KB2den büyük olması durumunda bir güvenlik tanımlayıcısının isteğe bağlı erişim denetim listesi (DACL) kısmı. (Bu sorun yalnızca tek bir öğe üzerinde yaklaşık 40'tan fazla erişim denetimi girişi (ACE) olduğunda geçerlidir.)
-- Denetim için kullanılan bir güvenlik tanımlayıcısının sistem erişim denetim listesi (SACL) kısmı.
-- Genişletilmiş öznitelikler.
-- Alternatif veri akışları.
-- Yeniden ayrıştırma noktaları.
-- Sabit bağlantılar.
-- Bir dosyaya diğer uç noktalardan gelen değişiklikler eşitlendiğinde sıkıştırma ayarları (sunucu dosyasında mevcutsa) korunmaz.
-- Hizmetin verileri okumasını engelleyen EFS (veya diğer kullanıcı şifrelemesi modları) şifrelemeli dosyalar.
-
-    > [!Note]  
-    > Azure Dosya Eşitleme her zaman aktarımdaki verileri şifreler. Veriler her zaman Azure’da bekleyen durumda şifrelenir.
- 
-### <a name="server-endpoint"></a>Sunucu uç noktası
-- Sunucu uç noktası yalnızca bir NTFS biriminde oluşturulabilir. ReFS, FAT, FAT32 ve diğer dosya sistemleri şu an için Azure Dosya Eşitleme tarafından desteklenmez.
-- Sunucu uç noktası silinmeden önce dosyalar geri çağrılmıyorsa katmanlı dosyalar kullanılamaz hale gelir.
-- Bulut katmanlaması, sistem biriminde desteklenmez. Sistem biriminde bir sunucu uç noktası oluşturmak için sunucu uç noktası oluştururken bulut katmanlamayı devre dışı bırakın.
-- Yük Devretme Kümelemesi yalnızca kümelenmiş disklerle desteklenir, Küme Paylaşılan Birimleri (CSV) ile desteklenmez.
-- Sunucu uç noktası iç içe olamaz. Aynı birim üzerinde başka bir uç noktaya paralel olarak birlikte bulunabilir.
-- Bir işletim sistemini veya uygulama disk belleğini sunucu uç noktasının içinde depolamayın.
-- Sunucu yeniden adlandırılırsa portaldaki sunucu adı güncellenmez.
-
-### <a name="cloud-endpoint"></a>Bulut uç noktası
-- Azure Dosya Eşitleme, doğrudan Azure dosya paylaşımında değişiklik yapmayı destekler. Ancak, ilk olarak Azure dosya paylaşımında yapılan tüm değişikliklerin bir Azure Dosya Eşitleme değişiklik algılama işi tarafından bulunması gerekir. Her 24 saatte bir bulut uç noktası için değişiklik algılama işi başlatılır. Buna ek olarak, REST protokolü üzerinden bir Azure dosya paylaşımında yapılan değişiklikler, SMB son değiştirilme zamanını güncelleştirmeyecektir ve eşitleme tarafından değişiklik olarak görünmez.
-- Depolama eşitleme hizmeti ve/veya depolama hesabı, mevcut Azure AD kiracısı içinde farklı bir kaynak grubuna veya aboneliğe taşınabilir. Depolama hesabı taşınmışsa, karma Dosya Eşitleme hizmetine depolama hesabına erişim sağlamanız gerekir (bkz. [Azure dosya eşitleme depolama hesabına erişimi olduğundan emin olun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
-
-    > [!Note]  
-    > Azure Dosya Eşitleme, aboneliğin farklı bir Azure AD kiracısına taşınmasını desteklemez.
-
-### <a name="cloud-tiering"></a>Bulut katmanlaması
-- Katmanlanmış bir dosya Robocopy kullanılarak başka bir konuma kopyalanırsa, elde edilen dosya katmanlanmaz. Robocopy bu özniteliği kopyalama işlemlerine yanlışlıkla dahil ettiği için çevrimdışı özniteliği ayarlanmış olabilir.
 - SMB'nin dosya meta verilerini önbelleğe hatalı bir şekilde alması nedeniyle dosya özellikleri bir SMB istemcisinden görüntülenirken çevrimdışı özniteliği hatalı şekilde ayarlanmış görünebilir.

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33ee006a704cec1fb0d75a953629aec68461a4f4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165184"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278819"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -326,7 +326,7 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
    * **Tüm kümelere otomatik olarak ekle**' yi seçmeyin.
    * Küme adınızın yanındaki **Ekle** ' yi seçin.
 
-1. Durum Iliştirilene kadar, bu işlembirkaç dakika sürebilir.  Bu adım başarısız olursa, aşağıdakileri denetleyin:
+1. Durum **iliştirilene**kadar, bu işlem birkaç dakika sürebilir.  Bu adım başarısız olursa, aşağıdakileri denetleyin:
 
    Kümenizi şu şekilde yeniden başlatmayı deneyin:
    1. Sol bölmede **kümeler**' ı seçin.
@@ -411,5 +411,4 @@ Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure Machine Learning model veri kümesiyle [bir modeli eğitme](tutorial-train-models-with-aml.md)
-- Python başvurusu [için Azure Machine Learning SDK 'sını](https://aka.ms/aml-sdk) görüntüleme
-- [Azure Machine Learning için veri hazırlığı paketi](https://aka.ms/data-prep-sdk) hakkında bilgi edinin
+- Python başvurusu [için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) görüntüleme

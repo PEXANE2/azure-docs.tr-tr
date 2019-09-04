@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: nolachar
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 429570d81f7e15758d8ea60951bb4d01b96f8f2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706986"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256479"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>ENUM varlıklarının ne zaman kullanılacağı ve VARLıK eylemlerinin AYARLANMASı
 
@@ -46,14 +46,14 @@ Yakındaki kişiler arasındaki görüşmenin bir kısmını fazla duyduğunuzu 
 Aşağıdaki örnekle daha fazla açıklanalım:
 
 Hecesi Azure bilişsel hizmetler 'i beğendiniz mi?
-Kullanıcı: Evet bot: Dondurma ister misiniz?
-Kullanıcı: Evet
+Kullanıcısını Evet bot: Dondurma ister misiniz?
+Kullanıcısını Evet
 
 Önceki öğreticilerde, [özel eğitilen](04-introduction-to-entities.md) varlıklara baktık ve ilk düşünce "likesCogServices" adlı bir varlık oluşturmak ve Ilk "Yes" i bu varlık olarak etiketliyoruz.  Bununla birlikte, sistem ikinci "Yes" i de etiketleyebilir. İkinci "Yes" etiketini "likesIceCream" olarak düzeltmeye çalıştık, "Yes" olarak iki farklı şeyi de bir çakışma oluşturacak ve takılabilecek.
 
 Bu durumda, ENUM varlıklarını ve SET_ENTITY eylemlerini kullanmanız gerekir.
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>Numaralandırmalar veya SET_ENTITY eylemleri ne zaman kullanılır?
+## <a name="when-to-use-enums-or-set_entity-actions"></a>Numaralandırmalar veya SET_ENTITY eylemleri ne zaman kullanılır?
 
 ENUM varlıklarının ve SET_ENTITY eylemlerinin ne zaman kullanılacağını bildirmek için aşağıdaki kuralları kullanın:
 
@@ -66,13 +66,13 @@ Diğer bir deyişle, her zaman Evet veya Hayır ile sonuçlanan onay soruları g
 > Şu anda enum varlığı başına en fazla 5 değer sınırlaması vardır. Her değer geçerli 64 sınırında yuvalardan birini kullanır. Bkz. [CL-Values-ve-sınırları](../cl-values-and-boundaries.md)
 
 Örnek: Hecesi Siparişiniz doğru mu?
-Kullanıcı: Evet
+Kullanıcısını Evet
 
 Varlığın olası değerleri açık uçlu ve düzeltilmediğinde, [beklenen varlık](05-expected-entity.md)gibi alternatif bir özellik kullanmanız gerekir.
 
 Örnek: Hecesi Adınız ne?
-Kullanıcı: Matt bot: En sevdiğiniz renk nedir?
-Kullanıcı: Gümüş
+Kullanıcısını Matt bot: En sevdiğiniz renk nedir?
+Kullanıcısını Gümüş
 
 Bu istemler, rastgele değerlerle yanıtlanabileceğinden açık uçlu olarak değerlendirilir.
 

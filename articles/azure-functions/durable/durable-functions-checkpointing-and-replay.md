@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087447"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241053"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler denetim noktaları ve yeniden yürütme (Azure Işlevleri)
 
@@ -145,6 +145,9 @@ Yeniden yürütme davranışı, bir Orchestrator işlevinde yazılabilen kod tü
   Bir Orchestrator 'ın geciktirilmesi gerekiyorsa [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.net) veya `createTimer` (JavaScript) API 'sini kullanabilir.
 
 * Orchestrator kodu, [durableorchestrationcontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API 'si veya `context.df` nesnenin API 'si dışında **herhangi bir zaman uyumsuz işlem başlatmalıdır** . Örneğin `Task.Run`, Hayır veya`HttpClient.SendAsync`.net veya`setTimeout()` JavaScript içinde`setInterval()` . `Task.Delay` Dayanıklı görev çerçevesi, Orchestrator kodunu tek bir iş parçacığında yürütür ve diğer zaman uyumsuz API 'Ler tarafından zamanlanabilecek diğer iş parçacıklarıyla etkileşime giremezsiniz. Bunun gerçekleşmesi, `InvalidOperationException` özel durum oluşturulması gerekir.
+
+> [!NOTE]
+> [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API 'si, bir Orchestrator işlevinde izin verilmeyen ve yalnızca Orchestrator olmayan işlevlerde kullanılabilen zaman uyumsuz g/ç işlemini gerçekleştirir.
 
 * Orchestrator kodunda **sonsuz döngüler kaçınılmalıdır** . Sürekli görev çerçevesi Orchestration işlevi ilerledikçe yürütme geçmişini kaydettiğinden, sonsuz bir döngü bir Orchestrator örneğinin bellek tükenmesine neden olabilir. Sonsuz döngü senaryolarında, işlev yürütmeyi yeniden başlatmak ve önceki yürütme geçmişini atmak için [continueasnew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.net) veya `continueAsNew` (JavaScript) gibi API 'leri kullanın.
 

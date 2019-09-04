@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 116ffa31fb540897f9a769b73c3a6474dda45b88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101929"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70280164"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 'Leri için fiyatlandırma Kılavuzu
 
@@ -113,7 +113,7 @@ Bir SQL Server VM ile KLG kullanmak için, bazı toplu lisanslama programları v
 
 | KLG avantajı | Açıklama |
 |-----|-----|
-| **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) % 55 tasarruf sağlar. Daha fazla bilgi için bkz. [lisans modeli değiştirme] (sanal makineler-Windows-SQL-ahb.md |
+| **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) % 55 tasarruf sağlar. Daha fazla bilgi için bkz. [Lisans modelini değiştirme](virtual-machines-windows-sql-ahb.md) |
 | **Ücretsiz pasif ikincil çoğaltma** | Kendi lisansınızı kullanmanın bir diğer avantajı da, yüksek kullanılabilirlik amaçlarıyla SQL Server başına [bir pasif ikincil çoğaltmanın ücretsiz lisanslaması](https://azure.microsoft.com/pricing/licensing-faq/) olur. Bu, yüksek oranda kullanılabilir SQL Server dağıtımının lisanslama maliyetinin yarısını keser (örneğin, Always on kullanılabilirlik grupları kullanılarak). Pasif ikincil çalıştırma hakları, yük devretme sunucuları yazılım güvencesi avantajı üzerinden sağlanır. |
 
 Kendi lisans yansımalarından biriyle bir SQL Server 2017 Azure VM oluşturmak için, "{KLG}" önekli VM 'Lere bakın:

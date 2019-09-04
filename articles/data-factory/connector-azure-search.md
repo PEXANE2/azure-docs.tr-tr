@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726214"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275928"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Search dizine veri kopyalama
 
@@ -75,7 +75,7 @@ Azure Search bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm Azure Search veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm Azure Search veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 Azure Search verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
@@ -170,7 +170,7 @@ Aşağıdaki tablo Azure Search veri türünün desteklenip desteklenmediğini b
 
 | Azure Search veri türü | Azure Search havuzunda desteklenir |
 | ---------------------- | ------------------------------ |
-| Dize | E |
+| String | E |
 | Int32 | E |
 | Int64 | E |
 | Double | E |

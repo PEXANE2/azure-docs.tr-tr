@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 64bd71d89446a19d2afe56a32b0c7124e897cb48
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072406"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242490"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management IP adresleri
 
@@ -27,7 +27,9 @@ Güvenlik duvarı kuralları oluşturmak, arka uç hizmetlerine gelen trafiği f
 
 ## <a name="ip-addresses-of-api-management-service"></a>API Management hizmetinin IP adresleri
 
-API Management hizmetiniz bir geliştirici, temel, standart veya Premium katman hizmeti ise, IP adreslerini Azure portal kaynağınızın genel bakış panosundan elde edebilirsiniz.
+Geliştirici, temel, standart veya Premium katmanındaki her API Management hizmet örneği, yalnızca bu hizmet örneği için özel olan genel IP adreslerine sahiptir (diğer kaynaklarla paylaşılmaz). 
+
+IP adreslerini Azure portal kaynağınızın genel bakış panosundan elde edebilirsiniz.
 
 ![API Management IP adresi](media/api-management-howto-ip-addresses/public-ip.png)
 

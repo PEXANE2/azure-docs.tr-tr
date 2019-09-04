@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231109"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241288"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
@@ -47,25 +47,21 @@ Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanı
 
 1. Jupyter Not defteri Web sayfasında, Kullanıcı adınızı içeren üstteki KlasörAdı öğesini seçin.  
 
-
    Bu klasör, Not defteri VM 'sinin kendisi yerine çalışma alanı [depolama hesabında](concept-workspace.md#resources) bulunur.  Not defteri VM 'sini silerseniz, işinizi yine de devam edeceksiniz.  Daha sonra yeni bir not defteri VM 'si oluşturduğunuzda, bu dosya aynı klasöre yüklenir. Çalışma alanınızı başkalarıyla paylaşıyorsanız, klasörünüzü görürler ve onu görürsünüz.
 
-1. `samples-*` Alt dizini açın ve ardından Jupyter Not defterini açın`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > > Aynı adı `tutorial-1st-experiment-sdk-train.ipynb` **değil** `.yml` , dosyayı açtığınızdan emin olun. 
-
-1. Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  Kodu çalıştırmak istiyorsanız şimdi not defterine geçin.
-
+1. Alt dizini açın, ardından aynı adlı `.yml` dosyayı **değil** Jupyter Not defterini `tutorials/tutorial-1st-experiment-sdk-train.ipynb`açın. `samples-*` 
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
+
+> [!Important]
+> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
+>
+> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
+> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defterini, üstteki menüden **çalıştır > hücreyi** seçerek çalıştırın.
 
 Sınıfını içeri aktarın ve bu işlevi `config.json` `from_config().` kullanarak abonelik bilgilerinizi varsayılan olarak geçerli dizindeki JSON dosyasına bakar, ancak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `Workspace` kullanılarak `from_config(path="your/file/path")`. Bir bulut Not defteri sunucusunda, dosya otomatik olarak kök dizinde bulunur.
 
 Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir.
-
-> [!TIP]
-> Jupi Not defterleriyle yeni başladıysanız, kod hücresine tıklayarak kodu çalıştırın ve hücreleri tek seferde çalıştırmak için **SHIFT + enter 'A basın** . Alternatif olarak, tüm not defterini aynı anda çalıştırmak için üstteki menü çubuğunda bulunan **hücre** ' ye ve ardından **Tümünü Çalıştır**' a tıklayın.
 
 ```python
 from azureml.core import Workspace
