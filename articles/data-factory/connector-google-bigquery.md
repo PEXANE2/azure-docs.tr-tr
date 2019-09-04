@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61c10055a7f85f849fc366211eb41382c4c3039b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808878"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275209"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Google Bigquery'den verileri kopyalama
 
@@ -127,8 +127,10 @@ Google Bigquery'den verileri kopyalamak için dataset öğesinin type özelliği
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **GoogleBigQueryObject** | Evet |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **GoogleBigQueryObject** | Evet |
+| veri kümesi | Google BigQuery veri kümesinin adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| tableName | Tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için ve `dataset` `table`kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -137,11 +139,12 @@ Google Bigquery'den verileri kopyalamak için dataset öğesinin type özelliği
     "name": "GoogleBigQueryDataset",
     "properties": {
         "type": "GoogleBigQueryObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

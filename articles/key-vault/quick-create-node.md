@@ -3,18 +3,18 @@ title: Hızlı Başlangıç-düğüm Web uygulaması kullanarak Azure Key Vault 
 description: Bu hızlı başlangıçta, düğüm Web uygulaması kullanarak Azure Key Vault bir gizli anahtar ve alma
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934452"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259236"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Hızlı Başlangıç: Düğüm Web uygulaması kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma 
 
@@ -69,7 +69,7 @@ Daha sonra, önceki adımda oluşturduğunuz kaynak grubunu kullanarak bir Anaht
 
 * Anahtar Kasası adı.
 * Kaynak grubu adı. Ad 3-24 karakterden oluşan bir dize olmalıdır ve yalnızca 0-9, a-z, A-Z ve tire (-) içermelidir.
-* Konum: **Doğu ABD**.
+* Konumuna **Doğu ABD**.
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
@@ -196,5 +196,9 @@ Bundan sonra, öğesine `https://<app_name>.azurewebsites.net`gözattığınızd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Node için Azure SDK](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+Bu hızlı başlangıçta bir Key Vault oluşturup bir gizli dizi depoladınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+
+- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
+- [Azure Key Vault geliştirici kılavuzuna](key-vault-developers-guide.md) bakın
+- [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
+- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault

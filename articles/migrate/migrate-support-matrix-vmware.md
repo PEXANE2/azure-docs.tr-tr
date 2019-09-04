@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018141"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279596"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçiş için destek matrisi
 
@@ -35,8 +35,7 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 **Destek** | **Ayrıntılar**
 --- | ---
 **Azure izinleri** | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
-**VMware sınırlamaları**  | Tek bir projede en fazla 35.000 VMware VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.
-**Proje limitleri** | Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
+**VMware sınırlamaları**  | Tek bir projede en fazla 35.000 VMware VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
 **Coğrafya** | Bir dizi coğrafi bölgedeki Azure geçişi projesi oluşturabilirsiniz. Yalnızca bu coğrafi bölgelerde proje oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
 
 **Coğrafya** | **Meta veri depolama konumu**
@@ -70,14 +69,15 @@ Değerlendirme için, vCenter Server için salt okuma hesabına sahip olmanız g
 
 ## <a name="assessment-appliance-requirements"></a>Değerlendirme-gereç gereksinimleri
 
-VMware için Azure geçişi gereci, vCenter Server içeri aktarılan bir OVA şablonu kullanılarak dağıtılır.
+Azure geçişi, VMware VM 'lerini bulmaya ve Azure geçişi 'ne VM meta verilerini ve performans verilerini göndermenizi sağlamak için basit bir gereç çalıştırır. VMware için gereç, vCenter Server içeri aktarılan bir OVA şablonu kullanılarak dağıtılır. Aşağıdaki tablo gereç gereksinimlerini özetler.
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**vCenter Server** | 32 GB RAM, 8 vCPU ve harici bir sanal anahtarla bir VM ayırmak için vCenter Server yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.
-**ESXi** | Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.
-**Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir.
-**vCenter Server** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
+**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. 32 GB RAM, 8 vCPU ve harici bir sanal anahtarla bir VM ayırmak için vCenter Server yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır. 
+**Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
+**Keşfini** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
+**Değerlendirme grubu** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
+**Değerlendirmesini** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 
 ## <a name="assessment-url-access-requirements"></a>Değerlendirme-URL erişim gereksinimleri
@@ -107,6 +107,8 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 Alet | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:```https://<appliance-ip-or-name>:44368``` <br/><br/>Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 numaralı bağlantı noktası üzerinden giden bağlantılar.
 vCenter sunucusu | TCP bağlantı noktası 443 ' deki gelen bağlantılar, gerecin değerlendirmeler için yapılandırma ve performans meta verilerini toplamasına izin verir. <br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı ayarlarken bağlantı noktasını değiştirebilirsiniz.
 
+## <a name="migration---limitations"></a>Geçiş-sınırlamalar
+Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın. VMware aracısız geçiş için aynı anda en fazla 100 çoğaltma çalıştırabilirsiniz.
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>Aracısız geçiş-VMware sunucusu gereksinimleri
 

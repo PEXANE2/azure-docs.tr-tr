@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 69d75f9050560eb4a9e394241316c0474fffe7cc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232484"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258974"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -33,11 +33,11 @@ Bu bölümde, Azure sanal makinesinin yedekleme işlemi hatası ele alınmaktad�
    * Başka bir yedekleme hizmetinin çalışmadığını denetleyin.
 * Windows Azure **Konuk Aracısı** hizmetinin çalıştığından emin olun. `Services.msc` **Windows Azure Konuk Aracısı** hizmeti eksikse, [bir kurtarma hizmetleri kasasındaki Azure VM 'lerinden yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)konumundan yüklemesi yapın.
 * **Olay günlüğü** , diğer yedekleme ürünlerinden (örneğin, Windows Server Yedekleme) olan yedekleme başarısızlıklarını gösterebilir ve Azure Backup 'tan kaynaklanır. Sorunun Azure Backup olup olmadığını anlamak için aşağıdaki adımları kullanın:
-   * Olay kaynağında veya iletisinde bir giriş yedeğiyle ilgili bir hata varsa, Azure ıAAS VM yedeklemesi yedeklerinin başarılı olup olmadığını ve istenen anlık görüntü türüyle bir geri yükleme noktası oluşturulup oluşturulmayacağını denetleyin.
-    * Azure Backup çalışıyorsa, sorun büyük olasılıkla başka bir yedekleme çözümüyle birlikte olur. 
+   * Olay kaynağında veya iletisinde bir giriş **yedeğiyle** ilgili bir hata varsa, Azure ıAAS VM yedeklemesi yedeklerinin başarılı olup olmadığını ve istenen anlık görüntü türüyle bir geri yükleme noktası oluşturulup oluşturulmayacağını denetleyin.
+    * Azure Backup çalışıyorsa, sorun büyük olasılıkla başka bir yedekleme çözümüyle birlikte olur.
     * Azure Backup 'ın sorunsuz çalıştığı ancak "Windows Server Yedekleme" başarısız olduğu bir olay görüntüleyici hatası örneği aşağıda verilmiştir:<br>
     ![Başarısız Windows Server Yedekleme](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
-    * Azure Backup başarısız olursa, bu makaledeki ortak VM yedekleme hataları bölümünde karşılık gelen hata kodunu arayın. 
+    * Azure Backup başarısız olursa, bu makaledeki ortak VM yedekleme hataları bölümünde karşılık gelen hata kodunu arayın.
 
 ## <a name="common-issues"></a>Sık karşılaşılan sorunlar
 
@@ -193,7 +193,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | **Hata kodu**: Vmnotındesıralaması <br/> **Hata iletisi**:  VM, yedeklemelere izin veren bir durumda değil. |<ul><li>VM, **çalıştırma** ve **kapatma**arasında geçici bir durumdaysa, durumun değiştirilmesini bekleyin. Ardından yedekleme işini tetikleyin. <li> VM bir Linux sanal makinesi ise ve Gelişmiş Güvenlik Özellikli Linux çekirdek modülünü kullanıyorsa, güvenlik ilkesinden Azure Linux Aracısı yolu **/var/lib/waagent** ' ı dışlayın ve yedekleme uzantısının yüklü olduğundan emin olun.  |
 | VM Aracısı sanal makinede yok: <br>Herhangi bir önkoşulu ve VM aracısını yükler. Sonra işlemi yeniden başlatın. |[VM Aracısı yüklemesi ve VM Aracısı yüklemesinin nasıl doğrulanacağı](#vm-agent)hakkında daha fazla bilgi edinin. |
 | **Hata kodu**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Hata iletisi**: Güvenli ağ iletişim kanalı oluşturma hatası nedeniyle anlık görüntü işlemi başarısız oldu. | <ol><li> **Regedit. exe** ' yi Yükseltilmiş modda çalıştırarak kayıt defteri düzenleyicisini açın. <li> Sisteminizde mevcut olan tüm .NET Framework sürümlerini belirler. Bunlar **HKEY_LOCAL_MACHINE\Software\Microsoft**kayıt defteri anahtarı hiyerarşisi altında mevcuttur. <li> Kayıt defteri anahtarında bulunan her bir .NET Framework için aşağıdaki anahtarı ekleyin: <br> **Schusestrongşifre "= DWORD: 00000001**. </ol>|
-| **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: Visual Studio 2012 için görsel C++ yeniden dağıtılabilir yüklemesi başarısız olduğundan anlık görüntü işlemi başarısız oldu. | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion adresine gidin ve vcredist2012_x64 ' i yükler.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** içinde **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın.  |
+| **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: Visual Studio 2012 için görsel C++ yeniden dağıtılabilir yüklemesi başarısız olduğundan anlık görüntü işlemi başarısız oldu. | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion adresine gidin ve vcredist2013_x64 ' i yükler.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** içinde **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın.  |
 
 
 ## <a name="jobs"></a>İşler
