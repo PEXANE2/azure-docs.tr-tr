@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823792"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240862"
 ---
-# <a name="what-is-passwordless"></a>Passwordless nedir?
+# <a name="what-is-passwordless"></a>Parolasız işlevi nedir?
 
 Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar parolalarını anımsamak için gereken ek katman ile daha kolay bir şekilde yararlanar. Parola kaldırıldığı ve sizin veya bildiğiniz bir şeyi içeren bir şekilde değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
 
@@ -26,7 +26,7 @@ Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika
 | --- | --- | --- |
 | Parolasız | Telefon veya güvenlik anahtarı | Biyometrik veya PIN |
 
-Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft şu anda Windows bilgisayarlarımız için Windows Hello 'yu sunmaktadır. Microsoft Authenticator App ve FIDO2 güvenlik anahtarlarını passwordless ailesine ekliyoruz.
+Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft şu anda Windows bilgisayarlarımız için Windows Hello 'Yu sunmaktadır. Microsoft Authenticator App ve FIDO2 güvenlik anahtarlarını passwordless ailesine ekliyoruz.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator Uygulaması
 
@@ -46,7 +46,7 @@ FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishabl
 
 FIDO Alliance tarafından FIDO2 sertifikalı çok sayıda anahtar olmakla kalmaz, Microsoft, en yüksek güvenlik ve en iyi deneyimi sağlamak için FIDO2 CTAP belirtiminin bazı isteğe bağlı uzantılarını satıcı tarafından uygulanması gerekir.
 
-Bir güvenlik anahtarı , FIDO2 CTAP protokolünden Microsoft ile uyumlu olmak için aşağıdaki özellikleri ve uzantıları gerçekleştirmelidir:
+Bir güvenlik anahtarı, FIDO2 CTAP protokolünden Microsoft ile uyumlu olmak için aşağıdaki özellikleri ve **uzantıları gerçekleştirmelidir:**
 
 | # | Özellik/uzantı güveni | Bu özellik veya uzantı neden gereklidir? |
 | --- | --- | --- |
