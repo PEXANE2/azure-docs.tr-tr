@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091377"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309218"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 'da görüntüleri Red Hat Enterprise Linux
 Bu makalede, Azure Marketi 'ndeki kullanılabilir Red Hat Enterprise Linux (RHEL) görüntüleri, adlandırma ve bekletme ilkelerine göre birlikte açıklanmaktadır.
@@ -133,12 +133,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux Aracısı | SAP HANA için RHEL 6,7
 |             | 7.3      | LVM    | Linux Aracısı | SAP HANA için RHEL 7,3
 RHEL-SAP-APPS | 6.8      | RAW    | Linux Aracısı | SAP Business Applications için RHEL 6,8
 |             | 7.3      | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,3
-RHEL-HA       | 7.4      | RAW    | Linux Aracısı | HA eklentisi ile RHEL 7,4
-|             | 7.5      | RAW    | Linux Aracısı | HA eklentisi ile RHEL 7,5
-|             | 7,6      | RAW    | Linux Aracısı | HA eklentisi ile RHEL 7,6
-RHEL-SAP-HA   | 7.4      | RAW    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,4
-|             | 7.5      | RAW    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,5
-|             | 7,6      | RAW    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,6
+RHEL-HA       | 7.4      | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,4
+|             | 7.5      | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,5
+|             | 7,6      | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,6
+RHEL-SAP-HA   | 7.4      | LVM    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,4
+|             | 7.5      | LVM    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,5
+|             | 7,6      | LVM    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,6
 
 ### <a name="old-naming-convention"></a>Eski adlandırma kuralı
 RHEL 7 resim ailesi ve RHEL 6 resim ailesi, yukarıda açıklanan adlandırma kuralı değişikliğine kadar SKU 'Larında belirli sürümleri kullanır.
@@ -160,5 +160,5 @@ Yalnızca belirli bir görüntü ailesindeki geçerli küçük sürümü güncel
 Geçerli ilkeniz, önceden yayımlanan tüm görüntüleri tutmak. Her türlü soruna neden olan bilinen görüntüleri kaldırma hakkını saklı tutarız. Örneğin, sonraki platform veya bileşen güncelleştirmeleri nedeniyle yanlış yapılandırmalara sahip görüntüler kaldırılabilir. Kaldırılabilir olan görüntüler, görüntü kaldırılmadan önce 30 güne kadar bildirim sağlamak için geçerli Market ilkesini izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure Red Hat güncelleştirme altyapısı hakkında daha fazla bilgi [](https://aka.ms/rhui-update)edinin.
+* Azure Red hat [güncelleştirme altyapısı hakkında](https://aka.ms/rhui-update)daha fazla bilgi edinin.
 * Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.

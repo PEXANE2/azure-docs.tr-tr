@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7171923e4badb3355a64b63515d40e73fadca6b0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4e568d2322088d9f6f6b4f9ad6e4b3cd98f25a47
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596367"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376054"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -130,19 +130,19 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
       
 1. **Kaydet**’e tıklayın.
    
-1.           **İleri**'ye tıklayın.
+1. **İleri**'ye tıklayın.
 
 #### <a name="step-2-specify-routes"></a>2\. adım: Rota Belirtme 
 
 1. **Rotaları belirtin** sekmesinde, **azureiotsecurity** modülünden **$upstream**iletileri ileten bir yolunuz (açık veya kapalı) olduğundan emin olun. 
-1.           **İleri**'ye tıklayın.
+1. **İleri**'ye tıklayın.
 
     ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream 
+    "route": "FROM /messages/* INTO $upstream" 
     ~~~
 
     ~~~Explicit route
-    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ~~~
 
 #### <a name="step-3-review-deployment"></a>3\. adım: Dağıtımı Gözden Geçirme
@@ -161,7 +161,7 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
    
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
    
-   | Ad | GÖRÜNTÜYLE |
+   | Name | GÖRÜNTÜYLE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |

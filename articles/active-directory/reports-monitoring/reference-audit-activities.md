@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127138"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305988"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD denetim etkinliği başvurusu
 
@@ -408,6 +408,14 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Dizin Yönetimi|Belirli bir yönetim akışı için idp’leri alma|
 |Dizin Yönetimi|Tüm yönetim akışlarının listesini alma|
 |Dizin Yönetimi|Tüm kullanıcılar için tüm yönetim akışlarının etiketlerinin listesini alma|
+|Grup Yönetimi|Grup üyelerini toplu Indirme-başlatıldı|
+|Grup Yönetimi|Grup üyelerini toplu Indirme-tamamlandı|
+|Grup Yönetimi|Grup üyelerini toplu içeri aktarma-başlatıldı|
+|Grup Yönetimi|Toplu içeri aktarma Grup üyeleri-tamamlandı|
+|Grup Yönetimi|Grup üyelerini toplu kaldırma-başlatıldı|
+|Grup Yönetimi|Grup üyelerini toplu kaldırma-tamamlandı|
+|Grup Yönetimi|Toplu indirme grupları-başlatıldı|
+|Grup Yönetimi|Toplu indirme grupları-tamamlandı|
 |Grup Yönetimi|Bir kullanıcı için kiracıların listesini alma|
 |Grup Yönetimi|Yerel hesapların otomatik olarak onaylanan taleplerini alma|
 |Grup Yönetimi|Yerelleştirilmiş kaynak json alma|
@@ -454,28 +462,42 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Rol Yönetimi|Cihaz yapılandırmasını silme|
 |Rol Yönetimi|Cihaz artık uyumlu değil|
 |Rol Yönetimi|Cihaz artık yönetilen cihaz değil|
-|Kullanıcı Yönetimi|Cihazdan kayıtlı sahibi kaldırma|
-|Kullanıcı Yönetimi|Cihazdan kayıtlı kullanıcıları kaldırma|
-|Kullanıcı Yönetimi|Cihazı güncelleştir|
-|Kullanıcı Yönetimi|Cihaz yapılandırmasını güncelleştirme|
-|Kullanıcı Yönetimi|Role uygun üye ekleme|
-|Kullanıcı Yönetimi|Role üye ekleme|
-|Kullanıcı Yönetimi|Rol tanımına rol ataması ekleme|
-|Kullanıcı Yönetimi|Şablondan rol ekleme|
-|Kullanıcı Yönetimi|Role kapsamlı üye ekleme|
-|Kullanıcı Yönetimi|Rolden uygun üyeyi kaldırma|
-|Kullanıcı Yönetimi|Üyeyi rolden kaldır|
-|Kullanıcı Yönetimi|Rol tanımından rol atamasını kaldırma|
-|Kullanıcı Yönetimi|Rolden kapsamlı üyeyi kaldırma|
-|Kullanıcı Yönetimi|Rolü güncelleştirme|
 |Kullanıcı Yönetimi|AccessReview_Review|
 |Kullanıcı Yönetimi|AccessReview_Update|
 |Kullanıcı Yönetimi|ActivationAborted|
 |Kullanıcı Yönetimi|ActivationApproved|
 |Kullanıcı Yönetimi|ActivationCanceled|
 |Kullanıcı Yönetimi|ActivationRequested|
+|Kullanıcı Yönetimi|Role uygun üye ekleme|
+|Kullanıcı Yönetimi|Role üye ekleme|
+|Kullanıcı Yönetimi|Rol tanımına rol ataması ekleme|
+|Kullanıcı Yönetimi|Şablondan rol ekleme|
+|Kullanıcı Yönetimi|Role kapsamlı üye ekleme|
 |Kullanıcı Yönetimi|Eklendi|
 |Kullanıcı Yönetimi|Ata|
+|Kullanıcı Yönetimi|Toplu Kullanıcı oluşturma-başlatılan|
+|Kullanıcı Yönetimi|Toplu Kullanıcı oluşturma-tamamlandı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu silme-başlatıldı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu silme-tamamlandı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu indirme-başlatıldı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu indirme-tamamlandı|
+|Kullanıcı Yönetimi|Silinen kullanıcıları toplu geri yükleme-başlatıldı|
+|Kullanıcı Yönetimi|Silinen kullanıcıları toplu geri yükleme-tamamlandı|
+|Kullanıcı Yönetimi|Toplu davet kullanıcıları-başlatıldı|
+|Kullanıcı Yönetimi|Toplu davet kullanıcıları-tamamlandı|
+|Kullanıcı Yönetimi|Cihazdan kayıtlı sahibi kaldırma|
+|Kullanıcı Yönetimi|Cihazdan kayıtlı kullanıcıları kaldırma|
+|Kullanıcı Yönetimi|Rolden uygun üyeyi kaldırma|
+|Kullanıcı Yönetimi|Üyeyi rolden kaldır|
+|Kullanıcı Yönetimi|Rol tanımından rol atamasını kaldırma|
+|Kullanıcı Yönetimi|Rolden kapsamlı üyeyi kaldırma|
+|Kullanıcı Yönetimi|Cihazı güncelleştir|
+|Kullanıcı Yönetimi|Cihaz yapılandırmasını güncelleştirme|
+|Kullanıcı Yönetimi|Rolü güncelleştirme|
+
+
+
+
 
 
 ## <a name="identity-protection"></a>Kimlik koruması

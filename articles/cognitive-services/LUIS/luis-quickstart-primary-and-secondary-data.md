@@ -1,5 +1,5 @@
 ---
-title: Basit varlık, tümcecik listesi-LUSıS
+title: 'Öğretici: Basit varlık, tümcecik listesi-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, basit varlığı kullanarak bir noktadan itibaren iş işi adının makineye öğrenilen verilerini ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özgü terimlerin tümcecik listesini ekleyin.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648616"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376259"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: Basit varlık ve tümcecik listesi ile adları Ayıkla
 
@@ -99,7 +99,7 @@ Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalin
 
     ![İş adı ve basit türü görünen basit varlık oluşturma açılır iletişim kutusu](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. Kalan söylerde, iş varlığıyla işle ilgili kelimeleri, sözcüğü veya tümceciği seçip açılır menüden **iş** öğesini seçerek işaretleyin. 
+1. Kalan söylerde, **iş varlığıyla işle** ilgili kelimeleri, sözcüğü veya tümceciği seçip açılır menüden **iş** öğesini seçerek işaretleyin. 
 
     [![Vurgulanan iş Varlık etiketleme LUIS ekran](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "vurgulanan iş Varlık etiketleme LUIS ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 

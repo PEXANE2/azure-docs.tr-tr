@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: cada5c3dd74832140fd76cbdd637554b5f829c33
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9d709d19f179dc29b5e290a141d446f3353f4971
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721999"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306033"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Hızlı Başlangıç: JavaScript için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme
 
@@ -348,4 +348,4 @@ Bu hızlı başlangıçta Node.js kullanarak Azure Blob depolamadaki blobları v
 
 > [!div class="nextstepaction"]
 > [JavaScript deposu için Azure Depolama v10 SDK’sı](https://github.com/Azure/azure-storage-js)
-> [JavaScript API’si Başvurusu](https://docs.microsoft.com/javascript/api/overview/azure/storage/client?view=azure-node-preview)
+> [JavaScript API’si Başvurusu](https://docs.microsoft.com/javascript/api/overview/azure/storage/client)

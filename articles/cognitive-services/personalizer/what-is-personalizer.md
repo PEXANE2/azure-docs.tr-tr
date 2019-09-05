@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663659"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383381"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -29,7 +29,7 @@ Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından 
 
 ## <a name="how-does-personalizer-work"></a>Kişiselleştirici nasıl çalışır?
 
-Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptamak için makine öğrenimi modellerini kullanır. İstemci uygulamanız, olası eylemlerin bir listesini, bunlarla ilgili bilgilerle birlikte sağlar; ve Kullanıcı, cihaz vb. hakkında bilgi içerebilen bağlam hakkındaki bilgileri içerir. Kişiselleştirici gerçekleştirilecek eylemi belirler. İstemci uygulamanız seçilen eylemi kullandığında, bir ödül puanı biçiminde Kişiselleştiriciye geri bildirim sağlar. Geri bildirim alındıktan sonra, kişiselleştirici, gelecekteki derecelendirmeler için kullanılan kendi modelini otomatik olarak güncelleştirir.
+Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptamak için makine öğrenimi modellerini kullanır. İstemci uygulamanız, olası eylemlerin bir listesini, bunlarla ilgili bilgilerle birlikte sağlar; ve Kullanıcı, cihaz vb. hakkında bilgi içerebilen bağlam hakkındaki bilgileri içerir. Kişiselleştirici gerçekleştirilecek eylemi belirler. İstemci uygulamanız seçilen eylemi kullandığında, bir ödül puanı biçiminde Kişiselleştiriciye geri bildirim sağlar. Geri bildirim alındıktan sonra, kişiselleştirici, gelecekteki derecelendirmeler için kullanılan kendi modelini otomatik olarak güncelleştirir. Zaman içinde, kişiselleştirici, özelliklerine göre her bir bağlamda seçmek için en iyi eylemi öneren bir modeli eğitecektir.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Kişiselleştirici kullanmak Nasıl yaparım? mı?
 
@@ -53,6 +53,8 @@ Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptama
 * Kullanıcı amacını açıklamak veya bir eylem önermek için bir sohbet bot 'un yanıtını seçin.
 * Bir kullanıcının iş sürecinde bir sonraki adım olarak ne yapması gerektiğine ilişkin önerilere öncelik verin.
 
+Kişiselleştirici Kullanıcı profili bilgilerini kalıcı hale getirmek ve yönetmek ya da bireysel kullanıcıların tercihlerini veya geçmişini günlüğe kaydetmek için bir hizmet değildir. Kişiselleştirici, benzer özellikler gerçekleştiğinde, tek bir model bağlam içindeki her etkileşimin özelliklerinden öğrenir. 
+
 ## <a name="personalization-for-developers"></a>Geliştiriciler için kişiselleştirme
 
 Kişiselleştirici hizmeti iki API 'ye sahiptir:
@@ -65,4 +67,8 @@ Kişiselleştirici hizmeti iki API 'ye sahiptir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hızlı Başlangıç: İçinde geri bildirim döngüsü oluşturunC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Hızlı Başlangıç: Node. js ' de geri bildirim döngüsü oluşturma](quickstart-command-line-feedback-loop-nodejs-sdk.md)
+* [Hızlı Başlangıç: Python 'da geri bildirim döngüsü oluşturma](python-quickstart-commandline-feedback-loop.md)
+* [Sıralama isteğine yönelik özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
+* [Reward isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
 * [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)

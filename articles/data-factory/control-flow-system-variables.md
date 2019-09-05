@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: d932164f972169c93e368a41c09df039196341b5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b6c04edb3fc843dfe1b9176dc06bf312473591c3
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141648"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376436"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen sistem değişkenleri
 Bu makalede Azure Data Factory tarafından desteklenen sistem değişkenleri açıklanır. Data Factory varlıkları tanımlarken bu değişkenleri ifadelerde kullanabilirsiniz.
@@ -39,8 +39,8 @@ Tetikleyici türü ise, bu sistem değişkenlerine, Trigger JSON içinde herhang
 
 | Değişken adı | Açıklama |
 | --- | --- |
-| @trigger(). scheduledTime |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için zamanlandığı zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00Z` `2017-06-01T22:29:00Z` sırasıyla döndürülür `2017-06-01T22:25:00Z`.|
-| @trigger(). başlangıçsaati |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için **aslında** tetikleyeceği zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:29:00.9935483Z` sırasıyla bu `2017-06-01T22:25:00.7958577Z`gibi bir şey döndürebilir. (Not: Zaman damgası varsayılan olarak ISO 8601 biçimindedir)|
+| @trigger(). scheduledTime |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için zamanlandığı zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00Z` `2017-06-01T22:30:00Z` sırasıyla döndürülür `2017-06-01T22:25:00Z`.|
+| @trigger(). başlangıçsaati |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için **aslında** tetikleyeceği zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:30:00.9935483Z` sırasıyla bu `2017-06-01T22:25:00.7958577Z`gibi bir şey döndürebilir. (Not: Zaman damgası varsayılan olarak ISO 8601 biçimindedir)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Atlayan pencere tetikleme kapsamı
 Tetikleyici türü ise, bu sistem değişkenlerine, Trigger JSON içinde herhangi bir yerde başvurulabilir: "TumblingWindowTrigger."

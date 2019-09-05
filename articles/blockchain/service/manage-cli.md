@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: ee7e529593960c3a7c62021225122370c122b3c4
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240963"
+ms.locfileid: "70307055"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
 
@@ -186,7 +186,7 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 |---------|-------------|
 | **rolü** | Azure AD rolünün adı. |
 | **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
-| **kapsam** | Rol atamasının kapsamı. İşlem düğümünün blok zinciri üyesi olabilir. |
+| **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
 **Örnek:**
 
@@ -219,7 +219,7 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 |---------|-------------|
 | **rolü** | Azure AD rolünün adı. |
 | **atane-nesne kimliği** | Azure AD Grup KIMLIĞI veya uygulama KIMLIĞI. |
-| **kapsam** | Rol atamasının kapsamı. İşlem düğümünün blok zinciri üyesi olabilir. |
+| **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
 **Örnek:**
 
@@ -242,7 +242,7 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 |---------|-------------|
 | **rolü** | Azure AD rolünün adı. |
 | **atanan** | Azure AD Kullanıcı KIMLIĞI. Örneğin, `user@contoso.com` |
-| **kapsam** | Rol atamasının kapsamı. İşlem düğümünün blok zinciri üyesi olabilir. |
+| **kapsam** | Rol atamasının kapsamı. Bir blok zinciri üyesi ya da işlem düğümü olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d7237c1d142e9f7bb5a47294d1375040be43ac3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172184"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308030"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -36,26 +36,9 @@ Kaynak denetimine işlemeden önce uygulamanızı kod yazma, oluşturma ve test 
 
 İlk kod satırlarınızı işlemeden önce, ACR görevlerinin [hızlı görev](container-registry-tutorial-quick-task.md) özelliği, kapsayıcı görüntüsü derlemelerinizi Azure 'a devrederek bir tümleşik geliştirme deneyimi sağlayabilir. Hızlı görevlerle, kodunuzu işlemeden önce otomatik derleme tanımlarınızı doğrulayabilirsiniz ve olası sorunları yakalayabilin.
 
-Tanıdık `docker build` biçimi kullanarak, Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir *bağlam* alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine gönderir.
+Tanıdık `docker build` biçimi kullanarak, Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine gönderir.
 
 Giriş için bkz. Azure Container Registry [bir kapsayıcı görüntüsü oluşturma ve çalıştırma](container-registry-quickstart-task-cli.md) hızlı başlangıcı.  
-
-Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yönelik birkaç örnek gösterilmektedir:
-
-| Bağlam konumu | Açıklama | Örnek |
-| ---------------- | ----------- | ------- |
-| Yerel dosya sistemi | Yerel dosya sisteminde bir dizin içindeki dosyalar. | `/home/user/projects/myapp` |
-| GitHub ana dalı | GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub dalı | GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub alt klasörü | GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
-
-Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini oluşturmak için etiketibelirtin.`--platform` İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm`). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8`):
-
-| OS | Mimari|
-| --- | ------- | 
-| Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
-| Windows | 'tür |
 
 ACR görevleri kapsayıcı yaşam döngüsü temel olarak tasarlanmıştır. Örneğin, ACR görevlerini CI/CD çözümünüz ile tümleştirin. Bir [hizmet sorumlusu][az-login-service-principal]ile [az oturum açma][az-login] ÇALıŞTıRARAK, CI/CD çözümünüz görüntü yapılarını açmak için [az ACR Build][az-acr-build] komutları verebilir.
 
@@ -106,9 +89,30 @@ Bir ACR görevi, temel görüntü aşağıdaki konumlardan birinde olduğunda bi
 
 [ACR görevlerinde multi-step Build, test ve Patch görevlerini Çalıştır](container-registry-tasks-multi-step.md)bölümünde çok adımlı görevler hakkında bilgi edinin.
 
+## <a name="context-locations"></a>Bağlam konumları
+
+Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yönelik birkaç örnek gösterilmektedir:
+
+| Bağlam konumu | Açıklama | Örnek |
+| ---------------- | ----------- | ------- |
+| Yerel dosya sistemi | Yerel dosya sisteminde bir dizin içindeki dosyalar. | `/home/user/projects/myapp` |
+| GitHub ana dalı | GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub dalı | GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub alt klasörü | GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
+
+## <a name="image-platforms"></a>Görüntü platformları
+
+Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini oluşturmak için etiketibelirtin.`--platform` İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm`). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8`):
+
+| OS | Mimari|
+| --- | ------- | 
+| Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
+| Windows | 'tür |
+
 ## <a name="view-task-logs"></a>Görev günlüklerini görüntüle
 
-Her görev çalıştırması, görev adımlarının başarıyla çalışıp çalışmadığını belirleyebilmek için inceleyebileceğiniz günlük çıktısı üretir. Görevi tetiklemek için [az ACR Build](/cli/azure/acr#az-acr-build), [az ACR Run](/cli/azure/acr#az-acr-run)veya [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) komutunu kullanırsanız, görev çalıştırmasının günlük çıktısı konsola akışla kaydedilir ve ayrıca daha sonra almak üzere saklanır. Azure portal çalışan bir görevin günlüklerini görüntüleyin veya [az ACR görev günlükleri](/cli/azure/acr/task#az-acr-task-logs) komutunu kullanın.
+Her görev çalıştırması, görev adımlarının başarıyla çalışıp çalışmadığını belirleyebilmek için inceleyebileceğiniz günlük çıktısı üretir. Görevi tetiklemek için [az ACR Build](/cli/azure/acr#az-acr-build), [az ACR Run](/cli/azure/acr#az-acr-run)veya [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) komutunu kullanırsanız, görev çalıştırmasının günlük çıktısı konsola akışla kaydedilir ve ayrıca daha sonra almak üzere saklanır. Bir görev otomatik olarak tetiklendiğinde (örneğin, kaynak kodu kaydı veya temel görüntü güncelleştirmesi), görev günlükleri yalnızca depolanır. Azure portal çalışan bir görevin günlüklerini görüntüleyin veya [az ACR görev günlükleri](/cli/azure/acr/task#az-acr-task-logs) komutunu kullanın.
 
 2019 Temmuz 'dan başlayarak, bir kayıt defterindeki görev çalıştırmaları için veriler ve Günlükler varsayılan olarak 30 gün boyunca korunur ve sonra otomatik olarak temizlenir. Bir görev çalıştırmasının verilerini arşivlemek istiyorsanız, [az ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) komutunu kullanarak arşivlemeyi etkinleştirin. Aşağıdaki örnek, kayıt defteri *myregistry*içinde *CF11* çalıştırması görevi için arşivlemeyi mümkün bir şekilde sunar.
 

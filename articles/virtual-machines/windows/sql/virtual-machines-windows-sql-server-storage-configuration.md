@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123833"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309236"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 'Ler için depolama yapılandırması
 
@@ -110,8 +110,7 @@ Depolamayı genişletmeye yönelik diğer seçenek mevcut sürücüyü genişlet
 
 Bu bölümde, Azure 'un Azure portal SQL VM sağlaması veya yapılandırması sırasında otomatik olarak gerçekleştirdiği depolama yapılandırması değişikliklerine yönelik bir başvuru sağlanmaktadır.
 
-* VM 'niz için ikiden az sayıda depolama alanı seçtiyseniz Azure bir depolama havuzu oluşturmaz.
-* VM 'niz için en az iki adet depolama alanı seçtiyseniz Azure bir depolama havuzu yapılandırır. Bu konunun sonraki bölümünde, depolama havuzu yapılandırmasının ayrıntıları sağlanmaktadır.
+* Azure, VM 'nizden seçilen depolama alanından bir depolama havuzu yapılandırır. Bu konunun sonraki bölümünde, depolama havuzu yapılandırması hakkında ayrıntılı bilgi verilmektedir.
 * Otomatik depolama yapılandırması her zaman [Premium SSDs](../disks-types.md) P30 veri disklerini kullanır. Sonuç olarak, seçtiğiniz terabaytlık ve sanal makinenize bağlı veri disklerinin sayısı arasında bir 1:1 eşlemesi vardır.
 
 Fiyatlandırma bilgileri için **disk depolama** sekmesindeki [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage) sayfasına bakın.

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f23a1f8e60567e1c2ed89b27f0eb2bab4ca5912
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5d607809b6e0356c8807879962927e99f2bd12fd
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061819"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382732"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -138,7 +138,7 @@ System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma 
 * MP Dağıtımını güncelleştirme
 
 > [!NOTE]
-> Yönetim grubu düzeyinde bir çalışma alanı ile ilişkilendirilecek aracıların yapılandırıldığı bir Operations Manager 1807 yönetim grubunuz varsa, bu sorunun gösterilmesi için geçerli geçici çözüm, **Microsoft. ıntelligencepacks. AzureAutomation. Hybridadgent. Init** kuralı.
+> Yönetim grubu düzeyinde bir çalışma alanı ile ilişkilendirilecek aracıların yapılandırıldığı bir Operations Manager 1807 veya 2019 yönetim grubunuz varsa, bu **koşulların** gösterilmesi için geçerli geçici çözüm **Microsoft. ıntelligencepacks. AzureAutomation. Hybridadgent. Init** kuralı.
 
 Çözüm Yönetimi paketlerinin nasıl güncelleştirildiği hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../azure-monitor/platform/om-agents.md).
 

@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183579"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306202"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway için arka uç sistem durumu, tanılama günlükleri ve ölçümler
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
 Azure Application Gateway kullanarak, kaynakları aşağıdaki yollarla izleyebilirsiniz:
 
@@ -22,7 +22,7 @@ Azure Application Gateway kullanarak, kaynakları aşağıdaki yollarla izleyebi
 
 * [Günlükler](#diagnostic-logging): Günlükler performans, erişim ve diğer verilerin izleme amacıyla bir kaynaktan kaydedilmesini veya tüketilmesi için izin verir.
 
-* [Ölçümler](#metrics): Application Gateway Şu anda performans sayaçlarını görüntülemek için yedi ölçüm vardır.
+* [Ölçümler](application-gateway-metrics.md): Application Gateway, sisteminizin beklendiği gibi çalıştığını doğrulamanıza yardımcı olan birkaç ölçüm içerir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -172,7 +172,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
 |timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
-|host| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınmakta ise, bu ad bu adı yansıtır.|
+|host| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınırsa, bu ad bu adı yansıtır.|
 |originalHost| İstemciden Application Gateway tarafından isteğin alındığı ana bilgisayar adı.|
 ```json
 {
@@ -359,67 +359,6 @@ Dilerseniz depolama hesabınıza bağlanabilir ve JSON erişim günlüklerini ve
 #### <a name="analyzing-access-logs-through-goaccess"></a>Erişim günlüklerini GoAccess aracılığıyla çözümleme
 
 Application Gateway erişim günlükleri için popüler [Goaccess](https://goaccess.io/) Log Analyzer 'ı yükleyen ve çalıştıran bir kaynak yöneticisi şablonu yayımladık. GoAccess benzersiz ziyaretçiler, Istenen dosyalar, konaklar, Işletim sistemleri, tarayıcılar, HTTP durum kodları ve daha fazlası gibi değerli HTTP trafiği istatistiklerini sağlar. Daha fazla ayrıntı için lütfen [GitHub 'daki Kaynak Yöneticisi Şablon klasöründeki Benioku dosyasına](https://aka.ms/appgwgoaccessreadme)bakın.
-
-## <a name="metrics"></a>Ölçümler
-
-Ölçümler, portalda performans sayaçlarını görüntüleyebileceğiniz belirli Azure kaynakları için bir özelliktir. Application Gateway için aşağıdaki ölçümler kullanılabilir:
-
-- **Geçerli bağlantılar**
-- **Başarısız Istekler**
-- **Sağlıklı konak sayısı**
-
-   Belirli bir arka uç havuzundaki sağlıklı/sağlıksız Konakları göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
-
-
-- **Yanıt durumu**
-
-   Yanıt durum kodu dağıtımı, 5 xx, 3xx, 4xx ve 5xx kategorilerindeki yanıtları göstermek için daha fazla kategorilere ayrılabilir.
-
-- **Aktarım hızı**
-- **Toplam Istek sayısı**
-- **Sağlıksız konak sayısı**
-
-   Belirli bir arka uç havuzundaki sağlıklı/sağlıksız Konakları göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
-
-Uygulama ağ geçidine gidin, **izleme** ' nin altında **ölçümleri**seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
-
-Aşağıdaki görüntüde, son 30 dakika boyunca üç ölçüm görüntülenirken bir örnek görürsünüz:
-
-[![](media/application-gateway-diagnostics/figure5.png "Ölçüm görünümü")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-Geçerli ölçüm listesini görmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md).
-
-### <a name="alert-rules"></a>Uyarı kuralları
-
-Bir kaynağın ölçümlerine göre uyarı kuralları başlatabilirsiniz. Örneğin, bir uyarı, uygulama ağ geçidinin üretilen işi belirli bir dönem üzerinde, aşağıda veya bir eşiğin üzerinde ise bir Web kancasını veya bir yöneticiye e-posta gönderebilir.
-
-Aşağıdaki örnek, aktarım hızı bir eşiğe ulaştığında bir yöneticiye e-posta gönderen bir uyarı kuralı oluşturma işleminde size yol gösterir:
-
-1. **Kural Ekle** sayfasını açmak için **ölçüm uyarısı Ekle** ' yi seçin. Bu sayfaya ölçüm sayfasından da ulaşabilirsiniz.
-
-   !["Ölçüm uyarısı Ekle" düğmesi][6]
-
-2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam**' ı seçin.
-
-   * **Koşul** seçicide dört değerden birini seçin:Büyüktür, **büyüktür veya eşittir**, **küçüktür**ya da **küçüktür veya eşittir**.
-
-   * **Süre** seçicide beş dakikadan altı saat arasında bir dönem seçin.
-
-   * **E-posta sahipleri, katkıda bulunanlar ve okuyucular**' ı seçerseniz, e-posta söz konusu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **ek yönetici e-postaları** kutusunda kullanıcıların virgülle ayrılmış bir listesini sağlayabilirsiniz.
-
-   ![Kural sayfası ekle][7]
-
-Eşiğe ihlal olursa, aşağıdaki görüntüde olana benzer bir e-posta gönderilir:
-
-![İhlal eşiği için e-posta][8]
-
-Bir ölçüm uyarısı oluşturduktan sonra uyarıların bir listesi görüntülenir. Tüm uyarı kurallarına genel bir bakış sağlar.
-
-![Uyarıların ve kuralların listesi][9]
-
-Uyarı bildirimleri hakkında daha fazla bilgi edinmek için bkz. [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
-
-Web kancaları ve bunları uyarılarla nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için [Azure ölçüm uyarısında Web kancası yapılandırma](../azure-monitor/platform/alerts-webhooks.md)makalesini ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

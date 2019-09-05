@@ -6,26 +6,29 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/03/2019
 ms.author: danlep
-ms.openlocfilehash: d555ba6b8c2b32fc6ec56d6c51dda9626b6f0cb0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325541"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307706"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances kapsayıcıları güncelleştirme
 
-Kapsayıcı örneklerinizin normal işlemleri sırasında bir kapsayıcı grubundaki kapsayıcıları güncelleştirmek için gerekli olduğunu fark edebilirsiniz. Örneğin, görüntü sürümünü güncelleştirmek, bir DNS adını değiştirmek, ortam değişkenlerini güncelleştirmek veya uygulaması kilitlenen bir kapsayıcının durumunu yenilemek isteyebilirsiniz.
+Kapsayıcı örneklerinizin normal işlemleri sırasında, bir [kapsayıcı grubundaki](container-instances-container-groups.md)çalışan kapsayıcıları güncelleştirmek için gerekli olduğunu fark edebilirsiniz. Örneğin, görüntü sürümünü güncelleştirmek, bir DNS adını değiştirmek, ortam değişkenlerini güncelleştirmek veya uygulaması kilitlenen bir kapsayıcının durumunu yenilemek isteyebilirsiniz.
+
+> [!NOTE]
+> Sonlandırılan veya silinen kapsayıcı grupları güncelleştirilemiyor. Bir kapsayıcı grubu sonlandırıldıktan sonra (başarılı veya başarısız durumda) veya silinmişse, grup yeni olarak dağıtılmalıdır.
 
 ## <a name="update-a-container-group"></a>Kapsayıcı grubunu güncelleştirme
 
-Bir kapsayıcı grubundaki kapsayıcıları, var olan bir grubu en az bir Modified özelliği ile yeniden dağıtarak güncelleştirin. Bir kapsayıcı grubunu güncelleştirdiğinizde gruptaki tüm çalışan kapsayıcılar yerinde yeniden başlatılır.
+Mevcut bir grubu en az bir Modified özelliği ile yeniden dağıtarak çalışan bir kapsayıcı grubundaki kapsayıcıları güncelleştirin. Bir kapsayıcı grubunu güncelleştirdiğinizde gruptaki tüm çalışan kapsayıcılar, genellikle aynı temel kapsayıcı ana bilgisayarında yerinde yeniden başlatılır.
 
-Oluşturma komutunu vererek mevcut bir kapsayıcı grubunu yeniden dağıtın (veya Azure portal kullanın) ve var olan bir grubun adını belirtin. Yeniden dağıtımı tetiklemek için Create komutunu verdiğinizde, grubun en az bir geçerli özelliğini değiştirin. Tüm kapsayıcı grubu özellikleri yeniden dağıtım için geçerli değildir. Desteklenmeyen özelliklerin listesi için [silme gerektiren özelliklere](#properties-that-require-container-delete) bakın.
+Oluşturma komutunu vererek mevcut bir kapsayıcı grubunu yeniden dağıtın (veya Azure portal kullanın) ve var olan bir grubun adını belirtin. Yeniden dağıtımı tetiklemek için Create komutunu verdiğinizde ve kalan özellikleri değişmeden bırakarak (veya varsayılan değerleri kullanmaya devam et) grubun en az bir geçerli özelliğini değiştirin. Tüm kapsayıcı grubu özellikleri yeniden dağıtım için geçerli değildir. Desteklenmeyen özelliklerin listesi için [silme gerektiren özelliklere](#properties-that-require-container-delete) bakın.
 
-Aşağıdaki Azure CLı örneği, bir kapsayıcı grubunu yeni bir DNS ad etiketi ile güncelleştirir. Grubun DNS ad etiketi özelliği değiştirildiğinden, kapsayıcı grubu yeniden dağıtılır ve kapsayıcıları yeniden başlatılır.
+Aşağıdaki Azure CLı örneği, bir kapsayıcı grubunu yeni bir DNS ad etiketi ile güncelleştirir. Grubun DNS ad etiketi özelliği güncelleştirilabilecek bir tane olduğundan, kapsayıcı grubu yeniden dağıtılır ve kapsayıcıları yeniden başlatılır.
 
 DNS ad etiketi *MyApplication-hazırlama*ile ilk dağıtım:
 
@@ -35,10 +38,10 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Kapsayıcı grubunu yeni bir DNS adı etiketiyle güncelleştirin, *MyApplication*:
+Kapsayıcı grubunu yeni bir DNS adı etiketiyle güncelleştirin, *MyApplication*ve kalan özellikleri değiştirmeden bırakın:
 
 ```azurecli-interactive
-# Update container group (restarts container)
+# Update DNS name label (restarts container), leave other properties unchanged
 az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication
 ```
@@ -81,10 +84,10 @@ Bu makalede birkaç kez bahsedildiği **kapsayıcı grubu**. Azure Container Ins
 
 [Çok kapsayıcılı bir grup dağıtın](container-instances-multi-container-group.md)
 
+[Azure Container Instances kapsayıcıları el ile durdurma veya başlatma](container-instances-stop-start.md)
+
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

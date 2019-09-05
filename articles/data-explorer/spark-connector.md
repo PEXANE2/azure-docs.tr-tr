@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165081"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383061"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Apache Spark için Azure Veri Gezgini Bağlayıcısı (Önizleme)
 
@@ -21,7 +21,7 @@ ms.locfileid: "70165081"
 Spark için Azure Veri Gezgini Bağlayıcısı, her iki özelliği de kullanmak üzere verileri Azure Veri Gezgini ve Spark kümeleri arasında taşımak için veri kaynağını ve veri havuzunu uygular. Azure Veri Gezgini ve Apache Spark kullanarak, makine öğrenimi (ML), ayıklama-dönüştürme-yükleme (ETL) ve Log Analytics gibi veri odaklı senaryoları hedefleyen hızlı ve ölçeklenebilir uygulamalar oluşturabilirsiniz. Azure Veri Gezgini yazma işlemi, Batch ve akış modunda yapılabilir.
 Azure Veri Gezgini okuma, sütun ayıklama ve koşul push'yi destekler, bu da Azure Veri Gezgini verileri filtreleyerek aktarılan verilerin hacmini azaltır.
 
-Azure Veri Gezgini Spark Bağlayıcısı, herhangi bir Spark kümesinde çalışabilen [Açık kaynaklı bir projem](https://github.com/Azure/azure-kusto-spark) .
+Azure Veri Gezgini Spark Bağlayıcısı, herhangi bir Spark kümesinde çalışabilen [Açık kaynaklı bir projem](https://github.com/Azure/azure-kusto-spark) . Azure Veri Gezgini Spark Bağlayıcısı, Azure Veri Gezgini, standart Spark kaynak ve yazma, okuma ve writeStream gibi havuz işlemleri için geçerli bir veri deposu sağlar. 
 
 > [!NOTE]
 > Aşağıdaki örneklerden bazıları [Azure Databricks](https://docs.azuredatabricks.net/) Spark kümesine başvurmakla birlikte, Azure Veri Gezgini Spark Bağlayıcısı Databricks veya diğer Spark dağıtımında doğrudan bağımlılıklar almaz.
@@ -30,7 +30,7 @@ Azure Veri Gezgini Spark Bağlayıcısı, herhangi bir Spark kümesinde çalış
 
 * [Azure Veri Gezgini kümesi ve veritabanı oluşturma](/azure/data-explorer/create-cluster-database-portal) 
 * Spark kümesi oluşturma
-* Aşağıdaki [kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) kitaplıkları dahil olmak üzere bağımlılıklarda [](https://github.com/Azure/azure-kusto-spark#dependencies) listelenen Azure Veri Gezgini bağlayıcı kitaplığı ve kitaplıklarını yükler:
+* Aşağıdaki [kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) kitaplıkları dahil olmak üzere [bağımlılıklarda](https://github.com/Azure/azure-kusto-spark#dependencies) listelenen Azure Veri Gezgini bağlayıcı kitaplığı ve kitaplıklarını yükler:
     * [Kusto veri Istemcisi](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto ınest Istemcisi](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 * [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) için önceden oluşturulmuş kitaplıklar
@@ -120,7 +120,7 @@ En basit ve ortak kimlik doğrulama yöntemi. Bu yöntem, Azure Veri Gezgini Spa
 Azure Veri Gezgini kümesinde aşağıdaki ayrıcalıkların verilmesi gerekir:
 
 * Okuma (veri kaynağı) için Azure AD uygulaması, hedef veritabanında *Görüntüleyici* ayrıcalıklarına veya hedef tablodaki *yönetici* ayrıcalıklarına sahip olmalıdır.
-* Yazmak için (veri havuzu), Azure AD uygulaması hedef veritabanında alma ayrıcalıklarına sahip olmalıdır. Ayrıca, yeni tablolar oluşturmak için hedef veritabanında *Kullanıcı* ayrıcalıklarına sahip olmalıdır. Hedef tablo zaten varsa, hedef tablodaki *yönetici* ayrıcalıkları yapılandırılabilir.
+* Yazmak için (veri havuzu), Azure AD uygulaması hedef veritabanında *alma ayrıcalıklarına sahip olmalıdır.* Ayrıca, yeni tablolar oluşturmak için hedef veritabanında *Kullanıcı* ayrıcalıklarına sahip olmalıdır. Hedef tablo zaten varsa, hedef tablodaki *yönetici* ayrıcalıkları yapılandırılabilir.
  
 Azure Veri Gezgini sorumlusu rolleri hakkında daha fazla bilgi için bkz. [rol tabanlı yetkilendirme](/azure/kusto/management/access-control/role-based-authorization). Güvenlik rollerini yönetmek için bkz. [güvenlik rolleri yönetimi](/azure/kusto/management/security-roles).
 

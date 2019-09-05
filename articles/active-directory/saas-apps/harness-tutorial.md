@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014079"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Öğretici: Bandı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -54,7 +54,7 @@ Azure AD 'de bulunan bir bandı tümleştirmeyi yapılandırmak için, Galeriden
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna bir tür yazın .
+1. **Galeriden Ekle** bölümünde, arama kutusuna **bir tür yazın** .
 1. Sonuçlar panelinden bir **bandı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-harness"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
@@ -74,7 +74,7 @@ Azure AD SSO 'yu ana ile yapılandırmak ve test etmek için aşağıdaki yapı 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), ara uygulama tümleştirmesi sayfasında , **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Ara uygulama tümleştirmesi** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.harness.io/`
 
     > [!NOTE]
-    > Yanıt URL 'SI değeri gerçek değil. Gerçek yanıt URL 'sini, Öğreticinin ilerleyen kısımlarında açıklanan, Get Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Yanıt URL 'SI değeri gerçek değil. Gerçek yanıt URL 'sini, Öğreticinin ilerleyen kısımlarında **açıklanan, Get** Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -131,17 +131,25 @@ Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma
 
 ## <a name="configure-harness-sso"></a>Bir i 'yi yapılandırma bandı
 
-1. Yeni bir Web tarayıcı penceresi açın ve bir yönetici olarak, bir şirket şirketiniz sitesinde oturum açın.
+1. Bu yapılandırmayı, bandı içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-1. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişimi yönetimi** > **kimlik doğrulama ayarları**' na tıklayın.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra **Kurulum bandı** ' ne tıklayın. Buradan, oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Bandı el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak, bir yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+4. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişimi yönetimi** > **kimlik doğrulama ayarları**' na tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure01.png)
 
-1. **SSO sağlayıcıları** bölümünde, **+ SSO sağlayıcıları** >Ekle **SAML**' ye tıklayın.
+5. **SSO sağlayıcıları** bölümünde, **+ SSO sağlayıcıları** >Ekle **SAML**' ye tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure03.png)
 
-1. **SAML sağlayıcısı** açılır penceresinde aşağıdaki adımları uygulayın:
+6. **SAML sağlayıcısı** açılır penceresinde aşağıdaki adımları uygulayın:
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure02.png)
 

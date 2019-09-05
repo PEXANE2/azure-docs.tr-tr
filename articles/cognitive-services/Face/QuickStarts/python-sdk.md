@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164777"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376146"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Hızlı Başlangıç: Python için yüz istemci kitaplığı
 
@@ -26,6 +26,7 @@ Python için yüz istemci kitaplığını kullanarak şunları yapın:
 * Benzer yüzleri bulma
 * Kişi grubu oluşturma ve eğitme
 * Yüz tanıma
+* Yüzeyleri doğrula
 * Veri geçişi için bir anlık görüntü alın
 
 [Başvuru belge](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
@@ -90,6 +91,7 @@ Bu kod parçacıkları, Python için yüz istemci kitaplığıyla aşağıdaki g
 * [Benzer yüzeyleri bulun](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
 * [Yüz tanıma](#identify-a-face)
+* [Yüzeyleri doğrula](#verify-faces)
 * [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
@@ -108,6 +110,14 @@ Aşağıdaki kod, uzak görüntüde bir yüz algılar. Algılanan yüz KIMLIĞIN
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 Daha fazla algılama senaryosu için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 'daki örnek koda bakın.
+
+### <a name="display-and-frame-faces"></a>Görüntü ve çerçeve yüzeyleri
+
+Aşağıdaki kod, görüntüye verilen görüntünün çıktısını verir ve DetectedFace. faceRectangle özelliğini kullanarak yüzlerin etrafında dikdörtgenler çizer.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![Yüz tanıma geçici olarak çizilen kırmızı bir dikdörtgen genç bir kadın](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
@@ -177,6 +187,32 @@ Aşağıdaki kod, _Test-image-Person-Group. jpg_ görüntüsü için projenizin 
 **Tanımla** yöntemi, algılanan yüzlerin bir dizisini alır ve bunları bir **persongroup**ile karşılaştırır. Algılanan bir yüzü bir **kişiye**eşleştirebilir, sonucu kaydeder. Bu kod, ayrıntılı eşleşen sonuçları konsola yazdırır.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
+
+## <a name="verify-faces"></a>Yüzeyleri doğrula
+
+Doğrulama işlemi bir yüz KIMLIĞI ve başka bir yüz KIMLIĞI ya da bir **kişi** nesnesi alır ve aynı kişiye ait olup olmadığını belirler.
+
+Aşağıdaki kod, iki kaynak görüntüde yüzeyleri algılar ve sonra bunları hedef görüntüden algılanan bir yüze karşı doğrular.
+
+### <a name="get-test-images"></a>Test görüntülerini al
+
+Aşağıdaki kod blokları, doğrulama işlemi için kaynak ve hedef görüntüleri işaret edecek değişkenleri bildirir.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>Doğrulama için yüzeyleri Algıla
+
+Aşağıdaki kod, kaynak ve hedef görüntülerdeki yüzeyleri algılar ve bunları değişkenlere kaydeder.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>Doğrulama sonuçlarını al
+
+Aşağıdaki kod, kaynak görüntülerinin her birini hedef görüntüye karşılaştırır ve aynı kişiye ait olup olmadığını belirten bir ileti yazdırır.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için bir anlık görüntü alın
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8c7680896507cd3738fa3bce0d30a516d08509c4
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208099"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383299"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine hesap geçişi
 
@@ -43,17 +43,17 @@ CPP hesabınızın Microsoft İş Ortağı Ağı KIMLIĞI yoksa veya geçersiz b
 Geçişin belirli bir hesap için yalnızca bir kez gerçekleşmesi gerekir. Belirli bir iş ortağı hesap geçişini tamamladıktan sonra, tüm sahipler bu davranışı yayımcı profili sayfasında görür:
 
 1. Artık hesap ayarlarını yönetebileceğiniz Microsoft İş Ortağı Ağı Iş ortağı ayarları sayfasını görürsünüz. 
-2. CPP içindeki yayımcı profili sayfanızda bulunan sarı bir başlık, sahip rolüne sahip kullanıcılar tarafından gösterilir ve bunların Iş Ortağı Merkezi 'nde hesap ayarlarını yönetmesi istenir. 
-3. CPP içindeki hesap ayarları sayfası salt okuma moduna dönüştürülür. 
+2. CPP içindeki yayımcı profili sayfanızda bulunan sarı bir başlık, sahip rolüne sahip kullanıcılar tarafından gösterilir ve bunların Iş Ortağı Merkezi 'nde hesap ayarlarını yönetmesi istenir.
+3. CPP içindeki hesap ayarları sayfası salt okuma moduna dönüştürülür.
 
 ## <a name="move-dynamics-365-based-solutions-to-partner-center"></a>Dynamics 365 tabanlı çözümleri Iş Ortağı Merkezi 'ne taşıma
 
 Müşteri katılımı için Dynamics 365 veya tek bir ticari Iş ortağı GTM portalındaki finans ve operasyon çözümleri için Dynamics 365 oluşturduysanız, **Bu çözümlerin artık Iş Ortağı Merkezi 'nde yönetilmesi gerekir**.
 
-**Çözümlerinizi 31 ağustos 2019 ' a taşımadıysanız**, aşağıdaki adımları en kısa sürede doldurun. Bunu yapana kadar: 
+**Çözümlerinizi 31 ağustos 2019 ' a taşımadıysanız**, aşağıdaki adımları en kısa sürede doldurun. Bunu yapana kadar:
 - ISV 'Lerin pazarlama avantajlarına erişimi olmayacaktır
 - Ortak satış önceliği, durumlarını kaybeder
-- Bulut eklemesi gerektiren olanlar uyumsuz olacaktır
+- Bulut ekleme gerekliliği, 15 Ekim 2019 ' den sonra uyumluluk altına alınacaktır
 
 > [!NOTE]
 > MPN üyelik hesabınız ilk olarak Iş ortağı üyelik Merkezi 'nde (PMC) oluşturulduysa, aşağıdaki adımları tamamlamadan önce hesabınızın geçirildiğini onaylamak için [Iş Ortağı Merkezi](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) ' nde oturum açın. MPN KIMLIĞINIZLE bir profil ekranı görürseniz devam etmeye hazırsınız demektir. Aksi takdirde, [Iş ortağı üyeliği merkezindeki](https://partners.microsoft.com/partnerprogram/Welcome.aspx)istemler ' i izleyerek hesap geçişinizi başlatmanız gerekir. Bu konuda yardıma ihtiyacınız varsa [destek](https://partner.microsoft.com/support?issueid=100-0077)' i ziyaret edin.

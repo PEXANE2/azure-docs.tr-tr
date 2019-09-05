@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fc56a2900a291ff600433a6e660dca274c7b92e7
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135281"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382845"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Özellik Karşılaştırması: Azure SQL veritabanı SQL Server karşılaştırması
 
@@ -116,9 +116,10 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | --- | --- | --- |
 | [Etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) | Evet-hiperscale dışında tüm hizmet katmanları | Hayır, bkz. [otomatik yük devretme grupları (Önizleme)](sql-database-auto-failover-group.md) alternatif olarak |
 | [Otomatik yük devretme grupları](sql-database-auto-failover-group.md) | Evet-hiperscale dışında tüm hizmet katmanları | Evet, [genel önizlemede](sql-database-auto-failover-group.md)|
-| Otomatik Ölçeklendirme | Evet, [sunucusuz modelde](sql-database-serverless.md) | Hayır, ayrılmış işlem ve depolama seçeneğini belirlemeniz gerekir. |
+| Otomatik Ölçeklendirme | Evet, ancak yalnızca [sunucusuz modelde](sql-database-serverless.md). Sunucusuz olmayan modelde, hizmet katmanı (sanal çekirdek, depolama veya DTU değişikliği) değişikliği hızlı ve çevrimiçi olur. Hizmet katmanı değişikliği için en az veya kapalı kalma süresi gerekir. | Hayır, ayrılmış işlem ve depolama seçeneğini belirlemeniz gerekir. Hizmet katmanını değiştirme (sanal çekirdek veya en fazla depolama) çevrimiçi ve en az bir kesinti süresi gerektirir. |
 | [Otomatik yedeklemeler](sql-database-automated-backups.md) | Evet. Tam yedeklemeler 7 günde bir, fark 12 saat ve günlük yedeklemesi her 5-10 dakikada bir alınır. | Evet. Tam yedeklemeler 7 günde bir, fark 12 saat ve günlük yedeklemesi her 5-10 dakikada bir alınır. |
 | [Otomatik ayarlama (dizinler)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Evet](sql-database-automatic-tuning.md)| Hayır |
+| [Kullanılabilirlik Alanları](/azure/availability-zones/az-overview) | Evet | Hayır |
 | [Azure Kaynak Durumu](/azure/service-health/resource-health-overview) | Evet | Hayır |
 | Yedekleri bekletme | Evet. 7 gün varsayılan, en fazla 35 gün. | Evet. 7 gün varsayılan, en fazla 35 gün. |
 | [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Evet | Evet |
@@ -132,6 +133,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | [Zaman noktası veritabanı geri yükleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Evet-hiper ölçek dışında tüm hizmet katmanları-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md#point-in-time-restore) | Evet-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | Kaynak havuzları | Evet, [elastik havuzlar](sql-database-elastic-pool.md) olarak | Hayır. Tek bir yönetilen örnek, aynı kaynak havuzunu paylaşan birden çok veritabanına sahip olabilir. Yönetilen örnekler kaynakları paylaşamaz. |
 | Ölçeği artırma veya azaltma (çevrimiçi) | Evet, DTU veya ayrılmış sanal çekirdekleri ya da en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. | Evet, ayrılmış sanal çekirdekleri veya en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. |
+| SQL diğer adı | Evet, bkz. [DNS diğer adı](dns-alias-overview.md) | Hayır |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Evet | Evet |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Evet | Hayır |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Hayır, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ayrı bir Azure bulut hizmetidir. | Hayır, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ayrı bir Azure bulut hizmetidir. |

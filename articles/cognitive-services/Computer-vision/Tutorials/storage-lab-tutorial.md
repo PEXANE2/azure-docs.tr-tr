@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137548"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382964"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Öğretici: Azure depolama 'da görüntü meta verileri oluşturmak için Görüntü İşleme kullanma
 
@@ -34,15 +34,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) veya üzeri, "ASP.net ve Web geliştirme" ve "Azure geliştirme" iş yükleri yüklendi.
-- Görüntüler için ayrılmış bir blob kapsayıcısına sahip bir Azure depolama hesabı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) . Alıştırmalarınızı izleyin).
-- Azure Depolama Gezgini Aracı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 2](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) . Alıştırmayı izleyin).
+- Görüntüler için ayrılmış bir blob kapsayıcısına sahip bir Azure depolama hesabı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. Alıştırmalarınızı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin).
+- Azure Depolama Gezgini Aracı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 2. Alıştırmayı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) izleyin).
 - Azure depolama 'ya erişimi olan bir ASP.NET Web uygulaması (böyle bir uygulamayı hızlı bir şekilde oluşturmak için [Azure Storage laboratuvarının 3. alıştırmaya](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) uyun).
 
 ## <a name="create-a-computer-vision-resource"></a>Görüntü İşleme kaynağı oluşturma
 
 Azure hesabınız için bir Görüntü İşleme kaynağı oluşturmanız gerekir; Bu kaynak, Azure Görüntü İşleme hizmetine erişiminizi yönetir. 
 
-1. Bir Görüntü İşleme kaynağı oluşturmak için Azure bilişsel [Hizmetler oluşturma](../../cognitive-services-apis-create-account.md#single-service-resource) bölümündeki yönergeleri izleyin.
+1. Bir Görüntü İşleme kaynağı oluşturmak için Azure bilişsel [Hizmetler oluşturma](../../cognitive-services-apis-create-account.md) bölümündeki yönergeleri izleyin.
 
 1. Sonra kaynak grubunuzun menüsüne gidin ve yeni oluşturduğunuz Görüntü İşleme API'si aboneliğine tıklayın. **Uç nokta** altındaki URL 'yi bir yere kopyalamak için bir süre içinde kolayca alabilirsiniz. Ardından **erişim anahtarlarını göster**' e tıklayın.
 
@@ -68,7 +68,7 @@ Ardından Çözüm Gezgini, projeye sağ tıklayın ve **Microsoft. Azure. Biliv
 
 ## <a name="add-metadata-generation-code"></a>Meta veri oluşturma kodu ekle
 
-Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşleme hizmetinden yararlanan kodu eklersiniz. Bu adımlar laboratuvardaki ASP.NET uygulaması için geçerlidir, ancak bunları kendi uygulamanıza uyarlayabilirsiniz. Bu noktada, Azure depolama kapsayıcısına görüntü yükleyebilecekleri ve bunları görünümde görüntüleyebilen bir ASP.NET Web uygulamasına sahip olduğunuz önemli şeyler vardır. Bunun hakkında emin değilseniz, [Azure depolama laboratuvarının 3](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). Alıştırmayı izlemeniz en iyisidir. 
+Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşleme hizmetinden yararlanan kodu eklersiniz. Bu adımlar laboratuvardaki ASP.NET uygulaması için geçerlidir, ancak bunları kendi uygulamanıza uyarlayabilirsiniz. Bu noktada, Azure depolama kapsayıcısına görüntü yükleyebilecekleri ve bunları görünümde görüntüleyebilen bir ASP.NET Web uygulamasına sahip olduğunuz önemli şeyler vardır. Bunun hakkında emin değilseniz, [Azure depolama laboratuvarının 3. Alıştırmayı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3)izlemeniz en iyisidir. 
 
 1. *HomeController.cs* dosyasını projenin **denetleyiciler** klasöründe açın ve dosyanın en üstüne aşağıdaki `using` deyimleri ekleyin:
 

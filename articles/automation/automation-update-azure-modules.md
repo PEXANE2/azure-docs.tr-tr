@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a71eb00ce4d4ace6ccc17e050946b39debed929c
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 23475fb77210eeea0568bb996529c81458db9c6c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034895"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382772"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme
 
@@ -48,10 +48,6 @@ Azure modüllerinizi güncelleştirmek için bu işlemi kullanırken dikkate al�
 
 * PowerShell Galerisi en son kullanılabilir yerine belirli bir Azure PowerShell modülü sürümünü kullanmak istiyorsanız, bu sürümleri **Update-automationazuremodulesforaccount** runbook `ModuleVersionOverrides` 'unun isteğe bağlı parametresine geçirin. Örnekler için bkz [. Update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
 ) runbook. `ModuleVersionOverrides` Parametresinde bahsedilen Azure PowerShell modüller, PowerShell Galerisi en son modül sürümleriyle güncellenir. `ModuleVersionOverrides` Parametreye hiçbir şey geçirirseniz, tüm modüller PowerShell Galerisi en son modül sürümleriyle güncellenir. Bu davranış, **Azure modüllerini Güncelleştir** düğmesi ile aynıdır.
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-Azurerd modüllerini, 0 ile başlayan sayısal bir ada sahip bir kaynak grubundaki bir Otomasyon hesabında güncelleştiren bilinen bir sorun vardır. Otomasyon hesabınızda Azure modüllerinizi güncelleştirmek için, alfasayısal bir ada sahip bir kaynak grubunda olması gerekir. 0 ile başlayan sayısal adlara sahip kaynak grupları Şu anda Azurere modüllerini güncelleştiremiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

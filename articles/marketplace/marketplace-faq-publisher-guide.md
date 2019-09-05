@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000014"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309016"
 ---
 # <a name="marketplace-faqs"></a>Market hakkında SSS
 
@@ -64,7 +64,7 @@ Azure Market teklifleri şu şekilde satın alınabilir:
 * [Azure komut satırı arabirimi (CLı)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Ön ödemeli krediler ve diğer parasal taahhüt formları, yazılım lisansı ücretleri için ödeme yapmak üzere kullanılamaz, ancak ilişkili Azure kullanım ücretlerini ödemek için kullanılabilir. Özel durumlar [Azure parasal](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)taahhüdünde listelenmiştir.
+>Ön ödemeli krediler ve diğer parasal taahhüt formları, yazılım lisansı ücretleri için ödeme yapmak üzere kullanılamaz, ancak ilişkili Azure kullanım ücretlerini ödemek için kullanılabilir. Özel durumlar [Azure parasal taahhüdünde](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)listelenmiştir.
 
 **Azure Marketi satın alımımın dağıtılacağı Azure bölgelerini seçebilir miyim?**
 
@@ -263,7 +263,7 @@ Azure Marketi, BT uzmanları ve bulut geliştiricileri için tasarlanan ticari B
 
 **Uygulamamı neden Azure Marketi 'nde yayımlamalıyım ve nasıl faydalanır?**
 
-Azure Marketi, Microsoft Iş ortaklarının ürünlerini ve hizmetlerini Azure müşterilerine yükseltmek ve satmak için bir pazar sağlar. Yayımcılar, 140 küresel pazarlarımıza, 300000 + iş ortaklarınıza ve Azure 'un kurumsal müşteri ağına anında erişin.  Market, Fortune 500 şirketlerinin% 90 ' undan ve dünyanın önde gelen geliştiricilerin çoğuna dahildir. Azure Marketi 'ndeki yeni iş ortakları, Azure 'un Market 'teki tekliflerinin farkında olmaya yardımcı olmak için otomatik olarak ücretsiz [pazara yönelik bir avantaj](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace) sunar.
+Azure Marketi, Microsoft Iş ortaklarının ürünlerini ve hizmetlerini Azure müşterilerine yükseltmek ve satmak için bir pazar sağlar. Yayımcılar, 140 küresel pazarlarımıza, 300000 + iş ortaklarınıza ve Azure 'un kurumsal müşteri ağına anında erişin.  Market, Fortune 500 şirketlerinin% 90 ' undan ve dünyanın önde gelen geliştiricilerin çoğuna dahildir. Azure Marketi 'ndeki yeni iş ortakları, Azure 'un Market 'teki tekliflerinin farkında olmaya yardımcı olmak için otomatik olarak ücretsiz [pazara yönelik bir avantaj](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) sunar.
 
 **Azure Marketi ve AppSource arasında farklılaştırıcı çarpanı nedir?**
 
@@ -348,7 +348,7 @@ Daha fazla bilgi için bkz. [bir teklifi silme](./cloud-partner-portal/manage-of
 *Danışmanlık Hizmetleri & Web Apps (SaaS uygulamaları, eklentiler):*
 
 1. Bulut İş Ortağı Portalı soru işareti simgesini seçin ve ardından **destek**' e tıklayın.
-1. [https://aka.ms/MFASetup](<https://go.microsoft.com/fwlink/?linkid=844975>) kısmına gidin.
+1. <https://go.microsoft.com/fwlink/?linkid=844975> kısmına gidin.
 1. Destek sayfasında teklif türünü seçin.
 1. Yayınlanmış teklifi **Kaldır** ' ı seçin.
 1. Bir olay bileti oluşturun.

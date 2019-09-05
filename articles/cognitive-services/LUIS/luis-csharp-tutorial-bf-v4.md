@@ -1,5 +1,5 @@
 ---
-title: Language Understanding bot C# v4
+title: 'Öğretici: Language Understanding bot C# v4'
 titleSuffix: Azure Cognitive Services
 description: C# kullanarak, dil anlama (LUIS) ile tümleşik bir sohbet robotu oluşturun. Bot, bot Framework sürüm 4 ve Azure Web App bot hizmeti ile oluşturulmuştur.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 79f75fbae9a13db985f46408145c7d6762ff56b9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207336"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375578"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: Language Understanding ile etkin bir Web uygulaması bot kullanınC#
 

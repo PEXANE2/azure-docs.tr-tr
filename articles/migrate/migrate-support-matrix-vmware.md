@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279596"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375308"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçiş için destek matrisi
 
@@ -73,7 +73,7 @@ Azure geçişi, VMware VM 'lerini bulmaya ve Azure geçişi 'ne VM meta verileri
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. 32 GB RAM, 8 vCPU ve harici bir sanal anahtarla bir VM ayırmak için vCenter Server yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır. 
+**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU ile, 80 GB disk depolama ve dış sanal anahtar ile bir VM ayırmak için yeterli sayıda kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır. 
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
 **Keşfini** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
 **Değerlendirme grubu** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.

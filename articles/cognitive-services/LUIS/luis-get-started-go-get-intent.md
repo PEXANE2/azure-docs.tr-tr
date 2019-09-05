@@ -1,5 +1,5 @@
 ---
-title: Amaç al, go-LUO
+title: 'Hızlı Başlangıç: Amaç al, go-LUO'
 titleSuffix: Azure Cognitive Services
 description: Git Bu hızlı başlangıçta, bir kullanıcının engellemekse damıtarak konuşma bağlamında kullanılabilen metinden belirlemek için kullanılabilir bir genel LUIS uygulaması kullanın.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: c4c2d94544739b0611d19705a669d124295947d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1fc36b8e1240751ce85d61c761cd069dcdad207e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563840"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307553"
 ---
 # <a name="quickstart-get-intent-using-go"></a>Hızlı Başlangıç: Go kullanarak amaç alın
 

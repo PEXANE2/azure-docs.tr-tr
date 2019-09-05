@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209641"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383133"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
@@ -26,7 +26,7 @@ Bu makalede, Azure SQL veritabanı yönetilen örneği ve şirket içi SQL Serve
 
 Yönetilen örnekte tanıtılan bazı PaaS sınırlamaları ve SQL Server karşılaştırıldığında bazı davranış değişiklikleri vardır. Farklar aşağıdaki kategorilere ayrılmıştır:<a name="Differences"></a>
 
-- [Kullanılabilirlik](#availability) , [her zaman açık](#always-on-availability) ve yedeklemelerdeki farkları [](#backup)içerir.
+- [Kullanılabilirlik](#availability) , [her zaman açık](#always-on-availability) ve [yedeklemelerdeki](#backup)farkları içerir.
 - [Güvenlik](#security) , [Denetim](#auditing), [sertifika](#certificates), [kimlik bilgileri](#credential), [şifreleme sağlayıcıları](#cryptographic-providers), [oturum açmalar ve kullanıcılar](#logins-and-users)ve [hizmet anahtarı ile hizmet ana anahtarı](#service-key-and-service-master-key)arasındaki farkları içerir.
 - [Yapılandırma](#configuration) , [arabellek havuzu genişletme](#buffer-pool-extension), [harmanlama](#collation), [Uyumluluk düzeyleri](#compatibility-levels), [veritabanı yansıtma](#database-mirroring), [veritabanı seçenekleri](#database-options), [SQL Server Agent](#sql-server-agent)ve [tablo seçeneklerindeki](#tables)farklılıkları içerir.
 - [İşlevler](#functionalities) şunlardır [bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [clr](#clr), [DBCC](#dbcc), [Dağıtılmış işlemler](#distributed-transactions), [genişletilmiş olaylar](#extended-events), [dış kitaplıklar](#external-libraries), [FILESTREAM ve FileTable](#filestream-and-filetable), [tam metin Anlamsal arama](#full-text-semantic-search), [bağlı sunucular](#linked-servers), [PolyBase](#polybase), [çoğaltma](#replication), [geri yükleme](#restore-statement), [Hizmet Aracısı](#service-broker), [saklı yordamlar, işlevler ve Tetikleyiciler](#stored-procedures-functions-and-triggers).
@@ -480,7 +480,7 @@ Algılan
 - `.BAK`birden çok yedekleme kümesi içeren dosyalar geri yüklenemez. 
 - `.BAK`birden çok günlük dosyası içeren dosyalar geri yüklenemez.
 - 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya 280 'den fazla dosya içeren yedeklemeler Genel Amaçlı örneğine geri yüklenemez. 
-- 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine geri yüklenemez. [](sql-database-managed-instance-resource-limits.md)
+- 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine [geri yüklenemez.](sql-database-managed-instance-resource-limits.md)
 Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Hizmet Aracısı
@@ -541,6 +541,14 @@ Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata g
 
 ## <a name="Issues"></a>Bilinen sorunlar
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir
+
+**Güncel** Eyl 2019
+
+Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) özelliği, yük devretmeden sonra bazı Kullanıcı iş yükünü yanlış sınıflandırabilir veya hizmet katmanının Kullanıcı tarafından başlatılan değişikliğini (örneğin, en fazla sanal çekirdek veya en büyük örnek değişikliği) depolama boyutu).
+
+**Geçici çözüm**: Resource Governor `ALTER RESOURCE GOVERNOR RECONFIGURE` kullanıyorsanız, örnek başladığında SQL aracısını yürüten SQL Aracısı işinin bir parçası olarak veya SQL Agent işinin bir parçası olarak çalıştırın [](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
+
 ### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Güvenli bağlantı (SSL) kullanılarak dış posta sunucularına kimlik doğrulamak yapılamaz
 
 **Güncel** Ağu 2019
@@ -584,6 +592,12 @@ Bir otomatik yük devretme grubundaki bir veritabanında Işlem çoğaltması et
 SQL Server Management Studio ve SQL Server Veri Araçları, Azure 'un seçkin Dizin oturumlarını ve kullanıcılarını desteklemez.
 - SQL Server Veri Araçları şu anda Azure AD Server sorumlularını (oturum açma) ve kullanıcıları (Genel Önizleme) kullanma desteklenmiyor.
 - Azure AD Server sorumluları (oturumlar) ve kullanıcıları (Genel Önizleme) için betik oluşturma SQL Server Management Studio desteklenmez.
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor
+
+Bir veritabanı yönetilen örneğe geri yüklenirken, geri yükleme hizmeti öncelikle adı örnek üzerinde ayırmak için istenen ada sahip boş bir veritabanı oluşturur. Bir süre sonra, bu veritabanı bırakılır ve gerçek veritabanının geri yüklenmesi başlatılır. *Geri yükleme* durumundaki veritabanı geçici olarak ad yerine rastgele bir GUID değeri olur. Geri yükleme işlemi tamamlandıktan sonra geçici ad, `RESTORE` bildiriminde belirtilen istenen ada dönüştürülür. İlk aşamada, Kullanıcı boş veritabanına erişebilir ve hatta tablo oluşturabilir veya bu veritabanında veri yükleyebilir. Bu geçici veritabanı, geri yükleme hizmeti ikinci aşamayı başlattığında bırakılacak.
+
+**Geçici çözüm**: Geri yükleme işleminin tamamlandığını görene kadar geri yüklediğiniz veritabanına erişmeyin.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
 

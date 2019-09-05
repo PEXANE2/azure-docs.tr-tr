@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 98cb6d8eb665121e5991508056aa2fd9edc0629d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170863"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376034"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure 'da HTTP ile tetiklenen bir işlev oluşturma
 
@@ -38,7 +38,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Sanal ortam oluşturma ve etkinleştirme (isteğe bağlı)
 
-Python işlevlerini yerel olarak geliştirmek ve test etmek için Python 3,6 ortamının kullanılması önerilir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`.
+Python işlevlerini yerel olarak geliştirmek ve test etmek için Python 3,6 ortamının kullanılması önerilir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`. Venv 'yi yüklemek için şu komutu izleyin: sudo apt-get Install python3-venv
 
 ### <a name="bash"></a>Bash
 

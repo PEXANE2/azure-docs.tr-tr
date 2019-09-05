@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: yushwang
-ms.openlocfilehash: 343bbf5c84ce97feb7b7d170523845f5a2f7c10d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 323db6e7274db1a53e49b5bd7d33b2eb3700a62b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668432"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376417"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -49,7 +49,7 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Cisco |Meraki |Yok |Uyumlu değil |Uyumlu değil |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 ve sonraki sürümleri |[Yapılandırma kılavuzu](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Uyumlu değil |
 | F5 |BIG-IP serisi |12.0 |[Yapılandırma kılavuzu](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Yapılandırma kılavuzu](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.6 |  |[Yapılandırma kılavuzu](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/030680/connecting-a-local-fortigate-to-an-azure-fortigate-via-site-to-site-vpn) |
+| Fortinet |FortiGate |FortiOS 5.6 |  |[Yapılandırma kılavuzu](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/989216/connecting-a-local-fortigate-to-an-azure-vnet-vpn) |
 | Internet Initiative Japan (IIJ) |SEIL Serisi |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Yapılandırma kılavuzu](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Uyumlu değil |
 | Juniper |SRX |PolicyBased JunOS 10,2<br>Routebased JunOS 11,4 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J-Serisi |PolicyBased JunOS 10.4 R9<br>RouteBased JunOS 11,4 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
@@ -152,10 +152,10 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 
 |-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          |---               |---          |
-| 1\. |GCM AES256    |GCM (AES256)      |None         |
+| 1\. |GCM AES256    |GCM (AES256)      |Yok.         |
 | 2 |AES256        |SHA1              |None         |
 | 3 |3DES          |SHA1              |Yok.         |
-| 4 |AES256        |SHA256            |None         |
+| 4 |AES256        |SHA256            |Yok.         |
 | 5 |AES128        |SHA1              |Yok.         |
 | 6 |3DES          |SHA256            |Yok.         |
 
@@ -167,9 +167,9 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 | 2 |AES256        |SHA1              |None         |
 | 3 |3DES          |SHA1              |Yok.         |
 | 4 |AES256        |SHA256            |Yok.         |
-| 5 |AES128        |SHA1              |None         |
+| 5 |AES128        |SHA1              |Yok.         |
 | 6 |3DES          |SHA256            |Yok.         |
-| 7 |DES           |SHA1              |None         |
+| 7 |DES           |SHA1              |Yok.         |
 | 8 |AES256        |SHA1              |1\.            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -185,7 +185,7 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
 | 22|AES128        |SHA256            |Yok.         |
-| 23|AES128        |SHA256            |1            |
+| 23|AES128        |SHA256            |1\.            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |

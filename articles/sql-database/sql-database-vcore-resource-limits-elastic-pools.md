@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2a5190cada0ca834cada4e02bfe7549dc43da4b8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640849"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309509"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Sanal çekirdek tabanlı satın alma modeli sınırlarını kullanan elastik havuzlar için kaynak sınırları
 
@@ -140,8 +140,8 @@ Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](sql-d
 |GÇ gecikmesi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |Hedef ıOPS (64 KB)|7000|7000|7000|7000|7000|7000|7000|
 |Günlük hızı sınırları (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
-|Havuz başına en fazla eş zamanlı çalışan (istek) *|1680|1890|2100|2520|33600|4200|8400|
-|Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) *|1680|1890|2100|2520|33600|4200|8400|
+|Havuz başına en fazla eş zamanlı çalışan (istek) *|1680|1890|2100|2520|3360|4200|8400|
+|Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) *|1680|1890|2100|2520|3360|4200|8400|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Çoğaltma sayısı|1\.|1\.|1\.|1\.|1\.|1\.|1\.|
 |Çoklu-AZ|Yok|Yok|Yok|Yok|Yok|Yok|Yok|

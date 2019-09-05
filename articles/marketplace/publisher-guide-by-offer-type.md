@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876048"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308228"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -34,7 +34,7 @@ Azure Market teklif türleri aşağıdaki tabloda listelenmiştir.
 | **Teklif türü**    | **Açıklama**  |
 | :------------------- | :-------------------|
 | [**Sanal makineler**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. |
-| [**Çözüm şablonları**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Çözümünüz basit bir sanal makinenin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde çözüm şablonu teklif türünü kullanın. |
+| [**Çözüm şablonları**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Çözümünüz basit bir sanal makinenin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde, çözüm şablonunu (Azure uygulaması olarak da bilinir) teklif türünü kullanın. Çözüm şablonları, VM 'Ler dahil ancak bunlarla sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.  |
 | [**Yönetilen uygulamalar**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: <br> <ul> <li> Bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. </li> <li>Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. </li> <ul> |
 | [**SaaS uygulamaları**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için SaaS uygulaması teklif türünü kullanın. |
 | [**Kapsayıcı teklifleri**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda kapsayıcı teklif türünü kullanın. |

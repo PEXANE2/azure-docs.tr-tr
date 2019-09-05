@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989607"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383166"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -153,6 +153,8 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |70018|Kullanıcının cihaz kod akışı için yanlış kullanıcı kodu girmesi nedeniyle geçersiz doğrulama kodu. Yetkilendirme onaylanmamış.|
 |70019|Doğrulama kodunun süresi doldu. Kullanıcının oturum açma işlemini yeniden denemesini sağlayabilirsiniz.|
 |70037|Hatalı sınama yanıtı sağlandı. Uzaktan kimlik doğrulama oturumu reddedildi.|
+|70043|Azure koşullu erişim oturumu yönetimi, oturumu sona ermeden zorlar|
+|70044|Azure koşullu erişim oturumu yönetimi, oturumu sona ermeden zorlar|
 |75001|SAML iletisi bağlama sırasında bir hata oluştu.|
 |75003|Uygulama, desteklenmeyen Bağlama ile ilgili bir hata döndürdü (SAML protokolü yanıtı HTTP POST dışındaki bağlamalar üzerinden gönderilemiyor). Uygulama sahibine başvurun.|
 |75005|Azure AD, uygulama tarafından Çoklu oturum açma için gönderilen SAML İsteğini desteklemiyor. Uygulama sahibine başvurun.|

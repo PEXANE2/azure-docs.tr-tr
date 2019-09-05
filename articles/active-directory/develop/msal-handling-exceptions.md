@@ -16,12 +16,12 @@ ms.date: 08/19/2019
 ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 77a2e571b76044ff9114f6671b187118cf03c0ba
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135807"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305058"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>MSAL kullanarak özel durumları ve hataları işleme
 Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) özel durumlar, uygulama geliştiricilerinin son kullanıcılara görüntüleme konusunda sorun gidermesi ve bu işlemleri sürdürmelerine yöneliktir. Özel durum iletileri yerelleştirilmemiş.
@@ -179,7 +179,7 @@ Belirteci etkileşimli olarak almak kullanıcıya sorar ve gerekli koşullu eri�
 
 Koşullu erişim gerektiren bir API çağrılırken, API 'den hatada bir talep zorluğu alabilirsiniz. Bu durumda, hatada `claimsRequest` döndürülen talepleri, uygun ilkeyi karşılamak üzere `AuthenticationParameters.ts` sınıfının alanına geçirebilirsiniz. 
 
-Daha fazla ayrıntı için bkz. [ek talepler isteme]() .
+Daha fazla ayrıntı için bkz. [ek talepler isteme](active-directory-optional-claims.md) .
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Hatalar ve özel durumlar sonrasında yeniden deneniyor
 

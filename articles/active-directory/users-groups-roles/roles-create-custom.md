@@ -1,6 +1,6 @@
 ---
-title: Azure AD rol tabanlı erişim denetiminde özel bir rol tanımı oluşturma-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory kaynaklarda kaynak kapsamıyla özel Azure AD rolleri oluşturun.
+title: Azure AD rol tabanlı erişim denetiminde özel bir rol oluşturma ve atama-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory kaynaklarda kaynak kapsamıyla özel Azure AD rolleri oluşturun ve atayın.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1166839608c709db9aa052d6d0db5221fa15354
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880742"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382813"
 ---
-# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>Azure Active Directory bir özel rol oluşturma ve kaynak kapsamına atama
+# <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
-Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluşturma açıklanır. Özel roller, Azure AD Genel Bakış sayfasındaki [Roller ve yöneticiler](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) sekmesinde oluşturulabilir. Rol, yalnızca dizin düzeyindeki kapsamda veya yalnızca bir uygulama kayıt kaynağı kapsamında atanabilir.
+Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluşturma açıklanır. Özel rollerin temelleri için bkz. [özel rollere genel bakış](roles-custom-overview.md). Rol, yalnızca dizin düzeyindeki kapsamda veya yalnızca bir uygulama kayıt kaynağı kapsamında atanabilir.
 
-Daha fazla bilgi için özel rollerin [genel bakış](roles-custom-overview.md) bölümüne bakın.
+Özel roller, Azure AD Genel Bakış sayfasındaki [Roller ve yöneticiler](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) sekmesinde oluşturulabilir.
 
-## <a name="using-the-azure-ad-portal"></a>Azure AD portalını kullanma
+## <a name="create-a-role-in-the-azure-portal"></a>Azure portal rol oluşturma
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Uygulama kayıtlarını yönetmek için erişim izni vermek üzere yeni bir özel rol oluşturun
 
@@ -49,22 +49,7 @@ Daha fazla bilgi için özel rollerin [genel bakış](roles-custom-overview.md) 
 
 Özel rolünüzün atanacak kullanılabilir roller listesinde görünür.
 
-## <a name="assign-a-role-scoped-to-a-resource"></a>Kaynak kapsamına alınmış bir rol atama
-
-Yerleşik roller gibi, özel roller, tüm uygulama kayıtları üzerinden erişim sağlamak için kuruluş genelinde kapsama atanabilir. Ancak, özel roller de kaynak kapsamında atanabilir. Bu, bir ikinci özel rol oluşturmak zorunda kalmadan tek bir uygulamanın kimlik bilgilerini ve temel özelliklerini güncelleştirme izni vermenizi sağlar.
-
-1. Henüz yoksa Azure AD kuruluşunda uygulama geliştirici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Uygulama kayıtları**'nı seçin.
-1. Yönetmek üzere erişim verdiğiniz uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
-
-    ![Rol ataması için kaynak kapsamı olarak uygulama kaydını seçin](./media/roles-create-custom/appreg-all-apps.png)
-
-1. Uygulama kaydında **Roller ve yöneticiler**' i seçin. Henüz bir tane oluşturmadıysanız, yönergeler [önceki yordamda](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)bulunur.
-
-1. **Atamalar** sayfasını açmak için rolü seçin.
-1. Kullanıcı eklemek için **atama Ekle** ' yi seçin. Kullanıcıya seçili olan herhangi bir uygulama kaydı üzerinde herhangi bir izin verilmez.
-
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak özel bir rol oluşturma
+## <a name="create-a-role-using-powershell"></a>PowerShell kullanarak rol oluşturma
 
 ### <a name="prepare-powershell"></a>PowerShell 'i hazırlama
 
@@ -125,7 +110,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Microsoft Graph API kullanarak özel bir rol oluşturma
+## <a name="create-a-role-with-graph-api"></a>Graph API bir rol oluşturma
 
 1. Rol tanımını oluşturun.
 
@@ -175,6 +160,21 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
+## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Kaynağa kapsamlı özel bir rol atama
+
+Yerleşik roller gibi, kuruluşunuzdaki tüm uygulama kayıtları üzerinde erişim izinleri vermek için varsayılan kuruluş genelindeki kapsamda varsayılan olarak özel roller atanır. Ancak, yerleşik rollerden farklı olarak, özel roller tek bir Azure AD kaynağı kapsamında de atanabilir. Bu, kullanıcıya ikinci bir özel rol oluşturmak zorunda kalmadan tek bir uygulamanın kimlik bilgilerini ve temel özelliklerini güncelleştirme izni vermenizi sağlar.
+
+1. Azure AD kuruluşunda uygulama geliştirici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+1. **Uygulama kayıtları**'nı seçin.
+1. Yönetmek üzere erişim verdiğiniz uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
+
+    ![Rol ataması için kaynak kapsamı olarak uygulama kaydını seçin](./media/roles-create-custom/appreg-all-apps.png)
+
+1. Uygulama kaydında **Roller ve yöneticiler**' i seçin. Henüz bir tane oluşturmadıysanız, yönergeler [önceki yordamda](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)bulunur.
+
+1. **Atamalar** sayfasını açmak için rolü seçin.
+1. Kullanıcı eklemek için **atama Ekle** ' yi seçin. Kullanıcıya yalnızca seçili uygulama kaydı üzerinden herhangi bir izin verilecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101557"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309599"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu kılavuzda, Azure 'un Market Galerisi görüntüsünden bir Oracle 12c veritabanı dağıtmak için Azure CLı 'nin nasıl kullanılacağı açıklanır. 
 
-Bu belgede, bir Azure VM üzerinde Oracle altın kapısı oluşturma, yüklemeyi ve yapılandırmayı adım adım gösterir.
+Bu belgede, bir Azure VM üzerinde Oracle altın kapısı oluşturma, yüklemeyi ve yapılandırmayı adım adım gösterir. Bu öğreticide, iki sanal makine tek bir bölgedeki kullanılabilirlik kümesinde ayarlanır. Aynı öğretici, tek bir Azure bölgesindeki farklı Kullanılabilirlik Alanları veya iki farklı bölgede bulunan VM 'Ler için OracleGolden Gate 'i kurmak için kullanılabilir.
 
 Başlamadan önce Azure CLI’nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](https://docs.microsoft.com/cli/azure/install-azure-cli).
 

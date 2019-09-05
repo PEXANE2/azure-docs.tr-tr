@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 9cc7cbe8a1f523a50c91125802804e564b48a164
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242963"
+ms.locfileid: "70307200"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Gönderilen veri paylaşımının kullanımını izlemek için PowerShell 'i kullanma
 
@@ -44,8 +44,8 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Get-Azdatasharesynleştirme](/powershell/module/az.resources/get-azdatasharesynchronizationdetails) | Bir paylaşımdaki eşitlemeleri listeleyin. |
-| [Get-Azdatasharesynitizationdetails](/powershell/module/az.resources/get-azdatasharesynchronizationdetails) | Bir paylaşma eşitlemesinin eşitleme ayrıntılarını alır. |
+| [Get-Azdatasharesynleştirme](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Bir paylaşımdaki eşitlemeleri listeleyin. |
+| [Get-Azdatasharesynitizationdetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Bir paylaşma eşitlemesinin eşitleme ayrıntılarını alır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar

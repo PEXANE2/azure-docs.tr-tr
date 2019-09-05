@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services REST API çağrıları için Postman'ı yapılandırma
-description: Media Services REST API çağrıları için Postman'ı yapılandırmayı öğrenin.
+title: Azure Media Services REST API'si çağrıları için Postman yapılandırma
+description: Media Services REST API çağrıları için Postman yapılandırma hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,26 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: a2171ff8a4354a59ec2f790f9bf38b7a687419ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322558"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308459"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API çağrıları için Postman'ı yapılandırma
+# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API çağrıları için Postman yapılandırma
 
-Bu makalede nasıl yapılacağı gösterilmektedir **Postman** böylece Azure Media Services (AMS) REST API'leri çağırmak için kullanılabilir. Makale dosyalarına ortam ve koleksiyon içeri aktarma **Postman**. Koleksiyon, Azure Media Services (AMS) REST API'lerini çağırma HTTP isteklerinin gruplandırılmış tanımları içerir. Koleksiyon tarafından kullanılan değişkenleri ortam dosyası içerir.
+Bu makalede, **Postman** 'ın Azure Media Services (AMS) REST API 'lerini çağırmak için kullanılabilmesi üzere nasıl yapılandırılacağı gösterilmektedir. Makale, ortam ve koleksiyon dosyalarının **Postman**'a nasıl alınacağını gösterir. Koleksiyon, Azure Media Services (AMS) REST API 'Lerini çağıran HTTP isteklerinin gruplandırılmış tanımlarını içerir. Ortam dosyası, koleksiyon tarafından kullanılan değişkenleri içerir.
 
-Geliştirmeye başlamadan önce gözden [Media Services v3 API'leri ile geliştirme](media-services-apis-overview.md).
+Geliştirmeye başlamadan önce [Media Services v3 API 'leri Ile geliştirmeyi](media-services-apis-overview.md)inceleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). Kaynak grubu adı ve Media Services hesap adını hatırlamak emin olun. 
-- İçin gereken bilgileri elde [API'lere erişim](access-api-cli-how-to.md)
+- [API 'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
 - AMS REST öğreticilerinden bazılarında gösterilen REST API'lerini yürütmek için [Postman](https://www.getpostman.com/) REST istemcisini yükleyin. 
 
-    Biz **Postman**'ı kullanıyoruz, ancak herhangi bir REST aracı da olabilir. Diğer alternatifler: **Visual Studio Code** REST eklentisiyle veya **Telerik Fiddler**. 
+    Biz **Postman**'ı kullanıyoruz, ancak herhangi bir REST aracı da olabilir. Diğer alternatifler: REST eklentisi veya **Telerik Fiddler**ile **Visual Studio Code** . 
+
+> [!IMPORTANT]
+> [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
 
 ## <a name="download-postman-files"></a>Postman dosyalarını indirme
 
@@ -59,7 +62,7 @@ Bu bölümde Postman yapılandırılmaktadır.
     > [!Note]
     > Erişim değişkenlerini yukarıdaki **Media Services API'sine erişme** bölümünden aldığınız değerlerle güncelleştirin.
 
-7. Seçili dosyayı çift tıklatın ve erişimi API adımları izleyerek aldığınız değerleri girin.
+7. Seçili dosyaya çift tıklayın ve API adımlarına erişim ' i izleyerek aldığınız değerleri girin.
 8. İletişim kutusunu kapatın.
 9. Aşağı açılan listeden **Azure Media Service v3 Environment** ortamını seçin.
 
@@ -75,9 +78,9 @@ Bu bölümde Postman yapılandırılmaktadır.
 
 ## <a name="get-azure-ad-token"></a>Azure AD Belirteci alma 
 
-AMS v3 kaynakları düzenleme başlamadan önce almak ve hizmet sorumlusu kimlik doğrulaması için Azure AD belirteç ayarlamak gerekir.
+AMS v3 kaynaklarını değiştirmeye başlamadan önce hizmet sorumlusu kimlik doğrulaması için Azure AD belirtecini almanız ve ayarlamanız gerekir.
 
-1. Postman sol penceresinde, seçin "1. adım: AAD kimlik doğrulaması belirteci alma".
+1. Postman 'nın sol penceresinde "1. Adım: AAD kimlik doğrulama belirteci al ".
 2. Sonra, "Hizmet Sorumlusu Kimlik Doğrulaması için Azure AD Belirteci alma"'yı seçin.
 3. **Gönder**’e basın.
 
@@ -93,11 +96,11 @@ AMS v3 kaynakları düzenleme başlamadan önce almak ve hizmet sorumlusu kimlik
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Media Services hesabına - REST dosya yükleme](upload-files-rest-how-to.md)
-- [Medya Hizmetleri - REST ile filtre oluşturma](filters-dynamic-manifest-rest-howto.md)
+- [Media Services hesaba dosya yükleme-REST](upload-files-rest-how-to.md)
+- [Media Services REST ile filtre oluşturma](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager tabanlı REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dosyaları REST ile Stream](stream-files-tutorial-with-rest.md).  
+- [Rest Ile akış dosyaları](stream-files-tutorial-with-rest.md).  
 - [Öğretici: Uzak dosya tabanlı URL kodlama ve video akışı yapma - REST](stream-files-tutorial-with-rest.md)

@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837886"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382501"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
-Bu makalede uygulama yönetimi ihtiyaçlarınızı karşılamak üzere Azure Active Directory (Azure AD) içindeki özel rollerde uygulama izinlerinin nasıl kullanılacağı açıklanır. Azure Active Directory (Azure AD), uygulama oluşturma ve yönetim izinlerinin aşağıdaki yollarla temsilciliğini sağlar:
+Bu makalede, uygulama yönetimi ihtiyaçlarınızı karşılamak üzere Azure Active Directory (Azure AD) içinde özel roller tarafından verilen izinlerin nasıl kullanılacağı açıklanır. Azure AD 'de, uygulama oluşturma ve yönetim izinlerinin aşağıdaki yollarla temsilciliğini sağlayabilirsiniz:
 
-- [Kimlerin uygulama oluşturup](#restrict-who-can-create-applications) oluşturdukları uygulamaları yönetebileceğini sınırlandırma. Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Bu, yalnızca izin verilen kullanıcılara izin vermek için kısıtlanabilir.
+- [Kimlerin uygulama oluşturup oluşturdukları uygulamaları yönetebileceğini sınırlandırma](#restrict-who-can-create-applications) . Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Bu, yalnızca izin verilen kullanıcılara izin vermek için kısıtlanabilir.
 - Bir [uygulamaya bir veya daha fazla sahip atama](#assign-application-owners). Bu, birine belirli bir uygulama için Azure AD yapılandırmasının tüm yönlerini yönetme olanağı sağlamanın basit bir yoludur.
 - Tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi veren [yerleşik bir yönetim rolü atama](#assign-built-in-application-admin-roles) . Bu, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek üzere erişim vermek için önerilen yoldur.
 - [Özel bir rol oluşturmak](#create-and-assign-a-custom-role-preview) ve bunu, tek bir uygulamanın sınırlı bir sahip olarak veya dizin kapsamında (tüm uygulamalar) sınırlı yönetici olarak bir kişiye atamak.
@@ -40,7 +40,7 @@ Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kay
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Uygulama kayıtları veya uygulamalara onay oluşturma için varsayılan özelliği devre dışı bırakmak için
 
 1. Azure AD kuruluşunuzda genel yönetici rolüne uygun bir hesapla Azure AD kuruluşunuzda oturum açın.
-1. Yeterli izinleri edindiğinizde aşağıdakilerden birini veya her ikisini birden ayarlayın:
+1. Aşağıdakilerden birini veya her ikisini birden ayarlayın:
 
     -  [Kuruluşunuzun Kullanıcı ayarları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings), **kullanıcılar uygulamaları kaydedebilir** ayarını Hayır olarak ayarlayın. Bu, kullanıcıların uygulama kayıtları oluşturmalarına yönelik varsayılan özelliği devre dışı bırakır.
     -  [Kurumsal uygulamalar için Kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)' na, **kullanıcıların kendi adına şirket verilerine erişen uygulamalara Izin verebilir** ayarını Hayır olarak ayarlayın. Bu, kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin vermesini sağlayacak varsayılan özelliği devre dışı bırakır.

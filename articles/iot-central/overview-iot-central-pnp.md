@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: e1c206c329b491ec9f8d36a12e2b4bf8ed8107b3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997755"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383028"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (Önizleme özellikleri) nedir?
 
@@ -62,7 +62,7 @@ Bu makalede, Azure IoT Central için özetlenmektedir:
 - Dizi şeması türleri desteklenmez.
 - Uygulama şablonu dışarı aktarma ve uygulama kopyalama desteklenmez.
 - Yalnızca C cihaz SDK 'Sı ve Node. js cihaz ve hizmet SDK 'Ları desteklenir.
-- Yalnızca belirli bölgelerde kullanılabilir.
+- Yalnızca Kuzey Avrupa ve Orta ABD bölgeleri mevcuttur.
 
 ## <a name="personas"></a>Kişilikler
 

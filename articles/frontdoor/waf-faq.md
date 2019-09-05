@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: c993e465bc439ff52cba3241dbff64b7655d1f12
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849170"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375339"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
@@ -53,12 +53,6 @@ Bir WAF ilkesini küresel olarak dağıtmak yaklaşık 5 dakika sürer ve genell
 
 Ön kapı hizmeti ile tümleştirildiğinde WAF genel bir kaynaktır. Tüm ön kapı konumlarında aynı yapılandırma geçerlidir.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Nasıl yaparım? arka uca erişimi yalnızca ön kapıdan olacak şekilde sınırlayın mi?
-
-Arka uçınızdan IP Access Control listesini, yalnızca ön kapı giden IP adresi aralıklarına izin vermek ve Internet 'ten doğrudan erişimi reddetmek için yapılandırabilirsiniz. Sanal ağınızda kullanabilmeniz için hizmet etiketleri desteklenir. Ayrıca, X ile Iletilen ana bilgisayar HTTP üst bilgisi alanının Web uygulamanız için geçerli olduğunu doğrulayabilirsiniz.
-
-
-
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Hangi Azure WAF seçeneklerini seçmem gerekir?
 
@@ -72,6 +66,9 @@ Azure 'da WAF İlkeleri uygulanırken iki seçenek vardır. Azure ön kapısına
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS koruması ön kapıla tümleşiktir mı? 
 
 Azure ağ kenarlarında küresel olarak dağıtılan Azure ön kapısı, büyük hacimli saldırıları artışlarını devralarak ve coğrafi olarak yalıtabilir. Bilinen imzaları olan http (ler) saldırılarını otomatik olarak engellemek ve derecelendirmek için özel WAF ilkesi oluşturabilirsiniz. Daha fazla bilgi için arka uçlarınızın dağıtıldığı VNet üzerinde DDoS koruma standardını etkinleştirebilirsiniz. Azure DDoS koruması standart müşterileri, bir saldırı sırasında anında yardım almak için maliyet koruması, SLA garantisi ve DDoS hızlı yanıt ekibinden uzmanlara erişim gibi ek avantajlar sağlar. 
+
+DDoS saldırı yüzeyini azaltmak için arka uçlarınızın üretim ortamında kilitlenmesini öneririz. [Nasıl yaparım?, arka ucumun erişimini yalnızca Azure ön kapısına mi kilitle?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
