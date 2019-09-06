@@ -153,6 +153,9 @@
     - name: Atamaları PowerShell ile yönetme
       displayName: 'create, update, remove'
       href: ./how-to/manage-assignments-ps.md
+    - name: PowerShell ile içeri ve dışarı aktarma
+      displayName: 'import, export, folders'
+      href: ./how-to/import-export-ps.md
     - name: Mevcut atamaları portaldan güncelleştirme
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md

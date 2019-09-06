@@ -197,6 +197,8 @@
           href: connector-amazon-redshift.md
         - name: Amazon S3
           href: connector-amazon-simple-storage-service.md
+        - name: Avro biçimi
+          href: format-avro.md
         - name: Azure Blob Depolama
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB SQL API
@@ -606,6 +608,8 @@
           href: data-migration-guidance-s3-azure-storage.md
         - name: Şirket içi Hadoop kümesinden Azure’a veri geçirme
           href: data-migration-guidance-hdfs-azure-storage.md
+        - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
+          href: data-migration-guidance-netezza-azure-sqldw.md
 - name: Başvuru
   items:
     - name: .NET

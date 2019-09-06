@@ -60,9 +60,6 @@
   items:
     - name: Şablon güncelleştirmeleri
       href: template-deployment-overview.md
-    - name: Şablon dosya yapısı
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: Şablon en iyi uygulamalar
       href: template-best-practices.md
     - name: Bulut tutarlılığına yönelik şablonlar
@@ -85,26 +82,38 @@
   items:
     - name: Şablon oluşturma
       items:
-        - name: Geliştirme aracı - VS Code
+        - name: VS Code kullanma
           href: resource-manager-tools-vs-code.md
-        - name: Şablon oluşturma
-          href: how-to-create-template.md
-        - name: Alt kaynak adı ve türü
-          href: child-resource-name-type.md
-        - name: Abonelikte kaynak grupları ve kaynaklar oluşturma
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: Kaynak bağımlılıklarını tanımlama
-          href: resource-group-define-dependencies.md
+        - name: Şablon ifadeleri yazma
+          href: template-expressions.md
+        - name: Parametreler
+          href: template-parameters.md
+        - name: Değişkenler
+          href: template-variables.md
+        - name: Kullanıcı tanımlı işlevler
+          href: template-user-defined-functions.md
+        - name: Kaynaklar
+          items:
+            - name: Alt kaynak adı ve türü
+              href: child-resource-name-type.md
+            - name: Koşullu dağıtım
+              href: conditional-resource-deployment.md
+            - name: Kaynak bağımlılıkları ayarlama
+              href: resource-group-define-dependencies.md
+            - name: Kaynak konumu ayarlama
+              href: resource-location.md
+            - name: Şablon uzantılarını kullanma
+              href: resource-manager-use-extensions.md
+        - name: Çıkışlar
+          href: template-outputs.md
         - name: Şablonları modüllere ayırma
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: Birden çok örnek oluşturma
           href: resource-group-create-multiple.md
-        - name: Şablon uzantılarını kullanma
-          href: resource-manager-use-extensions.md
-        - name: Kaynakları güncelleştirme
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: Abonelikte kaynak grupları ve kaynaklar oluşturma
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: Şablon dağıtma
       items:
         - name: Dağıtma - portal
@@ -244,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: Başvuru
   items:
+    - name: Şablon dosya yapısı
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: Şablon başvurusu
       href: /azure/templates/
     - name: Şablon işlevleri

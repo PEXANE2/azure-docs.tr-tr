@@ -1,5 +1,5 @@
-- name: Azure Storage Belgeleri
-  href: /azure/storage/
+- name: Azure Dosyalar belgeleri
+  href: index.yml
 - name: Genel Bakış
   expanded: true
   items:

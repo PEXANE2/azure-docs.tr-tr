@@ -219,10 +219,16 @@
       items:
         - name: Yönetilen örnek belgeleri
           href: sql-database-managed-instance-index.yml
-        - name: Yönetilen örnek özellikleri
+        - name: Yönetilen örneğe genel bakış
           href: sql-database-managed-instance.md
         - name: Yönetilen örnekler hakkında SSS
           href: sql-database-managed-instance-faq.md
+        - name: Örnek havuzları
+          items:
+            - name: Örnek havuzlara genel bakış
+              href: sql-database-instance-pools.md
+            - name: Örnek havuzları nasıl yapılır kılavuzu
+              href: sql-database-instance-pools-how-to.md
         - name: Yönetim API'si başvurusu
           href: sql-database-managed-instance-create-manage.md
         - name: Kaynak sınırları

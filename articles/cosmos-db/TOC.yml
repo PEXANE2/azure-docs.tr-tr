@@ -712,6 +712,8 @@
       items:
         - name: Power BI kullanma
           href: powerbi-visualize.md
+        - name: Canlı hava durumu panosu oluşturma
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense kullanma
           href: visualize-qlik-sense.md
     - name: Diğer Azure hizmetleri ile tümleştirme

@@ -124,13 +124,13 @@
     - name: Uygulamanızı planlama
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Yazar Uygulaması
+    - name: Yazma ve çalışma zamanı anahtarları
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
+    - name: Uygulama modelini yazma
       items:
         - name: Yazma döngüsü
           href: luis-concept-app-iteration.md
-        - name: İş Birliği
-          displayName: 'shared, transfer, ownership, author, access, import'
-          href: luis-concept-collaborator.md
         - name: Sürüm oluşturma
           href: luis-concept-version.md
           displayName: import
@@ -141,10 +141,10 @@
         - name: Varlıklar
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Varlık rolleri
+          href: luis-concept-roles.md
         - name: Konuşmalar
           href: luis-concept-utterance.md
-        - name: Roller
-          href: luis-concept-roles.md
         - name: Önceden oluşturulmuş modeller
           href: luis-concept-prebuilt-model.md
     - name: Uygulama performansını geliştirme
@@ -180,13 +180,6 @@
         - name: Tasarım stratejileri
           href: luis-concept-enterprise.md
           displayName: import
-    - name: Güvenlik
-      items:
-        - name: Uygulama erişimi
-          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
-          href: luis-concept-security.md
-        - name: Yazma ve uç nokta anahtarları
-          href: luis-concept-keys.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Yeni bir uygulama başlatma
@@ -248,18 +241,22 @@
       href: luis-how-to-publish-app.md
     - name: Uygulama yönetme
       items:
-        - name: LUIS uygulamanız ile abonelik anahtarlarını kullanma
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+        - name: Yazma ve çalışma zamanı anahtarları
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Sürümleri yönetme
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: Yazarları ve ortak çalışanları yönetme
+        - name: Yazma anahtarına geçirme
+          items:
+            - name: Genel Bakış
+              href: luis-migration-authoring.md
+            - name: Geçiş yapma
+              href: luis-migration-authoring-steps.md
+        - name: Yazarlar ve ortak çalışanlar
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
-        - name: Yazma anahtarı yönetme
-          href: luis-how-to-account-settings.md
-        - name: Traffic Manager ile anahtarlar arasında uç nokta kotasını yayma
+        - name: Sürümler ile
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: Traffic Manager ile
           href: luis-traffic-manager.md
     - name: API'yi geçirme
       items:

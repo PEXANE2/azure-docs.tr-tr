@@ -1,4 +1,4 @@
-- name: Azure Kuyrukları Depolama Belgeleri
+- name: Azure Kuyruk depolama belgeleri
   href: /azure/storage/queues/
 - name: Genel Bakış
   expanded: true
