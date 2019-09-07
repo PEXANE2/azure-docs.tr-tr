@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873160"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390489"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için bir çalışma alanı oluşturmak üzere bir Azure Resource Manager şablonu kullanma
 
@@ -55,6 +55,11 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 * Azure Machine Learning çalışma alanının kolay adı olan **çalışma alanı adı**.
 
     Diğer hizmetlerin adları rastgele oluşturulur.
+
+> [!TIP]
+> Bu belgeyle ilişkili şablon yeni bir Azure Container Registry oluştururken, kapsayıcı kayıt defteri oluşturmadan de yeni bir çalışma alanı oluşturabilirsiniz. Çalışma alanında kapsayıcı kayıt defteri varsa, bir kapsayıcı kayıt defteri gerektiren bir işlem gerçekleştirdiğinizde bir tane oluşturulacaktır. Örneğin, bir modeli eğitme veya dağıtma.
+>
+> Ayrıca, yeni bir tane oluşturmak yerine Azure Resource Manager şablonundaki mevcut bir kapsayıcı kayıt defterine veya depolama hesabına başvurabilirsiniz.
 
 Şablonlar hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 

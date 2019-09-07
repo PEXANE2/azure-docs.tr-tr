@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d607809b6e0356c8807879962927e99f2bd12fd
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382732"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743830"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -75,8 +75,7 @@ Aşağıdaki tabloda desteklenen işletim sistemlerinin bir listesi gösterilmek
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Yalnızca güncelleştirme değerlendirmelerini destekler.         |
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2008 R2 (RTM ve SP1 standart)|.NET Framework 4.5.1 veya üzeri gereklidir. ([.NET Framework indir](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4,0 veya üzeri gereklidir. ([WMF 4,0 indirin](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5,1, daha fazla güvenilirlik için önerilir.  ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2008 R2 (RTM ve SP1 standart)|**Güncelleştirme değerlendirmeleri**: Desteklenen<br><br>**Düzeltme eki uygulama**: Karma Runbook Worker gerektirir. [Karma Runbook Worker gereksinimlerine](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) bakın|
 |CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı düzeltme eki uygulama, CentOS 'ın kutudan çıkan güvenlik verilerini döndürmesi için ' yıum ' gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux 'ta sınıflandırmaları güncelleştirme](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
@@ -221,7 +220,7 @@ Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük
 
 ![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Güncelleştirmeleri yükle
+## <a name="install-updates"></a>Güncelleştirmeleri yükler
 
 Çalışma alanınızdaki tüm Linux ve Windows bilgisayarları için güncelleştirmeler değerlendirildikten sonra, bir *güncelleştirme dağıtımı*oluşturarak gerekli güncelleştirmeleri yükleyebilirsiniz. Bir güncelleştirme dağıtımı oluşturmak için, Otomasyon hesabına yazma erişiminizin olması ve dağıtımda hedeflenen tüm Azure VM 'lerine yazma erişiminizin olması gerekir. Güncelleştirme dağıtımı, bir veya daha fazla bilgisayar için gerekli güncelleştirmelerin zamanlanmış bir yüklemesidir. Dağıtımın ve bir bilgisayarın veya bilgisayar grubunun bir dağıtım kapsamına dahil edilecek tarih ve saati belirtirsiniz. Bilgisayar grupları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md).
 
@@ -381,7 +380,7 @@ Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bi
 
 İnternet erişimine sahip olmayan makineleri yapılandırmak için [İnternet erişimi olmadan bilgisayarları bağlama](../azure-monitor/platform/gateway.md) bölümündeki yönergeleri izleyin.
 
-## <a name="search-logs"></a>Günlük ara
+## <a name="search-logs"></a>Günlüklerde ara
 
 Azure portal belirtilen ayrıntılara ek olarak günlüklere göre aramalar yapabilirsiniz. Çözüm sayfalarında **Log Analytics**' yi seçin. **Günlük araması** bölmesi açılır.
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 124b10607f710ddfb76787eac09dea7ec6ffc03c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173062"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390355"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -49,11 +49,6 @@ Bu öğreticiyi tamamlamak için:
 
 * [Python](https://www.python.org/downloads/)’ı yükleyin
 * [Python için Azure Depolama SDK’sını](https://github.com/Azure/azure-storage-python) indirip yükleme
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java Ile v10 arasındaki SDK](#tab/java-v10)
-
-* [Maven](https://maven.apache.org/download.cgi)’ı yükleyip komut satırından çalışacak şekilde yapılandırma
-* [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)’yı yükleme ve yapılandırma
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -107,14 +102,6 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java Ile v10 arasındaki SDK](#tab/java-v10)
-
-[Örnek projeyi indirin](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs) ve storage-java-ragrs.zip dosyasını ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Java uygulaması içerir.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 [Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyayı ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Node. js uygulaması içerir.
@@ -165,24 +152,6 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java Ile v10 arasındaki SDK](#tab/java-v10)
-
-Bu örnek, depolama hesabınızın adını ve anahtarını güvenli bir şekilde depolamanızı gerektirir. Bunları, örneği çalıştıracak makineye yerel ortam değişkenlerinde depolayın. Ortam değişkenlerini oluşturmak için işletim sisteminize bağlı olarak Linux veya Windows örneğini kullanın. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
-
-### <a name="linux-example"></a>Linux örneği
-
-```
-export AZURE_STORAGE_ACCOUNT="<youraccountname>"
-export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
-```
-
-### <a name="windows-example"></a>Windows örneği
-
-```powershell
-setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
-setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Bu örneği çalıştırmak için, depolama hesabı kimlik bilgilerinizi `.env.example` dosyaya eklemeniz ve sonra olarak `.env`yeniden adlandırmanız gerekir.
@@ -222,49 +191,6 @@ Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine a
 
 İndirilmadan önce, Service Object [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) ve [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) işlevi tanımlanmıştır. Bu işlevler, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java Ile v10 arasındaki SDK](#tab/java-v10)
-
-Örneği çalıştırmak için, komut satırında Maven ' ı kullanın.
-
-1. bir kabuk açın ve kopyalanan dizininizin içindeki **Storage-Blobları-Java-ile v10 arasındaki-QuickStart** ' a gidin.
-2. `mvn compile exec:java` yazın.
-
-Bu örnek, varsayılan dizininizde bir sınama dosyası oluşturur. Windows kullanıcıları için bu dizin **Appdata\local\temp**' dir. Örnek daha sonra girebilmeniz için aşağıdaki komut seçeneklerini sunar:
-
-- Bir put blob işlemini yürütmek için **P** girin, bu komut depolama hesabınıza bir geçici dosya yükler.
-- Bir liste blobu işlemi gerçekleştirmek için **L** girin, bu komut şu anda kapsayıcıda Blobları listeler.
-- Blob Al işlemini gerçekleştirmek için **G** girin, bu komut depolama hesabınızdan yerel makinenize bir dosya indirir.
-- Blob silme işlemini yürütmek için **D** girin, bu komut blobu depolama hesabınızdan siler.
-- Örneği kapatmak için **E** girin, bu komut, oluşturulan örneğin tüm kaynakları da siler.
-
-Bu örnekte uygulamayı Windows'da çalıştırdığınızda elde edeceğiniz çıkış gösterilmiştir.
-
-```
-Created quickstart container
-Enter a command
-(P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample
-# Enter a command :
-P
-Uploading the sample file into the container: https://<storageaccount>.blob.core.windows.net/quickstart
-# Enter a command :
-L
-Listing blobs in the container: https://<storageaccount>.blob.core.windows.net/quickstart
-Blob name: SampleBlob.txt
-# Enter a command :
-G
-Get the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-The blob was downloaded to C:\Users\<useraccount>\AppData\Local\Temp\downloadedFile13097087873115855761.txt
-# Enter a command :
-D
-Delete the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-
-# Enter a command :
->> Blob deleted: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-E
-Cleaning up the sample and exiting!
-```
-
-Örneğin denetimi sizdedir; bu nedenle, kodu çalıştırmasını sağlamak için komutları girin. Girişler büyük/küçük harfe duyarlıdır.
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -389,18 +315,6 @@ def response_callback(response):
         if secondary_read_count >= secondary_threshold:
             blob_client.location_mode = LocationMode.PRIMARY
             secondary_read_count = 0
-```
-
-# <a name="java-v10-sdktabjava-v10"></a>[Java Ile v10 arasındaki SDK](#tab/java-v10)
-
-Java Ile v10 arasındaki SDK ile, geri çağırma işleyicilerinin tanımlanması gereksizdir ve SDK artık v7 SDK 'sından bazı temel farklılıklara sahiptir. LocationMode yerine ikincil bir işlem hattına sahipsiniz. **RequestRetryOptions** aracılığıyla ikincil bir işlem hattı tanımlayabilir ve tanımlanmışsa, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına izin verir.
-
-```java
-// We create pipeline options here so that they can be easily used between different pipelines
-PipelineOptions myOptions = new PipelineOptions();
-myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
-// We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
-final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

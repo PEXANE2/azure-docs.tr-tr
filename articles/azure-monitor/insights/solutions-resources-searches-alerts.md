@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
-ms.translationtype: MT
+ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662898"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744486"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Yönetim çözümüne Log Analytics kaydedilmiş aramalar ve uyarılar ekleme (Önizleme)
 
@@ -120,7 +120,7 @@ Zamanlama kaynaklarının özellikleri aşağıdaki tabloda açıklanmıştır.
 | Öğe adı | Gerekli | description |
 |:--|:--|:--|
 | enabled       | Evet | Uyarının oluşturulduğu sırada etkinleştirilip etkinleştirilmeyeceğini belirtir. |
-| aralığı      | Evet | Sorgunun dakikalar içinde çalışma sıklığı. |
+| interval      | Evet | Sorgunun dakikalar içinde çalışma sıklığı. |
 | queryTimeSpan | Evet | Sonuçların değerlendirileceği sürenin dakika cinsinden uzunluğu. |
 
 Zamanlama kaynağı, zamanlamadan önce oluşturulabilmesi için, kaydedilen aramaya bağlı olmalıdır.
@@ -169,30 +169,30 @@ Uyarı eylemleri aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalay
 
 Uyarı eylemi kaynaklarının özellikleri aşağıdaki tablolarda açıklanmıştır.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Açıklama |
 |:--|:--|:--|
-| type | Evet | Eylem türü.  Bu uyarı eylemleri için uyarıdır. |
-| name | Evet | Uyarı görünen adı.  Bu, uyarı kuralı için konsolunda görüntülenen addır. |
-| description | Hayır | Uyarının isteğe bağlı açıklaması. |
-| severity | Evet | Uyarı kaydının aşağıdaki değerlerden önem derecesi:<br><br> **başlatma**<br>**Warning**<br>**amaçlı**
+| `Type` | Evet | Eylem türü.  Bu uyarı eylemleri için **uyarıdır** . |
+| `Name` | Evet | Uyarı görünen adı.  Bu, uyarı kuralı için konsolunda görüntülenen addır. |
+| `Description` | Hayır | Uyarının isteğe bağlı açıklaması. |
+| `Severity` | Evet | Uyarı kaydının aşağıdaki değerlerden önem derecesi:<br><br> **başlatma**<br>**Warning**<br>**amaçlı**
 
 
 #### <a name="threshold"></a>Eşik
 Bu bölüm gereklidir. Uyarı eşiğinin özelliklerini tanımlar.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Açıklama |
 |:--|:--|:--|
-| Operator | Evet | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür<br>lt = küçüktür** |
-| Value | Evet | Sonuçları karşılaştırmak için değer. |
+| `Operator` | Evet | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür<br>lt = küçüktür** |
+| `Value` | Evet | Sonuçları karşılaştırmak için değer. |
 
 ##### <a name="metricstrigger"></a>Metricçabagger
 Bu bölüm isteğe bağlıdır. Ölçüm ölçümü uyarısı için bunu ekleyin.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Açıklama |
 |:--|:--|:--|
-| TriggerCondition | Evet | Eşiğin, şu değerlerden alınan toplam ihlal sayısı veya ardışık ihlal olup olmadığını belirtir:<br><br>**Ardışık<br>toplam** |
-| Operator | Evet | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür<br>lt = küçüktür** |
-| Value | Evet | Uyarının tetiklenmesi için ölçütlerin karşılanması gereken zaman sayısı. |
+| `TriggerCondition` | Evet | Eşiğin, şu değerlerden alınan toplam ihlal sayısı veya ardışık ihlal olup olmadığını belirtir:<br><br>**Ardışık<br>toplam** |
+| `Operator` | Evet | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür<br>lt = küçüktür** |
+| `Value` | Evet | Uyarının tetiklenmesi için ölçütlerin karşılanması gereken zaman sayısı. |
 
 
 #### <a name="throttling"></a>Azaltma

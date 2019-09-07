@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932728"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735046"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
 
@@ -32,7 +32,7 @@ Panoda giderilen üç sorun şunlardır:
 
 |Sorun|Grafik rengi|Açıklama|
 |--|--|--|
-|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek utde aynı sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının% 10 ' dan% 15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
+|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının% 10 ' dan% 15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
 |Belirsiz tahmin|Turuncu|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
 |Yanlış tahminler|Kırmızı|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
 
@@ -78,9 +78,9 @@ Uygulamanızı düzeltmeye yönelik birincil yöntem, örnek işleme ve yeniden 
 
 Örnek ekleme örnekleri şunları yapan birisi tarafından yapılmalıdır:
 
-* , farklı amaçlar halinde hangi nesnelerin olduğunu yüksek ölçüde anlayabiliyor
-* bir amaca göre, başka bir amaca göre nasıl karışabildiğini bilir
-* , birbirleriyle sık sık karıştırılan iki amaç olup olmadığını, tek bir amaca daraltımı ve varlıklarla birlikte kullanıma hazır olan farklı verileri belirlemek için karar verebilir
+* , farklı amaçlarındıklarla neler olduğunu yüksek ölçüde anlayabiliyor.
+* bir amaca göre, başka bir amaç ile nasıl karışabildiğini bilir.
+* , birbirleriyle genellikle karıştı olan iki amaç tek bir amaç halinde daraltılacağına karar verebilir. Bu durumda, farklı veriler varlıklarla birlikte kullanıma alınmalıdır.
 
 ### <a name="patterns-and-phrase-lists"></a>Desenler ve tümcecik listeleri
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208324"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743925"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -338,7 +338,7 @@ Evet. Yönetilebilirlik modunu hafif ' den Full ' a yükseltmek PowerShell veya 
 
 Hayır. SQL Server IaaS uzantısının yönetilebilirlik modunu eski sürüme düşürme desteklenmez. Yönetilebilirlik modu, tam moddan hafif veya aracı olmayan moda düşürülemez ve hafif moddan aracı olmayan moda düşürülemez. 
 
-Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için SQL Server IaaS uzantısını kaldırın. Ardından, Micorsoft. SqlVirtualMachine kaynağını bırakın ve SQL Server VM SQL VM kaynak sağlayıcısı ile yeniden kaydedin.
+Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için SQL Server IaaS uzantısını kaldırın. Ardından, Microsoft. SqlVirtualMachine kaynağını bırakın ve SQL Server VM SQL VM kaynak sağlayıcısı ile yeniden kaydedin.
 
 **Azure portal SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
 
@@ -346,7 +346,7 @@ Hayır. SQL VM kaynak sağlayıcısına kaydolma Azure portal kullanılamıyor. 
 
 **SQL Server yüklenmeden önce SQL VM kaynak sağlayıcısı ile bir VM 'yi kaydedebilir miyim?**
 
-Hayır. VM, SQL VM kaynak sağlayıcısına başarıyla kaydolmak için en az bir SQL Server örneğine sahip olmalıdır. VM üzerinde SQL Server örneği yoksa, yeni Micosoft. SqlVirtualMachine kaynağı başarısız durumda olur.
+Hayır. VM, SQL VM kaynak sağlayıcısına başarıyla kaydolmak için en az bir SQL Server örneğine sahip olmalıdır. VM üzerinde SQL Server örneği yoksa, yeni Microsoft. SqlVirtualMachine kaynağı başarısız durumda olur.
 
 **Birden çok SQL Server örneği varsa SQL VM kaynak sağlayıcısı ile bir VM 'yi kaydedebilir miyim?**
 

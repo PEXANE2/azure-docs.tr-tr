@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8f12f07d22387e5625b10e564cd05109e5bc73fc
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383133"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744391"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
@@ -339,7 +339,7 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 - `ALTER ASSEMBLY`dosyalara başvurulamıyor. Bkz. [alter assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Veritabanı Postası (db_mail)
- - `sp_send_dbmail`parametresi kullanılarak @file_attachments ataçler gönderilemiyor. Yerel dosya sistemi ve genişletilmiş paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
+ - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve genişletilmiş paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
  - `@query` Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
  
 ### <a name="dbcc"></a>DBCC

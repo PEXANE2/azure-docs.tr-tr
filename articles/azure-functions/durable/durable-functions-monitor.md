@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098012"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734345"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Dayanıklı İşlevler-Hava durumu izleyici örneğinde izleme senaryosu
 
@@ -67,7 +67,7 @@ Aşağıdaki bölümlerde, komut dosyası ve JavaScript için C# kullanılan yap
 
 İşlevi uygulayan kod aşağıda verilmiştir:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#SCRIPT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -103,7 +103,7 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrig
 
 İşte uygulama. Veri aktarımı için kullanılan POCOs gibi, API çağrısını işleme mantığı ve yanıt JSON 'u ' deki C#paylaşılan bir sınıfta soyutlanmalıdır. Bunu, [Visual Studio örnek kodunun](#run-the-sample)bir parçası olarak bulabilirsiniz.
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#SCRIPT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de `activityTrig
 
 SMS iletisini gönderen kod aşağıda verilmiştir:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#SCRIPT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

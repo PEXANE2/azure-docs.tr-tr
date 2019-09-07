@@ -1,17 +1,17 @@
 ---
 title: Apache HBase REST, Azure HDInsight 'taki isteklere yanıt vermiyor
-description: HDInsight ile ilgili sorunları çözmek için istekleri yanıt vermiyor
+description: Azure HDInsight 'taki isteklere yanıt vermeyen Apache HBase REST ile ilgili sorunu çözün.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/01/2019
-ms.openlocfilehash: 7219f66457e47bba34e750ec74810b8d2edee36e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5b1291e6996cb5db366128f829ca2cdf3cad0a9d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817114"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735310"
 ---
 # <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Senaryo: Apache HBase REST, Azure HDInsight 'taki isteklere yanıt vermiyor
 

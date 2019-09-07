@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f94d3cdbbd1683b20dbe1d370bcac43817458f44
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139376"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735999"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory-JSON betik başvurusu
 > [!NOTE]
@@ -50,7 +50,7 @@ Aşağıdaki tabloda, işlem hattı JSON tanımındaki özellikler açıklanmakt
 | name | İşlem hattının adı. Etkinliğin veya işlem hattının yapması için yapılandırıldığı eylemi temsil eden bir ad belirtin<br/><ul><li>En fazla karakter sayısı: 260</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":"\\, ""</li></ul> |Evet |
 | description |Etkinliğin veya işlem hattının ne için kullanıldığını açıklayan metin | Hayır |
 | activities | Etkinliklerin bir listesini içerir. | Evet |
-| Başlangıç |İşlem hattının başlangıç tarihi-saati. [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601)olmalıdır. Örneğin: 2014-10-14T16:32:41. <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00**-05:00`6 EST.<br/><br/>Başlangıç ve bitiş özellikleri, işlem hattının etkin dönemini belirtir. Çıkış dilimleri bu etkin dönemde yalnızca ile üretilir. |Hayır<br/><br/>End özelliği için bir değer belirtirseniz, Start özelliği için bir değer belirtmeniz gerekir.<br/><br/>Bir işlem hattı oluşturmak için başlangıç ve bitiş saatlerinin her ikisi de boş olabilir. İşlem hattının çalışması için etkin bir süre ayarlamak üzere her iki değeri de belirtmeniz gerekir. İşlem hattı oluştururken başlangıç ve bitiş zamanlarını belirtmezseniz, daha sonra set-Azdatafactorypıpelineactiveperiod cmdlet 'ini kullanarak bunları ayarlayabilirsiniz. |
+| start |İşlem hattının başlangıç tarihi-saati. [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601)olmalıdır. Örneğin: 2014-10-14T16:32:41. <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00**-05:00`6 EST.<br/><br/>Başlangıç ve bitiş özellikleri, işlem hattının etkin dönemini belirtir. Çıkış dilimleri bu etkin dönemde yalnızca ile üretilir. |Hayır<br/><br/>End özelliği için bir değer belirtirseniz, Start özelliği için bir değer belirtmeniz gerekir.<br/><br/>Bir işlem hattı oluşturmak için başlangıç ve bitiş saatlerinin her ikisi de boş olabilir. İşlem hattının çalışması için etkin bir süre ayarlamak üzere her iki değeri de belirtmeniz gerekir. İşlem hattı oluştururken başlangıç ve bitiş zamanlarını belirtmezseniz, daha sonra set-Azdatafactorypıpelineactiveperiod cmdlet 'ini kullanarak bunları ayarlayabilirsiniz. |
 | end |İşlem hattının bitiş tarihi-saati. Belirtilmişse ISO biçiminde olmalıdır. Örneğin: 2014-10-14T17:32:41 <br/><br/>Bir yerel saat belirtmek mümkündür, örneğin bir saat. İşte bir örnek: `2016-02-27T06:00:00**-05:00`6 EST.<br/><br/>İşlem hattını süresiz olarak çalıştırmak için, End özelliğinin değeri olarak 9999-09-09 değerini belirtin. |Hayır <br/><br/>Start özelliği için bir değer belirtirseniz, End özelliği için bir değer belirtmeniz gerekir.<br/><br/>**Start** özelliği için notlara bakın. |
 | isPaused |True olarak ayarlanırsa işlem hattı çalıştırılmaz. Varsayılan değer = false. Etkinleştirmek veya devre dışı bırakmak için bu özelliği kullanabilirsiniz. |Hayır |
 | pipelineMode |İşlem hattı için zamanlama çalıştırmaları yöntemi. İzin verilen değerler: zamanlanmış (varsayılan), Onetime.<br/><br/>' Zamanlanmış ', işlem hattının etkin döneme (başlangıç ve bitiş saati) göre belirli bir zaman aralığında çalıştığını gösterir. ' Onetime ', işlem hattının yalnızca bir kez çalışacağını gösterir. Her seferinde bir kez oluşturulduktan sonra bir süre işlem hattı değiştirilemez/güncelleştirilemez. Kerelik ayarı hakkında ayrıntılı bilgi için bkz. [kerelik işlem hattı](data-factory-create-pipelines.md#onetime-pipeline) . |Hayır |
@@ -288,7 +288,7 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 | type | Veri kümesinin türü. Azure Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). Data Factory tarafından desteklenen tüm veri depoları ve veri kümesi türleri için [VERI depoları](#data-stores) bölümüne bakın. |
 | structure | Veri kümesinin şeması. Sütunları, türleri, vb. içerir. | Hayır |NA |
 | typeProperties | Seçili türe karşılık gelen özellikler. Desteklenen türler ve özellikleri için [VERI depoları](#data-stores) bölümüne bakın. |Evet |NA |
-| dış | Bir veri kümesinin bir Data Factory işlem hattı tarafından açıkça oluşturulup oluşturulmayacağını belirten Boole bayrağı. |Hayır |false |
+| external | Bir veri kümesinin bir Data Factory işlem hattı tarafından açıkça oluşturulup oluşturulmayacağını belirten Boole bayrağı. |Hayır |false |
 | availability | Veri kümesi üretimi için işleme penceresini veya Dilimleme modelini tanımlar. Veri kümesi Dilimleme modeliyle ilgili ayrıntılar için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) makalesi. |Evet |NA |
 | policy |Veri kümesi dilimlerinin yerine getirilmesi gereken ölçütü veya koşulu tanımlar. <br/><br/>Ayrıntılar için bkz. veri kümesi Ilkesi bölümü. |Hayır |NA |
 
@@ -317,7 +317,7 @@ Aşağıdaki tabloda **kullanılabilirlik** bölümünde kullanabileceğiniz öz
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
 | frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: Dakika, saat, gün, hafta, ay |Evet |NA |
-| aralığı |Sıklık için bir çarpan belirtir<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler.<br/><br/>Veri kümesinin saatlik olarak dilimlendirilecekliğine ihtiyaç duyuyorsanız <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/><b>Not</b>: Sıklık değerini dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir |Evet |NA |
+| interval |Sıklık için bir çarpan belirtir<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler.<br/><br/>Veri kümesinin saatlik olarak dilimlendirilecekliğine ihtiyaç duyuyorsanız <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/><b>Not</b>: Sıklık değerini dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir |Evet |NA |
 | style |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
 | anchorDateTime |Veri kümesi dilim sınırlarını hesaplamak için Zamanlayıcı tarafından kullanılan mutlak konumu tanımlar. <br/><br/><b>Not</b>: AnchorDateTime değerinin sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. <br/><br/>Örneğin, <b>Aralık</b> <b>saat</b> ise (sıklık: Saat ve Aralık: 1) ve <b>Anchordatetime</b> değeri <b>dakika ve saniye</b> içerirse, anchordatetime değerinin <b>dakika ve saniye</b> kısımları göz ardı edilir. |Hayır |01/01/0001 |
 | offset |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/><b>Not</b>: Hem anchorDateTime hem de kaydır belirtilirse, sonuç Birleşik kaydırmadır. |Hayır |NA |
@@ -1228,7 +1228,7 @@ Verileri Azure SQL veri ambarı 'na kopyalıyorsunuz, kopyalama etkinliğinin **
 | polyBaseSettings |Bir grup olabilir özellik belirtilen **Bulunan'allowpolybase** özelliği **true**. |&nbsp; |Hayır |
 | rejectValue |Sayı veya sorgu başarısız olmadan önce reddedilemiyor satırları yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |Hayır |
 | rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |Hayır |
-| rejectSampleValue |PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler. |1, 2, … |Evet, **rejectType** ise |
+| rejectSampleValue |PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler. |1, 2, … |Evet, **rejectType** **ise** |
 | useTypeDefault |PolyBase metin dosyasından veri aldığında sınırlandırılmış metin dosyaları eksik değerleri nasıl ele alınacağını belirtir.<br/><br/>Bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi [oluşturma EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |True, false (varsayılan) |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |TimeSpan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
@@ -2226,7 +2226,7 @@ Daha fazla bilgi için bkz. [PostgreSQL Bağlayıcısı](data-factory-onprem-pos
 
 
 ### <a name="linked-service"></a>Bağlı hizmet
-SAP Business Warehouse (siyah beyaz) bağlı hizmeti tanımlamak için, bağlı hizmetin **türünü** sapta olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
+SAP Business Warehouse (siyah beyaz) bağlı hizmeti tanımlamak için, bağlı hizmetin **türünü** **sapta**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
@@ -3724,7 +3724,7 @@ Daha fazla bilgi için bkz. [FTP Bağlayıcısı](data-factory-ftp-connector.md#
 ## <a name="hdfs"></a>HDFS
 
 ### <a name="linked-service"></a>Bağlı hizmet
-Bir IBir ıbağlantılı hizmet tanımlamak için, bağlı hizmetin **türünü** I1 olarakayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
+Bir IBir ıbağlantılı hizmet tanımlamak için, bağlı hizmetin **türünü** I1 olarak **ayarlayın**ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
@@ -4826,7 +4826,7 @@ Aşağıdaki tabloda, Data Factory tarafından desteklenen işlem ortamları ve 
 | [Azure Batch](#azure-batch) |[.NET özel etkinliği](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Toplu yürütme etkinliğini Machine Learning](#machine-learning-batch-execution-activity) [Machine Learning kaynak etkinliğini Güncelleştir](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics'i](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL veritabanı](#azure-sql-database-1), [Azure SQL veri ambarı](#azure-sql-data-warehouse-1), [SQL Server](#sql-server-1) |[Saklı Yordam](#stored-procedure-activity) |
+| [Azure SQL veritabanı](#azure-sql-database), [Azure SQL veri ambarı](#azure-sql-data-warehouse), [SQL Server](#sql-server-1) |[Saklı Yordam](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>İsteğe bağlı Azure HDInsight kümesi
 Azure Data Factory hizmeti, verileri işlemek için otomatik olarak Windows/Linux tabanlı bir isteğe bağlı HDInsight kümesi oluşturabilir. Küme, kümeyle ilişkili depolama hesabı (JSON 'daki linkedServiceName özelliği) ile aynı bölgede oluşturulur. Şu dönüştürme etkinliklerini bu bağlı hizmette çalıştırabilirsiniz: [.NET özel etkinliği](#net-custom-activity), [Hive etkinliği](#hdinsight-hive-activity), [Pig etkinliği](#hdinsight-pig-activity), [MapReduce etkinliği](#hdinsight-mapreduce-activity), Hadoop akış etkinliği, [Spark etkinliği](#hdinsight-spark-activity).
@@ -4995,58 +4995,6 @@ Aşağıdaki örnek, Azure Data Lake Analytics bağlı bir hizmet için JSON tan
     }
 }
 ```
-
-## <a name="azure-sql-database"></a>Azure SQL Database
-Bir Azure SQL bağlı hizmeti oluşturur ve bir Data Factory işlem hattından saklı yordam çağırmak için [saklı yordam etkinliğiyle](#stored-procedure-activity) birlikte kullanırsınız.
-
-### <a name="linked-service"></a>Bağlı hizmet
-Azure SQL veritabanı bağlı hizmetini tanımlamak için, bağlı hizmetin **türünü** **Azuressqldatabase**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
-
-| Özellik | Açıklama | Gerekli |
-| --- | --- | --- |
-| connectionString |ConnectionString özelliği için Azure SQL veritabanı örneğine bağlanmak için gereken bilgileri belirtin. |Evet |
-
-#### <a name="json-example"></a>JSON örneği
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Bu bağlı hizmet hakkındaki ayrıntılar için bkz. [Azure SQL Bağlayıcısı](data-factory-azure-sql-connector.md#linked-service-properties) makalesi.
-
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı
-Bir Azure SQL veri ambarı bağlı hizmeti oluşturun ve bir Data Factory işlem hattından saklı yordam çağırmak için [saklı yordam etkinliğini](data-factory-stored-proc-activity.md) kullanın.
-
-### <a name="linked-service"></a>Bağlı hizmet
-Azure SQL veri ambarı bağlı hizmetini tanımlamak için, bağlı hizmetin **türünü** **Azuresqldw**olarak ayarlayın ve **typeproperties** bölümünde aşağıdaki özellikleri belirtin:
-
-| Özellik | Açıklama | Gerekli |
-| --- | --- | --- |
-| connectionString |ConnectionString özelliği için Azure SQL veri ambarı örneğine bağlanmak için gereken bilgileri belirtin. |Evet |
-
-#### <a name="json-example"></a>JSON örneği
-
-```json
-{
-    "name": "AzureSqlDWLinkedService",
-    "properties": {
-        "type": "AzureSqlDW",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Daha fazla bilgi için bkz. [Azure SQL veri ambarı Bağlayıcısı](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) makalesi.
 
 ## <a name="sql-server"></a>SQL Server
 SQL Server bağlı bir hizmet oluşturur ve bir Data Factory işlem hattından saklı yordam çağırmak için [saklı yordam etkinliğiyle](data-factory-stored-proc-activity.md) birlikte kullanırsınız.
@@ -5642,7 +5590,7 @@ Daha fazla bilgi için bkz. [saklı yordam etkinliği](data-factory-stored-proc-
 | Noktası |Idotnetactivity arabirimini uygulayan sınıfın adı. Örnekte, şu şekilde olur: **MyDotNetActivityNS. MyDotNetActivity** burada MyDotNetActivityNS ad alanıdır ve MyDotNetActivity sınıfıdır.  | Evet |
 | PackageLinkedService | Özel etkinlik ZIP dosyasını içeren BLOB depolama alanına işaret eden Azure depolama bağlı hizmetinin adı. Örnekte, şu şekilde olur: **AzureStorageLinkedService**.| Evet |
 | PackageFile | ZIP dosyasının adı. Örnekte, bu: **customactivitycontainer/MyDotNetActivity. zip**' dir. | Evet |
-| extendedProperties | Tanımlayabilir ve .NET koduna geçirebilmeniz için genişletilmiş özellikler. Bu örnekte,, festart sistem değişkenine göre bir değere ayarlanır. | Hayır |
+| extendedProperties | Tanımlayabilir ve .NET koduna geçirebilmeniz için genişletilmiş özellikler. Bu örnekte,, **festart sistem** değişkenine göre bir değere ayarlanır. | Hayır |
 
 ### <a name="json-example"></a>JSON örneği
 

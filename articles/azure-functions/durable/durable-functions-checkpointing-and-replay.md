@@ -3,18 +3,17 @@ title: Dayanıklı İşlevler kontrol noktaları ve yeniden yürütme-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısında checkişaret ve yanıtın nasıl çalıştığını öğrenin.
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241053"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735256"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler denetim noktaları ve yeniden yürütme (Azure Işlevleri)
 
@@ -128,17 +127,9 @@ Yeniden yürütme davranışı, bir Orchestrator işlevinde yazılabilen kod tü
 
   Orchestrator kodunun geçerli tarih/saati alması gerekiyorsa, yeniden yürütme için güvenli olan [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.net) veya `currentUtcDateTime` (JavaScript) API 'sini kullanması gerekir.
 
-  Orchestrator kodunun rastgele bir GUID oluşturması gerekiyorsa, bu örnekte olduğu gibi, yeniden yürütme için güvenli olan [NEWGUID](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) API 'sini kullanmalı veya bir etkinlik Işlevine (JAVASCRIPT) GUID oluşturma devretmek gerekir:
+  Orchestrator kodunun rastgele bir GUID oluşturması gerekiyorsa, yeniden yürütme için güvenli olan [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) veya `newGuid` (JavaScript) API 'sini kullanmanız gerekir.
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  Belirleyici olmayan işlemlerin etkinlik işlevlerinde gerçekleştirilmesi gerekir. Bu, diğer giriş veya çıkış bağlamalarıyla herhangi bir etkileşimi içerir. Bu, ilk yürütme sırasında belirleyici olmayan tüm değerlerin bir kez oluşturulmasını ve yürütme geçmişine kaydedilmesini sağlar. Sonraki yürütmeler daha sonra kaydedilen değeri otomatik olarak kullanacaktır.
+   Bu özel durumlar dışında, etkinlik işlevlerinde belirleyici olmayan işlemler yapılmalıdır. Bu, diğer giriş veya çıkış bağlamalarıyla herhangi bir etkileşimi içerir. Bu, ilk yürütme sırasında belirleyici olmayan tüm değerlerin bir kez oluşturulmasını ve yürütme geçmişine kaydedilmesini sağlar. Sonraki yürütmeler daha sonra kaydedilen değeri otomatik olarak kullanacaktır.
 
 * Orchestrator kodu **engellenmemiş**olmalıdır. Örneğin, bu, hiçbir g/ç ve `Thread.Sleep` (.net) veya eşdeğer API çağrısı olmayan anlamına gelir.
 

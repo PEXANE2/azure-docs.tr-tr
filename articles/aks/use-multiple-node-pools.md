@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241078"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389933"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>Birden çok düğüm havuzu Özellik sağlayıcısını Kaydet
 
-Birden çok düğüm havuzu kullanan bir AKS kümesi oluşturmak için, öncelikle aboneliğinizde iki özellik bayrağını etkinleştirin. Çok düğümlü havuz kümeleri, Kubernetes düğümlerinin dağıtımını ve yapılandırmasını yönetmek için bir sanal makine ölçek kümesi (VMSS) kullanır. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *Multiagentpoolpreview* ve *VMSSPreview* Özellik bayraklarını kaydedin:
+Birden çok düğüm havuzu kullanan bir AKS kümesi oluşturmak için, öncelikle aboneliğinizde bir özellik bayrağını etkinleştirin. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *Multiagentpoolpreview* Özellik bayrağını kaydedin:
 
 > [!CAUTION]
 > Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-fea
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
-* Çoklu düğüm havuzları yalnızca, aboneliğiniz için *Multiagentpoolpreview* ve *VMSSPreview* özelliklerini başarıyla kaydettikten sonra oluşturulan kümeler için kullanılabilir. Bu özellikler başarıyla kaydedilmeden önce, var olan bir AKS kümesiyle oluşturulmuş düğüm havuzları ekleyemez veya yönetemezsiniz.
+* Birden çok düğüm havuzu yalnızca, aboneliğiniz için *Multiagentpoolpreview* özelliğini başarıyla kaydettikten sonra oluşturulan kümeler için kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
 * İlk düğüm havuzunu silemezsiniz.
 * HTTP uygulama yönlendirme eklentisi kullanılamıyor.
 * Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez/güncelleştiremez/silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
@@ -86,7 +84,7 @@ Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
 * AKS kümesinde en fazla sekiz düğüm havuzu olabilir.
 * AKS kümesi, bu sekiz düğüm havuzunda en fazla 400 düğüme sahip olabilir.
-* Tüm düğüm havuzları aynı alt ağda yer almalıdır
+* Tüm düğüm havuzları aynı alt ağda bulunmalıdır.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 

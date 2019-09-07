@@ -1,17 +1,17 @@
 ---
 title: Sorgu hata iletisi Azure HDInsight 'ta Apache Hive görünümünde görüntülenmiyor
-description: Sorgu, hiçbir ayrıntı olmadan Hive görünümünde başarısız oluyor
+description: Sorgu Apache Hive görünümünde Azure HDInsight kümesi hakkında herhangi bir ayrıntı olmadan başarısız oluyor.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: e87bb42b09135b61dd4cf32c9ae30b0113d800dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 8f60e918c6ed2d49f2a9949b5ab096fb1e1f44bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829040"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733128"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>Senaryo: Sorgu hata iletisi Azure HDInsight 'ta Apache Hive görünümünde görüntülenmiyor
 

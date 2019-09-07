@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 19654a4902ae64e5de63ffc93a8d143cc518e254
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b37de45099362fda7288db52cf17749da6e44ea6
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697739"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390224"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Örnek: Metin Analizi ile yaklaşımı Algıla
 
@@ -80,7 +80,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 + POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [YAKLAŞıM ANALIZI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)'sine bakın.
 
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTP uç noktasını ayarlayın. `/sentiment` Kaynağı içermesi gerekir: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTP uç noktasını ayarlayın. URL 'ye dahil `/text/analytics/v2.1/sentiment` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
@@ -139,8 +139,8 @@ Aşağıdaki örnekte, bu makaledeki belge koleksiyonu yanıtı gösterilmektedi
 > [!NOTE]
 > * Yaklaşım Analizi v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) , önceki sürümle aynıdır.
 > * Şu anda v3 Yaklaşım Analizi:
->    * Şu anda yalnızca Ingilizce dilini desteklemektedir.
->    * Şu bölgelerde kullanılabilir: `Central US`, `Central Canada`ve `East Asia`.
+>    * Şu anda Ingilizce, Basitleştirilmiş Çince ve Japonca dilleri desteklemektedir.
+>    * Şu bölgelerde kullanılabilir: `Central US`, `Central Canada`ve `East Asia`. 
 
 |Özellik |Açıklama  |
 |---------|---------|

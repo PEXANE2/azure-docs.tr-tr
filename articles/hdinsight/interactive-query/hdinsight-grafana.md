@@ -1,31 +1,31 @@
 ---
 title: Azure HDInsight üzerinde Grafana kullanma
-description: Azure HDInsight, Grafana erişmeyi öğrenin.
+description: Azure HDInsight 'ta Apache Hadoop kümeleriyle Grafana panosuna erişmeyi öğrenin
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: a8d79e15a0c967c4b00f337928f00e76f6d296fd
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67458817"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733223"
 ---
-# <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight, erişim Grafana
+# <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight 'ta erişim Grafana
 
 
-[Grafana](https://grafana.com/) popüler, açık kaynaklı bir grafik ve Pano Oluşturucusu. Grafana zengin özelliğidir; yalnızca kullanıcılarının özelleştirilebilir oluşturmasına izin vermez ve paylaşılabilir panolar da şablonlu/Script panolar, LDAP tümleştirme, birden çok veri kaynağına ve daha fazlasını sunar.
+[Grafana](https://grafana.com/) , popüler, açık kaynaklı bir grafik ve Pano Oluşturucu. Grafana özelliği zengin; yalnızca kullanıcıların özelleştirilebilir ve paylaşılabilir panolar oluşturmasına izin vermez, ayrıca şablonlu/komut dosyalı panolar, LDAP tümleştirmesi, birden çok veri kaynağı ve daha fazlasını sunar.
 
-Şu anda, Azure HDInsight Hbase ve etkileşimli sorgu kümesi türleri ile Grafana desteklenir.
+Şu anda Azure HDInsight 'ta Grafana, HBase ve etkileşimli sorgu kümesi türleriyle desteklenir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="create-an-apache-hadoop-cluster"></a>Bir Apache Hadoop kümesi oluşturma
+## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop kümesi oluşturma
 
-Bu bölümde, bir Azure Resource Manager şablonu kullanarak HDInsight içinde bir etkileşimli sorgu kümesi oluşturun. Bu makaleyi izlemek için Kaynak Yöneticisi şablonuyla deneyim sahibi olmak gerekli değildir. 
+Bu bölümde, HDInsight 'ta Azure Resource Manager şablonu kullanarak etkileşimli bir sorgu kümesi oluşturacaksınız. Bu makaleyi izlemek için Kaynak Yöneticisi şablonuyla deneyim sahibi olmak gerekli değildir. 
 
 1. Aşağıdaki **Azure’da dağıt** düğmesine tıklayarak Azure’da oturum açın ve Azure portalında Kaynak Yöneticisi şablonunu açın. 
    
@@ -52,7 +52,7 @@ Bu bölümde, bir Azure Resource Manager şablonu kullanarak HDInsight içinde b
     |**Küme oturum açma adı ve parolası**     | Varsayılan oturum açma adı **admin**’dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf, bir küçük harf, bir alfasayısal olmayan karakter (' " ` karakterleri hariç\) içermelidir. "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
     |**SSH kullanıcı adı ve parolası**     | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adını yeniden adlandırabilirsiniz.  SSH kullanıcı parolasının gereksinimleri, küme oturum açma parolasıyla aynıdır.|
        
-    Şablondaki bazı özellikler sabit kodlanmış olabilir.  Bu değerleri şablondan yapılandırabilirsiniz. Bu özellikler hakkında daha fazla açıklama için bkz: [Apache Hadoop kümeleri oluşturma HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+    Şablondaki bazı özellikler sabit kodlanmış olabilir.  Bu değerleri şablondan yapılandırabilirsiniz. Bu özellikler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. **Yukarıdaki hüküm ve koşulları kabul ediyorum**’u ve **Panoya sabitle**’yi seçip **Satın al**’a tıklayın. Portal panosunda **Dağıtım gönderiliyor** başlıklı yeni bir kutucuk görürsünüz. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
@@ -62,29 +62,29 @@ Bu bölümde, bir Azure Resource Manager şablonu kullanarak HDInsight içinde b
    
     ![HDInsight Linux yeni başlayanlara yönelik kaynak grubu](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight küme kaynağı grubu")
     
-5. Kutucukta, kümeyle ilişkili varsayılan depolama da listelenir. Her kümenin bir [Azure Depolama hesabı](../hdinsight-hadoop-use-blob-storage.md) veya [Azure Data Lake hesabı](../hdinsight-hadoop-use-data-lake-store.md) bağımlılığı vardır. Bu genellikle varsayılan depolama hesabı olarak ifade edilir. HDInsight kümesi ve kümenin varsayılan depolama hesabının aynı Azure bölgesinde birlikte gerekir. Kümeleri silmek depolama hesabını silmez.
+5. Kutucukta, kümeyle ilişkili varsayılan depolama da listelenir. Her kümenin bir [Azure Depolama hesabı](../hdinsight-hadoop-use-blob-storage.md) veya [Azure Data Lake hesabı](../hdinsight-hadoop-use-data-lake-store.md) bağımlılığı vardır. Bu genellikle varsayılan depolama hesabı olarak ifade edilir. HDInsight kümesi ve varsayılan depolama hesabı aynı Azure bölgesinde birlikte bulunmalıdır. Kümeleri silmek depolama hesabını silmez.
     
 
 > [!NOTE]  
-> Diğer küme oluşturma yöntemleri ve bu makalede kullanılan özellikler hakkında bilgi edinmek bkz [oluşturma HDInsight kümeleri](../hdinsight-hadoop-provision-linux-clusters.md). 
+> Diğer küme oluşturma yöntemleri ve bu makalede kullanılan özellikleri anlamak için bkz. [HDInsight kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md). 
 
-## <a name="access-the-grafana-dashboard"></a>Grafana panosuna erişim
+## <a name="access-the-grafana-dashboard"></a>Grafana panosuna erişin
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Seçin **HDInsight kümeleri**ve ardından son bölümde oluşturduğunuz küme adını seçin.
+2. **HDInsight kümeleri**' ni seçin ve ardından son bölümde oluşturduğunuz küme adını seçin.
 
-3. Altında **hızlı bağlantılar**, tıklayın **küme Panosu**.
+3. **Hızlı bağlantılar**altında **küme panosu**' na tıklayın.
 
-    ![HDInsight küme Panosu portalı](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "portalında HDInsight küme Panosu")
+    ![HDInsight kümesi Pano portalı](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "Portalda HDInsight kümesi panosu")
 
-4. Panodan tıklayın **Grafana** Döşe. Alternatif olarak, göz atın `/grafana/` küme URL'niz yolu. Örneğin, `https://<clustername>.azurehdinsight.net/grafana/`.
+4. Panodan **Grafana** kutucuğuna tıklayın. Alternatif olarak, küme URL `/grafana/` 'nizin yolunu da inceleyin. Örneğin: `https://<clustername>.azurehdinsight.net/grafana/`.
 
-5. Hadoop kümesi kullanıcı kimlik bilgilerini girin.
+5. Hadoop kümesi Kullanıcı kimlik bilgilerini girin.
 
-6. Grafana panosunun görünür ve şu örnekteki gibi görünür:
+6. Grafana panosu görüntülenir ve şu örneğe benzer şekilde görünür:
 
-    ![HDInsight panosunun](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana Panosu")
+    ![HDInsight Grafana panosu](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana panosu")
 
    
 
@@ -105,10 +105,10 @@ Makaleyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, ve
 3. **Kaynak grubunu sil**’i seçerek, kümeyi ve varsayılan depolama hesabını içeren kaynak grubunu silin. Kaynak grubu silindiğinde depolama hesabının da silindiğini unutmayın. Depolama hesabını tutmak istiyorsanız, yalnızca küme silmeyi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Resource Manager şablonu kullanarak Linux tabanlı HDInsight kümesi oluşturma ve temel Apache Hive sorguları gerçekleştirmeyi öğrendiniz. Sonraki makalede, HDInsight üzerinde Hadoop kullanarak ayıklama, dönüştürme ve yükleme (ETL) işlemi gerçekleştirmeyi öğreneceksiniz.
+Bu makalede, bir Kaynak Yöneticisi şablonu kullanarak Linux tabanlı HDInsight kümesi oluşturmayı ve temel Apache Hive sorguları gerçekleştirmeyi öğrendiniz. Sonraki makalede, HDInsight üzerinde Hadoop kullanarak ayıklama, dönüştürme ve yükleme (ETL) işlemi gerçekleştirmeyi öğreneceksiniz.
 
 > [!div class="nextstepaction"]
->[Ayıklama, dönüştürme ve yükleme verilerini kullanarak HDInsight üzerinde etkileşimli sorgu](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+>[HDInsight üzerinde etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 Kendi verilerinizle çalışmaya başlamaya hazırsanız ve HDInsight’ın verileri nasıl depoladı veya verileri HDInsight’a alma hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makalelere bakın:
 
@@ -117,8 +117,8 @@ Kendi verilerinizle çalışmaya başlamaya hazırsanız ve HDInsight’ın veri
 
 HDInsight ile veri çözümleme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* Visual Studio'dan Hive sorguları gerçekleştirme dahil, HDInsight ile Hive kullanma hakkında daha fazla bilgi için bkz. [HDInsight ile Hive kullanma Apache](../hdinsight-use-hive.md).
-* Verileri dönüştürmek için kullanılan bir dil olan pig hakkında bilgi için bkz: [HDInsight ile Apache Pig kullanma](../hdinsight-use-pig.md).
+* Visual Studio 'dan Hive sorguları gerçekleştirme dahil, HDInsight ile Hive kullanma hakkında daha fazla bilgi edinmek için bkz. [HDInsight ile Apache Hive kullanma](../hdinsight-use-hive.md).
+* Verileri dönüştürmek için kullanılan bir dil olan Pig hakkında bilgi edinmek için bkz. [HDInsight Ile Apache Pig kullanma](../hdinsight-use-pig.md).
 * Hadoop’ta verileri işleyen programları yazmanın bir yöntemi olan MapReduce hakkında bilgi edinmek için bkz. [HDInsight ile MapReduce kullanma](../hdinsight-use-mapreduce.md).
 * HDInsight’taki verileri çözümlemek amacıyla Visual Studio için HDInsight Araçları kullanma hakkında bilgi edinmek için bkz. [HDInsight için Visual Studio Hadoop araçlarını kullanmaya başlama](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 

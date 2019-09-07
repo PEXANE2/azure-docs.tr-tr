@@ -1,5 +1,5 @@
 ---
-title: Desenler-LUSıS
+title: 'Öğretici: Desenler-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Daha az örnek konuşma sağlayıp amaç ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yok sayılabilir metni tanımlama söz dizimini içeren şablon konuşma örneğiyle sağlanır.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563310"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390350"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Öğretici: Ortak desen şablonu söylenişi biçimleri ekleme
 
@@ -437,7 +437,7 @@ Yeni şablon söylenişi şu şekilde olacaktır:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-Bu, gerekli  fiil zaman hali ve isteğe bağlı `in` ve `on` aralarında bir **veya** dikey çizgi etrafında bir grup kullanır. 
+Bu, gerekli fiil zaman hali ve isteğe bağlı `in` ve `on` aralarında bir **veya** dikey çizgi etrafında bir grup kullanır. 
 
 1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. Öğesini arayarak `manager`listeyi daraltın. 
 

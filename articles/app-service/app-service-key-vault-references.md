@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258609"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390438"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma (Önizleme)
 
@@ -38,7 +38,8 @@ Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uyg
 
 1. Daha önce oluşturduğunuz uygulama kimliği için [Key Vault bir erişim ilkesi](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) oluşturun. Bu ilkede "Get" gizli anahtarını etkinleştirin. "Yetkilendirilmiş uygulama" veya `applicationId` ayarları, yönetilen bir kimlikle uyumlu olmadığından yapılandırmayın.
 
-    Anahtar kasasındaki bir uygulama kimliğine erişim verilmesi bir kerelik işlemidir ve tüm Azure abonelikleri için aynı kalacaktır. Bunu istediğiniz sayıda sertifika dağıtmak için kullanabilirsiniz. 
+    > [!NOTE]
+    > Key Vault başvurular Şu anda [ağ kısıtlamalarına](../key-vault/key-vault-overview-vnet-service-endpoints.md)sahip bir anahtar kasasında depolanan gizli dizileri çözemeyebilir.
 
 ## <a name="reference-syntax"></a>Başvuru sözdizimi
 

@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: ad0710a3492eeecd56989e627211da5d4a5e0e0a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186246"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744750"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Öğreticide Azure Search dizin oluşturma ardışık düzeninde Bilişsel Hizmetler API'si çağrısı
 
@@ -66,9 +66,9 @@ Azure Search hizmetinize etkileşimde bulunmak için hizmet URL 'SI ve erişim a
 
 ## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
 
-Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. Kaynak veriler, [Azure Search dizin oluşturucunun](search-indexer-overview.md) desteklenen bir veri kaynağı türünden gelmelidir. Azure Tablo Depolaması bilişsel arama için desteklenmiyor. Bu alıştırmada, birden çok içerik türünü göstermek için blob depolama kullanırız.
+Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. Kaynak veriler, [Azure Search dizin oluşturucunun](search-indexer-overview.md) desteklenen bir veri kaynağı türünden gelmelidir. Bu alıştırmada, birden çok içerik türünü göstermek için blob depolama kullanırız.
 
-1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, Bloblar ' a tıklayınve ardından **+ Container**' a tıklayın.
+1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, **Bloblar**' a tıklayın ve ardından **+ Container**' a tıklayın.
 
 1. Örnek veri içeren [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz. Bu öğreticide kapsayıcı adının "temel-demo-Data-PR" olduğu varsayılır.
 
@@ -119,7 +119,7 @@ Aşağıdaki JSON dosyasını yeni JSON dosyanıza kopyalayın.
 
 Arama hizmetinizi ve BLOB depolama hesabı bilgilerinizi ekleyin.
 
-Arama hizmeti bilgilerinizi Azure portal arama hesabı sayfasından alabilirsiniz. Hesap adı ana sayfada yer alır ve anahtarlar seçilerek anahtarlar bulunabilir.
+Arama hizmeti bilgilerinizi Azure portal arama hesabı sayfasından alabilirsiniz. Hesap adı ana sayfada yer alır **ve anahtarlar seçilerek anahtarlar bulunabilir.**
 
 Blob bağlantı dizesini Azure portal, **erişim anahtarları**' nı seçerek ve ardından **bağlantı dizesi** alanını kopyalayarak depolama hesabınıza giderek alabilirsiniz.
 

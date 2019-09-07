@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872983"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744585"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile AKS kümesi performansını anlama
 Kapsayıcılar için Azure Izleyici ile, iki perspektiften Azure Kubernetes hizmeti (AKS) kümelerinin iş yükünü izlemek için performans grafiklerini ve sistem durumu ' nu kullanabilirsiniz. Doğrudan bir AKS kümesinden izleyebilirsiniz veya Azure Izleyici 'deki bir abonelikteki tüm AKS kümelerini izleyebilirsiniz. Belirli bir AKS kümesini izlerken Azure Container Instances görüntüleme de mümkündür.
@@ -118,18 +118,18 @@ Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluştu
 
 Ölçüm Gezgini ' nde, kapsayıcılar için Azure Izleyici 'den toplanmış düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
 
-|Ad Alanı | Ölçüm |
-|----------|--------|
+|Ad Alanı | Ölçüm | Açıklama | 
+|----------|--------|-------------|
 | Öngörüler. kapsayıcı/düğümler | |
-| | Cpuusagemiliçekirdekler |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | Cpuusagemiliçekirdekler | Küme genelinde CPU kullanımının toplu ölçümü. Bu, 1000 birimlerine bölünen bir CPU çekirdeğleridir (Milli = 1000). Birçok uygulamanın bir çekirdek kullandığı bir kapsayıcıda çekirdekler kullanımını belirlemede kullanılır.| 
+| | cpuUsagePercentage | Küme genelinde yüzde cinsinden ölçülen ortalama CPU kullanımı.|
+| | memoryRssBytes | Bayt cinsinden kullanılan kapsayıcı RSS belleği.| 
+| | memoryRssPercentage | Kapsayıcıda kullanılan kapsayıcı RSS belleği yüzdesi.|
+| | memoryWorkingSetBytes | Kapsayıcı çalışma kümesi belleği kullanıldı.| 
+| | memoryWorkingSetPercentage | Kapsayıcı çalışma kümesi belleği yüzde olarak kullanıldı. | 
+| | nodesCount | Kubernetes 'ten düğüm sayısı.|
 | Öngörüler. kapsayıcı/pods | |
-| | Pod sayısı |
+| | Pod sayısı | Kubernetes 'den Pod sayısı.|
 
 Bir ölçümü, boyuta göre görüntülemek ve farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için [bölebilirsiniz](../platform/metrics-charts.md#apply-splitting-to-a-chart) . Bir düğüm için grafiği *konak* boyutuna göre segmentleyebilirsiniz. Pod 'dan aşağıdaki boyutlara göre segmentleyebilirsiniz:
 
@@ -170,7 +170,7 @@ Genişletilmiş bir düğümden, bu denetleyici için filtrelenmiş performans v
 
 Bu nesneler için durum ve kaynak kullanımını gözden geçirmek için sayfanın üst kısmındaki denetleyiciler veya kapsayıcılar ' ı seçin. Bellek kullanımını gözden geçirmek için, **ölçüm** açılan LISTESINDE **bellek RSS** veya **bellek çalışma kümesi**' ni seçin. **Bellek RSS** yalnızca Kubernetes sürüm 1.8 ve üzeri desteklenir. Aksi takdirde, değerlerini görüntüleyin **Min&nbsp; %**  olarak *NaN&nbsp;%* , tanımlanmamış bir temsil eden sayısal veri türü değeri olan veya çıkarıldığında değeri.
 
-**Bellek çalışma kümesi** , dahil edilen hem yerleşik belleği hem de sanal belleği (önbellek) gösterir ve uygulamanın kullandığı toplam şeydir. **Bellek RSS** yalnızca yerleşik bellek olan ana belleği gösterir. Bu ölçüm, kullanılabilir belleğin gerçek kapasitesini gösterir.
+**Bellek çalışma kümesi** , dahil edilen hem yerleşik belleği hem de sanal belleği (önbellek) gösterir ve uygulamanın kullandığı toplam şeydir. **Bellek RSS** yalnızca ana belleği gösterir (başka bir deyişle, diğer bir deyişle, yerleşik bellek). Bu ölçüm, kullanılabilir belleğin gerçek kapasitesini gösterir.
 
 ![Kapsayıcı düğümlerini performans görünümü](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 

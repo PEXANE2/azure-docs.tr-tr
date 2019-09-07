@@ -1,5 +1,5 @@
 ---
-title: Bileşik varlık öğreticisi-LUSıS
+title: 'Öğretici: Bileşik varlık öğreticisi-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Çeşitli türlerde ayıklanan verileri içeren tek bir varlığa paket için bileşik bir varlık ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 698635b3f216c556e1e36a033703b8786a028e38
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946127"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388041"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Öğretici: İlişkili verileri gruplandırma ve ayıklama
 Bu öğreticide, bileşik bir varlık içeren tek bir varlığa çeşitli türlerde ayıklanan veri paketi ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.

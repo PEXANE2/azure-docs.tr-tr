@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527305"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735086"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Tanılama uzantısı yapılandırma şema sürümleri ve geçmişi
 Bu sayfa, Microsoft Azure SDK 'nın bir parçası olarak sevk edilen uzantı şeması sürümlerinin Azure Tanılama dizinler.  
@@ -54,13 +54,7 @@ Azure Tanılama uzantısı, Application Insights ve Log Analytics dahil olmak ü
  SDK 2,5 (Tanılama sürümü 1,2) ile başlayarak, Azure tanılama bir uzantı modeline gitti. Yeni özellikleri kullanmaya yönelik araçlar yalnızca daha yeni Azure SDK 'larında sunulmaktadır, ancak Azure tanılama kullanan herhangi bir hizmet, en son teslim sürümünü doğrudan Azure 'dan çeker. Örneğin, yine de SDK 2,5 kullanan herkes, daha yeni özellikleri kullanmalarından bağımsız olarak önceki tabloda gösterilen en son sürümü yüklüyor.  
 
 ## <a name="schemas-index"></a>Şemalar dizini  
-Farklı Azure tanılama sürümleri farklı yapılandırma şemaları kullanır.
-
-[Tanılama 1,0 yapılandırma şeması](diagnostics-extension-schema-1dot0.md)  
-
-[Tanılama 1,2 yapılandırma şeması](diagnostics-extension-schema-1dot2.md)  
-
-[Tanılama 1,3 ve üzeri yapılandırma şeması](diagnostics-extension-schema-1dot3.md)  
+Farklı Azure tanılama sürümleri farklı yapılandırma şemaları kullanır. Şema 1,0 ve 1,2 kullanım dışı bırakılmıştır. Sürüm 1,3 ve üzeri hakkında daha fazla bilgi için bkz. [tanılama 1,3 ve sonraki yapılandırma şeması](diagnostics-extension-schema-1dot3.md)  
 
 ## <a name="version-history"></a>Sürüm geçmişi
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe3000181ed02e3640e7af48fa492f4a7db55191
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098247"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734578"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Dayanıklı İşlevler desenleri ve teknik kavramlar (Azure Işlevleri)
 
@@ -37,6 +37,25 @@ Bu bölümde Dayanıklı İşlevler yararlı olabilecek bazı yaygın uygulama d
 
 Aşağıdaki örnekte gösterildiği gibi, öz işlev zincirleme modelini uygulamak için Dayanıklı İşlevler kullanabilirsiniz:
 
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+public static async Task<object> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    try
+    {
+        var x = await context.CallActivityAsync<object>("F1");
+        var y = await context.CallActivityAsync<object>("F2", x);
+        var z = await context.CallActivityAsync<object>("F3", y);
+        return  await context.CallActivityAsync<object>("F4", z);
+    }
+    catch (Exception)
+    {
+        // Error handling or compensation goes here.
+    }
+}
+```
+
 #### <a name="c-script"></a>C# betiği
 
 ```csharp
@@ -57,7 +76,7 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> İçinde C# önceden derlenmiş dayanıklı bir işlev yazmak ve örnekte gösterilen C# betikte önceden derlenmiş dayanıklı bir işlev yazmak arasında hafif farklar vardır. Önceden derlenmiş C# bir işlevde, dayanıklı parametreler ilgili özniteliklerle birlikte tasarlanmalıdır. `[OrchestrationTrigger]` Parametrenin özniteliği`DurableOrchestrationContext` bir örnektir. Önceden derlenmiş C# dayanıklı bir işlevde, parametreler düzgün biçimde tasarlanmemişse, çalışma zamanı, değişkenleri işleve ekleyemiyor ve bir hata oluşur. Daha fazla örnek için [GitHub 'daki Azure-Functions-dayanıklı-Extension örneklerine](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)bakın.
+> İçinde C# önceden derlenmiş dayanıklı bir işlev yazmak ve betikte C# önceden derlenmiş dayanıklı bir işlev yazmak arasında hafif farklar vardır. Önceden derlenmiş C# bir işlevde, dayanıklı parametreler ilgili özniteliklerle birlikte tasarlanmalıdır. `[OrchestrationTrigger]` Parametrenin özniteliği`DurableOrchestrationContext` bir örnektir. Önceden derlenmiş C# dayanıklı bir işlevde, parametreler düzgün biçimde tasarlanmemişse, çalışma zamanı, değişkenleri işleve ekleyemiyor ve bir hata oluşur. Daha fazla örnek için [GitHub 'daki Azure-Functions-dayanıklı-Extension örneklerine](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)bakın.
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (yalnızca 2. x Işlevleri)
 
@@ -88,6 +107,29 @@ Diğer bir deyişle, desenli çıkış/fan, birden çok işlevi paralel olarak y
 Normal işlevlerle, işlevi bir sıraya birden çok ileti göndermesini sağlayarak dışarı aktarabilirsiniz. Geriye doğru zor, çok daha zordur. İçinde fanı için, normal bir işlevde, kuyruk tetiklenen işlevlerin ne zaman sona erdirmek için kod yazarsınız ve sonra işlev çıkışlarını depoladığınızda. 
 
 Dayanıklı İşlevler uzantısı görece basit kodla bu düzene sahiptir:
+
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var parallelTasks = new List<Task<int>>();
+
+    // Get a list of N work items to process in parallel.
+    object[] workBatch = await context.CallActivityAsync<object[]>("F1");
+    for (int i = 0; i < workBatch.Length; i++)
+    {
+        Task<int> task = context.CallActivityAsync<int>("F2", workBatch[i]);
+        parallelTasks.Add(task);
+    }
+
+    await Task.WhenAll(parallelTasks);
+
+    // Aggregate all N outputs and send the result to F3.
+    int sum = parallelTasks.Sum(t => t.Result);
+    await context.CallActivityAsync("F3", sum);
+}
+```
 
 #### <a name="c-script"></a>C# betiği
 
@@ -177,7 +219,29 @@ Dayanıklı İşlevler uzantısı, uzun süre çalışan düzenlemeleri yöneten
 
 HTTP API deseninin nasıl kullanılacağına ilişkin bazı örnekler şunlardır:
 
-#### <a name="c"></a>C#
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
+[FunctionName("StartNewOrchestration")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger] HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient starter,
+    string functionName,
+    ILogger log)
+{
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+#### <a name="c-script"></a>C# betiği
 
 ```csharp
 // An HTTP-triggered function starts a new orchestrator function instance.
@@ -233,6 +297,35 @@ Yukarıdaki örneklerde, http ile tetiklenen bir işlev gelen URL 'den bir `func
 Birkaç kod satırı içinde, rastgele uç noktaları gözlemleyecek birden çok izleyici oluşturmak için Dayanıklı İşlevler kullanabilirsiniz. İzleyiciler bir koşula uyulduğunda veya [Durableorchestrationclient](durable-functions-instance-management.md) izleyicileri sonlandırıyorsa yürütme işlemini sonlandırabilir. Bir izleyicinin `wait` aralığını belirli bir koşula göre değiştirebilirsiniz (örneğin üstel geri alma) 
 
 Aşağıdaki kod temel bir izleyiciyi uygular:
+
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    int jobId = context.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+
+    while (context.CurrentUtcDateTime < expiryTime)
+    {
+        var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform an action when a condition is met.
+            await context.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration sleeps until this time.
+        var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await context.CreateTimer(nextCheck, CancellationToken.None);
+    }
+
+    // Perform more work here, or let the orchestration end.
+}
+```
 
 #### <a name="c-script"></a>C# betiği
 
@@ -304,6 +397,32 @@ Bu örnekte, bir Orchestrator işlevi kullanarak bir stili uygulayabilirsiniz. O
 
 Bu örnekler insan etkileşimi modelini göstermek için bir onay işlemi oluşturur:
 
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    await context.CallActivityAsync("RequestApproval");
+    using (var timeoutCts = new CancellationTokenSource())
+    {
+        DateTime dueTime = context.CurrentUtcDateTime.AddHours(72);
+        Task durableTimeout = context.CreateTimer(dueTime, timeoutCts.Token);
+
+        Task<bool> approvalEvent = context.WaitForExternalEvent<bool>("ApprovalEvent");
+        if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
+        {
+            timeoutCts.Cancel();
+            await context.CallActivityAsync("ProcessApproval", approvalEvent.Result);
+        }
+        else
+        {
+            await context.CallActivityAsync("Escalate");
+        }
+    }
+}
+```
+
 #### <a name="c-script"></a>C# betiği
 
 ```csharp
@@ -355,6 +474,20 @@ Dayanıklı süreölçer oluşturmak için (.net) `context.CreateTimer` veya `co
 
 Bir dış istemci, [YERLEŞIK HTTP API 'lerini](durable-functions-http-api.md#raise-event) kullanarak veya başka bir Işlevden [Durableorchestrationclient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API 'sini kullanarak olay bildirimini bekleyen bir Orchestrator işlevine teslim edebilir:
 
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+public static async Task Run(
+  [HttpTrigger] string instanceId,
+  [OrchestrationClient] DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
+
+#### <a name="c-script"></a>C#SCRIPT
+
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
 {
@@ -362,6 +495,8 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
 }
 ```
+
+#### <a name="javascript"></a>Javascript
 
 ```javascript
 const df = require("durable-functions");

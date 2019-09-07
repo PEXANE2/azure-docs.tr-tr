@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135033"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387383"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Python REST API kullanma 
 <a name="HOLTop"></a>
@@ -71,7 +71,7 @@ Aşağıdaki bölümlerde, API 'nin özelliklerinin her birinin nasıl çağrıl
 
 ## <a name="detect-languages"></a>Dilleri algılama
 
-Dil `languages` algılama URL 'sini oluşturmak için metin analizi temel uç noktaya ekleyin. Örneğin, `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Dil `/text/analytics/v2.1/languages` algılama URL 'sini oluşturmak için metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
@@ -140,7 +140,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-Bir belge kümesinin yaklaşımını (pozitif veya negatif) algılamak için, dil algılama URL 'sini oluşturmak üzere metin analizi temel uç `sentiment` noktasına ekleyin. Örneğin, `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+Bir belge kümesinin yaklaşımını (pozitif veya negatif) algılamak için, dil algılama URL 'sini oluşturmak üzere metin analizi temel uç `/text/analytics/v2.1/sentiment` noktasına ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
@@ -202,7 +202,7 @@ Bir belge için yaklaşım puanı, daha pozitif bir yaklaşım belirten daha yü
 
 ## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
  
-Bir belge kümesinden anahtar tümceleri ayıklamak için, dil algılama URL 'sini `keyPhrases` oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+Bir belge kümesinden anahtar tümceleri ayıklamak için, dil algılama URL 'sini `/text/analytics/v2.1/keyPhrases` oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Varlıkları tanımla
 
-Metin belgelerindeki iyi bilinen varlıkları (kişiler, konumlar ve şeyler) belirlemek için, dil algılama URL 'sini `entities` oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+Metin belgelerindeki iyi bilinen varlıkları (kişiler, konumlar ve şeyler) belirlemek için, dil algılama URL 'sini `/text/analytics/v2.1/entities` oluşturmak üzere metin analizi temel uç noktaya ekleyin. Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"

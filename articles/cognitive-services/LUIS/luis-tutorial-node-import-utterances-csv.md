@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 192c5c7a2d4c671aec0dcf72bef78abd1845b1ea
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1bee26dc57fd844703e2c9c97b38b9a433227fbf
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946070"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387949"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js kullanarak program aracılığıyla LUIS uygulaması oluşturma
 
@@ -26,11 +26,11 @@ LUIS, her şeyi yapan programlı bir API sağlar [LUIS](luis-reference-regions.m
 
 * [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-concept-keys.md#authoring-key) bulun. Yazma API'leri çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-* Bu öğretici, kullanıcı isteklerinin kuramsal bir şirketin günlük dosyaları için bir CSV ile başlar. İndirdiği [burada](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Bu makale, kuramsal bir şirketin kullanıcı isteklerinin günlük dosyaları için bir CSV ile başlar. İndirdiği [burada](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * NPM ile en son Node.js yükleyin. İndirdiği [burada](https://nodejs.org/en/download/).
 * **[Önerilen]**  Visual Studio Code için IntelliSense ve hata ayıklama, buradan indirin [burada](https://code.visualstudio.com/) ücretsiz.
 
-Bu öğreticideki tüm kod, [Azure-Samples Language Understanding GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)bulunur. 
+Bu makaledeki tüm kod, [Azure-Samples Language Understanding GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)bulunur. 
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Amaç ve varlıkları için önceden var olan veri eşlemesi
 Haritalar farklı şeyler kullanıcılara yapmak istediğiniz metin veri içeriyorsa, LUIS göz önünde bulundurun oluşturulmadıysa bir sistemde sahip olsanız bile, kullanıcı giriş LUIS içinde hedefleri için mevcut kategorilerden eşlemesi ile gündeme olabilir. Önemli bir sözcük ve tümcecikleri içinde hangi kullanıcıların kabul belirleyebiliyorsanız, bu sözcükler varlıklarına eşleyebilir.

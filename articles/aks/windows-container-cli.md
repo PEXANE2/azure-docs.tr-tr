@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ee798ba624aaf9f21886edab36185fb1b6ae67f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147215"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387329"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme-Azure CLı kullanarak bir Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -79,7 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
-* *Windowspreview*başarıyla kaydedildikten sonra oluşturulan kümeler için birden çok düğüm havuzu kullanılabilir. Aboneliğiniz için *Multiagentpoolpreview* ve *VMSSPreview* özelliklerini kaydettiğinizde birden çok düğüm havuzu da kullanılabilir. Bu özellikler başarıyla kaydedilmeden önce, var olan bir AKS kümesiyle oluşturulmuş düğüm havuzları ekleyemez veya yönetemezsiniz.
+* *Windowspreview*başarıyla kaydedildikten sonra oluşturulan kümeler için birden çok düğüm havuzu kullanılabilir. Aboneliğiniz için *Multiagentpoolpreview* özelliğini kaydetmeniz halinde birden çok düğüm havuzu da kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
 * İlk düğüm havuzunu silemezsiniz.
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
@@ -187,7 +187,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnek çıktı kümedeki tüm düğümleri gösterir. Tüm düğümlerin durumunun olduğundan emin olun:
+Aşağıdaki örnek çıktı kümedeki tüm düğümleri gösterir. Tüm düğümlerin *durumunun olduğundan emin olun:*
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION

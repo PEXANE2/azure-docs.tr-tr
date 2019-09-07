@@ -1,5 +1,5 @@
 ---
-title: CORS - Azure App Service ile RESTful API barındırma | Microsoft Docs
+title: "Öğretici: CORS ile Restuz API 'YI barındırma-Azure App Service"
 description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle barındırmanıza nasıl yardımcı olduğunu öğrenin.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138581"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743871"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service'de CORS ile RESTful API barındırma
 
@@ -58,7 +58,7 @@ Terminal penceresinde, `cd` ile bir çalışma dizinine gidin.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Bu depo şu öğreticiye temel alan oluşturulan bir uygulamayı içerir: [Swagger kullanan ASP.NET Core Web API Yardım sayfaları](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). [Swagger kullanıcı arabirimine](https://swagger.io/swagger-ui/) ve Swagger JSON uç notasına hizmet vermek için bir Swagger oluşturucusu kullanır.
+Bu depo, aşağıdaki öğreticiye göre oluşturulan bir uygulama içerir: [Swagger kullanarak Web API 'si yardım sayfalarını ASP.NET Core](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). [Swagger kullanıcı arabirimine](https://swagger.io/swagger-ui/) ve Swagger JSON uç notasına hizmet vermek için bir Swagger oluşturucusu kullanır.
 
 ### <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -90,7 +90,7 @@ Bu adımda, SQL Veritabanı’na bağlı .NET Core uygulamanızı App Service’
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -98,7 +98,7 @@ Bu adımda, SQL Veritabanı’na bağlı .NET Core uygulamanızı App Service’
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Web uygulaması oluşturun
+### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -132,7 +132,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Azure uygulamasına göz atma
+### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
 
 Tarayıcıda `http://<app_name>.azurewebsites.net/swagger` adresine gidin ve Swagger kullanıcı arabirimiyle çalışın.
 
@@ -177,7 +177,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 `properties.cors.allowedOrigins` içinde birden çok istemci URL'si belirtebilirsiniz (`"['URL1','URL2',...]"`). Ayrıca `"['*']"` ile tüm istemci URL'lerini etkinleştirebilirsiniz.
 
 > [!NOTE]
-> Uygulamanızı tanımlama veya kimlik doğrulama belirteçlerinizi gönderilecek gibi kimlik bilgileri gerektiriyorsa, tarayıcı gerektirebilir `ACCESS-CONTROL-ALLOW-CREDENTIALS` yanıtı üstbilgisi. App Service'te etkinleştirmek için ayarlamak `properties.cors.supportCredentials` için `true` , CORS yapılandırmasını. Bu olamaz etkin `allowedOrigins` içerir `'*'`.
+> Uygulamanız, gönderilecek tanımlama bilgileri veya kimlik doğrulama belirteçleri gibi kimlik bilgilerini gerektiriyorsa tarayıcı, yanıtta `ACCESS-CONTROL-ALLOW-CREDENTIALS` üst bilgi gerektirebilir. Bunu App Service etkinleştirmek için CORS yapılandırmasında olarak `properties.cors.supportCredentials` `true` ayarlayın. Bu, `allowedOrigins` içerdiğinde `'*'`etkinleştirilemez.
 
 ### <a name="test-cors-again"></a>CORS'yi yeniden test etme
 
@@ -211,4 +211,4 @@ Daha fazla esneklik elde etmek için App Service CORS'si yerine kendi CORS yard�
 Kullanıcıların kimlik doğrulamasının ve yetkilendirmesinin nasıl yapılacağını öğrenmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Kimlik doğrulama ve kullanıcıları uçtan uca yetkilendirme](app-service-web-tutorial-auth-aad.md)
+> [Öğretici: Kullanıcıları kimlik doğrulama ve yetkilendirme uçtan uca](app-service-web-tutorial-auth-aad.md)

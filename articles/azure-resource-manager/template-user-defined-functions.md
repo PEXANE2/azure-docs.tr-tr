@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 71c166b9c596c3c8628f943ae5c7dbebd9c2d51c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 227ecb57b125264e7d0eba56e634966d677e0f58
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384144"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387277"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki Kullanıcı tanımlı işlevler
 
@@ -73,7 +73,7 @@ Bir Kullanıcı işlevi tanımlarken bazı kısıtlamalar vardır:
 * İşlev değişkenlere erişemez.
 * İşlevi yalnızca işlevinde tanımlanan parametreleri kullanabilir. Kullanıcı tanımlı bir işlev içinde [Parameters](resource-group-template-functions-deployment.md#parameters) işlevini kullandığınızda, bu işlevin parametreleriyle sınırlandırılırsınız.
 * İşlev, Kullanıcı tanımlı diğer işlevleri çağıramaz.
-* İşlev, [başvuru](resource-group-template-functions-resource.md#reference) veya [liste](resource-group-template-functions-resource.md#list) işlevlerini kullanamaz.
+* İşlev, [başvuru](resource-group-template-functions-resource.md#reference) işlevini veya [liste](resource-group-template-functions-resource.md#list) işlevlerinden hiçbirini kullanamaz.
 * İşlevin parametreleri varsayılan değerlere sahip olamaz.
 
 

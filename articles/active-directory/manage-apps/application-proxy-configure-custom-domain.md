@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851717"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390785"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD uygulama proxy'sinde özel etki alanları ile çalışma
 
@@ -40,7 +40,7 @@ Mümkün olduğunda, uygulamalarınız için özel etki alanları ayarlamanızı
 
 Özel bir etki alanını yapılandırmadan önce hazırlanmış aşağıdaki gereksinimlere sahip olduğunuzdan emin olun: 
 - A [doğrulanmamış etki alanını Azure Active Directory'ye eklenen](../fundamentals/add-custom-domain.md).
-- Bir PFX dosyası biçiminde etki alanı için özel bir sertifika. 
+- Bir PFX dosyası biçiminde etki alanı için özel bir sertifika.
 - Şirket içi uygulama [uygulama proxy'si aracılığıyla yayımlandığından](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Özel etki alanınızı yapılandırın
@@ -72,6 +72,8 @@ Bu üç gereksinimleri hazır olduğunda, özel etki alanı oluşturmak için a�
 Sertifika imza yöntemler konusunda bir kısıtlama yoktur. Tüm Eliptik Eğri Şifrelemesi (ECC), konu alternatif adı (SAN) ve diğer ortak sertifika türleri desteklenir. 
 
 İstenen dış URL'yi joker karakter eşleşmesi şartıyla, bir joker sertifikası kullanabilirsiniz.
+
+Sertifika özel anahtarı içermelidir.
 
 Kendi ortak anahtar altyapınız (PKI) tarafından verilen sertifikalar, sertifika zinciri istemci cihazlarınızda yüklüyse kullanılabilir. Intune, bu sertifikaları yönetilen cihazlara dağıtmak için kullanılabilir. Yönetilmeyen cihazlar için bu sertifikaların el ile yüklenmesi gerekir.
 

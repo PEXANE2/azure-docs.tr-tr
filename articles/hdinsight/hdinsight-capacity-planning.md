@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 'ta küme kapasitesi planlama
-description: Kapasite ve performans için HDInsight kümesi belirtme.
+description: Azure HDInsight kümesinin kapasite ve performans planlamasına ilişkin önemli soruları belirler.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207161"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734659"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -31,7 +31,7 @@ Kapasite planlamasına sorulacak önemli sorular şunlardır:
 
 Azure bölgesi, kümenizin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerinize yakın olması gerekir.
 
-HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için [bölgeye göre kullanılabilen ürünlerde](https://azure.microsoft.com/regions/services/)analizler altında bulunan *HDInsight* girdisine bakın.
+HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için [bölgeye göre kullanılabilen ürünlerde analizler](https://azure.microsoft.com/regions/services/) *altında bulunan* *HDInsight* girdisine bakın.
 
 ## <a name="choose-storage-location-and-size"></a>Depolama konumu ve boyutunu seçin
 

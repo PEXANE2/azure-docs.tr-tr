@@ -1,5 +1,5 @@
 ---
-title: Öğretici-depolama/Data Lake Storage yazmak için Apache Storm kullanma-Azure HDInsight
+title: Öğretici-depolama/Data Lake Storage yazma Apache Storm-Azure HDInsight
 description: Öğretici-Azure HDInsight için, Apache Storm ile uyumlu depolamaya yazmak üzere kullanmayı öğrenin.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 17cb1091d34c8c0800d0b4dd1f9044fee0ef313f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 752bf1919634d29221a00d983b4e88fefaf628d5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946446"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736347"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Storm Apache Hadoop rsunucudan yazma
 
@@ -114,7 +114,7 @@ Varsayılan olarak, HDInsight üzerindeki fırtınası, Azure depolama ile ileti
 
 | Özellik | Value |
 |---|---|
-|Betik türü |- Özel|
+|Betik türü |-Özel|
 |Bash betiği URI'si |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Düğüm türleri |Nimbus, Gözetmen|
 |Parametreler |Yok.|
@@ -160,7 +160,7 @@ Bu betiği kümenizle birlikte kullanma hakkında bilgi için bkz. [betik eyleml
     hdfs.url: wasbs:///
     ```
 
-    Dosyayı kaydetmek için __CTRL + X__ , sonra __Y__ ve son olarak __ENTER__ tuşlarını kullanın. Bu dosyadaki değerler, depolama URL 'sini ve verilerin yazıldığı dizin adını ayarlar.
+    Dosyayı kaydetmek için __CTRL + X__, sonra __Y__ve son olarak __ENTER__tuşlarını kullanın. Bu dosyadaki değerler, depolama URL 'sini ve verilerin yazıldığı dizin adını ayarlar.
 
 1. Topolojiyi başlatmak için aşağıdaki komutu kullanın:
 
@@ -205,9 +205,9 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu sileb
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__ 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve sonra __Kaynak Grupları__'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynak grubunu bulun ve sonra listenin sağ tarafındaki __Daha fazla__ düğmesine (...) sağ tıklayın.
-3. __Kaynak grubunu sil__ 'i seçip onaylayın.
+3. __Kaynak grubunu sil__'i seçip onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

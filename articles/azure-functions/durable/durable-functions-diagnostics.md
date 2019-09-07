@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098129"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734486"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler tanılama
 
@@ -28,7 +28,7 @@ Azure Işlevleri dayanıklı uzantısı, bir Orchestration 'un uçtan uca yürü
 
 ### <a name="tracking-data"></a>İzleme verileri
 
-Bir Orchestration örneğinin her yaşam döngüsü olayı, bir izleme olayının Application Insights İziz koleksiyonuna yazılmasına neden olur. Bu olay, birkaç alan içeren bir **Customdimensions** yükü içerir.  Alan adlarının hepsi ile `prop__`sona erer.
+Bir Orchestration örneğinin her yaşam döngüsü olayı, bir izleme olayının Application Insights **İziz** koleksiyonuna yazılmasına neden olur. Bu olay, birkaç alan içeren bir **Customdimensions** yükü içerir.  Alan adlarının hepsi ile `prop__`sona erer.
 
 * **Hubname**: Düzenleyiclerinizin çalıştığı görev merkezinin adı.
 * **appname**: İşlev uygulamasının adı. Aynı Application Insights örneğini paylaşan birden çok işlevli uygulamanız olduğunda bu faydalıdır.
@@ -158,9 +158,26 @@ Sonuç, örnek kimliklerinin ve bunların geçerli çalışma zamanı durumları
 
 Doğrudan bir Orchestrator işlevinden Günlükler yazarken Orchestrator yeniden yürütme davranışının aklınızda tutulması önemlidir. Örneğin, aşağıdaki Orchestrator işlevini göz önünde bulundurun:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>DerlemesiC#
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C#SCRIPT
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -207,9 +224,26 @@ Done!
 ```
 
 > [!NOTE]
-> Günlük, F1, F2 ve F3 çağrısı yaparken, bu işlevlerin yalnızca ilk kez karşılaştığı zaman adlandırıldığını unutmayın . Yeniden yürütme sırasında gerçekleşen sonraki çağrılar atlanır ve çıktılar Orchestrator mantığına yeniden yürütülür.
+> Günlük, F1, F2 ve F3 çağrısı yaparken, bu *işlevlerin yalnızca ilk* kez karşılaştığı zaman adlandırıldığını unutmayın. Yeniden yürütme sırasında gerçekleşen sonraki çağrılar atlanır ve çıktılar Orchestrator mantığına yeniden yürütülür.
 
 Yalnızca `IsReplaying` yeniden denenmesiz yürütme oturumu açmak istiyorsanız, yalnızca ise, `false`günlüğe kaydedilecek koşullu bir ifade yazabilirsiniz. Yukarıdaki örneği, ancak bu kez yeniden yürütme denetimlerini göz önünde bulundurun.
+
+#### <a name="precompiled-c"></a>DerlemesiC#
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
 
 #### <a name="c"></a>C#
 
@@ -257,7 +291,7 @@ Done!
 
 Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum http durumu sorgu API 'si veya `DurableOrchestrationClient.GetStatusAsync` API 'si ile sağlanır. Özel düzenleme durumu Orchestrator işlevleri için daha zengin izleme imkanı sunar. Örneğin, Orchestrator işlev kodu uzun süre çalışan bir `DurableOrchestrationContext.SetCustomStatus` işlemin ilerlemesini güncelleştirme çağrılarını içerebilir. Web sayfası veya diğer dış sistem gibi bir istemci, daha zengin ilerleme bilgileri için HTTP durum sorgusu API 'Lerini düzenli aralıklarla sorgulayabilir. Aşağıdaki bir örnek `DurableOrchestrationContext.SetCustomStatus` aşağıda verilmiştir:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>DerlemesiC#
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)

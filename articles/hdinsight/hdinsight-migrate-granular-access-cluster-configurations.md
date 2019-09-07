@@ -1,5 +1,5 @@
 ---
-title: Küme yapılandırmalarına yönelik ayrıntılı rol tabanlı erişime geçiş-Azure HDInsight
+title: Ayrıntılı rol tabanlı erişime geçiş-Azure HDInsight küme yapılandırması
 description: HDInsight küme yapılandırmalarına yönelik ayrıntılı rol tabanlı erişime geçiş kapsamında gereken değişiklikler hakkında bilgi edinin.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983027"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733227"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 

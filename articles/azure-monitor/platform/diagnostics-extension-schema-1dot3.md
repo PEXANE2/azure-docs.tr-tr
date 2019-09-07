@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238065"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735111"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Tanılama 1,3 ve üzeri yapılandırma şeması
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238065"
 >
 > Bu sayfa yalnızca bu hizmetlerden birini kullanıyorsanız ilgilidir.
 
-Bu sayfa 1,3 ve üzeri sürümler için geçerlidir (Azure SDK 2,4 ve daha yeni bir sürümü). Daha yeni yapılandırma bölümlerinin eklendiği sürümde gösterilmesi için yorum yapılır.  
+Bu sayfa 1,3 ve üzeri sürümler için geçerlidir (Azure SDK 2,4 ve daha yeni bir sürümü). Daha yeni yapılandırma bölümlerinin eklendiği sürümde gösterilmesi için yorum yapılır. Şemanın sürüm 1,0 ve 1,2 ' i arşivlendi ve artık kullanılamıyor. 
 
 Burada açıklanan yapılandırma dosyası, tanılama İzleyicisi başladığında tanılama yapılandırma ayarlarını yapmak için kullanılır.  
 
 Uzantı, Application Insights ve Log Analytics dahil olmak üzere Azure Izleyici gibi diğer Microsoft tanılama ürünleriyle birlikte kullanılır.
-
-
 
 Aşağıdaki PowerShell komutunu yürüterek ortak yapılandırma dosyası şema tanımını indirin:  
 
@@ -480,7 +478,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**crashDumpType**|İsteğe bağlı.  Mini veya tam kilitlenme dökümleri toplamak için Azure Tanılama yapılandırır.|  
 |**directoryQuotaPercentage**|İsteğe bağlı.  VM 'deki kilitlenme dökümlerinin ayrılması için **Overallquocontainer MB** yüzdesini yapılandırır.|  
 
-|Alt Öğeler|Açıklama|  
+|Alt öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Gerekli. Her işlem için yapılandırma değerlerini tanımlar.<br /><br /> Aşağıdaki öznitelik de gereklidir:<br /><br /> **ProcessName** -Azure tanılama kilitlenme dökümü toplamasını istediğiniz işlemin adı.|  
 
@@ -530,7 +528,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  EventSource ve/veya ETW bildirim tabanlı sağlayıcılardan ETW olaylarının toplanmasını yapılandırır.  
 
-|Alt Öğeler|Açıklama|  
+|Alt öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|[EventSource sınıfından](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)oluşturulan olayların koleksiyonunu yapılandırır. Gerekli öznitelik:<br /><br /> **provider** -EventSource olayının sınıf adı.<br /><br /> İsteğe bağlı öznitelikler şunlardır:<br /><br /> - **Scheduledtransferloglevelfilter** -depolama hesabınıza aktarılacak en düşük önem düzeyi.<br /><br /> - **Scheduledtransferperiod** -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Gerekli öznitelik:<br /><br /> **sağlayıcı** -olay sağlayıcısının GUID 'si<br /><br /> İsteğe bağlı öznitelikler şunlardır:<br /><br /> - **Scheduledtransferloglevelfilter** -depolama hesabınıza aktarılacak en düşük önem düzeyi.<br /><br /> - **Scheduledtransferperiod** -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -564,9 +562,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Hızlı sorgular için iyileştirilmiş bir performans sayacı tablosu oluşturmanıza olanak sağlar. **PerformanceCounters** öğesinde tanımlanan her performans sayacı, performans sayacı tablosuna ek olarak ölçümler tablosunda depolanır.  
 
- **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. Ada ->  ->  **< kaynakgruplarınagözatamıyorum'ıseçin.\>** **** **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  
+ **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. Ada ->  ->  **< kaynakgruplarınagözatamıyorum'ıseçin.\>** **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  
 
-|Alt Öğeler|Açıklama|  
+|Alt öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**Metrictoplamasını**|Gerekli öznitelik:<br /><br /> **Scheduledtransferperiod** -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 

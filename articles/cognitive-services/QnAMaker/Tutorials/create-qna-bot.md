@@ -1,5 +1,5 @@
 ---
-title: Soru-cevap Robotu - Azure robot hizmeti - soru-cevap Oluşturucu
+title: 'Öğretici: Soru-cevap Robotu - Azure robot hizmeti - soru-cevap Oluşturucu'
 titleSuffix: Azure Cognitive Services
 description: Mevcut bir Bilgi Bankası için Yayımla sayfasından bir QnA chat bot oluşturun. Bu bot, bot Framework SDK v4 kullanır. Bot oluşturmak için herhangi bir kod yazmanız gerekmez, tüm kod sizin için sağlanır.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698002"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390905"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Öğretici: Azure bot hizmeti v4 ile QnA bot oluşturma
 
@@ -47,7 +47,7 @@ Bilgi Bankası için istemci uygulaması olarak bir bot oluşturun.
 
 1.  Bot 'ı oluşturmak için ayarları girin:
 
-    |Ayar|Değer|Amaç|
+    |Ayar|Value|Amaç|
     |--|--|--|
     |Robot adı|`my-tutorial-kb-bot`|Bu, bot için Azure Kaynak adıdır.|
     |Subscription|Amaca bakın.|Soru-Cevap Oluşturma kaynaklarını oluştururken kullandığınız aboneliği seçin.|
@@ -57,7 +57,7 @@ Bilgi Bankası için istemci uygulaması olarak bir bot oluşturun.
     |Uygulama adı|`my-tutorial-kb-bot-app`|Bu, yalnızca bot uygulamanızı destekleyecek bir Web uygulamasıdır. Soru-Cevap Oluşturma hizmetiniz zaten kullandığı için bu uygulama adı aynı olmamalıdır. Soru-Cevap Oluşturma Web uygulamasını başka bir kaynakla paylaşma desteklenmez.|
     |SDK dili|C#|Bu, bot Framework SDK 'Sı tarafından kullanılan temel programlama dilidir. Seçenekleriniz veya [C#](https://github.com/Microsoft/botbuilder-dotnet) [Node. js](https://github.com/Microsoft/botbuilder-js)' dir.|
     |QnA auth anahtarı|**Değiştirme**|Bu değer sizin için doldurulur.|
-    |Uygulama hizmeti planı/Konumu|**Değiştirme**|Bu öğreticide, konum önemli değildir.|
+    |Uygulama hizmeti planı/konumu|**Değiştirme**|Bu öğreticide, konum önemli değildir.|
     |Azure Storage|**Değiştirme**|Konuşma verileri Azure depolama tablolarında depolanır.|
     |Application Insights|**Değiştirme**|Günlüğe kaydetme Application Insights gönderilir.|
     |Microsoft uygulama KIMLIĞI|**Değiştirme**|Active Directory kullanıcısı ve parolası gereklidir.|

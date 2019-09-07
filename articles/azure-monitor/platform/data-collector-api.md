@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a34faeb42fce0a1ee7960f71ffce176492495f9c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813912"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744522"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C#ve Python için örnek verilmiştir.
@@ -59,7 +59,7 @@ HTTP Veri Toplayıcı API 'sini kullanmak için, JavaScript Nesne Gösterimi (JS
 | Üstbilgi | Açıklama |
 |:--- |:--- |
 | Authorization |Yetkilendirme imzası. Makalenin ilerleyen kısımlarında, HMAC-SHA256 üst bilgisi oluşturma hakkında bilgi edinebilirsiniz. |
-| Günlük türü |Gönderilen verilerin kayıt türünü belirtin. Bu parametre için boyut sınırı 100 karakterdir. |
+| Günlük türü |Gönderilen verilerin kayıt türünü belirtin. Yalnızca harf, rakam ve alt çizgi (_) içerebilir ve 100 karakterden uzun olamaz. |
 | x-MS-Tarih |İsteğin işlendiği tarih, RFC 1123 biçiminde. |
 | x-MS-Azureresourceıd | Verilerin ilişkilendirilmesi gereken Azure kaynağının kaynak KIMLIĞI. Bu, [_Resourceıd](log-standard-properties.md#_resourceid) özelliğini doldurur ve verilerin [kaynak bağlamı](design-logs-deployment.md#access-mode) sorgularına dahil edilmesini sağlar. Bu alan belirtilmemişse, veriler kaynak bağlamı sorgularına dahil edilmez. |
 | zaman oluşturulan alan | Veri öğesinin zaman damgasını içeren verilerdeki bir alanın adı. Bir alan belirtirseniz, bu durumda içeriği **TimeGenerated**için kullanılır. Bu alan belirtilmemişse, **TimeGenerated** için varsayılan değer, iletinin alınmasının zamanındır. İleti alanının içeriği, ISO 8601 biçiminde YYYY-MM-DDThh: mm: ssZ ' i izlemelidir. |
@@ -100,7 +100,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 Sonraki bölümlerdeki örneklerde, yetkilendirme üst bilgisi oluşturmanıza yardımcı olacak örnek kod bulunur.
 
 ## <a name="request-body"></a>İstek gövdesi
-İletinin gövdesi JSON içinde olmalıdır. Bu biçimde Özellik adı ve değer çiftleri içeren bir veya daha fazla kayıt içermelidir:
+İletinin gövdesi JSON içinde olmalıdır. Aşağıdaki biçimde Özellik adı ve değer çiftleri içeren bir veya daha fazla kayıt içermelidir. Özellik adı yalnızca harf, rakam ve alt çizgi (_) içerebilir.
 
 ```json
 [
@@ -206,7 +206,7 @@ Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenm
 | 503 |Hizmet Kullanılamıyor |ServiceUnavailable |Hizmet şu anda istekleri almak için kullanılamıyor. Lütfen isteğinizi yeniden deneyin. |
 
 ## <a name="query-data"></a>Verileri sorgulama
-Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine eşit olan, **_CL**ile eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, tüm kayıtları ile `MyCustomLog_CL`döndürün.
+Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**ile eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, tüm kayıtları ile `MyCustomLog_CL`döndürün.
 
 ## <a name="sample-requests"></a>Örnek istekler
 Sonraki bölümlerde, farklı programlama dilleri kullanarak Azure Izleyici HTTP Veri Toplayıcı API 'sine nasıl veri göndertireceğiz örnekleri bulacaksınız.

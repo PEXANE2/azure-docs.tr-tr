@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941814"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389961"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs’de paylaşılan resim galerisi yapılandırma
 DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md) özelliğini desteklemektedir. Laboratuvar kullanıcılarının, laboratuvar kaynakları oluştururken paylaşılan bir konumdan görüntülere erişmesine imkan tanıyor. Ayrıca, özel olarak yönetilen sanal makine görüntülerinizle birlikte yapı ve organizasyon oluşturmanıza yardımcı oluyor. Paylaşılan görüntü Galerisi özelliği şunları destekler:
@@ -32,6 +32,9 @@ DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windo
 Daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi belgeleri](../virtual-machines/windows/shared-image-galleries.md). 
  
 Muhafaza etmek istediğiniz çok sayıda yönetilen görüntünüz varsa ve bunlara şirketiniz genelinde erişilebilmesini istiyorsanız paylaşılan görüntü galerisini, görüntülerinizi güncelleştirmeyi ve paylaşmayı kolaylaştıran bir depo olarak kullanabilirsiniz. Laboratuvar sahibi olarak var olan bir paylaşılan görüntü galerisini laboratuvarınıza ekleyebilirsiniz. Bu galeri eklendiğinde laboratuvar kullanıcıları yeni görüntülerden makine oluşturabilir. Bu özelliğin temel avantajlarından biri, artık DevTest Labs’in laboratuvarlar, abonelikler ve bölgeler genelinde görüntü paylaşma olanağından yararlanabilmesidir. 
+
+> [!NOTE]
+> Paylaşılan görüntü Galerisi hizmeti ile ilişkili maliyetler hakkında bilgi edinmek için bkz. [paylaşılan görüntü Galerisi Için faturalama](../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 - Tek seferde laboratuvara yalnızca bir paylaşılan görüntü Galerisi ekleyebilirsiniz. Başka bir galeri eklemek istiyorsanız, var olan birini ayırmanız ve bir tane eklemeniz gerekir. 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855010"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743552"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -88,6 +88,8 @@ PostgreSQL 'e yönelik çevrimiçi geçişlerle ilgili bilinen sorunlar ve sın�
 - **Sınırlama**: Tablolarda birincil anahtar yoksa sürekli eşitleme başarısız olur.
 
     **Geçici çözüm**: Geçiş işleminin devam etmesi için geçici olarak tablonun birincil anahtarını ayarlayın. Veri geçişi tamamlandıktan sonra birincil anahtarı kaldırabilirsiniz.
+
+- **Sınırlama**: JSONB veri türü geçiş için desteklenmiyor.
 
 ## <a name="lob-limitations"></a>LOB sınırlamaları
 

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567461"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744415"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı Başlangıç: Veritabanını yönetilen örneğe geri yükleme
 
@@ -37,6 +37,7 @@ Bu hızlı başlangıç:
 - Yönetilen örneğinize bağlanmak için SSMS kullanılması gerekir. Nasıl bağlanadığına ilişkin şu hızlı başlangıçlara bakın:
   - [Bir Azure VM'den bir Azure SQL Veritabanı Yönetilen Örneğine bağlanma](sql-database-managed-instance-configure-vm.md)
   - [Şirket Içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırın](sql-database-managed-instance-configure-p2s.md).
+- ,`rw` İzni olan **SAS kimlik bilgisiyle** korunan **genel IP** 'de Azure Blob depolama hesabı (örneğin, Standard_LRS v2) gerektirir. Güvenlik Duvarı ve Azure Blob depolama hizmeti uç noktaları [tarafından korunan BLOB depolama Için özel IP 'ler](https://docs.microsoft.com/azure/storage/common/storage-network-security) Şu anda desteklenmiyor.
 
 > [!NOTE]
 > Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](sql-database-managed-instance-get-started-restore.md).

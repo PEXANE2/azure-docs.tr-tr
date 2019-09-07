@@ -7,19 +7,16 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726374"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390327"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Java v7 için istemci kitaplığını kullanarak Blobları karşıya yükleme, indirme ve listeleme
 
 Bu nasıl yapılır kılavuzunda, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Java v7 istemci kitaplığını kullanmayı öğreneceksiniz.
-
-> [!TIP]
-> Java için Azure Storage istemci kitaplığı 'nın en son sürümü ile v10 arasındaki ' dir. Microsoft, mümkün olduğunda istemci kitaplığı 'nın en son sürümünü kullanmanızı önerir. İle v10 arasındaki kullanmaya başlamak için bkz [. hızlı başlangıç: Java Storage SDK Ile v10 arasındaki](storage-quickstart-blobs-java-v10.md)kullanarak Blobları karşıya yükleyin, indirin ve listeleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

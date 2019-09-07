@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Kaynak Yöneticisi kullanarak Apache Hadoop kümeleri oluşturma-Azure HDInsight'
+title: 'Hızlı Başlangıç: Apache Hadoop kümeleri oluşturma Kaynak Yöneticisi-Azure HDInsight'
 description: Bu hızlı başlangıçta, Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturacaksınız
 keywords: hadoop kullanmaya başlama,hadoop linux,hadoop hızlı başlangıç,hive kullanmaya başlama,hive hızlı başlangıç
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 420a5bb4cec6101f3db36212a9b8fd6690e0e077
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: b65e642e19a9dd34c0f64f2d311fda0c70d4af72
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207265"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736160"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Hızlı Başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma
 

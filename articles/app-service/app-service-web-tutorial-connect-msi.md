@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8a0b974e9b64d477e53c37757b4f2fa952befba2
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061870"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743392"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service Azure SQL veritabanı bağlantısını güvenli hale getirme
 
@@ -54,7 +54,7 @@ ms.locfileid: "70061870"
 
 Bu makale, [öğreticide kaldığınız yerden devam eder: SQL veritabanı](app-service-web-tutorial-dotnet-sqldatabase.md) veya [öğreticiyle Azure 'da bir ASP.NET uygulaması oluşturun: Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)' de BIR ASP.NET Core ve SQL veritabanı uygulaması oluşturun. Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, kendi .NET uygulamanıza yönelik adımları SQL veritabanı ile uyarlayabilirsiniz.
 
-Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak için, bilgisayarınızdan istemci bağlantısına izin verildiğinden emin olun. Aksi takdirde, [Azure Portal kullanarak sunucu DÜZEYI IP güvenlik duvarı kurallarını yönetme](../sql-database/sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)konumundaki adımları IZLEYEREK istemci IP 'sini ekleyin.
+Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak için, bilgisayarınızdan istemci bağlantısına izin verildiğinden emin olun. Aksi takdirde, [Azure Portal kullanarak sunucu DÜZEYI IP güvenlik duvarı kurallarını yönetme](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)konumundaki adımları IZLEYEREK istemci IP 'sini ekleyin.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

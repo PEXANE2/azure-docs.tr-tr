@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967760"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744495"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -56,7 +56,7 @@ Uygulamalar, temel aldığı altyapı olarak yalnızca güvenilir. Tüm altyapı
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Azure kaynak gruplarındaki kaynakları birleştirme
 Günümüzde Azure 'daki tipik bir uygulama, VM 'Ler ve uygulama hizmetleri veya Cloud Services, AKS kümelerinde veya Service Fabric barındırılan mikro hizmetler gibi birden çok kaynak içerir. Bu uygulamalar genellikle Event Hubs, depolama, SQL ve Service Bus gibi bağımlılıklardan yararlanır.
 
-- Farklı uygulamalarınızı oluşturan tüm kaynaklarınız genelinde tam görünürlük sağlamak için kaynakları Azure Kaynak grupları ' nı birleştirin. [Kaynak grupları Için Azure izleyici](../azure-monitor/insights/resource-group-insights.md) , tüm tam yığın uygulamanızın sistem durumunu ve performansını izlemek için basit bir yol sağlar ve herhangi bir araştırmalar veya hata ayıklama için ilgili bileşenlere detaya gitmeyi sağlar.
+- Farklı uygulamalarınızı oluşturan tüm kaynaklarınız genelinde tam görünürlük sağlamak için Azure kaynak gruplarındaki kaynakları birleştirin. [Kaynak grupları Için Azure izleyici](../azure-monitor/insights/resource-group-insights.md) , tüm tam yığın uygulamanızın sistem durumunu ve performansını izlemek için basit bir yol sağlar ve herhangi bir araştırmalar veya hata ayıklama için ilgili bileşenlere detaya gitmeyi sağlar.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Sürekli dağıtım ile kalite sağlayın
 Sürekli tümleştirme/sürekli dağıtım, otomatik test sonuçlarına göre kod değişikliklerini uygulamanıza otomatik olarak tümleştirmenize ve dağıtmanıza olanak tanır. Dağıtım sürecini kolaylaştırır ve üretime geçmeden önce herhangi bir değişiklik kalitesini sağlar.
@@ -72,7 +72,7 @@ Sürekli tümleştirme/sürekli dağıtım, otomatik test sonuçlarına göre ko
 
 - Öngörülebilir hata durumlarını belirlemek için günlüklere ve ölçümlere göre [Azure izleyici 'de uyarılar](../azure-monitor/platform/alerts-overview.md) oluşturun. Tüm uyarıları, gerçek kritik koşulları temsil ettikleri ve hatalı pozitif sonuçları azaltmak için arama yapılabilecek anlamına gelen bir amaca sahip olmanız gerekir. Kendi statik eşiklerinizi tanımlamak yerine ölçüm verilerinde temelleri otomatik olarak hesaplamak için [dinamik eşikleri](platform/alerts-dynamic-thresholds.md) kullanın. 
 - Yöneticilerinize bildirimde bulunmak için en etkili yöntemi kullanmak üzere uyarılara yönelik eylemleri tanımlayın. [Bildirim için kullanılabilir eylemler](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) SMS, e-posta, anında iletme bildirimleri veya sesli çağrılardır.
-- [Web kancaları](platform/activity-log-alerts-webhook.md)aracılığıyla ITSM aracınız veya diğer uyarı yönetim sistemlerine [bağlanmak](platform/itsmc-overview.md) için daha gelişmiş eylemler kullanın.
+- [Web kancaları](platform/activity-log-alerts-webhook.md)aracılığıyla [ITSM aracınız](platform/itsmc-overview.md) veya diğer uyarı yönetim sistemlerine bağlanmak için daha gelişmiş eylemler kullanın.
 - [Azure Otomasyonu runbook 'ları](../automation/automation-webhooks.md) veya Web kancaları kullanılarak bir uyarıdan başlatılabilen [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , uyarılarda tanımlanan durumları düzeltin. 
 - Toplanan ölçümlere göre işlem kaynaklarınızı dinamik olarak artırmak ve azaltmak için [Otomatik ölçeklendirmeyi](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) kullanın.
 

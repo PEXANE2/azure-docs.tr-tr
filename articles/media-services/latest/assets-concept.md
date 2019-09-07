@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 3dc1866a3c0339bca0c27fb53894a14581e88490
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230984"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390490"
 ---
 # <a name="assets"></a>Varlıklar
 
@@ -25,7 +25,7 @@ Azure Media Services bir [varlık](https://docs.microsoft.com/rest/api/media/ass
 
 Bir varlık, [Azure depolama hesabındaki](storage-account-concept.md) bir blob kapsayıcısına eşlenir ve varlık içindeki dosyalar bu kapsayıcıda blok Bloblar olarak depolanır. Media Services, hesap genel amaçlı v2 (GPv2) depolaması kullandığında blob katmanlarını destekler. GPv2 ile dosyaları seyrek erişimli [veya arşiv depolamaya](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)taşıyabilirsiniz. **Arşiv** depolama, artık gerekli olmadığında (örneğin, kodlandıktan sonra) kaynak dosyalarını arşivlemek için uygundur.
 
-**Arşiv** depolama katmanı yalnızca önceden kodlanmış çok büyük kaynak dosyaları için önerilir ve kodlama iş çıktısı bir çıkış blobu kapsayıcısına konur. Bir varlıkla ilişkilendirmek istediğiniz çıkış kapsayıcısındaki Bloblar ve içeriğinizi akışa almak veya analiz etmek için kullanmak, **sık** erişimli veya seyrek erişimli bir depolama katmanında bulunmalıdır.
+**Arşiv** depolama katmanı yalnızca önceden kodlanmış çok büyük kaynak dosyaları için önerilir ve kodlama iş çıktısı bir çıkış blobu kapsayıcısına konur. Bir varlıkla ilişkilendirmek istediğiniz çıkış kapsayıcısındaki Bloblar ve içeriğinizi akışa almak veya analiz etmek için kullanmak, **sık** **erişimli veya seyrek** erişimli bir depolama katmanında bulunmalıdır.
 
 ### <a name="naming-blobs"></a>Blob 'ları adlandırma
 
@@ -48,7 +48,7 @@ Dijital dosyalar depolama alanına yüklendikten ve bir varlıkla ilişkilendiri
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
 2. Dijital dosyaları Varlık kapsayıcısına yüklemek için kullanmak üzere okuma-yazma izinlerine sahip bir SAS URL'si alın. Media Services API'sini kullanarak [varlık kapsayıcısı URL'lerini listeleyebilirsiniz](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Azure Depolama API'lerini veya SDK'larını ([Depolama REST API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) gibi) kullanarak dosyaları Varlık kapsayıcısına yükleyin. 
+3. Dosyaları varlık kapsayıcısına yüklemek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanın. 
 4. Media Services v3 API'lerini kullanarak "input" Varlığınızı işlemek üzere bir Dönüşüm ve bir İş oluşturun. Daha fazla bilgi için [Dönüşümler ve İşler](transform-concept.md) konusuna bakın.
 5. "Çıkış" kıymetinin içeriğini akışla.
 

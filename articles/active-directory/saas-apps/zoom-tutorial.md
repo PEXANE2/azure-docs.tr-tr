@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171384"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Öğretici: Yakınlaştırma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -44,7 +44,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Yakınlaştırma, **SP** tarafından başlatılan SSO 'yu destekler
+* Yakınlaştırma, **SP** tarafından başlatılan SSO 'yu destekler ve 
+* Yakınlaştırma [ **Otomatik** Kullanıcı sağlamayı](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)destekler.
 
 ## <a name="adding-zoom-from-the-gallery"></a>Galeriden yakınlaştırma ekleme
 
@@ -87,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<companyname>.zoom.us`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/en-us) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -101,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 > Azure AD 'de rol yapılandırma hakkında bilgi edinmek için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 > [!NOTE]
-> Yakınlaştırma, SAML yükünde bir grup talebi bekleyebilir. Herhangi bir grup oluşturduysanız, grup bilgilerini kendi sonunda yapılandırmak için Grup bilgileriyle [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/en-us) başvurun. Ayrıca, [istemci desteği ekibini yakınlaştırmak](https://support.zoom.us/hc/en-us) IÇIN nesne kimliğini sağlamanız gerekir, BÖYLELIKLE nesne kimliğini kendi sonunda yapılandırabilirler. Nesne KIMLIĞINI almak için bkz. [Azure Ile yakınlaştırmayı yapılandırma](https://support.zoom.us/hc/en-us/articles/115005887566).
+> Yakınlaştırma, SAML yükünde bir grup talebi bekleyebilir. Herhangi bir grup oluşturduysanız, grup bilgilerini kendi sonunda yapılandırmak için Grup bilgileriyle [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/) başvurun. Ayrıca, [istemci desteği ekibini yakınlaştırmak](https://support.zoom.us/hc/) IÇIN nesne kimliğini sağlamanız gerekir, BÖYLELIKLE nesne kimliğini kendi sonunda yapılandırabilirler. Nesne KIMLIĞINI almak için bkz. [Azure Ile yakınlaştırmayı yapılandırma](https://support.zoom.us/hc/articles/115005887566).
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
@@ -172,30 +173,10 @@ Bu bölümde, yakınlaştırma erişimi vererek Azure çoklu oturum açma özell
 
 ### <a name="create-zoom-test-user"></a>Yakınlaştırma testi kullanıcısı oluştur
 
-Azure AD kullanıcılarının yakınlaştırmak için oturum açmasını etkinleştirmek üzere, yakınlaştırmaları gerekir. Yakınlaştırma durumunda sağlama, el ile gerçekleştirilen bir görevdir.
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
-
-1. **Yakınlaştırma** şirket sitenizde yönetici olarak oturum açın.
-
-2. **Hesap yönetimi** sekmesine tıklayın ve ardından **Kullanıcı yönetimi**' ne tıklayın.
-
-3. Kullanıcı Yönetimi bölümünde, Kullanıcı **Ekle**' ye tıklayın.
-
-    ![Kullanıcı yönetimi](./media/zoom-tutorial/ic784703.png "Kullanıcı yönetimi")
-
-4. **Kullanıcı Ekle** sayfasında, aşağıdaki adımları uygulayın:
-
-    ![Kullanıcı Ekle](./media/zoom-tutorial/ic784704.png "Kullanıcı Ekle")
-
-    a. **Kullanıcı türü**olarak **temel**' yı seçin.
-
-    b. **E-postalar** metin kutusuna, sağlamak istediğiniz geçerli BIR Azure AD hesabının e-posta adresini yazın.
-
-    c. **Ekle**'yi tıklatın.
+Bu bölümün amacı, yakınlaştırma aşamasında B. Simon adlı bir Kullanıcı oluşturmaktır. Yakınlaştırma, varsayılan olarak etkinleştirilen Otomatik Kullanıcı sağlamayı destekler. Otomatik Kullanıcı sağlamayı yapılandırma hakkında daha [fazla ayrıntı bulabilirsiniz](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) .
 
 > [!NOTE]
-> Azure Active Directory Kullanıcı hesapları sağlamak için yakınlaştırma tarafından sunulan diğer tüm Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Yakınlaştırma istemci desteği ekibine](https://support.zoom.us/hc/) başvurmanız gerekir
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

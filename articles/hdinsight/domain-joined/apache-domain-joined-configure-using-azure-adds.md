@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services kullanarak yapılandırma Kurumsal Güvenlik Paketi-Azure HDInsight
+title: HDInsight 'ta Azure Active Directory ile Kurumsal Güvenlik Paketi
 description: Azure Active Directory Domain Services kullanarak HDInsight Kurumsal Güvenlik Paketi kümesi ayarlamayı ve yapılandırmayı öğrenin.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 76f95e74c8150ac797d20c3166c0e8d6ea085bf9
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125583"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734944"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services'i kullanarak bir HDInsight kümesi ile Kurumsal Güvenlik Paketi yapılandırma
 

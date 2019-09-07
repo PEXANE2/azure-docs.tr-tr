@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946061"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390281"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Varlık algılama artırmak için bir liste varlığı kullanın 
-Bu öğretici, kullanımını gösterir. bir [varlık listesinde](luis-concept-entity-types.md) varlık algılama artırmak için. Liste varlıkları, koşulları'nın tam bir eşleşme olarak Etiketlenecek gerekmez.  
+Bu makalede, varlık algılamayı artırmak için bir [liste varlığının](luis-concept-entity-types.md) kullanımı gösterilmektedir. Liste varlıkları, koşulları'nın tam bir eşleşme olarak Etiketlenecek gerekmez.  
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir liste varlığı oluşturma 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!Tip]
 > Zaten bir aboneliğiniz yoksa, kaydolabilirsiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
 
-Bu öğreticideki tüm kod, [Azure-Samples GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)bulunur. 
+Bu makaledeki tüm kod, [Azure-Samples GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)bulunur. 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation uygulamasını kullanma
 Işıklar, eğlence sistemleri ve ortam gibi denetimin Isıtma ve soğutma gibi denetimleri HomeAutomation uygulama sağlar. Bu sistemler üretici adları, takma adlar, takma adlar ve argo kullanımlar ekleyebileceğiniz birçok farklı adlara sahip. 
@@ -59,7 +59,7 @@ HomeAutomation.Device varlık küçük birkaç cihaz ya da bazı farklılıklar 
 
 A **varlık listesinde** kümesi için bir cihaz bir yapı veya kampüs bilinen birtakım büyük bir küme olsa bile, bu senaryo için iyi bir seçim olduğundan. Bir liste varlığı kullanarak LUIS herhangi bir olası değer sıcaklığının için kümedeki alabilir ve yalnızca tek cihaz aşağı "thermostat" çözün. 
 
-Bu öğreticide bir varlık listesi termostatın oluşturma zordur. Bu öğreticide bir thermostat için alternatif adlar şunlardır: 
+Bu makale, termostat ile bir varlık listesi oluşturacağız. Bu makaledeki bir termostat için alternatif adlar şunlardır: 
 
 |thermostat için diğer adlar|
 |--|

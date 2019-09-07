@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/28/2019
-ms.openlocfilehash: 29776c1a49161daf9cf972c43c1378e52f5c3069
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/06/2019
+ms.openlocfilehash: 5888555e93c28c96445bed1936deda022b0a4b94
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141510"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734595"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Öğretici: DMS kullanarak PostgreSQL’i çevrimiçi ortamda PostgreSQL için Azure Veritabanına geçirme
 
@@ -44,9 +44,6 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * [PostgreSQL Community edition](https://www.postgresql.org/download/) 9,5, 9,6 veya 10 ' u indirin ve yükleyin. Kaynak PostgreSQL sunucusu sürümü 9.5.11, 9.6.7, 10 veya üzeri olmalıdır. Daha fazla bilgi için bkz. [PostgreSQL veritabanı sürümlerini destekleyen](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)makale.
 
     Ayrıca, şirket içi PostgreSQL sürümünün, PostgreSQL için Azure Veritabanı sürümü ile eşleşmesi gerekir. Örneğin, PostgreSQL 9.5.11.5 yalnızca PostgreSQL için Azure Veritabanı 9.5.11 sürümüne geçirilebilir ve 9.6.7 sürümüne geçirilemez.
-
-    > [!NOTE]
-    > PostgreSQL sürüm 10 ' da şu anda DMS yalnızca, sürüm 10,3 ' in PostgreSQL için Azure veritabanı 'na geçirilmesini destekler.
 
 * [PostgreSQL için Azure Veritabanı’nda örnek oluşturma](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
 * [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya VPN kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti Için bir Azure sanal ağı (VNet) oluşturun [ ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). VNet oluşturma hakkında daha fazla bilgi için, [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle de adım adım ayrıntılara sahip olan hızlı başlangıç makalelerine bakın.
@@ -79,7 +76,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 * postgresql.config dosyasında mantıksal çoğaltmayı etkinleştirin ve aşağıdaki parametreleri ayarlayın:
 
   * wal_level = **logical**
-  * max_replication_slots = [yuva sayısı], önerilen ayar **5 yuva**
+  * max_replication_slots = [yuva sayısı], **beş yuva** ayarı önerilir
   * max_wal_senders =[eşzamanlı görev sayısı] - max_wal_senders parametresi, çalışabilecek eşzamanlı görevlerin sayısını ayarlar; önerilen ayar **10 görevdir**
 
 ## <a name="migrate-the-sample-schema"></a>Örnek şemayı geçirme

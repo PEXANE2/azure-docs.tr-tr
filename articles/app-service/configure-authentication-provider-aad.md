@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 8b4b6549f9553773cc44c311f49befbb3eec9dc9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233103"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743251"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırma
 
@@ -81,6 +81,9 @@ El ile uygulama kaydı oluştururken, App Service uygulamanızı yapılandırır
     |Verenin KIMLIĞI| Kullanın `https://login.microsoftonline.com/<tenant-id>`ve  *\<Kiracı kimliği >* , uygulama kaydının **Dizin (kiracı) kimliğiyle** değiştirin. |
     |İstemci parolası (Isteğe bağlı)| Uygulama kaydında oluşturduğunuz istemci gizli anahtarını kullanın.|
     |İzin Verilen Belirteç Hedef Kitleleri| Bu bir *arka uç* uygulaması ise ve ön uç uygulamadan kimlik doğrulama belirteçlerine izin vermek istiyorsanız, *ön ucun* **uygulama kimliği URI** 'sini buraya ekleyin. |
+
+    > [!NOTE]
+    > **İzin verilen belirteç kitlelerini**nasıl yapılandırdığınıza bakmaksızın, YAPıLANDıRıLAN **istemci kimliği** *her zaman* , izin verilen bir hedef kitle olarak kabul edilir.
 1. **Tamam**' ı ve ardından **Kaydet**' i seçin.
 
 Artık App Service uygulamanızda kimlik doğrulaması için Azure Active Directory kullanmaya hazırsınız.
