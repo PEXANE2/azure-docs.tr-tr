@@ -4,6 +4,8 @@
   items:
     - name: Resource Manager nedir?
       href: resource-group-overview.md
+    - name: Şablona genel bakış
+      href: template-deployment-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -58,8 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Kavramlar
   items:
-    - name: Şablon güncelleştirmeleri
-      href: template-deployment-overview.md
     - name: Şablon en iyi uygulamalar
       href: template-best-practices.md
     - name: Bulut tutarlılığına yönelik şablonlar
