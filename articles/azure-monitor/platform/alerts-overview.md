@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735120"
+ms.locfileid: "70773001"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -53,7 +53,11 @@ Bir uyarı kuralının anahtar öznitelikleri şunlardır:
 **Uyarı açıklaması** – Kullanıcı tarafından yapılandırılan uyarı kuralı için bir açıklama
 
 **Önem derecesi** : uyarı kuralında belirtilen kriterler karşılandığında uyarının önem derecesi. Önem derecesi 0 ile 4 arasında olabilir.
-Sev 0 = kritik sev 1 = hata sev 2 = uyarı sev 3 = bilgilendirici sev 4 = ayrıntılı
+   - Sev 0 = kritik
+   - Sev 1 = hata
+   - Sev 2 = uyarı
+   - Sev 3 = bilgilendirici
+   - Sev 4 = ayrıntılı 
 
 **Eylem** -uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](../../azure-monitor/platform/action-groups.md).
 
@@ -118,10 +122,10 @@ Başka bir sayfa açmak için uyarılar sayfasının en üstünde bulunan aşağ
 |:---|:---|
 | Toplam uyarı sayısı | Seçilen ölçütlerle eşleşen toplam uyarı sayısı. Filtre olmadan tüm uyarılar görünümünü açmak için bu değeri seçin. |
 | Akıllı gruplar | Seçili ölçütlerle eşleşen uyarılardan oluşturulan akıllı grupların toplam sayısı. Tüm uyarılar görünümündeki akıllı gruplar listesini açmak için bu değeri seçin.
-| Toplam uyarı kuralları | Seçili abonelik ve kaynak grubundaki uyarı kurallarının toplam sayısı. Seçilen abonelikte ve kaynak grubunda filtrelenmiş kurallar görünümünü açmak için bu değeri seçin.
+| Toplam uyarı kuralı sayısı | Seçili abonelik ve kaynak grubundaki uyarı kurallarının toplam sayısı. Seçilen abonelikte ve kaynak grubunda filtrelenmiş kurallar görünümünü açmak için bu değeri seçin.
 
 
-## <a name="manage-alert-rules"></a>Uyarı kurallarını yönet
+## <a name="manage-alert-rules"></a>Uyarı kurallarını yönetin
 **Kurallar** sayfasını göstermek için **Uyarı kurallarını yönet** ' e tıklayın. **Kurallar** , Azure aboneliklerinizde tüm uyarı kurallarını yönetmek için tek bir yerdir. Tüm uyarı kurallarını listeler ve hedef kaynaklara, kaynak gruplarına, kural adına veya duruma göre sıralanabilir. Uyarı kuralları da bu sayfada düzenlenebilir, etkinleştirilebilir veya devre dışı bırakılabilir.  
 
  ![Uyarılar-kurallar](./media/alerts-overview/alerts-preview-rules.png)
@@ -158,7 +162,7 @@ Sayfanın en üstündeki açılan menülerde bulunan aşağıdaki değerleri se�
 | severity | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için *Tümü* ' nü seçin. |
 | İzleme koşulu | Bir izleyici koşulu seçin veya koşulların uyarılarını dahil etmek için *Tümü* ' nü seçin. |
 | Uyarı durumu | Bir uyarı durumu seçin veya durumların uyarılarını dahil etmek için *Tümü* ' nü seçin. |
-| Hizmeti izle | Bir hizmet seçin veya tüm hizmetleri dahil etmek için *Tümü* ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
+| İzleme hizmet | Bir hizmet seçin veya tüm hizmetleri dahil etmek için *Tümü* ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
 | Zaman aralığı | Yalnızca seçilen zaman penceresi içinde tetiklenen uyarılar görüntülenir. Desteklenen değerler son saat, son 24 saat, son 7 gün ve son 30 gündür. |
 
 Görüntülenecek sütunları seçmek için sayfanın üst kısmındaki **sütunları** seçin. 

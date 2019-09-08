@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c56d469360814cb663b4c5c11689961225eebb2d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544675"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772337"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Özel bulutlar için güvenlik duvarı tabloları ve kuralları ayarlama
 
@@ -24,7 +24,7 @@ Güvenlik Duvarı tabloları ve ilişkili kurallar, belirli alt ağlara ve VLAN 
 
 ## <a name="add-a-new-firewall-table"></a>Yeni bir güvenlik duvarı tablosu ekleme
 
-1. [CloudSimple portalına erişin](monitor-activity.md) ve yan menüdeki **ağ** ' ı seçin.
+1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve yan menüdeki **ağ** ' ı seçin.
 2. **Güvenlik duvarı tabloları**' nı seçin.
 3. **Güvenlik duvarı tablosu oluştur**' u seçin.
 

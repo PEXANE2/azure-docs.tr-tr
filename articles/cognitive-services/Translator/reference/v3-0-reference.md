@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595010"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772796"
 ---
 # <a name="translator-text-api-v30"></a>Translator Metin Çevirisi API'si v 3.0
 
@@ -99,7 +99,7 @@ Birden çok hizmet gizli anahtarı kullandığınızda, isteğinize iki kimlik d
 
 Çoklu hizmet metin API 'SI aboneliği için bölge gereklidir. Seçtiğiniz bölge, çok sunuculu abonelik anahtarını kullanırken metin çevirisi için kullanabileceğiniz tek bölgedir ve Azure portal aracılığıyla çok hizmet aboneliğiniz için kaydolduğunuzda seçtiğiniz bölge olmalıdır.
 
-Kullanılabilir `australiaeast`bölgeler ,`eastasia` ,,`southeastasia`,,,,, ,`northeurope`, ,,,,,`southcentralus`, `japaneast` `brazilsouth` `canadacentral` `centralindia` `centraluseuap` `eastus` `eastus2` ,`uksouth`,,ve .`westus2` `westcentralus` `westeurope` `westus`
+Kullanılabilir `australiaeast`bölgeler ,`centraluseuap` ,,`japanwest`,,,,, ,`francecentral`, ,,,,,`japaneast`, `eastus2` `brazilsouth` `canadacentral` `centralindia` `centralus` `eastasia` `eastus` `koreacentral`, ,`northcentralus` ,,`southeastasia`, ,`westcentralus`,,,, ve`southafricanorth`. `southcentralus` `uksouth` `westeurope` `westus` `westus2` `northeurope`
 
 Sorgu dizesindeki gizli anahtarı parametresiyle `Subscription-Key`geçirirseniz, bu bölgeyi sorgu parametresiyle `Subscription-Region`birlikte belirtmeniz gerekir.
 

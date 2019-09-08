@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: HT
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744486"
+ms.locfileid: "70772997"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Yönetim çözümüne Log Analytics kaydedilmiş aramalar ve uyarılar ekleme (Önizleme)
 
@@ -171,11 +171,10 @@ Uyarı eylemi kaynaklarının özellikleri aşağıdaki tablolarda açıklanmı�
 
 | Öğe adı | Gerekli | Açıklama |
 |:--|:--|:--|
-| `Type` | Evet | Eylem türü.  Bu uyarı eylemleri için **uyarıdır** . |
-| `Name` | Evet | Uyarı görünen adı.  Bu, uyarı kuralı için konsolunda görüntülenen addır. |
-| `Description` | Hayır | Uyarının isteğe bağlı açıklaması. |
-| `Severity` | Evet | Uyarı kaydının aşağıdaki değerlerden önem derecesi:<br><br> **başlatma**<br>**Warning**<br>**amaçlı**
-
+| `type` | Evet | Eylem türü.  Bu uyarı eylemleri için **uyarıdır** . |
+| `name` | Evet | Uyarı görünen adı.  Bu, uyarı kuralı için konsolunda görüntülenen addır. |
+| `description` | Hayır | Uyarının isteğe bağlı açıklaması. |
+| `severity` | Evet | Uyarı kaydının aşağıdaki değerlerden önem derecesi:<br><br> **başlatma**<br>**Warning**<br>**amaçlı**
 
 #### <a name="threshold"></a>Eşik
 Bu bölüm gereklidir. Uyarı eşiğinin özelliklerini tanımlar.

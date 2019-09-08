@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566694"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773200"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 
@@ -37,7 +37,7 @@ Hizmet katmanı seçme, öncelikli olarak iş sürekliliği, depolama ve perform
 |Çalışma Süresi SLA'sı|%99,99|%99,99|%99,99|
 |Yedekleri bekletme|7 gün|35 gün|35 gün|
 |CPU|Düşük|Düşük, Orta, yüksek|Orta, yüksek|
-|GÇ verimliliği (yaklaşık) |2.5 DTU başına IOPS| 2.5 DTU başına IOPS | DTU başına 48 IOPS|
+|GÇ verimliliği (yaklaşık) |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
 |GÇ gecikmesi (yaklaşık)|5 ms (okuma), 10 ms (yazma)|5 ms (okuma), 10 ms (yazma)|2 ms (okuma/yazma)|
 |Columnstore dizini oluşturma |Yok|S3 ve üstü|Desteklenen|
 |Bellek içi OLTP|Yok|Yok|Desteklenen|

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210185"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773145"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
@@ -143,9 +143,8 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 ![İşlev uygulamasını yerel olarak test edin.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-İsterseniz işlevinizi, bu kez aşağıdaki URL'yi kullanan yerel kapsayıcıda yeniden test edebilirsiniz:
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> Bu noktada, belirli HTTP işlevinizi çağırmaya çalıştığınızda bir HTTP 401 hata yanıtı alırsınız. Bunun nedeni, işlevinizin Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı, işlev anahtarının gerekli olduğu anlamına gelir. Kapsayıcı henüz bir işlev uygulamasında yayımlanmadığı için kullanılabilir bir işlev anahtarı yok. Daha sonra, kapsayıcınızı yayımlamak için temel araçları kullandığınızda, işlev tuşlarının size gösterildiğini göreceksiniz. Yerel kapsayıcıda çalışan işlevinizi test etmek isterseniz, [Yetkilendirme anahtarını](functions-bindings-http-webhook.md#authorization-keys) olarak `anonymous`değiştirebilirsiniz. 
 
 Kapsayıcıda işlev uygulamasını doğruladıktan sonra, yürütmeyi durdurun. Şimdi, özel görüntüyü Docker Hub hesabınıza gönderebilirsiniz.
 
@@ -159,7 +158,7 @@ Görüntüyü gönderebilmek için önce [docker login](https://docs.docker.com/
 docker login --username <docker-id>
 ```
 
-"Oturum açma başarılı oldu" iletisi, oturumunuzun açıldığını onaylar. Oturum açtıktan sonra [docker push](https://docs.docker.com/engine/reference/commandline/push/) komutunu kullanarak görüntüyü Docker Hub’a gönderin.
+"Oturum açma başarılı oldu" iletisi, oturum açtığınızı onaylar. Oturum açtıktan sonra [docker push](https://docs.docker.com/engine/reference/commandline/push/) komutunu kullanarak görüntüyü Docker Hub’a gönderin.
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
@@ -209,7 +208,7 @@ _deployment-container-image-name_ parametresi, işlev uygulamasını oluşturmak
 
 ## <a name="configure-the-function-app"></a>İşlev uygulamasını yapılandırma
 
-İşlevin varsayılan depolama hesabına bağlanması için bağlantı dizesi gerekir. Özel görüntünüzü özel bir kapsayıcı hesabında yayımlarken, bu uygulama ayarlarını bunun yerine, [ENV yönergesi](https://docs.docker.com/engine/reference/builder/#env) ya da benzeri ile Dockerfile'da ortam değişkenleri olarak belirlemeniz gerekir.
+İşlevin varsayılan depolama hesabına bağlanması için bağlantı dizesi gerekir. Özel görüntünüzü özel bir kapsayıcı hesabına yayımladığınızda, bu uygulama ayarlarını [env yönergesini](https://docs.docker.com/engine/reference/builder/#env)veya benzer bir şeyi kullanarak Dockerfile içinde ortam değişkenleri olarak ayarlamanız gerekir.
 
 Bu durumda `<storage_name>`, oluşturduğunuz depolama hesabının adıdır. [az storage account show-connection-string](/cli/azure/storage/account) komutu ile bağlantı dizesini alın. [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) komutu ile bu uygulama ayarlarını işlev uygulamasına ekleyin.
 

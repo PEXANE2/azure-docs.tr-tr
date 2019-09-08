@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278304"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772501"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
 
@@ -70,6 +70,12 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + **azureml-tren-çekirdek**
     + Bazı hiper parametre alanı tanımı hatalarının sunucu tarafı yerine doğrudan SDK 'da erken hatası.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning Data Prep SDK v 1.1.14
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Ham yol ve kimlik bilgileri kullanılarak ADLS/ADLSGen2 'a yazma özelliği etkinleştirildi.
+  + `include_path=True` İçin`read_parquet`çalışmamasından kaynaklanan bir hata düzeltildi.
+  + " `to_pandas_dataframe()` Geçersiz özellik değeri: hostsecret" özel durumu nedeniyle oluşan hata düzeltildi.
+  + Spark modundaki DBFS üzerinde dosyaların okunmamasına neden olan bir hata düzeltildi.
   
 ## <a name="2019-08-19"></a>2019-08-19
 

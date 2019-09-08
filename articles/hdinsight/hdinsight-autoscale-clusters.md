@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509117"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70770692"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight kümelerini otomatik ölçeklendirme (Önizleme)
 
@@ -31,7 +31,7 @@ Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türleri
 | ESP olmadan HDInsight 3,6 | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
 | ESP olmadan HDInsight 4,0 | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
 | HDInsight 3,6, ESP ile | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
+| HDInsight 4,0, ESP ile | Evet | Evet | Hayır | Hayır | Hayır | Hayır | Hayır |
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 

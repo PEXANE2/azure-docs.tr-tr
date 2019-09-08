@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012707"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773045"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -88,7 +88,7 @@ $TriggerMetadata.sys
 | MethodName | Tetiklenen Işlevin adı     | dize   |
 | RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | dize   |
 
-Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin `$TriggerMetadata` , için `QueueTrigger` , diğer şeyleri kapsayan `InsertionTime` `Id` ,,,`DequeueCount`. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue.md#trigger---message-metadata)gidin. Tetikleyici meta verilerinin içinde neler [](functions-triggers-bindings.md) olduğunu görmek için, üzerinde çalıştığınız tetikleyicilerle ilgili belgelere bakın.
+Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin `$TriggerMetadata` , için `QueueTrigger` , diğer şeyleri kapsayan `InsertionTime` `Id` ,,,`DequeueCount`. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue.md#trigger---message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
 
 ## <a name="bindings"></a>Bağlamalar
 
@@ -403,14 +403,18 @@ Geçerli sürümü herhangi bir işlevden yazdırarak `$PSVersionTable` görebil
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
 
-PowerShell işlevleri, Azure modüllerinin hizmet tarafından yönetilmesini destekler. Host. json dosyasını değiştirerek ve managedDependency Enabled özelliğini true olarak ayarlayarak, requirements. psd1 dosyası işlenir. En son Azure modülleri otomatik olarak indirilir ve işlevi için kullanılabilir hale getirilir.
+PowerShell işlevleri, hizmet tarafından [PowerShell Galerisi](https://www.powershellgallery.com) modüllerinin indirilmesini ve yönetilmesini destekler. Host. json dosyasını değiştirerek ve managedDependency Enabled özelliğini true olarak ayarlayarak, requirements. psd1 dosyası işlenir. Belirtilen modüller otomatik olarak indirilir ve işlev için kullanılabilir hale getirilir. 
+
+Şu anda desteklenen en fazla modül sayısı 10 ' dur. Desteklenen söz dizimi, aşağıda gösterildiği gibi MajorNumber. * veya tam modül sürümüdür. Yeni bir PowerShell işlev uygulaması oluşturulduğunda Azure az Module varsayılan olarak dahil edilir.
+
+Dil çalışanı, bir yeniden başlatma üzerinde güncelleştirilmiş modülleri seçer.
 
 Host. JSON
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ requirements. psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-Kendi özel modüllerinizi veya modüllerinizi kullanarak [PowerShell Galerisi](https://powershellgallery.com) , normal şekilde nasıl yapacağınızdan biraz farklıdır.
+Kendi özel modüllerinizi kullanmak, normal şekilde nasıl yapacağınıza göre biraz farklıdır.
 
 Modülünü yerel makinenize yüklediğinizde, içinde `$env:PSModulePath`genel olarak kullanılabilir klasörlerden birine gider. İşleviniz Azure 'da çalıştığından, makinenizde yüklü olan modüllere erişemezsiniz. Bunun için, bir `$env:PSModulePath` PowerShell işlev uygulamasının, normal bir PowerShell `$env:PSModulePath` betiğinden farklı olması gerekir.
 
@@ -433,16 +438,19 @@ Modülünü yerel makinenize yüklediğinizde, içinde `$env:PSModulePath`genel 
 
 ### <a name="function-app-level-modules-folder"></a>İşlev uygulama düzeyi `Modules` klasörü
 
-PowerShell Galerisi özel modüller veya PowerShell modülleri kullanmak için işlevlerinizin bir `Modules` klasöre bağlı olduğu modülleri yerleştirebilirsiniz. Bu klasörden modüller, işlevler çalışma zamanı tarafından otomatik olarak kullanılabilir. İşlev uygulamasındaki herhangi bir işlev bu modülleri kullanabilir.
+Özel modülleri kullanmak için işlevlerinizin bir `Modules` klasöre bağlı olduğu modülleri yerleştirebilirsiniz. Bu klasörden modüller, işlevler çalışma zamanı tarafından otomatik olarak kullanılabilir. İşlev uygulamasındaki herhangi bir işlev bu modülleri kullanabilir. 
 
-Bu özellikten yararlanmak için, işlev uygulamanızın kökünde bir `Modules` klasör oluşturun. Kullanmak istediğiniz modülleri bu konumdaki işlevleriniz içinde kaydedin.
+> [!NOTE]
+> Requirements. psd1 dosyasında belirtilen modüller otomatik olarak indirilir ve bunları modüller klasörüne dahil etmeniz gerekmez. Bunlar, bulutta çalıştırıldığında $env: LOCALAPPDATA/AzureFunctions klasöründe ve/data/ManagedDependencies klasöründe yerel olarak depolanır.
+
+Özel modül özelliğinden yararlanmak için, işlev uygulamanızın kökünde bir `Modules` klasör oluşturun. İşlevleriniz içinde kullanmak istediğiniz modülleri bu konuma kopyalayın.
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-İşlevlerinizin kullanacağı tüm modülleri kaydetmek veya kendi özel modüllerinizi `Save-Module` `Modules` klasöre kopyalamak için kullanın. Bir modüller klasörüyle, işlev uygulamanız aşağıdaki klasör yapısına sahip olmalıdır:
+Bir modüller klasörüyle, işlev uygulamanız aşağıdaki klasör yapısına sahip olmalıdır:
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 İşlev uygulamanızı başlattığınızda, PowerShell dil çalışanı bu `Modules` klasörü öğesine ekler. böylece, normal bir PowerShell betiğiyle yaptığınız gibi, `$env:PSModulePath` modül oto yüklemeye güvenebilirsiniz.
@@ -503,17 +512,7 @@ Bu ortam değişkenini İşlev Uygulaması [uygulama ayarlarında](functions-app
 
 ### <a name="considerations-for-using-concurrency"></a>Eşzamanlılık kullanma konuları
 
-PowerShell, varsayılan olarak _tek bir iş parçacıklı_ betik dilidir. Ancak, aynı işlemde birden fazla PowerShell çalışma alanı kullanılarak eşzamanlılık eklenebilir. Bu özellik Azure Işlevleri PowerShell çalışma zamanının nasıl çalıştığı.
-
-Bu yaklaşımın bazı dezavantajları vardır.
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Eşzamanlılık yalnızca üzerinde çalıştığı makine kadar iyidir
-
-İşlev uygulamanız yalnızca tek bir çekirdeği destekleyen [App Service bir planda](functions-scale.md#app-service-plan) çalışıyorsa eşzamanlılık çok daha fazla yardımcı olmaz. Bunun nedeni, yükü dengelemeye yardımcı olmak için ek çekirdek olmadığından. Bu durumda, tek çekirdeğin çalışma alanları arasında bağlam geçişi gerektiğinde performans farklılık gösterebilir.
-
-[Tüketim planı](functions-scale.md#consumption-plan) yalnızca bir çekirdek kullanılarak çalışır, bu nedenle eşzamanlılık özelliğinden faydalanabilirsiniz. Eşzamanlılık avantajlarından tamamen yararlanmak istiyorsanız, işlevlerinizi yeterli çekirdekler için adanmış bir App Service planı üzerinde çalışan bir işlev uygulamasına dağıtın.
-
-#### <a name="azure-powershell-state"></a>Azure PowerShell durumu
+PowerShell, varsayılan olarak _tek bir iş parçacıklı_ betik dilidir. Ancak, aynı işlemde birden fazla PowerShell çalışma alanı kullanılarak eşzamanlılık eklenebilir. Oluşturulan çalışma alanları miktarı PSWorkerInProcConcurrencyUpperBound uygulama ayarıyla eşleşir. Aktarım hızı, seçilen planda kullanılabilir olan CPU ve bellek miktarından etkilenecek.
 
 Azure PowerShell, size fazla yazma işleminden tasarruf etmenize yardımcı olmak için bazı _işlem düzeyi_ bağlamlar ve durumları kullanır. Ancak, işlev uygulamanızda eşzamanlılık özelliğini açıp durumu değiştirme eylemlerini çağırdığınızda, yarış koşullarına sahip olabilirsiniz. Bir çağrı belirli bir duruma bağlı olduğundan ve diğer çağrının durumu değiştiğinden, bu yarış durumlarının hata ayıklaması zordur.
 

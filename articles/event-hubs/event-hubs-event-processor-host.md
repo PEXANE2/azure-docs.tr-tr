@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 013200295f3a6a48d6d96663f98bce506808cd70
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277368"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772152"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 
@@ -184,6 +184,10 @@ Dönemi olan bir alıcı oluşturduğunuz ve sonra aynı tüketici grubunda dön
 - Zaten dönem E1 ile oluşturulmuş bir alıcı varsa ve etkin bir şekilde olay alıyorsa ve yeni bir alıcı, dönem olmadan oluşturulursa, yeni alıcı oluşturulması başarısız olur. Dönem alıcıları, her zaman sistemde önceliğe sahip olur.
 - Zaten bir dönem E1 ile oluşturulmuş ve bağlantısı kesilen bir alıcı varsa ve yeni bir MessagingFactory üzerinde dönem olmadan yeni bir alıcı oluşturulduysa yeni alıcı oluşturma işlemi başarılı olur. Burada sistemimizin, yaklaşık 10 dakika sonra "alıcı bağlantısının kesilmesi" algılayacağı bir desteklenmediği uyarısıyla vardır.
 - Dönem olmadan oluşturulmuş bir veya daha fazla alıcı varsa ve dönem E1 ile yeni bir alıcı oluşturulduysa, tüm eski alıcıların bağlantısı kesilir.
+
+
+> [!NOTE]
+> Dönemleri kullanan uygulamalar için farklı tüketici grupları kullanmanızı ve hataları önlemek için dönemler kullanmayan dönemleri kullanmanızı öneririz. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfcc69d90daae5869c3b69c922e99eab3585e14
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7855b1048826a9146e206226ae7326661e4609cb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164632"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764392"
 ---
 # <a name="azure-disk-encryption-overview"></a>Azure disk şifrelemeye genel bakış
 
@@ -72,6 +72,7 @@ Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler i�
 * Azure dosyaları (paylaşılan dosya sistemi).
 * Ağ dosya sistemi (NFS).
 * Dinamik birimler.
+* Her kapsayıcı için dinamik birimler oluşturan Windows Server kapsayıcıları.
 * Kısa ömürlü işletim sistemi diskleri.
 * Paylaşılan/dağıtılmış dosya sistemlerinin şifrelenmesi (ancak bunlarla sınırlı olmamak üzere): DFS, GFS, DRDB, CephFS, vb.
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e21bd2b20ac48d3719e41b1e93a82cbe5a864b7
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 923c828a3d7e9e10d79fcf079839b84c2f0e0f77
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382543"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772380"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory özel rol atamalarını görüntüleme
 
@@ -100,9 +100,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-assignments-of-a-role-with-single-application-scope-preview"></a>Tek uygulama kapsamındaki bir rolün atamalarını görüntüleme (Önizleme)
+## <a name="view-assignments-of-single-application-scope"></a>Tek uygulama kapsamının atamalarını görüntüleme
 
-Bu bölümde, tek uygulama kapsamıyla bir rolün atamalarının görüntülenmesi açıklanmaktadır.
+Bu bölümde, tek uygulama kapsamıyla bir rolün atamalarının görüntülenmesi açıklanmaktadır. Bu özellik şu anda genel önizleme aşamasındadır.
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 1. **Uygulama kayıtları**' yi seçin ve ardından özelliklerini görüntülemek için uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.

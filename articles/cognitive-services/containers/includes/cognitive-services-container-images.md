@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: Kapsayıcı depoları ve görüntüleri
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: Tüm bilişsel hizmet teklifleri için kapsayıcı kayıt defterleri, depolar ve görüntü adları temsil eden iki tablo.
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051216"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775906"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
 Aşağıdaki tablolar, Azure bilişsel hizmetler tarafından sunulan kullanılabilir kapsayıcı görüntülerinin kapsamlı bir listesidir.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Ortak (kapsayıcı kayıt defteri `mcr.microsoft.com`:)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Ortak "ungated" (kapsayıcı kayıt defteri `mcr.microsoft.com`:)
 
-Microsoft Container Registry bilişsel hizmetler için tüm genel kullanılabilirlik (GA) kapsayıcılarını barındırır.
+Microsoft Container Registry bilişsel hizmetler için genel kullanıma açık olan "geçitli" kapsayıcıları barındırır.
 
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
@@ -21,9 +30,9 @@ Microsoft Container Registry bilişsel hizmetler için tüm genel kullanılabili
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Dil Algılama | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Duygu Analizi | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Genel Önizleme (kapsayıcı kayıt defteri `containerpreview.azurecr.io`:)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Ortak "geçişli" Önizleme (kapsayıcı kayıt defteri `containerpreview.azurecr.io`:)
 
-Kapsayıcı Önizleme kayıt defteri, henüz genel kullanıma ilerlemedi (GA) olmayan bilişsel hizmetler için "genel önizleme" kapsayıcılarını barındırır. Bu kapsayıcılar, bunları kullanabilmesi için bir erişim için resmi bir istek gerektirir.
+Kapsayıcı Önizleme kayıt defteri, bilişsel hizmetler için genel kullanıma açık olan "geçitli" kapsayıcıları barındırır. Bu kapsayıcılar, bunları kullanabilmesi için bir erişim için resmi bir istek gerektirir.
 
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|

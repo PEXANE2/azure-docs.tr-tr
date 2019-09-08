@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 63a0717e615ff85dbc5cfc06567f83cb9aa83a30
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734998"
+ms.locfileid: "70772896"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Öğretici: Node. js ' de Language Understanding etkin bir Web uygulaması bot kullanın 
 
@@ -101,7 +101,7 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 
     [![Temel bot için Web uygulaması bot kaynak kodunu indirin](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Açılan iletişim kutusu **indirilen ZIP dosyasında uygulama ayarlarını dahil**Istediğinde, **Evet**' i seçin.
+1. Açılan iletişim kutusu **indirilen ZIP dosyasında uygulama ayarlarını dahil**Istediğinde, **Evet**' i seçin. Bu, LUSıS ayarlarını sağlar. 
 
 1. Kaynak kodu .zip dosyasına sıkıştırılmışsa, bir iletide kodu indirme bağlantısı sağlanır. Bağlantıyı seçin. 
 
@@ -134,6 +134,13 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 
     ````javascript
     class MainDialog extends ComponentDialog {
+
+        constructor(luisRecognizer, bookingDialog) {
+            ...
+            this.luisRecognizer = luisRecognizer;
+            ...
+        }
+
 
         ...
 
@@ -185,40 +192,6 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 
     }
     ````
-
-
-## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Visual Studio 'da bağımlılıkları yükleyip bot kodunu başlatma
-
-1. VSCode 'da, tümleşik terminalden komutuyla `npm install`bağımlılıkları yükler.
-1. Ayrıca, tümleşik terminalde komutuyla `npm start`bot 'ı başlatın. Bu, bir HTTP uç noktası ile bot için bir Web uygulaması başlatır. Konsol, çalışan Web sitesine erişmek için URL ve bağlantı noktası numarasını sağlar. Bu öğreticinin sonraki bölümünde bağlantı noktası numarası gereklidir.
-
-    ```console
-    > core-bot@1.0.0 start C:\Users\diberry\repos\bots\2019-bot-nodejs-basic
-    > node ./index.js
-    
-    
-    restify listening to http://[::]:3978
-    
-    Get Bot Framework Emulator: https://aka.ms/botframework-emulator
-    ```
-
-## <a name="create-an-environment-file-and-add-luis-values"></a>Ortam dosyası oluşturma ve LUIN değerlerini ekleme
-
-Botu öykünücüsünün, ayrıntılı Lua sonuçları sağlamak için LUSıS kaynağına erişmesi gerekir.
-
-1. Projenin kökünde, adlı `.env` bir dosya oluşturun ve aşağıdaki ortam değişkenlerini ekleyin:
-
-    ```console
-    LuisAppId= 
-    LuisAPIKey=
-    LuisAPIHostName=
-    ```
-
-1. Azure portal, bot kaynağınız için uygulama için App Service yapılandırma ayarlarını açın.
-1. Her ayarın değerini görmek için **Gelişmiş Düzenle**' yi açın.
-
-    ![Her ayarın değerini görmek için * * gelişmiş Düzenle * * öğesini açın.](./media/bfv4-nodejs/environment-settings-for-luis-app.png)
-
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>Bot öykünücüsünü test etmek için kullanın
@@ -227,6 +200,7 @@ Kitap uçuş amacı için bir soru sorun.
 
 1. Bot öykünücüsünü başlatın ve **bot 'ı aç**' ı seçin.
 1. **Bir bot** açılır penceresi açın iletişim kutusunda, gıbı bot URL `http://localhost:3978/api/messages`'nizi girin. `/api/messages` Yol, bot 'ın Web adresidir.
+1. İndirdiğiniz bot kodunun kökündeki **. env** dosyasında bulunan **Microsoft uygulama kimliği** ve **Microsoft uygulama parolasını**girin.
 
 1. Bot öykünücüsünde, `Book a flight from Seattle to Berlin tomorrow` **Web sohbetinde testte**aldığınız gibi temel bot için aynı yanıtı girin ve alın.
 
