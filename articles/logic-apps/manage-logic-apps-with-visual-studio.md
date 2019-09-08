@@ -10,19 +10,19 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164885"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801215"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
 
 [Azure Portal](https://portal.azure.com)Logic Apps oluşturabilir, düzenleyebilir, yönetebilir ve dağıtabileceğiniz halde, mantıksal uygulamalarınızı kaynak denetimine eklemek, farklı sürümler yayınlamak ve için [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) şablonları oluşturmak istediğinizde Visual Studio 'yu da kullanabilirsiniz. çeşitli dağıtım ortamları. Visual Studio Cloud Explorer ile mantıksal uygulamalarınızı diğer Azure kaynaklarıyla birlikte bulabilir ve yönetebilirsiniz. Örneğin, Azure portal zaten dağıtılmış olan Logic Apps 'i açabilir, indirebilir, düzenleyebilir, çalıştırabilir, çalıştırma geçmişini görüntüleyebilir, devre dışı bırakabilir ve etkinleştirebilirsiniz. Visual Studio 'da Azure Logic Apps ile çalışmaya yeni başladıysanız, [Visual Studio ile Logic Apps oluşturmayı](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)öğrenin.
 
 > [!IMPORTANT]
-> Visual Studio 'dan bir mantıksal uygulama dağıtmak veya yayımlamak, Azure portal o uygulamanın sürümünün üzerine yazar. Korumak istediğiniz Azure portal değişiklik yaparsanız, Visual Studio 'da bir dahaki sefer dağıtmadan veya yayımlamadan önce [Visual Studio 'daki mantıksal uygulamayı](#refresh) Azure Portal yenilediğinizden emin olun.
+> Visual Studio 'dan bir mantıksal uygulama dağıtmak veya yayımlamak, Azure portal o uygulamanın sürümünün üzerine yazar. Korumak istediğiniz Azure portal değişiklik yaparsanız, Visual Studio 'da bir dahaki sefer dağıtmadan veya yayımlamadan önce [Visual Studio 'daki mantıksal uygulamayı Azure Portal yenilediğinizden](#refresh) emin olun.
 
 <a name="requirements"></a>
 
@@ -85,7 +85,7 @@ Visual Studio 'da, Azure aboneliğinizle ilişkili olan ve bulut Gezgini kullan�
 
 ## <a name="open-in-visual-studio"></a>Visual Studio'da aç
 
-Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Resource Manager projeler olarak oluşturulan ve dağıtılan Logic Apps 'i açabilirsiniz.
+Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak grubu projeleri olarak oluşturulan ve dağıtılan Logic Apps 'i açabilirsiniz.
 
 1. Cloud Explorer 'ı açın ve mantıksal uygulamanızı bulun. 
 
@@ -123,7 +123,34 @@ Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Resource
 
 4. Bir konum istendiğinde, bu konuma gidin ve mantıksal uygulama tanımının Kaynak Yöneticisi şablonunu JSON (. JSON) dosya biçiminde kaydedin. 
 
-Mantıksal uygulama tanımınız Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir Azure Resource Manager projesi olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar için Kaynak Yöneticisi projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin. 
+Mantıksal uygulama tanımınız Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin. 
+
+<a name="link-integration-account"></a>
+
+## <a name="link-to-integration-account"></a>Tümleştirme hesabı bağlantısı
+
+İşletmeden işletmeye (B2B) kurumsal tümleştirme senaryolarına yönelik mantıksal uygulamalar oluşturmak için mantıksal uygulamanızı mantıksal uygulamanızla aynı bölgede bulunan daha önce oluşturulmuş bir [tümleştirme hesabına](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bağlayabilirsiniz. Tümleştirme hesabı, ticari iş ortakları, sözleşmeler, şemalar ve haritalar gibi B2B yapıtları içerir ve mantıksal uygulamanızın XML doğrulaması ve düz dosya kodlama veya kod çözme için B2B bağlayıcıları kullanmasına olanak sağlar. [Bu bağlantıyı Azure Portal kullanarak oluşturabilseniz](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)de, [önkoşulları](#requirements)yükselttikten sonra Visual Studio 'yu da kullanabilirsiniz ve mantıksal uygulamanız bir [Azure Kaynak grubu projesinde](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)JSON (. JSON) dosyası olarak mevcuttur. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)hakkında bilgi edinin.
+
+1. Visual Studio 'da mantıksal uygulamanızı içeren Azure Kaynak grubu projesini açın.
+
+1. Çözüm Gezgini ' de, **< Logic-app-name >. JSON** dosyasının kısayol menüsünü açın ve **Logic App Designer ile aç**' ı seçin. Klavyenizdeki CTRL + L)
+
+   ![Mantıksal uygulama Tasarımcısı ile mantıksal uygulamanın. json dosyasını açın](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > Visual Studio 2019 ' de bu komuta sahip değilseniz, Visual Studio için en son güncelleştirmelere sahip olup olmadığınızı kontrol edin.
+
+1. Logic App Designer 'ın odağa sahip olduğundan emin olmak için, Özellikler bölmesinin mantıksal uygulamanızın **tümleştirme hesabı** özelliğini görebilmesi için tasarımcının sekmesini veya yüzeyini seçin.
+
+   ![Özellikler bölmesinde "tümleştirme hesabı" özelliği görüntülenir](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+
+1. **Tümleştirme hesabı** listesini açın ve mantıksal uygulamanıza bağlamak istediğiniz tümleştirme hesabını seçin; örneğin:
+
+   !["Tümleştirme hesabı" Özellik listesini aç](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
+
+1. İşiniz bittiğinde, Visual Studio çözümünüzü kaydetmeyi unutmayın.
+
+Visual Studio 'da **Integration Account** özelliğini ayarlayıp mantıksal uygulamanızı bir Azure Resource Manager şablonu olarak kaydettiğinizde, bu şablon seçili tümleştirme hesabı için de bir parametre bildirimi içerir. Şablon parametreleri ve Logic Apps hakkında daha fazla bilgi için bkz [. genel bakış: Mantıksal uygulama dağıtımını](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)otomatikleştirin.
 
 <a name="refresh"></a>
 

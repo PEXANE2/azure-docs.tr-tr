@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: diberry
-ms.openlocfilehash: ca1478801ad704888266175a23b6f436d067dd10
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ad220287685dd2405931cd6f8cd460b06f340b2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950796"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801560"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Hızlı Başlangıç: Python için istemci kitaplığını Kişiselleştir
 
@@ -109,6 +109,8 @@ Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. 
 
 Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçimlerini temsil eder. Komut satırından günün saati ve geçerli yiyecek tercihi için bir kullanıcının girişini almak üzere program sınıfına aşağıdaki yöntemleri ekleyin.
 
+[!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
+
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTimeOfDay)]
 
 [!code-python[Present food taste preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTastePreference)]
@@ -135,7 +137,7 @@ Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit ba
 
 Yeniden isteği tamamlamaya yönelik olarak, program kullanıcının seçimini komut satırından alır, her seçime bir sayısal değer atar, sonra benzersiz sıralama olay kimliğini ve sayısal değeri ödül yöntemine gönderir.
 
-Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim sistemlerinde, bu çağrıya ne zaman ve ne gönderileceğini belirlemek, [](concept-rewards.md) özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir. 
+Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim [sistemlerinde, bu çağrıya ne](concept-rewards.md) zaman ve ne gönderileceğini belirlemek, özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir. 
 
 [!code-python[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/python/sample.py?name=reward&highlight=9)]
 

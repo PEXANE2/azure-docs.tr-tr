@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562863"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801552"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Doğruluk Özel Konuşma Tanıma değerlendirin
 
@@ -51,11 +51,12 @@ Microsoft 'un konuşmaya metin taban çizgisi modeli veya eğitilen özel bir mo
 
 Modelleri yan yana değerlendirmek için:
 
-1. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
-2. **Test Ekle**' ye tıklayın.
-3. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
-4. Test etmek istediğiniz en fazla iki model seçin.
-5.           **Oluştur**'a tıklayın.
+1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
+2. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
+3. **Test Ekle**' ye tıklayın.
+4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
+5. Test etmek istediğiniz en fazla iki model seçin.
+6. **Oluştur**'a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 

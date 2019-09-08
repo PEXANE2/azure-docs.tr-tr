@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309588"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802398"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -206,14 +206,17 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bu bölge 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
 
-|Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği *   |
+|Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği * |
 |-------|---------|---------|---------|
-|Avustralya Doğu  |LRS     |Hayır    |Evet|
-|Fransa Orta  |LRS     |Hayır    |Henüz değil|
-|Fransa Güney    |LRS     |Hayır    |Henüz değil|
-|Güneydoğu Asya  |LRS, ZRS|Hayır    |Evet|
-|Batı Avrupa     |LRS, ZRS|Hayır    |Evet|
-|Batı ABD 2       |LRS, ZRS|Hayır    |Evet|
+|Avustralya Doğu |LRS     |Hayır    |Evet|
+|Avustralya Güneydoğu|LRS     |Hayır    |Henüz değil|
+|Orta Hindistan  |LRS     |Hayır    |Henüz değil|
+|Fransa Orta  |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
+|Güney Hindistan    |LRS     |Hayır    |Henüz değil|
+|Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
+|Batı Orta ABD|LRS     |Hayır    |Henüz değil|
+|Batı Avrupa    |LRS, ZRS|Hayır    |Evet|
+|Batı ABD 2      |LRS, ZRS|Hayır    |Evet|
 
 \* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. Alternatif olarak, kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
 

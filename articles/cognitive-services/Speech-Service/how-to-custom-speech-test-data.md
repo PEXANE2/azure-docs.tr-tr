@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663590"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802506"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
@@ -35,7 +35,7 @@ Dosyalar bir veri kümesine türlerine göre gruplanmalı ve zip dosyası olarak
 
 ## <a name="upload-data"></a>Karşıya veri yükleme
 
-Verilerinizi karşıya yüklemeye hazırsanız Sihirbazı başlatmak ve ilk veri kümenizi oluşturmak için **verileri karşıya yükle** ' ye tıklayın. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
+Verilerinizi karşıya yüklemeye hazırsanız [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)gidin, ardından Sihirbazı başlatmak ve ilk veri kümenizi oluşturmak Için **verileri karşıya yükle** ' ye tıklayın. Verilerinizi karşıya yüklemeye izin vermeden önce veri kümeniz için bir konuşma veri türü seçmeniz istenir.
 
 ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -96,7 +96,7 @@ Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geli
 
 Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak veriler Özel Konuşma Tanıma Hizmeti'ne yüklenmeden _önce_ kullanıcı tarafından gerçekleştirilmesi gereken bazı önemli normalleştirme adımları vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Ses dosyalarınızı ve bunlara karşılık gelen onayları topladıktan sonra, Özel Konuşma Tanıma portalına yüklemeden önce tek bir. zip dosyası olarak paketlenmesi gerekir. Bu, üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesidir:
+Ses dosyalarınızı ve bunlara karşılık gelen onayları topladıktan sonra, [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)yüklemeden önce tek bir. zip dosyası olarak paketlenmesi gerekir. Bu, üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesidir:
 
 ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Benzersiz olan ürün adları veya özelliklerinizin varsa ve doğru tanındıkl
 | Utterslar ve/veya cümleler | Bunlar, ürün adlarını veya bir cümle bağlamı içindeki sektöre özel bir sözlüğü tanımayı artıran doğruluğu iyileştirebilir. |
 | Söylenişler | Bunlar, tanımsız söylenişleri olan seyrek terim, kısaltmalar veya diğer sözcüklerin telaffuz hale getirebilirsiniz. |
 
-Söyleyme, tek veya birden çok metin dosyası olarak sağlanıyor. Metin verileri ne kadar yaklaşacaktır, bu doğruluk artar. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve Özel Konuşma Tanıma portalına yüklenebilir.
+Söyleyme, tek veya birden çok metin dosyası olarak sağlanıyor. Metin verileri ne kadar yaklaşacaktır, bu doğruluk artar. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)yüklenebilir.
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>Utterer dosyası oluşturma yönergeleri
 
