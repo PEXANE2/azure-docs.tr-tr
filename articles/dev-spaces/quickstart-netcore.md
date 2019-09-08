@@ -1,5 +1,5 @@
 ---
-title: Azure geliştirme (Visual Studio Code) boşluklarla Kubernetes üzerinde .NET Core ile geliştirme
+title: Azure Dev Spaces kullanarak Kubernetes üzerinde Visual Studio Code ve .NET Core ile hata ayıklama ve yineleme (Visual Studio Code)
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -8,42 +8,42 @@ ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kapsayıcılar, Helm, hizmet kafes, ağ hizmeti Yönlendirme, kubectl, k8s
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cc41e268678872910113c8e198bdaaac34232458
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 162a020351efb27fe25b566918ddda555fac35eb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706314"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772611"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Hızlı Başlangıç: Azure geliştirme (Visual Studio Code) boşluklarla Kubernetes üzerinde .NET Core ile geliştirme
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes üzerinde Visual Studio Code ve .NET Core ile hata ayıklama ve yineleme (Visual Studio Code)
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 - Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
-- Visual Studio Code kullanarak kapsayıcıları kodda yinelemeli olarak geliştirin.
-- Visual Studio Code geliştirme alanınızdan kodunda hata ayıklayın.
+- Visual Studio Code kullanarak kapsayıcılardaki kodu tekrarlayarak geliştirin.
+- Visual Studio Code geliştirici alanınızdaki kodda hata ayıklayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
-- [Visual Studio Code'u](https://code.visualstudio.com/download).
-- [Azure geliştirme alanları](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) ve [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio Code için Uzantılar.
+- [Visual Studio Code yüklendi](https://code.visualstudio.com/download).
+- [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) ve [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio Code uzantıları yüklendi.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
-Bir AKS kümesinde oluşturmak gereken bir [bölge desteklenen][supported-regions]. Aşağıdaki komutları adlı bir kaynak grubu oluşturacaksınız *MyResourceGroup* ve adlı bir AKS kümesi *MyAKS*.
+[Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *myaks*adlı bir aks kümesi oluşturur.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure geliştirme alanları AKS kümenizde etkinleştirme
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-Kullanım `use-dev-spaces` komutunu kullanarak AKS kümenizde geliştirme alanları etkinleştirme ve yönergeleri izleyin. Geliştirme alanları aşağıdaki komutu etkinleştirir *MyAKS* içinde küme *MyResourceGroup* grup ve oluşturan bir *varsayılan* geliştirme alanı.
+Aks kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunukullanın.`use-dev-spaces` Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -63,93 +63,93 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Örnek uygulama kodunu alma
+## <a name="get-sample-application-code"></a>Örnek uygulama kodu al
 
-Bu makalede, kullandığınız [Azure geliştirme alanları örnek uygulama](https://github.com/Azure/dev-spaces) Azure geliştirme alanları göstermek için.
+Bu makalede, Azure Dev Spaces kullanmayı göstermek için [Azure dev Spaces örnek uygulamayı](https://github.com/Azure/dev-spaces) kullanırsınız.
 
-Uygulamasını github'dan kopyalayın.
+Uygulamayı GitHub 'dan kopyalayın.
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 ```
 
-## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Örnek uygulamayı Visual Studio Code hazırlayın
+## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Örnek uygulamayı Visual Studio Code hazırlama
 
-Visual Studio Code'u açın, *dosya* ardından *Aç...* , gitmek *geliştirme-alanları/samples/dotnetcore/alma-çalışmaya/webfrontend* dizin seçeneğine tıklayıp *açık*.
+Visual Studio Code açın, *Dosya* ' yı açın *..* . ' a tıklayın, *dev-Spaces/Samples/dotnetcore/Başlarken/webön uç* dizinine gidin ve *Aç*' a tıklayın.
 
-Artık *webfrontend* proje Visual Studio Code'da açın. Uygulama geliştirme alanınızda çalıştırmak için komut paletinden Azure geliştirme alanları uzantısını kullanarak Docker ve Helm grafiği varlıklar oluşturun.
+Artık Visual Studio Code *Web ön uç* projesi açılır. Uygulamayı geliştirme alanınızda çalıştırmak için, komut paletindeki Azure Dev Spaces uzantısını kullanarak Docker ve hele grafik varlıklarını oluşturun.
 
-Komut paletini Visual Studio Code'da açmak için *görünümü* ardından *komut paleti*. Yazmaya başlayın `Azure Dev Spaces` tıklayın `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
+Visual Studio Code içinde komut paletini açmak için, *görüntüle* ve ardından *komut paleti*' ne tıklayın. Yazmaya `Azure Dev Spaces` başlayın ve üzerine `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`tıklayın.
 
-![Azure geliştirme alanları için yapılandırma dosyalarını hazırlama](./media/common/command-palette.png)
+![Yapılandırma dosyalarını Azure Dev Spaces hazırlama](./media/common/command-palette.png)
 
-Visual Studio Code Ayrıca, genel bir uç nokta yapılandırma istediğinde seçin `Yes` genel bir uç noktayı etkinleştirme.
+Visual Studio Code Ayrıca, genel uç noktanızı yapılandırmanızı de ister, genel uç `Yes` noktayı etkinleştirmeyi seçin.
 
-![Genel bir uç nokta seçin](media/common/select-public-endpoint.png)
+![Ortak uç noktayı seçin](media/common/select-public-endpoint.png)
 
-Bu komut bir docker dosyası ve Helm grafiği oluşturarak Azure geliştirme alanlarında çalıştırmak üzere projenizi hazırlar. Ayrıca oluşturur bir *.vscode* projenizin kökünde yapılandırmasını hata ayıklama dizin.
+Bu komut, bir Dockerfile ve Held grafiği oluşturarak projenizi Azure Dev Spaces çalıştırmayı hazırlar. Ayrıca, projenizin kökünde hata ayıklama yapılandırmasıyla bir *. vscode* dizini oluşturur.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Derleme ve kod Kubernetes'te Visual Studio'dan çalıştırma
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Visual Studio 'dan Kubernetes 'te kod oluşturma ve çalıştırma
 
-Tıklayarak *hata ayıklama* simgesine tıklayın ve sol *.NET Core başlatın (AZDS)* en üstünde.
+Sol taraftaki *hata ayıklama* simgesine tıklayın ve en üstteki *.NET Core başlatması (AZD)* seçeneğine tıklayın.
 
 ![](media/get-started-netcore/debug-configuration.png)
 
-Bu komut, yapılar ve hizmetinizi Azure geliştirme alanlarında hata ayıklama modunda çalıştırır. *Terminal* penceresinin altındaki hizmetiniz için Azure geliştirme alanları çalıştıran yapı çıkışını ve URL'leri gösterir. *Hata ayıklama konsolunu* günlük çıktısını gösterir.
+Bu komut, Azure Dev Spaces hata ayıklama modunda hizmetinizi oluşturur ve çalıştırır. En alttaki *Terminal* penceresi, Azure dev Spaces çalıştıran hizmetinizin derleme çıkışını ve URL 'lerini gösterir. *Hata ayıklama konsolu* günlük çıktısını gösterir.
 
 > [!Note]
-> Tüm Azure geliştirme alanları komutlarında görmüyorsanız, *komut paleti*, yüklediğinizden emin olun [Azure geliştirme alanları için Visual Studio Code uzantısı](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ayrıca, açtığınız doğrulayın *geliştirme-alanları/samples/dotnetcore/alma-çalışmaya/webfrontend* Visual Studio code'da dizin.
+> *Komut paletinde*herhangi bir Azure dev Spaces komutu görmüyorsanız [Azure dev Spaces için Visual Studio Code uzantısını](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)yüklediğinizden emin olun. Ayrıca, Visual Studio Code ' de *dev-Spaces/Samples/dotnetcore/alma-başlatma/webön uç* dizinini açtığınızdan emin olun.
 
-Genel URL açarak çalışan hizmeti görebilirsiniz.
+Ortak URL 'YI açarak hizmetin çalıştığını görebilirsiniz.
 
-Tıklayın *hata ayıklama* ardından *hata ayıklamayı Durdur* hata ayıklayıcıyı durdurmak için.
+Hata ayıklayıcıyı durdurmak için hata *Ayıkla* ve hata *ayıklamayı Durdur* ' a tıklayın.
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizi güncelleştirilmiş bir sürümünü dağıtmak için projenizdeki herhangi bir dosyayı güncelleştirmek ve yeniden *.NET Core başlatın (AZDS)* . Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve *.NET Core başlatma 'yı (AZD)* yeniden çalıştırabilirsiniz. Örneğin:
 
-1. Uygulamanızı hala çalışıyorsa tıklayın *hata ayıklama* ardından *hata ayıklamayı Durdur* durdurmak ister.
-1. Güncelleştirme [22'de satır `Controllers/HomeController.cs` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) için:
+1. Uygulamanız hala çalışıyorsa, *Hata Ayıkla* ' ya tıklayın, ardından *hata ayıklamayı* durdurun.
+1. [Satır 22 ' de `Controllers/HomeController.cs` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) şu şekilde güncelleştir:
     
     ```csharp
     ViewData["Message"] = "Your application description page in Azure.";
     ```
 
 1. Yaptığınız değişiklikleri kaydedin.
-1. Yeniden çalıştırılan *.NET Core başlatma (AZDS)* .
-1. ' A tıklayın ve çalışan hizmet gidin *hakkında*.
-1. Yaptığınız değişiklikleri gözlemleyin.
-1. Tıklayın *hata ayıklama* ardından *hata ayıklamayı Durdur* uygulamanızı durdurmak için.
+1. *.NET Core başlatma (AZD)* öğesini yeniden çalıştırın.
+1. Çalışan hizmetinize gidin ve *hakkında*' ya tıklayın.
+1. Değişikliklerinizi gözlemleyin.
+1. Uygulamanızı durdurmak için *Hata Ayıkla* ve *hata ayıklamayı Durdur* ' a tıklayın.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Ayarlama ve hata ayıklama için kesme noktaları kullanma
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlama ve kullanma
 
-Hata ayıklama modunu kullanarak hizmetinizi başlatın *.NET Core başlatın (AZDS)* .
+*.NET Core Launch (AZD)* kullanarak hizmetinizi hata ayıklama modunda başlatın.
 
-Geri gidin *Gezgini* tıklayarak görünümü *görünümü* ardından *Gezgini*. Açık `Controllers/HomeController.cs` ve imlecinizi buraya koymanız için 22 numaralı satırda bir yere tıklayın. Bir kesme noktası ayarlamak için isabet *F9* veya *hata ayıklama* ardından *iki durumlu kesme noktası*.
+*Görünüm* *' e*tıklayarak *Gezgin görünümüne geri* gidin. İmlecinizi `Controllers/HomeController.cs` buraya yerleştirmek için açın ve satır 22 ' de bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin*
 
-Hizmetinizi bir tarayıcıda açın ve herhangi bir ileti görüntülenir dikkat edin. Visual Studio Code için geri dönün ve 20 satırı vurgulanır gözlemleyin. Kesme satırı 20 hizmeti duraklatıldı. Hizmeti sürdürmek için isabet *F5* veya *hata ayıklama* ardından *devam*. Tarayıcınıza dönün ve ileti görüntülenecektir dikkat edin.
+Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio Code dön ve 20 satırı gözlemle vurgulanır. Ayarladığınız kesme noktası, hizmeti 20. satırda duraklattı. Hizmeti sürdürmek için *F5* 'e basın veya *Hata Ayıkla* 'Ya tıkladıktan sonra *devam edin*. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
 
-Bir hata ayıklayıcısı ekli Kubernetes'te hizmetinizi çalışırken, çağrı yığını, yerel değişkenleri ve özel durum bilgileri gibi bilgileri hata ayıklamak için tam erişime sahip olursunuz.
+Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştırırken, çağrı yığını, yerel değişkenler ve özel durum bilgileri gibi bilgileri hata ayıklamaya yönelik tam erişime sahip olursunuz.
 
-Kesme noktası 22 satırında imleci yerleştirerek kaldırma `Controllers/HomeController.cs` ve ulaşmaktan *F9*.
+İmlecinizi 22 `Controllers/HomeController.cs` . satıra yerleştirerek ve *F9*'a basarak kesme noktasını kaldırın.
 
-## <a name="update-code-from-visual-studio-code"></a>Visual Studio code'dan kodunu güncelleştirme
+## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code kodu güncelleştirme
 
-Hizmet hata ayıklama modunda çalışırken, 22 numaralı satırda güncelleştirme `Controllers/HomeController.cs`. Örneğin:
+Hizmet hata ayıklama modunda çalışırken, satır 22 ' `Controllers/HomeController.cs`yi güncelleştirin. Örneğin:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-Dosyayı kaydedin. Tıklayın *hata ayıklama* ardından *yeniden hata ayıklama* veya *hata ayıklama araç çubuğu*, tıklayın *yeniden hata ayıklama* düğmesi.
+Dosyayı kaydedin. Hata *Ayıkla* ' ya tıklayın ve *hata ayıklamayı yeniden başlatın* veya *Hata Ayıkla araç çubuğunda* *hata ayıklamayı yeniden Başlat* düğmesine tıklayın
 
 ![](media/common/debug-action-refresh.png)
 
-Hizmetinizi bir tarayıcıda açın ve güncelleştirilmiş iletinizi görüntülenen dikkat edin.
+Hizmetinizi bir tarayıcıda açın ve güncelleştirilmiş iletinizin görüntülendiğini unutmayın.
 
-Yeniden oluşturma ve kod düzenleme yapılan her zaman, yeni bir kapsayıcı görüntüsü Azure geliştirme alanları artımlı olarak dağıtarak yerine daha hızlı bir düzenleme/hata ayıklama döngüsü sağlamak için mevcut kapsayıcı içindeki kodu yeniden derler.
+Kod düzenlemeleri her yapıldığında yeni bir kapsayıcı görüntüsünü yeniden oluşturmak ve yeniden dağıtmak yerine, daha hızlı bir düzenleme/hata ayıklama döngüsü sağlamak üzere mevcut kapsayıcı içindeki kodu artımlı olarak yeniden derler Azure Dev Spaces.
 
-## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı temizleme
+## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -157,7 +157,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure geliştirme alanları, birden çok kapsayıcıya daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olur ve farklı sürümleri ya da farklı alanları kodunuzun dalları birlikte çalışarak işbirliğine dayalı geliştirme nasıl basitleştirebileceğinizi öğrenin. 
+Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin. 
 
 > [!div class="nextstepaction"]
 > [Birden çok kapsayıcı ve takım geliştirme ile çalışma](multi-service-netcore.md)

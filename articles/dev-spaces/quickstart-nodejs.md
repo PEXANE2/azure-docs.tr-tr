@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure 'da kapsayıcılar, mikro hizmetler ve Node. js ile hızlı Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 4ee11b4bebe32ff4a9af38a0789823178f388e10
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725782"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772632"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes 'te Visual Studio Code ve Node. js ile hata ayıklayın ve yineleyin
 
@@ -38,7 +38,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
@@ -124,7 +124,7 @@ Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdek
 
 *Başlatma sunucusunu (AZD 'ler)* kullanarak hizmetinizi başlatın.
 
-*Görünüm* ' e tıklayarak *Gezgin görünümüne geri* *gidin.* İmlecinizi `server.js` buraya yerleştirmek için açın ve 13. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin*
+*Görünüm* *' e*tıklayarak *Gezgin görünümüne geri* gidin. İmlecinizi `server.js` buraya yerleştirmek için açın ve 13. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin*
 
 Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio Code dön ve 13. satırı gözlemle vurgulanır. Ayarladığınız kesme noktası 13. satırda hizmeti duraklattı. Hizmeti sürdürmek için *F5* 'e basın veya *Hata Ayıkla* 'Ya tıkladıktan sonra *devam edin*. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
 
