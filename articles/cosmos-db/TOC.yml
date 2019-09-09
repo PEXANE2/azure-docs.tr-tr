@@ -455,6 +455,10 @@
           items:
             - name: 1 - Verileri sorgulama
               href: tutorial-query-graph.md
+        - name: Başvuru
+          items:
+            - name: Yanıt Üst Bilgileri
+              href: gremlin-headers.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Graf verileri modellemesi

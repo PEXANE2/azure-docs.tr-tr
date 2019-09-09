@@ -159,7 +159,7 @@
               href: configure-azure-cni.md
         - name: İç yük dengeleyici oluşturma
           href: internal-lb.md
-        - name: Standart Load Balancer kullanma (önizleme)
+        - name: Standart Load Balancer kullanma
           href: load-balancer-standard.md
         - name: Statik IP adresi kullanma
           href: static-ip.md

@@ -250,6 +250,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP işlev uç noktasını özelleştirme
           href: functions-create-serverless-api.md
+        - name: Şirket içi kaynakları yönetme
+          href: functions-hybrid-powershell.md
     - name: Sorun giderme
       items:
         - name: Depolama sorunlarını giderme

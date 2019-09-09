@@ -450,8 +450,6 @@
           href: control-flow-webhook-activity.md
     - name: Veri akışı dönüşümleri
       items:
-        - name: Sabit genişlikli dosyalar
-          href: how-to-fixed-width.md
         - name: Toplama
           href: data-flow-aggregate.md
         - name: Satırı değiştirme
@@ -610,6 +608,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Veri Akışı Eşlemeyi kullanarak dönüştürme
+      items:
+        - name: Sabit genişlikli metin dosyalarını işleme
+          href: how-to-fixed-width.md
 - name: Başvuru
   items:
     - name: .NET

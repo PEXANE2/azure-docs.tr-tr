@@ -1,43 +1,43 @@
 ---
-title: Azure Data Box Disk geri göndermeye yönelik öğretici | Microsoft Docs
+title: Microsoft Azure Data Box Disk'i geri göndermeye yönelik öğretici | Microsoft Docs
 description: Azure Data Box Disk'inizi Microsoft'a nasıl gönderebileceğinizi öğrenmek için bu öğreticiyi kullanın
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
-ms.localizationpriority: high
+ms.date: 09/05/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: aab97257ff2e917dc264017043d3ca11a2ced1fc
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240204"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390415"
 ---
 ::: zone target="chromeless"
 
-## <a name="return-azure-data-box-disk"></a>Dönüş Azure Data Box Disk 
+## <a name="return-azure-data-box-disk"></a>Azure Data Box Disk’i İade Etme 
 
 ::: zone-end
 
 ::: zone target="docs"
 
-# <a name="tutorial-return-azure-data-box-disk"></a>Öğretici: Dönüş Azure Data Box Disk 
+# <a name="tutorial-return-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk’i İade Etme 
 
-Bu öğreticide, Azure Data Box Disk döndürmek için bir çekmenin nasıl planlanmakta olduğu açıklanır. Çekme yönergeleri, cihazı döndürmekte olduğunuz yere bağlıdır. 
+Bu öğretici, Azure Data Box Disk'inizi iade etmek için bir teslimat zamanlamayı açıklar. Öğretici yönergeleri, cihazı nereye iade ettiğinize bağlı olarak değişir. 
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Data Box Disk'i Microsoft'a gönderme
-> * Farklı bölgelerde Data Box Disk seçin
+> * Data Box Disk’i farklı bölgelerde teslim alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce [öğreticiyi tamamladığınızdan emin olun: Azure Data Box Disk verileri kopyalayın ve doğrulayın](data-box-disk-deploy-copy-data.md).
+Başlamadan önce [Öğretici: Verileri Azure Data Box Disk'e kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md) kaynağını tamamladığınızdan emin olun.
 
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk'i geri gönderme
@@ -45,61 +45,58 @@ Başlamadan önce [öğreticiyi tamamladığınızdan emin olun: Azure Data Box 
 ::: zone-end
 
 1. Veri doğrulama tamamlandıktan sonra diskleri çıkarın. Bağlantı kablolarını çıkarın.
-2. Tüm diskleri ve bağlantı kablolarını kabarcıklı naylona sarın ve bunları sevkiyat kutusuna yerleştirin. Aksesuarlar yoksa ücretler uygulanabilir.
-    - Ambalajını ilk sevkıyatla yeniden kullanın.  
-    - İyi güvenli bir kabarcıklanmasını sarması kullanarak disk paketetmenizi öneririz.
-    - Kutunun içindeki tüm hareketleri azaltmak için Sığdırma 'nin Snug olduğundan emin olun.
+2. Tüm diskleri ve bağlantı kablolarını kabarcıklı naylona sarın ve bunları sevkiyat kutusuna yerleştirin. Aksesuarlar eksikse ücret uygulanabilir.
+    - Ürün size ilk ulaştığında gönderilen paketi kullanın.  
+    - Disklerinizi, hava kabarcıklı ambalaj malzemesiyle sıkıca sararak paketlemenizi öneririz.
+    - Diskin kutunun içinde hareket etmesini engellemek için kutuda boşluk kalmadığından emin olun.
 
-Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir. Yönergeler ABD/Kanada, Avrupa Birliği (AB), Avustralya veya Asya ülkeleri için farklıdır.
+Sonraki adımlar cihazın iade edildiği bölgeye göre belirlenir. ABD/Kanada, Avrupa Birliği (AB), Avustralya veya Asya’daki ülkeler için farklı yönergeler uygulanır.
 
-### <a name="pick-up-in-us-canada"></a>ABD, Kanada 'da seçin
+### <a name="pick-up-in-us-canada"></a>ABD/Kanada'da teslim alma
 
-Cihazı ABD veya Kanada 'Ya döndürürken aşağıdaki adımları uygulayın.
+Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
-1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket hasar görmüşse veya kaybolursa:
-    - Genel Bakış ' a gidin **> sevkiyat etiketini indirin** ve bir dönüş sevk etiketi indirin.
-    - Cihazdaki etiketi afden düzeltir.
+1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket zarar gördüyse veya kayıpsa:
+    - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir sevkiyat etiketi indirin.
+    - Etiketi cihaza iliştirin.
 
 2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
-3. KESINTISIZ bir toplama zamanlayın. Bir toplama zamanlamak için:
+3. UPS ile teslim alma zamanı planlayın. Teslim alma planlamak için:
 
-    - Yerel UPS (ülkeye/bölgeye özel ücretsiz numara) çağırın.
-    - Çağrınızda, basılı etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını teklif edin.
-    - İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
-    - Toplama zamanlamak yerine, en yakın bırakma konumundaki Data Box Disk de bırakabilirsiniz.
+    - Yerel UPS şubesini (ülkeye/bölgeye özel ücretsiz hatlar) arayın.
+    - Görüşme esnasında, basılı etiketinizde gördüğünüz iade izleme numarasını bildirin.
+    - İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
+    - Teslim alma zamanlama yerine Data Box Disk’inizi en yakın teslim etme yerine bırakabilirsiniz.
 
-### <a name="pick-up-in-europe"></a>Avrupa 'da seçin
+### <a name="pick-up-in-europe"></a>Avrupa’da teslim alma
 
-Cihazı Avrupa 'ya döndürürken aşağıdaki adımları uygulayın.
+Cihazı Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
-1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket hasar görmüşse veya kaybolursa:
-    - Genel Bakış ' a gidin **> sevkiyat etiketini indirin** ve bir dönüş sevk etiketi indirin.
-    - Cihazdaki etiketi afden düzeltir.
+1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket zarar gördüyse veya kayıpsa:
+    - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi indirin.
+    - Etiketi cihaza iliştirin.
 
 2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
 3. Cihazı Avrupa'da DHL ile iade ediyorsanız, DHL'in web sitesini ziyaret edip bir havayolu fatura numarası belirterek toplama isteğinde bulunun.
-4. DHL Express web sitesine ülke/bölge ' ye gidin ve **bir Courier Collection > eReturn sevkıyatı**seçin.    
+4. Ülkenin/bölgenin DHL Ekspres web sitesine gidin ve **Kurye Çağırma Rezervasyonu > eİade Sevkiyatı**'nı seçin.    
 3. Konşimento numarasını belirtin ve toplama ayarlaması yapmak için **Toplama Zamanlama**'ya tıklayın.
 
-### <a name="pick-up-in-australia"></a>Avustralya 'da seçin
+### <a name="pick-up-in-australia"></a>Avustralya'da teslim alma
 
-Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. Tüm gelen sevkiyatlar gelişmiş bir bildirime sahip olmalıdır. Avustralya 'da toplama için aşağıdaki adımları uygulayın.
+Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da teslim alma için aşağıdaki adımları uygulayın.
 
-1. Benzersiz `adbops@microsoft.com` gelen kimliği veya Tau kodu olan istek sevkiyat etiketine e-posta gönderin. Etiketi zaman içinde almak için planlı sevk tarihinden en az 3 gün önce, isteği en az 3 gün önce koyun.
-2. E-posta konusu, *Tau kodlu ters Sevkiyat Etiketi Için istek*olmalıdır. E-postaya aşağıdaki ayrıntıları eklediğinizden emin olun: 
+1. Sağlanan iade sevkiyatı etiketini kullanın ve bunun üzerinde TAU kodunun (referans numarası) bulunduğundan emin olun. Sağlanan sevkiyat etiketi eksikse veya başka bir sorununuz varsa şuraya e-posta gönderin [Data Box için Asya bölgesi İşlemleri](mailto:adbo@microsoft.com). Konu üst bilgisi olarak sipariş adını ve karşılaştığınız sorunun ayrıntılarını belirtin.
+3. Etiketi kutuya iliştirin. 
+4. Şu bağlantıdan çevrimiçi olarak bir teslim alma rezervasyonu yapın: https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-    - Sipariş adı
-    - Adres
-    - Kişi adı
+### <a name="pick-up-in-asia"></a>Asya’da teslim alma
 
-### <a name="pick-up-in-asia"></a>Asya 'da seçin
+Japonya, Kore ve Singapur için farklı teslim alma yönergeleri bulunur.
 
-Toplama yönergeleri, Japonya, Kore ve Singapur için farklıdır.
+#### <a name="pick-up-in-japan"></a>Japonya’da teslim alma
 
-#### <a name="pick-up-in-japan"></a>Japonya 'da seçin
-
-1. Şirket adı ve adres bilgilerinizi, gönderici bilgileriniz olarak konsinye notuna yazın.
-2. Aşağıdaki e-posta şablonunu kullanarak e-posta Quantium çözümü.
+1. Sevk mektubuna, gönderici bilgisi olarak şirket adınızı ve adres bilgilerinizi yazın.
+2. Aşağıdaki e-posta şablonunu kullanarak Quantium Solutions’a e-posta gönderin.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -112,43 +109,43 @@ Toplama yönergeleri, Japonya, Kore ve Singapur için farklıdır.
         c. 15：00-17：00 
         d. 17：00-19：00 
     ```
-    - **Osaka 'da**yaşıyorsanız, e-posta şablonundaki konuyu şu şekilde değiştirin: `Pickup request for Microsoft Azure OSA`.
-    - Japon Chakubarai konsinye veya eksik olduğunda, bu e-postada bu göz önünde olduğunu unutmayın. Quantium çözümleri Japonya, toplama sırasında konsinye dekontunu getirmek için Japon gönderi ister.
-    - Birden çok siparişiniz varsa, bireysel toplama sağlamak için e-posta gönderin.
+    - **Osaka’da teslim alıyorsanız** e-posta şablonundaki konu başlığını şöyle değiştirin: `Pickup request for Microsoft Azure OSA`.
+    - Japan Post Chakubarai sevk mektubu gönderilmediyse veya kaybolduysa, gönderdiğiniz e-postada bunu da bildirin. Quantium Solutions Japan, teslim alma esnasında Japan Post’un sevk mektubunu da getirmesini ister.
+    - Birden fazla siparişiniz varsa her birinin ayrı olarak teslim alınması için e-posta gönderin.
 
-3. Bir toplama zamanladıktan sonra, Quantium çözümlerinden bir e-posta onayı alın. E-posta onayı, Chakubarai konsinye notuna ilişkin bilgileri de içerir.
+3. Teslim alma rezervasyonu yaptıktan sonra Quantium Solutions’tan e-posta onay iletisi alırsınız. E-posta onay iletisi, Chakubarai sevk mektubuna yönelik bilgileri de içerir.
 
-Gerekirse, aşağıdaki bilgileri izleyerek Quantium çözüm desteği (Japonca dil) ile iletişim kurabilmeniz gerekir: 
+Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile iletişime geçebilirsiniz: 
 
-- E-posta:Customerservice.JP@quantiumsolutions.com 
-- Telefon: 03-5755-0150 
+- E-posta: Customerservice.JP@quantiumsolutions.com 
+- Telefon：03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Kore 'de Seç
+#### <a name="pick-up-in-korea"></a>Kore’de teslim alma
 
-1. Dönüş konsinye notuna dahil ettiğinizden emin olun.
-2. Konsinye senedi mevcut olduğunda çekme isteği istemek için:
-    1. Ofis saatlerinde 070-8231-1418:00 ' dan 5 ' e kadar, Pazartesi 'Den Cuma 'ya kadar, *Quantium çözümlerini Uluslararası* yardım hattı çağrısı yapın. Teklif *Microsoft Azure* toplama ve bir koleksiyon için düzenleme yapılacak hizmet isteği numarası.  
-    2. Yardım hattı meşgul ise, e- `microsoft@rocketparcel.com`posta konusu *Microsoft Azure toplama* ve hizmet isteği numarası başvuru olarak e-posta.
-    3. Courier koleksiyon için ulaşmazsa, diğer düzenlemeler için *Quantium çözümlerini Uluslararası* yardım hattını çağırın. 
-    4. Çekme zamanlaması için bir e-posta onayı alırsınız.
-3. Bu adımı yalnızca konsinye notunun mevcut olmaması durumunda yapın. Toplama istemek için:
-    1. Ofis saatlerinde 070-8231-1418:00 ' dan 5 ' e kadar, Pazartesi 'Den Cuma 'ya kadar, *Quantium çözümlerini Uluslararası* yardım hattı çağrısı yapın. Teklif *Microsoft Azure* toplama ve bir koleksiyon için düzenleme yapılacak hizmet isteği numarası. Bir koleksiyon için düzenlemek üzere yeni bir konsinye notuna ihtiyacınız olduğunu belirtin. Gönderici (müşteri), alıcı bilgileri (Azure veri merkezi) ve başvuru numarası (hizmet isteği numarası) sağlayın. 
-    2. Yardım hattı meşgul ise, e- `microsoft@rocketparcel.com`posta konusu *Microsoft Azure toplama* ve hizmet isteği numarası başvuru olarak e-posta.
-    3. Courier koleksiyon için ulaşmazsa, diğer düzenlemeler için *Quantium çözümlerini Uluslararası* yardım hattını çağırın. 
-    4. İstek telefon aracılığıyla yapılırsa bir onaylama onayı alırsınız.
+1. İade sevk mektubunu eklediğinizden emin olun.
+2. Sevk mektubunuz mevcutken iade istemek için:
+    1. Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 10.00 - 17.00 arası) 070-8231-1418 numaralı telefondan *Quantium Solutions International* bilgi hattını arayın. Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirin.  
+    2. Bilgi hattı meşgulse referans olarak *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirerek `microsoft@rocketparcel.com` adresine e-posta gönderin.
+    3. Teslim alma için kurye gönderilmezse alternatif planlamalar için *Quantium Solutions International*’ı arayın. 
+    4. Teslim alma zamanlaması için bir onay e-posta iletisi alırsınız.
+3. Bu adımı sevk mektubunun bulunmadığı durumlarda uygulayın. Teslim alma istemek için:
+    1. Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 10.00 - 17.00 arası) 070-8231-1418 numaralı telefondan *Quantium Solutions International* bilgi hattını arayın. Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirin. Teslim alma için yeni bir sevk mektubuna ihtiyaç duyduğunuzu belirtin. Gönderici (müşteri), alıcı (Azure veri merkezi) bilgilerini ve referans numarasını (hizmet isteği numarası) sağlayın. 
+    2. Bilgi hattı meşgulse referans olarak *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını bildirerek `microsoft@rocketparcel.com` adresine e-posta gönderin.
+    3. Teslim alma için kurye gönderilmezse alternatif planlamalar için *Quantium Solutions International*’ı arayın. 
+    4. İstek telefon aracılığıyla yapıldıysa sözlü teyit alırsınız.
 
-#### <a name="pick-up-in-singapore"></a>Singapur 'ta seçin
+#### <a name="pick-up-in-singapore"></a>Singapur’da teslim alma
 
-1. Sevkiyat etiketini yazdırın ve kutunun üzerine ekleyin. Etiket hasar görmüşse veya kaybolursa:
-    - **Genel bakış > sevkiyat etiketini indirme** ve iade sevkiyat etiketi edinme bölümüne gidin.
-    - Cihazdaki etiketi afden düzeltir. Etiketin görünür olduğundan emin olun.
+1. Sevk mektubunu yazdırın ve kutuya iliştirin. Etiket zarar gördüyse veya kayıpsa:
+    - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi edinin.
+    - Etiketi cihaza iliştirin. Etiketin görünür olduğundan emin olun.
 
-2. Toplama istemek için:
-    - Office saatlerinde (00-17:00, Pazartesi 'Den Cuma 'ya kadar) bir **Mapost** **6845 6485** hattı çağrısı yapın.  
-    - Teklif *Microsoft Azure* toplama ve hizmet istek numarası (iade sevkiyat etiketindeki izleme numarası) bir koleksiyon için düzenleme yapılır. 
-    - Çekme zamanlaması için bir onaylama onayı alacaksınız. 
-    - Courier Collection 'a ulaşmazsa, alternatif düzenlemeler için **6845 6485** adresindeki **singpost** 'u çağırın. 
-3. Courier 'e el ile. 
+2. Teslim alma istemek için:
+    - Çalışma saatleri içinde (Pazartesi’den Cuma’ya kadar saat 09.00 - 17.00 arası) **6845 6485** numaralı telefondan **SingPost** yardım hattını arayın.  
+    - Teslim alma planlamak için *Microsoft Azure teslim alma hizmetini* ve hizmet isteği numarasını (iade sevkiyat etiketinin üzerinde yer alan izleme numarası) bildirin. 
+    - Teslim alma zamanlaması için sözlü teyit alırsınız. 
+    - Teslim alması için kurye gönderilmezse alternatif planlamalar için **6845 6485** numaralı telefondan **SingPost**’u arayın. 
+3. Paketi kuryeye teslim edin. 
 
 
 ::: zone target="docs"
@@ -159,12 +156,12 @@ Bu öğreticide aşağıdaki Azure Data Box Disk konularını öğrendiniz:
 
 > [!div class="checklist"]
 > * Data Box Disk'i Microsoft'a gönderme
-> * Farklı bölgelerde Data Box Disk seçin
+> * Data Box Disk’i farklı bölgelerde teslim alma
 
-Data Box Disk 'den Azure depolama hesabına veri yükleme işleminin nasıl doğrulanalınacağını öğrenmek için bir sonraki nasıl yapılır ile ilerleyin.
+Data Box Disk’ten Azure Depolama hesabına yapılan veri yüklemesini doğrulamayı öğrenmek için sonraki nasıl yapılır kılavuzuna geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Data Box Disk verileri karşıya yüklemeyi doğrula](./data-box-disk-deploy-picked-up.md)
+> [Azure Data Box Disk’ten veri yüklemesini doğrulama](./data-box-disk-deploy-picked-up.md)
 
 ::: zone-end
 

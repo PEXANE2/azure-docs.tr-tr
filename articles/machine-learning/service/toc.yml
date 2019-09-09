@@ -113,10 +113,12 @@
       href: concept-deep-learning-vs-machine-learning.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Çalışma alanlarını yönetme
+    - name: Çalışma alanlarını oluşturma ve yönetme
       items:
-        - name: Çalışma alanları için portalı kullanma
+        - name: Azure portalı kullanma
           href: how-to-manage-workspace.md
+        - name: Azure CLI kullanma
+          href: how-to-manage-workspace-cli.md
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
