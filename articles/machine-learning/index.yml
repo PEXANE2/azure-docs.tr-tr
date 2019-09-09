@@ -12,20 +12,20 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 09/03/2019
-  ms.openlocfilehash: e2c5e592c2330f1e5514c5c59c92ff5c8a3a62b2
-  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.openlocfilehash: 58afd4ab8576b78fc3138861c13ac39ae343b04d
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
   ms.translationtype: HT
   ms.contentlocale: tr-TR
   ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70278308"
+  ms.locfileid: "70308783"
 landingContent:
 - title: Azure ML’yi kullanmaya başlama
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Not defterleriyle deneme yapma
+    - text: Python not defterlerinde deneme
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: Görsel arabirimde deneme yapma
+    - text: Sürükle ve bırak kullanarak deneme
       url: service/ui-tutorial-automobile-price-train-score.md
     - text: İlk denemenizi otomatikleştirme
       url: service/tutorial-first-experiment-automated-ml.md
@@ -37,17 +37,17 @@ landingContent:
       url: service/concept-azure-machine-learning-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: Geliştirme ortamları ayarlama
+    - text: Ortamınızı ayarlama
       url: service/how-to-configure-environment.md
     - text: Eğitim işlem hedeflerini ayarlama
       url: service/how-to-set-up-training-targets.md
-- title: Python ile eğitme
+- title: "Deneme: Python SDK'sı"
   linkLists:
   - linkListType: tutorial
     links:
     - text: İlk ML denemenizi oluşturma
       url: service/tutorial-1st-experiment-sdk-setup.md
-    - text: Görüntü sınıflandırma modellerini eğitme
+    - text: Görüntüleri sınıflandırma
       url: service/tutorial-train-models-with-aml.md
     - text: Otomatik ML ile taksi ücretlerini tahmin etme
       url: service/tutorial-auto-train-models.md
@@ -61,23 +61,21 @@ landingContent:
       url: service/how-to-train-pytorch.md
     - text: Keras ile eğitme
       url: service/how-to-train-keras.md
-- title: Görsel arabirimde eğitme
+- title: 'Deneme: görsel arabirim'
   linkLists:
-  - linkListType: get-started
+  - linkListType: tutorial
     links:
-    - text: Otomatik ML denemesi eğitme
+    - text: Abonelikleri tahmin etmek için otomatik ML kullanma
       url: service/tutorial-first-experiment-automated-ml.md
-    - text: Görsel arabirimde eğitme
+    - text: Fiyatları tahmin etmek için doğrusal regresyon kullanma
       url: service/ui-tutorial-automobile-price-train-score.md
   - linkListType: how-to-guide
     links:
-    - text: 'Görsel arabirim: otomobil fiyatlarını tahmin etme'
-      url: service/ui-sample-regression-predict-automobile-price-basic.md
-    - text: 'Görsel arabirim: kredi riskini tahmin etme'
+    - text: Kredi riski tahmini
       url: service/ui-sample-classification-predict-credit-risk-cost-sensitive.md
-    - text: 'Görsel arabirim: gecikmeleri tahmin etme'
+    - text: Gecikmeleri tahmin etme
       url: service/ui-sample-classification-predict-flight-delay.md
-    - text: 'Görsel arabirim: değişim sıklığını tahmin etme'
+    - text: Değişim sıklığı tahmini
       url: service/ui-sample-classification-predict-churn.md
 - title: Modelleri dağıtma ve yönetme
   linkLists:
