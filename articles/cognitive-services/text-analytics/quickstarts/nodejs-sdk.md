@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: shthowse
-ms.openlocfilehash: c3cd64d0a683a60132808bca6a7ceb4aa84db4f1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b5eb327daa74d8e6f384d6f8e1054fb265ce4a7d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195198"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375879"
 ---
 # <a name="quickstart-text-analytics-client-library-for-nodejs"></a>Hızlı Başlangıç: Node. js için metin analizi istemci kitaplığı
 <a name="HOLTop"></a>
@@ -29,7 +29,7 @@ ms.locfileid: "70195198"
 * Varlık tanıma
 * Anahtar tümcecik ayıklama
 
-[Başvuru belge](https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [paketi (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Başvuru belge](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [paketi (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
