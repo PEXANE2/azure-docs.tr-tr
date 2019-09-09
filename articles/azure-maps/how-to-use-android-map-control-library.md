@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3423635ab226693e0b3b057e2c2cb441861ea1b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9abe9eb9cdad6351f49fba2dace64095783455cf
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839417"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376015"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanmaya başlama Android SDK
 
@@ -109,7 +109,18 @@ Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar '�
     * Azure haritalar kimlik doğrulama bilgilerinizi ayarlama
     * **OnCreate** yönteminde Map denetim örneğini al
 
-    AzureMaps sınıfında kimlik doğrulama bilgilerini setSubscriptionKey veya setAadProperties yöntemlerini kullanarak genel olarak ayarlamak, kimlik doğrulama bilgilerinizi her görünüme eklemeniz gerekmez. Harita denetimi, Android 'in OpenGL yaşam döngüsünü yönetmeye yönelik kendi yaşam döngüsü yöntemlerini içerir. Bu, doğrudan içeren etkinlikten çağrılmalıdır. Uygulamanızın doğru şekilde doğru olması için harita denetiminin yaşam döngüsü yöntemlerini çağırın, eşleme denetimini içeren etkinliğin aşağıdaki yaşam döngüsü yöntemlerini geçersiz kılmanız ve ilgili harita denetim yöntemini çağırmanız gerekir. 
+    `setSubscriptionKey` `AzureMaps` Ya`setAadProperties` da yöntemlerini kullanarak sınıftaki kimlik doğrulama bilgilerini genel olarak ayarlamak, kimlik doğrulama bilgilerinizi her görünüme eklemeniz gerekmez. 
+
+    Harita denetimi, Android 'in OpenGL yaşam döngüsünü yönetmeye yönelik kendi yaşam döngüsü yöntemlerini içerir. Bu, doğrudan içeren etkinlikten çağrılmalıdır. Uygulamanızın doğru şekilde doğru olması için harita denetiminin yaşam döngüsü yöntemlerini çağırın, eşleme denetimini içeren etkinliğin aşağıdaki yaşam döngüsü yöntemlerini geçersiz kılmanız ve ilgili harita denetim yöntemini çağırmanız gerekir. 
+
+    * onCreate (paket) 
+    * onStart () 
+    * Onözgeçmişi () 
+    * onPause () 
+    * onStop () 
+    * onDestroy () 
+    * Onsaveınstancestate (paket) 
+    * onLowMemory () 
 
     **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
     
@@ -140,13 +151,24 @@ Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar '�
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-
+    
+            //Wait until the map resources are ready.
+            mapControl.onReady(map -> {
+                //Add your post map load code here.
+    
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
             mapControl.onResume();
+        }
+
+        @Override
+        protected void onStart(){
+            super.onStart();
+            mapControl.onStart();
         }
 
         @Override
@@ -178,7 +200,6 @@ Uygulamanızı oluşturmanın bir sonraki adımı Android SDK Azure haritalar '�
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
         }
-
     }
 
     ```

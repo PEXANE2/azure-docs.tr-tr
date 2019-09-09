@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
 ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "69905586"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>VM'ler için Azure İzleyici etkinleştir (Önizleme) genel bakış
