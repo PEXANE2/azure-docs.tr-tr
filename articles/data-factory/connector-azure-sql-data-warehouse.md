@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275868"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813579"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure SQL veri ambarı veri kopyalayın 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -382,6 +382,7 @@ Azure SQL veri ambarı'na veri kopyalamak için kopyalama etkinliği Havuz tür�
 | writeBatchSize    | **Toplu iş BAŞıNA**SQL tablosuna eklenecek satır sayısı. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **tamsayı** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirleme. | Hayır                                            |
 | writeBatchTimeout | Toplu ekleme işlemi zaman aşımına uğramadan önce tamamlanması için bir süre bekleyin. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **timespan**. Örnek: "00:30:00" (30 dakika). | Hayır                                            |
 | preCopyScript     | Her bir çalıştırmada Azure SQL Data Warehouse'a veri yazılmadan önce çalıştırmak kopyalama etkinliği için bir SQL sorgusunu belirtin. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
+| tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
 | disableMetricsCollection | Data Factory, kopyalama performansı iyileştirmesi ve önerileri için SQL veri ambarı DWUs gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, devre dışı bırakmak için `true` belirtin. | Hayır (varsayılan değer `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL veri ambarı havuzu örnek

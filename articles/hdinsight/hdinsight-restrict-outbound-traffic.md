@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405980"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811950"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma (Önizleme)
 
@@ -46,9 +46,9 @@ Azure Güvenlik Duvarı ile mevcut HDInsight 'ınızdan çıkış kilitleme adı
 
 Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulama kuralı koleksiyonu oluşturun.
 
-Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar** **uygulama kuralı koleksiyonu**  **uygulama kuralı koleksiyonu Ekle**altında Kurallar ' a tıklayın. >  > 
+Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar** **uygulama kuralı koleksiyonu** **uygulama kuralı koleksiyonu Ekle**altında Kurallar ' a tıklayın. >  > 
 
-![Başlık: Uygulama kuralı koleksiyonu ekle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Başlığın Uygulama kuralı koleksiyonu ekle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 **Uygulama kuralı koleksiyonu Ekle** ekranında, aşağıdaki adımları izleyin:
 
@@ -65,16 +65,16 @@ Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar** **uygul
    | Rule_2 | * | https: 443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
    | Rule_3 | * | https: 443, http: 80 | < storage_account_name. blob. Core. Windows. net > | Kümeniz, ile desteklenir ve ardından, için bir kural ekleyin. YALNıZCA HTTPS bağlantılarını kullanmak için depolama hesabında ["güvenli aktarım gerekli"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) özelliğinin etkinleştirildiğinden emin olun. |
 
-1.           **Ekle**'yi tıklatın.
+1. **Ekle**'yi tıklatın.
 
-   ![Başlık: Uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Başlığın Uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Ağ kurallarıyla güvenlik duvarını yapılandırma
 
 HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluşturun.
 
 1. Azure portal yeni güvenlik duvarını **Test-FW01** seçin.
-1. **Ayarlar** **ağ kuralı koleksiyonu**  **ağ kuralı koleksiyonu Ekle**altında Kurallar ' a tıklayın. >  > 
+1. **Ayarlar** **ağ kuralı koleksiyonu** **ağ kuralı koleksiyonu Ekle**altında Kurallar ' a tıklayın. >  > 
 1. **Ağ kuralı koleksiyonu Ekle** ekranında, bir **ad**, **Öncelik**girin ve **eylem** açılan menüsünden **izin ver** ' e tıklayın.
 1. **IP adresleri** bölümünde aşağıdaki kuralları oluşturun:
 
@@ -93,7 +93,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
 1. Ağ kuralı koleksiyonunuzun oluşturulmasını tamamladıktan sonra **Ekle** ' ye tıklayın.
 
-   ![Başlık: Uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Başlığın Uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Rota tablosu oluşturma ve yapılandırma
 

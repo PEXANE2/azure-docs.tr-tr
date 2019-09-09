@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 591fd2e0f5c6d36ad6b84b1f3ec035488fa02614
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 2caa96e0ad036bbb872de43a7d8736969cf33c42
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733257"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812048"
 ---
-# <a name="monitor-cluster-performance"></a>Küme performansını izleme
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
 
 HDInsight kümesinin sistem durumunu ve performansını izlemek, en iyi performansı ve kaynak kullanımını sürdürmek için gereklidir. İzleme, küme yapılandırma hatalarını ve Kullanıcı kodu sorunlarını tespit etmenize ve adreslamanıza yardımcı olabilir.
 

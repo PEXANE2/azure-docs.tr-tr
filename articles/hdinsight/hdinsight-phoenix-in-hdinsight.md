@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: f07c7b7a6b1eea05ba41a875e9e78f31404c5f32
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733197"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811904"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>HDInsight üzerinde Apache Phoenix
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Phoenix
 
 [Apache Phoenix](https://phoenix.apache.org/) , [Apache HBase](hbase/apache-hbase-overview.md)üzerinde oluşturulmuş açık kaynaklı, yüksek düzeyde paralel ilişkisel veritabanı katmanıdır. Phoenix, HBase üzerinde SQL benzeri sorgular kullanmanıza olanak sağlar. Phoenix, kullanıcıların SQL tabloları, dizinler, görünümler ve diziler oluşturma, silme, değiştirme ve tek tek ve toplu olarak satır oluşturma, silme, değiştirme ve silme gibi bir JDBC sürücülerini kullanır. Phoenix, sorguları derlemek için MapReduce kullanmak yerine noSQL yerel derlemesini kullanır ve bu, HBase üzerinde düşük gecikmeli uygulamalar oluşturulmasını sağlar. Phoenix, istemci tarafından sağlanan kodu sunucunun adres alanında çalıştırmayı desteklemek için ortak işlemciler ekler ve kodun verilerle birlikte yürütülmesi sağlanır. Bu yaklaşım, istemci/sunucu veri aktarımını en aza indirir.
 

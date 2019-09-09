@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11fc41374089c0ab7258dd191a255387713836eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 55e4b04814daaaff5bc217a561e9045d313d9675
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622314"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811432"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir QQ hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -28,7 +28,7 @@ Bir QQ hesabını Azure Active Directory (Azure AD) B2C 'de bir kimlik sağlayı
 ### <a name="register-for-the-qq-developer-program"></a>QQ geliştirici programına kaydolma
 
 1. QQ hesabı kimlik bilgilerinizle [QQ Geliştirici Portalında](http://open.qq.com) oturum açın.
-1. Oturum açtıktan sonra, kendinizi bir [http://open.qq.com/reg](http://open.qq.com/reg) geliştirici olarak kaydetmek için bölümüne gidin.
+1. Oturum açtıktan sonra, kendinizi bir [https://open.qq.com/reg](https://open.qq.com/reg) geliştirici olarak kaydetmek için bölümüne gidin.
 1. **个人**(bireysel Geliştirici) seçeneğini belirleyin.
 1. Gerekli bilgileri girin ve**下一步**(sonraki adım) seçeneğini belirleyin.
 1. E-posta doğrulama sürecini doldurun. Bir geliştirici olarak kaydedildikten sonra birkaç günün onaylanmasını beklemeniz gerekecektir.

@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946379"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812293"
 ---
-# <a name="log-metrics-during-training-runs"></a>Eğitim çalıştırmaları sırasında günlük ölçümleri
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Azure Machine Learning ile Machine Learning eğitim ölçümlerini izleyin
 
-Denemeleri ve izleme ölçümlerinizi izleyerek model oluşturma işlemini geliştirin. Bu makalede, eğitim betiğe nasıl günlük ekleneceğini, bir deneme çalıştırması göndermenize, çalıştırmayı izlemenize ve Azure Machine Learning hizmetinde çalıştırmanın sonuçlarını görüntülemenize öğrenin.
+Denemeleri ve izleme ölçümlerinizi izleyerek model oluşturma işlemini geliştirin. Bu makalede, eğitim betiğe günlük kodu eklemeyi, bir deneme çalıştırması göndermeyi, çalışmayı izlemeyi ve Azure Machine Learning hizmetinde sonuçları incelemeyi öğrenin.
 
 > [!NOTE]
-> Azure Machine Learning hizmet, eğitim sırasında diğer kaynaklardaki bilgileri, örneğin, oto ml veya eğitim işini çalıştıran Docker kapsayıcısını de günlüğe kaydeder. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
+> Azure Machine Learning hizmet, otomatik makine öğrenimi çalıştırmaları veya eğitim işini çalıştıran Docker kapsayıcısı gibi eğitim sırasında diğer kaynaklardaki bilgileri de günlüğe alabilir. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
 
-## <a name="list-of-training-metrics"></a>Eğitim ölçümlerin listesi 
+## <a name="available-metrics-to-track"></a>İzlenecek kullanılabilir ölçümler
 
 Aşağıdaki ölçümler, bir denemeyi eğitim sırasında çalıştırılacak eklenebilir. Bir çalıştırmada izlenebilir daha ayrıntılı bir listesi görmek için bkz: [sınıfı başvuru belgeleri çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
@@ -43,7 +43,7 @@ Aşağıdaki ölçümler, bir denemeyi eğitim sırasında çalıştırılacak e
 > [!NOTE]
 > Skalerler, listeler, satır ve tablolar için ölçümleri türü olabilir: kayan noktalı sayı, tamsayı veya dize.
 
-## <a name="start-logging-metrics"></a>Günlüğe kaydetme ölçümleri Başlat
+## <a name="choose-a-logging-option"></a>Günlüğe kaydetme seçeneği seçin
 
 İzlemek veya denemenizi izlemek istiyorsanız, çalıştırma gönderdiğinizde oturum başlatmak için kod eklemeniz gerekir. Çalıştırma gönderim tetiklemek için yollar şunlardır:
 * __Run.start_logging__ - günlük işlevleri eğitim komut dosyanıza ekleyin ve bir etkileşimli günlüğe kaydetme oturumu içinde belirtilen denemeyi başlatın. **start_logging** dizüstü bilgisayarlar gibi senaryolarda kullanım için etkileşimli bir çalışma oluşturur. Oturumu sırasında günlüğe kaydedilen tüm ölçümler, denemeyi çalıştırma kaydı eklenir.

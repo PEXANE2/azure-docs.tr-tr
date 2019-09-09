@@ -1,17 +1,17 @@
 ---
 title: Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
-description: Azure HDInsight 'ta Apache Spark için çeşitli OutOfMemoryError özel durumları
+description: Azure HDInsight 'ta Apache Spark kümesi için çeşitli OutOfMemoryError özel durumları
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/15/2019
-ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 6e7157f4e40dbc585d19affaf0c12af2e6ba60c1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543472"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813906"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 

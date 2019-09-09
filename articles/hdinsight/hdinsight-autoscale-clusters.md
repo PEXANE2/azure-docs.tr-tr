@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight kümelerini otomatik ölçeklendirme (Önizleme)
-description: Kümeleri otomatik olarak ölçeklendirmek için HDInsight otomatik ölçeklendirme özelliğini kullanın
+description: Ölçek kümelerini otomatik olarak Apache Hadoop için Azure HDInsight otomatik ölçeklendirme özelliğini kullanın
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 877fc3a4e29fc1753d7b4f92091b34d4b2537846
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70770692"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810334"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight kümelerini otomatik ölçeklendirme (Önizleme)
 
@@ -85,7 +85,7 @@ Otomatik ölçeklendirme özelliğini yük tabanlı ölçeklendirmeyle etkinleş
     * Çalışan düğüm sayısı **alt sınırı** .  
     * Çalışan düğüm sayısı **üst sınırı** .  
 
-    ![Çalışan düğümü yük tabanlı otomatik ölçeklendirme seçeneğini etkinleştir](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![Çalışan düğümü yük tabanlı otomatik ölçeklendirmeyi etkinleştir](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 Çalışan düğümlerinin ilk sayısı, dahil en düşük ve en yüksek arasında olmalıdır. Bu değer, oluşturulduğu sırada kümenin başlangıç boyutunu tanımlar. Çalışan düğümlerinin minimum sayısı sıfırdan büyük olmalıdır.
 
@@ -103,7 +103,7 @@ Otomatik ölçeklendirme özelliğini zamanlama tabanlı ölçeklendirmeyle etki
 1. Koşulun etkili olması gereken süreyi ve kümenin ölçeklendirilmesi gereken düğüm sayısını düzenleyin.
 1. Gerekirse daha fazla koşul ekleyin.
 
-    ![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme seçeneğini etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![Çalışan düğümü zamanlama tabanlı oluşturmayı etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
 Düğüm sayısı 1 ile koşul eklemeden önce girdiğiniz çalışan düğüm sayısı arasında olmalıdır.
 
@@ -111,7 +111,7 @@ Düğüm sayısı 1 ile koşul eklemeden önce girdiğiniz çalışan düğüm s
 
 Hem yük tabanlı hem de zamanlama tabanlı ölçekleme için çalışan düğümleri için sanal makine türünü seçin, **çalışan düğümü boyutu** ve **baş düğüm boyutu**' na tıklayın. Her düğüm türü için VM türünü seçtikten sonra, tüm küme için tahmini maliyet aralığını görebilirsiniz. VM türlerini bütçenize uyacak şekilde ayarlayın.
 
-![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme seçeneğini etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme düğümü boyutunu etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
 Aboneliğinizin her bölge için bir kapasite kotası vardır. Baş düğümlerinizin en fazla sayıda çalışan düğümü ile Birleşik Toplam çekirdek sayısı kapasite kotasını aşamaz. Ancak, bu kota bir hafif limit; her zaman kolayca arttırılabilmeniz için bir destek bileti oluşturabilirsiniz.
 
@@ -189,7 +189,7 @@ Bölüme bir `autoscale` `computeProfile` düğüm > ekleyerekbir Azure Resource
 #### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 Çalışan bir kümede otomatik ölçeklendirmeyi etkinleştirmek için **Ayarlar**altında **küme boyutu** ' nu seçin. Sonra **Otomatik ölçeklendirmeyi etkinleştir**' e tıklayın. İstediğiniz otomatik ölçeklendirme türünü seçin ve yük tabanlı veya zamanlama tabanlı ölçeklendirme seçeneklerini girin. Son olarak **Kaydet**' e tıklayın.
 
-![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme seçeneğini etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirmeyi etkinleştirme kümesi](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>REST API’sini kullanma
 REST API kullanarak çalışan bir kümede otomatik ölçeklendirmeyi etkinleştirmek veya devre dışı bırakmak için, aşağıdaki kod parçacığında gösterildiği gibi otomatik ölçeklendirme uç noktasına bir POST isteği oluşturun:
@@ -231,7 +231,7 @@ Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, hedef boyut
 
 Azure portal listelenen küme durumu, otomatik ölçeklendirme etkinliklerini izlemenize yardımcı olabilir.
 
-![Çalışan düğümü yük tabanlı otomatik ölçeklendirme seçeneğini etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![Çalışan düğümü yük tabanlı otomatik ölçeklendirme kümesi durumunu etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
 Görebileceğiniz tüm küme durumu iletileri aşağıdaki listede açıklanmıştır.
 
@@ -251,7 +251,7 @@ Küme ölçümlerinin bir parçası olarak küme ölçeği artırma ve ölçeği
 
 **İzleme**altında **ölçümler** ' i seçin. Ardından **ölçüm** açılan kutusundan ölçüm ve **etkin çalışan sayısı** **Ekle** ' ye tıklayın. Zaman aralığını değiştirmek için sağ üstteki düğmeye tıklayın.
 
-![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme seçeneğini etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme ölçümünü etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

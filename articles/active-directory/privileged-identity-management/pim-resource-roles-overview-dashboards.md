@@ -1,9 +1,9 @@
 ---
-title: Kaynak Pano PIM - Azure Active Directory erişim gözden geçirmesi gerçekleştirme | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) erişim gözden geçirmesi gerçekleştirmek için bir kaynak Pano kullanmayı açıklar.
+title: PıM-Azure Active Directory 'de erişim incelemesi gerçekleştirmek için kaynak panosu kullanma | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) ' de bir erişim incelemesi gerçekleştirmek için bir kaynak panosunun nasıl kullanılacağını açıklar.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 03/30/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5404d1b85821458aedef64b72ae635ea49aa1ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e759ba47c16617aa1783ce6fb0e324aa62ee96d
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602480"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804121"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>PIM'de erişim gözden geçirmesi gerçekleştirmek için bir kaynak Panosu'nu kullanın
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>PıM 'de erişim incelemesi gerçekleştirmek için bir kaynak panosu kullanın
 
-Kaynak Pano, Azure Active Directory (Azure AD) Privileged Identity Management (PIM) erişim gözden geçirmesi gerçekleştirmek için kullanabilirsiniz. Yönetici görünümü Pano üç birincil bileşenden oluşur:
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM) ' de bir erişim incelemesi gerçekleştirmek için bir kaynak panosu kullanabilirsiniz. Yönetici görünümü panosu üç birincil bileşene sahiptir:
 
-- Kaynak rol etkinleştirmeleri grafik gösterimi.
-- Rol atamaları atamaya göre dağılımını gösteren iki grafik türü.
-- Yeni rol atamaları için ilgili bir veri alanı.
+- Kaynak rolü etkinleştirmeleri grafik gösterimi.
+- Atama türüne göre rol atamalarının dağılımını görüntüleyen iki grafik.
+- Yeni rol atamalarıyla ilgili bir veri alanı.
 
-![Yönetici görünümü Pano graflar ve grafikler gösteren ekran görüntüsü](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
+![Grafik ve grafiklerin gösterildiği yönetici görünümü panosunun ekran görüntüsü](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
-![Yönetici görünümü panosunun ekran görüntüsü, gösteren veriler listelenir.](media/pim-resource-roles-overview-dashboards/role-settings.png)
+![Yönetici görünümü panosunun, veri listelerini gösteren ekran görüntüsü](media/pim-resource-roles-overview-dashboards/role-settings.png)
 
-Kaynak rol etkinleştirmeleri grafik gösterimi son yedi gün kapsar. Bu veriler, seçili kaynak için kapsamlı ve en sık kullanılan rolleri (sahibi, katkıda bulunan, kullanıcı erişimi Yöneticisi) ve birleşik tüm roller için etkinleştirme görüntüler.
+Kaynak rolü etkinleştirmeleri 'nin grafik temsili son yedi gün içinde yer alır. Bu veriler, seçilen kaynağın kapsamına alınır ve en yaygın rollerin (sahip, katkıda bulunan, Kullanıcı erişimi Yöneticisi) ve tüm rollerin birleştirilme için etkinleştirmeleri görüntüler.
 
-Etkinleştirmeleri graf sağında, iki grafik hem kullanıcılar hem de grupları atama türü tarafından rol atamalarını dağılımını görüntüleyin. Değerin bir yüzde değeri (veya tersi), bir dilimi grafiğin seçerek değiştirebilirsiniz.
+Etkinleştirmeler grafiğinin sağında, iki grafik rol atamalarının her iki Kullanıcı ve grup için atama türüne göre dağılımını görüntüler. Grafiğin bir dilimini seçerek değeri bir yüzde (veya tersi) olarak değiştirebilirsiniz.
 
-Grafikleri, son 30 gün ve roller (Azalan) toplam atamalara göre sıralanmış listesini üzerinde kullanıcılar ve gruplar ile yeni rol atamaları sayısı bakın.
+Grafiklerin altında, son 30 gün içinde yeni rol atamalarına sahip kullanıcı ve grup sayısını ve toplam atamalara göre sıralanmış rollerin bir listesini (azalan sırada) görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

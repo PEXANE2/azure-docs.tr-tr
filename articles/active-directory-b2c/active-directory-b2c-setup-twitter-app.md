@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ff795bbbd3cf136735499b571367cf5b8a6ec170
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5cb5c5813bff8c0df5b119ea1cadf4f2e7c1696a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622161"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811385"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Twitter hesabıyla kaydolma ve oturum açma ayarlama
 
@@ -27,7 +27,7 @@ Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir 
 1. **Uygulama oluştur**' u seçin.
 1. Uygulama **adı** ve **uygulama açıklaması**girin.
 1. **Web sitesi URL 'si**' `https://your-tenant.b2clogin.com`nde, girin. Kiracınızın adıyla değiştirin `your-tenant` . Örneğin: https://contosob2c.b2clogin.com.
-1. **Geri çağırma URL 'si**için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`. Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin: `b2c_1A_signup_signin_twitter`. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+1. **Geri çağırma URL 'si**için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`. Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin: `b2c_1A_signup_signin_twitter`. Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanmanız gerekir.
 1. Sayfanın alt kısmındaki koşulları okuyup kabul edin ve **Oluştur**' u seçin.
 1. **Uygulama ayrıntıları** sayfasında **Düzenle > Ayrıntıları Düzenle**' yi seçin, **Twitter ile oturum açmayı etkinleştir**onay kutusunu işaretleyin ve ardından **Kaydet**' i seçin.
 1. **Anahtarlar ve belirteçler** seçin, daha sonra kullanılacak **Tüketici API anahtarını** ve **Tüketici API 'sinin gizli anahtar** değerlerini kaydedin.

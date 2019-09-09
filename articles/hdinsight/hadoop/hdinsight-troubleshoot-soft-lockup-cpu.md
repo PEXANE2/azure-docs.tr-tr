@@ -1,17 +1,17 @@
 ---
 title: izleme hatası bir Azure HDInsight kümesinden yazılım yavaş kilit hatası
-description: izleme hatası yazılımdan kilitleme CPU, çekirdek Syslog 'lar 'da görünür
+description: İzleme hatası Soft kilitleniyor CPU, Azure HDInsight kümesi 'ndeki çekirdek Syslog 'lar 'da görünür
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 9278c174d96cb6b1823c8dbfdcba197b7a3c05cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 618a871bee762900d4c99700cde42d759506b4b9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829183"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810590"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Senaryo: "izleme: Hata: bir Azure HDInsight kümesinden yazılım kilitleme-CPU "hatası
 
@@ -38,7 +38,7 @@ Linux çekirdeğindeki bir [hata](https://bugzilla.kernel.org/show_bug.cgi?id=19
     | Özellik | Value |
     | --- | --- |
     | Betik türü | -Özel |
-    | Ad |Çekirdek geçici kilit sorunu için çözüm |
+    | Name |Çekirdek geçici kilit sorunu için çözüm |
     | Bash betiği URI'si |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Düğüm türleri |Çalışan, Zookeeper |
     | Parametreler |Yok |

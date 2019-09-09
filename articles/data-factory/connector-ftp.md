@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: a20c6e90f38e6443597fdf50edd3d4766dc71096
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 98c13287e6e549f1fbcab710adc12cdf5416e814
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275282"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813177"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak FTP sunucusundan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -122,12 +122,12 @@ Aşağıdaki özellikler FTP bağlantılı hizmeti için desteklenir:
 
 Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
-- **Parquet, sınırlandırılmış metin, avro ve ikili biçimi**Için, [Parquet, sınırlandırılmış metin, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
-### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim veri kümesi
+### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim veri kümesi
 
-**Parquet, sınırlandırılmış metin veya ikili biçiminden**veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçime](format-avro.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar `location` altında FTP için desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimdeki**verileri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar `location` altında FTP için desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -166,7 +166,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 ### <a name="other-format-dataset"></a>Diğer biçim veri kümesi
 
-**Orc/JSON BIÇIMINDE**FTP 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
+FTP 'den **orc biçimindeki**verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -217,12 +217,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="ftp-as-source"></a>Kaynak olarak FTP
 
-- **Parquet, sınırlandırılmış metin, avro ve binary biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
+- **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Parquet, sınırlandırılmış metin, Avro veya binary biçimindeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenen ayarlar üzerinde [Parquet biçimi](format-parquet.md), [sınırlandırılmış metin biçimi](format-delimited-text.md), [avro Format](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın . Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları `storeSettings` altında FTP için desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimdeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenmiş olan [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın Ayarlar. Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları `storeSettings` altında FTP için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -281,7 +281,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 #### <a name="other-format-source"></a>Diğer biçim kaynağı
 
-**Orc/JSON BIÇIMINDE**FTP 'den veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+**Orc BIÇIMINDE**FTP 'den veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183178"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809207"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Sık sorulan sorular (SSS)
 
@@ -124,9 +124,9 @@ Hayır, Azure AD B2C Azure AD Premium aynı rapor kümesini desteklemez. Ancak b
 
 Evet!  Genel önizlemede olan [dil özelleştirmesi](active-directory-b2c-reference-language-customization.md)hakkında bilgi edinin. 36 dil için çeviriler sunuyoruz ve gereksinimlerinize uyacak şekilde herhangi bir dizeyi geçersiz kılabilirsiniz.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Azure AD B2C tarafından sunulan kaydolma ve oturum açma sayfalarınızda kendi URL 'lerimi kullanabilir miyim? Örneğin, login.microsoftonline.com URL 'sini login.contoso.com olarak değiştirebilir miyim?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C tarafından sunulan kaydolma ve oturum açma sayfalarınızda kendi URL 'lerimi kullanabilir miyim? Örneğin, contoso.b2clogin.com URL 'sini login.contoso.com olarak değiştirebilir miyim?
 
-Şu anda değil. Bu özellik yol haritasında bulunur. Azure portal etki alanı sekmesinde etki alanınızı doğrulamak, bu hedefin yerine getirmiyor.
+Şu anda değil. Bu özellik yol haritasında bulunur. Azure portal **etki alanı sekmesinde etki** alanınızı doğrulamak, bu hedefin yerine getirmiyor. Bununla birlikte, b2clogin.com ile [bağımsız bir en üst düzey etki alanı](b2clogin.md)sunuyoruz ve bu nedenle dış görünüm Microsoft 'un bahsetmeden uygulanabilir.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C kiracımı Nasıl yaparım? silinsin mi?
 

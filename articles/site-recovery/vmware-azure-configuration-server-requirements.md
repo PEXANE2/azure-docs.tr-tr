@@ -1,35 +1,35 @@
 ---
-title: Azure Site Recovery ile azure'a VMware olağanüstü durum kurtarma için yapılandırma sunucusu gereksinimleri | Microsoft Docs
-description: Bu makalede Azure Site Recovery ile azure'a VMware olağanüstü durum kurtarması için yapılandırma sunucusunu dağıtırken desteği ve gereksinimleri açıklanır
+title: Azure Site Recovery ile Azure 'da VMware olağanüstü durum kurtarma için yapılandırma sunucusu gereksinimleri | Microsoft Docs
+description: Bu makalede, Azure Site Recovery ile Azure 'a VMware olağanüstü durum kurtarma için yapılandırma sunucusu dağıtma desteği ve gereksinimleri açıklanır
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 94f410b7bd3b7c2eb3d7d6a9316323092010338e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86fa817128dc89eb97bee18f4f8a6de1f650c265
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418344"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814293"
 ---
-# <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Vmware'den azure'a olağanüstü durum kurtarma için yapılandırma sunucusu gereksinimleri
+# <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için yapılandırma sunucusu gereksinimleri
 
-Kullanırken bir şirket içi yapılandırma sunucusunu dağıtma [Azure Site Recovery](site-recovery-overview.md) VMware Vm'lerini ve fiziksel sunucuları azure'a olağanüstü durum kurtarma için.
+VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması için [Azure Site Recovery](site-recovery-overview.md) kullandığınızda şirket içi yapılandırma sunucusu dağıtabilirsiniz.
 
-- Yapılandırma sunucusu koordinatları iletişimleri arasında şirket içi VMware ve Azure. Veri çoğaltma işlemlerini yönetir.
-- [Daha fazla bilgi edinin](vmware-azure-architecture.md) yapılandırma sunucusu bileşenleri ve süreçleri hakkında.
+- Yapılandırma sunucusu, şirket içi VMware ve Azure arasındaki iletişimleri koordine eder. Ayrıca veri çoğaltmasını yönetir.
+- Yapılandırma sunucusu bileşenleri ve süreçler hakkında [daha fazla bilgi edinin](vmware-azure-architecture.md) .
 
 ## <a name="configuration-server-deployment"></a>Yapılandırma sunucusu dağıtımı
 
-Azure'da olağanüstü durum kurtarma, VMware Vm'leri için yapılandırma sunucusunu bir VMware VM olarak dağıtma.
+VMware VM 'lerinin Azure 'a olağanüstü durum kurtarması için yapılandırma sunucusunu bir VMware VM 'si olarak dağıtırsınız.
 
-- Site Recovery, Azure portalından indirin ve vCenter sunucusuna yapılandırma sunucusu sanal makine kurmak için içe OVA şablonu sağlar.
-- OVA şablonunu kullanarak yapılandırma sunucusunu dağıtma, VM otomatik olarak bu makalede listelenen gereksinimleri ile uyumludur.
-- OVA şablonunu kullanarak yapılandırma sunucusunu ayarladıktan ayarlamanızı öneririz. VMware Vm'leri için olağanüstü durum kurtarma işlemini ayarladığınız ve OVA şablon kullanamazsınız, ancak yapılandırma sunucusu kullanarak dağıtabileceğiniz [sağlanan bu yönergeleri](physical-azure-set-up-source.md).
-- Şirket içi fiziksel makinelerin olağanüstü durum kurtarması için yapılandırma sunucusunu Azure'a dağıtıyorsanız, yönergeleri izleyin [bu makalede](physical-azure-set-up-source.md). 
+- Site Recovery, Azure portal karşıdan yüklediğiniz bir OVA şablonu sağlar ve yapılandırma sunucusu VM 'sini ayarlamak için vCenter Server içeri aktarabilirsiniz.
+- Yapılandırma sunucusunu OVA şablonunu kullanarak dağıttığınızda, VM Bu makalede listelenen gereksinimlere otomatik olarak uyar.
+- OVA şablonunu kullanarak yapılandırma sunucusunu ayarlamanızı kesinlikle öneririz. Ancak, VMware VM 'Leri için olağanüstü durum kurtarma ayarlıyorsanız ve OVA şablonunu kullandığımyorsanız, [belirtilen yönergeleri](physical-azure-set-up-source.md)kullanarak yapılandırma sunucusunu dağıtabilirsiniz.
+- Şirket içi fiziksel makinelerin olağanüstü durum kurtarması için yapılandırma sunucusunu Azure 'a dağıtıyorsanız, [Bu makaledeki](physical-azure-set-up-source.md)yönergeleri izleyin. 
 
 
 ## <a name="hardware-requirements"></a>Donanım gereksinimleri
@@ -38,7 +38,7 @@ Azure'da olağanüstü durum kurtarma, VMware Vm'leri için yapılandırma sunuc
 --- | ---
 CPU çekirdekleri | 8 
 RAM | 16 GB
-Disk sayısı | işletim sistemi diski, işlem sunucusu önbellek diski ve yeniden çalışma için bekletme sürücüsü dahil olmak üzere, 3 
+Disk sayısı | 3, işletim sistemi diski, işlem sunucusu önbellek diski ve yeniden çalışma için bekletme sürücüsü dahil 
 Boş disk alanı (işlem sunucusu önbelleği) | 600 GB
 Boş disk alanı (bekletme diski) | 600 GB
 
@@ -49,39 +49,39 @@ Boş disk alanı (bekletme diski) | 600 GB
 İşletim sistemi | Windows Server 2012 R2 <br> Windows Server 2016
 İşletim sistemi yerel ayarı | İngilizce (en-us)
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V 
-Grup İlkeleri | Bu grup ilkeleri etkinleştirme: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenleme araçlarına erişimi engelleyin. <br> -Mantıksal dosya ekleri için güven. <br> -Betik yürütmeyi açma. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Önceden var olan varsayılan Web sitesi <br> -Önceden var olan Web sitesi/443 numaralı bağlantı noktasını dinlemeye uygulama <br>-Etkinleştir [anonim kimlik doğrulaması](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Etkinleştir [Fastcgı](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarı 
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Önceden varolan varsayılan Web sitesi yok <br> -Önceden tanımlı bir Web sitesi/uygulama, 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir 
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
 **Bileşen** | **Gereksinim** 
 --- | --- 
 IP adresi türü | Statik 
-İnternet erişimi | Sunucusunun şu URL'lere erişimi olmalıdır (doğrudan veya proxy aracılığıyla): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF ayrıca aşağıdaki URL'lere erişim gerekir: <br> - https:\//login.microsoftonline.com <br> -https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> -https:\//auth.gfx.ms <br> -https:\//graph.windows.net <br> -https:\//login.windows.net <br> - https:\//www.live.com <br> -https:\//www.microsoft.com <br> -https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
+İnternet erişimi | Sunucunun bu URL 'Lere erişmesi gerekir (doğrudan veya proxy üzerinden): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> -https:\//Management.Azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF 'nin Ayrıca aşağıdaki URL 'Lere erişmesi gerekir: <br> -https:\//Login.microsoftonline.com <br> -https:\//Secure.aadcdn.microsoftonline-p.com <br> -https:\//Login.Live.com  <br> -https:\//Auth.gfx.MS <br> -https:\//Graph.Windows.net <br> -https:\//Login.Windows.net <br> -https:\//www.Live.com <br> -https:\//www.Microsoft.com <br> -https:\//dev.MySQL.com/Get/downloads/MySQLInstaller/MySQL-installer-Community-5.7.20.0.msi 
 Bağlantı Noktaları | 443 (Denetim kanalı düzenleme)<br>9443 (Veri aktarımı) 
-NIC türü | VMXNET3 (yapılandırma sunucusu VMware VM ise)
+NIC türü | VMXNET3 (yapılandırma sunucusu bir VMware sanal makinesi ise)
 
 ## <a name="required-software"></a>Gerekli yazılım
 
 **Bileşen** | **Gereksinim** 
 --- | ---
-VMware vSphere Powerclı | [Powerclı 6.0 sürümünün](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) yapılandırma sunucusunu bir VMware sanal makine üzerinde çalışıyorsa yüklü olması gerekir.
-MYSQL | MySQL yüklü olması gerekir. El ile yükleyebilirsiniz veya Site Recovery yükleyebilirsiniz.
+PowerCLI VMware vSphere | Yapılandırma sunucusu bir VMware VM üzerinde çalışıyorsa [PowerCLI sürüm 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 'nin yüklenmesi gerekir.
+MYSQL | MySQL yüklenmelidir. Uygulamasını el ile yükleyebilir veya Site Recovery yükleyebilirsiniz.
 
 ## <a name="sizing-and-capacity-requirements"></a>Boyutlandırma ve kapasite gereksinimleri
 
-Yapılandırma sunucusu için kapasite gereksinimleri aşağıdaki tabloda özetlenmiştir. Birden çok VMware sanal makinelerini çoğaltıyorsanız, gözden geçirmeniz gereken [kapasite planlaması konuları](site-recovery-plan-capacity-vmware.md), çalıştırıp [Azure Site Recovery dağıtım Planlayıcısı](site-recovery-deployment-planner.md) VMWare replication.read için aracı 
+Aşağıdaki tabloda yapılandırma sunucusu için kapasite gereksinimleri özetlenmektedir. Birden çok VMware VM 'yi çoğaltırken, [Kapasite Planlama konuları](site-recovery-plan-capacity-vmware.md)' nı gözden geçirmeniz ve VMware çoğaltma için [Azure Site Recovery dağıtım planlayıcısı](site-recovery-deployment-planner.md) aracını çalıştırmanız gerekir. okuma 
 
 **Bileşen** | **Gereksinim** 
 --- | ---
 
-| **CPU** | **Bellek** | **Önbellek diski** | **Veri değişiklik oranı** | **Çoğaltılan makineler** |
+| **CPU** | **Bellek** | **Önbellek diski** | **Veri değişim oranı** | **Çoğaltılan makineler** |
 | --- | --- | --- | --- | --- |
-| 8 Vcpu<br/><br/> Yuva 2 * 4 çekirdek \@ 2.5 GHz | 16 GB | 300 GB | 500 GB veya daha az | LES 100 makineler daha |
-| 12 Vcpu<br/><br/> 2 socks * 6 çekirdek \@ 2.5 GHz | 18 GB | 600 GB | 500 GB - 1 TB | 100-150 makineler |
-| 16 Vcpu<br/><br/> 2 socks * 8 çekirdek \@ 2.5 GHz | 32 GB | 1 TB | 1-2 TB | 150-200 makineler | 
+| 8 vCPU<br/><br/> 2 yuva * 4 çekirdek \@ 2,5 GHz | 16 GB | 300 GB | 500 GB veya daha az | 100 makineden Les |
+| 12 vCPU<br/><br/> 2 SOCKS * 6 çekirdek \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100-150 makine |
+| 16 vCPU<br/><br/> 2 SOCKS * 8 çekirdek \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150-200 makine | 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Olağanüstü durum kurtarma ayarlama [VMware Vm'lerini](vmware-azure-tutorial.md) azure'a.
+[VMware VM](vmware-azure-tutorial.md) 'lerinin olağanüstü durum kurtarma 'yi Azure 'a ayarlayın.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208352"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806601"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -191,6 +191,9 @@ Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş süreklil
 
   Yük devretmeden sonra birincil örneğe kesintiye uğramayan bağlantı sağlamak için hem birincil hem de ikincil örneklerin aynı DNS bölgesinde olması gerekir. Aynı çoklu etki alanı (SAN) sertifikasının, yük devretme grubundaki iki örneklerden birine yönelik istemci bağlantılarının kimliğini doğrulamak için kullanılabilir olmasını garanti eder. Uygulamanız üretim dağıtımı için hazırsanız, farklı bir bölgede ikincil bir örnek oluşturun ve DNS bölgesini birincil örnekle paylaştığından emin olun. Azure Portal, PowerShell veya REST API kullanarak isteğe `DNS Zone Partner` bağlı bir parametre belirterek bunu yapabilirsiniz. 
 
+> [!IMPORTANT]
+> Alt ağda oluşturulan ilk örnek, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.   
+
   Birincil örnekle aynı DNS bölgesinde ikincil örnek oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
 - **İki örnek arasında çoğaltma trafiğini etkinleştir**
@@ -221,7 +224,7 @@ Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş süreklil
   Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için sunucu URL 'si `server.secondary.zone_id.database.windows.net` olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
   > [!NOTE]
-  > Belirli hizmet katmanlarında Azure SQL veritabanı, salt okunurdur ve salt okuma [](sql-database-read-scale-out.md) sorgusu iş yüklerini yalnızca bir salt okunurdur ve `ApplicationIntent=ReadOnly` bağlantı dizesindeki parametresini kullanarak yük dengelemesi için destekler. Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
+  > Belirli hizmet katmanlarında Azure SQL veritabanı, [salt okunurdur ve](sql-database-read-scale-out.md) salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve `ApplicationIntent=ReadOnly` bağlantı dizesindeki parametresini kullanarak yük dengelemesi için destekler. Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
   > - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.zone_id.database.windows.net`.
   > - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.zone_id.database.windows.net`.
 
@@ -237,6 +240,10 @@ Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş süreklil
 
   > [!IMPORTANT]
   > El ile grup yük devretmesini kullanarak özgün konuma doğru bir şekilde geçiş yapın. Yük devretmeye neden olan kesinti azaltıldığında, birincil veritabanlarınızı özgün konuma taşıyabilirsiniz. Bunu yapmak için, grubun el ile yük devretmesini başlatmanız gerekir.
+
+- **Yük devretme gruplarının bilinen sınırlamalarını Onayla**
+
+  Veritabanı yeniden adlandırma ve örnek yeniden boyutlandırma, yük devretme grubundaki örnekler için desteklenmez. Bu eylemleri önceden oluşturmak için yük devretme grubunu geçici olarak silmeniz gerekir.
 
 ## <a name="failover-groups-and-network-security"></a>Yük devretme grupları ve ağ güvenliği
 

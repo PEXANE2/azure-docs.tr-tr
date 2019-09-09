@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279893"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812197"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL veritabanı hizmeti nedir?
 
@@ -54,7 +54,7 @@ Dinamik ölçeklenebilirlik, otomatik ölçeklendirmeden farklıdır. Bir hizmet
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Modeller, hizmet katmanları, işlem boyutları ve depolama tutarları satın alma
 
 SQL veritabanı, iki satın alma modeli sunar:
-- [Sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) , sanal çekirdek sayısını, miktarı veya belleği ve depolamanın miktarını ve hızını seçmenize olanak sağlar. Sanal çekirdek tabanlı satın alma modeli, maliyet tasarrufu kazanmak için [SQL Server Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) kullanmanıza da olanak tanır. Azure Hibrit Avantajı hakkında daha fazla bilgi için bkz. [sık sorulan sorular](#sql-database-frequently-asked-questions-faq).
+- [Sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) , sanal çekirdek sayısını, bellek miktarını ve depolama alanı miktarını ve hızını seçmenize olanak sağlar. Sanal çekirdek tabanlı satın alma modeli, maliyet tasarrufu kazanmak için [SQL Server Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) kullanmanıza da olanak tanır. Azure Hibrit Avantajı hakkında daha fazla bilgi için bkz. [sık sorulan sorular](#sql-database-frequently-asked-questions-faq).
 - [DTU tabanlı satın alma modeli](sql-database-service-tiers-dtu.md) , hafif ve ağır veritabanı iş yüklerini desteklemek için üç hizmet katmanında işlem, bellek, GÇ kaynakları Blend sağlar. Her katmandaki işlem boyutları bu kaynakların farklı bir karışımını sağlar ve bu da ek depolama kaynakları ekleyebilirsiniz.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Kaynak kullanımını en verimli hale getirmek için elastik havuzlar

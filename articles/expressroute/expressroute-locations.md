@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7df117dbb071081473a5651a953927cee8ddaa03
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e758707511989cca64fdef45b1c673dd3d96d6d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801497"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812143"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -161,7 +161,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Vocus grubu NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Desteklenen | Desteklenen | Auckland, Sidney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Desteklenen |Desteklenen |Amsterdam2, Londra, Singapur |
 | **Vodafone Idea** | Desteklenen | Desteklenen | Mumbai, Mumbai2 |
-| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Denver, Londra, Los Angeles, Montreal, New York, Paris, Seattle, Silicon Valley, Toron, Washington DC |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Denver, Londra, Los Angeles, Montreal, New York, Paris, Seattle, Silicon Valley, Toron, Washington DC, Washington DC2 |
 
  **+** çok yakında anlamına geliyor
 
@@ -198,7 +198,7 @@ Daha fazla öğrenmek için, bkz. [Çin’de ExpressRoute](http://www.windowsazu
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Desteklenen  | Desteklenmiyor | Berlin |
 | **T-Systems** |Desteklenen |Desteklenmiyor |Berlin |
 
-## <a name="connectivity-through-exchange-providers"></a>Exchange Sağlayıcıları Üzerinden Bağlantı
+## <a name="connectivity-through-exchange-providers"></a>Exchange sağlayıcıları üzerinden bağlantı
 
 Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlantı oluşturabilirsiniz.
 
@@ -216,7 +216,14 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 * Microsoft’a bağlanmak için bağlantı sağlayınız olarak değişime sahip bir ExpressRoute bağlantı hattı sipariş edin.
   * Bağlantı kurmak için [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-classic.md)’daki adımları izleyin.
 
-## <a name="connectivity-through-additional-service-providers"></a>Diğer Hizmet Sağlayıcılar Üzerinden Bağlantı
+## <a name="connectivity-through-satellite-operators"></a>Uydu işleçleri üzerinden bağlantı
+Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı seçeneklerini araştırmak istiyorsanız aşağıdaki uydu işleçlerini kontrol edebilirsiniz. 
+
+* Intelsat
+* IR
+* Viasat
+
+## <a name="connectivity-through-additional-service-providers"></a>Ek hizmet sağlayıcıları üzerinden bağlantı
 
 | **Bağlantı sağlayıcı** | **Exchange** | **Konumlar** |
 | --- | --- | --- |
@@ -278,7 +285,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 | **[Zertia](https://www.zertia.es)**| Level 3 | Madrid |
 | **[Zirro](https://zirro.com/services/)**| Cologix, Equinix | Montreal, Toronto |
 
-## <a name="connectivity-through-datacenter-providers"></a>Veri Merkezi Sağlayıcıları Üzerinden Bağlantı
+## <a name="connectivity-through-datacenter-providers"></a>Veri merkezi sağlayıcıları üzerinden bağlantı
 
 | **Sağlayıcı** | **Exchange** |
 | --- | --- |
@@ -295,7 +302,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 | **[vXchnge](https://www.vxchnge.com/colocation-services/interconnection)** | X REACH, Megaport |
 | **[T5 Datacenters](https://t5datacenters.com/network-cloud-connect/)** | IX Reach |
 
-## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Ulusal Araştırma ve Eğitim Ağları (NREN) Üzerinden Bağlantı
+## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Ulusal Araştırma ve eğitim ağları (NREN) üzerinden bağlantı
 
 | **Sağlayıcı**|
 | --- |

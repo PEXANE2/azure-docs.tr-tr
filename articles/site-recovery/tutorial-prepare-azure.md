@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery ile şirket içi makineler için Azure'da olağanüstü durum kurtarma hazırlığı yapma | Microsoft Docs
+title: Azure Site Recovery ile şirket içi makinelerin olağanüstü durum kurtarması için Azure 'u hazırlayın
 description: Azure Site Recovery ile şirket içi makinelerin olağanüstü durum kurtarma işlemleri için Azure’ın nasıl hazırlanacağını öğrenin.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 87216317a965e85d83aede468163f43b1716c45a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827246"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814352"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Şirket içi makinelerin olağanüstü durum kurtarma işlemleri için Azure kaynaklarını hazırlama
 
@@ -77,7 +77,7 @@ Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerle�
 6. **Abonelik** bölümünde ağın oluşturulacağı aboneliği seçin.
 7. **Konum**' da, kurtarma hizmetleri kasasının oluşturulduğu bölgeyi seçin. Öğreticimizde **Batı Avrupa**. Ağın kasada aynı bölgede olması gerekir.
 8. Ağda hizmet uç noktası olmadan temel DDoS korumasının varsayılan seçeneklerini bırakıyoruz.
-9.           **Oluştur**'a tıklayın.
+9. **Oluştur**'a tıklayın.
 
    ![Sanal ağ oluşturma](media/tutorial-prepare-azure/create-network.png)
 

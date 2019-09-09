@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: e21ae2f8eda4521effa5b7db686fe72241aa4cdb
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 76c50814c66b941310b73e1d2a52867b0da5aa10
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276273"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813608"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama
 
@@ -207,10 +207,10 @@ Bu özellikler bağlı hizmet için desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md).
 
-- **Parquet, sınırlandırılmış metin, avro ve ikili biçimi**Için, [Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
-### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim veri kümesi
+### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim veri kümesi
 
 **Parquet, sınırlandırılmış metin, Avro veya binary biçiminden**veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın. Biçim tabanlı veri kümesindeki ayarlar altında `location` Data Lake Storage 2. için aşağıdaki özellikler desteklenir:
 
@@ -253,7 +253,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 ### <a name="other-format-dataset"></a>Diğer biçim veri kümesi
 
-**Orc/JSON biçiminde**Data Lake Storage 2. veri kopyalamak için aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**Data Lake Storage 2. ve öğesinden veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -304,12 +304,12 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>Kaynak türü olarak Azure Data Lake Storage 2.
 
-- **Parquet, sınırlandırılmış metin, avro ve binary biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
+- **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Parquet, sınırlandırılmış metin, Avro veya binary biçimindeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenen ayarlar üzerinde [Parquet biçimi](format-parquet.md), [sınırlandırılmış metin biçimi](format-delimited-text.md), [avro Format](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın . Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları `storeSettings` altındaki Data Lake Storage 2. için desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimdeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenmiş olan [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın Ayarlar. Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları `storeSettings` altındaki Data Lake Storage 2. için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -367,7 +367,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 #### <a name="other-format-source"></a>Diğer biçim kaynağı
 
-**Orc/JSON biçimindeki**Data Lake Storage 2. verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**Data Lake Storage 2. verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -409,12 +409,12 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Bir havuz türü olarak Azure Data Lake depolama Gen2
 
-- **Parquet, sınırlandırılmış metin, Avro veya binary biçimine**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim havuzu](#format-based-sink) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim havuzu](#format-based-sink) bölümüne bakın.
 - **Orc/JSON biçimi**gibi diğer biçimlere kopyalamak için [diğer biçim havuzu](#other-format-sink) bölümüne bakın.
 
-#### <a name="format-based-sink"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim havuzu
+#### <a name="format-based-sink"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim havuzu
 
-Verileri **Parquet, ayrılmış metin, Avro veya ikili biçime**kopyalamak için, biçim tabanlı kopyalama etkinlik havuzunda ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçime](format-binary.md) bakın. Biçim tabanlı kopya havuzunda ayarlar altında `storeSettings` Data Lake Storage 2. için aşağıdaki özellikler desteklenir:
+Verileri **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçime**kopyalamak için, biçim tabanlı kopyalama etkinlik havuzunda ve desteklenen [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın Ayarlar. Biçim tabanlı kopya havuzunda ayarlar altında `storeSettings` Data Lake Storage 2. için aşağıdaki özellikler desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -462,7 +462,7 @@ Verileri **Parquet, ayrılmış metin, Avro veya ikili biçime**kopyalamak için
 
 #### <a name="other-format-sink"></a>Diğer biçim havuzu
 
-**Orc/JSON biçimindeki**Data Lake Storage 2. verileri kopyalamak için, **Havuz** bölümünde aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**Data Lake Storage 2. verileri kopyalamak için, **Havuz** bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |

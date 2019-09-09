@@ -6,14 +6,14 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: 09fcb963ed036dd56c5f9b501b9daf929c12c2ea
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 66796b2510e9d07ebfe78f6d083c935f498d7870
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735768"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810645"
 ---
-# <a name="scenario-converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta hizmet sorumlusu sertifika içeriğini Base-64 kodlu dize biçimine dönüştürme
+# <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>HDInsight 'ta hizmet sorumlusu sertifika içeriğini Base-64 kodlu dize biçimine dönüştürme
 
 Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 

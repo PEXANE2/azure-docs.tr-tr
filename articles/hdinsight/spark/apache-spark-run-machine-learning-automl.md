@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736058"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814047"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark otomatik makine öğrenimi (otomatik ml) ile Azure Machine Learning iş yüklerini çalıştırma
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
 
 Azure Machine Learning, makine öğrenimi modellerinin oluşturulmasını, eğitimini ve dağıtımını basitleştirir ve hızlandırır. Otomatik makine öğrenimi (otomatik ml) içinde, tanımlı bir hedef özelliğine sahip eğitim verileriyle başlar ve ardından, eğitim puanlarına göre verilerinizin en iyi modelini otomatik olarak seçmek için algoritmaların ve özellik seçimlerinin birleşimleri aracılığıyla yineleyebilirsiniz. HDInsight, müşterilerin yüzlerce düğüm içeren kümeler sağlamasını sağlar. HDInsight kümesinde Spark üzerinde çalışan oto ml, kullanıcıların eğitim işlerini bir genişleme düzeyinde çalıştırmak ve birden çok eğitim işini paralel olarak çalıştırmak için bu düğümlerde işlem kapasitesini kullanmalarına olanak sağlar. Bu, kullanıcıların, diğer büyük veri iş yükleriyle işlem paylaşımı sırasında oto ml denemeleri çalıştırmasına olanak tanır.
  

@@ -5,18 +5,20 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 2122b6bd5fbd6b15bd5a2e411898d957708bf4c9
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558877"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806351"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
-Azure ayırmaları, bir yıllık veya üç yıllık sanal makine, SQL veritabanı işlem kapasitesi, Azure Cosmos DB üretilen iş veya diğer Azure kaynakları için ön ödeme yaparak para tasarrufu yapmanıza yardımcı olur. Peşin ödeme yaparak kullandığınız kaynakları indirimli satın alabilirsiniz. Ayırmalar, Kullandıkça Öde fiyatlarında% 72 ' e varan sanal makinenizi, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerini önemli ölçüde azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
+Azure ayırmaları bir yıllık veya üç yıllık sanal makine, SQL veritabanı işlem kapasitesi, Azure Cosmos DB üretilen iş veya diğer Azure kaynakları ile tasarruf ederek tasarruf etmenize yardımcı olur. Kaydetme, kullandığınız kaynaklara ilişkin bir indirim elde etmenizi sağlar. Ayırmalar, Kullandıkça Öde fiyatlarında% 72 ' e varan sanal makinenizi, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerini önemli ölçüde azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
+
+Ön veya aylık bir rezervasyon için ödeme yapabilirsiniz. En önde ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödeme yapmayı seçtiğinizde fazladan ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri değil, Azure ayırmaları için kullanılabilir.
 
 [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)bir rezervasyon satın alabilirsiniz.
 
@@ -31,6 +33,8 @@ Hizmet planları:
 - **Ayrılmış sanal makine örneği** -bir ayırma yalnızca sanal makine işlem maliyetlerini içerir. Ek yazılım, ağ veya depolama ücretleri kapsamaz.
 - **Ayrılmış kapasite Azure Cosmos DB** -bir ayırma, kaynaklarınız için sağlanan aktarım hızını içerir. Depolama ve ağ ücretlerini kapsamaz.
 - **SQL veritabanı ayrılmış sanal çekirdek** -yalnızca işlem maliyetleri bir ayırmaya dahildir. Lisans ayrı olarak faturalandırılır.
+- **SQL veri ambarı** -bir ayırma cdwu kullanımını içerir. SQL veri ambarı kullanımıyla ilişkili depolama veya ağ ücretlerini kapsamaz.
+- **App Service damga ücreti** -bir ayırma damga kullanımını içerir. Bu, çalışanlara uygulanmaz, bu nedenle damgasıyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.
 
 Windows sanal makineler ve SQL veritabanı için [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)ile lisanslama maliyetlerini de kapsayacaktır.
 
@@ -92,17 +96,17 @@ Kaynak grubunu bir abonelikten diğerine taşırsanız bir ayırma kapsamı otom
 
 ## <a name="discounted-subscription-and-offer-types"></a>İndirimli abonelik ve teklif türleri
 
-Rezervasyon iskontoları, aşağıdaki uygun abonelikler ve teklif türleri için geçerlidir.
+Rezervasyon indirimleri aşağıdaki uygun aboneliklere ve teklif türlerine uygulanır.
 
-- Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P)
-- Kullandıkça Öde tarifeleri olan bireysel planlar (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P)
+- Kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P)
+- Kullandıkça öde ücretlerinin uygulandığı bireysel planlar (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P)
 - CSP abonelikleri
 
-Başka teklif türlerine sahip bir abonelikte çalışan kaynaklar rezervasyon iskontosunu almaz.
+Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
 
 ## <a name="how-is-a-reservation-billed"></a>Rezervasyon nasıl faturalandırılır?
 
-Rezervasyon, aboneliğe bağlı ödeme yöntemine göre ücretlendirilir. Kurumsal aboneliğiniz varsa, rezervasyon maliyeti parasal taahhüt bakiyesinden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığı zaman fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça Öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartı hemen faturalandırılır. Fatura ile faturalandırdığınızda, ücretleri bir sonraki faturanızda görürsünüz.
+Rezervasyon, aboneliğe bağlı ödeme yöntemine göre ücretlendirilir. Kurumsal aboneliğiniz varsa, rezervasyon maliyeti parasal taahhüt bakiyesinden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığı zaman fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça Öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartı, ön satın alma işlemleri için hemen faturalandırılır. Aylık ödemeler faturanızda görünür ve kredi kartınız aylık olarak ücretlendirilir. Fatura ile faturalandırdığınızda, ücretleri bir sonraki faturanızda görürsünüz.
 
 ## <a name="how-reservation-discount-is-applied"></a>Rezervasyon iskontosunun uygulanma şekli
 
@@ -116,7 +120,7 @@ Bir kaynağı kapattığınızda, rezervasyon iskontosu otomatik olarak belirtil
 
 Sanal makineler, kaydınız/hesabınız içindeki farklı aboneliklerde çalışıyorsa, kapsamı paylaşılan olarak seçin. Paylaşılan kapsam, rezervasyon indirimlerinin abonelikler arasında uygulanmasını sağlar. Bir ayırmayı satın aldıktan sonra kapsamı değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmalarını yönetme](billing-manage-reserved-vm-instance.md).
 
-Rezervasyon indirimi yalnızca, Kullandıkça Öde tarifesine sahip kurumsal, CSP veya aboneliklerle ilişkili kaynaklar için geçerlidir. Başka teklif türlerine sahip bir abonelikte çalışan kaynaklar rezervasyon iskontosunu almaz.
+Rezervasyon indirimi yalnızca, Kullandıkça Öde tarifesine sahip kurumsal, CSP veya aboneliklerle ilişkili kaynaklar için geçerlidir. Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
 
 ## <a name="when-the-reservation-term-expires"></a>Rezervasyon dönemi sona erdiğinde
 
@@ -163,7 +167,7 @@ Sorularınız varsa veya yardıma ihtiyacınız varsa, [destek isteği oluşturu
 - Aşağıdaki makalelerle Azure ayırmaları hakkında daha fazla bilgi edinin:
     - [Azure Ayırmalarını yönetme](billing-manage-reserved-vm-instance.md)
     - [Kullandıkça Öde tarifesine sahip aboneliğiniz için rezervasyon kullanımını anlayın](billing-understand-reserved-instance-usage.md)
-    - [Kurumsal kaydınız için rezervasyon kullanımını anlayın](billing-understand-reserved-instance-usage-ea.md)
+    - [Kurumsal kaydınız için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage-ea.md)
     - [Windows yazılım maliyetleri rezervasyonlar içermez](billing-reserved-instance-windows-software-costs.md)
     - [Iş Ortağı Merkezi bulut çözümü sağlayıcısı (CSP) programında Azure ayırmaları](/partner-center/azure-reservations)
 

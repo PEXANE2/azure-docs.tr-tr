@@ -6,14 +6,14 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 86ebfe14936f4cfbc6fc5f674ee691341eacfd47
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: f17574e5d8d129df43a195c40928b3cce4014548
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736319"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813934"
 ---
-# <a name="scenario-apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Senaryo: Apache Spark iş, Azure HDInsight 'ta ınvalidclassexception, sınıf sürümü uyuşmazlığı ile başarısız oluyor
+# <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark iş, Azure HDInsight 'ta ınvalidclassexception, sınıf sürümü uyuşmazlığı ile başarısız oluyor
 
 Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 5d3cbaf76489058624e56bec50b37eeb18a99ba7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477051"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812506"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Nasıl yapılır: Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -48,16 +48,11 @@ Bu makalede, Azure AD uygulama galerisinde bir uygulamayı listeleme, çoklu otu
 
 - Parola SSO 'SU için, lütfen uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun, böylelikle çoklu oturum açma işinin beklendiği gibi çalışmasını sağlayabilirsiniz.
 
-- Otomatik Kullanıcı sağlama istekleri için, uygulamanın SAML 2.0/WS-beslenir kullanılarak etkinleştirilmiş çoklu oturum açma özelliği ile galeride listelenmesi gerekir. Zaten listede yoksa, portalda SSO ve Kullanıcı hazırlama işlemlerini bir araya getirebilirsiniz.
-
 - En az 2 Kullanıcı kayıtlı olan sınama için kalıcı bir hesap gerekir.
-
->[!NOTE]
->Çok sayıda SCıM bağlayıcı isteği ile çalışıyoruz, bu nedenle portalda yeni istekleri almayı durdurduk. Lütfen daha fazla bildirimde bulununcaya kadar isteklerinizi tutun. Bu gecikme için özgürlerimizi ve bu, neden olmuş olabilir.
 
 ## <a name="submit-the-request-in-the-portal"></a>İsteği portalda gönder
 
-Uygulama tümleştirmesinin Azure AD ile çalışıp çalışmadığını test ettikten sonra, [uygulama ağ](https://microsoft.sharepoint.com/teams/apponboarding/Apps)portalımızda erişim isteğinizi iletin. Office 365 hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Microsoft hesabı (Outlook veya Hotmail gibi) kullanın.
+Uygulama tümleştirmesinin Azure AD ile çalışıp çalışmadığını test ettikten sonra, [uygulama ağ portalımızda](https://microsoft.sharepoint.com/teams/apponboarding/Apps)erişim isteğinizi iletin. Office 365 hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Microsoft hesabı (Outlook veya Hotmail gibi) kullanın.
 
 Oturum açtıktan sonra aşağıdaki sayfa görünürse [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) başvurun ve isteği göndermek için kullanmak istediğiniz e-posta hesabını belirtin. Ardından Azure AD ekibi, hesabı Microsoft uygulama ağı portalına ekler.
 
@@ -91,7 +86,7 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD t
 
   ![SAML 2,0 veya WS-beslenir uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/saml.png)
 
-  * Uygulamanızı **saml 2,0** veya **WS-besi**kullanarak galerinin listesine eklemek Istiyorsanız, yukarıdaki gıbı **SAML 2.0/WS-** besgu seçin.
+  * Uygulamanızı **saml 2,0** veya **WS-besi**kullanarak galerinin listesine eklemek Istiyorsanız, yukarıdaki gıbı **SAML 2.0/WS-besgu** seçin.
   * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
 ## <a name="implementing-sso-using-password-sso"></a>Parola SSO kullanarak SSO uygulama

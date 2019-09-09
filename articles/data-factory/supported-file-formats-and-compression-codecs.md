@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2c8983b5d6a44834d0c9659877c857fd73805ce6
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277092"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812312"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Desteklenen dosya biçimleri ve Azure Data factory'de sıkıştırma codec bileşenleri
 
@@ -87,6 +87,9 @@ Bir veri kümesi için aşağıdaki JSON tanımında isteğe bağlı özellikler
 * Bir metin dosyasından kopyalama yapıyorsunuz ve dosyanın başındaki veri içermeyen veya üst bilgi bilgilerini içeren birkaç satırı atlamak istiyorsunuz. Atlanacak satır sayısını belirtmek için `skipLineCount` değerini belirtin. Dosyanın geri kalan kısmında üst bilgi satırı varsa `firstRowAsHeader` değerini de belirtebilirsiniz. Hem `skipLineCount` hem de `firstRowAsHeader` parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur.
 
 ## <a name="json-format"></a>JSON biçimi
+
+>[!NOTE]
+>Data Factory yeni JSON biçimi veri kümesi sunuldu, Ayrıntılar için bkz. [JSON](format-json.md) makalesi. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
 
 İçin **bir JSON dosyası olarak içeri/dışarı aktarma-olan içine buralardan Azure Cosmos DB**, içeri/dışarı aktarma JSON belgeleri bölümüne bakın [/Azure Cosmos DB'den veri taşıma](connector-azure-cosmos-db.md) makalesi.
 

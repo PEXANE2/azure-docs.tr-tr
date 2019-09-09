@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876360"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814171"
 ---
-# <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark uygulamalarında Azure Toolkit for IntelliJ SSH aracılığıyla bir HDInsight kümesinde yerel olarak veya uzaktan hata ayıklama
+# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Bir HDInsight kümesindeki Apache Spark uygulamalarda SSH aracılığıyla Azure Toolkit for IntelliJ hata ayıklama
 
 Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) 'de HDInsight araçlarının nasıl kullanılacağına ilişkin adım adım yönergeler sağlanmaktadır. Projenizde hata ayıklamak için, [Azure Toolkit for IntelliJ video Ile hata ayıklama HDInsight Spark uygulamalarını](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) da görüntüleyebilirsiniz.
 
@@ -97,7 +97,7 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
 
 1. **Konfigürasyonları Düzenle** menüsüne erişmek için sağ üst köşedeki simgeyi seçin. Bu menüden, uzaktan hata ayıklama için yapılandırma oluşturabilir veya düzenleyebilirsiniz.
 
-   ![Yapılandırma Düzenle](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
+   ![Yapılandırmaları düzenle](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
 
 1. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini ( **+** ) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
 
@@ -118,7 +118,7 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
 
 1. Gönderim günlüklerinin sol bölmede görünmediğinden **bağlantıyı kes** düğmesine tıklayın. Ancak, arka uçta hala çalışır.
 
-   ![Uzaktan Çalıştır düğmesi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
+   ![Uzaktan çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 
 
 
@@ -148,7 +148,7 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
 
 1. **Hata Ayıkla** sekmesinde hedefi sağ tıklatın ve ardından **değeri ayarla**' yı seçin. Sonra, değişken için yeni bir değer girin. Sonra değeri kaydetmek için **ENTER** ' u seçin. 
 
-   ![Değer ayarla](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Değer ata](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
 
 1. Programı çalıştırmaya devam etmek için **programı Sürdür** simgesini seçin. Bu kez, hiçbir özel durum yakalanmaz. Projenin özel durum olmadan başarıyla çalıştığını görebilirsiniz.
 

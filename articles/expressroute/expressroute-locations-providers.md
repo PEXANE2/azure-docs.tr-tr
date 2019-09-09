@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: f864384dd5b86420fd9edf446b2573421a05f807
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 84dff3c4948109654cf08fa1390ac4e6bf2717dc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801517"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812148"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -133,7 +133,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Tokyo** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | Japonya Doğu | Aryaka Networks, AT & T Netbonu, Ingiliz telekomünikasyon, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japonya Inc.-IIJ, NTT Communications, NTT Doğu, turuncu, Softbank, Verizon |
 | **Toronto** | [Birlikte bulundurgix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | Orta Kanada | & T Netbono, Bell Kanada, CenturyLink Cloud Connect, birlikte bulundurma, Equinx, x Reach Megaport, Telus, Verizon, Zayo |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | Doğu ABD, Doğu ABD 2 | Aryaka Networks, AT & T Netbonu, Ingiliz Teletası, CenturyLink Cloud Connect, Geregix, Comcast, Coresite, Equınix, Internet2, Intercloud, Level 3 Communications, Megaport, Neutrona Networks,, NTT Communications, turuncu, PacketFabric, SES, Sprint, Tata İletişimler, Telia taşıyıcısı, Verizon, Zayo |
-| **Washington DC2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | Doğu ABD, Doğu ABD 2 |Coresite, Viasat | 
+| **Washington DC2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | Doğu ABD, Doğu ABD 2 |Coresite, Viasat, Zayo | 
 | **Zürih** | [Interxiyon ZUR2](https://www.interxion.com/Locations/zurich/) | yok | Intercloud, ınterxiyon |
 
  **+** çok yakında anlamına geliyor
@@ -184,6 +184,13 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
   * Bağlantı sağlayıcınızın bağlantınızı yüksek oranda kullanılabilir şekilde genişlettiğinden emin olun, böylece hiç tek nokta arızası olmaz.
 * Microsoft’a bağlanmak için bağlantı sağlayınız olarak değişime sahip bir ExpressRoute bağlantı hattı sipariş edin.
   * Bağlantı kurmak için [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-classic.md)’daki adımları izleyin.
+
+## <a name="connectivity-through-satellite-operators"></a>Uydu işleçleri üzerinden bağlantı
+Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı seçeneklerini araştırmak istiyorsanız aşağıdaki uydu işleçlerini kontrol edebilirsiniz. 
+
+* Intelsat
+* IR
+* Viasat
 
 ## <a name="c1partners"></a>Ek hizmet sağlayıcıları üzerinden bağlantı
 | **Location** | **Exchange** | **Bağlantı sağlayıcıları** |

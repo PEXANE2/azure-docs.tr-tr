@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 53900bcade3f7a283309f5ee1c624c742a62ad3f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375904"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812448"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -149,7 +149,7 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 | ----- | ----- | ----- | ----- |
 | Lemez | Federasyon | 1703 sürümünden | Genel kullanıma sunuldu |
 | Yönlendirilemeyen | Federasyon | 1803 sürümünden | Genel kullanıma sunuldu |
-| Lemez | Yönetilen | Desteklenmiyor | |
+| Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
 | Yönlendirilemeyen | Yönetilen | Desteklenmiyor | |
 
 ## <a name="next-steps"></a>Sonraki adımlar

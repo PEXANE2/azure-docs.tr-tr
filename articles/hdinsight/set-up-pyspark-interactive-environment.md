@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8e90be5a38ff40b748c11539e1d5c6558d198b62
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736408"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814223"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamını ayarlama
 
@@ -24,8 +24,8 @@ Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoru
 1. [Python](https://www.python.org/downloads/) ve [PIP](https://pip.pypa.io/en/stable/installing/)'yi yükler.
    
    + Python uygulamasını şuradan [https://www.python.org/downloads/](https://www.python.org/downloads/)
-   + PIP 'yi [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/)şuradan yükler. (Python yüklemesinden yüklenmediyse)
-   + Aşağıdaki komutlar kullanılarak Python ve PIP 'nin başarıyla yüklendiğini doğrulayın. Seçim
+   + PIP 'yi [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) yükleme (Python yüklemesinden yüklenmemişse).
+   + Aşağıdaki komutları kullanarak Python ve PIP 'nin başarıyla yüklendiğini doğrulayın. Seçim
  
         ![Python PIP sürümü](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
@@ -39,19 +39,21 @@ Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoru
    pip install virtualenv
    ```
 
-3. Yalnızca Linux için, hata iletisiyle karşılaşırsanız komutları çalıştırarak gerekli paketleri yükleyebilirsiniz.
-   
-    ![Python PIP sürümü](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
-       
-   ```
-   sudo apt-get install libkrb5-dev 
-   ```
+## <a name="other-packages"></a>Diğer paketler
 
-   ```
-   sudo apt-get install python-dev
-   ```
+Bir hata iletisiyle karşılaşırsanız, aşağıdaki komutları çalıştırarak gerekli paketleri yükleyebilirsiniz:
 
-4. VS Code yeniden başlatın ve ardından HDInsight çalıştıran **betik düzenleyicisine geri dönün: PySpark etkileşimli**.
+   ![Python PIP sürümü](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+
+```
+sudo apt-get install libkrb5-dev
+```
+
+```
+sudo apt-get install python-dev
+```
+
+VS Code yeniden başlatın ve ardından HDInsight çalıştıran **betik düzenleyicisine geri dönün: PySpark etkileşimli**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

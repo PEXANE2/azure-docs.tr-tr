@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081398"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813454"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
 Azure 'daki Linux sanal makineleri (VM 'Ler), genellikle güvenli bir kabuk (SSH) bağlantısı kullanılarak komut satırından yönetilir. Linux 'ta yeni veya hızlı sorun giderme senaryolarında, uzak masaüstü kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux sanal ağınız için masaüstü ortamının ([Xfce](https://www.xfce.org)) ve uzak masaüstü 'nün ([xrdp](https://www.xrdp.org)) nasıl yükleneceği ve yapılandırılacağı açıklanır.
@@ -55,7 +55,7 @@ sudo apt-get install xfce4
 Artık yüklü bir masaüstü ortamınız olduğuna göre, gelen bağlantıları dinlemek için bir uzak masaüstü hizmeti yapılandırın. [xrdp](http://xrdp.org) , çoğu Linux dağılımından kullanılabilen açık kaynaklı Uzak Masaüstü Protokolü (RDP) sunucusudur ve Xfce ile iyi çalışmaktadır. Aşağıdaki şekilde Ubuntu sanal makinenize xrdp 'yi yüklersiniz:
 
 ```bash
-sudo apt-get install xrdp=0.6.1-2
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 

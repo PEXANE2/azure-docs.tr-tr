@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: c845c4bcc8dc57371304b5917ee09191b5256c51
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276347"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814164"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure Blob depolamadan/depolamaya veri kopyalayın
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -315,10 +315,10 @@ Bu özellikler bir Azure Blob Depolama bağlı hizmeti için desteklenir:
 
 Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
-- **Parquet, sınırlandırılmış metin, avro ve ikili biçimi**Için, [Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
 - **Orc/JSON biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
-### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim veri kümesi
+### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim veri kümesi
 
 Parquet, sınırlandırılmış metin, Avro veya binary biçimindeki blob depolamaya veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar altında `location` Azure blobu için desteklenir:
 
@@ -413,12 +413,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="blob-storage-as-a-source-type"></a>BLOB Depolama kaynak türü
 
-- **Parquet, sınırlandırılmış metin, avro ve binary biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
+- **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Parquet, sınırlandırılmış metin, Avro veya binary biçimindeki**blob depolamaya veri kopyalamak için, biçim tabanlı veri kümesindeki [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın ve desteklenir Ayarlar. Aşağıdaki özellikler, Azure Blob 'un biçim tabanlı kopyalama `storeSettings` kaynağı ayarları altında desteklenir:
+**Parquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**blob depolamaya veri kopyalamak için, biçim tabanlı veri kümesindeki [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçime](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın ve desteklenen ayarlar. Aşağıdaki özellikler, Azure Blob 'un biçim tabanlı kopyalama `storeSettings` kaynağı ayarları altında desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 #### <a name="other-format-source"></a>Diğer biçim kaynağı
 
-**Orc veya JSON biçimindeki**blob depolamadan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **blobsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü.
+**Orc biçimindeki**blob depolamadan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **blobsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="blob-storage-as-a-sink-type"></a>Bir havuz türü olarak BLOB Depolama alanı
 
-- **Parquet, sınırlandırılmış metin, avro ve binary biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
+- **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Parquet, sınırlandırılmış metin, Avro veya binary biçimindeki**blob depolamadan veri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı 'Nda [Parquet biçimi](format-parquet.md), [sınırlandırılmış metin biçimi](format-delimited-text.md), [avro Format](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın ve desteklenen ayarlar. Aşağıdaki özellikler, Azure Blob 'un biçim tabanlı kopya `storeSettings` havuzunda ayarlar altında desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimdeki**blob depolamadan veri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı 'Nda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçime](format-binary.md) bakın ve desteklenen ayarlar. Aşağıdaki özellikler, Azure Blob 'un biçim tabanlı kopya `storeSettings` havuzunda ayarlar altında desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 #### <a name="other-format-sink"></a>Diğer biçim havuzu
 
-**Orc/JSON biçimindeki**blob depolamaya veri kopyalamak için kopyalama etkinliğindeki havuz türünü **blobsink**olarak ayarlayın. Aşağıdaki özellikler desteklenir **havuz** bölümü.
+**Orc biçimindeki**blob depolamaya veri kopyalamak için kopyalama etkinliğindeki havuz türünü **blobsink**olarak ayarlayın. Aşağıdaki özellikler desteklenir **havuz** bölümü.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |

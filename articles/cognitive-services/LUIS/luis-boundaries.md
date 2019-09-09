@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/9/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883952"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813322"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUIS, birden fazla sınır alanlara sahip değildir. İlk [modeli sınır](#model-boundaries), amacı, varlıkları ve LUIS özellikleri denetler. İkinci alanı [kota sınırları](#key-limits) anahtar türüne göre. Üçüncü bir sınırları alanıdır [klavye birleşimi](#keyboard-controls) LUIS Web sitesi denetleme. Dördüncü alan [dünya bölge eşleme](luis-reference-regions.md) LUIS ile Web sitesi geliştirme LUIS arasındaki [uç nokta](luis-glossary.md#endpoint) API'leri. 
@@ -29,6 +29,7 @@ Uygulamanız Luo model sınırlarını ve sınırlarını aşarsa, bir [lusıs d
 |Alan|Sınır|
 |--|:--|
 | [Uygulama adı][luis-get-started-create-app] | \* Max varsayılan karakter |
+| Uygulamalar| Azure kaynağı başına 500 uygulama |
 | [Toplu işlem testi][batch-testing]| 10 veri kümeleri, veri kümesi başına 1000 konuşma|
 | Açık listesi | uygulama başına 50|
 | Dış varlıklar | sınırsız |
@@ -44,7 +45,7 @@ Uygulamanız Luo model sınırlarını ve sınırlarını aşarsa, bir [lusıs d
 | [Roller](luis-concept-roles.md)|uygulama başına 300 roller. Varlık başına 10 rolü|
 | [Söylenişi][utterances] | 500 karakter|
 | [En konuşma][utterances] | Uygulama başına 15.000-amaç başına düşen sayıda sınır yoktur|
-| [Sürümleri](luis-concept-version.md)| bir sınır yoktur |
+| [Sürümleri](luis-concept-version.md)| Uygulama başına 100 sürüm |
 | [Sürüm adı][luis-how-to-manage-versions] | alfasayısal ve süre sınırlı 10 karakter (.) |
 
 \* Varsayılan karakter en fazla 50 karakterdir. 
@@ -68,6 +69,8 @@ Dil anlaşılması ayrı anahtarlar, yazma için bir tür ve tahmin uç noktası
 
 Yazma anahtar yazma ve uç noktası için farklı sınırlara sahiptir. LUIS hizmet uç noktası anahtarı yalnızca uç nokta sorgular için geçerlidir.
 
+* Azure kaynağı başına 500 uygulama 
+* Uygulama başına 100 sürüm
 
 |Anahtar|Yazma|Uç Nokta|Amaç|
 |--|--|--|--|

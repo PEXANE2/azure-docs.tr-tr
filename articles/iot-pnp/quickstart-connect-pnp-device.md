@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b233fcecfe80d1ce4464d2d02fdddb188f9265a7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878246"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806528"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Hızlı Başlangıç: Örnek IoT Tak ve Kullan önizleme cihaz uygulamasını IoT Hub 'ye bağlama
 
@@ -36,6 +36,9 @@ Azure IoT gezgin aracını [en son sürüm](https://github.com/Azure/azure-iot-e
 ## <a name="prepare-an-iot-hub"></a>IoT Hub 'ı hazırlama
 
 Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+> [!NOTE]
+> Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
 Azure CLı için Microsoft Azure IoT uzantısını ekleyin:
 

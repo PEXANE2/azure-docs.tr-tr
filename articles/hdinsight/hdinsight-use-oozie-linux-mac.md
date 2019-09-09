@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: eb6df3bfda131f00c04499dc80c47482229195a5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623911"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811688"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight 'ta iş akışını tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie kullanma
 
@@ -643,7 +643,7 @@ Bir başlangıç, bitiş ve iş için yineleme sıklığını belirtmek için d�
     > [!NOTE]  
     > Bu görüntü, zamanlanan iş akışındaki bireysel eylemleri değil yalnızca işin başarılı çalıştırmalarını gösterir. Tek tek eylemleri görmek için **eylem** girişlerinden birini seçin.
 
-    ![Eylem bilgileri](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Düzenleyici eylem bilgileri](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -675,7 +675,7 @@ Aşağıdakiler, karşılaşabileceğiniz ve bunları nasıl çözeolabileceğin
 
 **Neden**: Geçerli izin ayarları, Oozie 'nin belirtilen kullanıcı hesabını taklit etmesine izin vermez.
 
-**Çözüm**: Oozie kullanıcılar grubundaki kullanıcıları taklit edebilir . Kullanıcı hesabının üyesi olduğu grupları görmek içinöğesinikullanın.`groups USERNAME` Kullanıcı, **Kullanıcılar** grubunun bir üyesi değilse, kullanıcıyı gruba eklemek için aşağıdaki komutu kullanın:
+**Çözüm**: Oozie **Kullanıcılar grubundaki kullanıcıları** taklit edebilir. Kullanıcı hesabının üyesi olduğu grupları görmek içinöğesinikullanın.`groups USERNAME` Kullanıcı, **Kullanıcılar** grubunun bir üyesi değilse, kullanıcıyı gruba eklemek için aşağıdaki komutu kullanın:
 
     sudo adduser USERNAME users
 

@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 87ac2283e96081297fdd54c1c131aa5b78a5973a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489848"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814270"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse kullanma
 
-Azure Toolkit 'teki HDInsight araçlarını kullanarak, [](https://www.eclipse.org/) [Scala](https://www.scala-lang.org/) 'da yazılmış [Apache Spark](https://spark.apache.org/) uygulamalar geliştirin ve bunları doğrudan tutulma IDE 'sinden bir Azure HDInsight Spark kümesine gönderebilirsiniz. HDInsight Araçları eklentisini birkaç farklı şekilde kullanabilirsiniz:
+Azure Toolkit 'teki HDInsight araçlarını kullanarak, [Scala](https://www.scala-lang.org/) 'da yazılmış [Apache Spark](https://spark.apache.org/) uygulamalar geliştirin ve bunları [doğrudan tutulma IDE](https://www.eclipse.org/) 'sinden bir Azure HDInsight Spark kümesine gönderebilirsiniz. HDInsight Araçları eklentisini birkaç farklı şekilde kullanabilirsiniz:
 
 * Bir HDInsight Spark kümesinde bir Scala Spark uygulaması geliştirmek ve göndermek için.
 * Azure HDInsight Spark kümesi kaynaklarınıza erişin.
@@ -61,7 +61,7 @@ Kullanıcı [Azure aboneliğinde oturum](#sign-in-to-your-azure-subscription)aç
    ![Abonelikler Seç iletişim kutusu](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 1. **Azure Explorer** sekmesinde, aboneliğinizdeki HDInsight Spark kümelerini görmek için **HDInsight** ' ı genişletin.
    
-   ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
+   ![Azure 'da HDInsight Spark kümeleri Explorer3](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
 1. Kümeyle ilişkili kaynakları (örneğin, depolama hesapları) görmek için bir küme adı düğümünü daha da genişletebilirsiniz.
    
    ![Kaynakları görmek için küme adını genişletme](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
@@ -235,16 +235,16 @@ Kullanıcılar işi yalnızca okuyucu rolü izni olan bir kümeye gönderdiğind
        
 2. **Azure Explorer**'da, aboneliğinizdeki HDInsight kümelerini görüntülemek için **HDInsight** ' ı genişletin. **"Role: Reader"** olarak işaretlenen kümelerin yalnızca yalnızca okuyucu rolü izni vardır.
 
-    ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+    ![Azure Gezgini rol okuyucudaki HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
 
 3. Yalnızca okuyucu rolü izniyle kümeye sağ tıklayın. **Bu kümeyi** bağlama menüsünden Bağla ' yı seçin. Ambarı Kullanıcı adı ve parolasını girin.
 
-    ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+    ![Azure Explorer 'da HDInsight Spark kümeleri bağlantısı](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
 
 4. Küme başarıyla bağlanmışsa, HDInsight yenilenir.
    Kümenin aşaması bağlantılı hale gelir.
   
-    ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+    ![Azure Explorer 'da HDInsight Spark kümeleri bağlı](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
 
 
 
@@ -254,7 +254,7 @@ Kullanıcılar işi yalnızca okuyucu rolü izni olan bir kümeye gönderdiğind
    
 2. **Bu kümeyi** bağlantı kümesine bağla ' ya tıklayın.
    
-    ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+    ![Azure 'da HDInsight Spark kümeleri Explorer9](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-spark-submission-window"></a>Kümeyi Spark gönderim penceresinden bağla
 
@@ -262,23 +262,23 @@ Kullanıcılar işi yalnızca okuyucu rolü izni olan bir kümeye gönderdiğind
 
 2. Pakete sağ tıklayın. Ardından **Spark uygulamasını HDInsight 'A gönder**' i seçin.
    
-   ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+   ![Azure Explorer 'da HDInsight Spark kümeleri gönderme](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
 
 3. **Küme adı**için yalnızca okuyucu rolü iznine sahip olan bir küme seçin. Uyarı iletisi görüntülenir. **Bu kümeyi** bağlantı kümesine bağla ' ya tıklayabilirsiniz.
    
-   ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   ![Azure Explorer 'da HDInsight Spark kümeleri bunu bağla](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
    
 ### <a name="view-storage-accounts"></a>Depolama hesaplarını görüntüleme
 
 * Yalnızca okuyucu rolü iznine sahip kümeler için **depolama hesapları** düğümü ' ne tıklayın, **depolama erişimi reddedildi** penceresi açılır. 
      
-   ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+   ![Azure Explorer depolamada HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
 
-   ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+   ![Azure Explorer 'da HDInsight Spark kümeleri reddedildi](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
 
 * Bağlantılı kümeler için **depolama hesapları** düğümü ' ne tıklayın, **depolama erişimi reddedildi** penceresi açılır. 
      
-   ![Azure Explorer 'da HDInsight Spark kümeleri](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+   ![Azure Explorer 'da HDInsight Spark kümeleri denied2](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
 
 ## <a name="known-problems"></a>Bilinen sorunlar
 Bir kümeyi bağladığınızda, depolama kimlik bilgilerini sağlamanızı öneriyorum.
@@ -287,9 +287,9 @@ Bir kümeyi bağladığınızda, depolama kimlik bilgilerini sağlamanızı öne
 
 İşleri göndermek için iki mod vardır. Depolama kimlik bilgileri sağlanmışsa, işi göndermek için Batch modu kullanılacaktır. Aksi takdirde etkileşimli mod kullanılacaktır. Küme meşgulse, aşağıdaki hatayı alabilirsiniz.
 
-![Çakışan tutulma, küme meşgul olduğunda hata alır](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+![Çakışan tutulma, küme meşgul olduğunda hata alır](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "Çakışan tutulma, küme meşgul olduğunda hata alır")
 
-![Çakışan tutulma, küme meşgul olduğunda hata alır](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
+![küme meşgul olduğunda tutulma hatası al Yarn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "küme meşgul olduğunda tutulma hatası al Yarn")
 
 ## <a name="seealso"></a>Ayrıca bkz.
 * [Bakýþ Azure HDInsight üzerinde Apache Spark](apache-spark-overview.md)

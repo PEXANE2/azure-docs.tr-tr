@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663492"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814453"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -30,6 +30,10 @@ Bu öğretici, Azure Site Recovery’yi kullanarak, Amazon Web Services (AWS) sa
 > * Azure’a bir defalık yük devretme çalıştırma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
+
+
+> [!NOTE]
+    > Artık AWS örneklerini Azure 'a geçirmek için Azure geçişi hizmetini kullanabilirsiniz. [Daha fazla bilgi edinin](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Geçirmek istediğiniz VM’lerin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. Desteklenen sürümlere şunlar dahildir: 

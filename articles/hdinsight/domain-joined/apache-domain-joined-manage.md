@@ -1,6 +1,6 @@
 ---
 title: HDInsight kümelerini Enterprise Security Enterprise-Azure ile yönetme
-description: HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetmeyi öğrenin.
+description: Azure HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetmeyi öğrenin.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488719"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811029"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
 HDInsight 'daki kullanıcıları ve rolleri Kurumsal Güvenlik Paketi (ESP) ve ESP kümelerinin nasıl yönetileceğini öğrenin.
@@ -34,7 +34,7 @@ Apache ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağl
    
 3. Komut **listesi kümesi**kullanarak bağlantılı bir küme görebilirsiniz. Artık bu bağlantılı kümeye bir komut dosyası gönderebilirsiniz.
 
-   ![bağlı küme](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![bağlı küme](./media/apache-domain-joined-manage/linked-cluster.png "bağlı küme")
 
 4. Ayrıca **HDInsight 'a giriş yaparak bir kümenin bağlantısını kaldırabilirsiniz: Bir kümenin** komut paleti bağlantısını kaldırın.
 
@@ -43,11 +43,11 @@ Apache ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağl
 Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir güvenlik Hadoop kümesi de bağlayabilirsiniz. 
 1. **Azure Explorer**'dan **bir kümeyi bağla** ' yı tıklatın.
 
-   ![bağlama kümesi bağlam menüsü](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![bağlama kümesi bağlam menüsü IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. **Küme adı**, **Kullanıcı adı** ve **parola**girin. Kimlik doğrulama hatası varsa Kullanıcı adını ve parolayı denetlemeniz gerekir. İsteğe bağlı olarak, depolama hesabı, depolama anahtarı ekleyin ve depolama kapsayıcısından bir kapsayıcı seçin. Depolama bilgileri, sol ağaçta Depolama Gezgini içindir
    
-   ![bağlama kümesi iletişim kutusu](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![bağlama kümesi iletişim kutusu IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > Küme hem Azure abonelikte hem de bir kümeye bağlandığında bağlı depolama anahtarını, Kullanıcı adını ve parolayı kullanırız.
@@ -56,22 +56,22 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
    
 3. Giriş bilgileri doğru ise, **HDInsight** düğümünde bağlantılı bir küme görebilirsiniz. Artık, bu bağlantılı kümeye bir uygulama gönderebilirsiniz.
 
-   ![bağlı küme](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![bağlı küme IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "bağlı küme IntelliJ]")
 
 4. Ayrıca bir kümenin bağlantısını **Azure Explorer**'da kaldırabilirsiniz.
    
-   ![bağlantısız küme](./media/apache-domain-joined-manage/unlink.png)
+   ![bağlantısız küme IntelliJ](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Etki alanına katılmış kümeye bağlamak için Eclipse kullanma
 
 Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabilir, ayrıca etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir güvenlik Hadoop kümesi de bağlayabilirsiniz.
 1. **Azure Explorer**'dan **bir kümeyi bağla** ' yı tıklatın.
 
-   ![bağlama kümesi bağlam menüsü](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![bağlama kümesi bağlam menüsü tutulma](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Küme **adı**, **Kullanıcı adı** ve **parola**girin, ardından kümeyi bağlamak için Tamam düğmesine tıklayın. İsteğe bağlı olarak, depolama hesabı, depolama anahtarı girin ve ardından Depolama Gezgini 'nin sol ağaç görünümünde çalışması için depolama kapsayıcısını seçin
    
-   ![bağlama kümesi iletişim kutusu](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![bağlama kümesi iletişim kutusu tutulma](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
    > [!NOTE]  
    > Küme hem Azure abonelikte hem de bir kümeye bağlandığında bağlı depolama anahtarını, Kullanıcı adını ve parolayı kullanırız.
@@ -79,11 +79,11 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
 
 3. Giriş bilgileri doğru ise, Tamam düğmesine tıkladıktan sonra **HDInsight** düğümünde bağlantılı bir küme görebilirsiniz. Artık, bu bağlantılı kümeye bir uygulama gönderebilirsiniz.
 
-   ![bağlı küme](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![bağlı küme tutulma](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. Ayrıca bir kümenin bağlantısını **Azure Explorer**'da kaldırabilirsiniz.
    
-   ![bağlantısız küme](./media/apache-domain-joined-manage/unlink.png)
+   ![bağlantısız küme tutulma](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Kümelere Kurumsal Güvenlik Paketi erişin.
 

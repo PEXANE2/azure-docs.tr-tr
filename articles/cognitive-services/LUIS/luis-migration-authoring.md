@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801471"
+ms.locfileid: "70803901"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -91,7 +91,7 @@ Ortak çalışan bir uygulamayı dışarı aktarmayı tercih edebilir ve ardınd
 
 ### <a name="after-the-app-is-migrated"></a>Uygulama geçirildikten sonra
 
-Geçiş işleminden sonra, uygulama sahibine göre Azure yazma kaynağına eklenmeleri gerekir.  
+Geçiş işleminden sonra, özgün uygulamaya erişmeniz gerekiyorsa, uygulama sahibi tarafından ortak çalışan olarak Azure yazma kaynağına eklenmeleri gerekir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,18 @@
 ---
 title: Tek bir kez olay işleme ile Spark akış işleri-Azure HDInsight
-description: Spark akışını bir olayı bir kez ve yalnızca bir kez işlemek için ayarlama.
+description: Bir olayı bir kez ve yalnızca bir kez işlemek için Apache Spark akışı ayarlama.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ce676031e0cace3f3dffc77fcd71159337938661
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ce2cff6a1a6bf769f52940ecc0d1dc5a4678cbd5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735987"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814022"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Tam bir kez olay işleme ile Apache Spark akış işleri oluşturma
 

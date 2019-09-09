@@ -1,17 +1,17 @@
 ---
 title: Apache Hive Zeppelin yorumlayıcı, Azure HDInsight 'ta bir Zookeeper hatası veriyor
-description: Zeppelin Hive JDBC yorumlayıcı yanlış URL 'yi işaret ediyor
+description: Apache Zeppelin Hive JDBC yorumlayıcı, Azure HDInsight 'ta yanlış URL 'yi işaret ediyor
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: f623d2516a2cf069b6347ebe8366b9b437228a87
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 308e1cc44fc1c87003a9cb64922f0d933bbfe92d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781354"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811408"
 ---
 # <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Senaryo: Apache Hive Zeppelin yorumlayıcı, Azure HDInsight 'ta bir Zookeeper hatası veriyor
 

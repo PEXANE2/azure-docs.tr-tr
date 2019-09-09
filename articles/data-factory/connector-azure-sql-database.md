@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: c9192a6d6b8cf122092963f2352af8bb6e5a6c21
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 5399c79645be0ac774dc74603f26f092497262bf
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275918"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813212"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
@@ -383,6 +383,7 @@ Azure SQL veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinl
 | storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
 | sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
 | storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Adları ve parametreleri büyük küçük harfleri, adları ve saklı yordam parametreleri büyük küçük harfleri eşleşmelidir. | Hayır |
+| tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Havuz saklı yordamı belirttiğinde veya hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
 | disableMetricsCollection | Data Factory, performansı en iyi duruma getirme ve öneriler için Azure SQL veritabanı DTU 'ları gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, devre dışı bırakmak için `true` belirtin. | Hayır (varsayılan değer `false`) |
 
 **Örnek 1: Veri Ekle**
@@ -410,7 +411,8 @@ Azure SQL veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinl
             },
             "sink": {
                 "type": "AzureSqlSink",
-                "writeBatchSize": 100000
+                "writeBatchSize": 100000,
+                "tableOption": "autoCreate"
             }
         }
     }

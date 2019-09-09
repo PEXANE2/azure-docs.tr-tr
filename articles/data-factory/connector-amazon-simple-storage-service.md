@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: aebcefadf4dfdb9301a01b0b4117e8aa2e429898
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e11c6d23e93701e1608e1c444deb47c80543789e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276534"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813303"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Amazon basit depolama hizmeti Azure Data Factory kullanarak veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -25,7 +25,8 @@ ms.locfileid: "70276534"
 
 Bu makalede, Amazon Simple Storage Service 'ten (Amazon S3) verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
 
-Amazon S3 'den Azure Storage 'a veri geçişi senaryosu için, [Amazon S3 'Ten Azure Storage 'a veri geçirmek üzere Azure Data Factory kullanma](data-migration-guidance-s3-azure-storage.md)hakkında daha fazla bilgi edinin.
+>[!TIP]
+>Amazon S3 'den Azure Storage 'a veri geçişi senaryosu için, [Amazon S3 'Ten Azure Storage 'a veri geçirmek üzere Azure Data Factory kullanma](data-migration-guidance-s3-azure-storage.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
@@ -100,12 +101,12 @@ Amazon S3'bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
-- **Parquet, sınırlandırılmış metin, avro ve ikili biçimi**Için, [Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
-### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim veri kümesi
+### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim veri kümesi
 
-**Inquet, sınırlandırılmış metin, Avro veya binary biçimindeki**Amazon S3 öğesinden veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçime](format-avro.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar bölümünde `location` Amazon S3 için desteklenir:
+**Inquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**Amazon S3 öğesinden veri kopyalamak için, biçim tabanlı veri kümesinde [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçime](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın ve desteklenir Ayarlar. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar bölümünde `location` Amazon S3 için desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -147,7 +148,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 ### <a name="other-format-dataset"></a>Diğer biçim veri kümesi
 
-**Orc/JSON biçiminde**Amazon S3 öğesinden veri kopyalamak için aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**Amazon S3 öğesinden veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -229,12 +230,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="amazon-s3-as-source"></a>Amazon S3 kaynağı olarak
 
-- **Parquet, sınırlandırılmış metin, avro ve binary biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
-- **Orc/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
+- **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, avro ve ikili biçim kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Inquet, sınırlandırılmış metin, Avro veya binary biçimindeki**Amazon S3 ' dan veri kopyalamak için, biçim tabanlı kopyalama etkinlik kaynağında bulunan [Parquet biçimi](format-parquet.md), [sınırlandırılmış metin biçimi](format-delimited-text.md), [avro Format](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın. desteklenen ayarlar. Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları altında `storeSettings` Amazon S3 için desteklenir:
+**Inquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**Amazon S3 ' dan verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı 'Nda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine başvurun. desteklenen ayarlar. Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları altında `storeSettings` Amazon S3 için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -293,7 +294,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 #### <a name="other-format-source"></a>Diğer biçim kaynağı
 
-**Orc/JSON biçiminde**Amazon S3 öğesinden veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**Amazon S3 öğesinden veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |

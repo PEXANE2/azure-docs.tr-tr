@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Manager kullanarak HDInsight 'ta Apache Kafka ayarlama-hızlı başlangıç
-description: Bu hızlı başlangıçta, Azure portalını kullanarak Azure HDInsight’ta bir Apache Kafka kümesi oluşturmayı öğrenirsiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
+description: Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturmayı öğreneceksiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 399d1146dc71f4670ee0c9bfa497f34911ade638
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780775"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811458"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Hızlı Başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 

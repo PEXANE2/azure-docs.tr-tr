@@ -6,14 +6,14 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 92e9e41d5829e10bc0130d209249301d78f1b5d3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 081131a0e0eca63f7cefb8c784c43cc54d2ac3e6
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736323"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813962"
 ---
-# <a name="scenario-nativeazurefilesystem--requestbodytoolarge-appears-in-log-for-apache-spark-streaming-app-in-azure-hdinsight"></a>Senaryo: "NativeAzureFileSystem ... Azure HDInsight 'ta Apache Spark akış uygulaması günlüğünde RequestBodyTooLarge "görüntülenir
+# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... HDInsight 'ta Apache Spark akış uygulama günlüğünde RequestBodyTooLarge "görüntülenir
 
 Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 

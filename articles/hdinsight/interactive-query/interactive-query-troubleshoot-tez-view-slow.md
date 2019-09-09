@@ -1,17 +1,17 @@
 ---
 title: Apache ambarı tez görünümü, Azure HDInsight 'ta yavaş yükleniyor
-description: Apache ambarı tez görünümü yavaş çalışabilir veya hiç yüklenmeyebilir
+description: Apache ambarı tez görünümü yavaş yükleme veya Azure HDInsight 'ta hiç yüklenmeyebilir
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: 70e8ef1f36de30d659e09a15aa935f7a5b7693d6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4a0f6706781b0234942c473187474d0ab66e3cd4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842445"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811555"
 ---
 # <a name="scenario-apache-ambari-tez-view-loads-slowly-in-azure-hdinsight"></a>Senaryo: Apache ambarı tez görünümü, Azure HDInsight 'ta yavaş yükleniyor
 
