@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/12/2019
+ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811330"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845538"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
 
@@ -38,9 +38,9 @@ Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanı
     Install-Module AzureAD
     ```
 
-2. [Windows sanal masaüstü PowerShell modülünü indirme ve içeri aktarma](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
+2. [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
 
-3. Bu makaledeki tüm yönergeleri aynı PowerShell oturumunda izleyin. Pencereyi kapatıp daha sonra geri dönerseniz, bu çalışmayabilir.
+3. Bu makaledeki tüm yönergeleri aynı PowerShell oturumunda izleyin. Pencereyi kapatarak ve daha sonra yeniden açarak PowerShell oturumunuzu keserseniz işlem çalışmayabilir.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Azure Active Directory'de hizmet sorumlusu oluşturma
 
@@ -52,10 +52,9 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-
 ## <a name="view-your-credentials-in-powershell"></a>PowerShell 'de kimlik bilgilerinizi görüntüleme
 
-PowerShell oturumunuzu sonlandırmadan önce, kimlik bilgilerinizi görüntüleyin ve daha sonra başvurmak üzere bunları aşağı yazın. Bu PowerShell oturumunu kapattıktan sonra bu parola özellikle önemlidir.
+Hizmet sorumlusu için rol atamasını oluşturmadan önce, kimlik bilgilerinizi görüntüleyin ve daha sonra başvurmak üzere bunları aşağı yazın. Bu PowerShell oturumunu kapattıktan sonra bu parola özellikle önemlidir.
 
 Aşağıda, yazmanız gereken üç kimlik bilgileri ve bunları almak için çalıştırmanız gereken cmdlet 'ler verilmiştir:
 
@@ -79,19 +78,21 @@ Aşağıda, yazmanız gereken üç kimlik bilgileri ve bunları almak için çal
 
 ## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Windows sanal masaüstü önizlemesinde rol ataması oluşturma
 
-Daha sonra, hizmet sorumlusu için Windows sanal masaüstünde bir RDS rol ataması oluşturacaksınız ve bu, hizmet sorumlusunun Windows sanal masaüstünde oturum açmasını sağlar. RDS rol atamaları oluşturmak için izinlere sahip bir hesap kullandığınızdan emin olun.
+Ardından, hizmet sorumlusunun Windows sanal masaüstü 'nde oturum açmasını sağlamak için bir rol ataması oluşturmanız gerekir. Rol atamaları oluşturma izinlerine sahip bir hesapla oturum açmanız emin olun.
 
-Windows sanal masaüstüne bağlanmak ve RDS Kiracılarınızı göstermek için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
+İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+
+Windows sanal masaüstüne bağlanmak ve Kiracılarınızı göstermek için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Get-RdsTenant | FL
+Get-RdsTenant
 ```
 
-Doğru kiracı için TenantName ' i kullanın ve belirtilen Kiracıdaki hizmet sorumlusu için bir rol ataması oluşturmak üzere aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
+İçin bir rol ataması oluşturmak istediğiniz kiracının kiracı adını bulduğunuzda, bu adı aşağıdaki cmdlet içinde kullanın:
 
 ```powershell
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Hizmet sorumlusu ile oturum açma

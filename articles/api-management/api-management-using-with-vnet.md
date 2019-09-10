@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305222"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861146"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlarla Azure API Management kullanma
 Azure sanal ağları (VNet), erişimi denetlediğiniz internet 'e yönelik bir yönlendirilebilir ağa Azure kaynaklarınızı yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgileri başlatın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -79,7 +79,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 >
 
 > [!IMPORTANT]
-> VNET 'ten API Management kaldırır veya içinde dağıtıldığı bir değişikliği değiştirirseniz, daha önce kullanılmış olan VNET, en fazla iki saate kadar kilitli kalabilirler. Bu süre boyunca VNET 'i silmek veya yeni bir kaynak dağıtmak mümkün olmayacaktır.
+> VNET 'ten API Management kaldırır veya içinde dağıtıldığı bir değişikliği değiştirirseniz, daha önce kullanılmış olan VNET, altı saate kadar kilitli kalabilir. Bu süre boyunca VNET 'i silmek veya yeni bir kaynak dağıtmak mümkün olmayacaktır. Bu davranış, API-sürüm 2018-01-01 ve öncesini kullanan istemciler için geçerlidir. API-sürüm 2019-01-01 ve üzeri kullanan istemciler, ilişkili API Management hizmeti silindikten hemen sonra sanal ağ serbest bırakılır.
 
 ## <a name="enable-vnet-powershell"> </a>PowerShell cmdlet 'LERINI kullanarak VNET bağlantısını etkinleştirme
 Ayrıca, PowerShell cmdlet 'lerini kullanarak VNET bağlantısını etkinleştirebilirsiniz

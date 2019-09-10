@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b716cbf3efb044da68d4dd1dcb724369855d1ed1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173657"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843866"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
@@ -44,7 +44,7 @@ Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış a
     > [!TIP]
     > İlke veritabanı düzeyinde tanımlanmışsa, veritabanındaki tüm tablolar akış alımı için etkinleştirilir.
 
-## <a name="supported-streaming-ingestion-types"></a>Desteklenen akış alma türleri
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Verileri kümenize almak için akış alımı kullanın
 
 Desteklenen iki akış alma türü vardır:
 
@@ -72,7 +72,7 @@ Desteklenen iki akış alma türü vardır:
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Artan VM ve küme boyutları ile akış alma performansı ve kapasitesi ölçeklenir. Tek bir D11 düğümü için, önerilen yük saniyede 20 ' ye kadar istek olur. Tek bir D14 düğümü için, önerilen yük saniyede 150 ' e kadar istek olur.
+* Artan VM ve küme boyutları ile akış alma performansı ve kapasitesi ölçeklenir. Tek bir D14 düğümü için, önerilen yük saniyede 150 ' e kadar istek olur.
 * Şu anda destek yalnızca 8 ve 16 çekirdek SKU 'Larına yöneliktir (D13, D14, L8 ve L16).
 * Alma isteği başına veri boyutu sınırlaması 4 MB 'tır.
 * Tablo ve giriş eşlemelerinin oluşturulması ve değiştirilmesi gibi şema güncelleştirmeleri, akış alma hizmeti için 5 dakikaya kadar sürebilir.

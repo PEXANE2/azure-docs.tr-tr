@@ -1,31 +1,25 @@
 ---
 title: Azure Güvenlik Merkezi Sorun Giderme Kılavuzu | Microsoft Belgeleri
-description: Bu belge Azure Güvenlik Merkezi’ndeki sorunları gidermenize yardımcı olur.
+description: Bu belge, Azure Güvenlik Merkezi 'nde sorunları gidermenize yardımcı olur.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609913"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873397"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 Bu kılavuz, kuruluşları Azure Güvenlik Merkezi'ni kullanmayı planlayan ve Güvenlik Merkezi ile ilgili sorunları gidermeye ihtiyaç duyan bilgi teknolojisi (BT) uzmanları, bilgi güvenlik analizi uzmanları ve bulut yöneticileri içindir.
 
 >[!NOTE]
->Haziran 2017'nin ilk günlerinden itibaren Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent'ı kullanmaktadır. Daha fazla bilgi edinmek için [Azure Güvenlik Merkezi Platform Geçişi](security-center-platform-migration.md) makalesine bakın. Bu makaledeki bilgiler, Microsoft Monitoring Agent'a geçiş sonrasındaki Güvenlik Merkezi işlevselliğine yöneliktir.
+>Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent kullanır. Daha fazla bilgi edinmek için [Azure Güvenlik Merkezi Platform Geçişi](security-center-platform-migration.md) makalesine bakın.
 >
 
 ## <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
@@ -58,7 +52,7 @@ Microsoft Monitoring Agent’ı bilgisayarınıza yüklerken farklı sonuçlar �
 
 * **Aracı Güvenlik Merkezi tarafından otomatik olarak yüklenir**: Bu senaryoda hem Güvenlik Merkezi hem de Günlük aramasında uyarıları görüntüleyebilirsiniz. Kaynağın ait olduğu aboneliğe ait güvenlik ilkesinde yapılandırılmış e-posta adresine e-posta bildirimleri alırsınız.
 .
-* **Aracı, Azure’da bulunan bir VM’ye el ile yüklenir**: Bu senaryoda, Şubat 2017’den önce indirilip yüklenmiş aracılar kullanıyorsanız, uyarıları yalnızca çalışma alanının ait olduğu abonelikte filtrelemeniz durumunda Güvenlik Merkezi portalında görüntüleyebilirsiniz. Kaynağın ait olduğu abonelikte filtrelemeniz halinde, herhangi bir uyarı göremezsiniz. Çalışma alanının ait olduğu aboneliğe ait güvenlik ilkesinde yapılandırılmış e-posta adresine e-posta bildirimleri alırsınız.
+* **Aracı, Azure 'da bulunan BIR VM 'ye el ile yüklendi**: Bu senaryoda, karşıdan yüklenen ve 2017 Şubat 'tan önce el ile yüklenen aracılar kullanıyorsanız, uyarıları Güvenlik Merkezi portalında görüntüleyebilirsiniz ve bu durumda yalnızca abonelik çalışma alanı üzerinde filtre uygulamanız durumunda uyarılar görüntülenir öğesine aittir. Kaynağın ait olduğu abonelikte filtre uygulamanız durumunda herhangi bir uyarı görmezsiniz. Çalışma alanının ait olduğu aboneliğe ait güvenlik ilkesinde yapılandırılmış e-posta adresine e-posta bildirimleri alırsınız.
 
 >[!NOTE]
 > İkinci senaryoda açıklanan davranışı önlemek için aracının en son sürümünü indirdiğinizden emin olun.

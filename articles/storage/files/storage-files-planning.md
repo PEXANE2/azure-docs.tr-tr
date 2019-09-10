@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: HT
+ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806624"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844883"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -211,7 +211,8 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |Avustralya Doğu |LRS     |Hayır    |Evet|
 |Avustralya Güneydoğu|LRS     |Hayır    |Henüz değil|
 |Orta Hindistan  |LRS     |Hayır    |Henüz değil|
-|Fransa Orta  |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
+|Fransa Orta |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
+|Fransa Güney   |LRS     |Hayır    |Evet|
 |Güney Hindistan    |LRS     |Hayır    |Henüz değil|
 |Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
 |Batı Orta ABD|LRS     |Hayır    |Henüz değil|
@@ -247,7 +248,7 @@ Kayıt durumunuzu doğrulamak için şu komutu çalıştırabilirsiniz:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz **kaydedildikten sonra özelliğini**kullanabilmeniz gerekir.
+Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
 
 ### <a name="use-larger-file-shares"></a>Daha büyük dosya paylaşımları kullanın
 

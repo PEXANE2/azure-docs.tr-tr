@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
-ms.translationtype: HT
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803901"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844759"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -43,7 +43,7 @@ Sahip, geçirilecek uygulamaların bir alt kümesini seçemez ve işlem geri al�
 Geçiş şu değildir: 
 
 * Ortak çalışanları toplayan ve otomatik olarak taşınan veya Azure yazma kaynağına ekleyen bir işlem. Uygulamanın sahibi olarak bu adımı gerçekleştirmeniz gerekir. Bu adım uygun kaynak için izinleri gerektirir.
-* Tahmin çalışma zamanı kaynağı oluşturma ve atama işlemi. Bir tahmin çalışma zamanı kaynağına ihtiyacınız varsa, bu [ayrı bir işlemdir](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) ve değiştirilmez. 
+* Tahmin çalışma zamanı kaynağı oluşturma ve atama işlemi. Bir tahmin çalışma zamanı kaynağına ihtiyacınız varsa, bu [ayrı bir işlemdir](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) ve değiştirilmez. 
 
 ## <a name="how-are-the-apps-migrating"></a>Uygulamalar nasıl taşınıyor?
 
@@ -62,7 +62,9 @@ Pencereyi iptal ederek geçiş işlemini erteleyebilirsiniz. Geçiş yapılınca
 
 * **Isteğe bağlı**olarak, her uygulamayı dışarı aktararak ve dışarı aktarma [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak, bu uygulamaları lusıs portalının uygulamalar listesinden yedekleyin.
 * **Isteğe bağlı**olarak, her bir uygulamanın ortak kayıt listesini kaydedin. Bu e-posta listesi, geçiş işleminin bir parçası olarak sağlanır.
-* **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, LUSıS kullandığınızda ücretsiz (F0) fiyatlandırma katmanlarını kullanabilirsiniz. Kullanımınız arttıkça ücretli bir katmana ihtiyacınız olduğunu fark edebilirsiniz. 
+* **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, lusıs kullandığınızda ücretsiz (`F0`) fiyatlandırma katmanını kullanabilirsiniz. 
+
+**Lusıs uygulamanızı yazma**, `F0` katman tarafından belirtilen ücretsizdir. [Fiyatlandırma katmanları hakkında daha fazla](luis-boundaries.md#key-limits)bilgi edinin.
 
 Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/). 
 

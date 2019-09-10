@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186465"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858871"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Öğretici: Visual Studio Code kullanarak cihaz yetenek modeli oluşturma ve test etme
 
@@ -35,10 +35,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Bu öğreticide cihaz yetenek modeliyle çalışmak için şunlar gerekir:
 
 * [Visual Studio Code](https://code.visualstudio.com/download): VS Code birden çok platformda kullanılabilir
-* VS Code 'de Azure IoT cihaz çalışma ekranı uzantısı. Azure IoT cihaz çalışma ekranı uzantısını VS Code yüklemek için aşağıdaki adımları kullanın:
+* [Vs Code Uzantı paketi Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) . VS Code ' ye uzantı paketini yüklemek için aşağıdaki adımları kullanın:
 
     1. VS Code, **Uzantılar** sekmesini seçin.
-    1. **Azure IoT cihaz çalışma ekranı**için arama yapın.
+    1. **Azure IoT araçlarını**arayın.
     1. **Yükle**’yi seçin.
 
 Bu öğreticide Windows üzerinde oluşturulan C kodunu derlemek için şunlar gerekir:
@@ -61,7 +61,7 @@ Bu öğreticide cihaz kodunuzu test etmek için şunlar gerekir:
 
 ## <a name="model-your-device"></a>Cihazınızı modelleme
 
-Bir cihaz yetenek modeli oluşturmak için _Digital ikizi tanım dilini_ kullanırsınız. Model genellikle birden çok _arabirim_ tanım dosyasından ve tek bir model dosyasından oluşur. **Vs Code Için Azure IoT cihaz çalışma ekranı uzantısı** , bu JSON dosyalarını oluşturmanıza ve düzenlemenize yardımcı olacak araçlar içerir.
+Bir cihaz yetenek modeli oluşturmak için _Digital ikizi tanım dilini_ kullanırsınız. Model genellikle birden çok _arabirim_ tanım dosyasından ve tek bir model dosyasından oluşur. **Vs Code Için Azure IoT araçları** , bu JSON dosyalarını oluşturmanıza ve düzenlemenize yardımcı olacak araçlar içerir.
 
 ### <a name="create-the-interface-file"></a>Arabirim dosyası oluşturma
 
@@ -298,7 +298,7 @@ Dosyalarınız artık şirket deponuzda depolanır.
 
 ## <a name="generate-code"></a>Kod oluşturma
 
-Modelinizden iskelet C kodu oluşturmak için **vs Code Için Azure IoT cihaz çalışma ekranı uzantısını** kullanabilirsiniz. VS Code ' de iskelet kodu oluşturmak için:
+Modelinizden iskelet C kodu oluşturmak için **vs Code Için Azure IoT araçları** 'nı kullanabilirsiniz. VS Code ' de iskelet kodu oluşturmak için:
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 

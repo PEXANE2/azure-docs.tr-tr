@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services içinde sınıf laboratuvarlarını yönetme | Microsoft Docs
-description: Oluşturma ve bir sınıf laboratuvarı yapılandırmak, tüm sınıf laboratuvarlarını görüntülemek, kayıt bağlantısını bir laboratuvar kullanıcıyla paylaşın veya bir laboratuvar silme öğrenin.
+title: Azure Lab Services sınıf laboratuvarlarını yönetme | Microsoft Docs
+description: Bir derslik Laboratuvarı oluşturma ve yapılandırma, tüm sınıf laboratuvarlarını görüntüleme, kayıt bağlantısını laboratuar kullanıcısı ile paylaşma veya bir laboratuvarı silme hakkında bilgi edinin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 6ba41132c93ebdb2578bafb100416ca3fe579298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123286"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873587"
 ---
-# <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services içinde sınıf laboratuvarlarını yönetme 
-Bu makalede, oluşturma ve bir sınıf laboratuvarına silme açıklar. Ayrıca, bir laboratuvar hesabı tüm sınıf laboratuvarlarını görüntülemek nasıl gösterir. 
+# <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
+Bu makalede bir sınıf Laboratuvarı oluşturma ve silme açıklanmaktadır. Ayrıca, tüm sınıf laboratuvarlarını bir laboratuvar hesabında nasıl görüntüleyekullanacağınızı gösterir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratuvar hesabında **Laboratuvar Oluşturan** rolünün üyesi olmanız gerekir. Laboratuvar hesabını oluşturmak için kullandığınız hesap otomatik olarak bu role eklenir. Laboratuvar sahibi diğer kullanıcılara şu makalede adımları kullanarak Laboratuvar Oluşturucusu rolüne ekleyebilirsiniz: [Laboratuvar oluşturan rolüne kullanıcı ekleme](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratuvar hesabında **Laboratuvar Oluşturan** rolünün üyesi olmanız gerekir. Laboratuvar hesabını oluşturmak için kullandığınız hesap otomatik olarak bu role eklenir. Laboratuvar sahibi, aşağıdaki makaledeki adımları kullanarak diğer kullanıcıları laboratuvar Oluşturucu rolüne ekleyebilir: [Laboratuvar Oluşturucu rolüne kullanıcı ekleyin](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Sınıf laboratuvarı oluşturma
 
-1. [Azure Lab Services web sitesine](https://labs.azure.com) gidin. Internet Explorer 11 henüz desteklenmediğini unutmayın. 
-2. Seçin **oturum**. Seçin veya girin bir **kullanıcı kimliği** diğer bir deyişle üyesi **Laboratuvar oluşturan** Laboratuvardaki rol hesap ve parolayı girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
+1. [Azure Lab Services web sitesine](https://labs.azure.com) gidin. Internet Explorer 11 ' in henüz desteklenmediğini unutmayın. 
+2. **Oturum aç '** ı seçin. Laboratuvar hesabındaki **Laboratuvar Oluşturucu** rolünün bir üyesi olan BIR **Kullanıcı kimliği** seçin veya girin ve parola girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
 3. **Yeni Laboratuvar** penceresinde aşağıdaki eylemleri gerçekleştirin: 
     1. Laboratuvarınız için bir **ad** belirtin. 
-    2. Maksimum belirtin **sanal makinelerin sayısı** Laboratuvardaki. Artırmak ya da daha sonra Laboratuvardaki sanal makinelerin sayısını azaltın. 
+    2. Laboratuvardaki en fazla **sanal makine sayısını** belirtin. Laboratuvardaki sanal makinelerin sayısını daha sonra artırabilir veya azaltabilirsiniz. 
     6. **Kaydet**’i seçin.
 
         ![Sınıf laboratuvarı oluşturma](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. **Sanal makine özelliklerini seçin** sayfasında aşağıdaki adımları gerçekleştirin:
-    1. Laboratuvarda oluşturulan sanal makineler (VM) için bir **boyut** seçin. Şu anda **küçük**, **orta**, **Orta (sanallaştırma)** , **büyük**, ve **GPU** boyutları izin verilir. Ayrıntılar için bkz [VM boyutları](#vm-sizes) bölümü.
+    1. Laboratuvarda oluşturulan sanal makineler (VM) için bir **boyut** seçin. Şu anda, **küçük**, **Orta**, **Orta (sanallaştırma)** , **büyük**ve **GPU** boyutlarına izin verilir. Ayrıntılar için bkz. [VM boyutları](#vm-sizes) bölümü.
     1. VM'lerin oluşturulmasını istediğiniz **bölgeyi** seçin. 
-    1. Laboratuvardaki VM'leri oluşturmak için kullanılacak **VM görüntüsünü** seçin. Bir Linux görüntüsü seçerseniz, Uzak Masaüstü bağlantı etkinleştirmek için bir seçenek görürsünüz. Ayrıntılar için bkz [Linux için Uzak Masaüstü Bağlantısı etkinleştirme](how-to-enable-remote-desktop-linux.md).
+    1. Laboratuvardaki VM'leri oluşturmak için kullanılacak **VM görüntüsünü** seçin. Bir Linux görüntüsü seçerseniz, bunun için Uzak Masaüstü bağlantısını etkinleştirme seçeneğini görürsünüz. Ayrıntılar için bkz. [Linux için Uzak Masaüstü bağlantısını etkinleştirme](how-to-enable-remote-desktop-linux.md).
     1. **İleri**’yi seçin.
 
         ![VM özellikleri belirtme](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -49,12 +49,12 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
         > [!IMPORTANT]
         > Kullanıcı adını ve parolayı not edin. Bunlar tekrar gösterilmeyecektir.
-    3. Devre dışı **tüm sanal makineler için kullanılan parolayı kullan** Öğrenciler kendi parolalarını ayarlamak için isterseniz seçeneği. Bu adım **isteğe bağlıdır**. 
+    3. Öğrencilerin kendi parolalarını ayarlamanızı istiyorsanız **tüm sanal makineler için aynı parolayı kullan** seçeneğini devre dışı bırakın. Bu adım **isteğe bağlıdır**. 
 
-        Bir Öğretmen Laboratuvardaki tüm sanal makineler için aynı parolayı kullanın veya kendi Vm'leri için parolanın öğrencilerin izin seçebilirsiniz. Varsayılan olarak, Ubuntu hariç tüm Windows ve Linux görüntüleri için bu ayar etkinleştirilir. Seçtiğinizde, **Ubuntu** VM, bu ayarı devre dışıysa, böylece Öğrenciler ilk kez oturum açtığında bir parola ayarlamanız istenir.
+        Öğretmen, laboratuvardaki tüm VM 'Ler için aynı parolayı kullanmayı seçebilir veya öğrencilerin VM 'Leri için parola değiştirmesine izin verebilir. Varsayılan olarak, bu ayar Ubuntu hariç tüm Windows ve Linux görüntüleri için etkinleştirilmiştir. **Ubuntu** VM ' yi seçtiğinizde, bu ayar devre dışıdır, bu nedenle ilk kez oturum açtıklarında öğrencilerin bir parola ayarlaması istenir.
     1. **Oluştur**’u seçin. 
 
-        ![Kimlik bilgilerini ayarlama](../media/tutorial-setup-classroom-lab/set-credentials.png)
+        ![Kimlik bilgilerini ayarla](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. **Şablonu yapılandır** sayfasında laboratuvar oluşturma işleminin durumunu görebilirsiniz. Laboratuvar şablonunun oluşturulması 20 dakika sürebilir. Laboratuvardaki şablon, tüm kullanıcıların sanal makinelerinin oluşturulduğu bir temel sanal makine görüntüsüdür. Şablon sanal makinesini, tam olarak laboratuvar kullanıcılarına sağlamak istediklerinizle yapılandırılacak şekilde ayarlayın.  
 
     ![Şablonu yapılandır](../media/tutorial-setup-classroom-lab/configure-template.png)
@@ -62,8 +62,8 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
     ![Tamamlanmış şablon yapılandırma sayfası](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Bu öğreticide aşağıdaki adımlar isteğe bağlıdır: 
-    2. **Bağlan**'ı seçerek şablon VM'sine bağlanın. Linux VM şablon varsa (RDP etkinse), SSH veya RDP kullanarak bağlanmasını isteyip istemediğinizi seçin.
-    1. Seçin **parolayı Sıfırla** VM için parolayı sıfırlamak için. 
+    2. **Bağlan**'ı seçerek şablon VM'sine bağlanın. Bir Linux şablon sanal makinesi ise, SSH veya RDP kullanarak bağlanmak isteyip istemediğinizi seçin (RDP etkinse).
+    1. VM 'nin parolasını sıfırlamak için **Parolayı Sıfırla** ' yı seçin. 
     1. Şablon VM'sinde yazılım yükleme ve yapılandırma işlemlerini gerçekleştirin. 
     1. VM'yi **durdurun**.  
     1. Şablon için bir **açıklama** girin
@@ -73,7 +73,7 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
         > [!WARNING]
         > Yayımlama işlemini geri alamazsınız. 
-    2. Daha sonra yayımlamak istiyorsanız **Sonrası için kaydet**'i seçin. Şablon VM'sini sihirbaz tamamlandıktan sonra yayımlayabilirsiniz. Yapılandırma ve Sihirbaz tamamlandıktan sonra yayımlama hakkında ayrıntılı bilgi için bkz: yapılandırma ve Sihirbaz tamamlandıktan sonra yayımlama hakkında ayrıntılı bilgi için şablon konusundaki Yayımla bkz [sınıf laboratuvarlarını yönetme](how-to-manage-classroom-labs.md) makalesi.
+    2. Daha sonra yayımlamak istiyorsanız **Sonrası için kaydet**'i seçin. Şablon VM'sini sihirbaz tamamlandıktan sonra yayımlayabilirsiniz. Sihirbaz tamamlandıktan sonra yapılandırma ve yayımlama hakkında daha fazla bilgi için, Sihirbaz tamamlandıktan sonra yapılandırma ve yayımlama hakkında daha fazla bilgi Için bkz. [sınıf laboratuvarlarını yönetme](how-to-manage-classroom-labs.md) makalesindeki şablonu yayımlama bölümü.
 
         ![Şablonu yayımlama](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Şablonun **yayımlama ilerleme durumunu** görürsünüz. Bu işlemin tamamlanması bir saat sürebilir. 
@@ -91,43 +91,45 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 
 ### <a name="vm-sizes"></a>VM boyutları  
 
-| Boyut | Çekirdek | RAM | Açıklama | 
+| Size | Çekirdek | RAM | Açıklama | 
 | ---- | ----- | --- | ----------- | 
-| Küçük | 2 | 3,5 GB | Bu boyut komut satırı, web tarayıcısı, düşük trafikli web sunucuları, Orta boyutlu veritabanları küçük açmak için idealdir. |
-| Orta | 4 | 7 GB | Bu boyut ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir | 
-| Orta (iç içe sanallaştırma) | 4 | 16 GB | Bu boyut ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. Bu boyut, iç içe sanallaştırmayı da destekler. <p>Bu boyut, her öğrencinin birden çok VM gereken yere senaryolarda kullanılabilir. Öğretmenler, iç içe sanallaştırma, birkaç küçük boyut iç içe sanal makineleri sanal makinenin içinde ayarlamak için kullanabilirsiniz. </p> |
-| Büyük | 8 | 32 GB | Bu boyut daha hızlı CPU'lar, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerek duyan uygulamalar için idealdir. Bu boyut iç içe sanallaştırmayı da destekler. |  
-| GPU | 12 | 112 GB | Bu boyut görselleştirme yoğun işlem gücü kullanımlı ve grafik kullanımlı iş yükleri için idealdir | 
+| Küçük | 2 | 3,5 GB | Bu boyut, komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
+| Orta | 4 | 7 GB | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir | 
+| Orta (Iç Içe sanallaştırma) | 4 | 16 GB | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. Bu boyut, iç içe sanallaştırmayı da destekler. <p>Bu boyut, her öğrencinin birden çok VM gerektiren senaryolarda kullanılabilir. Öğretmenler, sanal makine içinde birkaç küçük boyutlu iç içe sanal makine ayarlamak için iç içe sanallaştırmayı kullanabilir. </p> |
+| Büyük | 8 | 32 GB | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. Bu boyut, iç içe sanallaştırmayı da destekler |  
+| Küçük GPU (görselleştirme) | 6 | 56 GB | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. | 
+| Küçük GPU (Işlem) | 6 | 56 GB | Bu boyut, yapay zeka ve derin öğrenme uygulamaları gibi işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. | 
+| Orta ölçekli GPU (görselleştirme) | 12 | 112 GB | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. | 
 
 ## <a name="view-all-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleyin
-1. Gidin [Azure Lab Services portalı](https://labs.azure.com).
-2. Seçin **oturum**. Seçin veya girin bir **kullanıcı kimliği** diğer bir deyişle üyesi **Laboratuvar oluşturan** Laboratuvardaki rol hesap ve parolayı girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
-3. Seçili bir laboratuvar hesabı tüm Labs'de gördüğünüzü onaylayın. 
+1. [Azure Lab Services Portal](https://labs.azure.com)' a gidin.
+2. **Oturum aç '** ı seçin. Laboratuvar hesabındaki **Laboratuvar Oluşturucu** rolünün bir üyesi olan BIR **Kullanıcı kimliği** seçin veya girin ve parola girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
+3. Seçilen laboratuvar hesabındaki tüm laboratuvarları görtığınızdan emin olun. 
 
-    ![Tüm Laboratuvarları](../media/how-to-manage-classroom-labs/all-labs.png)
-3. Açılan listenin en üstünde farklı bir laboratuvar hesabı seçmek için kullanın. Seçili bir laboratuvar hesabı Labs'de görürsünüz. 
+    ![Tüm laboratuvarlar](../media/how-to-manage-classroom-labs/all-labs.png)
+3. En üstteki açılan listeyi kullanarak farklı bir laboratuvar hesabı seçin. Laboratuvarları seçilen laboratuvar hesabında görürsünüz. 
 
-## <a name="delete-a-classroom-lab"></a>Bir sınıf laboratuvarına Sil
-1. Laboratuvar için bir kutucuğa üst köşedeki üç nokta (...) seçin. 
+## <a name="delete-a-classroom-lab"></a>Sınıf Laboratuvarı silme
+1. Laboratuvarın kutucuğunda, köşedeki üç nokta (...) seçeneğini belirleyin. 
 
     ![Laboratuvarı seçme](../media/how-to-manage-classroom-labs/select-three-dots.png)
 2. **Sil**’i seçin. 
 
     ![Sil düğmesi](../media/how-to-manage-classroom-labs/delete-button.png)
-3. Üzerinde **silme Laboratuvar** iletişim kutusunda **Sil**. 
+3. **Laboratuvar Sil** Iletişim kutusunda **Sil**' i seçin. 
 
-    ![Sil iletişim kutusu](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
+    ![İletişim kutusunu Sil](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
 
-## <a name="switch-to-another-classroom-lab"></a>Geçiş yapmak için başka bir sınıf laboratuvarı
-Başka bir sınıf laboratuvarı için geçerli geçiş yapmak için üst Laboratuvar hesabı labs açılan listesini seçin.
+## <a name="switch-to-another-classroom-lab"></a>Başka bir sınıf laboratuvarına geç
+Geçerli olan başka bir sınıf laboratuvarına geçiş yapmak için, en üstteki laboratuvar hesabındaki laboratuvarların açılan listesini seçin.
 
-![Laboratuvar üstündeki aşağı açılan listeden seçin](../media/how-to-manage-classroom-labs/switch-lab.png)
+![Üstteki aşağı açılan listeden laboratuvar listesini seçin](../media/how-to-manage-classroom-labs/switch-lab.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Laboratuvar sahibi olarak ayarlama ve şablonları Yayımlama](how-to-create-manage-template.md)
-- [Laboratuvar sahibi olarak yapılandırın ve Laboratuvar kullanımını denetleme](how-to-configure-student-usage.md)
-- [Bir laboratuvar kullanıcı olarak sınıf laboratuvarlarına erişim](how-to-use-classroom-lab.md)
+- [Laboratuvar sahibi olarak, şablonları ayarlama ve yayımlama](how-to-create-manage-template.md)
+- [Laboratuvar sahibi olarak, bir laboratuvarın kullanımını yapılandırma ve denetleme](how-to-configure-student-usage.md)
+- [Laboratuvar kullanıcısı olarak, sınıf laboratuvarlarına erişin](how-to-use-classroom-lab.md)
 

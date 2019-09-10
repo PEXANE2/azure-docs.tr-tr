@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services Video Indexer içerik modellerini özelleştirme
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Bu makalede, her özelleştirme türünün avantajlarını açıklayan kavramsal makalelerin bağlantıları verilmektedir. Bu makale ayrıca her bir modelin özelleştirmesini nasıl uygulayabileceğinizi gösteren nasıl yapılır kılavuzlarıyla bağlantı sağlar.
 services: media-services
 author: anikaz
@@ -10,19 +10,23 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 8499e816f60b9d6605bdbdc392f6d2b3e134b863
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878809"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860194"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Video Indexer içerik modellerini özelleştirme
 
 Video Indexer, bazı modellerini özel kullanım çalışmanıza uyarlayacak şekilde özelleştirmenizi sağlar. Bu modeller [markalar](customize-brands-model-overview.md), [dili](customize-language-model-overview.md)ve [kişiyi](customize-person-model-overview.md)içerir. Video Indexer Web sitesini veya API 'YI kullanarak bu modelleri kolayca özelleştirebilirsiniz.
 
-Bu makalede, her özelleştirme türünün avantajlarını açıklayan kavramsal makalelerin bağlantıları verilmektedir. Bu makale ayrıca her bir modelin özelleştirmesini nasıl uygulayabileceğinizi gösteren nasıl yapılır kılavuzlarıyla bağlantı sağlar.
- 
+Bu makale, her özelleştirme türünün avantajlarını açıklayan makalelere bağlantılar sağlar. Makale Ayrıca her bir modelin özelleştirmesini nasıl uygulayabileceğinizi gösteren nasıl yapılır kılavuzlarıyla bağlantı sağlar.
+
+## <a name="animated-characters"></a>Hareketli karakterler
+
+* [Animasyonlu karakter algılama](animated-characters-recognition.md)
+
 ## <a name="brands-model"></a>Markalar modeli
 
 * [Markalar modeline genel bakış](customize-brands-model-overview.md)

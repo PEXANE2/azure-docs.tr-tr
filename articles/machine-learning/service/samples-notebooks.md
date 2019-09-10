@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035937"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860384"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyıter Not defterleri ile Azure Machine Learning hizmetini keşfet
 
@@ -27,7 +27,6 @@ Bu makalede, aşağıdaki ortamlardan depoya nasıl erişebileceğiniz gösteril
 - [Azure Machine Learning Not defteri VM 'si](#notebookvm)
 - [Kendi Not defteri sunucunuzu getir](#byo)
 - [Veri Bilimi Sanal Makinesi](#dsvm)
-- [Azure Notebooks](#aznb)
 
 > [!NOTE]
 > Depoyu kopyaladıktan sonra, öğretici ve **kullanım için nasıl yapılır-azureml** klasöründeki ilgili not defterlerindeki **eğitim** not defterlerini bulacaksınız.
@@ -53,13 +52,6 @@ Bu yönergeler hızlı başlangıç ve öğretici Not defterleri için gereken t
 Veri Bilimi Sanal Makinesi (DSVM), özellikle veri bilimi yapmak için oluşturulmuş özelleştirilmiş bir VM görüntüsüdür. [DSVM oluşturursanız](how-to-configure-environment.md#dsvm), SDK ve Not defteri sunucusu yüklenir ve sizin için yapılandırılır. Ancak yine de bir çalışma alanı oluşturmanız ve örnek depoyu kopyalamanız gerekir.
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-<a name="aznb"></a>
-## <a name="get-samples-on-azure-notebooks"></a>Azure Notebooks örnekleri al
-
-[Azure Notebooks](https://notebooks.azure.com/), SDK ve Not defteri sunucusu yüklenir ve sizin için yapılandırılır. Azure Notebooks, araştırmanıza yönelik tam olarak yönetilen, hafif bir not defteri ortamı sağlar.
-
-Azure Notebooks örnek depoya erişmek için [Azure Portal](https://portal.azure.com)aracılığıyla Azure Machine Learning çalışma alanınıza gidin. **Genel bakış** bölümünden **Azure Notebooks kullanmaya başlayın**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

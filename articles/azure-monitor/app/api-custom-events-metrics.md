@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
 ms.openlocfilehash: 9bedb74f4e882ac6e4206ee7fef676c94dc2422d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68717461"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API 'SI
@@ -54,7 +54,7 @@ Application Insights SDK 'da henüz bir başvurunuz yoksa:
   * [Java projesi](../../azure-monitor/app/java-get-started.md)
   * [Node. js projesi](../../azure-monitor/app/nodejs.md)
   * [Her Web sayfasında JavaScript](../../azure-monitor/app/javascript.md) 
-* Cihazınıza veya web sunucusu kodunuza şunu ekleyin:
+* Cihazınızda veya Web sunucusu kodunuzda şunları dahil edin:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 

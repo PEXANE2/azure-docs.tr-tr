@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 79b57a9c9f12c6014b9002b0688beae334af3587
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806522"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858840"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
 
@@ -46,9 +46,9 @@ Azure IoT Central, [ıot Tak ve kullan cihazlarınızı](#iot-plug-and-play-devi
 
 Azure IoT sertifika hizmeti, [Azure Sertifikalı IoT portalı](#azure-certified-for-iot-portal)aracılığıyla sertifika Için bir [IoT Tak ve Kullan cihazı](#iot-plug-and-play-device) gönderdiğinizde bir sertifika testleri kümesi çalıştırır. [IoT cihaz kataloğuna sertifikalı](#certified-for-iot-device-catalog)bir cihaz ekleyebilmeniz için önce cihazın sertifikalı olması gerekir.
 
-## <a name="azure-iot-device-workbench-extension"></a>Azure IoT cihaz çalışma ekranı uzantısı
+## <a name="azure-iot-tools-extension"></a>Azure IoT araçları uzantısı
 
-Azure IoT cihaz çalışma ekranı, aşağıdakileri yapmak için tümleşik bir ortam sağlayan bir [Visual Studio kod](#visual-studio-code) uzantısıdır:
+Azure IoT araçları, [Visual Studio Code](#visual-studio-code) 'da IoT Hub etkileşime geçerek IoT cihazları geliştirmenize yardımcı olan bir uzantılar koleksiyonudur. IoT Tak ve Kullan cihaz geliştirme için şunları yapmanıza yardımcı olur:
 
 - [Cihaz yetenek modellerini](#device-capability-model) ve [arabirimlerini](#interface)yazar.
 - [Model depolarında](#model-repository)yayımlayın.
@@ -200,4 +200,4 @@ Bir [arabirimde](#interface) tanımlanan telemetri alanları ölçümleri temsil
 
 ## <a name="visual-studio-code"></a>Visual Studio kodu
 
-Visual Studio Code, birden çok platform için kullanılabilen modern bir kod düzenleyicisidir. [Azure IoT cihaz çalışma ekranı uzantısı](#azure-iot-device-workbench-extension) gibi uzantılar, çok çeşitli geliştirme senaryolarını destekleyecek şekilde özelleştirmenizi sağlar.
+Visual Studio Code, birden çok platform için kullanılabilen modern bir kod düzenleyicisidir. [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) paketinde bulunanlar gibi uzantılar, düzenleyici 'yi çok çeşitli geliştirme senaryolarını destekleyecek şekilde özelleştirmenize olanak tanır.

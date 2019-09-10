@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981156"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845667"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>100 TB 'a kadar hiper ölçek hizmeti katmanı
 
 Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanılabilirlik sağlamak için bulut ortamı için ayarlanmış SQL Server veritabanı motoru mimarisini temel alır. Azure SQL veritabanı 'nda kullanılan üç mimari modeli vardır:
 - Genel Amaçlı/standart 
--  Hiper Ölçek
+-  Hiper ölçek
 -  İş Açısından Kritik/Premium
 
 Azure SQL veritabanı 'nda bulunan hiper ölçekli hizmet katmanı, sanal çekirdek tabanlı satın alma modelindeki en yeni hizmet katmandır. Bu hizmet katmanı, bir Azure SQL veritabanı için depolama ve işlem kaynaklarının, Genel Amaçlı ve Iş için kullanılabilen limitlerin büyük ölçüde ötesinde ölçeğini genişletmek için Azure mimarisinden yararlanan, yüksek düzeyde ölçeklenebilir bir depolama ve bilgi işlem performans katmanından yararlanır Kritik hizmet katmanları.
@@ -186,7 +186,7 @@ Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini
 
 2. [ **Yeni destek isteğine** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
+    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** seçeneğini belirleyin
 
@@ -198,13 +198,13 @@ Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini
 
 1. **Ayrıntıları sağla** ' ya tıklayın
 
-    ![Sorun ayrıntıları](media/sql-database-service-tier-hyperscale/whitelist-request-screen-2.png)
+    ![Sorun ayrıntıları](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. **SQL veritabanı kota türünü**seçin: **Diğer kota isteği**
 
 9. Aşağıdaki şablonu doldur:
 
-    ![Kota ayrıntıları](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![Kota ayrıntıları](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     Şablonda, aşağıdaki bilgileri sağlayın
 
@@ -229,7 +229,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Hiperzölçekli DB 'yi Hypserscale 'e geri yükleme ve tam tersi | Hiper ölçekli bir veritabanını hiper olmayan bir veritabanına geri yükleyemezsiniz veya hiper ölçekli bir veritabanını hiper ölçekli bir veritabanına geri yükleyemezsiniz.|
 | Bir veritabanı dosyası, etkin bir iş yükü nedeniyle geçiş sırasında büyürse ve dosya sınırı başına 1 TB kesişmezse, geçiş başarısız olur | Karşı <br> Mümkünse, çalışan bir güncelleştirme iş yükü olmadığında veritabanını geçirin.<br> -Geçişi yeniden deneyin, geçiş sırasında 1 TB sınırının çapraz olmadığı sürece başarılı olur.|
 | Yönetilen Örnek | Azure SQL veritabanı yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
-| Esnek Havuzlar |  Esnek havuzlar Şu anda SQL veritabanı Hyperscale ile desteklenmemektedir.|
+| Elastik Havuzlar |  Esnek havuzlar Şu anda SQL veritabanı Hyperscale ile desteklenmemektedir.|
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hyperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu BACPAC dosyasını kullanarak dışarı ve içeri aktarma işlemi kullanmaktır.|
 | Kalıcı bellek içi nesneleri olan veritabanlarının geçirilmesi | Hiper ölçek yalnızca kalıcı olmayan bellek nesnelerini destekler (tablo türleri, yerel SPs 'ler ve işlevler).  Kalıcı bellek Içi tablolar ve diğer nesneler, bir veritabanını hiper ölçek hizmet katmanına geçirmeden önce, bellek içi nesneler olarak bırakılmalıdır ve yeniden oluşturulmalıdır.|
 | Değişiklik İzleme | Hiper ölçekli veritabanları ile Değişiklik İzleme kullanamazsınız. |

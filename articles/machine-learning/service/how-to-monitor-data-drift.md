@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128272"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858696"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
@@ -134,6 +134,7 @@ DRFT ölçümlerini görüntülemenin birden çok yolu vardır:
 * [Jupyıter pencere öğesini kullanın.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
 * İşlevi herhangi bir `datadrift` çalıştırma nesnesi üzerinde kullanın. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
 * Modelinizdeki Azure portal ölçümleri görüntüleyin.
+* [Çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **modeller** bölümünden ölçümleri görüntüleyin.
 
 Aşağıdaki Python örneği, ilgili veri kayması ölçümlerinin nasıl çizeceğinizi gösterir. Döndürülen ölçümleri özel görselleştirmeler oluşturmak için kullanabilirsiniz:
 
@@ -158,7 +159,7 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Veri drörü algılayıcısının yapılandırması, Azure portal model ayrıntıları sayfasında görülebilir.
+Veri kayması algılayıcısı yapılandırması, Azure portal veya çalışma alanı giriş sayfanızdaki (Önizleme) model ayrıntıları sayfasında görülebilir.
 
 ![Azure portal veri DRFT yapılandırması](media/how-to-monitor-data-drift/drift_config.png)
 
@@ -167,6 +168,8 @@ Veri drörü algılayıcısının yapılandırması, Azure portal model ayrınt�
 [Azure Portal](https://portal.azure.com)çalışma alanınızdaki sonuçları görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri DRI yapılandırması gösterilir. ' Veri kayması (Önizleme) ' sekmesi artık veri Drın ölçümlerinin görselleştirilmesi için kullanılabilir. 
 
 ![Azure portal veri kayması](media/how-to-monitor-data-drift/drift_ui.png)
+
+Sonuçlar Ayrıca [çalışma alanı giriş sayfanızdaki (Önizleme)](https://ml.azure.com)model ayrıntılarında de kullanılabilir.
 
 ## <a name="receiving-drift-alerts"></a>DRFT uyarıları alma
 

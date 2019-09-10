@@ -1,6 +1,6 @@
 ---
-title: Web API'leri (uygulama için bir belirteç almak) - Microsoft kimlik platformu çağıran bir web uygulaması
-description: Web API'ları (uygulama için bir belirteç alınırken) çağıran bir Web uygulaması oluşturmayı öğrenin
+title: Web API 'Lerini çağıran Web uygulaması (uygulama için bir belirteç edinin)-Microsoft Identity platform
+description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (uygulama için bir belirteç alma)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653db995000308bb3ef78a9183696cd9d8ed1056
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa144c76fb0a8e479658efdb5d43361fbbc085c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074808"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860632"
 ---
-# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API'leri çağıran uygulama web - uygulama için bir belirteç Al
+# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran Web uygulaması-uygulama için bir belirteç alın
 
-İstemci uygulama nesnesi derlediğiniz artık sonra web API'leri çağırmak için kullanacağınız bir belirteç almak için kullanacaksınız. ASP.NET veya ASP.NET Core web API denetleyicisi ardından yapılır çağrılıyor. Bu, ilgili değil:
+Artık size istemci uygulama nesnesi oluşturduğunuza göre, bir Web API 'SI çağırmak için bir belirteç almak üzere onu kullanacaksınız. ASP.NET veya ASP.NET Core içinde, bir Web API 'SI çağrısı daha sonra denetleyicide yapılır. Şu şekilde olur:
 
-- Web API'si kullanarak belirteç önbelleği için bir belirteç alınıyor. Bunun için çağırın `AcquireTokenSilent`
-- Erişim belirteci ile korumalı API çağırma
+- Belirteç önbelleğini kullanarak Web API 'SI için belirteç alma. Bu belirteci almak için öğesini çağırın `AcquireTokenSilent`.
+- Korumalı API 'yi erişim belirteciyle çağırma.
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-Denetleyici yöntemleri tarafından korunan bir `[Authorize]` kullanıcılar Web uygulamasını kullanmak için kimliğinin zorlar özniteliği. Microsoft Graph çağıran kodu
+Denetleyici yöntemleri, kullanıcıların kimlik doğrulamasından geçen `[Authorize]` ve Web uygulamasını kullanmasına zorlayan bir öznitelik tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir.
 
 ```CSharp
 [Authorize]
@@ -41,7 +41,7 @@ public class HomeController : Controller
 }
 ```
 
-Microsoft Graph'i çağırmaya yönelik bir belirteç alır HomeController eylemin basitleştirilmiş bir kod aşağıda verilmiştir.
+Aşağıda, Microsoft Graph çağırmak için bir belirteç alan HomeController eyleminin basit bir kodu verilmiştir.
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -69,23 +69,23 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-2\. Aşama bu senaryo için gerekli kodu toplamı ayrıntılarında anlamak istiyorsanız, bkz [2-1-Web Uygulama çağrıları Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) adımında [ms-kimlik-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) Öğreticisi
+Bu senaryo için gereken kodu daha kapsamlı olarak anlamak için, [MS-Identity-aspnetcore-WebApp-öğretici](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) öğreticisinin 2. aşama ([2-1-Web uygulaması çağrı Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) adımına bakın.
 
-Gibi çok sayıda ek karmaşıklık vardır:
+Şöyle birçok ek karmaşıklık vardır:
 
-- bir belirteç önbelleği Web uygulamasının (öğretici sunmak çeşitli uygulamalar) uygulama
-- Kullanıcı işaretleri genişletme zaman önbellekten hesap kaldırılıyor
-- Artımlı onay sahip dahil olmak üzere birkaç API çağırma
+- Web uygulaması için bir belirteç önbelleği uygulama (öğretici çeşitli uygulamalar sunar)
+- Kullanıcı oturumu kapattığında hesabı önbellekten kaldırma
+- Artımlı onay dahil olmak üzere çeşitli API 'Ler çağırma
 
 ## <a name="aspnet"></a>ASP.NET
 
-ASP.NET'te benzer şunlardır:
+ASP.NET ' de benzer şeyler:
 
-- Bir [Authorize] özniteliği tarafından korunan bir denetleyici eylemi, Kiracı kimliği ve kullanıcı kimliği ayıklamak `ClaimsPrincipal` denetleyici üyesi (ASP.NET kullanan `HttpContext.User`)
-- İsteğe bağlı olarak burada bir MSAL.NET oluşturur `IConfidentialClientApplication`
-- BT çağrı `AcquireTokenSilent` gizli istemci uygulamasının yöntemi 
+- [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin Kiracı kimliğini ve Kullanıcı kimliğini ayıklar. (ASP.NET kullanımları `HttpContext.User`.)
+- Buradan, bir MSAL.NET `IConfidentialClientApplication`oluşturur.
+- Son olarak, gizli istemci `AcquireTokenSilent` uygulamasının yöntemini çağırır.
 
-kodu için ASP.NET Core gösterilen koda benzer.
+Kod, ASP.NET Core gösterilen koda benzerdir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

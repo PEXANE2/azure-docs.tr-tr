@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227957"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860526"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modelleri için veri toplama
 
@@ -109,7 +109,7 @@ Bunu etkinleştirmek için şunları yapmanız:
 
 Yüklenen bağımlılıkları olan bir hizmet zaten varsa, **ortam dosyası** ve **Puanlama dosyası**, tarafından veri toplamayı etkinleştirin:
 
-1. Git [Azure portalında](https://portal.azure.com).
+1. [Azure Portal](https://portal.azure.com)gidin.
 
 1. Çalışma alanını açın.
 
@@ -144,6 +144,8 @@ Dilediğiniz zaman veri toplamayı durdurabilirsiniz. Veri toplamayı devre dı�
 
   1. Seçin **güncelleştirme** değişikliği uygulamak için.
 
+  Ayrıca, bu ayarlara [çalışma alanı giriş sayfanızda (Önizleme)](https://ml.azure.com)erişebilirsiniz.
+
 + Seçenek 2 - veri toplama devre dışı bırakmak için Python kullanın:
 
   ```python 
@@ -172,7 +174,7 @@ Verileri, BLOB'dan hızlıca erişmek için:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Power BI aracılığıyla model verileri analiz etme
 
-1. İndir ve Aç [Power BI Desktop](https://www.powerbi.com)
+1. [Power BI Desktop](https://www.powerbi.com) Indir ve aç
 
 1. Seçin **Veri Al** tıklayın [ **Azure Blob Depolama**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 

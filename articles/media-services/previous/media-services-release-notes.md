@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019307"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860360"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -29,7 +29,7 @@ Bu sürüm notları, önceki sürümlerden ve bilinen sorunlardan değişiklikle
 
 Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden haberdar olmak istiyoruz. Bir sorunu bildirmek veya soru sormak için [Azure Media Services MSDN Forumu]bir gönderi gönderin. 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Şu anda bilinen sorunlar
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>Bilinen sorunlar
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services genel sorunlar
 
 | Sorun | Açıklama |
@@ -41,6 +41,7 @@ Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden h
 | Varlıkları sorguladığınızda, genel REST sürüm 2 ' nin sorgu sonuçlarını 1.000 sonuçlara göre kısıtladığından, bir kerede 1.000 varlıklardan oluşan bir sınır döndürülür. |[Bu .net örneğinde](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) ve [Bu REST API örnekte](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)açıklandığı gibi atla ve al (.net)/top (REST) kullanın. |
 | Bazı istemciler Kesintisiz Akış bildiriminde bir yineleme Etiketi sorunu üzerinden gelebilir. |Daha fazla bilgi için [Bu bölüme](media-services-deliver-content-overview.md#known-issues)bakın. |
 | Media Services .NET SDK nesneleri serileştirilemiyor ve sonuç olarak Redsıs için Azure Cache ile birlikte çalışmaz. |Redin için Azure önbelleğine eklemek üzere SDK AssetCollection nesnesini serileştirmenize çalışırsanız, bir özel durum oluşturulur. |
+|REST API, bir varlık veya hesap düzeyi filtresi almaya çalışırken "filtreye REST API 'nin bu sürümü tarafından erişilemeyeceğini" belirten bir hata iletisiyle yanıt verir.|Filtre, filtreyi almayı denemek için kullanılandan daha yeni bir API sürümüyle oluşturulmuş veya değiştirilmiş. Bu durum, müşteri tarafından kullanılan kod veya araçlar tarafından iki API sürümü kullanılıyorsa meydana gelebilir.  Buradaki en iyi çözüm, kodu veya araçları, daha yeni veya iki API sürümünü kullanacak şekilde yükseltmek için kullanılır.|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API sürümü geçmişi
 Media Services REST API sürümü geçmişi hakkında daha fazla bilgi için [Azure Media Services REST API'si Başvurusu]bakın.
@@ -345,7 +346,7 @@ Bu sürüm, varsayılan Microsoft. WindowsAzure. MediaServices. Client. Contentk
 * Kanal ve akış son güncelleştirmesi için doğrulama ayarları eklendi.
 
 ### <a name="new-github-repository-to-host-media-services-samples"></a>Media Services örnekleri barındırmak için yeni GitHub deposu
-Örnekler [Media Services örnekleri GitHub](https://github.com/Azure/Azure-Media-Services-Samples)deposundadır.
+Örnekler [Media Services örnekleri GitHub deposundadır](https://github.com/Azure/Azure-Media-Services-Samples).
 
 ## <a id="september_changes_14"></a>Eylül 2014 sürümü
 Media Services REST meta verileri artık 2,7 sürümüdür. En son REST güncelleştirmeleri hakkında daha fazla bilgi için [Media Services REST API başvurusuna](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)bakın.

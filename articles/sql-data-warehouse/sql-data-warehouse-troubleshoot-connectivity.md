@@ -10,12 +10,12 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575551"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859239"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
@@ -57,7 +57,7 @@ Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak i�
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarınızı denetleyin
 
-SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı müddetçe Azure SQL veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal)ulaşabilirsiniz.
+SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar.   Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı müddetçe Azure SQL veritabanı sunucunuza bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/hizmet uç noktası ayarlarınızı denetleyin
 

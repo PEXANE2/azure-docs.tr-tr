@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972768"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845333"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirliğe sahip bir bağlantı yapılandırın
 
@@ -50,7 +50,7 @@ Varsayılan olarak, CloudSimple VPN Gateway 'ler, aşağıdaki Aşama 1 ve Aşam
 
 Şirket içi güvenlik duvarını yapılandırmadan önce aşağıdaki görevleri doldurun.
 
-1. Kuruluşunuzun gerekli düğümleri [satın](create-nodes.md) aldığını ve en az bir Cloudsimple özel bulutu oluşturduğunu doğrulayın.
+1. Kuruluşunuzun gerekli düğümleri [sağladığından](create-nodes.md) ve en az bir Cloudsimple özel bulutu oluşturduğunu doğrulayın.
 2. Şirket içi ağınız ve CloudSimple özel bulutunuz arasında [siteden sıteye VPN ağ geçidi yapılandırın](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) .
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>Şirket içi Cisco ASA güvenlik duvarını yapılandırma

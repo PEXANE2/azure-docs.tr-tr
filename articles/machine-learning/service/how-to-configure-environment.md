@@ -1,7 +1,7 @@
 ---
 title: Python geliştirme ortamı ayarlama
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetiyle çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, Azure Notebooks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
+description: Azure Machine Learning hizmetiyle çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278819"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860566"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, bu makalede ele alınan her geliştirme ortamı, profesyon
 | [Yerel ortam](#local) | Geliştirme ortamınızın ve bağımlılıklarınızın tam denetimi. İstediğiniz herhangi bir yapı aracı, ortam veya IDE ile çalıştırın. | Kullanmaya başlamak için daha uzun sürer. Gerekli SDK paketlerinin yüklü olması ve henüz yoksa bir ortamın de yüklü olması gerekir. |
 | [Azure Databricks](#aml-databricks) | Ölçeklenebilir Apache Spark platformunda büyük ölçekli yoğun makine öğrenimi iş akışlarını çalıştırmak için idealdir. | Deneysel makine öğrenimi veya daha küçük ölçekli denemeleri ve iş akışları için fazla sonlandırılmalıdır. Azure Databricks için ek ücret tahakkuk ettir. [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/databricks/)bakın. |
 | [Veri Bilimi Sanal Makinesi (DSVM)](#dsvm) | Bulut tabanlı Not defteri VM 'sine benzer (Python ve SDK önceden yüklenmiş), ancak daha popüler veri bilimi ve Machine Learning araçları önceden yüklenmiş olarak. Kolayca ölçeklendirilmesi ve diğer özel araçlar ve iş akışlarıyla birleştirmek. | Bulut tabanlı Notebook VM ile karşılaştırıldığında daha yavaş bir başlangıç deneyimi. |
-| [Azure Notebooks](#aznotebooks) | Python ve SDK önceden yüklenmiş olarak ücretsiz ve hafif başlangıç deneyimi. | Bulut tabanlı dizüstü bilgisayar VM 'lerine kıyasla daha az güçlü VM 'Ler kullanılabilir. Çalışma alanından ve diğer kaynaklardan yalıtılmıştır. |
+
 
 Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmaktadır:
 
@@ -40,7 +40,7 @@ Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmak
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm), [Azure Databricks](#aml-databricks)veya [Azure Notebooks](#aznotebooks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
+Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm)veya [Azure Databricks](#aml-databricks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
 
 [Yerel bilgisayarınız](#local)için SDK ortamını yüklemek üzere [Jupyter Notebook sunucu](#jupyter) veya [Visual Studio Code](#vscode) şunları yapmanız gerekir:
 
@@ -326,7 +326,7 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
    * **Tüm kümelere otomatik olarak ekle**' yi seçmeyin.
    * Küme adınızın yanındaki **Ekle** ' yi seçin.
 
-1. Durum **iliştirilene**kadar, bu işlem birkaç dakika sürebilir.  Bu adım başarısız olursa, aşağıdakileri denetleyin:
+1. Durum Iliştirilene kadar, bu işlembirkaç dakika sürebilir.  Bu adım başarısız olursa, aşağıdakileri denetleyin:
 
    Kümenizi şu şekilde yeniden başlatmayı deneyin:
    1. Sol bölmede **kümeler**' ı seçin.
@@ -352,17 +352,6 @@ Deneyin:
   Birçok örnek Not defteri kullanılabilir, **ancak [Bu örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) yalnızca Azure Databricks çalışır.**
 
 + [Eğitim işlemi olarak Databricks ile bir işlem hattı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
-
-## <a id="aznotebooks"></a>Azure Not Defterleri
-
-[Azure not defterleri](https://notebooks.azure.com) (Önizleme) olan Azure bulutundaki bir etkileşimli bir geliştirme ortamı. Azure Machine Learning geliştirmeyi kullanmaya başlamak için kolay bir yoldur.
-
-* Azure Machine Learning SDK zaten yüklü.
-* Azure portal bir Azure Machine Learning hizmet çalışma alanı oluşturduktan sonra, Azure Not defteri ortamınızı çalışma alanıyla çalışacak şekilde otomatik olarak yapılandırmak için bir düğmeye tıklayabilirsiniz.
-
-Azure Notebooks kullanmaya başlamak için [Azure Portal](https://portal.azure.com) kullanın.  Çalışma alanınızı açın ve **genel bakış** bölümünden **Azure Notebooks kullanmaya başlayın**' ı seçin.
-
-Azure Notebooks, varsayılan olarak, 4 GB bellekle ve 1 GB verilerle sınırlı bir ücretsiz hizmet katmanını kullanır. Ancak, Azure Notebooks projesine bir Veri Bilimi Sanal Makinesi örneği ekleyerek bu limitleri kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Notebooks projelerini yönetme ve yapılandırma-işlem katmanı](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Çalışma alanı yapılandırma dosyası oluşturma
 

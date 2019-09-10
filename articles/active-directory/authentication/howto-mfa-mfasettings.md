@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication 'ı Yapılandırma-Azure Active Directory
-description: Bu makalede, Azure Multi-Factor Authentication ayarlarının Azure portal nasıl yapılandırılacağı açıklanmaktadır
+title: Azure Multi-Factor Authentication Yapılandırma-Azure Active Directory
+description: Bu makalede, Azure portal Azure Multi-Factor Authentication ayarlarının nasıl yapılandırılacağı açıklanmaktadır
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68948885"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860290"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
-Bu makale, Azure portal Multi-Factor Authentication ayarlarını yönetmenize yardımcı olur. Azure Multi-Factor Authentication 'dan en iyi şekilde yararlanmanıza yardımcı olan çeşitli konuları ele almaktadır. Tüm özellikler Azure Multi-Factor Authentication 'ın her sürümünde kullanılamaz.
+Bu makale, Azure portal Multi-Factor Authentication ayarlarını yönetmenize yardımcı olur. Azure Multi-Factor Authentication en iyi şekilde yararlanmanıza yardımcı olacak çeşitli konular ele alınmaktadır. Her Azure Multi-Factor Authentication sürümünde tüm özellikler kullanılamaz.
 
-**Azure Active Directory** > **MFA**'ya göz atarak Azure Portal Azure Multi-Factor Authentication ile ilgili ayarlara erişebilirsiniz.
+Azure Multi-Factor Authentication ile ilgili ayarlara **Azure Active Directory** > **MFA**'ya giderek Azure Portal erişebilirsiniz.
 
 ![Azure portal-Azure AD Multi-Factor Authentication ayarları](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -113,7 +113,7 @@ Sahtekarlık uyarı e-postaları alacak kullanıcılar için buradaki e-posta ad
 **MFA arayan kimlik numarası** -kullanıcılarınızın telefonlarındaki göreceği sayıdır. Yalnızca ABD tabanlı sayılara izin verilir.
 
 >[!NOTE]
->Multi-Factor Authentication çağrıları ortak telefon ağı üzerinden yerleştirildiğinde, bazen arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, çok faktörlü kimlik doğrulama sistemi tarafından her zaman göndermesi mümkün olsa da arayan KIMLIĞI garanti edilmez.
+>Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazen arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Multi-Factor Authentication sistemi her zaman tarafından gönderilse de arayan KIMLIĞI garanti edilmez.
 
 ### <a name="custom-voice-messages"></a>Özel ses iletileri
 
@@ -159,19 +159,19 @@ Kullanıcıya özel bir sesli mesaj yürütüldüğünde, iletinin dili şu etke
 | Kimlik doğrulaması başarılı | Oturum açma bilgileriniz başarıyla doğrulandı. Goodbye. |
 | Dahili numara istemi | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Devam etmek için lütfen kare tuşuna basın. |
 | Sahtekarlık Onayı | Bir sahtekarlık uyarısı gönderildi. Hesabınızın engelini kaldırmak için lütfen şirketinizin BT yardım masasına başvurun. |
-| Sahtekarlık karşılama (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı sonlandırmak için lütfen kare tuşuna basın. Bu doğrulamayı başlatmadıysanız birisi hesabınıza erişmeye çalışıyor olabilir. Sahtekarlık uyarısı göndermek için lütfen 0 kare tuşuna basın. Bu, şirketinizin BT ekibine bildirir ve daha fazla doğrulama denemesini engeller. |
+| Sahtekarlık karşılama (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen kare tuşuna basın. Bu doğrulamayı başlatmadıysanız birisi hesabınıza erişmeye çalışıyor olabilir. Sahtekarlık uyarısı göndermek için lütfen 0 kare tuşuna basın. Bu, şirketinizin BT ekibine bildirir ve daha fazla doğrulama denemesini engeller. |
 | Sahtekarlık bir sahtekarlık uyarısı gönderildiğini bildirdi. | Hesabınızın engelini kaldırmak için lütfen şirketinizin BT yardım masasına başvurun. |
-| Etkinleştirme | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı sonlandırmak için lütfen kare tuşuna basın. |
+| Etkinleştirme | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen kare tuşuna basın. |
 | Kimlik doğrulaması reddedildi - yeniden deneyin | Doğrulama reddedildi. |
-| Yeniden Dene (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı sonlandırmak için lütfen kare tuşuna basın. |
-| Karşılama (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı sonlandırmak için lütfen kare tuşuna basın. |
+| Yeniden dene (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen kare tuşuna basın. |
+| Karşılama (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen kare tuşuna basın. |
 | Karşılama (PIN) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen PIN 'inizi girip kare tuşuna basın. |
 | Sahtekarlık karşılama (PIN) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler.  Doğrulamanızı tamamlaması için lütfen PIN 'inizi girip kare tuşuna basın. Bu doğrulamayı başlatmadıysanız birisi hesabınıza erişmeye çalışıyor olabilir. Sahtekarlık uyarısı göndermek için lütfen 0 kare tuşuna basın. Bu, şirketinizin BT ekibine bildirir ve daha fazla doğrulama denemesini engeller. |
 | Yeniden dene (PIN) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen PIN 'inizi girip kare tuşuna basın. |
-| Rakamlardan sonra dahili numara istemi | Zaten bu dahili hattaysanız devam etmek için kare tuşuna basın. |
+| Rakamlardan sonra dahili numara istemi | Zaten bu uzantıda varsa, devam etmek için kare tuşuna basın. |
 | Kimlik doğrulaması reddedildi | Ne yazık ki şu anda oturumunuzu açamıyorum. Lütfen daha sonra tekrar deneyin. |
-| Etkinleştirme karşılama (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı sonlandırmak için lütfen kare tuşuna basın. |
-| Etkinleştirme yeniden deneme (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı sonlandırmak için lütfen kare tuşuna basın. |
+| Etkinleştirme karşılama (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen kare tuşuna basın. |
+| Etkinleştirme yeniden deneme (Standart) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen kare tuşuna basın. |
 | Etkinleştirme karşılama (PIN) | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Doğrulamanızı tamamlaması için lütfen PIN 'inizi girip kare tuşuna basın. |
 | Rakamlardan önce dahili numara istemi | Microsoft 'un oturum açma doğrulama sistemini kullandığınız için teşekkürler. Lütfen bu çağrıyı uzantıya aktarın... |
 
@@ -211,9 +211,9 @@ _Önbelleğe alma_ özelliğini kullanarak bir kullanıcının kimliği doğrula
 
 ## <a name="mfa-service-settings"></a>MFA hizmet ayarları
 
-Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure Multi-Factor Authentication için çok faktörlü kimlik doğrulamasını hatırlama ayarları hizmet ayarları ' nda bulunabilir. Hizmetayarlarına **Azure Active Directory** > **MFA** >  > 'yagözatarakAzurePortalerişilebilirvebuluttabanlıekyapılandırma >  **MFA ayarları**.
+Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure Multi-Factor Authentication için çok faktörlü kimlik doğrulamasını hatırlama ayarları, hizmet ayarları ' nda bulunabilir. Hizmetayarlarına **Azure Active Directory** > **MFA** >  > 'yagözatarakAzurePortalerişilebilirvebuluttabanlıekyapılandırma >  **MFA ayarları**.
 
-![Azure Multi-Factor Authentication hizmeti ayarları](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
+![Azure Multi-Factor Authentication hizmet ayarları](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
 ## <a name="app-passwords"></a>Uygulama parolaları
 
@@ -274,7 +274,7 @@ Azure AD, şirket içi Windows Server Active Directory Domain Services (AD DS) i
 Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Uygulama parolaları özelliğinin etkinleştirilmesi gerekir. Kullanıcılara uygulama parolaları oluşturma yeteneği vermek için aşağıdaki yordamı kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **Kullanıcılar ve gruplar** > **tüm kullanıcılar**' ı seçin.
+2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**'ı seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **kullanıcıların tarayıcı olmayan uygulamalara oturum açmak için uygulama parolaları oluşturmasına izin ver** seçeneğini belirleyin.
@@ -283,11 +283,11 @@ Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Uygulama p
 
 Kullanıcılar, ilk kaydı sırasında uygulama parolaları oluşturabilir. Kullanıcının kayıt işleminin sonunda uygulama parolaları oluşturma seçeneği vardır.
 
-Kullanıcılar, kayıt sonrasında Uygulama parolaları da oluşturabilir. Kullanıcılarınıza yönelik daha fazla bilgi ve ayrıntılı adımlar için bkz. [Azure Multi-Factor Authentication 'da uygulama parolaları nelerdir?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Kullanıcılar, kayıt sonrasında Uygulama parolaları da oluşturabilir. Kullanıcılarınıza yönelik daha fazla bilgi ve ayrıntılı adımlar için bkz. [Azure Multi-Factor Authentication uygulama parolaları nelerdir?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="trusted-ips"></a>Güvenilen IP'ler
 
-Azure Multi-Factor Authentication 'ın _güvenilir IP 'leri_ özelliği, yönetilen veya federal bir kiracının yöneticileri tarafından kullanılır. Özelliği, şirket intranetinden oturum açan kullanıcılar için iki aşamalı doğrulamayı atlar. Özelliği, yöneticilerin ücretsiz sürümü değil, Azure Multi-Factor Authentication 'ın tam sürümü ile kullanılabilir. Azure Multi-Factor Authentication 'ın tam sürümünün nasıl alınacağı hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication](multi-factor-authentication.md).
+Azure Multi-Factor Authentication 'nin _güvenilir IP 'leri_ özelliği, yönetilen veya federal bir kiracının yöneticileri tarafından kullanılır. Özelliği, şirket intranetinden oturum açan kullanıcılar için iki aşamalı doğrulamayı atlar. Özelliği, yöneticilerin ücretsiz sürümü değil, Azure Multi-Factor Authentication 'nin tam sürümüyle kullanılabilir. Azure Multi-Factor Authentication 'nin tam sürümünü alma hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication](multi-factor-authentication.md).
 
 > [!NOTE]
 > MFA güvenilir IP 'Leri ve koşullu erişim adlandırılmış konumlar yalnızca ıPV4 adresleriyle çalışır.
@@ -305,7 +305,7 @@ Güvenilen IP 'Leri atlama yalnızca şirket intraneti 'nin içinden çalışaca
 
 Güvenilir IP 'Ler özelliği devre dışı bırakıldığında, tarayıcı akışları için iki aşamalı doğrulama gerekir. Daha eski zengin istemci uygulamaları için uygulama parolaları gereklidir.
 
-Güvenilen IP 'Ler özelliği etkinleştirildiğinde, tarayıcı akışları için iki aşamalı doğrulama gerekli *değildir* . Kullanıcı bir uygulama parolası oluşturmadığı için, daha eski zengin istemci uygulamaları için uygulama parolaları gerekli *değildir* . Bir uygulama parolası kullanımda olduktan sonra parola gerekli kalır. 
+Güvenilen IP 'Ler özelliği etkinleştirildiğinde, tarayıcı akışları için iki aşamalı doğrulama gerekli *değildir* . Kullanıcı bir uygulama parolası *oluşturmadığı* için, daha eski zengin istemci uygulamaları için uygulama parolaları gerekli değildir. Bir uygulama parolası kullanımda olduktan sonra parola gerekli kalır. 
 
 ### <a name="end-user-experience-outside-corpnet"></a>Corpnet dışında son kullanıcı deneyimi
 
@@ -314,7 +314,7 @@ Güvenilen IP 'Lerin özelliğinin etkinleştirilip etkinleştirilmediği bağı
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Koşullu erişimi kullanarak adlandırılmış konumları etkinleştir
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **koşullu erişim** > **adlı konumlar**' ı seçin.
+2. Sol tarafta, **Azure Active Directory** > **güvenlik** > **koşullu erişim** > **adlı konumlar**' ı seçin.
 3. **Yeni konum**' u seçin.
 4. Konum için bir ad girin.
 5. **Güvenilen konum olarak işaretle**' yi seçin.
@@ -324,7 +324,7 @@ Güvenilen IP 'Lerin özelliğinin etkinleştirilip etkinleştirilmediği bağı
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Koşullu erişimi kullanarak güvenilir IP 'Ler özelliğini etkinleştirme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **koşullu erişim** > **adlı konumlar**' ı seçin.
+2. Sol tarafta, **Azure Active Directory** > **güvenlik** >  **koşullu erişim** > **adlı konumlar**' ı seçin.
 3. **MFA güvenilir IP 'Lerini Yapılandır**' ı seçin.
 4. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini seçin:
 
@@ -362,19 +362,19 @@ Güvenilen IP 'Lerin özelliğinin etkinleştirilip etkinleştirilmediği bağı
 
 Kullanıcılarınız için kullanılabilir doğrulama yöntemlerini seçebilirsiniz. Aşağıdaki tabloda yöntemlere kısa bir genel bakış sunulmaktadır.
 
-Kullanıcılarınız, hesaplarını Azure Multi-Factor Authentication için kaydettiğinde, etkinleştirdiğiniz seçeneklerden tercih edilen doğrulama yöntemini seçer. Kullanıcı kayıt işlemine kılavuzluk, [iki adımlı doğrulama için hesabımı ayarlama](../user-help/multi-factor-authentication-end-user-first-time.md)bölümünde verilmiştir.
+Kullanıcılarınız Azure Multi-Factor Authentication hesaplarını kaydettiğinde, etkinleştirdiğiniz seçeneklerden tercih edilen doğrulama yöntemini seçer. Kullanıcı kayıt işlemine kılavuzluk, [iki adımlı doğrulama için hesabımı ayarlama](../user-help/multi-factor-authentication-end-user-first-time.md)bölümünde verilmiştir.
 
 | Yöntem | Açıklama |
 |:--- |:--- |
 | Telefonu arama |Otomatik bir sesli çağrı koyar. Kullanıcı, aramaya yanıt verir ve telefon tuş takımında # tuşuna basar. Telefon numarası şirket içi Active Directory ile eşitlenmez. |
 | Telefona kısa mesaj |Doğrulama kodu içeren bir kısa mesaj gönderir. Kullanıcıdan, doğrulama kodunu oturum açma arabirimine girmesi istenir. Bu işlem tek yönlü SMS olarak adlandırılır. İki yönlü SMS, kullanıcının belirli bir kodu doğru bir şekilde geri metin döndürmelidir. İki yönlü SMS kullanım dışıdır ve 14 Kasım 2018 sonrasında desteklenmez. İki yönlü SMS için yapılandırılmış kullanıcılar otomatik olarak telefon doğrulamaya bu anda _çağrı_ yapılır.|
 | Mobil uygulama üzerinden bildirim |Telefonunuza veya kayıtlı cihazınıza anında iletme bildirimi gönderir. Kullanıcı bildirimi görüntüler ve doğrulamayı tamamlamaya yönelik **Doğrula** ' yı seçer. Microsoft Authenticator uygulaması [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)ve [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)için kullanılabilir. |
-| Mobil uygulamadaki veya donanım belirtecindeki doğrulama kodu |Microsoft Authenticator uygulaması, her 30 saniyede yeni bir OATH doğrulama kodu oluşturur. Kullanıcı doğrulama kodunu oturum açma arabirimine girer. Microsoft Authenticator uygulaması [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)ve [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)için kullanılabilir. |
+| Mobil uygulama veya donanım belirtecinden doğrulama kodu |Microsoft Authenticator uygulaması, her 30 saniyede yeni bir OATH doğrulama kodu oluşturur. Kullanıcı doğrulama kodunu oturum açma arabirimine girer. Microsoft Authenticator uygulaması [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)ve [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)için kullanılabilir. |
 
 ### <a name="enable-and-disable-verification-methods"></a>Doğrulama yöntemlerini etkinleştirme ve devre dışı bırakma
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **Kullanıcılar ve gruplar** > **tüm kullanıcılar**' ı seçin.
+2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**'ı seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **doğrulama seçenekleri**altında kullanıcılarınıza sağlanacak yöntemlerin seçin/seçimini kaldırın.
@@ -382,33 +382,33 @@ Kullanıcılarınız, hesaplarını Azure Multi-Factor Authentication için kayd
 
 Kimlik doğrulama yöntemlerinin kullanımıyla ilgili ek ayrıntılar makalesinde, [kimlik doğrulama yöntemleri nelerdir](concept-authentication-methods.md).
 
-## <a name="remember-multi-factor-authentication"></a>Çok Faktörlü Kimlik Doğrulamasını Anımsa
+## <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication anımsa
 
-Kullanıcı tarafından güvenilen cihazlar ve tarayıcılar için _Multi-Factor Authentication 'ı anımsa_ özelliği, tüm Multi-Factor Authentication kullanıcıları için ücretsiz bir özelliktir. Kullanıcılar, çok faktörlü kimlik doğrulaması kullanarak bir cihaza başarıyla oturum açtıktan sonra, belirtilen gün sayısı için sonraki doğrulamaları atlayabilir. Özelliği, bir kullanıcının aynı cihazda iki aşamalı doğrulamayı kaç kez gerçekleştirmesi gerektiğini en aza indirerek kullanılabilirliği geliştirir.
+Kullanıcı tarafından güvenilen cihazlar ve tarayıcılar için _Multi-Factor Authentication hatırla_ özelliği, tüm Multi-Factor Authentication kullanıcılar için ücretsiz bir özelliktir. Kullanıcılar, Multi-Factor Authentication kullanarak bir cihaza başarıyla oturum açtıktan sonra, belirtilen gün sayısı için sonraki doğrulamaları atlayabilir. Özelliği, bir kullanıcının aynı cihazda iki aşamalı doğrulamayı kaç kez gerçekleştirmesi gerektiğini en aza indirerek kullanılabilirliği geliştirir.
 
 >[!IMPORTANT]
->Bir hesap veya cihazın güvenliği tehlikeye girerse, güvenilir cihazlarda Multi-Factor Authentication 'ın anımsanacak güvenliği etkileyebilir. Bir şirket hesabının güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybedilirse veya çalınırsa, [çok faktörlü kimlik doğrulamasını tüm cihazlarda geri yüklemeniz](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)gerekir.
+>Bir hesap veya cihazın güvenliği tehlikeye girerse, güvenilir cihazlar için Multi-Factor Authentication hatırlama güvenliği etkileyebilir. Bir şirket hesabının güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybedilirse veya çalınırsa, [tüm cihazlarda Multi-Factor Authentication geri yüklemeniz](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)gerekir.
 >
->Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının iki aşamalı doğrulamayı yeniden gerçekleştirmesi gerekir. Ayrıca, kullanıcılarınızı [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)konusundaki yönergelerden, kendi cihazlarındaki Multi-Factor Authentication 'ı geri yüklemelerini de söyleyebilirsiniz.
+>Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının iki aşamalı doğrulamayı yeniden gerçekleştirmesi gerekir. Ayrıca, kullanıcılarınızın kendi cihazlarındaki Multi-Factor Authentication geri yüklemesini, [ayarlarınızı iki adımlı doğrulama Için yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)konusundaki yönergelerle de söyleyebilirsiniz.
 
 ### <a name="how-the-feature-works"></a>Özelliğin çalışma şekli
 
-Multi-Factor Authentication 'ı anımsa özelliği, Kullanıcı oturum açma sırasında **X gün için yeniden sorma** seçeneğini seçtiğinde tarayıcıda kalıcı bir tanımlama bilgisi ayarlar. Tanımlama bilgisinin süresi dolana kadar, Kullanıcı aynı tarayıcıdan çok faktörlü kimlik doğrulaması için bir daha istenmez. Kullanıcı aynı cihazda farklı bir tarayıcı açarsa veya tanımlama bilgilerini temizlerse, bunları doğrulamak için bir kez daha istenir.
+Multi-Factor Authentication hatırlayın özelliği, Kullanıcı oturum açma sırasında **X gün için yeniden sorma** seçeneğini seçtiğinde tarayıcıda kalıcı bir tanımlama bilgisi ayarlıyor. Tanımlama bilgisinin süresi dolana kadar Kullanıcı aynı tarayıcıdan Multi-Factor Authentication için bir daha istenmez. Kullanıcı aynı cihazda farklı bir tarayıcı açarsa veya tanımlama bilgilerini temizlerse, bunları doğrulamak için bir kez daha istenir.
 
 Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark etmeksizin, **X gün boyunca yeniden sorma** seçeneği, tarayıcı olmayan uygulamalarda gösterilmez. Bu uygulamalar, her saat yeni erişim belirteçleri sağlayan _yenileme belirteçlerini_ kullanır. Yenileme belirteci doğrulandıktan sonra, Azure AD, son iki adımlı doğrulamanın belirtilen gün sayısı içinde gerçekleştiğini denetler.
 
 Özelliği, Web Apps 'teki kimlik doğrulama sayısını azaltır ve bu, normalde her seferinde uyarır. Özelliği, normalde her 90 günde bir bilgi veren modern kimlik doğrulama istemcileri için kimlik doğrulama sayısını artırır. , Koşullu erişim ilkeleriyle birleştirildiğinde kimlik doğrulama sayısını da artırabilir.
 
 >[!IMPORTANT]
->**Multi-Factor Authentication 'ı anımsa** özelliği, kullanıcıların Azure Multi-Factor Authentication sunucusu veya bir üçüncü taraf multi-factor ile AD FS için iki aşamalı doğrulama gerçekleştirmesinde AD FS, **oturum açmış Oturumumu Açık tut** özelliği ile uyumlu değildir. kimlik doğrulama çözümü.
+>**Multi-Factor Authentication anımsa** özelliği, kullanıcılar Azure Multi-Factor Authentication sunucusu veya üçüncü taraf Multi-Factor ile AD FS için iki aşamalı doğrulama gerçekleştirirken, AD FS Oturumumu **açık tut** özelliği ile uyumlu değildir kimlik doğrulama çözümü.
 >
->Kullanıcılarınız Oturumumu AD FS açık **tut** ' u seçer ve ayrıca cihazlarını çok faktörlü kimlik doğrulaması için güvenilir olarak işaretledikten sonra, **Multi-Factor Authentication** gün sayısı ' nın süresinin dolmasını doğruladıktan sonra Kullanıcı otomatik olarak doğrulanmaz. Azure AD, iki adımlı bir doğrulama ister, ancak AD FS iki aşamalı doğrulamayı yeniden gerçekleştirmek yerine orijinal Multi-Factor Authentication talebi ve tarihi olan bir belirteç döndürür. **Bu yeniden eylem, Azure AD ile AD FS arasındaki bir doğrulama döngüsünü belirler.**
+>Kullanıcılarınız Oturumumu AD FS açık **tut** ' u seçer ve ayrıca cihazlarını Multi-Factor Authentication için güvenilir olarak işaretledikten sonra, **Multi-Factor Authentication** gün sayısı ' nın süresinin dolmasını doğruladıktan sonra Kullanıcı otomatik olarak doğrulanmaz. Azure AD, iki adımlı bir doğrulama ister, ancak AD FS iki adımlı doğrulamayı yeniden gerçekleştirmek yerine özgün Multi-Factor Authentication talep ve Tarih ile bir belirteç döndürür. **Bu yeniden eylem, Azure AD ile AD FS arasındaki bir doğrulama döngüsünü belirler.**
 >
 
-### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication 'ı anımsa özelliğini etkinleştir
+### <a name="enable-remember-multi-factor-authentication"></a>Enable Multi-Factor Authentication anımsa
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **Kullanıcılar ve gruplar** > **tüm kullanıcılar**' ı seçin.
+2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**'ı seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **çok faktörlü kimlik doğrulamasını anımsa**' yı yönetin, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
@@ -417,7 +417,7 @@ Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark e
 
 ### <a name="mark-a-device-as-trusted"></a>Bir cihazı güvenilir olarak işaretle
 
-Multi-Factor Authentication 'ı hatırla özelliğini etkinleştirdikten sonra, kullanıcılar bir **daha sorma**seçeneğini belirleyerek bir cihazı güvenilir olarak işaretleyebilir.
+Multi-Factor Authentication hatırla özelliğini etkinleştirdikten sonra, kullanıcılar **yeniden sorma**seçeneğini belirleyerek bir cihazı güvenilir olarak işaretleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

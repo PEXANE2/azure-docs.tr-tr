@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837930"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844305"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -35,7 +35,7 @@ Bir grubu sona ermek üzere ayarladıktan sonra:
 Şu anda bir kiracıdaki Office 365 grupları için yalnızca bir süre sonu ilkesi yapılandırılabilir.
 
 > [!NOTE]
-> Office 365 grupları için süre sonu ilkesini yapılandırmak ve kullanmak, süre sonu ilkesinin uygulandığı tüm grupların üyeleri için Azure AD Premium lisanslarına sahip olmanızı gerektirir.
+> Office 365 grupları için süre sonu ilkesini yapılandırmak ve kullanmak, zaman aşımı ilkesinin uygulandığı tüm grupların üyeleri için Azure AD Premium lisansları atamanız gerekir.
 
 Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilgi için bkz. [Graph 2.0.0.137 için Azure Active Directory PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
@@ -69,8 +69,11 @@ Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azur
   - **Kaydet**' i seçerek yaptığınız ayarları kaydedin.
 
 > [!NOTE]
-> Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, süresi dolmadan 30 gün olarak ayarlanır. İlk yenileme bildirimi e-postası bir gün içinde gönderilir. Örneğin, A grubu 400 gün önce oluşturulmuştur ve süre sonu aralığı 180 gün olarak ayarlanır. Sona erme ilkesi uyguladığınızda, Grup A 'nın silinmeden önce 30 gün önce sahibi onu yenilemediği durumlar olur.
+> Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, sahip tarafından yenilemediği sürece süresi dolduktan sonra 30 güne ayarlanır. İlk yenileme bildirimi e-postası bir gün içinde gönderilir.
+>
 > Dinamik bir grup silinip geri yüklendiğinde, yeni bir grup olarak görülür ve kurala göre yeniden doldurulur. Bu işlem, 24 saate kadar sürebilir.
+>
+> Ekiplerde kullanılan gruplar için süre sonu bildirimleri takımlar sahipleri akışında görüntülenir.
 
 ## <a name="email-notifications"></a>E-posta bildirimleri
 
@@ -84,7 +87,7 @@ Bir grubun süresi dolduğunda, Grup sona erme tarihinden bir gün sonra silinir
 
 ![Grup silme e-posta bildirimleri](./media/groups-lifecycle/deletion-notification.png)
 
-Grup, [Azure Active Directory silinen Office 365 grubunu geri yükleme](groups-restore-deleted.md)' de açıklandığı gibi , silme işlemini veya PowerShell cmdlet 'lerini kullanarak silme işleminin 30 gün içinde geri yüklenebilir. 30 günlük grup geri yükleme döneminin özelleştirilemez olduğunu lütfen unutmayın.
+Grup, [Azure Active Directory silinen Office 365 grubunu geri yükleme](groups-restore-deleted.md)' de açıklandığı gibi, silme **işlemini veya PowerShell** cmdlet 'lerini kullanarak silme işleminin 30 gün içinde geri yüklenebilir. 30 günlük grup geri yükleme döneminin özelleştirilemez olduğunu lütfen unutmayın.
 
 Geri yüklemekte olduğunuz grup belgeler, SharePoint siteleri veya diğer kalıcı nesneler içeriyorsa, grubu ve içeriğini tamamen geri yüklemek 24 saate kadar sürebilir.
 

@@ -1,19 +1,18 @@
 ---
-title: Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi | Microsoft Docs
+title: Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 description: Azure Site Recovery ile Azure 'da Hyper-V VM olağanüstü durum kurtarma için desteklenen bileşenleri ve gereksinimleri özetler
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230973"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873344"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -134,6 +133,7 @@ Bekleyen şifreleme (SSE)| Evet | Evet
 Premium depolama | Evet | Evet
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır
 Hedef depolama/önbellek depolama hesabında yapılandırılan sanal ağlar için Azure Storage güvenlik duvarları (çoğaltma verilerini depolamak için kullanılır) | Hayır | Hayır
+Depolama hesabını değiştirme | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Olağanüstü durum kurtarmayı değiştirme, devre dışı bırakma ve yeniden etkinleştirme. | Hayır
 
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri
@@ -190,4 +190,4 @@ Microsoft Azure Kurtarma Hizmetleri Aracısı | Hyper-V VM 'Leri ve Azure arası
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şirket içi Hyper-V VM 'lerinin olağanüstü durum kurtarması için [Azure](tutorial-prepare-azure.md) 'u nasıl hazırlayacağınızı öğrenin.
+Şirket içi Hyper-V VM 'lerinin olağanüstü durum kurtarması için Azure 'u nasıl [hazırlayacağınızı](tutorial-prepare-azure.md) öğrenin.

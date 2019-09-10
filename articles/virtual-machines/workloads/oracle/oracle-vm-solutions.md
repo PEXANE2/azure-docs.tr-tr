@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 3d3805fe5a574d3e6ecd9a6fa8f95dd28f308d25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101402"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858566"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -58,11 +58,8 @@ Bu görüntüler "kendi lisansını getir" olarak değerlendirilir ve yalnızca 
 
 Bireyler, çözümlerini Azure 'da sıfırdan oluşturdukları özel bir görüntüye dayandırın ve şirket içi ortamlarından özel bir görüntüyü karşıya yükleyebilir.
 
-## <a name="support-for-jd-edwards"></a>JD edi desteği
-Oracle Destek notunun [belge kimliği 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)' ne göre, JD edi EnterpriseOne sürüm 9,2 ve üzeri, belirli `Minimum Technical Requirements` (MTR) karşılayan **tüm genel bulut tekliflerinde** desteklenir.  İşletim sistemi ve yazılım uygulama uyumluluğu için MTR belirtimlerini karşılayan özel görüntüler oluşturmanız gerekir. 
-
 ## <a name="oracle-database-vm-images"></a>Oracle Database VM görüntüleri
-Oracle, Oracle Linux tabanlı sanal makine görüntüleri üzerinde Azure 'da Oracle DB 12,1 Standard ve Enterprise Edition 'ın çalıştırılmasını destekler.  Azure 'da Oracle DB üretim iş yükleri için en iyi performans için, VM görüntüsünü düzgün bir şekilde boyutlandırdığınızdan ve Premium Depolama tarafından desteklenen yönetilen diskleri kullandığınızdan emin olun. Oracle yayımlanmış VM görüntüsünü kullanarak Azure 'da bir Oracle DB çalışmaya ve çalıştırmaya hızlı bir şekilde nasıl yararlandığınıza ilişkin yönergeler için [Oracle DB hızlı başlangıç kılavuzunu deneyin](oracle-database-quick-create.md).
+Oracle, Oracle Linux tabanlı sanal makine görüntülerinde Azure 'da Oracle DB 12,1 ve daha yüksek standart ve Enterprise sürümlerini çalıştırmayı destekler.  Azure 'da Oracle DB üretim iş yükleri için en iyi performans için, VM görüntüsünü düzgün bir şekilde boyutlandırdığınızdan ve Premium SSD veya Ultra SSD yönetilen diskleri kullandığınızdan emin olun. Oracle yayımlanmış VM görüntüsünü kullanarak Azure 'da bir Oracle DB çalışmaya ve çalıştırmaya hızlı bir şekilde nasıl yararlandığınıza ilişkin yönergeler için [Oracle DB hızlı başlangıç kılavuzunu deneyin](oracle-database-quick-create.md).
 
 ### <a name="attached-disk-configuration-options"></a>Ekli disk yapılandırma seçenekleri
 
@@ -80,6 +77,13 @@ Azure NetApp Files, bulutta veritabanları gibi yüksek performanslı iş yükle
 Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında çalışan tüm Flash sistemlerine®® ONTAP 'ı temel aldığı için bu yetenekler olasıdır. Sonuç olarak, diğer Azure depolama seçenekleri gibi sağlanabilen ve tüketilen ideal bir veritabanı depolama teknolojisidir. Azure NetApp Files NFS birimlerine dağıtım ve erişme hakkında daha fazla bilgi için bkz. [Azure NetApp Files belgeleri](https://docs.microsoft.com/azure/azure-netapp-files/) . Azure NetApp Files bir Oracle veritabanı çalıştırmak için en iyi yöntem önerileri için [Azure NetApp Files kullanarak Oracle 'ın Azure dağıtımı En Iyi Yöntem Kılavuzu '](https://www.netapp.com/us/media/tr-4780.pdf) na bakın.
 
 
+## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
+Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
+Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle DB iş yükleri için önerilir.
+
+Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
+
+
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle gerçek uygulama kümesi (Oracle RAC)
 Oracle RAC, şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü = parti yazılımına ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
 
@@ -95,6 +99,11 @@ Oracle Data Guard ile yüksek kullanılabilirlik, bir sanal makinedeki birincil 
 [Azure 'Da Oracle GoldenGate uygulayan](configure-oracle-golden-gate.md) öğretici, Azure 'daki temel kurulum yordamında size yol gösterir.
 
 Bir HA ve DR çözümünün Azure 'da tasarlanmış olmasının yanı sıra, veritabanınızı geri yüklemek için bir yedekleme stratejisine sahip olmanız gerekir. Öğretici [yedekleme ve kurtarma Oracle Database](oracle-backup-recovery.md) , tutarlı bir yedekleme oluşturmaya yönelik temel yordamda size rehberlik eder.
+
+
+## <a name="support-for-jd-edwards"></a>JD edi desteği
+Oracle Destek notunun [belge kimliği 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)' ne göre, JD edi EnterpriseOne sürüm 9,2 ve üzeri, belirli `Minimum Technical Requirements` (MTR) karşılayan **tüm genel bulut tekliflerinde** desteklenir.  İşletim sistemi ve yazılım uygulama uyumluluğu için MTR belirtimlerini karşılayan özel görüntüler oluşturmanız gerekir. 
+
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server sanal makine görüntüleri
 

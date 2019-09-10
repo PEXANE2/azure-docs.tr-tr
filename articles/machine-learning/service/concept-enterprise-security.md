@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165237"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873566"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için Kuruluş Güvenliği
 
@@ -132,7 +132,7 @@ Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları I�
 
 Yöneticilerin yönetilen kimliğin önceki tabloda bahsedilen kaynaklara erişimini iptal etmemenizi önermiyoruz. Yeniden eşitleme anahtarları işlemini kullanarak erişimi geri yükleyebilirsiniz.
 
-Azure Machine Learning hizmeti, her çalışma alanı bölgesi için aboneliğinizde katkıda bulunan düzeyinde `aml-`erişim ile ek bir uygulama (adıyla başlar) oluşturur. Örneğin, Doğu ABD içinde bir çalışma alanınız ve aynı abonelikte Kuzey Avrupa başka bir çalışma alanı varsa, bu uygulamalardan ikisini de görürsünüz. Bu uygulamalar, işlem kaynaklarını yönetmenize yardımcı olmak için Azure Machine Learning hizmetini etkinleştirir.
+Azure Machine Learning hizmeti, her çalışma alanı bölgesi için aboneliğinizde katkıda bulunan düzeyinde `aml-` erişim `Microsoft-AzureML-Support-App-`ile ek bir uygulama (adı ile başlar) oluşturur. Örneğin, Doğu ABD içinde bir çalışma alanınız ve aynı abonelikte Kuzey Avrupa başka bir çalışma alanı varsa, bu uygulamalardan ikisini de görürsünüz. Bu uygulamalar, işlem kaynaklarını yönetmenize yardımcı olmak için Azure Machine Learning hizmetini etkinleştirir.
 
 ## <a name="network-security"></a>Ağ güvenliği
 

@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567809"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845595"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Bulutta yeni DBA: Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarınızı yönetme
 
@@ -142,7 +142,7 @@ Hizmet uç noktaları (o), kritik Azure kaynaklarınızı yalnızca Azure 'daki 
 
 #### <a name="reserved-ips"></a>Ayrılmış IP’ler
 
-Diğer bir seçenek de sanal makinelerinize [ayrılmış IP 'ler](../virtual-network/virtual-networks-reserved-public-ip.md) sağlamak ve sunucu güvenlik duvarı ayarlarında söz konusu VM IP adreslerini beyaz listeye almak içindir. Ayrılmış IP 'Ler atayarak, güvenlik duvarı kurallarını değişen IP adresleriyle güncelleştirmek zorunda olma sorunu kaydedilir.
+Diğer bir seçenek de sanal makinelerinize [ayrılmış IP 'ler](../virtual-network/virtual-networks-reserved-public-ip.md) sağlamak ve bu VM IP adreslerini sunucu güvenlik duvarı ayarlarına eklemektir. Ayrılmış IP 'Ler atayarak, güvenlik duvarı kurallarını değişen IP adresleriyle güncelleştirmek zorunda olma sorunu kaydedilir.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Üzerinde SQL veritabanına hangi bağlantı noktası bağlanabilirim?
 
@@ -321,7 +321,7 @@ SQL veritabanı, belirli veri bozulması sınıflarının otomatik olarak ve ver
 
 - **Dışarı aktar**: Azure SQL veritabanınızı Azure portal BACPAC dosyası olarak dışarı aktarabilirsiniz.
 
-   ![veritabanı dışarı aktarma](./media/sql-database-export/database-export1.png)
+   ![Veritabanı dışarı aktarma](./media/sql-database-export/database-export1.png)
 
 - **Içeri aktar**: Ayrıca, Azure portal kullanarak verileri BACPAC dosyası olarak veritabanına aktarabilirsiniz.
 

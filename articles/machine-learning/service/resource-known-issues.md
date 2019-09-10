@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 96af61089f2b7b85d58a8a2ab61936459cef158b
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032975"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858681"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning hizmeti
 
@@ -49,7 +49,7 @@ Python için SDK Azure Machine Learning: PyYAML, yüklenmiş bir proje. Bu neden
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
-**Hata iletisi:`ERROR: No matching distribution found for azureml-dataprep-native`**
+**Hata iletisi: `ERROR: No matching distribution found for azureml-dataprep-native`**
 
 Anaconda 'nın Python 3.7.4 dağıtımında, azureml-SDK yüklemesini kesen bir hata vardır. Bu sorun, bu [GitHub sorunu](https://github.com/ContinuumIO/anaconda-issues/issues/11195) ile tartışılır ve bu komut kullanılarak yeni bir Conda ortamı oluşturulabilir:
 ```bash
@@ -140,7 +140,7 @@ Doğrudan paylaşım bağlantısı SDK veya portalından çalışma alanınızda
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Bazen Yardım isteme, tanılama bilgilerini sağlarsanız, yararlı olabilir. Bazı günlükleri görmek için [Azure Portal](https://portal.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.
+Bazen Yardım isteme, tanılama bilgilerini sağlarsanız, yararlı olabilir. Bazı günlükleri görmek için [Azure Portal](https://portal.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  Ayrıca, bu bilgileri [çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **denemeleri** bölümünde bulabilirsiniz.
 
 > [!NOTE]
 > Azure Machine Learning hizmeti, eğitim sırasında, eğitim işini çalıştıran oto veya Docker kapsayıcısı gibi çeşitli kaynaklardan bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.

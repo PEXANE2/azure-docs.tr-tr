@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194602"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872194"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -96,7 +96,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
-| ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
+| Ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
 | Bölüm |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
 | displayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
@@ -178,7 +178,7 @@ Bir ifadede kullanılan değerler, aşağıdakiler de dahil olmak üzere çeşit
 
 * Dizeler
 * Boolean – true, false
-* Sayılarının
+* sayılarının
 * Diziler – sayı dizisi, dize dizisi
 
 Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdiziminin kullanılması önemlidir. Bazı sözdizimi ipuçları şunlardır:
@@ -193,7 +193,7 @@ Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdi
 Bir kuralda null değer belirtmek için *null* değeri kullanabilirsiniz. 
 
 * Bir ifadede *null* değeri karşılaştırırken-EQ veya-ne ' i kullanın.
-* Yalnızca bir sabit değer dize değeri olarak yorumlanması istiyorsanız, sözcüğü etrafında tırnak işareti kullanın.
+* *Yalnızca bir* sabit değer dize değeri olarak yorumlanması istiyorsanız, sözcüğü etrafında tırnak işareti kullanın.
 * -Not işleci, null için karşılaştırılma işleci olarak kullanılamaz. Kullanıyorsanız, null veya $null kullanıp kullanmayacağınızı bir hata alırsınız.
 
 Null değere başvurmak için doğru yol aşağıdaki gibidir:
@@ -358,6 +358,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ## <a name="rules-for-devices"></a>Cihazlar için kurallar
 
 Ayrıca, bir gruptaki üyelik için cihaz nesneleri seçen bir kural oluşturabilirsiniz. Grup üyeleri olarak hem Kullanıcı hem de cihaz ekleyemezsiniz. **OrganizationalUnit** özniteliği artık listelenmez ve kullanılmamalıdır. Bu dize, Intune tarafından belirli durumlarda ayarlanır ancak Azure AD tarafından tanınmamaktadır, bu nedenle bu özniteliğe göre gruplara hiçbir cihaz eklenmez.
+
+> [!NOTE]
+> systemlabels, Intune ile ayarlanamaz salt okunurdur.
+>
+> Windows 10 için, deviceOSVersion özniteliğinin doğru biçimi şu şekildedir: (Device. deviceOSVersion-EQ "10,0 (17763)"). Biçimlendirme, Get-MsolDevice PowerShell cmdlet 'i ile doğrulanabilir.
 
 Aşağıdaki cihaz öznitelikleri kullanılabilir.
 

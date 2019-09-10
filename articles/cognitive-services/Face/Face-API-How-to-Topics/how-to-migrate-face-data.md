@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516856"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859169"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
-Bu kılavuzda, kayıtlı bir PersonGroup nesnesi gibi yüz verileri farklı bir Azure bilişsel Hizmetler Yüz Tanıma API'si aboneliğine nasıl taşıyacağınız gösterilmektedir. Verileri taşımak için anlık görüntü özelliğini kullanın. Bu şekilde, işlemlerinizi taşırken veya genişlettiğinizde bir PersonGroup veya çok yönlü liste nesnesi oluşturup eğmenize gerek kalmadan kaçınabilirsiniz. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir PersonGroup nesnesi oluşturdunuz ve şimdi bunu ücretli aboneliğinize geçirmek istiyorsunuz. Ya da büyük bir kurumsal işlem için bölgeler arasında yüz verileri eşitlemeniz gerekebilir.
+Bu kılavuzda, kayıtlı bir PersonGroup nesnesi gibi yüz verileri farklı bir Azure bilişsel Hizmetler Yüz Tanıma API'si aboneliğine nasıl taşıyacağınız gösterilmektedir. Verileri taşımak için anlık görüntü özelliğini kullanın. Bu şekilde, işlemlerinizi taşırken veya genişlettiğinizde bir PersonGroup veya çok yönlü liste nesnesi oluşturup eğmenize gerek kalmadan kaçınabilirsiniz. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir PersonGroup nesnesi oluşturdunuz ve şimdi bunu ücretli aboneliğinize geçirmek istiyorsunuz. Ya da büyük bir kurumsal işlem için farklı bölgelerdeki abonelikler arasında yüz verileri eşitlemeniz gerekebilir.
 
 Aynı geçiş stratejisi LargePersonGroup ve Largecelist nesneleri için de geçerlidir. Bu kılavuzdaki kavramlarla ilgili bilgi sahibi değilseniz, [yüz tanıma kavramları](../concepts/face-recognition.md) kılavuzundaki tanımları bölümüne bakın. Bu kılavuzda ile C#yüz tanıma API'si .NET istemci kitaplığı kullanılmaktadır.
 
@@ -41,7 +41,9 @@ Bu kılavuz, yüz veri geçişini çalıştırmak için basit bir konsol uygulam
 
 ## <a name="create-face-clients"></a>Yüz istemcileri oluşturma
 
-*Program.cs*' deki **Main** yönteminde, kaynak ve hedef abonelikleriniz için iki [faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) örneği oluşturun. Bu örnek, hedef olarak Doğu Asya bölgesindeki bir yüz aboneliğini kaynak ve Batı ABD bir abonelik kullanır. Bu örnek, verilerin bir Azure bölgesinden diğerine nasıl geçirileceğini gösterir. Abonelikleriniz farklı bölgelerde ise, `Endpoint` dizeleri değiştirin.
+*Program.cs*' deki **Main** yönteminde, kaynak ve hedef abonelikleriniz için iki [faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) örneği oluşturun. Bu örnek, hedef olarak Doğu Asya bölgesindeki bir yüz aboneliğini kaynak ve Batı ABD bir abonelik kullanır. Bu örnek, verilerin bir Azure bölgesinden diğerine nasıl geçirileceğini gösterir. 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))

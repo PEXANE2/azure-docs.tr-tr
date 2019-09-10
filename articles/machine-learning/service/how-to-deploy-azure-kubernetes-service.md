@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278700"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858737"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 
 Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlamak için iki yol vardır:
 
-* Azure Machine Learning Service SDK, Machine Learning CLı veya Azure portal kullanarak AKS kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
+* Azure Machine Learning Service SDK, Machine Learning CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
 * Azure Machine Learning hizmeti çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning Service SDK, Machine Learning CLı veya Azure portal kullanılarak eklenebilir.
 
 > [!IMPORTANT]

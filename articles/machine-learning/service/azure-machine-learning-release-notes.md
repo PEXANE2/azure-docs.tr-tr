@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772501"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860929"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
 
@@ -23,12 +23,42 @@ Bu makalede, Azure Machine Learning hizmet sürümleri hakkında bilgi edinin.  
 
 Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
 
+## <a name="2019-09-09"></a>2019-09-09
+
+### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Azure Machine Learning çalışma alanları için yeni Web deneyimi (Önizleme)
+Yeni Web deneyimi, veri bilimcilerinin ve veri mühendislerinin kendi uçtan uca makine öğrenimi yaşam döngüsünü tamamlamalarını ve modelleri tek bir konumda eğitmek ve dağıtmak için verileri görselleştirmesini ve dağıtmalarını sağlar. 
+
+![Azure Machine Learning çalışma alanı kullanıcı arabirimi (Önizleme)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
+
+**Temel Özellikler:**
+
+Bu yeni Azure Machine Learning arabirimini kullanarak şu anda şunları yapabilirsiniz:
++ Not defterlerinizi yönetin veya Jupyıter 'a bağlayın
++ Otomatik ML denemeleri çalıştırma
++ [Yerel dosyalardan, veri depolarından, & Web dosyalarından veri kümeleri oluşturma](how-to-create-register-datasets.md)
++ Model oluşturma için veri kümelerini hazırlama & hazırla
++ Modelleriniz için veri kayması izleme 
++ Bir panodan son kaynakları görüntüleme
+
+Bu yayın sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firefox, Safari ve Microsoft Edge önizlemesi.
+
+**Bilinen sorunlar:**
+
+1. "Bir sorun oluştu!" hata görürseniz tarayıcınızı yenileyin. Dağıtım devam ederken öbek dosyaları yüklenirken hata oluştu.  
+
+1. Not defterlerindeki ve dosyalardaki dosya silinemez veya yeniden adlandırılamaz. Genel Önizleme sırasında güncelleştirme dosyası işlemlerini gerçekleştirmek için, dizüstü bilgisayar VM 'de Jupyter Kullanıcı arabirimini veya terminali kullanabilirsiniz. Bağlı bir ağ dosya sistemi olduğundan, Not defteri VM 'de yaptığınız tüm değişiklikler not defteri çalışma alanında hemen yansıtılır. 
+
+1. Not defteri sanal makinesine SSH eklemek için:
+   1. VM kurulumu sırasında oluşturulan SSH anahtarlarını bulun. Ya da Azure ML Azure portal 'ndaki anahtarları bulun > Işlem sekmesini açın > listedeki Not defteri sanal makinesini bulun > Bu özellikleri açın: iletişim kutusundan anahtarları kopyalayın.
+   1. Bu ortak ve özel SSH anahtarlarını yerel makinenize aktarın.
+   1. Bunları not defteri VM 'sine SSH için kullanın. 
+
 ## <a name="2019-09-03"></a>2019-09-03
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Python v 1.0.60 için SDK Azure Machine Learning
 
 + **Yeni Özellikler**
   + Veri mağazalarınızın veya genel URL 'lerdeki tek veya birden çok dosyaya başvuran FileDataset kullanıma sunulmuştur. Dosyalar herhangi bir biçimde olabilir. Dosya veri kümesi size dosyaları indirme veya işlem için bağlama yeteneği sağlar. FileDataset hakkında bilgi edinmek için lütfen adresini https://aka.ms/file-dataset ziyaret edin.
-  + PythonScript Step, adla Step, Databrick Step, DataTransferStep ve AzureBatch Step için işlem hattı YAML desteği eklendi
+  + PythonScript Step, adla Step, Databricks Step, DataTransferStep ve AzureBatch Step için işlem hattı YAML desteği eklendi
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-oto ml-çekirdek**
@@ -39,7 +69,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
     + Oto ml modelleri artık oto Mlexceptions döndürüyor
     + Bu sürüm, otomatik makine öğrenimi yerel çalıştırmalarının yürütme performansını geliştirir.
   + **azureml-çekirdek**
-    + Bir `Dataset.get_all()` sözlüğüve`FileDataset`kayıt adına göre anahtarlı nesneleri döndüren tanıtmak. `TabularDataset` 
+    + Veri kümesini tanıtın. Al _All (çalışma alanı), bir sözlüğü `TabularDataset` ve `FileDataset` kayıt adına göre anahtarlanan nesneler döndürür. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -66,7 +96,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + **azureml-işlem hattı-çekirdek**
     + PipelineDrafts oluşturma, güncelleştirme ve kullanma desteği eklendi-kesilebilir işlem hattı tanımlarını sürdürmek ve bunları çalıştırmak için etkileşimli olarak kullanmak için kullanılabilir
   + **azureml-eğitme-oto ml**
-    + Uzak Python çalışma zamanı ortamında BERT/XLNet ' i etkinleştirmek için gereken GPU özellikli pytorch v 1.1.0, CUDA Toolkit 9,0, pytorch-dönüştürücüler sürümünün belirli sürümlerini yüklemek için özelliği oluşturuldu.
+    + Uzak Python çalışma zamanı ortamında BERT/XLNet ' i etkinleştirmek için gereken, GPU özellikli pytorch v 1.1.0, CUDA Toolkit 9,0, pytorch-dönüştürücüler 'ın belirli sürümlerini yüklemek için özelliği oluşturuldu.
   + **azureml-tren-çekirdek**
     + Bazı hiper parametre alanı tanımı hatalarının sunucu tarafı yerine doğrudan SDK 'da erken hatası.
 
@@ -102,7 +132,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + **azureml-çekirdek**
     + Blob_cache_timeout parametresi sıralaması ile ilgili sorun düzeltildi.
     + Dış sığdırma ve özel durum türlerini sistem hatalarına ekledi.
-    + Uzak çalıştırmalar için Key Vault gizli dizileri için destek eklendi. Çalışma alanınızda ilişkili olan anahtar kasasından gizli dizileri eklemek, almak ve listelemek için bir azureml. Core. keykasa. Keykasası sınıfı ekleyin. Desteklenen işlemler şunlardır:
+    + Uzak çalıştırmalar için Key Vault gizli dizileri için destek eklendi. Çalışma alanınız ile ilişkili anahtar kasasından gizli dizi eklemek, almak ve listelemek için bir azureml. Core. keykasa. Keykasası sınıfı ekleyin. Desteklenen işlemler şunlardır:
       + azureml. Core. Workspace. Workspace. Get _default_keykasa()
       + azureml. Core. keykasa. Keykasası. set _secret (ad, değer)
       + azureml. Core. keykasa. Keykasası. _gizli dizileri ayarla (secrets_dict)
@@ -116,9 +146,9 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
     + Gönderme-Hyperdrive CLı komutuna ek geçersiz kılma parametreleri eklendi.
     + API çağrılarının güvenilirliğini artırmak, yaygın istekler Kitaplığı özel durumlarına yeniden denemeler genişletmektedir.
     + Gönderilen bir çalışmadan çalıştırma göndermek için destek ekleyin.
-    + Dosya izleyicisinden, ilk belirtecinin süresi dolduktan sonra karşıya yükleme durdurmasına neden olan, süresi dolan son SAS belirteç sorunu düzeltildi.
+    + Dosya izleyicisinden, ilk belirtecinin süresi dolduktan sonra karşıya yükleme işlemini durdurmasına neden olan, süresi dolan son SAS belirteç sorunu düzeltildi.
     + Veri kümesi Python SDK 'sında HTTP CSV/TSV dosyalarını içeri aktarma destekleniyor.
-    + Workspace. Setup () yöntemi kullanımdan kaldırıldı. Kullanıcılara gösterilen uyarı iletisi, bunun yerine Create () veya Get ()/from_config () kullanmayı önerir.
+    + Workspace. Setup () yöntemi kullanımdan kaldırıldı. Kullanıcılara gösterilen uyarı iletisi, bunun yerine Create () veya Get ()/from_config () kullanılmasını önerir.
     + Ortam eklendi. özel özel Python paketlerinin (. WHL) çalışma alanına yüklenmesini sağlayan ve ortamı derlemek/denemek için güvenli bir şekilde kullanarak, _private_pip_wheel () ekleyin.
     + Artık, Microsoft tarafından oluşturulan ve müşteri sertifikası için AKS kümesinde dağıtılan Puanlama uç noktası için SSL sertifikasını güncelleştirebilirsiniz.
   + **azureml-açıkla-model**
@@ -152,7 +182,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + , Spark 'ta `read_parquet` çalışırken performansı önemli ölçüde iyileştirildi.
   + Belirsiz tarih biçimleri içeren `column_type_builder` tek bir sütun olması durumunda başarısız olan bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portal
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
   + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerektiğini unutmayın.
@@ -274,9 +304,9 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + **azureml-açıkla-model**
     + Azureml-contrib-açıkla-model paketindeki ham özellik için LIME açıklama için sabit dönüşümler bağımsız değişkeni
     + LimeExplainer için SciPy seyrek desteği ekleme
-    + Doğrusal modelleri açıklayan, Shap doğrusal açıklama sarmalayıcı ve tabular açıklama 'e başka bir düzey eklendi
+    + Doğrusal modelleri açıklayan şekil doğrusal açıklama sarmalayıcı ve tablo açıklama 'e başka bir düzey eklendi
     + Model kitaplığı 'nda açıklama benzeklik için, include_local = false olduğunda, seyrek veri girişi için hata düzeltildi
-    + beklenen değerleri, oto ml çıktısına Ekle
+    + Beklenen değerleri, oto ml çıktısına Ekle
     + ham Özellik önem derecesi almak için dönüşümler bağımsız değişkeni sağlandığında düzeltilen permütasyon özelliği önem derecesi
     + include_local = false olduğunda açıklama 'ın yürütme süresini geliştirmek için toplu iş içindeki genel açıklamaları akışa almak için batch_size ekleyin
     + Model explainability kitaplığı için, Pandas dataframe girişinin tahmin için gerekli olduğu sabit kara Box explainers
@@ -299,7 +329,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
   + **azureml-eğitme-oto ml**
     + Get_output hakkındaki belgeler, gerçek dönüş türünü yansıtacak ve anahtar özelliklerini alma hakkında ek notlar sağlayacak şekilde güncelleştirildi.
     + 1\.2.0 sürümüne NimbusML bağımlılığını güncelleştir (geçerli en son).
-    + beklenen değerleri, oto ml çıktısına Ekle
+    + Beklenen değerleri, oto ml çıktısına Ekle
   + **azureml-tren-çekirdek**
     + Dizeler artık otomatik hiper parametre ayarlama için işlem hedefi olarak kabul edilir
     + Kullanılmayan RunConfiguration ayarı auto_prepare_environment kullanım dışı olarak işaretlendi.
@@ -411,7 +441,7 @@ Azure Databricks kullanan bazı müşterilerle ilgili sorunlara neden olduğunda
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Azureml-Core ' dan paramıko bağımlılığı kaldırıldı. Eski işlem hedefi iliştirme yöntemlerine yönelik kullanımdan kaldırma uyarıları eklendi.
   + Run. create_children performansını geliştirme
-  + İkili sınıflandırıcıyla benzeme açıklama, Shap değerlerini ölçeklendirmek için öğretmen olasılığı kullanıldığında olasılıkların sırasını düzeltir
+  + İkili sınıflandırıcıyla benzeme açıklama, şekil değerlerini ölçeklendirmek için öğretmen olasılığı kullanıldığında olasılıkların sırasını düzeltir.
   + Otomatik makine öğrenimi için geliştirilmiş hata işleme ve ileti. 
   + Otomatik makine öğrenimi için yineleme zaman aşımı sorunu düzeltildi.
   + Otomatik makine öğrenimi için zaman serisi dönüştürme performansı geliştirildi.

@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972627"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845478"
 ---
-# <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 uzatılmış ağlarını kullanarak iş yüklerini geçirme
+# <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
 Bu kılavuzda, katman 2 VPN 'yi (L2VPN) kullanarak şirket içi ortamınızdan CloudSimple özel bulutuna bir katman 2 ağını nasıl uzatılacağınızı öğreneceksiniz. Bu çözüm, şirket içi VMware ortamınızda çalışan iş yüklerinizin, iş yüklerinize yeniden IP adresleri olmadan aynı alt ağ adres alanı içinde Azure 'daki özel buluta geçirilmesini sağlar.
 
@@ -108,7 +108,7 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 
 Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yönlendirici örneğinin mantıksal yönlendirici KIMLIĞINI nasıl getirileceği gösterilmektedir. L2VPN uygularken mantıksal yönlendirici KIMLIĞI daha sonra gerekir.
 
-1. NSX-T Manager 'da oturum açın (https://nsx-t-manager-ip-address) ve **ağ** > **yönlendiricileri** > **sağlayıcısı-LR** > **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu**Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
+1. NSX-t Manager https://*NSX-t-Manager-IP adresi* ' nde oturum açın ve **ağ** > **yönlendiricileri** > **sağlayıcısı-LR** > **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu**Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
 
     ![Etkin bekleme seçin](media/l2vpn-fetch01.png)
 
@@ -158,7 +158,7 @@ NSX-T Tier0 yönlendiricisi ve tek başına NSX Edge istemcisi arasında IPSec r
 
     ![Statik yol Ekle](media/l2vpn-routing-security01.png)
 
-2. Bir IP ön eki listesi oluşturun. NSX-T Yöneticisi ' nde oturum açın ve **ağ** > **yönlendirme** > **yönlendiricileri** > **sağlayıcısı-LR** > **yönlendirme** > **IP öneki listeleri**' ni seçin. **Ekle**'yi tıklatın. Listeyi tanımlamak için bir ad girin. **Ön**ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem**için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' i seçin.
+2. Bir IP ön eki listesi oluşturun. NSX-T Yöneticisi ' nde oturum açın ve **ağ** > **yönlendirme** > **yönlendiricileri** > **sağlayıcısı-LR** > **yönlendirme** > **IP öneki listeleri**' ni seçin. **Ekle**'yi tıklatın. Listeyi tanımlamak için bir ad girin. **Ön**ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem**için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' **i seçin.**
 3. IP öneki listesini hem BGP komşuları 'na (TOR) ekleyin. IP öneki listesini BGP komşusuyla eklemek, varsayılan yolun BGP 'de TOR anahtarlarına tanıtılmasını önler. Ancak, null yolu içeren diğer tüm yollar TOR anahtarlarına geri döngü arabirimi IP adresini duyuracaktır.
 
     ![IP ön eki listesi oluştur](media/l2vpn-routing-security02.png)

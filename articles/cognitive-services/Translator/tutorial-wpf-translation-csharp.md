@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f8488195ed9e115843c2dc551af52d5da010ffe7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036745"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858914"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile bir çeviri uygulaması oluşturma
 
@@ -48,7 +48,7 @@ Bu liste, bu öğreticide kullanılan bilişsel hizmetleri içerir. Her bir öze
 
 Devam etmeden önce şunlar gerekir:
 
-* Azure bilişsel hizmetler aboneliği. [Bilişsel hizmetler anahtarı alın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource).
+* Azure bilişsel hizmetler aboneliği. [Bilişsel hizmetler anahtarı alın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
 * Bir Windows makinesi
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) -Community veya Enterprise
 
@@ -328,7 +328,7 @@ JSON yanıtı ayrıştırılır ve bir sözlüğe dönüştürülür. Ardından,
 
 ## <a name="populate-language-drop-down-menus"></a>Dil açılır menülerini doldur
 
-Kullanıcı arabirimi XAML kullanılarak tanımlanır, bu yüzden çağrının `InitializeComponent()`yanı sıra ayarlamayı çok ayarlamanız gerekmez. Yapmanız gereken tek şey, kolay dil adlarını, **çeviri** ve açılan menülere çevirecek şekilde bir adım adım ekler. `PopulateLanguageMenus()` Yöntemi adlarını ekler.
+Kullanıcı arabirimi XAML kullanılarak tanımlanır, bu yüzden çağrının `InitializeComponent()`yanı sıra ayarlamayı çok ayarlamanız gerekmez. Yapmanız gereken tek şey, kolay dil adlarını, **çeviri** **ve açılan menülere çevirecek şekilde** bir adım adım ekler. `PopulateLanguageMenus()` Yöntemi adlarını ekler.
 
 1. Visual Studio 'da, sekmesini `MainWindow.xaml.cs`açın.
 2. Bu kodu, `GetLanguagesForTranslate()` yönteminin altına projenize ekleyin:
@@ -418,7 +418,7 @@ Ayrıca, bu yöntem yanıtın güvenilirlik Puanını değerlendirir. Puan şund
 
 ## <a name="spell-check-the-source-text"></a>Kaynak metnini yazım denetimi
 
-Artık Bing Yazım Denetimi API'si kullanarak kaynak metnimizi yazım denetimi yapmak için bir yöntem oluşturacağız. Yazım denetimi, Translator Metin Çevirisi API'si ' den doğru çevirileri geri almanızı sağlar. Çeviri düğmesine tıklandığında, kaynak metinde yapılan tüm düzeltmeler çeviri talebimize geçirilir.
+Artık Bing Yazım Denetimi API'si kullanarak kaynak metnimizi yazım denetimi yapmak için bir yöntem oluşturacağız. Yazım denetimi, Translator Metin Çevirisi API'si ' den doğru çevirileri geri almanızı sağlar. **Çeviri düğmesine tıklandığında** , kaynak metinde yapılan tüm düzeltmeler çeviri talebimize geçirilir.
 
 1. Visual Studio 'da, sekmesini `MainWindow.xaml.cs`açın.
 2. Bu kodu, `DetectLanguage()` yönteminin altına projenize ekleyin:

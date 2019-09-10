@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b37de45099362fda7288db52cf17749da6e44ea6
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390224"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845349"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Örnek: Metin Analizi ile yaklaşımı Algıla
 
@@ -140,7 +140,7 @@ Aşağıdaki örnekte, bu makaledeki belge koleksiyonu yanıtı gösterilmektedi
 > * Yaklaşım Analizi v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) , önceki sürümle aynıdır.
 > * Şu anda v3 Yaklaşım Analizi:
 >    * Şu anda Ingilizce, Basitleştirilmiş Çince ve Japonca dilleri desteklemektedir.
->    * Şu bölgelerde kullanılabilir: `Central US`, `Central Canada`ve `East Asia`. 
+>    * Şu `Australia East`bölgelerde kullanılabilir:, `East US 2` ,`UK South`,, ,`East US`, ,,`Southeast Asia`, ,`West Europe`ve `North Europe` `East Asia` `Central US` `Central Canada` `South Central US` `West US 2` .
 
 |Özellik |Açıklama  |
 |---------|---------|

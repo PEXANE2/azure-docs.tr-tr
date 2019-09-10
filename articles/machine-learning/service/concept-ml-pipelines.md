@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d7333a9316e4d39fd550872c3df04024a75d21d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c40fd4f776e0372d7368d182d30cfb2e01a4b0e2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128324"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858828"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde ML işlem hatları nelerdir?
 
@@ -54,7 +54,7 @@ Bağımsız adımlar, birden çok veri bilimcilerinin aynı işlem hattında ayn
 
 Azure Machine Learning, işlem hattınızdaki her adım için PyTorch veya TensorFlow gibi çeşitli araç setleri ve çerçeveler kullanabilirsiniz. Ara verilerinizin aşağı akış işlem hedefleri ile kolayca paylaşılabilmesi için, kullandığınız çeşitli [işlem hedefleri](concept-azure-machine-learning-architecture.md) arasında Azure koordinatları.
 
-Yapabilecekleriniz [Ölçümleriyle için işlem hattı denemelerinizi](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) doğrudan Azure portalında. Bir işlem hattı yayımlandıktan sonra, herhangi bir platform veya yığından işlem hattını yeniden çalıştırmanıza olanak sağlayan bir REST uç noktası yapılandırabilirsiniz.
+İşlem [hattı denemeleri için ölçümleri](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) doğrudan Azure Portal veya [çalışma alanı giriş sayfanız (Önizleme)](https://ml.azure.com)içinde izleyebilirsiniz. Bir işlem hattı yayımlandıktan sonra, herhangi bir platform veya yığından işlem hattını yeniden çalıştırmanıza olanak sağlayan bir REST uç noktası yapılandırabilirsiniz.
 
 ## <a name="key-advantages"></a>Başlıca avantajları
 
@@ -86,7 +86,7 @@ Azure Machine Learning işlem hatları için iki Python paketi vardır: [azureml
 
 + Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
 
-+ [Büyük verilerde toplu tahmine dayalı tahminleri](how-to-run-batch-predictions.md)nasıl çalıştıracağınızı öğrenin.
++ [Büyük verilerde toplu tahmine dayalı tahminleri nasıl çalıştıracağınızı](how-to-run-batch-predictions.md)öğrenin.
 
 + İşlem [hatları Için SDK başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)bakın.
 

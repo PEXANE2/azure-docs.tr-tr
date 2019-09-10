@@ -1,5 +1,5 @@
 ---
-title: Azure CLı kullanarak bir çalışma alanı oluşturma
+title: Azure CLı ile çalışma alanları oluşturma
 titleSuffix: Azure Machine Learning service
 description: Azure CLı kullanarak yeni bir Azure Machine Learning hizmet çalışma alanı oluşturma hakkında bilgi edinin.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392681"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873486"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için bir çalışma alanı oluşturmak üzere bir Azure Resource Manager şablonu kullanma
+# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Azure CLı ile Azure Machine Learning hizmeti için bir çalışma alanı oluşturma
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning hizmet çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning hizmet kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
@@ -201,7 +201,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-## <a name="list-workspaces"></a>Çalışma alanlarını Listele
+## <a name="list-workspaces"></a>Çalışma alanlarını listele
 
 Azure aboneliğinizin tüm çalışma alanlarını listelemek için aşağıdaki komutu kullanın:
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: gwallace
-ms.openlocfilehash: 4beed4dd874c23c36e125b5855e2e8380859ef83
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: f2b7e51971cc2e540ee7745b3b44571c58359613
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359168"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860221"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell kullanarak Azure Cloud Services tanılamayı etkinleştirme
 Uygulama günlükleri, performans sayaçları vb. gibi tanılama verilerini bir bulut hizmetinden Azure Tanılama uzantısını kullanarak toplayabilirsiniz. Bu makalede, PowerShell kullanarak bir bulut hizmeti için Azure Tanılama uzantısının nasıl etkinleştirileceği açıklanır.  Bu makale için gereken önkoşullar için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview) .
@@ -82,7 +82,7 @@ New-AzureDeployment -ServiceName $service_name -Slot Production -Package $servic
 
 Visual Studio Online, tanılama Uzantısı ile Cloud Services otomatik dağıtımları için benzer bir yaklaşım kullanır. Tüm örnek için bkz. [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) .
 
-Tanılama yapılandırmasında belirtilmemişse, cmdlet 'e storageAccountName parametresini geçirmeniz gerekir.  `StorageAccount` *StorageAccountName* parametresi belirtilmişse, cmdlet, her zaman parametresinde belirtilen depolama hesabını kullanır ve bu, tanılama yapılandırma dosyasında belirtilen bir değer değildir.
+Tanılama yapılandırmasında belirtilmemişse, cmdlet 'e storageAccountName parametresini geçirmeniz gerekir. `StorageAccount` *StorageAccountName* parametresi belirtilmişse, cmdlet, her zaman parametresinde belirtilen depolama hesabını kullanır ve bu, tanılama yapılandırma dosyasında belirtilen bir değer değildir.
 
 Tanılama depolama hesabı, bulut hizmetinden farklı bir abonelikte yer alıyorsa, cmdlet 'e *storageAccountName* ve *storageaccountkey* parametrelerini açıkça geçirmeniz gerekir. Tanılama depolama hesabı aynı abonelikte olduğunda *Storageaccountkey* parametresi gerekli değildir. cmdlet, tanılama uzantısını etkinleştirirken anahtar değerini otomatik olarak sorgulayabilir ve ayarlayabilir. Ancak, tanılama depolama hesabı farklı bir abonelikte ise, cmdlet anahtarı otomatik olarak alamaz ve anahtarı *Storageaccountkey* parametresi aracılığıyla açıkça belirtmeniz gerekir.
 
@@ -131,5 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Azure tanılama 'yı kullanma hakkında ek yönergeler ve sorunları gidermeye yönelik diğer teknikler için bkz. [azure Cloud Services ve sanal makinelerde tanılamayı etkinleştirme](cloud-services-dotnet-diagnostics.md).
-* [Tanılama yapılandırma şeması](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) , tanılama uzantısı için çeşitli XML yapılandırmaları seçeneklerini açıklar.
+* [Tanılama yapılandırma şeması](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) , tanılama uzantısı için çeşitli XML yapılandırmaları seçeneklerini açıklar.
 * Sanal makineler için tanılama uzantısını nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Resource Manager şablonu kullanarak izleme ve tanılama Ile Windows sanal makinesi oluşturma](../virtual-machines/windows/extensions-diagnostics-template.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e69fea4d57aaf2a0b7d3615b1eecbf99a6b13ab8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 004da6c84e6226c4de3114d32cde826cd167e1ab
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256831"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844828"
 ---
 # <a name="add-contributors-to-your-app"></a>Uygulamanıza katkıda bulunanlar ekleyin
 
@@ -99,6 +99,6 @@ Azure Active Directory Kullanıcıları ve onayı hakkında daha fazla bilgi edi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Sürümlerin uygulama yaşam döngüsünü denetlemek için [nasıl](luis-how-to-manage-versions.md) kullanılacağını öğrenin.
-* Kaynak üzerinde [yazma kaynağı](/luis-concept-keys.md#authoring-key) ve [katkıda bulunanlar](luis-concept-keys.md#contributions-from-other-authors) dahil olmak üzere kavramları anlayın.
+* Kaynak üzerinde [yazma kaynağı](luis-concept-keys.md#authoring-key) ve [katkıda bulunanlar](luis-concept-keys.md#contributions-from-other-authors) dahil olmak üzere kavramları anlayın.
 * Yazma ve çalışma zamanı kaynakları [oluşturmayı](luis-how-to-azure-subscription.md) öğrenin
 * Yeni [yazma kaynağına](luis-migration-authoring.md) geçir 

@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c775f5352461dce6c63f5cc4a1c910c7f8df80ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9d261acf80f51a09cc4daa9182a87b0354cf8a3d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564101"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845390"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>CloudSimple Portal kullanıcılarının listesini görüntüleyin
 
-Kullanıcılar CloudSimple portalına ilk kez erişirken kullanıcı listesine eklenir. Azure aracılığıyla CloudSimple portalına erişimi olan kullanıcıların listesini görüntülemek için, [cloudsimple portalına erişin](monitor-activity.md), yan menüdeki **Hesap** ' ı seçin ve ardından cloudsimple portalındaki **Kullanıcılar** ' ı seçin.
+Kullanıcılar CloudSimple portalına ilk kez erişirken kullanıcı listesine eklenir. Azure aracılığıyla CloudSimple portalına erişimi olan kullanıcıların listesini görüntülemek için, [cloudsimple portalına erişin](access-cloudsimple-portal.md), yan menüdeki **Hesap** ' ı seçin ve ardından cloudsimple portalındaki **Kullanıcılar** ' ı seçin.
 
 * Azure aboneliği, kiracı ve Kullanıcı kimlikleri dahil olmak üzere Kullanıcı ayrıntılarını göstermek için **Kullanıcılar** sayfasındaki bir girişe tıklayın.
 

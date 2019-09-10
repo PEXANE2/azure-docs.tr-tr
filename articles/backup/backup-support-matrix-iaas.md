@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617358"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872897"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
@@ -103,7 +103,7 @@ DPM/MABS diskindeki kurtarma noktaları | dosya sunucuları için 64 ve uygulama
 
 **Restore yöntemi** | **Ayrıntılar**
 --- | ---
-Yeni VM oluşturma | Geri yükleme işlemi sırasında bir VM oluşturabilirsiniz. <br/><br/> Bu seçenek, temel bir VM 'yi çalışır duruma getirir. VM adı, kaynak grubu, sanal ağ, alt ağ ve depolama alanını belirtebilirsiniz.  
+Yeni bir VM oluşturun | Geri yükleme işlemi sırasında bir VM oluşturabilirsiniz. <br/><br/> Bu seçenek, temel bir VM 'yi çalışır duruma getirir. VM adı, kaynak grubu, sanal ağ, alt ağ ve depolama alanını belirtebilirsiniz.  
 Diski geri yükleme | Bir diski geri yükleyebilir ve bir VM oluşturmak için kullanabilirsiniz.<br/><br/> Bu seçeneği belirlediğinizde, verileri kasadan seçtiğiniz bir depolama hesabına kopyalar Azure Backup. Geri yükleme işi bir şablon oluşturur. Bu şablonu indirebilir, özel VM ayarlarını belirtmek ve bir VM oluşturmak için kullanabilirsiniz.<br/><br/> Bu seçenek, önceki bir VM oluşturma seçeneğine daha fazla ayar belirtmenize olanak tanır.<br/><br/>
 Var olan bir diski değiştirme | Bir diski geri yükleyebilir ve ardından bir sanal makinede bulunan bir diski değiştirmek için geri yüklenen diski kullanabilirsiniz.
 Dosyaları geri yükle | Dosyaları seçili bir kurtarma noktasından kurtarabilirsiniz. VM diskini kurtarma noktasından bağlamak için bir komut dosyası indirirler. Daha sonra, kurtarmak istediğiniz dosyaları/klasörleri bulmak ve işiniz bittiğinde diski çıkarmak için disk birimlerine göz atabilirsiniz.
@@ -151,6 +151,7 @@ Azure 'a geçirilen VM 'Leri yedekleme  | Destekleniyor.<br/><br/> VM 'yi yedekl
 Çoklu VM tutarlılığını yedekleme | Azure Backup birden çok VM arasında veri ve uygulama tutarlılığı sağlamaz.
 [Tanılama ayarlarıyla](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) yedekleme  | Desteklenen. <br/><br/> Azure VM 'yi tanılama ayarlarıyla geri yükleme [yeni seçenek oluştur](backup-azure-arm-restore-vms.md#create-a-vm) seçeneği kullanılarak tetikleniyorsa geri yükleme başarısız olur.
 Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen VM ve [kullanılabilirlik bölgesi](https://azure.microsoft.com/global-infrastructure/availability-zones/) kullanılabilir).<br/><br/>Şu anda VM 'lerde sabitlenmiş aynı bölgeye geri yüklemeyi destekliyoruz. Ancak bölge kullanılamıyorsa, geri yükleme başarısız olur.
+Gen2 VM 'Leri | Desteklenen <br> Azure Backup, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)'lerinin yedeklenmesini ve geri yüklenmesini destekler. Bu VM 'Ler kurtarma noktasından geri yüklendiğinde, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)olarak geri yüklenir.
 
 
 ## <a name="vm-storage-support"></a>VM depolama desteği

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533529"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844249"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -132,3 +132,12 @@ Küme durumunun çıkışına göre:
 * Küme, *başarılı* veya *başarısız*dışında bir sağlama durumundaysa, Işlem (*yükseltme/güncelleştirme/oluşturma/ölçeklendirme/silme/geçirme*) bitene kadar bekleyin. Önceki işlem tamamlandığında, en son küme işleminizi yeniden deneyin.
 
 * Kümenin başarısız bir yükseltmesi varsa, ana belirtilen adımları izleyerek [Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilene kadar çalışmayacaktır](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Mevcut bir kümeyi geçirmeden yeni bir küme oluşturmaya çalıştığımda hizmet sorumlumun bulunamadığını belirten hatalar alıyorum.
+
+Bir AKS kümesi oluştururken sizin adınıza kaynak oluşturmak için hizmet sorumlusu gerekir. AKS, küme oluşturma sırasında yeni bir tane oluşturma özelliği sunar, ancak bu, kümenin oluşturma işleminin başarılı olması için yeni hizmet sorumlusunu uygun bir süre içinde tam olarak yaymak için Azure Active Directory gerektirir. Bu yayma çok uzun sürerse, küme, kullanılabilir bir hizmet sorumlusu bulamadığından, oluşturulması için doğrulama başarısız olur. 
+
+Bunun için aşağıdaki geçici çözümleri kullanın:
+1. Bölgelere zaten yayılan ve küme oluşturma zamanında AKS 'e geçirilecek mevcut bir hizmet sorumlusunu kullanın.
+2. Otomasyon betikleri kullanıyorsanız, hizmet sorumlusu oluşturma ve AKS kümesi oluşturma arasında zaman gecikmeleri ekleyin.
+3. Azure portal kullanıyorsanız, oluşturma sırasında küme ayarlarına dönün ve birkaç dakika sonra doğrulama sayfasını yeniden deneyin.

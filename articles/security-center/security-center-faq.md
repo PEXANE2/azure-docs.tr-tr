@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6e41453a096f4812b9ba541a2693b9c9b975b7c9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 33ce4c3c7f7cba8310ca75ffd0de3ecb24ad6d8d
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68779071"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873415"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Güvenlik Merkezi - Sık sorulan sorular (SSS)
 Bu SSS, Azure Güvenlik Merkezi, artırılmış görünürlük ve Microsoft Azure kaynaklarınızın güvenliğini denetim ile tehditleri önleyin, algılayın ve yardımcı olan bir hizmet hakkında sorular yanıtlanmaktadır.
 
 > [!NOTE]
-> Haziran 2017'nin ilk günlerinden itibaren Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent'ı kullanacak. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Platform geçişi](security-center-platform-migration.md). Bu makaledeki bilgiler, Microsoft Monitoring Agent'a geçiş sonrasındaki Güvenlik Merkezi işlevselliğine yöneliktir.
+> Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent kullanır. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Platform geçişi](security-center-platform-migration.md).
 >
 >
 
@@ -45,7 +45,7 @@ Güvenlik Merkezi iki katmanda sunulur:
 **Standart katman** algılama özellikleri dahil olmak üzere, tehdit zekası, davranışsal analiz, anomali algılama, güvenlik olayları ve tehdit attribution raporları Gelişmiş tehdit ekler. Standart katman ücretsiz deneme sürümü başlatabilirsiniz. Yükseltmek için seçin [fiyatlandırma katmanı](https://docs.microsoft.com/azure/security-center/security-center-pricing) güvenlik ilkesinde. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Kuruluşumun Azure Güvenlik Merkezi 'nde fiyatlandırma katmanı değişikliklerini gerçekleştirdiği kişileri nasıl izleyebilirim?
-Bir Azure aboneliğinde fiyatlandırma katmanını değiştirme izinlerine sahip birden çok yönetici olabilir, Kullanıcı fiyatlandırma katmanı değişikliğini kimin gerçekleştirdiklerini bilmesini isteyebilir. Bunu kullanmak için, bir tane Azure etkinlik günlüğü kullanabilir. Lütfen [buradaki](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) diğer yönergelere bakın
+Bir Azure aboneliğinde fiyatlandırma katmanını değiştirme izinlerine sahip birden çok yönetici olabilir, Kullanıcı fiyatlandırma katmanı değişikliğini kimin gerçekleştirdiklerini bilmesini isteyebilir. Bunu kullanmak için, bir tane Azure etkinlik günlüğü kullanabilir. Daha fazla yönergeye [buradan](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) bakın
 
 ## <a name="permissions"></a>İzinler
 Azure Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlayan [Rol Tabanlı Erişim Denetimi'ni (RBAC)](../role-based-access-control/role-assignments-portal.md) kullanır.
@@ -63,7 +63,7 @@ Hayır. Güvenlik Merkezi tarafından oluşturulan ve düğüm başına Azure Iz
 - **Ücretsiz katmanı** – Güvenlik Merkezi için varsayılan çalışma alanı 'SecurityCenterFree' çözümü sağlar. Ücretsiz katmanı için faturalandırılmaz.
 - **Standart katman** – Güvenlik Merkezi için varsayılan çalışma alanı 'Güvenlik' çözümü sağlar.
 
-Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlandırma](https://azure.microsoft.com/pricing/details/security-center/). Fiyatlandırma sayfası, güvenlik verileri depolama ve Haziran 2017'den itibaren eşit olarak bölünmüş faturalandırma değişiklikleri yöneliktir.
+Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlandırma](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez.
@@ -136,7 +136,7 @@ Aboneliklerdeki mevcut makineler için eklendi Güvenlik Merkezi 'ne 2019-03-17 
  Daha fazla bilgi için sonraki bölüme bakın [SCOM veya OMS Aracısı VM üzerinde zaten yüklü doğrudan ne olur?](#scomomsinstalled)
 
 ### System Center Operations Manager (SCOM) Aracısı VM 'imde zaten yüklüyse ne olur?<a name="scomomsinstalled"></a>
-Güvenlik Merkezi, Microsoft Monitoring Agent uzantısını mevcut System Center Operations Manager aracısına yan yana yükleyecek. Mevcut SCOM Aracısı, System Center Operations Manager sunucusuna normal olarak rapor etmeye devam edecektir. System Center Operations Manager Aracısı ve Microsoft Monitoring Agent ortak çalışma zamanı kitaplıklarını paylaştığından, bu işlem sırasında bu erişim sırasında bu sürüme güncelleştirilecektir. Not-System Center Operations Manager Agent 2012 sürümü yüklüyse otomatik sağlamayı etkinleştirmeyin (System Center Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik özellikleri kaybolabilir).
+Güvenlik Merkezi, Microsoft Monitoring Agent uzantısını mevcut System Center Operations Manager aracısına yan yana yükleyecek. Mevcut SCOM Aracısı, System Center Operations Manager sunucusuna normal olarak rapor etmeye devam edecektir. System Center Operations Manager Aracısı ve Microsoft Monitoring Agent, bu işlem sırasında en son sürüme güncellenecek ortak çalışma zamanı kitaplıklarını paylaştığından emin olun. Not-System Center Operations Manager Agent 2012 sürümü yüklüyse otomatik sağlamayı etkinleştirmeyin (System Center Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik özellikleri kaybolabilir).
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Bu Uzantılar'ı kaldırmanın etkisi nedir?
 Microsoft Monitoring uzantısı kaldırırsanız, Güvenlik Merkezi sanal makine ve bazı güvenlik önerilerini güvenlik verilerini toplamak mümkün değildir ve uyarılar kullanılamıyor. 24 saat içinde Güvenlik Merkezi, VM uzantısı eksik ve uzantıyı yükler belirler.
@@ -161,7 +161,7 @@ Otomatik aboneliklerinizde güvenlik ilkesinde sağlamayı kapatın kapatabilirs
 Aşağıdakiler sizin için geçerliyse, otomatik sağlama dışında bırakmak isteyebilirsiniz:
 
 - Güvenlik Merkezi tarafından otomatik aracı yüklemesi, tüm abonelik için geçerlidir.  Otomatik Yükleme VM'lerin bir alt kümesine uygulanamıyor. Microsoft İzleme Aracısı ile yüklenmiş kritik VM'lerin varsa, otomatik sağlama dışında iyileştirilmiş.
-- Microsoft Monitoring Agent (MMA) uzantısının yüklenmesi aracının sürümünü güncelleştirir. Bu, doğrudan aracı ve SCOM Aracısı için geçerlidir (ikincisi, SCOM ve MMA paylaşma ortak çalışma zamanı kitaplıklarını, işlem içinde güncelleştirilecektir). Yüklü SCOM Aracısı 2012 sürümüdür ve yükseltilir, SCOM server 2012 sürümü olduğunda yönetilebilirlik özellikleri kaybolabilir. Yüklü SCOM Aracısı sürümü 2012 ise, otomatik sağlama dışında edilmesiyle dikkate almanız gerekir.
+- Microsoft Monitoring Agent (MMA) uzantısının yüklenmesi aracının sürümünü güncelleştirir. Bu, doğrudan aracı ve SCOM Aracısı için geçerlidir (ikincisi, SCOM ve MMA paylaşma ortak çalışma zamanı kitaplıklarını, işlem içinde güncelleştirilecektir). Yüklü SCOM Aracısı 2012 sürümüdür ve yükseltilir, SCOM server 2012 sürümü olduğunda yönetilebilirlik özellikleri kaybolabilir. Yüklü SCOM Aracısı sürüm 2012 ise otomatik sağlamayı tercih edin.
 - Özel çalışma alanı aboneliği (merkezi bir çalışma alanı) dış varsa dışı otomatik sağlamayı tercih. El ile Microsoft Monitoring Agent uzantısını yükleyin ve bağlantıyı geçersiz kılma olmadan Güvenlik Merkezi çalışma alanınızı bağlayın.
 - Abonelik başına birden çok çalışma alanı oluşturulmasını önlemek istediğiniz ve kendi özel bir çalışma alanı aboneliği içinde varsa, iki seçeneğiniz vardır:
 
@@ -329,7 +329,7 @@ Güvenlik açıklarına karşı güncelleştirmeler, Güvenlik Merkezi'nde gecik
 Güvenlik Merkezi genellikle her saat yeni verileri tarar ve buna göre öneriler yeniler. 
 
 > [!NOTE]
-> Haziran 2017'nin ilk günlerinden itibaren Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent'ı kullanacak. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Platform geçişi](security-center-platform-migration.md). Bu makaledeki bilgiler, Microsoft Monitoring Agent'a geçiş sonrasındaki Güvenlik Merkezi işlevselliğine yöneliktir.
+> Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent kullanır. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Platform geçişi](security-center-platform-migration.md).
 >
 >
 

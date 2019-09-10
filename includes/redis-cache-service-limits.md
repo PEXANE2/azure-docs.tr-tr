@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67188775"
 ---
 | Kaynak | Sınır |
 | --- | --- |
 | Önbellek boyutu |530 GB |
 | Veritabanları |64 |
-| Bağlı istemci sayısı üst sınırı |40,000 |
-| Azure önbelleği için Redis çoğaltmalar, yüksek kullanılabilirlik |1 |
+| En fazla bağlı istemci |40,000 |
+| Redsıs çoğaltmaları için Azure önbelleği, yüksek kullanılabilirlik için |1\. |
 | Kümeleme ile premium önbellek parçalarda |10 |
 
-Azure önbelleği için Redis sınırlar ve boyutları için her fiyatlandırma katmanının farklıdır. Fiyatlandırma katmanları ve bunların ilişkili boyutları için bkz [Azure Cache, Redis fiyatlandırma](https://azure.microsoft.com/pricing/details/cache/).
+Azure önbelleği için Redis sınırlar ve boyutları için her fiyatlandırma katmanının farklıdır. Fiyatlandırma katmanlarını ve bunlarla ilişkili boyutları görmek için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
 
 Redis yapılandırması sınırları Azure Cache hakkında daha fazla bilgi için bkz. [varsayılan Redis sunucu yapılandırması](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration).
 

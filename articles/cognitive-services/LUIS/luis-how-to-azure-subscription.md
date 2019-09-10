@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257025"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844875"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Yazma ve çalışma zamanı kaynak anahtarlarını kullanma
 
@@ -72,6 +72,38 @@ Tahmin uç noktanızı yayımlamaya hazır olduğunuzda, başlangıç anahtar i�
     |Çalışma zamanı Fiyatlandırma Katmanı|Fiyatlandırma Katmanı, saniye başına en fazla işlemi ve ayı belirler.|
 
     Her iki kaynak de oluşturulduktan sonra, kaynakları LUU portalındaki atayın.
+
+## <a name="create-resources-in-azure-cli"></a>Azure CLı 'de kaynak oluşturma
+
+Her kaynağı ayrı ayrı oluşturmak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi kullanın. 
+
+Kaynak `kind`:
+
+* Özgün`LUIS.Authoring`
+* Hızlı`LUIS` 
+
+1. Azure CLı 'da oturum açın:
+
+    ```console
+    az login
+    ```
+
+    Bu, doğru hesabı seçmenizi ve kimlik doğrulaması sağlamanıza olanak tanıyan bir tarayıcı açar.
+
+1. Bölge`westus` için adlı `LUIS.Authoring` `my-luis-authoring-resource` mevcutkaynakgrubundaadlıbirlusıs`my-resource-group` yazma kaynağı oluşturun. 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. Bölge`westus` için adlı `LUIS` `my-luis-prediction-resource` mevcutkaynakgrubundaadlı,türübirlusıstahminuç`my-resource-group` noktası kaynağı oluşturun. Ücretsiz katmandan daha yüksek bir aktarım hızı istiyorsanız olarak `F0` `S0`değiştirin. [Fiyatlandırma katmanları ve verimlilik](luis-boundaries.md#key-limits)hakkında daha fazla bilgi edinin.
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > Bu anahtarlar, **Manage-> Azure KAYNAKLARıNDA**Luo portalında atanana kadar Luo portalı **tarafından kullanılmaz.**
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Tüm uygulamalar için LUO portalında bir yazma kaynağı atama
 
@@ -186,6 +218,6 @@ Belirli bir işlem eşiği, örneğin 10.000 işlem ulaştığınız zaman bilme
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Sürümlerin uygulama yaşam döngüsünü denetlemek için [nasıl](luis-how-to-manage-versions.md) kullanılacağını öğrenin.
-* Kaynak üzerinde [yazma kaynağı](/luis-concept-keys.md#authoring-key) ve [katkıda bulunanlar](luis-concept-keys.md#contributions-from-other-authors) dahil olmak üzere kavramları anlayın.
+* Kaynak üzerinde [yazma kaynağı](luis-concept-keys.md#authoring-key) ve [katkıda bulunanlar](luis-concept-keys.md#contributions-from-other-authors) dahil olmak üzere kavramları anlayın.
 * Yazma ve çalışma zamanı kaynakları [oluşturmayı](luis-how-to-azure-subscription.md) öğrenin
 * Yeni [yazma kaynağına](luis-migration-authoring.md) geçir 

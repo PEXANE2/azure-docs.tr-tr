@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c654da71a0c060a9344ef7d7d42b30263a7fb2db
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 319871280b94f54b99f7a9957f671ec50122ebf3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165203"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860919"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -47,7 +47,7 @@ Sektörler genelinde veri bilimcileri, analistleri ve geliştiriciler otomatik M
 
 1. [Yerel bilgisayarınız, Azure Machine Learning hesaplar, uzak VM 'ler veya Azure Databricks](how-to-set-up-training-targets.md)gibi **model eğitimi Için işlem hedefini yapılandırın**.  [Uzak bir kaynakta](how-to-auto-train-remote.md)otomatik eğitim hakkında bilgi edinin.
 
-1. Farklı modeller üzerinde kaç tane yineleme, hiper parametre ayarları, gelişmiş ön işleme/uygun hale getirme ve en iyi modeli belirlerken hangi ölçümlerin görüneceğini belirleyen **otomatik makine öğrenimi parametrelerini yapılandırın** .  [Azure Portal](how-to-create-portal-experiments.md) veya [SDK ile](how-to-configure-auto-train.md)otomatik eğitim denemenize yönelik ayarları yapılandırabilirsiniz.
+1. Farklı modeller üzerinde kaç tane yineleme, hiper parametre ayarları, gelişmiş ön işleme/uygun hale getirme ve en iyi modeli belirlerken hangi ölçümlerin görüneceğini belirleyen **otomatik makine öğrenimi parametrelerini yapılandırın** .  Otomatik eğitim denemenize yönelik ayarları [Azure Portal](how-to-create-portal-experiments.md), [çalışma alanı giriş sayfasında (ÖNIZLEME)](https://ml.azure.com)veya [SDK ile](how-to-configure-auto-train.md)yapılandırabilirsiniz. 
 
 1. **Eğitim çalıştırmasını gönder.**
 
@@ -133,7 +133,7 @@ Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı �
 + [Öğreticiyi izleyin: Azure otomatik Machine Learning regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
 
 + Otomatik eğitim denemenize yönelik ayarları yapılandırın:
-  + Azure portal arabiriminde, [Bu adımları kullanın](how-to-create-portal-experiments.md).
+  + Azure portal arabiriminde veya çalışma alanı giriş sayfasında (Önizleme), [Bu adımları kullanın](how-to-create-portal-experiments.md).
   + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
 
 + Zaman serisi verilerini kullanarak otomatik eğitme yapmayı öğrenin, [Bu adımları kullanın](how-to-auto-train-forecast.md).

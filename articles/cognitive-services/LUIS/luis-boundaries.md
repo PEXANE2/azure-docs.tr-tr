@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/9/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813322"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844807"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUIS, birden fazla sınır alanlara sahip değildir. İlk [modeli sınır](#model-boundaries), amacı, varlıkları ve LUIS özellikleri denetler. İkinci alanı [kota sınırları](#key-limits) anahtar türüne göre. Üçüncü bir sınırları alanıdır [klavye birleşimi](#keyboard-controls) LUIS Web sitesi denetleme. Dördüncü alan [dünya bölge eşleme](luis-reference-regions.md) LUIS ile Web sitesi geliştirme LUIS arasındaki [uç nokta](luis-glossary.md#endpoint) API'leri. 
@@ -29,7 +29,7 @@ Uygulamanız Luo model sınırlarını ve sınırlarını aşarsa, bir [lusıs d
 |Alan|Sınır|
 |--|:--|
 | [Uygulama adı][luis-get-started-create-app] | \* Max varsayılan karakter |
-| Uygulamalar| Azure kaynağı başına 500 uygulama |
+| Uygulamalar| Azure yazma kaynağı başına 500 uygulama |
 | [Toplu işlem testi][batch-testing]| 10 veri kümeleri, veri kümesi başına 1000 konuşma|
 | Açık listesi | uygulama başına 50|
 | Dış varlıklar | sınırsız |
@@ -65,21 +65,24 @@ Aşağıdaki adlarla aşağıdaki karakterleri kullanmayın.
 
 Dil anlaşılması ayrı anahtarlar, yazma için bir tür ve tahmin uç noktasını sorgulamak için bir tür içerir. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmin uç noktası anahtarları](luis-concept-keys.md).
 
-## <a name="key-limits"></a>Anahtar sınırları
+<a name="key-limits"></a>
 
-Yazma anahtar yazma ve uç noktası için farklı sınırlara sahiptir. LUIS hizmet uç noktası anahtarı yalnızca uç nokta sorgular için geçerlidir.
+## <a name="resource-key-limits"></a>Kaynak anahtarı sınırları
 
-* Azure kaynağı başına 500 uygulama 
-* Uygulama başına 100 sürüm
+Kaynak anahtarlarının yazma ve uç nokta için farklı sınırları vardır. LUSıS tahmin sorgusu uç noktası anahtarı yalnızca Endpoint sorguları için geçerlidir. 
+
+* Azure yazma kaynağı başına 500 uygulama 
 
 |Anahtar|Yazma|Uç Nokta|Amaç|
 |--|--|--|--|
-|Language Understanding yazma/Başlatıcı|1 milyon/ay, 5/saniye|1 bin/ay, 5/saniye|LUIS uygulamanızı yazma|
-|Language Understanding [abonelik][pricing] -F0-ücretsiz katmanı |geçersiz|10 bin/ay, 5/saniye|LUIS uç noktanızı sorgulama|
-|Language Understanding [abonelik][pricing] -S0-temel katman|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
-|Bilişsel hizmet [aboneliği][pricing] -S0-standart katmanı|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
-|[Yaklaşım analizi tümleştirme](luis-how-to-publish-app.md#enable-sentiment-analysis)|geçersiz|Ücretsiz|Anahtar ifade veri ayıklama gibi yaklaşım bilgileri ekleme |
-|[Konuşma tümleştirmesi](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|geçersiz|5\.50 ABD Doları/1 bin uç nokta istekleri|Konuşulan utterance dönüştürmek için metin utterance ve LUIS sonuçlar döndürebilir.|
+|Başlangıç|1 milyon/ay, 5/saniye|1 bin/ay, 5/saniye|LUIS uygulamanızı yazma|
+|F0-ücretsiz katman |1 milyon/ay, 5/saniye|10 bin/ay, 5/saniye|LUIS uç noktanızı sorgulama|
+|S0-temel katman|-|50/saniye|LUIS uç noktanızı sorgulama|
+|S0-Standart katman|-|50/saniye|LUIS uç noktanızı sorgulama|
+|[Yaklaşım analizi tümleştirme](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Anahtar tümceciği veri ayıklama dahil olmak üzere yaklaşım bilgileri ekleme, başka bir Azure kaynağı gerektirmeksizin sağlanır. |
+|[Konuşma tümleştirmesi](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|birim maliyeti başına 1000 uç nokta isteği|Konuşulan utterance dönüştürmek için metin utterance ve LUIS sonuçlar döndürebilir.|
+
+[Fiyatlandırma hakkında daha fazla bilgi edinin.][pricing]
 
 ## <a name="keyboard-controls"></a>Klavye denetimleri
 

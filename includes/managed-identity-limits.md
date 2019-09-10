@@ -10,13 +10,13 @@ ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67188780"
 ---
-| Kategori | Sınır |
+| Category | Sınır |
 | --- | --- |
-| Kullanıcı tarafından atanan yönetilen kimlikleri | <ul><li>Kullanıcı tarafından atanan oluştururken yönetilen kimlikleri yalnızca alfasayısal karakterler (0-9, a-z ve A-Z) ve tire (-) desteklenir. Bir sanal makine veya sanal makine ölçek kümesi düzgün çalışması için atama için ad 24 karakterle sınırlıdır.</li><li>Yönetilen kimlik sanal makine uzantısı kullanma, desteklenen sınırı 32 kullanıcı tarafından atanan yönetilen kimlikleri olur. Yönetilen kimlik sanal makine uzantısı, desteklenen sınırı 512 kullanıcı tarafından atanan kimlikleri ' dir.</li>|
+| Kullanıcı tarafından atanan Yönetilen kimlikler | <ul><li>Kullanıcı tarafından atanan Yönetilen kimlikler oluşturduğunuzda yalnızca alfasayısal karakterler (0-9, a-z ve A-Z) ve kısa çizgi (-) desteklenir. Bir sanal makineye veya sanal makine ölçek kümesinin düzgün şekilde çalışması için, ad 24 karakterle sınırlıdır.</li><li>Yönetilen kimlik sanal makine uzantısını kullanırsanız, desteklenen sınır 32 Kullanıcı tarafından atanan yönetilen kimlikleridir. Yönetilen kimlik sanal makine uzantısı olmadan, desteklenen sınır 512 Kullanıcı tarafından atanan kimlikleridir.</li>|
 

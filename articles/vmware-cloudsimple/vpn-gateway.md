@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a61e789bb40d8263d293c70a67567ea61d5d2652
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972596"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845369"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>CloudSimple ağında VPN ağ geçitlerini ayarlama
 
@@ -56,7 +56,7 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
     > [!WARNING]
     > Yüksek kullanılabilirliği etkinleştirmek, şirket içi VPN cihazınızın iki IP adresine bağlanmayı desteklemesini gerektirir. VPN ağ geçidi dağıtıldıktan sonra bu seçenek devre dışı bırakılamaz.
 
-5. Şirket içi ağınızdan ilk bağlantıyı oluşturun ve **İleri** ' ye tıklayın.
+5. Şirket içi ağınızdan ilk bağlantıyı oluşturun ve **İleri**' ye tıklayın.
 
     * Bağlantıyı tanımlamak için bir ad girin.
     * Eş IP 'si için, şirket içi VPN ağ geçidinizin genel IP adresini girin.

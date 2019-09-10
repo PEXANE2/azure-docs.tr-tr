@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812293"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858726"
 ---
 # <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Azure Machine Learning ile Machine Learning eğitim ölçümlerini izleyin
 
@@ -273,7 +273,7 @@ Beklerken diğer görevleri çalıştırabileceği şekilde onlara eğitim ve iz
 Eğitilen modeli kullanarak bir ölçümleri görüntüleyebilir ```run.get_metrics()```. Artık tüm en iyi modeli belirlemek için yukarıdaki örnekte, günlüğe kaydedilen ölçümleri de alabilirsiniz.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal"></a>Azure portalında deneme görüntüleyin
+## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Azure portal veya [çalışma alanı giriş sayfanızda denemeyi görüntüleme (Önizleme)](https://ml.azure.com)
 
 Bir deney çalışması tamamlandığında kayıtlı denemeyi çalıştırma kaydı için göz atabilirsiniz. Geçmişe iki şekilde erişebilirsiniz:
 

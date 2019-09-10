@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242490"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861259"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management IP adresleri
 
@@ -102,5 +102,6 @@ API Management geliştirici, temel, standart ve Premium katmanlarında genel IP 
 * Hizmet silinir ve sonra yeniden oluşturulur.
 * Hizmet aboneliği [askıya alındı](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) veya [Uyarı](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) verebilir (örneğin, ödeme dışı) ve ardından yeniden belirtilir.
 * Azure sanal ağı, hizmetine eklenir veya hizmete kaldırılır.
+* API Management hizmeti harici ve Iç VNET dağıtım modu arasında geçiş yaptı.
 
 [Çoklu bölgesel dağıtımlarda](api-management-howto-deploy-multi-region.md), bölge yeniden BELIRTILMIŞSE bölgesel IP adresi değişir.

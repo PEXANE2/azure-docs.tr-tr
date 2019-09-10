@@ -1,6 +1,6 @@
 ---
-title: SR-IOV - Azure sanal makineleri ile InifinBand etkinleştirme | Microsoft Docs
-description: Infiniband ile SR-IOV etkinleştirme konusunda bilgi edinin.
+title: SR-ıOV-Azure sanal makineleri ile ınifınband 'i etkinleştirme | Microsoft Docs
+description: SR-ıOV ile InfiniBand 'i etkinleştirmeyi öğrenin.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,25 +12,25 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797535"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858475"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>SR-IOV ile InfiniBand etkinleştir
+# <a name="enable-infiniband-with-sr-iov"></a>SR-ıOV ile InfiniBand 'yi etkinleştirme
 
-Infiniband (IB) ile özel bir VM görüntüsü yapılandırmak için basit ve önerilen yol, dağıtımınıza InfiniBandDriverLinux veya InfiniBandDriverWindows VM uzantısı eklemektir.
-Bu VM uzantıları ile kullanmayı öğrenin [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
+HPC için IaaS VM 'Leri kullanmaya başlamanın en basit ve önerilen yolu, CentOS-HPC 7,6 VM OS görüntüsünü kullanmaktır. Özel VM görüntünüzü kullanıyorsanız, bunu InfiniBand (ıB) ile yapılandırmanın en kolay yolu, ınfinıbanddriverlinux veya ınfinibanddriverwindows VM uzantısını dağıtımınıza eklemektir.
+[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) ve [WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) ile bu VM uzantılarını kullanmayı öğrenin
 
-Özellikli VM'ler (şu anda HB ve HC serisi) InfiniBand SR-IOV el ile yapılandırmak için aşağıdaki adımları izleyin. Bu adımlar yalnızca RHEL/CentOS içindir. Ubuntu (16.04 ve 18.04) ve SLES (12 SP4 ve 15) için gelen sürücüler de çalışır.
+SR-ıOV etkinleştirilmiş VM 'lerde (Şu anda HB ve HC Serisi) InfiniBand 'yi el ile yapılandırmak için aşağıdaki adımları izleyin. Bu adımlar yalnızca RHEL/CentOS içindir. Ubuntu (16,04 ve 18,04) ve SLES (12 SP4 ve 15) için gelen kutusu sürücüleri iyi çalışır.
 
-## <a name="manually-install-ofed"></a>OFED el ile yükleyin
+## <a name="manually-install-ofed"></a>El ile yüklemesi
 
-En son MLNX_OFED sürücüleri ConnectX-5'ten için yükleme [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+[Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26)-5 ' ten en son MLNX_OFED sürücülerini yükler.
 
-RHEL/CentOS için (Örneğin aşağıda 7.6):
+RHEL/CentOS için (7,6 için aşağıdaki örnek):
 
 ```bash
 sudo yum install -y kernel-devel python-devel
@@ -41,9 +41,9 @@ tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
 sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
 ```
 
-ConnectX-5'ten WinOF 2 sürücüleri yükleyebilir ve Windows için indirin [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+Windows için, [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) 'den ConnectX-5 Için winof-2 sürücülerini indirip yükleyin
 
-## <a name="enable-ipoib"></a>IPoIB etkinleştir
+## <a name="enable-ipoib"></a>Ipoıb 'i etkinleştir
 
 ```bash
 sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
@@ -55,11 +55,11 @@ then
 fi
 ```
 
-## <a name="assign-an-ip-address"></a>Bir IP adresi atama
+## <a name="assign-an-ip-address"></a>Bir IP adresi atayın
 
-Bir IP adresi kullanarak ib0 arabirimine atayın:
+İb0 arabirimine aşağıdakilerden birini kullanarak bir IP adresi atayın:
 
-- El ile IP adresi ib0 arabirimine (kök) atayın.
+- IP adresini İb0 arabirimine el ile atayın (kök olarak).
 
     ```bash
     ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
@@ -67,7 +67,7 @@ Bir IP adresi kullanarak ib0 arabirimine atayın:
 
 OR
 
-- IP adresi atayın ve kalıcı kolaylaştırmak için WALinuxAgent kullanın.
+- IP adresi atamak ve kalıcı hale getirmek için Walınuxagent 'ı kullanın.
 
     ```bash
     yum install -y epel-release
@@ -84,4 +84,4 @@ OR
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) azure'da.
+Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

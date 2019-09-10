@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814453"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873313"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -95,11 +95,11 @@ Geçişten (yük devretme) sonra Azure sanal makineleri oluşturulduğunda bu Az
 1. [Azure portalda](https://portal.azure.com) **Kaynak oluştur** > **Ağ** >
    **Sanal ağ**’ı seçin.
 3. **Ad** için **myMigrationNetwork** yazın.
-4. **Adres alanı** için varsayılan değeri değiştirmeyin.
+4. **Adres alanı** için varsayılan değeri bırakın (değer girmeniz gerekir).
 5. **Abonelik** için kullanmak istediğiniz aboneliği seçin.
 6. **Kaynak grubu** için **Mevcut olanı kullan**’ı ve **migrationRG** adını seçin.
 7. **Konum** için **Batı Avrupa**’yı seçin.
-8. **Alt ağ** altında, **Ad** ve **IP aralığı** için varsayılan değerleri değiştirmeyin.
+8. **Alt ağ**altında, **ad** ve IP aralığı için varsayılan değerleri bırakın **(değer girilmesi gerekir)** .
 9. DDoS koruması ayarları için yönergeler ekleyin.
 10. **Hizmet Uç Noktaları** seçeneğini devre dışı bırakın.
 11. Güvenlik Duvarı ayarları için yönergeler ekleyin.

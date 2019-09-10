@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014142"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861310"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Öğretici: Renklerle Izleme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -56,7 +56,6 @@ Watch 'un renkler tarafından Azure AD 'ye tümleştirilmesini yapılandırmak i
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **renklere göre izle** yazın.
 1. Sonuçlar panelinden **renklere göre izle** ' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Renklere göre Izleme için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -123,13 +122,21 @@ Bu bölümde, renklere göre Izleme erişimine izin vererek Azure çoklu oturum 
 
 ## <a name="configure-watch-by-colors-sso"></a>Renklere göre gözcü yapılandırma SSO 'SU
 
-1. Yeni bir Web tarayıcısı penceresi açın ve renkler şirket sitesini yönetici olarak Izleyin ve aşağıdaki adımları gerçekleştirin:
+1. Renklere göre Izleme içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-1. Sayfanın sağ üst köşesinde **profil** > **Hesap ayarları** > **SSO (çoklu oturum açma)** seçeneğine tıklayın.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, **kuruluma göre izleme** ' ye tıklayın, sizi renklere göre izle uygulamasına yönlendirir. Buradan, renklerle Izlemek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Izlemeyi renklerle el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve renkler şirket sitesini yönetici olarak Izleyin ve aşağıdaki adımları gerçekleştirin:
+
+4. Sayfanın sağ üst köşesinde **profil** > **Hesap ayarları** > **SSO (çoklu oturum açma)** seçeneğine tıklayın.
 
     ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config01.png)
 
-1. **SSO (çoklu oturum açma)** sayfasında, aşağıdaki adımları gerçekleştirin:
+5. **SSO (çoklu oturum açma)** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config02.png)
 
@@ -183,5 +190,5 @@ Erişim panelinde renklere göre Izle kutucuğuna tıkladığınızda, SSO 'yu a
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile bolluk 'i deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile renklerle Izlemeyi deneyin](https://aad.portal.azure.com/)
 
