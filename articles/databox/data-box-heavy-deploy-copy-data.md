@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Heavy SMB aracılığıyla veri kopyalama öğreticisi | Microsoft Docs
-description: SMB aracılığıyla Azure Data Box Heavy verileri nasıl kopyalayacağınızı öğrenin
+title: Azure Data Box Heavy’de SMB aracılığıyla veri kopyalama öğreticisi | Microsoft Docs
+description: SMB aracılığıyla Azure Data Box Heavy'ye veri kopyalamayı öğrenin
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,107 +10,107 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70240309"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Öğretici: SMB aracılığıyla Azure Data Box Heavy verileri kopyalama
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Öğretici: SMB aracılığıyla Azure Data Box Heavy’ye veri kopyalama
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-## <a name="copy-data-to-azure-data-box-heavy"></a>Azure Data Box Heavy verileri kopyalama
+## <a name="copy-data-to-azure-data-box-heavy"></a>Azure Data Box Heavy’ye veri kopyalama
 
 ::: zone-end
 
 ::: zone target = "docs"
 
-Bu öğreticide, yerel Web Kullanıcı arabirimi kullanılarak ana bilgisayar bilgisayarınızdan nasıl Bağlanılacak ve verilerin kopyalanacağı açıklanmaktadır.
+Bu öğreticide yerel web arabirimini kullanarak bağlantı kurma, ana bilgisayarınızdan veri kopyalama işlemi anlatılmaktadır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Data Box Heavy Bağlan
-> * Data Box Heavy verileri kopyalama
+> * Data Box Heavy’ye bağlanma
+> * Data Box Heavy’ye veri kopyalama
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-SMB, NFS, REST, veri kopyalama hizmeti veya yönetilen diskler aracılığıyla kaynak sunucunuzdaki Data Box verileri kopyalayabilirsiniz.
+SMB, NFS, REST, veri kopyalama hizmeti aracılığıyla Data Box’a veya yönetilen disklere kaynak sunucunuzdan veri kopyalayabilirsiniz.
 
-Her durumda, paylaşımın ve klasör adlarının ve veri boyutunun [Azure depolama ve Data Box Heavy hizmet sınırları](data-box-heavy-limits.md)' nda açıklanan yönergeleri izlediğinden emin olun.
+Her durumda, paylaşım ve klasör adlarıyla veri boyutunun, [Azure Depolama ve Data Box Heavy hizmet sınırları](data-box-heavy-limits.md) altında açıklanan yönergelere uyduğundan emin olun.
 
 ::: zone-end
 
 ::: zone target = "docs"
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. [Öğreticiyi tamamladınız: Azure Data Box Heavy](data-box-deploy-set-up.md)ayarlayın.
-2. Data Box Heavy aldınız ve portaldaki sipariş durumu **teslim edildi**.
-3. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayar var. Ana bilgisayarınız:
+1. [Öğretici: Azure Data Box Heavy’yi ayarlama](data-box-deploy-set-up.md) bölümünü tamamladınız.
+2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
+3. Data Box Heavy üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Ana bilgisayarınız:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
-    - Yüksek hızlı bir ağa bağlı olmalıdır. En hızlı kopyalama hızları için 2 40-GbE bağlantı (düğüm başına bir tane) paralel olarak kullanılabilir. 40-GbE bağlantınız yoksa, en az 2 10-GbE bağlantınız olması önerilir (düğüm başına bir tane).
+    - Yüksek hızlı bir ağa bağlı olmalıdır. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir.
    
 
 ## <a name="connect-to-data-box-heavy-shares"></a>Data Box Heavy paylaşımlarına bağlanma
 
-Data Box Heavy seçili depolama hesabına bağlı olarak, aşağıdakileri oluşturur:
+Seçilen depolama hesabına bağlı olarak, Data Box Heavy şunların tamamını veya bir bölümünü oluşturabilir:
 - İlişkili her depolama hesabına GPv1 ve GPv2 için üç paylaşım.
-- Premium Depolama için bir Share.
-- BLOB depolama hesabı için bir Share.
+- Premium depolama için bir paylaşım.
+- Blob depolama hesabı için bir paylaşım.
 
-Bu paylaşımlar, hem cihazın düğümlerinde oluşturulur.
+Bu paylaşımlar, cihazın her iki düğümünde de oluşturulur.
 
-Blok Blobu ve Sayfa Blobu paylaşımları altında:
+Blok blobu ve sayfa blobu paylaşımları altında:
 - Birinci düzey varlıklar kapsayıcılardır.
 - İkinci düzey varlıklar bloblardır.
 
-Azure dosyaları için paylaşımlar altında:
+Azure Dosyalar paylaşımlarının altında:
 - Birinci düzey varlıklar paylaşımlardır.
 - İkinci düzey varlıklar dosyalardır.
 
-Aşağıdaki tabloda, Data Box Heavy ve verilerin karşıya yüklendiği Azure depolama yolu URL 'sindeki paylaşımların UNC yolu gösterilmektedir. Son Azure depolama yolu URL 'SI UNC paylaşma yolundan türetilebilir.
+Aşağıdaki tabloda, Data Box Heavy üzerindeki paylaşımların UNC yolu ve verilerin karşıya yüklendiği Azure Depolama yolu URL'si gösterilmektedir. Son Azure depolama yolu URL'si, UNC paylaşım yolundan türetilebilir.
  
 |                   |                                                            |
 |-------------------|--------------------------------------------------------------------------------|
-| Azure blok blob 'ları | <li>Paylaşımların UNC yolu:`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure depolama URL 'SI:`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
-| Azure sayfa Blobları  | <li>Paylaşımların UNC yolu:`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure depolama URL 'SI:`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
-| Azure Dosyaları       |<li>Paylaşımların UNC yolu:`\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Azure depolama URL 'SI:`https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
+| Azure Blok blobları | <li>Paylaşımların UNC yolu: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Azure Sayfa blobları  | <li>Paylaşımların UNC yolu: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure Dosyaları       |<li>Paylaşımların UNC yolu: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
 Bir Windows veya Linux istemcisi kullanarak bağlanma adımları farklıdır.
 
 > [!NOTE]
-> Aygıtın düğümlerine paralel olarak bağlanmak için aynı adımları izleyin.
+> Cihazın her iki düğümüne paralel olarak bağlanmak için aynı adımları izleyin.
 
-### <a name="connect-on-a-windows-system"></a>Windows sisteminde Bağlan
+### <a name="connect-on-a-windows-system"></a>Windows sisteminde bağlanma
 
-Windows Server ana bilgisayar kullanıyorsanız, Data Box Heavy bağlanmak için aşağıdaki adımları izleyin.
+Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak için aşağıdaki adımları izleyin.
 
 1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al**'a tıklayın.
 
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
-2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**'ı tıklatın.
+2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam** düğmesine tıklayın.
     
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
-3. Konak bilgisayarınızdan depolama hesabınızla ilişkili paylaşımlara (aşağıdaki örnekte*databoxe2etest* ) erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *databoxe2etest*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     Veri biçimine bağlı olarak paylaşım yolları şu şekilde olacaktır:
-    - Azure Blok Blobu-`\\10.100.10.100\databoxe2etest_BlockBlob`
-    - Azure Sayfa Blobu-`\\10.100.10.100\databoxe2etest_PageBlob`
-    - Azure dosyaları-`\\10.100.10.100\databoxe2etest_AzFile`
+    - Azure Blok blobu - `\\10.100.10.100\databoxe2etest_BlockBlob`
+    - Azure Sayfa blobu - `\\10.100.10.100\databoxe2etest_PageBlob`
+    - Azure Dosyalar - `\\10.100.10.100\databoxe2etest_AzFile`
     
 4. İstendiğinde paylaşımın parolasını girin. Aşağıdaki örnekte yukarıdaki komutla paylaşıma bağlanma adımları gösterilmektedir.
 
@@ -120,49 +120,49 @@ Windows Server ana bilgisayar kullanıyorsanız, Data Box Heavy bağlanmak için
     The command completed successfully.
     ```
 
-4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini 'ni açmak için **Tamam** 'a tıklayın.
+4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini'ni açmak için **Tamam**’a tıklayın.
     
     ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
-    Artık paylaşımları klasörler olarak görmeniz gerekir.
+    Artık paylaşımları klasörler olarak görebilirsiniz.
     
     ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-2.png)
 
-    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok Blobu ve Sayfa Blobu paylaşımları altında oluşturulan klasör, verilerin Bloblar olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *kök* klasöre doğrudan kopyalayamazsınız.
+    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
     
-### <a name="connect-on-a-linux-system"></a>Linux sisteminde Bağlan
+### <a name="connect-on-a-linux-system"></a>Linux sisteminde bağlanma
 
-Bir Linux istemcisi kullanıyorsanız, SMB payını bağlamak için aşağıdaki komutu kullanın.
+Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın.
 
 ```
 sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/databoxubuntuhost/databox
 ```
 
-`vers` Parametresi, Linux konağının desteklediği SMB sürümüdür. Yukarıdaki komutta uygun sürümü takın.
+`vers` parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Yukarıdaki komutta verilen uygun sürümü takın.
 
-Data Box Heavy desteklediği SMB sürümleri için bkz. [Linux istemcileri Için desteklenen dosya sistemleri](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
+Data Box Heavy’nin desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
 
-## <a name="copy-data-to-data-box-heavy"></a>Data Box Heavy verileri kopyalama
+## <a name="copy-data-to-data-box-heavy"></a>Data Box Heavy’ye veri kopyalama
 
-Data Box Heavy paylaşımlarına bağlandıktan sonra, bir sonraki adım verileri kopyalayacağız.
+Data Box Heavy paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz.
 
-### <a name="copy-considerations"></a>Kopyalama konuları
+### <a name="copy-considerations"></a>Kopyalama konusunda dikkat edilmesi gerekenler
 
-Veri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
+Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
-- Verileri uygun veri biçimine karşılık gelen paylaşımlara kopyalamadığınızdan emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD 'leri sayfa blobuna kopyalayın.
+- Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD'leri sayfa blobuna kopyalayın.
 
-    Veri biçimi uygun paylaşma türüyle eşleşmiyorsa, daha sonraki bir adımda Azure 'a yüklenen veriler başarısız olur.
--  Verileri kopyalarken, veri boyutunun [Azure depolama ve Data Box Heavy limitlerde](data-box-heavy-limits.md)açıklanan boyut sınırlarına uyduğundan emin olun.
-- Data Box Heavy tarafından karşıya yüklenen veriler, Data Box Heavy dışındaki diğer uygulamalar tarafından aynı anda karşıya yüklenirse, bu, karşıya yükleme işi hatalarının ve verilerin bozulmasına yol açabilir.
+    Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
+-  Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box Heavy limitleri](data-box-heavy-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
+- Data Box Heavy tarafından yüklenen verilerin Data Box Heavy haricindeki başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 - Şunları öneririz:
-    - SMB ve NFS 'yi aynı anda kullanamazsınız.
-    - Aynı verileri Azure 'da aynı son hedefe kopyalayın.
+    - SMB ve NFS'yi aynı anda kullanmayın.
+    - Aynı verileri Azure'da aynı son hedefe kopyalayın.
      
-  Bu durumlarda, nihai sonuç belirlenemez.
-- Her zaman, paylaşımın altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın. Blok Blobu ve Sayfa Blobu paylaşımları altında oluşturulan klasör, verilerin Bloblar olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *kök* klasöre doğrudan kopyalayamazsınız.
+  Böyle durumlarda nihai sonucu kestirmek mümkün olmayabilir.
+- Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
 
-SMB paylaşımıyla bağlantı kurduktan sonra veri kopyalama işlemini başlatın.
+SMB paylaşımına bağlandıktan sonra verileri kopyalamaya başlayın.
 
 1. Verilerinizi kopyalamak için Robocopy gibi SMB uyumlu herhangi bir dosya kopyalama aracını kullanabilirsiniz. Robocopy ile birden fazla kopyalama işlemini başlatabilirsiniz. Aşağıdaki komutu kullanın:
     
@@ -186,10 +186,10 @@ SMB paylaşımıyla bağlantı kurduktan sonra veri kopyalama işlemini başlat�
     |/z      | Dosyaları Yeniden başlatma modunda kopyalar, kararsız ortamlarda kullanmanız önerilir. Bu işlem ek günlük kaydı nedeniyle aktarım hızını düşürür.      |
     | /zb    | Yeniden başlatma modunu kullanır. Erişim reddedilirse bu seçenek Yedekleme modunu kullanır. Bu işlem denetim noktası oluşturma nedeniyle aktarım hızını düşürür.         |
     |/efsraw | Şifrelenmiş dosyaların tümünü EFS ham modunda kopyalar. Yalnızca şifrelenmiş dosyalarda kullanın.         |
-    |günlük +:\<logfile >| Çıkışı var olan günlük dosyasına ekler.|
+    |log+:\<LogFile>| Çıkışı var olan günlük dosyasına ekler.|
     
  
-    Aşağıdaki örnek, dosyaları Data Box Heavy kopyalamak için Robocopy komutunun çıkışını gösterir.
+    Aşağıdaki örnekte dosyaları Data Box Heavy'ye kopyalamak için kullanılan Robocopy komutunun çıkışı gösterilmektedir.
 
     ```   
     C:\Users>Robocopy C:\Git\azure-docs-pr\contributor-guide \\10.100.10.100\devicemanagertest1_AzFile\templates /MT:24
@@ -231,7 +231,7 @@ SMB paylaşımıyla bağlantı kurduktan sonra veri kopyalama işlemini başlat�
 
 2. Performansı iyileştirmek için veri kopyalama sırasında aşağıdaki Robocopy parametrelerini kullanın. (Aşağıdaki sayılar en iyi durum senaryolarını temsil eder.)
 
-    | Platform    | Çoğunlukla küçük dosyalar, 512 KB altı    | Genellikle orta dosyalar 512 KB-1 MB  | Çoğunlukla büyük dosyalar, 1 MB üzeri                             |
+    | Platform    | Çoğunlukla küçük dosyalar, 512 KB altı    | Çoğunlukla orta büyüklükteki dosyalar, 512 KB-1 MB  | Çoğunlukla büyük dosyalar, 1 MB üzeri                             |
     |-------------|--------------------------------|----------------------------|----------------------------|
     | Data Box Heavy | 6 Robocopy oturumu <br> Oturum başına 24 iş parçacığı | 6 Robocopy oturumu <br> Oturum başına 16 iş parçacığı | 6 Robocopy oturumu <br> Oturum başına 16 iş parçacığı |
 
@@ -240,29 +240,29 @@ SMB paylaşımıyla bağlantı kurduktan sonra veri kopyalama işlemini başlat�
 
 3. Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın.
 
-    ![Kopyalanan dosyaları görüntüle](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
+    ![Kopyalanan dosyaları görüntüleme](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
 
 
-4. Veriler kopyalanırken:
+4. Veriler kopyalandığında:
 
-    - Dosya adları, Boyutlar ve biçimi, Azure nesne ve depolama limitlerinin yanı sıra Azure dosya ve kapsayıcı adlandırma kurallarına uygun olduğundan emin olmak üzere onaylanır.
-    - Veri bütünlüğünü sağlamak için, sağlama toplamı da satır içi olarak hesaplanır.
+    - Dosya adları, boyutları ve biçimi, Azure nesne ve depolama limitlerinin yanı sıra Azure dosya ve kapsayıcı adlandırma kurallarına uygun olduğundan emin olmak üzere doğrulanır.
+    - Veri bütünlüğünden emin olmak için sağlama toplamı da satır içinde hesaplanır.
 
     Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için hata dosyalarını indirin. Hata dosyalarını indirmek için ok simgesini seçin.
 
-    ![Hata dosyalarını indir](media/data-box-heavy-deploy-copy-data/download-error-files.png)
+    ![Hata dosyalarını indirme](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    Daha fazla bilgi için bkz. [Data Box Heavy veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasındaki hataların ayrıntılı bir listesi için bkz. [sorun giderme Data Box Heavy sorunları](data-box-troubleshoot.md).
+    Daha fazla bilgi için bkz. [Data Box Heavy’ye veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box Heavy sorunlarını giderme](data-box-troubleshoot.md).
 
-5. Hata dosyasını Not defteri 'nde açın. Aşağıdaki hata dosyası, verilerin doğru Hizalanmadığını gösterir.
+5. Hata dosyasını Not Defteri'nde açın. Aşağıdaki hata dosyası, verilerin doğru hizalanmadığını gösterir.
 
-    ![Hata dosyasını aç](media/data-box-heavy-deploy-copy-data/open-error-file.png)
+    ![Hata dosyasını açma](media/data-box-heavy-deploy-copy-data/open-error-file.png)
     
-    Sayfa Blobu için, verilerin 512 bayt hizalı olması gerekir. Bu veriler kaldırıldıktan sonra, hata aşağıdaki ekran görüntüsünde gösterildiği gibi çözümlenir.
+    Bir sayfa blobu için verilerin 512 bayt hizalı olması gerekir. Bu veriler kaldırıldıktan sonra, hata aşağıdaki ekran görüntüsünde gösterildiği gibi çözümlenir.
 
     ![Hata çözüldü](media/data-box-heavy-deploy-copy-data/error-resolved.png)
 
-6. Kopyalama işlemi tamamlandıktan sonra **Pano sayfasını görüntüle** sayfasına gidin. Kullanılan alanı ve cihazınızdaki boş alanı doğrulayın.
+6. Kopyalama işlemi tamamlandıktan sonra **Panoyu Görüntüle** sayfasına gidin. Cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
     
     ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-heavy-deploy-copy-data/verify-used-space-dashboard.png)
 
@@ -270,17 +270,17 @@ Verileri cihazın ikinci düğümüne kopyalamak için yukarıdaki adımları te
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şöyle Azure Data Box Heavy konular hakkında bilgi edindiniz:
+Bu öğreticide Azure Data Box Heavy ile ilgili aşağıdaki bilgileri öğrendiniz:
 
 > [!div class="checklist"]
-> * Data Box Heavy Bağlan
-> * Data Box Heavy verileri kopyalama
+> * Data Box Heavy’ye bağlanma
+> * Data Box Heavy’ye veri kopyalama
 
 
-Data Box Heavy Microsoft 'a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Data Box Heavy'yi Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Data Box Heavy Microsoft 'a gönderin](./data-box-heavy-deploy-picked-up.md)
+> [Azure Data Box Heavy’yi Microsoft'a gönderme](./data-box-heavy-deploy-picked-up.md)
 
 ::: zone-end
 
@@ -288,15 +288,15 @@ Data Box Heavy Microsoft 'a geri gönderme hakkında bilgi edinmek için sonraki
 
 ### <a name="copy-data-via-smb"></a>SMB ile veri kopyalama
 
-1. Bir Windows ana bilgisayarı kullanıyorsanız, SMB paylaşımlarına bağlanmak için aşağıdaki komutu kullanın:
+1. Bir Windows ana bilgisayar kullanıyorsanız, SMB paylaşımlarına bağlanmak için aşağıdaki komutu kullanın:
 
     `\\<IP address of your device>\ShareName`
 
 2. Paylaşım erişimi kimlik bilgilerini almak için Data Box'ın yerel web kullanıcı arabiriminde **Bağlan ve kopyala** sayfasına gidin.
 
-3. Verileri paylaşımlara kopyalamak için Robocopy gibi bir SMB uyumlu dosya kopyalama aracı kullanın.
+3. Verilerinizi paylaşımlara kopyalamak için Robocopy gibi SMB uyumlu bir dosya kopyalama aracı kullanın.
 
-Adım adım yönergeler için [Öğreticiye gidin: SMB](data-box-heavy-deploy-copy-data.md)aracılığıyla Azure Data Box verileri kopyalayın.
+Adım adım yönergeler için [Öğretici: SMB aracılığıyla Azure Data Box’a veri kopyalama](data-box-heavy-deploy-copy-data.md) bölümüne gidin.
 
 ### <a name="copy-data-via-nfs"></a>NFS ile veri kopyalama
 
@@ -304,36 +304,36 @@ Adım adım yönergeler için [Öğreticiye gidin: SMB](data-box-heavy-deploy-co
 
     `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
 
-2. Paylaşma erişimi kimlik bilgilerini almak için Data Box Heavy yerel Web Kullanıcı arabirimindeki **& Kopyala sayfasına** gidin.
-3. Verilerinizi `cp` kopyalamak `rsync` için veya komutunu kullanın. 
-4. Data Box Heavy bağlanmak ve verileri ikinci düğümüne kopyalamak için bu adımları yineleyin.
+2. Paylaşım erişimi kimlik bilgilerini almak için Data Box Heavy'nin yerel web kullanıcı arabiriminde **Bağlan ve kopyala** sayfasına gidin.
+3. Verilerinizi kopyalamak için `cp` veya `rsync` komutunu kullanın. 
+4. Data Box Heavy’nin ikinci düğümüne bağlanmak ve veri kopyalamak için bu adımları yineleyin.
 
-Adım adım yönergeler için [Öğreticiye gidin: NFS](data-box-heavy-deploy-copy-data-via-nfs.md)aracılığıyla Azure Data Box verileri kopyalayın.
+Adım adım yönergeler için [Öğretici: NFS aracılığıyla Azure Data Box’a veri kopyalama](data-box-heavy-deploy-copy-data-via-nfs.md) bölümüne gidin.
 
-### <a name="copy-data-via-rest"></a>REST aracılığıyla veri kopyalama
+### <a name="copy-data-via-rest"></a>REST ile veri kopyalama
 
-1. REST API 'Leri aracılığıyla Data Box blob Storage kullanarak veri kopyalamak için *http* veya *https*üzerinden bağlanabilirsiniz.
-2. Data Box blob depolamaya veri kopyalamak için AzCopy kullanabilirsiniz.
-3. Data Box Heavy bağlanmak ve verileri ikinci düğümüne kopyalamak için bu adımları yineleyin.
+1. REST API’leri aracılığıyla Data Box Blob depolama alanı kullanarak verileri kopyalamak için *http* ya da *https* üzerinden bağlanabilirsiniz.
+2. Data Box Blob depolama alanına veri kopyalamak için AzCopy aracını kullanabilirsiniz.
+3. Data Box Heavy’nin ikinci düğümüne bağlanmak ve veri kopyalamak için bu adımları yineleyin.
 
-Adım adım yönergeler için [Öğreticiye gidin: REST API 'Leri](data-box-heavy-deploy-copy-data-via-rest.md)aracılığıyla Azure Data Box blob depolamaya verileri kopyalayın.
+Adım adım yönergeler için [Öğretici: REST API’leri aracılığıyla Azure Data Box Blob depolama alanına veri kopyalama](data-box-heavy-deploy-copy-data-via-rest.md) bölümüne gidin.
 
 ### <a name="copy-data-via-data-copy-service"></a>Veri kopyalama hizmeti aracılığıyla veri kopyalama
 
-1. Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir. Data Box Heavy yerel Web Kullanıcı arabiriminde, **yönet > verileri kopyala > oluştur**' a gidin.
+1. Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir. Data Box Heavy yerel web kullanıcı arabiriminde **Yönet > Verileri kopyala > Oluştur**'a gidin.
 2. Parametreleri doldurun ve bir iş oluşturun.
-3. Data Box Heavy bağlanmak ve verileri ikinci düğümüne kopyalamak için bu adımları yineleyin.
+3. Data Box Heavy’nin ikinci düğümüne bağlanmak ve veri kopyalamak için bu adımları yineleyin.
 
-Adım adım yönergeler için [Öğreticiye gidin: Verileri Azure Data Box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md)kopyalamak için veri kopyalama hizmetini kullanın.
+Adım adım yönergeler için [Öğretici: Veri kopyalama hizmetini kullanarak Azure Data Box Heavy’ye veri kopyalama](data-box-heavy-deploy-copy-data-via-copy-service.md) bölümüne gidin.
 
 ### <a name="copy-data-to-managed-disks"></a>Yönetilen disklere veri kopyalama
 
-1. Data Box Heavy cihazı sıralanırken, depolama hedefi olarak yönetilen diskleri seçmiş olmanız gerekir.
-2. SMB veya NFS paylaşımları üzerinden Data Box Heavy bağlanabilirsiniz.
-3. Daha sonra, SMB veya NFS araçları aracılığıyla veri kopyalayabilirsiniz.
-4. Data Box Heavy bağlanmak ve verileri ikinci düğümüne kopyalamak için bu adımları yineleyin.
+1. Data Box Heavy cihazını sipariş ederken depolama hedefiniz olarak yönetilen diskleri seçmiş olmanız gerekir.
+2. SMB veya NFS paylaşımları üzerinden Data Box Heavy’ye bağlanabilirsiniz.
+3. Daha sonra SMB veya NFS araçları aracılığıyla verileri kopyalayabilirsiniz.
+4. Data Box Heavy’nin ikinci düğümüne bağlanmak ve veri kopyalamak için bu adımları yineleyin.
 
-Adım adım yönergeler için [Öğreticiye gidin: Verileri Azure](data-box-heavy-deploy-copy-data-from-vhds.md)'da yönetilen diskler olarak yoğun bir şekilde içeri aktarmak için Data Box kullanın.
+Adım adım yönergeler için [Öğretici: Azure’da yönetilen diskler olarak verileri içeri aktarmak için Data Box Heavy kullanma](data-box-heavy-deploy-copy-data-from-vhds.md) bölümüne gidin.
 
 ::: zone-end
 
