@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 381af2989a7622501462e574d05b54eea8416518
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a3b57fd7acba4d45b0bd519a21ae74f91291fd77
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543448"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873244"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Hızlı Başlangıç: Azure DevOps Projeleri bir Java uygulaması için CI/CD işlem hattı ayarlama
 
-Azure DevOps Projeleri, Azure kaynakları oluşturan ve Azure Pipelines Java uygulamanız için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı ayarlayan basitleştirilmiş bir deneyim sunar.  
+Bu hızlı başlangıç makalesinde, Azure Pipelines ' de Java uygulamanız için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı ayarlamak üzere Azure DevOps Projeleri ' basitleştirilmiş deneyim kullanırsınız. Diğer Azure kaynaklarını oluşturmak için Azure DevOps Projeleri de kullanabilirsiniz.  
 
 Bir Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)aracılığıyla ücretsiz olarak edinebilirsiniz.
 

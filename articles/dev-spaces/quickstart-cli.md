@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure Dev Spaces ile AKS 'de mikro hizmet dağıtma
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 6ce5338bd2b3d6153255fcdb67cb8afe10e8101c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b845a176497891f55990c560e719832c6eaebb73
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772591"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842528"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes 'te uygulama geliştirme
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
@@ -109,6 +109,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ```
 
 Hizmetin çıkış `azds up` bölümünde gösterildiği genel URL 'yi açarak çalışır durumda olduğunu görebilirsiniz. Bu örnekte, genel URL olur *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+
+> [!NOTE]
+> Çalışırken hizmetinize `azds up`gittiğinizde, http isteği izlemeleri `azds up` komutun çıktısında de görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. `--disable-http-traces` Çalıştırırken`azds up`kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
 
 *Ctrl + c*kullanarak `azds up` komutu durdurursanız, hizmet aks 'de çalışmaya devam eder ve genel URL kullanılabilir olmaya devam eder.
 

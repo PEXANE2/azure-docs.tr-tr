@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806506"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861198"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Hızlı Başlangıç: IoT Tak ve Kullan cihazı oluşturmak için cihaz yetenek modeli kullanma
 
@@ -28,12 +28,12 @@ Bu hızlı başlangıcı tamamlayabilmeniz için yerel makinenize aşağıdaki y
 * [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT cihaz çalışma ekranı 'nı yükler
+### <a name="install-azure-iot-tools"></a>Azure IoT araçları 'nı yükler
 
-Azure IoT cihaz çalışma ekranı uzantısını VS Code yüklemek için aşağıdaki adımları kullanın:
+VS Code Uzantı paketi [Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 'nı yüklemek için aşağıdaki adımları kullanın:
 
 1. VS Code, **Uzantılar** sekmesini seçin.
-1. **Azure IoT cihaz çalışma ekranı**için arama yapın.
+1. **Azure IoT araçlarını**arayın.
 1. **Yükle**’yi seçin.
 
 ### <a name="install-the-azure-iot-explorer"></a>Azure IoT Gezginini yüklemeyi

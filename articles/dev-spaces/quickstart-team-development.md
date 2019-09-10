@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure 'da kapsayıcılar ve mikro hizmetlerle ekip Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f4a0a4858c890c94e3983c3dc9b10d739dc1352d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772560"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842594"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes üzerinde takım geliştirme
 
@@ -146,12 +146,12 @@ Tüm dev alanlarını listelemek için komutunukullanınvedev/azureuser2'ınseç
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 *Geliştirme/azureuser2*olan şu anda seçili olan alanda örnek uygulamanın URL 'lerini göstermek içinöğesinikullanın.`azds list-uris`
@@ -201,6 +201,9 @@ Bu komut, *bıkesharingweb* hizmetini *geliştirme/azureuser2* dev alanında olu
 Komutun çıktısında görüntülenecek genel URL 'yi açarak *dev/azureuser2* dev alanı için *bıkesharingweb* hizmetine gidin. `azds up` Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. Sağ üst köşedeki güncelleştirilmiş metni gördiğinizi doğrulayın. Bu değişikliği hemen görmüyorsanız sayfayı yenilemeniz veya tarayıcınızın önbelleğini temizlemeniz gerekebilir.
 
 ![Azure Dev Spaces bisiklet paylaşımı örnek uygulaması güncelleştirildi](media/quickstart-team-development/bikeshare-update.png)
+
+> [!NOTE]
+> Çalışırken hizmetinize `azds up`gittiğinizde, http isteği izlemeleri `azds up` komutun çıktısında de görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. `--disable-http-traces` Çalıştırırken`azds up`kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Diğer geliştirme alanlarının değiştirilmediğinden emin olun
 
