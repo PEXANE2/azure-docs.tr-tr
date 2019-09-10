@@ -132,6 +132,8 @@
           href: using-metrics.md
     - name: Diğer araçlarla tümleştirme
       items:
+        - name: Azure Data Factory kullanarak toplu veri kopyalama
+          href: data-factory-template.md
         - name: Apache Spark Bağlayıcısı
           href: spark-connector.md
         - name: Python kullanarak Databricks'ten bağlanma

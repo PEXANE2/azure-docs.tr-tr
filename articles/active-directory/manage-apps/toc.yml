@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: Kapsam belirleme filtreleri
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: Kapsam dışı kullanıcılar için silme işlemini atlama
+              href: skip-out-of-scope-deletions.md
             - name: Sağlama durumunu denetleme
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Otomatik kullanıcı hazırlama raporu
               href: check-status-user-account-provisioning.md
+            - name: Yapılandırmanızı dışarı ve içeri aktarma
+              href: export-import-provisioning-configuration.md
         - name: Kullanıcı hazırlama sorunlarını giderme
           items:
             - name: Kullanıcı hazırlama sorunlarını giderme
