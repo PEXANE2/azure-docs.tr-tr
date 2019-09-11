@@ -346,6 +346,10 @@
       items:
         - name: Öznitelik eşlemeleri için ifadeler yazma
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect Sağlama Aracısı
+      items:
+        - name: Sağlama Aracısı sürüm geçmişi
+          href: provisioning-agent-release-version-history.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Proxy’si sürüm geçmişi

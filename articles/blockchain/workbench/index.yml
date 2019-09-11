@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Azure Blockchain Workbench Belgeleri
+title: Azure Blockchain Workbench Önizleme Belgeleri
 summary: Blok zinciri uygulamaları oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgelerde Azure Blockchain Workbench’i dağıtma ve Azure üzerinde blok zinciri uygulamaları oluşturup yönetme işlemleri gösterilmektedir.
 metadata:
-  title: Azure Blockchain Workbench Belgeleri - Öğreticiler, API Başvurusu
+  title: Azure Blockchain Workbench Önizleme Belgeleri - Öğreticiler, API Başvurusu
   description: Blok zinciri uygulamaları oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgelerde Azure Blockchain Workbench’i dağıtma ve Azure üzerinde blok zinciri uygulamaları oluşturup yönetme işlemleri gösterilmektedir.
   services: azure-blockchain
   ms.service: azure-blockchain
   ms.topic: landing-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 08/29/2019
-  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70240826"
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845030"
 landingContent:
 - title: Azure Blockchain Workbench Hakkında
   linkLists:

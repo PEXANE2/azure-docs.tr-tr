@@ -6,6 +6,8 @@
       href: sql-database-technical-overview.md
     - name: Hangi SQL seçeneğini belirlemeliyim?
       href: sql-database-paas-vs-sql-server-iaas.md
+    - name: Özellik karşılaştırması
+      href: sql-database-features.md
     - name: Sürüm notları
       href: sql-database-release-notes.md
     - name: Ağ geçidi IP geçişi güncelleştirmeleri
@@ -390,10 +392,8 @@
               href: sql-database-advisor.md
     - name: Veritabanlarının özellikleri
       items:
-        - name: SQL Veritabanı özellik belgeleri
+        - name: Genel Bakış
           href: sql-database-features-index.yml
-        - name: SQL özellik karşılaştırması
-          href: sql-database-features.md
         - name: Çok modelli özellikler
           href: sql-database-multi-model-features.md
         - name: Bellek içi
@@ -534,6 +534,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Verileri yükleme ve taşıma
       items:
+        - name: Belirli bir noktaya geri yükleme
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Kaynağı yeni bir bölgeye taşıma
           href: sql-database-move-resources-across-regions.md
         - name: Azure’da bir veritabanını kopyalama

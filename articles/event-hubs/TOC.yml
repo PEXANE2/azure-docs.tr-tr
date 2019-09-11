@@ -30,6 +30,18 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
+        - name: Python
+          href: event-hubs-python-get-started-send.md
+        - name: Node.js
+          href: event-hubs-node-get-started-send.md
+        - name: Başlayın
+          href: event-hubs-go-get-started-send.md
+        - name: C (yalnızca gönderme)
+          href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (yalnızca alma)
+          href: event-hubs-storm-getstarted-receive.md
+        - name: .NET Framework
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Olayları yakalama
       items:
         - name: Event Hubs Capture için Azure portalı kullanma
@@ -104,46 +116,20 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programlama kılavuzu
           href: event-hubs-programming-guide.md
+        - name: 'Python kullanarak olayları gönderme, alma ve yakalama'
+          href: event-hubs-python.md
     - name: Veri işleme
       items:
         - name: Azure Stream Analytics’i kullanarak verileri işleme
           href: process-data-azure-stream-analytics.md
-    - name: İstemci kitaplıkları kullanma
+    - name: Spring çerçevesiyle tümleştirme
       items:
-        - name: .NET Framework
-          items:
-            - name: .NET Framework kullanarak olayları gönderme ve alma
-              href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          items:
-            - name: Spring Cloud Stream Binder uygulaması oluşturma
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-              maintainContext: true
-            - name: Apache Kafka için Spring Önyükleme Başlatıcıyı kullanma
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-              maintainContext: true
-        - name: Python
-          items:
-            - name: Python kullanarak olayları gönderme ve alma
-              href: event-hubs-python-get-started-send.md
-            - name: 'Python kullanarak olayları gönderme, alma ve yakalama'
-              href: event-hubs-python.md
-        - name: Node.js
-          items:
-            - name: Node.js kullanarak olayları gönderme ve alma
-              href: event-hubs-node-get-started-send.md
-        - name: Başlayın
-          items:
-            - name: Go kullanarak olayları gönderme ve alma
-              href: event-hubs-go-get-started-send.md
-        - name: C (yalnızca gönderme)
-          items:
-            - name: C kullanarak olayları gönderme
-              href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (yalnızca alma)
-          items:
-            - name: Apache Storm kullanarak olayları alma
-              href: event-hubs-storm-getstarted-receive.md
+        - name: Spring Cloud Stream Binder uygulaması oluşturma
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
+        - name: Apache Kafka için Spring Önyükleme Başlatıcıyı kullanma
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+          maintainContext: true
     - name: Apache Kafka ile tümleştirme
       items:
         - name: Apache Kafka özellikli Event Hubs oluşturma

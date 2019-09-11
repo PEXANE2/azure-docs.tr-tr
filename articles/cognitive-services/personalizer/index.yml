@@ -1,61 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Kişiselleştirme Belgeleri
+### YamlMime:Landing
+title: Kişiselleştirme belgeleri
+summary: Uygulamanızın, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilen en iyi deneyimin seçilmesini sağlamak için Kişiselleştirme’yi kullanmayı öğrenin.
 metadata:
-  document_id: null
-  title: 'Kişiselleştirme - Öğreticiler, Hızlı Başlangıçlar, API Başvurusu'
-  description: 'Uygulamanızın, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilen en iyi deneyimin seçilmesini sağlamak için Kişiselleştirme hizmetini kullanmayı öğrenin.'
+  ms.topic: landing-page
+  ms.date: 09/09/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: personalizer
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: nitinme
-abstract:
-  description: 'Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilebilecek en iyi deneyimi seçmenizi sağlayan bulut tabanlı bir API’dir.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/personalizer/what-is-personalizer
-            html: <p>Kişiselleştirme’nin ne olduğunu ve nasıl kullanıldığını öğrenin.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Kişiselleştirme nedir?
-          - href: /azure/cognitive-services/personalizer/how-personalizer-works
-            html: <p>Kişiselleştirme geri bildirim döngüsünün Derece ve Ödül API’leri ile nasıl çalıştığını öğrenin.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Kişiselleştirme nasıl çalışır?
-          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
-            html: <p>Kişiselleştirmeyi şirketinize ve hizmetinize karşı güven oluşturacak şekilde uygulayın.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Etik kurallar ve sorumluluk
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/logo_Csharp.svg
-            href: csharp-quickstart-commandline-feedback-loop.md
-            text: 'C#'
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API'leri
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092082"> Kişiselleştirme API’si</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  services: cognitive-services
+  title: Kişiselleştirme belgeleri
+  titleSuffix: Azure Cognitive Services
+  description: Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilebilecek en iyi deneyimi seçmenizi sağlayan bulut tabanlı bir API’dir.
+  ms.openlocfilehash: 7c73472231b563c1efa583e356774f755abea3bf
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845412"
+landingContent:
+- title: Kişiselleştirme hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kişiselleştirme nedir?
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: Kişiselleştirme nasıl çalışır?
+      url: how-personalizer-works.md
+    - text: Kişiselleştirme’yi nerelerde kullanabilirsiniz?
+      url: where-can-you-use-personalizer.md
+    - text: Etik ve sorumlu kullanım
+      url: ethics-responsible-use.md
+    - text: Kişiselleştirilecek özellikleri ve eylemleri seçme
+      url: concepts-features.md
+    - text: Ödülü hesaplama
+      url: concept-rewards.md
+    - text: Çevrimdışı değerlendirmeler
+      url: concepts-offline-evaluation.md
+  - linkListType: how-to-guide
+    links:
+    - text: Çevrimdışı değerlendirmeyle başarı analizi
+      url: how-to-offline-evaluation.md
+- title: Kişiselleştirme ile geliştirme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .Net kullanma
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: Python’u kullanma
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kişiselleştirme’yi oluşturma ve yapılandırma
+      url: how-to-settings.md
+  - linkListType: reference
+    links:
+    - text: Kod Örnekleri
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: REST API'leri
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+    - text: NuGet paketi
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: NPM paketi
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+    - text: Pypi paketi
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: concept
+    links:
+    - text: Ölçeklenebilirlik ve performans
+      url: concepts-scalability-performance.md
+- title: Pekiştirmeye dayalı öğrenme hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Pekiştirmeye dayalı öğrenme nedir?
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: Araştırma
+      url: concepts-exploration.md
+    - text: Özellikler, eylem ve bağlam
+      url: concepts-features.md
+    - text: Etkin öğrenme
+      url: concept-active-learning.md
+    - text: Ödüller
+      url: concept-rewards.md
+- title: Yardım ve geri bildirim
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sorun giderme
+      url: troubleshooting.md
+    - text: Stack Overflow ile ilgili soru sorun
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: UserVoice ile hizmeti etkileme
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

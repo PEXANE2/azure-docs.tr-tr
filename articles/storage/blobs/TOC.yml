@@ -1,5 +1,5 @@
-- name: Azure Storage Belgeleri
-  href: /azure/storage/
+- name: Azure Blob depolama belgeleri
+  href: /azure/storage/blobs/
 - name: Genel Bakış
   expanded: true
   items:
