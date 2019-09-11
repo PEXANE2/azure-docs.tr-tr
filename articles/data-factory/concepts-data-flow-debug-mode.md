@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991932"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801720"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991932"
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Data Factory eşleme veri akışının hata ayıklama modu, tasarım yüzeyinin en üstündeki "veri akışı hata ayıklaması" düğmesiyle birlikte değiştirilebilir. Veri akışları tasarlarken, hata ayıklama modunu açmak, veri akışlarınızı oluştururken ve hata ayıkladığınızda veri şekli dönüşümünü etkileşimli bir şekilde izlemenize olanak sağlar. Hata ayıklama oturumu hem veri akışı tasarım oturumlarında hem de veri akışlarının işlem hattı hata ayıklamada yürütülmesi sırasında kullanılabilir.
+Azure Data Factory eşleme veri akışının hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığınızda veri şekli dönüşümünü etkileşimli bir şekilde izlemenize olanak sağlar. Hata ayıklama oturumu hem veri akışı tasarım oturumlarında hem de veri akışlarının işlem hattı hata ayıklamada yürütülmesi sırasında kullanılabilir. Hata ayıklama modunu açmak için tasarım yüzeyinin en üstündeki "veri akışı hata ayıklaması" düğmesini kullanın.
 
-![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "Hata ayıklama düğmesi")
+![Hata ayıklama kaydırıcısı](media/data-flow/debugbutton.png "Hata ayıklama kaydırıcısı")
+
+Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılandırmasını kullanmak istediğinizi seçmeniz istenir. Oto Resolveıntegrationruntime seçilirse, 60 dakikalık bir yaşam süresine sahip sekiz çekirdekli genel işlem olan bir küme de Sun olur. Veri akışı tümleştirme çalışma zamanları hakkında daha fazla bilgi için bkz. [veri akışı performansı](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+
+![IR seçiminde hata ayıkla](media/data-flow/debugbutton2.png "IR seçiminde hata ayıkla")
 
 Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışınızı etkileşimli olarak oluşturacaksınız. Azure Data Factory, hata ayıklamayı kapattıktan sonra oturum kapatılacak. Hata ayıklama oturumunun açık olduğu süre boyunca Azure Databricks tarafından tahakkuk edilen saatlik ücretlerden haberdar olmanız gerekir.
 
 Çoğu durumda, iş mantığınızı doğrulayabilmeniz ve işinizi Azure Data Factory yayımlamadan önce veri dönüştürmelerinizi görüntüleyebilmeniz için veri akışlarınızı hata ayıklama modunda oluşturmak iyi bir uygulamadır. Veri akışınızı bir ardışık düzende test etmek için işlem hattı panelinde "hata ayıkla" düğmesini kullanın.
-
-> [!NOTE]
-> Data Factory araç çubuğunda hata ayıklama modu ışığı yeşil olsa da, 60 dakikalık bir yaşam süresi ile 8 çekirdek/saat genel işlem için veri akışı hata ayıklama oranı üzerinden ücretlendirilirsiniz 
 
 ## <a name="cluster-status"></a>Küme durumu
 
@@ -81,7 +82,7 @@ Bir değişikliği seçtiğinizde, veri önizlemesi hemen yenilenir. Yeni bir d�
 
 ### <a name="data-profiling"></a>Veri profili oluşturma
 
-Veri önizleme sekmesinizdeki sütunları seçmek ve veri önizleme araç çubuğunda **İstatistikler** ' i tıklatmak, her alanla ilgili ayrıntılı istatistiklerle veri kılavuzunuzun en sağında bir grafik açılır. Azure Data Factory görüntülenecek grafik türünün veri örneklemesi temelinde bir belirleme yapılır. Yüksek kardinalite alanları varsayılan olarak NULL/değil NULL grafiklerine göre NULL/olmayan grafik olarak değişir. Ayrıca, dize alanlarının en fazla/uzun uzunluğunu, sayısal alanlardaki minimum/maksimum değerleri, standart dev, yüzdebirlik değeri, sayımlar ve Ortalama değerlerini de görürsünüz.
+Veri önizleme sekmesinizdeki bir sütunu seçmek ve veri önizleme araç çubuğunda **İstatistikler** ' i tıklatmak, her alanla ilgili ayrıntılı istatistiklerle veri kılavuzunuzun en sağında bir grafik açılır. Azure Data Factory görüntülenecek grafik türünün veri örneklemesi temelinde bir belirleme yapılır. Yüksek kardinalite alanları varsayılan olarak NULL/değil NULL grafiklerine göre NULL/olmayan grafik olarak değişir. Ayrıca, dize alanlarının en fazla/uzun uzunluğunu, sayısal alanlardaki minimum/maksimum değerleri, standart dev, yüzdebirlik değeri, sayımlar ve Ortalama değerlerini de görürsünüz.
 
 ![Sütun istatistikleri](media/data-flow/stats.png "Sütun istatistikleri")
 

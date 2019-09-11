@@ -3,15 +3,15 @@ title: Azure Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: conceptual
-ms.date: 08/23/2019
+ms.topic: reference
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194834"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801354"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
