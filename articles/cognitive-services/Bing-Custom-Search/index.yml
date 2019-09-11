@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Özel bir arama deneyimi oluşturmak için Bing Özel Arama portalını ve API'sini kullanmayı öğrenin
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: 'Bing Özel Arama API''sini kullanarak önem verdiğiniz konular için bir arama örneği oluşturun. Aranacak etki alanlarını ve web sayfalarını belirtin, arama deneyiminizi tümüyle özelleştirmek için arama derecelendirmelerini ayarlayın.'
 sections:
