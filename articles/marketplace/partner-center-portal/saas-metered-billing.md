@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4b24805cd59d1eb9d28591749d5169486e54d506
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250112"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141769"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Market ölçüm hizmeti kullanılarak ölçülen faturalandırma
 
@@ -73,7 +73,7 @@ Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır.  Bazı
 Boyutun kendisini tanımlayan öznitelikler, bir teklif için tüm planlar arasında paylaşılır.  Teklifi yayımlamadan önce, herhangi bir planın bağlamından bu özniteliklerde yapılan bir değişiklik, tüm planlar genelinde boyut tanımını etkiler.  Teklifi yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir.  Bu öznitelikler şunlardır:
 
 * tanımlayıcı
-* Ad
+* Name
 * Ölçü birimi
 
 Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre farklı değerlere sahip olabilir.  Planı yayımlamadan önce bu değerleri düzenleyebilir ve yalnızca bu plan etkilenecektir.  Planı yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir.  Bu öznitelikler şunlardır:
@@ -84,7 +84,7 @@ Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre fark
 
 Boyutların Ayrıca "etkin" ve "sonsuz" olmak üzere iki özel kavramı vardır:
 
-* **Etkin** , bu planın bu boyutta katıldığını gösterir.  Bu boyuta göre kullanım olayları göndermediği yeni bir plan oluşturuyorsanız, bu onay işaretini kaldırmak isteyebilirsiniz.  Ayrıca, bir plan ilk yayımlandıktan sonra eklenen tüm yeni boyutlar, zaten yayımlanmış planda "etkin değil" olarak görünür.  Devre dışı bırakılan bir boyut artık müşteriler tarafından görülen bir plana ait boyutların herhangi bir listesinde görünür.
+* **Etkin** , bu planın bu boyutta katıldığını gösterir.  Bu boyuta göre kullanım olayları göndermediği yeni bir plan oluşturuyorsanız, bu onay işaretini kaldırmak isteyebilirsiniz.  Ayrıca, bir plan ilk yayımlandıktan sonra eklenen tüm yeni boyutlar, zaten yayımlanmış planda "etkin değil" olarak görünür.  Devre dışı bırakılan bir boyut, müşteriler tarafından görülen bir plan için boyutların herhangi bir listesinde gösterilmez.
 * Sonsuzluk "∞" simgesiyle temsil edilen **sonsuz**, bu planın bu boyuta katıldığını, ancak kullanımı bu boyuta göre ölçmediğini belirtir.  Müşterilerinize bu boyut tarafından temsil edilen işlevlerin plana dahil edildiğini, ancak kullanım sınırlaması olmadığını belirtmek istiyorsanız.  Sonsuz kullanım içeren bir boyut, müşteriler tarafından görülen bir plana ait boyut listelerinde görünür ve bu plan için hiçbir ücret ödemeyeceğine dair bir belirtime göstergesi olur.
 
 >[!Note] 
@@ -103,7 +103,7 @@ Market ölçüm hizmeti ile kullanılan bir boyut bir müşterinin hizmet için 
 Bir teklif bir boyutla yayımlandıktan sonra, bu boyut için teklif düzeyi ayrıntıları artık değiştirilemez:
 
 * tanımlayıcı
-* Ad
+* Name
 * Ölçü birimi
 
 Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirilemez:

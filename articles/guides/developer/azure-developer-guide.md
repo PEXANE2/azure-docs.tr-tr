@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 78c126559c4b919ebc81b49ed5567dd0d0196039
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 367027a48dd51dd88de63cb163e05e0e8503755d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971590"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308575"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için kullanmaya başlama kılavuzu
 
@@ -115,7 +115,7 @@ Azure, uygulama barındırmanın yanı sıra, hem bulutta hem de şirket içinde
 
   > **Ne zaman kullanılır**: Uygulamanız, anahtar-değer çiftleri (tablolar), Bloblar, dosya paylaşımları veya iletiler (kuyruklar) gibi ilişkisel olmayan verileri depoladığında.
   > 
-  > **Kullanmaya**başlayın: Şu türlerden birini seçin: Bloblar, [](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) [Tablolar](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Kuyruklar](../../storage/queues/storage-dotnet-how-to-use-queues.md)veya [dosyalar](../../storage/files/storage-dotnet-how-to-use-files.md).
+  > **Kullanmaya**başlayın: Şu türlerden birini seçin: [Bloblar](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tablolar](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Kuyruklar](../../storage/queues/storage-dotnet-how-to-use-queues.md)veya [dosyalar](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 - **Azure SQL veritabanı**: Bulutta ilişkisel tablo verilerini depolamak için Microsoft SQL Server altyapısının Azure tabanlı bir sürümü. SQL veritabanı, kesinti süresi olmadan öngörülebilir performans, ölçeklenebilirlik, iş sürekliliği ve veri koruması sağlar.
 
@@ -234,10 +234,10 @@ Azure, Azure portal Kullanıcı arabirimini destekleyen bir REST API kümesi üz
 REST API 'Lerine ek olarak, birçok Azure hizmeti Ayrıca, aşağıdaki geliştirme platformları için SDK 'lar dahil olmak üzere platforma özgü Azure SDK 'larını kullanarak uygulamalarınızdan kaynakları programlı bir şekilde yönetmenizi sağlar:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
--   [Python](https://docs.microsoft.com/python/azure)
+-   [Python](/azure/python/)
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
 -   [Go](https://docs.microsoft.com/azure/go)
 

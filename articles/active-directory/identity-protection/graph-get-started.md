@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory Kimlik Koruması için Microsoft Graph | Microsoft Docs
-description: Azure Active Directory bir risk olayları listesi ve ilgili bilgiler için Microsoft Graph sorgulama hakkında bilgi edinin.
+description: Risk algılamaları ve Azure Active Directory ilgili bilgilerin listesi için Microsoft Graph sorgulama hakkında bilgi edinin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1640511c2f97865f5026f9f977ed0e4a9c03e338
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a79440d0d969e01dc94759d4619fc0359762e1fd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774384"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126570"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
-Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan dört API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Dördüncü API, **ıdentityriskevents**, [risk olaylarının](../reports-monitoring/concept-risk-events.md) listesi ve ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
+Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan dört API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Dördüncü API, **ıdentityriskevents**, [risk algılamaları](../reports-monitoring/concept-risk-events.md) ve ilgili bilgilerin listesi için Microsoft Graph sorgulamanızı sağlar. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
 
 * [riskDetection API 'SI](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
 * [riskyUsers API 'SI](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
@@ -68,13 +68,13 @@ Başlamadan önce şunları yapmanız gerekir:
 
    ![Uygulama oluşturma](./media/graph-get-started/44.png)
 
-   1. **Ad** metin kutusuna uygulamanız için bir ad yazın (örneğin: AADıP risk olayı API uygulaması).
+   1. **Ad** metin kutusuna uygulamanız için bir ad yazın (örneğin: AADıP risk algılama API uygulaması).
 
    1. **Tür**olarak, **Web uygulaması ve/veya Web API 'si**' ni seçin.
 
    1. **Oturum açma URL 'si** metin kutusuna yazın `http://localhost`.
 
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 1. **Ayarlar** sayfasını açmak için, uygulamalar listesinde, yeni oluşturduğunuz uygulama kaydına tıklayın. 
 1. **Uygulama kimliğini**kopyalayın.
 
@@ -122,7 +122,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
    ![Uygulama oluşturma](./media/graph-get-started/24.png)
 
-   1. **Anahtar açıklaması** metin kutusuna bir açıklama yazın (örneğin, *Aadıp risk olayı*).
+   1. **Anahtar açıklaması** metin kutusuna bir açıklama yazın (örneğin, *Aadıp risk algılama*).
    1. **Süre**olarak **1 yıl içinde**öğesini seçin.
    1. **Kaydet**’e tıklayın.
    1. Anahtar değerini kopyalayın ve ardından güvenli bir konuma yapıştırın.   
@@ -131,7 +131,7 @@ Başlamadan önce şunları yapmanız gerekir:
    > Bu anahtarı kaybederseniz, bu bölüme dönüp yeni bir anahtar oluşturmanız gerekir. Bu anahtarı gizli tut: verilerinize erişebilen herkes, verilerinize erişebilir.
    > 
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Kimlik Microsoft Graph doğrulama ve kimlik risk olayları API 'sini sorgulama
+## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Kimlik doğrulama Microsoft Graph ve kimlik riski algılama API 'sini sorgulama
 
 Bu noktada, şunları yapmanız gerekir:
 
@@ -157,7 +157,7 @@ Kimlik doğrulanırken, döndürülen belirteçte belirteç türünü ve erişim
 
 Bu üstbilgiyi aşağıdaki API URL 'sine bir istek olarak gönderin:`https://graph.microsoft.com/beta/identityRiskEvents`
 
-Başarılı olursa yanıt, bir kimlik riski olayları ve OData JSON biçimindeki ilişkili verilerin bir koleksiyonudur ve uygun gördüğünüz şekilde ayrıştırılabilir ve işlenebilir.
+Başarılı olursa yanıt, bir kimlik riski algılamaları ve, uygun gördüğünüz şekilde ayrıştırılabilen ve işlenebilen OData JSON biçimindeki ilişkili veriler koleksiyonudur.
 
 PowerShell kullanarak API 'YI doğrulamak ve çağırmak için örnek kod aşağıda verilmiştir.  
 Yalnızca istemci KIMLIĞINIZI, gizli anahtarı ve kiracı etki alanını ekleyin.
@@ -204,9 +204,9 @@ Kimlik koruması oturum açma risk ilkeleri sayesinde, risk gerçek zamanlı alg
 GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
 ```
 
-### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Yüksek riskli ve orta riskli etkinlikleri edinme (ıdentityriskevents API 'SI)
+### <a name="get-the-high-risk-and-medium-risk-detections-identityriskevents-api"></a>Yüksek riskli ve orta riskli algılamaları (ıdentityriskevents API 'SI) edinme
 
-Orta ve yüksek riskli olaylar, kimlik koruması oturum açma veya Kullanıcı risk ilkelerini tetikleme yeteneğine sahip olabilecek olanları temsil eder. Kullanıcının oturum açmaya çalışan Kullanıcı meşru kimlik sahibi olmadığından, orta veya yüksek bir olasılık olduğundan, bu olayların yapılması bir öncelik olmalıdır. 
+Orta ve yüksek riskli algılamalar, kimlik koruması oturum açma veya Kullanıcı risk ilkelerini tetikleme yeteneğine sahip olabilecek olanları temsil eder. Kullanıcının oturum açmaya çalışan Kullanıcı meşru kimlik sahibi olmadığından, orta veya yüksek bir olasılık olduğundan, bu olayların yapılması bir öncelik olmalıdır. 
 
 ```
 GET https://graph.microsoft.com/beta/identityRiskEvents?`$filter=riskLevel eq 'high' or riskLevel eq 'medium'" 
@@ -230,14 +230,14 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tebrikler, Microsoft Graph için ilk çağrdınız yaptınız!  
-Artık, kimlik riski olaylarını sorgulayabilir ve verileri kullanabilirsiniz, ancak uygun gördüğünüz şekilde
+Artık kimlik riski algılamalarını sorgulayabilir ve verileri kullanabilirsiniz, ancak bunları kullanın.
 
 Microsoft Graph ve Graph API kullanarak uygulama oluşturma hakkında daha fazla bilgi edinmek için [Microsoft Graph sitesinde](https://developer.microsoft.com/graph) [belgelere](https://docs.microsoft.com/graph/overview) ve çok daha fazlasına göz atın. 
 
 İlgili bilgiler için bkz.:
 
 - [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)
-- [Azure Active Directory Kimlik Koruması tarafından algılanan risk olayı türleri](../reports-monitoring/concept-risk-events.md)
+- [Azure Active Directory Kimlik Koruması tarafından algılanan risk algılamaları türleri](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph’a genel bakış](https://developer.microsoft.com/graph/docs)
 - [Azure AD Kimlik Koruması hizmeti kökü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)

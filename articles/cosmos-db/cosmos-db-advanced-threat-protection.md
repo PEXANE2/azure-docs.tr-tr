@@ -4,15 +4,15 @@ description: Azure Cosmos DB, bekleyen verilerin şifrelenmesi ve nasıl uygulan
 author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981743"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123891"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için Gelişmiş tehdit koruması
 
@@ -56,6 +56,31 @@ Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 * [Gelişmiş tehdit korumasını etkinleştir](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
 * [Gelişmiş tehdit koruması al](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Gelişmiş tehdit korumasını devre dışı bırak](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanma
+
+Gelişmiş tehdit koruması etkinleştirilmiş Cosmos DB ayarlamak için bir Azure Resource Manager şablonu kullanın.
+Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması Ile CosmosDB hesabı oluşturma](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+
+### <a name="using-azure-policy"></a>Azure Ilkesini kullanma
+
+Cosmos DB için Gelişmiş tehdit koruması 'nı etkinleştirmek üzere bir Azure Ilkesi kullanın.
+
+1. Azure **Ilke tanımları** sayfasını başlatın ve **Cosmos DB Ilkesi Için Gelişmiş tehdit koruması dağıt** ' ı arayın.
+
+    ![Ilke ara](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+
+1. **CosmosDB Için Gelişmiş tehdit koruması dağıtma** İlkesi ' ne tıklayın ve ardından **ata**' ya tıklayın.
+
+    ![Abonelik veya grup seçin](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+
+
+1. **Kapsam** alanından üç noktaya tıklayın, bir Azure aboneliği veya kaynak grubu seçin ve ardından **Seç**' e tıklayın.
+
+    ![İlke tanımları sayfası](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+
+
+1. Diğer parametreleri girip **ata**' ya tıklayın.
 
 ## <a name="manage-atp-security-alerts"></a>ATP güvenlik uyarılarını yönetme
 

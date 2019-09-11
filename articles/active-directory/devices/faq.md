@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706325"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193197"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -194,14 +194,14 @@ Daha önce oturum açmış olmayan silinen veya devre dışı olan kullanıcıla
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>S: Kullanıcılarım Azure AD 'ye katılmış cihazlarda Azure Multi-Factor Authentication istemlerini neden alamıyor?
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>S: Kullanıcılarım Azure AD 'ye katılmış cihazlarda neden Azure Multi-Factor Authentication istemleri alamıyor?
 
-**C:** Kullanıcı Multi-Factor Authentication kullanarak bir cihazı Azure AD 'ye katabilir veya kaydedebilir. Daha sonra cihazın kendisi bu kullanıcı için güvenilir bir ikinci faktör haline gelir. Aynı kullanıcı cihazda oturum açtığında ve bir uygulamaya eriştiğinde Azure AD, cihazı ikinci bir faktör olarak değerlendirir. Bu kullanıcının, ek Multi-Factor Authentication istemleri olmadan uygulamalara sorunsuzca erişmesini sağlar. 
+**C:** Kullanıcı Multi-Factor Authentication kullanarak bir cihazı Azure AD 'ye katabilir veya kaydedebilir. Daha sonra cihazın kendisi bu kullanıcı için güvenilir bir ikinci faktör haline gelir. Aynı kullanıcı cihazda oturum açtığında ve bir uygulamaya eriştiğinde Azure AD, cihazı ikinci bir faktör olarak değerlendirir. Bu kullanıcının ek Multi-Factor Authentication istemler olmadan uygulamalara sorunsuz şekilde erişmesini sağlar. 
 
 Bu davranış:
 
 - Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlar için geçerlidir, ancak karma Azure AD 'ye katılmış cihazlar için değildir.
-- Bu cihazda oturum açan diğer kullanıcılar için geçerli değildir. Bu nedenle, bu cihaza erişen diğer tüm kullanıcılar çok faktörlü kimlik doğrulama sınaması alırlar. Ardından, çok faktörlü kimlik doğrulaması gerektiren uygulamalara erişebilirler.
+- Bu cihazda oturum açan diğer kullanıcılar için geçerli değildir. Bu nedenle, bu cihaza erişen diğer tüm kullanıcılar Multi-Factor Authentication bir zorluk alır. Daha sonra, Multi-Factor Authentication gerektiren uygulamalara erişebilirler.
 
 ---
 
@@ -281,12 +281,19 @@ Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu 
 
 ## <a name="azure-ad-register-faq"></a>Azure AD kaydı hakkında SSS
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>S: Azure AD kayıtlı bir cihazı cihazda yerel olarak Nasıl yaparım? kaldırılsın mı?
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>S: Bir cihazın Azure AD kayıtlı durumunu yerel olarak kaldırmak Nasıl yaparım? mı?
 
 **C:** 
 - Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar** > **hesaplar** > **erişim iş veya okul**bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
 - İOS ve Android için Microsoft Authenticator uygulama **ayarları** > **cihaz kaydını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
 - MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırın ve kaydı kaldırabilirsiniz. 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>S: Kullanıcıların kurumsal Windows 10 Cihazlarıma ek iş hesapları (Azure AD kaydı) eklemelerini nasıl engelleyebilirim?
+
+**C:** Kullanıcılarınızın kurumsal etki alanına katılmış, Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış Windows 10 cihazlarına ek iş hesapları eklemesini engellemek için aşağıdaki kayıt defterini etkinleştirin. Bu ilke, etki alanına katılmış makinelerin yanlışlıkla aynı kullanıcı hesabıyla kayıtlı olan Azure AD 'yi engellemek için de kullanılabilir. 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>S: Android veya iOS BYOD cihazlarını kaydedebilir miyim?

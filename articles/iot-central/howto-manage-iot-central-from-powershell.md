@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: bfda4f4ebe8990a16853bdfe40065a7501de5275
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086900"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70380964"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell’den IoT Central’ı yönetme
 
@@ -80,6 +80,9 @@ Betik ilk olarak uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur.
 |iotc-default@1.0.0 |Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
 |iotc-demo@1.0.0    |Bir Soğutmalı Otomat için önceden oluşturulmuş cihaz şablonunu içeren bir uygulama oluşturur. Azure IoT Central'ı incelemeye başlamak için bu şablonu kullanın. |
 |iotc-devkit-sample@1.0.0 |MXChip veya Raspberry Pi cihazını bağlamak amacıyla sizin için hazırlanmış cihaz şablonlarıyla bir uygulama oluşturur. Bu cihazlardan herhangi birini denemek için bir cihaz geliştiricisi iseniz bu şablonu kullanın. |
+
+> [!NOTE]
+> **Önizleme uygulaması** şablonu şu anda yalnızca **Kuzey Avrupa** ve **Orta ABD** bölgelerinde kullanılabilir.
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central uygulamalarınızı görüntüleme
 

@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c5b9a16a7b52239f1ef16d42e1b4be344863a04
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60570707"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140617"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
 Bu öğreticide, değişim verileri şirket içi SQL Server’daki birden çok tablodan Azure SQL Veritabanına yükleyen bir Azure veri fabrikası işlem hattı oluşturacaksınız.    
@@ -173,9 +172,9 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Azure SQL veritabanında veri türleri ve ek saklı yordamlar oluşturma
 SQL veritabanınızda iki saklı yordam ve iki veri türü oluşturmak için aşağıdaki sorguyu çalıştırın. Bunlar, kaynak tablodaki verileri hedef tablolarla birleştirmek için kullanılır. 
 
-Yolculuğunuza başlamak kolaylaştırmak için doğrudan bu depolanan bir tablo değişkeni değişim verileri geçirme yordamları kullanın ve ardından bunları hedef depolama alanına birleştirin. "Büyük" bazı delta satırlar (100'den fazla) tablo değişkeninde depolanan bekleniyor değil, dikkatli olun.  
+Yolculuğun başlamasını kolaylaştırmak için, bu saklı yordamları doğrudan bir tablo değişkeni aracılığıyla içindeki Delta verileri geçirerek ve ardından bunları hedef depoda birleştirerek kullanırız. Tablo değişkeninde bir "büyük" sayıda Delta satırı (100 ' den fazla) beklenmediğinden emin olun.  
 
-Hedef, geçici bir "Hazırlama" tabloya delta veri kopyalamak için kopyalama etkinliği kullanmanızı ilk depolamak ve ardından kendi saklı yordam tablosu vari kullanmadan oluşturulan hedef deposuna çok sayıda değişim satırları birleştirmek gerekiyorsa öneririz "Hazırlama" tablosundan "son" tabloyu birleştirmek üzere kullanabilirsiniz. 
+Hedef depoda çok sayıda Delta satırını birleştirmeniz gerekiyorsa, tüm Delta verileri önce hedef depodaki geçici bir "hazırlama" tablosuna kopyalamak için kopyalama etkinliği 'ni kullanmanızı ve ardından tablo VARI ' nı kullanmadan kendi saklı yordamınıza sahip olup olmadığını öneririz bunları "hazırlama" tablosundan "son" tablosuna birleştirebiliyor. 
 
 
 ```sql
@@ -229,7 +228,7 @@ END
 ### <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/azurerm/install-azurerm-ps) konusundaki yönergeleri izleyerek en güncel Azure PowerShell modüllerini yükleyin.
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 1. Daha sonra PowerShell komutlarında kullanacağınız kaynak grubu adı için bir değişken tanımlayın. Aşağıdaki komut metnini PowerShell'e kopyalayın [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) için tırnak işaretleri içinde bir ad belirtin ve ardından komutu çalıştırın. `"adfrg"` bunun bir örneğidir. 
    
      ```powershell
@@ -272,7 +271,7 @@ Aşağıdaki noktalara dikkat edin:
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, katkıda bulunan veya sahip rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır.
-* Data Factory kullanılabildiği şu anda Azure bölgelerinin listesi için aşağıdaki sayfada faiz ve ardından genişletin bölgeleri seçin **Analytics** bulunacak **Data Factory**: [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 

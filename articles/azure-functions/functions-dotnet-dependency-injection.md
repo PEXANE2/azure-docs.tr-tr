@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377379"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375992"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>Eklenen bağımlılıkları kullan
 
-ASP.NET Core, bağımlılıklarınızı işleviniz için kullanılabilir hale getirmek için Oluşturucu ekleme işlemini kullanır. Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının http ile tetiklenen bir işleve nasıl eklendiğini gösterir.
+ASP.NET Core, bağımlılıklarınızı işleviniz için kullanılabilir hale getirmek için Oluşturucu ekleme işlemini kullanır. Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının http ile tetiklenen bir işleve nasıl eklendiğini gösterir. 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-Oluşturucu Ekleme kullanımı, bağımlılık ekleme özelliğinden faydalanmak istiyorsanız statik işlevler kullanmamalısınız.
+Oluşturucu Ekleme kullanımı, bağımlılık ekleme özelliğinden faydalanmak istiyorsanız statik işlevler kullanmamalısınız. Cosmos istemcisinde [buna](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs)bakın.
 
 ## <a name="service-lifetimes"></a>Hizmet yaşam süreleri
 

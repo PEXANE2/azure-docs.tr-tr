@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.custom: seo-java-august2019
-ms.openlocfilehash: 110c4a343909a81e092b147b79ed69d6bd5c2d9c
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: a34cb8e13d32cbeb6d289869dca3a8cb1391d68f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981748"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390847"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -26,7 +26,7 @@ ms.locfileid: "69981748"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Bu hızlı başlangıçta Java uygulaması kullanarak bir Azure Cosmos DB [SQL API'si](sql-api-introduction.md) hesabının kaynaklarını oluşturma ve yönetme adımları gösterilmektedir. İlk olarak Azure portalı kullanarak bir Azure Cosmos DB SQL API'si hesabı oluşturacak, ardından [SQL Java SDK'sını](sql-api-sdk-async-java.md) kullanarak bir Java uygulaması oluşturacak ve son adımda Java uygulamasını kullanarak Cosmos DB hesabınıza kaynak ekleyeceksiniz. Bu hızlı başlangıçtaki yönergeler Java çalıştırabilen tüm işletim sistemlerinde izlenebilir. Bu hızlı başlangıcı tamamladıktan sonra Cosmos veritabanlarını oluşturma ve değiştirme hakkında bilgi sahibi olacaksınız.
+Bu hızlı başlangıçta, Azure Cosmos DB SQL API hesabınızdan bir belge veritabanı oluşturmak ve yönetmek için bir Java uygulamasının nasıl kullanılacağı gösterilmektedir. İlk olarak, Azure portal kullanarak bir Azure Cosmos DB SQL API hesabı oluşturun, SQL Java SDK 'sını kullanarak bir Java uygulaması oluşturun ve ardından Java uygulamasını kullanarak Cosmos DB hesabınıza kaynak eklersiniz. Bu hızlı başlangıçtaki yönergeler Java çalıştırabilen tüm işletim sistemlerinde izlenebilir. Bu hızlı başlangıcı tamamladıktan sonra Cosmos DB veritabanlarını oluşturma ve değiştirme hakkında bilgi sahibi olmanız, Kullanıcı arabiriminde veya program aracılığıyla kapsayıcılarınız hangisi olursa
 
 ## <a name="prerequisites"></a>Önkoşullar
 

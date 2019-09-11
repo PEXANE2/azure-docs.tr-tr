@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30669c8f5aeefc14db42a32d87f333419758327
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989872"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127354"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API 'SI ile çalışmaya başlama
 
@@ -49,7 +49,7 @@ Ayrıntılı yönergeler için [Azure Active Directory Raporlama API 'sine eriş
 
 Denetim günlükleri `https://graph.microsoft.com/beta/auditLogs/directoryAudits` için Microsoft Graph API uç noktası ve oturum açma `https://graph.microsoft.com/beta/auditLogs/signIns`işlemleri için Microsoft Graph API uç noktası. Daha fazla bilgi için bkz. [API başvurusunu denetleme](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) ve [oturum açma API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
-Ayrıca, Microsoft Graph kullanarak güvenlik algılamalarından programlı erişim kazanmak için [kimlik koruması risk OLAYLARı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması ve Microsoft Graph ile çalışmaya başlama](../identity-protection/graph-get-started.md). 
+Ayrıca, Microsoft Graph kullanarak güvenlik algılamalarından programlı erişim kazanmak için [kimlik koruması risk ALGıLAMA API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 'sini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması ve Microsoft Graph ile çalışmaya başlama](../identity-protection/graph-get-started.md). 
 
 > [!NOTE]
 >  **Https\/:Graph.Windows.net\<kiracı adıraporlarıuçnoktasıkullanımdışıdır.\>\/\/\/\/** Etkinlik ve güvenlik raporlarına programlı bir şekilde erişmek için yukarıda açıklanan yeni API uç noktalarını kullanın.

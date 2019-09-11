@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011515"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844993"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 
@@ -24,7 +24,7 @@ Bu makalede, bir Web hizmeti olarak GPU özellikli bir modeli dağıtmak için A
 Çıkarım veya model Puanlama, dağıtılan modelin tahminleri yapmak için kullanıldığı aşamadır. CPU yerine GPU 'Ları kullanmak, yüksek bir paralelleştirilebilir hesaplama üzerinde performans avantajları sunar.
 
 > [!IMPORTANT]
-> GPU çıkarımı yalnızca Azure Kubernetes hizmetinde desteklenir.
+> Web hizmeti dağıtımları için GPU çıkarımı yalnızca Azure Kubernetes hizmetinde desteklenir. __Makine öğrenimi ardışık düzeni__kullanan çıkarım için, GPU 'lar yalnızca Azure Machine Learning işlem sırasında desteklenir. ML işlem hatlarını kullanma hakkında daha fazla bilgi için bkz. [Batch tahminleri çalıştırma](how-to-run-batch-predictions.md). 
 
 > [!TIP]
 > Bu makaledeki kod parçacıkları bir TensorFlow modelini görebilse de, bilgileri GPU 'ları destekleyen herhangi bir Machine Learning çerçevesine uygulayabilirsiniz.

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9718185b41795da6d95486972441ee20bc250316
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850698"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743810"
 ---
 # <a name="my-first-powershell-runbook"></a>İlk PowerShell runbook’um
 
@@ -112,8 +112,21 @@ Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar fayd
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+   # Wrap authentication in retry logic for transient network failures
+   $logonAttempt = 0
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
 
    $AzureContext = Select-AzureRmSubscription -SubscriptionId $connection.SubscriptionID
 
@@ -129,8 +142,19 @@ Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar fayd
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
    ```
 
    > [!IMPORTANT]
@@ -152,8 +176,19 @@ Runbook 'larınızın Azure aboneliğinizde kimlik doğrulaması yapdığına g�
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
+
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    ```
 
@@ -175,8 +210,19 @@ Runbook 'larınız Şu anda runbook 'a kodlandığı sanal makineyi başlatır, 
    Disable-AzureRmContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
-   -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+   while(!($connectionResult) -And ($logonAttempt -le 10))
+   {
+       $LogonAttempt++
+       # Logging in to Azure...
+       $connectionResult =    Connect-AzureRmAccount `
+                                  -ServicePrincipal `
+                                  -Tenant $connection.TenantID `
+                                  -ApplicationID $connection.ApplicationID `
+                                  -CertificateThumbprint $connection.CertificateThumbprint
+
+       Start-Sleep -Seconds 30
+   }
+
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    ```
 

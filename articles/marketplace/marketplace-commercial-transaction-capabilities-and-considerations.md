@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535047"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279752"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Ticari Market işlem özellikleri ve konuları
 
@@ -75,7 +75,7 @@ Kullanılan işlem seçeneğine bağlı olarak, yayımcının yazılım lisansı
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Kullandıkça öde ve abonelik (site tabanlı) fiyatlandırması
 
-Kullandıkça öde ve abonelik ücreti teklifi yayımlarken, Microsoft, yazılım lisansı satın alma, iade ve geri ödeme işlemlerini işleyecek teknoloji ve hizmetler sağlar. Bu senaryoda, yayımcı Microsoft 'un bu amaçlar için bir aracı görevi görmesini yetkilendirir. Yayımcı, Microsoft 'un yazılım lisanslama işlemini kolaylaştırmasına olanak sağlarken satıcı, sağlayıcı, dağıtıcı ve lisans verme özelliklerini korur.
+Kullandıkça Öde veya abonelik işlemi teklifi yayımlandığında, Microsoft yazılım lisansı satın alma, iade ve geri ödeme işlemlerini işleyecek teknoloji ve hizmetler sağlar. Bu senaryoda, yayımcı Microsoft 'un bu amaçlar için bir aracı görevi görmesini yetkilendirir. Yayımcı, Microsoft 'un yazılım lisanslama işlemini kolaylaştırmasına olanak sağlarken satıcı, sağlayıcı, dağıtıcı ve lisans verme özelliklerini korur.
 
 Microsoft, müşterilerin, Microsoft 'un ticari marketi ve yayımcısının Son Kullanıcı lisanslama sözleşmesinin hüküm ve koşullarına subjecting, yayımcı yazılımını sipariş etmesini, lisanslamasını ve kullanmasına olanak sağlar. Yayımcılar, Son Kullanıcı lisanslama anlaşmasını sağlamalıdır veya teklifi oluştururken [Standart sözleşmeyi](https://docs.microsoft.com/azure/marketplace/standard-contract) seçmelidir.
 

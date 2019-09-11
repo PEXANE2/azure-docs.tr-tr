@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648916"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744742"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Hızlı Başlangıç: Azure Search bilişsel becerileri kullanarak bir AI dizin oluşturma işlem hattı oluşturun
 
@@ -45,7 +45,7 @@ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-ser
 
 Bilişsel [HIZMETLER](https://azure.microsoft.com/services/cognitive-services/) AI sağlar. Bu hızlı başlangıç, işlem hattını belirtirken bu kaynakları satır içinde eklemeye yönelik adımları içerir. Hesapları önceden ayarlamak gerekli değildir.
 
-Dizin oluşturma işlem hattının girdilerini sağlamak için Azure Hizmetleri gereklidir. Azure Tablo depolama dışında [Azure Search Dizin oluşturucular](search-indexer-overview.md) tarafından desteklenen herhangi bir veri kaynağını kullanabilirsiniz. Bu, AI dizin oluşturma için desteklenmez. Bu hızlı başlangıç, kaynak veri dosyaları için bir kapsayıcı olarak [Azure Blob depolamayı](https://azure.microsoft.com/services/storage/blobs/) kullanır. 
+Dizin oluşturma işlem hattının girdilerini sağlamak için Azure Hizmetleri gereklidir. [Azure Search Dizin oluşturucular](search-indexer-overview.md)tarafından desteklenen herhangi bir veri kaynağını kullanabilirsiniz. Bu hızlı başlangıç, kaynak veri dosyaları için bir kapsayıcı olarak [Azure Blob depolamayı](https://azure.microsoft.com/services/storage/blobs/) kullanır. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure Blob hizmetini ayarlama ve örnek veriler yükleme
 
@@ -79,11 +79,11 @@ Daha sonra dizin oluşturma işlem hattına zenginleştirme adımları ekleyin. 
 
 1. Bilişsel Hizmetler API'si kaynak alma seçeneklerini görüntülemek için bilişsel **Hizmetler Ekle** ' yi genişletin. Bu öğreticinin amaçları doğrultusunda **ücretsiz** kaynağı kullanabilirsiniz.
 
-   ![Bilişsel Hizmetleri Ekleme](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Bilişsel hizmetler iliştirme](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. **Zenginleştirme Ekle** ' yi genişletin ve doğal dil işleme yapan becerileri seçin. Bu hızlı başlangıç için, kişiler, kuruluşlar ve konumlar için varlık tanımayı seçin.
 
-   ![Bilişsel Hizmetleri Ekleme](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Bilişsel hizmetler iliştirme](media/cognitive-search-quickstart-blob/skillset.png)
 
    Portal, OCR işleme ve metin analizi için yerleşik yetenekler sunar. Portalda beceri kümesi, tek bir kaynak alanının üzerinde çalışır. Bu küçük bir hedef gibi görünebilir, ancak Azure blobları için `content` alanı, blob belgesinin çoğunu içerir (örneğin, Word belgesi veya PowerPoint destesi). Aynı şekilde bir blobun tüm içeriği de bu alanda bulunduğundan bu alan ideal bir giriştir.
 

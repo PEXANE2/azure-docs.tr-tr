@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575495"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845503"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
@@ -23,7 +23,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="create-a-private-cloud"></a>Özel bulut oluşturma
+## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
 
 Özel bulut, ESXi Konakları, vCenter, vSAN ve NSX 'i destekleyen yalıtılmış bir VMware yığınına sahiptir.
 
@@ -32,7 +32,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 1. **Tüm Hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
-4. **Özel bulut oluştur** ' a tıklayarak cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
+4. **Özel bulut oluştur** **' a tıklayarak**cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
 
     ![Azure 'dan özel bulut oluşturma](media/create-private-cloud-from-azure.png)
 
@@ -46,7 +46,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 9. İleri **' ye tıklayın: Gelişmiş Seçenekler**.
 10. VSphere/vSAN alt ağları için CıDR aralığını girin. CıDR aralığının şirket içi veya diğer Azure alt ağlarınızdan (sanal ağlar) veya ağ geçidi alt ağıyla çakışmadığından emin olun.
 
-    **CIDR aralığı seçenekleri:** /24,/23,/22 veya/21. A/24 CıDR aralığı en fazla dokuz düğüm destekler, a/23 CıDR aralığı en fazla 41 düğümü destekler ve/22 ve/21 CıDR aralığı en fazla 64 düğümü destekler (bir özel buluttaki en fazla düğüm sayısı).
+    **CIDR aralığı seçenekleri:** /24,/23,/22 veya/21. A/24 ' e kadar olan bir CıDR aralığı, en fazla 26 düğüm destekler, a/23 CıDR aralığı 58 düğümü destekler ve/22 ve/21 CıDR aralığı 64 düğümlerini destekler (özel buluttaki en fazla düğüm sayısı).  Daha fazla bilgi edinmek için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
       > VSphere/vSAN CıDR aralığındaki IP adresleri özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.

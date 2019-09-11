@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: El yazısı metinleri - SDK ayıklamak,C#'
+title: "Hızlı Başlangıç: El yazısı metin-SDK 'yı Ayıkla,C#"
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta Görüntü İşleme Windows C# istemci kitaplığını kullanarak bir görüntüden metin ayıklayacaksınız.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ba72fdce42a8313903a26aead4a1c1922a9bb586
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 315e35535c29771fb12a97f26e6e2c294e888d07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603453"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137416"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Hızlı Başlangıç: Görüntü işleme kullanarak resimlerdeki el yazısı metinleri ayıklamak C# SDK'sı
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Hızlı Başlangıç: Görüntü İşleme C# SDK kullanarak el yazısı metin Ayıkla
 
-Bu hızlı başlangıçta, el yazısı veya yazdırılan metin için bilgisayar işleme SDK'sını kullanarak bir görüntüden ayıklayacaktır C#. İsterseniz, bu kılavuzdaki kod tam bir örnek uygulamadan olarak indirebilirsiniz [Bilişsel hizmetler Csharp görüntü](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) github deposu.
+Bu hızlı başlangıçta, için C#görüntü işleme SDK kullanarak bir görüntüden el yazısı veya yazdırılmış metin ayıklayacaksınız. İsterseniz, bu kılavuzdaki kodu GitHub 'da bilişsel [Hizmetler CSharp Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) depositesinden tamamen örnek bir uygulama olarak indirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir görüntü işleme abonelik anahtarı. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+* Görüntü İşleme abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 * [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) istemci kitaplığı NuGet paketi. Paketi indirmek gerekli değildir. Yükleme yönergeleri aşağıda verilmiştir.
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, el yazısı veya yazdırılan metin için bilgisayar 
     1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
     1. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Microsoft.Azure.CognitiveServices.Vision.ComputerVision" yazın.
     1. Görüntülendiğinde **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** öğesini seçin ve projenizin adının yanındaki onay kutusuna tıklayıp **Yükle**’ye tıklayın.
-1. `Program.cs` öğesini aşağıdaki kodla değiştirin. `BatchReadFileAsync` Ve `BatchReadFileInStreamAsync` yöntemleri kaydırma [Batch okuma API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) uzak ve yerel görüntüler için sırasıyla. `GetReadOperationResultAsync` Yöntemi sarar [alma okuma işlemi sonuç API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d).
+1. `Program.cs` öğesini aşağıdaki kodla değiştirin. Ve yöntemleri, sırasıyla uzak ve yerel görüntüler için [Batch okuma API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) 'sini sarlar. `BatchReadFileInStreamAsync` `BatchReadFileAsync` Yöntemi okuma [işlemi sonucu API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)'sini sarmalar. `GetReadOperationResultAsync`
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -179,7 +179,7 @@ Bu hızlı başlangıçta, el yazısı veya yazdırılan metin için bilgisayar 
 
 ## <a name="examine-the-response"></a>Yanıtı inceleme
 
-Başarılı bir yanıt her görüntü için tanınan metin satırlarını yazdırır.
+Başarılı bir yanıt, her görüntü için tanınan metnin satırlarını yazdırır.
 
 ```console
 Calling GetHandwritingRecognitionOperationResultAsync()
@@ -193,7 +193,7 @@ The quick brown fox jumps over the lazy
 Pack my box with five dozen liquor jugs
 ```
 
-Bkz: [hızlı başlangıç: El yazısı metinleri - REST, ayıklamak C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) API çağrısından ham JSON çıktısını gösteren bir örnek.
+Bkz [. hızlı başlangıç: API çağrısından gelen ham JSON çıkışının C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) bir örneği için el yazısı metin Rest 'i ayıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

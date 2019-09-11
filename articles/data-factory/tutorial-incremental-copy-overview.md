@@ -8,22 +8,21 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 87b5b30738451800da21736d7f139c4ba85ff998
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233688"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140593"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Bir kaynak veri deposundan hedef veri deposuna artımlı olarak veri yükleme
 
 İlk veriler yüklendikten sonra verileri artımlı olarak (veya delta) yükleme senaryosu, veri tümleştirme çözümlerinde sıkça kullanılır. Bu bölümdeki öğreticiler, Azure Data Factory kullanarak artımlı veri yüklemenin farklı yollarını gösterir.
 
-## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>Veritabanından bir filigran kullanarak delta veri yükleme
+## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>Bir filigran kullanarak veritabanından Delta verileri yükleme
 Bu durumda, kaynak veritabanında bir filigran tanımlayın. Filigran, en son güncelleştirilen zaman damgası veya artan bir anahtarı olan bir sütundur. Delta yükleme çözümü, eski bir filigran ile yeni bir filigran arasında değiştirilen verileri yükler. Bu yaklaşıma yönelik iş akışı şu diyagramda gösterilmiştir: 
 
 ![Filigran kullanmaya yönelik iş akışı](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
@@ -33,9 +32,9 @@ Adım adım yönergeler için şu öğreticilere bakın:
 - [Şirket içi SQL Server’daki birden fazla tablodan Azure SQL Veritabanı’na artımlı olarak veri kopyalama](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 Şablonlar için aşağıdakilere bakın:
-- [Delta kopya denetim tablosu](solution-template-delta-copy-with-control-table.md)
+- [Denetim tablosu ile Delta kopyası](solution-template-delta-copy-with-control-table.md)
 
-## <a name="delta-data-loading-from-sql-db-by-using-the-change-tracking-technology"></a>SQL DB değişiklik izleme teknolojisini kullanarak delta veri yükleme
+## <a name="delta-data-loading-from-sql-db-by-using-the-change-tracking-technology"></a>Değişiklik İzleme teknolojisini kullanarak SQL DB 'den Delta verileri yükleme
 Değişiklik İzleme teknolojisi, SQL Server ve Azure SQL Veritabanı’nda bulunan, uygulamalar için verimli bir değişiklik izleme mekanizması sağlayan basit bir çözümdür. Bir uygulamanın eklenen, güncelleştirilen veya silinen verileri kolayca tanımlamasına olanak sağlar. 
 
 Bu yaklaşıma yönelik iş akışı şu diyagramda gösterilmiştir:
@@ -45,20 +44,20 @@ Bu yaklaşıma yönelik iş akışı şu diyagramda gösterilmiştir:
 Adım adım yönergeler için şu öğreticilere bakın: <br/>
 - [Değişiklik İzleme teknolojisini kullanarak Azure SQL Veritabanı’ndan Azure Blob depolama alanına artımlı olarak veri kopyalama](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
-## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Yalnızca LastModifiedDate kullanarak yeni ve değiştirilmiş dosyalar yükleniyor
-Yalnızca hedef deponun LastModifiedDate'i kullanarak yeni ve değiştirilen dosyaları kopyalayabilirsiniz. ADF kaynak deposundan tüm dosyaları tarama, dosya filtresi tarafından kendi LastModifiedDate uygulamak ve yalnızca son daraltılmasından yeni ve güncelleştirilmiş dosya için hedef depoyu kopyalayın.  Lütfen ADF tarama büyük miktarlarda dosyaları sağlar, ancak yalnızca birkaç dosyaları kopyalama hedefi için hala dosya tarama nedeniyle uzun süreli de zaman alıcı beklediğiniz unutmayın.   
+## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Yalnızca LastModifiedDate kullanarak yeni ve değiştirilmiş dosyaları yükleme
+Yalnızca LastModifiedDate kullanarak hedef depoya yeni ve değiştirilmiş dosyaları kopyalayabilirsiniz. ADF, kaynak deposundaki tüm dosyaları tarar, dosya filtresini LastModifiedDate göre uygular ve yalnızca hedef depoya son kez bu yana yeni ve güncelleştirilmiş dosyayı kopyalar.  ADF 'nin çok büyük miktarlarda dosya taramasına izin verseniz, ancak yalnızca birkaç dosyayı hedefe kopyalayabiliyorsanız, dosya taramanın de uzun süre sürmesi nedeniyle uzun süre beklemeniz gerekir.   
 
 Adım adım yönergeler için şu öğreticilere bakın: <br/>
-- [Yeni ve değiştirilmiş dosyalar üzerinde LastModifiedDate Azure Blob depolama alanından Azure Blob depolama alanına göre artımlı olarak kopyalama](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+- [Azure Blob depolama 'dan Azure Blob depolama 'ya LastModifiedDate göre yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 Şablonlar için aşağıdakilere bakın:
-- [Yeni dosyaları LastModifiedDate tarafından Kopyala](solution-template-copy-new-files-lastmodifieddate.md)
+- [Yeni dosyaları LastModifiedDate göre Kopyala](solution-template-copy-new-files-lastmodifieddate.md)
 
-## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Yalnızca zaman kullanarak yeni dosyaları yükleme, klasör veya dosya adı bölümlenmiş.
-Burada dosya veya klasör zaten dosya veya klasör adı (örneğin, /yyyy/mm/dd/file.csv) bir parçası olarak timeslice bilgilerle bölümlenmiş zaman yeni dosyalar yalnızca kopyalayabilirsiniz. Bu artımlı yükleme yeni dosyalar için çoğu performans yaklaşımdır. 
+## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Yeni dosyalar yalnızca bölümlenmiş klasör veya dosya adı kullanılarak yükleniyor.
+Dosya veya klasör adının (örneğin,/yyyy/mm/dd/File.exe) bir parçası olarak timeslice bilgileriyle bölümlenen dosya veya klasörleri yalnızca yeni dosyaları kopyalayabilirsiniz. Yeni dosyalar artımlı yükleme için en çok performans yaklaşımıdır. 
 
 Adım adım yönergeler için şu öğreticilere bakın: <br/>
-- [Yeni dosyaları saat bölümlenmiş klasör veya dosya adı Azure Blob depolamadan Azure Blob depolama alanına göre artımlı olarak kopyalama](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Azure Blob depolama 'dan Azure Blob depolama alanı 'na bölümlenmiş bir klasöre veya dosya adına göre yeni dosyaları artımlı olarak kopyalama](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şu öğreticiye ilerleyin: 

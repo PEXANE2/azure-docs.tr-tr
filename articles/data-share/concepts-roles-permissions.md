@@ -1,46 +1,84 @@
 ---
-title: Rolleri ve Azure veri paylaşımı önizlemesi için gereksinimleri
-description: Rolleri ve Azure veri paylaşımı önizlemesi için gereksinimleri
+title: Azure veri paylaşımının önizlemesi için roller ve gereksinimler
+description: Azure veri paylaşımının önizlemesi için roller ve gereksinimler
 author: joannapea
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: a5d70b9aa611b4f939cb46b5d25655edd818cb35
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807530"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307353"
 ---
-# <a name="roles-and-requirements-for-azure-data-share-preview"></a>Rolleri ve Azure veri paylaşımı önizlemesi için gereksinimleri
+# <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure veri paylaşımının önizlemesi için roller ve gereksinimler
 
-Bu makalede, Azure veri paylaşma önizlemesi kabul edin ve Azure veri paylaşma Önizlemesi'ni kullanarak verileri almak için de kullanarak veri paylaşımı için gereken rolleri açıklanır. 
+Bu makalede, Azure veri paylaşma önizlemesi kullanılarak verileri kabul etmek ve almak için Azure veri paylaşma önizlemesi kullanılarak verilerin paylaşılması için gereken roller açıklanır. 
 
 ## <a name="roles-and-requirements"></a>Roller ve gereksinimler
 
-Paylaşma veya Azure veri paylaşımı kullanarak verileri almak için Azure'da oturum açarken kullandığınız kullanıcı hesabının veri paylaşma izinleri, veri paylaşımı veya için verileri alma, depolama hesabına mümkün olması gerekir. Var olan bir izin genellikle budur **sahibi** rolüne ya da atanan Microsoft.Authorization/role atamaları/yazma izni olan özel bir rol. 
+Azure veri paylaşımında, veri sağlayıcısı tarafından paylaşılacak verileri okuyabilmek ve veri tüketicisi olarak paylaşılan verileri alabilmesi için, Azure Hizmetleri (önceki adı Mssıs) için Yönetilen kimlikler kullanılır. Sonuç olarak, veri sağlayıcısı ve veri tüketicisi arasında kimlik bilgilerinin değişimi yoktur. 
 
-Ya da bir Azure depolama hesabına veri alma veya paylaşmak için depolama hesabı sahibi olmalıdır. Depolama hesabı oluşturmuş olsa bile, bu otomatik olarak, depolama hesabı sahipliğini tanımaz. Kendiniz için Azure depolama hesabınızın sahip rolü eklemek için aşağıdaki adımları izleyin.
+Yönetilen Hizmet Kimliği, temel alınan depolama hesaplarına erişim verilmesi gerekir. Azure veri paylaşma hizmeti, verileri okumak ve yazmak için Azure veri paylaşımının kaynak Yönetilen Hizmet Kimliği kullanır. Azure veri paylaşımının kullanıcısına, verileri paylaştıkları depolama hesabına Yönetilen Hizmet Kimliği için bir rol ataması oluşturma özelliği gerekir. Rol atamaları oluşturma izni, **sahip** rolü, Kullanıcı erişimi yönetici rolü veya Microsoft. Authorization/role atamaları/yazma izni atanmış özel bir rol içinde bulunur. 
 
-1. Azure portalında depolama hesabına gidin
-1. Seçin **erişim denetimi (IAM)**
-1. Tıklayın **Ekle**
-1. Sahip olarak ekleyin
+Söz konusu depolama hesabının sahibi değilseniz ve Azure veri paylaşımının kaynağının yönetilen kimliği için bir rol ataması oluşturmediğinizde, sizin adınıza rol ataması oluşturmak için bir Azure Yöneticisi isteyebilirsiniz. 
 
-Abonelikte sahip olduğunuz izinleri görüntülemek için Azure portalına gidin, sağ üst köşeden kullanıcı adınızı ve sonra **İzinler**’i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin. 
+Veri paylaşımında kaynak tarafından yönetilen kimliğe atanan rollerin özeti aşağıda verilmiştir:
 
-## <a name="resource-provider-registration"></a>Kaynak Sağlayıcısı kaydı 
+| |  |  |
+|---|---|---|
+|**Depolama türü**|**Veri Sağlayıcısı kaynak depolama hesabı**|**Veri tüketicisi hedef depolama hesabı**|
+|Azure Blob Depolama| Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
+|Azure Data Lake Gen1 | Sahip | Desteklenmiyor
+|Azure Data Lake Gen2 | Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
+|
+### <a name="data-providers"></a>Veri sağlayıcıları 
+Bir Azure veri paylaşımında veri kümesi eklemek için veri sağlayıcılarının veri paylaşımında kaynak tarafından yönetilen kimliğin Depolama Blobu veri okuyucusu rolüne eklenmesi gerekir. Bu, Kullanıcı Azure aracılığıyla veri kümeleri ekliyor ve depolama hesabının sahibiyseniz ya da Microsoft. Authorization/role atama/yazma izni atanmış özel bir rolün üyesiyse Azure veri paylaşma hizmeti tarafından otomatik olarak yapılır. 
 
-Azure veri paylaşımı daveti kabul ederken Microsoft.DataShare kaynak sağlayıcısındaki aboneliğinize elle kaydetmeniz gerekir. Azure aboneliğinize Microsoft.DataShare kaynak sağlayıcısını kaydetmek için aşağıdaki adımları izleyin. 
+Alternatif olarak, kullanıcının bir Azure Yöneticisi, veri paylaşımının kaynak yönetimli kimliğini Depolama Blobu veri okuyucusu rolüne el ile eklemesini sağlayabilir. Bu rol atamasının yönetici tarafından el ile oluşturulması, depolama hesabının sahibi olma veya özel bir rol atamasının olması gereğini ortadan kaldırarak hükümsüz kılınacak. Bu, Azure Storage 'dan veya Azure Data Lake Gen2 paylaşılmakta olan veriler için geçerlidir. 
 
-1. Azure portalında gidin **abonelikler**
-1. Azure veri paylaşımı için kullanmakta olduğunuz aboneliği seçin
-1. Tıklayarak **kaynak sağlayıcıları**
-1. Microsoft.DataShare arayın
-1. Tıklayın **kaydetme**
+Azure Data Lake Gen1 'den veri paylaşıyorsanız, rol atamasının sahip rolüne yapılması gerekir. 
+
+Veri paylaşımının yönetilen kimliği için bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
+
+1. Depolama hesabına gidin.
+1. Seçin **erişim denetimi (IAM)** .
+1. **Rol ataması Ekle**' yi seçin.
+1. *Rol*altında, *Depolama Blobu veri okuyucusu*' nu seçin.
+1. *Seç*' in altında, Azure veri paylaşma hesabınızın adını yazın.
+1. *Kaydet*’e tıklayın.
+
+### <a name="data-consumers"></a>Veri tüketicileri
+Veri almak için veri tüketicilerinin kaynak tarafından yönetilen kimliği, Depolama Blobu veri katılımcısı rolüne eklenmelidir. Bu rol, Azure veri paylaşma hizmetinin depolama hesabına yazabilme özelliğini etkinleştirmek için gereklidir. Bu, Kullanıcı Azure aracılığıyla veri kümeleri ekliyor ve depolama hesabının sahibiyseniz ya da Microsoft. Authorization/role atama/yazma izni atanmış özel bir rolün üyesiyse Azure veri paylaşma hizmeti tarafından otomatik olarak yapılır. 
+
+Alternatif olarak, kullanıcının bir Azure Yöneticisi, veri paylaşımının kaynak tarafından yönetilen kimliğini Depolama Blobu veri katılımcısı rolüne el ile ekleyebilir. Bu rol atamasının yönetici tarafından el ile oluşturulması, depolama hesabının sahibi olma veya özel bir rol atamasının olması gereğini ortadan kaldırarak hükümsüz kılınacak. Bu, Azure Storage veya Azure Data Lake Gen2 ile paylaşılmakta olan veriler için geçerli olduğunu unutmayın. Azure Data Lake Gen1 'e veri alma desteklenmiyor. 
+
+Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
+
+1. Depolama hesabına gidin.
+1. Seçin **erişim denetimi (IAM)** .
+1. **Rol ataması Ekle**' yi seçin.
+1. *Rol*altında, *Depolama Blobu verileri katılımcısı*' nı seçin. 
+1. *Seç*' in altında, Azure veri paylaşma hesabınızın adını yazın.
+1. *Kaydet*’e tıklayın.
+
+REST API 'lerimizi kullanarak verileri paylaşıyorsanız, içindeki veri paylaşımı hesabını uygun rollere ekleyerek bu rol atamalarını el ile oluşturmanız gerekecektir. 
+
+Rol ataması ekleme hakkında daha fazla bilgi edinmek için, Azure kaynağına nasıl rol ataması ekleneceğini özetleyen [Bu belgeye](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) başvurun. 
+
+## <a name="resource-provider-registration"></a>Kaynak sağlayıcısı kaydı 
+
+Bir Azure Veri Paylaşma davetini kabul ettiğinizde, Microsoft. DataShare kaynak sağlayıcısını aboneliğinize el ile kaydetmeniz gerekir. Microsoft. DataShare kaynak sağlayıcısını Azure aboneliğinize kaydetmek için aşağıdaki adımları izleyin. 
+
+1. Azure portal **abonelikler**' e gidin.
+1. Azure veri paylaşımında kullandığınız aboneliği seçin.
+1. **Kaynak sağlayıcıları**' na tıklayın.
+1. Microsoft. DataShare için arama yapın.
+1. **Kaydol**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure - roller hakkında daha fazla bilgi [rol tanımları anlama](../role-based-access-control/role-definitions.md)
+- Azure 'da roller hakkında daha fazla bilgi edinin- [rol tanımlarını anlayın](../role-based-access-control/role-definitions.md)
 

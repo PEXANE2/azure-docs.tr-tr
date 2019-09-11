@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 237444cde6e9ccd709f61d13669da03094e5be10
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 430cf7cde22cc8de337d33e1f083121503d084f5
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019432"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802346"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğini dağıtma
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, PCI-DSS v 3.2.1 standardına göre bir yere taşınabilir.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
@@ -57,9 +57,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla yayımlandıktan sonra, kaydedildiği Yönetimgrubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 

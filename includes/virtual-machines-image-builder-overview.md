@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669876"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70166795"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -73,7 +73,7 @@ Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından eriş
 
 1. Görüntü şablonunu bir. JSON dosyası olarak oluşturun. Bu. JSON dosyası, görüntü kaynağı, özelleştirmeler ve dağıtım hakkındaki bilgileri içerir. [Azure Image Builder GitHub deposunda](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)birden çok örnek vardır.
 1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır ve şu biçimdedir: IT_\<destinationresourcegroup > _\<TemplateName >. 
-1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubunda bir VM, ağ ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
+1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubunda bir VM (D1v2), ağ, genel IP ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
 1. Görüntü oluşturma işlemi kapsamında, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve sonra IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubundaki ek kaynakları siler işlem.
 
 

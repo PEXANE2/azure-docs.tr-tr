@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: Şirket içi güvenlik duvarı yapılandırması
           href: on-premises-firewall-configuration.md
+        - name: vSphere istemcisine erişme
+          href: vcenter-access.md
         - name: Düğümleri yönetme
           items:
             - name: Sağlama düğümleri
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: VPN bağlantıları ayarlama
               href: vpn-gateway.md
-            - name: CloudSimple ile sanal ağ bağlantısı için eşdüzey bilgileri alma
+            - name: CloudSimple’a sanal ağ bağlantısı
               href: virtual-network-connection.md
-            - name: Yönetici görevleri için vSphere istemcisi yükseltme ayrıcalıklarına erişim
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: CloudSimple portal hesaplarını yönetme
           items:
             - name: Hesap özetini görüntüleme
               href: account.md
             - name: Kullanıcı listesini görüntüleme
               href: users.md
-            - name: Özel Buluta yönelik sanal ağ bağlantısı ayarlama
-              href: virtual-network-connection.md
-        - name: Özel Bulut için VMware sanal makineleri ayarlama
+        - name: CloudSimple sanal makinelerini ayarlama
           items:
-            - name: Azure’da VM oluşturma
+            - name: Azure’da CloudSimple VM’si oluşturma
               href: azure-create-vm.md
-            - name: Azure'da VM’leri yönetme
+            - name: Azure’da CloudSimple VM’lerini yönetme
               href: azure-manage-vm.md
     - name: Nasıl yapılır kılavuzları
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: Özel bulut ağı oluşturma
           items:
-            - name: Şirket içi ile Özel Bulut arasında VPN bağlantısı
+            - name: Özel Buluta VPN bağlantısı
               href: set-up-vpn.md
             - name: ExpressRoute ile şirket içi ağ bağlantısı
               href: on-premises-connection.md
             - name: ExpressRoute ile Azure sanal ağ bağlantısı
               href: azure-expressroute-connection.md
+            - name: DNS ad çözümlemeyi yapılandırma
+              href: on-premises-dns-setup.md
         - name: VMware platformu
           items:
             - name: Özel Bulut izin modelini öğrenme

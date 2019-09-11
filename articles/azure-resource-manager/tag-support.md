@@ -3,15 +3,15 @@ title: Kaynaklar için Azure Resource Manager etiketi desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 452230a263e623f53346fcdb8cf310e73f171aee
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848600"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194725"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](resource-group-using-tags.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir.
@@ -201,7 +201,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ----------- |
 > | aadsupportcases | Hayır |Hayır |
 > | addsservices | Hayır |Hayır |
-> | aracılar | Hayır |Hayır |
+> | aracısını | Hayır |Hayır |
 > | anonymousapiusers | Hayır |Hayır |
 > | yapılandırma | Hayır |Hayır |
 > | logs | Hayır |Hayır |
@@ -483,7 +483,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Rezervler/Böl | Hayır |Hayır |
 > | Rezervler/takas | Hayır |Hayır |
 > | rezervasyonlar | Hayır |Hayır |
-> | kaynaklar | Hayır |Hayır |
+> | resources | Hayır |Hayır |
 > | validateReservationOrder | Hayır |Hayır |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -639,7 +639,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Ücretler | Hayır |Hayır |
 > | CostTags | Hayır |Hayır |
 > | iler | Hayır |Hayır |
-> | olaylar | Hayır |Hayır |
+> | events | Hayır |Hayır |
 > | Tahminler | Hayır |Hayır |
 > | oluş | Hayır |Hayır |
 > | Marketlerinden | Hayır |Hayır |
@@ -1066,7 +1066,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | myareas/Areas/gallergıtems | Hayır |Hayır |
 > | myarea/gallergıtems | Hayır |Hayır |
 > | kaydolunamadı | Hayır |Hayır |
-> | kaynaklar | Hayır |Hayır |
+> | resources | Hayır |Hayır |
 > | elde edilecek esourcesbyıd | Hayır |Hayır |
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
@@ -1258,7 +1258,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ----------- |
 > | getEntities | Hayır |Hayır |
 > | Yönetim grupları | Hayır |Hayır |
-> | kaynaklar | Hayır |Hayır |
+> | resources | Hayır |Hayır |
 > | startTenantBackfill | Hayır |Hayır |
 > | tenantBackfillStatus | Hayır |Hayır |
 
@@ -1574,7 +1574,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sorgu | Evet |Evet |
 > | resourceChangeDetails | Hayır |Hayır |
 > | resourceChanges | Hayır |Hayır |
-> | kaynaklar | Hayır |Hayır |
+> | resources | Hayır |Hayır |
 > | resourcesHistory | Hayır |Hayır |
 > | subscriptionsStatus | Hayır |Hayır |
 
@@ -1586,7 +1586,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kullanılabilirlik durumları | Hayır |Hayır |
 > | Childadvailabilitydurumlar | Hayır |Hayır |
 > | childResources | Hayır |Hayır |
-> | olaylar | Hayır |Hayır |
+> | events | Hayır |Hayır |
 > | ımpactedresources | Hayır |Hayır |
 > | meta veriler | Hayır |Hayır |
 > | bildirimler | Hayır |Hayır |
@@ -1602,7 +1602,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | notifyResourceJobs | Hayır |Hayır |
 > | sağlayıcıları | Hayır |Hayır |
 > | resourceGroups | Hayır |Hayır |
-> | kaynaklar | Hayır |Hayır |
+> | resources | Hayır |Hayır |
 > | abonelik | Hayır |Hayır |
 > | Abonelikler/sağlayıcılar | Hayır |Hayır |
 > | Abonelikler/resourceGroups | Hayır |Hayır |

@@ -11,16 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: bwren
-ms.openlocfilehash: 397272c3a47aca2aa73394f443d76dead66308e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555336"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124185"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Izleyici 'de özel Günlükler
+
 Azure Izleyici 'deki özel Günlükler veri kaynağı, hem Windows hem de Linux bilgisayarlarındaki metin dosyalarından olayları toplamanıza olanak tanır. Birçok uygulama, Windows olay günlüğü veya Syslog gibi standart günlüğe kaydetme hizmetleri yerine metin dosyalarına bilgi kaydeder. Toplandıktan sonra, sorgulardaki tek tek alanlara verileri ayrıştırıp verileri toplama sırasında tek tek alanlara ayıklayabilirsiniz.
 
 ![Özel günlük koleksiyonu](media/data-sources-custom-logs/overview.png)
@@ -46,6 +47,9 @@ Toplanacak günlük dosyaları aşağıdaki ölçütlere uymalıdır.
 > * Sütun adı için en fazla karakter sayısı 500 ' dir. 
 >
 
+>[!IMPORTANT]
+>Özel günlük koleksiyonu, günlük dosyasını yazan uygulamanın günlük içeriğini düzenli olarak diske boşaltmaları gerekir. Bunun nedeni, özel günlük toplamanın izlenmekte olan günlük dosyası için dosya sistemi değişiklik bildirimlerine dayanmasına bağlıdır.
+
 ## <a name="defining-a-custom-log"></a>Özel bir günlük tanımlama
 Özel bir günlük dosyası tanımlamak için aşağıdaki yordamı kullanın.  Özel günlük ekleme örneğine ilişkin bir anlatım için bu makalenin sonuna gidin.
 
@@ -64,18 +68,16 @@ Toplanacak günlük dosyaları aşağıdaki ölçütlere uymalıdır.
 
 Zaman damgası sınırlayıcısı kullanılıyorsa, Azure Izleyici 'de depolanan her bir kaydın TimeGenerated özelliği, günlük dosyasında bu girdi için belirtilen tarih/saat ile doldurulur.  Yeni bir satır sınırlayıcısı kullanılırsa, TimeGenerated, Azure Izleyici 'nin girişi topladığı tarih ve saat ile doldurulur.
 
-
 1. **Araştır** ' a tıklayın ve örnek bir dosyaya gidin.  Bu düğme, bazı tarayıcılarda **Dosya Seç** ' in etiketlenmiş olabileceğini unutmayın.
-2.           **İleri**'ye tıklayın.
+2. **İleri**'ye tıklayın.
 3. Özel günlük Sihirbazı dosyayı karşıya yükler ve tanımladığı kayıtları listeler.
 4. Yeni bir kaydı tanımlamak için kullanılan sınırlayıcıyı değiştirin ve günlük dosyanızdaki kayıtları en iyi şekilde tanımlayan sınırlayıcıyı seçin.
-5.           **İleri**'ye tıklayın.
+5. **İleri**'ye tıklayın.
 
 ### <a name="step-3-add-log-collection-paths"></a>Adım 3. Günlük koleksiyonu yolları ekle
 Aracıda özel günlüğü bulabilecekleri bir veya daha fazla yol tanımlamalısınız.  Günlük dosyası için belirli bir yol ve ad sağlayabilir ya da ad için joker karakter içeren bir yol belirtebilirsiniz. Bu, her gün yeni bir dosya oluşturan uygulamaları veya bir dosya belirli bir boyuta ulaştığında destekler. Tek bir günlük dosyası için birden çok yol da sağlayabilirsiniz.
 
 Örneğin, bir uygulama, log20100316. txt ' de olduğu gibi ada dahil edilen tarihle her gün bir günlük dosyası oluşturabilir. Bu tür bir günlük için bir düzen, uygulamanın adlandırma düzenini takip eden herhangi bir günlük dosyasına uygulanacak *\*log. txt* olabilir.
-
 
 Aşağıdaki tabloda farklı günlük dosyaları belirtmek için geçerli desenlerin örnekleri verilmiştir.
 
@@ -105,7 +107,6 @@ Azure Izleyici özel günlüğünden toplamaya başladıktan sonra, kayıtları 
 > [!NOTE]
 > Sorgudaki RawData özelliği eksikse, tarayıcınızı kapatıp yeniden açmanız gerekebilir.
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>6\. adım. Özel günlük girdilerini ayrıştırma
 Tüm günlük girdisi **rawData**adlı tek bir özellikte depolanacak.  Büyük olasılıkla her bir girişteki farklı bilgi parçalarını her kayıt için ayrı ayrı özelliklere ayırmak isteyeceksiniz. **RawData** 'ı birden çok özelliğe ayrıştırma seçenekleri Için [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md) bölümüne bakın.
 
@@ -114,7 +115,6 @@ Daha önce tanımladığınız özel bir günlüğü kaldırmak için Azure port
 
 1. Çalışma alanınızın **Gelişmiş ayarlarındaki** **veri** menüsünde özel **Günlükler** ' i seçerek tüm özel günlüklerinizi listeleyin.
 2. Kaldırmak için özel günlüğün yanındaki **Kaldır** ' a tıklayın.
-
 
 ## <a name="data-collection"></a>Veri toplama
 Azure Izleyici, her bir özel günlüğün her 5 dakikada bir yeni girişler toplar.  Aracı, topladığı her günlük dosyasında yerini kaydeder.  Aracı bir süre çevrimdışı kalırsa, bu girdiler aracı çevrimdışıyken oluşturulsa bile, Azure Izleyici son kaldığınız yerden girişler toplar.
@@ -135,11 +135,11 @@ Günlük girişinin tüm içeriği **rawData**adlı tek bir özelliğe yazılır
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Özel günlük ekleme hakkında örnek yönergeler
 Aşağıdaki bölümde, özel günlük oluşturma örneği gösterilmektedir.  Toplanmakta olan örnek günlük, bir tarih ve saat ile başlayan her satırda tek bir girdiye ve ardından kod, durum ve ileti için virgülle ayrılmış alanlara sahiptir.  Birkaç örnek girdi aşağıda gösterilmiştir.
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>Örnek günlük yükleme ve ayrıştırma
 Günlük dosyalarından birini sağlıyoruz ve bunların toplanacağı olayları görebilirler.  Bu durumda yeni satır yeterli bir sınırlayıcıdır.  Günlükteki tek bir giriş birden çok satıra yayılabilse de, zaman damgası sınırlayıcısı kullanılması gerekir.
@@ -157,14 +157,10 @@ Bir *MyApp_CL* adı kullanıyoruz ve bir **Açıklama**yazın.
 ![Günlük adı](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Özel günlüklerin toplandığını doğrulama
-Toplanan günlükteki tüm kayıtları döndürmek için *= MyApp_CL türünde* bir sorgu kullanıyoruz.
+Toplanan günlükteki tüm kayıtları döndürmek için basit bir *MyApp_CL* sorgusu kullanıyoruz.
 
 ![Özel alanları olmayan günlük sorgusu](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>Özel günlük girdilerini ayrıştırma
-*EventTime*, *kod*, *durum*ve *ileti* alanlarını tanımlamak için özel alanlar kullanıyoruz ve sorgu tarafından döndürülen kayıtlardaki farkı görebiliriz.
-
-![Özel alanlarla günlük sorgusu](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>Özel günlüklerin alternatifleri
 Verileriniz hakkında listelenen ölçütlere uyan özel Günlükler yararlı olmakla kalmaz, ancak aşağıdaki gibi başka bir stratejinin olması gereken durumlar vardır:

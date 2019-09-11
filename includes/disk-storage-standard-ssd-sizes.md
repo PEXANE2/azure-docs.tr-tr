@@ -9,14 +9,14 @@ ms.date: 03/18/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 22d8d196381e82aab52c4d33e08fb13ea9184619
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67471306"
 ---
-| Standart SSD boyutları | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60 | E70 | E80 |
+| Standart SSD Boyutlar | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60 | E70 | E80 |
 |--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Disk boyutu gib biriminde | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,096 | 8,192 | 16,384 | 32,767 |
-| Disk başına IOPS | En fazla 120 | En fazla 240 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 2.000 | En fazla 4000 | En çok 6000 |
-| Disk başına aktarım hızı |  En fazla 25 MiB/sn |  En çok 50 MiB/sn  |  En fazla 60 MiB/sn | En fazla 60 MiB/sn | En fazla 60 MiB/sn | En fazla 60 MiB/sn | En fazla 60 MiB/sn | En fazla 60 MiB/sn| En çok 400 MiB/sn |  En fazla 600 MiB/sn | En fazla 750 MiB/sn |
+| GiB 'de disk boyutu | 32 | 64 | 128 | 256 | 512 | 1,024 | 2\.048 | 4\.096 | 8,192 | 16.384 | 32,767 |
+| Disk başına IOPS | 120 kadar | 240 kadar | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | En fazla 500 | 2\.000 kadar | 4\.000 kadar | 6\.000 kadar |
+| Disk başına aktarım hızı |  En fazla 25 MIB/sn |  En fazla 50 MIB/sn  |  En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn | En fazla 60 MIB/sn| En fazla 400 MIB/sn |  En fazla 600 MIB/sn | En fazla 750 MIB/sn |

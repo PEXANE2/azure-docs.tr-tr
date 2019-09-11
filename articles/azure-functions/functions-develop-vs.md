@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905674"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773156"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure Işlevleri geliştirme  
 
@@ -41,6 +41,8 @@ Azure depolama hesabı gibi ihtiyacınız olan diğer kaynaklar, yayımlama işl
 
 > [!NOTE]
 > Visual Studio 2017 ' de Azure geliştirme iş yükü, Azure Işlevleri araçlarını ayrı bir uzantı olarak yüklüyor. Visual Studio 2017 ' yi güncelleştirdiğinizde Azure Işlevleri araçlarının [en son sürümünü](#check-your-tools-version) kullandığınızdan da emin olun. Aşağıdaki bölümlerde, Visual Studio 2017 ' de Azure Işlevleri araçları uzantınızı nasıl denetleyen ve (gerekirse) güncelleştiren gösterilmektedir. 
+>
+> Visual Studio 2019 kullanırken lütfen bu bölümü atlayın.
 
 ### <a name="check-your-tools-version"></a>Visual Studio 2017 ' de Araçlar sürümünüzü denetleyin
 
@@ -96,7 +98,7 @@ Işlevler çalışma zamanı, dahili olarak bir Azure depolama hesabı kullanır
 
 Depolama hesabı bağlantı dizesini ayarlamak için:
 
-1. Visual Studio 'da **Cloud Explorer**'ı açın, depolama **hesabı** > depolama hesabınızı genişletin, ardından **Özellikler** sekmesinde **birincil bağlantı dizesi** değerini kopyalayın.
+1. Visual Studio 'da **Cloud Explorer**'ı açın, depolama **hesabı** > **depolama hesabınızı genişletin, ardından** **Özellikler** sekmesinde **birincil bağlantı dizesi** değerini kopyalayın.
 
 2. Projenizde, Local. Settings. json dosyasını açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesine ayarlayın.
 

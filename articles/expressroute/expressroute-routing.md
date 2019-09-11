@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 09/04/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422678"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308329"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -211,7 +211,7 @@ Microsoft tarafından tanıtılan tüm yollar uygun topluluk değeriyle etiketle
 > 
 
 ### <a name="service-to-bgp-community-value"></a>Hizmetten BGP topluluk değeri
-Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre etiketleyecektir. Bu durum yalnızca Microsoft eşlemesi için geçerlidir. Aşağıdaki tabloda hizmetin BGP topluluk değeri ile eşleşmesi gösterilmektedir.
+Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre etiketleyecektir. Bu durum yalnızca Microsoft eşlemesi için geçerlidir. Aşağıdaki tabloda hizmetin BGP topluluk değeri ile eşleşmesi gösterilmektedir. En son değerlerin tam listesi için ' Get-AzBgpServiceCommunity ' cmdlet 'ini çalıştırabilirsiniz.
 
 | **Hizmet** | **BGP topluluk değeri** |
 | --- | --- |

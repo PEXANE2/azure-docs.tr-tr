@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932667"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213522"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Önizleme: LUSıS uygulamaları için API sürüm 3. x 'e geçiş
 
@@ -164,7 +164,7 @@ const score = intents[topIntentName];
 Response JSON şeması değişiklikleri için izin ver:
 
 * Orijinal utterance, `query`ve döndürülen `prediction`tahmin arasındaki ayrımı temizleyin.
-* Tahmin edilen verilere programlı erişim daha kolay. V2 'deki bir dizi aracılığıyla sıralama yapmak yerine, her iki amaç ve varlık için **adlandırılmış** değerlere erişebilirsiniz. Tahmin edilen varlık rolleri için, rol adı tüm uygulama genelinde benzersiz olduğundan döndürülür.
+* Tahmin edilen verilere programlı erişim daha kolay. V2 'deki bir dizi aracılığıyla listelemek yerine, her iki amaç ve varlık için değerlere göre değerlere erişebilirsiniz. Tahmin edilen varlık rolleri için, rol adı tüm uygulama genelinde benzersiz olduğundan döndürülür.
 * Saptandığı takdirde veri türleri dikkate alınır. Numerics artık dizeler olarak döndürülmez.
 * `$instance` Nesne içinde döndürülen ilk öncelikli tahmin bilgileri ve ek meta veriler arasındaki ayrım. 
 
@@ -223,7 +223,7 @@ V2 'de, varlık _varlık adı_ tarafından nesnenin özelliği olarak rolüyle t
 ]
 ```
 
-V3 'de, rolün tahmini rol için olması durumunda varlığa _varlık rolü_ başvurulur:
+V3 'de, rolün tahmini rol için olması durumunda varlığa _varlık rolü_başvurulur:
 
 ```JSON
 "entities":{
@@ -418,7 +418,7 @@ Aşağıdaki JSON gövdesine göndererek, listeye eş anlamlı olan yeni bir alt
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

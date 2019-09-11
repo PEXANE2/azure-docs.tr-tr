@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ea896697c8f6986c4c77f3ce86a62947d9a3327e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722091"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861401"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -54,7 +54,7 @@ Aşağıdaki yöntemlerden birini kullanarak bir ilkeyi ekleyebilir, düzenleyeb
 Bu makalede Portal ve PowerShell yöntemlerini kullanarak ilkenin nasıl yönetileceği gösterilmektedir.  
 
 > [!NOTE]
-> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Gerekli atlama: `Logging,  Metrics,  AzureServices`. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)Içindeki özel durumlar bölümü.
+> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Gerekli atlama: `AzureServices`. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)Içindeki özel durumlar bölümü.
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -435,4 +435,4 @@ Bir blob bir erişim katmanından diğerine taşındığında, son değiştirilm
 
 Yanlışlıkla silinmeden sonra verileri nasıl kurtaracağınızı öğrenin:
 
-- [Azure depolama Blobları için geçici silme](../blobs/storage-blob-soft-delete.md)
+- [Azure Depolama blobları için geçici silme](../blobs/storage-blob-soft-delete.md)

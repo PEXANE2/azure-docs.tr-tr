@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848002"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182548"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile mevcut bir modeli kullanma
 
@@ -76,23 +76,40 @@ Model kaydı hakkında genel bilgi için bkz. [Machine Learning modellerini yön
 
 ## <a name="define-inference-configuration"></a>Çıkarım yapılandırmasını tanımla
 
-Çıkarım yapılandırması, dağıtılan modeli çalıştırmak için kullanılan ortamı tanımlar. Çıkarım yapılandırması, dağıtıldıktan sonra modeli çalıştırmak için kullanılan aşağıdaki dosyalara başvurur:
+Çıkarım yapılandırması, dağıtılan modeli çalıştırmak için kullanılan ortamı tanımlar. Çıkarım yapılandırması, dağıtıldıktan sonra modeli çalıştırmak için kullanılan aşağıdaki varlıklara başvurur:
 
-* Çalışma zamanı. Çalışma zamanı için geçerli olan tek değer Python.
 * Bir giriş betiği. Bu dosya (adlandırılmış `score.py`), dağıtılan hizmet başladığında modeli yükler. Verilerin alınması, modele geçirilmesi ve sonra bir yanıt döndürmesi da sorumludur.
-* Conda ortam dosyası. Bu dosya, model ve giriş betiğini çalıştırmak için gereken Python paketlerini tanımlar. 
+* Bir Azure Machine Learning hizmeti [ortamı](how-to-use-environments.md). Bir ortam, model ve giriş betiğini çalıştırmak için gereken yazılım bağımlılıklarını tanımlar.
 
-Aşağıdaki örnek, Python SDK 'sını kullanarak temel bir çıkarım yapılandırmasını göstermektedir:
+Aşağıdaki örnek, bir ortam oluşturmak için SDK 'nın nasıl kullanılacağını gösterir ve ardından bunu bir çıkarım yapılandırmasıyla kullanmaktır:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-Daha fazla bilgi için bkz. [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) başvurusu.
+Daha fazla bilgi için aşağıdaki makalelere bakın:
+
++ [Ortamları kullanma](how-to-use-environments.md).
++ [Inenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) başvurusu.
+
 
 CLı, bir YAML dosyasından çıkarım yapılandırmasını yükler:
 
@@ -102,6 +119,20 @@ CLı, bir YAML dosyasından çıkarım yapılandırmasını yükler:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+CLI ile, Conda ortamı, çıkarım yapılandırması tarafından başvurulan `myenv.yml` dosyada tanımlanır. Aşağıdaki YAML bu dosyanın içeriğidir:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning Service ile modelleri dağıtma](how-to-deploy-and-where.md).
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning Service ile modelleri dağıtma](how-to-deploy-and-where.md).
-
-### <a name="conda-environment"></a>Conda ortamı
-
-Aşağıdaki YAML, model ve giriş betiğini çalıştırmak için gereken Conda ortamını açıklar:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-Daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Dağıtımı tanımla
 

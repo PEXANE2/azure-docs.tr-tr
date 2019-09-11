@@ -3,7 +3,7 @@ title: Hatalar ve özel durumlar (MSAL) | Mavisi
 description: MSAL uygulamalarında hataları ve özel durumları, koşullu erişimi ve talep sınamasını nasıl ele alabileceğinizi öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
-ms.author: twhitney
+ms.date: 09/08/2019
+ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c37a52ee939e6144b98e6a1369f94beabc5fc1d9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 280746281fd45b3286cc76be5d3483f0cc65f90f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532872"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872794"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>MSAL kullanarak özel durumları ve hataları işleme
+
 Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) özel durumlar, uygulama geliştiricilerinin son kullanıcılara görüntüleme konusunda sorun gidermesi ve bu işlemleri sürdürmelerine yöneliktir. Özel durum iletileri yerelleştirilmemiş.
 
 Özel durumları ve hataları işlerken, özel durum türünü ve hata kodunu kullanarak özel durumlar arasında ayrım yapabilirsiniz.  Hata kodlarının bir listesi için bkz. [kimlik doğrulama ve yetkilendirme hata kodları](reference-aadsts-error-codes.md).
@@ -43,17 +44,100 @@ Aşağıda, oluşturulan ve bazı olası azaltmalar gibi yaygın özel durumlar 
 | [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Kullanıcı veya yönetici, ' {appName} ' adlı ' {AppID} ' KIMLIĞINE sahip uygulamayı kullanmaya yönelik değil. Bu Kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin.| Önce kullanıcı onayı almanız gerekir. .NET Core kullanmıyorsanız (herhangi bir Web Kullanıcı arabirimine sahip olmayan), çağırın (yalnızca bir kez) `AcquireTokeninteractive`. .NET Core kullanıyorsanız veya bir `AcquireTokenInteractive`yapmak istemiyorsanız, Kullanıcı onay vermek için bir URL 'ye gidebilir:. https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read Şunu çağırmak `AcquireTokenInteractive`için:`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Kullanıcının Multi-Factor Authentication kullanması gerekir.| Risk azaltma yok-kiracınız için MFA yapılandırıldıysa ve AAD bunu zorlamaya karar verirse, `AcquireTokenInteractive` veya `AcquireTokenByDeviceCode`gibi etkileşimli bir akışa geri dönüş yapmanız gerekir.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: İzin türü *sık karşılaşılan* veya */tüketiciler* uç noktaları üzerinden desteklenmez. */Kuruluşlar* veya kiracıya özgü uç noktayı kullanın. *Sık karşılaşılan*kullandınız.| Azure AD 'nin iletisinde açıklandığı gibi, yetkilinin bir kiracıya ya da aksi takdirde */kuruluşlara*sahip olması gerekir.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002 İstek gövdesi şu parametreyi içermelidir: ' client_secret veya client_assertion '.| Bu durum, uygulamanız Azure AD 'de ortak bir istemci uygulaması olarak kaydettirilmemişse meydana gelebilir. Azure Portal, uygulamanızın bildirimini düzenleyin ve öğesini `allowPublicClient` olarak `true`ayarlayın. |
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002 İstek gövdesi şu parametreyi içermelidir: ' client_secret veya client_assertion '.| Bu özel durum, uygulamanız Azure AD 'de ortak bir istemci uygulaması olarak kaydettirilmemişse meydana gelebilir. Azure Portal, uygulamanızın bildirimini düzenleyin ve öğesini `allowPublicClient` olarak `true`ayarlayın. |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user Iletisi: Oturum açmış kullanıcı tanımlanamadı| Kitaplık, geçerli Windows oturum açmış kullanıcıyı sorgulayamadı veya bu kullanıcı AD veya AAD 'ye katılmış değil (iş yeri katılmış kullanıcıları desteklenmez). Hafifletme 1: UWP 'de, uygulamanın aşağıdaki yeteneklere sahip olup olmadığını denetleyin: Kurumsal kimlik doğrulaması, özel ağlar (Istemci ve sunucu), Kullanıcı hesabı bilgileri. Risk azaltma 2: Kullanıcı adını (örneğin, john@contoso.com) getirmek için kendi mantığınızı uygulayın ve Kullanıcı adında alan `AcquireTokenByIntegratedWindowsAuth` formu kullanın.|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Bu yöntem, Active Directory (AD) tarafından sunulan bir protokolü kullanır. Kullanıcı, AD ("yönetilen" Kullanıcı) olmadan Azure Active Directory oluşturulduysa, bu yöntem başarısız olur. AD 'de oluşturulan ve AAD tarafından desteklenen kullanıcılar ("federe" kullanıcılar), etkileşimli olmayan bu kimlik doğrulama yönteminden yararlanabilir. Mayı Etkileşimli kimlik doğrulaması kullanın.|
 
+### `MsalUiRequiredException`
+
+`AcquireTokenSilent()` Çağrılırken`MsalError.InvalidGrantError`msal.NET tarafından döndürülen yaygın durum kodlarından biri. Bu durum kodu, uygulamanın kimlik doğrulama kitaplığını yeniden çağırması, ancak etkileşimli modda (genel istemci uygulamaları için Acquiretokenınteractive veya AcquireTokenByDeviceCodeFlow) ve Web uygulamalarında bir zorluk yapması gerektiği anlamına gelir. Bunun nedeni, kimlik doğrulama belirtecinin verilebilmesi için ek kullanıcı etkileşiminin gerekli olmasından kaynaklanır.
+
+Çoğu zaman başarısız olduğunda `AcquireTokenSilent` , bunun nedeni belirteç önbelleğinde isteğinizle eşleşen belirteçleri yoktur. Erişim belirteçleri 1 saat içinde sona erer ve `AcquireTokenSilent` yenileme belirtecine göre yeni bir tane getirmeye çalışır (OAuth2 koşullarında, bu "belirteci Yenile ' akışındadır). Bu akış çeşitli nedenlerle da başarısız olabilir. Örneğin, bir kiracı yöneticisi daha sıkı oturum açma ilkeleri yapılandırır. 
+
+Kullanıcının bir eylem yapması için etkileşim amaçlar. Bu koşullardan bazılarının, kullanıcıların çözebilmesi (örneğin, tek tıklamayla kullanım koşullarını kabul etmesi) ve bazıları geçerli yapılandırmayla çözümlenemez (örneğin, söz konusu makinenin belirli bir şirket ağına bağlanması gerekir). Kullanıcı, Multi-Factor Authentication 'ı ayarlamaya veya Microsoft Authenticator yüklemesine yardımcı olur.
+
+### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException`sınıflandırma numaralandırması
+
+MSAL, daha `Classification` iyi bir kullanıcı deneyimi sağlamak için okuyabilecekleri bir alan gösterir. Örneğin, kullanıcının parolasının bittiğini veya bazı kaynakları kullanma onayı sağlaması gerektiğini bildirmek gibi. Desteklenen değerler `UiRequiredExceptionClassification` numaralandırmanın bir parçasıdır:
+
+| Sınıflandırma    | Anlamı           | Önerilen işleme |
+|-------------------|-------------------|----------------------|
+| BasicAction | Durum, etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir. | Acquiretokenetkileşimli () çağrısı yapın. |
+| Ek | Durum, sistem ile etkileşimli kimlik doğrulama akışının dışında ek düzeltici etkileşim tarafından çözülebilir. | Düzeltici eylemi açıklayan bir ileti göstermek için Acquiretokenetkileşimli () çağrısı yapın. Çağıran uygulama, Kullanıcı düzeltici eylemi tamamlamayabilir additional_action gerektiren akışları gizlemeyi seçebilir. |
+| Yalnızca Message      | Koşul şu anda çözümlenemiyor. Etkileşimli kimlik doğrulama akışının başlatılması, koşulu açıklayan bir ileti gösterir. | Koşulu açıklayan bir ileti göstermek için Acquiretokenetkileşimli () çağırın. Acquiretokenetkileşimli () Kullanıcı iletiyi okuduktan sonra pencereyi kapattığında Useriptal hatası döndürür. Çağıran uygulama, message_only ile sonuçlanan akışları gizlemeyi seçebilir ve Kullanıcı iletiden daha fazla avantaj sağlamaması durumunda olabilir.|
+| ConsentRequired  | Kullanıcı onayı eksik veya iptal edildi. | Kullanıcının izin vermesi için Acquiretokenetkileşimli () çağrısı yapın. |
+| UserPasswordExpired | Kullanıcının parolasının süresi doldu. | Kullanıcının parolasını sıfırlayabilmesi için Acquiretokenetkileşimli () çağırın. |
+| Promptnewverfailed| Etkileşimli kimlik doğrulaması, parametre istemiyle birlikte çağrıldı = hiçbir şekilde, MSAL, tarayıcı tanımlama bilgilerine dayanmaya zorlanıyor ve tarayıcının görüntülenmesini gerektirmez. Bu başarısız oldu. | Prompt. None olmadan Acquiretokenetkileşimli () çağrısı yapın |
+| AcquireTokenSilentFailed | MSAL SDK, önbellekten belirteç getirmek için yeterli bilgi içermiyor. Bunun nedeni önbellekte hiçbir belirteç olmaması veya bir hesabın bulunamaması olabilir. Hata iletisinde daha fazla ayrıntı vardır.  | Acquiretokenetkileşimli () çağrısı yapın. |
+| Yok.    | Daha fazla ayrıntı sağlanmaz. Durum, etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir. | Acquiretokenetkileşimli () çağrısı yapın. |
+
+## <a name="code-example"></a>Kod örneği
+
+```csharp
+AuthenticationResult res;
+try
+{
+ res = await application.AcquireTokenSilent(scopes, account)
+        .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantError)
+{
+ switch (ex.Classification)
+ {
+  case UiRequiredExceptionClassification.None:
+   break;
+  case UiRequiredExceptionClassification.MessageOnly:
+  // You might want to call AcquireTokenInteractive(). Azure AD will show a message
+  // that explains the condition. AcquireTokenInteractively() will return UserCanceled error
+  // after the user reads the message and closes the window. The calling application may choose
+  // to hide features or data that result in message_only if the user is unlikely to benefit 
+  // from the message
+  try
+  {
+   res = await application.AcquireTokenInteractive(scopes)
+                          .ExecuteAsync();
+  }
+  catch (MsalClientException ex2) when (ex2.ErrorCode == MsalError.AuthenticationCanceledError)
+  {
+   // Do nothing. The user has seen the message
+  }
+  break;
+
+  case UiRequiredExceptionClassification.BasicAction:
+  // Call AcquireTokenInteractive() so that the user can, for instance accept terms
+  // and conditions
+
+  case UiRequiredExceptionClassification.AdditionalAction:
+  // You might want to call AcquireTokenInteractive() to show a message that explains the remedial action. 
+  // The calling application may choose to hide flows that require additional_action if the user 
+  // is unlikely to complete the remedial action (even if this means a degraded experience)
+
+  case UiRequiredExceptionClassification.ConsentRequired:
+  // Call AcquireTokenInteractive() for user to give consent.
+  
+  case UiRequiredExceptionClassification.UserPasswordExpired:
+  // Call AcquireTokenInteractive() so that user can reset their password
+  
+  case UiRequiredExceptionClassification.PromptNeverFailed:
+  // You used WithPrompt(Prompt.Never) and this failed
+  
+  case UiRequiredExceptionClassification.AcquireTokenSilentFailed:
+  default:
+  // May be resolved by user interaction during the interactive authentication flow.
+  res = await application.AcquireTokenInteractive(scopes)
+                         .ExecuteAsync(); break;
+ }
+}
+```
+
+
 ## <a name="javascript-errors"></a>JavaScript hataları
 
-MSAL. js, farklı türlerde yaygın hataların soyut ve sınıflandırılacağı hata nesneleri sağlar ve bunları uygun şekilde işlemek üzere hata iletileri gibi hataların belirli ayrıntılarına erişmek için bir arabirime sahiptir.
+MSAL. js, soyut ve farklı türlerde yaygın hataların sınıflandırmakta olan hata nesneleri sağlar. Ayrıca, uygun şekilde işlemek üzere hata iletileri gibi hataların belirli ayrıntılarına erişmek için arabirim sağlar.
 
 **Hata nesnesi**
 
-```javascript                                
+```javascript
 export class AuthError extends Error {
     // This is a short code describing the error
     errorCode: string;
@@ -63,9 +147,10 @@ export class AuthError extends Error {
     // Name of the error class
     this.name = "AuthError";
 }
-```                
+```
+
 Hata sınıfını genişleterek aşağıdaki özelliklere erişebilirsiniz:
-* **Kimlik doğrulama hatası. ileti:** Bu, errorMessage ile aynıdır.
+* **Kimlik doğrulama hatası. ileti:**  ErrorMessage ile aynı.
 * **AuthError. Stack:** Oluşan hatalar için yığın izlemesi. Kaynak hata noktasına izlemenin yapılmasına izin verir.
 
 **Hata türleri**
@@ -74,15 +159,15 @@ Aşağıdaki hata türleri kullanılabilir:
 
 * *Kimlik doğrulama hatası:* MSAL. js kitaplığı için temel hata sınıfı, ayrıca beklenmeyen hatalar için de kullanılır.
 
-* *ClientAuthError:* Istemci kimlik doğrulamasıyla ilgili bir sorunu belirten hata sınıfı. Kitaplıktan gelen hataların çoğu ClientAuthErrors olur. Bu işlemler, oturum açma işlemi devam ederken bir oturum açma yöntemi çağırma, Kullanıcı oturum açmayı iptal etme gibi hatalar olabilir.
+* *ClientAuthError:* Istemci kimlik doğrulamasıyla ilgili bir sorunu gösteren hata sınıfı. Kitaplıktan gelen hataların çoğu ClientAuthErrors olur. Bu hatalar, oturum açma işlemi devam ederken oturum açma ve Kullanıcı oturum açmayı iptal eden bir oturum açma yöntemi çağırma gibidir. 
 
-* *ClientConfigurationError:* Belirtilen kullanıcı yapılandırma parametreleri hatalı biçimlendirilmiş veya eksik olduğunda istekler yapılmadan önce ClientAuthError 'ı genişleten hata sınıfı oluştu.
+* *ClientConfigurationError:* Verilen Kullanıcı yapılandırma parametreleri hatalı biçimlendirilmiş veya eksik olduğunda istekler yapılmadan önce ClientAuthError genişletme hata sınıfı.
 
 * *ServerError* Kimlik doğrulama sunucusu tarafından gönderilen hata dizelerini temsil eden hata sınıfı. Bunlar geçersiz istek biçimleri veya parametreler gibi hatalar ya da sunucunun kimlik doğrulamasını veya yetkilendirmasını engelleyen başka hatalar olabilir.
 
-* *Interactionrequiredadutherror:* Etkileşimli çağrı gerektiren sunucu hatalarını göstermek için ServerError 'ı genişleten hata sınıfı. Bu, kullanıcının kimlik `acquireTokenSilent` doğrulaması/yetkilendirme için kimlik bilgileri veya onay sağlamak üzere sunucuyla etkileşimde bulunmak için gerekliyse oluşur. Hata kodları "interaction_required", "login_required", "consent_required" içerir.
+* *Interactionrequiredadutherror:* Etkileşimli çağrı gerektiren sunucu hatalarını göstermek için ServerError 'ı genişleten hata sınıfı. Bu hata, kullanıcının kimlik `acquireTokenSilent` doğrulaması/yetkilendirme için kimlik bilgileri veya onay sağlamak üzere sunucuyla etkileşmesi gerekiyorsa oluşur. Hata kodları "interaction_required", "login_required", "consent_required" içerir.
 
-Yeniden yönlendirme Yöntemleri (`loginRedirect`, `acquireTokenRedirect`) ile kimlik doğrulaması akışlarında hata işleme için, aşağıdaki gibi yeniden yönlendirme yöntemi kullanılarak `handleRedirectCallback()` , başarılı veya başarısız olarak çağrılan geri çağırma işlemini kaydetmeniz gerekir:
+Yeniden yönlendirme Yöntemleri (`loginRedirect`, `acquireTokenRedirect`) ile kimlik doğrulaması akışlarında hata işleme için, aşağıdaki gibi, using `handleRedirectCallback()` yönteminden sonra başarılı veya başarısız olarak çağrılan geri çağırma işlemini kaydetmeniz gerekir:
 
 ```javascript
 function authCallback(error, response) {
@@ -111,11 +196,13 @@ myMSALObj.acquireTokenPopup(request).then(
 
 ### <a name="interaction-required-errors"></a>Etkileşim gerekli hataları
 
-Kullanıcı arabirimi etkileşimi gerektiğinde bir hata döndürülür. Bu, bir belirteci almak için etkileşimli olmayan bir Yöntem (örneğin, `acquireTokenSilent`) kullanmayı denediği, ancak msal sessizce yapamayacağı anlamına gelir. Olası nedenler şunlardır:
+Bir belirteç almak için etkileşimli olmayan bir yöntem kullanmayı denediğinizde (örneğin, `acquireTokenSilent`) ve msal bunu sessizce yapamadık bir hata döndürülür.
 
-* oturum açmanız gerekiyor
-* onay yapmanız gerekir
-* Multi-Factor Authentication deneyiminden gitmeniz gerekir.
+Olası nedenler şunlardır:
+
+* kullanıcının oturum açması gerekiyor
+* kullanıcının onayı gerekir
+* kullanıcının bir Multi-Factor Authentication deneyimi üzerinden geçmesi gerekir.
 
 Düzeltme, `acquireTokenPopup` veya `acquireTokenRedirect`gibi etkileşimli bir yöntemi çağırmalıdır:
 
@@ -160,38 +247,39 @@ Bu hatayı işleme deseninin, aşağıdaki örnekte `acquireTokenPopup` `acquire
 myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
     // call API
 }).catch( function (error) {
-    // call acquireTokenPopup in case of acquireTokenSilent failure
-    myMSALObj.acquireTokenPopup(accessTokenRequest).then(
-        function (accessTokenResponse) {
+    if (error instanceof InteractionRequiredAuthError) {
+        // Extract claims from error message
+        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+        // call acquireTokenPopup in case of InteractionRequiredAuthError failure
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
             // call API
         }).catch(function (error) {
             console.log(error);
         });
+    }
 });
 ```
 
 Belirteci etkileşimli olarak almak kullanıcıya sorar ve gerekli koşullu erişim ilkesini karşılamak için bu fırsata yanıt verir.
 
-Koşullu erişim gerektiren bir API çağrılırken, API 'den hatada bir talep zorluğu alabilirsiniz. Bu durumda, hata `extraQueryParameters` olarak döndürülen talepleri, kullanıcıdan uygun ilkeyi karşılaması istenecektir şekilde belirteçleri alma çağrısında geçirebilirsiniz:
+Koşullu erişim gerektiren bir API çağrılırken, API 'den hatada bir talep zorluğu alabilirsiniz. Bu durumda, hatada `claimsRequest` döndürülen talepleri, uygun ilkeyi karşılamak üzere `AuthenticationParameters.ts` sınıfının alanına geçirebilirsiniz. 
 
-```javascript
-var request = {
-    scopes: ["user.read"],
-    extraQueryParameters: {claims: claims}
-}
-
-myMSALObj.acquireTokenPopup(request);
-```
+Daha fazla ayrıntı için bkz. [ek talepler isteme](active-directory-optional-claims.md) .
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Hatalar ve özel durumlar sonrasında yeniden deneniyor
 
+MSAL çağrılırken size kendi yeniden deneme ilkelerinizi uygulamanız bekleniyor. MSAL AAD hizmetine HTTP çağrıları yapar ve zaman zaman meydana gelebilir, örneğin ağ kapatılabilir veya sunucu aşırı yüklenmiş olabilir.  
+
 ### <a name="http-error-codes-500-600"></a>HTTP hata kodları 500-600
+
 MSAL.NET, HTTP hata kodları 500-600 ile hatalar için basit bir yeniden deneme mekanizması uygular.
 
 ### <a name="http-429"></a>HTTP 429
-"Çok fazla istek" nedeniyle hizmet belirteci sunucusu (STS) çok meşgul olduğunda, bir veya daha fazla gecikme veya bir tarih olarak yeniden deneyebilmeniz (yeniden deneme yanıt alanı) için bir ipucu içeren bir HTTP hatası 429 döndürür.
+
+Hizmet belirteci sunucusu (STS) çok fazla istek ile aşırı yüklendiğinde, zaman içinde yeniden deneyebilmeniz için bir ipucu içeren bir HTTP hatası 429 döndürür. Hata, `Retry-After` yanıt alanından okunabilir.
 
 #### <a name="net"></a>.NET
+
 [Msalserviceexception](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) özel durumu özellik `System.Net.Http.Headers.HttpResponseHeaders` `namedHeaders`olarak yüzeyler. Bu nedenle, uygulamalarınızın güvenilirliğini artırmak için hata kodundan ek bilgilerden yararlanabilirsiniz. Az önce açıklandığımız durumda, `RetryAfterproperty` (türünde `RetryConditionHeaderValue`) ve işlem yeniden deneneceği işlemler ' i kullanabilirsiniz.
 
 Bir Daemon uygulaması (istemci kimlik bilgileri akışını kullanarak) için bir örnektir, ancak bunu bir belirteç alma yöntemlerinden herhangi birine uyarlayabilirsiniz.

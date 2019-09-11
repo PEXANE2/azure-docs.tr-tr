@@ -9,19 +9,19 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048012"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858997"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi nedir?
 
 IoT Tak ve Kullan önizlemesi, çözüm geliştiricilerinin, ekli kod yazmadan cihazları çözümlerle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin çekirdeği, cihaz yeteneklerini açıklayan bir _cihaz yetenek modeli_ şemadır. Bu şema, tanımları içeren bir arabirim kümesi olarak yapılandırılmış bir JSON belgesidir:
 
 - Bir cihazın veya diğer varlıkların salt okunurdur ve okuma/yazma durumunu temsil eden _Özellikler_ . Örneğin, bir cihaz seri numarası salt okunurdur ve bir termostat üzerinde hedef sıcaklık bir okuma/yazma özelliği olabilir.
-- Bir cihaz tarafından yayılan, verilerin düzenli algılayıcı okumalar, zaman zaman bir hata veya bilgi iletisi olup olmadığı.
+- Bir cihaz _tarafından yayılan,_ verilerin düzenli algılayıcı okumalar, zaman zaman bir hata veya bilgi iletisi olup olmadığı.
 - Bir cihazda yapılabilen bir işlevi veya işlemi tanımlayan _Komutlar_ . Örneğin, bir komut bir ağ geçidini yeniden başlatır veya uzak bir kamerayı kullanarak bir resim alabilir.
 
 İşbirliğini kolaylaştırmak ve geliştirmeyi hızlandırmak için cihaz yetenek modelleri genelinde arabirimleri yeniden kullanabilirsiniz.
@@ -63,7 +63,7 @@ Bir cihaz geliştiricisi olarak IoT Tak ve Kullan destekleyen bir IoT donanım �
 
 1. Cihaz yeteneği modelinde ve arabirimlerinde belirtilen özellikleri uygulayan cihaz yazılımını veya üretici yazılımını yazar. Azure IoT SDK 'Sı, cihaz yetenek modellerini uygulayan API 'Leri içerir.
 
-[Vs Code uzantısı Için IoT cihaz çalışma ekranı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) size yardımcı olacak birçok özellik sağlar. Örneğin, bir cihaz geliştiricisi olarak, bir yetenek modelinden iskelet C projesi oluşturmak için uzantıyı kullanabilirsiniz. Ancak, cihaz yetenek modellerini yazmak ve uygulamak için herhangi bir IDE kullanabilirsiniz.
+VS Code Uzantı paketi [Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , size yardımcı olacak birçok özellik sağlar. Örneğin, bir cihaz geliştiricisi olarak bir yetenek modelinden iskelet C projesi oluşturmak için bir uzantı kullanabilirsiniz. Ancak, cihaz yetenek modellerini yazmak ve uygulamak için herhangi bir IDE kullanabilirsiniz.
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>IoT Tak ve Kullan cihazını onaylama
 
@@ -76,6 +76,7 @@ Bir cihaz geliştiricisi olarak, sertifika için IoT donanım ürünleri gönder
 - IoT cihaz kataloğunda sertifikalı yayımlayın.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
+
 Genel Önizleme sırasında IoT Tak ve Kullan Kuzey Avrupa, Orta ABD ve Japonya Doğu bölgelerinde kullanılabilir. Lütfen hub 'ınızı bu bölgelerden birinde oluşturduğunuzdan emin olun.
 
 ## <a name="message-quotas-in-iot-hub"></a>IoT Hub 'deki ileti kotaları

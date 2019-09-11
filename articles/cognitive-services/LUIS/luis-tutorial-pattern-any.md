@@ -1,5 +1,5 @@
 ---
-title: Model. any varlık-LUSıS
+title: 'Öğretici: Model. any varlık-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonunun konuşmadaki diğer sözcüklerle karıştırılma ihtimalinin yüksek olduğu konuşmalardan veri ayıklamak için pattern.any varlığını kullanın.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 165163d0a889e0bd5f1faef8d7f6a17d28c2b4f7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563280"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390293"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Öğretici: Modelle serbest biçimli verileri ayıklayın. herhangi bir varlık
 
@@ -68,7 +68,7 @@ Sözcüklerin uzunluklarının değişmesi, LUIS'in varlığın sonunu belirleme
 
 1. [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) indirip kaydedin.
 
-1. Luu [portalında](https://www.luis.ai), **UYGULAMALARıM** sayfasında, JSON 'u yeni bir uygulamaya aktarın.
+1. [Luu portalında](https://www.luis.ai), **UYGULAMALARıM** sayfasında, JSON 'u yeni bir uygulamaya aktarın.
 
 1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patt-any` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
 

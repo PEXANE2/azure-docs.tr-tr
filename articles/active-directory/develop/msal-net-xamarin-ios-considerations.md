@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532379"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872852"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin iOS 'a özgü hususlar
 Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç önemli noktalar vardır.
@@ -104,13 +104,23 @@ Bu önbellek paylaşımını etkinleştirmek için, anahtar zinciri erişim grub
 
 Daha önce, `WithIosKeychainSecurityGroup()` API 'yi her kullandığınızda msal 'nin $ (appıdentifierprefix) eklemiş olması bahsedildi. Bunun nedeni, yalnızca aynı yayımcı tarafından yapılan uygulamaların Anahtarlık erişimini paylaşabildiğinden emin olmak için Appıdentifierprefix veya "takım KIMLIĞI" kullanılır.
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Not: KeychainSecurityGroup özelliği kullanım dışı
+> [!NOTE]
+> **`KeychainSecurityGroup` Özelliği kullanım dışıdır.**
+> 
+> Daha önce, msal 2. x öğesinden, `KeychainSecurityGroup` özelliği kullanırken geliştiricilerin teamıd önekini eklemesi zorlandı.
+>
+>  MSAL 2.7. x öğesinden yeni `iOSKeychainSecurityGroup` özelliği kullanırken, msal çalışma zamanı sırasında teamıd önekini çözmeyecektir. Bu özellik kullanılırken, değer Teamıd önekini içermemelidir.
+>  `iOSKeychainSecurityGroup` Önceki`KeychainSecurityGroup` özellik artık kullanımdan kalkmış olduğundan, takım kimliğini sağlamanızı gerektirmeyen yeni özelliğini kullanın.
 
-Daha önce, msal 2. x öğesinden, `KeychainSecurityGroup` özelliği kullanırken geliştiricilerin teamıd önekini eklemesi zorlandı
+### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator kullan
 
-MSAL 2.7. x öğesinden yeni `iOSKeychainSecurityGroup` özelliği kullanırken, msal çalışma zamanı sırasında teamıd önekini çözmeyecektir. Bu özellik kullanılırken, değer Teamıd önekini içermemelidir.
+Uygulamanız, etkinleştirmek için Microsoft Authenticator (bir aracı) kullanabilir:
 
-`iOSKeychainSecurityGroup` Önceki`KeychainSecurityGroup` özellik artık kullanımdan kalkmış olduğundan, geliştiricilerin teamıd sağlamasını gerektirmeyen yeni özelliğini kullanın.
+- Çoklu oturum açma (SSO). Kullanıcılarınızın her uygulamada oturum açması gerekmez.
+- Cihaz kimliği. Cihazda, çalışma alanına katılmış olduğunda oluşturulan cihaz sertifikasına erişerek. Kiracı yöneticileri, cihazlarla ilgili koşullu erişimi etkinleştirmeye olanak varsa uygulamanız size hazırlanacaktır.
+- Uygulama tanımlama doğrulaması. Bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir ve aracı tarafından doğrulanır.
+
+Aracısının nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Microsoft Authenticator kullanma veya Microsoft Intune şirket portalı, Xamarin iOS ve Android uygulamalarında](msal-net-use-brokers-with-xamarin-apps.md).
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Xamarin iOS 'e özgü özellikleri gösteren örnek
 

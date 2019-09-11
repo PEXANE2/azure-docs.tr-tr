@@ -6,14 +6,14 @@ author: tfitzmac
 keywords: Dağıtım hatası, Azure dağıtımı, Azure 'a dağıtma
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638539"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275734"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme
 
@@ -32,7 +32,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | AllocationFailed | Küme veya bölgenin kullanılabilir kaynakları yok veya istenen VM boyutunu destekleyemiyorum. İsteği daha sonra yeniden deneyin veya farklı bir VM boyutu isteyin. | Linux, [Windows için sağlama ve ayırma sorunları](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) [için sağlama ve ayırma sorunları](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)ve [ayırma hatalarında sorun giderme](../virtual-machines/troubleshooting/allocation-failure.md)|
 | Anotheroperationınprogress | Eşzamanlı işlemin tamamlanmasını bekleyin. | |
 | AuthorizationFailed | Hesabınızın veya hizmet sorumlusunun dağıtımı tamamlaması için yeterli erişimi yok. Hesabınızın ait olduğu rolü ve dağıtım kapsamına erişimini denetleyin.<br><br>Gerekli bir kaynak sağlayıcısı kayıtlı olmadığında bu hatayı alabilirsiniz. | [Azure rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md)<br><br>[Kaydı çözümle](resource-manager-register-provider-errors.md) |
-| BadRequest | Kaynak Yöneticisi tarafından beklenildiği eşleşmeyen dağıtım değerleri gönderdiniz. Sorun gidermeye yardımcı olması için iç durum iletisini kontrol edin. | [Şablon başvurusu](/azure/templates/) ve [Desteklenen konumlar](resource-group-authoring-templates.md#resource-location) |
+| BadRequest | Kaynak Yöneticisi tarafından beklenildiği eşleşmeyen dağıtım değerleri gönderdiniz. Sorun gidermeye yardımcı olması için iç durum iletisini kontrol edin. | [Şablon başvurusu](/azure/templates/) ve [Desteklenen konumlar](resource-location.md) |
 | Çakışma | Kaynağın geçerli durumunda izin verilmeyen bir işlem isteğinde bulunuyoruz. Örneğin, yalnızca bir VM oluşturulurken veya VM serbest bırakıldığında disk yeniden boyutlandırılmasına izin verilir. | |
 | DeploymentActive | Bu kaynak grubuna yönelik eşzamanlı dağıtımın tamamlanmasını bekleyin. | |
 | DeploymentFailed | DeploymentFailed hatası, hatayı çözmeniz için gereken ayrıntıları sağlamayan genel bir hatadır. Daha fazla bilgi sağlayan bir hata kodu için hata ayrıntılarına bakın. | [Hata kodunu bul](#find-error-code) |
@@ -41,7 +41,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | ImageNotFound | VM görüntüsü ayarlarını kontrol edin. |  |
 | Inusesubnetcannotbedeleted | Bir kaynağı güncelleştirmeye çalışırken bu hatayı alabilir ve kaynak silinerek ve oluşturularak istek işlenir. Tüm değiştirilmeyen değerleri belirttiğinizden emin olun. | [Güncelleştirme kaynağı](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | Invalidauthenticationtokentenant | Uygun kiracı için erişim belirteci alın. Yalnızca hesabınızın ait olduğu kiracının belirtecini alabilir. | |
-| InvalidContentLink | Büyük olasılıkla kullanılamayan iç içe bir şablona bağlantı yapmaya çalıştınız. İç içe geçmiş şablon için verdiğiniz URI 'yi iki kez kontrol edin. Şablon bir depolama hesabında varsa, URI 'nin erişilebilir olduğundan emin olun. Bir SAS belirteci geçirmeniz gerekebilir. | [Bağlantılı şablonlar](resource-group-linked-templates.md) |
+| InvalidContentLink | Büyük olasılıkla kullanılamayan iç içe bir şablona bağlantı yapmaya çalıştınız. İç içe geçmiş şablon için verdiğiniz URI 'yi iki kez kontrol edin. Şablon bir depolama hesabında varsa, URI 'nin erişilebilir olduğundan emin olun. Bir SAS belirteci geçirmeniz gerekebilir. Şu anda, [Azure Storage güvenlik duvarının](../storage/common/storage-network-security.md)arkasındaki bir depolama hesabında bulunan bir şablona bağlayamazsınız. Şablonunuzu GitHub gibi başka bir depoya taşımayı düşünün. | [Bağlantılı şablonlar](resource-group-linked-templates.md) |
 | InvalidParameter | Bir kaynak için verdiğiniz değerlerden biri beklenen değerle eşleşmiyor. Bu hata, birçok farklı koşulun oluşmasına neden olabilir. Örneğin, bir parola yetersiz olabilir veya bir blob adı yanlış olabilir. Hata iletisi hangi değerin düzeltilmesi gerektiğini göstermelidir. | |
 | Invalidrequestcontent | Dağıtım değerleri, tanınmayan ya da gerekli değerler eksik olan değerleri içerir. Kaynak türü için değerleri onaylayın. | [Şablon başvurusu](/azure/templates/) |
 | Invalidrequestformat | Dağıtımı çalıştırırken hata ayıklama günlüğünü etkinleştirin ve isteğin içeriğini doğrulayın. | [Hata ayıklama günlüğü](#enable-debug-logging) |
@@ -53,7 +53,7 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | Invalidtemplateınvalidlardependency | Gereksiz bağımlılıkları kaldırın. | [Döngüsel bağımlılıkları çözümle](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Hesabınızın, dağıtmakta olduğunuz kaynak grubuyla aynı kiracıya ait olup olmadığını denetleyin. | |
 | LinkedInvalidPropertyId | Bir kaynağın kaynak KIMLIĞI doğru çözümlenmiyor. Kaynak KIMLIĞI için abonelik KIMLIĞI, kaynak grubu adı, kaynak türü, üst kaynak adı (gerekirse) ve kaynak adı gibi tüm gerekli değerleri sağlayıp sağlamadıysanız emin olun. | |
-| LocationRequired | Kaynak için bir konum belirtin. | [Konum ayarlama](resource-group-authoring-templates.md#resource-location) |
+| LocationRequired | Kaynak için bir konum belirtin. | [Konum ayarlama](resource-location.md) |
 | Hatalı Matchingresourcesegments | İç içe geçmiş kaynağın ad ve tür bölümünde doğru sayıda parçaya sahip olduğundan emin olun. | [Kaynak kesimlerini çözümle](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Kaynak sağlayıcısı kayıt durumunu ve desteklenen konumları denetleyin. | [Kaydı çözümle](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Aboneliğinizi kaynak sağlayıcısına kaydedin. | [Kaydı çözümle](resource-manager-register-provider-errors.md) |

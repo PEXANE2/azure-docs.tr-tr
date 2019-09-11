@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Apache Spark otomatik makine öğrenimi (otomatik ml) ile Azure Machine Learning iş yüklerini çalıştırma
+title: Azure HDInsight 'ta Apache Spark Azure Machine Learning iş yüklerini çalıştırma
 description: Azure HDInsight 'ta Apache Spark otomatik makine öğrenimi (otomatik ml) ile Azure Machine Learning iş yüklerini çalıştırmayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354864"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814047"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark otomatik makine öğrenimi (otomatik ml) ile Azure Machine Learning iş yüklerini çalıştırma
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
 
 Azure Machine Learning, makine öğrenimi modellerinin oluşturulmasını, eğitimini ve dağıtımını basitleştirir ve hızlandırır. Otomatik makine öğrenimi (otomatik ml) içinde, tanımlı bir hedef özelliğine sahip eğitim verileriyle başlar ve ardından, eğitim puanlarına göre verilerinizin en iyi modelini otomatik olarak seçmek için algoritmaların ve özellik seçimlerinin birleşimleri aracılığıyla yineleyebilirsiniz. HDInsight, müşterilerin yüzlerce düğüm içeren kümeler sağlamasını sağlar. HDInsight kümesinde Spark üzerinde çalışan oto ml, kullanıcıların eğitim işlerini bir genişleme düzeyinde çalıştırmak ve birden çok eğitim işini paralel olarak çalıştırmak için bu düğümlerde işlem kapasitesini kullanmalarına olanak sağlar. Bu, kullanıcıların, diğer büyük veri iş yükleriyle işlem paylaşımı sırasında oto ml denemeleri çalıştırmasına olanak tanır.
  
@@ -34,7 +34,7 @@ Alternatif olarak, Zeppelin not defterlerini kullanarak oto ml 'yi de kullanabil
 
 ## <a name="authentication-for-workspace"></a>Çalışma alanı için kimlik doğrulaması
 
-Çalışma alanı oluşturma ve deneme gönderimi bir kimlik doğrulama belirteci gerektirir. Bu belirteç, bir [Azure AD uygulaması](../../active-directory/develop/app-objects-and-service-principals.md)kullanılarak oluşturulabilir. Hesapta Multi-Factor Authentication etkinleştirilmemişse, gerekli kimlik doğrulama belirtecini oluşturmak için bir [Azure AD kullanıcısı](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python) da kullanılabilir.  
+Çalışma alanı oluşturma ve deneme gönderimi bir kimlik doğrulama belirteci gerektirir. Bu belirteç, bir [Azure AD uygulaması](../../active-directory/develop/app-objects-and-service-principals.md)kullanılarak oluşturulabilir. Hesapta Multi-Factor Authentication etkinleştirilmemişse, gerekli kimlik doğrulama belirtecini oluşturmak için bir [Azure AD kullanıcısı](/azure/python/python-sdk-azure-authenticate) da kullanılabilir.  
 
 Aşağıdaki kod parçacığı, bir **Azure AD uygulaması**kullanarak bir kimlik doğrulama belirteci oluşturur.
 

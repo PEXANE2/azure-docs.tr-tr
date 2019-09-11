@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: d6cde04d122d20c4aad5920c29995d9d33165163
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515527"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163484"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Tanılama özelliğiyle sorunları belirleme
 
@@ -24,7 +24,11 @@ Windows sanal masaüstü önizlemesi, yöneticinin sorunları tek bir arabirim �
   
 Tanılama rolü hizmeti Windows sanal masaüstü 'nün bir parçası olduğundan, Windows sanal masaüstüne ulaşmayacak bağlantılar tanılama sonuçlarında gösterilmez. Son Kullanıcı ağ bağlantısı sorunlarıyla karşılaşıyorsa Windows sanal masaüstü bağlantısı sorunları ortaya çıkabilir.
 
-Başlamak için, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+Başlamak için, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) . Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="diagnose-issues-with-powershell"></a>PowerShell ile ilgili sorunları tanılama
 

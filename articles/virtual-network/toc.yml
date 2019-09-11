@@ -273,6 +273,8 @@
           href: troubleshoot-outbound-smtp-connectivity.md
         - name: IP adresi 168.63.129.16 hakkında
           href: what-is-ip-address-168-63-129-16.md
+        - name: Azure VM bağlantısıyla ilgili sorunları giderme
+          href: troubleshoot-vm-connectivity.md
     - name: Klasik
       items:
         - name: Sanal ağı oluşturma ve yönetme

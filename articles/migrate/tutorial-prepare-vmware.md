@@ -4,15 +4,15 @@ description: Azure geçişi kullanılarak şirket içi VMware VM 'lerinin Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5bd4926494e13c1dd0cfb6283292ade967471238
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b623675343d63385213091b66e220c5358c6437
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013428"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383316"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM 'lerini değerlendirme ve Azure 'a geçiş için hazırlama
 
@@ -126,7 +126,7 @@ Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan ön
 1. VMware 'de Azure geçişi gerecini ayarlamaya yönelik gereksinimleri [doğrulayın](migrate-support-matrix-vmware.md#assessment-appliance-requirements) .
 2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-vmware.md#assessment-url-access-requirements) .
 3. Bulma ve değerlendirme sırasında gereç tarafından toplanacak verileri gözden geçirin.
-4. [](migrate-support-matrix-vmware.md#assessment-port-requirements) Gereç için bağlantı noktası erişim gereksinimleri.
+4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#assessment-port-requirements) erişim gereksinimleri.
 5. Azure geçişi gereci bir OVA dosyası kullanarak bir VMware VM 'si olarak dağıtırsınız. VCenter Server, hesabınızın bir OVA dosyası kullanarak VM oluşturma izinlerine sahip olduğundan emin olun.
 
 

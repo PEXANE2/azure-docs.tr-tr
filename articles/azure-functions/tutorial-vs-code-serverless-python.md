@@ -3,21 +3,31 @@ title: Visual Studio Code ile Python 'da Azure Işlevleri oluşturun ve dağıt�
 description: Python 'da sunucusuz işlevler oluşturmak ve bunları Azure 'a dağıtmak için Azure Işlevleri Visual Studio Code uzantısını kullanma.
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639099"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233113"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Visual Studio Code ile Azure Işlevlerine Python dağıtma
 
 Bu öğreticide, Python ile sunucusuz bir HTTP uç noktası oluşturmak ve ayrıca depolama alanına bir bağlantı (ya da "bağlama") eklemek için Visual Studio Code ve Azure Işlevleri uzantısını kullanırsınız. Azure Işlevleri, bir sanal makine sağlamaya veya bir Web uygulamasını yayımlamaya gerek kalmadan kodunuzu sunucusuz bir ortamda çalıştırır. Visual Studio Code için Azure Işlevleri uzantısı, birçok yapılandırma sorunlarını otomatik olarak işleyerek Işlevleri kullanma sürecini büyük ölçüde basitleştirir.
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Azure Işlevleri uzantısını yükler
+> * HTTP ile tetiklenen bir işlev oluşturma
+> * Yerel olarak hata ayıkla
+> * Uygulama ayarlarını eşitler
+> * Akış günlüklerini görüntüle
+> * Azure depolama 'ya bağlanma
 
 Bu öğreticideki adımların herhangi biriyle ilgili sorunlarla karşılaşırsanız, ayrıntıları öğrenmek istiyoruz. Ayrıntılı geri bildirim göndermek için her bölümün sonundaki **bir sorunla karşılaştım** düğmesini kullanın.
 
@@ -94,35 +104,32 @@ Azure Işlevleri logosu ile başlayan çıkış (çıktıyı yukarı kaydırman�
 
 1. Aşağıdaki istemler:
 
-    | İstem | Değer | Açıklama | 
+    | İstem | Value | Açıklama | 
     | --- | --- | --- |
     | Proje için bir klasör belirtin | Geçerli açık klasör | Projenin oluşturulacağı klasör. Projeyi bir alt klasörde oluşturmak isteyebilirsiniz. |
     | İşlev uygulaması projeniz için bir dil seçin | **Python** | Kod için kullanılan şablonu belirleyen, işlevi için kullanılacak dil. |
     | Projenizin ilk işlevi için bir şablon seçin | **HTTP tetikleyicisi** | Bir HTTP tetikleyicisi kullanan bir işlev, işlevin uç noktasına yapılan bir HTTP isteği olduğunda çalıştırılır. (Azure Işlevleri için çeşitli diğer Tetikleyiciler vardır. Daha fazla bilgi edinmek için bkz. [Işlevlerle neler yapabilirim?](functions-overview.md#what-can-i-do-with-functions).) |
     | Bir işlev adı girin | HttpExample | Ad, işlev kodunu içeren bir alt klasör için yapılandırma verileriyle birlikte kullanılır ve ayrıca HTTP uç noktasının adını tanımlar. İşlevin kendisini tetikleyiciden ayırt etmek için varsayılan "HTTPTrigger" kabul etmek yerine "HttpExample" kullanın. |
-    | Yetkilendirme düzeyi | **Deðeri** | Anonim yetkilendirme, işlevin herkese herkese açık bir şekilde erişmesini sağlar. |
+    | Yetkilendirme düzeyi | **Çalışmayacaktır** | İşlev uç noktasına yapılan çağrılar bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys)gerektirir. |
     | Projenizi nasıl açmak istediğinizi seçin | **Geçerli pencerede aç** | Projeyi geçerli Visual Studio Code penceresinde açar. |
 
-1. Kısa bir süre sonra, yeni projenin oluşturulduğunu belirten bir ileti. **Gezgin**'de, işlev için oluşturulan alt klasör vardır ve Visual Studio Code varsayılan işlev kodunu içeren  *\_ \_\_init\_. Kopyala* dosyasını açar:
+1. Kısa bir süre sonra, yeni projenin oluşturulduğunu belirten bir ileti. **Gezgin**'de, işlev için oluşturulan alt klasör vardır. 
+
+1. Zaten açık değilse, varsayılan işlev kodunu içeren  *\_ \_\_init\_. Kopyala* dosyasını açın:
 
     [![Yeni bir Python işlevleri projesi oluşturma sonucu](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > Visual Studio Code,  *\_Init \_.Kopyalaaçıldığında\_seçili bir Python yorumlayıcı olmadığını söylüyorsa, komut paletini (F1) açın, Python 'u seçin:\_*  **Yorumlayıcı** komutunu seçin ve ardından yerel `.env` klasörde (projenin bir parçası olarak oluşturulan) sanal ortamı seçin. Bu ortam, [önkoşulların](#prerequisites)altında daha önce belirtildiği gibi Python 3.6 x 'i temel almalıdır.
+    > Visual Studio Code,  *\_init \_.Kopyala'yı\_açtığınızda bir Python yorumlayıcı seçili olmadığını söyledikçe, komut paletini (F1) açın, Python 'u seçin:\_*  **Yorumlayıcı** komutunu seçin ve ardından yerel `.env` klasörde (projenin bir parçası olarak oluşturulan) sanal ortamı seçin. Bu ortam, [önkoşulların](#prerequisites)altında daha önce belirtildiği gibi Python 3.6 x 'i temel almalıdır.
     >
     > ![Projeyle oluşturulan sanal ortamı seçme](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> Aynı projede başka bir işlev oluşturmak istediğinizde, **Azure 'da **işlev oluştur** komutunu kullanın: İşlevler** Gezgini veya komut paletini (F1) açıp **Azure işlevlerini seçin: İşlev** komutu oluştur. Her iki komut de bir işlev adı (bitiş noktasının adı) ister, ardından varsayılan dosyaları içeren bir alt klasör oluşturur.
->
-> ![Azure 'da yeni Işlev komutu: İşlevler Gezgini](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>Kod dosyalarını inceleyin
 
-Yeni oluşturulan işlev alt klasörü üç dosya:  *\_ \_\_init\_. Kopyala* işlevin kodunu, *function. JSON* ise Azure işlevleri 'ni ve *Sample. dat işlevini tanımlar* örnek bir veri dosyasıdır. İsterseniz *Sample. dat* ' ı silebilirsiniz, çünkü yalnızca alt klasöre başka dosyalar ekleyebilmesinin görünmesini sağlayabilirsiniz.
+Yeni oluşturulan _httpexample_ işlevi alt klasöründe üç dosya bulunur:  *\_ \_\_init\_. Kopyala* işlevin kodunu içerir, *function. JSON* , işlevi Azure 'a tanımlar İşlevler ve *Sample. dat* örnek bir veri dosyasıdır. İsterseniz *Sample. dat* ' ı silebilirsiniz, çünkü yalnızca alt klasöre başka dosyalar ekleyebilmesinin görünmesini sağlayabilirsiniz.
 
 Önce *function. JSON* ' a, sonra da  *\_init\_\_. Kopyala \_* ' da koda göz atalım.
 
@@ -135,7 +142,7 @@ Function. JSON dosyası, Azure Işlevleri uç noktası için gerekli yapılandı
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,9 +162,9 @@ Function. JSON dosyası, Azure Işlevleri uç noktası için gerekli yapılandı
 
 Özelliği, kod için başlangıç dosyasını tanımlar ve bu kodun adlı `main`bir Python işlevi içermesi gerekir. `scriptFile` Burada belirtilen dosya bir `main` işlev içerdiği sürece kodunuzu birden çok dosyaya çarpanlara ekleyebilirsiniz.
 
-`bindings` Öğesi iki nesne içerir, biri gelen istekleri ve diğeri ise HTTP yanıtını açıklama. Gelen istekler için (`"direction": "in"`), işlev http get veya post isteklerine yanıt verir ve kimlik doğrulaması gerektirmez. Response (`"direction": "out"`), `main` Python işlevinden döndürülen değeri döndüren bir http yanıtdır.
+`bindings` Öğesi iki nesne içerir, biri gelen istekleri ve diğeri ise HTTP yanıtını açıklama. Gelen istekler için (`"direction": "in"`), işlev http get veya post isteklerine yanıt verir ve işlev anahtarını sağlamanız gerekir. Response (`"direction": "out"`), `main` Python işlevinden döndürülen değeri döndüren bir http yanıtdır.
 
-### <a name="initpy"></a>\_\_init.py\_\_
+### <a name="__initpy__"></a>\_\_init.py\_\_
 
 Yeni bir işlev oluşturduğunuzda, Azure işlevleri  *\_init\_\_. Kopyala \_* içinde varsayılan Python kodu sağlar:
 
@@ -200,7 +207,7 @@ Kodun önemli bölümleri aşağıdaki gibidir:
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
-1. İşlevler projesini oluşturduğunuzda Visual Studio Code uzantısı, ' de **Python işlevlerine Ekle**adlı tek bir yapılandırma içeren `.vscode/launch.json` ' de bir başlatma yapılandırması oluşturur. Bu yapılandırma, projeyi başlatmak için F5 'e basabilir veya hata ayıklama Gezginini kullanmanıza olanak sağlar:
+1. İşlevler projesini oluşturduğunuzda Visual Studio Code uzantısı, ' de **Python işlevlerine Ekle**adlı tek bir yapılandırma içeren `.vscode/launch.json` ' de bir başlatma yapılandırması oluşturur. Bu yapılandırma, projeyi başlatmak için yalnızca **F5** 'i seçebileceğiniz veya hata ayıklama Gezginini kullanabileceğiniz anlamına gelir:
 
     ![Işlev başlatma yapılandırmasını gösteren gezgin hata ayıkla](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -233,7 +240,7 @@ Kodun önemli bölümleri aşağıdaki gibidir:
 
     Alternatif olarak, komutunu `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`içeren `{"name":"Visual Studio Code"}` ve kullanan *Data. JSON* gibi bir dosya oluşturun.
 
-1. İşlevin hata ayıklamasını test etmek için, URL 'ye bir istek okuyan `name = req.params.get('name')` ve bir istekte bulunan bir kesme noktası ayarlayın. Visual Studio Code hata ayıklayıcı bu satırda durarak değişkenleri incelemenizi ve kodda adım adım ilerlemenize olanak tanır. (Temel hata ayıklama hakkında kısa bir anlatım için bkz. [Visual Studio Code öğreticisi-hata ayıklayıcıyı yapılandırma ve çalıştırma](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
+1. İşlevde hata ayıklamak için, URL 'ye bir istek okuyan `name = req.params.get('name')` ve bir istekte bulunan bir kesme noktası ayarlayın. Visual Studio Code hata ayıklayıcı bu satırda durarak değişkenleri incelemenizi ve kodda adım adım ilerlemenize olanak tanır. (Temel hata ayıklama hakkında kısa bir anlatım için bkz. [Visual Studio Code öğreticisi-hata ayıklayıcıyı yapılandırma ve çalıştırma](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
 
 1. İşlevi yerel olarak test ettiğiniz için, hata > ayıklayıcıyı (hata**ayıklamayı Durdur** menü komutuyla veya hata ayıklama araç çubuğundaki **bağlantıyı kes** komutuyla) durdurun.
 
@@ -304,7 +311,7 @@ Portalda yaptığınız herhangi bir değişikliği veya **Azure Gezgini** 'ni *
 1. **Azure 'da: İşlevler** Gezgini, **işlev oluştur** komutunu seçin veya Azure işlevleri **'ni kullanın: Komut paletinden** işlev oluştur. İşlevi için aşağıdaki ayrıntıları belirtin:
 
     - Şablon: HTTP tetikleyicisi
-    - Adı: "Digitsofpı"
+    - Ad: "Digitsofpı"
     - Yetkilendirme düzeyi: Adsız
 
 1. Visual Studio Code dosya Gezgini ' nde, işlev adınızın  *\_init\_\_. Kopyala \_* , *function. JSON*ve *Sample. dat*adlı dosyaları içeren bir alt klasörü vardır.
@@ -386,7 +393,7 @@ Portalda yaptığınız herhangi bir değişikliği veya **Azure Gezgini** 'ni *
     }
     ```
 
-1. F5 tuşuna basarak veya hata**ayıklamayı Başlat** menü komutunu > seçerek hata ayıklayıcıyı başlatın. **Çıkış** penceresinde artık her iki uç nokta de projenizde gösterilmektedir:
+1. **F5** ' i seçerek veya hata**ayıklamayı Başlat** menü > komutunu seçerek hata ayıklayıcıyı başlatın. **Çıkış** penceresinde artık her iki uç nokta de projenizde gösterilmektedir:
 
     ```output
     Http Functions:
@@ -472,15 +479,15 @@ Bu bölümde, bu öğreticide daha önce oluşturulan HttpExample işlevine bir 
             )
     ```
 
-1. Bu değişiklikleri yerel olarak test etmek için F5 'e basarak veya hata**ayıklamayı Başlat** menü komutunu seçerek > Visual Studio Code hata ayıklayıcıyı yeniden başlatın. **Çıkış** penceresinde olduğu gibi, projenizdeki uç noktaları göstermemelidir.
+1. Bu değişiklikleri yerel olarak test etmek için **F5** ' i seçerek veya hata**ayıklamayı Başlat** menü komutunu seçerek > Visual Studio Code hata ayıklayıcıyı yeniden başlatın. **Çıkış** penceresinde olduğu gibi, projenizdeki uç noktaları göstermemelidir.
 
 1. Bir tarayıcıda, httpexample uç noktasına `http://localhost:7071/api/HttpExample?name=VS%20Code` bir istek oluşturmak için URL 'yi ziyaret ederek sıraya bir ileti de yazmanız gerekir.
 
 1. İletinin "outqueue" kuyruğuna yazıldığını doğrulamak için (bağlamada adlandırılmış olarak), üç yöntemden birini kullanabilirsiniz:
 
-    1. [Azure Portal](https://portal.azure.com)oturum açın ve işlevler projenizi içeren kaynak grubuna gidin. Bu kaynak grubu içinde, yerel ve proje için depolama hesabına gidin ve **Kuyruklar**' a gidin. Bu sayfada, günlüğe kaydedilen tüm iletileri görüntülemesi gereken "outqueue" ("outqueue") bölümüne gidin.
+    1. [Azure Portal](https://portal.azure.com)oturum açın ve işlevler projenizi içeren kaynak grubuna gidin. Bu kaynak grubunda, projenin depolama hesabını bulup açın ve **Kuyruklar**' a gidin. Bu sayfada, tüm günlüğe kaydedilen iletileri görüntülemesi gereken "outqueue" seçeneğine gidin.
 
-    1. Visual Studio ile tümleşen Azure Depolama Gezgini, [Visual Studio Code kullanarak Işlevleri Azure depolama 'Ya bağlama](functions-add-output-binding-storage-queue-vs-code.md)bölümünde açıklandığı gibi, özellikle de [Çıkış kuyruğunu İncele bölümünü inceleyerek](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) , sırayı inceleyin ve inceleyin.
+    1. Bu sırayı, Visual Studio ile tümleşen Azure Depolama Gezgini, [Visual Studio Code kullanarak Işlevleri Azure depolama 'Ya bağlama](functions-add-output-binding-storage-queue-vs-code.md)bölümünde açıklandığı gibi, özellikle de [çıkış sırasını İnceleme](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) bölümünü kullanarak açın ve inceleyin.
 
     1. Depolama kuyruğunu [sorgulama](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue)bölümünde açıklandığı gibi, depolama kuyruğunu sorgulamak IÇIN Azure CLI 'yi kullanın.
     

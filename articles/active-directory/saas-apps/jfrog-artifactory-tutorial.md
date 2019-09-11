@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d03e43ab2c26131c35eb78815d34cd959cc785
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347491"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213569"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Öğretici: JFrog Artifactory 'yi Azure Active Directory tümleştirin
 
@@ -95,11 +95,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [JFrog Artifactory istemci destek ekibine](https://support.jfrog.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. JFrog Artifactory uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. JFrog Artifactory uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
-1. Yukarıdakine ek olarak, JFrog Artifactory uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler.  **Grup talepleri (Önizleme)**  iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
+1. Yukarıdakine ek olarak, JFrog Artifactory uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
@@ -133,7 +133,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 

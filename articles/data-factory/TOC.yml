@@ -147,6 +147,8 @@
           href: concepts-data-flow-overview.md
         - name: Hata ayıklama modu
           href: concepts-data-flow-debug-mode.md
+        - name: JSON işleme
+          href: concepts-data-flow-json.md
         - name: Schema Drift
           href: concepts-data-flow-schema-drift.md
         - name: Denetleme bölmesi
@@ -187,12 +189,16 @@
           href: iterative-development-debugging.md
     - name: Bağlayıcılar
       items:
+        - name: Bağlayıcıya genel bakış
+          href: connector-overview.md
         - name: Amazon Marketplace Web Service
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
           href: connector-amazon-redshift.md
         - name: Amazon S3
           href: connector-amazon-simple-storage-service.md
+        - name: Avro biçimi
+          href: format-avro.md
         - name: Azure Blob Depolama
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB SQL API
@@ -273,6 +279,8 @@
           href: connector-informix.md
         - name: Jira
           href: connector-jira.md
+        - name: JSON biçimi
+          href: format-json.md
         - name: Magento
           href: connector-magento.md
         - name: MariaDB
@@ -306,7 +314,7 @@
           href: connector-oracle-service-cloud.md
         - name: Parquet biçimi
           href: format-parquet.md
-        - name: Paypal
+        - name: PayPal
           href: connector-paypal.md
         - name: Phoenix
           href: connector-phoenix.md
@@ -382,40 +390,40 @@
     - name: Verileri dönüştürme
       href: transform-data.md
       items:
+        - name: Azure İşlev Etkinliği
+          href: control-flow-azure-function-activity.md
+        - name: Özel Etkinlik
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Databricks Jar Etkinliği
+          href: transform-data-databricks-jar.md
+        - name: Databricks Not Defteri Etkinliği
+          href: transform-data-databricks-notebook.md
+        - name: Databricks Python Etkinliği
+          href: transform-data-databricks-python.md
+        - name: Data Lake U-SQL Etkinliği
+          href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive Etkinliği
           href: transform-data-using-hadoop-hive.md
-        - name: HDInsight Pig Etkinliği
-          href: transform-data-using-hadoop-pig.md
         - name: HDInsight MapReduce Etkinliği
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight Akış Etkinliği
-          href: transform-data-using-hadoop-streaming.md
+        - name: HDInsight Pig Etkinliği
+          href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark Etkinliği
           href: transform-data-using-spark.md
+        - name: HDInsight Akış Etkinliği
+          href: transform-data-using-hadoop-streaming.md
         - name: ML Batch Yürütme Etkinliği
           href: transform-data-using-machine-learning.md
         - name: ML Kaynak Güncelleştirme Etkinliği
           href: update-machine-learning-models.md
         - name: Saklı Yordam Etkinliği
           href: transform-data-using-stored-procedure.md
-        - name: Data Lake U-SQL Etkinliği
-          href: transform-data-using-data-lake-analytics.md
-        - name: Databricks Not Defteri Etkinliği
-          href: transform-data-databricks-notebook.md
-        - name: Databricks Jar Etkinliği
-          href: transform-data-databricks-jar.md
-        - name: Databricks Python Etkinliği
-          href: transform-data-databricks-python.md
-        - name: Özel etkinlik
-          href: transform-data-using-dotnet-custom-activity.md
         - name: İşlem bağlantılı hizmetler
           href: compute-linked-services.md
     - name: Denetim akışı
       items:
         - name: Değişken Etkinlik Ekleme
           href: control-flow-append-variable-activity.md
-        - name: Azure İşlev Etkinliği
-          href: control-flow-azure-function-activity.md
         - name: Veri Akışı Etkinliğini Yürütme
           href: control-flow-execute-data-flow-activity.md
         - name: İşlem Hattı Çalıştırma Etkinliği
@@ -584,6 +592,8 @@
       items:
         - name: Etkinlik sorun giderme
           href: data-factory-troubleshoot-guide.md
+        - name: Bağlayıcı sorunlarını giderme
+          href: connector-troubleshoot-guide.md
         - name: Azure-SSIS IR Yönetimi Sorunlarını Giderme
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR’de Paket Yürütme Sorunlarını Giderme
@@ -596,6 +606,14 @@
           href: data-migration-guidance-overview.md
         - name: AWS S3'ten Azure'a verileri geçirme
           href: data-migration-guidance-s3-azure-storage.md
+        - name: Şirket içi Hadoop kümesinden Azure’a veri geçirme
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Veri Akışı Eşlemeyi kullanarak dönüştürme
+      items:
+        - name: Sabit genişlikli metin dosyalarını işleme
+          href: how-to-fixed-width.md
 - name: Başvuru
   items:
     - name: .NET

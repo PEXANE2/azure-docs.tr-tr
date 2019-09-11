@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dc98a0ab47e269aa99f21d3f10952cdabe2c897f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884117"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736034"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure VM'lerini bir bölgeden diğerine çoğaltma için destek matrisi
 
@@ -53,6 +53,7 @@ Avustralya   | Avustralya Doğu, Avustralya Güneydoğu, Avustralya Orta, Avustr
 Azure Kamu    | ABD devleti Virginia, US GOV IWA, US GOV Arizona, US GOV Texas, US DOD Doğu, US DOD orta 
 Almanya | Almanya Orta, Almanya Kuzeydoğu
 Çin | Çin Doğu, Çin Kuzey, Çin North2, Çin Doğu2
+Ülke içi olağanüstü durum kurtarma için ayrılan kısıtlı bölgeler |Almanya Orta Batı için ayrılan Almanya Kuzey, Fransa Güney müşterileri için ayrılan Fransa Orta İsviçre Kuzey için ayrılan İsviçre Batı 
 
 >[!NOTE]
 >
@@ -259,4 +260,4 @@ Hızlandırılmış ağ | Desteklenen | Kaynak VM 'de hızlandırılmış ağ et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure VM 'lerini çoğaltmak için [ağ kılavuzunu](site-recovery-azure-to-azure-networking-guidance.md) okuyun.
-- [Azure VM](site-recovery-azure-to-azure.md)'lerini çoğaltarak olağanüstü durum kurtarma dağıtın.
+- [Azure VM 'lerini çoğaltarak](site-recovery-azure-to-azure.md)olağanüstü durum kurtarma dağıtın.

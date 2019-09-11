@@ -1,5 +1,5 @@
 ---
-title: Etkileri nasıl çalıştığını anlama
+title: Efektlerin nasıl çalıştığını anlama
 description: Azure İlkesi tanım uyumluluk nasıl yönetildiği ve bildirilen belirleyen çeşitli etkileri vardır.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,31 +7,30 @@ ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448565"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231533"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure İlkesi etkilerini anlama
 
 Azure İlkesi her ilke tanımında, tek bir etkiye sahiptir. Bu etkiyi ilke kuralı eşleşecek şekilde değerlendirildiğinde ne olacağını belirler. Yeni bir kaynak, güncelleştirilmiş bir kaynak veya mevcut bir kaynak için olmaları durumunda etkileri farklı davranır.
 
-Bu etkileri, ilke tanımında şu anda desteklenmektedir:
+Bu efektler Şu anda bir ilke tanımında destekleniyor:
 
-- [Ekleme](#append)
+- [Ýna](#append)
 - [Denetim](#audit)
-- [AuditIfNotExists](#auditifnotexists)
-- [Reddet](#deny)
-- [Deployıfnotexists](#deployifnotexists)
+- [Auditınotexists](#auditifnotexists)
+- [Reddedebilir](#deny)
+- [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
-- [EnforceRegoPolicy](#enforceregopolicy) (Önizleme)
+- [Enforceregopolicy](#enforceregopolicy) Önizle
 
 ## <a name="order-of-evaluation"></a>Değerlendirme sırası
 
-Azure ilkesi oluşturun veya Azure Resource Manager aracılığıyla kaynak güncelleştirme isteklerinin önce değerlendirilir. Azure İlkesi kaynağına uygulayın ve sonra kaynak her tanımı karşı değerlendirir tüm atamaları listesini oluşturur. Azure İlkesi birkaç etkileri, istek uygun kaynak sağlayıcısı için teslim etmeden önce işlenir. Bunun yapılması, kaynak Azure İlkesi'nin tasarlanmış idare denetimleri karşılamadığında gereksiz işleme kaynağı sağlayıcısı tarafından engeller.
+Azure Resource Manager aracılığıyla kaynak oluşturma veya güncelleştirme istekleri, önce Azure Ilkesi tarafından değerlendirilir. Azure Ilkesi, kaynak için uygulanan tüm atamaların bir listesini oluşturur ve ardından kaynağı her bir tanıma karşı değerlendirir. Azure Ilkesi, isteği uygun kaynak sağlayıcısına teslim etmeden önce çeşitli etkileri işler. Bunun yapılması, bir kaynak Azure Ilkesinin tasarlanan idare denetimlerini karşılamıyorsa kaynak sağlayıcısı tarafından gereksiz işlemeyi önler.
 
 - **Devre dışı bırakılmış** önce ilke kuralı değerlendirileceğini belirlemek için denetlenir.
 - **Append** ardından değerlendirilir. Beri ekleme isteği değiştirecek, göre ekleme yapılan bir değişikliği denetim engellemek veya tetikleme gelen etkisi reddet.
@@ -40,7 +39,7 @@ Azure ilkesi oluşturun veya Azure Resource Manager aracılığıyla kaynak gün
 
 Kaynak sağlayıcı bir başarı kodu döndürür sonra **AuditIfNotExists** ve **Deployıfnotexists** ek uyumluluk günlük kaydı veya eylem gerekli olup olmadığını belirlemek için değerlendirin.
 
-Şu anda hiç değerlendirme için herhangi bir sırada **EnforceRegoPolicy** efekt.
+Şu anda **Enforceregopolicy** efekti için herhangi bir değerlendirme sırası yoktur.
 
 ## <a name="disabled"></a>Devre dışı
 
@@ -52,7 +51,7 @@ Append oluşturma veya güncelleştirme sırasında istenen kaynak için ek alan
 
 ### <a name="append-evaluation"></a>Değerlendirme Ekle
 
-Ekleme isteği, oluşturma veya bir kaynağın güncelleştirilmesi sırasında bir kaynak sağlayıcısı tarafından işlenen önce değerlendirilir. Append kaynağa alanları ekler, **varsa** ilke kuralının koşul karşılanıyorsa. Append etkili bir değer özgün istek farklı bir değerle geçersiz kılarsınız, reddetme etkisi davranır ve isteği reddeder. Yeni bir değer var olan bir diziye eklenecek kullanın **[\*]** diğer sürümü.
+Ekleme isteği, oluşturma veya bir kaynağın güncelleştirilmesi sırasında bir kaynak sağlayıcısı tarafından işlenen önce değerlendirilir. Append kaynağa alanları ekler, **varsa** ilke kuralının koşul karşılanıyorsa. Append etkili bir değer özgün istek farklı bir değerle geçersiz kılarsınız, reddetme etkisi davranır ve isteği reddeder. Varolan bir diziye yeni bir değer eklemek için diğer adın **[\*]** sürümünü kullanın.
 
 Append efekt kullanarak bir ilke tanımı bir değerlendirme döngüsü bir parçası olarak çalıştırdığınızda, zaten mevcut olan kaynakları değişiklik yapmaz. Bunun yerine, bunu karşılayan herhangi bir kaynağa işaretler **varsa** uyumsuz olarak koşul.
 
@@ -62,7 +61,7 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
 
 ### <a name="append-examples"></a>Append örnekleri
 
-Örnek 1: Tek **alan/değer** bir etiket eklemek için çifti.
+Örnek 1: Bir etiketi eklemek için tek **alan/değer** çifti.
 
 ```json
 "then": {
@@ -74,7 +73,7 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
 }
 ```
 
-Örnek 2: İki **alan/değer** bir etiket kümesine eklenecek çiftleri.
+Örnek 2: Bir etiket kümesini eklemek için iki **alan/değer** çifti.
 
 ```json
 "then": {
@@ -91,7 +90,7 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
 }
 ```
 
-Örnek 3: Tek **alan/değer** olmayan bir kullanarak pair **[\*]** [diğer](definition-structure.md#aliases) bir diziye sahip **değer** bir depolama hesabında IP kurallarını ayarlamak için. Zaman olmayan **[\*]** diğer bir dizi olan etkisi ekler **değer** tüm dizi. Dizi zaten varsa, reddetme olayı çakışma gerçekleşir.
+Örnek 3: Bir depolama hesabında IP kuralları ayarlamak için dizi **değeri** ile **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** Olmayan diğer ad bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
 ```json
 "then": {
@@ -106,7 +105,7 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
 }
 ```
 
-Örnek 4: Tek **alan/değer** kullanarak pair bir **[\*]** [diğer](definition-structure.md#aliases) dizisiyle **değeri** bir depolama hesabında IP kurallarını ayarlamak için. Kullanarak **[\*]** diğer etkisi ekler **değer** potansiyel olarak önceden var olan bir dizi. Dizi olmayan henüz mevcut oluşturulur.
+Örnek 4: Bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[\*]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** Diğer adını kullanarak, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
 
 ```json
 "then": {
@@ -137,7 +136,7 @@ Ek özellikleri kullanmak için reddetme etkisinin yok **ardından** ilke tanım
 
 ### <a name="deny-example"></a>Örnek Reddet
 
-Örnek: Reddetme etkisinin kullanma.
+Örnek: Reddetme efektini kullanma.
 
 ```json
 "then": {
@@ -151,7 +150,7 @@ Denetim etkinlik günlüğünde, uyumlu olmayan bir kaynak değerlendirirken uya
 
 ### <a name="audit-evaluation"></a>Denetim değerlendirme
 
-Denetim, Azure ilkesi oluşturma veya güncelleştirme bir kaynağın sırasında kullanıma son etkisidir. Azure İlkesi, ardından kaynağın kaynak sağlayıcısına gönderir. Denetim için kaynak isteğiyle ve değerlendirme döngüsü aynı şekilde çalışır. Azure ilkesi ekler bir `Microsoft.Authorization/policies/audit/action` işlemi etkinlik günlüğüne ve kaynak uyumlu değil olarak işaretler.
+Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim için kaynak isteğiyle ve değerlendirme döngüsü aynı şekilde çalışır. Azure ilkesi, etkinlik `Microsoft.Authorization/policies/audit/action` günlüğüne bir işlem ekler ve kaynağı uyumlu değil olarak işaretler.
 
 ### <a name="audit-properties"></a>Denetim Özellikleri
 
@@ -159,7 +158,7 @@ Ek özellikleri kullanmak için bir denetim etkisi yoktur **ardından** ilke tan
 
 ### <a name="audit-example"></a>Denetim örneği
 
-Örnek: Denetim etkisiyle kullanma.
+Örnek: Denetim efektini kullanma.
 
 ```json
 "then": {
@@ -173,7 +172,7 @@ AuditIfNotExists sağlayan eşleşen kaynak denetim **varsa** koşulu, belirtile
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists değerlendirme
 
-Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle işlediği ve bir başarı durum kodu döndürdü sonra AuditIfNotExists çalıştırır. Hiçbir ilgili kaynaklar varsa veya kaynaklar tarafından tanımlanan denetim gerçekleşir **ExistenceCondition** doğru olarak değerlendirilebilmesi yok. Azure ilkesi ekler bir `Microsoft.Authorization/policies/audit/action` işlemi etkinlik denetim etkin aynı şekilde oturum. Tetiklendiğinde, memnun kaynak **varsa** ile uyumsuz olarak işaretlenmiş kaynak bir durumdur.
+Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle işlediği ve bir başarı durum kodu döndürdü sonra AuditIfNotExists çalıştırır. Hiçbir ilgili kaynaklar varsa veya kaynaklar tarafından tanımlanan denetim gerçekleşir **ExistenceCondition** doğru olarak değerlendirilebilmesi yok. Azure ilkesi, etkinlik `Microsoft.Authorization/policies/audit/action` günlüğüne denetim efektiyle aynı şekilde bir işlem ekler. Tetiklendiğinde, memnun kaynak **varsa** ile uyumsuz olarak işaretlenmiş kaynak bir durumdur.
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists özellikleri
 
@@ -181,10 +180,10 @@ Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle i�
 
 - **Tür** [gerekli]
   - Eşleştirmek için ilgili kaynak türünü belirtir.
-  - Varsa **details.type** altında bir kaynak türü **varsa** koşul kaynağı, bu kaynaklar için ilke sorgular **türü** değerlendirilen kaynak kapsamında. Aksi durumda, ilke sorguları değerlendirilen kaynak ile aynı kaynak grubunda.
+  - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynak tam adını belirtir ve belirli bir kaynak belirtilen türdeki tüm kaynakları yerine getirmek ilke neden olur.
-  - Koşul zaman değerleri **if.field.type** ve **then.details.type** , eşleşen **adı** olur _gerekli_ ve olmalıdır`[field('name')]`. Ancak, bir [denetim](#audit) efekt bunun yerine sayılacağı.
+  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ `[field('name')]`olur ve olmalıdır. Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
 - **ResourceGroupName** (isteğe bağlı)
   - İlişkili kaynağın farklı bir kaynak grubundan gelen eşleşen sağlar.
   - Varsa geçerli değildir **türü** altında olan bir kaynağın **varsa** koşul kaynağı.
@@ -205,7 +204,7 @@ Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle i�
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists örneği
 
-Örnek: Sanal makineler, kötü amaçlı yazılımdan koruma uzantısını var, ardından eksik olduğunda denetimleri belirlemek için değerlendirir.
+Örnek: Kötü amaçlı yazılımdan koruma uzantısının var olup olmadığını belirlemesi için sanal makineleri değerlendirir ve ne zaman yoksa denetler.
 
 ```json
 {
@@ -255,7 +254,7 @@ Bir değerlendirme döngüsü sırasında kaynaklarla eşleşen ilke tanımları
   - Başlar altında bir kaynak getirilmeye çalışılırken tarafından **varsa** koşul kaynağı, ardından aynı kaynak grubunda sorgulara **varsa** koşul kaynağı.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynak tam adını belirtir ve belirli bir kaynak belirtilen türdeki tüm kaynakları yerine getirmek ilke neden olur.
-  - Koşul zaman değerleri **if.field.type** ve **then.details.type** , eşleşen **adı** olur _gerekli_ ve olmalıdır`[field('name')]`.
+  - **IF. Field. Type** ve **then. details. Type** için koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ `[field('name')]`olur ve olmalıdır.
 - **ResourceGroupName** (isteğe bağlı)
   - İlişkili kaynağın farklı bir kaynak grubundan gelen eşleşen sağlar.
   - Varsa geçerli değildir **türü** altında olan bir kaynağın **varsa** koşul kaynağı.
@@ -276,10 +275,10 @@ Bir değerlendirme döngüsü sırasında kaynaklarla eşleşen ilke tanımları
   - Örneğin, doğrulamak için kullanılabilir üst kaynak (içinde **varsa** koşul) eşleşen ilgili kaynak ile aynı kaynak konumda olduğundan.
 - **roleDefinitionIds** [gerekli]
   - Bu özellik, rol tabanlı erişim denetimine rol kimliği erişilebilir tarafından eşleşen bir dize dizisi içermesi gerekir. Daha fazla bilgi için [düzeltme - ilke tanımı yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
-- **DeploymentScope** (isteğe bağlı)
+- **Deploymentscope** seçim
   - İzin verilen değerler _abonelik_ ve _ResourceGroup_.
-  - Tetiklenmesi için dağıtım türünü ayarlar. _Abonelik_ gösteren bir [abonelik düzeyinde dağıtım](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ bir kaynak grubuna bir dağıtım gösterir.
-  - A _konumu_ özelliği içinde belirtilmelidir _dağıtım_ abonelik düzeyi dağıtımları kullanırken.
+  - Tetiklenecek dağıtımın türünü ayarlar. _Abonelik_ , [abonelik düzeyinde bir dağıtımı](../../../azure-resource-manager/deploy-to-subscription.md)gösterir, _ResourceGroup_ bir kaynak grubuna yönelik bir dağıtımı gösterir.
+  - Abonelik düzeyinde dağıtımlar kullanılırken _dağıtımda_ bir _konum_ özelliği belirtilmelidir.
   - Varsayılan değer _ResourceGroup_.
 - **Dağıtım** [gerekli]
   - Bu özellik için geçirilir gibi tam şablon dağıtımı içermelidir `Microsoft.Resources/deployments` API yerleştirin. Daha fazla bilgi için [dağıtımları REST API](/rest/api/resources/deployments).
@@ -289,7 +288,7 @@ Bir değerlendirme döngüsü sırasında kaynaklarla eşleşen ilke tanımları
 
 ### <a name="deployifnotexists-example"></a>Deployıfnotexists örneği
 
-Örnek: SQL Server veritabanlarını transparentDataEncryption etkin olup olmadığını belirlemek için değerlendirir. Aksi durumda, etkinleştirmek için bir dağıtım yürütülür.
+Örnek: SQL Server veritabanlarını değerlendirir ve transparentDataEncryption etkinleştirilip etkinleştirilmediğini tespit edin. Aksi takdirde, etkinleştirilecek bir dağıtım yürütülür.
 
 ```json
 "if": {
@@ -342,30 +341,30 @@ Bir değerlendirme döngüsü sırasında kaynaklarla eşleşen ilke tanımları
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Bir ilke tanımı ile kullanılan Bu etkiyi *modu* , `Microsoft.ContainerService.Data`. Erişim denetimi kuralları ile tanımlanan geçirmek için kullanılan [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) için [açık İlke Aracısı](https://www.openpolicyagent.org/) (d) üzerinde [Azure Kubernetes hizmeti](../../../aks/intro-kubernetes.md).
+Bu efekt, ilke tanımı *moduyla* `Microsoft.ContainerService.Data`birlikte kullanılır. [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak üzere [rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) ile tanımlanan giriş denetimi kurallarını geçirmek için kullanılır.
 
 > [!NOTE]
-> [Kubernetes için Azure İlkesi](rego-for-aks.md) genel Önizleme aşamasındadır ve yalnızca yerleşik ilke tanımları destekler.
+> [Kubernetes Için Azure Ilkesi](rego-for-aks.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.
 
-### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirme
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
 
-Açık bir ilke aracısı giriş denetleyicisine gerçek zamanlı kümedeki herhangi bir yeni isteğinin değerlendirir.
-5 dakikada bir tam tarama küme tamamlanır ve Azure İlkesi Sonuçları rapor.
+Açık Ilke Aracısı giriş denetleyicisi, kümedeki tüm yeni istekleri gerçek zamanlı olarak değerlendirir.
+Her 5 dakikada bir küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy özellikleri
 
-**Ayrıntıları** Rego erişim denetimi kuralı açıklayın alt EnforceRegoPolicy etkisi özelliğine sahiptir.
+EnforceRegoPolicy efektinin **Details** özelliği, Rego giriş denetimi kuralını tanımlayan alt özellikler içerir.
 
-- **Policyıd** [gerekli]
-  - Benzersiz bir ad, Rego erişim denetimi kuralı bir parametre olarak geçirilir.
-- **İlke** [gerekli]
-  - Rego erişim denetimi kuralı URI'sini belirtir.
-- **policyParameters** [isteğe bağlı]
-  - Tüm parametreler ve rego ilkeyi geçirmek için değerleri tanımlar.
+- **PolicyId** istenir
+  - Rego giriş denetimi kuralına parametre olarak geçirilen benzersiz bir ad.
+- **ilke** istenir
+  - Rego giriş denetimi kuralının URI 'sini belirtir.
+- **policyParameters** seçim
+  - Rego ilkesine geçirilecek parametreleri ve değerleri tanımlar.
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy örneği
 
-Örnek: Yalnızca belirtilen kapsayıcı görüntülerini AKS izin vermek için giriş denetimi kuralı rego.
+Örnek: AKS içinde yalnızca belirtilen kapsayıcı görüntülerine izin veren rego giriş denetimi kuralı.
 
 ```json
 "if": {
@@ -423,9 +422,9 @@ Her atama ayrı ayrı değerlendirilir. Bu nedenle, hiç bir kaynak için bir f�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme örneklere [Azure ilkesi örnekleri](../samples/index.md).
+- [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
-- Anlamak için nasıl [programlı olarak ilkeler oluşturma](../how-to/programmatically-create.md).
-- Bilgi edinmek için nasıl [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
-- Bilgi edinmek için nasıl [uyumlu olmayan kaynakları düzeltme](../how-to/remediate-resources.md).
-- Bir yönetim grubu olan gözden geçirme [kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

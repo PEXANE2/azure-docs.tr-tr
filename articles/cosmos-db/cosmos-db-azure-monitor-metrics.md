@@ -1,105 +1,105 @@
 ---
-title: Azure İzleyici'den Azure Cosmos DB ölçümleri alın
+title: Azure Izleyici 'den Azure Cosmos DB ölçümleri alın
 description: ''
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: 2eb61a6b9afa3cabf1733be120dfbdacb7de4534
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/01/2019
+ms.openlocfilehash: 762c910336fa2b50a46eda23cf66d8a7aa383c52
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276801"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241232"
 ---
-# <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>İzleme ve Azure Cosmos DB Azure İzleyici ölçümleri hatalarını ayıklama
+# <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Azure Izleyici 'de Azure Cosmos DB ölçümleri izleme ve hata ayıklama
 
-Azure İzleyici API'sinden Azure Cosmos DB ölçümleri görüntüleyebilir. Azure İzleyici, Azure portalında da dahil olmak üzere, REST API aracılığıyla erişmesini ve bunları sorgulama ölçümleri ile etkileşim kurmak için çeşitli yollar sağlar PowerShell veya CLI kullanarak. Azure Cosmos DB ölçümleri bir dakikalık sıklığında varsayılan olarak toplanan düşük gecikme süreli sayısal değerler, bu ölçümleri de toplayabilirsiniz. Bu ölçümleri gerçek zamanlı senaryoları destekleme özelliğine sahiptir.  
+Azure Izleyici API 'sinden Azure Cosmos DB ölçümlerini görüntüleyebilirsiniz. Azure Izleyici, Azure portal de dahil olmak üzere ölçülerle etkileşimde bulunmak için çeşitli yollar sağlar, REST API üzerinden bunlara erişim veya PowerShell ya da CLı kullanarak sorgular. Azure Cosmos DB ölçümler, varsayılan olarak tek dakikalık bir sıklıkta toplanan düşük gecikmeli sayısal değerlerdir ve bu ölçümleri de toplayabilirsiniz. Bu ölçümler gerçek zamanlı senaryoları desteklenebilecek bir şekilde kullanılabilir.  
 
-Bu makalede Azure portalını kullanarak Azure İzleyici'den farklı Azure Cosmos DB ölçümlerini görüntüleyebilirsiniz. Ortak ilgileniyorsanız, kullanım ve bakın sorunları analiz etmek ve bunların hatalarını ayıklamak için Azure Cosmos DB ölçümleri yeniden kullanılma [İzleyici ve Azure Cosmos DB'de ölçümlerle hata ayıklama](use-metrics.md) makalesi. Var olan Azure Cosmos hesaplarınızı birini kullanın ve veritabanı, kapsayıcı, bölge, istek veya işlem düzeylerini farklı ölçümleri görüntüleyin. Bu nedenle, örnek verilerle bir Azure Cosmos hesabınız varsa ve bu verileri CRUD işlemleri emin olun.
+Bu makalede, Azure portal kullanarak Azure Izleyici 'den görüntüleyebileceğiniz farklı Azure Cosmos DB ölçümleri açıklanmaktadır. Yaygın kullanım örnekleri ile ilgileniyorsanız ve bu sorunları çözümlemek ve hatalarını ayıklamak için Azure Cosmos DB ölçümleri yeniden kullanıldığında, [Azure Cosmos DB makalesinde ölçümler Ile izleme ve hata ayıklama](use-metrics.md) bölümüne bakın. Mevcut Azure Cosmos hesaplarınızdan birini kullanacaksınız ve veritabanı, kapsayıcı, bölge, istek ya da işlem düzeylerinde farklı ölçümleri görüntüleyecaksınız. Bu nedenle, örnek veriler içeren bir Azure Cosmos hesabınız olduğundan ve bu verilerde CRUD işlemleri gerçekleştirdiğinizden emin olun.
 
-## <a name="view-metrics-from-azure-portal"></a>Azure portalından ölçümlerini görüntüleme
+## <a name="view-metrics-from-azure-portal"></a>Azure portal ölçümleri görüntüleme
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. Seçin **İzleyici** sol gezinme çubuğunda ve select **ölçümleri**.
+1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
-   ![Azure İzleyici ölçümleri bölmesinde](./media/cosmos-db-azure-monitor-metrics/monitor-metrics-blade.png)
+   ![Azure Izleyici 'de ölçümler bölmesi](./media/cosmos-db-azure-monitor-metrics/monitor-metrics-blade.png)
 
-1. Gelen **ölçümleri** bölmesinde > **bir kaynak seçin** > gerekli seçin **abonelik**, ve **kaynak grubu**. İçin **kaynak türü**seçin **Azure Cosmos DB hesapları**, var olan Azure Cosmos hesaplarınızı birini seçip **Uygula**. 
+1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin. 
 
    ![Ölçümleri görüntülemek için bir Cosmos DB hesabı seçin](./media/cosmos-db-azure-monitor-metrics/select-cosmosdb-account.png)
 
-1. Sonraki kullanılabilir ölçümler listesinden bir ölçüm seçebilirsiniz. İstek birimleri, depolama, gecikme süresi, kullanılabilirlik, Cassandra ve diğerleri için belirli ölçümleri seçebilirsiniz. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümleri](#metrics-by-category) bu makalenin. Bu örnekte, seçelim **istek birimi** ve **ortalama** toplama değeri. 
+1. Ardından, kullanılabilir ölçümler listesinden bir ölçüm seçebilirsiniz. Talep birimleri, depolama, gecikme, kullanılabilirlik, Cassandra ve diğer kullanıcılara özgü ölçümleri seçebilirsiniz. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için bu makalenin [kategoriye göre ölçümler](#metrics-by-category) bölümüne bakın. Bu örnekte, **istek birimlerini** ve toplama değeri olarak **Ort** ' i seçelim. 
 
-   Bu ayrıntılar yanı sıra de seçebilirsiniz **zaman aralığı** ve **zaman ayrıntı düzeyi** ölçümleri. En fazla son 30 güne ilişkin ölçümleri görüntüleyebilir.  Filtre uygulandıktan sonra filtresine göre bir grafik görüntülenir. İstek birimleri, seçilen süre için dakika başına tüketilen ortalama sayısını görebilirsiniz.  
+   Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir. Seçili dönem için dakika başına tüketilen ortalama istek birimi sayısını görebilirsiniz.  
 
-   ![Azure portalından bir ölçüm seçin](./media/cosmos-db-azure-monitor-metrics/metric-types.png)
+   ![Azure portal bir ölçüm seçin](./media/cosmos-db-azure-monitor-metrics/metric-types.png)
 
-## <a name="add-filters-to-metrics"></a>Ölçümler için filtreleri ekleyin
+## <a name="add-filters-to-metrics"></a>Ölçümlere filtre ekleme
 
-Ayrıca ölçümleri ve belirli bir tarafından görüntülenen grafik filtreleyebilirsiniz **CollectionName**, **DatabaseName**, **OperationType**, **bölge**, ve **StatusCode**. Ölçümler filtre uygulamak için seçin **Filtre Ekle** ve gerekli özelliği gibi seçin **OperationType** ve gibi bir değer seçin **sorgu**. Grafik, seçilen süre için sorgu işlemi için kullanılan istek birimleri ardından görüntüler. Saklı yordam yürütülen işlemler OperationType Ölçüm altında kullanılabilir olmayan şekilde günlüğe kaydedilmez.
+Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **OperationType**, **Region**ve **StatusCode**tarafından görüntülenmiş grafik için filtre uygulayabilirsiniz. Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **OperationType** gibi gerekli özelliği seçin ve **sorgu**gibi bir değer seçin. Grafik daha sonra seçili dönem için sorgu işlemi için kullanılan istek birimlerini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
 
-![Ölçüm ayrıntı düzeyi seçmek için bir filtre Ekle](./media/cosmos-db-azure-monitor-metrics/add-metrics-filter.png)
+![Ölçüm ayrıntı düzeyini seçmek için filtre ekleyin](./media/cosmos-db-azure-monitor-metrics/add-metrics-filter.png)
 
-Ölçümleri kullanarak gruplayabilirsiniz **uygulamak bölme** seçeneği. Örneğin, işlem türü başına istek birimi grubunda ve aynı anda aşağıdaki görüntüde gösterildiği gibi tüm işlemler için grafı görüntülemek: 
+**Bölmeyi Uygula** seçeneğini kullanarak ölçümleri gruplandırabilirsiniz. Örneğin, her işlem türü için istek birimlerini gruplandırabilir ve aşağıdaki görüntüde gösterildiği gibi tüm işlemlerin tek seferde grafiğini görüntüleyebilirsiniz: 
 
-![Ekleme bölme Filtre Uygula](./media/cosmos-db-azure-monitor-metrics/apply-metrics-splitting.png)
+![Uygulama bölme filtresi ekle](./media/cosmos-db-azure-monitor-metrics/apply-metrics-splitting.png)
 
 
-## <a id="metrics-by-category"></a>Kategoriye göre ölçümleri
+## <a id="metrics-by-category"></a>Kategoriye göre ölçümler
 
 ### <a name="request-metrics"></a>İstek ölçümleri
             
-|Ölçüm (ölçüm görünen adı)|Birim (toplama türü) |Açıklama|Boyutlar| Zaman ayrıntı düzeyi| Eski ölçüm eşleme | Kullanım |
+|Ölçüm (ölçüm görünen adı)|Birim (toplama türü) |Açıklama|Boyutlar| Zaman granluğunu| Eski ölçüm eşlemesi | Kullanım |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (toplam istek sayısı) | Count (sayı) | Yapılan istek sayısı| DatabaseName, CollectionName, bölge, StatusCode| Tümü | Hizmet kullanılamıyor, istekler daraltıldı, saniye başına ortalama istek Http 2xx, 3xx, Http 400, Http 401 Http TotalRequests, iç sunucu hatası | Durum kodu, bir dakikalık ayrıntı düzeyi, koleksiyon başına istekleri izlemek için kullanılır. Saniye başına ortalama istek almak için dakika sayısı toplama kullanın ve 60 bölün. |
-| MetadataRequests (meta veri isteği) |Count (sayı) | Meta veri isteği sayısı. Azure Cosmos DB koleksiyonları, veritabanları vb. listeleme olanak tanır, her hesap için sistem meta veri koleksiyonu tutar ve bunların yapılandırmalarının ücretsiz. | DatabaseName, CollectionName, bölge, StatusCode| Tümü| |Meta veri isteği nedeniyle kısıtlamalar izlemek için kullanılır.|
-| MongoRequests (Mongo istek) | Count (sayı) | Mongo istekleri sayısı | DatabaseName CollectionName, bölgesi CommandName, hata kodu| Tümü |Mongo sorgusu istek hızı, Mongo güncelleştirme isteği oranı oranı, Mongo silmek, Mongo istek hızı Ekle istek Mongo sayısı istek oranı| Mongo istek hataları izlemek için kullanılan komut başına kullanımları yazın. |
+| TotalRequests (Toplam Istek) | Sayı (sayı) | Yapılan istek sayısı| DatabaseName, CollectionName, bölge, StatusCode| Tümü | TotalRequests, http 2xx, http 3xx, HTTP 400, http 401, Iç sunucu hatası, hizmet kullanılamıyor, kısıtlanmış Istekler, saniye başına ortalama Istek | Durum kodu başına istekleri, bir dakika ayrıntı düzeyi kapsayıcısını izlemek için kullanılır. Saniye başına ortalama istek almak için dakika olarak sayı toplama kullanın ve 60 ile bölün. |
+| MetadataRequests (meta veri Istekleri) |Sayı (sayı) | Meta veri isteklerinin sayısı. Azure Cosmos DB, her hesap için sistem meta veri kapsayıcısını korur, bu da koleksiyonları, veritabanlarını, vb. ve bunların yapılandırmalarının ücretsiz olarak numaralandırılmasını sağlar. | DatabaseName, CollectionName, bölge, StatusCode| Tümü| |Meta veri istekleri nedeniyle kısıtları izlemek için kullanılır.|
+| MongoRequests (Mongo Istekleri) | Sayı (sayı) | Yapılan Mongo Isteği sayısı | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Tümü |Mongo sorgu Isteği hızı, Mongo güncelleştirme Isteği hızı, Mongo silme Isteği oranı, Mongo ekleme Isteği hızı, Mongo sayımı Istek hızı| Mongo istek hatalarını izlemek için kullanılır, komut türü başına kullanımlar. |
 
 ### <a name="request-unit-metrics"></a>İstek birimi ölçümleri
 
-|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman ayrıntı düzeyi| Eski ölçüm eşleme | Kullanım |
+|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman granluğunu| Eski ölçüm eşlemesi | Kullanım |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (Mongo istek ücret) | Sayısı (toplam) |Tüketilen mongo istek birimleri| DatabaseName CollectionName, bölgesi CommandName, hata kodu| Tümü |Mongo sorgusu istek yükü, Mongo güncelleştirme ücreti, Mongo istek yükü silin, istek yükü, Mongo Ekle Mongo sayısı isteği ücret iste| Bir dakika içinde Mongo kaynak RU'ları izlemek için kullanılır.|
-| TotalRequestUnits (toplam istek birimleri)| Sayısı (toplam) | Tüketilen birimler iste| DatabaseName, CollectionName, bölge, StatusCode |Tümü| TotalRequestUnits| Dakikalık bir ayrıntı düzeyi toplam RU kullanımını izlemek için kullanılır. Tüketilen ortalama RU almak için toplam toplama dakikada kullanın ve 60 bölün.|
-| ProvisionedThroughput (sağlanan aktarım hızı)| Count (maksimum) |Koleksiyon ayrıntı düzeyinde sağlanan aktarım hızı| DatabaseName, CollectionName| 5 DK| | Koleksiyon başına sağlanan aktarım hızı izlemek için kullanılır.|
+| Mongorequestücret(Mongo Istek ücreti) | Sayı (Toplam) |Tüketilen Mongo Istek birimleri| DatabaseName, CollectionName, Region, CommandName, ErrorCode| Tümü |Mongo sorgu Isteği ücreti, Mongo güncelleştirme Isteği ücreti, Mongo silme Isteği ücreti, Mongo ekleme Isteği ücreti, Mongo sayım Isteği ücreti| Mongo kaynağını bir dakika içinde izlemek için kullanılır.|
+| TotalRequestUnits (Toplam Istek birimi)| Sayı (Toplam) | Tüketilen istek birimleri| DatabaseName, CollectionName, bölge, StatusCode |Tümü| TotalRequestUnits| Toplam RU kullanımını bir dakika ayrıntı düzeyinde izlemek için kullanılır. Saniye başına tüketilen ortalama RU 'yu almak için, dakikada toplam toplama kullanın ve 60 ile bölün.|
+| Provisionedüretilen iş hacmi (sağlanan aktarım hızı)| Sayı (en fazla) |Kapsayıcı ayrıntı düzeyinde sağlanan aktarım hızı| DatabaseName, ContainerName| 5 DK| | Kapsayıcı başına sağlanan aktarım hızını izlemek için kullanılır.|
 
 ### <a name="storage-metrics"></a>Depolama ölçümleri
 
-|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman ayrıntı düzeyi| Eski ölçüm eşleme | Kullanım |
+|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman granluğunu| Eski ölçüm eşlemesi | Kullanım |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (kullanılabilir depolama alanı) |Bayt sayısı (toplam) | Bölge başına 5 dakika ayrıntı düzeyi, raporlanan toplam kullanılabilir depolama alanı| DatabaseName, CollectionName, bölge| 5 DK| Kullanılabilir depolama alanı| Kullanılabilir depolama alanı izlemek için kullanılan kapasite (yalnızca sabit depolama koleksiyonlar için geçerlidir) en az ayrıntı düzeyi 5 dakika olmalıdır.| 
-| DataUsage (veri kullanımı) |Bayt sayısı (toplam) |Bölge başına 5 dakika ayrıntı düzeyi, rapor edilen toplam veri kullanımı| DatabaseName, CollectionName, bölge| 5 DK |Veri boyutu | En düşük ayrıntı düzeyi, koleksiyon ve bölge toplam veri kullanımı izlemek için kullanılan, 5 dakika olmalıdır.|
-| IndexUsage (dizin kullanım) | Bayt sayısı (toplam) |Bölge başına 5 dakika ayrıntı düzeyi, toplam dizin kullanım raporlama| DatabaseName, CollectionName, bölge| 5 DK| Dizin boyutu| En düşük ayrıntı düzeyi, koleksiyon ve bölge toplam veri kullanımı izlemek için kullanılan, 5 dakika olmalıdır. |
-| DocumentQuota (belge kota) | Bayt sayısı (toplam) | Bölge başına 5 dakika ayrıntı düzeyi, toplam depolama kotası bildirdi.| DatabaseName, CollectionName, bölge| 5 DK |Depolama Kapasitesi| En düşük ayrıntı düzeyi, koleksiyon ve bölge toplam kota izlemek için kullanılan, 5 dakika olmalıdır.|
-| DocumentCount (belge sayısı) | Sayısı (toplam) |Bölge başına 5 dakika ayrıntı düzeyi, raporlanan toplam belge sayısı| DatabaseName, CollectionName, bölge| 5 DK |Belge sayısı|En düşük ayrıntı düzeyi, koleksiyon ve bölge belge sayısı izlemek için kullanılan, 5 dakika olmalıdır.|
+| AvailableStorage (kullanılabilir depolama) |Bayt (Toplam) | Bölge başına 5 dakikalık ayrıntı düzeyinde raporlanan toplam kullanılabilir depolama alanı| DatabaseName, CollectionName, bölgesi| 5 DK| Kullanılabilir depolama alanı| Kullanılabilir depolama kapasitesini (yalnızca sabit depolama koleksiyonları için geçerlidir) izlemek için kullanılan en az ayrıntı düzeyi 5 dakika olmalıdır.| 
+| DataUsage (veri kullanımı) |Bayt (Toplam) |Bölge başına 5 dakikalık ayrıntı düzeyinde raporlanan toplam veri kullanımı| DatabaseName, CollectionName, bölgesi| 5 DK |Veri boyutu | Kapsayıcıda ve bölgede toplam veri kullanımını izlemek için kullanılır, en az ayrıntı düzeyi 5 dakika olmalıdır.|
+| Indexusage (Dizin kullanımı) | Bayt (Toplam) |Bölge başına 5 dakikalık ayrıntı düzeyinde raporlanan toplam dizin kullanımı| DatabaseName, CollectionName, bölgesi| 5 DK| Dizin Boyutu| Kapsayıcıda ve bölgede toplam veri kullanımını izlemek için kullanılır, en az ayrıntı düzeyi 5 dakika olmalıdır. |
+| DocumentQuota (belge kotası) | Bayt (Toplam) | Bölge başına 5 dakikalık ayrıntı düzeyinde raporlanan toplam depolama kotası.| DatabaseName, CollectionName, bölgesi| 5 DK |Depolama Kapasitesi| Kapsayıcıda ve bölgede toplam kotayı izlemek için kullanılan minimum ayrıntı düzeyi 5 dakika olmalıdır.|
+| DocumentCount (belge sayısı) | Sayı (Toplam) |Bölge başına 5 dakikalık ayrıntı düzeyinde raporlanan toplam belge sayısı| DatabaseName, CollectionName, bölgesi| 5 DK |Belge sayısı|Kapsayıcıda ve bölgede belge sayısını izlemek için kullanılan minimum ayrıntı düzeyi 5 dakika olmalıdır.|
 
-### <a name="latency-metrics"></a>Gecikme süresi ölçülerini
+### <a name="latency-metrics"></a>Gecikme süresi ölçümleri
 
-|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman ayrıntı düzeyi| Kullanım |
+|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman granluğunu| Kullanım |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (çoğaltma gecikmesi)| Milisaniye (düşük, en yüksek, ortalama) | Kaynak ve hedef bölgede coğrafi özellikli hesabının P99 çoğaltma gecikmesi| SourceRegion, TargetRegion| Tümü | Coğrafi olarak çoğaltılmış bir hesap için herhangi iki bölgeleri arasında P99 çoğaltma gecikmesi izlemek için kullanılır. |
+| ReplicationLatency (çoğaltma gecikme süresi)| Milisaniye (en düşük, en fazla, Ortalama) | Coğrafi olarak etkinleştirilen hesap için kaynak ve hedef bölgelerde P99 çoğaltma gecikme süresi| SourceRegion, TargetRegion| Tümü | Coğrafi olarak çoğaltılan bir hesabın iki bölgesi arasındaki P99 çoğaltma gecikmesini izlemek için kullanılır. |
 
 
-### <a name="availability-metrics"></a>Kullanılabilirlik ölçümlerini
+### <a name="availability-metrics"></a>Kullanılabilirlik ölçümleri
 
-|Ölçüm (ölçüm görünen adı) |Birim (toplama türü)|Açıklama| Zaman ayrıntı düzeyi| Eski ölçüm eşleme | Kullanım |
+|Ölçüm (ölçüm görünen adı) |Birim (toplama türü)|Açıklama| Zaman granluğunu| Eski ölçüm eşlemesi | Kullanım |
 |---|---|---|---| ---| ---|
-| ServiceAvailability (hizmet kullanılabilirlik)| Yüzde (Minimum, maksimum) | Hesap istekleri kullanılabilirliğine bir saat ayrıntı düzeyi| 1H | Hizmet kullanılabilirliği | İstekleri geçirilen toplam yüzde temsil eder. Bir isteği 410, durum kodu ise, sistem hatası nedeniyle başarısız olarak kabul edilir 500 veya 503 saat ayrıntı düzeyi hesabında kullanılabilirliğini izlemek için kullanılır. |
+| ServiceAvailability (hizmet kullanılabilirliği)| Yüzde (en düşük, en fazla) | Hesap istekleri bir saat ayrıntı düzeyinde kullanılabilirlik| 1 SA | Hizmet kullanılabilirliği | Geçilen toplam istek yüzdesini temsil eder. Durum kodu 410, 500 ya da Tarih ayrıntı düzeyi olarak hesabın kullanılabilirliğini izlemek için kullanılan 503 ise sistem hatası nedeniyle bir istek başarısız olarak kabul edilir. |
 
 
 ### <a name="cassandra-api-metrics"></a>Cassandra API ölçümleri
 
-|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman ayrıntı düzeyi| Kullanım |
+|Ölçüm (ölçüm görünen adı)|Birim (toplama türü)|Açıklama|Boyutlar| Zaman granluğunu| Kullanım |
 |---|---|---|---| ---| ---|
-| CassandraRequests (Cassandra istek) | Count (sayı) | Yapılan Cassandra API isteklerinin sayısı| DatabaseName, CollectionName, hata kodu, bölge, OperationType, kaynak türü| Tümü| Dakikalık bir ayrıntı düzeyi Cassandra istekleri izlemek için kullanılır. Saniye başına ortalama istek almak için dakika sayısı toplama kullanın ve 60 bölün.|
-| CassandraRequestCharges (Cassandra isteği ücretleri) | Sayısı (toplam, Min, Max, Avg) | İstek birimleri Cassandra API istekleri tarafından kullanılan| DatabaseName, CollectionName, bölge, OperationType, kaynak türü| Tümü| Dakika başına Cassandra API hesabı tarafından kullanılan RU'ları izlemek için kullanılır.|
-| CassandraConnectionClosures (Cassandra bağlantı kapanışlar) |Count (sayı) |Cassandra kapatılan bağlantılar sayısı| ClosureReason, bölge| Tümü | İstemcileri ve Azure Cosmos DB Cassandra API'SİNİN arasındaki bağlantıyı izlemek için kullanılır.|
+| CassandraRequests (Cassandra Istekleri) | Sayı (sayı) | Yapılan Cassandra API isteği sayısı| DatabaseName, CollectionName, ErrorCode, bölge, OperationType, ResourceType| Tümü| Cassandra isteklerini bir dakikalık ayrıntı düzeyinde izlemek için kullanılır. Saniye başına ortalama istek almak için dakika olarak sayı toplama kullanın ve 60 ile bölün.|
+| CassandraRequestCharges (Cassandra Istek ücretleri) | Sayı (Toplam, en az, en fazla, Ortalama) | Cassandra API istekleri tarafından tüketilen istek birimleri| DatabaseName, CollectionName, bölge, OperationType, ResourceType| Tümü| Bir Cassandra API hesabıyla dakikada kullanılan ru 'yi izlemek için kullanılır.|
+| Cassandraconnectionkapanışları (Cassandra bağlantı kapanışları) |Sayı (sayı) |Kapatılan Cassandra bağlantısı sayısı| ClosureReason, bölge| Tümü | İstemcilerle Azure Cosmos DB Cassandra API arasındaki bağlantıyı izlemek için kullanılır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB hesabı ölçümleri bölmesi ölçümleri görüntüleyin ve izleyin](use-metrics.md)
+* [Azure Cosmos DB hesabı ölçümleri bölmesinden ölçümleri görüntüleme ve izleme](use-metrics.md)
 
-* [Azure Cosmos DB'de tanılama günlüğüne kaydetme](logging.md)
+* [Azure Cosmos DB tanılama günlüğü](logging.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f5052d7e35c3d1c81a3d958bd6e340b9a6a5a244
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442179"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810687"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
 
@@ -97,7 +97,7 @@ Rolleri yönetmek için, **ambarı yönetimi sayfasına**gidin, ardından sol ta
 
 Her role verilen izinlerin listesini görmek için Roller sayfasındaki **Roller** tablosu üst bilgisinin yanındaki mavi soru işaretine tıklayın.
 
-![Roller menü bağlantısı](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![Roller menü bağlantısı izinleri](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png "Roller menü bağlantısı izinleri")
 
 Bu sayfada, Kullanıcı ve grupların rollerini yönetmek için kullanabileceğiniz iki farklı görünüm vardır: Engelle ve listele.
 

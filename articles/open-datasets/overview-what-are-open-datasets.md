@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: 7fa8562c466c81ebc05360bf06cdde1ee29bed9e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598975"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213584"
 ---
 # <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Azure açık veri kümeleri (Önizleme) nedir ve nasıl kullanılabilir?
 
@@ -49,7 +49,7 @@ Azure hesabıyla, kod kullanarak veya Azure hizmet arabirimi aracılığıyla a�
 
 Açık veri kümeleri, verileri Azure Machine Learning hizmetine ve Azure Databricks bağlamak için kullanabileceğiniz Azure Notebooks ve Azure Databricks Not defterleri sağlar. Veri kümelerine bir Python SDK üzerinden de erişilebilir. 
 
-Ancak açık veri kümelerine erişmeniz için bir Azure hesabınızın olması gerekmez; kendileriyle, Spark olmadan veya eklemeden herhangi bir Python ortamından erişebilirsiniz.
+Ancak açık veri kümelerine erişmeniz için bir Azure hesabınızın olması gerekmez; Bunlarla veya Spark olmadan herhangi bir Python ortamından erişebilirsiniz.
 
 ## <a name="request-or-contribute-datasets"></a>Veri kümeleri isteme veya katkıda bulunma
 

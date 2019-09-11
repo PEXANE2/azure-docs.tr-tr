@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996669"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813579"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure SQL veri ambarı veri kopyalayın 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -146,7 +146,7 @@ Hizmet sorumlusu tabanlı Azure AD uygulama belirteci kimlik doğrulamasını ku
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Hizmet sorumlusuna gerekli izinleri vermek** SQL kullanıcıları veya diğerleri için normalde yaptığınız gibi. Aşağıdaki kodu çalıştırın veya daha fazla seçeneğe bakın. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
+4. **Hizmet sorumlusuna gerekli izinleri vermek** SQL kullanıcıları veya diğerleri için normalde yaptığınız gibi. Aşağıdaki kodu çalıştırın veya daha [fazla seçeneğe bakın](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -196,7 +196,7 @@ Yönetilen kimlik kimlik doğrulamasını kullanmak için şu adımları izleyin
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi **Data Factory yönetilen kimliğe gerekli Izinleri verin** . Aşağıdaki kodu çalıştırın veya daha fazla seçeneğe bakın. [](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
+3. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi **Data Factory yönetilen kimliğe gerekli Izinleri verin** . Aşağıdaki kodu çalıştırın veya daha [fazla seçeneğe bakın](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Verileri yüklemek için PolyBase kullanmak istiyorsanız [gerekli veritabanı iznini](#required-database-permission)öğrenin.
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -234,7 +234,9 @@ Veya Azure SQL veri ambarı 'ndan veri kopyalamak için aşağıdaki özellikler
 | Özellik  | Açıklama                                                  | Gerekli                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | **type** kümesinin özelliği ayarlanmalıdır **AzureSqlDWTable**. | Evet                         |
-| tableName | Tablo veya Görünüm başvuran bağlı hizmetin Azure SQL veri ambarı örneğinde adı. | Kaynak, havuz için Evet Hayır |
+| schema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
+| table | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
+| tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için ve `schema` `table`kullanın. | Kaynak, havuz için Evet Hayır |
 
 #### <a name="dataset-properties-example"></a>Veri kümesi özellikleri örneği
 
@@ -250,7 +252,8 @@ Veya Azure SQL veri ambarı 'ndan veri kopyalamak için aşağıdaki özellikler
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -379,6 +382,8 @@ Azure SQL veri ambarı'na veri kopyalamak için kopyalama etkinliği Havuz tür�
 | writeBatchSize    | **Toplu iş BAŞıNA**SQL tablosuna eklenecek satır sayısı. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **tamsayı** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirleme. | Hayır                                            |
 | writeBatchTimeout | Toplu ekleme işlemi zaman aşımına uğramadan önce tamamlanması için bir süre bekleyin. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **timespan**. Örnek: "00:30:00" (30 dakika). | Hayır                                            |
 | preCopyScript     | Her bir çalıştırmada Azure SQL Data Warehouse'a veri yazılmadan önce çalıştırmak kopyalama etkinliği için bir SQL sorgusunu belirtin. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
+| tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
+| disableMetricsCollection | Data Factory, kopyalama performansı iyileştirmesi ve önerileri için SQL veri ambarı DWUs gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, devre dışı bırakmak için `true` belirtin. | Hayır (varsayılan değer `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL veri ambarı havuzu örnek
 
@@ -536,6 +541,10 @@ Veri kaynağınızı satırları 1 MB'den büyük olduğunda, dikey olarak kayna
 
 Alternatif olarak, bu tür geniş sütunlara sahip veriler için, "PolyBase 'e izin ver" ayarını kapatarak ADF kullanarak verileri yüklemek için PolyBase 'i kullanabilirsiniz.
 
+### <a name="sql-data-warehouse-resource-class"></a>SQL veri ambarı kaynak sınıfı
+
+Olası en iyi verimi elde etmek için PolyBase aracılığıyla SQL veri ambarı'na veri yükleyen kullanıcının daha büyük bir kaynak sınıfına atayın.
+
 ### <a name="polybase-troubleshooting"></a>PolyBase sorunlarını giderme
 
 **Ondalık sütuna yükleniyor**
@@ -549,13 +558,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 Çözüm, "**tür Varsayılanı kullan**" seçeneğinin (false olarak) kopyalama etkinliği havuzu-> PolyBase ayarları ' nda seçimini kaldırır. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )", PolyBase metin dosyasından verileri aldığında sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirten PolyBase yerel bir yapılandırmadır. 
 
-**Diğer**
-
-### <a name="sql-data-warehouse-resource-class"></a>SQL veri ambarı kaynak sınıfı
-
-Olası en iyi verimi elde etmek için PolyBase aracılığıyla SQL veri ambarı'na veri yükleyen kullanıcının daha büyük bir kaynak sınıfına atayın.
-
-### <a name="tablename-in-azure-sql-data-warehouse"></a>**tableName** Azure SQL veri ambarı
+**`tableName`Azure SQL veri ambarı 'nda**
 
 Aşağıdaki tabloda belirtmek örnekler verilmektedir **tableName** JSON veri kümesi özelliği. Bu, çeşitli birleşimlerini şema ve tablo adları gösterir.
 
@@ -572,7 +575,7 @@ Aşağıdaki hatayı görürseniz, sorunu için belirtilen değer olabilir **tab
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-### <a name="columns-with-default-values"></a>Varsayılan değeri olan sütunları
+**Varsayılan değerlere sahip sütunlar**
 
 Şu anda, Data Factory, PolyBase özelliği yalnızca aynı sayıda sütun hedef tabloda olduğu gibi kabul eder. Bunlardan biri, varsayılan bir değerle tanımlandığı dört sütunlarını içeren bir tablo buna bir örnektir. Giriş verilerini hala dört sütun olması gerekir. Üç sütunlu giriş veri kümesi aşağıdaki iletiye benzer bir hata verir:
 

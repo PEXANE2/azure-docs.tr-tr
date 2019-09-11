@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 156486f4f4f0df3d4bb4ab76492709bbecfb8eb5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906470"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393836"
 ---
 ## <a name="set-up"></a>Ayarlama
 
@@ -23,4 +23,4 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
 
 * `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`-Translator Metin Çevirisi kaynağınız için abonelik anahtarı.
-* `TRANSLATOR_TEXT_ENDPOINT`-Kaynağınız için bölgesel uç nokta veya özel alt etki alanı adı.
+* `TRANSLATOR_TEXT_ENDPOINT`-Translator Metin Çevirisi için genel uç nokta. Kullanın `https://api.cognitive.microsofttranslator.com/`.

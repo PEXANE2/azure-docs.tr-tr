@@ -1,7 +1,7 @@
 ---
-title: 'Verileri dışarı aktarma: Modül başvurusu'
+title: 'Verileri dışarı aktar: Modül başvurusu'
 titleSuffix: Azure Machine Learning service
-description: Verileri dışarı aktarma modül sonuçları, Ara veriler ve çalışma verileri bulut depolama konumlarını dışında Azure Machine Learning içine denemelerinizden kaydetmek için Azure Machine Learning hizmetinde kullanmayı öğrenin.
+description: Denemeleri Azure Machine Learning dışındaki bulut depolama hedeflerine sonuçları, ara verileri ve çalışma verilerini kaydetmek için Azure Machine Learning hizmetinde verileri dışarı aktar modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,75 +9,74 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: c3744803f172edf9fbf2556a12677e8faef370c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028328"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128771"
 ---
-# <a name="export-data-module"></a>Dışarı aktarma veri Modülü
+# <a name="export-data-module"></a>Veri modülünü dışarı aktarma
 
-Bu makalede bir modül, Azure Machine Learning hizmeti için görsel arabirim (Önizleme).
+Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
-Sonuçlar, Ara veriler ve çalışma verileri bulut depolama konumlarını dışında Azure Machine Learning içine denemelerinizden kaydetmek için bu modülü kullanın.
+Bu modülü, denemeleri ' den Azure Machine Learning dışında bulut depolama hedeflerine sonuçları, ara verileri ve çalışma verilerini kaydetmek için kullanın.
 
-Bu modül, dışarı aktarma veya aşağıdaki bulut veri hizmetlerinden verileriniz kaydedilirken destekler:
+Bu modül, verilerinizi aşağıdaki bulut veri hizmetlerine vermeyi veya kaydetmeyi destekler:
 
 
-- **Dışarı aktarma, Azure Blob depolama alanına**: Verileri Azure Blob hizmetine kaydeder. Blob hizmeti verileri herkese açık şekilde paylaşılan veya güvenli uygulama veri depolarında kaydedildi.
+- **Azure Blob depolamaya aktarma**: Verileri Azure 'daki blob hizmetine kaydeder. Blob hizmetindeki veriler, genel olarak paylaşılabilir veya güvenli uygulama veri depolarında kaydedilebilir.
 
   
-## <a name="how-to-configure-export-data"></a>Yapılandırma verilerini dışarı aktar
+## <a name="how-to-configure-export-data"></a>Dışarı aktarma verilerini yapılandırma
 
-1. Ekleme **verileri dışarı aktarma** denemenizde arabirimi modülü. Bu modülde bulabilirsiniz **giriş ve çıkış** kategorisi.
+1. **Veri dışa aktarma** modülünü arabirimindeki denemenize ekleyin. Bu modülü **giriş ve çıkış** kategorisinde bulabilirsiniz.
 
-2. Connect **verileri dışarı aktarma** dışarı aktarmak istediğiniz verileri içeren modül.
+2. Dışarı aktarma **verilerini** , dışarı aktarmak istediğiniz verileri içeren modüle bağlayın.
 
-3. Çift **verileri dışarı aktarma** açmak için **özellikleri** bölmesi.
+3. **Verileri dışarı aktar** ' a çift tıklayarak **Özellikler** bölmesini açın.
 
-4. İçin **veri hedef**, bulut depolama kaydettiğiniz veri türünü seçin. Diğer tüm özellikler için bu seçeneği herhangi bir değişiklik yaparsanız sıfırlanır. Bu nedenle bu seçeneği ilk seçtiğinizden emin olun!
+4. **Veri hedefi**için, verilerinizi kaydedeceğiniz bulut depolama türünü seçin. Bu seçenekte herhangi bir değişiklik yaparsanız, diğer tüm özellikler sıfırlanır. Bu nedenle, önce bu seçeneği seçtiğinizden emin olun!
 
-5. Belirtilen depolama hesabına erişmek için gereken bir hesap adı ve kimlik doğrulama yöntemi sağlar.
+5. Belirtilen depolama hesabına erişmek için gerekli bir hesap adı ve kimlik doğrulama yöntemi sağlayın.
 
-    **Dışarı aktarma, Azure Blob depolama alanına** tek seçenek özel Önizleme aşamasındadır. Aşağıdaki modül ayarlama işlemi gösterilmektedir.
-    1. Büyük miktarlarda verinin ikili veriler de dahil olmak üzere depolamak için Azure blob hizmetidir. Blob storage'nın iki tür vardır: Genel BLOB'lar ve oturum açma kimlik bilgileri gerektiren BLOB'ları.
+    **Azure Blob depolama 'Ya aktarma** işlemi, özel önizlemede tek seçenektir. Aşağıda modülün nasıl ayarlanacağı gösterilmektedir.
+    1. Azure Blob hizmeti, ikili veriler de dahil olmak üzere büyük miktarda veriyi depolamaya yöneliktir. İki tür BLOB depolama alanı vardır: genel blob 'lar ve oturum açma kimlik bilgileri gerektiren Bloblar.
 
-    2. İçin **kimlik doğrulama türü**, seçin **genel (SAS)** depolama erişimi bir SAS URL'si aracılığıyla desteklediğini biliyorsanız.
+    2. Bir SAS URL 'SI aracılığıyla depolamanın erişimi desteklediğini biliyorsanız **kimlik doğrulama türü**için **ortak (SAS)** seçeneğini belirleyin.
 
-          Bir SAS URL'si, bir Azure depolama yardımcı programını kullanarak oluşturulabilir ve yalnızca sınırlı bir süre için kullanılabilir URL özel türüdür.  Bu kimlik doğrulama ve indirme için gerekli tüm bilgileri içerir.
+          SAS URL 'SI, Azure Storage yardımcı programı kullanılarak oluşturulabilecek ve yalnızca sınırlı bir süre için kullanılabilen özel bir URL türüdür.  Kimlik doğrulaması ve indirme için gereken tüm bilgileri içerir.
 
-        İçin **URI**yazın veya yapıştırın hesabı ve ortak blob tanımlayan tam URI.
+        **URI**için, hesabı ve genel blobu TANıMLAYAN tam URI 'yi yazın veya yapıştırın.
 
         Dosya biçimi için CSV ve TSV desteklenir.
 
-    3. Özel hesap seçin **hesabı**ve deneme depolama hesabına yazabilmesi amacıyla hesap adını ve hesap anahtarı sağlayın.
+    3. Özel hesaplar için **Hesap**' ı seçin ve hesap adı ve hesap anahtarı ' nı belirtin, böylece deneme depolama hesabına yazabilir.
 
-         - **Hesap adı**: Yazın veya verileri kaydetmek istediğiniz hesabın adını yapıştırın. Örneğin, depolama hesabının Tam URL'si `http://myshared.blob.core.windows.net`, yazarsınız `myshared`.
+         - **Hesap adı**: Verileri kaydetmek istediğiniz hesabın adını yazın veya yapıştırın. Örneğin, depolama hesabının tam URL 'si ise `http://myshared.blob.core.windows.net`, yazmanız `myshared`gerekir.
 
         - **Hesap anahtarı**: Hesapla ilişkili depolama erişim anahtarını yapıştırın.
 
-        -  **Kapsayıcı, dizin veya blob yolu**: Dışarı aktarılan verileri depolanacağı blob adını yazın. Örneğin, adında yeni bir bloba denemenizi sonuçlarını kaydetmek için **results01.csv** kapsayıcısında **Öngörüler** adlı bir hesapta **mymldata**, tam URL'si BLOB olacak `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
+        -  **Kapsayıcı, dizin veya Blobun yolu**: İçe aktarılmış verilerin depolanacağı Blobun adını yazın. Örneğin, denemenizin sonuçlarını **mymldata**adlı bir hesaptaki kapsayıcı `http://mymldata.blob.core.windows.net/predictions/results01.csv` **tahminlerinin** **results01. csv** adlı yeni bir bloba kaydetmek için, Blobun tam URL 'si olur.
 
-            Bu nedenle, alandaki **kapsayıcı, dizin veya blob yolu**, kapsayıcı belirtirsiniz ve blob adı olarak izler: `predictions/results01.csv`
+            Bu nedenle, **kapsayıcı, dizin veya Blobun alan yolunda**kapsayıcı ve BLOB adını aşağıdaki gibi belirtirsiniz:`predictions/results01.csv`
 
-        - Olmayan bir blobun adını belirtirseniz mevcut, Azure blob sizin için oluşturur.
+        - Zaten mevcut olmayan bir Blobun adını belirtirseniz Azure, blobu sizin için oluşturur.
 
-       -  Mevcut bir bloba yazarken, geçerli bir blobun içeriğini özelliğini ayarlayarak yazılmasını belirtebilirsiniz **Azure blob depolama alanına yazma modu**. Varsayılan olarak, bu özellik kümesine **hata**, yani aynı ada sahip mevcut bir blob dosya bulunduğunda, bir hata oluşturdu.
+       -  Mevcut bir bloba yazarken, **Azure Blob depolama yazma modu**özelliği ayarlanarak Blobun geçerli içeriğinin üzerine yazılmasını belirtebilirsiniz. Varsayılan olarak, bu özellik **hata**olarak ayarlanır, yani aynı ada sahip mevcut bir blob dosyası bulunduğunda hata oluşur.
 
 
-    4. İçin **blob dosyası için dosya biçimi**, hangi veri depolanmalıdır biçimini seçin.
+    4. **BLOB dosyası Için dosya biçimi**için verilerin depolanacağı biçimi seçin.
 
-        - **CSV**: Virgülle ayrılmış değerler (CSV), varsayılan depolama biçimi ' dir. Sütun başlıkları birlikte verileri dışarı aktarmak için seçeneğini **yazma blob üst bilgi satırı**.  Azure Machine Learning'de kullanılan virgülle sınırlandırılmış biçimi hakkında daha fazla bilgi için bkz: [CSV'ye Dönüştür](./convert-to-csv.md).
+        - **CSV**: Virgülle ayrılmış değerler (CSV) varsayılan depolama biçimidir. Sütun başlıklarını verilerle birlikte dışarı aktarmak için, **BLOB üst bilgisi satırını yaz**seçeneğini belirleyin.  Azure Machine Learning ' de kullanılan virgülle ayrılmış biçim hakkında daha fazla bilgi için bkz. [CSV 'ye dönüştürme](./convert-to-csv.md).
 
-        - **TSV**: Sekmeyle ayrılmış değerler (TSV) biçimi, çok sayıda machine learning araçları ile uyumludur. Sütun başlıkları birlikte verileri dışarı aktarmak için seçeneğini **yazma blob üst bilgi satırı**.  
+        - **TSV**: Sekmeyle ayrılmış değerler (TSV) biçimi birçok makine öğrenimi araçlarıyla uyumludur. Sütun başlıklarını verilerle birlikte dışarı aktarmak için, **BLOB üst bilgisi satırını yaz**seçeneğini belirleyin.  
 
  
-    5. **Önbelleğe alınan sonuçları kullanmak**: Sonuçları blob dosyasına yeniden denemeyi her çalıştırdığınızda kaçınmak istiyorsanız bu seçeneği belirleyin. Modül parametrelerini için başka bir değişiklik varsa, denemeyi modülü, yalnızca ilk çalıştırıldığında sonuçları yazar veya verilerde yapılan değişiklikler olduğunda.
+    5. **Önbelleğe alınmış sonuçları kullan**: Denemeyi her çalıştırışınızda sonuçları blob dosyasına yeniden yazmayı önlemek istiyorsanız bu seçeneği belirleyin. Modül parametrelerinde başka bir değişiklik yoksa, deneme sonuçları yalnızca modülün ilk kez çalıştırıldığı zaman veya verilerde değişiklik olduğunda yazar.
 
     6. Denemeyi çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [kullanılabilir modül kümesini](module-reference.md) Azure Machine Learning hizmetine. 
+Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 

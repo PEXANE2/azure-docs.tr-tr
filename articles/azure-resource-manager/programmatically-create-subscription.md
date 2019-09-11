@@ -1,18 +1,18 @@
 ---
 title: Programlı olarak Azure Enterprise abonelikleri oluşturma | Microsoft Docs
-description: Programlı olarak ek Azure Enterprise veya Enterprise dev/test abonelikleri oluşturmayı öğrenin.
+description: Program aracılığıyla ek Azure Enterprise veya Kurumsal Geliştirme ve Test abonelikleri oluşturmayı öğrenin.
 services: azure-resource-manager
 author: jureid
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 755eabe97508b403205ff04a8d2d35feee314eb9
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848706"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258936"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programlı olarak Azure Enterprise abonelikleri oluşturma (Önizleme)
 
@@ -173,7 +173,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının e-posta adresi. Yerine bu parametreyi kullanabilirsiniz `OwnerObjectId`.|
 | `OwnerApplicationId` | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir hizmet sorumlusunun uygulama KIMLIĞI. Yerine bu parametreyi kullanabilirsiniz `OwnerObjectId`. Bu parametre kullanılırken, hizmet sorumlusu [dizine okuma erişimine](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)sahip olmalıdır.| 
 
-Tüm parametrelerin tam listesini görmek için, bkz. [New-AzSubscription](/powershell/module/az.subscription.preview).
+Tüm parametrelerin tam listesini görmek için, bkz. [New-AzSubscription](/powershell/module/az.subscription).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 

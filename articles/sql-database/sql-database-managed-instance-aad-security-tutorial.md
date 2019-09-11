@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567670"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231008"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Öğretici: Azure AD Server sorumlularını (oturum açma) kullanarak Azure SQL veritabanı 'nda yönetilen örnek güvenliği
 
@@ -55,10 +55,12 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı yönetilen örneği g
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Yönetilen örneğinize erişimi sınırlandırma
 
-Yönetilen örneklere yalnızca özel bir IP adresi üzerinden erişilebilir. Yönetilen örnek ağı dışından yönetilen bir örneğe bağlanmak için kullanılabilecek hizmet uç noktası yok. Bir bağlantının yapılabilmesi için, uygulamaların veya kullanıcıların yönetilen örnek ağı 'na (VNet) erişmesi gerekir. SQL Server Daha fazla bilgi için aşağıdaki makaleye bakın, [Uygulamanızı yönetilen bir örneğe bağlayın](sql-database-managed-instance-connect-app.md).
+Yönetilen örneklere, özel bir IP adresi üzerinden erişilebilir. Bir bağlantının yapılabilmesi için, uygulamaların veya kullanıcıların yönetilen örnek ağı 'na (VNet) erişmesi gerekir. SQL Server Daha fazla bilgi için aşağıdaki makaleye bakın, [Uygulamanızı yönetilen bir örneğe bağlayın](sql-database-managed-instance-connect-app.md).
+
+Yönetilen örnekte, Azure SQL veritabanı ile aynı şekilde genel bağlantılara izin veren bir hizmet uç noktası yapılandırmak da mümkündür. Daha fazla bilgi için, [Azure SQL veritabanı yönetilen örneği 'nde ortak uç noktayı yapılandırma](sql-database-managed-instance-public-endpoint-configure.md)başlıklı makaleye bakın.
 
 > [!NOTE] 
-> Yönetilen örneklere yalnızca VNET 'in içinden erişilebileceği için, [SQL veritabanı güvenlik duvarı kuralları](sql-database-firewall-configure.md) uygulanmaz. Yönetilen örneğin kendi [yerleşik güvenlik duvarı](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)vardır.
+> Hizmet uç noktaları etkinleştirilmiş olsa bile [SQL veritabanı güvenlik duvarı kuralları](sql-database-firewall-configure.md) uygulanmaz. Yönetilen Örneğin, bağlantıyı yönetmek için kendi [yerleşik güvenlik duvarı](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) vardır.
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>SSMS kullanarak yönetilen örnek için bir Azure AD sunucu sorumlusu (oturum açma) oluşturma
 
@@ -148,8 +150,8 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve `sysadmin` ayrıcal
 1. SQL Server Management Studio kullanarak, Azure AD sunucusu sorumlusu (oturum açma) ile yönetilen örneğe bağlanın. Yönetilen örnek ana bilgisayar adınızı girin. SSMS 'de kimlik doğrulaması için bir Azure AD hesabıyla oturum açarken seçebileceğiniz üç seçenek vardır:
 
    - Active Directory-Universal with MFA desteği
-   - Active Directory - Parola
-   - Active Directory - Tümleşik </br>
+   - Active Directory-parola
+   - Active Directory ile tümleşik </br>
 
      ![SSMS-Login-Prompt. png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
@@ -189,7 +191,7 @@ Azure AD Server sorumlusu (oturum açma) oluşturulduktan ve `sysadmin` ayrıcal
         GO
         ```
 
-1. Azure AD 'de bir grup için yönetilen örnek oturum açma oluşturun. Oturum açma bilgilerini yönetilen örneğe ekleyebilmeniz için önce bu grubun Azure AD 'de mevcut olması gerekir. Bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Mygroup grubunu  oluşturun ve bu gruba üye ekleyin.
+1. Azure AD 'de bir grup için yönetilen örnek oturum açma oluşturun. Oturum açma bilgilerini yönetilen örneğe ekleyebilmeniz için önce bu grubun Azure AD 'de mevcut olması gerekir. Bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Mygroup grubunu oluşturun ve bu gruba üye ekleyin.
 
 1. SQL Server Management Studio yeni bir sorgu penceresi açın.
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073925"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163309"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -208,7 +208,12 @@ Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eş
 **Onar** Oturum Ana bilgisayar VM 'sine yan yana yığın yüklemek için bu yönergeleri izleyin.
 
 1. Doğrudan oturum ana bilgisayar VM 'sine yerel yönetici olarak almak için Uzak Masaüstü Protokolü (RDP) kullanın.
-2. Henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) indirin ve içeri aktarın.
+2. PowerShell oturumunuzda kullanmak için [Windows sanal masaüstü PowerShell modülünü](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) indirip içeri aktarın ve ardından hesabınızda oturum açmak için bu cmdlet 'i çalıştırın:
+    
+    ```powershell
+    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+    ```
+    
 3. [PowerShell ile bir konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)' yı kullanarak yan yana yığını yükler.
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Düzgün bir şekilde bir Windows sanal masaüstü yan yana yığınını çözme

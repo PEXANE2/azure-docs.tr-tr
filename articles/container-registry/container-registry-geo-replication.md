@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 manager: gwallace
 ms.service: container-registry
-ms.topic: overview
+ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574395"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208010"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry’de coğrafi çoğaltma
 
@@ -64,7 +64,7 @@ Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajl
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
 
-Coğrafi çoğaltmanın yapılandırılması, bir haritadaki bölgelere tıklanması kadar kolaydır. Azure CLı 'de [az ACR çoğaltma](/cli/azure/acr/replication) komutları dahil olmak üzere Coğrafi çoğaltmayı da yönetebilirsiniz.
+Coğrafi çoğaltmanın yapılandırılması, bir haritadaki bölgelere tıklanması kadar kolaydır. Azure CLı 'de [az ACR çoğaltma](/cli/azure/acr/replication) komutları dahil olmak üzere Coğrafi çoğaltmayı yönetebilir veya bir [Azure Resource Manager şablonuyla](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)coğrafi çoğaltma için etkinleştirilmiş bir kayıt defteri dağıtabilirsiniz.
 
 Coğrafi çoğaltma yalnızca [Premium kayıt defterlerinin](container-registry-skus.md) bir özelliğidir. Kayıt defteriniz henüz Premium değilse, [Azure Portal](https://portal.azure.com)temel ve standart 'den Premium 'a geçiş yapabilirsiniz:
 
@@ -97,8 +97,19 @@ ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye ba�
 * Coğrafi olarak çoğaltılan bir kayıt defterindeki her bölge, ayarlandıktan sonra bağımsızdır. Azure Container Registry SLA 'Lar, coğrafi olarak çoğaltılan her bölge için geçerlidir.
 * Coğrafi olarak çoğaltılan bir kayıt defterinden görüntü gönderdiğinizde veya çektiğinizde, arka planda Azure Traffic Manager, isteği size en yakın bölgede bulunan kayıt defterine gönderir.
 * En yakın bölgeye bir görüntü veya etiket güncelleştirmesi gönderdikten sonra, Azure Container Registry bildirimlerin ve katmanların seçtiğiniz kalan bölgelere çoğaltılması biraz zaman alır. Daha büyük resimler daha küçük olanlara çoğaltılmak için daha uzun sürer. Görüntüler ve Etiketler, son tutarlılık modeliyle çoğaltma bölgeleri arasında eşitlenir.
-* Coğrafi olarak çoğaltılan bir kayıt defterine gönderim güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
+* Coğrafi olarak çoğaltılan bir çekme güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
 
+## <a name="delete-a-replica"></a>Bir çoğaltmayı silme
+
+Kayıt defteriniz için bir çoğaltma yapılandırdıktan sonra, artık gerekmiyorsa, istediğiniz zaman silebilirsiniz. Azure CLı 'deki [az ACR çoğaltma Delete](/cli/azure/acr/replication#az-acr-replication-delete) komutu gibi Azure Portal veya diğer araçları kullanarak bir çoğaltmayı silin.
+
+Azure portal bir çoğaltmayı silmek için:
+
+1. Azure Container Registry gidin ve **çoğaltmalar**' ı seçin.
+1. Bir çoğaltmanın adını seçin ve **Sil**' i seçin. Çoğaltmayı silmek istediğinizi onaylayın.
+
+> [!NOTE]
+> Kayıt defterinin *giriş bölgesindeki* kayıt defteri çoğaltmasını silemezsiniz, yani kayıt defterini oluşturduğunuz konum. Yalnızca kayıt defterinin kendisini silerek giriş çoğaltmasını silebilirsiniz.
 
 ## <a name="geo-replication-pricing"></a>Coğrafi çoğaltma fiyatlandırması
 

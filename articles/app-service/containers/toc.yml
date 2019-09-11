@@ -24,7 +24,7 @@
     - name: Ruby uygulaması oluşturma
       href: quickstart-ruby.md
     - name: Özel kapsayıcı çalıştırma
-      href: quickstart-docker-go.md
+      href: quickstart-docker.md
     - name: Çok kapsayıcılı uygulama oluşturma
       href: quickstart-multi-container.md
 - name: Öğreticiler

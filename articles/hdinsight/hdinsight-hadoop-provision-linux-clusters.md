@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop, Apache Spark, Apache Kafka, Apache HBase veya R Server için küme kurulumu-Azure HDInsight
+title: Apache Hadoop, Spark, Kafka, HBase veya R Server-Azure için küme kurulumu
 description: HDInsight için Hadoop, Kafka, Spark, HBase, R Server veya fırtınası kümelerini tarayıcıdan, klasik Azure CLı, Azure PowerShell, REST veya SDK 'dan ayarlayın.
 keywords: Hadoop kümesi kurulumu, Kafka küme kurulumu, Spark kümesi kurulumu, Hadoop 'da küme nedir?
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113687"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733482"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını içeren kümeler ayarlayın
 
@@ -174,7 +174,7 @@ Küme mevcut olduğu sürece düğüm kullanımı için faturalandırılırsın�
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Her küme türü için düğüm sayısı
 Her küme türünün kendi düğüm sayısı, düğüm terminolojisi ve varsayılan VM boyutu vardır. Aşağıdaki tabloda, her düğüm türü için düğümlerin sayısı parantez içinde bulunur.
 
-| Type | Düğümler | Diyagram |
+| Type | Nodes | Diyagram |
 | --- | --- | --- |
 | Hadoop |Baş düğüm (2), çalışan düğümü (1 +) |![HDInsight Hadoop küme düğümleri](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Baş sunucu (2), bölge sunucusu (1 +), ana/ZooKeeper düğüm (3) |![HDInsight HBase küme düğümleri](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |

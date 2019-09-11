@@ -10,18 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: cfe2767b3725378bc88fe97203c7f1622558aa39
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996648"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813558"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan açık hub aracılığıyla veri kopyalama
 
 Bu makalede, Açık hub aracılığıyla SAP Business Warehouse 'tan (bant genişliği) veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+
+>[!TIP]
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
@@ -142,11 +145,8 @@ Ve SAP BW açık hub 'a veri kopyalamak için, veri kümesinin Type özelliğini
 |:--- |:--- |:--- |
 | type | Type özelliği **Sapopenhubtable**olarak ayarlanmalıdır.  | Evet |
 | openHubDestinationName | Verilerin kopyalanacağı açık hub hedefinin adı. | Evet |
-| excludeLastRequest | Son isteğin kayıtlarının dışlanıp dışlanmayacağı. | Hayır (varsayılan değer **doğru**) |
-| baseRequestId | Delta yükleme isteğinin Kımlığı. Ayarlandıktan sonra yalnızca RequestId ile bu özelliğin değerinden **büyük** olan veriler alınır.  | Hayır |
 
->[!TIP]
->Açık hub tablonuz yalnızca tek bir istek KIMLIĞI tarafından oluşturulan verileri içeriyorsa, her zaman tam yükleme yapın ve tablodaki mevcut verilerin üzerine yazar veya test için yalnızca DTP 'yi bir kez çalıştırırsanız, d 'yi kopyalamak için "excludeLastRequest" seçeneğinin işaretini kaldırmanız gerektiğini unutmayın. ata.
+Veri kümesinde ve `baseRequestId` ' `excludeLastRequest` i ayarlıyorsanız, hala olduğu gibi desteklenir, ancak etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
 
 **Örnek:**
 
@@ -155,12 +155,13 @@ Ve SAP BW açık hub 'a veri kopyalamak için, veri kümesinin Type özelliğini
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -172,7 +173,16 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="sap-bw-open-hub-as-source"></a>Açık hub 'ı kaynak olarak SAP BW
 
-SAP BW açık hub 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Sapopenhubsource**olarak ayarlayın. Etkinlik **kaynağını** kopyalama bölümünde gerekli ek türe özgü özellik yoktur.
+SAP BW açık hub 'dan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+
+| Özellik | Açıklama | Gerekli |
+|:--- |:--- |:--- |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **Sapopenhubsource**olarak ayarlanmalıdır. | Evet |
+| excludeLastRequest | Son isteğin kayıtlarının dışlanıp dışlanmayacağı. | Hayır (varsayılan değer **doğru**) |
+| baseRequestId | Delta yükleme isteğinin Kımlığı. Ayarlandıktan sonra yalnızca RequestId ile bu özelliğin değerinden **büyük** olan veriler alınır.  | Hayır |
+
+>[!TIP]
+>Açık hub tablonuz yalnızca tek bir istek KIMLIĞI tarafından oluşturulan verileri içeriyorsa, her zaman tam yükleme yapın ve tablodaki mevcut verilerin üzerine yazar veya test için yalnızca DTP 'yi bir kez çalıştırırsanız, d 'yi kopyalamak için "excludeLastRequest" seçeneğinin işaretini kaldırmanız gerektiğini unutmayın. ata.
 
 Veri yüklemeyi hızlandırmak için kopyalama etkinliğini, SAP BW açık hub [`parallelCopies`](copy-activity-performance.md#parallel-copy) 'dan paralel olarak yüklemek için ayarlayabilirsiniz. Örneğin, dört olarak ayarlarsanız `parallelCopies` Data Factory eşzamanlı olarak dört RFC çağrısını yürütür ve her RFC çağrısı, DTP istek kimliği ve paket kimliği tarafından bölümlenen SAP BW açık hub tablosundan verilerin bir kısmını alır. Bu, benzersiz DTP istek KIMLIĞI + paket KIMLIĞI sayısının değerinden büyük `parallelCopies`olduğunda geçerlidir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazmak da daha da iyidir. Bu durumda, performans tek bir dosyaya yazılmasından daha iyidir.
 
@@ -197,7 +207,8 @@ Veri yüklemeyi hızlandırmak için kopyalama etkinliğini, SAP BW açık hub [
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"

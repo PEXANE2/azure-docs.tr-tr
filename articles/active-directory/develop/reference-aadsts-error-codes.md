@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874246"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193176"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kimlik doğrulaması ve yetkilendirme hata kodları
 
@@ -31,7 +31,12 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 > [!NOTE]
 > Bu bilgiler geçicidir ve değiştirilebilir. Sorunuz mu var? ya da aradığınızı bulamıyor musunuz? Bir GitHub sorunu oluşturun veya geliştiricilerin yardım ve destek alma hakkında daha fazla bilgi edinmek için [destek ve yardım seçenekleri](active-directory-develop-help-support.md) bölümüne bakın.
 >
-> Bu belge, geliştirici ve Yönetici Kılavuzu için sağlanır, ancak hiçbir şekilde istemci tarafından kullanılmamalıdır. Hata kodları, geliştiricilerin uygulamalarını oluştururken yardımcı olmaya yönelik daha ayrıntılı hata iletileri sağlamak için herhangi bir zamanda değişebilir. Metin veya hata kodu numaralarına bağımlılığı alan uygulamalar zaman içinde bozulur.  
+> Bu belge, geliştirici ve Yönetici Kılavuzu için sağlanır, ancak hiçbir şekilde istemci tarafından kullanılmamalıdır. Hata kodları, geliştiricilerin uygulamalarını oluştururken yardımcı olmaya yönelik daha ayrıntılı hata iletileri sağlamak için herhangi bir zamanda değişebilir. Metin veya hata kodu numaralarına bağımlılığı alan uygulamalar zaman içinde bozulur.
+
+## <a name="lookup-current-error-code-information"></a>Geçerli hata kodu bilgilerini ara
+Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, aadsts hata açıklamalarını, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) düzeltmeleri ve önerilen bazı geçici çözümleri bulmak için sayfaya göz atın.  
+
+Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADSTS16000" hata kodunu aldıysanız, "16000" [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS hata kodları
 
@@ -194,6 +199,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 | AADSTS90019 | MissingTenantRealm-Azure AD, istekten kiracı tanımlayıcısını belirleyemedi. |
 | AADSTS90022 | Authenticatedınvalidprincipalnameformat-asıl ad biçimi geçerli değil veya beklenen `name[/host][@realm]` biçimi karşılamıyor. Asıl ad gereklidir, ana bilgisayar ve bölge isteğe bağlıdır ve null olarak ayarlanabilir. |
 | AADSTS90023 | Invalidrequest-kimlik doğrulama hizmeti isteği geçerli değil. |
+| AADSTS9002313 | Invalidrequest-Istek hatalı oluşturulmuş veya geçersiz. -Burada sorun, belirli bir uç nokta isteğiyle ilgili bir sorun olduğu için verilmiştir. Bu sorunun önerisi, oluşan hatanın Fiddler izlemesini almak ve isteğin gerçekten doğru şekilde biçimlendirilip biçimlendirilmediğini görmek için. |
 | AADSTS90024 | Requestdostgetexceedebir-geçici bir hata oluştu. Yeniden deneyin. |
 | AADSTS90033 | MsodsServiceUnavailable-Microsoft çevrimiçi dizin hizmeti (MSODS) kullanılamıyor. |
 | AADSTS90036 | MsodsServiceUnretryableFailure-MSODS tarafından barındırılan WCF hizmetinden beklenmedik, yeniden denenmeyen bir hata oluştu. Hata hakkında daha fazla bilgi almak için [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md). |

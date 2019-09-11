@@ -9,79 +9,104 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697902"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743845"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma
 
-Azure portal kullanarak Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın. Bilişsel hizmetler, Azure aboneliğinizde oluşturduğunuz Azure [kaynakları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) tarafından temsil edilir. Kaynağı oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için oluşturulan anahtarları ve uç noktayı kullanın. 
+Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı kullanın. Azure portal bilişsel hizmet kaynağı oluşturduktan sonra, uygulamalarınızın kimliğini doğrulamak için bir uç nokta ve anahtar alırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
-
-* Geçerli bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
+## <a name="prerequisites"></a>Önkoşullar
+
+* Geçerli bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
+
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Yeni bir Azure bilişsel hizmetler kaynağı oluşturma
 
-Bilişsel hizmetler kaynağı oluşturmadan önce, kaynağı içermesi için bir Azure Kaynak grubunuz olmalıdır. Yeni bir kaynak oluşturduğunuzda, yeni bir kaynak grubu oluşturma veya var olanı kullanma seçeneğiniz vardır. Bu makalede, yeni bir kaynak grubu oluşturma gösterilmektedir.
+1. Bir kaynak oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve **+ kaynak oluştur ' a**tıklayın.
-
-    ![Bilişsel Hizmetler API'si seçin](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
-
-2. Kullanılabilir bilişsel Hizmetleri aşağıdaki yollarla bulabilirsiniz:
-    * Arama çubuğunu kullanın ve abone olmak istediğiniz hizmetin adını girin.
-        * Çoklu hizmet kaynağı oluşturmak için arama çubuğuna bilişsel **Hizmetler** girin ve bilişsel **Hizmetler** kaynağını seçin.
-
-        ![Bilişsel hizmetler için arama](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
-
-    * Tüm kullanılabilir bilişsel hizmetler 'i görmek için **Azure Marketi**altında **AI + Machine Learning**seçin. İlgilendiğiniz hizmeti görmüyorsanız, **Tümünü görüntüle** ' ye tıklayın ve bilişsel **Hizmetler**' e gidin. Tüm Bilişsel Hizmetler API'si kataloğunu görüntülemek için **daha fazla** ' ya tıklayın.
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
     
-        ![Bilişsel Hizmetler API'si seçin](media/cognitive-services-apis-create-account/azureMarketplace.png)
+    Çoklu hizmet kaynağı, portalda bilişsel **Hizmetler** olarak adlandırılır. Bilişsel [Hizmetler kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
+    
+    Şu anda, çok hizmet kaynağı aşağıdaki bilişsel hizmetlere erişim sağlar:
+    
+    |                  |                                                      |                    |                               |                  |
+    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
+    | Görüntü İşleme  | Content Moderator                                    | Yüz               | Language Understanding (LUIS) | Metin Analizi   |
+    | Translator Metin Çevirisi  | Bing Arama sürüm 7 <br>(Web, görüntü, Haberler, video, görsel) | Bing Özel Arama | Bing Varlık Arama            | Bing Otomatik Öneri |
+    | Bing Yazım Denetimi |                                                      |                    |                               |                  |
+    
+    #### <a name="single-service-resourcetabsingleservice"></a>[Tek hizmet kaynağı](#tab/singleservice)
+
+    Kullanılabilir bilişsel hizmetler için bir kaynak oluşturmak üzere aşağıdaki bağlantıları kullanın:
+
+    | Görsel                      | Konuşma                  | Dil                          | Karar verme             | Ara                 |
+    |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
+    | [Görüntü işleme](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Konuşma Hizmetleri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Modern okuyucu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomali algılayıcısı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Arama API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
+    | [Özel Vision hizmeti](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Konuşmacı Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Özel Arama](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Yüz tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [Soru-Cevap Oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Kişiselleştirici](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Varlık Arama](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Mürekkep tanıyıcı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Metin Analizi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing Yazım Denetimi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
+    |           |                         | [Translator Metin Çevirisi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Otomatik Öneri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+    ***
 
 3. **Oluştur** sayfasında, aşağıdaki bilgileri sağlayın:
 
-    > [!IMPORTANT]
-    > Azure bilişsel hizmetler 'i çağırırken ihtiyacınız olabileceği için Azure konumunuzu unutmayın.
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **Name** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *Mybiliveservicesaccount*. |
+    | **Name** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *Mybiliveservicesresource*. |
     | **Abonelik** | Kullanılabilir Azure aboneliklerinizden birini seçin. |
-    | **Location** | Bilişsel hizmet örneğinizin konumu. Farklı konumlar gecikme gösterebilir, ancak kaynağınızın çalışma zamanı kullanılabilirliğini etkilemez. |
+    | **Location** | Bilişsel hizmet örneğinizin konumu. Farklı konumlar gecikme gösterebilir, ancak kaynağınızın çalışma zamanı kullanılabilirliğini etkilemez. Azure bilişsel hizmetler 'i çağırırken ihtiyacınız olabileceği için Azure konumunuzu unutmayın. |
     | **Fiyatlandırma katmanı** | Bilişsel hizmetler hesabınızın maliyeti, seçtiğiniz seçeneklere ve kullanımınıza bağlıdır. Daha fazla bilgi için bkz. API [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Kaynak grubu** | Bilişsel hizmetler kaynağını içerecek [Azure Kaynak grubu](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) . Yeni bir grup oluşturabilir veya önceden var olan bir gruba ekleyebilirsiniz. |
+    | **Kaynak grubu** | Bilişsel hizmetler kaynağını içerecek Azure Kaynak grubu. Yeni bir grup oluşturabilir veya önceden var olan bir gruba ekleyebilirsiniz. |
+
+    ![Kaynak oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+
+    **Oluştur**'a tıklayın.
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Tek hizmet kaynağı](#tab/singleservice)
+
+    |    |    |
+    |--|--|
+    | **Name** | Bilişsel hizmetler kaynağınız için açıklayıcı bir ad. Örneğin, *TextAnalyticsResource*. |
+    | **Abonelik** | Kullanılabilir Azure aboneliklerinizden birini seçin. |
+    | **Location** | Bilişsel hizmet örneğinizin konumu. Farklı konumlar gecikme gösterebilir, ancak kaynağınızın çalışma zamanı kullanılabilirliğini etkilemez. Azure bilişsel hizmetler 'i çağırırken ihtiyacınız olabileceği için Azure konumunuzu unutmayın. |
+    | **Fiyatlandırma katmanı** | Bilişsel hizmetler hesabınızın maliyeti, seçtiğiniz seçeneklere ve kullanımınıza bağlıdır. Daha fazla bilgi için bkz. API [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    | **Kaynak grubu** | Bilişsel hizmetler kaynağını içerecek Azure Kaynak grubu. Yeni bir grup oluşturabilir veya önceden var olan bir gruba ekleyebilirsiniz. |
 
     ![Kaynak oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
+    **Oluştur**'a tıklayın.
+
+    ***
 
 ## <a name="get-the-keys-for-your-resource"></a>Kaynağınızın anahtarlarını alın
 
-Kaynağınızı oluşturduktan sonra, bu kaynağı sabitledikten sonra Azure panosundan erişebilirsiniz. Aksi takdirde, **kaynak gruplarında**bulabilirsiniz. Kaynağı seçtikten sonra, **kaynak yönetimi**altında **anahtarlar** ' ı seçerek anahtarları alabilirsiniz.
+1. Kaynağınız başarıyla dağıtıldıktan sonra, **sonraki adımlar**altında **Kaynağa Git ' e** tıklayın.
+
+    ![Bilişsel hizmetler için arama](media/cognitive-services-apis-create-account/resource-next-steps.png)
+
+2. Açılan hızlı başlangıç bölmesinden, anahtarınız ve uç noktanıza erişebilirsiniz.
+
+    ![Anahtar ve uç nokta al](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
-
-## <a name="pricing-tiers-and-billing"></a>Fiyatlandırma katmanları ve faturalandırma
-
-Fiyatlandırma katmanları (ve faturalandırılan miktar), kimlik doğrulama bilgilerinizi kullanarak göndereceğiniz işlem sayısına bağlıdır. Her fiyatlandırma katmanı şunları belirtir:
-* saniye başına izin verilen en fazla işlem sayısı (TPS).
-* fiyatlandırma katmanında etkinleştirilen hizmet özellikleri.
-* Önceden tanımlanmış işlem miktarının maliyeti. Bu tutarın üzerine gitmek, hizmetinize ilişkin [fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) belirtilen ek bir ücretden oluşmasına neden olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, grupta yer alan diğer tüm kaynakları da siler.
 
-Azure portalını kullanarak kaynak grubunu kaldırmak için:
-
 1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları**'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
-2. Silinecek kaynak grubunu bulun ve listenin sağ tarafındaki daha fazla düğmesine (...) sağ tıklayın.
-3. **Kaynak grubunu sil**'i seçip onaylayın.
+2. Silinecek kaynağı içeren kaynak grubunu bulun
+3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil**'i seçip onaylayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

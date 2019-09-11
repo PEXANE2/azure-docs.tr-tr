@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998215"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135183"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL veritabanı ölçümleri ve tanılama günlüğü
 
@@ -444,9 +444,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |ResourceProvider|Kaynak sağlayıcının adı. Her MICROSOFT. SQL |
 |Category|Kategorinin adı. Her ResourceUsageStats |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her MANAGEDINSTANCES |
+|KaynakTürü|Kaynak türünün adı. Her MANAGEDINSTANCES |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Yönetilen örnek adı |
 |RESOURCEID|Kaynak URI 'SI |
 |SKU_s|Yönetilen örnek Ürün SKU 'SU |
@@ -470,9 +470,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her QueryStoreRuntimeStatistics |
 |OperationName|İşlemin adı. Her QueryStoreRuntimeStatisticsEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -521,9 +521,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her QueryStoreWaitStatistics |
 |OperationName|İşlemin adı. Her QueryStoreWaitStatisticsEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -555,13 +555,13 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |SourceSystem|Her Azure |
 |TimeGenerated [UTC]|Günlüğün kaydedildiği zaman damgası |
 |Type|Her AzureDiagnostics |
-|ResourceProvider|Kaynak sağlayıcının adı. Her MICROSOFT. SQ |
+|ResourceProvider|Kaynak sağlayıcının adı. Her MICROSOFT. SQL |
 |Category|Kategorinin adı. Her Hatalar |
 |OperationName|İşlemin adı. Her ErrorEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -588,9 +588,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her DatabaseWaitStatistics |
 |OperationName|İşlemin adı. Her DatabaseWaitStatisticsEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -617,9 +617,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Zaman Aşımları |
 |OperationName|İşlemin adı. Her TimeoutEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -640,9 +640,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Öbekleri |
 |OperationName|İşlemin adı. Her BlockEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -664,9 +664,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |Category|Kategorinin adı. Her Kilitlenmeler |
 |OperationName|İşlemin adı. Her DeadlockEvent |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |
 |DatabaseName_s|Veritabanının adı |
@@ -684,9 +684,9 @@ Tüm günlüklerde kullanılabilen telemetri ayrıntıları aşağıdaki tablola
 |ResourceProvider|Kaynak sağlayıcının adı. Her MICROSOFT. SQL |
 |Category|Kategorinin adı. Her Otomatik olarak ayarlama |
 |Resource|Kaynağın adı |
-|ResourceType|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
+|KaynakTürü|Kaynak türünün adı. Her SUNUCULAR/VERITABANLARI |
 |SubscriptionId|Veritabanı için abonelik GUID 'SI |
-|adlı yönetilen örnek,|Veritabanı için kaynak grubunun adı |
+|ResourceGroup|Veritabanı için kaynak grubunun adı |
 |LogicalServerName_s|Veritabanı için sunucu adı |
 |LogicalDatabaseName_s|Veritabanının adı |
 |ElasticPoolName_s|Veritabanı için elastik havuzun adı (varsa) |

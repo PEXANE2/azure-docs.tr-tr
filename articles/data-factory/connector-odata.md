@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 30bad3dd519d622d7e224da7bd53e7c6625014f6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a31f0618f7e9dc8fdb0e9b2988d3d3c32fefcf64
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966471"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277662"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri kopyalama
 
@@ -212,6 +212,7 @@ OData 'ten veri kopyalamak için, veri kümesinin **Type** özelliğini **ODataR
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -232,11 +233,11 @@ Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri 
 
 ### <a name="odata-as-source"></a>Kaynak olarak OData
 
-OData 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü **relationalsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+OData 'ten veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği, **relationalsource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **odatasource**olarak ayarlanmalıdır. | Evet |
 | query | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"$select=Name,Description&$top=5"`.<br/><br/>**Not**: OData Bağlayıcısı Birleşik URL 'den verileri kopyalar: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
 **Örnek**
@@ -260,7 +261,7 @@ OData 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü 
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "ODataSource",
                 "query": "$select=Name,Description&$top=5"
             },
             "sink": {
@@ -271,26 +272,28 @@ OData 'ten veri kopyalamak için kopyalama etkinliğindeki **kaynak** türünü 
 ]
 ```
 
+Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
+
 ## <a name="data-type-mapping-for-odata"></a>OData için veri türü eşlemesi
 
 OData 'ten veri kopyaladığınızda, OData veri türleri ve Azure Data Factory geçici veri türleri arasında aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
 | OData veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
-| EDM. Binary | Byte[] |
+| EDM.Binary | Byte[] |
 | Edm.Boolean | Bool |
-| EDM. Byte | Byte[] |
+| EDM.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| EDM. Decimal | Decimal |
+| EDM.Decimal | Decimal |
 | Edm.Double | Double |
-| EDM. Single | Single |
-| EDM. Guid | Guid |
-| EDM. Int16 | Int16 |
+| EDM.Single | Single |
+| EDM.Guid | Guid |
+| EDM.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| EDM. SByte | Int16 |
+| Edm.SByte | Int16 |
 | Edm.String | String |
-| EDM. Time | TimeSpan |
+| EDM.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958645"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306479"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Hızlı Başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme (Java)
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı Başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub, IoT cihazlarınızdan buluta yüksek hacimlerde telemetri almanızı ve buluttan cihazlarınızı yönetmenizi sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT hub’ınıza bağlı bir simülasyon cihazını denetlemek için *doğrudan yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz.
+Bu hızlı başlangıçta, bir Java uygulamasıyla Azure IoT Hub 'ınıza bağlı olan sanal cihazı denetlemek için *doğrudan bir yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz. IoT Hub, IoT cihazlarınızdan buluta yüksek hacimlerde telemetri almanızı ve buluttan cihazlarınızı yönetmenizi sağlayan bir Azure hizmetidir. 
 
 Hızlı başlangıçta, önceden yazılmış iki Java uygulaması kullanılır:
 
@@ -35,9 +35,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Java kullanılarak yazılır. Geliştirme makinenizde Java SE 8 veya sonraki bir sürüm olması gerekir.
+Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Java kullanılarak yazılır. Geliştirme makinenizde Java, 8 gerekir.
 
-[Oracle](https://aka.ms/azure-jdks)’dan birden fazla platform için Java’yı indirebilirsiniz.
+Birden çok platform için Java SE Development Kit 8 [' i, Azure ve Azure Stack için uzun süreli destekten](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable)indirebilirsiniz. JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
 Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Java sürümünü doğrulayabilirsiniz:
 

@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7c4a0aa01b1895ece2e77bed5ee4837704546b4b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774734"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773067"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 Application Insights, farklı platformlardaki web geliştiricilerine yönelik kapsamlı bir Uygulama Performans Yönetimi (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. Performans anormalliklerini otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla aslında neler yaptığını anlamanıza yardımcı olan güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node. js ve Java EE dahil olmak üzere şirket içi, karma veya herhangi bir genel bulut gibi çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -139,12 +139,6 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * Blog:
   * [Application Insights blogu](https://azure.microsoft.com/blog/tag/application-insights)
-
-## <a name="videos"></a>Videolar
-
-- Dış video: [bir ASP.NET uygulamasıyla Application Insights yapılandırma](https://www.youtube.com/watch?v=blnGAVgMAfA).
-- Dış video: [ASP.NET Core ve Visual Studio ile Application Insights yapılandırma](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Dış video: [ASP.NET Core ve Visual Studio Code Application Insights yapılandırma](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

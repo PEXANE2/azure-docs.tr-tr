@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/16/2019
-ms.openlocfilehash: 2f82bd9c0bcacf2c552df84cdd4f8f2cd6a68c8a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.date: 08/29/2019
+ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543322"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138770"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Azure Izleyici günlüklerini kullanarak Logic Apps için Öngörüler ve hata ayıklama verileri alın
 
@@ -55,7 +55,7 @@ Başlamadan önce bir Log Analytics çalışma alanına ihtiyacınız vardır. [
 
 ## <a name="install-logic-apps-management-solution"></a>Logic Apps yönetimi çözümünü yükler
 
-Mantıksal uygulamanızı oluştururken Azure Izleyici günlüklerini zaten açtıysanız, bu adımı atlayın. Logic Apps Management Solution zaten yüklüdür.
+Mantıksal uygulamanızı oluştururken Azure Izleyici günlüklerini zaten ayarladıysanız, bu adımı atlayın. Logic Apps Management Solution zaten yüklüdür.
 
 1. [Azure portalda](https://portal.azure.com) **Tüm hizmetler**’i seçin. Arama kutusunda, "Log Analytics çalışma alanları" nı bulun ve **Log Analytics çalışma alanları**' nı seçin.
 
@@ -107,23 +107,21 @@ Mantıksal uygulamanız çalıştıktan sonra, **Logic Apps yönetim** kutucuğu
 
    Belirli bir mantıksal uygulama için tüm çalıştırmaları gösteren bir örnek aşağıda verilmiştir:
 
-   ![Bir mantıksal uygulama veya durum için çalıştırmaları görüntüleme](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
+   ![Mantıksal uygulama çalıştırmalarını ve durumunu görüntüleme](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   Bu sayfa şu gelişmiş seçeneklere sahiptir:
+   Bu sayfa gelişmiş seçeneklere sahiptir: 
 
-   * **İzlenen Özellikler:**
+   * **İzlenen Özellikler** sütunu: Eylemlerle gruplanmış olan izlenen özellikleri ayarladığınız bir mantıksal uygulama için bu özellikleri bu sütundan görüntüleyebilirsiniz. Bu izlenen özellikleri görüntülemek için **görüntüle**' yi seçin. İzlenen özelliklerde arama yapmak için sütun filtresini kullanın.
 
-     Bu sütun, mantıksal uygulama için eylemlere göre gruplanan izlenen özellikleri gösterir. İzlenen özellikleri görüntülemek için **görüntüle**' yi seçin. İzlenen özelliklerde arama yapmak için sütun filtresini kullanın.
+      ![Mantıksal uygulama için izlenen özellikleri görüntüleme](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
-     ![Mantıksal uygulama için izlenen özellikleri görüntüleme](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+      Yeni eklenen tüm izlenen özellikler ilk kez görüntülenmeden önce 10-15 dakika sürebilir. [Mantıksal uygulamanıza izlenen özellikler eklemeyi](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)öğrenin.
 
-     Yeni eklenen tüm izlenen özellikler ilk kez görüntülenmeden önce 10-15 dakika sürebilir. [Mantıksal uygulamanıza izlenen özellikler eklemeyi](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)öğrenin.
-
-   * **Göndere** Başarısız, başarılı veya çalışır durumda olan bir veya daha fazla mantıksal uygulama çalıştırmasını yeniden gönderebilirsiniz. Yeniden göndermek istediğiniz çalıştırmaların onay kutularını seçin ve yeniden **Gönder**' i seçin.
+   * Yeniden **Gönder**: Başarısız, başarılı veya çalışır durumda olan bir veya daha fazla Logic Apps çalıştırmasını yeniden gönderebilirsiniz. Yeniden göndermek istediğiniz çalıştırmaların onay kutularını seçin ve ardından yeniden **Gönder**' i seçin.
 
      ![Mantıksal uygulama çalıştırmalarını yeniden gönder](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
-1. Bu sonuçlara filtre uygulamak için hem istemci tarafı hem de sunucu tarafı filtrelemeyi gerçekleştirebilirsiniz.
+1. Sonuçlarınızı filtrelemek için hem istemci tarafı hem de sunucu tarafı filtrelemeyi gerçekleştirebilirsiniz.
 
    * **İstemci tarafı filtresi**: Her sütun için istediğiniz filtreleri seçin, örneğin:
 
@@ -133,25 +131,21 @@ Mantıksal uygulamanız çalıştıktan sonra, **Logic Apps yönetim** kutucuğu
 
      ![Zaman penceresini değiştirme](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
 
-1. Belirli bir çalıştırmanın tüm eylemlerini ve ayrıntılarını görüntülemek için, mantıksal uygulama çalıştırması için bir satır seçin.
+1. Belirli bir çalıştırmaya ilişkin tüm eylemleri ve bunların ayrıntılarını görüntülemek için, mantıksal uygulama çalıştırmasının satırını seçin.
 
-   Belirli bir mantıksal uygulama çalıştırması için tüm eylemleri gösteren bir örnek aşağıda verilmiştir:
+   Aşağıda, belirli bir mantıksal uygulama çalıştırması için tüm eylemleri ve Tetikleyicileri gösteren bir örnek verilmiştir:
 
    ![Mantıksal uygulama çalıştırması için eylemleri görüntüleme](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
 
-1. Herhangi bir sonuç sayfasında, sonuçların arkasındaki sorguyu görüntülemek veya tüm sonuçları görmek için, günlük araması sayfasını açan **Tümünü**göster ' i seçin.
+1. Herhangi bir sonuç sayfasında, sonuçların arkasındaki sorguyu görüntülemek veya tüm sonuçları görmek için, **Günlükler** sayfasını açan **Tümünü**göster ' i seçin.
 
-   ![Tüm sonuçlar sayfalarında gör](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   ![Tüm sonuçları görüntüle](media/logic-apps-monitor-your-logic-apps-oms/logic-app-see-all.png)
 
-   Günlük araması sayfasında, şu seçenekleri belirleyebilirsiniz:
+   **Günlükler** sayfasında, şu seçenekleri belirleyebilirsiniz:
 
    * Sorgu sonuçlarını bir tabloda görüntülemek için **tablo**' yı seçin.
 
-   * Sorguyu değiştirmek için, arama çubuğundaki sorgu dizesini düzenleyebilirsiniz. Daha iyi bir deneyim için **Gelişmiş analiz**' ı seçin.
-
-     ![Mantıksal uygulama çalıştırmasının eylemlerini ve ayrıntılarını görüntüleme](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
-     Log Analytics sayfasında, sorguları güncelleştirebilir ve tablodaki sonuçları görüntüleyebilirsiniz. Bu sorgu, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](https://aka.ms/LogAnalyticsLanguageReference)kullanır.
+   * Sorgular, farklı sonuçları görüntülemek istiyorsanız düzenleyebileceğiniz [kusto sorgu dilini](https://aka.ms/LogAnalyticsLanguageReference)kullanır. Sorguyu değiştirmek için sorgu dizesini güncelleştirin ve sonuçları tabloda görüntülemek için **Çalıştır** ' ı seçin. 
 
      ![Log Analytics-sorgu görünümü](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

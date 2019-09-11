@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091377"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764311"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 'da görüntüleri Red Hat Enterprise Linux
 Bu makalede, Azure Marketi 'ndeki kullanılabilir Red Hat Enterprise Linux (RHEL) görüntüleri, adlandırma ve bekletme ilkelerine göre birlikte açıklanmaktadır.
@@ -114,18 +114,19 @@ Aşağıdaki teklifler, şu anda genel kullanım için kullanılabilir:
 
 Sunduğu| SKU | Bölümleme | Sağlama | Notlar
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7-HAM    | RAW    | Linux Aracısı | RHEL 7 resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
-|             | 7-LVM    | LVM    | Linux Aracısı | RHEL 7 resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
-|             | 7-RAW-CI | HAM-CI | Cloud-init  | RHEL 7 resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
-|             | 6.7      | RAW    | Linux Aracısı | RHEL 6,7 görüntüleri, eski adlandırma kuralı
-|             | 6.8      | RAW    | Linux Aracısı | RHEL 6,8 için yukarıdaki ile aynı
-|             | 6.9      | RAW    | Linux Aracısı | RHEL 6,9 için yukarıdaki ile aynı
-|             | 6.10     | RAW    | Linux Aracısı | RHEL 6,10 için yukarıdaki ile aynı
-|             | 7.2      | RAW    | Linux Aracısı | RHEL 7,2 için yukarıdaki ile aynı
-|             | 7.3      | RAW    | Linux Aracısı | RHEL 7,3 için yukarıdaki ile aynı
-|             | 7.4      | RAW    | Linux Aracısı | RHEL 7,4 için yukarıdaki gibi. <br> 2019 Nisan itibariyle varsayılan olarak EUS depolarına eklendi
-|             | 7.5      | RAW    | Linux Aracısı | RHEL 7,5 için yukarıdaki gibi. <br> Haziran 2019 itibariyle varsayılan olarak EUS depolarına eklendi
-|             | 7,6      | RAW    | Linux Aracısı | RHEL 7,6 için yukarıdaki gibi. <br> Mayıs 2019 itibariyle varsayılan olarak EUS depolarına eklendi
+RHEL          | 7-HAM    | RAW    | Linux Aracısı | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
+|             | 7-LVM    | LVM    | Linux Aracısı | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
+|             | 7-RAW-CI | HAM-CI | Cloud-init  | RHEL 7. x resim ailesi. <br> Varsayılan olarak, EUS depolarına eklenmemiş.
+|             | 6.7      | RAW    | Linux Aracısı |
+|             | 6.8      | RAW    | Linux Aracısı |
+|             | 6.9      | RAW    | Linux Aracısı |
+|             | 6.10     | RAW    | Linux Aracısı |
+|             | 7.2      | RAW    | Linux Aracısı |
+|             | 7.3      | RAW    | Linux Aracısı |
+|             | 7.4      | RAW    | Linux Aracısı | 2019 Nisan itibariyle varsayılan olarak, EUS depolarına eklenmiş.
+|             | 7.5      | RAW    | Linux Aracısı | , Haziran 2019 itibariyle varsayılan olarak EUS depolarına eklendi.
+|             | 7,6      | RAW    | Linux Aracısı | Varsayılan olarak 2019 Mayıs itibariyle EUS depolarında kullanıma açıldı.
+|             | 7,7      | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 RHEL-SAP      | 7.4      | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,4
 |             | 7.5      | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,5
 RHEL-SAP-HANA | 6.7      | RAW    | Linux Aracısı | SAP HANA için RHEL 6,7
@@ -133,12 +134,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux Aracısı | SAP HANA için RHEL 6,7
 |             | 7.3      | LVM    | Linux Aracısı | SAP HANA için RHEL 7,3
 RHEL-SAP-APPS | 6.8      | RAW    | Linux Aracısı | SAP Business Applications için RHEL 6,8
 |             | 7.3      | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,3
-RHEL-HA       | 7.4      | RAW    | Linux Aracısı | HA eklentisi ile RHEL 7,4
-|             | 7.5      | RAW    | Linux Aracısı | HA eklentisi ile RHEL 7,5
-|             | 7,6      | RAW    | Linux Aracısı | HA eklentisi ile RHEL 7,6
-RHEL-SAP-HA   | 7.4      | RAW    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,4
-|             | 7.5      | RAW    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,5
-|             | 7,6      | RAW    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,6
+RHEL-HA       | 7.4      | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,4
+|             | 7.5      | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,5
+|             | 7,6      | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,6
+RHEL-SAP-HA   | 7.4      | LVM    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,4
+|             | 7.5      | LVM    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,5
+|             | 7,6      | LVM    | Linux Aracısı | HA eklentisi ile SAP için RHEL 7,6
 
 ### <a name="old-naming-convention"></a>Eski adlandırma kuralı
 RHEL 7 resim ailesi ve RHEL 6 resim ailesi, yukarıda açıklanan adlandırma kuralı değişikliğine kadar SKU 'Larında belirli sürümleri kullanır.
@@ -160,5 +161,5 @@ Yalnızca belirli bir görüntü ailesindeki geçerli küçük sürümü güncel
 Geçerli ilkeniz, önceden yayımlanan tüm görüntüleri tutmak. Her türlü soruna neden olan bilinen görüntüleri kaldırma hakkını saklı tutarız. Örneğin, sonraki platform veya bileşen güncelleştirmeleri nedeniyle yanlış yapılandırmalara sahip görüntüler kaldırılabilir. Kaldırılabilir olan görüntüler, görüntü kaldırılmadan önce 30 güne kadar bildirim sağlamak için geçerli Market ilkesini izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure Red Hat güncelleştirme altyapısı hakkında daha fazla bilgi [](https://aka.ms/rhui-update)edinin.
+* Azure Red hat [güncelleştirme altyapısı hakkında](https://aka.ms/rhui-update)daha fazla bilgi edinin.
 * Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.

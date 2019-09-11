@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011574"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860545"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>İşlem hedeflerine yönelik model eğitiminin ayarlama 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 
 Azure Machine Learning hizmeti sayesinde modelinizi, toplu olarak [__işlem hedefleri__](concept-azure-machine-learning-architecture.md#compute-targets)olarak adlandırılan çeşitli kaynaklar veya ortamlar üzerinde eğitebilirsiniz. İşlem hedefi bir yerel makine veya Azure Machine Learning Işlem, Azure HDInsight veya uzak bir sanal makine gibi bir bulut kaynağı olabilir.  Model dağıtımı için, ["modellerinizi dağıtma"](how-to-deploy-and-where.md)bölümünde açıklandığı gibi işlem hedefleri de oluşturabilirsiniz.
 
-Azure Machine Learning SDK, Azure portal, Azure CLı veya Azure Machine Learning VS Code uzantısını kullanarak bir işlem hedefi oluşturabilir ve yönetebilirsiniz. Başka bir hizmete (örneğin, bir HDInsight kümesi) oluşturulan işlem hedefleri varsa, Azure Machine Learning hizmeti çalışma alanınıza ekleyerek kullanabilirsiniz.
+Azure Machine Learning SDK, Azure portal, çalışma alanı giriş sayfanız (Önizleme), Azure CLı veya Azure Machine Learning VS Code uzantısını kullanarak bir işlem hedefi oluşturabilir ve yönetebilirsiniz. Başka bir hizmete (örneğin, bir HDInsight kümesi) oluşturulan işlem hedefleri varsa, Azure Machine Learning hizmeti çalışma alanınıza ekleyerek kullanabilirsiniz.
  
 Bu makalede, model eğitimi için çeşitli işlem hedeflerini nasıl kullanacağınızı öğreneceksiniz.  Tüm işlem hedeflerinin adımları aynı iş akışını izler:
 1. Henüz yoksa bir işlem hedefi __oluşturun__ .
@@ -45,35 +45,11 @@ Azure Machine Learning hizmeti farklı işlem hedefleri arasında değişen dest
 
 ## <a name="whats-a-run-configuration"></a>Çalıştırma Yapılandırması nedir?
 
-Eğitim sırasında yerel bilgisayarınızda başlamak yaygındır ve daha sonra bu eğitim betiği farklı bir işlem hedefinde çalıştırılır. Azure Machine Learning hizmeti sayesinde, betiğinizi değiştirmek zorunda kalmadan komut dosyanızı çeşitli işlem hedeflerinde çalıştırabilirsiniz. 
+Eğitim sırasında yerel bilgisayarınızda başlamak yaygındır ve daha sonra bu eğitim betiği farklı bir işlem hedefinde çalıştırılır. Azure Machine Learning hizmeti sayesinde, betiğinizi değiştirmek zorunda kalmadan komut dosyanızı çeşitli işlem hedeflerinde çalıştırabilirsiniz.
 
-Tüm yapmanız gereken, **çalıştırma yapılandırması**ile her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin.
+Tüm yapmanız gereken, **çalışma yapılandırmasındaki**her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin. Bir ortamı belirtme ve yapılandırmayı çalıştırmaya bağlama hakkında ayrıntılı bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
 
 Bu makalenin sonunda [denemeleri gönderme](#submit) hakkında daha fazla bilgi edinin.
-
-### <a name="manage-environment-and-dependencies"></a>Ortamı ve bağımlılıkları yönetme
-
-Bir çalıştırma yapılandırması oluşturduğunuzda, ortam ve bağımlılıkların işlem hedefi üzerinde nasıl yönetileceğine karar vermeniz gerekir. 
-
-#### <a name="system-managed-environment"></a>Sistem tarafından yönetilen ortamı
-
-Python ortamını ve komut dosyası bağımlılıklarını yönetmek istiyorsanız, [](https://conda.io/docs/) sistem tarafından yönetilen bir ortam kullanın. Sistem tarafından yönetilen bir ortam varsayılan olarak ve en sık kullanılan seçim olarak kabul edilir. Özellikle bu hedefi yapılandıradığınızda, uzak işlem hedefleri için faydalıdır. 
-
-Tüm yapmanız gereken, [Condaddependency sınıfını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) kullanarak her bir paket bağımlılığını belirt, sonra da çalışma alanınızdaki **aml_config** dizininde paket bağımlılıkları listeniz olan **conda_dependencies. yıml** adlı bir dosya oluşturur ve Eğitim denemenizi gönderdiğinizde Python ortamınızı ayarlar. 
-
-Yeni bir ortamın ilk kurulumu, gerekli bağımlılıkların boyutuna bağlı olarak birkaç dakika sürebilir. Paketlerin listesi değişmeden kaldığı sürece, kurulum zamanı yalnızca bir kez gerçekleşir.
-  
-Aşağıdaki kod, sistem tarafından yönetilen ve scikit gerektiren bir ortam için bir örnek gösterir-bilgi edinin:
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>Kullanıcı tarafından yönetilen ortamı
-
-Kullanıcı tarafından yönetilen bir ortam için ortamınızı ayarlamaktan ve eğitim betiğinizin ihtiyaç duyacağı her paketi işlem hedefinde yüklemeye sorumlusunuz. Eğitim ortamınız zaten yapılandırıldıysa (örneğin, yerel makinenizde), kurulum adımını true olarak ayarlayarak `user_managed_dependencies` atlayabilirsiniz. Conda, ortamınızı denetetmez veya sizin için herhangi bir şey yüklemez.
-
-Aşağıdaki kod, Kullanıcı tarafından yönetilen bir ortam için eğitim çalıştırmalarını yapılandırmaya ilişkin bir örnek gösterir:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Estimator nedir?
 
@@ -302,6 +278,7 @@ Azure portal çalışma alanınız ile ilişkili işlem hedeflerine erişebilirs
 * Çalışma alanınızda [bir işlem hedefi oluşturma](#portal-create)
 * Çalışma alanının dışında oluşturulmuş [bir işlem hedefi iliştirme](#portal-reuse)
 
+
 Bir hedef oluşturulduktan ve çalışma alanınıza eklendikten sonra, çalışma yapılandırmanızda bunu bir `ComputeTarget` nesneyle kullanacaksınız: 
 
 ```python
@@ -314,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Çalışma alanınızın işlem hedeflerini görmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com) gidin ve çalışma alanınızı açın. 
+1. [Azure Portal](https://portal.azure.com) gidin ve çalışma alanınızı açın. Ayrıca, aşağıdaki görüntüler Azure portal gösteriyor olsa da, aynı adımlara [çalışma alanı giriş sayfanızda (Önizleme)](https://ml.azure.com)erişebilirsiniz.
+ 
 1. __Uygulamalar__' ın altında, __işlem__' ı seçin.
 
     [![İşlem sekmesini görüntüle](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
@@ -390,7 +368,7 @@ Daha fazla bilgi için bkz. [kaynak yönetimi](reference-azure-machine-learning-
 
 Azure Machine Learning hizmeti için [vs Code uzantısını](how-to-vscode-tools.md#create-and-manage-compute-targets) kullanarak çalışma alanınız ile ilişkili işlem hedeflerini erişebilir, oluşturabilir ve yönetebilirsiniz.
 
-## <a id="submit"></a>Eğitim çalıştırmasını gönder
+## <a id="submit"></a>Azure Machine Learning SDK kullanarak eğitim çalışması gönder
 
 Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı çalıştırmak için onu kullanırsınız.  Eğitim çalışması göndermek için kod deseninin her türlü bilgi işlem hedefi vardır:
 
@@ -427,11 +405,95 @@ Aynı denemeyi, [amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> Bu örnek, eğitim için yalnızca bir işlem hedefi düğümü kullanmayı varsayılan olarak belirler. Birden fazla düğüm kullanmak için, çalıştırma yapılandırmasını istenen `node_count` düğüm sayısı olarak ayarlayın. Örneğin, aşağıdaki kod eğitim için kullanılan düğümlerin sayısını dört olarak ayarlar:
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 İsterseniz şunları yapabilirsiniz:
 
 * Denemesi, `Estimator` [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md)bölümünde gösterildiği gibi bir nesneyle birlikte gönder.
-* [CLI uzantısını kullanarak](reference-azure-machine-learning-cli.md#experiments)bir deneme gönderir.
+* [Hiper parametre ayarlama](how-to-tune-hyperparameters.md)Için bir Hyperdrive çalıştırması gönderebilirsiniz.
 * [Vs Code uzantısı](how-to-vscode-tools.md#train-and-tune-models)aracılığıyla bir deneme gönderir.
+
+Daha fazla bilgi için [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) ve [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) belgelerine bakın.
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Azure Machine Learning CLı kullanarak çalıştırma yapılandırması oluşturma ve çalıştırma
+
+Çalışan yapılandırma oluşturmak ve farklı işlem hedeflerinde çalıştırmaları göndermek için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md) kullanabilirsiniz. Aşağıdaki örneklerde, mevcut bir Azure Machine Learning çalışma alanı olduğunu ve CLI komutunu kullanarak `az login` Azure 'da oturum açtığınızı varsayalım. 
+
+### <a name="create-run-configuration"></a>Çalıştırma yapılandırması oluştur
+
+Çalıştırma yapılandırması oluşturmanın en kolay yolu, Machine Learning Python betiklerini içeren klasörde gezinmeniz ve CLı komutunu kullanmaktır
+
+```azurecli
+az ml folder attach
+```
+
+Bu komut, farklı işlem `.azureml` hedeflerine yönelik yapılandırma dosyalarını çalıştıran şablon içeren bir alt klasör oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
+
+### <a name="structure-of-run-configuration-file"></a>Çalışma yapılandırma dosyasının yapısı
+
+Çalışma yapılandırma dosyası, aşağıdaki bölümlerle, YAML olarak biçimlendirilir
+ * Çalıştırılacak betiği ve bağımsız değişkenlerini
+ * İşlem hedefi adı, "yerel" veya çalışma alanı altında bir işlem adı.
+ * Çalıştırmayı yürütmek için Parametreler: Framework, dağıtılmış çalıştırmalar için Communicator, maksimum süre ve işlem düğümleri sayısı.
+ * Ortam bölümü. Bu bölümdeki alanların ayrıntıları için [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md) bölümüne bakın.
+   * Çalıştırma için yüklenecek Python paketlerini belirtmek için [Conda ortam dosyası](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)oluşturun ve __Condadbağımlıcıesfile__ alanını ayarlayın.
+ * Günlük dosyası klasörünü belirtmek ve çıkış toplamayı etkinleştirmek veya devre dışı bırakmak ve geçmiş anlık görüntülerini çalıştırmak için geçmiş ayrıntılarını çalıştırın.
+ * Seçili çerçeveye özgü yapılandırma ayrıntıları.
+ * Veri başvurusu ve veri deposu ayrıntıları.
+ * Yeni bir küme oluşturmak için Machine Learning İşlem özgü yapılandırma ayrıntıları.
+
+### <a name="create-an-experiment"></a>Deneme oluşturma
+
+İlk olarak, çalışmalarınız için bir deneme oluşturun
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>Betik çalıştırma
+
+Bir betik çalıştırması göndermek için bir komut yürütün
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>Hiper sürücü çalıştırma
+
+Parametre ayarlama çalıştırmalarını gerçekleştirmek için HyperDrive ile Azure CLı kullanabilirsiniz. İlk olarak, aşağıdaki biçimde bir hiper sürücü yapılandırma dosyası oluşturun. Hyperparameter ayarlama parametreleriyle ilgili ayrıntılar için bkz. [modelinize yönelik hiper parametreleri ayarlama](how-to-tune-hyperparameters.md) makalesi.
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Bu dosyayı çalıştırma yapılandırma dosyalarının yanına ekleyin. Ardından, kullanarak bir HyperDrive çalıştırması gönderebilirsiniz:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Hiperdrive yapılandırmasında runconfig ve *Parameter Space* içindeki *arguments* bölümüne göz önünde bırakın. Eğitim betiğine geçirilecek komut satırı bağımsız değişkenlerini içerirler. Runconfig içindeki değer her yineleme için aynı kalır, hiper sürücü yapılandırma aralığı üzerinden yinelenir. Her iki dosyada de aynı bağımsız değişkeni belirtmeyin.
+
+Bu ```az ml``` CLI komutları ve tam bağımsız değişkenler kümesiyle ilgili daha fazla bilgi için [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
 
 <a id="gitintegration"></a>
 

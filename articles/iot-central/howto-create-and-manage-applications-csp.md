@@ -8,14 +8,14 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 818285e089ab01c2c603f2b0181fbd6d9179eba1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019791"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873459"
 ---
-# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Bir CSP olarak, müşteriniz adına bir Azure IoT Central uygulaması oluşturun ve yönetin 
+# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Bir CSP olarak, müşteriniz adına bir Azure IoT Central uygulaması oluşturun ve yönetin
 
 Microsoft Bulut çözümü sağlayıcısı (CSP) programı bir Microsoft satıcı programıdır. Amaç, tüm Microsoft ticari çevrimiçi hizmetlerini yeniden satmak için tek seferlik bir programla kanal iş ortaklarımızı sağlamaktır. [Bulut çözümü sağlayıcısı programı](https://partner.microsoft.com/cloud-solution-provider)hakkında daha fazla bilgi edinin.
 
@@ -71,11 +71,14 @@ Daha fazla bilgi için bkz. [Azure abonelikleri](https://docs.microsoft.com/azur
 
 ## <a name="region"></a>Bölge
 
-Azure IoT Central uygulamanızı oluşturmak istediğiniz bölgeyi seçin. Genellikle en iyi performansı elde etmek için cihazlarınıza en yakın fiziksel bölgeyi seçmeniz gerekir.
+Azure IoT Central uygulamanızı oluşturmak istediğiniz bölge veya [coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/) bölgeyi seçin. Genellikle en iyi performansı elde etmek için cihazlarınıza en yakın fiziksel bölgeyi seçmeniz gerekir.
 
-Daha fazla bilgi için bkz. [Azure bölgeleri](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
+> [!NOTE]
+> **Önizleme uygulaması** şablonu şu anda yalnızca **Kuzey Avrupa** ve **Orta ABD** bölgelerinde kullanılabilir.
 
-Azure IoT Central 'ın [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/) sayfasında kullanılabildiği bölgeleri görebilirsiniz.
+Daha fazla bilgi edinmek için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/) ve [Azure coğrafi lıkları](https://azure.microsoft.com/global-infrastructure/geographies/).
+
+Azure IoT Central 'ın [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) sayfasında kullanılabildiği bölgeleri görebilirsiniz.
 
 > [!Note]
 > Bölgeyi bir kez seçtiğinizde, uygulamanızı daha sonra başka bir bölgeye taşıyamazsınız.

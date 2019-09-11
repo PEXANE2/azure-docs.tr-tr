@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088178"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390438"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma (Önizleme)
 
@@ -38,7 +38,8 @@ Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uyg
 
 1. Daha önce oluşturduğunuz uygulama kimliği için [Key Vault bir erişim ilkesi](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) oluşturun. Bu ilkede "Get" gizli anahtarını etkinleştirin. "Yetkilendirilmiş uygulama" veya `applicationId` ayarları, yönetilen bir kimlikle uyumlu olmadığından yapılandırmayın.
 
-    Anahtar kasasındaki bir uygulama kimliğine erişim verilmesi bir kerelik işlemidir ve tüm Azure abonelikleri için aynı kalacaktır. Bunu istediğiniz sayıda sertifika dağıtmak için kullanabilirsiniz. 
+    > [!NOTE]
+    > Key Vault başvurular Şu anda [ağ kısıtlamalarına](../key-vault/key-vault-overview-vnet-service-endpoints.md)sahip bir anahtar kasasında depolanan gizli dizileri çözemeyebilir.
 
 ## <a name="reference-syntax"></a>Başvuru sözdizimi
 
@@ -184,3 +185,27 @@ Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi gör�
 
 > [!NOTE] 
 > Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak, `WEBSITE_ENABLE_SYNC_UPDATE_SITE` uygulama ayarını dahil ettiğimiz için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
+
+## <a name="troubleshooting-key-vault-references"></a>Key Vault başvuruları sorunlarını giderme
+
+Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için değeri `@Microsoft.KeyVault(...)` sözdizimine sahip bir ortam değişkeni oluşturulacak anlamına gelir. Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
+
+En yaygın olarak, bunun nedeni [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)yanlış yapılandırılmasından kaynaklanır. Bununla birlikte, aynı zamanda bir gizli dizi yok veya başvurunun kendisi bir sözdizimi hatası olabilir.
+
+Sözdizimi doğruysa, yerleşik bir algılayıcı kullanarak geçerli çözüm durumunu denetleyerek hata nedenlerini görüntüleyebilirsiniz.
+
+### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
+
+1. Portalda uygulamanıza gidin.
+2. **Tanılamayı Tanıla ve çöz '** ü seçin.
+3. **Kullanılabilirlik ve performans** ' ı seçin ve **Web uygulaması** ' nı seçin.
+4. **Uygulama ayarları tanılamayı Key Vault** bulun ve **daha fazla bilgi**'ye tıklayın.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Azure Işlevleri için algılayıcısının kullanımı
+
+1. Portalda uygulamanıza gidin.
+2. **Platform özellikleri** ' ne gidin.
+3. **Tanılamayı Tanıla ve çöz '** ü seçin.
+4. **Kullanılabilirlik ve performans** ' ı seçin ve **işlev uygulaması çalışmıyor veya raporlama hataları** ' nı seçin.
+5. **Uygulama ayarları tanılamayı Key Vault** ' ye tıklayın.

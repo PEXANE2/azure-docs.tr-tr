@@ -1,85 +1,84 @@
 ---
-title: Sorgu dil anlama
-description: Kullanılabilir Kusto işleçler ve Azure kaynak grafiği ile kullanılabilir işlevler açıklanmaktadır.
+title: Sorgu dilini anlayın
+description: Kullanılabilir kusto işleçlerini ve Azure Kaynak Graph ile kullanılabilir işlevleri açıklar.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800503"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231519"
 ---
-# <a name="understanding-the-azure-resource-graph-query-language"></a>Azure kaynak grafik sorgu dilini anlama
+# <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
-Azure kaynak grafik sorgu dilini birkaç işleç ve işlevlerini destekler. Her iş ve temel alınarak işletmek [Azure Veri Gezgini](../../../data-explorer/data-explorer-overview.md).
+Azure Kaynak grafiğinin sorgu dili, bir dizi işleci ve işlevi destekler. Her iş ve [Azure Veri Gezgini](../../../data-explorer/data-explorer-overview.md)göre çalışır.
 
-Azure Veri Gezgini için belgelere başlatmak için kaynak graf tarafından kullanılan bir sorgu dili hakkında bilgi edinmek için en iyi yolu olan [sorgu dili](/azure/kusto/query/index). Dil nasıl yapılandırıldığını ve çeşitli işleçler nasıl desteklediği hakkında bir anlayış sağlar ve işlevleri birlikte çalışır.
+Kaynak Graph tarafından kullanılan sorgu dili hakkında bilgi almanın en iyi yolu Azure Veri Gezgini [sorgu dilinin](/azure/kusto/query/index)belgeleriyle başlamadır. Dilin nasıl yapılandırıldığı ve desteklenen çeşitli işleçlerin ve işlevlerin birlikte nasıl çalıştığı hakkında bilgi sağlar.
 
-## <a name="supported-tabular-operators"></a>Desteklenen tablo işleçleri
+## <a name="supported-tabular-operators"></a>Desteklenen tablolu işleçler
 
-Kaynak Graph'te desteklenen tablosal işleçlerin listesi aşağıda verilmiştir:
+Kaynak grafiğinde desteklenen tablolu işleçlerin listesi aşağıda verilmiştir:
 
 - [count](/azure/kusto/query/countoperator)
-- [Farklı](/azure/kusto/query/distinctoperator)
-- [Genişletme](/azure/kusto/query/extendoperator)
-- [Sınırı](/azure/kusto/query/limitoperator)
-- [Sıralama ölçütü](/azure/kusto/query/orderoperator)
+- [ayrı](/azure/kusto/query/distinctoperator)
+- [genişletmeyi](/azure/kusto/query/extendoperator)
+- [sınırlı](/azure/kusto/query/limitoperator)
+- [sıralama ölçütü](/azure/kusto/query/orderoperator)
 - [Proje](/azure/kusto/query/projectoperator)
-- [Proje koyma](/azure/kusto/query/projectawayoperator)
-- [Örnek](/azure/kusto/query/sampleoperator)
-- [örnek farklı](/azure/kusto/query/sampledistinctoperator)
-- [Sıralama ölçütü](/azure/kusto/query/sortoperator)
-- [Özetleme](/azure/kusto/query/summarizeoperator)
-- [sınav zamanı](/azure/kusto/query/takeoperator)
+- [Proje-dışarıda](/azure/kusto/query/projectawayoperator)
+- [örnekli](/azure/kusto/query/sampleoperator)
+- [örnek-benzersiz](/azure/kusto/query/sampledistinctoperator)
+- [sıralama ölçütü](/azure/kusto/query/sortoperator)
+- [ölçütü](/azure/kusto/query/summarizeoperator)
+- [take](/azure/kusto/query/takeoperator)
 - [Sayfanın Üstü](/azure/kusto/query/topoperator)
-- [üst iç içe geçmiş](/azure/kusto/query/topnestedoperator)
-- [Top-hitters](/azure/kusto/query/tophittersoperator)
-- [Burada](/azure/kusto/query/whereoperator)
+- [üst iç içe](/azure/kusto/query/topnestedoperator)
+- [en büyük-hitters](/azure/kusto/query/tophittersoperator)
+- [olmadığı](/azure/kusto/query/whereoperator)
 
-## <a name="supported-functions"></a>Desteklenen işlevleri
+## <a name="supported-functions"></a>Desteklenen işlevler
 
-Kaynak Graph'te desteklenen işlevler listesi aşağıda verilmiştir:
+Kaynak grafiğinde desteklenen işlevlerin listesi aşağıdadır:
 
-- [ago()](/azure/kusto/query/agofunction)
-- [buildschema()](/azure/kusto/query/buildschema-aggfunction)
-- [strcat()](/azure/kusto/query/strcatfunction)
-- [isnotempty()](/azure/kusto/query/isnotemptyfunction)
-- [tostring()](/azure/kusto/query/tostringfunction)
+- [önce ()](/azure/kusto/query/agofunction)
+- [buildschema ()](/azure/kusto/query/buildschema-aggfunction)
+- [strcat ()](/azure/kusto/query/strcatfunction)
+- [isnotempty ()](/azure/kusto/query/isnotemptyfunction)
+- [ToString ()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
 
 ## <a name="escape-characters"></a>Kaçış karakterleri
 
-İçeren olanlar gibi bazı özellik adlarını bir `.` veya `$`, sarmalanmış kaçış karakterleri veya sorgu ya da özellik adı yanlış yorumlanır ve beklenen sonuçları sağlamaz.
+`.` Ya`$`da dahil olanlar gibi bazı özellik adları, sorgunun sarmalanması veya kaçışlanması ya da özellik adının yanlış yorumlanması ve beklenen sonuçları sağlamamalıdır.
 
-- `.` -Özellik adı şekilde kaydır: `['propertyname.withaperiod']`
+- `.`-Özellik adını şu şekilde kaydırın:`['propertyname.withaperiod']`
   
-  Özellik saran bir örnek sorgu _odata.type_:
+  OData özelliğini sarmalayan örnek sorgu _. tür_:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$` -Özellik adı kaçış karakteri. Kullanılan kaçış karakteri kaynak grafiği çalıştırıldığı Kabuk bağlıdır.
+- `$`-Özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
 
   - **Bash** - `\`
 
-    Özellik çıkışları örnek sorgu  _\$türü_ bash:
+    Bash içindeki özellik  _\$türünü_ iptal eden örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** -çıkış yok `$` karakter.
+  - **cmd** - `$` karakterden kaçmayın.
 
   - **PowerShell** - ``` ` ```
 
-    Özellik çıkışları örnek sorgu  _\$türü_ PowerShell'de:
+    PowerShell 'deki özellik  _\$türünü_ iptal eden örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -87,6 +86,6 @@ Kaynak Graph'te desteklenen işlevler listesi aşağıda verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanımda dili bakın [başlangıç sorguları](../samples/starter.md)
-- Bkz: Gelişmiş kullanır [Gelişmiş sorgular](../samples/advanced.md)
+- Bkz. [Başlangıç sorgularında](../samples/starter.md) kullanılan dil
+- Gelişmiş [sorgularda](../samples/advanced.md) gelişmiş kullanımlar konusuna bakın
 - [Kaynakları keşfetmeyi](explore-resources.md) öğrenin

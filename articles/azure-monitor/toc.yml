@@ -97,20 +97,12 @@
       items:
         - name: Genel Bakış
           href: platform/alerts-overview.md
-        - name: Klasik uyarılar
-          href: platform/alerts-classic.overview.md
         - name: Ölçüm uyarıları
           href: platform/alerts-metric-overview.md
         - name: Günlük uyarıları
           href: platform/alerts-unified-log.md
         - name: Etkinlik günlüğü uyarıları
           href: platform/activity-log-alerts.md
-        - name: Ortak uyarı şeması
-          href: platform/alerts-common-schema.md
-        - name: Eylem kuralları
-          href: platform/alerts-action-rules.md
-        - name: Akıllı gruplar
-          href: platform/alerts-smartgroups-overview.md
         - name: Değişiklik analizi
           href: app/change-analysis.md
     - name: Verileri görselleştirme
@@ -476,8 +468,6 @@
               items:
                 - name: SharePoint siteleri
                   href: app/sharepoint.md
-                - name: Dynamics CRM
-                  href: app/sample-mscrm.md
                 - name: Windows masaüstü
                   href: app/windows-desktop.md
         - name: Kapsayıcılar
@@ -518,11 +508,7 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Docker ve Windows Kapsayıcıları’nı izleme
               href: insights/containers.md
-        - name: Depolama
-          items:
-            - name: Depolama için Azure İzleyici
-              href: insights/storage-insights-overview.md
-        - name: Sanal makineler
+        - name: İşletim Sistemi (VM’ler ve daha fazlası)
           items:
             - name: Aracılar
               items:
@@ -532,26 +518,38 @@
                   items:
                     - name: Genel Bakış
                       href: platform/diagnostics-extension-overview.md
-                    - name: Azure Depolama’ya gönderme
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Application Insights’a gönderme
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Event Hubs’a gönderme
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Sorun giderme
-                      href: platform/diagnostics-extension-troubleshooting.md
-                    - name: JSON Satır tanılama günlükleri biçimine hazırlanma
-                      href: platform/diagnostic-logs-append-blobs.md
-                    - name: Ölçümler için konuk sanal makine
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                    - name: Ölçümler için konuk işletim sistemi Linux VM (Telegraf)
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-                    - name: Ölçümler için konuk sanal makine ölçüm kümesi
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                    - name: Ölçümler için sanal makine klasik konuğu
-                      href: platform/collect-custom-metrics-guestos-vm-classic.md
-                    - name: Ölçümler için konuk bulut hizmeti
-                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Windows
+                      items:
+                        - name: Sürüm geçmişi
+                          href: platform/diagnostics-extension-schema.md
+                        - name: Şema
+                          href: platform/diagnostics-extension-schema-1dot3.md
+                        - name: Azure Depolama’ya gönderme
+                          href: platform/diagnostics-extension-to-storage.md
+                        - name: Application Insights’a gönderme
+                          href: platform/diagnostics-extension-to-application-insights.md
+                        - name: Event Hubs’a gönderme
+                          href: platform/diagnostics-extension-stream-event-hubs.md
+                        - name: Azure İzleyici’ye özel ölçümler olarak gönderme
+                          items:
+                            - name: Sanal Makine
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                            - name: VM ölçek kümesi
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                            - name: VM klasik
+                              href: platform/collect-custom-metrics-guestos-vm-classic.md
+                            - name: Bulut hizmeti
+                              href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                        - name: JSON Satır tanılama günlükleri biçimi
+                          href: platform/diagnostic-logs-append-blobs.md
+                        - name: Sorun giderme
+                          href: platform/diagnostics-extension-troubleshooting.md
+                    - name: Linux
+                      items:
+                        - name: VM’lerle kullanma
+                          href: ../virtual-machines/extensions/diagnostics-linux.md
+                        - name: Telegraf ile özel ölçümler
+                          href: platform/collect-custom-metrics-linux-telegraf.md
                 - name: Log Analytics aracıları
                   items:
                     - name: Genel Bakış
@@ -647,13 +645,21 @@
               href: platform/computer-groups.md
             - name: Configuration Manager
               href: platform/collect-sccm.md
-        - name: Veritabanları
-          items:
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
         - name: Azure kaynakları
+          items:
+            - name: Tanılama günlükleri
+              items:
+                - name: Genel Bakış
+                  href: platform/diagnostic-logs-overview.md
+                - name: Günlüklerde toplama
+                  href: platform/diagnostic-logs-stream-log-store.md
+                - name: Azure Depolama'dan toplama
+                  href: platform/azure-storage-iis-table.md
+                - name: Depolamaya arşivleme
+                  href: platform/archive-diagnostic-logs.md
+                - name: Resource Manager şablonlarıyla etkinleştirme
+                  href: platform/diagnostic-logs-stream-template.md
+        - name: Azure Aboneliği
           items:
             - name: Etkinlik günlüğü
               items:
@@ -669,20 +675,6 @@
                   href: platform/activity-log-export.md
                 - name: Şema
                   href: platform/activity-log-schema.md
-            - name: Tanılama günlükleri
-              items:
-                - name: Genel Bakış
-                  href: platform/diagnostic-logs-overview.md
-                - name: Günlüklerde toplama
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Azure Depolama'dan toplama
-                  href: platform/azure-storage-iis-table.md
-                - name: Depolamaya arşivleme
-                  href: platform/archive-diagnostic-logs.md
-                - name: Event Hubs’a veri akışı sağlama
-                  href: platform/diagnostic-logs-stream-event-hubs.md
-                - name: Resource Manager şablonlarıyla etkinleştirme
-                  href: platform/diagnostic-logs-stream-template.md
             - name: Event Hubs’a veri akışı sağlama
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -691,6 +683,16 @@
               href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
             - name: Kaynak gruplarını izleme
               href: insights/resource-group-insights.md
+        - name: Depolama
+          items:
+            - name: Depolama için Azure İzleyici
+              href: insights/storage-insights-overview.md
+        - name: Veritabanları
+          items:
+            - name: Azure SQL
+              href: insights/azure-sql.md
+            - name: SQL Server
+              href: insights/sql-assessment.md
         - name: Ağlar
           items:
             - name: Ağ Analizi
@@ -731,18 +733,20 @@
           items:
             - name: Özel ölçümler
               href: platform/metrics-custom-overview.md
+            - name: Ölçümler REST API'si
+              href: platform/metrics-store-custom-rest-api.md
             - name: Log Analytics Veri toplayıcı API’si
               href: platform/data-collector-api.md
             - name: Log Analytics Veri Toplayıcı API’si İşlem Hattı örneği
               href: platform/create-pipeline-datacollector-api.md
-            - name: Ölçümler REST API'si
-              href: platform/metrics-store-custom-rest-api.md
         - name: System Center'ı kullanma
           items:
             - name: Operations Manager'ı bağlama
               href: platform/om-agents.md
             - name: Operations Manager'ı değerlendirme
               href: insights/scom-assessment.md
+        - name: Event Hubs’a veri akışı sağlama
+          href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Verileri çözümleme
       items:
         - name: Ölçümler
@@ -766,6 +770,8 @@
                   href: log-query/get-started-portal.md
                 - name: Günlük sorguları öğreticisi
                   href: log-query/get-started-queries.md
+                - name: Basit Günlükler deneyimi
+                  href: log-query/simple-logs.md
             - name: Günlük verileri
               items:
                 - name: Günlük verileri yapısı
@@ -875,7 +881,7 @@
               href: app/monitor-web-app-availability.md
             - name: Ölçüm uyarıları
               href: app/alerts.md
-        - name: Platform ölçüm uyarısı kuralları
+        - name: Ölçüm uyarı kuralları
           items:
             - name: Ölçüm uyarılarını yönetme
               href: platform/alerts-metric.md
@@ -901,28 +907,40 @@
               href: platform/alerts-activity-log.md
             - name: Yönetim olaylarını etkinlik günlüğü uyarılarına geçirme
               href: platform/migrate-management-alerts.md
-        - name: Eylem grupları
+        - name: Etkinlik günlüğündeki hizmet durumu uyarıları
           items:
+            - name: Bildirimleri görüntüleme
+              href: platform/service-notifications.md
+            - name: Bildirim olaylarıyla ilgili uyarıları yapılandırma
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Bildirimler ve eylemler
+          items:
+            - name: Eylem kuralları (Önizleme)
+              href: platform/alerts-action-rules.md
             - name: Eylem grubu oluşturma
               href: platform/action-groups.md
-            - name: Web kancası şeması
-              href: platform/activity-log-alerts-webhook.md
+            - name: Ortak uyarı şeması
+              href: platform/alerts-common-schema.md
             - name: Ortak uyarı şeması tanımı
               href: platform/alerts-common-schema-definitions.md
+            - name: Ortak uyarı şemasını Logic Apps ile tümleştirme
+              href: platform/alerts-common-schema-integrations.md
+            - name: Web kancası şeması
+              href: platform/activity-log-alerts-webhook.md
             - name: SMS uyarısı davranışı
               href: platform/alerts-sms-behavior.md
-            - name: Uyarı hızı sınırlama
+            - name: Bildirim hızı sınırlandırma
               href: platform/alerts-rate-limiting.md
             - name: Resource Manager ile eylem grupları oluşturma
               href: platform/action-groups-create-resource-manager-template.md
             - name: Bir Mantıksal Uygulama eylemi gerçekleştirme
               href: platform/action-groups-logic-app.md
-            - name: Ortak uyarı şemasını Logic Apps ile tümleştirme
-              href: platform/alerts-common-schema-integrations.md
         - name: Uyarı Yönetimi çözümü
           href: platform/alert-management-solution.md
         - name: Uyarı kullanıcı arabirimi
           items:
+            - name: Akıllı gruplar hakkında
+              href: platform/alerts-smartgroups-overview.md
             - name: Uyarı örneklerini yönetme
               href: platform/alerts-managing-alert-instances.md
             - name: Akıllı grupları yönetme
@@ -933,6 +951,8 @@
               href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Klasik uyarı kurallarını geçirme
           items:
+            - name: Klasik uyarılar hakkında
+              href: platform/alerts-classic.overview.md
             - name: Geçiş için hazırlanma
               href: platform/alerts-prepare-migration.md
             - name: Geçiş aracını anlama
@@ -947,12 +967,6 @@
               href: platform/alerts-enable-template.md
             - name: Web kancasını çağıran klasik ölçüm uyarısı
               href: platform/alerts-webhooks.md
-        - name: Etkinlik günlüğündeki hizmet durumu bildirimleri
-          items:
-            - name: Bildirimleri görüntüleme
-              href: platform/service-notifications.md
-            - name: Bildirim olaylarıyla ilgili uyarıları yapılandırma
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Uyarı API’si
           href: platform/api-alerts.md
         - name: BT Hizmet Yönetimi
@@ -1059,6 +1073,18 @@
               href: app/data-model-metric-telemetry.md
             - name: Bağlam
               href: app/data-model-context.md
+            - name: Azure İşlevleriyle tümleştirme
+              href: app/azure-functions-supported-features.md
+    - name: Ölçümler
+      items:
+        - name: Desteklenen ölçümler
+          href: platform/metrics-supported.md
+        - name: Yeni uyarılarda desteklenen ölçümler
+          href: platform/alerts-metric-near-real-time.md
+    - name: Tanılama Günlükleri
+      items:
+        - name: 'Tanılama günlüklerine yönelik hizmetler, kategoriler ve şemalar'
+          href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (Önizleme)
@@ -1083,25 +1109,6 @@
           href: /azure/templates/microsoft.insights/allversions
         - name: Günlükler
           href: /azure/templates/microsoft.operationalinsights/allversions
-    - name: Ölçümler
-      items:
-        - name: Desteklenen ölçümler
-          href: platform/metrics-supported.md
-        - name: Yeni uyarılarda desteklenen ölçümler
-          href: platform/alerts-metric-near-real-time.md
-    - name: Tanılama Günlükleri
-      items:
-        - name: 'Tanılama günlüklerine yönelik hizmetler, kategoriler ve şemalar'
-          href: platform/diagnostic-logs-schema.md
-        - name: Azure Tanılama uzantı şeması
-          href: platform/diagnostics-extension-schema.md
-          items:
-            - name: 1.3 ve üzeri
-              href: platform/diagnostics-extension-schema-1dot3.md
-            - name: 1.2
-              href: platform/diagnostics-extension-schema-1dot2.md
-            - name: 1
-              href: platform/diagnostics-extension-schema-1dot0.md
     - name: Özellik ve API'yi Kullanımdan Kaldırma
       items:
         - name: Klasik otomatik ölçeklendirme ve ölçümler API'si

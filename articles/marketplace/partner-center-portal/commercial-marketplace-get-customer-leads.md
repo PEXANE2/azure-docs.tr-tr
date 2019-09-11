@@ -74,7 +74,7 @@ Aşağıdaki örneklerde beklenen biçimdeki `publisherid.offerid`örnek değerl
 
 Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıdaki örnek, bir müşteri adayıyla bulunan müşteri bilgilerini gösterir.
 
-- FirstName \
+- FirstName John
 - Soyadı Smith
 - E-posta:\@jsmith Microsoft.com
 - Numarası 1234567890

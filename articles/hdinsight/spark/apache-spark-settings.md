@@ -1,6 +1,6 @@
 ---
 title: Spark ayarlarını yapılandırma-Azure HDInsight
-description: Azure HDInsight kümesi için Spark 'ı yapılandırma.
+description: Azure HDInsight kümesi için Apache Spark ayarlarını görüntüleme ve yapılandırma
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441924"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736015"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
 
@@ -61,7 +61,7 @@ Kümede performans iyileştirmesi gerçekleştirmeden önce geçerli HDInsight k
 
 Apache ambarı Web Kullanıcı arabirimi, anahtar kümesi kaynak kullanımı ölçümlerinin bir pano görünümüyle görüntülenir.  Ambarı panosu, Apache Spark yapılandırmayı ve yüklediğiniz diğer hizmetleri gösterir. Panoda, Spark dahil olmak üzere tüm yüklü hizmetlerin yapılandırma bilgilerini görüntüleyebileceğiniz bir **yapılandırma geçmişi** sekmesi bulunur.
 
-Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi**' ni seçin ve ardından **Spark2**' ı seçin.  Yapılandırma sekmesini **seçin** ve ardından hizmet listesindeki `Spark` ( `Spark2`sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
+Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi**' ni seçin ve ardından **Spark2**' ı seçin.  Yapılandırma sekmesini **seçin ve ardından** hizmet listesindeki `Spark` ( `Spark2`sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
 
 ![Spark yapılandırması](./media/apache-spark-settings/spark-config.png)
 
@@ -91,13 +91,13 @@ Uygulama gereksinimlerini geliştirmek üzere Spark yapılandırmalarının ayar
 > [!NOTE]  
 > Bu üç yapılandırma parametresi küme düzeyinde yapılandırılabilir (küme üzerinde çalışan tüm uygulamalar için) ve ayrıca her bir uygulama için de belirtilir.
 
-Spark Yürüticileri tarafından kullanılan kaynaklarla ilgili başka bir bilgi kaynağı Spark uygulama kullanıcı arabirimi ' dir.  Spark Kullanıcı arabiriminde, yürüticileri tarafından tüketilen yapılandırma ve kaynakların Özet ve ayrıntı görünümlerini göstermek için **yürüticileri** sekmesini seçin.  Bu görünümler, tüm küme veya belirli bir iş yürütmesi kümesi için Spark yürüticileri için varsayılan değerleri değiştirip değiştirmeyeceğinizi belirlemenize yardımcı olabilir.
+Spark Yürütücüleri tarafından kullanılan kaynaklar hakkında bir diğer bilgi kaynağı Spark Uygulaması Kullanıcı Arabirimidir.  Spark Kullanıcı arabiriminde, yürüticileri tarafından tüketilen yapılandırma ve kaynakların Özet ve ayrıntı görünümlerini göstermek için **yürüticileri** sekmesini seçin.  Bu görünümler varsayılan değerleri kümenin tamamında Spark yürütücüleri için mi yoksa belirli bir iş yürütmeleri kümesi için mi değiştireceğinizi saptamanıza yardımcı olabilir.
 
 ![Spark Yürüticileri](./media/apache-spark-settings/spark-executors.png)
 
 Alternatif olarak, HDInsight ve Spark kümesi yapılandırma ayarlarını programlı bir şekilde doğrulamak için ambarı REST API kullanabilirsiniz.  [GitHub 'Daki Apache AMBARı API başvurusunda](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)daha fazla bilgi bulabilirsiniz.
 
-Spark iş yükünüze bağlı olarak, varsayılan olmayan bir Spark yapılandırmasının daha iyileştirilmiş Spark iş yürütmeleri sağladığını belirleyebilirsiniz.  Varsayılan olmayan küme yapılandırmalarının doğrulanması için örnek iş yükleri ile kıyaslama testi gerçekleştirmeniz gerekir.  Ayarlamayı düşünebileceğiniz bazı ortak parametrelerden bazıları şunlardır:
+Spark iş yükünüze bağlı olarak, varsayılan dışındaki bir Spark yapılandırmasının daha iyi Spark iş yürütmeleri sağladığına karar verebilirsiniz.  Varsayılan dışındaki küme yapılandırmalarının doğrulanması için örnek iş yükleriyle karşılaştırmalı testler yapmalısınız.  Ayarlamayı düşünebileceğiniz yaygın parametrelerden bazıları:
 
 * `--num-executors`yürüticileri sayısını ayarlar.
 * `--executor-cores`Her bir yürütücü için çekirdek sayısını ayarlar. Diğer süreçler da kullanılabilir belleğin bir kısmını tükettiği için orta ölçekli yürüticileri kullanmanızı öneririz.

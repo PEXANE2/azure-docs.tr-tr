@@ -107,7 +107,7 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 | version                      | HDInsight kümesinin sürümü. Belirtilmemişse, geçerli HDInsight tanımlı varsayılan sürümü kullanılıyor. | Hayır       |
 | hostsubscriptionıd           | HDInsight kümesi oluşturmak için kullanılan Azure abonelik KIMLIĞI. Belirtilmemişse, Azure oturum açma bağlamınızın abonelik KIMLIĞINI kullanır. | Hayır       |
 | clusterNamePrefix           | HDI küme adının ön eki, küme adının sonuna bir zaman damgası otomatik olarak eklenir| Hayır       |
-| Mini sürüm                 | Küme türü "Spark" ise Spark sürümü | Hayır       |
+| sparkVersion                 | Küme türü "Spark" ise Spark sürümü | Hayır       |
 | additionalLinkedServiceNames | Data Factory hizmeti tarafından sizin adınıza kaydettirilebilmeleri için HDInsight bağlı hizmeti için ek depolama hesapları belirtir. Bu depolama hesaplarının, linkedServiceName tarafından belirtilen depolama hesabıyla aynı bölgede oluşturulan HDInsight kümesiyle aynı bölgede olması gerekir. | Hayır       |
 | osType                       | İşletim sisteminin türü. İzin verilen değerler şunlardır: Linux ve Windows (yalnızca HDInsight 3,3 için). Linux varsayılandır. | Hayır       |
 | hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetinin adı. İsteğe bağlı HDInsight kümesi, Azure SQL veritabanı, meta veri deposu olarak kullanılarak oluşturulur. | Hayır       |

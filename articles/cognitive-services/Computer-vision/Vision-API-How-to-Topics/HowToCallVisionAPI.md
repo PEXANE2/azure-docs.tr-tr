@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 386503a7089c910b52a87cca8d9f2f2203ae0cad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564523"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859058"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Örnek: Görüntü İşleme API'si nasıl çağrılacağını
 
@@ -47,19 +47,24 @@ Aşağıdaki örneklerde, aşağıdaki özellikler gösterilmektedir:
 
 Görüntü İşleme API’sine yapılan her çağrı için bir abonelik anahtarı gerekir. Bu anahtarın bir sorgu dizesi parametresi aracılığıyla geçirilmesi veya istek üst bilgisinde belirtilmesi gerekir.
 
-Ücretsiz deneme anahtarı almak için bkz. bilişsel [Hizmetler 'ı deneme](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
 1. Sorgu dizesi aracılığıyla abonelik anahtarını geçirme, Görüntü İşleme API’si örneği olarak aşağıdaki örneğe bakın:
 
-```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
+    ```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
 
 1. Abonelik anahtarını geçirme, HTTP isteği üst bilgisinde de belirtilebilir:
 
-```ocp-apim-subscription-key: <Your subscription key>```
+    ```ocp-apim-subscription-key: <Your subscription key>```
 
-1. İstemci kitaplığı kullanılırken, VisionServiceClient sınıfının oluşturucusu aracılığıyla abonelik anahtarı geçirilir:
+1. İstemci kitaplığı kullanılırken, abonelik anahtarı ComputerVisionClient Oluşturucusu aracılığıyla geçirilir ve bölge, istemcinin bir özelliğinde belirtilir:
 
-```var visionClient = new VisionServiceClient("Your subscriptionKey");```
+    ```
+    var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
+    {
+        Endpoint = "https://westus.api.cognitive.microsoft.com"
+    }
+    ```
 
 ## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Görüntü İşleme API'si hizmetine bir görüntü yükleyin ve geri etiket, açıklama ve ünlüler alın
 
@@ -74,16 +79,16 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatur
 ```
 
 ```csharp
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using System.IO;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
-AnalysisResult analysisResult;
-var features = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
+ImageAnalysis imageAnalysis;
+var features = new VisualFeatureTypes[] { VisualFeatureTypes.Tags, VisualFeatureTypes.Description };
 
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.AnalyzeImageAsync(fs, features);
+  imageAnalysis = await visionClient.AnalyzeImageInStreamAsync(fs, features);
 }
 ```
 
@@ -92,17 +97,17 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 ###### <a name="tags-only"></a>Yalnızca Etiketler:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
-var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 ###### <a name="description-only"></a>Yalnızca Açıklama:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.DescribeAsync(fs);
+  imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
 }
 ```
 

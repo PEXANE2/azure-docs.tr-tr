@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562849"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801443"
 ---
 # <a name="inspect-custom-speech-data"></a>Özel Konuşma Tanıma verilerini İnceleme
 
 > [!NOTE]
 > Bu sayfa, [özel konuşma tanıma için test verilerini hazırlama](how-to-custom-speech-test-data.md) okuduğunuzu ve İnceleme için bir veri kümesi yüklediğinizi varsayar.
 
-Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. Özel Konuşma Tanıma portalından karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanınma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, herhangi bir ses verisi almak zorunda kalmadan Microsoft 'un temel konuşma konuşmadan metin modeli veya eğitilen özel bir modelin kalitesini hızlıca incelemenizi sağlar.
+Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanınma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, herhangi bir ses verisi almak zorunda kalmadan Microsoft 'un temel konuşma konuşmadan metin modeli veya eğitilen özel bir modelin kalitesini hızlıca incelemenizi sağlar.
 
 Bu belgede, daha önce karşıya yüklediğiniz eğitim verilerini kullanarak bir modelin kalitesini görsel olarak incelemeyi öğreneceksiniz.
 
@@ -32,11 +32,12 @@ Bu sayfada, Microsoft 'un temel konuşma konuşmadan metin modeli ve/veya eğiti
 
 Bir test oluşturmak için aşağıdaki yönergeleri izleyin:
 
-1. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
-2. **Test Ekle**' ye tıklayın.
-3. **İnceleme kalitesi (yalnızca ses verileri)** seçeneğini belirleyin. Teste bir ad, açıklama verin ve ses veri kümenizi seçin.
-4. Test etmek istediğiniz en fazla iki model seçin.
-5.           **Oluştur**'a tıklayın.
+1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
+2. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
+3. **Test Ekle**' ye tıklayın.
+4. **İnceleme kalitesi (yalnızca ses verileri)** seçeneğini belirleyin. Teste bir ad, açıklama verin ve ses veri kümenizi seçin.
+5. Test etmek istediğiniz en fazla iki model seçin.
+6. **Oluştur**'a tıklayın.
 
 Bir test başarıyla oluşturulduktan sonra modelleri yan yana karşılaştırabilirsiniz.
 

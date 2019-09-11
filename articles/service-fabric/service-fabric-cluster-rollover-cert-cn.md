@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric kümesi sertifikasını aktarma | Microsoft Docs
+title: Azure Service Fabric küme sertifikasını alma | Microsoft Docs
 description: Sertifika ortak adı tarafından tanımlanan Service Fabric kümesi sertifikasını nasıl alabileceğinizi öğrenin.
 services: service-fabric
 documentationcenter: .net
@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2018
+ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5d11054ca8eb684f1f25a25ddeac1b53e82b3775
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d6ead6aaa5d4c0e864126bf63d4cc0e9339464f2
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599921"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773363"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric kümesi sertifikasını el ile alma
 Service Fabric küme sertifikasının süresi dolmak üzere kapatıldığında, sertifikayı güncelleştirmeniz gerekir.  Küme, ortak ada (parmak izi yerine) [göre sertifikalar kullanmak üzere ayarlandıysa](service-fabric-cluster-change-cert-thumbprint-to-cn.md) Sertifika geçişi basittir.  Yeni bir sona erme tarihine sahip bir sertifika yetkilisinden yeni bir sertifika alın.  Otomatik olarak imzalanan sertifikalar, Azure portal kümesi oluşturma iş akışı sırasında oluşturulan sertifikaları dahil etmek için üretim Service Fabric kümeleri için desteklenmez. Yeni sertifika, eski sertifikayla aynı ortak ada sahip olmalıdır. 
@@ -53,7 +53,7 @@ $resourceId = $keyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -83,7 +83,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 >[!NOTE]
 > Sanal makine ölçek kümesi gizli dizileri, her gizli sürümü sürümlü benzersiz bir kaynak olduğundan, bu, iki ayrı gizli dizi için aynı kaynak kimliğini desteklemez. 
 
-Daha fazla bilgi için aşağıdakileri okuyun:
+## <a name="next-steps"></a>Sonraki Adımlar
+
 * [Küme güvenliği](service-fabric-cluster-security.md)hakkında bilgi edinin.
 * [Küme sertifikalarını güncelleştirme ve yönetme](service-fabric-cluster-security-update-certs-azure.md)
-

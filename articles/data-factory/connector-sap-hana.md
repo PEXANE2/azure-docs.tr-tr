@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: e9b024fc3c07670201cf72cf80c0b69bf68f1cc8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72019b3bf5c17525b9a0dd8afc126f1bfc248041
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725994"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274453"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP HANA verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -25,6 +25,9 @@ ms.locfileid: "68725994"
 > * [Geçerli sürüm](connector-sap-hana.md)
 
 Bu makalede, SAP HANA veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+
+>[!TIP]
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
@@ -133,15 +136,15 @@ Aşağıdaki yük ile SAP HANA bağlı hizmeti kullanıyorsanız, hala olduğu g
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm SAP HANA veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm SAP HANA veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 SAP HANA verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SapHanaTable** | Evet |
-| schema | SAP HANA veritabanındaki şemanın adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
-| table | SAP HANA veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| schema | SAP HANA veritabanındaki şemanın adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| table | SAP HANA veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek:**
 

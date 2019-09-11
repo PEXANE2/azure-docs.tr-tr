@@ -59,6 +59,8 @@
       items:
         - name: Görüntü gönderme ve çekme
           href: container-registry-get-started-docker-cli.md
+        - name: OCI yapıtını gönderme ve alma
+          href: container-registry-oci-artifacts.md
         - name: Depoları görüntüleme
           href: container-registry-repositories.md
         - name: Kapsayıcı görüntülerini içeri aktarma

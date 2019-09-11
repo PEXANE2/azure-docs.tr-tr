@@ -6,16 +6,16 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 5ddbff62421d97b1105a997bd084e1fe5b44cf12
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907412"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764406"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sorgu deposuyla performansı izleme
 
-**Şunlara uygulanır:** PostgreSQL için Azure veritabanı-tek sunucu 9,6 ve 10
+**Şunlara uygulanır:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
 
 PostgreSQL için Azure veritabanı 'ndaki sorgu depolama özelliği zaman içinde sorgu performansını izlemek için bir yol sağlar. Sorgu deposu, en uzun çalışan ve en fazla kaynak yoğunluklu sorguları hızlı bir şekilde bulmanıza yardımcı olarak performans sorunlarını basitleştirir. Sorgu deposu sorgular ve çalışma zamanı istatistikleri geçmişini otomatik olarak yakalar ve bunları gözden geçirmeniz için saklar. Veritabanı kullanım düzenlerini görebilmeniz için verileri zaman pencereleri ile ayırır. Tüm kullanıcılar, veritabanları ve sorgular için veriler PostgreSQL için Azure veritabanı örneğine **azure_sys** adlı bir veritabanında depolanır.
 

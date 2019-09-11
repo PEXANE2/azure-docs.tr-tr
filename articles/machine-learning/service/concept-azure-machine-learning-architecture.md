@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011639"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844997"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning hizmeti nasıl kullanılır: Mimari ve kavramlar
 
@@ -129,7 +129,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 ### <a name="datasets-and-datastores"></a>Veri kümeleri ve veri depoları
 
-**Azure Machine Learning veri kümeleri** (Önizleme), erişiminizi ve verilerinize çalışmayı kolaylaştırır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri inceleyebilir ve hazırlayabilir, farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilir ve eğitiminde ve üretimde kullanılan veri kümeleri arasında karşılaştırma yapabilirsiniz.
+**Azure Machine Learning veri kümeleri** (Önizleme), erişiminizi ve verilerinize çalışmayı kolaylaştırır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri keşfedebilir ve farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilirsiniz.
 
 Veri kümeleri, veya `from_delimited_files()` `to_pandas_dataframe()`kullanma gibi popüler biçimlerdeki verilerle çalışmaya yönelik yöntemler sağlar.
 

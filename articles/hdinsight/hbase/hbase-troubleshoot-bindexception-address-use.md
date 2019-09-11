@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/08/2019
-ms.openlocfilehash: 8851a4dfb7deafab7ad77ef80619dd49ca46ed71
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.date: 08/16/2019
+ms.openlocfilehash: c2f7575dca5432d90bf421afa5a39a4a4cd79744
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947857"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983054"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Senaryo: BindException-adres Azure HDInsight 'ta zaten kullanılıyor
 
@@ -31,23 +31,23 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="cause"></a>Nedeni
 
-Ağır iş yükü etkinliği sırasında HBase bölge sunucuları yeniden başlatılıyor. Bir Kullanıcı, HBase bölge sunucusunda, ambarı kullanıcı arabiriminden yeniden başlatma işlemini başlattığında, arka planda bu durum aşağıda verilmiştir:
+Ağır iş yükü etkinliği sırasında Apache HBase bölge sunucuları yeniden başlatılıyor. Bir Kullanıcı, HBase bölge sunucusunda Apache ambarı kullanıcı arabiriminden yeniden başlatma işlemini başlattığında, arka planda bu durum aşağıda verilmiştir:
 
-1. Ambarı Aracısı, bölge sunucusuna bir durdurma isteği gönderir.
+1. Ambarı Aracısı bölge sunucusuna bir durdurma isteği gönderir.
 
-1. Daha sonra, ambarı Aracısı bölge sunucusunun düzgün şekilde kapanması için 30 saniye bekler.
+1. Ambarı Aracısı bölge sunucusunun düzgün şekilde kapanması için 30 saniye bekler
 
-1. Uygulama bölge sunucusuna bağlanmaya devam ederse, bu, hemen kapanmaz ve 30 saniyelik zaman aşımı süresi daha önce sona erer.
+1. Uygulamanız bölge sunucusuna bağlanmaya devam ederse, sunucu hemen kapatılmaz. 30 saniyelik zaman aşımı, kapatmadan önce sona erer.
 
-1. 30 saniyelik süre dolduktan sonra, ambarı Aracısı bölge sunucusuna bir zorla KILL (Kill-9) gönderir.
+1. 30 saniye sonra, ambarı Aracısı bölge sunucusuna bir zorla-KILL (`kill -9`) komutu gönderir.
 
 1. Bu ani kapatmayla kapatılmış olsa da, bölge sunucusu işlemi sonlandırısa da işlemle ilişkili bağlantı noktası yayımlanmayabilir, sonunda buna yol açar `AddressBindException`.
 
 ## <a name="resolution"></a>Çözüm
 
-Yeniden başlatma başlatmadan önce HBase bölge sunucularındaki yükü azaltın.
+Yeniden başlatma başlatmadan önce HBase bölge sunucularındaki yükü azaltın. Ayrıca, ilk olarak tüm tabloları temizlemek iyi bir fikirdir. Tabloları temizleme hakkında bir başvuru için bkz [. HDInsight HBase: Tabloları](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)reçeteye göre Apache HBase kümesi yeniden başlatma süresini geliştirme.
 
-Alternatif olarak, aşağıdaki komutları kullanarak çalışan düğümlerinde bölge sunucularını deneyin ve el ile yeniden başlatın:
+Alternatif olarak, aşağıdaki komutları kullanarak çalışan düğümlerinde bölge sunucularını el ile yeniden başlatmayı deneyin:
 
 ```bash
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

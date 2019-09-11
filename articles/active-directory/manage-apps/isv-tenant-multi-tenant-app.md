@@ -1,6 +1,6 @@
 ---
-title: Bir Azure kiracısı için çok kiracılı bir uygulama oluşturma
-description: Azure Active Directory ile tümleştirme, bağımsız yazılım satıcıları için yönergeler
+title: Çok kiracılı bir uygulama için Azure kiracısı oluşturma
+description: Azure Active Directory tümleştirilirken bağımsız yazılım satıcıları için rehberlik
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,35 +12,35 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69cc625500af60a753ad8e7db0363954088f3307
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659586"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812619"
 ---
-# <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Bir Azure kiracısı için çok kiracılı bir uygulama oluşturma  
+# <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Çok kiracılı bir uygulama için Azure kiracısı oluşturma  
 
-Çok kiracılı uygulamanızın erişim sağlamak için uygulamayı kaydetme ve müşterinizin Kimlik Federasyonu etkinleştirmek için bir Azure Active Directory Kiracı oluşturmanız gerekir. Bkz: [çok kiracılı uygulamanız için doğru Federasyon protokolünü seçme](isv-choose-multi-tenant-federation.md). Bu Kiracı, uygulamanızı ve Federasyon müşteriler Azure AD ortamınızı benzer bir ortamda test etmek izin verir.
+Çok kiracılı uygulamanıza erişim sağlamak için, uygulamayı kaydetmek ve müşterinizin kimliklerinin federasyonunu etkinleştirmek üzere bir Azure Active Directory kiracı oluşturmanız gerekir. Bkz. [çok kiracılı uygulamanız için doğru Federasyon protokolünü seçme](isv-choose-multi-tenant-federation.md). Bu kiracı, müşterilerinizin Azure AD ortamlarına benzer bir ortamda uygulamanızı ve Federasyonu test etmeniz için size olanak sağlayacak.
 
-## <a name="costs-of-hosting-a-multi-tenant-application"></a>Çok kiracılı bir uygulama barındırma maliyetlerini
+## <a name="costs-of-hosting-a-multi-tenant-application"></a>Çok kiracılı bir uygulama barındırma maliyetleri
 
-Azure Active Directory, üç SKU'ları, ücretsiz, temel ve Premium'da kullanılabilir. [Ayrıntılı bir karşılaştırmasını görmek](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory birden çok sürümde kullanılabilir. [Ayrıntılı Özellik Karşılaştırması bölümüne bakın](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Azure aboneliğinizi ve Azure active directory ücretsiz olarak oluşturun ve temel özellikleri kullanın.
+Azure aboneliğinizi ve Azure Active Directory 'nizi ücretsiz olarak oluşturabilir ve temel özellikleri kullanabilirsiniz.
 
-## <a name="create-your-tenant"></a>Kiracı oluşturma
+## <a name="create-your-tenant"></a>Kiracınızı oluşturun
 
-1. Kiracınızın oluşturun. Bkz: [geliştirme ortamını ayarlamak](../develop/quickstart-create-new-tenant.md).
+1. Kiracınızı oluşturun. Bkz. [geliştirme ortamı ayarlama](../develop/quickstart-create-new-tenant.md).
 
-2. Etkinleştirin ve uygulamanıza çoklu oturum açma erişimi test etme
+2. Uygulamanıza çoklu oturum açma erişimini etkinleştirin ve test edin,
 
-   a. **OIDC veya Oath uygulamalarınız için**, [uygulamanızı kaydetmeniz](../develop/quickstart-register-app.md) çok kiracılı bir uygulama olarak. Tüm kurumsal dizinde ve kişisel Microsoft hesapları seçeneği desteklenen hesap türlerinde hesaplarını seçin
+   a. **OıDC veya Oath uygulamaları için**uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](../develop/quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde hesapları seçin
 
-   b. **SAML ve WS-Fed-tabanlı uygulamalar için**, size [yapılandırma SAML tabanlı çoklu oturum açma](configure-single-sign-on-non-gallery-applications.md) Azure AD'de SAML genel bir şablon kullanan uygulamalar.
+   b. **SAML ve WS-Bessel tabanlı uygulamalar için**, Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](configure-single-sign-on-non-gallery-applications.md) .
 
-Ayrıca [çok kiracılı tek kiracılı bir uygulamaya dönüştürme](../develop/howto-convert-app-to-be-multi-tenant.md) gerekirse.
+Ayrıca, gerekirse [tek kiracılı bir uygulamayı birden çok kiracıya dönüştürebilirsiniz](../develop/howto-convert-app-to-be-multi-tenant.md) .
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Uygulamanıza SSO tümleştirin](isv-sso-content.md)
+[Uygulamanızda SSO 'yu tümleştirme](isv-sso-content.md)

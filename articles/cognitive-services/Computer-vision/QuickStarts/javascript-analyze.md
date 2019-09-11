@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Uzak resmi - REST, JavaScript çözümleme'
+title: 'Hızlı Başlangıç: Uzak görüntüyü çözümleme-REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, JavaScript ile Görüntü İşleme API’si kullanarak bir görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 09/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9b7b7df2723b4adae5fa711e4f586f8d2d2add97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 446558c88ee99cf61bd3591b687ebbd7e9710b76
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60408875"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376235"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Hızlı Başlangıç: Görüntü işleme JavaScript ve REST API kullanarak uzak bir resmi çözümleme
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Hızlı Başlangıç: Görüntü İşleme ' de REST API ve JavaScript kullanarak uzak görüntüyü çözümleme
 
 Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak görsel özellikleri ayıklamak için uzakta depolanan bir görüntüyü analiz edeceksiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemi ile, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
 
@@ -26,18 +26,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
-1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
-    1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-    1. Gerekirse `uriBase` değerini [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yönteminin abonelik anahtarlarınızı aldığınız Azure bölgesinden uç nokta URL'si ile değiştirin.
-    1. İsteğe bağlı olarak `inputImage` denetimi için `value` özniteliğinin değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin, `analyze-image.html`.
+1. İsteğe bağlı olarak `inputImage` denetimi için `value` özniteliğinin değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
+1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin: `analyze-image.html`.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.
 1. Tarayıcıda web sayfası görüntülendiğinde, **Görüntü Analizi** düğmesini seçin.
@@ -57,19 +54,11 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz 
         // *** Update or verify the following values. ***
         // **********************************************
 
-        // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<Subscription Key>";
-
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
+        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        
+        var uriBase = endpoint + "vision/v2.0/analyze";
 
         // Request parameters.
         var params = {

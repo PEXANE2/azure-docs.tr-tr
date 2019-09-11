@@ -7,19 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972323"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241120"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
 Azure Kaynak Grafiği, Azure kaynaklarınızı hızlı ve ölçeklenebilir bir şekilde keşfetme ve bulma özelliği sağlar. Hızlı yanıtlar için tasarlanan bu, ortamınız ve ayrıca Azure kaynaklarınızı oluşturan özellikler hakkında bilgi edinmek için harika bir yoldur.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>Sanal makineleri keşfet
 

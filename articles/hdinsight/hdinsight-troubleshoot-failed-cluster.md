@@ -1,6 +1,6 @@
 ---
 title: HDInsight kümesinde yavaş veya başarısız iş sorunlarını giderme-Azure HDInsight
-description: Yavaş veya başarısız bir HDInsight kümesini tanılayın ve sorun giderin.
+description: Azure HDInsight kümesinde yavaş veya başarısız bir işi tanılayın ve sorun giderin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8c50068914c1519a5522372310bd0f5863a94b39
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573680"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735780"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız bir iş sorunlarını giderme
 
@@ -90,7 +90,7 @@ HDInsight çeşitli Azure hizmetlerini kullanır. Azure HDInsight üzerinde sana
 
 #### <a name="check-azure-service-usage-limits"></a>Azure hizmeti kullanım sınırlarını denetle
 
-Büyük bir küme veya aynı anda birçok küme oluşturduysanız, bir Azure hizmet sınırını aştıysanız bir küme başarısız olabilir. Hizmet limitleri, Azure aboneliğinize bağlı olarak farklılık gösterir. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Büyük bir küme veya aynı anda birçok küme oluşturduysanız, bir Azure hizmet sınırını aştıysanız bir küme başarısız olabilir. Hizmet limitleri, Azure aboneliğinize bağlı olarak farklılık gösterir. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 Microsoft 'un kullanılabilir HDInsight kaynakları sayısını (VM çekirdekleri ve VM örnekleri gibi) [Kaynak Yöneticisi çekirdek kota artışı isteği](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)ile artırmayı isteyebilirsiniz.
 
 #### <a name="check-the-release-version"></a>Yayın sürümünü denetleyin

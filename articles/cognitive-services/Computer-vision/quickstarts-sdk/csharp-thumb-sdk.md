@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Küçük resim - SDK oluşturma,C#'
+title: 'Hızlı Başlangıç: Küçük resim oluşturma-SDK,C#'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Görüntü İşleme Windows C# istemci kitaplığını kullanarak bir görüntüden küçük resim oluşturacaksınız.
 services: cognitive-services
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 78ffd9628c7a65ae60d457bbff3631ea261649d5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b43bce2b8235c44475e92da385ba57ee467815ef
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603450"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141012"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Hızlı Başlangıç: Bilgisayar işleme SDK'sını kullanarak küçük resim oluşturma veC#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Hızlı Başlangıç: Görüntü İşleme SDK 'sını kullanarak bir küçük resim oluşturun veC#
 
-Bu hızlı başlangıçta, bir akıllı kırpılmış küçük resim için bilgisayar işleme SDK'sını kullanarak bir görüntüden oluşturacak C#. İsterseniz, bu kılavuzdaki kod tam bir örnek uygulamadan olarak indirebilirsiniz [Bilişsel hizmetler Csharp görüntü](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) github deposu.
+Bu hızlı başlangıçta, için C#görüntü işleme SDK 'sını kullanarak bir görüntüden akıllı kırpılmış bir küçük resim oluşturacaksınız. İsterseniz, bu kılavuzdaki kodu GitHub 'da bilişsel [Hizmetler CSharp Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) depositesinden tamamen örnek bir uygulama olarak indirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir görüntü işleme abonelik anahtarı. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+* Görüntü İşleme abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 * [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) istemci kitaplığı NuGet paketi. Paketi indirmek gerekli değildir. Yükleme yönergeleri aşağıda verilmiştir.
 
 ## <a name="generatethumbnailasync-method"></a>GenerateThumbnailAsync yöntemi
 
- Bir görüntünün küçük resmini oluşturmak için bu yöntemleri kullanabilirsiniz. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Görüntü işleme, akıllı bir şekilde ilgi belirlemek ve söz konusu bölgeyi temel alan kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
+ Bir görüntünün küçük resmini oluşturmak için bu yöntemleri kullanabilirsiniz. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Görüntü İşleme, ilgilendiğiniz alanı saptamak ve bu bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
 Örneği çalıştırmak için aşağıdaki adımları uygulayın:
 

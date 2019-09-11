@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
 ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68698267"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
@@ -71,7 +71,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
-* [Veritabanı geçiş hizmeti](#database-migration-service-limits)
+* [Veritabanı Geçiş Hizmeti](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
 * [Ön kapı hizmeti](#azure-front-door-service-limits)
@@ -85,7 +85,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Ağ](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [Azure DNS](#azure-dns-limits)
-  * [Azure ön kapı hizmeti](#azure-front-door-service-limits)
+  * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Güvenlik Duvarı](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Yük Dengeleyici](#load-balancer)
@@ -106,7 +106,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Akış Analizi](#stream-analytics-limits)
 * [Abonelik](#subscription-limits)
 * [Sanal Makineler](#virtual-machines-limits)
-* [Sanal Makine Ölçek Kümeleri](#virtual-machine-scale-sets-limits)
+* [Sanal makine ölçek kümeleri](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Abonelik sınırları
 #### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Abonelik limitleri-Azure hizmet yönetimi (klasik dağıtım modeli)

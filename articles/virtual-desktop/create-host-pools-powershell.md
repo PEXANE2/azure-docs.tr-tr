@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 1c365790e1633a74be9f5baf41098e7511f99a7d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563278"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163672"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>PowerShell ile ana bilgisayar havuzu oluşturma
 
@@ -25,7 +25,7 @@ Konak havuzları, Windows sanal masaüstü önizleme kiracı ortamlarında bir v
 Windows sanal masaüstü ortamında oturum açmak için aşağıdaki cmdlet 'i çalıştırın
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 Ardından, Windows sanal masaüstü kiracınızda yeni bir konak havuzu oluşturmak için bu cmdlet 'i çalıştırın:
@@ -82,7 +82,7 @@ Başarıyla etki alanına katılmayı sağlamak için, her bir sanal makine içi
 5. Etki alanına katma makinelere ayrıcalıkları olan bir etki alanı hesabıyla kimlik doğrulaması yapın.
 
     >[!NOTE]
-    > VM 'lerinizi bir Azure AD Domain Services ortamına katılıyorsanız, etki alanına katılma kullanıcısının [AAD DC Administrators grubunun](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)da bir üyesi olduğundan emin olun.
+    > VM 'lerinizi bir Azure Active Directory Domain Services (Azure AD DS) ortamına katılıyorsanız, etki alanına katılma kullanıcısının [AAD DC Yöneticiler grubunun](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)da bir üyesi olduğundan emin olun.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Sanal makineleri Windows sanal masaüstü önizleme ana bilgisayar havuzuna Kaydet
 

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879220"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743236"
 ---
-# <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD self servis parola sıfırlama dağıtma
+# <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD self servis parola sıfırlamayı dağıtma
 
 Self servis parola sıfırlama (SSPR), çalışanların BT personeline başvurmanız gerekmeden parolalarını sıfırlamalarını sağlayan bir Azure Active Directory özelliğidir. Çalışanlar, hizmet kullanılmadan önce self servis parola sıfırlama için kaydolmalıdır veya kaydolmalıdır. Kayıt sırasında çalışan, kuruluşu tarafından etkinleştirilen bir veya daha fazla kimlik doğrulama yöntemi seçer.
 
@@ -37,7 +37,7 @@ SSPR 'yi dağıtmadan önce kuruluşlar, zaman içinde hangi parola sıfırlama 
 
 ## <a name="licensing-considerations"></a>Lisanslama konuları
 
-Azure Active Directory Kullanıcı başına lisans, her kullanıcının kullandıkları özellikler için uygun bir lisansa sahip olması anlamına gelir.
+Azure Active Directory, Kullanıcı başına lisanslanır, her kullanıcının kullandıkları özellikler için uygun bir lisansa sahip olması anlamına gelir.
 
 Lisanslama hakkında daha fazla bilgiyi [Azure Active Directory fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/) bulabilirsiniz
 
@@ -47,7 +47,7 @@ Microsoft, kuruluşların SSPR ve Multi-Factor Authentication için Birleşik ka
 
 ![Birleşik güvenlik bilgileri kaydı](./media/howto-sspr-deployment/combined-security-info.png)
 
-Birleşik kayıt deneyimi, kuruluşların hem SSPR hem de Azure Multi-Factor Authentication 'ı kullanmasını gerektirmez. Birleşik kayıt deneyimi, kuruluşların geleneksel ayrı bileşenlerle karşılaştırıldığında daha iyi bir kullanıcı deneyimi sağlar. Birleşik kayıt ve nasıl etkinleştirileceği hakkında daha fazla bilgi için, [Birleşik güvenlik bilgileri kaydı (Önizleme)](concept-registration-mfa-sspr-combined.md) makalesinde bulabilirsiniz
+Birleşik kayıt deneyimi, kuruluşların hem SSPR hem de Azure Multi-Factor Authentication kullanımını etkinleştirmesini gerektirmez. Birleşik kayıt deneyimi, kuruluşların geleneksel ayrı bileşenlerle karşılaştırıldığında daha iyi bir kullanıcı deneyimi sağlar. Birleşik kayıt ve nasıl etkinleştirileceği hakkında daha fazla bilgi için, [Birleşik güvenlik bilgileri kaydı (Önizleme)](concept-registration-mfa-sspr-combined.md) makalesinde bulabilirsiniz
 
 ## <a name="plan-the-configuration"></a>Yapılandırmayı planlayın
 
@@ -55,11 +55,11 @@ SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarl
 
 | Alan | Ayar | Value |
 | --- | --- | --- |
-| **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve üretim için |
+| **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
 | **Kayıt** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
-|   | Kullanıcılardan kimlik doğrulama bilgilerini yeniden doğrulamaları istenmeden önce geçen gün sayısı | 90 – 180 gün |
+|   | Kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
 | **Bildirimleri** | Parola sıfırlamayı kullanıcılara bildir | Evet |
 |   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
 | **Liş** | Yardım masası bağlantısını özelleştir | Evet |

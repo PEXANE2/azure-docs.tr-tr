@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953007"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389771"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -38,7 +38,7 @@ Daha güçlü parola doğrulamanın mevcut Active Directory etki alanı denetley
 * [Etki alanı denetleyicisi çoğaltma yükseltmesi zayıf bir dizin hizmetleri onarım modu parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Etki alanı denetleyicisi indirgeme zayıf bir yerel yönetici parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Özellik, makul bir süre için denetim modunda çalıştıktan sonra, daha güvenli parolalar istemek için yapılandırmayı *Denetim* modundan geçirebilirsiniz. Bu süre boyunca odaklanmış izleme iyi bir fikirdir.
+Özellik, makul bir süre için denetim modunda çalıştıktan sonra, daha güvenli parolalar *istemek için yapılandırmayı* *Denetim* modundan geçirebilirsiniz. Bu süre boyunca odaklanmış izleme iyi bir fikirdir.
 
 ## <a name="deployment-requirements"></a>Dağıtım gereksinimleri
 
@@ -295,7 +295,7 @@ Azure AD parola koruma proxy yazılımının daha yeni bir sürümü kullanılab
 
 Proxy yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyici yerinde bir yükseltme gerçekleştirir. Proxy yazılımı yükseltilirken yeniden başlatma gerekmez. Yazılım yükseltme standart MSI yordamları kullanılarak otomatikleştirilebilir, örneğin: `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
-Proxy aracısı otomatik yükseltmeyi destekler. Otomatik yükseltme, proxy hizmeti ile yan yana yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmetini kullanır. Otomatik yükseltme varsayılan olarak etkindir ve set-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Geçerli ayar Get-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak sorgulanabilir. Microsoft otomatik yükseltmenin etkin olmasını önerir.
+Proxy aracısı otomatik yükseltmeyi destekler. Otomatik yükseltme, proxy hizmeti ile yan yana yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmetini kullanır. Otomatik yükseltme varsayılan olarak açık olur ve `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 'i kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Geçerli ayar `Get-AzureADPasswordProtectionProxyConfiguration` cmdlet 'i kullanılarak sorgulanabilir. Microsoft otomatik yükseltmenin etkin olmasını önerir.
 
 Cmdlet `Get-AzureADPasswordProtectionProxy` 'i, bir ormandaki yüklü olan tüm proxy aracılarının yazılım sürümünü sorgulamak için kullanılabilir.
 

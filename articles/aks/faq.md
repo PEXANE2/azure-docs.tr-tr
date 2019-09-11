@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68381968"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241789"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
 
@@ -55,7 +55,7 @@ Kured kullanma hakkında daha fazla bilgi için bkz. [AKS içindeki düğümlere
 
 ### <a name="windows-server-nodes"></a>Windows Server düğümleri
 
-Windows Server düğümleri için (Şu anda AKS 'de önizlemededir) Windows Update, en son güncelleştirmeleri otomatik olarak çalıştırmaz ve uygulamaz. Windows Update yayın döngüsünün ve kendi doğrulama işleminizin etrafında düzenli bir zamanlamaya göre, AKS kümenizdeki Windows Server düğüm havuzunda bir yükseltme gerçekleştirmeniz gerekir. Bu yükseltme işlemi, en son Windows Server görüntüsünü ve düzeltme eklerini çalıştıran düğümleri oluşturur, daha sonra eski düğümleri kaldırır. Bu işlemle ilgili daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+Windows Server düğümleri için (Şu anda AKS 'de önizlemededir) Windows Update, en son güncelleştirmeleri otomatik olarak çalıştırmaz ve uygulamaz. Windows Update yayın döngüsünün ve kendi doğrulama işleminizin etrafında düzenli bir zamanlamaya göre, küme üzerinde ve AKS kümenizdeki Windows Server düğüm havuzunda bir yükseltme gerçekleştirmeniz gerekir. Bu yükseltme işlemi, en son Windows Server görüntüsünü ve düzeltme eklerini çalıştıran düğümleri oluşturur, daha sonra eski düğümleri kaldırır. Bu işlemle ilgili daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS ile neden iki kaynak grubu oluşturulur?
 
@@ -66,7 +66,7 @@ Her bir AKS dağıtımı iki kaynak grubunu kapsar:
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS düğümü kaynak grubu için kendi adını verebilir miyim?
 
-Evet. Varsayılan olarak, AKS düğüm grubu *MC_clustername_resourcegroupname_location*olarak ad verir, ancak kendi adınızı de sağlayabilirsiniz.
+Evet. Varsayılan olarak, AKS düğüm grubu *MC_resourcegroupname_clustername_location*olarak ad verir, ancak kendi adınızı de sağlayabilirsiniz.
 
 Kendi kaynak grubu adınızı belirtmek için, [aks-Preview][aks-preview-cli] Azure CLI uzantısı sürüm *0.3.2* veya üstünü yüklemelisiniz. [Az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturduğunuzda, *--node-Resource-Group* parametresini kullanın ve kaynak grubu için bir ad belirtin. AKS kümesi dağıtmak için [bir Azure Resource Manager şablonu kullanırsanız][aks-rm-template] , *Noderesourcegroup* özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
 
@@ -110,11 +110,13 @@ AKS Şu anda Azure Key Vault ile yerel olarak tümleştirilmiştir. Ancak, [Kube
 
 Evet, Windows Server kapsayıcıları önizlemede kullanılabilir. AKS 'de Windows Server kapsayıcıları çalıştırmak için, Konuk işletim sistemi olarak Windows Server çalıştıran bir düğüm havuzu oluşturursunuz. Windows Server kapsayıcıları yalnızca Windows Server 2019 kullanabilir. Başlamak için bkz. [Windows Server düğüm havuzu Ile AKS kümesi oluşturma][aks-windows-cli].
 
-Düğüm havuzu için Window Server desteği, Kubernetes projesinde yukarı akış Windows Server 'ın bir parçası olan bazı sınırlamalar içerir. Bu sınırlamalar hakkında daha fazla bilgi için bkz. [AKS kısıtlamalarında Windows Server kapsayıcıları][aks-windows-limitations].
+Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı akış Windows Server 'ın bir parçası olan bazı sınırlamalar içerir. Bu sınırlamalar hakkında daha fazla bilgi için bkz. [AKS kısıtlamalarında Windows Server kapsayıcıları][aks-windows-limitations].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS bir hizmet düzeyi sözleşmesi sunuyor mu?
 
 Hizmet düzeyi sözleşmesinde (SLA), sağlayıcı, yayımlanan hizmet düzeyi karşılanmazsa müşteriyi hizmetin maliyeti olarak tarafımızca kuruluşlarımız kabul eder. AKS ücretsizdir, tarafımızca kuruluşlarımız için kullanılabilir maliyet yok, bu nedenle AKS 'in resmi SLA 'Sı yok. Ancak, AKS, Kubernetes API sunucusu için en az% 99,5 kullanılabilirlik düzeyini korumak üzere arar.
+
+Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) okuyun.
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Neden Maxpod 'yi 30 altında ayarlayamıyorum?
 
@@ -204,6 +206,7 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
 
 <!-- LINKS - external -->
 

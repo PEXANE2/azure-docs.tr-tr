@@ -1,9 +1,9 @@
 ---
-title: Onaylayın veya reddedin PIM - Azure Active Directory Azure kaynak rolleri için istekleri | Microsoft Docs
-description: Onaylayın veya reddedin Azure AD Privileged Identity Management (PIM) Azure kaynak rolleri için istekleri öğrenin.
+title: PıM-Azure Active Directory 'de Azure Kaynak rolleri için istekleri onaylama veya reddetme | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içindeki Azure Kaynak rolleri için istekleri onaylamayı veya reddetmeyi öğrenin.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,76 +12,76 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2e8b4ae1a01cd299d910c4e88655885c7d00dc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8b39434f8763e44a126f74ac9a19596e4413ae9c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476378"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804264"
 ---
-# <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Onaylayın veya reddedin PIM Azure kaynak rolleri için istekleri
+# <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>PıM 'de Azure Kaynak rolleri için istekleri onaylama veya reddetme
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) ile rollerini etkinleştirme için onay gerektirecek şekilde yapılandırın ve bir veya birden çok kullanıcı veya grup onaylayanlara temsilci olarak seçin. Temsilci onaylayanlar, istekleri onaylamak için 24 saat vardır. Bir isteği 24 saat içinde onaylanmazsa, ardından uygun kullanıcı yeni bir isteği yeniden göndermeniz gerekir. Onay 24 saatlik zaman penceresi yapılandırılabilir değildir.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM) sayesinde, rolleri etkinleştirme için onay gerektirecek şekilde yapılandırabilir ve bir ya da birden çok kullanıcı ya da grubu, temsilci onaylayan olarak seçebilirsiniz. Temsilci onaylamalardan isteklerin onaylaması 24 saati vardır. İstek 24 saat içinde onaylanmamışsa, uygun Kullanıcı yeni bir isteği yeniden göndermesi gerekir. 24 saat onay zaman penceresi yapılandırılamaz.
 
-Onaylayın veya reddedin Azure kaynak rolleri için istekleri için bu makaledeki adımları izleyin.
+Azure Kaynak rolleri için istekleri onaylamak veya reddetmek için bu makaledeki adımları izleyin.
 
-## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüleme
+## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüle
 
-Onayınızı bekleyen bir Azure Kaynak rolü istek olduğunda, bir temsilci onaylayan olarak bir e-posta bildirimi alırsınız. Bu bekleyen istekler PIM'de görüntüleyebilirsiniz.
+Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri PıM ' de görebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. Açık **Azure AD Privileged Identity Management**.
+1. **Azure AD Privileged Identity Management**açın.
 
-1. Tıklayın **istekleri onaylama**.
+1. **Istekleri Onayla**' ya tıklayın.
 
-    ![Gözden geçirme isteği gösteren Azure kaynaklarını sayfasının istekleri - Onayla](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![İstekleri onaylama-gözden geçirilecek isteği gösteren Azure kaynakları sayfası](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
-    İçinde **rol etkinleştirmesi için istekler** bölümünde onayınızı bekleyen isteklerinin bir listesini görürsünüz.
+    **Rol etkinleştirmeleri Için istekler** bölümünde, Onayınızı bekleyen isteklerin bir listesini görürsünüz.
 
-## <a name="approve-requests"></a>İstekleri onaylama
+## <a name="approve-requests"></a>İstekleri onayla
 
-1. Bulup onaylamak istediğiniz istekte tıklayın. Bir onaylama veya reddetme bölmesi görünür.
+1. Onaylamak istediğiniz isteği bulun ve tıklatın. Onaylama veya reddetme bölmesi görüntülenir.
 
-    ![İstekleri onaylama - onaylama veya reddetme ayrıntıları ve gerekçe kutusu içeren bölme](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![İstekleri Onayla-Ayrıntılar ve bloklama kutusu ile onaylama veya reddetme bölmesi](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. İçinde **gerekçe** bir neden yazın.
+1. **Gerekçe** kutusuna bir neden yazın.
 
-1. Tıklayın **onaylama**.
+1. **Onayla**' ya tıklayın.
 
-    Onayınızı ile bir bildirim görüntülenir.
+    Onayınızı içeren bir bildirim görüntülenir.
 
-    ![İstek Onaylandı gösteren bildirimi onaylayın](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![İsteğin onaylandığını gösteren onay bildirimi](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
-## <a name="deny-requests"></a>İstekleri Reddet
+## <a name="deny-requests"></a>Reddetme istekleri
 
-1. Bulun ve reddetmek istediğiniz isteği'ni tıklatın. Bir onaylama veya reddetme bölmesi görünür.
+1. Reddetmek istediğiniz isteği bulun ve tıklatın. Onaylama veya reddetme bölmesi görüntülenir.
 
-    ![İstekleri onaylama - onaylama veya reddetme ayrıntıları ve gerekçe kutusu içeren bölme](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![İstekleri Onayla-Ayrıntılar ve bloklama kutusu ile onaylama veya reddetme bölmesi](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. İçinde **gerekçe** bir neden yazın.
+1. **Gerekçe** kutusuna bir neden yazın.
 
-1. Tıklayın **Reddet**.
+1. **Reddet**' e tıklayın.
 
-    Bir bildirim, engelleme ile görüntülenir.
+    Bir bildirim, geri çevirme ile birlikte görüntülenir.
 
-## <a name="workflow-notifications"></a>İş akışı bildirimlerini
+## <a name="workflow-notifications"></a>İş akışı bildirimleri
 
-İş akışı bildirimlerini hakkında bazı bilgiler aşağıda verilmiştir:
+Aşağıda, iş akışı bildirimleri hakkında bazı bilgiler verilmiştir:
 
-- Bir rol için bir isteği, gözden geçirme olduğunda tüm üyelerinin onaylayan listesini e-posta ile bildirilir. E-posta bildirimleri onaylayan burada onaylama veya reddetme isteğini doğrudan bir bağlantı içerir.
-- İstekleri onaylar veya reddeder listenin ilk üyesi tarafından çözümlenir.
-- Bir onaylayan isteği yanıtladığında onaylayan listenin tüm üyelerini eylemi bildirilir.
-- Onaylanan bir üyenin içindeki rollerine etkin olduğunda, kaynak yöneticileri bildirilir.
+- Bir rol isteği gözden geçirmeyi beklerken, onaylayan listesinin tüm üyelerine e-posta gönderilir. E-posta bildirimleri isteğin doğrudan bir bağlantısını, onaylayanın onaylayabileceği veya reddedebileceği bir bağlantı içerir.
+- İstekler, onaylayan veya reddeden listenin ilk üyesi tarafından çözümlenir.
+- Bir onaylayan isteğe yanıt verdiğinde, onaylayan listesinin tüm üyelerine eylem bildirilir.
+- Onaylanan bir üye, rolünde etkin hale geldiğinde kaynak yöneticilerine bildirilir.
 
 >[!Note]
->Onaylanan bir üyenin etkin olmamalıdır düşündüğü bir kaynak yöneticisi PIM'de etkin bir rol atamasını kaldırabilir. Onaylayan listesini üyesi olduğu sürece kaynak yöneticileri, bekleyen istek bildirilmez olsa da, görüntüleyebilir ve bekleyen istekler PIM görüntüleyerek bekleyen tüm kullanıcıların istekleri iptal et. 
+>Onaylanan bir üyenin etkin olmaması gerektiğini düşündüğü bir kaynak yöneticisi, PıM 'de etkin rol atamasını kaldırabilir. Kaynak yöneticilerine, onaylayan listesinin üyesi olmadıkları müddetçe bekleyen istekler bildirilmese de, bekleyen istekleri PıM 'de görüntüleyerek tüm kullanıcıların bekleyen isteklerini görüntüleyebilir ve iptal edebilirler. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PIM Azure kaynak rolleri genişletmek veya yenileme](pim-resource-roles-renew-extend.md)
-- [PIM e-posta bildirimleri](pim-email-notifications.md)
-- [Onaylayın veya reddedin istekleri için Azure AD PIM rolleri](azure-ad-pim-approval-workflow.md)
+- [PıM 'de Azure Kaynak rollerini genişletme veya yenileme](pim-resource-roles-renew-extend.md)
+- [PıM 'de e-posta bildirimleri](pim-email-notifications.md)
+- [PıM 'de Azure AD rolleri için istekleri onaylama veya reddetme](azure-ad-pim-approval-workflow.md)

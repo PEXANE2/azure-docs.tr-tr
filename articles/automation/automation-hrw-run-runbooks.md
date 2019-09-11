@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087569"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186760"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde runbook çalıştırma
 
@@ -61,7 +61,7 @@ Ayrıca, [PSCredential ortak parametresiyle](/powershell/module/psworkflow/about
 
 ### <a name="runas-account"></a>RunAs hesabı
 
-Karma Runbook Worker varsayılan olarak Windows için yerel sistem 'i ve Runbook 'ları yürütmek için Linux `nxautomation` için özel bir kullanıcı hesabı kullanır. Runbook 'ların yerel kaynaklara kendi kimlik doğrulamasını sağlaması yerine, karma çalışan grubu için bir **runas** hesabı belirtebilirsiniz. Yerel kaynaklara erişimi olan bir [kimlik bilgisi varlığı](automation-credentials.md) belirtirsiniz ve tüm runbook 'lar gruptaki bir karma runbook çalışanı üzerinde çalışırken bu kimlik bilgileri altında çalışır.
+Karma Runbook Worker varsayılan olarak Windows için yerel sistem 'i ve Runbook 'ları yürütmek için Linux `nxautomation` için özel bir kullanıcı hesabı kullanır. Runbook 'ların yerel kaynaklara kendi kimlik doğrulamasını sağlaması yerine, karma çalışan grubu için bir **runas** hesabı belirtebilirsiniz. Sertifika depoları dahil olmak üzere yerel kaynaklara erişimi olan ve tüm runbook 'lar gruptaki bir karma runbook çalışanı üzerinde çalışırken bu kimlik bilgileri altında çalışan bir [kimlik bilgisi varlığı](automation-credentials.md) belirtirsiniz.
 
 Kimlik bilgisinin Kullanıcı adı aşağıdaki biçimlerden birinde olmalıdır:
 

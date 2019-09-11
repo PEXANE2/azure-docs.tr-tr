@@ -7,12 +7,12 @@ ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 118ff46ca3b640c6ec24ab85fd598f213229417a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: d02dca4438b55d51cccb5cc1b55679eb72b73991
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014198"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232809"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
@@ -219,7 +219,7 @@ Artık CIS Microsoft Azure temel alan Kıyaslanmaların denetim eşlemesini göz
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

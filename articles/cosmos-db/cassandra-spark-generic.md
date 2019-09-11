@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615637"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241236"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 'dan Azure Cosmos DB Cassandra API bağlanma
 
@@ -29,7 +29,7 @@ Bu makale, Spark 'tan Azure Cosmos DB Cassandra API tümleştirmede bir dizi mak
 
 * **Cassandra API için Azure Cosmos DB Yardımcısı kitaplığı:** Spark bağlayıcısının yanı sıra, Azure Cosmos DB [Azure-Cosmos-Cassandra-Spark-Helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) adlı başka bir kitaplığa ihtiyacınız vardır. Bu kitaplık özel bağlantı fabrikası ve yeniden deneme ilkesi sınıflarını içerir.
 
-  Azure Cosmos DB 'de yeniden deneme ilkesi, HTTP durum kodu 429 ("Istek hızı büyük") özel durumlarını işleyecek şekilde yapılandırılmıştır. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür ve geri dönme ile yeniden deneyebilirsiniz. Azure Cosmos DB sağlanan üretilen iş modelini kullandığından, giriş/çıkış oranları artdığında istek hızı sınırlandırma özel durumları oluşur. Yeniden deneme ilkesi, Spark işlerinizi, koleksiyon için ayrılan üretilen işi büyük bir şekilde aşan veri artışlarına karşı korur.
+  Azure Cosmos DB 'de yeniden deneme ilkesi, HTTP durum kodu 429 ("Istek hızı büyük") özel durumlarını işleyecek şekilde yapılandırılmıştır. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür ve geri dönme ile yeniden deneyebilirsiniz. Azure Cosmos DB sağlanan üretilen iş modelini kullandığından, giriş/çıkış oranları artdığında istek hızı sınırlandırma özel durumları oluşur. Yeniden deneme ilkesi, Spark işlerinizi, Kapsayıcınız için ayrılan üretilen işi büyük bir şekilde aşan veri artışlarına karşı korur.
 
   > [!NOTE] 
   > Yeniden deneme ilkesi, Spark işlerinizin yalnızca kopan ani artışlarla korunmasını sağlayabilir. İş yükünüzü çalıştırmak için yeterli RUs yapılandırmadıysanız, yeniden deneme ilkesi geçerli değildir ve yeniden deneme ilkesi sınıfı özel durumu yeniden oluşturur.

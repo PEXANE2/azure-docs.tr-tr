@@ -98,7 +98,7 @@ Bu geçiş seçeneğini kullanmak için:
 4. KÜMELENMIŞ bir dizin varsa, KÜMELENMEMIŞ olarak değiştirin.
 5. SP_RENAME kullanarak var olan tabloyu yeniden adlandırın.
 6. Düzenlediğiniz CREATE TABLE betiğini çalıştırarak tablonun bellek için iyileştirilmiş yeni kopyasını oluşturun.
-7. INSERT... kullanarak verileri bellek için iyileştirilmiş tablonuza kopyalayın Seç:
+7. INSERT...SELECT * INTO:... kullanarak verileri bellek için iyileştirilmiş tablonuza kopyalayın Seç:
 
 ```
 INSERT INTO <new_memory_optimized_table>

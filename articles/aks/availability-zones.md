@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 690d22eadf37a24b4679ce10838074533ac65fcb
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033135"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390080"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Önizleme-Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
@@ -34,7 +34,7 @@ Azure CLı sürüm 2.0.66 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Kullanılabilirlik alanları kullanan AKS kümeleri oluşturmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya üzeri bir sürümü gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
+Kullanılabilirlik alanları kullanan AKS kümeleri oluşturmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya üzeri bir sürümü gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,25 +44,21 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flags-for-your-subscription"></a>Aboneliğiniz için özellik bayraklarını kaydetme
+### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>Aboneliğiniz için kullanılabilirlik bölgesi önizleme özelliği bayrağını kaydedin
 
-Bölge kullanılabilirliği olan bir AKS kümesi oluşturmak için, öncelikle aboneliğinizde bazı özellik bayraklarını etkinleştirin. Kümeler, Kubernetes düğümlerinin dağıtımını ve yapılandırmasını yönetmek için bir sanal makine ölçek kümesi kullanır. Azure Yük dengeleyicisinin *Standart* SKU 'su, trafiği kümenize yönlendiren ağ bileşenlerine dayanıklılık sağlamak için de gereklidir. Aşağıdaki örnekte gösterildiği gibi, [az Feature Register][az-feature-register] komutunu kullanarak, *kullanılabilirliği*olan *AKSAzureStandardLoadBalancer*ve *VMSSPreview* Özellik bayraklarını kaydedin:
+Bölge kullanılabilirliği olan bir AKS kümesi oluşturmak için, önce aboneliğinizde kullanılabilirlik *bölgesi önizleme* özelliği bayrağını etkinleştirin. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak, *kullanılabilirliği bilityzonepreview* Özellik bayrağını kaydedin:
 
 > [!CAUTION]
 > Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
 
 ```azurecli-interactive
 az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
@@ -90,7 +86,7 @@ Kullanılabilirlik bölgelerini kullanarak bir AKS kümesi oluşturduğunuzda a�
 * Kullanılabilirlik alanları etkin olan kümeler, bölgeler arasında dağıtım için Azure Standart yük dengeleyiciler kullanılmasını gerektirir.
 * Standart yük dengeleyiciler dağıtmak için Kubernetes sürüm 1.13.5 veya üstünü kullanmanız gerekir.
 
-Kullanılabilirlik bölgelerini kullanan AKS kümelerinin Azure yük dengeleyici *Standart* SKU 'sunu kullanması gerekir. Azure Yük dengeleyicinin varsayılan *temel* SKU 'su, kullanılabilirlik alanları arasında dağıtımı desteklemez. Daha fazla bilgi ve standart yük dengeleyicinin sınırlamaları için bkz. [Azure yük dengeleyici standart SKU önizlemesi sınırlamaları][standard-lb-limitations].
+Kullanılabilirlik bölgelerini kullanan AKS kümelerinin Azure yük dengeleyici *Standart* SKU 'sunu kullanması gerekir. Azure Yük dengeleyicinin varsayılan *temel* SKU 'su, kullanılabilirlik alanları arasında dağıtımı desteklemez. Daha fazla bilgi ve standart yük dengeleyicinin sınırlamaları için bkz. [Azure yük dengeleyici standart SKU sınırlamaları][standard-lb-limitations].
 
 ### <a name="azure-disks-limitations"></a>Azure diskler sınırlamaları
 

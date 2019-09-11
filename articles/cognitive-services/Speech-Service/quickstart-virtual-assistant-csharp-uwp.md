@@ -1,27 +1,27 @@
 ---
 title: 'Hızlı Başlangıç: Özel ses-ilk Sanal Yardımcısı (Önizleme), C# (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede bilişsel hizmetler konuşma C# yazılım geliştirme seti 'NI (SDK) kullanarak bir evrensel WINDOWS platformu (UWP) uygulaması oluşturacaksınız. İstemci uygulamanızı, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a bağlanırsınız. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
+description: Bu makalede bilişsel hizmetler konuşma C# yazılım geliştirme seti 'NI (SDK) kullanarak bir evrensel WINDOWS platformu (UWP) uygulaması oluşturacaksınız. İstemci uygulamanızı, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a bağlanırsınız. Uygulama, konuşma SDK 'Sı NuGet paketiyle oluşturulmuştur ve 2019 Microsoft Visual Studio.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/19/2019
 ms.author: travisw
-ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: c676e98eb812a31d6fb8d7cc0f58929f803c868e
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609696"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382176"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Hızlı Başlangıç: Konuşma SDK 'Sı, UWP ile ilk olarak bir ses Sanal Yardımcısı oluşturun
 
-Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-uwp.md), [metinden konuşmaya](quickstart-text-to-speech-csharp-uwp.md) ve [konuşma çevirisi](quickstart-translate-speech-uwp.md)için de kullanılabilir.
+Hızlı başlangıçlara [konuşma tanıma](quickstart-csharp-uwp.md), [konuşma birleştirmesinin](quickstart-text-to-speech-csharp-uwp.md)ve [konuşma çevirisi](quickstart-translate-speech-uwp.md)için de erişilebilir.
 
-Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Windows platformu (UWP) uygulaması geliştirirsiniz. Program, daha önce yazılmış ve yapılandırılmış bir bot 'a bağlanarak istemci uygulamasından bir ses ilk Sanal Yardımcısı deneyimi sağlar. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri (herhangi bir sürüm) ile oluşturulmuştur.
+Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Windows platformu (UWP) uygulaması geliştirirsiniz. Program, daha önce yazılmış ve yapılandırılmış bir bot 'a bağlanarak istemci uygulamasından bir ses ilk Sanal Yardımcısı deneyimi sağlar. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2019 (herhangi bir sürüm) ile oluşturulmuştur.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -30,16 +30,16 @@ Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Win
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
-* [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
+* [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)ile yapılandırılmış daha önce oluşturulmuş bir bot.
 
-    > [!NOTE]
-    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+  > [!NOTE]
+  > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: Hızla kullanmaya başlayın
 
-Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli bot 'a nasıl bağlanacağını betimleyen adım adım açıklanır. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu, `quickstart` klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
+Bu hızlı başlangıçta, bir istemci uygulamasını konuşma özellikli bot 'a nasıl bağlayacaksınız, adım adım açıklanır. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu, `quickstart` klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -47,7 +47,15 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
-1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcının XAML görünümünde, tüm içeriği aşağıdaki ile değiştirin.
+Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
+
+### <a name="xaml-code"></a>XAML kodu
+
+Önce, XAML kodunu ekleyerek uygulamanın kullanıcı arabirimini oluşturacaksınız:
+
+1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
+
+1. Tasarımcının XAML görünümünde, tüm içeriği aşağıdaki kod parçacığı ile değiştirin:
 
     ```xml
     <Page
@@ -61,16 +69,30 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
-                <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" Height="35"/>
-                <Button x:Name="ListenButton" Content="Talk to your bot" Margin="0,10,10,0" Click="ListenButton_ButtonClicked" Height="35"/>
-                <StackPanel x:Name="StatusPanel" Orientation="Vertical" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-                    <TextBlock x:Name="StatusLabel" Margin="0,10,10,0" TextWrapping="Wrap" Text="Status:" FontSize="20"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  
+                        Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
+                <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  
+                        Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" 
+                        Height="35"/>
+                <Button x:Name="ListenButton" Content="Talk to your bot" 
+                        Margin="0,10,10,0" Click="ListenButton_ButtonClicked" 
+                        Height="35"/>
+                <StackPanel x:Name="StatusPanel" Orientation="Vertical" 
+                            RelativePanel.AlignBottomWithPanel="True" 
+                            RelativePanel.AlignRightWithPanel="True" 
+                            RelativePanel.AlignLeftWithPanel="True">
+                    <TextBlock x:Name="StatusLabel" Margin="0,10,10,0" 
+                               TextWrapping="Wrap" Text="Status:" FontSize="20"/>
                     <Border x:Name="StatusBorder" Margin="0,0,0,0">
-                        <ScrollViewer VerticalScrollMode="Auto"  VerticalScrollBarVisibility="Auto" MaxHeight="200">
-                            <!-- Use LiveSetting to enable screen readers to announce the status update. -->
-                            <TextBlock x:Name="StatusBlock" FontWeight="Bold" AutomationProperties.LiveSetting="Assertive"
-                    MaxWidth="{Binding ElementName=Splitter, Path=ActualWidth}" Margin="10,10,10,20" TextWrapping="Wrap"  />
+                        <ScrollViewer VerticalScrollMode="Auto"  
+                                      VerticalScrollBarVisibility="Auto" MaxHeight="200">
+                            <!-- Use LiveSetting to enable screen readers to announce 
+                                 the status update. -->
+                            <TextBlock 
+                                x:Name="StatusBlock" FontWeight="Bold" 
+                                AutomationProperties.LiveSetting="Assertive"
+                                MaxWidth="{Binding ElementName=Splitter, Path=ActualWidth}" 
+                                Margin="10,10,10,20" TextWrapping="Wrap"  />
                         </ScrollViewer>
                     </Border>
                 </StackPanel>
@@ -80,14 +102,24 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
     </Page>
     ```
 
-1. Arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. Bu başlığı altında `MainPage.xaml`gruplanmış olarak bulabilirsiniz. İçeriği aşağıdaki kodla değiştirin. İşte bu örnek şunları içerir:
+Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde güncelleştirilir.
 
-    * Konuşma ve konuşma için deyimlerini kullanma. Iletişim alanları
-    * Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
-    * Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
-    * Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
-    * Metin okuma (akış desteği olmadan) çalmak için bir yardımcı
-    * Daha sonra doldurulacak dinlemeye başlamak için boş bir düğme işleyicisi
+### <a name="c-code-behind-source"></a>C#arka plan kod kaynağı
+
+Daha sonra uygulamanın beklendiği gibi çalışması için arka plan kod kaynağı eklersiniz. Arka plan kod kaynağı şunları içerir:
+
+- `using``Speech` ve`Speech.Dialog` ad alanları için deyimler
+- Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
+- Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
+- Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
+- Metin okuma (akış desteği olmadan) çalmak için bir yardımcı
+- Daha sonra doldurulacak dinlemeye başlamak için boş bir düğme işleyicisi
+
+Arka plan kod kaynağını eklemek için aşağıdaki adımları izleyin:
+
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.)
+
+1. Dosyanın içeriğini aşağıdaki kod parçacığı ile değiştirin:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -120,14 +152,17 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 this.InitializeComponent();
             }
 
-            private async void EnableMicrophone_ButtonClicked(object sender, RoutedEventArgs e)
+            private async void EnableMicrophone_ButtonClicked(
+                object sender, RoutedEventArgs e)
             {
                 bool isMicAvailable = true;
                 try
                 {
                     var mediaCapture = new Windows.Media.Capture.MediaCapture();
-                    var settings = new Windows.Media.Capture.MediaCaptureInitializationSettings();
-                    settings.StreamingCaptureMode = Windows.Media.Capture.StreamingCaptureMode.Audio;
+                    var settings = 
+                        new Windows.Media.Capture.MediaCaptureInitializationSettings();
+                    settings.StreamingCaptureMode = 
+                        Windows.Media.Capture.StreamingCaptureMode.Audio;
                     await mediaCapture.InitializeAsync(settings);
                 }
                 catch (Exception)
@@ -136,7 +171,8 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 }
                 if (!isMicAvailable)
                 {
-                    await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-microphone"));
+                    await Windows.System.Launcher.LaunchUriAsync(
+                        new Uri("ms-settings:privacy-microphone"));
                 }
                 else
                 {
@@ -144,7 +180,8 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 }
             }
 
-            private void NotifyUser(string strMessage, NotifyType type = NotifyType.StatusMessage)
+            private void NotifyUser(
+                string strMessage, NotifyType type = NotifyType.StatusMessage)
             {
                 // If called from the UI thread, then update immediately.
                 // Otherwise, schedule a task on the UI thread to perform the update.
@@ -154,7 +191,9 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 }
                 else
                 {
-                    var task = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => UpdateStatus(strMessage, type));
+                    var task = Dispatcher.RunAsync(
+                        Windows.UI.Core.CoreDispatcherPriority.Normal, 
+                        () => UpdateStatus(strMessage, type));
                 }
             }
 
@@ -163,13 +202,16 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 switch (type)
                 {
                     case NotifyType.StatusMessage:
-                        StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Green);
+                        StatusBorder.Background = new SolidColorBrush(
+                            Windows.UI.Colors.Green);
                         break;
                     case NotifyType.ErrorMessage:
-                        StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Red);
+                        StatusBorder.Background = new SolidColorBrush(
+                            Windows.UI.Colors.Red);
                         break;
                 }
-                StatusBlock.Text += string.IsNullOrEmpty(StatusBlock.Text) ? strMessage : "\n" + strMessage;
+                StatusBlock.Text += string.IsNullOrEmpty(StatusBlock.Text) 
+                    ? strMessage : "\n" + strMessage;
 
                 if (!string.IsNullOrEmpty(StatusBlock.Text))
                 {
@@ -181,18 +223,23 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                     StatusBorder.Visibility = Visibility.Collapsed;
                     StatusPanel.Visibility = Visibility.Collapsed;
                 }
-                // Raise an event if necessary to enable a screen reader to announce the status update.
+                // Raise an event if necessary to enable a screen reader 
+                // to announce the status update.
                 var peer = Windows.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer.FromElement(StatusBlock);
                 if (peer != null)
                 {
-                    peer.RaiseAutomationEvent(Windows.UI.Xaml.Automation.Peers.AutomationEvents.LiveRegionChanged);
+                    peer.RaiseAutomationEvent(
+                        Windows.UI.Xaml.Automation.Peers.AutomationEvents.LiveRegionChanged);
                 }
             }
 
-            // Waits for accumulates all audio associated with a given PullAudioOutputStream and then plays it to the
-            // MediaElement. Long spoken audio will create extra latency and a streaming playback solution (that plays
-            // audio while it continues to be received) should be used -- see the samples for examples of this.
-            private void SynchronouslyPlayActivityAudio(PullAudioOutputStream activityAudio)
+            // Waits for and accumulates all audio associated with a given 
+            // PullAudioOutputStream and then plays it to the MediaElement. Long spoken 
+            // audio will create extra latency and a streaming playback solution 
+            // (that plays audio while it continues to be received) should be used -- 
+            // see the samples for examples of this.
+            private void SynchronouslyPlayActivityAudio(
+                PullAudioOutputStream activityAudio)
             {
                 var playbackStreamWithHeader = new MemoryStream();
                 playbackStreamWithHeader.Write(Encoding.ASCII.GetBytes("RIFF"), 0, 4); // ChunkID
@@ -219,9 +266,11 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 }
                 while (lastRead == pullBuffer.Length);
 
-                var task = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                var task = Dispatcher.RunAsync(
+                    Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    mediaElement.SetSource(playbackStreamWithHeader.AsRandomAccessStream(), "audio/wav");
+                    mediaElement.SetSource(
+                        playbackStreamWithHeader.AsRandomAccessStream(), "audio/wav");
                     mediaElement.Play();
                 });
             }
@@ -231,7 +280,8 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
                 // New code will go here
             }
 
-            private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
+            private async void ListenButton_ButtonClicked(
+                object sender, RoutedEventArgs e)
             {
                 // New code will go here
             }
@@ -239,119 +289,138 @@ Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli
     }
     ```
 
-1. Ardından, `DialogServiceConnector` abonelik bilgilerinizi kullanarak öğesini oluşturacaksınız. Aşağıdaki ' `InitializeDialogServiceConnector`ın yöntem gövdesine ekleyin, `YourSpeechSubscriptionKey`ve dizelerini `YourChannelSecret`, ve `YourServiceRegion` , konuşma aboneliğiniz ve [bölgeniz](regions.md)için kendi değerlerinizle değiştirin.
-
-    > [!NOTE]
-    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
-
-    > [!NOTE]
-    > Botunuzu yapılandırma ve Kanal gizliliğini alma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
+1. Aşağıdaki kod parçacığını öğesinin `InitializeDialogServiceConnector`yöntem gövdesine ekleyin. Bu kod, `DialogServiceConnector` abonelik bilgilerinizi içeren öğesini oluşturur.
 
     ```csharp
-    // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
-    // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
+    // create a DialogServiceConfig by providing a bot secret key 
+    // and Cognitive Services subscription key
+    // the RecoLanguage property is optional (default en-US); 
+    // note that only en-US is supported in Preview
     const string channelSecret = "YourChannelSecret"; // Your channel secret
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
-    const string region = "YourServiceRegion"; // Your subscription service region. Note: only a subset of regions are currently supported
 
-    var botConfig = DialogServiceConfig.FromBotSecret(channelSecret, speechSubscriptionKey, region);
+    // Your subscription service region. 
+    // Note: only a subset of regions are currently supported
+    const string region = "YourServiceRegion"; 
+
+    var botConfig = DialogServiceConfig.FromBotSecret(
+        channelSecret, speechSubscriptionKey, region);
     botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
     connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `DialogServiceConnector`, bot etkinliklerini, konuşma tanıma sonuçlarını ve diğer bilgileri iletmek için çeşitli olaylara bağımlıdır. Bu olaylara yönelik işleyiciler ekleyerek, öğesinin `InitializeDialogServiceConnector`Yöntem gövdesinin sonuna şunu ekleyin.
+   > [!NOTE]
+   > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+
+   > [!NOTE]
+   > Botunuzu yapılandırma ve Kanal gizliliğini alma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
+
+1. , Ve dizelerini `YourChannelSecret` `YourSpeechSubscriptionKey`,, ve `YourServiceRegion` kendi değerleriniz, konuşma aboneliğiniz ve [bölgeniz](regions.md)için kendi değerlerinizle değiştirin.
+
+1. Yöntemi gövdesinin `InitializeDialogServiceConnector`sonuna aşağıdaki kod parçacığını ekleyin. Bu kod, bot etkinlikleri, konuşma tanıma sonuçları ve diğer `DialogServiceConnector` bilgilerle iletişim kurmak için tarafından güvendiği olaylar için işleyicileri ayarlar.
 
     ```csharp
-    // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
+    // ActivityReceived is the main way your bot will communicate with the client 
+    // and uses bot framework activities
     connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     {
-        NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
+        NotifyUser(
+            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
         if (activityReceivedEventArgs.HasAudio)
         {
             SynchronouslyPlayActivityAudio(activityReceivedEventArgs.Audio);
         }
     };
+
     // Canceled will be signaled when a turn is aborted or experiences an error condition
     connector.Canceled += (sender, canceledEventArgs) =>
     {
         NotifyUser($"Canceled, reason={canceledEventArgs.Reason}");
         if (canceledEventArgs.Reason == CancellationReason.Error)
         {
-            NotifyUser($"Error: code={canceledEventArgs.ErrorCode}, details={canceledEventArgs.ErrorDetails}");
+            NotifyUser(
+                $"Error: code={canceledEventArgs.ErrorCode}, details={canceledEventArgs.ErrorDetails}");
         }
     };
-    // Recognizing (not 'Recognized') will provide the intermediate recognized text while an audio stream is being processed
+
+    // Recognizing (not 'Recognized') will provide the intermediate recognized text 
+    // while an audio stream is being processed
     connector.Recognizing += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Recognizing! in-progress text={recognitionEventArgs.Result.Text}");
     };
-    // Recognized (not 'Recognizing') will provide the final recognized text once audio capture is completed
+
+    // Recognized (not 'Recognizing') will provide the final recognized text 
+    // once audio capture is completed
     connector.Recognized += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Final speech-to-text result: '{recognitionEventArgs.Result.Text}'");
     };
+
     // SessionStarted will notify when audio begins flowing to the service for a turn
     connector.SessionStarted += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Now Listening! Session started, id={sessionEventArgs.SessionId}");
     };
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again
+
+    // SessionStopped will notify when a turn is complete and 
+    // it's safe to begin listening again
     connector.SessionStopped += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Listening complete. Session ended, id={sessionEventArgs.SessionId}");
     };
     ```
 
-1. Yapılandırma kurulu ve olay işleyicileriyle `DialogServiceConnector` birlikte, şimdi yalnızca dinlemesi gerekir. `ListenButton_ButtonClicked` Sınıfında yönteminin`MainPage` gövdesine şunu ekleyin.
+1. Aşağıdaki kod parçacığını `ListenButton_ButtonClicked` `MainPage` sınıfındaki yönteminin gövdesine ekleyin. Yapılandırmayı zaten kurup olay `DialogServiceConnector` işleyicilerini kaydettirdiğiniz için bu kod dinlemek üzere ayarlanır.
 
     ```csharp
-    private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
+    if (connector == null)
     {
-        if (connector == null)
-        {
-            InitializeDialogServiceConnector();
-            // Optional step to speed up first interaction: if not called, connection happens automatically on first use
-            var connectTask = connector.ConnectAsync();
-        }
+        InitializeDialogServiceConnector();
+        // Optional step to speed up first interaction: if not called, 
+        // connection happens automatically on first use
+        var connectTask = connector.ConnectAsync();
+    }
 
-        try
-        {
-            // Start sending audio to your speech-enabled bot
-            var listenTask = connector.ListenOnceAsync();
+    try
+    {
+        // Start sending audio to your speech-enabled bot
+        var listenTask = connector.ListenOnceAsync();
 
-            // You can also send activities to your bot as JSON strings -- Microsoft.Bot.Schema can simplify this
-            string speakActivity = @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
-            await connector.SendActivityAsync(speakActivity);
+        // You can also send activities to your bot as JSON strings -- 
+        // Microsoft.Bot.Schema can simplify this
+        string speakActivity = 
+            @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
+        await connector.SendActivityAsync(speakActivity);
 
-        }
-        catch (Exception ex)
-        {
-            NotifyUser($"Exception: {ex.ToString()}", NotifyType.ErrorMessage);
-        }
+    }
+    catch (Exception ex)
+    {
+        NotifyUser($"Exception: {ex.ToString()}", NotifyType.ErrorMessage);
     }
     ```
 
-1. Değişiklikleri projeye kaydedin.
+1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya** > **Tümünü Kaydet** ' i seçin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulamayı derleyin. Visual Studio menü çubuğundan derleme**Build Solution**' ı **seçin.**  >  Kodun artık hatasız derlenmesi gerekir.
+Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-    ![Visual Studio uygulamasının, Çözümü Derle seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-08-build.png "Başarılı derleme")
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.**  >  Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatın. Visual Studio menü çubuğunda **Hata Ayıkla** > **Başlat hata**Ayıkla ' yı seçin veya **F5**tuşuna basın.
+1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). >  **HelloWorld** penceresi görüntülenir.
 
-    ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-09-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
+   ![Hızlı başlangıçta örnek UWP Sanal Yardımcısı C# uygulaması](media/sdk/qs-virtual-assistant-uwp-helloworld-window.png)
 
-1. Bir pencere açılır. Uygulamanızda **mikrofonu etkinleştir**' i seçin ve açılan izin isteğini kabul edin.
+1. **Mikrofonu etkinleştir**' i seçin ve erişim izni Isteği açıldığında **Evet**' i seçin.
 
-    ![İzin isteğinin ekran görüntüsü](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uygulamayı hata ayıklamada başlat")
+   ![Mikrofon erişimi izin isteği](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. **Botunuz Için konuşun**' ı seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Konuşma, doğrudan hat konuşma kanalına iletilir ve pencerede görüntülenen metne kaydedilir.
-
-    ![Başarılı bot 'un bir ekran görüntüsü](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Başarılı bir bot açma")
-
+<!--
+    ![Successful bot response](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png)
+-->
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311852"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308333"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -76,6 +76,10 @@ Azure Media Services v3 kaynaklarının adları (Varlıklar, İşler, Dönüşü
 Media Services kaynak adları şu karakterleri içeremez: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.', tek tırnak karakteri veya kontrol karakterleri. Diğer tüm karakterlere izin verilir. Bir kaynağın adı en fazla 260 karakter olabilir. 
 
 Azure Resource Manager adlandırma hakkında daha fazla bilgi için bkz. [Adlandırma gereksinimleri](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) ve [adlandırma kuralları](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+
+### <a name="names-of-filesblobs-within-an-asset"></a>Bir varlık içindeki dosyaların/Blobların adları
+
+Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksinimlerini](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) hem de [NTFS ad gereksinimlerini](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)izlemelidir. Bu gereksinimlerin nedeni, dosyaların işlenmek üzere blob depolamadan yerel bir NTFS diskine kopyalanmasını sağlayabilir.
 
 ## <a name="long-running-operations"></a>Uzun süre çalışan işlemler
 

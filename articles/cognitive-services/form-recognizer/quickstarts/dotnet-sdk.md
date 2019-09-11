@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: f6cb364c231c2415bf49a24e6e9406a14640b892
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600276"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142812"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı Başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
@@ -95,7 +95,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar form tanıyıcı SDK 'nın ana işlevlerini işler.
 
-|Ad|Açıklama|
+|Name|Açıklama|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Bu sınıf, tüm form tanıyıcı işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Traınrequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Kendi eğitim girişi verilerinizi kullanarak özel bir form tanıyıcı modeli eğitebilmeniz için bu sınıfı kullanın. |
@@ -173,6 +173,10 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+Ayrıca, hesabınızdan silmek istediğiniz özel bir model eğitilen aşağıdaki yöntemi kullanın:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

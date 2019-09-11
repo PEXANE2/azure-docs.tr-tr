@@ -8,15 +8,15 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019
-ms.openlocfilehash: 625e40b4dcb8ac558831508b292fd5cbcfb90b5b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489447"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171198"
 ---
-# <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>Öğretici: Yay ve Azure Cosmos DB kullanarak bir Java Web uygulaması oluşturma
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
 Bu öğretici, Azure 'da Java Web uygulamaları oluşturma, yapılandırma, dağıtma ve ölçeklendirme sürecinde size yol gösterir. İşiniz bittiğinde, verileri [Linux üzerinde Azure App Service](/azure/app-service/containers)çalıştıran [Azure Cosmos DB](/azure/cosmos-db) bir [Spring Boot](https://projects.spring.io/spring-boot/) uygulamasına sahip olursunuz.
 

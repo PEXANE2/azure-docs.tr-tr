@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065995"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802463"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
@@ -58,7 +58,7 @@ Belirli bir veritabanı veya varsayılan sunucu ilkesi olarak bir denetim ilkesi
 
 - *Sunucu blobu denetimi etkinse*, *her zaman veritabanına uygulanır*. Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
 
-- Veritabanı veya veri ambarında blob denetimini etkinleştirmek, sunucuda etkinleştirilmesinin yanı sıra sunucu blob denetimi ayarlarından hiçbirini geçersiz kılmaz veya değiştirmez. Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
+- Veritabanı veya veri ambarında blob denetimini etkinleştirmek, sunucuda etkinleştirilmesinin yanı sıra sunucu blob denetimi ayarlarından *hiçbirini geçersiz kılmaz veya değiştirmez.* Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
 
    > [!NOTE]
    > Her iki sunucu blob denetimi ve veritabanı blobu denetimini birlikte etkinleştirmemeye özen gösterin:
@@ -201,8 +201,6 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
     >[!IMPORTANT]
     >Veritabanı düzeyinde denetim sayesinde, ikincil veritabanı için depolama ayarları, birincil veritabanıyla aynı olur ve bölgesel trafiğe neden olur. Yalnızca sunucu düzeyinde denetimi etkinleştirmenizi ve veritabanı düzeyinde denetimi tüm veritabanları için devre dışı bırakmayı öneririz.
-    > [!WARNING]
-    > Sunucu düzeyindeki denetim günlükleri için hedef olarak olay hub 'ı veya Azure Izleyici günlüklerinin kullanılması, ikincil coğrafi çoğaltılan veritabanları için şu anda desteklenmiyor.
 
 ### <a id="subheading-6">Depolama anahtarı yeniden oluşturma</a>
 
@@ -236,7 +234,7 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
     [Azure PowerShell kullanarak SQL veritabanı denetimini yönetme](#subheading-7) bölümünde açıklandığı gibi, PowerShell kullanarak farklı türlerde eylemler ve eylem grupları için denetimi yapılandırabilirsiniz.
 
-- AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim günlüğünde görünmez. Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
+- AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
 
 
 ## <a id="subheading-7"></a>Azure PowerShell kullanarak SQL veritabanı denetimini yönetme

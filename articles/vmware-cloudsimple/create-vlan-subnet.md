@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e6f781926e2a30ecf6d34274b20991b81f0bb96d
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972916"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772358"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Özel bulutlarınız için VLAN 'Lar/alt ağlar oluşturun ve yönetin
 
@@ -21,7 +21,7 @@ ms.locfileid: "69972916"
 
 ## <a name="create-a-vlansubnet"></a>VLAN/subnet oluşturma
 
-1. [CloudSimple portalına erişin](monitor-activity.md) ve yan menüdeki **ağ** ' ı seçin.
+1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve yan menüdeki **ağ** ' ı seçin.
 2. **VLAN/alt ağlar**' ı seçin.
 3. **VLAN/subnet oluştur**' a tıklayın.
 
@@ -43,7 +43,7 @@ VSphere içinde dağıtılmış bir bağlantı noktası grubu oluşturmak için,
 
 ## <a name="select-a-firewall-table"></a>Bir güvenlik duvarı tablosu seçin
 
-Güvenlik Duvarı tabloları ve ilişkili kurallar, **ağ > güvenlik duvarı tabloları** sayfasında tanımlanmıştır. Özel bir bulut için VLAN/subnet 'e uygulanacak güvenlik duvarı tablosunu seçmek için VLAN/subnet sayfasında **güvenlik duvarı tablo eki** ' ne tıklayın. Güvenlik Duvarı tablolarını ayarlama ve kuralları tanımlama hakkında yönergeler için bkz. [güvenlik duvarı tabloları](firewall.md) .
+Güvenlik Duvarı tabloları ve ilişkili kurallar, **ağ > güvenlik duvarı tabloları** sayfasında tanımlanmıştır. Özel bir bulut için VLAN/subnet 'e uygulanacak güvenlik duvarı tablosunu seçmek için **VLAN/subnet sayfasında** **güvenlik duvarı tablo eki** ' ne tıklayın. Güvenlik Duvarı tablolarını ayarlama ve kuralları tanımlama hakkında yönergeler için bkz. [güvenlik duvarı tabloları](firewall.md) .
 
 ![Güvenlik Duvarı tablosu bağlantısı](media/vlan-subnet-firewall-link.png)
 

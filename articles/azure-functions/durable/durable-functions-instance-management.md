@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087256"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735168"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
@@ -43,7 +43,9 @@ Bu zaman uyumsuz işlem, Orchestration işlemi başarıyla zamanlandığında ta
 * **Giriş**: Orchestrator işlevine giriş olarak geçirilmesi gereken tüm JSON seri hale getirilebilir verileri.
 * **InstanceId**: Seçim Örneğin benzersiz KIMLIĞI. Bu parametreyi belirtmezseniz, yöntemi rastgele bir KIMLIK kullanır.
 
-İşte basit C# bir örnek:
+Bazı örnekler şunlardır:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -592,6 +594,8 @@ Bir düzenleme ile ilişkili tüm verileri kaldırmak için örnek geçmişini t
 
  Yöntemin iki aşırı yüklemesi vardır. İlk bir, düzenleme örneğinin KIMLIĞINE göre geçmişi temizler:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -603,6 +607,8 @@ public static Task Run(
 ```
 
 İkinci örnek, belirtilen zaman aralığından sonra tamamlanan tüm düzenleme örneklerinin geçmişini temizler bir Zamanlayıcı tarafından tetiklenen bir işlev gösterir. Bu durumda, 30 veya daha fazla gün önce tamamlanan tüm örnekler için verileri kaldırır. Her gün bir kez çalışmak üzere zamanlandı, 12:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]

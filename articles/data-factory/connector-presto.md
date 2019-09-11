@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19c450a1832e725fa5fbf171b991a6b617291cfe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508959"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276699"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Presto Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -44,7 +44,7 @@ Presto bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Presto** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Presto** | Evet |
 | host | Presto sunucusunun IP adresi veya ana bilgisayar adı. (yani 192.168.222.160)  | Evet |
 | serverVersion | Presto sunucu sürümü. (yani 0.148-t)  | Evet |
 | catalog | Katalog sunucusuna yönelik tüm istek bağlamı.  | Evet |
@@ -91,8 +91,10 @@ Presto verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **PrestoObject** | Evet |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **PrestoObject** | Evet |
+| schema | Şemanın adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni `schema` iş `table` yükü için ve kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -101,11 +103,12 @@ Presto verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **
     "name": "PrestoDataset",
     "properties": {
         "type": "PrestoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -120,8 +123,8 @@ Presto verileri kopyalamak için kopyalama etkinliği için kaynak türünü aya
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **PrestoSource** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **PrestoSource** | Evet |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 

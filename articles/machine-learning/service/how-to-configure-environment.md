@@ -1,7 +1,7 @@
 ---
 title: Python geliştirme ortamı ayarlama
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetiyle çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, Azure Notebooks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
+description: Azure Machine Learning hizmetiyle çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848193"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860566"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, bu makalede ele alınan her geliştirme ortamı, profesyon
 | [Yerel ortam](#local) | Geliştirme ortamınızın ve bağımlılıklarınızın tam denetimi. İstediğiniz herhangi bir yapı aracı, ortam veya IDE ile çalıştırın. | Kullanmaya başlamak için daha uzun sürer. Gerekli SDK paketlerinin yüklü olması ve henüz yoksa bir ortamın de yüklü olması gerekir. |
 | [Azure Databricks](#aml-databricks) | Ölçeklenebilir Apache Spark platformunda büyük ölçekli yoğun makine öğrenimi iş akışlarını çalıştırmak için idealdir. | Deneysel makine öğrenimi veya daha küçük ölçekli denemeleri ve iş akışları için fazla sonlandırılmalıdır. Azure Databricks için ek ücret tahakkuk ettir. [Fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/databricks/)bakın. |
 | [Veri Bilimi Sanal Makinesi (DSVM)](#dsvm) | Bulut tabanlı Not defteri VM 'sine benzer (Python ve SDK önceden yüklenmiş), ancak daha popüler veri bilimi ve Machine Learning araçları önceden yüklenmiş olarak. Kolayca ölçeklendirilmesi ve diğer özel araçlar ve iş akışlarıyla birleştirmek. | Bulut tabanlı Notebook VM ile karşılaştırıldığında daha yavaş bir başlangıç deneyimi. |
-| [Azure Notebooks](#aznotebooks) | Python ve SDK önceden yüklenmiş olarak ücretsiz ve hafif ağırlığa Başlarken deneyimi. | Bulut tabanlı Notebook VM 'ye kıyasla daha az güçlü VM mevcuttur. Çalışma alanından ve diğer kaynaklardan yalıtılmıştır. |
+
 
 Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmaktadır:
 
@@ -40,7 +40,7 @@ Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmak
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm), [Azure Databricks](#aml-databricks)veya [Azure Notebooks](#aznotebooks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
+Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm)veya [Azure Databricks](#aml-databricks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
 
 [Yerel bilgisayarınız](#local)için SDK ortamını yüklemek üzere [Jupyter Notebook sunucu](#jupyter) veya [Visual Studio Code](#vscode) şunları yapmanız gerekir:
 
@@ -76,7 +76,7 @@ Not defteri VM 'si:
 
 + **Özelleştirilebilir**. Yönetilen ve güvenli bir VM teklifi olsa da, donanım özelliklerine tam erişim sağlar ve bunu sizin için istediğiniz gibi özelleştirebilirsiniz. Örneğin, nolevel sinir ağ mimarisinin adım adım hata ayıklamasını gerçekleştirmek için en son NVIDIA V100 yönetimli VM 'yi hızlıca oluşturun.
 
-Not defteri VM 'si ücretlerini durdurmak için, [Not defteri VM 'yi durdurun](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm). 
+Not defteri VM 'si ücretlerini durdurmak için, [Not defteri VM 'yi durdurun](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
 
 ## <a id="dsvm"></a>Veri bilimi sanal makinesi
 
@@ -187,16 +187,21 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
 
     Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve oto ek ekstralarla birlikte kurar. `automl` Ek büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. Ek `automl` Ayrıca, bağımlılık olarak varsayılan olarak Azure Machine Learning veri hazırlama SDK 'sını içerir.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > PyYAML 'nin kaldırılamayacağı bir ileti alırsanız, bunun yerine aşağıdaki komutu kullanın:
+   > * PyYAML 'nin kaldırılamayacağı bir ileti alırsanız, bunun yerine aşağıdaki komutu kullanın:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * MacOS Catalina ile başlayarak, ZSH (Z kabuğu), varsayılan oturum açma kabuğu ve etkileşimli kabuktur. ZSH 'de, "\\" (ters eğik çizgi) ile köşeli parantezleri kaçış aşağıdaki komutu kullanın:
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   SDK 'nın yüklenmesi birkaç dakika sürer. Yükleme seçenekleri hakkında daha fazla bilgi için bkz. [Yükleme Kılavuzu](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
+
+   SDK 'nın yüklenmesi birkaç dakika sürer. Yükleme seçenekleri hakkında daha fazla bilgi için bkz. [Yükleme Kılavuzu](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 1. Machine Learning deneme için diğer paketleri yükler.
 
@@ -294,7 +299,7 @@ Azure Databricks Azure Machine Learning hizmeti ile nasıl kullanılır:
 
 Şu ayarları kullanın:
 
-| Ayar |Şunlara uygulanacaktır:| Değer |
+| Ayar |Şunlara uygulanacaktır:| Value |
 |----|---|---|
 | Küme adı |her zaman| yourclustername |
 | Databricks Çalışma Zamanı |her zaman| ML olmayan tüm çalışma zamanı (ML 4. x, 5. x) |
@@ -329,10 +334,10 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
    1. **Kitaplıklar** sekmesinde **Yeniden Başlat**' ı seçin.
 
    Ayrıca şunları göz önünde bulundurun:
-   + Azure Databricks kullanırken, oto ml yapılandırmasında, lütfen aşağıdaki parametreleri ekleyin:
+   + Azure Databricks kullanırken, oto ml yapılandırmasında aşağıdaki parametreleri ekleyin:
        1. ```max_concurrent_iterations```, kümenizdeki çalışan düğümlerinin sayısına bağlıdır.
         2. ```spark_context=sc```, varsayılan Spark bağlamını temel alır.
-   + Ya da eski bir SDK sürümünüz varsa, kümenin yüklü olan kitaplıkların seçimini kaldırın ve çöp kutusuna geçiş yapın. Yeni SDK sürümünü yükleyip kümeyi yeniden başlatın. Bundan sonra bir sorun varsa, kümenizi ayırın ve yeniden bağlayın.
+   + Ya da eski bir SDK sürümünüz varsa, kümenin yüklü olan kitaplıkların seçimini kaldırın ve çöp kutusuna geçiş yapın. Yeni SDK sürümünü yükleyip kümeyi yeniden başlatın. Yeniden başlatmadan sonra bir sorun varsa, kümenizi ayırın ve yeniden bağlayın.
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:
 
@@ -347,17 +352,6 @@ Deneyin:
   Birçok örnek Not defteri kullanılabilir, **ancak [Bu örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) yalnızca Azure Databricks çalışır.**
 
 + [Eğitim işlemi olarak Databricks ile bir işlem hattı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
-
-## <a id="aznotebooks"></a>Azure Not Defterleri
-
-[Azure not defterleri](https://notebooks.azure.com) (Önizleme) olan Azure bulutundaki bir etkileşimli bir geliştirme ortamı. Azure Machine Learning geliştirmeyi kullanmaya başlamak için kolay bir yoldur.
-
-* Azure Machine Learning SDK zaten yüklü.
-* Azure portal bir Azure Machine Learning hizmet çalışma alanı oluşturduktan sonra, Azure Not defteri ortamınızı çalışma alanıyla çalışacak şekilde otomatik olarak yapılandırmak için bir düğmeye tıklayabilirsiniz.
-
-Azure Notebooks kullanmaya başlamak için [Azure Portal](https://portal.azure.com) kullanın.  Çalışma alanınızı açın ve **genel bakış** bölümünden **Azure Notebooks kullanmaya başlayın**' ı seçin.
-
-Azure Notebooks, varsayılan olarak, 4 GB bellek ve 1 GB veri ile sınırlı bir ücretsiz hizmet katmanını kullanır. Ancak, Azure Notebooks projesine bir Veri Bilimi Sanal Makinesi örneği ekleyerek bu limitleri kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Notebooks projelerini yönetme ve yapılandırma-işlem katmanı](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Çalışma alanı yapılandırma dosyası oluşturma
 
@@ -406,5 +400,4 @@ Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure Machine Learning model veri kümesiyle [bir modeli eğitme](tutorial-train-models-with-aml.md)
-- Python başvurusu [için Azure Machine Learning SDK 'sını](https://aka.ms/aml-sdk) görüntüleme
-- [Azure Machine Learning için veri hazırlığı paketi](https://aka.ms/data-prep-sdk) hakkında bilgi edinin
+- Python başvurusu [için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) görüntüleme

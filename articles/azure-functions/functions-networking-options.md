@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779284"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170653"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -52,8 +52,10 @@ Daha fazla bilgi için bkz. [Azure App Service statik erişim kısıtlamaları](
 ## <a name="private-site-access"></a>Özel site erişimi
 
 Özel site erişimi, uygulamanızı Azure sanal ağı içindeki gibi özel bir ağdan erişilebilir hale getirme anlamına gelir. 
-* Özel site erişimi [Premium](./functions-premium-plan.md) 'da kullanılabilir ve **hizmet uç noktaları** yapılandırıldığında [App Service planlayın](functions-scale.md#app-service-plan) . Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)
-    * Hizmet uç noktalarında, işlevinizin hala internet 'e yönelik sanal ağ tümleştirmesiyle birlikte tam giden erişimi olduğunu aklınızda bulundurun.
+* Özel site erişimi, **hizmet uç noktaları** yapılandırıldığında [Premium](./functions-premium-plan.md), [Tüketim](functions-scale.md#consumption-plan) ve [App Service planınızdan](functions-scale.md#app-service-plan) kullanılabilir. 
+    * Hizmet uç noktaları, platform özellikleri > Ağ Iletişimi > erişim kısıtlamalarını Yapılandırma > kural ekle ' nin altında uygulama temelinde yapılandırılabilir. Sanal ağlar artık kuralın "türü" olarak seçilebilir.
+    * Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)
+        * Hizmet uç noktalarında, işlevinizin hala internet 'e yönelik sanal ağ tümleştirmesiyle birlikte tam giden erişimi olduğunu aklınızda bulundurun.
 * Özel site erişimi, iç yük dengeleyici (ıLB) ile yapılandırılmış bir App Service Ortamı de mevcuttur. Daha fazla bilgi için bkz. [bir App Service ortamı iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md).
 
 ## <a name="virtual-network-integration"></a>Sanal ağ tümleştirmesi
@@ -99,6 +101,13 @@ Işlevlerde sanal ağ tümleştirmesi App Service Web Apps ile paylaşılan alty
 * [Ağ Geçidi gerekli VNet tümleştirmesi](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 Sanal ağ tümleştirmesini kullanma hakkında daha fazla bilgi için bkz. [bir işlev uygulamasını bir Azure sanal ağı Ile tümleştirme](functions-create-vnet.md).
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla kısıtlama
+
+> [!note] 
+> Geçici olarak, bu depolama hesabında erişim kısıtlamalarını yapılandırdıktan sonra, depolama hesabınızın işlev uygulamanız için kullanılabilir olması 12 saate kadar sürebilir. Bu süre boyunca uygulamanız tamamen çevrimdışı olur.
+
+Daha yüksek bir güvenlik düzeyi sağlamak için, uygulamanızın depolama hesabını bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, depolama hesabınıza erişmek için sitenizi bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm planlarda desteklenir.
 
 ## <a name="virtual-network-triggers-non-http"></a>Sanal ağ Tetikleyicileri (HTTP olmayan)
 

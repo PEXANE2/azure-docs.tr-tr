@@ -1,18 +1,18 @@
 ---
 title: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 description: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturmayı öğrenin.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 71a74476bcec6cb2ab3dc5efabe1a550577f0107
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955579"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383236"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -20,7 +20,7 @@ Tekliflerinizi [Azure Market](https://azuremarketplace.microsoft.com/) veya [app
 
 ## <a name="create-a-partner-center-account"></a>Iş Ortağı Merkezi hesabı oluşturma
 
-Bu makalede, aşağıdakiler dahil olmak üzere bir Iş Ortağı Merkezi hesabı oluşturmayı ele alacağız: 
+Bu makalede, aşağıdakiler dahil olmak üzere bir Iş Ortağı Merkezi hesabı oluşturmayı ele alacağız:
 
 - [Iş ortağı merkezi kayıt sayfasını kullanarak kaydolun](#to-create-a-commercial-marketplace-account-in-partner-center)
 - [İş hesabı ile oturum açın](#sign-in-with-a-work-account)
@@ -56,11 +56,11 @@ Böylece, şirketinizin iş e-posta hesabı etki alanını yeni Iş Ortağı Mer
 
 #### <a name="provide-your-publisher-profile"></a>Yayımcı profilinizi sağlama
 
-Yayımcı profiliniz, şirketinizin adını ve MPN KIMLIĞINI içerir. Henüz yapmadıysanız, [Microsoft iş ortağı ağı](https://partner.microsoft.com/commercial)katılmanız gerekecektir. Microsoft İş Ortağı Ağı katılırsanız, bir MPN KIMLIĞI ile birlikte sağlanacaktır. 
+Yayımcı profiliniz, şirketinizin adını ve MPN KIMLIĞINI içerir. Henüz yapmadıysanız, [Microsoft iş ortağı ağı](https://partner.microsoft.com/commercial)katılmanız gerekecektir. Microsoft İş Ortağı Ağı katılırsanız, bir MPN KIMLIĞI ile birlikte sağlanacaktır.
 
-Yayımcı KIMLIĞI oluşturun. Yayımcı KIMLIĞINIZ şirketinizi ve tekliflerinizi Market ve AppSource 'ta benzersiz şekilde tanımlar. 
+Yayımcı KIMLIĞI oluşturun. Yayımcı KIMLIĞINIZ şirketinizi ve tekliflerinizi Market ve AppSource 'ta benzersiz şekilde tanımlar.
 
-Yayımcı profili bilgilerinizi onayladıktan sonra, koşulları ve koşulları kabul edin ve **kabul et ve devam et**' i seçerek Iş Ortağı Merkezi hesabınızı oluşturun. 
+Yayımcı profili bilgilerinizi onayladıktan sonra, koşulları ve koşulları kabul edin ve **kabul et ve devam et**' i seçerek Iş Ortağı Merkezi hesabınızı oluşturun.
 
 >[!Important]
 >*Bu koşulları kabul etmek için şirketinizin adına işlem yapmaya yetkiniz olmalıdır.*

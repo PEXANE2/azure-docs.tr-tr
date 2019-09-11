@@ -9,15 +9,15 @@ ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d6c5d881c5ca6eee14835ab0ec10bff2749299dc
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68502340"
 ---
 Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri listelenmektedir. Service Bus yönelik fiyatlandırma ve diğer kotalar hakkında daha fazla bilgi için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Kota adı | `Scope` | Notlar | Değer |
+| Kota adı | `Scope` | Notlar | Value |
 | --- | --- | --- | --- |
 | Azure aboneliği başına en fazla temel veya standart ad alanı sayısı |Ad Alanı |Ek temel veya standart ad alanları için sonraki istekler Azure portal tarafından reddedilir. |100|
 | Azure aboneliği başına en fazla Premium ad alanı sayısı |Ad Alanı |Ek Premium ad alanları için sonraki istekler Portal tarafından reddedilir. |50 |

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644887"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858548"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
@@ -201,7 +201,7 @@ Varsayılan örnek harmanlaması, `SQL_Latin1_General_CP1_CI_AS` ve oluşturma p
 
 ### <a name="compatibility-levels"></a>Uyumluluk düzeyleri
 
-- Desteklenen uyumluluk düzeyleri 100, 110, 120, 130 ve 140.
+- Desteklenen uyumluluk düzeyleri 100, 110, 120, 130, 140 ve 150.
 - 100 altındaki uyumluluk düzeyleri desteklenmez.
 - Yeni veritabanları için varsayılan uyumluluk düzeyi 140 ' dir. Geri yüklenen veritabanları için, uyumluluk düzeyi 100 ve üzeri olursa değişmeden kalır.
 
@@ -338,6 +338,10 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 - `CREATE ASSEMBLY FROM FILE`desteklenmez. Bkz. [dosyadan derleme oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`dosyalara başvurulamıyor. Bkz. [alter assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Veritabanı Postası (db_mail)
+ - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve genişletilmiş paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
+ - `@query` Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
+ 
 ### <a name="dbcc"></a>DBCC
 
 SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde desteklenmez.
@@ -476,7 +480,7 @@ Algılan
 - `.BAK`birden çok yedekleme kümesi içeren dosyalar geri yüklenemez. 
 - `.BAK`birden çok günlük dosyası içeren dosyalar geri yüklenemez.
 - 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya 280 'den fazla dosya içeren yedeklemeler Genel Amaçlı örneğine geri yüklenemez. 
-- 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine geri yüklenemez. [](sql-database-managed-instance-resource-limits.md)
+- 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine [geri yüklenemez.](sql-database-managed-instance-resource-limits.md)
 Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Hizmet Aracısı
@@ -537,6 +541,22 @@ Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata g
 
 ## <a name="Issues"></a>Bilinen sorunlar
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir
+
+**Güncel** Eyl 2019
+
+Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) özelliği, yük devretmeden sonra bazı Kullanıcı iş yükünü yanlış sınıflandırabilir veya hizmet katmanının Kullanıcı tarafından başlatılan değişikliğini (örneğin, en fazla sanal çekirdek veya en büyük örnek değişikliği) depolama boyutu).
+
+**Geçici çözüm**: Resource Governor `ALTER RESOURCE GOVERNOR RECONFIGURE` kullanıyorsanız, örnek başladığında SQL aracısını yürüten SQL Aracısı işinin bir parçası olarak veya SQL Agent işinin bir parçası olarak çalıştırın [](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Güvenli bağlantı (SSL) kullanılarak dış posta sunucularına kimlik doğrulamak yapılamaz
+
+**Güncel** Ağu 2019
+
+[Güvenli bağlantı (SSL) kullanılarak yapılandırılan](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) veritabanı postası, Azure dışındaki bazı e-posta sunucularında kimlik doğrulaması yapamaz. Bu, yakında çözümlenecek olan güvenlik yapılandırması sorununa neden olur.
+
+**Sorunu** Güvenli bağlantı (SSL) geçici kaldırma, sorun çözülene kadar veritabanı posta yapılandırmasını oluşturur. 
+
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 
 **Güncel** Ağu 2019
@@ -572,6 +592,12 @@ Bir otomatik yük devretme grubundaki bir veritabanında Işlem çoğaltması et
 SQL Server Management Studio ve SQL Server Veri Araçları, Azure 'un seçkin Dizin oturumlarını ve kullanıcılarını desteklemez.
 - SQL Server Veri Araçları şu anda Azure AD Server sorumlularını (oturum açma) ve kullanıcıları (Genel Önizleme) kullanma desteklenmiyor.
 - Azure AD Server sorumluları (oturumlar) ve kullanıcıları (Genel Önizleme) için betik oluşturma SQL Server Management Studio desteklenmez.
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor
+
+Bir veritabanı yönetilen örneğe geri yüklenirken, geri yükleme hizmeti öncelikle adı örnek üzerinde ayırmak için istenen ada sahip boş bir veritabanı oluşturur. Bir süre sonra, bu veritabanı bırakılır ve gerçek veritabanının geri yüklenmesi başlatılır. *Geri yükleme* durumundaki veritabanı geçici olarak ad yerine rastgele bir GUID değeri olur. Geri yükleme işlemi tamamlandıktan sonra geçici ad, `RESTORE` bildiriminde belirtilen istenen ada dönüştürülür. İlk aşamada, Kullanıcı boş veritabanına erişebilir ve hatta tablo oluşturabilir veya bu veritabanında veri yükleyebilir. Bu geçici veritabanı, geri yükleme hizmeti ikinci aşamayı başlattığında bırakılacak.
+
+**Geçici çözüm**: Geri yükleme işleminin tamamlandığını görene kadar geri yüklediğiniz veritabanına erişmeyin.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542974"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812911"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager şablonu en iyi uygulamaları
 
@@ -175,7 +175,7 @@ Ayarlanacak [bağımlılıklara](resource-group-define-dependencies.md) karar ve
 
 * Alt kaynağı üst kaynağına bağımlı olarak ayarlayın.
 
-* [Koşul öğesi](resource-group-authoring-templates.md#condition) false olarak ayarlanan kaynaklar, bağımlılık siparişinden otomatik olarak kaldırılır. Bağımlılıkları, kaynak her zaman dağıtılır gibi ayarlayın.
+* [Koşul öğesi](conditional-resource-deployment.md) false olarak ayarlanan kaynaklar, bağımlılık siparişinden otomatik olarak kaldırılır. Bağımlılıkları, kaynak her zaman dağıtılır gibi ayarlayın.
 
 * Bağımlılıkların açıkça Ayarlamasız şekilde basamaklı olmasına izin verin. Örneğin, sanal makineniz sanal bir ağ arabirimine bağlıdır ve sanal ağ arabirimi bir sanal ağ ve genel IP adreslerine bağlıdır. Bu nedenle, sanal makine üç kaynaktan sonra dağıtılır, ancak sanal makineyi tüm üç kaynağa bağımlı olarak açıkça ayarlamazsanız. Bu yaklaşım bağımlılık sırasını açıklar ve şablonu daha sonra değiştirmeyi kolaylaştırır.
 
@@ -192,7 +192,7 @@ Ayarlanacak [bağımlılıklara](resource-group-define-dependencies.md) karar ve
      {
          "name": "[variables('storageAccountName')]",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
+         "apiVersion": "2019-06-01",
          "location": "[resourceGroup().location]",
          "comments": "This storage account is used to store the VM disks.",
          ...
@@ -203,43 +203,32 @@ Ayarlanacak [bağımlılıklara](resource-group-define-dependencies.md) karar ve
 * Şablonunuzda *ortak bir uç nokta* (Azure Blob depolama genel uç noktası gibi) kullanıyorsanız, ad alanını sabit bir şekilde *kodmayın* . Ad alanını dinamik olarak almak için **başvuru** işlevini kullanın. Şablonu şablondaki uç noktayı el ile değiştirmeden farklı genel ad alanı ortamlarına dağıtmak için bu yaklaşımı kullanabilirsiniz. API sürümünü, şablonunuzda depolama hesabı için kullandığınız sürüme ayarlayın:
    
    ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
        }
    }
    ```
    
-   Depolama hesabı oluşturmakta olduğunuz şablonda dağıtılırsa, kaynağa başvurduğunuzda sağlayıcı ad alanını belirtmeniz gerekmez. Aşağıdaki örnek basitleştirilmiş sözdizimini göstermektedir:
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   Şablonunuzda ortak bir ad alanı kullanmak üzere yapılandırılmış başka değerler varsa, bu değerleri aynı **başvuru** işlevini yansıtacak şekilde değiştirin. Örneğin, sanal makine tanılama profilinin **Storageuri** özelliğini ayarlayabilirsiniz:
+   Depolama hesabı oluşturmakta olduğunuz şablona dağıtılmışsa ve depolama hesabının adı şablondaki başka bir kaynakla paylaşılmamışsa, kaynağa başvurduğunuzda sağlayıcı ad alanını veya apiVersion 'ı belirtmeniz gerekmez. Aşağıdaki örnek basitleştirilmiş sözdizimini göstermektedir:
    
    ```json
    "diagnosticsProfile": {
        "bootDiagnostics": {
            "enabled": "true",
-           "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
        }
    }
    ```
-   
+     
    Farklı bir kaynak grubunda bulunan mevcut bir depolama hesabına de başvurabilirsiniz:
 
    ```json
-   "osDisk": {
-       "name": "osdisk", 
-       "vhd": {
-           "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
        }
    }
    ```

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 62dd04b6df465b82bb1b39e23afce410325c4248
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a1e3484c544478fa6e9414eea1e139b81652ace3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697331"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135002"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için PHP kullanma
 <a name="HOLTop"></a>
@@ -34,34 +34,32 @@ API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwli
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 
+1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
-2. Aşağıda sağlanan kodu ekleyin.
-3. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-4. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Programı çalıştırın.
+1. Aşağıda sağlanan kodu ekleyin.
+1. Programı çalıştırın.
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+if (!getenv($key_var)) {
+    throw new Exception ("Please set/export the following environment variable: $key_var");
+} else {
+    $subscription_key = getenv($key_var);
+}
+$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+if (!getenv($endpoint_var)) {
+    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
+} else {
+    $endpoint = getenv($endpoint_var);
+}
 
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
 $path = '/text/analytics/v2.1/languages';
 
 function DetectLanguage ($host, $path, $key, $data) {
@@ -95,7 +93,7 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = DetectLanguage ($host, $path, $accessKey, $data);
+$result = DetectLanguage ($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
@@ -153,42 +151,47 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Aşağıdaki örnek, biri İngilizce diğeri İspanyolca olan iki belge puanlar.
 
+1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
-2. Aşağıda sağlanan kodu ekleyin.
-3. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-4. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Programı çalıştırın.
+1. Aşağıda sağlanan kodu ekleyin.
+1. Programı çalıştırın.
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+if (!getenv($key_var)) {
+    throw new Exception ("Please set/export the following environment variable: $key_var");
+} else {
+    $subscription_key = getenv($key_var);
+}
+$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+if (!getenv($endpoint_var)) {
+    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
+} else {
+    $endpoint = getenv($endpoint_var);
+}
 
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
 $path = '/text/analytics/v2.1/sentiment';
 
 function GetSentiment ($host, $path, $key, $data) {
-
-    $headers = "Content-type: text/json\r\n" .
-        "Ocp-Apim-Subscription-Key: $key\r\n";
+    // Make sure all text is UTF-8 encoded.
+    foreach ($data as &$item) {
+        foreach ($item as $ignore => &$value) {
+            $value['text'] = utf8_encode($value['text']);
+        }
+    }
 
     $data = json_encode ($data);
+
+    $headers = "Content-type: text/json\r\n" .
+        "Content-Length: " . strlen($data) . "\r\n" .
+        "Ocp-Apim-Subscription-Key: $key\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
     // https://php.net/manual/en/function.stream-context-create.php
@@ -213,7 +216,7 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = GetSentiment ($host, $path, $accessKey, $data);
+$result = GetSentiment($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
@@ -245,34 +248,32 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
 
+1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
-2. Aşağıda sağlanan kodu ekleyin.
-3. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-4. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Programı çalıştırın.
+1. Aşağıda sağlanan kodu ekleyin.
+1. Programı çalıştırın.
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+if (!getenv($key_var)) {
+    throw new Exception ("Please set/export the following environment variable: $key_var");
+} else {
+    $subscription_key = getenv($key_var);
+}
+$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+if (!getenv($endpoint_var)) {
+    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
+} else {
+    $endpoint = getenv($endpoint_var);
+}
 
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
 $path = '/text/analytics/v2.1/keyPhrases';
 
 function GetKeyPhrases ($host, $path, $key, $data) {
@@ -306,11 +307,10 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = GetKeyPhrases ($host, $path, $accessKey, $data);
+$result = GetKeyPhrases($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
-
 ```
 
 **Anahtar ifade ayıklama yanıtı**
@@ -359,41 +359,39 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Varlıklar API'si, [Varlıklar metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
+1. Ortam değişkenlerini `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` kaynağınızın Azure uç noktası ve abonelik anahtarı için oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
-2. Aşağıda sağlanan kodu ekleyin.
-3. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-4. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Programı çalıştırın.
+1. Aşağıda sağlanan kodu ekleyin.
+1. Programı çalıştırın.
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+if (!getenv($key_var)) {
+    throw new Exception ("Please set/export the following environment variable: $key_var");
+} else {
+    $subscription_key = getenv($key_var);
+}
+$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+if (!getenv($endpoint_var)) {
+    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
+} else {
+    $endpoint = getenv($endpoint_var);
+}
 
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-$host = 'https://westus.api.cognitive.microsoft.com';
 $path = '/text/analytics/v2.1/entities';
 
 function GetEntities ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
+        "Content-Length: " . Length($data) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n";
-
     $data = json_encode ($data);
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
@@ -418,11 +416,10 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = GetEntities ($host, $path, $accessKey, $data);
+$result = GetEntities($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
-
 ```
 
 **Varlık ayıklama yanıtı**

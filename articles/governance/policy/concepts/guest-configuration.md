@@ -1,37 +1,36 @@
 ---
-title: Bir sanal makinenin içeriğini nasıl denetleyeceğinizi anlayın
-description: Konuk yapılandırma Azure İlkesi içinde bir Azure sanal makine ayarlarını denetlemek için nasıl kullandığını öğrenin.
+title: Makinenin içeriğini nasıl denetleyeceğinizi anlayın
+description: Azure Ilkesi 'nin bir Azure makinesi içindeki ayarları denetlemek için konuk yapılandırmasını nasıl kullandığını öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/18/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036310"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308565"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
-Azure Ilkesi, Azure kaynaklarını denetlemeye ve [düzeltmelere](../how-to/remediate-resources.md) ek olarak, bir sanal makine içindeki ayarları denetleyebilir. Doğrulama Konuk yapılandırma uzantısı ve istemci tarafından gerçekleştirilir. İstemcisi aracılığıyla uzantısı gibi işletim sistemi yapılandırması, uygulama yapılandırması veya varlığı, ortam ayarlarını ve diğer ayarlarını doğrular.
+Azure Ilkesi, Azure kaynaklarını denetlemeye ve yeniden [düzeltmelere](../how-to/remediate-resources.md) göre, bir makine içindeki ayarları denetleyebilir. Doğrulama Konuk yapılandırma uzantısı ve istemci tarafından gerçekleştirilir. İstemci aracılığıyla uzantı, şu gibi ayarları doğrular:
 
-Azure Ilke Konuk yapılandırması şu anda yalnızca makinenin içindeki setler için bir denetim gerçekleştirir.
-Yapılandırma uygulamak henüz mümkün değildir.
+- İşletim sisteminin yapılandırması
+- Uygulama yapılandırması veya varlığı
+- Ortam ayarları
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+Azure Ilkesi Konuk yapılandırması şu anda yalnızca makinenin içindeki ayarları denetler. Yapılandırma uygulamaz.
 
 ## <a name="extension-and-client"></a>Uzantı ve istemci
 
-Bir sanal makine içinde ayarlarını denetlemek için bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir. Uzantı geçerli ilke ataması ve karşılık gelen yapılandırma tanımını indirir.
+Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkindir. Uzantı geçerli ilke ataması ve karşılık gelen yapılandırma tanımını indirir.
 
-### <a name="limits-set-on-the-exension"></a>Bir şekilde ayarlanan sınırlar
+### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
-Uzantının makinede çalışan etkileyen uygulamalarla sınırlı olması için, Konuk yapılandırmasının CPU kullanımının% 5 ' inden fazlasını aşmasına izin verilmez.
-Bu, Microsoft tarafından "yerleşik" olarak ve müşteriler tarafından yazılan özel yapılandırmalarda sunulan yapılandırmalara yönelik doğru BOH ' dir.
+Uzantının makinede çalışan etkileyen uygulamalarla sınırlandırılacağından, Konuk yapılandırmasının CPU kullanımının% 5 ' inden fazla olmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını kaydetme
 
@@ -60,7 +59,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="validation-tools"></a>Doğrulama Araçları
 
-Sanal makinenin içinde denetim çalıştırmak için yerel Araçlar Konuk yapılandırma istemcisi kullanır.
+Makinenin içinde, Konuk yapılandırma istemcisi denetimi çalıştırmak için yerel araçları kullanır.
 
 Aşağıdaki tabloda, desteklenen her işletim sisteminde kullanılan yerel Araçlar listesi gösterilmektedir:
 
@@ -71,7 +70,7 @@ Aşağıdaki tabloda, desteklenen her işletim sisteminde kullanılan yerel Ara�
 
 ### <a name="validation-frequency"></a>Doğrulama sıklığı
 
-Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Konuk ataması alındıktan sonra ayarlar 15 dakikalık bir aralıkta denetlenir. Sonuçlar, Denetim tamamlandıktan hemen sonra Konuk yapılandırma kaynak sağlayıcısına gönderilir. Bir ilke [değerlendirme tetikleyicisi](../how-to/get-compliance-data.md#evaluation-triggers) gerçekleştiğinde, makinenin durumu Konuk yapılandırma kaynak sağlayıcısına yazılır. Bu, Azure Ilkesinin Azure Resource Manager özelliklerini değerlendirmesini sağlar. İsteğe bağlı bir Azure Ilke değerlendirmesi, Konuk yapılandırma kaynak sağlayıcısından en son değeri alır. Ancak, sanal makine içindeki yapılandırmanın yeni bir denetimini tetiklemez.
+Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Konuk ataması alındıktan sonra ayarlar 15 dakikalık bir aralıkta denetlenir. Sonuçlar, Denetim tamamlandıktan hemen sonra Konuk yapılandırma kaynak sağlayıcısına gönderilir. Bir ilke [değerlendirme tetikleyicisi](../how-to/get-compliance-data.md#evaluation-triggers) gerçekleştiğinde, makinenin durumu Konuk yapılandırma kaynak sağlayıcısına yazılır. Bu güncelleştirme, Azure Ilkesinin Azure Resource Manager özelliklerini değerlendirmesini sağlar. İsteğe bağlı bir Azure Ilke değerlendirmesi, Konuk yapılandırma kaynak sağlayıcısından en son değeri alır. Ancak, makine içindeki yapılandırmanın yeni bir denetimini tetiklemez.
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
@@ -96,7 +95,7 @@ Windows Server nano Server hiçbir sürümde desteklenmez.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Konuk yapılandırma uzantısı ağ gereksinimleri
 
-Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için, sanal makinelerin **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişimi olması gerekir. Azure 'da özel bir sanal ağ kullanıyorsanız ve giden trafiğe izin vermezseniz, özel durumların [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları kullanılarak yapılandırılması gerekir. Şu anda Azure Ilke Konuk yapılandırması için bir hizmet etiketi yok.
+Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'da giden trafiğe izin veren özel bir sanal ağ kullanıyorsanız, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. Azure Ilke Konuk yapılandırması için şu anda bir hizmet etiketi yok.
 
 IP adresi listelerinde [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıklar ve IP aralıklarında yaklaşan değişiklikler vardır. Yalnızca sanal makinelerinizin dağıtıldığı bölgelerdeki IP 'lere giden erişime izin vermeniz gerekir.
 
@@ -105,31 +104,34 @@ IP adresi listelerinde [Microsoft Azure veri MERKEZI IP aralıklarını](https:/
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
-Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** tanımı, sanal makineyi Konuk yapılandırma Aracısı ve diğer bileşenleriyle [doğrulama araçlarını](#validation-tools)destekleyecek şekilde hazırlamak için kullanılır.
+Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** tanımı, makineyi Konuk yapılandırma Aracısı ve diğer bileşenleri [doğrulama araçlarını](#validation-tools)destekleyecek şekilde hazırlamak için kullanılır.
 
 **Deployıfnotexists** ilke tanımı doğrular ve düzeltir aşağıdaki öğeleri:
 
-- Doğrulama sanal makine değerlendirilecek bir yapılandırmayı atanmıştır. Hiçbir atama şu anda mevcutsa ataması Al ve sanal makine tarafından hazırlayın:
-  - Sanal makineyi kullanarak kimlik doğrulaması bir [yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md)
+- Makineye değerlendirmek için bir yapılandırma atandığını doğrulayın. Şu anda bir atama yoksa, atamayı alın ve makineyi şu şekilde hazırlayın:
+  - [Yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) kullanarak makinede kimlik doğrulama
   - En son sürümünü yükleme **Microsoft.GuestConfiguration** uzantısı
   - Yükleme [Doğrulama Araçları](#validation-tools) ve gerekirse bağımlılıkları
 
 **Deployifnotexists** ataması uyumlu değilse, bir [Düzeltme görevi](../how-to/remediate-resources.md#create-a-remediation-task) kullanılabilir.
 
-**Deployifnotexists** ataması uyumlu olduğunda, **auditınotexists** ilke ataması, yapılandırma atamasının uyumlu veya uyumsuz olduğunu anlamak için yerel doğrulama araçlarını kullanır.
-Doğrulama Aracı sonuçları Konuk yapılandırma istemciye sağlar. İstemci, Konuk yapılandırma kaynak sağlayıcısı kullanılabilir hale getirir Konuk uzantısına sonuçları iletir.
+**Deployifnotexists** ataması uyumlu olduğunda, **auditınotexists** ilke ataması, yapılandırma atamasının uyumlu veya uyumsuz olduğunu anlamak için yerel doğrulama araçlarını kullanır. Doğrulama Aracı sonuçları Konuk yapılandırma istemciye sağlar. İstemci, Konuk yapılandırma kaynak sağlayıcısı kullanılabilir hale getirir Konuk uzantısına sonuçları iletir.
 
 Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianceStatus** rapor uyumluluk özelliğini **Uyumluluk** düğümü. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Uıınotexists ilkesi, sonuçları döndürmek için bu ilke için gereklidir.
-> **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
+> **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir. **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
 
-Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. [Önizleme] adlı *yerleşik girişim: Linux ve Windows sanal makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. Her durumda, yalnızca hedef mantıksal tanımındaki doğrular işletim sistemine göre değerlendirilir [ilke kuralı](definition-structure.md#policy-rule) tanımı.
+Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. [Önizleme] adlı *yerleşik girişim: Linux ve Windows makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
 
 ### <a name="multiple-assignments"></a>Birden çok atama
 
-Konuk yapılandırma ilkeleri Şu anda yalnızca sanal makine başına aynı Konuk atamasının atanmasını, Ilke ataması farklı parametreler kullanıyor olsa bile destekler.
+Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk atamasının atanmasını, Ilke ataması farklı parametreler kullanıyor olsa bile destekler.
+
+## <a name="built-in-resource-modules"></a>Yerleşik kaynak modülleri
+
+Konuk yapılandırma uzantısı yüklenirken, ' GuestConfiguration ' PowerShell modülü DSC kaynak modüllerinin en son sürümüne dahildir. Bu modül, [Guestconfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/)modül sayfasından ' el ile indirme ' bağlantısı kullanılarak PowerShell Galerisi indirilebilir.
+'. Nupkg ' dosya biçimi, sıkıştırmayı açmak ve gözden geçirmek için '. zip ' olarak yeniden adlandırılabilir.
 
 ## <a name="client-log-files"></a>İstemci günlük dosyaları
 
@@ -140,6 +142,33 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
 , Geçerli sürüm numarasını belirtir.`<version>`
+
+### <a name="collecting-logs-remotely"></a>Günlükleri uzaktan toplama
+
+Konuk yapılandırma yapılandırmalarının veya modüllerinin sorun gidermede ilk adım, [Konuk yapılandırma paketini test](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)etme `Test-GuestConfigurationPackage` bölümündeki adımları izleyerek cmdlet 'ini kullanmalıdır.
+Bu başarılı olmazsa, istemci günlüklerinin toplanması sorunları tanılamanıza yardımcı olabilir.
+
+#### <a name="windows"></a>Windows
+
+Windows makinelerdeki günlük dosyalarından bilgi yakalamak üzere Azure VM çalıştırma komutu özelliğini kullanmak için aşağıdaki örnek PowerShell betiği yararlı olabilir. Daha fazla bilgi için bkz. [Run komutuyla WINDOWS sanal makinenizde PowerShell betikleri çalıştırma](../../../virtual-machines/windows/run-command.md).
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Linux makinelerdeki günlük dosyalarından bilgi yakalamak için Azure VM çalıştırma komutunu kullanmak üzere aşağıdaki örnek Bash betiği yararlı olabilir. Daha fazla bilgi için bkz. [Run komutuyla LINUX sanal makinenizde Shell betikleri çalıştırma](../../../virtual-machines/linux/run-command.md)
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
 
 ## <a name="guest-configuration-samples"></a>Konuk yapılandırma örnekleri
 
@@ -155,5 +184,5 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/index.md)ile yönetim grubunun ne olduğunu inceleyin.

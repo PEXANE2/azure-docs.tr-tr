@@ -10,18 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 6fd7c4ffafa54acb7ff67bd2e595f0b3c02a0e5a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3f51ad3d0a75ab1f0662ea0b747852fcb98e5026
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967410"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259056"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC 'den veri kopyalama
 
 Bu makalede, SAP Enterprise merkezi bileşeninden (ECC) veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Daha fazla bilgi için bkz. [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
+
+>[!TIP]
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 

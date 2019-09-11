@@ -1,9 +1,9 @@
 ---
-title: E-posta bildirimleri PIM - Azure Active Directory | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) e-posta bildirimleri tanımlar.
+title: PıM-Azure Active Directory 'de e-posta bildirimleri | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) ' de e-posta bildirimlerini açıklar.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,94 +12,94 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/05/2019
-ms.author: rolyon
+ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0db4828ef7a6d3392ce53b2f2f95b0f7f014d65
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289196"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804535"
 ---
-# <a name="email-notifications-in-pim"></a>PIM e-posta bildirimleri
+# <a name="email-notifications-in-pim"></a>PıM 'de e-posta bildirimleri
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM), ne zaman bir rol atandıktan veya etkinleştirildikten gibi önemli olayları ne zaman oluştuğunu bilmenizi sağlar. PIM, diğer katılımcılarla bildirimleri e-posta göndererek haberdar tutar. Bu e-postaları da ilgili görevler, bu tür etkinleştirme veya bir rolü yenileme bağlantılar içerebilir. Bu makalede, bu e-postaları görünmesi, ne zaman gönderilir ve kimin alır açıklanır.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM), bir rolün atanma veya etkinleştirilme gibi önemli olayların ne zaman meydana geldiğinden haberdar olmanızı sağlar. PıM size ve diğer katılımcı e-posta bildirimlerini göndererek sizi bilgilenmektedir. Bu e-postalar, bir rolün etkinleştirilmesi veya yenilenmesi gibi ilgili görevlere ait bağlantıları da içerebilir. Bu makalede, bu e-postaların ne zaman gönderileceğini ve kimlerin bunları alacağını açıklanmaktadır.
 
 ## <a name="sender-email-address-and-subject-line"></a>Gönderenin e-posta adresi ve konu satırı
 
-E-postalar için her iki Azure AD PIM gönderilen ve Azure kaynağı rolleri aşağıdaki gönderen e-posta adresi vardır:
+Azure AD ve Azure Kaynak rolleri için PıM 'den gönderilen e-postaların aşağıdaki Gönderici e-posta adresi vardır:
 
-- E-posta adresi: **azure noreply\@microsoft.com**
+- E-posta adresi: **Azure-\@noreply Microsoft.com**
 - Görünen ad: Microsoft Azure
 
-Bu e-postaları içeren bir **PIM** konu satırı önek. Bir örneği aşağıda verilmiştir:
+Bu e-postalar konu satırında bir **PIM** öneki içerir. Bir örneği aşağıda verilmiştir:
 
-- PIM: Alain Charon yedekleme okuyucu rolü kalıcı olarak atandı
+- PIM Alain Charon, yedekleme okuyucusu rolüne kalıcı olarak atandı
 
-## <a name="pim-emails-for-azure-ad-roles"></a>PIM e-postalar için Azure AD rolleri
+## <a name="pim-emails-for-azure-ad-roles"></a>Azure AD rolleri için PıM e-postaları
 
-Azure AD rolleri için aşağıdaki olaylar meydana geldiğinde PIM e-posta gönderir:
+PıM, Azure AD rolleri için aşağıdaki olaylar gerçekleştiğinde e-posta gönderir:
 
-- Ayrıcalıklı rol Etkinleştirme Onayı Beklemede olduğunda
-- Ayrıcalıklı rol etkinleştirme isteği tamamlandığında
-- Azure AD PIM etkinleştirildiğinde
+- Ayrıcalıklı bir rol etkinleştirmesi onay bekliyor olduğunda
+- Ayrıcalıklı bir rol etkinleştirme isteği tamamlandığında
+- Azure AD PıM etkinleştirildiğinde
 
-Rolünüz, olay ve bildirimleri olan Azure AD rolleri için bu e-postaları alır ayar bağlıdır:
+Bu e-postaları Azure AD rolleri için alan rolünüz, olayınıza ve bildirimler ayarlarına bağlıdır:
 
-| Kullanıcı | Rol Etkinleştirme Onayı Beklemede değil. | Rol etkinleştirme isteği tamamlandı | PIM etkin |
+| Kullanıcı | Rol etkinleştirme onay bekliyor | Rol etkinleştirme isteği tamamlandı | PıM etkin |
 | --- | --- | --- | --- |
-| Ayrıcalıklı Rol Yöneticisi</br>(Etkin/uygun) | Evet</br>(yalnızca hiçbir açık onaylayanlar belirtilirse) | Evet* | Evet |
+| Ayrıcalıklı Rol Yöneticisi</br>(Etkin/uygun) | Evet</br>(yalnızca açık onaylayanlar belirtilmemişse) | Evet* | Evet |
 | Güvenlik Yöneticisi</br>(Etkin/uygun) | Hayır | Evet* | Evet |
 | Genel Yönetici</br>(Etkin/uygun) | Hayır | Evet* | Evet |
 
-\* Varsa [ **bildirimleri** ayarı](pim-how-to-change-default-settings.md#notifications) ayarlanır **etkinleştirme**.
+\*[ **Bildirimler** ayarı](pim-how-to-change-default-settings.md#notifications) **Etkinleştir**olarak ayarlandıysa.
 
-Aşağıda kurgusal Contoso kuruluş için Azure AD rolüne kullanıcı etkinleştirirken, gönderilen örnek e-posta gösterilmektedir.
+Aşağıda, bir Kullanıcı kurgusal contoso organizasyonu için bir Azure AD rolünü etkinleştirdiğinde gönderilen örnek bir e-posta gösterilmektedir.
 
-![Yeni PIM e-posta için Azure AD rolleri](./media/pim-email-notifications/email-directory-new.png)
+![Azure AD rolleri için yeni PıM e-postası](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Haftalık PIM Özet e-posta için Azure AD rolleri
+### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Azure AD rolleri için haftalık PıM Özeti e-postası
 
-Bir haftalık PIM Özet e-posta için Azure AD rolleri, ayrıcalıklı rol yöneticileri, güvenlik yöneticileri ve PIM etkin genel Yöneticiler gönderilir. Bu bir haftalık e-posta PIM etkinlikleri anlık görüntüsünü hafta yanı sıra ayrıcalıklı rol atamalarını sağlar. Yalnızca genel buluttaki kiracılar için kullanılabilir. Örnek e-posta aşağıda verilmiştir:
+Azure AD rolleri için haftalık bir PıM Özet e-postası, PıM 'yi etkinleştirmiş olan ayrıcalıklı rol yöneticilerine, güvenlik yöneticilerine ve küresel yöneticilere gönderilir. Bu haftalık e-posta, hem hafta hem de ayrıcalıklı rol atamaları için PıM etkinliklerinin anlık görüntüsünü sağlar. Yalnızca genel buluttaki kiracılar için kullanılabilir. Örnek bir e-posta aşağıda verilmiştir:
 
-![Haftalık PIM Özet e-posta için Azure AD rolleri](./media/pim-email-notifications/email-directory-weekly.png)
+![Azure AD rolleri için haftalık PıM Özeti e-postası](./media/pim-email-notifications/email-directory-weekly.png)
 
-E-posta dört kutucuk bulunur:
+E-postada dört kutucuk bulunur:
 
-| kutucuğu | Açıklama |
+| Kutucuk | Açıklama |
 | --- | --- |
-| **Etkin kullanıcılar** | Kullanıcılar Kiracı içinde uygun rol etkin sayısı. |
-| **Kalıcı yapılan kullanıcılar** | Uygun bir atamayı kullanıcılarla kalıcı yapılan deneme sayısı. |
-| **PIM rol atamaları** | Uygun bir rol içindeki PIM atanan kullanıcılar deneme sayısı. |
-| **PIM dışında rol atamaları** | (Azure AD içinde) PIM dışında kalıcı bir role atanan kullanıcılar deneme sayısı. |
+| **Etkinleştirilen kullanıcılar** | Kullanıcıların kiracı içinde uygun rollerini etkinleştirme sayısı. |
+| **Kullanıcılar kalıcı yaptı** | Uygun atamaya sahip kullanıcıların kalıcı hale getirilme sayısı. |
+| **PıM 'de rol atamaları** | Kullanıcının PıM içinde uygun bir rolün atandığı zaman sayısı. |
+| **PıM dışında rol atamaları** | Kullanıcının PıM dışında kalıcı bir rol atama sayısı (Azure AD içinde). |
 
-**, Üst rollerine genel bakış** her rol için kalıcı ve uygun yönetici toplam sayısı temelinde kiracınıza beş rollerinde üst bölümde listelenmektedir. **Harekete** bağlantı açar [PIM Sihirbazı](pim-security-wizard.md) burada dönüştürebilirsiniz kalıcı yöneticiler uygun yöneticilere toplu.
+**En üst roller bölümünün genel bakışı** , kiracınızdaki ilk beş rolü her bir rol için toplam kalıcı ve uygun yönetici sayısına göre listeler. **Eylem al** bağlantısı, kalıcı yöneticileri toplu gruplar halinde uygun yöneticilere dönüştürebileceğiniz [PIM Sihirbazı](pim-security-wizard.md) ' nı açar.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>Azure kaynak rolleri için PIM postalar
+## <a name="pim-emails-for-azure-resource-roles"></a>Azure Kaynak rolleri için PıM e-postaları
 
-Azure kaynak rolleri için aşağıdaki olaylar meydana geldiğinde PIM sahipleri ve kullanıcı erişim yöneticileri için e-posta gönderir:
+PıM, Azure Kaynak rolleri için aşağıdaki olaylar gerçekleştiğinde Sahibe ve Kullanıcı erişimi yöneticilerine e-posta gönderir:
 
-- Bir rol ataması onay olduğunda
-- Rol atandığında
-- Ne zaman bir rol yakında sona erecek
-- Bir rol genişletmek uygun olduğunda
-- Bir rol, bir son kullanıcı tarafından ne zaman yenileniyor
-- Rol etkinleştirme isteği tamamlandığında
+- Bir rol ataması onay bekliyor olduğunda
+- Bir rol atandığında
+- Bir rolün kullanım süresini yakında dolacak
+- Bir rol genişletmeye uygun olduğunda
+- Bir rol Son Kullanıcı tarafından yenilendiğinde
+- Bir rol etkinleştirme isteği tamamlandığında
 
-Azure kaynak rolleri için aşağıdaki olaylar meydana geldiğinde PIM son kullanıcılara e-posta gönderir:
+PıM, Azure Kaynak rolleri için aşağıdaki olaylar gerçekleştiğinde son kullanıcılara e-posta gönderir:
 
 - Kullanıcıya bir rol atandığında
-- Bir kullanıcının rolünü zaman süresi doldu
-- Bir kullanıcının rolünü zaman genişletildi
+- Bir kullanıcının rolü süre dolduğunda
+- Bir kullanıcının rolü genişletildiğinde
 - Bir kullanıcının rol etkinleştirme isteği tamamlandığında
 
-Aşağıda kurgusal Contoso kuruluş için bir Azure Kaynak rolü atanmış bir kullanıcı, gönderilen örnek e-posta gösterilmektedir.
+Aşağıda, bir kullanıcıya kurgusal contoso organizasyonu için bir Azure Kaynak rolü atandığında gönderilen örnek bir e-posta gösterilmektedir.
 
-![Yeni PIM için e-posta Azure kaynağı rolleri](./media/pim-email-notifications/email-resources-new.png)
+![Azure Kaynak rolleri için yeni PıM e-postası](./media/pim-email-notifications/email-resources-new.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PIM'de Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
-- [Onaylayın veya reddedin istekleri için Azure AD PIM rolleri](azure-ad-pim-approval-workflow.md)
+- [PıM 'de Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
+- [PıM 'de Azure AD rolleri için istekleri onaylama veya reddetme](azure-ad-pim-approval-workflow.md)

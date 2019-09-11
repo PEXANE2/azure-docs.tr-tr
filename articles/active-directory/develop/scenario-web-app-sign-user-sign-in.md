@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562197"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812386"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Kullanıcılar oturum açtığında oturum açan Web uygulaması
 
@@ -28,7 +28,8 @@ Kullanıcıları oturum açan Web uygulamanız için koda oturum açma eklemeyi 
 
 ## <a name="sign-in"></a>Oturum açma
 
-Önceki makale [uygulamasının kod yapılandırmasında](scenario-web-app-sign-user-app-configuration.md) , oturum kapatma uygulamanız için gereken kod. Kullanıcı uygulamanıza oturum açtıktan sonra muhtemelen oturumu kapatmalarını sağlamak isteyeceksiniz. ASP.NET çekirdek, oturumunuzu sizin için gerçekleştirir.
+Önceki makale [uygulamasının kod yapılandırmasında](scenario-web-app-sign-user-app-configuration.md) gözden geçirdiğimiz kodun hepsi, oturum açma uygulamanız için gereklidir.
+Kullanıcı uygulamanıza oturum açtıktan sonra muhtemelen oturumu kapatmalarını sağlamak isteyeceksiniz. ASP.NET çekirdek, oturumunuzu sizin için gerçekleştirir.
 
 ## <a name="what-sign-out-involves"></a>Oturum kapatma neleri içerir?
 

@@ -6,12 +6,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 096a8f221313b9dfa3e0fe804a10fc12246177ff
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6c0dc61cac96037406b165d7ebee693bfe709c5d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575717"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811754"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak sorun giderme
 
@@ -32,3 +32,13 @@ ms.locfileid: "69575717"
 | Günlükler ve dökümler | - [Linux 'ta YARN uygulama günlüklerine erişim Apache Hadoop](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Linux üzerinde Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [HDInsight günlüklerini çözümleme](hdinsight-debug-jobs.md)|
 | Hatalar | - [WebHCat hatalarını anlama ve çözme](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [OutofMemory hatasını gidermeye yönelik ayarları Apache Hive](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Araçlar | - [Apache Hive sorgularını iyileştirme](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ aracı](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight tutulma aracı](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode aracı](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio aracı](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+
+* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

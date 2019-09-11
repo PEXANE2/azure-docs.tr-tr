@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015651"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376459"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
 
@@ -43,7 +43,7 @@ Diğer Azure depolama artıklığı seçenekleri arasında, tek bir bölgedeki k
 > [!WARNING]
 > Coğrafi olarak yedekli depolama, veri kaybı riskini taşır. Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltılır, yani birincil bölgeye yazılan veriler ikincil bölgeye yazıldığında bir gecikme olur. Kesinti durumunda, henüz ikincil uç noktaya çoğaltılmamış birincil uç noktaya yazma işlemleri kaybedilir.
 
-## <a name="design-for-high-availability"></a>Yüksek kullanılabilirlik için tasarım
+## <a name="design-for-high-availability"></a>Yüksek kullanılabilirliğe yönelik tasarım
 
 Uygulamanızı, başlangıçtan itibaren yüksek kullanılabilirlik için tasarlamak önemlidir. Uygulamanızı tasarlama ve olağanüstü durum kurtarmayı planlama konusunda rehberlik için bu Azure kaynaklarına başvurun:
 
@@ -168,7 +168,6 @@ VM kapatılırken geçici bir diskte depolanan tüm verilerin kaybedildiğini ak
 Önizleme sürümü için hesap yük devretmesi için aşağıdaki özellikler veya hizmetler desteklenmez:
 
 - Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarını içeren depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir.  
-- Azure Data Lake Storage 2. hiyerarşik ad alanı kullanan depolama hesaplarına yük devredilemez.
 - Arşivlenmiş blob 'ları içeren bir depolama hesabı yük devredilemez. Arşivlenmiş Blobları yük devri planlamadığınız ayrı bir depolama hesabında saklayın.
 - Premium blok bloblarını içeren bir depolama hesabı yük devredilemez. Premium blok bloblarını destekleyen depolama hesapları Şu anda coğrafi artıklığı desteklemez.
 - Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkinse çalışmayı durdurur: [Olay abonelikleri](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [yaşam döngüsü Ilkeleri](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [depolama Analizi günlüğe kaydetme](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).

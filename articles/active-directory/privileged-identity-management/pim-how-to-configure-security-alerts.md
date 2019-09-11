@@ -1,9 +1,9 @@
 ---
-title: Güvenlik Uyarıları Azure AD rolleri için PIM - Azure Active Directory yapılandırma | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) güvenlik uyarıları Azure AD rolleri için yapılandırmayı öğrenin.
+title: PıM-Azure Active Directory 'de Azure AD rolleri için güvenlik uyarılarını yapılandırma | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rolleri için güvenlik uyarılarını yapılandırma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,123 +11,123 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3984d3276590357866c824d01ea8c51cf5b28fd7
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476411"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804396"
 ---
-# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PIM'de Azure AD rolleri güvenlik uyarılarını yapılandırma
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PıM 'de Azure AD rolleri için güvenlik uyarılarını yapılandırma
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM), ortamınızda şüpheli veya güvenli olmayan bir etkinlik olduğunda uyarılar oluşturur. Bir uyarı tetiklendiğinde, PIM panosunda görünür. Uyarıyı tetikleyen rollerin listeleyen bir rapor görmek için uyarıyı seçin.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM), ortamınızda şüpheli veya güvenli olmayan bir etkinlik olduğunda uyarılar oluşturur. Bir uyarı tetiklendiğinde, PıM panosu üzerinde görüntülenir. Uyarıyı tetikleyen kullanıcıları veya rolleri listeleyen bir rapor görmek için uyarıyı seçin.
 
-![Azure AD rolleri - uyarı bölmesinde uyarılar ve önem derecesi listeleme](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD rolleri-uyarıları ve önem derecesini listeleme uyarı bölmesi](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Güvenlik uyarıları
 
-Bu bölümde, nasıl düzeltileceğini ve engelleme ile birlikte Azure AD rolleri için tüm güvenlik uyarılarını listeler. Önem derecesi şu anlama sahiptir:
+Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzeltileceğini ve nasıl önleneceği anlatılmaktadır. Önem derecesi aşağıdaki anlama sahiptir:
 
-* **Yüksek**: Acil eylem ilke ihlali nedeniyle gerektirir.
-* **Orta**: Acil eylem gerektirmeyen ancak olası bir ilke ihlali bildirir.
-* **Düşük**: Acil eylem gerektirmeyen ancak tercih ilke değişikliğini önerir.
+* **Yüksek**: İlke ihlali nedeniyle hemen eyleme gerek duyar.
+* **Orta**: Acil eylem gerektirmez, ancak olası bir ilke ihlaline işaret eder.
+* **Düşük**: Acil eylem gerektirmez, ancak tercih edilen bir ilke değişikliği önerir.
 
-### <a name="administrators-arent-using-their-privileged-roles"></a>Yöneticiler ayrıcalıklı rollerini kullanmadığınız
-
-| | |
-| --- | --- |
-| **Önem derecesi** | Düşük |
-| **Bu uyarı neden alıyorum?** | Bunlar gerekmez ayrıcalıklı rolleri atanmış kullanıcılar, bir saldırı olasılığını artırır. Ayrıca, etkin olarak kullanılmayan hesaplarında gözden kaçan kalmasına saldırganların daha kolay olur. |
-| **Nasıl?** | Listedeki kullanıcıları gözden geçirin ve bunları yüklemeniz gerekmez ayrıcalıklı rollerini kaldırın. |
-| **Önleme** | Ayrıcalıklı roller yalnızca bir iş gerekçesi sahip olan kullanıcılara atayın. </br>Zamanlama normal [erişim gözden geçirmeleriyle](pim-how-to-start-security-review.md) kullanıcılar yine de erişimleri gerektiğini doğrulayın. |
-| **Portal risk azaltma eylemi** | Hesabı, ayrıcalıklı rolünden kaldırır. |
-| **Tetikleyici** | Bir kullanıcı bir rolünü etkinleştirmeden belirli bir süre miktarını aşması durumunda tetiklenir. |
-| **Gün sayısı** | Bu ayar, bir kullanıcı bir rolünü etkinleştirmeden gidebilirsiniz 100, 0 gün sayısını belirtir.|
-
-### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Rol etkinleştirmesi için çok faktörlü kimlik doğrulaması gerektirmeyen
+### <a name="administrators-arent-using-their-privileged-roles"></a>Yöneticiler ayrıcalıklı rollerini kullanmıyor
 
 | | |
 | --- | --- |
-| **Önem derecesi** | Düşük |
-| **Bu uyarı neden alıyorum?** | Mfa'yı tehlikeye giren kullanıcıların ayrıcalıklı rolleri etkinleştirebilirsiniz. |
-| **Nasıl?** | Rollerin listesini gözden geçirin ve [MFA gerektirecek](pim-how-to-change-default-settings.md) her rol için. |
-| **Önleme** | [MFA gerektirme](pim-how-to-change-default-settings.md) her rol için.  |
-| **Portal risk azaltma eylemi** | MFA ayrıcalıklı rol etkinleştirmesi için gerekli kılar. |
+| **İnin** | Düşük |
+| **Bu uyarıyı neden alıyorum?** | Ayrıcalıklı roller atanmış kullanıcılar, saldırının olasılığını artırır. Saldırganlar, etkin olarak kullanılmayan hesaplara ait olmaması durumunda daha da kolaydır. |
+| **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve gerekmeyen ayrıcalıklı rollerden kaldırın. |
+| **Önlem** | Yalnızca iş gerekçesinin olduğu kullanıcılara ayrıcalıklı roller atayın. </br>Kullanıcıların erişimine hala ihtiyacı olduğunu doğrulamak için düzenli [erişim İncelemeleri](pim-how-to-start-security-review.md) zamanlayın. |
+| **Portalın risk azaltma eylemi** | Hesabı ayrıcalıklı rolünden kaldırır. |
+| **Tetikleyici** | Bir Kullanıcı bir rolün etkinleştirilmeksizin belirli bir süre geçtiğinde tetiklenir. |
+| **Gün sayısı** | Bu ayar, bir kullanıcının bir rolü etkinleştirmeden gidebileceği, 0 ile 100 arasında gün sayısını belirtir.|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Roller etkinleştirme için çok faktörlü kimlik doğrulaması gerektirmez
+
+| | |
+| --- | --- |
+| **İnin** | Düşük |
+| **Bu uyarıyı neden alıyorum?** | MFA olmadan, güvenliği aşılmış kullanıcılar ayrıcalıklı rolleri etkinleştirebilir. |
+| **Nasıl düzeltilir?** | Rol listesini gözden geçirin ve her rol için [MFA gerektir](pim-how-to-change-default-settings.md) . |
+| **Önlem** | Her rol için [MFA gerektir](pim-how-to-change-default-settings.md) .  |
+| **Portalın risk azaltma eylemi** | Ayrıcalıklı rolün etkinleştirilmesi için MFA 'yı gerekli hale getirir. |
 
 ### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>Kiracının Azure AD Premium P2 yok
 
 | | |
 | --- | --- |
-| **Önem derecesi** | Düşük |
-| **Bu uyarı neden alıyorum?** | Azure AD Premium P2 geçerli Kiracı yok. |
-| **Nasıl?** | Hakkında bilgileri gözden [Azure AD sürümleri](../fundamentals/active-directory-whatis.md). Azure AD Premium P2'ye yükseltin. |
+| **İnin** | Düşük |
+| **Bu uyarıyı neden alıyorum?** | Geçerli kiracının Azure AD Premium P2 yok. |
+| **Nasıl düzeltilir?** | [Azure AD sürümleri](../fundamentals/active-directory-whatis.md)hakkındaki bilgileri gözden geçirin. Azure AD Premium P2 ' ye yükseltin. |
 
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Ayrıcalıklı bir role olası eski hesapları
-
-| | |
-| --- | --- |
-| **Önem derecesi** | Orta |
-| **Bu uyarı neden alıyorum?** | Son 90 gün içinde parolalarını değişmedi hesapları bir ayrıcalıklı rol. Bu hesaplar service olabilir veya işlenen değildir ve saldırganlara karşı savunmasız olan hesapları paylaşılan. |
-| **Nasıl?** | Hesapları listesinde gözden geçirin. Bunlar artık erişime ihtiyacınız varsa bunları kendi ayrıcalıklı rollerini kaldırın. |
-| **Önleme** | Parolayı biliyor kullanıcılar bir değişiklik olduğunda paylaşılan hesapları güçlü parolalar döndürme emin olun. </br>Hesapları kullanarak ayrıcalıklı rolleri ile düzenli olarak gözden [erişim gözden geçirmeleriyle](pim-how-to-start-security-review.md) ve artık gerekmeyen rol atamalarını kaldırın. |
-| **Portal risk azaltma eylemi** | Hesabı, ayrıcalıklı rolünden kaldırır. |
-| **En iyi uygulamalar** | , Hizmet, paylaşılan ve bir parola kullanarak kimlik doğrulaması ve genel yönetici veya Güvenlik Yöneticisi gibi yüksek ayrıcalıklı yönetici rollerine atanan Acil Durum erişim hesapları için aşağıdaki durumlarda Döndürülmüş parolalarını sahip olmalıdır:<ul><li>Kötüye kullanım veya yönetimsel erişim hakları'nın güvenliğinin içeren bir güvenlik olayı sonra</li><li>Bunlar artık yönetici (bir BT yöneticisi bırakır oluştu veya kuruluştan ayrılması Örneğin, bir çalışanın sonra), böylece herhangi bir kullanıcının ayrıcalıkları değiştikten</li><li>Düzenli aralıklarla (örneğin, üç aylık veya yıllık), bilinen ihlalinden ya da değişiklik olduysa bile BT personel</li></ul>Birden çok kişi bu hesapların kimlik bilgilerine erişiminiz olduğundan, kendi rolleri bıraktıysanız kişiler hesapları artık erişebildiğinden emin olmak için kimlik bilgilerini döndürülmesi gereken. [Daha fazla bilgi edinin](https://aka.ms/breakglass) |
-
-### <a name="roles-are-being-assigned-outside-of-pim"></a>PIM dışında rolleri atanmış
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Ayrıcalıklı bir roldeki olası eski hesaplar
 
 | | |
 | --- | --- |
-| **Önem derecesi** | Yüksek |
-| **Bu uyarı neden alıyorum?** | Ayrıcalıklı rol atamalarını PIM dışında yapılan düzgün izlenmez ve etkin bir saldırı gösterebilir. |
-| **Nasıl?** | Listedeki kullanıcıları gözden geçirin ve bunları PIM dışında atanmış ayrıcalıklı rolleri kaldırın. |
-| **Önleme** | Kullanıcılar ayrıcalıklı rollerini PIM dışında burada atandığı araştırın ve buradan gelecekteki atamaları yasaklar. |
-| **Portal risk azaltma eylemi** | Hesabı, ayrıcalıklı rolünden kaldırır. |
+| **İnin** | Orta |
+| **Bu uyarıyı neden alıyorum?** | Ayrıcalıklı roldeki, son 90 gün içinde parolasını değiştirolmayan hesaplar. Bu hesaplar, tutulmayan ve saldırganların savunmasız olduğu hizmet veya paylaşılan hesaplar olabilir. |
+| **Nasıl düzeltilir?** | Listedeki hesapları gözden geçirin. Artık erişim gerekmiyorsa, bunları ayrıcalıklı rollerden kaldırın. |
+| **Önlem** | Parolayı bilen kullanıcılarda değişiklik olduğunda, paylaşılan hesapların güçlü parolalar döndürürken emin olun. </br>[Erişim gözden geçirmeleri](pim-how-to-start-security-review.md) kullanarak ayrıcalıklı rollere sahip hesapları düzenli olarak gözden geçirin ve artık gerekmeyen rol atamalarını kaldırın. |
+| **Portalın risk azaltma eylemi** | Hesabı ayrıcalıklı rolünden kaldırır. |
+| **En iyi uygulamalar** | Bir parola kullanarak kimlik doğrulayan ve genel yönetici veya güvenlik yöneticisi gibi son derece ayrıcalıklı yönetim rollerine atanan paylaşılan, hizmet ve acil durum erişim hesapları, parolalarının aşağıdaki durumlar için döndürülmelidir:<ul><li>Bir güvenlik olayından sonra yönetim erişimi haklarının kötüye kullanımını veya güvenliğinin aşılmasına neden olacak şekilde</li><li>Herhangi bir kullanıcının ayrıcalıkları, artık yönetici kalmayacak şekilde değiştirildikten sonra (örneğin, yönetici olan bir çalışan, veya kuruluştan ayrıldıktan sonra)</li><li>Düzenli aralıklarla (örneğin, üç aylık veya yıllık), bilinen bir ihlal olmaması veya BT ekip üzerinde değişiklik yapılmasa bile</li></ul>Birden çok kişinin bu hesapların kimlik bilgilerine erişimi olduğundan, rollerinin bırakılmış kişilerin hesaplara artık erişememesini sağlamak için kimlik bilgileri döndürülmelidir. [Daha fazla bilgi edinin](https://aka.ms/breakglass) |
 
-### <a name="there-are-too-many-global-administrators"></a>Çok fazla genel Yöneticiler vardır.
-
-| | |
-| --- | --- |
-| **Önem derecesi** | Düşük |
-| **Bu uyarı neden alıyorum?** | En yüksek ayrıcalıklı rol genel yöneticidir. Genel yönetici ele geçirilirse saldırgan tüm sisteminizi riske koyar izinlerini tüm erişim kazanır. |
-| **Nasıl?** | Listedeki kullanıcıları gözden geçirin ve genel Yönetici rolüne kesinlikle gerekmeyen herhangi kaldırın. </br>Bu kullanıcıların daha düşük ayrıcalıklı rolleri atayın. |
-| **Önleme** | Kullanıcıların ihtiyaç duydukları az ayrıcalıklı rol atayın. |
-| **Portal risk azaltma eylemi** | Hesabı, ayrıcalıklı rolünden kaldırır. |
-| **Tetikleyici** | Tetiklenecek iki farklı ölçütleri karşılandığında ve bunların her ikisi de yapılandırabilirsiniz. İlk olarak, genel yöneticiler belirli bir eşiğe ulaşması gerekir. İkinci olarak, belirli bir yüzdesini toplam rol atamalarınızı genel yönetici olması gerekir. Yalnızca Bu ölçümler birini karşılıyorsanız, uyarı görüntülenmez. |
-| **Minimum genel yönetici sayısı** | Bu ayar, 2 ila 100 güvenli olmayan bir miktar göz önünde bulundurun, genel Yöneticiler sayısını belirtir. |
-| **Genel yönetici oranı** | Bu ayar, %0 ile % 100 ortamınızda güvenli değil %, genel yönetici olan yöneticilere minimum yüzdesini belirtir. |
-
-### <a name="roles-are-being-activated-too-frequently"></a>Rolleri çok sık etkinleştiriliyor
+### <a name="roles-are-being-assigned-outside-of-pim"></a>Roller PıM dışında atanıyor
 
 | | |
 | --- | --- |
-| **Önem derecesi** | Düşük |
-| **Bu uyarı neden alıyorum?** | Aynı kullanıcı tarafından aynı ayrıcalıklı rol için birden çok etkinleştirmeye bir saldırının işaretini olur. |
-| **Nasıl?** | Listedeki kullanıcıları gözden geçirin ve emin [etkinleştirme süresi](pim-how-to-change-default-settings.md) ayrıcalıklı rolünü yeteri kadar bunlar için görevlerini gerçekleştirmek ayarlanır. |
-| **Önleme** | Emin [etkinleştirme süresi](pim-how-to-change-default-settings.md) ayrıcalıklı roller için kullanıcıların görevlerini gerçekleştirmek için yeterince uzun ayarlanır.</br>[MFA gerektirme](pim-how-to-change-default-settings.md) birden çok yöneticileri tarafından paylaşılan hesaplarına sahip ayrıcalıklı roller için. |
-| **Portal risk azaltma eylemi** | Yok |
-| **Tetikleyici** | Bir kullanıcı birden çok kez belirli bir dönem içinde aynı ayrıcalıklı rol etkinleştirir tetiklenecek. Süre hem etkinleştirme sayısını yapılandırabilirsiniz. |
-| **Etkinleştirme yenileme zaman çerçevesi** | Bu ayar, gün, saat, dakika belirtir ve ikinci şüpheli yenilemeler izlemek için kullanmak istediğiniz zaman aralığı. |
-| **Etkinleştirme yenileme sayısı** | Bu ayar, 2, seçtiğiniz zaman çerçevesi içinde bir uyarının bu durum göz önünde bulundurmanız ve 100'den etkinleştirme sayısını belirtir. Bu, kaydırıcıyı hareket ya da metin kutusuna bir sayı yazmak ayarı değiştirebilirsiniz. |
+| **İnin** | Yüksek |
+| **Bu uyarıyı neden alıyorum?** | PıM dışında yapılan ayrıcalıklı rol atamaları düzgün izlenmiyor ve etkin bir saldırı gösterebilir. |
+| **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve PıM dışında atanan ayrıcalıklı rollerden kaldırın. |
+| **Önlem** | Kullanıcıların, PıM dışında ayrıcalıklı roller atandığını ve bundan sonraki atamaları yasakladığını araştırın. |
+| **Portalın risk azaltma eylemi** | Hesabı ayrıcalıklı rolünden kaldırır. |
 
-## <a name="configure-security-alert-settings"></a>Güvenlik Uyarısı Ayarları yapılandırma
+### <a name="there-are-too-many-global-administrators"></a>Çok fazla genel yönetici var
 
-Güvenlik Uyarıları ortamınız ve Güvenlik amaçları ile çalışmak için PIM bazıları özelleştirebilirsiniz. Güvenlik Uyarısı Ayarları'nı açmak için şu adımları izleyin:
+| | |
+| --- | --- |
+| **İnin** | Düşük |
+| **Bu uyarıyı neden alıyorum?** | Genel yönetici, en yüksek ayrıcalıklı roldür. Küresel bir yöneticinin güvenliği tehlikeye girerse, saldırgan tüm ve tüm sisteminizi riske sokan tüm izinlerine erişim kazanır. |
+| **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve kesinlikle genel yönetici rolüne gerek olmayan her türlü kaldırın. </br>Bu kullanıcılara daha düşük ayrıcalıklı roller atayın. |
+| **Önlem** | Kullanıcılara gereken en az ayrıcalıklı rolü atayın. |
+| **Portalın risk azaltma eylemi** | Hesabı ayrıcalıklı rolünden kaldırır. |
+| **Tetikleyici** | İki farklı ölçüt karşılanırsa tetiklenir ve her ikisini de yapılandırabilirsiniz. İlk olarak, belirli bir genel yönetici eşiğine erişmeniz gerekir. İkinci olarak, toplam rol atamalarınızın belirli bir yüzdesi genel yönetici olmalıdır. Yalnızca bu ölçülerden birini karşılıyorsa, uyarı görünmez. |
+| **En az genel yönetici sayısı** | Bu ayar, güvenli olmayan bir miktarı kabul ettiğiniz genel yönetici sayısını 2 ile 100 arasında belirtir. |
+| **Genel yöneticilerin yüzdesi** | Bu ayar, ortamınızda güvenli olmayan% 0 ile% 100 arasında genel yönetici olan en düşük yönetici yüzdesini belirtir. |
 
-1. Açık **Azure AD Privileged Identity Management**.
+### <a name="roles-are-being-activated-too-frequently"></a>Roller çok sık etkinleştiriliyor
 
-1. Tıklayın **Azure AD rolleri**.
+| | |
+| --- | --- |
+| **İnin** | Düşük |
+| **Bu uyarıyı neden alıyorum?** | Aynı kullanıcı tarafından aynı ayrıcalıklı rol için birden çok etkinleştirme saldırının bir imzadır. |
+| **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve ayrıcalıklı rollerinin [Etkinleştirme süresinin](pim-how-to-change-default-settings.md) görevlerini gerçekleştirmesi için yeterince uzun ayarlandığından emin olun. |
+| **Önlem** | Ayrıcalıklı roller için [Etkinleştirme süresinin](pim-how-to-change-default-settings.md) , kullanıcıların görevlerini gerçekleştirmesi için yeterince uzun ayarlandığından emin olun.</br>Birden çok yönetici tarafından paylaşılan hesaplara sahip ayrıcalıklı roller için [MFA gerektir](pim-how-to-change-default-settings.md) . |
+| **Portalın risk azaltma eylemi** | Yok |
+| **Tetikleyici** | Bir Kullanıcı belirli bir süre içinde aynı ayrıcalıklı rolü birden çok kez etkinleştirdiğinde tetiklenir. Hem zaman dönemini hem de etkinleştirme sayısını yapılandırabilirsiniz. |
+| **Etkinleştirme yenileme zaman çerçevesi** | Bu ayar, şüpheli yenilemeler izlemek için kullanmak istediğiniz zaman dilimini gün, saat, dakika ve saniye cinsinden belirtir. |
+| **Etkinleştirme yenilemesinin sayısı** | Bu ayar, seçtiğiniz zaman dilimi içinde, uyarının önemli olduğunu düşündüğünüz 2 ile 100 arasında etkinleştirme sayısını belirtir. Kaydırıcıyı taşıyarak veya metin kutusuna bir sayı yazarak bu ayarı değiştirebilirsiniz. |
 
-1. Tıklayın **ayarları** ardından **uyarılar**.
+## <a name="configure-security-alert-settings"></a>Güvenlik Uyarısı ayarlarını yapılandırma
 
-    ![Seçili uyarıları ayarlarla - Azure AD rolleri](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+PıM 'deki bazı güvenlik uyarılarını, ortamınız ve güvenlik hedeflerinizle çalışacak şekilde özelleştirebilirsiniz. Güvenlik Uyarısı ayarlarını açmak için aşağıdaki adımları izleyin:
 
-1. Bu uyarının ayarı yapılandırmak için bir uyarı adına tıklayın.
+1. **Azure AD Privileged Identity Management**açın.
 
-    ![Seçilen uyarı, güvenlik uyarısı ayarları bölmesi](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+1. **Azure AD rolleri**' ne tıklayın.
+
+1. **Ayarlar** ' a ve ardından **Uyarılar**' a tıklayın.
+
+    ![Azure AD rolleri-uyarılar seçiliyken ayarlar](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+
+1. Bu uyarının ayarını yapılandırmak için bir uyarı adına tıklayın.
+
+    ![Seçili uyarı için güvenlik uyarısı ayarları bölmesi](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PIM'de Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
+- [PıM 'de Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)

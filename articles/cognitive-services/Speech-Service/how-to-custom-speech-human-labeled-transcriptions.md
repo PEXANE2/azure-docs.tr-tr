@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e629152372dae0b03386f76fd5506ae901dff12f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559658"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802483"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
 
@@ -74,7 +74,7 @@ Bu, otomatik olarak dökümde gerçekleştirilen normalleştirme örnekleri aşa
 | Go al-em! | Git Get em |
 | Ben Double Jointed | Ben Double Jointed |
 | 104 ağaç Caddesi | 1 0 4 ağaç Caddesi |
-| 102,7 olarak ayarla | 1 0 2 7 olarak ayarla |
+| 102,7 olarak ayarla | 1 0 2 noktası yedi olarak ayarlayın |
 | PI yaklaşık 3,14 | Pi üç nokta 1 4 |
 BT maliyetleri $3,14| BT maliyetleri 3 14 |
 

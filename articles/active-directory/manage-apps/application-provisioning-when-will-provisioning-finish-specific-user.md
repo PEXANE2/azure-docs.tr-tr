@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667150"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147100"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Kullanıcı hazırlama durumunu denetleme
 
@@ -35,7 +35,7 @@ Otomatik sağlamayı ilk yapılandırdığınızda, sayfanın en altındaki **ge
 - Şu anda çalışmakta olan veya en son tamamlanan sağlama döngüsünün (ilk veya artımlı) türü.
 - Tamamlanan sağlama döngüsünün yüzdesini gösteren bir **ilerleme çubuğu** . Yüzde değeri, sağlanan sayfa sayısını yansıtır. Her sayfanın birden çok kullanıcı veya grup içerebileceğini unutmayın. bu nedenle yüzde, izin sağlanan Kullanıcı, Grup veya rol sayısıyla doğrudan bağıntılı değildir.
 - Görünümü güncelleştirilmesini sağlamak için kullanabileceğiniz bir **yenileme** düğmesi.
-- Sağlanan **Kullanıcı** ve **grupların** sayısı ve oluşturulan rol sayısı. İlk zaman içinde, **Kullanıcı numarası 1** ' den bir kullanıcı oluşturulduğunda veya güncelleştirilirken, bir Kullanıcı silindiğinde 1 olarak sayılır. Artımlı bir döngüde, Kullanıcı güncelleştirmeleri **Kullanıcı sayısını etkilemez** ; sayı yalnızca kullanıcılar oluşturulduğunda veya silindiğinde değişir.
+- Sağlanan **Kullanıcı** ve **grupların** sayısı ve oluşturulan rol sayısı. İlk zaman içinde, Kullanıcı numarası 1 ' den bir kullanıcı oluşturulduğunda veya güncelleştirilirken, bir Kullanıcı silindiğinde 1 olarak sayılır. Artımlı bir döngüde, Kullanıcı güncelleştirmeleri Kullanıcı sayısını etkilemez; sayı yalnızca kullanıcılar oluşturulduğunda veya silindiğinde değişir.
 - Bireysel kullanıcıların sağlama durumu da dahil olmak üzere, Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler hakkındaki ayrıntılar için Azure AD denetim günlüklerini **görüntüle bağlantısını görüntüleyin** (aşağıdaki [Denetim günlüklerini kullanma](#use-audit-logs-to-check-a-users-provisioning-status) bölümüne bakın).
 
 Bir sağlama süresi tamamlandıktan sonra, tarihe göre **İstatistikler** bölümü, son döngüsünün tamamlanma tarihi ve süresiyle birlikte tarih olarak sağlanan Toplam Kullanıcı ve grup sayısını gösterir. **Etkınlık kimliği** en son sağlama döngüsünü benzersiz şekilde tanımlar. **Iş kimliği** , sağlama işi için benzersiz bir tanımlayıcıdır ve kiracınızdaki uygulamaya özeldir.
@@ -62,7 +62,7 @@ Sağlama denetim günlükleri, aşağıdakiler dahil olmak üzere, sağlama hizm
 Azure portal denetim günlüklerini okuma hakkında daha fazla bilgi için bkz. [sağlama Raporlama Kılavuzu](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Kullanıcıları sağlamak için ne kadar sürer?
-Azure AD, bir uygulamayla otomatik Kullanıcı sağlamayı kullanırken, düzenli olarak zamanlanan bir zaman aralığında (genellikle 10 dakikada bir) [Kullanıcı ve Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) gibi öğelere dayalı olarak bir uygulamadaki Kullanıcı hesaplarını otomatik olarak sağlar ve güncelleştirir.
+Azure AD, bir uygulamayla otomatik Kullanıcı sağlamayı kullanırken, düzenli olarak zamanlanan bir zaman aralığında, genellikle her 40 dakikada bir [Kullanıcı ve grup ataması](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) gibi öğelere dayalı olarak bir uygulamadaki Kullanıcı hesaplarını otomatik olarak sağlar ve güncelleştirir.
 
 Belirli bir kullanıcının sağlanması için gereken süre, genellikle sağlama işinizin ilk eşitleme veya artımlı eşitleme çalıştırıyor olmasına bağlıdır.
 

@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/8/2018
+ms.date: 05/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 0f60fbf22541e5fdd003d0ab663b5905cd31adcd
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c542abe0e778b9204a23ccea0f3617656ba101e1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737248"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210429"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı
 Azure Backup, Azure 'a verilerin ilk tam yedeklemesi sırasında ağ ve depolama maliyetlerini kaydetmekle ilgili çeşitli yerleşik verimlilik içerir. İlk tam yedeklemeler genellikle büyük miktarda veriyi aktarır ve yalnızca deltas/artımlarsa aktarımı yapan sonraki yedeklemelerle karşılaştırıldığında daha fazla ağ bant genişliği gerektirir. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup çevrimdışı dağıtım sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir.
@@ -207,5 +207,5 @@ Azure içeri aktarma işinin çeşitli durumları hakkında daha fazla bilgi iç
 Sonraki zamanlanmış yedekleme sırasında, Azure Backup ilk yedekleme kopyası üzerinde artımlı yedekleme gerçekleştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure Içeri/dışarı aktarma iş akışı hakkında herhangi bir soru için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md).
+* Azure Içeri/dışarı aktarma iş akışı hakkında herhangi bir soru için, [BLOB depolamaya veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md)konusuna bakın.
 * İş akışıyla ilgili sorular için Azure Backup [SSS](backup-azure-backup-faq.md) konusunun çevrimdışı yedekleme bölümüne bakın.

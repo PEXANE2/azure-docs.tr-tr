@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050920"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859244"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online verilerini Azure Logic Apps yönetme
 
@@ -53,6 +53,9 @@ Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-ap
 1. Tetikleyici altında **yeni adım**' ı seçin.
 
 1. Arama kutusuna filtreniz olarak "Excel" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
+
+   > [!NOTE]
+   > Logic App Designer, 100 veya daha fazla sütunu olan tabloları yükleyemez. Mümkünse, tasarımcı 'nın tabloyu yükleyebilmesi için seçili tablodaki sütun sayısını azaltın.
 
 1. İstenirse, Office 365 hesabınızda oturum açın.
 

@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532455"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124934"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
 
@@ -71,7 +71,7 @@ Azure AD Uygulama Ara Sunucusu aşağıdaki avantajları sunmaktadır:
 
 * Azure AD 'yi şirket içi kaynaklara genişletme
   * Bulut ölçeğinde güvenlik ve koruma
-  * Koşullu erişim ve çok faktörlü kimlik doğrulaması gibi özelliklerin etkinleştirilmesi kolay
+  * Koşullu erişim ve etkinleştirilmesi kolay Multi-Factor Authentication gibi özellikler
 * Çevre ağında VPN ve geleneksel ters proxy çözümleri gibi bileşenler yok
 * Gelen bağlantı gerekli değil
 * Bulutta ve şirket içinde cihazlar, kaynaklar ve uygulamalar arasında çoklu oturum açma (SSO)
@@ -141,7 +141,7 @@ Varsayılan olarak, Azure AD, parola sıfırlama gerçekleştirdiğinde hesaplar
 
 Azure, kullanıcıların MFA ve SSPR için Kaydolmakta olduğundan emin olmak için siz ve kuruluşunuz tarafından kullanılabilen raporlar sağlar. Kaydolmamış kullanıcıların süreç üzerinde eğitime yapması gerekebilir.
 
-MFA [oturum açma işlemleri raporu](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) , MFA kullanımı hakkında bilgiler IÇERIR ve MFA 'nın kuruluşunuzda nasıl çalıştığı hakkında öngörüler sunar. Azure AD 'de oturum açma etkinliğine erişim (ve denetim ve risk olayları), sorun giderme, Kullanım Analizi ve adli araştırmalar için önemlidir.
+MFA [oturum açma işlemleri raporu](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) , MFA kullanımı hakkında bilgiler IÇERIR ve MFA 'nın kuruluşunuzda nasıl çalıştığı hakkında öngörüler sunar. Azure AD 'de oturum açma etkinliğine erişim (ve denetim ve risk algılamaları), sorun giderme, Kullanım Analizi ve adli araştırmalar için önemlidir.
 
 Benzer şekilde, [self servis parola yönetimi raporu](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) , SSPR 'ye kimin sahip olduğunu (veya ayrılmadığını) belirlemede kullanılabilir.
 

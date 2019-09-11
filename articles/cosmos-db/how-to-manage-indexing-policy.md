@@ -4,14 +4,14 @@ description: Azure Cosmos DB 'da dizin oluşturma ilkelerini yönetmeyi öğreni
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 08/29/2019
 ms.author: thweiss
-ms.openlocfilehash: 6e935b88c474d28c06b8cdd76d36f5ba64c942f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a6c1ec6d58939336fb8a982e3ab1b9be20d4e0a5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093203"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172162"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB Dizin oluşturma ilkelerini yönetme
 
@@ -61,14 +61,45 @@ az cosmosdb collection update \
 
 `IncludedPaths` `IndexingPolicy` `IndexingMode` `ExcludedPaths`.NETSDK [v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 'deki nesne(kullanımıileilgilibuhızlıbaşlangıç),veeklemevekaldırmaveveeklemevekaldırmaolanağısunanbirözelliksunar.`DocumentCollection` [](create-sql-api-dotnet.md)
 
+Kapsayıcının ayrıntılarını alma
+
 ```csharp
-// retrieve the container's details
 ResourceResponse<DocumentCollection> containerResponse = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"));
-// set the indexing mode to Consistent
+```
+
+Dizin oluşturma modunu tutarlı olarak ayarlayın
+
+```csharp
 containerResponse.Resource.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
-// add an excluded path
-containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/headquarters/employees/?" });
-// update the container with our changes
+```
+
+Dahil edilen bir yol ekleyin
+
+```csharp
+containerResponse.Resource.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/age/*" });
+```
+
+Dışlanan bir yol ekleyin
+
+```csharp
+containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/name/*" });
+```
+
+Uzamsal dizin ekleme
+
+```csharp
+containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(new SpatialSpec() { Path = "/locations/*", SpatialTypes = new Collection<SpatialType>() { SpatialType.Point } } );
+```
+
+Bileşik dizin ekleme
+
+```csharp
+containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<CompositePath> {new CompositePath() { Path = "/name", Order = CompositePathSortOrder.Ascending }, new CompositePath() { Path = "/age", Order = CompositePathSortOrder.Descending }});
+```
+
+Kapsayıcıyı değişikliklerle Güncelleştir
+
+```csharp
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
@@ -85,23 +116,82 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 `getIndexingPolicy()`JavaSDK `setIndexingPolicy()` 'sındaki [](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) [](create-sql-api-java.md) nesne(kullanımıileilgilibuhızlı`DocumentCollection` başlangıç) ve yöntemlerini gösterir. İşledikleri `IndexingPolicy` nesne, dizin oluşturma modunu değiştirmenize ve dahil edilen ve dışlanan yolları eklemenize veya kaldırmanıza olanak sağlar.
 
+Kapsayıcının ayrıntılarını alma
+
 ```java
-// retrieve the container's details
 Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
 containerResponse.subscribe(result -> {
-    DocumentCollection container = result.getResource();
-    IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-    // set the indexing mode to Consistent
-    indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-    Collection<ExcludedPath> excludedPaths = new ArrayList<>();
-    ExcludedPath excludedPath = new ExcludedPath();
-    excludedPath.setPath("/*");
-    // add an excluded path
-    excludedPaths.add(excludedPath);
-    indexingPolicy.setExcludedPaths(excludedPaths);
-    // update the container with our changes
-    client.replaceCollection(container, null);
-});
+DocumentCollection container = result.getResource();
+IndexingPolicy indexingPolicy = container.getIndexingPolicy();
+```
+
+Dizin oluşturma modunu tutarlı olarak ayarlayın
+
+```java
+indexingPolicy.setIndexingMode(IndexingMode.Consistent);
+```
+
+Dahil edilen bir yol ekleyin
+
+```java
+Collection<IncludedPath> includedPaths = new ArrayList<>();
+ExcludedPath includedPath = new IncludedPath();
+includedPath.setPath("/age/*");
+includedPaths.add(includedPath);
+indexingPolicy.setIncludedPaths(includedPaths);
+```
+
+Dışlanan bir yol ekleyin
+
+```java
+Collection<ExcludedPath> excludedPaths = new ArrayList<>();
+ExcludedPath excludedPath = new ExcludedPath();
+excludedPath.setPath("/name/*");
+excludedPaths.add(excludedPath);
+indexingPolicy.setExcludedPaths(excludedPaths);
+```
+
+Uzamsal dizin ekleme
+
+```java
+Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
+Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
+
+SpatialSpec spec = new SpatialSpec();
+spec.setPath("/locations/*");
+collectionOfSpatialTypes.add(SpatialType.Point);          
+spec.setSpatialTypes(collectionOfSpatialTypes);
+spatialIndexes.add(spec);
+
+indexingPolicy.setSpatialIndexes(spatialIndexes);
+
+```
+
+Bileşik dizin ekleme
+
+```java
+Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
+ArrayList<CompositePath> compositePaths = new ArrayList<>();
+
+CompositePath nameCompositePath = new CompositePath();
+nameCompositePath.setPath("/name/*");
+nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
+
+CompositePath ageCompositePath = new CompositePath();
+ageCompositePath.setPath("/age/*");
+ageCompositePath.setOrder(CompositePathSortOrder.Descending);
+
+compositePaths.add(ageCompositePath);
+compositePaths.add(nameCompositePath);
+
+compositeIndexes.add(compositePaths);
+indexingPolicy.setCompositeIndexes(compositeIndexes);
+```
+
+Kapsayıcıyı değişikliklerle güncelleştirme
+
+```java
+ client.replaceCollection(container, null);
 ```
 
 Bir kapsayıcıda Dizin dönüştürme ilerlemesini izlemek için, kota bilgisinin doldurulmasını isteyen `RequestOptions` bir nesne geçirin ve ardından `x-ms-documentdb-collection-index-transformation-progress` yanıt başlığından değeri alın.
@@ -122,14 +212,58 @@ containerResponse.subscribe(result -> {
 
 `includedPaths` `indexingPolicy` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `indexingMode` `excludedPaths`'dan [](create-sql-api-nodejs.md) Arabirim(kullanımıileilgilibuhızlıbaşlangıç),veeklemeveyakaldırma,ve'ideğiştirmenizeolanaktanıyanbirözellik`ContainerDefinition` sunar.
 
+Kapsayıcının ayrıntılarını alma
+
 ```javascript
-// retrieve the container's details
 const containerResponse = await client.database('database').container('container').read();
-// set the indexing mode to Consistent
+```
+
+Dizin oluşturma modunu tutarlı olarak ayarlayın
+
+```javascript
 containerResponse.body.indexingPolicy.indexingMode = "consistent";
-// add an excluded path
-containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/headquarters/employees/?' });
-// update the container with our changes
+```
+
+Uzamsal dizin dahil dahil edilen yol ekleme
+
+```javascript
+containerResponse.body.indexingPolicy.includedPaths.push({
+    includedPaths: [
+      {
+        path: "/age/*",
+        indexes: [
+          {
+            kind: cosmos.DocumentBase.IndexKind.Range,
+            dataType: cosmos.DocumentBase.DataType.String
+          },
+          {
+            kind: cosmos.DocumentBase.IndexKind.Range,
+            dataType: cosmos.DocumentBase.DataType.Number
+          }
+        ]
+      },
+      {
+        path: "/locations/*",
+        indexes: [
+          {
+            kind: cosmos.DocumentBase.IndexKind.Spatial,
+            dataType: cosmos.DocumentBase.DataType.Point
+          }
+        ]
+      }
+    ]
+  });
+```
+
+Dışlanan yol Ekle
+
+```javascript
+containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
+```
+
+Kapsayıcıyı değişikliklerle güncelleştirme
+
+```javascript
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
@@ -148,16 +282,63 @@ const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-col
 
 [Python SDK 'yı](https://pypi.org/project/azure-cosmos/) kullanırken (kullanımıyla Ilgili [Bu hızlı başlangıç](create-sql-api-python.md) için bkz.) kapsayıcı yapılandırması bir sözlük olarak yönetilir. Bu sözlükten, dizin oluşturma ilkesine ve tüm özniteliklerine erişmek mümkündür.
 
+Kapsayıcının ayrıntılarını alma
+
 ```python
 containerPath = 'dbs/database/colls/collection'
-# retrieve the container's details
 container = client.ReadContainer(containerPath)
-# set the indexing mode to Consistent
+```
+
+Dizin oluşturma modunu tutarlı olarak ayarlayın
+
+```python
 container['indexingPolicy']['indexingMode'] = 'consistent'
-# add an excluded path
-container['indexingPolicy']['excludedPaths'] = [
-    {"path": "/headquarters/employees/?"}]
-# update the container with our changes
+```
+
+Dahil edilen yol ve uzamsal dizin ile bir dizin oluşturma ilkesi tanımlama
+
+```python
+container["indexingPolicy"] = {
+
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+                {"path":"/location/*","types":["Point"]}
+             ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Dışlanan bir yol ile dizin oluşturma ilkesi tanımlama
+
+```python
+container["indexingPolicy"] = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Bileşik dizin ekleme
+
+```python
+container['indexingPolicy']['compositeIndexes'] = [
+                [
+                    {
+                        "path": "/name",
+                        "order": "ascending"
+                    },
+                    {
+                        "path": "/age",
+                        "order": "descending"
+                    }
+                ]
+                ]
+```
+
+Kapsayıcıyı değişikliklerle güncelleştirme
+
+```python
 response = client.ReplaceContainer(containerPath, container)
 ```
 

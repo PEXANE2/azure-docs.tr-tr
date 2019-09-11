@@ -1,6 +1,6 @@
 ---
 title: Azure Multi-Factor Authentication Kullanıcı durumları-Azure Active Directory
-description: Azure Multi-Factor Authentication 'da Kullanıcı durumları hakkında bilgi edinin.
+description: Azure Multi-Factor Authentication 'daki Kullanıcı durumları hakkında bilgi edinin.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc83f59d51e1552d9d68089d0b9fa23d924f491c
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: c0c941ec5010b6f9c35e81fdbcacd2093724eb21
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561299"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162346"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
 İki adımlı doğrulama gerektiren iki yaklaşımdan birini, her ikisi de genel yönetici hesabı kullanılmasını gerektirir. İlk seçenek, her kullanıcıyı Azure Multi-Factor Authentication (MFA) için etkinleştirmektir. Kullanıcılar ayrı ayrı etkinleştirildiğinde, her oturum açtıklarında iki aşamalı doğrulama gerçekleştirir (güvenilir IP adreslerinden oturum açtıklarında veya _anımsanan cihazlar_ özelliği açık olduğunda olduğu gibi bazı özel durumlarla birlikte). İkinci seçenek, belirli koşullarda iki adımlı doğrulama gerektiren bir koşullu erişim ilkesi ayarlamaya yönelik bir seçenektir.
 
 > [!TIP]
-> Koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication 'ın etkinleştirilmesi önerilen yaklaşımdır. Lisanslarınız, kullanıcıların her oturum açtıklarında MFA gerçekleştirmesini gerektirecek şekilde koşullu erişim içermediği sürece Kullanıcı durumlarının değiştirilmesi artık önerilmez.
+> Koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication etkinleştirme önerilen yaklaşımdır. Lisanslarınız, kullanıcıların her oturum açtıklarında MFA gerçekleştirmesini gerektirecek şekilde koşullu erişim içermediği sürece Kullanıcı durumlarının değiştirilmesi artık önerilmez.
 
 ## <a name="choose-how-to-enable"></a>Nasıl etkinleştirileceğini seçin
 
 **Kullanıcı durumu değiştirilerek etkinleştirildi** -bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir ve bu makalede ele alınmıştır. Hem bulutta hem de Azure MFA sunucusunda Azure MFA ile birlikte kullanılabilir. Bu yöntemin kullanılması, kullanıcıların **her** oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
 
-Koşullu erişim ilkesi tarafından etkinleştirildi-kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmek üzere en esnek yollardan biridir. Koşullu erişim ilkesini kullanmanın etkinleştirilmesi yalnızca Bulutta Azure MFA için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntem hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication 'ı dağıtma](howto-mfa-getstarted.md)bölümünde bulunabilir.
+Koşullu erişim ilkesi tarafından etkinleştirildi-kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmek üzere en esnek yollardan biridir. Koşullu erişim ilkesini kullanmanın etkinleştirilmesi yalnızca Bulutta Azure MFA için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntem hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication dağıtma](howto-mfa-getstarted.md)bölümünde bulunabilir.
 
 Azure AD Kimlik Koruması tarafından etkinleştirildi-bu yöntem, yalnızca tüm bulut uygulamaları için oturum açma riskini temel alan iki adımlı doğrulama istemek için Azure AD Kimlik Koruması risk ilkesini kullanır. Bu yöntem Azure Active Directory P2 lisanslama gerektirir. Bu yöntem hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması](../identity-protection/howto-sign-in-risk-policy.md) bulunabilir
 
@@ -39,7 +39,7 @@ Azure AD Kimlik Koruması tarafından etkinleştirildi-bu yöntem, yalnızca tü
 
 ## <a name="enable-azure-mfa-by-changing-user-state"></a>Kullanıcı durumunu değiştirerek Azure MFA 'yı etkinleştirme
 
-Azure Multi-Factor Authentication 'daki Kullanıcı hesapları aşağıdaki üç farklı duruma sahiptir:
+Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farklı duruma sahiptir:
 
 | Durum | Açıklama | Etkilenen tarayıcı olmayan uygulamalar | Etkilenen tarayıcı uygulamaları | Modern kimlik doğrulaması etkilendi |
 |:---:|:---:|:---:|:--:|:--:|
@@ -57,8 +57,8 @@ Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz sayf
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
 2. **Azure Active Directory** > **Kullanıcılar ve gruplar** > **tüm kullanıcılar**' a gidin.
-3. **Multi-Factor Authentication**'ı seçin.
-   ![Multi-Factor Authentication 'ı seçin](./media/howto-mfa-userstates/selectmfa.png)
+3. **Multi-Factor Authentication**seçin.
+   ![Multi-Factor Authentication seçin](./media/howto-mfa-userstates/selectmfa.png)
 4. Kullanıcı durumlarını görüntüleyen yeni bir sayfa açılır.
    ![Multi-Factor Authentication Kullanıcı durumu-ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
 
@@ -136,7 +136,9 @@ Ayrıca, şu şekilde kısaltılarak:
 
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Kullanıcı başına MFA 'dan koşullu erişim tabanlı MFA 'ya Kullanıcı dönüştürme
 
-Aşağıdaki PowerShell, koşullu erişim tabanlı Azure Multi-Factor Authentication 'a dönüştürme yapmaya yardımcı olabilir.
+Aşağıdaki PowerShell, koşullu erişim tabanlı Azure Multi-Factor Authentication dönüştürmeyi yaparken size yardımcı olabilir.
+
+Bu PowerShell 'i bir ıSE penceresinde çalıştırın veya olarak kaydedin. Yerel olarak çalıştırılacak PS1 dosyası.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -197,6 +199,6 @@ Get-MsolUser -All | Disable-MFA -KeepMethods
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir Kullanıcı neden MFA gerçekleştirmedi ya da istenmedi? [Azure Multi-Factor Authentication belgesindeki raporlardaki Azure AD oturum açma işlemleri raporu](howto-mfa-reporting.md#azure-ad-sign-ins-report)bölümüne bakın.
+* Bir Kullanıcı neden MFA gerçekleştirmedi ya da istenmedi? [Azure Multi-Factor Authentication 'Daki raporlarda Azure AD oturum açma işlemleri raporu](howto-mfa-reporting.md#azure-ad-sign-ins-report)bölümüne bakın.
 * Güvenilen IP 'Ler, özel ses iletileri ve sahtekarlık uyarıları gibi ek ayarları yapılandırmak için [Azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md) makalesine bakın
-* Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme hakkında bilgi, [Bulutta Azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md) makalesinde bulunabilir.
+* Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme hakkında bilgiler, [bulutta azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md) makalesinde bulunabilir.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883590"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194318"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Görsel Arama API'si arama sorguları gönderme
 
@@ -73,7 +73,7 @@ Görsel Arama uç noktası şudur: https:\/\/api.cognitive.microsoft.com/bing/v7
 
 Aşağıdakiler, isteğinizde belirtilmesi gereken sorgu parametreleridir. En azından, `mkt` sorgu parametresini eklemeniz gerekir:
 
-| Ad | Value | Type | Gerekli |
+| Name | Value | Type | Gerekli |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Sonuçların nereden geldiği temsil eden iki karakterli bir ülke kodu.<br /><br /> Bu parametreyi ayarlarsanız, [Accept-Language](#acceptlanguage) üst bilgisini de belirtmelisiniz. Bing dil listesinde bulduğu ilk desteklenen dili kullanır ve dili sizin belirttiğiniz ülke koduyla birleştirerek sonuçları hangi pazardan döndüreceğini saptar. Dil listesi desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur. Öte yandan, sonuçlarda belirtilen pazar yerine toplu veya varsayılan bir pazarı da kullanılabilir.<br /><br /> Bu sorgu parametresini ve `Accept-Language` sorgu parametresini ancak birden çok dil belirttiyseniz kullanmalısınız; aksi takdirde `mkt` ve `setLang` sorgu parametrelerini kullanmanız gerekir.<br /><br /> Bu parametre ve [mkt](#mkt) sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Hayır       |
 | <a name="mkt" />mkt   | Sonuçların geldiği pazar. <br /><br /> **NOT:** Biliniyorsa, her zaman pazarı belirtmeniz gerekir. Pazarın belirtilmesi Bing’in isteği yönlendirmesine, uygun ve en iyi yanıtı döndürmesine yardımcı olur.<br /><br /> Bu parametre ve [cc](#cc) sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Evet      |
@@ -242,7 +242,7 @@ Resim için içgörüler varsa, yanıtta içgörüleri içeren bir veya birden �
 
 Varsayılan Öngörüler listesi için bkz. [Default Insights etiketi](../default-insights-tag.md).
 
-Kalan etiketler kullanıcının ilgisini çekebilecek diğer içgörüleri içerir. Örneğin resimde metin varsa, etiketlerden biri tanınan metnin bulunduğu TextResults içgörüsünü içerebilir. Ya da Bing görüntüde bir varlığı (yani, bir kişi, yer veya bir şeyi) tanırsa, etiketlerden biri varlığı tanımlayabilir. Görsel Arama giriş resminden türetilen çeşitli terimler (etiketler) de döndürür. Bu Etiketler, kullanıcıların görüntüde bulunan kavramları keşfetmesine olanak tanır. Örneğin giriş resmi ünlü bir sporcuya aitse, etiketlerden biri Spor olabilir ve spor resimlerinin bağlantılarını içerebilir.
+Kalan etiketler kullanıcının ilgisini çekebilecek diğer içgörüleri içerir. Örneğin resimde metin varsa, etiketlerden biri tanınan metnin bulunduğu TextResults içgörüsünü içerebilir. Ya da, görüntüde bir varlığı (yani, tam olarak tanınmış/popüler bir kişi, yer veya bir şey) tanırsa, etiketlerden biri varlığı tanımlayabilir. Görsel Arama giriş resminden türetilen çeşitli terimler (etiketler) de döndürür. Bu Etiketler, kullanıcıların görüntüde bulunan kavramları keşfetmesine olanak tanır. Örneğin giriş resmi ünlü bir sporcuya aitse, etiketlerden biri Spor olabilir ve spor resimlerinin bağlantılarını içerebilir.
 
 Her etiket içgörüyü kategorilere ayırmak için kullanabileceğiniz bir görünen adı, içgörünün geçerli olduğu ilgilenilen bölgeyi tanımlayan sınırlayıcı kutuyu, içgörüleri ve resmin bir küçük resmini içerir. Örneğin resim spor forması giymiş birine aitse, etiketlerden biri formayı sınırlayan bir sınırlayıcı kutu ile VisualSearch ve ProductVisualSearch içgörülerini içerebilir. Bir diğer etikette de konuları bakımından birbiriyle ilgili resimleri almaya yönelik /images/search API isteğinin URL'sini içeren bir ImageResults içgörüsü veya kullanıcıyı Bing.com resim arama sonuçlarına götüren Bing.com arama URL'si bulunabilir.
 
@@ -368,7 +368,7 @@ Metin tanıma, kartvizitlerin üzerindeki telefon numarası ve e-posta adresi gi
     }
 ```
 
-Resimde bir kişi, yer veya eşya gibi tanınan bir varlık bulunuyorsa, etiketlerden biri Entity içgörüsünü içerebilir.
+Görüntü, tam olarak tanınmış/popüler kişi, yer veya bir şey gibi tanınan bir varlık içeriyorsa, etiketlerden biri bir varlık öngörüsi içerebilir.
 
 ```json
     {

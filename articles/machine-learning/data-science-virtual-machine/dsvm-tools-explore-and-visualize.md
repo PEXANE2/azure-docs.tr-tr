@@ -1,28 +1,23 @@
 ---
-title: Veri keşif ve görselleştirme araçları-Azure | Microsoft Docs
+title: Veri keşfi ve görselleştirme araçları
+titleSuffix: Azure Data Science Virtual Machine
 description: Veri Bilimi Sanal Makinesi için veri keşif ve görselleştirme araçları.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065897"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191969"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi veri keşif ve görselleştirme araçları
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi veri keşif ve görselleştirme araçları
 
 Veri bilimi 'nde, anahtar verileri anlamaktır. Görselleştirme ve veri araştırma araçları, verilerin öğrenilmesini hızlandırmaya yardımcı olur. Veri Bilimi Sanal Makinesi (DSVM) üzerinde sunulan aşağıdaki araçlar, bu anahtar adımını daha kolay hale getirir.
 

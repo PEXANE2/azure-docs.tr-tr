@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 6c1104ba340f23a76d5b9b4167f895f5a115152c
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992178"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773274"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda çoğaltmaları okuma
 
 Çoğaltma oku özelliği, bir MariaDB sunucusu için Azure veritabanından salt okunurdur bir sunucuya veri çoğaltmanıza olanak sağlar. Ana sunucudan en fazla beş çoğaltmaya çoğaltabilirsiniz. Çoğaltmalar, küresel işlem KIMLIĞI (GTıD) ile MariaDB altyapısının ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Binlog çoğaltma hakkında daha fazla bilgi edinmek için bkz. [binlog Çoğaltmaya genel bakış](https://mariadb.com/kb/en/library/replication-overview/).
-
-> [!IMPORTANT]
-> Ana sunucunuz ile aynı bölgede veya seçtiğiniz diğer herhangi bir Azure bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Okuma çoğaltmaları (aynı bölge ve çapraz bölge) Şu anda genel önizlemededir.
 
 Çoğaltmalar, yönettiğiniz yeni sunuculardır ve bu sunucular, MariaDB sunucuları için normal Azure veritabanı ile benzerdir. Her okuma çoğaltması için, sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem için faturalandırılırsınız.
 
@@ -38,10 +35,9 @@ Okuma çoğaltması özelliği zaman uyumsuz çoğaltma kullanır. Özelliği, z
 ## <a name="cross-region-replication"></a>Çapraz bölge çoğaltma
 Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
 
-> [!IMPORTANT]
-> Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
+[MariaDB Için Azure veritabanı bölgesine](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)bir ana sunucu ekleyebilirsiniz.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, ana bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
 
-[MariaDB Için Azure veritabanı bölgesine](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)bir ana sunucu ekleyebilirsiniz.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir.
+[![Çoğaltma bölgelerini oku](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Ana sunucunuzun bulunduğu yere bakılmaksızın aşağıdaki bölgelerin herhangi birinde her zaman bir okuma çoğaltması oluşturabilirsiniz. Evrensel çoğaltma bölgeleri şunlardır:
@@ -95,7 +91,7 @@ Bu ölçüm, MariaDB `seconds_behind_master` 'nin `SHOW SLAVE STATUS` komutunda 
 
 Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
-## <a name="stop-replication"></a>Çoğaltmayı durdurma
+## <a name="stop-replication"></a>Çoğaltmayı durdur
 
 Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltma durdurulduktan sonra çoğaltma tek başına bir sunucu haline gelir. Tek başına sunucusundaki veriler, çoğaltma durdurma komutunun başlatıldığı zamanda çoğaltma üzerinde kullanılabilir olan veri. Tek başına sunucu, ana sunucu ile birlikte yakalamaz.
 

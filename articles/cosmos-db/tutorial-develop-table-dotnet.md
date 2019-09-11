@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: 75f1554f7522723d71666633a03761d07e797e33
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 677ea48244f8417670a2645ab67fa08c1f869f1a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443512"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142594"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK kullanarak Azure Cosmos DB Tablo API'si ve Azure Tablo depolama ile çalışmaya başlama
 
@@ -59,7 +59,7 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 1. **Çözüm Gezgini**'nde projenize sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
 
-1. , `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`  Ve için çevrimiçi `Microsoft.Extensions.Configuration.Json`olarak arama yapın ve Microsoft Azure Cosmos db tablo kitaplığını yüklemek için yüklemeyi seçin. `Microsoft.Extensions.Configuration.Binder`
+1. , `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration` Ve için çevrimiçi `Microsoft.Extensions.Configuration.Json`olarak arama yapın ve Microsoft Azure Cosmos db tablo kitaplığını yüklemek için yüklemeyi seçin. `Microsoft.Extensions.Configuration.Binder`
 
 ## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 
@@ -217,36 +217,36 @@ Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [
 Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **SamplesUtils.cs**adlı bir sınıf ekleyin. Bu sınıf, varlıklarda CRUD işlemleri gerçekleştirmek için gereken tüm kodu depolar. 
 
 ```csharp
-public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
-    {
-      if (entity == null)
-    {
-       throw new ArgumentNullException("entity");
-    }
-    try
-    {
-       // Create the InsertOrReplace table operation
-       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+ {
+     if (entity == null)
+     {
+         throw new ArgumentNullException("entity");
+     }
+     try
+     {
+         // Create the InsertOrReplace table operation
+         TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
 
-       // Execute the operation.
-       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
-       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
-        
-        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-        if (result.RequestCharge.HasValue)
-          {
-            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
-          }
+         // Execute the operation.
+         TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+         CustomerEntity insertedCustomer = result.Result as CustomerEntity;
 
-        return insertedCustomer;
-        }
-        catch (StorageException e)
-        {
-          Console.WriteLine(e.Message);
-          Console.ReadLine();
-          throw;
-        }
-    }
+         // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure Cosmos DB
+         if (result.RequestCharge.HasValue)
+         {
+             Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+         }
+
+         return insertedCustomer;
+     }
+     catch (StorageException e)
+     {
+         Console.WriteLine(e.Message);
+         Console.ReadLine();
+         throw;
+     }
+ }
 ```
 
 ### <a name="get-an-entity-from-a-partition"></a>Bir bölümden varlık edinme

@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575187"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375830"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal Azure SQL veri ambarı oluşturma ve sorgulama
 
@@ -98,7 +98,7 @@ SQL veri ambarı hizmeti, sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu
 > SQL Veri Ambarı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
 
 1. Dağıtım tamamlandıktan sonra, sol taraftaki menüden **tüm hizmetler** ' i seçin. **Veritabanları**' nı seçin, sık KULLANıLANLARıNıZA SQL veri ambarları eklemek için **SQL veri ambarları** ' nın yanındaki yıldızı seçin.
-1. Sol taraftaki menüden **SQL veri ambarları** ' nı seçin ve ardından **SQL veri ambarları** sayfasında **mysampledatabase** ' e tıklayın. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **MyNewServer-20180430.Database.Windows.net**) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
+1. Sol taraftaki menüden **SQL veri ambarları** ' nı seçin ve ardından **SQL veri ambarları** sayfasında **mysampledatawarehouse** ' ı tıklatın. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **MyNewServer-20180430.Database.Windows.net**) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 1. Bu tam sunucu adını, bu ve diğer hızlı başlangıçtaki sunucunuza ve veritabanlarına bağlanmak için kullanmak üzere kopyalayın. Sunucu ayarlarını açmak için sunucu adına tıklayın.
 
    ![sunucu adını bulma](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
@@ -194,7 +194,7 @@ Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 
     ![Kaynakları temizleme](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. Veri ambarı duraklatıldığında, bir geri düğmesi görürsünüz. İşlem işlemine geri dönmek için, geri ' ye tıklayın.
+2. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. Veri ambarı duraklatıldığında **, bir geri** düğmesi görürsünüz. İşlem işlemine geri dönmek için, geri ' **ye tıklayın.**
 
 3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' e tıklayın.
 

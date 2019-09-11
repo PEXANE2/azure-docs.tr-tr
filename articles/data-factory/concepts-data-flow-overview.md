@@ -1,29 +1,50 @@
 ---
-title: Azure veri fabrikası veri akışı genel bakış eşleme
-description: Azure Data factory'de veri akışları eşleme genel bakış açıklaması
+title: Azure Data Factory eşleme veri akışına genel bakış
+description: Azure Data Factory veri akışlarını eşleştirmeye ilişkin genel bakış açıklaması
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 051886f98d6d35594336291bbb2defb2a4acdfc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f4c124c59584c8538d85ac61650661ae559a77b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233056"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123992"
 ---
-# <a name="what-are-mapping-data-flows"></a>Veri akışları eşleme nelerdir?
+# <a name="what-are-mapping-data-flows"></a>Eşleme veri akışları nelerdir?
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Eşleme veri akışları Azure Data factory'de görsel olarak tasarlanmış veri dönüştürme var. Bir veri akışı veri mühendisleri, kod yazmaya gerek kalmadan grafik veri dönüştürme mantığını geliştirmek izin verin. Sonuçta elde edilen bir veri akışı, Azure veri fabrikası genişletilmiş Azure Databricks kümeleri kullanarak işlem hatlarını içindeki etkinlikleri olarak yürütülür.
+Veri akışlarını eşleme, Azure Data Factory 'de görsel olarak tasarlanan veri dönüşümlerdir. Veri akışları, veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, ölçeği genişletilmiş Azure Databricks kümeler kullanılarak Azure Data Factory işlem hatları dahilinde yürütülür.
 
-Azure Data Factory, veri akışı amacı gerekli kodlama ile tam olarak görsel bir deneyim sağlamaktır. Veri akışları, ölçeği genişletilmiş veri işleme için kendi yürütme kümesinde yürütülür. Azure Data Factory tüm kod çevirisi, yolu en iyi duruma getirme ve yürütme veri akışı işlerinizin yürütür.
+Azure Data Factory veri akışı amacı, hiçbir kodlamaya gerek olmadan tam bir görsel deneyim sağlamaktır. Veri akışlarınız, ölçeği genişletilmiş veri işleme için kendi yürütme kümenizde yürütülür. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
-Bir veri akışı hata ayıklama modunda dönüştürme mantığınızı etkileşimli olarak doğrulayabilmesi oluşturarak başlayın. Ardından, bir veri akış etkinliğini yürütmek için işlem hattını ve veri işlem hattı hata ayıklama akışı veya işlem hattından etkinlik, veri akışı test etmek için "Şimdi Tetikle" işlem hattı kullanın. test ekleyin.
+Dönüştürme mantığınızı etkileşimli olarak doğrulayabilmeniz için hata ayıklama modunda veri akışları oluşturarak başlayın. Ardından, veri akışınızı işlem hattı hata ayıklamada çalıştırmak ve test etmek için işlem hattınızda bir veri akışı etkinliği ekleyin veya veri akışınızı bir işlem hattı etkinliğinden test etmek için işlem hattında "Şimdi Tetikle" seçeneğini kullanın.
 
-Sonra zamanlama ve yürütme veri akışı etkinliği Azure Data Factory işlem hatlarını kullanarak, veri akışı etkinlikleri izleyin.
+Daha sonra veri akışı etkinliklerini yürütecek Azure Data Factory işlem hatlarını kullanarak veri akışı etkinliklerinizi planlayarak ve izleyebilirsiniz.
 
-Hata ayıklama modu iki durumlu düğme veri akışı tasarım yüzeyinde, etkileşimli veri dönüşümleri oluşturulmasını sağlar. Hata ayıklama modu veri akışı oluşturma için bir veri hazırlık ortamı sağlar.
+Veri akışı tasarım yüzeyinde hata ayıklama modu geçiş anahtarı, veri dönüştürmelerinin etkileşimli olarak oluşturulmasına olanak sağlar. Hata ayıklama modu, veri akışı oluşturma için veri hazırlama ve veri önizleme ortamı sağlar.
+
+## <a name="begin-building-your-data-flow-logical-graph"></a>Veri akışı mantıksal grafınızı oluşturmaya başlayın
+
+Yeni bir veri akışı oluşturmak için fabrika kaynakları altındaki + işaretini kullanarak veri akışları oluşturmaya başlayın.
+
+![Yeni veri akışı](media/data-flow/newdataflow2.png "Yeni veri akışı")
+
+Kaynak dönüşümünü yapılandırarak başlayın ve ardından + işaretini kullanarak sonraki adıma veri dönüşümü ekleyin. Mantıksal grafınızı oluştururken, "grafiği göster" ve "grafiği gizle" düğmesini kullanarak grafik ve yapılandırma modları arasında geçiş yapabilirsiniz.
+
+![Grafiği göster](media/data-flow/showg.png "Grafiği göster")
+
+## <a name="configure-transformation-logic"></a>Dönüşüm mantığını yapılandırma
+
+![Grafiği gizle](media/data-flow/hideg.png "Grafiği gizle")
+
+Grafınızı gizlemek, daha sonra dönüşüm düğümleriniz arasında gezinmenizi sağlar.
+
+![Git](media/data-flow/showhide.png "Git")
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Kaynak dönüşümle başlayın](data-flow-source.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034826"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773001"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -53,6 +53,11 @@ Bir uyarı kuralının anahtar öznitelikleri şunlardır:
 **Uyarı açıklaması** – Kullanıcı tarafından yapılandırılan uyarı kuralı için bir açıklama
 
 **Önem derecesi** : uyarı kuralında belirtilen kriterler karşılandığında uyarının önem derecesi. Önem derecesi 0 ile 4 arasında olabilir.
+   - Sev 0 = kritik
+   - Sev 1 = hata
+   - Sev 2 = uyarı
+   - Sev 3 = bilgilendirici
+   - Sev 4 = ayrıntılı 
 
 **Eylem** -uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](../../azure-monitor/platform/action-groups.md).
 

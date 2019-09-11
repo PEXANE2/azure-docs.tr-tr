@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: e5f856bbd8f6fdec46d947a4c726024a08a2b6e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096047"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773049"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure işlev proxy'leri ile çalışma
 
@@ -65,7 +65,7 @@ Kullanabileceğiniz `localhost` bir işlev aynı işlev uygulamasında bir gidi�
 
  
 >[!Note]  
->İşlevinizi kullanıyorsa *işlevi, yönetici veya sys* yetkilendirme düzeyleri, kod ve ClientID, orijinal işlev URL'sini göre sağlamak gerekir. Bu durumda başvuru şöyle görünmelidir: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>İşlevinizi kullanıyorsa *işlevi, yönetici veya sys* yetkilendirme düzeyleri, kod ve ClientID, orijinal işlev URL'sini göre sağlamak gerekir. Bu durumda, başvurunun şöyle görünmesi gerekir: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`Bu anahtarların [Uygulama ayarları] depolanmasını ve proxy 'leriniz ile başvurmayı öneririz. Bu, kaynak kodunuzda gizli dizileri depolamayı önler. 
 
 ### <a name="request-parameters"></a>Başvuru İstek parametreleri
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720405"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274722"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Web tablosundan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -80,7 +80,7 @@ Web tablosu bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm, Web tablosu veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Web tablosu veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 Web tablosundan veri kopyalamak için veri kümesinin Type özelliğini **Webtable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972351"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814577"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
 
@@ -30,10 +30,10 @@ ms.locfileid: "69972351"
 
 | Bileşen | Version | Lisanslı sürüm |
 |-----------|---------|------------------|
-| ESXi | 6.7 U1 | Kurumsal Plus |
-| vCenter | 6.7 U1 | vCenter Standard |
+| ESXi | 6.7 U2 | Kurumsal Plus |
+| vCenter | 6.7 U2 | vCenter Standard |
 | vSAN | 6.7 | Enterprise |
-| NSX veri merkezi | 2.3 | Gelişmiş |
+| NSX veri merkezi | 2.4.1 | Gelişmiş |
 
 ## <a name="esxi"></a>ESXi
 

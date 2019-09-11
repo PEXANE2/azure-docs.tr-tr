@@ -12,7 +12,7 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: İstemci
+    - name: İstemci kitaplığı
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -54,13 +54,13 @@
   items:
     - name: Metin Analizi API’sini çağırma
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: Dili algılama
+    - name: Dil algılama
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Yaklaşımı analiz etme
+    - name: Yaklaşım analizi
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Anahtar ifadeleri ayıklama
+    - name: Anahtar ifade ayıklama
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Adlandırılmış varlık tanımayı çağırma
+    - name: Adlandırılmış varlık tanıma
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: Kapsayıcıları kullanma
       items:

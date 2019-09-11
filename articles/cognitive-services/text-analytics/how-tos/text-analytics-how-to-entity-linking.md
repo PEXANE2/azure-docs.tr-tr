@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697837"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390252"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -52,14 +52,14 @@ Metin Analizi [sürüm 2,1](https://westcentralus.dev.cognitive.microsoft.com/do
 | Miktar      | Currency      | “10,99 ABD Doları”     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
-| Datetime      | YOK\*         | “18:30 4 Şubat 2012”      |
-| Datetime      | Date          | “2 Mayıs 2017”, “02.05.2017”   |
-| Datetime      | Time          | "08:00", "8:00"  |
-| Datetime      | Tarih Aralığı     | “2 - 5 Mayıs Arası”    |
-| Datetime      | Saat Aralığı     | “18.00 ve 19.00 Arası”     |
-| Datetime      | Duration      | "1 dakika 45 saniye"   |
-| Datetime      | Ayarla           | "Her Salı"     |
-| Datetime      | TimeZone      |    |
+| DateTime      | YOK\*         | “18:30 4 Şubat 2012”      |
+| DateTime      | Date          | “2 Mayıs 2017”, “02.05.2017”   |
+| DateTime      | Time          | "08:00", "8:00"  |
+| DateTime      | Tarih Aralığı     | “2 - 5 Mayıs Arası”    |
+| DateTime      | Saat Aralığı     | “18.00 ve 19.00 Arası”     |
+| DateTime      | Duration      | "1 dakika 45 saniye"   |
+| DateTime      | Ayarla           | "Her Salı"     |
+| DateTime      | TimeZone      |    |
 | URL           | YOK\*         | "https:\//www.Bing.com"    |
 | Email         | YOK\*         | "support@contoso.com" |
 
@@ -98,7 +98,7 @@ Belge boyutu belge başına 5.120 karakter altında olmalıdır ve koleksiyon ba
 
 + Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [Varlıklar API 'SI](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Varlık ayıklama için HTTP uç noktasını ayarlayın. `/entities` kaynağını içermelidir: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. Dahil `/text/analytics/v2.1/entities`etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 

@@ -1,5 +1,5 @@
 ---
-title: Node. js-Azure depolama 'dan kuyruk depolama kullanma
+title: Node. js ' den Azure kuyruk depolaması kullanma-Azure depolama
 description: Kuyrukları oluşturmak ve silmek için Azure Kuyruk hizmeti kullanmayı ve iletileri ekleme, alma ve silme hakkında bilgi edinin. Node. js içinde yazılan örnekler.
 author: mhopkins-msft
 ms.service: storage
@@ -8,12 +8,13 @@ ms.date: 12/08/2016
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13da3adc1a3f95f9fdb29eb181eb9759e175cffe
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 83aecc9c05fec5869a82930f2d687ac907981c00
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721276"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858673"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js’den Kuyruk depolama kullanma
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -244,7 +245,7 @@ Sıradan tüm iletileri silmeden temizlemek için **ClearMessages**kullanın.
 ## <a name="how-to-work-with-shared-access-signatures"></a>Nasıl yapılır: Paylaşılan Erişim İmzaları ile çalışma
 Paylaşılan erişim Imzaları (SAS), depolama hesabı adınızı veya anahtarlarınızı sağlamamanız gerekmeden kuyruklara ayrıntılı erişim sağlamanın güvenli bir yoludur. SAS, genellikle bir mobil uygulamanın ileti göndermesine izin verme gibi kuyruklara sınırlı erişim sağlamak için kullanılır.
 
-Bulut tabanlı bir hizmet gibi güvenilir bir uygulama, Queuesharedaccesssignature öğesini kullanarak bir SAS oluşturur ve bunu güvenilmeyenveya yarı güvenilir bir uygulamaya sağlar. Örneğin, bir mobil uygulama. SAS’ın geçerli olduğu başlangıç ve bitiş tarihlerini ve SAS sahibine verilen erişim düzeyini açıklayan bir ilke kullanılarak SAS oluşturulur.
+Bulut tabanlı bir hizmet gibi güvenilir bir uygulama, **Queuesharedaccesssignature** öğesini kullanarak bir SAS oluşturur ve bunu güvenilmeyenveya yarı güvenilir bir uygulamaya sağlar. Örneğin, bir mobil uygulama. SAS’ın geçerli olduğu başlangıç ve bitiş tarihlerini ve SAS sahibine verilen erişim düzeyini açıklayan bir ilke kullanılarak SAS oluşturulur.
 
 Aşağıdaki örnek, SAS sahibinin sıraya ileti eklemesine ve oluşturulma zamanından sonra 100 dakika süre sonu sağlayacak yeni bir paylaşılan erişim ilkesi oluşturur.
 

@@ -1,17 +1,17 @@
 ---
-title: Invalidnetworksecuritygroupsecurityrules-Azure HDInsight 'ta küme oluşturma işlemi başarısız oluyor
+title: Invalidnetworksecuritygroupsecurityrules-Azure HDInsight 'ta küme başarısız oluyor
 description: Küme oluşturma, ErrorCode ınvalidnetworksecuritygroupsecurityrules ile başarısız oluyor
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: 35e583fa31ee99c9d6307c01287c2c0fde021280
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a534ae54b6cb9ce20d0a1bc970ef575f88a09827
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700619"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735742"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>Senaryo: Invalidnetworksecuritygroupsecurityrules-Azure HDInsight 'ta küme oluşturma işlemi başarısız oluyor
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553118486d1148f63e79ca25c32ed7dd8a3b7414
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736792"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872204"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -102,15 +102,17 @@ Desteklenen hizmet planları şunları içerir:
 - Microsoft Stream
 - Dynamics 365 ücretsiz deneme sürümü
 
-Dış yönetici, SharePoint, OneDrive veya Skype Kurumsal içeren hizmet planlarına sahip herhangi bir hizmette desteklenmez; Örneğin, Office ücretsiz aboneliği aracılığıyla. İsteğe bağlı olarak, etki alanı adını yönetilmeyen kiracıdan kaldırmak ve istenen kiracı üzerinde doğrulamak için [ **Forcetakeover** seçeneğini](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) kullanabilirsiniz. Bu ForceTakeover seçeneği, kullanıcılar üzerinde hareket etmez veya aboneliğe erişimi korur. Bunun yerine, bu seçenek yalnızca etki alanı adını taşıdıkça. 
+Dış yönetici, SharePoint, OneDrive veya Skype Kurumsal içeren hizmet planlarına sahip herhangi bir hizmette desteklenmez; Örneğin, Office ücretsiz aboneliği aracılığıyla. 
+
+İsteğe bağlı olarak, etki alanı adını yönetilmeyen kiracıdan kaldırmak ve istenen kiracı üzerinde doğrulamak için [ **Forcetakeover** seçeneğini](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) kullanabilirsiniz. **ForceTakeover seçeneği, kullanıcılar üzerinde hareket etmez veya aboneliğe erişimi korur. Bu seçenek yalnızca etki alanı adını taşıdıkça.**
 
 #### <a name="more-information-about-rms-for-individuals"></a>Bireyler için RMS hakkında daha fazla bilgi
 
-[Bireyler Için RMS](/azure/information-protection/rms-for-individuals), yönetilmeyen kiracı sahip olduğunuz kiracı ile aynı bölgedeyse, otomatik olarak oluşturulan [Azure Information Protection kiracı anahtarı](/azure/information-protection/plan-implement-tenant-key) ve [varsayılan koruma şablonları](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ile üzerine taşınır etki alanı adı. 
+[Bireyler Için RMS](/azure/information-protection/rms-for-individuals), yönetilmeyen kiracı sahip olduğunuz kiracı ile aynı bölgedeyse, otomatik olarak oluşturulan [Azure Information Protection kiracı anahtarı](/azure/information-protection/plan-implement-tenant-key) ve [varsayılan koruma şablonları](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) ile üzerine taşınır etki alanı adı.
 
-Yönetilmeyen kiracı farklı bir bölgedeyse, anahtar ve şablonlar üzerinden taşınmaz. Örneğin, yönetilmeyen kiracı Avrupa 'da ve sahip olduğunuz kiracı Kuzey Amerika 'da bulunur. 
+Yönetilmeyen kiracı farklı bir bölgedeyse, anahtar ve şablonlar üzerinden taşınmaz. Örneğin, yönetilmeyen kiracı Avrupa 'daysa ve sahip olduğunuz kuruluş Kuzey Amerika.
 
-Bireyler için RMS, korunan içeriği açmak üzere Azure AD kimlik doğrulamasını destekleyecek şekilde tasarlansa da, kullanıcıların da içeriği korumasını engellemez. Kullanıcılar, kişiler için RMS aboneliği ile içerik koruduktan sonra anahtar ve şablonlar üzerine taşınmadığından, bu içeriğe etki alanı devralındıktan sonra erişilemeyecektir.
+Bireyler için RMS, korunan içeriği açmak üzere Azure AD kimlik doğrulamasını destekleyecek şekilde tasarlansa da, kullanıcıların da içeriği korumasını engellemez. Kullanıcılar, kişiler için RMS aboneliği ile içerik koruduktan sonra anahtar ve şablonlar üzerine taşınmadığından, bu içeriğe etki alanı devralındıktan sonra erişilemez.
 
 #### <a name="more-information-about-power-bi"></a>Power BI hakkında daha fazla bilgi
 
@@ -119,8 +121,7 @@ Dışarıdan bir devralırken, yük önüne alınmadan önce oluşturulan Power 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover seçeneği için Azure AD PowerShell cmdlet 'leri
 [PowerShell örneğinde](#powershell-example)kullanılan bu cmdlet 'leri görebilirsiniz.
 
-
-cmdlet | Kullanım 
+Cmdlet | Kullanım
 ------- | -------
 `connect-msolservice` | İstendiğinde, yönetilen kiracınızda oturum açın.
 `get-msoldomain` | Geçerli kiracı ile ilişkili etki alanı adlarınızı gösterir.
@@ -129,6 +130,9 @@ cmdlet | Kullanım
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Etki alanı için yeni DNS TXT kaydına (MS = xxxxx) konacak bilgileri sağlar. Doğrulama, TXT kaydının yayılması biraz zaman alacağından, **-forcetakeover** seçeneğini düşünmeden önce birkaç dakika bekleyin. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Etki alanı adınız hala doğrulanmıyorsa, **-forcetakeover** seçeneğiyle devam edebilirsiniz. Bu, TXT kaydının oluşturulduğunu doğrular ve devralma işlemini devre dışı bırakır.<li>**-Forcetakeover** seçeneği, yalnızca, yönetilmeyen kiracı tarafından devralmayı engelleyen Office 365 hizmetlerine sahip olduğu durumlarda olduğu gibi, cmdlet 'e yalnızca bir dış yönetici tarafından zorlanırken eklenmelidir.
 `get-msoldomain` | Etki alanı listesi artık etki alanı adını **doğrulanmış**olarak gösterir.
+
+> [!NOTE]
+> Yönetilmeyen Azure AD organizasyonu, dış devralma zorla seçeneğini gerçekleştirdikten sonra 10 gün sonra silinir.
 
 ### <a name="powershell-example"></a>PowerShell örneği
 

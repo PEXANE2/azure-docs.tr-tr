@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68254353"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306556"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Belirtilen modelle yüzeyleri tanımla
 
-Yüz Tanıma API'si bir görüntüden yüz verileri çıkarabilir ve bir **kişi** nesnesiyle (örneğin, [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API çağrısı aracılığıyla) Ilişkilendirebilir ve birden çok **kişi** nesnesi bir **persongroup**'ta birlikte depolanabilir. Daha sonra yeni bir yüz, bir **Person (** [Yüz - Belirleme] tanıma çağrısıyla) ile karşılaştırılabilir ve bu gruptaki eşleşen kişi belirlenebilir.
+Yüz Tanıma API'si bir görüntüden yüz verileri çıkarabilir ve bir **kişi** nesnesiyle (örneğin, [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API çağrısı aracılığıyla) Ilişkilendirebilir ve birden çok **kişi** nesnesi bir **persongroup**'ta birlikte depolanabilir. Daha sonra **Yeni bir yüz** , bir Person ( [Yüz - Belirleme] tanıma çağrısıyla) ile karşılaştırılabilir ve bu gruptaki eşleşen kişi belirlenebilir.
 
 Bir **persongroup** 'un tüm **kişiler**için benzersiz bir tanıma modeli olması gerekir ve `recognitionModel` bunu, grubu oluştururken ([PersonGroup - Oluşturma] veya [LargePersonGroup - Oluşturma]) parametresini kullanarak belirtebilirsiniz. Bu parametreyi belirtmezseniz, özgün `recognition_01` model kullanılır. Bir grup her zaman ile oluşturulduğu tanıma modelini kullanır ve bu modele eklendiğinde yeni yüzler bu modelle ilişkilendirilir; Bu, bir grubun oluşturulduktan sonra değiştirilemez. Bir **persongroup** 'un hangi modele yapılandırıldığını görmek Için, _Returnrecognıtionmodel_ parametresi **true**olarak ayarlanmış olan [Kişilik grubu-al] API 'sini kullanın.
 
@@ -91,7 +91,7 @@ Yüz, benzer bir API 'yi [Yüz-benzerini bulun] ; Yalnızca algılama sürümün
 
 ## <a name="verify-faces-with-specified-model"></a>Belirtilen modelle yüzeyleri doğrula
 
-[Yüz-doğrulama] API 'si, Iki yüzün aynı kişiye ait olup olmadığını denetler. Doğrulama API 'sinde, tanıma modelleriyle ilgili bir değişiklik yoktur, ancak yalnızca aynı modelde algılanan yüzeyleri karşılaştırabilirsiniz. Bu nedenle, iki yüzün veya `recognition_01` `recognition_02`kullanılarak algılanabilmesi gerekir.
+Yüz doğrulama API 'si, iki [Yüz-doğrulama] aynı kişiye ait olup olmadığını denetler. Doğrulama API 'sinde, tanıma modelleriyle ilgili bir değişiklik yoktur, ancak yalnızca aynı modelde algılanan yüzeyleri karşılaştırabilirsiniz. Bu nedenle, iki yüzün veya `recognition_01` `recognition_02`kullanılarak algılanabilmesi gerekir.
 
 ## <a name="evaluate-different-models"></a>Farklı modelleri değerlendirin
 
@@ -107,7 +107,8 @@ Normalde bir güvenirlik eşiği (sıfır ile arasında bir değer, modelin bir 
 
 Bu makalede, farklı yüz hizmeti API 'Leri ile kullanmak üzere tanınma modelini nasıl belirtdiğinize öğrendiniz. Sonra, yüz algılamayı kullanmaya başlamak için hızlı başlangıç izleyin.
 
-* [Görüntüdeki yüzeyleri algılama](../quickstarts/csharp-detect-sdk.md)
+* [Yüz .NET SDK 'Sı](../Quickstarts/csharp-sdk.md)
+* [Yüz Python SDK 'Sı](../Quickstarts/python-sdk.md)
 
 [Yüz algılama]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Yüz-benzerini bulun]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

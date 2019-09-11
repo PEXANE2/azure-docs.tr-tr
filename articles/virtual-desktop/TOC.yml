@@ -66,6 +66,8 @@
       href: fslogix-containers-azure-files.md
     - name: İş ortağı tümleştirmeleri
       href: partners.md
+    - name: Windows 10 Enterprise çoklu oturum hakkında SSS
+      href: windows-10-multisession-faq.md
 - name: Sorun giderme
   items:
     - name: 'Sorun çözümüne genel bakış, geri bildirim ve destek'

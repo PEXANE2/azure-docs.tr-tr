@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: REST, Git uzak bir görüntü - analiz'
+title: 'Hızlı Başlangıç: Uzak görüntüyü çözümleme-REST, git'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Go ile Görüntü İşleme API’si kullanarak bir görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 679dd8d1216d4d4893cca15a02230f58bff2ff32
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8b762b712d9a68cb75f9642d93b899a4990ae129
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605958"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141404"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ile Git kullanarak uzak bir resmi çözümleme
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Hızlı Başlangıç: Go ile Görüntü İşleme REST API kullanarak uzak görüntüyü çözümleme
 
 Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak görsel özellikleri ayıklamak için uzakta depolanan bir görüntüyü analiz edeceksiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemi ile, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
 
@@ -27,21 +27,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Go](https://golang.org/dl/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Kopyalama kodu bir metin düzenleyicisine aşağıda.
-1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
-    1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-    1. Gerekirse `uriBase` değerini [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yönteminin abonelik anahtarlarınızı aldığınız Azure bölgesinden uç nokta URL'si ile değiştirin.
-    1. İsteğe bağlı olarak `imageUrl` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.go` uzantısıyla bir dosya olarak kaydedin. Örneğin, `analyze-image.go`.
+1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
+1. İsteğe bağlı olarak `imageUrl` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
+1. Kodu, `.go` uzantısıyla bir dosya olarak kaydedin. Örneğin: `analyze-image.go`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, dosyadan paketi derlemek için `go build` komutunu çalıştırın. Örneğin, `go build analyze-image.go`.
-1. İstemde, derlenmiş paketi çalıştırın. Örneğin, `analyze-image`.
+1. İstemde, dosyadan paketi derlemek için `go build` komutunu çalıştırın. Örneğin: `go build analyze-image.go`.
+1. İstemde, derlenmiş paketi çalıştırın. Örneğin: `analyze-image`.
 
 ```go
 package main
@@ -56,19 +53,18 @@ import (
 )
 
 func main() {
-    // Replace <Subscription Key> with your valid subscription key.
-    const subscriptionKey = "<Subscription Key>"
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
+    if (subscriptionKey == "") {
+        log.Fatal("\n\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n" +
+            "**Restart your shell or IDE for changes to take effect.**\n")
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westcentralus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    const uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze"
+    endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
+    if ("" == endpoint) {
+        log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
+            "**Restart your shell or IDE for changes to take effect.**")
+    }
+    const uriBase = endpoint + "vision/v2.0/analyze"
     const imageUrl =
         "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
 

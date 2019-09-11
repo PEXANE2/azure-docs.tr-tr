@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602060"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233183"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure sanal makinelerinizin sistem durumunu anlayın
 
@@ -277,7 +277,7 @@ Aşağıdaki bölümde, sistem durumu ölçütü durumu ve ilişkili zaman göst
 
 ![İzlenen örnek ve sonuçları seçme örneği](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-Örneğin, *disk-1 d:* ' yi seçerseniz, **bileşen modeli**altındaki **listeden,** *disk-1D:* ve **durum değişikliklerinde** durum değişikliği, *disk-1 D:* ' nin kullanılabilirliğine göre değişiklik gösterir.
+Örneğin, *disk-1 d:* ' yi seçerseniz, **bileşen modeli**altındaki listeden, *disk-1D:* ve **durum değişikliklerinde** durum değişikliği, *disk-1 D:* ' nin kullanılabilirliğine göre değişiklik gösterir.
 
 Güncelleştirilmiş bir sistem durumunu görmek için **yenileme** bağlantısını seçerek sistem durumu tanılama sayfasını yenileyebilirsiniz. Bu görev, önceden tanımlanmış yoklama aralığına göre sistem durumu ölçütünün sistem durumu için bir güncelleştirme varsa, bu görev, en son sistem durumunu bekleyip yansıtmanızı sağlar. **Durum ölçütleri durumu** , seçilen sistem durumuna göre sonuçları kapsamlamanızı sağlayan bir filtredir: Sağlıklı, uyarı, kritik, bilinmeyen ve tümü. Sağ üst köşedeki **Son güncelleme** zamanı, sistem durumu tanılama sayfasının en son yenilenme süresini gösterir.
 
@@ -285,7 +285,7 @@ Güncelleştirilmiş bir sistem durumunu görmek için **yenileme** bağlantıs�
 
 VM'ler için Azure İzleyici sistem durumu, [Azure uyarıları](../../azure-monitor/platform/alerts-overview.md)ile tümleşir. Algılandığında önceden tanımlanmış ölçütler olduğunda bir uyarı başlatır, sağlıklı durumdan sağlıksız bir duruma değişir. Uyarılar, sev 0 ile sev 4 arası, en yüksek düzeydeki sev 0 ile önem derecesine göre kategorize edilir.
 
-Uyarılar, uyarı tetiklendiğinde sizi bilgilendirmek için bir eylem grubuyla ilişkilendirilmez. Abonelik sahibinin, [uyarıları Yapılandır](#configure-alerts) bölümündeki adımları izleyerek bildirimleri yapılandırması gerekir.
+Uyarılar, uyarı tetiklendiğinde sizi bilgilendirmek için bir eylem grubuyla ilişkilendirilmez. Abonelik kapsamında sahip rolüne sahip bir kullanıcının, [uyarıları Yapılandır](#configure-alerts) bölümündeki adımları izleyerek bildirimleri yapılandırması gerekir.
 
 Önem derecesine göre kategorilere ayrılan VM sistem durumu uyarılarının toplam sayısı, **Uyarılar** bölümünün altındaki **sistem durumu** panosunda bulunabilir. Toplam uyarı sayısını veya önem düzeyine karşılık gelen sayıyı seçtiğinizde, **Uyarılar** sayfası açılır ve seçiminizle eşleşen tüm uyarıları listeler.
 
@@ -301,7 +301,7 @@ Bu görünümü, sayfanın en üstündeki açılan menülerde bulunan değerler 
 
 |Sütun |Açıklama |
 |-------|------------|
-|Subscription |Azure aboneliği seçin. Yalnızca seçili abonelikteki uyarılar görünüme dahil edilir. |
+|Subscription |Bir Azure aboneliği seçin. Yalnızca seçili abonelikteki uyarılar görünüme dahil edilir. |
 |Kaynak Grubu |Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 |Kaynak türü |Bir veya daha fazla kaynak türü seçin. Varsayılan olarak, yalnızca hedef **sanal makinelerin** uyarıları seçilir ve bu görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 |Resource |Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |

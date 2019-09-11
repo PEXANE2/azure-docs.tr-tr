@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344674"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278620"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Veri bilimi görevleri yürütme: keşfi, modelleme ve dağıtım
 
 Veri keşfi, modelleme ve dağıtım tipik veri bilimi görevleri içerir. Bu makalede nasıl kullanılacağını gösterir **etkileşimli veri keşfi, analiz ve Raporlama (IDEAR)** ve **otomatik modelleme ve Raporlama (AMAR)** çeşitli genel veri bilimi görevlerini tamamlamak için yardımcı programlar Etkileşimli veri keşfi, veri analizi, raporlama ve modeli oluşturma gibi. Ayrıca, bir model çeşitli aşağıdaki gibi araç setleri ve veri platformları kullanarak bir üretim ortamına dağıtmak için seçenekler özetlenmektedir:
 
-- [Azure Machine Learning](../service/index.yml)
+- [Azure Machine Learning](../index.yml)
 - [SQL Server ML Hizmetleri ile](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -73,7 +73,7 @@ Daha fazla bilgi için [otomatik modelleme ve raporlama yardımcı programı'nda
 ### <a name="model-management"></a>Model yönetimi
 Birden çok modeli oluşturduktan sonra genellikle kaydetmek ve yönetim modellerine yönelik bir sistem olması gerekir. Genelde betiklerini veya API'leri ve arka uç veritabanı veya sürüm oluşturma sistemi gerekir. Bu yönetim görevleri için göz önünde bulundurun birkaç seçenek vardır:
 
-1. [Azure Machine Learning - model Yönetimi Hizmeti](../service/index.yml)
+1. [Azure Machine Learning - model Yönetimi Hizmeti](../index.yml)
 2. [MIT gelen ModelDB](https://mitdbg.github.io/modeldb/) 
 3. [Bir model yönetim sistemi olarak SQL server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)

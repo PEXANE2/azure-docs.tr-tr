@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/23/2017
+ms.date: 01/23/2017
 ms.author: dacurwin
-ms.openlocfilehash: 8e17747e2f1f29243215eac85e4e5fa761e11692
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 12c6df6b68ee0996b468ff1e7d929ce6bfa680c9
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688925"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210250"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
 
@@ -138,9 +138,9 @@ Mevcut seçenekler şunlardır:
 | anahtarın |Sessiz yükleme |- |
 | /p: "konum" |Azure Backup aracısının yükleme klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: "konum" |Azure Backup aracısına ait önbellek klasörünün yolu. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /dk |Microsoft Update için kabul etme |- |
+| /m |Microsoft Update için kabul etme |- |
 | /nu |Yükleme tamamlandıktan sonra güncelleştirmeleri denetleme |- |
-| /g |Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı kaldırır |- |
+| belirtilmediyse |Microsoft Azure Kurtarma Hizmetleri Aracısı 'nı kaldırır |- |
 | /pH |Proxy ana bilgisayar adresi |- |
 | /Po |Proxy ana bilgisayar bağlantı noktası numarası |- |
 | /pu |Proxy konak Kullanıcı adı |- |

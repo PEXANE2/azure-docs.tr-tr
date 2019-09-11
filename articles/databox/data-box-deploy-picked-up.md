@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box geri göndermeye yönelik öğretici | Microsoft Docs
+title: Microsoft Azure Data Box'ı geri göndermeye yönelik öğretici | Microsoft Docs
 description: Azure Data Box’ınızı Microsoft'a nasıl geri göndereceğinizi öğrenin
 services: databox
 author: alkohli
@@ -8,22 +8,23 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: MT
+ms.localizationpriority: high
+ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098850"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241425"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Öğretici: Azure Data Box döndürün ve verileri Azure 'a yükleyin
+# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Öğretici: Azure Data Box'ı iade etme ve Azure'a verilerin yüklendiğini doğrulama
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="return-data-box-and-verify-data-upload-to-azure"></a>Data Box döndürün ve verileri Azure 'a yükleyin
+# <a name="return-data-box-and-verify-data-upload-to-azure"></a>Data Box'ı iade etme ve Azure'a verilerin yüklendiğini doğrulama
 
 ::: zone-end
 
@@ -34,20 +35,20 @@ Bu öğretici, Azure Data Box’ın nasıl iade edileceğini ve yüklenen verile
 Bu öğreticide şu gibi konular hakkında bilgi edineceksiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
-> * Göndermeye Hazırlama
+> * Ön koşullar
+> * Göndermeye hazırlama
 > * Data Box'ı Microsoft'a gönderme
 > * Azure'a verilerin yüklendiğini doğrulama
 > * Data Box'tan verileri silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları yaptığınızdan emin olun:
+Başlamadan önce şunlardan emin olun:
 
-- [Öğreticiyi tamamladınız: Azure Data Box verileri kopyalayın ve doğrulayın](data-box-deploy-copy-data.md). 
-- Kopyalama işleri tamamlanmıştır. Kopyalama işleri devam ediyorsa Göndermeye Hazırlama çalıştırılamaz.
+- [Öğretici: Verileri Azure Data Box'a kopyalama ve doğrulama](data-box-deploy-copy-data.md) bölümünü tamamladınız. 
+- Kopyalama işleri tamamlandı. Kopyalama işleri devam ediyorsa Göndermeye hazırlama işi gerçekleştirilemez.
 
-## <a name="prepare-to-ship"></a>Göndermeye Hazırlama
+## <a name="prepare-to-ship"></a>Göndermeye hazırlama
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
@@ -55,16 +56,16 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ::: zone target="chromeless"
 
-Veri kopyalama işlemi tamamlandıktan sonra, cihazı hazırlayın ve sevk edersiniz. Cihaz Azure veri merkezine ulaştığında, veriler Azure 'a otomatik olarak yüklenir.
+Veri kopyalama işlemi tamamlandıktan sonra cihazı hazırlayıp gönderin. Cihaz Azure veri merkezine ulaştığında veriler Azure'a otomatik olarak yüklenir.
 
-## <a name="prepare-to-ship"></a>Göndermeye Hazırlama
+## <a name="prepare-to-ship"></a>Göndermeye hazırlama
 
-Göndermeye hazırlanmadan önce, kopyalama işlerinin tamam olduğundan emin olun.
+Göndermeye hazırlama işleminden önce kopyalama işlerinin tamamlandığından emin olun.
 
 1. Yerel web kullanıcı arabirimindeki **Göndermeye hazırla** sayfasına gidin ve gönderme hazırlığına başlayın. 
 2. Cihazı yerel web kullanıcı arabiriminden kapatın. Kabloları cihazdan çıkarın. 
 
-Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir.
+Sonraki adımlar cihazın iade edildiği bölgeye göre belirlenir.
 
 ::: zone-end
 
@@ -72,37 +73,37 @@ Sonraki adımlar, cihazı döndürmekte olduğunuz konuma göre belirlenir.
 
 ## <a name="ship-data-box-back"></a>Data Box'ı geri gönderme
 
-Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** çalıştırmasının başarılı olduğundan emin olun. Cihazı sevk ettiğiniz bölgeye göre yordam farklıdır.
+Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işleminin başarılı olduğundan emin olun. Cihazı gönderdiğiniz bölgeye bağlı olarak yordam farklıdır.
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>ABD, Kanada, Avrupa 'da gönder
+## <a name="ship-in-us-canada-europe"></a>ABD, Kanada, Avrupa'da gönderme
 
-Cihazı ABD, Kanada veya Avrupa 'ya döndürürken aşağıdaki adımları uygulayın.
+Cihazı ABD, Kanada veya Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
-1. Cihazın açık olduğundan ve kabloların kaldırıldığından emin olun. 
+1. Cihazın kapalı olduğundan ve kabloların çıkartılmış olduğundan emin olun. 
 2. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-3. E-ink ekranda gönderi etiketinin görüntülendiğinden emin olun ve taşıyıcınızdan bir teslim alma randevusu alın. Etiket hasar görmüşse veya kaybolursa ya da E-mürekkep ekranda görüntülenmiyorsa, Microsoft Desteği başvurun. Destek ' i öneriyorsa, genel bakış ' a giderek Azure portal **> sevkiyat etiketini yükleyebilirsiniz** . Sevkiyat etiketini ve afdüzeltmesini cihaza indirin. 
-4. Cihaz döndürülürken UPS ile bir toplama zamanlayın. Bir toplama zamanlamak için:
+3. E-ink ekranda gönderi etiketinin görüntülendiğinden emin olun ve taşıyıcınızdan bir teslim alma randevusu alın. Etiket hasar görür veya kaybolursa ya da E-ink ekranında gösterilmezse Microsoft Desteği’ne başvurun. Destek öneride bulunursa Azure portalındaki **Genel Bakış > Gönderim etiketini indir** bölümüne gidebilirsiniz. Gönderim etiketini indirip cihaza yapıştırın. 
+4. Cihazı iade ediyorsanız UPS ile bir toplama zamanı ayarlayın. Teslim alma planlamak için:
 
-    - Yerel UPS (ülkeye/bölgeye özel ücretsiz numara) çağırın.
-    - Çağrınızda, E-mürekkep görüntüsünde veya yazdırılmış etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını tırnak içine edin.
-    - İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
+    - Yerel UPS şubesini (ülkeye/bölgeye özel ücretsiz hatlar) arayın.
+    - Görüşme esnasında, E-ink ekranında veya basılı etiketinizde gördüğünüz iade izleme numarasını bildirin.
+    - İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
 
-    Toplama zamanlamak yerine, en yakın bırakma konumundaki Data Box de bırakabilirsiniz.
+    Teslim alma zamanlama yerine Data Box’ı en yakın teslim etme yerine bırakabilirsiniz.
 4. Data Box nakliyeciniz tarafından toplandıktan ve tarandıktan sonra, portaldaki sipariş durumu **Toplandı** olarak güncelleştirilir. Ayrıca bir takip numarası da görüntülenir.
 
 
-## <a name="ship-in-australia"></a>Avustralya 'da gönder
+## <a name="ship-in-australia"></a>Avustralya'da gönderme
 
-Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. Tüm gelen sevkiyatlar gelişmiş bir bildirime sahip olmalıdır. Avustralya 'da göndermek için aşağıdaki adımları uygulayın.
+Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da gönderme için aşağıdaki adımları uygulayın.
 
 
-1. Cihazı iade sevk irsaliyesiyle göndermek için kullanılan orijinal kutuyu koruyun.
-2. Cihaza veri kopyalama işleminin tamamlanıp **göndermeye hazırlama çalıştırmasının** başarılı olduğundan emin olun.
-3. Cihazın gücünü kapatın ve kabloları kaldırın.
-4. Kuyruğa alındı ve cihazın arka planda sağlanmış olan güç kablosunu güvenli bir şekilde yerleştirin.
-5. Toplama istemek için e-posta Quantium çözümleri. Azure portal belirtilen hizmet başvuru numarasına başvurun. Şu e-posta şablonunu kullanın:- *Tau kodlu ters Sevkiyat Etiketi isteği*. E-postaya aşağıdaki ayrıntıları eklediğinizden emin olun: 
+1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
+2. Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işleminin başarılı olduğundan emin olun.
+3. Cihazı kapatın ve kabloları çıkarın.
+4. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
+5. Kargo toplama isteğinde bulunmak için Quantium Solutions şirketine e-posta gönderin. Azure portalında belirtilen hizmet başvuru numarasını referans gösterin. Şu e-posta şablonunu kullanın: - *TAU kodu ile ters gönderim etiketi isteyin*. E-postaya aşağıdaki ayrıntıları eklediğinizden emin olun: 
 
     ```
     To: Azure@quantiumsolutions.com
@@ -114,27 +115,27 @@ Avustralya 'daki Azure veri merkezlerinde ek bir güvenlik bildirimi vardır. T�
     - Contact number:
     - Requested pickup date: mm/dd
     ```
-6. Quantium çözümleri Avustralya, size bir iade sevkiyat etiketi e-postası verecektir.
-7. Dönüş etiketini Yazdır ve teslim kutusunda bunu afet.
-8. Paketini Courier 'e elle paketleyin.
+6. Quantium Solutions Australia size e-posta ile bir iade gönderim etiketi gönderecektir.
+7. İade etiketini yazdırıp gönderi kutusuna yapıştırın.
+8. Paketi kargoya verin.
 
-Gerekirse, Azure@quantiumsolutions.com veya telefonda e-posta Quantium çözüm desteğini gönderebilirsiniz.
+Gerekirse, Quantium Solution Desteği’ne Azure@quantiumsolutions.com adresinden e-posta ile veya telefonla ulaşabilirsiniz.
 
-Telefon aracılığıyla siparişiniz hakkında sorgu için:
+Telefonla siparişiniz hakkında soru sormak için:
 
-- Önce çekme için bir e-posta gönderin.
-- Telefon üzerinden sipariş adınızı girin.
+- Öncelikle kargo toplama için bir e-posta gönderin.
+- Telefonda siparişinizin adını verin.
 
-## <a name="ship-in-japan"></a>Japonya 'da gönder 
+## <a name="ship-in-japan"></a>Japonya’da gönderme 
 
-1. Cihazı iade sevk irsaliyesiyle göndermek için kullanılan orijinal kutuyu koruyun.
-2. Cihazın gücünü kapatın ve kabloları kaldırın.
-3. Kuyruğa alındı ve cihazın arka planda sağlanmış olan güç kablosunu güvenli bir şekilde yerleştirin.
-4. Şirket adı ve adres bilgilerinizi, gönderici bilgileriniz olarak konsinye notuna yazın.
-5. Aşağıdaki e-posta şablonunu kullanarak e-posta Quantium çözümü.
+1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
+2. Cihazı kapatın ve kabloları çıkarın.
+3. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
+4. Sevk mektubuna, gönderici bilgisi olarak şirket adınızı ve adres bilgilerinizi yazın.
+5. Aşağıdaki e-posta şablonunu kullanarak Quantium Solutions’a e-posta gönderin.
 
-    - Japon Chakubarai konsinye veya eksik olduğunda, bu e-postada bu göz önünde olduğunu unutmayın. Quantium çözümleri Japonya, toplama sırasında konsinye dekontunu getirmek için Japon gönderi ister.
-    - Birden çok siparişiniz varsa, bireysel toplama sağlamak için e-posta gönderin.
+    - Japan Post Chakubarai sevk mektubu gönderilmediyse veya kaybolduysa, gönderdiğiniz e-postada bunu da bildirin. Quantium Solutions Japan, teslim alma esnasında Japan Post’un sevk mektubunu da getirmesini ister.
+    - Birden fazla siparişiniz varsa her birinin ayrı olarak teslim alınması için e-posta gönderin.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -148,12 +149,12 @@ Telefon aracılığıyla siparişiniz hakkında sorgu için:
     d. 17：00-19：00 
     ```
 
-3. Bir toplama zamanladıktan sonra, Quantium çözümlerinden bir e-posta onayı alın. E-posta onayı, Chakubarai konsinye notuna ilişkin bilgileri de içerir.
+3. Teslim alma rezervasyonu yaptıktan sonra Quantium Solutions’tan e-posta onay iletisi alırsınız. E-posta onay iletisi, Chakubarai sevk mektubuna yönelik bilgileri de içerir.
 
-Gerekirse, aşağıdaki bilgileri izleyerek Quantium çözüm desteği (Japonca dil) ile iletişim kurabilmeniz gerekir: 
+Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile iletişime geçebilirsiniz: 
 
-- E-posta:Customerservice.JP@quantiumsolutions.com 
-- Telefon: 03-5755-0150 
+- E-posta: Customerservice.JP@quantiumsolutions.com 
+- Telefon：03-5755-0150 
 
 ::: zone target="docs"
 
@@ -165,26 +166,26 @@ Doğrulama tamamlandıktan sonra Data Box, Azure veri merkezindeki ağa bağlan�
 
 Kopyalama tamamlandıktan sonra, sipariş durumu **Tamamlandı** olarak güncelleştirilir.
 
-Kaynaktan silmeden önce verilerinizin Azure 'a yüklendiğini doğrulayın. Verileriniz şu durumda olabilir:
+Kaynaktan silmeden önce verilerinizin Azure’a yüklendiğinden emin olun. Verileriniz şuralarda olabilir:
 
-- Azure depolama hesabınız. Data Box'a veri kopyaladığınızda, türlerine bağlı olarak bu veriler Azure Depolama hesabınızda aşağıdaki yollardan birine yüklenir.
+- Azure Depolama hesaplarınız. Data Box'a veri kopyaladığınızda, türlerine bağlı olarak bu veriler Azure Depolama hesabınızda aşağıdaki yollardan birine yüklenir.
 
   - Blok blobları ve sayfa blobları için: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure Dosyaları için: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternatif olarak Azure portalda Azure depolama hesabınıza gidip oradan ilerleyebilirsiniz.
 
-- Yönetilen disk kaynak grubunuz. Yönetilen diskler oluştururken, VHD 'ler sayfa Blobları olarak yüklenir ve ardından yönetilen disklere dönüştürülür. Yönetilen diskler, sipariş oluşturma sırasında belirtilen kaynak gruplarına iliştirilir. 
+- Yönetilen disk kaynak gruplarınız. Yönetilen diskler oluştururken, VHD'ler sayfa blobları olarak yüklenir ve ardından yönetilen disklere dönüştürülür. Yönetilen diskler, sipariş oluşturma sırasında belirtilen kaynak gruplarına iliştirilir. 
 
-    - Azure 'da yönetilen disklere kopyalama işlemi başarılı olduysa, Azure portal **sipariş ayrıntılarına** gidebilir ve yönetilen diskler için belirtilen kaynak gruplarını bir yere göz önünde yapabilirsiniz.
+    - Azure'da yönetilen disklere kopyalama işleminiz başarılı olduysa, Azure portalındaki **Sipariş ayrıntıları**’na gidip yönetilen diskler için belirtilen kaynak gruplarını not alabilirsiniz.
 
-        ![Yönetilen disk kaynak gruplarını tanımla](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
+        ![Yönetilen disk kaynak gruplarını tanımlama](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
         Belirtilen kaynak grubuna gidin ve yönetilen disklerinizi bulun.
 
         ![Kaynak gruplarına bağlı yönetilen disk](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - Bir VHDX veya dinamik/fark kayıt VHD 'SI kopyaladıysanız, VHDX/VHD, bir Sayfa Blobu olarak hazırlama depolama hesabına yüklenir, ancak VHD 'nin yönetilen diske dönüştürülmesi başarısız olur. **Blob > hazırlama depolama hesabınıza** gidin ve ardından uygun kapsayıcıyı seçin-Standart SSD, Standart HDD veya Premium SSD. VHD 'ler, hazırlama depolama hesabınızda sayfa Blobları olarak karşıya yüklenir.
+    - Bir VHDX veya dinamik/fark kayıt VHD'si kopyaladıysanız, VHDX/VHD bir sayfa blobu olarak hazırlama depolama hesabına yüklenir ancak VHD'nin yönetilen diske dönüştürülmesi başarısız olur. Hazırlama **Depolama hesabı > Bloblar**’a gidin ve sonra uygun kapsayıcıyı seçin: Standart SSD, Standart HDD veya Premium SSD. VHD'ler, hazırlama depolama hesabınıza sayfa blobları olarak yüklenir.
 
 ::: zone-end
 
@@ -207,8 +208,8 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
-> * Önkoşullar
-> * Göndermeye Hazırlama
+> * Ön koşullar
+> * Göndermeye hazırlama
 > * Data Box'ı Microsoft'a gönderme
 > * Azure'a verilerin yüklendiğini doğrulama
 > * Data Box'tan verileri silme

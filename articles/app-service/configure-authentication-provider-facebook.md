@@ -1,6 +1,6 @@
 ---
 title: Facebook kimlik doğrulamasını Yapılandırma-Azure App Service
-description: App Services uygulamanız için Facebook kimlik doğrulamasını nasıl yapılandıracağınızı öğrenin.
+description: App Service uygulamanız için Facebook kimlik doğrulamasını nasıl yapılandıracağınızı öğrenin.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f4d26572dc21e2c7454fb739cb4b5fb5665bd1db
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 410d769d0d9abe3a0a0f9c45e3cf67bb94ec9f4d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098572"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232067"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>App Service uygulamanızı Facebook oturum açma bilgilerini kullanacak şekilde yapılandırma
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,9 +30,9 @@ Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresin
 
 ## <a name="register"> </a>Uygulamanızı Facebook ile kaydetme
 1. [Facebook geliştiricileri] Web sitesine gidin ve Facebook hesabı kimlik bilgilerinizle oturum açın.
-3. Seçim Geliştiriciler için Facebook hesabınız yoksa, **kullanmaya** başlayın ' a tıklayın ve kayıt adımlarını izleyin.
+3. Seçim Geliştiriciler için Facebook hesabınız yoksa, **kullanmaya başlayın**' a tıklayın ve kayıt adımlarını izleyin.
 4. **Uygulamalarım** > **Yeni uygulama ekle**' ye tıklayın.
-5. **Görünen ad**alanına uygulamanız için benzersiz bir ad yazın. Ayrıca, **Iletişim e-postanızı**girin ve ardından **uygulama kimliği oluştur** ' a tıklayın ve güvenlik denetimini doldurun. Bu, sizi yeni Facebook uygulamanızın geliştirici panosuna götürür.
+5. **Görünen ad**alanına uygulamanız için benzersiz bir ad yazın. Ayrıca, **Iletişim e-postanızı**girin ve ardından **uygulama kimliği oluştur** ' a tıklayın ve güvenlik denetimini doldurun. Yeni Facebook uygulamanız için geliştirici panosu açılır.
 6. **Pano** > Facebook oturumaçma > Web 'i ayarla ' ya tıklayın. > 
 1. **Facebook oturum açma**altındaki sol taraftaki gezinmede **Ayarlar**' a tıklayın.
 1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`  *\<app-name >* yazın ve Azure App Service uygulamanızın adıyla değiştirin. Tıklayın **değişiklikleri kaydetmek**.
@@ -42,11 +42,11 @@ Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresin
    > Uygulama gizli anahtarı önemli bir güvenlik kimlik bilgileridir. Bu parolayı kimseyle paylaşmayın veya bir istemci uygulaması içinde dağıtmayın.
    > 
    > 
-9. Uygulamayı kaydetmek için kullanılan Facebook hesabı, uygulamanın bir yöneticisidir. Bu noktada, yalnızca Yöneticiler bu uygulamada oturum açabilir. Diğer Facebook hesaplarının kimliğini doğrulamak için, **uygulama gözden geçirmesi** ' na tıklayın ve Facebook kimlik doğrulamasını kullanarak genel genel erişimi etkinleştirmek üzere uygulamanızın **adını \<> Genel yapın** .
+9. Uygulamayı kaydetmek için kullandığınız Facebook hesabı, uygulamanın bir yöneticisidir. Bu noktada, yalnızca Yöneticiler bu uygulamada oturum açabilir. Diğer Facebook hesaplarının kimliğini doğrulamak için, **uygulama gözden geçirmesi** ' na tıklayın ve Facebook kimlik doğrulamasını kullanarak genel genel erişimi etkinleştirmek üzere uygulamanızın **adını \<> Genel yapın** .
 
 ## <a name="secrets"> </a>Uygulamanıza Facebook bilgilerini ekleyin
 1. [Azure Portal] oturum açın ve App Service uygulamanıza gidin. Ayarlar > **kimlik doğrulaması/yetkilendirme**' ye tıklayın ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
-2. Daha önce aldığınız uygulama KIMLIĞI ve uygulama gizli anahtarı ' nda **Facebook**' a tıklayın, isteğe bağlı olarak uygulamanızın gerektirdiği kapsamları etkinleştirin ve **Tamam**' a tıklayın.
+2. **Facebook**' a tıklayın, daha önce EDINDIĞINIZ uygulama kimliği ve uygulama gizli değerlerini yapıştırın, isteğe bağlı olarak uygulamanızın ihtiyaç duyduğu kapsamları etkinleştirin ve ardından **Tamam**' a tıklayın.
    
     ![][0]
    

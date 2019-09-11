@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982706"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147232"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde desteklenen Kubernetes sürümleri
 
@@ -49,13 +49,13 @@ AKS, Kubernetes’in dört küçük sürümünü destekler:
 
 Bu "N-3" (N (en son sürüm)-3 (alt sürümler)) olarak bilinir.
 
-Örneğin, AKS *1.13. x* bugün tanıtıldıysa, aşağıdaki sürümler için destek sağlanır:
+Örneğin, AKS *1.13.* bugün, aşağıdaki sürümler için destek sağlanır:
 
 Yeni ikincil sürüm    |    Desteklenen sürüm listesi
 -----------------    |    ----------------------
-1.13. x               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1,10. a, 1,10. b
+1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1,10. a, 1,10. b
 
-Burada "x" ve ". a" ve ". b", temsilci düzeltme eki sürümleridir.
+Burada ". a" ve ". b", temsilci düzeltme eki sürümleridir. " "from 1.13. a, 1.12. a öğesinden farklı olabilir. Örneğin, 1.13.9 ve 1.12.8.
 
 Sürüm değişiklikleri ve beklentileri hakkındaki iletişimlerle ilgili ayrıntılar için aşağıdaki "Iletişimler" bölümüne bakın.
 
@@ -72,7 +72,7 @@ Yeni bir alt sürüm ortaya çıkarıldığında, desteklenen en eski ikincil s�
 1.9.b
 ```
 
-Ve AKS yayınları 1.13. x, bu, 1.9. x sürümlerinin (tüm 1,9 sürümleri) kaldırıldığı ve destek dışı olacağı anlamına gelir.
+Ve AKS yayınları 1,13. *Bu, 1,9 anlamına gelir.* sürümler (tüm 1,9 sürümler) kaldırılır ve destek dışı bırakılır.
 
 > [!NOTE]
 > Müşteriler desteklenmeyen bir Kubernetes sürümü çalıştırıyorsa, bu, küme için destek istendiğinde yükseltmeniz istenir. Desteklenmeyen Kubernetes yayınları çalıştıran kümeler [aks destek ilkeleri](https://docs.microsoft.com/azure/aks/support-policies)kapsamında değildir.
@@ -97,7 +97,7 @@ New Supported Version List
 > [!NOTE]
 > Müşteriler küme oluşturmayı, CI 'yi veya diğer otomatikleştirilmiş işleri Belirli bir düzeltme eki yayınlarına sabitleyemez. 
 
-### <a name="communications"></a>Haberleşme
+### <a name="communications"></a>İletişim
 
 * Kubernetes 'in yeni **İkincil** sürümleri için
   * Tüm kullanıcılar, yeni sürümden ve hangi sürümün kaldırılabileceği herkese açık bir şekilde bildirilir.
@@ -126,7 +126,7 @@ Hatanın veya güvenlik sorununun önem derecesine bağlı olarak belirli düzel
 
 ### <a name="azure-portal-and-cli-default-versions"></a>Azure portal ve CLı varsayılan sürümleri
 
-Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme her zaman N-1 alt sürümüne ve en son düzeltme ekine ayarlanır. Örneğin, aks *1.13. x*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1,10. a* + *1,10 b*' yi destekliyorsa, yeni kümeler için varsayılan sürüm 1.12 ' dir *. b* .
+Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme her zaman N-1 alt sürümüne ve en son düzeltme ekine ayarlanır. Örneğin, aks *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1,10. a* + *1,10 b*' yi destekliyorsa, yeni kümeler için varsayılan sürüm 1.12 ' dir *. b* .
 
 AKS, müşterilere varsayılan olarak bilinen, kararlı ve düzeltme eki uygulanmış bir sürüm sağlamak için N-1 (Minor. latestPatch, EG 1.12. b) değerini alır.
 
@@ -161,8 +161,8 @@ KubernetesVersion    Upgrades
 
 *N-4* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-4 sürümünden n-3 ' e yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örneğin:
 
-- Desteklenen aks sürümleri *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*ve *1,10. e* + *1,10 f* ve *1.9. g* veya *1.9. h*üzerinde çalışıyorsunuz, destek dışından çalışıyorsunuz.
-- *1.9. g* veya *1.9. h* 'den *1,10. e* sürümüne yükseltme yaptıysanız veya *1,10. f* başarılı olduktan sonra destek ilkemizdeki ' a geri dönebilirsiniz.
+- Desteklenen aks sürümleri *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*ve *1,10. f* + *1,10. g* ve 1.9. *h* veya *1.9. i* , destek dışında olursunuz.
+- *1.9. h* veya *1.9. i* 'den *1,10. f* ya da *1,10. g* ile yükseltme başarılı olursa, destek ilkilerimizin içinden geri dönebilirsiniz.
 
 *N-4* ' ten eski sürümlere yükseltmeler desteklenmez. Bu gibi durumlarda, müşterilerin yeni AKS kümeleri oluşturup iş yüklerini yeniden dağıtmanıza önerilir.
 

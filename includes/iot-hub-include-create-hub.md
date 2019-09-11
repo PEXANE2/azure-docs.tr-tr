@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: dc31abaadf3f39d31a4c1b04f9911b5ce1677916
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e01bb13b904aaf8671512daa3ef3cbad182f01e3
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048571"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161952"
 ---
 Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
@@ -50,7 +50,7 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
     - **Gelişmiş ayarlar** > **cihazdan buluta bölümler**: Bu özellik cihazdan buluta iletileri, iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Çoğu hub 'da yalnızca dört bölüm gereklidir.
 
-1. Bu öğreticide, varsayılan seçimleri kabul edin ve ardından seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Bu ekrana benzer bir şey görürsünüz.
+1. Bu makalede, varsayılan seçimleri kabul edin ve ardından seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Bu ekrana benzer bir şey görürsünüz.
 
    ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 

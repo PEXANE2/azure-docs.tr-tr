@@ -1,9 +1,9 @@
 ---
-title: PIM - Azure Active Directory Azure kaynak rolleri için erişimi gözden geçir | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) Azure kaynak rolleri erişimi gözden geçirmeyi öğrenin.
+title: PıM-Azure Active Directory 'de Azure Kaynak rollerine erişimi gözden geçirme | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içindeki Azure Kaynak rollerinin erişimini incelemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 03/30/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ede412292caf682c3078002d23e1956bd68d1378
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c0ce1a5eee4b8d4cc40c47dadd4bcdc74d03ba
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602222"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804093"
 ---
-# <a name="review-access-to-azure-resource-roles-in-pim"></a>PIM Azure kaynak rolleri için erişim gözden geçirin
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM), kuruluşların azure'daki kaynaklara ayrıcalıklı erişimi yönetme sürecini basitleştirir. 
+# <a name="review-access-to-azure-resource-roles-in-pim"></a>PıM 'de Azure Kaynak rollerine erişimi gözden geçirme
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kuruluşların Azure 'daki kaynaklara ayrıcalıklı erişimi nasıl yöneteceğini basitleştirir. 
 
-Bir yönetici rolüne atanırsa, kuruluşunuzun ayrıcalıklı Rol Yöneticisi yine de bu rol için işinizi gerektiğini düzenli olarak doğrulamanızı isteyebilir. Bir bağlantısını içeren bir e-posta alabilir veya doğrudan gidebilirsiniz [Azure portalında](https://portal.azure.com). Bir kendi kendini gözden geçirin, atanan rollerinin gerçekleştirmek için bu makaledeki adımları izleyin.
+Bir Yönetim rolüne atandıysanız, kuruluşunuzun ayrıcalıklı rol yöneticisi, işiniz için hala bu rolün gerekli olduğunu düzenli olarak doğrulamanızı isteyebilir. Bir bağlantı içeren bir e-posta alabilir veya [Azure Portal](https://portal.azure.com)doğrudan da gidebilirsiniz. Atanan rollerinizin kendi kendine gözden geçirilmesini gerçekleştirmek için bu makaledeki adımları izleyin.
 
-Erişim gözden geçirmelerine ilgilenen bir ayrıcalıklı rol yöneticisi değilseniz, daha fazla bilgi edinin [erişim gözden geçirmesi başlatma](pim-resource-roles-start-access-review.md).
+Erişim gözden geçirmeleriyle ilgilenen ayrıcalıklı bir rol yöneticisiyseniz, [erişim incelemesi başlatma hakkında](pim-resource-roles-start-access-review.md)daha fazla ayrıntı alın.
 
 ## <a name="add-the-privileged-identity-management-application"></a>Privileged Identity Management uygulamasını ekleme
-Azure Active Directory (Azure AD) PIM uygulamasında kullanabileceğiniz [Azure portalında](https://portal.azure.com/) , gözden geçirmek için. Portalınızda uygulamanız yoksa, başlamak için aşağıdaki adımları izleyin.
+İncelemenizi gerçekleştirmek için [Azure portal](https://portal.azure.com/) Azure Active Directory (Azure AD) PIM uygulamasını kullanabilirsiniz. Portalınızdaki uygulamaya sahip değilseniz, başlamak için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Kullanıcı Azure portalının sağ üst köşedeki adlandırın ve burada yapacaklarınız dizini seçin seçin çalışıyor olabilir.
-3. Seçin **tüm hizmetleri**ve **filtre** aramak için arama kutusunu *Azure AD Privileged Identity Management*.
-4. Denetleme **panoya Sabitle**ve ardından **Oluştur**. PIM uygulamasını açar.
+2. Azure portal sağ üst köşesinde Kullanıcı adınızı seçin ve ardından çalıştırdığınız dizini seçin.
+3. **Tüm hizmetler**' i seçin ve *Azure AD Privileged Identity Management*aramak için **filtre** kutusunu kullanın.
+4. **Panoya sabitle**' yi işaretleyin ve ardından **Oluştur**' u seçin. PıM uygulaması açılır.
 
-## <a name="approve-or-deny-access"></a>Onaylayın veya reddedin erişim
-Onaylayabilir ya da erişimi reddetmek yalnızca Gözden Geçiren, yine de bu rolü veya kullanıp kullanmadığını belirten. Seçin **Onayla** rolünde kalmak istiyorsanız veya **Reddet** erişim artık ihtiyacınız yoksa. Gözden Geçiren sonuçlar yalnızca geçerli olduğu durumlarda durumunuzu değiştirir.
+## <a name="approve-or-deny-access"></a>Erişimi onayla veya Reddet
+Erişimi onayladığınızda veya reddetmeniz durumunda, gözden geçireni bu rolü hâlâ kullanıp kullanmayacağınızı söylemiş olursunuz. Rol üzerinde kalmak istiyorsanız **Onayla** ' yı seçin veya artık erişime Ihtiyacınız yoksa **Reddet** ' i seçin. Durumunuz yalnızca gözden geçiren sonuçları uygularken değişir.
 
-Erişim değerlendirmesi tamamlama ve bulmak için aşağıdaki adımları izleyin:
-1. Azure AD PIM uygulamaya göz atın.
-2. Seçin **erişimi gözden geçir** dikey penceresi.
+Erişim gözden geçirmesini bulmak ve gerçekleştirmek için şu adımları izleyin:
+1. Azure AD PıM uygulamasına gidin.
+2. **Erişimi gözden geçir** dikey penceresini seçin.
 
-   ![Seçili gözden geçirme erişim dikey penceresi ekran görüntüsü, PIM uygulamanızdan](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
+   ![Gözden geçirme erişimi dikey penceresi seçili olan PıM uygulamasının ekran görüntüsü](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
-3. Gözden geçirmeyi tamamlamak istiyorsanız seçin. 
-4. Seçin ya da **onaylama** veya **Reddet**. İçinde **neden kutusu sağlama**, kararınız için bir neden eklemeniz gerekir.
+3. Gerçekleştirmek istediğiniz gözden geçirmeyi seçin. 
+4. **Onayla** veya **Reddet**' i seçin. **Bir neden belirtin kutusunda**kararınız için bir neden eklemeniz gerekebilir.
 
-   ![Ekran görüntüsü, gözden geçirme Ayrıntıları sayfası](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
+   ![Ayrıntıları gözden geçirme sayfasının ekran görüntüsü](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PIM'de erişim gözden geçirmesi Azure AD'ye rollerim gerçekleştirin](pim-how-to-perform-security-review.md)
+- [PıM 'de Azure AD rollerimin erişim incelemesini gerçekleştirme](pim-how-to-perform-security-review.md)

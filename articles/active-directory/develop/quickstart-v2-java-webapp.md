@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125471"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211881"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı Başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -35,13 +35,10 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 > ## <a name="prerequisites"></a>Önkoşullar
 > Bu örneği çalıştırmak için şunlar gerekir: 
 > - Java Development Kit (JDK) 8 veya üzeri ve Maven.
-> - Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz [. Azure AD kiracısı alma.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
-> Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
-> * Çaba [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin.](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * El ile: [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydedin ve el ile yapılandırın.](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Hızlı başlangıç uygulamanızı başlatmak için iki seçeneğiniz vardır: Express (seçenek 1) veya el ile (seçenek 2)
 > 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
@@ -123,7 +120,7 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 ### <a name="getting-msal"></a>MSAL alma
 MSAL4J, kullanıcıların oturum açması ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri istemek için kullanılan bir kitaplıktır. Uygulamanızda Pod. xml veya Build. Gradle dosyasında aşağıdaki değişiklikleri yaparak bağımlılıklarınızı yönetmek için Maven veya Gradle kullanarak uygulamanıza MSAL4J ekleyebilirsiniz. 
 
-```
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
@@ -139,7 +136,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ### <a name="msal-initialization"></a>Msal başlatma
 Aşağıdaki kodu MSAL4J kullanacağınız dosyanın en üstüne ekleyerek MSAL4J başvurusunu ekleyebilirsiniz: 
 
-```
+```Java
 import com.microsoft.aad.msal4j.*;
 ```
 

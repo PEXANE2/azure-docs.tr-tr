@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 404b33b948fc2b39082f6cdac8699dfd78e5d143
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 267c21087042904ef04a7bc930d5f31439217e17
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966418"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276632"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Azure Data Factory kullanarak spark'tan veri kopyalama 
 
@@ -91,7 +91,9 @@ Spark'tan veri kopyalamak için dataset öğesinin type özelliği ayarlamak **S
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SparkObject** | Evet |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| schema | Şemanın adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni `schema` iş `table` yükü için ve kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -100,11 +102,12 @@ Spark'tan veri kopyalamak için dataset öğesinin type özelliği ayarlamak **S
     "name": "SparkDataset",
     "properties": {
         "type": "SparkObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Spark linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -120,7 +123,7 @@ Spark'tan veri kopyalamak için kopyalama etkinliği için kaynak türünü ayar
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Mini kaynak** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 

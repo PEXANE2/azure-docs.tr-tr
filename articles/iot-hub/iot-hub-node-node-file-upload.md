@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: da97dde43a6ef13db204f1d3be1229a0dfc30af5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668031"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147640"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>IoT Hub (node. js) ile cihazınızdan buluta dosya yükleme
 
@@ -44,9 +44,9 @@ Bu öğreticinin sonunda iki Node. js konsol uygulaması çalıştırırsınız:
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformunu ve dilini (C, .NET, JavaScript, Python ve Java dahil) destekler. Cihazınızı Azure IoT Hub bağlama hakkında adım adım yönergeler için [Azure IoT Geliştirici Merkezi] bölümüne bakın.
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+## <a name="prerequisites"></a>Önkoşullar
 
-* Node. js sürüm 10.0. x veya üzeri.
+* Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 

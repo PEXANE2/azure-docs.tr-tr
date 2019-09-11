@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3a097c164628e6d4e4b7886a195901207d83a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3bb18f11de92680d296d747fc34e16c3264c369
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852202"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193274"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı
 
@@ -66,7 +66,7 @@ Bu tür bir yetkilendirme, kişisel Microsoft hesapları olan tüketici kullanı
 ACL 'Leri kullanmak yerine, uygulama izinleri kümesini kullanıma sunmak için API 'Leri kullanabilirsiniz. Uygulama izni bir kuruluşun yöneticisi tarafından uygulamaya verilir ve yalnızca söz konusu kuruluşa ve çalışanlarına ait olan verilere erişmek için kullanılabilir. Örneğin, Microsoft Graph aşağıdakileri yapmak için çeşitli uygulama izinleri sunar:
 
 * Tüm posta kutularındaki postaları okuma
-* Tüm posta kutularındaki postaları okuma ve yazma
+* Tüm posta kutularındaki postaları Okuma ve yazma
 * Herhangi bir kullanıcı adına posta gönderme
 * Dizin verilerini okuma
 
@@ -81,7 +81,7 @@ Uygulamanızda uygulama izinlerini kullanmak için, sonraki bölümlerde ele al�
 3. **API izinleri** bölümünü bulun ve ardından uygulamanızın gerektirdiği **uygulama izinlerini** ekleyin.
 4. Uygulama kaydını **kaydedin** .
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Önerilen Kullanıcıyı uygulamanızda imzalama
+#### <a name="recommended-sign-the-user-into-your-app"></a>Önerilen: Kullanıcıyı uygulamanızda imzalama
 
 Genellikle, uygulama izinleri kullanan bir uygulama oluşturduğunuzda, uygulama, yöneticinin uygulamanın izinlerini onayladığı bir sayfa veya görünüm gerektirir. Bu sayfa, uygulamanın oturum açma akışının bir parçası, uygulamanın ayarlarının bir parçası olabilir veya adanmış bir "Connect" akışı olabilir. Çoğu durumda, uygulamanın bu "Bağlan" görünümünü yalnızca bir kullanıcı iş veya okul Microsoft hesabı oturum açtıktan sonra göstermesini mantıklı hale getirir.
 
@@ -170,7 +170,8 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+// Replace {tenant} with your tenant! 
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | Parametre | Koşul | Açıklama |
@@ -250,10 +251,6 @@ Bir hata yanıtı şuna benzer:
 | `trace_id` | Tanılamalarla yardım eden istek için benzersiz bir tanımlayıcı. |
 | `correlation_id` | Bileşenler genelinde tanılamalarla ilgili olarak size yardımcı olacak istek için benzersiz bir tanımlayıcı. |
 
-> [!NOTE]
-> Uygulamanızın v2 belirtecini alabilmesi için, uygulamanın bildirim dosyasını Azure portalından güncelleştirebilirsiniz.) Özniteliği `accessTokenAcceptedVersion` ekleyebilir ve değeri 2 olarak `"accessTokenAcceptedVersion": 2`ayarlayabilirsiniz. Aynı konuda daha fazla bilgi edinmek için lütfen makale [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) ' ne bakın. Varsayılan olarak, uygulama şu anda bir v1 belirteci recieves. uygulama/Web API bildiriminde tanımlanmamışsa, bu özniteliğin değeri varsayılan olarak 1 ' dir ve bu nedenle uygulama v1 belirtecini alacaktır.  
-
-
 ## <a name="use-a-token"></a>Belirteç kullanma
 
 Bir belirteç edindiniz, şimdi kaynağa istek yapmak için belirteci kullanın. Belirtecin süresi sona erdiğinde, yeni bir erişim belirteci almak `/token` için isteği uç noktaya yineleyin.
@@ -269,7 +266,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>Kod örnekleri ve diğer belgeler

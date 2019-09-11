@@ -1,127 +1,127 @@
 ---
-title: Örnek - 800-53 NIST SP R4 şema - dağıtma adımları
-description: NIST SP adımları 800-53 R4 şema örnek dağıtın.
+title: Örnek-NIST SP 800-53 R4 şema-Deploy adımları
+description: NIST SP 800-53 R4 şema örneğinin adımlarını dağıtın.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 206763e2d17f4ad711ff5fd897f1429814e61837
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c1a928076b3900739886b93d1105c6294821bf66
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228908"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802366"
 ---
-# <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>SP NIST 800-53 R4 şema örnek dağıtma
+# <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 şema örneğini dağıtma
 
-SP Azure şemaları NIST 800-53 R4 şema örnek dağıtmak için aşağıdaki adım atılmalıdır:
+Azure şemaları NIST SP 800-53 R4 şema örneğini dağıtmak için aşağıdaki adımların alınması gerekir:
 
 > [!div class="checklist"]
-> - Örnekten yeni blueprint oluşturma
-> - Örnek olarak kopyanızın işaretlemek **yayımlandı**
-> - Blueprint kopyasını mevcut bir aboneliğe atayın
+> - Örnekten yeni bir şema oluştur
+> - Örnek kopyanızı **yayımlandı** olarak işaretleyin
+> - Şema kopyanızı mevcut bir aboneliğe atama
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
-## <a name="create-blueprint-from-sample"></a>Örnekten Blueprint oluşturma
+## <a name="create-blueprint-from-sample"></a>Örnekten şema oluştur
 
-İlk olarak, şema örnek bir başlangıç örneğini kullanarak ortamınızda yeni bir şema oluşturarak uygulayın.
+İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
 
-1. Seçin **tüm hizmetleri** arayın ve seçin **ilke** sol bölmesinde. Üzerinde **ilke** sayfasında **şemaları**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Gelen **Başlarken** seçin sol taraftaki sayfasında **Oluştur** düğmesini _blueprint oluşturma_.
+1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
 
-1. Bulma **NIST SP 800-53 R4** şema örnek altında _diğer örnekleri_ seçip **Bu örneği kullanmak**.
+1. _Diğer örnekler_ altında **NIST SP 800-53 R4** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
 
-1. Girin _Temelleri_ şema örnek:
+1. Şema örneği _hakkında temel bilgileri_ girin:
 
-   - **Blueprint adı**: SP NIST 800-53 R4 şema örnek kopyası için bir ad sağlayın.
-   - **Tanım konumu**: Üç nokta kullanın ve örneğe kopyasını kaydetmek için yönetim grubunu seçin.
+   - **Blueprint adı**: NIST SP 800-53 R4 şema örneğinin kopyasına bir ad verin.
+   - **Tanım konumu**: Üç noktayı kullanın ve örnek kopyanızı ' e kaydetmek için yönetim grubunu seçin.
 
-1. Seçin _Yapıtları_ sayfanın üst kısmındaki sekme veya **sonraki: Yapıtları** sayfanın alt kısmındaki.
+1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya **ileri ' yi seçin: Sayfanın** alt kısmındaki yapıtlar.
 
-1. Şema örnek değişiklikleri yapıtların listesini gözden geçirin. Yapıtlar birçoğu, daha sonra tanımlarız parametrelere sahip. Seçin **Taslağı Kaydet** bittiğinde şema örnek gözden geçirme.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
 
-## <a name="publish-the-sample-copy"></a>Örnek kopyalama yayımlama
+## <a name="publish-the-sample-copy"></a>Örnek kopyayı Yayımla
 
-Şema örnek kopyanızın artık ortamınızda oluşturuldu. İçinde oluşturulan **taslak** modu ve olmalıdır **yayımlanan** , atanan ve dağıtılan kullanılmadan önce. Değişiklik, NIST SP ile aynı doğrultuda uzağa 800-53 denetimleri taşımak ancak bu şema kopyasını gereksinimlerine ve ortam için özelleştirilebilir.
+Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, NIST SP 800-53 denetimleriyle hizalamadan uzağa taşınabilir.
 
-1. Seçin **tüm hizmetleri** arayın ve seçin **ilke** sol bölmesinde. Üzerinde **ilke** sayfasında **şemaları**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Seçin **Blueprint tanımları** soldaki sayfası. Şema örnek kopyasını bulun ve seçin için filtreleri kullanın.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
-1. Seçin **Yayımla şema** sayfanın üstünde. Sağ taraftaki yeni sayfa sağlayan bir **sürüm** şema örnek kopyası için. Bu özellik, daha sonra bir değişikliği yapmak için yararlıdır. Sağlamak **notları değiştirmek** "ilk sürüm 800-53 R4 şema örnek NIST SP yayımlanan gibi." Ardından **Yayımla** sayfanın alt kısmındaki.
+1. Sayfanın üst kısmındaki şemayı **Yayımla** ' yı seçin. Sağ taraftaki yeni sayfada, şema örneğinin kopyası için bir **Sürüm** belirtin. Daha sonra bir değişiklik yaparsanız, bu özellik için faydalıdır. "NIST SP 800-53 R4 şema örneğinden yayınlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Ardından sayfanın alt kısmında **Yayımla** ' yı seçin.
 
-## <a name="assign-the-sample-copy"></a>Örnek kopya atama
+## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Blueprint kopyasını başarıyla silindikten sonra **yayımlanan**, yönetim grubu için kaydedildi dahilinde bir aboneliğe atanabilir. Bu adım, burada parametreler şema kopyasını, her dağıtım benzersiz olacak şekilde sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
 
-1. Seçin **tüm hizmetleri** arayın ve seçin **ilke** sol bölmesinde. Üzerinde **ilke** sayfasında **şemaları**.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
-1. Seçin **Blueprint tanımları** soldaki sayfası. Şema örnek kopyasını bulun ve seçin için filtreleri kullanın.
+1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
-1. Seçin **Ata şema** şema tanımı sayfanın üstünde.
+1. Şema tanım sayfasının en üstünde şema **ata** ' yı seçin.
 
-1. Blueprint ataması için parametre değerlerini sağlayın:
+1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel Bilgiler
+   - Temel
 
-     - **Abonelikler**: Bir veya daha fazla yönetim grubuna olduğunuz abonelikleri için şema örnek kopyanızın kaydedilen seçin. Birden fazla aboneliğiniz seçerseniz, bir atama için her girdiğiniz parametreleri kullanarak oluşturulur.
-     - **Ödev adı**: Şema adını temel alarak, önceden doldurulmuş adıdır.
-       Gerektiği gibi değiştirin ya da olduğu gibi bırakın.
-     - **Konum**: Yönetilen kimlikle oluşturulması için bir bölge seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Şema tanımı sürümü**: Çekme bir **yayımlanan** şema örnek kopyanızın sürümü.
+     - **Abonelikler**: Şema örneğinin kopyasına kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: Ad, BLUEPRINT adına göre önceden doldurulur.
+       Gerektiğinde değiştirin veya olduğu gibi bırakın.
+     - **Konum**: Yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Blueprint tanım sürümü**: Şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
-   - Kilit atama
+   - Atamayı Kilitle
 
-     Ortamınızı ayarlama şema kilidi seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
+     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
    - Yönetilen Kimlik
 
-     Varsayılan değeri bırakın _sistem tarafından atanan_ yönetilen kimlik seçeneği.
+     Varsayılan sistem tarafından _atanmış_ yönetilen kimlik seçeneğini bırakın.
 
    - Yapıt parametreleri
 
-     Bu bölümde tanımlanan parametrelerin altında tanımlandığı yapıtı için geçerlidir. Bu parametreler [dinamik parametreleri](../../concepts/parameters.md#dynamic-parameters) blueprint ataması sırasında tanımlanan olduğundan. Tam bir liste veya yapıt parametrelerin ve Tanımlamaların için bkz. [Yapıt parametreleri tablo](#artifact-parameters-table).
+     Bu bölümde tanımlanan parametreler, tanımlanan yapıt için geçerlidir. Bu parametreler, Blueprint atama sırasında tanımlandıklarından [dinamik parametrelerdir](../../concepts/parameters.md#dynamic-parameters) . Tam liste veya yapıt parametreleri ve açıklamaları için bkz. [yapıt parametreleri tablosu](#artifact-parameters-table).
 
-1. Tüm parametreler girildikten sonra seçin **atama** sayfanın alt kısmındaki. Şema atamasını oluşturulur ve yapıt dağıtımı başlar. Dağıtım gereken yaklaşık bir saat. Dağıtım durumunu denetlemek için şema atamasını açın.
+1. Tüm parametreler girildikten sonra sayfanın alt kısmındaki **ata** ' yı seçin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için, BLUEPRINT atamasını açın.
 
 > [!WARNING]
-> Azure şemaları hizmet ve yerleşik şema örnekleri **ücretsiz olarak sunulmaktadır**. Azure kaynaklarıdır [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Kullanım [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) çalıştıran bu şema örnek tarafından dağıtılan kaynakların maliyetini tahmin etmek için.
+> Azure şemaları hizmeti ve yerleşik şema örnekleri **ücretsiz olarak ücretsizdir**. Azure kaynakları [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan çalışan kaynakların maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
-## <a name="artifact-parameters-table"></a>Yapıt parametreleri Tablo
+## <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
 
-Aşağıdaki tabloda, yapıt parametreleri şema listesi sağlar:
+Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Önizleme\]: SP NIST 800-53 R4 denetimleri denetim ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma|İlke ataması|VM'ler için yapılandırılmalıdır log Analytics çalışma alanı kimliği|VM'ler için yapılandırılmalıdır Log Analytics çalışma alanı Kimliğini (GUID) budur.|
-|\[Önizleme\]: SP NIST 800-53 R4 denetimleri denetim ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma|İlke ataması|Tanılama günlüklerinin etkin olması gereken kaynak türleri listesi|Tanılama Günlüğü ayarı etkin değilse denetim için kaynak türleri listesi. Kabul edilebilir değerler bulunabilir [Azure İzleyici tanılama günlükleri şemaları](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|\[Önizleme\]: SP NIST 800-53 R4 denetimleri denetim ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma|İlke ataması|Windows VM Yöneticileri grubundan bırakılması gereken kullanıcılar listesi|Yerel Administrators grubunda dışlanan üyeleri noktalı virgülle ayrılmış listesi. Örn: Yönetici; myUser1; myUser2|
-|\[Önizleme\]: SP NIST 800-53 R4 denetimleri denetim ve denetim gereksinimlerini desteklemek için belirli VM uzantılarını dağıtma|İlke ataması|Windows VM Administrators grubuna eklenmesi gereken kullanıcıların listesi|Yerel Administrators grubuna eklenmesi gereken üyeleri noktalı virgülle ayrılmış listesi. Örn: Yönetici; myUser1; myUser2|
-|\[Önizleme\]: Linux VM ölçek kümeleri (VMSS) için log Analytics aracısını dağıtmayı|İlke ataması|Linux VM ölçek kümeleri (VMSS) için log Analytics çalışma alanı|Bu çalışma alanı atama kapsamı dışında ise 'Log Analytics katkıda bulunan' izinleri elle vermeniz gerekir (veya benzeri) asıl ilke atama kimliği|
-|\[Önizleme\]: Linux VM ölçek kümeleri (VMSS) için log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: Kapsama eklemek için Linux işletim sistemi desteklenen bir VM görüntüsü listesi|Boş bir dizi, isteğe bağlı parametre göstermek için kullanılabilir: \[\]|
-|\[Önizleme\]: Linux Vm'leri için log Analytics aracısını dağıtmayı|İlke ataması|Linux Vm'leri için log Analytics çalışma alanı|Bu çalışma alanı atama kapsamı dışında ise 'Log Analytics katkıda bulunan' izinleri elle vermeniz gerekir (veya benzeri) asıl ilke atama kimliği|
-|\[Önizleme\]: Linux Vm'leri için log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: Kapsama eklemek için Linux işletim sistemi desteklenen bir VM görüntüsü listesi|Boş bir dizi, isteğe bağlı parametre göstermek için kullanılabilir: \[\]|
-|\[Önizleme\]: Windows VM ölçek kümeleri (VMSS) için log Analytics aracısını dağıtmayı|İlke ataması|Windows VM ölçek kümeleri (VMSS) için log Analytics çalışma alanı|Bu çalışma alanı atama kapsamı dışında ise 'Log Analytics katkıda bulunan' izinleri elle vermeniz gerekir (veya benzeri) asıl ilke atama kimliği|
-|\[Önizleme\]: Windows VM ölçek kümeleri (VMSS) için log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: Windows işletim sistemi kapsamına eklenecek desteklenen bir VM görüntüsü listesi|Boş bir dizi, isteğe bağlı parametre göstermek için kullanılabilir: \[\]|
-|\[Önizleme\]: Windows Vm'leri için log Analytics aracısını dağıtmayı|İlke ataması|Windows Vm'leri için log Analytics çalışma alanı|Bu çalışma alanı atama kapsamı dışında ise 'Log Analytics katkıda bulunan' izinleri elle vermeniz gerekir (veya benzeri) asıl ilke atama kimliği|
-|\[Önizleme\]: Windows Vm'leri için log Analytics aracısını dağıtmayı|İlke ataması|İsteğe bağlı: Windows işletim sistemi kapsamına eklenecek desteklenen bir VM görüntüsü listesi|Boş bir dizi, isteğe bağlı parametre göstermek için kullanılabilir: \[\]|
-|Gelişmiş tehdit koruması depolama hesaplarında dağıtma|İlke ataması|Etki|İlke etkileri hakkında daha fazla bilgi bulunabilir [Azure İlkesi etkilerini anlama](../../../policy/concepts/effects.md)|
-|SQL sunucularında denetim dağıtma|İlke ataması|Gün (0, sınırsız bekletme gösterir) saklama süresi değeri|Saklanacağı gün sayısı (isteğe bağlı, 180 belirtilmezse gün)|
-|SQL sunucularında denetim dağıtma|İlke ataması|SQL server denetimi için depolama hesabı için kaynak grubu adı|Denetim veritabanı olayları bir denetim (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılan bir SQL Server'ın oluşturulduğu her bölgede oluşturulur), Azure depolama hesabınızdaki günlüğüne yazar. Önemli - denetim düzgün çalışması için silmeyin veya kaynak grubu veya depolama hesaplarını yeniden adlandırın.|
-|Ağ güvenlik grupları için tanılama ayarları dağıtma|İlke ataması|Ağ güvenlik grubu tanılama depolama hesabı ön ekini|Bu ön ek, oluşturduğunuz depolama hesabı adı oluşturmak için ağ güvenlik grubu konumu ile birleştirilir.|
-|Ağ güvenlik grupları için tanılama ayarları dağıtma|İlke ataması|Kaynak grubu adı için ağ güvenlik grubu tanılama için depolama hesabı (mevcut olması gerekir)|Depolama hesabının oluşturulacağı kaynak grubu. Bu kaynak grubu mevcut olmalıdır.|
+|\[Önizleme\]: Denetim gereksinimlerini desteklemek için NıST SP 800-53 R4 denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|VM 'Lerin yapılandırılması gereken Log Analytics çalışma alanı KIMLIĞI|Bu, VM 'Lerin için yapılandırılması gereken Log Analytics çalışma alanının KIMLIĞIDIR (GUID).|
+|\[Önizleme\]: Denetim gereksinimlerini desteklemek için NıST SP 800-53 R4 denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|\[Önizleme\]: Denetim gereksinimlerini desteklemek için NıST SP 800-53 R4 denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Windows VM Yöneticileri grubundan hariç tutulması gereken kullanıcıların listesi|Yöneticiler yerel grubunda dışlanması gereken üyelerin noktalı virgülle ayrılmış listesi. Örn: Danışın myUser1; myUser2|
+|\[Önizleme\]: Denetim gereksinimlerini desteklemek için NıST SP 800-53 R4 denetimlerini denetleme ve belirli VM uzantılarını dağıtma|İlke ataması|Windows VM yöneticileri grubuna dahil edilecek kullanıcıların listesi|Yöneticiler yerel grubuna dahil edilecek üyelerin noktalı virgülle ayrılmış listesi. Örn: Danışın myUser1; myUser2|
+|\[Önizleme\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Linux VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme\]: Linux VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: Kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma|İlke ataması|Linux VM 'Ler için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: Kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|Windows VM Ölçek Kümeleri için Log Analytics çalışma alanı (VMSS)|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: Kapsama eklenecek Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|\[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
+|\[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: Kapsama eklenecek Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
+|Depolama hesaplarında Gelişmiş tehdit koruması dağıtma|İlke ataması|Etki|İlke etkileri hakkında daha fazla bilgi için bkz. [Azure Ilke efektlerini anlama](../../../policy/concepts/effects.md)|
+|SQL sunucularına Denetim dağıt|İlke ataması|Bekletme döneminin gün cinsinden değer (0 sınırsız saklama anlamına gelir)|Bekletme günleri (belirtilmemişse, 180 gün)|
+|SQL sunucularına Denetim dağıt|İlke ataması|SQL Server denetimi için depolama hesabının kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur). Önemli-denetimin düzgün çalışması için kaynak grubunu veya depolama hesaplarını silmeyin veya yeniden adlandırmayın.|
+|Ağ güvenlik grupları için tanılama ayarlarını dağıtma|İlke ataması|Ağ güvenlik grubu Tanılama için depolama hesabı öneki|Bu ön ek, oluşturulan depolama hesabı adını biçimlendirmek için ağ güvenlik grubu konumuyla birleştirilir.|
+|Ağ güvenlik grupları için tanılama ayarlarını dağıtma|İlke ataması|Ağ güvenlik grubu Tanılama için depolama hesabının kaynak grubu adı (var olmalıdır)|Depolama hesabının oluşturulacağı kaynak grubu. Bu kaynak grubu zaten var olmalıdır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SP NIST 800-53 R4 şema örnek dağıtma adımları gözden geçirdikten sonra şema ve denetimi eşleme hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
+NIST SP 800-53 R4 şema örneğini dağıtma adımlarını gözden geçirdiğinize göre, şema ve denetim eşlemesi hakkında bilgi edinmek için aşağıdaki makaleleri ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [NIST SP 800-53 R4 şema - genel bakış](./index.md)
-> [NIST SP 800-53 R4 şema - denetim eşleme](./control-mapping.md)
+> [NIST SP 800-53 R4 şema-Overview](./index.md)
+> [NIST SP 800-53 R4 şema-Control Mapping](./control-mapping.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

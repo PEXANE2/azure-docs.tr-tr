@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ed20dd9068ccdea1fb9cd04801eb0096fed2c922
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972441"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845316"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS yapılandırma
 
@@ -56,18 +56,24 @@ zone “cloudsimple.io”
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Microsoft Windows DNS sunucusunda bölge oluşturma
 
-1. DNS sunucusuna sağ tıklayın ve **Yeni bölge**' yi seçin.  
-![Yeni bölge](media/DNS01.png)
+1. DNS sunucusuna sağ tıklayın ve **Yeni bölge**' yi seçin. 
+  
+    ![Yeni bölge](media/DNS01.png)
 2. **Saplama bölgesi** ' ni seçin ve **İleri**' ye tıklayın.
-![Yeni bölge](media/DNS02.png)
+
+    ![Yeni bölge](media/DNS02.png)
 3. Ortamınıza bağlı olarak uygun seçeneği belirleyin ve **İleri**' ye tıklayın.
-![Yeni bölge](media/DNS03.png)
+
+    ![Yeni bölge](media/DNS03.png)
 4. **İleri arama bölgesi** ' ni seçin ve **İleri**' ye tıklayın.
-![Yeni bölge](media/DNS01.png)
+
+    ![Yeni bölge](media/DNS01.png)
 5. Bölge adını girin ve **İleri**' ye tıklayın.
-![Yeni bölge](media/DNS05.png)
+
+    ![Yeni bölge](media/DNS05.png)
 6. CloudSimple portalından edindiğiniz özel bulutunuz için DNS sunucularının IP adreslerini girin.
-![Yeni bölge](media/DNS06.png)
+
+    ![Yeni bölge](media/DNS06.png)
 7. Sihirbaz kurulumunu gerçekleştirmek için gerektiğinde **İleri** ' ye tıklayın.
 
 ## <a name="create-a-conditional-forwarder"></a>Koşullu iletici oluşturma
@@ -91,5 +97,6 @@ zone “cloudsimple.io” {
 
 1. DNS sunucusunda DNS Yöneticisi 'Ni açın.
 2. **Koşullu ileticiler** ' e sağ tıklayın ve yeni bir koşullu iletici ekleme seçeneğini belirleyin.
-![Koşullu Iletici 1 Windows DNS](media/DNS08.png)
+
+    ![Koşullu Iletici 1 Windows DNS](media/DNS08.png)
 3. DNS etki alanını ve özel buluttaki DNS sunucularının IP adresini girip **Tamam**' a tıklayın.

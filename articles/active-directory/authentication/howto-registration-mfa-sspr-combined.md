@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fc30c3273528b8cbc08681950e0bd5f03ec7890
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561281"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162305"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydını etkinleştir (Önizleme)
 
@@ -45,10 +45,10 @@ Birleşik kaydı etkinleştirmek için şu adımları uygulayın:
    ![Tüm kullanıcılar için Birleşik güvenlik bilgileri önizleme deneyimini etkinleştir](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> Telefon araması seçenekleri, Mart 2019 ' den itibaren çok faktörlü kimlik doğrulaması ve SSPR kullanıcıları için ücretsiz/deneme Azure AD kiracılarında kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması seçenekleri, ücretli Azure AD kiracılarındaki kullanıcılar tarafından kullanılabilir olmaya devam edecektir.
+> 2019 Mart 'tan itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında Multi-Factor Authentication ve SSPR kullanıcıları için kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması seçenekleri, ücretli Azure AD kiracılarındaki kullanıcılar tarafından kullanılabilir olmaya devam edecektir.
 
 > [!NOTE]
-> Birleşik kaydı etkinleştirdikten sonra, yeni deneyim aracılığıyla telefon numaralarını veya mobil uygulamalarını kaydeden veya onaylayan kullanıcılar, Multi-Factor Authentication ve SSPR 'de etkinleştirilmişse, bu yöntemler Multi-Factor Authentication ve SSPR için kullanabilir. Elerindeki. Daha sonra bu deneyimi devre dışı bırakırsanız, önceki SSPR kayıt sayfasına `https://aka.ms/ssprsetup` gittikleri kullanıcıların sayfaya erişebilmeleri için çok faktörlü kimlik doğrulaması gerçekleştirmesi gerekir.
+> Birleşik kayıt etkinleştirildikten sonra, bu yöntemler Multi-Factor Authentication ve SSPR 'de etkinleştirilmişse telefon numaralarını veya mobil uygulamayı yeni deneyim aracılığıyla kaydeden veya onaylayan kullanıcılar bunları Multi-Factor Authentication ve SSPR için kullanabilir. Elerindeki. Daha sonra bu deneyimi devre dışı bırakırsanız, önceki SSPR kayıt sayfasına `https://aka.ms/ssprsetup` gittikleri kullanıcıların sayfaya erişebilmeleri için çok faktörlü kimlik doğrulaması gerçekleştirmesi gerekir.
 
 Internet Explorer 'da siteden bölge atama listesini yapılandırdıysanız, aşağıdaki sitelerin aynı bölgede olması gerekir:
 
@@ -58,7 +58,7 @@ Internet Explorer 'da siteden bölge atama listesini yapılandırdıysanız, aş
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Birleşik kayıt için koşullu erişim ilkeleri
 
-Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfırlaması için ne zaman ve nasıl kaydoldığına ilişkin güvenlik, koşullu erişim ilkesindeki Kullanıcı eylemleri ile mümkün değildir. Bu önizleme özelliği, [birleştirilmiş kayıt önizlemesini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştirmiş kuruluşlar tarafından kullanılabilir. Bu işlev, kullanıcıların Azure Multi-Factor Authentication ve SSPR 'nin HR ekleme sırasında güvenilir bir ağ konumu gibi merkezi bir konumdan kaydolmaları istedikleri kuruluşlarda etkinleştirilebilir. Koşullu erişimde güvenilen konumlar oluşturma hakkında daha fazla bilgi için [Azure Active Directory Koşullu erişim bölümünde konum koşulunun ne olduğuna](../conditional-access/location-condition.md#named-locations) bakın.
+Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfırlaması için ne zaman ve nasıl kaydoldığına ilişkin güvenlik, koşullu erişim ilkesindeki Kullanıcı eylemleri ile mümkün değildir. Bu önizleme özelliği, [birleştirilmiş kayıt önizlemesini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştirmiş kuruluşlar tarafından kullanılabilir. Bu işlev, kullanıcıların Azure Multi-Factor Authentication ve SSPR 'ye, HR ekleme sırasında güvenilen ağ konumu gibi merkezi bir konumdan kaydolmaları istedikleri kuruluşlarda etkinleştirilebilir. Koşullu erişimde güvenilen konumlar oluşturma hakkında daha fazla bilgi için [Azure Active Directory Koşullu erişim bölümünde konum koşulunun ne olduğuna](../conditional-access/location-condition.md#named-locations) bakın.
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Güvenilen bir konumdan kayıt gerektirecek bir ilke oluşturun
 
@@ -89,11 +89,13 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı den
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorla](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+
 [Multi-Factor Authentication ve SSPR için kullanılabilir Yöntemler](concept-authentication-methods.md)
 
 [Self servis parola sıfırlamayı yapılandırma](howto-sspr-deployment.md)
 
-[Azure Multi-Factor Authentication 'ı yapılandırma](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication yapılandırma](howto-mfa-getstarted.md)
 
 [Birleşik güvenlik bilgileri kaydı sorunlarını giderme](howto-registration-mfa-sspr-combined-troubleshoot.md)
 

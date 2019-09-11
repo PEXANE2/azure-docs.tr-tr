@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 2acaba4e82f499ce1ca08a0ce17469ccb0a7e541
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698441"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147320"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
@@ -34,6 +34,7 @@ Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandı
 * Linux ve Windows bilgisayarlardan performans sayaçlarını Topla
 * Linux Bilgisayarları'nda syslog olaylarını Topla 
 * Windows olay günlüklerinden olaylarını Topla
+* Windows bilgisayarından özel günlükleri topla
 * Bir Azure sanal makinesi için log analytics aracısını ekleme
 * Azure Tanılama'yı kullanarak toplanan dizin verileri log analytics'e yapılandırın
 
@@ -150,6 +151,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
 7. Windows bilgisayarlardan uygulama olay günlüğü'ndeki hata ve uyarı olaylarını Topla
 8. Windows bilgisayarlardan bellek kullanılabilir MBayt performans sayacı Topla
 9. Azure tanılama tarafından bir depolama hesabına yazılan IIS günlüklerini ve Windows olay günlüklerini toplayın
+10. Windows bilgisayarından özel günlükleri topla
 
 ```json
 {
@@ -188,6 +190,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
     },
     "immediatePurgeDataOn30Days": {
       "type": "bool",
+      "defaultValue": "false",
       "metadata": {
         "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
@@ -235,22 +238,28 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
         "metadata": {
           "description": "The resource group name containing the storage account with Azure diagnostics output"
         }
-    }
-  },
-  "variables": {
-    "Updates": {
-      "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
-      "GalleryName": "Updates"
+      }
     },
-    "AntiMalware": {
-      "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
-      "GalleryName": "AntiMalware"
+    "customlogName": {
+    "type": "string",
+    "metadata": {
+      "description": "custom log name"
+      }
     },
-    "SQLAssessment": {
-      "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
-      "GalleryName": "SQLAssessment"
-    },
-    "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
+    "variables": {
+      "Updates": {
+        "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
+        "GalleryName": "Updates"
+      },
+      "AntiMalware": {
+        "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+        "GalleryName": "AntiMalware"
+      },
+      "SQLAssessment": {
+        "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+        "GalleryName": "SQLAssessment"
+      },
+      "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
   },
   "resources": [
     {
@@ -259,13 +268,13 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "properties": {
+        "retentionInDays": "[parameters('dataRetention')]",
+        "features": {
+          "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
+        },
         "sku": {
           "name": "[parameters('pricingTier')]"
-          "features": {
-            "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
-          }
-        },
-    "retentionInDays": "[parameters('dataRetention')]"
+        }
       },
       "resources": [
         {
@@ -405,6 +414,55 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
             "intervalSeconds": 10
           }
         },
+        {
+          "apiVersion": "2015-11-01-preview",
+          "type": "dataSources",
+          "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
+          "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+          ],
+          "kind": "CustomLog",
+          "properties": {
+            "customLogName": "[parameters('customlogName')]",
+            "description": "this is a description",
+            "extractions": [
+              {
+                "extractionName": "TimeGenerated",
+                "extractionProperties": {
+                  "dateTimeExtraction": {
+                    "regex": [
+                      {
+                        "matchIndex": 0,
+                        "numberdGroup": null,
+                        "pattern": "((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]"
+                      }
+                    ]
+                  }
+                },
+                "extractionType": "DateTime"
+              }
+            ],
+            "inputs": [
+              {
+                "location": {
+                  "fileSystemLocations": {
+                    "linuxFileTypeLogPaths": null,
+                    "windowsFileTypeLogPaths": [
+                      "[concat('c:\\Windows\\Logs\\',parameters('customlogName'))]"
+                    ]
+                  }
+                },
+                "recordDelimiter": {
+                  "regexDelimiter": {
+                    "matchIndex": 0,
+                    "numberdGroup": null,
+                    "pattern": "(^.*((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9].*$)"
+                  }
+                }
+              }
+            ]
+          }
+        }
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",

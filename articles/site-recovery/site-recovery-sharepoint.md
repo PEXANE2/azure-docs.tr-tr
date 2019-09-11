@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325106"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231480"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery kullanarak olağanüstü durum kurtarma için çok katmanlı bir SharePoint uygulaması için olağanüstü durum kurtarmayı ayarlama
 
@@ -56,7 +56,7 @@ SharePoint, belirli hedefleri ve hedefleri karşılayan bir grup tasarımı uygu
 
 ## <a name="site-recovery-support"></a>Site Recovery desteği
 
-Bu makaleyi oluşturmak için, Windows Server 2012 R2 Enterprise ile VMware sanal makineleri kullanılmıştır. SharePoint 2013 Enterprise Edition ve SQL Server 2014 Enterprise Edition kullanıldı. Site Recovery çoğaltma uygulama belirsiz olduğundan, burada sunulan önerilerin aşağıdaki senaryolar için de açık olması beklenir.
+Site Recovery, uygulama belirsiz ve desteklenen bir makinede çalışan herhangi bir SharePoint sürümüyle birlikte çalışmalıdır. Bu makaleyi oluşturmak için, Windows Server 2012 R2 Enterprise ile VMware sanal makineleri kullanılmıştır. SharePoint 2013 Enterprise Edition ve SQL Server 2014 Enterprise Edition kullanıldı.
 
 ### <a name="source-and-target"></a>Kaynak ve hedef
 
@@ -67,13 +67,6 @@ Bu makaleyi oluşturmak için, Windows Server 2012 R2 Enterprise ile VMware sana
 **Fiziksel sunucu** | Evet | Evet
 **Azure** | NA | Evet
 
-### <a name="sharepoint-versions"></a>SharePoint sürümleri
-Aşağıdaki SharePoint Server sürümleri desteklenir.
-
-* SharePoint Server 2013 standart
-* SharePoint Server 2013 Enterprise
-* SharePoint Server 2016 standart
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Göz önünde bulundurmanız gerekenler
 

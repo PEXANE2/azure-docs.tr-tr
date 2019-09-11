@@ -1,5 +1,5 @@
 ---
-title: 'Noktadan siteye ve yerel Azure sertifikası kimlik doğrulaması kullanarak bir bilgisayarı Azure sanal ağına bağlama: Azure portalı | Microsoft Docs'
+title: 'Noktadan siteye VPN ve yerel Azure sertifikası kimlik doğrulaması kullanarak bir bilgisayardan Azure sanal ağına bağlanma: Azure portalı | Microsoft Docs'
 description: P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanarak Windows, Mac OS X ve Linux istemcilerini Azure sanal ağına güvenli bir şekilde bağlayın. Bu makalede Azure portalı kullanılmaktadır.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fc8c2ff72da49d8542508443eb9423f028da0d39
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706749"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843669"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma: Azure portal
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: Azure portal
 
 Bu makale Windows, Linux veya Mac OS X çalıştıran ayrı istemcileri bir Azure VNet 'e güvenli bir şekilde bağlamanıza yardımcı olur. Noktadan Siteye VPN bağlantıları, ev veya bir konferans gibi uzak bir noktadan Vnet'inize bağlanmak istediğinizde faydalıdır. Bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda Siteden Siteye VPN yerine P2S’yi de kullanabilirsiniz. Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü) veya IKEv2 üzerinden oluşturur. Noktadan Siteye VPN hakkında daha fazla bilgi edinmek için bkz. [Noktadan Siteye VPN hakkında](point-to-site-about.md).
 
@@ -39,12 +39,12 @@ Aşağıdaki değerleri kullanarak bir test ortamı oluşturabilir veya bu makal
 * **Alt ağ adres aralığı:** 192.168.1.0/24
 * **Aboneliğiniz** Birden fazla aboneliğiniz varsa, doğru olanı kullandığınızdan emin olun.
 * **Kaynak grubu:** TestRG
-* **Konumuna** East US
+* **Konum:** East US
 * **GatewaySubnet** 192.168.200.0/24<br>
 * **DNS Sunucusu (İsteğe Bağlı):** Ad çözümlemesi için kullanmak istediğiniz DNS sunucusunun IP adresi.
 * **Sanal ağ geçidi adı:** VNet1GW
 * **Ağ Geçidi türü:** VPN
-* **VPN türü:** Rota temelli
+* **VPN türü:** Rota tabanlı
 * **Genel IP adresi adı:** VNet1GWpip
 * **Bağlantı türü:** Noktadan siteye
 * **İstemci adres havuzu:** 172.16.201.0/24<br>Sanal ağa bu Noktadan Siteye bağlantıyı kullanarak bağlanan VPN istemcileri, istemci adres havuzdan bir IP adresi alır.

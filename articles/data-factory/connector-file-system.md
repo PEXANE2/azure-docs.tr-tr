@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cd88a58df4334180174fae9f0e651b5281e320e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 470152e12f3a7a0c643a147f0989a5cc72d2ed22
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966543"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813572"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veri ya da bir dosya sisteminden kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -99,12 +99,12 @@ Dosya sistemi bağlantılı hizmeti için aşağıdaki özellikleri destekler:
 
 Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
-- **Parquet, sınırlandırılmış metin ve ikili biçimi**Için, [Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
-- **Orc/avro/JSON biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
-### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi
+### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim veri kümesi
 
-**Parquet, sınırlandırılmış metin veya ikili biçimine**veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Dosya sistemi için, biçim tabanlı veri kümesindeki ayarlar `location` altında aşağıdaki özellikler desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimine**veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın . Dosya sistemi için, biçim tabanlı veri kümesindeki ayarlar `location` altında aşağıdaki özellikler desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -143,7 +143,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 ### <a name="other-format-dataset"></a>Diğer biçim veri kümesi
 
-**Orc/avro/JSON biçimindeki**dosya sistemine veri kopyalamak için aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**dosya sistemine ve bu bilgisayardan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -197,12 +197,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="file-system-as-source"></a>Dosya sistemi kaynak olarak
 
-- **Parquet, sınırlandırılmış metin ve ikili biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
-- **Orc/avro/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
+- **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin ve ikili biçim kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Parquet, sınırlandırılmış metin veya ikili biçiminden**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenen ayarlar ' da [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Dosya sistemi için, biçim tabanlı kopyalama kaynağı 'ndaki `storeSettings` ayarlar altında aşağıdaki özellikler desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimdeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenmiş olan [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın Ayarlar. Dosya sistemi için, biçim tabanlı kopyalama kaynağı 'ndaki `storeSettings` ayarlar altında aşağıdaki özellikler desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -260,7 +260,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 #### <a name="other-format-source"></a>Diğer biçim kaynağı
 
-**Orc/avro/JSON biçimindeki**dosya sisteminden veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**dosya sisteminden veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -302,12 +302,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="file-system-as-sink"></a>Havuz olarak dosya sistemi
 
-- **Parquet, sınırlandırılmış metin veya ikili biçimi**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim havuzu](#format-based-sink) bölümüne bakın.
-- **Orc/avro/JSON biçimi**gibi diğer biçimlere kopyalamak için [diğer biçim havuzu](#other-format-sink) bölümüne bakın.
+- **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim havuzu](#format-based-sink) bölümüne bakın.
+- **Orc biçimi**gibi diğer biçimlere kopyalamak için [diğer biçim havuzu](#other-format-sink) bölümüne bakın.
 
-#### <a name="format-based-sink"></a>Parquet, ayrılmış metin ve ikili biçim havuzu
+#### <a name="format-based-sink"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim havuzu
 
-**Parquet, sınırlandırılmış metin veya ikili biçimdeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinlik havuzunda ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Dosya sistemi için, biçim tabanlı kopya havuzunda ayarlar `storeSettings` altında aşağıdaki özellikler desteklenir:
+**Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçimdeki**verileri kopyalamak için, biçim tabanlı kopyalama etkinlik havuzunda ve desteklenen [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın Ayarlar. Dosya sistemi için, biçim tabanlı kopya havuzunda ayarlar `storeSettings` altında aşağıdaki özellikler desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -355,7 +355,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 #### <a name="other-format-sink"></a>Diğer biçim havuzu
 
-**Orc/avro/JSON biçimindeki**dosya sistemine veri kopyalamak için, **Havuz** bölümünde aşağıdaki özellikler desteklenir:
+**Orc biçimindeki**dosya sistemine veri kopyalamak için, **Havuz** bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |

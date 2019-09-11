@@ -5,19 +5,23 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 6/26/2019
+ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 1995ce2a91bfbc115f80c99687cc84b52ef614ec
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f35a3567ae4ae7c3e2d59f776d3a3bc00ec2be3e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950105"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142396"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 
 Bu makalede Azure Data Factory içindeki dış denetim etkinlikleri için genel sorun giderme yöntemleri incelenmektedir.
+
+## <a name="connector-and-copy-activity"></a>Bağlayıcı ve kopyalama etkinliği
+
+Bağlayıcı sorunları için ör. kopyalama etkinliğini kullanarak hatayla karşılaşırsanız, [Azure Data Factory bağlayıcılarına sorun giderme](connector-troubleshoot-guide.md)bölümüne bakın.
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -90,7 +94,7 @@ Aşağıdaki tablo Spark, Hive, MapReduce, Pig ve Hadoop akışı için geçerli
 | 2300         | Hadoop işi gönderilemedi. İş:..., küme:.../. Hata: Bir görev iptal edildi. | İş gönderimi zaman aşımına uğradı.                         | Sorun genel HDInsight bağlantısı ya da ağ bağlantısı olabilir. Önce HDInsight ambarı Kullanıcı arabiriminin herhangi bir tarayıcıdan kullanılabilir olduğunu doğrulayın. Kimlik bilgilerinizin hala geçerli olduğunu doğrulayın. Şirket içinde barındırılan tümleşik çalışma zamanı (IR) kullanıyorsanız bunu, şirket içinde barındırılan IR 'nin yüklü olduğu VM veya makineden gerçekleştirdiğinizden emin olun. Sonra Data Factory işi yeniden göndermeyi deneyin. Hala başarısız olduysa, destek için Data Factory ekibine başvurun. |
 | 2300         | Erişilmesini   Ambarı Kullanıcı adı veya parolası yanlış  <br/><br/>Erişilmesini   Kullanıcı Yöneticisi, ambarı 'nda kilitlidir.   <br/><br/>403-Yasak: Erişim reddedildi. | HDInsight kimlik bilgileri yanlış veya zaman aşımına uğradı. | Kimlik bilgilerini düzeltin ve bağlı hizmeti yeniden dağıtın. Önce, herhangi bir tarayıcıda küme URI 'sini açarak ve oturum açmaya çalışarak, kimlik bilgilerinin HDInsight üzerinde çalıştığından emin olun. Kimlik bilgileri çalışmazsa, bunları Azure portal sıfırlayabilirsiniz. |
 | 2300, 2310 | 502 - Web sunucusu bir ağ geçidi veya proxy sunucu olarak çalışırken geçersiz yanıt aldı.       <br/>Hatalı ağ geçidi. | Bu hata HDInsight 'tan.                               | Bu hata HDInsight kümesinden. Daha fazla bilgi için bkz. [ambarı Kullanıcı arabirimi 502 hatası](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 Spark thrift sunucusuna bağlanma](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) [502, Spark Thrift sunucusuna bağlanma](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)ve [Application Gateway hatalı ağ geçidi hatalarıyla ilgili sorunları giderme](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502). |
-| 2300         | Hadoop işi gönderilemedi. İş:..., küme:... Hata: {\"Error\":\"çok fazla sayıda gönderme işi isteğiyle temptaton hizmeti meşgul olduğundan, iş gönderme isteğine bakım yapılamıyor. İşlemi yeniden denemeden önce lütfen bir süre bekleyin. Eşzamanlı istekleri yapılandırmak için lütfen config temptaton. parallelliı. job. ini dosyasına bakın.  <br/><br/>Hadoop işi gönderilemedi. İş: 161dad5d4-6fa8-4ef4-A240-6b6428c5ae2f, küme: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Hata: {\"Error\":\"Java. IO. IOException: org. Apache. Hadoop. yarn. Exceptions. yarnözel durum: Application_1561147195099_3730, YARN: org. Apache. Hadoop. Security. AccessControlException hizmetine gönderilemedi: Queue root. joblauncher zaten 500 uygulama içeriyor, uygulamanın gönderimi kabul edilemiyor: application_1561147195099_3730 \ | HDInsight 'a aynı anda çok fazla iş gönderiliyor. | HDInsight 'a gönderilen eşzamanlı iş sayısını sınırlamayı göz önünde bulundurun. İşlerin aynı etkinlik tarafından gönderiliyorsa Data Factory etkinlik eşzamanlılık bölümüne bakın. Yinelenen işlem hattı çalıştırmaları zaman içinde yayma için Tetikleyicileri değiştirin. Hatanın önereceği şekilde ayarlamak `templeton.parallellism.job.submit` için HDInsight belgelerine bakın. |
+| 2300         | Hadoop işi gönderilemedi. İş:..., küme:... Hata: {\"Error\":\"çok fazla sayıda gönderme işi isteğiyle temptaton hizmeti meşgul olduğundan, iş gönderme isteğine bakım yapılamıyor. İşlemi yeniden denemeden önce lütfen bir süre bekleyin. Eşzamanlı istekleri yapılandırmak için lütfen config temptaton. parallelliı. job. ini dosyasına bakın.  <br/><br/>Hadoop işi gönderilemedi. İşinden 161dad5d4-6fa8-4ef4-A240-6b6428c5ae2f, küme: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Hata: {\"Error\":\"Java. IO. IOException: org. Apache. Hadoop. yarn. Exceptions. yarnözel durum: Application_1561147195099_3730, YARN: org. Apache. Hadoop. Security. AccessControlException hizmetine gönderilemedi: Queue root. joblauncher zaten 500 uygulama içeriyor, uygulamanın gönderimi kabul edilemiyor: application_1561147195099_3730 \ | HDInsight 'a aynı anda çok fazla iş gönderiliyor. | HDInsight 'a gönderilen eşzamanlı iş sayısını sınırlamayı göz önünde bulundurun. İşlerin aynı etkinlik tarafından gönderiliyorsa Data Factory etkinlik eşzamanlılık bölümüne bakın. Yinelenen işlem hattı çalıştırmaları zaman içinde yayma için Tetikleyicileri değiştirin. Hatanın önereceği şekilde ayarlamak `templeton.parallellism.job.submit` için HDInsight belgelerine bakın. |
 | 2303, 2347 | Hadoop işi ' 5 ' çıkış koduyla başarısız oldu. Daha fazlawasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderrayrıntı için bkz. ' '.  <br/><br/>Hive yürütmesi, ' UserErrorHiveOdbcCommandExecutionFailure ' hata koduyla başarısız oldu.   Daha fazlawasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.outayrıntı için bkz. ' '. | İş HDInsight 'a gönderildi ve HDInsight üzerinde başarısız oldu. | İş HDInsight 'a başarıyla gönderildi. Kümede başarısız oldu. İş ve günlükleri HDInsight ambarı Kullanıcı arabiriminde açın ya da hata iletisi önerirken dosyayı depolamadan açın. Dosya hata ayrıntılarını gösterir. |
 | 2328         | İstek işlenirken iç sunucu hatası oluştu. Lütfen isteği yeniden deneyin veya desteğe başvurun. | Bu hata HDInsight 'ta istek üzerine oluşur.                              | HDInsight sağlama başarısız olduğunda HDInsight hizmetinden bu hata gelir. HDInsight ekibine başvurun ve isteğe bağlı küme adını sağlayın. |
 | 2310         | Java. lang. NullPointerException                               | Bu hata, iş bir Spark kümesine gönderildiğinde oluşur.      | Bu özel durum HDInsight 'tan gelir. Asıl sorunu gizler. Destek için HDInsight ekibine başvurun. Bunları küme adı ve etkinlik çalışma zamanı aralığı ile birlikte sağlayın. |

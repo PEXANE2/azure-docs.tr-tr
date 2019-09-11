@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cc7313531e92aa0f57b09a9252902848297bdbf
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 34a701c6d99f7b773a06e316fa9a29cd8b070303
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996660"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813249"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanı yönetilen örneğine veri kopyalama
 
@@ -239,7 +239,9 @@ Azure SQL veritabanı yönetilen örneğine veri kopyalamak için aşağıdaki �
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği **Azuressqlmıtable**olarak ayarlanmalıdır. | Evet |
-| tableName |Bu özellik, bağlantılı hizmetin başvurduğu veritabanı örneğindeki tablonun veya görünümün adıdır. | Kaynak, havuz için Evet Hayır |
+| schema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
+| table | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
+| tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için ve `schema` `table`kullanın. | Kaynak, havuz için Evet Hayır |
 
 **Örnek**
 
@@ -255,7 +257,8 @@ Azure SQL veritabanı yönetilen örneğine veri kopyalamak için aşağıdaki �
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -385,6 +388,7 @@ Verileri Azure SQL veritabanı yönetilen örneği 'ne kopyalamak için, kopyala
 | storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
 | sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
 | storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Adları ve parametreleri büyük küçük harfleri, adları ve saklı yordam parametreleri büyük küçük harfleri eşleşmelidir. | Hayır |
+| tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Havuz saklı yordamı belirttiğinde veya hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
 
 **Örnek 1: Veri Ekle**
 
@@ -411,7 +415,8 @@ Verileri Azure SQL veritabanı yönetilen örneği 'ne kopyalamak için, kopyala
             },
             "sink": {
                 "type": "SqlMISink",
-                "writeBatchSize": 100000
+                "writeBatchSize": 100000,
+                "tableOption": "autoCreate"
             }
         }
     }

@@ -292,7 +292,7 @@ Geçmeyecekseniz ücret kesilmesini önlemek için yerel yapılandırmalarınız
 Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [İşlevler](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)[](tutorial-deploy-custom-vision.md) [Machine Learning](tutorial-deploy-machine-learning.md)özel görüntü işleme hizmeti
-> 
-> 
+> [Functions](tutorial-deploy-function.md)
+> [Stream Analytics](tutorial-deploy-stream-analytics.md)
+> [Machine Learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)

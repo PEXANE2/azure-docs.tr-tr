@@ -3,22 +3,20 @@ title: İlk data factory’nizi derleme (REST) | Microsoft Belgeleri
 description: Bu öğreticide Data Factory REST API’sini kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ab36d475052aa71427427e1362c74abd031fa414
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5fe554371e54c6f67ae714084f110319b43fe54c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839449"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140430"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Öğretici: İlk Azure data factory’nizi Data Factory REST API’sini kullanarak oluşturma
 > [!div class="op_single_selector"]
@@ -32,11 +30,11 @@ ms.locfileid: "67839449"
 
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız bkz [hızlı başlangıç: Azure Data Factory kullanarak veri fabrikası oluşturma](../quickstart-create-data-factory-rest-api.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz [. hızlı başlangıç: Azure Data Factory](../quickstart-create-data-factory-rest-api.md)kullanarak bir veri fabrikası oluşturun.
 
 Bu makalede, ilk Azure data factory’nizi oluşturmak için Data Factory REST API’sini kullanırsınız. Diğer araçları/SDK’ları kullanarak öğreticiyi uygulamak için açılır listedeki seçeneklerden birini belirleyin.
 
-Bu öğreticideki işlem hattı bir etkinlik içerir: **HDInsight Hive etkinliği**. Bu etkinlik, Azure HDInsight kümesi üzerinde çıkış verileri üretmek üzere giriş verilerini dönüştüren bir hive betiği çalıştırır. İşlem hattı, belirtilen başlangıç ve bitiş saatleri arasında ayda bir kez çalışacak şekilde zamanlanmıştır.
+Bu öğreticideki işlem hattının bir etkinliği vardır: **HDInsight Hive etkinliği**. Bu etkinlik, Azure HDInsight kümesi üzerinde çıkış verileri üretmek üzere giriş verilerini dönüştüren bir hive betiği çalıştırır. İşlem hattı, belirtilen başlangıç ve bitiş saatleri arasında ayda bir kez çalışacak şekilde zamanlanmıştır.
 
 > [!NOTE]
 > Bu makalede REST API'nin tamamı ele alınmamaktadır. REST API ile ilgili kapsamlı belgeler için bkz. [Data Factory REST API Başvurusu](/rest/api/datafactory/).
@@ -57,9 +55,9 @@ Bu öğreticideki işlem hattı bir etkinlik içerir: **HDInsight Hive etkinliğ
   4. **ADFGetStartedApp** uygulamasını **Data Factory Katılımcısı** rolüne atayın.
 * [Azure PowerShell](/powershell/azure/overview)'i yükleyin.
 * **PowerShell**’i başlatın ve aşağıdaki komutu çalıştırın. Bu öğreticide sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir.
-  1. Çalıştırma **Connect AzAccount** ve kullanıcı adı ve Azure portalında oturum açmak için kullandığınız parolayı girin.
-  2. Çalıştırma **Get-AzSubscription** bu hesap için tüm abonelikleri görmek için.
-  3. Çalıştırma **AzSubscription Get - SubscriptionName NameOfAzureSubscription | Set-AzContext** çalışmak isteğiniz aboneliği seçmek için. **NameOfAzureSubscription** değerini Azure aboneliğinizin adıyla değiştirin.
+  1. **Connect-AzAccount** komutunu çalıştırın ve Azure Portal oturum açmak için kullandığınız kullanıcı adını ve parolayı girin.
+  2. Bu hesaba ilişkin tüm abonelikleri görüntülemek için **Get-AzSubscription** komutunu çalıştırın.
+  3. **Get-AzSubscription-SubscriptionName Nameofazuyeniden adlandırma | komutunu çalıştırın** Birlikte çalışmak istediğiniz aboneliği seçmek için set-AzContext. **NameOfAzureSubscription** değerini Azure aboneliğinizin adıyla değiştirin.
 * PowerShell’de aşağıdaki komutu çalıştırarak **ADFTutorialResourceGroup** adlı bir Azure kaynak grubu oluşturun:
 
     ```powershell
@@ -170,7 +168,7 @@ Aşağıdaki tabloda, kod parçacığında kullanılan JSON özellikleri için a
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| türü |Veriler Azure blob depolamada yer aldığından type özelliği AzureBlob olarak ayarlanmıştır. |
+| type |Veriler Azure blob depolamada yer aldığından type özelliği AzureBlob olarak ayarlanmıştır. |
 | linkedServiceName |daha önce oluşturduğunuz StorageLinkedService’e başvurur. |
 | fileName |Bu özellik isteğe bağlıdır. Bu özelliği atarsanız, tüm folderPath dosyaları alınır. Bu durumda, yalnızca input.log işlenir. |
 | type |Günlük dosyaları metin biçiminde olduğundan TextFormat kullanacağız. |
@@ -316,13 +314,13 @@ Bu adımda, **FirstDataFactoryREST** adlı bir Azure Data Factory oluşturursunu
 
 Aşağıdaki noktalara dikkat edin:
 
-* Azure Data Factory adı küresel olarak benzersiz olmalıdır. Sonuçlar hata görürseniz: **Veri Fabrikası adı "FirstDataFactoryREST" kullanılamıyor**, aşağıdaki adımları uygulayın:
+* Azure Data Factory adı küresel olarak benzersiz olmalıdır. Sonuçlarda hata görürseniz: **"FirstDataFactoryREST" Veri Fabrikası adı kullanılamıyor**, aşağıdaki adımları uygulayın:
   1. **datafactory.json** dosyasında adı değiştirin (örneğin, adınızFirstDataFactoryREST). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.
   2. **$cmd** değişkenine bir değerin atandığı ilk komutta, FirstDataFactoryREST’i yeni adla değiştirip komutu çalıştırın.
   3. Veri fabrikasını oluşturmak ve işlemin sonuçlarını yazdırmak üzere REST API’yi çağırmak için sonraki iki komutu çalıştırın.
 * Data Factory örnekleri oluşturmak için, Azure aboneliğinde katılımcı/yönetici rolünüz olmalıdır
 * Veri fabrikasının adı gelecekte bir DNS adı olarak kaydedilmiş ve herkese görünür hale gelmiş olabilir.
-* Hatayı alırsanız: "**Bu abonelik Microsoft.DataFactory ad alanını kullanacak şekilde kaydedilmemiş**", aşağıdakilerden birini yapın ve yeniden yayımlamayı deneyin:
+* Şu hatayı alırsanız: "**Bu abonelik Microsoft. DataFactory ad alanını kullanmak için kayıtlı değil**", aşağıdakilerden birini yapın ve yeniden yayımlamayı deneyin:
 
   * Azure PowerShell’de Data Factory sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
@@ -421,7 +419,7 @@ Bu adımda, Azure Blob depolamada depolanan çıktı verilerini göstermek için
     ```
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
-Bu adımda, **HDInsightHive** etkinliğiyle ilk işlem hattınızı oluşturursunuz. Girdi diliminin kullanılabilir (Sıklık: Ay, interval: 1), çıktı dilimi ayda bir oluşturulur ve etkinlik Zamanlayıcı özelliği de aylık olarak ayarlanır. Çıktı veri kümesi ve etkinlik zamanlayıcı ayarlarının eşleşmesi gerekir. Şu anda, çıktı veri kümesi zamanlamayı yönetendir; bu nedenle etkinlik hiçbir çıktı oluşturmasa bile sizin bir çıktı veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz.
+Bu adımda, **HDInsightHive** etkinliğiyle ilk işlem hattınızı oluşturursunuz. Giriş dilimi aylık olarak kullanılabilir (sıklık: Ay, Aralık: 1), çıkış dilimi aylık olarak üretilir ve etkinliğin Zamanlayıcı özelliği de aylık olarak ayarlanır. Çıktı veri kümesi ve etkinlik zamanlayıcı ayarlarının eşleşmesi gerekir. Şu anda, çıktı veri kümesi zamanlamayı yönetendir; bu nedenle etkinlik hiçbir çıktı oluşturmasa bile sizin bir çıktı veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz.
 
 Azure blob depolamada **adfgetstarted/inputdata** klasöründeki **input.log** dosyasını gördüğünüzü doğrulayın ve işlem hattına dağıtmak için aşağıdaki komutu çalıştırın. **start** ve **end** zamanları geçmişe ayarlanmış ve **isPaused** yanlış olarak ayarlanmış olduğundan işlem hattı (işlem hattında etkinlik) dağıtıldıktan hemen sonra çalışır.
 
@@ -486,7 +484,7 @@ Bu öğreticide, HDInsight hadoop kümesindeki Hive betiği çalıştırılarak 
 4. **HDInsight Hive** etkinliğine sahip oluşturulan bir **işlem hattı**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalıştıran dönüştürme etkinliğine (HDInsight Etkinliği) sahip işlem hattı oluşturdunuz. Verileri Azure Blob'tan Azure SQL'e kopyalamak için kopyalama etkinliği'ni kullanma hakkında bilgi için bkz: [Öğreticisi: Verileri Azure Blob'tan Azure SQL'e kopyalamak](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalıştıran dönüştürme etkinliğine (HDInsight Etkinliği) sahip işlem hattı oluşturdunuz. Bir Azure blobundan Azure SQL 'e veri kopyalamak için kopyalama etkinliği kullanma hakkında bilgi için bkz [. Öğretici: Verileri bir Azure Blobundan Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)'e kopyalayın.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 | Konu | Açıklama |

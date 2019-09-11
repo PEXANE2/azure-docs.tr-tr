@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: 98b5fb06bf018c9176fc989786d8bd1821914f43
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: db020092c076680eddd575f8e7e85a2060603dd8
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558498"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147764"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub (.NET) ile cihazınızdan buluta dosya yükleme
 
@@ -47,7 +47,7 @@ Bu öğreticinin sonunda iki .NET konsol uygulaması çalıştırırsınız:
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla C, Java, Python ve JavaScript gibi birçok cihaz platformunu ve dilini destekler. Cihazınızı Azure IoT Hub bağlama hakkında adım adım yönergeler için [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot) ' ne bakın.
 
-Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio
 

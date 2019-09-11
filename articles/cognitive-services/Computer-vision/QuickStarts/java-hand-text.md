@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 545bd3acbd212a26b3e35020559ab62788ab7257
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 7db73d9872badb8ed6c2af52c7cf0a2aa48b9fc8
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312002"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137902"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılmış ve el yazısı metin Ayıkla
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Java&trade; Platform, Standard Edition Geliştirme Seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8) yüklü olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -58,12 +58,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    import org.json.JSONObject;
    ```
 
-1. `Main` ortak sınıfını aşağıdaki kodla değiştirin, ardından kodda gereken yerlerde aşağıdaki değişiklikleri yapın:
-   1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-   1. Değerini `uriBase` , gerekirse abonelik anahtarlarınızı aldığınız Azure bölgesinden [toplu okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yönteminin uç nokta URL 'siyle değiştirin.
-   1. İsteğe bağlı olarak, değerini `imageToAnalyze` , metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
+1. `Main` Ortak sınıfı aşağıdaki kodla değiştirin.
+1. İsteğe bağlı olarak, değerini `imageToAnalyze` , metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
 1. Kaydedin, ardından Java projesini derleyin.
-1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.
+1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin: `java Main`.
 
 ```java
 public class Main {
@@ -71,19 +69,13 @@ public class Main {
     // *** Update or verify the following values. ***
     // **********************************************
 
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    // After setting, close and then re-open your command shell or project for the changes to take effect.
+    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westcentralus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
+    private static final String uriBase = endpoint + 
+            "vision/v2.0/read/core/asyncBatchAnalyze";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +

@@ -3,27 +3,26 @@ title: Azure Data Factory işlem hattında dallanma | Microsoft Docs
 description: Dallanma ve zincirleme etkinlikleriyle Azure Data Factory'de veri akışını denetleme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: shlo
-ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457029"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140746"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
 Bu öğreticide, bazı denetim akışı özelliklerini gösteren bir Data Factory işlem hattı oluşturacaksınız. Bu işlem hattı, Azure Blob Depolama içindeki kapsayıcıdan aynı depolama hesabındaki başka bir kapsayıcıya basit bir kopyalama işlemi yapar. Kopyalama etkinliği başarılı olursa, başarılı kopyalama işleminin ayrıntılarını (örneğin, yazılan veri miktarı) bir başarı e-postası ile göndermek istersiniz. Kopyalama etkinliği başarısız olursa, kopyalama hatasının ayrıntılarını (örneğin, hata iletisi) bir hata e-postası ile göndermek istersiniz. Öğretici boyunca parametreleri nasıl geçireceğinizi göreceksiniz.
 
-Senaryoya üst düzey genel bakış: ![Genel Bakış](media/tutorial-control-flow/overview.png)
+Senaryoya üst düzey bir genel bakış: ![Genel bakış](media/tutorial-control-flow/overview.png)
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -66,14 +65,14 @@ Visual Studio 2015/2017'yi kullanarak bir C# .NET konsol uygulaması oluşturun.
 
 1. **Visual Studio**’yu başlatın.
 2. **Dosya**’ya tıklayın, **Yeni**’nin üzerine gelin ve **Proje**’ye tıklayın. .NET sürüm 4.5.2 veya üzeri gereklidir.
-3. Sağ taraftaki proje türleri listesinden **Visual C#** -> **Konsol Uygulaması (.NET Framework)** öğesini seçin.
+3. Sağ taraftaki proje türleri listesinden **Visual C#**  -> **Konsol Uygulaması (.NET Framework)** öğesini seçin.
 4. Ad olarak **ADFv2BranchTutorial** girin.
 5. Projeyi oluşturmak için **Tamam**'a tıklayın.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
 1. **Araçlar** -> **NuGet Paket Yöneticisi** -> **Paket Yöneticisi Konsolu**’na tıklayın.
-2. İçinde **Paket Yöneticisi Konsolu**, paketleri yüklemek için aşağıdaki komutları çalıştırın. Başvurmak [Microsoft.Azure.Management.DataFactory nuget paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) ayrıntılarla.
+2. **Paket Yöneticisi konsolunda**, paketleri yüklemek için aşağıdaki komutları çalıştırın. Ayrıntılarla birlikte [Microsoft. Azure. Management. DataFactory NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) inceleyin.
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -96,7 +95,7 @@ Visual Studio 2015/2017'yi kullanarak bir C# .NET konsol uygulaması oluşturun.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Bu statik değişkenleri **Program sınıfına** ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory kullanılabildiği şu anda Azure bölgelerinin listesi için aşağıdaki sayfada faiz ve ardından genişletin bölgeleri seçin **Analytics** bulunacak **Data Factory**: [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+2. Bu statik değişkenleri **Program sınıfına** ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
     ```csharp
         // Set variables
@@ -140,7 +139,7 @@ Visual Studio 2015/2017'yi kullanarak bir C# .NET konsol uygulaması oluşturun.
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 
 Program.cs dosyanızda "CreateOrUpdateDataFactory" işlevini oluşturun:
 
@@ -209,7 +208,7 @@ Aşağıdaki kodu bir **Azure blob veri kümesi** oluşturan **Main** yöntemine
 
 Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu Blob veri kümesi, önceki adımda oluşturduğunuz Azure Depolama bağlı hizmetini ifade eder:
 
-- Blob kopyalama kaynağı konumu: **FolderPath** ve **FileName**;
+- Kopyalanacak Blobun konumu: **FolderPath** ve **filename**;
 - FolderPath için parametre kullanımına dikkat edin. “sourceBlobContainer” parametrenin adıdır ve ifade, işlem hattı çalıştırmasında geçirilen değerlerle değiştirilir. Parametreleri tanımlamaya yönelik söz dizimi `@pipeline().parameters.<parameterName>`
 
 Program.cs dosyanızda "SourceBlobDatasetDefinition" işlevi oluşturma
@@ -263,7 +262,7 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDataset
 client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
 ```
 
-## <a name="create-a-c-class-emailrequest"></a>Oluşturma bir C# sınıfı: EmailRequest
+## <a name="create-a-c-class-emailrequest"></a>C# Sınıf oluşturun: EmailRequest
 
 C# projenizde **EmailRequest** adlı bir sınıf oluşturun. Bu sınıf, bir e-posta gönderirken işlem hattının gövde isteğinde gönderdiği özellikleri tanımlar. Bu öğreticide işlem hattı, işlem hattından e-postaya dört özellik gönderir:
 

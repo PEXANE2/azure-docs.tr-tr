@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 361dc10aad6f65230e1e0f4c563534d44b45f902
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697806"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387800"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
@@ -69,7 +69,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 + POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [DIL ALGıLAMA API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)'sine bakın.
 
-+ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. `/languages` Kaynağı içermesi gerekir: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
++ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. URL 'ye dahil `/text/analytics/v2.1/languages` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 

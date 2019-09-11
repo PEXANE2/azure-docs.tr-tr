@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: c53bc9527eeb6c7ca8194ef056177a79dd880957
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874768"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147349"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Izleyici 'de izleme & birleştirilmiş uyarı, klasik uyarı & izlemeyi değiştirir
 
@@ -72,6 +72,10 @@ Azure Izleyici 'de Ağustos 2019 ' nin sonunda:
 > [!IMPORTANT]
 > Microsoft Azure Izleyicisi, bazı bilgisayarlarda klasik uyarı kurallarını yeni platforma yakında [geçirmek için aşamalar aracında](alerts-using-migration-tool.md) kullanıma alındı. Ve yine de mevcut olan ve 2019 Eylül 'den başlayarak geçirilebilecek olan tüm klasik uyarı kurallarını zorla aracılığıyla çalıştırın. Müşterilerin, klasik uyarı kuralı yükünün, [Application Insights](#unified-metrics-and-alerts-in-application-insights) veya birleştirilmiş ölçümler ve uyarılardan gelen yeni yükü, [diğer Azure kaynakları için](#unified-metrics-and-alerts-for-other-azure-resources), geçiş sonrası ve uyarılarından işlemek için uyarlandığı emin olunması gerekir. , klasik uyarı kuralları. Daha fazla bilgi için bkz. [Klasik uyarı kuralı geçişine hazırlanma](alerts-prepare-migration.md)
 
+Bu makale yeni Azure izleme & uyarı işlevselliğiyle ilgili ayrıntıların & ayrıntılarla ve kullanıcılara yeni Azure Izleyici platformunu benimseme konusunda yardımcı olan araçların kullanılabilirliğine yönelik bağlantılarla birlikte sürekli olarak güncelleştirilecektir.
+
+## <a name="pricing-for-migrated-alert-rules"></a>Geçirilen uyarı kuralları fiyatlandırması
+
 Azure Monitor [Klasik uyarılarınızı](../../azure-monitor/platform/alerts-classic.overview.md) yeni uyarılar deneyimine geçirmenize yardımcı olmak için bir geçiş aracı kullanıma sunuyoruz. Geçirilen uyarı kuralları ve karşılık gelen geçirilmiş eylem grupları (e-posta, Web kancası veya LogicApp) ücretsiz olarak kalır. Eşiği, toplama türünü ve toplama ayrıntı düzeyini düzenleme özelliği de dahil olmak üzere klasik uyarılarla sahip olduğunuz işlevsellik, geçirilen uyarı kuralınız ile ücretsiz olarak kullanılabilir olmaya devam edecektir. Ancak, yeni uyarı platformu özelliklerinden herhangi birini, bildirimleri veya eylem türlerini kullanmak için geçirilmiş uyarı kuralını düzenlerseniz, buna karşılık gelen bir ücret uygulanır. Uyarı kuralları ve bildirimlerin fiyatlandırmasıyla ilgili daha fazla bilgi için bkz. [Azure Monitor fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
 
 Aşağıda, uyarı kuralınız için ücret ödemeniz gereken durumların örnekleri verilmiştir:
@@ -82,9 +86,6 @@ Aşağıda, uyarı kuralınız için ücret ödemeniz gereken durumların örnek
 - Azure Izleyici 'de yer alan ücretsiz birimlerin ötesinde depolanan özel ölçümler
 - Sıklık, birden çok kaynak/boyut, [dinamik eşikler](alerts-dynamic-thresholds.md), kaynak/sinyal değiştirme vb. gibi daha yeni ölçüm uyarısı özelliklerini kullanmak için düzenlenen tüm geçirilmiş uyarı kuralları.
 - Daha yeni bildirimleri veya SMS, sesli çağrı ve/veya ıTSM tümleştirmesi gibi eylem türlerini kullanmak için düzenlenen geçirilmiş eylem grupları.
-
-Bu makale yeni Azure izleme & uyarı işlevselliğiyle ilgili ayrıntıların & ayrıntılarla ve kullanıcılara yeni Azure Izleyici platformunu benimseme konusunda yardımcı olan araçların kullanılabilirliğine yönelik bağlantılarla birlikte sürekli olarak güncelleştirilecektir.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

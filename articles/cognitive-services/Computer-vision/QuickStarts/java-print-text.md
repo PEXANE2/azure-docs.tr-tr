@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Yazdırılan metin - REST, Java ayıklayın'
+title: 'Hızlı Başlangıç: Yazdırılan metni Ayıkla-REST, Java'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Java ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b43c0b067dee6c11b78f422155a20d5cd301490b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 73d5effa3341337f3238c49c17a2227942af4958
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604367"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141353"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve Java kullanarak yazdırılan metin (OCR) ayıklayın
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılan metni (OCR) Ayıkla
 
 Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Java&trade; Platform, Standard Edition Geliştirme Seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8) yüklü olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -53,12 +53,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    import org.json.JSONObject;
    ```
 
-1. `Main` ortak sınıfını aşağıdaki kodla değiştirin, ardından kodda gereken yerlerde aşağıdaki değişiklikleri yapın:
-   1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-   1. Gerekirse `uriBase` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesinden [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminin uç nokta URL’si ile değiştirin.
-   1. İsteğe bağlı olarak, `imageToAnalyze` değerini, içinden yazdırılan metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
+1. `Main` Ortak sınıfı aşağıdaki kodla değiştirin.
+1. İsteğe bağlı olarak, `imageToAnalyze` değerini, içinden yazdırılan metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
 1. Kaydedin, ardından Java projesini derleyin.
-1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.
+1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin: `java Main`.
 
 ```java
 public class Main {
@@ -66,19 +64,13 @@ public class Main {
     // *** Update or verify the following values. ***
     // **********************************************
 
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    // After setting, close and then re-open your command shell or project for the changes to take effect.
+    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    private static final String uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
+    private static final String uriBase = endpoint + 
+            "vision/v2.0/ocr";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +

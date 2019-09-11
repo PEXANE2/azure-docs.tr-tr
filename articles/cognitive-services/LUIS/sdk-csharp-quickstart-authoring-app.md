@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 11f40d99a36493272cb6cd51e4a339c19cd0358b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966729"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258777"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Hızlı Başlangıç: Language Understanding (LUSıS) .NET için istemci kitaplığı yazma
 
@@ -37,9 +37,9 @@ ms.locfileid: "68966729"
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Language Understanding (LUSıS) yazma anahtarınızı alın
+### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUSıS) başlangıç anahtarınızı alın
 
-[Yazma anahtarınızı](luis-how-to-account-settings.md)alın ve adlı `COGNITIVESERVICE_AUTHORING_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+[Başlangıç anahtarınızı](luis-how-to-azure-subscription.md#starter-key)alın ve adlı `COGNITIVESERVICE_AUTHORING_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
@@ -92,7 +92,7 @@ Language Understanding (LUSıS) yazma istemcisi, yazma anahtarınızı içeren A
 * Özellikler- [tümcecik listelerini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet) yönetme 
 * Model- [amaçları](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) ve varlıkları yönetme
 * Desen yönetme [desenleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet)
-* Eğitim- [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet) uygulamayı ve yoklama [durumunu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet) eğitme
+* Eğitim- [uygulamayı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet) ve yoklama [durumunu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet) eğitme
 * [Sürümler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.versionsextensions?view=azure-dotnet) -kopyalama, dışarı aktarma ve silme ile yönetme
 
 
@@ -140,7 +140,7 @@ Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE ve
     [!code-csharp[Create a LUIS app](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateApplication)]
 
 ## <a name="create-intent-for-the-app"></a>Uygulama için amaç oluştur
-Bir LUıN uygulamasının modelindeki birincil nesne, amaç ' dır. Amaç, Kullanıcı utterlerinin bir gruplandırması ile hizalanır. Bir Kullanıcı soru sorabilir veya bir bot 'tan (veya başka bir istemci uygulamasından) belirli bir _amaçlanan_ yanıtı bulmak için bir ifade oluşturabilir. Bir uçuşmaya örnek olarak, hedef şehirdeki hava durumu hakkında bilgi isteyerek ve müşteri hizmetleri için iletişim bilgilerini soruyor.   
+Bir LUıN uygulamasının modelindeki birincil nesne, amaç ' dır. Amaç, Kullanıcı utterlerinin bir gruplandırması ile _hizalanır._ Bir Kullanıcı soru sorabilir veya bir bot 'tan (veya başka bir istemci uygulamasından) belirli bir _amaçlanan_ yanıtı bulmak için bir ifade oluşturabilir. Bir uçuşmaya örnek olarak, hedef şehirdeki hava durumu hakkında bilgi isteyerek ve müşteri hizmetleri için iletişim bilgilerini soruyor.   
 
 Benzersiz bir amaç adıyla bir [modelcreateobject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modelcreateobject?view=azure-dotnet) oluşturun ve ardından uygulama kimliği, sürüm kimliği ve Modelcreateobject 'yi [model. addi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addintentasync?view=azure-dotnet) metoduna geçirin. Yanıt, amaç KIMLIĞIDIR.
 
@@ -190,7 +190,7 @@ Bu hızlı başlangıç gibi çok küçük bir model, çok hızlı bir şekilde 
 
 Uygulama dizininizde DotNet `run` komutuyla uygulamayı çalıştırın.
 
-```dotnet
+```console
 dotnet run
 ```
 

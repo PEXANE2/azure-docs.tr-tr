@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 1a799823a71fcbc4aebf4b869a3fd0dd9fc66de1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 8a9366005ceef5a99fd66f0ec0cd53c98b481ee1
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907865"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309327"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Nasıl oluşturmak ve yönetmek, Azure CLI kullanarak MySQL için Azure veritabanı çoğaltmalarını okuyun
 
 Bu makalede, oluşturmak ve yönetmek için aynı Azure bölgesindeki Azure CLI kullanarak MySQL hizmeti için Azure veritabanı yöneticisi olarak okundu çoğaltmaları öğreneceksiniz.
-
-> [!IMPORTANT]
-> Ana sunucunuz ile aynı bölgede veya seçtiğiniz diğer herhangi bir Azure bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

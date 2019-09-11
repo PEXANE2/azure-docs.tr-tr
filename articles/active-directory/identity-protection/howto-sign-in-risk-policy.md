@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d00376c6689b6be773f24e8acd09c3697fb6a799
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335416"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126303"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Nasıl Yapılır: Oturum açma risk ilkesini yapılandırma
 
-Azure Active Directory, [risk olay türlerini](../reports-monitoring/concept-risk-events.md#risk-event-types) gerçek zamanlı ve çevrimdışı olarak algılar. Bir kullanıcının oturum açması için algılanan her risk olayı, riskli oturum açma adlı bir mantıksal kavram 'e katkıda bulunur. Riskli oturum açma, bir kullanıcı hesabının meşru sahibi tarafından gerçekleştirilmiş olabilecek bir oturum açma girişimine yönelik bir göstergedir.
+Azure Active Directory, [risk algılama türlerini](../reports-monitoring/concept-risk-events.md#risk-detection-types) gerçek zamanlı ve çevrimdışı olarak algılar. Bir kullanıcının oturum açması için algılanan her risk algılaması, riskli oturum açma adlı bir mantıksal kavram 'e katkıda bulunur. Riskli oturum açma, bir kullanıcı hesabının meşru sahibi tarafından gerçekleştirilmiş olabilecek bir oturum açma girişimine yönelik bir göstergedir.
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Oturum açma riski ilkesi nedir?
 
-Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Örneğin, anonim bir IP adresi kullanılarak yapılan oturum açma işlemi mi, yoksa bilmediğiniz bir konumdan başlatılan oturum açma mı? Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk olayları olarak da bilinir. Azure AD, oturum açma sırasında algılanan risk olaylarına bağlı olarak bir değeri hesaplar. Bu değer, oturum açmanın meşru Kullanıcı tarafından gerçekleştirilmediğini (düşük, orta, yüksek) temsil eder. Olasılığa, **oturum açma risk düzeyi**denir.
+Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Örneğin, anonim bir IP adresi kullanılarak yapılan oturum açma işlemi mi, yoksa bilmediğiniz bir konumdan başlatılan oturum açma mı? Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk algılamaları olarak da bilinir. Azure AD, oturum açma sırasında algılanan risk algılamalarını temel alarak bir değeri hesaplar. Bu değer, oturum açmanın meşru Kullanıcı tarafından gerçekleştirilmediğini (düşük, orta, yüksek) temsil eder. Olasılığa, **oturum açma risk düzeyi**denir.
 
 Oturum açma risk ilkesi, belirli bir oturum açma risk düzeyi için yapılandırabileceğiniz otomatik bir yanıttır. Yanıtlarınızda kaynaklarınıza erişimi engelleyebilir veya erişim kazanmak için Multi-Factor Authentication (MFA) sınamasını geçirmeyi zorunlu kılabilirsiniz.
    

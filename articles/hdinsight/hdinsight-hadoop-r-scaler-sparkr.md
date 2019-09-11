@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight ile ScaleR ve parlak r kullanma
-description: HDInsight 'ta ML Hizmetleri ile ScaleR ve parlak r kullanma
+description: Azure HDInsight 'ta ML Hizmetleri ile veri işleme ve model geliştirme için ScaleR ve parlak r kullanın
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a91d2d569b4900e3d5b787145c242a75b928d822
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873325"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733378"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight 'ta ScaleR ve parlak r 'yi birleştirme
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Hava yolu ve hava durumu verilerini Spark veri çerçevelerine aktarma
 
-Şimdi, hava durumu ve hava yolu verilerini Spark dataframe 'e aktarmak için, Mini uçr [Read. df ()](http://spark.apache.org/docs/latest/api/R/read.df.html) işlevini kullanırız. Diğer birçok Spark yöntemi gibi bu işlev, yürütme için sıraya alındığı ancak gerekli olana kadar yürütülmeyeceği anlamına gelen geç yürütülür.
+Şimdi, hava durumu ve hava yolu verilerini Spark dataframe 'e aktarmak için, Mini uçr [Read. df ()](https://spark.apache.org/docs/latest/api/R/read.df.html) işlevini kullanırız. Diğer birçok Spark yöntemi gibi bu işlev, yürütme için sıraya alındığı ancak gerekli olana kadar yürütülmeyeceği anlamına gelen geç yürütülür.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Hava durumu ve hava yolu verilerine katılma
 
-Şimdi, uçak ve tarih/saat ile hava yolu ve hava durumu verilerinin bir sol dış birleştirmesini yapmak için, Mini uçr [JOIN ()](http://spark.apache.org/docs/latest/api/R/join.html) işlevini kullanırız. Dış birleşim, eşleşen Hava durumu verisi olmasa bile tüm hava yolu veri kayıtlarını korumamızı sağlar. Birleştirmeyi takip eden bazı gereksiz sütunları kaldırdık ve JOIN tarafından tanıtılan gelen veri çerçevesi önekini kaldırmak için tutulan sütunları yeniden adlandırmanız gerekir.
+Şimdi, uçak ve tarih/saat ile hava yolu ve hava durumu verilerinin bir sol dış birleştirmesini yapmak için, Mini uçr [JOIN ()](https://spark.apache.org/docs/latest/api/R/join.html) işlevini kullanırız. Dış birleşim, eşleşen Hava durumu verisi olmasa bile tüm hava yolu veri kayıtlarını korumamızı sağlar. Birleştirmeyi takip eden bazı gereksiz sütunları kaldırdık ve JOIN tarafından tanıtılan gelen veri çerçevesi önekini kaldırmak için tutulan sütunları yeniden adlandırmanız gerekir.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

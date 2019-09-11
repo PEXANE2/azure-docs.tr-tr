@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/13/2019
-ms.openlocfilehash: 44ac290a471fd0099b6589f84fea604249818432
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 09/05/2019
+ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868608"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376402"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
@@ -79,7 +79,7 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hiz
 |   | RDS MySQL | ✔ | GA |
 | **PostgreSQL için Azure DB** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | Özel Önizleme |
+|   | Oracle | ✔ | Genel önizleme |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

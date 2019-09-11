@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072901"
+ms.locfileid: "70129188"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme'de sorun giderin
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -717,7 +717,7 @@ Bu hata, depolama hesabının başka bir bölgeye yük devrettiğinden oluşur. 
 | **Hata dizesi** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Düzeltme gerekli** | Hayır |
 
-Bu hata, eşitleme veritabanıyla ilgili bir iç sorun nedeniyle oluşur. Eşitleme yeniden denendiğimde Azure Dosya Eşitleme bu hata otomatik olarak çözümlenir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
+Bu hata, eşitleme veritabanıyla ilgili bir iç sorun nedeniyle oluşur. Bu hata, eşitleme yeniden denemeleri sırasında otomatik olarak çözümlenir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
 
 <a id="-2134364024"></a>**Azure Active Directory kiracısındaki değişiklik nedeniyle eşitleme başarısız oldu**  
 

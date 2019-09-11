@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 246d3eac8f9d8aff6d603ea8686e430ce0f772ea
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a082e4b7896b317bf2b28971d3693bada95a3445
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878253"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806549"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution"></a>Hızlı Başlangıç: Çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşime geçin
 
@@ -28,6 +28,9 @@ IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahib
 ## <a name="prepare-an-iot-hub"></a>IoT Hub 'ı hazırlama
 
 Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+> [!NOTE]
+> Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
 Azure CLı için Microsoft Azure IoT uzantısını ekleyin:
 
@@ -167,7 +170,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
       }
     ```
 
-1. Cihaz terminalinize gidin, cihazın güncelleştirmeyi aldığını görürsünüz:
+1. _Cihaz terminalinize_ gidin, cihazın güncelleştirmeyi aldığını görürsünüz:
 
     ```cmd/sh
     Received an update for brightness: 60

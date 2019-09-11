@@ -1,7 +1,7 @@
 ---
 title: 'REST öğreticisi: Bilişsel arama kullanarak bir AI zenginleştirme işlem hattı oluşturun Azure Search'
 description: Postman ve Azure Search REST API 'Lerini kullanarak JSON Bloblarındaki içerikler üzerinde metin ayıklama ve doğal dil işleme örneğinde adım adım ilerleyin.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102776"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274122"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Öğretici: Bilişsel arama ile "yapılandırılmamış içerik" yapısına yapı ekleyin
 
@@ -22,10 +22,10 @@ Yapılandırılmamış metin veya görüntü içeriğiniz varsa, Azure Search bi
 
 > [!div class="checklist"]
 > * Azure Blob depolamada PDF, MD, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
-> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı oluşturun.
+> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı tanımlayın.
 > * Çıktıyı depolamak için bir dizin tanımlayın (ham içerik ve ardışık düzen tarafından oluşturulan ad-değer çiftleri).
-> * Dizini oluşturmak ve yüklemek için işlem hattını yürütün.
-> * Tam metin aramasını ve zengin sorgu söz dizimini kullanarak içeriği keşfedebilirsiniz.
+> * Dönüşümleri ve Analizi başlatmak ve dizini oluşturmak ve yüklemek için işlem hattını yürütün.
+> * Tam metin aramasını ve zengin sorgu söz dizimini kullanarak sonuçları keşfedebilirsiniz.
 
 Bu izlenecek yolu tamamlamak için birkaç hizmete, Ayrıca, REST API çağrısı yapmak için [Postman masaüstü uygulamasını](https://www.getpostman.com/) veya başka bir Web Testi aracını kullanmanız gerekir. 
 
@@ -427,7 +427,7 @@ Dizin oluşturma ve zenginleştirme, oluşturma Dizin Oluşturucu isteğini gön
 
 1. Dizin oluşturucunun çalışıp çalışmadığını öğrenmek veya hata ve uyarı bilgilerini görüntülemek için yanıtı gözden geçirin.  
 
-Ücretsiz katmanı kullanıyorsanız, şu ileti bekleniyor: ' "belgenizden içerik veya meta veri ayıklanamadı. Ayıklanan metin ' 32768 ' karakter "olarak kesildi. Bu ileti, boş katmandaki blob dizinlemesi, karakter ayıklamaya karşı bir[32K sınırına](search-limits-quotas-capacity.md#indexer-limits)sahip olduğundan görüntülenir. Bu ileti, daha yüksek katmanlarda bu veri kümesi için görmezsiniz. 
+Ücretsiz katmanı kullanıyorsanız, şu ileti bekleniyor: ' "belgenizden içerik veya meta veri ayıklanamadı. Ayıklanan metin ' 32768 ' karakter "olarak kesildi. Bu ileti, boş katmandaki blob dizinlemesi,[karakter ayıklamaya karşı bir 32K sınırına](search-limits-quotas-capacity.md#indexer-limits)sahip olduğundan görüntülenir. Bu ileti, daha yüksek katmanlarda bu veri kümesi için görmezsiniz. 
 
 > [!NOTE]
 > Uyarılar bazı senaryolarda ortaktır ve her zaman bir sorun göstermez. Örneğin, bir blob kapsayıcısı görüntü dosyaları içeriyorsa ve işlem hattı görüntüleri işetmez, görüntülerin işlenmediğini belirten bir uyarı alırsınız.

@@ -1,7 +1,7 @@
 ---
-title: 'Azure Blob depolama alanından içeri aktar: Modül başvurusu'
+title: 'Azure Blob depolamadan içeri aktarma: Modül başvurusu'
 titleSuffix: Azure Machine Learning service
-description: Bu konuda bir machine learning denemesinden verileri kullanabilmesi için Azure Blob Depolama modülü içeri aktar Azure Machine Learning hizmetinde Azure blob depolama alanından verileri okumak için nasıl kullanılacağını açıklar öğrenin.
+description: Bu konu başlığı altında, bir Machine Learning denemesinin içindeki verileri kullanabilmeniz için Azure Machine Learning hizmetindeki Azure Blob depolama modülünden Içeri aktarma Işleminin nasıl kullanılacağı açıklanmaktadır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,88 +9,87 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 4ac98516c1a326e1ede09bbb9660113ffd0642a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fea64070c496379351bb75f2a38aba9b4db70dcd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029693"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128714"
 ---
-# <a name="import-from-azure-blob-storage-module"></a>Azure Blob Depolama modülünden içeri aktarma
+# <a name="import-from-azure-blob-storage-module"></a>Azure Blob depolama modülünden içeri aktarma
 
-Bu makalede bir modül, Azure Machine Learning hizmeti için görsel arabirim (Önizleme).
+Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
-Bir machine learning denemesinden verileri kullanabilmesi için Azure blob depolama alanından verileri okumak için bu modülü kullanın.  
+Bu modülü, verileri bir Machine Learning denemesinde kullanabilmeniz için Azure Blob depolama alanındaki verileri okumak üzere kullanın.  
 
-Azure Blob veri ikili veriler de dahil olmak üzere, büyük miktarlarda depolamak için bir hizmettir. Azure blobları, HTTP veya HTTPS aracılığıyla erişilebilir. Kimlik doğrulaması, blob depolama türüne bağlı olarak gerekli olabilir. 
+Azure Blob hizmeti, ikili veriler de dahil olmak üzere büyük miktarda veriyi depolamaya yöneliktir. Azure Blob 'larına, HTTP veya HTTPS kullanılarak her yerden erişilebilir. BLOB depolama türüne bağlı olarak kimlik doğrulaması gerekebilir. 
 
-- Genel BLOB'lar, herkes tarafından ya da bir SAS URL'si olan kullanıcılar tarafından erişilebilir.
-- Özel BLOB'ları, bir oturum açma ve kimlik bilgilerini gerektirir.
+- Genel bloblara herkes veya SAS URL 'SI olan kullanıcılar erişebilir.
+- Özel Bloblar, oturum açma ve kimlik bilgileri gerektirir.
 
-BLOB depolama alanından alma gerektiren veri kullanan blob'larda depolanacak **blok blobu** biçimi. Blobu'nda depolanan dosyaları, virgülle ayrılmış (CSV) veya sekmeyle ayrılmış (TSV) biçimleri kullanmanız gerekir. Dosyayı okumak, satırlar olarak kayıtlarını ve ilgili özniteliğin başlık bir veri kümesi olarak belleğe yüklenir.
-
-
-Verilerinizi içeri aktarmadan önce şemayı beklenildiği gibi gittiğinden emin olmak için profilinin kesinlikle öneririz. İçeri aktarma işlemi bazı şema belirlemek için baş satır sayısı tarar, ancak sonraki satırları ek sütunları veya hatalara neden veri içerebilir.
+Blob depolamadan içeri aktarma, verilerin **Blok Blobu** biçimini kullanan bloblarda depolanmasını gerektirir. Blob 'da depolanan dosyaların virgülle ayrılmış (CSV) veya sekmeyle ayrılmış (TSV) biçimleri kullanması gerekir. Dosyayı okurken, kayıtlar ve ilgili öznitelik başlıkları bir veri kümesi olarak belleğe satır olarak yüklenir.
 
 
-
-## <a name="manually-set-properties-in-the-import-data-module"></a>El ile verileri içeri aktarma modülü kümesi özellikleri
-
-Aşağıdaki adımları el ile içeri aktarma kaynak nasıl yapılandırılacağı açıklanmaktadır.
-
-1. Ekleme **verileri içeri aktarma** denemenizi modülü. Bu modül de arabiriminde bulabilirsiniz **veri giriş ve çıkış**
-
-2. İçin **veri kaynağı**seçin **Azure Blob Depolama**.
-
-3. İçin **kimlik doğrulama türü**, seçin **ortak (SAS URL)** genel veri kaynağı olarak bilgileri sağlanmadı biliyorsanız. Bir SAS URL'si, bir Azure depolama yardımcı programını kullanarak oluşturabileceğiniz genel erişim için bir zaman sınırı URL'dir.
-
-    Bir seçim **hesabı**.
-
-4. Verilerinizi ise bir **genel** bir SAS URL'si kullanılarak erişilebilen blob indirme ve kimlik doğrulaması için gerekli tüm bilgileri URL dizesini içerdiği için ek kimlik bilgileri gerekmez.
-
-    İçinde **URI** alanına yazın veya hesap ve ortak blob tanımlayan tam URI yapıştırın.
+Şemanın beklenen şekilde olduğundan emin olmak için verilerinizi içeri aktarmadan önce profilinizi kesinlikle öneririz. İçeri aktarma işlemi, şemayı belirleyebilmek için bazı baş satırları tarar, ancak sonraki satırlarda ek sütunlar veya hatalara neden olan veriler bulunabilir.
 
 
 
-5. Verilerinizi ise bir **özel** hesabı, hesap adı ve anahtarı gibi kimlik bilgilerini sağlamanız gerekir.
+## <a name="manually-set-properties-in-the-import-data-module"></a>Verileri Içeri aktarma modülündeki özellikleri el ile ayarlama
 
-    - İçin **hesap adı**erişmek istediğiniz blob içeren hesabının adını yapıştırın veya yazın.
+Aşağıdaki adımlarda, içeri aktarma kaynağının el ile nasıl yapılandırılacağı açıklanır.
 
-        Örneğin, depolama hesabının Tam URL'si `http://myshared.blob.core.windows.net`, yazarsınız `myshared`.
+1. **Veri alma** modülünü denemenize ekleyin. Bu modülü arabirimde, **veri girişinde ve çıktıda** bulabilirsiniz
 
-    - İçin **hesap anahtarı**, hesabıyla ilişkili depolama erişim anahtarını yapıştırın.
+2. **Veri kaynağı**Için **Azure Blob depolama**' yı seçin.
 
-        Erişim anahtarı bilmiyorsanız, bölümüne bakın, "Bu makalede Azure depolama hesaplarınızı yönetme": [Azure depolama hesapları hakkında](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+3. **Kimlik doğrulama türü**için, bilgilerin ortak bir veri kaynağı olarak sağlandığını biliyorsanız **ortak (SAS URL)** öğesini seçin. Bir SAS URL 'SI, Azure Storage yardımcı programını kullanarak oluşturabileceğiniz genel erişim için zamana bağlanan bir URL 'dir.
 
-6. İçin **kapsayıcı, dizin veya blob yolu**, almak istediğiniz belirli bir blobu adını yazın.
+    Aksi takdirde **Hesap**' ı seçin.
 
-    Örneğin, adında bir dosya karşıya **data01.csv** kapsayıcıya **trainingdata** adlı bir hesapta **mymldata**, dosya için tam URL şu şekilde olacaktır: `http://mymldata.blob.core.windows.net/trainingdata/data01.txt` .
+4. Verileriniz bir SAS URL 'SI kullanılarak erişilebilen bir **genel** Blobun Ise, URL dizesinde indirme ve kimlik doğrulama için gereken tüm bilgiler bulunduğundan ek kimlik bilgilerine ihtiyacınız yoktur.
 
-    Bu nedenle, alandaki **kapsayıcı, dizin veya blob yolu**, şunu yazın: `trainingdata/data01.csv`
+    **URI** alanında, hesabı ve genel blobu TANıMLAYAN tam URI 'yi yazın veya yapıştırın.
 
-    Birden çok dosyayı içeri aktarmak için joker karakterler kullanabilirsiniz `*` (yıldız işareti) veya `?` (soru işareti).
 
-    Örneğin, kapsayıcı varsayılarak `trainingdata` birden çok dosya içeren uyumlu bir biçimde, ile başlayan tüm dosyaları okumak için şu belirtime kullanabilirsiniz `data`ve bunları tek bir veri kümesine birleştirme:
+
+5. Verileriniz **özel** bir hesabalıyorsa, hesap adı ve anahtar dahil olmak üzere kimlik bilgilerini sağlamanız gerekir.
+
+    - **Hesap adı**için, erişmek istediğiniz blobu içeren hesabın adını yazın veya yapıştırın.
+
+        Örneğin, depolama hesabının tam URL 'si ise `http://myshared.blob.core.windows.net`, yazmanız `myshared`gerekir.
+
+    - **Hesap anahtarı**için, hesapla ilişkili depolama erişim anahtarını yapıştırın.
+
+        Erişim anahtarını bilmiyorsanız, bu makaledeki "Azure depolama hesaplarınızı yönetme" bölümüne bakın: [Azure depolama hesapları hakkında](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+
+6. **Kapsayıcı, dizin veya blob yolu**için almak istediğiniz belirli bir Blobun adını yazın.
+
+    Örneğin, **data01. csv** adlı bir dosyayı **mymldata**adlı bir hesapta yer alarak bulunan kapsayıcıya yüklediğinizde, dosyanın tam URL 'si:. `http://mymldata.blob.core.windows.net/trainingdata/data01.txt`
+
+    Bu nedenle, **kapsayıcı, dizin veya Blobun alan yolunda**şunu yazarsınız:`trainingdata/data01.csv`
+
+    Birden çok dosyayı içeri aktarmak için joker karakterleri `*` (yıldız işareti) veya `?` (soru işareti) kullanabilirsiniz.
+
+    Örneğin, kapsayıcının `trainingdata` uyumlu biçimdeki birden çok dosya içerdiği varsayılarak, ile `data`başlayan tüm dosyaları okumak ve bunları tek bir veri kümesine birleştirmek için aşağıdaki belirtimi kullanabilirsiniz:
 
     `trainingdata/data*.csv`
 
-    Kapsayıcı adlarında joker karakterler kullanamaz. Birden çok kapsayıcılardan dosyaları almanız gerekiyorsa, ayrı bir örneğini kullan **Veri Al** her kapsayıcı ve veri kümeleri kullanılarak ardından birleştirme için Modülü [Add Rows](./add-rows.md) modülü.
+    Kapsayıcı adlarında joker karakterler kullanamazsınız. Birden çok kapsayıcıdan dosyaları içeri aktarmanız gerekiyorsa, her kapsayıcı için **veri Içeri aktarma** modülünün ayrı bir örneğini kullanın ve ardından [Satırları Ekle](./add-rows.md) modülünü kullanarak veri kümelerini birleştirin.
 
     > [!NOTE]
-    > Seçeneğini seçtiyseniz **kullanın, sonuçları önbelleğe**, kapsayıcı dosyalarında yaptığınız tüm değişiklikler denemede veri yenileme tetiklemez.
+    > Bu seçeneği belirlediyseniz, **önbelleğe alınmış sonuçları kullanın**, kapsayıcıdaki dosyalarda yaptığınız tüm değişiklikler, denemesinde verilerin yenilenmesini tetiklemez.
 
-7. İçin **Blob dosya biçimi**, Azure Machine Learning veri uygun şekilde işleyebilmesi blob depolanan verilerin biçimini belirten bir seçenek belirleyin. Aşağıdaki biçimleri desteklenir:
+7. **BLOB dosya biçimi**için blob 'da depolanan verilerin biçimini belirten bir seçenek belirleyin, böylece Azure Machine Learning verileri uygun şekilde işleyebilir. Aşağıdaki biçimler desteklenir:
 
-    - **CSV**: Virgülle ayrılmış değerler (CSV) içeri ve dışarı aktarma Azure Machine learning'de dosyaları için varsayılan depolama biçimi ' dir. Verilere bir üst bilgi satırı içeriyorsa, seçeneğini belirlediğinizden emin olun **dosya üst bilgi satırı içeriyor**, veya üst bilgi veri satırı kabul edilir.
-
-       
-
-    - **TSV**: Sekmeyle ayrılmış değerler (TSV) çok sayıda machine learning araçları tarafından kullanılan bir biçim var. Verilere bir üst bilgi satırı içeriyorsa, seçeneğini belirlediğinizden emin olun **dosya üst bilgi satırı içeriyor**, veya üst bilgi veri satırı kabul edilir.
+    - **CSV**: Virgülle ayrılmış değerler (CSV), Azure Machine Learning dosyaları dışa ve içe aktarmak için varsayılan depolama biçimidir. Veriler zaten bir başlık satırı içeriyorsa, bu seçeneği seçtiğinizden, **dosyanın üst bilgi satırına sahip**olduğundan veya üstbilginin bir veri satırı olarak değerlendirildiğinden emin olun.
 
        
 
-    - **ARFF'YE**: Bu biçim, Weka araç takımı tarafından kullanılan biçimi dosyalarında almayı destekler. 
+    - **TSV**: Sekmeyle ayrılmış değerler (TSV), birçok makine öğrenimi aracı tarafından kullanılan bir biçimdir. Veriler zaten bir başlık satırı içeriyorsa, bu seçeneği seçtiğinizden, **dosyanın üst bilgi satırına sahip**olduğundan veya üstbilginin bir veri satırı olarak değerlendirildiğinden emin olun.
+
+       
+
+    - **ARFF**: Bu biçim, dosyaları WEKA araç kümesi tarafından kullanılan biçimde içe aktarmayı destekler. 
 
    
 
@@ -99,4 +98,4 @@ Aşağıdaki adımları el ile içeri aktarma kaynak nasıl yapılandırılacağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [kullanılabilir modül kümesini](module-reference.md) Azure Machine Learning hizmetine. 
+Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 

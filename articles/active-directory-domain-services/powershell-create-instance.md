@@ -1,59 +1,71 @@
 ---
-title: PowerShell 'i kullanarak Azure Active Directory Domain Services etkinleştirme | Microsoft Docs
-description: PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
+title: PowerShell kullanarak Azure DS etki alanı Hizmetleri 'ni etkinleştirme | Microsoft Docs
+description: Azure AD PowerShell ve Azure PowerShell kullanarak Azure Active Directory Domain Services yapılandırmayı ve etkinleştirmeyi öğrenin.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: c6572ab8bc2a10039f327233f983c2e822fba3b0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617226"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842703"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
-Bu makalede, PowerShell kullanarak Azure Active Directory (AD) etki alanı hizmetlerinin nasıl etkinleştirileceği gösterilmektedir.
+
+Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Etki alanı denetleyicilerini kendiniz dağıtmadan, yönetmeden ve düzeltme eki uygulamadan bu etki alanı hizmetlerini kullanırsınız. Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların kurumsal kimlik bilgilerini kullanarak oturum açmasını sağlar ve kaynaklara erişimi güvenli hale getirmek için mevcut grupları ve Kullanıcı hesaplarını kullanabilirsiniz.
+
+Bu makalede, PowerShell kullanarak Azure AD DS nasıl etkinleştirileceği gösterilmektedir.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="task-1-install-the-required-powershell-modules"></a>1\. Görev: Gerekli PowerShell modüllerini yükler
+## <a name="prerequisites"></a>Önkoşullar
 
-### <a name="install-and-configure-azure-ad-powershell"></a>Azure AD PowerShell 'i yükleyip yapılandırma
-[Azure AD PowerShell modülünü yüklemek ve Azure AD 'ye bağlanmak](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)için makalesindeki yönergeleri izleyin.
+Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-### <a name="install-and-configure-azure-powershell"></a>Azure PowerShell'i yükleyip yapılandırma
-[Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)için makalesindeki yönergeleri izleyin.
+* Azure PowerShell'i yükleyip yapılandırın.
+    * Gerekirse, [Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak](/powershell/azure/install-az-ps)için yönergeleri izleyin.
+    * [Connect-AzAccount][Connect-AzAccount] cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın.
+* Azure AD PowerShell 'i yükleyip yapılandırın.
+    * Gerekirse, [Azure AD PowerShell modülünü yüklemek ve Azure AD 'ye bağlanmak](/powershell/azure/active-directory/install-adv2)için yönergeleri izleyin.
+    * [Connect-AzureAD][Connect-AzureAD] cmdlet 'Ini kullanarak Azure AD kiracınızda oturum açarak emin olun.
+* Azure AD DS 'yi etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
+* Gerekli Azure AD DS kaynaklarını oluşturmak için Azure aboneliğinizde *katılımcı* ayrıcalıklarına sahip olmanız gerekir.
 
+## <a name="create-required-azure-ad-resources"></a>Gerekli Azure AD kaynaklarını oluşturma
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>2\. Görev: Azure AD dizininizde gerekli hizmet sorumlusunu oluşturma
-Azure AD dizininizde Azure AD Domain Services için gereken hizmet sorumlusunu oluşturmak için aşağıdaki PowerShell komutunu yazın.
+Azure AD DS, bir hizmet sorumlusu ve bir Azure AD grubu gerektirir. Bu kaynaklar, Azure AD DS yönetilen etki alanının verileri eşitlemesini ve yönetilen etki alanında hangi kullanıcıların yönetim izinlerine sahip olduğunu tanımlamanızı sağlar.
+
+İlk olarak, iletişim kurmak ve kimliğini doğrulamak için Azure AD DS için bir Azure AD hizmet sorumlusu oluşturun. Belirli bir uygulama KIMLIĞI, *2565bd9d-dad50-47d4-8B85-4c97f669dc36*kimliğine sahip *etki alanı denetleyicisi Hizmetleri* adında kullanılır. Bu uygulama KIMLIĞINI değiştirmeyin.
+
+[New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 'ini kullanarak BIR Azure AD hizmet sorumlusu oluşturun:
+
 ```powershell
-# Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>3\. Görev: ' AAD DC Administrators ' grubunu oluşturun ve yapılandırın
-Sonraki görev, yönetilen etki alanında yönetim görevlerinin temsilciliğini oluşturmak için kullanılacak yönetici grubunu oluşturmaktır.
+Şimdi *AAD DC yöneticileri*adlı BIR Azure AD grubu oluşturun. Daha sonra bu gruba eklenen kullanıcılara Azure AD DS yönetilen etki alanında yönetim görevlerini gerçekleştirmek için izinler verilir.
+
+[New-AzureADGroup][New-AzureADGroup] cmdlet 'Ini kullanarak *AAD DC yöneticileri* grubunu oluşturun:
+
 ```powershell
-# Create the delegated administration group for AAD Domain Services.
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -Description "Delegated group to administer Azure AD Domain Services" `
   -SecurityEnabled $true -MailEnabled $false `
   -MailNickName "AADDCAdministrators"
 ```
 
-Grubu oluşturduktan sonra gruba birkaç kullanıcı ekleyin.
+*AAD DC Administrators* grubu oluşturulduktan sonra [Add-AzureADGroupMember][Add-AzureADGroupMember] cmdlet 'ini kullanarak gruba bir kullanıcı ekleyin. Önce Get [-AzureADGroup][Get-AzureADGroup] cmdlet 'Ini kullanarak *AAD DC YÖNETICILERI* grubu nesne kimliği ' ni, sonra da [Get-AzureADUser][Get-AzureADUser] CMDLET 'ini kullanarak istenen kullanıcının nesne kimliğini alırsınız.
+
+Aşağıdaki örnekte, UPN `admin@contoso.onmicrosoft.com`'si olan HESABıN Kullanıcı nesne kimliği. Bu Kullanıcı hesabını *AAD DC Administrators* grubuna eklemek ISTEDIĞINIZ kullanıcının UPN 'si ile değiştirin:
+
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `
@@ -69,17 +81,18 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>4\. Görev: Azure AD Domain Services kaynak sağlayıcısını kaydetme
-Azure AD Domain Services için kaynak sağlayıcısını kaydetmek için aşağıdaki PowerShell komutunu yazın:
+## <a name="create-supporting-azure-resources"></a>Destekleyici Azure kaynakları oluşturma
+
+İlk olarak, [register-AzResourceProvider][Register-AzResourceProvider] cmdlet 'ini kullanarak Azure AD Domain Services kaynak sağlayıcısını kaydedin:
+
 ```powershell
-# Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>5\. Görev: Kaynak grubu oluşturma
-Bir kaynak grubu oluşturmak için aşağıdaki PowerShell komutunu yazın:
+Sonra, [New-AzResourceGroup][New-AzResourceGroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnekte, kaynak grubu *Myresourcegroup* olarak adlandırılır ve *westus* bölgesinde oluşturulur. Kendi adınızı ve istediğiniz bölgeyi kullanın:
+
 ```powershell
-$ResourceGroupName = "ContosoAaddsRg"
+$ResourceGroupName = "myResourceGroup"
 $AzureLocation = "westus"
 
 # Create the resource group.
@@ -88,17 +101,12 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-Sanal ağı ve Azure AD Domain Services yönetilen etki alanını bu kaynak grubunda oluşturabilirsiniz.
+Azure AD Domain Services için sanal ağ ve alt ağlar oluşturun. İki alt ağ oluşturulur- *DomainServices*için bir, diğeri *iş yükleri*için. Azure AD DS, adanmış *DomainServices* alt ağına dağıtılır. Bu alt ağa diğer uygulamaları veya iş yüklerini dağıtmayın. VM 'lerinizin geri kalanı için ayrı *Iş yüklerini* veya diğer alt ağları kullanın.
 
-
-## <a name="task-6-create-and-configure-the-virtual-network"></a>Görev 6: Sanal ağ oluşturma ve yapılandırma
-Şimdi Azure AD Domain Services etkinleştirdiğiniz sanal ağı oluşturun. Azure AD Domain Services için ayrılmış alt ağ oluşturduğunuzdan emin olun. Bu ayrılmış alt ağa iş yükü VM 'Leri dağıtmayın.
-
-Azure AD Domain Services için ayrılmış alt ağa sahip bir sanal ağ oluşturmak için aşağıdaki PowerShell komutlarını yazın.
+[New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] cmdlet 'ini kullanarak alt ağları oluşturun, ardından [New-AzVirtualNetwork][New-AzVirtualNetwork] cmdlet 'ini kullanarak sanal ağı oluşturun.
 
 ```powershell
-$ResourceGroupName = "ContosoAaddsRg"
-$VnetName = "DomainServicesVNet_WUS"
+$VnetName = "myVnet"
 
 # Create the dedicated subnet for AAD Domain Services.
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -110,7 +118,7 @@ $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -AddressPrefix 10.0.1.0/24
 
 # Create the virtual network in which you will enable Azure AD Domain Services.
-$Vnet=New-AzVirtualNetwork `
+$Vnet= New-AzVirtualNetwork `
   -ResourceGroupName $ResourceGroupName `
   -Location westus `
   -Name $VnetName `
@@ -118,47 +126,45 @@ $Vnet=New-AzVirtualNetwork `
   -Subnet $AaddsSubnet,$WorkloadSubnet
 ```
 
+## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS yönetilen etki alanı oluşturma
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>Görev 7: Azure AD Domain Services yönetilen etki alanını sağlama
-Dizininiz için Azure AD Domain Services etkinleştirmek üzere aşağıdaki PowerShell komutunu yazın:
+Şimdi Azure AD DS yönetilen bir etki alanı oluşturalım. Azure abonelik KIMLIĞINIZI ayarlayın ve ardından yönetilen etki alanı için *contoso.com*gibi bir ad sağlayın. [Get-AzSubscription][Get-AzSubscription] cmdlet 'ini kullanarak abonelik kimliğinizi alabilirsiniz.
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
-$ResourceGroupName = "ContosoAaddsRg"
-$VnetName = "DomainServicesVNet_WUS"
-$AzureLocation = "westus"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
+  -Force -Verbose
 ```
 
-> [!WARNING]
-> **Yönetilen etki alanınızı sağlamaktan sonra ek yapılandırma adımlarını unutmayın.**
-> Yönetilen etki alanınız sağlandıktan sonra yine de aşağıdaki görevleri gerçekleştirmeniz gerekir:
-> * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin. DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-> * Yönetilen etki alanı için gelen trafiği kısıtlamak üzere gerekli ağ güvenlik grubu kurallarını oluşturun. Ağ güvenlik grubu kuralları oluşturmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, uygun ağ güvenlik grubu kurallarını otomatik olarak oluşturmanız istenir.
-> * **[Azure AD Domain Services için parola eşitlemesini etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** , böylece son kullanıcılar şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilirler.
+Kaynağın oluşturulması ve denetimin PowerShell istemine döndürülmesi birkaç dakika sürer. Azure AD DS yönetilen etki alanı arka planda sağlanmaya devam eder ve dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal Azure AD DS yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
 
-## <a name="powershell-script"></a>PowerShell betiği
-Bu makalede listelenen tüm görevleri gerçekleştirmek için kullanılan PowerShell betiği aşağıda verilmiştir. Betiği kopyalayın ve '. ps1 ' uzantılı bir dosyaya kaydedin. Betiği PowerShell 'de veya PowerShell Tümleşik komut dosyası ortamı (ıSE) kullanarak yürütün.
+Azure portal Azure AD DS yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
+
+* Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
+    * DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
+* Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) .
+
+## <a name="complete-powershell-script"></a>PowerShell betiğini Tamam
+
+Aşağıdaki tamamlanmış PowerShell betiği, bu makalede gösterilen tüm görevleri birleştirir. Betiği kopyalayın ve `.ps1` uzantılı bir dosyaya kaydedin. Betiği yerel bir PowerShell konsolunda veya [Azure Cloud Shell][cloud-shell]çalıştırın.
 
 > [!NOTE]
-> **Bu betiği çalıştırmak için gereken izinler** Azure AD Domain Services etkinleştirmek için Azure AD dizini için genel yönetici olmanız gerekir. Ayrıca, Azure AD Domain Services etkinleştiren sanal ağ üzerinde en az "katkıda bulunan" ayrıcalıklarınız olması gerekir.
->
+> Azure AD DS 'yi etkinleştirmek için Azure AD kiracısı için bir genel yönetici olmanız gerekir. Azure aboneliğinde en az *katkıda bulunan* ayrıcalıklara de ihtiyacınız vardır.
 
 ```powershell
 # Change the following values to match your deployment.
 $AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
+$ResourceGroupName = "myResourceGroup"
+$VnetName = "myVnet"
+$AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
-$ResourceGroupName = "ContosoAaddsRg"
-$VnetName = "DomainServicesVNet_WUS"
-$AzureLocation = "westus"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD
@@ -218,18 +224,37 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Location $AzureLocation `
   -Properties @{"DomainName"=$ManagedDomainName; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
+  -Force -Verbose
 ```
 
-> [!WARNING]
-> **Yönetilen etki alanınızı sağlamaktan sonra ek yapılandırma adımlarını unutmayın.**
-> Yönetilen etki alanınız sağlandıktan sonra yine de aşağıdaki görevleri gerçekleştirmeniz gerekir:
-> * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin. DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-> * Yönetilen etki alanı için gelen trafiği kısıtlamak üzere gerekli ağ güvenlik grubu kurallarını oluşturun. Ağ güvenlik grubu kuralları oluşturmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, uygun ağ güvenlik grubu kurallarını otomatik olarak oluşturmanız istenir.
-> * **[Azure AD Domain Services için parola eşitlemesini etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** , böylece son kullanıcılar şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilirler.
+Kaynağın oluşturulması ve denetimin PowerShell istemine döndürülmesi birkaç dakika sürer. Azure AD DS yönetilen etki alanı arka planda sağlanmaya devam eder ve dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal Azure AD DS yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
+
+Azure portal Azure AD DS yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
+
+* Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
+    * DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
+* Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Yönetilen etki alanınız oluşturulduktan sonra, yönetilen etki alanını kullanmak için aşağıdaki yapılandırma görevlerini gerçekleştirin:
 
-* [Sanal ağın DNS sunucusu ayarlarını, yönetilen etki alanınızı işaret etmek üzere güncelleştirin](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
-* [Yönetilen etki alanınız için parola eşitlemeyi etkinleştirme](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)
+Azure AD DS yönetilen etki alanını işlem içinde görmek için [bir WINDOWS sanal makinesine etki alanına katılabilir][windows-join], [Güvenli LDAP yapılandırabilir][tutorial-ldaps]ve [Parola karması eşitlemesini yapılandırabilirsiniz][tutorial-phs].
+
+<!-- INTERNAL LINKS -->
+[windows-join]: join-windows-vm.md
+[tutorial-ldaps]: tutorial-configure-ldaps.md
+[tutorial-phs]: tutorial-configure-password-hash-sync.md
+
+<!-- EXTERNAL LINKS -->
+[Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
+[Connect-AzureAD]: /powershell/module/AzureAD/Connect-AzureAD
+[New-AzureADServicePrincipal]: /powershell/module/AzureAD/New-AzureADServicePrincipal
+[New-AzureADGroup]: /powershell/module/AzureAD/New-AzureADGroup
+[Add-AzureADGroupMember]: /powershell/module/AzureAD/Add-AzureADGroupMember
+[Get-AzureADGroup]: /powershell/module/AzureAD/Get-AzureADGroup
+[Get-AzureADUser]: /powershell/module/AzureAD/Get-AzureADUser
+[Register-AzResourceProvider]: /powershell/module/Az.Resources/Register-AzResourceProvider
+[New-AzResourceGroup]: /powershell/module/Az.Resources/New-AzResourceGroup
+[New-AzVirtualNetworkSubnetConfig]: /powershell/module/Az.Network/New-AzVirtualNetworkSubnetConfig
+[New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
+[Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
+[cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users

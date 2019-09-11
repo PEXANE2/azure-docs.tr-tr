@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907375"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309304"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
 Bu makalede, Azure portal 'tan PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz. Okuma çoğaltmaları hakkında daha fazla bilgi edinmek için bkz. [genel bakış](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Ana sunucunuz ile aynı bölgede veya seçtiğiniz diğer herhangi bir Azure bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -166,7 +163,7 @@ Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
 
     ![Çoğaltmalar genelinde en fazla gecikme 'yi izleme](./media/howto-read-replicas-portal/select-max-lag.png)
  
-3.  Toplamadır, **en fazla**' yı seçin.
+3.  Toplamadır **,** **en fazla**' yı seçin.
 
 
 ### <a name="replica-lag-metric"></a>Çoğaltma gecikmesi ölçümü
@@ -178,7 +175,7 @@ Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
 
    ![Çoğaltma gecikmesini izleme](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3. Toplamadır, **en fazla**' yı seçin. 
+3. Toplamadır **,** **en fazla**' yı seçin. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 * [PostgreSQL Için Azure veritabanı 'nda okuma çoğaltmaları](concepts-read-replicas.md)hakkında daha fazla bilgi edinin.

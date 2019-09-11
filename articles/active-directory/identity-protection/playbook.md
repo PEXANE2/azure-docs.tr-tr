@@ -11,33 +11,33 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 7fcf24256634ef11b575348d9da7d6bbbab8b67c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333936"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127759"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Kimlik Koruması PlayBook
 
 Bu PlayBook şunları yapmanıza yardımcı olur:
 
-* Risk olaylarının ve güvenlik açıklarının benzetimini yaparak kimlik koruması ortamındaki verileri doldurun
+* Risk algılamalarını ve güvenlik açıklarını taklit ederek kimlik koruması ortamındaki verileri doldurun
 * Risk tabanlı koşullu erişim ilkeleri ayarlayın ve bu ilkelerin etkisini test edin
 
-## <a name="simulating-risk-events"></a>Risk olaylarının benzetimini yapma
+## <a name="simulating-risk-detections"></a>Risk algılamaları benzetimi yapma
 
-Bu bölümde, aşağıdaki risk olayı türlerinin benzetimini yapma adımları sunulmaktadır:
+Bu bölümde, aşağıdaki risk algılama türlerinin benzetimini yapma adımları sunulmaktadır:
 
 * Anonim IP adreslerinden oturum açma işlemleri (kolay)
 * Bilmediğiniz konumlardan oturum açma işlemleri (orta)
 * Atipik konumlara imkansız seyahat (zor)
 
-Diğer risk olayları güvenli bir şekilde benzetimi yapılamaz.
+Diğer risk algılamaları güvenli bir şekilde benzetilemez.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anonim IP adreslerinden oturum açma işlemleri
 
-Bu risk olayı hakkında daha fazla bilgi için bkz. [anonım IP adreslerinden oturum açma](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)işlemleri. 
+Bu risk algılama hakkında daha fazla bilgi için bkz. [anonım IP adreslerinden oturum açma](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)işlemleri. 
 
 Aşağıdaki yordamı tamamlamak için şunları kullanmanız gerekir:
 
@@ -53,7 +53,7 @@ Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir.
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Alışılmadık konumlardan oturum açma işlemleri
 
-Bu risk olayı hakkında daha fazla bilgi için bkz. [Bilinmeyen konumlardan oturum açma](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)işlemleri. 
+Bu risk algılama hakkında daha fazla bilgi için bkz. [Bilinmeyen konumlardan oturum açma](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)işlemleri. 
 
 Tanıdık konumların benzetimini yapmak için, test hesabınızın öncesinde oturum açmadığı bir konumdan ve cihazdan oturum açmanız gerekir.
 
@@ -76,14 +76,14 @@ Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir.
 
 ### <a name="impossible-travel-to-atypical-location"></a>Olağan konuma imkansız seyahat
 
-Bu risk olayı hakkında daha fazla bilgi için bkz. [normal konuma yönelik imkansız seyahat](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
+Bu risk algılama hakkında daha fazla bilgi için bkz. [normal konuma yönelik imkansız seyahat](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
 
-Algoritma, yabancı olmayan seyahat koşulunun benzetimini yapmak zordur çünkü algoritma, bilinen cihazlardan veya dizindeki diğer kullanıcılar tarafından kullanılan VPN 'lerden oturum açma işlemleri gibi hatalı pozitif sonuçlar almak için makine öğrenimini kullanır. Ayrıca, algoritma, risk olaylarını oluşturmaya başlamadan önce 14 gün ve Kullanıcı için 10 oturum açma geçmişi gerektirir. Karmaşık makine öğrenimi modelleri ve yukarıdaki kurallar nedeniyle, aşağıdaki adımların bir risk olayına neden olmayacağı bir şansınız vardır. Bu risk olayını yayımlamak için bu adımları birden çok Azure AD hesabı için çoğaltmak isteyebilirsiniz.
+Algoritma, yabancı olmayan seyahat koşulunun benzetimini yapmak zordur çünkü algoritma, bilinen cihazlardan veya dizindeki diğer kullanıcılar tarafından kullanılan VPN 'lerden oturum açma işlemleri gibi hatalı pozitif sonuçlar almak için makine öğrenimini kullanır. Ayrıca, algoritma, risk algılamalarını oluşturmaya başlamadan önce 14 gün ve Kullanıcı için 10 oturum açma geçmişi gerektirir. Karmaşık makine öğrenimi modelleri ve yukarıdaki kurallar nedeniyle, aşağıdaki adımların bir risk algılamasına neden olmayacağı bir şansınız vardır. Bu risk algılamayı yayımlamak için bu adımları birden çok Azure AD hesabı için çoğaltmak isteyebilirsiniz.
 
 **Sıradan bir konuma imkansız bir seyahat benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
 1. Standart tarayıcınızı kullanarak öğesine [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.  
-2. İçin imkansız bir seyahat riski olayı oluşturmak istediğiniz hesabın kimlik bilgilerini girin.
+2. İçin imkansız bir seyahat riski algılaması üretmek istediğiniz hesabın kimlik bilgilerini girin.
 3. Kullanıcı aracınızı değiştirin. Internet Explorer 'daki Kullanıcı aracısını Geliştirici Araçları ' dan değiştirebilir veya Kullanıcı Aracısı değiştirici eklentisini kullanarak Firefox veya Chrome 'daki Kullanıcı aracınızı değiştirebilirsiniz.
 4. IP adresinizi değiştirin. Bir VPN, Tor eklentisi kullanarak IP adresinizi değiştirebilir veya farklı bir veri merkezinde Azure 'da yeni bir makine getirebilirsiniz.
 5. Önceki oturum açma işleminden daha önce ve birkaç dakika içinde aynı kimlik bilgilerini [kullanarakoturumaçın. https://myapps.microsoft.com](https://myapps.microsoft.com)
@@ -117,10 +117,10 @@ Daha fazla bilgi için bkz. [Kullanıcı risk ilkesini yapılandırma](howto-use
     ![Kullanıcı riski](./media/playbook/03.png "PlayBook")
 
 5. Denetimler bölümünde, istenen erişim denetimini (ör. parola değişikliği gerektir) seçin.
-5. **Ilkeyi zorunlu kıl**' ı **seçin.**
-6. Bir sınama hesabının kullanıcı riskini, örneğin, birkaç kez risk olaylarından birine benzetim yaparak yükseltin.
-7. Birkaç dakika bekleyin ve ardından Kullanıcı için Kullanıcı düzeyinin Orta olduğunu doğrulayın. Aksi takdirde, Kullanıcı için daha fazla risk olayı benzetimi yapın.
-8. **Ilkeyi zorla**' **yı seçin.**
+5. **Ilkeyi zorunlu kıl**' ıseçin.
+6. Bir sınama hesabının kullanıcı riskini, örneğin, risk algılarından birinin birkaç kez benzetimini yaparak yükseltin.
+7. Birkaç dakika bekleyin ve ardından Kullanıcı için Kullanıcı düzeyinin Orta olduğunu doğrulayın. Aksi takdirde, Kullanıcı için daha fazla risk algılamalarını taklit edin.
+8. **Ilkeyi zorla**' yı seçin.
 9. Artık yükseltilmiş risk düzeyine sahip bir kullanıcı kullanarak oturum açarak Kullanıcı risk tabanlı koşullu erişimi test edebilirsiniz.
 
 ### <a name="sign-in-risk-security-policy"></a>Oturum açma riski güvenlik ilkesi
@@ -139,7 +139,7 @@ Daha fazla bilgi için bkz. [Oturum açma risk ilkesini yapılandırma](howto-si
     ![Oturum açma riski](./media/playbook/04.png "PlayBook")
 
 5. **Denetimler** bölümünde, istenen erişim denetimini seçin (örneğin, **çok faktörlü kimlik doğrulaması gerektir**). 
-6. **Ilkeyi zorla**' **yı seçin.**
+6. **Ilkeyi zorla**' yı seçin.
 7. **Kaydet**’e tıklayın.
 8. Artık riskli bir oturum kullanarak oturum açma riski tabanlı koşullu erişimi test edebilirsiniz (örneğin, Tor tarayıcısını kullanarak). 
 

@@ -3,15 +3,15 @@ title: Azure Resource Manager şablonu işlevleri - kaynakları | Microsoft Docs
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
-ms.date: 08/20/2019
+ms.topic: conceptual
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095761"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390701"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -43,6 +43,10 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 | apiVersion |Evet |dize |Kaynak çalışma zamanı durumu API sürümü. Genellikle, biçiminde **yyyy-aa-gg**. |
 | functionValues |Hayır |object | İşlev için değerleri içeren nesne. Yalnızca bu nesne için parametre değerlerini içeren bir nesne gibi almayı destekleyen işlevleri sağlar **listAccountSas** bir depolama hesabı üzerinde. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. | 
 
+### <a name="valid-uses"></a>Geçerli kullanımlar
+
+Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](resource-group-create-multiple.md#property-iteration)ile kullanıldığında, ifadesi Resource özelliğine atandığı için `input` liste işlevlerini kullanabilirsiniz. Liste işlevi çözümlenmeden önce `count` Count belirlenmesi gerektiğinden, bunları ile kullanamazsınız.
+
 ### <a name="implementations"></a>Uygulamalar
 
 Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
@@ -61,7 +65,6 @@ Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
 | Microsoft.CognitiveServices/accounts | [Listkeys'i](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [listBuildSourceUploadUrl 'Si](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft. ContainerRegistry/kayıt defterleri | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft. ContainerRegistry/kayıt defterleri | [Listkullanımlar](/rest/api/containerregistry/registries/listusages) |
 | Microsoft. ContainerRegistry/kayıt defterleri/Web kancaları | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft. ContainerRegistry/kayıt defterleri/çalıştırmaları | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |

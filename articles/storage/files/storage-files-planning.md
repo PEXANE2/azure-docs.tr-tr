@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015958"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844883"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -114,7 +114,7 @@ Paylaşımlar 1 GiB artışlarla sağlanmalıdır. Minimum boyut 100 GiB, sonrak
 >
 > Giriş oranı = 40 MIB/s + 0,04 * sağlanan GiB
 
-Paylaşma boyutu herhangi bir zamanda artırılabilir, ancak son artışdan bu yana yalnızca 24 saat sonra azaltılabilir. Boyut artışı olmadan 24 saat bekledikten sonra, yeniden artırana kadar, paylaşma boyutunu istediğiniz kadar azaltabilirsiniz. IOPS/verimlilik ölçeği değişiklikleri, boyut değişikliğinden sonra birkaç dakika içinde geçerli olacaktır.
+Sağlanan paylaşma boyutu, paylaşma kotası ile belirtilir. Paylaşılan kota herhangi bir zamanda artırılabilir, ancak son artışdan bu yana yalnızca 24 saat sonra azaltılabilir. Kota artışı olmadan 24 saat bekledikten sonra, yeniden artırana kadar, paylaşma kotasını istediğiniz kadar azaltabilirsiniz. IOPS/verimlilik ölçeği değişiklikleri, boyut değişikliğinden sonra birkaç dakika içinde geçerli olacaktır.
 
 Kullandığınız paylaşımın boyutunu, kullanılan GiB 'nizin altında azaltmak mümkündür. Bunu yaparsanız, verileri kaybetmezsiniz, ancak kullanılan boyutun performansını (temel ıOPS, aktarım hızı ve veri bloğu ıOPS) elde edersiniz ve bu boyut kullanılır.
 
@@ -155,7 +155,7 @@ Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile 
 
 ## <a name="file-share-redundancy"></a>Dosya paylaşma artıklığı
 
-Azure dosyaları standart paylaşımları üç veri artıklığı seçeneğini destekler: yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme).
+Azure dosyaları standart paylaşımları dört veri artıklığı seçeneğini destekler: yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme).
 
 Azure dosyaları Premium paylaşımları yalnızca yerel olarak yedekli depolamayı (LRS) destekler.
 
@@ -206,14 +206,18 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bu bölge 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
 
-|Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği *   |
+|Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği * |
 |-------|---------|---------|---------|
-|Avustralya Doğu  |LRS     |Hayır    |Evet|
-|Fransa Orta  |LRS     |Hayır    |Henüz değil|
-|Fransa Güney    |LRS     |Hayır    |Henüz değil|
-|Güneydoğu Asya  |LRS, ZRS|Hayır    |Evet|
-|Batı Avrupa     |LRS, ZRS|Hayır    |Evet|
-|Batı ABD 2       |LRS, ZRS|Hayır    |Evet|
+|Avustralya Doğu |LRS     |Hayır    |Evet|
+|Avustralya Güneydoğu|LRS     |Hayır    |Henüz değil|
+|Orta Hindistan  |LRS     |Hayır    |Henüz değil|
+|Fransa Orta |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
+|Fransa Güney   |LRS     |Hayır    |Evet|
+|Güney Hindistan    |LRS     |Hayır    |Henüz değil|
+|Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
+|Batı Orta ABD|LRS     |Hayır    |Henüz değil|
+|Batı Avrupa    |LRS, ZRS|Hayır    |Evet|
+|Batı ABD 2      |LRS, ZRS|Hayır    |Evet|
 
 \* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. Alternatif olarak, kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
 
@@ -244,7 +248,7 @@ Kayıt durumunuzu doğrulamak için şu komutu çalıştırabilirsiniz:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Durumunuzu güncelleştirmek 15 dakika kadar sürebilir. Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
+Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
 
 ### <a name="use-larger-file-shares"></a>Daha büyük dosya paylaşımları kullanın
 

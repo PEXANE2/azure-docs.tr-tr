@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 0e0ad63ffb8d9c22d1b527644bc78e229ac6830c
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668211"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813832"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT Hub Module kimliği ve modülü ikizi (C) ile çalışmaya başlama
 
@@ -31,7 +31,7 @@ Bu öğreticinin sonunda iki C uygulamanız vardır:
 > [!NOTE]
 > Cihazlarda çalıştırılacak uygulamaları ve çözüm arka ucunuzu oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir Azure hesabı](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
@@ -177,7 +177,7 @@ int main(void)
 }
 ```
 
-Bu uygulama, Myfirstdevice KIMLIĞI ile bir cihaz kimliği ve myfirstdevice adlı cihaz altında **myfirstmodule** kimliğiyle bir modül kimliği **oluşturur.** (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
+Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
 
 > [!NOTE]
 > IoT Hub kimlik kayıt defteri yalnızca IoT hub'ına güvenli erişim sağlamak amacıyla cihaz ve modül kimliklerini depolar. Kimlik kayıt defteri, cihaz kimliklerini ve anahtarlarını güvenlik kimlik bilgileri olarak kullanmak için depolar. Kimlik kayıt defterinin her cihaz için depoladığı etkin/devre dışı bayrağını kullanarak, ilgili cihaza erişimi devre dışı bırakabilirsiniz. Uygulamanızın cihaza özgü diğer meta verileri depolaması gerekiyorsa uygulamaya özgü bir depo kullanması gerekir. Modül kimlikleri için etkin/devre dışı bayrağı yoktur. Daha fazla bilgi için bkz. [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide-identity-registry.md).
@@ -299,7 +299,7 @@ static void deviceTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsi
     (void)userContextCallback;
 
     printf("Device Twin update received (state=%s, size=%zu): %s\r\n", 
-        ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
+        MU_ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
 }
 
 static void reportedStateCallback(int status_code, void* userContextCallback)

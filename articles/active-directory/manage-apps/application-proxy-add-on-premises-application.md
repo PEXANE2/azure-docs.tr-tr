@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aefa6d21488b617b26ddefe5fa4fc61cdd203f96
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032539"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231265"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -36,7 +36,7 @@ Bu öğreticide:
 
 Azure AD 'ye şirket içi bir uygulama eklemek için şunlar gerekir:
 
-* [Microsoft Azure AD temel veya Premium abonelik](https://azure.microsoft.com/pricing/details/active-directory)
+* [Microsoft Azure AD Premium aboneliği](https://azure.microsoft.com/pricing/details/active-directory)
 * Bir uygulama yöneticisi hesabı
 * Kullanıcı kimlikleri, şirket içi bir dizinden eşitlenmeli veya doğrudan Azure AD kiracılarınız içinde oluşturulmuş olmalıdır. Kimlik eşitlemesi, Azure AD 'nin uygulama proxy 'Si yayımlanmış uygulamalarına erişim vermeden önce kullanıcıların kimliğini doğrulamasına ve çoklu oturum açma (SSO) gerçekleştirmesi için gerekli Kullanıcı tanımlayıcı bilgilerine sahip olmasına olanak sağlar.
 
@@ -69,7 +69,7 @@ TLS 1.2 etkinleştirmek için:
 1. Sunucuyu yeniden başlatın.
 
 > [!IMPORTANT]
-> Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, yalnızca TLS 1,2 protokollerine erişimi sınırlamak üzere uygulama proxy 'Si hizmetine yönelik güncelleştirmeler yapıyoruz. Müşteri hazırlığı değişikliklerine bağlı olarak, yalnızca TLS 1,2 protokollerini kullanan müşterilere giderek bu değişiklikten herhangi bir etkisi görmez. TLS 1,0 ve 1,1 kullanımdan kaldırma 2019, 31 Ağustos 'ta tamamlanır ve müşteriler bu değişikliğe hazırlanmak için öncelikli bir bildirim alır. Bu değişikliğe hazırlanmak için tüm istemci-sunucu ve tarayıcı-sunucu birleşimlerinin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) için hazırlanma.
+> Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) için hazırlanma.
 
 ## <a name="prepare-your-on-premises-environment"></a>Şirket içi ortamınızı hazırlama
 
@@ -94,7 +94,7 @@ Aşağıdaki URL 'Lere erişime izin ver:
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Bağlayıcı ile uygulama proxy 'Si bulut hizmeti arasındaki iletişim |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
-| login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*. microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>Management.Azure.com<br>policykeyservice.dc.ad.msft.net | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
 
 Güvenlik duvarınız veya proxy 'niz \*DNS izin verilenler \*listelerine yapılandırmanıza izin veriyor. msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz. Aksi takdirde, [Azure IP aralıklarına ve hizmet etiketlerine genel buluta](https://www.microsoft.com/download/details.aspx?id=56519)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
 
@@ -171,7 +171,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
     | **Name** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
     | **İç URL** | Özel ağınızın içinden uygulamaya erişim URL 'SI. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. Bu şekilde, farklı siteleri farklı uygulamalarla aynı sunucuda yayımlayabilir ve her birine kendi ad ve erişim kurallarına sahip olabilirsiniz.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Örneğin, uygulamanız https:\//yourapp/App ise ve https:\//yourapp/Media konumunda bulunan görüntüleri kullanıyorsa, https:\//yourapp/yolunu olarak yayımlamanız gerekir. Bu iç URL 'nin kullanıcılarınızın göreceği giriş sayfası olması gerekmez. Daha fazla bilgi için bkz. [yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](application-proxy-configure-custom-home-page.md). |
     | **Dış URL** | Kullanıcıların uygulamaya ağınızın dışından erişebileceği adres. Varsayılan uygulama proxy 'Si etki alanını kullanmak istemiyorsanız, [Azure AD uygulama ara sunucusu özel etki alanları](application-proxy-configure-custom-domain.md)hakkında bilgi edinin.|
-    | **Ön kimlik doğrulama** | Uygulama proxy 'Si, uygulamanıza erişim vermeden önce kullanıcıları nasıl doğrular.<br><br>**Azure Active Directory** -uygulama proxy 'si, kullanıcıların dizin ve uygulama için izinlerinin kimliğini doğrulayan Azure AD ile oturum açmasını yeniden yönlendirir. Koşullu erişim ve çok faktörlü kimlik doğrulaması gibi Azure AD güvenlik özelliklerinden yararlanmanıza olanak sağlamak için bu seçeneği varsayılan olarak tutmanız önerilir. Uygulamayı Microsoft Bulut uygulama güvenliği ile izlemek için **Azure Active Directory** gereklidir.<br><br>**Geçiş** -kullanıcıların uygulamaya erişmek IÇIN Azure AD 'de kimlik doğrulaması yapması gerekmez. Arka uçta kimlik doğrulama gereksinimlerini ayarlamaya devam edebilirsiniz. |
+    | **Ön kimlik doğrulama** | Uygulama proxy 'Si, uygulamanıza erişim vermeden önce kullanıcıları nasıl doğrular.<br><br>**Azure Active Directory** -uygulama proxy 'si, kullanıcıların dizin ve uygulama için izinlerinin kimliğini doğrulayan Azure AD ile oturum açmasını yeniden yönlendirir. Koşullu erişim ve Multi-Factor Authentication gibi Azure AD güvenlik özelliklerinin avantajlarından yararlanabilmek için bu seçeneği varsayılan olarak tutmanız önerilir. Uygulamayı Microsoft Bulut uygulama güvenliği ile izlemek için **Azure Active Directory** gereklidir.<br><br>**Geçiş** -kullanıcıların uygulamaya erişmek IÇIN Azure AD 'de kimlik doğrulaması yapması gerekmez. Arka uçta kimlik doğrulama gereksinimlerini ayarlamaya devam edebilirsiniz. |
     | **Bağlayıcı grubu** | Bağlayıcılar uygulamanıza uzaktan erişimi işler ve bağlayıcı grupları, bağlayıcıları ve uygulamaları bölgeye, ağa veya amaca göre düzenlemenize yardımcı olur. Henüz oluşturulmuş bağlayıcı grubunuz yoksa, uygulamanız **varsayılan**olarak atanır.<br><br>Uygulamanız bağlanmak için WebSockets kullanıyorsa, gruptaki tüm bağlayıcılar sürüm 1.5.612.0 veya üzeri olmalıdır.|
 
 1. Gerekirse, **ek ayarları**yapılandırın. Çoğu uygulama için, bu ayarları varsayılan durumlarında tutmanız gerekir. 

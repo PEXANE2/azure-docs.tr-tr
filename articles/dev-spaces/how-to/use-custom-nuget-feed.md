@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Azure dev alanında NuGet paketlerine erişmek ve bunları kullanmak için özel bir NuGet akışı kullanın.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
 manager: gwallace
-ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305395"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873258"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure dev alanında özel bir NuGet akışı kullanma
 
@@ -33,7 +33,7 @@ Düğümün altındaki `*.csproj` dosyaya bağımlılığı için bir [paket ba�
 </ItemGroup>
 ```
 
-Proje klasöründe bir [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) dosyası oluşturun ve NuGet akışınız için `packageSources` ve `packageSourceCredentials` bölümlerini ayarlayın. Bu `packageSources` bölüm, genel olarak erişilebilir olması gereken akış URL 'nizi içerir. , `packageSourceCredentials` Akışa erişim için kimlik bilgileridir. Örneğin:
+Proje klasöründe bir [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) dosyası oluşturun ve NuGet akışınız için `packageSources` ve `packageSourceCredentials` bölümlerini ayarlayın. `packageSources` Bölüm, aks kümenizdeki erişilebilir olması gereken akış URL 'nizi içerir. , `packageSourceCredentials` Akışa erişim için kimlik bilgileridir. Örneğin:
 
 ```xml
 <packageSources>

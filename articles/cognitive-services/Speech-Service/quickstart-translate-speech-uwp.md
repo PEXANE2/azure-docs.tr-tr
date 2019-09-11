@@ -1,27 +1,27 @@
 ---
 title: 'Hızlı Başlangıç: Konuşmayı çevir, C# (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Kullanıcı konuşmayı yakalamak, başka bir dile çevirmek ve metni komut satırına çıkarmak için basit bir Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu kılavuz Windows kullanıcıları için tasarlanmıştır.
+description: Bu hızlı başlangıçta, Kullanıcı konuşmayı yakalamak, başka bir dile çevirmek ve metni komut satırına çıkarmak için bir Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu kılavuz Windows kullanıcıları için tasarlanmıştır.
 services: cognitive-services
 author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 07/23/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 ms.topic: quickstart
-ms.openlocfilehash: 813edbea0548a5cac9532750a450de08bd238028
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e513cbbc615965ef196a830351aab8ac241c3f20
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640026"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382642"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Hızlı Başlangıç: Konuşmayı konuşma SDK 'Sı C# (UWP) ile çevirin
 
-Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-uwp.md), [metinden konuşmaya](quickstart-text-to-speech-csharp-uwp.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de kullanılabilir.
+Hızlı başlangıçlara [konuşma tanıma](quickstart-csharp-uwp.md), [konuşma sensimi](quickstart-text-to-speech-csharp-uwp.md)ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de erişilebilir.
 
-Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına seçtiğiniz basit bir Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri sürümleriyle oluşturulmuştur.
+Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına bes bir Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2019 ile oluşturulmuştur.
 
 Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil desteği](language-support.md).
 
@@ -32,7 +32,7 @@ Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil d
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
@@ -41,37 +41,43 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
-1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcı xaml görünümünde, ve `<Grid>` `</Grid>`arasında aşağıdaki xaml kod parçacığını ekleyin.
+Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
 
-    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
+1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
 
-1. Arka plan kod kaynak dosyasını açın `MainPage.xaml.cs` (`MainPage.xaml` altında gruplandırılmış olarak bulabilirsiniz). İçindeki tüm kodu aşağıdakiyle değiştirin.
+1. Tasarımcının xaml görünümünde, **kılavuz** etiketine aşağıdaki xaml kod parçacığını ekleyin (ve `<Grid>` `</Grid>`arasında):
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
+   [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. Bu dosyadaki `SpeechTranslationFromMicrophone_ButtonClicked` işleyicisinde `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.)
 
-1. `SpeechTranslationFromMicrophone_ButtonClicked` işleyicisinde `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
-1. Değişiklikleri projeye kaydedin.
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+1. `YourSubscriptionKey`Bu dosyadaki `SpeechTranslationFromMicrophone_ButtonClicked` İşleyicide, dizeyi bulun ve abonelik anahtarınızla değiştirin.
 
-1. Uygulamayı derleyin. Menü çubuğundan **Derle** > **Çözümü Derle**'yi seçin. Kodun artık hatasız derlenmesi gerekir.
+1. İşleyicisinde, dizeyi `YourServiceRegion`bulun ve aboneliğinizle ilişkili bölge ile değiştirin. [](regions.md) `SpeechTranslationFromMicrophone_ButtonClicked` (Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.)
 
-    ![Visual Studio uygulamasının, Çözümü Derle seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-08-build.png "Başarılı derleme")
+1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya** > **Tümünü Kaydet** ' i seçin.
 
-1. Uygulamayı başlatın. Menü çubuğundan **Hata Ayıklama** > **Hata Ayıklamayı Başlat**'ı seçin veya **F5** tuşuna basın.
+## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-    ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-09-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
+Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Bir pencere açılır. **Mikrofonu Etkinleştir**’i seçin ve çıkan izin isteğini kabul edin.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.**  >  Kodun artık hatasız derlenmesi gerekir.
 
-    ![İzin isteğinin ekran görüntüsü](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uygulamayı hata ayıklamada başlat")
+1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). >  **HelloWorld** penceresi görüntülenir.
 
-1. **Mikrofon girdisi ile konuşma tanıma**’yı seçin ve cihazınızın mikrofonuna İngilizce bir deyim ya da cümle söyleyin. Söyledikleriniz Konuşma hizmetine aktarılır ve metne dönüştürülür; metin pencerede görünür.
+   ![Hızlı başlangıçta örnek UWP çeviri C# uygulaması](media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 
-    ![Konuşma tanıma kullanıcı arabiriminin ekran görüntüsü](media/sdk/qs-translate-csharp-uwp-ui-result.png)
+1. **Mikrofonu etkinleştir**' i seçin ve erişim izni Isteği açıldığında **Evet**' i seçin.
+
+   ![Mikrofon erişimi izin isteği](media/sdk/qs-csharp-uwp-10-access-prompt.png)
+
+1. **Mikrofon girişinden konuşmayı çevir**' i seçin ve cihazınızın mikrofonuna İngilizce bir tümcecik veya cümle konuşun. Uygulama konuşmanızı konuşma hizmetine iletir ve bu da konuşmayı başka bir dildeki (Bu örnekte, Almanca) metne dönüştürür. Konuşma hizmeti, çevrilmiş metni, penceredeki çeviriyi görüntüleyen uygulamaya geri gönderir.
+
+   ![Konuşma çevirisi Kullanıcı arabirimi](media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -80,5 +86,4 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Akustik modelleri özelleştirme](how-to-customize-acoustic-models.md)
-- [Dil modellerini özelleştirme](how-to-customize-language-model.md)
+- [Özel Konuşma Tanıma için model eğitme](how-to-custom-speech-train-model.md)

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3d1f82c5eadde52edb721185a497d9b187eebb7b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 81b80edcd2e880488e203960f8e2a6aa71b69679
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668075"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161825"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub (Java) ile cihazınızdan buluta dosya yükleme
 
@@ -44,11 +44,11 @@ Bu öğreticinin sonunda iki Java konsol uygulaması çalıştırırsınız:
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformunu ve dilini (C, .NET ve JavaScript dahil) destekler. Cihazınızı Azure IoT Hub bağlama hakkında adım adım yönergeler için [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot) ' ne bakın.
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+## <a name="prerequisites"></a>Önkoşullar
 
-* En güncel [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 

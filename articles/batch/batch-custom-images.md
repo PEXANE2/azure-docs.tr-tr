@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036698"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141814"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -23,7 +23,7 @@ Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğ
 
 Özel görüntünüz için paylaşılan görüntü galerisini kullandığınızda, işletim sistemi türü ve yapılandırmasının yanı sıra veri disklerinin türü üzerinde denetiminiz vardır. Paylaşılan görüntünüz, tüm toplu havuz düğümlerinde kullanılabilir hale gelen uygulamaları ve başvuru verilerini ve bunların sağlandığı anda bu verileri içerebilir.
 
-Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne de sahip olabilirsiniz. Bir sanal makine oluşturmak için görüntü sürümü kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. 
+Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne de sahip olabilirsiniz. Bir sanal makine oluşturmak için görüntü sürümü kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır.
 
 Paylaşılan bir görüntü kullanmak, havuzunuzun işlem düğümlerini toplu iş yükünüzü çalıştırmak için hazırlarken zaman kazandırır. Bir Azure Market görüntüsü kullanmak ve sağlama sonrasında her işlem düğümüne yazılım yüklemek mümkündür, ancak paylaşılan bir görüntü kullanmak genellikle daha etkilidir. Ayrıca, çok sayıda VM (600 VM 'den fazla) olan havuzlar oluştururken, havuz oluşturma sırasında zaman kazanabilirsiniz. bu sayede paylaşılan görüntü için birden çok çoğaltma belirtebilirsiniz.
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Azure portal kullanarak paylaşılan görüntüden havuz oluşturma
+
+Azure portal paylaşılan görüntüden bir havuz oluşturmak için aşağıdaki adımları kullanın.
+
+1. [Azure portalı](https://portal.azure.com) açın.
+1. **Batch hesaplarına** gidin ve hesabınızı seçin.
+1. **Havuzlar** ' ı seçin ve ardından **Ekle** ' yi seçerek yeni bir havuz oluşturun.
+1. **Görüntü türü** bölümünde **paylaşılan görüntü Galerisi**' ni seçin.
+1. Kalan bölümleri, yönetilen görüntünüz hakkındaki bilgilerle doldurun.
+1. **Tamam**’ı seçin.
+
+![Portalla paylaşılan görüntüden sahip bir havuz oluşturun.](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>Büyük havuzlara dikkat edilecek noktalar
 

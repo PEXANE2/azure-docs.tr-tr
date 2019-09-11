@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cf5b6d4cadf4592fbaa19c89a969b20e9eb69b6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424275"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812719"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Uygulama proxy'si sorunlarını ve hata iletileri sorunlarını giderme
 
@@ -82,7 +82,7 @@ Bu liste, uygulamaya erişmek ve başarısız çalıştıklarında son kullanıc
 | Web sitesi, sayfa görüntülenemiyor. | Kullanıcı, uygulama bir OWA uygulama ise, yayımladığınız uygulamayı erişmeye çalışırken bu hatayı alabilirsiniz. Bunun nedeni aşağıdakilerden biri olabilir:<br><li>Bu uygulama için tanımlanmış SPN doğru değil. Bu uygulama için yapılandırılan SPN doğru olduğundan emin olun.</li><li>Uygulamaya erişmeyi denedi kullanıcının oturum açmak için kullanıyor uygun şirket hesabı yerine bir Microsoft hesabı veya Konuk kullanıcı kullanıcıdır. Yayımlanan uygulama etki alanını eşleşen kullanıcıların Kurumsal hesap kullanarak oturum açtığında emin olun. Microsoft Account kullanıcıları ve Konuk IWA uygulamaları erişemez.</li><li>Uygulamaya erişmeye çalışan Kullanıcı, şirket içi tarafında bu uygulama için düzgün tanımlanmamıştır. Bu kullanıcının şirket içi makinede bu arka uç uygulaması için tanımlanan uygun izinlere sahip olduğundan emin olun. |
 | Bu Kurumsal uygulama erişilemez. Bu uygulamaya erişmek için yetkiniz yok. Yetkilendirme başarısız oldu. Bu uygulamaya erişimi olan kullanıcı atadığınızdan emin olun. | Kullanıcılarınız, şirket hesabı yerine Microsoft hesapları kullanıyorsa yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. Konuk kullanıcılar da bu hatayı alabilirsiniz. Microsoft Account kullanıcılar ve konuklar IWA uygulamaları erişemez. Yayımlanan uygulama etki alanını eşleşen kullanıcıların Kurumsal hesap kullanarak oturum açtığında emin olun.<br><br>Bu uygulama için kullanıcı atanmamış. Git **uygulama** sekmesinde altında **kullanıcılar ve gruplar**, bu uygulama için bu kullanıcı veya kullanıcı grubuna atayın. |
 | Şirket bu uygulama şu anda erişilemiyor. Lütfen daha sonra yeniden deneyin... Bağlayıcı zaman aşımına uğradı. | Kullanıcılarınız şirket içi tarafında bu uygulama için doğru tanımlanmamışsa, yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. Kullanıcılarınızın şirket içi makinede bu arka uç uygulaması için tanımlanan uygun izinlere sahip olduğundan emin olun. |
-| Bu Kurumsal uygulama erişilemez. Bu uygulamaya erişmek için yetkiniz yok. Yetkilendirme başarısız oldu. Kullanıcı Azure Active Directory Premium veya Basic için bir lisans olduğundan emin olun. | Kullanıcılarınız, abone yöneticisinin bir Premium/temel lisansıyla açıkça atanmamışsa, yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. Abonenin Active Directory Git **lisansları** sekmesini ve bu kullanıcı veya kullanıcı grubunun bir Premium veya Basic lisansı atandığından emin olun. |
+| Bu Kurumsal uygulama erişilemez. Bu uygulamaya erişmek için yetkiniz yok. Yetkilendirme başarısız oldu. Kullanıcının Azure Active Directory Premium için bir lisansa sahip olduğundan emin olun. | Kullanıcılarınız, abone yöneticisinin bir Premium lisansıyla açıkça atanmamışsa, yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. Abonenin Active Directory **Lisansları** sekmesine gidin ve bu kullanıcı veya kullanıcı grubuna bir Premium Lisansı atandığından emin olun. |
 | Belirtilen ana bilgisayar adına sahip bir sunucu bulunamadı. | Bu hata, uygulamanın özel etki alanı doğru yapılandırılmamışsa yayımladığınız uygulamaya erişmeye çalışırken bu hatayı alabilir. [Azure 'da özel etki alanları Ile çalışma](application-proxy-configure-custom-domain.md) bölümündeki adımları izleyerek etki alanı için bir sertifika YÜKLEDIĞINIZDEN ve DNS kaydını doğru şekilde yapılandırdığınızdan emin olun ad uygulama ara sunucusu |
 
 ## <a name="my-error-wasnt-listed-here"></a>My hata burada listelenen değildi

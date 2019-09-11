@@ -3,26 +3,25 @@ title: Azure Data Factory işlem hattında dallanma | Microsoft Docs
 description: Dallanma ve zincirleme etkinlikleriyle Azure Data Factory'de veri akışını denetleme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: f2a8983ae5306ec2ada7b4b537c2f17425b8717d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8e4c17307b35295f37f1f84db912d04ca625b6a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719117"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140903"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 Bu öğreticide, bazı denetim akışı özelliklerini gösteren bir Data Factory işlem hattı oluşturacaksınız. Bu işlem hattı, Azure Blob Depolama içindeki kapsayıcıdan aynı depolama hesabındaki başka bir kapsayıcıya basit bir kopyalama işlemi yapar. Kopyalama etkinliği başarılı olursa, işlem hattı başarılı kopyalama işleminin ayrıntılarını (örneğin, yazılan veri miktarı) bir başarı e-postası ile gönderir. Kopyalama etkinliği başarısız olursa, işlem hattı kopyalama hatasının ayrıntılarını (örneğin, hata iletisi) bir hata e-postası ile gönderir. Öğretici boyunca parametreleri nasıl geçireceğinizi göreceksiniz.
 
-Senaryoya üst düzey genel bakış: ![Genel Bakış](media/tutorial-control-flow-portal/overview.png)
+Senaryoya üst düzey bir genel bakış: ![Genel bakış](media/tutorial-control-flow-portal/overview.png)
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -124,10 +123,10 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol menüden **kaynak Oluştur** > **veri ve analiz** > **Data Factory**:
+1. Sol taraftaki menüden**veri ve analiz** >  > kaynak oluştur ' u seçin**Data Factory**:
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -148,8 +147,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**’a tıklayın.      
-8. Panoda durumuna sahip aşağıdaki kutucuğu görürsünüz: **Veri Fabrikası dağıtılıyor**. 
+7. **Oluştur**'a tıklayın.      
+8. Panoda şu durumu içeren kutucuğu görürsünüz: **Veri Fabrikası dağıtılıyor**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.

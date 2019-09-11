@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Bir yerel görüntü - REST, Python analiz edin'
+title: 'Hızlı Başlangıç: Yerel görüntüyü çözümleme-REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Python ile Görüntü İşleme API’si kullanarak bir yerel görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01d9ebeb10a9bd2105d9db64cb25cc0c45a08fe9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cbb3d2fea7b48da8ce899d53901f7fb22bc66e35
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603570"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141295"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve Python kullanarak yerel bir resmi çözümleme
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve Python kullanarak yerel bir görüntüyü çözümleme
 
 Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak görsel özellikleri ayıklamak için yerel olarak depolanan bir görüntüyü analiz edeceksiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemi ile, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
 
@@ -31,24 +31,21 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Örneği yerel olarak çalıştırmak istiyorsanız [Python](https://www.python.org/downloads/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
-- Aşağıdaki Python paketleri yüklü olması gerekir. Kullanabileceğiniz [pip](https://packaging.python.org/tutorials/installing-packages/) Python paketlerini yükleyin.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Aşağıdaki Python paketlerinin yüklü olması gerekir. Python paketlerini yüklemek için [PIP](https://packaging.python.org/tutorials/installing-packages/) kullanabilirsiniz.
     - istekler
-    - [matplotlib](https://matplotlib.org/)
-    - [pillow](https://python-pillow.org/)
+    - [Matplotlib](https://matplotlib.org/)
+    - [Pillow](https://python-pillow.org/)
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
-1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
-    1. `subscription_key` değerini abonelik anahtarınızla değiştirin.
-    1. Gerekirse `vision_base_url` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesindeki Görüntü İşleme kaynağının uç nokta URL’si ile değiştirin.
-    1. İsteğe bağlı olarak `image_path` değerini, analiz etmek istediğiniz başka bir görüntünün yolu ve dosya adı ile değiştirin.
-1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin, `analyze-local-image.py`.
+1. İsteğe bağlı olarak `image_path` değerini, analiz etmek istediğiniz başka bir görüntünün yolu ve dosya adı ile değiştirin.
+1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin: `analyze-local-image.py`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python analyze-local-image.py`.
+1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin: `python analyze-local-image.py`.
 
 ```python
 import requests
@@ -58,20 +55,17 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-subscription_key = "<Subscription Key>"
-assert subscription_key
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+else:
+    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
 
-# You must use the same region in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from
-# westus, replace "westcentralus" in the URI below with "westus".
-#
-# Free trial subscription keys are generated in the "westcentralus" region.
-# If you use a free trial subscription key, you shouldn't need to change
-# this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-analyze_url = vision_base_url + "analyze"
+analyze_url = endpoint + "vision/v2.0/analyze"
 
 # Set image_path to the local path of an image that you want to analyze.
 image_path = "C:/Documents/ImageToAnalyze.jpg"

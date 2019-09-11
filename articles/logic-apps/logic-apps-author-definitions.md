@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385577"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164643"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps mantıksal uygulama tanımları için JSON oluşturun, düzenleyin veya genişletin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md)içinde otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, [Iş akışı Tanım Dili (WDL) ile birlikte basit ve bildirim TEMELLI JavaScript nesne gösterimi (JSON) kullanır ](../logic-apps/logic-apps-workflow-definition-language.md)açıklaması ve doğrulama için şema. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır. Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/resource-group-overview.md#template-deployment)içinde [Azure kaynakları](../azure-resource-manager/resource-group-overview.md) olarak Logic App tanımlarını dahil edebilirsiniz. Mantıksal uygulamalar oluşturmak, yönetmek ve dağıtmak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)veya [Azure Logic Apps REST API 'lerini](https://docs.microsoft.com/rest/api/logic/)kullanabilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)içinde otomatik iş akışlarıyla kurumsal tümleştirme çözümleri oluşturduğunuzda, temel alınan mantıksal uygulama tanımları, [Iş akışı Tanım Dili (WDL) ile birlikte basit ve bildirim TEMELLI JavaScript nesne gösterimi (JSON) kullanır ](../logic-apps/logic-apps-workflow-definition-language.md)açıklaması ve doğrulama için şema. Bu biçimler, mantıksal uygulama tanımlarının kod hakkında çok daha fazla bilgi vermeden daha kolay okunmasını ve anlaşılmasını kolaylaştırır. Mantıksal uygulama oluşturma ve dağıtma işlemlerini otomatik hale getirmek istediğinizde, [Azure Resource Manager şablonları](../azure-resource-manager/template-deployment-overview.md)içinde [Azure kaynakları](../azure-resource-manager/resource-group-overview.md) olarak Logic App tanımlarını dahil edebilirsiniz. Mantıksal uygulamalar oluşturmak, yönetmek ve dağıtmak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)veya [Azure Logic Apps REST API 'lerini](https://docs.microsoft.com/rest/api/logic/)kullanabilirsiniz.
 
 JSON 'daki Logic App tanımlarıyla çalışmak için Azure portal veya Visual Studio 'da çalışırken kod görünümü düzenleyicisini açın veya tanımı istediğiniz düzenleyiciye kopyalayın. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)konusunu inceleyin.
 
@@ -45,7 +45,7 @@ Visual Studio 'da doğrudan Azure portal veya Visual Studio 'dan Azure Resource 
 
 1. Mantıksal uygulamanızı içeren Visual Studio çözümünü veya [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) projesini açın.
 
-2. Mantıksal uygulamanızın tanımını bulun ve açın. Bu, varsayılan olarak **logicapp. JSON**adlı bir [Kaynak Yöneticisi şablonunda](../azure-resource-manager/resource-group-overview.md#template-deployment)görüntülenir. Bu şablonu, farklı ortamlara dağıtım için kullanabilir ve özelleştirebilirsiniz.
+2. Mantıksal uygulamanızın tanımını bulun ve açın. Bu, varsayılan olarak **logicapp. JSON**adlı bir [Kaynak Yöneticisi şablonunda](../azure-resource-manager/template-deployment-overview.md)görüntülenir. Bu şablonu, farklı ortamlara dağıtım için kullanabilir ve özelleştirebilirsiniz.
 
 3. Mantıksal uygulama tanımınız ve şablonunuz için kısayol menüsünü açın. **Mantıksal Uygulama Tasarımcısı ile Aç**’ı seçin.
 

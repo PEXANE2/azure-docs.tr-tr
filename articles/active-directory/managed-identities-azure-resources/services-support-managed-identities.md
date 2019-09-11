@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5630c157ef7843726bcc17455a1e683e58b88ffd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905225"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136518"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -76,8 +76,8 @@ Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki
 
 |Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure Çin 21Vianet |
 | --- | --- | --- | --- | --- |
-| Sistem tarafından atanmış | Önizleme | Yok | Yok | Yok |
-| Kullanıcı tarafından atanmış | Önizleme | Yok | Yok | Yok |
+| Sistem tarafından atanmış | Kullanılabilir | Kullanılabilir | Yok | Yok |
+| Kullanıcı tarafından atanmış | Kullanılabilir | Kullanılabilir | Yok | Yok |
 
 [Azure şemaları](../../governance/blueprints/overview.md)ile yönetilen bir kimlik kullanmak için aşağıdaki listeye bakın:
 

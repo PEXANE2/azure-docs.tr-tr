@@ -96,20 +96,28 @@
   href: reset-network-interface.md
 - name: VM’yi yeniden başlatma veya yeniden boyutlandırma
   href: restart-resize-error-troubleshooting.md
-- name: Seri konsolu kullanma
+- name: Seri Konsol
   items:
-    - name: Linux VM
+    - name: Seri Konsola genel bakış
+      href: serial-console-overview.md
+    - name: Linux için Seri Konsol
       href: serial-console-linux.md
       items:
         - name: Seri Konsol GRUB/Tek kullanıcı modu
           href: serial-console-grub-single-user-mode.md
         - name: Seri Konsol NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Windows VM
+    - name: Windows için Seri Konsol
       href: serial-console-windows.md
       items:
         - name: CMD ve PowerShell komutları
           href: serial-console-cmd-ps-commands.md
+    - name: Seri Konsolu etkinleştirme ve devre dışı bırakma
+      href: serial-console-enable-disable.md
+    - name: Seri Konsol içindeki güç seçenekleri
+      href: serial-console-power-options.md
+    - name: Yaygın Seri Konsol hataları
+      href: serial-console-errors.md
 - name: Depolama alanı kaynaklarını silerken karşılaşılan hatalar
   href: storage-resource-deletion-errors.md
 - name: Klasik depolama alanı kaynaklarını silerken karşılaşılan hatalar
@@ -153,6 +161,8 @@
 - name: Önyükleme hataları
   href: boot-error-troubleshoot.md
   items:
+    - name: Azure Sanal Makine önyükleme hatası
+      href: troubleshoot-vm-boot-error.md
     - name: Önyükleme tanılamaları
       href: boot-diagnostics.md
     - name: BitLocker hataları

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1b6b5aff52673443fe19da684e85663a5ca8fe19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4a0c9d16474ddf032ff88382bc240713bc734ff8
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878449"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211893"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Azure IoT Central kullanıcı arabirimine yönelik tura katılın (Önizleme özellikleri)
 
@@ -39,9 +39,31 @@ _Operatör_ olarak, Azure IoT Central kullanıcı arabirimini kullanarak Azure I
 
 Uygulamanın farklı bölümlerine erişmek için sol gezinti menüsünü kullanın. **<** **Veya>** öğesini seçerek gezinti çubuğunu genişletebilir veya daraltabilirsiniz:
 
-| Menü | Açıklama |
-| ---- | ----------- |
-| ![Sol gezinti menüsü](media/overview-iot-central-tour-pnp/navigationbar.png) | <ul><li>**Pano** sayfası, uygulama panonuzu görüntüler. Bir Oluşturucu olarak, operatörlerinizi panosunu özelleştirebilirsiniz. Kullanıcılar kendi panoları da oluşturabilir.</li><li>**Cihazlar** sayfası, uygulamadaki her bir cihaz şablonuyla ilişkili olan sanal ve gerçek cihazları listeler. Bir operatör olarak, bağlı cihazlarınızı yönetmek için **cihazları** kullanırsınız.</li><li>**Cihaz grupları** sayfası, cihaz gruplarını görüntülemenize ve oluşturmanıza olanak sağlar. Bir operatör olarak, cihaz gruplarını bir sorgu tarafından belirtilen mantıksal bir cihaz koleksiyonu olarak oluşturabilirsiniz.</li><li>**Kurallar** sayfası cihaz telemetri temelinde başlatılan kuralları düzenlemenize ve özelleştirilebilir eylemleri tetiklemenizi sağlar.</li><li>**Analiz** sayfasında cihazlar ve cihaz grupları için cihaz telemetrisinden türetilmiş çözümlemeler gösterilmektedir. Operatör olarak, uygulamanızdan içgörüler türetmek için cihaz verileri üzerinde özel görünümler oluşturabilirsiniz.</li><li>**İşler** sayfası, cihazlarınızı ölçekleyerek güncelleştirmek üzere işler oluşturup çalıştırdığınızda toplu cihaz yönetimine olanak sağlar.</li><li>**Cihaz şablonları** sayfası, bir oluşturucunun cihaz şablonları oluşturmak ve yönetmek için kullandığı araçları gösterir.</li><li>**Veri dışa aktarma** sayfası, yöneticinin depolama ve kuyruklar gibi diğer Azure hizmetlerine sürekli bir dışarı aktarma yapılandırmasına olanak sağlar.</li><li>**Yönetim** sayfasında, bir yöneticinin uygulama ayarlarını, kullanıcıları ve rolleri yönetebileceği uygulama yönetimi sayfaları gösterilir.</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour-pnp/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Devices** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device groups** lets you view and create device groups. As an operator, you can create device groups as a logical collections of devices specified by a query.
+
+      **Rules** lets you edit rules that fire based on device telemetry and trigger customizable actions.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device groups. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to update your devices at scale.
+    
+      **Device templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Data export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>Arama, yardım ve destek
 

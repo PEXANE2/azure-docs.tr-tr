@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062141"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860550"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Otomatik makine öğrenimi sonuçlarını anlama
 
@@ -30,10 +30,10 @@ Daha fazla bilgi:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* SDK ile veya Azure portal otomatik makine öğrenimi denemesi oluşturun.
+* Azure portal veya çalışma alanınızın giriş sayfasında (Önizleme), SDK ile otomatik makine öğrenimi denemesi oluşturun.
 
     * Bir [sınıflandırma modeli](how-to-auto-train-remote.md) veya [regresyon modeli](tutorial-auto-train-models.md) oluşturmak için SDK 'yı kullanma
-    * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Portal](how-to-create-portal-experiments.md) kullanın.
+    * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Portal veya çalışma alanı giriş sayfanızı (Önizleme)](how-to-create-portal-experiments.md) kullanın.
 
 ## <a name="view-the-run"></a>Çalıştırmayı görüntüle
 
@@ -102,7 +102,7 @@ weighted_accuracy|Ağırlıklı doğruluk, her örneğe verilen ağırlığa, bu
 
 Karışıklık matrisi performansını bir sınıflandırma modeli tanımlamak için kullanılır. Her bir satır gerçek sınıf örneklerini görüntüler ve her sütun, tahmin edilen sınıf örneklerini temsil eder. Karışıklık matrisi doğru sınıflandırılmış etiketleri ve belirli bir model için yanlış sınıflandırılmış etiketleri gösterir.
 
-Sınıflandırma sorunlar için Azure Machine Learning, bir karışıklık matrisi otomatik olarak oluşturulan her model için sağlar. Her bir karışıklık matrisi için otomatik ML doğru sınıflandırılmış etiketleri kırmızı, yeşil ve yanlış sınıflandırılmış etiket olarak gösterir. Dairenin boyutu bu depo içindeki örnek sayısını temsil eder. Ayrıca, tahmin edilen her etiket ve her true etiket sıklığı sayısı bitişik çubuk grafiklerdeki sağlanır. 
+Sınıflandırma sorunlar için Azure Machine Learning, bir karışıklık matrisi otomatik olarak oluşturulan her model için sağlar. Her bir karışıklık matrisi için otomatik ML, her tahmin edilen etiketin ve her bir doğru etiket kesişmesinin sıklığını gösterir. Rengin daha koyu olması, matrisin o belirli bölümünde bulunan sayının yükseği. İdeal olarak, en koyu renkler matrisin Köşegeninin yanı da olacaktır. 
 
 Örnek 1: Doğruluk ![doğruluğu düşük olan bir sınıflandırma modeline sahip bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

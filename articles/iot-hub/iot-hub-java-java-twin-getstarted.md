@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 91bdaf93c9dc9b051fce6e052ccd5bd2f5682eaa
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 4f9f4661a2c6c78438414029e803abc624a773ca
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061996"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161970"
 ---
 # <a name="get-started-with-device-twins-java"></a>Cihaz ikizlerini kullanmaya başlama (Java)
 
@@ -30,11 +30,9 @@ Bu öğreticide, iki Java konsol uygulaması oluşturursunuz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
-* En güncel [Java SE Development Kit 8](https://aka.ms/azure-jdks)
-
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 

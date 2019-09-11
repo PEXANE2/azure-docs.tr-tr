@@ -3,18 +3,17 @@ title: Dayanıklı İşlevler kontrol noktaları ve yeniden yürütme-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısında checkişaret ve yanıtın nasıl çalıştığını öğrenin.
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087447"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735256"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler denetim noktaları ve yeniden yürütme (Azure Işlevleri)
 
@@ -128,23 +127,18 @@ Yeniden yürütme davranışı, bir Orchestrator işlevinde yazılabilen kod tü
 
   Orchestrator kodunun geçerli tarih/saati alması gerekiyorsa, yeniden yürütme için güvenli olan [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.net) veya `currentUtcDateTime` (JavaScript) API 'sini kullanması gerekir.
 
-  Orchestrator kodunun rastgele bir GUID oluşturması gerekiyorsa, bu örnekte olduğu gibi, yeniden yürütme için güvenli olan [NEWGUID](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) API 'sini kullanmalı veya bir etkinlik Işlevine (JAVASCRIPT) GUID oluşturma devretmek gerekir:
+  Orchestrator kodunun rastgele bir GUID oluşturması gerekiyorsa, yeniden yürütme için güvenli olan [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) veya `newGuid` (JavaScript) API 'sini kullanmanız gerekir.
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  Belirleyici olmayan işlemlerin etkinlik işlevlerinde gerçekleştirilmesi gerekir. Bu, diğer giriş veya çıkış bağlamalarıyla herhangi bir etkileşimi içerir. Bu, ilk yürütme sırasında belirleyici olmayan tüm değerlerin bir kez oluşturulmasını ve yürütme geçmişine kaydedilmesini sağlar. Sonraki yürütmeler daha sonra kaydedilen değeri otomatik olarak kullanacaktır.
+   Bu özel durumlar dışında, etkinlik işlevlerinde belirleyici olmayan işlemler yapılmalıdır. Bu, diğer giriş veya çıkış bağlamalarıyla herhangi bir etkileşimi içerir. Bu, ilk yürütme sırasında belirleyici olmayan tüm değerlerin bir kez oluşturulmasını ve yürütme geçmişine kaydedilmesini sağlar. Sonraki yürütmeler daha sonra kaydedilen değeri otomatik olarak kullanacaktır.
 
 * Orchestrator kodu **engellenmemiş**olmalıdır. Örneğin, bu, hiçbir g/ç ve `Thread.Sleep` (.net) veya eşdeğer API çağrısı olmayan anlamına gelir.
 
   Bir Orchestrator 'ın geciktirilmesi gerekiyorsa [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.net) veya `createTimer` (JavaScript) API 'sini kullanabilir.
 
 * Orchestrator kodu, [durableorchestrationcontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API 'si veya `context.df` nesnenin API 'si dışında **herhangi bir zaman uyumsuz işlem başlatmalıdır** . Örneğin `Task.Run`, Hayır veya`HttpClient.SendAsync`.net veya`setTimeout()` JavaScript içinde`setInterval()` . `Task.Delay` Dayanıklı görev çerçevesi, Orchestrator kodunu tek bir iş parçacığında yürütür ve diğer zaman uyumsuz API 'Ler tarafından zamanlanabilecek diğer iş parçacıklarıyla etkileşime giremezsiniz. Bunun gerçekleşmesi, `InvalidOperationException` özel durum oluşturulması gerekir.
+
+> [!NOTE]
+> [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API 'si, bir Orchestrator işlevinde izin verilmeyen ve yalnızca Orchestrator olmayan işlevlerde kullanılabilen zaman uyumsuz g/ç işlemini gerçekleştirir.
 
 * Orchestrator kodunda **sonsuz döngüler kaçınılmalıdır** . Sürekli görev çerçevesi Orchestration işlevi ilerledikçe yürütme geçmişini kaydettiğinden, sonsuz bir döngü bir Orchestrator örneğinin bellek tükenmesine neden olabilir. Sonsuz döngü senaryolarında, işlev yürütmeyi yeniden başlatmak ve önceki yürütme geçmişini atmak için [continueasnew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.net) veya `continueAsNew` (JavaScript) gibi API 'leri kullanın.
 

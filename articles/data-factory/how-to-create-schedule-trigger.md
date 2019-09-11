@@ -3,21 +3,20 @@ title: Azure Data Factory zamanlama Tetikleyicileri oluşturma | Microsoft Docs
 description: Bir zamanlamaya göre işlem hattı çalıştıran Azure Data Factory tetikleyici oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: shlo
-ms.openlocfilehash: 6b38e85994fc99272a649b9e529380cb953d1bca
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: f693b04cb2a7166436497239dc7a874bdc5cbf46
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996366"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141617"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Bir zamanlamaya göre işlem hattı çalıştıran bir tetikleyici oluşturma
 Bu makalede zamanlama tetikleyicisi ve bir zamanlama tetikleyicisi oluşturma, başlatma ve izleme adımları hakkında bilgi verilmektedir. Diğer tetikleyici türleri için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md).

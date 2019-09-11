@@ -1,19 +1,19 @@
 ---
-title: 'Öğretici-Azure Toolkit for IntelliJ: HDInsight kümesi için Spark uygulamaları oluşturma'
+title: 'Öğretici-Azure Toolkit for IntelliJ: HDInsight için Spark uygulaması kümesi'
 description: Öğretici-Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları bir HDInsight Spark kümesine göndermek için Azure Toolkit for IntelliJ kullanın.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: dac72cee62a3bd4cc4c315e15ace784bf24deff3
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489856"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736487"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Öğretici: HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanma
 
@@ -45,7 +45,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
 1. IntelliJ IDEA’yı açın.
 
-2. Giriş ekranında, **Eklentiler penceresini açmak** için**eklentileri** **Yapılandır** > ' a gidin.
+2. Giriş **ekranında, eklentiler penceresini açmak** için**eklentileri** **Yapılandır** > ' a gidin.
    
     ![Scala eklentisini etkinleştirme](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin.png)
 
@@ -195,7 +195,7 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
 
     * **Livy hizmeti**  
   
-        |Özellik |Değer |
+        |Özellik |Value |
         |----|----|
         |Kaynak türünü bağla|Açılan listeden **Livy hizmeti** ' ni seçin.|
         |Livy uç noktası| Livy uç noktası girin|
@@ -227,7 +227,7 @@ Bir Scala uygulaması oluşturduktan sonra kümeye gönderebilirsiniz.
 
 3. **Yapılandırma düzenleme** penceresinde, aşağıdaki değerleri girip **Tamam**' ı seçin:
 
-    |Özellik |Değer |
+    |Özellik |Value |
     |----|----|
     |Spark kümeleri (yalnızca Linux)|Uygulamanızı çalıştırmak istediğiniz HDInsight Spark kümesini seçin.|
     |Göndermek için bir yapıt seçin|Varsayılan ayarı bırakın.|
@@ -312,7 +312,7 @@ WINUTILS ' i karşılatığınızdan emin olun. EXE önkoşulu.
 
 4. Aşağıdaki değerleri girip **Tamam**' ı seçin:
 
-    |Özellik |Değer |
+    |Özellik |Value |
     |----|----|
     |İş ana sınıfı|Varsayılan değer, seçili dosyadaki ana sınıftır. Üç noktayı ( **...** ) seçerek sınıfı değiştirebilirsiniz  ve başka bir sınıf seçebilirsiniz.|
     |Ortam değişkenleri|HADOOP_HOME değerinin doğru olduğundan emin olun.|
@@ -429,7 +429,7 @@ IntelliJ fıkır içinde oluşturduğunuz mevcut Spark Scala uygulamalarını Az
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
 
-   Modül öğesinin aşağıdaki gibi görünmesi `UniqueKey="HDInsightTool"` için eklenecek öğeyi  düzenleyin:
+   Modül öğesinin aşağıdaki gibi görünmesi `UniqueKey="HDInsightTool"` için eklenecek öğeyi düzenleyin:
    
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 

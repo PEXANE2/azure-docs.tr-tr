@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 624edaea9a0fb56e34eb83f033dfdab64985bd5c
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fbc24705288d9bb4acf0d1b2d99dfbda32149614
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950723"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163552"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
 
@@ -20,7 +20,11 @@ ms.locfileid: "68950723"
 
 Desteklenen özelliklerin tam listesi için bkz. [Uzak Masaüstü RDP dosya ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files) ve bunların varsayılan değerleri.
 
-İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) . Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Tek bir özel RDP özelliği ekleme veya düzenleme
 

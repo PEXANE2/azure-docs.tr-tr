@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129496"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844940"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Izleyici ölçüm deposunda klasik Cloud Services Konuk işletim sistemi ölçümleri gönderme 
 
@@ -34,6 +34,8 @@ Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçla
 - Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir. 
 
 - [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklemiş olmanız gerekir.
+
+- Bulut hizmetiniz [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olmalıdır.
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Bulut hizmeti ve depolama hesabı sağlama 
 

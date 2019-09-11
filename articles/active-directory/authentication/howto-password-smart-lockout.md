@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637588"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125013"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Akıllı kilitleme Azure Active Directory
 
@@ -45,7 +45,7 @@ Akıllı kilitleme karma dağıtımlarla tümleştirilebilir, şirket içi Activ
 * Azure AD kilitleme eşiği Active Directory hesap kilitleme eşiğinden **daha azdır** . Active Directory hesap kilitleme eşiği, Azure AD kilitleme eşiğinden en az iki veya üç kat daha uzun olacak şekilde değerleri ayarlayın. 
 * Azure AD kilitleme süresi, süreden sonra hesap kilitleme sayacını Active Directory daha uzun bir süre önce ayarlanmalıdır. AD süresi dakika cinsinden ayarlandığında Azure AD süresinin saniye cinsinden ayarlandığını unutmayın. 
 
-Örneğin, Azure AD Sayacınızı AD 'den daha yüksek olmasını istiyorsanız, şirket içi AD 1 dakikaya (60 saniye) ayarlandığında Azure AD 120 saniye (2 dakika) olacaktır.
+Örneğin, Azure AD Sayacınızı AD 'den daha yüksek olmasını istiyorsanız, şirket içi AD 'niz 1 dakikaya (60 saniye) ayarlandığında Azure AD 120 saniye (2 dakika) olacaktır.
 
 > [!IMPORTANT]
 > Şu anda, bir yönetici akıllı kilitleme özelliği tarafından kilitlenmişse kullanıcıların bulut hesaplarının kilidini açamaz. Yöneticinin kilitleme süresinin dolmasını beklemesi gerekir. Ancak Kullanıcı, güvenilen bir cihazdan veya konumdan self servis parola sıfırlama (SSPR) kullanarak kilidini açabilir.
@@ -67,7 +67,7 @@ Kuruluş gereksinimlerinize bağlı olarak, akıllı kilitleme değerlerinin öz
 
 Kuruluşunuzun akıllı kilitleme değerlerini denetlemek veya değiştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory**' a ve ardından **kimlik doğrulama yöntemleri**' ne tıklayın.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** > **kimlik doğrulama yöntemleri** > **parola koruması**' na gidin.
 1. İlk kilitlenmeden önce bir hesapta kaç tane başarısız oturum açma izni verileceğini temel alarak **kilitleme eşiğini**ayarlayın. Varsayılan değer 10 ' dur.
 1. **Kilitleme süresini saniye cinsinden**, her kilitin saniye cinsinden uzunluğu olarak ayarlayın. Varsayılan değer 60 saniyedir (bir dakika).
 

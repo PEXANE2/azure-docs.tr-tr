@@ -8,18 +8,16 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: d2eb36faaeb4d1745d0d509432e3a886ce75ff51
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 340d728a45da4e392c85ab4ba7ce822f7762da3b
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667904"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147374"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan cihaza iletileri gönderme
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
-
-## <a name="introduction"></a>Giriş
 
 Azure IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve güvenli çift yönlü iletişimin sağlanmasına yardımcı olan, tam olarak yönetilen bir hizmettir. [Bir cihazdan IoT Hub 'ına yönelik Telemetriyi, bir](quickstart-send-telemetry-python.md) IoT Hub 'ı oluşturmayı, bu kodda bir cihaz kimliği sağlamayı ve cihazdan buluta iletiler gönderen bir sanal cihaz uygulamasını nasıl kodlayacağınızı gösterir.
 
@@ -43,7 +41,7 @@ Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Önkoşullar için yükleme yönergeleri aşağıda verilmiştir. Bu şekilde, hizmet-istemci paketini yüklemeniz gerekmez.
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

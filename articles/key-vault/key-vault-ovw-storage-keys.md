@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934192"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744864"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Azure Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme 
 
@@ -67,7 +67,7 @@ Depolama hesabı anahtarlarını yönetmek için Key Vault kullanmanın dört te
 
 1. Mevcut bir depolama hesabı alın.
 1. Var olan bir anahtar kasasını getir.
-1. Kasaya Key Vault yönetilen bir depolama hesabı ekleyin. Yeniden `key1` oluşturma süresi 180 gün olan etkin anahtar olarak ayarlayın.
+1. Kasaya Key Vault yönetilen bir depolama hesabı ekleyin. Yeniden `key1` oluşturma süresi 90 gün olan etkin anahtar olarak ayarlayın.
 1. Belirtilen `key1` depolama hesabı için bir depolama bağlamı ayarlamak üzere kullanın.
 
 > [!NOTE]

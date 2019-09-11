@@ -1,21 +1,20 @@
 ---
-title: Hata ve özel durum işleme-Azure Logic Apps | Microsoft Docs
+title: Hata ve özel durum işleme-Azure Logic Apps
 description: Azure Logic Apps hata ve özel durum işleme desenleri hakkında bilgi edinin
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996613"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208180"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps hataları ve özel durumları işleme
 
@@ -219,13 +218,15 @@ Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın d
 
 Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın.
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>Bağlam ve hatalara ilişkin sonuçları al
 
-Bir kapsamdan hata yakalama yararlı olsa da, bağlamı tam olarak hangi eylemlerin başarısız olduğunu ve döndürülen hataları veya durum kodlarını anlamanıza yardımcı olmak isteyebilirsiniz. `@result()` İfade, bir kapsamdaki tüm eylemlerin sonucu hakkında bağlam sağlar.
+Bir kapsamdan hata yakalama yararlı olsa da, bağlamı tam olarak hangi eylemlerin başarısız olduğunu ve döndürülen hataları veya durum kodlarını anlamanıza yardımcı olmak isteyebilirsiniz.
 
-`@result()` İfade tek bir parametreyi (kapsamın adı) kabul eder ve bu kapsam içindeki tüm eylem sonuçlarının bir dizisini döndürür. Bu eylem nesneleri, eylemin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi  **\@eylemler ()** nesnesiyle aynı öznitelikleri içerir. Kapsam içinde başarısız olan herhangi bir eylemin bağlamını göndermek için bir  **\@Result ()** işlevini **runafter** özelliği ile kolayca değiştirebilirsiniz.
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) İşlevi, bir kapsamdaki tüm eylemlerin sonuçları hakkında bağlam sağlar. `result()` İşlevi, kapsamın adı olan tek bir parametreyi kabul eder ve bu kapsam içindeki tüm eylem sonuçlarını içeren bir dizi döndürür. Bu eylem nesneleri, `@actions()` nesnenin başlangıç zamanı, bitiş zamanı, durum, girişler, bağıntı kimlikleri ve çıktılar gibi nesneyle aynı öznitelikleri içerir. Kapsam içinde başarısız olan herhangi bir eylemin bağlamını göndermek için, `@result()` `runAfter` özelliği ile kolayca bir ifadeyi eşleştirin.
 
-**Başarısız** olan bir kapsamda her eylem için bir eylem çalıştırmak ve sonuçların dizisini başarısız eylemlere göre filtrelemek için,  **\@sonucu ()** bir **[filtre dizisi](../connectors/connectors-native-query.md)** eylemiyle ve [**her döngü için**](../logic-apps/logic-apps-control-flow-loops.md) bir olarak değiştirebilirsiniz. Her bir döngü **için** kullanarak filtrelenmiş sonuç dizisini alabilir ve her hata için bir eylem gerçekleştirebilirsiniz. 
+**Başarısız** olan bir kapsamda her eylem için bir eylem çalıştırmak ve sonuçların dizisini başarısız eylemlere göre filtrelemek için, bir `@result()` ifadeyi bir [**filtre dizisi**](../connectors/connectors-native-query.md) eylemiyle ve [**her döngü için**](../logic-apps/logic-apps-control-flow-loops.md) bir ile eşleştirin. Her bir döngü **için** kullanarak filtrelenmiş sonuç dizisini alabilir ve her hata için bir eylem gerçekleştirebilirsiniz.
 
 Aşağıda, "My_Scope" kapsamında başarısız olan herhangi bir eylem için yanıt gövdesi ile bir HTTP POST isteği gönderen ayrıntılı bir açıklama verilmiştir.
 

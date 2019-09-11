@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: f7efffd416cd6768cc8fdd18c224fd42dd97b53e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b7672ff83dac31968dff7ef7a66ff40b36b69d59
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072726"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845200"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -95,7 +95,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **Baş Telem** |Desteklenen |Desteklenen |Hong Kong, Taipei |
 | **China Telecom Global** |Desteklenen |Desteklenen |Hong Kong SAR |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Dallas, Montreal, Toronto, Washington DC |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Desteklenen |Desteklenen |Amsterdam, Dublin, Londra, Newport, Osaka, Paris, Singapur2, Tokyo |
+| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Dublin, Londra, Newport, Osaka, Paris, Singapur2, Tokyo |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Desteklenen |Desteklenen |Chicago, Denver, Los Angeles, New York, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | Desteklenen |Desteklenen |Amsterdam2, Frankfurt, Marseille|
@@ -136,7 +136,8 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Cumxcom](https://www.orixcom.com/cloud-solutions/)** | Desteklenen | Desteklenen | Dubai2 |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Desteklenen |Desteklenen |Chicago, Hong Kong ÖIB, Londra |
-| **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Desteklenen |Desteklenen |Seul |
+| **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Desteklenen |Desteklenen |Seoul |
+| **[IR](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Desteklenen |Desteklenen | Washington |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Desteklenen |Desteklenen |Madras, Bombay2 |
 | **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Desteklenen |Desteklenen |Singapur, Singapur2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Desteklenen |Desteklenen |Osaka, Tokyo |
@@ -156,10 +157,11 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Desteklenen |Desteklenen |Dallas, + Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Desteklenen |Desteklenen |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Hong Kong ÖIB, Londra, Mumbai, Silicon Valley, Singapur, Sidney, Tokyo, Toron, Washington DC |
+| **Viasat** | Desteklenen | Desteklenen | Washington DC2 |
 | **[Vocus grubu NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Desteklenen | Desteklenen | Auckland, Sidney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Desteklenen |Desteklenen |Amsterdam2, Londra, Singapur |
 | **Vodafone Idea** | Desteklenen | Desteklenen | Mumbai, Mumbai2 |
-| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Denver, Londra, Los Angeles, Montreal, New York, Paris, Seattle, Silicon Valley, Toron, Washington DC |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Denver, Londra, Los Angeles, Montreal, New York, Paris, Seattle, Silicon Valley, Toron, Washington DC, Washington DC2 |
 
  **+** çok yakında anlamına geliyor
 
@@ -196,7 +198,7 @@ Daha fazla öğrenmek için, bkz. [Çin’de ExpressRoute](http://www.windowsazu
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Desteklenen  | Desteklenmiyor | Berlin |
 | **T-Systems** |Desteklenen |Desteklenmiyor |Berlin |
 
-## <a name="connectivity-through-exchange-providers"></a>Exchange Sağlayıcıları Üzerinden Bağlantı
+## <a name="connectivity-through-exchange-providers"></a>Exchange sağlayıcıları üzerinden bağlantı
 
 Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlantı oluşturabilirsiniz.
 
@@ -214,7 +216,14 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 * Microsoft’a bağlanmak için bağlantı sağlayınız olarak değişime sahip bir ExpressRoute bağlantı hattı sipariş edin.
   * Bağlantı kurmak için [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-classic.md)’daki adımları izleyin.
 
-## <a name="connectivity-through-additional-service-providers"></a>Diğer Hizmet Sağlayıcılar Üzerinden Bağlantı
+## <a name="connectivity-through-satellite-operators"></a>Uydu işleçleri üzerinden bağlantı
+Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı seçeneklerini araştırmak istiyorsanız aşağıdaki uydu işleçlerini kontrol edebilirsiniz. 
+
+* Intelsat
+* [IR](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
+* Viasat
+
+## <a name="connectivity-through-additional-service-providers"></a>Ek hizmet sağlayıcıları üzerinden bağlantı
 
 | **Bağlantı sağlayıcı** | **Exchange** | **Konumlar** |
 | --- | --- | --- |
@@ -276,7 +285,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 | **[Zertia](https://www.zertia.es)**| Level 3 | Madrid |
 | **[Zirro](https://zirro.com/services/)**| Cologix, Equinix | Montreal, Toronto |
 
-## <a name="connectivity-through-datacenter-providers"></a>Veri Merkezi Sağlayıcıları Üzerinden Bağlantı
+## <a name="connectivity-through-datacenter-providers"></a>Veri merkezi sağlayıcıları üzerinden bağlantı
 
 | **Sağlayıcı** | **Exchange** |
 | --- | --- |
@@ -293,7 +302,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 | **[vXchnge](https://www.vxchnge.com/colocation-services/interconnection)** | X REACH, Megaport |
 | **[T5 Datacenters](https://t5datacenters.com/network-cloud-connect/)** | IX Reach |
 
-## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Ulusal Araştırma ve Eğitim Ağları (NREN) Üzerinden Bağlantı
+## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Ulusal Araştırma ve eğitim ağları (NREN) üzerinden bağlantı
 
 | **Sağlayıcı**|
 | --- |

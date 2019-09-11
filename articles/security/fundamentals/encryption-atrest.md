@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2019
+ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875090"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873196"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -127,7 +127,7 @@ Rest modellerindeki sunucu tarafı şifrelemenin her biri, anahtar yönetiminin 
 
 Birçok müşteri için, en önemli gereksinim, verilerin bekleyen her durumda şifrelendiğinden emin olunması sağlamaktır. Hizmet tarafından yönetilen anahtarları kullanan sunucu tarafı şifreleme, müşterilerin belirli bir kaynağı (depolama hesabı, SQL DB vb.) şifreleme için işaretlemesini ve anahtar verme, döndürme ve yedekleme gibi tüm anahtar yönetim yönlerini Microsoft 'a bırakarak bu modeli sağlar . Rest 'de şifrelemeyi destekleyen çoğu Azure hizmeti, şifreleme anahtarlarının yönetimini Azure 'a boşaltma için genellikle bu modeli destekler. Azure Kaynak sağlayıcısı anahtarları oluşturur, güvenli depolamaya koyar ve gerektiğinde bunları alır. Bu, hizmetin anahtarlara tam erişimi olduğu ve hizmetin kimlik bilgisi yaşam döngüsü yönetimi üzerinde tam denetime sahip olduğu anlamına gelir.
 
-![lebilmesi](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
+![Lebilmesi](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Hizmet tarafından yönetilen anahtarlar kullanılarak yapılan sunucu tarafı şifreleme, bu nedenle, müşteri için düşük ek yük ile bekleyen şifreleme gereksinimini hızla ortadan kaldırır. Bir müşteri kullanılabilir olduğunda, genellikle hedef abonelik ve kaynak sağlayıcısı için Azure portal açar ve bunu gösteren bir kutuyu kontrol eder ve verilerin şifrelenmesini ister. Bazı kaynak yöneticileri, hizmet tarafından yönetilen anahtarlarla sunucu tarafında şifreleme varsayılan olarak açık olur.
 
@@ -254,17 +254,19 @@ Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelli
 
 Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) özelliği aracılığıyla desteklenir. Always Encrypted, istemci tarafından oluşturulan ve depolanan bir anahtarı kullanır. Müşteriler ana anahtarı bir Windows sertifika deposunda, Azure Key Vault veya yerel bir donanım güvenlik modülünde depolayabilirler. SQL Server Management Studio kullanarak, SQL kullanıcıları hangi sütunu şifrelemek için kullanmak istediğiniz anahtarı seçer.
 
-#### <a name="encryption-model-and-key-management"></a>Şifreleme modeli ve anahtar yönetimi
+#### <a name="encryption-model-and-key-management-table"></a>Şifreleme modeli ve anahtar yönetimi tablosu
 
-| **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı** |**Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**| **İstemci-yönetilen kullanarak istemci tarafı** | **AI ve Machine Learning**   |
-|--------------------|-------------------|----------------------|--------------------|
+|                                  |                    | **Şifreleme modeli ve anahtar yönetimi** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen kullanarak istemci tarafı**      |
+| **AI ve Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Evet                | -                  | -                  |
 | Azure Machine Learning Hizmeti   | Evet                | -                  | -                  |
 | Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048 bit | -               |
-| Power BI                         | Evet                | Önizleme, RSA 2048 bit | -               |
+| Power BI                         | Evet                | Önizleme, RSA 2048 bit | -                  |
 | **Analizler**                    |                    |                    |                    |
 | Azure Stream Analytics           | Evet                | -                  | -                  |
-| Event Hubs                       | Evet                | -                  | -                  |
+| Event Hubs                       | Evet                | Önizleme, tüm RSA uzunlukları. | -                  |
 | Azure Analysis Services          | Evet                | -                  | -                  |
 | Azure Veri Kataloğu               | Evet                | -                  | -                  |
 | Azure HDInsight üzerinde Apache Kafka  | Evet                | Tüm RSA uzunlukları.   | -                  |
@@ -282,7 +284,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Azure SQL Database               | Evet                | Evet, RSA 2048 bit  | Evet                |
 | MariaDB için Azure SQL veritabanı   | Evet                | -                  | -                  |
 | MySQL için Azure SQL veritabanı     | Evet                | -                  | -                  |
-| PostgreSQL için Azure SQL veritabanı | Evet                | -                  | -                 |
+| PostgreSQL için Azure SQL veritabanı | Evet                | -                  | -                  |
 | Azure SQL Veri Ambarı         | Evet                | Evet, RSA 2048 bit  | Evet                |
 | SQL Server Stretch Database      | Evet                | Evet, RSA 2048 bit  | Evet                |
 | Tablo Depolama                    | Evet                | -                  | Evet                |

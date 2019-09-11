@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7d3f29327f9a671a631b01ad688da3a523a7b0c8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967036"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275850"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory kullanarak Cassandra 'dan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -93,7 +93,7 @@ Cassandra bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm, Cassandra veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Cassandra veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 Cassandra 'dan veri kopyalamak için veri kümesinin Type özelliğini **Cassandratable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 

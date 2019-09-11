@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981298"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306013"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 
@@ -25,7 +25,7 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 
 ## <a name="impact-of-this-change"></a>Bu değişikliğin etkisi
 
-Trafik geçişinin yeni ağ geçitlerine ilk turu, aşağıdaki bölgelerde **14 ekim 2019** için zamanlanır:
+Trafik geçişinin yeni ağ geçitlerine ilk **turu, aşağıdaki bölgelerde 14 ekim 2019** için zamanlanır:
 - Güney Brezilya
 - Batı ABD
 - Batı Avrupa
@@ -41,11 +41,11 @@ Trafik geçişinin yeni ağ geçitlerine ilk turu, aşağıdaki bölgelerde **14
 - Doğu Asya
 
 Trafik geçişi, DNS 'nin SQL veritabanınız için çözümlediği genel IP adresini değiştirecek.
-Varsa bu sorundan etkilenirsiniz.
+Şu durumlarda etkilenirsiniz:
 - Şirket içi güvenlik duvarınızdaki belirli bir ağ geçidinin IP adresini sabit olarak kodlanmış
 - Hizmet uç noktası olarak Microsoft. SQL kullanan tüm alt ağlar, ancak ağ geçidi IP adresleriyle iletişim kuramaz
 
-Sahip olmanız durumunda etkilenmeyecektir. 
+Şunları yaptıysanız etkilenmeyecektir:
 - Bağlantı ilkesi olarak yeniden yönlendirme
 - Azure 'un içinden ve hizmet etiketlerini kullanarak SQL veritabanı 'na bağlantı
 - SQL Server için JDBC sürücüsünün desteklenen sürümleri kullanılarak yapılan bağlantılar, hiçbir etkisi görmez. Desteklenen JDBC sürümleri için bkz. [SQL Server Için MICROSOFT JDBC sürücüsü indirme](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).

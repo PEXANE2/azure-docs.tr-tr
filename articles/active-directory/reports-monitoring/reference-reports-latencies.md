@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987924"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127027"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory raporlama gecikme süreleri
 
@@ -64,11 +64,11 @@ Aşağıdaki tabloda güvenlik raporlarının gecikme süresi bilgileri listelen
 | Risk altındaki kullanıcılar          | 5 dakika   | 15 dakika  | 2 saat  |
 | Riskli oturum açma işlemleri         | 5 dakika   | 15 dakika  | 2 saat  |
 
-## <a name="risk-events"></a>Risk olayları
+## <a name="risk-detections"></a>Risk algılamaları
 
-Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, **risk olayı**adlı bir kayıtta saklanır.
+Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, **risk algılama**adlı bir kayıtta saklanır.
 
-Aşağıdaki tabloda risk olayları için gecikme süresi bilgileri listelenmektedir.
+Aşağıdaki tabloda risk algılamaları için gecikme bilgileri listelenmektedir.
 
 | Rapor | Minimum | Average | Maksimum |
 | :-- | --- | --- | --- |
@@ -77,11 +77,11 @@ Aşağıdaki tabloda risk olayları için gecikme süresi bilgileri listelenmekt
 | Sızan kimlik bilgilerine sahip kullanıcılar |2 saat |4 saat |8 saat |
 | Alışılmadık konumlara imkansız seyahat |5 dakika |1 saat |8 saat  |
 | Bulaşma olan cihazlardan oturum açma işlemleri |2 saat |4 saat |8 saat  |
-| Şüpheli etkinliğin olduğu IP adreslerinden oturum açma işlemleri |2 saat |4 saat |8 saat  |
+| Şüpheli etkinlik gösteren IP adreslerinden gerçekleştirilen oturum açma işlemleri |2 saat |4 saat |8 saat  |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD raporlarına genel bakış](overview-reports.md)
 * [Azure AD raporlarına programlı erişim](concept-reporting-api.md)
-* [Azure Active Directory risk olayları](concept-risk-events.md)
+* [Risk algılamalarını Azure Active Directory](concept-risk-events.md)

@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061337"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186216"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>Senaryon Güncelleştirmeler dağıtım olmadan yüklenir
+
+### <a name="issue"></a>Sorun
+
+Bir Windows makinesini Güncelleştirme Yönetimi kaydettiğinizde, güncelleştirme yüklemesini bir dağıtım olmadan görebilirsiniz.
+
+### <a name="cause"></a>Nedeni
+
+Windows 'da, güncelleştirmeler kullanılabilir duruma geldiğinde otomatik olarak yüklenir. Bu, makineye dağıtılacak bir güncelleştirme zamanlamadığı takdirde karışıklık oluşmasına neden olabilir.
+
+### <a name="resolution"></a>Çözüm
+
+Windows kayıt defteri anahtarı varsayılan `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` olarak "4"- **otomatik indir ve yükle**' dir.
+
+Güncelleştirme Yönetimi istemcileri için, bu anahtarı "3" olarak ayarlamayı öneririz- **otomatik indir, ancak otomatik olarak yükleme**.
+
+Daha fazla bilgi için bkz. [otomatik güncelleştirmeleri yapılandırma](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ### <a name="nologs"></a>Senaryon Makineler Güncelleştirme Yönetimi altında portalda gösterilmez
 

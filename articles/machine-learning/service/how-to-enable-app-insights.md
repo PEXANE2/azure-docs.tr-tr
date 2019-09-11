@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ff9261e2720ed80fc96131cea69d2985c8e0883e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871778"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858748"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Azure Machine Learning Modellerinizi Application Insights ile izleme
 
@@ -127,7 +127,7 @@ Bunu görüntülemek için:
    [![Özel izlemeler](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Application Insights'ı kullanma hakkında daha fazla bilgi için bkz. [Application Insights nedir?](../../azure-monitor/app/app-insights-overview.md).
-    
+
 
 ## <a name="example-notebook"></a>Örneğin not defteri
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db98039ae057e48867c91d1081c38066067c621
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087444"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735246"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Dayanıklı İşlevler-bulut yedekleme örneğinde fan-çıkış/fan senaryosu
 
@@ -66,7 +66,7 @@ Bu Orchestrator işlevi temelde şunları yapar:
 4. Tüm karşıya yüklemelerinin tamamlanmasını bekler.
 5. Azure Blob depolamaya karşıya yüklenen toplam bayt sayısını döndürür.
 
-() Ve`yield context.df.Task.all(tasks);` (JavaScript) satırlarına dikkat edin.C# `await Task.WhenAll(tasks);` `E2_CopyFileToBlob` İşleve yapılan her bir çağrı beklenmedi. Bu, paralel olarak çalışmasına izin vermek için bilerek yapılır. Bu görev `Task.WhenAll` dizisini (C#) veya `context.df.Task.all` (JavaScript) öğesine geçirdiğimiz zaman, *tüm kopyalama işlemleri tamamlanana kadar*tamamlanmamış bir görevi geri sunuyoruz. .NET veya [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) JavaScript 'te görev paralel kitaplığı (TPL) hakkında bilginiz varsa, bu sizin için yeni değildir. Fark, bu görevlerin eşzamanlı olarak birden çok VM üzerinde çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
+() Ve`yield context.df.Task.all(tasks);` (JavaScript) satırlarına dikkat edin.C# `await Task.WhenAll(tasks);` `E2_CopyFileToBlob` İşleve yapılan her bir çağrı *beklenmedi* . Bu, paralel olarak çalışmasına izin vermek için bilerek yapılır. Bu görev `Task.WhenAll` dizisini (C#) veya `context.df.Task.all` (JavaScript) öğesine geçirdiğimiz zaman, *tüm kopyalama işlemleri tamamlanana kadar*tamamlanmamış bir görevi geri sunuyoruz. .NET veya [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) JavaScript 'te görev paralel kitaplığı (TPL) hakkında bilginiz varsa, bu sizin için yeni değildir. Fark, bu görevlerin eşzamanlı olarak birden çok VM üzerinde çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
 
 > [!NOTE]
 > Görevler kavramsal olarak JavaScript 'e benzer olsa da, Orchestrator işlevleri görev paralelleştirme `context.df.Task.any` 'yı yönetmek `Promise.all` `Promise.race` için ve yerine kullanmalıdır `context.df.Task.all` .

@@ -1,5 +1,5 @@
 ---
-title: Uç nokta utterlerini gözden geçirme-LUSıS
+title: 'Öğretici: Uç nokta utterlerini gözden geçirme-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: LUIS HTTP uç noktası üzerinden alınan ifadeleri doğrulayarak veya düzelterek LUIS'in emin olmadığı uygulama tahminlerini geliştirin. Bazı konuşmaların amacının, diğerlerinin ise varlığının doğrulanması gerekebilir.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563316"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387513"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: Uç nokta dıklarını inceleyerek, hariç tahminleri düzeltir
 Bu öğreticide, LUIS HTTP uç noktası üzerinden alınan ifadeleri doğrulayarak veya düzelterek LUIS'in emin olmadığı uygulama tahminlerini geliştireceksiniz. Bazı konuşmaların amaç, diğerlerinin ise varlık için doğrulanması gerekebilir. Zamanlanmış LUIS bakımınızın normal bir parçası olarak uç noktası konuşmalarını gözden geçirmeniz gerekir. 
@@ -85,15 +85,17 @@ Aşağıdaki adımları kullanın:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|İş - "Doğal Dil İşleme"|
 
+    Bir keyPhrase `natural language processing` varlığından iş varlığına geçiş yapmak için, tümceciği seçin, sonra listeden **iş** ' ı seçin. Farklı bir varlık için keyPhrase 'in metninin yalnızca bir kısmını seçmek istiyorsanız, keyPhrase ' yi bir varlık olarak kaldırmanız, farklı bir varlıkla etiketlenmesi ve sonra keyPhrase varlığını uygulamaya yeniden uygulamanız gerekir. 
+
     Söylenişi 'in eklenmesi, **Gözden geçirme uç noktası dıklarından** **getjobınformation** amacına kadar olan işterliğini taşımaktır. Uç nokta ifadesi şimdi söz konusu amaç için örnek bir ifade olmuştur. 
 
     Bu söyleyeni doğru şekilde hizalayarak, **Getjobınformation** amacına daha fazla bildirim eklenmelidir. Bu, kendi başınıza tamamlamanız için bir alıştırma olarak bırakılmıştır. **Hiçbiri** amacı dışındaki her amacın kabaca aynı sayıda örnek ifadesi olmalıdır. **Hiçbiri** amacındaki ifade sayısının, uygulamadaki ifadelerin %10'u kadar olması gerekir. 
 
-1. Bu amaçtaki diğer ifadeleri gözden geçirin, ifadeleri etiketleyin ve **Eşleşmiş amaç** yanlışsa düzeltin.
+    Bu amaçtaki diğer ifadeleri gözden geçirin, ifadeleri etiketleyin ve **Eşleşmiş amaç** yanlışsa düzeltin.
 
-1. Artık listede bu ifadeler yer almamalıdır. Başka konuşmalar da görünürse, liste boşalana kadar amaçları düzelterek ve eksik varlıkları etiketleyerek listede çalışmaya devam edin. 
+    **Gözden geçirme uç noktası uttersları** listesi artık bu noktalara sahip olmamalıdır. Başka konuşmalar da görünürse, liste boşalana kadar amaçları düzelterek ve eksik varlıkları etiketleyerek listede çalışmaya devam edin. 
 
-1. Filtre listesinde bir sonraki amacı seçin, sonra ifadeleri düzeltmeye ve varlıkları etiketlemeye devam edin. Her amacın son adımının ifade satırında **Eşleşmiş amaca ekle**'yi seçmek veya her amacın yanındaki kutuyu işaretleyip yukarıdaki tabloda **Seçileni ekle**'yi seçmek olduğunu unutmayın.
+    Filtre listesinde bir sonraki amacı seçin, sonra ifadeleri düzeltmeye ve varlıkları etiketlemeye devam edin. Her amacın son adımının ifade satırında **Eşleşmiş amaca ekle**'yi seçmek veya her amacın yanındaki kutuyu işaretleyip yukarıdaki tabloda **Seçileni ekle**'yi seçmek olduğunu unutmayın.
 
     Filtre listesindeki tüm amaçların ve varlıkların boş bir listesi olana kadar devam edin. Bu çok küçük bir uygulamadır. Gözden geçirme işlemi yalnızca birkaç dakika sürer. 
 

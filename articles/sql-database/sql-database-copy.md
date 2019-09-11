@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569006"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173425"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL veritabanı 'nın işlem temelli tutarlı bir kopyasını kopyalama
 
@@ -24,7 +24,7 @@ Azure SQL veritabanı, aynı sunucuda veya farklı bir sunucuda var olan bir Azu
 
 ## <a name="overview"></a>Genel Bakış
 
-Veritabanı kopyası, kopyalama isteği sırasında kaynak veritabanının anlık görüntüsüdür. Aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, hizmet katmanını ve işlem boyutunu tutmayı seçebilir veya aynı hizmet katmanı (Edition) içinde farklı bir işlem boyutu kullanabilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Bu noktada, dilediğiniz sürüme yükseltebilir veya onu indirgeyede olursunuz. Oturum açmalar, kullanıcılar ve izinler bağımsız olarak yönetilebilir.  
+Veritabanı kopyası, kopyalama isteği sırasında kaynak veritabanının anlık görüntüsüdür. Aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, hizmet katmanını ve işlem boyutunu tutmayı seçebilir veya aynı hizmet katmanı (Edition) içinde farklı bir işlem boyutu kullanabilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Bu noktada, dilediğiniz sürüme yükseltebilir veya onu indirgeyede olursunuz. Oturum açmalar, kullanıcılar ve izinler bağımsız olarak yönetilebilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur ve dengeli dağıtım tamamlandığında, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmanın kullanılmasıyla ilgili tüm gereksinimler veritabanı kopyalama işlemi için geçerlidir. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](sql-database-active-geo-replication.md) .
 
 > [!NOTE]
 > [Otomatik veritabanı yedeklemeleri](sql-database-automated-backups.md) , bir veritabanı kopyası oluştururken kullanılır.
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 Tüm örnek betik için bkz. [veritabanını yeni bir sunucuya kopyalama](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+Veritabanı kopyası zaman uyumsuz bir işlemdir ancak hedef veritabanı, istek kabul edildikten hemen sonra oluşturulur. Hala devam ederken kopyalama işlemini iptal etmeniz gerekiyorsa, [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 'ini kullanarak hedef veritabanını bırakın.  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>Veritabanı kopyasını yönetmek için RBAC rolleri
+
+Bir veritabanı kopyası oluşturmak için aşağıdaki rollerde olması gerekir
+
+- Abonelik sahibi veya
+- SQL Server katkıda bulunan rolü veya
+- Kaynak ve hedef veritabanlarında aşağıdaki izinle özel rol:
+
+   Microsoft. SQL/Servers/veritabanları/Microsoft. SQL/Servers/veritabanlarını/Write 'i okuyun
+
+Bir veritabanı kopyasını iptal etmek için, aşağıdaki rollerde olması gerekir
+
+- Abonelik sahibi veya
+- SQL Server katkıda bulunan rolü veya
+- Kaynak ve hedef veritabanlarında aşağıdaki izinle özel rol:
+
+   Microsoft. SQL/Servers/veritabanları/Microsoft. SQL/Servers/veritabanlarını/Write 'i okuyun
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Transact-SQL kullanarak bir veritabanını kopyalama
 
@@ -107,6 +127,10 @@ Sys. databases ve sys. DM _database_kopyalar görünümlerini sorgulayarak kopya
 
 > [!NOTE]
 > Kopyalama işlemi devam ederken iptal etmeyi seçerseniz, yeni veritabanında [drop database](https://msdn.microsoft.com/library/ms178613.aspx) ifadesini yürütün. Alternatif olarak, kaynak veritabanında DROP DATABASE ifadesinin yürütülmesi kopyalama işlemini de iptal eder.
+
+> [!IMPORTANT]
+> Kaynağından önemli ölçüde daha küçük bir SLO kopyası oluşturmanız gerekiyorsa, hedef veritabanı dengeli işlem işlemini tamamlayacak yeterli kaynağa sahip olmayabilir ve kopyalama işlemi başarısız olmasına neden olabilir. Bu senaryoda, farklı bir sunucuda ve/veya farklı bir bölgede bir kopya oluşturmak için bir coğrafi geri yükleme isteği kullanın. Daha fazla bilgi için bkz. [veritabanı yedeklerini kullanarak bir Azure SQL veritabanını kurtarma](sql-database-recovery-using-backups.md#geo-restore) .
+
 
 ## <a name="resolve-logins"></a>Oturum açma işlemlerini çözümle
 

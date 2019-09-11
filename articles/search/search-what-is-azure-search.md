@@ -6,18 +6,18 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: heidist
-ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 3b0647c3a71e6ce242e7cbd0eedcca3d0fa30ded
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899678"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274045"
 ---
 # <a name="what-is-azure-search"></a>Azure Search nedir?
 
-Azure Search, Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'Ler ve araçlar sağlayan bir hizmet olarak arama bir bulut çözümüdür. Özel kodunuz, bir dizin oluşturmak ve yüklemek için veri alımı (Dizin oluşturma) çağırır. Diğer taraftan, uygulama kodunuz sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, sizin oluşturduğunuz, sahip olduğunuz ve Azure Search depoladığınız kalıcı bir dizin üzerinde sorgu yürütme ile Azure Search işlevleri kullanılarak istemcinize göre tanımlanır.
+Azure Search, Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'Ler ve araçlar sağlayan bir hizmet olarak arama bir bulut çözümüdür. Özel kodunuz, bir dizin oluşturmak ve yüklemek için veri alımı (Dizin oluşturma) çağırır. Diğer taraftan, uygulama kodunuz sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, kuruluşunuzda oluşturduğunuz, sahip olduğunuz ve bilgisayarınızda depoladığınız kalıcı bir dizin üzerinde sorgu yürütme ile Azure Search işlevleri kullanılarak istemcinize göre tanımlanır.
 
 ![Azure Search mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search mimarisi")
 

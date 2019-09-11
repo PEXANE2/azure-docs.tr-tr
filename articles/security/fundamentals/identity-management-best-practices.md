@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934702"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195080"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 Bu makalede, bir Azure kimlik yönetimi ve erişim denetimi güvenliği en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) ile deneyimimizden ve bizim gibi müşterilerin deneyimlerinden türetilir.
@@ -93,7 +93,7 @@ Daha fazla bilgi için bkz. [Azure AD Connect eşitleme ile parola karması eşi
 > Kritik hesapların hangi dizinlerde yer alacağı ve kullanılan yönetici iş istasyonunun yeni bulut hizmetleri veya mevcut süreçler tarafından yönetilip yönetilmeyeceğini seçmeniz gerekir. Var olan yönetim ve kimlik sağlama işlemlerinin kullanılması bazı riskleri azaltabilir, ancak aynı zamanda bir saldırganın şirket içi bir hesabı tehlikeye atması ve buluta özetleme riskini de oluşturabilir. Farklı roller (örneğin, BT yöneticileri ile iş birimi yöneticileri) için farklı bir strateji kullanmak isteyebilirsiniz. İki seçeneğiniz vardır. İlk seçenek, şirket içi Active Directory örneğiniz ile eşitlenmemiş Azure AD hesapları oluşturmaktır. Yönetici iş istasyonunuza Azure AD 'ye katılarak Microsoft Intune kullanarak yönetebilir ve düzeltme eki uygulayabilirsiniz. İkinci seçenek, şirket içi Active Directory örneğiniz ile eşitleme yaparak var olan yönetici hesaplarını kullanmaktır. Active Directory etki alanında yönetim ve güvenlik için mevcut iş istasyonlarını kullanın.
 
 ## <a name="manage-connected-tenants"></a>Bağlı kiracılar yönetme
-Güvenlik kuruluşunuz, riski değerlendirmek ve kuruluşunuzun ilkelerine ve herhangi bir mevzuat gereksinimlerine uyulmadığını belirlemek için görünürlüğe ihtiyaç duyuyor. Güvenlik kuruluşunuzun üretim ortamınıza ve ağa bağlı tüm aboneliklerde görünürlüğe sahip olduğundan emin olmanız gerekir ( [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) veya [siteden siteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)aracılığıyla). Azure AD 'deki [genel yönetici/Şirket Yöneticisi](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) , [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüne erişimi yükseltebilir ve ortamınıza bağlı tüm abonelikleri ve yönetilen grupları görebilir.
+Güvenlik kuruluşunuz, riski değerlendirmek ve kuruluşunuzun ilkelerine ve herhangi bir mevzuat gereksinimlerine uyulmadığını belirlemek için görünürlüğe ihtiyaç duyuyor. Güvenlik kuruluşunuzun üretim ortamınıza ve ağa bağlı tüm aboneliklerde görünürlüğe sahip olduğundan emin olmanız gerekir ( [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) veya [siteden siteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)aracılığıyla). Azure AD 'deki [genel yönetici/Şirket Yöneticisi](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) , [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüne erişimi yükseltebilir ve ortamınıza bağlı tüm abonelikleri ve yönetilen grupları görebilir.
 
 , Ve güvenlik grubunuzun ortamınıza bağlı tüm abonelikleri veya Yönetim gruplarını görüntüleyebileceğini sağlamak için [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek üzere erişimi yükseltme](../../role-based-access-control/elevate-access-global-admin.md) bölümüne bakın. Riskleri değerlendirdikten sonra bu yükseltilmiş erişimi kaldırmalısınız.
 
@@ -143,17 +143,17 @@ Tüm kullanıcılarınız için iki aşamalı doğrulama gerektirmenizi öneriri
 
 İki aşamalı doğrulamayı etkinleştirmenin seçenekleri ve avantajları aşağıda verilmiştir:
 
-**Seçenek 1**: [Kullanıcı durumunu değiştirerek Multi-Factor Authentication 'ı etkinleştirin](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Avantaj**: Bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir. Hem bulutta hem de [Azure Multi-Factor Authentication sunucusu 'Nda Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion)ile birlikte kullanılabilir. Bu yöntemin kullanılması, kullanıcıların her oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
+**Seçenek 1**: [Kullanıcı durumunu değiştirerek Multi-Factor Authentication etkinleştirin](../../active-directory/authentication/howto-mfa-userstates.md).   
+**Avantaj**: Bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir. Hem bulutta hem de [azure Multi-Factor Authentication sunucusu birlikte çalışarak azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion). Bu yöntemin kullanılması, kullanıcıların her oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
 
-Multi-Factor Authentication 'ın etkinleştirilmesi gereken yeri öğrenmek için, [Kuruluşum Için hangi Azure MFA sürümünün doğru olduğunu](/azure/active-directory/authentication/concept-mfa-whichversion)görün.
+Multi-Factor Authentication etkinleştirilmesi gerektiğini öğrenmek için, [Kuruluşum Için hangi Azure MFA sürümünün doğru olduğunu](/azure/active-directory/authentication/concept-mfa-whichversion)görün.
 
-**Seçenek 2**: [Koşullu erişim Ilkesiyle Multi-Factor Authentication 'ı etkinleştirin](/azure/active-directory/authentication/howto-mfa-getstarted).
+**Seçenek 2**: [Koşullu erişim ilkesiyle Multi-Factor Authentication etkinleştirin](/azure/active-directory/authentication/howto-mfa-getstarted).
 **Avantaj**: Bu seçenek, [koşullu erişim](/azure/active-directory/active-directory-conditional-access-azure-portal)kullanarak belirli koşullarda iki adımlı doğrulama isteyip isteyönetmenizi sağlar. Belirli koşullar, farklı konumlardan, güvenilmeyen cihazlardan veya riskli olarak düşündüğünüz uygulamalardan Kullanıcı oturumu açabilir. İki adımlı doğrulamanın gerekli olduğu belirli koşulları tanımlama, kullanıcılarınız için sabit istem yapmaktan kaçınmanızı sağlar; Bu, bir saldırgan Kullanıcı deneyimi olabilir.
 
-Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en esnek yoludur. Koşullu erişim ilkesinin etkinleştirilmesi yalnızca Bulutta Azure Multi-Factor Authentication için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntemle [bulut tabanlı Azure Multi-Factor Authentication 'ı dağıtma](/azure/active-directory/authentication/howto-mfa-getstarted)bölümünde daha fazla bilgi edinebilirsiniz.
+Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en esnek yoludur. Koşullu erişim ilkesinin etkinleştirilmesi yalnızca Bulutta Azure Multi-Factor Authentication için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntemle [bulut tabanlı Azure Multi-Factor Authentication dağıtma](/azure/active-directory/authentication/howto-mfa-getstarted)bölümünde daha fazla bilgi edinebilirsiniz.
 
-**Seçenek 3**: [Azure AD kimlik koruması](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)Kullanıcı ve oturum açma riskini değerlendirerek, koşullu erişim ilkeleriyle Multi-Factor Authentication 'ı etkinleştirin.   
+**Seçenek 3**: [Azure AD kimlik koruması](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)Kullanıcı ve oturum açma riskini değerlendirerek koşullu erişim ilkeleriyle Multi-Factor Authentication etkinleştirin.   
 **Avantaj**: Bu seçenek şunları yapmanızı sağlar:
 
 - Kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını tespit edin.
@@ -163,7 +163,7 @@ Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en 
 Bu yöntem, tüm bulut uygulamaları için Kullanıcı ve oturum açma riskini temel alarak iki adımlı doğrulamanın gerekip gerekmediğini belirleme Azure AD Kimlik Koruması risk değerlendirmesini kullanır. Bu yöntem Azure Active Directory P2 lisanslama gerektirir. Bu yöntem hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması](/azure/active-directory/identity-protection/overview)bulabilirsiniz.
 
 > [!Note]
-> 1\. seçenek, Kullanıcı durumunu değiştirerek çok faktörlü kimlik doğrulamasını etkinleştirme, koşullu erişim ilkelerini geçersiz kılar. Seçenekler 2 ve 3 koşullu erişim ilkeleri kullandığından, 1 seçeneğini bunlarla birlikte kullanamazsınız.
+> Seçenek 1, Kullanıcı durumunu değiştirerek Multi-Factor Authentication etkinleştirme, koşullu erişim ilkelerini geçersiz kılar. Seçenekler 2 ve 3 koşullu erişim ilkeleri kullandığından, 1 seçeneğini bunlarla birlikte kullanamazsınız.
 
 İki adımlı doğrulama gibi ek bir kimlik koruması katmanı eklememe kurumları, kimlik bilgisi hırsızlığı saldırısında daha açıktır. Kimlik bilgisi hırsızlığı saldırısı, verilerin güvenliğinin aşılmasına yol açabilir.
 
@@ -174,7 +174,7 @@ Azure 'daki belirli işlevlerden sorumlu grupları veya ayrı rolleri atamak, g�
 
 Güvenlik takımınız, riski değerlendirmek ve düzeltmek için Azure kaynaklarınızın görünürlüğünü gerektirir. Güvenlik ekibinin işlem sorumlulukları varsa, işlerini yapmak için ek izinlere sahip olmaları gerekir.
 
-Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak için [RBAC](/azure/role-based-access-control/overview) kullanabilirsiniz. Rol atamasının kapsamı bir abonelik, kaynak grubu veya tek bir kaynak olabilir.
+Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak için [RBAC](/azure/role-based-access-control/overview) kullanabilirsiniz. Rol atamasının kapsamı abonelik, kaynak grubu veya tek bir kaynak olabilir.
 
 **En iyi uygulama**: Ekiplerinizi takımınızın içinde ayırabilirsiniz ve kullanıcılara yalnızca işlerini gerçekleştirmesi için ihtiyaç duydukları erişim miktarını verin. Azure aboneliğinizde veya kaynaklarında herkes için sınırsız izin vermek yerine, belirli bir kapsamdaki yalnızca belirli eylemlere izin verin.
 **Ayrıntı**: Kullanıcılara ayrıcalık atamak için Azure 'daki [YERLEŞIK RBAC rollerini](/azure/role-based-access-control/built-in-roles) kullanın.
@@ -239,10 +239,10 @@ Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. `*
 **En iyi uygulama**: Acil durumda bir "cam" süreci de vardır.
 **Ayrıntı**: [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)bölümündeki adımları izleyin.
 
-**En iyi uygulama**: Tüm kritik yönetici hesaplarının parola-daha az (tercih edilen) olmasını veya çok faktörlü kimlik doğrulaması gerektirmesini gerektir.
+**En iyi uygulama**: Tüm kritik yönetici hesaplarının parola-daha az (tercih edilen) olmasını veya Multi-Factor Authentication gerektirmesini gerektir.
 **Ayrıntı**: Herhangi bir Azure AD hesabında parola kullanmadan oturum açmak için [Microsoft Authenticator uygulamasını](/azure/active-directory/authentication/howto-authentication-phone-sign-in) kullanın. [İş Için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gibi Microsoft Authenticator, bir cihaza bağlı bir kullanıcı kimlik bilgisini etkinleştirmek ve biyometrik kimlik doğrulaması veya PIN 'i kullanması için anahtar tabanlı kimlik doğrulaması kullanır.
 
-Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bireysel kullanıcı için oturum açma sırasında Azure Multi-Factor Authentication gerektir: Genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-userstates) 'ı etkinleştirin ve yönetici hesabı kullanıcılarının kayıtlı olduğundan emin olun.
+Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bireysel kullanıcı için oturum açma sırasında Azure Multi-Factor Authentication gerektir: Genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız için Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-userstates) etkinleştirin ve yönetici hesabı kullanıcılarının kayıtlı olduğundan emin olun.
 
 **En iyi uygulama**: Kritik yönetici hesaplarında, üretim görevlerine izin verilmeyen bir yönetim iş istasyonuna (örneğin, göz atma ve e-posta) sahip olmanız gerekir. Bu, yönetici hesaplarınızı göz atma ve e-posta kullanan saldırı vektörlerinden korur ve önemli bir olay riskini önemli ölçüde azaltır.
 **Ayrıntı**: Yönetici iş istasyonu kullanın. Bir iş istasyonu güvenliği düzeyi seçin:
@@ -265,7 +265,7 @@ Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bire
 
 [Parola karması eşitlemesini aç](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
 
-[Tüm ayrıcalıklı rollerdeki kullanıcılar ve kullanıma sunulan kullanıcılar için çok faktörlü kimlik doğrulaması gerektir](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Tüm ayrıcalıklı rollerdeki kullanıcıların yanı sıra sunulan kullanıcılar için Multi-Factor Authentication gerektir](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [Office 365 güvenli puanınızı edinin (Office 365 kullanıyorsanız)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 

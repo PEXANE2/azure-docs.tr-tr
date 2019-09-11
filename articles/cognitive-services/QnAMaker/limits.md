@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c7b0dc39d2da403383f245b9ff3227734c58cbbe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423462"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193492"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -44,19 +44,31 @@ Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlant
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 
+### <a name="by-azure-search-pricing-tier"></a>Azure Search fiyatlandırma katmanına göre
+
 Bilgi Bankası başına en fazla meta veri alanı sayısı **[Azure Search katmanı limitlerinizi](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** temel alır.
 
 |**Azure arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Soru-cevap Oluşturucu hizmeti (genelinde tüm KB'leri) başına en fazla meta veri alanları|1000|100 *|1000|1000|1000|1000|
 
+### <a name="by-name-and-value"></a>Ada ve değere göre
+
+Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağıdaki tabloda listelenmiştir.
+
+|Öğe|İzin verilen karakterler|Regex model eşleşmesi|En fazla karakter|
+|--|--|--|--|
+|Name|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_`adında|`^[a-zA-Z0-9_]+$`|100|
+|Value|Hariç her şeye izin verir<br>`:`üste<br>`|`(dikey boru)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik sınırları
 Bilgi Bankası'nda içeriği genel sınırlamaları:
 * Yanıt metninin uzunluğu: 25,000
 * Soru metninin uzunluğu: 1000
 * Meta veri anahtarı/değer metninin uzunluğu: 100
-* Meta veri adı için desteklenen karakterler: Harfler, rakamlar ve _  
-* Meta veri değeri için desteklenen karakterler: Şunlar hariç: ve | 
+* Meta veri adı için desteklenen karakterler: Harfler, rakamlar ve`_`  
+* Meta veri değeri için desteklenen karakterler: Ve dışında `:` tümü`|` 
 * Dosya adı uzunluğu: 200
 * Desteklenen dosya biçimleri: ".tsv", ".pdf", ".txt", ".docx", ".xlsx".
 * Alternatif soruların maksimum sayısı: 300
@@ -78,8 +90,4 @@ Bunlar, her güncelleştirme eylemi sınırlarını temsil eder; diğer bir deyi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet katmanlarını ne zaman ve nasıl değiştireceğinizi öğrenin:
-
-* [Soru-cevap oluşturma](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Bilgi tabanınızda daha fazla kaynak dosyası veya daha büyük belge kullanmanız gerektiğinde, geçerli katmanınızın ötesinde Soru-Cevap Oluşturma Hizmeti fiyatlandırma katmanınızı yükseltin.
-* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Bilgi tabanınızın istemci uygulamanızdan daha fazla istek sunması gerektiğinde, App Service fiyatlandırma katmanınızı yükseltin.
-* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Birçok bilgi tabanınız olduğunu planlarken Azure Search hizmeti fiyatlandırma katmanınızı yükseltin.
+[Hizmet fiyatlandırma katmanlarının](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)ne zaman ve nasıl değiştirileceğini öğrenin.

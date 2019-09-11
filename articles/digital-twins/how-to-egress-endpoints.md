@@ -49,14 +49,14 @@ Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesnel
 
 | Öznitelik | Type | Açıklama |
 | --- | --- | --- |
-| id | dize | Etkinliğin benzersiz tanımlayıcısı. |
-| subject | dize | Olay konusunun yayımcı tanımlı yolu. |
+| id | string | Etkinliğin benzersiz tanımlayıcısı. |
+| subject | string | Olay konusunun yayımcı tanımlı yolu. |
 | data | object | Kaynak sağlayıcısına özel olay verileri. |
-| eventType | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | dize | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| Veri sürümü | dize | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
-| topic | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| Veri sürümü | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| topic | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 
 Event Grid olay şeması hakkında daha fazla bilgi için:
 

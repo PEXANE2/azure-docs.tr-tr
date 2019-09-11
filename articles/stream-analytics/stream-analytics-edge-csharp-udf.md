@@ -1,5 +1,5 @@
 ---
-title: Visual Studio'da Azure Stream Analytics Edge işi için C# ile kullanıcı tanımlı işlev yazma (Önizleme)
+title: Visual C# Studio 'Da Azure Stream Analytics Edge işleri için Kullanıcı tanımlı işlevleri yazma (Önizleme)
 description: Visual Studio'da Stream Analytics Edge işleri için C# ile kullanıcı tanımlı işlevler yazmayı öğrenin.
 services: stream-analytics
 author: mamccrea
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204232"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173302"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Öğretici: Yazma bir C# Azure Stream Analytics Edge işi (Önizleme) için kullanıcı tanımlı işlevi
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Öğretici: Azure Stream Analytics Edge C# işi için Kullanıcı tanımlı bir işlev yazın (Önizleme)
 
-Visual Studio'da oluşturulan C# kullanıcı tanımlı işlevler (UDF), Azure Stream Analytics sorgu dilini kendi işlevlerinizi kullanarak genişletmenizi sağlar. C# ile var olan kodu (DLL'ler dahil) yeniden kullanabilir, matematiksel veya karmaşık mantıklardan faydalanabilirsiniz. UDF uygulamak için üç yolu vardır: Proje Stream analytics'te CodeBehind dosyaları, yerel bir UDF'ler C# proje ya da bir depolama hesabından var olan bir paketten UDF. Bu öğreticide CodeBehind yöntemi kullanılarak basit bir C# işlevi uygulanmaktadır. Stream Analytics Edge işleri için UDF özelliği şu anda önizleme sürümündedir ve üretim iş yüklerinde kullanılmamalıdır.
+Visual Studio'da oluşturulan C# kullanıcı tanımlı işlevler (UDF), Azure Stream Analytics sorgu dilini kendi işlevlerinizi kullanarak genişletmenizi sağlar. C# ile var olan kodu (DLL'ler dahil) yeniden kullanabilir, matematiksel veya karmaşık mantıklardan faydalanabilirsiniz. UDF uygulamak için üç yolu vardır: Bir Stream Analytics projesindeki CodeBehind dosyaları, yerel C# bir projeden UDF 'ler veya bir depolama hesabından var olan bir paketten UDF 'ler. Bu öğreticide CodeBehind yöntemi kullanılarak basit bir C# işlevi uygulanmaktadır. Stream Analytics Edge işleri için UDF özelliği şu anda önizleme sürümündedir ve üretim iş yüklerinde kullanılmamalıdır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 

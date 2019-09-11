@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 599b0c8f45f91f9ecff210264a813e302f18059e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488919"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213623"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Öğretici: Uyarlamalı öngörüleri Azure Active Directory tümleştirin
 
@@ -81,7 +81,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -148,7 +148,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 

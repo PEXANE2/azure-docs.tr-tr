@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945834"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382333"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding sık sorulan sorular (SSS)
 
@@ -68,7 +68,7 @@ Cortana önceden oluşturulmuş uygulamalar, 2017'de kullanım dışı bırakıl
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Bir LUIS uygulaması sahipliğini nasıl aktarabilir?
 Bir LUIS uygulaması için farklı bir Azure aboneliği aktarmayı LUIS uygulaması dışarı aktarma ve yeni bir hesap kullanarak içe aktarın. Çağıran istemci uygulamasındaki LUIS uygulama kodunu güncelleştirin. Yeni uygulamayı biraz daha farklı LUIS özgün uygulamadan puanları döndürebilir.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Önceden oluşturulmuş bir varlık özel varlığım yerine örnek bir şekilde etiketlidir. Bunu nasıl düzeltirim? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Önceden oluşturulmuş bir varlık özel varlığım yerine örnek bir şekilde etiketlidir. Bu Nasıl yaparım? düzeltilsin mi? 
 
 Bkz. [önceden oluşturulmuş varlıklarda sorun giderme](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
@@ -78,7 +78,7 @@ Bkz. [önceden oluşturulmuş varlıklarda sorun giderme](luis-concept-entity-ty
 
 <a name="luis-collaborating"></a>
 
-## <a name="collaborating"></a>İşbirliği
+## <a name="collaborating-and-contributing"></a>İşbirliği ve katkıda bulunma
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Nasıl yaparım?, Azure Active Directory (Azure AD) veya rol tabanlı erişim denetimi (RBAC) ile BASıS erişimi sağlar mi?
 
@@ -87,6 +87,31 @@ Ortak çalışanlarla erişim verme hakkında bilgi edinmek için bkz. [Azure Ac
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>Uç Nokta
+
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Bir HTTP 403 hata durum kodu aldım. Bunu nasıl düzeltirim?
+
+Fiyatlandırma katmanınız için saniye başına işlemleri veya aylık işlem sayısını aşarsanız 403 ve 429 hata durum kodları alırsınız. Fiyatlandırma katmanınızı artırın veya Language Understanding [kapsayıcıları](luis-container-howto.md)kullanın.
+
+Tüm bu ücretsiz 1000 uç nokta sorgularını kullandığınızda veya fiyatlandırma katmanınızın aylık işlem kotasını aşarsanız, bir HTTP 403 hata durum kodu alırsınız. 
+
+Bu hatayı onarmak için [fiyatlandırma katmanınızı](luis-how-to-azure-subscription.md#change-pricing-tier) daha yüksek bir katmana değiştirmeniz veya [Yeni bir kaynak oluşturup](get-started-portal-deploy-app.md#create-the-endpoint-resource) [uygulamanıza atamanız](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)gerekir.
+
+Bu hata için çözümler şunlardır:
+
+* [Azure Portal](https://portal.azure.com), Language Understanding kaynağınızın **kaynak yönetimi-> fiyatlandırma katmanında**, fiyatlandırma katmanınızı daha yüksek bir TPS katmanına değiştirin. Kaynağınız Language Understanding uygulamanıza zaten atanmışsa Language Understanding portalında herhangi bir şey yapmanız gerekmez.
+*  Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
+
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Bir HTTP 429 hata durum kodu aldım. Bunu nasıl düzeltirim?
+
+Fiyatlandırma katmanınız için saniye başına işlemleri veya aylık işlem sayısını aşarsanız 403 ve 429 hata durum kodları alırsınız. Fiyatlandırma katmanınızı artırın veya Language Understanding [kapsayıcıları](luis-container-howto.md)kullanın.
+
+Bu durum kodu, işlemleriniz fiyatlandırma katmanınızı aştığında döndürülür.  
+
+Çözümler şunlardır:
+
+* En yüksek katmanda değilseniz [fiyatlandırma katmanınızı artırabilirsiniz](luis-how-to-azure-subscription.md#change-pricing-tier).
+* Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
+* Bu durum kodunu aldığınızda, istemci uygulama isteklerinizi sizin uyguladığınız bir [yeniden deneme ilkesiyle](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) geçit olarak kullanabilirsiniz. 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Uç nokta Sorgum beklenmeyen bir sonuç döndürdü. Ne yapmalıyım?
 
@@ -102,7 +127,7 @@ Gözden geçirme [en iyi uygulamalar](luis-concept-best-practices.md) diğer ipu
 LUIS [tokenizes](luis-glossary.md#token) utterance temel alarak [kültür](luis-language-support.md#tokenization). Parçalanmış değeri ve özgün değeri kullanılabilir [veri ayıklama](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Nasıl oluştururum ve uç noktası anahtarı bir LUIS atama?
-[Uç nokta oluşturma](luis-how-to-azure-subscription.md) için azure'da, [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyi. [Anahtar atama](luis-how-to-azure-subscription.md) üzerinde **[anahtarları ve uç noktaları](luis-how-to-azure-subscription.md)** sayfası. Bu eyleme karşılık gelen hiçbir API yoktur. HTTP isteği için uç nokta için değiştirmeniz gerekir sonra [yeni uç nokta anahtarını kullanmak](luis-concept-keys.md#use-endpoint-key-in-query).
+[Uç nokta oluşturma](luis-how-to-azure-subscription.md) için azure'da, [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyi. [Anahtarı](luis-how-to-azure-subscription.md) **[Azure kaynakları](luis-how-to-azure-subscription.md)** sayfasına atayın. Bu eyleme karşılık gelen hiçbir API yoktur. HTTP isteği için uç nokta için değiştirmeniz gerekir sonra [yeni uç nokta anahtarını kullanmak](luis-concept-keys.md).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS puanları nasıl yorumlanacağı?
 Sisteminizi, en yüksek Puanlama amaç değeri ne olursa olsun kullanmanız gerekir. Örneğin, 0,5 (daha az % 50'den) altında bir puan mutlaka LUIS düşük güven olduğunu gelmez. Daha fazla eğitim verileri yardımcı sağlama artırmak [puanı](luis-concept-prediction-score.md) olasılıkla hedefinin.
@@ -123,10 +148,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>LUIS uygulamamı dün çalıştığı ancak bugün 403 hataları alıyorum. Ben uygulama değişmedi. Bunu nasıl düzeltirim?
-Bir LUSıS uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md#use-endpoint-key-in-query)için ISTEMCI uygulamasının http isteğini uç noktaya değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteği bölgesini de değiştirin.
+Bir LUSıS uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md)için ISTEMCI uygulamasının http isteğini uç noktaya değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteği bölgesini de değiştirin.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUIS Noktam güvenliğini nasıl sağlayabilirim?
-Bkz: [uç nokta güvenliği](luis-concept-security.md#securing-the-endpoint).
+Bkz: [uç nokta güvenliği](luis-concept-keys.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>LUIS sınırlar içinde çalışma
 
@@ -185,17 +210,15 @@ LUIS genel kullanıma (GA) şeklindeydi uygulamanız varsa, aboneliğinizdeki LU
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Nasıl yaparım? hangi anahtara ihtiyacım olduğunu ve bununla ne yapmalıyım? 
 
-[Yazma anahtarı](luis-how-to-account-settings.md) ve [uç nokta tahmini anahtarı](luis-how-to-azure-subscription.md)arasındaki farklar hakkında bilgi edınmek için bkz. [lusıs 'de yazma ve sorgu tahmini uç noktası anahtarları](luis-concept-keys.md) . 
+Yazma anahtarı ve tahmin çalışma zamanı anahtarı arasındaki farklar hakkında bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmini uç noktası anahtarları](luis-concept-keys.md) . 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Kotanın olmadığı hakkında bir hata aldım. Bunu nasıl düzeltirim? 
 
-Daha fazla bilgi edinmek için bkz. [http durum kodu 403 ve 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) .
+Daha fazla bilgi edinmek için bkz. HTTP durum kodu [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) ve [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) .
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Daha fazla uç nokta sorgusu işlemem gerekiyor. Nasıl yaparım? mi? 
 
-Daha fazla bilgi edinmek için bkz. [http durum kodu 403 ve 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) .
-
-
+Daha fazla bilgi edinmek için bkz. HTTP durum kodu [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) ve [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) .
 
 ## <a name="app-management"></a>Uygulama yönetimi
 
@@ -242,7 +265,7 @@ Yazma başlangıç anahtarınızı yalnızca 1000 kullanılabilir uç nokta, bir
 İlk sorun, sorunun luya BASIS ara yazılımı dışında gerçekleşmesidir. 
 
 #### <a name="resolve-issue-in-luis"></a>LUSıS 'de sorunu çözme
-[Luo uç noktasındaki](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)Luo 'ya aynı söylenişi geçirin. Bir hata alırsanız, hata artık döndürülünceye kadar lu, sorununu çözün. Sık karşılaşılan hatalar şunlardır:
+[Luo uç noktasındaki](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)Luo 'ya aynı söylenişi geçirin. Bir hata alırsanız, hata artık döndürülünceye kadar lu, sorununu çözün. Sık karşılaşılan hatalar şunlardır:
 
 * `Out of call volume quota. Quota will be replenished in <time>.`-Bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini veya [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir. 
 

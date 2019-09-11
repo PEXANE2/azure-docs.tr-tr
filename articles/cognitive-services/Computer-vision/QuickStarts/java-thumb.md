@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Küçük resim - REST, Java oluştur'
+title: 'Hızlı Başlangıç: Küçük resim oluşturma-REST, Java'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Java ile Görüntü İşleme API'sini kullanarak bir görüntüden küçük resim oluşturacaksınız.
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8d068efd00dffb5edd168fadf0003bddd2aa9880
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 941d8cf8e450d11158ae3cd321d888abd399321f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604385"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137901"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve Java kullanarak küçük resim oluşturma
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve Java kullanarak küçük resim oluşturma
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API’sini kullanarak bir görüntüden küçük resim oluşturacaksınız. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Görüntü işleme, akıllı bir şekilde ilgi belirlemek ve söz konusu bölgeyi temel alan kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
+Bu hızlı başlangıçta, Görüntü İşleme REST API’sini kullanarak bir görüntüden küçük resim oluşturacaksınız. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Görüntü İşleme, ilgilendiğiniz alanı saptamak ve bu bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Java&trade; Platform, Standard Edition Geliştirme Seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8) yüklü olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -58,12 +58,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    import org.json.JSONObject;
    ```
 
-1. `Main` ortak sınıfını aşağıdaki kodla değiştirin, ardından kodda gereken yerlerde aşağıdaki değişiklikleri yapın:
-   1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-   1. Gerekirse `uriBase` değerini [Küçük Resim Al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)  yönteminin abonelik anahtarlarınızı aldığınız Azure bölgesinden uç nokta URL'si ile değiştirin.
-   1. `imageToAnalyze` değerini isterseniz küçük resmini oluşturmak istediğiniz başka bir görüntünün URL'si ile de değiştirebilirsiniz.
+1. `Main` Ortak sınıfı aşağıdaki kodla değiştirin.
+1. `imageToAnalyze` değerini isterseniz küçük resmini oluşturmak istediğiniz başka bir görüntünün URL’si ile de değiştirebilirsiniz.
 1. Kaydedin, ardından Java projesini derleyin.
-1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.
+1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin: `java Main`.
 
 ```java
 // This sample uses the following libraries:
@@ -77,19 +75,13 @@ public class Main {
     // *** Update or verify the following values. ***
     // **********************************************
 
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    // After setting, close and then re-open your command shell or project for the changes to take effect.
+    String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westcentralus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail";
+    private static final String uriBase = endpoint + 
+            "vision/v2.0/generateThumbnail";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg";

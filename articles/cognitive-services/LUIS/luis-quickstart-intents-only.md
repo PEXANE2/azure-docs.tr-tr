@@ -1,5 +1,5 @@
 ---
-title: Amaçları tahmin etme-LUO
+title: 'Öğretici: Amaçları tahmin etme-LUO'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, kullanıcının amaç 'ı tahmin eden özel bir uygulama oluşturun. E-posta adresleri veya tarihler gibi konuşma metinlerinden çeşitli veri öğeleri ayıklamadığından bu uygulama en basit LUIS uygulaması türüdür.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 249ac689f855d175fa5df7cc5fed9438c0873289
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560387"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375814"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için LUSıS uygulaması oluşturun
 
@@ -49,7 +49,7 @@ Bu uygulamanın birkaç amacı vardır.
 |--|--|
 |ApplyForJob|Kullanıcının bir iş için uygulama uygulayıp uygulamamadığını belirleme.|
 |Getjobınformation|Kullanıcının genel veya belirli bir işteki işler hakkında bilgi arayıp aramadığını belirleme.|
-|None|Kullanıcının bir uygulamanın yanıt vermesi gerekip gerekmediğini isteyip istemediğini belirleme. Bu amaç, uygulama oluşturmanın bir parçası olarak sağlanmışsa ve silinemezler. |
+|Yok.|Kullanıcının bir uygulamanın yanıt vermesi gerekip gerekmediğini isteyip istemediğini belirleme. Bu amaç, uygulama oluşturmanın bir parçası olarak sağlanmışsa ve silinemezler. |
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: 12c1b5f9fa9620622b31f22c701d58ae237bcbf2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d652c511a3f54fd0b756a95fbe183b4678416a10
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035141"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873209"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLı kullanarak Azure Container Registry kapsayıcı görüntülerini silme
 
@@ -227,7 +227,6 @@ then
     az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags[0]==null].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
-    else
     echo "No data deleted."
     echo "Set ENABLE_DELETE=true to enable image deletion of these images in $REPOSITORY:"
     az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY --query "[?tags[0]==null]" -o tsv
@@ -260,7 +259,7 @@ if ($enableDelete) {
 }
 ```
 
-## <a name="automatically-purge-tags-and-manifests-preview"></a>Etiketleri ve bildirimleri otomatik olarak temizle (Önizleme)
+## <a name="automatically-purge-tags-and-manifests-preview"></a>Etiketleri ve bildirimleri otomatik olarak temizleme (önizleme)
 
 Azure CLı komutlarını komut dosyası oluşturmaya alternatif olarak, belirli bir süreden daha eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek için isteğe bağlı veya zamanlanmış bir ACR görevi çalıştırın. Daha fazla bilgi için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
 

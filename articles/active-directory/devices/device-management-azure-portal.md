@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942964"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860896"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal kullanarak cihaz kimliklerini yönetme
 
@@ -67,12 +67,12 @@ Cihaz ayarları sayfası şunları yapılandırmanıza olanak sağlar:
 - **Cihazlara katılması Için Multi-Factor auth gerektir** -kullanıcıların CIHAZLARıNı Azure AD 'ye katmak için ek bir kimlik doğrulama faktörü sağlaması gerekip gerekmediğini seçebilirsiniz. Varsayılan değer **Hayır**' dır. Bir cihazı kaydederken çok faktörlü kimlik doğrulamasının gerekli olmasını öneririz. Bu hizmet için Multi-Factor Authentication 'ı etkinleştirmeden önce, cihazlarını kaydeden kullanıcılar için Multi-Factor Authentication ' ın yapılandırıldığından emin olmanız gerekir. Farklı Azure Multi-Factor Authentication hizmetleri hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication](../authentication/concept-mfa-whichversion.md)kullanmaya başlama. 
 
 > [!NOTE]
-> **Cihaza katılım Için Multi-Factor auth iste** ayarı, karma Azure AD 'ye katılmış cihazlara uygulanmaz.
+> **Cihazların katılmasını sağlamak Için Multi-Factor auth iste** ayarı, Azure AD 'ye katılmış veya Azure AD 'ye kayıtlı cihazlar için geçerlidir. Bu ayar, karma Azure AD 'ye katılmış cihazlar için geçerlidir.
 
-- **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Cihaz kotası, Azure AD 'ye katılmış veya Azure AD 'nin bugün kayıtlı olduğu tüm cihazlar için sayılır. Varsayılan değer **20**' dir.
+- **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla Azure AD 'ye katılmış veya Azure AD kayıtlı cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Varsayılan değer **20**' dir.
 
 > [!NOTE]
-> **En fazla cihaz sayısı** ayarı, karma Azure AD 'ye katılmış cihazlara uygulanmaz.
+> Azure AD 'ye katılmış ya da Azure AD 'ye kayıtlı cihazlar için **en fazla cihaz sayısı** ayarı geçerlidir. Bu ayar, karma Azure AD 'ye katılmış cihazlar için geçerlidir.
 
 - **Kullanıcılar ayarları ve uygulama verilerini cihazlarda eşitleyebilir** -varsayılan olarak, bu ayar **none**olarak ayarlanır. Belirli kullanıcılar veya gruplar veya tümü seçildiğinde kullanıcının ayarlarının ve uygulama verilerinin Windows 10 cihazlarında eşitlenmesi izin verir. Windows 10 ' da eşitlemenin nasıl çalıştığı hakkında daha fazla bilgi edinin.
 Bu seçenek, Azure AD Premium veya Enterprise Mobility Suite (EMS) gibi ürünlerle kullanılabilen bir Premium yetenektir.
@@ -99,7 +99,7 @@ Her iki seçenekten de şunları yapabilirsiniz:
 
 >[!TIP]
 >
->* KAYıTLı sütun altında "bekliyor" durumuna sahip "hibrit Azure AD 'ye katılmış" bir cihaz görürseniz, cihazın Azure AD Connect 'ten eşitlendiğini ve istemciden kayıt tamamlamayı beklediğini gösterir. [Hibrit Azure AD JOIN](hybrid-azuread-join-plan.md)uygulamanızın nasıl planlanacağı hakkında daha fazla bilgi edinin. Daha fazla bilgi için, [cihazlar sık sorulan sorular](faq.md)makalesinde bulunabilir.
+>* KAYıTLı sütun altında "bekliyor" durumuna sahip "hibrit Azure AD 'ye katılmış" bir cihaz görürseniz, cihazın Azure AD Connect 'ten eşitlendiğini ve istemciden kayıt tamamlamayı beklediğini gösterir. [Hibrit Azure AD JOIN uygulamanızın nasıl planlanacağı](hybrid-azuread-join-plan.md)hakkında daha fazla bilgi edinin. Daha fazla bilgi için, [cihazlar sık sorulan sorular](faq.md)makalesinde bulunabilir.
 >
 >   ![Bekleyen cihazlar](./media/device-management-azure-portal/75.png)
 >
@@ -215,7 +215,7 @@ Raporlanan verileri istediğiniz düzeye gelecek şekilde daraltmak için, aşa�
 - Etkinlik
 - Tarih aralığı
 - Hedef
-- Başlatan (Aktör)
+- Başlatan (aktör)
 
 Filtrelerin yanı sıra belirli girdileri de arayabilirsiniz.
 

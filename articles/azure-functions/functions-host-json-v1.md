@@ -1,20 +1,18 @@
 ---
 title: Azure Işlevleri 1. x için Host. JSON başvurusu
 description: V1 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: c169d9cc774a2c6264ba1520240005f13ba9d2da
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096448"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735149"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için Host. JSON başvurusu
 
@@ -46,6 +44,13 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
         "sampling": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 5
+        }
+    },
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix"
         }
     },
     "eventHub": {
@@ -86,6 +91,9 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
       "maxDequeueCount": 5,
       "newBatchThreshold": 8
     },
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    },
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
@@ -115,6 +123,28 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 ## <a name="applicationinsights"></a>applicationInsights
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+
+## <a name="documentdb"></a>DocumentDB
+
+[Azure Cosmos DB tetikleyicisi ve bağlamaları](functions-bindings-cosmosdb.md)için yapılandırma ayarları.
+
+```json
+{
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix1"
+        }
+    }
+}
+```
+
+|Özellik  |Varsayılan | Açıklama |
+|---------|---------|---------|
+|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. `Direct` Seçenekler ve`Gateway`|
+|Protocol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
+|leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -238,6 +268,21 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 |batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı öğesine `newBatchThreshold`doğru aldığında, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı artı `batchSize` `newBatchThreshold`olur. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, 1 olarak ayarlayabilirsiniz `batchSize` . Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>Maksimum `batchSize` değer 32 ' dir. | 
 |maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.| 
 |newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.| 
+
+## <a name="sendgrid"></a>SendGrid
+
+[Sendgrind çıkış bağlamasının](functions-bindings-sendgrid.md) yapılandırma ayarı
+
+```json
+{
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    }
+```
+
+|Özellik  |Varsayılan | Açıklama |
+|---------|---------|---------| 
+|from|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 ## <a name="servicebus"></a>serviceBus
 

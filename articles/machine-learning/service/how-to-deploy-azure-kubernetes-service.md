@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 26f965169f1fd01676efd3356534a8ac9f2121f7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036080"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858737"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 
 Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlamak için iki yol vardır:
 
-* Azure Machine Learning Service SDK, Machine Learning CLı veya Azure portal kullanarak AKS kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
+* Azure Machine Learning Service SDK, Machine Learning CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
 * Azure Machine Learning hizmeti çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning Service SDK, Machine Learning CLı veya Azure portal kullanılarak eklenebilir.
 
 > [!IMPORTANT]
@@ -42,7 +42,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
 - Bir Machine Learning modeli, çalışma alanınıza kaydedildi. Kayıtlı bir modeliniz yoksa, bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
-- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)veya [Azure Machine Learning Visual Studio Code uzantısı](how-to-vscode-tools.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](how-to-vscode-tools.md).
 
 - Bu makaledeki __Python__ kod parçacıkları aşağıdaki değişkenlerin ayarlandığı varsayılır:
 

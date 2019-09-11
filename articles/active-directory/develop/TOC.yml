@@ -205,6 +205,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
+                    - name: Xamarin iOS ve Android Uygulamalarıyla aracıları kullanma
+                      href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Evrensel Windows Platformu
                       href: msal-net-uwp-considerations.md
                 - name: Uygulama için belirteç alma
@@ -225,6 +227,8 @@
                   href: msal-net-migration.md
                 - name: MSAL.js'ye geçirme
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
+                  href: msal-net-migration-ios-broker.md
             - name: Desteklenen kimlik doğrulama akışları
               href: msal-authentication-flows.md
             - name: Belirteçleri alma ve önbelleğe alma

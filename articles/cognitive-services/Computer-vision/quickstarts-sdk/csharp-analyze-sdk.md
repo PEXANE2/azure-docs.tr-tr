@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Görüntü - SDK çözümlemek,C#'
+title: 'Hızlı Başlangıç: Bir görüntüyü çözümleyin-SDK,C#'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta Görüntü İşleme Windows C# istemci kitaplığını kullanarak bir görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 48c96ac55ca2192506f9190a9dd9be9c1ee0058f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 59641973a953d1db501f7b660b04df900bc55cb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603471"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141028"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Hızlı Başlangıç: Bilgisayar işleme SDK'sını kullanarak bir resmi çözümleme veC#
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Hızlı Başlangıç: Görüntü İşleme SDK 'sını kullanarak bir görüntüyü çözümleyin veC#
 
-Bu hızlı başlangıçta, hem yerel hem de uzak bir görüntü için görüntü işleme istemci kitaplığı kullanarak görsel özellikleri ayıklamak için analiz eder C#. İsterseniz, bu kılavuzdaki kod tam bir örnek uygulamadan olarak indirebilirsiniz [Bilişsel hizmetler Csharp görüntü](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) github deposu.
+Bu hızlı başlangıçta, için C#görüntü işleme istemci kitaplığını kullanarak görsel özellikleri ayıklamak üzere hem yerel hem de uzak görüntüyü analiz edersiniz. İsterseniz, bu kılavuzdaki kodu GitHub 'da bilişsel [Hizmetler CSharp Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) depositesinden tamamen örnek bir uygulama olarak indirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir görüntü işleme abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+* Görüntü İşleme abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 * [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) istemci kitaplığı NuGet paketi. Paketi indirmek gerekli değildir. Yükleme yönergeleri aşağıda verilmiştir.
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, hem yerel hem de uzak bir görüntü için görüntü
     1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
     1. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Microsoft.Azure.CognitiveServices.Vision.ComputerVision" yazın.
     1. Görüntülendiğinde **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** öğesini seçin ve projenizin adının yanındaki onay kutusuna tıklayıp **Yükle**’ye tıklayın.
-1. Öğesinin içeriğini değiştirin *Program.cs* aşağıdaki kod ile. `AnalyzeImageAsync` Ve `AnalyzeImageInStreamAsync` yöntemleri kaydırma [görüntü REST API'analiz](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) uzak ve yerel görüntüler için sırasıyla.
+1. *Program.cs* içeriğini aşağıdaki kodla değiştirin. Ve yöntemleri, sırasıyla, uzak ve yerel görüntüler için [Çözümleme görüntüsünü REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kaydırır. `AnalyzeImageInStreamAsync` `AnalyzeImageAsync`
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -151,14 +151,14 @@ Bu hızlı başlangıçta, hem yerel hem de uzak bir görüntü için görüntü
 1. `<Subscription Key>` değerini geçerli abonelik anahtarınızla değiştirin.
 1. Gerekirse `computerVision.Endpoint` değerini abonelik anahtarlarınız ile ilişkili Azure bölgesi ile değiştirin.
 1. `<LocalImage>` değerini yerel görüntünün yolu ve dosya adıyla değiştirin.
-1. İsteğe bağlı olarak, `remoteImageUrl` için farklı bir resim URL'si.
+1. İsteğe bağlı olarak `remoteImageUrl` , farklı bir görüntü URL 'si olarak ayarlayın.
 1. Programı çalıştırın.
 
 ## <a name="examine-the-response"></a>Yanıtı inceleme
 
-Başarılı bir yanıtta her görüntü için en ilgili resim yazısı görüntülenecektir. Değiştirebileceğiniz `DisplayResults` farklı çıkış yöntemi görüntü veri. Bkz: [AnalyzeLocalAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions.analyzeimageinstreamasync?view=azure-dotnet) daha fazla bilgi için yöntemi.
+Başarılı bir yanıtta her görüntü için en ilgili resim yazısı görüntülenecektir. Farklı görüntü verilerini çıkarmak `DisplayResults` için yöntemini değiştirebilirsiniz. Daha fazla bilgi için bkz. [çözümleyiciler Elocalasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions.analyzeimageinstreamasync?view=azure-dotnet) yöntemi.
 
-Bkz: [API'si hızlı başlangıç: Yerel bir görüntü ile analiz C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) ham JSON örneği için çıktı.
+Bkz [. API hızlı başlangıç: Bir ham JSON çıkışı örneği C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) için ile yerel bir görüntüyü analiz edin.
 
 ```console
 https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

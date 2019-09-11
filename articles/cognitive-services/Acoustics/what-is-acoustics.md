@@ -11,24 +11,27 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932974"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390300"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics nedir?
-Project Acoustics, 3B etkileşimli deneyimler için bir Wave Acoustics altyapısıdır. El ile bölge işaretlemesi gerektirmeden, karmaşık sahnelerde oylama, portallama ve yankı etkileri gibi dalga efektlerini modellemez. Ayrıca oyun altyapısı ve ses ara yazılım tümleştirmesi de içerir. Project Acoustics ' fanlar, statik aydınlatmaya benzerdir: fiziksel bir taban çizgisi sağlamak için bakmalı ve daha ayrıntılı tasarım denetimleriyle sanatsal hedeflerinizi karşılamak için basit bir çalışma zamanı kullanın.
+Project Acoustics, 3B etkileşimli deneyimler için bir Wave Acoustics altyapısıdır. El ile bölge işaretlemesi veya CPU yoğun rayizlemenin gerekli olması gerekmeden, karmaşık sahneler içindeki occlusiyon, düşüşe, portallama ve geri alma etkileri gibi dalga efektlerini modellemez. Ayrıca oyun altyapısı ve ses ara yazılım tümleştirmesi de içerir. Project Acoustics ' fanlar, statik aydınlatmaya benzerdir: fiziksel bir taban çizgisi sağlamak için bakmalı ve sanal dünyadaki Acoustics hedeflerinizi karşılamak için açıklayıcı tasarım denetimleriyle basit bir çalışma zamanı kullanın.
 
 ![War 4 Acoustics voxars gösteren Gears 'ın ekran görüntüsü](media/gears-with-voxels.jpg)
 
 ## <a name="using-wave-physics-for-interactive-acoustics"></a>Etkileşimli Acoustics için Wave fizik kullanma
-Ray tabanlı Acoustics yöntemleri, tek bir kaynaktan dinleyici Ray cast kullanarak tahmini veya birkaç ışına sahip yerel sahne birimini tahmin ederek sürücü yankı düzeyini kontrol edebilir. Ancak, bir Pebble OCC, bir Boulder kadar olduğu için bu teknikler güvenilir olmayabilir. Işın, nesnelerin etrafında ses çıkarımları için bir hesap değil, korkma olarak bilinirdi. Project Acoustics ' simülasyonu, bu etkileri bir dalga tabanlı benzetim kullanarak yakalar. Sonuç daha öngörülebilir ve güvenilir.
+Ray tabanlı Acoustics yöntemleri, tek bir kaynaktan dinleyici Ray cast kullanarak tahmini veya birkaç ışına sahip yerel sahne birimini tahmin ederek sürücü yankı düzeyini kontrol edebilir. Ancak, bir Pebble OCC, bir Boulder kadar olduğu için bu teknikler güvenilir olmayabilir. Işın, nesnelerin etrafında ses çıkarımları için bir hesap değil, korkma olarak bilinirdi. Project Acoustics ' simülasyonu, bu etkileri bir dalga tabanlı benzetim kullanarak yakalar. Acoustics daha öngörülebilir, doğru ve sorunsuz.
 
-Project Acoustics ' önemli yeniliği, geleneksel ses tasarımı kavramlarıyla birlikte iki akustik simülasyonu sağlar. Simülasyon sonuçlarını occlusiyon, portallama ve Reverb için geleneksel ses DSP parametrelerine dönüştürür. Tasarımcı bu çeviri işlemi üzerinde denetimleri kullanır. Project Acoustics 'ın arkasındaki temel teknolojiler hakkında daha fazla bilgi için [Araştırma Projesi sayfasını](https://www.microsoft.com/en-us/research/project/project-triton/)ziyaret edin.
+Project Acoustics ' anahtar yeniliği, geleneksel ses tasarımı kavramlarıyla birlikte gerçek ses dalgası tabanlı akustik simülasyonu sağlar. Simülasyon sonuçlarını occlusiyon, portallama ve Reverb için geleneksel ses DSP parametrelerine dönüştürür. Tasarımcı bu çeviri işlemi üzerinde denetimleri kullanır. Project Acoustics 'ın arkasındaki temel teknolojiler hakkında daha fazla bilgi için [Araştırma Projesi sayfasını](https://www.microsoft.com/en-us/research/project/project-triton/)ziyaret edin.
 
 ![Sahne aracılığıyla yatay 2B bir dalga yayma dilimini gösteren animasyon](media/wave-simulation.gif)
+
+## <a name="video-presentation-from-gdc-2019-30-min"></a>GDC 2019 'den video sunumu (~ 30 dakika)
+Project Acoustics videosu video(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "oynatmak için tıklayın") [ ![]
 
 ## <a name="setup"></a>Kurulum
 [Project Acoustics Unity tümleştirmesi](unity-integration.md) , sürükle ve bırak Ile bir Unity ses altyapısı eklentisi içerir. Her ses nesnesine bir Project Acoustics C# Controls bileşeni ekleyerek Unity ses kaynağı denetimlerini güçlendirin.

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891716"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858535"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -277,7 +277,11 @@ Evet, Application Gateway v2 SKU 'SU Key Vault destekler. Daha fazla bilgi için
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>. Com ve .net siteleri için HTTPS dinleyicileri yapılandırmak Nasıl yaparım?? 
 
-Birden çok etki alanı tabanlı (ana bilgisayar tabanlı) yönlendirme için çoklu site dinleyicileri oluşturabilir, protokol olarak HTTPS kullanan dinleyicileri ayarlayabilir ve dinleyicileri yönlendirme kurallarıyla ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Application Gateway kullanarak birden çok site barındırma](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview). 
+Birden çok etki alanı tabanlı (ana bilgisayar tabanlı) yönlendirme için çoklu site dinleyicileri oluşturabilir, protokol olarak HTTPS kullanan dinleyicileri ayarlayabilir ve dinleyicileri yönlendirme kurallarıyla ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Application Gateway kullanarak birden çok site barındırma](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+
+### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>. Pfx dosya parolamda özel karakterler kullanabilir miyim?
+
+Hayır,. pfx dosya parolanda yalnızca alfasayısal karakterler kullanın.
 
 ## <a name="configuration---web-application-firewall-waf"></a>Yapılandırma-Web uygulaması güvenlik duvarı (WAF)
 
@@ -349,7 +353,7 @@ Portalda, bir uygulama ağ geçidinin menü dikey penceresinde, denetim günlü�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Uyarıları Application Gateway ayarlayabilir miyim?
 
-Evet. Application Gateway, ölçümler üzerinde uyarılar yapılandırılır. Daha fazla bilgi için bkz. [Application Gateway ölçümleri](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics) ve [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Evet. Application Gateway, ölçümler üzerinde uyarılar yapılandırılır. Daha fazla bilgi için bkz. [Application Gateway ölçümleri](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) ve [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Application Gateway için trafik istatistiklerini analiz Nasıl yaparım??
 

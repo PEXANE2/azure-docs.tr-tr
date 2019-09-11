@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966912"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277638"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve ODBC veri depolarından veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -114,13 +114,13 @@ ODBC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm, ODBC veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, ODBC veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-ODBC ile uyumlu veri deposundan veri kopyalamak için, veri kümesinin Type özelliğini **Relationaltable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+ODBC ile uyumlu veri deposundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **RelationalTable** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **OdbcTable** | Evet |
 | tableName | ODBC veri deposundaki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
 **Örnek**
@@ -129,7 +129,8 @@ ODBC ile uyumlu veri deposundan veri kopyalamak için, veri kümesinin Type öze
 {
     "name": "ODBCDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "OdbcTable",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ODBC linked service name>",
             "type": "LinkedServiceReference"
@@ -141,18 +142,20 @@ ODBC ile uyumlu veri deposundan veri kopyalamak için, veri kümesinin Type öze
 }
 ```
 
+`RelationalTable` Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
+
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
 Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, ODBC kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="odbc-as-source"></a>Kaynak olarak ODBC
 
-ODBC uyumlu veri deposundan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Relationalsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+ODBC uyumlu veri deposundan verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **RelationalSource** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **OdbcSource** | Evet |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 
@@ -175,7 +178,7 @@ ODBC uyumlu veri deposundan veri kopyalamak için kopyalama etkinliğindeki kayn
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "OdbcSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -185,6 +188,8 @@ ODBC uyumlu veri deposundan veri kopyalamak için kopyalama etkinliğindeki kayn
     }
 ]
 ```
+
+Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
 
 ### <a name="odbc-as-sink"></a>Havuz olarak ODBC
 

@@ -1,27 +1,27 @@
 ---
 title: 'Hızlı Başlangıç: Sentezleştirme konuşma C# , (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma SDK'sı kullanarak evrensel Windows Platformu (UWP) uygulama. Konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünü sentezleştir. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
+description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma SDK'sı kullanarak evrensel Windows Platformu (UWP) uygulama. Konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünü sentezleştir. Uygulama, konuşma SDK 'Sı NuGet paketiyle oluşturulmuştur ve 2019 Microsoft Visual Studio.
 services: cognitive-services
 author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 6/24/2019
+ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 5e1f8aea1b00cbba7fec6c7ca416a965458ab526
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 65b65c9af377b6a9951f9f328e0732850d3b9c1d
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607747"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382196"
 ---
 # <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak UWP uygulamasında konuşmayı sentezleştirme
 
-Hızlı başlangıç, konuşma [tanıma](quickstart-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de kullanılabilir.
+Hızlı başlangıçlara [konuşma tanıma](quickstart-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md)ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de erişilebilir.
 
-Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md)kullanarak Windows sürüm 1709 sonrası) uygulaması. Program, konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünize sentezle birleştirmeyecektir. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri (herhangi bir sürüm) ile oluşturulmuştur.
+Bu makalede bilişsel Hizmetler C# [konuşma SDK 'sını](speech-sdk.md)kullanarak bir Evrensel Windows platformu (UWP) uygulaması geliştirirsiniz. Program, konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünü sentezleştirir. Uygulamayı, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2019 (herhangi bir sürümü) kullanarak oluşturursunuz.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -30,7 +30,7 @@ Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel H
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
@@ -39,33 +39,39 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
-1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcının XAML görünümünde, aşağıdaki XAML kod parçacığını Kılavuz etiketine ekleyin (`<Grid>` ve `</Grid>` arasında).
+Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve arka plan C# kod uygulamasını ekleyin.
+
+1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
+
+1. Tasarımcının xaml görünümünde, **kılavuz** etiketine aşağıdaki xaml kod parçacığını ekleyin (ve `<Grid>` `</Grid>`arasında):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. Arka plan kod kaynak dosyasını açın `MainPage.xaml.cs` (`MainPage.xaml` altında gruplandırılmış olarak bulabilirsiniz). İçindeki tüm kodu aşağıdakiyle değiştirin.
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.)
+
+1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-1. Bu dosyadaki `Speak_ButtonClicked` işleyicisinde `YourSubscriptionKey` dizesini abonelik anahtarınız ile değiştirin.
+1. Kaynak dosyanın `Speak_ButtonClicked` işleyicisinde, dizeyi `YourSubscriptionKey`bulun ve abonelik anahtarınızla değiştirin.
 
-1. `Speak_ButtonClicked` işleyicisinde `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. İşleyicisinde, dizeyi `YourServiceRegion`bulun ve aboneliğinizle ilişkili bölge ile değiştirin. [](regions.md) `Speak_ButtonClicked` (Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.)
 
-1. Değişiklikleri projeye kaydedin.
+1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya** > **Tümünü Kaydet** ' i seçin.
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulamayı derleyin. Menü çubuğundan **Derle** > **Çözümü Derle**'yi seçin. Kodun artık hatasız derlenmesi gerekir.
+Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-    ![Visual Studio uygulamasının, Çözümü Derle seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-08-build.png "Başarılı derleme")
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.**  >  Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatın. Menü çubuğundan **Hata Ayıklama** > **Hata Ayıklamayı Başlat**'ı seçin veya **F5** tuşuna basın.
+1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). >  **HelloWorld** penceresi görüntülenir.
 
-    ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-09-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
+   ![Örnek UWP konuşma sen, Hızlı Başlangıç C# uygulaması](media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
 1. Metin kutusuna bir metin girin ve **konuş**' a tıklayın. Metniniz konuşma hizmetlerine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
 
-    ![Konuşma birleştirme Kullanıcı arabiriminin ekran görüntüsü](media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![Konuşma birleştirme Kullanıcı arabirimi](media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -74,5 +80,5 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ses yazı tiplerini özelleştirme](how-to-customize-voice-font.md)
+- [Özel ses modelleri oluşturma ve kullanma](how-to-custom-voice-create-voice.md)
 - [Ses örneklerini Kaydet](record-custom-voice-samples.md)

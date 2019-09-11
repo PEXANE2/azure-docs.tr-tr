@@ -9,12 +9,12 @@ ms.date: 08/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 32b050c86c2a170b1f95943a873c67d15f947c93
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 581d2e03474eb7e740f9d0468022269bdb20b663
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035674"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813805"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için C IoT Edge modülü geliştirme
 
@@ -242,12 +242,12 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
        if (IoTHubModuleClient_LL_SetInputMessageCallback(iotHubModuleClientHandle, "input1", InputQueue1Callback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetInputMessageCallback(\"input1\")..........FAILED!\r\n");
-           ret = 1;
+           ret = MU_FAILURE;
        }
        else if (IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, moduleTwinCallback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetModuleTwinCallback(default)..........FAILED!\r\n");
-           ret = 1;
+           ret = MU_FAILURE;
        }
        else
        {
@@ -350,8 +350,8 @@ Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel
 Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [İşlevler](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)[](tutorial-deploy-custom-vision.md) [Machine Learning](tutorial-deploy-machine-learning.md)özel görüntü işleme hizmeti
-> 
-> 
+> [Functions](tutorial-deploy-function.md)
+> [Stream Analytics](tutorial-deploy-stream-analytics.md)
+> [Machine Learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)
 

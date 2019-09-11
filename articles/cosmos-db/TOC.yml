@@ -455,6 +455,10 @@
           items:
             - name: 1 - Verileri sorgulama
               href: tutorial-query-graph.md
+        - name: Başvuru
+          items:
+            - name: Yanıt Üst Bilgileri
+              href: gremlin-headers.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Graf verileri modellemesi
@@ -465,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin sorgularını iyileştirme
               href: graph-execution-profile.md
+            - name: Kaynak belirteçlerini kullanma
+              href: how-to-use-resource-tokens-gremlin.md
             - name: Graf verilerini görselleştirme
               href: graph-visualization.md
             - name: Mağaza ve Spring Verilerini yönetme
@@ -712,6 +718,8 @@
       items:
         - name: Power BI kullanma
           href: powerbi-visualize.md
+        - name: Canlı hava durumu panosu oluşturma
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense kullanma
           href: visualize-qlik-sense.md
     - name: Diğer Azure hizmetleri ile tümleştirme

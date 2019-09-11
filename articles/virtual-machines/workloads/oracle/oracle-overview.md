@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: e9e37c54668ec0343cbfd45e51e90216955b46c4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100015"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802266"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -26,13 +26,13 @@ Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırm
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure altyapısında Oracle veritabanları
 
-Azure Marketi 'nde bulunan Linux görüntülerini kullanarak Azure altyapısında Oracle veritabanlarını çalıştırın:
+Azure Marketi 'nde bulunan Oracle Linux görüntülerde Oracle Database kullanarak Oracle veritabanlarını Azure altyapısında çalıştırın:
 
 * Oracle Database 12,1, 12,2 ve 18,3 Enterprise Edition 
 
 * Oracle Database 12,1, 12,2 ve 18,3 Standard Edition 
 
-Ayrıca, Azure 'daki sıfırdan oluşturduğunuz özel bir görüntüye bir çözüm temelinizi veya şirket içi ortamınızdan özel bir görüntü yüklemeyi tercih edebilirsiniz.
+Ayrıca, Azure 'da bulunan Oracle Linux olmayan bir görüntüde Oracle Database kurulumunu ve şirket içi ortamınızdan özel bir görüntü yüklemeyi tercih ettiğiniz özel bir görüntüye dayandırın.
 
 İsteğe bağlı olarak birden çok bağlı disk ile yapılandırın ve Oracle otomatik depolama yönetimi (ASM) yükleyerek veritabanı performansını geliştirebilirsiniz.
 
@@ -46,11 +46,17 @@ Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çal�
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma seçenekleri
 
-* Azure altyapısında, yüksek kullanılabilirlik için [kullanılabilirlik alanları](../../../availability-zones/az-overview.md) birlikte Oracle Data Guard, Active Data Guard veya GoldenGate 'i yapılandırın.
+* Şirket içinde yüksek kullanılabilirlik için [kullanılabilirlik alanları](../../../availability-zones/az-overview.md) ile [birlikte, Azure](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) altyapısına yönelik fsfo, parçalı veya [altın kapıyla](https://www.oracle.com/middleware/technologies/goldengate.html) birlikte [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [Active Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)'ı yapılandırın. Ayrıca, bu konfigürasyonları, ek kullanılabilirlik ve olağanüstü durum kurtarma için birden çok Azure bölgesinde da ayarlayabilirsiniz.
 
 * Azure 'da ve şirket içi veya fiziksel sunucularınızdaki Oracle Linux sanal makinelerinize yönelik olağanüstü durum kurtarmayı düzenlemek ve yönetmek için [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) kullanın. 
 
-* Azure 'da [Flashgrid ufuk kümesi](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Oracle gerçek uygulama KÜMELERINI (RAC) etkinleştirin.
+* Azure [VMware çözümünü](https://docs.azure.cloudsimple.com/oracle-rac/) veya [Flashgrid ufuk kümesini](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Azure 'Da Oracle gerçek uygulama kümelerini (RAC) etkinleştirin.
+
+## <a name="backup-oracle-workloads"></a>Oracle Iş yüklerini yedekleme
+
+* [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview) kullanarak Oracle VM 'lerinizi yedekleme
+
+* Oracle Database Oracle RMAN kullanarak yedekleyin ve isteğe bağlı olarak [Azure Blob sigortası](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek oranda Redudant bir Azure Blob depolama hesabı](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) takın ve ek dayanıklılık için RMAN yedeklemelerinizi bu depoya yazın.
 
 ## <a name="integration-of-azure-with-oci-preview"></a>OCı ile Azure tümleştirmesi (Önizleme)
 

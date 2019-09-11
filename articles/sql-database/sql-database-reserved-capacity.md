@@ -1,5 +1,5 @@
 ---
-title: Para tasarrufu sağlamak için Azure SQL veritabanı sanal çekirdekleri için ön ödeme | Microsoft Docs
+title: Azure SQL veritabanı sanal çekirdekleri için maliyetleri kaydetme | Microsoft Docs
 description: İşlem maliyetlerinizi kaydetmek için Azure SQL veritabanı ayrılmış kapasitesini nasıl satın alacağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 08/02/2019
-ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 08/29/2019
+ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972560"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806583"
 ---
-# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL veritabanı ayrılmış kapasitesi ile SQL veritabanı işlem kaynakları için ön ödeme
+# <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL veritabanı ayrılmış kapasitesi ile SQL veritabanı işlem kaynakları için maliyetleri kaydetme
 
-Kullandıkça Öde fiyatlarıyla karşılaştırıldığında işlem kaynaklarını önceden ödeyerek Azure SQL veritabanı ile tasarruf edin. Azure SQL veritabanı ayrılmış kapasitesi ile, işlem maliyetlerine göre önemli bir indirim elde etmek için SQL veritabanı 'nda bir veya üç yıllık bir dönem için ön taahhüt yaparsınız. SQL veritabanı ayrılmış kapasitesini satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimi belirtmeniz gerekir.
+Kullandıkça Öde fiyatlarına kıyasla işlem kaynakları için bir ayırmaya kaydederek Azure SQL veritabanı ile tasarruf edin. Azure SQL veritabanı ayrılmış kapasitesi ile, işlem maliyetlerine göre önemli bir indirim elde etmek için SQL veritabanı kullanımı için bir veya üç yıl boyunca bir taahhüt yaparsınız. SQL veritabanı ayrılmış kapasitesini satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimi belirtmeniz gerekir.
 
 
-Ayırmayı belirli SQL veritabanı örneklerine (tek veritabanları, elastik havuzlar veya yönetilen örnekler) atamanız gerekmez. Zaten çalışmakta olan veya yeni dağıtılmış olan eşleşen SQL veritabanı örnekleri, otomatik olarak avantajı alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen SQL veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, SQL veritabanı örneğiyle ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve SQL veritabanları Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [SQL veritabanı ayrılmış kapasitesi teklifi](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+Ayırmayı belirli SQL veritabanı örneklerine (tek veritabanları, elastik havuzlar veya yönetilen örnekler) atamanız gerekmez. Zaten çalışmakta olan veya yeni dağıtılmış olan eşleşen SQL veritabanı örnekleri, otomatik olarak avantajı alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetlerine yönelik kullanıma de kayıt yapılır. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen SQL veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, SQL veritabanı örneğiyle ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve SQL veritabanları Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [SQL veritabanı ayrılmış kapasitesi teklifi](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-[Azure Portal](https://portal.azure.com)Azure SQL veritabanı ayrılmış kapasitesini satın alabilirsiniz. SQL veritabanı ayrılmış kapasitesini satın almak için:
+[Azure Portal](https://portal.azure.com)Azure SQL veritabanı ayrılmış kapasitesini satın alabilirsiniz. Rezervasyon için [veya aylık ödemeler](../billing/billing-monthly-payments-reservations.md)için ödeme yapın. SQL veritabanı ayrılmış kapasitesini satın almak için:
 
 - Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
 - Kurumsal abonelikler için, **ayrılmış örneklerin eklenmesi** [EA portalında](https://ea.azure.com)etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
@@ -43,7 +43,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış tek veritabanları, elastik ha
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm hizmet** > **ayırmaları**' ni seçin.
-3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde SQL VERITABANı ' nı seçerek SQL veritabanı için yeni bir ayırma satın alın.
+3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları **bölmesinde SQL veritabanı ' nı seçerek SQL** veritabanı için yeni bir ayırma satın alın.
 4. Gerekli alanları doldur. Mevcut veya yeni tek veritabanları, elastik havuzlar veya bir ayrılmış kapasite indirimi elde etmek üzere seçtiğiniz özniteliklerle eşleşen yönetilen örnekler. İndirimin alınacağı SQL veritabanı örneklerinizin gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
     ![SQL veritabanı ayrılmış kapasite satın alımını göndermeden önce ekran görüntüsü](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
@@ -52,7 +52,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 | Alan      | Açıklama|
 |------------|--------------|
 |Subscription|SQL veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelik üzerindeki ödeme yöntemi, SQL veritabanı ayrılmış kapasite ayırması için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırmasıyla tek bir anlaşma (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|
-|`Scope`       |VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <br/><br/>, Sanal çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan SQL veritabanı örneklerine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde aboneliklerdir.<br/><br/>**Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki SQL veritabanı örneklerine uygulanır. <br/><br/>**Tek kaynak grubu**, rezervasyon indirimi SEÇILI abonelikteki SQL veritabanı örneklerine ve bu abonelikte seçili kaynak grubuna uygulanır.|
+|`Scope`       |VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <br/><br/>**, Sanal**çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan SQL veritabanı örneklerine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde aboneliklerdir.<br/><br/>**Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki SQL veritabanı örneklerine uygulanır. <br/><br/>**Tek kaynak grubu**, rezervasyon indirimi SEÇILI abonelikteki SQL veritabanı örneklerine ve bu abonelikte seçili kaynak grubuna uygulanır.|
 |Bölge      |SQL veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.|
 |Dağıtım Türü|Ayırmasını satın almak istediğiniz SQL kaynak türü.|
 |Performans Katmanı|SQL veritabanı örnekleri için hizmet katmanı.
@@ -90,6 +90,6 @@ Azure ayırmaları hakkında daha fazla bilgi edinmek için aşağıdaki makalel
 - [Azure ayırmaları nelerdir?](../billing/billing-save-compute-costs-reservations.md)
 - [Azure Ayırmalarını yönetme](../billing/billing-manage-reserved-vm-instance.md)
 - [Azure ayırmaları indirimi 'nı anlama](../billing/billing-understand-reservation-charges.md)
-- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlayın](../billing/billing-understand-reserved-instance-usage.md)
-- [Kurumsal kaydınız için rezervasyon kullanımını anlayın](../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage.md)
+- [Kurumsal kaydınız için rezervasyon kullanımını anlama](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Iş Ortağı Merkezi bulut çözümü sağlayıcısı (CSP) programında Azure ayırmaları](https://docs.microsoft.com/partner-center/azure-reservations)

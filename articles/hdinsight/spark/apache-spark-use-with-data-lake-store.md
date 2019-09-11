@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake depolama Gen1 verileri çözümlemek için Apache Spark'ı kullanın
-description: Azure Data Lake depolama Gen1 depolanan verileri analiz için Spark işleri çalıştırma
+title: Azure Data Lake Storage 1. verileri çözümlemek için Apache Spark kullanma
+description: Azure Data Lake Storage 1. depolanan verileri analiz etmek için Apache Spark işleri çalıştırın
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,56 +8,56 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 5a98cb2356c25329e091514dd1d6181dfc2690be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f57d054134b9f2c8b327fe157e7a5b5e3d5ff183
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448649"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813930"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Data Lake depolama Gen1 verilerini çözümlemek için HDInsight Spark kümesi kullanın
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri çözümlemek için HDInsight Spark kümesini kullanma
 
-Bu makalede, kullandığınız [Jupyter not defteri](https://jupyter.org/) bir Data Lake Store hesabından veri okuyan bir iş çalıştırmak için HDInsight Spark kümeleri ile kullanılabilir.
+Bu makalede, bir Data Lake Storage hesabındaki verileri okuyan bir işi çalıştırmak için HDInsight Spark kümeleri ile kullanılabilir [Jupyter Notebook](https://jupyter.org/) kullanırsınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Data Lake depolama Gen1 hesabı. Konumundaki yönergeleri [Azure Data Lake depolama Gen1 ile çalışmaya başlama Azure portalını kullanarak](../../data-lake-store/data-lake-store-get-started-portal.md).
+* Azure Data Lake Storage 1. hesabı. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
-* Azure HDInsight Spark kümesi ile depolama alanı olarak Data Lake depolama Gen1. Konumundaki yönergeleri [hızlı başlangıç: HDInsight kümelerinde ayarlama](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Depolama alanı olarak Data Lake Storage 1. Azure HDInsight Spark küme. [Hızlı Başlangıç bölümündeki yönergeleri izleyin: HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)'ta kümeleri ayarlama.
 
     
 ## <a name="prepare-the-data"></a>Verileri hazırlama
 
 > [!NOTE]  
-> Varsayılan depolama alanı olarak Data Lake Store ile HDInsight küme oluşturduysanız bu adımı gerçekleştirmeniz gerekmez. Küme oluşturma işlemi bazı örnek veriler, kümeyi oluştururken belirttiğiniz Data Lake Store hesabına ekler. Data Lake Storage bölüm kullan HDInsight Spark kümesiyle bölümüne atlayın.
+> HDInsight kümesini varsayılan depolama alanı olarak Data Lake Storage oluşturduysanız bu adımı gerçekleştirmeniz gerekmez. Küme oluşturma işlemi, kümeyi oluştururken belirttiğiniz Data Lake Storage hesaba örnek veri ekler. Data Lake Storage ile HDInsight Spark kümesini kullanma bölümüne atlayın.
 
-Ek depolama alanı ve varsayılan depolama alanı olarak Azure depolama blobu olarak Data Lake Store ile HDInsight kümesi oluşturduysanız, Data Lake Storage hesabına önce bazı örnek veriler üzerinde kopyalamanız gerekir. Azure depolama Blob verileri HDInsight kümesi ile ilişkili örnek kullanabilirsiniz. Kullanabileceğiniz [ADLCopy aracı](https://aka.ms/downloadadlcopy) Bunu yapmak için. İndirin ve aracı bağlantıdan yükleyin.
+Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olarak Azure Depolama Blobu bir HDInsight kümesi oluşturduysanız, önce bazı örnek verileri Data Lake Storage hesabına kopyalamanız gerekir. HDInsight kümesiyle ilişkili Azure Depolama Blobu örnek verileri kullanabilirsiniz. Bunu yapmak için [AdlCopy aracını](https://aka.ms/downloadadlcopy) kullanabilirsiniz. Aracı bağlantıdan indirin ve yükleyin.
 
-1. Bir komut istemi açın ve AdlCopy yüklü olduğu, genellikle dizine gidin `%HOMEPATH%\Documents\adlcopy`.
+1. Bir komut istemi açın ve genellikle `%HOMEPATH%\Documents\adlcopy`AdlCopy 'in yüklü olduğu dizine gidin.
 
-2. Belirli bir blobu kaynak kapsayıcısından Data Lake depolamaya kopyalamak için aşağıdaki komutu çalıştırın:
+2. Belirli bir blobu kaynak kapsayıcısından Data Lake Storage kopyalamak için aşağıdaki komutu çalıştırın:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    Kopyalama **HVAC.csv** örnek veri dosyası **/HdiSamples/HdiSamples/SensorSampleData/hvac/** Azure Data Lake Storage hesabına. Kod parçacığı gibi görünmelidir:
+    **/Hdisamples/hdisamples/sensorsampledata/hboş/** konumundaki **HVAC. csv** örnek veri dosyasını Azure Data Lake Storage hesabına kopyalayın. Kod parçacığı şöyle görünmelidir:
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
    > [!WARNING]  
-   > Dosya ve yol adlarını uygun büyük/küçük harf kullandığınızdan emin olun.
+   > Dosya ve yol adlarının uygun büyük/küçük harf kullanımının doğru olduğundan emin olun.
 
-3. Data Lake Store hesabınızın altında sahip Azure aboneliği için kimlik bilgilerini girmeniz istenir. Aşağıdaki kod parçacığına benzer bir çıkış görürsünüz:
+3. Data Lake Storage hesabınıza sahip olduğunuz Azure aboneliğinin kimlik bilgilerini girmeniz istenir. Aşağıdaki kod parçacığına benzer bir çıkış görürsünüz:
 
         Initializing Copy.
         Copy Started.
         100% data copied.
         Copy Completed. 1 file copied.
 
-    Veri dosyası (**HVAC.csv**) altında bir klasöre kopyalanacak **/hvac** Data Lake Storage hesabında.
+    Veri dosyası (**HVAC. csv**) Data Lake Storage hesabında **/HVAC** klasörü altına kopyalanacak.
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Bir HDInsight Spark kümesi ile Data Lake depolama Gen1 kullanın
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage 1. ile HDInsight Spark kümesi kullanma
 
-1. Gelen [Azure portalı](https://portal.azure.com/), (Bu başlangıç panosuna sabitlediğiniz varsa) başlangıç Panosu, Apache Spark kümenizin kutucuğuna tıklayın. Ayrıca **Browse All (Tümüne Gözat)**  > **HDInsight Clusters (HDInsight Kümeleri)** altından kümenize gidebilirsiniz.
+1. Başlangıç panosundan, [Azure portalından](https://portal.azure.com/)Apache Spark kümenizin kutucuğuna tıklayın (başlangıç panosuna sabitlediğiniz takdirde). Ayrıca **Browse All (Tümüne Gözat)**  > **HDInsight Clusters (HDInsight Kümeleri)** altından kümenize gidebilirsiniz.
 
 2. Spark kümesi dikey penceresinden **Hızlı Bağlantılar**’a ve sonra **Küme Panosu** dikey penceresinden **Jupyter Not Defteri**’ne tıklayın. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
@@ -78,21 +78,21 @@ Ek depolama alanı ve varsayılan depolama alanı olarak Azure depolama blobu ol
 
      ![Jupyter not defteri işinin durumu](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter not defteri işinin durumu")
 
-5. Örnek verileri kullanarak bir geçici tablosuna yükleme **HVAC.csv** dosya Data Lake depolama Gen1 hesabına kopyalanır. Aşağıdaki URL deseni kullanarak Data Lake Store hesabına verilerine erişebilir.
+5. Örnek verileri, Data Lake Storage 1. hesabına kopyaladığınız **HVAC. csv** dosyasını kullanarak geçici bir tabloya yükleyin. Data Lake Storage hesabındaki verilere aşağıdaki URL modelini kullanarak erişebilirsiniz.
 
-   * Varsayılan depolama alanı olarak Data Lake depolama Gen1 varsa HVAC.csv yolda aşağıdaki URL'ye benzer olacaktır:
+   * Varsayılan depolama alanı olarak Data Lake Storage 1. varsa, HVAC. csv aşağıdaki URL 'ye benzer yolda olacaktır:
 
            adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-       Ya da kısaltılmış bir biçimi aşağıdaki gibi kullanabilirsiniz:
+       Ayrıca, aşağıdaki gibi kısaltılmış bir biçim de kullanabilirsiniz:
 
            adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-   * Ek depolama alanı olarak Data Lake Storage varsa, gibi kopyaladığınız konuma HVAC.csv olacaktır:
+   * Ek depolama alanı Data Lake Storage sahipseniz, HVAC. csv dosyayı kopyaladığınız konumda olacaktır, örneğin:
 
            adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     Boş bir hücreye aşağıdaki kod örneği yapıştırın, yerine **MYDATALAKESTORE** Data Lake Store hesap adını ve basın **SHIFT + ENTER**. Bu kod örneği, verileri **hvac** adlı geçici bir tabloya kaydeder.
+     Boş bir hücrede, aşağıdaki kod örneğini yapıştırın, **MYDATALAKESTORE** değerini Data Lake Storage hesap adınızla değiştirin ve **SHIFT + enter**tuşlarına basın. Bu kod örneği, verileri **hvac** adlı geçici bir tabloya kaydeder.
 
            # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
            hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -109,7 +109,7 @@ Ek depolama alanı ve varsayılan depolama alanı olarak Azure depolama blobu ol
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. Bir PySpark çekirdeği kullandığınız için `%%sql` sihrini kullanarak yeni oluşturduğunuz **hvac** geçici tablosunda bundan böyle bir SQL sorgusunu doğrudan çalıştırabilirsiniz. Hakkında daha fazla bilgi için `%%sql` Sihirli yanı sıra PySpark çekirdeği kullanılabilen diğer sihirler bkz [Apache Spark HDInsight kümeleri ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+6. Bir PySpark çekirdeği kullandığınız için `%%sql` sihrini kullanarak yeni oluşturduğunuz **hvac** geçici tablosunda bundan böyle bir SQL sorgusunu doğrudan çalıştırabilirsiniz. `%%sql` Siçinin yanı sıra pyspark çekirdeği ile kullanılabilen diğer mıknatık 'lar hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -127,7 +127,7 @@ Ek depolama alanı ve varsayılan depolama alanı olarak Azure depolama blobu ol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tek başına bir Apache Spark kümesi üzerinde bir Scala uygulama oluşturma](apache-spark-create-standalone-application.md)
-* [HDInsight Spark Linux kümesi için Apache Spark uygulamaları oluşturmak için Intellij için Azure araç seti, HDInsight araçları kullanma](apache-spark-intellij-tool-plugin.md)
-* [HDInsight Spark Linux kümesi için Apache Spark uygulamaları oluşturmak için Eclipse için Azure araç seti, HDInsight araçları kullanma](apache-spark-eclipse-tool-plugin.md)
-* [Azure Data Lake depolama Gen2 Azure HDInsight kümeleri ile kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Apache Spark kümesinde çalıştırılacak tek başına bir Scala uygulaması oluşturma](apache-spark-create-standalone-application.md)
+* [HDInsight Spark Linux kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ 'de HDInsight araçlarını kullanma](apache-spark-intellij-tool-plugin.md)
+* [HDInsight Spark Linux kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse 'de HDInsight araçlarını kullanma](apache-spark-eclipse-tool-plugin.md)
+* [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

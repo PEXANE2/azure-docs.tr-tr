@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562816"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801488"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Özel Konuşma Tanıma için model eğitme
 
@@ -37,13 +37,14 @@ Modelinize yönelik tanınma sorunlarıyla karşılaşdıysanız, insan etiketli
 
 Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](how-to-custom-speech-test-data.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 
-1. **Konuşmayı metne > Özel Konuşma Tanıma > eğitimi**'ne gidin.
-2. **Modeli eğitme**' ye tıklayın.
-3. Ardından, eğitime bir **ad** ve **Açıklama**sağlayın.
-4. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. Tercih ediyorsanız, en son ' u kullanabilirsiniz.
-5. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
-6. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi gerçekleştirmeyi tercih edebilirsiniz. Bu adım isteğe bağlıdır.
-7. Özel modelinizi derlemek için **Oluştur** ' u seçin.
+1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
+2. **Konuşmayı metne > Özel Konuşma Tanıma > eğitimi**'ne gidin.
+3. **Modeli eğitme**' ye tıklayın.
+4. Ardından, eğitime bir **ad** ve **Açıklama**sağlayın.
+5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. Tercih ediyorsanız, en son ' u kullanabilirsiniz.
+6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
+7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi gerçekleştirmeyi tercih edebilirsiniz. Bu adım isteğe bağlıdır.
+8. Özel modelinizi derlemek için **Oluştur** ' u seçin.
 
 Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir:  İşleme, başarılı, başarısız oldu.
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: f5ddd9928194c477d8f8b6f4c9569a8fe58f39d3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 37e6a3ee9f793a475cf9d775e99da989e82957dc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967372"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813474"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SQL Server veri kopyalama
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
@@ -28,7 +28,7 @@ Bu makalede, verileri bir SQL Server veritabanına kopyalamak için Azure Data F
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Bir SQL Server veritabanından ve desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ya da desteklenen kaynak veri mağazalarından verileri bir SQL Server veritabanına kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+SQL Server veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ya da desteklenen kaynak veri mağazalarından verileri bir SQL Server veritabanına kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
 Özellikle, bu SQL Server Bağlayıcısı şunları destekler:
 
@@ -145,7 +145,7 @@ SQL Server bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm SQL Server veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm SQL Server veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 Ve SQL Server veritabanından veri kopyalamak için aşağıdaki özellikler desteklenir:
 
@@ -298,6 +298,7 @@ SQL Server verileri kopyalamak için kopyalama etkinliğindeki havuz türünü *
 | storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
 | sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
 | storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Adları ve parametreleri büyük küçük harfleri, adları ve saklı yordam parametreleri büyük küçük harfleri eşleşmelidir. | Hayır |
+| tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Havuz saklı yordamı belirttiğinde veya hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
 
 **Örnek 1: Veri Ekle**
 
@@ -324,7 +325,8 @@ SQL Server verileri kopyalamak için kopyalama etkinliğindeki havuz türünü *
             },
             "sink": {
                 "type": "SqlSink",
-                "writeBatchSize": 100000
+                "writeBatchSize": 100000,
+                "tableOption": "autoCreate"
             }
         }
     }
@@ -533,7 +535,7 @@ Ve SQL Server verileri kopyaladığınızda, SQL Server veri türlerinden, geçi
 
     Ayrıntılı adımlar için bkz. [Uzaktan erişim sunucu yapılandırma seçeneğini yapılandırma](https://msdn.microsoft.com/library/ms191464.aspx).
 
-2. **SQL Server Yapılandırma Yöneticisi**başlatın. İstediğiniz örnek için **SQL Server ağ yapılandırması** ' nı GENIŞLETIN ve **MSSQLSERVER protokolleri**' ni seçin. Protokoller sağ bölmede görüntülenir. TCP/IP ' ye sağ tıklayıp **Etkinleştir**' i seçerek TCP/IP 'yi etkinleştirin.
+2. **SQL Server Yapılandırma Yöneticisi**başlatın. İstediğiniz örnek için **SQL Server ağ yapılandırması** ' nı GENIŞLETIN ve **MSSQLSERVER protokolleri**' ni seçin. Protokoller sağ bölmede görüntülenir. **TCP/IP ' ye** sağ tıklayıp **Etkinleştir**' i seçerek TCP/IP 'yi etkinleştirin.
 
     ![TCP/IP 'yi etkinleştir](./media/copy-data-to-from-sql-server/EnableTCPProptocol.png)
 

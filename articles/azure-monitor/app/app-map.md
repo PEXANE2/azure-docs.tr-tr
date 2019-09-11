@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302565"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126968"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama eşlemesi: Dağıtılmış uygulamaları önceliklendirme
 
@@ -50,7 +50,7 @@ Bu deneyimle önemli amaçların biri, yüzlerce bileşen ile karmaşık topoloj
 
 ![Açılır](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Sorunları araştırın
+### <a name="investigate-failures"></a>Hataları araştır
 
 Arızalar bölmesini başlatmak için **başarısızlığı araştır** ' ı seçin.
 
@@ -74,7 +74,7 @@ Uçtan uca işlem deneyimini araştırmak için **ayrıntılara git** ' i seçin
 
 ![Uçtan uca işlem ayrıntılarının ekran görüntüsü](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Analytics 'te görüntüle
+### <a name="view-in-analytics"></a>Analytics'de görüntüle
 
 Uygulama verilerinizi daha fazla sorgulamak ve araştırmak için Analize **görüntüle**' ye tıklayın.
 
@@ -226,7 +226,7 @@ Bu uygulama, bu bulut rolü adlarının her biri aynı zamanda kendi izleme anah
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Alternatif olarak **, bulut** rolü **adı** , sorunun Web ön uçlarınızda bir yerde olduğunu söylediğinden, Web ön uçlarınızın daha fazla yük dengeli sunucu genelinde çalışıyor olabileceği ancak kusto sorguları aracılığıyla bir katmanda detaya gitme ve sorunun tüm Web ön uç sunucularını/örneklerini etkileyip etkilemediğini veya yalnızca birinin son derece önemli olup olmadığını bilme.
+Alternatif olarak , bulut rolü **adı** , sorunun Web ön uçlarınızda bir yerde olduğunu söylediğinden, Web ön uçlarınızın daha fazla yük dengeli sunucu genelinde çalışıyor olabileceği ancak kusto sorguları aracılığıyla bir katmanda detaya gitme ve sorunun tüm Web ön uç sunucularını/örneklerini etkileyip etkilemediğini veya yalnızca birinin son derece önemli olup olmadığını bilme.
 
 Bulut rol örneği için değeri geçersiz kılmak isteyebileceğiniz bir senaryo, uygulamanızın belirli bir sorunu bulmak için yeterli bilgi olmadığını bilmenin bir kapsayıcı ortamda çalışıyor olması olabilir.
 
@@ -272,4 +272,6 @@ Geri bildirim sağlamak için geri bildirim seçeneğini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bağıntıyı anlama](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* Bağıntı nasıl Application Insights çalıştığı hakkında daha fazla bilgi edinmek için, bkz. [telemetri bağıntı makalesi https://docs.microsoft.com/azure/application-insights/application-insights-correlation) ] (.
+* [Uçtan uca işlem tanılama deneyimi](transaction-diagnostics.md) , sunucu tarafı telemetrisini tüm Application Insights izlenen bileşenlerinizin tamamında tek bir görünümde ilişkilendirir.
+* ASP.NET Core ve ASP.NET ' deki gelişmiş bağıntı senaryoları için [özel işlemleri izleme](custom-operations-tracking.md) makalesine başvurun.

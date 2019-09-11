@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 28d01f1acbc6d9ff033567b10efc801925752191
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4754d7c2182de79d583dce4982b33395bf037479
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618490"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161884"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Java)
 
@@ -43,13 +43,13 @@ Bu öğreticinin sonunda iki Java konsol uygulaması çalıştırırsınız:
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot).
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) veya [IoT Hub öğreticisiyle ileti yönlendirmeyi yapılandırma ile](tutorial-routing.md) Telemetriyi gönderme işleminin tamamen bir çalışma sürümü.
 
-* En güncel [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 

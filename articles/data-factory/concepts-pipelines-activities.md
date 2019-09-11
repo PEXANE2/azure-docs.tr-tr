@@ -3,21 +3,20 @@ title: Azure Data Factory’de işlem hatları ve etkinlikler | Microsoft Docs
 description: Azure Data Factory’de işlem hatları ve etkinlikler hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.author: shlo
-ms.openlocfilehash: 5e34dae5570c64ec2c9fdc478ba8ec1bf4bce9d2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c986b4efea905ce4e1d9ee6f08b688fe6ef6ef5e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976738"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142566"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory’de işlem hatları ve etkinlikler
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -133,7 +132,7 @@ Etiket | Açıklama | Gerekli
 --- | ----------- | ---------
 name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li></ul>
 description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-türü | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-activities) bölümlerine bakın. | Evet
+type | Etkinliğin türü. Farklı etkinlik türleri için [Veri Taşıma Etkinlikleri](#data-movement-activities), [Veri Dönüştürme Etkinlikleri](#data-transformation-activities) ve [Denetim Etkinlikleri](#control-activities) bölümlerine bakın. | Evet
 linkedServiceName | Etkinlik tarafından kullanılan bağlı hizmetin adı.<br/><br/>Bir etkinlik için gerekli işlem ortamına bağlanan bağlı hizmeti belirtmeniz gerekebilir. | HDInsight Etkinliği, Azure Machine Learning Toplu İşlem Puanlandırma Etkinliği, Saklı Yordam Etkinliği için evet. <br/><br/>Diğer tümü için hayır
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 policy | Etkinliğin çalışma zamanı davranışını etkileyen ilkeler. Bu özellik zaman aşımı ve yeniden deneme davranışını içerir. Belirtilmemişse, varsayılan değerler kullanılır. Daha fazla bilgi için [Etkinlik İlkesi](#activity-policy) bölümüne bakın. | Hayır
@@ -173,8 +172,8 @@ dependsOn | Bu özellik etkinlik bağımlılıklarını ve sonraki etkinliklerin
 JSON adı | Açıklama | İzin Verilen Değerler | Gerekli
 --------- | ----------- | -------------- | --------
 zaman aşımı | Çalıştırılacak etkinliğinin zaman aşımını belirtir. | Zaman aralığı | Hayır. Varsayılan zaman aşımı süresi 7 gündür.
-retry | En fazla yeniden deneme sayısı | Tamsayı | Hayır. Varsayılan değer 0'dır
-retryIntervalInSeconds | Yeniden deneme girişimleri arasında saniye cinsinden gecikme | Tamsayı | Hayır. Varsayılan değer 30 saniyedir
+retry | En fazla yeniden deneme sayısı | Integer | Hayır. Varsayılan değer 0'dır
+retryIntervalInSeconds | Yeniden deneme girişimleri arasında saniye cinsinden gecikme | Integer | Hayır. Varsayılan değer 30 saniyedir
 secureOutput | true olarak ayarlandığında etkinlik çıkışı güvenli olarak kabul edilir ve izleme amacıyla günlüğe alınmaz. | Boole değeri | Hayır. Varsayılan değer false’tur.
 
 ### <a name="control-activity"></a>Denetim etkinliği
@@ -198,7 +197,7 @@ Etiket | Açıklama | Gerekli
 --- | ----------- | --------
 name | Etkinliğin adı. Etkinliğin gerçekleştirdiği eylemi temsil eden bir ad belirtin.<br/><ul><li>En fazla karakter sayısı: 55</li><li>Bir harf numarası veya alt çizgi (\_) ile başlamalıdır</li><li>Şu karakterler kullanılamaz: “.”, “+”, “?”, “/”, “<”,”>”,”*”,”%”,”&”,”:”,”\” | Evet</li><ul>
 description | Etkinliğin ne olduğunu veya ne için kullanıldığını açıklayan metin | Evet
-türü | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-activities) bölümlerine bakın. | Evet
+type | Etkinliğin türü. Farklı etkinlik türleri için [veri taşıma etkinlikleri](#data-movement-activities), [veri dönüştürme etkinlikleri](#data-transformation-activities) ve [denetim etkinlikleri](#control-activities) bölümlerine bakın. | Evet
 typeProperties | typeProperties bölümündeki özellikler her bir etkinlik türüne bağlıdır. Bir etkinliğin tür özelliklerini görmek için önceki bölümde verilen etkinlik bağlantılarına tıklayın. | Hayır
 dependsOn | Bu özellik Etkinlik Bağımlılığını ve sonraki etkinliklerin önceki etkinliklere ne kadar bağımlı olduğunu tanımlamak için kullanılır. Daha fazla bilgi için bkz. [etkinlik bağımlılığı](#activity-dependency). | Hayır
 

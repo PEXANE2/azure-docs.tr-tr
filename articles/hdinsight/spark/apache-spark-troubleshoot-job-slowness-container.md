@@ -1,17 +1,17 @@
 ---
-title: Azure depolama kapsayıcısı Azure HDInsight 'ta çok sayıda dosya içerdiğinde Apache Spark iş yavaş çalışır
+title: Azure depolama kapsayıcısı birçok dosya içerdiğinde yavaş Apache Spark-HDInsight
 description: Azure depolama kapsayıcısı Azure HDInsight 'ta çok sayıda dosya içerdiğinde Apache Spark iş yavaş çalışır
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/21/2019
-ms.openlocfilehash: 635b7adb8753b7e9490e8f14a0699c09297fdbbb
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6e92016c0dcd65ee5b7f43c2c257b7d2198d6552
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899089"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736257"
 ---
 # <a name="scenario-apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Senaryo: Azure depolama kapsayıcısı Azure HDInsight 'ta çok sayıda dosya içerdiğinde Apache Spark iş yavaş çalışır
 

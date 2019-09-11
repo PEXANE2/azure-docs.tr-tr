@@ -65,7 +65,7 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmete özgü JSON öğeleri açık
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| türü |Bu işlem için Ftp_sunucusu ayarlayın. |Evet |&nbsp; |
+| type |Bu işlem için Ftp_sunucusu ayarlayın. |Evet |&nbsp; |
 | host |Adını veya FTP sunucusunun IP adresini belirtin. |Evet |&nbsp; |
 | authenticationType |Kimlik doğrulama türünü belirtin. |Evet |Temel, anonim |
 | username |FTP sunucusuna erişimi olan kullanıcının belirtin. |Hayır |&nbsp; |

@@ -8,6 +8,9 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
+    - name: İlk sorgunuzu çalıştırma - Azure portal
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: İlk sorgunuzu çalıştırma - Azure CLI
       displayName: 'extension, docker'
       href: first-query-azurecli.md

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 656934f00879b47669fac4deaac5156cb100e159
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8edb361000110da16ce2a230d8768b204076ad21
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898742"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844276"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>Birden çok düğüm havuzu Özellik sağlayıcısını Kaydet
 
-Birden çok düğüm havuzu kullanan bir AKS kümesi oluşturmak için, öncelikle aboneliğinizde iki özellik bayrağını etkinleştirin. Çok düğümlü havuz kümeleri, Kubernetes düğümlerinin dağıtımını ve yapılandırmasını yönetmek için bir sanal makine ölçek kümesi (VMSS) kullanır. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *Multiagentpoolpreview* ve *VMSSPreview* Özellik bayraklarını kaydedin:
+Birden çok düğüm havuzu kullanan bir AKS kümesi oluşturmak için, öncelikle aboneliğinizde bir özellik bayrağını etkinleştirin. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *Multiagentpoolpreview* Özellik bayrağını kaydedin:
 
 > [!CAUTION]
 > Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-fea
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
-* Çoklu düğüm havuzları yalnızca, aboneliğiniz için *Multiagentpoolpreview* ve *VMSSPreview* özelliklerini başarıyla kaydettikten sonra oluşturulan kümeler için kullanılabilir. Bu özellikler başarıyla kaydedilmeden önce, var olan bir AKS kümesiyle oluşturulmuş düğüm havuzları ekleyemez veya yönetemezsiniz.
+* Birden çok düğüm havuzu yalnızca, aboneliğiniz için *Multiagentpoolpreview* özelliğini başarıyla kaydettikten sonra oluşturulan kümeler için kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
 * İlk düğüm havuzunu silemezsiniz.
 * HTTP uygulama yönlendirme eklentisi kullanılamıyor.
 * Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez/güncelleştiremez/silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
@@ -86,7 +84,7 @@ Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
 * AKS kümesinde en fazla sekiz düğüm havuzu olabilir.
 * AKS kümesi, bu sekiz düğüm havuzunda en fazla 400 düğüme sahip olabilir.
-* Tüm düğüm havuzları aynı alt ağda yer almalıdır
+* Tüm düğüm havuzları aynı alt ağda bulunmalıdır.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
@@ -101,12 +99,15 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --enable-vmss \
-    --node-count 1 \
+    --node-count 2 \
     --generate-ssh-keys \
     --kubernetes-version 1.13.10
 ```
 
 Kümenin oluşturulması birkaç dakika sürer.
+
+> [!NOTE]
+> Kümenizin güvenilir bir şekilde çalışmasını sağlamak için, bu düğüm havuzunda önemli sistem hizmetleri çalıştığı için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
 
 Küme kullanıma hazırsa, şu ile `kubectl`kullanılacak küme kimlik bilgilerini almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın:
 
@@ -133,7 +134,7 @@ Düğüm havuzlarınızın durumunu görmek için [az aks node Pool List][az-aks
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-Aşağıdaki örnek çıktı, düğüm havuzundaki üç düğüm ile *mynodepool* başarıyla oluşturulduğunu gösterir. Önceki adımda AKS kümesi oluşturulduğunda, *1*düğüm sayısıyla varsayılan bir *nodepool1* oluşturulmuştur.
+Aşağıdaki örnek çıktı, düğüm havuzundaki üç düğüm ile *mynodepool* başarıyla oluşturulduğunu gösterir. Önceki adımda AKS kümesi oluşturulduğunda, düğüm sayısı *2*olan varsayılan bir *nodepool1* oluşturulmuştur.
 
 ```console
 $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
@@ -151,7 +152,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -166,13 +167,16 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > Bir düğüm havuzu eklediğinizde bir *Orchestratorversion* veya *VMSize* belirtilmemişse düğümler, aks kümesinin varsayılan değerleri temel alınarak oluşturulur. Bu örnekte, Kubernetes sürüm *1.13.10* ve *Standard_DS2_v2*düğüm boyutudur.
 
 ## <a name="upgrade-a-node-pool"></a>Düğüm havuzunu yükseltme
+ 
+> [!NOTE]
+> Bir hata denendiğinde, bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri aynı anda gerçekleşemez. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme kılavuzumuzdan](https://aka.ms/aks-pending-upgrade)bu konuda daha fazla bilgi edinin.
+
+Aks kümeniz ilk adımda ilk kez oluşturulduğunda, bir `--kubernetes-version` *1.13.10* belirtildiğinde. Bu, Kubernetes sürümünü hem denetim düzlemi hem de varsayılan düğüm havuzu için ayarlar. Bu bölümdeki komutlar, tek bir belirli düğüm havuzunun nasıl yükseltileceğini açıklamaktadır. Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltme arasındaki ilişki [aşağıdaki bölümde](#upgrade-a-cluster-control-plane-with-multiple-node-pools)açıklanmıştır.
 
 > [!NOTE]
-> Bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri birbirini dışlıyor. Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme](https://aka.ms/aks-pending-upgrade)kılavuzumuzdan bu konuda daha fazla bilgi edinin.
+> Düğüm havuzu işletim sistemi görüntüsü sürümü, kümenin Kubernetes sürümüne bağlıdır. Yalnızca bir küme yükseltmesini izleyerek işletim sistemi görüntüsü yükseltmelerini alacaksınız.
 
-Aks kümeniz ilk adımda oluşturulduysa, bir `--kubernetes-version` *1.13.10* belirtildi. Bu, Kubernetes sürümünü hem denetim düzlemi hem de ilk düğüm havuzu için ayarlar. Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltmek için farklı komutlar vardır. Komut, tek bir düğüm havuzunu yükseltmek için kullanıldığında, `az aks nodepool upgrade` denetim düzlemini yükseltmek için kullanılır. `az aks upgrade`
-
-*Mynodepool* , Kubernetes *1.13.10*'e yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks düğüm havuzu yükseltme][az-aks-nodepool-upgrade] komutunu kullanın:
+Bu örnekte iki düğüm havuzu olduğundan, bir düğüm havuzunu yükseltmek için [az aks nodepool Upgrade][az-aks-nodepool-upgrade] kullanmanız gerekir. *Mynodepool* , Kubernetes *1.13.10*'e yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks nodepool Upgrade][az-aks-nodepool-upgrade] komutunu kullanın:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -184,9 +188,9 @@ az aks nodepool upgrade \
 ```
 
 > [!Tip]
-> Denetim düzlemi 'ni *1.14.6*' e yükseltmek için öğesini `az aks upgrade -k 1.14.6`çalıştırın.
+> Denetim düzlemi 'ni *1.14.6*' e yükseltmek için öğesini `az aks upgrade -k 1.14.6`çalıştırın. [Birden çok düğümlü havuzlarla denetim düzlemi yükseltmeleri](#upgrade-a-cluster-control-plane-with-multiple-node-pools)hakkında daha fazla bilgi edinin.
 
-[Az aks düğüm havuzu listesi][az-aks-nodepool-list] komutunu kullanarak düğüm havuzlarınızın durumunu yeniden listeleyin. Aşağıdaki örnek, *mynodepool* 'in *yükseltme* durumunda olduğunu gösterir:
+[Az aks düğüm havuzu listesi][az-aks-nodepool-list] komutunu kullanarak düğüm havuzlarınızın durumunu yeniden listeleyin. Aşağıdaki örnek, *mynodepool* 'in *yükseltme* durumunda olduğunu *gösterir:*
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -206,7 +210,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -223,14 +227,30 @@ Düğümlerin belirtilen sürüme yükseltilmesi birkaç dakika sürer.
 
 En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
 
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Birden çok düğümlü havuzlarla küme denetim düzlemi 'ni yükseltme
+
 > [!NOTE]
 > Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Sürüm numarası *x. y. z*olarak ifade edilir; burada *x* ana sürümdür, *y* ise ikincil sürümdür ve *z* , yama sürümüdür. Örneğin, sürüm *1.12.6*' de, 1 ana sürümdür, 12 ise ikincil sürümdür ve 6 Düzeltme Eki sürümüdür. Denetim düzleminin Kubernetes sürümü ve ilk düğüm havuzu küme oluşturma sırasında ayarlanır. Tüm ek düğüm havuzlarının, kümeye eklendiğinde Kubernetes sürümü ayarlanmış olmalıdır. Kubernetes sürümleri, düğüm havuzlarının yanı sıra düğüm havuzu ile denetim düzlemi arasında farklılık gösterebilir, ancak aşağıdaki kısıtlamalar geçerlidir:
 > 
 > * Düğüm havuzu sürümü, denetim düzlemi ile aynı ana sürüme sahip olmalıdır.
 > * Düğüm havuzu sürümü, denetim düzlemi sürümünden düşük bir alt sürüm olabilir.
 > * Düğüm havuzu sürümü, diğer iki kısıtlama izlendiği sürece herhangi bir yama sürümü olabilir.
-> 
-> Denetim düzleminin Kubernetes sürümünü yükseltmek için kullanın `az aks upgrade`. Kümenizin yalnızca bir düğüm havuzu varsa, `az aks upgrade` bu komut düğüm havuzunun Kubernetes sürümünü de yükseltir.
+
+AKS kümesi iki küme kaynak nesnesine sahiptir. Birincisi, bir denetim düzlemi Kubernetes sürümüdür. İkincisi, Kubernetes sürümü olan bir aracı havuzudur. Bir denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir ve her birinin kendi Kubernetes sürümü vardır. Bir yükseltme işleminin davranışı hangi kaynağın hedeflendiğinden ve temel alınan API 'nin hangi sürümünün çağrıldığı üzerinde farklılık gösterir.
+
+1. Denetim düzlemi 'nin yükseltilmesi için kullanılması gerekir`az aks upgrade`
+   * Bu, kümedeki tüm düğüm havuzlarını de yükseltir
+1. İle yükseltme`az aks nodepool upgrade`
+   * Bu, yalnızca hedef düğüm havuzunu belirtilen Kubernetes sürümüyle yükseltecek
+
+Düğüm havuzlarının tuttuğu Kubernetes sürümleri arasındaki ilişki Ayrıca bir kural kümesine uymalıdır.
+
+1. Denetim düzlemi veya düğüm havuzu Kubernetes sürümünü indirgeyemezsiniz.
+1. Düğüm havuzu Kubernetes sürümü belirtilmemişse, kullanılan varsayılan değer denetim düzlemi sürümüne geri dönecektir.
+1. Belirli bir zamanda bir denetim düzlemi veya düğüm havuzu yükseltebilir ya da ölçeklendirebilirsiniz, her iki işlemi de aynı anda gönderemezsiniz.
+1. Düğüm havuzu Kubernetes sürümü, denetim düzlemi ile aynı ana sürüm olmalıdır.
+1. Düğüm havuzu Kubernetes sürümü en fazla iki (2) alt sürüm olan denetim düzleden daha düşük, hiçbir zaman daha az olabilir.
+1. Düğüm havuzu, hiçbir Kubernetes düzeltme eki veya denetim düzlemine eşit veya daha küçük olabilir.
 
 ## <a name="scale-a-node-pool-manually"></a>Düğüm havuzunu el ile ölçeklendirme
 
@@ -269,7 +289,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -319,7 +339,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -372,7 +392,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -389,7 +409,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="schedule-pods-using-taints-and-tolerations"></a>Talara ve toleranları kullanarak Pod zamanlama
 
-Artık kümenizde iki düğüm havuzu vardır; başlangıçta oluşturulan varsayılan düğüm havuzu ve GPU tabanlı düğüm Havuzu. Kümenizdeki düğümleri görüntülemek için [kubectl Get Nodes][kubectl-get] komutunu kullanın. Aşağıdaki örnek çıktıda her düğüm havuzundaki bir düğüm gösterilmektedir:
+Artık kümenizde iki düğüm havuzu vardır; başlangıçta oluşturulan varsayılan düğüm havuzu ve GPU tabanlı düğüm Havuzu. Kümenizdeki düğümleri görüntülemek için [kubectl Get Nodes][kubectl-get] komutunu kullanın. Aşağıdaki örnek çıktı, düğümleri göstermektedir:
 
 ```console
 $ kubectl get nodes
@@ -480,68 +500,68 @@ Gerektiğinde düğüm havuzlarını güncelleştirme, ekleme veya silme gereksi
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "clusterName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of your existing AKS cluster."
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of your existing AKS cluster."
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "The location of your existing AKS cluster."
+            }
+        },
+        "agentPoolName": {
+            "type": "string",
+            "defaultValue": "myagentpool",
+            "metadata": {
+                "description": "The name of the agent pool to create or update."
+            }
+        },
+        "vnetSubnetId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The Vnet subnet resource ID for your existing AKS cluster."
+            }
+        }
     },
-    "location": {
-      "type": "string",
-      "metadata": {
-        "description": "The location of your existing AKS cluster."
-      }
+    "variables": {
+        "apiVersion": {
+            "aks": "2019-04-01"
+        },
+        "agentPoolProfiles": {
+            "maxPods": 30,
+            "osDiskSizeGB": 0,
+            "agentCount": 3,
+            "agentVmSize": "Standard_DS2_v2",
+            "osType": "Linux",
+            "vnetSubnetId": "[parameters('vnetSubnetId')]"
+        }
     },
-    "agentPoolName": {
-      "type": "string",
-      "defaultValue": "myagentpool",
-      "metadata": {
-        "description": "The name of the agent pool to create or update."
-      }
-    },
-    "vnetSubnetId": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Vnet subnet resource ID for your existing AKS cluster."
-      }
-    }
-  },
-  "variables": {
-    "apiVersion": {
-      "aks": "2019-04-01"
-    },
-    "agentPoolProfiles": {
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]"
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2019-04-01",
-      "type": "Microsoft.ContainerService/managedClusters/agentPools",
-      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
-      "location": "[parameters('location')]",
-      "properties": {
-            "maxPods": "[variables('agentPoolProfiles').maxPods]",
-            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
-            "count": "[variables('agentPoolProfiles').agentCount]",
-            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
-            "osType": "[variables('agentPoolProfiles').osType]",
-            "storageProfile": "ManagedDisks",
-      "type": "VirtualMachineScaleSets",
-            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-            "orchestratorVersion": "1.13.10"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "maxPods": "[variables('agentPoolProfiles').maxPods]",
+                "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+                "count": "[variables('agentPoolProfiles').agentCount]",
+                "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+                "osType": "[variables('agentPoolProfiles').osType]",
+                "storageProfile": "ManagedDisks",
+                "type": "VirtualMachineScaleSets",
+                "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+                "orchestratorVersion": "1.13.10"
+            }
+        }
+    ]
 }
 ```
 

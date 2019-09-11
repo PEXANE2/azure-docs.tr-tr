@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cb783630b32b4cc28d4e4f1cfb33027da3b8d2e0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3325cb7170ebe42962c403d25d04c9fe2bae3b45
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966557"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276036"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory kullanarak MariaDB için Azure veritabanı 'ndan veri kopyalama 
 
@@ -41,7 +41,7 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği şu şekilde ayarlanmalıdır: **MariaDB** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **AzureMariaDB** | Evet |
 | connectionString | MariaDB için Azure veritabanı 'na bağlanmak için bir bağlantı dizesi. Bu dosyayı Azure portal > MariaDB-> bağlantı dizeleri için Azure veritabanınız-> ADO.NET One adresinden bulabilirsiniz. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `pwd` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
@@ -51,7 +51,7 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 {
     "name": "AzureDatabaseForMariaDBLinkedService",
     "properties": {
-        "type": "MariaDB",
+        "type": "AzureMariaDB",
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
@@ -72,7 +72,7 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 {
     "name": "AzureDatabaseForMariaDBLinkedService",
     "properties": {
-        "type": "MariaDB",
+        "type": "AzureMariaDB",
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
@@ -99,12 +99,12 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 
 Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, MariaDB veri kümesi için Azure veritabanı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-MariaDB için Azure veritabanı 'ndan veri kopyalamak için, veri kümesinin Type özelliğini **Mariadbtable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+MariaDB için Azure veritabanı 'ndan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **MariaDBTable** | Evet |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **AzureMariaDBTable** | Evet |
+| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -112,12 +112,13 @@ MariaDB için Azure veritabanı 'ndan veri kopyalamak için, veri kümesinin Typ
 {
     "name": "AzureDatabaseForMariaDBDataset",
     "properties": {
-        "type": "MariaDBTable",
+        "type": "AzureMariaDBTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Database for MariaDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -128,12 +129,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="azure-database-for-mariadb-as-source"></a>MariaDB için Azure veritabanı kaynak olarak
 
-MariaDB için Azure veritabanı 'ndan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Mariadbsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+MariaDB için Azure veritabanı 'ndan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **MariaDBSource** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **AzureMariaDBSource** | Evet |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 
@@ -156,7 +157,7 @@ MariaDB için Azure veritabanı 'ndan veri kopyalamak için kopyalama etkinliği
         ],
         "typeProperties": {
             "source": {
-                "type": "MariaDBSource",
+                "type": "AzureMariaDBSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {

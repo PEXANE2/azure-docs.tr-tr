@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996579"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232503"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'dan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -142,8 +142,8 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği olarak `TeradataTable`ayarlanmalıdır. | Evet |
-| database | Teradata veritabanının adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
-| table | Teradata veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| database | Teradata veritabanının adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| table | Teradata veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek:**
 
@@ -197,9 +197,9 @@ Teradata 'tan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği olarak `TeradataSource`ayarlanmalıdır. | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır (veri kümesindeki tablo belirtilmişse) |
-| partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verme değerleri şunlardır: **Hiçbiri** (varsayılan), **karma** ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, değil `None`) kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayarı da yapılandırın. Bu, bir Teradata veritabanından eşzamanlı olarak veri yükleme paralel derecesini belirler. Örneğin, bunu 4 olarak ayarlayabilirsiniz. | Hayır |
+| partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verme değerleri şunlardır: **Hiçbiri** (varsayılan), **karma** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (değil `None`), bir Teradata veritabanından eşzamanlı olarak veri yükleme derecesi, kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. | Hayır |
 | partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği `None`olmadığında Uygula. | Hayır |
-| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak, **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği `Hash` veya `DynamicRange`olduğunda geçerlidir. Kaynak verileri, Hook `?AdfHashPartitionCondition` veya `?AdfRangePartitionColumnName` WHERE yan tümcesini almak için bir sorgu kullanırsanız. [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | Hayır |
+| partitionColumnName | Paralel kopya için Aralık bölümü veya karma bölümü tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği `Hash` veya `DynamicRange`olduğunda geçerlidir. Kaynak verileri, Hook `?AdfHashPartitionCondition` veya `?AdfRangePartitionColumnName` WHERE yan tümcesini almak için bir sorgu kullanırsanız. [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | Hayır |
 | partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği `DynamicRange`olduğunda Uygula. Kaynak verileri almak için sorgu kullanırsanız WHERE yan tümcesinde kanca `?AdfRangePartitionUpbound` . Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
 | Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği `DynamicRange`olduğunda uygulayın. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfRangePartitionLowbound` . Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
 
@@ -247,7 +247,7 @@ Data Factory Teradata Bağlayıcısı, Teradata 'den paralel olarak veri kopyala
 
 Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre yüklemek için Teradata kaynağınıza karşı paralel sorgular çalıştırır. Paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, Teradata veritabanınızdaki verilerin bir kısmını alır.
 
-Özellikle de Teradata veritabanınızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyayı etkinleştirmek iyi bir fikirdir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazma işlemi geri çağrılır, bu durumda performans tek bir dosyaya yazılmasından daha iyidir.
+Teradata veritabanından büyük miktarda veri yüklediğinizde özellikle veri bölümleme ile paralel kopyayı etkinleştirmeniz önerilir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazma işlemi geri çağrılır, bu durumda performans tek bir dosyaya yazılmasından daha iyidir.
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

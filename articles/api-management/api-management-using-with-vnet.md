@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: 20577459e7dee2530efc17581bcc51b7d6bf2789
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073359"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861146"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlarla Azure API Management kullanma
 Azure sanal ağları (VNet), erişimi denetlediğiniz internet 'e yönelik bir yönlendirilebilir ağa Azure kaynaklarınızı yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgileri başlatın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -25,7 +25,7 @@ Azure sanal ağları (VNet), erişimi denetlediğiniz internet 'e yönelik bir y
 Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ içindeki arka uç hizmetlerine erişebilir. Geliştirici portalı ve API ağ geçidi, Internet 'ten ya da yalnızca sanal ağ içinden erişilebilir olacak şekilde yapılandırılabilir.
 
 > [!NOTE]
-> Azure API Management hem klasik hem de Azure Resource Manager VNET 'leri destekler.
+> API içeri aktarma belgesi URL 'SI, genel olarak erişilebilen bir internet adresinde barındırılmalıdır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -79,7 +79,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 >
 
 > [!IMPORTANT]
-> VNET 'ten API Management kaldırır veya içinde dağıtıldığı bir değişikliği değiştirirseniz, daha önce kullanılmış olan VNET, en fazla iki saate kadar kilitli kalabilirler. Bu süre boyunca VNET 'i silmek veya yeni bir kaynak dağıtmak mümkün olmayacaktır.
+> VNET 'ten API Management kaldırır veya içinde dağıtıldığı bir değişikliği değiştirirseniz, daha önce kullanılmış olan VNET, altı saate kadar kilitli kalabilir. Bu süre boyunca VNET 'i silmek veya yeni bir kaynak dağıtmak mümkün olmayacaktır. Bu davranış, API-sürüm 2018-01-01 ve öncesini kullanan istemciler için geçerlidir. API-sürüm 2019-01-01 ve üzeri kullanan istemciler, ilişkili API Management hizmeti silindikten hemen sonra sanal ağ serbest bırakılır.
 
 ## <a name="enable-vnet-powershell"> </a>PowerShell cmdlet 'LERINI kullanarak VNET bağlantısını etkinleştirme
 Ayrıca, PowerShell cmdlet 'lerini kullanarak VNET bağlantısını etkinleştirebilirsiniz
@@ -149,7 +149,11 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
     
   * Internet 'ten gelen tüm denetim düzlemi trafiği, API Management hizmetinizin yönetim uç noktasına, API Management tarafından barındırılan belirli bir gelen IP kümesiyle yönlendirilir. Trafiğe Zorlamalı tünel yapıldığında yanıtlar, bu gelen kaynak IP 'lerine simetrik bir şekilde geri eşleşmeyecektir. Sınırlamanın üstesinden gelmek için, bu konak yollarının hedefini "Internet" olarak ayarlayarak aşağıdaki Kullanıcı tanımlı yolları ([udrs][UDRs]) Azure 'a geri ekleyebilmemiz gerekir. Denetim düzlemi trafiği için gelen IP 'lerin kümesi aşağıdaki gibidir:
     
-    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
+     | Azure ortamı | Yönetim IP adresleri                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure genel      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
+    | Azure Kamu  | 52.127.42.160/32, 52.127.34.192/32 |
+    | Azure Çin       | 139.217.51.16/32, 139.217.171.176/32 |
 
   * Zorlamalı tünel sağlayan diğer API Management hizmet bağımlılıkları için, ana bilgisayar adını çözümlemek ve uç noktaya ulaşmak için bir yol olmalıdır. Bunlar şunlardır
       - Ölçümler ve sistem durumu Izleme

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931779"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125428"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir? 
 
@@ -41,7 +41,24 @@ Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 
-Ağustos 2019: URL ayrıştırma kuralına göre POST semantiğini zorla-yinelenen parametreler bir hata tetikler, parametrelerin tırnak işaretleri artık yok sayılır ve [bom](https://www.w3.org/International/questions/qa-byte-order-mark) yok sayılır.
+Eylül 2019: URL ayrıştırma kurallarına göre daha fazla POST semantiği zorlaması-yinelenen parametreler bir hata tetikler ve [bom](https://www.w3.org/International/questions/qa-byte-order-mark) yok sayılır.
+
+## <a name="august-2019"></a>Ağustos 2019
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>GÖNDERI formu semantiği daha kesin boşluk sağlayacak ve tırnak işaretleri yoksayılacak
+
+**Geçerlilik tarihi**: 2 Eylül 2019
+
+**Etkilenen uç noktalar**: V 1.0 ve v 2.0
+
+**Protokol etkilendi**: Her yerden GÖNDERI kullanılır ([istemci kimlik bilgileri](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [yetkilendirme kodu satın](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)alma, [ropc](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)ve [yenileme belirteci satın](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)alma)
+
+9/2 haftası başlatılırken POST yöntemini kullanan kimlik doğrulama istekleri, daha sıkı HTTP standartları kullanılarak doğrulanacak.  Özellikle, boşluklar ve çift tırnak işaretleri (") artık istek formu değerlerinden kaldırılmayacak. Bu değişikliklerin mevcut istemcileri bozmak için beklenmez ve Azure AD 'ye gönderilen isteklerin her seferinde güvenilir bir şekilde işlenmesini sağlar. Gelecekte (bkz. Yukarıdaki) yinelenen parametreleri reddetmeyi ve isteklerin içindeki ürün reçetesini yoksaymayı planlıyoruz. 
+
+Örnek:
+
+Bugün, `?e=    "f"&g=h` `?e=f&g=h` ile aynı şekilde `e`  == ayrıştırılır. `f`  Bu değişiklik ile, bu, `e`  ==  `    "f"` geçerli bir bağımsız değişken olması olası değildir ve istek şimdi başarısız olur. 
+
 
 ## <a name="july-2019"></a>2019 Temmuz
 

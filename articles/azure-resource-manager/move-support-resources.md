@@ -4,14 +4,14 @@ description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kayna
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/23/2019
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: a588d4e4b1978b572488dcd5d53698cbb8f7d311
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997286"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801354"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
@@ -374,7 +374,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | hesaplar | Evet | Evet |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -389,7 +389,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Galeriler/resimler/sürümler | Hayır | Hayır |
 > | hostgroups | Hayır | Hayır |
 > | hostgroups/konaklar | Hayır | Hayır |
-> | images | Evet | Evet |
+> | görüntüler | Evet | Evet |
 > | proximityplacementgroups | Hayır | Hayır |
 > | restorepointcollections | Hayır | Hayır |
 > | sharedvmımages | Hayır | Hayır |
@@ -448,7 +448,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
@@ -528,14 +528,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | hesaplar | Evet | Evet |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | hesaplar | Evet | Evet |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
@@ -667,7 +667,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 
 ## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
@@ -722,7 +722,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 > | actiongroups | Evet | Evet |
 > | activitylogalerts | Hayır | Hayır |
 > | alertrules | Evet | Evet |
@@ -784,14 +784,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftlocationservices"></a>Microsoft. LocationServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -825,7 +825,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 > | hesaplar/çalışma alanları | Hayır | Hayır |
 > | hesaplar/çalışma alanları/projeler | Hayır | Hayır |
 > | teamaccounts | Hayır | Hayır |
@@ -837,7 +837,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft. MachineLearningOperationalization
 
@@ -865,7 +865,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Evet | Evet |
+> | hesaplar | Evet | Evet |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
@@ -1032,7 +1032,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Hayır | Hayır |
+> | hesaplar | Hayır | Hayır |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
@@ -1119,7 +1119,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | edgeclusters | Hayır | Hayır |
 > | ağlar | Hayır | Hayır |
 > | secretmağazaları | Hayır | Hayır |
-> | volumes | Hayır | Hayır |
+> | birim | Hayır | Hayır |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
 
@@ -1131,7 +1131,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | geçidinin | Evet | Evet |
 > | ağlar | Evet | Evet |
 > | gizli dizi | Evet | Evet |
-> | volumes | Evet | Evet |
+> | birim | Evet | Evet |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
@@ -1251,7 +1251,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | lý | Hayır | Hayır |
 > | ortamlar/EventSources | Hayır | Hayır |
-> | örnekler | Hayır | Hayır |
+> | Örnekler | Hayır | Hayır |
 > | örnekler/ortamlar | Hayır | Hayır |
 > | örnekler/ortamlar/EventSources | Hayır | Hayır |
 
@@ -1261,7 +1261,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | providerkayıtları | Hayır | Hayır |
-> | kaynaklar | Hayır | Hayır |
+> | resources | Hayır | Hayır |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -1291,7 +1291,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | account | Evet | Evet |
+> | hesap | Evet | Evet |
 > | Hesap/uzantı | Evet | Evet |
 > | hesap/proje | Evet | Evet |
 

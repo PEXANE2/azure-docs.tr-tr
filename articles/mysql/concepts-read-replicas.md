@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: e0309ac70d39272bf045e49ca7ddecd258cc1f36
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7e1f27738ae5a87cfb84fad955f80ad2f2eb910f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992038"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773305"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
 Okuma amaçlı çoğaltma özelliği, MySQL için Azure Veritabanı’ndan salt okunur bir sunucuya verileri çoğaltmanıza olanak sağlar. Ana sunucudan en fazla beş çoğaltmaya çoğaltabilirsiniz. Çoğaltmalar, MySQL altyapısının yerel ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisini kullanılarak zaman uyumsuz olarak güncelleştirilir. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın.
-
-> [!IMPORTANT]
-> Ana sunucunuz ile aynı bölgede veya seçtiğiniz diğer herhangi bir Azure bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
 
 Çoğaltmalar, yönettiğiniz yeni sunuculardan MySQL için normal Azure veritabanı sunucularına benzer. Her okuma çoğaltması için, sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem için faturalandırılırsınız.
 
@@ -37,10 +34,9 @@ Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelli
 ## <a name="cross-region-replication"></a>Çapraz bölge çoğaltma
 Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
 
-> [!IMPORTANT]
-> Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
+[MySQL Için Azure veritabanı bölgesinde](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)bir ana sunucunuz olabilir.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, ana bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
 
-[MySQL Için Azure veritabanı bölgesinde](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)bir ana sunucunuz olabilir.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir.
+[![Çoğaltma bölgelerini oku](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Ana sunucunuzun bulunduğu yere bakılmaksızın aşağıdaki bölgelerin herhangi birinde her zaman bir okuma çoğaltması oluşturabilirsiniz. Evrensel çoğaltma bölgeleri şunlardır:
@@ -93,7 +89,7 @@ Bu ölçüm, MySQL 'in `seconds_behind_master` `SHOW SLAVE STATUS` komutunda kul
 
 Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
-## <a name="stop-replication"></a>Çoğaltmayı durdurma
+## <a name="stop-replication"></a>Çoğaltmayı durdur
 
 Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltma durdurulduktan sonra çoğaltma tek başına bir sunucu haline gelir. Tek başına sunucusundaki veriler, çoğaltma durdurma komutunun başlatıldığı zamanda çoğaltma üzerinde kullanılabilir olan veri. Tek başına sunucu, ana sunucu ile birlikte yakalamaz.
 
@@ -121,7 +117,7 @@ Bir okuma çoğaltması, MySQL için yeni bir Azure veritabanı sunucusu olarak 
 
 ### <a name="replica-configuration"></a>Çoğaltma yapılandırması
 
-Bir çoğaltma, ana öğe ile aynı sunucu yapılandırması kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama, yedekleme saklama süresi ve MySQL Engine sürümü. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
+Bir çoğaltma, ana öğe ile aynı sunucu yapılandırması kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 
 > [!IMPORTANT]
 > Ana sunucu yapılandırması yeni değerlere güncelleştirilmeden önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.

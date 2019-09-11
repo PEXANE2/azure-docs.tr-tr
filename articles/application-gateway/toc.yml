@@ -81,8 +81,10 @@
       items:
         - name: Durum yoklaması
           href: application-gateway-probe-overview.md
-        - name: Tanılama
+        - name: Tanılama günlükleri ve arka uç sistem durumu
           href: application-gateway-diagnostics.md
+        - name: Ölçümler
+          href: application-gateway-metrics.md
     - name: App service web uygulaması ve birden çok kiracı desteği
       href: application-gateway-web-app-overview.md
     - name: WebSocket desteği
@@ -225,6 +227,8 @@
           href: resource-health-overview.md
         - name: Log Analytics kullanma
           href: log-analytics.md
+        - name: Arka uç sistem durumu sorunları
+          href: application-gateway-backend-health-troubleshooting.md
     - name: v1'den v2'ye geçiş
       href: migrate-v1-v2.md
 - name: Başvuru

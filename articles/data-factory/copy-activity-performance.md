@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996454"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232339"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
@@ -181,6 +181,7 @@ Her kopyalama etkinliği çalıştırması için Azure Data Factory, verileri ka
 | Kopyalama senaryosu | Hizmet tarafından belirlenen varsayılan paralel kopya sayısı |
 | --- | --- |
 | Dosya tabanlı depoları arasında veri kopyalama |Dosyaların boyutuna ve iki bulut veri deposu arasında veri kopyalamak için kullanılan DIUs sayısının yanı sıra şirket içinde barındırılan tümleştirme çalışma zamanı makinesinin fiziksel yapılandırması da bağlıdır. |
+| Bölüm seçeneği etkinken ilişkisel veri deposundan kopyalama ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)dahil)|4 |
 | Tüm kaynak depolardan Azure Tablo depolamaya veri kopyalama |4 |
 | Tüm diğer kopyalama senaryolarında |1\. |
 
@@ -192,7 +193,7 @@ Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalam
 **Şunlara işaret eder:**
 
 - Dosya tabanlı mağazalar arasında veri kopyaladığınızda **Parallelcopy** , dosya düzeyinde paralellik belirler. Tek bir dosya içindeki parçalama otomatik ve şeffaf bir şekilde gerçekleşir. Verileri paralel ve **paralelde**paralel olarak yüklemek için belirli bir kaynak veri deposu türü için en uygun öbek boyutunu kullanmak üzere tasarlanmıştır. Gerçek veri taşıma Hizmeti'nde kopyalama işleminin çalışma zamanında kullandığı paralel kopya sayısı sahip olduğunuz dosyaların sayısı, en fazla ' dir. Kopyalama davranışı **Mergefile**ise, kopyalama etkinliği dosya düzeyinde paralellik özelliğinden yararlanamaz.
-- Dosya tabanlı olmayan mağazalardan ( [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Bağlayıcısı dışında, veri bölümleme özelliği etkinleştirilmiş bir kaynak olarak) verileri kopyaladığınızda, veri taşıma hizmeti olan depolar **Parallelkopyaları** özelliğini yoksayar. Paralellik belirtilmiş olsa bile, bu durumda uygulanmaz.
+- Dosya tabanlı olmayan mağazalardan ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Bağlayıcısı hariç) dosya tabanlı depolarda verileri kopyaladığınızda, bu veriler taşıma hizmeti **Parallelkopyaları** özelliğini yoksayar. Paralellik belirtilmiş olsa bile, bu durumda uygulanmaz.
 - **Parallelkopyaların** özelliği **dataıntegrationunits**öğesine göre belirlenir. Önceki tüm veri tümleştirme birimlerinizde sayılır.
 - **Parallelkopyaları** özelliği için bir değer belirttiğinizde, kaynak ve havuz Veri depolarındaki yük artışını göz önünde bulundurun. Ayrıca, kopyalama etkinliği, karma kopya için, bu, örneğin, karma kopyaya karşı güç alıyorsa, şirket içinde barındırılan tümleştirme çalışma zamanına yönelik yük artışını de göz önünde bulundurun. Bu yük artışı, özellikle aynı veri deposunda çalışan aynı etkinliklerin birden çok etkinliğiniz veya eş zamanlı çalıştırmaları olduğunda gerçekleşir. Veri deposunun veya şirket içinde barındırılan tümleştirme çalışma zamanının yük ile azaldığını fark ederseniz, yükü ortadan kaldırmak için **Parallelkopyaların** değerini azaltın.
 

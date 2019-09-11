@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967086"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207143"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde görevleri temsilci seçme (Önizleme)
 
@@ -30,13 +30,15 @@ ms.locfileid: "68967086"
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Varsayılan olarak, genel Yöneticiler ve Kullanıcı yöneticileri Azure AD yetkilendirme yönetiminin tüm yönlerini oluşturabilir ve yönetebilir. Ancak, bu rollerdeki kullanıcılar erişim paketlerinin gerekli olduğu tüm senaryoları bilmiyor olabilir. Genellikle, kimin işbirliği yapmaları gerektiğini bilen departmanlar içindeki kullanıcılardır.
+Varsayılan olarak, genel Yöneticiler ve Kullanıcı yöneticileri Azure AD yetkilendirme yönetiminin tüm yönlerini oluşturabilir ve yönetebilir. Ancak, bu rollerdeki kullanıcılar erişim paketlerinin gerekli olduğu tüm senaryoları bilmiyor olabilir. Genellikle, kimin işbirliği yapmaları gerektiğini bilen departmanlar içindeki kullanıcılardır. 
 
-Yönetici olmayanlar için kısıtlanmamış izinler vermek yerine kullanıcılara, işlerini gerçekleştirmek için ihtiyaç duydukları en düşük izinleri verebilir ve çakışan veya uygunsuz erişim hakları oluşturmaktan kaçınabilirsiniz. Bu makalede, yetkilendirme yönetiminde çeşitli görevleri temsilci olarak atamak için atayabileceğiniz roller açıklanmaktadır.
+Yönetici olmayanlar için kısıtlanmamış izinler vermek yerine kullanıcılara, işlerini gerçekleştirmek için ihtiyaç duydukları en düşük izinleri verebilir ve çakışan veya uygunsuz erişim hakları oluşturmaktan kaçınabilirsiniz. Bu makalede, yetkilendirme yönetiminde çeşitli görevleri temsilci olarak atamak için atayabileceğiniz roller açıklanmaktadır. 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>Bölüm benimseme için temsilci örneği
 
-Yetkilendirme yönetiminde görevlerin nasıl temsilciliğini anlayabileceğinizi anlamak için, bir örneği göz önünde bulundurmasına yardımcı olur. Kuruluşunuzun aşağıdaki beş Kullanıcı olduğunu varsayalım:
+Yetkilendirme yönetiminde görevlerin nasıl temsilciliğini anlayabileceğinizi anlamak için, bir örneği göz önünde bulundurmasına yardımcı olur. 
+
+Kuruluşunuzun aşağıdaki beş Kullanıcı olduğunu varsayalım:
 
 | Kullanıcı | Bölüm | Notlar |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ Hem araştırma hem de pazarlama departmanları, kullanıcıları için yetkilen
 Artık araştırma ve pazarlama departmanları yetkilendirme yönetimini kullanabilir. Bob, Carol, Davve ve Elisa, ilgili kataloglarında erişim paketleri oluşturabilir ve yönetebilir.
 
 ![Yetkilendirme Yönetimi temsilcisi örneği](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>Yetkilendirme Yönetimi rolleri
 
@@ -114,6 +117,8 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 | [Bulut uygulaması Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  |  | :heavy_check_mark: |  |
 | Kullanıcı | Katalog sahibi | Yalnızca Grup sahibi ise | Yalnızca Grup sahibi ise | Yalnızca uygulama sahibi ise |  |
 
+Bir görev için en düşük ayrıcalıklı rolü öğrenmek için, [Azure Active Directory ' de yönetici görevine göre yönetici rollerine](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)de başvurabilirsiniz.
+
 ## <a name="add-a-catalog-creator"></a>Katalog Oluşturucu Ekleme
 
 Katalog oluşturma 'yı atamak istiyorsanız, kullanıcıları Katalog Oluşturucu rolüne eklersiniz.  Bireysel kullanıcılar ekleyebilir veya kolaylık sağlaması için Üyeler daha sonra kataloglar oluşturabilebilen bir grup ekleyebilirsiniz. Bir kullanıcıyı Katalog Oluşturucu rolüne atamak için aşağıdaki adımları izleyin.
@@ -124,7 +129,7 @@ Katalog oluşturma 'yı atamak istiyorsanız, kullanıcıları Katalog Oluşturu
 
 1. Sol taraftaki menüde, **Yetkilendirme Yönetimi** bölümünde, **Ayarlar**' a tıklayın.
 
-1.           **Düzenle**‘ye tıklayın.
+1. **Düzenle**‘ye tıklayın.
 
 1. **Temsilci yetkilendirme yönetimi** bölümünde, bu yetkilendirme yönetimi rolünün üyeleri olacak kullanıcıları veya grupları seçmek için **Katalog oluşturucuları Ekle** ' ye tıklayın.
 

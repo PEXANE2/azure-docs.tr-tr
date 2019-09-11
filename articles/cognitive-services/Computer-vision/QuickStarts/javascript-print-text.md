@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Extract yazdırılan metin BEKLEYEN, JavaScript'
+title: 'Hızlı Başlangıç: Yazdırılan metni Ayıkla-REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, JavaScript ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 157fb161e9e3e2d16ce9f41901a8411b0ac0f22a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 443dedd23b6b4c2dd2514a3f7080bdeb30522a14
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605930"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137800"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve JavaScript kullanarak yazdırılan metin (OCR) ayıklayın
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve JavaScript kullanarak yazdırılan metni (OCR) Ayıkla
 
 Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
@@ -26,18 +26,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
-1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
-    1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-    1. Gerekirse `uriBase` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesinden [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminin uç nokta URL’si ile değiştirin.
-    1. İsteğe bağlı olarak `inputImage` denetimi için `value` özniteliğinin değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-printed-text.html`.
+1. İsteğe bağlı olarak `inputImage` denetimi için `value` özniteliğinin değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
+1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-printed-text.html`.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.
 1. Tarayıcıda web sayfası görüntülendiğinde, **Görüntü oku** düğmesini seçin.
@@ -57,19 +54,11 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz 
         // *** Update or verify the following values. ***
         // **********************************************
 
-        // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<Subscription Key>";
-
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westcentralus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
+        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        
+        var uriBase = endpoint + "vision/v2.0/ocr";
 
         // Request parameters.
         var params = {

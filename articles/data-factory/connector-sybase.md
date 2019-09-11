@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Sybase'den veri kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına Sybase'den bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Data Factory kullanarak Sybase 'ten veri kopyalama | Microsoft Docs
+description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak Sybase 'ten desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,57 +10,57 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab2035ec344e07d88e2ac4ffb19cb1b2361f2e92
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473068"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277475"
 ---
-# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Sybase Azure Data Factory kullanarak verileri kopyalama
-> [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
+# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri kopyalama
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-onprem-sybase-connector.md)
 > * [Geçerli sürüm](connector-sybase.md)
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de bir Sybase veritabanından veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, bir Sybase veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Sybase veritabanından veri tüm desteklenen havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Verileri Sybase veritabanından desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
-Özellikle, bu Sybase bağlayıcı'yı destekler:
+Özellikle, bu Sybase Bağlayıcısı şunları destekler:
 
-- SAP Sybase SQL her yerden (ASA) **sürüm 16 ve yukarıdaki**; IQ ve ASE desteklenmez.
-- Kullanarak verileri kopyalama **temel** veya **Windows** kimlik doğrulaması.
+- SAP Sybase SQL her yerde (ASA) **sürüm 16 ve üzeri**; IQ ve ATıCı desteklenmez.
+- **Temel** veya **Windows** kimlik doğrulaması kullanarak verileri kopyalama.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Sybase bu bağlayıcıyı kullanmak için gerekir:
+Bu Sybase bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- Şirket içinde barındırılan tümleştirme çalışma zamanını oluşturan ayarlayın. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makale Ayrıntılar için.
-- Yükleme [Sybase iAnywhere.Data.SQLAnywhere için veri sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=324846) 16 veya yukarıdaki tümleştirme çalışma zamanı makinesinde.
+- Şirket içinde barındırılan bir Integration Runtime ayarlayın. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](create-self-hosted-integration-runtime.md) makale Ayrıntılar için.
+- Integration Runtime makinesinde [Sybase ıheryer. Data. SQLAnywhere 16 veya üzeri için veri sağlayıcısını](https://go.microsoft.com/fwlink/?linkid=324846) yükler.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli Sybase bağlayıcıya tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, Sybase bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özelliklerle ilgili ayrıntıları sağlar.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-Sybase bağlı hizmeti için aşağıdaki özellikleri destekler:
+Aşağıdaki özellikler, Sybase bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Sybase** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Sybase** | Evet |
 | server | Sybase sunucusunun adı. |Evet |
-| database | Sybase veritabanı adı. |Evet |
+| database | Sybase veritabanının adı. |Evet |
 | authenticationType | Sybase veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler şunlardır: **Basic**, ve **Windows**. |Evet |
-| username | Sybase veritabanına bağlanmak için kullanıcı adı belirtin. |Evet |
-| password | Kullanıcı adı için belirtilen kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtildiği gibi bir şirket içinde barındırılan tümleştirme çalışma zamanı gereklidir [önkoşulları](#prerequisites). |Evet |
+| username | Sybase veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
 **Örnek:**
 
@@ -89,14 +89,14 @@ Sybase bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölümde, Sybase veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Sybase veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Verileri Sybase'den kopyalamak için dataset öğesinin type özelliği ayarlamak **RelationalTable**. Aşağıdaki özellikler desteklenir:
+Sybase 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **RelationalTable** | Evet |
-| tableName | Sybase veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SybaseTable** | Evet |
+| tableName | Sybase veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -104,28 +104,31 @@ Verileri Sybase'den kopyalamak için dataset öğesinin type özelliği ayarlama
 {
     "name": "SybaseDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SybaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Sybase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
 
+`RelationalTable` Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
+
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Sybase kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Sybase kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="sybase-as-source"></a>Sybase kaynağı olarak
+### <a name="sybase-as-source"></a>Kaynak olarak Sybase
 
-Verileri Sybase'den kopyalamak için kopyalama etkinliği kaynak türünü ayarlayın. **RelationalSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Verileri Sybase 'ten kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **RelationalSource** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **SybaseSource** | Evet |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 
@@ -148,7 +151,7 @@ Verileri Sybase'den kopyalamak için kopyalama etkinliği kaynak türünü ayarl
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SybaseSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -159,11 +162,13 @@ Verileri Sybase'den kopyalamak için kopyalama etkinliği kaynak türünü ayarl
 ]
 ```
 
-## <a name="data-type-mapping-for-sybase"></a>Sybase için eşleme veri türü
+Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
 
-Verileri Sybase'den kopyalarken, aşağıdaki eşlemeler Sybase veri türlerinden Azure veri fabrikası geçici veri türleri için kullanılır. Bkz: [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) eşlemelerini nasıl yapar? kopyalama etkinliği kaynak şema ve veri türü için havuz hakkında bilgi edinmek için.
+## <a name="data-type-mapping-for-sybase"></a>Sybase için veri türü eşlemesi
 
-Sybase T-SQL türlerini destekler. Bir eşleme için SQL türünden Azure veri fabrikası geçici veri türleri için bkz [Azure SQL Veritabanı Bağlayıcısı - veri türü eşlemesi](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) bölümü.
+Verileri Sybase 'ten kopyalarken, veri türleri Azure Data Factory için Sybase veri türlerinden aşağıdaki eşlemeler kullanılır. Bkz: [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) eşlemelerini nasıl yapar? kopyalama etkinliği kaynak şema ve veri türü için havuz hakkında bilgi edinmek için.
+
+Sybase T-SQL türlerini destekler. SQL türlerindeki bir eşleme tablosu, ara veri türlerini Azure Data Factory için, bkz. [Azure SQL Veritabanı Bağlayıcısı-veri türü eşleme](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) bölümü.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

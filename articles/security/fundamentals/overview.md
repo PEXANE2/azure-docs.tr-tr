@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907904"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129344"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğine giriş
 ## <a name="overview"></a>Genel Bakış
@@ -365,7 +365,7 @@ Kapsamlı bir kimlik ve erişim yönetimi bulut çözümü olan [Azure Active Di
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) , kuruluşunuzdaki çalışanlar tarafından kullanılan bulut uygulamalarını tanımlamanızı sağlayan Azure Active Directory Premium bir özelliğidir.
 
-- [Azure Active Directory kimlik koruması](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) , risk olaylarına ve kuruluşunuzun özelliklerini etkileyebilecek olası güvenlik açıklarına birleştirilmiş bir görünüm sağlamak için Azure Active Directory anomali algılama yeteneklerini kullanan bir güvenlik hizmetidir. lerinizde.
+- [Azure Active Directory kimlik koruması](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) , risk algılamaları ve kuruluşunuzun özelliklerini etkileyebilecek olası güvenlik açıklarına birleştirilmiş bir görünüm sağlamak için Azure Active Directory anomali algılama yeteneklerini kullanan bir güvenlik hizmetidir lerinizde.
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) , etki alanı denetleyicilerini dağıtmanıza gerek kalmadan Azure VM 'lerine bir etki alanına katmanızı sağlar. Kullanıcılar bu VM 'Lerde kurumsal Active Directory kimlik bilgilerini kullanarak oturum açabilir ve kaynaklara sorunsuz bir şekilde erişebilir.
 

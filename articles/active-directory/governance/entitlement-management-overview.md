@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032550"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241705"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD yetkilendirme yönetimi nedir? (Önizleme)
 
@@ -139,6 +139,18 @@ Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için aşağıdaki ko�
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 Azure Kamu, Azure Almanya ve Azure Çin 21Vianet gibi özel bulutlar Şu anda bu önizlemede kullanıma sunulmamaktadır.
+
+### <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
+
+Kiracınızda, etkin üye kullanıcılarınız olduğu için en az sayıda Azure AD Premium P2 Lisansı olmalıdır. Yetkilendirme yönetiminde etkin üye kullanıcıları şunları içerir:
+
+- Bir erişim paketi için isteği başlatan veya onaylayan bir kullanıcı.
+- Erişim paketi atanan bir kullanıcı. 
+- Erişim paketlerini yöneten bir kullanıcı.
+
+Üye kullanıcılara yönelik lisansların bir parçası olarak, bir dizi Konuk kullanıcının yetkilendirme yönetimiyle etkileşime girmesine de izin verebilirsiniz. Dahil edebilirsiniz konuk kullanıcıların sayısını hesaplama hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B işbirliği Lisanslama Kılavuzu](../b2b/licensing-guidance.md).
+
+Kullanıcılarınıza lisansları atama hakkında daha fazla bilgi için, bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

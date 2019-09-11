@@ -1,23 +1,23 @@
 ---
-title: "Azure Hızlı Başlangıç: Azure CLI kullanarak Key Vault'tan gizli dizi ayarlama ve alma | Microsoft Docs"
+title: 'Hızlı Başlangıç: Azure Key Vault bir gizli dizi ayarlama ve alma'
 description: Azure CLI kullanarak Azure Key Vault'tan gizli dizi ayarlamayı ve almayı gösteren hızlı başlangıç
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 01/08/2019
-ms.author: barclayn
-ms.openlocfilehash: e9537c158afad2877bb2df2650500ab218de676f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.custom: mvc, seo-javascript-september2019
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 70c450304c13a5c4b453226140ae699e0cabda19
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726755"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744768"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Hızlı Başlangıç: Ayarlayın ve Azure CLI kullanarak Azure Key Vault gizli dizi alma
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
 
 Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [Genel Bakış](key-vault-overview.md) bölümünü inceleyebilirsiniz. Azure CLI, komut veya betikler kullanarak Azure kaynakları oluşturup yönetmek için kullanılır. Bu hızlı başlangıçta bir anahtar kasası oluşturacaksınız. Bu işlemi tamamladıktan sonra bir gizli dizli depolayacaksınız.
 
@@ -27,13 +27,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-CLI kullanarak Azure'da oturum açma için şunu yazabilirsiniz:
+CLı kullanarak Azure 'da oturum açmak için şunu yazabilirsiniz:
 
 ```azurecli
 az login
 ```
 
-CLI aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için göz atın [oturum Azure CLI ile oturum açın](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) bölümüne göz atın
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -57,16 +57,16 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 Bu cmdlet’in çıktısı, yeni oluşturulan Key Vault’un özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:
 
-- **Kasa adı**: Bu örnekte, olan **Contoso-Vault2**. Bu adı diğer Key Vault komutları için kullanacaksınız.
-- **Kasa URI'si**: Bu örnekte, olan https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+- **Kasa adı**: Örnekte, bu **contoso-Vault2**' dır. Bu adı diğer Key Vault komutları için kullanacaksınız.
+- **Kasa URI 'si**: Örnekte, bu https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında herhangi bir işlemi gerçekleştirmeye yetkili olan tek hesaptır.
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 
-Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu parola bir uygulama tarafından kullanılabilir. Parola **ExamplePassword** ve değerini depolayacak **hVFkk965BuUv** da.
+Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu parola bir uygulama tarafından kullanılabilir. Parola, **Examplepassword** olarak adlandırılır ve **hVFkk965BuUv** değerini bunun içinde depolayacaktır.
 
-Adlı Key Vault'ta bir gizli dizi oluşturmak için aşağıdaki komutları yazın **ExamplePassword** değerini depolayacak **hVFkk965BuUv** :
+**HVFkk965BuUv** değerini depolayacak **examplepassword** adlı Key Vault bir gizli dizi oluşturmak için aşağıdaki komutları yazın:
 
 ```azurecli
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
@@ -93,7 +93,9 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Key Vault oluşturdunuz ve içinde bir gizli dizi depoladınız. Key Vault ve bunu uygulamalarınızla nasıl kullanabileceğiniz hakkında daha fazla bilgi almak için, Key Vault ile birlikte çalışan web uygulamalarına yönelik öğreticiye geçin.
+Bu hızlı başlangıçta bir Key Vault oluşturup bir gizli dizi depoladınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-> [!div class="nextstepaction"]
-> Azure kaynakları için yönetilen kimlikler kullanan bir web uygulamasındaki Key Vault’tan bir gizli diziyi okuma hakkında bilgi almak için aşağıdaki [Bir Azure web uygulamasını Key Vault’tan gizli dizi okuyacak şekilde yapılandırma](quick-create-net.md) öğreticisine geçin.
+- [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
+- Azure CLı için başvuruya bakın [az keykasa komutları](/cli/azure/keyvault?view=azure-cli-latest)
+- [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında bilgi edinin
+- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault

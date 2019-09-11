@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 92bfb921833d99a3538ffa8c4c5d16a9f0cd3acd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126295"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Nasıl Yapılır: Kullanıcı riski ilkesini yapılandırma
 
@@ -26,9 +26,9 @@ Bu makale, bir Kullanıcı risk ilkesini yapılandırmak için gereken bilgileri
 
 ## <a name="what-is-a-user-risk-policy"></a>Kullanıcı risk ilkesi nedir?
 
-Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk olayları olarak da bilinir. Bazı risk olayları gerçek zamanlı olarak algılanırken, daha fazla zaman gerektiren risk olayları da vardır. Örneğin, normal konumlara karşı imkansız bir yolculuğu algılamak için, sistemin normal davranışı hakkında bilgi edinmek için ilk öğrenme dönemi 14 gün gerektirir. Algılanan risk olaylarını çözümlemek için çeşitli seçenekler vardır. Örneğin, bireysel risk olaylarını el ile çözümleyebilir veya bir oturum açma riski veya Kullanıcı riski koşullu erişim ilkesi kullanarak bunları çözülebilir.
+Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk algılamaları olarak da bilinir. Bazı risk algılamaları gerçek zamanlı olarak algılanırken, daha fazla zaman gerektiren risk algılamaları da vardır. Örneğin, normal konumlara karşı imkansız bir yolculuğu algılamak için, sistemin normal davranışı hakkında bilgi edinmek için ilk öğrenme dönemi 14 gün gerektirir. Algılanan risk algılamalarını çözümlemek için çeşitli seçenekler vardır. Örneğin, tek tek risk algılamalarını el ile çözümleyebilir veya bir oturum açma riski veya Kullanıcı riski koşullu erişim ilkesi kullanarak bunları çözümleirsiniz.
 
-Bir kullanıcı için algılanan ve çözümlenemeyen tüm risk olayları etkin risk olayları olarak bilinir. Bir kullanıcıyla ilişkili etkin risk olayları Kullanıcı riski olarak bilinir. Azure AD, Kullanıcı riskine bağlı olarak, bir kullanıcının tehlikeye girdiği bir olasılığı (düşük, orta, yüksek) hesaplar. Olasılığa Kullanıcı risk düzeyi denir.
+Bir kullanıcı için algılanan ve çözülmediği tüm risk algılamaları etkin risk algılamaları olarak bilinir. Bir kullanıcıyla ilişkili etkin risk algılamaları, Kullanıcı riski olarak bilinir. Azure AD, Kullanıcı riskine bağlı olarak, bir kullanıcının tehlikeye girdiği bir olasılığı (düşük, orta, yüksek) hesaplar. Olasılığa Kullanıcı risk düzeyi denir.
 
 ![Kullanıcı riskleri](./media/howto-user-risk-policy/1031.png)
 
@@ -72,8 +72,8 @@ Risk düzeyine bağlı olarak oturum açarken kullanıcıları engellemek için 
 
 Oturum açmayı engelleme:
 
-* Etkilenen Kullanıcı için Yeni Kullanıcı risk olaylarının oluşturulmasını engeller
-* Yöneticilerin, kullanıcının kimliğini etkileyen risk olaylarını el ile düzeltmesini ve güvenli bir duruma geri yüklemesini sağlar
+* Etkilenen Kullanıcı için Yeni Kullanıcı risk algılamaları oluşturulmasını engeller
+* Yöneticilerin, kullanıcının kimliğini etkileyen risk algılamalarını el ile düzeltmesini ve güvenli bir duruma geri yüklemesini sağlar
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

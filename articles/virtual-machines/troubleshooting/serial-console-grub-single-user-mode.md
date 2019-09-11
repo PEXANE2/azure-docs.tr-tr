@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090183"
+ms.locfileid: "70124477"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
 GRUB, büyük olasılıkla bir VM 'yi önyüklerken göreceğiniz ilk şey olan, genel olarak birleştirilmiş bir önyükleme yükleyicidir. İşletim sistemi başlatılmadan önce gösterdiği için SSH aracılığıyla erişilebilir değildir. GRUB 'den önyükleme yapılandırmanızı, diğer şeyler arasında tek kullanıcı modunda önyüklenecek şekilde değiştirebilirsiniz.
@@ -58,9 +58,24 @@ Tek Kullanıcı modundayken, sudo ayrıcalıklarına sahip yeni bir kullanıcı 
 RHEL, normal şekilde önyükleme yapamıyor, sizi otomatik olarak tek kullanıcı moduna bırakacak. Ancak, tek kullanıcı modu için kök erişimi ayarlanmamışsa, kök parolaya sahip olmayacaktır ve oturum açabilirsiniz. Geçici bir çözüm vardır (bkz. ' El Ile tek kullanıcı moduna girme '), ancak öneri öncelikle kök erişimi ayarlamadır.
 
 ### <a name="grub-access-in-rhel"></a>RHEL 'de GRUB erişimi
-RHEL, kutudan çıkar seçeneğiyle birlikte gelir. Grub girmek için VM 'nizi ile `sudo reboot` yeniden başlatın ve herhangi bir tuşa basın. GRUB ekranının gösterilmesini görürsünüz.
+RHEL, kutudan çıkar seçeneğiyle birlikte gelir. Grub girmek için VM 'nizi ile `sudo reboot` yeniden başlatın ve herhangi bir tuşa basın. GRUB ekranının gösterilmesini görürsünüz. Görünmüyorsa, aşağıdaki satırların GRUB dosyanızda (`/etc/default/grub`) bulunduğundan emin olun:
 
-> Not: Red hat, kurtarma modu, acil durum modu, hata ayıklama modu ve kök parolayı sıfırlama için de belgeler sağlar. [Erişmek için buraya tıklayın](https://aka.ms/rhel7grubterminal).
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>RHEL 7:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> Red hat, kurtarma modu, acil durum modu, hata ayıklama modu ve kök parolayı sıfırlama için de belgeler sağlar. [Erişmek için buraya tıklayın](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>RHEL 'de tek kullanıcı modu için kök erişimi ayarlama
 RHEL 'deki tek kullanıcılı mod, kök kullanıcının etkinleştirilmesini gerektirir, bu varsayılan olarak devre dışıdır. Tek Kullanıcı modunu etkinleştirmeniz gerekiyorsa aşağıdaki yönergeleri kullanın:
@@ -193,7 +208,7 @@ SLES normal şekilde önyüklenemediğinde, otomatik olarak acil durum kabuğu '
 Red Hat Enterprise Linux benzer şekilde, Oracle Linux tek bir Kullanıcı modu, GRUB ve kök kullanıcının etkinleştirilmesini gerektirir.
 
 ### <a name="grub-access-in-oracle-linux"></a>Oracle Linux erişim
-Oracle Linux, kutudan çıkan GRUB ile birlikte gelir. Grub girmek için VM 'nizi ile `sudo reboot` yeniden başlatın ve ' Esc ' tuşuna basın. GRUB ekranının gösterilmesini görürsünüz. Grub 'yi görmüyorsanız, `GRUB_TERMINAL` satırın değerinin "seri konsolu" içerdiğinden emin olun, örneğin:. `GRUB_TERMINAL="serial console"`
+Oracle Linux, kutudan çıkan GRUB ile birlikte gelir. Grub girmek için VM 'nizi ile `sudo reboot` yeniden başlatın ve ' Esc ' tuşuna basın. GRUB ekranının gösterilmesini görürsünüz. Grub 'yi görmüyorsanız, `GRUB_TERMINAL` satırın değerinin "seri konsolu" içerdiğinden emin olun, örneğin:. `GRUB_TERMINAL="serial console"` GRUB ile `grub2-mkconfig -o /boot/grub/grub.cfg`yeniden derleyin.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux 'de tek kullanıcı modu
 Oracle Linux ' de tek kullanıcı modunu etkinleştirmek için yukarıdaki RHEL yönergelerini izleyin.

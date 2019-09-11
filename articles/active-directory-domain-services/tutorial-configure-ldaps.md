@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011358"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193336"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -63,7 +63,7 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 
 * **Güvenilir veren** -sertifika, Güvenli LDAP kullanılarak yönetilen etki alanına bağlanan bilgisayarlar tarafından güvenilen bir yetkili tarafından verilmelidir. Bu yetkili, genel bir CA veya bu bilgisayarlar tarafından güvenilen bir kuruluş CA 'sı olabilir.
 * **Yaşam süresi** -sertifika en az sonraki 3-6 ay için geçerli olmalıdır. Sertifikanın süresi dolarsa, yönetilen etki alanınız için Güvenli LDAP erişimi bozulur.
-* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *contoso.com*olarak adlandırılmışsa, sertifikanın konu adı *contoso.com*olmalıdır.
+* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *contoso.com*olarak adlandırılmışsa, sertifikanın konu adı * *. contoso.com*olmalıdır.
     * Güvenli LDAP 'nin Azure AD Domain Services ile düzgün şekilde çalıştığından emin olmak için sertifikanın DNS adı veya konu diğer adı bir joker sertifika olmalıdır. Etki alanı denetleyicileri rastgele adlar kullanır ve hizmetin kullanılabilir durumda kalmasını sağlamak için kaldırılabilir veya eklenebilir.
 * **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, SSL sunucusu kimlik doğrulaması için geçerli olmalıdır.
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 Aşağıdaki örnek çıktı, sertifikanın başarıyla oluşturulduğunu ve yerel sertifika deposunda (*Localmachine\)* depolandığını gösterir:
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 

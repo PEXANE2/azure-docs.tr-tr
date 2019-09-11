@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: f60125123d019cbfa93bfc1b06da7ac90b54e311
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b2823c935d11ae99ab1d87ae708945721820ad8c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742032"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306744"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -31,18 +31,35 @@ Aşağıdaki yöntemlerin her ikisinde de dosyaları Cloud Shell devam ettirir:
 > [!NOTE]
 > Dizininizdeki `$Home` SSH anahtarları gibi tüm dosyalar, bağlı dosya paylaşımınızda saklanan Kullanıcı diski yansımanızda kalıcıdır. `$Home` Dizininizde ve bağlı dosya paylaşımında bilgileri kalıcı hale getirebilmeniz için en iyi yöntemleri uygulayın.
 
-## <a name="bash-specific-commands"></a>Bash 'e özgü komutlar
+## <a name="clouddrive-commands"></a>CloudDrive komutları
 
 ### <a name="use-the-clouddrive-command"></a>`clouddrive` Komutunu kullanın
-Bash Cloud Shell ile, Cloud Shell bağlı dosya paylaşımının el ile güncelleştirilmesini `clouddrive`sağlayan adlı bir komutu çalıştırabilirsiniz.
+Cloud Shell ' de, Cloud Shell bağlı dosya paylaşımının el `clouddrive`ile güncelleştirilmesini sağlayan adlı bir komutu çalıştırabilirsiniz.
 !["CloudDrive" komutu çalıştırılıyor](media/persisting-shell-storage/clouddrive-h.png)
+
+### <a name="list-clouddrive"></a>Listele`clouddrive`
+Hangi dosya paylaşımının bağlı `clouddrive`olduğunu saptamak için `df` komutunu çalıştırın. 
+
+CloudDrive dosya yolu, URL 'deki depolama hesabı adınızı ve dosya paylaşımınızı gösterir. Örneğin, `//storageaccountname.file.core.windows.net/filesharename`
+
+```
+justin@Azure:~$ df
+Filesystem                                          1K-blocks   Used  Available Use% Mounted on
+overlay                                             29711408 5577940   24117084  19% /
+tmpfs                                                 986716       0     986716   0% /dev
+tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
+/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
+shm                                                    65536       0      65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
+justin@Azure:~$
+```
 
 ### <a name="mount-a-new-clouddrive"></a>Yeni bir CloudDrive takın
 
 #### <a name="prerequisites-for-manual-mounting"></a>El ile bağlama önkoşulları
 `clouddrive mount` Komutunu kullanarak Cloud Shell ilişkili dosya paylaşımının güncelleştirilmesini sağlayabilirsiniz.
 
-Var olan bir dosya paylaşımından bağlama yaparsanız, depolama hesaplarının Select Cloud Shell bölgesinde bulunması gerekir. Bash 'ten çalıştırarak `env` ve öğesini `ACC_LOCATION`denetleyerek konumu alın.
+Var olan bir dosya paylaşımından bağlama yaparsanız, depolama hesaplarının Select Cloud Shell bölgesinde bulunması gerekir. Çalıştırarak `env` ve`ACC_LOCATION`denetleyerek konumu alın.
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` Komutu
 
@@ -71,23 +88,6 @@ Dosya paylaşımınız, el ile silmediğiniz takdirde mevcut olmaya devam edecek
 
 > [!WARNING]
 > Bu komutu çalıştırmak hiçbir kaynağı silmez, bir kaynak grubu, depolama hesabı veya Cloud Shell eşlenen dosya paylaşımının el ile silinmesi, `$Home` Dizin disk görüntünüzü ve dosya paylaşımınızda bulunan dosyaları siler. Bu eylem geri alınamaz.
-
-### <a name="list-clouddrive"></a>Listele`clouddrive`
-Hangi dosya paylaşımının bağlı `clouddrive`olduğunu saptamak için `df` komutunu çalıştırın. 
-
-CloudDrive dosya yolu, URL 'deki depolama hesabı adınızı ve dosya paylaşımınızı gösterir. Örneğin, `//storageaccountname.file.core.windows.net/filesharename`
-
-```
-justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
-```
 ## <a name="powershell-specific-commands"></a>PowerShell 'e özgü komutlar
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Azure `clouddrive` dosya paylaşımlarını listeleyin
@@ -105,7 +105,6 @@ Cloud Shell bağlanan bir Azure dosya paylaşımının bağlantısını dilediğ
 Not: Bir dosyada bir işlev tanımlamanız ve PowerShell cmdlet 'lerinden çağırmak gerekiyorsa, nokta operatörü dahil olmalıdır. Örneğin:. .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bash Cloud Shell hızlı başlangıç](quickstart.md) <br>
-[PowerShell Cloud Shell hızlı başlangıç](quickstart-powershell.md) <br>
+[Hızlı başlangıç Cloud Shell](quickstart.md) <br>
 [Microsoft Azure dosyaları depolama hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Depolama etiketleri hakkında bilgi edinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

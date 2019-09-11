@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406108"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381802"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Hızlı Başlangıç: Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -55,9 +55,9 @@ Azure Kaynak grubunda tanımlı bir dizi işlem ve depolama kaynağı içeren bi
     | Resource group | Kaynak grubunuz | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
     | Küme adı | Benzersiz küme adı | Kümenizi tanımlayan benzersiz bir ad seçin. Girdiğiniz küme adının sonuna *[bölge].servicebus.windows.net* etki alanı adı eklenir. Ad yalnızca küçük harf ve sayı içerebilir. 4 ile 22 karakter arasında olmalıdır.
     | Bölge | *Batı ABD* veya *Batı ABD 2* | Bu hızlı başlangıç için *Batı ABD* veya *Batı ABD 2* (kullanılabilirlik alanları kullanılıyorsa) seçeneğini belirleyin. Üretim sisteminde ihtiyaçlarınıza en uygun bölgeyi seçmeniz gerekir.
-    | Kullanılabilirlik alanları | *1*, *2*, ve/veya *3* | Bölgeler tarafından desteklenen bölgeler için, örneklerinizin bulunacağı bölgeleri seçin (isteğe bağlı). Küme düğümleri varsayılan olarak, aynı veri merkezinde oluşturulur. Küme örneklerini aynı bölgedeki çeşitli kullanılabilirlik bölgelerine yerleştirmek için [Azure kullanılabilirlik alanları](/azure/availability-zones/az-overview) kullanın. Çeşitli kullanılabilirlik alanları ' nı seçerek, tek bir başarısızlık noktasını ortadan kaldırabilir ve yüksek kullanılabilirlik sağlayabilirsiniz. 
+    | Kullanılabilirlik alanları | *1*, *2*, ve/veya *3* | Küme örneklerini aynı bölgedeki çeşitli kullanılabilirlik bölgelerine yerleştirin (isteğe bağlı). [Azure kullanılabilirlik alanları](/azure/availability-zones/az-overview) aynı Azure bölgesi içindeki benzersiz fiziksel konumlardır. Azure Veri Gezgini kümesini ve kısmi bölge hatasından verileri korur. Küme düğümleri varsayılan olarak, aynı veri merkezinde oluşturulur. Çeşitli kullanılabilirlik alanları ' nı seçerek, tek bir başarısızlık noktasını ortadan kaldırabilir ve yüksek kullanılabilirlik sağlayabilirsiniz. Kullanılabilirlik bölgelerine dağıtım yalnızca küme oluşturma sırasında mümkündür ve daha sonraki bir tarihte değiştirilemez.
     | İşlem belirtimleri | *D13_v2* | Bu hızlı başlangıç için en düşük fiyatlı özelliği seçin. Üretim sisteminde ihtiyaçlarınıza en uygun özelliği seçmeniz gerekir.
-    | | |
+    | | | |
 
 1. Küme ayrıntılarınızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin ve kümeyi sağlamak için **oluşturun** . Sağlama genellikle yaklaşık 10 dakika sürer.
 

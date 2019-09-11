@@ -6,16 +6,16 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: e1e9e998c2ac4695d955a546d0f02fbc2b517d5e
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907486"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764678"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda performans önerileri-tek sunucu
 
-**Şunlara uygulanır:** PostgreSQL için Azure veritabanı-tek sunucu 9,6 ve 10
+**Şunlara uygulanır:** PostgreSQL için Azure veritabanı-tek sunuculu sürümler 9,6, 10, 11
 
 Performans önerileri özelliği, gelişmiş performans için özel öneriler oluşturmak üzere veritabanlarınızı analiz edin. Bu önerileri oluşturmak için analiz, şema dahil çeşitli veritabanı özelliklerine bakar. Performans önerileri özelliğini tam olarak kullanmak için sunucunuzda [sorgu deposunu](concepts-query-store.md) etkinleştirin. Herhangi bir performans önerisi uygulandıktan sonra, bu değişikliklerin etkisini değerlendirmek için performansı sınamalısınız. 
 

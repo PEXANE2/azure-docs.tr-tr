@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e80f852a48d7da9480e6c0eddc675e6bcf524eb7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ce8d0d669af93d4886b4bca25f67e9261e5af20a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562966"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308118"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Node. js ile Bilgi Bankası 'ndan bir soruya yanıt alın
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Hızlı Başlangıç: Node. js ile Bilgi Bankası 'ndan bir soruya yanıt alın
 
 Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/data-sources-supported.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir. 
 

@@ -309,7 +309,7 @@
           href: b2clogin.md
         - name: Web API’yi b2clogin.com’a geçirme
           href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
+          displayName: 'migrate, b2clogin, owin'
     - name: Otomasyon
       items:
         - name: Kullanım raporunu dışarı aktarma
@@ -318,6 +318,9 @@
           href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: Denetim günlükleri
       href: active-directory-b2c-reference-audit-logs.md
+    - name: Güvenli API Management API’si
+      href: secure-api-management.md
+      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Uyumluluk
       items:
         - name: Kullanıcı erişimi

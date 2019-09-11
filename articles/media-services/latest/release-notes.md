@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: f4a859f1e63866a50167031569dca05de3e9af27
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856302"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801396"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -34,6 +34,10 @@ ms.locfileid: "68856302"
 
 Daha fazla bilgi için bkz. [Media Services V2 'den v3 'e geçiş Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="september-2019"></a>Eylül 2019
+
+Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat x 365 gün önizlemesini duyuruyor.
+ 
 ## <a name="august-2019"></a>Ağustos 2019
 
 ### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Güney Afrika bölgesel çifti Media Services için açık 

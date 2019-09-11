@@ -1,4 +1,4 @@
-- name: Uygulama Yönetimi Belgeleri
+- name: Uygulama yönetimi belgeleri
   href: index.yml
 - name: Genel Bakış
   expanded: true
@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: Kapsam belirleme filtreleri
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: Kapsam dışı kullanıcılar için silme işlemini atlama
+              href: skip-out-of-scope-deletions.md
             - name: Sağlama durumunu denetleme
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Otomatik kullanıcı hazırlama raporu
               href: check-status-user-account-provisioning.md
+            - name: Yapılandırmanızı dışarı ve içeri aktarma
+              href: export-import-provisioning-configuration.md
         - name: Kullanıcı hazırlama sorunlarını giderme
           items:
             - name: Kullanıcı hazırlama sorunlarını giderme
@@ -342,6 +346,10 @@
       items:
         - name: Öznitelik eşlemeleri için ifadeler yazma
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect Sağlama Aracısı
+      items:
+        - name: Sağlama Aracısı sürüm geçmişi
+          href: provisioning-agent-release-version-history.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Proxy’si sürüm geçmişi

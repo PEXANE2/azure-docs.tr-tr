@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640050"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845302"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Hızlı Başlangıç: Azure portal, PowerShell ve Azure CLı kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
 
@@ -30,8 +30,8 @@ Bu hızlı başlangıçtaki tüm adımlar için [Azure Portal](https://portal.az
 
 Sağlanan ya da sunucusuz (Önizleme) işlem katmanında tek bir veritabanı oluşturulabilir.
 
-- Sağlanan işlem katmanındaki tek bir veritabanı, önceden ayrılmış bir işlem kaynakları ve iki [satın alma modelinden](sql-database-purchase-models.md)birini kullanan bir bellek ve depolama kaynakları kümesi içerir.
-- Sunucusuz bilgi işlem katmanındaki tek bir veritabanı, çekirdek başına belirtilen miktarda bellek ve belirtilen miktarda depolama kaynağı ve yalnızca [sanal çekirdek tabanlı satın alma modellerinde](sql-database-service-tiers-vcore.md)kullanılabilir bir dizi işlem kaynağı içerir.
+- Sağlanan işlem katmanındaki tek bir veritabanı, iki [satın alma modelinden](sql-database-purchase-models.md)bırını kullanarak CPU ve bellek dahil olmak üzere sabit bir işlem kaynakları miktarı önceden ayrıldı.
+- Sunucusuz işlem katmanındaki tek bir veritabanı, otomatik olarak ölçeklenen ve yalnızca [sanal çekirdek tabanlı satın alma modellerinde](sql-database-service-tiers-vcore.md)bulunan CPU ve bellek dahil olmak üzere bir dizi işlem kaynağına sahiptir.
 
 Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [SQL veritabanı sunucusu](sql-database-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubuna](../azure-resource-manager/resource-group-overview.md) yerleştirebilirsiniz.
 

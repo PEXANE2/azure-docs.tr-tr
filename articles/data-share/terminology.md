@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424223"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844693"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Azure veri paylaşma önizleme kavramları 
 
@@ -53,7 +53,9 @@ Bir veri tüketicisi, bu anlık görüntü zamanlamasını, ilk olarak yeni bir 
 
 Veri sağlayıcısı, veri paylaşımında birden fazla alıcıyı davet edebilir. Bu kişiler, veri paylaşımında alıcı ekleyerek yapabilir. Davetler, bir veri paylaşımının oluşturulduktan sonra da eklenebilir. 
 
-Bir veri sağlayıcısı gönderildikten sonra daveti silebilir. Bir veri sağlayıcısı kabul edildikten sonra daveti silerse, veri tüketicisinin hala etkin bir paylaşma aboneliğine sahip olabileceğini unutmayın. Veri sağlayıcısı bir daveti silerse ve henüz kabul edilmediyse, veri tüketicisini kabul etmez. 
+Bir veri sağlayıcısı, kabul edilmediyse gönderildikten sonra bir davetiyeyi silebilir. Veri sağlayıcısı bir daveti silerse ve henüz kabul edilmediyse, veri tüketicisini kabul etmez. 
+
+Davetler günde 5 kez yeniden kullanılabilir. 
 
 ## <a name="recipient"></a>Alıcı
 

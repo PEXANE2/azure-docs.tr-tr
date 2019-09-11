@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972790"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846123"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager ile özel bulutu olağanüstü durum kurtarma hedefi olarak ayarlama
 
@@ -33,6 +33,8 @@ CloudSimple çözümü şunları yapmanızı gerektirir:
 * Özel bulut korumalı site olduğunda, SRM için kendi lisanslarınızı sağlayın. Kurtarma sitesi olarak kullanıldığında CloudSimple sitesi için ek bir lisans gerekmez.
 
 Bu çözümle, vSphere çoğaltma ve SRM üzerinde tam denetime sahip olursunuz. Tanıdık UI, API ve CLı arabirimleri, mevcut betiklerinizin ve araçlarınızın kullanımını sağlar.
+
+![Site Recovery Manager dağıtımı](media/srm-deployment.png)
 
 Özel bulut ve şirket içi ortamlarınızla uyumlu vRA ve SRM sürümlerini kullanabilirsiniz. Bu kılavuzdaki örneklerde vRA 6,5 ve SRM 6,5 kullanılır. Bu sürümler, CloudSimple tarafından desteklenen vSphere 6,5 ile uyumludur.
 

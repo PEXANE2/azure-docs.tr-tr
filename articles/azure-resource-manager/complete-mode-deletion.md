@@ -3,15 +3,15 @@ title: Kaynak türüne göre tamamlanmış mod silme Azure Resource Manager
 description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma modu silme işlemini nasıl işleyeceğini gösterir.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7f804e61f77b745aa654852f4c1413a8f4bf53b4
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779941"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194405"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -204,7 +204,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | aadsupportcases | Hayır |
 > | addsservices | Hayır |
-> | aracılar | Hayır |
+> | aracısını | Hayır |
 > | anonymousapiusers | Hayır |
 > | yapılandırma | Hayır |
 > | logs | Hayır |
@@ -486,7 +486,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Rezervler/Böl | Hayır |
 > | Rezervler/takas | Hayır |
 > | rezervasyonlar | Hayır |
-> | kaynaklar | Hayır |
+> | resources | Hayır |
 > | validateReservationOrder | Hayır |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -642,7 +642,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Ücretler | Hayır |
 > | CostTags | Hayır |
 > | iler | Hayır |
-> | olaylar | Hayır |
+> | events | Hayır |
 > | Tahminler | Hayır |
 > | oluş | Hayır |
 > | Marketlerinden | Hayır |
@@ -1070,7 +1070,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | myareas/Areas/gallergıtems | Hayır |
 > | myarea/gallergıtems | Hayır |
 > | kaydolunamadı | Hayır |
-> | kaynaklar | Hayır |
+> | resources | Hayır |
 > | elde edilecek esourcesbyıd | Hayır |
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
@@ -1262,7 +1262,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | getEntities | Hayır |
 > | Yönetim grupları | Hayır |
-> | kaynaklar | Hayır |
+> | resources | Hayır |
 > | startTenantBackfill | Hayır |
 > | tenantBackfillStatus | Hayır |
 
@@ -1573,7 +1573,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sorgu | Evet |
 > | resourceChangeDetails | Hayır |
 > | resourceChanges | Hayır |
-> | kaynaklar | Hayır |
+> | resources | Hayır |
 > | resourcesHistory | Hayır |
 > | subscriptionsStatus | Hayır |
 
@@ -1585,7 +1585,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kullanılabilirlik durumları | Hayır |
 > | Childadvailabilitydurumlar | Hayır |
 > | childResources | Hayır |
-> | olaylar | Hayır |
+> | events | Hayır |
 > | ımpactedresources | Hayır |
 > | meta veriler | Hayır |
 > | bildirimler | Hayır |
@@ -1601,7 +1601,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | notifyResourceJobs | Hayır |
 > | sağlayıcıları | Hayır |
 > | resourceGroups | Hayır |
-> | kaynaklar | Hayır |
+> | resources | Hayır |
 > | abonelik | Hayır |
 > | Abonelikler/sağlayıcılar | Hayır |
 > | Abonelikler/resourceGroups | Hayır |

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kopyalama verileri Azure Veri Gezgini
-description: Bu konu başlığında, Azure Data Factory kopyalama aracını kullanarak Azure veri Gezgini'ne (yükle) veri alma öğrenin.
+title: Azure Data Factory verileri Azure 'a kopyalama Veri Gezgini
+description: Bu konuda, Azure Data Factory kopyalama aracını kullanarak Azure Veri Gezgini 'a veri alma (yükleme) hakkında bilgi edinirsiniz.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,182 +8,186 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657526"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803974"
 ---
-# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Azure Veri Gezgini, Azure Data Factory kullanarak veri kopyalama 
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama 
 
-Azure Veri Gezgini, büyük hacimli uygulamaları, Web siteleri ve IOT cihazları gibi birçok farklı kaynaktan akış verileri üzerinde gerçek zamanlı analiz için hızlı, tam olarak yönetilen bir veri analiz hizmetidir. Yinelemeli olarak verileri araştırmak ve düzenleri ve anormallikleri ürünlerini geliştirmek için müşteri deneyimlerini geliştirmek için tanımlamak cihazları izlemek ve işlemleri artırın. Yeni soruları keşfedin ve dakikalar içinde yanıt alın. Azure Data Factory, tam olarak yönetilen bulut tabanlı veri tümleştirme hizmetidir. Hizmet, mevcut sisteminizden Azure Veri Gezgini veritabanınızı verilerle doldurmak ve zamandan tasarruf için kullanabileceğiniz analiz çözümlerinizi oluştururken.
+Azure Veri Gezgini, uygulamalar, Web siteleri ve IoT cihazları gibi birçok kaynaktan büyük miktarlarda veri akışı için gerçek zamanlı analizler için hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Verileri tekrarlayarak, ürünleri iyileştirmek, müşteri deneyimlerini geliştirmek, cihazları izlemek ve işlemleri yükseltmek için desenleri ve anormallikleri belirler. Yeni soruları keşfedin ve dakikalar içinde yanıt alın. Azure Data Factory, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Hizmeti kullanarak Azure Veri Gezgini veritabanınızı mevcut sisteminizdeki verilerle doldurabilir ve analiz çözümlerinizi oluştururken zamandan tasarruf edebilirsiniz.
 
-Azure Data Factory, verileri Azure veri Gezgini'ne yüklemek için aşağıdaki avantajları sunar:
+Azure Data Factory Azure Veri Gezgini 'a veri yüklemek için aşağıdaki avantajları sunmaktadır:
 
-* **Kolay ayarlama**: Hiçbir gerekli komut ile bir sezgisel beş adımı Sihirbazı.
-* **Zengin veri deposu desteği**: Zengin bir şirket içi ve bulut tabanlı veri depoları için yerleşik destek. Tablo ayrıntılı bir listesi için bkz [desteklenen veri depoları](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats).
-* **Güvenli ve uyumlu**: Veriler, HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığını verilerinizi coğrafi sınır hiçbir zaman ayrılmaz sağlar.
-* **Yüksek performanslı**: Azure Veri Gezgini içinde 1-GB/sn veri yükleme hızını kadar. Ayrıntılar için bkz [kopyalama etkinliği performansı](/azure/data-factory/copy-activity-performance).
+* **Kolayca ayarlanır**: Komut dosyası gerekmeden, sezgisel beş adımlı bir sihirbaz.
+* **Zengin veri deposu desteği**: Zengin bir şirket içi ve bulut tabanlı veri depoları kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)tablosuna bakın.
+* **Güvenli ve uyumlu**: Veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
+* **Yüksek performans**: En fazla 1 GB/sn veri yükleme hızı Azure Veri Gezgini. Ayrıntılar için bkz. [etkinlik performansını kopyalama](/azure/data-factory/copy-activity-performance).
 
-Bu makalede Data Factory-veri kopyalama aracını verileri Amazon S3'ten Azure veri Gezgini'ne yüklemek için nasıl kullanılacağını gösterir. Gibi diğer veri depolarından veri kopyalamak için benzer adımları izleyebilirsiniz [Azure Blob Depolama](/azure/data-factory/connector-azure-blob-storage), [Azure SQL veritabanı](/azure/data-factory/connector-azure-sql-database), [Azure SQL veri ambarı](/azure/data-factory/connector-azure-sql-data-warehouse), [Google BigQuery](/azure/data-factory/connector-google-bigquery),[Oracle](/azure/data-factory/connector-oracle), ve [dosya sistemi](/azure/data-factory/connector-file-system).
+Bu makalede, Amazon S3 'ten Azure Veri Gezgini 'e veri yüklemek için Data Factory Veri Kopyalama aracının nasıl kullanılacağı gösterilmektedir. [Azure Blob depolama](/azure/data-factory/connector-azure-blob-storage), [Azure SQL VERITABANı](/azure/data-factory/connector-azure-sql-database), [Azure SQL veri ambarı](/azure/data-factory/connector-azure-sql-data-warehouse), [Google BigQuery](/azure/data-factory/connector-google-bigquery),[Oracle](/azure/data-factory/connector-oracle)ve [dosya sistemi](/azure/data-factory/connector-file-system)gibi diğer veri depolarından veri kopyalamak için benzer adımları izleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Bir Azure Veri Gezgini küme ve veritabanı](create-cluster-database-portal.md)
+* [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md)
 * Veri kaynağı.
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
+## <a name="create-a-data-factory"></a>Data factory oluştur
 
-1. Seçin **kaynak Oluştur** düğmesini (+) portalın sol üst köşesinin > **Analytics** > **Data Factory**.
+1. Portal > **analiz** > **Data Factory**sol üst köşesinde **kaynak oluştur** düğmesini (+) seçin.
 
    ![Yeni bir veri fabrikası oluşturma](media/data-factory-load-data/create-adf.png)
 
-1. İçinde **yeni veri fabrikası** sayfasında, aşağıdaki alanlar için değerler sağlayın ve ardından **Oluştur**.
+1. **Yeni Veri Fabrikası** sayfasında, aşağıdaki alanlar için değerler sağlayın ve **Oluştur**' u seçin.
 
     ![Yeni veri fabrikası sayfası](media/data-factory-load-data/my-new-data-factory.png)
 
     **Ayar**  | **Alan açıklaması**
     |---|---|
-    | **Name** | Veri fabrikanızın genel olarak benzersiz bir ad girin. Hatasını alırsanız *"veri fabrikası adı \"LoadADXDemo\" kullanılamıyor"* , veri fabrikasının farklı bir ad girin. Data Factory yapıtlarının adlandırma kuralları için bkz: [Data Factory adlandırma kuralları](/azure/data-factory/naming-rules).|
-    | **Abonelik** | Veri fabrikasının oluşturulacağı Azure aboneliğini seçin. |
-    | **Kaynak Grubu** | Seçin **Yeni Oluştur** ve yeni bir kaynak grubu adını girin. Seçin **var olanı kullan**, mevcut bir kaynak grubu varsa. |
-    | **Sürüm** | Seçin **V2** |
-    | **Location** | Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları, diğer konumlara veya bölgelerde olabilir. |
+    | **Name** | Data Factory 'niz için genel olarak benzersiz bir ad girin. *"Data Factory Name \"loadadxdemo\" kullanılamıyor"* hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Data Factory yapıtların adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](/azure/data-factory/naming-rules).|
+    | **Abonelik** | Veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. |
+    | **Kaynak Grubu** | **Yeni oluştur** ' u seçin ve yeni bir kaynak grubunun adını girin. Mevcut bir kaynak grubunuz varsa **var olanı kullan**' ı seçin. |
+    | **Sürüm** | **V2** 'yi seçin |
+    | **Location** | Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları başka konumlarda veya bölgelerde olabilir. |
     | | |
 
-1. Bildirimleri oluşturma işlemini izlemek için araç çubuğundan seçin. Oluşturma işlemi tamamlandıktan sonra oluşturduğunuz veri fabrikasına gidin. **Data Factory** giriş sayfası açılır.
+1. Oluşturma işlemini izlemek için araç çubuğunda bildirimler ' i seçin. Oluşturma işlemi tamamlandıktan sonra, oluşturduğunuz veri fabrikasına gidin. **Data Factory** giriş sayfası açılır.
 
    ![Data factory giriş sayfası](media/data-factory-load-data/data-factory-home-page.png)
 
-1. Seçin **yazar ve İzleyici** uygulamasını ayrı bir sekmede açmak için kutucuğa.
+1. Uygulamayı ayrı bir sekmede başlatmak için **yazar & İzleyici** kutucuğunu seçin.
 
-## <a name="load-data-into-azure-data-explorer"></a>Azure veri Gezgini'ne veri yükleme
+## <a name="load-data-into-azure-data-explorer"></a>Verileri Azure 'a yükleme Veri Gezgini
 
-Birçok türlerinden veri yüklenebilir [veri depoları](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Azure Veri Gezgini içinde. Bu konuda yükleme verileri Amazon S3 ayrıntıları.
+Veriler birçok [veri deposu](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) türünden Azure Veri Gezgini yüklenebilir. Bu konuda, Amazon S3 ' den veri yükleme ayrıntıları verilmektedir.
 
-Azure Data Factory kullanarak Azure Veri Gezgini içinde veri yüklemenin iki yolu vardır:
+Azure Data Factory kullanarak Azure Veri Gezgini 'a veri yüklemek için iki yol vardır:
 
-* Azure Data Factory kullanıcı arabirimini - [ **Yazar** sekmesi](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-* [Azure Data Factory **veri kopyalama** aracı](/azure/data-factory/quickstart-create-data-factory-copy-data-tool) bu makalede kullanılan.
+* Azure Data Factory Kullanıcı arabirimi- [ **Yazar** sekmesi](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
+* Bu makalede kullanılan [ **veri kopyalama** Azure Data Factory araç](/azure/data-factory/quickstart-create-data-factory-copy-data-tool) .
 
-### <a name="copy-data-from-amazon-s3-source"></a>Amazon S3'ten veri kopyalama (kaynak)
+### <a name="copy-data-from-amazon-s3-source"></a>Amazon S3 (kaynak) konumundan veri kopyalama
 
-1. İçinde **başlayalım** sayfasında **veri kopyalama** veri kopyalama aracını başlatmak için.
+1. **Haydi** başlayın sayfasında, veri kopyalama aracını başlatmak için **veri kopyalama** kutucuğunu seçin.
 
-   ![Veri kopyalama aracının kutucuğu](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![Veri kopyalama araç kutucuğu](media/data-factory-load-data/copy-data-tool-tile.png)
 
-1. İçinde **özellikleri** sayfasında, belirtin **görev adı** seçip **sonraki**.
+1. **Özellikler** sayfasında, **görev adı** ' nı belirtin ve **İleri**' yi seçin.
 
-    ![Kaynak özelliklerini kopyalama](media/data-factory-load-data/copy-from-source.png)
+    ![Kaynak özelliklerinden Kopyala](media/data-factory-load-data/copy-from-source.png)
 
-1. İçinde **kaynak veri deposu** sayfasında **+ yeni bağlantı oluştur**.
+1. **Kaynak veri deposu** sayfasında **+ Yeni bağlantı oluştur**' a tıklayın.
 
-    ![Kaynak veri bağlantısı oluşturma](media/data-factory-load-data/source-create-connection.png)
+    ![Kaynak verileri bağlantı oluştur](media/data-factory-load-data/source-create-connection.png)
 
-1. Seçin **Amazon S3**ve ardından **devam et**
+1. **Amazon S3**' i seçin ve ardından **devam** ' ı seçin.
 
     ![Yeni bağlı hizmet](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
-1. İçinde **yeni bağlı hizmet (Amazon S3)** sayfasında, aşağıdaki adımları uygulayın:
+1. **Yeni bağlı hizmet (Amazon S3)** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Amazon S3'bağlı hizmeti belirtin](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
+    ![Amazon S3 bağlı hizmetini belirtin](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
-    * Belirtin **adı** , yeni bağlı hizmeti.
-    * Seçin **tümleştirme çalışma zamanı aracılığıyla Bağlan** açılır listeden bir değer.
-    * Belirtin **erişim anahtarı kimliği** değeri.
-    * Belirtin **gizli erişim anahtarı** değeri.
-    * Seçin **Bağlantıyı Sına** oluşturduğunuz bağlı hizmet bağlantısını test etmek için.
+    * Yeni bağlı hizmetinizin **adını** belirtin.
+    * Açılan listeden **tümleştirme çalışma zamanı değeri aracılığıyla Bağlan** ' ı seçin.
+    * **Erişim anahtarı kimlik** değerini belirtin.
+    * Gizli dizi **erişim anahtarı** değerini belirtin.
+    * Oluşturduğunuz bağlı hizmet bağlantısını test etmek için **Bağlantıyı Sına** ' yı seçin.
     * **Son**’u seçin.
 
-1. İçinde **kaynak veri deposu** sayfasında, yeni AmazonS31 bağlantınızı görürsünüz. **İleri**’yi seçin.
+1. **Kaynak veri deposu** sayfasında, yeni AmazonS31 bağlantınızı görürsünüz. **İleri**’yi seçin.
 
-   ![Kaynak veri deposu oluşturulan bağlantı](media/data-factory-load-data/source-data-store-created-connection.png)
+   ![Kaynak veri deposunun bağlantısı oluşturuldu](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. İçinde **girdi dosyasını veya klasörünü seçin** sayfası:
+1. **Girdi dosyasını veya klasörünü seçin** sayfasında:
 
-    1. Klasör/kopyalamak istediğiniz dosyaya göz atın. Klasör/dosya seçin.
-    1. Kopyalama davranışını gerektiği gibi seçin. Tutun **ikili kopya** seçeneği işaretli değil.
+    1. Kopyalamak istediğiniz klasöre/dosyaya gidin. Klasörü/dosyayı seçin.
+    1. Kopyalama davranışını gerektiği şekilde seçin. **İkili kopyayı** işaretlenmemiş olarak bırakın.
     1. **İleri**’yi seçin.
 
     ![Girdi dosyasını veya klasörünü seçin](media/data-factory-load-data/source-choose-input-file.png)
 
-1. İçinde **dosya biçimleri ayarları** sayfa Seç'e tıklayın ve dosya için ilgili ayarları **sonraki**.
+1. **Dosya biçimleri ayarları** sayfasında, dosyanız için ilgili ayarları seçin ve **İleri**' ye tıklayın.
 
    ![Girdi dosyasını veya klasörünü seçin](media/data-factory-load-data/source-file-format-settings.png)
 
-### <a name="copy-data-into-azure-data-explorer-destination"></a>Azure Veri Gezgini (hedef) içine veri kopyalama
+### <a name="copy-data-into-azure-data-explorer-destination"></a>Verileri Azure Veri Gezgini 'a (hedef) kopyalama
 
-Azure Veri Gezgini yeni bağlı hizmet, aşağıda belirtilen verileri Azure Veri Gezgini hedef tablosu (havuz) kopyalamak için oluşturulur.
+Azure Veri Gezgini yeni bağlı hizmet, verileri aşağıda belirtilen Azure Veri Gezgini hedef tablosuna (havuz) kopyalamak için oluşturulur.
 
-1. İçinde **hedef veri deposuna** kullanabileceğiniz sayfasında, varolan bir veri bağlantısı depolamak veya tıklayarak yeni bir veri deposu belirtmek **+ yeni bağlantı oluştur**.
+#### <a name="create-the-azure-data-explorer-linked-service"></a>Azure Veri Gezgini bağlı hizmetini oluşturma
+
+1. **Hedef veri deposu** sayfasında, mevcut bir veri deposu bağlantısını kullanabilir veya **+ Yeni bağlantı oluştur**' a tıklayarak yeni bir veri deposu belirtebilirsiniz.
 
     ![Hedef veri deposu sayfası](media/data-factory-load-data/destination-create-connection.png)
 
-1. İçinde **yeni bağlı hizmet** sayfasında **Azure Veri Gezgini**ve ardından **devam et**
+1. **Yeni bağlı hizmet** sayfasında **Azure Veri Gezgini**' yi seçin ve ardından **devam** ' ı seçin.
 
-    ![Azure Veri Gezgini - yeni bağlı hizmet seçin](media/data-factory-load-data/adx-select-new-linked-service.png)
+    ![Azure Veri Gezgini seçin-Yeni bağlı hizmet](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. İçinde **yeni bağlı hizmet (Azure Veri Gezgini)** sayfasında, aşağıdaki adımları uygulayın:
+1. **Yeni bağlı hizmet (Azure Veri Gezgini)** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Yeni bağlı hizmet ADX](media/data-factory-load-data/adx-new-linked-service.png)
+    ![ADX yeni bağlı hizmet](media/data-factory-load-data/adx-new-linked-service.png)
 
-   * Seçin **adı** Azure Veri Gezgini için bağlı hizmeti.
-   * İçinde **hesap seçme yöntemi**: 
-        * Seçin **Azure abonelik** radyo düğmesini seçin ve seçin, **Azure aboneliği** hesabı. Ardından, sizin **küme**. Not açılan kullanıcıya ait kümeleri listeleme olur.
-        * Alternatif olarak, seçin **el ile girmek** radyo düğmesini ve girin, **uç nokta**.
-    * Belirtin **Kiracı**.
-    * Girin **hizmet sorumlusu kimliği**.
-    * Seçin **hizmet sorumlusu anahtarı** düğmesine tıklayın ve girin **hizmet sorumlusu anahtarı**.
-    * Seçin, **veritabanı** açılan menüden. Alternatif olarak, seçin **Düzenle** onay kutusunu ve veritabanı adınızı girin.
-    * Seçin **Bağlantıyı Sına** oluşturduğunuz bağlı hizmet bağlantısını test etmek için. Yeşil bir onay işareti, kurulum için bağlanabildiğini **bağlantı başarılı** görünür.
-    * Seçin **son** bağlı hizmeti oluşturma işlemini tamamlamak için.
+   * Azure Veri Gezgini bağlı hizmeti için **ad** ' ı seçin.
+   * **Hesap seçim yönteminde**: 
+        * **Azure aboneliği** radyo düğmesini seçin ve **Azure abonelik** hesabınızı seçin. Sonra, **kümenizi**seçin. Açılan listede yalnızca kullanıcıya ait kümeler listelenir.
+        * Alternatif olarak, **el ile** radyo düğmesi gir ' i seçin ve **uç**noktanızı girin.
+    * **Kiracıyı**belirtin.
+    * **Hizmet sorumlusu kimliğini**girin.
+    * **Hizmet sorumlusu anahtar** düğmesini seçin ve **hizmet sorumlusu anahtarını**girin.
+    * Açılır menüden **veritabanınızı** seçin. Alternatif olarak, **Düzenle** onay kutusunu seçin ve veritabanınızın adını girin.
+    * Oluşturduğunuz bağlı hizmet bağlantısını test etmek için **Bağlantıyı Sına** ' yı seçin. Kuruluma bağlanıyorsanız, bir yeşil onay işareti **bağlantısı başarılı** olur.
+    * Bağlı hizmet oluşturmayı tamamladıktan sonra **son** ' u seçin.
 
     > [!NOTE]
-    > Hizmet sorumlusu, Azure Veri Gezgini hizmete erişmek için Azure Data Factory tarafından kullanılır. Hizmet sorumlusu için [bir Azure Active Directory (Azure AD) hizmet sorumlusu oluşturma](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Kullanmayın **Azure anahtar kasası** yöntemi.
+    > Hizmet sorumlusu, Azure Veri Gezgini hizmetine erişmek için Azure Data Factory tarafından kullanılır. Hizmet sorumlusu için [bir Azure Active Directory (Azure AD) hizmet sorumlusu oluşturun](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). **Azure Key Vault** yöntemini kullanmayın.
 
-1. **Hedef veri deposuna** açılır. Azure Veri Gezgini, oluşturduğunuz veri bağlantısı kullanılabilir. Seçin **sonraki** bağlantıyı yapılandırmak için.
+#### <a name="configure-the-azure-data-explorer-data-connection"></a>Azure Veri Gezgini veri bağlantısını yapılandırma
 
-    ![Hedef veri deposuna ADX](media/data-factory-load-data/destination-data-store.png)
+1. **Hedef veri deposu** açılır. Oluşturduğunuz Azure Veri Gezgini veri bağlantısı kullanıma sunulmuştur. Bağlantıyı yapılandırmak için **İleri ' yi** seçin.
 
-1. İçinde **Tablo eşleme**, hedef tablo adını ayarlayın ve seçin **sonraki**.
+    ![ADX hedef veri deposu](media/data-factory-load-data/destination-data-store.png)
 
-    ![Hedef veri kümesi Tablo eşleme](media/data-factory-load-data/destination-dataset-table-mapping.png)
+1. **Tablo eşlemesinde**, hedef tablo adını ayarlayın ve **İleri ' yi**seçin.
 
-1. İçinde **sütun eşlemesi** sayfası:
-    * İlk eşleme göre ADF tarafından gerçekleştirilen [ADF şema eşleme](/azure/data-factory/copy-activity-schema-and-type-mapping)
-        * Ayarlama **sütun eşlemelerini** Azure Data Factory hedef tablosu için. Varsayılan eşleme kaynağından ADF hedef tabloya görüntülenir.
-        * Sütun eşleştirme tanımlamanız gerekmez sütunların seçimini kaldırın.
-    * Bu tablo veri alınan ve Azure veri Gezgini'ne ikinci eşleme gerçekleşir. Eşleme göre gerçekleştirilir [CSV eşleme kurallarını](/azure/kusto/management/mappings#csv-mapping). Kaynak verileri CSV biçiminde başarısız olduysa, ADF tablo biçimine dönüştürülen veriler, bu nedenle, bu aşamada yalnızca ilgili eşleme CSV eşleme bir dikkat edin.
-        * Altında **Azure Veri Gezgini (Kusto) havuz özellikleri** ilgili ekleme **alımı eşleme adı** (isteğe bağlı) bu nedenle, sütun eşleme kullanılabilir.
-        * Varsa **alımı eşleme adı** belirtilmediyse, "by-name" eşleme sipariş tanımlanan **sütun eşlemelerini** bölümü oluşur. "By-name" Eşleme başarısız olursa, Azure Veri Gezgini (haritalar tarafından konumu varsayılan olarak) "sütuna göre konumu" sırada verilerin alımı çalışacaktır.
+    ![Hedef veri kümesi tablo eşleme](media/data-factory-load-data/destination-dataset-table-mapping.png)
+
+1. **Sütun eşleme** sayfasında:
+    * İlk eşleme ADF tarafından [ADF şema eşlemesine](/azure/data-factory/copy-activity-schema-and-type-mapping) göre gerçekleştirilir
+        * Azure Data Factory hedef tablosu için **sütun eşlemelerini** ayarlayın. Varsayılan eşleme, kaynaktan ADF hedef tablosundan görüntülenir.
+        * Sütun eşlemenizi tanımlamak için ihtiyacınız olmayan sütunların seçimini kaldırın.
+    * İkinci eşleme, bu tablo verileri Azure Veri Gezgini 'da gösterildiğinde oluşur. Eşleme, [CSV eşleme kurallarına](/azure/kusto/management/mappings#csv-mapping)göre gerçekleştirilir. Kaynak veriler CSV biçiminde olmasa bile, ADF verileri tablosal biçimine dönüştürdüğünden, bu nedenle CSV eşlemesi bu aşamada yalnızca ilgili eşleme olur.
+        * **Azure Veri Gezgini (kusto) havuz özellikleri** ' nin altında, sütun eşlemesinin kullanılabilmesi için ilgili alım **eşleme adını** (isteğe bağlı) ekleyin.
+        * Alma **eşleme adı** belirtilmemişse, **sütun eşlemeleri** bölümünde tanımlanan "ada göre" eşleme sırası oluşur. "Ad-adı" eşlemesi başarısız olursa, Azure Veri Gezgini verileri bir "sütun olarak konum" sırasıyla (varsayılan olarak eşler) almaya çalışacaktır.
     * **İleri**’yi seçin
 
     ![Hedef veri kümesi sütun eşleme](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
 1. **Ayarlar** sayfasında:
-    * İlgili ayarlamak **hataya dayanıklılık ayarları**.
-    * **Performans ayarları**: Etkinleştirme hazırlama geçerli değildir. **Gelişmiş ayarlar** maliyet konuları içerir. Hiçbir özel gerekip gerekmediğini olduğu gibi bırakın.
+    * İlgili **hata toleransı ayarlarını**belirleyin.
+    * **Performans ayarları**: Hazırlama geçerli değildir. **Gelişmiş ayarlar** maliyet konularını içerir. Belirli bir ihtiyaç yoksa, olarak bırakın.
     * **İleri**’yi seçin.
 
-    ![Veri ayarlarını kopyalama](media/data-factory-load-data/copy-data-settings.png)
+    ![Veri ayarlarını Kopyala](media/data-factory-load-data/copy-data-settings.png)
 
-1. İçinde **özeti**, ayarları gözden geçirin ve seçin **sonraki**.
+1. **Özet**bölümünde ayarları gözden geçirin ve **İleri**' yi seçin.
 
-    ![Özet verileri kopyalama](media/data-factory-load-data/copy-data-summary.png)
+    ![Veri kopyalama Özeti](media/data-factory-load-data/copy-data-summary.png)
 
-1. İçinde **dağıtım sayfası**:
-    * Seçin **İzleyici** geçmek **İzleyici** sekmesini ve (ilerleme durumunu, hataları ve veri akışı) işlem hattının durumunu görürsünüz.
-    * Seçin **ardışık düzen** bağlı hizmetler, veri kümeleri ve işlem hatlarını düzenleyebilmek için.
-    * Seçin **son** tam kopya veri görevi
+1. **Dağıtım sayfasında**:
+    * **İzleyici sekmesine geçmek** için **izleyici** ' yi seçin ve işlem hattının durumunu (ilerleme, hatalar ve veri akışı) görüntüleyin.
+    * Bağlı hizmetleri, veri kümelerini ve işlem hatlarını düzenlemek için **ardışık düzeni Düzenle** ' yi seçin.
+    * Veri kopyalamayı tamamlama görevi için **son** ' u seçin
 
     ![Dağıtım sayfası](media/data-factory-load-data/deployment.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Hakkında bilgi edinin [Azure Veri Gezgini bağlayıcı](/azure/data-factory/connector-azure-data-explorer) Azure Data factory'de.
+* Azure Data Factory [Azure Veri Gezgini Bağlayıcısı](/azure/data-factory/connector-azure-data-explorer) hakkında bilgi edinin.
 
-* Bağlı hizmetler, veri kümeleri ve işlem hatlarında düzenleme hakkında daha fazla bilgi [Data Factory kullanıcı arabirimini](/azure/data-factory/quickstart-create-data-factory-portal).
+* [Data Factory Kullanıcı arabirimindeki](/azure/data-factory/quickstart-create-data-factory-portal)bağlı hizmetleri, veri kümelerini ve işlem hatlarını düzenlemeyle ilgili daha fazla bilgi edinin.
 
-* Hakkında bilgi edinin [Azure Veri Gezgini sorguları](/azure/data-explorer/web-query-data) veri sorgulamak için.
+* Veri sorgulama için [Azure Veri Gezgini sorguları](/azure/data-explorer/web-query-data) hakkında bilgi edinin.

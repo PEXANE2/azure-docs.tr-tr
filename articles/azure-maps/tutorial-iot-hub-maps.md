@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898335"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844902"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure haritalar kullanarak IoT uzamsal analizlerini uygulama
 
@@ -41,10 +41,10 @@ Kullanım örneğimizde, Kiralama otomobilleri düzenli olarak Azure IoT Hub tel
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ Kullanım örneğimizde, Kiralama otomobilleri düzenli olarak Azure IoT Hub tel
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -113,7 +113,7 @@ Olay verilerini günlüğe kaydetmek için, "ContosoRental" kaynak grubunda, ver
 
 1. Depolama hesabınızda bloblara gidin.
 
-    ![larını](./media/tutorial-iot-hub-maps/blobs.png)
+    ![Larını](./media/tutorial-iot-hub-maps/blobs.png)
 
 2. Sol üstteki kapsayıcı düğmesine tıklayın ve kapsayıcınızı "contoso-Kiralık-Logs" olarak adlandırın ve "Tamam" a tıklayın.
 

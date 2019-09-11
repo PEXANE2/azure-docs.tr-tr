@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967303"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376135"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Kamu ve ortak bölgeler arasında Azure VM 'lerini taşıma 
 
@@ -98,8 +98,8 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
      Kaynak VM yapılandırmasına bağlı olarak, sizin için uygun olan en sık kullanılan ağ kaynaklarını oluşturmak için lütfen aşağıdaki belgelere bakın.
 
     - [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Genel IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer)
+    - [Genel IP](../virtual-network/virtual-network-public-ip-address.md)
     
     Diğer ağ bileşenleri için ağ [belgelerine bakın.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
 
@@ -116,7 +116,7 @@ Aşağıdaki adımlar, verileri hedef bölgeye kopyalamak için Azure Site Recov
 4. Bir **ContosoRG** kaynak grubu oluşturun.
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 6. Kurtarma Hizmetleri kasalarında **genel bakış** > **ConsotoVMVault** >  **+ Çoğalt** ' a tıklayın.
-7. Azure > için**sanallaştırılmamış/diğer**' i seçin.
+7. **Azure** > için**sanallaştırılmamış/diğer**' i seçin.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>VM 'Leri bulacak yapılandırma sunucusunu ayarlayın.
 

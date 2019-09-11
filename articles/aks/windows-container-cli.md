@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 879e2831dc099eabe43f1eefb81b1b7373c665dc
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ee798ba624aaf9f21886edab36185fb1b6ae67f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898719"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387329"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme-Azure CLı kullanarak bir Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
@@ -79,7 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
-* *Windowspreview*başarıyla kaydedildikten sonra oluşturulan kümeler için birden çok düğüm havuzu kullanılabilir. Aboneliğiniz için *Multiagentpoolpreview* ve *VMSSPreview* özelliklerini kaydettiğinizde birden çok düğüm havuzu da kullanılabilir. Bu özellikler başarıyla kaydedilmeden önce, var olan bir AKS kümesiyle oluşturulmuş düğüm havuzları ekleyemez veya yönetemezsiniz.
+* *Windowspreview*başarıyla kaydedildikten sonra oluşturulan kümeler için birden çok düğüm havuzu kullanılabilir. Aboneliğiniz için *Multiagentpoolpreview* özelliğini kaydetmeniz halinde birden çok düğüm havuzu da kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
 * İlk düğüm havuzunu silemezsiniz.
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
@@ -121,8 +121,11 @@ Aşağıdaki örnek çıktıda başarıyla oluşturulan kaynak grubu gösterilme
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
 Windows Server kapsayıcıları için düğüm havuzlarını destekleyen bir AKS kümesini çalıştırmak için, kümenizin [Azure CNI][azure-cni-about] (Gelişmiş) ağ eklentisini kullanan bir ağ ilkesi kullanması gerekir. Gerekli alt ağ aralıklarını ve ağ konularını planlamaya yardımcı olacak daha ayrıntılı bilgi için bkz. [Azure CNI ağını yapılandırma][use-advanced-networking]. *Myakscluster*adlı bir aks kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanın. Mevcut değilse, bu komut gerekli ağ kaynaklarını oluşturur.
-  * Küme bir düğüm ile yapılandırıldı
+  * Küme iki düğüm ile yapılandırılmış
   * *Windows-Admin-Password* ve *Windows-admin-username* parametreleri, kümede oluşturulan herhangi bir Windows Server kapsayıcısı için yönetici kimlik bilgilerini ayarlar.
+
+> [!NOTE]
+> Kümenizin güvenilir bir şekilde çalışmasını sağlamak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmanız gerekir.
 
 Kendi güvenli *PASSWORD_WIN* sağlayın (Bu makaledeki komutların bir bash kabuğu 'na girildiğini unutmayın):
 
@@ -132,7 +135,7 @@ PASSWORD_WIN="P@ssw0rd1234"
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --enable-addons monitoring \
     --kubernetes-version 1.14.6 \
     --generate-ssh-keys \
@@ -184,7 +187,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnekte önceki adımlarda oluşturulan tek düğüm gösterilmiştir. Düğüm durumunun olduğundan emin olun:
+Aşağıdaki örnek çıktı kümedeki tüm düğümleri gösterir. Tüm düğümlerin *durumunun olduğundan emin olun:*
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION

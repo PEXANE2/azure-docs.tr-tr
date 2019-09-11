@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114246"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305158"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Önizleme-Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması yapma
 
@@ -37,7 +37,7 @@ Aşağıdakilere sahip olmanız gerekir:
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>En son AKS CLı önizleme uzantısını yükler
 
-**Aks-Preview 0.4.8** uzantısına veya daha yenisine ihtiyacınız vardır.
+**Aks-Preview 0.4.13** uzantısına veya daha yenisine ihtiyacınız vardır.
 
 ```azurecli
 az extension remove --name aks-preview 
@@ -46,25 +46,33 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR tümleştirmesi ile yeni bir AKS kümesi oluşturma
 
-AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için bir Azure Active Directory **hizmet sorumlusu** kullanılır. Aşağıdaki CLı komutu, belirttiğiniz kaynak grubunda bir ACR oluşturur ve hizmet sorumlusu için uygun **Acrpull** rolünü yapılandırır. *ACR-Name* belirttiğiniz kaynak grubunda yoksa, varsayılan bir ACR adı `aks<resource-group>acr` otomatik olarak oluşturulur.  Aşağıdaki parametreleriniz için geçerli değerler sağlayın.  Köşeli ayraçlar içindeki parametreler isteğe bağlıdır.
+AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için bir Azure Active Directory **hizmet sorumlusu** kullanılır. Aşağıdaki CLı komutu aboneliğinizdeki mevcut bir ACR 'ye yetki vermenize ve hizmet sorumlusu için uygun **Acrpull** rolünü yapılandırmanıza olanak tanır. Aşağıdaki parametreleriniz için geçerli değerler sağlayın.  Köşeli ayraçlar içindeki parametreler isteğe bağlıdır.
 ```azurecli
 az login
-az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
+az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
+az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
 \* * Bir ACR kaynak kimliği aşağıdaki biçimdedir: 
 
-/Subscriptions/< abonelik-d >/resourceGroups/< Kaynak-Grup-adı >/providers/Microsoft.ContainerRegistry/registries/<name> 
+/Subscriptions/< abonelik-d >/resourceGroups/< Kaynak-Grup-adı >/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Bu adımın tamamlanması birkaç dakika sürebilir.
 
-## <a name="create-acr-integration-for-existing-aks-clusters"></a>Mevcut AKS kümeleri için ACR tümleştirmesi oluşturma
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Mevcut AKS kümeleri için ACR tümleştirmesini yapılandırma
 
 Aşağıdaki gibi **ACR-Name** veya **ACR-Resource-id** için geçerli değerler sağlayarak mevcut bir ACR 'yi mevcut aks kümeleriyle tümleştirin.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acr-resource-id>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
+
+Bir ACR ve AKS kümesi arasındaki tümleştirmeyi aşağıdakiler ile de kaldırabilirsiniz
+```azurecli
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
+```
+
 
 ## <a name="log-in-to-your-acr"></a>ACR 'nize oturum açma
 

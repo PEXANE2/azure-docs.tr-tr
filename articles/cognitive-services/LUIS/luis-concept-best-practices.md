@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639282"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382892"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bilişsel hizmetler dil anlama uygulamayla oluşturmaya yönelik en iyi uygulamalar
 LUSıS uygulamanızı derlemek için uygulama yazma işlemini kullanın: 
@@ -84,7 +84,7 @@ Uygulamanızın bu olmadan nasıl davranacağını anladıktan sonra, bu özelli
 
 Model tasarımınızın başına ekleme konusu yoktur, ancak model, her bir özelliğin, model, bir yandan da test edildikten sonra nasıl değiştiği hakkında daha kolay bir şekilde görülebilir. 
 
-[Etkin öğrenmesinin](luis-concept-review-endpoint-utterances.md)sağladığı avantajdan yararlanmak için [uç nokta](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) aracılığıyla test etmeniz en iyi uygulamadır. [Etkileşimli test bölmesi](luis-interactive-test.md) aynı zamanda geçerli bir test yöntemlidir. 
+[Etkin öğrenmesinin](luis-concept-review-endpoint-utterances.md)sağladığı avantajdan yararlanmak için [uç nokta](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) aracılığıyla test etmeniz en iyi uygulamadır. [Etkileşimli test bölmesi](luis-interactive-test.md) aynı zamanda geçerli bir test yöntemlidir. 
  
 
 ### <a name="phrase-lists"></a>Tümcecik listeleri

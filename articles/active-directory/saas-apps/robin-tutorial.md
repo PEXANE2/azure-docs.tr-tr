@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de5f1d03550f65b849a1e3e6cf4be7a94a29aa9
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e1f0b72b4f2f3053a13a305df9d0e277894156
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517696"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213556"
 ---
 # <a name="tutorial-integrate-robin-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile bir kez deneme tümleştirin
 
@@ -82,19 +82,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+1. **Temel SAML yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://dashboard.robinpowered.com/`
 
-5. Deneme uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+5. Deneme uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
 6. Yukarıdaki diğer bir deyişle, yeniden deneme uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Kullanıcı öznitelikleri iletişim kutusundaki Kullanıcı talepleri bölümünde aşağıdaki tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin: 
 
-    | Ad | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -122,7 +122,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-robin-sso"></a>Deneme SSO 'SU yapılandırma
 
-Tek başına çoklu oturum açmayı yapılandırmak için  , indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [deneme desteği ekibine](mailto:support@robinpowered.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+Tek başına çoklu oturum açmayı yapılandırmak için , indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [deneme desteği ekibine](mailto:support@robinpowered.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -133,7 +133,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 

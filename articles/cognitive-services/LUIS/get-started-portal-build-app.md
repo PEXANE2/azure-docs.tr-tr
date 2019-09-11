@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560868"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307745"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı Başlangıç: LUSıS portalında yeni bir uygulama oluşturma
 
@@ -23,9 +23,9 @@ Bu hızlı başlangıçta, [LUI portalında](https://www.luis.ai)yeni bir uygula
 
 Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulamanızı dağıtmaya hazırsanız, [uygulamayı dağıtmaya yönelik hızlı başlangıç](get-started-portal-deploy-app.md)bölümüne bakın. Azure bilişsel hizmet kaynağı oluşturma ve uygulamaya atama işlemlerinin nasıl yapılacağını gösterir.
 
-## <a name="create-an-app"></a>Uygulama oluşturma
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. Lui [portalını](https://www.luis.ai) bir tarayıcıda açın ve oturum açın. İlk kez oturum açıyorsanız, ücretsiz bir LUU portalı Kullanıcı hesabı oluşturmanız gerekir.
+## <a name="create-an-app"></a>Uygulama oluşturma
 
 1. Bağlam araç çubuğundan **Yeni uygulama oluştur** ' u seçin.
 
@@ -35,8 +35,8 @@ Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulaman�
 
    |Ayar adı| Value | Amaç|
    |--|--|--|
-   |Ad|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>gerekli|
-   |Kültür|**İngilizce**|Kullanıcılardan gelen söylenme dili, **en-US**<br>gerekli|
+   |Name|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>gerekli|
+   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>gerekli|
    |Açıklama|`App made with LUIS Portal`|Uygulamanın açıklaması<br>isteğe bağlı|
    | | | |
 

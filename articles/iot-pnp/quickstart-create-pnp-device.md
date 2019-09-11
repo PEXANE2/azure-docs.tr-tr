@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050125"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861198"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Hızlı Başlangıç: IoT Tak ve Kullan cihazı oluşturmak için cihaz yetenek modeli kullanma
 
@@ -28,12 +28,12 @@ Bu hızlı başlangıcı tamamlayabilmeniz için yerel makinenize aşağıdaki y
 * [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT cihaz çalışma ekranı 'nı yükler
+### <a name="install-azure-iot-tools"></a>Azure IoT araçları 'nı yükler
 
-Azure IoT cihaz çalışma ekranı uzantısını VS Code yüklemek için aşağıdaki adımları kullanın:
+VS Code Uzantı paketi [Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 'nı yüklemek için aşağıdaki adımları kullanın:
 
 1. VS Code, **Uzantılar** sekmesini seçin.
-1. **Azure IoT cihaz çalışma ekranı**için arama yapın.
+1. **Azure IoT araçlarını**arayın.
 1. **Yükle**’yi seçin.
 
 ### <a name="install-the-azure-iot-explorer"></a>Azure IoT Gezginini yüklemeyi
@@ -49,6 +49,9 @@ Bir Microsoft iş veya okul hesabıyla oturum açtığınızda veya varsa Micros
 ## <a name="prepare-an-iot-hub"></a>IoT Hub 'ı hazırlama
 
 Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+> [!NOTE]
+> Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
 Azure CLı için Microsoft Azure IoT uzantısını ekleyin:
 

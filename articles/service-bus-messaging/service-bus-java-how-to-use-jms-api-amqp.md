@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019
-ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 3639eef1e95b354298b718af24217a8fbefb3a74
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662892"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173380"
 ---
-# <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus ve AMQP 1,0 ile Java Ileti hizmeti (JMS) API 'sini kullanma
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmeti 'ni (JMS) kullanma
 Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0, güçlü, platformlar arası mesajlaşma uygulamaları oluşturmak için kullanabileceğiniz verimli, güvenilir, hat düzeyinde bir mesajlaşma protokolüdür.
 
 Service Bus ' de AMQP 1,0 desteği, verimli bir ikili protokol kullanarak bir dizi platformda sıraya alma ve yayımlama/Aracılı mesajlaşma özelliklerini de kullanabileceğiniz anlamına gelir. Ayrıca, bir dil, çerçeve ve işletim sistemi karışımı kullanılarak oluşturulan bileşenlerden oluşan uygulamalar oluşturabilirsiniz.

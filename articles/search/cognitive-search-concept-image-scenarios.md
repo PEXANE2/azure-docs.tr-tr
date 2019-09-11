@@ -2,7 +2,7 @@
 title: Bilişsel arama 'da görüntülerden metin işleme ve ayıklama-Azure Search
 description: Azure Search 'teki bilişsel arama işlem hatlarında bulunan görüntülerden metin ve diğer bilgileri işleyin ve ayıklayın.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 216be226f3ce6d1a288462d1a1b79f2bb0d3efe5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639921"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259145"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Bilişsel arama senaryolarında görüntülerden bilgi işleme ve çıkarma
 
@@ -34,16 +34,15 @@ Resim normalleştirmesini kapatamaz. Görüntüler üzerinde yineleme yapan yete
 | Yapılandırma parametresi | Açıklama |
 |--------------------|-------------|
 | ımageaction   | Katıştırılmış görüntüler veya resim dosyaları ile karşılaşıldığında hiçbir işlem yapılması bekleniyorsa "none" olarak ayarlayın. <br/>Belge çözme işleminin bir parçası olarak normalleştirilmiş görüntülerin bir dizisini oluşturmak için "Generatenormalizedileges" olarak ayarlayın.<br/>Veri kaynağınızdaki PDF 'Ler için her sayfa bir çıkış görüntüsüne işlendiğinde, bir dizi normalleştirilmiş görüntü oluşturmak için "generateNormalizedImagePerPage" olarak ayarlayın.  Bu işlevsellik, PDF olmayan dosya türleri için "Generatenormalizediges" ile aynıdır.<br/>"None" olmayan herhangi bir seçenek için, görüntüler *normalized_images* alanında görüntülenir. <br/>Varsayılan değer "none" dır. Bu yapılandırma, "dataToExtract" ayarı "contentAndMetadata" olarak ayarlandığında yalnızca blob veri kaynaklarıyla ilgili olur. <br/>Verilen bir belgeden en fazla 1000 resim ayıklanacaktır. Bir belgede 1000 ' den fazla görüntü varsa, ilk 1000 ayıklanır ve bir uyarı oluşturulur. |
-|  normalizedImageMaxWidth | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000 ' dir.|
-|  normalizedImageMaxHeight | Oluşturulan normalleştirilmiş görüntülerin en büyük yüksekliği (piksel cinsinden). Varsayılan değer 2000 ' dir.|
+|  normalizedImageMaxWidth | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000 ' dir. İzin verilen en büyük değer 10000 ' dir. | 
+|  normalizedImageMaxHeight | Oluşturulan normalleştirilmiş görüntülerin en büyük yüksekliği (piksel cinsinden). Varsayılan değer 2000 ' dir. İzin verilen en büyük değer 10000 ' dir.|
 
 > [!NOTE]
 > *Imageaction* özelliğini "none" dışında bir şeye ayarlarsanız, *parsingmode* özelliğini "varsayılan" dışında bir şeye ayarlayamazsınız.  Bu iki özelliklerden birini, Dizin Oluşturucu yapılandırmanızda varsayılan olmayan bir değere ayarlayabilirsiniz.
 
 **Parsingmode** parametresini `json` (her Blobun tek bir belge olarak dizinlemek için) veya `jsonArray` (bloblarınız JSON dizileri içeriyorsa ve bir dizinin her bir öğesi ayrı bir belge olarak kabul edilir) olarak ayarlayın.
 
-Normalleştirilmiş görüntüler için varsayılan değer olan 2000 piksel en fazla genişlik ve yükseklik, [OCR becerisi](cognitive-search-skill-ocr.md) ve [görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)tarafından desteklenen boyut üst sınırını temel alır. Maksimum sınırları artırırsanız, daha büyük görüntülerde işleme başarısız olabilir.
-
+Normalleştirilmiş görüntüler için varsayılan değer olan 2000 piksel en fazla genişlik ve yükseklik, [OCR becerisi](cognitive-search-skill-ocr.md) ve [görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)tarafından desteklenen boyut üst sınırını temel alır. [OCR becerisi](cognitive-search-skill-ocr.md) , İngilizce dışındaki diller için maksimum genişlik ve yükseklik 4200 ve ingilizce için 10000 ' i destekler.  Maksimum sınırları artırırsanız, Beceri tanımınıza ve belgelerin diline bağlı olarak daha büyük görüntülerde işleme başarısız olabilir. 
 
 Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft.com/rest/api/searchservice/create-indexer) ımageaction öğesini belirtirsiniz:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3790b543a1a6dcbb793dbf661441700e6fa24232
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611882"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376242"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
 
@@ -71,7 +71,7 @@ Bu öğreticide şunları yapacaksınız:
 
     Kaynak VM yapılandırmasına bağlı olarak sizin için uygun olan en sık kullanılan ağ kaynaklarını oluşturmak için aşağıdaki belgelere bakın:
     - [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer)
     -  [Genel IP](../virtual-network/virtual-network-public-ip-address.md)
     - Diğer ağ bileşenleri için [ağ belgelerine](https://docs.microsoft.com/azure/#pivot=products&panel=network)bakın.
 
@@ -101,7 +101,7 @@ Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır
 1. **Ayarlar**' da, **olağanüstü durum kurtarma**' yı seçin.
 1. **Olağanüstü durum kurtarma** > **Hedef bölgesini**Yapılandır bölümünde, çoğaltılacak hedef bölgeyi seçin.
 1. Bu öğretici için diğer varsayılan ayarları kabul edin.
-1. **Çoğaltmayı etkinleştir**' i seçin. Bu adım VM için çoğaltmayı etkinleştirmek üzere bir iş başlatır.
+1. **Çoğaltmayı etkinleştir** seçeneğini belirleyin. Bu adım VM için çoğaltmayı etkinleştirmek üzere bir iş başlatır.
 
     ![Çoğaltmayı etkinleştirme](media/tutorial-migrate-azure-to-azure/settings.png)
 

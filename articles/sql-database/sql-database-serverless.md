@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 08/26/2019
-ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/06/2019
+ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035717"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858507"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL veritabanı sunucusuz (Önizleme)
 
@@ -115,7 +115,8 @@ Aşağıdaki özellikler, oto duraklamayı desteklemez.  Diğer bir deyişle, a�
 
 - Coğrafi çoğaltma (etkin coğrafi çoğaltma ve otomatik yük devretme grupları).
 - Uzun süreli yedek saklama (LTR).
-- SQL Data Sync 'de kullanılan eşitleme veritabanı.
+- SQL Data Sync 'de kullanılan eşitleme veritabanı.  Eşitleme veritabanlarının aksine, hub ve üye veritabanları, oto duraklamayı destekler.
+- Elastik işlerde kullanılan iş veritabanı.
 
 Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto duraklatma geçici olarak engellenir.  Bu gibi durumlarda, hizmet güncelleştirmesi tamamlandıktan sonra yeniden duraklatma yeniden kullanılabilir duruma gelir.
 
@@ -200,7 +201,7 @@ New-AzSqlDatabase `
 Aşağıdaki örnek, bir veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşımakta. Bu örnek, en az sanal çekirdekler, en fazla sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
 
 ```powershell
-Set-AzSqlDatabase
+Set-AzSqlDatabase `
   -ResourceGroupName $resourceGroupName `
   -ServerName $serverName `
   -DatabaseName $databaseName `
@@ -291,7 +292,7 @@ Faturalandırılan işlem miktarı, her saniye kullanılan en yüksek CPU ve bel
 - **Faturalandırılan miktar**: Vcore birim fiyatı * Max (en az sanal çekirdek, sanal çekirdek, en az bellek gb * 1/3, bellek GB kullanıldı * 1/3) 
 - **Faturalandırma sıklığı**: /Saniye
 
-Saniyedeki sanal çekirdek birim fiyatı. Belirli bir bölgedeki belirli birim fiyatları için [Azure SQL Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/single/) bakın.
+VCore birim fiyatı, saniye başına sanal çekirdek başına maliyettir. Belirli bir bölgedeki belirli birim fiyatları için [Azure SQL Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/single/) bakın.
 
 Faturalandırılan işlem miktarı aşağıdaki ölçüm tarafından sunulur:
 

@@ -8,14 +8,14 @@ manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 25d8052cda422c185d49c36c5daff9ac4582e66c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1ba2ec6b5c0c59be7b7264f7558fbb393adcc2d8
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881026"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142800"
 ---
 # <a name="quickstart-text-analytics-client-library-for-go"></a>Hızlı Başlangıç: Go için metin analizi istemci kitaplığı
 
@@ -96,6 +96,8 @@ import (
     "fmt"
     "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics"
     "github.com/Azure/go-autorest/autorest"
+    "log"
+    "os"    
 )
 ```
 
@@ -113,15 +115,21 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-Projenizin ana işlevinde, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+Uygulamanızın `main` işlevinde, kaynağınızın Azure uç noktası ve abonelik anahtarı için değişkenler oluşturun. Bu değerleri TEXT_ANALYTICS_SUBSCRIPTION_KEY ve TEXT_ANALYTICS_ENDPOINT ortam değişkenleriyle elde edin. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```golang
-// This sample assumes you have created an environment variable for your key
-subscriptionKey := os.Getenv("TEXT_ANALYTICS_SUBSCRIPTION_KEY")
-// replace this endpoint with the correct one for your Azure resource. 
-endpoint := "https://eastus.api.cognitive.microsoft.com"
+var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
+if "" == os.Getenv(subscriptionKeyVar) {
+    log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
+}
+var subscriptionKey string = os.Getenv(subscriptionKeyVar)
+var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
+if "" == os.Getenv(endpointVar) {
+    log.Fatal("Please set/export the environment variable " + endpointVar + ".")
+}
+var endpoint string = os.Getenv(endpointVar)
 ```
 
 ## <a name="object-model"></a>Nesne modeli 
@@ -174,22 +182,25 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
 Aynı işlevde, istemcinin [Sentiment ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
 ```golang
-result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
+result, err := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
+if err != nil { log.Fatal(err) }
+
 batchResult := textanalytics.SentimentBatchResult{}
 jsonString, _ := json.Marshal(result.Value)
 json.Unmarshal(jsonString, &batchResult)
 
 // Printing sentiment results
 for _,document := range *batchResult.Documents {
-    fmt.Printf("Document ID: %s " , *document.ID)
+    fmt.Printf("Document ID: %s\n", *document.ID)
     fmt.Printf("Sentiment Score: %f\n",*document.Score)
 }
 
 // Printing document errors
-fmt.Println("Document Errors")
+fmt.Println("Document Errors:")
 for _,error := range *batchResult.Errors {
     fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
 }
+fmt.Println()
 ```
 
 Projenizin ana işlevinde, çağırın `SentimentAnalysis()`.
@@ -222,7 +233,8 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
 Aynı işlevde, istemcinin [DetectLanguage ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) öğesini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan dili yazdırın.
 
 ```golang
-result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
+result, err := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
+if err != nil { log.Fatal(err) }
 
 // Printing language detection results
 for _,document := range *result.Documents {
@@ -235,10 +247,11 @@ for _,document := range *result.Documents {
 }
 
 // Printing document errors
-fmt.Println("Document Errors")
+fmt.Println("Document Errors:")
 for _,error := range *result.Errors {
     fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
 }
+fmt.Println()
 ```
 
 Projenizin ana işlevinde, çağırın `LanguageDetection()`.
@@ -254,7 +267,7 @@ Document ID: 0 Detected Languages with Score: English 1.000000
 Daha önce oluşturulmuş istemciyi alan `ExtractEntities()` adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri içeren [Multilanguageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id`, `language`ve bir `text` özniteliği içerecektir. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text` 
 
 ```golang
-func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
+func ExtractEntities(textAnalyticsclient textanalytics.BaseClient) {
 
     ctx := context.Background()
     inputDocuments := []textanalytics.MultiLanguageInput {
@@ -262,7 +275,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
             Language: StringPointer("en"),
             ID:StringPointer("0"),
             Text:StringPointer("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-        }
+        },
     }
 
     batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
@@ -272,7 +285,8 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 Aynı işlevde, istemcinin [varlıklarını ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın, her belge KIMLIĞINI ve ayıklanan varlık Puanını yazdırın.
 
 ```golang
-    result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
+    result, err := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
+    if err != nil { log.Fatal(err) }
 
     // Printing extracted entities results
     for _,document := range *result.Documents {
@@ -292,10 +306,11 @@ Aynı işlevde, istemcinin [varlıklarını ()](https://godoc.org/github.com/Azu
     }
 
     // Printing document errors
-    fmt.Println("Document Errors")
+    fmt.Println("Document Errors:")
     for _,error := range *result.Errors {
         fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
     }
+    fmt.Println()
 ```
 
 Projenizin ana işlevinde, çağırın `ExtractEntities()`.
@@ -345,7 +360,8 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 Aynı işlevde, istemcinin [KeyPhrases ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) öğesini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve ayıklanan anahtar tümceleri yazdırın.
 
 ```golang
-    result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
+    result, err := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
+    if err != nil { log.Fatal(err) }
 
     // Printing extracted key phrases results
     for _,document := range *result.Documents {
@@ -358,10 +374,11 @@ Aynı işlevde, istemcinin [KeyPhrases ()](https://godoc.org/github.com/Azure/az
     }
 
     // Printing document errors
-    fmt.Println("Document Errors")
+    fmt.Println("Document Errors:")
     for _,error := range *result.Errors {
         fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
     }
+    fmt.Println()
 ```
 
 Projenizin ana işlevinde, çağırın `ExtractKeyPhrases()`.

@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/11/2019
+  ms.date: 08/29/2019
   ms.author: terrylan
 abstract:
   description: 'Örnek uygulamalarımız, en iyi yöntemler ve kılavuzlar ile Azure’da güvenli uygulamalar geliştirmeyi ve dağıtmayı öğrenin.'
@@ -41,7 +41,6 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Linux kapsayıcısında web uygulaması</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">Ödeme kartı endüstrisi</a>
   - title: Kavramlar
     items:
       - type: list

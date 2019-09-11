@@ -1,29 +1,26 @@
 ---
-title: Azure Site Recovery | Azure disk şifrelemesi özellikli VM 'Ler için çoğaltmayı yapılandırma | Microsoft Docs
+title: Azure Site Recovery 'de Azure Disk Şifrelemesi etkin VM 'Ler için çoğaltmayı yapılandırma
 description: Bu makalede, Azure Disk Şifrelemesi etkin VM 'lerinin Site Recovery kullanarak bir Azure bölgesinden diğerine nasıl yapılandırılacağı açıklanmaktadır.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884121"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861322"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
 
-Bu makalede, Azure Disk Şifrelemesi etkin VM 'lerinin bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
+Bu makalede, Azure disk şifrelemesi (ADE) ile Azure VM 'lerinin bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
 
 >[!NOTE]
->Azure Site Recovery Şu anda yalnızca bir Windows işletim sistemi çalıştıran Azure disk şifrelemesi özellikli VM 'Leri desteklemektedir. Azure AD uygulaması olmayan Azure Disk Şifrelemesi etkin VM 'Ler, yalnızca yönetilen diskler kullanılıyorsa desteklenir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez.
+> Site Recovery Şu anda Windows çalıştıran VM 'Ler için Azure Active Directory (AAD) ile ve olmadan ADE 'yi desteklemektedir.  ADE 1,1 çalıştıran makineler (AAD olmadan) için Windows VM 'lerinin yönetilen diskleri kullanıyor olması gerekir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez. ADE 0,1 ' den (AAD ile) 1,1 ' e geçiş yaparsanız, bir sanal makine için çoğaltmayı devre dışı bırakmanız ve ' i etkinleştirdikten 1,1 sonra çoğaltmayı etkinleştirmeniz gerekir.
 
->[!NOTE]
->Ade v1 'den (Azure AD uygulaması ile), ADE v2 'ye (Azure AD uygulaması olmadan) geçiş yaparsanız, ADE v2 'yi etkinleştirdikten sonra çoğaltmayı devre dışı bırakmanız ve çoğaltmayı etkinleştirmeniz gerekir.
 
 ## <a id="required-user-permissions"></a>Gerekli Kullanıcı izinleri
 Site Recovery, kullanıcının hedef bölgede anahtar kasasını oluşturma ve kaynak bölgesi anahtar kasasından anahtarları hedef bölgeye anahtar kasasına kopyalama izinlerine sahip olmasını gerektirir.

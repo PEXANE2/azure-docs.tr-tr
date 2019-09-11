@@ -3,21 +3,20 @@ title: Azure Data Factory veri kümeleri | Microsoft Docs
 description: Data Factory veri kümeleri hakkında bilgi edinin. Veri kümeleri giriş/çıkış verilerini temsil eder.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: bbf7159abf88ce70cc62d202a8375aad302a0552
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019965"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137311"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -147,9 +146,7 @@ Aşağıdaki noktalara dikkat edin:
 - linkedServiceName, bir sonraki JSON parçacığında tanımlanan Azuressqldatabase türünde bağlı bir hizmete başvurur.
 
 ## <a name="dataset-type"></a>Veri kümesi türü
-Kullandığınız veri deposuna bağlı olarak birçok farklı türde veri kümesi vardır. Data Factory tarafından desteklenen veri depolarının listesi için aşağıdaki tabloya bakın. Bu veri deposu için bağlı bir hizmet ve veri kümesi oluşturmayı öğrenmek için bir veri deposuna tıklayın.
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/connector-activity-support-matrix.md)]
+Kullandığınız veri deposuna bağlı olarak birçok farklı türde veri kümesi vardır. [Bağlayıcı genel bakış](connector-overview.md) makalesindeki Data Factory tarafından desteklenen veri listesini bulabilirsiniz. Bu veri deposu için bağlı bir hizmet ve veri kümesi oluşturmayı öğrenmek için bir veri deposuna tıklayın.
 
 Önceki bölümde bulunan örnekte, veri kümesinin türü **Azuressqltable**olarak ayarlanır. Benzer şekilde, bir Azure blob veri kümesi için, veri kümesinin türü, aşağıdaki JSON içinde gösterildiği gibi **AzureBlob**olarak ayarlanır:
 

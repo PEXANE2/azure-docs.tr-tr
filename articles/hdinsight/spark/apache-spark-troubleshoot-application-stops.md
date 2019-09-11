@@ -1,17 +1,17 @@
 ---
-title: Apache Spark akış uygulaması, Azure HDInsight 'taki günlüklerde bilinen hatalar olmadan 24 gün boyunca yürüttükten sonra verileri işlemeyi durduruyor
+title: Azure HDInsight 'ta 24 gün sonra akış uygulaması Apache Spark durduruluyor
 description: Bir Apache Spark akış uygulaması 24 gün boyunca yürütüldükten sonra duraklar ve günlük dosyalarında hata yoktur.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 002c45c514b5d8207a1aa70ec8e1c749677a239a
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c513c5df0d83eb0049683f88d85e8a1c41fd0bf0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620889"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736288"
 ---
 # <a name="scenario-apache-spark-streaming-application-stops-after-executing-for-24-days-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta 24 gün boyunca yürütmeden sonra akış uygulaması Apache Spark durduruluyor
 

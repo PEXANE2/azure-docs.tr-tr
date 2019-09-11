@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494798"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258890"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi
 
@@ -43,13 +43,13 @@ Bir değişken veya özellik ile kullanıldığında, Copy nesnesi aşağıdaki 
 
 Her iki kullanım de bu makalede daha ayrıntılı olarak açıklanmıştır. Öğretici için bkz. [öğretici: Kaynak Yöneticisi şablonları kullanarak birden çok kaynak örneği oluşturma](./resource-manager-tutorial-create-multiple-instances.md).
 
-Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](resource-group-authoring-templates.md#condition).
+Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](conditional-resource-deployment.md).
 
 ## <a name="copy-limits"></a>Sınırları Kopyala
 
 Yineleme sayısını belirtmek için Count özelliği için bir değer sağlarsınız. Sayım 800 ' i aşamaz.
 
-Sayı negatif bir sayı olamaz. REST API sürüm **2019-05-10** veya sonraki bir sürümü ile bir şablon dağıtırsanız, sayı sayısını sıfıra ayarlayabilirsiniz. REST API önceki sürümleri sayısı için sıfır desteği yoktur. Şu anda, Azure CLı veya PowerShell sayı için sıfır desteği vermez, ancak bu destek gelecek bir sürüme eklenecektir.
+Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya sonraki bir sürümü veya REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell 'in önceki sürümleri ve REST API sayısı için sıfır desteği yoktur. Azure CLı Şu anda sayım için sıfır 'yi desteklemez, ancak bu destek gelecekteki bir sürüme eklenecektir.
 
 Kopya ile [tamamlanmış mod dağıtımını](deployment-modes.md) kullanırken dikkatli olun. Tüm modu bir kaynak grubuna yeniden dağıtıyorsanız, kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen tüm kaynaklar silinir.
 

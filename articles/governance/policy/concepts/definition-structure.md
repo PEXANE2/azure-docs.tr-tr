@@ -7,13 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557941"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239177"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -66,9 +65,7 @@ Bir ilke tanımı oluşturmak için JSON kullanın. İlke tanımı yönelik öğ
 }
 ```
 
-Tüm Azure Ilke örnekleri [Azure ilke](../samples/index.md)örneklerimizle.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 ## <a name="mode"></a>Mod
 
@@ -372,7 +369,7 @@ Bu ilke kuralı örneği, birden çok iç içe işlevlerin sonucunun **eşit** `
 
 Yukarıdaki örnek ilke kuralı, **adın** ilk üç karakterini **ABC**olarak karşılaştırmak için [substring ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) kullanır. **Ad** üç karakterden kısaysa, `substring()` işlev bir hatayla sonuçlanır. Bu hata, ilkenin **reddetme** efekti olmasına neden olur.
 
-Bunun yerine, adın ilk üç karakterinin bir hataya neden olmak üzere üç karakterden kısa olmasına izin vermeden eşittir **ABC** değerine eşit olup olmadığını denetlemek için [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) işlevini kullanın:
+Bunun yerine **, adın ilk** üç karakterinin bir hataya neden olmak üzere üç **karakterden kısa olmasına** izin vermeden eşittir **ABC** değerine eşit olup olmadığını denetlemek için [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) işlevini kullanın:
 
 ```json
 {
@@ -517,7 +514,7 @@ Birkaç kullanılabilir diğer adlarına sahip bir 'normal' bir ad ve başka gö
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**[\*]** Diğer adı dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. **Iprules\*[]** kullanarak, her _eylemin_ _reddetme_, ancak kaç kural var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir. Bu örnek kural, **ıprules [\*]. Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler ve yalnızca en az bir eşleşme bulmazsa, bu değeri uygular:
+**[\*]** Diğer adı dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. **Iprules\*[]** kullanarak, her _eylemin_ _reddetme_, ancak kaç kural var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir. Bu örnek kural, **ıprules [\*]. Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler **ve yalnızca en** az bir eşleşme bulmazsa, bu değeri uygular:
 
 ```json
 "policyRule": {
@@ -625,5 +622,5 @@ Aşağıdaki örnek iki etiketi işlemeye yönelik bir girişim oluşturma işle
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

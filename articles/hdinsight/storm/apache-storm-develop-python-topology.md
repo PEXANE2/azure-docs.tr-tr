@@ -1,6 +1,6 @@
 ---
 title: Python bileşenleriyle Apache Storm-Azure HDInsight
-description: Python bileşenleri kullanan bir Apache Storm topolojisi oluşturmayı öğrenin.
+description: Azure HDInsight 'ta Python bileşenleri kullanan bir Apache Storm topolojisi oluşturma hakkında bilgi edinin
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: Apache fırtınası Python
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b9faf33734ba17e9912246fe9c5c2ac45c55ba44
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a15506632e90edae235c3d1889603ca4997a3398
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598464"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813884"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight 'ta Python kullanarak Apache Storm topolojileri geliştirme
 

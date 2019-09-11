@@ -1,21 +1,21 @@
 ---
-title: Öğretici-tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme-Azure Active Directory B2C
+title: 'Öğretici: Tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme-Azure Active Directory B2C'
 description: Tek sayfalı uygulama (JavaScript) için Kullanıcı oturumu açma sağlamak üzere Azure Active Directory B2C nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
 ms.date: 07/24/2019
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8683169e0f8464cdcf52600968f67f3622e61445
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 06ac81105ad8871c934715c18cd5f78fc3ea05f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509577"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858523"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 

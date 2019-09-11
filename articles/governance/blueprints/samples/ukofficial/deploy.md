@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d720f220b8903d960e7bba2a75aa5a86bd0391ce
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 21c5ad69a5e2b09e973b7b348690f554fca5dbe2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225989"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802321"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK resmi ve UK NHS şema örneklerini dağıtın
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği standart dışında taşıyabilir.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
@@ -57,9 +57,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla yayımlandıktan sonra, kaydedildiği Yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
@@ -67,7 +67,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel Bilgiler
+   - Temel
 
      - **Abonelikler**: Şema örneğinin kopyasına kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
      - **Atama adı**: Ad, BLUEPRINT adına göre önceden doldurulur.
@@ -75,7 +75,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
      - **Konum**: Yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Blueprint tanım sürümü**: Şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
-   - Kilit ataması
+   - Atamayı Kilitle
 
      Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 

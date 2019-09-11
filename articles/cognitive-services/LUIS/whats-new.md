@@ -9,20 +9,28 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: a7f64a07378b5ef0085fe77018d6b202984bc1a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945817"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813271"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.  
 
 ## <a name="release-notes"></a>Sürüm notları 
+
+### <a name="september-3-2019"></a>3 Eylül 2019
+
+* Azure yazma kaynağı- [Şimdi geçirin](luis-migration-authoring.md).
+    * Azure kaynağı başına 500 uygulama
+    * Uygulama başına 100 sürüm
+* Önceden oluşturulmuş varlıklar için Türkçe desteği
+* DatetimeV2 için İtalyanca desteği
 
 ### <a name="july-23-2019"></a>23 Temmuz 2019
 

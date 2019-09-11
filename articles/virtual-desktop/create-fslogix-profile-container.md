@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051991"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390813"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -102,7 +102,7 @@ Sonra yeni bir kapasite havuzu oluşturun:
 
 Bundan sonra bir Active Directory bağlantısına katılmanız gerekir.
 
-1. Sayfanın sol tarafındaki menüden **Active Directory bağlantıları** ' nı seçin, sonra Birleştir düğmesini seçerek **Active Directory ekleyin** sayfasını açın.
+1. Sayfanın sol tarafındaki menüden **Active Directory bağlantıları** ' nı **seçin, sonra birleştir düğmesini seçerek** **Active Directory ekleyin** sayfasını açın.
 
    ![Active Directory bağlantıları menüsünü Birleştir menüsünün ekran görüntüsü.](media/active-directory-connections-menu.png)
 
@@ -195,11 +195,11 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 4. Bir kullanıcıyı uzak masaüstü grubuna atamak için aşağıdaki cmdlet 'leri çalıştırın:
 
    ```powershell
-   $tenant = "<your-wvd-tenant>"
-   $pool1 = "<wvd-pool>"
-   $appgroup = "Desktop Application Group"
-   $user1 = "<user-principal>"
-   Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
+   $wvdTenant = "<your-wvd-tenant>"
+   $hostPool = "<wvd-pool>"
+   $appGroup = "Desktop Application Group"
+   $user = "<user-principal>"
+   Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Kullanıcıların Azure NetApp dosya paylaşımında erişebildiğinizden emin olun
@@ -218,7 +218,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu ANF-SMB-3863.gt1107.onmicrosoft.com \\\\ANF-Vol ' dır \\).
 
-   Bu klasör içinde, aşağıdaki örnekteki gibi bir profil VHD 'SI olmalıdır.
+   Bu klasör içinde, aşağıdaki örnekte olduğu gibi bir profil VHD (veya VHDX) olmalıdır.
 
    ![Bağlama yolundaki klasörün içindekilerin ekran görüntüsü. İçinde, "Profile_ssbb" adlı tek bir VHD dosyası.](media/mount-path-folder.png)
 

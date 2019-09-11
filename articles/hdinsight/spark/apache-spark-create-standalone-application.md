@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: IntelliJ kullanarak Azure HDInsight 'ta Spark için bir Scala Maven uygulaması oluşturma"
+title: 'Öğretici: IntelliJ ile Spark için Scala Maven uygulaması-Azure HDInsight'
 description: Öğretici-IntelliJ fıkrı sağlayan Scala için yapı sistemi ve var olan Maven arşiv ETYPE ile Scala 'da yazılmış bir Spark uygulaması oluşturun.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839727"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736441"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma
 
@@ -47,7 +47,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
 1. IntelliJ IDEA’yı açın.
 
-2. Giriş ekranında, eklentiler penceresini açmak için**eklentileri** **Yapılandır** > ' a gidin .
+2. Giriş **ekranında, eklentiler penceresini açmak** için**eklentileri** **Yapılandır** > ' a gidin.
 
     ![Scala eklentisini etkinleştirme](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
 
@@ -117,7 +117,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
   
 12. Sonraki adımlarda, Spark Scala uygulamasının bağımlılıklarını tanımlamak için **Pod. xml** ' yi güncelleştirdik. Bu bağımlılıkların otomatik olarak indirilip çözümlenmesi için Maven’i uygun şekilde yapılandırmanız gerekir.
 
-13. Ayarlar penceresini açmak için **Dosya** menüsünden **Ayarlar** ' ı seçin .
+13. **Ayarlar penceresini açmak** için **Dosya** menüsünden **Ayarlar** ' ı seçin.
 
 14. **Ayarlar** penceresinde, **derleme, yürütme, dağıtım** > **derleme araçları** > **Maven** > **içeri aktarma**' ya gidin.
 
@@ -175,7 +175,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
     1. **Dosya** menüsünde **proje yapısı...** öğesini seçin.
 
-    2. **Proje yapısı** penceresinde,**bağımlılıklara sahip modüllerden** **artı sembol +**  > **jar** > öğesine > gidin...
+    2. **Proje yapısı** penceresinde,**bağımlılıklara sahip modüllerden** **artı sembol +**  > **jar** >  **öğesine** > gidin...
 
         ![JAR oluşturma](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
@@ -195,7 +195,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
         Proje **derlemesinde Ekle** onay kutusunun seçili olduğundan emin olun. Bu, her proje oluşturulduğunda veya güncelleştirilirken jar 'in oluşturulmasını sağlar. **Uygula** ' yı ve ardından **Tamam**' ı seçin.
 
-    7. Jar 'yi oluşturmak için derleme**Yapı yapıtları** >  > **derlemesi**' ne gidin. Projenin yaklaşık 30 saniye içinde derlenmesi gerekir.  Çıktı jar dosyası, **\out\artifacts** altında oluşturulur.
+    7. Jar 'yi oluşturmak **için derleme** > **Yapı yapıtları** > **derlemesi**' ne gidin. Projenin yaklaşık 30 saniye içinde derlenmesi gerekir.  Çıktı jar dosyası, **\out\artifacts** altında oluşturulur.
 
         ![JAR oluşturma](./media/apache-spark-create-standalone-application/output.png)
 

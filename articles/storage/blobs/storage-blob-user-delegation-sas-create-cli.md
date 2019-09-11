@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896957"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164318"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Azure CLı (Önizleme) ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
@@ -112,6 +112,21 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 > [!NOTE]
 > Kullanıcı temsili SAS, depolanan erişim ilkesiyle izin tanımlamayı desteklemez.
+
+## <a name="revoke-a-user-delegation-sas"></a>Kullanıcı temsilciliğini iptal etme SAS
+
+Azure CLı 'dan bir Kullanıcı temsilciliğini iptal etmek için [az Storage Account revoke-temsilciyi-Keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) komutunu çağırın. Bu komut, belirtilen depolama hesabıyla ilişkili tüm Kullanıcı temsili anahtarlarını iptal eder. Bu anahtarlarla ilişkili tüm paylaşılan erişim imzaları geçersiz kılınır.
+
+Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+
+```azurecli-interactive
+az storage account revoke-delegation-keys \
+    --name <storage-account> \
+    --resource-group <resource-group>
+```
+
+> [!IMPORTANT]
+> Hem Kullanıcı temsili anahtarı hem de RBAC rol atamaları Azure Storage tarafından önbelleğe alınır. bu nedenle, iptal işlemini başlattığınızda ve var olan bir Kullanıcı temsili SAS geçersiz hale geldiğinde bir gecikme olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

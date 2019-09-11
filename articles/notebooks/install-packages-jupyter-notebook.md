@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598019"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274433"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>İçinde bir not defteri paketleri yükleme
 
@@ -40,13 +40,13 @@ Komut çıktısı olduğunu gösteriyorsa gereksinim uyulmuş olur ve ardından 
 
 ## <a name="r"></a>R
 
-R paketleri CRAN veya GitHub kullanarak yüklenebilir `install.packages` işlevi bir kod hücresi içinde:
+R 'deki paketler, `install.packages` bir kod hücresindeki işlevi kullanılarak Cran veya GitHub 'dan yüklenebilir:
 
 ```r
 install.packages("package_name")
 ```
 
-Yayın öncesi sürümler ve diğer geliştirme paketleri devtools kitaplığını kullanarak Github'dan yükleyebilirsiniz:
+Ayrıca, devtools kitaplığını kullanarak GitHub 'dan ön sürüm sürümlerini ve diğer geliştirme paketlerini de yükleyebilirsiniz:
 
 ```r
 options(unzip = 'internal')
@@ -66,12 +66,22 @@ Ardından, paketleri yükleyin:
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+Ardından, paket oluşturucuyu yükleyin:
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+Tüm ormalleri açın:
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Nasıl yapılır: Yapılandırma ve projeleri yönetme](configure-manage-azure-notebooks-projects.md)
-- [Nasıl yapılır: Mevcut bir slayt gösterisi](present-jupyter-notebooks-slideshow.md)
+- [Nasıl yapılır: Projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
+- [Nasıl yapılır: Bir slayt gösterisi sunun](present-jupyter-notebooks-slideshow.md)

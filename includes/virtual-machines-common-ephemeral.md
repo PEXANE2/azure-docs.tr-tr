@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669875"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775904"
 ---
 Geçici işletim sistemi diskleri, yerel sanal makine (VM) depolama alanı üzerinde oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Kısa ömürlü işletim sistemi diskleri, uygulamaların tek tek VM hatalarından dayanıklı olduğu, ancak VM dağıtım zamanından daha fazla etkilediği veya tek tek sanal makine örneklerinin yeniden oluşturulduğu durum bilgisiz iş yükleri için iyi çalışır. Kısa ömürlü IŞLETIM sistemi diski ile işletim sistemi diskine daha hızlı okuma/yazma gecikme süresi ve daha hızlı VM yeniden görüntüsü alırsınız. 
  
@@ -175,7 +175,7 @@ Bir şablonu kullanarak, kısa ömürlü işletim sistemi diski ile bir VM dağ�
 
 
 ## <a name="reimage-a-vm-using-rest"></a>REST kullanarak VM 'yi yeniden görüntü oluşturma
-Şu anda, kısa ömürlü işletim sistemi diski ile bir sanal makine örneğini yeniden görüntüye yönelik tek yöntem REST API kullanmaktır. Ölçek Kümeleri için yeniden görüntüleme, PowerShell, CLı ve Portal aracılığıyla zaten kullanılabilir.
+Bir sanal makine örneğini, aşağıda açıklandığı gibi REST API ve Azure Portal aracılığıyla VM 'nin genel bakış bölmesine giderek kullanarak kısa ömürlü işletim sistemi diski ile yeniden görüntüleyebilirsiniz. Ölçek Kümeleri için yeniden görüntüleme, PowerShell, CLı ve Portal aracılığıyla zaten kullanılabilir.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-

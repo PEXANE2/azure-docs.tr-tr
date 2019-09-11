@@ -1,5 +1,5 @@
 ---
-title: Web uç noktası - Event Grid, Azure CLI için özel olayları göndermek | Microsoft Docs
+title: Event Grid ve Azure CLı ile özel olaylar gönderme
 description: Azure Event Grid ve Azure CLI kullanarak özel bir konu yayımlayın ve bu konu için olaylara abone olmak için kullanın. Olaylar, bir web uygulaması tarafından işlenir.
 services: event-grid
 keywords: ''
@@ -8,13 +8,13 @@ ms.author: spelluru
 ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fe821fbcea78719095e5353b0d4165f85916b67d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seodec18, seo-javascript-september2019
+ms.openlocfilehash: a6888179d4d465808dc28f7784db8d1d915e3f80
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958662"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861095"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Hızlı Başlangıç: Azure CLı ve Event Grid özel olayları Web uç noktasına yönlendirme
 

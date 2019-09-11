@@ -6,16 +6,17 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/5/2018
+ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735465"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210220"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack üzerinde dosya ve uygulama yedekleme
+
 Azure Stack üzerinde dosya ve uygulamaları korumak (veya yedeklemek) için Azure Backup kullanabilirsiniz. Dosya ve uygulamaları yedeklemek için, Azure Stack üzerinde çalışan bir sanal makine olarak Microsoft Azure Backup sunucusu ' nu kurun. Aynı sanal ağdaki herhangi bir Azure Stack sunucusundaki dosyaları koruyabilirsiniz. Azure Backup Sunucusu yükledikten sonra, kısa vadeli yedekleme verileri için kullanılabilir yerel depolamayı artırmak üzere Azure diskleri ekleyin. Azure Backup Sunucusu uzun süreli saklama için Azure depolama kullanır.
 
 > [!NOTE]
@@ -23,7 +24,6 @@ Azure Stack üzerinde dosya ve uygulamaları korumak (veya yedeklemek) için Azu
 >
 
 Bu makale, Azure Stack ortamında Azure Backup Sunucusu yüklenmesini kapsamaz. Azure Stack Azure Backup Sunucusu yüklemek için [Azure Backup sunucusu yükleme](backup-mabs-install-azure-stack.md)makalesine bakın.
-
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Azure Stack VM 'lerdeki dosya ve klasörleri Azure 'a yedekleme
 
@@ -41,7 +41,7 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    **Grup üyelerini seçin** ekranı açılır. 
+    **Grup üyelerini seçin** ekranı açılır.
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
@@ -51,19 +51,19 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
     Microsoft, bir koruma ilkesini paylaşacak tüm verilerin tek bir koruma grubuna yerleştirilmesini önerir. Koruma gruplarını planlama ve dağıtma hakkında ayrıntılı bilgi için bkz. System Center DPM makalesi, [koruma gruplarını dağıtma](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
-4. **Veri koruma yöntemini seçin** ekranında, koruma grubu için bir ad yazın. **Kullanarak kısa vadeli koruma** istiyorum onay kutusunu seçin ve **çevrimiçi koruma**istiyorum ' u seçin.           **İleri**'ye tıklayın.
+4. **Veri koruma yöntemini seçin** ekranında, koruma grubu için bir ad yazın. **Kullanarak kısa vadeli koruma** istiyorum onay kutusunu seçin ve **çevrimiçi koruma**istiyorum ' u seçin. **İleri**'ye tıklayın.
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     **Çevrimiçi koruma**istiyorum ' u seçmek için öncelikle **kısa vadeli koruma istiyorum** ' u seçmeniz gerekir: Dis. Azure Backup Sunucusu banda korumaz, bu yüzden disk kısa süreli koruma için tek seçenektir.
 
-5. **Kısa dönem hedeflerini belirtin** ekranında, diske kaydedilen kurtarma noktalarının ne kadar süreyle saklanacağını ve artımlı yedeklemelerin ne zaman kaydedileceğini seçin.           **İleri**'ye tıklayın.
+5. **Kısa dönem hedeflerini belirtin** ekranında, diske kaydedilen kurtarma noktalarının ne kadar süreyle saklanacağını ve artımlı yedeklemelerin ne zaman kaydedileceğini seçin. **İleri**'ye tıklayın.
 
     > [!IMPORTANT]
     > Beş günden uzun bir süre boyunca Azure Backup sunucusu bağlı disklerde işlemsel kurtarma (yedekleme) verilerini saklamamalıdır.
     >
 
-    ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+    ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     Artımlı yedeklemeler için bir Aralık seçmek yerine, zamanlanan her kurtarma noktasının hemen öncesinde hızlı tam yedekleme çalıştırmak için, **bir kurtarma noktasının hemen öncesinde**' ne tıklayın. Uygulama iş yüklerini koruyorsanız, Azure Backup Sunucusu eşitleme sıklığı zamanlaması başına kurtarma noktaları oluşturur (uygulama artımlı yedeklemeleri desteklediğinde). Uygulama artımlı yedeklemeleri desteklemiyorsa Azure Backup Sunucusu hızlı tam yedekleme çalıştırır.
 
@@ -80,13 +80,13 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
 9. Azure 'a yedeklemeyi seçerseniz, **çevrimiçi koruma verilerini belirtin** sayfasında Azure 'a yedeklemek istediğiniz iş yüklerinin seçili olduğundan emin olun.
 
-10. **Çevrimiçi yedekleme zamanlamasını belirtin**kısmında, Azure 'a artımlı yedeklemelerin ne zaman gerçekleşeceğini belirtin. 
+10. **Çevrimiçi yedekleme zamanlamasını belirtin**kısmında, Azure 'a artımlı yedeklemelerin ne zaman gerçekleşeceğini belirtin.
 
     Yedeklemeleri, her gün/hafta/ay/yıl ve çalıştırılacağı zaman/tarih ile çalışacak şekilde zamanlayabilirsiniz. Yedeklemeler günde en fazla iki kez bulunabilir. Bir yedekleme işi her çalıştığında, Azure 'da Azure Backup Sunucusu diskte depolanan yedeklenen verilerin kopyasından bir veri kurtarma noktası oluşturulur.
 
 11. **Çevrimiçi saklama Ilkesini belirtin**kısmında günlük/haftalık/aylık/yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunacağını belirtin.
 
-12. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl gerçekleşeceğini belirtin. 
+12. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl gerçekleşeceğini belirtin.
 
 13. **Özet**sayfasında, ayarlarınızı gözden geçirin. **Grup Oluştur**' a tıkladığınızda, ilk veri çoğaltması oluşur. Veri çoğaltma tamamlandığında, **durum** sayfasında, koruma grubu durumu **Tamam**olarak gösterilir. İlk yedekleme işi, koruma grubu ayarları ile birlikte gerçekleşir.
 
@@ -115,11 +115,10 @@ Verileri sanal makinenize kurtarmak için Azure Backup Sunucusu konsolunu kullan
     * **Bildirim** **Kurtarma tamamlandığında e-posta gönder**' i tıklatın ve bildirimi alacak alıcıları belirtin. E-posta adreslerini virgülle ayırın.
     * Seçimleri yaptıktan sonra **İleri** ' ye tıklayın.
 
-7. Kurtarma ayarlarınızı gözden geçirin ve **kurtar**' ı tıklatın. 
+7. Kurtarma ayarlarınızı gözden geçirin ve **kurtar**' ı tıklatın.
 
-    > [!Note] 
-    > Kurtarma işi devam ederken, seçilen kurtarma öğeleri için tüm eşitleme işleri iptal edilir.
-    >
+    >[!Note]
+    >Kurtarma işi devam ederken, seçilen kurtarma öğeleri için tüm eşitleme işleri iptal edilir.
 
 Modern Yedekleme Alanı (MB) kullanıyorsanız, dosya sunucusu son kullanıcı kurtarma (EUR) desteklenmez. Dosya sunucusu EUR 'nin Birim Gölge Kopyası Hizmeti (VSS) bağımlılığı vardır ve bu Modern Yedekleme Alanı kullanmaz. EUR etkinse, verileri kurtarmak için aşağıdaki adımları kullanın:
 
@@ -128,12 +127,16 @@ Modern Yedekleme Alanı (MB) kullanıyorsanız, dosya sunucusu son kullanıcı k
 2. **Özellikler** menüsünde, **önceki sürümler** ' e tıklayın ve kurtarmak istediğiniz sürümü seçin.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Kasala Azure Backup Sunucusu görüntüleme
-Azure portalında Azure Backup Sunucusu varlıkları görüntülemek için aşağıdaki adımları izleyebilirsiniz:
+
+Azure portal Azure Backup Sunucusu varlıkları görüntülemek için aşağıdaki adımları izleyebilirsiniz:
+
 1. Kurtarma Hizmetleri kasasını açın.
 2. Yedekleme Altyapısı ' na tıklayın.
 3. Yedekleme yönetim sunucularını görüntüleyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
+
 Diğer iş yüklerini korumak için Azure Backup Sunucusu kullanma hakkında daha fazla bilgi için aşağıdaki makalelerden birine bakın:
-- [SharePoint grubunu yedekleme](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [SQL Server 'ı yedekleme](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+
+* [SharePoint grubunu yedekleme](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+* [SQL Server 'ı yedekleme](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

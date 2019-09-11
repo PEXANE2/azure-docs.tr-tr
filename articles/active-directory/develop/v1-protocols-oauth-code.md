@@ -12,19 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834707"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193222"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 kod verme akışını kullanarak Azure Active Directory web uygulamalarına erişimi yetkilendirme
+
+> [!NOTE]
+>  Sunucuya çağırmayı planladığınız kaynağı söylemezseniz, sunucu bu kaynak için koşullu erişim ilkelerini tetiklemez. Bu nedenle MFA tetikleyicisine sahip olmak için, URL 'nize bir kaynak eklemeniz gerekir. 
+>
 
 Azure Active Directory (Azure AD), Azure AD kiracınızdaki Web uygulamalarına ve Web API 'Lerine erişim yetkisi verme olanağı sağlamak için OAuth 2,0 kullanır. Bu kılavuz dilden bağımsızdır ve [Açık kaynaklı kitaplıklarımızın](active-directory-authentication-libraries.md)HIÇBIRINI kullanmadan http iletilerinin nasıl gönderileceğini ve alınacağını açıklar.
 
@@ -175,7 +179,7 @@ Başarılı bir yanıt şöyle görünebilir:
 
 | Parametre | Açıklama |
 | --- | --- |
-| access_token |İmzalı JSON Web Token (JWT) olarak istenen [erişim belirteci](access-tokens.md) . Uygulama, bir Web API 'SI gibi güvenli kaynak üzerinde kimlik doğrulaması yapmak için bu belirteci kullanabilir. |
+| access_token |İstenen erişim belirteci.  Bu, opak bir dizedir; kaynağın alma beklediği görünüme bağlıdır ve istemcinin istemci tarafından görünmesi için tasarlanmamıştır. Uygulama, bir Web API 'SI gibi güvenli kaynak üzerinde kimlik doğrulaması yapmak için bu belirteci kullanabilir. |
 | token_type |Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz [. OAuth 2.0 yetkilendirme çerçevesi: Taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Erişim belirtecinin geçerli olduğu süre (saniye cinsinden). |
 | expires_on |Erişim belirtecinin süre sonu. Tarih, 1970-01-01T0:0: 0Z UTC 'den sona erme zamanına kadar saniye sayısı olarak gösterilir. Bu değer, önbelleğe alınmış belirteçlerin ömrünü belirlemede kullanılır. |
@@ -346,3 +350,6 @@ Başarılı bir belirteç yanıtı şöyle görünür:
 | correlation_id |İsteğe ait, bileşenler genelinde tanılamada yardımcı olabilecek benzersiz bir tanımlayıcı. |
 
 Hata kodlarının ve önerilen istemci eyleminin açıklaması için bkz. [belirteç uç noktası hataları Için hata kodları](#error-codes-for-token-endpoint-errors).
+
+## <a name="next-steps"></a>Sonraki adımlar
+Azure AD v 1.0 uç noktası ve Web uygulamalarınıza ve Web API 'Lerine kimlik doğrulama ve yetkilendirme ekleme hakkında daha fazla bilgi edinmek için bkz. [örnek uygulamalar](sample-v1-code.md).

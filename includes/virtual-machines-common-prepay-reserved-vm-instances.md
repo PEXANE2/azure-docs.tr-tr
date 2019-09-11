@@ -3,17 +3,17 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08/02/2019
-ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/29/2019
+ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781253"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806078"
 ---
-# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Azure ayrılmış VM örnekleri (RI) ile sanal makineler için ön ödeme
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure ayrılmış VM örnekleri ile maliyetleri kaydetme
 
-Azure ayrılmış sanal makine (VM) örnekleri ile sanal makineler için ön ödeme yapın ve tasarruf edin. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan sanal makine sayısına otomatik olarak uygulanır. İndirimleri almak için bir sanal makineye bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca VM kullanımınızın işlem parçasını içerir. Windows VM 'Leri için kullanım ölçümü iki ayrı ölçü olarak bölünür. Linux ölçümü ve Windows IP ölçümü ile aynı olan bir işlem ölçümü vardır. Satın almayı yaparken gördüğünüz ücretler yalnızca işlem maliyetlerine yöneliktir. Ücretler Windows Yazılım maliyetlerini içermez. Yazılım maliyetleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örneklerine yazılım maliyetleri dahil değildir](../articles/billing/billing-reserved-instance-windows-software-costs.md).
+Bir Azure ayrılmış VM örneğine kaydetme yaptığınızda para tasarrufu yapabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan sanal makine sayısına otomatik olarak uygulanır. İndirimleri almak için bir sanal makineye bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca VM kullanımınızın işlem parçasını içerir. Windows VM 'Leri için kullanım ölçümü iki ayrı ölçü olarak bölünür. Linux ölçümü ve Windows IP ölçümü ile aynı olan bir işlem ölçümü vardır. Satın almayı yaparken gördüğünüz ücretler yalnızca işlem maliyetlerine yöneliktir. Ücretler Windows Yazılım maliyetlerini içermez. Yazılım maliyetleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örneklerine yazılım maliyetleri dahil değildir](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Satın almadan önce doğru VM boyutunu belirleme
 
@@ -80,7 +80,7 @@ Ayrılmış VM örnekleri, bazı özel durumlarla birçok VM boyutu için kullan
 
 ## <a name="buy-a-reserved-vm-instance"></a>Ayrılmış bir sanal makine örneği satın alma
 
-[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz.
+[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz. Rezervasyon için [veya aylık ödemeler](../articles/billing/billing-monthly-payments-reservations.md)için ödeme yapın.
 
 Bu gereksinimler ayrılmış bir sanal makine örneği satın almak için geçerlidir:
 
@@ -97,7 +97,7 @@ Bu gereksinimler ayrılmış bir sanal makine örneği satın almak için geçer
 
 | Alan      | Açıklama|
 |------------|--------------|
-|Subscription|Ayırma için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, rezervasyonun ön maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde tarifesine sahip bireysel bir abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|    
+|Subscription|Ayırma için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, rezervasyonun maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde tarifesine sahip bireysel bir abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|    
 |`Scope`       |Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <ul><li>**Tek kaynak grubu kapsamı** — yalnızca seçili kaynak grubundaki eşleşen kaynaklara rezervasyon iskontosunu uygular.</li><li>**Tek abonelik kapsamı** — seçili abonelikteki eşleşen kaynaklara rezervasyon iskontosunu uygular.</li><li>**Paylaşılan kapsam** — fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça Öde tarifelerine sahip bireysel abonelikler için faturalandırma kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>|
 |Bölge    |Ayırma kapsamındaki Azure bölgesi.|    
 |VM Boyutu     |Sanal makine örneklerinin boyutu.|
@@ -148,6 +148,6 @@ Sorularınız varsa veya yardıma ihtiyacınız [bir destek isteği oluşturma](
     - [Azure 'da ayırmaları yönetme](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Rezervasyon iskontosunun nasıl uygulanacağını anlayın](../articles/billing/billing-understand-vm-reservation-charges.md)
     - [Kullandıkça Öde tarifesine sahip bir abonelik için rezervasyon kullanımını anlayın](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [Kurumsal kaydınız için rezervasyon kullanımını anlayın](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+    - [Kurumsal kaydınız için rezervasyon kullanımını anlama](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Windows yazılım maliyetleri rezervasyonlar içermez](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [Iş Ortağı Merkezi bulut çözümü sağlayıcısı (CSP) programında Azure ayırmaları](https://docs.microsoft.com/partner-center/azure-reservations)

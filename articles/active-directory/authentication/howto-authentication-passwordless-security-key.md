@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828923"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305069"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Azure AD için passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirme (Önizleme)
 
@@ -51,15 +51,15 @@ Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz grupları
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Microsoft Intune**cihazyapılandırma > **profilleri**profil**Oluştur**' a gidin. >  > 
 1. Yeni profili aşağıdaki ayarlarla yapılandırın
-   1. Adı: Windows oturum açma için güvenlik anahtarları
+   1. Ad: Windows oturum açma için güvenlik anahtarları
    1. Açıklama: Windows oturum açma sırasında FIDO güvenlik anahtarlarının kullanılmasını sağlar
    1. Platform: Windows 10 ve üzeri
-   1. Platform türü: Özel
+   1. Profil türü: Özel
    1. Özel OMA-URI ayarları:
-      1. Adı: Windows oturum açma için FIDO güvenlik anahtarlarını aç
+      1. Ad: Windows oturum açma için FIDO güvenlik anahtarlarını aç
       1. OMA-URI:./Device/Vendor/MSFT/passportforwork/SecurityKey/usesecuritykeyforsignın
-      1. Veri türü: Tamsayı
-      1. Değer: 1. 
+      1. Veri türü: Integer
+      1. Deeri 1. 
 1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
 
 ![Intune özel cihaz yapılandırma ilkesi oluşturma](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
@@ -87,7 +87,7 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 
 ## <a name="obtain-fido2-security-keys"></a>FIDO2 güvenlik anahtarlarını alma
 
-Desteklenen anahtarlar ve üreticiler hakkında daha fazla bilgi için, [](concept-authentication-passwordless.md) FIDO2 güvenlik anahtarları bölümüne bakın.
+Desteklenen anahtarlar ve üreticiler hakkında daha fazla [bilgi için,](concept-authentication-passwordless.md) FIDO2 güvenlik anahtarları bölümüne bakın.
 
 > [!NOTE]
 > Satınalma ve NFC tabanlı güvenlik anahtarları kullanmayı planlıyorsanız, desteklenen bir NFC okuyucusuna ihtiyacınız olacaktır.
@@ -118,13 +118,13 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 1. Buraya gidin[https://myprofile.microsoft.com](https://myprofile.microsoft.com)
 1. Henüz yoksa oturum aç
 1. **Güvenlik bilgileri** ' ne tıklayın
-   1. Kullanıcı zaten en az bir Azure Multi-Factor Authentication yöntemi kayıtlıysa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.
+   1. Kullanıcının kayıtlı en az bir Azure Multi-Factor Authentication yöntemi zaten varsa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.
    1. Kayıtlı en az bir Azure Multi-Factor Authentication yöntemi yoksa, bir tane eklemesi gerekir.
 1. **Yöntem Ekle** ' ye tıklayıp **güvenlik anahtarı** ' nı seçerek bir FIDO2 güvenlik anahtarı ekleyin
 1. **USB cihazı** veya **NFC cihazını** seçin
 1. Anahtarınızı hazırlayın ve **İleri ' yi** seçin
 1. Bir kutu görünür ve güvenlik anahtarınız için bir PIN oluşturmanız/girmeniz istenir ve ardından anahtarınız için Biyometri ya da Touch için gerekli hareketi gerçekleştirirsiniz.
-1. Birleşik kayıt deneyimine döndürülür ve belirtebilmeniz için anlamlı bir ad girmeniz istenir. bu sayede, birden çok           **İleri**'ye tıklayın.
+1. Birleşik kayıt deneyimine döndürülür ve belirtebilmeniz için anlamlı bir ad girmeniz istenir. bu sayede, birden çok **İleri**'ye tıklayın.
 1. İşlemi gerçekleştirmek için **bitti** ' ye tıklayın
 
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Güvenlik anahtarını biyometrik, PIN veya sıfırlama güvenlik anahtarını yönetme

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823674"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376069"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Öğretici: Azure Active Directory Iş üzerinde öğrenmeyi tümleştirin
 
@@ -90,9 +90,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Iş Istemcisinde öğrenme ekibine](https://www.learninga-z.com/site/contact/support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Iş üzerinde öğrenme, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir.
+5. Iş üzerinde öğrenme, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir.
 
-    Azure AD 'deki **NameIdentifier** değerini kuruluş kurulumunuzu temel alarak güncelleştirebilir ve bu değerin, bu değerin Saba buluttaki **Kullanıcı kimliğiyle** eşleşmesi gerekir ve bu değer, **düzenleme** simgesine tıklayarak öznitelik eşlemesini düzenlemeniz gerekir. ve öznitelik eşlemesini değiştirin.
+    Azure AD 'deki **NameIdentifier** değerini, kuruluş kurulumunuzu temel alarak güncelleştirebilir ve bu değerin, bu değerin Saba BULUTTAKI **Kullanıcı kimliğiyle** eşleşmesi gerekir ve bu değer, **Düzenle** simgesine tıklayarak ve öğesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir. öznitelik eşleme.
 
     ![image](common/edit-attribute.png)
 
@@ -106,7 +106,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-learning-at-work-sso"></a>Iş SSO 'SU üzerinde öğrenimi yapılandırma
 
-**İş** tarafında öğrenilerek çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [iş destek ekibine öğrenilerek](https://www.learninga-z.com/site/contact/support)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır
+**İş tarafında öğrenilerek** çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [iş destek ekibine öğrenilerek](https://www.learninga-z.com/site/contact/support)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
@@ -118,7 +118,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -140,7 +140,7 @@ Bu bölümde, Iş sırasında öğrenme erişimi vererek Azure çoklu oturum aç
 
 ### <a name="create-learning-at-work-test-user"></a>Iş testi kullanıcısına öğrenme oluşturma
 
-Bu bölümde, Iş üzerinde öğrenmekte B. Simon adlı bir Kullanıcı oluşturacaksınız. Eğitim Iş platformunda kullanıcıları eklemek için [iş destek ekibi 'Nde öğrenerek](https://www.learninga-z.com/site/contact/support) çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Iş üzerinde öğrenmekte B. Simon adlı bir Kullanıcı oluşturacaksınız. Eğitim Iş platformunda kullanıcıları eklemek için [iş destek ekibi 'Nde öğrenerek](https://www.learninga-z.com/site/contact/support) çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 

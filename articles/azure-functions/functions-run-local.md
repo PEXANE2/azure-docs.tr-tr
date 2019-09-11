@@ -1,22 +1,20 @@
 ---
 title: Azure Functions Core Tools çalışma | Microsoft Docs
 description: Azure işlevleri 'nde çalıştırmadan önce yerel bilgisayarınızdaki komut isteminden veya terminalden Azure işlevlerini nasıl kodleyeceğinizi ve test leyeceğinizi öğrenin.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096153"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207272"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -414,6 +412,8 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Azure 'da yayımlama
 
 Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
+
+Proje klasörü, yayınlanmaması gereken dile özgü dosyalar ve dizinler içerebilir. Dışlanan öğeler kök proje klasöründeki bir. funcignore dosyasında listelenir.     
 
 ### <a name="project-file-deployment"></a>Dağıtım (proje dosyaları)
 

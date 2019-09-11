@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbee98d64d37b2cdfc515eb733324902e238a768
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087547"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383100"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
@@ -51,7 +51,7 @@ Düzenleme tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 * **Dönüş değerleri** -dönüş değerleri JSON olarak serileştirilir ve Azure Tablo depolama alanındaki Orchestration geçmişi tablosunda kalıcı hale getirilir. Bu dönüş değerleri, daha sonra açıklanan Orchestration istemci bağlaması tarafından sorgulanabilir.
 
 > [!WARNING]
-> Orchestrator işlevleri, düzenleme tetikleyicisi bağlaması dışında herhangi bir giriş veya çıkış bağlamasını asla kullanmamalıdır. Bunun yapılması, bu bağlamalar tek iş parçacığı ve g/ç kurallarına uymadığı için dayanıklı görev uzantısıyla ilgili sorunlara neden olabilir.
+> Orchestrator işlevleri, düzenleme tetikleyicisi bağlaması dışında herhangi bir giriş veya çıkış bağlamasını asla kullanmamalıdır. Bunun yapılması, bu bağlamalar tek iş parçacığı ve g/ç kurallarına uymadığı için dayanıklı görev uzantısıyla ilgili sorunlara neden olabilir. Diğer bağlamaları kullanmak istiyorsanız, bunları Orchestrator işlevinizden çağrılan bir etkinlik işlevine ekleyin.
 
 > [!WARNING]
 > JavaScript Orchestrator işlevleri asla bildirilmelidir `async`.
@@ -240,6 +240,35 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
         }
     };
 }
+```
+
+### <a name="using-input-and-output-bindings"></a>Giriş ve çıkış bağlamalarını kullanma
+
+Etkinlik tetikleyicisi bağlamasının yanı sıra normal giriş ve çıkış bağlamalarını de kullanabilirsiniz. Örneğin, etkinlik Bağlamalarınızın girişini alabilir ve EventHub çıkış bağlamasını kullanarak bir EventHub 'e ileti gönderebilirsiniz:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "message",
+      "type": "activityTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "eventHub",
+      "name": "outputEventHubMessage",
+      "connection": "EventhubConnectionSetting",
+      "eventHubName": "eh_messages",
+      "direction": "out"
+  }
+  ]
+}
+```
+
+```javascript
+module.exports = async function (context) {
+    context.bindings.outputEventHubMessage = context.bindings.message;
+};
 ```
 
 ## <a name="orchestration-client"></a>Orchestration istemcisi

@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 15e2ce437a746d15622dc4e093a63c87448f100d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fcd3e5fd6db0d7c18a5f9bfba030cd3d809b452f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559669"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802526"
 ---
 # <a name="deploy-a-custom-model"></a>Özel bir modeli dağıtma
 
-Verileri karşıya yükledikten ve inceledikten, doğruluğu değerlendirdikten ve özel bir model eğitilene kadar, uygulamalarınız, araçlarınızla ve ürünlerinizle kullanmak üzere özel bir uç nokta dağıtabilirsiniz. Bu belgede, Özel Konuşma Tanıma portalını kullanarak bir uç nokta oluşturmayı ve dağıtmayı öğreneceksiniz.
+Verileri karşıya yükledikten ve inceledikten, doğruluğu değerlendirdikten ve özel bir model eğitilene kadar, uygulamalarınız, araçlarınızla ve ürünlerinizle kullanmak üzere özel bir uç nokta dağıtabilirsiniz. Bu belgede, [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech)kullanarak bir uç nokta oluşturmayı ve dağıtmayı öğreneceksiniz.
 
 ## <a name="create-a-custom-endpoint"></a>Özel uç nokta oluşturma
 
-Yeni bir özel uç nokta oluşturmak için sayfanın üst kısmındaki Özel Konuşma Tanıma menüsünden **dağıtım** ' ı seçin. İlk kez çalıştırıldıysanız tabloda listelenen bitiş noktaları olmadığını fark edeceksiniz. Bir uç nokta oluşturduktan sonra, bu sayfayı dağıtılan her bitiş noktasını izlemek için kullanacaksınız.
+Yeni bir özel uç nokta oluşturmak için [özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech) oturum açın ve sayfanın üst kısmındaki özel konuşma tanıma menüsünden **dağıtım** ' yi seçin. İlk kez çalıştırıldıysanız tabloda listelenen bitiş noktaları olmadığını fark edeceksiniz. Bir uç nokta oluşturduktan sonra, bu sayfayı dağıtılan her bitiş noktasını izlemek için kullanacaksınız.
 
 Sonra, **uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından, bu uç nokta ile ilişkilendirmek istediğiniz özel modeli seçin. Bu sayfadan günlüğe kaydetmeyi de etkinleştirebilirsiniz. Günlüğe kaydetme, uç nokta trafiğini izlemenizi sağlar. Devre dışı bırakılırsa trafik depolanmaz.
 

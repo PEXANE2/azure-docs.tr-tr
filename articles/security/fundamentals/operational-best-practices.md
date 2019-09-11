@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828717"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129324"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -218,7 +218,7 @@ Daha fazla bilgi için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yöne
 **Ayrıntı**: Azure [ilke açıklamasında](../../governance/policy/concepts/definition-structure.md#display-name-and-description) veya Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) açıklamasında kuruluş ilkesine bir başvuru ekleyerek kuruluşunuzun belgelerindeki veya Azure ilkesinin içinde belge eşlemesi.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD risk raporlarını izleme
-Saldırganlar bir kullanıcının kimliğini çalarak bir ortama erişim kazanıyorsa güvenlik ihlallerinin büyük çoğunluğu bu şekilde gerçekleşir. Güvenliği aşılmış kimlikleri bulma işlemi kolay bir görev değildir. Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, [risk olayı](../../active-directory/reports-monitoring/concept-risk-events.md)adlı bir kayıtta saklanır. Risk olayları Azure AD güvenlik raporlarında kaydedilir. Daha fazla bilgi için [risk altındaki kullanıcılar güvenlik raporu](../../active-directory/reports-monitoring/concept-user-at-risk.md) ve [riskli oturum açma güvenlik raporu](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)hakkında bilgi edinin.
+Saldırganlar bir kullanıcının kimliğini çalarak bir ortama erişim kazanıyorsa güvenlik ihlallerinin büyük çoğunluğu bu şekilde gerçekleşir. Güvenliği aşılmış kimlikleri bulma işlemi kolay bir görev değildir. Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, [risk algılama](../../active-directory/reports-monitoring/concept-risk-events.md)adlı bir kayıtta saklanır. Risk algılamaları Azure AD güvenlik raporlarında kaydedilir. Daha fazla bilgi için [risk altındaki kullanıcılar güvenlik raporu](../../active-directory/reports-monitoring/concept-user-at-risk.md) ve [riskli oturum açma güvenlik raporu](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve yönetirken en iyi güvenlik uygulamaları için bkz. [Azure Güvenlik en iyi uygulamaları ve desenleri](best-practices-and-patterns.md) .

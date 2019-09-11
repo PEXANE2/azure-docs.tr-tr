@@ -11,16 +11,16 @@ manager: carmonm
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 55843f9acaafa0c5963cfac735fdb92eeeacdc02
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: be0f534e6770cde561f18bfcb310524a7c506416
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982923"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801295"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak B2B çözümleri için tümleştirme hesapları oluşturma ve yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanarak [kurumsal tümleştirme ve B2B çözümleri](../logic-apps/logic-apps-enterprise-integration-overview.md) oluşturabilmeniz için önce, için güvenli, ölçeklenebilir ve yönetilebilir bir kapsayıcı sağlayan ayrı bir Azure kaynağı olan bir tümleştirme hesabı oluşturmanız gerekir. tanımladığınız ve mantıksal uygulama iş akışlarınızla kullandığınız tümleştirme yapıtları.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) kullanarak [kurumsal tümleştirme ve B2B çözümleri](../logic-apps/logic-apps-enterprise-integration-overview.md) oluşturabilmek için önce bir tümleştirme hesabı oluşturmanız gerekir. Bu hesap, mantıksal uygulama iş akışlarınızla tanımladığınız ve kullandığınız tümleştirme yapıları için güvenli, ölçeklenebilir ve yönetilebilir bir kapsayıcı sağlayan ayrı bir Azure kaynağıdır.
 
 Örneğin, ticari iş ortakları, anlaşmalar, Haritalar, şemalar, sertifikalar ve toplu iş konfigürasyonları gibi B2B yapıtları oluşturabilir, saklayabilir ve yönetebilirsiniz. Ayrıca, mantıksal uygulamanızın bu yapıtlar ile çalışabilmesi ve Logic Apps B2B bağlayıcılarını kullanabilmesi için, [tümleştirme hesabınızı](#link-account) mantıksal uygulamanıza bağlamanız gerekir. Tümleştirme hesabınız ve mantıksal uygulamanız *aynı* konumda veya bölgede bulunmalıdır.
 
@@ -80,7 +80,7 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](https://docs.mi
 
 ## <a name="link-to-logic-app"></a>Mantıksal uygulama bağlantısı
 
-Mantıksal uygulamalarınıza B2B yapıtlarınızı içeren bir tümleştirme hesabına erişim sağlamak için öncelikle tümleştirme hesabınızı mantıksal uygulamanıza bağlamanız gerekir. Aynı bölgede hem mantıksal uygulama hem de tümleştirme hesabı bulunmalıdır. Bu görev için, bu bölümdeki adımları izleyerek Azure portal kullanabilirsiniz.
+Mantıksal uygulamalarınıza B2B yapıtlarınızı içeren bir tümleştirme hesabına erişim sağlamak için öncelikle tümleştirme hesabınızı mantıksal uygulamanıza bağlamanız gerekir. Aynı bölgede hem mantıksal uygulama hem de tümleştirme hesabı bulunmalıdır. Bu görevi gerçekleştirmek için Azure portal kullanabilirsiniz. Visual Studio kullanıyorsanız ve mantıksal uygulamanız bir [Azure Kaynak grubu projesinde](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)ise, [mantıksal uygulamanızı Visual Studio kullanarak bir tümleştirme hesabına bağlayabilirsiniz](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. Azure portal, mantıksal uygulamanızı bulun ve açın.
 
@@ -102,7 +102,7 @@ Artık mantıksal uygulamanız tümleştirme hesabınızdaki yapıtları ve XML 
 
 <a name="change-pricing-tier"></a>
 
-## <a name="change-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
+## <a name="change-pricing-tier"></a>Fiyatlandırma katmanını değiştir
 
 Bir tümleştirme hesabının [sınırlarını](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) artırmak için, varsa [daha yüksek bir fiyatlandırma katmanına yükseltebilirsiniz](#upgrade-pricing-tier). Örneğin, ücretsiz katmandan temel katmana veya Standart katmana yükseltebilirsiniz. Ayrıca, varsa [daha düşük bir katmana](#downgrade-pricing-tier)indirebilirsiniz. Daha fazla bilgi için fiyatlandırma bilgileri için aşağıdaki konulara bakın:
 

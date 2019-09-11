@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: 1d94cff3eb3299692fc4172f5bb5211532ef1002
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2d90fe4d40c51b21deea23675d6b51b972429237
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697832"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390234"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Örnek: Metin Analizi’ni kullanarak anahtar ifadeleri ayıklama
 
@@ -74,7 +74,7 @@ Belge boyutu belge başına 5.120 veya daha az karakter olmalıdır ve koleksiyo
 
 + Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [Anahtar tümceleri API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
 
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. `/keyPhrases` Kaynağı içermesi gerekir: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`.
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. URL 'ye dahil `/text/analytics/v2.1/keyPhrases` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 

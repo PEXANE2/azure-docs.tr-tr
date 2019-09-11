@@ -1,6 +1,6 @@
 ---
-title: Azure İzleyici'de Azure Veri Gezgini (Önizleme) kullanarak verileri Sorgulama
-description: Application Insights ve Log Analytics ile bir Azure Veri Gezgini Ara sunucusunu çapraz ürün sorguları için oluşturarak bu konu başlığında, Azure İzleyici'de veri sorgulama
+title: Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
+description: Bu konu başlığında, Application Insights ve Log Analytics ile çapraz ürün sorguları için bir Azure Veri Gezgini proxy oluşturarak Azure Izleyici 'deki verileri sorgulayın
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,90 +8,92 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: f363e59e6faa6b115eb40a2a5d35432f02299d52
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811199"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172699"
 ---
-# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure İzleyici'de Azure Veri Gezgini (Önizleme) kullanarak verileri Sorgulama
+# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
 
-Azure Veri Gezgini Ara sunucu kümesi (ADX Proxy), Azure Veri Gezgini arasında çapraz ürün sorguları gerçekleştirmeyi sağlayan bir varlıktır [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview), ve [Log Analytics (on)](/azure/azure-monitor/platform/data-platform-logs) içinde [Azure İzleyici](/azure/azure-monitor/) hizmeti. Azure İzleyici Log Analytics çalışma alanları veya Application Insights uygulamaları proxy küme olarak eşleyebilirsiniz. Ardından, Azure Veri Gezgini araçlarını kullanarak proxy küme sorgulama ve çapraz küme sorguda başvurduğu. Bu makalede, bir proxy kümeye bağlanmak, Azure Veri Gezgini Web kullanıcı Arabirimi için bir proxy küme ekleyin ve Azure veri Gezgini'nde, yapay ZEKA uygulamaları veya LA çalışma alanları karşı sorguları çalıştırmak gösterilmektedir.
+Azure Veri Gezgini proxy kümesi (ADX proxy), Azure [izleyici](/azure/azure-monitor/) hizmetinde Azure Veri Gezgini, [Application Insights (aı)](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs) arasında çapraz ürün sorguları gerçekleştirmenizi sağlayan bir varlıktır. Azure Izleyici Log Analytics çalışma alanlarını veya Application Insights uygulamalarını bir proxy kümesi olarak eşleyebilirsiniz. Daha sonra Azure Veri Gezgini araçları 'nı kullanarak proxy kümesini sorgulayabilir ve bir çapraz küme sorgusunda buna başvurabilirsiniz. Makalede bir proxy kümesine bağlanma, Azure Veri Gezgini Web Kullanıcı arabirimine bir proxy kümesi ekleme ve Azure Veri Gezgini ait AI uygulamalarınızda veya LA çalışma alanlarınızda sorgu çalıştırma işlemlerinin nasıl yapılacağı gösterilir.
 
-Azure Veri Gezgini proxy akış: 
+Azure Veri Gezgini proxy akışı: 
 
-![ADX proxy akış](media/adx-proxy/adx-proxy-flow.png)
+![ADX proxy akışı](media/adx-proxy/adx-proxy-flow.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
-> ADX Proxy Önizleme modundadır. Bu özelliği etkinleştirmek için kişi [ADXProxy](mailto:adxproxy@microsoft.com) takım.
+> ADX proxy, önizleme modunda. Bu özelliği etkinleştirmek için [Adxproxy](mailto:adxproxy@microsoft.com) ekibine başvurun.
 
-## <a name="connect-to-the-proxy"></a>Proxy sunucusuna bağlanmak
+## <a name="connect-to-the-proxy"></a>Ara sunucuya Bağlan
 
-1. Azure Veri Gezgini yerel kümenizi doğrulayın (gibi *yardımcı* kümesi), Log Analytics veya Application Insights kümeye bağlamadan önce sol taraftaki menüde görünür.
+1. Log Analytics veya Application Insights kümenize bağlanmadan önce, Azure Veri Gezgini yerel kümenizin ( *Yardım* kümesi gibi) sol menüde göründüğünü doğrulayın.
 
-    ![Yerel küme ADX](media/adx-proxy/web-ui-help-cluster.png)
+    ![ADX yerel kümesi](media/adx-proxy/web-ui-help-cluster.png)
 
-1. Azure Veri Gezgini kullanıcı arabiriminde (https://dataexplorer.azure.com/clusters) seçin **küme Ekle**.
+1. Azure Veri Gezgini Kullanıcı arabiriminde (https://dataexplorer.azure.com/clusters) **küme Ekle**' yi seçin.
 
-1. İçinde **küme Ekle** penceresi:
+1. **Küme Ekle** penceresinde:
 
-    * URL, LA veya AI kümeye ekleyin. Örneğin, `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * URL 'YI LA veya AI kümesine ekleyin. Örneğin, `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
 
     * **Add (Ekle)** seçeneğini belirleyin.
 
     ![Küme ekleme](media/adx-proxy/add-cluster.png)
 
-    Birden fazla proxy kümeye bağlantı eklerseniz, her farklı bir ad verin. Aksi halde bunların tümü aynı adı sol bölmede gerekir.
+    Birden fazla proxy kümesine bağlantı eklerseniz, her birine farklı bir ad verin. Aksi takdirde, sol bölmede hepsi aynı ada sahip olacaktır.
 
-1. Bağlantı kurulduktan sonra LA veya AI kümenizi yerel ADX kümenizle sol bölmesinde görünür. 
+1. Bağlantı kurulduktan sonra, LA veya AI kümeniz yerel ADX kümenizin sol bölmesinde görünür. 
 
     ![Log Analytics ve Azure Veri Gezgini kümeleri](media/adx-proxy/la-adx-clusters.png)
 
 ## <a name="run-queries"></a>Sorgu çalıştırma
 
-Kusto Gezgini, Jupyter Kqlmagic veya REST API'yi ADX web Gezgini Ara sunucu kümeleri sorgulamak için kullanabilirsiniz. 
+Proxy kümelerini sorgulamak için kusto Explorer, ADX web Explorer, Jupyıter Könmagic veya REST API kullanabilirsiniz. 
 
 > [!TIP]
-> * Veritabanı adı proxy kümede belirtilen kaynak adıyla aynı olmalıdır. Adları büyük/küçük harfe duyarlıdır.
-> * İçinde arası küme sorguları, emin olun [uygulamalar ve çalışma alanlarını adlandırma](#application-insights-app-and-log-analytics-workspace-names) doğrudur.
+> * Veritabanı adı, proxy kümesinde belirtilen kaynakla aynı ada sahip olmalıdır. Adlar büyük/küçük harfe duyarlıdır.
+> * Küme içi sorgularda, Application Insights uygulamalar ve Log Analytics çalışma alanlarının adlandırılmasının doğru olduğundan emin olun.
+>     * Adlar özel karakterler içeriyorsa, bunlar proxy kümesi adındaki URL kodlamasıyla değiştirilirler. 
+>     * Adlar, [KQL tanımlayıcı adı kurallarını](/azure/kusto/query/schema-entities/entity-names)karşılamayan karakterler içeriyorsa, bunlar Dash **-** karakteriyle değiştirilmiştir.
 
-### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Yerel bir Azure Veri Gezgini kümesine göre sorgulama 
+### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Yerel Azure Veri Gezgini kümesinde sorgulama 
 
-Azure Veri Gezgini kümenizde sorguları çalıştırma (gibi *StormEvents* tablosundaki *yardımcı* kümesi). Sorgu çalıştırırken, yerel Azure Veri Gezgini kümenizi sol bölmede seçili olduğunu doğrulayın.
+Azure Veri Gezgini kümenizdeki sorguları çalıştırın ( *Yardım* kümesinde *stormevents* tablosu gibi). Sorguyu çalıştırırken, sol bölmede yerel Azure Veri Gezgini kümenizin seçildiğini doğrulayın.
 
 ```kusto
 StormEvents | take 10 // Demonstrate query through the native ADX cluster
 ```
 
-![Sorgu StormEvents tablosu](media/adx-proxy/query-adx.png)
+![StormEvents tablosunu sorgula](media/adx-proxy/query-adx.png)
 
-### <a name="query-against-your-la-or-ai-cluster"></a>LA veya AI kümenizi karşı sorgulama
+### <a name="query-against-your-la-or-ai-cluster"></a>LA veya AI kümenize göre sorgulama
 
-LA veya AL kümenizde sorguları çalıştırdığınızda, LA veya AI kümenizi sol bölmede seçili olduğunu doğrulayın. 
+Sorguları LA veya AL kümenizde çalıştırdığınızda, sol bölmede LA veya AI kümenizin seçildiğini doğrulayın. 
 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
 
-![Sorgu LA çalışma](media/adx-proxy/query-la.png)
+![Sorgu LA çalışma alanı](media/adx-proxy/query-la.png)
 
-### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>LA veya AI kümenizi ADX Proxy'den gelen sorgu  
+### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>ADX proxy 'sinden LA veya AI kümenizi sorgulama  
 
-Ara sunucuya LA veya AI kümesinde sorguları çalıştırdığınızda, ADX yerel kümenizi sol bölmede seçili doğrulayın. Aşağıdaki örnek, bir sorgu kullanarak yerel ADX kümesi LA çalışma alanının gösterir.
+Proxy 'den LA veya AI kümenizde sorgular çalıştırdığınızda, sol bölmede ADX yerel kümenizin seçildiğini doğrulayın. Aşağıdaki örnek, yerel ADX kümesini kullanarak LA çalışma alanının bir sorgusunu gösterir
 
 ```kusto
 cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name').Perf
 | take 10 
 ```
 
-![Azure Veri Gezgini Ara sunucuya sorgulama](media/adx-proxy/query-adx-proxy.png)
+![Azure Veri Gezgini proxy 'den sorgulama](media/adx-proxy/query-adx-proxy.png)
 
-### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>Sorgu LA veya AI kümesi ve ADX kümenin ADX Ara sunucuya arası 
+### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>KAX proxy 'sinden LA veya AI kümesinin çapraz sorgusu ve ADX kümesi 
 
-Ara sunucuya çapraz küme sorguları çalıştırdığınızda, ADX yerel kümenizi sol bölmede seçili doğrulayın. Aşağıdaki örnekler ADX birleştirme göstermektedir küme tabloları (kullanarak `union`) LA çalışma alanıyla.
+Proxy 'den çapraz küme sorguları çalıştırdığınızda, sol bölmede ADX yerel kümenizin seçildiğini doğrulayın. Aşağıdaki örneklerde, ADX küme tablolarını (kullanılarak `union`) La çalışma alanıyla birleştirme gösterilmektedir.
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
@@ -103,25 +105,20 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-![Azure Veri Gezgini Ara sunucuya sorgu arası](media/adx-proxy/cross-query-adx-proxy.png)
+![Azure Veri Gezgini proxy 'den çapraz sorgu](media/adx-proxy/cross-query-adx-proxy.png)
 
-Kullanarak [ `join` işleci](/azure/kusto/query/joinoperator), UNION yerine, Azure Veri Gezgini ile yerel bir küme (ve proxy üzerinde değil) çalıştırmak için bir ipucu gerektirebilir. 
+UNION yerine işleci kullanmak, Azure Veri Gezgini yerel kümesinde (proxy üzerinde değil) çalıştırmak için bir ipucu gerektirebilir. [ `join` ](/azure/kusto/query/joinoperator) 
 
-## <a name="additional-syntax-examples"></a>Ek söz dizimi örnekleri
+## <a name="additional-syntax-examples"></a>Ek sözdizimi örnekleri
 
-Application Insights (AI) veya Log Analytics (on) kümeleri çağrılırken aşağıdaki söz dizimini seçenekleri kullanılabilir:
+Application Insights (AI) veya Log Analytics (LA) kümeleri çağrılırken aşağıdaki sözdizimi seçenekleri mevcuttur:
 
-|Söz dizimi açıklaması  |Application Insights  |Log Analytics  |
+|Sözdizimi açıklaması  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Bu abonelik yalnızca tanımlı kaynak içeren bir küme içindeki veritabanı (**çapraz küme sorgular için önerilen**) |   Küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | Küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
-| Tüm uygulamalar/bu abonelikte çalışma alanı içeren kümesi    |     Küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    Küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
-|Abonelikteki tüm uygulamalar/çalışma içeren ve bu kaynak grubunun üyesi olan bir küme    |   Küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    Küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
-|Bu abonelik yalnızca tanımlı kaynak içeren kümesi      |    Küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  Küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
-
-### <a name="application-insights-app-and-log-analytics-workspace-names"></a>Application Insights uygulaması ve Log Analytics çalışma alanı adları
-
-* Adları özel karakterler içeriyorsa, bunlar URL proxy küme adında kodlama yerine. 
-* Adları sağlamayan karakterler içeriyorsa [KQL tanımlayıcı adı kuralları](/azure/kusto/query/schema-entities/entity-names), yok, kısa çizgi yerine **-** karakter.
+| Bu abonelikte yalnızca tanımlı kaynağı içeren bir küme içindeki veritabanı (**çapraz küme sorguları için önerilir**) |   küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
+| Bu abonelikteki tüm uygulamaları/çalışma alanlarını içeren küme    |     küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
+|Abonelikteki tüm uygulamaları/çalışma alanlarını içeren ve bu kaynak grubunun üyesi olan küme    |   küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
+|Bu abonelikte yalnızca tanımlı kaynağı içeren küme      |    küme (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  küme (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

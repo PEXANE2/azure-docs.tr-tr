@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: .NET API kullanarak kopyalama Etkinlikli bir işlem hattı oluşturma | Microsoft Docs'
+title: 'Öğretici: .NET API kullanarak kopyalama etkinliği ile işlem hattı oluşturma | Microsoft Docs'
 description: Bu öğreticide, .NET API kullanarak Kopyalama Etkinlikli bir Azure Data Factory işlem hattı oluşturursunuz.
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,18 @@ manager: craigg
 ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e2f4f214523d9d42761323ec02ca6dae4c20bba6
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6291540363b2fbafa8f4747dc9f58a39164f3cbe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839423"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140301"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Öğretici: .NET API kullanarak kopyalama Etkinlikli bir işlem hattı oluşturma
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Öğretici: .NET API kullanarak kopyalama etkinliği ile işlem hattı oluşturma
 > [!div class="op_single_selector"]
 > * [Genel bakış ve önkoşullar](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopyalama Sihirbazı](data-factory-copy-data-wizard-tutorial.md)
@@ -35,14 +34,14 @@ ms.locfileid: "67839423"
 
 Bu makalede, Azure blob depolama alanından Azure SQL veritabanına veri kopyalayan bir işlem hattıyla veri fabrikası oluşturmak için [.NET API](https://portal.azure.com)’yi nasıl kullanacağınızı öğreneceksiniz. Azure Data Factory’yi ilk kez kullanıyorsanız bu öğreticiyi tamamlamadan önce [Azure Data Factory’ye Giriş](data-factory-introduction.md) makalesini okuyun.   
 
-Bu öğreticide, içinde bir etkinlik ile işlem hattı oluşturun: Kopyalama etkinliği. Kopyalama etkinliği, verileri, desteklenen bir veri deposundan desteklenen bir havuz veri deposuna kopyalar. Kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Etkinlik, çeşitli veri depolama alanları arasında güvenli, güvenilir ve ölçeklenebilir bir yolla veri kopyalayabilen genel olarak kullanılabilir bir hizmet tarafından desteklenir. Kopyalama Etkinliği hakkında daha fazla bilgi için bkz. [Veri Taşıma Etkinlikleri](data-factory-data-movement-activities.md).
+Bu öğreticide, içinde bir etkinliği olan bir işlem hattı oluşturursunuz: Kopyalama etkinliği. Kopyalama etkinliği, verileri, desteklenen bir veri deposundan desteklenen bir havuz veri deposuna kopyalar. Kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Etkinlik, çeşitli veri depolama alanları arasında güvenli, güvenilir ve ölçeklenebilir bir yolla veri kopyalayabilen genel olarak kullanılabilir bir hizmet tarafından desteklenir. Kopyalama Etkinliği hakkında daha fazla bilgi için bkz. [Veri Taşıma Etkinlikleri](data-factory-data-movement-activities.md).
 
 Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [bir işlem hattında birden fazla etkinlik](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 > [!NOTE] 
 > .NET API’deki Data Factory ile ilgili tüm belgeleri görmek için bkz. [Data Factory .NET API Başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 > 
-> Bu öğreticideki veri işlem hattı, bir kaynak veri deposundaki verileri hedef veri deposuna kopyalar. Azure Data Factory kullanarak verileri dönüştürme hakkında bir öğretici için bkz. [Öğreticisi: Hadoop kümesi kullanarak verileri dönüştürmek için bir işlem hattı oluşturma](data-factory-build-your-first-pipeline.md).
+> Bu öğreticideki veri işlem hattı, bir kaynak veri deposundaki verileri hedef veri deposuna kopyalar. Azure Data Factory kullanarak verileri dönüştürme hakkında bir öğretici için bkz [. Öğretici: Hadoop kümesi](data-factory-build-your-first-pipeline.md)kullanarak verileri dönüştürmek için bir işlem hattı oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -133,7 +132,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 3. **Paket Yöneticisi Konsolu**'nda şu adımları uygulayın:
    1. Data Factory paketini yüklemek için şu komutu çalıştırın: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Azure Active Directory paketini yüklemek için şu komutu çalıştırın (kodda Active Directory API'sini kullanırsınız): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Aşağıdaki **appSetttings** bölümünü **App.config** dosyasına ekleyin. Bu ayarlar, yardımcı yöntemi tarafından kullanılır: **GetAuthorizationHeader**.
+4. Aşağıdaki **appSetttings** bölümünü **App.config** dosyasına ekleyin. Bu ayarlar yardımcı yöntemi tarafından kullanılır: **Getauthorizationheader**.
 
     **&lt;Application ID&gt;** , **&lt;Password&gt;** , **&lt;Subscription ID&gt;** ve **&lt;tenant ID&gt;** değerlerini kendi değerlerinizle değiştirin.
 
@@ -235,7 +234,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 
     Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu öğreticide, Azure HDInsight veya Azure Data Lake Analytics gibi herhangi bir işlem hizmeti kullanmazsınız. Azure Depolama (kaynak) ve Azure SQL Veritabanı (hedef) türünde iki veri deposu kullanırsınız. 
 
-    Bu nedenle, AzureStorageLinkedService ve AzureSqlLinkedService türlerinin adlı iki bağlı hizmet oluşturun: AzureStorage ve AzureSqlDatabase.  
+    Bu nedenle, türlerin AzureStorageLinkedService ve Azuressqllinkedservice adlı iki bağlı hizmet oluşturursunuz: AzureStorage ve Azuressqldatabase.  
 
     AzureStorageLinkedService, Azure depolama hesabınızı veri fabrikasına bağlar. Bu depolama hesabı, içinde kapsayıcıyı oluşturduğunuz ve verileri [önkoşulların](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) parçası olarak yüklediğiniz hesaptır.
 9. Bir **Azure SQL bağlı hizmeti** oluşturan aşağıdaki kodu **Main** yöntemine ekleyin.
@@ -515,8 +514,8 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 18. Menüden **Hata Ayıkla** -> **Hata Ayıklamayı Başlat**’a tıklayarak örneği çalıştırın. **Getting run details of a data slice** iletisini gördüğünüzde birkaç dakika bekleyin ve **ENTER** tuşuna basın.
 19. Azure portalı kullanarak **APITutorialFactory** veri fabrikasının aşağıdaki yapıtlarla birlikte oluşturulduğunu doğrulayın:
     * Bağlı hizmet: **LinkedService_AzureStorage**
-    * Veri kümesi: **Inputdataset** ve **OutputDataset**.
-    * İşlem hattı: **PipelineBlobSample**
+    * Veri kümesi **Inputdataset** ve **outputdataset**.
+    * Konfigüre **PipelineBlobSample**
 20. Belirtilen Azure SQL veritabanındaki **emp** tablosunda, iki çalışan kaydının oluşturulduğunu doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

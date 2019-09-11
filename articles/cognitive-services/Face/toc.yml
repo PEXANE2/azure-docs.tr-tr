@@ -9,12 +9,8 @@
   items:
     - name: İstemci SDK’sini kullanma
       items:
-        - name: Bir görüntüdeki yüzleri algılama
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: .NET SDK
+          href: Quickstarts/csharp-sdk.md
         - name: Python SDK'sı
           href: QuickStarts/python-sdk.md
     - name: REST API’sini kullanma

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609952"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231307"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Endpoint Protection sorunlarını yönetme
 Azure Güvenlik Merkezi, kötü amaçlı yazılımdan koruma sorunlarını izler ve bu durumu Endpoint Protection sorunları dikey penceresinde bildirir. Güvenlik Merkezi, algılanan tehditler ve yetersiz koruma gibi sorunları vurgular ve sanal makinelerinizi (VM) ve bilgisayarlarınızı kötü amaçlı yazılımdan koruma tehditlerine karşı savunmasız hale getirebilir. **Endpoint Protection sorunları**altındaki bilgileri kullanarak, tanımlanan sorunları ele almak için bir plan tanımlayabilirsiniz.
@@ -31,12 +31,12 @@ Güvenlik Merkezi aşağıdaki uç nokta koruma sorunlarını bildirir:
 - Endpoint Protection sistem durumu:
 
   - İmza güncel değil – bu sanal makinelere ve bilgisayarlara bir kötü amaçlı yazılımdan koruma çözümü yüklenir, ancak çözüm en son kötü amaçlı yazılımdan koruma imzalarına sahip değildir.
-  - Gerçek zamanlı koruma yok – bu sanal makinelere ve bilgisayarlara bir kötü amaçlı yazılımdan koruma çözümü yüklenir, ancak gerçek zamanlı koruma için yapılandırılmamıştır.   Çözüm desteklenmediğinden, hizmet devre dışı bırakılmış olabilir veya güvenlik merkezi durumu alamıyor olabilir. Desteklenen çözümlerin bir listesi için bkz. [iş ortağı tümleştirmesi](security-center-os-coverage.md#supported-endpoint-protection-solutions) .
+  - Gerçek zamanlı koruma yok – bu sanal makinelere ve bilgisayarlara bir kötü amaçlı yazılımdan koruma çözümü yüklenir, ancak gerçek zamanlı koruma için yapılandırılmamıştır.   Çözüm desteklenmediğinden, hizmet devre dışı bırakılmış olabilir veya güvenlik merkezi durumu alamıyor olabilir. Desteklenen çözümlerin bir listesi için bkz. [iş ortağı tümleştirmesi](security-center-services.md#endpoint-supported) .
   - Raporlama değil – bir kötü amaçlı yazılımdan koruma çözümü yüklenir, ancak raporlama verileri değildir.
   - Bilinmiyor – kötü amaçlı yazılımdan koruma çözümü yüklendi, ancak durumu bilinmiyor veya bilinmeyen bir hata bildiriyor.
 
     > [!NOTE]
-    > Güvenlik Merkezi ile tümleştirilmiş Endpoint Protection güvenlik çözümlerinin listesi için bkz. [güvenlik çözümlerini tümleştirme](security-center-os-coverage.md#supported-endpoint-protection-solutions) .
+    > Güvenlik Merkezi ile tümleştirilmiş Endpoint Protection güvenlik çözümlerinin listesi için bkz. [güvenlik çözümlerini tümleştirme](security-center-services.md#endpoint-supported) .
     >
     >
 

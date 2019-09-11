@@ -4,15 +4,15 @@ description: Azure Cosmos DB, küresel olarak dağıtılmış çok modelli verit
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066091"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240793"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'de farklı API'ler ile ilgili sık sorulan sorular
 
@@ -119,7 +119,7 @@ Bir bölge kümesi, Azure Cosmos DB bağımsız ve kamu bulutlarında uyar unutm
 
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Kapsayıcı düzeyi akışından geçmek mümkün veritabanı düzeyi aktarım hızı sağlama için sağlanıyor? Ya da tam tersi
 
-Kapsayıcı ve veritabanı düzeyi aktarım hızı sağlama ayrı teklifleri ve ya da bunların arasında geçiş gerektiren geçirme kaynaktan hedef veri. Yeni bir veritabanı veya yeni bir koleksiyon oluşturun ve ardından verileri kullanarak geçirmek için anlamına gelir [toplu Yürütücü Kitaplığı](bulk-executor-overview.md) veya [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Kapsayıcı ve veritabanı düzeyi aktarım hızı sağlama ayrı teklifleri ve ya da bunların arasında geçiş gerektiren geçirme kaynaktan hedef veri. Bu, yeni bir veritabanı veya yeni bir kapsayıcı oluşturmanız ve ardından [toplu yürütücü kitaplığı](bulk-executor-overview.md) veya [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)kullanarak veri geçirmeniz gerektiği anlamına gelir.
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure CosmosDB, zaman serisi analizini destekliyor mu?
 
@@ -149,7 +149,8 @@ Evet, SQL API'si, JavaScript saklı yordamları ve Tetikleyicileri olarak ifade 
 
 Bir grup belgeleri ve bunların ilişkili JavaScript uygulama mantığının bir kapsayıcıdır. Faturalanabilir bir varlık kapsayıcıdır burada [maliyet](performance-levels.md) kullanılan depolama ve aktarım hızı tarafından belirlenir. Kapsayıcılar, bir veya daha fazla bölümleri veya sunucuları kapsayabilir ve neredeyse sınırsız miktarda depolama veya işlemeyi işleyebilecek şekilde ölçeklendirilebilir.
 
-* SQL API ve Cosmos DB MongoDB hesapları için API 'SI için bir kapsayıcı bir koleksiyonla eşlenir.
+* SQL API 'SI için bir kapsayıcı bir kapsayıcıya eşlenir.
+* MongoDB hesapları için Cosmos DB API 'SI için bir kapsayıcı bir koleksiyonla eşlenir.
 * Cassandra ve tablo API'si hesapları için bir kapsayıcı bir tabloya eşler.
 * Gremlin API hesapları için bir kapsayıcı için bir grafik eşler.
 
@@ -157,7 +158,7 @@ Ayrıca Azure Cosmos DB için fatura varlıkları kapsayıcılardır. Her kapsay
 
 ### <a name="how-do-i-create-a-database"></a>Veritabanı nasıl oluşturulur?
 
-Kullanarak veritabanları oluşturabilirsiniz [Azure portalında](https://portal.azure.com)anlatılan şekilde [koleksiyon ekleyin](create-sql-api-java.md#add-a-container), bir'ın [Azure Cosmos DB SDK'ları](sql-api-sdk-dotnet.md), veya [REST API'leri](/rest/api/cosmos-db/).
+[Bir kapsayıcı ekleme](create-sql-api-java.md#add-a-container), [Azure Cosmos DB SDK 'Lardan](sql-api-sdk-dotnet.md)biri veya [REST API 'lerinden](/rest/api/cosmos-db/)açıklandığı gibi [Azure Portal](https://portal.azure.com)kullanarak veritabanları oluşturabilirsiniz.
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Kullanıcıları ve izinleri nasıl ayarlarım?
 
@@ -179,7 +180,7 @@ SQL API'si, HTTP varlık etiketleri veya Etag'ler aracılığıyla iyimser eşza
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>SQL API'SİNDE nasıl işlemleri yaptınız?
 
-SQL API'si, JavaScript saklı yordamları ve Tetikleyicileri aracılığıyla dil ile tümleşik işlemleri destekler. Betiklerin içindeki tüm veritabanı işlemleri, anlık görüntü yalıtımı altında yürütülür. Tek bölümlü bir koleksiyon olduğundan, yürütme koleksiyona kapsamlıdır. Koleksiyon bölümlere ayrılmışsa, yürütme koleksiyondaki aynı bölüm anahtarı değerine sahip belgelerde kapsamlıdır. Belge sürümlerinin anlık görüntüsü (ETag'ler) ise işlem başlangıcında alınır ve yalnızca betik başarılı olursa uygulanır. JavaScript bir hata oluşturursa işlem geri alınır. Daha fazla bilgi için [Azure Cosmos DB için sunucu tarafı JavaScript programlama](stored-procedures-triggers-udfs.md).
+SQL API'si, JavaScript saklı yordamları ve Tetikleyicileri aracılığıyla dil ile tümleşik işlemleri destekler. Betiklerin içindeki tüm veritabanı işlemleri, anlık görüntü yalıtımı altında yürütülür. Tek bölümlü bir kapsayıcı ise, yürütme kapsayıcının kapsamına alınır. Kapsayıcı bölümlense, yürütme, kapsayıcıda aynı bölüm anahtarı değerine sahip olan belgelerle kapsamlandırılır. Belge sürümlerinin anlık görüntüsü (ETag'ler) ise işlem başlangıcında alınır ve yalnızca betik başarılı olursa uygulanır. JavaScript bir hata oluşturursa işlem geri alınır. Daha fazla bilgi için [Azure Cosmos DB için sunucu tarafı JavaScript programlama](stored-procedures-triggers-udfs.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Nasıl miyim toplu belgeleri Cosmos DB'ye ekleme?
 
@@ -191,7 +192,7 @@ Toplu belgeleri Azure Cosmos DB'ye aşağıdaki yollardan biriyle ekleme:
 
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>SQL API desteği kaynak bağlantıyı önbelleğe almayı mu?
 
-Evet, Azure Cosmos DB bir RESTful hizmeti olduğu için kaynak bağlantıları sabittir ve önbelleğe alınabilir. SQL API istemciler, herhangi bir kaynak gibi belge veya koleksiyon yapılan okumalar için bir "If-None-Match" üst bilgisi belirtin ve sunucu sürümü değiştikten sonra kendi yerel kopyalarını güncelleştirin.
+Evet, Azure Cosmos DB bir RESTful hizmeti olduğu için kaynak bağlantıları sabittir ve önbelleğe alınabilir. SQL API istemcileri, herhangi bir kaynak benzeri belge veya kapsayıcıya yönelik okuma için "If-None-Match" üst bilgisini belirtebilir ve ardından sunucu sürümü değiştirildikten sonra yerel kopyalarını güncelleştirebilir.
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>SQL API'si, yerel bir örnek var mı?
 
@@ -225,7 +226,7 @@ Ortak MongoDB hata kodlarıyla birlikte Azure Cosmos DB MongoDB için API 'sinin
 
 | Hata               | Kod  | Açıklama  | Çözüm  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | İstek birimleri tüketilen toplam sayısı, koleksiyon için sağlanan istek birimi hızdan daha ve kısıtlanan. | Bir kapsayıcı veya bir dizi kapsayıcılar için Azure portal veya deneniyor yeniden atanan aktarım hızını ölçeklendirmeyi düşünün. |
+| TooManyRequests     | 16500 | Tüketilen istek birimlerinin toplam sayısı, kapsayıcının sağlanan istek birimi oranından daha fazla ve kısıtlanmış. | Bir kapsayıcı veya bir dizi kapsayıcılar için Azure portal veya deneniyor yeniden atanan aktarım hızını ölçeklendirmeyi düşünün. |
 | ExceededMemoryLimit | 16501 | Çok kiracılı bir hizmet, istemcinin bellek birimi işlemi geçti. | Destek ile iletişime geçin veya daha kısıtlayıcı bir sorgu ölçütü ile bir işlem kapsamını azaltın [Azure portalında](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Örnek: <em> &nbsp; DB.&nbsp;GetCollection (' kullanıcılar '). Aggregate ([ &nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {Name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {Age:-1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Simba sürücüsü Azure Cosmos DB MongoDB için API 'SI ile kullanılmak üzere destekleniyor mu?
@@ -523,7 +524,7 @@ RU ücret geçişi çalışma veri kümesini temel alır ve sonuç kümesi. Örn
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Bir grafik veritabanı, Azure Cosmos DB Gremlin API sahip olabileceği en fazla ölçek nedir?
 
-Azure Cosmos DB kullanır [yatay bölümleme](partition-data.md) otomatik olarak depolama ve aktarım hızı gereksinimleri adresi artış. Bir iş yükü en fazla aktarım hızı ve depolama kapasitesi, belirli bir koleksiyon ile ilişkili olan bölüm sayısı tarafından belirlenir. Ancak, yönergelerine uygun ölçekte bir uygun performans deneyimi sağlamak için belirli bir dizi Gremlin API koleksiyonu vardır. Bölümleme ve en iyi uygulamalar hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme](partition-data.md) makalesi.
+Azure Cosmos DB kullanır [yatay bölümleme](partition-data.md) otomatik olarak depolama ve aktarım hızı gereksinimleri adresi artış. Bir iş yükünün en yüksek aktarım hızı ve depolama kapasitesi, belirli bir kapsayıcı ile ilişkili bölüm sayısına göre belirlenir. Ancak, bir Gremlin API kapsayıcısı, uygun bir performans deneyimini ölçeklendirmek için belirli bir kılavuz kümesine sahiptir. Bölümleme ve en iyi uygulamalar hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme](partition-data.md) makalesi.
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin sürücüleri kullanarak ekleme saldırılarına karşı nasıl koruyabilirim?
 

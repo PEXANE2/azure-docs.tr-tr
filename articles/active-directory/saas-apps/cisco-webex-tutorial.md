@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050019"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Öğretici: Cisco WebEx toplantılarıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -78,24 +78,24 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Cisco WebEx Toplantıları** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
-
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-1. **Temel SAML yapılandırması** bölümünde, indirilen **hizmet sağlayıcısı meta veri** dosyasını karşıya yükleyin ve aşağıdaki adımları gerçekleştirerek **IDP** tarafından başlatılan modda uygulamayı yapılandırın:
-
-    >[!Note]
-    >Daha sonra öğreticinin **Cisco WebEx Toplantıları SSO 'su** bölümünde açıklanan hizmet sağlayıcısı meta veri dosyasını alacaksınız. 
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **Service Provider meta veri** dosyasını aşağıdaki gibi karşıya yükleyerek **IDP** tarafından başlatılan modda uygulamayı yapılandırabilirsiniz:
 
     a. Tıklayın **meta veri dosyasını karşıya yükleme**.
 
     b. Tıklayarak **klasör logosu** meta veri dosyası seçin ve **karşıya**.
 
-    c. Hizmet sağlayıcı meta veri dosyasını karşıya yükleme işleminin başarıyla tamamlanmasından sonra **tanımlayıcı** ve **yanıt URL** değerleri **temel SAML yapılandırması** bölümünde otomatik olarak doldurulur:
+    c. Hizmet sağlayıcı meta veri dosyasını karşıya yükleme işleminin başarıyla tamamlanmasından sonra, **tanımlayıcı** ve **yanıt URL** değerleri **temel SAML yapılandırması** bölümünde otomatik olarak doldurulur.
 
-5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
+    >[!Note]
+    >Service Provider meta verileri dosyasını, Öğreticinin ilerleyen kısımlarında açıklanan **Cisco WebEx Toplantıları SSO bölümünü yapılandırma** bölümünden alacaksınız. 
+
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:  
+
+    a. **Temel SAML yapılandırması** bölümünde Düzenle/kalem simgesine tıklayın.
+
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
     
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:`https://<customername>.webex.com`
+    b. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:` https://<customername>.my.webex.com`
 
 5. Cisco WebEx Toplantıları uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 

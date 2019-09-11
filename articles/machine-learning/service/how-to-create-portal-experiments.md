@@ -1,5 +1,5 @@
 ---
-title: Makine öğrenimi modellerini derlemek ve dağıtmak için otomatik ML kullanma
+title: "& Dağıtım modellerini eğitmek için Azure 'un otomatikleştirilmiş ML arabirimini kullanın"
 titleSuffix: Azure Machine Learning service
 description: Azure portal otomatik makine öğrenimi denemeleri oluşturun, yönetin ve dağıtın
 services: machine-learning
@@ -11,18 +11,19 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990580"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860495"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal (Önizleme) içinde otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 
  Bu makalede, tek bir kod satırı olmadan Azure portal otomatik makine öğrenimi denemeleri oluşturmayı, keşfetmeye ve dağıtmayı öğreneceksiniz. Otomatik makine öğrenimi, belirli verileriniz için kullanılacak en iyi algoritmayı seçme sürecini otomatikleştirir, böylece bir makine öğrenimi modelini hızlıca oluşturabilirsiniz. [Otomatik makine öğrenimi hakkında daha fazla bilgi edinin](concept-automated-ml.md).
 
  Daha fazla kod tabanlı bir deneyim tercih ediyorsanız, [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile Python 'da da yapılandırabilirsiniz.
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,7 +39,9 @@ ms.locfileid: "68990580"
 
  Bu denemeleri ilk kez varsa **otomatik Machine Learning ekranına hoş geldiniz** ' i görürsünüz. 
 
-Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik makine öğrenimi panonuzun tüm otomatik makine öğrenimi denemeleri hakkında genel bir bakış içeren bir genel bakış görürsünüz. Burada, çalıştırmaları Tarih, deneme adı ve çalışma durumu ile filtreleyebilir ve keşfedebilirsiniz.
+Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik **makine öğrenimi panonuzun** tüm otomatik makine öğrenimi denemeleri hakkında genel bir bakış içeren bir genel bakış görürsünüz. Burada, çalıştırmaları Tarih, deneme adı ve çalışma durumu ile filtreleyebilir ve keşfedebilirsiniz.
+
+Ayrıca, otomatik Machine Learning [çalışma alanı giriş sayfasından da erişebilirsiniz (Önizleme)](https://ml.azure.com).
 
 ## <a name="create-an-experiment"></a>Deneme oluşturma
 
@@ -80,7 +83,7 @@ Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik makine öğre
     1. **Profil** sekmesinde, her birinin dağıtım, tür ve Özet istatistikleri (ortalama, ortanca, en fazla/en düşük vb.) ile [veri profilini](#profile) de görüntüleyebilirsiniz.
 
         >[!NOTE]
-        > İşlem içeriğiniz profil oluşturma etkinleştirilmemişse aşağıdaki hata iletisi görüntülenir: *Veri profili oluşturma yalnızca zaten çalışmakta olan işlem hedefleri için kullanılabilir*.
+        > İşlem **içeriğiniz profil oluşturma** etkinleştirilmemişse aşağıdaki hata iletisi görüntülenir: *Veri profili oluşturma yalnızca zaten çalışmakta olan işlem hedefleri için kullanılabilir*.
 
 1. Eğitim işi türünü seçin: sınıflandırma, regresyon veya tahmin.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Kişilerle tümleştirme Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: Kişilerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve kişiler arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334241683f95496ce9ea0629247bb8fd53364ee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826077"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164227"
 ---
-# <a name="tutorial-integrate-people-with-azure-active-directory"></a>Öğretici: Kişileri Azure Active Directory ile tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Öğretici: Kişilerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, kişileri Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Kullanıcıları Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -47,6 +47,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * İnsanlar **SP** tarafından başlatılan SSO 'yu destekler
 * Kişiler mobil uygulaması, artık SSO 'yu etkinleştirmek için Azure AD ile yapılandırılabilir. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
+>[!NOTE]
+>Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+
 ## <a name="adding-people-from-the-gallery"></a>Galeriden kişi ekleme
 
 Kişilerin Azure AD ile tümleştirilmesini yapılandırmak için galerideki kişileri yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
@@ -58,21 +61,20 @@ Kişilerin Azure AD ile tümleştirilmesini yapılandırmak için galerideki ki�
 1. **Galeriden Ekle** bölümünde, arama kutusuna **kişiler** yazın.
 1. Sonuçlar panelinden **kişiler** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-people"></a>Kişiler için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, kişilerle birlikte yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve kişiler 'de ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu kişilerle birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 2. **[Kişileri yapılandırma SSO](#configure-people-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-5. Kullanıcının Azure AD gösterimine bağlı olan kişilerde B. Simon 'a sahip olmak için **[kişi test kullanıcısı oluşturun](#create-people-test-user)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan kişilerde B. Simon 'a sahip olmak için **[kişi test kullanıcısı oluşturun](#create-people-test-user)** .
 6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
@@ -101,22 +103,6 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-people-sso"></a>Kişileri yapılandırma SSO 'SU
-
-1. Uygulamanız için yapılandırılmış SSO 'yu almak için, kişiler kiracınızda yönetici olarak oturum açmanız gerekir.
-   
-2. Sol taraftaki menüde, **Ayarlar**' a tıklayın.
-
-    ![Çoklu oturum açmayı yapılandırın](./media/people-tutorial/tutorial_people_001.png)
-
-3. **Şirket**' e tıklayın.
-
-    ![Çoklu oturum açmayı yapılandırın](./media/people-tutorial/tutorial_people_002.png)
-
-4. **' Çoklu oturum açma ' SAML meta veri dosyasında karşıya yükle**' ye tıklayarak indirilen meta veri dosyasını karşıya yükleyin.
-
-    ![Çoklu oturum açmayı yapılandırın](./media/people-tutorial/tutorial_people_003.png)
-
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -127,7 +113,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -147,11 +133,35 @@ Bu bölümde, kişilere erişim vererek, B. Simon 'u Azure çoklu oturum açma �
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
+## <a name="configure-people-sso"></a>Kişileri yapılandırma SSO 'SU
+
+1. Yapılandırmaları kişiler içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, **Kurulum** ' a tıklayarak kişileri Kişiler uygulamasına yönlendirirsiniz. Buradan, kişilerin oturum açmasını sağlamak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Kişileri el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve kişiler Şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+   
+4. Sol taraftaki menüde, **Ayarlar**' a tıklayın.
+
+    ![Çoklu oturum açmayı yapılandırın](./media/people-tutorial/tutorial_people_001.png)
+
+5. **Şirket**' e tıklayın.
+
+    ![Çoklu oturum açmayı yapılandırın](./media/people-tutorial/tutorial_people_002.png)
+
+6. **' Çoklu oturum açma ' SAML meta veri dosyasında karşıya yükle**' ye tıklayarak indirilen meta veri dosyasını karşıya yükleyin.
+
+    ![Çoklu oturum açmayı yapılandırın](./media/people-tutorial/tutorial_people_003.png)
+
 ### <a name="create-people-test-user"></a>Kişi testi kullanıcısı oluştur
 
 Bu bölümde, kişiler 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları kişiler platformunda eklemek için [kişi istemci destek ekibi](mailto:customerservices@peoplehr.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
-### <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
@@ -179,3 +189,4 @@ Erişim panelinde kişiler kutucuğuna tıkladığınızda, SSO 'yu ayarladığ�
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD ile kişileri deneyin](https://aad.portal.azure.com)

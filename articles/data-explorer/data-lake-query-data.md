@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950132"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383371"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama (Önizleme)
 
@@ -50,6 +50,7 @@ Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleşti
     > * Daha ayrıntılı bölümlendirme ile artan performans beklenir. Örneğin, günlük bölümleri olan dış tablolar üzerinde sorgular, aylık bölümlenmiş tablolarla bu sorgulardan daha iyi performansa sahip olacaktır.
     > * Bölümler içeren bir dış tablo tanımladığınızda, depolama yapısının aynı olması beklenir.
 Örneğin, tablo YYYY/AA/GG biçiminde bir tarih saat bölümüyle tanımlanmışsa (varsayılan), URI depolama dosya yolu *kapsayıcı1/yyyy/aa/gg/all_exported_blobs*olmalıdır. 
+    > * Dış tablo bir tarih saat sütunuyla bölümlense, sorgunuza kapalı bir Aralık için her zaman bir zaman filtresi ekleyin (örneğin, sorgu- `ArchivedProducts | where Timestamp between (ago(1h) . 10m)` -bundan daha iyi (açılan Aralık) bir- `ArchivedProducts | where Timestamp > ago(1h)` ) gerçekleştirmelidir. 
 
 1. Dış tablo, Web Kullanıcı arabiriminin sol bölmesinde görünür
 

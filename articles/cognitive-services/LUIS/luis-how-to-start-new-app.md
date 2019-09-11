@@ -9,19 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 87244169aa8e50ddd503086121dd84f5d50c5df4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932765"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258526"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUSıS portalında yeni bir LUO uygulaması oluşturma
 Çeşitli şekillerde LUIS uygulaması oluşturmak için vardır. Bir LUIS uygulaması oluşturabileceğiniz [LUIS](https://www.luis.ai) portal ya da yazma LUIS aracılığıyla [API'leri](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="using-the-luis-portal"></a>LUIS portalı kullanma
+
 Çeşitli şekillerde LUIS portalında yeni bir uygulama oluşturabilirsiniz:
 
 * Boş bir uygulama ile başlayın ve hedefleri, konuşma ve varlıklar oluşturun.
@@ -39,6 +40,8 @@ ms.locfileid: "68932765"
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
  
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>LUIS yeni uygulama oluştur
 
@@ -77,7 +80,7 @@ Olası hatalar şunlardır:
 
 1. **Uygulamalarım** sayfasında, **dışarı aktar**' ı seçin.
 1. **Kapsayıcı olarak dışarı aktar** ' ı seçin ve ardından dışarı aktarmak istediğiniz yayımlanmış yuvayı (üretim veya aşama) seçin.
-1. Bu dosyayı [lusıs](luis-container-howto.md)kapsayıcınızda kullanın. 
+1. Bu dosyayı [lusıs kapsayıcınızda](luis-container-howto.md)kullanın. 
 
     Yalnızca bir eğitilen modeli HALSıS kapsayıcısı ile kullanılmak üzere dışarı aktarmaya ilgileniyorsanız, **sürümler** sayfasına gidin ve oradan dışarı aktarın. 
 

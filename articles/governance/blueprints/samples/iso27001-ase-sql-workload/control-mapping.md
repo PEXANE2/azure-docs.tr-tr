@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: de043e682fea5cb629a127763515b162c3ad4943
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 26cb4a23b051f6182d1cd4e12c148ef8a378f415
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515930"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231783"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 AKEN/SQL iş yükü şeması örneğinin denetim eşlemesi
 
@@ -42,9 +42,9 @@ Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullan
 - \[Önizleme\]: Linux VM 'yi denetlemek için VM Uzantısı 'nı, parola içermeyen hesaplardan uzak bağlantılara izin verecek şekilde dağıtın
 - \[Önizleme\]: Parolasız Linux VM hesaplarını denetleme
 - \[Önizleme\]: Parola içermeyen hesaplardan gelen uzak bağlantılara izin veren Linux VM 'yi denetleme
-- Klasik depolama hesaplarının kullanımını denetleyin
-- Klasik sanal makinelerin kullanımını denetleyin
-- Yönetilen diskler kullanmayan VM'leri denetle
+- Klasik depolama hesaplarının kullanımını denetleme
+- Klasik sanal makinelerin kullanımını denetleme
+- Yönetilen diskleri kullanmayan VM 'Leri denetleme
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A. 9.2.3 ayrıcalıklı erişim haklarının yönetimi
 
@@ -54,9 +54,9 @@ Bu şema, sahibi ve/veya yazma izinleri ile dış hesapları ve/veya yazma izinl
 - \[Önizleme\]: Abonelik üzerinde MFA etkinleştirilmemiş yazma izinleri olan hesapları denetleme
 - \[Önizleme\]: Bir abonelikte sahip izinleri olan dış hesapları denetleme
 - \[Önizleme\]: Bir abonelikteki yazma izinleri olan dış hesapları denetleyin
-- SQL sunucusuna Azure Active Directory Yöneticisi sağlanmasını denetleyin.
-- Service Fabric'te istemci kimlik doğrulaması için Azure Active Directory kullanımını denetleyin
-- Özel RBAC kurallarının kullanımını denetleyin
+- SQL Server için Azure Active Directory yöneticisinin sağlamasını denetleme
+- Service Fabric istemci kimlik doğrulaması için Azure Active Directory kullanımını denetleme
+- Özel RBAC kurallarının kullanımını denetleme
 
 ## <a name="a924-management-of-secret-authentication-information-of-users"></a>A. 9.2.4, kullanıcıların gizli kimlik doğrulama bilgilerinin yönetimi
 
@@ -86,7 +86,7 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 
 ## <a name="a942-secure-log-on-procedures"></a>A. 9.4.2 Secure oturum açma yordamları
 
-Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek için üç Azure Ilke tanımı atar. Azure Multi-Factor Authentication ikinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve güçlü kimlik doğrulaması sunar. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
+Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek için üç Azure Ilke tanımı atar. Azure Multi-Factor Authentication, ikinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve güçlü kimlik doğrulaması sunar. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
 
 - \[Önizleme\]: Bir abonelikte MFA 'nın etkin olmadığı sahip izinleri olan denetim hesapları
 - \[Önizleme\]: Bir abonelikte MFA etkinleştirilmemiş okuma izinleri olan denetim hesapları
@@ -119,10 +119,10 @@ Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmaların�
 - \[Önizleme\]: Windows VM 'yi denetlemek için VM Uzantısı 'nı dağıtma, ters çevrilebilir şifreleme kullanarak parolaları depolamamalıdır
 - \[Önizleme\]: Windows VM 'yi denetleme, parolaları ters çevrilebilir şifreleme kullanarak depolamamalıdır
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde şifrelenmemiş VM disklerini izleme
-- Otomasyon hesabı değişkenlerinin şifrelemesinin etkinleştirilmesini denetleyin
-- Redis Cache önbelleğinizde yalnızca güvenli bağlantıların etkinleştirilmesini denetleyin
-- Depolama hesaplarına güvenli aktarımı denetleyin
-- Service Fabric'te ClusterProtectionLevel özelliğinin EncryptAndSign olarak ayarlanmasını denetleyin
+- Otomasyon hesabı değişkenlerinin şifrelenme kullanımını denetleme
+- Redis Cache yalnızca güvenli bağlantıları etkinleştirme denetimi
+- Depolama hesaplarına Güvenli aktarım denetimi
+- ClusterProtectionLevel özelliğinin ayarını EncryptAndSign olarak denetleyin Service Fabric
 - Saydam veri şifreleme durumunu denetle
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
 
@@ -136,7 +136,7 @@ Tanılama günlükleri, Azure kaynakları içinde gerçekleştirilen işlemlere 
 - \[Önizleme\]: Denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
 - Tanılama ayarını denetle
-- SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server Level denetim ayarlarını denetleme
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A. 12.4.3 Yöneticisi ve işleç günlükleri
@@ -148,7 +148,7 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen yedi Azure ilke 
 - \[Önizleme\]: Denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
 - Tanılama ayarını denetle
-- SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server Level denetim ayarlarını denetleme
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 
 ## <a name="a1244-clock-synchronization"></a>A. 12.4.4 saat eşitleme
@@ -160,7 +160,7 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen yedi Azure ilke 
 - \[Önizleme\]: Denetim Log Analytics aracı dağıtımı-VM görüntüsü (OS) listelenmemiş
 - \[Önizleme\]: VMSS-VM görüntüsündeki (OS) denetim Log Analytics Aracısı dağıtımı listelenmemiş
 - Tanılama ayarını denetle
-- SQL sunucu düzeyi Denetim ayarlarını denetle
+- SQL Server Level denetim ayarlarını denetleme
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A. 12.5.1 işletimsel sistemlere yazılım yüklemesi
@@ -177,7 +177,7 @@ Bu şema, içinde eksik sistem güncelleştirmelerini, işletim sistemi güvenli
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini izleme
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını izleme
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde SQL güvenlik açığı değerlendirmesi sonuçlarını izleme
-- \[Önizleme\]: Azure Güvenlik Merkezi'nde VM Güvenlik Açıklarını İzleme
+- \[Önizleme\]: Azure Güvenlik Merkezi 'nde VM güvenlik açıklarını izleme
 
 ## <a name="a1262-restrictions-on-software-installation"></a>Yazılım yüklemesinde bir. 12.6.2 kısıtlamaları
 
@@ -192,14 +192,14 @@ Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen bir [Azure i
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde izin veren ağ erişimini izleme
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde korumasız ağ uç noktalarını izleme
 - \[Önizleme\]: Azure Güvenlik Merkezi 'nde korumasız Web uygulamasını izleme
-- Depolama hesaplarına kısıtlanmamış ağ erişimini denetleyin
+- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A. 13.2.1 Information transfer ilkeleri ve yordamları
 
 Şema, depolama hesaplarına Güvenli olmayan bağlantıları denetlemek için iki [Azure ilke](../../../policy/overview.md) tanımı atayarak ve Redis Cache Azure hizmetleri ile bilgi aktarımını güvence altına almanıza yardımcı olur.
 
-- Redis Cache önbelleğinizde yalnızca güvenli bağlantıların etkinleştirilmesini denetleyin
-- Depolama hesaplarına güvenli aktarımı denetleyin
+- Redis Cache yalnızca güvenli bağlantıları etkinleştirme denetimi
+- Depolama hesaplarına Güvenli aktarım denetimi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -211,7 +211,7 @@ Artık ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması 'nın d
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Apache Kafka-Azure HDInsight ile veri okumak ve yazmak için Apache Storm kullanma'
+title: 'Öğretici: Apache Storm Apache Kafka-Azure HDInsight ile okuma, yazma'
 description: HDInsight üzerinde Apache Storm ve Apache Kafka kullanarak akış işlem hattı oluşturmayı öğrenin. Bu öğreticide, Kafka'dan veri akışı yapmak için KafkaBolt ve KafkaSpout bileşenlerini kullanırsınız.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 62452937d51c80a59e24e6d254d29337552b1af2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840246"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734725"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Kafka ile Apache Storm kullanma
 
@@ -406,7 +406,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
    1. **Özelleştirilmiş şablon** bölümündeki girişleri doldurmak için aşağıdaki bilgileri kullanın:
 
-      | Ayar | Değer |
+      | Ayar | Value |
       | --- | --- |
       | Subscription | Azure aboneliğiniz |
       | Resource group | Kaynakları içeren kaynak grubu. |
@@ -471,9 +471,9 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
     Döndürülen değer aşağıdaki metne benzer:
 
-        ```output
-        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        ```
+    ```output
+    wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+     ```
 
     > [!IMPORTANT]  
     > Kümeniz için ikiden fazla aracı konağı olabilir, ama istemcilere tüm konakların listesini sağlamanız gerekmez. Bir veya iki tanesi yeterlidir.

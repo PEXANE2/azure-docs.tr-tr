@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102881"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279494"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Geçişi: Sık sorulan sorular (SSS)
 
@@ -27,7 +27,7 @@ Bu makalede, Azure geçişi hakkında sık sorulan sorular yanıtlanmaktadır. B
 
 Azure geçişi, geçiş işlemini başlatmak, makinelerin ve iş yüklerinin bulmayı ve değerlendirmesini izlemek, makinelerin ve iş yüklerinin Azure 'a geçişini yürütmek ve izlemek için merkezi bir merkez sağlar. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) bir olağanüstü durum kurtarma çözümüdür. Azure geçişi sunucu geçişi, şirket içi makinelerin geçiş ve geçiş için geçiş senaryolarını etkinleştirmek üzere arka uçta Azure Site Recovery kullanır.
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure geçişi gereci (VMware/fiziksel sunucular)
+## <a name="azure-migrate-appliance"></a>Azure Geçişi aleti
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Azure geçişi gereci Azure 'a nasıl bağlanır?
 
@@ -87,6 +87,9 @@ Hyper-V için bulma, Hyper-V ana bilgisayar kimlik bilgilerini kullanır. VM 'Le
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>Tek bir geçiş gereci ile kaç VM keşfedebilirim?
 
 En fazla 10.000 VMware VM ve tek bir geçiş gereci olan en fazla 5.000 Hyper-V VM 'Leri bulabilirsiniz. Şirket içi ortamınızda daha fazla makineniz varsa, [Hyper-V](scale-hyper-v-assessment.md) ve [VMware](scale-vmware-assessment.md) değerlendirmesini nasıl ölçeklentireceğinizi öğrenin.
+
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Azure geçişi gerecini projeden silebilir miyim?
+Şu anda projeden gereç silme desteklenmiyor. Gereci silmenin tek yolu, Gereç ile ilişkili olan ancak diğer kayıtlı gereçlere, bulunan envanter, değerlendirmelere ve diğer tüm Azure yapıtlarına de silinecek olan Azure geçiş projesi olan kaynak grubunu silmektir. kaynak grubundaki projeyle ilişkili.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi
 
@@ -172,7 +175,7 @@ Hayır, bağımlılık görselleştirmesi verilemiyor. Ancak Azure geçişi bağ
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Microsoft Monitoring Agent (MMA) ve bağımlılık aracısının yüklenmesini nasıl otomatikleştirebilirim?
 
-[Aracıları yüklemek için bu betiği](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
+[Bağımlılık aracısını yüklemek için bu betiği](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)kullanın. Komut satırını veya Otomasyonu kullanarak [MMA 'yı yüklemek için bu yönergeleri](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) izleyin. MMA için [bu betiği](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)kullanın.
 
 Betiklerin yanı sıra, aracıları dağıtmak için System Center Configuration Manager ve [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gibi dağıtım araçlarını da kullanabilirsiniz.
 
@@ -183,8 +186,7 @@ Betiklerin yanı sıra, aracıları dağıtmak için System Center Configuration
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Bağımlılık Aracısı tarafından hangi işletim sistemleri destekleniyor?
 
-- [Bağımlılık Aracısı tarafından desteklenen Windows işletim sistemlerinin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)listesini görüntüleyin.
-- [Bağımlılık Aracısı tarafından desteklenen Linux işletim sistemlerinin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)listesini görüntüleyin.
+[VM'ler için Azure izleyici desteklediği Windows ve Linux işletim sistemlerinin](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)listesini görüntüleyin.
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Bir saatten uzun bir süre boyunca Azure geçişi bağımlılıklarını görselleştirebilir miyim?
 Hayır. Bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmiş olarak belirli bir tarihe kadar geri dönerek, bir ay olarak geri dönebilirsiniz, ancak görselleştirme için en uzun süre bir saat olabilir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencere için görüntüleyebilirsiniz. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.

@@ -32,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: Kullanıcı riski ilkesini yapılandırma
           href: howto-user-risk-policy.md
-        - name: Etkin risk olaylarını kapatma
+        - name: Etkin risk algılamalarını kapatma
           href: howto-close-active-risk-events.md
         - name: Kullanıcıların engelini kaldırma
           href: howto-unblock-user.md
-        - name: Risk olaylarının benzetimini yapma
+        - name: Risk algılamalarının simülasyonunu oluşturma
           href: playbook.md
         - name: SSS
           href: faqs.md
@@ -46,9 +46,9 @@
           href: overview-v2.md
         - name: Güvenliğe genel bakış
           href: security-overview.md
-        - name: Riskli kullanıcıları ve oturum açma işlemlerini araştırma
-          href: howto-investigate-risky-users-signins.md
-        - name: Risk olayları ile ilgili geri bildirim gönderme
+        - name: Riski araştırma
+          href: howto-investigate-risk.md
+        - name: Risk algılamaları ile ilgili geri bildirim gönderme
           href: howto-provide-risk-event-feedback.md
         - name: Risk ilkelerini yapılandırma
           href: howto-configure-risk-policies.md
@@ -58,7 +58,7 @@
   items:
     - name: Microsoft Graph API’sini kullanma
       href: graph-get-started.md
-    - name: Risk olayları
+    - name: Risk algılamaları
       href: risk-events-reference.md
     - name: Sözlük
       href: glossary.md

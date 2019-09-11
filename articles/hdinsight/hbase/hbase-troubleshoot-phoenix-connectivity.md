@@ -1,17 +1,17 @@
 ---
 title: Azure HDInsight 'ta bağlantı sorunlarını Apache Phoenix
-description: Azure HDInsight 'ta bağlantı sorunlarını Apache Phoenix
+description: Azure HDInsight 'ta Apache HBase ve Apache Phoenix arasındaki bağlantı sorunları
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/14/2019
-ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 03b861ecff492518db338df06af8882bb70417ef
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575731"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810287"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta bağlantı sorunlarını Apache Phoenix
 

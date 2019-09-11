@@ -10,18 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 30025499ae3073a04863d711423bd9556e7fc6c4
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf92a0b197efaf1d1f88903cfbe9a7c515eaed03
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726030"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259063"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory kullanarak müşteri için SAP bulutlarından (C4C) veri kopyalama
 
 Bu makalede, müşteri için SAP buluttan (C4C) verileri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+
+>[!TIP]
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
@@ -109,7 +112,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="sap-c4c-as-source"></a>Kaynak olarak SAP C4C
 
-Müşteri için SAP buluttan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **SapCloudForCustomerSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Müşteri için SAP buluttan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **SapCloudForCustomerSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -208,7 +211,7 @@ Müşteri için SAP bulutlarından veri kopyalarken aşağıdaki eşlemeler, ist
 | EDM.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | EDM.Byte | Byte[] |
-| Edm.DateTime | Datetime |
+| Edm.DateTime | DateTime |
 | EDM.Decimal | Decimal |
 | Edm.Double | Double |
 | EDM.Single | Single |

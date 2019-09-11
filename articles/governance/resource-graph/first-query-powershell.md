@@ -7,13 +7,12 @@ ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: a8221de15dfa48b4eebcf0fe0df29ea0c3a1868e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854963"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241101"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırma
 
@@ -22,8 +21,6 @@ Azure Kaynak Grafiği’ni kullanmada ilk adım, Azure PowerShell modülünün y
 Bu işlemin sonunda, modülü seçtiğiniz Azure PowerShell yüklemesine eklemiş ve ilk Kaynak Grafiği sorgunuzu çalıştırmış olacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Kaynak Grafiği modülü ekleme
 
@@ -48,7 +45,7 @@ PowerShell için kaynak Graph modülü **az. ResourceGraph**' dir.
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Modülün içeri aktarıldığını ve doğru sürüm (0.7.3) olduğunu doğrulayın:
+1. Modülün içeri aktarıldığını ve en son sürümü (0.7.5) olduğunu doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module

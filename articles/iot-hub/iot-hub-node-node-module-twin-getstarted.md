@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 2ef4047b5dcb0658f4bc48da41ff4e177386fa40
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048589"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802407"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub Module kimliği ve Module ikizi (node. js) ile çalışmaya başlama
 
@@ -32,11 +32,11 @@ Bu öğreticinin sonunda iki Node. js uygulamanız vardır:
 > [!NOTE]
 > Cihazlarda çalıştırılacak uygulamaları ve çözüm arka ucu oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+## <a name="prerequisites"></a>Önkoşullar
+
+* Node. js sürüm 10.0. x veya üzeri. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Windows veya Linux 'ta Bu öğretici için Node. js ' nin nasıl yükleneceğini açıklar.
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
-
-* En son [Node. js SDK 'sını](https://github.com/Azure/azure-iot-sdk-node)yükler.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -118,7 +118,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
 
     ```
 
-Bu uygulama, Myfirstdevice KIMLIĞI ile bir cihaz kimliği ve myfirstdevice adlı cihaz altında **myfirstmodule** kimliğiylebir modül kimliği oluşturur. (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
+Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
 
 Node Add. js kullanarak bunu çalıştırın. Bu, size cihaz kimliğiniz için bir bağlantı dizesi ve modül Kimliğiniz için bir tane sağlar.
 
@@ -194,16 +194,21 @@ Bu bölümde, sanal cihazınızda modül ikizi bildirilen özelliklerini güncel
 
 4. Şimdi, **ikizi. js komut düğümünü**kullanarak bunu çalıştırın.
 
-    ```
-    F:\temp\module_twin>node twin.js
-    client opened
-    twin contents:
-    { reported: { update: [Function: update], '$version': 1 },
-      desired: { '$version': 1 } }
-    new desired properties received:
-    {"$version":1}
-    twin state reported
-    ```
+   ```cmd/sh
+   F:\temp\module_twin>node twin.js
+   ```
+
+   Bundan sonra şunları göreceksiniz:
+
+   ```console
+   client opened
+   twin contents:
+   { reported: { update: [Function: update], '$version': 1 },
+     desired: { '$version': 1 } }
+   new desired properties received:
+   {"$version":1}
+   twin state reported
+   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

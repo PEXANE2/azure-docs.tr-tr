@@ -1,5 +1,5 @@
 ---
-title: Application Insights, C# -Luo
+title: 'Öğretici: Application Insights, C# -Luo'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, Application Insights telemetri veri depolama alanına bot ve Language Understanding bilgileri eklenmektedir.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51860efdcc440d6b8a4ea57777ad31fa718657b5
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560060"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772815"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>İçindeki bir bot 'tan Application Insights LUSıS sonuçları eklemeC#
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Öğretici: İçindeki bir bot 'tan Application Insights LUSıS sonuçları eklemeC#
 
 Bu öğreticide, [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetri veri depolama alanına bot ve Language Understanding bilgileri eklenmektedir. Bu verilere sahip olduktan sonra, kusto Language veya Power BI ile sorgulayabilirsiniz, toplayabilirsiniz ve amaçlarını ve gerçek zamanlı olarak yapılan varlıkları analiz etmek, toplamak ve raporlamak için kullanabilirsiniz. Bu analiz, eklediğinizde veya amaç ve varlıkları LUIS uygulamanızı düzenlemek, belirlemenize yardımcı olur.
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Application Insights etkinken oluşturulmuş bir Azure bot hizmet bot.
-* Önceki bot öğreticiden bot kodu indirildi **[](luis-csharp-tutorial-bf-v4.md)** . 
+* Önceki bot **[öğreticiden](luis-csharp-tutorial-bf-v4.md)** bot kodu indirildi. 
 * [Robot öykünücüsü](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
@@ -160,14 +160,14 @@ Application Insights 'a veri eklemek için, izleme anahtarına ihtiyacınız var
 1. Visual Studio 'da, bot 'ı derleyin ve çalıştırın. 
 1. Bot öykünücüsünü başlatın ve bot 'ı açın. Bu [adım](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) , önceki öğreticide sunulmaktadır.
 
-1. Bot 'a soru sorun. Bu [adım](luis-csharp-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent) , önceki öğreticide sunulmaktadır.
+1. Bot 'a soru sorun. Bu [adım](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot) , önceki öğreticide sunulmaktadır.
 
 ## <a name="view-luis-entries-in-application-insights"></a>Application ınsights'ta görünümü LUIS girişleri
 
 LUIS girişlerini görmek için Application ınsights'ı açın. Verilerin Application Insights görünmesi birkaç dakika sürebilir.
 
 1. [Azure Portal](https://portal.azure.com), bot 'ın Application Insights kaynağını açın. 
-1. Kaynak açıldığında **Ara** ' yı seçin ve son **30 dakika** içinde, **izleme**olay türü ile tüm verileri ara ' yı seçin. Lusıs adlı izlemeyi seçin. 
+1. Kaynak açıldığında **Ara** ' yı seçin ve son **30 dakika** içinde, **izleme**olay türü ile tüm verileri ara ' yı seçin. **Lusıs**adlı izlemeyi seçin. 
 1. Bot ve LUSıS bilgileri **özel özellikler**altında bulunabilir. 
 
     ![Application Insights ' de depolanan LUSıS özel özelliklerini gözden geçirin](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-csharp.png)

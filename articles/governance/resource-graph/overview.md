@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900019"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207584"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Kaynak Grafiği hizmetine genel bakış
 
@@ -35,7 +35,7 @@ Bu belgede her özelliği ayrıntılı olarak inceleyeceksiniz.
 
 Azure Resource Manager şu anda temel kaynak alanları, özellikle kaynak adı, KIMLIK, tür, kaynak grubu, abonelik ve konum üzerinde sorguları desteklemektedir. Kaynak Yöneticisi ayrıca, tek seferde bir kaynağın ayrıntılı özelliklerine yönelik ayrı kaynak sağlayıcıları çağırma olanakları sağlar.
 
-Azure Kaynak Grafiği ile, her kaynak sağlayıcısına tek tek çağrı yapmanıza gerek kalmadan, kaynak sağlayıcılarının geri döndürdüğü bu özelliklere erişebilirsiniz. Desteklenen kaynak türlerinin bir listesi için, [kaynaklar için tüm mod dağıtımları](../../azure-resource-manager/complete-mode-deletion.md) tablosunda **Evet** ' i arayın.
+Azure Kaynak Grafiği ile, her kaynak sağlayıcısına tek tek çağrı yapmanıza gerek kalmadan, kaynak sağlayıcılarının geri döndürdüğü bu özelliklere erişebilirsiniz. Desteklenen kaynak türlerinin bir listesi için, [kaynaklar için tüm mod dağıtımları](../../azure-resource-manager/complete-mode-deletion.md) tablosunda **Evet** ' i arayın. Desteklenen kaynak türlerini görmenin alternatif bir yolu, [Azure Kaynak Grafiği Gezgini şema tarayıcısı](./first-query-portal.md#schema-browser)aracılığıyla yapılır.
 
 Azure Kaynak Grafiği ile şunları yapabilirsiniz:
 
@@ -80,7 +80,13 @@ Daha fazla bilgi için bkz. [Kısıtlanmış istekler Için rehberlik](./concept
 
 ## <a name="running-your-first-query"></a>İlk sorgunuzu çalıştırma
 
-Kaynak Grafiği, .NET için Azure CLı, Azure PowerShell ve Azure SDK 'sını destekler. Sorgu her dil için aynı şekilde yapılandırılmıştır. [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension) ve [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)’de Kaynak Grafiği’ni nasıl etkinleştireceğinizi öğrenin.
+Azure portal bir parçası olan Azure Kaynak grafik Gezgini, kaynak grafik sorgularını doğrudan Azure portal üzerinde çalıştırmaya izin verebilir. Portal iş akışınıza gerçek zamanlı dinamik bilgiler sağlamak için sonuçları dinamik grafik olarak sabitleyin. Daha fazla bilgi için bkz. [Azure Resource Graph Explorer Ile ilk sorgu](first-query-portal.md).
+
+Kaynak Grafiği Azure CLı, Azure PowerShell, .NET için Azure SDK ve daha fazlasını destekler. Sorgu her dil için aynı şekilde yapılandırılmıştır. Kaynak grafiğini nasıl etkinleştireceğinizi öğrenin:
+
+- [Azure portal ve kaynak grafiği Gezgini](first-query-portal.md) 
+- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

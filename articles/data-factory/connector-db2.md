@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 49f86a6a8858fd0ef3085ed571f3348d33f70c8d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c774725d4a4db4f624cd3980041b2974dfc8ed28
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966580"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275560"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory kullanarak DB2 'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -32,6 +32,7 @@ DB2 veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayab
 
 Özellikle, bu DB2 Bağlayıcısı, dağıtılmış Ilişkisel veritabanı mimarisi (DRDA) SQL Access Manager (, 10 ve 11) ile birlikte aşağıdaki IBM DB2 platformunu ve sürümlerini destekler:
 
+* Z/OS 12,1 için IBM DB2
 * Z/OS 11,1 için IBM DB2
 * Z/OS 10,1 için IBM DB2
 * I 7,3 için IBM DB2
@@ -99,14 +100,16 @@ Aşağıdaki özellikler DB2 bağlı hizmeti için desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için veri kümeleri makalesine bakın. Bu bölüm, DB2 veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, DB2 veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-DB2 'den veri kopyalamak için veri kümesinin Type özelliğini **Relationaltable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+DB2 'den veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **RelationalTable** | Evet |
-| tableName | DB2 veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Db2Table** | Evet |
+| schema | Şemanın adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı "query" belirtilmişse)  |
+| tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni `schema` iş `table` yükü için ve kullanın. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
 
@@ -115,15 +118,18 @@ DB2 'den veri kopyalamak için veri kümesinin Type özelliğini **Relationaltab
     "name": "DB2Dataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "Db2Table",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<DB2 linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+`RelationalTable` Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
@@ -131,12 +137,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="db2-as-source"></a>Kaynak olarak DB2
 
-DB2 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Relationalsource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+DB2 'den veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **RelationalSource** | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Db2Source** | Evet |
+| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 
@@ -159,7 +165,7 @@ DB2 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Rela
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "Db2Source",
                 "query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""
             },
             "sink": {
@@ -169,6 +175,8 @@ DB2 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Rela
     }
 ]
 ```
+
+Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
 
 ## <a name="data-type-mapping-for-db2"></a>DB2 için veri türü eşlemesi
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736892"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845422"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -440,7 +440,7 @@ Bu örnek, `securestring` türü kullanan birden çok güvenli parametre tanım�
 | Parametre adı | Açıklama |
 |----------------|-------------|
 | `TemplatePasswordParam` | Daha sonra iş akışı tanımının `basicAuthPasswordParam` parametresine geçirilen bir parolayı kabul eden bir şablon parametresi |
-| `TemplatePasswordParam` | Daha sonra iş akışı tanımının `basicAuthUserNameParam` parametresine geçirilen bir kullanıcı adını kabul eden bir şablon parametresi |
+| `TemplateUsernameParam` | Daha sonra iş akışı tanımının `basicAuthUserNameParam` parametresine geçirilen bir kullanıcı adını kabul eden bir şablon parametresi |
 | `basicAuthPasswordParam` | HTTP eyleminde temel kimlik doğrulama parolasını kabul eden bir iş akışı Tanım parametresi |
 | `basicAuthUserNameParam` | HTTP eyleminde temel kimlik doğrulaması için Kullanıcı adını kabul eden bir iş akışı Tanım parametresi |
 |||

@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c21b4d525e395dfb032a89631eb34156fe3e5b23
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648880"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744711"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python öğreticisi: Azure Search dizin oluşturma ardışık düzeninde Bilişsel Hizmetler API'si çağrısı
 
@@ -67,9 +67,9 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 ## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
 
-Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. Kaynak veriler, [Azure Search dizin oluşturucunun](search-indexer-overview.md) desteklenen bir veri kaynağı türünden gelmelidir. Azure Tablo Depolaması bilişsel arama için desteklenmiyor. Bu alıştırmada, birden çok içerik türünü göstermek için blob depolama kullanırız.
+Zenginleştirme işlem hattı, Azure veri kaynaklarından çekme işlemi yapar. Kaynak veriler, [Azure Search dizin oluşturucunun](search-indexer-overview.md) desteklenen bir veri kaynağı türünden gelmelidir. Bu alıştırmada, birden çok içerik türünü göstermek için blob depolama kullanırız.
 
-1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, Bloblar ' a tıklayınve ardından **+ Container**' a tıklayın.
+1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, **Bloblar**' a tıklayın ve ardından **+ Container**' a tıklayın.
 
 1. Örnek veri içeren [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
@@ -473,7 +473,8 @@ Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yaln�
 Bu alıştırmada içerik, languageCode, keyPhrases ve kuruluşlar için yineleyin. Virgülle ayrılmış bir liste kullanarak `$select` aracılığıyla birden fazla alan döndürebilirsiniz.
 
 Sorgu dizesinin karmaşıklık ve uzunluğuna bağlı olarak GET veya POST dizesini kullanabilirsiniz. Daha fazla bilgi için bkz. [REST API kullanarak sorgu](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-içerdiği<a name="reset"></a>
+
+<a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Sıfırlama ve yeniden çalıştırma
 

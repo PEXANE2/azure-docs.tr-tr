@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 145b643999ff6e4af99ec50c9b0120fc9f11a212
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840143"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858945"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Öğretici: Özel Görüntü İşleme Hizmeti ile uçta görüntü sınıflandırması yapma
 
@@ -39,7 +39,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri geliştirin](tutorial-develop-for-linux.md). Bu öğreticiyi tamamlayarak aşağıdaki önkoşulların yerine gelmelidir: 
+>[!TIP]
+>Bu öğretici, [bir Raspberry PI 3 örnek projesinde özel görüntü işleme ve Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) basitleştirilmiş bir sürümüdür. Bu öğretici bir bulut VM 'de çalışacak şekilde tasarlandı ve görüntü sınıflandırıcısını eğitme ve test etmek için statik görüntüler kullanır. Bu, IoT Edge Özel Görüntü İşleme değerlendirmek için yalnızca bir kullanıcı için faydalıdır. Örnek proje fiziksel donanım kullanır ve görüntü sınıflandırıcısını eğitmek ve test etmek için, daha ayrıntılı, gerçek yaşam senaryosu denemek isteyen bir kişi için kullanışlıdır.
+
+Bu öğreticiye başlamadan önce, ortamınızı Linux kapsayıcı geliştirmesi için ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri geliştirin](tutorial-develop-for-linux.md). Bu öğreticiyi tamamlayarak aşağıdaki önkoşulların yerine gelmelidir: 
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * [Azure IoT Edge çalıştıran bir Linux cihazı](quickstart-linux.md)
@@ -51,7 +54,7 @@ Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için gelişt
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* Visual Studio Code için [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) uzantısı
+* [Visual Studio Code için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Özel Görüntü İşleme Hizmeti ile bir görüntü sınıflandırıcı derleme
 
@@ -167,7 +170,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
 
 ### <a name="select-your-target-architecture"></a>Hedef mimarinizi seçin
 
-Şu anda Visual Studio Code Linux AMD64 ve Linux ARM32v7 cihazları için modüller geliştirebilir. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır. 
+Şu anda Visual Studio Code Linux AMD64 ve Linux ARM32v7 cihazları için modüller geliştirebilir. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Bu öğretici için kullanacağımız Linux AMD64 varsayılandır. 
 
 1. Komut paletini açın ve **Azure IoT Edge arayın: Edge çözümü**için varsayılan hedef platformunu ayarlayın veya pencerenin altındaki yan çubukta kısayol simgesini seçin. 
 
@@ -191,7 +194,7 @@ Visual Studio Code uygulamasındaki Python modülü şablonu, IoT Edge örneğin
 
 6. Sınıflandırıcı klasöründeki **module.json** dosyasını açın. 
 
-7. **platforms** parametresini eklediğiniz yeni Dockerfile dosyasını gösterecek şekilde güncelleştirin ve şu an için Özel Görüntü İşleme Hizmeti modülünde desteklenmeyen ARM32 mimarisi ve AMD64.debug seçeneklerini kaldırın. 
+7. **Platformlar** parametresini, eklediğiniz yeni Dockerfile 'ı işaret etmek üzere güncelleştirin ve bu öğretici için kullandığımız tek MIMARIDE AMD64 'in yanı sıra tüm seçenekleri kaldırın. 
 
    ```json
    "platforms": {
@@ -351,7 +354,7 @@ Bu senaryoda görüntü beslemesi sağlamak için gerçek bir kamera kullanmak y
 
 3. IoT Edge çözümünüzün dizinine gidin ve test görüntüsünü **modules** / **cameraCapture** klasörüne yapıştırın. Görüntü önceki bölümde düzenlediğiniz main.py dosyasıyla aynı klasörde olmalıdır. 
 
-3. Visual Studio Code'da cameraCapture modülünün **Dockerfile.amd64** dosyasını açın. (ARM32 şu an için Özel Görüntü İşleme Hizmeti modülünde desteklenmemektedir). 
+3. Visual Studio Code'da cameraCapture modülünün **Dockerfile.amd64** dosyasını açın. 
 
 4. Çalışma dizinini belirleyen `WORKDIR /app` satırından sonra şu kod satırını ekleyin: 
 

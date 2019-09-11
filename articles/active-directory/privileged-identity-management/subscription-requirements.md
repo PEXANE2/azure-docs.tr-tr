@@ -1,9 +1,9 @@
 ---
-title: Lisans PIM - Azure Active Directory kullanmak için gereksinimler | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) kullanmaya yönelik lisans gereksinimlerini açıklar.
+title: PıM-Azure Active Directory kullanmak için lisans gereksinimleri | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) kullanmak için lisans gereksinimlerini açıklar.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/16/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 83c31c2731a8e872dfd2750fced8b91d283d0892
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437465"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804064"
 ---
-# <a name="license-requirements-to-use-pim"></a>PIM'i kullanmak için lisans gereksinimleri
+# <a name="license-requirements-to-use-pim"></a>PıM 'yi kullanmak için lisans gereksinimleri
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kullanmak için bir dizin geçerli bir lisansı olması gerekir. Ayrıca, ilgili kullanıcıları ve yöneticileri lisansı atanmalıdır. Bu makalede PIM'i kullanmak için lisans gereksinimleri açıklanır.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanmak için, bir dizinin geçerli bir lisansı olması gerekir. Ayrıca, lisansların Yöneticiler ve ilgili kullanıcılara atanması gerekir. Bu makalede, PıM 'yi kullanmak için lisans gereksinimleri açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-PIM'i kullanmak için dizin aşağıdaki ücretli veya deneme sürümü lisansları birine sahip olmalıdır:
+PıM 'yi kullanmak için dizininiz aşağıdaki ücretli veya deneme lisanslarından birine sahip olmalıdır:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
@@ -38,33 +38,33 @@ PIM'i kullanmak için dizin aşağıdaki ücretli veya deneme sürümü lisansla
 
 Daha fazla bilgi için bkz. [Azure Active Directory nedir?](../fundamentals/active-directory-whatis.md).
 
-## <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların lisansına sahip olması gerekir?
+## <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
 
-Her yönetici veya etkileşimde veya bir avantajı PIM aldığında kullanıcının bir lisansı olması gerekir. Örneklere şunlar dahildir:
+PıM 'den faydalanabilir veya bu avantajlardan yararlanan her yönetici veya Kullanıcı bir lisansa sahip olmalıdır. Örneklere şunlar dahildir:
 
-- PIM kullanarak yöneticiler Azure AD rolleri ile yönetilen
-- PIM kullanarak yönetilen bir Azure kaynağı rolleri olan yöneticiler
-- Ayrıcalıklı rol yöneticisi rolüne atanan yöneticileri
-- PIM kullanarak Azure AD rolleri için uygun olarak atanan kullanıcılar yönetilen
-- Kullanıcılar için PIM istekleri Onayla/Reddet
-- Just-ın-time ya da doğrudan atamaları (zaman tabanlı) ile bir Azure kaynak rolüne atanan kullanıcılar  
+- Azure AD rollerine yönelik PıM kullanılarak yönetilen Yöneticiler
+- Azure Kaynak rolleri ile PıM kullanılarak yönetilen Yöneticiler
+- Ayrıcalıklı rol yöneticisi rolüne atanan yöneticiler
+- PıM kullanılarak yönetilen Azure AD rollerine uygun olarak atanan kullanıcılar
+- Kullanıcı PıM 'de istekleri onaylayabilir/reddedebiliyor
+- Tam zamanında veya doğrudan (zaman tabanlı) atamalarla bir Azure Kaynak rolüne atanan kullanıcılar  
 - Erişim gözden geçirmesi için atanan kullanıcılar
-- Erişim gözden geçirmeleri gerçekleştiren kullanıcı
+- Erişim gözden geçirmeleri gerçekleştiren kullanıcılar
 
-İçin kullanılan lisansları atama hakkında daha fazla bilgi için bkz: [atamayı veya kaldırmayı lisanslarını kullanarak Azure Active Directory portalında](../fundamentals/license-users-groups.md).
+Kullanım için lisansları atama hakkında daha fazla bilgi için, bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 
-## <a name="what-happens-when-a-license-expires"></a>Bir lisansı süresi dolduğunda ne olur?
+## <a name="what-happens-when-a-license-expires"></a>Lisansın süresi dolarsa ne olur?
 
-Bir Azure AD Premium P2, EMS E5 veya deneme sürümü lisansına dolarsa, PIM özellikleri artık dizininizde kullanılabilir olacak:
+Bir Azure AD Premium P2, EMS E5 veya deneme lisansının süresi dolarsa, artık dizininizde PıM özellikleri kullanılamaz:
 
-- Azure AD rollerine kalıcı rol atamaları etkilenmez.
-- Azure portalı, yanı sıra Graph API cmdlet'leri ve PowerShell arabirimleri PIM, PIM hizmetinde artık kullanıcıların ayrıcalıklı rolleri etkinleştirmesine, ayrıcalıklı erişim yönetmek veya erişim gözden geçirmeleri ayrıcalıklı rolleri gerçekleştirmek için kullanılabilir.
-- Bu kullanıcılar ayrıcalıklı rolleri etkinleştirmesine mümkün Azure AD rolleri, uygun rol atamaları kaldırılacak.
-- Azure AD rolleri tüm devam eden bir erişim gözden geçirmelerini sona erecek ve PIM yapılandırma ayarları kaldırılır.
-- PIM, e-postaları artık rol atama değişiklikleri gönderir.
+- Azure AD rollerine yönelik kalıcı rol atamaları bundan etkilenmeyecektir.
+- Azure portal Graph API cmdlet 'leri ve PıM 'nin PowerShell arabirimleri, kullanıcıların ayrıcalıklı rolleri etkinleştirmesine, ayrıcalıklı erişimi yönetmesine veya ayrıcalıklı rollere yönelik erişim gözden geçirmeleri gerçekleştirmesine izin vermez.
+- Azure AD rollerinin uygun rol atamaları kaldırılacak, çünkü kullanıcılar artık ayrıcalıklı rolleri etkinleştiremeyecektir.
+- Azure AD rollerinin devam eden tüm erişim İncelemeleri sona acaktır ve PıM yapılandırma ayarları kaldırılır.
+- PıM, rol atama değişikliklerinde artık e-posta göndermeyecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PIM dağıtma](pim-deployment-plan.md)
+- [PıM dağıtma](pim-deployment-plan.md)
 - [PIM kullanmaya başlama](pim-getting-started.md)
-- [Rolleri PIM'de yönetemez.](pim-roles.md)
+- [PıM 'de yöneteceğiniz roller](pim-roles.md)

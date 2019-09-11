@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981148"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241734"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
-Azure depolama, katmanlı güvenlik modeli sağlar. Bu model, desteklenen ağları belirli bir kümesi, depolama hesaplarınıza güvenli olanak tanır. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağlar kümesini projelerimizin veri isteyen uygulamalar bir depolama hesabına erişebilir.
+Azure depolama, katmanlı güvenlik modeli sağlar. Bu model, depolama hesaplarınızı belirli bir ağ alt kümesiyle korumanıza olanak sağlar. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar bir depolama hesabına erişebilir. Depolama hesabınıza erişimi, belirtilen IP adreslerinden, IP aralıklarından veya Azure sanal ağlarındaki alt ağlar listesinden kaynaklanan isteklerle sınırlayabilirsiniz.
 
-Bir depolama hesabı ağ kuralları geçerli olduğunda erişen bir uygulama istek üzerine uygun yetkilendirme gerektirir. Yetkilendirme, geçerli bir hesap erişim anahtarı veya SAS belirteci ile blob 'lar ve kuyruklar için Azure Active Directory (Azure AD) kimlik bilgileri ile desteklenir.
+Ağ kuralları etkin olduğunda bir depolama hesabına erişen bir uygulama, istek için uygun yetkilendirme gerektirir. Yetkilendirme, geçerli bir hesap erişim anahtarı veya SAS belirteci ile blob 'lar ve kuyruklar için Azure Active Directory (Azure AD) kimlik bilgileri ile desteklenir.
 
 > [!IMPORTANT]
-> Bir Azure sanal ağı (VNet) içinde çalışan bir hizmet isteği gelen sürece depolama hesabınız için güvenlik duvarı kurallarını etkinleştirmek varsayılan olarak, veri gelen istekleri engeller. Engellenen istekleri, Azure portalından, günlük ve ölçüm hizmetlerden, diğer Azure hizmetlerinden gelen içerir ve benzeri.
+> İstekler bir Azure sanal ağı (VNet) içinde çalışan bir hizmetten kaynaklanmadığı takdirde, depolama hesabınız için güvenlik duvarı kurallarını açmak, varsayılan olarak gelen istekleri engeller. Engellenen istekleri, Azure portalından, günlük ve ölçüm hizmetlerden, diğer Azure hizmetlerinden gelen içerir ve benzeri.
 >
-> Gelen alt ağ hizmeti örneğinin vererek bir Vnet'te çalışan Azure hizmetlerine erişime izin verebilirsiniz. Etkinleştirme senaryoları ile sınırlı sayıda [özel durumları](#exceptions) aşağıdaki bölümde anlatılan mekanizması. Azure portalına erişmek için ayarladığınız güvenilen sınırları (IP veya VNet) içinde bir makinede olması gerekir.
+> Hizmet örneğini barındıran alt ağdan gelen trafiğe izin vererek VNet içinden çalışan Azure hizmetlerine erişim izni verebilirsiniz. Ayrıca, aşağıdaki bölümde açıklanan [özel durum](#exceptions) mekanizmasıyla sınırlı sayıda senaryoyu etkinleştirebilirsiniz. Depolama hesabındaki verilere Azure portal aracılığıyla erişmek için, ayarladığınız güvenilir sınır (IP veya VNet) içinde bir makinede olmanız gerekir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Senaryolar
 
-(İnternet trafiğini dahil) tüm ağlardan erişime trafiği reddetmeye yönelik depolama hesapları varsayılan olarak yapılandırın. Daha sonra erişim akışına ait özel sanal ağlar verin. Bu yapılandırma, uygulamalarınız için bir güvenli ağ sınırı oluşturmanıza olanak sağlar. Ayrıca genel internet'e erişim izni verebilirsiniz IP adresi aralıkları, belirli bir internet veya şirket içi istemcilerinden gelen bağlantıları etkinleştirme.
+Depolama hesabınızın güvenliğini sağlamak için, önce varsayılan olarak tüm ağlardan (internet trafiği dahil) trafiğe erişimi reddetmek üzere bir kural yapılandırmanız gerekir. Ardından, belirli sanal ağlardan gelen trafiğe erişim veren kurallar yapılandırmanız gerekir. Bu yapılandırma, uygulamalarınız için bir güvenli ağ sınırı oluşturmanıza olanak sağlar. Ayrıca, belirli internet veya şirket içi istemcilerden gelen bağlantıları etkinleştirerek, genel İnternet IP adresi aralıklarından gelen trafiğe erişim izni vermek için kurallar da yapılandırabilirsiniz.
 
-Azure depolama REST ve SMB dahil olmak üzere, tüm ağ protokolleri üzerinde ağ kuralları uygulanır. Azure portalında, Depolama Gezgini ve AZCopy gibi araçlarla verilere erişmek için açık ağ kuralları gerekli değildir.
+Azure depolama REST ve SMB dahil olmak üzere, tüm ağ protokolleri üzerinde ağ kuralları uygulanır. Azure portal, Depolama Gezgini ve AZCopy gibi araçları kullanarak verilere erişmek için açık ağ kurallarının yapılandırılması gerekir.
 
 Var olan depolama hesaplarını veya yeni bir depolama hesabı oluşturduğunuzda ağ kuralları uygulayabilirsiniz.
 
@@ -50,7 +50,7 @@ Bir özel durum oluşturarak yedekleme ve geri yükleme Vm'lere uygulanan ağ ku
 Varsayılan olarak, depolama hesapları herhangi bir ağ üzerinde istemci bağlantılarını kabul edin. Seçili ağlar erişimi sınırlamak için önce varsayılan eylem değiştirmeniz gerekir.
 
 > [!WARNING]
-> Ağ kuralları için değişiklik yapmadan uygulamalarınızın Azure depolamaya bağlanma yeteneğini etkileyebilir. Varsayılan ağ kuralı ayarını **Reddet** belirli ağ kurallar sürece verilere erişim engellenir tüm **vermek** erişim de uygulanır. İzin verilen erişimi engellemek için varsayılan Kuralı değiştirmeden önce ağ kurallarını kullanarak herhangi bir ağa erişim vermek emin olun.
+> Ağ kuralları için değişiklik yapmadan uygulamalarınızın Azure depolamaya bağlanma yeteneğini etkileyebilir. Varsayılan ağ kuralını **Reddet** olarak ayarlamak, erişim **izni** veren belirli ağ kuralları da uygulanmamışsa veriye tüm erişimi engeller. İzin verilen erişimi engellemek için varsayılan Kuralı değiştirmeden önce ağ kurallarını kullanarak herhangi bir ağa erişim vermek emin olun.
 
 ### <a name="managing-default-network-access-rules"></a>Varsayılan ağ erişim kurallarını yönetme
 
@@ -112,9 +112,9 @@ Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için
 
 ## <a name="grant-access-from-a-virtual-network"></a>Bir sanal ağdan erişim izni ver
 
-Depolama hesapları yalnızca belirli sanal ağlar erişime izin verecek şekilde yapılandırabilirsiniz.
+Depolama hesaplarını yalnızca belirli alt ağlardan erişime izin verecek şekilde yapılandırabilirsiniz. İzin verilen alt ağlar, farklı bir Azure Active Directory kiracısına ait abonelikler de dahil olmak üzere, aynı abonelikte bulunan bir VNet 'e veya farklı bir aboneliğe ait olabilir.
 
-Etkinleştirme bir [hizmet uç noktası](/azure/virtual-network/virtual-network-service-endpoints-overview) Azure depolama sanal ağ içinden. Bu uç nokta trafiği için Azure depolama hizmetine bir en uygun rotayı sunar. Sanal ağ ve alt ağ kimlikleri, ayrıca her bir istekle aktarılır. Yöneticiler, daha sonra depolama hesabı için sanal ağ içindeki belirli alt ağlara alınan isteklerine izin ver ağ kuralları yapılandırabilirsiniz. İstemcilerin bu ağ kuralları üzerinden erişim verilere erişmek için depolama hesabı yetkilendirme gereksinimlerini karşılamak devam etmelidir verildi.
+Etkinleştirme bir [hizmet uç noktası](/azure/virtual-network/virtual-network-service-endpoints-overview) Azure depolama sanal ağ içinden. Hizmet uç noktası, trafiği VNet 'ten Azure depolama hizmetine en uygun bir yol üzerinden yönlendirir. Alt ağın ve sanal ağın kimlikleri de her istekle birlikte iletilir. Yöneticiler daha sonra depolama hesabı için ağ kurallarını, isteklerin bir sanal ağdaki belirli alt ağlardan alınmasına izin veren ağ kurallarını yapılandırabilir. İstemcilerin bu ağ kuralları üzerinden erişim verilere erişmek için depolama hesabı yetkilendirme gereksinimlerini karşılamak devam etmelidir verildi.
 
 Her Depolama hesabı birleştirilebilir 100'e kadar sanal ağ kuralları desteklediği [IP ağ kuralları](#grant-access-from-an-internet-ip-range).
 
@@ -131,7 +131,10 @@ Bölgesel bir kesinti sırasında olağanüstü durum kurtarma için planlama ya
 
 Bir depolama hesabı için bir sanal ağ kuralı uygulamak için kullanıcının eklenen alt ağlarda için uygun izinleri olmalıdır. Gerekli izni *bir alt ağa Hizmeti'ne Katıl* ve dahildir *depolama hesabı Katılımcısı* yerleşik rolü. Özel rol tanımları da eklenebilir.
 
-Depolama hesabı ve sanal ağlar, erişim farklı Aboneliklerde olabilir, ancak bu abonelikler aynı Azure AD kiracısına bir parçası olmalıdır verildi.
+Depolama hesabı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracısının parçası olan abonelikler de dahil olmak üzere farklı aboneliklerde olabilir.
+
+> [!NOTE]
+> Farklı bir Azure Active Directory kiracının parçası olan sanal ağlardaki alt ağlara erişim izni veren kuralların yapılandırılması Şu anda yalnızca PowerShell, CLı ve REST API 'Leri aracılığıyla desteklenir. Bu kurallar, portalda görüntülenebilse de Azure portal aracılığıyla yapılandırılamaz.
 
 ### <a name="managing-virtual-network-rules"></a>Sanal ağ kurallarını yönetme
 
@@ -149,6 +152,8 @@ Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için
 
     > [!NOTE]
     > Azure depolama için hizmet uç noktası seçilen sanal ağ ve alt ağlar için önceden yapılandırılmış değildi, bu işlemin bir parçası yapılandırabilirsiniz.
+    >
+    > Şu anda, kural oluşturma sırasında seçim için yalnızca aynı Azure Active Directory kiracıya ait olan sanal ağlar gösterilir. Başka bir kiracıya ait bir sanal ağdaki bir alt ağa erişim vermek için lütfen PowerShell, CLı veya REST API 'Leri kullanın.
 
 1. Bir sanal ağ veya alt ağ kuralı kaldırmak için tıklayın **...**  sanal ağ veya alt ağ için bağlam menüsünü açın ve **Kaldır**.
 
@@ -176,6 +181,9 @@ Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > Başka bir Azure AD kiracısına ait bir sanal ağa ait bir ağ kuralı eklemek için, "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" biçiminde tam nitelikli bir **Virtualnetworkresourceıd** parametresi kullanın.
 
 1. Bir sanal ağ ve alt ağ için bir ağ kuralı kaldırın.
 
@@ -209,6 +217,11 @@ Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > Başka bir Azure AD kiracısına ait olan bir sanal ağa yönelik bir kural eklemek için, "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" biçiminde tam bir alt ağ KIMLIĞI kullanın.
+    > 
+    > Başka bir Azure AD kiracısına ait olan bir sanal ağın alt ağ KIMLIĞINI almak için **abonelik** parametresini kullanabilirsiniz.
 
 1. Bir sanal ağ ve alt ağ için bir ağ kuralı kaldırın.
 
@@ -344,7 +357,7 @@ Ağ kurallarının çoğu senaryo için bir güvenli ağ yapılandırması etkin
 
 Depolama hesapları ile etkileşimde bulunan bazı Microsoft Hizmetleri, ağ kuralları aracılığıyla erişim verilemez ağlardan çalışır.
 
-Bu tür bir hizmet iş beklendiği gibi yardımcı olmak için ağ kuralları atlamak için güvenilen Microsoft Hizmetleri kümesi sağlar. Bu hizmetler, daha sonra depolama hesabına erişmek için güçlü kimlik doğrulaması kullanır.
+Bazı hizmetlerin istendiği gibi çalışması için, güvenilir Microsoft hizmetlerinin bir alt kümesinin ağ kurallarını atlamasına izin vermeniz gerekir. Bu hizmetler, daha sonra depolama hesabına erişmek için güçlü kimlik doğrulaması kullanır.
 
 Etkinleştirirseniz **izin güvenilen Microsoft Hizmetleri...**  özel durum, aşağıdaki Hizmetleri (aboneliğinize kayıtlı olduğunda), depolama hesabına erişim izni verilir:
 

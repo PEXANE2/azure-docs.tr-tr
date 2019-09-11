@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 961bb7d5f64fa6d6cafa4730a5849abb4b82478f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967696"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206843"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Bilgi bankanız hakkında analizler alma
 
@@ -32,7 +32,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
 3. Aşağıdaki sorguyu yapıştırın ve çalıştırın.
 
-    ```query
+    ```kusto
     requests
     | where url endswith "generateAnswer"
     | project timestamp, id, name, resultCode, duration, performanceBucket
@@ -54,7 +54,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
 ### <a name="total-90-day-traffic"></a>Toplam 90 günlük trafik
 
-```query
+```kusto
     //Total Traffic
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
@@ -64,7 +64,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
 ### <a name="total-question-traffic-in-a-given-time-period"></a>Belirli bir dönemdeki toplam soru trafiği
 
-```query
+```kusto
     //Total Question Traffic in a given time period
     let startDate = todatetime('2018-02-18');
     let endDate = todatetime('2018-03-12');
@@ -77,7 +77,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
 ### <a name="user-traffic"></a>Kullanıcı trafiği
 
-```query
+```kusto
     //User Traffic
     requests
     | where url endswith "generateAnswer"
@@ -92,7 +92,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
 ### <a name="latency-distribution-of-questions"></a>Soruların gecikme dağılımı
 
-```query
+```kusto
     //Latency distribution of questions
     requests
     | where url endswith "generateAnswer" and name startswith "POST"
@@ -104,4 +104,4 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Anahtarları Yönet](./key-management.md)
+> [Capactiy seçin](../tutorials/choosing-capacity-qnamaker-deployment.md)

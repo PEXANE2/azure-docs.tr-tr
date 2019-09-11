@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c8e73bd3639adcc43dd191ff2eacaf7335f08d72
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335512"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126591"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Kimlik Koruması etkinleştiriliyor
 
-Azure Active Directory Kimlik Koruması, Azure Active Directory (Azure AD) özelliğidir. Azure AD Kimlik Koruması ile yapabilecekleriniz:
+Azure Active Directory Kimlik Koruması, Azure Active Directory (Azure AD) özelliğidir. Azure AD Kimlik Koruması, şunları yapabilirsiniz:
 
-- Makine öğrenme algoritmalarını kullanarak bayrak eklenmiş kullanıcılar ve algılanan risk olayları hakkında birleştirilmiş bir görünüm elde edin
-- Kullanıcılarınızı otomatik olarak korumak için risk tabanlı Koşullu Erişim ilkeleri belirleyin
-- Güvenlik açıkları üzerinde eylemler gerçekleştirerek güvenliği artırın 
+- Makine öğrenimi algoritmaları kullanılarak algılanan bayraklı kullanıcıların ve risk algılamalarının birleştirilmiş bir görünümünü alın
+- Kullanıcılarınızı otomatik olarak korumak için risk tabanlı koşullu erişim ilkeleri ayarlama
+- Güvenlik açıklarını izleyerek güvenlik duruşunu artırma 
 
 Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
 

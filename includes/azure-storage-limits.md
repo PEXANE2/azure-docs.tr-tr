@@ -9,13 +9,13 @@ ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d5ce4c094da3a411168c7fe4c282b15ceac7bb86
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70036797"
 ---
-Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş sınırı, bir depolama hesabına gönderilen isteklerin tüm verilerini ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan yanıtların tüm verilerine başvurur.
+Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş *sınırı,* bir depolama hesabına gönderilen isteklerin tüm verilerini ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan yanıtların tüm verilerine başvurur.
 
 | Resource | Varsayılan limit |
 | --- | --- |

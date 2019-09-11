@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019108"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376306"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -51,7 +51,7 @@ Aşağıdaki öğeler gerekir:
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-[Çalışma alanını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), denemeyi, [çalıştırmayı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını [](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden içeri aktararak denemenizin kurulumunu yapın.
+[Çalışma alanını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) [, denemeyi,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [çalıştırmayı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden içeri aktararak denemenizin kurulumunu yapın.
 
 ```python
 import azureml.core
@@ -98,7 +98,7 @@ Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
     > [!TIP]
     > Komut, iki örnek `.azureml` runconfig dosyası içeren bir alt dizin oluşturdu. `az ml folder attach`
     >
-    > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, runconfig [. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
+    > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
     >
     > Daha fazla örnek runconfig dosyası için bkz [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
 
@@ -226,7 +226,7 @@ with exp.start_logging() as parent_run:
 
 Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, her biri farklı işlem hedeflerinde çalışan, ortak üst çalışma KIMLIĞI ile bağlanan üst ve alt çalıştırma hiyerarşileri oluşturmanızı sağlar.
 
-[' Submit_child () '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) metodunu kullanarak bir alt çalıştırmayı bir üst çalıştırma içinden gönderebilirsiniz. Bunu üst çalıştırma komut dosyasında yapmak için, çalıştırma bağlamını alın ve bağlam örneğinin ' ' submit_child ' ' ' metodunu kullanarak alt çalışmayı gönderebilirsiniz.
+[' Submit_child () '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) metodunu kullanarak bir alt çalıştırmayı bir üst çalıştırma içinden gönderebilirsiniz. Bunu üst çalıştırma komut dosyasında yapmak için, çalıştırma bağlamını alın ve bağlam örneğinin ' ' submit_child ' ' ' metodunu kullanarak alt çalışmayı gönderebilirsiniz.
 
 ```python
 ## In parent run script

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 26e4c4edbcfc282fffd0d43673d3585cfe973848
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616960"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241275"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Toplu yürütücü .NET kitaplığı 'nı kullanarak Azure Cosmos DB toplu işlemleri gerçekleştirin
 
@@ -58,7 +58,7 @@ Kopyalanmış depo "Bulkımportsample" ve "BulkUpdateSample" olmak üzere iki ö
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   Toplu içeri Aktarıcı, veritabanı adı, koleksiyon adı ve aktarım hızı değerleri App.config dosyasında belirtilen ile yeni bir veritabanı ve koleksiyonu oluşturur. 
+   Toplu içe aktarıcı, App. config dosyasında belirtilen veritabanı adı, kapsayıcı adı ve üretilen iş değerleriyle yeni bir veritabanı ve bir kapsayıcı oluşturur. 
 
 3. Daha sonra DocumentClient nesnesi doğrudan TCP bağlantı moduyla başlatılır:  
 

@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Data Factory kullanarak Azure HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma "
+title: "Öğretici: Azure HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri-Data Factory"
 description: Öğretici-Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturmayı öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854977"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736174"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -187,7 +187,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
 3. **Yeni Data Factory** kutucuğu için aşağıdaki değerleri girin veya seçin:
 
-    |Özellik  |Değer  |
+    |Özellik  |Value  |
     |---------|---------|
     |Name | Veri Fabrikası için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir.|
     |Subscription | Azure aboneliğinizi seçin. |

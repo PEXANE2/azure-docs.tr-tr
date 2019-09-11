@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68004466"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772266"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
 
@@ -30,7 +30,7 @@ Bu sayfada etki alanları, DNS bölgeleri ve DNS kayıtları ve kayıt kümeleri
 
 Etki Alanı Adı Sistemi, bir etki alanları hiyerarşisidir. Hiyerarşi, adı yalnızca " **.** " olan "kök" etki alanından başlar.  Bunun altında "com", "net", "org", "uk" veya "jp" gibi en üst düzey etki alanları bulunur.  Bunların altında "org.uk" veya "co.jp" gibi ikinci düzey etki alanları bulunur. DNS hiyerarşisindeki etki alanları, dünyanın dört bir yanındaki DNS ad sunucuları tarafından barındırılan küresel olarak dağıtılır.
 
-Etki alanı adı kaydedici, ' contoso.com ' gibi bir etki alanı adı satın almanızı sağlayan bir kuruluştur.  Bir etki alanı adı satın alma, bu ad altında DNS hiyerarşisini denetleme hakkını sağlar, örneğin ' www.contoso.com ' adını şirketinizin Web sitenize yönlendirmenize olanak tanır. Kaydedici, etki alanını sizin adınıza kendi ad sunucularında barındırabilir veya alternatif ad sunucuları belirtmenize izin verebilir.
+Etki alanı adı kaydedici, ' contoso.com ' gibi bir etki alanı adı satın almanızı sağlayan bir kuruluştur.  Bir etki alanı adı satın alma, bu ad altında DNS hiyerarşisini denetleme hakkını sağlar, örneğin, www.contoso.com adını şirketinizin Web sitenize yönlendirmenize olanak tanır. Kaydedici, etki alanını sizin adınıza kendi ad sunucularında barındırabilir veya alternatif ad sunucuları belirtmenize izin verebilir.
 
 Azure DNS, etki alanınızı barındırmak için kullanabileceğiniz, küresel olarak dağıtılmış, yüksek kullanılabilirliğe sahip bir ad sunucu altyapısı sağlar. Etki alanlarınızı Azure DNS barındırarak DNS kayıtlarınızı, diğer Azure hizmetlerinizle aynı kimlik bilgileri, API, araç, faturalandırma ve destek ile yönetebilirsiniz.
 
@@ -135,7 +135,7 @@ Azure DNS REST API düzeyinde ETags, HTTP üstbilgileri kullanılarak belirtilir
 
 | Üstbilgi | Davranış |
 | --- | --- |
-| None |PUT her zaman başarılı olur (ETag denetimi yok) |
+| Yok. |PUT her zaman başarılı olur (ETag denetimi yok) |
 | IF-Match \<ETag > |PUT yalnızca kaynak varsa ve ETag eşleştirmelerinde başarılı olur |
 | IF-Match * |PUT yalnızca kaynak mevcutsa başarılı olur |
 | If-None-Match * |PUT yalnızca kaynak yoksa başarılı olur |

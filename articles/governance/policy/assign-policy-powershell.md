@@ -1,35 +1,32 @@
 ---
-title: Azure PowerShell ile uyumlu olmayan kaynaklar için ilke oluşturma
-description: Uyumlu olmayan kaynakları belirlemek üzere bir Azure İlkesi ataması oluşturmak için Azure PowerShell kullanırsınız.
+title: Azure PowerShell uyumlu olmayan kaynaklar için ilke oluşturma
+description: Uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure PowerShell kullanın.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 2ff34911dea19b83731b46077bd60c7b085763a4
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: bcdac2635c9d40bcd0f7605fad7479d5b8cdddba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979577"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239226"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak uyumlu olmayan kaynakları belirlemek üzere bir ilke ataması oluşturma
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek üzere bir ilke ataması oluşturun. Tamamlandığında, sanal makine belirlenecektir *uyumlu olmayan*.
+Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek üzere bir ilke ataması oluşturun. Bu tamamlandığında, *uyumlu olmayan*sanal makineleri tanımlayacaksınız.
 
-Azure PowerShell modülü, komut satırından veya betiklerdeki Azure kaynaklarını yönetmek için kullanılır.
-Bu kılavuzda, Az modül bir ilke ataması oluşturmak için kullanmayı açıklar.
+Azure PowerShell modülü, Azure kaynaklarını komut satırından veya betiklerden yönetmek için kullanılır.
+Bu kılavuzda, bir ilke ataması oluşturmak için az Module kullanma açıklanmaktadır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Başlamadan önce Azure PowerShell'in en son sürümünü yüklü olduğundan emin olun. Bkz: [Azure PowerShell modülü yükleme](/powershell/azure/install-az-ps) ayrıntılı bilgi için.
-- Azure PowerShell kullanarak Azure ilke görüşleri kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydedildiğinde, aboneliğinizin bununla çalıştığından emin olunur. Bir kaynak sağlayıcısını kaydetmek için kayıt kaynak sağlayıcısı işlemi izni olmalıdır. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
+- Başlamadan önce, Azure PowerShell en son sürümünün yüklü olduğundan emin olun. Ayrıntılı bilgi için bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps) .
+- Azure PowerShell kullanarak Azure Policy Insights kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydedildiğinde, aboneliğinizin bununla çalıştığından emin olunur. Bir kaynak sağlayıcısını kaydetmek için kayıt kaynak sağlayıcısı işlemi izni olmalıdır. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -40,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
-Bu hızlı başlangıçta, bir ilke ataması için oluşturduğunuz *denetim Vm'leri yönetilen disklere sahip olmayan* tanımı. Bu ilke tanımı, yönetilen disk kullanmayan sanal makineleri tanımlar.
+Bu hızlı başlangıçta, *yönetilen diskler olmadan VM 'Leri denetle* tanımı için bir ilke ataması oluşturacaksınız. Bu ilke tanımı, yönetilen diskleri kullanmayan sanal makineleri tanımlar.
 
 Yeni ilke ataması oluşturmak için aşağıdaki komutları çalıştırın:
 
@@ -73,7 +70,7 @@ Oluşturduğunuz ilke atamasıyla uyumlu olmayan kaynakları belirlemek için a�
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-İlke durumu alma hakkında daha fazla bilgi için bkz. [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
+İlke durumunu alma hakkında daha fazla bilgi için bkz. [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
 
 Sonuçlarınız aşağıdaki örneğe benzer:
 
@@ -95,7 +92,7 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-Nda Görünenleri eşleşen sonuç **kaynak Uyumluluk** bir ilke ataması Azure portalındaki görünümünde sekmesi.
+Sonuçlar, Azure portal görünümündeki bir ilke atamasının **kaynak uyumluluğu** sekmesinde gördüklerinize göre eşleşir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

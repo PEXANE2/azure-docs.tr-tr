@@ -1,5 +1,5 @@
 ---
-title: API Yönetimi'ni kullanarak web hizmetlerini yönetme
+title: API Management kullanarak Web hizmetlerini yönetme
 titleSuffix: Azure Machine Learning Studio
 description: API Management kullanarak AzureML web hizmetlerini yönetmek nasıl gösteren bir kılavuz. Kullanıcı erişimi, kullanımı azaltma ve izleme Panosu tanımlayarak, REST API uç noktalarını yönetin.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b6ece20f67258391e31b941edfc1ec0aa5db98f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347388"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279261"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Yönetimi'ni kullanarak Azure Machine Learning Studio web hizmetlerini yönetme
 ## <a name="overview"></a>Genel Bakış
@@ -182,11 +182,11 @@ Yeniden adlandırın **SimpleFeatureHashingExperiment**. Genişletin **kaydedilm
 
 Genişletin **veri dönüştürme** ve **işleme** sürükleyin **kümesindeki sütunları seçme** sürükleyip denemenize. Connect **incelemeleri Amazon'dan kitap** için **veri kümesinde sütun seçme**.
 
-![Kitap incelemeleri veri kümesi modülü bir proje sütunları modülüne bağlayın](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Kitap İnceleme veri kümesi modülünü bir proje sütunları modülüne bağlama](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Tıklayın **kümesindeki sütunları seçme** ve ardından **Sütun seçiciyi Başlat** seçip **Sütun2**. Bu değişiklikleri uygulamak için onay işaretine tıklayın.
 
-![Sütun adları kullanarak sütunları seçin](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Sütun adlarını kullanarak sütunları seçme](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Genişletin **metin analizi** sürükleyin **özellik karma** denemeyi sürükleyin. Connect **veri kümesinde sütun seçme** için **özellik karma**.
 
@@ -214,7 +214,7 @@ Tıklayın **Evet** denemeyi yayımlamak için.
 ![Evet-yayımlama](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Web hizmetini test edin
-Bir AzureML web hizmeti, RSS (istek/yanıt hizmeti) ve BES (toplu yürütme hizmeti) uç noktalar oluşur. RSS, zaman uyumlu yürütme için ' dir. BES için zaman uyumsuz iş yürütme ' dir. Aşağıdaki örnek Python kaynağı ile web hizmetini test etmek için indirmek ve Python için Azure SDK'sını yüklemek ihtiyacınız (bakın: [Python yükleme](../../python-how-to-install.md)).
+Bir AzureML web hizmeti, RSS (istek/yanıt hizmeti) ve BES (toplu yürütme hizmeti) uç noktalar oluşur. RSS, zaman uyumlu yürütme için ' dir. BES için zaman uyumsuz iş yürütme ' dir. Web hizmetinizi aşağıdaki örnek Python kaynağıyla test etmek için Python için Azure SDK 'sını indirip yüklemeniz gerekebilir (bkz: [Python nasıl yüklenir](/azure/python/python-sdk-azure-install)).
 
 Ayrıca gerekir **çalışma**, **hizmet**, ve **apı_key** denemenizin örnek kaynağı için. Çalışma alanını ve hizmet tıklayarak bulabilirsiniz **istek/yanıt** veya **toplu iş yürütme** web hizmeti panosundaki denemeniz için.
 
@@ -301,7 +301,7 @@ Bu kılavuz, çalışan bir Python örnek gösterir. İle değiştirmeniz gereki
     except urllib2.HTTPError, error:
         printHttpError(error)
         return
-    with open(output_file, "w+") as f:
+    with open(output_file, "wb+") as f:
         f.write(response.read())
     print(resultsLabel + " have been written to the file " + output_file)
     return

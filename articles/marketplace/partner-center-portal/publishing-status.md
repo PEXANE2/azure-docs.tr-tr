@@ -1,18 +1,18 @@
 ---
 title: Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
 description: Microsoft Iş Ortağı Merkezi 'nde ticari Market aracılığıyla bir teklif yayımlamak için gereken doğrulama, sertifika ve önizleme adımlarının durumunu kontrol edin.
-author: mattwojo
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982747"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191787"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
 

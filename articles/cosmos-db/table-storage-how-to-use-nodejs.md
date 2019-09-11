@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 45925b1c4252b0ff0080a2c287e7ed2fae444168
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986291"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308404"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -459,6 +459,6 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın.
 
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
 * GitHub’da [Node.js için Azure Depolama SDK’sı](https://github.com/Azure/azure-storage-node) deposu.
-* [Node.js Geliştiricileri için Azure](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [Node.js Geliştiricileri için Azure](https://docs.microsoft.com/azure/javascript/)
 * [Azure’da Node.js web uygulaması oluşturma](../app-service/app-service-web-get-started-nodejs.md)
 * [Bir Node.js uygulaması derleme ve Azure Cloud Service’e dağıtma](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell kullanarak)

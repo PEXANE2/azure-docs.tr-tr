@@ -1,6 +1,6 @@
 ---
 title: Apache Spark Machine Learning işlem hattı oluşturma-Azure HDInsight
-description: Veri işlem hatları oluşturmak için Apache Spark Machine Learning kitaplığını kullanın.
+description: Azure HDInsight 'ta veri işlem hatları oluşturmak için Apache Spark Machine Learning kitaplığını kullanın.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 4ad68ef33eb469c7949c3f3efcd55d6765da4158
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441876"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736376"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark makine öğrenimi işlem hattı oluşturma
 

@@ -1,31 +1,25 @@
 ---
-title: Veri bilimi sanal makinesi havuzları - Azure | Microsoft Docs
+title: Paylaşılan havuzlar
+titleSuffix: Azure Data Science Virtual Machine
 description: DSVMs havuzlarını bir ekip için paylaşılan bir kaynak olarak dağıtma
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, team data science Process'i
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/10/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: conceptual
+ms.date: 12/10/2018
+ms.openlocfilehash: 929040b5dc8650a757fb9c0da58cb82a76a72b5b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992027"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195617"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Veri bilimi sanal makineleri paylaşılan havuz oluşturma
 
-Bu makalede, bir ekip için paylaşılan bir veri bilimi sanal makineleri havuzunun (DSVMs) nasıl oluşturulacağı açıklanmaktadır. Paylaşılan havuz kullanmanın avantajları, daha iyi kaynak kullanımı, daha kolay paylaşım ve işbirliği ve DSVM kaynaklarının daha etkili bir şekilde yönetilmesini içerir.
+Bu makalede, bir ekip için paylaşılan bir veri bilimi sanal makineleri Havuzu (DSVMs) oluşturmayı öğreneceksiniz. Paylaşılan havuz kullanmanın avantajları, daha iyi kaynak kullanımı, daha kolay paylaşım ve işbirliği ve DSVM kaynaklarının daha etkili bir şekilde yönetilmesini içerir.
 
 Dsvm'leri havuzu oluşturmak için birçok yöntem ve teknolojileri kullanabilirsiniz. Bu makale etkileşimli sanal makineler (VM 'Ler) için havuzlara odaklanır. Alternatif bir yönetilen işlem altyapısı Azure Machine Learning Işlem olur. Daha fazla bilgi için bkz. [işlem hedeflerini ayarlama](../service/how-to-set-up-training-targets.md#amlcompute).
 

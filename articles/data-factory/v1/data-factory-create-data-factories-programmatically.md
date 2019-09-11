@@ -1,34 +1,33 @@
 ---
-title: Azure .NET SDK kullanarak veri komut zincirlerini oluşturabilirsiniz. | Microsoft Docs
-description: Programlı olarak oluşturabilir, izleyebilir ve Data Factory SDK'sını kullanarak Azure data factory'leri yönetme hakkında bilgi edinin.
+title: Azure .NET SDK kullanarak veri işlem hatları oluşturma | Microsoft Docs
+description: Azure veri fabrikalarını Data Factory SDK kullanarak programlı bir şekilde oluşturmayı, izlemeyi ve yönetmeyi öğrenin.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487291"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140208"
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Oluşturabilir, izleyebilir ve Azure Data Factory .NET SDK kullanarak Azure data factory'leri yönetme
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK kullanarak Azure veri fabrikaları oluşturun, izleyin ve yönetin
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız bkz. [kopyalama etkinliği öğreticisi](../quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="overview"></a>Genel Bakış
-Oluşturun, izleme ve program aracılığıyla Data Factory .NET SDK kullanarak Azure data factory'leri yönetin. Bu makale oluşturan ve veri fabrikası izler örnek bir .NET konsol uygulaması oluşturmak için izleyebileceğiniz bir kılavuz içerir. 
+Data Factory .NET SDK kullanarak Azure veri fabrikalarını programlı bir şekilde oluşturabilir, izleyebilir ve yönetebilirsiniz. Bu makalede, bir veri fabrikası oluşturup izleyen örnek bir .NET konsol uygulaması oluşturmak için izleyebileceğiniz bir izlenecek yol yer almaktadır. 
 
 > [!NOTE]
-> Bu makale, Data Factory .NET API’nin tamamını kapsamaz. Bkz: [Data Factory .NET API Başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) Data Factory .NET API hakkında kapsamlı bilgi için. 
+> Bu makale, Data Factory .NET API’nin tamamını kapsamaz. Data Factory için .NET API hakkında kapsamlı belgeler için bkz. [Data Factory .NET API başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) . 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -106,7 +105,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 * Parola (ik komutta belirtilir)
 
 ## <a name="walkthrough"></a>Kılavuz
-Bu izlenecek yolda, bir kopyalama etkinliği içeren işlem hattı ile veri fabrikası oluşturun. Kopyalama etkinliği verileri Azure blob depolama alanındaki bir klasörde aynı blob depolama alanındaki başka bir klasöre kopyalar. 
+İzlenecek yolda, kopyalama etkinliği içeren bir işlem hattı ile veri fabrikası oluşturacaksınız. Kopyalama etkinliği, verileri Azure Blob depolama alanındaki bir klasörden aynı BLOB depolama alanındaki başka bir klasöre kopyalar. 
 
 Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. Etkinlik, çeşitli veri depolama alanları arasında güvenli, güvenilir ve ölçeklenebilir bir yolla veri kopyalayabilen genel olarak kullanılabilir bir hizmet tarafından desteklenir. Kopyalama etkinliği hakkında ayrıntılı bilgi için [Veri Taşıma Etkinlikleri](data-factory-data-movement-activities.md) makalesine bakın.
 
@@ -122,7 +121,7 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
 3. **Paket Yöneticisi Konsolu**'nda şu adımları uygulayın:
    1. Data Factory paketini yüklemek için şu komutu çalıştırın: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Azure Active Directory paketini yüklemek için şu komutu çalıştırın (kodda Active Directory API'sini kullanırsınız): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Öğesinin içeriğini değiştirin **App.config** aşağıdaki içeriğe sahip bir proje dosyasında: 
+4. Projedeki **app. config** dosyasının içeriğini aşağıdaki içerikle değiştirin: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -139,8 +138,8 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
         </appSettings>
     </configuration>
     ```
-5. App.Config dosyasında için değerleri güncelleştirmek  **&lt;uygulama kimliği&gt;** ,  **&lt;parola&gt;** ,  **&lt;abonelik Kimliği&gt;** , ve **&lt;Kiracı kimliği&gt;** kendi değerlerinizle.
-6. Aşağıdaki **kullanarak** deyimleriyle **Program.cs** proje dosyasında.
+5. App. config dosyasında  **&lt;uygulama&gt;kimliği**,  **&lt;parola&gt;** , **abonelikkimliği&gt;ve Kiracı kimliği değerlerini güncelleştirin &lt;** **&lt; kendi&gt;** değerlerinizle.
+6. Aşağıdaki **using** deyimlerini projedeki **program.cs** dosyasına ekleyin.
 
     ```csharp
     using System.Configuration;
@@ -178,7 +177,7 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
     ```
 
    > [!IMPORTANT]
-   > **resourceGroupName** değerini Azure kaynak grubunuzun adıyla değiştirin. Kullanarak bir kaynak grubu oluşturmanız [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet'i.
+   > **resourceGroupName** değerini Azure kaynak grubunuzun adıyla değiştirin. [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini kullanarak bir kaynak grubu oluşturabilirsiniz.
    >
    > Veri fabrikasının adını (dataFactoryName) benzersiz olacak şekilde güncelleştirin. Veri fabrikasının adı genel olarak benzersiz olmalıdır. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.
 7. Bir **veri fabrikası** oluşturan aşağıdaki kodu **Main** yöntemine ekleyin.
@@ -222,9 +221,9 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
     ```
 9. **Girdi ve çıktı veri kümeleri** oluşturan aşağıdaki kodu **Main** yöntemine ekleyin.
 
-    **FolderPath** giriş blob ayarlanmıştır **adftutorial /** burada **adftutorial** kapsayıcıda bir blob depolama alanınızın adıdır. Azure blob depolamanızda bu kapsayıcı mevcut değilse bu ada sahip bir kapsayıcı oluşturun: **adftutorial** ve bir metin dosyasını kapsayıcıya yükleyin.
+    Giriş blobu için **FolderPath** , **adföğreticisi** olarak ayarlanır/burada **adföğreticisi** blob depolamadaki kapsayıcının adıdır. Bu kapsayıcı Azure Blob depolamada yoksa, şu ada sahip bir kapsayıcı oluşturun: **adföğreticisi** ve kapsayıcıya bir metin dosyası yükleyin.
 
-    FolderPath çıkış blob için ayarlanır: **adftutorial/apifactoryoutput / {dilim}** burada **dilim** dinamik olarak değerini temel alınarak hesaplanır **SliceStart** () Tarih-Saat diliminin her başlatın.)
+    Çıkış blobunun FolderPath değeri: **adföğreticisi/apifactor, put/{Slice}** , **dilimin** , her dilimin (başlangıç tarihi-saati) değerine göre dinamik olarak hesaplandığı bir değere ayarlanır.
 
     ```csharp
     // create input and output datasets
@@ -395,7 +394,7 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
         }
     }
     ```
-13. **(isteğe bağlı)**  Çalışma için bir veri diliminin ayrıntıları için aşağıdaki kodu ekleyin **ana** yöntemi.
+13. **(isteğe bağlı)** **Ana** yönteme bir veri diliminin çalıştırma ayrıntılarını almak için aşağıdaki kodu ekleyin.
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
@@ -427,7 +426,7 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. **Main** yöntemi tarafından kullanılan aşağıdaki yardımcı yöntemini **Program** sınıfına ekleyin. Bu yöntem sağlamanıza olanak tanıyan bir iletişim kutusu açılır **kullanıcı adı** ve **parola** Azure portalında oturum açmak için kullandığınız.
+14. **Main** yöntemi tarafından kullanılan aşağıdaki yardımcı yöntemini **Program** sınıfına ekleyin. Bu yöntem, Azure portal 'de oturum açmak için kullandığınız **Kullanıcı adı** ve **parola** sağlamanıza olanak tanıyan bir iletişim kutusu açılır.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -447,9 +446,9 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
     }
     ```
 
-15. Çözüm Gezgini'nde projeyi genişletin: **Datafactoryapıtestapp**, sağ **başvuruları**, tıklatıp **Başvuru Ekle**. Onay kutusunu işaretleyin `System.Configuration` derleme ve tıklatın **Tamam**.
+15. Çözüm Gezgini, projeyi genişletin: **Datafactoryapıtestapp**, **Başvurular**' a sağ tıklayın ve **Başvuru Ekle**' ye tıklayın. `System.Configuration` Derleme onay kutusunu seçin ve **Tamam**' a tıklayın.
 15. Konsol uygulamasını derleyin. Menüde **Derle**’ye tıklayın ve **Çözümü Derle**’ye tıklayın.
-16. Olduğunu en az bir dosya adftutorial kapsayıcısında Azure blob depolamanızda onaylayın. Aksi halde Emp.txt dosyasını Not Defteri'nde aşağıdaki içeriklerle oluşturun ve dosyayı adftutorial kapsayıcısına yükleyin.
+16. Azure Blob depolamada adföğreticisi kapsayıcısında en az bir dosya olduğunu doğrulayın. Aksi takdirde, aşağıdaki içerikle birlikte Notepad 'de bir. txt dosyası oluşturun ve bunu adföğreticisi kapsayıcısına yükleyin.
 
     ```
     John, Doe
@@ -458,11 +457,11 @@ Kopyalama Etkinliği, Azure Data Factory’de veri hareketini gerçekleştirir. 
 17. Menüden **Hata Ayıkla** -> **Hata Ayıklamayı Başlat**’a tıklayarak örneği çalıştırın. **Getting run details of a data slice** iletisini gördüğünüzde birkaç dakika bekleyin ve **ENTER** tuşuna basın.
 18. Azure portalı kullanarak **APITutorialFactory** veri fabrikasının aşağıdaki yapıtlarla birlikte oluşturulduğunu doğrulayın:
     * Bağlı hizmet: **AzureStorageLinkedService**
-    * Veri kümesi: **DatasetBlobSource** ve **DatasetBlobDestination**.
-    * İşlem hattı: **PipelineBlobSample**
-19. Bir çıktı dosyası oluşturulduğunu doğrulayın **apifactoryoutput** klasöründe **adftutorial** kapsayıcı.
+    * Veri kümesi **Datasetblobsource** ve **datasetblobdestination**.
+    * Konfigüre **PipelineBlobSample**
+19. **Adföğreticisi** kapsayıcısındaki **apifactorsıput** klasöründe bir çıktı dosyası oluşturulduğunu doğrulayın.
 
-## <a name="get-a-list-of-failed-data-slices"></a>Başarısız olan veri dilimi listesini alma 
+## <a name="get-a-list-of-failed-data-slices"></a>Başarısız veri dilimlerinin listesini al 
 
 ```csharp
 // Parse the resource path
@@ -502,6 +501,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir Azure blob depolama alanından Azure SQL veritabanına veri kopyalayan bir .NET SDK kullanarak bir işlem hattı oluşturmak için aşağıdaki örneğe bakın: 
+Verileri bir Azure Blob depolama alanından Azure SQL veritabanına kopyalayan .NET SDK kullanarak bir işlem hattı oluşturmak için aşağıdaki örneğe bakın: 
 
-- [Blob depolama alanından SQL veritabanı'na veri kopyalamak için bir işlem hattı oluşturma](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Blob depolamadan SQL veritabanına veri kopyalamak için bir işlem hattı oluşturma](data-factory-copy-activity-tutorial-using-dotnet-api.md)

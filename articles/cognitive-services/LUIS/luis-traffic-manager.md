@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650550"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256598"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Uç nokta kota anahtarlarını yönetmek için Microsoft Azure Traffic Manager'ı kullanma
 Language Understanding (LUIS), tek bir anahtarın kota dışında uç nokta isteği Kotayı artırmak olanağı sunar. LUIS için daha fazla anahtarları oluşturma ve bunları LUIS uygulamaya ekleme tarafından yapıldığını **Yayımla** sayfasını **kaynakları ve anahtarları** bölümü. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Azure portalının ekran görüntüsü luıs traffic manager kaynak grubunda iki LUIS anahtarları](./media/traffic-manager/luis-keys.png)
 
-2. Lusıs [][LUIS] Web sitesinde, **Yönet** bölümünde, **anahtarlar ve uç noktalar** sayfasında, uygulamaya anahtarlar atayın ve sağ üst menüdeki **Yayımla** düğmesini seçerek uygulamayı yeniden yayımlayın. 
+2. [Lusıs][LUIS] Web sitesinde, **Yönet** bölümünde, **Azure kaynakları** sayfasında, uygulamaya anahtarlar atayın ve sağ üst menüdeki **Yayımla** düğmesini seçerek uygulamayı yeniden yayımlayın. 
 
     Örnek URL'yi **uç nokta** sütun uç noktası anahtarı ile bir GET isteği bir sorgu parametresi olarak kullanır. İki yeni anahtarları uç nokta URL'lerini kopyalayın. Bunlar, bu makalenin devamındaki Traffic Manager yapılandırması bir parçası olarak kullanılır.
 
@@ -330,7 +330,7 @@ Traffic Manager çevrimiçi olduğundan emin olmak için her uç nokta yolunu yo
 ![Ekran Azure Traffic Manager profili, izleme durumu çevrimiçi gösteren genel bakış](./media/traffic-manager/profile-status-online.png)
 
 ### <a name="validate-traffic-manager-polling-works"></a>Traffic Manager'ın çalıştığı yoklama doğrula
-Traffic manager Works yoklama doğrulamak için başka bir LUIS uç nokta günlüklerle yoludur. Lusıs [][LUIS] Web sitesi uygulamalar listesi sayfasında, uygulamanın uç nokta günlüğünü dışarı aktarın. Traffic Manager için iki uç nokta yoklayacağını çünkü girişler vardır günlüklerde bile yalnızca birkaç dakikada silinmiş. Sorgu başladığı ile girdilerini arayın unutmayın `traffic-manager-`.
+Traffic manager Works yoklama doğrulamak için başka bir LUIS uç nokta günlüklerle yoludur. [Lusıs][LUIS] Web sitesi uygulamalar listesi sayfasında, uygulamanın uç nokta günlüğünü dışarı aktarın. Traffic Manager için iki uç nokta yoklayacağını çünkü girişler vardır günlüklerde bile yalnızca birkaç dakikada silinmiş. Sorgu başladığı ile girdilerini arayın unutmayın `traffic-manager-`.
 
 ```console
 traffic-manager-west    6/7/2018 19:19  {"query":"traffic-manager-west","intents":[{"intent":"None","score":0.944767}],"entities":[]}

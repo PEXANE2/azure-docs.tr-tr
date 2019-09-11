@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Ruby ve REST API ile bir resimdeki yüz algılama'
+title: 'Hızlı Başlangıç: REST API ve Ruby kullanarak görüntüdeki yüzeyleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Ruby ile Yüz Tanıma API’sini kullanarak bir görüntüdeki yüzleri algılayacaksınız.
 services: cognitive-services
@@ -8,35 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e043d9bf0e87304868b2c573600578c911134856
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603350"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859181"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Hızlı Başlangıç: Ruby ve REST API ile bir resimdeki yüz algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Hızlı Başlangıç: REST API ve Ruby kullanarak görüntüdeki yüzeyleri algılama
 
-Bu hızlı başlangıçta, bir resimdeki İnsan yüzlerini algılamak için Ruby ile Azure yüz REST API'sini kullanır.
+Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Azure yüz REST API Ruby ile kullanacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın.
-- Bir kod Düzenleyicisi gibi [Visual Studio Code](https://code.visualstudio.com/download)
+- [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
 
-## <a name="write-the-script"></a>Komut dosyası yazma
+## <a name="write-the-script"></a>Betiği yaz
 
-Yeni bir dosya oluşturun _faceDetection.rb_ve aşağıdaki kodu ekleyin. Bu kod, yüz tanıma API'si belirtilen görüntü URL'sini çağırır.
+Yeni bir dosya oluşturun, _Facedetection. RB_ve aşağıdaki kodu ekleyin. Bu kod, belirli bir görüntü URL 'SI için Yüz Tanıma API'si çağırır.
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,19 +60,21 @@ end
 puts response.body
 ```
 
-Güncellemeniz gerekecektir `request['Ocp-Apim-Subscription-Key']` abonelik anahtarınız ve bir değerle değiştirmek gerekebilir `uri` doğru bölge tanımlayıcısı içeren dize (bkz [yüz tanıma API'si belgeleri](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) tüm bölge uç noktalar listesi) . 
+`request['Ocp-Apim-Subscription-Key']` Değeri abonelik anahtarınızla güncelleştirmeniz ve `uri` dizeyi doğru uç noktayı içerecek şekilde değiştirmeniz gerekir.
 
-Değiştirmek isteyebilirsiniz `imageUri` kendi giriş görüntüsünü işaret özgüdür. Değiştirmek isteyebilirsiniz `returnFaceAttributes` alanı almak için hangi yüz öznitelikleri belirtir.
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+Ayrıca, `imageUri` alanı kendi giriş görüntünüzü işaret etmek üzere değiştirmek isteyebilirsiniz. Ayrıca, alınacak yüz özniteliklerini belirten `returnFaceAttributes` alanını da değiştirmek isteyebilirsiniz.
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 
-Ruby betiğini ile aşağıdaki komutu çalıştırın:
+Ruby betiğini aşağıdaki komutla çalıştırın:
 
 ```shell
 ruby faceDetection.rb
 ```
 
-Konsola yazdırılmasını algılanan yüz veri JSON dizesi görmeniz gerekir. Aşağıdaki metni, başarılı bir JSON yanıtı örneğidir.
+Konsola yazdırılmış algılanan yüz verilerinin JSON dizesini görmeniz gerekir. Aşağıdaki metin, başarılı bir JSON yanıtı örneğidir.
 
 ```json
 [
@@ -257,7 +257,7 @@ Konsola yazdırılmasını algılanan yüz veri JSON dizesi görmeniz gerekir. A
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir resimdeki yüz algılama ve onların öznitelikleri döndürmek için Azure yüz tanıma API'si çağıran bir Ruby betiğinizi yazıldı. Ardından, daha fazla bilgi için yüz API başvuru belgeleri keşfedin.
+Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak ve özniteliklerini döndürmek için Azure Yüz Tanıma API'si çağıran bir Ruby betiği yazdınız. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API’si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

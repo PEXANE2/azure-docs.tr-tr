@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076114"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773232"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Iş Ortağı Merkezi 'nde ortak satış seçeneği
 
@@ -47,10 +47,10 @@ Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz.  Her çözüm a
 
 | **Belgelerini**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| *Müşteri tek çağrı cihazı* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Aşağıdaki ilgili şablonlardan birini kullanın: <br> <ul> <li> [Tek sayfalayıcı şablonu Microsoft Azure](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Microsoft Dynamics 365 1-sayfalayıcı şablonu](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 1-sayfalayıcı şablonu](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 1-sayfalayıcı şablonu](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Müşteri tek çağrı cihazı* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Office 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul>
  |
-| *Müşteri sunumu* | Çözümünüzü ve değer teklifini aralıklı olarak kaydırarak slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış takımları, her iki şirketin da bir Birleşik çözüm dağıtmakta olduğu değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünüzün ne yaptığını, BT 'nin müşterilere nasıl yardımcı olduğunu, çözüm için hangi sektörlerin olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Daha fazla bilgi için bkz. [müşteri sunum şablonu](https://aka.ms/GTMServices_CustomerPresentation).|
-| *Müşteri örnek olay incelemesi* | Bu bilgiler, siz ve Microsoft 'un bu çözümü önceki durumlarda nasıl başarıyla dağıttığından oluşan potansiyel bir müşteriyi gösterir. <br> <br> Daha fazla bilgi için bkz. [örnek durum incelemesi şablonu](https://aka.ms/GTM_Case_Study_Template). |
+| *Müşteri sunumu* | Çözümünüzü ve değer teklifini aralıklı olarak kaydırarak slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış takımları, her iki şirketin da bir Birleşik çözüm dağıtmakta olduğu değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünüzün ne yaptığını, BT 'nin müşterilere nasıl yardımcı olduğunu, çözüm için hangi sektörlerin olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın.|
+| *Müşteri örnek olay incelemesi* | Bu bilgiler, siz ve Microsoft 'un bu çözümü önceki durumlarda nasıl başarıyla dağıttığından oluşan potansiyel bir müşteriyi gösterir. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın. |
 | *Doğrulanabilen müşteri WINS (isteğe bağlı)* | Çözümünüz dağıtıldıktan sonra müşteri başarılarını belirli örneklere örnekler. |
 | *Kanal aralığı destesi (isteğe bağlı)* | Tekliflerinizi satmaya yönelik olarak, kanal satıcılarının çözümünüz hakkında daha fazla bilgi edinmelerini ve satış ekiplerini hazırlamalarını sağlayacak bilgiler içeren bir slayt destesi. Genellikle bir Asansör aralığı, hedef müşteriler hakkında bilgiler, müşterilere Sorulacak sorular, iletişim noktaları ve videoların, belgelerin ve destek bilgilerinin bağlantıları bulunur. |
 | *Başvuru mimarisi diyagramları* | İş ortağı tarafından oluşturulan IP 'yi, Microsoft bulut hizmetleriyle ilişkisi ve IP ortak satış programının teknik gereksinimlerini karşıladığı modeli gösteren bir belge. |

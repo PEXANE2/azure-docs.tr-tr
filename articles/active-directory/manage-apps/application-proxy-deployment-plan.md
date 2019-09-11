@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879908"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812841"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlayın
 
@@ -85,7 +85,7 @@ Konusuyla ilgili ayrıntılı bilgi için bkz. uygulama proxy 'Si ile [Çoklu ot
 
    * **Uygulama yayımlama ve yönetim** *Uygulama Yöneticisi* rolünü gerektirir. Uygulama yöneticileri, dizinde kayıtlar, SSO ayarları, Kullanıcı ve Grup atamaları ve lisanslama, uygulama proxy 'Si ayarları ve onay dahil tüm uygulamaları yönetebilir. Koşullu erişimi yönetme yeteneği vermez. *Bulut uygulama Yöneticisi* rolü, uygulama yöneticisinin tüm yeteneklerine sahiptir, ancak uygulama proxy ayarlarının yönetimine izin vermez.
 
-* **Lisanslama**: Uygulama proxy 'Si Azure AD Temel abonelikle kullanılabilir. Lisanslama seçeneklerinin ve özelliklerinin tam listesi için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory/) bakın.  
+* **Lisanslama**: Uygulama proxy 'Si bir Azure AD Premium aboneliği aracılığıyla kullanılabilir. Lisanslama seçeneklerinin ve özelliklerinin tam listesi için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory/) bakın.  
 
 ### <a name="application-discovery"></a>Uygulama bulma
 

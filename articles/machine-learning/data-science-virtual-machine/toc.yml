@@ -4,9 +4,9 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Veri Bilimi VM nedir?
+    - name: Veri Bilimi Sanal Makineleri nedir?
       href: overview.md
-    - name: Coğrafi AI Veri Bilimi VM nedir?
+    - name: Coğrafi Yapay Zeka DSVM’si nedir?
       href: geo-ai-dsvm-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: CentOS DSVM’si oluşturma
       href: linux-dsvm-intro.md
-    - name: Coğrafi AI Veri Bilimi VM'si oluşturma
+    - name: Coğrafi AI DSVM’si oluşturma
       href: provision-geo-ai-dsvm.md
 - name: Kavramlar
   items:

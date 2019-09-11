@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033317"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241444"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
 
@@ -69,6 +69,18 @@ Geçmişte, ayrıcalıklı erişim diğer satıcılar tarafından kimlik yöneti
 ![Ayrıcalıklı erişim yaşam döngüsü](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 Azure AD Privileged Identity Management (PıM), Azure AD, Azure ve diğer Microsoft çevrimiçi hizmetleri arasında kaynaklara yönelik erişim haklarının güvenliğini sağlamaya yönelik ek denetimler sağlar.  Azure AD PıM tarafından sağlanan tam zamanında erişim ve rol değişikliği uyarısı özellikleri, Multi-Factor Authentication ve koşullu erişim 'in yanı sıra, şirketinizin kaynaklarını güvenli hale getirmeye yardımcı olmak için kapsamlı bir idare denetimleri kümesi sağlar (Dizin, Office 365 ve Azure Kaynak rolleri). Diğer erişim formlarında olduğu gibi, kuruluşlar yönetici rollerindeki tüm kullanıcılar için yinelenen erişim yeniden sertifika yapılandırmak üzere erişim gözden geçirmeleri kullanabilir.
+
+## <a name="least-privileged-roles"></a>En az ayrıcalıklı roller
+
+Kimlik yönetimi 'nde Yönetim görevlerini gerçekleştirmek için en az ayrıcalıklı rolü kullanmak en iyi uygulamadır. Bu görevleri gerçekleştirmek için gerektiğinde bir rolü etkinleştirmek üzere Azure AD PıM kullanmanızı öneririz. Aşağıda, kimlik Idare özelliklerini yapılandırmak için en az ayrıcalıklı dizin rolü verilmiştir: 
+
+| Özellik | En az ayrıcalıklı rol |
+| ------- | --------------------- |
+| Yetkilendirme yönetimi | Kullanıcı Yöneticisi (genel yönetici gerektiren kataloglara SharePoint Online siteleri ekleme hariç) |
+| Kullanım koşulları | Güvenlik Yöneticisi veya koşullu erişim Yöneticisi |
+| Erişim gözden geçirmeleri | Kullanıcı Yöneticisi (ayrıcalıklı rol yöneticisi gerektiren Azure veya Azure AD rolleri için erişim gözden geçirmeleri hariç) |
+|Privileged Identity Management | Ayrıcalıklı rol yöneticisi |
+
 
 ## <a name="getting-started"></a>Başlarken
 

@@ -9,38 +9,40 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c52b41c4e6d0618b4df9b2aed985bbd22d89f419
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee4bd9d61856ef4ea1afdd027d6f39e730b92d78
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567202"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129211"
 ---
 # <a name="monitoring-and-performance-tuning"></a>İzleme ve performans ayarlama
 
-Azure SQL veritabanı, kullanımı kolayca izlemek, kaynak eklemek veya kaldırmak (CPU, bellek, g/ç), olası sorunları gidermek ve bir veritabanının performansını iyileştirebilecek öneriler bulmak için araçlar ve yöntemler sağlar. Azure SQL veritabanı, veritabanlarının iş yüküne uyum sağlayacak ve performansı otomatik olarak iyileştirmesine imkan tanıyan, veritabanlarındaki sorunları otomatik olarak giderebilecek birçok özelliğe sahiptir. Ancak, sorun gidermeye gerekebilecek bazı özel sorunlar vardır. Bu makalede, performans sorunlarını gidermek için kullanılabilen bazı en iyi yöntemler ve araçlar açıklanmaktadır.
+Azure SQL veritabanı, kullanımı kolayca izlemek ve kaynak (CPU, bellek, g/ç) ekleme veya kaldırma, olası sorunları giderme ve bir veritabanının performansını iyileştirmeye yönelik öneriler sağlamak için araçlar ve yöntemler sağlar. Azure SQL veritabanı, veritabanlarındaki sorunları otomatik olarak giderebilirler. Otomatik ayarlama, bir veritabanının iş yüküne uyum sağlamasına ve performansı otomatik olarak iyileştirmesine olanak sağlar. Ancak, sorun gidermeye gerekebilecek bazı özel sorunlar vardır. Bu makalede, performans sorunlarını gidermek için kullanılabilen bazı en iyi yöntemler ve araçlar açıklanmaktadır.
 
 Veritabanının sorunsuz çalıştığından emin olmak için yapılması gereken iki ana etkinlik vardır:
-- Veritabanına atanan kaynakların iş yükünü işleyebileceğini doğrulamak için [veritabanı performansını izleme](#monitoring-database-performance) . Bir veritabanının kaynak sınırlarını vurmasını görürseniz, üst kaynak kullanma sorguları tanımlanmalıdır ve en iyi duruma getirilmeli ya da hizmet katmanını yükselterek daha fazla kaynak eklenmelidir.
-- Olası bir sorunun neden oluştuğunu belirlemek için [performans sorunlarını giderin](#troubleshoot-performance-issues) , sorunun kök nedenini belirleyip sorunu giderecek eylemi gerçekleştirin.
+- Veritabanına atanan kaynakların iş yükünü işleyebileceğini doğrulamak için [veritabanı performansını izleyin](#monitoring-database-performance) . Bir veritabanının kaynak limitlerini vurmasını görürseniz şunları göz önünde bulundurun:
+   - En üstteki kaynak kullanan sorguları tanımlama ve iyileştirme.
+   - hizmet katmanını yükselterek daha fazla kaynak ekleme.
+- Olası bir sorunun neden oluştuğunu belirlemek için [performans sorunlarını giderme](#troubleshoot-performance-issues) , sorunun temel nedenini belirlemek. Temel neden belirlendiğinde, sorunu gidermeye yönelik adımları uygulayın.
 
 ## <a name="monitoring-database-performance"></a>Veritabanı performansını izleme
 
-Azure SQL veritabanı performansını izlemeye, seçtiğiniz veritabanı performans düzeyiyle ilgili kaynak kullanımını izleyerek başlarsınız. Aşağıdaki kaynaklar aynı şekilde izlenmelidir:
- - **CPU kullanımı** -gelişmiş bir süre IÇIN veritabanının CPU kullanımının% 100 ' ine ulaşmakta olup olmadığını denetleyin. Bu, veritabanının veya örneğin daha yüksek bir hizmet katmanına yükseltilmesi gerektiğini veya işlem gücünün çoğunu kullanan sorguların tanımlanması ve ayarlanmış olması gerektiğini gösteriyor olabilir.
- - **Bekleme istatistikleri** -sorguların neden bazı kaynakları beklediğini denetleyin. Sorgular verilerin veritabanı dosyalarına alınmasını veya kaydedilmesini bekler, bazı kaynak sınırına ulaşıldığı için bekliyor.
+Azure 'da bir SQL veritabanının performansını izlemek, seçilen veritabanı performansı düzeyine göre kullanılan kaynakları izlemeye başlar. Aşağıdaki kaynaklar izlenmelidir:
+ - **CPU kullanımı** -gelişmiş bir süre IÇIN veritabanının CPU kullanımının% 100 ' ine ulaşmakta olup olmadığını denetleyin. Yüksek CPU kullanımı, en fazla işlem gücünü kullanan sorguların tanımlanması ve ayarlanmış olması gerektiğini gösterebilir. Ya da, yüksek CPU kullanımı, veritabanının veya örneğin daha yüksek bir hizmet katmanına yükseltilmesi gerektiğini gösteriyor olabilir. 
+ - **Bekleme istatistikleri** -sorguların karşılaştığı beklemeyi öğrenmek için [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) kullanın. Sorgular, kaynaklar üzerinde beklenebilir, kuyruk bekler veya dış bekler. 
  - **GÇ kullanımı** -veritabanının TEMELDEKI depolamanın GÇ sınırlarına ulaşmakta olup olmadığını denetleyin.
- - **Bellek kullanımı** -veritabanı veya örnek için kullanılabilir bellek miktarı, sanal çekirdek sayısıyla orantılıdır ve iş yükü için yeterli olup olmadığını kontrol edin. Sayfa ömrü erkeklerin sayfaların bellekten ne kadar hızlı bir şekilde kaldırıldığını gösterebilen parametrelerden biridir.
+ - **Bellek kullanımı** -veritabanı veya örnek için kullanılabilir bellek miktarı, sanal çekirdek sayısıyla orantılıdır. Belleğin iş yükü için yeterli olduğunu doğrulayın. Sayfa ömrü erkeklerin sayfaların bellekten ne kadar hızlı bir şekilde kaldırıldığını gösterebilen parametrelerden biridir.
 
-Azure SQL veritabanı hizmeti **, olası performans sorunlarını gidermeye ve gidermeye yardımcı olacak araçlar ve kaynaklar içerir**. Fırsatlar, [performans ayarlama önerilerini](sql-database-advisor.md)inceleyerek kaynakları değiştirmeden sorgu performansını iyileştirmek ve iyileştirmek için kolayca tanımlanabilir. Veritabanı performansının düşük olmasına yol açan yaygın nedenler, dizinlerin eksik olması ve sorguların hatalı bir şekilde iyileştirilmesidir. Bu ayarlama önerileri, iş yükünün performansını artırmak için uygulanabilir. Ayrıca, Azure SQL veritabanı 'nın, tüm tanımlanan önerileri uygulayarak ve bunun veritabanı performansını artırdığı için [sorguların performansını otomatik olarak iyileştirmelerine](sql-database-automatic-tuning.md) de izin veririz.
+Azure SQL veritabanı hizmeti **, olası performans sorunlarını gidermeye ve gidermeye yardımcı olacak araçlar ve kaynaklar içerir**. Fırsatlar, [performans ayarlama önerilerini](sql-database-advisor.md)inceleyerek, kaynakları değiştirmeden sorgu performansını iyileştirmek ve iyileştirmek için belirlenebilir. Veritabanı performansının düşük olmasına yol açan yaygın nedenler, dizinlerin eksik olması ve sorguların hatalı bir şekilde iyileştirilmesidir. Bu ayarlama önerileri, iş yükünün performansını artırmak için uygulanabilir. Ayrıca, tüm tanımlanan önerileri uygulayarak ve gelişmiş veritabanı performansı önerilerini doğrulayarak Azure SQL veritabanı ['nın sorguların performansını otomatik olarak iyileştirmelerine](sql-database-automatic-tuning.md) izin veririz.
 
 Veritabanı performansını izlemek ve sorunlarını gidermek için aşağıdaki seçenekler kullanılabilir:
 
 - [Azure Portal](https://portal.azure.com), **SQL veritabanları**' na tıklayın, veritabanını seçin ve ardından izleme grafiğini kullanarak en yüksek kullanımlarına yaklaştığı kaynakları arayın. DTU tüketimi varsayılan olarak gösterilir. Gösterilen zaman aralığını ve değerleri değiştirmek için **Düzenle** ' ye tıklayın.
-- SQL Server Management Studio gibi araçlar, kaynak kullanımını izlemek ve en üstteki kaynak kullanan sorguları belirlemek için bir [performans panosu](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) gibi çok sayıda faydalı rapor sağlar ve gerileyen sorguları tanımlamak Için [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) ' nu sorgular mının.
-- Kaynakların en iyi şekilde harcadıkları sorguları belirlemek için [Azure portal](https://portal.azure.com) [sorgu performansı içgörüleri](sql-database-query-performance.md) kullanın. Bu özellik yalnızca Tek Veritabanı ve elastik havuzlarda kullanılabilir.
+- SQL Server Management Studio gibi araçlar, kaynak kullanımını izlemek ve en üstteki kaynak kullanan sorguları belirlemek için bir [performans panosu](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) gibi birçok yararlı rapor sağlar. [Sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) , gerileyen performansa sahip sorguları belirlemek için kullanılabilir.
+- En fazla kaynak kullanan sorguları tanımlamak için [Azure portal](https://portal.azure.com) [sorgu performansı içgörüleri](sql-database-query-performance.md) kullanın. Bu özellik yalnızca Tek Veritabanı ve elastik havuzlarda kullanılabilir.
 - Dizin oluşturma ve bırakma, sorguları parametreleme ve şema sorunlarını düzeltme önerilerini görüntülemek için [SQL veritabanı Danışmanı](sql-database-advisor-portal.md) kullanın. Bu özellik yalnızca Tek Veritabanı ve elastik havuzlarda kullanılabilir.
 - Veritabanı performansını otomatik olarak izlemek için [Azure SQL akıllı içgörüler](sql-database-intelligent-insights.md) kullanın. Bir performans sorunu algılandığında, sorunun ayrıntıları ve kök neden analizi (RCA) ile bir tanılama günlüğü oluşturulur. Mümkün olduğunda performans iyileştirme önerisi sunulmaktadır.
 - [Otomatik ayarlamayı etkinleştirin](sql-database-automatic-tuning-enable.md) ve Azure SQL veritabanı 'nın belirlenen performans sorunlarını otomatik olarak çözmesine izin verin.
@@ -58,13 +60,13 @@ Performans sorunlarını tanılamak ve çözümlemek için, her bir etkin sorgun
 Performans sorunlarına sahip bir iş yükü için, performans sorunu CPU çekişmesine ( **çalışırken çalışan** bir koşul) veya tek tek sorguların bir şeyi ( **bekleme ile ilgili** bir koşul) bekliyor olabilir.
 
 **Çalıştırmaya** ilişkin sorunların nedenleri şu olabilir:
-- **Derleme sorunları** -SQL sorgu İdealleştirici, eski istatistikler, işlenecek satır sayısının yanlış tahmin edilmesi veya gerekli belleğin tahmini olması nedeniyle en iyi alt plana sahip olabilir. Sorgunun geçmişte veya başka bir örnekte (yönetilen örnek veya SQL Server örneği) daha hızlı yürütüldüğünü biliyoruz, gerçek yürütme planlarını alın ve farklı olup olmadığını görmek için bunları karşılaştırın. Daha iyi planı almak için sorgu ipuçları uygulamayı veya istatistikleri yeniden oluşturmayı veya dizinleri yeniden oluşturmayı deneyin. Bu sorunları otomatik olarak azaltmak için Azure SQL veritabanı 'nda otomatik plan düzeltmesini etkinleştirin.
-- **Yürütme sorunları** -sorgu planının en iyi durumda olması, veritabanında günlük yazma işlemi gibi bazı kaynak limitlerine ulaşarak veya yeniden oluşturulması gereken birleştirilmiş dizinleri kullanıyor olması olabilir. Kaynakları harcama halinde olan çok sayıda eşzamanlı sorgu, yürütme sorunları nedeniyle de olabilir. Çoğu durumda, etkili bir şekilde yürütülmediği sorgular büyük olasılıkla bazı kaynakları beklerken, çoğu durumda **bekleyen ilgili** sorunlar yürütme sorunlarıyla ilgilidir.
+- **Derleme sorunları** -SQL sorgu İdealleştirici, eski istatistikler, işlenecek satır sayısının hatalı tahmini veya gerekli belleğin yanlış şekilde tahmin edilmesi nedeniyle en düşük bir plan oluşturabilir. Sorgunun geçmişte veya başka bir örnekte (yönetilen örnek veya SQL Server örneği) daha hızlı yürütüldüğünü biliyoruz, gerçek yürütme planlarını alın ve farklı olup olmadığını görmek için bunları karşılaştırın. Daha iyi planı almak için sorgu ipuçları uygulamayı veya istatistikleri yeniden oluşturmayı veya dizinleri yeniden oluşturmayı deneyin. Bu sorunları otomatik olarak azaltmak için Azure SQL veritabanı 'nda otomatik plan düzeltmesini etkinleştirin.
+- **Yürütme sorunları** -sorgu planı en iyi durumda ise, veritabanında günlük yazma işlemi gibi kaynak limitlerine vurabilir veya yeniden oluşturulması gereken parçalanmış dizinleri kullanıyor olabilirsiniz. Aynı kaynaklara ihtiyacı olan çok sayıda eşzamanlı sorgu, yürütme sorunları nedeniyle de olabilir. Çoğu durumda, etkili bir şekilde yürütülmediği sorgular büyük olasılıkla bazı kaynakları beklerken, çoğu durumda **bekleyen ilgili** sorunlar yürütme sorunlarıyla ilgilidir.
 
 **Bekleme ile ilgili** sorunların nedenleri şu olabilir:
-- **Engelleme** -bir sorgu, diğerleri aynı nesnelere erişmeye çalışırken veritabanındaki bazı nesneler üzerindeki kilidi tutabilir. Sorgu engelleme, DMV veya izleme araçları kullanılarak kolayca tanımlanabilir.
+- **Engelleme** -bir sorgu, diğerleri aynı nesnelere erişmeye çalışırken veritabanındaki nesneleri kilitleyip tutabilirler. Blok sorguları, DMVs veya izleme araçları kullanılarak kolayca tanımlanabilir.
 - **GÇ sorunları** -sorgular, sayfaların verilere veya günlük dosyalarına yazılmasını bekliyor olabilir. Bu durumda, DMV `WRITE_LOG`'de, `PAGEIOLATCH_*` veya bekleme istatistiklerini görün `INSTANCE_LOG_RATE_GOVERNOR`.
-- **Tempdb sorunları** -iş yükü çok sayıda geçici tablo kullanıyorsa veya planlarda çok sayıda tempdb kopyası varsa, sorgular tempdb aktarım hızı ile ilgili bir sorun olabilir. 
+- **Tempdb sorunları** -iş yükü geçici tablolar kullanıyorsa veya planlarda tempdb Taşanlar varsa, sorgular tempdb verimlilik ile ilgili bir sorun olabilir. 
 - **Bellekle ilgili sorunlar** -sayfa ömrü erkeklerin veya sorgular gerekenden daha az bellek alıyor olması için iş yükü için yeterli bellek olmayabilir. Bazı durumlarda, sorgu Iyileştiricinizdeki yerleşik zeka bu sorunları çözmeyecektir.
  
  Aşağıdaki bölümler, bu sorunlardan bazılarının nasıl tanımlanacağına ve giderileceğine ilişkin açıklanacaktır.
@@ -75,7 +77,7 @@ Genel bir kılavuz olarak, CPU kullanımı sürekli olarak% 80 veya daha yüksek
 
 - Çok fazla çalışan sorgu
 - Çok fazla derleme sorgusu
-- Bir veya daha fazla çalışan sorgu en iyi bir sorgu planı kullanıyor
+- Çalışan bir veya daha fazla sorgu, bir veya daha fazla sorgu planı kullanıyor
 
 Güvenlikle ilgili bir performans sorunu olduğunu tespit ediyorsanız, amaç bir veya daha fazla yöntem kullanarak kesin sorunu belirlemektir. Çalıştırmaya ilişkin sorunları belirlemek için en yaygın yöntemler şunlardır:
 
@@ -86,7 +88,7 @@ Güvenlikle ilgili bir performans sorunu olduğunu tespit ediyorsanız, amaç bi
   - [sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) , BIR Azure SQL VERITABANı için CPU kullanımı ve depolama verileri döndürür. Veriler, beş dakikalık aralıklar içinde toplanır ve toplanır.
 
 > [!IMPORTANT]
-> Bu DMV 'leri kullanarak bir T-SQL sorguları ayarlama CPU kullanımı sorunlarını gidermek için bkz. [CPU performans sorunlarını belirleme](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
+> Sys. DM _db_resource_stats ve sys. resource_stats DMVs kullanarak T-SQL sorguları için, CPU kullanımı sorunlarını gidermek için bkz. [CPU performans sorunlarını belirleme](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
 ### <a name="ParamSniffing"></a>Parametreye duyarlı sorgu yürütme planı sorunlarıyla olan sorgularda sorun giderme
 
@@ -94,7 +96,7 @@ Parametre duyarlı plan (PSP) sorunu, sorgu iyileştiricinin yalnızca belirli b
 
 Her biri ilişkili avantajları ve dezavantajları olan bu sorunları azaltmak için kullanılan birkaç geçici çözüm vardır:
 
-- Her sorgu yürütmesinde sorgu ipucunu yeniden [Derle](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ' i kullanın. Bu geçici çözüm, daha iyi plan kalitesi için derleme süresini ve CPU 'YU artırabilir. `RECOMPILE` Seçeneğinin kullanılması, genellikle yüksek bir işleme gerektiren iş yükleri için mümkün değildir.
+- Her sorgu yürütmesinde sorgu ipucunu yeniden [Derle](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ' i kullanın. Bu geçici çözüm, daha iyi bir plan kalitesi için derleme süresini ve artan CPU 'YU artmaktadır. `RECOMPILE` Seçeneğinin kullanılması, genellikle yüksek bir işleme gerektiren iş yükleri için mümkün değildir.
 - Gerçek parametre değerini, çoğu parametre değeri olasılıklarından daha iyi bir plan üreten tipik bir parametre değeri ile geçersiz kılmak için [seçeneğini kullanın (...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucu.   Bu seçenek, en iyi parametre değerlerinin ve ilişkili plan özelliklerinin iyi bir şekilde anlaşılmasına gerek duyar.
 - Yoğunluk vektörü ortalamasını kullanarak Exchange 'teki gerçek parametre değerini geçersiz kılmak için [OPTION (bılınmıyor IÇIN iyileştirin)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanın. Bunu yapmanın başka bir yolu da, gelen parametre değerlerini yerel değişkenlere yakalayıp, sonra parametrelerin kendileri yerine koşulların içindeki yerel değişkenleri kullanarak kullanmaktır. Bu düzeltmeyle, ortalama yoğunluğu *yeterince iyi* olmalıdır.
 - [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) sorgu ipucunu kullanarak parametre algılama özelliğini tamamen devre dışı bırakın.
@@ -103,18 +105,19 @@ Her biri ilişkili avantajları ve dezavantajları olan bu sorunları azaltmak i
 - Tek yordamı, her biri koşullu Logic ve ilişkili parametre değerlerine göre kullanılabilecek, iç içe geçmiş bir yordamlar kümesiyle değiştirin.
 - Statik yordam tanımına dinamik dize yürütme alternatifleri oluşturun.
 
-Bu tür sorunları çözme hakkında daha fazla bilgi için bkz.:
+Bu tür sorunları çözme hakkında daha fazla bilgi için bkz. blog gönderileri:
 
-- Bu, [bir parametre](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blog gönderisini
-- [Parametreli sorgular için bu dinamik SQL ve plan kalitesi](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blog gönderisi
-- SQL Server [içindeki bu SQL sorgusu iyileştirme teknikleri: Parameter algılaması](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) blog gönderisi
+- [Bir parametre kokusu](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
+- [Parametreli sorgular için dinamik SQL ve plan kalitesi](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
+- [SQL Server 'de SQL sorgu Iyileştirme teknikleri: Parametre algılaması](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Yanlış Parametreleştirme nedeniyle derleme etkinliği sorunlarını giderme
 
-Bir sorguda değişmez değerler olduğunda, veritabanı motoru otomatik olarak Parametreleştirme yapmayı seçer veya bir Kullanıcı, derleme sayısını azaltmak için açıkça parametreleştirebilirsiniz. Aynı model kullanılarak bir sorgunun yüksek sayıda derleme, ancak farklı değişmez değer değerleri yüksek CPU kullanımına neden olabilir. Benzer şekilde, yalnızca sabit değerlere sahip olmaya devam eden bir sorguyu kısmen parametreleştirmeye devam ederseniz, veritabanı altyapısı onu daha fazla parametrelemez.  Kısmen parametreli bir sorgunun örneği aşağıda verilmiştir:
+Bir sorguda değişmez değerler olduğunda, veritabanı motoru otomatik olarak Parametreleştirme yapmayı seçer veya bir Kullanıcı, derleme sayısını azaltmak için açıkça parametreleştirebilirsiniz. Aynı model kullanılarak sorgu için yüksek sayıda derleme, ancak farklı değişmez değer değerleri yüksek CPU kullanımına neden olabilir. Benzer şekilde, yalnızca sabit değerlere sahip olmaya devam eden bir sorguyu kısmen parametreleştirmeye devam ederseniz, veritabanı altyapısı onu daha fazla parametrelemez.  Kısmen parametreli bir sorgunun örneği aşağıda verilmiştir:
 
 ```sql
-SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+SELECT * 
+FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
@@ -149,15 +152,15 @@ Sorgu yürütme planı yeniden derleme işlemi, ilk olarak önbelleğe alınmı�
 - Sorgu tarafından başvurulan tablolardaki veri değişiklikleri 
 - Sorgu bağlamı seçeneklerindeki değişiklikler 
 
-Derlenmiş bir plan, örnek yeniden başlatmaları, veritabanı kapsamlı yapılandırma değişiklikleri, bellek baskısı ve önbelleği temizlemek için açık istekler dahil çeşitli nedenlerle önbellekten çıkarılabilir. Ayrıca, yeniden derleme ipucu kullanmak bir planın önbelleğe alınmayacağı anlamına gelir.
+Derlenmiş bir plan, örnek yeniden başlatmalar, veritabanı kapsamlı yapılandırma değişiklikleri, bellek baskısı ve önbelleği temizlemek için açık istekler gibi çeşitli nedenlerle önbellekten çıkarılabilir. Ayrıca, yeniden derleme ipucu kullanmak bir planın önbelleğe alınmayacağı anlamına gelir.
 
-Yeniden derleme (veya önbellek çıkartım sonrasında yeni derleme), ilk olarak gözlemlenen bir tane aynı sorgu yürütme planının oluşturulmasına neden olabilir.  Ancak, planda önceki veya orijinal planla karşılaştırılan değişiklikler varsa, sorgu yürütme planının neden değiştiği hakkında en yaygın açıklamalar aşağıda verilmiştir:
+Yeniden derleme (veya önbellek çıkartım sonrasında yeni derleme), ilk olarak gözlemlenen bir tane aynı sorgu yürütme planının oluşturulmasına neden olabilir.  Planda önceki veya orijinal planla karşılaştırılan değişiklikler varsa, sorgu yürütme planının neden değiştiği hakkında en yaygın açıklamalar aşağıda verilmiştir:
 
-- **Değiştirilen fiziksel tasarım**. Örneğin, bir sorgunun gereksinimlerini daha etkin bir şekilde kapsayan yeni dizinler oluşturulmuştur. Sorgu iyileştiricisi, sorgu yürütmenin ilk sürümü için başlangıçta seçili olan veri yapısını kullanlandan bu yeni bir derlemede kullanılabilir.  Başvurulan nesnelerde yapılan tüm fiziksel değişiklikler, derleme zamanında yeni bir plan seçimine neden olabilir.
+- **Değiştirilen fiziksel tasarım**. Örneğin, bir sorgunun gereksinimlerini daha etkin bir şekilde kapsayan yeni dizinler oluşturulmuştur. Yeni dizinler yeni bir derlemede kullanılabilir. sorgu iyileştiricisi, sorgu yürütmenin ilk sürümü için başlangıçta seçilen veri yapısını kullanlandan daha uygun olduğunu belirler.  Başvurulan nesnelerde yapılan tüm fiziksel değişiklikler, derleme zamanında yeni bir plan seçimine neden olabilir.
 
 - **Sunucu kaynak farkları**. Bir planın "Sistem A" ve "sistem B" ile farklı olduğu bir senaryoda, kullanılabilir işlemci sayısı gibi kaynakların kullanılabilirliği, hangi planın oluşturulduğunu etkileyebilir.  Örneğin, bir sistem daha yüksek sayıda işlemciye sahipse, paralel bir plan seçilebilir. 
 
-- **Farklı istatistikler**. Başvurulan nesnelerle ilişkili istatistikler değişir veya özgün sistemin istatistikleriyle göre farklılık gösterilmiyor.  İstatistik değişikliği ve bir yeniden derleme gerçekleşirse, sorgu iyileştiricisi o zaman içindeki belirli bir noktaya göre istatistikleri kullanır. Düzeltilen istatistikler önemli ölçüde farklı veri dağıtımlarını ve özgün derlemede durum olmayan frekansları içerebilir.  Bu değişiklikler, kardinalite tahminlerini tahmin etmek için kullanılır (mantıksal sorgu ağacı üzerinden akış için beklenen satır sayısı).  Kardinalite tahminlerinde yapılan değişiklikler, farklı fiziksel işleçler ve ilişkili işlemler sırası seçmemize neden olabilir.  İstatistikte küçük değişiklikler bile değiştirilen bir sorgu yürütme planına yol açabilir.
+- **Farklı istatistikler**. Başvurulan nesnelerle ilişkili istatistikler değişir veya özgün sistemin istatistikleriyle göre farklılık gösterilmiyor.  İstatistik değişikliği ve bir yeniden derleme gerçekleşirse, sorgu iyileştiricisi o zaman içindeki belirli bir noktaya göre istatistikleri kullanır. Düzeltilen istatistiklerde, özgün derlemeden farklı veri dağıtımları ve sıklıklarla karşılaşabilirsiniz.  Bu değişiklikler, kardinalite tahminlerini tahmin etmek için kullanılır (mantıksal sorgu ağacı üzerinden akış için beklenen satır sayısı).  Kardinalite tahminlerinde yapılan değişiklikler, farklı fiziksel işleçler ve ilişkili işlemler sırası seçmemize neden olabilir.  İstatistikte küçük değişiklikler bile değiştirilen bir sorgu yürütme planına yol açabilir.
 
 - **Veritabanı uyumluluk düzeyi veya kardinalite tahmin aracı sürümü değiştirildi**.  Veritabanı uyumluluk düzeyinde yapılan değişiklikler, farklı bir sorgu yürütme planına neden olabilecek yeni stratejileri ve özellikleri etkinleştirebilir.  Veritabanı uyumluluk düzeyinin ötesinde, 4199 izleme bayrağını devre dışı bırakma veya etkinleştirme ya da veritabanı kapsamlı yapılandırma QUERY_OPTIMIZER_HOTFIXES durumunu değiştirme, derleme zamanında sorgu yürütme planı seçimlerini de etkileyebilir.  İzleme bayrakları 9481 (eski CE 'yi zorla) ve 2312 (varsayılan CE 'yi zorla) Ayrıca, ' i de etkiliyor. 
 
@@ -193,7 +196,7 @@ Bir CPU sorunu eden bir iş yükü birimi değişikliği olması her zaman kolay
 
 ## <a name="waiting-related-performance-issues"></a>Bekleme ile ilgili performans sorunları
 
-Yüksek CPU, çalıştırmaya yönelik bir performans sorununa bağlı kalmadıktan sonra, beklenmeden ilgili bir performans sorunuyla karşı karşıya görürsünüz. Yani, CPU kaynakları başka bir kaynakta beklediği için CPU kaynaklarınız etkili bir şekilde kullanılmaz. Bu durumda, bir sonraki adımınız, CPU kaynaklarınızın ne kadar beklediğini belirlemektir. En sık kullanılan bekleme türü kategorilerini göstermek için en yaygın Yöntemler:
+Yüksek CPU, çalıştırmaya yönelik bir performans sorununa bağlı kalmadıktan sonra, beklenmeden ilgili bir performans sorunuyla karşı karşıya görürsünüz. Yani, CPU kaynakları başka bir kaynakta beklediği için CPU kaynaklarınız etkili bir şekilde kullanılmaz. Bu durumda, bir sonraki adımınız, CPU kaynaklarınızın ne kadar beklediğini belirlemektir. En sık kullanılan bekleme türü kategorilerini göstermek için en yaygın yöntemler şunlardır:
 
 - [Sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) , zaman içinde sorgu başına bekleme istatistikleri sağlar. Sorgu deposunda, bekleme türleri bekleme kategorilerine birleştirilir. Bekleme kategorilerinin bekleme türleri eşleştirmesi [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)içinde kullanılabilir.
 - [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) , işlem sırasında yürütülen iş parçacıklarının karşılaştığı tüm bekler hakkındaki bilgileri döndürür. Azure SQL veritabanı ve ayrıca belirli sorgular ve toplu işlerle ilgili performans sorunlarını tanılamak için bu toplanmış görünümü kullanabilirsiniz.
@@ -224,14 +227,14 @@ Sorgu deposu ve bekleme istatistikleri-dinamik yönetim görünümlerinin izlenm
 
 ## <a name="improving-database-performance-with-more-resources"></a>Daha fazla kaynakla veritabanı performansını artırma
 
-Son olarak, veritabanınızın performansını iyileştirebilecek bir işlem yapılabilir öğe yoksa, Azure SQL veritabanı 'nda kullanılabilir kaynak miktarını değiştirebilirsiniz. Tek bir veritabanının [DTU hizmeti katmanını](sql-database-service-tiers-dtu.md) değiştirerek veya elastik bir havuzun eDTU 'sunu dilediğiniz zaman artırarak daha fazla kaynak atayabilirsiniz. Alternatif olarak, [sanal çekirdek tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)kullanıyorsanız, hizmet katmanını değiştirebilir veya veritabanınıza ayrılan kaynakları artırabilirsiniz.
+Son olarak, veritabanınızın performansını iyileştirebilecek bir işlem yapılabilir öğe yoksa, Azure SQL veritabanı 'nda kullanılabilir kaynak miktarını değiştirebilirsiniz. Tek bir veritabanının [DTU hizmeti katmanını](sql-database-service-tiers-dtu.md) değiştirerek daha fazla kaynak atayın veya elastik havuzun her zaman eDTU 'sunu artırın. Alternatif olarak, [sanal çekirdek tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)kullanıyorsanız, hizmet katmanını değiştirin ya da veritabanınıza ayrılan kaynakları artırın.
 
 1. Tek veritabanları için, [Hizmet katmanlarını](sql-database-single-database-scale.md) veya [işlem kaynaklarını](sql-database-single-database-scale.md) isteğe bağlı olarak değiştirerek veritabanı performansını artırabilirsiniz.
 2. Birden çok veritabanı için, kaynakları otomatik olarak ölçeklendirmek için [Esnek havuzlar](sql-database-elastic-pool-guidance.md) kullanmayı düşünün.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Uygulama veya veritabanı kodunu ayarlama ve yeniden düzenleme
 
-Veritabanını daha en iyi şekilde kullanmak, dizinleri değiştirmek, planları zorlamak veya veritabanını iş yükünüze el ile uyarlamak için ipuçları kullanmak için uygulama kodunu değiştirebilirsiniz. El ile ayarlama ve [performans Kılavuzu konu](sql-database-performance-guidance.md) makalesindeki kodu yeniden yazma için bazı kılavuz ve ipuçları bulun.
+Veritabanını daha en iyi şekilde kullanmak, dizinleri değiştirmek, planları zorlamak veya veritabanını iş yükünüze el ile uyarlamak için ipuçları kullanmak için uygulama kodunu değiştirebilirsiniz. El ile ayarlama ve [performans Kılavuzu konu](sql-database-performance-guidance.md) makalesindeki kodu yeniden yazma için rehberlik ve ipuçları bulun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

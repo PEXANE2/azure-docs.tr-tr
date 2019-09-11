@@ -1,39 +1,37 @@
 ---
-title: Kaynak grubu ve kaynak aboneliği - Azure Resource Manager şablonu oluşturma
-description: Bir Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure aboneliği kapsamında kaynakları dağıtma işlemini de gösterir.
+title: Abonelik Azure Resource Manager şablonunda kaynak grubu ve kaynakları oluşturma
+description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8414e94582ec4022915e4c353f33eec72f3dc98a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 37f2b04a62d94cce42b095540380460c38bc5b79
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205650"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772948"
 ---
-# <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Kaynak grubu ve kaynak abonelik düzeyinde oluşturun.
+# <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
-Genellikle, Azure kaynakları Azure aboneliğinizde bir kaynak grubuna dağıtın. Ancak, aynı zamanda Azure kaynak grupları oluşturabilir ve abonelik düzeyinde Azure kaynakları oluşturma. Abonelik düzeyinde şablonlarını dağıtmak için Azure CLI ve Azure PowerShell kullanırsınız. Azure portalında dağıtım abonelik düzeyinde desteklemiyor.
+Genellikle Azure kaynaklarını Azure aboneliğinizdeki bir kaynak grubuna dağıtırsınız. Bununla birlikte, Azure Kaynak grupları da oluşturabilir ve abonelik düzeyinde Azure kaynakları oluşturabilirsiniz. Şablonları abonelik düzeyinde dağıtmak için Azure CLı ve Azure PowerShell kullanırsınız. Azure portal, abonelik düzeyinde dağıtımı desteklemez.
 
-Bir Azure Resource Manager şablonunda bir kaynak grubu oluşturmak için tanımladığınız bir [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions) kaynak adı ve kaynak grubu için konum. Bir kaynak grubu oluşturun ve kaynakları bu kaynak grubunda aynı şablonu dağıtın. Abonelik düzeyinde dağıttığınız kaynakları şunlardır: [İlkeleri](../governance/policy/overview.md), ve [rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Resource Manager şablonunda bir kaynak grubu oluşturmak için kaynak grubu için bir ad ve konum içeren bir [Microsoft. resources/resourceGroups](/azure/templates/microsoft.resources/allversions) kaynağı tanımlayın. Kaynak grubu oluşturabilir ve aynı şablondaki kaynak grubuna kaynak dağıtabilirsiniz. Abonelik düzeyinde dağıtabileceğiniz kaynaklar şunlardır: [İlkeler](../governance/policy/overview.md)ve [rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Abonelik düzeyi dağıtımı, kaynak grubu dağıtımı aşağıdaki noktalarda farklıdır:
+Abonelik düzeyi dağıtım, kaynak grubu dağıtımından aşağıdaki açılardan farklıdır:
 
 ### <a name="schema-and-commands"></a>Şema ve komutlar
 
-Abonelik düzeyinde dağıtımlar için kullandığınız komutlar ve şema, kaynak grubu dağıtımlarında farklıdır. 
+Abonelik düzeyi dağıtımlar için kullandığınız şema ve komutlar, kaynak grubu dağıtımlarından farklıdır. 
 
-İçin şemayı kullanın `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`.
+Şema için öğesini kullanın `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`.
 
-Azure CLI dağıtım komutu için kullanmak [az dağıtım oluşturma](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create). Örneğin, bir kaynak grubu oluşturmak için bir şablon aşağıdaki CLI komutunu dağıtır:
+Azure CLı dağıtım komutu için [az Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)komutunu kullanın. Örneğin, aşağıdaki CLı komutu bir kaynak grubu oluşturmak için bir şablon dağıtır:
 
-```azurecli
+```azurecli-interactive
 az deployment create \
   --name demoDeployment \
   --location centralus \
@@ -41,9 +39,9 @@ az deployment create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-PowerShell dağıtım komutu için kullanmak [yeni AzDeployment](/powershell/module/az.resources/new-azdeployment). Örneğin, aşağıdaki PowerShell komutu, bir kaynak grubu oluşturmak için bir şablon dağıtır:
+PowerShell dağıtım komutu için [New-AzDeployment](/powershell/module/az.resources/new-azdeployment)kullanın. Örneğin, aşağıdaki PowerShell komutu bir kaynak grubu oluşturmak için bir şablon dağıtır:
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzDeployment `
   -Name demoDeployment `
   -Location centralus `
@@ -54,19 +52,19 @@ New-AzDeployment `
 
 ### <a name="deployment-name-and-location"></a>Dağıtım adı ve konumu
 
-Aboneliğinize dağıtılırken dağıtım için bir konum sağlamalısınız. Dağıtım için bir ad sağlar. Dağıtım için bir ad belirtmezseniz, şablonun adını dağıtım adı kullanılır. Örneğin, adlandırılmış bir şablon dağıtımı **azuredeploy.json** varsayılan dağıtım adı oluşturur **azuredeploy**.
+Aboneliğinize dağıtım yaparken, dağıtım için bir konum sağlamanız gerekir. Dağıtım için bir ad da sağlayabilirsiniz. Dağıtım için bir ad belirtmezseniz, şablonun adı dağıtım adı olarak kullanılır. Örneğin, **azuredeploy. JSON** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
-Abonelik düzeyi dağıtımları konumunu sabittir. Aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda ancak farklı bir konuma bir dağıtım oluşturulamıyor. Hata kodu alırsanız `InvalidDeploymentLocation`, farklı bir ad veya aynı konumdaki önceki dağıtım için bu adı kullanın.
+Abonelik düzeyi dağıtımların konumu sabittir. Aynı ada ancak farklı konuma sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu `InvalidDeploymentLocation`alırsanız, bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
-### <a name="use-template-functions"></a>Şablon işlevleri
+### <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 
-Abonelik düzeyinde dağıtımlar için bazı önemli noktalar şablon işlevleri kullanarak oluşan vardır:
+Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken bazı önemli noktalar vardır:
 
-* [ResourceGroup()](resource-group-template-functions-resource.md#resourcegroup) işlevi **değil** desteklenir.
-* [ResourceId()](resource-group-template-functions-resource.md#resourceid) işlevi desteklenir. Abonelik düzeyi dağıtımları sırasında kullanılan kaynaklar için kaynak Kimliğini almak için kullanın. Örneğin, bir ilke tanımı için kaynak Kimliğini alın `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
-* [Reference()](resource-group-template-functions-resource.md#reference) ve [list()](resource-group-template-functions-resource.md#list) işlevler desteklenir.
+* [ResourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) **işlevi desteklenmiyor.**
+* [RESOURCEID ()](resource-group-template-functions-resource.md#resourceid) işlevi desteklenir. Abonelik düzeyi dağıtımlarında kullanılan kaynakların kaynak KIMLIĞINI almak için kullanın. Örneğin, bir ilke tanımının kaynak KIMLIĞINI şu şekilde alın`resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
+* [Reference ()](resource-group-template-functions-resource.md#reference) ve [List ()](resource-group-template-functions-resource.md#list) işlevleri desteklenir.
 
-## <a name="create-resource-groups"></a>Kaynak grupları oluşturun
+## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
 Aşağıdaki şablon boş bir kaynak grubu oluşturur.
 
@@ -96,11 +94,11 @@ Aşağıdaki şablon boş bir kaynak grubu oluşturur.
 }
 ```
 
-Şablon Şeması şu yolda bulunabilir: [burada](/azure/templates/microsoft.resources/allversions). Benzer şablonları bulunabilir [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
+Şablon Şeması [burada](/azure/templates/microsoft.resources/allversions)bulunabilir. Benzer şablonlar [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)' da bulunabilir.
 
-## <a name="create-multiple-resource-groups"></a>Birden fazla kaynak grubu oluşturun
+## <a name="create-multiple-resource-groups"></a>Birden çok kaynak grubu oluşturma
 
-Kullanım [copy öğesinde](resource-group-create-multiple.md) kaynak gruplarıyla birden fazla kaynak grubu oluşturun. 
+Birden fazla kaynak grubu oluşturmak için kaynak gruplarıyla [Kopyala öğesini](resource-group-create-multiple.md) kullanın. 
 
 ```json
 {
@@ -135,13 +133,13 @@ Kullanım [copy öğesinde](resource-group-create-multiple.md) kaynak gruplarıy
 }
 ```
 
-Kaynak yineleme hakkında daha fazla bilgi için bkz. [bir kaynağa veya Azure Resource Manager şablonları özelliğinde birden fazla örneğini dağıtma](./resource-group-create-multiple.md), ve [Öğreticisi: Resource Manager şablonları ile birden çok kaynak örneğini oluşturma](./resource-manager-tutorial-create-multiple-instances.md).
+Kaynak yinelemesi hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki bir kaynak veya özelliğin birden fazla örneğini dağıtma](./resource-group-create-multiple.md)ve [öğretici: Kaynak Yöneticisi şablonlarıyla](./resource-manager-tutorial-create-multiple-instances.md)birden çok kaynak örneği oluşturun.
 
-## <a name="create-resource-group-and-deploy-resources"></a>Kaynak grubu oluşturun ve kaynakları dağıtma
+## <a name="create-resource-group-and-deploy-resources"></a>Kaynak grubu oluşturma ve kaynakları dağıtma
 
-Kaynak grubu oluşturun ve kaynakları dağıtmak için bir iç içe geçmiş şablon kullanın. İç içe geçmiş şablon kaynaklar kaynak grubuna dağıtmak için tanımlar. İç içe geçmiş şablon bağımlı kaynakları dağıtmadan önce kaynak grubunun mevcut olduğundan emin olmak için kaynak grubu olarak ayarlayın.
+Kaynak grubu oluşturmak ve kaynaklarına kaynak dağıtmak için, iç içe geçmiş bir şablon kullanın. İç içe şablon, kaynak grubuna dağıtılacak kaynakları tanımlar. Kaynak grubunun kaynakları dağıtımdan önce mevcut olduğundan emin olmak için, iç içe geçmiş şablonu kaynak grubuna bağımlı olarak ayarlayın.
 
-Aşağıdaki örnek, bir kaynak grubu oluşturur ve bir depolama hesabı kaynak grubuna dağıtır.
+Aşağıdaki örnek, bir kaynak grubu oluşturur ve kaynak grubuna bir depolama hesabı dağıtır.
 
 ```json
 {
@@ -208,9 +206,9 @@ Aşağıdaki örnek, bir kaynak grubu oluşturur ve bir depolama hesabı kaynak 
 
 ## <a name="create-policies"></a>İlkeleri oluşturma
 
-### <a name="assign-policy"></a>İlke atama
+### <a name="assign-policy"></a>İlke ata
 
-Aşağıdaki örnek, var olan bir ilke tanımı aboneliğe atar. İlke parametreleri alırsa, bunları bir nesne olarak sağlayın. İlke parametre almasa bile varsayılan boş nesnesi kullanın.
+Aşağıdaki örnek, aboneliğe var olan bir ilke tanımını atar. İlke parametreleri alırsa, bunları bir nesne olarak sağlayın. İlke parametre almadıysanız varsayılan boş nesneyi kullanın.
 
 ```json
 {
@@ -244,35 +242,9 @@ Aşağıdaki örnek, var olan bir ilke tanımı aboneliğe atar. İlke parametre
 }
 ```
 
-Azure Aboneliğinize bir yerleşik ilke uygulamak için aşağıdaki Azure CLI komutları kullanın:
+Bu şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
-```azurecli
-# Built-in policy that does not accept parameters
-definition=$(az policy definition list --query "[?displayName=='Audit resource location matches resource group location'].id" --output tsv)
-
-az deployment create \
-  --name demoDeployment \
-  --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
-  --parameters policyDefinitionID=$definition policyName=auditRGLocation
-```
-
-PowerShell ile bu şablonu dağıtmak için şunu kullanın:
-
-```azurepowershell
-$definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit resource location matches resource group location' }
-
-New-AzDeployment `
-  -Name policyassign `
-  -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
-  -policyDefinitionID $definition.PolicyDefinitionId `
-  -policyName auditRGLocation
-```
-
-Azure Aboneliğinize bir yerleşik ilke uygulamak için aşağıdaki Azure CLI komutları kullanın:
-
-```azurecli
+```azurecli-interactive
 # Built-in policy that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
@@ -283,9 +255,9 @@ az deployment create \
   --parameters policyDefinitionID=$definition policyName=setLocation policyParameters="{'listOfAllowedLocations': {'value': ['westus']} }"
 ```
 
-PowerShell ile bu şablonu dağıtmak için şunu kullanın:
+Bu şablonu PowerShell ile dağıtmak için şunu kullanın:
 
-```azurepowershell
+```azurepowershell-interactive
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
 
 $locations = @("westus", "westus2")
@@ -300,9 +272,9 @@ New-AzDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>Tanımlar ve ilke atama
+### <a name="define-and-assign-policy"></a>İlke tanımlama ve atama
 
-Yapabilecekleriniz [tanımlamak](../governance/policy/concepts/definition-structure.md) ve aynı şablonu ilkesinde atayın.
+Aynı şablonda bir ilke [tanımlayabilir](../governance/policy/concepts/definition-structure.md) ve atayabilirsiniz.
 
 ```json
 {
@@ -345,7 +317,7 @@ Yapabilecekleriniz [tanımlamak](../governance/policy/concepts/definition-struct
 }
 ```
 
-Aboneliğinizde bir ilke tanımı oluşturup aboneliğiniz için geçerli için aşağıdaki CLI komutunu kullanın:
+Aboneliğinizde ilke tanımı oluşturmak ve bunu aboneliğe uygulamak için aşağıdaki CLı komutunu kullanın:
 
 ```azurecli
 az deployment create \
@@ -354,7 +326,7 @@ az deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-PowerShell ile bu şablonu dağıtmak için şunu kullanın:
+Bu şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell
 New-AzDeployment `
@@ -363,160 +335,9 @@ New-AzDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="create-roles"></a>Rol oluşturma
-
-### <a name="assign-role-at-subscription"></a>Abonelik rolü atama
-
-Aşağıdaki örnek bir kullanıcı veya grup abonelik için bir rolü atar. Kapsam aboneliğine otomatik olarak ayarlandığından, bu örnekte, atama için bir kapsam belirtmeyin.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "principalId": {
-            "type": "string"
-        },
-        "roleDefinitionId": {
-            "type": "string"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/roleAssignments",
-            "name": "[guid(parameters('principalId'), deployment().name)]",
-            "apiVersion": "2017-09-01",
-            "properties": {
-                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-                "principalId": "[parameters('principalId')]"
-            }
-        }
-    ]
-}
-```
-
-Bir Active Directory grubu aboneliğiniz için bir rol atamak için aşağıdaki Azure CLI komutları kullanın:
-
-```azurecli
-# Get ID of the role you want to assign
-role=$(az role definition list --name Contributor --query [].name --output tsv)
-
-# Get ID of the AD group to assign the role to
-principalid=$(az ad group show --group demogroup --query objectId --output tsv)
-
-az deployment create \
-  --name demoDeployment \
-  --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json \
-  --parameters principalId=$principalid roleDefinitionId=$role
-```
-
-PowerShell ile bu şablonu dağıtmak için şunu kullanın:
-
-```azurepowershell
-$role = Get-AzRoleDefinition -Name Contributor
-
-$adgroup = Get-AzADGroup -DisplayName demogroup
-
-New-AzDeployment `
-  -Name demoRole `
-  -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
-  -roleDefinitionId $role.Id `
-  -principalId $adgroup.Id
-```
-
-### <a name="assign-role-at-scope"></a>Kapsamda rolü atama
-
-Aşağıdaki abonelik düzeyinde şablonu bir kullanıcı veya grup, abonelik içindeki kaynak grubu için kapsamlı bir rolü atar. Kapsam veya dağıtım düzeyi altında olması gerekir. Bir aboneliğe dağıtabilir ve bu Abonelikteki kaynak grubu için kapsamlı bir rol ataması belirtin. Ancak, bir kaynak grubuna dağıtmak ve bir abonelik için rol atama kapsamı belirtin.
-
-Bir kapsamda bir rol atamak için bir iç içe geçmiş dağıtım'ı kullanın. Kaynak grubu adı hem de dağıtım kaynak özelliklerini rol ataması kapsam özelliğinde belirtilen dikkat edin.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "principalId": {
-            "type": "string"
-        },
-        "roleDefinitionId": {
-            "type": "string"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-05-01",
-            "name": "assignRole",
-            "resourceGroup": "[parameters('rgName')]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.Authorization/roleAssignments",
-                            "name": "[guid(parameters('principalId'), deployment().name)]",
-                            "apiVersion": "2017-09-01",
-                            "properties": {
-                                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-                                "principalId": "[parameters('principalId')]",
-                                "scope": "[concat(subscription().id, '/resourceGroups/', parameters('rgName'))]"
-                            }
-                        }
-                    ],
-                    "outputs": {}
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-Bir Active Directory grubu aboneliğiniz için bir rol atamak için aşağıdaki Azure CLI komutları kullanın:
-
-```azurecli
-# Get ID of the role you want to assign
-role=$(az role definition list --name Contributor --query [].name --output tsv)
-
-# Get ID of the AD group to assign the role to
-principalid=$(az ad group show --group demogroup --query objectId --output tsv)
-
-az deployment create \
-  --name demoDeployment \
-  --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json \
-  --parameters principalId=$principalid roleDefinitionId=$role rgName demoRg
-```
-
-PowerShell ile bu şablonu dağıtmak için şunu kullanın:
-
-```azurepowershell
-$role = Get-AzRoleDefinition -Name Contributor
-
-$adgroup = Get-AzADGroup -DisplayName demogroup
-
-New-AzDeployment `
-  -Name demoRole `
-  -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json `
-  -roleDefinitionId $role.Id `
-  -principalId $adgroup.Id `
-  -rgName demoRg
-```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Güvenlik Merkezi çalışma alanı ayarlarını dağıtma örneği için bkz: [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için [şablonları yazma](resource-group-authoring-templates.md). 
-* Bir şablonda kullanabileceğiniz işlevler listesi için bkz. [şablon işlevleri](resource-group-template-functions.md).
+* Rol atama hakkında bilgi edinmek için bkz. [RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme](../role-based-access-control/role-assignments-template.md).
+* Azure Güvenlik Merkezi için çalışma alanı ayarlarını dağıtmaya ilişkin bir örnek için bkz. [Deployascwithworkspace Settings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](resource-group-authoring-templates.md). 
+* Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](resource-group-template-functions.md).

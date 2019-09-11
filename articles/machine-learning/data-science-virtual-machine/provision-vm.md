@@ -1,28 +1,22 @@
 ---
-title: Windows veri bilimi sanal makinesi oluşturma
-titleSuffix: Azure
+title: 'Hızlı Başlangıç: Windows oluştur'
+titleSuffix: Azure Data Science Virtual Machine
 description: Yapılandırma ve analiz için Azure'da bir veri bilimi sanal makinesi oluşturma ve makine öğrenimi.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: vijetaj
-ms.openlocfilehash: 2b328ccf63259c7faf4debdc07313d24381313a5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ac4b9b4d32d05083ceabd41207243eb483648baa
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047690"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278588"
 ---
-# <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure 'da bir Windows Veri Bilimi Sanal Makinesi sağlama
+# <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Hızlı Başlangıç: Azure 'da Windows Veri Bilimi Sanal Makinesi ayarlama
 
 Microsoft Windows Veri Bilimi Sanal Makinesi (DSVM), Azure 'da bir Windows Server 2016 sanal makinesi (VM) görüntüsüdür. Bu, önceden yüklenmiş ve veri analizi ve makine öğrenimi araçları ile yapılandırılmış olarak gelir.
 
@@ -30,7 +24,7 @@ Microsoft Windows Veri Bilimi Sanal Makinesi (DSVM), Azure 'da bir Windows Serve
 
 Aşağıdaki araçlar DSVM 'ye eklenmiştir:
 
-* [Azure Machine Learning hizmeti](../service/index.yml)IÇIN Python SDK.
+* [Azure Machine Learning hizmeti](../index.yml)IÇIN Python SDK.
 * [Microsoft Machine Learning sunucusu](https://docs.microsoft.com/machine-learning-server/index) Geliştirici sürümü.
 * Anaconda Python dağıtımı.
 * R, Python ve PySpark çekirdekleri ile Jupyter not defteri.
@@ -125,7 +119,7 @@ Machine Learning sunucusu, çeşitli büyük veri istatistikleri, Tahmine dayal�
 
 Machine Learning sunucusu ekleme paralel ve öbeklenmiş veri işleme tarafından açık kaynaklı R'nin bellek içi sınırlamaları ele alır. Bu, analizi, ana bellekte uygun olandan çok daha büyük veriler üzerinde çalıştırabileceğiniz anlamına gelir. 
 
-Visual Studio Community, VM'de dahil edilir. Visual Studio için R araçları ve R veya Python ile çalışmak üzere tam IDE sağlayan Visual Studio için Python Araçları (PTV) uzantılarına sahiptir. Ayrıca, sanal makine üzerinde [rstudio](https://www.rstudio.com) ve Pydüğme [Community Edition](https://www.jetbrains.com/pycharm/) gibi diğer Ides 'ler de sunuyoruz.
+Visual Studio Community, VM'de dahil edilir. Visual Studio için R araçları ve R veya Python ile çalışmak üzere tam IDE sağlayan Visual Studio için Python Araçları (PTV) uzantılarına sahiptir. Ayrıca, sanal makine üzerinde [rstudio](https://www.rstudio.com) ve [Pydüğme Community Edition](https://www.jetbrains.com/pycharm/) gibi diğer Ides 'ler de sunuyoruz.
 
 ### <a name="python"></a>Python
 
@@ -234,7 +228,7 @@ Diğer Microsoft geliştirme araçlarını bulmak ve indirmek için [Microsoft W
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * **Başlat** menüsünü açarak dsvm 'deki araçları araştırın.
-* [Azure Machine Learning hizmeti nedir?](../service/overview-what-is-azure-ml.md) ve hızlı başlangıçlara [ve öğreticilere](../service/index.yml)çalışırken Azure Machine Learning hizmeti hakkında bilgi edinin.
+* [Azure Machine Learning hizmetin ne olduğunu](../service/overview-what-is-azure-ml.md) okuyarak Azure Machine Learning hizmeti hakkında bilgi edinin ve [öğreticiler](../index.yml)deneyin.
 * Dosya Gezgini 'nde, kurumsal ölçekte veri analizlerini destekleyen R 'deki Iptal edilmiş bir kitaplığı kullanan örnekler için C:\Program Files\Microsoft\ML Server\r_server\library\unsıscaler\demoscripts konumuna göz atın. 
 * [Veri bilimi sanal makinesi için kullanabileceğiniz on şey](https://aka.ms/dsvmtenthings)makalesini okuyun.
 * Sistematik olarak kullanarak uçtan uca analitik çözümler oluşturmayı öğrenin [Team Data Science Process](../team-data-science-process/index.yml).

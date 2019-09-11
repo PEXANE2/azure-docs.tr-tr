@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639130"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171079"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 
@@ -194,11 +194,11 @@ curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow54
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Python ile Azure Işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md).
+HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Python ile Azure Işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md) ve [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md). Python 'da tüm Işlev projelerinin örnekleri için bkz. [Python işlevleri örnekleri](/samples/browse/?products=azure-functions&languages=python). 
 
 Sonra, işlev uygulamanız için Application Insights izlemeyi etkinleştirmelisiniz:
 
 > [!div class="nextstepaction"]
-> [Application Insights tümleştirmeyi etkinleştir](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights tümleştirmesini etkinleştirme](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

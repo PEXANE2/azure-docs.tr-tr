@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7c4af8346b5da20c662b5549284a3540d08908f8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072917"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259143"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive ile Apache Beeline istemcisini kullanma
 
@@ -44,9 +44,9 @@ Bir `<headnode-FQDN>` küme headnode 'un tam etki alanı adıyla değiştirin. B
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>HDInsight Kurumsal Güvenlik Paketi (ESP) kümesine
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos kullanarak HDInsight Kurumsal Güvenlik Paketi (ESP) kümesine
 
-İstemciden aynı bölgedeki bir makinede bulunan Azure Active Directory (AAD) kümesine katılmış bir kurumsal güvenlik paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve izinleri olan bir etki alanı kullanıcı hesabının adını da belirtmeniz gerekir. kümeye `<username>`erişin:
+Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir kurumsal güvenlik paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve etki alanı kullanıcı hesabının adını ile de belirtmeniz gerekir. kümeye `<username>`erişim izinleri:
 
 ```bash
 kinit <username>
@@ -57,12 +57,18 @@ Kümeye `<username>` erişim izinleri olan etki alanındaki hesabın adıyla de�
 
 ---
 
-### <a name="over-public-internet"></a>Genel internet üzerinden
+### <a name="over-public-or-private-endpoints"></a>Herkese açık veya özel uç noktalar
 
-Genel internet üzerinden, ESP olmayan veya Azure Active Directory (AAD) birleştirilmiş bir ESP kümesine bağlanırken, küme oturum açma hesabı adı (varsayılan `admin`) ve parola sağlamalısınız. Örneğin, `<clustername>.azurehdinsight.net` adrese bağlanmak için bir istemci sisteminden Beeline kullanma. Bu bağlantı bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
+Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adrese bağlanmak için bir istemci sisteminden Beeline kullanma. Bu bağlantı bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+```
+
+veya özel uç nokta için:
+
+```bash
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
 `clustername` değerini HDInsight kümenizin adıyla değiştirin. Kümenizin `admin` küme oturum açma hesabı ile değiştirin. Küme `password` oturum açma hesabının parolasıyla değiştirin.
@@ -73,13 +79,21 @@ beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportM
 
 Apache Spark, bazı durumlarda Spark Thrift sunucusu olarak da adlandırılan kendi HiveServer2 uygulamasını sağlar. Bu hizmet, Hive yerine sorguları çözümlemek için Spark SQL 'i kullanır ve sorgunuzun bağlı olarak daha iyi performans sağlayabilir.
 
-#### <a name="over-public-internet-with-apache-spark"></a>Apache Spark ile genel İnternet üzerinden
+#### <a name="through-public-or-private-endpoints"></a>Ortak veya özel uç noktalar aracılığıyla
 
-Internet üzerinden bağlanılırken kullanılan bağlantı dizesi biraz farklıdır. Şunu içerir `httpPath=/hive2`: `httpPath/sparkhive2`
+Kullanılan bağlantı dizesi biraz farklı. Şunu içerir `httpPath=/hive2`: `httpPath/sparkhive2`
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
+
+veya özel uç nokta için:
+
+```bash 
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. Kümenizin `admin` küme oturum açma hesabı ile değiştirin. Küme `password` oturum açma hesabının parolasıyla değiştirin.
 
 ---
 
@@ -194,7 +208,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
    > [!NOTE]  
    > Dış tablolar, temel alınan verilerin bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır. Örneğin, otomatik bir veri yükleme işlemi veya MapReduce işlemi.
    >
-   > Dış tablonun atılması, yalnızca tablo tanımı olan verileri silmez.
+   > Dış tablonun atılması, yalnızca tablo tanımı olan **verileri silmez.**
 
     Bu komutun çıktısı aşağıdaki metne benzer:
 

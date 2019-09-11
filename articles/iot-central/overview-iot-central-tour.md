@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6c06d789e6a005c0079f889cead6a75f4d0baf19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c4eba3e08e403243e76ac891d3bfcb59f12cad85
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875707"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211912"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Azure IoT Central Kullanıcı Arabirimi turuna katılın
 
@@ -39,9 +39,29 @@ _Operatör_ olarak, Azure IoT Central kullanıcı arabirimini kullanarak Azure I
 
 Uygulamanın farklı bölümlerine erişmek için sol gezinti menüsünü kullanın. **<** **Veya>** öğesini seçerek gezinti çubuğunu genişletebilir veya daraltabilirsiniz:
 
-| Menü | Açıklama |
-| ---- | ----------- |
-| ![Sol gezinti menüsü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>**Pano** düğmesi uygulama panonuzu görüntüler. Bir Oluşturucu olarak, operatörlerinizi panosunu özelleştirebilirsiniz. Kullanıcılar kendi panoları da oluşturabilir.</li><li>**Device Explorer** düğme, uygulamadaki her bir cihaz şablonuyla ilişkili olan sanal ve gerçek cihazları listeler. Operatör olarak, **Device Explorer**’ı kullanarak bağlı cihazlarınızı yönetebilirsiniz.</li><li>**Cihaz Kümeleri** düğmesi, cihaz kümelerini görüntüleyip oluşturmanızı sağlar. Operatör olarak, bir sorgu tarafından belirtilen cihazların mantıksal bir koleksiyonu olarak cihaz kümeleri oluşturabilirsiniz.</li><li>**Analiz** düğmesi, cihazlar ve cihaz kümeleri için cihaz telemetrisinden türetilen analizleri gösterir. Operatör olarak, uygulamanızdan içgörüler türetmek için cihaz verileri üzerinde özel görünümler oluşturabilirsiniz.</li><li>**İşler** düğmesi, uygun ölçekte güncelleştirmeler gerçekleştirmek için iş oluşturmanız ve çalıştırmanız gerekmeden toplu cihaz yönetimi sağlar.</li><li>**Cihaz şablonları** düğmesi, bir oluşturucunun cihaz şablonları oluşturmak ve yönetmek için kullandığı araçları gösterir.</li><li>**Sürekli veri dışa aktarma** düğmesi bir yöneticinin depolama ve kuyruklar gibi diğer Azure hizmetlerine sürekli bir dışarı aktarma yapılandırmasını sağlar.</li><li>**Yönetim** düğmesi, bir yöneticinin uygulama ayarlarını, kullanıcıları ve rolleri yönetebildiği uygulama yönetimi sayfalarını gösterir.</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Device Explorer** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device Sets** enables you to view and create device sets. As an operator, you can create device sets as a logical collection of devices specified by a query.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device sets. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to perform updates at scale.
+    
+      **Device Templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Continuous Data Export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>Arama, yardım ve destek
 

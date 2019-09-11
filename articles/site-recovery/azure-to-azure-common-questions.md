@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875669"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861398"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure'dan Azure'a olağanüstü durum kurtarma
 
@@ -41,7 +41,15 @@ Site Recovery ekibi, yeterli altyapı kapasitesi planlamak için Azure kapasite 
 ## <a name="replication"></a>Çoğaltma
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Azure disk şifrelemesi aracılığıyla etkinleştirilen VM 'Leri çoğaltabilir miyim?
-Evet, bunları çoğaltabilmeniz gerekir. [Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication-ade-vms.md)makalesine bakın. Şu anda Azure Site Recovery, yalnızca bir Windows işletim sistemi çalıştıran ve Azure Active Directory (Azure AD) uygulamalarıyla şifreleme için etkinleştirilen Azure sanal makinelerini destekler.
+
+Evet, Site Recovery Azure disk şifrelemesi (ADE) etkinleştirilmiş VM 'lerin olağanüstü durum kurtarmasını destekler. Çoğaltmayı etkinleştirdiğinizde, gereken tüm disk şifreleme anahtarları ve gizli dizileri, kaynak bölgeden Kullanıcı bağlamındaki hedef bölgeye kopyalanır. Uygun izniniz yoksa, anahtar ve gizli dizileri kopyalamak için güvenli bir komut dosyası güvenlik yöneticisine eklenebilir.
+
+- Site Recovery, Windows çalıştıran Azure VM 'Leri için ADE 'yi destekler.
+- Site Recovery, AAD olmadan Azure Active Directory (AAD) ve sürüm 1,1 kullanan bir şema ile ADE sürüm 0,1 ' ü destekler. [Daha fazla bilgi edinin](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- ADE sürüm 1,1, Windows VM 'lerinin yönetilen diskler kullanılması gerekir.
+- Şifrelenmiş VM 'Ler için çoğaltmayı etkinleştirme hakkında [daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-ade-vms.md) .
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>VM 'Leri başka bir aboneliğe çoğaltabilir miyim?
 Evet, Azure VM 'Leri aynı Azure AD kiracısı içindeki farklı bir aboneliğe çoğaltabilirsiniz.
@@ -129,7 +137,7 @@ Kullanabileceğiniz en eski kurtarma noktası 72 saattir.
 Hayır, Site Recovery önceki tüm kurtarma noktalarınızı tutacaktır. Kurtarma noktaları saklama penceresine bağlı olarak, bu durumda 24 saat Site Recovery, yalnızca yeni noktaların oluşturulması durumunda en eski noktanın yerini alır. Bu durumda, bazı sorunlar nedeniyle yeni bir kurtarma noktası oluşturulmayacağından, bekletme penceresine ulaştıktan sonra tüm eski noktaları bozulmadan kalır.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM 'de çoğaltma etkinleştirildikten sonra, çoğaltma ilkesini nasıl değiştirebilirim?
-**Altyapı** >  çoğaltma > **ilkelerine**Site Recovery kasa Site Recovery gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
+**Altyapı** > çoğaltma > **ilkelerine**Site Recovery kasa Site Recovery gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Tüm kurtarma noktaları VM 'nin ya da bir Farklıdan oluşan tüm bir kopyası mı?
 Oluşturulan ilk kurtarma noktasının tamamen kopyası vardır. Tüm ardışık kurtarma noktalarında delta değişiklikleri vardır.
@@ -155,7 +163,7 @@ Bir çoğaltma grubunda, 16 sanal makineyi birlikte çoğaltabilirsiniz.
 CPU yoğun olduğundan, çoklu VM tutarlılığı etkinleştirilmesi iş yükü performansını etkileyebilir. Yalnızca makineler aynı iş yükünü çalıştırıyorsa ve birden çok makine arasında tutarlılık gerekiyorsa kullanılmalıdır. Örneğin, bir uygulamada iki SQL Server örneğe ve iki Web sunucusuna sahipseniz, yalnızca SQL Server örnekleri için çoklu VM tutarlılığı olmalıdır.
 
 
-## <a name="failover"></a>Yük devretme
+## <a name="failover"></a>Yük devret
 
 ### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Azure VM 'Leri için hedef bölgede kapasite nasıl garanti edilir?
 Site Recovery ekibi, yük devretme işlemi başlatıldığında olağanüstü durum kurtarma için etkinleştirilen VM 'Lerin hedef bölgede başarılı bir şekilde dağıtılmasını sağlamaya yardımcı olmak amacıyla Azure kapasite yönetimi ekibi ile birlikte çalışır.

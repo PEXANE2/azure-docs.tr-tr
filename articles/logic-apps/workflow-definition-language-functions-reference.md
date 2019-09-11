@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 07/27/2019
-ms.openlocfilehash: c6fd20a2e1766a8bc9abfc92c6fc11d10dbe1bf2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/23/2019
+ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516091"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208408"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps ve Microsoft Flow Iş akışı tanımlama dili için işlevler başvurusu
 
@@ -23,7 +23,7 @@ ms.locfileid: "69516091"
 > [!NOTE]
 > Bu başvuru sayfası hem Azure Logic Apps hem de Microsoft Flow için geçerlidir, ancak Azure Logic Apps belgelerinde görüntülenir. Bu sayfa özellikle Logic Apps 'e başvuruda bulunmasına rağmen, bu işlevler hem akışlar hem de Logic Apps için çalışır. Microsoft Flow işlevler ve ifadeler hakkında daha fazla bilgi için bkz. [koşullarda Ifadeleri kullanma](https://docs.microsoft.com/flow/use-expressions-in-conditions).
 
-Örneğin, topla veya float değerlerinin toplamını istediğinizde, [Add () işlevi](../logic-apps/workflow-definition-language-functions-reference.md#add)gibi matematik işlevlerini kullanarak değerleri hesaplayabilirsiniz. İşlevlerle gerçekleştirebileceğiniz diğer birkaç örnek görev aşağıda verilmiştir:
+Örneğin, topla veya float değerlerinin toplamını istediğinizde, [Add () işlevi](../logic-apps/workflow-definition-language-functions-reference.md#add)gibi matematik işlevlerini kullanarak değerleri hesaplayabilirsiniz. İşlevlerle gerçekleştirebileceğiniz diğer örnek görevler şunlardır:
 
 | Görev | İşlev sözdizimi | Sonuç |
 | ---- | --------------- | ------ |
@@ -250,8 +250,9 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [Iterationındexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Bir Until döngüsü içindeyken, geçerli yineleme için dizin değerini döndürür. Bu işlevi iç içe kadar, iç içe kadar kullanabilirsiniz. |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Tetikleyici veya eylem çağıran "geri çağırma URL 'sini" döndürür. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Bir eylemin birden çok parçaya sahip olan çıkışında belirli bir bölümün gövdesini döndürün. |
-| [çıkışı](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Çalışma zamanında bir eylemin çıktısını döndürün. |
+| [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Çalışma zamanında bir eylemin çıktısını döndürün. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | İş akışı tanımınızda açıklanan parametre için değeri döndürün. |
+| [kaynaklanan](../logic-apps/workflow-definition-language-functions-reference.md#result) | , Ve `For_each` `Until` gibi`Scope`, belirtilen kapsamlı eylem içindeki tüm eylemlerin girişlerini ve çıkışlarını döndürün. |
 | [Tetikleyicinin](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Çalışma zamanında bir tetikleyicinin çıkışını veya diğer JSON ad ve değer çiftlerinden döndürün. Ayrıca bkz. [Triggerçıktılar](#triggerOutputs) ve [triggerbody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Çalışma zamanında Tetikleyicinin `body` çıkışını döndürün. Bkz. [tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *Form-Data* veya *form kodlu* tetikleyici çıktılarında anahtar adı ile eşleşen tek bir değer döndürür. |
@@ -638,7 +639,7 @@ Ve şu sonucu döndürür:`"2018-03-15T00:15:00.0000000Z"`
 
 ### <a name="addproperty"></a>addProperty
 
-Bir özelliği ve değerini ya da ad-değer çiftini bir JSON nesnesine ekleyin ve güncelleştirilmiş nesneyi döndürün. Nesne çalışma zamanında zaten mevcutsa, işlev bir hata oluşturur.
+Bir özelliği ve değerini ya da ad-değer çiftini bir JSON nesnesine ekleyin ve güncelleştirilmiş nesneyi döndürün. Özellik çalışma zamanında zaten varsa, işlev başarısız olur ve bir hata oluşturur.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -656,13 +657,81 @@ addProperty(<object>, '<property>', <value>)
 | <*Updated-nesne*> | Object | Belirtilen özelliğe sahip güncelleştirilmiş JSON nesnesi |
 ||||
 
-*Örnek*
-
-Bu örnek, [JSON ()](#json) işleviyle `customerProfile` JSON 'a Dönüştürülen nesnesine `accountNumber` özelliği ekler.
-İşlevi, [GUID ()](#guid) işlevi tarafından oluşturulan bir değer atar ve güncelleştirilmiş nesneyi döndürür:
+Varolan bir özelliğe bir alt özellik eklemek için şu sözdizimini kullanın:
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| Parametre | Gerekli | Tür | Açıklama |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Evet | Object | Özellik eklemek istediğiniz JSON nesnesi |
+| <*Parent-Property*> | Evet | Dize | Alt özellik eklemek istediğiniz üst özelliğin adı |
+| <*alt özellik*> | Evet | Dize | Eklenecek alt özelliğin adı |
+| <*deeri*> | Evet | Any | Belirtilen özellik için ayarlanacak değer |
+|||||
+
+| Dönüş değeri | Type | Açıklama |
+| ------------ | ---- | ----------- |
+| <*Updated-nesne*> | Object | Özelliği ayarladığınız güncelleştirilmiş JSON nesnesi |
+||||
+
+*Örnek 1*
+
+Bu örnek, `middleName` [JSON ()](#json) işlevi kullanılarak bir dizeden JSON 'a dönüştürülen bir JSON nesnesine özelliği ekler. Nesnesi, `firstName` ve `surName` özelliklerini zaten içeriyor. İşlevi belirtilen değeri yeni özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+Şu anki JSON nesnesi aşağıdadır:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Güncelleştirilmiş JSON nesnesi şu şekildedir:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*Örnek 2*
+
+Bu örnek, [JSON ()](#json) işlevi kullanılarak bir `customerName` dizeden JSON 'a dönüştürülen bir JSON nesnesi içindeki var olan özelliğe `middleName` alt özelliği ekler. İşlevi belirtilen değeri yeni özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+Şu anki JSON nesnesi aşağıdadır:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+Güncelleştirilmiş JSON nesnesi şu şekildedir:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -3152,7 +3221,7 @@ Ve şu sonucu döndürür:`"the new string"`
 
 ### <a name="removeproperty"></a>removeProperty
 
-Nesnesinden bir özelliği kaldırın ve güncelleştirilmiş nesneyi döndürün.
+Nesnesinden bir özelliği kaldırın ve güncelleştirilmiş nesneyi döndürün. Kaldırmaya çalıştığınız özellik yoksa, işlev orijinal nesneyi döndürür.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3169,20 +3238,208 @@ removeProperty(<object>, '<property>')
 | <*Updated-nesne*> | Object | Belirtilen özellik olmadan güncelleştirilmiş JSON nesnesi |
 ||||
 
-*Örnek*
-
-Bu örnek, [JSON ()](#json) işleviyle `"customerProfile"` JSON 'a dönüştürülen ve güncelleştirilmiş nesneyi döndüren nesnesinden `"accountLocation"` özelliği kaldırır:
+Varolan bir özellikten bir alt özelliği kaldırmak için şu sözdizimini kullanın:
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| Parametre | Gerekli | Tür | Açıklama |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Evet | Object | Özelliğini kaldırmak istediğiniz JSON nesnesi |
+| <*Parent-Property*> | Evet | Dize | Kaldırmak istediğiniz alt özelliği olan üst özelliğin adı |
+| <*alt özellik*> | Evet | Dize | Kaldırılacak alt özelliğin adı |
+|||||
+
+| Dönüş değeri | Type | Açıklama |
+| ------------ | ---- | ----------- |
+| <*Updated-nesne*> | Object | Alt özelliği kaldırdığınız güncelleştirilmiş JSON nesnesi |
+||||
+
+*Örnek 1*
+
+Bu örnek, `middleName` [JSON ()](#json) işlevi kullanılarak bir dizeden JSON 'a dönüştürülen ve güncelleştirilmiş nesneyi döndüren JSON nesnesinden özelliği kaldırır:
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+Şu anki JSON nesnesi aşağıdadır:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+Güncelleştirilmiş JSON nesnesi şu şekildedir:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*Örnek 2*
+
+Bu örnek, JSON `middleName` [()](#json) işlevini kullanarak `customerName` bir dizeden JSON 'a dönüştürülen ve güncelleştirilmiş nesneyi döndüren JSON nesnesindeki bir üst özellikten alt özelliği kaldırır:
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+Şu anki JSON nesnesi aşağıdadır:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+Güncelleştirilmiş JSON nesnesi şu şekildedir:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>Sonuç
+
+`For_each` ,`Until`, Veya`Scope` eylemi gibi, belirtilen kapsamlı eylem içindeki tüm eylemlerin girişlerini ve çıkışlarını döndürün. Bu işlev, özel durumları tanılamanıza ve işleyebilmeniz için başarısız bir eylemden sonuçları döndürmektir. Daha fazla bilgi için bkz. [Içerik al ve hatalara yönelik sonuçlar](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+
+```
+result('<scopedActionName>')
+```
+
+| Parametre | Gerekli | Tür | Açıklama |
+| --------- | -------- | ---- | ----------- |
+| <*Scopedadctionname*> | Evet | Dize | Tüm iç eylemlerdeki girişlerin ve çıktıların döndürüleceği kapsamlı eylemin adı |
+||||
+
+| Dönüş değeri | Type | Açıklama |
+| ------------ | ---- | ----------- |
+| <*dizi nesnesi*> | Dizi nesnesi | Belirtilen kapsamlı eylem içinde görünen her bir eylemden giriş ve çıkış dizilerini içeren bir dizi |
+||||
+
+*Örnek*
+
+Bu örnek, `For_each` `Compose` eylem içindeki `result()` işlevini kullanarak bir döngü içindeki içindeki http eyleminin her yinelemesinden gelen giriş ve çıkışları döndürür:
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+Bu örnek, dizideki her bir `outputs` `For_each` yinelemeden gelen giriş ve çıkışları içeren, Array döndürülen örneği şöyle görünebilir.
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>Özellik
 
-Bir nesnenin özelliği için değeri ayarlayın ve güncelleştirilmiş nesneyi döndürün.
-Yeni bir özellik eklemek için, bu işlevi veya [AddProperty ()](#addProperty) işlevini kullanabilirsiniz.
+JSON nesnesinin özelliği için değeri ayarlayın ve güncelleştirilmiş nesneyi döndürün. Ayarlamayı denerseniz özelliği yoksa, özelliği nesnesine eklenir. Yeni bir özellik eklemek için [AddProperty ()](#addProperty) işlevini kullanın.
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3195,18 +3452,79 @@ setProperty(<object>, '<property>', <value>)
 | <*deeri*> | Evet | Any | Belirtilen özellik için ayarlanacak değer |
 |||||
 
+Alt nesne içindeki alt özelliği ayarlamak için, bunun yerine iç içe geçmiş `setProperty()` bir çağrı kullanın. Aksi takdirde, işlev yalnızca çıkış olarak alt nesneyi döndürür.
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| Parametre | Gerekli | Tür | Açıklama |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Evet | Object | Özelliğini ayarlamak istediğiniz JSON nesnesi |
+| <*Parent-Property*> | Evet | Dize | Ayarlamak istediğiniz alt özelliği olan üst özelliğin adı |
+| <*alt özellik*> | Evet | Dize | Ayarlanacak alt özelliğin adı |
+| <*deeri*> | Evet | Any | Belirtilen özellik için ayarlanacak değer |
+|||||
+
 | Dönüş değeri | Type | Açıklama |
 | ------------ | ---- | ----------- |
 | <*Updated-nesne*> | Object | Özelliği ayarladığınız güncelleştirilmiş JSON nesnesi |
 ||||
 
-*Örnek*
+*Örnek 1*
 
-Bu örnek, [JSON ()](#json) işleviyle `"customerProfile"` JSON 'a dönüştürülen bir nesne üzerindeki `"accountNumber"` özelliğini ayarlar.
-İşlevi, [Guid ()](#guid) işlevi tarafından oluşturulan bir değer atar ve güncelleştirilmiş JSON nesnesini döndürür:
+Bu örnek, `surName` [JSON ()](#json) işlevi kullanılarak bir dizeden JSON 'a dönüştürülen bir JSON nesnesinde özelliğini ayarlar. İşlevi belirtilen değeri özelliğine atar ve güncelleştirilmiş nesneyi döndürür:
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+Şu anki JSON nesnesi aşağıdadır:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Güncelleştirilmiş JSON nesnesi şu şekildedir:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*Örnek 2*
+
+Bu örnek, JSON `surName` [()](#json) işlevi kullanılarak `customerName` bir dizeden JSON 'a dönüştürülen bir JSON nesnesinde Parent özelliği için alt özelliği ayarlar. İşlevi belirtilen değeri özelliğine atar ve güncelleştirilmiş nesneyi döndürür:
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+Şu anki JSON nesnesi aşağıdadır:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+Güncelleştirilmiş JSON nesnesi şu şekildedir:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>

@@ -9,16 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534417"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231049"
 ---
 1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
 1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
+
+      ![Yeni kaynak oluştur](media/aml-create-in-portal/portal-create-resource.png)
 
 1. **Machine Learning hizmeti çalışma alanını**bulmak için arama çubuğunu kullanın.
 
@@ -26,7 +28,7 @@ ms.locfileid: "69534417"
 
 1. Başlamak için **Machine Learning hizmet çalışma alanı** bölmesinde **Oluştur** ' u seçin.
 
-1. Yeni çalışma alanınızı, çalışma alanı adı, abonelik, kaynak grubu ve konum sağlayarak yapılandırın.
+1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
    Alan|Açıklama 
    ---|---
@@ -37,7 +39,10 @@ ms.locfileid: "69534417"
 
 1. Çalışma alanını yapılandırmayı tamamladıktan sonra **Oluştur**' u seçin. 
 
-   Çalışma alanını oluşturmak birkaç dakika sürebilir.
+   > [!Warning] 
+   > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
 
-   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
+   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 
+ 
+ 1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 

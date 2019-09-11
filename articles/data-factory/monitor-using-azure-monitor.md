@@ -3,21 +3,20 @@ title: Azure Izleyici 'yi kullanarak veri fabrikalarını izleme | Microsoft Doc
 description: Azure Data Factory bilgi ile tanılama günlüklerini etkinleştirerek Data Factory işlem hatlarını izlemek için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: shlo
-ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326866"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141124"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Izleyici kullanarak veri fabrikalarını uyarma ve Izleme
 Bulut uygulamaları birçok hareketli parça ile karmaşıktır. İzleme, uygulamanızın sağlıklı durumda kaldığından ve çalıştığından emin olmak için veri sağlar. Ayrıca, olası sorunları veya geçmişteki sorunları gidermenize yardımcı olur. Ayrıca, uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
@@ -107,13 +106,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- |
 | storageAccountId |String | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI |
 | serviceBusRuleId |String | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz Service Bus ad alanının Service Bus kural KIMLIĞI. Kural KIMLIĞI şu biçimdedir: "{Service Bus kaynak KIMLIĞI}/authorizationkuralkuralları/{Key Name}".|
-| workspaceId | Karmaşık tür | Ölçüm zaman ve saklama ilkeleri dizisi. Şu anda bu özellik boştur. |
-|metrics| Çağrılan işlem hattına geçirilecek işlem hattının parametre değerleri| Bağımsız değişken değerlerine yönelik bir JSON nesnesi eşleme parametre adları |
-| logs| Karmaşık tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, önce tanılama ayarlarını al işlemini gerçekleştirin. |
+| workspaceId | Karmaşık Tür | Ölçüm zaman ve saklama ilkeleri dizisi. Şu anda bu özellik boştur. |
+|ölçümler| Çağrılan işlem hattına geçirilecek işlem hattının parametre değerleri| Bağımsız değişken değerlerine yönelik bir JSON nesnesi eşleme parametre adları |
+| logs| Karmaşık Tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, önce tanılama ayarlarını al işlemini gerçekleştirin. |
 | category| String| Günlük kategorileri ve bunların saklama ilkeleri dizisi |
 | zamandilimi | String | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
 | enabled| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
-| retentionPolicy| Karmaşık tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Yalnızca depolama hesabı seçeneği için kullanılır.|
+| retentionPolicy| Karmaşık Tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Yalnızca depolama hesabı seçeneği için kullanılır.|
 | days| Int| Ölçüm veya günlüklerin saklanacağı gün sayısı. 0 değeri, günlükleri süresiz olarak tutar. Yalnızca depolama hesabı seçeneği için kullanılır. |
 
 **Yanıt**
@@ -505,7 +504,7 @@ Azure Portal oturum açın ve uyarı oluşturmak için**uyarıları** **İzle** 
 
 ![Portal menüsündeki uyarılar](media/monitor-using-azure-monitor/alerts_image3.png)
 
-### <a name="create-alerts"></a>Uyarı oluşturma
+### <a name="create-alerts"></a>Uyarı Oluştur
 
 1.  Yeni bir uyarı oluşturmak için **+ Yeni uyarı kuralı** ' na tıklayın.
 

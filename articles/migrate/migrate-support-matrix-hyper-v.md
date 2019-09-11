@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952132"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376090"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V değerlendirmesi ve geçiş için destek matrisi
 
@@ -37,7 +37,7 @@ System Center Virtual Machine Manager (VMM) ile yönetilen Hyper-V sunucuların�
 --- | ---
 Azure izinleri | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
 Hyper-V Sanal Makineleri | Tek bir projede 35.000 adede kadar Hyper-V VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok projeniz olabilir. Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
-Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturabilirsiniz. Belirli ograflarda projeler oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
+Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturabilirsiniz. Belirli coğrafi bölgelerde projeler oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
 
   **Coğrafya** | **Meta veri depolama konumu**
   --- | ---
@@ -82,8 +82,13 @@ Değerlendirme için Azure geçişi, Hyper-V VM 'lerini bulmaya ve VM meta veril
 
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
-| **Azure geçişi projesi**  |  Bir gereç, tek bir projeyle ilişkilendirilebilir.<br/> Tek bir gereç ile 5000 adede kadar Hyper-V sanal makinesi bulabilirsiniz.
-| **Hyper-V**    |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> VM konağının Windows Server 2012 R2 veya üstünü çalıştırması gerekir.<br/> Gereç VM 'si için 16 GB RAM, 8 vCPU ve 1 harici anahtar ayırmak üzere yeterli alana sahip olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+| **Gereç dağıtımı**   |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Azure geçişi tarafından belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır.<br/> Ana bilgisayar, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir dış anahtar ayırmak üzere yeterli alana sahip olmalıdır.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+| **Azure geçişi projesi**  |  Bir gereç, tek bir projeyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
+| **Hyper-V konakları**          | Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+| **Keşfini**              | Tek bir gereç, en fazla 5000 VM bulabilir.
+| **Değerlendirme grubu**       | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
+| **Değerlendirmesini**             | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
+
 
 
 ## <a name="assessment-appliance-url-access"></a>Değerlendirme-gereç URL 'SI erişimi
@@ -116,6 +121,9 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 üzerindeki gelen bağlantılar, gereci Uzak Masaüstü bağlantılarına izin vermek için.<br/> 44368 numaralı bağlantı noktası üzerinden gereç yönetimi uygulamasına uzaktan erişim için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443, 5671 ve 5672 bağlantı noktalarında giden bağlantılar.
 **Hyper-V konağı/kümesi** | Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V VM 'lerinin yapılandırma ve performans meta verilerini çekmek için WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar.
+
+## <a name="migration-limitations"></a>Geçiş-sınırlamalar
+Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Geçiş-Hyper-V ana bilgisayar gereksinimleri
 

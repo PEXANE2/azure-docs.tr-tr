@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972186"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383200"
 ---
 # <a name="monitor-the-process-server"></a>İşlem sunucusunu izleme
 
@@ -57,10 +57,12 @@ Bu sorunların tümü, VM 'lerin kurtarma noktası hedefini (RPO) etkileyebilir.
 ![Uyarı][yellow] | Son 15 dakika boyunca% 80 > CPU kullanımı
 ![Uyarı][yellow] | Son 15 dakika boyunca bellek kullanımı >% 80
 ![Uyarı][yellow] | Son 15 dakika boyunca% 30 < önbellek klasörü boş alanı
+![Uyarı][yellow] | Her beş dakikada bir bekleyen/giden verileri izler Site Recovery ve işlem sunucusu önbelleğindeki verilerin 30 dakika içinde Azure 'a yüklenemediğini tahmin eder.
 ![Uyarı][yellow] | İşlem sunucusu Hizmetleri son 15 dakika boyunca çalışmıyor
 ![Kritik][red] | Son 15 dakika boyunca% 95 > CPU kullanımı
 ![Kritik][red] | Son 15 dakika boyunca bellek kullanımı >% 95
 ![Kritik][red] | Son 15 dakika boyunca% 25 < önbellek klasörü boş alanı
+![Kritik][red] | Her beş dakikada bir bekleyen/giden verileri izler Site Recovery ve işlem sunucusu önbelleğindeki verilerin 45 dakika içinde Azure 'a yüklenemediğini tahmin eder.
 ![Kritik][red] | 15 dakika boyunca işlem sunucusundan sinyal alınmadı.
 
 ![Tablo anahtarı](./media/vmware-physical-azure-monitor-process-server/table-key.png)
@@ -93,7 +95,7 @@ Ayrıca, **Site Recovery altyapı**altında kasadaki işlem sunucularını da iz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Herhangi bir işlem sunucusu sorununuz varsa, [sorun giderme](vmware-physical-azure-troubleshoot-process-server.md) kılavuzumuzu izleyin
+- Herhangi bir işlem sunucusu sorununuz varsa, [sorun giderme kılavuzumuzu](vmware-physical-azure-troubleshoot-process-server.md) izleyin
 - Daha fazla yardıma ihtiyacınız varsa sorunuzu [Azure Site Recovery forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)gönderin. 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png

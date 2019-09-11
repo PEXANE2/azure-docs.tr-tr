@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663492"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873313"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -30,6 +30,10 @@ Bu öğretici, Azure Site Recovery’yi kullanarak, Amazon Web Services (AWS) sa
 > * Azure’a bir defalık yük devretme çalıştırma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
+
+
+> [!NOTE]
+    > Artık AWS örneklerini Azure 'a geçirmek için Azure geçişi hizmetini kullanabilirsiniz. [Daha fazla bilgi edinin](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Geçirmek istediğiniz VM’lerin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. Desteklenen sürümlere şunlar dahildir: 
@@ -91,11 +95,11 @@ Geçişten (yük devretme) sonra Azure sanal makineleri oluşturulduğunda bu Az
 1. [Azure portalda](https://portal.azure.com) **Kaynak oluştur** > **Ağ** >
    **Sanal ağ**’ı seçin.
 3. **Ad** için **myMigrationNetwork** yazın.
-4. **Adres alanı** için varsayılan değeri değiştirmeyin.
+4. **Adres alanı** için varsayılan değeri bırakın (değer girmeniz gerekir).
 5. **Abonelik** için kullanmak istediğiniz aboneliği seçin.
 6. **Kaynak grubu** için **Mevcut olanı kullan**’ı ve **migrationRG** adını seçin.
 7. **Konum** için **Batı Avrupa**’yı seçin.
-8. **Alt ağ** altında, **Ad** ve **IP aralığı** için varsayılan değerleri değiştirmeyin.
+8. **Alt ağ**altında, **ad** ve IP aralığı için varsayılan değerleri bırakın **(değer girilmesi gerekir)** .
 9. DDoS koruması ayarları için yönergeler ekleyin.
 10. **Hizmet Uç Noktaları** seçeneğini devre dışı bırakın.
 11. Güvenlik Duvarı ayarları için yönergeler ekleyin.

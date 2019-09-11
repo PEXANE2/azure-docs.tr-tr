@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 09/06/2019
 ms.author: dapine
-ms.openlocfilehash: 6dd047b0ba7f9a123ffcc014cff5604466946d07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 752613becb92711866d520e6fcd46ed3a320353f
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564110"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860263"
 ---
 # <a name="configure-face-docker-containers"></a>Yüz Docker kapsayıcılarını yapılandırma
 
@@ -43,7 +43,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 ## <a name="billing-configuration-setting"></a>Yapılandırma ayarı faturalama
 
-Ayar, Azure üzerinde bulunan bilişsel hizmetler kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir.  `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+Ayar, Azure üzerinde bulunan bilişsel hizmetler kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir. `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
@@ -122,7 +122,7 @@ Yüz kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş vey
 
 Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](face-how-to-install-containers.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Ad | Veri türü | Açıklama |
+|İsteğe Bağlı| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |İzin verilmedi| `Input` | Dize | Yüz kapsayıcıları bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -139,7 +139,9 @@ Yerine {_argument_name_} kendi değerlerinizle:
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
 |{API_KEY} | Bilişsel hizmetler kaynağının bitiş noktası anahtarı. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Bölge ve yüz yönlendirme de dahil olmak üzere uç nokta değeri.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{ENDPOINT_URI} | Uç nokta URL değeri.|`https://myresourcename.cognitive.microsoft.com/face/v1.0`|
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](face-how-to-install-containers.md#billing).

@@ -2,24 +2,19 @@
 title: Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme | Microsoft Docs
 description: Bu belge, güvenlik olaylarını yönetmek için Azure Güvenlik Merkezi 'ni kullanmanıza yardımcı olur.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
+author: memildin
+manager: rkarlin
 editor: ''
-ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/27/2019
-ms.author: rkarlin
-ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/09/2019
+ms.author: memildin
+ms.openlocfilehash: c492c4023df30eb51692aa4ae21fb938067c6ebb
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047633"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873376"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme
 
@@ -29,7 +24,7 @@ Bu konu başlığında Güvenlik Merkezi 'ndeki olaylar ve bunların uyarıları
 
 ## <a name="what-is-a-security-incident"></a>Güvenlik olayı nedir?
 
-Güvenlik Merkezi'nde bir güvenlik olayı, bir kaynağın [sonlandırma zinciri](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) desenleri ile hizalanan tüm uyarılarının toplamıdır. Olaylar [güvenlik uyarıları](security-center-managing-and-responding-alerts.md) listesinde görünür. Her oluşum hakkında daha fazla bilgi edinmenizi sağlayan ilgili uyarıları görüntülemek için ona Lona olayı ' na tıklayın.
+Güvenlik Merkezi'nde bir güvenlik olayı, bir kaynağın [sonlandırma zinciri](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) desenleri ile hizalanan tüm uyarılarının toplamıdır. Olaylar [güvenlik uyarıları](security-center-managing-and-responding-alerts.md) listesinde görünür. Her oluşum hakkında daha fazla bilgi edinmenizi sağlayan ilgili uyarıları görüntülemek için bir olaya tıklayın.
 
 ## <a name="managing-security-incidents"></a>Güvenlik olaylarını yönetme
 
@@ -41,7 +36,7 @@ Güvenlik Merkezi'nde bir güvenlik olayı, bir kaynağın [sonlandırma zinciri
 
     ![Azure Güvenlik Merkezi 'nde güvenlik olaylarına yanıt verme](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-1. Her uyarı hakkında daha fazla bilgi edinmek için bir uyarıya tıklayın. Güvenlik Merkezi tarafından önerilen düzeltme, güvenlik uyarısına göre farklılık gösterir. Güvenlik Merkezi tarafından önerilen düzeltme, güvenlik uyarısına göre farklılık gösterir. 
+1. Her uyarı hakkında daha fazla bilgi edinmek için bir uyarıya tıklayın. Güvenlik Merkezi tarafından önerilen düzeltme, güvenlik uyarısına göre farklılık gösterir.
 
    > [!NOTE]
    > Aynı uyarı, bir olayın parçası olarak ve tek başına bir uyarı olarak görülebilmesi için de bulunabilir.

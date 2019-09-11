@@ -8,15 +8,15 @@ tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 7/17/2018
+ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 93c96e89824eccd9f75f84549da647598fe9aec6
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 485273fbde5e54b467210cb5fd47ea432efceb85
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688449"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210048"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 Azure yedekleri Azure portalı üzerinden oluşturulabilir. Bu yöntem, Azure yedeklerini ve tüm ilgili kaynakları oluşturup yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında saklanabilecek kurtarma noktaları oluşturur. Bu makalede Azure portalıyla bir sanal makinenin nasıl yedekleneceği anlatılmaktadır. 

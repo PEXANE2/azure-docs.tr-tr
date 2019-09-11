@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4e3756435703c4e8c887a4e7b9d4f75a6701d840
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335370"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126258"
 ---
 # <a name="how-to-unblock-users"></a>Nasıl Yapılır: Kullanıcıların engelini kaldırma
 
@@ -52,7 +52,7 @@ Tarafından engellenen bir Kullanıcı:
 Bir hesabın riskini ortadan kaldırmak için aşağıdaki seçeneklere sahip olursunuz:
 
 1. **Parolayı sıfırlama** -kullanıcının parolasını sıfırlayabilirsiniz. 
-2. **Tüm risk olaylarını kapat** -Kullanıcı risk ilkesi, erişimi engellemek için yapılandırılmış Kullanıcı risk düzeyine ulaşıldığında kullanıcıyı engeller. Bildirilen risk olaylarını el ile kapatarak bir kullanıcının risk düzeyini azaltabilirsiniz. 
+2. **Tüm risk algılamalarını kapat** -Kullanıcı risk ilkesi, erişimi engellemek için yapılandırılmış Kullanıcı risk düzeyine ulaşıldığında kullanıcıyı engeller. Bildirilen risk algılamalarını el ile kapatarak bir kullanıcının risk düzeyini azaltabilirsiniz. 
 3. **Ilkeden hariç tut** -oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız kullanıcıları bu bilgisayardan dışlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
 4. **Ilkeyi devre dışı bırak** -ilke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
 

@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990497"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860472"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Alan-programlanabilir kapı dizileri (FPGA) ve dağıtma
 
@@ -133,7 +133,7 @@ Yönergeleri izleyin:
 * Dağıtılan modeli kullanma
 * Dağıtılan Hizmetleri Sil
 
-Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://aka.ms/aml-sdk) kullanın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri otomatik olarak bir ZIP dosyası olarak sıkıştırır ve ZIP 'i Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
+Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) kullanın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri otomatik olarak bir ZIP dosyası olarak sıkıştırır ve ZIP 'i Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
 
 ### <a name="load-azure-ml-workspace"></a>Azure ML çalışma alanı yükleme
 
@@ -319,7 +319,7 @@ for i in Image.list(workspace=ws):
 
 ### <a name="deploy-to-the-cloud"></a>Buluta dağıtın
 
-Modelinizi ölçekli üretim web hizmeti olarak dağıtmak için Azure Kubernetes Service (AKS) kullanın. Azure Machine Learning SDK, CLı veya Azure portal kullanarak yeni bir tane oluşturabilirsiniz.
+Modelinizi ölçekli üretim web hizmeti olarak dağıtmak için Azure Kubernetes Service (AKS) kullanın. Azure Machine Learning SDK, CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak yeni bir tane oluşturabilirsiniz.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

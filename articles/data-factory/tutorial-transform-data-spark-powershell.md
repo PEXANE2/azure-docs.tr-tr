@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: f273237431373aa69423ba244d4e7c509ffe7bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335462"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813425"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de Spark etkinliğini kullanarak verileri bulutta dönüştürme
 Bu öğreticide, Azure PowerShell kullanarak verileri Spark Etkinliği ve talep üzerine HDInsight bağlı hizmeti ile dönüştüren bir Data Factory işlem hattı oluşturacaksınız. Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
@@ -64,7 +64,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     if __name__ == "__main__":
         main()
     ```
-2. **&lt;storageAccountName&gt;**’i Azure Depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+2. **&lt;storageAccountName&gt;** ’i Azure Depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 3. Azure Blob depolama alanınızda henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 4. **Spark** adlı bir klasör oluşturun.
 5. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -137,7 +137,7 @@ Bağlı hizmet tanımında aşağıdaki özelliklerin değerlerini güncelleşti
 
 - **hostSubscriptionId**. &lt;SubscriptionID&gt;’yi Azure aboneliğinizin kimliği ile değiştirin. İsteğe bağlı HDInsight kümesi bu abonelikte oluşturulur. 
 - **tenant**. &lt;tenantID&gt; değerini Azure kiracınızın kimliği ile değiştirin. 
-- **servicePrincipalId**, **servicePrincipalKey**. &lt;servicePrincipalID&gt; ve &lt;servicePrincipalKey&gt; değerini Azure Active Directory’deki hizmet sorumlunuzun kimliği ve anahtarıyla değiştirin. Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Ayrıntılar için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). 
+- **servicePrincipalId**, **servicePrincipalKey**. &lt;servicePrincipalID&gt; ve &lt;servicePrincipalKey&gt; değerini Azure Active Directory’deki hizmet sorumlunuzun kimliği ve anahtarıyla değiştirin. Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Ayrıntılar için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet sorumlusu kimliği** , *uygulama kimliği* Ile eşdeğerdir ve bir **hizmet sorumlusu anahtarı** , bir *istemci parolasının*değeri ile eşdeğerdir.
 - **clusterResourceGroup**. &lt;resourceGroupOfHDICluster&gt; değerini HDInsight kümesinin oluşturulması gereken kaynak grubunun adıyla değiştirin. 
 
 > [!NOTE]
@@ -182,7 +182,7 @@ Aşağıdaki noktalara dikkat edin:
 - entryFilePath, spark klasörünün script alt klasöründeki WordCount_Spark.py dosyasını işaret eder. 
 
 
-## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma 
+## <a name="create-a-data-factory"></a>Data factory oluştur 
 JSON dosyalarında bağlı hizmet ve işlem hattı tanımları oluşturdunuz. Şimdi bir veri fabrikası oluşturalım ve bağlı Hizmet ile işlem hattı JSON dosyalarını PowerShell cmdlet'leri kullanarak dağıtalım. Aşağıdaki PowerShell komutlarını tek tek çalıştırın: 
 
 1. Değişkenleri tek tek ayarlayın.
@@ -201,7 +201,7 @@ JSON dosyalarında bağlı hizmet ve işlem hattı tanımları oluşturdunuz. Ş
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. **PowerShell**’i başlatın. Bu hızlı başlangıcın sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir. Data Factory kullanılabildiği şu anda Azure bölgelerinin listesi için aşağıdaki sayfada faiz ve ardından genişletin bölgeleri seçin **Analytics** bulunacak **Data Factory**: [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+2. **PowerShell**’i başlatın. Bu hızlı başlangıcın sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir. Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
     Aşağıdaki komutu çalıştırın ve Azure portalda oturum açmak için kullandığınız kullanıcı adı ve parolayı girin:
         

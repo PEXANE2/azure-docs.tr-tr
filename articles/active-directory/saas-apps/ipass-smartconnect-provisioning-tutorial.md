@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015758"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232163"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlama için IPASS SmartConnect 'i yapılandırma
 
@@ -57,7 +57,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 Azure AD ile otomatik Kullanıcı sağlama için IPASS SmartConnect 'i yapılandırmadan önce, IPASS SmartConnect Yönetici konsolundan yapılandırma bilgilerini almanız gerekir:
 
 1. IPASS SmartConnect SCıM uç noktanıza göre kimlik doğrulaması yapmak için gereken taşıyıcı belirtecini almak için, bu değer yalnızca daha sonra sağlandığı için IPASS SmartConnect 'i ilk kez ayarlamanız gerekir. 
-2. Taşıyıcı belirteciniz yoksa yeni bir tane almak için [iPass SmartConnect 'in destek ekibine] (mailto:help@ipass.com) gidin.
+2. Taşıyıcı belirteciniz yoksa, yeni bir tane almak için [IPASS SmartConnect destek ekibine](mailto:help@ipass.com) ulaşın.
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>Galeriden IPASS SmartConnect ekleyin
 

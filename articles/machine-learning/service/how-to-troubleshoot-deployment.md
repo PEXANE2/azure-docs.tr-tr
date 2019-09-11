@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358660"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183546"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -204,6 +204,9 @@ print(prediction)
 
 Yerel test sırasında, kayıt eklemek veya bulduğunuz herhangi bir `score.py` sorunu çözmeye çalışmak için dosyayı güncelleştirmeniz gerekebilir. Değişiklikleri `score.py` dosyaya yeniden yüklemek için kullanın `reload()`. Örneğin, aşağıdaki kod, hizmeti için betiği yeniden yükler ve ardından verileri bu sunucuya gönderir. Veriler, güncelleştirilmiş `score.py` dosya kullanılarak puanlanır:
 
+> [!IMPORTANT]
+> `reload` Yöntemi yalnızca yerel dağıtımlar için kullanılabilir. Bir dağıtımı başka bir işlem hedefine güncelleştirme hakkında daha fazla bilgi için bkz. dağıtım [modellerini](how-to-deploy-and-where.md#update)güncelleştirme bölümü.
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanız�
 
 Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) bölümündeki bilgileri kullanın.
 
-## <a name="function-fails-getmodelpath"></a>İşlevi başarısız: get_model_path()
+## <a name="function-fails-get_model_path"></a>İşlevi başarısız: get_model_path()
 
 Genellikle, `init()` Puanlama betiğinin işlevinde model [. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Çalıştırmak için bu hata ayıklama için en kolay yolu olan Python kodu kapsayıcı Kabuğu'nda aşağıdaki:
 
@@ -255,7 +258,7 @@ Bu örnek, Puanlama betiğinizin model dosyasını veya `/var/azureml-app`klasö
 
 Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin günlüğe kaydedilmesine neden olabilir ve bu da hatayı belirlemek için yararlı olabilir.
 
-## <a name="function-fails-runinputdata"></a>İşlevi başarısız: run(input_data)
+## <a name="function-fails-runinput_data"></a>İşlevi başarısız: run(input_data)
 
 Hizmet başarıyla dağıtıldı, ancak Puanlama uç noktası veri göndermek çöküyor deyiminde yakalama hata ekleyebilirsiniz, `run(input_data)` ayrıntılı hata iletisi yerine döndürür, böylece işlev. Örneğin:
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 56cb9a17054faace65ae1b65ed0ddbedf1e8af99
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011369"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172045"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -43,6 +43,9 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 * Azure AD DS 'yi etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
 * Gerekli Azure AD DS kaynaklarını oluşturmak için Azure aboneliğinizde *katılımcı* ayrıcalıklarına sahip olmanız gerekir.
 * Azure AD kiracısı, [self servis parola sıfırlama için yapılandırılmış][configure-sspr]olmalıdır.
+
+> [!IMPORTANT]
+> Azure AD DS yönetilen bir etki alanı oluşturduktan sonra, örneği farklı bir kaynak grubuna, sanal ağa, aboneliğe vb. taşıyamazsınız. Azure AD DS örneğini dağıtırken en uygun aboneliği, kaynak grubunu, bölgeyi ve sanal ağı seçin.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -199,7 +202,7 @@ Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, 
 1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolanızı girip yeni bir parola girin ve onaylayın.
 1. Seçin **gönderme**.
 
-Yeni parolanın Azure AD DS 'de kullanılabilmesi için parolanızı değiştirdikten birkaç dakika sürer. Yaklaşık 20 dakika sonra, yönetilen etki alanına katılmış bilgisayarlarda oturum açmak için yeni parolayı kullanabilirsiniz.
+Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına katılmış bilgisayarlarda başarıyla oturum açması için parolanızı değiştirdikten birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

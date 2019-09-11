@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 00e60d41b34531462a4e85623a19f1dd22c6e4e6
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 661f512fee6f55e53d3f8d5df1150c0c1426687a
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816814"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802603"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğini dağıtma
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, bir başlangıç olarak örneği kullanarak ortamınızda yeni bir şema oluşturarak şema örneğini uygulayın.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki **Başlarken** sayfasında, şema _Oluştur_altında **Oluştur** düğmesini seçin.
 
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Şema örneğinin kopyası artık ortamınızda oluşturulmuştur. **Taslak** modunda oluşturulur ve atanmadan ve dağıtılmadan önce **yayımlanmaları** gerekir. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği ISO 27001 standbundan uzağa taşıyabilir.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
@@ -56,9 +56,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla yayımlandıktan sonra, kaydedildiği Yönetimgrubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
+Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adım, her bir şema örneğinin kopyasının her dağıtımını yapmak için parametrelerin sağlandığı yerdir.
 
-1. **Tüm hizmetler** ' i seçin ve sol bölmedeki **ilke** ara ' yı seçin. **İlke** sayfasında, **planlar**' ı seçin.
+1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Şemayı kullanarak şema örneğinin kopyasını bulun ve ardından seçin.
 
@@ -111,9 +111,9 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |\[Önizleme\]: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)|İlke ataması|İsteğe bağlı: Kapsama eklenecek Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
 |\[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
 |\[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: Kapsama eklenecek Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir:\[\]|
-|İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Larının listesi|Depolama hesapları için belirtilebilecek SKU'ların listesi.|
-|İzin verilen sanal makine SKU'ları|İlke ataması|İzin verilen sanal makine SKU 'Larının listesi|Sanal makineler için belirtilebilecek SKU'ların listesi.|
-|ISO 27001 için şema girişim|İlke ataması|Tanılama günlüklerinin etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
+|İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Larının listesi|Depolama hesapları için belirtilebilecek SKU 'ların listesi.|
+|İzin verilen sanal makine SKU'ları|İlke ataması|İzin verilen sanal makine SKU 'Larının listesi|Sanal makineler için belirtilebilecek SKU 'ların listesi.|
+|ISO 27001 için şema girişim|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)bulunabilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

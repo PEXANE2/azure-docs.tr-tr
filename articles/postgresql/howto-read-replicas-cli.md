@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 63a8acad3c393a4c4d9c6a3b6750f1f934dad43d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 5946c74d0075e04112e840d78dd9f5f57bec7475
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907434"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309391"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Azure CLı 'dan okuma çoğaltmaları oluşturma ve yönetme
 
 Bu makalede, Azure CLı 'dan PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz. Okuma çoğaltmaları hakkında daha fazla bilgi edinmek için bkz. [genel bakış](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Ana sunucunuz ile aynı bölgede veya seçtiğiniz diğer herhangi bir Azure bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgeler arası çoğaltma şu anda genel önizleme aşamasındadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 - [PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-up-azure-cli.md) ana sunucu olması.

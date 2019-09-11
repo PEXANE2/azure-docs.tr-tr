@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery ile şirket içi sitelerinizde bulunan Hyper-V VM'lerinde olağanüstü durum kurtarma ayarlama | Microsoft Docs
+title: Azure Site Recovery ile şirket içi siteler arasında Hyper-V VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 description: Azure Site Recovery ile şirket içi sitelerinizde bulunan Hyper-V VM'ler için olağanüstü durum kurtarmayı nasıl ayarlayacağınızı öğrenin.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398399"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813747"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
 
@@ -65,7 +64,7 @@ VMM'yi şu şekilde hazırlayın:
 
 Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin.
 
-1. Tıklayın **Site kurtarma** > **1. adım: Altyapıyı hazırlama** > **koruma hedefi**.
+1. **Site Recovery** > Adım1 **' e tıklayın: Altyapı**Koruma > **hedefini**hazırlayın.
 2. **Kurtarma sitesine**'yi ve **Evet, Hyper-V ile**'yi seçin.
 3. Hyper-V konaklarını yönetmek için VMM kullandığınızı belirtmek üzere **Evet**'i seçin.
 4. İkincil bir VMM sunucunuz varsa **Evet**'i seçin. Çoğaltmayı tek bir VMM sunucusu üzerindeki bulutlar arasında dağıtıyorsanız **Hayır**'ı seçin. Daha sonra, **Tamam**'a tıklayın.
@@ -96,7 +95,7 @@ Azure Site Recovery Sağlayıcısı'nı VMM sunucularına yükleyin ve kasadaki 
 5. Yükleme tamamlandıktan sonra sunucuyu kasaya kaydetmek için **Kaydet**'e tıklayın.
 
     ![Yükleme konumu](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. **Kasa adı** alanında, sunucunun kayıtlı olduğu kasanın adını doğrulayın. **İleri**’ye tıklayın.
+6. **Kasa adı** alanında, sunucunun kayıtlı olduğu kasanın adını doğrulayın. **İleri**'ye tıklayın.
 7. **Ara Sunucu Bağlantısı** bölümünde VMM sunucusunda çalışan Sağlayıcı'nın Azure'a nasıl bağlanacağını belirleyin.
    - Sağlayıcıyı doğrudan veya bir ara sunucu üzerinden internete bağlanacak şekilde ayarlayabilirsiniz. Ara sunucu ayarlarını gereken şekilde yapın.
    - Bir ara sunucu kullanıyorsanız belirtilen ara sunucu kimlik bilgileriyle otomatik olarak bir VMM Farklı Çalıştır hesabı (DRAProxyAccount) oluşturulur. Bu hesabın kimlik doğrulamasını başarıyla gerçekleştirebilmesi için ara sunucuyu yapılandırın. RunAs hesabı ayarları VMM konsolunun **Ayarlar** > **Güvenlik** > **Farklı Çalıştır Hesapları** sayfasından değiştirilebilir.
@@ -133,8 +132,8 @@ Başlamadan önce ilkeyi kullanan tüm konakların aynı işletim sistemine sahi
 1. **Kopyalama sıklığı** kısmında, ilk çoğaltmadan sonra değişim verilerini ne sıklıkta çoğaltacağınızı belirleyin (30 saniyede, 5 veya 15 dakikada bir).
 2. **Kurtarma noktası bekletme** bölümünde, her kurtarma noktası için bekletme süresinin ne kadar olacağını (saat) belirtin. Çoğaltılan makineler, bu süre içindeki herhangi bir noktaya kurtarılabilir.
 3. **Uygulamayla tutarlı anlık görüntü sıklığı** kısmında, uygulamayla tutarlı anlık görüntüleri içeren kurtarma noktasının hangi sıklıkta oluşturulacağını (1-12 saat) belirtin. Hyper-V iki tür anlık görüntü kullanır:
-    - **Standart anlık görüntü**: Tüm sanal makinenin artımlı anlık görüntüsünü sağlar.
-    - **Uygulamayla tutarlı anlık görüntü**: Sanal Makinenin içindeki uygulama verilerinin zaman içinde nokta anlık görüntüsünü alır. Birim Gölge Kopyası Hizmeti (VSS), anlık görüntü alınırken uygulamanın tutarlı bir durumda olmasını sağlar. Uygulamayla tutarlı anlık görüntüleri etkinleştirmek, kaynak VM'lerin uygulama performansını etkiler. Yapılandırdığınız ilave kurtarma noktası sayısından daha küçük bir değer belirleyin.
+    - **Standart anlık görüntü**: Tüm sanal makinenin artımlı bir anlık görüntüsünü sağlar.
+    - **Uygulamayla tutarlı anlık görüntü**: VM içindeki uygulama verilerinin zaman içinde bir anlık görüntüsünü alır. Birim Gölge Kopyası Hizmeti (VSS), anlık görüntü alınırken uygulamanın tutarlı bir durumda olmasını sağlar. Uygulamayla tutarlı anlık görüntüleri etkinleştirmek, kaynak VM'lerin uygulama performansını etkiler. Yapılandırdığınız ilave kurtarma noktası sayısından daha küçük bir değer belirleyin.
 4. **Veri aktarımı sıkıştırma** bölümünde aktarılan çoğaltma verilerinin sıkıştırılıp sıkıştırılmayacağını belirtin.
 5. Kaynak VM için korumayı devre dışı bırakırsanız çoğaltma sanal makinesinin silinmesini istiyorsanız **Çoğaltma VM'ini sil**'i seçin. Bu ayarı etkinleştirirseniz kaynak VM için korumayı devre dışı bıraktığınızda VM Site Recovery konsolundan kaldırılır, VMM Site Recovery ayarları VMM konsolundan kaldırılır ve çoğaltma silinir.
 6. **İlk çoğaltma yöntemi** alanında ağ üzerinden çoğaltma gerçekleştiriyorsanız ilk çoğaltma işleminin başlatılmasını seçin veya bir zamanlama belirleyin. Ağ bant genişliğini tüketmemek için kullanımın az olduğu saatlere göre zamanlamak isteyebilirsiniz. Daha sonra, **Tamam**'a tıklayın.

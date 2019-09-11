@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 'ta küme kapasitesi planlama
-description: Kapasite ve performans için HDInsight kümesi belirtme.
+description: Azure HDInsight kümesinin kapasite ve performans planlamasına ilişkin önemli soruları belirler.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114314"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734659"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -31,7 +31,7 @@ Kapasite planlamasına sorulacak önemli sorular şunlardır:
 
 Azure bölgesi, kümenizin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerinize yakın olması gerekir.
 
-HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için [bölgeye göre kullanılabilen ürünlerde](https://azure.microsoft.com/regions/services/)analizler altında bulunan *HDInsight* girdisine bakın.
+HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için [bölgeye göre kullanılabilen ürünlerde analizler](https://azure.microsoft.com/regions/services/) *altında bulunan* *HDInsight* girdisine bakın.
 
 ## <a name="choose-storage-location-and-size"></a>Depolama konumu ve boyutunu seçin
 
@@ -60,7 +60,7 @@ Bir küme, farklı depolama hesaplarının birleşimine erişebilir. Tipik örne
 
 ## <a name="choose-a-cluster-type"></a>Bir küme türü seçin
 
-Küme türü, HDInsight kümenizin çalışmak üzere yapılandırıldığı iş yükünü ( [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)veya [Apache Spark](https://spark.apache.org/)gibi) belirler. Kullanılabilir küme türlerinin ayrıntılı bir açıklaması için bkz. [Azure HDInsight 'A giriş](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Her küme türünün, düğümlerin boyutu ve sayısı için gereksinimleri içeren belirli bir dağıtım topolojisi vardır.
+Küme türü, HDInsight kümenizin çalışmak üzere yapılandırıldığı iş yükünü ( [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)veya [Apache Spark](https://spark.apache.org/)gibi) belirler. Kullanılabilir küme türlerinin ayrıntılı bir açıklaması için bkz. [Azure HDInsight 'A giriş](hdinsight-overview.md#cluster-types-in-hdinsight). Her küme türünün, düğümlerin boyutu ve sayısı için gereksinimleri içeren belirli bir dağıtım topolojisi vardır.
 
 ## <a name="choose-the-vm-size-and-type"></a>VM boyutunu ve türünü seçin
 
