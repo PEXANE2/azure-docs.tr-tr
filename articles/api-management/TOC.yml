@@ -57,8 +57,8 @@
       href: api-management-error-handling-policies.md
     - name: API içeri aktarma kısıtlamaları
       href: api-management-api-import-restrictions.md
-    - name: Azure ortak güvenlik öznitelikleri
-      href: api-management-security-attributes.md
+    - name: Yerleşik güvenlik denetimleri
+      href: api-management-security-controls.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: API’leri tanımlama

@@ -131,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric Kümesi güvenliği
           href: service-fabric-cluster-security.md
-        - name: Azure Ortak Güvenlik Öznitelikleri
-          href: service-fabric-security-attributes.md
+        - name: Yerleşik güvenlik denetimleri
+          href: service-fabric-security-controls.md
     - name: Terminoloji
       href: service-fabric-technical-overview.md
     - name: Uygulamalar oluşturma

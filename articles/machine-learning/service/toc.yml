@@ -152,18 +152,20 @@
         - name: Eğitim ortamlarını ayarlama
           displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: Eğitimde tahmin araçları oluşturma
-          href: how-to-train-ml-models.md
-        - name: Scikit-learn kullanma
-          href: how-to-train-scikit-learn.md
-        - name: TensorFlow'u kullanma
-          href: how-to-train-tensorflow.md
-        - name: Keras kullanma
-          href: how-to-train-keras.md
-        - name: PyTorch'u kullanma
-          href: how-to-train-pytorch.md
-        - name: Chainer kullanma
-          href: how-to-train-chainer.md
+        - name: Eğitmek için tahmin araçlarını kullanma
+          items:
+            - name: Eğitimde tahmin araçları oluşturma
+              href: how-to-train-ml-models.md
+            - name: Scikit-learn kullanma
+              href: how-to-train-scikit-learn.md
+            - name: TensorFlow'u kullanma
+              href: how-to-train-tensorflow.md
+            - name: Keras kullanma
+              href: how-to-train-keras.md
+            - name: PyTorch'u kullanma
+              href: how-to-train-pytorch.md
+            - name: Chainer kullanma
+              href: how-to-train-chainer.md
         - name: Hiperparametreleri ayarlama
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -189,7 +191,7 @@
         - name: Otomatik ML kullanma (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: Otomatik ML kullanma (Azure portalı)
+        - name: Otomatik ML kullanma (çalışma alanı giriş sayfası)
           href: how-to-create-portal-experiments.md
         - name: Uzak işlem hedeflerini kullanma
           displayName: automl automated auto ml

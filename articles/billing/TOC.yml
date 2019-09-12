@@ -123,8 +123,6 @@
       href: billing-how-to-change-azure-account-profile.md
     - name: Faturalandırmaya erişim izni verme
       href: billing-manage-access.md
-    - name: Azure'da EA rolleri
-      href: billing-understand-ea-roles.md
     - name: Azure’da Microsoft Müşteri Sözleşmesi rolleri
       href: billing-understand-mca-roles.md
     - name: İş ortağı kimliğini bağlama
@@ -133,8 +131,26 @@
       href: billing-view-all-accounts.md
     - name: Maliyetleri fatura bölümleriyle düzenleme
       href: billing-mca-section-invoice.md
-    - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
-      href: billing-mca-enterprise-operations.md
+    - name: EA yönetimi
+      items:
+        - name: Azure EA portalını kullanmaya başlama
+          href: billing-ea-portal-get-started.md
+        - name: Azure'da EA rolleri
+          href: billing-understand-ea-roles.md
+        - name: Azure EA portalı yönetimi
+          href: billing-ea-portal-administration.md
+        - name: Azure EA sözleşmeleri ve düzeltmeleri
+          href: billing-ea-portal-agreements.md
+        - name: Kurumsal kayıt faturaları
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: Azure Kurumsal REST API'leri
+          href: billing-ea-portal-rest-apis.md
+        - name: Azure EA VM ayrılmış örnekleri
+          href: billing-ea-portal-vm-reservations.md
+        - name: Azure EA portalı erişim sorunlarını giderme
+          href: billing-ea-portal-troubleshoot.md
+        - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
+          href: billing-mca-enterprise-operations.md
     - name: Vadesi geçmiş bakiye sorunlarını çözme
       href: billing-azure-subscription-past-due-balance.md
     - name: Microsoft Müşteri Sözleşmesi için ödeme hesabı ayarlama

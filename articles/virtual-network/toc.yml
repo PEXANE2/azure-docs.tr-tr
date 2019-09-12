@@ -255,6 +255,10 @@
           href: manage-public-ip-address-prefix.md
     - name: Sorun giderme
       items:
+        - name: Sanal ağ eşleme sorunlarını giderme
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet veya VPN bağlantılarını yapılandırma ve doğrulama
+          href: virtual-network-configure-vnet-connections.md
         - name: Ağ güvenlik grupları
           href: diagnose-network-traffic-filter-problem.md
         - name: Yollar

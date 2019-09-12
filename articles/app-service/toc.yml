@@ -77,8 +77,8 @@
           href: overview-authentication-authorization.md
         - name: İşletim sistemi ve çalışma zamanı düzeltme eki uygulama
           href: overview-patch-os-runtime.md
-        - name: Güvenlik öznitelikleri
-          href: app-service-security-attributes.md
+        - name: Yerleşik güvenlik denetimleri
+          href: app-service-security-controls.md
         - name: Güvenliğe genel bakış
           href: overview-security.md
     - name: Ağ özellikleri

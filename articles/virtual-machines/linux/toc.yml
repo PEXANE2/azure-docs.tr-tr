@@ -145,8 +145,8 @@
       href: backup-recovery.md
     - name: Altyapı yönergeleri
       href: infrastructure-example.md
-    - name: Güvenlik öznitelikleri
-      href: virtual-machines-linux-security-attributes.md
+    - name: Yerleşik güvenlik denetimleri
+      href: virtual-machines-linux-security-controls.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: VM oluşturma

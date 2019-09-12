@@ -274,8 +274,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Gelişmiş tehdit koruması
-        - name: Güvenlik öznitelikleri
-          href: cosmos-db-security-attributes.md
+        - name: Yerleşik güvenlik denetimleri
+          href: cosmos-db-security-controls.md
     - name: Kurumsal kullanıma hazır olma
       items:
         - name: Çevrimiçi yedekleme ve isteğe bağlı geri yükleme
@@ -459,6 +459,10 @@
           items:
             - name: Yanıt Üst Bilgileri
               href: gremlin-headers.md
+            - name: Sınırlar
+              href: gremlin-limits.md
+            - name: Uyumluluk
+              href: gremlin-compatibility.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Graf verileri modellemesi
@@ -471,6 +475,10 @@
               href: graph-execution-profile.md
             - name: Kaynak belirteçlerini kullanma
               href: how-to-use-resource-tokens-gremlin.md
+            - name: Bölgesel uç noktaları kullanma
+              href: how-to-use-regional-gremlin.md
+            - name: Sistem belge özelliklerine erişme
+              href: how-to-access-system-properties-gremlin.md
             - name: Graf verilerini görselleştirme
               href: graph-visualization.md
             - name: Mağaza ve Spring Verilerini yönetme
@@ -700,7 +708,7 @@
       items:
         - name: Cosmos DB hesabından ölçümleri görüntüleme
           href: use-metrics.md
-        - name: Azure İzleyici’den Ölçümleri görüntüleme
+        - name: Azure İzleyici’den ölçümleri görüntüleme
           href: cosmos-db-azure-monitor-metrics.md
         - name: SLA’ları izleme
           href: monitor-accounts.md

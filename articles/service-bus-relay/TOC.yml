@@ -36,8 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: Karma Bağlantılar protokolü
       href: relay-hybrid-connections-protocol.md
-    - name: Azure ortak güvenlik öznitelikleri
-      href: service-bus-relay-security-attributes.md
+    - name: Yerleşik güvenlik denetimleri
+      href: service-bus-relay-security-controls.md
 - name: Nasıl yapılır
   items:
     - name: Planlama ve tasarım

@@ -101,8 +101,8 @@
                   href: authenticate-application.md
             - name: Paylaşılan erişim imzasıyla kimlik doğrulaması yapma
               href: authenticate-shared-access-signature.md
-        - name: Güvenlik Öznitelikleri
-          href: event-hubs-security-attributes.md
+        - name: Yerleşik güvenlik denetimleri
+          href: event-hubs-security-controls.md
     - name: AMQP 1.0 protokol kılavuzu
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true

@@ -62,8 +62,8 @@
       items:
         - name: Güvenliğe genel bakış
           href: overview-security.md
-        - name: Ortak güvenlik öznitelikleri
-          href: key-vault-security-attributes.md
+        - name: Yerleşik güvenlik denetimleri
+          href: key-vault-security-controls.md
         - name: Güvenlik dünyaları
           href: key-vault-ovw-security-worlds.md
         - name: Anahtar kasanızın güvenliğini sağlama
@@ -90,8 +90,6 @@
           href: create-certificate.md
         - name: Sertifika oluşturmayı izleme ve yönetme
           href: create-certificate-scenarios.md
-    - name: Azure Ortak Güvenlik Öznitelikleri
-      href: key-vault-security-attributes.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Key Vault günlüğü

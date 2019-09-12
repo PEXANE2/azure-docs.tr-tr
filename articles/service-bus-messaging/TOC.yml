@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: Uygulamadan kimlik doğrulaması yapma
                   href: authenticate-application.md
-        - name: Azure ortak güvenlik öznitelikleri
-          href: service-bus-messaging-security-attributes.md
+        - name: Yerleşik güvenlik denetimleri
+          href: service-bus-messaging-security-controls.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Ad alanı oluşturma

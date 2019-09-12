@@ -321,8 +321,8 @@
   href: best-practices-and-patterns.md
 - name: Kaynaklar
   items:
-    - name: Ortak güvenlik öznitelikleri
-      href: common-security-attributes.md
+    - name: Yerleşik güvenlik denetimleri
+      href: security-controls.md
     - name: Azure güvenlik MVP programı
       href: mvp.md
     - name: Siber güvenlik danışmanlığı

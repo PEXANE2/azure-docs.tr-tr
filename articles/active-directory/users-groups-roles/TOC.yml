@@ -40,6 +40,16 @@
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Kullanıcı profillerini yönetme
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Toplu işlemler (önizleme)
+          items:
+            - name: Kullanıcıları indirme (önizleme)
+              href: users-bulk-download.md
+            - name: Kullanıcıları toplu içeri aktarma (önizleme)
+              href: users-bulk-add.md
+            - name: Kullanıcıları toplu silme (önizleme)
+              href: users-bulk-delete.md
+            - name: Kullanıcıları toplu geri yükleme (önizleme)
+              href: users-bulk-restore.md
         - name: Kullanıcı hesaplarını paylaşma
           href: users-sharing-accounts.md
         - name: Kullanıcıları yönetici rollerine atama
@@ -74,8 +84,8 @@
       items:
         - name: Gruplarla erişimi yönetme
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Grupları Azure portalda yönetme
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Grup ve üye listelerinde arama yapma (önizleme)
+          href: groups-members-owners-search.md
         - name: Grupları Graph için Azure AD PowerShell (v2) ile yönetme
           href: groups-settings-v2-cmdlets.md
         - name: Grupları PowerShell MSOnline ile yönetme
@@ -84,8 +94,20 @@
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Grup sahiplerini yönetme
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Toplu işlemler (önizleme)
+          items:
+            - name: Üyeleri toplu içeri aktarma (önizleme)
+              href: groups-bulk-import-members.md
+            - name: Üyeleri toplu indirme (önizleme)
+              href: groups-bulk-download-members.md
+            - name: Üyeleri toplu kaldırma (önizleme)
+              href: groups-bulk-remove-members.md
+            - name: Grup listesini toplu indirme (önizleme)
+              href: groups-bulk-download.md
         - name: Grupları gruplar ile yönetme
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Grup oluşturma (Azure portalı)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: SaaS uygulamalarına grup erişimi ekleme
           href: groups-saasapps.md
         - name: Grup adlandırma başvurusu
