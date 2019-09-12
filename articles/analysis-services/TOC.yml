@@ -29,7 +29,7 @@
     - name: İstemci kitaplıkları
       href: analysis-services-data-providers.md
     - name: Uyumluluk düzeyi
-      href: analysis-services-compat-level.md
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
     - name: Şirket içi veri kaynaklarına bağlanma
       href: analysis-services-gateway.md
     - name: Sunuculara bağlanma
