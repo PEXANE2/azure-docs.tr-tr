@@ -2,24 +2,18 @@
 title: Azure Güvenlik Merkezi 'nde izlenen Azure ilke tanımları | Microsoft Docs
 description: Azure Güvenlik Merkezi 'nde izlenen Azure ilke tanımları.
 services: security-center
-documentationcenter: na
 author: monhaber
 manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990499"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910348"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Güvenlik Merkezi tarafından izlenen Azure Güvenlik ilkeleri
 Bu makale, Azure Güvenlik Merkezi 'nde izleyebilmeniz için Azure Ilke tanımlarının bir listesini sağlar. Güvenlik ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
@@ -50,7 +44,7 @@ Güvenlik Merkezi tarafından izlenen yerleşik ilkeler hakkında bilgi edinmek 
 |Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir|Günlüklerin etkinleştirilmesini denetleme ve bunları bir yıla kadar tutma. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma için etkinlik izleri oluşturur.|
 |Data Lake Analytics tanılama günlükleri etkinleştirilmelidir|Günlüklerin etkinleştirilmesi için denetim yapın ve bunları bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma için etkinlik izleri oluşturur.|
 |Depolama hesapları yeni Azurerd kaynaklarına geçirilmelidir|Güvenlik geliştirmeleri sağlamak için depolama hesaplarınız için Azure Resource Manager kullanın. Bunlar: <br>-Daha güçlü erişim denetimi (RBAC)<br>-Daha iyi denetim<br>-Azure Resource Manager tabanlı dağıtım ve idare<br>-Yönetilen kimliklere erişim<br>-Gizlilikler için Azure Key Vault erişim<br>-Azure AD tabanlı kimlik doğrulaması<br>-Daha kolay güvenlik yönetimi için Etiketler ve kaynak grupları desteği|
-|Sanal makinelerin yeni Azurerd kaynaklarına geçirilmesi gerekir|Güvenlik geliştirmeleri sağlamak için sanal makineleriniz için Azure Resource Manager kullanın.  Bunlar: <br>-Daha güçlü erişim denetimi (RBAC)<br>-Daha iyi denetim<br>-Azure Resource Manager tabanlı dağıtım ve idare<br>-Yönetilen kimliklere erişim<br>-Gizlilikler için Azure Key Vault erişim<br>-Azure AD tabanlı kimlik doğrulaması<br>-Daha kolay güvenlik yönetimi için Etiketler ve kaynak grupları desteği|
+|Sanal makinelerin yeni Azurerd kaynaklarına geçirilmesi gerekir|Güvenlik geliştirmeleri sağlamak için sanal makineleriniz için Azure Resource Manager kullanın. Bunlar: <br>-Daha güçlü erişim denetimi (RBAC)<br>-Daha iyi denetim<br>-Azure Resource Manager tabanlı dağıtım ve idare<br>-Yönetilen kimliklere erişim<br>-Gizlilikler için Azure Key Vault erişim<br>-Azure AD tabanlı kimlik doğrulaması<br>-Daha kolay güvenlik yönetimi için Etiketler ve kaynak grupları desteği|
 |Toplu Iş hesaplarında ölçüm uyarısı kuralları yapılandırılmalıdır|Gerekli ölçümü etkinleştirmek için Azure Batch hesaplarında ölçüm uyarı kurallarının yapılandırmasını denetleyin.|
 |Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir|Günlüklerin etkinleştirilmesi için denetim yapın ve bunları bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma için etkinlik izleri oluşturur.|
 |Otomasyon hesabı değişkenlerinde şifreleme etkinleştirilmelidir|Hassas verileri depoladığınızda Azure Otomasyonu hesap değişkeni varlıklarının şifrelenmesini etkinleştirmek önemlidir.|

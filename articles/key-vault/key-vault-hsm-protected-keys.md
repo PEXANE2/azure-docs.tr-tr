@@ -2,19 +2,19 @@
 title: Azure Key Vault için HSM korumalı anahtarlar oluşturma ve aktarma-Azure Key Vault | Microsoft Docs
 description: Azure Key Vault ile kullanmak üzere kendi HSM korumalı anahtarlarınızı planlayıp, oluşturmanıza ve aktarmaya yardımcı olması için bu makaleyi kullanın. BYOK olarak da bilinir veya kendi anahtarınızı getir.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: barclayn
-ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: mbaldwin
+ms.openlocfilehash: 3cd8cd0b72f1b3ccea557ce0e12394081329dc5b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575062"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883310"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault için HSM korumalı anahtarlar oluşturma ve aktarma
 
@@ -66,7 +66,7 @@ Anahtarınızı oluşturmak ve bir Azure Key Vault HSM 'ye aktarmak için aşağ
 
 * [1. Adım: Internet 'e bağlı iş istasyonunuzu hazırlama](#step-1-prepare-your-internet-connected-workstation)
 * [2. Adım: Bağlantısı kesilen iş istasyonunuzu hazırlama](#step-2-prepare-your-disconnected-workstation)
-* [Adım 3: Anahtarınızı oluşturma](#step-3-generate-your-key)
+* [3. Adım: Anahtarınızı oluşturma](#step-3-generate-your-key)
 * [4. Adım: Anahtarınızı aktarım için hazırlama](#step-4-prepare-your-key-for-transfer)
 * [5. Adım: Anahtarınızı Azure Key Vault aktarın](#step-5-transfer-your-key-to-azure-key-vault)
 
@@ -387,10 +387,10 @@ Anahtarı oluşturmak için aşağıdaki komutu çalıştırın:
 Bu komutu çalıştırdığınızda, şu yönergeleri kullanın:
 
 * *Koruma* parametresi, gösterildiği gibi, değer **modülüne**ayarlanmalıdır. Bu, modül korumalı bir anahtar oluşturur. BYOK araç takımı, OCS korumalı anahtarları desteklemez.
-* Ida ve **plainname** için *contosokey* değerini herhangi bir dize değeriyle değiştirin. Yönetim üst kafalarını en aza indirmek ve hata riskini azaltmak için, her ikisi için de aynı değeri kullanmanızı öneririz. Ida değeri yalnızca rakamlar, tireler ve küçük harf karakterler içermelidir.
+* Ida **ve** **plainname** için *contosokey* değerini herhangi bir dize değeriyle değiştirin. Yönetim üst kafalarını en aza indirmek ve hata riskini azaltmak için, her ikisi için de aynı değeri kullanmanızı öneririz. Ida **değeri** yalnızca rakamlar, tireler ve küçük harf karakterler içermelidir.
 * Bu örnekte pubexp boş bırakılır (varsayılan), ancak belirli değerler belirtebilirsiniz. Daha fazla bilgi için [nCipher belgelerine bakın.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
-Bu komut, başlayıp klasörünüzde, **key_simple_** ile başlayan ve ardından komutta belirtilen IBir adı olan bir simgeleştirilmiş anahtar dosyası oluşturur. Örneğin: **key_simple_contosokey**. Bu dosya şifreli bir anahtar içeriyor.
+Bu komut, başlayıp klasörünüzde, **key_simple_** ile **başlayan ve ardından** komutta belirtilen IBir adı olan bir simgeleştirilmiş anahtar dosyası oluşturur. Örneğin: **key_simple_contosokey**. Bu dosya şifreli bir anahtar içeriyor.
 
 Bu simgeleştirilmiş anahtar dosyasını güvenli bir konumda yedekleyin.
 
@@ -464,7 +464,7 @@ Yeni bir komut istemi açın ve geçerli dizini, BYOK ZIP dosyasının sıkışt
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
 
-Bu komutu çalıştırdığınızda, *contosokey* değerini 3,5 **adımında belirttiğiniz değerle değiştirin: Anahtar oluşturma** adımınızdan yeni bir [](#step-3-generate-your-key) anahtar oluşturun.
+Bu komutu çalıştırdığınızda, *contosokey* değerini 3,5 **adımında belirttiğiniz değerle değiştirin:**  Anahtar oluşturma [adımınızdan](#step-3-generate-your-key) yeni bir anahtar oluşturun.
 
 Güvenlik dünyası yönetici kartlarınızı eklemek isteyip istemediğiniz sorulur.
 
@@ -478,7 +478,7 @@ NCipher nShield yardımcı programlarını kullanarak aşağıdaki komutları ku
 * kmfile-dump. exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  Bu komutları çalıştırdığınızda, contosokey değerini 3,5 **adımında belirttiğiniz değerle değiştirin: Anahtar oluşturma** adımınızdan yeni bir [](#step-3-generate-your-key) anahtar oluşturun.
+  Bu komutları çalıştırdığınızda, contosokey değerini 3,5 **adımında belirttiğiniz değerle değiştirin:**  Anahtar oluşturma [adımınızdan](#step-3-generate-your-key) yeni bir anahtar oluşturun.
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Adım 4,2: Microsoft 'un anahtar değişim anahtarını kullanarak anahtarınızı şifreleyin
 
@@ -542,7 +542,7 @@ Coğrafi bölgenize veya Azure örneğine bağlı olarak aşağıdaki komutlarda
 
 Bu komutu çalıştırdığınızda, şu yönergeleri kullanın:
 
-* *Contosokey* değerini, 3,5 **adımında anahtarı oluşturmak için kullandığınız tanımlayıcıyla değiştirin: Anahtar oluşturma** adımınızdan yeni bir [](#step-3-generate-your-key) anahtar oluşturun.
+* *Contosokey* değerini, 3,5 **adımında anahtarı oluşturmak için kullandığınız tanımlayıcıyla değiştirin:**  Anahtar oluşturma [adımınızdan](#step-3-generate-your-key) yeni bir anahtar oluşturun.
 * *SubscriptionID* değerini, anahtar kasanızı içeren Azure aboneliğinin kimliğiyle değiştirin. Bu değeri daha önce **aldığınız adım 1,2:**  [Internet 'e bağlı iş istasyonunuzu hazırlama](#step-1-prepare-your-internet-connected-workstation) adımından Azure abonelik Kimliğinizi alın.
 * *ContosoFirstHSMKey* değerini çıkış dosyası adınız için kullanılan bir etiketle değiştirin.
 

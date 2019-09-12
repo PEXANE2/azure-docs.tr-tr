@@ -75,7 +75,7 @@ Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alan
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Olay hub’ına erişim verme ve bir bağlantı dizesi alma
 
@@ -92,7 +92,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.            **Oluştur**'a tıklayın.
+4.  **Oluştur**'a tıklayın.
 
 5.  İlke dağıtıldıktan sonra, paylaşılan erişim ilkeleri listesinde buna tıklayın.
 
@@ -172,7 +172,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3.           **Oluştur**'a tıklayın.
+3. **Oluştur**'a tıklayın.
 
     İş oluşturulur ve Portal iş ayrıntılarını görüntüler. Henüz hiçbir şey çalışmıyor; ancak başlamadan önce işi yapılandırmanız gerekir.
 
@@ -197,7 +197,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4.           **Oluştur**'a tıklayın.
+4. **Oluştur**'a tıklayın.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Gerçek zamanlı verileri dönüştürmek için sorgular oluşturma
 

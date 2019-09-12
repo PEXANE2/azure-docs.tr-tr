@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810668"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880277"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight küme yapılandırmasını iyileştirmek için Apache ambarı 'nı kullanma
 
@@ -146,7 +146,7 @@ Varsayılan olarak, Hive en iyi bir sorgu yürütme planını bulmak için bir k
 
 CBO 'i etkinleştirmek için Hive **yapılandırması** sekmesine gidin ve arama `parameter hive.cbo.enable`yapın ve geçiş düğmesini **Açık**olarak değiştirin.
 
-![CBO yapılandırması](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO yapılandırması](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 Aşağıdaki ek yapılandırma parametreleri, CBO etkin olduğunda Hive sorgu performansını artırır:
 

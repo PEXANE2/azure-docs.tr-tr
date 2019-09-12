@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828605"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910468"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery hizmet güncelleştirmeleri
 
@@ -103,8 +103,7 @@ Güncelleştirmeleri el ile yönetmek istiyorsanız aşağıdakileri yapın:
 
 1. Güncel sürümünüzü ve [destek bildirisini](#support-statement-for-azure-site-recovery)temel alarak, [Bu yönergeleri](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)kullanarak güncelleştirmeyi önce şirket içi yapılandırma sunucusuna yüklemeniz gerekir. 
 2. Genişleme işlem sunucularınız varsa, [Bu yönergeleri](vmware-azure-manage-process-server.md#upgrade-a-process-server)kullanarak bunları daha sonra güncelleştirin.
-3. Korunan her makinede Mobility Aracısı 'nı güncelleştirmek için, **korumalı öğeler** > **çoğaltılan öğeler**' i açın.
-4. VM 'yi seçin ve her VM için sayfanın alt kısmında görüntülenen **aracıyı Güncelleştir** düğmesini seçin. Bu, tüm korumalı VM 'lerde Mobility hizmeti aracısını güncelleştirir.
+3. Korunan her makinede Mobility Aracısı 'nı güncelleştirmek için [Bu](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) makaleye bakın.
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>Mobility hizmeti yükseltmesinden sonra yeniden Başlat
 

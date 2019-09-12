@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617638"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910434"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarmaya yönelik desteklenen bileşenler ve ayarlar özetlenmektedir.
 
 - VMware VM/fiziksel sunucu olağanüstü durum kurtarma mimarisi hakkında [daha fazla bilgi edinin](vmware-azure-architecture.md) .
-- Olağanüstü durum [](tutorial-prepare-azure.md) kurtarmayı denemek için öğreticilerimizi izleyin.
+- Olağanüstü durum kurtarmayı denemek için [öğreticilerimizi](tutorial-prepare-azure.md) izleyin.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
@@ -245,6 +245,10 @@ Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
 FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
 BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır. |
 VM adı | 1 ile 63 karakter arasında.<br/><br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
+
+## <a name="resource-group-limits"></a>Kaynak grubu sınırları
+
+Tek bir kaynak grubu altında korunabilecek sanal makinelerin sayısını anlamak için [abonelik limitleri ve kotaları](https://docs.microsoft.com/azure/azure-subscription-service-limits#resource-group-limits) hakkındaki makaleye bakın.
 
 ## <a name="churn-limits"></a>Karmaşıklık limitleri
 

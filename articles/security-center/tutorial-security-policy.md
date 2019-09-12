@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314912"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910367"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -131,7 +131,7 @@ Azure Ilkesinde önemli kavramlar:
 
 - **Atama** , bir girişim veya ilkenin belirli bir kapsama (Yönetim grubu, abonelik vb.) bir uygulamasıdır. 
 
-Güvenlik Merkezi 'nin tüm güvenlik ilkelerini içeren yerleşik bir girişimi vardır. Güvenlik Merkezi 'nin Azure kaynaklarınızın ilkelerini değerlendirmek için, yönetim grubunda veya değerlendirmek istediğiniz abonelikte bir atama oluşturmanız gerekir.  
+Güvenlik Merkezi 'nin tüm güvenlik ilkelerini içeren yerleşik bir girişimi vardır. Güvenlik Merkezi 'nin Azure kaynaklarınızın ilkelerini değerlendirmek için, yönetim grubunda veya değerlendirmek istediğiniz abonelikte bir atama oluşturmanız gerekir.
 
 Yerleşik girişim, tüm güvenlik merkezi ilkelerinin varsayılan olarak etkinleştirilmiş olduğunu içerir. Yerleşik girişimden belirli ilkeleri devre dışı bırakmayı seçebilirsiniz, örneğin, ilkenin efekt parametresinin değerini **devre dışı**olarak değiştirerek, **Web uygulaması güvenlik duvarı**hariç tüm güvenlik merkezi ilkelerini uygulayabilirsiniz. 
 

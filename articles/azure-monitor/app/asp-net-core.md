@@ -53,7 +53,7 @@ Burada kullanacağınız örnek, ' i hedefleyen `netcoreapp2.2`bir [MVC uygulama
 
 4. Aboneliğinizi seçin. Sonra **kaynak** > **kaydı**' nı seçin.
 
-5. Projenize Application Insights ekledikten sonra, SDK 'nın en son kararlı sürümünü kullandığınızı onaylamak için denetleyin.  >  **** Project > 'e git**Microsoft. ApplicationInsights. aspnetcore** **NuGet Paketlerini Yönet**. Gerekirse **Güncelleştir**' i seçin.
+5. Projenize Application Insights ekledikten sonra, SDK 'nın en son kararlı sürümünü kullandığınızı onaylamak için denetleyin.  > Project > 'e git**Microsoft. ApplicationInsights. aspnetcore** **NuGet Paketlerini Yönet**. Gerekirse **Güncelleştir**' i seçin.
 
      ![Güncelleştirme için Application Insights paketinin nerede seçileceğini gösteren ekran görüntüsü](./media/asp-net-core/update-nuget-package.png)
 

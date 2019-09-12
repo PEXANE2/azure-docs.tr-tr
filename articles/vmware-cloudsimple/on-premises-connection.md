@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240724"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910540"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma
 
@@ -23,7 +23,7 @@ Zaten bir dış konumdan (örneğin, şirket içi) Azure 'da Azure ExpressRoute 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Şirket içinden Global Reach bağlantı kurmak için bir **/29** ağ adresi bloğu gerekir.  /29 adres alanı, ExpressRoute devreleri arasında transit ağı için kullanılır.  Transit ağı, Azure sanal ağlarınız, şirket içi ağlar veya CloudSimple özel bulut ağlarıyla çakışmamalıdır.
+Şirket içinden Global Reach bağlantı kurmak için bir **/29** ağ adresi bloğu gerekir.  /29 adres alanı, ExpressRoute devreleri arasında transit ağı için kullanılır.  Transit ağı, Azure sanal ağlarınızdan, şirket içi ağlardan veya CloudSimple özel bulut ağlarınızla çakışmamalıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,7 +32,7 @@ Zaten bir dış konumdan (örneğin, şirket içi) Azure 'da Azure ExpressRoute 
 
 ## <a name="scenarios"></a>Senaryolar
 
-Şirket içi ağınızı özel bulut ağınıza bağlamak, özel bulutu aşağıdakiler dahil çeşitli yollarla kullanmanıza olanak sağlar:
+Şirket içi ağınızı özel bulut ağınıza bağlamak, aşağıdaki senaryolar da dahil olmak üzere çeşitli yollarla özel bulutu kullanmanıza olanak sağlar:
 
 * Özel bulut ağınıza, siteden siteye VPN bağlantısı oluşturmadan erişin.
 * Şirket içi Active Directory özel bulutunuzda kimlik kaynağı olarak kullanın.
@@ -43,6 +43,7 @@ Zaten bir dış konumdan (örneğin, şirket içi) Azure 'da Azure ExpressRoute 
 ## <a name="connecting-expressroute-circuits"></a>ExpressRoute devrelerini bağlama
 
 ExpressRoute bağlantısı kurmak için ExpressRoute bağlantı hattınızı bir yetkilendirme oluşturmanız ve CloudSimple yetkilendirme bilgilerini sağlamanız gerekir.
+
 
 ### <a name="create-expressroute-authorization"></a>ExpressRoute yetkilendirmesi oluşturma
 
@@ -70,6 +71,11 @@ ExpressRoute bağlantısı kurmak için ExpressRoute bağlantı hattınızı bir
     * Sorun alt türü: **Şirket içinde ExpressRoute bağlantısı oluşturma**
     * Ayrıntılar bölmesinde kopyaladığınız ve kaydettiğiniz kaynak KIMLIĞI ve yetkilendirme anahtarını sağlayın.
     * Transit ağı için bir/29 ağ adresi alanı belirtin.
+    * ExpressRoute aracılığıyla varsayılan yol gönderiyor musunuz?
+    * Özel bulut trafiği ExpressRoute üzerinden gönderilen varsayılan yolu kullanmalıdır mi?
+
+    > [!IMPORTANT]
+    > Varsayılan yol gönderme, şirket içi internet bağlantınızı kullanarak özel buluttan tüm internet trafiğini göndermenizi sağlar.  Özel bulutta yapılandırılmış varsayılan yolu devre dışı bırakmak ve şirket içi bağlantı varsayılan yolunu kullanmak için destek bileti içindeki ayrıntıları sağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

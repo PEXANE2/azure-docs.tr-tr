@@ -136,7 +136,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. **WorkerRole1** projesine sağ tıklayıp yeni öğe **Ekle** ->  **... öğesini** seçerek **WorkerRole1** projenize bir XML dosyası ekleyin. -> **Görsel C# öğeler** ->  **** veriXML -> **dosyası**. "Wadexörnek. xml" dosyasını adlandırın.
+2. **WorkerRole1** projesine sağ tıklayıp yeni öğe **Ekle** ->  **... öğesini** seçerek **WorkerRole1** projenize bir XML dosyası ekleyin. -> **Görsel C# öğeler** -> veriXML -> **dosyası**. "Wadexörnek. xml" dosyasını adlandırın.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. WadConfig. xsd dosyasını yapılandırma dosyası ile ilişkilendirin. WADEX,. XML düzenleyici penceresinin etkin pencere olduğundan emin olun. **Özellikler** penceresini açmak için **F4** tuşuna basın. **Özellikler** penceresinde **şemalar** özelliğine tıklayın. **..** . Öğesine tıklayın. **şema** özelliğinde. **Ekle…** düğmesine düğmesine tıklayın ve XSD dosyasını kaydettiğiniz konuma gidin ve WadConfig. xsd dosyasını seçin. **Tamam** düğmesine tıklayın.

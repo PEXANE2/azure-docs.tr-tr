@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure portal Azure Search kullanarak dizin oluşturma, yükleme ve sorgulama'
+title: 'Hızlı Başlangıç: Azure portal kullanarak arama dizini oluşturma Azure Search'
 description: Azure Search ilk dizininizi oluşturmak, yüklemek ve sorgulamak için Azure portal veri alma Sihirbazı 'nı kullanın.
 author: lobrien
 manager: nitinme
@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: c2950b35f207f772f1190a2f8f104098eeb43375
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656358"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884572"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure Search dizin oluşturma
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Bu öğreticide **Verileri içeri aktar** sihirbazı aracılığıyla bir [*dizi
 
    ![Verileri içeri aktar komutu](media/search-get-started-portal/import-data-cmd.png)
 
-2. Sihirbazda, **veri** >  > örneklerimize Bağlan**oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
+2. Sihirbazda, **veri** > **örneklerimize** > Bağlan**oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
 
    ![Örnek veri kümesi seçme](media/search-get-started-portal/import-datasource-sample.png)
 
@@ -206,7 +206,7 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Örnek (sayısal değerler esası):`search=spa&facet=Rating`
 
-* Bu sorgu, *Spa*'nın metin aramasında derecelendirme için bir model. Alan, dizinde alınabilir, filtrelenebilir ve çok yönlü tablo olarak işaretlendiğinden ve içerdiği değerler (sayısal, 1 ' den 5 ' e kadar), listelerin gruplar halinde kategorilere ayrılması için uygundur.
+* Bu sorgu, *Spa*'nın metin aramasında derecelendirme için bir model. Alan, dizinde alınabilir, *filtrelenebilir ve* çok yönlü tablo olarak işaretlendiğinden ve içerdiği değerler (sayısal, 1 ' den 5 ' e kadar), listelerin gruplar halinde kategorilere ayrılması için uygundur.
 
 * Yalnızca filtrelenebilir alanlardan görünüm oluşturulabilir. Yalnızca getirilebilir alanlar sonuçlarda döndürülebilir.
 

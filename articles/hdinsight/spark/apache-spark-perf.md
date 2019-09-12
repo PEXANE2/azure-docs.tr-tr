@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d058c55eab3d161e625d7d4ca3ef53b36497e00
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814084"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885114"
 ---
-# <a name="optimize-apache-spark-jobs"></a>Apache Spark işlerini iyileştirme
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight 'ta Apache Spark işlerini iyileştirme
 
 Belirli bir iş yükünüz için [Apache Spark](https://spark.apache.org/) kümesi yapılandırmasını iyileştirmenizi öğrenin.  En yaygın zorluk, yanlış yapılandırma (özellikle yanlış boyutlu yürüticileri), uzun süreli işlemler ve Kartezyen işlemlere neden olan görevler nedeniyle bellek baskısı olur. Uygun önbelleğe alma ile işleri hızlandırabilir ve [veri eğmaya](#optimize-joins-and-shuffles)izin verebilirsiniz. En iyi performansı elde etmek için, uzun süreli ve kaynak kullanan Spark iş yürütmelerini izleyin ve gözden geçirin.
 

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811029"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884235"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
 HDInsight 'daki kullanıcıları ve rolleri Kurumsal Güvenlik Paketi (ESP) ve ESP kümelerinin nasıl yönetileceğini öğrenin.
@@ -60,7 +60,7 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
 
 4. Ayrıca bir kümenin bağlantısını **Azure Explorer**'da kaldırabilirsiniz.
    
-   ![bağlantısız küme IntelliJ](./media/apache-domain-joined-manage/unlink.png)
+   ![bağlantısız küme IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Etki alanına katılmış kümeye bağlamak için Eclipse kullanma
 
@@ -83,7 +83,7 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
 
 4. Ayrıca bir kümenin bağlantısını **Azure Explorer**'da kaldırabilirsiniz.
    
-   ![bağlantısız küme tutulma](./media/apache-domain-joined-manage/unlink.png)
+   ![bağlantısız küme tutulma](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Kümelere Kurumsal Güvenlik Paketi erişin.
 

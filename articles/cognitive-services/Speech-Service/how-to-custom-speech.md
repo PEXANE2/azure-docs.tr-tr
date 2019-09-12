@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d697cd49363139cfeae2753a4f1ae40fca6e6b2
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802496"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881519"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -25,7 +25,7 @@ ms.locfileid: "70802496"
 
 Özel Konuşma Tanıma herhangi bir şey yapabilmeniz için önce bir Azure hesabı ve bir konuşma Hizmetleri aboneliğine sahip olmanız gerekir. Bir hesap aldıktan sonra verilerinizi dağıtabilir, modellerinizi eğitebilir ve test edebilir, tanınma kalitesini inceleyebilir, doğruluğu değerlendirebilir ve son olarak özel konuşmayı metin modelini kullanabilirsiniz.
 
-Bu diyagramda [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech)oluşturan parçalar vurgulanmıştır. Her adım hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
+Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)oluşturan parçalar vurgulanmıştır. Her adım hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
 
 ![Özel Konuşma Tanıma portalını oluşturan farklı bileşenleri vurgular.](./media/custom-speech/custom-speech-overview.png)
 

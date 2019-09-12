@@ -277,7 +277,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
     ![NetBackup Yönetim Konsolu, StorSimple birim diskini seçin](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Yedekleme hedefi için bir ad girin ve ardından **İleri** > ' yi seçerek Sihirbazı sona erdirin. ****
+4.  Yedekleme hedefi için bir ad girin ve ardından **İleri** > ' yi seçerek Sihirbazı sona erdirin.
 
 5.  Ayarları gözden geçirin ve ardından **son**' u seçin.
 
@@ -340,7 +340,7 @@ Aşağıdaki sıra, NetBackup 'ın ve hedef konağın NetBackup Aracısı yöner
 
    ![NetBackup Yönetim Konsolu, yeni bir ilke için yedekleme sıklığı ve döndürme](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. **Sonraki** >  **** sonrakison > **bitiş**' i seçin.  Zamanlamayı, ilke oluşturulduktan sonra değiştirebilirsiniz.
+8. **Sonraki** > sonrakison > **bitiş**' i seçin.  Zamanlamayı, ilke oluşturulduktan sonra değiştirebilirsiniz.
 
 9. Yeni oluşturduğunuz ilkeyi genişletmeyi seçin ve ardından **zamanlamalar**' ı seçin.
 

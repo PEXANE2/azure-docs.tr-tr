@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716760"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880793"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da Kullanıcı arabirimi özelleştirmesi hakkında
 
-Azure Active Directory (Azure AD) B2C 'nin uygulamalarınıza sunduğu Kullanıcı arabirimini (UI) marka ve özelleştirme özelliği, müşterinize sorunsuz bir deneyim sunmak için önemlidir. Bu deneyimlere kaydolma, oturum açma, profil düzenlemesi ve parola sıfırlama dahildir. Bu makalede, uygulamalarınızın Kullanıcı arabirimini özelleştirmenize yardımcı olacak bilgiler sağlanmaktadır.
+Azure Active Directory B2C (Azure AD B2C) uygulamalarına hizmet veren kullanıcı arabirimini (UI) markamanızı ve özelleştirmenizi sağlamak, müşterinize sorunsuz bir deneyim sunmak için önemlidir. Bu deneyimlere kaydolma, oturum açma, profil düzenlemesi ve parola sıfırlama dahildir. Bu makalede, uygulamalarınızın Kullanıcı arabirimini özelleştirmenize yardımcı olacak bilgiler sağlanmaktadır.
 
 Bu deneyimlere geldiğinde gereksinimlerinize bağlı olarak, uygulamanızın kullanıcı arabirimini farklı yollarla özelleştirirsiniz. Örneğin:
 
@@ -118,7 +118,7 @@ Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` �
 | Yerel hesap kaydı | Bir e-posta adresine veya Kullanıcı adına göre yerel hesap kaydolma için bir form içerir. Form, metin girişi kutusu, parola giriş kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi farklı giriş denetimleri içerebilir. |
 | Sosyal hesap kaydolma | Facebook veya Google gibi bir sosyal kimlik sağlayıcısından mevcut bir hesap kullanılarak kaydolurken görünebilir. Bir kaydolma formu kullanılarak müşteriden ek bilgiler toplandığında kullanılır. |
 | Birleşik kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilecek müşterilerin hem kaydolma hem de oturum açma sürümlerini işler. |
-| Çok öğeli kimlik doğrulama | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
+| Multi-factor authentication | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
 | Hata | Müşteriye hata bilgilerini sağlar. |
 
 
@@ -134,6 +134,9 @@ Azure AD B2C kiracınızda [dil özelleştirmesini](active-directory-b2c-referen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanıcı akışları kullanıyorsanız, Kullanıcı ARABIRIMINIZI öğreticiyle özelleştirmeye başlayabilirsiniz: [Azure Active Directory B2C ' de uygulamalarınızın Kullanıcı arabirimini özelleştirin](tutorial-customize-ui.md).
-- Özel ilkeler kullanıyorsanız, şu makaleyle Kullanıcı arabirimini özelleştirmeye başlayabilirsiniz: [Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin](active-directory-b2c-ui-customization-custom.md).
+- **Kullanıcı akışları**kullanıyorsanız, Kullanıcı arabiriminizi öğreticiyle özelleştirmeye başlayabilirsiniz:
 
+    [Azure Active Directory B2C ' de uygulamalarınızın Kullanıcı arabirimini özelleştirin](tutorial-customize-ui.md).
+- **Özel ilkeler**kullanıyorsanız, şu makaleyle Kullanıcı arabirimini özelleştirmeye başlayabilirsiniz:
+
+    [Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin](active-directory-b2c-ui-customization-custom.md).

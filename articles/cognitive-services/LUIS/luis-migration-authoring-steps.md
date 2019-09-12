@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: aa0c34a361ce191618d7b84e7a96557f2344284a
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 7a6091ac1a0d54d997c40fe284d58426ecadf765
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803929"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898852"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure yazma kaynağına geçiş adımları
 
@@ -49,7 +49,7 @@ Herhangi bir LUO uygulama sahibiyseniz, geçiş işlemi kullanılabilir.
 
     Her ortak çalışan ve uygulama için varsayılan e-posta uygulaması, hafif biçimli bir e-posta ile açılır. Göndermeden önce e-postayı düzenleyebilirsiniz.
 
-    E-posta şablonu, tam uygulama kimliği ve uygulama adını içerir. 
+    E-posta şablonu, tam uygulama KIMLIĞI ve uygulama adını içerir. 
 
     ```html
     Dear Sir/Madam,
@@ -100,6 +100,10 @@ Herhangi bir LUO uygulama sahibiyseniz, geçiş işlemi kullanılabilir.
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
 [Katkıda bulunanlar eklemeyi](luis-how-to-collaborate.md)öğrenin. 
+
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Geçiş işlemiyle ilgili sorun giderme hataları
+
+Geçiş işlemi sırasında bir `MissingSubscriptionRegistration` Red bildirim çubuğu ile LUI portalında bir hata alırsanız, [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)'de bir bilişsel hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

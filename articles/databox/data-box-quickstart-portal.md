@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241358"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772740"
 ---
 ::: zone target="docs"
 
@@ -80,10 +80,6 @@ Başlamadan önce aşağıdakileri yaptığınızdan emin olun:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
     - Yüksek hızlı ağa bağlısınız. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanılabilir ancak kopyalama hızı etkilenir. 
 6. Data Box’ı yerleştirmek için düz bir yüzeye erişiminiz var. Cihazı standart bir rafa dik ya da düz bir şekilde yerleştirmek istiyorsanız, rafınızda bir 7U yuvası olmalıdır.
-7. Data Box'ınızı ana bilgisayara bağlamak için aşağıdaki kabloları temin ettiniz.
-    - Bir veya daha fazla 10 GbE SFP+ Twinax bakır ya da SFP+ fiber optik kablo (DATA 1, DATA 2 ağ arabirimleri ile kullanın). Daha fazla bilgi için, PCI Express 3.0 ağ arabirimi ile birlikte Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Bağdaştırıcılara uygun [desteklenen Mellanox kablo ve anahtarlarının listesine](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) bakın.
-    - Bir RJ-45 CAT 6 ağ kablosu (MGMT ağ arabirimi ile kullanın)
-    - Bir RJ-45 CAT 6A VEYA bir RJ-45 CAT 6 ağ kablosu (sırasıyla 10 Gb/sn veya 1 Gb/sn olarak yapılandırılmış DATA 3 ağ arabirimi ile birlikte kullanın)
 
 ::: zone-end
 

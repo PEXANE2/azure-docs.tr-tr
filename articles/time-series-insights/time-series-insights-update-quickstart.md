@@ -83,7 +83,7 @@ Time Series Insights ve algılayıcı telemetrimizi kullanarak, geçmiş veriler
 1. Bazı senaryolarda verilerde hafif ipuçları ortaya çıkarmak için gelişmiş analizler gerekir. **6/25**tarihinde Windmill **W6** seçin.
 
     1. Görünüm aralığını **7/1/17 20:00 6/1/17 20:00 (UTC)** olarak değiştirin.
-    1. **Contoso bitki 1** > **W6** > **güvenlik**sistemiVoltageActuatorSwitchWarning > ' nı seçin. ****
+    1. **Contoso bitki 1** > **W6** > **güvenlik**sistemiVoltageActuatorSwitchWarning > ' nı seçin.
 
        [![Görünüm aralığını değiştirin ve W6 seçin](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 

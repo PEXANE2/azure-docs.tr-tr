@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623888"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879442"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -93,7 +93,7 @@ HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el il
 
 Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyalarını gözden geçiriyorsunuz.  Hizmetler Apache HBase, Apache Spark ve diğer birçok tane içerebilir. Bir Hadoop kümesi çok sayıda ayrıntılı günlük oluşturur, bu nedenle hangi günlüklerin yararlı (ve olmayan) zaman alabilir olduğunu belirler.  Günlük sistemini anlamak, günlük dosyalarının hedeflenen yönetimi için önemlidir.  Aşağıda örnek bir günlük dosyası verilmiştir.
 
-![HDInsight günlük dosyası örneği](./media/hdinsight-log-management/logs.png)
+![HDInsight günlük dosyası örneği](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop günlük dosyalarına erişin
 
@@ -148,7 +148,7 @@ Hangi günlük dosyalarının silineceğini belirledikten sonra, belirli bir sü
 
 Belirli günlük dosyaları için, düşük fiyatlı günlük dosyası arşivleme yaklaşımını kullanabilirsiniz. Azure Resource Manager etkinlik günlükleri için, Azure portal kullanarak bu yaklaşımı inceleyebilirsiniz.  HDInsight örneğiniz için Azure portal **etkinlik günlüğü**' bağlantısını seçerek ARM günlüklerinin arşivlenmesini ayarlayın.  Etkinlik günlüğü arama sayfasının üst kısmında **dışarı** aktar menü öğesini seçerek **etkinlik günlüğünü dışarı aktar** bölmesini açın.  Abonelik, bölge, bir depolama hesabına verip vermeyeceğinizi ve günlüklerin saklanacağı gün sayısını girin. Aynı bölmede, bir olay hub 'ına dışa aktarıp vermeyeceğinizi de belirtebilirsiniz. 
 
-![Günlük dosyalarını dışarı aktar](./media/hdinsight-log-management/archive.png)
+![Günlük dosyalarını dışarı aktar](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Alternatif olarak, PowerShell ile günlük arşivleme komut dosyası oluşturabilirsiniz.  Örnek bir PowerShell betiği için bkz. Azure [Otomasyonu günlüklerini Azure Blob depolamaya arşivleme](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 

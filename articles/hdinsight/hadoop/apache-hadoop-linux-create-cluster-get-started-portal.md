@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: a22fef717acdc0cd619ddfe1efdf256b1255dbf9
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: MT
+ms.openlocfilehash: 0f135e79f95a2cf3b134a729722731812d606845
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735949"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882203"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma
 
@@ -58,7 +58,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
     |Küme türü     | **Hadoop**’u seçin |
     |Version     | **Hadoop 2.7.3 (HDI 3.6)** seçeneğini belirleyin|
 
-    ![HDInsight Linux - Küme temel değerleri sağlamaya başlama](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "HDInsight kümesi oluşturmak için temel değerler sağlama")
+    ![HDInsight Linux kullanmaya başlama küme yapılandırması](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "HDInsight Linux kullanmaya başlama küme yapılandırması")
 
     **Seç** ' i seçin ve ardından depolama ayarlarına Ilerlemek için **İleri** ' yi seçin.
 
@@ -101,7 +101,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
 3. Aşağıdaki ekran görüntüsünde gösterildiği gibi **Hive Görünümü**’nü açın:
 
-    ![Ambari görünümlerini seçme](./media/apache-hadoop-linux-tutorial-get-started/selecthiveview.png "HDInsight Hive Viewer menüsü")
+    ![Ambari görünümlerini seçme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Viewer menüsü")
 
 4. Sayfadaki **SORGU** sekmesinde, aşağıdaki HiveQL ifadelerini çalışma sayfasına yapıştırın:
 
@@ -115,7 +115,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
     Sorgu tamamlandıktan sonra **sorgu** sekmesi işlemin sonuçlarını görüntüler. **hivesampletable** adlı bir tablo görürsünüz. Bu örnek Hive tablosu tüm HDInsight kümeleri ile birlikte gelir.
 
-    ![HDInsight Hive görünümleri](./media/apache-hadoop-linux-tutorial-get-started/hiveview.png "HDInsight Hive Görünümü Sorgu Düzenleyicisi")
+    ![HDInsight Hive Görünüm sonuçları](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "HDInsight Hive Görünüm sonuçları")
 
 6. Aşağıdaki sorguyu çalıştırmak için 4. ve 5. adımı yineleyin:
 

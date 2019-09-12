@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191787"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883413"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
 
@@ -98,6 +98,9 @@ Bu rapor, gözden geçirme notlarıyla birlikte başarısız olan ilkelerin aç�
 ## <a name="preview-creation"></a>Önizleme oluşturma
 
 **Önizleme oluşturma** adımı sırasında teklifinizin yalnızca teklifinizin Önizleme bölümünde belirttiğiniz kitlelerin erişebileceği bir sürümünü oluşturacağız.
+
+>[!Note]
+> Bu adımı, kuruluşunuzun dışındaki kişileri bir teklifle görünürlüğe yönelik olarak sunmak için kullanmayın. Bunun yerine **özel teklif** seçeneğini kullanın. Bu noktada, teklifiniz tam olarak sınanmamıştır ve doğrulanmaz ve dağıtım dışı için hazırlanma.
 
 ## <a name="publisher-approval"></a>Yayımcı onayı
 

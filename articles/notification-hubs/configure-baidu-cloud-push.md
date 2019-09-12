@@ -1,37 +1,40 @@
 ---
-title: Baidu bulut anında iletme Azure Notification hubs'ı yapılandırma | Microsoft Docs
-description: Bir Azure bildirim hub'ı Baidu ayarlarını yapılandırmayı öğrenin.
+title: Azure Notification Hubs Baidu Bulut anında gönderimi yapılandırma | Microsoft Docs
+description: Bir Azure Notification Hub 'ı için Baidu ayarlarını yapılandırmayı öğrenin.
 services: notification-hubs
 author: jwargo
 manager: patniko
-editor: spelluru
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
-ms.openlocfilehash: 9942b1d4d8b5d538f5150a36e596753282039be7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9feb5f66c5ae979a239c3349b2b1347ad307ce49
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234251"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884654"
 ---
-# <a name="configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portalında bir bildirim hub'ı için Baidu bulut anında iletme ayarları yapılandırma
-Bu makalede Azure portalını kullanarak bir Azure bildirim hub'ı Baidu bulut anında iletme ayarlarını yapılandırmak nasıl gösterir. 
+# <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Kullanım dışı Azure portal bir Bildirim Hub 'ı için Baidu Bulut anında Iletme ayarlarını yapılandırma
+
+Bu makalede, Azure portal kullanarak bir Azure Notification Hub 'ı için Baidu Bulut anında Iletme ayarlarının nasıl yapılandırılacağı gösterilmektedir.
+
+> [!IMPORTANT]
+> Bu öğretici kullanım dışıdır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bildirim hub'ı henüz oluşturmadıysanız, şimdi oluşturun. Daha fazla bilgi için [Azure portalında bir Azure bildirim hub'ı oluşturma](create-notification-hub-portal.md). 
+Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md)konusuna bakın. 
 
 ## <a name="configure-baidu-cloud-push"></a>Baidu Cloud Push'ı yapılandırma
-Aşağıdaki yordam, Baidu bulut anında iletme ayarları için bir bildirim hub'ı yapılandırma adımları sunar:
+Aşağıdaki yordam bir Bildirim Hub 'ı için Baidu Bulut anında Iletme ayarlarını yapılandırma adımları sunar:
 
-1. Azure portalında, üzerinde **bildirim hub'ı** sayfasında **Baidu (Android China)** sol menüsünde. 
-2. Girin **API anahtarı** Baidu bulut anında iletme projesinde Baidu konsolundan aldığınız. 
-3. Girin **gizli anahtar** Baidu bulut anında iletme projesinde Baidu konsolundan aldığınız. 
+1. Azure portal, **Bildirim Hub** 'ı sayfasında sol menüdeki **Baidu (Android China)** öğesini seçin. 
+2. Baidu bulut anında iletme projesindeki Baidu konsolundan edindiğiniz **API anahtarını** girin. 
+3. Baidu bulut anında iletme projesindeki Baidu konsolundan edindiğiniz **gizli anahtarı** girin. 
 4. **Kaydet**’i seçin. 
 
-    ![Ekran görüntüsü, bildirim anında iletme bildirimleri Baidu (Android China) yapılandırmasını gösteren hub'ları](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![Anında iletme bildirimleri için Baidu (Android China) yapılandırmasını gösteren Notification Hubs ekran görüntüsü](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Notification Hubs ve Baidu bulut anında iletme kullanarak Baidu için bildirimler göndermek için bir öğretici için adım adım yönergeler içeren bkz [Baidu kullanarak Notification Hubs ile çalışmaya başlama](notification-hubs-baidu-china-android-notifications-get-started.md).
+Azure Notification Hubs ve Baidu Cloud Push kullanarak Baidu 'e bildirim göndermeye yönelik adım adım yönergeleri içeren bir öğretici için bkz. [Baidu kullanarak Notification Hubs kullanmaya başlama](notification-hubs-baidu-china-android-notifications-get-started.md).

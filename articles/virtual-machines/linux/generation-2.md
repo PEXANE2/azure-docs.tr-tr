@@ -11,22 +11,23 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: 9d94c4be90b408da7635f47567aa8f713f14de86
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5dbd13775bd91a2bab3a7a4989cb14f4d7b44fa8
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083181"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900728"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 'da 2. nesil VM 'Ler (Önizleme) desteği
 
 > [!IMPORTANT]
-> 2\. nesil VM 'Ler için Azure desteği şu anda önizleme aşamasındadır. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> 2\. nesil VM 'Ler için Azure desteği şu anda önizleme aşamasındadır.
+> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-2\. nesil sanal makineler (VM 'Ler) için destek artık Azure 'da önizlemede sunulmaktadır. Oluşturduktan sonra bir sanal makinenin neslini değiştiremezsiniz, bu nedenle bir oluşturma seçmeden önce bu sayfadaki konuları gözden geçirin. 
+2\. nesil sanal makineler (VM 'Ler) için destek artık Azure 'da önizlemede sunulmaktadır. Oluşturduktan sonra bir sanal makinenin neslini değiştiremezsiniz, bu nedenle bir oluşturma seçmeden önce bu sayfadaki konuları gözden geçirin.
 
 2\. nesil VM 'ler, 1. nesil VM 'lerde desteklenmeyen önemli özellikleri destekler. Bu özellikler, artan bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) içerir. 2\. nesil VM 'Lerde, henüz Azure 'da desteklenmeyen bazı özellikler de vardır. Daha fazla bilgi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
@@ -37,14 +38,18 @@ ms.locfileid: "70083181"
 1\. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir. Azure artık aşağıdaki seçili VM serileri için Önizleme 2. nesil destek sunuyor:
 
 * [B serisi](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
+* [DC Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
 * [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) ve [Dsv3 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
 * [GS serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
+* [HB Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
+* [HC Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
 * [LS-Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) ve [Lsv2 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
 * [Mv2 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
 * [NCv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) ve [NCv3 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
 * [ND serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
+* [NVv2 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketi 'nde 2. nesil VM görüntüleri
 
@@ -54,6 +59,8 @@ ms.locfileid: "70083181"
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Veri Merkezi
 * Windows Server 2012 Datacenter
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi vs. Azure 2. nesil VM 'Ler
 
@@ -120,6 +127,21 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
 
 * **1. nesil ve 2. nesil VM 'Ler arasında bir fiyat farkı var mı?**  
     Hayır.
+
+* **Şirket içi nesil 2 VM 'den bir. vhd dosyası var. Azure 'da 2. nesil VM oluşturmak için bu. vhd dosyasını kullanabilir miyim?**
+  Evet, 2. nesil. vhd dosyanızı Azure 'a getirebilir ve bunu kullanarak 2. nesil bir VM oluşturabilirsiniz. Bunu yapmak için aşağıdaki adımları kullanın:
+    1. . Vhd 'yi, sanal makineyi oluşturmak istediğiniz bölgedeki bir depolama hesabına yükleyin.
+    1. . Vhd dosyasından yönetilen disk oluşturun. HyperV oluşturma özelliğini v2 olarak ayarlayın. Aşağıdaki PowerShell komutları, yönetilen disk oluştururken HyperV oluşturma özelliğini ayarlar.
+
+        ```powershell
+        $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
+        $osDiskName = 'gen2Diskfrmgenvhd'  #<Provide a name for your disk>
+        $diskconfig = New-AzDiskConfig -Location '<location>' -DiskSizeGB 127 -AccountType Standard_LRS -OsType Windows -HyperVGeneration "V2" -SourceUri $sourceUri -CreateOption 'Import'
+        New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
+        ```
+
+    1. Disk kullanılabilir olduğunda, bu diski ekleyerek bir VM oluşturun. Oluşturulan VM bir 2. nesil VM olacaktır.
+    2\. nesil VM oluşturulduğunda, bu VM 'nin görüntüsünü isteğe bağlı olarak genelleştirmenize de sağlayabilirsiniz. Görüntüyü genelleştirerek birden çok VM oluşturmak için kullanabilirsiniz.
 
 * **Nasıl yaparım? işletim sistemi disk boyutu artsın mı?**  
   2 TB 'den büyük işletim sistemi diskleri 2. nesil VM 'lere yenidir. Varsayılan olarak, 1. nesil VM 'Ler için işletim sistemi diskleri 2 TB 'den daha küçüktür. Disk boyutunu önerilen en fazla 4 TB 'a kadar artırabilirsiniz. İşletim sistemi disk boyutunu artırmak için Azure CLı veya Azure portal kullanın. Diskleri program aracılığıyla genişletme hakkında daha fazla bilgi için bkz. [diski yeniden boyutlandırma](expand-disks.md).

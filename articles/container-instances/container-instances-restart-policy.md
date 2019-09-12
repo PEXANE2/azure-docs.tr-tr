@@ -71,7 +71,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query co
 "Terminated"
 ```
 
-Örnek kapsayıcısının durumu sonlandırıldıktan sonra, ** kapsayıcı günlüklerini görüntüleyerek onun görev çıktısını görebilirsiniz. Betiğin çıkışını görüntülemek için [az Container logs][az-container-logs] komutunu çalıştırın:
+Örnek kapsayıcısının durumu sonlandırıldıktan sonra,kapsayıcı günlüklerini görüntüleyerek onun görev çıktısını görebilirsiniz. Betiğin çıkışını görüntülemek için [az Container logs][az-container-logs] komutunu çalıştırın:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer

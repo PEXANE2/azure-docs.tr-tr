@@ -71,7 +71,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
-1. **Geçiş hedefleri** >  **sunucularında**Azure geçişi 'nde **** **değerlendirmeler ' a tıklayın: Sunucu değerlendirmesi**.
+1. **Geçiş hedefleri** >  **sunucularında**Azure geçişi 'nde **değerlendirmeler ' a tıklayın: Sunucu değerlendirmesi**.
 2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
 
     ![Değerlendirme özeti](./media/how-to-create-assessment/assessment-summary.png)

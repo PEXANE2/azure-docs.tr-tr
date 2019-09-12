@@ -35,7 +35,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 4. **3B** 'in seçili olduğundan emin olun.
 5. Projenizi adlandırın ve bir kaydetme **konumu**girin.
 6. Tıklayın **proje oluştur**.
-7. Boş varsayılan sahneyi kullanarak yeni bir dosyaya kaydedin: Dosya > **farklı kaydet**.
+7. Boş varsayılan sahneyi kullanarak yeni bir dosyaya kaydedin:Dosya > **farklı kaydet**.
 8. Yeni sahneyi **Main** olarak adlandırın ve **Kaydet** düğmesine basın.
 
 **Proje ayarlarını ayarlama**
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Şimdi geliştirme için Windows holographic SDK 'sını hedefmize yardımcı olan bazı Unity proje ayarlarını ayarlayacağız. 
 
 İlk olarak, uygulamamız için kalite ayarları ayarlamanıza izin verir. 
-1. **Proje ayarlarını**  > Düzenle > **kalitesini** seçin
+1. **Proje ayarlarını** > Düzenle > **kalitesini** seçin
 2. **Windows Mağazası** logosunun altındaki sütunda, **varsayılan** satırdaki oka tıklayın ve **çok düşük**' ı seçin. **Windows Mağazası** sütununda ve **çok düşük** satırdaki kutu yeşil olduğunda ayarın doğru uygulandığını bilirsiniz.
 
 Unity 'nin dışarı aktarmaya çalıştığınız uygulamanın 2B görünümü yerine bir derinlikli görünüm oluşturması gerektiğini bilmesini istiyoruz. Windows 10 SDK 'sını hedefleyen Unity üzerinde sanal gerçeklik desteğini etkinleştirerek bir derinlikli görünüm oluşturuyoruz.
@@ -58,12 +58,12 @@ Unity 'nin dışarı aktarmaya çalıştığınız uygulamanın 2B görünümü 
 > Windows Mağazası simgesini görmüyorsanız, yüklemeden önce Windows Mağazası .NET betiği arka ucunu seçtiğinizden emin olmak için çift işaretleyin. Aksi takdirde, Unity 'yi doğru Windows yüklemesiyle yeniden yüklemeniz gerekebilir.
 
 **Komut dosyası arka uç yapılandırmasını doğrula**
-1.  > **Proje ayarları**   oyuncusunu Düzenle ' ye gidin (hala Player 'ın önceki adımdan açık olması gerekebilir). > 
+1.  > **Proje ayarları** oyuncusunu Düzenle ' ye gidin (hala Player 'ın önceki adımdan açık olması gerekebilir). > 
 2. **Oynatıcı ayarları**Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
 3. **Diğer ayarlar** yapılandırması bölümünde, **komut dosyası arka** ucunun **IL2CPP**olarak ayarlandığından emin olun.
 
 **Özellikleri ayarla**
-1.  > **Proje ayarları**   oyuncusunu Düzenle ' ye gidin (hala Player 'ın önceki adımdan açık olması gerekebilir). > 
+1.  > **Proje ayarları** oyuncusunu Düzenle ' ye gidin (hala Player 'ın önceki adımdan açık olması gerekebilir). > 
 2. **Oynatıcı ayarları**Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
 3. **Yayımlama ayarları** yapılandırması bölümünde, **ınternetclientserver** ve **spatialperception**' yı denetleyin.
 

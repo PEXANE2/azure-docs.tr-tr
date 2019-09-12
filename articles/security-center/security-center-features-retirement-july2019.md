@@ -1,19 +1,19 @@
 ---
 title: Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz) | Microsoft Docs
-description: Bu makalede, güvenlik merkezi 'nde 31 Temmuz 2019 ' de kullanımdan kaldırılacak özellikler açıklanmaktadır.
+description: Bu makalede, güvenlik merkezi 'nde 31 Temmuz 2019 ' de kullanımdan kaldırılan özellikler açıklanmaktadır.
 services: security-center
-author: yoavfrancis
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: article
-ms.date: 4/16/2019
-ms.author: yoafr
-ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876511"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910583"
 ---
 > [!NOTE]
 > Bu belgede, 31 Temmuz 2019 ' de Azure Güvenlik Merkezi 'nden kullanımdan kaldırılan özelliklerin listesi ayrıntılı olarak listelenmektedir.
@@ -23,12 +23,12 @@ ms.locfileid: "69876511"
 
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
 
-Azure Güvenlik Merkezi 'Nde son altı ay içinde çeşitli [geliştirmeler](https://azure.microsoft.com/updates/?product=security-center) yaptık.
-Bu geliştirilmiş özelliklerle, bazı gereksiz özellikleri ve ilgili API 'Leri 31 Temmuz 2019 tarihinde Güvenlik Merkezi 'nden kaldırıyoruz.  
+Azure Güvenlik Merkezi 'Nde on Temmuz 2019 ' e kadar olan altı ay boyunca birkaç [geliştirme](https://azure.microsoft.com/updates/?product=security-center) yaptık.
+Bu geliştirilmiş özelliklerle, 31 Temmuz 2019 ' de Güvenlik Merkezi 'nden bazı yedekli özellikleri ve ilgili API 'Leri kaldırdık.
 
 Bu devre dışı bırakma özelliklerinin çoğu, Azure Güvenlik Merkezi 'nde veya Azure Log Analytics yeni işlevlerle değiştirilebilir. Diğer özellikler, [Azure Sentinel (Önizleme)](https://azure.microsoft.com/services/azure-sentinel/)kullanılarak uygulanabilir.
 
-Kullanımdan kaldırılacak Güvenlik Merkezi özellikleri şunlardır:
+Kullanımdan kaldırılan güvenlik merkezi özellikleri şunları içerir:
 
 - [Olaylar panosu](#menu_events)
 - [Arama menüsü girdisi](#menu_search)
@@ -46,7 +46,7 @@ Bu makalede, kullanımdan kaldırılan her özellik ve değiştirme özellikleri
 
 Güvenlik Merkezi, makinelerinizdeki güvenlikle ilgili çeşitli yapılandırma ve olayları toplamak için Microsoft Monitoring Agent kullanır. Bu olayları çalışma alanlarınızdaki depolar. [Olaylar panosu](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) , bu verileri görüntülemenize ve Log Analytics için bir giriş noktası sağlamanıza olanak tanır.
 
-Bir çalışma alanı seçtiğinizde görüntülenen olaylar panosunu devre dışı veriyoruz:
+Bir çalışma alanı seçtiğinizde görüntülenen olaylar panosunu kullanımdan kaldırdı:
 
 ![Olaylar panosu][2]
 
@@ -60,7 +60,7 @@ Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişil
 
 ## Arama menüsü girdisi<a name="menu_search"></a>
 
-Azure Güvenlik Merkezi şu anda Azure Izleyici günlükleri aramasını kullanarak güvenlik verilerinizi alır ve analiz eder. Bu ekran, arama sayfası Log Analytics bir pencere işlevi görür ve kullanıcıların seçili çalışma alanlarında arama sorguları çalıştırmasına olanak sağlar. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi arama](https://docs.microsoft.com/azure/security-center/security-center-search). Bu arama penceresini devre dışı ıyoruz:
+Azure Güvenlik Merkezi şu anda Azure Izleyici günlükleri aramasını kullanarak güvenlik verilerinizi alır ve analiz eder. Bu ekran, arama sayfası Log Analytics bir pencere işlevi görür ve kullanıcıların seçili çalışma alanlarında arama sorguları çalıştırmasına olanak sağlar. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi arama](https://docs.microsoft.com/azure/security-center/security-center-search). Bu arama penceresi kullanımdan kaldırıldı:
 
 ![Arama sayfası][4]
 
@@ -86,7 +86,7 @@ Güvenlik Merkezi 'ndeki klasik kimlik & erişim deneyimi şu anda Log Analytics
 
    ![Kimlik sayfası-Pano][8]
 
-Önceki adımlarda gösterilen üç ekranın hepsini devre dışı sunuyoruz. Verileriniz Log Analytics güvenlik çözümünde kullanılabilir olmaya devam eder ve değiştirilmez veya kaldırılmaz.
+Önceki adımlarda gösterilen üç ekranın hepsini devre dışı bırakıyoruz. Verileriniz Log Analytics güvenlik çözümünde kullanılabilir kalır ve değiştirilmez veya kaldırılmaz.
 
 ### <a name="classic-identity--access-preview---the-new-experience"></a>Klasik kimlik & erişimi (Önizleme)-yeni deneyim
 
@@ -100,19 +100,19 @@ Güvenlik Merkezi 'nde **kimlik & erişim (Önizleme)** seçilerek Log Analytics
 
 Güvenlik Merkezi, güvenlik tehditlerini belirlemenize yardımcı olmak için size bir [güvenlik uyarıları Haritası](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) sağlar. Bu eşlemedeki **güvenlik olaylarına git eşleme** düğmesi, seçili çalışma alanındaki ham güvenlik olaylarını görüntülemenize olanak tanıyan bir pano açar.
 
-**Güvenlik olayları haritasını git** düğmesine ve çalışma alanı başına panosuna git ' i kaldırıyoruz.
+**Güvenlik olayları eşleme** düğmesine ve çalışma alanı başına panosuna git ' i kaldırdık.
 
 ![Güvenlik uyarıları Haritası-düğme][10]
 
-**Güvenlik olayları eşlemesini git** düğmesini seçtiğinizde, tehdit bilgileri panosunu açarsınız. Tehdit bilgileri panosunu devre dışı ıyoruz.  
+**Güvenlik olayları eşlemesini git** düğmesini seçtiğinizde, tehdit bilgileri panosunu açarsınız. Tehdit bilgileri panosunu devre dışı bırakıyoruz.
 
 ![Tehdit Zekası panosu][11]
 
-Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics 'de güvenlik uyarıları Haritası (Önizleme) ekranını açarsınız. Bu ekranı devre dışı ıyoruz.
+Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics 'de güvenlik uyarıları Haritası (Önizleme) ekranını açarsınız. Bu ekranı kullanımdan kaldırdı.
 
 ![Log Analytics 'de güvenlik uyarıları Haritası][12]
 
-Mevcut verileriniz Log Analytics güvenlik çözümünde kullanılabilir olmaya devam eder ve değiştirilmez veya kaldırılmaz.
+Mevcut verileriniz Log Analytics güvenlik çözümünde kullanılabilir kalır ve değiştirilmez veya kaldırılmaz.
 
 ### <a name="security-events-map---the-new-experience"></a>Güvenlik olayları Haritası-yeni deneyim
 
@@ -120,10 +120,10 @@ Güvenlik Merkezi 'Nde yerleşik olarak bulunan uyarılar eşleme işlevini kull
 
 ## Özel uyarı kuralları (Önizleme)<a name="menu_customalerts"></a>
 
-Temel altyapısı devre dışı bırakıldığından, 30 Haziran 2019 ' de [özel uyarı deneyimini devre dışı](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) sunuyoruz. Bu durumda, var olan özel uyarı kurallarını düzenleyebilirsiniz, ancak yenilerini ekleyemeyebilirsiniz. Devre dışı bırakma tarihi, tanımlanan tüm özel uyarılar etkili olmayacaktır ve bu kurallara dayalı olarak güvenlik uyarıları oluşturulmaz.
+Temel altyapısı kullanımdan kalkdığı için, 30 Haziran 2019 ' de [özel uyarı deneyimini kullanımdan](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) kaldırdı. Kullanımdan kaldırma tarihinden sonra özel güvenlik uyarıları artık oluşturulmaz.
 [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 'i etkinleştirmenizi ve özel uyarılarınızı orada yeniden oluşturmanızı öneririz. Alternatif olarak, Azure Izleyici günlük uyarıları ile uyarılarınızı de oluşturabilirsiniz.
 
-Mevcut uyarılarınızı tutmak ve Azure Sentinel ile oluşturmak için:
+Azure Sentinel ile özel uyarılar oluşturmak için:
 
 1. [Azure Sentinel 'ı açın](https://portal.azure.com/#create/Microsoft.ASI/preview) ve özel uyarılarınızın depolandığı çalışma alanını seçin
 1. Menüden **analiz** seçin
@@ -137,30 +137,30 @@ Azure Sentinel 'i kullanmaya ilgileniyorsanız, uyarılarınızı Azure Izleyici
 
 ## Güvenlik uyarıları araştırması<a name="menu_investigate"></a>
 
-Güvenlik Merkezi 'ndeki [araştırma özelliği,](https://docs.microsoft.com/azure/security-center/security-center-investigation) olası bir güvenlik olayını önceliklendirmenize yardımcı olur. Özelliği, bir olayın kapsamını anlamanıza ve kök nedenini izlemenize olanak sağlar. Bu özelliği [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)'de geliştirilmiş bir deneyimle değiştirildiğinden Güvenlik Merkezi 'nden kaldırdık.
+Güvenlik Merkezi 'ndeki [araştırma özelliği,](https://docs.microsoft.com/azure/security-center/security-center-investigation) olası bir güvenlik olayını önceliklendirmenize yardımcı olur. Özelliği, bir olayın kapsamını anlamanıza ve kök nedenini izlemenize olanak sağlar. Bu özelliği [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)'de geliştirilmiş bir deneyimle değiştirildiğinden Güvenlik Merkezi ' nden kaldırdık.
 
 ![Güvenlik olayı][14]
 
-Bir **güvenlik olayı** ekranından **araştır** düğmesini seçtiğinizde Log Analytics araştırma panosunu (Önizleme) açarsınız. Araştırma panosunu devre dışı ıyoruz.  
+Bir **güvenlik olayı** ekranından **araştır** düğmesini seçtiğinizde Log Analytics araştırma panosunu (Önizleme) açarsınız. Araştırma panosunu kullanımdan kaldırdı.
 
-Mevcut verileriniz Log Analytics güvenlik çözümünde kullanılabilir olmaya devam eder ve değiştirilmez veya kaldırılmaz.
+Mevcut verileriniz Log Analytics güvenlik çözümünde kullanılabilir kalır ve değiştirilmez veya kaldırılmaz.
 
 ![Log Analytics araştırma panosu][15]
 
 ### <a name="investigation---the-new-experience"></a>Araştırma-yeni deneyim
 
-Zengin araştırma deneyimi için [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 'e geçiş yapmanız önerilir. Azure Sentinel, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri arayalım için güçlü arama ve sorgu araçları sağlar.  
+Zengin araştırma deneyimi için [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 'e geçiş yapmanız önerilir. Azure Sentinel, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri arayalım için güçlü arama ve sorgu araçları sağlar.
 
 ## Güvenlik çözümlerinin alt kümesi<a name="menu_solutions"></a>
 
-Güvenlik Merkezi, [Azure 'da tümleşik güvenlik çözümlerini](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)etkinleştirebilir. Güvenlik Merkezi 'nden aşağıdaki iş ortağı çözümlerini devre dışı sunuyoruz. Bu çözümler [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 'de, ek veri kaynaklarıyla birlikte etkinleştirilir.
+Güvenlik Merkezi, [Azure 'da tümleşik güvenlik çözümlerini](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)etkinleştirebilir. Güvenlik Merkezi 'nden aşağıdaki iş ortağı çözümlerini kullanımdan kaldırdı. Bu çözümler [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 'de, ek veri kaynaklarıyla birlikte etkinleştirilir.
 
 - [Yeni nesil güvenlik duvarı ve Web uygulaması güvenlik duvarı çözümleri](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
 - [Ortak olay biçimini (CEF) destekleyen güvenlik çözümlerinin tümleştirilmesi](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Kimlik Koruması](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Kullanımdan kaldırıldıktan sonra, kullanıcı arabiriminden veya API 'den önceki listede bahsedilen herhangi bir çözüm türünü ekleyemez veya değiştiremeyeceksiniz. Azure Güvenlik Merkezi, daha önce bahsedilen iş ortağı çözümlerinin yeni örneklerini bulamaz.
+Kullanımdan kaldırıldıktan sonra, kullanıcı arabiriminden veya API 'den önceki listede bahsedilen çözüm türlerini ekleyemez veya değiştiremezsiniz. Azure Güvenlik Merkezi, artık bu iş ortağı çözümlerinin yeni örneklerini bulamaz.
 
 Bağlı çözümleriniz varsa Azure Sentinel 'e geçiş yapmanız önerilir.
 
@@ -168,9 +168,9 @@ Bağlı çözümleriniz varsa Azure Sentinel 'e geçiş yapmanız önerilir.
 
 ## Güvenlik ilkeleri için güvenlik yapılandırmasını düzenleme<a name="menu_securityconfigurations"></a>
 
-Azure Güvenlik Merkezi, [150 üzerinde önerilen kuralların](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)bir kümesini uygulayarak güvenlik yapılandırmasını izler. işletim sistemini sağlamlaştırma. Bu kurallar güvenlik duvarları, denetim, parola ilkeleri ve daha fazlası ile ilgilidir. Bir makinenin yapılandırmasında güvenlik açığı varsa Güvenlik Merkezi bu konuyla ilgili bir güvenlik önerisi oluşturur. [Güvenlik Yapılandırması düzenleme ekranı](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) , müşterilerin Güvenlik Merkezi 'nde varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmesini sağlar.
+Azure Güvenlik Merkezi, işletim sistemini güçlendirme amacıyla [150'den fazla önerilen kuraldan](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) oluşan bir küme uygulayarak güvenlik yapılandırmalarını izler. Bu kurallar güvenlik duvarları, denetim, parola ilkeleri ve daha fazlası ile ilgilidir. Bir makinenin yapılandırmasında güvenlik açığı varsa Güvenlik Merkezi bu konuyla ilgili bir güvenlik önerisi oluşturur. [Güvenlik Yapılandırması düzenleme ekranı](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) , müşterilerin Güvenlik Merkezi 'nde varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmesini sağlar.
 
-Bu önizleme özelliğini devre dışı ıyoruz. Kullanımdan kaldırma tarihinden sonra, güvenlik yapılandırışlarınızı varsayılan değerlerine geri döndürmek isterseniz, [aşağıdaki yönergeleri](https://aka.ms/ascresetsecurityconfigurations) kullanarak API veya PowerShell aracılığıyla bunu yapabilirsiniz
+Bu önizleme özelliğini kullanımdan kaldırdı. Güvenlik yapılandırmalarınızı, kullanımdan kaldırma tarihinden sonra varsayılan değerlerine geri döndürmek için [aşağıdaki yönergeleri](https://aka.ms/ascresetsecurityconfigurations) kullanarak API veya PowerShell aracılığıyla bunu yapın
 
 ![Güvenlik yapılandırmalarını düzenle][17]
 
@@ -180,7 +180,7 @@ Bu önizleme özelliğini devre dışı ıyoruz. Kullanımdan kaldırma tarihind
 
 ## Log Analytics çalışma alanları için güvenlik ve denetim panosu<a name="menu_securityomsdashboard"></a>
 
-Güvenlik ve denetim panosu başlangıçta OMS portalında kullanıldı. Log Analytics, pano, önemli güvenlik olayları ve tehditleri, tehdit bilgileri Haritası ve çalışma alanına kaydedilen güvenlik olaylarının kimlik ve erişim değerlendirmesi için çalışma alanı başına genel bakış sağlar. Panoyu kaldırıyoruz. Pano Kullanıcı arabiriminde zaten önerdiğimiz gibi Azure Güvenlik Merkezi 'ne geçiş yapmanız önerilir.
+Güvenlik ve denetim panosu başlangıçta OMS portalında kullanıldı. Log Analytics, pano, önemli güvenlik olayları ve tehditleri, tehdit bilgileri Haritası ve çalışma alanına kaydedilen güvenlik olaylarının kimlik ve erişim değerlendirmesi için çalışma alanı başına genel bakış sağlar. Panoyu kaldırdık. Pano Kullanıcı arabiriminde zaten önerdiğimiz gibi Azure Güvenlik Merkezi 'ne geçiş yapmanız önerilir.
 
 ![Log Analytics güvenlik panosu][18]
 
