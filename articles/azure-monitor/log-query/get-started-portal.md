@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348075"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899524"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics kullanmaya başlama
 
@@ -78,7 +78,7 @@ Bu örnekte, arama _olay_ tablosuna kapsamlıdır ve bu tablodaki tüm kayıtlar
 
 ![Şema](media/get-started-portal/schema.png)
 
-Her tabloda, veriler sütun adının yanındaki simgelerle gösterildiği gibi farklı veri türlerine sahip sütunlarda düzenlenir. Örneğin, ekran görüntüsünde gösterilen _olay_ tablosu, metin, bir sayı olan _EventCategory_ ve tarih/saat olan  _TimeGenerated_ gibi sütunlar içerir.
+Her tabloda, veriler sütun adının yanındaki simgelerle gösterildiği gibi farklı veri türlerine sahip sütunlarda düzenlenir. Örneğin, ekran görüntüsünde gösterilen _olay_ tablosu, metin, bir sayı olan _EventCategory_ ve tarih/saat olan _TimeGenerated_ _gibi sütunlar_ içerir.
 
 ## <a name="filter-the-results"></a>Sonuçları filtrele
 _Olay_ tablosundaki her şeyi alarak başlayın.
@@ -162,7 +162,7 @@ Bir zaman grafiğinde, verilerinizde ani bir ani artış veya adım varsa, satı
 ![Akıllı Tanılamalar](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Panoya sabitle
-Bir diyagramı veya tabloyu paylaşılan Azure Panolarınızın birine sabitlemek için Sabitle simgesine tıklayın.
+Bir diyagramı veya tabloyu paylaşılan Azure Panolarınızın birine sabitlemek için Sabitle simgesine tıklayın. Bu simgenin, aşağıdaki ekran görüntüsünden farklı Log Analytics penceresinin en üstüne taşındığını unutmayın.
 
 ![Panoya sabitle](media/get-started-portal/pin-dashboard.png)
 

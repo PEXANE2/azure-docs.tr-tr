@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6be97e3a94a10097e53863577da5bf9c6cde5ea0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734896"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885946"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
 
@@ -64,7 +64,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    * ’*’ karakterlerin sıfır veya daha fazla kez geçtiğini gösterir.
    * ’?‘ tek karakteri gösterir.
 
-   ![Apache Ranger Yönetici Arabirimi Oluşturma İlkesi](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Apache Ranger yönetici kullanıcı arabirimi Policy1 oluşturma](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    **Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
 
@@ -79,7 +79,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Kullanıcı Seçin  |  marketing_user1 |
    |İzinler  | yayımlama, kullanma, oluşturma |
 
-   ![Apache Ranger Yönetici Arabirimi Oluşturma İlkesi](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Apache Ranger yönetici kullanıcı arabirimi Policy2 oluşturma](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. İlkeyi kaydetmek için **Ekle** ' yi seçin.
 

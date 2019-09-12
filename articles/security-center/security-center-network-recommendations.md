@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101023"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910452"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ağ kaynaklarınızı koruyun
 Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
@@ -128,9 +128,9 @@ Bu tabloda uç nokta adı, Internet 'e yönelik IP adresi ve ağ güvenlik grubu
 
 Bu tablo önem derecesine göre sıralanır (sanal makineler ve alt ağlar).
 
-Bu topoloji görünümünde, ilk düzey sanal ağları görüntüler. İkinci ekranların alt ağları vardır ve üçüncü düzey bu alt ağlara ait sanal makineleri görüntüler. Sağ sütunda bu kaynaklar için ağ güvenlik grubu önerilerinin geçerli durumu gösterilmektedir.
+Bu topoloji görünümünde, ilk düzey sanal ağları görüntüler. İkinci alt ağları görüntüler ve üçüncü düzey bu alt ağlara ait sanal makineleri görüntüler. Sağ sütunda bu kaynaklar için ağ güvenlik grubu önerilerinin geçerli durumu gösterilmektedir.
 
-Üçüncü düzey, daha önce açıklananlara benzer olan sanal makineleri görüntüler. Daha fazla bilgi edinmek için herhangi bir kaynağa tıklayabilir veya gerekli güvenlik denetimini veya yapılandırmayı uygulayabilirsiniz.
+Üçüncü düzey, daha önce açıklananlara benzer olan sanal makineleri görüntüler. Daha fazla bilgi edinmek veya gerekli güvenlik denetimini veya yapılandırmayı uygulamak için herhangi bir kaynağa tıklayabilirsiniz.
 
 ## <a name="network-recommendations"></a>Ağ önerileri
 

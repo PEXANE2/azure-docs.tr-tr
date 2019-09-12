@@ -8,17 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557812"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884450"
 ---
-# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleme
-
+# <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleyin
 
 Çevrimdışı değerlendirmeyi tamamlamayı ve sonuçları anlamayı öğrenin.
 
@@ -29,37 +28,42 @@ Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offli
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. Bir kişiselleştirici döngüsüyle yapılandırılmış olması gerekir
-1. Kişiselleştirme döngüsünün temsili bir tahmini veri miktarına sahip olması gerekir. Bu, en az 50.000 olay elde ettiğimiz anlamlı değerlendirme sonuçları için günlüklere bakın.
-
-İsteğe bağlı olarak, aynı değerlendirmede karşılaştırmak ve test yapmak için daha önce de daha önce _öğrendiğiniz öğrenme ilkesi_ dosyalarını vermiş olabilirsiniz.
+* Yapılandırılmış bir kişiselleştirici döngüsü
+* Kişiselleştirme döngüsünün temsili bir veri miktarına sahip olması gerekir. bunun için, en az 50.000 olay üzerinde anlamlı değerlendirme sonuçları elde etmenizi öneririz. İsteğe bağlı olarak, aynı değerlendirmede karşılaştırmak ve test yapmak için daha önce de daha önce _öğrendiğiniz öğrenme ilkesi_ dosyalarını vermiş olabilirsiniz.
 
 ## <a name="steps-to-start-a-new-offline-evaluation"></a>Yeni bir çevrimdışı değerlendirme başlatma adımları
 
-1. Azure portal kişiselleştirme döngüsü kaynağınızı bulun.
-1. "Değerlendirme" bölümüne gidin.
-1. Yeni değerlendirmeye tıklayın
-1. Çevrimdışı değerlendirme için bir başlangıç ve bitiş tarihi seçin. Bunlar geçmişte, değerlendirmede kullanılacak veri aralığını belirten tarihlerdir. [Veri saklama](how-to-settings.md) ayarında belirtilen şekilde bu verilerin günlüklerde bulunması gerekir.
-1. İsteğe bağlı olarak kendi öğrenme ilkenizi karşıya yükleyebilirsiniz. 
-1. Kişiselleştirmede bu süre içinde gözlenen Kullanıcı davranışına göre iyileştirilmiş bir öğrenme Ilkesi oluşturup oluşturulmayacağını belirtin.
-1. Değerlendirmeyi Başlat
+1. [Azure Portal](https://azure.microsoft.com/free/), kişiselleştirme kaynağınızı bulun.
+1. Azure portal **değerlendirmeler** bölümüne gidin ve **değerlendirme oluştur**' u seçin.
+    ![Azure portal, * * Değerlendirmeler * * bölümüne gidin ve * * değerlendirme oluştur * * seçeneğini belirleyin.](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. Aşağıdaki ayarları seçin:
+
+    * Değerlendirme adı
+    * Başlangıç ve bitiş tarihi-bunlar geçmişte, değerlendirmede kullanılacak veri aralığını belirten tarihlerdir. [Veri saklama](how-to-settings.md) ayarında belirtilen şekilde bu verilerin günlüklerde bulunması gerekir.
+    * İyileştirme bulma, **Evet** olarak ayarlandı
+
+    ![Çevrimdışı değerlendirme ayarlarını seçin](./media/offline-evaluation/create-an-evaluation-form.png)
+
+1. **Tamam ' ı**seçerek değerlendirmeyi başlatın. 
 
 ## <a name="results"></a>Sonuçlar
 
 İşlenecek veri miktarına, Karşılaştırılacak öğrenme ilkesi sayısına ve bir iyileştirmenin istenip istenmediğine bağlı olarak, değerlendirmelere çalıştırılması uzun zaman alabilir.
 
-Tamamlandıktan sonra, aşağıdaki sonuçları görebilirsiniz:
+Tamamlandıktan sonra değerlendirme listesinden değerlendirmeyi seçebilirsiniz. 
 
-1. Öğrenme Ilkelerinin karşılaştırmaları, şunlar dahildir:
-    * **Çevrimiçi ilke**: Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi
-    * **Taban çizgisi**: Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde),
-    * **Rastgele ilke**: Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.
-    * **Özel ilkeler**: Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.
-    * **Iyileştirilmiş ilke**: Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.
+Öğrenme Ilkelerinin karşılaştırmaları şunları içerir:
 
-1. Eylemler ve bağlam [özelliklerinin](concepts-features.md) verimliliği.
+* **Çevrimiçi ilke**: Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi
+* **Taban çizgisi**: Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde),
+* **Rastgele ilke**: Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.
+* **Özel ilkeler**: Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.
+* **Iyileştirilmiş ilke**: Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.
 
+![Çevrimdışı değerlendirme ayarlarının sonuç grafiği](./media/offline-evaluation/evaluation-results.png)
 
-## <a name="more-information"></a>Daha Fazla Bilgi
+Eylemler ve bağlam [özelliklerinin](concepts-features.md) verimliliği.
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 * [Çevrimdışı değerlendirmelerinin nasıl çalıştığını](concepts-offline-evaluation.md)öğrenin.

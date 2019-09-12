@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: fbd86698438e09a0c94c06e0e79800b8d38b57c1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a7c02c92ed61e4c8c8bd6a634cc9c6ad3538396e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544848"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883702"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Hızlı Başlangıç: Node. js için istemci kitaplığını Kişiselleştir
 
@@ -46,6 +46,9 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ort
 
 * `PERSONALIZER_KEY`Kaynak anahtarı için.
 * `PERSONALIZER_ENDPOINT`Kaynak uç noktası için.
+
+Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
+
 
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
@@ -153,7 +156,7 @@ Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit ba
 
 Yeniden isteği tamamlamaya yönelik olarak, program kullanıcının seçimini komut satırından alır, her seçime bir sayısal değer atar, sonra benzersiz sıralama olay kimliğini ve sayısal değeri ödül yöntemine gönderir.
 
-Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim sistemlerinde, bu çağrıya ne zaman ve ne gönderileceğini belirlemek, [](concept-rewards.md) özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir. 
+Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim [sistemlerinde, bu çağrıya ne](concept-rewards.md) zaman ve ne gönderileceğini belirlemek, özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir. 
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

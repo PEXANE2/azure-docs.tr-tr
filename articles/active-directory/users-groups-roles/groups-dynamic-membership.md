@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872194"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909778"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -369,14 +369,14 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  Cihaz özniteliği  | Değerler | Örnek
  ----- | ----- | ----------------
  accountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
- displayName | herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
- Cihazostürü | herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
+ displayName | Herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
+ Cihazostürü | Herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | Herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | geçerli bir cihaz kategorisi adı | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
- deviceModel | herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
+ deviceManufacturer | Herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | Herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
  Devicesahiplik | Kişisel, Şirket, bilinmeyen | (Device. Devicesahiplik-EQ "Şirket")
- enrollmentProfileName | Apple cihaz kayıt profili veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
+ enrollmentProfileName | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
  deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: bded3ac97732a7cd18411cc9f4ef1707dbdf68e3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: MT
+ms.openlocfilehash: d53468ae544b02798d7fcd74370d1d3dbdcbd5e0
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735810"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882039"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio Data Lake araçlarını kullanarak Apache Hive sorguları çalıştırma
 
@@ -71,7 +71,7 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
    Gelişmiş gönderme seçeneğini belirlerseniz, betik için **İş Adı**, **Bağımsız Değişkenler**, **Ek Yapılandırmalar** ve **Durum Dizini**’ni yapılandırın:
 
-    ![HDInsight Hadoop Hive sorgusunun ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Sorgu gönderme")
+    ![HDInsight Hadoop Hive sorgusunun ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Sorgu gönderme")
 
 ### <a name="hive-application"></a>Hive uygulaması
 
@@ -115,11 +115,11 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
 6. Araç çubuğundan, bu sorgu için kullanmak istediğiniz **HDInsight kümesini** seçin. Deyimlerini Hive işi olarak çalıştırmak için **Gönder** ' i seçin.
 
-   ![Gönderme çubuğu](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Gönderme çubuğu](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. **Hive Iş Özeti** görünür ve çalışan iş hakkında bilgileri görüntüler. İş **durumu** **tamamlanana**kadar değişene kadar Iş bilgilerini yenilemek için **Yenile** bağlantısını kullanın.
 
-   ![tamamlanmış bir işi görüntüleyen iş Özeti](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![tamamlanmış bir işi görüntüleyen iş Özeti](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
 8. Bu işin çıkışını görüntülemek için **Iş çıkışı** bağlantısını kullanın. Bu sorgu `[ERROR] 3`tarafından döndürülen değer olan öğesini görüntüler.
 

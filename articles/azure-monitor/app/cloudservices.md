@@ -15,7 +15,7 @@ ms.date: 09/05/2018
 ms.author: mbullwin
 ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
 ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/31/2019
 ms.locfileid: "67443330"
@@ -80,7 +80,7 @@ Telemetriyi uygun kaynaklara göndermek için, yapı yapılandırmasına bağlı
 
 Her rol için ayrı bir kaynak oluşturmaya karar verdiyseniz ve her derleme yapılandırması için ayrı bir küme oluşturmak isterseniz, bunların Application Insights portalında oluşturulması en kolay yoldur. Kaynakları çok büyük bir şekilde oluşturursanız, [işlemi otomatikleştirebilirsiniz](../../azure-monitor/app/powershell.md).
 
-1. [Azure Portal][portal] **Yeni** > **Geliştirici**HizmetleriApplicationInsights > ' ni seçin. ****  
+1. [Azure Portal][portal] **Yeni** > **Geliştirici**HizmetleriApplicationInsights > ' ni seçin.  
 
     ![Application Insights bölmesi](./media/cloudservices/01-new.png)
 

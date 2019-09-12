@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c1255296854fd28cca4427b6cac04de7dc7919d8
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: de72daa6d34ea54517d5a21d7467a62d8097581c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810908"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882639"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query kullanarak Excel 'i Apache Hadoop bağlama
 Microsoft büyük veri çözümünün bir anahtar özelliği, Microsoft Business Intelligence (BI) bileşenlerinin Azure HDInsight 'ta Apache Hadoop kümeleriyle Tümleştirmesidir. Birincil örnek, Excel için Microsoft Power Query eklentisini kullanarak, Excel 'i Hadoop kümeniz ile ilişkili verileri içeren Azure depolama hesabına bağlama olanağıdır. Bu makalede, HDInsight ile yönetilen bir Hadoop kümesiyle ilişkili verileri sorgulamak için Power Query ayarlama ve kullanma adımları gösterilmektedir.
@@ -21,14 +21,14 @@ Microsoft büyük veri çözümünün bir anahtar özelliği, Microsoft Business
 ### <a name="prerequisites"></a>Önkoşullar
 Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **An HDInsight küme**. Bir tane yapılandırmak için, bkz. [Azure HDInsight kullanmaya başlama] [HDInsight-Get-Started].
+* **An HDInsight küme**. Bir tane yapılandırmak için bkz. [Azure HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 * Windows 7, Windows Server 2008 R2 veya sonraki bir işletim sistemini çalıştıran **bir iş istasyonu** .
 * **Office 2016, office 2013 Professional Plus, office 365 ProPlus, Excel 2013 tek başına veya office 2010 Professional Plus**.
 
 ## <a name="install-power-query"></a>Power Query yüklensin
 Power Query, çıktı olan veya HDInsight kümesi üzerinde çalışan bir Hadoop işi tarafından oluşturulmuş olan verileri içeri aktarabilir.
 
-Excel 2016 ' de, Power Query & dönüşümü Al bölümünde veri şeridinde tümleştirilmiştir. Eski Excel sürümleri için [Microsoft Indirme merkezi][powerquery-download] ' nden Excel için Microsoft Power Query indirin ve yükleyin.
+Excel 2016 ' de, Power Query & dönüşümü Al bölümünde veri şeridinde tümleştirilmiştir. Eski Excel sürümleri için [Microsoft Indirme merkezi](https://go.microsoft.com/fwlink/?LinkID=286689) ' nden Excel için Microsoft Power Query indirin ve yükleyin.
 
 ## <a name="import-hdinsight-data-into-excel"></a>HDInsight verilerini Excel 'e aktar
 Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e aktarmayı kolaylaştırır; burada PowerPivot ve Power Map gibi BI araçları verileri incelemek, analiz etmek ve sunmak için kullanılabilir.
@@ -43,13 +43,13 @@ Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e akta
 
      - **Veri** menüsünü tıklatın, veri al **& Dönüştür veri** şeridinde **verileri al** ' a tıklayın, **Azure 'dan**ve ardından **Azure HDInsight (bir)** ' e tıklayın.
 
-       ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
+       ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
 
    - Excel 2013/2010
 
      - **Power Query** menüsüne tıklayın, **Azure 'dan**ve ardından **Microsoft Azure HDInsight**' e tıklayın.
    
-       ![HDI. PowerQuery. SelectHdiSource][image-hdi-powerquery-hdi-source]
+       ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
        
        **Not:** **Power Query** menüsünü görmüyorsanız, **Dosya** > **seçenekleri** > **eklentileri**' ne gidin ve sayfanın alt kısmındaki aşağı açılan **Yönet** kutusundan **com eklentileri** ' ni seçin. **Git...** düğmesini seçin ve Excel eklentisi için Power Query kutusunun işaretli olduğunu doğrulayın.
        
@@ -59,10 +59,11 @@ Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e akta
 6. Sorgu Düzenleyicisi 'nin solundaki **Gezgin** bölmesinde, BLOB depolama kapsayıcısı adına çift tıklayın. Varsayılan olarak, kapsayıcı adı küme adı ile aynı addır.
 7. Bulun **HiveSampleData.txt** içinde **adı** sütun (klasör yolu **../hive/warehouse/hivesampletable/ambar**) ve ardından **ikili** sol tarafındaki HiveSampleData.txt. HiveSampleData. txt tüm kümeyle birlikte gelir. İsteğe bağlı olarak, kendi dosyanızı kullanabilirsiniz.
    
-    ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
+    ![HDI.PowerQuery.ImportData](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+
 8. İsterseniz, sütun adlarını yeniden adlandırabilirsiniz. Hazırsanız **& yükle**' ye tıklayın.  Veriler çalışma kitabınıza yüklendi:
    
-    ![HDI. PowerQuery. ımportedtable][image-hdi-powerquery-imported-table]
+    ![HDI. PowerQuery. ımportedtable](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, HDInsight 'tan Excel 'e veri almak için Power Query kullanmayı öğrendiniz. Benzer şekilde, HDInsight 'tan Azure SQL veritabanı 'na veri alabilirsiniz. HDInsight 'a veri yüklemek de mümkündür. Daha fazla bilgi için aşağıdaki makalelere bakın:
@@ -74,9 +75,3 @@ Bu makalede, HDInsight 'tan Excel 'e veri almak için Power Query kullanmayı ö
 * [Azure HDInsight 'A bağlanın ve Visual Studio Data Lake araçları 'nı kullanarak Apache Hive sorguları çalıştırın](apache-hadoop-visual-studio-tools-get-started.md).
 * [Visual Studio Code Için Azure HDInsight aracını kullanın](../hdinsight-for-vscode.md).
 * [HDInsight 'a veri yükleme](./../hdinsight-upload-data.md).
-
-[image-hdi-powerquery-hdi-source]: ./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.png
-[image-hdi-powerquery-importdata]: ./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.importdata.png
-[image-hdi-powerquery-imported-table]: ./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.importedtable.PNG
-
-[powerquery-download]: https://go.microsoft.com/fwlink/?LinkID=286689

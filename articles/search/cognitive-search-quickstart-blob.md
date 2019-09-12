@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure portal Azure Search bir AI zenginleştirme dizini oluşturun'
+title: 'Hızlı Başlangıç: Azure portal-Azure Search bilişsel arama AI zenginleştirme hakkında bilgi edinin'
 description: Azure portal ve örnek verileri kullanarak Azure Search dizin oluşturma portalındaki veri ayıklama, doğal dil ve görüntü işleme becerileri.
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744742"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881096"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Hızlı Başlangıç: Azure Search bilişsel becerileri kullanarak bir AI dizin oluşturma işlem hattı oluşturun
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Hızlı Başlangıç: Azure Search bilişsel becerileri kullanarak bir AI zenginleştirme işlem hattı oluşturun
 
 Azure Search bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/)ile tümleşir, içerik ayıklama, doğal dil işleme (NLP) ve görüntü işleme yeteneklerini bir Azure Search dizin oluşturma işlem hattına ekleyerek aranabilir veya yapılandırılmamış içeriğin daha fazla aranabilir olmasını sağlar. 
 
@@ -79,11 +79,11 @@ Daha sonra dizin oluşturma işlem hattına zenginleştirme adımları ekleyin. 
 
 1. Bilişsel Hizmetler API'si kaynak alma seçeneklerini görüntülemek için bilişsel **Hizmetler Ekle** ' yi genişletin. Bu öğreticinin amaçları doğrultusunda **ücretsiz** kaynağı kullanabilirsiniz.
 
-   ![Bilişsel hizmetler iliştirme](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Bilişsel Hizmetleri Ekleme](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. **Zenginleştirme Ekle** ' yi genişletin ve doğal dil işleme yapan becerileri seçin. Bu hızlı başlangıç için, kişiler, kuruluşlar ve konumlar için varlık tanımayı seçin.
 
-   ![Bilişsel hizmetler iliştirme](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Bilişsel Hizmetleri Ekleme](media/cognitive-search-quickstart-blob/skillset.png)
 
    Portal, OCR işleme ve metin analizi için yerleşik yetenekler sunar. Portalda beceri kümesi, tek bir kaynak alanının üzerinde çalışır. Bu küçük bir hedef gibi görünebilir, ancak Azure blobları için `content` alanı, blob belgesinin çoğunu içerir (örneğin, Word belgesi veya PowerPoint destesi). Aynı şekilde bir blobun tüm içeriği de bu alanda bulunduğundan bu alan ideal bir giriştir.
 

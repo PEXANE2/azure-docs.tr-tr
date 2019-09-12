@@ -48,7 +48,7 @@ Web API kaynakları, erişim belirteci sunan istemci uygulamalarına göre korun
 1. **Web uygulaması/Web API 'Si Ekle** ve **örtük akışa Izin ver**için **Evet**' i seçin.
 1. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Bu öğreticide, örnek yerel olarak çalışır ve tarihinde `https://localhost:5000`dinler.
 1. **Uygulama kimliği URI 'si**IÇIN gösterilen URI 'ye bir API uç noktası tanımlayıcısı girin. Öğreticide, tam URI `api` `https://contosotenant.onmicrosoft.com/api`şuna benzer olacak şekilde yazın.
-1.           **Oluştur**'a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Özellikler sayfasını açmak için *webapi1* uygulamasını seçin.
 1. Özellikler sayfasında gösterilen **uygulama kimliğini** kaydedin. Web uygulamasını yapılandırırken bu KIMLIğIN daha sonraki bir adımda olması gerekir.
 
@@ -76,7 +76,7 @@ Başka bir uygulamadan korumalı bir Web API 'SI çağırmak için, bu uygulama 
 1. **API erişimi**' ni seçin ve ardından **Ekle**' yi seçin.
 1. **API Seç** açılan menüsünde *webapi1*' yi seçin.
 1. **Kapsamları Seç** açılan menüsünde, daha önce tanımladığınız **Merhaba. Read** ve **Hello. Write** kapsamlarını seçin.
-1.           **Tamam**'ı tıklatın.
+1. **Tamam**'ı tıklatın.
 
 Tek sayfalı Web uygulamanız, korumalı Web API 'sini çağırmak için kaydedilir. Bir kullanıcı tek sayfalı uygulamayı kullanmak üzere Azure AD B2C kimliğini doğrular. Tek sayfalı uygulama, korumalı Web API 'sine erişmek için Azure AD B2C bir yetkilendirme izni alır.
 
@@ -136,7 +136,7 @@ Tek sayfalı uygulamanızın ASP.NET Core Web API 'sini çağırmasını sağlam
     ```
 
 1. (Yalnızca Visual Studio) Çözüm Gezgini **Özellikler** altında, *launchsettings. JSON* dosyasını açın ve `iisExpress` sonra bloğu bulun.
-1. (Yalnızca Visual Studio) Değeri, webapi1 uygulamasını önceki bir adımda kaydettiğinizde belirttiğiniz bağlantı noktası numarasıyla güncelleştirin.  `applicationURL` Örneğin:
+1. (Yalnızca Visual Studio) Değeri, webapi1 uygulamasını önceki bir adımda kaydettiğinizde belirttiğiniz bağlantı noktası numarasıyla güncelleştirin. `applicationURL` Örneğin:
 
     ```json
     "iisExpress": {
@@ -149,13 +149,13 @@ Tek sayfalı uygulamanızın ASP.NET Core Web API 'sini çağırmasını sağlam
 
 Serideki [önceki öğreticideki](active-directory-b2c-tutorials-spa.md) tek sayfalı uygulama (Spa), Kullanıcı kaydı ve oturum açma için Azure AD B2C kullanır ve *frabrikamb2c* demo kiracısı tarafından korunan ASP.NET Core Web API 'sini çağırır.
 
-Bu bölümde, tek sayfalı uygulamayı Azure AD B2C kiracınız tarafından korunan ve yerel makinenizde çalıştırdığınız ASP.NET Core Web API 'sini  çağırmak üzere güncelleşolursunuz.
+Bu bölümde, tek sayfalı uygulamayı Azure AD B2C kiracınız tarafından korunan ve yerel makinenizde çalıştırdığınız ASP.NET Core Web API 'sini çağırmak üzere güncelleşolursunuz.
 
 SPA 'daki ayarları değiştirmek için:
 
 1. Önceki öğreticide indirdiğiniz veya Klonladığınız [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] projesinde *index. html* dosyasını açın.
 1. Örneği, daha önce oluşturduğunuz *Hello. Read* kapsamı ve Web API 'sinin URL 'si ile yapılandırın.
-    1. Tanımında değeri, kapsamın tam URI 'siyle  değiştirin (daha önce kaydettiğiniz tam kapsam değeri). `b2cScopes` `appConfig`
+    1. Tanımında değeri, kapsamın tam URI 'siyle değiştirin (daha önce kaydettiğiniz tam kapsam değeri). `b2cScopes` `appConfig`
     1. `webApi` Değeri`applicationURL` , önceki bölümde belirttiğiniz değerle değiştirin.
 
     Tanım aşağıdaki kod bloğuna benzer olmalıdır (bunun `<your-tenant-name>`yerine kiracı adınızla): `appConfig`

@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: Uygulama alanları
           href: time-series-insights-update-use-cases.md
-        - name: Veri modelleme
+        - name: Zaman Serisi Modeli
           href: time-series-insights-update-tsm.md
         - name: Veri sorgulama
           href: time-series-insights-update-tsq.md

@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: e5ae05b2ad1dc03bad210b1f67834865afd49df3
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810883"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882438"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop günlüklerini analiz etme
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop günlüklerini analiz etme
 
 Azure HDInsight 'taki her Apache Hadoop kümesi, varsayılan dosya sistemi olarak kullanılan bir Azure depolama hesabına sahiptir. Depolama hesabına varsayılan depolama hesabı denir. Küme, günlüklerini depolamak için varsayılan depolama hesabındaki Azure Tablo depolama ve BLOB depolama alanını kullanır.  Kümenizin varsayılan depolama hesabını bulmak için bkz. [HDInsight 'ta Apache Hadoop kümelerini yönetme](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). Günlükler, küme silindikten sonra bile depolama hesabında kalır.
 

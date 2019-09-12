@@ -111,7 +111,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
      ![Koşul denetimi ekleme](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. **Koşul** penceresinde, **bir değer seçin**' i seçin ve ardından açılır pencerede **ifade** ' ı seçin.
-1. FX `length(body('Get_entities')?['value'])` alanına yapıştırın ****** . Bu işlevi eklemek için **Tamam ' ı** seçin. 
+1. FX `length(body('Get_entities')?['value'])` alanına yapıştırın . Bu işlevi eklemek için **Tamam ' ı** seçin. 
 
 
 

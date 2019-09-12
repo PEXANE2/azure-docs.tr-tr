@@ -233,7 +233,7 @@ Konak yedekleme sunucusu depolamayı şu yönergelere göre ayarlayın:
 -   StorSimple, Backup Exec tam ve artımlı yedeklemeleri destekler. Yapay ve değişiklik yedeklemeleri kullanmanızı öneririz.
 -   Yedekleme veri dosyaları yalnızca belirli bir iş için veri içermelidir. Örneğin, farklı işlere hiçbir medya ekleme yapılmasına izin verilmez.
 -   İş doğrulamayı devre dışı bırakın. Gerekirse, doğrulama en son yedekleme işinden sonra zamanlanmalıdır. Bu işin yedekleme pencerenizi etkilediğini anlamak önemlidir.
--   **Disk** >  **** ayrıntıları >  **** özelliklerinizi depolama 'yıseçin. >  **Önceden ayrılan disk alanını**devre dışı bırakın.
+-   **Disk** > ayrıntıları > özelliklerinizi depolama 'yıseçin. >  **Önceden ayrılan disk alanını**devre dışı bırakın.
 
 Bu gereksinimleri uygulamak için en son yedekleme yürütme ayarları ve en iyi uygulamalar için bkz. [VERITAS Web sitesi](https://www.veritas.com).
 
@@ -399,7 +399,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
     ![Backup Exec Yönetim Konsolu, yedekleme tanımı Özellikler sekmesi](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.   > **Disk** **** düzenlemeiçinaşamayinelemesiEkle > ' yi seçin.
+2.   > **Disk**düzenlemeiçinaşamayinelemesiEkle > ' yi seçin.
 
     ![Backup Exec Yönetim Konsolu, Aşama Ekle](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 

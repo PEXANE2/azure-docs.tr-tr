@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827216"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900315"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Veri Ambarınızı Gen2 'ye yükseltme
 
@@ -45,12 +45,12 @@ Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve oto
 | Doğu Asya |Kullanılabilir |Tam |
 | East US |Kullanılabilir |Tam |
 | Doğu ABD 2 |Kullanılabilir |Tam |
-| Fransa Orta |Kullanılabilir |Devam ediyor |
+| Fransa Orta |Kullanılabilir |Devam eden |
 | Almanya Orta |\* |\* |
 | Almanya Orta Batı |1 Eylül 2019|1 Ekim 2019 |
 | Hindistan Orta |Kullanılabilir |Tam |
 | Hindistan Güney |Kullanılabilir |Tam |
-| Hindistan Batı |1 Temmuz 2019 |Devam ediyor |
+| Hindistan Batı |1 Temmuz 2019 |Devam eden |
 | Japonya Doğu |Kullanılabilir |Tam |
 | Japonya Batı |Kullanılabilir |Tam |
 | Kore Orta |Kullanılabilir |Tam |
@@ -61,9 +61,9 @@ Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve oto
 | Orta Güney ABD |Kullanılabilir |Tam |
 | Güneydoğu Asya |Kullanılabilir |Tam |
 | BAE Kuzey |20 Temmuz 2019 |Tam |
-| Birleşik Krallık Güney |Kullanılabilir |Devam ediyor |
-| Birleşik Krallık Batı |Kullanılabilir |Devam ediyor |
-| Batı Orta ABD |1 Eylül 2019 |1 Ekim 2019|
+| Birleşik Krallık Güney |Kullanılabilir |Devam eden |
+| Birleşik Krallık Batı |Kullanılabilir |Devam eden |
+| Batı Orta ABD |1 Kasım 2019 |1 Aralık 2019|
 | Batı Avrupa |Kullanılabilir |Tam |
 | Batı ABD |Kullanılabilir |Tam |
 | Batı ABD 2 |Kullanılabilir |Tam |
@@ -110,7 +110,7 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 
 **S: Yükseltmeler Otomasyon betiklerimi nasıl etkiler?**
 
-- Y: Hizmet düzeyi hedefine başvuran tüm otomasyon betikleri, Gen2 eşdeğerine karşılık olacak şekilde değiştirilmelidir.  Ayrıntılara bakın [](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+- Y: Hizmet düzeyi hedefine başvuran tüm otomasyon betikleri, Gen2 eşdeğerine karşılık olacak şekilde değiştirilmelidir.  [Ayrıntılara bakın](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
 
 **S: Kendi kendine yükseltme ne kadar sürer?**
 

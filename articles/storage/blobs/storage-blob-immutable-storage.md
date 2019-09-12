@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941948"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910483"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>İş açısından kritik verileri Azure Blob depolama alanında depolayın
 
@@ -53,7 +53,7 @@ Sabit bir ilke tarafından korunan blob 'lar varsa kapsayıcı ve hesap silmeye 
 ### <a name="time-based-retention"></a>Zamana dayalı saklama
 
 > [!IMPORTANT]
-> Bir zaman tabanlı bekletme ilkesi, blob 'un sec 17A-4 (f) ve diğer yasal uyumluluk için uyumlu bir sabit (yazma ve silme korumalı) durumunda olması gerekir. İlkeyi, genellikle 24 saatten daha az sürede kilitlemenizi öneririz. Uygulanan bir zaman tabanlı bekletme ilkesinin ilk durumu, kilidi kapatmadan önceözelliği test etmeniz ve ilkede değişiklikler yapmanız sağlanır. *Kilidi açık* duruma karşı koruma sağlarken, kısa vadeli Özellik denemeleri dışında herhangi bir amaçla *kilitsiz* durum kullanılması önerilmez. 
+> Bir zaman tabanlı bekletme ilkesi, blob 'un SEC 17A-4 (f) ve diğer yasal *uyumluluk için uyumlu* bir sabit (yazma ve silme korumalı) durumunda olması gerekir. İlkeyi, genellikle 24 saatten daha az sürede kilitlemenizi öneririz. Uygulanan bir zaman tabanlı bekletme ilkesinin ilk durumu, kilidi kapatmadan önce özelliği test etmeniz ve ilkede değişiklikler *yapmanız sağlanır.* *Kilidi açık* duruma karşı koruma sağlarken, kısa vadeli Özellik denemeleri dışında herhangi bir amaçla *kilitsiz* durum kullanılması önerilmez. 
 
 Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Mevcut blob 'lar için geçerli saklama süresi, blob değiştirme zamanı ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farka eşittir.
 
@@ -175,7 +175,7 @@ Evet. Microsoft, uyumluluğu belgelemek için kayıt yönetimi ve bilgi İdaresi
 
 **Özellik yalnızca blob 'ları engellemek veya sayfa ve ekleme Blobları da için geçerlidir mi?**
 
-Sabit depolama, kapsayıcı düzeyinde ayarlandığı için herhangi bir blob türüyle kullanılabilir, ancak genellikle blok bloblarını depolayan kapsayıcılar için solucan kullanmanızı öneririz. Blok Bloblarından farklı olarak, tüm yeni sayfa Blobları ve ekleme Blobları bir solucan kapsayıcısının dışında oluşturulmalıdır ve sonra içine kopyalanmalıdır. Bu Blobları bir solucan kapsayıcısına kopyaladıktan sonra, bir ekleme blobuna başka ekleme veya sayfa blobuna yapılan değişikliklere izin verilmez. Bu nedenle, sanal makine diskini kilitleyecek şekilde VHD 'leri (sayfa Blobları) depolayan bir kapsayıcıda bir solucan ilkesi ayarlamak kesinlikle önerilmez.
+Sabit depolama, kapsayıcı düzeyinde ayarlandığı için herhangi bir blob türüyle kullanılabilir, ancak genellikle blok bloblarını depolayan kapsayıcılar için solucan kullanmanızı öneririz. Blok Bloblarından farklı olarak, tüm yeni sayfa Blobları ve ekleme Blobları bir solucan kapsayıcısının dışında oluşturulmalıdır ve sonra içine kopyalanmalıdır. Bu Blobları bir solucan kapsayıcısına kopyaladıktan sonra, bir ekleme blobuna *başka ekleme* veya sayfa blobuna yapılan değişikliklere izin verilmez. Bu nedenle, sanal makine diskini kilitleyecek şekilde VHD 'leri (sayfa Blobları) depolayan bir kapsayıcıda bir solucan ilkesi ayarlamak kesinlikle önerilmez.
 
 **Bu özelliği kullanmak için yeni bir depolama hesabı oluşturmem gerekir mi?**
 
@@ -189,7 +189,7 @@ Evet, bir kapsayıcıda aynı anda hem yasal bir saklama hem de zaman tabanlı b
 
 Hayır, yasal saklama yalnızca zamana bağlı olmayan bir bekletme ilkesi için kullanılan genel bir terimdir. Yalnızca bu konuyla ilgili yaklaşım için kullanılması gerekmez. Yasal saklama ilkeleri, bekletme döneminin bilinmediği önemli kurumsal solucan verilerini korumak için üzerine yazma ve silmeleri devre dışı bırakmak için yararlıdır. Görev açısından kritik solucan iş yüklerinizi korumak için bir kuruluş ilkesi olarak kullanabilir veya özel bir olay tetikleyicisi zaman tabanlı bir bekletme ilkesi kullanımını gerektirdiğinden bunu bir hazırlama ilkesi olarak kullanabilirsiniz. 
 
-***Kilitli* bir zaman tabanlı bekletme ilkesi veya yasal tutmayı kaldırabilir miyim?**
+**_Kilitli_ bir zaman tabanlı bekletme ilkesi veya yasal tutmayı kaldırabilir miyim?**
 
 Yalnızca kilitlenmemiş süre tabanlı bekletme ilkeleri bir kapsayıcıdan kaldırılabilir. Zaman tabanlı bekletme ilkesi kilitlendikten sonra kaldırılamaz; Yalnızca etkili Bekletme dönemi uzantılarına izin verilir. Yasal saklama etiketleri silinebilir. Tüm yasal Etiketler silindiğinde, yasal saklama kaldırılır.
 

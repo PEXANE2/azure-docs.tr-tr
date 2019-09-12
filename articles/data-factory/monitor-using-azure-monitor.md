@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici 'yi kullanarak veri fabrikalarını izleme | Microsoft Docs
-description: Azure Data Factory bilgi ile tanılama günlüklerini etkinleştirerek Data Factory işlem hatlarını izlemek için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin.
+description: Data Factory bilgi ile tanılama günlüklerini etkinleştirerek/Azure Data Factory işlem hatlarını izlemek için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,58 +11,68 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141124"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910179"
 ---
-# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Izleyici kullanarak veri fabrikalarını uyarma ve Izleme
-Bulut uygulamaları birçok hareketli parça ile karmaşıktır. İzleme, uygulamanızın sağlıklı durumda kaldığından ve çalıştığından emin olmak için veri sağlar. Ayrıca, olası sorunları veya geçmişteki sorunları gidermenize yardımcı olur. Ayrıca, uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
+# <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Izleyici kullanarak veri fabrikalarını uyarma ve izleme
 
-Azure Izleyici Microsoft Azure ' de çoğu hizmet için temel düzeyde altyapı ölçümleri ve Günlükler sağlar. Ayrıntılar için bkz. [izlemeye genel bakış](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure tanılama günlükleri, bu kaynağın çalışması hakkında zengin ve sık veriler sağlayan bir kaynak tarafından oluşturulan günlüklerdir. Data Factory Azure Izleyici 'de tanılama günlükleri çıkışı verir.
+Bulut uygulamaları karmaşıktır ve birçok hareketli parçaya sahiptir. İzleyiciler, uygulamalarınızın sağlıklı durumda kalmasını ve çalışmasını sağlamaya yardımcı olmak için veri sağlar. İzleyicilerin olası sorunları önlemenize ve geçmişteki sorunları gidermenize yardımcı olur.
 
-## <a name="persist-data-factory-data"></a>Data Factory verileri kalıcı yap
-Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. İşlem hattı çalıştırma verilerini 45 günden daha uzun bir süre boyunca kalıcı hale getirmek istiyorsanız Azure Izleyici 'yi kullanarak yalnızca tanılama günlüklerini analiz için yönlendiremezsiniz, bu sayede seçtiğiniz süre için fabrika bilgilerine sahip olursunuz.
+Uygulamalarınız hakkında derin Öngörüler elde etmek için izleme verilerini kullanabilirsiniz. Bu bilgi, uygulama performansını ve bakımlılığını iyileştirmenize yardımcı olur. Ayrıca, el ile müdahale gerektiren eylemleri otomatikleştirmenize de yardımcı olur.
+
+Azure Izleyici, çoğu Azure hizmeti için temel düzeyde altyapı ölçümleri ve günlükleri sağlar. Azure tanılama günlükleri bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Azure Data Factory tanılama günlüklerini Izleyicisinde yazar.
+
+Ayrıntılar için bkz. [Azure izleyiciye genel bakış](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
+
+## <a name="keeping-azure-data-factory-data"></a>Azure Data Factory verilerini tutma
+
+Data Factory depolar işlem hattı-verileri yalnızca 45 gün boyunca çalıştırın. Bu verileri daha uzun süre tutmak istiyorsanız Izleyiciyi kullanın. Izleyici ile tanılama günlüklerini analiz için yönlendirebilirsiniz. Ayrıca, seçtiğiniz süre için fabrika bilgilerine sahip olmanız için bunları bir depolama hesabında tutabilirsiniz.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-* Denetim veya el ile inceleme için bunları bir **depolama hesabına** kaydedin. Tanılama ayarlarını kullanarak saklama süresini (gün olarak) belirtebilirsiniz.
-* Bunları bir üçüncü taraf hizmeti veya Power BI gibi özel analizler tarafından alma için **Event Hubs** .
-* **Log Analytics** ile çözümleyin
+* Tanılama günlüklerinizi denetim veya el ile inceleme için bir depolama hesabına kaydedin. Bekletme süresini gün cinsinden belirtmek için tanılama ayarlarını kullanabilirsiniz.
+* Günlüklerin Azure Event Hubs akışını yapın. Günlükler bir iş ortağı hizmetine veya Power BI gibi özel bir analiz çözümüne giriş haline gelir.
+* Günlükleri Log Analytics analiz edin.
 
-Günlükleri yayan kaynakla aynı abonelikte olmayan bir depolama hesabı veya Olay Hub 'ı ad alanı kullanabilirsiniz. Ayarı yapılandıran kullanıcının her iki aboneliğe da uygun rol tabanlı erişim denetimi (RBAC) erişimi olması gerekir.
+Günlükleri yayan kaynağın aboneliğinde olmayan bir depolama hesabı veya Olay Hub 'ı ad alanı kullanabilirsiniz. Ayarı yapılandıran kullanıcının her iki aboneliğe da uygun rol tabanlı erişim denetimi (RBAC) erişimi olmalıdır.
 
 ## <a name="set-up-diagnostic-logs"></a>Tanılama günlükleri ayarlama
 
 ### <a name="diagnostic-settings"></a>Tanılama ayarları
-İşlem dışı kaynaklar için tanılama günlükleri, Tanılama ayarları kullanılarak yapılandırılır. Kaynak denetimi için Tanılama ayarları:
 
-* Tanılama günlüklerinin gönderildiği (depolama hesabı, Event Hubs veya Azure Izleyici günlükleri).
-* Hangi günlük kategorilerinin gönderildiği.
-* Her günlük kategorisinin bir depolama hesabında ne kadar süreyle korunması gerekir.
-* Bekletme günü sayısının sıfır günlükler süresiz olarak tutulur anlamına gelir. Aksi takdirde, değeri herhangi bir sayıda gün 1 ile 2147483647 arasında olabilir.
-* Bekletme ilkeleri ayarlanır ancak günlükleri bir depolama hesabında depolamak devre dışı bırakılır (örneğin yalnızca Event Hubs veya Azure Izleyici günlükleri seçenekleri seçilidir), bekletme ilkelerinin hiçbir etkisi yoktur.
-* Bekletme ilkeleri uygulanan günlük, olduğundan, bir günün (UTC), şu anda sonra saklama günü günlüklerinden sonunda İlkesi silindi. Örneğin, bir günlük bir bekletme ilkesi olsaydı, bugün günün başında dünden önceki gün kayıtları silinir.
+İşlem dışı kaynaklar için tanılama günlüklerini yapılandırmak için tanılama ayarlarını kullanın. Kaynak denetiminin ayarları aşağıdaki özelliklere sahiptir:
 
-### <a name="enable-diagnostic-logs-via-rest-apis"></a>REST API 'Leri aracılığıyla tanılama günlüklerini etkinleştirme
+* Tanılama günlüklerinin nereye gönderileceğini belirtir. Azure depolama hesabı, Azure Olay Hub 'ı veya Izleme günlüklerini örnek olarak içerir.
+* Hangi günlük kategorilerinin gönderileceğini belirtir.
+* Her günlük kategorisinin bir depolama hesabında ne kadar süreyle tutulması gerektiğini belirtir.
+* Bekletme günü sayısının sıfır günlükler süresiz olarak tutulur anlamına gelir. Aksi takdirde, değer 1 ile 2.147.483.647 arasında herhangi bir sayıda gün olabilir.
+* Bekletme ilkeleri ayarlanır ancak günlükleri bir depolama hesabında depolamak devre dışı bırakılırsa, bekletme ilkelerinin etkisi yoktur. Örneğin, bu durum yalnızca Event Hubs veya Izleyici günlükleri seçeneklerinin seçildiği zaman gerçekleşebilir.
+* Bekletme ilkeleri gün başına uygulanır. Günler arasındaki sınır, Eşgüdümlü Evrensel Saat (UTC) ile gece yarısı arasında gerçekleşir. Bir günün sonunda, bekletme ilkesinin ötesinde olan günlerdeki Günlükler silinir. Örneğin, bir güne ait bir bekletme ilkeniz varsa, bugünün başlangıcında dün olan Günlükler silinir.
 
-Azure Izleyici 'de bir tanılama ayarı oluşturun veya güncelleştirin REST API
+### <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Azure Izleyici REST API aracılığıyla tanılama günlüklerini etkinleştirme
 
-**İstek**
+#### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Izleyici REST API bir tanılama ayarı oluşturun veya güncelleştirin
+
+##### <a name="request"></a>İstek
+
 ```
 PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-**Üst bilgileri**
-* `{api-version}` yerine `2016-09-01` yazın.
-* Tanılama `{resource-id}` ayarlarını düzenlemek istediğiniz kaynağın kaynak kimliğiyle değiştirin. [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/manage-resource-groups-portal.md)hakkında daha fazla bilgi için.
-* `Content-Type` Üstbilgiyi olarak`application/json`ayarlayın.
-* Yetkilendirme üst bilgisini, Azure Active Directory aldığınız bir JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-scenarios.md).
+##### <a name="headers"></a>Üst bilgiler
 
-**Gövde**
+* `{api-version}` yerine `2016-09-01` yazın.
+* Tanılama `{resource-id}` ayarlarını düzenlemek istediğiniz kaynağın kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için Kaynak gruplarını kullanma](../azure-resource-manager/manage-resource-groups-portal.md).
+* `Content-Type` Üstbilgiyi olarak`application/json`ayarlayın.
+* Yetkilendirme üst bilgisini Azure Active Directory (Azure AD) ' dan aldığınız JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-scenarios.md).
+
+##### <a name="body"></a>Body
+
 ```json
 {
     "properties": {
@@ -104,20 +114,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama |
 | --- | --- | --- |
-| storageAccountId |String | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI |
-| serviceBusRuleId |String | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz Service Bus ad alanının Service Bus kural KIMLIĞI. Kural KIMLIĞI şu biçimdedir: "{Service Bus kaynak KIMLIĞI}/authorizationkuralkuralları/{Key Name}".|
-| workspaceId | Karmaşık Tür | Ölçüm zaman ve saklama ilkeleri dizisi. Şu anda bu özellik boştur. |
-|ölçümler| Çağrılan işlem hattına geçirilecek işlem hattının parametre değerleri| Bağımsız değişken değerlerine yönelik bir JSON nesnesi eşleme parametre adları |
-| logs| Karmaşık Tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, önce tanılama ayarlarını al işlemini gerçekleştirin. |
-| category| String| Günlük kategorileri ve bunların saklama ilkeleri dizisi |
-| zamandilimi | String | ISO 8601 Duration biçiminde yakalanan ölçümlerin ayrıntı düzeyi. PT1M (bir dakika) olmalıdır|
-| enabled| Boole değeri | Bu ölçüm veya günlük kategorisinin toplanmasını bu kaynak için etkin olup olmadığını belirtir|
-| retentionPolicy| Karmaşık Tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Yalnızca depolama hesabı seçeneği için kullanılır.|
-| days| Int| Ölçüm veya günlüklerin saklanacağı gün sayısı. 0 değeri, günlükleri süresiz olarak tutar. Yalnızca depolama hesabı seçeneği için kullanılır. |
+| **Storageaccountıd** |Dize | Tanılama günlükleri göndermek istediğiniz depolama hesabının kaynak KIMLIĞI. |
+| **Servicebusruleıd** |Dize | ' In, akış tanılama günlükleri için Event Hubs oluşturulmasını istediğiniz hizmet veri yolu ad alanının hizmet veri yolu kuralı KIMLIĞI. Kural KIMLIĞI biçimi `{service bus resource ID}/authorizationrules/{key name}`vardır.|
+| **Workspaceıd** | Karmaşık Tür | Ölçüm zaman ve bekletme ilkelerine oluşan dizi. Bu özelliğin değeri boş. |
+|**metrics**| Çağrılan işlem hattına geçirilecek işlem hattının parametre değerleri| Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi. |
+| **açıldığında**| Karmaşık Tür| Kaynak türü için bir tanılama günlüğü kategorisinin adı. Bir kaynak için tanılama günlük kategorilerinin listesini almak için, tanı ayarlarını al işlemini gerçekleştirin. |
+| **Kategori**| Dize| Bir dizi günlük kategorisi ve bekletme ilkeleri. |
+| **timeGrain** | Dize | ISO 8601 Duration biçiminde yakalanan ölçüm ayrıntı düzeyi. Özellik değeri bir dakika belirten `PT1M`olmalıdır. |
+| **etkinletir**| Boole değeri | Ölçüm veya günlük kategorisi koleksiyonunun bu kaynak için etkinleştirilip etkinleştirilmeyeceğini belirtir. |
+| **retentionPolicy**| Karmaşık Tür| Ölçüm veya günlük kategorisi için bekletme ilkesini açıklar. Bu özellik yalnızca depolama hesapları için kullanılır. |
+|**miş**| Int| Ölçüm veya günlüklerin saklanacağı gün sayısı. Özellik değeri 0 ise, Günlükler süresiz tutulur. Bu özellik yalnızca depolama hesapları için kullanılır. |
 
-**Yanıt**
+##### <a name="response"></a>Yanıt
 
-200 TAMAM
+200 TAMAM.
 
 
 ```json
@@ -166,23 +176,25 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-Azure Izleyici REST API tanılama ayarı hakkında bilgi alın
+#### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>Izleyici REST API Tanılama ayarları hakkında bilgi alın
 
-**İstek**
+##### <a name="request"></a>İstek
+
 ```
 GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-**Üst bilgileri**
+##### <a name="headers"></a>Üst bilgiler
+
 * `{api-version}` yerine `2016-09-01` yazın.
-* Tanılama `{resource-id}` ayarlarını düzenlemek istediğiniz kaynağın kaynak kimliğiyle değiştirin. Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma hakkında daha fazla bilgi için.
+* Tanılama `{resource-id}` ayarlarını düzenlemek istediğiniz kaynağın kimliğiyle değiştirin. Daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için Kaynak gruplarını kullanma](../azure-resource-manager/manage-resource-groups-portal.md).
 * `Content-Type` Üstbilgiyi olarak`application/json`ayarlayın.
-* Yetkilendirme üst bilgisini, Azure Active Directory elde ettiğiniz bir JSON Web Token ayarlayın. Daha fazla bilgi için bkz. istekleri kimlik doğrulama.
+* Yetkilendirme üst bilgisini Azure AD 'den aldığınız bir JSON Web belirtecine ayarlayın. Daha fazla bilgi için bkz. [Istekleri kimlik doğrulama](../active-directory/develop/authentication-scenarios.md).
 
-**Yanıt**
+##### <a name="response"></a>Yanıt
 
-200 TAMAM
+200 TAMAM.
 
 ```json
 {
@@ -228,14 +240,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     },
     "identity": null
 }
+
 ```
-[Daha fazla bilgi](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
+Daha fazla bilgi için bkz. [Tanılama ayarları](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
-## <a name="schema-of-logs--events"></a>Günlük & olaylarının şeması
+## <a name="schema-of-logs-and-events"></a>Günlüklerin ve olayların şeması
 
-### <a name="azure-monitor-schema"></a>Azure Izleyici şeması
+### <a name="monitor-schema"></a>Şemayı izle
 
-#### <a name="activity-run-logs-attributes"></a>Etkinlik çalıştırma günlükleri öznitelikleri
+#### <a name="activity-run-log-attributes"></a>Etkinlik-günlük özniteliklerini Çalıştır
 
 ```json
 {
@@ -276,21 +289,21 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| Düzey |String | Tanılama günlüklerinin düzeyi. Düzey 4 her zaman etkinlik çalıştırma günlükleri için durumdur. | `4`  |
-| correlationId |String | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| String| Etkinlik çalıştırmasının KIMLIĞI | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| String| İşlem hattı çalıştırmasının KIMLIĞI | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| String | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| String | Tanılama günlükleri kategorisi. Bu özelliği "Activityçalıştırmaları" olarak ayarlayın | `ActivityRuns` |
-|level| String | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
-|operationName| String |Durumu olan etkinliğin adı. Durum başlangıç sinyali ise, bu, olur `MyActivity -`. Durum bitiş `MyActivity - Succeeded` sinyaliyle, son durumu ise | `MyActivity - Succeeded` |
-|Ardışık Düzen adı| String | İşlem hattının adı | `MyPipeline` |
-|Özelliğinde| String | Etkinliğin adı | `MyActivity` |
-|Başlangıç| String | Etkinlik zaman aralığı, UTC biçiminde çalışma başlangıcı | `2017-06-26T20:55:29.5007959Z`|
-|end| String | Etkinlik zaman aralığı, UTC biçiminde çalışır. Etkinlik henüz bitmemişse (bir etkinliğin başlaması için tanılama günlüğü), varsayılan değeri `1601-01-01T00:00:00Z` ayarlanır.  | `2017-06-26T20:55:29.5007959Z` |
+| **Düzey** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
+| **ID** |Dize | Belirli bir isteği izlemeye yönelik benzersiz KIMLIK. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **saat** | Dize | Zaman aralığı UTC biçimindeki `YYYY-MM-DDTHH:MM:SS.00000Z`olayın saati. | `2017-06-28T21:00:27.3534352Z` |
+|**Activityrunıd**| Dize| Etkinliğin çalıştırması KIMLIĞI. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|**Ardışık düzen eylemsizlik kimliği**| Dize| İşlem hattı çalıştırmasının KIMLIĞI. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| Dize | Data Factory kaynağıyla ilişkili KIMLIK. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**Kategori**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini olarak `ActivityRuns`ayarlayın. | `ActivityRuns` |
+|**düzeyde**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak `Informational`ayarlayın. | `Informational` |
+|**OperationName**| Dize | Etkinliğin durumuyla ilgili ad. Etkinlik başlangıç sinyalinise, özellik değeri olur `MyActivity -`. Etkinlik son sinyaldir ise, özellik değeri olur `MyActivity - Succeeded`. | `MyActivity - Succeeded` |
+|**Ardışık Düzen adı**| Dize | İşlem hattının adı. | `MyPipeline` |
+|**Özelliğinde**| Dize | Etkinliğin adı. | `MyActivity` |
+|**start**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`|
+|**erer**| Dize | Etkinliğin bitiş saati, TimeSpan UTC biçiminde çalışır. Tanılama günlüğünde bir etkinliğin başlatıldığını ancak henüz bitmemiş olduğunu gösteriyorsa, özellik değeri olur `1601-01-01T00:00:00Z`. | `2017-06-26T20:55:29.5007959Z` |
 
-#### <a name="pipeline-run-logs-attributes"></a>İşlem hattı çalıştırma günlüğü öznitelikleri
+#### <a name="pipeline-run-log-attributes"></a>İşlem hattı-günlük özniteliklerini çalıştırma
 
 ```json
 {
@@ -322,20 +335,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| Düzey |String | Tanılama günlüklerinin düzeyi. Düzey 4, etkinlik çalıştırma günlüklerinin durumdur. | `4`  |
-| correlationId |String | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|RunId| String| İşlem hattı çalıştırmasının KIMLIĞI | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| String | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| String | Tanılama günlükleri kategorisi. Bu özelliği "ardışık düzen eylemsizlik" olarak ayarlayın | `PipelineRuns` |
-|level| String | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
-|operationName| String |Durumu olan işlem hattının adı. İşlem hattı çalıştırması tamamlandığında, son durumu "işlem hattı-başarılı"| `MyPipeline - Succeeded` |
-|Ardışık Düzen adı| String | İşlem hattının adı | `MyPipeline` |
-|Başlangıç| String | Etkinlik zaman aralığı, UTC biçiminde çalışma başlangıcı | `2017-06-26T20:55:29.5007959Z`|
-|end| String | Etkinliğin sonu TimeSpan, UTC biçiminde çalışır. Etkinlik henüz bitmemişse (bir etkinliğin başlaması için tanılama günlüğü), varsayılan değeri `1601-01-01T00:00:00Z` ayarlanır.  | `2017-06-26T20:55:29.5007959Z` |
-|status| String | İşlem hattı çalıştırmasının son durumu (başarılı veya başarısız) | `Succeeded`|
+| **Düzey** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
+| **ID** |Dize | Belirli bir isteği izlemeye yönelik benzersiz KIMLIK. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **saat** | Dize | Zaman aralığı UTC biçimindeki `YYYY-MM-DDTHH:MM:SS.00000Z`olayın saati. | `2017-06-28T21:00:27.3534352Z` |
+|**RunId**| Dize| İşlem hattı çalıştırmasının KIMLIĞI. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| Dize | Data Factory kaynağıyla ilişkili KIMLIK. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**Kategori**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini olarak `PipelineRuns`ayarlayın. | `PipelineRuns` |
+|**düzeyde**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak `Informational`ayarlayın. | `Informational` |
+|**OperationName**| Dize | İşlem hattının, durumu ile birlikte adı. İşlem hattı çalıştırması tamamlandıktan sonra özellik değeri olur `Pipeline - Succeeded`. | `MyPipeline - Succeeded`. |
+|**Ardışık Düzen adı**| Dize | İşlem hattının adı. | `MyPipeline` |
+|**start**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`. |
+|**erer**| Dize | Etkinliğin bitiş saati, TimeSpan UTC biçiminde çalışır. Tanılama günlüğünde bir etkinlik başlatılmış ancak henüz bitmemişse, özellik değeri olur `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
+|**status**| Dize | İşlem hattının son durumu. Olası özellik değerleri ve `Succeeded` ' `Failed`dir. | `Succeeded`|
 
-#### <a name="trigger-run-logs-attributes"></a>Çalışma günlükleri özniteliklerini tetikleme
+#### <a name="trigger-run-log-attributes"></a>Tetikleme-günlük özniteliklerini Çalıştır
 
 ```json
 {
@@ -366,27 +379,27 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| Düzey |String | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için düzey 4 ' e ayarlanır. | `4`  |
-| correlationId |String | Belirli bir isteği uçtan uca izlemeye yönelik benzersiz KIMLIK | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | Olayın zaman aralığı, UTC biçimindeki zamanı`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|Triggerıd| String| Tetikleyici çalıştırmasının KIMLIĞI | `08587023010602533858661257311` |
-|resourceId| String | Data Factory kaynağı için ilişkili kaynak KIMLIĞI | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| String | Tanılama günlükleri kategorisi. Bu özelliği "ardışık düzen eylemsizlik" olarak ayarlayın | `PipelineRuns` |
-|level| String | Tanılama günlüklerinin düzeyi. Bu özelliği "bilgilendirme" olarak ayarlayın | `Informational` |
-|operationName| String |Başarıyla başlatılıp tetiklenmediğini son durumu olan tetikleyicinin adı. Sinyal başarılı olduysa "MyTrigger-Succeeded"| `MyTrigger - Succeeded` |
-|triggerName| String | Tetikleyicinin adı | `MyTrigger` |
-|triggerType| String | Tetikleyicinin türü (El Ile tetikleyici veya zamanlama tetikleyicisi) | `ScheduleTrigger` |
-|triggerEvent| String | Tetikleyicinin olayı | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|Başlangıç| String | Zaman aralığı, UTC biçiminde tetikleme tetiklemesi | `2017-06-26T20:55:29.5007959Z`|
-|status| String | Tetikleyicinin başarıyla başlatılıp başlatılmayacağını (başarılı veya başarısız) ilişkin nihai durum | `Succeeded`|
+| **Düzey** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
+| **ID** |Dize | Belirli bir isteği izlemeye yönelik benzersiz KIMLIK. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **saat** | Dize | Zaman aralığı UTC biçimindeki `YYYY-MM-DDTHH:MM:SS.00000Z`olayın saati. | `2017-06-28T21:00:27.3534352Z` |
+|**Triggerıd**| Dize| Tetikleyici çalıştırmasının KIMLIĞI. | `08587023010602533858661257311` |
+|**resourceId**| Dize | Data Factory kaynağıyla ilişkili KIMLIK. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**Kategori**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini olarak `PipelineRuns`ayarlayın. | `PipelineRuns` |
+|**düzeyde**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak `Informational`ayarlayın. | `Informational` |
+|**OperationName**| Dize | Tetikleyicinin başarıyla tetikleyip tetiklenmediğini belirten, son durumu ile tetikleyicinin adı. Sinyal başarılı olduysa, özellik değeri olur `MyTrigger - Succeeded`. | `MyTrigger - Succeeded` |
+|**triggerName**| Dize | Tetikleyicinin adı. | `MyTrigger` |
+|**triggerType**| Dize | Tetikleyicinin türü. Olası özellik değerleri ve `Manual Trigger` ' `Schedule Trigger`dir. | `ScheduleTrigger` |
+|**triggerEvent**| Dize | Tetikleyicinin olayı. | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|**start**| Dize | Zaman aralığı UTC biçiminde tetikleyicinin tetiklemenin başlangıç saati. | `2017-06-26T20:55:29.5007959Z`|
+|**status**| Dize | Tetikleyicinin başarıyla harekete geçirilip tetiklenmediğini gösteren nihai durum. Olası özellik değerleri ve `Succeeded` ' `Failed`dir. | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics şeması
 
-Log Analytics, aşağıdaki özel durumlarla birlikte Azure Izleyici 'den şemayı devralır:
+Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
 
-* Her sütun adının ilk harfi büyük harfle alınır; Örneğin, Azure Izleyici 'deki *bağıntıkimliği* , Log Analytics Için *CorrelationId* olacaktır.
-* Sütun *düzeyi* bırakılacak.
-* Dinamik sütun *özellikleri* , AŞAĞıDAKI dinamik JSON blob türü olarak korunur:
+* Her sütun adının ilk harfi büyük harfle ayarlanır. Örneğin, Monitor içindeki "Bağıntıkimliği" sütun adı, Log Analytics "Bağıntıkimliği" dır.
+* "Düzey" sütunu yok.
+* Dinamik "Özellikler" sütunu aşağıdaki dinamik JSON blob türü olarak korunur.
 
     | Azure Izleyici sütunu | Log Analytics sütunu | Type |
     | --- | --- | --- |
@@ -404,28 +417,28 @@ Log Analytics, aşağıdaki özel durumlarla birlikte Azure Izleyici 'den şemay
     
 ## <a name="metrics"></a>Ölçümler
 
-Azure Izleyici, Azure 'da iş yüklerinizin performans ve sistem durumu hakkında görünürlük elde etmek için telemetri kullanmanıza olanak sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan ölçümleridir (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
+Izleyici ile Azure iş yüklerinizin performansı ve sistem durumu hakkında görünürlük elde edebilirsiniz. En önemli Izleyici verileri türü, performans sayacı olarak da adlandırılan ölçümdür. Ölçümler çoğu Azure kaynağı tarafından yayınlanır. İzleyici, izleme ve sorun giderme amacıyla bu ölçümleri yapılandırmak ve kullanmak için çeşitli yollar sağlar.
 
-ADFV2 aşağıdaki ölçümleri yayar:
+Azure Data Factory sürüm 2 aşağıdaki ölçümleri yayar.
 
 | **Ölçüm**           | **Ölçüm görünen adı**         | **Birim** | **Toplama türü** | **Açıklama**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| Ardışık düzen Inesucceededçalıştırmaları | Başarılı işlem hattı çalışma ölçümleri | Count    | Toplam                | Toplam işlem hattı çalışması bir dakika penceresinde başarılı oldu |
-| Pipelinefailedçalıştırmaları   | Başarısız işlem hattı çalıştırmaları ölçümleri    | Count    | Toplam                | Toplam işlem hattı çalışması bir dakika penceresinde başarısız oldu    |
-| ActivitySucceededRuns | Başarılı etkinlik ölçümleri çalıştırıyor | Count    | Toplam                | Toplam etkinlik çalıştırmaları bir dakika penceresinde başarılı oldu  |
-| Activityfailedçalıştırmaları   | Başarısız etkinlik çalıştırma ölçümleri    | Count    | Toplam                | Bir dakika penceresinde başarısız olan toplam etkinlik çalıştırması     |
-| TriggerSucceededRuns | Başarılı tetikleyici çalışan ölçümleri  | Count    | Toplam                | Dakikada toplam tetikleyici çalıştırması başarılı oldu   |
-| Triggerfailedçalıştırmaları    | Başarısız tetikleyici çalıştırma ölçümleri     | Count    | Toplam                | Bir dakika penceresi içinde toplam tetikleyici çalıştırması başarısız oldu      |
+| Ardışık düzen Inesucceededçalıştırmaları | Başarılı işlem hattı çalışma ölçümleri | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan işlem hattı çalıştırmalarının toplam sayısı. |
+| Pipelinefailedçalıştırmaları   | Başarısız işlem hattı çalıştırmaları ölçümleri    | Count    | Toplam                | Bir dakika penceresinde başarısız olan işlem hattı çalıştırmalarının toplam sayısı.    |
+| ActivitySucceededRuns | Başarılı etkinlik ölçümleri çalıştırıyor | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan etkinlik çalıştırmalarının toplam sayısı.  |
+| Activityfailedçalıştırmaları   | Başarısız etkinlik çalıştırma ölçümleri    | Count    | Toplam                | Bir dakika penceresi içinde başarısız olan etkinlik çalıştırmalarının toplam sayısı.     |
+| TriggerSucceededRuns | Başarılı tetikleyici çalışan ölçümleri  | Count    | Toplam                | Bir dakika penceresi içinde başarılı olan tetikleyici çalıştırmalarının toplam sayısı.   |
+| Triggerfailedçalıştırmaları    | Başarısız tetikleyici çalıştırma ölçümleri     | Count    | Toplam                | Bir dakika penceresi içinde başarısız olan tetikleyici çalıştırmalarının toplam sayısı.      |
 
 Ölçümlere erişmek için [Azure izleyici veri platformundaki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)yönergeleri doldurun.
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Azure Izleyici ile Data Factory ölçümlerini izleme
 
-Verileri Azure Izleyici 'ye yönlendirmek için Azure Izleyici ile Azure Data Factory tümleştirme kullanabilirsiniz. Bu tümleştirme, aşağıdaki senaryolarda faydalıdır:
+İzlemek üzere verileri yönlendirmek için Izleyici ile Data Factory tümleştirme kullanabilirsiniz. Bu tümleştirme, aşağıdaki senaryolarda faydalıdır:
 
-1.  Azure Izleyici 'ye Data Factory tarafından yayınlanan zengin bir ölçüm kümesine karmaşık sorgular yazmak istiyorsunuz. Ayrıca, bu sorgular üzerinde Azure Izleyici aracılığıyla özel uyarılar oluşturabilirsiniz.
+* Izlemek üzere Data Factory tarafından yayınlanan zengin bir ölçüm kümesine karmaşık sorgular yazmak istiyorsunuz. Bu sorgularda, Izleyici aracılığıyla özel uyarılar oluşturabilirsiniz.
 
-2.  Veri fabrikaları genelinde izlemek istiyorsunuz. Birden çok veri fabrikasına ait verileri tek bir Azure Izleyici çalışma alanına yönlendirebilirsiniz.
+* Veri fabrikaları genelinde izlemek istiyorsunuz. Birden çok veri fabrikasına ait verileri tek bir Izleyici çalışma alanına yönlendirebilirsiniz.
 
 Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
 
@@ -433,47 +446,47 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
 ### <a name="configure-diagnostic-settings-and-workspace"></a>Tanılama ayarlarını ve çalışma alanını yapılandırma
 
-Veri fabrikanızın tanılama ayarlarını etkinleştirin.
+Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
-1. Portalda Azure Izleyicisi ' ne gidin ve **Ayarlar** menüsünde **Tanılama ayarları** ' na tıklayın.
+1. Portalda Izleyici ' ye gidin. **Ayarlar** > **Tanılama ayarları**' nı seçin.
 
-2. Tanılama ayarı ayarlamak istediğiniz veri fabrikasını seçin.
-    
-3. Seçtiğiniz veri fabrikasında hiçbir ayar yoksa, bir ayar oluşturmanız istenir. "Tanılamayı Aç" tıklayın
+1. Tanılama ayarı ayarlamak istediğiniz veri fabrikasını seçin.
 
-   ![Tanılama ayarını - mevcut hiçbir ayar Ekle](media/data-factory-monitor-oms/monitor-oms-image1.png)
+1. Seçili veri fabrikasında herhangi bir ayar yoksa, bir ayar oluşturmanız istenir. Seçin **tanılamayı Aç**.
 
-   Data Factory 'de mevcut ayarlar varsa, bu veri fabrikasında zaten yapılandırılmış ayarların bir listesini görürsünüz. "Tanılama ayarı Ekle" ye tıklayın
+   ![Hiçbir ayar yoksa bir tanılama ayarı oluştur](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   ![Tanılama ayarını - var olan ayarları Ekle](media/data-factory-monitor-oms/add-diagnostic-setting.png)
+   Data Factory 'de mevcut ayarlar varsa, veri fabrikasında zaten yapılandırılmış ayarların bir listesini görürsünüz. **Tanılama ayarı Ekle**' yi seçin.
 
-4. Ayarınızı bir ad verin ve **Log Analytics gönder**kutusunu işaretleyin ve ardından bir Log Analytics çalışma alanı seçin.
+   ![Ayarlar varsa bir tanılama ayarı ekleyin](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-    ![Monitor-OMS-image2. png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+1. Ayarınızı bir ad verin, **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma**alanından bir çalışma alanı seçin.
 
-5. **Kaydet**’e tıklayın.
+    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-Birkaç dakika sonra, yeni ayar bu veri fabrikasının ayarları listenizde görünür ve tanılama günlükleri, yeni olay verileri oluşturulduktan hemen sonra bu çalışma alanına akışla kaydedilir. Bir olayın ne zaman yayıldığını ve Log Analytics görünme süresi arasında 15 dakika sürebilir.
+1. **Kaydet**’i seçin.
+
+Birkaç dakika sonra, bu veri fabrikasının ayarları listenizde yeni ayar görüntülenir. Tanılama günlükleri, yeni olay verileri oluşturulmasıyla hemen bu çalışma alanına akışlardır. Bir olay yayınlandığınızda ve Log Analytics göründüğünde 15 dakikaya kadar zaman çıkabilir.
 
 > [!NOTE]
-> Belirli bir Azure günlük tablosu 500 ' den fazla sütuna sahip olmayan açık bir sınır nedeniyle **kaynağa özgü mod kullanılması önemle önerilir**. Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
+> Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden kaynağa özgü mod ' u seçmeniz önerilir. Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Marketi 'nden Azure Data Factory Analytics 'i yükler
 
-![Monitor-OMS-image3. png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+!["Azure Marketi" ne gidin, "analiz filtresi" yazın ve "Azure Data Factory analiz (Önizleme") seçeneğini belirleyin.](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
-![Monitor-OMS-image4. png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+!["Azure Data Factory Analytics (Önizleme)" hakkındaki ayrıntılar](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-**Oluştur** ' a tıklayın ve çalışma alanı ve çalışma alanı ayarlarını seçin.
+**Oluştur** ' u seçip **OMS çalışma** alanı ve **OMS çalışma alanı ayarları**' nı seçin.
 
-![Monitor-OMS-image5. png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+![Yeni çözüm oluşturma](media/data-factory-monitor-oms/monitor-oms-image5.png)
 
 ### <a name="monitor-data-factory-metrics"></a>Data Factory ölçümlerini izleme
 
-**Azure Data Factory Analytics** 'i yüklemek, aşağıdaki ölçümleri sağlayan varsayılan bir görünüm kümesi oluşturur:
+Azure Data Factory Analytics 'in yüklenmesi, aşağıdaki ölçümlerin etkinleştirilebilmesi için varsayılan bir görünüm kümesi oluşturur:
 
 - ADF çalıştırmaları-1) Data Factory tarafından işlem hattı çalıştırmaları
-
+ 
 - ADF çalıştırmalar-2) Data Factory tarafından çalışan etkinlik çalıştırmaları
 
 - ADF çalıştırmalar-3) Data Factory tarafından çalıştırılan tetikler
@@ -490,51 +503,50 @@ Birkaç dakika sonra, yeni ayar bu veri fabrikasının ayarları listenizde gör
 
 - ADF Istatistikleri-3) en fazla işlem hattı çalıştırma süresi
 
-![Monitor-OMS-image6. png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+!["Çalışma kitapları (Önizleme)" ve "AzureDataFactoryAnalytics" vurgulanmış pencere](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
-![Monitor-OMS-image7. png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+![Çalıştırmalar ve hataların grafik gösterimi](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
-Yukarıdaki ölçümleri görselleştirin, bu ölçümlerin arkasındaki sorgulara bakabilir, sorguları düzenleyebilir, uyarılar oluşturabilir ve benzeri adımları izleyebilirsiniz.
+Önceki ölçümleri görselleştirin, bu ölçümlerin arkasındaki sorgulara bakabilir, sorguları düzenleyebilir, uyarılar oluşturabilir ve başka işlemler yapabilirsiniz.
 
-![Monitor-OMS-image8. png](media/data-factory-monitor-oms/monitor-oms-image8.png)
+![Veri Fabrikası tarafından çalıştırılan işlem hattının grafik gösterimi "](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>Uyarılar
 
-Azure Portal oturum açın ve uyarı oluşturmak için**uyarıları** **İzle** > ' ye tıklayın.
+Azure Portal oturum açın ve uyarı oluşturmak için**uyarıları** **İzle** > ' yi seçin.
 
 ![Portal menüsündeki uyarılar](media/monitor-using-azure-monitor/alerts_image3.png)
 
 ### <a name="create-alerts"></a>Uyarı Oluştur
 
-1.  Yeni bir uyarı oluşturmak için **+ Yeni uyarı kuralı** ' na tıklayın.
+1. Yeni bir uyarı oluşturmak için **+ Yeni uyarı kuralı** ' nı seçin.
 
     ![Yeni uyarı kuralı](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  **Uyarı koşulunu**tanımlayın.
+1. Uyarı koşulunu tanımlayın.
 
     > [!NOTE]
-    > **Kaynak türüne göre filtrele**' de **Tümünü** seçtiğinizden emin olun.
+    > **Kaynak türüne göre filtrele** aşağı açılan listesinden **Tümünü** seçtiğinizden emin olun.
 
-    ![Uyarı koşulu, ekran 1/3](media/monitor-using-azure-monitor/alerts_image5.png)
+    !["Kaynak Seç" bölmesini açan "hedef seç" > "uyarı koşulunu tanımlayın" ](media/monitor-using-azure-monitor/alerts_image5.png)
 
-    ![Uyarı koşulu, ekran 2/3](media/monitor-using-azure-monitor/alerts_image6.png)
+    !["Sinyal mantığını yapılandırma" bölmesini açan "" ölçüt ekle ">" uyarı koşulunu tanımlayın "](media/monitor-using-azure-monitor/alerts_image6.png)
 
-    ![Uyarı koşulu, ekran 3/3](media/monitor-using-azure-monitor/alerts_image7.png)
+    !["Sinyal türünü yapılandırma" bölmesi](media/monitor-using-azure-monitor/alerts_image7.png)
 
-3.  **Uyarı ayrıntılarını**tanımlayın.
+1. Uyarı ayrıntılarını tanımlayın.
 
     ![Uyarı ayrıntıları](media/monitor-using-azure-monitor/alerts_image8.png)
 
-4.  **Eylem grubunu**tanımlayın.
+1. Eylem grubunu tanımlayın.
 
-    ![Eylem grubu, ekran 1/4](media/monitor-using-azure-monitor/alerts_image9.png)
+    !["Yeni eylem grubu" vurgulanmış olarak bir kural oluşturun](media/monitor-using-azure-monitor/alerts_image9.png)
 
-    ![Eylem grubu, ekran 2/4](media/monitor-using-azure-monitor/alerts_image10.png)
+    ![Yeni bir eylem grubu oluştur](media/monitor-using-azure-monitor/alerts_image10.png)
 
-    ![Eylem grubu, ekran 3/4](media/monitor-using-azure-monitor/alerts_image11.png)
+    ![E-posta, SMS, push ve ses yapılandırma](media/monitor-using-azure-monitor/alerts_image11.png)
 
-    ![Eylem grubu, ekran 4/4](media/monitor-using-azure-monitor/alerts_image12.png)
+    ![Bir eylem grubu tanımlama](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Kod ile işlem hatlarını izleme ve yönetme hakkında bilgi edinmek için bkz. işlem [hatları programlama yoluyla izleme ve yönetme](monitor-programmatically.md) .
+[İşlem hatlarını programlama yoluyla izleme ve yönetme](monitor-programmatically.md)
