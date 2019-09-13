@@ -294,15 +294,15 @@ Bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klasörüne ekl
     | :- | :- | :- | 
     | file | Yürütülecek uygulamayı içeren dosya | yol (gerekli) |
     | proxyUser | İşi çalıştırırken taklit edilecek Kullanıcı | Dize |
-    | Sınıf | Uygulama Java/Spark ana sınıfı | Dize |
+    | className | Uygulama Java/Spark ana sınıfı | Dize |
     | args | Uygulama için komut satırı bağımsız değişkenleri | dizelerin listesi |
     | jars | Bu oturumda kullanılacak jar dosyaları dışındaki | dizelerin listesi | 
     | pyFiles | Bu oturumda kullanılacak Python dosyaları | dizelerin listesi |
-    | dosyaları | Bu oturumda kullanılacak dosyalar | dizelerin listesi |
+    | files | Bu oturumda kullanılacak dosyalar | dizelerin listesi |
     | driverMemory | Sürücü işlemi için kullanılacak bellek miktarı | Dize |
-    | Driverçekirdekler | Sürücü işlemi için kullanılacak çekirdek sayısı | Int |
-    | Yürütişbelleği | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
-    | Executorçekirdekler | Her yürütücü için kullanılacak çekirdek sayısı | Int |
+    | driverCores | Sürücü işlemi için kullanılacak çekirdek sayısı | Int |
+    | executorMemory | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
+    | executorCores | Her yürütücü için kullanılacak çekirdek sayısı | Int |
     | numExecutors | Bu oturum için başlatılacak yürüticilerinin sayısı | Int |
     | archives | Bu oturumda kullanılacak Arşivler | dizelerin listesi |
     | queue | Gönderilecek YARN kuyruğunun adı| Dize |
