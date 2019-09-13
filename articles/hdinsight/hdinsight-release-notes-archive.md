@@ -1375,7 +1375,7 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
     
   Örneğin,\[' Type '\]= ' abc ' koşul etiketleri, ilke kaydedildikten sonra aşağıdakilere dönüştürülür.
     
-  Tags. attds\[&\#x27; dsds &\#x27;\] x27; cssdfs &\#x27; =& \#
+  tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
   İlkeyi düzenleme modunda açarak ilke koşulunu bu karakterlerle görebilirsiniz.
     
