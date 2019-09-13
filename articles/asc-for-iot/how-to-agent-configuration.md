@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596329"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933876"
 ---
 # <a name="tutorial-configure-security-agents"></a>Öğretici: Güvenlik aracılarını yapılandırma
 
@@ -87,28 +87,28 @@ Varsayılan özellik değerini kullanmak için yapılandırma nesnesinden özell
 
 1. IoT Hub değiştirmek istediğiniz cihazı bulun ve seçin.
 
-2. Cihazınıza ve sonra **azureiotsecurity** modülü ' ne tıklayın.
+1. Cihazınıza ve sonra **azureiotsecurity** modülü ' ne tıklayın.
 
-3. **Modül kimliği ikizi**' na tıklayın.
+1. **Modül kimliği ikizi**' na tıklayın.
 
-4. Güvenlik modülünde değiştirmek istediğiniz özellikleri düzenleyin.
+1. Güvenlik modülünde değiştirmek istediğiniz özellikleri düzenleyin.
    
    Örneğin, bağlantı olaylarını yüksek öncelikli olarak yapılandırmak ve her 7 dakikada bir yüksek öncelikli olayları toplamak için aşağıdaki yapılandırmayı kullanın.
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. **Kaydet**’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ### <a name="using-a-default-value"></a>Varsayılan değer kullanma
 
@@ -120,7 +120,7 @@ Aşağıdaki tablo IoT güvenlik aracıları için Azure Güvenlik Merkezi 'nin 
 
 Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da uygun şemada mevcuttur.
 
-| Ad| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
+| Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |lowPriorityMessageFrequency |Gerekli: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT5H |Düşük öncelikli iletiler gönderilmeden önce geçen en uzun süre.| 

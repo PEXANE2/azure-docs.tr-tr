@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d624f6a1711bf2c2bad5ebc252d00c299ebca225
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872670"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909824"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -716,6 +716,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
     ```
 
 7. ADE uzantısı gönder.
+   ADE uzantıları itilmediği takdirde, veri diskleri şifrelenmemiş olarak işaretlenir, bu nedenle aşağıdaki adımların yürütülmesi zorunludur:
 
    * **Azure AD Ile VM için** -veri diskleri şifrelemesini el ile etkinleştirmek için aşağıdaki komutu kullanın  
 
@@ -746,6 +747,8 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+> [!NOTE]
+> Şifrelenmiş VM geri yükleme diski işleminin bir parçası olarak oluşturulan JASON dosyalarını el ile silmenin emin olun.
 
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Azure VM yedeğinden dosyaları geri yükleme
