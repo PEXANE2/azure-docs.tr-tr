@@ -50,9 +50,9 @@ Olay aboneliği adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Olay türü olay iletisi olduğunda bu olay türü adları birine tam bir eşleşme eşleşmedir. Olay adı, olay kaynağı için kayıtlı olay türü adları eşleşmediğinde bir hata oluşturur. Varsayılan, tüm olay türleri eşleşir. |
-| subjectBeginsWith | dize | Ön ek eşleştirmesi için konu alanında olay iletisi filtreleyin. Varsayılan ya da boş dize tüm eşleşir. | 
-| subjectEndsWith | dize | Bir sonek eşleşme Konu alanına olay iletisi filtreleyin. Varsayılan ya da boş dize tüm eşleşir. |
-| isSubjectCaseSensitive | dize | Denetimler için filtreler eşleştirme büyük küçük harfe duyarlı. |
+| subjectBeginsWith | string | Ön ek eşleştirmesi için konu alanında olay iletisi filtreleyin. Varsayılan ya da boş dize tüm eşleşir. | 
+| subjectEndsWith | string | Bir sonek eşleşme Konu alanına olay iletisi filtreleyin. Varsayılan ya da boş dize tüm eşleşir. |
+| isSubjectCaseSensitive | string | Denetimler için filtreler eşleştirme büyük küçük harfe duyarlı. |
 
 
 ## <a name="example-subscription-schema"></a>Örnek abonelik şeması

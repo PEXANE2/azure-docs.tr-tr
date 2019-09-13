@@ -15,7 +15,7 @@
       href: quickstart-create-logic-apps-visual-studio-code.md
 - name: Öğreticiler
   items:
-    - name: Trafiği düzenli olarak denetleme
+    - name: Zamanlamaya dayalı iş akışları oluşturma
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
     - name: Posta listesi isteklerini yönetme
       href: tutorial-process-mailing-list-subscriptions-workflow.md

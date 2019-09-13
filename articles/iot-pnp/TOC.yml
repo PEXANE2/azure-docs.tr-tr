@@ -37,10 +37,12 @@
       href: concepts-limits-quotas.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: IoT Device Workbench’i Kullanma
-      href: howto-use-iot-device-workbench.md
+    - name: Visual Studio ve Visual Studio Code ile geliştirme
+      href: howto-develop-with-vs-vscode.md
     - name: IoT gezginini yükleme
       href: howto-install-iot-explorer.md
+    - name: Azure CLI uzantısını yükleme
+      href: howto-install-pnp-cli.md
     - name: IoT portalına ekleme
       href: howto-onboard-portal.md
     - name: Modelleri yönetme

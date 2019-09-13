@@ -21,6 +21,8 @@
       href: quickstart-js-vscode.md
 - name: Öğreticiler
   items:
+    - name: İşlev zinciri oluşturma
+      href: durable-functions-sequence.md
     - name: Giriş/çıkış
       href: durable-functions-cloud-backup.md
     - name: İzleyiciler
@@ -37,46 +39,56 @@
       href: ../functions-cli-samples.md
 - name: Kavramlar
   items:
-    - name: Desenler ve kavramlar
-      href: durable-functions-concepts.md
-    - name: İşlev türleri ve özellikleri
+    - name: İşlev türleri
       href: durable-functions-types-features-overview.md
-    - name: Bağlamalar
-      href: durable-functions-bindings.md
+    - name: Düzenlemeler
+      href: durable-functions-orchestrations.md
+    - name: Düzenleyici kodu kısıtlamaları
+      href: durable-functions-code-constraints.md
+    - name: Alt düzenlemeler
+      href: durable-functions-sub-orchestrations.md
+    - name: Özel düzenleme durumu
+      href: durable-functions-custom-orchestration-status.md
     - name: Zamanlayıcılar
       href: durable-functions-timers.md
     - name: Dış olaylar
       href: durable-functions-external-events.md
-    - name: Alt düzenlemeler
-      href: durable-functions-sub-orchestrations.md
+    - name: Hata işleme
+      href: durable-functions-error-handling.md
+    - name: Dış düzenlemeler
+      href: durable-functions-eternal-orchestrations.md
+    - name: Tekil düzenlemeler
+      href: durable-functions-singletons.md
+    - name: HTTP özellikleri
+      href: durable-functions-http-features.md
+    - name: Durum bilgisi olan varlıklar
+      href: durable-functions-entities.md
     - name: Görev merkezleri
       href: durable-functions-task-hubs.md
-    - name: Güvenilir yürütme
-      href: durable-functions-checkpointing-and-replay.md
+    - name: Örnek yönetimi
+      href: durable-functions-instance-management.md
     - name: Sürüm oluşturma
       href: durable-functions-versioning.md
+    - name: Performans ve ölçeklendirme
+      href: durable-functions-perf-and-scale.md
+    - name: Yüksek kullanılabilirlik
+      href: durable-functions-disaster-recovery-geo-distribution.md
+- name: Başvuru
+  items:
+    - name: Host.json ayarları
+      href: 'durable-functions-bindings.md#host-json'
+    - name: Bağlamalar
+      href: durable-functions-bindings.md
+    - name: HTTP API
+      href: durable-functions-http-api.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Planlama ve tasarım
-      items:
-        - name: İşlev zinciri oluşturma
-          href: durable-functions-sequence.md
-        - name: Dış düzenlemeler
-          href: durable-functions-eternal-orchestrations.md
-        - name: Tekil düzenlemeler
-          href: durable-functions-singletons.md
-        - name: Performans ve ölçeklendirme
-          href: durable-functions-perf-and-scale.md
-        - name: Yüksek kullanılabilirlik
-          href: durable-functions-disaster-recovery-geo-distribution.md
     - name: Geliştirme
       items:
         - name: Azure portalda oluşturma
           href: durable-functions-create-portal.md
         - name: Bağlantıları yönetme
           href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Hata işleme
-          href: durable-functions-error-handling.md
         - name: Birim testi
           href: durable-functions-unit-testing.md
         - name: Web İşleri olarak oluşturma
@@ -89,24 +101,14 @@
           href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Paketten çalıştırma
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Yönetme
-      items:
-        - name: Örnek yönetimi
-          href: durable-functions-instance-management.md
     - name: İzleme
-      items:
-        - name: İzleme işlevleri
-          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Özel düzenleme durumu
-          href: durable-functions-custom-orchestration-status.md
-    - name: Sorun giderme
       items:
         - name: Tanılama
           href: durable-functions-diagnostics.md
-- name: Başvuru
-  items:
-    - name: HTTP API
-      href: durable-functions-http-api.md
+        - name: İzleme
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Fiyatlandırma
+          href: durable-functions-billing.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Logic Apps ile bildirme
           href: tutorial-facilities-events.md
-        - name: TSI ile olayları görselleştirme
+        - name: Time Series Insights ile olayları görselleştirme
           href: tutorial-facilities-analyze.md
 - name: Kavramlar
   items:
