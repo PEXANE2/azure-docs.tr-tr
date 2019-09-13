@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: b95af36ed8f8b6c9749711e2ebbf6ef8aa88f001
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 1e4f79a1978b77c2b744d523c8f42f1497d63007
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885912"
+ms.locfileid: "70918384"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
 
@@ -34,7 +34,7 @@ Spark yapılandırılmış akışı, Spark SQL üzerinde yerleşik bir akış i�
 
 HDInsight üzerinde Apache Kafka, genel internet üzerinden Kafka aracılarına erişim sağlamaz. Kafka ile iletişim kuran her şey, Kafka kümesindeki düğümlerle aynı Azure sanal ağında olmalıdır. Bu örnekte, hem Kafka hem de Spark kümeleri bir Azure sanal ağında bulunur. Aşağıdaki diyagramda, kümeler arasında iletişimin nasıl akagösterdiği gösterilmektedir:
 
-![Bir Azure sanal ağında Spark ve Kafka kümeleri diyagramı](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
+![Bir Azure sanal ağında Spark ve Kafka kümeleri diyagramı](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
 > Kafka hizmeti, sanal ağ içindeki iletişimle sınırlıdır. SSH ve Ambari gibi küme üzerindeki diğer hizmetlere internet üzerinden erişilebilir. HDInsight üzerinde kullanılabilir olan genel bağlantı noktaları hakkında daha fazla bilgi için bkz. [HDInsight Tarafından Kullanılan Bağlantı Noktaları ve URI’ler](hdinsight-hadoop-port-settings-for-services.md).

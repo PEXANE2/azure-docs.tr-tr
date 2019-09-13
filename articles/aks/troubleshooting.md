@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844249"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932655"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -141,3 +141,9 @@ Bunun için aşağıdaki geçici çözümleri kullanın:
 1. Bölgelere zaten yayılan ve küme oluşturma zamanında AKS 'e geçirilecek mevcut bir hizmet sorumlusunu kullanın.
 2. Otomasyon betikleri kullanıyorsanız, hizmet sorumlusu oluşturma ve AKS kümesi oluşturma arasında zaman gecikmeleri ekleyin.
 3. Azure portal kullanıyorsanız, oluşturma sırasında küme ayarlarına dönün ve birkaç dakika sonra doğrulama sayfasını yeniden deneyin.
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Çıkış trafiğinizi kısıtladıktan sonra hata alıyorum
+
+AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kuralların herhangi biriyle çakışıyorsa, belirli `kubectl` komutları çalıştıramayabilir. AKS kümesi oluştururken de hata görebilirsiniz.
+
+Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kuralları ile çakışmadığından emin olun.

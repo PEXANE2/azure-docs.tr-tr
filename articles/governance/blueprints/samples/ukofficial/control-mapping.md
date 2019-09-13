@@ -8,18 +8,21 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 43848e99f679e306747c4cb7b31a4d4692c888cc
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231638"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918350"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
 Aşağıdaki makalede, UK RESMI ve UK NHS şeması örneklerinin UK RESMI ve UK NHS denetimleriyle nasıl eşlendiğini ayrıntılarıyla anlatılmaktadır. Denetimler hakkında daha fazla bilgi için bkz. [UK resmi](https://www.gov.uk/government/publications/government-security-classifications).
 
 Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Önizleme\] denetimi UK resmi ve UK NHS 'ler denetimlerini bulup seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belirli VM uzantılarını dağıtın** .
+
+> [!IMPORTANT]
+> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)bakın.
 
 ## <a name="1-data-in-transit-protection"></a>geçiş koruması 1 veri
 
@@ -168,7 +171,7 @@ UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre,
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

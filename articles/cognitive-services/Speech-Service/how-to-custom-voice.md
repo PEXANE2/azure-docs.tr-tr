@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 10d76bc1dd52f04cceb9f0952a755c55d90c6896
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562793"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881486"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
-Özel ses, markanız için tanınabilir, tek bir tür ses oluşturmanıza olanak sağlayan bir dizi çevrimiçi araç. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Özel bir metin okuma deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
+[Özel ses](https://aka.ms/customvoice) , markanız için tanınabilir, tek bir tür ses oluşturmanıza olanak sağlayan bir dizi çevrimiçi araç. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Özel bir metin okuma deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
 
 ## <a name="whats-in-custom-voice"></a>Özel ses nedir?
 
 Özel sesle başlamadan önce bir Azure hesabı ve bir konuşma Hizmetleri aboneliğine sahip olmanız gerekir. Bir hesap oluşturduktan sonra verilerinizi hazırlayabilir, modellerinizi eğitmenizi, test edebilir, ses kalitesini değerlendirebilir ve sonunda özel ses modelinizi dağıtabilirsiniz.
 
-Aşağıdaki diyagramda özel ses portalını kullanarak özel bir ses modeli oluşturma adımları vurgulanmaktadır. Daha fazla bilgi edinmek için bağlantıları kullanın.
+Aşağıdaki diyagramda [özel ses portalını](https://aka.ms/customvoice)kullanarak özel bir ses modeli oluşturma adımları vurgulanmaktadır. Daha fazla bilgi edinmek için bağlantıları kullanın.
 
 ![Özel ses mimarisi diyagramı](media/custom-voice/custom-voice-diagram.png)
 

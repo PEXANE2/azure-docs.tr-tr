@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: c7d8b946fc587d58f13e16c1d7d806390e712104
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879558"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932471"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
@@ -120,4 +120,4 @@ Seçili arabirime yönelik Telemetriyi görüntülemek için **telemetri** sayfa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT Gezginini yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım [modelleri yönetmeyi](./howto-manage-models.md)öğrenirsiniz.
+Bu nasıl yapılır makalesinde IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT Gezginini yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım [Azure CLI uzantısını yüklemeyi ve kullanmayı](./howto-install-pnp-cli.md)öğreneceksiniz.

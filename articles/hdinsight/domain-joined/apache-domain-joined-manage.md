@@ -4,16 +4,16 @@ description: Azure HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetmey
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884235"
+ms.locfileid: "70918895"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
 HDInsight 'daki kullanıcıları ve rolleri Kurumsal Güvenlik Paketi (ESP) ve ESP kümelerinin nasıl yönetileceğini öğrenin.
@@ -34,7 +34,7 @@ Apache ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağl
    
 3. Komut **listesi kümesi**kullanarak bağlantılı bir küme görebilirsiniz. Artık bu bağlantılı kümeye bir komut dosyası gönderebilirsiniz.
 
-   ![bağlı küme](./media/apache-domain-joined-manage/linked-cluster.png "bağlı küme")
+   ![bağlı küme](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "bağlı küme")
 
 4. Ayrıca **HDInsight 'a giriş yaparak bir kümenin bağlantısını kaldırabilirsiniz: Bir kümenin** komut paleti bağlantısını kaldırın.
 
@@ -71,7 +71,7 @@ Ambarı yönetilen Kullanıcı adı ' nı kullanarak normal kümeyi bağlayabili
 
 2. Küme **adı**, **Kullanıcı adı** ve **parola**girin, ardından kümeyi bağlamak için Tamam düğmesine tıklayın. İsteğe bağlı olarak, depolama hesabı, depolama anahtarı girin ve ardından Depolama Gezgini 'nin sol ağaç görünümünde çalışması için depolama kapsayıcısını seçin
    
-   ![bağlama kümesi iletişim kutusu tutulma](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![bağlama kümesi iletişim kutusu tutulma](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > Küme hem Azure abonelikte hem de bir kümeye bağlandığında bağlı depolama anahtarını, Kullanıcı adını ve parolayı kullanırız.

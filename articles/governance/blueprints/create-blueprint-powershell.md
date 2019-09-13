@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d2069819203e821b42ea2f70e38f27b49053639e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231897"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910049"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Hızlı Başlangıç: PowerShell ile Azure Blueprint tanımlama ve atama
 
@@ -28,12 +28,16 @@ ms.locfileid: "70231897"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
+## <a name="prerequisites"></a>Önkoşullar
+
+Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yüklemek ve doğrulamak için [az. Blueprint modülünü ekleme](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) bölümündeki yönergeleri izleyin.
+
 ## <a name="create-a-blueprint"></a>Şema oluşturun
 
 Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Abonelik için rol ve ilke atamalarını yapılandırmak üzere 'MyBlueprint' adlı bir şema oluşturacağız. Ardından bir kaynak grubu ekleyecek ve bu kaynak grubuna da bir Resource Manager şablonu ve rol ataması ekleyeceğiz.
 
 > [!NOTE]
-> PowerShell kullanırken, öncelikle şema nesnesi oluşturulur. Eklenecek ve parametreye sahip olan her _yapıt_ için parametrelerin önceden ilk _şema_ içinde tanımlanması gerekir.
+> PowerShell _kullanırken, öncelikle şema nesnesi oluşturulur_ . Eklenecek ve parametreye sahip olan her _yapıt_ için parametrelerin önceden ilk _şema_ içinde tanımlanması gerekir.
 
 1. İlk _şema_ nesnesini oluşturun. **Blueprintfile** parametresi, şema, oluşturulacak kaynak grupları ve tüm şema düzeyi parametrelerinin özelliklerini içeren bir JSON dosyası alır. Parametreler atama sırasında ayarlanır ve sonraki adımlarda eklenecek yapıtlar tarafından kullanılır.
 
@@ -397,7 +401,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](./concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](./concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](./concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](./concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](./concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

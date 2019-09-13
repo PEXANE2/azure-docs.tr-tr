@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9d06cf334f08ba6ec9c47450d21d33733900ebe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356584"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882850"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Bir Azure AD kimliği için Azure Cosmos DB hesabından anahtarlara erişmek üzere sertifika tabanlı kimlik doğrulaması
 
@@ -231,6 +231,6 @@ Bu betik, aşağıdaki ekran görüntüsünde gösterildiği gibi birincil ve ik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Key Vault kullanarak Azure Cosmos anahtarlarını güvenli hale getirme](access-secrets-from-keyvault.md)
+* [Azure Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama](access-secrets-from-keyvault.md)
 
-* [Azure Cosmos DB için güvenlik öznitelikleri](cosmos-db-security-attributes.md)
+* [Azure Cosmos DB için güvenlik denetimleri](cosmos-db-security-controls.md)

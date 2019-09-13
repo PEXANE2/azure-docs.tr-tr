@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405983"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879711"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -106,7 +106,7 @@ Ambarı Web Kullanıcı arabirimi, ' de `https://CLUSTERNAME.azurehdinsight.net`
 
 Ambarı sayfasına geldiğinizde, yüklü hizmetler sayfanın solunda listelenir.
 
-![Yüklü hizmetler](./media/hdinsight-high-availability-linux/services.png)
+![Yüklü hizmetler](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Durumu göstermek için bir hizmetin yanında görünebilen bir dizi simge vardır. Bir hizmetle ilgili tüm uyarılar, sayfanın üst kısmındaki **Uyarılar** bağlantısı kullanılarak görüntülenebilir.  Ambarı önceden tanımlanmış birkaç uyarı sunar.
 
@@ -155,11 +155,11 @@ Hakkında daha fazla bilgi görüntülemek için her bir hizmeti seçebilirsiniz
 
 Hizmet sayfası her bir hizmetin durumu ve yapılandırması hakkında bilgi sağladığından, hizmetin üzerinde çalıştığı baş düğüm hakkında bilgi sağlamaz. Bu bilgileri görüntülemek için sayfanın üst kısmındaki **konaklar** bağlantısını kullanın. Bu sayfa, baş düğümler de dahil olmak üzere küme içindeki Konakları görüntüler.
 
-![ana bilgisayarlar listesi](./media/hdinsight-high-availability-linux/hosts.png)
+![ana bilgisayarlar listesi](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Baş düğümlerden birine yönelik bağlantıyı seçmek o düğümde çalışan hizmetleri ve bileşenleri görüntüler.
 
-![Bileşen durumu](./media/hdinsight-high-availability-linux/nodeservices.png)
+![Bileşen durumu](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Ambarı kullanma hakkında daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight 'ı izleme ve yönetme](hdinsight-hadoop-manage-ambari.md).
 
@@ -175,7 +175,7 @@ Bir hizmetin durumunu REST API ambarı aracılığıyla denetlemek için aşağ�
 * **CLUSTERNAME** değerini kümenin adıyla değiştirin.
 * **HizmetAdı** durumunu denetlemek istediğiniz hizmetin adıyla değiştirin.
 
-Örneğin, **MyCluster**adlı bir kümede, bir parola parolasıyla, **Bu hizmetin durumunu** denetlemek için aşağıdaki komutu kullanabilirsiniz:
+Örneğin, **MyCluster**adlı bir kümede, bir **parola parolasıyla**, **Bu hizmetin durumunu** denetlemek için aşağıdaki komutu kullanabilirsiniz:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -241,7 +241,7 @@ Kullanılabilir komutların listesi için, `help` `sftp>` istemine yazın.
 
 Ambarı web kullanıcı arabiriminden, günlükleri görüntülemek istediğiniz hizmeti seçin (örneğin, YARN). Ardından, günlüklerin görüntüleneceği baş düğümü seçmek için **hızlı bağlantılar** ' ı kullanın.
 
-![Günlükleri görüntülemek için hızlı bağlantıları kullanma](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Günlükleri görüntülemek için hızlı bağlantıları kullanma](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>Düğüm boyutunu yapılandırma
 
@@ -249,9 +249,9 @@ Bir düğümün boyutu yalnızca küme oluşturma sırasında seçilebilir. HDIn
 
 Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki bilgiler [Azure Portal][preview-portal], [Azure PowerShell modül az][azure-powershell]ve [Azure CLI][azure-cli]kullanarak boyutun nasıl belirtilbileceğine ilişkin yönergeler sağlar:
 
-* **Azure Portal**: Bir küme oluştururken, küme tarafından kullanılan düğümlerin boyutunu ayarlayabilirsiniz:
+* **Azure portalı**: Bir küme oluştururken, küme tarafından kullanılan düğümlerin boyutunu ayarlayabilirsiniz:
 
-    ![Düğüm boyutu seçimiyle küme oluşturma Sihirbazı görüntüsü](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Düğüm boyutu seçimiyle küme oluşturma Sihirbazı görüntüsü](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Azure CLI**: [Az HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) komutunu kullanırken,, ve `--headnode-size` `--zookeepernode-size` parametrelerini kullanarak `--workernode-size`baş, çalışan ve ZooKeeper düğümlerinin boyutunu ayarlayabilirsiniz.
 

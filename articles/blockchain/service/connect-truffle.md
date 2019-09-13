@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240909"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932592"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Hızlı Başlangıç: Bir işlem düğümüne bağlanmak için Truffle kullanın
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Hızlı Başlangıç: İşlem düğümüne bağlanmak için Truffle kullanma
 
 Truffle, bir Azure blok zinciri hizmeti işlem düğümüne bağlanmak için kullanabileceğiniz bir blok zinciri geliştirme ortamıdır.
 
@@ -25,7 +25,7 @@ Truffle, bir Azure blok zinciri hizmeti işlem düğümüne bağlanmak için kul
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure blok zinciri üyesi oluşturma](create-member.md)
+* [Hızlı başlangıç: Azure Portal](create-member.md) veya[hızlı başlangıcı kullanarak bir blok zinciri üyesi oluşturun: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma](create-member-cli.md)
 * [Truffle](https://github.com/trufflesuite/truffle)'yi yükler. Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)gibi çeşitli araçların yüklenmesini gerektirir.
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Web3 için Python gereklidir.
 
@@ -124,7 +124,7 @@ Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla 
 
 Bu hızlı başlangıçta, Azure blok zinciri hizmeti varsayılan işlem düğümünüz ile bağlantı kurmak için bir truffle projesi oluşturdunuz.
 
-Bir Konsorsiyumu blok zinciri ağı üzerindeki bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Ethereum ve truffle için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
+Bir işlem aracılığıyla akıllı sözleşme işlevi oluşturmak, derlemek, dağıtmak ve yürütmek için Ethereum ve truffle için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
 
 > [!div class="nextstepaction"]
-> [Azure blok zinciri hizmeti 'nde akıllı sözleşmeleri kullanma](send-transaction.md)
+> [Akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma](send-transaction.md)

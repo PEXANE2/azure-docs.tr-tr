@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 07/01/2019
-ms.openlocfilehash: 65c1d427939dc39aebece24b923bc4ebfbf136bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ed2ba70b803940700044e900a1b2bb6607c0f051
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861057"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934067"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
-Mantıksal uygulamalarınızdan şirket içi veri kaynaklarına erişmek için Azure portal bir şirket içi veri ağ geçidi kaynağı oluşturun. Mantıksal uygulamalarınız daha sonra [Şirket içi bağlayıcıları](../logic-apps/logic-apps-gateway-install.md#supported-connections)kullanabilir. Bu makalede [, yerel bilgisayarınıza ağ geçidini indirip yükledikten](../logic-apps/logic-apps-gateway-install.md) *sonra* Azure ağ geçidi kaynağınızın nasıl oluşturulacağı gösterilmektedir. Ağ geçidinin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [ağ geçidinin nasıl çalıştığı](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Mantıksal uygulamalarınızdan şirket içi veri kaynaklarına erişmek için Azure portal bir şirket içi veri ağ geçidi kaynağı oluşturun. Mantıksal uygulamalarınız daha sonra [Şirket içi bağlayıcıları](../connectors/apis-list.md#on-premises-connectors)kullanabilir. Bu makalede [, ağ geçidini yerel bir bilgisayara indirip yükledikten](../logic-apps/logic-apps-gateway-install.md) *sonra* Azure ağ geçidi kaynağınızın nasıl oluşturulacağı gösterilmektedir. Ağ Geçidi hakkında daha fazla bilgi için bkz. [ağ geçidinin nasıl çalıştığı](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
 > [!TIP]
 > Azure sanal ağlarına bağlanmak için bunun yerine bir [*tümleştirme hizmeti ortamı*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturmayı düşünün. 
@@ -29,6 +29,27 @@ Ağ geçidini diğer hizmetlerle kullanma hakkında daha fazla bilgi için şu m
 * [Şirket içi veri ağ geçidini Microsoft Flow](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Şirket içi veri ağ geçidini Microsoft PowerApps](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
+
+<a name="supported-connections"></a>
+
+## <a name="supported-data-sources"></a>Desteklenen veri kaynakları
+
+Azure Logic Apps için şirket içi veri ağ geçidi, bu veri kaynakları için şirket [içi bağlayıcıları](../connectors/apis-list.md#on-premises-connectors) destekler:
+
+* BizTalk Server 2016
+* Dosya sistemi
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle Database
+* PostgreSQL
+* SAP
+* SharePoint Server
+* SQL Server
+* Teradata
+
+Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -135,6 +156,13 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+**S**: Azure 'da ağ geçidi kaynağını oluştururken ağ geçidi yüklememi neden göremiyorum? <br/>
+Y: Bu sorun şu nedenlerden kaynaklanabilir:
+
+* Ağ Geçidi yüklemeniz zaten kayıtlı ve Azure 'daki başka bir ağ geçidi kaynağı tarafından talep edildi. Ağ Geçidi yüklemeleri, ağ geçidi kaynakları oluşturulduktan sonra örnekler listesinde görünmez. Azure portal ağ geçidi kayıtlarınızı denetlemek *için tüm Azure abonelikleri için* **Şirket Içi veri ağ geçitleri** türü ile tüm Azure kaynaklarınızı gözden geçirin.
+
+* Ağ geçidini yükleyen kişinin Azure AD kimliği, Azure portal oturum açan kişiden farklıdır. Ağ geçidini yükleyen kimlik ile oturum açtığınızdan emin olun.
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

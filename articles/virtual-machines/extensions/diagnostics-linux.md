@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092677"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918808"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın
 
@@ -59,10 +59,10 @@ Bu yükleme yönergeleri ve [indirilebilir bir örnek yapılandırma](https://ra
 
 ### <a name="sample-installation"></a>Örnek yükleme
 
-İlk üç satırda doğru parametreleri girin, ardından bu betiği kök olarak yürütün:
+Çalışmadan önce ilk bölümdeki değişkenler için doğru değerleri girin:
 
 ```bash
-# Set your Azure VM diagnostic parameters correctly below
+# Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -131,7 +131,7 @@ Name | Value
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
 storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu `https://core.windows.net`'na sahiptir. Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
-storageAccountSasToken | Ekleme, oluşturma, listeleme, güncelleştirme ve yazma izinleri`ss='bt'`(`sp='acluw'`) veren kapsayıcılar ve nesneler (`srt='co'`) için geçerli olan blob ve tablo Hizmetleri () için bir [Hesap SAS belirteci](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) . Önde gelen soru işareti (?) eklemeyin.
+storageAccountSasToken | Ekleme, oluşturma, listeleme, güncelleştirme ve yazma izinleri`ss='bt'`(`sp='acluw'`) veren kapsayıcılar ve nesneler (`srt='co'`) için geçerli olan blob ve tablo Hizmetleri () için bir [Hesap SAS belirteci](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) . Önde gelen soru işareti (? *) eklemeyin.*
 mdsdHttpProxy | seçim Uzantının belirtilen depolama hesabına ve uç noktaya bağlanmasını sağlamak için HTTP proxy bilgileri gerekir.
 sinksConfig | seçim Ölçüm ve olayların sunulabilecek alternatif hedeflerin ayrıntıları. Uzantı tarafından desteklenen her bir veri havuzunun belirli ayrıntıları, izleyen bölümlerde ele alınmıştır.
 

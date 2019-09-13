@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827580"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909791"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -120,6 +120,12 @@ Yönetilen disk Azure VM için, kullanılabilirlik kümelerine geri yükleme, y�
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Daha hızlı geri yükleme performanslarını nasıl sağlıyoruz?
 [Anında geri yükleme](backup-instant-restore-capability.md) özelliği, anlık görüntülerden daha hızlı yedeklemeler ve anında geri yüklemeler sağlanmasına yardımcı olur.
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Şifrelenmiş VM için Anahtar Kasası ayarlarını değiştirdiğimiz zaman ne olur?
+
+Şifrelenmiş VM için Anahtar Kasası ayarlarını değiştirdikten sonra yedeklemeler yeni ayrıntılarla birlikte çalışmaya devam eder, ancak değişiklikten önceki bir kurtarma noktasından geri yükleme yapıldıktan sonra, VM 'yi oluşturmadan önce bir anahtar kasasındaki gizli dizileri geri yüklemeniz gerekir.  içerdiği. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) bakın
+
+Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yüklemeden sonra aynı Keykasası kullanılabilir.
 
 ## <a name="manage-vm-backups"></a>VM yedeklemelerini yönetme
 

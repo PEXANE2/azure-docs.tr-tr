@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 09/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f3b093b8d5f772bad759d3384405f4ca9f0cee15
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035226"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933767"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -103,7 +103,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 | Name | Varsayılan | Açıklama |
 |------|---------|-------------|
-| ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
+| Instrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | Accoun | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
 | sessionRenewalMs | 1800000 | Kullanıcı bu süre boyunca devre dışı bırakılırsa, bir oturum günlüğe kaydedilir. Varsayılan değer 30 dakikadır |
 | sessionExpirationMs | 86400000 | Bu süre boyunca milisaniye cinsinden devam eden bir oturum günlüğe kaydedilir. Varsayılan değer 24 saattir |
@@ -141,16 +141,16 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
 
-Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol değiştirmeyi işlemez. Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, kurulum yapılandırmanıza ekleyebilirsiniz `enableAutoRouteTracking: true` .
+Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol **değiştirmeyi işlemez.** Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, kurulum yapılandırmanıza ekleyebilirsiniz `enableAutoRouteTracking: true` .
 
-Şu anda, bu SDK ile başlatabilmeniz için ayrı bir [tepki sağlayan eklenti](#react-extensions) sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)toplayacaktır.
+Şu anda, bu SDK ile başlatabilmeniz için ayrı bir [tepki sağlayan eklenti](#react-extensions) sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)toplayacaktır.
 
 ## <a name="react-extensions"></a>Tepki verme uzantıları
 
 | Uzantılar |
 |---------------|
-| [Tıkla](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-js)|
-| [Yerel olarak tepki verme](https://github.com/microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native)|
+| [Tıkla](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [Yerel olarak tepki verme](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Tarayıcı/istemci tarafı verilerini keşfet
 

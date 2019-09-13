@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8edb361000110da16ce2a230d8768b204076ad21
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844276"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915849"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -35,7 +35,7 @@ Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Birden çok düğüm havuzu kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
+Birden çok düğüm havuzu kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.12 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -98,7 +98,7 @@ az group create --name myResourceGroup --location eastus
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
     --kubernetes-version 1.13.10

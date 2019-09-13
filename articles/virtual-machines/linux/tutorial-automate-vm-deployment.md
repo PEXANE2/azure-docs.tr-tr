@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7215a8f169a878b10663347cf9560d822c6aa7e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f053cc7646a2a4f41c57010f7e43a3fe3255b7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081777"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931787"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
 
@@ -33,8 +33,6 @@ Bir önceki öğreticide, sanal makineye nasıl SSH uygulanacağını ve NGINX �
 > * Sertifikaları güvenli şekilde depolamak için Key Vault’u kullanma
 > * cloud-init ile güvenli NGINX dağıtımlarını otomatikleştirme
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="cloud-init-overview"></a>Cloud-init genel bakış
@@ -44,21 +42,23 @@ Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklem
 
 Azure’a sağladıkları görüntülere cloud-init’in dahil edilmesini ve bu görüntülerde çalışmasını sağlamak için iş ortaklarımızla çalışıyoruz. Aşağıdaki tabloda, Azure platform görüntülerindeki geçerli cloud-init kullanılabilirliği açıklanmaktadır:
 
-| Alias | Yayımcı | Sunduğu | SKU | Version |
+| Yayımcı | Sunduğu | SKU | Sürüm | cloud-init hazır |
 |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |latest |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
-| CoreOS |CoreOS |CoreOS |Dengeli |latest |
-| | OpenLogic | CentOS | 7-CI | latest |
-| | RedHat | RHEL | 7-RAW-CI | latest |
+|Canonical |UbuntuServer |18.04-LTS |latest |evet | 
+|Canonical |UbuntuServer |16.04-LTS |en son |evet | 
+|Canonical |UbuntuServer |14.04.5-LTS |en son |evet |
+|CoreOS |CoreOS |Dengeli |en son |evet |
+|OpenLogic 7,6 |CentOS |7-CI |en son |önizleme |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |önizleme |
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init yapılandırma dosyası oluşturma
 cloud-init’i uygulamalı olarak görmek için, NGINX’i yükleyen ve basit bir 'Merhaba Dünya' Node.js uygulaması çalıştıran bir sanal makine oluşturun. Aşağıdaki cloud-init yapılandırması, gerekli paketleri yükler, bir Node.js uygulaması oluşturur, ardından uygulamayı kullanıma hazırlar ve başlatır.
 
-Geçerli kabuğunuzda *cloud-init.txt* adlı bir dosya oluşturup aşağıdaki yapılandırmayı yapıştırın. Örneğin, dosyayı yerel makinenizde değil Cloud Shell’de oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud-init.txt` adını girin. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
+Bash isteminizdeki veya Cloud Shell, *kabuğunuzda Cloud-init. txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Örneğin, dosyayı oluşturmak `sensible-editor cloud-init.txt` ve kullanılabilir düzenleyicilerin listesini görmek için yazın. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
 
-```yaml
+```azurecli-interactive
 #cloud-config
 package_upgrade: true
 packages:
@@ -114,7 +114,7 @@ az group create --name myResourceGroupAutomate --location eastus
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
-    --name myVM \
+    --name myAutomatedVM \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
@@ -184,7 +184,7 @@ vm_secret=$(az vm secret format --secret "$secret")
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>NGINX’in güvenliğini sağlamak için cloud-init yapılandırması oluşturma
 VM oluşturduğunuzda, sertifika ve anahtarlar korunan */var/lib/waagent/* dizininde depolanır. VM’ye sertifika eklenmesini ve NGINX’in yapılandırılmasını otomatikleştirmek için önceki örnekte yer alan güncelleştirilmiş bir cloud-init yapılandırmasını kullanabilirsiniz.
 
-*cloud-init-secured.txt* adlı bir dosya oluşturup aşağıdaki yapılandırmayı yapıştırın. Cloud Shell’i kullanırsanız yerel makinenizden değil, oradan cloud-init yapılandırma dosyasını oluşturun. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud-init-secured.txt` komutunu kullanın. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
+*cloud-init-secured.txt* adlı bir dosya oluşturup aşağıdaki yapılandırmayı yapıştırın. Cloud Shell kullanıyorsanız, yerel makinenizde değil, bulut-init yapılandırma dosyasını oluşturun. Örneğin, dosyayı oluşturmak `sensible-editor cloud-init-secured.txt` ve kullanılabilir düzenleyicilerin listesini görmek için yazın. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
 
 ```yaml
 #cloud-config
@@ -241,7 +241,7 @@ runcmd:
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \

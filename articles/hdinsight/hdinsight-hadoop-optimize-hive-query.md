@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 60c725e084a18326cc4bc9cc05d02d103261f5a4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d545cd997b35cfa5e7fec58b17507ce63097fd20
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809265"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898809"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive sorgularını iyileştirme
 
@@ -29,11 +29,11 @@ Bir HDInsight kümesindeki çalışan düğümü sayısının artırılması, ç
 
 * Bir küme oluştururken, Azure portal, Azure PowerShell veya komut satırı arabirimini kullanarak çalışan düğümü sayısını belirtebilirsiniz.  Daha fazla bilgi için bkz. [HDInsight kümesi oluşturma](hdinsight-hadoop-provision-linux-clusters.md). Aşağıdaki ekran görüntüsünde Azure portal çalışan düğümü yapılandırması gösterilmektedir:
   
-    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png "scaleout_1")
+    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
     
 * Oluşturulduktan sonra, bir kümeyi yeniden oluşturmadan daha fazla ölçek genişletmek için çalışan düğümü sayısını da düzenleyebilirsiniz:
 
-    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png "scaleout_2")
+    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
 
 HDInsight ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight kümelerini ölçeklendirme](hdinsight-scaling-best-practices.md)
 
@@ -41,7 +41,7 @@ HDInsight ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight küme
 
 [Apache tez](https://tez.apache.org/) , MapReduce altyapısına alternatif bir yürütme altyapısıdır. Linux tabanlı HDInsight kümeleri varsayılan olarak tez 'yi etkinleştirdi.
 
-![tez_1][image-hdi-optimize-hive-tez_1]
+![tez_1](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 Tez şu nedenle daha hızlıdır:
 
@@ -65,7 +65,7 @@ G/ç işlemleri, Hive sorguları çalıştırmak için önemli performans sorunu
 
 Hive bölümlendirme, ham verileri yeni dizinlere yeniden düzenleyerek uygulanır. Her bölümün kendi dosya dizini vardır. Bölümleme Kullanıcı tarafından tanımlanır. Aşağıdaki diyagramda, bir Hive tablosunun *yıl*sütununa göre bölümlenmesi gösterilmektedir. Her yıl için yeni bir dizin oluşturulur.
 
-![Hive bölümlendirme][image-hdi-optimize-hive-partitioning_1]
+![Hive bölümlendirme](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 Bazı bölümlendirme konuları:
 
@@ -197,7 +197,3 @@ Bu makalede, birkaç genel Hive sorgu iyileştirme yöntemi öğrendiniz. Daha f
 * [HDInsight 'ta Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
 * [HDInsight 'ta etkileşimli sorgu kullanarak Uçuş gecikmesi verilerini çözümleme](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [HDInsight 'ta Apache Hive kullanarak Twitter verilerini çözümleme](hdinsight-analyze-twitter-data-linux.md)
-
-
-[image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
-[image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png

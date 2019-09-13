@@ -7,27 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036134"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918989"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
 Bu makalede, Windows sanal masaüstü iş ortakları alfabetik sırayla listelenmektedir.
-
-## <a name="active-cypher"></a>Etkin şifresi üzerinde anlaşılamadı
-
-![Etkin şifresi üzerinde anlaşılamadı logosu](./media/partners/active-cypher.png)
-
-Etkin şifresi üzerinde anlaşılamadı, kuruluşun ihlal ve veri kaybına karşı korunmasına yardımcı olmak için şifreleme teknolojisini içeren bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Active şifresi üzerinde anlaşılamadı ile yenilikçi şifreleme teknolojisi, Azure 'da Windows sanal masaüstü 'Nü çalıştırmak için genel dosya koruma stratejisini destekler.
-
-Active şifresi üzerinde anlaşılamadı, Windows sanal masaüstü ile kullanıldığında, yanlışlıkla veri kaybını önlerken Kullanıcı verilerinin erişilebilirliğini ve taşınabilirliği sağlamak için ek yetenekler sağlar. Etkin şifresi üzerinde anlaşılamadı ile, Azure Information Protection var olan grup güvenlik ilkeleri ve izinleri, Windows sanal masaüstü kullanılırken Kullanıcı dosyalarını şifrelemek için yararlanılabilir olabilir.
-
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
-- [İş ortağı Web sitesine gidin.](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>Cloudatlatıcı
 

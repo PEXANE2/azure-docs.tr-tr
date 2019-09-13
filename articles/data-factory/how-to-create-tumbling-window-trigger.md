@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/14/2018
-ms.openlocfilehash: 3fb958b446c3f1e78f78f40f112d8d55d37b0986
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/11/2019
+ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141562"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915539"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Atlayan bir pencerede işlem hattı çalıştıran bir tetikleyici oluşturma
 Bu makalede, bir atlayan pencere tetikleyicisi oluşturma, başlatma ve izlemeye yönelik adımlar sağlanmaktadır. Tetikleyiciler ve desteklenen türler hakkında genel bilgi için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md).
@@ -25,11 +25,14 @@ Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zam
 
 ## <a name="data-factory-ui"></a>Data Factory Kullanıcı Arabirimi (UI)
 
-Azure portal bir pencere tetikleyicisi oluşturmak için, bir **sonraki pencere > > tetikleme**' yı seçin ve ardından, atlayan pencereyi tanımlayan özellikleri yapılandırın.
+1. Data Factory Kullanıcı arabiriminde bir atlayan pencere tetikleyicisi oluşturmak için **Tetikleyiciler** sekmesini seçin ve ardından **Yeni**' yi seçin. 
+1. Tetikleyici yapılandırma bölmesi açıldıktan sonra, atlayan **pencere penceresi**' ni seçin ve ardından, çıkış penceresi tetikleyicisi özelliklerini tanımlayın. 
+1. İşiniz bittiğinde **Kaydet**'i seçin.
 
 ![Azure portal bir atlayan pencere tetikleyicisi oluşturun](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Atlayan pencere tetikleyicisi tür özellikleri
+
 Atlayan bir pencere aşağıdaki tetikleyici türü özelliklerine sahiptir:
 
 ```
@@ -94,7 +97,7 @@ Aşağıdaki tabloda, atlayan bir pencere tetikleyicisinin yinelenme ve zamanlam
 | **type** | Tetikleyicinin türü. Tür, "TumblingWindowTrigger" sabit değeridir. | String | "TumblingWindowTrigger" | Evet |
 | **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Not**: Bu öğe \<ReadOnly >. | String | "Başlatıldı," "durduruldu," "devre dışı" | Evet |
 | **frequency** | Tetikleyicinin yineleneceği sıklık birimini (dakika veya saat) temsil eden bir dize. **StartTime** tarih değerleri **Sıklık** değerinden daha ayrıntılı ise, pencere sınırları hesaplandıktan sonra **StartTime** tarihleri kabul edilir. Örneğin **Sıklık** değeri saat Ise ve **StartTime** değeri 2017-09-01T10:10:10z ise, ilk pencere (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | String | "dakika", "saat"  | Evet |
-| **interval** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. | Integer | Pozitif bir tamsayı. | Evet |
+| **interval** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Not**: Minimum pencere aralığı 15 dakikadır. | Integer | Pozitif bir tamsayı. | Evet |
 | **startTime**| Geçmişte olabilecek ilk oluşum. İlk tetikleyici aralığı (**başlangıçsaati**, **başlangıçsaati** + **aralığı**). | DateTime | Bir tarih saat değeri. | Evet |
 | **endTime**| Geçmişte olabilecek son oluşum. | DateTime | Bir tarih saat değeri. | Evet |
 | **ilir** | Pencere için veri işleme başlangıcını geciktirmek için geçen süre. İşlem hattı çalıştırması beklenen yürütme süresi artı **gecikme**miktarı ile başlatılır. **Gecikme** , tetikleyicinin yeni bir çalıştırmayı tetiklemeden önce geçen süreyi ne kadar bekleyeceğini tanımlar. **Gecikme** , pencerenin **StartTime**öğesini değiştirmez. Örneğin, 00:10:00 **gecikme** değeri 10 dakikalık bir gecikme anlamına gelir. | Zaman aralığı<br/>(SS: DD: SS)  | Varsayılan değer 00:00:00 olan bir TimeSpan değeri. | Hayır |
@@ -143,8 +146,8 @@ Yürütme için birden çok pencere (özellikle bir geri doldurma senaryosunda) 
 ### <a name="existing-triggerresource-elements"></a>Mevcut TriggerResource öğeleri
 Aşağıdaki noktaları var olan **Triggerresource** öğeleri için geçerlidir:
 
-* Tetikleyicinin **Sıklık** öğesi (veya pencere boyutu) değeri değişirse, zaten işlenmiş olan pencerelerin durumu sıfırlanmaz. Tetikleyici, yeni pencere boyutunu kullanarak yürütüldüğü son pencereden Windows için çalışmaya devam eder.
-* Tetikleyicinin bitişi öğesi için değer değişirse (eklenmiş veya güncelleştirilmiş), zaten işlenmiş olan pencerelerin durumu sıfırlanmaz. Tetikleyici, yeni **bitişsaati** değerini verir. Yeni bir **bitişsaati** değeri zaten yürütülmüş olan pencerelerin önünde ise, tetikleyici duraklar. Aksi takdirde tetikleyici, yeni **bitişsaati** değerine rastlana kadar duraklar.
+* Tetikleyicinin **Sıklık** öğesi (veya pencere boyutu) değeri değişirse, zaten işlenmiş olan pencerelerin *durumu sıfırlanmaz.* Tetikleyici, yeni pencere boyutunu kullanarak yürütüldüğü son pencereden Windows için çalışmaya devam eder.
+* Tetikleyicinin **bitişi** öğesi için değer değişirse (eklenmiş veya güncelleştirilmiş), zaten işlenmiş olan pencerelerin *durumu sıfırlanmaz.* Tetikleyici, yeni **bitişsaati** değerini verir. Yeni bir **bitişsaati** değeri zaten yürütülmüş olan pencerelerin önünde ise, tetikleyici duraklar. Aksi takdirde tetikleyici, yeni **bitişsaati** değerine rastlana kadar duraklar.
 
 ### <a name="tumbling-window-trigger-dependency"></a>Atlayan pencere tetikleme bağımlılığı
 
@@ -159,7 +162,7 @@ Bu bölümde, bir tetikleyiciyi oluşturmak, başlatmak ve izlemek için Azure P
 1. C:\ADFv2QuickStartPSH\ klasöründe aşağıdaki içeriğe sahip **Mytrigger. JSON** ADLı bir JSON dosyası oluşturun:
 
     > [!IMPORTANT]
-    > JSON dosyasını kaydetmeden önce, **StartTime** öğesinin DEĞERINI geçerli UTC saatine ayarlayın. BitişZamanı öğesinin değerini geçerli UTC saatinden bir saat olarak ayarlayın.
+    > JSON dosyasını kaydetmeden önce, **StartTime** öğesinin DEĞERINI geçerli UTC saatine ayarlayın. **BitişZamanı** öğesinin DEĞERINI geçerli UTC saatinden bir saat olarak ayarlayın.
 
     ```json
     {

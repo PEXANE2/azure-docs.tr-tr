@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be69f18f30b796e7401ef68aa5088153e07f14f5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127877"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909973"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Metin Çevirisi API'si için dil ve bölge desteği
 
@@ -125,7 +125,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Japonca | `ja` | Japonca`Jpan` | <--> | Tin`Latn` |
 | Kannada dili | `kn` | Kannada dili`Knda` | --> | Tin`Latn` |
 | Malayalam dili | `ml` | Malayalam dili`Mlym` | --> | Tin`Latn` |
-| Marathi dili | `mr` | Devanagari`Deva` | --> | Tin`Latn` |
+| Marathi | `mr` | Devanagari`Deva` | --> | Tin`Latn` |
 | Odia | `or` | Odia `Orya` | <--> | Tin`Latn` |
 | Pencap dili | `pa` | Gurmukhi`Guru`  | <--> | Tin`Latn`  |
 | Sırpça (Kiril) | `sr-Cyrl` | V`Cyrl`  | --> | Tin`Latn` |
@@ -229,6 +229,7 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Macarca      | `hu`          |
 | İzlanda dili | `is` |
 | Endonezya dili|   `id`    |
+| İrlanda dili | `ga`  |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
 |Svahili dili| `sw`    |

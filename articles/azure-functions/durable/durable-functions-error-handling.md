@@ -9,20 +9,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734299"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933420"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler hataları işleme (Azure Işlevleri)
 
-Dayanıklı Işlev düzenlemeleri kodda uygulanır ve programlama dilinin hata işleme yeteneklerini kullanabilir. Bu göz önünde bulundurularak, hata işleme ve tazminat ile tazminat ekleme hakkında bilgi edinmek için ihtiyacınız olan yeni kavramlardan emin olmanız gerekir. Ancak, bilmeniz gereken birkaç davranış vardır.
+Dayanıklı Işlev düzenlemeleri kodda uygulanır ve programlama dilinin yerleşik hata işleme özelliklerini kullanabilir. Organize etmeniz için hata işleme ve dengeleme eklemek için öğrenmeniz gereken yeni kavramlar aslında yoktur. Ancak, bilmeniz gereken birkaç davranış vardır.
 
 ## <a name="errors-in-activity-functions"></a>Etkinlik işlevlerinde hatalar
 
-Bir etkinlik işlevinde oluşturulan herhangi bir özel durum, Orchestrator işlevine geri dönerek bir `FunctionFailedException`olarak oluşturulur. Orchestrator işlevindeki gereksinimlerinize uyan hata işleme ve dengeleme kodu yazabilirsiniz.
+Bir etkinlik işlevinde oluşturulan herhangi bir özel durum Orchestrator işlevine geri hazırlanır ve bir `FunctionFailedException`olarak oluşturulur. Orchestrator işlevindeki gereksinimlerinize uyan hata işleme ve dengeleme kodu yazabilirsiniz.
 
 Örneğin, bir hesaptan diğerine fonları aktaran aşağıdaki Orchestrator işlevini göz önünde bulundurun:
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Hedef hesap için **alacaklı Taccount** işlevine yapılan çağrı başarısız olursa, Orchestrator işlevi bu fontları kaynak hesaba geri alacak şekilde dengeleyerek bunu dengeler.
+İlk **alacaklı Taccount** işlev çağrısı başarısız olursa, Orchestrator işlevi fontları kaynak hesaba geri alacak şekilde dengeler.
 
 ## <a name="automatic-retry-on-failure"></a>Hata durumunda otomatik yeniden deneme
 
@@ -192,14 +192,14 @@ module.exports = df.orchestrator(function*(context) {
 
 (.Net) veya `callActivityWithRetry` (JavaScript) API 'si bir `RetryOptions` parametre alır. `CallActivityWithRetryAsync` `CallSubOrchestratorWithRetryAsync` (.Net) veya `callSubOrchestratorWithRetry` (JavaScript) API kullanan alt düzenleme çağrıları aynı yeniden deneme ilkelerini kullanabilir.
 
-Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır. Bu ülkelere şunlar dahildir:
+Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
 
 * **Deneme sayısı üst sınırı**: En fazla yeniden deneme denemesi sayısı.
 * **İlk yeniden deneme aralığı**: İlk yeniden deneme girişiminden önce beklenecek süre.
 * **Geri dönüşlü katsayı**: Geri alma artışının oranını belirlemede kullanılan katsayı. Varsayılan değer 1 ' dir.
 * **En fazla yeniden deneme aralığı**: Yeniden deneme girişimleri arasında beklenecek en uzun süre.
 * **Yeniden deneme zaman aşımı**: Yeniden denemeler yapmak için harcayabileceğiniz en uzun süre. Varsayılan davranış süresiz olarak yeniden denenecektir.
-* **Tanıtıcı**: Bir işlev çağrısının yeniden denenip denenmeyeceğini belirleyen, Kullanıcı tanımlı bir geri çağırma belirtilebilir.
+* **Tanıtıcı**: Bir işlevin yeniden denenip denenmeyeceğini tespit etmek için Kullanıcı tanımlı bir geri çağırma belirlenebilir.
 
 ## <a name="function-timeouts"></a>İşlev zaman aşımları
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 Orchestrator işlevi işlenmeyen bir özel durumla başarısız olursa, özel durumun ayrıntıları günlüğe kaydedilir ve örnek bir `Failed` durum ile tamamlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"]
+> [Dış düzenlemeleri hakkında bilgi edinin](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [Sorunları tanılamayı öğrenin](durable-functions-diagnostics.md)

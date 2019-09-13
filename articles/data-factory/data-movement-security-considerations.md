@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608585"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931265"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory veri hareketine yönelik güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -59,7 +59,7 @@ Bu makalede, aşağıdaki iki veri taşıma senaryosunda güvenlik konularını 
 
 ### <a name="securing-data-store-credentials"></a>Veri deposu kimlik bilgilerinin güvenliğini sağlama
 
-- **Şifrelenmiş kimlik bilgilerini Azure Data Factory yönetilen bir depoda depolayın**. Data Factory, veri deposu kimlik bilgilerinizi Microsoft tarafından yönetilen sertifikalarla şifreleyerek korumanıza yardımcı olur. Bu sertifikalar her iki yılda bir döndürülür (sertifika yenilemesi ve kimlik bilgileri geçişi dahildir). Şifrelenmiş kimlik bilgileri, Azure Data Factory Yönetim Hizmetleri tarafından yönetilen bir Azure depolama hesabında güvenli bir şekilde depolanır. Azure Depolama güvenliği hakkında daha fazla bilgi için bkz. [Azure Storage güvenliğine genel bakış](../security/fundamentals/storage-overview.md).
+- **Şifrelenmiş kimlik bilgilerini Azure Data Factory yönetilen bir depoda depolayın**. Data Factory, veri deposu kimlik bilgilerinizi Microsoft tarafından yönetilen sertifikalarla şifreleyerek korumanıza yardımcı olur. Bu sertifikalar her iki yılda bir döndürülür (sertifika yenilemesi ve kimlik bilgileri geçişi dahildir). Azure Depolama güvenliği hakkında daha fazla bilgi için bkz. [Azure Storage güvenliğine genel bakış](../security/fundamentals/storage-overview.md).
 - **Azure Key Vault kimlik bilgilerini depolayın**. Veri deposunun kimlik bilgilerini [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)de saklayabilirsiniz. Data Factory, bir etkinliğin yürütülmesi sırasında kimlik bilgisini alır. Daha fazla bilgi için bkz. [kimlik bilgilerini Azure Key Vault Içinde depola](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Aktarım sırasında veri şifreleme
@@ -108,14 +108,15 @@ Karma senaryolar, şirket içinde barındırılan tümleştirme çalışma zaman
 Komut kanalı, Data Factory ve şirket içinde barındırılan tümleştirme çalışma zamanının veri taşıma hizmetleri arasında iletişime olanak sağlar. İletişim, etkinlikle ilgili bilgiler içerir. Veri kanalı, şirket içi veri depoları ile bulut veri depoları arasında veri aktarmak için kullanılır.    
 
 ### <a name="on-premises-data-store-credentials"></a>Şirket içi veri deposu kimlik bilgileri
-Şirket içi veri mağazalarınızın kimlik bilgileri her zaman şifrelenir ve depolanır. Şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde yerel olarak depolanabilir veya Azure Data Factory yönetilen depolama alanında depolanabilir (yalnızca bulut deposu kimlik bilgileri gibi). 
+Kimlik bilgileri veri fabrikası içinde depolanabilir veya Azure Key Vault çalışma zamanı sırasında [Veri Fabrikası tarafından başvurulabilir](store-credentials-in-key-vault.md) . Veri Fabrikası içinde kimlik bilgileri depoluyorsanız, her zaman otomatik olarak barındırılan tümleştirme çalışma zamanı 'nda şifreli olarak depolanır. 
+ 
+- **Kimlik bilgilerini yerel olarak depolayın**. **Set-AzDataFactoryV2LinkedService** CMDLET 'ini JSON içinde bağlantı dizeleri ve kimlik bilgileri ile doğrudan kullanırsanız, bağlantılı hizmet şifrelenir ve şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde depolanır.  Bu durumda kimlik bilgileri, extremly güvenli olan Azure arka uç hizmeti üzerinden akar ve bu, son olarak, hedeflenen ve depolandığı yerde şirket içinde barındırılan tümleştirme makinesine bağlanır. Şirket içinde barındırılan tümleştirme çalışma zamanı, hassas verileri ve kimlik bilgisi bilgilerini şifrelemek için Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) kullanır.
 
-- **Kimlik bilgilerini yerel olarak depolayın**. Kimlik bilgilerini şirket içinde barındırılan tümleştirme çalışma zamanında şifrelemek ve depolamak istiyorsanız [Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleme](encrypt-credentials-self-hosted-integration-runtime.md)bölümündeki adımları izleyin. Tüm bağlayıcılar bu seçeneği destekler. Şirket içinde barındırılan tümleştirme çalışma zamanı, hassas verileri ve kimlik bilgisi bilgilerini şifrelemek için Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) kullanır. 
+- **Azure Key Vault kimlik bilgilerini depolayın**. Veri deposunun kimlik bilgilerini [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)de saklayabilirsiniz. Data Factory, bir etkinliğin yürütülmesi sırasında kimlik bilgisini alır. Daha fazla bilgi için bkz. [kimlik bilgilerini Azure Key Vault Içinde depola](store-credentials-in-key-vault.md).
+
+- Kimlik bilgilerini **Azure arka ucu aracılığıyla şirket içinde barındırılan tümleştirme çalışma zamanına taşımadan yerel olarak depolayın**. Kimlik bilgilerini veri fabrikası arka ucu aracılığıyla akışa almak zorunda kalmadan şirket içinde barındırılan tümleştirme çalışma zamanında şifrelemek ve depolamak istiyorsanız [Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleme](encrypt-credentials-self-hosted-integration-runtime.md)bölümündeki adımları izleyin. Tüm bağlayıcılar bu seçeneği destekler. Şirket içinde barındırılan tümleştirme çalışma zamanı, hassas verileri ve kimlik bilgisi bilgilerini şifrelemek için Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) kullanır. 
 
    Bağlı hizmette bağlantılı hizmet kimlik bilgilerini ve hassas ayrıntıları şifrelemek için **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 'ini kullanın. Daha sonra **set-AzDataFactoryV2LinkedService** cmdlet 'ini kullanarak bağlı bir hizmet oluşturmak IÇIN döndürülen JSON (bağlantı dizesindeki **encryptedcredential** öğesiyle) öğesini kullanabilirsiniz.  
-
-- **Azure Data Factory yönetilen depolamada saklayın**. **Set-AzDataFactoryV2LinkedService** CMDLET 'ini JSON içinde bağlantı dizeleri ve kimlik bilgileri ile doğrudan kullanırsanız, bağlantılı hizmet şifrelenir ve Azure Data Factory yönetilen depolama alanında depolanır. Gizli bilgiler sertifika tarafından hala şifrelenir ve Microsoft bu sertifikaları yönetir.
-
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanında bağlı hizmeti şifrelerken kullanılan bağlantı noktaları

@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087116"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933268"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Dayanıklı İşlevler-Merhaba dizisi örneğinde işlev zinciri oluşturma
 
-İşlev zinciri, belirli bir sırada işlev dizisini yürütme düzenine başvurur. Genellikle bir işlevin çıktısının başka bir işlevin girişine uygulanması gerekir. Bu makalede, Dayanıklı İşlevler hızlı başlangıcı 'ni ([C#](durable-functions-create-first-csharp.md) veya [JavaScript](quickstart-js-vscode.md)) tamamladığınızda oluşturduğunuz zincirleme dizisi açıklanmaktadır. Dayanıklı İşlevler hakkında daha fazla bilgi için bkz. [dayanıklı işlevler desenler ve teknik kavramlar](durable-functions-concepts.md).
+İşlev zinciri, belirli bir sırada işlev dizisini yürütme düzenine başvurur. Genellikle bir işlevin çıktısının başka bir işlevin girişine uygulanması gerekir. Bu makalede, Dayanıklı İşlevler hızlı başlangıcı 'ni ([C#](durable-functions-create-first-csharp.md) veya [JavaScript](quickstart-js-vscode.md)) tamamladığınızda oluşturduğunuz zincirleme dizisi açıklanmaktadır. Dayanıklı İşlevler hakkında daha fazla bilgi için bkz. [dayanıklı işlevler genel bakış](durable-functions-overview.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -141,7 +141,7 @@ Gördüğünüz `runtimeStatus` gibi, örneği `output` *tamamlanır* ve Orchest
 > [!NOTE]
 > Orchestrator işlevini Başlatan HTTP POST uç noktası, örnek uygulamada "HttpStart" adlı bir HTTP tetikleyici işlevi olarak uygulanır. , Veya `queueTrigger` gibi`timerTrigger`diğer tetikleyici türleri için benzer başlangıç mantığı uygulayabilirsiniz. `eventHubTrigger`
 
-İşlev yürütme günlüklerine bakın. İşlev, genel bakışta açıklanan yeniden yürütme davranışı nedeniyle birden çok kez başlatıldı ve tamamlandı. [](durable-functions-concepts.md) `E1_HelloSequence` Diğer taraftan, bu işlev yürütmelerinin yeniden çalınmadığından yalnızca üç `E1_SayHello` yürütmesi vardı.
+İşlev yürütme günlüklerine bakın. Bu işlev, düzenleme güvenilirliği konusunda açıklanan yeniden yürütme davranışı nedeniyle birden çok kez başlatıldı ve tamamlandı. [](durable-functions-orchestrations.md#reliability) `E1_HelloSequence` Diğer taraftan, bu işlev yürütmelerinin yeniden çalınmadığından yalnızca üç `E1_SayHello` yürütmesi vardı.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio örnek kodu
 

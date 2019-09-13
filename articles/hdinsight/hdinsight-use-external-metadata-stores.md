@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 38e33c0e138b115010b22cc3510b93be98546b50
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1e922dfd879c7323d467dca8c4017c5ede2c8659
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735862"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916538"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight 'ta dış meta veri depoları kullanma
 
@@ -70,6 +70,7 @@ Aşağıda, bazı genel HDInsight Hive meta veri deposu en iyi yöntemler verilm
 - Azure portal veya Azure Izleyici günlükleri gibi Azure SQL veritabanı Izleme araçlarını kullanarak performans ve kullanılabilirlik için meta deponuz izleyin.
 - Mevcut bir özel meta veri deposu veritabanına yönelik yeni, daha yüksek bir Azure HDInsight sürümü oluşturulduğunda, sistem, veritabanını yedekten geri yüklemeden geri alınamaz olan meta veri deposu şemasını yükseltir.
 - Birden çok küme arasında bir meta veri deposu paylaşırsanız, tüm kümelerin aynı HDInsight sürümü olduğundan emin olun. Farklı Hive sürümleri farklı meta veri deposu veritabanı şemaları kullanır. Örneğin, Hive 1,2 ve Hive 2,1 sürümlü kümeler arasında bir meta veri deposu paylaşamazsınız. 
+- HDInsight 4,0 ' de Spark ve Hive, Mini SQL veya Hive tablolarına erişmek için bağımsız kataloglar kullanır. Spark tarafından oluşturulan bir tablo Spark kataloğunda bulunur. Hive tarafından oluşturulan bir tablo Hive kataloğunda bulunur. Bu, Hive ve Spark paylaşılan ortak kataloğunun HDInsight 3,6 sürümünden farklıdır. HDInsight 4,0 ' de Hive ve Spark tümleştirmesi Hive ambar Bağlayıcısı 'nı (HWC) kullanır. HWC, Spark ve Hive arasında bir köprü olarak çalışmaktadır. [Hive ambar Bağlayıcısı hakkında bilgi edinin](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
 
 ##  <a name="apache-oozie-metastore"></a>Apache Oozie meta veri deposu
 

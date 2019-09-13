@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a4a77a9b4cdd30c04de4c4eb9d8731c1ea0616c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699260"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932628"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure Dosya Eşitleme sunucusu uç noktası Ekle/Kaldır
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -37,7 +37,7 @@ Sunucu uç noktası eklemek için, istenen eşitleme grubuna gidin ve "sunucu u�
 
 - **Kayıtlı sunucu**: Sunucu uç noktasının oluşturulacağı sunucu veya kümenin adı.
 - **Yol**: Eşitleme grubunun bir parçası olarak eşitlenecek Windows Server 'daki yol.
-- **Bulut katmanlama**: Bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Etkinleştirildiğinde, bulut katmanlama dosyaları Azure dosya paylaşımınıza göre katmanlaşacaktır. Bu, sunucunuzdaki alan verimliliğini yönetmenize yardımcı olmak için şirket içi dosya paylaşımlarını veri kümesinin tam bir kopyası yerine bir önbelleğe dönüştürür.
+- **Bulut katmanlama**: Bulut katmanlamayı etkinleştirmek veya devre dışı bırakmak için bir anahtar. Etkinleştirildiğinde, bulut katmanlama dosyaları Azure dosya paylaşımınıza göre *katmanlaşacaktır* . Bu, sunucunuzdaki alan verimliliğini yönetmenize yardımcı olmak için şirket içi dosya paylaşımlarını veri kümesinin tam bir kopyası yerine bir önbelleğe dönüştürür.
 - **Birim boş alanı**: sunucu uç noktasının bulunduğu birimde ayrılacak boş alan miktarı. Örneğin, birim boş alanı tek bir sunucu uç noktası olan bir birimde% 50 olarak ayarlandıysa, yaklaşık olarak veri miktarı Azure dosyalarına göre katmanlanacaktır. Bulut katmanlama özelliğinin etkinleştirilip etkinleştirilmediği bağımsız olarak, Azure dosya paylaşımınızda her zaman eşitleme grubundaki verilerin tamamen bir kopyası bulunur.
 
 Sunucu uç noktasını eklemek için **Oluştur** ' u seçin. Bir eşitleme grubunun ad alanı içindeki dosyalar artık eşitlenmiş durumda tutulacak. 
@@ -50,10 +50,15 @@ Belirli bir sunucu uç noktası için Azure Dosya Eşitleme kullanmayı kesmek i
 
 Sunucu uç noktasını kaldırmadan önce tüm katmanlı dosyaların geri çekilmiş olduğundan emin olmak için sunucu uç noktasında bulut katmanlamayı devre dışı bırakın ve ardından sunucu uç noktası ad alanı içindeki tüm katmanlı dosyaları yeniden çağırmak için aşağıdaki PowerShell cmdlet 'ini yürütün:
 
-```powershell
+```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+Belirtildiğinde `-Order CloudTieringPolicy` , en son değiştirilen dosyalar önce geri alınacaktır.
+Dikkate alınması gereken diğer isteğe bağlı ancak yararlı parametreler şunlardır:
+* `-ThreadCount`kaç dosyanın paralel olarak geri çağrılabileceğini belirler.
+* `-PerFileRetryCount`Şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
+* `-PerFileRetryDelaySeconds`yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
 
 > [!Note]  
 > Sunucuyu barındıran yerel birimde, tüm katmanlı verileri yeniden çağırmak için yeterli boş alan yoksa, `Invoke-StorageSyncFileRecall` cmdlet başarısız olur.  

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 39b87347212aef36bcced1a5b297f2f9e89bcc47
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734923"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885164"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
@@ -100,7 +100,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle**' ye tıklayın.
 
-    ![Apache Ranger Yönetici Arabirimi Oluşturma İlkesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase ilkeleri listesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. **Ilke oluştur** ekranında, aşağıdaki değerleri girin:
 
@@ -119,7 +119,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    * `*`sıfır veya daha fazla karakter örneğini gösterir.
    * `?`tek karakteri gösterir.
 
-   ![Apache Ranger Yönetici Arabirimi Oluşturma İlkesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger ilkesi satışları oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >**Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
@@ -138,7 +138,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    |Kullanıcı Seçin…  | marketing_user1 |
    |İzinler  | Okuma |
 
-   ![Apache Ranger Yönetici Arabirimi Oluşturma İlkesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger ilkesi pazarlama oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. **Add**’e tıklayarak ilkeyi kaydedin.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404552"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918585"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -67,7 +67,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
   
 2. Sol taraftaki menüden **+ kaynak** > **işlem** > **Ubuntu Server 18,04 LTS**öğesine gidin.
 
-    ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. __Temel bilgiler__ sekmesinde, aşağıdaki bilgileri girin:  
   
@@ -84,7 +84,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
     |Parola veya SSH ortak anahtarı | Kullanılabilir alan, **kimlik doğrulama türü**için seçtiğiniz seçeneğe göre belirlenir.  Uygun değeri girin.|
     |Ortak gelen bağlantı noktaları|**Seçili bağlantı noktalarına Izin ver**' i seçin. Ardından **gelen bağlantı noktaları seçin** açılır listesinden **SSH (22)** öğesini seçin.|
 
-    ![Sanal makine temel yapılandırması](./media/connect-on-premises-network/vm-basics.png)
+    ![Sanal makine temel yapılandırması](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Diğer girişleri varsayılan değerlerde bırakın ve sonra **ağ** sekmesini seçin.
 
@@ -109,7 +109,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 2. Daha sonra kullanmak üzere **genel IP adresi/DNS ad etiketi** ve **özel IP adresi** değerlerini aklınızda yapın.
 
-   ![Ortak ve özel IP adresleri](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Ortak ve özel IP adresleri](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bağlama (DNS yazılımı) yükleyip yapılandırma
 

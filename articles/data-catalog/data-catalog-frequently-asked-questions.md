@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736418"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898726"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Veri Kataloğu hakkında sık sorulan sorular
 Bu makale, Azure Veri Kataloğu hizmetiyle ilgili sık sorulan soruların yanıtlarını sağlar.
@@ -52,6 +52,15 @@ Tablolar, görünümler, dosyalar ve raporlar gibi veri kataloğunda kayıtlı o
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>Nasıl yaparım? başka bir veri kaynağı için destek isteği mi?
 Özellik isteklerini ve diğer geri bildirimleri göndermek için [Azure geri bildirim forumlarında veri kataloğuna](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)gidin.
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Yeni bir katalog oluşturmaya çalıştığımda neden bir hata *kataloğu* aldım?
+
+Office 365 E5 Power BI Pro lisansıyla satın aldığınızda, Microsoft, aboneliğin bölgesinde otomatik olarak varsayılan bir katalog oluşturur. Bu katalog, Ücretsiz SKU 'YU kullanır. Office 365/Power BI Kullanıcı Lisansı Office 365 Yönetim sayfasında yönetilir. 
+
+Ancak, bu tür veri kataloğunda **yönetici seçeneği** yoktur ve **Azure Portal**görünmez. Bu tür veri kataloğunu silemezsiniz. Benzer şekilde, veri kataloğunu yeniden adlandırmanıza izin verilmez ve başka bir bölgeye taşıyamazsınız. 
+
+Power BI Pro lisansı atanan kullanıcı hesaplarının, Power BI Pro lisansıyla Office 365 E5 'a kaydolduklarında lisans anlaşması nedeniyle otomatik olarak veri kataloğuna erişimi vardır. Bu tür bir Kullanıcı, yönetim ayrıcalıklarına sahip olmayan veri kataloğu varlıklarına tam erişime sahiptir. Bu tür bir Kullanıcı, Azure Veri Kataloğu 'nda **Katalog Kullanıcı** rolünün bir parçası *değildir* .
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Veri Kataloğu 'Nu kullanmaya başlamak Nasıl yaparım? misiniz?
 Başlamak için en iyi yöntem, [Veri Kataloğu 'nu kullanmaya başlamanızı](data-catalog-get-started.md)sağlar. Bu makale, hizmette yetenekler hakkında uçtan uca bir genel bakış sağlar.

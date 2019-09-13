@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 83e9e1364293601337f854f083bbb279361e29c5
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811007"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918320"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight 'ta Azure Active Directory Domain Services olan Kurumsal Güvenlik Paketi konfigürasyonları
 
@@ -74,7 +74,7 @@ Yönetilen kimlik oluşturulduktan ve doğru rol verildikten sonra, AAD-DS Yöne
 
 Azure AD-DS 'yi etkinleştirdikten sonra, AD sanal makinelerinde (VM 'Ler) bir yerel etki alanı ad hizmeti (DNS) sunucusu çalışır. Azure AD-DS Sanal ağınızı (VNET) bu özel DNS sunucularını kullanacak şekilde yapılandırın. Doğru IP adreslerini bulmak için, **Yönet** kategorisi altında **Özellikler** ' i seçin ve **sanal ağ ÜZERINDE IP adresi**altında listelenen IP adreslerine bakın.
 
-![Yerel DNS sunucularının IP adreslerini bulma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
+![Yerel DNS sunucularının IP adreslerini bulma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
 **Ayarlar** kategorisi altındaki **DNS sunucuları** ' nı seçerek, bu özel IP 'LERI kullanmak IÇIN Azure AD-DS VNET 'teki DNS sunucularının yapılandırmasını değiştirin. Ardından **özel**' in yanındaki radyo düğmesine tıklayın, aşağıdaki metin kutusuna Ilk IP adresini girin ve **Kaydet**' e tıklayın. Aynı adımları kullanarak ek IP adresleri ekleyin.
 

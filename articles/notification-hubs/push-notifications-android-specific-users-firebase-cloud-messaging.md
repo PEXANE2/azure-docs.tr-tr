@@ -13,20 +13,20 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 09/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: cdd43f6892f1932803bb965897d4af8c4cab481e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227779"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934108"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Öğretici: Belirli Android uygulama kullanıcıları için Azure Notification Hubs'ı kullanarak anında iletme bildirimi
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli Android uygulama kullanıcılarına anında iletme bildirimi
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Notification Hubs’ı nasıl kullanacağınız gösterilmektedir. [Uygulama arka ucunuzdan kaydolma](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) başlıklı yönerge makalesinde gösterildiği gibi, istemcilerin kimliğini doğrulamak ve bildirimler oluşturmak için ASP.NET WebAPI arka ucu kullanılır. Bu öğreticide oluşturduğunuz bildirim hub'ı geliştirir [Öğreticisi: Android cihazlar için Azure Notification Hubs ve Firebase Cloud Messaging kullanarak anında iletme bildirimleri](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Notification Hubs’ı nasıl kullanacağınız gösterilmektedir. [Uygulama arka ucunuzdan kaydolma](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) başlıklı yönerge makalesinde gösterildiği gibi, istemcilerin kimliğini doğrulamak ve bildirimler oluşturmak için ASP.NET WebAPI arka ucu kullanılır. Bu öğretici, [öğreticide oluşturduğunuz Bildirim Hub 'ını oluşturur: Azure Notification Hubs ve Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md)kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -37,15 +37,15 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Tamamlamak [Öğreticisi: Android cihazlar için Azure Notification Hubs ve Firebase Cloud Messaging kullanarak anında iletme bildirimleri](notification-hubs-android-push-notification-google-fcm-get-started.md) Bu öğreticiyi tamamlamadan önce.
+[Öğreticiyi doldurun: Bu öğreticiyi gerçekleştirmeden önce Azure Notification Hubs ve Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md) kullanarak Android cihazlara anında iletme bildirimleri gönderin.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Android Projesi oluşturma
 
-Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğreticisi: Android cihazlar için Azure Notification Hubs ve Firebase Cloud Messaging kullanarak anında iletme bildirimleri](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Sonraki adım [öğreticide oluşturulan Android uygulamasını güncelleştirmedir: Azure Notification Hubs ve Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md)kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
 
-1. Açık, `res/layout/activity_main.xml` dosyasında, aşağıdaki içerik tanımlarını değiştirin:
+1. `res/layout/activity_main.xml` Dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
 
     Kullanıcı olarak oturum açmak için yeni EditText denetimleri ekler. Ayrıca gönderdiğiniz bildirimlerin parçası olacak kullanıcı adı etiketi için bir alan da eklenir:
 
@@ -136,7 +136,7 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
         />
     </RelativeLayout>
     ```
-2. Açık, `res/values/strings.xml` değiştirin ve dosya `send_button` dizesi yeniden tanımlayan aşağıdaki satırları tanımıyla `send_button` ve diğer denetimler için dizeleri ekleyin:
+2. Dosyanızı açın ve `send_button` tanımını, `send_button` diğer denetimler için ve dizeleri eklemek üzere dizesini yeniden tanımlayarak aşağıdaki satırlarla değiştirin: `res/values/strings.xml`
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -147,10 +147,10 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    `main_activity.xml` Grafik Düzen şimdi şu resimdeki gibi görünmelidir:
+    `main_activity.xml` Grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
 
     ![][A1]
-3. Adlı yeni bir sınıf oluşturun `RegisterClient` aynı pakette, `MainActivity` sınıfı. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
+3. Sınıfınız ile aynı pakette adlı `RegisterClient` yeni bir sınıf oluşturun. `MainActivity` Yeni sınıf dosyası için aşağıdaki kodu kullanın.
 
     ```java
   
@@ -258,8 +258,8 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
     }
     ```
 
-    Bu bileşen için anında iletme bildirimleri kaydetmek için uygulama arka ucu iletişim kurması gerekir REST çağrılarını uygular. [Uygulama arka ucunuzdan kaydetme](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. ' A tıkladığınızda, yerel depolama alanında depolanan bir yetkilendirme belirteci kullanan **oturum** düğmesi.
-4. İçinde `MainActivity` sınıfı ve için bir alan eklemek `RegisterClient` sınıfı ve ASP.NET ucun uç noktası için bir dize. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin: `http://mybackend.azurewebsites.net`.
+    Bu bileşen, anında iletme bildirimlerine kaydolmak için uygulama arka ucuna başvurmak üzere gereken REST çağrılarını uygular. [Uygulama arka ucunuzdan kaydetme](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç** düğmesine tıkladığınızda yerel depolamada depolanan bir yetkilendirme belirteci kullanır.
+4. Sınıfında, ASP.net arka ucunuzun uç noktası için bir `RegisterClient` alan ve bir dize ekleyin. `MainActivity` `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin: `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -320,7 +320,7 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Daha sonra işlemek için aşağıdaki yöntemleri ekleyin **oturum** olay ve anında iletme bildirimleri gönderme düğmesine tıklayın.
+9. Ardından, **oturum açma** düğmesine tıklayıp olay ve anında iletme bildirimleri göndermek için aşağıdaki yöntemleri ekleyin.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -410,7 +410,7 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
     }
     ```
 
-    `login` İşleyicisi **oturum açın** düğmesi oluşturur: bir temel kimlik doğrulaması belirteci giriş kullanıcı adı ve parola (herhangi bir belirteci kullanarak kimlik doğrulaması düzeni kullandığı gösterir) kullanma ve ardından kullanır `RegisterClient` çağırmak için kayıt için arka uç.
+    **Oturum açma** düğmesine yönelik `RegisterClient` işleyici,girişKullanıcıadıveparolası(kimlikdoğrulamadüzeniniztarafındankullanılanbelirtecitemsileder)kullanaraktemelbirkimlikdoğrulamabelirtecioluşturur,sonrakayıtiçinarkaucaçağırmaküzerekullanır`login` .
 
     `sendPush` yöntemi, kullanıcı etiketine dayalı olarak kullanıcıya güvenli bir bildirim tetiklemek için arka ucu çağırır. `sendPush` tarafından hedeflenen platform bildirim hizmeti, geçirilen `pns` dizesine bağlıdır.
 
@@ -465,18 +465,25 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
         }
     }
     ```
-12. İçinde `build.gradle` dosyasında, aşağıdaki satırı ekleyin `android` sonra bölüm `buildTypes` bölümü.
+12. Dosyasında, bölümündeki bölümüne aşağıdaki satırı `android` `buildTypes` ekleyin. `build.gradle`
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Projeyi oluşturun.
+13. Uygulamanız API düzeyi 28 (Android 9,0) veya üzeri hedefleniyorsa, aşağıdaki bildirimini `<application>` `AndroidManifest.xml`öğesi içine ekleyin.
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. Projeyi oluşturun.
 
 ## <a name="test-the-app"></a>Uygulamayı test etme
 
 1. Android Studio kullanarak bir cihazda veya öykünücüde uygulamayı çalıştırın.
 2. Android uygulamasında bir kullanıcı adı ve parola girin. Her ikisi de aynı dize değerine sahip olmalı ve boşluk veya özel karakterler içermemelidir.
-3. Android uygulamasını tıklatın **oturum**. Bildiren bir bildirim iletisi için bekleyin **imzalandı giriş ve kayıtlı**. **Bildirim Gönder** düğmesini etkinleştirir.
+3. Android uygulamasında **oturum aç**' a tıklayın. **Oturum açmış ve kayıtlı**olduğunu bildiren bir ileti için bekleyin. **Bildirim Gönder** düğmesini etkinleştirir.
 
     ![][A2]
 4. Uygulamayı çalıştırdığınız ve bir kullanıcı kaydettiğiniz tüm platformları etkinleştirmek için iki durumlu düğmelere tıklayın.

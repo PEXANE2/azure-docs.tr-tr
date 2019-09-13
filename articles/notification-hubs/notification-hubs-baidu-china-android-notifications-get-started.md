@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: android
 author: jwargo
 manager: patniko
-editor: spelluru
-ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: conceptual
@@ -14,19 +12,19 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 06/19/2019
 ms.author: jowargo
-ms.openlocfilehash: f6a6bc9b1d4826796299d073e0edfbfcede948e7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7a3a9affc0fd5e83c7f6046e70d198cce08cb3e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274913"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886048"
 ---
-# <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu kullanarak Azure Notification Hubs ile çalışmaya başlama
+# <a name="deprecated-get-started-with-notification-hubs-using-baidu"></a>Kullanım dışı Baidu kullanarak Azure Notification Hubs ile çalışmaya başlama
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!IMPORTANT]
-> Bu öğreticide kullanım dışı bırakılmıştır. 
+> Bu öğretici kullanım dışıdır. 
 
 Baidu bulut anında iletme, mobil cihazlara anında iletme bildirimleri göndermede kullanabileceğiniz bir Çin bulut hizmetidir.
 
@@ -122,9 +120,9 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
 
     ![Azure Notification Hubs - Baidu Yeni Proje](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2. Bir uygulama adı girin ve gereken Minimum SDK sürümü API 16 olarak ayarlandığından emin olun: Android 4.1. **Ayrıca lütfen paketinizin adının (应用包名) Baidu Bulut Anında İletme Portalı’nda aynı olduğundan emin olun**
+2. Bir uygulama adı girin ve gereken minimum SDK sürümünün API 16 olarak ayarlandığından emin olun: Android 4,1. **Ayrıca lütfen paketinizin adının (应用包名) Baidu Bulut Anında İletme Portalı’nda aynı olduğundan emin olun**
 
-    ![Azure Notification Hubs - Baidu Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs - Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs-Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs-Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. İleri'ye tıklayın ve Etkinlik Oluştur penceresi görünene kadar sihirbazı izlemeye devam edin. Boş Etkinlik değerinin seçildiğinden emin olun ve son olarak yeni bir Android Uygulaması oluşturmak için Son'u seçin.
 
@@ -149,7 +147,7 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
     }
     ```
 
-    Liste çakışmasını önlemek için aşağıdaki kodu ekleyin projesinin `Manifest.xml` dosyası:
+    Liste çakışmasını önlemek için, aşağıdaki kodu projenin `Manifest.xml` dosyasına ekleyin:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -168,11 +166,11 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
 
     ![Azure Notification Hubs - Baidu SDK Kitaplıkları](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. Projenin `libs` klasörü, sağ tıklayarak `pushervice-x.y.z.jar` seçin; dosyası **kitaplığı olarak ekleme** bu kitaplığı projeye dahil olmak üzere.
+7. Projenin `libs` klasöründe, `pushervice-x.y.z.jar` dosyaya sağ tıklayın; bu kitaplığı projeye dahil etmek için **kitaplık olarak ekle** ' yi seçin.
 
     ![Azure Notification Hubs - Baidu Kitaplık Olarak Ekleme](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Android proje açmak `AndroidManifest.xml` dosya ve Baidu SDK'sı tarafından gerekli izinleri ekleyin. **`YOURPACKAGENAME` yerine paketinizin adını yazın**.
+8. Android projesinin `AndroidManifest.xml` dosyasını açın ve Baidu SDK 'sının gerektirdiği izinleri ekleyin. **`YOURPACKAGENAME` yerine paketinizin adını yazın**.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -480,11 +478,11 @@ Bu öğreticide kolaylık sağlamak için .NET SDK ile bildirim göndermenin gö
 
 Bildirim göndermeye yönelik farklı yaklaşımlar aşağıda listelenmiştir:
 
-* **REST arabirimi**:  Kullanarak herhangi bir arka uç platformunda bildirimi destekleyebilirsiniz [REST arabirimi](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
-* **Microsoft Azure Notification Hubs .NET SDK'sı**: Visual Studio için Nuget paket yöneticisini çalıştırın [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
-* **Node.js**: [Node.js'den Notification hubs'ı kullanmayı](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Mobil uygulamalar**: Notification Hubs ile tümleştirilmiş bir Azure App Service Mobile Apps arka ucundan bildirim göndermek nasıl bir örnek için bkz [mobil uygulamanıza anında iletme bildirimleri ekleme](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
-* **Java / PHP**: REST API'lerini kullanarak bildirim göndermek nasıl bir örnek için bkz. "Java/php'den Notification hubs'ı kullanmayı" ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
+* **Rest arabirimi**:  [Rest arabirimini](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)kullanarak herhangi bir arka uç platformunda bildirimi destekleyebilirsiniz.
+* **Microsoft Azure Notification Hubs .NET SDK**: Visual Studio için NuGet Paket Yöneticisi ' nde [Install-Package Microsoft. Azure. Notificationhub](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)' ı çalıştırın.
+* **Node.js**: [Node. js ' den Notification Hubs kullanma](notification-hubs-nodejs-push-notification-tutorial.md).
+* **Mobile Apps**: Notification Hubs ile tümleştirilmiş Azure App Service Mobile Apps arka ucundan nasıl bildirim gönderileceğini gösteren bir örnek için bkz. [mobil uygulamanıza anında iletme bildirimleri ekleme](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
+* **Java/php**: REST API 'leri kullanarak bildirimlerin nasıl gönderileceği hakkında bir örnek için, bkz. "Java/php 'den Notification Hubs kullanma" ([Java](notification-hubs-java-push-notification-tutorial.md) | [php](notification-hubs-php-push-notification-tutorial.md)).
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(İsteğe bağlı) Bir .NET konsol uygulamasından bildirim gönderme
 

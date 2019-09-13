@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: c6f55b40b3ee077b81a3cdd6f3add7a2cad23f95
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809930"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935227"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -165,11 +165,11 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
 3. __Gelişmiş ayarlar__ bölümünde __betik eylemleri__' ni seçin. __Betik eylemleri__ bölümünde __+ Yeni Gönder__' i seçin.
 
-    ![Yeni betik eylemi gönder](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![Yeni betik eylemi gönder](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
 4. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
-    ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Aşağıdaki tablo, formundaki öğeleri açıklar:
 
@@ -185,7 +185,7 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
 5. Betiği kaydetmek için __Oluştur__ ' u seçin. Daha sonra başka bir betik eklemek için __+ Yeni Gönder__ ' i kullanabilirsiniz.
 
-    ![Birden çok betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![Birden çok betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Betikleri eklemeyi tamamladığınızda, __küme Özeti__ bölümüne geri dönmek için __Seç__ düğmesini ve sonra __İleri__ düğmesini seçin.
 
@@ -251,7 +251,7 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
 
 4. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
-    ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Aşağıdaki tablo, formundaki öğeleri açıklar:
 
@@ -356,11 +356,11 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 6. Ayrıca, eylemler gerçekleştirmek için komut dosyası eylemleri bölümündeki girdilerin sağ tarafındaki **.** .. ve üç nokta simgesini de seçebilirsiniz.
 
-    ![Betik eylemleri, üç nokta](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![Betik eylemleri, üç nokta](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| cmdlet | İşlev |
+| Cmdlet | İşlev |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Kalıcı betik eylemleriyle ilgili bilgileri alın. |
 | `Get-AzHDInsightScriptActionHistory` |Belirli bir betiğin kümesine veya ayrıntılarına uygulanan betik eylemlerinin geçmişini alın. |
@@ -376,7 +376,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 ### <a name="the-azure-classic-cli"></a>Klasik Azure CLı
 
-| cmdlet | İşlev |
+| Cmdlet | İşlev |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Kalıcı betik eylemlerinin bir listesini alın. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Belirli bir kalıcı betik eylemiyle ilgili bilgileri alın. |
@@ -438,11 +438,11 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 2. Sayfanın üst kısmındaki çubuktan **Ops** girişini seçin. Bir liste, ambarı aracılığıyla kümede yapılan geçerli ve önceki işlemleri görüntüler.
 
-    ![Ops seçiliyken ambarı Web UI çubuğu](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![Ops seçiliyken ambarı Web UI çubuğu](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. **İşlemler** sütununda **customscriptaction çalıştıran\_** girişleri bulun. Bu girişler, betik eylemleri çalıştırıldığında oluşturulur.
 
-    ![İşlemlerin ekran görüntüsü](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![İşlemlerin ekran görüntüsü](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     **Stdout** ve **stderr** çıkışını görüntülemek için **run\customscriptaction** girişini seçin ve bağlantılar aracılığıyla detaya gidin. Bu çıktı, komut dosyası çalıştırıldığında üretilir ve yararlı bilgiler içerebilir.
 
@@ -452,7 +452,7 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
 
 * Depolama günlükleri ' nde `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`kullanılabilir.
 
-    ![Betik eylemi günlükleri](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![Betik eylemi günlükleri](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     Bu dizin altında Günlükler, **baş düğümüne**, **çalışan düğümü**ve **Zookeeper düğümü**için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
 
@@ -520,4 +520,4 @@ Kümeniz 15 Mart 2016 ' den önce oluşturulduysa, betik eylemi geçmişinde bir
 * [HDInsight kümelerine Apache Giraph 'yi yükleyip kullanma](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight kümesine ek depolama ekleme](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Küme oluşturma sırasında aşamalar"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Küme oluşturma sırasında aşamalar"

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: d6127d4fba3d2255dee28cd41179f16394545328
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 859e830483ac959f6f55ba27b5657779ac16d2fb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207232"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934154"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
@@ -31,9 +31,9 @@ MapReduce Apache Hadoop, çok miktarda veriyi işleyen işleri yazmaya yönelik 
 
 * **Reducer**: Eşleyici tarafından yayılan başlıkları tüketir ve Eşleyici verilerinden daha küçük ve birleştirilmiş bir sonuç oluşturan bir Özet işlem gerçekleştirir
 
-Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:
+Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:   
 
-![HDI. WordCountDiagram][image-hdi-wordcountdiagram]
+ ![HDI. WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
 Bu işin çıkışı, metinde her bir sözcüğün kaç kez oluştuğunu gösteren bir saydır.
 
@@ -59,5 +59,3 @@ HDInsight ile Hadoop akışını kullanma örnekleri için aşağıdaki belgeye 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [HDInsight 'ta Apache Hadoop kümesi oluşturma](apache-hadoop-linux-create-cluster-get-started-portal.md)
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

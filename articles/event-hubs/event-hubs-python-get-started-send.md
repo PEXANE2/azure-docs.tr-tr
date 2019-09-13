@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 9018df73c85486f5ffc9b16c1dbb70d4d99fcc65
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 22726ed8acae69adc09389b8f5f28df594a570a3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360173"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915417"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Python kullanarak Event Hubs olayları gönderme veya olayları alma
 
@@ -42,6 +42,9 @@ pip install azure-eventhub
 ```
 
 ## <a name="send-events"></a>Olayları gönderme
+
+> [!NOTE]
+> Bu bölümdeki kod, Event Hubs SDK 'nın geçerli kararlı sürümü (1.3.1) içindir. SDK 'nın önizleme sürümünü kullanan örnek kodu arıyorsanız, [Bu sayfaya](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples)bakın.
 
 ### <a name="create-a-python-script-to-send-events"></a>Olayları göndermek için bir Python betiği oluşturma
 

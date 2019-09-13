@@ -7,18 +7,21 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b37f5aca010c4b0bfd8d87c95d85e66f35b42f81
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f3ce3605f97e4ba4d359a5e45be07f14cf4dbc99
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232748"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918641"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları ISO 27001 şema örneği 'nin ISO 27001 denetimlerine nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [ıso 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
 Aşağıdaki eşlemeler **ıso 27001:2013** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Önizleme\] denetimi ISO 27001:2013 denetimlerini bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belirli VM uzantılarını dağıtın** .
+
+> [!IMPORTANT]
+> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)bakın.
 
 ## <a name="a612-segregation-of-duties"></a>A. 6.1.2 ayrımı
 
@@ -211,7 +214,7 @@ ISO 27001 Blueprint öğesinin denetim eşlemesini gözden geçirdiğinize göre
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

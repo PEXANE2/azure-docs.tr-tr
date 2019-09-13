@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 319871280b94f54b99f7a9957f671ec50122ebf3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860919"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882023"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -98,7 +98,12 @@ Tahminleri oluşturmak, her işletmenin, gelir, envanter, satış veya müşteri
 
 Otomatik bir zaman serisi denemesi, çok sayıda gerileme sorunu olarak değerlendirilir. Geçen zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, klasik zaman serisi yöntemlerinin aksine, doğal olarak birden çok bağlamsal değişkeni ve bunların eğitim sırasında birbiriyle ilişkilerini bir başkasına dahil etme avantajına sahiptir. Otomatikleştirilmiş ML tek bir kez öğreniyor ve genellikle dahili olarak dallanan ve tahmin Horizons tüm öğeleri için dahili olarak dallanmış bir model. Bu nedenle, model parametrelerinin tahmin edilmesi için daha fazla veri ve görünmeyen serinin Genelleştirme olasılığı vardır.
 
-Daha fazla bilgi edinin ve [zaman serisi tahmini için otomatik makine öğrenimine](how-to-auto-train-forecast.md)bir örnek görüntüleyin.
+Daha fazla bilgi edinin ve [zaman serisi tahmini için otomatik makine öğrenimine](how-to-auto-train-forecast.md)bir örnek görüntüleyin. Veya aşağıdakiler de dahil olmak üzere gelişmiş tahmin yapılandırmasına yönelik ayrıntılı kod örnekleri için [enerji talebi not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) bakın:
+
+* tatil algılama ve korleştirme
+* çıkış sonrası çapraz doğrulama
+* yapılandırılabilir lags
+* sıralı pencere toplama özellikleri
 
 ## <a name="ensemble"></a>Ensesıme modelleri
 

@@ -7,12 +7,12 @@ ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d02dca4438b55d51cccb5cc1b55679eb72b73991
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232809"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918703"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
@@ -21,8 +21,8 @@ Aşağıdaki makalede, Azure şemaları CIS Microsoft Azure, kıyaslama şeması
 Aşağıdaki eşlemeler, **Yönetim ve kıyaslama v 1.1.0** önerilerini temel alarak Microsoft Azure. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir öneri eşlemesine atlayın.
 Eşlenmiş önerilerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Önizleme\] denetimi Microsoft Azure CIS 'yi bulun ve seçin. kıyaslama v 1.1.0 önerilerini temel alarak ve denetim gereksinimleri yerleşik ilke girişimi 'ni desteklemek için belirli VM uzantılarını dağıtın** .
 
-> [!NOTE]
-> Tam şema örneği yakında geliyor. İlişkili Azure Ilkesi girişimi Şu anda kullanılabilir.
+> [!IMPORTANT]
+> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)bakın.
 
 ## <a name="11-ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>1,1 tüm ayrıcalıklı kullanıcılar için Multi-Factor Authentication 'ın etkinleştirildiğinden emin olun
 
@@ -219,7 +219,7 @@ Artık CIS Microsoft Azure temel alan Kıyaslanmaların denetim eşlemesini göz
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

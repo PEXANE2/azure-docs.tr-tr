@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844759"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932823"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -35,7 +35,8 @@ Yazma için bir Azure kaynağı kullanmak, yazma erişimini denetlemek için kay
 
 Geçişe şunlar dahildir:
 
-* **Tüm** sahip uygulamaları.
+* LULAR, sahipler ve katkıda bulunanlar tüm kullanıcıları.
+* **Tüm** uygulamalar.
 * **Tek yönlü** geçiş.
 
 Sahip, geçirilecek uygulamaların bir alt kümesini seçemez ve işlem geri alınamaz. 
@@ -87,13 +88,17 @@ Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağın
 
 ## <a name="migration-for-the-app-contributor"></a>Uygulama katılımcısı için geçiş
 
+Her LUıN kullanıcısının, ortak çalışanlar/katkıda bulunanlar dahil olmak üzere geçirilmesi gerekir. 
+
 ### <a name="before-the-app-is-migrated"></a>Uygulama geçirilmeden önce
 
 Ortak çalışan bir uygulamayı dışarı aktarmayı tercih edebilir ve ardından uygulamayı LUSıS 'e geri aktarabilirsiniz. İçeri aktarma işlemi, sahip olduğunuz yeni bir uygulama KIMLIĞIYLE yeni bir uygulama oluşturur.
 
 ### <a name="after-the-app-is-migrated"></a>Uygulama geçirildikten sonra
 
-Geçiş işleminden sonra, özgün uygulamaya erişmeniz gerekiyorsa, uygulama sahibi tarafından ortak çalışan olarak Azure yazma kaynağına eklenmeleri gerekir.  
+Uygulama sahibinin [e-postanızı Azure yazma kaynağına ortak çalışan olarak eklemesi](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)gerekir. 
+
+Geçiş işleminden sonra, sahip olduğunuz tüm uygulamalar, LUı portalının **uygulamalarım** sayfasında bulunur.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 9ad220287685dd2405931cd6f8cd460b06f340b2
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
-ms.translationtype: MT
+ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801560"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882882"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Hızlı Başlangıç: Python için istemci kitaplığını Kişiselleştir
 
@@ -46,6 +46,9 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ort
 
 * `PERSONALIZER_KEY`Kaynak anahtarı için.
 * `PERSONALIZER_ENDPOINT`Kaynak uç noktası için.
+
+Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
+
 
 ### <a name="install-the-python-library-for-personalizer"></a>Kişiselleştirici için Python kitaplığını yükler
 

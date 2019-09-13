@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934983"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935352"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -30,7 +30,7 @@ RBAC kullanarak depolama kaynaklarına erişirken sorun yaşıyorsanız, bunun n
 
 Uygun rollere veya izinlere sahip olduğunuzdan emin değilseniz Azure hesap yöneticinize başvurun.
 
-#### <a name="read-listget-storage-accounts"></a>Okuyamaz Depolama Hesaplarını Listele/Al
+#### <a name="read-listget-storage-accounts"></a>Okuyamaz Depolama hesaplarını Listele/al
 
 Depolama hesaplarını listelemek için izninizin olması gerekir. Bu izni, "okuyucu" rolüne atanarak alabilirsiniz.
 
@@ -71,7 +71,7 @@ Sertifika hataları aşağıdaki iki durumlardan biri nedeniyle oluşur:
 Depolama Gezgini kendinden imzalı veya güvenilmeyen bir sertifikayı gördüğünde, alınan HTTPS iletisinin değiştirilip değiştirilmediğini artık bilmez. Otomatik olarak imzalanan sertifikanın bir kopyasına sahipseniz, aşağıdaki adımları uygulayarak Depolama Gezgini bu sertifikaya güvenmesini isteyebilirsiniz:
 
 1. Sertifikanın Base-64 kodlamalı X. 509.440 (. cer) kopyasını edinin
-2. **SSL sertifikalarını** > Düzenle > **sertifikaları içeri aktar**' a tıklayın ve ardından dosya seçiciyi kullanarak. cer dosyasını bulun, seçin ve açın
+2. → **SSL sertifikalarını** **Düzenle** → **sertifikaları içeri aktar**' a tıklayın ve ardından dosya seçiciyi kullanarak. cer dosyasını bulun, seçin ve açın
 
 Bu sorun birden çok sertifikanın (kök ve ara) sonucu da olabilir. Hatanın üstesinden gelmek için her iki sertifikanın de eklenmesi gerekir.
 
@@ -86,7 +86,7 @@ Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağı
 3. `s_client -showcerts -connect microsoft.com:443` yürütme
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığından emin değilseniz, konunun `("s:")` ve verenin `("i:")` aynı olduğu her yerde arayın.
 5. Her biri için kendinden imzalı bir sertifika bulduğunuz zaman, **-----Başlangıç sertifikası-----** yeni bir. cer dosyasına **-----son-----sertifikaya** ekleyerek ve dahil olmak üzere her şeyi kopyalayıp yapıştırın.
-6. Depolama Gezgini açın,**SSL sertifikalarını** >  **Düzenle** > **sertifikaları içeri aktar**' a tıklayın ve sonra oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
+6. Depolama Gezgini açın, → **SSL sertifikalarını** **Düzenle** → **sertifikaları içeri aktar**' a tıklayın ve sonra oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
 
 Yukarıdaki adımları kullanarak otomatik olarak imzalanan sertifikalar bulamıyorsanız, daha fazla yardım için geri bildirim aracı aracılığıyla bizimle iletişim kurun. Ayrıca, `--ignore-certificate-errors` bayrağı ile komut satırından Depolama Gezgini başlatmayı da tercih edebilirsiniz. Bu bayrağıyla başlatıldığında Depolama Gezgini sertifika hatalarını yoksayar.
 
@@ -196,7 +196,7 @@ Windows için Fiddler gibi ağ araçlarınız varsa, sorunları aşağıdaki gib
 * Ağ aracınız tarafından kullanılan bağlantı noktası numarasını kontrol edin.
 * Depolama Gezgini ' deki proxy ayarları olarak yerel ana bilgisayar URL 'sini ve ağ aracının bağlantı noktası numarasını girin. Doğru şekilde tamamlandığında, ağ aracınız, yönetim ve hizmet uç noktalarına Depolama Gezgini tarafından yapılan ağ isteklerini günlüğe kaydetmeye başlar. Örneğin, bir tarayıcıda https://cawablobgrs.blob.core.windows.net/ blob uç noktanız için girin ve aşağıdakine benzer bir yanıt alırsınız; ancak, bu kaynağa erişmeniz mümkün olsa da kaynağın var olduğunu öneren bir yanıt alırsınız.
 
-![kod örneği](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+![Kod örneği](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
 ### <a name="contact-proxy-server-admin"></a>Proxy Sunucu Yöneticisi ile iletişim kurun
 
@@ -214,6 +214,58 @@ Azure 'a bir proxy üzerinden bağlıysanız, proxy ayarlarınızın doğru oldu
 Bu hata iletisini alırsanız, depolama hesabınız için anahtarları almak için gerekli izinlere sahip olmanız mümkün değildir. Durumun bu olup olmadığını doğrulamak için portala gidin ve depolama hesabınızı bulun. Depolama hesabınızın düğümüne sağ tıklayıp "portalda aç" ' a tıklayarak bunu hızlıca yapabilirsiniz. Bunu yaptıktan sonra, "erişim tuşları" dikey penceresine gidin. Anahtarları görüntüleme izniniz yoksa, "erişiminiz yok" iletisini içeren bir sayfa görürsünüz. Bu sorunu geçici olarak çözmek için, hesap anahtarını başka bir kişiden edinebilir ve ad ve anahtarla iliştirebilirsiniz ya da bir kullanıcıdan depolama hesabı için bir SAS isteyebilir ve depolama hesabını eklemek için bunu kullanmasını sağlayabilirsiniz.
 
 Hesap anahtarlarını görürseniz, sorunu çözmenize yardımcı olması için GitHub 'da bir sorun çözün.
+
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Yeni bağlantı eklenirken hata oluştu: TypeError Tanımsız olan ' version ' özelliği okunamıyor
+
+Özel bir bağlantı eklemeye çalışırken bu hata iletisini alırsanız, yerel kimlik bilgileri Yöneticisi 'nde depolanan bağlantı verilerinin bozuk olması mümkündür.
+Bu sorunu geçici olarak çözmek için bozuk yerel bağlantılarınızı silmeyi ve sonra yeniden eklemeyi deneyebilirsiniz.
+
+1. Depolama Gezgini başlatın. Üstteki menüde, yardım → geçiş Geliştirici Araçları ' a gidin.
+2. Açılan pencerede, uygulama sekmesi → yerel depolama (sol taraf) → file://' e gidin.
+3. Sorun yaşadığınız bağlantı türüne bağlı olarak, anahtarını bulun ve değerini bir metin düzenleyicisine kopyalayın. Değer, özel bağlantı adlarınızın bir dizisidir.
+    * Depolama hesapları
+        * `StorageExplorer_CustomConnections_Accounts_v1`
+    * Blob kapsayıcıları
+        * `StorageExplorer_CustomConnections_Blobs_v1`
+        * `StorageExplorer_CustomConnections_Blobs_v2`
+    * Dosya Paylaşımları
+        * `StorageExplorer_CustomConnections_Files_v1`
+    * Sıralar
+        * `StorageExplorer_CustomConnections_Queues_v1`
+    * Tablolar
+        * `StorageExplorer_CustomConnections_Tables_v1`
+4. Geçerli bağlantı adlarınızı kaydettikten sonra Geliştirici Araçları `[]`değerini olarak ayarlayın.
+
+Bozulan bağlantıları korumak istiyorsanız, bozuk bağlantıları bulmak için aşağıdaki adımları gerçekleştirebilirsiniz. Var olan tüm bağlantıları kaybetmezseniz, bağlantı verilerinizi temizlemek için aşağıdaki adımları atlayabilir ve platforma özgü yönergeleri izleyebilirsiniz.
+
+1. Metin düzenleyicisinden, her bağlantı adını Geliştirici Araçları yeniden ekleyin ve bağlantının hala çalışıp çalışmadığını denetleyin.
+2. Bir bağlantı düzgün çalışıyorsa, bu bozuk değildir ve güvenli bir şekilde bırakabilirsiniz. Bir bağlantı çalışmıyorsa, Geliştirici Araçları değerini kaldırın ve daha sonra tekrar ekleyebilmek için dosyayı kaydedin.
+3. Tüm bağlantılarınızı incelene kadar tekrarlayın.
+
+Tüm bağlantılarınız bittikten sonra, geri eklenmemiş olan tüm bağlantı adları için, bozulan verileri (varsa) temizlemeniz ve Depolama Gezgini kullanarak normal adımlara geri eklemeniz gerekir.
+
+# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+
+1. Başlat menüsünü açıp ' Credential Manager ' araması yaparak ' Credential Manager ' öğesini açın.
+2. Açılan pencerede ' Windows kimlik bilgileri 'ne gidin.
+3. ' Genel kimlik bilgileri ' altında anahtar `<connection_type_key>/<corrupted_connection_name>` içeren girdiler görünür (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+4. Bu girişleri kaldırın ve bağlantıları geri ekleyin.
+
+# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+
+1. Spotlight (komut alanı çubuğu) açın ve ' Anahtarlık erişim ' araması yapın.
+2. Anahtarı `<connection_type_key>/<corrupted_connection_name>` olan girişleri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+3. Bu girişleri silip bağlantıları geri ekleyin.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+
+Yerel kimlik bilgisi yönetimi, Linux dağıtımına bağlı olarak farklılık gösterir. Linux yönetiyoruz yerel kimlik bilgileri yönetimi için yerleşik bir GUI aracı sağlamıyorsa, yerel kimlik bilgilerinizi yönetmek için bir üçüncü taraf araç yükleyebilirsiniz. Örneğin, Linux yerel kimlik bilgilerini yönetmek için açık kaynaklı bir GUI aracı olan [Mevsimat](https://wiki.gnome.org/Apps/Seahorse/)'ı kullanabilirsiniz.
+
+1. Yerel kimlik bilgileri yönetim aracınızı açın, kaydettiğiniz kimlik bilgilerinizi bulun.
+2. Anahtarı `<connection_type_key>/<corrupted_connection_name>` olan girişleri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+3. Bu girişleri silip bağlantıları geri ekleyin.
+
+Bu adımları uyguladıktan sonra bu hatayla karşılaşıyorsanız veya bağlantıları bozduklarınızı paylaşmak isterseniz GitHub sayfamızda [bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues) .
 
 ## <a name="issues-with-sas-url"></a>SAS URL 'SI ile ilgili sorunlar
 
@@ -233,15 +285,15 @@ Yanlışlıkla geçersiz bir SAS URL 'SI kullanarak iliştirildiğinde ve ayıra
 
 ## <a name="linux-dependencies"></a>Linux bağımlılıkları
 
-<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
+Depolama Gezgini 1.10.0 ve üzeri, Snap mağazasından bir snap olarak sunulmaktadır. Depolama Gezgini Snap, tüm bağımlılıklarını otomatik olarak kurar ve ek bir yeni sürümü kullanılabilir olduğunda günceller. Depolama Gezgini Snap 'in yüklenmesi önerilen yükleme yöntemidir.
 
-Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+Depolama Gezgini, Depolama Gezgini doğru çalışmadan önce el ile bağlanması gerekebilecek bir parola yöneticisinin kullanılmasını gerektirir. Aşağıdaki komutla Depolama Gezgini, sisteminizin parola yöneticisine bağlanabilirsiniz:
 
 ```bash
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+Uygulamayı. tar. gz dosyası olarak da indirebilirsiniz, ancak bağımlılıkları el ile yüklemelisiniz.
 
 > [!IMPORTANT]
 > . Tar. gz indirmesi içinde sağlandığı gibi Depolama Gezgini yalnızca Ubuntu dağıtımları için desteklenir. Diğer dağıtımlar doğrulanmadı ve alternatif veya ek paketler gerektirebilir.

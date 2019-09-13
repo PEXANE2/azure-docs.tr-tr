@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/15/2019
-ms.openlocfilehash: 6e7157f4e40dbc585d19affaf0c12af2e6ba60c1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 69f897d1f279279c067eeff30ac711f85d3bb89b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813906"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915232"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
@@ -119,11 +119,11 @@ Spark yapılandırmasındaki `SPARK_DAEMON_MEMORY` özelliği düzenleyerek Spar
 
 Bunu, Spark2/config/Advanced Spark2-env bölümünü seçerek, ambarı tarayıcısı kullanıcı arabiriminden yapabilirsiniz.
 
-![Advanced spark2-env bölümü](./media/apache-spark-ts-outofmemory-heap-space/image01.png)
+![Advanced spark2-env bölümü](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
 Spark geçmiş sunucusu belleğini 1G 'den 4g 'ye değiştirmek için aşağıdaki özelliği ekleyin: `SPARK_DAEMON_MEMORY=4g`.
 
-![Spark özelliği](./media/apache-spark-ts-outofmemory-heap-space/image02.png)
+![Spark özelliği](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
 Tüm etkilenen hizmetleri ambarı 'ndan yeniden başlattığınızdan emin olun.
 

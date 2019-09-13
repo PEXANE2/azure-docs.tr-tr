@@ -6,14 +6,14 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: b7cbf4d460f872f33c447d0eea8430916d65bd18
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: f39822d0800af8658e46cde0202a2c261890b4e3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736276"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885540"
 ---
-# <a name="scenario-apache-spark-streaming-job-that-reads-data-from-an-apache-kafka-cluster-fails-with-a-noclassdeffounderror-in-azure-hdinsight"></a>Senaryo: Bir Apache Kafka kümesinden verileri okuyan Apache Spark akış işi, Azure HDInsight 'ta Noclassdeffounbir hata ile başarısız oluyor
+# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Kafka verileri okuyan Apache Spark akış işi HDInsight 'ta Noclassdeffounbir hata ile başarısız oluyor
 
 Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 

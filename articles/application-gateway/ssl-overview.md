@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326615"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883580"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway ile SSL sonlandırmasına ve uçtan uca SSL 'ye Genel Bakış
 
@@ -95,7 +95,7 @@ Kimlik doğrulama sertifikaları kullanım dışı bırakılmıştır ve Applica
    
 > [!NOTE] 
 >
-> Bir SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının, uygulama ağ geçidinin güvenilen deposunda bulunan bir CA tarafından verilmiş olması gerekir. sertifika güvenilir bir CA tarafından verilmiyorsa, Application Gateway şu şekilde denetlenir Sertifika veren CA 'nın sertifikasının güvenilir bir CA tarafından verildiğini ve bu şekilde güvenilen bir CA 'nın bulunana (güvenilen, güvenli bağlantı kurulabileceği) veya güvenilir bir CA 'nın bulunamaması durumunda (Bu noktada, uygulama ağ geçidinin arka ucunu işaret edecek aldeğer). Bu nedenle, arka uç sunucu sertifikasının hem kök hem de ıntermıdıate CA 'Ları içermesi önerilir.
+> Bir SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmiş olması gerekir. sertifika güvenilir bir CA tarafından verilmiyorsa, Application Gateway Sertifika veren CA 'nın sertifikasının güvenilir bir CA tarafından verildiğini ve bu nedenle güvenilen bir CA 'nın bulunana (güvenilen, güvenli bağlantı kurulabileceği) veya güvenilir bir CA 'nın bulununcaya kadar (Bu noktada Application Gateway arka ucunu işaretleyecek şekilde olduğunu görmek için sağlıksız). Bu nedenle, arka uç sunucu sertifikasının hem kök hem de ıntermıdıate CA 'Ları içermesi önerilir.
 
 - Sertifika kendinden imzalıysa veya bilinmeyen aracılar tarafından imzalanmışsa, v2 SKU 'sunda uçtan uca SSL 'yi etkinleştirmek için güvenilen bir kök sertifika tanımlanmalıdır. Application Gateway, yalnızca sunucu sertifikasının kök sertifikası, havuzla ilişkili arka uç http ayarındaki güvenilen kök sertifikalar listesinden biriyle eşleşen arka uçları ile iletişim kurar.
 

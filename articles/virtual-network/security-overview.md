@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065938"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886020"
 ---
 # <a name="security-groups"></a>Güvenlik grupları
 <a name="network-security-groups"></a>
@@ -87,7 +87,7 @@ Aşağıdaki hizmet etiketleri [ağ güvenlik grupları kurallarında](https://d
 * **SQL*** (yalnızca Kaynak Yöneticisi): Bu etiket, Azure SQL veritabanı 'nın adres öneklerini, MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı ve Azure SQL veri ambarı Hizmetleri 'ni gösterir. *Sql* değerini belirtirseniz Sql’e gelen trafiğe izin verilir veya trafik reddedilir. Yalnızca belirli bir [bölgedeki](https://azure.microsoft.com/regions)SQL erişimine izin vermek istiyorsanız, aşağıdaki SQL. [bölge adı] biçiminde bölgeyi belirtebilirsiniz. Bu etiket hizmetin belirli örneklerini değil yalnızca hizmetin kendisini temsil eder. Örneğin etiket belirli bir SQL veritabanını veya sunucusunu değil Azure SQL Veritabanı hizmetini temsil eder. Giden güvenlik kuralı için bu etiket önerilir. 
 * **SqlManagement*** (yalnızca Kaynak Yöneticisi): Bu etiket, SQL adanmış dağıtımlar için yönetim trafiğinin adres öneklerini gösterir. Değer için *SqlManagement* belirtirseniz, trafiğin SqlManagement 'a izni verilir veya reddedilir. Gelen/giden güvenlik kuralı için bu etiket önerilir. 
 * **Depolama*** (yalnızca Kaynak Yöneticisi): Bu etiket, Azure depolama hizmeti için IP adresi alanını gösterir. *Depolama* değerini belirtirseniz depolama alanına gelen trafiğe izin verilir veya trafik reddedilir. Yalnızca belirli bir [bölgedeki](https://azure.microsoft.com/regions)depolamaya erişime izin vermek istiyorsanız, bölgeyi aşağıdaki biçim deposunda belirtebilirsiniz. [bölge adı]. Bu etiket hizmetin belirli örneklerini değil yalnızca hizmetin kendisini temsil eder. Örneğin etiket belirli bir Azure Depolama hesabını değil Azure Depolama hizmetini temsil eder. Giden güvenlik kuralı için bu etiket önerilir. 
-* **VirtualNetwork** (Kaynak Yöneticisi) (Klasik için**VIRTUAL_NETWORK** ): Bu etiket sanal ağ adres alanını (sanal ağ için tanımlanan tüm CıDR aralıkları), bağlı olan tüm şirket içi adres alanları, eşlenen sanal ağlar [](virtual-network-peering-overview.md) veya sanal ağ [geçidine](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) ve adrese bağlı sanal ağı içerir [Kullanıcı tanımlı yollarla](virtual-networks-udr-overview.md)kullanılan ön ekler. Bu etiketin varsayılan yol içerebileceğini unutmayın. 
+* **VirtualNetwork** (Kaynak Yöneticisi) (Klasik için**VIRTUAL_NETWORK** ): Bu etiket sanal ağ adres alanını (sanal ağ için tanımlanan tüm CıDR aralıkları), bağlı olan tüm şirket içi adres [alanlarını, eşlenmiş](virtual-network-peering-overview.md) sanal ağları veya sanal ağ [geçidine](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)bağlı sanal ağı içerir. [ ](security-overview.md#azure-platform-considerations) [Kullanıcı tanımlı yollarla](virtual-networks-udr-overview.md)kullanılan konak ve adres ön eklerinin sanal IP adresi. Bu etiketin varsayılan yol içerebileceğini unutmayın. 
 
 > [!NOTE]
 > Azure hizmetlerinin hizmet etiketleri, kullanılan belirli buluttan gelen adres öneklerini gösterir. 
@@ -147,7 +147,7 @@ Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan 
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | Reddet |
 
-**Kaynak** ve **Hedef** sütunlarında *VirtualNetwork*, *AzureLoadBalancer* ve *Internet*, için IP adresi yerine [hizmet etiketi](#service-tags) belirtilir. Protokol sütununda, TCP, UDP ve ICMP 'yi kapsar. Bir kural oluştururken TCP, UDP, ıCMP veya any belirtebilirsiniz. **Kaynak** ve **Hedef** sütunlarında yer alan *0.0.0.0/0* ifadesi tüm adresleri temsil eder. Azure portal, Azure CLı veya PowerShell gibi istemciler bu ifade için * veya herhangi birini kullanabilir.
+**Kaynak** ve **Hedef** sütunlarında *VirtualNetwork*, *AzureLoadBalancer* ve *Internet*, için IP adresi yerine [hizmet etiketi](#service-tags) belirtilir. Protokol sütununda, TCP, UDP ve ıCMP **'yi kapsar.** Bir kural oluştururken TCP, UDP, ıCMP veya any belirtebilirsiniz. **Kaynak** ve **Hedef** sütunlarında yer alan *0.0.0.0/0* ifadesi tüm adresleri temsil eder. Azure portal, Azure CLı veya PowerShell gibi istemciler bu ifade için * veya herhangi birini kullanabilir.
  
 Varsayılan kuralları kaldıramazsınız ancak daha yüksek önceliğe sahip kurallar oluşturarak onları geçersiz kılabilirsiniz.
 

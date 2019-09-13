@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 99ffa49a8e379f6c3a2139c082cd23f95c126e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ccf1c912dbf982fde1eb5cde4cde6556fc88bc1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597254"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933922"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT güvenlik uyarıları için Azure Güvenlik Merkezi
 
@@ -34,7 +34,7 @@ Daha ayrıntılı bilgi için bkz. [özel uyarılar oluşturma](quickstart-creat
 
 ## <a name="built-in-alerts-for-iot-devices"></a>IoT cihazları için yerleşik uyarılar
 
-| severity | Ad | Veri Kaynağı | Açıklama | Önerilen düzeltme adımları|                  
+| severity | Name | Veri Kaynağı | Açıklama | Önerilen düzeltme adımları|                  
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yüksek     | Başarılı yerel oturum açma                                 | Aracı       | Cihazda başarılı yerel oturum açma algılandı | Oturum açmış kullanıcının yetkili bir taraf olduğundan emin olun.  |
 | Yüksek     | Başarılı deneme Tezorlama denemesi  | Aracı       | Birden çok başarısız oturum açma denemesi tanımlanmıştı ve başarılı bir oturum açma işlemi. Denenen deneme yanılma saldırısı, cihazda başarılı olmuş olabilir. | SSH brutezorlamalı uyarısını ve cihazlarda etkinliği inceleyin. <br>Etkinlik kötü amaçlı ise:<br> Güvenliği aşılmış hesaplar için parola sıfırlamayı geri alın.<br> Kötü amaçlı yazılımlara yönelik cihazları araştırın ve düzeltin (bulunursa).  |
@@ -79,14 +79,14 @@ Daha ayrıntılı bilgi için bkz. [özel uyarılar oluşturma](quickstart-creat
 
 ## <a name="built-in-alerts-for-iot-hub"></a>IoT Hub için yerleşik uyarılar
 
-| severity | Ad                                                                         | Açıklama | Önerilen düzeltme|
+| severity | Name                                                                         | Açıklama | Önerilen düzeltme|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | Orta   | IoT Hub yeni sertifika eklendi                                    |% { \'Desciothubname}\'IoT Hub \'%\' {desccertificatename} adlı bir sertifika eklendi. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir.| 1. Sertifikanın yetkili bir taraf tarafından eklendiğinden emin olun. <br> 2. Yetkili bir taraf tarafından eklenmediyse sertifikayı kaldırın ve uyarıyı kurumsal güvenlik ekibine ilerletin.  |
 | Orta   | Sertifika bir IoT Hub silindi                                    | \'% {Desccertificatename}\' adlı bir sertifika,% {desciothubname}\'IoT Hub \'silindi. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı bir etkinlik gösterebilir.| 1. Sertifikanın yetkili bir taraf tarafından kaldırıldığından emin olun. <br> 2. Sertifika yetkili bir taraf tarafından kaldırılmazsa, sertifikayı geri ekleyin ve uyarıyı kurumsal güvenlik ekibine ilerletin. |
 | Orta   | IoT Hub sertifika eklemek için başarısız girişim algılandı     | \'% {Desccertificatename}\' sertifikasını% {desciothubname}\'IoT Hub \'ekleme girişimi başarısız oldu. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir.|   Sertifikaları değiştirme izinlerinin yalnızca yetkili taraflara verildiğinden emin olun.  |
 | Orta   | IoT Hub bir sertifikayı silme girişimi başarısız oldu | \'% {Desccertificatename}\' sertifikasını% {desciothubname}\'IoT Hub \'öğesinden silme girişimi başarısız oldu. Bu eylem yetkisiz bir taraf tarafından yapılmışsa, kötü amaçlı etkinlik gösterebilir. |Sertifikaları değiştirme izinlerinin yalnızca yetkili bir tarafa verildiğinden emin olun.
-| Düşük      | Algılanan IoT Hub tanılama ayarını ekleme veya düzenleme girişimi    | IoT Hub tanılama ayarlarını ekleme veya düzenleme girişimi algılandı. Tanılama ayarları, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı etkinlik gösterebilir.  |
-| Düşük      | Algılanan IoT Hub bir tanılama ayarını silme girişimi       | % {\' Deiotemptstatusmessage}% {desciothubname}\'IoT Hub \' \'% {descdiagnosticsettingname}\' tanılama ayarını ekleme veya düzenleme girişimi vardı. Tanılama ayarı, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye girerse araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı bir etkinlik gösterebilir. |1. Sertifikanın yetkili bir taraf tarafından kaldırıldığından emin olun.<br> 2. Sertifika yetkili bir taraf tarafından kaldırılmazsa, sertifikayı geri ekleyin ve uyarıyı bilgi güvenliği ekibinize ilerletin.
+| Düşük      | Algılanan IoT Hub tanılama ayarını ekleme veya düzenleme girişimi    | IoT Hub tanılama ayarlarını ekleme veya düzenleme girişimi algılandı. Tanılama ayarları, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı etkinlik gösterebilir.  |1. Sertifikanın yetkili bir taraf tarafından kaldırıldığından emin olun.<br> 2. Sertifika yetkili bir taraf tarafından kaldırılmazsa, sertifikayı geri ekleyin ve uyarıyı bilgi güvenliği ekibinize ilerletin.
+| Düşük      | Algılanan IoT Hub bir tanılama ayarını silme girişimi       | % {\' Deiotemptstatusmessage}% {desciothubname}\'IoT Hub \' \'% {descdiagnosticsettingname}\' tanılama ayarını ekleme veya düzenleme girişimi vardı. Tanılama ayarı, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye girerse araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. Bu eylem yetkili bir taraf tarafından yapılmadığından, kötü amaçlı bir etkinlik gösterebilir. |Tanılama ayarlarını değiştirme izinlerinin yalnızca yetkili bir tarafa verildiğinden emin olun.
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53900bcade3f7a283309f5ee1c624c742a62ad3f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 306382a7dede44a0f1db53373e14e81cb54098ca
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812448"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914746"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -77,7 +77,7 @@ Ortamınız tek bir AD ormanından oluşuyorsa, kimlik verilerini birden çok Az
 
 Sanal Masaüstü Altyapısı (VDı) kullanılırken karma Azure AD katılımı Şu anda desteklenmiyor.
 
-Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun.
+Karma Azure AD katılımı, FIPS uyumlu TPM 2,0 için desteklenir ve TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, hibrit Azure AD JOIN ile devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun. WIndows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı için kullanılmaz ve bu TPMs 'Leri içeren cihazlar TPM 'ye sahip olmadıkları sürece kabul edilir.
 
 Karma Azure AD katılımı, etki alanı denetleyicisi (DC) rolünü çalıştıran Windows Server için desteklenmez.
 

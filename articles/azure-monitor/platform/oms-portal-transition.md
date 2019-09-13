@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 126d96cbd85f4e91de5a6393be02a15240b51ade
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035577"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915859"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS portalı Azure 'a taşınıyor
 
@@ -50,7 +50,7 @@ Birçok özellik herhangi bir geçiş yapılmadan çalışmaya devam ederken, a�
 Azure portal geçiş hakkında daha fazla bilgi için [Log Analytics kullanıcılar IÇIN OMS portalından geçiş Için genel soruların Azure Portal](oms-portal-faq.md) bölümüne bakın. 
 
 ## <a name="user-access-and-role-migration"></a>Kullanıcı erişimi ve rol geçişi
-Azure portal Access Management, OMS portalındaki erişim yönetiminden daha zengin ve daha güçlüdür. Log Analytics ' de erişim yönetiminin ayrıntıları için bkz. [Azure Izleyici günlükleri çalışma alanınızı tasarlama] Design-logs-deployment.md).
+Azure portal Access Management, OMS portalındaki erişim yönetiminden daha zengin ve daha güçlüdür. Log Analytics 'de erişim yönetiminin ayrıntıları için bkz. [Azure Izleyici günlükleri çalışma alanınızı tasarlama](design-logs-deployment.md) .
 
 > [!NOTE]
 > Bu makalenin önceki sürümleri, izinlerin otomatik olarak OMS portalından Azure portal dönüştürüleceğinin belirtilüyordu. Bu otomatik dönüştürme artık planlanmaz ve dönüştürmeyi kendiniz gerçekleştirmeniz gerekir.
@@ -89,7 +89,7 @@ Uyarı yönetimi çözümü tarafından toplanan veriler (uyarı türüne sahip 
 OMS mobil uygulaması, OMS portalı ile birlikte sunacaktır. OMS mobil uygulaması yerine, BT altyapınız, panolarınız ve kayıtlı sorgularla ilgili bilgilere erişmek için, mobil cihazınızda doğrudan tarayıcınızdan Azure portal erişebilirsiniz. Uyarıları almak için, [Azure eylem GRUPLARıNı](action-groups.md) SMS veya sesli çağrı biçiminde bildirimleri alacak şekilde yapılandırmanız gerekir
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Bağlayıcısı ve çözüm
-[Application Insights Bağlayıcısı](app-insights-connector.md) , Log Analytics çalışma alanına Application Insights verileri eklemenin bir yolunu sağlar. Altyapı ve uygulama verileri genelinde görünürlüğü etkinleştirmek için bu veri yinelemesi gerekiyordu. Mart, 2019 ' de genişletilmiş veri saklama desteğiyle Application Insights ve [birden çok Azure izleyici Application Insights kaynağını](../log-query/unify-app-resource-data.md)görüntüleyebilmenin yanı sıra [çapraz kaynak sorguları](../log-query/cross-workspace-query.md) gerçekleştirebilme olanağı sayesinde, yinelenmeye gerek yoktur Application Insights kaynaklarınızdan alınan veriler Log Analytics gönderin. Ayrıca, bağlayıcı, Log Analytics için uygulama özelliklerinin bir alt kümesini gönderir, ancak çapraz kaynak sorguları size gelişmiş esneklik kazandırır.  
+[Application Insights Bağlayıcısı](app-insights-connector.md) , Log Analytics çalışma alanına Application Insights verileri eklemenin bir yolunu sağlar. Altyapı ve uygulama verileri genelinde görünürlüğü etkinleştirmek için bu veri yinelemesi gerekiyordu. Mart, 2019 ' de genişletilmiş veri saklama desteğiyle Application Insights ve [birden çok Azure izleyici Application Insights kaynağını görüntüleyebilmenin](../log-query/unify-app-resource-data.md)yanı sıra [çapraz kaynak sorguları](../log-query/cross-workspace-query.md) gerçekleştirebilme olanağı sayesinde, yinelenmeye gerek yoktur Application Insights kaynaklarınızdan alınan veriler Log Analytics gönderin. Ayrıca, bağlayıcı, Log Analytics için uygulama özelliklerinin bir alt kümesini gönderir, ancak çapraz kaynak sorguları size gelişmiş esneklik kazandırır.  
 
 Bu nedenle, Application Insights Bağlayıcısı kullanım dışı bırakılmıştır ve Azure Marketi 'nden, OMS portalı 30 Mart 2019 ' de kullanımdan kaldırılmıştır. Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir. OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Bu, Ocak 2019 ' de kullanıma sunulan REST API kullanılarak desteklenecektir ve [Azure güncelleştirmelerinde](https://azure.microsoft.com/updates/)bir bildirim gönderilir. 
 

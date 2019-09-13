@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596352"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933640"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
 
@@ -78,7 +78,7 @@ Doğru aracıyı seçmek için IoT cihazlarınızla ilgili aşağıdaki sorular�
 
 - X64 mimarisine sahip bir Linux dağıtımı kullanıyor musunuz?
 
-    Aracı türü ' nu kullanabilirsiniz. <br>
+    Her iki aracı türleri de kullanılabilir. <br>
     [Linux Için C tabanlı bir güvenlik Aracısı dağıtın](how-to-deploy-linux-c.md) ve/veya [Linux için tabanlı C#bir güvenlik Aracısı dağıtın](how-to-deploy-linux-cs.md).
 
 Her iki aracı türüler de aynı özellik kümesini sunar ve benzer yapılandırma seçeneklerini destekler.
@@ -97,7 +97,7 @@ Aşağıdaki liste, şu anda desteklenen tüm platformları içerir.
 |C#|Ubuntu 18.04    |x64|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT çekirdek derlemesi 17763 |x64|
+|C#|Windows 10 IoT Core, derleme 17763    |x64|
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638803"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915751"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
@@ -27,7 +27,8 @@ Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak içi
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
-Bu makaledeki yordamları tamamlayabilmeniz için, önce S1 fiyatlandırma katmanında [bir Azure Maps hesabı oluşturmanız](how-to-manage-account-keys.md) gerekir.
+Bu makaledeki yordamları tamamlayabilmeniz için öncelikle [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri Izleyerek bir Azure Maps hesabı oluşturmanız ve hesabınıza yönelik birincil bir abonelik anahtarı almak için [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izlemeniz gerekir.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Pushpın 'leri etiketlerle ve özel bir görüntüyle işleme
 

@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872898"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934858"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -36,8 +36,7 @@ Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol
 1. SQL Server örneğini barındıran VM ile aynı bölgede veya yerel ayarda bir [Kurtarma Hizmetleri Kasası](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) belirler veya oluşturun.
 2. VM 'nin [ağ bağlantısı](backup-sql-server-database-azure-vms.md#establish-network-connectivity)olduğunu doğrulayın.
 3. SQL Server veritabanlarının [Azure Backup için veritabanı adlandırma yönergelerini](#database-naming-guidelines-for-azure-backup)izlediğinden emin olun.
-4. Özellikle SQL 2008 ve 2008 R2 için, sunucu kaydını etkinleştirmek üzere [kayıt defteri anahtarı ekleyin](#add-registry-key-to-enable-registration) . Özellik genel kullanıma sunulduğunda bu adım gerekli olmayacaktır.
-5. Veritabanı için etkinleştirilmiş başka bir yedekleme çözümünden emin olup olmadığınızı denetleyin. Veritabanını kapatmadan önce diğer tüm SQL Server yedeklemelerini devre dışı bırakın.
+4. Veritabanı için etkinleştirilmiş başka bir yedekleme çözümünden emin olup olmadığınızı denetleyin. Veritabanını kapatmadan önce diğer tüm SQL Server yedeklemelerini devre dışı bırakın.
 
 > [!NOTE]
 > Azure VM için Azure Backup ve ayrıca çakışma olmadan VM üzerinde çalışan bir SQL Server veritabanı için etkinleştirebilirsiniz.
@@ -98,22 +97,6 @@ Veritabanı adlarında aşağıdaki öğeleri kullanmaktan kaçının:
 
 Diğer ad, desteklenmeyen karakterler için kullanılabilir, ancak bunlardan kaçınmasını öneririz. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
-### <a name="add-registry-key-to-enable-registration"></a>Kaydı etkinleştirmek için kayıt defteri anahtarı ekleme
-
-1. Regedit 'i aç
-2. Kayıt defteri dizin yolunu oluşturun: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (Microsoft 'un altında oluşturulması gereken Iş Loadbackup altında ' Key ' TestHook ' i oluşturmanız gerekir).
-3. Kayıt defteri dizin yolu altında, dize adı **AzureBackupEnableWin2K8R2SP1** ve değeri ile yeni bir ' dize değeri ' oluşturun: **Değeri**
-
-    ![Kaydı etkinleştirmek için RegEdit](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
-
-Alternatif olarak,. reg dosyasını aşağıdaki komutla çalıştırarak bu adımı otomatikleştirebilirsiniz:
-
-```csharp
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
-"AzureBackupEnableWin2K8R2SP1"="True"
-```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -222,7 +205,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
    - **Günlük**için, yedekleme işinin başladığı saat ve saat dilimini seçin.
    - **Haftalık**olarak, yedekleme işinin başladığı hafta, saat ve saat diliminin gününü seçin.
-   - Tam yedekleme seçeneğini kapatamadığı için tam yedekleme çalıştırın.
+   - **Tam yedekleme seçeneğini** kapatamadığı için tam yedekleme çalıştırın.
    - İlkeyi görüntülemek için **tam yedekleme** ' yi seçin.
    - Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
 
@@ -261,18 +244,6 @@ Bir yedekleme ilkesi oluşturmak için:
     - Arka uçta Azure Backup SQL yerel yedekleme sıkıştırmasını kullanır.
 
 14. Yedekleme ilkesinde yapılan düzenlemeleri tamamladıktan sonra **Tamam**' ı seçin.
-
-
-### <a name="modify-policy"></a>İlkeyi Değiştir
-Yedekleme sıklığını veya bekletme aralığını değiştirmek için ilkeyi değiştirin.
-
-> [!NOTE]
-> Saklama döneminde yapılan herhangi bir değişiklik, yeni olanlar da içinde olmak üzere daha eski kurtarma noktalarına daha geriye dönük olarak uygulanır.
-
-Kasa panosunda,**yedekleme ilkelerini** **Yönet** > ' e gidin ve düzenlemek istediğiniz ilkeyi seçin.
-
-  ![Yedekleme ilkesini Yönet](./media/backup-azure-sql-database/modify-backup-policy.png)
-
 
 ## <a name="enable-auto-protection"></a>Otomatik korumayı etkinleştir  
 

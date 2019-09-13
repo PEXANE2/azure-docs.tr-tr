@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: a078fc205403983f4f6484f6a7ccde7f99c4dd58
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 401ccda62805cbdebc99317c925aeb1b0ffc66bb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734539"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915363"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Azure HDInsight GÇ önbelleği 'ni (Önizleme) kullanarak Apache Spark iş yüklerinin performansını iyileştirme
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight GÇ önbelleği 'ni kullanarak Apache Spark iş yüklerinin performansını iyileştirme 
 
 GÇ önbelleği, Azure HDInsight için Apache Spark işlerin performansını artıran bir veri önbelleğe alma hizmetidir. GÇ önbelleği Ayrıca [Apache TEZ](https://tez.apache.org/) ve [Apache Hive](https://hive.apache.org/) iş yükleri ile birlikte çalışarak [Apache Spark](https://spark.apache.org/) kümelerinde çalıştırılabilir. GÇ önbelleği, RubiX adlı açık kaynaklı bir önbelleğe alma bileşeni kullanır. RubiX, bulut depolama sistemlerinden verilere erişen büyük veri analizi altyapılarıyla birlikte kullanılmak üzere yerel bir disk önbelleğidir. RubiX, önbelleğe alma amacıyla işletim belleği ayırmak yerine katı hal sürücüleri (SSD 'Ler) kullandığından, önbelleğe alma sistemleri arasında benzersizdir. GÇ önbellek hizmeti, kümenin her bir çalışan düğümünde RubiX meta veri sunucularını başlatır ve yönetir. Ayrıca, RubiX önbelleğinin saydam kullanımı için kümenin tüm hizmetlerini yapılandırır.
 

@@ -4,14 +4,14 @@ description: Azure Cosmos DB ' de dizin oluşturmanın nasıl çalıştığını
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479279"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914188"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB Dizin oluşturma-genel bakış
 
@@ -25,6 +25,7 @@ Bir öğe kapsayıcıda her depolandığında, içeriği bir JSON belgesi olarak
 
 Örnek olarak, şu öğeyi göz önünde bulundurun:
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Bir öğe kapsayıcıda her depolandığında, içeriği bir JSON belgesi olarak
             { "city": "Athens" }
         ]
     }
+```
 
 Aşağıdaki ağaç tarafından temsil edilir:
 
@@ -70,13 +72,13 @@ Azure Cosmos DB Şu anda üç tür dizini desteklemektedir:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - Aralık sorguları:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   ( `>` ,`<=` ,,,`!=`,,,, için geçerlidir) `<` `>=`
 
 - `ORDER BY`lardır
@@ -107,15 +109,27 @@ Aralık dizinleri, skaler değerlerde (dize veya sayı) kullanılabilir.
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-Uzamsal dizinler, doğru biçimli [geojson](geospatial.md) nesnelerinde kullanılabilir. Noktaları, LineStrings ve çokgenler Şu anda destekleniyor.
+Uzamsal dizinler, doğru biçimli [geojson](geospatial.md) nesnelerinde kullanılabilir. Noktaları, LineStrings, çokgenler ve MultiPolygon Şu anda desteklenmektedir.
 
 **Bileşik** Dizin türü için kullanılır:
 
-- `ORDER BY`birden çok özelliklerde sorgular: 
+- `ORDER BY`birden çok özelliklerde sorgular:
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- Filtre ve `ORDER BY`içeren sorgular. Bu sorgular, `ORDER BY` Filter özelliği yan tümcesine eklenirse bileşik bir dizin kullanabilir.
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- En az bir özelliğin eşitlik filtresi olduğu iki veya daha fazla özelliğe filtre içeren sorgular
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>Dizinlerle sorgulama
 
@@ -126,7 +140,7 @@ Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapm
 ![Ağaç içindeki belirli bir yolu eşleştirme](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Tek `ORDER BY` bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir yan tümce. Benzer şekilde, birden `ORDER BY` çok sorgunun *her zaman* bileşik dizine ihtiyacı vardır.
+> Tek `ORDER BY` bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir yan tümce. Benzer şekilde, `ORDER BY` birden çok özelliğe göre siparişlerin *her zaman* bir bileşik dizine ihtiyacı olan bir sorgu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici ile karma bir Linux bilgisayardan veri toplama | Microsoft Docs
+title: 'Hızlı Başlangıç: Azure Izleyici ile karma bir Linux bilgisayardan veri toplama'
 description: Bu hızlı başlangıçta, Azure dışında çalışan Linux bilgisayarları için Log Analytics aracısını dağıtmayı ve Azure Izleyici günlükleri ile veri toplamayı etkinleştirmenizi öğreneceksiniz.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 6fa26adab64a91ac2910607e4a828f9362490d08
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: cdaca0fd3e314ecb5c0b68438eaaf87fbfb699b0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991765"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933039"
 ---
 # <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 

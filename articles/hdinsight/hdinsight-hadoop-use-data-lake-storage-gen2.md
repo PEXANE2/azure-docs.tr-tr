@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: e06d6473a47dcff3506843150375c70ed2bd8cea
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
-ms.translationtype: MT
+ms.openlocfilehash: 40caabc08b08e4c9268bf60d588819ce81717986
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061829"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900266"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma
 
@@ -33,19 +33,42 @@ Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak i
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
-Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. [Azure Portal kullanarak, Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)konusuna bakın. Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](hdinsight-managed-identities.md).
+Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. 
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
+1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
+1. **Oluştur**'a tıklayın.
+1. Yönetilen Kimliğiniz için bir ad girin, doğru aboneliği, kaynak grubunu ve konumu seçin.
+1. **Oluştur**'a tıklayın.
+
+Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](hdinsight-managed-identities.md).
 
 ![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage 2. hesabı oluşturma
 
-Azure Data Lake Storage 2. depolama hesabı oluşturun. **Hiyerarşik ad alanı** seçeneğinin etkinleştirildiğinden emin olun. Daha fazla bilgi için bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı](../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturun.
+Azure Data Lake Storage 2. depolama hesabı oluşturun. 
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
+1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
+1. **Oluştur**'a tıklayın.
+1. **Depolama hesabı oluştur** ekranında:
+    1. Doğru aboneliği ve kaynak grubunu seçin.
+    1. Data Lake Storage 2. hesabınız için bir ad girin. Depolama hesabı adlandırması hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. **Gelişmiş** sekmesine tıklayın.
+    1. **Data Lake Storage 2.** altındaki **hiyerarşik ad alanı** ' nın yanında **etkin** ' e tıklayın.
+    1. **Gözden geçir ve oluştur**’a tıklayın.
+    1. **Oluştur**'a tıklayın.
+
+Depolama hesabı oluşturma sırasında diğer seçenekler hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı](../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturun.
 
 ![Azure portal depolama hesabı oluşturmayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
 ### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Data Lake Storage 2. hesabındaki yönetilen kimlik için izinleri ayarlayın
 
-Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne atayın. Daha fazla bilgi için [RBAC (Önizleme) ile Azure Blob ve kuyruk verilere erişim haklarını yönetme](../storage/common/storage-auth-aad-rbac.md).
+Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne atayın.
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 1. Depolama hesabınızı seçin ve ardından **erişim denetimi (IAM)** öğesini seçerek hesabın erişim denetimi ayarlarını görüntüleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.

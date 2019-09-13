@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515370"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899731"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>İş Açısından Kritik katmanı-Azure SQL veritabanı
 
@@ -45,6 +45,17 @@ Ayrıca, İş Açısından Kritik kümede, birincil ağınızın performansını
 ## <a name="when-to-choose-this-service-tier"></a>Bu hizmet katmanını ne zaman seçmelisiniz?
 
 İş Açısından Kritik hizmet katmanı, temeldeki SSD depolamadan (ortalama 1-2 ms) düşük Gecikmeli yanıt gerektiren uygulamalar için tasarlanmıştır, temel alınan altyapı başarısız olursa hızlı kurtarma ve rapor, analiz ve salt okunurdur. birincil veritabanının ücretsiz okunabilir ikincil çoğaltmasını ücretsiz olarak sorgular.
+
+Genel Amaçlı katmanı yerine İş Açısından Kritik hizmet katmanını seçmeniz gereken önemli nedenler şunlardır:
+-   Düşük GÇ gecikme gereksinimleri – depolama katmanından (ortalama 1-2 milisaniye) hızlı yanıt gerektiren iş yükü İş Açısından Kritik katmanını kullanmalıdır. 
+-   Uygulama ve veritabanı arasındaki sık kullanılan iletişim. Uygulama katmanı önbelleğe alma veya [istek toplu işleme](sql-database-use-batching-to-improve-performance.md) özelliğinden yararlanamaz uygulama ve hızlı bir şekilde işlenmesi gereken birçok SQL sorgusu gönderilmesi iş açısından kritik katmanı için iyi adaylardır.
+-   Çok sayıda güncelleştirme – INSERT, Update ve DELETE işlemleri, işlem ile `CHECKPOINT` veri dosyalarına kaydedilmesi gereken bellekteki veri sayfalarını (kirli sayfa) değiştirir. Olası veritabanı altyapısı işlem kilitlenmesi veya çok sayıda kirli sayfayla veritabanının yük devretmesi Genel Amaçlı katmanındaki kurtarma süresini artırabilir. Birçok bellek içi değişikliğe neden olan bir iş yükünüz varsa İş Açısından Kritik katmanını kullanın. 
+-   Verileri değiştiren uzun süre çalışan işlemler. Daha uzun bir süre açılan işlemler, günlük boyutunu ve [sanal günlük dosyalarının (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)sayısını artırabilecek günlük dosyasının kesilmesini önler. Yük devretmeden sonra, yüksek sayıda VLF veritabanının kurtarılmasını yavaşlatabilir.
+-   Raporlama ve analitik sorguları olan iş yükü, ücretsiz, ikincil salt okuma çoğaltmasına yeniden yönlendirilebilir.
+- Hatalardan daha yüksek dayanıklılık ve daha hızlı kurtarma. Sistem arızası durumunda, birincil örnekteki veritabanı devre dışı bırakılır ve ikincil çoğaltmalardan biri, sorguları işlemeye yönelik yeni okuma-yazma birincil veritabanına anında gönderilir. Veritabanı altyapısının, günlük dosyasındaki işlemleri çözümlemek ve yinelemek ve tüm verileri bellek arabelleğine yüklemesi gerekmez.
+- Gelişmiş veri bozulması koruması-İş Açısından Kritik katmanı, iş sürekliliği açısından arka planda veritabanı Çoğaltmalarından yararlanır ve bu nedenle hizmet, SQL Server veritabanı için kullanılan teknolojiden de otomatik sayfa onarmasını kullanır [yansıtma ve kullanılabilirlik grupları](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Bir veri bütünlüğü sorunu nedeniyle bir çoğaltmanın bir sayfayı okuyamadığında, sayfanın yeni bir kopyası başka bir yinelemeden alınır ve bu da veri kaybı veya müşteri kapalı kalma süresi olmadan okunamaz sayfa değişir. Bu işlev, veritabanının coğrafi ikincil çoğaltma özelliği varsa Genel Amaçlı katmanında geçerlidir.
+- Multi-AZ Configuration içindeki daha yüksek kullanılabilirlik-İş Açısından Kritik katmanı, Genel Amaçlı katmanının% 99,99 ' i ile karşılaştırıldığında% 99,995 kullanılabilirliği garanti eder.
+- Coğrafi çoğaltma ile yapılandırılan hızlı coğrafi kurtarma-İş Açısından Kritik katmanı, dağıtılan saatlerin% 100 ' i için 5 sn ve kurtarma süresi hedefi (RTO) ile 30 sn arasında bir garantili kurtarma noktası hedefi (RPO) sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

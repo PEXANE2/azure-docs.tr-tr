@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844902"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933197"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure haritalar kullanarak IoT uzamsal analizlerini uygulama
 
@@ -104,7 +104,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle Azure portal bir
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma 
 
-Azure haritalar uzamsal analizlerini temel alan iş mantığını uygulamak için, oluşturduğumuz kaynak grubunda bir Azure Maps hesabı oluşturuyoruz. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys) bölümündeki yönergeleri izleyin ve abonelik anahtarınızı nasıl alabileceğinizi öğrenmek için [kimlik doğrulama ayrıntılarına](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) bakın.
+Azure haritalar uzamsal analizlerini temel alan iş mantığını uygulamak için, oluşturduğumuz kaynak grubunda bir Azure Maps hesabı oluşturuyoruz. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri izleyin ve hesabınız için birincil abonelik anahtarını almak üzere [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
 
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
@@ -167,7 +167,7 @@ Postman uygulamasını açın ve Azure Maps, veri yükleme API 'sini kullanarak 
     
     URL yolundaki `dataFormat` parametreye karşılık gelen "geojson" değeri, karşıya yüklenen verilerin biçimini temsil eder.
 
-3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure Maps abonelik anahtarınızla değiştirin.
+3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure Maps birincil abonelik anahtarınızla değiştirin.
    
     ![Anahtar-değer params Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Işlevleri, işlem altyapısını açıkça sağlamaya veya yönetmeye ger
 6. [C# kodunu](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) işlevinizin içine kopyalayın ve **Kaydet**' e tıklayın.
  
 7. C# komut dosyasında aşağıdaki parametreleri değiştirin:
-    * **SUBSCRIPTION_KEY** değerini Azure Maps hesabı abonelik anahtarınızla değiştirin.
+    * **SUBSCRIPTION_KEY** değerini Azure Maps hesabı birincil abonelik anahtarınızla değiştirin.
     * **UDID** 'yi karşıya yüklediğiniz bölge sayısının UDID değeriyle değiştirin, 
     * Betikteki **Createblobasync** işlevi, veri depolama hesabında olay başına bir blob oluşturur. **ACCESS_KEY**, **account_name** ve **STORAGE_CONTAINER_NAME** değerini depolama hesabınızın erişim anahtarı ve hesap adı ve veri depolama kapsayıcınızla değiştirin.
 

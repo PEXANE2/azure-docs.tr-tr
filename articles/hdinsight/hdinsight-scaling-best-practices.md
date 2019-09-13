@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 7a278196b2f4edc35ebc8c4dc77116363e9f7901
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: 2e79f38fb6495d75e0438fa3622cc226886c0773
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811824"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885555"
 ---
-# <a name="scale-hdinsight-clusters"></a>HDInsight kümelerini ölçeklendirme
+# <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
 HDInsight, kümelerinizdeki çalışan düğümlerinin sayısını artırma ve azaltma seçeneği sunarak esneklik sağlar. Bu esneklik, bir kümeyi saat veya hafta sonları ile küçültmenize ve yoğun iş talepleri sırasında genişletmenize olanak tanır.
 

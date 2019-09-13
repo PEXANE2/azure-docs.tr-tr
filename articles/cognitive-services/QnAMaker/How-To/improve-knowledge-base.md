@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/11/2019
 ms.author: diberry
-ms.openlocfilehash: ae186209395078ed56a046aafdbe01bb513fc3a0
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277424"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934724"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Bilgi bankaınızı geliştirmek için etkin öğrenme kullanın
 
@@ -72,6 +72,9 @@ Etkin öğrenme varsayılan olarak kapalıdır. Önerilen soruları görmek içi
 1. Soru-Cevap Oluşturma hizmeti bulun ve ardından **etkin öğrenimi**değiştirin. 
 
     [![Hizmet ayarları sayfasında, etkin öğrenme özelliği ' nde geçiş yapın. Özelliği geçiş yapadıysanız hizmetinizi yükseltmeniz gerekebilir.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+
+    > [!Note]
+    > Önceki görüntüde yer alan tam sürüm yalnızca bir örnek olarak gösterilir. Sürümünüz farklı olabilir. 
 
     **Etkin öğrenme** etkinleştirildikten sonra, Bilgi Bankası Kullanıcı tarafından gönderilen sorulara göre düzenli aralıklarla yeni sorular önerir. Ayarı yeniden değiştirerek **etkin öğrenmeyi** devre dışı bırakabilirsiniz.
 

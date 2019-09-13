@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442061"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885288"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme
 
@@ -76,7 +76,7 @@ Aşağıdaki liste, ambarı tarafından kullanılan ortak uyarı durumlarını i
 
 Uyarılar, **Uyarılar** sayfasından görüntülenebilen çeşitli varsayılan gruplar halinde düzenlenir.
 
-![Uyarılar sayfası](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Uyarılar sayfası](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 Grupları **Eylemler** menüsünü kullanarak yönetebilir ve **Uyarı gruplarını yönet**' i seçebilirsiniz.
 
@@ -92,11 +92,11 @@ Son olarak, __Eylemler__ menüsünde __uyarı ayarlarını yönet__ ' i seçmek,
 
 Panonun **ölçümler** sekmesi, kümenizin durumunu bir bakışta izlemeyi kolaylaştıran bir dizi pencere öğesi içerir. **CPU kullanımı**gibi birkaç pencere öğesi tıklandığında ek bilgi sağlar.
 
-![ölçümlerle Pano](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![ölçümlerle Pano](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 **Heatmaps** sekmesi, metrikleri renkli hecekmaps olarak, yeşil 'ten kırmızıya ve kırmızı bir şekilde görüntüler.
 
-![ısı haritalarını ile pano](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![ısı haritalarını ile pano](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 Küme içindeki düğümler hakkında daha fazla bilgi için **konaklar**' ı seçin. Ardından ilgilendiğiniz belirli bir düğümü seçin.
 
@@ -142,7 +142,7 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
 
 **Konaklar** sayfasında kümedeki tüm konaklar listelenir. Konakları yönetmek için aşağıdaki adımları izleyin.
 
-![Konaklar sayfası](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![Konaklar sayfası](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Bir konağın eklenmesi, kullanımdan kaldırılması ve yeniden oluşturulması HDInsight kümeleriyle kullanılmamalıdır.

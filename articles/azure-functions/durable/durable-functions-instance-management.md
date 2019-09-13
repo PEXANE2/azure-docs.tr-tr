@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0df6f5f9728a8e48a3257e56ddf8ad23906dc92c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735168"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933327"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
@@ -31,9 +31,6 @@ Bir düzenleme örneğini başlamamak önemlidir. Bu, başka bir işlevin tetikl
 [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.net) `startNew` `DurableOrchestrationClient` veya (JavaScript) üzerindeki [startnewasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) yöntemi yeni bir örnek başlatır. `orchestrationClient` Bağlamayı kullanarak bu sınıfın örneklerini elde edersiniz. Bu yöntem, dahili olarak bir iletiyi denetim kuyruğuna sıraya alır, daha sonra `orchestrationTrigger` tetikleyici bağlamasını kullanan belirtilen ada sahip bir işlevin başlangıcını tetikler.
 
 Bu zaman uyumsuz işlem, Orchestration işlemi başarıyla zamanlandığında tamamlanır. Düzenleme işlemi 30 saniye içinde başlamalıdır. Daha uzun sürerse, bir `TimeoutException`görürsünüz.
-
-> [!WARNING]
-> JavaScript 'te yerel olarak geliştirme yaparken, `WEBSITE_HOSTNAME` ortam değişkenini üzerinde `DurableOrchestrationClient`Yöntemler `localhost:<port>` kullanmak için (örneğin `localhost:7071`,) olarak ayarlayın. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="net"></a>.NET
 
@@ -361,7 +358,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>Olayları örneklere gönder
 
-Bazı senaryolarda, Orchestrator işlevlerinin dış olayları bekleyip dinleyebilmesi önemlidir. Bu, [insan etkileşimi](durable-functions-concepts.md#human)için bekleyen [izleme işlevlerini](durable-functions-concepts.md#monitoring) ve işlevlerini içerir.
+Bazı senaryolarda, Orchestrator işlevlerinin dış olayları bekleyip dinleyebilmesi önemlidir. Bu, [insan etkileşimi](durable-functions-overview.md#human)için bekleyen [izleme işlevlerini](durable-functions-overview.md#monitoring) ve işlevlerini içerir.
 
 [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) sınıfının (.net `raiseEvent` ) veya `DurableOrchestrationClient` sınıfın yönteminin (JavaScript) [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) yöntemini kullanarak çalışan örneklere olay bildirimleri gönderin. Bu olayları işleyebilen örnekler, [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net) veya `waitForExternalEvent` (JavaScript) çağrısını bekleyen olanlardır.
 
@@ -541,7 +538,7 @@ Beklenmeyen bir nedenden dolayı düzenleme hatası varsa, bu amaçla derlenen b
 
 Düzenlemeyi *çalışma* durumuna geri koymak için [rewindadsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.net) veya `rewindAsync` (JavaScript) API 'sini kullanın. Düzenleme hatasına neden olan etkinliği veya alt düzenleme yürütme hatalarını yeniden çalıştırın.
 
-Örneğin, bir dizi [insan onaylarını](durable-functions-concepts.md#human)içeren bir iş akışınız olduğunu varsayalım. Birinin onayını gerekli olduğunu bildiren ve gerçek zamanlı yanıtı bekleyen bir dizi etkinlik işlevi olduğunu varsayalım. Tüm onay etkinlikleri yanıt aldıktan veya zaman aşımına uğradıktan sonra, geçersiz bir veritabanı bağlantı dizesi gibi uygulamanın yanlış yapılandırılması nedeniyle başka bir etkinliğin başarısız olduğunu varsayalım. Sonuç, iş akışının derinlemesine bir düzenleme hatasıdır. (.Net) veya `rewindAsync` (JavaScript) API 'si ile, bir uygulama Yöneticisi yapılandırma hatasını giderebilir ve başarısız düzenlemeyi hatadan hemen önce geri Sara geri sarabilirler. `RewindAsync` İnsan etkileşimi adımlarının hiçbirinin yeniden onaylanması gerekmez ve düzenleme artık başarıyla tamamlanabilir.
+Örneğin, bir dizi [insan onaylarını](durable-functions-overview.md#human)içeren bir iş akışınız olduğunu varsayalım. Birinin onayını gerekli olduğunu bildiren ve gerçek zamanlı yanıtı bekleyen bir dizi etkinlik işlevi olduğunu varsayalım. Tüm onay etkinlikleri yanıt aldıktan veya zaman aşımına uğradıktan sonra, geçersiz bir veritabanı bağlantı dizesi gibi uygulamanın yanlış yapılandırılması nedeniyle başka bir etkinliğin başarısız olduğunu varsayalım. Sonuç, iş akışının derinlemesine bir düzenleme hatasıdır. (.Net) veya `rewindAsync` (JavaScript) API 'si ile, bir uygulama Yöneticisi yapılandırma hatasını giderebilir ve başarısız düzenlemeyi hatadan hemen önce geri Sara geri sarabilirler. `RewindAsync` İnsan etkileşimi adımlarının hiçbirinin yeniden onaylanması gerekmez ve düzenleme artık başarıyla tamamlanabilir.
 
 > [!NOTE]
 > *Geri sarma* özelliği, dayanıklı zamanlayıcılar kullanan düzenleme örneklerinin yeniden sarlarını desteklemez.
@@ -661,4 +658,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Örnek yönetimi için HTTP API 'Lerini nasıl kullanacağınızı öğrenin](durable-functions-http-api.md)
+> [Sürüm oluşturmayı nasıl ele alabileceğinizi öğrenin](durable-functions-versioning.md)
+
+> [!div class="nextstepaction"]
+> [Örnek yönetimi için yerleşik HTTP API başvurusu](durable-functions-http-api.md)

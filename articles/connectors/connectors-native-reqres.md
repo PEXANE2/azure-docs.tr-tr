@@ -1,6 +1,6 @@
 ---
-title: HTTP veya HTTPS isteklerine yanıt verme-Azure Logic Apps
-description: Azure Logic Apps kullanarak, HTTP veya HTTPS üzerinden olaylara gerçek zamanlı olarak yanıt verin
+title: HTTP isteklerine yanıt verme-Azure Logic Apps
+description: Azure Logic Apps kullanarak HTTP üzerinden olaylara gerçek zamanlı olarak yanıt verin
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: c707326c810f111db220be1ffdfbcd4a52dbb2d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898414"
+ms.locfileid: "70914368"
 ---
-# <a name="respond-to-http-or-https-requests-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak HTTP veya HTTPS isteklerine yanıt verme
+# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak HTTP isteklerine yanıt verme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi veya yanıtı EYLEMIYLE, http veya https üzerinden gönderilen olaylara gerçek zamanlı olarak tepki veren ve yanıt veren otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi veya yanıtı EYLEMIYLE, http isteklerine gerçek zamanlı olarak alan ve yanıt veren otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
 
 * Şirket içi bir veritabanındaki veriler için HTTP isteğine yanıt verme.
 * Dış Web kancası olayı gerçekleştiğinde iş akışı tetikleyin.
@@ -35,9 +35,9 @@ ms.locfileid: "70898414"
 
 <a name="add-request"></a>
 
-## <a name="add-the-request-trigger"></a>Istek tetikleyicisini ekleme
+## <a name="add-a-request-trigger"></a>Istek tetikleyicisi ekleme
 
-Bu yerleşik tetikleyici, HTTP veya HTTPS üzerinden gelen bir isteği bekleyen ve alan bir uç nokta oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır.
+Bu yerleşik tetikleyici, gelen HTTP isteği alabilen el ile çağrılabilir bir uç nokta oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [istek tetikleme türü](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve [Azure Logic Apps içindeki HTTP uç noktalarına çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
@@ -45,7 +45,17 @@ Bu yerleşik tetikleyici, HTTP veya HTTPS üzerinden gelen bir isteği bekleyen 
 
    ![HTTP istek tetikleyicisini seçme](./media/connectors-native-reqres/select-request-trigger.png)
 
-1. **Istek GÖVDESI JSON şeması** kutusu için isteğe bağlı olarak, gelen ISTEKTE beklenen http istek gövdesini açıklayan bir JSON şeması girebilirsiniz, örneğin:
+   Istek tetikleyicisi şu özellikleri gösterir:
+
+   ![İstek tetikleyicisi](./media/connectors-native-reqres/request-trigger.png)
+
+   | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
+   |---------------|--------------------|----------|-------------|
+   | **HTTP POST URL 'SI** | seçim | Evet | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
+   | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen HTTP istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
+   |||||
+
+1. **Istek GÖVDESI JSON şeması** kutusunda, isteğe bağlı olarak gelen istekteki http istek gövdesini açıklayan bir JSON şeması girin, örneğin:
 
    ![Örnek JSON şeması](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -136,22 +146,27 @@ Bu yerleşik tetikleyici, HTTP veya HTTPS üzerinden gelen bir isteği bekleyen 
       }
       ```
 
-1. İstek için kullanılan beklenen yöntem veya göreli bir yol gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
+1. Ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
 
-   Bu örnek, **yöntemi** parametresini ekler:
+   | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
+   |---------------|--------------------|----------|-------------|
+   | **Yöntemi** | `method` | Hayır | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
+   | **Göreli yol** | `relativePath` | Hayır | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
+   |||||
+
+   Bu örnek, **Yöntem** özelliğini ekler:
 
    ![Yöntem parametresi Ekle](./media/connectors-native-reqres/add-parameters.png)
 
-   Artık, listeden bir yöntem seçebilmeniz için tetikleyici içinde **Yöntem** parametresi belirir.
+   **Yöntem** özelliği tetikleyicide görünür, böylece listeden bir yöntem seçebilirsiniz.
 
    ![Yöntem seçin](./media/connectors-native-reqres/select-method.png)
 
 1. Şimdi, iş akışınızda sonraki adım olarak başka bir eylem ekleyin. Tetikleyici altında, eklemek istediğiniz eylemi bulabilmeniz için bir **sonraki adım** ' ı seçin.
 
-   Örneğin, bu konunun ilerleyen kısımlarında açıklanan [bir yanıt eylemi ekleyerek](#add-response)isteğe yanıt verebilirsiniz.
+   Örneğin, özel bir yanıt döndürmek için kullanabileceğiniz ve bu konunun ilerleyen kısımlarında açıklanan [bir yanıt eylemi ekleyerek](#add-response)isteğe yanıt verebilirsiniz.
 
-   > [!NOTE]
-   > Mantıksal uygulama iş akışınızda bir yanıt eylemi eklemezseniz ve tanımlayamazsınız, mantıksal uygulamanız doğrudan çağırana bir `202 ACCEPTED` yanıt döndürür. Yanıtı özelleştirmek için yanıt eylemini kullanabilirsiniz.
+   Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen çağırana bir `202 ACCEPTED` yanıt döndürür.
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin. 
 
@@ -165,8 +180,8 @@ Bu yerleşik tetikleyici, HTTP veya HTTPS üzerinden gelen bir isteği bekleyen 
 
 Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıda verilmiştir:
 
-| Özellik adı | Veri türü | Açıklama |
-|---------------|-----------|-------------|
+| JSON Özellik adı | Veri türü | Açıklama |
+|--------------------|-----------|-------------|
 | `headers` | Object | İstekten üstbilgileri açıklayan bir JSON nesnesi |
 | `body` | Object | İstekten gelen gövde içeriğini açıklayan bir JSON nesnesi |
 ||||
@@ -175,9 +190,9 @@ Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıd
 
 ## <a name="add-a-response-action"></a>Yanıt eylemi ekleme
 
-Yanıt eylemini yalnızca bir HTTP isteği tarafından tetiklenen bir Logic App iş akışında bir yanıtı özelleştirmek için kullanabilirsiniz. Yanıt eylemini iş akışınızın herhangi bir noktasına ekleyebilirsiniz.
+Gelen HTTP isteğine bir yük (veri) ile yanıt vermek için yanıt eylemini kullanabilirsiniz, ancak yalnızca bir HTTP isteği tarafından tetiklenen bir mantıksal uygulamada. Yanıt eylemini iş akışınızın herhangi bir noktasına ekleyebilirsiniz. Bu tetikleyicinin temel alınan JSON tanımı hakkında daha fazla bilgi için bkz. [yanıt eylem türü](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Ancak, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen çağırana bir `202 ACCEPTED` yanıt döndürür. 
+Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen çağırana bir `202 ACCEPTED` yanıt döndürür.
 
 1. Mantıksal uygulama Tasarımcısı ' nda, yanıt eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
@@ -197,7 +212,7 @@ Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar.
 
    Bazı alanlarda, kutularının içine tıklanması dinamik içerik listesini açar. Daha sonra iş akışındaki önceki adımlardan bulunan mevcut çıkışları temsil eden belirteçleri seçebilirsiniz. Önceki örnekte belirtilen şemadan özellikler artık dinamik içerik listesinde görünür.
 
-   Örneğin, **üst bilgiler** alanında, `Content-Type` bu konuda daha önce bahsedildiği gibi, anahtar adını ve anahtar değerini `application/json`olarak ayarlayın. **Gövde** alanı için dinamik içerik listesinden tetikleyici gövdesini seçebilirsiniz.
+   Örneğin, **üst bilgiler** kutusu için, anahtar adı `Content-Type` olarak ekleyin ve anahtar değerini `application/json` bu konunun önceki kısımlarında belirtildiği gibi olarak ayarlayın. **Gövde** kutusu için dinamik içerik listesinden tetikleyiciyi ilet çıktısını seçebilirsiniz.
 
    ![Yanıt eylemi ayrıntıları](./media/connectors-native-reqres/response-details.png)
 
@@ -207,14 +222,14 @@ Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar.
 
    Yanıt eyleminde ayarlayabileceğiniz özellikler hakkında daha fazla bilgi bulabilirsiniz. 
 
-   | Display name | Özellik adı | Gerekli | Açıklama |
-   |--------------|---------------|----------|-------------|
-   | Durum Kodu | `statusCode` | Evet | Döndürülecek HTTP durum kodu |
-   | Üst bilgiler | `headers` | Hayır | Dahil edilecek yanıt üstbilgilerini açıklayan bir JSON nesnesi.  |
-   | Body | `body` | Hayır | Yanıt gövdesi |
+   | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
+   |---------------|--------------------|----------|-------------|
+   | **Durum Kodu** | `statusCode` | Evet | Yanıtta döndürülecek HTTP durum kodu |
+   | **Üst bilgileri** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Gövde** | `body` | Hayır | Yanıt gövdesi |
    |||||
 
-1. Yanıt için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
+1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin. 
 

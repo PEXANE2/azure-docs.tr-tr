@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 8e13e9f95fac8d2e651755ade126417acc6d97da
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e52ce4411a2fa1969db196ba2e32bb485f71f8b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311625"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931237"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub 'ından Azure Veri Gezgini veri alma
 
@@ -124,7 +124,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDatabase** içinde oluşturduğunuz tablo. |
-    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOH, SCSV, TSV ve TXT. |
+    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOH, SCSV, TSV ve TXT. Desteklenen sıkıştırma seçenekleri: GZip |
     | Sütun eşleme | *TestMapping* | **TestDatabase** içinde oluşturduğunuz ve gelen JSON verilerini **TestTable** tablosunun sütun adları ve veri türleriyle eşleyen eşleme. JSON, çok SATıRLı JSON veya AVRO için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 

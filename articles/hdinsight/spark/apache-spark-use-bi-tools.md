@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Power BI kullanarak Azure HDInsight Apache Spark verileri analiz etme '
-description: Öğretici - Apache Spark verileri görselleştirmek için Microsoft Power BI kullanım HDInsight kümeleri depolanır.
+title: "Öğretici: Azure HDInsight 'ta Power BI kullanarak Apache Spark verileri çözümleme "
+description: Öğretici-Microsoft Power BI kullanarak HDInsight kümelerini Apache Spark depolanan verileri görselleştirme
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: d5296fe19cef9e8881d39bd9e59eb4c40d049959
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 319668ac81b390f9a8bf70da36dd3cf1508f5c37
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296196"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885183"
 ---
-# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Öğretici: HDInsight Power BI'ı kullanarak Apache Spark verileri analiz etme
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Öğretici: HDInsight 'ta Power BI kullanarak Apache Spark verileri çözümleme
 
-Bu öğreticide, şunların nasıl kullanılacağını [Microsoft Power BI](https://powerbi.microsoft.com/) bir Apache Spark kümesinde de verileri görselleştirmek için [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
+Bu öğreticide, [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)'ta bir Apache Spark kümesindeki verileri görselleştirmek için [Microsoft Power BI](https://powerbi.microsoft.com/) kullanmayı öğreneceksiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Makaleyi tamamlamak [Öğreticisi: Veri yükleme ve Azure HDInsight, Apache Spark kümesinde sorguları çalıştırma](./apache-spark-load-data-run-query.md).
+* Makale [öğreticisini doldurun: Azure HDInsight](./apache-spark-load-data-run-query.md)'ta Apache Spark kümesinde verileri yükleyin ve sorguları çalıştırın.
 
 * [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-* İsteğe bağlı: [Power BI deneme aboneliği](https://app.powerbi.com/signupredirect?pbi_source=web).
+* İsteğe bağlı: [Deneme aboneliği Power BI](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="verify-the-data"></a>Verileri doğrulama
 
-[Jupyter not defteri](https://jupyter.org/) oluşturduğunuz [önceki öğreticide](apache-spark-load-data-run-query.md) oluşturmak için kod içeren bir `hvac` tablo. Bu tablo, tüm HDInsight Spark kümeleri, CSV dosyası dayalı `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Verileri doğrulamak için aşağıdaki yordamı kullanın.
+[Önceki öğreticide](apache-spark-load-data-run-query.md) oluşturduğunuz `hvac` [Jupyter Notebook](https://jupyter.org/) tablo oluşturmak için kod içerir. Bu tablo, konumundaki `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`tüm HDInsight Spark kümelerinde kullanılabilen CSV dosyasını temel alır. Verileri doğrulamak için aşağıdaki yordamı kullanın.
 
 1. Jupyter not defterinden aşağıdaki kodu yapıştırın ve sonra **SHIFT + ENTER** tuşuna basın. Kod, tabloların varlığını doğrular.
 
@@ -74,25 +74,25 @@ Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanma
 > [!NOTE]  
 > Bu makalede gösterilen bağlayıcı şu anda önizleme aşamasındadır. Geri bildirimlerinizi [Power BI Topluluğu](https://community.powerbi.com/) sitesi ya da [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) sayfasından gönderin.
 
-1. Power BI Desktop’ı açın. Başlangıç ekranı, açılırsa kapatın.
+1. Power BI Desktop’ı açın. Açılırsa başlangıç giriş ekranını kapatın.
 
-2. Gelen **giriş** sekmesinde, gitmek **Veri Al** > **daha...** .
+2. **Giriş** sekmesinde, **verileri** > **daha fazla al..** . ' a gidin.
 
     ![HDInsight Apache Spark’tan Power BI Desktop’a veri alma](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Apache Spark BI’dan Power BI’ya veri alma")
 
-3. Girin `Spark` arama kutusunda **Azure HDInsight Spark**ve ardından **Connect**.
+3. Arama `Spark` kutusuna girin, **Azure HDInsight Spark**öğesini seçin ve ardından **Bağlan**' ı seçin.
 
     ![Apache Spark BI’dan Power BI’ya veri alma](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Apache Spark BI’dan Power BI’ya veri alma")
 
-4. Küme URL'nizi girin (biçiminde `mysparkcluster.azurehdinsight.net`) içinde **sunucu** metin kutusu.
+4. Sunucu metin kutusuna küme URL 'nizi (biçimde `mysparkcluster.azurehdinsight.net`) girin.
 
-5. Altında **veri bağlantısı modu**seçin **DirectQuery**. Sonra **Tamam**’ı seçin.
+5. **Veri bağlantısı modu**altında **DirectQuery**' yi seçin. Sonra **Tamam**’ı seçin.
 
     Spark ile herhangi bir veri bağlantısı modunu kullanabilirsiniz. DirectQuery kullanırsanız, değişiklikler tüm veri kümesi yenilenmeden raporlara yansıtılır. Verileri içeri aktarırsanız, değişiklikleri görmek için veri kümesini yenilemeniz gerekir. DirectQuery’nin nasıl ve ne zaman kullanılacağı hakkında daha fazla bilgi için bkz. [Power BI’da DirectQuery kullanma](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
-6. HDInsight oturum açma hesap bilgilerini girin ve ardından **Connect**. Varsayılan hesap adı *admin*’dir.
+6. HDInsight oturum açma hesabı bilgilerini girin ve **Bağlan**' ı seçin. Varsayılan hesap adı *admin*’dir.
 
-7. Seçin `hvac` tablo, verilerin bir önizlemesini görmek için bekleyin ve ardından **yük**.
+7. Tabloyu seçin, verilerin önizlemesini görmek için bekleyin ve sonra Yükle ' yi seçin. `hvac`
 
     ![Spark kümesi kullanıcı adı ve parolası](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark kümesi kullanıcı adı ve parolası")
 
@@ -104,23 +104,23 @@ Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanma
 
     2. **BuildingID** alanını **Eksen**’e, **ActualTemp** ve **TargetTemp** alanlarını ise **Değer**’e sürükleyin.
 
-        ![Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma")
+        ![değer sütunları ekle](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "değer sütunları ekle")
 
         Diyagram şuna benzer:
 
-        ![Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma")
+        ![alan grafiği toplamı](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "alan grafiği toplamı")
 
-        Varsayılan olarak görselleştirme, **ActualTemp** ve **TargetTemp** değerlerinin toplamını gösterir. Yanındaki aşağı oku seçerek **ActualTemp** ve **TragetTemp** görsel öğeler bölmesinde gördüğünüz **toplam** seçilir.
+        Varsayılan olarak görselleştirme, **ActualTemp** ve **TargetTemp** değerlerinin toplamını gösterir. Görsel öğeler bölmesindeki **actualtemp** ve **tragettemp** ' in yanındaki aşağı oku seçerek **Sum** ' ın seçili olduğunu görebilirsiniz.
 
-    3. Aşağı okları seçin **ActualTemp** ve **TragetTemp** görsel öğeler bölmesinde **ortalama** ortalama gerçek ve hedef Sıcaklıkların her biri için almak için Yapı.
+    3. Görsel öğeler bölmesindeki **Actualtemp** ve **tragettemp** ' in yanındaki aşağı okları seçin, her bina için Ortalama gerçek ve hedef sıcaklıklar almak üzere **Ortalama** ' ı seçin.
 
-        ![Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma")
+        ![değerlerin ortalaması](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "değerlerin ortalaması")
 
         Veri görselleştirmeniz, ekran görüntüsünde gösterilene benzer olmalıdır. İlgili verilere ilişkin araç ipuçları almak üzere imlecinizi görselleştirmenin üzerine getirin.
 
-        ![Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Apache Spark BI kullanarak Spark veri görselleştirmeleri oluşturma")
+        ![alan grafiği](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "alan grafiği")
 
-9. Gidin **dosya** > **Kaydet**, bir ad girin `BuildingTemperature` dosya için seçip **Kaydet**.
+9. `BuildingTemperature` **Dosya** > **Kaydet**' e gidin, dosyanın adını girin ve ardından **Kaydet**' i seçin.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Raporu Power BI Hizmetinde yayımlama (isteğe bağlı)
 
@@ -169,17 +169,17 @@ Power BI hizmeti, raporları ve panoları kuruluşunuzda paylaşmanıza olanak t
 
 10. Raporda **Panoya git**’e tıklayın. 
 
-Görseliniz panoya sabitlenir. Rapora başka görseller ekleyebilir ve bu görselleri aynı panoya sabitleyebilirsiniz. Raporlar ve panolar hakkında daha fazla bilgi için bkz: [Power BI raporlarında](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) ve [Power bı'da panolar](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Görseliniz panoya sabitlenir. Rapora başka görseller ekleyebilir ve bu görselleri aynı panoya sabitleyebilirsiniz. Raporlar ve panolar hakkında daha fazla bilgi için, [Power BI içindeki](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)Power BI ve [panolarda bulunan raporlara](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Öğreticiyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, verileriniz Azure Storage’da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır.
 
-Bir kümeyi silmek için bkz: [tarayıcınız, PowerShell veya Azure CLI kullanarak bir HDInsight kümesi silme](../hdinsight-delete-cluster.md).
+Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'yı kullanarak HDInsight kümesini silme](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici sayesinde nasıl kullanacağınızı öğrendiniz [Microsoft Power BI](https://powerbi.microsoft.com/) bir Apache Spark kümesinde de verileri görselleştirmek için [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). Spark’a kaydettiğiniz verilerin Power BI gibi bir BI analiz aracına nasıl çekilebileceğini görmek için sonraki makaleye ilerleyin.
+Bu öğreticide, [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)'ta bir Apache Spark kümesindeki verileri görselleştirmek için [Microsoft Power BI](https://powerbi.microsoft.com/) nasıl kullanacağınızı öğrendiniz. Spark’a kaydettiğiniz verilerin Power BI gibi bir BI analiz aracına nasıl çekilebileceğini görmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Bir Apache Spark akış işi çalıştırma](apache-spark-eventhub-streaming.md)
+> [Apache Spark akış işi çalıştırma](apache-spark-eventhub-streaming.md)

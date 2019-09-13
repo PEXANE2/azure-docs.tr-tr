@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278174"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879052"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> Çapraz doğrulama (CV) yordamı için, zaman serisi verileri kurallı K katlama çapraz doğrulama stratejisinin temel istatistiksel varsayımlarını ihlal edebilir, bu sayede otomatik makine öğrenimi, oluşturmak için bir toplama kaynağı doğrulama yordamı uygular çapraz doğrulama, zaman serisi verileri için. Bu yordamı kullanmak için, `n_cross_validations` `AutoMLConfig` nesnesinde parametresini belirtin. Doğrulamayı atlayabilir ve kendi doğrulama kümelerinizi `X_valid` ve `y_valid` parametreleriyle birlikte kullanabilirsiniz.
+Gelişmiş tahmin yapılandırmasına yönelik ayrıntılı kod örnekleri için bkz. [enerji talebi Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) , aşağıdakiler dahil:
+
+* tatil algılama ve korleştirme
+* çıkış sonrası çapraz doğrulama
+* yapılandırılabilir lags
+* sıralı pencere toplama özellikleri
 
 ### <a name="view-feature-engineering-summary"></a>Özellik Mühendisliği özetini görüntüle
 

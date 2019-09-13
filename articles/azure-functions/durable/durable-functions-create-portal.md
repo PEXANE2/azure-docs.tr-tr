@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 520579334d88bbab8ac28df7e446879aa9736248
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098200"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933556"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -74,7 +74,7 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
 
 1. Arama alanına yazın `durable` ve ardından **dayanıklı işlevler http başlangıç** şablonunu seçin.
 
-1. İstendiğinde, Azure DurableTask uzantısını işlev uygulamasına herhangi bir bağımlılığı yüklemek için, ' ı seçin. Bir verme işlevi uygulaması için uzantıyı yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. İstendiğinde, Azure DurableTask uzantısını işlev uygulamasına herhangi bir bağımlılığı **yüklemek için,** ' ı seçin. Bir verme işlevi uygulaması için uzantıyı yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
     ![Bağlama uzantılarını yükleme](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
@@ -139,4 +139,4 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Ortak dayanıklı işlev desenleri hakkında bilgi edinin](durable-functions-concepts.md)
+> [Ortak dayanıklı işlev desenleri hakkında bilgi edinin](durable-functions-overview.md#application-patterns)

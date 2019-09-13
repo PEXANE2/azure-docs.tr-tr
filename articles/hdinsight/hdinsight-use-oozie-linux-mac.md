@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811688"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900544"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight 'ta iş akışını tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie kullanma
 
@@ -510,29 +510,29 @@ Oozie Web Kullanıcı arabirimine erişmek için aşağıdaki adımları izleyin
 
 3. Sayfanın sol tarafındaki **Oozie** > **hızlı bağlantılar** > **Oozie Web Kullanıcı arabirimi**' ni seçin.
 
-    ![Menülerin görüntüsü](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Menülerin görüntüsü](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Oozie Web Kullanıcı arabirimi, çalışan iş akışı işlerinin varsayılan değerlerini görüntüler. Tüm iş akışı işlerini görmek için **tüm işler**' i seçin.
 
-    ![Tüm işler görüntülendi](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![Tüm işler görüntülendi](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. Bir iş hakkında daha fazla bilgi görüntülemek için işi seçin.
 
-    ![İş bilgileri](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![İş bilgileri](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. **Iş bilgileri** sekmesinden, iş içindeki temel iş bilgilerini ve bireysel eylemleri görebilirsiniz. En üstteki sekmeleri kullanarak **Iş tanımı**, **Iş yapılandırması**, **Iş günlüğüne**erişin veya iş **dag**altında işin yönlendirilmiş bir döngüsel bir grafiğini (DAG) görüntüleyebilirsiniz.
 
    * **Iş günlüğü**: İş için tüm günlükleri almak üzere **günlükleri al** düğmesini seçin veya günlükleri filtrelemek Için **arama filtresi gir** alanını kullanın.
 
-       ![İş Günlüğü](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![İş Günlüğü](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **Iş dag**: DAG, iş akışı aracılığıyla alınan veri yollarına ilişkin grafiksel bir genel bakıştır.
 
-       ![İş DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![İş DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. **Iş bilgileri** sekmesindeki eylemlerden birini seçerseniz eyleme ilişkin bilgileri getirir. Örneğin **Runsqoopexport** eylemini seçin.
 
-    ![Eylem bilgileri](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![Eylem bilgileri](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. Eyleme ilişkin ayrıntıları, örneğin **konsol URL 'si**bağlantısını görebilirsiniz. İş için iş izleyici bilgilerini görüntülemek için bu bağlantıyı kullanın.
 
@@ -632,18 +632,18 @@ Bir başlangıç, bitiş ve iş için yineleme sıklığını belirtmek için d�
 
 7. Oozie Web Kullanıcı arabirimine giderseniz ve **Düzenleyici işleri** sekmesini seçerseniz, aşağıdaki görüntüde olduğu gibi bilgileri görürsünüz:
 
-    ![Düzenleyici Işleri sekmesi](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Düzenleyici Işleri sekmesi](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     **Sonraki materialization** girişi, işin bir sonraki çalıştırılışında bulunur.
 
 8. Önceki iş akışı işi gibi, Web Kullanıcı arabiriminde iş girişini seçerseniz iş üzerinde bilgi görüntülenir:
 
-    ![Düzenleyici Iş bilgileri](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Düzenleyici Iş bilgileri](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > Bu görüntü, zamanlanan iş akışındaki bireysel eylemleri değil yalnızca işin başarılı çalıştırmalarını gösterir. Tek tek eylemleri görmek için **eylem** girişlerinden birini seçin.
 
-    ![Düzenleyici eylem bilgileri](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Düzenleyici eylem bilgileri](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -747,7 +747,7 @@ Bu makalede, bir Oozie iş akışını tanımlamanızı ve Oozie işinin nasıl 
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

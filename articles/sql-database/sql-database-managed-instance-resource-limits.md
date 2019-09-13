@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845374"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930620"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -58,6 +58,7 @@ Yönetilen örnek iki hizmet katmanına sahiptir: Genel Amaçlı ve İş Açıs�
 | Örnek başına en fazla veritabanı sayısı | 100 | 100 |
 | Örnek başına en fazla veritabanı dosyası sayısı | 280 kadar | veritabanı başına 32.767 dosya |
 | En büyük dosya boyutu | 8 TB | 4 TB |
+| Günlük dosyası boyutu üst sınırı | 2 TB | 2 TB |
 | Veri/günlük ıOPS (yaklaşık) | dosya başına 500-7.500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
 | Günlük yazma verimlilik sınırı | Sanal çekirdek başına 3 MB/s<br/>Örnek başına en fazla 22 MB/sn | vCore başına 4 MB/s<br/>Örnek başına en fazla 48 MB/sn|
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Yok |
@@ -66,8 +67,6 @@ Yönetilen örnek iki hizmet katmanına sahiptir: Genel Amaçlı ve İş Açıs�
 | Bellek içi OLTP | Desteklenmiyor | Kullanılabilir |
 | En fazla oturum sayısı | 30000 | 30000 |
 | [Salt okuma çoğaltmaları](sql-database-read-scale-out.md) | 0 | 1 (fiyata dahildir) |
-| Fiyatlandırma/faturalandırma | [sanal çekirdek ve ayrılmış depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) ücretlendirilir. <br/>IOPS ücretlendirilmez.<br/>Yedekleme depolaması henüz ücretlendirilmez. | [sanal çekirdek ve ayrılmış depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) ücretlendirilir. <br/>IOPS ücretlendirilmez.<br/>Yedekleme depolaması henüz ücretlendirilmez. | 
-| İndirim modelleri | [Ayrılmış örnekler](sql-database-reserved-capacity.md)<br/>[Azure hibrit avantajı](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri| [Ayrılmış örnekler](sql-database-reserved-capacity.md)<br/>[Azure hibrit avantajı](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (geliştirme ve test aboneliklerinde kullanılamaz)<br/>[Kurumsal](https://azure.microsoft.com/offers/ms-azr-0148p/) ve [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0023p/) geliştirme ve test abonelikleri|
 
 > [!NOTE]
 > - Kullanıcı ve sistem veritabanlarındaki veri ve günlük dosyası boyutu, en büyük depolama boyutu sınırı ile karşılaştırılan örnek depolama boyutuna dahildir. Veritabanlarına göre kullanılan toplam alanı öğrenmek için <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> sistem görünümünü kullanın. Hata günlükleri kalıcı değil ve boyutuna dahil edilmez. Yedeklemeler depolama boyutuna dahil değildir.

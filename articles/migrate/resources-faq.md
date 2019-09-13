@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279494"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934915"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Geçişi: Sık sorulan sorular (SSS)
 
@@ -26,6 +26,37 @@ Bu makalede, Azure geçişi hakkında sık sorulan sorular yanıtlanmaktadır. B
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure geçişi ile Azure Site Recovery arasındaki fark nedir?
 
 Azure geçişi, geçiş işlemini başlatmak, makinelerin ve iş yüklerinin bulmayı ve değerlendirmesini izlemek, makinelerin ve iş yüklerinin Azure 'a geçişini yürütmek ve izlemek için merkezi bir merkez sağlar. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) bir olağanüstü durum kurtarma çözümüdür. Azure geçişi sunucu geçişi, şirket içi makinelerin geçiş ve geçiş için geçiş senaryolarını etkinleştirmek üzere arka uçta Azure Site Recovery kullanır.
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Nasıl yaparım? Azure geçişi projesini silme
+
+Bir Azure geçişi projesini ve bu ilişkili kaynaklarını siteler, kurtarma hizmetleri kasaları, geçiş kasaları, Anahtar kasaları, değerlendirme projeleri ve dahil olmak üzere silmek için, Azure portal "kaynak grupları" sayfasına gidin, projeyi geçir ' in bulunduğu kaynak grubunu seçin. oluşturuldu ve "gizli türleri göster" i seçin. Ardından projeyi ve aşağıda listelenen ilişkili kaynaklarını geçir ' i seçin ve silin. Alternatif olarak, kaynak grubu geçiş projesi ve ilişkili kaynakları tarafından özel olarak kullanılıyorsa, kaynak grubunun tamamını silebilirsiniz. Bu listenin tüm senaryolar (bulma, değerlendirme ve geçiş) için oluşturulan tüm kaynak türlerinin ayrıntılı bir listesi olduğunu unutmayın. Yalnızca senaryonuz için kaynak grubunda oluşturulan kaynakları bulabilirsiniz.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>VMware veya fiziksel sunucularda keşfedilen, değerlendirilmiş veya geçirilmiş sunucular için oluşturulan kaynaklar [kaynak (tür)]:
+
+- "Appliancename" kV (Anahtar Kasası)
+- "Appliancename" sitesi (Microsoft. OffAzure/VMwareSites)
+- "ProjectName" (Microsoft. Migrate/migrateprojects)
+- "ProjectName" projesi (Microsoft. Migrate/assessmentProjects)
+- "ProjectName" rskasası (Kurtarma Hizmetleri Kasası)
+- "ProjectName"-Migratekasa-* (Kurtarma Hizmetleri Kasası)
+- migrateappligwsa * (depolama hesabı)
+- migrateappzasa * (depolama hesabı)
+- migrateapplicsa * (depolama hesabı)
+- migrateapplikv * (Anahtar Kasası)
+- migrateapplisbns16041 (Service Bus ad alanı)
+
+Not: Depolama hesaplarını ve anahtar kasalarını, sırasıyla uygulama verileri ve güvenlik anahtarları içerebileceğinden dikkatli bir şekilde silin.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Hyper-V üzerinde keşfedilen, değerlendirilmiş veya geçirilmiş sunucular için oluşturulan kaynaklar [kaynak (tür)]:
+
+- "ProjectName" (Microsoft. Migrate/migrateprojects)
+- "ProjectName" projesi (Microsoft. Migrate/assessmentProjects)
+- HyperV * kV (Anahtar Kasası)
+- HyperV * sitesi (Microsoft. OffAzure/HyperVSites)
+- "ProjectName"-Migratekasa-* (Kurtarma Hizmetleri Kasası) 
+
+Not: Anahtar kasasını, güvenlik anahtarları içerebileceğinden dikkatli bir şekilde silin.
+
 
 ## <a name="azure-migrate-appliance"></a>Azure Geçişi aleti
 

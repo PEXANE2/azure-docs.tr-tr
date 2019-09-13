@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734659"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916572"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -96,9 +96,6 @@ Bir kümenin ömrü için ücretlendirilirsiniz. Kümenizin yalnızca belirli za
 
 Bazen birden çok eşlemelerin paralel yürütülmesi ve çok düğümlü bir küme üzerindeki bileşenlerin azaltılması nedeniyle hatalar oluşabilir. Sorunu yalıtmaya yardımcı olmak için, tek bir çalışan düğümü kümesinde eşzamanlı birden çok iş çalıştırarak dağıtılmış testi deneyin, daha sonra birden fazla iş içeren kümeler üzerinde eşzamanlı olarak birden çok işi çalıştırmak için bu yaklaşımı genişletin. Azure 'da tek düğümlü HDInsight kümesi oluşturmak için *özel (boyut, ayarlar, uygulamalar)* seçeneğini kullanın ve portalda yeni bir küme sağlarken **küme boyutu** bölümünde *çalışan düğümü sayısı* için 1 değerini kullanın.
 
-Ayrıca, yerel bilgisayarınıza tek düğümlü bir geliştirme ortamı yükleyebilir ve çözümü orada test edebilirsiniz. Hortonçalışıyor, ilk geliştirme, kavram kanıtı ve test için yararlı olan Hadoop tabanlı çözümler için tek düğümlü bir yerel geliştirme ortamı sağlar. Daha fazla bilgi için bkz. [Hortonçalışmalar korumalı alanı](https://hortonworks.com/products/hortonworks-sandbox/).
-
-Tek düğümlü yerel bir kümede sorunu tanımlamak için başarısız işleri yeniden çalıştırabilir ve giriş verilerini ayarlayabilir ya da daha küçük veri kümelerini kullanabilirsiniz. Bu işleri nasıl çalıştıracağınızı, uygulamanın platformuna ve türüne bağlıdır.
 
 ## <a name="quotas"></a>Kotalar
 

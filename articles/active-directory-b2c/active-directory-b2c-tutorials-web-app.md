@@ -1,21 +1,21 @@
 ---
-title: Öğretici-bir Web uygulamasında kimlik doğrulamasını etkinleştirme-Azure Active Directory B2C | Microsoft Docs
+title: Öğretici-bir Web uygulamasında kimlik doğrulamasını etkinleştirme-Azure Active Directory B2C
 description: Bir ASP.NET web uygulamasında kullanıcının oturum açmasını sağlamak için Azure Active Directory B2C’nin nasıl kullanılacağını gösteren öğretici.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464757"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914213"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -32,8 +32,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
-- **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
+* Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
+* **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
 
 ## <a name="update-the-application"></a>Uygulamayı güncelleştirme
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Aşağıdaki iki proje örnek çözümde bulunur:
 
-- **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması veya oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
+- **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması ve oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
 - **Taskservice** -oluşturma, okuma, güncelleştirme ve silme görev listesi işlevlerini destekler. API Azure AD B2C tarafından korunur ve TaskWebApp tarafından çağırılır.
 
-Örnek, kiracınızda kayıtlı olan uygulamayı kullanacak şekilde, uygulama KIMLIĞI ve daha önce kaydettiğiniz anahtar dahil olmak üzere değiştirirsiniz. Ayrıca, oluşturduğunuz Kullanıcı akışlarını da yapılandırırsınız. Örnek, yapılandırma değerlerini Web. config dosyasında ayarlar olarak tanımlar. Ayarları değiştirmek için:
+Örnek, kiracınızda kayıtlı olan uygulamayı kullanacak şekilde, uygulama KIMLIĞI ve daha önce kaydettiğiniz anahtar dahil olmak üzere değiştirirsiniz. Ayrıca, oluşturduğunuz Kullanıcı akışlarını da yapılandırırsınız. Örnek, yapılandırma değerlerini *Web. config* dosyasında ayarlar olarak tanımlar.
+
+Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak şekilde güncelleştirin:
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
-2. **Taskwebapp** projesinde **Web. config** dosyasını açın. `ida:Tenant` değerini oluşturduğunuz kiracının adıyla değiştirin. `ida:ClientId` değerini kaydettiğiniz uygulama kimliğiyle değiştirin. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. Web. config dosyasına eklemeden önce, istemci gizliliğini XML olarak kodlamanız gerekir.
-3. **Web.config** dosyasında `ida:SignUpSignInPolicyId` değerini `b2c_1_signupsignin1` ile değiştirin. `ida:EditProfilePolicyId` değerini `b2c_1_profileediting1` ile değiştirin. `ida:ResetPasswordPolicyId` değerini `b2c_1_passwordreset1` ile değiştirin.
-
+1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
+    1. `ida:Tenant` Ve`ida:AadInstance` değerini, oluşturduğunuz kiracının adıyla değiştirin.
+    1. Değerini `ida:ClientId` , kaydettiğiniz uygulama kimliğiyle değiştirin.
+    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. Web. config dosyasına eklemeden önce, istemci gizliliğini XML olarak kodlamanız gerekir.
+    1. Değerini `ida:SignUpSignInPolicyId` ile`b2c_1_signupsignin1`değiştirin.
+    1. Değerini `ida:EditProfilePolicyId` ile`b2c_1_profileediting1`değiştirin.
+    1. Değerini `ida:ResetPasswordPolicyId` ile`b2c_1_passwordreset1`değiştirin.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 

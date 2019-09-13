@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534227"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934422"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
@@ -24,7 +24,7 @@ Bu çözüm SQL veritabanlarınızın yedeklerini almak için SQL Native API 'le
 
 * Korumak istediğiniz SQL Server VM ve içindeki veritabanları için sorgulamak üzere belirttikten sonra, Azure Backup hizmet, VM 'ye ad `AzureBackupWindowsWorkload` uzantısı tarafından bir iş yükü yedekleme uzantısı yükler.
 * Bu uzantı, bir düzenleyici ve SQL eklentisi içerir. Düzenleyici, yedekleme, yedekleme ve geri yükleme gibi çeşitli işlemler için iş akışlarını tetiklemeden sorumlu olsa da, eklenti gerçek veri akışından sorumludur.
-* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı `NT SERVICE\AzureWLBackupPluginSvc`oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. Azure Backup, veritabanı `NT AUTHORITY\SYSTEM` bulma/sorgulama hesabından yararlanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](backup-azure-sql-database.md).
+* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı `NT SERVICE\AzureWLBackupPluginSvc`oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. Azure Backup, veritabanı `NT AUTHORITY\SYSTEM` bulma/sorgulama hesabından yararlanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](#set-vm-permissions).
 * Seçili veritabanlarında korumayı Yapılandır ' ı etkinleştirdikten sonra, yedekleme hizmeti düzenleyiciyi yedekleme zamanlamaları ve diğer ilke ayrıntıları ile ayarlar; bu da uzantının yerel olarak VM 'de önbelleğe alınır.
 * Zamanlanan zamanda, düzenleyici eklenti ile iletişim kurar ve VDı kullanarak SQL Server 'dan yedekleme verilerini akışa başlar.  
 * Eklenti, verileri doğrudan kurtarma hizmetleri kasasına gönderir ve böylece bir hazırlama konumu gereksinimini ortadan kaldırır. Veriler, depolama hesaplarında Azure Backup hizmeti tarafından şifrelenir ve depolanır.
@@ -47,7 +47,7 @@ Başlamadan önce, aşağıdakileri doğrulayın:
 **Desteklenen dağıtımlar** | SQL Market Azure VM 'Leri ve Market olmayan (SQL Server el ile yüklenmiş) VM 'Ler desteklenir.
 **Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS) <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu
 **Desteklenen işletim sistemleri** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux Şu anda desteklenmiyor.
-**Desteklenen SQL Server sürümleri** | [Burada](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)açıklandığı gibi 2017 SQL Server, SQL Server 2016 ve SPs SQL Server 2014 [](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2012.<br/><br/> Enterprise, Standard, Web, geliştirici, Express.
+**Desteklenen SQL Server sürümleri** | [Burada](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)açıklandığı gibi 2017 SQL Server, SQL Server 2016 ve SPs SQL Server 2014 [, SQL Server](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)2012.<br/><br/> Enterprise, Standard, Web, geliştirici, Express.
 **Desteklenen .NET sürümleri** | VM 'de yüklü .NET Framework 4.5.2 ve üzeri
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>SQL Server 2008 ve SQL Server 2008 R2 desteği
@@ -58,8 +58,7 @@ Azure Backup, kısa bir süre önce [EOS SQL severs](https://docs.microsoft.com/
 2. .NET Framework 4.5.2 ve üzeri sanal makinede yüklü olmalıdır
 3. FCı ve yansıtmalı veritabanları için yedekleme desteklenmiyor
 
-Kullanıcılar, genel kullanıma sunulduğunda bu özellik için ücretlendirilmeyecektir. Diğer tüm [özellik konuları ve sınırlamaları](#feature-consideration-and-limitations) bu sürümler için de geçerlidir. Bu durumda, [kayıt defteri anahtarını](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) ayarlamayı içeren 2008 ve 2008 R2 SQL Server 'lar üzerinde korumayı yapılandırmadan önce [önkoşullara](backup-sql-server-database-azure-vms.md#prerequisites) başvurun (özellik genel kullanıma sunulduğunda bu adım gerekli değildir).
-
+Kullanıcılar, genel kullanıma sunulduğunda bu özellik için ücretlendirilmeyecektir. Diğer tüm [özellik konuları ve sınırlamaları](#feature-consideration-and-limitations) bu sürümler için de geçerlidir. Lütfen SQL Server 2008 ve 2008 R2 'de korumayı yapılandırmadan önce [önkoşullara](backup-sql-server-database-azure-vms.md#prerequisites) başvurun.
 
 ## <a name="feature-consideration-and-limitations"></a>Özellik değerlendirmesi ve sınırlamaları
 
@@ -147,11 +146,11 @@ Diğer tüm sürümler için aşağıdaki adımlarla izinleri onarın:
 
       ![Oturum aç-yeni iletişim kutusunda ara ' yı seçin.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin.           **Tamam**'ı tıklatın.
+  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **Tamam**'ı tıklatın.
 
       ![Bilinmeyen hizmet adını çözümlemek için adları denetle ' yi seçin](./media/backup-azure-sql-database/check-name.png)
 
-  5. **Sunucu rolleri**' nde **sysadmin** rolünün seçildiğinden emin olun.           **Tamam**'ı tıklatın. Gerekli izinler artık var olmalıdır.
+  5. **Sunucu rolleri**' nde **sysadmin** rolünün seçildiğinden emin olun. **Tamam**'ı tıklatın. Gerekli izinler artık var olmalıdır.
 
       ![Sysadmin sunucu rolünün seçildiğinden emin olun](./media/backup-azure-sql-database/sysadmin-server-role.png)
 

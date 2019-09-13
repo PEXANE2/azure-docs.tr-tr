@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233183"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933114"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure sanal makinelerinizin sistem durumunu anlayın
 
@@ -36,49 +36,52 @@ VM'ler için Azure İzleyici yapılandırma hakkında daha fazla bilgi için bkz
 
 Bu bölümde, Azure Windows ve Linux VM 'lerini izlemek için varsayılan durum ölçütleri özetlenmektedir. Tüm durum ölçütleri, sağlıksız bir durum tespit edildiğinde bir uyarı gönderecek şekilde önceden yapılandırılmıştır.
 
-### <a name="windows-vms"></a>Windows VM'leri
+| İzleyici adı | Sıklık (dk) | Geriye doğru alma süresi (dk) | Operator | Eşik | Durum durumunda uyar | severity | İş yükü kategorisi | 
+|--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
+| Mantıksal disk çevrimiçi | 5 | 15 | <> | 1 (doğru) | Kritik | Sev1 | Linux | 
+| Mantıksal disk boş alanı | 5 | 15 | < | 200 MB (uyarı)<br> 100 MB (kritik) | Uyarı | Sev1<br> Sev2 | Linux | 
+| Mantıksal disk% boş ınomdes | 5 | 15 | < | %5 | Kritik | Sev1 | Linux | 
+| Mantıksal disk% boş alan | 5 | 15 | < | %5 | Kritik | Sev1 | Linux | 
+| Ağ bağdaştırıcısı durumu | 5 | 15 | <> | 1 (doğru) | Uyarı | Sev2 | Linux | 
+| İşletim sistemi kullanılabilir megabayt belleği | 5 | 10 | < | 2,5 MB | Kritik | Sev1 | Linux | 
+| Disk ort. Disk sn/Okuma | 5 | 25 | > | 0,s | Kritik | Sev1 | Linux | 
+| Disk ort. Disk sn/Aktarım | 5 | 25 | > | 0,s | Kritik | Sev1 | Linux | 
+| Disk ort. Disk sn/yazma | 5 | 25 | > | 0,s | Kritik | Sev1 | Linux | 
+| Disk durumu | 5 | 25 | <> | 1 (doğru) | Kritik | Sev1 | Linux | 
+| İşletim sistemi toplam yüzde Işlemci zamanı | 5 | 10 | >= | % 95 | Kritik | Sev1 | Linux | 
+| Toplam CPU kullanım yüzdesi | 5 | 10 | >= | % 95 | Kritik | Sev1 | Windows | 
+| Dosya sistemi hatası veya bozulması | 60 | 60 | <> | 4 | Kritik | Sev1 | Windows | 
+| Okuma başına ortalama mantıksal disk saniye sayısı | 1\. | 15 | > | 0.04 s | Uyarı | Sev2 | Windows | 
+| Aktarım başına ortalama mantıksal disk saniye sayısı | 1\. | 15 | > | 0.04 s | Uyarı | Sev2 | Windows | 
+| Yazma başına ortalama mantıksal disk saniyesi (mantıksal disk) | 1\. | 15 | > | 0.04 s | Uyarı | Sev2 | Windows | 
+| Geçerli disk sırası uzunluğu (mantıksal disk) | 5 | 60 | >= | 32 | Uyarı | Sev2 | Windows | 
+| Mantıksal disk boş alanı (MB) | 15 | 60 | > | 500 MB uyarı<br> 300 MB kritik | Kritik | Sev1<br> Sev2 | Windows | 
+| Mantıksal disk boş alanı (%) | 15 | 60 | > | % 10 uyarı<br> % 5 kritik | Kritik | Sev1<br> Sev2 | Windows |
+| Mantıksal disk boş kalma süresi yüzdesi | 15 | 360 | <= | %20 | Uyarı | Sev2 | Windows | 
+| Kullanılan bant genişliği yüzdesi okuma | 5 | 60 | >= | 60% | Uyarı | Sev2 | Windows | 
+| Kullanılan bant genişliği yüzdesi toplamı | 5 | 60 | >= | % 75 | Uyarı | Sev2 | Windows | 
+| Kullanılan bant genişliği yüzdesi yazma | 5 | 60 | >= | 60% | Uyarı | Sev2 | Windows | 
+| DHCP Istemci hizmeti durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| DNS Istemci hizmeti durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| Windows olay günlüğü hizmeti durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| Windows Güvenlik Duvarı hizmeti sistem durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| RPC hizmet durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| Sunucu hizmeti durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| Windows Uzaktan Yönetimi hizmet durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
+| Kullanılabilir bellek megabayt | 5 | 10 | < | 100 MB | Kritik | Sev1 | Windows | 
+| Boş sistem sayfa tablosu girdileri | 5 | 10 | <= | 5000 | Kritik | Sev1 | Windows | 
+| Saniye başına bellek sayfası | 5 | 10 | >= | 5000/sn | Uyarı | Sev1 | Windows | 
+| Kullanımdaki kaydedilmiş bellek yüzdesi | 5 | 10 | > | %80 | Kritik | Sev1 | Windows | 
+| Aktarım başına ortalama disk saniye sayısı | 1\. | 15 | > | 0.04 s | Uyarı | Sev2 | Windows | 
+| Yazma başına ortalama disk saniye sayısı | 1\. | 15 | > | 0.04 s | Uyarı | Sev2 | Windows | 
+| Geçerli disk sırası uzunluğu | 5 | 60 | >= | 32 | Uyarı | Sev2 | Windows | 
+| Disk boş kalma süresi yüzdesi | 5 | 60 | >= | %20 | Uyarı | Sev2 | Windows | 
 
-- Kullanılabilir bellek megabayt
-- Yazma başına ortalama disk saniye sayısı (mantıksal disk)
-- Yazma başına ortalama disk saniye sayısı (disk)
-- Okuma başına ortalama mantıksal disk saniye sayısı
-- Aktarım başına ortalama mantıksal disk saniye sayısı
-- Okuma başına ortalama disk saniye sayısı
-- Aktarım başına ortalama disk saniye sayısı
-- Geçerli disk sırası uzunluğu (mantıksal disk)
-- Geçerli disk sırası uzunluğu (disk)
-- Disk boş kalma süresi yüzdesi
-- Dosya sistemi hatası veya bozulması
-- Mantıksal disk boş alanı (%) Zayıf
-- Mantıksal disk boş alanı (MB) düşük
-- Mantıksal disk boş kalma süresi yüzdesi
-- Saniye başına bellek sayfası
-- Kullanılan bant genişliği yüzdesi okuma
-- Kullanılan bant genişliği yüzdesi toplamı
-- Kullanılan bant genişliği yüzdesi yazma
-- Kullanımdaki kaydedilmiş bellek yüzdesi
-- Disk boş kalma süresi yüzdesi
-- DHCP Istemci hizmeti durumu
-- DNS Istemci hizmeti durumu
-- RPC hizmet durumu
-- Sunucu hizmeti durumu
-- Toplam CPU kullanım yüzdesi
-- Windows olay günlüğü hizmeti durumu
-- Windows Güvenlik Duvarı hizmeti sistem durumu
-- Windows Uzaktan Yönetimi hizmet durumu
+>[!NOTE]
+>Geriye doğru arama süresi, en son beş dakika içinde olduğu gibi, geri arama penceresinin ölçüm değerlerini ne sıklıkta denetleyeceğini temsil eder.  
 
-### <a name="linux-vms"></a>Linux VM'leri
-
-- Disk ort. Disk sn/Aktarım
-- Disk ort. Disk sn/Okuma
-- Disk ort. Disk sn/yazma
-- Disk sistem durumu
-- Mantıksal disk boş alanı
-- Mantıksal disk% boş alan
-- Mantıksal disk% boş ınomdes
-- Ağ bağdaştırıcısı durumu
-- Toplam yüzde Işlemci zamanı
-- İşletim sistemi kullanılabilir megabayt bellek
+>[!NOTE]
+>Sıklık, koşulların karşılanıp karşılanmadığını (her dakika gibi) ölçüm uyarısının ne sıklıkta denetleyeceğini temsil eder.  Sistem durumu ölçütünün yürütüldüğü ve geri dönüş, sistem durumu ölçütünün değerlendirildiği sürenin hızıdır. Örneğin **, durum kriteri** değeri 5 dakikalık bir sıklıkta yüzde 95 ' den büyükse ve 15 dakika (3 ardışık değerlendirme döngüsü) için% 95 ' den fazla kalırsa sistem durumu ölçütü değerlendiriliyor henüz yoksa önem derecesi.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -241,7 +244,7 @@ Bir sistem durumu ölçütü, bir eşik değeri, bir varlığın durumu olabilec
 
 Sistem durumu modeli, hedefin genel hedefinin ve bileşenlerinin sistem durumunu belirleyen kriterleri tanımlar. Ölçüt hiyerarşisi **sistem durumu tanılama** sayfasındaki **durum ölçütleri** bölümünde gösterilir.
 
-Sistem durumu toplama ilkesi, toplam durum ölçütü yapılandırmasının bir parçasıdır (varsayılan değer en kötüsü olarak ayarlanmıştır). Bu özelliğin bir parçası olarak çalışan varsayılan bir sistem durumu ölçütü kümesini, bu makalenin [izleme yapılandırması ayrıntıları](#monitoring-configuration-details) bölümünde bulabilirsiniz.
+Sistem durumu toplama ilkesi, toplam durum ölçütü yapılandırmasının bir parçasıdır (varsayılan değer en **kötüsü**olarak ayarlanmıştır). Bu özelliğin bir parçası olarak çalışan varsayılan bir sistem durumu ölçütü kümesini, bu makalenin [izleme yapılandırması ayrıntıları](#monitoring-configuration-details) bölümünde bulabilirsiniz.
 
 Tüm sistem durumu ölçütlerinin listesini almak için Azure Izleyici REST API [izleme örnekleri listesini kaynağa göre](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitorinstances/listbyresource) de kullanabilirsiniz. Bu ölçütler, Azure VM kaynağına karşı çalışan yapılandırma ayrıntılarını içerir.
 
@@ -277,7 +280,7 @@ Aşağıdaki bölümde, sistem durumu ölçütü durumu ve ilişkili zaman göst
 
 ![İzlenen örnek ve sonuçları seçme örneği](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-Örneğin, *disk-1 d:* ' yi seçerseniz, **bileşen modeli**altındaki listeden, *disk-1D:* ve **durum değişikliklerinde** durum değişikliği, *disk-1 D:* ' nin kullanılabilirliğine göre değişiklik gösterir.
+Örneğin, *disk-1 d:* **' yi seçerseniz** , **bileşen modeli**altındaki listeden, *disk-1D:* ve **durum değişikliklerinde** durum değişikliği, *disk-1 D:* ' nin kullanılabilirliğine göre değişiklik gösterir.
 
 Güncelleştirilmiş bir sistem durumunu görmek için **yenileme** bağlantısını seçerek sistem durumu tanılama sayfasını yenileyebilirsiniz. Bu görev, önceden tanımlanmış yoklama aralığına göre sistem durumu ölçütünün sistem durumu için bir güncelleştirme varsa, bu görev, en son sistem durumunu bekleyip yansıtmanızı sağlar. **Durum ölçütleri durumu** , seçilen sistem durumuna göre sonuçları kapsamlamanızı sağlayan bir filtredir: Sağlıklı, uyarı, kritik, bilinmeyen ve tümü. Sağ üst köşedeki **Son güncelleme** zamanı, sistem durumu tanılama sayfasının en son yenilenme süresini gösterir.
 

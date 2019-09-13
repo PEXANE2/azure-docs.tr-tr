@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8670fc7958e66e7c25e27bb3a22429ab20b2514
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990952"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918976"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Örnek verilerle Azure Stream Analytics işi test etme
 
-Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen verilerde bulunan sorguları veya yerel bir dosyadan karşıya yüklenen örnek verileri test edebilirsiniz.
+Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen veriler üzerinde sorguları test edebilir veya Azure portalındaki yerel bir dosyadan örnek verileri karşıya yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) 'daki canlı verilerden veya [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run)yerel olarak da test edebilirsiniz. 
 
 ## <a name="sample-incoming-data-from-input"></a>Girişten gelen veri örneği
 

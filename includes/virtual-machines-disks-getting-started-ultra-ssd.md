@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510333"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919757"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
 
@@ -77,9 +77,9 @@ Hangi bölgeyi dağıtacağınızı bildiğinize göre, bu makaledeki dağıtım
 
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Azure Resource Manager kullanarak bir ultra disk dağıtma
 
-İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi [](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) için bu blogdaki ikinci tabloya bakın.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi için bu [blogdaki](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) ikinci tabloya bakın.
 
-Birden çok Ultra disk içeren bir VM oluşturmak isterseniz, örneğe [birden çok Ultra disk içeren BIR VM oluşturma](https://aka.ms/UltraSSDTemplate)konusuna bakın.
+Birden çok Ultra disk içeren bir VM oluşturmak isterseniz, örneğe [birden çok Ultra disk içeren BIR VM oluşturma](https://aka.ms/ultradiskArmTemplate)konusuna bakın.
 
 Kendi şablonunuzu kullanmayı düşünüyorsanız, ve `Microsoft.Compute/Disks` için `Microsoft.Compute/virtualMachines` **apiversion** ' ın (veya üzeri) olarak `2018-06-01` ayarlandığından emin olun.
 
@@ -89,7 +89,7 @@ VM sağlandıktan sonra veri disklerini bölümleyebilir ve biçimlendirebilir v
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>CLı kullanarak bir ultra disk dağıtma
 
-İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi [](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) için bu blogdaki ikinci tabloya bakın.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi için bu [blogdaki](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) ikinci tabloya bakın.
 
 Bir ultra disk eklemek için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir.
 
@@ -152,7 +152,7 @@ az disk update `
 
 ## <a name="deploy-an-ultra-disk-using-powershell"></a>PowerShell kullanarak bir ultra disk dağıtma
 
-İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi [](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) için bu blogdaki ikinci tabloya bakın.
+İlk olarak, dağıtılacak VM boyutunu saptayın. Şimdilik yalnızca DsV3 ve EsV3 VM aileleri Ultra diskleri destekler. Bu VM boyutları hakkında daha fazla bilgi için bu [blogdaki](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) ikinci tabloya bakın.
 
 Ultra diskler kullanmak için, Ultra diskler kullanabilen bir sanal makine oluşturmanız gerekir. **$Resourcegroup** ve **$vmName** değişkenlerini kendi değerlerinizle değiştirin veya ayarlayın. [Bu makalenin başlangıcından](#determine-your-availability-zone)aldığınız kullanılabilirlik bölgenizin değerine **$Zone** ayarlayın. Ardından, bir ultra etkin VM oluşturmak için aşağıdaki [New-AzVm](/powershell/module/az.compute/new-azvm) komutunu çalıştırın:
 

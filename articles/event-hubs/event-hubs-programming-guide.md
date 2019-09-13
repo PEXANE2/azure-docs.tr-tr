@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679103"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913971"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure Event hubs Programlama Kılavuzu
 Bu makalede, Azure Event Hubs'ı kullanarak kod yazma bazı yaygın senaryolar açıklanmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](event-hubs-what-is-event-hubs.md).
@@ -140,7 +140,10 @@ Zaman içerisinde bir denge sağlanır. Bu dinamik özellik hem ölçek artırma
 
 ## <a name="publisher-revocation"></a>Yayımcı iptali
 
-'Un Gelişmiş çalışma zamanı özelliklerine ek olarak [EventProcessorHost][], Event Hubs, belirli yayımcıların bir olay hub'ına olay göndermesini engellemek üzere yayımcı iptalini sağlar. Bu özellikler, bir yayımcı belirteci tehlike girdiğinde veya bir yazılım güncelleştirmesi bunları uygunsuz bir şekilde davranmasına neden yararlıdır. Bu durumlarda SAS belirtecinin bir parçası olan yayımcı kimliğinin olayları yayımlaması engellenebilir.
+Olay Işleyicisi ana bilgisayarının gelişmiş çalışma zamanı özelliklerine ek olarak Event Hubs hizmeti, belirli yayımcıların Olay Hub 'ına olay göndermesini engellemek için [Yayımcı iptalinin](/rest/api/eventhub/revoke-publisher) yapılmasını sağlar. Bu özellikler, bir yayımcı belirteci tehlike girdiğinde veya bir yazılım güncelleştirmesi bunları uygunsuz bir şekilde davranmasına neden yararlıdır. Bu durumlarda SAS belirtecinin bir parçası olan yayımcı kimliğinin olayları yayımlaması engellenebilir.
+
+> [!NOTE]
+> Şu anda, bu özelliği yalnızca REST API destekler ([Yayımcı iptali](/rest/api/eventhub/revoke-publisher)).
 
 Yayımcı iptali ve yayımcı olarak Event Hubs’a gönderme hakkında daha fazla bilgi için [Event Hubs Büyük Ölçekli Güvenli Yayımlama](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) örneğine bakın.
 

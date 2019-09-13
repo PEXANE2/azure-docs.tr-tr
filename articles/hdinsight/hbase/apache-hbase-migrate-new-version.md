@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: 546d491c24198d5f7a92765876e5f6919ca32020
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735799"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917429"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
 
@@ -180,7 +180,7 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 5. Memstore içindeki son verilerin temizlendiğinden emin olmak için önceki betiği yeniden çalıştırın.
 6. Eski kümede [Apache ambarı](https://ambari.apache.org/) 'nda oturum açın (https://OLDCLUSTERNAME.azurehdidnsight.net) ve HBase hizmetlerini durdurun. Hizmetleri durdurmak istediğinizi onaylamanız istendiğinde, HBase için bakım modunu açmak üzere kutuyu işaretleyin. Ambarı 'na bağlanma ve kullanma hakkında daha fazla bilgi için bkz. [ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari.md).
 
-    ![Ambarı ' nda Hizmetler > HBase > Durdur ' a tıklayın.](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![Ambarı ' nda Hizmetler > HBase > Durdur ' a tıklayın.](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![HBase için bakım modunu aç onay kutusunu işaretleyin ve ardından onaylayın](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 

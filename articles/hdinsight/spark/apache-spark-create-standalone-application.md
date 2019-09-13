@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 3ffb28ba6c2e6170198a0a360315b7d71f059c34
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736441"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899914"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma
 
@@ -177,27 +177,27 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
     2. **Proje yapısı** penceresinde,**bağımlılıklara sahip modüllerden** **artı sembol +**  > **jar** >  **öğesine** > gidin...
 
-        ![JAR oluşturma](./media/apache-spark-create-standalone-application/create-jar-1.png)
+        ![JAR1 oluştur](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
     3. **MODÜLLERDEN jar oluştur** penceresinde, **ana sınıf** metin kutusunda klasör simgesini seçin.
 
     4. **Ana Sınıf Seç** penceresinde, varsayılan olarak görüntülenen sınıfı seçin ve ardından **Tamam**' ı seçin.
 
-        ![JAR oluşturma](./media/apache-spark-create-standalone-application/create-jar-2.png)
+        ![JAR2 oluştur](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
     5. **MODÜLLERDEN jar oluştur** penceresinde, **hedef jar 'e Ayıkla** seçeneğinin seçili olduğundan emin olun ve ardından **Tamam**' ı seçin.  Bu ayar, tüm bağımlılıklarla tek bir JAR oluşturur.
 
-        ![JAR oluşturma](./media/apache-spark-create-standalone-application/create-jar-3.png)
+        ![JAR3 oluştur](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
     6. **Çıkış düzeni** sekmesi, Maven projesinin bir parçası olarak dahil olan tüm jar dosyaları dışındaki türlerini listeler. Scala uygulamasının doğrudan bağımlılığı olmayan jar dosyalarını seçip silebilirsiniz. Burada oluşturduğunuz uygulama için sonuncu (**SparkSimpleApp derleme çıktısı**) hariç tüm jar dosyalarını kaldırabilirsiniz. Silinecek jar dosyaları dışındaki ' ı seçin ve ardından negatif sembolü **-** seçin.
 
-        ![JAR oluşturma](./media/apache-spark-create-standalone-application/delete-output-jars.png)
+        ![JAR4 oluştur](./media/apache-spark-create-standalone-application/delete-output-jars.png)
 
         Proje **derlemesinde Ekle** onay kutusunun seçili olduğundan emin olun. Bu, her proje oluşturulduğunda veya güncelleştirilirken jar 'in oluşturulmasını sağlar. **Uygula** ' yı ve ardından **Tamam**' ı seçin.
 
     7. Jar 'yi oluşturmak **için derleme** > **Yapı yapıtları** > **derlemesi**' ne gidin. Projenin yaklaşık 30 saniye içinde derlenmesi gerekir.  Çıktı jar dosyası, **\out\artifacts** altında oluşturulur.
 
-        ![JAR oluşturma](./media/apache-spark-create-standalone-application/output.png)
+        ![outputs](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>Apache Spark kümesinde uygulamayı çalıştırma
 

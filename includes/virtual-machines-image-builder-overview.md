@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c881c95fb860befbc978aba5a6c73375dce235fe
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166795"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919756"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -47,7 +47,7 @@ AıB, Azure Marketi temel işletim sistemi görüntülerini destekleyecektir:
 - Ubuntu 16.04
 - RHEL 7,6
 - CentOS 7,6
-- Sanal Masaüstü için Windows 10 RS5 Enterödülü/Professional/Enterprise (EVD) 
+- Sanal Masaüstü için Windows 10 RS5 Enterprise/Professional/Enterprise (EVD) 
 - Windows 2016
 - Windows 2019
 

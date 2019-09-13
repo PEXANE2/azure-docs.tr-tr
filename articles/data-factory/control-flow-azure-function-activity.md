@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142499"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931858"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory 'de Azure Işlevi etkinliği
 
@@ -62,7 +62,7 @@ Azure Işlevi etkinliği **sorguları**da destekler. Bir sorgu öğesinin `funct
 
 Ayarlarda yapılandırdığınız `functionTimeout` ayardan bağımsız olarak, 230 saniye sonra Azure işlevleri zaman aşımına uğrar. Daha fazla bilgi için [bu makaleye](../azure-functions/functions-versions.md#timeout) bakın. Bu davranışı geçici olarak çözmek için zaman uyumsuz bir model izleyin veya Dayanıklı İşlevler kullanın. Dayanıklı İşlevler avantajı kendi durum izleme mekanizmasını sunduklarında, kendi uygulamanızı uygulamanız gerekmez.
 
-[Bu makaledeki](../azure-functions/durable/durable-functions-overview.md)dayanıklı işlevler hakkında daha fazla bilgi edinin. [Bu örnek](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery)gibi farklı bir URI ile yanıt döndüren dayanıklı işlevi çağırmak Için bir Azure işlevi etkinliği ayarlayabilirsiniz. , `statusQueryGetUri` İşlev çalışırken http durumu 202 ' i döndürdüğünden, bir Web etkinliği kullanarak işlevin durumunu yoklayabilmeniz gerekir. Yalnızca `url` alanı olarak `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`ayarlanmış bir Web etkinliği ayarlamanız yeterlidir. Dayanıklı Işlev tamamlandığında, işlevin çıktısı Web etkinliğinin çıktısı olur.
+[Bu makaledeki](../azure-functions/durable/durable-functions-overview.md)dayanıklı işlevler hakkında daha fazla bilgi edinin. [Bu örnek](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery)gibi farklı bir URI ile yanıt döndüren dayanıklı işlevi çağırmak Için bir Azure işlevi etkinliği ayarlayabilirsiniz. , `statusQueryGetUri` İşlev çalışırken http durumu 202 ' i döndürdüğünden, bir Web etkinliği kullanarak işlevin durumunu yoklayabilmeniz gerekir. Yalnızca `url` alanı olarak `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`ayarlanmış bir Web etkinliği ayarlamanız yeterlidir. Dayanıklı Işlev tamamlandığında, işlevin çıktısı Web etkinliğinin çıktısı olur.
 
 
 ## <a name="sample"></a>Örnek

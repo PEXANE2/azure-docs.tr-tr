@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd75ca1fbad358e80a2c040b5ead8c50611489e2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478868"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916200"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Azure Haritalar’ı kullanarak ilgi çekici noktaya yönlendirme
 
@@ -27,7 +27,7 @@ Bu öğreticide, Azure Haritalar hesabınız ile Yönlendirme Hizmeti SDK’nız
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Devam etmeden önce, [Azure Haritalar hesabınızı oluşturmak](./tutorial-search-location.md#createaccount) ve [hesabınızın abonelik anahtarını almak](./tutorial-search-location.md#getkey) için önceki öğreticide yer alan adımları izleyin.
+Devam etmeden önce, S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri izleyin ve hesabınıza ilişkin birincil abonelik anahtarını almak için [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
 
 <a id="getcoordinates"></a>
 

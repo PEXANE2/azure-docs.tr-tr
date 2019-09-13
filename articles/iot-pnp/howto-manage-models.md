@@ -8,12 +8,12 @@ services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: yahajiza
-ms.openlocfilehash: ec36bef9c2b65a5c88a52621bbf3a1db708c235c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880507"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932871"
 ---
 # <a name="manage-models-in-the-repository"></a>Depodaki modelleri yönetme
 
@@ -41,7 +41,7 @@ Cihaz yeteneği modellerini ve arabirimlerini depolamak için iki tür model dep
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLı, IoT Tak ve Kullan genel ve şirket modeli depolarında cihaz yeteneği modellerini ve arabirimlerini yönetmeye yönelik komutlar sağlar.
+Azure CLı, IoT Tak ve Kullan genel ve şirket modeli depolarında cihaz yeteneği modellerini ve arabirimlerini yönetmeye yönelik komutlar sağlar. Daha fazla bilgi için bkz. [Azure CLI Için Azure IoT uzantısı](./howto-install-pnp-cli.md) nasıl yapılır Kılavuzu.
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -62,4 +62,4 @@ Visual Studio Code ' de **model deposu** görünümünü açmak için.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önerilen sonraki adım, [sertifika Için ıot Tak ve kullan cihazının](tutorial-certification-test.md)nasıl gönderileceğini öğrenirsiniz.
+Önerilen sonraki adım, [sertifika Için ıot Tak ve kullan cihazının nasıl gönderileceğini](tutorial-certification-test.md)öğrenirsiniz.

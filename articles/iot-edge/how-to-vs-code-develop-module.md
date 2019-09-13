@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035079"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910242"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
 
@@ -89,7 +89,7 @@ Aşağıdaki adımlarda, Visual Studio Code ve Azure IoT araçları kullanarak t
 
 1. Modülünüzün adını girin. Kapsayıcı kayıt defteriniz dahilinde benzersiz olan bir ad seçin.
 
-1. Modülün görüntü deposunun adını belirtin. Visual Studio Code, modül adını **localhost: 5000/<\>modülünüzün adıyla**doldurur. Kayıt defteri kendi bilgilerinizle değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, oturum açma sunucusu defterinizin ayarlarından'ni kullanın. Oturum açma sunucusu, * **\<kayıt defteri adı\>*. azurecr.io**gibi görünür. Yalnızca dizenin **localhost: 5000** bölümünü, nihai sonucun * *\<* kayıt defteri adı *\>. azurecr.io/* \<modülünüzün adı\>* * * olacak şekilde değiştirin.
+1. Modülün görüntü deposunun adını belirtin. Visual Studio Code, modül adını **localhost: 5000/<\>modülünüzün adıyla**doldurur. Kayıt defteri kendi bilgilerinizle değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, oturum açma sunucusu defterinizin ayarlarından'ni kullanın. Oturum açma sunucusu,   **_\<kayıt defteri adı\>_ . azurecr.io**gibi görünür. Son sonucun  **\< *kayıt defteri*adı\> _\<\>_** gibi görünmesi için dizenin **localhost: 5000** kısmını yalnızca değiştirin. azurecr.io/modül adı.
 
    ![Docker görüntü deposunu sağlama](./media/how-to-develop-csharp-module/repository.png)
 

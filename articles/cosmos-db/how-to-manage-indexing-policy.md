@@ -4,18 +4,333 @@ description: Azure Cosmos DB 'da dizin oluşturma ilkelerini yönetmeyi öğreni
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: a6c1ec6d58939336fb8a982e3ab1b9be20d4e0a5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ede4266457aaa76bdd9f1141df5c2981bb722326
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172162"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915915"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB Dizin oluşturma ilkelerini yönetme
 
-Azure Cosmos DB, veriler her kapsayıcı için tanımlanan [Dizin oluşturma ilkelerinin](index-policy.md) dizinlenmiştir. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi, herhangi bir dize veya sayı için Aralık dizinini ve tür noktası olan herhangi bir GeoJSON nesnesi için uzamsal dizinleri zorlar. Bu ilke geçersiz kılınabilir:
+Azure Cosmos DB, veriler her kapsayıcı için tanımlanan [Dizin oluşturma ilkelerinin](index-policy.md) dizinlenmiştir. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi herhangi bir dize veya sayı için Aralık dizinleri uygular. Bu ilke, kendi özel dizin oluşturma ilkenize göre geçersiz kılınabilir.
+
+## <a name="indexing-policy-examples"></a>Dizin oluşturma ilkesi örnekleri
+
+Burada, Azure portal üzerinde sunulduklarında, JSON biçiminde gösterilen dizin oluşturma ilkelerine ilişkin bazı örnekler verilmiştir. Aynı parametreler Azure CLı veya herhangi bir SDK aracılığıyla ayarlanabilir.
+
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Bazı özellik yollarını seçmeli olarak hariç tutmak için devre dışı bırakma ilkesi
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/path/to/single/excluded/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/excluded/properties/*"
+            }
+        ]
+    }
+```
+
+Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan ```kind``` ```dataType```, ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/*",
+                "indexes": [
+                    {
+                        "kind": "Range",
+                        "dataType": "Number",
+                        "precision": -1
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String",
+                        "precision": -1
+                    }
+                ]
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/path/to/single/excluded/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/excluded/properties/*"
+            }
+        ]
+    }
+```
+
+### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Bazı özellik yollarını seçmeli olarak dahil etmek için katılım ilkesi
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/path/to/included/property/?"
+            },
+            {
+                "path": "/path/to/root/of/multiple/included/properties/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/*"
+            }
+        ]
+    }
+```
+
+Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan ```kind``` ```dataType```, ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [
+            {
+                "path": "/path/to/included/property/?",
+                "indexes": [
+                    {
+                        "kind": "Range",
+                        "dataType": "Number"
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String"
+                    }
+                ]
+            },
+            {
+                "path": "/path/to/root/of/multiple/included/properties/*",
+                "indexes": [
+                    {
+                        "kind": "Range",
+                        "dataType": "Number"
+                    },
+                    {
+                        "kind": "Range",
+                        "dataType": "String"
+                    }
+                ]
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/*"
+            }
+        ]
+    }
+```
+
+> [!NOTE] 
+> Azure Cosmos DB, modelinize eklenebilen yeni bir özelliğin önceden oluşturulmasını sağlamak için bir **kabul etme** dizin oluşturma ilkesinin kullanılması genellikle önerilir.
+
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Yalnızca belirli bir özellik yolunda uzamsal dizin kullanma
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/path/to/geojson/property/?",
+            "types": [
+                "Point",
+                "Polygon",
+                "MultiPolygon",
+                "LineString"
+            ]
+        }
+    ]
+}
+```
+
+## <a name="composite-indexing-policy-examples"></a>Bileşik dizin oluşturma ilkesi örnekleri
+
+Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. Birden çok özellik için `ORDER BY` yan tümcesi içeren bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir. Ayrıca, bileşik dizinlerin filtre içeren sorgularda bir performans avantajı ve farklı özelliklerde ORDER BY yan tümcesi vardır.
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>İçin tanımlanan bileşik dizin (ad ASC, Age DESC):
+
+```json
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+Ad ve yaş üzerindeki yukarıdaki bileşik dizin, sorgu #1 ve sorgu #2 için gereklidir:
+
+Sorgu #1:
+
+```sql
+    SELECT *
+    FROM c
+    ORDER BY c.name ASC, c.age DESC
+```
+
+Sorgu #2:
+
+```sql
+    SELECT *
+    FROM c
+    ORDER BY c.name DESC, c.age ASC
+```
+
+Bu bileşik dizin sorgu #3 ve sorgu #4 yararlı olacak ve filtreleri iyileştirtirecektir:
+
+Sorgu #3:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Tim"
+ORDER BY c.name DESC, c.age ASC
+```
+
+Sorgu #4:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Tim" AND c.age > 18
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>İçin Birleşik Dizin tanımlandı (ad ASC, Age ASC) ve (ad ASC, Age DESC):
+
+Aynı dizin oluşturma ilkesi içinde birden çok farklı bileşik dizin tanımlayabilirsiniz.
+
+```json
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ],
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>İçin tanımlanan bileşik dizin (ad ASC, Age ASC):
+
+Sıralamayı belirtmek için isteğe bağlıdır. Belirtilmemişse, düzen artan olur.
+
+```json
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
+
+### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Tüm özellik yollarını dışlama ancak dizin oluşturmayı etkin tutma
+
+Bu ilke, [yaşam süresi (TTL) özelliğinin](time-to-live.md) etkin olduğu, ancak ikincil dizin gerekmediği durumlarda (Azure Cosmos DB saf anahtar-değer deposu olarak kullanmak için) kullanılabilir.
+
+```json
+    {
+        "indexingMode": "consistent",
+        "includedPaths": [],
+        "excludedPaths": [{
+            "path": "/*"
+        }]
+    }
+```
+
+### <a name="no-indexing"></a>Dizin oluşturma
+
+Bu ilke Dizin oluşturmayı devre dışı bırakır. `indexingMode` Olarak`none`ayarlanırsa, kapsayıcıda bir TTL ayarlayamazsınız.
+
+```json
+    {
+        "indexingMode": "none"
+    }
+```
+
+## <a name="updating-indexing-policy"></a>Dizin oluşturma ilkesi güncelleştiriliyor
+
+Azure Cosmos DB, dizin oluşturma ilkesi aşağıdaki yöntemlerden herhangi biri kullanılarak güncelleştirilebilen olabilir:
 
 - Azure portal
 - Azure CLı 'yi kullanma
@@ -24,7 +339,7 @@ Azure Cosmos DB, veriler her kapsayıcı için tanımlanan [Dizin oluşturma ilk
 Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-indexing-policy) bir dizin dönüşümünü tetikler. Bu dönüşümün ilerleme durumu SDK 'lardan de izlenebilir.
 
 > [!NOTE]
-> SDK ve Portal yükseltmesinin bir parçası olarak, yeni kapsayıcılara topladığımız yeni bir dizin düzenine uyum sağlamak için Dizin ilkesini geliştirdik. Bu yeni düzen ile tüm ilkel veri türleri tam duyarlığa sahip (-1) bir Aralık olarak dizinlenir. Bu nedenle, dizin türleri ve duyarlık artık kullanıcıya gösterilmez. Gelecekte, kullanıcıların ıncludedpaths bölümüne yollar eklemesi ve Dizin türlerini ve duyarlığını yoksayması gerekir. Bu değişikliğin performans üzerinde etkisi yoktur ve aynı sözdizimini kullanarak dizin oluşturma ilkesini güncelleştirmeye devam edebilirsiniz. Dizin ilkesini güncelleştirmek için mevcut belgelerimizde tüm örnekleri kullanmaya devam edebilirsiniz.
+> Dizin oluşturma ilkesi güncelleştirilirken Azure Cosmos DB yazma işlemleri kesintiye uğramadan olur. Yeniden dizinleme sırasında, Dizin güncelleştirildiğinden sorgular kısmi sonuçlar döndürebilir.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
@@ -340,246 +655,6 @@ Kapsayıcıyı değişikliklerle güncelleştirme
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
-```
-
-## <a name="indexing-policy-examples"></a>Dizin oluşturma ilkesi örnekleri
-
-Burada, Azure portal üzerinde sunulduklarında, JSON biçiminde gösterilen dizin oluşturma ilkelerine ilişkin bazı örnekler verilmiştir. Aynı parametreler Azure CLı veya herhangi bir SDK aracılığıyla ayarlanabilir.
-
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Bazı özellik yollarını seçmeli olarak hariç tutmak için devre dışı bırakma ilkesi
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [
-            {
-                "path": "/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    },
-                    {
-                        "kind": "Range",
-                        "dataType": "String"
-                    },
-                    {
-                        "kind": "Spatial",
-                        "dataType": "Point"
-                    }
-                ]
-            }
-        ],
-        "excludedPaths": [
-            {
-                "path": "/path/to/single/excluded/property/?"
-            },
-            {
-                "path": "/path/to/root/of/multiple/excluded/properties/*"
-            }
-        ]
-    }
-```
-
-### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Bazı özellik yollarını seçmeli olarak dahil etmek için katılım ilkesi
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [
-            {
-                "path": "/path/to/included/property/?",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    }
-                ]
-            },
-            {
-                "path": "/path/to/root/of/multiple/included/properties/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    }
-                ]
-            }
-        ],
-        "excludedPaths": [
-            {
-                "path": "/*"
-            }
-        ]
-    }
-```
-
-Not: Azure Cosmos DB, modelinize eklenebilen yeni bir özelliğin önceden oluşturulmasını sağlamak için bir **kabul etme** dizin oluşturma ilkesinin kullanılması genellikle önerilir.
-
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Yalnızca belirli bir özellik yolunda uzamsal dizin kullanma
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [
-            {
-                "path": "/*",
-                "indexes": [
-                    {
-                        "kind": "Range",
-                        "dataType": "Number"
-                    },
-                    {
-                        "kind": "Range",
-                        "dataType": "String"
-                    }
-                ]
-            },
-            {
-                "path": "/path/to/geojson/property/?",
-                "indexes": [
-                    {
-                        "kind": "Spatial",
-                        "dataType": "Point"
-                    }
-                ]
-            }
-        ],
-        "excludedPaths": []
-    }
-```
-
-### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Tüm özellik yollarını dışlama ancak dizin oluşturmayı etkin tutma
-
-Bu ilke, [yaşam süresi (TTL) özelliğinin](time-to-live.md) etkin olduğu, ancak ikincil dizin gerekmediği durumlarda (Azure Cosmos DB saf anahtar-değer deposu olarak kullanmak için) kullanılabilir.
-```
-    {
-        "indexingMode": "consistent",
-        "includedPaths": [],
-        "excludedPaths": [{
-            "path": "/*"
-        }]
-    }
-```
-
-### <a name="no-indexing"></a>Dizin oluşturma
-```
-    {
-        "indexingMode": "none"
-    }
-```
-
-## <a name="composite-indexing-policy-examples"></a>Bileşik dizin oluşturma ilkesi örnekleri
-
-Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. Birden çok özellik için `ORDER BY` yan tümcesi içeren bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir.
-
-### <a name="composite-index-defined-for-name-asc-age-desc"></a>İçin tanımlanan bileşik dizin (ad ASC, Age DESC):
-```
-    {  
-        "automatic":true,
-        "indexingMode":"Consistent",
-        "includedPaths":[  
-            {  
-                "path":"/*"
-            }
-        ],
-        "excludedPaths":[  
-
-        ],
-        "compositeIndexes":[  
-            [  
-                {  
-                    "path":"/name",
-                    "order":"ascending"
-                },
-                {  
-                    "path":"/age",
-                    "order":"descending"
-                }
-            ]
-        ]
-    }
-```
-
-Bu bileşik dizin aşağıdaki iki sorguyu destekleyebilir:
-
-Sorgu #1:
-```sql
-    SELECT *
-    FROM c
-    ORDER BY name asc, age desc    
-```
-
-Sorgu #2:
-```sql
-    SELECT *
-    FROM c
-    ORDER BY name desc, age asc
-```
-
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>İçin Birleşik Dizin tanımlandı (ad ASC, Age ASC) ve (ad ASC, Age DESC):
-
-Aynı dizin oluşturma ilkesi içinde birden çok farklı bileşik dizin tanımlayabilirsiniz. 
-```
-    {  
-        "automatic":true,
-        "indexingMode":"Consistent",
-        "includedPaths":[  
-            {  
-                "path":"/*"
-            }
-        ],
-        "excludedPaths":[  
-
-        ],
-        "compositeIndexes":[  
-            [  
-                {  
-                    "path":"/name",
-                    "order":"ascending"
-                },
-                {  
-                    "path":"/age",
-                    "order":"ascending"
-                }
-            ],
-            [  
-                {  
-                    "path":"/name",
-                    "order":"ascending"
-                },
-                {  
-                    "path":"/age",
-                    "order":"descending"
-                }
-            ]
-        ]
-    }
-```
-
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>İçin tanımlanan bileşik dizin (ad ASC, Age ASC):
-
-Sıralamayı belirtmek için isteğe bağlıdır. Belirtilmemişse, düzen artan olur.
-```
-{  
-        "automatic":true,
-        "indexingMode":"Consistent",
-        "includedPaths":[  
-            {  
-                "path":"/*"
-            }
-        ],
-        "excludedPaths":[  
-
-        ],
-        "compositeIndexes":[  
-            [  
-                {  
-                    "path":"/name",
-                },
-                {  
-                    "path":"/age",
-                }
-            ]
-        ]
-}
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

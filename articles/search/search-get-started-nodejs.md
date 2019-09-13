@@ -1,5 +1,5 @@
 ---
-title: "Node. js hızlı başlangıç: Azure Search REST API 'Leri kullanarak dizin oluşturma, yükleme ve sorgulama-Azure Search"
+title: "Hızlı Başlangıç: REST API 'Leri kullanarak Node. js ' de bir arama dizini oluşturma-Azure Search"
 description: Azure Search için Node. js örneği, nasıl oluşturma, veri yükleme ve JavaScript 'ten sorgu yapma.
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656297"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881508"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Hızlı Başlangıç: Node. js ' de Azure Search dizin oluşturma
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>Hızlı Başlangıç: REST API 'Lerini kullanarak Node. js ' de Azure Search dizin oluşturma
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -39,7 +39,7 @@ Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanıl�
 + Bu makalede veya [deponun **hızlı başlangıç** dizininden](https://github.com/Azure-Samples/azure-search-javascript-samples/)örnek bir dizin yapısı ve eşleşen belgeler sağlanır.
 + Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
 
-Önerilen
+Önerilen:
 
 * [Visual Studio Code](https://code.visualstudio.com).
 * VSCode için [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) ve [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) uzantıları.
@@ -453,7 +453,7 @@ Son ' a yapılan çağrıyı `run()`unutmayın! Bu, bir sonraki adımda çalış
 
 Bu `AzureSearchClient.indexExistsAsync()` ve`AzureSearchClient.deleteIndexAsync()` parametre almaz. Bu işlevler bağımsız `AzureSearchClient.request()` değişken olmadan `bodyJson` çağırır. `AzureSearchClient.request()` `indexExistsAsync()` İçinde olduğu için,`deleteIndexAsync()`yapı yalnızca http fiili ("Get" for ve "Delete" for) olarak ayarlanır ve istek anahtarını belirten üst bilgileri ve üst bilgileri. `init` `true` `bodyJson === null`  
 
-Buna karşılık `AzureSearchClient.createIndexAsync(indexDefinition)` , yöntemi bir parametre alır. `AzureSearchClient.createIndexAsync(indexDefinition)` İçindeki `run` işlevi`index.js`, **hotels_quickstart_index. JSON** dosyasının içeriğini yöntemine geçirir. Yöntemi bu tanımı öğesine `AzureSearchClient.request()`geçirir. `createIndexAsync()` `AzureSearchClient.request()`'De, artık `false` olduğuiçin`body` , yapı yalnızca http fiili ("put") ve üst bilgileri içermez, ancak öğesini dizin tanımı verileri olarak ayarlar. `init` `bodyJson === null`
+Buna karşılık `AzureSearchClient.createIndexAsync(indexDefinition)` _, yöntemi bir_ parametre alır. `AzureSearchClient.createIndexAsync(indexDefinition)` İçindeki `run` işlevi`index.js`, **hotels_quickstart_index. JSON** dosyasının içeriğini yöntemine geçirir. Yöntemi bu tanımı öğesine `AzureSearchClient.request()`geçirir. `createIndexAsync()` `AzureSearchClient.request()`'De, artık `false` olduğuiçin`body` , yapı yalnızca http fiili ("put") ve üst bilgileri içermez, ancak öğesini dizin tanımı verileri olarak ayarlar. `init` `bodyJson === null`
 
 ### <a name="prepare-and-run-the-sample"></a>Örneği hazırlama ve çalıştırma
 
@@ -600,7 +600,7 @@ const run = async () => {
 }
 ```
 
-Programını ile `node index.js`yeniden çalıştırın. Adım 1 ' de gördüğenlerden biraz farklı bir ileti kümesi görmeniz gerekir. Bu kez, Dizin mevcut olur ve uygulama yeni dizin oluşturmadan ve verileri kendisine göndermeksizin silme hakkında bir ileti görmeniz gerekir. 
+Programını ile `node index.js`yeniden çalıştırın. Adım 1 ' de gördüğenlerden biraz farklı bir ileti kümesi görmeniz gerekir. Bu kez _, Dizin mevcut_ olur ve uygulama yeni dizin oluşturmadan ve verileri kendisine göndermeksizin silme hakkında bir ileti görmeniz gerekir. 
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 

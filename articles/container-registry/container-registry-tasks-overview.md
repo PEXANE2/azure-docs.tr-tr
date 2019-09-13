@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: 2d7237c1d142e9f7bb5a47294d1375040be43ac3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c62987031a73aa4840c1d036689a3c52fb4dc4a0
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308030"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914675"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -21,14 +21,22 @@ Kapsayıcılar, altyapı ve işletimsel gereksinimlerden uygulama ve geliştiric
 
 ## <a name="what-is-acr-tasks"></a>ACR görevleri nedir?
 
-**ACR görevleri** Azure Container Registry içindeki bir özellik paketidir. Linux, Windows ve ARM için bulut tabanlı kapsayıcı görüntüsü oluşturma ve Docker kapsayıcılarınız için [Işletim sistemi ve çerçeve düzeltme ekini](#automate-os-and-framework-patching) otomatik hale getirebilir. ACR görevleri, isteğe bağlı kapsayıcı görüntüsü Derlemeleriyle "iç döngüyle" geliştirme döngüsünü buluta genişletmez, ancak aynı zamanda kaynak kodu işlemesinde otomatik yapıları veya bir kapsayıcının temel görüntüsünü güncelleştirildiğinde de olanak sağlar. Temel görüntü güncelleştirme Tetikleyicileri ile, işletim sistemi ve uygulama çerçevesi düzeltme eki uygulama iş akışınızı otomatikleştirerek, sabit kapsayıcıların ilkelerine bağlı olarak güvenli ortamları koruyun.
+**ACR görevleri** Azure Container Registry içindeki bir özellik paketidir. Linux, Windows ve ARM dahil olmak üzere [platformlar](#image-platforms) için bulut tabanlı kapsayıcı görüntüsü oluşturma olanağı sağlar ve Docker kapsayıcılarınız Için [işletim sistemi ve çerçeve düzeltme ekini](#automate-os-and-framework-patching) otomatik hale getirebilir. ACR görevleri, isteğe bağlı kapsayıcı görüntüsü Derlemeleriyle yalnızca "iç döngüyle" geliştirme döngüsünü buluta genişletmez, ancak kaynak kodu güncelleştirmeleri tarafından tetiklenen otomatik yapıları, kapsayıcının temel görüntüsüne veya zamanlayıcılara yönelik güncelleştirmeleri de sağlar. Örneğin, temel görüntü güncelleştirme Tetikleyicileri ile, işletim sistemi ve uygulama çerçevesi düzeltme eki uygulama iş akışınızı otomatikleştirerek, sabit kapsayıcıların ilkelerine uyurken güvenli ortamları koruyun.
 
-ACR görevlerle kapsayıcı görüntülerini dört şekilde oluşturun ve test edin:
+## <a name="task-scenarios"></a>Görev senaryoları
 
-* [Hızlı görev](#quick-task): Yerel bir Docker altyapısı yüklemesine gerek kalmadan, Azure 'da kapsayıcı görüntülerini talep üzerine oluşturun ve gönderin. `docker build` Buluta`docker push` göz önünde bulundurun. Yerel kaynak kodundan veya git deposundan derleme.
-* [Kaynak kodu Işlemede oluştur](#automatic-build-on-source-code-commit): Kod bir git deposuna işlendiği zaman bir kapsayıcı görüntü derlemesini otomatik olarak tetikleyin.
-* [Temel görüntü güncelleştirmesinde oluştur](#automate-os-and-framework-patching): Bu görüntünün temel görüntüsü güncelleştirildiği zaman bir kapsayıcı görüntüsü derlemesini tetikler.
-* [Çok adımlı görevler](#multi-step-tasks): Görüntüler oluşturan, kapsayıcıları komut olarak çalıştıran ve görüntüleri bir kayıt defterine ileten çok adımlı görevleri tanımlayın. ACR görevlerinin bu özelliği, isteğe bağlı görev yürütmeyi ve paralel görüntü oluşturma, test ve gönderme işlemlerini destekler.
+ACR görevleri kapsayıcı görüntülerini ve diğer yapıtları derlemek ve sürdürmek için çeşitli senaryoları destekler. Ayrıntılar için bu makaledeki aşağıdaki bölümlere bakın.
+
+* **[Hızlı görev](#quick-task)** -tek bir kapsayıcı görüntüsünü oluşturun ve Azure 'da, yerel bir Docker altyapısı yüklemesine gerek kalmadan bir kapsayıcı kayıt defterine gönderin. `docker build` Buluta`docker push` göz önünde bulundurun.
+* **Otomatik tetiklenen görevler** -bir görüntü oluşturmak için bir veya daha fazla *tetikleyici* etkinleştirin:
+  * **[Kaynak kodu güncelleştirmesinde Tetikle](#trigger-task-on-source-code-update)** 
+  * **[Temel görüntü güncelleştirmesinde Tetikle](#automate-os-and-framework-patching)** 
+  * **[Bir zamanlamaya göre Tetikle](#schedule-a-task)** 
+* **[Çok adımlı görev](#multi-step-tasks)** -çok adımlı, çok Kapsayıcılı tabanlı iş akışlarıyla ACR görevlerinin tek görüntü derleme ve gönderme özelliğini genişletir. 
+
+Her bir ACR görevinin ilişkili bir [kaynak kodu bağlamı](#context-locations) vardır; bir kapsayıcı görüntüsü veya başka yapıt oluşturmak için kullanılan bir kaynak dosyaları kümesinin konumu. Örnek bağlamlar bir git deposu veya yerel bir dosya sistemi içerir.
+
+Görevler [çalışma değişkenlerinden](container-registry-tasks-reference-yaml.md#run-variables)de yararlanabilir, böylece görev tanımlarını yeniden kullanabilir ve görüntüler ve yapıtlar için etiketleri standartlaşabilirsiniz.
 
 ## <a name="quick-task"></a>Hızlı görev
 
@@ -44,12 +52,21 @@ ACR görevleri kapsayıcı yaşam döngüsü temel olarak tasarlanmıştır. Ör
 
 İlk ACR görevleri öğreticisinde hızlı görevleri nasıl kullanacağınızı öğrenin, [bulutta kapsayıcı görüntülerini Azure Container Registry görevlerle oluşturun](container-registry-tutorial-quick-task.md).
 
-## <a name="automatic-build-on-source-code-commit"></a>Kaynak kodu işlemede otomatik derleme
+> [!TIP]
+> Dockerfile olmadan doğrudan kaynak kodundan bir görüntü oluşturup göndermek istiyorsanız, Azure Container Registry [az ACR Pack Build][az-acr-pack-build] komutunu (Önizleme) sağlar. Bu araç, [bulut Yerel Buildpacks](https://buildpacks.io/)kullanarak uygulama kaynak kodundan bir görüntü oluşturur ve gönderir.
 
-Kod, GitHub veya Azure DevOps 'daki bir git deposuna işlendiği zaman bir kapsayıcı görüntüsü derlemesini otomatik olarak tetiklemek için ACR görevlerini kullanın. Derleme görevleri, Azure CLı komutu [az ACR göreviyle][az-acr-task]yapılandırılabilir, bir git deposu ve isteğe bağlı olarak bir dal ve Dockerfile belirtmenize izin verir. Takımınız depoya kod işleişlerse, ACR görevler tarafından oluşturulan bir Web kancası depoda tanımlanan kapsayıcı görüntüsünün derlemesini tetikler.
+## <a name="trigger-task-on-source-code-update"></a>Kaynak kodu güncelleştirmesinde tetikleme görevi
 
-> [!IMPORTANT]
-> Daha önce `az acr build-task` komutuyla önizleme sırasında görevler oluşturduysanız, bu görevlerin [az ACR Task][az-acr-task] komutu kullanılarak yeniden oluşturulması gerekir.
+Kod yürütüldüğü sırada bir kapsayıcı görüntüsü oluşturma veya çok adımlı bir görev veya GitHub ya da Azure DevOps 'daki bir git deposuna bir çekme isteği yapıldığında veya güncelleştirilirken tetiklenir. Örneğin, bir git deposu ve isteğe bağlı olarak bir dal ve Dockerfile belirterek Azure [CLI komutu ile][az-acr-task-create] bir derleme görevi yapılandırın. Takımınız depodaki kodu güncelleştirdiğinde, ACR görevler tarafından oluşturulan bir Web kancası depoda tanımlanan kapsayıcı görüntüsünün derlemesini tetikler. 
+
+ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşağıdaki Tetikleyicileri destekler:
+
+| Tetikleyici | Varsayılan olarak etkin |
+| ------- | ------------------ |
+| Yürüt | Evet |
+| Çekme isteği | Hayır |
+
+Tetikleyiciyi yapılandırmak için, bir kişisel erişim belirteci (PAT) görevini GitHub veya Azure DevOps deposunda bir Web kancasını ayarlamaya sağlarsınız.
 
 İkinci ACR görevleri öğreticisinde kaynak kodu işlemesinde derlemelerin nasıl tetikleneceğini öğrenin, [Azure Container Registry görevlerle kapsayıcı görüntüsü derlemelerini otomatikleştirin](container-registry-tutorial-build-task.md).
 
@@ -63,18 +80,26 @@ Bir işletim sistemi veya uygulama çerçevesi görüntüsü, örneğin, kritik 
 
 ACR görevleri bir kapsayıcı görüntüsü oluşturduğunda temel görüntü bağımlılıklarını dinamik olarak bulduğu için, bir uygulama görüntüsünün temel görüntüsünün ne zaman güncelleştirileceğini algılayabilir. Önceden yapılandırılmış bir [derleme göreviyle](container-registry-tutorial-base-image-update.md#create-a-task), ACR görevleri daha sonra **her uygulama görüntüsünü sizin için otomatik olarak yeniden oluşturur** . Bu otomatik algılama ve yeniden oluşturma ile, ACR görevleri, güncelleştirilmiş temel görüntenize başvuran her bir uygulama görüntüsünü el ile izlemek ve güncelleştirmek için normalde gereken zaman ve çabayı kaydeder.
 
-Bir ACR görevi, temel görüntü aşağıdaki konumlardan birinde olduğunda bir temel görüntü güncelleştirmesini izler:
+Dockerfile 'dan görüntü yapıları için, bir ACR görevi, temel görüntü aşağıdaki konumlardan birinde olduğunda bir temel görüntü güncelleştirmesini izler:
 
 * Görevin çalıştığı aynı Azure Container kayıt defteri
 * Aynı bölgedeki başka bir Azure Kapsayıcı kayıt defteri 
 * Docker Hub 'da ortak depo
 * Microsoft Container Registry genel depo
 
+> [!NOTE]
+> * Temel görüntü güncelleştirme tetikleyicisi bir ACR görevinde varsayılan olarak etkindir. 
+> * Şu anda ACR görevleri yalnızca uygulama (*çalışma zamanı*) görüntüleri için temel görüntü güncelleştirmelerini izler. ACR görevleri, çok aşamalı Dockerfiles 'da kullanılan ara (*buildtime*) görüntüleri için temel görüntü güncelleştirmelerini izlemez. 
+
 Üçüncü ACR görevleri öğreticisinde işletim sistemi ve çerçeve düzeltme eki uygulama hakkında daha fazla bilgi edinin. [Azure Container Registry görevlerle, temel görüntü güncelleştirme üzerinde görüntü derlemelerini otomatikleştirin](container-registry-tutorial-base-image-update.md).
+
+## <a name="schedule-a-task"></a>Görev zamanlama
+
+Görevi oluştururken veya güncelleştirdiğinizde bir veya daha fazla *Zamanlayıcı tetikleyicisi* ayarlayarak isteğe bağlı olarak bir görev zamanlayın. Bir görevi zamanlama, tanımlı bir zamanlamaya göre kapsayıcı iş yüklerini çalıştırmak veya düzenli olarak kayıt defterinize gönderilen görüntülerde bakım işlemleri ya da testler çalıştırmak için yararlıdır. Ayrıntılar için bkz. [tanımlı bir zamanlamaya göre ACR görevi çalıştırma](container-registry-tasks-scheduled.md).
 
 ## <a name="multi-step-tasks"></a>Çok adımlı görevler
 
-Çok adımlı görevler, bulutta kapsayıcı görüntüleri oluşturmak, test etmek ve düzeltme eki uygulamak için adım tabanlı görev tanımı ve yürütme sağlar. Görev adımları, tek tek kapsayıcı derleme ve gönderme işlemlerini tanımlar. Ayrıca, her adımın kapsayıcıyı kendi yürütme ortamı olarak kullanmasıyla bir veya daha fazla kapsayıcının yürütülmesini de tanımlayabilirler.
+Çok adımlı görevler, bulutta kapsayıcı görüntüleri oluşturmak, test etmek ve düzeltme eki uygulamak için adım tabanlı görev tanımı ve yürütme sağlar. [YAML dosyasında](container-registry-tasks-reference-yaml.md) tanımlanan görev adımları, kapsayıcı görüntüleri veya diğer yapıtlar için tek tek derleme ve gönderme işlemlerini belirtir. Ayrıca, her adımın kapsayıcıyı kendi yürütme ortamı olarak kullanmasıyla bir veya daha fazla kapsayıcının yürütülmesini de tanımlayabilirler.
 
 Örneğin, aşağıdakileri otomatikleştiren bir çok adımlı görev oluşturabilirsiniz:
 
@@ -114,7 +139,7 @@ Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi içi
 
 Her görev çalıştırması, görev adımlarının başarıyla çalışıp çalışmadığını belirleyebilmek için inceleyebileceğiniz günlük çıktısı üretir. Görevi tetiklemek için [az ACR Build](/cli/azure/acr#az-acr-build), [az ACR Run](/cli/azure/acr#az-acr-run)veya [az ACR Task Run](/cli/azure/acr/task#az-acr-task-run) komutunu kullanırsanız, görev çalıştırmasının günlük çıktısı konsola akışla kaydedilir ve ayrıca daha sonra almak üzere saklanır. Bir görev otomatik olarak tetiklendiğinde (örneğin, kaynak kodu kaydı veya temel görüntü güncelleştirmesi), görev günlükleri yalnızca depolanır. Azure portal çalışan bir görevin günlüklerini görüntüleyin veya [az ACR görev günlükleri](/cli/azure/acr/task#az-acr-task-logs) komutunu kullanın.
 
-2019 Temmuz 'dan başlayarak, bir kayıt defterindeki görev çalıştırmaları için veriler ve Günlükler varsayılan olarak 30 gün boyunca korunur ve sonra otomatik olarak temizlenir. Bir görev çalıştırmasının verilerini arşivlemek istiyorsanız, [az ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) komutunu kullanarak arşivlemeyi etkinleştirin. Aşağıdaki örnek, kayıt defteri *myregistry*içinde *CF11* çalıştırması görevi için arşivlemeyi mümkün bir şekilde sunar.
+Varsayılan olarak, bir kayıt defterindeki görev çalıştırmaları için veriler ve Günlükler 30 gün boyunca tutulur ve sonra otomatik olarak temizlenir. Bir görev çalıştırmasının verilerini arşivlemek istiyorsanız, [az ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) komutunu kullanarak arşivlemeyi etkinleştirin. Aşağıdaki örnek, kayıt defteri *myregistry*içinde *CF11* çalıştırması görevi için arşivlemeyi mümkün bir şekilde sunar.
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
@@ -122,7 +147,7 @@ az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bulutta kapsayıcı görüntülerinizi oluşturarak işletim sistemi ve çerçeve düzeltme eki uygulamayı otomatik hale getirmeye hazır olduğunuzda, üç bölümlü [ACR görevler öğretici serisini](container-registry-tutorial-quick-task.md)inceleyin.
+Bulutta kapsayıcı görüntüsü derlemelerini ve bakımını otomatik hale getirmeye hazır olduğunuzda [ACR görevler öğretici serisini](container-registry-tutorial-quick-task.md)inceleyin.
 
 İsteğe bağlı olarak [Visual Studio Code Için Docker uzantısını](https://code.visualstudio.com/docs/azure/docker) ve Azure Container Registry 'larınız ile birlikte çalışmak Için [Azure hesap](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) uzantısını yükler. Azure Container Registry 'ye görüntü çekme ve gönderme veya ACR görevlerini Visual Studio Code.
 
@@ -137,7 +162,9 @@ Bulutta kapsayıcı görüntülerinizi oluşturarak işletim sistemi ve çerçev
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task]: /cli/azure/acr
+[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
 [az-login]: /cli/azure/reference-index#az-login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 

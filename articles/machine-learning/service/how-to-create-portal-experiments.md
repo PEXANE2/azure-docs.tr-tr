@@ -1,7 +1,7 @@
 ---
 title: "& Dağıtım modellerini eğitmek için Azure 'un otomatikleştirilmiş ML arabirimini kullanın"
 titleSuffix: Azure Machine Learning service
-description: Azure portal otomatik makine öğrenimi denemeleri oluşturun, yönetin ve dağıtın
+description: Azure Machine Learning çalışma alanı giriş sayfasında (Önizleme) otomatik makine öğrenimi denemeleri oluşturun, yönetin ve dağıtın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,19 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 08/02/2019
-ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/09/2019
+ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860495"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910430"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal (Önizleme) içinde otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Azure Machine Learning çalışma alanı giriş sayfası (Önizleme) ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 
- Bu makalede, tek bir kod satırı olmadan Azure portal otomatik makine öğrenimi denemeleri oluşturmayı, keşfetmeye ve dağıtmayı öğreneceksiniz. Otomatik makine öğrenimi, belirli verileriniz için kullanılacak en iyi algoritmayı seçme sürecini otomatikleştirir, böylece bir makine öğrenimi modelini hızlıca oluşturabilirsiniz. [Otomatik makine öğrenimi hakkında daha fazla bilgi edinin](concept-automated-ml.md).
+ Bu makalede, tek bir kod satırı olmadan Azure Machine Learning çalışma alanı giriş sayfasında otomatik makine öğrenimi denemeleri oluşturmayı, keşfetmeye ve dağıtmayı öğreneceksiniz. Otomatik makine öğrenimi, belirli verileriniz için kullanılacak en iyi algoritmayı seçme sürecini otomatikleştirir, böylece bir makine öğrenimi modelini hızlıca oluşturabilirsiniz. [Otomatik makine öğrenimi hakkında daha fazla bilgi edinin](concept-automated-ml.md).
 
  Daha fazla kod tabanlı bir deneyim tercih ediyorsanız, [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile Python 'da da yapılandırabilirsiniz.
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -33,23 +32,26 @@ ms.locfileid: "70860495"
 
 ## <a name="get-started"></a>başlarken
 
-Çalışma alanınızın sol bölmesine gidin. Yazma (Önizleme) bölümünün altındaki otomatik Machine Learning seçin.
 
-![Azure portal gezinti bölmesi](media/how-to-create-portal-experiments/nav-pane.png)
+1. [Çalışma alanı giriş sayfasında](https://ml.azure.com/workspaceportal/)oturum açın. 
 
- Bu denemeleri ilk kez varsa **otomatik Machine Learning ekranına hoş geldiniz** ' i görürsünüz. 
+1. Aboneliğinizi ve çalışma alanınızı seçin. 
+
+1. Sol bölmeye gidin. **Yazma** bölümünün altında **Otomatik ml** ' yi seçin.
+
+[![Azure portal gezinti bölmesi](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+
+ Denemeleri ilk kez varsa, **kullanmaya başlama** ekranını görürsünüz. 
 
 Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik **makine öğrenimi panonuzun** tüm otomatik makine öğrenimi denemeleri hakkında genel bir bakış içeren bir genel bakış görürsünüz. Burada, çalıştırmaları Tarih, deneme adı ve çalışma durumu ile filtreleyebilir ve keşfedebilirsiniz.
 
-Ayrıca, otomatik Machine Learning [çalışma alanı giriş sayfasından da erişebilirsiniz (Önizleme)](https://ml.azure.com).
+## <a name="create-and-run-experiment"></a>Deneme oluşturma ve çalıştırma
 
-## <a name="create-an-experiment"></a>Deneme oluşturma
-
-**Deneme oluştur** ' u seçin ve **Yeni bir otomatik makine öğrenimi oluşturma deneme** formu doldurun.
+1. **Deneme oluştur** ' u seçin ve formu doldurun.
 
 1. Benzersiz bir deneme adı girin.
 
-1. Veri profili oluşturma ve eğitim işi için bir işlem seçin. Mevcut hesaplamalarınızın listesi açılan menüde bulunabilir. Yeni bir işlem oluşturmak için adım 3 ' teki yönergeleri izleyin.
+1. Veri profili oluşturma ve eğitim işi için bir işlem seçin. Mevcut hesaplamalarınızın listesi açılan menüde bulunabilir. Yeni bir işlem oluşturmak için 4. adımdaki yönergeleri izleyin.
 
 1. Bu deneme için işlem bağlamını yapılandırmak üzere **Yeni bir Işlem oluştur** ' u seçin.
 
@@ -58,32 +60,40 @@ Ayrıca, otomatik Machine Learning [çalışma alanı giriş sayfasından da eri
     İşlem adı| İşlem bağlamını tanımlayan benzersiz bir ad girin.
     Sanal makine boyutu| İşlem için sanal makine boyutunu seçin.
     Ek ayarlar| *En az düğüm*: İşlem için en az düğüm sayısını girin. AML işlem için düğüm sayısı alt sınırı 0 ' dır. Veri profilini oluşturmayı etkinleştirmek için, 1 veya daha fazla düğüme sahip olmanız gerekir. <br> *En fazla düğüm*: İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
+    
+    **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
 
-      **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
+    >[!NOTE]
+    > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](#profile) bölümü).
 
-      >[!NOTE]
-      > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Veri profili oluşturma hakkında daha fazla bilgi için bkz. 7B).
+1. Depolama kapsayıcıınızdan bir veri kümesi seçin veya yerel bilgisayarınızdan kapsayıcıya bir dosya yükleyerek bir tane oluşturun. Genel Önizleme yalnızca yerel dosya yüklemelerini ve Azure Blob depolama hesaplarını destekler.
 
-1. Verileriniz için bir depolama hesabı seçin. 
-
-1. Bir depolama kapsayıcısı seçin.
-
-1. Depolama kapsayıcıınızdan bir veri dosyası seçin veya yerel bilgisayarınızdaki bir dosyayı kapsayıcıya yükleyin. Genel Önizleme yalnızca yerel dosya yüklemelerini ve Azure Blob depolama hesaplarını destekler.
     >[!Important]
     > Eğitim verileri için gereksinimler:
     >* Verilerin tablolu biçimde olması gerekir.
     >* Tahmin etmek istediğiniz değer (hedef sütun) verilerde bulunmalıdır.
 
-    [![Veri dosyası seç](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
+    1. Yerel işlem yerinizdeki bir dosyadan yeni bir veri kümesi oluşturmak için, **Araştır** ' ı seçin ve ardından dosyayı seçin. 
 
-1. Bu deneme için verilerinizi daha fazla yapılandırmak üzere önizleme ve profil sekmelerini kullanın.
+    1. Veri kümenize benzersiz bir ad verin ve isteğe bağlı bir açıklama sağlayın. 
 
-    1. **Önizleme** sekmesinde, verilerinizin üstbilgiler içerip içermeyeceğini belirtin ve her bir özellik sütunundaki **dahil edilen** anahtar düğmelerini kullanarak eğitim için özellikleri (sütunlar) seçin.
+    1. Çalışma alanınızda otomatik olarak oluşturulan varsayılan depolama kapsayıcısına yüklemek için **İleri ' yi** seçin veya deneme için kullanmak istediğiniz bir depolama kapsayıcısını seçin. 
 
-    1. **Profil** sekmesinde, her birinin dağıtım, tür ve Özet istatistikleri (ortalama, ortanca, en fazla/en düşük vb.) ile [veri profilini](#profile) de görüntüleyebilirsiniz.
+    1. Doğruluk için **ayarları ve önizleme** formunu gözden geçirin. Form, dosya türüne göre akıllıca doldurulur. 
 
-        >[!NOTE]
-        > İşlem **içeriğiniz profil oluşturma** etkinleştirilmemişse aşağıdaki hata iletisi görüntülenir: *Veri profili oluşturma yalnızca zaten çalışmakta olan işlem hedefleri için kullanılabilir*.
+        Alan| Açıklama
+        ----|----
+        Dosya biçimi| Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.
+        Sınırlayıcı| Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter.
+        Encoding| Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.
+        Sütun üstbilgileri| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.
+    
+        **İleri**’yi seçin.
+
+    1. **Şema** formu, **Ayarlar ve önizleme** formundaki seçimlere göre akıllıca doldurulur. Burada her bir sütun için veri türünü yapılandırın, sütun adlarını gözden geçirin ve denemenize **dahil olmayan** sütunları seçin. 
+            
+        **İleri ' yi seçin.**
 
 1. Eğitim işi türünü seçin: sınıflandırma, regresyon veya tahmin.
 
@@ -94,7 +104,7 @@ Ayrıca, otomatik Machine Learning [çalışma alanı giriş sayfasından da eri
 
     1. Tahmin ufkunu seçin: Modelin kaç zaman birimi (dakika/saat/gün/hafta/ay/yıl) gelecek şekilde tahmin edemeyeceğini belirtin. Daha sonra modelin daha iyi tahmin edilmesi gerektiğinde, daha az doğru olacaktır. [Tahmin ve tahmin ufku hakkında daha fazla bilgi edinin](how-to-auto-train-forecast.md).
 
-1. Seçim Gelişmiş ayarlar: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar.
+1. Seçim Gelişmiş ayarlar: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
     Gelişmiş ayarlar|Açıklama
     ------|------
@@ -165,7 +175,7 @@ Eğitim işleri, her işlem hattının çalışmayı tamamlaması biraz zaman al
 
 Performans ölçümleri ve dağıtım grafikleri gibi eğitim çalıştırma ayrıntılarını görmek için çıkış modellerinin herhangi birinin detayına gidin. [Grafikler hakkında daha fazla bilgi edinin](how-to-understand-automated-ml.md).
 
-![Yineleme ayrıntıları](media/how-to-create-portal-experiments/iteration-details.png)
+[![Yineleme ayrıntıları](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
 ## <a name="deploy-your-model"></a>Modelinizi dağıtın
 
@@ -178,7 +188,8 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
     + Seçenek 1: En iyi modeli dağıtmak için (tanımladığınız ölçüm ölçütlerine göre), ayrıntıları Çalıştır sayfasından En Iyi modeli Dağıt ' ı seçin.
 
     + Seçenek 2: Bu deneyime ait belirli bir model yinelemesini dağıtmak için, modelin detayına gidin ve çalışma ayrıntısı sayfasını açın ve modeli Dağıt ' ı seçin.
-1. **Modeli dağıt** bölmesini doldurun,
+
+1. **Modeli dağıt** bölmesini doldurun.
 
     Alan| Value
     ----|----

@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097534"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933051"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansını ve güvenilirliğini iyileştirin
 
 Bu makale, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamalarınızın performansını ve güvenilirliğini artırmaya yönelik rehberlik sağlar. 
 
-## <a name="general-best-practices"></a>Genel en iyi yöntemler
+## <a name="general-best-practices"></a>Genel en iyi uygulamalar
 
 Azure Işlevleri 'ni kullanarak sunucusuz çözümlerinizi oluşturma ve mimarinizi geliştirme konusunda en iyi yöntemler aşağıda verilmiştir.
 
@@ -36,7 +36,7 @@ Mümkün olduğunda, büyük işlevleri birlikte çalışarak daha küçük işl
 
 ### <a name="cross-function-communication"></a>Çapraz işlev iletişimi
 
-[Dayanıklı işlevler](durable/durable-functions-concepts.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , durum geçişlerini ve birden çok işlev arasındaki iletişimi yönetmek için oluşturulmuştur.
+[Dayanıklı işlevler](durable/durable-functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , durum geçişlerini ve birden çok işlev arasındaki iletişimi yönetmek için oluşturulmuştur.
 
 Birden çok işlevle tümleştirilecek Dayanıklı İşlevler veya Logic Apps kullanmıyorsanız, genellikle çoklu işlev iletişimi için depolama kuyrukları kullanmak en iyi uygulamadır.  Ana neden, depolama kuyrukları ve sağlanması çok daha kolaydır. 
 

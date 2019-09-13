@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1ecdb80263efda4cbbb43caaa4e27a04b261f81
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989797"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931241"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
 
@@ -48,6 +48,15 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 - Premium (P1 veya P2) lisansıyla bir Active Directory kiracısı. [Premium lisans alma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)hakkında bilgi edinin.
 
 - [Log Analytics çalışma alanı](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+
+## <a name="roles"></a>Roller
+Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
+-   Genel Yönetici
+-   Güvenlik Yöneticisi
+-   Güvenlik Okuyucusu
+-   Rapor okuyucu
+-   Uygulama Yöneticisi
+
 
 ## <a name="workbook-access"></a>Çalışma kitabı erişimi 
 
@@ -136,7 +145,7 @@ Her eğilim için, uygulama ve protokole göre bir döküm alırsınız.
 ## <a name="sign-ins-by-conditional-access"></a>Koşullu erişime göre oturum açma işlemleri 
 
 
-Koşullu erişim [ilkelerine](../conditional-access/overview.md)göre oturum açma işlemleri için çalışma kitabına erişmek üzere koşullu erişim bölümünde , **koşullu erişime göre oturum açma**işlemlerini seçin. 
+Koşullu erişim [ilkelerine](../conditional-access/overview.md)göre oturum açma işlemleri için çalışma kitabına erişmek **üzere koşullu erişim bölümünde,** **koşullu erişime göre oturum açma**işlemlerini seçin. 
 
 Bu çalışma kitabı, devre dışı bırakılan oturum açma eğilimlerini gösterir. Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 

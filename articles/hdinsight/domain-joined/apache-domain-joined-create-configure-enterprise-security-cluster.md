@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: f83fbda9f211b094a95e557a6b9d727d508927bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 24c00d8d5db7c36746d68ad10edc4db4f76e0aac
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885837"
+ms.locfileid: "70918750"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
 
@@ -71,7 +71,7 @@ Genel Bakış: Bu bölümde, bu kılavuzun sonuna kadar HDInsight kümesine eri�
 
     1. **Active Directory Kullanıcıları ve bilgisayarları** ekranında,**Yeni** > **Kullanıcı** **eylem** > ' e tıklayın.
 
-        ![Yeni Active Directory kullanıcı oluştur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-user.png)
+        ![Yeni Active Directory kullanıcı oluştur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
     1. **Yeni nesne-Kullanıcı** ekranında `HDIUser` **Kullanıcı oturum açma adı** olarak girin ve **İleri**' ye tıklayın.
 
@@ -85,7 +85,7 @@ Genel Bakış: Bu bölümde, bu kılavuzun sonuna kadar HDInsight kümesine eri�
 
 1. **Active Directory Kullanıcıları ve bilgisayarları** ekranında **eylem** > **Yeni** > **Grup**' a tıklayın. Yeni `HDIUserGroup` bir grup olarak oluşturun.
 
-    ![Yeni Active Directory grubu oluştur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-group.png)
+    ![Yeni Active Directory grubu oluştur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
     ![Yeni grup2 oluştur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 

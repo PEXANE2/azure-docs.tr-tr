@@ -1,28 +1,27 @@
 ---
-title: Azure blok zinciri hizmeti 'nde akıllı sözleşmeleri kullanma
-description: Azure blok zinciri hizmeti 'ni kullanarak akıllı bir sözleşme dağıtmayı ve bir işlem aracılığıyla işlev yürütmeyi gösteren öğretici.
+title: Azure blok zinciri hizmeti 'ni kullanarak akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma
+description: Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme seti 'ni kullanma hakkında öğretici.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 09/10/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705122"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934929"
 ---
-# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmeti 'nde akıllı sözleşmeleri kullanma
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Öğretici: Akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanma
 
-Bu öğreticide, bir akıllı sözleşme oluşturup dağıtmak ve ardından bir konsorsiyum blok zinciri ağı üzerinde bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Ethereum için Azure blok zinciri geliştirme setini kullanacaksınız.
+Bu öğreticide, Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanın. Ayrıca bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Truffle kullanırsınız.
 
 Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsiniz:
 
 > [!div class="checklist"]
-> * Azure blok zinciri hizmeti konsorsiyum blok zinciri üyesine bağlanma
 > * Akıllı sözleşme oluşturma
 > * Akıllı sözleşme dağıtma
 > * Bir işlem aracılığıyla akıllı sözleşme işlevini yürütme
@@ -32,52 +31,11 @@ Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: Azure Portal](create-member.md) veya[hızlı başlangıcı kullanarak bir blok zinciri üyesi oluşturun: Azure CLı kullanarak Azure blok zinciri hizmeti blok zinciri üyesi oluşturma](create-member-cli.md)
-* [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js](https://nodejs.org)
-* [Git](https://git-scm.com)
-* [Python](https://www.python.org/downloads/release/python-2715/). Yolunuza Python. exe ' yi ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python gereklidir.
-* [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLı](https://github.com/trufflesuite/ganache-cli)
-
-### <a name="verify-azure-blockchain-development-kit-environment"></a>Azure blok zinciri geliştirme seti ortamını doğrulama
-
-Azure blok zinciri geliştirme seti, geliştirme ortamı önkoşullarının karşılandığını doğrular. Geliştirme ortamınızı doğrulamak için:
-
-VS Code komut paletinden Azure blok zinciri ' **ni seçin: Karşılama sayfasını**göster.
-
-Azure blok zinciri geliştirme seti, tamamlanmasının yaklaşık bir dakika süren bir doğrulama betiği çalıştırır. Bu çıktıyı, **terminal > yeni Terminal**' i seçerek görüntüleyebilirsiniz. Terminal menü çubuğunda, açılan menüde **Çıkış** sekmesini ve **Azure blok zincirini** seçin. Başarılı doğrulama aşağıdaki görüntüde olduğu gibi görünür:
-
-![Geçerli geliştirme ortamı](./media/send-transaction/valid-environment.png)
-
- Gerekli bir aracı eksik ise, **Azure blok zinciri geliştirme seti-önizleme** adlı yeni bir sekme, yüklenecek gerekli uygulamaları ve araçları indirmek için bağlantıları listeler.
-
-![Geliştirme Seti gerekli uygulamalar](./media/send-transaction/required-apps.png)
-
-## <a name="connect-to-consortium-member"></a>Consortium üyesine Bağlan
-
-Azure blok zinciri geliştirme seti VS Code uzantısını kullanarak, konsorsiyum üyelerine bağlanabilirsiniz. Bir konsorsiyumun bağlantısı kurulduktan sonra, akıllı sözleşmeleri bir Azure blok zinciri hizmeti Consortium üyesine derleyebilir, oluşturabilir ve dağıtabilirsiniz.
-
-Azure blok zinciri hizmeti Consortium üyesine erişiminiz yoksa, önkoşul [hızlı başlangıcı ' nı doldurun: Azure Portal](create-member.md) veya[hızlı başlangıcı kullanarak bir blok zinciri üyesi oluşturun: Azure CLı](create-member-cli.md)kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi oluşturun.
-
-1. Visual Studio Code (VS Code) gezgin bölmesinde, **Azure blok zinciri** uzantısını genişletin.
-1. **Konsorsiya Bağlan**' ı seçin.
-
-   ![Konsorsiyumun bağlantısını yapın](./media/send-transaction/connect-consortium.png)
-
-    Azure kimlik doğrulaması istenirse, bir tarayıcı kullanarak kimlik doğrulaması yapmak için istemleri izleyin.
-1. Komut paleti açılan menüsünde **Azure blok zinciri hizmeti Consortium 'A Bağlan** ' ı seçin.
-1. Azure blok zinciri hizmeti Consortium üyele ilişkili aboneliği ve kaynak grubunu seçin.
-1. Listeden Consortium ' ı seçin.
-
-Konsorsiyum ve blok zinciri üyeleri, Visual Studio Gezgini yan çubuğunda listelenir.
-
-![Gezgin 'de görünen konsorsiyum](./media/send-transaction/consortium-node.png)
+* [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
 
 ## <a name="create-a-smart-contract"></a>Akıllı sözleşme oluşturma
 
-Ethereum için Azure blok zinciri geliştirme seti, sözleşmeleri dolandırmaya, oluşturmaya ve dağıtmanıza yardımcı olmak için proje şablonları ve truffle araçlarını kullanır.
+Ethereum için Azure blok zinciri geliştirme seti, sözleşmeleri dolandırmaya, oluşturmaya ve dağıtmanıza yardımcı olmak için proje şablonları ve truffle araçlarını kullanır. Başlamadan önce önkoşul [hızlı başlangıcı ' nı doldurun: Azure blok zinciri hizmeti Consortium ağına](connect-vscode.md)bağlanmak için Visual Studio Code kullanın. Hızlı başlangıç, Ethereum için Azure blok zinciri geliştirme setini yükleme ve yapılandırma sürecinde size rehberlik eder.
 
 1. VS Code komut paletinden Azure blok zinciri ' **ni seçin: Yeni Solidity projesi**.
 1. **Temel proje oluştur**seçeneğini belirleyin.
@@ -107,7 +65,7 @@ Azure blok zinciri geliştirme seti, akıllı sözleşmeleri derlemek için Truf
 Truffle, sözleşmelerinizi bir Ethereum ağına dağıtmak için geçiş betikleri kullanır. Geçişler, projenin **geçiş** dizininde bulunan JavaScript dosyalarıdır.
 
 1. Akıllı sözleşmenizi dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin.
-1. **Truffle-config. js**altında Azure blok zinciri Konsorsiyumu ağınızı seçin. Projeyi oluştururken, konsorsiyum blok zinciri ağı projenin Truffle yapılandırma dosyasına eklendi.
+1. Komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin. Projeyi oluştururken, konsorsiyum blok zinciri ağı projenin Truffle yapılandırma dosyasına eklendi.
 1. **Anımsatıcı üret**' i seçin. Bir dosya adı seçin ve anımsatıcı dosyasını proje klasörüne kaydedin. Örneğin: `myblockchainmember.env`. Anımsatıcı dosyası, blok zinciri üyesiyseniz bir Ethereum özel anahtarı oluşturmak için kullanılır.
 
 Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak üzere geçiş betiğini yürütmek için Truffle kullanır.
@@ -173,7 +131,7 @@ Akıllı sözleşme işlevleri, durum değişkenlerinin geçerli değerini dönd
     İşlevi, sözleşmenin geçerli durumuna bağlı olarak bir durum değişkeninde depolanan iletiyi döndürür.
 
 1. Akıllı sözleşmede değişiklikleri derlemek için **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri derle** ' yi seçin.
-1. Dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin.
+1. Dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin. İstendiğinde, komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin.
 1. Sonra, **GetMessage** işlevini çağırmak için kullanarak bir betik oluşturun. Truffle projenizin kökünde yeni bir dosya oluşturun ve bunu `getmessage.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
 
     ```javascript

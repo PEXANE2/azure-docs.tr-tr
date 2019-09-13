@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019027"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934806"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenen SQL Server veritabanlarını yönetme ve izleme
 
@@ -140,6 +140,32 @@ Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL
 4. Korumalı sunucuya sağ tıklayın ve **kayıt kaldır**' ı seçin.
 
    ![Sil ' i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
+
+## <a name="modify-policy"></a>İlkeyi Değiştir
+Yedekleme sıklığını veya bekletme aralığını değiştirmek için ilkeyi değiştirin.
+
+> [!NOTE]
+> Saklama döneminde yapılan herhangi bir değişiklik, yeni olanlar da içinde olmak üzere daha eski kurtarma noktalarına daha geriye dönük olarak uygulanır.
+
+Kasa panosunda,**yedekleme ilkelerini** **Yönet** > ' e gidin ve düzenlemek istediğiniz ilkeyi seçin.
+
+  ![Yedekleme ilkesini Yönet](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![Yedekleme ilkesini değiştirme](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+İlke değişikliği, ilişkili tüm yedekleme öğelerini etkiler ve ilgili **yapılandırma koruma** işlerini tetikler. 
+
+#### <a name="inconsistent-policy"></a>Tutarsız Ilke 
+
+Bazen bir ilke değiştirme işlemi bazı yedekleme öğeleri için **tutarsız** bir ilke sürümüne yol açabilir. Bu durum, bir ilkeyi değiştir işlemi tetiklendikten sonra ilgili **yapılandırma koruma** işi yedekleme öğesi için başarısız olduğunda gerçekleşir. Yedekleme öğesi görünümünde şu şekilde görünür:
+ 
+  ![Tutarsız ilke](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+Etkilenen tüm öğelerin ilke sürümünü tek tıklamayla çözebilirsiniz:
+
+  ![Tutarsız ilkeyi çözme](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM uzantıyı yeniden Kaydet
 

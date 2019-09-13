@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73784afd9577d66850596056df1974accd62e4b4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844454"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882991"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directory (Azure AD) PowerShell cmdlet 'lerini kullanmaya yönelik yönergeler içerir. Bu içerik yalnızca Office 365 grupları için geçerlidir (bazen birleştirilmiş gruplar olarak adlandırılır). 
@@ -34,13 +34,31 @@ Office 365 grupları ayarları, bir ayarlar nesnesi ve bir SettingsTemplate nesn
 
 Cmdlet 'ler Azure Active Directory PowerShell V2 modülünün bir parçasıdır. Modülün bilgisayarınıza nasıl indirileceği ve yükleneceğine ilişkin yönergeler için [PowerShell sürüm 2 Azure Active Directory](https://docs.microsoft.com/powershell/azuread/)makalesine bakın. Modülün sürüm 2 sürümünü [PowerShell galerisinden](https://www.powershellgallery.com/packages/AzureAD/)yükleyebilirsiniz.
 
-## <a name="create-settings-at-the-directory-level"></a>Dizin düzeyinde ayarlar oluşturma
-Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulanan ayarları oluşturur. Get-AzureADDirectorySettingTemplate cmdlet 'i yalnızca [Graph Için Azure AD PowerShell önizleme modülünde](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)kullanılabilir.
+## <a name="install-powershell-cmdlets"></a>PowerShell cmdlet'lerini yükleme
 
-1. DirectorySettings cmdlet 'lerinde, kullanmak istediğiniz SettingsTemplate KIMLIĞINI belirtmeniz gerekir. Bu KIMLIĞI görmüyorsanız, bu cmdlet tüm ayarlar şablonlarının listesini döndürür:
+PowerShell komutlarını çalıştırmadan önce Windows PowerShell Graph için Azure Active Directory PowerShell Modülünün eski sürümlerini kaldırın ve [Graph için Azure Active Directory PowerShell - Genel Önizleme Sürümünü 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) yükleyin.
+
+1. Windows PowerShell uygulamasını yönetici olarak açın.
+2. Eski AzureADPreview sürümlerini kaldırın.
+  
+   ``` PowerShell
+   Uninstall-Module AzureADPreview
+   Uninstall-Module azuread
+   ```
+
+3. En son AzureADPreview sürümünü yükleyin.
+  
+   ``` PowerShell
+   Install-Module AzureADPreview
+
+## Create settings at the directory level
+These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
+
    ```
    Bu cmdlet çağrısı kullanılabilir tüm şablonları döndürür:
   

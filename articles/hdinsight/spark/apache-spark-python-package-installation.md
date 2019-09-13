@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: da871a1fed0663c5654ebcfd61f4189bf2267026
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814052"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900716"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark jupi Not defterleri için dış Python paketleri yüklemeye yönelik betik eylemi
 
@@ -97,7 +97,7 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
     Sonuç şöyle görünür:
     
-    ![TensorFlow kod yürütme](./media/apache-spark-python-package-installation/execution.png "TensorFlow kodunu yürütme")
+    ![TensorFlow kod yürütme](./media/apache-spark-python-package-installation/tensorflow-execution.png "TensorFlow kodunu yürütme")
 
 > [!NOTE]  
 > Kümede iki Python yüklemesi vardır. Spark, konumunda `/usr/bin/anaconda/bin` bulunan Anaconda Python yüklemesini kullanır ve Python 2,7 ortamında varsayılan olarak kullanılır. Python 3. x kullanmak ve PySpark3 çekirdeğine paket yüklemek için, bu ortam için `conda` yürütülebilir dosyanın yolunu kullanın ve ortamı belirtmek için `-n` parametresini kullanın. Örneğin, komutu `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, `ggplot` paketini `conda-forge` kanal kullanarak Python 3,5 ortamına yüklerse.

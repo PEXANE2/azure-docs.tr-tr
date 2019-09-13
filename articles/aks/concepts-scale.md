@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561561"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899482"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ölçeklendirme seçenekleri
 
@@ -51,7 +51,7 @@ Bu yarış olaylarını en aza indirmek için, coolaşağı veya Delay değerler
 
 ## <a name="cluster-autoscaler"></a>Küme otomatik Scaler
 
-Kubernetes 'in değişen Pod taleplerini, düğüm havuzundaki istenen işlem kaynaklarına bağlı olarak düğüm sayısını ayarlayan bir küme otomatik Scaler 'ı vardır. Varsayılan olarak, küme otomatik Scaler, düğüm sayısında gerekli değişiklikler için API sunucusunu her 10 saniyede bir denetler. Küme otomatik ölçeklendirme bir değişikliğin gerekli olduğunu belirlerse, AKS kümenizdeki düğümlerin sayısı göre artar veya azaltılır. Küme otomatik yüklemesi, Kubernetes 1,10. x veya üstünü çalıştıran RBAC özellikli AKS kümeleriyle çalışır.
+Kubernetes 'in değişen Pod taleplerini, düğüm havuzundaki istenen işlem kaynaklarına bağlı olarak düğüm sayısını ayarlayan bir küme otomatik Scaler 'ı vardır. Varsayılan olarak, küme otomatik Scaler, düğüm sayısında gerekli değişiklikler için ölçüm API sunucusunu her 10 saniyede bir denetler. Küme otomatik ölçeklendirme bir değişikliğin gerekli olduğunu belirlerse, AKS kümenizdeki düğümlerin sayısı göre artar veya azaltılır. Küme otomatik yüklemesi, Kubernetes 1,10. x veya üstünü çalıştıran RBAC özellikli AKS kümeleriyle çalışır.
 
 ![Kubernetes kümesi otomatik Scaler](media/concepts-scale/cluster-autoscaler.png)
 

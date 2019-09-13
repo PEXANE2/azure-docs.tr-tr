@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: fbee98d64d37b2cdfc515eb733324902e238a768
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: ba3a30328df488dfe79bf445da550b5c96019081
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383100"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933494"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
 [Dayanıklı işlevler](durable-functions-overview.md) uzantısı, Orchestrator ve etkinlik işlevlerinin yürütülmesini denetleyen iki yeni tetikleyici bağlama sunar. Ayrıca, Dayanıklı İşlevler çalışma zamanı için istemci görevi gören bir çıkış bağlaması da sunar.
 
-## <a name="orchestration-triggers"></a>Düzenleme Tetikleyicileri
+## <a name="orchestration-trigger"></a>Düzenleme tetikleyicisi
 
-Orchestration tetikleyicisi, dayanıklı Orchestrator işlevlerini yazmanıza olanak sağlar. Bu tetikleyici, yeni Orchestrator işlev örneklerinin başlamasını ve "bekleyen" bir görevi olan mevcut Orchestrator işlev örneklerinin devam ettirmeyi destekler.
+Orchestration tetikleyicisi, [dayanıklı Orchestrator işlevlerini](durable-functions-types-features-overview.md#orchestrator-functions)yazmanıza olanak sağlar. Bu tetikleyici, yeni Orchestrator işlev örneklerinin başlamasını ve "bekleyen" bir görevi olan mevcut Orchestrator işlev örneklerinin devam ettirmeyi destekler.
 
 Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda Orchestration tetikleyicisi, [Orchestrationtriggerattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .net özniteliği kullanılarak yapılandırılır.
 
@@ -65,7 +65,7 @@ Düzenleme tetikleyicisi bağlaması hem giriş hem de çıkışları destekler.
 
 ### <a name="trigger-sample"></a>Tetikleyici örneği
 
-Aşağıda, en basit "Merhaba Dünya" Orchestrator işlevinin nasıl görünebileceğini bir örnek verilmiştir:
+Aşağıdaki örnek kod, en basit "Merhaba Dünya" Orchestrator işlevinin nasıl görünebileceğini göstermektedir:
 
 #### <a name="c"></a>C#
 
@@ -90,7 +90,7 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> JavaScript içindeki nesne, durableorchestrationcontext, ancak [işlev bağlamını bir bütün olarak temsil etmez.](../functions-reference-node.md#context-object) `context` Düzenleme yöntemlerine `context` `df` nesnenin özelliği aracılığıyla erişebilirsiniz.
+> JavaScript içindeki nesne, durableorchestrationcontext, ancak [işlev bağlamını bir bütün olarak](../functions-reference-node.md#context-object)temsil etmez. `context` Düzenleme yöntemlerine `context` `df` nesnenin özelliği aracılığıyla erişebilirsiniz.
 
 > [!NOTE]
 > JavaScript düzenleyicilerinin kullanması `return`gerekir. `durable-functions` Kitaplık ,`context.done` yöntemi çağırma işlemini gerçekleştirir.
@@ -122,9 +122,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="activity-triggers"></a>Etkinlik Tetikleyicileri
+## <a name="activity-trigger"></a>Etkinlik tetikleyicisi
 
-Etkinlik tetikleyicisi, Orchestrator işlevleri tarafından çağrılan işlevleri yazmanıza olanak sağlar.
+Etkinlik tetikleyicisi, [etkinlik işlevleri](durable-functions-types-features-overview.md#activity-functions)olarak bilinen Orchestrator işlevleri tarafından çağrılan işlevleri yazmanıza olanak sağlar.
 
 Visual Studio kullanıyorsanız, etkinlik tetikleyicisi [Activitytriggerattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .net özniteliği kullanılarak yapılandırılır.
 
@@ -139,7 +139,7 @@ Geliştirme için vs Code veya Azure Portal kullanıyorsanız, etkinlik tetikley
 }
 ```
 
-* `activity`etkinliğin adıdır. Bu, Orchestrator işlevlerinin bu etkinlik işlevini çağırmak için kullandığı değerdir. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
+* `activity`etkinliğin adıdır. Bu değer, Orchestrator işlevlerinin bu etkinlik işlevini çağırmak için kullandığı addır. Bu özellik isteğe bağlıdır. Belirtilmemişse, işlevin adı kullanılır.
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir kuyruğu yoklar. Bu kuyruk, uzantının iç uygulama ayrıntısı olduğundan, bağlama özelliklerinde açıkça yapılandırılmamış olabilir.
 
@@ -165,7 +165,7 @@ Etkinlik tetikleyicisi bağlaması, tıpkı düzenleme tetikleyicisi gibi giriş
 
 ### <a name="trigger-sample"></a>Tetikleyici örneği
 
-Aşağıda basit bir "Merhaba Dünya" etkinlik işlevinin nasıl görünebileceğini bir örnek verilmiştir:
+Aşağıdaki örnek kod, basit bir "Merhaba Dünya" Activity işlevinin nasıl görünebileceğini göstermektedir:
 
 #### <a name="c"></a>C#
 
@@ -204,43 +204,6 @@ module.exports = async function(context, name) {
 };
 ```
 
-### <a name="passing-multiple-parameters"></a>Birden çok parametre geçirme
-
-Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değildir. Bu durumda, bir dizi nesnenin veya .NET 'teki [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini kullanmanın önerisi.
-
-Aşağıdaki örnek, [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)ile eklenen [valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
-
-```csharp
-[FunctionName("GetCourseRecommendations")]
-public static async Task<dynamic> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
-{
-    string major = "ComputerScience";
-    int universityYear = context.GetInput<int>();
-
-    dynamic courseRecommendations = await context.CallActivityAsync<dynamic>("CourseRecommendations", (major, universityYear));
-    return courseRecommendations;
-}
-
-[FunctionName("CourseRecommendations")]
-public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContext inputs)
-{
-    // parse input for student's major and year in university
-    (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();
-
-    // retrieve and return course recommendations by major and university year
-    return new {
-        major = studentInfo.Major,
-        universityYear = studentInfo.UniversityYear,
-        recommendedCourses = new []
-        {
-            "Introduction to .NET Programming",
-            "Introduction to Linux",
-            "Becoming an Entrepreneur"
-        }
-    };
-}
-```
 
 ### <a name="using-input-and-output-bindings"></a>Giriş ve çıkış bağlamalarını kullanma
 
@@ -273,7 +236,7 @@ module.exports = async function (context) {
 
 ## <a name="orchestration-client"></a>Orchestration istemcisi
 
-Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen işlevler yazmanızı sağlar. Örneğin, düzenleme örnekleri üzerinde aşağıdaki yollarla işlem yapabilirsiniz:
+Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen işlevler yazmanızı sağlar. Bu işlevler bazen [istemci işlevleri](durable-functions-types-features-overview.md#client-functions)olarak adlandırılır. Örneğin, düzenleme örnekleri üzerinde aşağıdaki yollarla işlem yapabilirsiniz:
 
 * Bunları başlatın.
 * Durumlarını sorgulayın.
@@ -281,9 +244,9 @@ Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen
 * Olayları çalışırken onlara gönderin.
 * Örnek geçmişini temizle.
 
-Visual Studio kullanıyorsanız, düzenleme istemcisine [Orchestrationclientattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .net özniteliğini kullanarak bağlanabilirsiniz.
+Visual Studio kullanıyorsanız, Dayanıklı İşlevler 1,0 için [Orchestrationclientattribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz. Dayanıklı işlevler 2,0 önizlemeden başlayarak, `DurableClientAttribute` .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz.
 
-Geliştirme için betik dilleri (örn. *CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -303,20 +266,17 @@ Geliştirme için betik dilleri (örn. *CSX* veya *. js* dosyaları) kullanıyor
 
 ### <a name="client-usage"></a>İstemci kullanımı
 
-.Net işlevlerinde, genellikle dayanıklı işlevler tarafından desteklenen tüm `DurableOrchestrationClient`istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. JavaScript 'te, aynı API 'ler tarafından `DurableOrchestrationClient` `getClient`döndürülen nesne tarafından gösterilir. İstemci nesnesindeki API 'Ler şunları içerir:
+.Net işlevlerinde, genellikle dayanıklı işlevler tarafından desteklenen tüm `DurableOrchestrationClient`istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Dayanıklı işlevler 2,0 ' den başlayarak `IDurableOrchestrationClient` arabirimine bağlayın. JavaScript 'te, aynı API 'Ler tarafından döndürülen `getClient`nesne tarafından gösterilir. İstemci nesnesindeki API 'Ler şunları içerir:
 
 * [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
 * [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
 * [Sonlandırateasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
 * [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
-* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_) (Şu anda yalnızca .NET)
+* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_)
 
 Alternatif olarak, .net işlevleri `IAsyncCollector<T>` [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) veya `JObject`olduğu yere `T` bağlanabilir.
 
-Bu işlemlerle ilgili ek ayrıntılar için bkz. [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API 'si belgeleri.
-
-> [!WARNING]
-> JavaScript 'te yerel olarak geliştirme yaparken, ortam değişkenini `WEBSITE_HOSTNAME` `localhost:<port>`, EX olarak ayarlamanız gerekir. `localhost:7071`üzerinde `DurableOrchestrationClient`yöntemleri kullanmak için. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+Bu işlemler hakkında daha fazla bilgi için bkz. [Durableorchestrationclient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API 'si belgeleri.
 
 ### <a name="client-sample-visual-studio-development"></a>İstemci örneği (Visual Studio geliştirme)
 
@@ -385,6 +345,206 @@ module.exports = async function (context) {
 
 [Örnek yönetimi](durable-functions-instance-management.md)'nde, başlatma örnekleri hakkında daha fazla ayrıntı bulunabilir.
 
+## <a name="entity-trigger"></a>Varlık tetikleyicisi
+
+Varlık Tetikleyicileri, [varlık işlevleri](durable-functions-entities.md)yazmanıza izin verir. Bu tetikleyici belirli bir varlık örneği için olayları işlemeyi destekler.
+
+Azure işlevleri için Visual Studio Araçları 'nı kullandığınızda, varlık tetikleyicisi `EntityTriggerAttribute` .net özniteliği kullanılarak yapılandırılır.
+
+> [!NOTE]
+> Varlık Tetikleyicileri Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir. Varlık Tetikleyicileri henüz JavaScript için kullanılabilir değil.
+
+Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
+
+### <a name="trigger-behavior"></a>Tetikleme davranışı
+
+Varlık tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
+
+* **Tek iş parçacıklı**: Belirli bir varlığa yönelik işlemleri işlemek için tek bir dağıtıcı iş parçacığı kullanılır. Aynı anda birden fazla ileti tek bir varlığa gönderilirse, işlemler bir kerelik olarak işlenir.
+* **Zehirli ileti işleme** -varlık tetikleyicilerinde bir zarar iletisi desteği yoktur.
+* **İleti görünürlüğü** -varlık tetikleyici iletileri kuyruğa alınır ve yapılandırılabilir bir süre boyunca görünmez tutulur. İşlev uygulaması çalıştığı ve sağlıklı olduğu sürece bu iletilerin görünürlüğü otomatik olarak yenilenir.
+* **Dönüş değerleri** -varlık işlevleri dönüş değerlerini desteklemiyor. Durumu kaydetmek veya değerleri düzenlemeye geri geçirmek için kullanılabilecek belirli API 'Ler vardır.
+
+Yürütme işlemi sırasında bir varlıkta yapılan herhangi bir durum değişikliği, yürütme tamamlandıktan sonra otomatik olarak kalıcı hale getirilir.
+
+### <a name="trigger-usage-net"></a>Kullanım tetiklemesi (.NET)
+
+Her varlık işlevinin `IDurableEntityContext`, aşağıdaki üyelere sahip olan parametre türü vardır:
+
+* **EntityName**: Yürütülmekte olan varlığın adını alır.
+* **EntityKey**: Yürütülmekte olan varlığın anahtarını alır.
+* **EntityId**: Yürütülmekte olan varlığın KIMLIĞINI alır.
+* **OperationName**: geçerli işlemin adını alır.
+* **Inewlyinşa**: varlık `true` işlemden önce yoksa, döndürür.
+* **GetState\<TState > ()** : varlığın geçerli durumunu alır. `TState` Parametre bir ilkel veya JSON seri hale getirilen tür olmalıdır.
+* **Setstate (nesne)** : varlığın durumunu güncelleştirir. `object` Parametre bir ilkel veya JSON-serializlenebilir nesne olmalıdır.
+* **Getınput\<TInput > ()** : geçerli işlem için girişi alır. `TInput` Tür parametresi basit veya JSON seri hale getirilen bir türü temsil etmelidir.
+* **Return (nesne)** : işlemi çağıran düzenleme için bir değer döndürür. `object` Parametre bir ilkel veya JSON-serializlenebilir nesne olmalıdır.
+* **Yeniden dönüşlü şekilde**: geçerli işlem bittikten sonra varlığı siler.
+* **İmza (EntityId, dize, nesne)** : bir varlığa tek yönlü bir ileti gönderir. `object` Parametre bir ilkel veya JSON-serializlenebilir nesne olmalıdır.
+
+Sınıf tabanlı varlık programlama modunu kullanırken, `IDurableEntityContext` nesnesine `Entity.Current` thread-static özelliği kullanılarak başvurulabilir.
+
+### <a name="trigger-sample---entity-function"></a>Tetikleyici örneği-varlık işlevi
+
+Aşağıdaki kod, standart bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `get` `add` `reset` herbiribirtamsayıdurumdeğeriüzerindeçalışanüçişlem,,,ve`currentValue`tanımlar.
+
+```csharp
+[FunctionName(nameof(Counter))]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+
+    switch (ctx.OperationName.ToLowerInvariant())
+    {
+        case "add":
+            int amount = ctx.GetInput<int>();
+            currentValue += operand;
+            break;
+        case "reset":
+            currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+### <a name="trigger-sample---entity-class"></a>Tetikleyici örneği-varlık sınıfı
+
+Aşağıdaki örnek, önceki `Counter` varlığın .NET sınıfları ve yöntemlerini kullanarak eşdeğer bir uygulamasıdır.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
+}
+```
+
+> [!NOTE]
+> Varlık sınıfları kullanılırken `[FunctionName]` özniteliği olan işlev giriş noktası *yöntemi bildirilmelidir.* `static` Statik olmayan giriş noktası yöntemleri, birden fazla nesne başlatmaya ve olasılıkla diğer tanımsız davranışlara neden olabilir.
+
+Varlık sınıfları bağlamalarla ve .NET bağımlılığı ekleme ile etkileşim kurmak için özel mekanizmalarda yer vardır. Daha fazla bilgi için bkz. [dayanıklı varlıklar](durable-functions-entities.md) makalesi.
+
+## <a name="entity-client"></a>Varlık istemcisi
+
+Varlık istemci bağlaması, [varlık işlevlerini](#entity-trigger)zaman uyumsuz olarak tetiklemenize olanak sağlar. Bu işlevler bazen [istemci işlevleri](durable-functions-types-features-overview.md#client-functions)olarak adlandırılır.
+
+Visual Studio kullanıyorsanız, `DurableClientAttribute` .net özniteliğini kullanarak Entity Client 'a bağlanabilirsiniz.
+
+> [!NOTE]
+> Orchestration istemcisine bağlamak için de kullanılabilir. [](#orchestration-client) `[DurableClientAttribute]`
+
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+
+```json
+{
+    "name": "<Name of input parameter in function signature>",
+    "taskHub": "<Optional - name of the task hub>",
+    "connectionName": "<Optional - name of the connection string app setting>",
+    "type": "durableClient",
+    "direction": "out"
+}
+```
+
+* `taskHub`-Birden çok işlevli uygulamanın aynı depolama hesabını paylaştığı ancak birbirinden yalıtılması gereken senaryolarda kullanılır. Belirtilmemişse, varsayılan değer `host.json` kullanılır. Bu değer, hedef varlık işlevleri tarafından kullanılan değerle eşleşmelidir.
+* `connectionName`-Depolama hesabı bağlantı dizesi içeren bir uygulama ayarının adı. Bu bağlantı dizesi tarafından temsil edilen depolama hesabı, hedef varlık işlevleri tarafından kullanılan bir aynı olmalıdır. Belirtilmemişse, işlev uygulaması için varsayılan depolama hesabı bağlantı dizesi kullanılır.
+
+> [!NOTE]
+> Çoğu durumda, isteğe bağlı özellikleri atlamanızı ve varsayılan davranışa güvenmenizi öneririz.
+
+### <a name="entity-client-usage"></a>Varlık istemci kullanımı
+
+.Net işlevlerinde, genellikle, dayanıklı varlıkların desteklediği `IDurableEntityClient`tüm istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Ayrıca, her iki varlık ve `IDurableClient` düzenleme için istemci API 'lerine erişim sağlayan arabirimine de bağlanabilirsiniz. İstemci nesnesindeki API 'Ler şunları içerir:
+
+* **Readentitystateasync\<T >** : bir varlığın durumunu okur.
+* **Tiflentityasync**: bir varlığa tek yönlü bir ileti gönderir ve kuyruğa alınıp alınmasını bekler.
+* **Tiflentityasync\<TEntityInterface >** : ile `SignalEntityAsync` aynıdır, ancak türünde `TEntityInterface`oluşturulan bir proxy nesnesi kullanır.
+* **Createentityproxy\<TEntityInterface >** : dinamik olarak, varlıklara tür açısından güvenli `TEntityInterface` çağrılar yapmak için türünde dinamik bir ara sunucu oluşturur.
+
+> [!NOTE]
+> Önceki "sinyal" işlemlerinin tümünün zaman uyumsuz olduğunu anlamak önemlidir. Bir varlık işlevini çağırmak ve bir istemciden dönüş değeri geri almak mümkün değildir. `SignalEntityAsync` Benzer şekilde, varlık işlemi yürütmeye başlamadan önce döndürebilir. Yalnızca Orchestrator işlevleri, varlık işlevlerini eşzamanlı olarak çağırabilir ve dönüş değerlerini işleyebilir.
+
+API `SignalEntityAsync` 'ler, varlığın benzersiz tanımlayıcısının bir `EntityId`olarak belirtilmesini gerektirir. Bu API 'ler Ayrıca, isteğe bağlı olarak `string` varlık işleminin adını ve işlemin yükünü JSON-serializlenebilir `object`olarak alır. Hedef varlık yoksa, belirtilen varlık KIMLIĞIYLE otomatik olarak oluşturulur.
+
+### <a name="client-sample-untyped"></a>İstemci örneği (türsüz)
+
+Aşağıda, bir "Counter" varlığı çağıran, kuyruğa geçirilmiş örnek bir işlev verilmiştir.
+
+```csharp
+[FunctionName("AddFromQueue")]
+public static Task Run(
+    [QueueTrigger("durable-function-trigger")] string input,
+    [DurableClient] IDurableEntityClient client)
+{
+    // Entity operation input comes from the queue message content.
+    var entityId = new EntityId(nameof(Counter), "myCounter");
+    int amount = int.Parse(input);
+    return client.SignalEntityAsync(entityId, "Add", amount);
+}
+```
+
+### <a name="client-sample-typed"></a>İstemci örneği (yazılan)
+
+Varlık işlemlerine güvenli tür erişimi için bir proxy nesnesi oluşturmak mümkündür. Tür açısından güvenli bir ara sunucu oluşturmak için varlık türünün bir arabirim uygulaması gerekir. Örneğin, daha önce bahsedilen `Counter` varlığın aşağıdaki gibi tanımlanmış bir `ICounter` arabirim uyguladığını varsayalım:
+
+```csharp
+public interface ICounter
+{
+    void Add(int amount);
+    void Reset();
+    int Get();
+}
+
+public class Counter : ICounter
+{
+    // ...
+}
+```
+
+İstemci kodu daha sonra kullanabilir `SignalEntityAsync<TEntityInterface>` ve bir tür `ICounter` güvenli proxy oluşturmak için tür parametresi olarak arabirimi belirtebilir. Tür açısından güvenli proxy 'lerin bu kullanımı, aşağıdaki kod örneğinde gösterilmiştir:
+
+```csharp
+[FunctionName("UserDeleteAvailable")]
+public static async Task AddValueClient(
+    [QueueTrigger("my-queue")] string message,
+    [DurableClient] IDurableEntityClient client)
+{
+    var target = new EntityId(nameof(Counter), "myCounter");
+    int amount = int.Parse(message);
+    await client.SignalEntityAsync<ICounter>(target, proxy => proxy.Add(amount));
+}
+```
+
+Önceki örnekte, `proxy` parametresi, `Add` çağrısını iç olarak eşdeğer (türsüz) `ICounter`çağrıya `SignalEntityAsync`çeviren, dinamik olarak üretilmiş bir örneğidir.
+
+Varlık arabirimlerini tanımlamaya yönelik birkaç kural vardır:
+
+* `TEntityInterface` İçindeki`SignalEntityAsync<TEntityInterface>` tür parametresi bir arabirim olmalıdır.
+* Varlık arabirimleri yalnızca yöntemleri tanımlamalıdır.
+* Varlık arabirimi yöntemleri birden fazla parametre tanımlamalıdır.
+* Varlık arabirimi yöntemleri, bir `void`dönüş `Task`değeri döndürmelidir `Task<T>` , `T` veya burada yer almalıdır.
+* Varlık arabirimleri aynı derleme içinde (yani, Entity sınıfı) tam olarak bir somut uygulama sınıfına sahip olmalıdır.
+
+Bu kurallardan herhangi biri ihlal edilirse, çalışma zamanında `InvalidOperationException` bir oluşturulur. Özel durum iletisi hangi kuralın bozulduğunu açıklayacak.
+
+> [!NOTE]
+> `SignalEntityAsync` API 'ler tek yönlü işlemleri temsil eder. Bir varlık arabirimleri döndürürse `Task<T>`, `T` parametresinin değeri her zaman null veya `default`olur.
+
 <a name="host-json"></a>
 
 ## <a name="hostjson-settings"></a>Host.JSON ayarları
@@ -394,4 +554,4 @@ module.exports = async function (context) {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Checkişaret ve yeniden yürütme davranışları hakkında bilgi edinin](durable-functions-checkpointing-and-replay.md)
+> [Örnek yönetimi için yerleşik HTTP API başvurusu](durable-functions-http-api.md)

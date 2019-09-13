@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382936"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915989"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Uygulama parolalarını güvenlik bilgileriniz (Önizleme) sayfasından yönetin
 
@@ -30,11 +30,9 @@ Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu 
 
 Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
-- Uygulama parolaları otomatik olarak oluşturulur ve uygulama başına yalnızca bir kez girilir.
+- Uygulama parolaları otomatik olarak oluşturulur ve uygulama başına bir kez oluşturulup girilmelidir.
 
 - Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmayı denerseniz, yenisini oluşturmaya izin verilmeden önce mevcut bir parolayı silmeniz istenir.
-
-- Her uygulama için değil, cihaz başına bir uygulama parolası kullanın. Örneğin, dizüstü bilgisayarınızdaki tüm uygulamalar için tek bir parola ve masaüstünüzdeki tüm uygulamalar için tek bir parola oluşturun.
 
     >[!Note]
     >Office 2013 istemcileri (Outlook dahil) yeni kimlik doğrulama protokollerini destekler ve iki adımlı doğrulama ile kullanılabilir. Bu destek, iki adımlı doğrulama etkinleştirildikten sonra Office 2013 istemcileri için uygulama parolalarına gerek kalmaz. Daha fazla bilgi için bkz. [office 2013 ve office 2016 istemci uygulamalarında modern kimlik doğrulaması nasıl kullanılır](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) makalesi.

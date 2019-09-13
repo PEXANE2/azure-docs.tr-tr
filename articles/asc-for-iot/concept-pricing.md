@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596524"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933797"
 ---
 # <a name="pricing-and-associated-costs"></a>Fiyatlandırma ve ilişkili maliyetler
 
@@ -28,7 +28,7 @@ Bu makalede IoT fiyatlandırma modeli için Azure Güvenlik Merkezi açıklanır
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-IoT fiyatlandırma modeli için Azure Güvenlik Merkezi, iki bölümden oluşur ve IoT için Azure Güvenlik [Merkezi 'nde IoT Hub](quickstart-onboard-iot-hub.md) etkinleştirildikten sonra faturalandırılır:
+IoT fiyatlandırma modeli için Azure Güvenlik Merkezi, iki bölümden oluşur ve IoT için Azure Güvenlik [Merkezi 'nde IoT Hub etkinleştirildikten sonra](quickstart-onboard-iot-hub.md) faturalandırılır:
 
 - Cihaz, IoT Hub günlüklerin analizine dayalı olarak yerleşik güvenlik özelliklerine göre maliyetlidir.
 
@@ -66,9 +66,10 @@ Aşağıdaki tabloda, her bir seçeneğin ilişkili maliyetlerinin ve etkilerine
 | **Log Analytics depolama** |  |
 | Cihaz önerisi ve uyarılar| Hizmet tarafından oluşturulan güvenlik önerisi ve uyarılar | İsteğe bağlı değil |
 | Ham güvenlik verileri| Güvenlik aracıları tarafından toplanan IoT cihazlarından gelen ham güvenlik verileri | _Depo ham cihaz güvenlik olaylarını_ devre dışı bırak |
+|
 
 >[!Important]
-> Kullanıma alma, kullanılabilir güvenlik özelliklerinin ciddi etkileri vardır.
+> Azure Güvenlik Merkezi 'Nde IoT güvenlik özelliği kullanılabilirliği için önemli etkileri vardır. 
   
 | Ayrıl | Etkileri |
 | --- | --- |

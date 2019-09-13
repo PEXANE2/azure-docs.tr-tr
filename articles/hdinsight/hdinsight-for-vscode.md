@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 226862c51417e311bc39feefa9f5e860d55b7dc1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 51f0e223abd7103663fddd8c06dcdf0be549c671
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034100"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930773"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -56,7 +56,7 @@ Bir iş klasörü açmak ve Visual Studio Code bir dosya oluşturmak için aşa�
 
 2. **Gezgin** görünümü ' nde, **hdexas** klasörünü seçin ve sonra Iş klasörünün yanındaki **yeni dosya** simgesini seçin:
 
-   ![Yeni dosya](./media/hdinsight-for-vscode/new-file.png)
+   ![Yeni dosya](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. `.hql` (Hive sorguları) `.py` ya da (Spark betiği) dosya uzantısını kullanarak yeni dosyayı adlandırın. Bu örnek **HelloWorld. HQL**kullanır.
 
@@ -131,7 +131,7 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 3. **Çıktı** görünümünü gözden geçirin. Bu görünüm, bağlantılı kümenizi (veya kümelerinizi) ve Azure aboneliğinizdeki tüm kümeleri gösterir:
 
-    ![Varsayılan küme yapılandırması ayarlama](./media/hdinsight-for-vscode/list-cluster-result.png)
+    ![Varsayılan küme yapılandırması ayarlama](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Varsayılan kümeyi ayarlama
 
@@ -280,7 +280,7 @@ Bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klasörüne ekl
 
 + Proje ayarları:
 
-    ![Livy yapılandırması](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+    ![Livy yapılandırması](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
     >**Drivermemory** ve **executormemory** ayarları için değeri ve birimi ayarlayın. Örneğin: 1G veya 1024m.
@@ -292,19 +292,19 @@ Bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klasörüne ekl
 
     | name | description | type | 
     | :- | :- | :- | 
-    | file | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
+    | file | Yürütülecek uygulamayı içeren dosya | yol (gerekli) |
     | proxyUser | İşi çalıştırırken taklit edilecek Kullanıcı | Dize |
     | Sınıf | Uygulama Java/Spark ana sınıfı | Dize |
-    | args | Uygulama için komut satırı bağımsız değişkenleri | Dizelerin listesi |
-    | jars | Bu oturumda kullanılacak jars | Dizelerin listesi | 
-    | pyFiles | Bu oturumda kullanılacak Python dosyaları | Dizelerin listesi |
-    | dosyaları | Bu oturumda kullanılacak dosyalar | Dizelerin listesi |
+    | args | Uygulama için komut satırı bağımsız değişkenleri | dizelerin listesi |
+    | jars | Bu oturumda kullanılacak jar dosyaları dışındaki | dizelerin listesi | 
+    | pyFiles | Bu oturumda kullanılacak Python dosyaları | dizelerin listesi |
+    | dosyaları | Bu oturumda kullanılacak dosyalar | dizelerin listesi |
     | driverMemory | Sürücü işlemi için kullanılacak bellek miktarı | Dize |
     | Driverçekirdekler | Sürücü işlemi için kullanılacak çekirdek sayısı | Int |
     | Yürütişbelleği | Yürütücü işlemi başına kullanılacak bellek miktarı | Dize |
     | Executorçekirdekler | Her yürütücü için kullanılacak çekirdek sayısı | Int |
     | numExecutors | Bu oturum için başlatılacak yürüticilerinin sayısı | Int |
-    | archives | Bu oturumda kullanılacak Arşivler | Dizelerin listesi |
+    | archives | Bu oturumda kullanılacak Arşivler | dizelerin listesi |
     | queue | Gönderilecek YARN kuyruğunun adı| Dize |
     | name | Bu oturumun adı | Dize |
     | conf | Spark yapılandırma özellikleri | Anahtar = Val eşlemesi |
@@ -317,7 +317,7 @@ Bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klasörüne ekl
     | id | Oturum kimliği | Int | 
     | appId | Bu oturumun uygulama kimliği | Dize |
     | appInfo | Ayrıntılı uygulama bilgileri | Anahtar = Val eşlemesi |
-    | log | Günlük satırları | Dizelerin listesi |
+    | log | Günlük satırları | dizelerin listesi |
     | state |Toplu iş durumu | Dize |
 
     >[!NOTE]
@@ -409,7 +409,7 @@ Bir HDInsight kümesini genişletmek için Azure HDInsight Gezginini seçtiğini
   >
   >Bağlantılı kümeyi denetlemek `Spark / Hive: List Cluster` için ' i kullanabilirsiniz:
   >
-  >![Visual Studio Code okuyucusu bağlantılı için Spark & Hive araçları](./media/hdinsight-for-vscode/list-cluster-result.png)
+  >![Visual Studio Code okuyucusu bağlantılı için Spark & Hive araçları](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil
 

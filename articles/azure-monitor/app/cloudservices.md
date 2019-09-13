@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: HT
+ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67443330"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933004"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
@@ -84,8 +84,9 @@ Her rol için ayrı bir kaynak oluşturmaya karar verdiyseniz ve her derleme yap
 
     ![Application Insights bölmesi](./media/cloudservices/01-new.png)
 
-1. **Uygulama türü** aşağı açılan listesinde **ASP.NET Web uygulaması**' nı seçin.  
-    Her kaynak bir izleme anahtarı ile tanımlanır. SDK yapılandırmasını el ile yapılandırmak veya doğrulamak istiyorsanız, bu anahtara daha sonra ihtiyacınız olacaktır.
+1. **Uygulama türü** aşağı açılan listesinde **ASP.NET Web uygulaması**' nı seçin.
+
+Her kaynak bir izleme anahtarı ile tanımlanır. SDK yapılandırmasını el ile yapılandırmak veya doğrulamak istiyorsanız, bu anahtara daha sonra ihtiyacınız olacaktır.
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Her rol için Azure Tanılama ayarlama
@@ -133,8 +134,9 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
     * [Çalışan rolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Web sayfaları için](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. *ApplicationInsights. config* dosyasını her zaman çıkış dizinine kopyalanacak şekilde ayarlayın.  
-    *. Config* dosyasındaki bir ileti, izleme anahtarını buraya yerleştirmenizi ister. Ancak, bulut uygulamaları için *. cscfg* dosyasından ayarlamak daha iyidir. Bu yaklaşım, rolün portalda doğru şekilde tanımlanmasını sağlar.
+1. *ApplicationInsights. config* dosyasını her zaman çıkış dizinine kopyalanacak şekilde ayarlayın.
+
+   *. Config* dosyasındaki bir ileti, izleme anahtarını buraya yerleştirmenizi ister. Ancak, bulut uygulamaları için *. cscfg* dosyasından ayarlamak daha iyidir. Bu yaklaşım, rolün portalda doğru şekilde tanımlanmasını sağlar.
 
 ## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Tam SQL sorguları toplamak için Durum İzleyicisi ayarlama (isteğe bağlı)
 
@@ -171,16 +173,19 @@ Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyor
 
 1. Uygulamanızı çalıştırın ve Azure 'da oturum açın. 
 
-1. Oluşturduğunuz Application Insights kaynaklarını açın.  
-    Tek tek veri noktaları [arama](../../azure-monitor/app/diagnostic-search.md)bölümünde görüntülenir ve toplu veriler [Ölçüm Gezgini](../../azure-monitor/app/metrics-explorer.md)' nde görüntülenir. 
+1. Oluşturduğunuz Application Insights kaynaklarını açın.
+
+   Tek tek veri noktaları [arama][diagnostic]bölümünde görüntülenir ve toplu veriler [Ölçüm Gezgini](../../azure-monitor/app/metrics-explorer.md)' nde görüntülenir.
 
 1. Daha fazla telemetri ekleyin (sonraki bölümlere bakın) ve ardından canlı tanılama ve kullanım geri bildirimi almak için uygulamanızı yayımlayın. 
 
 Veri yoksa, şunları yapın:
+
 1. Olayları tek tek görüntülemek için [arama][diagnostic] kutucuğunu açın.
 1. Uygulamada, bazı telemetri oluşturacak şekilde çeşitli sayfalar açın.
 1. Birkaç saniye bekleyip **Yenile**' ye tıklayın.  
-    Daha fazla bilgi için bkz. [Sorun giderme][qna].
+
+Daha fazla bilgi için bkz. [Sorun giderme][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Tanılama olaylarını görüntüle
 [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) bilgilerini aşağıdaki konumlarda Application Insights bulabilirsiniz:

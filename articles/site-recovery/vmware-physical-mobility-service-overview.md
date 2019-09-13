@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261144"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931902"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için Mobility hizmeti hakkında
 
@@ -119,7 +119,7 @@ Kullanım | Unifiedagent. exe/role \<MS/MT >/ınstalllocation \<yüklemesi konum
 Kurulum günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentınstaller.log altında
 /Role | Zorunlu yükleme parametresi. Mobility hizmeti (MS) veya ana hedefin (MT) yüklenip yüklenmeyeceğini belirtir.
 /InstallLocation| İsteğe bağlı parametre. Mobility hizmeti yükleme konumunu (herhangi bir klasör) belirtir.
-/Platform | Zorunlu. Mobility hizmetinin yüklü olduğu platformu belirtir. VMware VM 'Leri/fiziksel sunucuları için **VMware** ; Azure VM 'Leri için **Azure** .
+/Platform | Zorunlu. Mobility hizmetinin yüklü olduğu platformu belirtir. VMware VM 'Leri/fiziksel sunucuları için **VMware** ; Azure VM 'Leri için **Azure** .<br/><br/> Azure VM 'lerini fiziksel makine olarak değerlendiriyorsanız, **VMware**' yi belirtin.
 /Silent| İsteğe bağlı. Yükleyicinin sessiz modda çalıştırılıp çalıştırılmayacağını belirtir.
 
 #### <a name="registration-settings"></a>Kayıt ayarları

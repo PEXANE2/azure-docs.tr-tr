@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery yenilikleri | Microsoft Docs
+title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery tanıtılan yeni özelliklerin özetini sağlar
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146909"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933926"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -24,16 +24,56 @@ ms.locfileid: "70146909"
 
 Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en son yayınlanan sürümdür. Bunlar aşağıdaki tabloda özetlenmiştir.
 
-**Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı** 
---- | --- | --- | --- | ---
+**Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
+--- | --- | --- | --- | --- | ---
+[Toplu 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Toplu 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Toplu 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Toplu 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
 [Toplu 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-[Toplu 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
         
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
+
+
+## <a name="updates-september-2019"></a>Güncelleştirmeler (Eylül 2019)
+
+### <a name="update-rollup-40"></a>Güncelleştirme paketi 40
+
+[Güncelleştirme paketi 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
+**Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
+
+Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
+
+**Özelliği** | **Ayrıntılar**
+--- | ---
+**Yeniden çalışma sonrasında temizle** | İkincil Azure 'a yük devreder ve sonra birincil bölgeye geri döndüğünüzde, Site Recovery ikincil bölgedeki makineleri otomatik olarak temizler. VM 'leri ve NIC 'leri el ile silmeniz gerekmez.
+**Sınama yük devretmesi IP adreslerini korur** | Artık bir olağanüstü durum kurtarma ayrıntısı sırasında kaynak VM 'nin IP adresini koruyabilir ve yük devretme testi için bir statik IP adresi seçebilirsiniz.
+
+## <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fiziksel sunucu olağanüstü durum kurtarma
+
+Bu ay eklenen özellikler tabloda özetlenmiştir.
+
+**Özelliği** | **Ayrıntılar**
+--- | ---
+Yeni işlem sunucusu uyarıları | Yeni işlem sunucusu uyarıları ekledik. [Daha fazla bilgi edinin](vmware-physical-azure-monitor-process-server.md). 
+
+## <a name="hyper-v-disaster-recovery"></a>Hyper-V olağanüstü durum kurtarma
+
+Bu ay eklenen özellikler tabloda özetlenmiştir.
+
+**Özelliği** | **Ayrıntılar**
+--- | ---
+Depolama hesabı | Site Recovery artık rol tabanlı erişim denetimi (RBAC) etkin olan bir depolama hesabı kullanımını desteklemektedir. Depolama hesapları için erişim denetimi hakkında [daha fazla bilgi edinin](../storage/common/storage-account-manage.md#access-control) . 
 
 
 ## <a name="updates-august-2019"></a>Güncelleştirmeler (Ağustos 2019)

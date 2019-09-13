@@ -1,77 +1,86 @@
 ---
-title: Azure Geçişi'ndeki ilk kez bir değerlendirme/geçiş aracı ekleyin | Microsoft Docs
-description: Bir Azure geçişi projesi oluşturun ve bir değerlendirme/geçiş aracı ekleme açıklanmaktadır.
+title: Azure geçişi 'nde ilk kez bir değerlendirme/geçiş aracı ekleyin | Microsoft Docs
+description: Azure geçişi projesi oluşturmayı ve değerlendirme/geçiş aracının nasıl ekleneceğini açıklar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: b226f7c5879673b573133cde45db78d8d1f2fffa
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812031"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934172"
 ---
-# <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracı ilk kez Ekle
+# <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
 
-Bu makalede, bir değerlendirme veya geçiş aracı eklemeyi açıklar bir [Azure geçişi](migrate-overview.md) ilk kez bir proje.  
-Azure geçişi, bulma, değerlendirme ve şirket içi uygulamalarınızı ve iş yükleri ve private/public bulut Vm'lerinden azure'a geçişini izlemek için merkezi bir nokta sağlar. Hub araçları Azure geçişi, değerlendirme ve geçiş, ek olarak üçüncü taraf, bağımsız yazılım satıcısı (ISV) sağlar. [teklifleri](migrate-services-overview.md#isv-integration) . 
+Bu makalede, bir [Azure geçiş](migrate-overview.md) projesine ilk kez nasıl değerlendirme veya geçiş aracı ekleneceği açıklanmaktadır.  
+Azure geçişi, şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf, bağımsız yazılım satıcısı (ISV) [teklifleri](migrate-services-overview.md#isv-integration) sağlar. 
 
-## <a name="create-a-project-and-add-a-tool"></a>Bir proje oluşturma ve bir aracı ekleme
+## <a name="create-a-project-and-add-a-tool"></a>Proje oluşturma ve araç ekleme
 
-Bir Azure aboneliğinde yeni bir Azure geçişi projesi ayarlama ve bir aracı ekleyebilirsiniz.
+Azure aboneliğinde yeni bir Azure geçişi projesi ayarlayın ve bir araç ekleyin.
 
-- Azure geçişi projesinde, bulma, değerlendirme ve toplanan geçirme değerlendirerek veya kullandığınız ortamdan geçiş meta verileri depolamak için kullanılır. 
-- Bir projede bulunan varlıkları izlemek ve değerlendirme ve geçiş düzenleyin.
+- Değerlendirme veya geçiş yaptığınız ortamdan toplanan bulma, değerlendirme ve geçiş meta verilerini depolamak için bir Azure geçişi projesi kullanılır. 
+- Bir projede keşfedilen varlıkları izleyebilir ve değerlendirme ve geçişi organize edebilirsiniz.
 
-1. Azure portalında > **tüm hizmetleri**, arama **Azure geçişi**.
-2. Altında **Hizmetleri**seçin **Azure geçişi**.
+1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
+2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
 
-    ![Azure Geçişi ' ayarlayın](./media/how-to-add-tool-first-time/azure-migrate-search.png)
+    ![Azure geçişi 'ni ayarlama](./media/how-to-add-tool-first-time/azure-migrate-search.png)
 
-3. İçinde **genel bakış**, tıklayın **değerlendirin ve sunucularını geçirme**.
-4. Altında **keşfedin, değerlendirin ve sunucularını geçirme**, tıklayın **değerlendirin ve sunucularını geçirme**.
+3. **Genel Bakış** bölümünde **Sunucuları değerlendir ve geçir**’e tıklayın.
+4. **Sunucuları bul, değerlendir ve geçir**altında, **sunucuları değerlendir ve geçir**' e tıklayın.
 
-    ![Bulma ve değerlendirme sunucuları](./media/how-to-add-tool-first-time/assess-migrate.png)
+    ![Sunucuları bulma ve değerlendirme](./media/how-to-add-tool-first-time/assess-migrate.png)
 
-1. İçinde **keşfedin, değerlendirin ve sunucularını geçirme**, tıklayın **ekleme Araçları**.
-2. İçinde **geçiş projesi**, Azure aboneliğinizi seçin ve bir yoksa, bir kaynak grubu oluşturun.
-3. İçinde **Project Details**, proje adı ve projeyi oluşturmak istediğiniz coğrafi konum belirtin. 
+1. **Sunucuları bul, değerlendir ve geçir** bölümünde **Araç ekle**’ye tıklayın.
+2. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
+3. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. 
 
-    ![Bir Azure geçişi projesi oluşturun](./media/how-to-add-tool-first-time/migrate-project.png)
+    ![Azure geçişi projesi oluşturma](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    Azure geçişi projesinde bu coğrafyalar hiçbirinde oluşturabilirsiniz.
+    Bu coğrafi bölgelerde bir Azure geçişi projesi oluşturabilirsiniz.
 
-    **Coğrafya** | **Depolama konumu bölge**
+   **Coğrafya** | **Depolama konumu bölgesi**
     --- | ---
-    Asya | Güneydoğu Asya veya Doğu Asya
-    Avrupa | Güney Avrupa veya Batı Avrupa
+    Asya   | Güneydoğu Asya veya Doğu Asya
+    Avrupa | Kuzey Avrupa veya Batı Avrupa
+    Japonya  | Japonya Doğu veya Japonya Batı
     Birleşik Krallık | UK Güney veya UK Batı
-    Amerika Birleşik Devletleri | Orta ABD ve Batı ABD 2
+    Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
+    Kanada | Orta Kanada
+    Hindistan  | Hindistan Orta veya Hindistan Güney
+    Avustralya | Avustralya Güneydoğu
 
     Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
 
-4. Tıklayın **sonraki**ve bir değerlendirme veya geçiş aracı ekleyin.
+    Geçiş projesini ve ilişkili kaynaklarını dağıtmaya yönelik bir Coğrafya içinde belirli bir bölge belirtmek isterseniz (aboneliğinizdeki Ilke kısıtlamaları Azure kaynaklarının yalnızca belirli bir Azure bölgesine dağıtımına izin verebilir), aşağıdaki API 'yi kullanarak bir geçiş projesi oluşturun. Abonelik KIMLIĞINI, kaynak grubu adını ve proje adını (Azure geçişi 'nin dağıtıldığı tabloda belirtilen Azure bölgelerinden) birlikte geçirin.
+
+    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+
+
+4. **İleri**' ye tıklayın ve bir değerlendirme veya geçiş aracı ekleyin.
 
     > [!NOTE]
-    > Bir proje oluşturduğunuzda en az bir değerlendirme veya geçiş aracını eklemeniz gerekir.
+    > Bir proje oluşturduğunuzda, en az bir değerlendirme veya geçiş aracı eklemeniz gerekir.
 
-5. İçinde **Select Değerlendirme Aracı**, bir değerlendirme aracı ekleyin. Bir değerlendirme aracı gerekmiyorsa seçin **şimdilik bir değerlendirme aracı eklemeyi atlamak mı** > **sonraki**. 
-2. İçinde **Select geçiş aracı**, geçiş aracı gerektiği gibi ekleyin. Geçiş Aracı şu anda gerekmiyorsa, seçin **şimdilik geçiş aracı eklemeyi atlamak mı** > **sonraki**.
-3. İçinde **gözden + araçları Ekle**, ayarları gözden geçirin ve tıklayın **ekleme Araçları**.
+5. **Değerlendirme aracı seçin**' de bir değerlendirme aracı ekleyin. Bir değerlendirme aracına ihtiyacınız yoksa >  **Şimdi bir değerlendirme aracı eklemeyi atla**' yı**seçin.** 
+2. **Geçiş aracı Seç**bölümünde, gereken şekilde bir geçiş aracı ekleyin. Şu anda bir geçiş aracına ihtiyacınız yoksa >  **Şimdi bir geçiş aracı eklemeyi atla**' yı**seçin.**
+3. **İnceleme ve araç ekle**' de ayarları gözden geçirin ve **araç ekle**' ye tıklayın.
 
-Projeyi oluşturduktan sonra değerlendirme ve geçiş sunucuları ve iş yükleri, veritabanları ve web uygulamaları için ek araçlar seçebilirsiniz.
+Projeyi oluşturduktan sonra sunucuların ve iş yüklerinin, veritabanlarının ve Web uygulamalarının değerlendirilmesi ve geçirilmesi için ek araçlar seçebilirsiniz.
 
-## <a name="create-additional-projects"></a>Ek projeleri oluşturma
+## <a name="create-additional-projects"></a>Ek projeler oluşturma
 
-Bazı durumlarda, Azure geçişi ek projeleri oluşturmanız gerekebilir. Örneğin, farklı coğrafi bölgelerde veri merkezleri varsa veya farklı bir coğrafi bölge meta verileri depolamak gerekir. Ek bir proje şu şekilde oluşturun:
+Bazı durumlarda, ek Azure geçişi projeleri oluşturmanız gerekebilir. Örneğin, farklı coğrafi bölgelerde Veri merkezleriniz varsa veya meta verileri farklı bir Coğrafya içinde depolamanız gerekirse. Ek bir projeyi aşağıdaki gibi oluşturun:
 
-1. Geçerli Azure geçişi projesinde tıklayın **sunucuları** veya **veritabanları**.
-2. Sağ üst köşede tıklayın **değişiklik** geçerli proje adı yanında.
-3. İçinde **ayarları**seçin **yeni bir proje oluşturmak için buraya tıklayın**.
-4. Yeni bir proje oluşturun ve önceki yordamda açıklandığı gibi yeni bir aracı ekleyin.
+1. Geçerli Azure geçişi projesinde **sunucular** veya **veritabanları**' na tıklayın.
+2. Sağ üst köşede, geçerli proje adının yanındaki **Değiştir** ' e tıklayın.
+3. **Ayarlar**' da, **Yeni bir proje oluşturmak Için buraya tıklayın ' ı**seçin.
+4. Yeni bir proje oluşturun ve önceki yordamda açıklandığı gibi yeni bir araç ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek eklemeyi öğrenin [değerlendirme](how-to-assess.md) ve [geçiş](how-to-migrate.md) araçları. 
+Ek [değerlendirme](how-to-assess.md) ve [geçiş](how-to-migrate.md) araçları eklemeyi öğrenin. 

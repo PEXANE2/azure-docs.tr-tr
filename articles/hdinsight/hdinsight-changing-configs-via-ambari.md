@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5c533c3b0005528eae646744e8e720e2c54436e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880277"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934520"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight küme yapılandırmasını iyileştirmek için Apache ambarı 'nı kullanma
 
@@ -23,7 +23,7 @@ Ambarı Web Kullanıcı arabirimini kullanmaya giriş için bkz [. Apache ambar�
 
 Küme kimlik bilgilerinizle `https://CLUSTERNAME.azurehdidnsight.net` , ambarı ' nda oturum açın. İlk ekranda Genel Bakış Panosu görüntülenir.
 
-![Ambarı panosu](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Ambarı panosu](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 Ambarı Web Kullanıcı arabirimi, Konakları, Hizmetleri, uyarıları, konfigürasyonları ve görünümleri yönetmek için kullanılabilir. Ambarı, HDInsight kümesi oluşturmak, Hizmetleri yükseltmek, yığınları ve sürümleri yönetmek, Konakları kullanımdan kaldırmak veya yeniden komisyon sağlamak ya da kümeye hizmet eklemek için kullanılamaz.
 
@@ -31,7 +31,7 @@ Ambarı Web Kullanıcı arabirimi, Konakları, Hizmetleri, uyarıları, konfigü
 
 Yapılandırma ayarları belirli bir hizmeti ayarlamanıza yardımcı olur. Bir hizmetin yapılandırma ayarlarını değiştirmek için **Hizmetler** kenar çubuğundan (solda) hizmeti seçin ve ardından hizmet ayrıntısı sayfasındaki **yapılandırmalar** sekmesine gidin.
 
-![Hizmetler kenar çubuğu](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
+![Hizmetler kenar çubuğu](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>Süs Code Java yığın boyutunu değiştir
 
@@ -41,15 +41,15 @@ Süs Yot Java yığın boyutunu değiştirmek için:
 
 1. Hizmetler **kenar çubuğundan bir i seçin ve** **configs** sekmesine gidin.
 
-    ![Bir yapılandırma](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
+    ![Bir yapılandırma](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. **Süs Code Java yığın boyutu**ayarını bulun. Belirli bir ayarı yazmak ve bulmak için **filtre** metin kutusunu da kullanabilirsiniz. Ayar adının yanındaki **kalem** simgesini seçin.
 
-    ![Süs Code Java yığın boyutu](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![Süs Code Java yığın boyutu](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Metin kutusuna yeni değeri yazın ve ardından değişikliği kaydetmek için **ENTER** tuşuna basın.
 
-    ![Süs Code Java yığın size1 Düzenle](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![Süs Code Java yığın size1 Düzenle](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. Süs Code Java yığın boyutu 2 GB 'tan 1 GB olarak değişir.
 
@@ -57,7 +57,7 @@ Süs Yot Java yığın boyutunu değiştirmek için:
 
 1. Yapılandırma ekranının üstündeki yeşil **Kaydet** düğmesine tıklayarak yaptığınız değişiklikleri kaydedin.
 
-    ![Değişiklikleri kaydet](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Değişiklikleri kaydet](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive iyileştirmesi
 
@@ -72,11 +72,11 @@ Hive iki yürütme altyapısı sağlar: [MapReduce](https://hadoop.apache.org/do
 
 1. Hive **yapılandırması** sekmesinde, filtre kutusuna **yürütme altyapısı** yazın.
 
-    ![Arama yürütme altyapısı](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
+    ![Arama yürütme altyapısı](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. **Optimizasyon** özelliğinin varsayılan değeri **tez**' dir.
 
-    ![İyileştirme-tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![İyileştirme-tez](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Mapto ayarla
 
@@ -93,7 +93,7 @@ Thumb 'in performans kuralı olarak, gecikme süresini artırmak için bu parame
 
 1. Her iki parametreyi de **33.554.432** bayta ayarlayın (32 MB).
 
-    ![Tez gruplandırma boyutları](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
+    ![Tez gruplandırma boyutları](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
  
 Bu değişiklikler sunucu genelindeki tüm tez işlerini etkiler. En iyi sonucu almak için uygun parametre değerlerini seçin.
 
@@ -109,7 +109,7 @@ Varsayılan ayarlarla Bu örnek 4 azaltıcının ' dir.
 
 1. Parametreyi değiştirmek için Hive **yapılandırması** ' na gidin ve Ayarlar sayfasında **Reducer başına veri** parametresini bulun.
 
-    ![Reducer başına veri](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
+    ![Reducer başına veri](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
  
 1. Değeri 128 MB (134.217.728 bayt) olarak değiştirmek için **Düzenle** ' yi seçin ve sonra kaydetmek için **ENTER** tuşuna basın.
 
@@ -127,7 +127,7 @@ Hive sorgusu bir veya daha fazla aşamada yürütülür. Bağımsız aşamalar p
  
 1.  Paralel olarak çalışacak işlerin sayısını sınırlandırmak için `hive.exec.parallel.thread.number` özelliği değiştirin. Varsayılan değer 8 ' dir.
 
-    ![Hive exec paralel](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![Hive exec paralel](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 
 ### <a name="enable-vectorization"></a>Vektörleştirmeyi etkinleştir
@@ -373,7 +373,7 @@ HBase yığın boyutu, *bölgeye* ve *ana* sunuculara göre megabayt cinsinden k
 
 1. Varsayılan değeri 5.000 MB olarak değiştirin.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
+    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 
 ### <a name="optimize-read-heavy-workloads"></a>Okuma ağır iş yüklerini iyileştirme

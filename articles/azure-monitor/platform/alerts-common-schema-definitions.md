@@ -1,6 +1,6 @@
 ---
-title: Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için ortak uyarı şeması tanımları
-description: Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için ortak uyarı şeması tanımlarını anlama
+title: Azure Izleyici için ortak uyarı şeması tanımları
+description: Azure Izleyici için ortak uyarı şeması tanımlarını anlama
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034794"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916023"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
-Bu makalede Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için [ortak uyarı şeması tanımları](https://aka.ms/commonAlertSchemaDocs) açıklanır. 
+Bu makalede, Web kancaları, Azure Logic Apps, Azure Işlevleri ve Azure Otomasyonu runbook 'ları gibi Azure Izleyici için [genel uyarı şeması tanımları](https://aka.ms/commonAlertSchemaDocs) açıklanmaktadır. 
 
-## <a name="overview"></a>Genel Bakış
+Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıklar. Bu örnekler, aşağıdaki bölümlerde ortak şemada açıklanmıştır:
+* **Temel**bileşenler: Uyarının hangi kaynakla ilgili olduğunu açıklayan, tüm uyarı türlerinde ortak olan standartlaştırılmış alanlar kümesi (örneğin, önem derecesi veya açıklama). 
+* **Uyarı bağlamı**: Uyarı türüne göre değişen alanlarla, uyarının nedenini açıklayan bir alan kümesi. Örneğin, bir ölçüm uyarısı, uyarı bağlamındaki ölçüm adı ve ölçüm değeri gibi alanları içerir, ancak bir etkinlik günlüğü uyarısıyla uyarıyı oluşturan olay hakkında bilgi bulunur. 
 
-Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**açıklar ve bu örnekler aşağıdaki bölümlerde ortak şemada açıklanmıştır:
-* **Temel**bileşenler: Tüm uyarı türlerinde ortak olan **standartlaştırılmış alanlar**kümesi, diğer yaygın uyarı meta verileri (örneğin, önem derecesi veya açıklama) ile birlikte uyarının **hangi kaynakla** olduğunu anlatmaktadır. 
-* **Uyarı bağlamı**: Uyarı **türüne göre**değişen alanlarla, **uyarının nedenini**açıklayan alan kümesi. Örneğin, bir ölçüm uyarısında, uyarı bağlamındaki ölçüm adı ve ölçüm değeri gibi alanlar olabilir, ancak bir etkinlik günlüğü uyarısı uyarıyı oluşturan olay hakkında bilgi sahibi olur. 
-
-##### <a name="sample-alert-payload"></a>Örnek uyarı yükü
+**Örnek uyarı yükü**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +72,25 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-## <a name="essentials-fields"></a>' Essentials ' alanları
+## <a name="essentials"></a>Temel Bileşenler
 
 | Alan | Açıklama|
 |:---|:---|
 | AlertId | GUID, uyarı örneğini benzersiz bir şekilde tanımlıyor. |
 | alertRule | Uyarı örneğini oluşturan uyarı kuralının adı. |
-| severity | Uyarının önem derecesi. Olası değerler: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Uyarı kuralının tanımlandığı sinyali tanımlar. Olası değerler: Ölçüm, günlük, etkinlik günlüğü |
-| monitorCondition | Bir uyarı tetiklendiğinde, uyarının izleyici koşulu ' tetiklenir ' olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu ' çözüldü ' olarak ayarlanır.   |
+| severity | Uyarının önem derecesi. Olası değerler: Sev0, Sev1, Sev2, Sev3 veya Sev4. |
+| signalType | Uyarı kuralının tanımlandığı sinyali tanımlar. Olası değerler: Ölçüm, günlük veya etkinlik günlüğü. |
+| monitorCondition | Bir uyarı tetiklendiğinde, uyarının izleyici koşulu **tetiklenir**olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu **çözüldü**olarak ayarlanır.   |
 | monitoringService | Uyarıyı oluşturan izleme hizmeti veya çözümü. Uyarı bağlamı alanları izleme hizmeti tarafından dikte edilir. |
-| Alerttargetıds | ARM 'nin listesi, bir uyarının etkilenen tüm hedeflerini kimlikler. Log Analytics çalışma alanında veya Application Insights örneğinde tanımlanan bir günlük uyarısı için, ilgili çalışma alanı/uygulamadır. |
-| Originalertıd | Uyarı örneğinin oluşturan izleme hizmeti tarafından oluşturulan KIMLIĞI. |
-| firedDateTime | Uyarı örneğinin UTC olarak tetiklenme tarih saati |
-| resolvedDateTime | Uyarı örneği için izleyici koşulunun UTC 'de ' çözüldü ' olarak ayarlandığı tarih saat. Şu anda yalnızca ölçüm uyarıları için geçerlidir.|
-| description | Uyarı kuralında tanımlanan açıklama |
-|essentialsVersion| Temel bileşenler bölümü için sürüm numarası.|
-|alertContextVersion | AlertContext bölümünün sürüm numarası |
+| Alerttargetıds | Bir uyarının etkilenen hedeflerini Azure Resource Manager kimliklerinin listesi. Log Analytics çalışma alanında veya Application Insights örneğinde tanımlanan bir günlük uyarısı için, ilgili çalışma alanı veya uygulamadır. |
+| Originalertıd | Uyarı örneğinin, onu oluşturan izleme hizmeti tarafından oluşturulan KIMLIĞI. |
+| firedDateTime | Uyarı örneğinin Eşgüdümlü Evrensel Saat (UTC) olarak tetiklenme tarihi ve saati. |
+| resolvedDateTime | Uyarı örneği için izleyici koşulunun UTC olarak **çözümlendi** olarak ayarlandığı tarih ve saat. Şu anda yalnızca ölçüm uyarıları için geçerlidir.|
+| description | Uyarı kuralında tanımlandığı şekilde açıklama. |
+|essentialsVersion| Essentials bölümünün sürüm numarası.|
+|alertContextVersion | `alertContext` Bölüm için sürüm numarası. |
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "essentials": {
@@ -114,13 +112,13 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-## <a name="alert-context-fields"></a>' Uyarı bağlamı ' alanları
+## <a name="alert-context"></a>Uyarı bağlamı
 
-### <a name="metric-alerts"></a>Ölçüm Uyarıları
+### <a name="metric-alerts"></a>Ölçüm uyarıları
 
-#### <a name="monitoringservice--platform"></a>monitoringService = ' Platform '
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -154,12 +152,11 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 ### <a name="log-alerts"></a>Günlük uyarıları
 
 > [!NOTE]
-> + Özel bir JSON yükünün tanımlandığı günlük uyarıları için, ortak şemanın etkinleştirilmesi yük şemasını aşağıda açıklanan birine döndürür.
-> + Ortak şema etkin olan uyarıların uyarı başına 256 KB boyutunda üst boyut sınırı vardır. **Uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, arama sonuçları günlük uyarıları yüküne Katıştırılamaz.** Bu, ' ıncludedsearchresults ' bayrağı denetlenerek belirlenebilir. Arama sonuçlarının dahil olmadığı senaryolarda, arama sorgusunun [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanılması önerilir. 
+> Özel bir JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, yük şemasını aşağıdaki gibi açıklanan birine geri döndürür. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bayrağını `IncludedSearchResults`denetleyerek bunu belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = ' Log Analytics '
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -224,9 +221,9 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = ' Application Insights '
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -287,11 +284,11 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-### <a name="activity-log-alerts"></a>Etkinlik Günlüğü Uyarıları
+### <a name="activity-log-alerts"></a>Etkinlik günlüğü uyarıları
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = ' etkinlik günlüğü-Yönetim '
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -316,9 +313,9 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = ' etkinlik günlüğü-Ilke '
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -349,9 +346,9 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = ' etkinlik günlüğü-otomatik ölçeklendirme '
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -379,9 +376,9 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-#### <a name="monitoringservice--activity-log---security"></a>monitoringService = ' etkinlik günlüğü-güvenlik '
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -412,9 +409,9 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = ' ServiceHealth '
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -456,9 +453,9 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = ' Kaynak Durumu '
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-##### <a name="sample-values"></a>Örnek değerler
+**Örnek değerler**
 ```json
 {
   "alertContext": {
@@ -487,6 +484,6 @@ Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ortak uyarı şeması hakkında daha fazla bilgi edinin](https://aka.ms/commonAlertSchemaDocs)
-- [Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yararlanan bir mantıksal uygulama oluşturmayı öğrenin.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [Ortak uyarı şeması](https://aka.ms/commonAlertSchemaDocs)hakkında daha fazla bilgi edinin.
+- [Tüm uyarılarınızı işlemek için ortak uyarı şemasını kullanan bir mantıksal uygulama oluşturmayı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)öğrenin. 
 

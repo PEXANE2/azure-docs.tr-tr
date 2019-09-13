@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 7dd3c3904115db4fa3978f39b86023bf9fb0805c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390058"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914859"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak üzere bir kümeyi otomatik olarak ölçeklendirme
 
@@ -32,7 +32,7 @@ Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Küme otomatik olarak kullanılması için, *aks-Preview* CLI uzantısının sürüm 0.4.4 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
+Küme otomatik olarak kullanılması için, *aks-Preview* CLI uzantısının sürüm 0.4.12 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -90,7 +90,7 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --enable-vmss \
+  --vm-set-type VirtualMachineScaleSets \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3

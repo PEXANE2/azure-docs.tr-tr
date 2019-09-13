@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 15bb65e004de916862297f91278328cddb16487d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810424"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917263"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Psql kullanarak Apache Phoenix’e toplu veri yükleme
 
@@ -29,7 +29,7 @@ MapReduce ile toplu yükleme, genellikle üretim senaryolarında, MapReduce bird
 
 Verileri yüklemeye başlamadan önce, Phoenix 'in etkinleştirildiğini ve sorgu zaman aşımı ayarlarının beklenen şekilde olduğunu doğrulayın.  HDInsight kümesi [Apache ambarı](https://ambari.apache.org/) panonuza erişin, HBase ' i ve ardından yapılandırma sekmesini seçin.  Apache Phoenix gösterildiği `enabled` gibi ayarlandığını doğrulamak için aşağı kaydırın:
 
-![HDInsight kümesi ayarlarını Apache Phoenix](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![HDInsight kümesi ayarlarını Apache Phoenix](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Tabloları `psql` toplu olarak yüklemek için kullanın
 

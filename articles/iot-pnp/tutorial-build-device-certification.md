@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858864"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932671"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sertifika için hazırlamış bir IoT Tak ve Kullan önizleme cihazı oluşturun
 
@@ -84,6 +84,18 @@ Cihaz modelinize **cihaz bilgileri** arabirimini dahil etmek için, arabirim kim
 1. Ortak model deposunda, **arabirimler** sekmesini seçin, filtre simgesini seçin ve **cihaz bilgilerini** filtre alanına girin.
 
 1. **Cihaz bilgileri** arabiriminin yerel bir kopyasını oluşturmak için filtrelenmiş listeden seçin ve ardından **İndir**' i seçin. VS Code arabirim dosyasını görüntüler.
+
+Azure CLı kullanarak **cihaz bilgileri** arabirimini görüntülemek için:
+
+1. [Azure ıOT CLI uzantısını yükler](howto-install-pnp-cli.md).
+
+1. Aşağıdaki Azure CLı komutunu kullanarak cihaz bilgileri arabirim KIMLIĞIYLE bir arabirim gösterebilirsiniz:
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+Daha fazla bilgi için bkz. [Azure CLI Için Azure IoT uzantısını yükleyip kullanma](howto-install-pnp-cli.md).
 
 ## <a name="update-device-code"></a>Cihaz kodunu Güncelleştir
 

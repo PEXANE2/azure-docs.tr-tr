@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 45c802fb42088be1eecd7c711c6693d325252c91
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985795"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899396"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IOT Edge çözümünüzü üretim ortamında dağıtmaya hazırlanma
 
@@ -209,13 +209,15 @@ Varsayılan olarak, Moby kapsayıcı altyapısı kapsayıcı günlük boyutu sı
 
 Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyalarının boyutunu sınırlayabilirsiniz. Aşağıdaki örnek, günlük sürücüsünü boyut ve dosya `json-file` sayısı limitleriyle (önerilir) olarak ayarlar:
 
-    {
-        "log-driver": "json-file",
-        "log-opts": {
-            "max-size": "10m",
-            "max-file": "3"
-        }
+```JSON
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
     }
+}
+```
 
 Bu bilgileri adlı `daemon.json` bir dosyaya ekleyin (veya ekleyin) ve cihaz platformunuzun doğru konumunu yerleştirin.
 
@@ -230,22 +232,23 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
 
-    "createOptions": {
-        "HostConfig": {
-            "LogConfig": {
-                "Type": "json-file",
-                "Config": {
-                    "max-size": "10m",
-                    "max-file": "3"
-                }
+```yml
+"createOptions": {
+    "HostConfig": {
+        "LogConfig": {
+            "Type": "json-file",
+            "Config": {
+                "max-size": "10m",
+                "max-file": "3"
             }
         }
     }
-
+}
+```
 
 **Linux sistemlerinde ek seçenekler**
 
-* Varsayılan günlük sürücüsü olarak ayarlayarak `systemd` [](https://docs.docker.com/config/containers/logging/journald/) `journald` , depo altyapısını günlüğe Günlükler gönderecek şekilde yapılandırın. 
+* Varsayılan günlük sürücüsü olarak ayarlayarak `systemd` `journald` , depo altyapısını günlüğe Günlükler gönderecek şekilde yapılandırın. [](https://docs.docker.com/config/containers/logging/journald/) 
 
 * Logrotate aracını yükleyerek eski günlükleri cihazınızdan düzenli olarak kaldırın. Aşağıdaki dosya belirtimi kullanın: 
 

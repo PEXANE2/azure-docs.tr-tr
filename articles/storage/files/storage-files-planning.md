@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844883"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918826"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -211,13 +211,16 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |Avustralya Doğu |LRS     |Hayır    |Evet|
 |Avustralya Güneydoğu|LRS     |Hayır    |Henüz değil|
 |Orta Hindistan  |LRS     |Hayır    |Henüz değil|
+|East US        |LRS     |Hayır    |Henüz değil|
 |Fransa Orta |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
 |Fransa Güney   |LRS     |Hayır    |Evet|
 |Güney Hindistan    |LRS     |Hayır    |Henüz değil|
 |Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
 |Batı Orta ABD|LRS     |Hayır    |Henüz değil|
 |Batı Avrupa    |LRS, ZRS|Hayır    |Evet|
+|Batı ABD        |LRS     |Hayır    |Henüz değil|
 |Batı ABD 2      |LRS, ZRS|Hayır    |Evet|
+
 
 \* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. Alternatif olarak, kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
 

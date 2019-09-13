@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541916"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915145"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -119,7 +119,7 @@ Azure IoT Edge araçları uzantısı, Visual Studio 'da desteklenen tüm IoT Edg
 
 1. **Dosya** > yeniProje >  **...** öğesini seçin
 
-2. Yeni proje penceresinde, **IoT Edge** arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin.           **İleri**'ye tıklayın. 
+2. Yeni proje penceresinde, **IoT Edge** arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin. **İleri**'ye tıklayın. 
 
    ![Yeni bir Azure IoT Edge projesi oluştur](./media/tutorial-develop-for-windows/new-project.png)
 
@@ -194,13 +194,13 @@ Proje şablonuyla C# birlikte gelen örnek kod, .net için IoT Hub SDK 'Sının 
 
 6. $EdgeAgent istenen özelliklerin **modüller** özelliğini bulun. 
 
-   Burada listelenen iki modül olmalıdır. İlki, modüllerinizi test etmek için kullanabileceğiniz sanal sıcaklık verileri sağlamak üzere varsayılan olarak tüm şablonlara eklenen **Geçiciysdır**. İkincisi, bu projenin bir parçası olarak oluşturduğunuz **IotEdgeModule1** modülüdür.
+   Burada listelenen iki modül olmalıdır. İlk olarak, modüllerinizi test etmek için kullanabileceğiniz sanal sıcaklık verileri sağlamak üzere varsayılan olarak tüm şablonlara dahil olan **SimulatedTemperatureSensor**. İkincisi, bu projenin bir parçası olarak oluşturduğunuz **IotEdgeModule1** modülüdür.
 
    Bu modüller özelliği, cihazınıza veya cihazlarınıza dağıtımda hangi modüllerin dahil edileceğini bildirir. 
 
 7. $EdgeHub istenen özelliklerin **rotalar** özelliğini bulun. 
 
-   IoT Edge hub modülünün bir dağıtımdaki tüm modüller arasında ileti yönlendirmesi durumunda işlevlerden biri. Rotalar özelliğindeki değerleri gözden geçirin. İlk yol olan **IotEdgeModule1ToIoTHub**, IotEdgeModule1 modülündeki herhangi bir çıkış sırasından **\*** gelen herhangi bir iletiyi dahil etmek için bir joker karakteri () kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol, **sensorToIotEdgeModule1**, tempalgılayıcı modülünden gelen iletileri alır ve bunları IotEdgeModule1 modülünün *input1* Input kuyruğuna yönlendirir. 
+   IoT Edge hub modülünün bir dağıtımdaki tüm modüller arasında ileti yönlendirmesi durumunda işlevlerden biri. Rotalar özelliğindeki değerleri gözden geçirin. İlk yol olan **IotEdgeModule1ToIoTHub**, IotEdgeModule1 modülündeki herhangi bir çıkış sırasından **\*** gelen herhangi bir iletiyi dahil etmek için bir joker karakteri () kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol, **sensorToIotEdgeModule1**, SimulatedTemperatureSensor modülünden gelen iletileri alır ve IotEdgeModule1 modülünün *input1* giriş kuyruğuna yönlendirir. 
 
    ![Dağıtım. Template. JSON içindeki yolları gözden geçirin](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +284,14 @@ Oluşturulan kapsayıcı görüntülerinin kapsayıcı kayıt defterinizde depol
 
 4. Cihazınızdaki modülleri görmek için, Cloud Explorer 'da IoT Edge cihazınızın ayrıntılarını genişletin.
 
-5. Tempalgılayıcı ve IotEdgeModule1 modüllerinin cihazınızı dağıttığından emin olmak için, **Yenile** düğmesini kullanarak cihaz durumunu güncelleştirin. 
+5. SimulatedTemperatureSensor ve IotEdgeModule1 modüllerinin cihazınızı dağıttığından bakmak üzere cihaz durumunu güncelleştirmek için **Yenile** düğmesini kullanın. 
 
 
    ![IoT Edge cihazınızda çalışan modülleri görüntüleme](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>Cihazdan iletileri görüntüle
 
-IotEdgeModule1 kodu iletileri giriş kuyruğu aracılığıyla alır ve bunları çıkış kuyruğu boyunca geçirir. Dağıtım bildirimi, iletileri Tempsensensörden IotEdgeModule1 'e ileten yollar ve ardından IotEdgeModule1 ' den IoT Hub iletileri iletilir. Visual Studio için Azure IoT Edge araçları, tek tek cihazlarınızdan IoT Hub geldikçe iletileri görmenizi sağlar. 
+IotEdgeModule1 kodu iletileri giriş kuyruğu aracılığıyla alır ve bunları çıkış kuyruğu boyunca geçirir. Dağıtım bildirimi, SimulatedTemperatureSensor adresinden IotEdgeModule1 'e ileti geçtiğini ve sonra IotEdgeModule1 'den IoT Hub 'e iletmekte olan yolları bildirdi. Visual Studio için Azure IoT Edge araçları, tek tek cihazlarınızdan IoT Hub geldikçe iletileri görmenizi sağlar. 
 
 1. Visual Studio Cloud Explorer 'da, dağıttığınız IoT Edge cihazın adını seçin. 
 
@@ -315,7 +315,7 @@ Bu bölümdeki komutlar, geliştirme makineniz değil IoT Edge cihazınıza yön
    iotedge list
    ```
 
-   Dört modül görmeniz gerekir: iki IoT Edge çalışma zamanı modülü, Tempalgılayıcı ve IotEdgeModule1. Dört tümü çalışıyor olarak listelenmelidir.
+   Dört modül görmeniz gerekir: iki IoT Edge çalışma zamanı modülü, SimulatedTemperatureSensor ve IotEdgeModule1. Dört tümü çalışıyor olarak listelenmelidir.
 
 * Belirli bir modülün günlüklerini inceleyin:
 
@@ -325,7 +325,7 @@ Bu bölümdeki komutlar, geliştirme makineniz değil IoT Edge cihazınıza yön
 
    IoT Edge modüller büyük/küçük harfe duyarlıdır. 
 
-   Tempsensör ve IotEdgeModule1 günlükleri işlendikleri iletileri göstermelidir. EdgeAgent modülü, diğer modüllerin başlatılmasından sorumludur, bu nedenle Günlükler dağıtım bildirimini uygulamayla ilgili bilgiler alacak. Herhangi bir modül listelenmemişse veya çalışmıyorsa, edgeAgent günlükleri muhtemelen hatalara sahip olur. EdgeHub modülü, modüller ve IoT Hub arasındaki iletişimlerden sorumludur. Modüller çalışır duruma geliyor ancak iletiler IoT Hub 'ınıza inmemişse, edgeHub günlükleri muhtemelen hatalara sahip olur. 
+   SimulatedTemperatureSensor ve IotEdgeModule1 günlükleri işlendikleri iletileri göstermelidir. EdgeAgent modülü, diğer modüllerin başlatılmasından sorumludur, bu nedenle Günlükler dağıtım bildirimini uygulamayla ilgili bilgiler alacak. Herhangi bir modül listelenmemişse veya çalışmıyorsa, edgeAgent günlükleri muhtemelen hatalara sahip olur. EdgeHub modülü, modüller ve IoT Hub arasındaki iletişimlerden sorumludur. Modüller çalışır duruma geliyor ancak iletiler IoT Hub 'ınıza inmemişse, edgeHub günlükleri muhtemelen hatalara sahip olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

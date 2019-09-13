@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7a243dd0eca179317309438c31c114c94f94bf00
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736427"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884065"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Visual Studio için Data Lake araçları 'nı kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma
 
@@ -46,7 +46,7 @@ Bu makaleyi tamamlayıp Visual Studio için Data Lake araçları 'nı kullanmak 
 
   Mevcut yüklemeler için, menü çubuğundan **Araçlar** > **ve Özellikler al...** ' a giderek Visual Studio yükleyicisi açın.  Ardından en az **Azure geliştirme** veya **veri depolama ve işleme**iş yüklerini seçin.
 
-  ![Visual Studio Yükleyicisi ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Visual Studio Yükleyicisi ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 ve 2015  
   [Data Lake araçlarını indirin](https://www.microsoft.com/download/details.aspx?id=49504). Visual Studio sürümünüzle eşleşen Data Lake Araçları sürümünü seçin.  
@@ -195,13 +195,13 @@ Geçici sorgular oluşturmak ve çalıştırmak için:
 
       **Etkileşimli** 'ın seçili olduğundan emin olun ve ardından **Yürüt**' ü seçin.
 
-      ![Sorgu ve yürütme ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![Sorgu ve yürütme ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       **Batch** ' in seçildiğinden emin olun ve ardından **Gönder**' i seçin.  Gelişmiş gönder seçeneğini belirlerseniz, betik için **Iş adı**, **bağımsız değişkenler**, **ek konfigürasyonlar**ve **durum dizini** ' ni yapılandırın.
 
-      ![Sorgu ve toplu işlemin ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![Sorgu ve toplu işlemin ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![HDInsight Hadoop Hive sorgusunun ekran görüntüsü](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Sorgu gönderme")
 
@@ -224,7 +224,7 @@ Hive çözümü oluşturmak ve çalıştırmak için:
 
 İş Özeti, **Batch** ve **etkileşimli** mod arasında biraz farklılık gösterir.
 
-![İş Özeti](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive iş Özeti")
+![İş Özeti](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive iş Özeti")
 
 İş durumu **tamamlandı**olarak değiştirilene kadar durumu güncelleştirmek için **Yenile** düğmesini kullanın.  
 
@@ -232,7 +232,7 @@ Hive çözümü oluşturmak ve çalıştırmak için:
 
 * **Etkileşimli** moddan iş ayrıntıları için bkz. Tab **output** and **HiveServer2 output**.
 
-  ![iş ayrıntıları](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive işi ayrıntıları")
+  ![iş ayrıntıları](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive işi ayrıntıları")
 
 ### <a name="view-job-graph"></a>İş grafiğini görüntüle
 

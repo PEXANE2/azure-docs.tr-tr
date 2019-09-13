@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742331"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934830"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server için olağanüstü durum kurtarmayı ayarlama
 
@@ -54,7 +54,7 @@ Site Recovery, kurtarma planlarının yardımıyla tüm uygulamanızın yük dev
 
 Kurtarma planınızın gereksinimlerinize göre tamamen özelleştirildiğinden emin olmak için bazı Önkoşullar vardır. Herhangi bir SQL Server dağıtımı genellikle bir Active Directory dağıtımına ihtiyaç duyuyor. Ayrıca uygulama katmanınız için bağlantı gerekir.
 
-### <a name="step-1-set-up-active-directory"></a>1\. adım: Active Directory ayarlama
+### <a name="step-1-set-up-active-directory"></a>1\. adım: Active Directory'yi ayarlama
 
 SQL Server düzgün çalışması için ikincil kurtarma sitesinde Active Directory ayarlayın.
 
@@ -111,7 +111,7 @@ SQL her zaman açık gibi bazı BCDR teknolojileri, yük devretme testini yerel 
 
     ![Sunucu adlarını ve durumlarını gösteren Content_AG etiketli pencerenin ekran görüntüsü](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Yük dengeleyici oluşturun. Her kullanılabilirlik grubu dinleyicisi için ön uç IP havuzundan bir IP adresi oluşturun. Ayrıca, arka uç havuzuna SQL Server VM de ekleyin.
+1. Yük devretme ağındaki yük dengeleyicinin bir IP adresine, her bir kullanılabilirlik grubu dinleyicisine karşılık gelen ön uç IP adresi havuzundan ve arka uç havuzundaki SQL Server VM sahip olduğundan emin olun.
 
      !["SQL-AlwaysOn-LB-ön uç IP havuzu" başlıklı pencerenin ekran görüntüsü](./media/site-recovery-sql/create-load-balancer1.png)
 

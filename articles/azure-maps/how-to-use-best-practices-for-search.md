@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348184"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915571"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure haritalar 'ı kullanmak için en iyi uygulamalar Arama Hizmeti
 
@@ -27,7 +27,7 @@ Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Haritalar hizmeti API 'Lerine herhangi bir çağrı yapmak için bir haritalar hesabı ve anahtarı gereklidir. Hesap oluşturma ve anahtar alma hakkında bilgi için bkz. [Azure Maps hesabınızı ve anahtarlarınızı yönetme](how-to-manage-account-keys.md).
+Haritalar hizmeti API 'Lerine herhangi bir çağrı yapmak için bir haritalar hesabı ve anahtarı gereklidir. Hesap oluşturma hakkında daha fazla bilgi için hesabı [Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri izleyin ve hesabınız için birincil bir abonelik anahtarı almak üzere [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
 
 > [!Tip]
 > Arama hizmetini sorgulamak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanarak Rest çağrıları oluşturabilir veya tercih ettiğiniz HERHANGI bir API geliştirme ortamını kullanabilirsiniz.
@@ -128,7 +128,7 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="search-results-language"></a>Arama sonuçları dili
 
-Parametresi `language` , hangi dilde arama sonuçlarının döndürülmeyeceğini ayarlamanıza olanak sağlar. İstek içinde dil ayarlanmamışsa, arama hizmeti otomatik olarak ülke/bölgedeki en yaygın dile varsayılan olarak ayarlanır. Ayrıca, belirtilen dildeki veriler kullanılabilir olmadığında, varsayılan dil kullanılır. Desteklenen dillerin bir listesi [için bkz.](https://docs.microsoft.com/azure/azure-maps/supported-languages) Azure Maps hizmetleriyle ülkeye/bölgeye göre desteklenen diller.
+Parametresi `language` , hangi dilde arama sonuçlarının döndürülmeyeceğini ayarlamanıza olanak sağlar. İstek içinde dil ayarlanmamışsa, arama hizmeti otomatik olarak ülke/bölgedeki en yaygın dile varsayılan olarak ayarlanır. Ayrıca, belirtilen dildeki veriler kullanılabilir olmadığında, varsayılan dil kullanılır. Desteklenen dillerin bir listesi için bkz. Azure Maps hizmetleriyle ülkeye/bölgeye göre [desteklenen diller.](https://docs.microsoft.com/azure/azure-maps/supported-languages)
 
 
 ### <a name="predictive-mode-auto-suggest"></a>Tahmine dayalı mod (otomatik öneri)

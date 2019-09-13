@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 892076954535d880f9081a269215cb7e2a0a8dce
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 58c88e9b7cf2e0f80c88d32e02d13096a9623a4b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541865"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914020"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
 
@@ -40,7 +40,7 @@ Visual Studio 2019 ' i kullanmaya başladıktan sonra, aşağıdaki araçlara ve
 - Visual Studio 2019 ' de bir IoT Edge projesi oluşturmak için Visual Studio marketi ' nden [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) indirin ve yükleyin.
 
 > [!TIP]
-> Visual Studio 2017 kullanıyorsanız, plreada Visual Studio marketi 'nden VS 2017 için [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) indirin ve yükleyin
+> Visual Studio 2017 kullanıyorsanız, lütfen Visual Studio marketi 'nden VS 2017 için [Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) indirip yükleyin
 
 - Modül görüntülerinizi derlemek ve çalıştırmak için, geliştirme makinenize [Docker Community Edition](https://docs.docker.com/install/) indirin ve yükleyin. Docker CE 'yi Linux kapsayıcı modunda veya Windows kapsayıcı modunda çalışacak şekilde ayarlamanız gerekir.
 
@@ -105,13 +105,13 @@ Visual Studio'da Azure IOT Edge proje şablonu, Azure IOT hub'ı Azure IOT Edge 
 
 1. Ya da C# C kullanan bir modülle Azure IoT Edge çözümünü oluşturmak için Tamam ' ı seçin.
 
-Artık bir **AzureIoTEdgeApp1. Linux. amd64** projeniz veya bir **AzureIoTEdgeApp1. Windows. amd64** projeniz ve ayrıca çözümünüzde bir **IotEdgeModule1** projesi vardır. Her bir **AzureIoTEdgeApp1** projesi, `deployment.template.json` IoT Edge çözümünüz için derlemek ve dağıtmak istediğiniz modülleri tanımlayan bir dosyasına sahiptir ve ayrıca modüller arasındaki yolları tanımlar. Varsayılan çözümde bir **Tempalgılayıcı** modülü ve bir **IotEdgeModule1** modülü vardır. **Tempalgılayıcı** modülü **IotEdgeModule1** modülüne sanal veriler üretir, ancak **IotEdgeModule1** modülündeki varsayılan kod, Azure IoT Hub 'e iletileri doğrudan yöneltirken doğrudan yöneltme sağlar.
+Artık bir **AzureIoTEdgeApp1. Linux. amd64** projeniz veya bir **AzureIoTEdgeApp1. Windows. amd64** projeniz ve ayrıca çözümünüzde bir **IotEdgeModule1** projesi vardır. Her bir **AzureIoTEdgeApp1** projesi, `deployment.template.json` IoT Edge çözümünüz için derlemek ve dağıtmak istediğiniz modülleri tanımlayan bir dosyasına sahiptir ve ayrıca modüller arasındaki yolları tanımlar. Varsayılan çözümde bir **SimulatedTemperatureSensor** modülü ve bir **IotEdgeModule1** modülü vardır. **SimulatedTemperatureSensor** modülü, **IotEdgeModule1** modülüne sanal verileri üretir, ancak **IotEdgeModule1** modülündeki varsayılan kod, Azure IoT Hub ileti alma işlemleri için doğrudan kanallar sağlar.
 
 **IotEdgeModule1** projesi bir C# modülle bir .NET Core 2,1 konsol uygulamasıdır. Windows kapsayıcısı veya Linux kapsayıcısı ile çalışan IoT Edge cihazınız için gereken gerekli Docker dosyalarını içerir. `module.json` Dosya, bir modülün meta verilerini açıklar. Azure IoT cihaz SDK 'sını bağımlılık olarak alan gerçek modül kodu, `Program.cs` veya `main.c` dosyasında bulunur.
 
 ## <a name="develop-your-module"></a>Modülü geliştirme
 
-Çözümle birlikte gelen varsayılan modül kodu **IotEdgeModule1** > **program.cs** (for C#) veya **Main. c** (c) konumundadır. Modül ve `deployment.template.json` dosya, çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül, bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **Tempalgılayıcı** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
+Çözümle birlikte gelen varsayılan modül kodu **IotEdgeModule1** > **program.cs** (for C#) veya **Main. c** (c) konumundadır. Modül ve `deployment.template.json` dosya, çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **SimulatedTemperatureSensor** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
 
 Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
 
@@ -121,7 +121,7 @@ Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenli
 
    ![Edge cihaz bağlantı dizesini kopyalayın](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. Araçlar Azure IoT EdgeAraçlar > kurulum IoT Edge simülatörü ' ne gidin, bağlantı dizesini yapıştırın ve Tamam ' a tıklayın. > 
+1. **Araçlar Azure IoT Edge** **Araçlar**kurulum IoT Edge simülatörü ' ne gidin, bağlantı dizesini yapıştırın ve Tamam ' a tıklayın. >  > 
 
    ![Küme kenar bağlantı dizesi penceresini açın](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -172,9 +172,9 @@ Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle b
     ```json
         "routes": {
           "IotEdgeModule1ToIoTHub": "FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIotEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
+          "sensorToIotEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
           "IotEdgeModule2ToIoTHub": "FROM /messages/modules/IotEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIotEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
+          "sensorToIotEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ IoT Edge cihazınızı ayarlamak için kullandığınız hızlı başlangıç ma
    > [!NOTE]
    > Seçmelisiniz değil `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
-1. Birlikte çalışan yeni modülleri **Tempalgılayıcı** modülüyle ve **$edgeAgent** ve **$edgeHub**görmek için Yenile düğmesine tıklayın.
+1. **SimulatedTemperatureSensor** modülüyle ve **$edgeAgent** ve **$edgeHub**birlikte çalışan yeni modülleri görmek için Yenile düğmesine tıklayın.
 
 ## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
 

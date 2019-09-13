@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694298"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916172"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -36,10 +36,9 @@ Bu davranış, gereksiz kişisel veri toplamayı önlemeye yardımcı olmak içi
 
 Varsayılan davranış kişisel verileri toplamayı en aza indirirken, IP adresi verilerini toplama ve depolama esnekliği de sunuyoruz. IP adresleri gibi kişisel verileri depolamayı seçmeden önce, bunun herhangi bir uyumluluk gereksinimini veya tabi olduğunuz yerel düzenlemeleri bozmadığının doğrulanması önemle önerilir. Application Insights kişisel veri işleme hakkında daha fazla bilgi edinmek için [kişisel veriler kılavuzuna](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)bakın.
 
-## <a name="storing-partial-ip-address-data"></a>Kısmi IP adresi verilerini depolama
+## <a name="storing-ip-address-data"></a>IP adresi verileri depolanıyor
 
-Kısmi IP toplamayı ve depolamayı `DisableIpMasking` etkinleştirmek için Application Insights bileşenin özelliği olarak `true`ayarlanmalıdır. Bu özellik Azure Resource Manager şablonlar aracılığıyla ya da REST API çağırarak ayarlanabilir. IP adresleri son sekizli sıfırlanarak kaydedilir.
-
+IP toplamayı ve depolamayı `DisableIpMasking` etkinleştirmek için Application Insights bileşenin özelliği olarak `true`ayarlanmalıdır. Bu özellik Azure Resource Manager şablonlar aracılığıyla ya da REST API çağırarak ayarlanabilir. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
@@ -92,7 +91,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
 
     Bu durumda yeni bir şey satın alınmazız, yalnızca mevcut Application Insights kaynağının yapılandırmasını güncelleştiriyoruz.
 
-6. Dağıtım tamamlandıktan sonra yeni telemetri verileri IP ile doldurulan ilk üç sekizli ve son sekizli sıfırlanarak kaydedilir.
+6. Dağıtım tamamlandıktan sonra yeni telemetri verileri kaydedilir.
 
     Şablonu yeniden seçip düzenleydiyseniz, yalnızca varsayılan şablonu görürsünüz ve yeni eklenen özelliği ve ilişkili değerini göremez. IP adresi verilerini görmüyorsanız ve ayarlandığını doğrulamak `"DisableIpMasking": true` istiyorsanız. Aşağıdaki PowerShell 'i çalıştırın: (Uygun `Fabrikam-dev` kaynak ve kaynak grubu adıyla değiştirin.)
     
@@ -128,7 +127,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetri başlatıcısı
 
-Yalnızca ilk üç sekizli yerine tüm IP adresini kaydetmeniz gerekirse, IP adresini maskelenecek özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) kullanabilirsiniz.
+IP adreslerinin tümünü veya bir kısmını kaydetmeye kıyasla `DisableIpMasking` daha esnek bir alternatif gerekirse, IP 'nin tamamını veya kısmını özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) kullanabilirsiniz. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 

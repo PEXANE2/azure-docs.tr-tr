@@ -2,19 +2,19 @@
 title: Dayanıklı İşlevler tanılama-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısıyla ilgili sorunları tanılamayı öğrenin.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734486"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933514"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler tanılama
 
@@ -32,7 +32,7 @@ Bir Orchestration örneğinin her yaşam döngüsü olayı, bir izleme olayını
 
 * **Hubname**: Düzenleyiclerinizin çalıştığı görev merkezinin adı.
 * **appname**: İşlev uygulamasının adı. Aynı Application Insights örneğini paylaşan birden çok işlevli uygulamanız olduğunda bu faydalıdır.
-* **slotname**: Geçerli işlev uygulamasının çalıştığı [dağıtım yuvası](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) . Bu, ayarlarınızı sürümüne dağıtmak için dağıtım yuvalarından yararlandığınızda yararlı olur.
+* **slotname**: Geçerli işlev uygulamasının çalıştığı [dağıtım yuvası](../functions-deployment-slots.md) . Bu, ayarlarınızı sürümüne dağıtmak için dağıtım yuvalarından yararlandığınızda yararlı olur.
 * **fonksiyonadı**: Orchestrator veya Activity işlevinin adı.
 * **FunctionType**: **Orchestrator** veya **Activity**gibi işlevin türü.
 * **InstanceId**: Orchestration örneğinin benzersiz KIMLIĞI.
@@ -349,12 +349,13 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Işlevleri, işlev kodu doğrudan hata ayıklamayı destekler ve aynı destek, Azure 'da veya yerel olarak çalıştırılmasının yanı sıra Dayanıklı İşlevler ileri taşır. Ancak, hata ayıklarken farkında olacak birkaç davranış vardır:
 
-* Yeniden **Yürüt**: Yeni girişler alındığında Orchestrator işlevleri düzenli olarak yeniden tekrarlanır. Bu, bir Orchestrator işlevinin tek bir *mantıksal* yürütmesi, özellikle işlev kodunda daha önce ayarlandıysa, aynı kesme noktasına birden çok kez ulaşabilme anlamına gelir.
-* **Await**: `await` Her karşılaşıldığında, kalıcı görev çerçevesi dağıtıcısına denetim verir. Bu belirli `await` bir kez karşılaşılırsa, ilişkili görev *hiçbir zaman sürdürülmez* . Görev hiçbir şekilde devam ettirilmediği için, await (Visual Studio 'da F10) *üzerinde* Adımlama gerçekten mümkün değildir. Yalnızca bir görev yeniden yürütüldüğünde, üzerinde adımlamayı yapın.
-* **Mesajlaşma zaman aşımları**: Dayanıklı İşlevler, hem Orchestrator işlevlerinin hem de etkinlik işlevlerinin yürütülmesini sağlamak için sıra iletilerini kullanır. Çoklu VM ortamında, uzun bir süre için hata ayıklamanın kesilmesi, başka bir VM 'nin iletiyi seçmesini ve yinelenen yürütmeye neden olabilir. Bu davranış düzenli sıra tetikleyicisi işlevleri için de bulunur, ancak kuyruklar bir uygulama ayrıntısı olduğundan bu bağlamda işaret etmek önemlidir.
+* Yeniden **Yürüt**: Yeni girişler alındığında Orchestrator işlevleri düzenli olarak yeniden [tekrarlanır](durable-functions-orchestrations.md#reliability) . Bu, bir Orchestrator işlevinin tek bir *mantıksal* yürütmesi, özellikle işlev kodunda daha önce ayarlandıysa, aynı kesme noktasına birden çok kez ulaşabilme anlamına gelir.
+* **Await**: `await` Orchestrator işlevinde her karşılaşıldığında, dayanıklı görev çerçevesi dağıtıcısına denetim verir. Bu belirli `await` bir kez karşılaşılırsa, ilişkili görev *hiçbir zaman sürdürülmez* . Görev hiçbir şekilde devam ettirilmediği için, await (Visual Studio 'da F10) *üzerinde* Adımlama gerçekten mümkün değildir. Yalnızca bir görev yeniden yürütüldüğünde, üzerinde adımlamayı yapın.
+* **Mesajlaşma zaman aşımları**: Dayanıklı İşlevler, Orchestrator, etkinlik ve varlık işlevlerinin yürütülmesini sağlamak için sıra iletilerini dahili olarak kullanır. Çoklu VM ortamında, uzun bir süre için hata ayıklamanın kesilmesi, başka bir VM 'nin iletiyi seçmesini ve yinelenen yürütmeye neden olabilir. Bu davranış düzenli sıra tetikleyicisi işlevleri için de bulunur, ancak kuyruklar bir uygulama ayrıntısı olduğundan bu bağlamda işaret etmek önemlidir.
+* **Durduruluyor ve başlatılıyor**: Dayanıklı işlevlerde iletiler hata ayıklama oturumları arasında kalır. Kalıcı bir işlev yürütülürken hata ayıklamayı durdurur ve yerel ana bilgisayar işlemini sonlandırabilirsiniz, bu işlev gelecekteki bir hata ayıklama oturumunda otomatik olarak yeniden çalıştırılabilir. Bu, beklenmediği zaman kafa karıştırıcı olabilir. Bu davranışı önlemek için, hata ayıklama oturumları arasındaki [iç depolama sıralarındaki](durable-functions-perf-and-scale.md#internal-queue-triggers) tüm iletileri temizleme işlemi bir tekniktir.
 
 > [!TIP]
-> Kesme noktaları ayarlarken, yalnızca yeniden yürütme dışı yürütmeyi bölmek istiyorsanız, yalnızca, `IsReplaying` `false`varsa kesen bir koşullu kesme noktası ayarlayabilirsiniz.
+> Orchestrator işlevlerinde kesme noktaları ayarlarken, yalnızca `IsReplaying` yeniden yürütmeye yönelik yürütmeyi bölmek istiyorsanız, yalnızca ise `false`kesintiye uğramayan koşullu bir kesme noktası ayarlayabilirsiniz.
 
 ## <a name="storage"></a>Depolama
 
@@ -370,4 +371,4 @@ Bu, bir düzenleme için tam olarak hangi durum olduğunu görtiğinden hata ay�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dayanıklı zamanlayıcıları nasıl kullanacağınızı öğrenin](durable-functions-timers.md)
+> [Azure Işlevleri 'nde izleme hakkında daha fazla bilgi edinin](../functions-monitoring.md)

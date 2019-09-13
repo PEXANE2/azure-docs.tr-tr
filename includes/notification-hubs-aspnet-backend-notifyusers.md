@@ -5,23 +5,23 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227785"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934128"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
 
 Aşağıdaki bölümlerde, yeni bir ASP.NET WebAPI arka ucu oluşturma işlemi açıklanmaktadır. Bu işlemin üç ana amacı vardır:
 
-- **İstemcilerin kimliğini**: İstemci isteklerinin kimliğini doğrulamak ve kullanıcıyı istekle ilişkilendirmek için ileti işleyicisi ekleyin.
-- **Kaydetmek için bildirimleri Webapı arka ucunu kullanarak**: Bir istemci cihazının bildirimleri almak yeni kayıtları işlemek üzere bir denetleyici ekleyin. Kimliği doğrulanmış kullanıcı adı, otomatik olarak kayda bir [etiket](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) halinde eklenir.
-- **İstemcilere bildirimleri gönderme**: Cihazları ve etiketle ilişkili istemcilere güvenli bir anında iletme tetiklemek bir yol sağlamak üzere bir denetleyici ekleyin.
+- **Istemcilerin kimliğini doğrulama**: İstemci isteklerinin kimliğini doğrulamak ve kullanıcıyı istekle ilişkilendirmek için bir ileti işleyicisi ekleyin.
+- **WebAPI arka ucunu kullanarak bildirimlere kaydolun**: Bir istemci cihazının bildirimlerini almak için yeni kayıtları işlemek üzere bir denetleyici eklersiniz. Kimliği doğrulanmış kullanıcı adı, otomatik olarak kayda bir [etiket](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) halinde eklenir.
+- **İstemcilere bildirim gönder**: Kullanıcıların, etiketle ilişkilendirilmiş cihazlara ve istemcilere güvenli bir gönderim tetiklemesi için bir yol sağlamak üzere bir denetleyici eklersiniz.
 
 Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 
@@ -59,7 +59,7 @@ Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 
     ![Microsoft Azure Web App’i Yapılandırma penceresi][B5]
 
-    App service planı yapılandır, öğreticiyle devam bu sayfayı görmüyorsanız. Daha sonra uygulamayı yayımlanırken yapılandırabilirsiniz. 
+    App Service planını Yapılandır için bu sayfayı görmüyorsanız öğreticiye devam edin. Uygulamayı daha sonra yayımlarken yapılandırabilirsiniz. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>WebAPI arka ucunda istemcilerin kimliğini doğrulama
 
@@ -140,7 +140,7 @@ Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir i
     ```
 
     > [!NOTE]
-    > Güvenlik Notu: `AuthenticationTestHandler` Sınıfı gerçek kimlik doğrulaması sağlamaz. Yalnızca temel kimlik doğrulamasını taklit etmek için kullanılır ve güvenli değildir. Üretim uygulamalarınızda ve hizmetlerinizde güvenli bir kimlik doğrulama mekanizması uygulamanız gerekir.
+    > Güvenlik notno: Sınıf `AuthenticationTestHandler` , doğru kimlik doğrulaması sağlamaz. Yalnızca temel kimlik doğrulamasını taklit etmek için kullanılır ve güvenli değildir. Üretim uygulamalarınızda ve hizmetlerinizde güvenli bir kimlik doğrulama mekanizması uygulamanız gerekir.
 5. İleti işleyicisini kaydetmek için **App_Start/WebApiConfig.cs** sınıfındaki `Register` yönteminin sonuna aşağıdaki kodu ekleyin:
 
     ```csharp
@@ -185,6 +185,9 @@ Bu bölümde, bildirim hub’ları için istemci kitaplığını kullanarak WebA
         }
     }
     ```
+    > [!IMPORTANT]
+    > Devam etmeden önce hub 'ınızın **adını** ve **Defaultfullsharedaccesssignature** girin. 
+    
 7. Ardından **RegisterController** adlı yeni bir denetleyici oluşturun. Çözüm Gezgini'nde **Denetleyiciler** klasörüne sağ tıklayın, **Ekle**'yi ve ardından **Denetleyici**'yi seçin.
 
 8. **Web API 2 Denetleyicisi - Boş**’u ve ardından **Ekle**’yi seçin.

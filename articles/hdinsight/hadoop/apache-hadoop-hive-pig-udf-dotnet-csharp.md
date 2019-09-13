@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: c05e72cd28c78b26b7c23a123b133d10147a4421
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4e6825b40700fe3bd24631094a2a6060d94524cc
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810775"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882289"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight C# 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile Kullanıcı tanımlı işlevler kullanma
 
@@ -161,7 +161,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
 
 4. Bu uygulamayı dağıtmak istediğiniz HDInsight kümesini genişletin. Metin __(varsayılan depolama hesabı)__ içeren bir giriş listelenir.
 
-    ![Kümenin depolama hesabını gösteren Sunucu Gezgini](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Kümenin depolama hesabını gösteren Sunucu Gezgini](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
     * Bu giriş genişletilirse, küme için varsayılan depolama alanı olarak bir __Azure depolama hesabı__ kullanıyorsunuz demektir. Küme için varsayılan depolamada bulunan dosyaları görüntülemek için, girdiyi genişletin ve __(varsayılan kapsayıcı)__ öğesine çift tıklayın.
 
@@ -171,7 +171,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
 
    * Bir __Azure depolama hesabı__kullanıyorsanız karşıya yükle simgesine tıklayın ve ardından **hivecsharp** proje için **bin\Debug** klasörüne gidin. Son olarak, **Hivecsharp. exe** dosyasını seçip **Tamam**' a tıklayın.
 
-       ![karşıya yükle simgesi](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![karşıya yükle simgesi](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * __Azure Data Lake Storage__kullanıyorsanız, dosya listesinde boş bir alana sağ tıklayın ve ardından __karşıya yükle__' yi seçin. Son olarak, **Hivecsharp. exe** dosyasını seçin ve **Aç**' a tıklayın.
 

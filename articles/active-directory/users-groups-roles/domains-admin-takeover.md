@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872204"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914768"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -43,7 +43,7 @@ SharePoint ve OneDrive içeren bazı ürünler (Office 365 gibi) dışarıdan de
 
 3. Power BI 'den onay e-postasında, **Evet '** i seçin.
 
-4. [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com) Power BI kullanıcı hesabıyla oturum açın. Yönetilmeyen kiracıda zaten doğrulanmış olan etki alanı adının **yöneticisi olmak** üzere size yönlendiren bir ileti alırsınız. **Evet, yönetici olmak istiyorum ' u**seçin.
+4. [Microsoft 365 Yönetim merkezinde](https://portal.office.com/admintakeover) Power BI kullanıcı hesabıyla oturum açın. Yönetilmeyen kiracıda zaten doğrulanmış olan etki alanı adının **yöneticisi olmak** üzere size yönlendiren bir ileti alırsınız. **Evet, yönetici olmak istiyorum ' u**seçin.
   
    ![Yönetici olacak ilk ekran görüntüsü](./media/domains-admin-takeover/become-admin-first.png)
   

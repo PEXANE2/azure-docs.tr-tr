@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308950"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934899"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Hızlı Başlangıç: .NET için Azure Key Vault istemci kitaplığı
 
@@ -118,7 +118,7 @@ Bu işlem, bir dizi anahtar/değer çifti döndürür.
 }
 ```
 
-Aşağıdaki [anahtar kasasında kimlik doğrulaması yapmak için](#authenticate-to-your-key-vault) bu adımları kullanabilmemiz Için ClientID, ClientSecret, SubscriptionID ve tenantıd ' yi bir yere göz atın.
+Aşağıdaki [anahtar kasanıza kimlik doğrulama adımınıza](#authenticate-to-your-key-vault) ulaşacağız, ClientID ve ClientSecret hakkında bir göz atın.
 
 Ayrıca hizmet sorumlusunun AppID 'Sine de ihtiyacınız olacaktır. Şu `--show-mine` parametreyle [az ad SP List](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) çalıştırarak bulabilirsiniz:
 
@@ -156,7 +156,7 @@ Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
 
 ### <a name="authenticate-to-your-key-vault"></a>Anahtar kasanıza kimlik doğrulama
 
-Bu .NET hızlı başlangıç bilgileri, ancak koda yerleştirmeli kimlik bilgilerini depolamak için ortam değişkenlerine bağımlıdır. 
+Bu .NET hızlı başlangıcı, kod içine yerleştirilmemelidir kimlik bilgilerini depolamak için ortam değişkenlerine bağımlıdır. 
 
 Uygulamanızı derleyip çalıştırmadan önce,, `setx` , ve `akvClientId` `akvClientSecret` `akvSubscriptionId` ortam değişkenlerini yukarıda not ettiğiniz değerlere ayarlamak `akvTenantId`için komutunu kullanın.
 
@@ -164,10 +164,6 @@ Uygulamanızı derleyip çalıştırmadan önce,, `setx` , ve `akvClientId` `akv
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 Her çağırdığınızda `setx`, "başarılı:" yanıtını almalısınız. Belirtilen değer kaydedildi. "
@@ -178,7 +174,7 @@ Bu ortam değişkenlerini kodunuzdaki dizelere atayın ve ardından bunları [Ke
 
 ### <a name="save-a-secret"></a>Gizli dizi Kaydet
 
-Uygulamanızın kimliği doğrulandığına göre, [Setsecretasync metodunu](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) kullanarak keykasanıza gizli dizi ekleyebilirsiniz, bu, formda `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`olan anahtar kasasının URL 'sini gerektirir. Ayrıca gizli dizi için bir ad gerektirir; "mySecret" i kullanıyoruz.  Bu dizeleri, resue için bir değişkene atamak isteyebilirsiniz.
+Uygulamanızın kimliği doğrulandığına göre, [Setsecretasync metodunu](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) kullanarak keykasanıza gizli dizi ekleyebilirsiniz, bu, formda `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`olan anahtar kasasının URL 'sini gerektirir. Ayrıca gizli dizi için bir ad gerektirir; "mySecret" i kullanıyoruz.  Bu dizeleri yeniden kullanım için bir değişkene atamak isteyebilirsiniz.
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

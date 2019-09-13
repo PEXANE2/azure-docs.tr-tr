@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 22a2eddcd94f6082d248450d825c5ba12b31571e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 372ff752f27360058c4a2c2722e24efe15202dd8
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810351"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916721"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
@@ -45,7 +45,7 @@ Bu uygulamayı (Hue) dağıtmak için gerekli dosyalar:
 
 1. Aşağıdaki resme tıklayarak Azure'da oturum açın ve Azure portalında Resource Manager şablonunu açın.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
     Bu düğme Azure portalında bir Resource Manager şablonu açar.  Kaynak Yöneticisi şablonu konumunda [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)bulunur.  Bu kaynak yöneticisi şablonunun nasıl yazılacağını öğrenmek için bkz [. MSDN: HDInsight uygulaması](https://msdn.microsoft.com/library/mt706515.aspx)yükler.
 2. **Parametreler** dikey penceresinde aşağıdakileri girin:
@@ -60,7 +60,7 @@ Bu uygulamayı (Hue) dağıtmak için gerekli dosyalar:
 
 1. Aşağıdaki resme tıklayarak Azure'da oturum açın ve Azure portalında Resource Manager şablonunu açın.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
     Bu düğme Azure portalında bir Resource Manager şablonu açar.  Kaynak Yöneticisi şablonu konumunda [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json)bulunur.  Bu kaynak yöneticisi şablonunun nasıl yazılacağını öğrenmek için bkz [. MSDN: HDInsight uygulaması](https://msdn.microsoft.com/library/mt706515.aspx)yükler.
 2. Küme oluşturmak ve Hue uygulamasını yüklemek için yönergeleri izleyin. HDInsight kümeleri oluşturma hakkında daha fazla bilgi için bkz. [HDInsight’ta Linux tabanlı Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
@@ -88,12 +88,12 @@ Bir uygulama yüklemesi başarısız olduysa 3 yerden hata iletileri ve hata ay�
 
     Portaldan kümeyi açın ve Ayarlar dikey penceresinden Uygulamalar’a tıklayın:
 
-    ![hdinsight applications application installation error](./media/hdinsight-apps-install-applications/hdinsight-apps-error.png)
+    ![hdinsight applications application installation error](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png)
 * HDInsight betik eylemi: HDInsight uygulamalarının hata iletisi bir betik eylemi başarısızlığını gösteriyorsa, betik hatası hakkında daha fazla ayrıntı betik eylemleri bölmesinde gösterilecektir.
 
     Ayarlar dikey penceresinden Betik Eylemi’ne tıklayın. Betik eylemi geçmişinde hata iletileri gösterilir
 
-    ![hdinsight applications script action error](./media/hdinsight-apps-install-applications/hdinsight-apps-script-action-error.png)
+    ![hdinsight applications script action error](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
 * Ambarı Web Kullanıcı arabirimi: Install betiği hatanın nedeniydi, Install betiklerine ilişkin tam günlükleri denetlemek için ambarı Web Kullanıcı arabirimini kullanın.
 
     Daha fazla bilgi için bkz. [Sorun giderme](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).

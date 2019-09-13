@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478853"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933062"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure haritalar 'ı kullanarak bir mağaza Bulucu oluşturma
 
@@ -35,7 +35,7 @@ Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıc
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticideki adımları tamamlayabilmeniz için öncelikle [Azure haritalar hesabınızı oluşturmanız](./tutorial-search-location.md#createaccount) ve [hesabınızın abonelik anahtarını almanız](./tutorial-search-location.md#getkey)gerekir.
+Bu öğreticideki adımları tamamlayabilmeniz için öncelikle [Azure haritalar hesabınızı oluşturmanız](./tutorial-search-location.md#createaccount) ve hesabınızın birincil abonelik anahtarını almak için [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izlemeniz gerekir.
 
 ## <a name="design"></a>Tasarım
 
@@ -417,7 +417,7 @@ Bu noktada, her şey Kullanıcı arabiriminde ayarlanır. Şimdi, verileri yükl
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'

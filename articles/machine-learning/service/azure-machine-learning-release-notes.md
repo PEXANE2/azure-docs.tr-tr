@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860929"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930732"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
 
@@ -25,7 +25,7 @@ Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların 
 
 ## <a name="2019-09-09"></a>2019-09-09
 
-### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Azure Machine Learning çalışma alanları için yeni Web deneyimi (Önizleme)
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları için yeni Web deneyimi (Önizleme) 
 Yeni Web deneyimi, veri bilimcilerinin ve veri mühendislerinin kendi uçtan uca makine öğrenimi yaşam döngüsünü tamamlamalarını ve modelleri tek bir konumda eğitmek ve dağıtmak için verileri görselleştirmesini ve dağıtmalarını sağlar. 
 
 ![Azure Machine Learning çalışma alanı kullanıcı arabirimi (Önizleme)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
@@ -34,7 +34,7 @@ Yeni Web deneyimi, veri bilimcilerinin ve veri mühendislerinin kendi uçtan uca
 
 Bu yeni Azure Machine Learning arabirimini kullanarak şu anda şunları yapabilirsiniz:
 + Not defterlerinizi yönetin veya Jupyıter 'a bağlayın
-+ Otomatik ML denemeleri çalıştırma
++ [Otomatik ML denemeleri çalıştırma](tutorial-first-experiment-automated-ml.md)
 + [Yerel dosyalardan, veri depolarından, & Web dosyalarından veri kümeleri oluşturma](how-to-create-register-datasets.md)
 + Model oluşturma için veri kümelerini hazırlama & hazırla
 + Modelleriniz için veri kayması izleme 

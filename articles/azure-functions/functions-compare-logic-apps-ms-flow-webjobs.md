@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9543e67d0f98836f760ac840fa12ec5718da037e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39c40f29f4548f2e7379472427a2c97f1a0b762c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086036"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932965"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow, Logic Apps, Işlevler ve Web Işleri nelerdir?
 
@@ -50,9 +50,9 @@ Aşağıdaki tablo, Microsoft Flow veya Logic Apps belirli bir tümleştirme iç
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure İşlevleri ve Azure Logic Apps karşılaştırması
 
-İşlevler ve Logic Apps, sunucusuz iş yüklerine olanak tanıyan Azure hizmetleridir. Azure Işlevleri sunucusuz bir işlem hizmetidir, ancak Azure Logic Apps sunucusuz iş akışları sağlar. Her ikisi de karmaşıkdüzenlemeler oluşturabilir. Düzenleme, Logic Apps’te karmaşık bir görevin gerçekleştirilmesi için yürütülen, *eylemler* olarak adlandırılan işlevlerin veya adımların bir koleksiyonudur. Örneğin, bir dizi siparişi işlemek için, bir işlevin birçok örneğini paralel olarak yürütebilir, tüm örneklerin bitmesini bekleyebilir ve sonra toplama üzerinde bir sonuç hesaplayan bir işlev yürütebilirsiniz.
+İşlevler ve Logic Apps, sunucusuz iş yüklerine olanak tanıyan Azure hizmetleridir. Azure Işlevleri sunucusuz bir işlem hizmetidir, ancak Azure Logic Apps sunucusuz iş akışları sağlar. Her ikisi *de karmaşık düzenlemeler*oluşturabilir. Düzenleme, Logic Apps’te karmaşık bir görevin gerçekleştirilmesi için yürütülen, *eylemler* olarak adlandırılan işlevlerin veya adımların bir koleksiyonudur. Örneğin, bir dizi siparişi işlemek için, bir işlevin birçok örneğini paralel olarak yürütebilir, tüm örneklerin bitmesini bekleyebilir ve sonra toplama üzerinde bir sonuç hesaplayan bir işlev yürütebilirsiniz.
 
-Azure İşlevleri için düzenlemeleri kod yazarak ve [Dayanıklı İşlevler uzantısını](durable/durable-functions-concepts.md) kullanarak geliştirirsiniz. Logic Apps için düzenlemeleri, GUI kullanarak veya yapılandırma dosyalarını düzenleyerek oluşturursunuz.
+Azure İşlevleri için düzenlemeleri kod yazarak ve [Dayanıklı İşlevler uzantısını](durable/durable-functions-overview.md) kullanarak geliştirirsiniz. Logic Apps için düzenlemeleri, GUI kullanarak veya yapılandırma dosyalarını düzenleyerek oluşturursunuz.
 
 Düzenleme oluşturduğunuzda, mantıksal uygulamalardan işlev çağırdığınızda ve işlevlerden mantıksal uygulama çağırdığınızda hizmetleri karıştırıp eşleştirebilirsiniz. Hizmet özelliklerine veya kişisel tercihinize göre her düzenlemenin nasıl oluşturulacağını seçin. Aşağıdaki tabloda bu hizmetler arasındaki temel farklılıklardan bazıları listelenmektedir:
  

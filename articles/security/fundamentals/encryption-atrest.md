@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873196"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918878"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -39,7 +39,7 @@ Bekleyen şifreleme, kalıcı olduğunda verilerin kodlanması (şifreleme). Azu
 - Verileri depolamaya yazıldığı şekilde şifrelemek için bir simetrik şifreleme anahtarı kullanılır.
 - Aynı şifreleme anahtarı, bellekte kullanım için yeniden kullanıma hazır olduğundan bu verilerin şifresini çözmek için kullanılır.
 - Veriler bölümlenebilir ve her bölüm için farklı anahtarlar kullanılabilir.
-- Anahtarlar kimlik tabanlı erişim denetimi ve denetim ilkeleriyle güvenli bir yerde depolanmalıdır. Veri şifreleme anahtarları, erişimi daha fazla kısıtlamak için genellikle asimetrik şifreleme ile şifrelenir.
+- Anahtarlar kimlik tabanlı erişim denetimi ve denetim ilkeleriyle güvenli bir yerde depolanmalıdır. Veri şifreleme anahtarları genellikle, erişimi daha fazla sınırlandırmak için Azure Key Vault bir anahtar şifreleme anahtarıyla şifrelenir.
 
 Uygulamada, önemli yönetim ve denetim senaryolarında, ölçek ve kullanılabilirlik açısından ek yapılar gerekir. Rest kavramlarını ve bileşenlerini Microsoft Azure şifreleme aşağıda açıklanmıştır.
 
@@ -71,12 +71,12 @@ Azure Key Vault ' de depolanan anahtarları kullanarak, bekleyen şifreleme ve �
 
 ### <a name="key-hierarchy"></a>Anahtar hiyerarşisi
 
-Rest uygulamasında bir şifrelemede birden fazla şifreleme anahtarı kullanılıyor. Asimetrik şifreleme, anahtar erişimi ve yönetimi için gereken güveni ve kimlik doğrulamasını oluşturmak için kullanışlıdır. Simetrik şifreleme, toplu şifreleme ve şifre çözme işlemleri için daha verimlidir ve daha güçlü şifreleme ve daha iyi performans sağlar. Tek bir şifreleme anahtarının kullanımını kısıtlamak, anahtarın tehlikeye girdiği riski azaltır ve bir anahtarın değiştirilebilmesi için yeniden şifrelemenin maliyeti azalır. Rest modellerindeki Azure şifrelemeleri, aşağıdaki anahtar türlerinden oluşan bir anahtar hiyerarşisi kullanır:
+Rest uygulamasında bir şifrelemede birden fazla şifreleme anahtarı kullanılıyor. Bir şifreleme anahtarının Azure Key Vault, anahtarların güvenli anahtar erişimini ve merkezi yönetimini sağlar. Ancak, şifreleme anahtarlarına hizmet yerel erişimi, her veri işlemi için Key Vault etkileşimde bulunarak, daha güçlü şifreleme ve daha iyi performans sağlayan toplu şifreleme ve şifre çözme işlemleri için daha verimlidir. Tek bir şifreleme anahtarının kullanımını kısıtlamak, anahtarın tehlikeye girdiği riski azaltır ve bir anahtarın değiştirilebilmesi için yeniden şifrelemenin maliyeti azalır. Rest modellerdeki Azure şifrelemeleri, tüm bu ihtiyaçları karşılamak için aşağıdaki anahtar türlerinden oluşan bir anahtar hiyerarşisi kullanır:
 
 - **Veri şifreleme anahtarı (dek)** – bir bölümü veya veri bloğunu şifrelemek için kullanılan BIR simetrik AES256 anahtarı.  Tek bir kaynakta birçok bölüm ve birçok veri şifreleme anahtarı olabilir. Farklı bir anahtarla her bir veri bloğunu şifrelemek, şifre çözümleme saldırılarını daha zor hale getirir. Belirli bir bloğu şifreleyen ve şifresini çözen kaynak sağlayıcı veya uygulama örneği, DEKs 'e erişim için gereklidir. Bir DEK yeni bir anahtarla değiştirildiğinde, yalnızca ilişkili bloğundaki veriler yeni anahtarla yeniden şifrelenmelidir.
-- **Anahtar şifreleme anahtarı (kek)** : veri şifreleme anahtarlarını şifrelemek için kullanılan asimetrik şifreleme anahtarı. Anahtar şifreleme anahtarının kullanılması, veri şifreleme anahtarlarının kendilerine şifreli ve denetimli olmasını sağlar. KEK 'e erişimi olan varlık, DEK gerektiren varlıktan farklı olabilir. Bir varlık her bir DEK ' ın erişimini belirli bir bölüme sınırlamak için DEK aracı erişimi sağlayabilir. KEK 'in şifresini çözmek için gerekli olduğundan, KEK, KEK silinerek etkin bir şekilde silinebilen tek bir noktasıdır.
+- **Anahtar şifreleme anahtarı (kek)** : veri şifreleme anahtarlarını şifrelemek için kullanılan bir şifreleme anahtarı. Key Vault hiçbir şekilde ayrılmayacak anahtar şifreleme anahtarının kullanımı, veri şifreleme anahtarlarının kendilerine şifreli ve denetimli olmasını sağlar. KEK 'e erişimi olan varlık, DEK gerektiren varlıktan farklı olabilir. Bir varlık her bir DEK ' ın erişimini belirli bir bölüme sınırlamak için DEK aracı erişimi sağlayabilir. KEK 'in şifresini çözmek için gerekli olduğundan, KEK, KEK silinerek etkin bir şekilde silinebilen tek bir noktasıdır.
 
-Anahtar şifreleme anahtarlarıyla şifrelenen veri şifreleme anahtarları ayrı olarak saklanır ve yalnızca anahtar şifreleme anahtarına erişimi olan bir varlık, bu anahtarla şifrelenen veri şifreleme anahtarlarını alabilir. Farklı anahtar depolama modelleri desteklenir. Sonraki bölümde daha sonra her bir modeli daha ayrıntılı tartışacağız.
+Anahtar şifreleme anahtarlarıyla şifrelenen veri şifreleme anahtarları ayrı olarak saklanır ve yalnızca anahtar şifreleme anahtarına erişimi olan bir varlık bu veri şifreleme anahtarlarının şifresini çözebilir. Farklı anahtar depolama modelleri desteklenir. Sonraki bölümde daha sonra her bir modeli daha ayrıntılı tartışacağız.
 
 ## <a name="data-encryption-models"></a>Veri şifreleme modelleri
 
@@ -150,7 +150,9 @@ Hizmet tarafından yönetilen anahtarlarla sunucu tarafı şifreleme kullanıld�
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
 
-Gereksinimin, bekleyen verileri şifrelemek ve şifreleme anahtarlarını denetlemek için gereken senaryolarda, müşteriler Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifrelemeyi kullanabilir. Bazı hizmetler Azure Key Vault yalnızca kök anahtar şifreleme anahtarını saklayabilir ve şifreli veri şifreleme anahtarını verilere daha yakın bir iç konuma saklayabilir. Bu senaryoda müşteriler, kendi anahtarlarını Key Vault (BYOK – Kendi Anahtarını Getir) öğesine getirebilir ya da yenilerini oluşturabilir ve bunları istediğiniz kaynakları şifrelemek için kullanabilir. Kaynak sağlayıcısı şifreleme ve şifre çözme işlemlerini gerçekleştirerek, yapılandırılan anahtarı tüm şifreleme işlemleri için kök anahtar olarak kullanır.
+Gereksinimin, bekleyen verileri şifrelemek ve şifreleme anahtarlarını denetlemek için gereken senaryolarda, müşteriler Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifrelemeyi kullanabilir. Bazı hizmetler Azure Key Vault yalnızca kök anahtar şifreleme anahtarını saklayabilir ve şifreli veri şifreleme anahtarını verilere daha yakın bir iç konuma saklayabilir. Bu senaryoda müşteriler, kendi anahtarlarını Key Vault (BYOK – Kendi Anahtarını Getir) öğesine getirebilir ya da yenilerini oluşturabilir ve bunları istediğiniz kaynakları şifrelemek için kullanabilir. Kaynak sağlayıcısı şifreleme ve şifre çözme işlemlerini gerçekleştirdiğinde, yapılandırılan anahtar şifreleme anahtarını tüm şifreleme işlemleri için kök anahtar olarak kullanır.
+
+Anahtar şifreleme anahtarlarının kaybolması, veri kaybı anlamına gelir. Bu nedenle anahtarlar silinmemelidir. Anahtarlar her oluşturulduğunda veya döndürüldüğünde yedeklenmelidir. Anahtar şifreleme anahtarlarını depolayan kasalardaki [geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) etkinleştirilmelidir. Anahtar silmek yerine, etkin ayarını false olarak ayarlayın veya bitiş tarihini ayarlayın.
 
 ##### <a name="key-access"></a>Anahtar erişimi
 

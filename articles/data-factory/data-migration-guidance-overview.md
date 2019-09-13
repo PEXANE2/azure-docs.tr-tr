@@ -12,49 +12,49 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258995"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931126"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın 
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın
 
-Azure Data Factory Data Lake veya kurumsal veri Ambarınızı (EDW) Azure 'a geçirmek istediğinizde veri geçişini yapmak için araç olabilir. Data Lake geçişi ve veri ambarı geçişi, aşağıdaki senaryolarla ilgilidir: 
+Data Lake veya kurumsal veri Ambarınızı (EDW) Microsoft Azure geçirmek istiyorsanız Azure Data Factory kullanmayı düşünün. Azure Data Factory, aşağıdaki senaryolara uygundur:
 
-- AWS S3, şirket içi Hadoop dosya sisteminden Azure 'a büyük veri iş yükü geçişi. 
-- Oracle sınavlarından (Netezza, Teradata, AWS Redshift 'den Azure 'a) EDW geçişi. 
+- Amazon Simple Storage Service (Amazon S3) veya şirket içi Hadoop Dağıtılmış Dosya Sistemi (bir) ile Azure 'a büyük veri iş yükü geçişi
+- Oracle sınavlarından, Netezza, Teradata 'dan veya Amazon Redshift 'ten Azure 'a geçiş EDW
 
-Azure Data Factory Data Lake geçişi için veri PBs ve veri ambarı geçişi için on TB veri taşıyabilir. 
+Azure Data Factory Data Lake geçişi için petabaytlarca (PB) verilerin yanı sıra veri ambarı geçişi için on terabaytlık (TB) veri taşıyabilir.
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Veri geçişi için neden Azure Data Factory kullanılabilir? 
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Veri geçişi için neden Azure Data Factory kullanılabilir?
 
-- Azure Data Factory, yüksek performanslı, esnekliği ve ölçeklenebilirlik sayesinde verileri sunucusuz şekilde taşımak için horsegüç miktarını kolayca ölçeklendirebilir ve yalnızca kullandığınız kadar ödeyin.  
-  - Azure Data Factory veri hacminde ve dosya sayısıyla ilgili bir sınırlama yoktur.
-  - Azure Data Factory, ortamınızda en yüksek veri taşıma aktarım hızını elde etmek için ağınızı ve depolama bant genişliğinizi 100.   
-  - Azure Data Factory Kullandıkça Öde stratejisinden sonra, yalnızca Azure 'a veri geçişi yapmak için Azure Data Factory kullandığınız zaman ödeme yapmanız gerekir.  
-- Azure Data Factory, tek seferlik bir geçmiş yükü ve zamanlanmış artımlı yükü gerçekleştirebilme olanağı vardır. 
-- Azure Data Factory, verileri genel olarak erişilebilen Veri Gölü/ambar uç noktaları arasında taşımak için Azure IR kullanır veya alternatif olarak, sanal ağ veya güvenlik duvarının arkasındaki Data Lake/Warehouse uç noktaları için verileri taşımak üzere şirket içinde barındırılan IR kullanır 
-- Azure Data Factory kurumsal düzeyde güvenliğe sahiptir: güvenli hizmetten hizmete tümleştirme için MSI veya hizmet kimliğini kullanın veya alternatif olarak kimlik bilgileri yönetimi için Azure Key Vault yararlanın. 
-- Azure Data Factory, kod ücretsiz yazma deneyimi ve zengin yerleşik izleme panosu sağlar.  
+- Azure Data Factory, yüksek performanslı, esnekliği ve ölçeklenebilirlik sayesinde verileri sunucusuz bir şekilde taşımak için işlem gücü miktarını kolayca ölçeklendirebilir. Ve yalnızca kullandığınız kadar ödersiniz. Ayrıca aşağıdakilere de göz önünde bırakabilirsiniz: 
+  - Azure Data Factory veri hacminde veya dosya sayısında hiçbir sınırlama yoktur.
+  - Azure Data Factory, ortamınızda en yüksek miktarda veri hareketi elde etmenizi sağlamak için ağınızı ve depolama bant genişliğinizi tam olarak kullanabilir.
+  - Azure Data Factory Kullandıkça Öde yöntemini kullanır, böylece yalnızca gerçekten Azure 'a veri geçişini çalıştırmak için kullandığınız süre için ödeme yaparsınız.  
+- Azure Data Factory, hem tek seferlik geçmiş yükleme hem de zamanlanmış artımlı yüklemeler gerçekleştirebilir.
+- Azure Data Factory, verileri herkese açık veri Gölü ve ambar uç noktaları arasında taşımak için Azure Integration Runtime (IR) kullanır. Ayrıca, Azure sanal ağ (VNet) içinde veya bir güvenlik duvarının arkasındaki Data Lake ve ambar uç noktaları için verileri taşımak amacıyla kendinden konak IR kullanabilir.
+- Azure Data Factory kurumsal düzeyde güvenliğe sahiptir: Güvenli hizmetten hizmete tümleştirme için Windows Installer (MSI) veya hizmet kimliğini veya kimlik bilgisi yönetimi için Azure Key Vault kullanabilirsiniz.
+- Azure Data Factory, kod ücretsiz yazma deneyimi ve zengin, yerleşik bir izleme panosu sağlar.  
 
 ## <a name="online-vs-offline-data-migration"></a>Çevrimiçi ve çevrimdışı veri geçişi
 
-Azure Data Factory, verileri ağ üzerinden (Internet, ER veya VPN) aktarmaya yönelik tipik bir çevrimiçi veri geçiş aracıdır. Bu, çevrimdışı veri geçişinin, kullanıcıların kuruluşunuzdaki veri aktarımı cihazlarını Azure veri merkezine fiziksel olarak göndermesine olanak sağlar.  
+Azure Data Factory, verileri bir ağ üzerinden (Internet, ER veya VPN) aktarmak için standart bir çevrimiçi veri geçiş aracıdır. Çevrimdışı veri geçişi sayesinde kullanıcılar, kuruluşlarından veri aktarımı cihazlarını Azure veri merkezine fiziksel olarak teslim alırlar.  
 
-Çevrimiçi ve çevrimdışı geçiş yaklaşımı seçerken dikkat etmeniz gereken üç önemli noktalar vardır:  
+Çevrimiçi ve çevrimdışı geçiş yaklaşımı arasından seçim yaparken dikkate alınacak üç önemli noktalar vardır:  
 
-- Geçirilecek verilerin boyutu. 
-- Ağ bant genişliği. 
-- Geçiş penceresi.   
+- Geçirilecek verilerin boyutu
+- Ağ bant genişliği
+- Geçiş penceresi
 
-Veri geçişini iki hafta içinde (geçiş penceresi) gerçekleştirmek istiyorsanız, farklı veri boyutu ve ağ bant genişliğine sahip çevrimiçi geçiş aracı (Azure Data Factory) kullanmanın ne zaman iyi olduğunu göstermek için aşağıdaki resimde kesme satırı görebilirsiniz.   
+Örneğin, veri geçişinizi iki hafta içinde ( *geçiş pencereniz*) tamamlamaya yönelik Azure Data Factory kullanacağınızı varsayalım. Aşağıdaki tabloda pembe/mavi kesme hattına dikkat edin. Verilen herhangi bir sütun için en düşük pembe hücre, geçiş penceresi iki haftadan en yakın olan veri boyutu/ağ bant genişliği eşleştirmesini gösterir. (Mavi hücredeki herhangi bir boyut/bant genişliği eşleştirmesi iki haftadan uzun bir çevrimiçi geçiş penceresine sahiptir.) 
 
-![çevrimiçi ve çevrimdışı](media/data-migration-guidance-overview/online-offline.png)
+![çevrimiçi ve çevrimdışı](media/data-migration-guidance-overview/online-offline.png) Bu tablo, verilerinizin boyutuna ve kullanılabilir ağ bant genişliğine göre çevrimiçi geçiş (Azure Data Factory) aracılığıyla amaçlanan geçiş pencerenizi karşılayıp karşılamadığını belirlemenize yardımcı olur. Çevrimiçi geçiş penceresi iki haftadan uzun olursa çevrimdışı geçiş kullanmak isteyeceksiniz.
 
 > [!NOTE]
-> Çevrimiçi geçiş yaklaşımının avantajı, geçmiş veri yükleme ve artımlı akışların her ikisinin de bir araç ile sona erdirmek için bir arada elde etmenizi sağlar.  Bunu yaptığınızda veriler, tüm geçiş penceresi sırasında mevcut ve yeni mağaza arasında eşitlenmiş durumda tutularak, ETL mantığınızı yenilenen verilerle yeni depoda yeniden oluşturabilirsiniz. 
+> Çevrimiçi geçiş kullanarak, hem geçmiş veri yükleme hem de artımlı akışların tek bir araç aracılığıyla uçtan uca elde edebilirsiniz.  Bu yaklaşım sayesinde verileriniz, tüm geçiş penceresi sırasında mevcut mağaza ve yeni mağaza arasında eşitlenebilir. Bu, ETL mantığınızı yenilenen verilerle yeni depoda yeniden oluşturabileceğiniz anlamına gelir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

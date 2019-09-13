@@ -8,18 +8,21 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232678"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918594"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları PCI-DSS v 3.2.1 şema örneğinin PCI-DSS v 3.2.1 denetimleriyle nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
 Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Preview\] Audit PCI v 3.2.1:2018 denetimlerini** bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belirli VM uzantılarını dağıtın.
+
+> [!IMPORTANT]
+> Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)bakın.
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 ve 1.3.4 sınır koruması
 
@@ -79,7 +82,7 @@ servislere.
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 sürümlü ve 8.1.5 en az ayrıcalık ve Kullanıcı erişim haklarının Incelenmesi
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, yönetici [](../../../policy/overview.md) hesap tanımlarını, hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirilmek üzere önceliklendirilmek zorunda olan denetim hesaplarına atar.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, yönetici [Hesap tanımlarını,](../../../policy/overview.md) hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirilmek üzere önceliklendirilmek zorunda olan denetim hesaplarına atar.
 
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
@@ -134,7 +137,7 @@ PCI-DSS v 3.2.1 Blueprint denetim eşlemesini gözden geçirdiğinize göre, gen
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

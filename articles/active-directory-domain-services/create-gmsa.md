@@ -1,73 +1,108 @@
 ---
-title: 'Azure Active Directory Domain Services: Grup tarafından yönetilen hizmet hesabı oluştur | Microsoft Docs'
+title: Azure AD Domain Services için yönetilen hizmet hesaplarını Gruplandır | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen etki alanları ile kullanmak üzere bir grup yönetilen hizmet hesabı (gMSA) oluşturmayı öğrenin
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 3742aed7ff39e0a2f6bdf353fb9f261176027422
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612951"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898222"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında Grup yönetilen hizmet hesabı (gMSA) oluşturma
-Bu makalede, yönetilen hizmet hesaplarının Azure AD Domain Services yönetilen bir etki alanında nasıl oluşturulacağı gösterilmektedir.
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services içinde bir grup yönetilen hizmet hesabı (gMSA) oluşturun
 
-## <a name="managed-service-accounts"></a>Yönetilen hizmet hesapları
-Tek başına yönetilen hizmet hesabı (sMSA), parolası otomatik olarak yönetilen bir yönetilen etki alanı hesabıdır. Hizmet asıl adı (SPN) yönetimini basitleştirir ve diğer yöneticilere Temsilcili yönetim sağlar. Bu tür yönetilen hizmet hesabı (MSA) Windows Server 2008 R2 ve Windows 7 ' de tanıtılmıştır.
+Uygulamalar ve hizmetler genellikle diğer kaynaklarla kimlik doğrulaması yapmak için bir kimliğe sahip olmalıdır. Örneğin, bir Web hizmetinin bir veritabanı hizmeti ile kimlik doğrulaması yapması gerekebilir. Bir uygulama veya hizmette, Web sunucusu grubu gibi birden çok örnek varsa, bu kaynakların kimliklerini el ile oluşturma ve yapılandırma zaman alıcı alır. Bunun yerine, Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanında bir grup yönetilen hizmet hesabı (gMSA) oluşturulabilir. Windows işletim sistemi, büyük kaynak gruplarının yönetimini kolaylaştıran bir gMSA 'nın kimlik bilgilerini otomatik olarak yönetir.
 
-Grup tarafından yönetilen hizmet hesabı (gMSA), etki alanındaki birçok sunucu için aynı avantajları sağlar. Bir sunucu grubunda barındırılan bir hizmetin tüm örneklerinin, karşılıklı kimlik doğrulama protokollerinin çalışması için aynı hizmet sorumlusunu kullanması gerekir. Bir gMSA hizmet sorumlusu olarak kullanıldığında, Windows işletim sistemi, hesabın parolasını yöneticiye güvenmek yerine yönetir.
+Bu makalede, Azure AD DS yönetilen bir etki alanında gMSA 'Nın nasıl oluşturulacağı gösterilmektedir.
 
-**Daha fazla bilgi:**
-- [Grup yönetilen hizmet hesaplarına genel bakış](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Grup tarafından yönetilen hizmet hesapları ile çalışmaya başlama](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+## <a name="before-you-begin"></a>Başlamadan önce
 
+Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Azure AD etki alanı Hizmetleri 'nde hizmet hesaplarını kullanma
-Azure AD Domain Services yönetilen etki alanları Microsoft tarafından kilitlidir ve yönetilir. Azure AD Domain Services ile hizmet hesapları kullanırken birkaç temel dikkat edilecek önemli noktalar vardır.
+* Etkin bir Azure aboneliği.
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
+    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+    * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
+* Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
+    * Gerekirse, [bir yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticiyi izleyin.
 
-### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>Yönetilen etki alanında özel kuruluş birimleri (OU) içinde hizmet hesapları oluşturma
-Yerleşik ' AADDC Users ' veya ' AADDC Computers ' Kurumsal birimlerinde bir hizmet hesabı oluşturamazsınız. Yönetilen etki alanında [Özel BIR OU oluşturun](create-ou.md) ve ardından bu özel OU içinde hizmet hesapları oluşturun.
+## <a name="managed-service-accounts-overview"></a>Yönetilen hizmet hesaplarına genel bakış
 
-### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>Anahtar Dağıtım Hizmetleri (KDS) kök anahtarı önceden oluşturulmuş
-Anahtar Dağıtım Hizmetleri (KDS) kök anahtarı Azure AD Domain Services yönetilen bir etki alanında önceden oluşturulur. KDS kök anahtarı oluşturmanız gerekmez ve bunu yapmak için ayrıcalıklarınız yoktur. Yönetilen etki alanında KDS kök anahtarını görüntüleyemezsiniz.
+Tek başına yönetilen hizmet hesabı (sMSA), parolası otomatik olarak yönetilen bir etki alanı hesabıdır. Bu yaklaşım hizmet asıl adı (SPN) yönetimini basitleştirir ve diğer yöneticilere Temsilcili yönetim sağlar. Hesap için kimlik bilgilerini el ile oluşturmanız ve döndürmeniz gerekmez.
 
-## <a name="sample---create-a-gmsa-using-powershell"></a>Örnek-PowerShell kullanarak gMSA oluşturma
-Aşağıdaki örnek, PowerShell kullanarak özel bir OU oluşturmayı gösterir. Daha sonra bu OU içinde, OU 'yu belirtmek için ```-Path``` parametresini kullanarak bir gMSA oluşturabilirsiniz.
+Grup tarafından yönetilen hizmet hesabı (gMSA), aynı yönetim basitleştirmesine, ancak etki alanındaki birden çok sunucuya yönelik olarak sahiptir. Bir gMSA, bir sunucu grubunda barındırılan tüm hizmet örneklerinin, karşılıklı kimlik doğrulama protokollerinin çalışması için aynı hizmet sorumlusunu kullanmasına izin verir. Bir gMSA hizmet sorumlusu olarak kullanıldığında, Windows işletim sistemi, yöneticinin güvenmek yerine hesabın parolasını yönetir.
+
+Daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları (gMSA) genel bakış][gmsa-overview].
+
+## <a name="using-service-accounts-in-azure-ad-ds"></a>Azure AD DS hizmet hesaplarını kullanma
+
+Azure AD DS yönetilen etki alanları Microsoft tarafından kilitlendiğinden ve yönetiliyorsa, hizmet hesapları kullanılırken bazı önemli noktalar vardır:
+
+* Yönetilen etki alanındaki özel kuruluş birimlerinde (OU) hizmet hesapları oluşturun.
+    * Yerleşik *Aaddc kullanıcıları* veya *Aaddc bilgisayarları* OU 'larda bir hizmet hesabı oluşturamazsınız.
+    * Bunun yerine, Azure AD DS yönetilen etki alanında [Özel BIR OU oluşturun][create-custom-ou] ve ardından bu özel OU 'da hizmet hesapları oluşturun.
+* Anahtar Dağıtım Hizmetleri (KDS) kök anahtarı önceden oluşturulmuştur.
+    * KDS kök anahtarı, gMSAs için parola oluşturmak ve almak için kullanılır. Azure AD DS 'de, KDS kökü sizin için oluşturulur.
+    * Başka bir oluşturma ayrıcalığınız yok veya varsayılan, KDS kök anahtarını görüntüle.
+
+## <a name="create-a-gmsa"></a>GMSA oluşturma
+
+İlk olarak, [New-ADOrganizationalUnit][New-AdOrganizationalUnit] cmdlet 'ini kullanarak özel bir OU oluşturun. Özel OU 'Lar oluşturma ve yönetme hakkında daha fazla bilgi için bkz. [Azure AD DS 'Daki özel OU 'lar][create-custom-ou].
+
+Aşağıdaki örnekte, *contoso.com*adlı Azure AD DS yönetilen etki alanında *Mynewou* adlı özel bir OU oluşturulur. Kendi OU ve yönetilen etki alanı adınızı kullanın:
 
 ```powershell
-# Create a new custom OU on the managed domain
-New-ADOrganizationalUnit -Name "MyNewOU" -Path "DC=contoso,DC=COM"
-
-# Create a service account 'WebFarmSvc' within the custom OU.
-New-ADServiceAccount -Name WebFarmSvc  `
--DNSHostName ` WebFarmSvc.contoso.com  `
--Path "OU=MYNEWOU,DC=contoso,DC=com"  `
--KerberosEncryptionType AES128, AES256  ` -ManagedPasswordIntervalInDays 30  `
--ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-http/WebFarmSvc.contoso.com/contoso,  `
-http/WebFarmSvc/contoso.com, http/WebFarmSvc/contoso  `
--PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
 ```
 
-**PowerShell cmdlet belgeleri:**
-- [New-ADOrganizationalUnit cmdlet 'i](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit)
-- [New-ADServiceAccount cmdlet 'i](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
+Şimdi [New-ADServiceAccount][New-ADServiceAccount] cmdlet 'ini kullanarak bir gMSA oluşturun. Aşağıdaki örnek parametreler tanımlanmıştır:
 
+* **-Ad** *WebFarmSvc* olarak ayarlandı
+* **-Path** parametresi, önceki adımda oluşturulan gMSA için özel OU 'yu belirtir.
+* DNS girdileri ve hizmet sorumlusu adları *WebFarmSvc.contoso.com* için ayarlanır
+* *Contoso-sunucu $* ' daki sorumlular, parolayı almasına izin verilir.
+
+Kendi adlarınızı ve etki alanı adlarınızı belirtin.
+
+```powershell
+New-ADServiceAccount -Name WebFarmSvc `
+    -DNSHostName WebFarmSvc.contoso.com `
+    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -KerberosEncryptionType AES128, AES256 `
+    -ManagedPasswordIntervalInDays 30 `
+    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
+        http/WebFarmSvc.contoso.com/contoso, `
+        http/WebFarmSvc/contoso.com, `
+        http/WebFarmSvc/contoso `
+    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+```
+
+Uygulamalar ve hizmetler artık gerektiğinde gMSA 'Yı kullanacak şekilde yapılandırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Yönetilen bir etki alanında özel bir OU oluşturma](create-ou.md)
-- [Grup yönetilen hizmet hesaplarına genel bakış](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [Grup tarafından yönetilen hizmet hesapları ile çalışmaya başlama](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+
+GMSAs hakkında daha fazla bilgi için bkz. [Grup tarafından yönetilen hizmet hesapları ile çalışmaya][gmsa-start]başlama.
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[create-custom-ou]: create-ou.md
+
+<!-- EXTERNAL LINKS -->
+[New-ADOrganizationalUnit]: /powershell/module/addsadministration/New-AdOrganizationalUnit
+[New-ADServiceAccount]: /powershell/module/addsadministration/New-AdServiceAccount
+[gmsa-overview]: /windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview
+[gmsa-start]: /windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: dc98a0ab47e269aa99f21d3f10952cdabe2c897f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 950ad6d5f55186b63f879bac3f0675c501b57276
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736034"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934447"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure VM'lerini bir bölgeden diğerine çoğaltma için destek matrisi
 
@@ -72,6 +72,7 @@ Bu tablo, çoğaltma sırasında Site Recovery tarafından kullanılan önbellek
 **Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Desteklenen | V2 için işlem maliyetleri, v1 depolama hesaplarından önemli ölçüde yüksek olduğundan, GPv2 kullanımı önerilmez.
+Premium depolama | Desteklenmiyor | Standart depolama hesapları, maliyetleri iyileştirmenize yardımcı olmak için önbellek depolaması için kullanılır.
 Sanal ağlar için Azure Storage güvenlik duvarları  | Desteklenen | Güvenlik Duvarı etkin önbellek depolama hesabı veya hedef depolama hesabı kullanıyorsanız, [' güvenilen Microsoft hizmetlerine Izin ver ' '](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)i doğrulayın.
 
 
@@ -260,4 +261,4 @@ Hızlandırılmış ağ | Desteklenen | Kaynak VM 'de hızlandırılmış ağ et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure VM 'lerini çoğaltmak için [ağ kılavuzunu](site-recovery-azure-to-azure-networking-guidance.md) okuyun.
-- [Azure VM 'lerini çoğaltarak](site-recovery-azure-to-azure.md)olağanüstü durum kurtarma dağıtın.
+- [Azure VM](site-recovery-azure-to-azure.md)'lerini çoğaltarak olağanüstü durum kurtarma dağıtın.

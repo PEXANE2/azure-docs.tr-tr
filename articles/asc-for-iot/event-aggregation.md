@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600624"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933894"
 ---
 # <a name="security-agent-event-aggregation"></a>Güvenlik Aracısı olay toplama
 
@@ -28,7 +28,7 @@ IoT güvenlik aracıları için Azure Güvenlik Merkezi, yerel cihazınızdan ve
 
 Cihazların korunmasını sağlarken ek kotayı ve maliyetleri azaltmak için, IoT aracıları için Azure Güvenlik Merkezi bu tür olayları toplar.
 
-Olay toplama varsayılan olarak **açıktır** , ancak önerilmese de dilediğiniz zaman el ile kapatılabilir.
+Olay toplama varsayılan olarak **açıktır** , ancak önerilmese de dilediğiniz zaman el **ile kapatılabilir.**
 
 Toplama şu anda aşağıdaki olay türleri için kullanılabilir:
 * ProcessCreate
@@ -36,7 +36,7 @@ Toplama şu anda aşağıdaki olay türleri için kullanılabilir:
 * ProcessTerminate (yalnızca Windows)
 
 ## <a name="how-does-event-aggregation-work"></a>Olay toplama nasıl çalışır?
-Olay toplama **bırakıldığında, IoT**aracıları Için Azure Güvenlik Merkezi, Aralık dönemi veya zaman penceresi için olayları toplar.
+Olay toplama bırakıldığında, IoT aracıları için Azure Güvenlik **Merkezi, Aralık**dönemi veya zaman penceresi için olayları toplar.
 Aralık süresi geçtikten sonra, aracı, toplanan olayları daha fazla analiz için Azure bulutuna gönderir.
 Toplanan olaylar, Azure bulutuna gönderilene kadar bellekte depolanır.
 
@@ -59,6 +59,7 @@ Analiz sonrasında IoT için Azure Güvenlik Merkezi, şüpheli toplanmış olay
 
 Her olay için toplama başlangıç saati, bitiş saati ve isabet sayısı, araştırmalar sırasında kullanılmak üzere Log Analytics içindeki olay **Extradetails** alanında günlüğe kaydedilir. 
 
+Her toplanmış olay, toplanan uyarıların 24 saatlik bir dönemini temsil eder. Her olayın sol üst kısmındaki olay seçenekleri menüsünü kullanarak, toplanan her bir olayı **kapatabilirsiniz** .    
 
 ## <a name="event-aggregation-twin-configuration"></a>Event toplamasını ikizi yapılandırması
 **Azureiotsecurity** modülünün Module ikizi kimliğinin [Aracı yapılandırma nesnesi](how-to-agent-configuration.md) içindeki IoT olay toplaması için Azure Güvenlik Merkezi yapılandırmasında değişiklikler yapın.
@@ -94,5 +95,5 @@ IoT dağıtımı için Azure Güvenlik Merkezi 'ni kullanmaya devam etmek için 
 - [Güvenlik Aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
 - [Güvenlik aracısını](how-to-deploy-agent.md) seçme ve dağıtma
 - IoT [hizmeti önkoşulları](service-prerequisites.md) Için Azure Güvenlik Merkezi 'ni gözden geçirin
-- [IoT Hub IoT hizmeti Için Azure Güvenlik Merkezi](quickstart-onboard-iot-hub.md) 'Ni nasıl etkinleştirebileceğinizi öğrenin
+- [IoT Hub IoT hizmeti Için Azure Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi](quickstart-onboard-iot-hub.md) öğrenin
 - [IoT Için Azure Güvenlik Merkezi](resources-frequently-asked-questions.md) 'nden hizmet hakkında daha fazla bilgi edinin

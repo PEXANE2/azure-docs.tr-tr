@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114770"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932736"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -150,6 +150,9 @@ Hayır. NAT kuralları, çevrilen trafiğe izin vermek için, karşılık gelen 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Sağlama durumu *ne yapar: Başarısız* oldu mu?
 
 Her bir yapılandırma değişikliği uygulandığında, Azure Güvenlik Duvarı temeldeki tüm arka uç örneklerini güncelleştirmeye çalışır. Nadir durumlarda, bu arka uç örneklerinden biri yeni yapılandırmayla güncelleştiremeyebilir ve güncelleştirme işlemi başarısız bir sağlama durumuyla birlikte durduruluyor. Azure Güvenlik duvarınız hala çalışıyor, ancak uygulanan yapılandırma tutarsız bir durumda olabilir, burada bazı örnekler başkalarının güncelleştirilmiş kural kümesine sahip olduğu önceki yapılandırmaya sahiptir. Bu durumda, işlem başarılı olana ve güvenlik duvarınız *başarılı* bir sağlama durumunda olduğundan, yapılandırmanızı bir kez daha güncelleştirmeyi deneyin.
+
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure Güvenlik Duvarı planlı bakım ve planlanmamış sorunları nasıl işler?
+Azure Güvenlik Duvarı, etkin-etkin bir yapılandırmada birkaç arka uç düğümünden oluşur.  Planlı bakım için, düğümleri düzgün şekilde güncelleştirmek için bağlantı boşaltma mantığı vardır.  Güncelleştirmeler, Azure bölgelerinin her biri için iş dışı saatlerde planlanmaktadır ve bu da kesinti riskini daha fazla sınırlar.  Plansız sorunlar için, hatalı düğümü değiştirecek yeni bir düğüm örnekliyoruz.  Yeni düğümle bağlantı, genellikle başarısızlık zamanından 10 saniye içinde yeniden oluşturulur.
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Bir güvenlik duvarı adı için bir karakter sınırı var mı?
 

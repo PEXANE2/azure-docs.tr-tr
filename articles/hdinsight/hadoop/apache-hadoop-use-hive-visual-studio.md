@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: d53468ae544b02798d7fcd74370d1d3dbdcbd5e0
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882039"
+ms.locfileid: "70917502"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio Data Lake araçlarını kullanarak Apache Hive sorguları çalıştırma
 
@@ -59,7 +59,7 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
 6. **Toplu iş** modunda aynı sorguyu çalıştırmak için açılan listeyi **etkileşimli** moddan **Toplu işe**değiştirin. Yürütme düğmesinin **Execute** 'tan **Gönder**'e değiştiği unutulmamalıdır.
 
-    ![Hive sorgusu gönderme ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+    ![Hive sorgusu gönderme ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Hive düzenleyicisi IntelliSense’i destekler. Visual Studio için Data Lake Araçları, Hive betiğinizi düzenlerken uzak meta verilerin yüklenmesini destekler. Örneğin, yazarsanız `SELECT * FROM`, IntelliSense önerilen tüm tablo adlarını listeler. Bir tablo adı belirtildiğinde, IntelliSense sütun adlarını listeler. Araçlar çoğu Hive DML deyimlerini, alt sorguları ve yerleşik UDF'leri destekler. IntelliSense yalnızca HDInsight araç çubuğunda seçilen kümelerin meta verilerini önerir.
 

@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: 0b20bb5265dd5fa139a691fcb21aaa1795ff352c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 09/11/2019
+ms.openlocfilehash: 6b1c30ab218b47e080935d2959cb3f701806ac68
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735978"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918146"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı sinyal sorunları
 
@@ -21,7 +21,7 @@ Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adı
 
 ### <a name="issue"></a>Sorun
 
-Ambarı Aracısı yüksek CPU kullanımına sahiptir ve bu, bazı düğümlerde ambarı aracı sinyalinin kaybolduğu bir şekilde, ambarı kullanıcı arabiriminden gelen uyarılarla sonuçlanır.
+Ambarı Aracısı yüksek CPU kullanımına sahiptir ve bu, bazı düğümlerde ambarı aracı sinyalinin kaybolduğu bir şekilde, ambarı kullanıcı arabiriminden gelen uyarılarla sonuçlanır. Sinyal kayıp uyarısı genellikle geçicidir. 
 
 ### <a name="cause"></a>Nedeni
 

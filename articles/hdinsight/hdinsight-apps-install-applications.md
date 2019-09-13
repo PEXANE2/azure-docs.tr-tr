@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 8ed854a5775dfc20e258c14de51fe2066fa6caad
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 68bbe22a4a6f7697c2bfab291412aae85efc32e9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810280"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916990"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight üzerinde üçüncü taraf Apache Hadoop uygulamaları yükleme
 
@@ -59,7 +59,7 @@ Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamaların�
     ![HDInsight uygulamaları portal menüsü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Menüden **+ Ekle** ' yi seçin. Kullanılabilir uygulamaların bir listesini görebilirsiniz.  **+ Ekle** gri ise bu, HDInsight kümesinin bu sürümü için bir uygulama olmadığı anlamına gelir.
    
-    ![HDInsight uygulamaları kullanılabilir uygulamalar](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
+    ![HDInsight uygulamaları kullanılabilir uygulamalar](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
 6. Kullanılabilir uygulamalardan birini seçin ve ardından geçerli koşulları kabul etmek için yönergeleri izleyin.
 
 Yükleme durumunu Portal bildirimlerinden görebilirsiniz (portalın üst kısmındaki zil simgesini seçin). Uygulama yüklendikten sonra uygulama yüklü uygulamalar listesinde görüntülenir.

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ea7d2c451127283f2af204de2c961747880e1bfe
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494896"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931105"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımla
 
@@ -23,7 +23,7 @@ Video Indexer, otomatik dil kimliğini (kapak) destekler, bu, sesli okunan dil i
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Dizin oluşturma sırasında otomatik dil tanımlamayı seçme
 
-API 'yi kullanarak bir videoyu dizinleme veya `sourceLanguage` [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , parametresindeki `auto detect` seçeneği belirleyin.
+API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `auto detect` `sourceLanguage` parametresindeki seçeneği belirleyin.
 
 Portalı kullanırken [video Indexer](https://www.videoindexer.ai/) giriş sayfasında **Hesap videolarınıza** gidin ve yeniden dizinlemek istediğiniz videonun adının üzerine gelin. Sağ alt köşede yeniden dizin düğmesine tıklayın. **Yeniden dizin videosu** iletişim kutusunda, **video kaynak dili** açılır listesinden *Otomatik Algıla* ' yı seçin.
 
@@ -59,4 +59,5 @@ Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](video-indexer-overview.md)
+* [Genel bakış](video-indexer-overview.md)
+* [Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md)

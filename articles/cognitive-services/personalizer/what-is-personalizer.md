@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383381"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883670"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -66,9 +66,9 @@ Kişiselleştirici hizmeti iki API 'ye sahiptir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı Başlangıç: İçinde geri bildirim döngüsü oluşturunC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Hızlı Başlangıç: Node. js ' de geri bildirim döngüsü oluşturma](quickstart-command-line-feedback-loop-nodejs-sdk.md)
-* [Hızlı Başlangıç: Python 'da geri bildirim döngüsü oluşturma](python-quickstart-commandline-feedback-loop.md)
+* [Kişiselleştirici 'daki yenilikler nelerdir?](whats-new.md)
+* [Kişiselleştirici nasıl çalışıyor?](how-personalizer-works.md)
+* [Pekiştirmeye dayalı Learning nedir?](concepts-reinforcement-learning.md)
 * [Sıralama isteğine yönelik özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
 * [Reward isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
 * [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)

@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d9bf9687f60e649fee98869ef263117177ad5efd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba35999d5a7193ba691b14005dc8271120ac2be7
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097923"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933224"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler içindeki tekil düzenleyiciler (Azure Işlevleri)
 
@@ -113,9 +113,6 @@ module.exports = async function(context, req) {
 
 Varsayılan olarak, örnek kimlikleri rastgele oluşturulan GUID 'lerdir. Ancak bu durumda, örnek KIMLIĞI URL 'den rota verilerinde geçirilir. Kod, belirtilen kimliğe sahip bir örneğinC#zaten çalışır `getStatus` durumda olup olmadığını denetlemek için [getstatusasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) () veya (JavaScript) öğesini çağırır. Aksi takdirde, bu KIMLIKLE bir örnek oluşturulur.
 
-> [!WARNING]
-> JavaScript 'te yerel olarak geliştirme yaparken, ortam değişkenini `WEBSITE_HOSTNAME` `localhost:<port>`, EX olarak ayarlamanız gerekir. `localhost:7071`üzerinde `DurableOrchestrationClient`yöntemleri kullanmak için. Bu gereksinim hakkında daha fazla bilgi için bkz. [GitHub sorunu](https://github.com/Azure/azure-functions-durable-js/issues/28).
-
 > [!NOTE]
 > Bu örnekte olası bir yarış durumu var. İki tane **Httpstartone** örneği aynı anda yürütülecektir, her iki işlev çağrısı de başarıyı bildirir ancak yalnızca bir düzenleme örneği başlatılır. Gereksinimlerinize bağlı olarak, bu istenmeyen yan etkilere sahip olabilir. Bu nedenle, bu tetikleyici işlevini aynı anda yürütebilmesi için iki isteğin olmadığından emin olmanız önemlidir.
 
@@ -124,4 +121,4 @@ Orchestrator işlevinin uygulama ayrıntıları aslında önemi yoktur. Bu, baş
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Alt düzenlemeleri çağırmayı öğrenin](durable-functions-sub-orchestrations.md)
+> [Düzenleyicmelerin yerel HTTP özellikleri hakkında bilgi edinin](durable-functions-http-features.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599653"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931181"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 'de DNS hizmeti
 DNS hizmeti, kümenizde etkinleştirebileceğiniz ve DNS protokolünü kullanarak diğer hizmetleri keşfedebilmeniz için kullanabileceğiniz isteğe bağlı bir sistem hizmetidir. 
@@ -28,7 +28,7 @@ Birçok hizmet, özellikle Kapsayıcılı hizmetler, önceden var olan bir URL a
 
 DNS hizmeti, DNS adlarını hizmet adlarıyla eşler, bu da hizmet uç noktasını döndürmek için Adlandırma Hizmeti tarafından çözümlenir. Hizmetin DNS adı, oluşturma sırasında sağlanır. Aşağıdaki diyagramda, DNS hizmetinin durum bilgisi olmayan hizmetler için nasıl çalıştığı gösterilmektedir.
 
-![hizmet uç noktaları](./media/service-fabric-dnsservice/stateless-dns.png)
+![Hizmet uç noktaları](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Service Fabric sürüm 6,3 ' den başlayarak, Service Fabric DNS protokolü bölümlenmiş durum bilgisi olan hizmetlerin adreslenmesi için bir düzen içerecek şekilde genişletilmiştir. Bu uzantılar, durum bilgisi olan hizmet DNS adı ve bölüm adı birleşimini kullanarak belirli bölüm IP adreslerini çözümlemeyi mümkün kılar. Üç bölümleme şeması desteklenir:
 
@@ -133,7 +133,7 @@ Projenizi Visual Studio 'da veya en sevdiğiniz düzenleyicide açın ve Applica
 ```
 Uygulama dağıtıldıktan sonra, Service Fabric Gezgini 'ndeki hizmet örneği, aşağıdaki şekilde gösterildiği gibi bu Örneğin DNS adını gösterir: 
 
-![hizmet uç noktaları](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
+![Hizmet uç noktaları](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
 Aşağıdaki örnek, durum bilgisi olan bir hizmetin DNS adını olarak `statefulsvc.app`ayarlar. Hizmet, adlandırılmış bölümlendirme şeması kullanır. Bölüm adlarının küçük olduğunu unutmayın. Bu, DNS sorgularına hedeflenecek bölümler için gereksinimdir; daha fazla bilgi için bkz. [durum bilgisi olan hizmet bölümünde DNS sorguları yapma](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
@@ -179,7 +179,7 @@ Bir bölümü hedefleyen DNS sorguları aşağıdaki gibi biçimlendirilir:
 Konumlar:
 
 - *İlk-bölümlenmiş-Service-DnsName etiketi* , hizmet DNS adınızın ilk kısmıdır.
-- *PartitionPrefix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. Varsayılan değer "-" dır. Daha fazla bilgi için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *PartitionPrefix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. "--" Varsayılan değeri. Daha fazla bilgi için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Hedef-bölüm adı* , bölümün adıdır. 
 - *Partitionsuffix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. Varsayılan değer boş bir dizedir. Daha fazla bilgi için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Kalan-bölümlenmiş-Service-DnsName* , hizmet DNS adınızın kalan kısmıdır.
