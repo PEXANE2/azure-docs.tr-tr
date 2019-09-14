@@ -71,17 +71,17 @@ Aşağıdaki veri türleri, **serileştirici** kitaplığı ile oluşturulan mod
 | float |tek duyarlıklı kayan noktalı sayı |
 | long |uzun tamsayı |
 | int8\_t |8 bit tamsayı |
-| Int16\_t |16 bit tamsayı |
-| Int32\_t |32 bit tamsayı |
-| Int64\_t |64 bit tamsayı |
+| int16\_t |16 bit tamsayı |
+| int32\_t |32 bit tamsayı |
+| int64\_t |64 bit tamsayı |
 | bool |boolean |
-| ASCII\_char\_PTR |ASCII dizesi |
+| ascii\_char\_ptr |ASCII dizesi |
 | EDM\_DATE\_TIME\_OFFSET |Tarih saat boşluğu |
 | EDM\_GUID |GUID |
-| EDM\_İKİLİ |binary |
+| EDM\_BINARY |binary |
 | DECLARE\_STRUCT |karmaşık veri türü |
 
-Son veri türüyle başlayalım. **Declare\_yapısı** , diğer temel türlerin gruplandırmaları olan karmaşık veri türleri tanımlamanızı sağlar. Bu gruplandırmalar şuna benzer bir model tanımlamamızı sağlar:
+Son veri türüyle başlayalım. **DECLARE\_STRUCT** , diğer temel türlerin gruplandırmaları olan karmaşık veri türleri tanımlamanızı sağlar. Bu gruplandırmalar şuna benzer bir model tanımlamamızı sağlar:
 
 ```C
 DECLARE_STRUCT(TestType,
