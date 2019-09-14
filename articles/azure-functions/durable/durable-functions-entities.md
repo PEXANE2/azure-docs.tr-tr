@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 419505404214d60a2c928770a34384f80c8446cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935876"
+ms.locfileid: "70961459"
 ---
 # <a name="entity-functions-preview"></a>Varlık işlevleri (Önizleme)
 
@@ -32,7 +32,7 @@ Varlıklar (bazen varlık *örnekleri*olarak adlandırılır) benzersiz bir tan�
 
 Örneğin, bir *sayaç* varlığı işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her bir örneği, ve gibi benzersiz bir varlık kimliğine `@Counter@Game1` `@Counter@Game2`sahip olacaktır. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
 
-## <a name="programing-models"></a>Programlama modelleri
+## <a name="programming-models"></a>Programlama modelleri
 
 Dayanıklı varlıklar iki farklı programlama modelini destekler. İlk model, varlığın tek bir işlevle tanımlandığı dinamik bir "işlevsel" modeldir. İkinci model, varlığın bir sınıf ve yöntemlerle tanımlandığı nesne odaklı bir modeldir. Bu modeller ve varlıklarla etkileşim için programlama modelleri sonraki bölümlerde açıklanmıştır.
 

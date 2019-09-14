@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910217"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984524"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -99,7 +99,8 @@ Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını
         Dosya biçimi| Ted
         Sınırlayıcı| Virgül
         Encoding| UTF-8
-        Sütun üstbilgileri| Tüm dosyaların aynı üstbilgileri satırları atla | Yok.
+        Sütun üstbilgileri| Tüm dosyaların aynı üst bilgileri var
+        Satırları atla | Yok.
 
         >[!NOTE]
         > Bu formdaki ayarlardan herhangi biri güncelleniyorsa önizleme, buna uygun olarak güncelleştirilir.

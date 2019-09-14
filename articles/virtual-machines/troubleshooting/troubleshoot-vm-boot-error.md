@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makine önyükleme hatası
+title: Azure Sanal Makine önyükleme hatası
 description: Sanal makine bir kurtarma konsolu girdiği için sanal makine önyükleme yapamadı
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 14bf7b289f3d03dd1437a18b0b5bd35fdec567ea
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143316"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984836"
 ---
 # <a name="vm-boot-error"></a>Sanal makine önyükleme hatası
 
@@ -48,7 +48,7 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
     2. Sonra, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * `/boot/grub/menu.lst`Eksik dosya varsa, bu hata eski işletim sistemi sürümleri için (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**), böylece komutların ertelenmesi gerekir. Doğru komutların sağlandığından emin olmak için, eski bir sunucu ve test etmeniz gerekir.
+   * `/boot/grub/menu.lst`Eksik dosya varsa, bu hata eski işletim sistemi sürümleri (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**) için, komutların farklı olması için kullanılır. Doğru komutların sağlandığından emin olmak için, eski bir sunucu ve test etmeniz gerekir.
 
 ### <a name="error---no-such-partition"></a>Hata-böyle bir bölüm yok
 

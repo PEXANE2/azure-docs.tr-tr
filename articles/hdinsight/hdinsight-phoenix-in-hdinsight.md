@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1e7059d30c5d480948eb681b477239151020b266
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811904"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961811"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Phoenix
 
@@ -129,11 +129,11 @@ An HDInsight HBase kümesi, yapılandırma değişiklikleri yapmak için [ambar�
 
 2. Sol taraftaki menüdeki hizmetler listesinden **HBase** ' i seçin, sonra da **configs** sekmesini seçin.
 
-    ![Ambarı HBase yapılandırması](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Ambarı HBase yapılandırması](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Phoenix 'i etkinleştirmek veya devre dışı bırakmak için **PHOENIX SQL** yapılandırma bölümünü bulun ve sorgu zaman aşımını ayarlayın.
 
-    ![Ambarı Phoenix SQL yapılandırması bölümü](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambarı Phoenix SQL yapılandırması bölümü](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565769"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967055"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -75,6 +75,6 @@ Tüm bilişsel hizmetlerde olduğu gibi, Görüntü İşleme hizmetini kullanan 
 
 Hızlı Başlangıç kılavuzunu izleyerek Görüntü İşleme kullanmaya başlayın:
 
-- [Hızlı Başlangıç: Görüntü çözümleme](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Hızlı Başlangıç: El yazısı metin Ayıkla](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Hızlı Başlangıç: Küçük resim oluştur](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Hızlı Başlangıç: Görüntü İşleme .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Hızlı Başlangıç: Python SDK Görüntü İşleme](quickstarts-sdk/python-sdk.md)
+- [Hızlı Başlangıç: Görüntü İşleme Java SDK 'Sı](quickstarts-sdk/java-sdk.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991569"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984954"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Azure Data Lake Storage 2. Power BI kullanarak verileri çözümleme
 
@@ -28,7 +28,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 > * Hiyerarşik bir ad alanına sahip bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 > Bu makalede adlı `myadlsg2`bir hesap oluşturduğunuz varsayılır.
 > * Depolama hesabınızda bulunan adlı `Drivers.txt` örnek bir veri dosyası.
-> Bu örneği [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceDataDrivers.txt)indirebilir ve ardından bu dosyayı depolama hesabınıza yükleyebilirsiniz.
+> Bu örneği [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirebilir ve ardından bu dosyayı depolama hesabınıza yükleyebilirsiniz.
 > * **Power BI Desktop**. Bunu [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz. 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop'ta rapor oluşturma
@@ -45,7 +45,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 5. Sonraki iletişim kutusunda, depolama hesabınızda oturum açmak için **oturum aç** ' a tıklayın. Kuruluşunuzun oturum açma sayfasına yönlendirilirsiniz. Hesapta oturum açmak için istemleri izleyin.
 
-    ![Oturum açma sayfası](media/data-lake-storage-use-power-bi/sign-in.png)
+    ![Sayfada oturum aç](media/data-lake-storage-use-power-bi/sign-in.png)
 
 6. Başarıyla oturum açtıktan sonra **Bağlan**' a tıklayın.
 

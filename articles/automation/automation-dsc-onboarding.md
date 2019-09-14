@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b003c0cc6480c5d03c3755e7c57785ab2026194b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: c05ac7a1894fc3e159ef8fc2b3dd2654714faccf
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498402"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965178"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
@@ -58,7 +58,7 @@ Makinede PowerShell istenen durum uzantısı yüklü değilse ve güç durumu ç
 
 **Kayıt**bölümüne, kullanım durumu Için gereken [PowerShell DSC yerel Configuration Manager değerlerini](/powershell/dsc/managing-nodes/metaconfig) ve isteğe bağlı olarak VM 'ye atanacak bir düğüm yapılandırmasını girin.
 
-![ekleme](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![Ekleme](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
@@ -67,7 +67,8 @@ Bir sanal makine ölçek kümesini yönetiyorsanız, [Azure Otomasyonu tarafınd
 
 ### <a name="powershell"></a>PowerShell
 
-[Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) cmdlet 'ı, PowerShell aracılığıyla Azure Portal sanal makineleri eklemek için kullanılabilir.
+[Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) cmdlet 'ı, PowerShell kullanarak Azure 'daki sanal makineleri eklemek için kullanılabilir.
+Ancak bu, şu anda yalnızca Windows çalıştıran makineler için geçerlidir (cmdlet yalnızca Windows uzantısını tetikler).
 
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Azure abonelikleri arasında sanal makineleri kaydetme
 
@@ -317,7 +318,7 @@ Azure VM Istenen durum yapılandırma uzantısının durumunu sorun gidermek vey
 
 Bir makineyi Azure Otomasyonu durum yapılandırması 'nda DSC düğümü olarak kaydettikten sonra, bu düğümü ileride yeniden kaydetmeniz gerekebilecek bazı nedenler vardır:
 
-- Kaydolduktan sonra her düğüm, bir yıl sonra süresi dolan kimlik doğrulaması için benzersiz bir sertifikayı otomatik olarak belirler. Şu anda PowerShell DSC kayıt Protokolü, süresi dolmak üzere olan sertifikaları otomatik olarak yenileyemez. bu nedenle, bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Reregistering önce, her bir düğümün Windows Management Framework 5,0 RTM çalıştırdığından emin olun. Bir düğümün kimlik doğrulama sertifikasının süresi dolarsa ve düğüm yeniden kaydettirilmediyse, düğüm Azure Otomasyonu ile iletişim kuramaz ve ' yanıt vermez ' olarak işaretlenir. Yapılabilir, sertifika sona erme zamanından 90 gün veya daha az bir süre sonra veya sertifika sona erme zamanından sonra herhangi bir noktada gerçekleştirilen yeni bir sertifika oluşturulmasını ve kullanılmasını neden olur.
+- Windows Server 2019 ' den önceki Windows Server sürümleri için her düğüm, bir yıldan sonra süresi dolan kimlik doğrulaması için otomatik olarak benzersiz bir sertifika sağlar. Şu anda PowerShell DSC kayıt Protokolü, süresi dolmak üzere olan sertifikaları otomatik olarak yenileyemez. bu nedenle, bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Reregistering önce, her bir düğümün Windows Management Framework 5,0 RTM çalıştırdığından emin olun. Bir düğümün kimlik doğrulama sertifikasının süresi dolarsa ve düğüm yeniden kaydettirilmediyse, düğüm Azure Otomasyonu ile iletişim kuramaz ve ' yanıt vermez ' olarak işaretlenir. Yapılabilir, sertifika sona erme zamanından 90 gün veya daha az bir süre sonra veya sertifika sona erme zamanından sonra herhangi bir noktada gerçekleştirilen yeni bir sertifika oluşturulmasını ve kullanılmasını neden olur.  Windows Server 2019 ve üzeri sürümlerde bu soruna yönelik bir çözüm bulunur.
 - Bir [POWERSHELL DSC yerel Configuration Manager değerini](/powershell/dsc/metaconfig4) , düğümün ilk kaydı sırasında ayarlanan configurationmode gibi değiştirmek için. Şu anda, bu DSC Aracısı değerleri yalnızca yapılabilir üzerinden değiştirilebilir. Tek istisna, düğüme atanan düğüm yapılandırmadır; bu, Azure Automation DSC doğrudan değiştirilebilir.
 
 Yapılabilir, bu belgede açıklanan ekleme yöntemlerinden herhangi birini kullanarak ilk olarak düğümü kaydettiğiniz şekilde gerçekleştirilebilir. Reregistering önce Azure Automation durum yapılandırmasından bir düğümün kaydını kaldırmanız gerekmez.

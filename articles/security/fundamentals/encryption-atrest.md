@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918878"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984845"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -272,6 +272,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Azure Analysis Services          | Evet                | -                  | -                  |
 | Azure Veri Kataloğu               | Evet                | -                  | -                  |
 | Azure HDInsight üzerinde Apache Kafka  | Evet                | Tüm RSA uzunlukları.   | -                  |
+| Azure Veri Gezgini              | Evet                | -                  | -                  |
 | Azure Data Factory               | Evet                | -                  | -                  |
 | Azure Data Lake Store            | Evet                | Evet, RSA 2048 bit  | -                  |
 | **Kapsayıcılar**                   |                    |                    |                    |

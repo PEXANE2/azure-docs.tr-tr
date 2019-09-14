@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 09/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084318"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958828"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure sanal makine uzantıları ve özellikleri
 Azure sanal makinesi (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır, var olan görüntüleri kullanabilir ve sonra, özel bir iş elde etmeniz için, dağıtımlarınızın bir parçası olarak bunları özelleştirebilirsiniz görüntü oluşturma.
@@ -49,6 +49,30 @@ Uzantıyı yüklemek veya silmek için bir VM 'ye doğrudan bağlanmanız gerekm
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Uzantılar için göz önünde bulundurulması gereken başka bir şey var mı?
 Uzantılar yükleme uygulamalar gibi bazı gereksinimler vardır, uzantılar için desteklenen Windows ve Linux Işletim sistemleri listesi ve Azure VM aracılarının yüklü olması gerekir. Bazı bağımsız VM Uzantısı uygulamalarının bir uç noktaya erişim gibi kendi ortam önkoşulları olabilir.
+
+## <a name="troubleshoot-extensions"></a>Uzantı sorunlarını giderme
+
+Her bir uzantıya ilişkin sorun giderme bilgileri, uzantının genel bakış konusunun **sorun giderme ve destek** bölümünde bulunabilir. Kullanılabilir sorun giderme bilgilerinin listesi aşağıda verilmiştir:
+
+| Ad Alanı | Sorun giderme |
+|-----------|-----------------|
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentlinux | [Linux için Azure Izleyici bağımlılığı](agent-dependency-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentwindows | [Windows için Azure Izleyici bağımlılığı](agent-dependency-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryptionforlinux | [Linux için Azure disk şifrelemesi](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryption | [Windows için Azure disk şifrelemesi](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| Microsoft. COMPUTE. customscriptextension | [Windows için özel betik](custom-script-windows.md#troubleshoot-and-support) |
+| Microsoft. ostcextensions. customscriptforlinux | [Linux için istenen durum yapılandırması](dsc-linux.md#troubleshoot-and-support) |
+| Microsoft. PowerShell. DSC | [Windows için istenen durum yapılandırması](dsc-windows.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverlinux | [Linux için NVıDıA GPU sürücü uzantısı](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverwindows | [Windows için NVıDıA GPU sürücü uzantısı](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. ıaasantimalware | [Windows için kötü amaçlı yazılımdan koruma uzantısı](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| Microsoft. enterprisecloud. Monitoring. omsagentforlinux | [Linux için Azure Izleyici](oms-linux.md#troubleshoot-and-support)
+| Microsoft. enterprisecloud. Monitoring. microsoftmonitoringagent | [Windows için Azure Izleyici](oms-windows.md#troubleshoot-and-support) |
+| stackbelirt. linuxagent. Extension. stackifılinuxbir TExtension | [Linux için yeniden Izlemeyi stackbelirt](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. Microsoft. ostcextensions | [Linux için parolayı sıfırlama (VMAccess)](vmaccess.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Linux için anlık görüntü](vmsnapshot-linux.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Windows için anlık görüntü](vmsnapshot-windows.md#troubleshoot-and-support) |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Linux aracısının ve uzantılarının nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Linux Için Azure VM uzantıları ve özellikleri](features-linux.md).

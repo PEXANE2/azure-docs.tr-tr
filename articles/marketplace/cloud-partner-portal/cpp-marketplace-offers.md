@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884443"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962849"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure ve AppSource Market teklifleri
 
@@ -34,9 +34,9 @@ Yeni bir teklif oluşturma işlemi, örneğin bir [Azure Uygulama teklifi](./azu
 
 ## <a name="test-drive"></a>Test Drive
 
-*Test* sürüşü, müşterilerin her bir teklif için "tanıtım için deneme" gösterimi seçeneğini sunan bir market özelliğidir.  Test sürücüsü özelliği, aşağıdaki teklif türleri alt kümesiyle sınırlıdır: [Azure uygulamaları](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 iş merkezi](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [finans ve işlemler için Dynamics 365](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS uygulamaları](./saas-app/cpp-saas-offer.md)ve [sanal makineler](./virtual-machine/cpp-virtual-machine-offer.md).  Bu özellik, yayımcının teklifi için özelleştirilmiş bir test sürücü şablonu oluşturmasını gerektirir.  Daha fazla bilgi için, bkz. [test sürücüsü](./test-drive/what-is-test-drive.md).
+*Test sürüşü* , müşterilerin her bir teklif için "tanıtım için deneme" gösterimi seçeneğini sunan bir market özelliğidir.  Test sürücüsü özelliği, aşağıdaki teklif türleri alt kümesiyle sınırlıdır: [Azure uygulamaları](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 iş merkezi](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [finans ve işlemler için Dynamics 365](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS uygulamaları](./saas-app/cpp-saas-offer.md)ve [sanal makineler](./virtual-machine/cpp-virtual-machine-offer.md).  Bu özellik, yayımcının teklifi için özelleştirilmiş bir test sürücü şablonu oluşturmasını gerektirir.  Daha fazla bilgi için, bkz. [test sürücüsü](./test-drive/what-is-test-drive.md).
 
-Test sürüşü test [sürücüsü filtresi](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)uygulayarak test sürücüsü gösterimine sahip mevcut Market tekliflerine gidebilirsiniz. 
+Test sürüşü test [sürücüsü filtresi](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)uygulayarak test sürücüsü gösterimine sahip mevcut Market tekliflerine gidebilirsiniz. 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketi ve AppSource teklif türleri

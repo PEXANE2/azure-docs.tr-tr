@@ -1,24 +1,24 @@
 ---
-title: "Öğretici: Translator konuşma çevirisi API'siC#"
+title: "Öğretici: Translator Konuşma Çevirisi API'siC#"
 titleSuffix: Azure Cognitive Services
 description: Translator Konuşma Çevirisi API'sini kullanarak gerçek zamanlı metin çevirisi yapın.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445576"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965293"
 ---
-# <a name="tutorial-translator-speech-application-in-c"></a>Öğretici: Translator konuşma uygulamaC#
+# <a name="tutorial-translator-speech-application-in-c"></a>Öğretici: İçinde uygulama Translator Konuşma ÇevirisiC#
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
@@ -34,13 +34,13 @@ Bu uygulamanın Visual Studio çözüm dosyası [GitHub'da mevcuttur](https://gi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide, Visual Studio Community sürümü dahil olmak üzere 2019'ın herhangi bir sürümü gerekir.
+Bu öğreticide, topluluk sürümü de dahil olmak üzere herhangi bir Visual Studio 2019 sürümüne ihtiyacınız vardır.
 
 Visual Studio çözümü, uygulama için bir yükleyici de derler. Bu işlevi kullanabilmek için [WiX Toolset](http://wixtoolset.org/) ve [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) uygulamalarına ihtiyacınız vardır.
 
 Ayrıca Microsoft Azure panosundan alabileceğiniz Translator Konuşma Çevirisi hizmeti abonelik anahtarı da gereklidir. Ayda 10 saat konuşmaya kadar ücretsiz olarak çeviri yapmanıza olanak sağlayan ücretsiz bir fiyatlandırma katmanı bulunur. Bu katman bu öğretici için yeterli olacaktır.
 
-Üçüncü taraf [JSON.NET kitaplığı](https://www.newtonsoft.com/json) (Newtonsoft) de gereklidir. Bu bütünleştirilmiş kod, Visual Studio seçeneklerinde Paket Geri Yükleme onay kutularının her ikisi de işaretli olduğunda NuGet tarafından otomatik olarak yüklenir.
+Üçüncü taraf [JSON.NET kitaplığı](https://www.newtonsoft.com/json) (Newtonsoft 'dan) de gereklidir. Bu bütünleştirilmiş kod, Visual Studio seçeneklerinde Paket Geri Yükleme onay kutularının her ikisi de işaretli olduğunda NuGet tarafından otomatik olarak yüklenir.
 
 ## <a name="trying-the-translation-app"></a>Çeviri uygulamasını deneme
 

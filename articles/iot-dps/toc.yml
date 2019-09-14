@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: Geliştirme için SDK araçlarını kullanma
       href: how-to-use-sdk-tools.md
+    - name: Sorun giderme
+      href: how-to-troubleshoot-dps.md
 - name: Başvuru
   items:
     - name: REST API

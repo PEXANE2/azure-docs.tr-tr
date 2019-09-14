@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Teradata 'dan veri kopyalama | Microsoft Docs
-description: Data Factory hizmetinin Teradata Bağlayıcısı, Teradata veritabanındaki verileri, havuz olarak Data Factory desteklenen veri depolarına kopyalamanızı sağlar.
+title: Azure Data Factory kullanarak Teradata Vanndan veri kopyalama | Microsoft Docs
+description: Data Factory hizmetinin Teradata Bağlayıcısı, bir Teradata Vanşdan verileri, havuz olarak Data Factory desteklenen veri depolarına kopyalamanızı sağlar.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,26 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232503"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959008"
 ---
-# <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'dan veri kopyalama
+# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata Vanndan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Geçerli sürüm](connector-teradata.md)
 
-Bu makalede, bir Teradata veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)sayfasında oluşturulur.
+Bu makalede, Teradata vanana 'dan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)sayfasında oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Bir Teradata veritabanından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Teradata Vana 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
 Özellikle, bu Teradata Bağlayıcısı şunları destekler:
 
@@ -62,8 +62,8 @@ Teradata bağlı hizmeti aşağıdaki özellikleri destekler:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Type özelliği **Teradata**olarak ayarlanmalıdır. | Evet |
-| connectionString | Teradata veritabanı örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Evet |
-| kullanıcı adı | Teradata veritabanına bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | Hayır |
+| connectionString | Teradata örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Evet |
+| kullanıcı adı | Teradata 'a bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | Hayır |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Ayrıca, [Azure Key Vault depolanan bir gizli dizi başvurusunu](store-credentials-in-key-vault.md)da seçebilirsiniz. <br>Windows kimlik doğrulaması kullandığınızda veya temel kimlik doğrulaması için Key Vault bir parolaya başvurulduğunda geçerlidir. | Hayır |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Evet |
 
@@ -142,8 +142,8 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği olarak `TeradataTable`ayarlanmalıdır. | Evet |
-| database | Teradata veritabanının adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
-| table | Teradata veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| database | Teradata örneğinin adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| table | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek:**
 
@@ -197,7 +197,7 @@ Teradata 'tan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının Type özelliği olarak `TeradataSource`ayarlanmalıdır. | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuza karşılık gelen yerleşik bölüm parametrelerini de eklemeniz gerekir. Örnekler için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır (veri kümesindeki tablo belirtilmişse) |
-| partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verme değerleri şunlardır: **Hiçbiri** (varsayılan), **karma** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (değil `None`), bir Teradata veritabanından eşzamanlı olarak veri yükleme derecesi, kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. | Hayır |
+| partitionOptions | Teradata 'tan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verme değerleri şunlardır: **Hiçbiri** (varsayılan), **karma** ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, `None`), Teradata 'den eşzamanlı olarak veri yükleme için paralellik derecesi kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. | Hayır |
 | partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği `None`olmadığında Uygula. | Hayır |
 | partitionColumnName | Paralel kopya için Aralık bölümü veya karma bölümü tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği `Hash` veya `DynamicRange`olduğunda geçerlidir. Kaynak verileri, Hook `?AdfHashPartitionCondition` veya `?AdfRangePartitionColumnName` WHERE yan tümcesini almak için bir sorgu kullanırsanız. [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümündeki örneğe bakın. | Hayır |
 | partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği `DynamicRange`olduğunda Uygula. Kaynak verileri almak için sorgu kullanırsanız WHERE yan tümcesinde kanca `?AdfRangePartitionUpbound` . Bir örnek için, [Teradata 'Den paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın. | Hayır |
@@ -245,9 +245,9 @@ Data Factory Teradata Bağlayıcısı, Teradata 'den paralel olarak veri kopyala
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre yüklemek için Teradata kaynağınıza karşı paralel sorgular çalıştırır. Paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, Teradata veritabanınızdaki verilerin bir kısmını alır.
+Bölümlenmiş kopyayı etkinleştirdiğinizde Data Factory, verileri bölümlere göre yüklemek için Teradata kaynağınıza karşı paralel sorgular çalıştırır. Paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, Teradata 'ınızdan verilerin bir kısmını alır.
 
-Teradata veritabanından büyük miktarda veri yüklediğinizde özellikle veri bölümleme ile paralel kopyayı etkinleştirmeniz önerilir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazma işlemi geri çağrılır, bu durumda performans tek bir dosyaya yazılmasından daha iyidir.
+Özellikle, Teradata 'ınızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyayı etkinleştirmeniz önerilir. Farklı senaryolar için önerilen yapılandırma aşağıda verilmiştir. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazma işlemi geri çağrılır, bu durumda performans tek bir dosyaya yazılmasından daha iyidir.
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

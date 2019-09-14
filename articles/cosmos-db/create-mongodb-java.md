@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.custom: seo-java-august2019
-ms.openlocfilehash: f30b1ef7a80e11c2cefd8689845fb7d450a1c167
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172344"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965383"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Hızlı Başlangıç: Azure Cosmos DB 'de Java ve MongoDB API 'SI ile bir konsol uygulaması oluşturma
 
@@ -27,7 +27,7 @@ ms.locfileid: "70172344"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve bu sayede belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturabilir ve sorgulayabilirsiniz. 
+Bu hızlı başlangıçta, bir konsol Web uygulaması oluşturmak için Mongo DB ve Java SDK Azure Cosmos DB API 'sini kullanacaksınız. Azure Cosmos DB, her türlü genel dağıtım ve yatay Cosmos DB ölçek özelliğinden faydalanabilir ve bu sayede belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulamanızı sağlar.
 
 Bu hızlı başlangıçta, [MongoDB için Azure Cosmos DB API 'si](mongodb-introduction.md)Ile Cosmos hesabının nasıl oluşturulacağı gösterilmektedir. Daha sonra [MongoDB Java sürücüsü](https://docs.mongodb.com/ecosystem/drivers/java/)kullanılarak oluşturulmuş bir konsol uygulaması derleyip dağıtacaksınız. 
 

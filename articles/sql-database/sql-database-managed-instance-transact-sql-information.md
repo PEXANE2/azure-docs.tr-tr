@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858548"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984965"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
 
@@ -339,7 +339,7 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 - `ALTER ASSEMBLY`dosyalara başvurulamıyor. Bkz. [alter assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Veritabanı Postası (db_mail)
- - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve genişletilmiş paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
+ - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve dış paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
  - `@query` Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
  
 ### <a name="dbcc"></a>DBCC
@@ -479,9 +479,12 @@ Algılan
 - Bu belgede (örneğin, `FILESTREAM` veya `FILETABLE` nesneler) açıklanan herhangi bir kısıtlamayı içeren bir veritabanının dosyasınıngeriyüklenmesiyönetilenörneküzerindegeriyüklenemez.`.BAK`
 - `.BAK`birden çok yedekleme kümesi içeren dosyalar geri yüklenemez. 
 - `.BAK`birden çok günlük dosyası içeren dosyalar geri yüklenemez.
-- 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya 280 'den fazla dosya içeren yedeklemeler Genel Amaçlı örneğine geri yüklenemez. 
+- 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya örnek başına 280 dosya aşılacak dosya sayısı bir Genel Amaçlı örneğine geri yüklenemez. 
 - 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine [geri yüklenemez.](sql-database-managed-instance-resource-limits.md)
 Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+
+ > [!IMPORTANT]
+ > Aynı sınırlamalar, yerleşik bir noktadan sonra geri yükleme işlemi için geçerlidir. Örnek olarak, 4 TB 'den büyük Genel Amaçlı veritabanı İş Açısından Kritik örneğine geri yüklenemez. Bellek içi OLTP dosyaları veya 280 'den fazla dosya içeren İş Açısından Kritik veritabanı Genel Amaçlı örneğine geri yüklenemez.
 
 ### <a name="service-broker"></a>Hizmet Aracısı
 

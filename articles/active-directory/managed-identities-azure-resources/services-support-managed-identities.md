@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f271f75a4faa7067f8a52d63a34772780c6448
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136518"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959898"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -33,7 +33,7 @@ Aşağıdaki Azure hizmetleri Azure kaynakları için yönetilen kimlikleri dest
 | Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure Çin 21Vianet |
 | --- | --- | --- | --- | --- |
 | Sistem tarafından atanmış | Kullanılabilir | Önizleme | Önizleme | Önizleme | 
-| Kullanıcı tarafından atanmış | Önizleme | Önizleme | Önizleme | Önizleme |
+| Kullanıcı tarafından atanmış | Kullanılabilir | Önizleme | Önizleme | Önizleme |
 
 Azure sanal makineleri için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın (kullanılabilir yerlerde):
 
@@ -48,7 +48,7 @@ Azure sanal makineleri için yönetilen kimliği yapılandırmak üzere aşağı
 |Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure Çin 21Vianet |
 | --- | --- | --- | --- | --- |
 | Sistem tarafından atanmış | Kullanılabilir | Önizleme | Önizleme | Önizleme |
-| Kullanıcı tarafından atanmış | Önizleme | Önizleme | Önizleme | Önizleme |
+| Kullanıcı tarafından atanmış | Kullanılabilir | Önizleme | Önizleme | Önizleme |
 
 Azure sanal makine ölçek kümeleri (varsa) için yönetilen kimliği yapılandırmak üzere aşağıdaki listeye bakın:
 
@@ -210,7 +210,7 @@ Azure Resource Manager erişimi yapılandırmak için aşağıdaki listeye bakı
 
 | Bulut | Kaynak Kimliği | Durum |
 |--------|------------|--------|
-| Azure genel | `https://eventhubs.azure.net` | Önizleme |
+| Azure genel | `https://eventhubs.azure.net` | Kullanılabilir |
 | Azure Kamu |  | Kullanılamaz |
 | Azure Almanya |   | Kullanılamaz |
 | Azure Çin 21Vianet |  | Kullanılamaz |
@@ -219,7 +219,7 @@ Azure Resource Manager erişimi yapılandırmak için aşağıdaki listeye bakı
 
 | Bulut | Kaynak Kimliği | Durum |
 |--------|------------|--------|
-| Azure genel | `https://servicebus.azure.net`  | Önizleme |
+| Azure genel | `https://servicebus.azure.net`  | Kullanılabilir |
 | Azure Kamu |  | Kullanılamaz |
 | Azure Almanya |   | Kullanılamaz |
 | Azure Çin 21Vianet |  | Kullanılamaz |

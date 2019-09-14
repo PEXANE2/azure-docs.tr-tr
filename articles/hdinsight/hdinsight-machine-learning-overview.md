@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 17615c0005a3cbc5b20cea697b4c75b5ed06ae0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812005"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961947"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 'ta makine öğrenimi
 
@@ -29,7 +29,7 @@ Apache Spark için Microsoft Machine Learning kitaplığı, [Mmlspark](https://g
 
 [R](https://www.r-project.org/) , şu anda dünyanın en popüler istatistiksel programlama dilidir. Bu, 2.500.000 ' den fazla kullanıcı topluluğu olan ve büyüyen bir açık kaynak veri görselleştirme aracıdır. Kullanıcı tabanıyla ve 8.000 katkıda bulunan paketlerle, R, makine öğrenimine ihtiyaç duyan birçok şirket için büyük olasılıkla tercih edilir. ML Hizmetleri, çok büyük veri kümeleri ve modellerle kullanılmak üzere hazırlanmaya yönelik bir HDInsight kümesi oluşturabilirsiniz. Bu özellik, veri bilimcileri ve İstatistikçilerin ' yi, küme kurulumu ve bakım ek yükü olmadan HDInsight aracılığıyla isteğe bağlı olarak ölçeklendirilebilen tanıdık bir R arabirimiyle sağlar.
 
-![R Server ile tahmin için eğitim](./media/hdinsight-machine-learning-overview/r-training.png)
+![R Server ile tahmin için eğitim](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
 Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar.  Ayrıca, ScaleR 'ın Hadoop Map 'i azaltma veya Spark işlem bağlamlarını kullanarak R betiklerini küme düğümleri arasında çalıştırma seçeneğiniz de vardır.
 
@@ -39,7 +39,7 @@ Spark ile HDInsight 'ta ML Hizmetleri ile Spark işlem bağlamı kullanarak bir 
 
 Azure Machine Learning, tahmine dayalı analiz modellerini modelleyen araçlar sağlar ve tahmine dayalı modellerinizi kullanıma hazırlama Web Hizmetleri olarak dağıtmak için kullanabileceğiniz tam olarak yönetilen bir hizmettir. Azure Machine Learning, bulutta, tahmine dayalı modeller oluşturmak, test etmek, işlemleri gerçekleştirmek ve yönetmek için kullanabileceğiniz, tahmine dayalı bir analiz çözümüdür. Büyük bir algoritma kitaplığından seçim yapın, model oluşturmak için Web tabanlı bir Studio kullanın ve modelinizi bir Web hizmeti olarak kolayca dağıtın.
 
-![Microsoft Azure Machine Learning ile Hadoop tarafından erişilebilir gelişmiş çözümlemeler yapma](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
+![Microsoft Azure Machine Learning ile Hadoop tarafından erişilebilir gelişmiş çözümlemeler yapma](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 [Hive sorguları](../machine-learning/team-data-science-process/create-features-hive.md)kullanarak bir HDInsight Hadoop kümesindeki veriler için özellikler oluşturun. *Özellik Mühendisliği* , öğrenme sürecini kolaylaştıran ham verilerden Özellikler oluşturarak öğrenme algoritmalarının tahmine dayalı gücünü artırmaya çalışır. Azure Machine Learning Studio 'dan HiveQL sorgularını çalıştırabilir ve [veri Içeri aktarma modülünü](../machine-learning/studio/import-data.md)kullanarak Hive 'de işlenen ve BLOB depolama alanında depolanan verilere erişim sağlayabilirsiniz.
 

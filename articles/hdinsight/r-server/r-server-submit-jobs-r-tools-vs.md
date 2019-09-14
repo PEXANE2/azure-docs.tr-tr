@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899961"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967929"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
 
@@ -55,7 +55,8 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 5. `1-Getting Started with R.R` Dosyayı`A first look at R` çözüm klasöründe açın.
 6. Dosyanın en üstünden başlayarak, her satırı bir kez R Etkileşim penceresine göndermek için CTRL + ENTER tuşlarına basın. Bazı satırlar paketleri yükledikleri sürece biraz zaman alabilir.
     * Alternatif olarak, R dosyasındaki (CTRL + A) tüm satırları seçebilir, sonra tümünü yürütebilir (CTRL + ENTER) veya araç çubuğunda etkileşimli Yürüt simgesini seçebilirsiniz.
-        ![Etkileşimli Yürüt](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![Etkileşimli Yürüt](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Betikteki tüm satırları çalıştırdıktan sonra şuna benzer bir çıktı görmeniz gerekir:
 
@@ -82,20 +83,20 @@ Putty ile donatılmış bir Windows bilgisayarından Microsoft ml Server/Microso
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![Spark bağlamını ayarlama](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![Spark bağlamını ayarlama](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. R Etkileşim penceresinde aşağıdaki komutları yürütün:
 
@@ -107,13 +108,12 @@ Putty ile donatılmış bir Windows bilgisayarından Microsoft ml Server/Microso
 
     Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-    ![Başarılı bir RX komutu yürütmesi](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![Başarılı bir RX komutu](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) yürütme a
 1. Dosyayı örnek veri klasöründen yeni oluşturulan `/user/RevoShare/newUser` klasöre başarıylakopyalamadığınıdoğrulayın:`rxHadoopCopy` `people.json`
 
     1. Azure 'daki HDInsight ML Hizmetleri kümeniz bölmesinden, sol taraftaki menüden **depolama hesapları** ' nı seçin.
 
-        ![Depolama hesapları](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![Depolama hesapları](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Kümenizin varsayılan depolama hesabını seçin ve kapsayıcı/dizin adı ' nı aklınızda yapın.
 
@@ -123,7 +123,7 @@ Putty ile donatılmış bir Windows bilgisayarından Microsoft ml Server/Microso
 
     4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json` Dosya `newUser` klasöründe görüntülenmelidir.
 
-        ![Dosya kopyalanmış](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Dosya kopyalanmış](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Geçerli Apache Spark bağlamını kullanmayı bitirdikten sonra, onu durdurmanız gerekir. Aynı anda birden çok bağlam çalıştıramazsınız.
 

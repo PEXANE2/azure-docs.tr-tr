@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172300"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959178"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
 
@@ -43,7 +43,7 @@ Güvenlik ön planda tutularak tasarlanmış olan tüm dağıtılmış sistemler
 
 Öncelikle kayıt defteri düzeyinde içerik güvenini etkinleştirmeniz gerekir. İçerik güvenini etkinleştirdikten sonra istemciler (kullanıcılar veya hizmetler) imzalı görüntüleri kayıt defterine gönderebilir. Kayıt defterinizde içerik güvenini etkinleştirmeniz, kayıt defterinin kullanımını yalnızca içerik güvenini etkinleştirmiş olan tüketicilerle sınırlamaz. İçerik güvenini etkinleştirmemiş tüketiciler de kayıt defterinizi normal bir şekilde kullanmaya devam edebilir. Ancak istemcilerinde içerik güvenini etkinleştirmiş olan tüketiciler kayıt defterinizde *yalnızca* imzalı görüntüleri görebilir.
 
-Kayıt defterinizde içerik güvenini etkinleştirmek için öncelikle Azure portaldan kayıt defterine gidin. **İlkeler**altında **içerik güveni** > **etkin** > **Kaydet**' i seçin.
+Kayıt defterinizde içerik güvenini etkinleştirmek için öncelikle Azure portaldan kayıt defterine gidin. **İlkeler**altında **içerik güveni** > **etkin** > **Kaydet**' i seçin. Azure CLı 'de [az ACR config Content-Trust Update][az-acr-config-content-trust-update] komutunu da kullanabilirsiniz.
 
 ![Azure portalda kayıt defteri için içerik güvenini etkinleştirme][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>Görüntü imzalama izinleri verme
 
 Yalnızca izin verdiğiniz kullanıcılar veya sistemler kayıt defterinize güvenilen görüntü gönderebilir. Bir kullanıcıya (veya hizmet sorumlusu kullanan bir sisteme) güvenilen görüntü gönderme izni vermek için Azure Active Directory kimliklerine `AcrImageSigner` rolünü atayın. Bu, görüntüleri kayıt defterine göndermek `AcrPush` için gereken (veya eşdeğer) rolün yanı sıra. Ayrıntılar için bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).
+
+> [!NOTE]
+> Azure Container Registry 'nin [yönetici hesabına](container-registry-authentication.md#admin-account) güvenilen görüntü gönderme izni verilemez.
 
 Azure portalda ve Azure CLI ile `AcrImageSigner` rolünün atanmasıyla ilgili ayrıntılı bilgiler aşağıda verilmiştir.
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 `<service principal ID>`, hizmet sorumlusunun **appId**, **objectId** veya **servicePrincipalNames** değerlerinden biri olabilir. Hizmet sorumluları veya Azure Container Registry ile çalışma hakkında daha fazla bilgi için bkz. [Hizmet sorumlularıyla Azure Container Registry kimlik doğrulaması](container-registry-auth-service-principal.md).
 
-Herhangi bir rol değişikliği yapıldıktan sonra `az acr login` , yeni rollerin etkili olabilmesi için Azure CLI yerel kimlik belirtecini yenilemek üzere ' yi çalıştırın.
+> [!IMPORTANT]
+> Herhangi bir rol değişikliği yapıldıktan sonra `az acr login` , yeni rollerin etkili olabilmesi için Azure CLI yerel kimlik belirtecini yenilemek üzere ' yi çalıştırın. Bir kimlik için rolleri doğrulama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak Azure kaynaklarına erişimi yönetme](../role-based-access-control/role-assignments-cli.md) ve [Azure kaynakları Için RBAC sorunlarını giderme](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Güvenilen görüntü gönderme
 
@@ -214,3 +218,4 @@ Kayıt defterinizde içerik güvenini devre dışı bırakmak için Azure portal
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

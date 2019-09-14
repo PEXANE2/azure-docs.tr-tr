@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561711"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959048"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Oturum açma, kuruluşunuzun Azure Active Directory sayfasına markalama Ekle
 Kuruluşunuzun logosu ve özel renk düzenleriyle bir tutarlı görünüm ve hisse oturum açma, Azure Active Directory (Azure AD) sayfalarında sağlamak için kullanın. Oturum açma sayfaları kuruluşunuzun web tabanlı uygulamalara, Azure AD kimlik sağlayıcınız olarak kullanan Office 365 gibi kullanıcılar oturum açtığında görünür.
@@ -29,7 +29,7 @@ Kuruluşunuzun logosu ve özel renk düzenleriyle bir tutarlı görünüm ve his
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD oturum açma sayfanızı özelleştirme
 Kullanıcılar, kuruluşunuzun kiracıya özel uygulamalar için aşağıdaki gibi oturum açtığında görüntülenir, Azure AD oturum açma sayfaları özelleştirebilirsiniz [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), veya gibibiretkialanıdeğişkeninigeçirme[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel markası hemen görünmez. Bunun yerine, kullanıcının özelleştirilmiş markalama görünmeden önce oturum açmanız gerekir.
+Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel markası hemen görünmez. Bunun yerine, kullanıcının özelleştirilmiş markalama görünmeden önce oturum açmanız gerekir. Kullanıcı oturum açtıktan sonra, marka 15 dakika veya daha uzun sürebilir. 
 
 > [!NOTE]
 > Tüm marka öğeleri isteğe bağlıdır. Örneğin, hiçbir arka plan görüntüsü ile bir başlık logosu belirtirseniz oturum açma sayfası varsayılan arka plan görüntüsü (örneğin, Office 365) hedef siteden Logonuzla gösterir.<br><br>Ayrıca, oturum açma sayfasında bulunan marka kişisel Microsoft hesapları için aktarılmaz. Kullanıcılarınıza veya şirket konuklarınız kişisel bir Microsoft hesabı kullanarak oturum açın, oturum açma sayfasında, kuruluşunuzun markasını yansıtmaz.

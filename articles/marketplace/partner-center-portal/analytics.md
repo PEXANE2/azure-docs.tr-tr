@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880137"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962743"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
 
@@ -26,7 +26,6 @@ Iş ortağı merkezi analiz araçlarına erişmek için, ticari Market altında 
 |[Siparişlerine](#orders-dashboard)|Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında bilgi|
 |[Müşterinizin](#customer-dashboard)|Grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında bilgiler|
 |[Dosyaların](#downloads-dashboard)|Son 30 gün içindeki indirme isteklerinizin listesi|
-|[Derecelendirmeler ve İncelemeler](#ratings-and-reviews)| Derecelendirdikleri tekliflere ait olan derecelendirmeler ve müşterilerinizin değerlendirmeleriyle ilgili bilgiler.
 
 ## <a name="summary-dashboard"></a>Özet Panosu
 
@@ -286,38 +285,3 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Sağlayıcı Adı| Müşteri| Microsoft ile son müşteri arasındaki ilişkiye katılan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır.|
 | SKU| Sipariş verme| Yayımlama sırasında tanımlanan SKU adı. Bir teklifin birçok SKU 'su olabilir, ancak bir SKU yalnızca tek bir teklifle ilişkilendirilebilir.||
 | Deneme bitiş tarihi| Sipariş verme| Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih.||
-
-## <a name="ratings-and-reviews"></a>Derecelendirmeler ve İncelemeler
-
-Müşteriler her iki markette de teklifler sunarak, arama ve satın alma tekliflerinden elde ettikleri teklifler için derecelendirmeleri ve incelemeleri bırakabilir. Yeni derecelendirmeler veya incelemeler gönderebilirler, derecelendirmeleri veya zaten gönderdikleri İncelemeleri güncelleştirebilir veya silebilir. İncelemeler, teklifin ürün görüntüleme sayfasının Incelemeler sekmesinde Azure Market veya AppSource 'a gönderilir. Müşteriler, derecelendirmeleri veya incelemeleri için adlarını içerebilir veya anonim olarak posta oluşturabilir.  
-
-> [!NOTE]
-> Müşteriler yalnızca derecelendirmelere ve sahip oldukları gözden geçirmelere değişiklik yapabilirler.
-
-**Derecelendirmeler & Gözden geçirme panosu** , müşteri etkinliklerinin eğilimlerini ve öngörülerini görüntüler. Grafik gösterimi şunları sağlar:
-
-- Derecelendirmeler & değerlendirmeleri  
-- Açıklamaları gözden geçir
-
-### <a name="marketplace-storefront-tabs"></a>Market storefront sekmeleri
-
-Yayımcılar, teklif ölçümlerini Azure Market sekmelerinde AppSource & Ayrıca görüntüleyebilir. Belirli teklif ölçümlerini görüntülemek için açılan listeden **teklif** ' i seçin:
-
-![İş Ortağı Merkezi teklifi çözümle açılan kutusu](./media/analyze-offer-dropdown.png)
-
-### <a name="ratings-and-reviews-summary"></a>Derecelendirmeler ve İncelemeler Özeti
-
-Derecelendirmeler & gözden geçirmeler Özeti bölümünde, seçilen bir tarih aralığı için aşağıdaki ölçümler görüntülenir:
-
-- **Ortalama derecelendirme:** Seçili teklif için müşteriler tarafından gönderilen tüm derecelendirmelerin ağırlıklı ortalama yıldız derecelendirmesi.
-- **Derecelendirme dökümü:** Derecelendirmeyi gönderen müşterilerin sayısına göre yıldız derecelendirmesinin dökümü. Çubuk grafik gerçek ve düzeltilmiş derecelendirmeler (güncelleştirilmiş derecelendirme sayısı) ile yığılmış.
-- **Toplam derecelendirme:** Gönderilen toplam derecelendirme sayısı. Bu sayı Ayrıca, gözden geçirmesiz ve olmayan derecelendirmeler içerir.
-- **Gözden geçirmeler içeren derecelendirmeler:** Gönderilen gözden geçirme sayısı.
-
-![İş Ortağı Merkezi derecelendirmeleri ve incelemeleri İnceleme Özeti](./media/analyze-ratings-summary.png)
-
-### <a name="review-comments"></a>Açıklamaları gözden geçir
-
-İncelemeler, ne zaman nakledildiğini kronolojik sırada görüntülenir. Varsayılan görünüm tüm incelemeleri görüntüler. Açılır menüdeki **filtreyi** kullanarak, yıldıza göre gözden geçirmeler aracılığıyla filtre uygulayabilirsiniz. İnceleme içinde görüntülenen anahtar sözcükleri de arayabilirsiniz.  
-
-![İş Ortağı Merkezi İnceleme açıklamalarını çözümle](./media/analyze-reviews.png)

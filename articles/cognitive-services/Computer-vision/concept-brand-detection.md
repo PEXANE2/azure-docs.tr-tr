@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: b4bcd07cf7549029d09f5acd58fdf8f92fffed74
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945297"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967084"
 ---
 # <a name="detect-popular-brands-in-images"></a>Görüntülerde popüler markaların algılanması
 
@@ -76,5 +76,5 @@ Bazı durumlarda, marka algılayıcısı hem logo görüntüsünü hem de stiliz
 
 Marka algılama özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. `Brands` **Visualfeatures** sorgu parametresine dahil edin. Ardından, tam JSON yanıtını aldığınızda, bu dizeyi yalnızca `"brands"` bölüm içeriği için ayrıştırın.
 
-* [Hızlı Başlangıç: Görüntü çözümleme (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Hızlı Başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/csharp-sdk.md)
 * [Hızlı Başlangıç: Görüntü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

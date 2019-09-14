@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub’a telemetri gönderme hızlı başlangıcı (Node.js) | Microsoft Docs
+title: "Hızlı Başlangıç: Azure IoT 'ye telemetri gönderme (node. js)"
 description: Bu hızlı başlangıçta bir IoT hub’a sanal telemetri göndermek ve bulutta işlemek üzere IoT hub’dan gelen telemetriyi okumak için iki örnek Node.js uygulaması çalıştırırsınız.
 author: wesmc7777
 manager: philmea
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 755f21911a9d3e2b6d81ff70922421c1031f9b36
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 859bb580f5fa974eec70c120297f094247fa2a9b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050143"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967198"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Hızlı Başlangıç: Bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (node. js)
 

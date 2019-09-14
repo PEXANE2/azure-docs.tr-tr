@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051363"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966708"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcıları yükleyip çalıştırma
 
@@ -40,7 +40,7 @@ Metin analizi kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri kar
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="the-host-computer"></a>Ana bilgisayar
+## <a name="the-host-computer"></a>Ana bilgisayar
 
 [!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
@@ -48,15 +48,15 @@ Metin analizi kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri kar
 
 Aşağıdaki tabloda açıklanmıştır en düşük ve önerilen CPU çekirdekleri, en az 2.6 gigahertz (GHz) veya daha hızlı ve her bir metin analizi kapsayıcısı için ayrılacak gigabayt (GB) bellek.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -67,21 +67,41 @@ Aşağıdaki tabloda açıklanmıştır en düşük ve önerilen CPU çekirdekle
 
 Çekirdek ve bellek, `--cpus` `docker run` komutunun bir parçası `--memory` olarak kullanılan ve ayarlarına karşılık gelir.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
 
-[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kullanılabilir.
 
-#### <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
 
-[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+[!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
+# <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
 
-[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+[!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
 ***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
+### <a name="docker-pull-for-the-text-analytics-containers"></a>Metin Analizi kapsayıcıları için Docker Pull
+
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
+
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+
+# <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
+
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
+
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+
+***
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 
@@ -96,15 +116,15 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 Komut örnekleri mevcuttur. [](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run`
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Anahtar ifade ayıklama](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Dil algılama](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Yaklaşım analizi](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -149,7 +169,10 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 
 Bu makalede, kavramlar ve indirme, yükleme ve metin analizi kapsayıcıları çalıştırmak için iş akışı öğrendiniz. Özet:
 
-* Metin analizi, anahtar ifade ayıklama, dil algılama ve yaklaşım analizi Kapsüllenen üç Linux kapsayıcıları için Docker, sağlar.
+* Metin Analizi, çeşitli özellikleri kapsüllemek üzere Docker için üç Linux kapsayıcısı sağlar:
+   * *Anahtar ifade ayıklama*
+   * *Dil algılama*
+   * *Yaklaşım analizi*
 * Kapsayıcı görüntülerini azure'da Microsoft kapsayıcı kayıt defteri (MCR) alanından indirilir.
 * Docker kapsayıcı görüntüleri çalıştırın.
 * Metin analizi-kapsayıcılarında işlemleri ana kapsayıcısının URI belirterek çağırmak için REST API veya SDK'sını kullanabilirsiniz.

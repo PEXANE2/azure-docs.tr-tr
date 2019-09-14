@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 4e589e694c728cfbd2237a138ad9a2f2bf2342dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8ec081a758096298036efacfe1b0e6d62ed00cbd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900162"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961897"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız bir iş sorunlarını giderme
 
@@ -80,7 +80,7 @@ Her HDInsight kümesi çeşitli Azure hizmetlerini ve Apache HBase ve Apache Spa
 
 Apache ambarı, bir Web Kullanıcı arabirimi ve REST API bir HDInsight kümesinin yönetimini ve izlenmesini sağlar. Ambarı, Linux tabanlı HDInsight kümelerine dahildir. Azure portal HDInsight sayfasında **küme Pano** bölmesini seçin.  Bu Kullanıcı arabirimini açmak için **HDInsight kümesi Pano** bölmesini seçin ve küme oturum açma kimlik bilgilerini girin.  
 
-![Ambari UI](./media/hdinsight-troubleshoot-failed-cluster/ambari-ui.png)
+![Ambari UI](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 Hizmet görünümlerinin bir listesini açmak için Azure portal sayfasındaki **ambarı görünümleri** ' ni seçin.  Bu liste, hangi kitaplıkların yüklü olduğuna bağlıdır. Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için bir hizmet bağlantısı seçin.
 
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambarı, WebHCat hizmetinin altında çalıştığı Konakları gösteren bir uyarı görüntüler. Hizmeti ana bilgisayarında yeniden başlatarak WebHCat hizmetini geri getirmeyi deneyebilirsiniz.
 
-![WebHCat sunucusunu yeniden Başlat](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![WebHCat sunucusunu yeniden Başlat](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 Bir WebHCat sunucusu hala gelmezse, hata iletileri için işlem günlüğünü kontrol edin. Daha ayrıntılı bilgi için, düğümde başvurulan `stderr` ve `stdout` dosyalarını denetleyin.
 
@@ -176,7 +176,7 @@ YARN düzeyinde iki zaman aşımı türü vardır:
 
     Aşağıdaki görüntüde,% 714,4 fazla kullanılan iş başlatıcısı sırası gösterilmektedir. Bu, varsayılan kuyrukta içinden ödünç almak için hala ücretsiz kapasite olduğu için kabul edilebilir. Ancak, küme tam olarak kullanıldığında ve YARN belleği% 100 kapasiteye sahip olduğunda, yeni işlerin beklenmesi gerekir ve bu süre sonunda zaman aşımına neden olur.
 
-    ![Joblauncher kuyruğu](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
+    ![Joblauncher kuyruğu](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     Bu sorunu çözmek için iki yol vardır: gönderilen yeni işlerin hızını azaltın ya da kümeyi ölçeklendirerek eski işlerin tüketim hızını artırın.
 
@@ -208,7 +208,7 @@ Bu sorunları tanılamak için:
 
 Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
 
-![Yığın ve sürümler](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
+![Yığın ve sürümler](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>5\. Adım: Günlük dosyalarını inceleyin
 
@@ -232,7 +232,7 @@ HDInsight ambarı Kullanıcı arabirimi, bir dizi **hızlı bağlantı** bölüm
 
 Örneğin, bu günlük için:
 
-![Günlük dosyaları için ambarı hızlı bağlantıları](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
+![Günlük dosyaları için ambarı hızlı bağlantıları](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png)
 
 ### <a name="view-hadoop-generated-log-files"></a>Hadoop tarafından oluşturulan günlük dosyalarını görüntüle
 

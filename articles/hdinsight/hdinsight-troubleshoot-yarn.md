@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 15ef18663a42153c11a55d4c5963d47f0e2514d6
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573717"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961773"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hadoop YARN sorunlarını giderme
 
@@ -33,27 +33,27 @@ Bu örnekte, iki mevcut kuyrukları (**varsayılan** ve **thriftsvr**) hem de % 
 
 1. Seçin **Ambari görünümleri** simgesi ve Kılavuz düzeni seçin. Ardından, **YARN Kuyruk yöneticisi**.
 
-    ![Ambari görünümlerini simgesini seçin](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Ambari görünümlerini simgesini seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Seçin **varsayılan** kuyruk.
 
-    ![Varsayılan kuyruk seçin](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Varsayılan kuyruk seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. İçin **varsayılan** kuyruk, değiştirme **kapasite** 50 %'için % 25. İçin **thriftsvr** kuyruk, değiştirme **kapasite** % 25.
 
-    ![Varsayılan ve thriftsvr kuyruklar için % 25'ine kapasitesini değiştirme](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![Varsayılan ve thriftsvr kuyruklar için % 25'ine kapasitesini değiştirme](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Yeni bir kuyruk oluşturmak için Seç **kuyruk Ekle**.
 
-    ![Kuyruk Ekle'yi seçin](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Kuyruk Ekle'yi seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Yeni kuyruk adı.
 
-    ![Spark kuyruk adı](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Spark kuyruk adı](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Bırakın **kapasite** % 50 tıklayın ve ardından değerlerinde **eylemleri** düğmesi.
 
-    ![Eylemler düğmeyi seçin](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Eylemler düğmeyi seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Seçin **kaydedin ve yenileyin kuyrukları**.
 
-    ![Kaydet'i seçin ve kuyruklarını Yenile](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Kaydet'i seçin ve kuyruklarını Yenile](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 Bu değişiklikler hemen YARN Zamanlayıcı UI görülebilir.
 

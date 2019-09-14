@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a32177280361bb0c2a433af0cb5dd3cfc6b9d3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821522"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967597"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Kafka MirrorMaker Event Hubs ile Apache Kafka için kullanın.
 
@@ -85,7 +85,7 @@ Tüketici yapılandırma dosyasını güncelleştirmeniz `source-kafka.config`, 
 
 ##### <a name="source-kafkaconfig"></a>Kaynak kafka.config
 
-```xml
+```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
 group.id=example-mirrormaker-group
 exclude.internal.topics=true
@@ -98,7 +98,7 @@ client.id=mirror_maker_consumer
 
 ##### <a name="mirror-eventhubconfig"></a>Yansıtma eventhub.config
 
-```xml
+```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
 client.id=mirror_maker_producer
 
@@ -121,10 +121,10 @@ Giriş İstatistikleri olayları Kafka özellikli bir olay hub'ı ulaşıyor do�
 MirrorMaker, çalışan ile Kafka kümesi kaynağına gönderilen tüm olayları hem Kafka kümesi alınır ve olay hub'ı hizmet yansıtılmış Kafka etkin. MirrorMaker ve olay hub'ları Kafka uç nokta kullanarak, mevcut bir Kafka işlem hattını yönetilen Azure Event Hubs hizmeti için mevcut kümeyi değiştirme veya tüm devam eden veri akışı engellemeden geçirebilirsiniz.
 
 ## <a name="samples"></a>Örnekler
-GitHub üzerindeki aşağıdaki örneklere bakın:
+GitHub 'da aşağıdaki örneklere bakın:
 
-- [Github'da Bu öğretici için örnek kod](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
-- [Azure Container Instance üzerinde çalışan Azure olay hub'ları Kafka MirrorMaker](https://github.com/djrosanova/EventHubsMirrorMaker)
+- [GitHub 'da Bu öğretici için örnek kod](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Azure Container Instance üzerinde çalışan Azure Event Hubs Kafka MirrorMaker](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

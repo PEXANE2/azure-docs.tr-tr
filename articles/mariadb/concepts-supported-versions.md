@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 950294094584958e83f6a16630a6e1f897785e46
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 09/12/2019
+ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897279"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962929"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>MariaDB sunucu sürümleri için desteklenen Azure veritabanı
 
@@ -20,21 +20,21 @@ MariaDB için Azure veritabanı, InnoDB altyapısı kullanılarak açık kaynakl
 MariaDB, X. Y. Z adlandırma şemasını kullanır. X ana sürümdür, Y ise ikincil sürümdür ve Z, yama sürümüdür.
 
 > [!NOTE]
-> Hizmette, sunucu örneklerine bağlantıları yeniden yönlendirmek için bir ağ geçidi kullanılır. Bağlantı kurulduktan sonra MySQL istemcisi, MariaDB sunucu örneğiniz üzerinde çalışan gerçek sürümü değil, ağ geçidinde bulunan MariaDB sürümünü görüntüler. MariaDB sunucu örneğinizin sürümünü öğrenmek için `SELECT VERSION();` komutunu kullanın.
+> Hizmette, bağlantıları sunucu örneklerine yeniden yönlendirmek için bir ağ geçidi kullanılır. Bağlantı kurulduktan sonra MySQL istemcisi, MariaDB sunucu örneğiniz üzerinde çalışan gerçek sürümü değil, ağ geçidinde bulunan MariaDB sürümünü görüntüler. MariaDB sunucu örneğinizin sürümünü öğrenmek için `SELECT VERSION();` komutunu kullanın.
 
 MariaDB için Azure veritabanı şu anda şu sürümü desteklemektedir:
 
 ## <a name="mariadb-version-102"></a>MariaDB sürüm 10,2
 
-Düzeltme Eki Sürümü: 10.2.23
+Düzeltme Eki Sürümü: 10.2.25
 
-MariaDB 10.2.23 'teki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/) bakın.
+Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) bakın.
 
 ## <a name="mariadb-version-103"></a>MariaDB sürüm 10,3
 
-Düzeltme Eki Sürümü: 10.3.14
+Düzeltme Eki Sürümü: 10.3.16
 
-MariaDB 10.3.14 'teki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/) bakın.
+Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) bakın.
 
 ## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
 Hizmet, düzeltme eki güncelleştirmelerine yönelik yükseltmeleri otomatik olarak yönetir. Örneğin, 10.2.21 to 10.2.23.  

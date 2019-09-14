@@ -1,24 +1,24 @@
 ---
-title: "Hızlı Başlangıç: Translator konuşma çevirisi API'siC#"
+title: "Hızlı Başlangıç: Translator Konuşma Çevirisi API'siC#"
 titlesuffix: Azure Cognitive Services
 description: Translator Konuşma Çevirisi API'sini kısa sürede kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri alın.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 04/26/2019
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5cca3d5d02f9618e99f122bf3fc2a7d2874e1cdf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 359d962db8b7d8cfdc17c230351bc5556604ebbe
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444519"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965415"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>Hızlı Başlangıç: Translator konuşma tanıma API'si ileC#
+# <a name="quickstart-translator-speech-api-with-c"></a>Hızlı Başlangıç: İle Translator Konuşma Çevirisi API'siC#
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -27,7 +27,7 @@ Bu makalede Translator Konuşma Çevirisi API'si’ni kullanarak bir .wav dosyas
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İhtiyacınız olacak [Visual Studio 2019](https://www.visualstudio.com/downloads/) Windows üzerinde bu kodu çalıştırmak için. (Ücretsiz Community Edition’ı kullanabilirsiniz.) Mac OS veya Linux kullanırsanız Metin Düzenleyicisi'ni de kullanabilirsiniz [Visual Studio Code](https://code.visualstudio.com/Download) alternatif olarak.
+Bu kodu Windows üzerinde çalıştırmak için [Visual Studio 2019](https://www.visualstudio.com/downloads/) gerekir. (Ücretsiz Community Edition’ı kullanabilirsiniz.) Mac OS veya Linux kullanıyorsanız, alternatif olarak metin Düzenleyicisi [Visual Studio Code](https://code.visualstudio.com/Download) de kullanabilirsiniz.
 
 Aşağıdaki koddan derlediğiniz yürütülebilir dosya ile aynı klasörün içinde "speak.wav" adlı bir .wav dosyanız olmalıdır. Bu .wav dosyası standart PCM, 16 bit, 16 kHz, mono biçiminde olmalıdır.
 

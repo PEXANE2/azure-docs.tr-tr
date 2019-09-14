@@ -32,9 +32,15 @@
       href: ./samples/index.md
     - name: Kanada Federal PBMM
       items:
+        - name: Genel Bakış
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/index.md
         - name: Denetim eşlemesi
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/control-mapping.md
+        - name: Dağıtım adımları
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
       items:
         - name: Genel Bakış

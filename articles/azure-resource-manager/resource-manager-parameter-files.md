@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69893808"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983944"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Kaynak Yöneticisi parametre dosyası oluştur
 
@@ -204,6 +204,6 @@ Ancak, bir dış parametre dosyası kullandığınızda, diğer değerleri satı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](resource-group-authoring-templates.md).
+- Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarındaki parametreler](template-parameters.md).
 - Anahtar kasasından değerleri kullanma hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](resource-manager-keyvault-parameter.md).
-
+- Parametreler hakkında daha fazla bilgi için [Azure Resource Manager şablonlarındaki parametreler](template-parameters.md)bölümüne bakın.

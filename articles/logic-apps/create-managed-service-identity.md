@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934029"
+ms.locfileid: "70959961"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps yönetilen kimliklerle kimlik doğrulama ve kaynaklara erişme
 
@@ -23,7 +23,7 @@ Diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişmek v
 > [!NOTE]
 > Mantıksal uygulamanız, yönetilen kimlikleri yalnızca yönetilen kimlikleri destekleyen bağlayıcılarla kullanabilir. Şu anda yalnızca HTTP Bağlayıcısı yönetilen kimlikleri destekliyor.
 >
-> Şu anda her bir Azure aboneliğinde sistem tarafından atanan yönetilen kimliklerle en fazla 10 mantıksal uygulama iş akışı olabilir.
+> Şu anda her bir Azure aboneliğinde sistem tarafından atanan yönetilen kimliklerle en fazla 100 mantıksal uygulama iş akışı olabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -168,7 +168,7 @@ Mantıksal uygulamanızı sistem tarafından atanan bir yönetilen kimlikle ayar
    > 
    > **Hedef kitle** ÖZELLIĞINDE kaynak kimliği değeri, tüm gerekli eğik çizgiler de dahil olmak üzere Azure AD 'nin beklediği şekilde tam olarak eşleşmelidir. 
    > Bu kaynak KIMLIĞI değerlerini, Azure [ad 'yi destekleyen Azure hizmetlerini açıklayan bu tabloda](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)bulabilirsiniz. 
-   > Örneğin, Azure Resoruce Manager kaynak KIMLIĞI kullanıyorsanız, URI 'nin sonundaki eğik çizgiye sahip olduğundan emin olun.
+   > Örneğin, Azure Resource Manager kaynak KIMLIĞI kullanıyorsanız, URI 'nin sonundaki eğik çizgiye sahip olduğundan emin olun.
 
 1. Mantıksal uygulamayı istediğiniz şekilde oluşturmaya devam edin.
 

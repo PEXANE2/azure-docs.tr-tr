@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389771"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959931"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -65,6 +65,14 @@ Daha güçlü parola doğrulamanın mevcut Active Directory etki alanı denetley
 * Azure AD ile parola koruması ve ormana yönelik ara sunucu hizmetini kaydetmek için bir genel yönetici hesabı.
 * Windows Server Active Directory ormanını Azure AD 'ye kaydetmek için orman kök etki alanında Active Directory etki alanı yöneticisi ayrıcalıklarına sahip bir hesap.
 * DC Aracısı hizmet yazılımını çalıştıran tüm Active Directory etki alanı, SYSVOL çoğaltması için Dağıtılmış Dosya Sistemi Çoğaltma (DFSR) kullanmalıdır.
+
+  Etki alanınız zaten DFSR kullanıyorsa, Azure AD parola korumasını yüklemeden önce bu uygulamayı DFSR 'yi kullanacak şekilde geçirmeniz gerekır. Daha fazla bilgi için şu bağlantıya bakın:
+
+  [SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > Azure AD parola koruması DC Aracısı yazılımı, SYSVOL çoğaltması için hala FRS (DFSR 'nin öncül teknolojisi) kullanan etki alanlarında bulunan etki alanı denetleyicilerine yüklenir, ancak yazılım bu ortamda düzgün çalışmaz. Diğer negatif yan etkiler, çoğaltılamayan tek dosyaları ve SYSVOL geri yükleme yordamlarını başarılı olarak, ancak tüm dosyaları çoğaltamaz. Yalnızca DFSR 'nin kendi avantajları ve ayrıca Azure AD parola koruması dağıtımının engellemesini kaldırmak için etki alanınızı en kısa sürede DFSR 'yi kullanacak şekilde geçirmeniz gerekir. Yazılımın gelecekteki sürümleri, hala FRS kullanan bir etki alanında çalışırken otomatik olarak devre dışı bırakılacaktır.
+
 * Anahtar Dağıtım Hizmeti, Windows Server 2012 çalıştıran etki alanındaki tüm etki alanı denetleyicilerinde etkinleştirilmelidir. Varsayılan olarak, bu hizmet el ile tetikleyici başlangıcı aracılığıyla etkinleştirilir.
 
 ## <a name="single-forest-deployment"></a>Tek ormanlı dağıtım

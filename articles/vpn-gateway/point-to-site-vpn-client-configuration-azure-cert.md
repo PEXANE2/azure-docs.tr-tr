@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 07d48ed195f74c9aef5d34de1925ab8fc2a3ae21
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 095c7c4bf2a0fb08c0a7fe7e0a8118e76732c9c7
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899920"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961621"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yapılandırma
 
@@ -138,7 +138,7 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
    ![bağlantıları Düzenle](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Yeni bir bağlantı oluşturmak için **düğmeyetıklayın.+**
 
-   ![bağlantı ekleme](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
+   ![Bağlantı ekleme](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
 4. Menüden **IPSec/Ikev2 (Strongswa)** öğesini seçin ve çift tıklayın. Bu adımda, bağlantınızın adını verebilirsiniz.
 
    ![bir bağlantı türü seçin](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
@@ -149,7 +149,7 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
 7. Bağlantının **istemci** bölümünde, **kimlik doğrulaması**için **sertifika/özel anahtar**' ı seçin. **Sertifika** ve **özel anahtar**için, daha önce oluşturulmuş sertifikayı ve özel anahtarı seçin. **Seçenekler**' de, **Iç IP adresi iste**' yi seçin. ' A tıklayarak **Ekle**.
 
    ![iç IP adresi iste](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
-8. Bağlantıyı açın.
+8. **Bağlantıyı açın**.
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLı)
 

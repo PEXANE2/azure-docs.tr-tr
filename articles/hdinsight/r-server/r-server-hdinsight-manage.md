@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900020"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967736"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini yönetme
 
@@ -31,7 +31,7 @@ Bu makalede, birden çok eşzamanlı kullanıcı ekleme, bir ML Hizmetleri küme
 
 RStudio Community sürümünün çalıştığı Edge düğümüne daha fazla kullanıcı ekleyerek HDInsight üzerinde ML Hizmetleri kümesi için birden fazla eşzamanlı kullanıcıyı etkinleştirebilirsiniz. Bir HDInsight kümesi oluşturduğunuzda bir HTTP kullanıcısı ve bir SSH kullanıcısı olmak üzere iki kullanıcı sağlamanız gerekir:
 
-![Eşzamanlı kullanıcı 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![Eşzamanlı kullanıcı 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Küme oturum açma kullanıcı adı**: Oluşturduğunuz HDInsight kümelerini korumak için kullanılan HDInsight ağ geçidinden kimlik doğrulaması yapmak için kullanılan HTTP kullanıcısı. Bu HTTP kullanıcısı, Apache ambarı Kullanıcı arabirimine, Apache Hadoop YARN Kullanıcı arabirimine ve diğer UI bileşenlerine erişmek için kullanılır.
 - **Secure Shell (SSH) kullanıcı adı**: Kümeye Secure Shell üzerinden erişmek için kullanılan SSH kullanıcısı. Bu kullanıcı Linux sisteminde tüm baş düğümler, çalışan düğümleri ve kenar düğümler için kullanılan kullanıcıdır. Bu sayede uzak kümedeki düğümlere erişmek için Secure Shell kullanabilirsiniz.
@@ -66,7 +66,7 @@ Kenar düğümüne bir kullanıcı eklemek için şu komutları çalıştırın:
 
 Aşağıdaki ekran görüntüsünde çıktılar gösterilmektedir.
 
-![Eşzamanlı kullanıcı 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![Eşzamanlı kullanıcı 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 "Geçerli Kerberos parolası:" sorulduğunda, bunu yoksaymak için yalnızca **ENTER** tuşuna basın. `useradd` komutundaki `-m` seçeneği, sistemin RStudio Topluluk sürümü için gerekli olan kullanıcı ana klasörünü oluşturacağını belirtir.
 

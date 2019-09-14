@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402770"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960426"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure sanal ağı aracılığıyla HDInsight 'ta Apache Kafka bağlanma
 
@@ -252,7 +252,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 3. Kafka yapılandırmasını görüntülemek için üst ortadaki __config__ 'ler ' i seçin.
 
-    ![Kafka için configs bağlantıları](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![Kafka için configs bağlantıları](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki `kafka-env` __filtre__ alanına girin.
 
@@ -274,7 +274,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 8. Yapılandırma değişikliklerini kaydetmek için __Kaydet__ düğmesini kullanın. Değişiklikleri açıklayan bir kısa mesaj girin. Değişiklikler kaydedildikten sonra __Tamam ' ı__ seçin.
 
-    ![Yapılandırma Kaydet düğmesi](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![Yapılandırma Kaydet düğmesi](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Kafka yeniden başlatırken hata oluşmasını engellemek için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu aç__' ı seçin. Bu işlemi gerçekleştirmek için Tamam ' ı seçin.
 
@@ -282,7 +282,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 10. Kafka 'i yeniden başlatmak için __Yeniden Başlat__ düğmesini kullanın ve __etkilenen tümünü yeniden Başlat__' ı seçin. Yeniden başlatmayı onaylayın ve sonra işlem tamamlandıktan sonra __Tamam__ düğmesini kullanın.
 
-    ![Yeniden Başlat düğmesi tüm etkilenen vurgulanmış vurgulanmış](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![Yeniden Başlat düğmesi tüm etkilenen vurgulanmış vurgulanmış](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
 11. Bakım modunu devre dışı bırakmak için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu__Kapat ' ı seçin. Bu işlemi gerçekleştirmek için **Tamam ' ı** seçin.
 

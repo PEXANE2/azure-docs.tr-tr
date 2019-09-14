@@ -9,18 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 55e8121152aa281ab1025f1e8ded53c4b00c3d44
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef19d22b5c47c51f5ee3f74a4d7ab06725f7ed41
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566936"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968323"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
 Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellikleri listelenmektedir. SQL veritabanı güncelleştirmeleri ve geliştirmeleri için bkz. [SQL Database Service Updates](https://azure.microsoft.com/updates/?product=sql-database). Diğer Azure hizmetlerine yönelik güncelleştirmeler ve geliştirmeler için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates).
 
 ## <a name="features-in-public-preview"></a>Genel önizlemede Özellikler
+
+### <a name="single-databasetabsingle-database"></a>[Tek veritabanı](#tab/single-database)
 
 | Özellik | Ayrıntılar |
 | ---| --- |
@@ -42,6 +44,19 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 | Yönetilen örneklerle tehdit algılama |Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'nde tehdit algılamayı yapılandırma](sql-database-managed-instance-threat-detection.md).|
 | Yönetilen örneklerle Kendi Anahtarını Getir (BYOK) ile saydam veri şifrelemesi (TDE) |Bilgi için, bkz [. Azure SQL saydam veri şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlar: Kendi Anahtarını Getir desteği](transparent-data-encryption-byok-azure-sql.md).|
 | &nbsp; |
+
+### <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
+
+| Özellik | Ayrıntılar |
+| ---| --- |
+| <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
+| <a href="https://aka.ms/managed-instance-tde-byok">Kendi şifreleme anahtarlarınızı getir</a> | Mevcut TDE anahtarlarıyla Saydam Veri Şifrelemesi (TDE) zaten etkinleştirilmiş olan Şirket içinden veritabanını geçirin. |
+| <a href="https://aka.ms/managed-instance-failover-groups">Coğrafi olarak dağıtılmış yük devretme grupları</a> | Örneğin bir kopyasını başka bir bölgede tutun ve bölgesel olağanüstü durum senaryosunda bile verilerinizin kullanılabilir olmasını sağlayın. |
+| <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak sunucu düzeyinde oturumlar oluşturun. |
+| [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) | Tablolardaki değişiklikleri yönetilen örneklere, tek veritabanlarına veya SQL Server örneklerine yerleştirilmiş diğer veritabanlarına çoğaltın veya diğer yönetilen örneklerde veya SQL Server örneğinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. |
+| &nbsp; |
+
+---
 
 ## <a name="updates"></a>Güncelleştirmeler
 

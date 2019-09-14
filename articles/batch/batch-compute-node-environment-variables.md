@@ -9,14 +9,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095274"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958800"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Çalışma zamanı ortam değişkenlerini Azure Batch
 
@@ -48,7 +48,7 @@ Bir ortam değişkeninin geçerli değerini almak için, bir Windows işlem `cmd
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Görevin ait olduğu Batch hesabının adı.                  | Tüm görevler.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch hesabının URL 'SI. | Tüm görevler. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Tüm uygulama paketi ortam değişkenlerinin ön eki. Örneğin, uygulama "foo" sürümü "1" bir havuza yüklenirse, ortam değişkeni AZ_BATCH_APP_PACKAGE_FOO_1 olur. AZ_BATCH_APP_PACKAGE_FOO_1, paketin indirildiği konuma (bir klasör) işaret eder. | İlişkili bir uygulama paketine sahip herhangi bir görev. Ayrıca, düğümün uygulama paketleri varsa tüm görevler için de kullanılabilir. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Tüm uygulama paketi ortam değişkenlerinin ön eki. Örneğin, uygulama "foo" sürümü "1" bir havuza yüklenirse, ortam değişkeni AZ_BATCH_APP_PACKAGE_FOO_1 olur. AZ_BATCH_APP_PACKAGE_FOO_1, paketin indirildiği konuma (bir klasör) işaret eder. Uygulama paketinin varsayılan sürümünü kullanırken, sürüm numaraları olmadan AZ_BATCH_APP_PACKAGE ortam değişkenini kullanın. | İlişkili bir uygulama paketine sahip herhangi bir görev. Ayrıca, düğümün uygulama paketleri varsa tüm görevler için de kullanılabilir. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Sınırlı bir Batch hizmeti işlemleri kümesine erişim veren bir kimlik doğrulama belirteci. Bu ortam değişkeni yalnızca, [görev eklendiğinde](/rest/api/batchservice/task/add#request-body) [authenticationtokensettings](/rest/api/batchservice/task/add#authenticationtokensettings) ayarlandıysa bulunur. Belirteç değeri, Batch API 'Lerinde, [batchclient. Open () .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_)'sinde olduğu gibi Batch istemcisi oluşturmak için kimlik bilgileri olarak kullanılır. | Tüm görevler. | OAuth2 erişim belirteci |
 | AZ_BATCH_CERTIFICATES_DIR       | Bir [görev çalışma dizini][files_dirs] içinde, sertifikaların Linux işlem düğümleri için depolandığı bir dizin. Bu ortam değişkeni Windows işlem düğümleri için geçerlidir.                                                  | Tüm görevler.   |  /mnt/Batch/Tasks/WorkItem/batchjob001/Job-1/task001/CERT |
 | AZ_BATCH_HOST_LIST              | Biçimdeki`nodeIP,nodeIP` [çok örnekli bir göreve][multi_instance] ayrılan düğümlerin listesi. | Çok örnekli birincil ve alt görevler. | `10.0.0.4,10.0.0.5` |

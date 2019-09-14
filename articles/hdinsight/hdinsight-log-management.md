@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879442"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961024"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -79,11 +79,11 @@ Apache ambarı, bir Web Kullanıcı arabirimi ve REST API sağlayarak bir HDInsi
 
 Hizmet görünümlerinin listesini açmak için HDInsight için Azure portal sayfasındaki **ambarı görünümleri** bölmesini seçin.  Bu liste, yüklediğiniz kitaplıklara bağlı olarak farklılık gösterir.  Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için herhangi bir hizmet bağlantısı seçin.  Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfasında, küme hizmetleri yapılandırma ve hizmet sürümü geçmişi hakkında bilgi sağlanır. Ambarı Kullanıcı arabiriminin bu bölümüne gitmek için **yönetici** menüsünü ve ardından **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için **sürümler** sekmesini seçin.
 
-![Yığın ve sürümler](./media/hdinsight-log-management/stack-versions.png)
+![Yığın ve sürümler](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması**' nı indirin. 
+Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması**' nı indirin.
 
-![Konak istemci yapılandırması](./media/hdinsight-log-management/client-configs.png)
+![Konak istemci yapılandırması](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>Betik eylemi günlüklerini görüntüleme
 

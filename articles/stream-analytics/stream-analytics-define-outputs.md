@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563309"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984871"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışları anlama
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>BLOB depolama ve Azure Data Lake Gen2
 
-Azure Data Lake Gen2 çıkış, dünya çapındaki sınırlı bölgelerde bir önizleme özelliği olarak sunulur. [İstek](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)formumuza ek ayrıntılar sağlayarak önizlemeye erişim isteyebilirsiniz.
+Azure Data Lake Gen2 çıkış, dünya çapındaki sınırlı bölgelerde bir önizleme özelliği olarak sunulur. [İstek formumuza](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)ek ayrıntılar sağlayarak önizlemeye erişim isteyebilirsiniz.
 
 Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri bulutta depolamak için uygun maliyetli ve ölçeklenebilir bir çözüm sunar. BLOB depolama ve kullanım kullanımıyla ilgili bir giriş için bkz. [Azure Portal blob 'Ları yükleme, indirme ve listeleme](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -310,9 +310,9 @@ Bölüm destek ve çıkış yazarların her çıkış türü sayısı aşağıda
 | Azure Service Bus konusu | Evet | Otomatik olarak seçilir. Bölüm sayısı dayanır [Service Bus SKU ve boyutu](../service-bus-messaging/service-bus-partitioning.md). Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.| Çıkış konudaki bölüm sayısı ile aynıdır.  |
 | Azure Service Bus kuyruğu | Evet | Otomatik olarak seçilir. Bölüm sayısı dayanır [Service Bus SKU ve boyutu](../service-bus-messaging/service-bus-partitioning.md). Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.| Çıkış kuyruğuna bölüm sayısı ile aynıdır. |
 | Azure Cosmos DB | Evet | Sorgudaki bölüm BY yan tümcesine göre. | Giriş bölümleme için aşağıdaki [tam olarak, sorguları paralel](stream-analytics-scale-jobs.md). |
-| Azure İşlevleri | Hayır | None | Geçerli değildir. |
+| Azure İşlevleri | Evet | Sorgudaki bölüm BY yan tümcesine göre. | Giriş bölümleme için aşağıdaki [tam olarak, sorguları paralel](stream-analytics-scale-jobs.md). |
 
-Çıktı yazıcılarının sayısı, sorgudaki (bkz.) yan `INTO <partition count>` tümcesi kullanılarak [](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)denetlenebilir ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınızı bölümlenmemiş bir giriş bölümündeki verileri eksikliği geç varış süreyi kadar bir gecikme neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md).
+Çıktı yazıcılarının sayısı, sorgudaki [(bkz.](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) yan `INTO <partition count>` tümcesi kullanılarak denetlenebilir ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınızı bölümlenmemiş bir giriş bölümündeki verileri eksikliği geç varış süreyi kadar bir gecikme neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Toplu iş boyutu
 Azure Stream Analytics, olayları işlemek ve çıkışlara yazmak için değişken boyutlu toplu işler kullanır. Genellikle Stream Analytics altyapısı tek seferde bir ileti yazmaz ve verimlilik için toplu işler kullanır. Hem gelen hem de giden olayların oranı yüksek olduğunda Stream Analytics daha büyük toplu işler kullanır. Çıkış oranı düşük olduğunda, daha küçük toplu işler gecikme süresi düşük tutmak için kullanır.

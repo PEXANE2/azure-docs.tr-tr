@@ -4,14 +4,14 @@ description: Kaynakların dağıtımı için Azure Resource Manager şablonları
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 61e9bbabee969280c07521edb05d67ba68c0c58e
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801995"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965304"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
@@ -21,43 +21,35 @@ Bu güçlükleri karşılamak için dağıtımları otomatik hale getirebilir ve
 
 Altyapıyı Azure çözümleriniz için kod olarak uygulamak üzere Azure Resource Manager şablonlarını kullanın. Şablon, projeniz için altyapıyı ve yapılandırmayı tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Şablon bildirim temelli sözdizimini kullanır, bu, oluşturmak için programlama komutlarının dizisini yazmak zorunda kalmadan ne dağıtmayı istediğinizi belirtmenize olanak tanır. Şablonda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
 
-## <a name="benefits-of-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarının avantajları
+## <a name="why-choose-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarını neden seçmeliyim?
 
-Kaynak Yöneticisi şablonlar aşağıdaki avantajları sağlar:
+Kaynak Yöneticisi şablonları ve diğer altyapılardan birini kod hizmetleri olarak kullanmaya karar vermeye çalışıyorsanız, şablonları kullanmanın aşağıdaki avantajlarını göz önünde bulundurun:
 
-* Bu kaynakları tek tek işlemek yerine, çözümünüz için tüm kaynakları bir grup olarak dağıtın, yönetin ve izleyin.
+* **Bildirime dayalı sözdizimi**: Kaynak Yöneticisi şablonlar, tüm Azure altyapısını bildirimli olarak oluşturmanıza ve dağıtmanıza olanak tanır. Örneğin, yalnızca sanal makineler, aynı zamanda ağ altyapısı, depolama sistemleri ve ihtiyacınız olabilecek diğer kaynaklar için dağıtım yapabilirsiniz.
 
-* Çözümünüzü geliştirme yaşam döngüsü boyunca sürekli olarak dağıtın ve kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olmanız gerekir.
+* **Tekrarlanabilir sonuçlar**: Altyapınızı geliştirme yaşam döngüsü boyunca sürekli olarak dağıtın ve kaynaklarınızın tutarlı bir şekilde dağıtılmasının rahatlığını yapın. Şablonlar, aynı şablonu birçok kez dağıtabileceğiniz ve aynı durumda aynı kaynak türlerini alabileceği anlamına gelen ıdempotent. Güncelleştirmeleri temsil etmek için çok sayıda ayrı şablon geliştirmek yerine istenen durumu temsil eden bir şablon geliştirebilirsiniz.
 
-* Altyapınızı betikler yerine bildirim temelli şablonlar aracılığıyla yönetin.
-
-Kaynak Yöneticisi şablonlarını veya diğer altyapılardan birini kod hizmetleri olarak kullanmaya karar vermeye çalışıyorsanız, aşağıdaki avantajlar şablonlarının bu hizmetler üzerinde olduğunu göz önünde bulundurun:
-
-* Yeni Azure hizmetleri ve özellikleri şablonlarda hemen kullanılabilir. Kaynak sağlayıcısı yeni kaynakları kullanıma sunarak, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Kod hizmetleri olarak diğer altyapıyla, üçüncü tarafların yeni kaynaklar için arabirim uygulaması için beklemeniz gerekir.
-
-* Şablon dağıtımları, birden çok kesinlik dışı komut yerine, şablonun tek bir gönderimi aracılığıyla işlenir. Kaynak Yöneticisi, birbirine bağlı kaynakların dağıtımını doğru sırada oluşturulacak şekilde düzenler. Şablonu ayrıştırır ve kaynaklar arasındaki başvurulara bağlı olarak dağıtım için doğru sırayı belirler.
+* **Düzenleme**: Sıralama işlemlerinin karmaşıklıkları hakkında endişelenmeniz gerekmez. Kaynak Yöneticisi, birbirine bağlı kaynakların dağıtımını doğru sırada oluşturulacak şekilde düzenler. Mümkün olduğunda, dağıtımlarınızın seri dağıtımlardan daha hızlı tamamlanabilmesi için Kaynak Yöneticisi Kaynakları paralel olarak dağıtır. Şablonu, birden çok zorunlu komut yerine bir komut aracılığıyla dağıtırsınız.
 
    ![Şablon dağıtımı karşılaştırma](./media/template-deployment-overview/template-processing.png)
 
-* Şablon dağıtımları Azure portal izlenir. Dağıtım geçmişini gözden geçirebilir ve şablon dağıtımı hakkında bilgi edinebilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve tüm çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı Portal üzerinden izlenmez.
+* **Yerleşik doğrulama**: Şablonunuz yalnızca doğrulama işlemi yapıldıktan sonra dağıtılır. Kaynak Yöneticisi dağıtımın başarılı olduğundan emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınız, yarı tamamlanmış bir durumda durmak daha az olabilir.
+
+* **Modüler dosyalar**: Şablonlarınızı daha küçük, yeniden kullanılabilir bileşenlere bölebilir ve dağıtım zamanında birbirine bağlayabilirsiniz. Ayrıca, bir şablonu başka bir şablon içinde iç içe geçirebilirsiniz.
+
+* **Herhangi bir Azure kaynağı oluşturun**: Şablonlarda yeni Azure hizmetlerini ve özelliklerini hemen kullanabilirsiniz. Kaynak sağlayıcısı yeni kaynakları kullanıma sunarak, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Yeni hizmetleri kullanmadan önce araçların veya modüllerin güncelleştirilmesini beklemeniz gerekmez.
+
+* **İzlenen dağıtımlar**: Azure portal, dağıtım geçmişini gözden geçirebilir ve şablon dağıtımı hakkında bilgi alabilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve tüm çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı Portal üzerinden izlenmez.
 
    ![Dağıtım geçmişi](./media/template-deployment-overview/deployment-history.png)
 
-* Şablon dağıtımları, ön uçuş doğrulamasından geçer. Kaynak Yöneticisi dağıtımın başarılı olduğundan emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınız, yarı tamamlanmış bir durumda durmak daha az olabilir.
+* **Kod olarak ilke**: [Azure ilkesi](../governance/policy/overview.md) , idare otomatikleştiren kod çerçevesi olarak bir ilkedir. Azure ilkeleri kullanıyorsanız, ilke düzeltme, şablonlar aracılığıyla dağıtıldığında uyumlu olmayan kaynaklar üzerinde yapılır.
 
-* [Azure ilkeleri](../governance/policy/overview.md)kullanıyorsanız, ilke düzeltme, şablonlar aracılığıyla dağıtıldığında uyumlu olmayan kaynaklar üzerinde yapılır.
+* **Dağıtım planları**: Microsoft tarafından, mevzuat ve uyumluluk standartlarını karşılamak [için sunulan planların](../governance/blueprints/overview.md) avantajlarından yararlanabilirsiniz. Bu planlar, çeşitli mimarilere yönelik önceden oluşturulmuş şablonlar içerir.
 
-* Microsoft, mevzuat ve uyumluluk standartlarını karşılamak için dağıtım [şemaları](../governance/blueprints/overview.md) sağlar. Bu planlar, çeşitli mimarilere yönelik önceden oluşturulmuş şablonlar içerir.
+* **Dışarı aktarılabilir kod**: Kaynak grubunun geçerli durumunu dışarı aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek, var olan bir kaynak grubu için bir şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
 
-## <a name="idempotent"></a>Idempotent
-
-Idempotent yalnızca aynı işlemleri birçok kez çalıştırabilmeniz ve aynı sonucu elde etmeniz anlamına gelir. Kaynak Yöneticisi şablonu dağıtmak, ıdempotent. Aynı şablonu birçok kez dağıtabilir ve aynı durumda aynı kaynak türlerini alabilirsiniz. Bu kavram, bir şablonu var olan bir kaynak grubuna yeniden dağıtmanıza veya bir şablonu yeni bir kaynak grubuna dağıtmanıza bakılmaksızın tutarlı sonuçlar elde ettiğiniz anlamına geldiğinden, bu kavram önemlidir.
-
-Bir kaynak grubuna üç kaynak dağıttığınızı ve sonra dördüncü kaynak eklemeniz gerektiğine karar verelim. Yalnızca yeni kaynağı içeren yeni bir şablon oluşturmak yerine varolan şablonunuza dördüncü kaynağı ekleyebilirsiniz. Yeni şablonu, zaten üç kaynağı bulunan kaynak grubuna dağıttığınızda, Kaynak Yöneticisi gerçekleştirilecek eylemleri belirler.
-
-Kaynak grubunda kaynak varsa ve istek özelliklerde güncelleştirme içermiyorsa, hiçbir işlem yapılmaz. Kaynak varsa ancak Özellikler değiştiyse, mevcut kaynak güncellenir. Kaynak yoksa, yeni kaynak oluşturulur.
-
-Dağıtım bittiğinde kaynakların her zaman beklenen durumda olduğunu güvendiniz.
+* **Yazma araçları**: Şablonları [Visual Studio Code](resource-manager-tools-vs-code.md) ve şablon aracı uzantısıyla yazabilirsiniz. IntelliSense, sözdizimi vurgulama, çevrimiçi Yardım ve diğer birçok dil işlevini edinirsiniz.
 
 ## <a name="template-file"></a>Şablon dosyası
 
@@ -74,20 +66,6 @@ Dağıtım bittiğinde kaynakların her zaman beklenen durumda olduğunu güvend
 * [Kaynaklar](resource-group-authoring-templates.md#resources) -dağıtılacak kaynakları belirtin.
 
 * [Çıktılar](template-outputs.md) -dağıtılan kaynaklardan değer döndürür.
-
-## <a name="template-features"></a>Şablon Özellikleri
-
-Kaynak Yöneticisi, kaynakların doğru sırada oluşturulmasını sağlamak için bağımlılıkları analiz eder. Çoğu bağımlılık örtük olarak belirlenir. Ancak, bir kaynağın başka bir kaynaktan önce dağıtıldığından emin olmak için açıkça bir bağımlılık ayarlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Resource Manager’da bağımlılıkları tanımlama](resource-group-define-dependencies.md).
-
-Şablonunuza bir kaynak ekleyebilir ve isteğe bağlı olarak dağıtabilirsiniz. Genellikle, kaynağın dağıtılması gerekip gerekmediğini belirten bir parametre değeri geçirin. Daha fazla bilgi için [Kaynak Yöneticisi şablonlarda koşullu dağıtım](conditional-resource-deployment.md)konusuna bakın.
-
-Şablonunuzda çok sayıda JSON blok blokları yerine, bir kopya öğesi kullanarak bir değişken, özellik veya kaynağın birden fazla örneğini belirtebilirsiniz. Daha fazla bilgi için [Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi](resource-group-create-multiple.md)bölümüne bakın.
-
-## <a name="export-templates"></a>Şablonları dışarı aktarma
-
-Kaynak grubunun geçerli durumunu dışarı aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek, var olan bir kaynak grubu için bir şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
-
-Portaldan bir çözüm oluşturduğunuzda çözüm otomatik olarak bir dağıtım şablonu içerir. Bir şablonla başlayacağınız ve bu şablonu size özel ihtiyaçlara göre özelleştirebileceğiniz için yeni bir şablon oluşturmanız gerekmez. Bir örnek için bkz [. hızlı başlangıç: Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın.
 
 ## <a name="template-deployment-process"></a>Şablon dağıtımı işlemi
 
@@ -146,6 +124,7 @@ Katmanlarınızın farklı yaşam döngülerine sahip olacağını düşünüyor
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Şablon dosyalarındaki özellikler hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](resource-group-authoring-templates.md).
-* Şablon geliştirmeye başlamak için bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](resource-manager-tools-vs-code.md).
-* Yönetim özellikleri de dahil olmak üzere Kaynak Yöneticisi hizmetine giriş için bkz. [Azure Resource Manager genel bakış](resource-group-overview.md).
-
+* Bir kaynağın başka bir kaynaktan önce dağıtılması için bağımlılıkları açıkça ayarlamak için, bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](resource-group-define-dependencies.md).
+* Şablonunuza bir kaynak ekleyebilir ve isteğe bağlı olarak dağıtabilirsiniz. Daha fazla bilgi için [Kaynak Yöneticisi şablonlarda koşullu dağıtım](conditional-resource-deployment.md)konusuna bakın.
+* Şablonunuzda çok sayıda JSON yineleme bloğu yerine, bir değişken, özellik veya kaynak örneği belirtebilirsiniz. Daha fazla bilgi için [Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi](resource-group-create-multiple.md)bölümüne bakın.
+* Şablonları dışarı aktarma hakkında bilgi edinmek için [bkz. hızlı başlangıç: Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın.

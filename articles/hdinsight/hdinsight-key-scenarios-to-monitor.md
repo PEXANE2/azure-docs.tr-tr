@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 706f0333f1cca984b44e0fc96a5b014d4157ce4c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 936307399b658b75962e6969820215f9808d053f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879705"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961143"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
 
@@ -36,11 +36,11 @@ Kümenizin düğümlerine ve bunların yüklenmesine ilişkin üst düzey bir g�
 
 Ayrıca, her konak için çekirdek sayısını ve RAM miktarını ve disk kullanımını ve yük ortalamasını gösteren sütunları görürsünüz.
 
-![Konaklar sekmesi](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Konaklar sekmesi](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 Bu konakta ve bunların ölçümlerinde çalışan bileşenlere ayrıntılı bir bakış için konak adlarından herhangi birini seçin. Ölçümler, kullanılabilir CPU kullanımı, yükleme, disk kullanımı, bellek kullanımı, ağ kullanımı ve işlem sayısı gibi seçilebilir bir zaman çizelgesi olarak gösterilir.
 
-![Ana bilgisayar ayrıntıları](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Ana bilgisayar ayrıntıları](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 Uyarıları ayarlama ve ölçümleri görüntüleme hakkındaki ayrıntılar için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md) .
 
@@ -56,7 +56,7 @@ Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları iç
 
 YARN bu sıralara kaynak ayırmamızı sağlar ve kullanılabilir kaynaklarınızın tümünün atanıp atanmadığını gösterir. Kuyruklarınız hakkındaki bilgileri görüntülemek için, ambarı Web Kullanıcı arabiriminde oturum açın ve sonra üstteki menüden **Yarn kuyruk yöneticisi** ' ni seçin.
 
-![YARN kuyruğu Yöneticisi](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![YARN kuyruğu Yöneticisi](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 YARN kuyruğu Yöneticisi sayfası, her birine atanan kapasitenin yüzdesi ile birlikte sol taraftaki kuyrukların bir listesini gösterir.
 
@@ -64,11 +64,11 @@ YARN kuyruğu Yöneticisi sayfası, her birine atanan kapasitenin yüzdesi ile b
 
 Kuyruklarınızı daha ayrıntılı bir şekilde görmek için, ambarı panosundan soldaki listeden **Yarn** hizmetini seçin. Sonra **hızlı bağlantılar** açılan menüsünde, etkin düğümünüzün altında **Kaynak Yöneticisi Kullanıcı arabirimi** ' ni seçin.
 
-![Kaynak Yöneticisi UI menü bağlantısı](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Kaynak Yöneticisi UI menü bağlantısı](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 Kaynak Yöneticisi Kullanıcı arabiriminde, sol taraftaki menüden **Zamanlayıcı** ' yı seçin. *Uygulama kuyrukları*altında kuyruklarınızın bir listesini görürsünüz. Burada, kuyruklarınızın her biri için kullanılan kapasiteyi, işlerin aralarında ne kadar iyi dağıtıldığını ve herhangi bir işin kaynak kısıtlamalı olup olmadığını görebilirsiniz.
 
-![Kaynak Yöneticisi UI menüsü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Kaynak Yöneticisi UI menüsü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Depolama alanı azaltma
 

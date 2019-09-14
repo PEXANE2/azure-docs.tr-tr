@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309109"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962657"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -74,7 +74,7 @@ Canlı bir teklif sahibi olan tüm iş ortakları, Market teklifleriniz için en
 
 Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 
-Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle iş uygulamaları iş ortakları, [ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview)aracılığıyla bunlara sunulan tamamlayıcı programlamaya sahiptir. Bu, iş uygulamaları iş ortaklarının ihtiyaçları için özelleştirilmiş teknik, pazarlama ve satış desteği içerir.
+Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle iş uygulamaları iş ortakları, [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)aracılığıyla bunlara sunulan tamamlayıcı programlamaya sahiptir. Bu, iş uygulamaları iş ortaklarının ihtiyaçları için özelleştirilmiş teknik, pazarlama ve satış desteği içerir.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Market yeniden gereksinimleri ve kısıtlamaları
 
@@ -101,9 +101,9 @@ Sahte olacak şekilde kanıtlanmış işlemler, [liste, deneme, danışmanlık](
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifinizi Bulut İş Ortağı Portalı oluşturduysanız teklifinizi oluşturmak veya yapılandırmak için oturum açın.
+Teklifinizi [bulut iş ortağı portalı](https://cloudpartner.azure.com)oluşturduysanız teklifinizi oluşturmak veya yapılandırmak için oturum açın.
 
-Teklifinizi Iş Ortağı Merkezi 'nde oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
+Teklifinizi [Iş Ortağı Merkezi](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)'nde oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
 
 [Size sunulan self servis kaynaklarını](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)gözden geçirin.
 

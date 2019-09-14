@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: a0c9c729081da9f6c7b8f549a4906d432af6ecb2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779535"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961629"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -25,7 +25,7 @@ Azure sanal ağı kullanmak aşağıdaki senaryolara izin vermez:
 * Internet üzerinden genel kullanıma açık olmayan [Apache Hadoop](https://hadoop.apache.org/) hizmetlere doğrudan erişme. Örneğin, [Apache Kafka](https://kafka.apache.org/) API 'Ler veya [Apache HBASE](https://hbase.apache.org/) Java API 'si.
 
 > [!IMPORTANT]
-> VNET 'te HDInsight kümesi oluşturmak, NIC 'ler ve yük dengeleyiciler gibi çeşitli ağ kaynakları oluşturur. Kümenizin VNET ile düzgün çalışması için gerektiğinden, bu ağ kaynaklarını silmeyin.
+> VNET 'te HDInsight kümesi oluşturmak, NIC 'ler ve yük dengeleyiciler gibi çeşitli ağ kaynakları oluşturur. Kümenizin VNET ile düzgün çalışması için gerektiğinden, bu ağ **kaynaklarını silmeyin.**
 >
 > 28 Şubat 2019 ' den sonra, VNET 'te oluşturulan yenı HDInsight kümeleri için ağ kaynakları (örneğin, NIC 'ler, LBs vb.), aynı HDInsight kümesi kaynak grubunda sağlanacak. Daha önce bu kaynaklar VNET kaynak grubunda sağlandı. Geçerli çalışan kümelerde ve VNET olmadan oluşturulan kümelerdeki hiçbir değişiklik yoktur.
 
@@ -212,7 +212,7 @@ Bir Azure sanal ağlarındaki ağ trafiği aşağıdaki yöntemler kullanılarak
 
 Yönetilen bir hizmet olarak, HDInsight, VNET 'ten gelen ve giden trafik için HDInsight sistem durumu ve Yönetim Hizmetleri için sınırsız erişim gerektirir. NSG 'leri kullanırken, bu hizmetlerin HDInsight kümesiyle iletişim kurabildiğinden emin olmanız gerekir.
 
-![Azure özel VNET 'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Azure özel VNET 'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>Ağ güvenlik gruplarıyla HDInsight
 
@@ -220,7 +220,7 @@ Ağ trafiğini denetlemek için **ağ güvenlik grupları** kullanmayı planlıy
 
 1. HDInsight için kullanmayı planladığınız Azure bölgesini belirler.
 
-2. HDInsight için gereken IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md).
+2. HDInsight için gereken IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight yönetimi IP adresleri](hdinsight-management-ip-addresses.md).
 
 3. HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
 
@@ -234,7 +234,7 @@ HDInsight kümelerinden giden trafiği denetleme hakkında daha fazla bilgi içi
 
 #### <a name="forced-tunneling-to-on-premise"></a>Şirket içine zorlamalı tünel oluşturma
 
-Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, şirket içi ağlarda trafiğin zorlamalı tünelini desteklemez. 
+Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, __Şirket__ içi ağlarda trafiğin zorlamalı tünelini desteklemez. 
 
 ## <a id="hdinsight-ip"></a>Gerekli IP adresleri
 

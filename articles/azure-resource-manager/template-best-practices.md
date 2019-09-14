@@ -1,22 +1,17 @@
 ---
 title: Azure Resource Manager şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812911"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983817"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager şablonu en iyi uygulamaları
 
@@ -47,7 +42,8 @@ Kaynakları bir kaynak grubuna dağıttığınızda, kaynak grubu kaynaklarla il
 Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Riski en aza indirmek için, kaynak grubunuzu ve kaynaklarınızı aynı bölgede bulun.
 
 ## <a name="parameters"></a>Parametreler
-Bu bölümdeki bilgiler, [parametrelerle](resource-group-authoring-templates.md#parameters)çalışırken yararlı olabilir.
+
+Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken yararlı olabilir.
 
 ### <a name="general-recommendations-for-parameters"></a>Parametreler için genel öneriler
 
@@ -149,7 +145,7 @@ Bu bölümdeki bilgiler, [parametrelerle](resource-group-authoring-templates.md#
 
 ## <a name="variables"></a>Değişkenler
 
-Aşağıdaki bilgiler, [değişkenlerle](resource-group-authoring-templates.md#variables)çalışırken yararlı olabilir:
+Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken yararlı olabilir:
 
 * Değişken adları için ortası Case kullanın.
 
@@ -286,7 +282,7 @@ Ayarlanacak [bağımlılıklara](resource-group-define-dependencies.md) karar ve
 
 ## <a name="outputs"></a>outputs
 
-Genel IP adresleri oluşturmak için bir şablon kullanırsanız, IP adresi ayrıntılarını ve tam etki alanı adını (FQDN) döndüren bir [çıktılar bölümü](resource-group-authoring-templates.md#outputs) ekleyin. Çıkış değerleri, bir kolayca dağıtımdan sonra genel IP adresleri ve FQDN'ler hakkında ayrıntıları almak için kullanabilirsiniz.
+Genel IP adresleri oluşturmak için bir şablon kullanırsanız, IP adresi ayrıntılarını ve tam etki alanı adını (FQDN) döndüren bir [çıktılar bölümü](template-outputs.md) ekleyin. Çıkış değerleri, bir kolayca dağıtımdan sonra genel IP adresleri ve FQDN'ler hakkında ayrıntıları almak için kullanabilirsiniz.
 
 ```json
 "outputs": {

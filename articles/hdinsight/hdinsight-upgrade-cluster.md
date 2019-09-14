@@ -4,15 +4,16 @@ description: Azure HDInsight kümenizi daha yeni bir sürüme yükseltmeye yöne
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811632"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960690"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight kümesini daha yeni bir sürüme yükseltme
 En son HDInsight özelliklerinden yararlanmak için HDInsight kümelerinin en son sürüme yükseltilmesi önerilir. HDInsight küme sürümlerinizi yükseltmek için aşağıdaki yönergeleri izleyin.
@@ -23,7 +24,7 @@ En son HDInsight özelliklerinden yararlanmak için HDInsight kümelerinin en so
 ## <a name="upgrade-tasks"></a>Yükseltme görevleri
 HDInsight kümesini yükseltmek için iş akışı aşağıdaki gibidir.
 
-![Yükseltme iş akışı diyagramı](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Yükseltme iş akışı diyagramı](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. HDInsight kümenizi yükseltirken gerekebilecek değişiklikleri anlamak için bu belgenin her bölümünü okuyun.
 2. Test/kalite güvencesi ortamı olarak bir küme oluşturun. Küme oluşturma hakkında daha fazla bilgi için bkz. [Linux tabanlı HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md) hakkında bilgi edinin

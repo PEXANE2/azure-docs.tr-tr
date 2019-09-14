@@ -4,14 +4,14 @@ description: Bildirim temelli JSON sözdizimi kullanan Azure Resource Manager ş
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d396b6b48687e451396849cc256c25f847a219cf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306835"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984090"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın
 
@@ -84,6 +84,8 @@ Bir parametre için kullanılabilen özellikler şunlardır:
 | maxLength |Hayır |Dize, güvenli dize ve dizi türü parametrelerinin uzunluk üst sınırı, bu değer dahil değildir. |
 | description |Hayır |Portalda kullanıcılara görüntülenen parametrenin açıklaması. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](#comments). |
 
+Parametrelerin nasıl kullanılacağına ilişkin örnekler için, bkz. [Azure Resource Manager şablonlarındaki parametreler](template-parameters.md).
+
 ## <a name="variables"></a>Değişkenler
 
 Değişkenler bölümünde, şablonunuzun tamamında kullanılabilecek değerler oluşturursunuz. Değişken tanımlamanız gerekmez, ancak genellikle karmaşık ifadeleri azaltarak şablonunuzu basitleştirir.
@@ -116,6 +118,8 @@ Aşağıdaki örnek, bir değişken tanımlamaya yönelik kullanılabilir seçen
 ```
 
 Bir değişken için birkaç `copy` değer oluşturmak üzere kullanma hakkında bilgi için bkz. [değişken yineleme](resource-group-create-multiple.md#variable-iteration).
+
+Değişkenlerin nasıl kullanılacağına ilişkin örnekler için bkz. [Azure Resource Manager şablonundaki değişkenler](template-variables.md).
 
 ## <a name="functions"></a>İşlevler
 
@@ -159,6 +163,8 @@ Bir Kullanıcı işlevi tanımlarken bazı kısıtlamalar vardır:
 | parametre-değer |Hayır |Parametre değerinin türü. İzin verilen türler ve değerler **dize**, **SecureString**, **int**, **bool**, **nesne**, **secureobject**ve **dizidir**. |
 | çıkış türü |Evet |Çıkış değeri türü. Çıkış değerleri işlev giriş parametreleriyle aynı türleri destekler. |
 | çıkış değeri |Evet |İşlev tarafından değerlendirilen ve döndürülen şablon dili ifadesi. |
+
+Özel işlevlerin nasıl kullanılacağına ilişkin örnekler için [Azure Resource Manager şablondaki Kullanıcı tanımlı işlevler](template-user-defined-functions.md)bölümüne bakın.
 
 ## <a name="resources"></a>Kaynaklar
 
@@ -259,6 +265,8 @@ Aşağıdaki örnek, bir çıkış tanımı yapısını gösterir:
 | condition |Hayır | Bu çıkış değerinin döndürülüp döndürülmeyeceğini belirten Boolean değeri. Ne `true`zaman, bu değer dağıtımın çıktısına dahil edilir. Ne `false`zaman, bu dağıtım için çıkış değeri atlanır. Belirtilmediğinde, varsayılan değer `true`. |
 | type |Evet |Çıkış değeri türü. Çıkış değerleri şablon giriş parametreleri aynı türlerini destekler. Çıktı türü için **SecureString** belirtirseniz, değer dağıtım geçmişinde gösterilmez ve başka bir şablondan alınamaz. Birden fazla şablonda gizli bir değer kullanmak için, gizli anahtarı bir Key Vault depolayın ve parametre dosyasındaki gizli dizi başvurusu yapın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](resource-manager-keyvault-parameter.md). |
 | value |Evet |Değerlendirilen ve çıkış değeri döndürülen şablon dili ifadesi. |
+
+Çıkışları kullanma örnekleri için bkz. [Azure Resource Manager şablonundaki çıktılar](template-outputs.md).
 
 <a id="comments" />
 

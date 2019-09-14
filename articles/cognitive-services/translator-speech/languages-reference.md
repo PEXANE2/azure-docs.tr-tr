@@ -1,46 +1,46 @@
 ---
-title: Translator konuşma tanıma API'si dilleri yöntemi
+title: Translator Konuşma Çevirisi API'si dilleri yöntemi
 titleSuffix: Azure Cognitive Services
-description: Translator konuşma tanıma API'si dilleri yöntemi kullanın.
+description: Translator Konuşma Çevirisi API'si dilleri yöntemini kullanın.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abe6330d0359f7d7c922facecaaf1a8b1fc7174
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446949"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966405"
 ---
-# <a name="translator-speech-api-languages"></a>Translator konuşma tanıma API'si: Languages
+# <a name="translator-speech-api-languages"></a>Translator Konuşma Çevirisi API'si: Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Translator konuşma çevirisi, hizmetleri tarafından desteklenen dillerin listesi sürekli olarak genişletir. Translator konuşma çevirisi hizmeti ile kullanmak için kullanılabilen dilleri kümesini bulmak için bu API'yi kullanın.
+Translator Konuşma Çevirisi, hizmetlerinin desteklediği dillerin listesini sürekli olarak genişletir. Bu API 'yi, Translator Konuşma Çevirisi Hizmeti ile birlikte kullanılabilecek olan dil kümesini saptamak için kullanın.
 
-Mevcut diller almak için API kullanımını gösteren kod örnekleri web'da [Microsoft Translator GitHub site](https://github.com/MicrosoftTranslator).
+Kullanılabilir dilleri almak için API kullanımını gösteren kod örnekleri, [Microsoft Translator GitHub sitesinde](https://github.com/MicrosoftTranslator)bulunabilir.
 
-## <a name="implementation-notes"></a>Uygulama Notları
+## <a name="implementation-notes"></a>Uygulama notları
 
-### <a name="get-languages"></a>/Languages Al
+### <a name="get-languages"></a>/Dilleri al
 
-Geniş bir dil kümesini okuma, transcribed metinleri çevirin ve Sentezlenen konuşma çevirisi üretmek için özelliği kullanılabilir.
+Bir çok dil kümesi, konuşma, metni dönüştürmek ve çeviri üzerinde birleştirilmiş bir konuşma oluşturmak için konuşma için kullanılabilir.
 
-Bir istemcinin kullandığı `scope` sorgu parametresi, ilgileniyor hangi dillerin kümelerini tanımlamak için.
+İstemci, `scope` ilgilendiğiniz dil kümelerini tanımlamak için sorgu parametresini kullanır.
 
-* **Konuşmayı metne dönüştürme:** Sorgu parametresi kullandığınızda `scope=speech` Konuşmayı metne konuşmaların kullanılabilen dilleri kümesini almak için.
-* **Metin çevirisi:** Sorgu parametresi kullandığınızda `scope=text` transcribed metni çevirmek kullanılabilen dilleri kümesini almak için.
-* **Metin okuma:**  Sorgu parametresi kullandığınızda `scope=tts` diller ve sesler çevrilen metni yeniden konuşmaya sentezlemek kullanılabilir kümesini almak için.
+* **Konuşmayı metne dönüştürme:** Konuşmayı metne dönüştürmek `scope=speech` için kullanılabilen dillerin kümesini almak için sorgu parametresini kullanın.
+* **Metin çevirisi:** Bir metni dönüştürmek `scope=text` için kullanılabilen dillerin kümesini almak için sorgu parametresini kullanın.
+* **Metinden konuşmaya:**  Çevrilmiş metni konuşmaya `scope=tts` geri çekmek için kullanılabilen dil ve sesler kümesini almak için sorgu parametresini kullanın.
 
-Bir istemci birden fazla eşzamanlı olarak virgülle ayrılmış listesi belirterek alabilirsiniz. Örneğin, `scope=speech,text,tts`.
+Bir istemci, virgülle ayrılmış bir seçenek listesi belirterek birden çok kümesi aynı anda alabilir. Örneğin: `scope=speech,text,tts`.
 
-Başarılı bir yanıt her talep kümesi özelliğine sahip bir JSON nesnesi aranır.
+Başarılı bir yanıt, istenen her küme için bir özelliği olan bir JSON nesnesidir.
 
 ```
 {
@@ -56,17 +56,17 @@ Başarılı bir yanıt her talep kümesi özelliğine sahip bir JSON nesnesi ara
 }
 ```
 
-Bir istemci kullanabildiğinden `scope` desteklenen dillerin hangi kümelerini seçmek için sorgu parametresi döndürülmesi, gerçek bir yanıt yalnızca yukarıda gösterilen tüm özelliklerinin bir alt kümesi içerebilir.
+İstemci, desteklenen dillerin hangi kümelerinin `scope` döndürülmesi gerektiğini seçmek için sorgu parametresini kullanabilmesi için, gerçek bir yanıt yalnızca yukarıda gösterilen tüm özelliklerin bir alt kümesini içerebilir.
 
-Her bir özellik ile sağlanan değer aşağıdaki gibidir.
+Her bir özellikle birlikte sunulan değer aşağıdaki gibidir.
 
-### <a name="speech-to-text-speech"></a>Konuşmayı metne dönüştürme (okuma)
+### <a name="speech-to-text-speech"></a>Konuşmayı metne dönüştürme (konuşma)
 
-Konuşma metin özelliği ile ilişkili değer `speech`, bir sözlük (anahtarın, değer) çiftleri. Her anahtar, Konuşmayı metne dönüştürme için desteklenen bir dil tanımlar. Anahtar tanımlayıcısı olan istemci API'sine geçirir. Anahtarıyla ilişkilendirilmiş değeri, aşağıdaki özelliklere sahip bir nesnedir:
+Konuşmadan metne özelliği `speech`ile ilişkili değer, (anahtar, değer) çiftlerinin bir sözlüğüdür. Her anahtar, konuşmadan metne yönelik olarak desteklenen bir dili tanımlar. Anahtar, istemcinin API 'ye geçirdiği tanıtıcıdır. Anahtarla ilişkili değer, aşağıdaki özelliklere sahip bir nesnedir:
 
-* `name`: Dil adını görüntüler.
-* `language`: İlişkili dil yazılan dil etiketi. Aşağıdaki "Metin işlem" bölümüne bakın.
-Bir örnek verilmiştir:
+* `name`: Dilin görünen adı.
+* `language`: İlişkili yazılı dilin dil etiketi. Aşağıdaki "metin işlemi" başlığına bakın.
+Örnek:
 
 ```
 {
@@ -78,12 +78,12 @@ Bir örnek verilmiştir:
 
 ### <a name="text-translation-text"></a>Metin çevirisi (metin)
 
-İlişkili değer `text` özelliği de burada her anahtar tanımlar metin çevirisi için desteklenen bir dil bir sözlük. Dil anahtarıyla ilişkilendirilmiş değeri açıklanmaktadır:
+`text` Özelliği ile ilişkili değer aynı zamanda her bir anahtarın metin çevirisi için desteklenen bir dili tanımladığı bir sözlüktür. Anahtarla ilişkili değer dili açıklar:
 
-* `name`: Dil adını görüntüler.
-* `dir`: Olan yönlülüğü `rtl` sağdan sola diller için veya `ltr` sağdan sola diller için.
+* `name`: Dilin görünen adı.
+* `dir`: Sağdan sola diller veya `rtl` `ltr` soldan sağa diller için olan yönlülük.
 
-Bir örnek verilmiştir:
+Örnek:
 
 ```
 {
@@ -93,18 +93,18 @@ Bir örnek verilmiştir:
 }
 ```
 
-### <a name="text-to-speech-tts"></a>Metin okuma (tts)
+### <a name="text-to-speech-tts"></a>Metinden konuşmaya (TTS)
 
-Metin okuma özelliği, tts, ilişkili değer de burada her anahtar, desteklenen bir ses tanımlar sözlüktür. Bir ses nesnesinin öznitelikleri şunlardır:
+Metin okuma özelliği, TTS ile ilişkili değer aynı zamanda her bir anahtarın desteklenen bir sesi tanımladığı bir sözlüktür. Bir ses nesnesinin öznitelikleri şunlardır:
 
 * `displayName`: Ses için görünen ad.
-* `gender`: Cinsiyet (Erkek veya Kadın) sesinin.
-* `locale`: Birincil dili uzantılarından ve bölge uzantılarından ses dil etiketi.
-* `language`: İlişkili dil yazılan dil etiketi.
-* `languageName`: Dil adını görüntüler.
-* `regionName`: Bu dil için görünen ad alanının.
+* `gender`: Sesin Cinsiyeti (erkek veya kadın).
+* `locale`: Birincil dil alt etiketi ve bölgesi alt etiketi ile sesin dil etiketi.
+* `language`: İlişkili yazılı dilin dil etiketi.
+* `languageName`: Dilin görünen adı.
+* `regionName`: Bu dilin bölge görünen adı.
 
-Bir örnek verilmiştir:
+Örnek:
 
 ```
 {
@@ -121,35 +121,35 @@ Bir örnek verilmiştir:
 ```
 
 ### <a name="localization"></a>Yerelleştirme
-Hizmet 'Accept-Language' üst bilgisi, metin çevirisi desteklenen tüm diller için dil tüm adlarını döndürür.
+Hizmet, metin çevirisinde desteklenen tüm diller için ' Accept-Language ' üst bilgisinin dilindeki tüm adları döndürür.
 
-### <a name="response-class-status-200"></a>Yanıt sınıfı (durum 200)
-Desteklenen dil kümesini tanımlayan nesne.
+### <a name="response-class-status-200"></a>Response sınıfı (durum 200)
+Desteklenen dillerin kümesini açıklayan nesne.
 
-ModelExample değer:
+Modelexörnek değeri:
 
-Langagues {konuşma (object, isteğe bağlı), metin (object, isteğe bağlı), tts (object, isteğe bağlı)}
+Langagues {konuşma (nesne, isteğe bağlı), metin (nesne, isteğe bağlı), TTS (nesne, isteğe bağlı)}
 
 ### <a name="headers"></a>Üst bilgiler
 
-|Üstbilgi|Açıklama|Tür|
+|Üstbilgi|Açıklama|Type|
 :--|:--|:--|
-X-RequestId|Değer, istek tanımlamak için sunucu tarafından oluşturulan ve sorun giderme amacıyla kullanılır.|string|
+X-RequestId|İsteği tanımlamak için sunucu tarafından oluşturulan ve sorun giderme amacıyla kullanılan değer.|dize|
 
 ### <a name="parameters"></a>Parametreler
 
 |Parametre|Açıklama|Parametre türü|Veri Türü|
 |:--|:--|:--|:--|
-|API sürümü    |İstemci tarafından istenen API sürümü. İzin verilen değerler: `1.0`.|query|string|
-|scope  |Desteklenen diller ya da ses istemciye döndürmek için ayarlar. Bu parametre, anahtar sözcükleri virgülle ayrılmış listesi olarak belirtilir. Aşağıdaki anahtar sözcükler vardır:<ul><li>`speech`: Konuşma tanıma özelliği için desteklenen dil kümesini sağlar.</li><li>`tts`: Metni konuşmaya dönüştürme için desteklenen kişilerden daha fazlasını sunmaktadır.</li><li>`text`: Metin çevirme için desteklenen dil kümesini sağlar.</li></ul>Bir değer belirtilmezse, değerini `scope` varsayılan olarak `text`.|query|string|
-|X-ClientTraceId    |Bir istek izleme için kullanılan istemci tarafından oluşturulan GUID. İlgili sorunları gidermeyi kolaylaştırmak için istemciler her istek ile yeni bir değer sağlayın ve oturumu.|üst bilgi|string|
-|Kabul dil    |Bazı alanlar yanıt diller ya da bölgelerdeki adlarıdır. Adları döndürülen dil tanımlamak için bu parametreyi kullanın. Dil, doğru biçimlendirilmiş BCP 47 dil etiketi sağlayarak belirtilir. Etiket ile döndürülen Dil tanımlayıcıları listesinden seçin `text` kapsam. Desteklenmeyen diller için adlarını İngilizce dilinde sağlanır.<br/>Örneğin, değerini kullanın `fr` Fransızca adlarında istek veya değeri kullanmak için `zh-Hant` isteği adlarına Geleneksel Çince.|üst bilgi|string|
+|API sürümü    |İstemci tarafından istenen API 'nin sürümü. İzin verilen değerler: `1.0`.|query|dize|
+|scope  |İstemciye döndürülecek desteklenen diller veya sesler kümesi. Bu parametre, anahtar kelimelerin virgülle ayrılmış bir listesi olarak belirtilir. Aşağıdaki anahtar sözcükler kullanılabilir:<ul><li>`speech`: Konuşmayı aktarmak için desteklenen diller kümesini sağlar.</li><li>`tts`: Metin okuma dönüştürmesi için desteklenen ses kümesini sağlar.</li><li>`text`: Metin çevirmek için desteklenen diller kümesini sağlar.</li></ul>Bir değer belirtilmemişse, `scope` varsayılan değer olarak `text`değerine ayarlanır.|query|dize|
+|X-Clienttraceıd    |Bir isteği izlemek için kullanılan, istemci tarafından oluşturulan bir GUID. Sorunların sorunlarını gidermeyi kolaylaştırmak için istemciler her bir istekle yeni bir değer sağlamalıdır ve günlüğe kaydeder.|header|dize|
+|Kabul etme-dil    |Yanıttaki alanlardan bazıları dillerin veya bölgelerin adlarıdır. Adların döndürüleceği dili tanımlamak için bu parametreyi kullanın. Dil, iyi biçimlendirilmiş bir BCP 47 Language etiketi sağlayarak belirtilir. `text` Kapsamla döndürülen Dil tanımlayıcıları listesinden bir etiket seçin. Desteklenmeyen diller için, adlar Ingilizce dilinde sağlanır.<br/>Örneğin, Fransızca 'da ad istemek `fr` için değerini kullanın veya geleneksel Çince 'de ad istemek `zh-Hant` için değeri kullanın.|header|dize|
 
-### <a name="response-messages"></a>Yanıt iletilerini
+### <a name="response-messages"></a>Yanıt iletileri
 
 |HTTP durum kodu|Reason|
 |:--|:--|
-|400|Hatalı istek. Geçerli olduklarından emin olmak için giriş parametrelerini denetleyin. Yanıt nesnesini hatanın daha ayrıntılı bir açıklama içerir.|
-|429|Çok fazla istek sayısı.|
-|500|Bir hata oluştu. Sorun devam ederse, istemci izleme tanımlayıcısı (X-ClientTraceId) rapor ya da istek tanımlayıcısı (X-RequestId).|
-|503|Sunucu geçici olarak kullanılamıyor. Lütfen isteği yeniden deneyin. Sorun devam ederse, istemci izleme tanımlayıcısı (X-ClientTraceId) rapor ya da istek tanımlayıcısı (X-RequestId).|
+|400|Hatalı istek. Geçerli olduklarından emin olmak için giriş parametrelerini denetleyin. Response nesnesi, hatanın daha ayrıntılı bir açıklamasını içerir.|
+|429|Çok fazla istek.|
+|500|Bir hata oluştu. Hata devam ederse, lütfen istemci izleme tanımlayıcısı (X-Clienttraceıd) veya istek tanımlayıcısı (X-RequestId) ile bildirin.|
+|503|Sunucu geçici olarak kullanılamıyor. Lütfen isteği yeniden deneyin. Hata devam ederse, lütfen istemci izleme tanımlayıcısı (X-Clienttraceıd) veya istek tanımlayıcısı (X-RequestId) ile bildirin.|

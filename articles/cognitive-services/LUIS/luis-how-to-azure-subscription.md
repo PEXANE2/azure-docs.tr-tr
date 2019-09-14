@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844875"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984374"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Yazma ve çalışma zamanı kaynak anahtarlarını kullanma
 
@@ -56,7 +56,7 @@ Tahmin uç noktanızı yayımlamaya hazır olduğunuzda, başlangıç anahtar i�
 1. **+ Kaynak oluştur**’u seçin.
 1. Arama kutusuna `Language understanding` yazın.
 1. Oluşturma işlemini başlatmak için **Oluştur**'u seçin. 
-1. Bir yazma ve tahmin uç noktası çalışma zamanı anahtarı oluşturmak için **her Ikisini de** oluşturun. 
+1. Bir yazma ve tahmin uç noktası çalışma zamanı anahtarı oluşturmak için **her Ikisini de** seçin. 
 1. Kaynağı oluşturmak için gereken bilgileri girin ve ardından **Oluştur** ' u seçerek işlemi sona erdirin.
 
     ![Dil anlama kaynağı oluşturma](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)

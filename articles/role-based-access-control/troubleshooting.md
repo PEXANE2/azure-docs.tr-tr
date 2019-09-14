@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982717"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967098"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure kaynakları için RBAC sorunlarını giderme
 
@@ -28,7 +28,7 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC rol atamalarıyla ilgili sorunlar
 
-- **Rol Ekle ataması** Ekle seçeneği devre dışı bırakıldığından veya izinleri aldığınız için >  **erişim denetimi 'nde (IAM)** Azure Portal bir rol ataması ekleyemezse veya "nesne kimliğine sahip istemci eylem gerçekleştirme yetkilendirmesi "Bu durumda, rolü atamaya çalıştığınız kapsamda `Microsoft.Authorization/roleAssignments/write` [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açmış olup olmadığınızı kontrol edin.
+- **Rol Ekle ataması** **Ekle seçeneği** > devre dışı bırakıldığından veya izinleri aldığınız için **erişim denetimi 'nde (IAM)** Azure Portal bir rol ataması ekleyemezse veya "nesne kimliğine sahip istemci eylem gerçekleştirme yetkilendirmesi "Bu durumda, rolü atamaya çalıştığınız kapsamda `Microsoft.Authorization/roleAssignments/write` [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açmış olup olmadığınızı kontrol edin.
 - "Daha fazla rol ataması Oluşturusız" hata iletisini alırsanız (kod: RoleAssignmentLimitExceeded)" hatasını alıyorsanız, rolleri gruplara atayarak rol atamalarının sayısını azaltmaya çalışın. Azure, abonelik başına en fazla **2000** rol atamasını destekler.
 
 ## <a name="problems-with-custom-roles"></a>Özel rollerle ilgili sorunlar
@@ -182,6 +182,8 @@ Bu kutucukların herhangi birine erişemiyorsanız, yöneticinizden kaynak grubu
 Bir okuyucu, **platform özellikleri** sekmesine tıklayabilir ve ardından **Tüm ayarlar** ' a tıklayarak bir işlev uygulamasıyla ilgili bazı ayarları (bir Web uygulamasına benzer şekilde) görüntüleyebilir, ancak bu ayarlardan herhangi birini değiştiremezler. Bu özelliklere erişmek için [katkıda bulunan](built-in-roles.md#contributor) rolüne ihtiyacınız olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-portal.md)
-* [Azure kaynaklarında RBAC değişiklikleri için etkinlik günlüklerini görüntüleme](change-history-report.md)
+
+- [Konuk kullanıcılar için sorun giderme](role-assignments-external-users.md#troubleshoot)
+- [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-portal.md)
+- [Azure kaynaklarında RBAC değişiklikleri için etkinlik günlüklerini görüntüleme](change-history-report.md)
 

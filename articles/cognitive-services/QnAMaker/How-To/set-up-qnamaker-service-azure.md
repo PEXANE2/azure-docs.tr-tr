@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277604"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984355"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -87,6 +87,8 @@ Abonelik anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Az
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında uç nokta anahtarlarını bulma
 
+Uç nokta anahtarları bilgi tabanına çağrı yapmak için kullanıldığından, uç nokta kaynakla aynı bölgededir.
+
 Uç nokta anahtarları alanından yönetilebilir [soru-cevap Oluşturucu portalı](https://qnamaker.ai).
 
 1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın, profilinize gidin ve ardından **hizmet ayarları**' nı seçin:
@@ -111,6 +113,8 @@ Soru-Cevap Oluşturma çeşitli Azure kaynakları oluşturur. Yönetim ve maliye
 |App Service|X|Tasarım tarafından mümkün değil|
 |Application Insights|✔|Paylaşılabilir|
 |Arama hizmeti|✔|1. `testkb` qnamaker hizmeti için ayrılmış bir addır; diğerleri tarafından kullanılamaz.<br>2. Ad `synonym-map` ile eş anlamlı eşleme, qnamaker hizmeti için ayrılmıştır.<br>3. Yayımlanan bilgi tabanı sayısı arama hizmeti katmanıyla sınırlıdır. Kullanılabilir ücretsiz dizinler varsa, diğer hizmetler bunları kullanabilir.|
+
+[Uygulama hizmeti](../../../app-service/index.yml) ve [Arama hizmeti](../../../search/index.yml)hakkında daha fazla bilgi edinin.
 
 ### <a name="using-a-single-search-service"></a>Tek bir arama hizmeti kullanma
 
@@ -202,6 +206,8 @@ Geçerli sürümünüzü adresinde https://www.qnamaker.ai/UserSettings denetley
 Soru-Cevap Oluşturma yönetim hizmeti yalnızca Soru-Cevap Oluşturma portalı ve ilk veri işleme için kullanılır. Bu hizmet yalnızca Batı ABD bölgesinde kullanılabilir. Bu Batı ABD hizmetinde hiçbir müşteri verisi depolanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[Uygulama hizmeti](../../../app-service/index.yml) ve [Arama hizmeti](../../../search/index.yml)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Oluşturma ve Bilgi Bankası yayımlama](../Quickstarts/create-publish-knowledge-base.md)

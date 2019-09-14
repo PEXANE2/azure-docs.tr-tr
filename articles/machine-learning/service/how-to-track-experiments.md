@@ -1,7 +1,7 @@
 ---
-title: Eğitim çalıştırmaları sırasında günlük ölçümleri
+title: ML denemeleri & ölçümlerini günlüğe kaydet
 titleSuffix: Azure Machine Learning service
-description: Model oluşturma işlemini iyileştirmek için denemeleri 'nizi izleyebilir ve ölçümleri izleyebilirsiniz. Eğitim betiğe nasıl günlük ekleneceğini, denemeyi nasıl göndereceğinizi, çalışan bir işin ilerlemesini nasıl denetleyeceğinizi ve bir çalıştırmanın günlüğe kaydedilen sonuçlarının nasıl görüntüleneceğini öğrenin.
+description: Azure ML denemeleri izleyin ve model oluşturma işlemini iyileştirmek için çalışma ölçümlerini izleyin. Eğitim betiğe günlük kaydı ekleyin ve bir çalıştırmanın günlüğe kaydedilmiş sonuçlarını görüntüleyin.  Run. log, Run. start_logging veya ScriptRunConfig kullanın.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858726"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959951"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Azure Machine Learning ile Machine Learning eğitim ölçümlerini izleyin
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 
-Denemeleri ve izleme ölçümlerinizi izleyerek model oluşturma işlemini geliştirin. Bu makalede, eğitim betiğe günlük kodu eklemeyi, bir deneme çalıştırması göndermeyi, çalışmayı izlemeyi ve Azure Machine Learning hizmetinde sonuçları incelemeyi öğrenin.
+Denemeleri ve izleme çalıştırma ölçümlerinizi izleyerek model oluşturma sürecini geliştirin. Bu makalede, eğitim betiğe günlük kodu eklemeyi, bir deneme çalıştırması göndermeyi, çalışmayı izlemeyi ve Azure Machine Learning hizmetinde sonuçları incelemeyi öğrenin.
 
 > [!NOTE]
 > Azure Machine Learning hizmet, otomatik makine öğrenimi çalıştırmaları veya eğitim işini çalıştıran Docker kapsayıcısı gibi eğitim sırasında diğer kaynaklardaki bilgileri de günlüğe alabilir. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.

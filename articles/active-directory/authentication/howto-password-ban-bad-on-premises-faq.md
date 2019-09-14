@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879254"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959874"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
 
@@ -77,6 +77,13 @@ Daha fazla bilgi için lütfen aşağıdaki makalelere bakın:
 [SYSVOL çoğaltmasını DFSR 'ye geçirme durumu](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
 [Son, FRS için Nigh](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+
+Etki alanınız zaten DFSR kullanıyorsa, Azure AD parola korumasını yüklemeden önce bu uygulamayı DFSR 'yi kullanacak şekilde geçirmeniz gerekır. Daha fazla bilgi için şu bağlantıya bakın:
+
+[SYSVOL çoğaltma geçiş kılavuzu: FRS DFS Çoğaltma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> Azure AD parola koruması DC Aracısı yazılımı, halen SYSVOL çoğaltması için FRS kullanan etki alanlarındaki etki alanı denetleyicilerine yüklenir, ancak yazılım bu ortamda düzgün çalışmaz. Diğer negatif yan etkiler, çoğaltılamayan tek dosyaları ve SYSVOL geri yükleme yordamlarını başarılı olarak, ancak tüm dosyaları çoğaltamaz. Yalnızca DFSR 'nin kendi avantajları ve ayrıca Azure AD parola koruması dağıtımının engellemesini kaldırmak için etki alanınızı en kısa sürede DFSR 'yi kullanacak şekilde geçirmeniz gerekir. Yazılımın gelecekteki sürümleri, hala FRS kullanan bir etki alanında çalışırken otomatik olarak devre dışı bırakılacaktır.
 
 **S: Özellik, etki alanı SYSVOL paylaşımında ne kadar disk alanı gerektiriyor?**
 

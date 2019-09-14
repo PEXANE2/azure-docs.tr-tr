@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517663"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967215"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) yapıt ekleme
 
-Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve özel bağlayıcılar gibi yapıtları ekleyin.
+Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi yapıtları ekleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -28,7 +28,7 @@ Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>ISE 'de Logic Apps oluşturma
+## <a name="create-logic-apps"></a>Mantıksal uygulamalar oluşturma
 
 Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak için aşağıdaki adımları izleyin:
 
@@ -57,7 +57,7 @@ Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak iç
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>Bir ıSE 'de tümleştirme hesapları oluşturma
+## <a name="create-integration-accounts"></a>Tümleştirme hesapları oluşturma
 
 Oluşturma sırasında seçilen [ıSE SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) temel alınarak, Ise 'niz hiçbir ek ücret ödemeden belirli tümleştirme hesabı kullanımını içerir. Bir tümleştirme hizmeti ortamında (ıSE) bulunan Logic Apps, yalnızca aynı ıSE 'de bulunan tümleştirme hesaplarına başvurabilir. Bu nedenle, bir tümleştirme hesabının bir ıSE 'de Logic Apps ile çalışması için, hem tümleştirme hesabı hem de Logic Apps, konumuyla *aynı ortamı* kullanmalıdır. Tümleştirme hesapları ve sesleri hakkında daha fazla bilgi için bkz [. Ise](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 )ile tümleştirme hesapları.
@@ -84,9 +84,25 @@ ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları
 
 1. Şirket içindeki tümleştirme hesaplarını yönetmek için bkz. [tümleştirme hizmeti ortamınızı yönetme](../logic-apps/ise-manage-integration-service-environment.md).
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>ISE bağlayıcıları ekleme
+
+Kullanım için kullanılabilen, ancak Ise 'de dağıtılmayan Microsoft tarafından yönetilen bağlayıcılar ekleyebilirsiniz.
+
+1. ISE menüsünde, **Ayarlar**' ın altında, **yönetilen bağlayıcılar**' ı seçin. Araç çubuğunda **Ekle**' yi seçin.
+
+   ![Yönetilen bağlayıcıları görüntüleme](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **bağlayıcı bul** listesini açın. İstediğiniz bağlayıcı kullanılabiliyorsa, bu bağlayıcıyı seçin ve ardından **Oluştur**' u seçin.
+
+   Listede yalnızca uygun olan ancak ıSE içinde dağıtılmayan bağlayıcılar gösterilir. ISE 'de zaten dağıtılan bağlayıcılar seçim için kullanılamaz olarak görünür.
+
+   ![Uygun bağlayıcı seçin](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>ISE 'de özel bağlayıcılar oluşturma
+## <a name="create-custom-connectors"></a>Özel Bağlayıcılar oluşturma
 
 ISE 'de özel bağlayıcılar kullanmak için, bu özel bağlayıcıları doğrudan ıSE içinden oluşturun.
 

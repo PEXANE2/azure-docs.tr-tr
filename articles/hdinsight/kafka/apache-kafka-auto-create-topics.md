@@ -3,16 +3,17 @@ title: Apache Kafka Azure HDInsight 'ta otomatik konu oluşturmayı etkinleştir
 description: HDInsight üzerinde Apache Kafka otomatik olarak konu başlıkları oluşturacak şekilde yapılandırma hakkında bilgi edinin. Auto. Create. konularını ayarlayarak Kafka 'yi yapılandırabilirsiniz. ambarı aracılığıyla veya PowerShell veya Kaynak Yöneticisi şablonları aracılığıyla küme oluşturma sırasında doğru olarak etkinleştirin.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900440"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960647"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>HDInsight üzerinde Apache Kafka otomatik olarak konu başlıkları oluşturacak şekilde yapılandırma
 
@@ -34,11 +35,11 @@ Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik k
 
 3. Sayfanın solundaki listeden Kafka hizmetini seçin.
 
-    ![Hizmet listesi](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Hizmet listesi](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Sayfanın ortasında configs ' ı seçin.
 
-    ![Hizmet yapılandırma sekmesi](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Hizmet yapılandırma sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
 5. Filtre alanına bir değeri `auto.create`girin. 
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811551"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960467"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
 
@@ -58,7 +58,7 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
 
         b. Oluşturma **seçeneklerini** belirleyin ve anahtara bir ad verin.
 
-        ![Anahtar adı oluştur](./media/apache-kafka-byok/kafka-create-a-key.png "Anahtar adı oluştur")
+        ![Anahtar adı oluştur](./media/apache-kafka-byok/apache-kafka-create-key.png "Anahtar adı oluştur")
 
         c. Anahtar listesinden oluşturduğunuz anahtarı seçin.
 
@@ -103,7 +103,7 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
 
    Anahtarı döndürmek için, yeni anahtarın tam URL 'sine sahip olmanız gerekir (bkz. [Key Vault ve anahtarlarını kurulumun](#setup-the-key-vault-and-keys)3. adımında). Bunu yaptıktan sonra, portalda Kafka küme özellikleri bölümüne gidin ve **disk şifreleme anahtarı URL 'si**altında **anahtarı Değiştir** ' e tıklayın. Yeni anahtar URL 'sini girin ve anahtarı döndürmek için Gönder ' i yazın.
 
-   ![Kafka döndürme disk şifreleme anahtarı](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka döndürme disk şifreleme anahtarı](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>BYOK Apache Kafka için SSS
 

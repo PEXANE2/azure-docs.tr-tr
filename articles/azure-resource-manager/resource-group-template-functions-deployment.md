@@ -4,14 +4,14 @@ description: Dağıtım bilgilerini almak için bir Azure Resource Manager şabl
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194342"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983985"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonlar için dağıtım işlevleri 
 
@@ -24,8 +24,6 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 Kaynaklardan, kaynak gruplarından veya aboneliklerden değerler almak için bkz. [kaynak işlevleri](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>deployment
 `deployment()`
@@ -136,18 +134,6 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
 Dağıtım işlevini kullanan bir abonelik düzeyi şablon için bkz. [abonelik dağıtım işlevi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). `az deployment create` Ya`New-AzDeployment` da komutlarıyla dağıtılır.
 
 <a id="parameters" />
@@ -248,27 +234,17 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 | Ad | Tür | Value |
 | ---- | ---- | ----- |
-| stringOutput | Dize | seçenek 1 |
+| stringOutput | Dize | Seçenek 1 |
 | ıntoutput | Int | 1\. |
 | objectOutput | Object | {"One": "a", "iki": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| Çapraz Soutput | Dize | seçenek 1 |
+| Çapraz Soutput | Dize | Seçenek 1 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+Parametreleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki parametreler](template-parameters.md).
 
 <a id="variables" />
 
-## <a name="variables"></a>değişkenlerinin
+## <a name="variables"></a>Değişkenlerinin
 `variables(variableName)`
 
 Değişkenin değerini döndürür. Belirtilen değişken adının şablonun değişkenler bölümünde tanımlanması gerekir.
@@ -356,17 +332,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 | exampleOutput3 | Dize | myVariable & lt |
 | exampleOutput4 |  Object | {"Property1": "değer1", "Property2": "değer2"} |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
+Değişkenleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki değişkenler](template-variables.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](resource-group-authoring-templates.md).

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232035"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983607"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>App Service uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,7 +31,7 @@ Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresi 
 ## <a name="register"> </a>Uygulamanızı Twitter 'a kaydetme
 1. [Azure Portal]oturum açın ve uygulamanıza gidin. **URL**'nizi kopyalayın. Twitter uygulamanızı yapılandırmak için kullanacaksınız.
 2. [Twitter geliştiricileri] Web sitesine gidin, Twitter hesabı kimlik bilgilerinizle oturum açın ve **Yeni uygulama oluştur**' a tıklayın.
-3. Yeni uygulamanız için **ad** ve **Açıklama** yazın. **Web sitesi** değeri Için uygulamanızın **URL 'sini** yapıştırın. Ardından, **geri arama URL 'si**için App Service uygulamanızın URL 'sini yazın ve yolu `/.auth/login/aad/callback`ekleyin. Örneğin: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. HTTPS şemasını kullandığınızdan emin olun.
+3. Yeni uygulamanız için **ad** ve **Açıklama** yazın. **Web sitesi** değeri Için uygulamanızın **URL 'sini** yapıştırın. Ardından, **geri arama URL 'si**için App Service uygulamanızın URL 'sini yazın ve yolu `/.auth/login/twitter/callback`ekleyin. Örneğin: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. HTTPS şemasını kullandığınızdan emin olun.
 4. Sayfanın alt kısmındaki koşulları okuyun ve kabul edin. Ardından **Twitter uygulamanızı oluştur**' a tıklayın. Uygulama ayrıntıları görüntülenir.
 5. **Ayarlar** sekmesine tıklayın, **Bu uygulamanın Twitter 'da oturum açmak Için kullanılmasına izin ver**' i işaretleyin ve **Ayarları Güncelleştir**' e tıklayın.
 6. **Anahtarlar ve erişim belirteçleri** sekmesini seçin. **Tüketici anahtarı (API anahtarı)** ve **Tüketici gızlı dizisi (API gizli)** değerlerini bir yere göz önünde alın.

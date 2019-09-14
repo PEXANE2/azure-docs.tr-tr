@@ -11,21 +11,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813454"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961552"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
 Azure 'daki Linux sanal makineleri (VM 'Ler), genellikle güvenli bir kabuk (SSH) bağlantısı kullanılarak komut satırından yönetilir. Linux 'ta yeni veya hızlı sorun giderme senaryolarında, uzak masaüstü kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux sanal ağınız için masaüstü ortamının ([Xfce](https://www.xfce.org)) ve uzak masaüstü 'nün ([xrdp](https://www.xrdp.org)) nasıl yükleneceği ve yapılandırılacağı açıklanır.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu makalede, Azure 'da mevcut bir Ubuntu 16,04 LTS sanal makinesi gereklidir. Bir VM oluşturmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:
+Bu makalede, Azure 'da mevcut bir Ubuntu 18,04 LTS sanal makinesi gereklidir. Bir VM oluşturmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:
 
 - [Azure CLI](quick-create-cli.md)
 - [Azure portalı](quick-create-portal.md)
@@ -34,7 +34,7 @@ Bu makalede, Azure 'da mevcut bir Ubuntu 16,04 LTS sanal makinesi gereklidir. Bi
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux sanal makinenize masaüstü ortamı yükler
 Azure 'daki Linux VM 'lerinin çoğunda varsayılan olarak bir masaüstü ortamı yüklü değildir. Linux VM 'Ler, masaüstü ortamı yerine genellikle SSH bağlantıları kullanılarak yönetilir. Linux 'ta seçebileceğiniz çeşitli masaüstü ortamları vardır. Masaüstü ortamınız seçiminize bağlı olarak, bir ila 2 GB disk alanı tüketebilir ve gerekli tüm paketleri yüklemek ve yapılandırmak için 5 ila 10 dakika sürebilir.
 
-Aşağıdaki örnek, bir Ubuntu 16,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir `yum` (örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` kuralları yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
+Aşağıdaki örnek, bir Ubuntu 18,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir `yum` (örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` kuralları yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
 
 İlk olarak, sanal makinenize SSH. Aşağıdaki örnek, *azureuser*Kullanıcı adı ile *myvm.westus.cloudapp.Azure.com* adlı sanal makineye bağlanır. Kendi değerlerinizi kullanın:
 

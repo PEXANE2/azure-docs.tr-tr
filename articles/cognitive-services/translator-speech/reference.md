@@ -1,113 +1,113 @@
 ---
-title: Translator konuşma çevirisi API'si başvurusu
+title: Translator Konuşma Çevirisi API'si Başvurusu
 titleSuffix: Azure Cognitive Services
-description: Translator konuşma tanıma API'si için başvuru belgeleri.
+description: Translator Konuşma Çevirisi API'si için başvuru belgeleri.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0f083a6ca3079128aad4aba3a53013df378a6106
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9d2f78d05de6b966dd872e0b57a90d1c8e890975
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446895"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965366"
 ---
 # <a name="translator-speech-api"></a>Translator Konuşma Çevirisi API’si
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Bu hizmet, bir akış API'sini bir dilden damıtarak konuşma bağlamında kullanılabilen konuşma başka bir dil metne özelliği sunar. API, geri çevrilen metni seslendirme için metin okuma özellikleri de tümleştirir. Translator konuşma tanıma API'si, Skype Translator görüldüğü gibi gerçek zamanlı konuşma çevirisi gibi senaryolara olanak sağlar.
+Bu hizmet, bir dildeki konuşma konuşmanızı başka bir dilin metnine aktarmak için bir akış API 'SI sunar. API, geri çevrilen metni seslendirme için metin okuma özellikleri de tümleştirir. Translator Konuşma Çevirisi API'si, Skype çeviricisinde görüldüğü gibi, konuşmaları gerçek zamanlı çevirisi gibi senaryolara izin vermez.
 
-Translator konuşma tanıma API'si ile istemci uygulamaları, hizmet konuşma sesine akışla aktarma ve geri tanınan metin kaynak dili ve çevirisini hedef dil dahil metin tabanlı sonuçları bir akışını alın. Metin sonuçları, gelen ses akışına derin sinir ağlarıyla desteklenen Otomatik Konuşma Tanıma (ASR) uygulanarak oluşturulur. Ham ASR çıktı daha yakından kullanıcının amacını yansıtmak için TrueText adında yeni bir teknik tarafından daha fazla geliştirildi. Örneğin, TrueText disfluencies (hmms ve coughs) ve geri yükleme uygun noktalama işaretleri ve büyük/küçük harf kaldırır. Küfürleri maskeleme veya çıkarma olanağı da sağlanır. Tanıma ve çeviri altyapıları, konuşmaları işlemek için özel olarak eğitilmiştir. Konuşma çevirisi hizmeti sessizlik algılama bir utterance sonuna belirlemek için kullanır. Ses etkinliğinde bir duraklama olduktan sonra, hizmet tamamlanan konuşma için nihai sonucun geri akışını yapar. Ayrıca hizmet kısmi sonuçları da geri gönderebilir; bu yolla devam eden konuşma için ara tanıma ve çeviriler sağlanır. Son sonuçlar için hizmet konuşulan metnin hedef dilde konuşma (okuma) sentezlemek olanağı sağlar. Metni konuşmaya dönüştürme sesi, istemci tarafından belirtilen biçimde oluşturulur. WAV ve MP3 biçimleri kullanılabilir.
+Translator Konuşma Çevirisi API'si ile istemci uygulamaları, konuşma sesini hizmete akışa alır ve kaynak dilde tanınan metni ve hedef dilde çevirisini içeren metin tabanlı sonuçların bir akışını geri alırlar. Metin sonuçları, gelen ses akışına derin sinir ağlarıyla desteklenen Otomatik Konuşma Tanıma (ASR) uygulanarak oluşturulur. Ham ASR çıkışı, Kullanıcı amacını daha yakından yansıtması için TrueText adlı yeni bir teknik tarafından daha fazla geliştirildi. Örneğin, TrueText, sürekliliklerini kaldırır (hmms ve II 'ler) ve uygun noktalama ve büyük harfleri geri yükler. Küfürleri maskeleme veya çıkarma olanağı da sağlanır. Tanıma ve çeviri altyapıları, konuşmaları işlemek için özel olarak eğitilmiştir. Konuşma çevirisi hizmeti, bir utterance 'in sonunu saptamak için sessizlik algılamayı kullanır. Ses etkinliğinde bir duraklama olduktan sonra, hizmet tamamlanan konuşma için nihai sonucun geri akışını yapar. Ayrıca hizmet kısmi sonuçları da geri gönderebilir; bu yolla devam eden konuşma için ara tanıma ve çeviriler sağlanır. Son sonuçlar için hizmet, hedef dillerdeki konuşulan metinden konuşmayı (metinden konuşmaya) birleştirme yeteneği sağlar. Metni konuşmaya dönüştürme sesi, istemci tarafından belirtilen biçimde oluşturulur. WAV ve MP3 biçimleri kullanılabilir.
 
-Translator konuşma tanıma API'si, istemci ve sunucu arasında bir tam çift yönlü iletişim kanalı sağlayan WebSocket Protokolü yararlanır. Bir uygulama hizmeti kullanmak için aşağıdaki adımları gerektirir:
+Translator Konuşma Çevirisi API'si, istemci ve sunucu arasında tam çift yönlü iletişim kanalı sağlamak için WebSocket protokolünü kullanır. Bir uygulama, hizmeti kullanmak için bu adımları gerektirir:
 
 ## <a name="1-getting-started"></a>1. Başlarken
-Translator Text API gerekecek erişmeye [için Microsoft Azure'a kaydolun](translator-speech-how-to-signup.md).
+Translator Metin Çevirisi API'si erişmek için [Microsoft Azure kaydolmanız](translator-speech-how-to-signup.md)gerekir.
 
-## <a name="2-authentication"></a>2. Kimlik Doğrulaması
+## <a name="2-authentication"></a>2. Authentication
 
-Kimlik doğrulaması için abonelik anahtarını kullanın. Translator konuşma tanıma API'si, kimlik doğrulamasının iki modu destekler:
+Kimlik doğrulamak için abonelik anahtarını kullanın. Translator Konuşma Çevirisi API'si iki kimlik doğrulaması modunu destekler:
 
-* **Erişim belirteci kullanarak:** Uygulamanızda, belirteci Hizmeti'nden bir erişim belirteci alın. Translator konuşma tanıma API'si abonelik anahtarınızı Azure Bilişsel hizmetler kimlik doğrulama hizmetinden bir erişim belirteci almak için kullanın. Erişim belirteci 10 dakika için geçerlidir. 10 dakikada bir yeni bir erişim belirteci edinmek ve bu 10 dakika içinde aynı erişimi kullanarak yönelik yinelenen isteklerden belirteci tutun.
+* **Erişim belirteci kullanma:** Uygulamanızda, belirteç hizmetinden bir erişim belirteci alın. Azure bilişsel hizmetler kimlik doğrulama hizmeti 'nden bir erişim belirteci almak için Translator Konuşma Çevirisi API'si abonelik anahtarınızı kullanın. Erişim belirteci 10 dakika için geçerlidir. 10 dakikada bir yeni bir erişim belirteci alın ve bu 10 dakika içinde yinelenen istekler için aynı erişim belirtecini kullanmaya devam edin.
 
-* **Bir abonelik anahtarı kullanarak doğrudan:** Uygulamanızda bir değer olarak abonelik anahtarınızı aktarmak `Ocp-Apim-Subscription-Key` başlığı.
+* **Abonelik anahtarını doğrudan kullanma:** Uygulamanızda, abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üst bilgide bir değer olarak geçirin.
 
-Abonelik anahtarınız ve erişim belirteci görünümünden gizlenmelidir gizli olarak kabul eder.
+Abonelik anahtarınızı ve erişim belirtecini, görünümden gizlenmesi gereken gizli diziler olarak değerlendirin.
 
-## <a name="3-query-languages"></a>3. Sorgu dil
-**Geçerli kümesini desteklenen diller için dil kaynak sorgulayın.** [Dilleri kaynak](languages-reference.md) dil kümesini kullanıma sunar ve sesler konuşma tanıma, metin çevirisi ve metin okuma için kullanılabilir. Her bir dil veya sesli aynı dil veya sesli tanımlamak için Translator konuşma tanıma API'si kullanan bir tanımlayıcı verilir.
+## <a name="3-query-languages"></a>3. Sorgu dilleri
+**Geçerli desteklenen diller kümesi için diller kaynağını sorgulayın.** [Diller kaynağı](languages-reference.md) , konuşma tanıma için kullanılabilen diller ve sesler kümesini, metin çevirisi ve metinden konuşmaya yönelik olarak kullanıma sunar. Her dile veya sese, Translator Konuşma Çevirisi API'si aynı dili veya sesi tanımlamak için kullandığı bir tanımlayıcı verilir.
 
-## <a name="4-stream-audio"></a>4. Stream ses
-**Bir bağlantıyı açın ve hizmet için ses akışı başlayın.** Hizmet URL'si `wss://dev.microsofttranslator.com/speech/translate`. Parametreler ve hizmet tarafından beklenen ses biçimleri, aşağıda açıklanan `/speech/translate` işlemi. Parametrelerden biri, adım 2'deki erişim belirteci geçirmek için kullanılır.
+## <a name="4-stream-audio"></a>4. Ses akışı
+**Bir bağlantı açın ve hizmete ses akışı yapmaya başlayın.** Hizmet URL 'SI `wss://dev.microsofttranslator.com/speech/translate`. Hizmet tarafından beklenen parametreler ve ses biçimleri, `/speech/translate` işlemde aşağıda açıklanmaktadır. Parametrelerden biri, yukarıdaki 2. adımdaki erişim belirtecini geçirmek için kullanılır.
 
-## <a name="5-process-the-results"></a>5. Sonuçları işlemek
-**Akışa geri hizmetinden sonuçları işleyebilirsiniz.** Kısmi sonuçlar, son sonuçları ve metin okuma ses parçaları biçimi belgelerinde açıklanan `/speech/translate` aşağıdaki işlemi.
+## <a name="5-process-the-results"></a>5. Sonuçları işleme
+**Hizmetten geri akışlı sonuçları işleyin.** Kısmi sonuçların biçimi, son sonuçlar ve metinden konuşmaya ses kesimleri, aşağıdaki `/speech/translate` işlemin belgelerinde açıklanmıştır.
 
-Translator konuşma çevirisi API'sine kullanımını gösteren kod örnekleri web'da [Microsoft Translator GitHub site](https://github.com/MicrosoftTranslator).
+Translator Konuşma Çevirisi API'si kullanımını gösteren kod örnekleri, [Microsoft Translator GitHub sitesinde](https://github.com/MicrosoftTranslator)bulunabilir.
 
-## <a name="implementation-notes"></a>Uygulama Notları
+## <a name="implementation-notes"></a>Uygulama notları
 
-Konuşma çevirisi için oturumu /Speech/translate Establishes Al
+GET/Speech/Translate, konuşma çevirisi için bir oturum oluşturur
 
-### <a name="connecting"></a>Bağlanma
-Hizmete bağlanmadan önce daha sonra bu bölümde verilen parametrelere listesini gözden geçirin. Bir örnek istek şöyledir:
+### <a name="connecting"></a>Bağlanıyor
+Hizmetine bağlanmadan önce, bu bölümün ilerleyen kısımlarında verilen parametrelerin listesini gözden geçirin. Örnek bir istek:
 
 `GET wss://dev.microsofttranslator.com/speech/translate?from=en-US&to=it-IT&features=texttospeech&voice=it-IT-Elsa&api-version=1.0`
 `Ocp-Apim-Subscription-Key: {subscription key}`
 `X-ClientTraceId: {GUID}`
 
-İstek İngilizce konuşulan hizmete akışa ve İtalyanca çevrilmiş belirtir. Her son tanıma işleminin sonucu Elsa adlı kadın sesi ile metin okuma ses bir yanıt oluşturur. İstek kimlik bilgilerini içerdiğine dikkat edin `Ocp-Apim-Subscription-Key header`. Ayrıca istek üst bilgisinde bir genel benzersiz tanıtıcısı ayarlayarak en iyi uygulama aşağıdaki `X-ClientTraceId`. Böylece ortaya çıkan sorunları gidermek için kullanılabilir bir istemci uygulaması izleme kimliği oturum açmanız gerekir.
+İstek, konuşulan Ingilizce 'nin hizmete akışını ve Italyanca 'e çevrileceğini belirtir. Her bir son tanınma sonucu, Elsa adlı kadın sesiyle bir metinden konuşmaya ses yanıtı oluşturacaktır. İsteğin içinde `Ocp-Apim-Subscription-Key header`kimlik bilgileri içerdiğine dikkat edin. İstek, üst bilgide `X-ClientTraceId`genel benzersiz bir tanımlayıcı ayarlayarak da en iyi yöntemi izler. İstemci uygulaması, oluşabilecek sorunları gidermek için kullanılabilmesi için izleme KIMLIĞINI günlüğe kaydeder.
 
-### <a name="sending-audio"></a>Ses gönderme
-Bağlantı kurulduktan sonra istemci hizmete ses akışı başlar. İstemci öbekler halinde ses gönderir. Her bir öbeği Binary türünde Websocket bir iletiyi kullanarak aktarılır.
+### <a name="sending-audio"></a>Ses gönderiliyor
+Bağlantı kurulduktan sonra istemci, hizmete ses akışı yapmaya başlar. İstemci parçalar halinde ses gönderir. Her bir öbek, Ikili türünde bir WebSocket iletisi kullanılarak iletilir.
 
-Ses giriştir dalga ses dosyası biçimi (WAVE ya da daha fazla yaygın olarak da WAV nedeniyle dosya adı uzantısı bilinen). İstemci uygulaması, tek kanal, 16 kHz örneklenen işaretli 16 bit PCM ses akışı. İstemci tarafından akışa bayt ilk kümesi WAV üst bilgi içerir. Tek bir kanal 16 kHz örneklenen 16 bit PCM stream imzalı 44 baytlık üst bilgi gösterilmiştir:
+Ses girişi, Waveform ses dosyası biçimindedir (dalga veya dosya adı uzantısı nedeniyle genellikle WAV olarak bilinir). İstemci uygulaması, 16 kHz ' de örneklenmiş bir tek kanal, imzalanmış 16bit PCM ses akışı içermelidir. İstemci tarafından akan ilk bayt kümesi, WAV üst bilgisini içerir. 16 kHz ' de örneklenmiş tek kanallı, imzalanmış 16 bit PCM akışı için 44 baytlık üst bilgi:
 
-|Offset|Değer|
+|Offset|Value|
 |:---|:---|
 |0 - 3|"RIFF"|
 |4 - 7|0|
-|8 - 11|"WAVE"|
-|12 - 15|"fmt"|
+|8 - 11|SES|
+|12 - 15|FMT|
 |16 - 19|16|
-|20 - 21|1|
-|22 - 23|1|
+|20 - 21|1\.|
+|22 - 23|1\.|
 |24 - 27|16000|
 |28 - 31|32000|
-|32 - 33|2|
-|34 - 35|16|
-|36 - 39|"veri"|
-|40 - 43|0|
+|32-33|2|
+|34-35|16|
+|36-39|verileri|
+|40-43|0|
 
-Toplam dosya boyutu (bayt 4-7) ve "veri" (bayt 40-43) boyutu sıfır olarak ayarlanır. Burada toplam boyutu mutlaka önceden bilinmiyor akış senaryosu için Tamam budur.
+Toplam dosya boyutu (bayt 4-7) ve "veri" (bayt 40-43) boyutunun sıfır olarak ayarlandığını unutmayın. Bu, toplam boyutunun bilinen olmadığı akış senaryosu için Tamam ' dır.
 
-WAV (RIFF) üst bilgisi gönderdikten sonra istemci ses veri öbekleri gönderir. İstemci, sabit bir süre (örneğin akışı 100ms birer birer ses) temsil eden sabit boyutlu öbeklere genellikle akışı sağlanacak.
+İstemci, WAV (RıFF) üst bilgisini gönderdikten sonra ses verilerinin öbeklerini gönderir. İstemci genellikle sabit büyüklükte öbekleri akışa alır (örneğin, her seferinde 100 ses akışı).
 
-### <a name="signal-the-end-of-the-utterance"></a>Sinyal utterance sonu
-Translator konuşma tanıma API'si, döküm ve ses akışı çevirisi ses gönderiyorsanız olarak döndürür. Son transkripti, son çeviri ve çevrilmiş ses için yalnızca utterance sonunda döndürülür. Bazı durumlarda utterance sonuna zorlamak isteyebilirsiniz. Lütfen sessizlik 2.5 utterance sonuna zorlamak için saniye gönderin.
+### <a name="signal-the-end-of-the-utterance"></a>Söylenişi 'in sonuna sinyal
+Translator Konuşma Çevirisi API'si, sesi gönderirken ses akışının dökümünü ve çevirisini döndürür. Son TRANSCRIPT, son çeviri ve çevrilmiş ses yalnızca, utterance 'in sonundan sonra size döndürülür. Bazı durumlarda, utterance 'in sonuna kadar zorlamaya zorlamak isteyebilirsiniz. Lütfen deterance 'in sonuna zorlamak için 2,5 saniye sessizlik gönderin.
 
-### <a name="final-result"></a>Son Sonuç
-Bir son konuşma tanıma işleminin sonucu bir utterance sonunda oluşturulur. Bir sonuç hizmetinden istemciye metin türünde bir WebSocket ileti kullanarak aktarılır. İleti içeriğini aşağıdaki özelliklere sahip bir nesnenin JSON seri hale getirme:
+### <a name="final-result"></a>Nihai sonuç
+Nihai bir konuşma tanıma sonucu, utterance 'in sonunda oluşturulur. Bir sonuç, metinden metin türünde bir WebSocket iletisi kullanılarak hizmetten istemciye iletilir. İleti içeriği, aşağıdaki özelliklere sahip bir nesnenin JSON serileştirmesi olur:
 
-* `type`: Sonuç türü tanımlamak için dize sabiti. Son sonuçları için son değerdir.
-* `id`: Tanıma işleminin sonucu için atanan tanımlayıcı dize.
-* `recognition`: Tanınan metin kaynak dili. Metin boş bir dize false tanıma durumunda olabilir.
-* `translation`: Tanınan metin hedef çevrilmiş joomla.
-* `audioTimeOffset`: Saat döngüsü içindeki tanıma başlangıç saati uzaklığı (1 değer çizgisi = 100 nanosaniye). Uzaklık akış göre başlangıcıdır.
-* `audioTimeSize`: Tanıma Tick (100 nanosaniye) cinsinden süre.
-* `audioStreamPosition`: Tanıma başlangıcı bayt uzaklığı. Akış başlangıcına göre uzaklığı var.
-* `audioSizeBytes`: Tanıma bayt cinsinden boyutu.
+* `type`: Sonuç türünü tanımlamak için dize sabiti. Son sonuçlar için değer son ' dur.
+* `id`: Tanıma sonucuna atanan dize tanımlayıcısı.
+* `recognition`: Kaynak dilde tanınan metin. Metin, yanlış bir tanıma durumunda boş bir dize olabilir.
+* `translation`: Hedef dilde çevrilen tanınan metin.
+* `audioTimeOffset`: Tanımanın başlangıç zaman işaretleri (1 onay = 100 nanosaniye). Göreli konum akışın başlangıcına göre belirlenir.
+* `audioTimeSize`: Tanımanın işaret (100 nanosaniye) cinsinden süre.
+* `audioStreamPosition`: Tanımanın başlangıcının bayt kayması. Göreli konum akışın başlangıcına göre belirlenir.
+* `audioSizeBytes`: Tanımanın bayt cinsinden boyutu.
 
-Ses akışı tanıma konumlandırma sonuçları varsayılan olarak dahil değil unutmayın. `TimingInfo` Özelliği istemci tarafından seçilmesi gerekir (bkz `features` parametresi).
+Ses akışına tanımanın konumlandırmanın varsayılan olarak sonuçlara dahil edilmediğini unutmayın. Özelliğin istemci tarafından seçilmesi gerekir (bkz `features` . parametre). `TimingInfo`
 
-Bir örnek nihai sonucu aşağıdaki gibidir:
+Örnek nihai sonuç aşağıdaki gibidir:
 
 ```
 {
@@ -123,22 +123,22 @@ Bir örnek nihai sonucu aşağıdaki gibidir:
 ```
 
 ### <a name="partial-result"></a>Kısmi sonuç
-Kısmi veya Ara konuşma tanıma sonuçları istemciye varsayılan akışı gerçekleştirilmez. İstemci istekleri için özellikleri sorgu parametresini kullanabilirsiniz.
+Kısmi veya ara konuşma tanıma sonuçları istemciye varsayılan olarak akış içermez. İstemci, bu parametreleri istemek için özellikler sorgu parametresini kullanabilir.
 
-Kısmi bir sonuç hizmetinden istemciye metin türünde bir WebSocket ileti kullanarak aktarılır. İleti içeriğini aşağıdaki özelliklere sahip bir nesnenin JSON seri hale getirme:
+Kısmi bir sonuç, metinden metin türünde bir WebSocket iletisi kullanılarak hizmetten istemciye iletilir. İleti içeriği, aşağıdaki özelliklere sahip bir nesnenin JSON serileştirmesi olur:
 
-* `type`: Sonuç türü tanımlamak için dize sabiti. Kısmi sonuçlar için kısmi değerdir.
-* `id`: Tanıma işleminin sonucu için atanan tanımlayıcı dize.
-* `recognition`: Tanınan metin kaynak dili.
-* `translation`: Tanınan metin hedef çevrilmiş joomla.
-* `audioTimeOffset`: Saat döngüsü içindeki tanıma başlangıç saati uzaklığı (1 değer çizgisi = 100 nanosaniye). Uzaklık akış göre başlangıcıdır.
-* `audioTimeSize`: Tanıma Tick (100 nanosaniye) cinsinden süre.
-* `audioStreamPosition`: Tanıma başlangıcı bayt uzaklığı. Akış başlangıcına göre uzaklığı var.
-* `audioSizeBytes`: Tanıma bayt cinsinden boyutu.
+* `type`: Sonuç türünü tanımlamak için dize sabiti. Değer kısmi sonuçlar için kısmen.
+* `id`: Tanıma sonucuna atanan dize tanımlayıcısı.
+* `recognition`: Kaynak dilde tanınan metin.
+* `translation`: Hedef dilde çevrilen tanınan metin.
+* `audioTimeOffset`: Tanımanın başlangıç zaman işaretleri (1 onay = 100 nanosaniye). Göreli konum akışın başlangıcına göre belirlenir.
+* `audioTimeSize`: Tanımanın işaret (100 nanosaniye) cinsinden süre.
+* `audioStreamPosition`: Tanımanın başlangıcının bayt kayması. Göreli konum akışın başlangıcına göre belirlenir.
+* `audioSizeBytes`: Tanımanın bayt cinsinden boyutu.
 
-Ses akışı tanıma konumlandırma sonuçları varsayılan olarak dahil değil unutmayın. İstemci tarafından TimingInfo özellik seçilmelidir (özellikleri parametre bakın).
+Ses akışına tanımanın konumlandırmanın varsayılan olarak sonuçlara dahil edilmediğini unutmayın. Tımingınfo özelliği istemci tarafından seçilmelidir (bkz. Özellikler parametresi).
 
-Bir örnek nihai sonucu aşağıdaki gibidir:
+Örnek nihai sonuç aşağıdaki gibidir:
 
 ```
 {
@@ -154,43 +154,43 @@ Bir örnek nihai sonucu aşağıdaki gibidir:
 ```
 
 ### <a name="text-to-speech"></a>Metin okuma
-Metin okuma özelliği etkinleştirildiğinde (bkz `features` parametre aşağıdaki), nihai sonucu konuşulan çevrilen metnin ses tarafından izlenir. Ses verisi öbekli ve hizmetten Binary türünde Websocket iletiler dizisi olarak istemciye gönderilen. Bir istemci, her iletinin FIN bit denetleyerek akışın sonuna algılayabilir. Son ikili ileti bir akışın sonuna belirten, bit FIN kümesine sahip olursunuz. Akış biçimi değerine bağlıdır `format` parametresi.
+Metinden konuşmaya özelliği etkin olduğunda (aşağıdaki parametreye bakın `features` ), nihai sonucun ardından, konuşulan çevrilmiş metnin sesi gelir. Ses verileri, yığın olarak, Ikili türünde bir WebSocket iletileri dizisi olarak hizmet üzerinden istemciye gönderilir. Bir istemci, her iletinin FIN bitini denetleyerek akışın sonunu tespit edebilir. Son Ikili iletinin, akış sonunu belirtmek için FIN biti bir tane olarak ayarlanmıştır. Akışın biçimi `format` parametrenin değerine bağlıdır.
 
-### <a name="closing-the-connection"></a>Bağlantı kesiliyor
-Bir istemci uygulaması ses akışı tamamlandı ve son nihai sonucu aldı, WebSocket kapatma el sıkışması başlatarak bağlantı kapatmalısınız. Bağlantıyı sonlandırmak sunucu neden olan koşul vardır. Aşağıdaki WebSocket kapalı kodları, istemci tarafından alınan:
+### <a name="closing-the-connection"></a>Bağlantı kapatılıyor
+Bir istemci uygulaması akışı seslerini bitirdiğinde ve son nihai sonucu aldıysa, WebSocket kapanış el sıkışma 'nı başlatarak bağlantıyı kapatması gerekir. Sunucunun bağlantıyı sonmasına neden olacak koşullar vardır. Aşağıdaki WebSocket kapalı kodları istemci tarafından alınabilir:
 
-* `1003 - Invalid Message Type`: Sunucunun aldığı veri türü kabul edemez çünkü bağlantı sonlandırılıyor. Bu genellikle, gelen sesi uygun bir üst bilgisi ile başlamıyor gerçekleşir.
-* `1000 - Normal closure`: Sonra isteği yerine getiren bağlantıyı kapattı. Sunucu bağlantı kapatılacak: ses yok zaman; uzun bir süre için istemci tarafından alındığında sessizlik uzun bir süre için akışa; oturum, izin verilen en uzun süreyi (yaklaşık 90 dakika) ulaştığında.
-* `1001 - Endpoint Unavailable`: Sunucu kullanılamayacak gösterir. İstemci uygulaması, yeniden deneme sayısına bir sınır ile bağlanmayı deneyebilir.
-* `1011 - Internal Server Error`: Sunucuda bir hata nedeniyle sunucu tarafından bağlantı kapatılacak.
+* `1003 - Invalid Message Type`: Sunucu, aldığı veri türünü kabul etmediğinden bağlantıyı sonlandırıyor. Bu genellikle gelen ses doğru bir üstbilgiyle başlamadığınızda meydana gelir.
+* `1000 - Normal closure`: İstek karşılandıktan sonra bağlantı kapatıldı. Sunucu bağlantıyı kapatacak: istemciden uzun bir süre için hiçbir ses alınmadı; sessizlik uzun bir süre boyunca akışa eklendiğinde; bir oturum izin verilen en uzun süreye ulaştığında (yaklaşık 90 dakika).
+* `1001 - Endpoint Unavailable`: Sunucunun kullanılamaz hale geldiğini gösterir. İstemci uygulaması yeniden deneme sayısı sınırı ile yeniden bağlanmayı deneyebilir.
+* `1011 - Internal Server Error`: Sunucudaki bir hata nedeniyle bağlantı sunucu tarafından kapatılacak.
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre|Değer|Açıklama|Parametre türü|Veri Türü|
+|Parametre|Value|Açıklama|Parametre türü|Veri Türü|
 |:---|:---|:---|:---|:---|
-|API sürümü|1.0|İstemci tarafından istenen API sürümü. İzin verilen değerler: `1.0`.|query   |string|
-|from|(boş)   |Gelen konuşma dilini belirtir. Değer dil tanımlayıcılardan biridir `speech` dilleri API yanıtından kapsam.|query|string|
-|-|(boş)|Transcribed metne çevrilecek dilini belirtir. Değer dil tanımlayıcılardan biridir `text` dilleri API yanıtından kapsam.|query|string|
-|SaaS Uygulamaları Geliştirme|(boş)   |Virgülle ayrılmış istemci tarafından seçilen özellikler kümesidir. Kullanılabilir özellikler şunlardır:<ul><li>`TextToSpeech`: hizmet son çevrilen cümlenin çevrilmiş ses döndürmesi gerektiğini belirtir.</li><li>`Partial`: hizmet ses hizmete akışa sırasında Ara tanıma sonuçları döndürmesi gerektiğini belirtir.</li><li>`TimingInfo`: Hizmet her tanıma ile ilişkili zamanlama bilgilerini döndürmesi gerektiğini belirtir.</li></ul>Örneğin, bir istemci belirtirsiniz `features=partial,texttospeech` kısmi sonuçlar ve metin okuma, ancak hiçbir zamanlama bilgilerini almak için. Son sonuçları istemciye her zaman akışa unutmayın.|query|string|
-|Ses|(boş)|Hangi sesli metin okuma çevrilmiş metin işleme için kullanılacağını tanımlar. Değer dilleri API yanıtından tts kapsamda ses tanımlayıcılardan biridir. Bir ses, sistem otomatik olarak ayarlanır belirtilmezse metin okuma özelliği etkinleştirilmişse seçin.|query|string|
-|format|(boş)|Hizmet tarafından döndürülen metin okuma ses akışı biçimini belirtir. Kullanılabilen seçenekler:<ul><li>`audio/wav`: Oluşturulan dalga biçiminin ses akışı. İstemci, ses biçimi doğru şekilde yorumlamasına WAV başlığı kullanmanız gerekir. Metin okuma için WAV ses tek kanal PCM 24 kHz veya 16 kHz örnekleme oranını 16 bit ' dir.</li><li>`audio/mp3`: MP3 ses akışı.</li></ul>`audio/wav` varsayılan değerdir.|query|string|
-|ProfanityAction    |(boş)    |Hizmet konuşma dilinde tanınan profanities nasıl işleyeceğini belirtir. Geçerli eylemler şunlardır:<ul><li>`NoAction`: Profanities olduğu gibi bırakılır.</li><li>`Marked`: Profanities işaretçisi ile değiştirilir. Bkz: `ProfanityMarker` parametresi.</li><li>`Deleted`: Profanities silinir. Örneğin, word `"jackass"` ifadesinin bir küfür kabul edilir `"He is a jackass."` olur `"He is a .".`</li></ul>Varsayılan olarak işaretlenmiş.|query|string|
-|ProfanityMarker|(boş)    |Nasıl algılanan profanities belirtir ne zaman işleneceğini `ProfanityAction` ayarlanır `Marked`. Geçerli seçenekler şunlardır:<ul><li>`Asterisk`: Profanities dize ile değiştirilir `***`. Örneğin, word `"jackass"` ifadesinin bir küfür kabul edilir `"He is a jackass."` olur `"He is a ***.".`</li><li>`Tag`: Küfür küfür XML etiketi tarafından çevrilmiş. Örneğin, word `"jackass"` ifadesinin bir küfür kabul edilir `"He is a jackass."` olacak `"He is a <profanity>jackass</profanity>."`.</li></ul>Varsayılan değer: `Asterisk`.|query|string|
-|Yetkilendirme|(boş)  |İstemcinin taşıyıcı belirteç değerini belirtir. Önek kullanması `Bearer` değeri tarafından izlenen `access_token` kimlik doğrulama belirteci hizmet tarafından döndürülen değer.|üst bilgi   |string|
-|Ocp-Apim-Subscription-Key|(boş)|Gerekli if `Authorization` üstbilgisi belirtilmedi.|üst bilgi|string|
-|access_token|(boş)   |Geçerli bir OAuth erişim belirteci geçirmek için alternatif bir yolu. Taşıyıcı belirteç genellikle üstbilgiyle sağlanan `Authorization`. Bazı websocket kitaplıklar, üst bilgilerini ayarlayacak şekilde istemci kodu izin vermeyin. Böyle bir durumda istemcinin kullanabileceği `access_token` sorgu parametresi geçerli bir belirteç geçirilecek. Varsa, kimlik doğrulamak için bir erişim belirteci kullanarak `Authorization` üst bilgisi ayarlanmadı, ardından `access_token` ayarlamanız gerekir. Hem üst hem de sorgu parametresi ayarlarsanız, sorgu parametresi göz ardı edilir. İstemcileri yalnızca belirtecin geçip için bir yöntem kullanmanız gerekir.|query|string|
-|Abonelik anahtarı|(boş)   |Abonelik anahtarı geçirmek için alternatif bir yolu. Bazı websocket kitaplıklar, üst bilgilerini ayarlayacak şekilde istemci kodu izin vermeyin. Böyle bir durumda istemcinin kullanabileceği `subscription-key` sorgu parametresi geçerli bir abonelik anahtarı geçirilecek. Varsa, kimlik doğrulamak için bir abonelik anahtarı kullanarak `Ocp-Apim-Subscription-Key` üst bilgisi ayarlanmadı sonra abonelik anahtarı ayarlanmalıdır. Hem üst hem de sorgu parametresi ayarlarsanız, sorgu parametresi göz ardı edilir. İstemcileri yalnızca kullanması gereken yöntemini geçirilecek `subscription key`.|query|string|
-|X-ClientTraceId    |(boş)    |Bir istek izleme için kullanılan istemci tarafından oluşturulan GUID. Doğru sorunlarını gidermek için istemciler her bir istekle yeni bir değer sağlayın ve oturumu.<br/>Üst bilgi kullanmak yerine, bu değer ile sorgu parametresi geçirilebilir `X-ClientTraceId`. Hem üst hem de sorgu parametresi ayarlarsanız, sorgu parametresi göz ardı edilir.|üst bilgi|string|
-|X-Correlationıd|(boş)    |Bir konuşma birden çok kanalda ilişkilendirmek için kullanılan istemci tarafından oluşturulan bir tanımlayıcı. Birden çok konuşma çevirisi oturumlar, kullanıcılar arasında yapılan görüşmeler etkinleştirmek için oluşturulabilir. Böyle bir senaryoda tüm konuşma çevirisi oturumları kanalları birbirine bağlamak için aynı bağıntı Kimliğini kullanın. Bu, izleme ve tanılamayı kolaylaştırır. Tanımlayıcı için uygun olmalıdır: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Üst bilgi kullanmak yerine, bu değer ile sorgu parametresi geçirilebilir `X-CorrelationId`. Hem üst hem de sorgu parametresi ayarlarsanız, sorgu parametresi göz ardı edilir.|üst bilgi|string|
-|X-ClientVersion|(boş)    |İstemci uygulama sürümünü tanımlar. Örnek: "2.1.0.123".<br/>Üst bilgi kullanmak yerine, bu değer ile sorgu parametresi geçirilebilir `X-ClientVersion`. Hem üst hem de sorgu parametresi ayarlarsanız, sorgu parametresi göz ardı edilir.|üst bilgi|string|
-|X-OsPlatform|(boş)   |İstemci uygulamasının üzerinde çalıştığı işletim sistemi sürümü ve adını tanımlar. Örnekler: "Android 5.0", "iOs 8.1.3", "Windows 8.1".<br/>Üst bilgi kullanmak yerine, bu değer ile sorgu parametresi geçirilebilir `X-OsPlatform`. Hem üst hem de sorgu parametresi ayarlarsanız, sorgu parametresi göz ardı edilir.|üst bilgi|string|
+|API sürümü|1.0|İstemci tarafından istenen API 'nin sürümü. İzin verilen değerler: `1.0`.|query   |dize|
+|from|olmamalıdır   |Gelen konuşmanın dilini belirtir. Bu değer, diller API 'sinden gelen yanıttaki `speech` kapsamdaki dil tanımlayıcılarından biridir.|query|dize|
+|to|olmamalıdır|Metnin içine çevrilmesi için kullanılacak dili belirtir. Bu değer, diller API 'sinden gelen yanıttaki `text` kapsamdaki dil tanımlayıcılarından biridir.|query|dize|
+|SaaS Uygulamaları Geliştirme|olmamalıdır   |İstemci tarafından seçilen, virgülle ayrılmış özellikler kümesi. Kullanılabilir özellikler şunlardır:<ul><li>`TextToSpeech`: hizmetin, son çevrilmiş tümcenin çevrilmiş sesini döndürmesi gerektiğini belirtir.</li><li>`Partial`: ses hizmete akış yaparken hizmetin ara tanıma sonuçlarını döndürmesi gerektiğini belirtir.</li><li>`TimingInfo`: hizmetin her bir tanıma ile ilişkili zamanlama bilgilerini döndürmesi gerektiğini belirtir.</li></ul>Örnek olarak, bir istemci kısmi sonuçları ve `features=partial,texttospeech` metinden konuşmaya alma, ancak zamanlama bilgisi yok olarak belirler. Son sonuçların istemciye her zaman akışı olduğunu unutmayın.|query|dize|
+|Sına|olmamalıdır|Çevrilmiş metnin metinden konuşmaya işleme için kullanılacak sesi tanımlar. Değer, dil API 'sinden alınan bir TTS kapsamındaki ses tanımlayıcılarından biridir. Ses belirtilmediyse, metinden konuşmaya özelliği etkinleştirildiğinde sistem otomatik olarak bir tane seçer.|query|dize|
+|format|olmamalıdır|Hizmet tarafından döndürülen metin okuma ses akışının biçimini belirtir. Kullanılabilen seçenekler:<ul><li>`audio/wav`: Waveform ses akışı. İstemci, ses biçimini doğru şekilde yorumlamak için WAV üstbilgisini kullanmalıdır. Metin okuma için WAV sesi, 16 bit, tek kanallı PCM ise, 24 kHz veya 16kHz örnekleme oranına sahiptir.</li><li>`audio/mp3`: MP3 ses akışı.</li></ul>`audio/wav` varsayılan değerdir.|query|dize|
+|ProfanityAction    |olmamalıdır    |Hizmetin konuşmaya tanınan profanities nasıl işleneceğini belirtir. Geçerli eylemler şunlardır:<ul><li>`NoAction`: Profanities, olduğu gibi bırakılır.</li><li>`Marked`: Profanities, bir işaret ile değiştirilmiştir. Bkz `ProfanityMarker` . parametresi.</li><li>`Deleted`: Profanities silinir. Örneğin, sözcük `"jackass"` bir küfür olarak kabul edilir ifadesi `"He is a jackass."` şu şekilde olur`"He is a .".`</li></ul>Varsayılan değer Işaretlenir.|query|dize|
+|ProfanityMarker|olmamalıdır    |`ProfanityAction` Olarak`Marked`ayarlandığında, algılanan profanities nasıl işleneceğini belirtir. Geçerli seçenekler şunlardır:<ul><li>`Asterisk`: Profanities, dizesiyle `***`değiştirilmiştir. Örneğin, sözcük `"jackass"` bir küfür olarak kabul edilir ifadesi `"He is a jackass."` şu şekilde olur`"He is a ***.".`</li><li>`Tag`: Küfür bir küfür XML etiketiyle çevrelenmiş. Örneğin, sözcük `"jackass"` bir küfür olarak kabul edilir ifadesi `"He is a jackass."` `"He is a <profanity>jackass</profanity>."`olur.</li></ul>Varsayılan, `Asterisk` değeridir.|query|dize|
+|Authorization|olmamalıdır  |İstemcinin taşıyıcı belirtecinin değerini belirtir. Ön eki `Bearer` ve ardından kimlik doğrulama belirteci hizmeti tarafından `access_token` döndürülen değerin değerini kullanın.|header   |dize|
+|Ocp-Apim-Subscription-Key|olmamalıdır|`Authorization` Üst bilgi belirtilmemişse gereklidir.|header|dize|
+|access_token|olmamalıdır   |Geçerli bir OAuth erişim belirtecini geçirmenin alternatif yolu. Taşıyıcı belirteç genellikle üst `Authorization`bilgiyle birlikte sağlanır. Bazı WebSocket kitaplıkları istemci kodunun üst bilgileri ayarlamaya izin vermez. Böyle bir durumda, istemci geçerli bir belirteci geçirmek `access_token` için Query parametresini kullanabilir. Kimlik doğrulaması için bir erişim belirteci kullanırken, `Authorization` üst bilgi ayarlanmamışsa `access_token` , ayarlanması gerekir. Hem üst bilgi hem de sorgu parametresi ayarlandıysa, sorgu parametresi yok sayılır. İstemciler belirteci geçirmek için yalnızca bir yöntem kullanmalıdır.|query|dize|
+|abonelik-anahtar|olmamalıdır   |Abonelik anahtarını geçirmenin alternatif yolu. Bazı WebSocket kitaplıkları istemci kodunun üst bilgileri ayarlamaya izin vermez. Böyle bir durumda, istemci geçerli bir abonelik anahtarını `subscription-key` geçirmek için Query parametresini kullanabilir. Kimlik doğrulaması için bir abonelik anahtarı kullanırken, `Ocp-Apim-Subscription-Key` üst bilgi ayarlanmamışsa, abonelik anahtarı ayarlanmalıdır. Hem üst bilgi hem de sorgu parametresi ayarlandıysa, sorgu parametresi yok sayılır. İstemciler, `subscription key`iletmek için yalnızca bir yöntem kullanmalıdır.|query|dize|
+|X-Clienttraceıd    |olmamalıdır    |Bir isteği izlemek için kullanılan, istemci tarafından oluşturulan bir GUID. Sorunların düzgün şekilde giderilmesi için istemciler her bir istekle yeni bir değer sağlamalıdır ve günlüğe kaydeder.<br/>Bu değer, bir üst bilgi kullanmak yerine sorgu parametresi `X-ClientTraceId`ile geçirilebilir. Hem üst bilgi hem de sorgu parametresi ayarlandıysa, sorgu parametresi yok sayılır.|header|dize|
+|X-Bağıntıkimliği|olmamalıdır    |Bir konuşmadaki birden çok kanalı ilişkilendirmek için kullanılan, istemci tarafından oluşturulan bir tanımlayıcı. Kullanıcılar arasında konuşmaları etkinleştirmek için birden çok konuşma çevirisi oturumu oluşturulabilir. Bu senaryoda, tüm konuşma çevirisi oturumları kanalları birbirine bağlamak için aynı bağıntı KIMLIĞINI kullanır. Bu, izleme ve tanılamayı kolaylaştırır. Tanımlayıcı şu şekilde uyumlu olmalıdır:`^[a-zA-Z0-9-_.]{1,64}$`<br/>Bu değer, bir üst bilgi kullanmak yerine sorgu parametresi `X-CorrelationId`ile geçirilebilir. Hem üst bilgi hem de sorgu parametresi ayarlandıysa, sorgu parametresi yok sayılır.|header|dize|
+|X-ClientVersion|olmamalıdır    |İstemci uygulamasının sürümünü tanımlar. Örnek: "2.1.0.123".<br/>Bu değer, bir üst bilgi kullanmak yerine sorgu parametresi `X-ClientVersion`ile geçirilebilir. Hem üst bilgi hem de sorgu parametresi ayarlandıysa, sorgu parametresi yok sayılır.|header|dize|
+|X-OsPlatform|olmamalıdır   |İstemci uygulamasının üzerinde çalıştığı işletim sisteminin adını ve sürümünü tanımlar. Örnekler: "Android 5,0", "iOs 8.1.3", "Windows 8.1".<br/>Bu değer, bir üst bilgi kullanmak yerine sorgu parametresi `X-OsPlatform`ile geçirilebilir. Hem üst bilgi hem de sorgu parametresi ayarlandıysa, sorgu parametresi yok sayılır.|header|dize|
 
-### <a name="response-messages"></a>Yanıt iletilerini
+### <a name="response-messages"></a>Yanıt iletileri
 
 |HTTP durum kodu|Reason|Yanıt modeli|Üst bilgiler|
 |:--|:--|:--|:--|
-|101    |WebSocket yükseltin.|Model örnek değer <br/> Nesne {}|X-RequestId<br/>Sorun giderme amacıyla isteği tanımlayan bir değer.<br/>string|
-|400    |Hatalı istek. Geçerli olduklarından emin olmak için giriş parametrelerini denetleyin. Yanıt nesnesini hatanın daha ayrıntılı bir açıklama içerir.|||
-|401    |Yetkisiz. Kimlik bilgileri belirlenen, geçerli olduğunu ve iyi durumda olduğunuzu kullanılabilir bir bakiye ile Azure veri marketi aboneliğinizin olduğundan emin olun.|||
-|500    |Bir hata oluştu. Sorun devam ederse, istemci izleme tanımlayıcısı (X-ClientTraceId) rapor ya da istek tanımlayıcısı (X-RequestId).|||
-|503    |Sunucu geçici olarak kullanılamıyor. Lütfen isteği yeniden deneyin. Sorun devam ederse, istemci izleme tanımlayıcısı (X-ClientTraceId) rapor ya da istek tanımlayıcısı (X-RequestId).|||
+|101    |WebSocket yükseltmesi.|Model örneği değeri <br/> Nesne{}|X-RequestId<br/>Sorun giderme amacıyla isteği tanımlayan bir değer.<br/>dize|
+|400    |Hatalı istek. Geçerli olduklarından emin olmak için giriş parametrelerini denetleyin. Response nesnesi, hatanın daha ayrıntılı bir açıklamasını içerir.|||
+|401    |Erişilmesini. Kimlik bilgilerinin geçerli olduğundan ve Azure Data Market aboneliğinizin kullanılabilir bir dengelemeye uygun olduğundan emin olun.|||
+|500    |Bir hata oluştu. Hata devam ederse, lütfen istemci izleme tanımlayıcısı (X-Clienttraceıd) veya istek tanımlayıcısı (X-RequestId) ile bildirin.|||
+|503    |Sunucu geçici olarak kullanılamıyor. Lütfen isteği yeniden deneyin. Hata devam ederse, lütfen istemci izleme tanımlayıcısı (X-Clienttraceıd) veya istek tanımlayıcısı (X-RequestId) ile bildirin.|||

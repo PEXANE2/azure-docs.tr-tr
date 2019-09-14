@@ -4,14 +4,14 @@ description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma m
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/04/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 268f6b7f3e7462986e6289088a0716794dc832f1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194405"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983977"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -24,7 +24,6 @@ Türü, tamamlanmış modla dağıtılan şablonda olmadığında, **Evet** ile 
 Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="op_single_selector"]
 > - [Microsoft. AAD](#microsoftaad)
-> - [Microsoft. AADDomainServices](#microsoftaaddomainservices)
 > - [Microsoft. addons](#microsoftaddons)
 > - [Microsoft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft. Advisor](#microsoftadvisor)
@@ -32,6 +31,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft. Apimanane](#microsoftapimanagement)
 > - [Microsoft. AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AppPlatform](#microsoftappplatform)
 > - [Microsoft. kanıtlama](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft. Automation](#microsoftautomation)
@@ -65,14 +65,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Contentmoderatör](#microsoftcontentmoderator)
 > - [Microsoft. Cortanaanalizi](#microsoftcortanaanalytics)
 > - [Microsoft. CostManagement](#microsoftcostmanagement)
-> - [Microsoft. Customerınsights](#microsoftcustomerinsights)
 > - [Microsoft. Customerkasası](#microsoftcustomerlockbox)
 > - [Microsoft. CustomProviders](#microsoftcustomproviders)
 > - [Microsoft. DataBox](#microsoftdatabox)
 > - [Microsoft. DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft. Databricks](#microsoftdatabricks)
 > - [Microsoft. DataCatalog](#microsoftdatacatalog)
-> - [Microsoft. DataConnect](#microsoftdataconnect)
 > - [Microsoft. DataFactory](#microsoftdatafactory)
 > - [Microsoft. DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft. DataLakeStore](#microsoftdatalakestore)
@@ -115,7 +113,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Machinöğrenim](#microsoftmachinelearning)
 > - [Microsoft. MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft. Managedıdentity](#microsoftmanagedidentity)
-> - [Microsoft. ManagedLab](#microsoftmanagedlab)
 > - [Microsoft. ManagedServices](#microsoftmanagedservices)
 > - [Microsoft. Management](#microsoftmanagement)
 > - [Microsoft. Maps](#microsoftmaps)
@@ -183,13 +180,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | DomainServices/oucontainer | Hayır |
 > | DomainServices/ReplicaSets | Evet |
 
-## <a name="microsoftaaddomainservices"></a>Microsoft. AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | etki alanları | Hayır |
-
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
 > [!div class="mx-tableFixed"]
@@ -204,7 +194,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | aadsupportcases | Hayır |
 > | addsservices | Hayır |
-> | aracısını | Hayır |
+> | Aracısını | Hayır |
 > | anonymousapiusers | Hayır |
 > | yapılandırma | Hayır |
 > | logs | Hayır |
@@ -234,8 +224,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | alertsMetaData | Hayır |
 > | alertsSummary | Hayır |
 > | alertsSummaryList | Hayır |
-> | lerimi | Hayır |
-> | smartDetectorAlertRules | Hayır |
+> | Lerimi | Hayır |
+> | smartDetectorAlertRules | Evet |
 > | Smartdetectorruntimeortamortamları | Hayır |
 > | smartGroups | Hayır |
 
@@ -262,6 +252,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | Configurationmağazaların | Evet |
 > | Configurationmağazaların/eventGridFilters | Hayır |
+
+## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | İlkbahar | Evet |
 
 ## <a name="microsoftattestation"></a>Microsoft. kanıtlama
 
@@ -331,6 +328,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
+> | Hybriddatayöneticileri | Evet |
+> | Postgresınstances | Evet |
+> | Sqlbıgdatakümeler | Evet |
+> | SQLInstances | Evet |
 > | Sqlserverkayıtları | Evet |
 > | Sqlserverkayıtları/sqlServers | Hayır |
 
@@ -357,11 +358,28 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | billingAccounts | Hayır |
 > | billingAccounts/anlaşmalar | Hayır |
+> | billingAccounts/billingPermissions | Hayır |
 > | billingAccounts/billingProfiles | Hayır |
+> | billingAccounts/Billingprofiller/billingPermissions | Hayır |
+> | billingAccounts/billingProfiles/Billingroleatamaları | Hayır |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | Hayır |
 > | billingAccounts/billingProfiles/Billingabonelikleri | Hayır |
+> | billingAccounts/billingProfiles/Createbillingroleatama | Hayır |
+> | billingAccounts/billingProfiles/müşteriler | Hayır |
 > | billingAccounts/billingProfiles/faturalar | Hayır |
 > | billingAccounts/billingProfiles/faturalar/fiyat listesi | Hayır |
 > | billingAccounts/billingProfiles/ınvoicesections | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/billingPermissions | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/Billingroleatamaları | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/billingRoleDefinitions | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/Billingabonelikleri | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/Createbillingroleatama | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ınitiatetransfer | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ürünler | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ürünler/aktarım | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ürünler/updateAutoRenew | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/işlemler | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/aktarımlar | Hayır |
 > | billingAccounts/BillingProfiles/patchOperations | Hayır |
 > | billingAccounts/billingProfiles/paymentMethods | Hayır |
 > | billingAccounts/billingProfiles/ilkeler | Hayır |
@@ -369,10 +387,17 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Hayır |
 > | billingAccounts/billingProfiles/ürünler | Hayır |
 > | billingAccounts/billingProfiles/işlemler | Hayır |
+> | billingAccounts/Billingroleatamaları | Hayır |
+> | billingAccounts/billingRoleDefinitions | Hayır |
 > | billingAccounts/Billingabonelikleri | Hayır |
+> | billingAccounts/Createbillingroleatama | Hayır |
 > | billingAccounts/Createınvoicesectionoperations | Hayır |
 > | billingAccounts/müşteriler | Hayır |
 > | billingAccounts/müşteriler/Billingabonelikleri | Hayır |
+> | billingAccounts/müşteriler/ınitiatetransfer | Hayır |
+> | billingAccounts/müşteriler/ürünler | Hayır |
+> | billingAccounts/müşteriler/işlemler | Hayır |
+> | billingAccounts/müşteriler/aktarımlar | Hayır |
 > | billingAccounts/departmanlar | Hayır |
 > | billingAccounts/KayıtSayısı | Hayır |
 > | billingAccounts/faturalar | Hayır |
@@ -395,10 +420,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | billingAccounts/ürünler | Hayır |
 > | billingAccounts/işlemler | Hayır |
 > | Billingdönemler | Hayır |
-> | billingPermissions | Hayır |
+> | BillingPermissions | Hayır |
 > | billingProperty | Hayır |
 > | Billingroleatamaları | Hayır |
-> | billingRoleDefinitions | Hayır |
+> | BillingRoleDefinitions | Hayır |
 > | Createbillingroleatama | Hayır |
 > | bölümlerinin | Hayır |
 > | kayıt sayısı | Hayır |
@@ -407,6 +432,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | aktarımlar/acceptTransfer | Hayır |
 > | aktarımlar/declineTransfer | Hayır |
 > | aktarımlar/operationStatus | Hayır |
+> | aktarımlar/validateTransfer | Hayır |
 > | validateAddress | Hayır |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -475,7 +501,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | calculatePurchasePrice | Hayır |
 > | larına | Hayır |
 > | Ticari Vaalrezervler | Hayır |
-> | değişimi | Hayır |
+> | Değişimi | Hayır |
 > | placePurchaseOrder | Hayır |
 > | Rezervler | Hayır |
 > | Rezervler/Hesaplaizterefund | Hayır |
@@ -532,7 +558,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | quotas | Hayır |
 > | resourceTypes | Hayır |
 > | Validatesubscriptionmoveavaılabılıty | Hayır |
-> | virtualMachines | Evet |
+> | VirtualMachines | Evet |
 > | virtualMachines/diagnosticSettings | Hayır |
 > | virtualMachines/metricDefinitions | Hayır |
 > | virtualMachines/ölçümler | Hayır |
@@ -573,12 +599,16 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Publicımages | Hayır |
 > | quotas | Hayır |
 > | storageAccounts | Evet |
+> | storageAccounts/blobServices | Hayır |
+> | storageAccounts/fileServices | Hayır |
 > | storageAccounts/metricDefinitions | Hayır |
 > | storageAccounts/ölçümler | Hayır |
+> | storageAccounts/queueServices | Hayır |
 > | storageAccounts/Services | Hayır |
 > | storageAccounts/Services/diagnosticSettings | Hayır |
 > | storageAccounts/Services/metricDefinitions | Hayır |
 > | storageAccounts/Services/ölçümler | Hayır |
+> | storageAccounts/tableServices | Hayır |
 > | storageAccounts/Vmımages | Hayır |
 > | Vmımages | Hayır |
 
@@ -619,7 +649,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Sharedvmımages | Evet |
 > | Sharedvmımages/sürümler | Evet |
 > | anlık görüntüler | Evet |
-> | virtualMachines | Evet |
+> | VirtualMachines | Evet |
 > | virtualMachines/uzantıları | Evet |
 > | virtualMachines/metricDefinitions | Hayır |
 > | virtualMachines/scriptJobs | Hayır |
@@ -723,13 +753,13 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | Uyarılar | Hayır |
-> | BillingAccounts | Hayır |
+> | billingAccounts | Hayır |
 > | Bütçeler | Hayır |
 > | Cloudbağlayıcıları | Hayır |
 > | Bağlayıcılar | Evet |
 > | Bölümler | Hayır |
 > | Boyutlar | Hayır |
-> | Kayıt sayısı | Hayır |
+> | kayıt sayısı | Hayır |
 > | Dışarı aktarmalar | Hayır |
 > | ExternalBillingAccounts | Hayır |
 > | ExternalBillingAccounts/uyarılar | Hayır |
@@ -749,25 +779,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Ayarlar | Hayır |
 > | showbackRules | Hayır |
 > | Görünümler | Hayır |
-
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Lara | Evet |
-> | Hub/authorizationPolicies | Hayır |
-> | Hub 'lar/bağlayıcılar | Hayır |
-> | Hub 'lar/bağlayıcılar/eşlemeler | Hayır |
-> | Hub 'lar/etkileşimler | Hayır |
-> | Hub/KPI | Hayır |
-> | Hub 'lar/bağlantılar | Hayır |
-> | Hub 'lar/profiller | Hayır |
-> | Hub/Roleatamaları | Hayır |
-> | Hub 'lar/roller | Hayır |
-> | Hub 'lar/suggestTypeSchema | Hayır |
-> | Hub 'lar/görünümler | Hayır |
-> | Hub 'lar/widgetTypes | Hayır |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft. Customerkasası
 
@@ -813,15 +824,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | larına | Evet |
 > | veri katalogları | Evet |
+> | veri katalogları/veri kaynakları | Hayır |
+> | veri katalogları/veri kaynakları/taramalar | Hayır |
+> | veri katalogları/veri kaynakları/taramalar/veri kümeleri | Hayır |
+> | veri katalogları/veri kaynakları/taramalar/Tetikleyiciler | Hayır |
 > | veri katalogları/scantargets | Hayır |
 > | veri katalogları/scantargets/veri kümeleri | Hayır |
-
-## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Connectionyöneticileri | Evet |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -940,7 +948,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | applicationgroups | Evet |
 > | applicationgroups/uygulamalar | Hayır |
-> | applicationgroups/assignedusers | Hayır |
 > | applicationgroups/startmenuıtems | Hayır |
 > | Ana bilgisayar havuzları | Evet |
 > | hostpools/oturumkonakları | Hayır |
@@ -972,7 +979,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | örleri | Evet |
+> | Örleri | Evet |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1085,8 +1092,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
+> | Oto Managedvmconfigurationprofiles | Evet |
 > | Guestconfigurationatamaları | Hayır |
-> | yazılımıdır | Hayır |
+> | Yazılımıdır | Hayır |
 > | softwareUpdateProfile | Hayır |
 > | softwareUpdates | Hayır |
 
@@ -1139,7 +1147,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | bileşenleri | Evet |
+> | Bileşenleri | Evet |
 > | networkScopes | Evet |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -1211,6 +1219,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | hostingEnvironments | Evet |
 > | Tümleştirme hesapları | Evet |
 > | ıntegrationserviceortamortamları | Evet |
+> | ıntegrationserviceortamortamları/managedap | Evet |
 > | ısotedenvironments | Evet |
 > | sürdürülen | Evet |
 
@@ -1238,13 +1247,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | Kimlikler | Hayır |
 > | Userassignedıdentities | Evet |
-
-## <a name="microsoftmanagedlab"></a>Microsoft. ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | labaccounts | Evet |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
@@ -1352,8 +1354,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
+> | holographicsBroadcastAccounts | Evet |
+> | objectUnderstandingAccounts | Evet |
 > | remoteRenderingAccounts | Evet |
 > | spatialAnchorsAccounts | Evet |
+> | surfaceReconstructionAccounts | Evet |
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -1474,6 +1479,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
+> | leriniz | Evet |
 > | cihazlar | Hayır |
 > | Bağlantı hedefleri | Hayır |
 > | Storageınsii configs | Hayır |
@@ -1500,6 +1506,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Yasallıklar | Hayır |
 > | peerAsns | Hayır |
 > | eşlemeler | Evet |
+> | peeringServiceProviders | Hayır |
+> | peeringServices | Evet |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft. Poliyelei
 
@@ -1517,7 +1525,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | konsolları | Hayır |
-> | panoların | Evet |
+> | Panoların | Evet |
 > | userSettings | Hayır |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
@@ -1560,7 +1568,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | hesaplar | Hayır |
-> | koleksiyonlarıyla | Evet |
+> | Koleksiyonlarıyla | Evet |
 > | Koleksiyonlar/uygulamalar | Hayır |
 > | Koleksiyonlar/SecurityPrincipals | Hayır |
 > | Templateımages | Hayır |
@@ -1625,7 +1633,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | akışlar | Evet |
 > | işlere | Evet |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1660,6 +1667,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ıotsecuritysolutions/Analticsmodeller/Aggreggıt uyarıları | Hayır |
 > | ıotsecuritysolutions/analiz Ticsmodeller/Aggreg, öneriler | Hayır |
 > | Jağaccesspolicies | Hayır |
+> | networkData | Hayır |
 > | playbookConfigurations | Evet |
 > | ilkeler | Hayır |
 > | fiyatlandırmalar | Hayır |
@@ -1692,7 +1700,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | Verilerinize dair öngörüler | Hayır |
 > | alertRules | Hayır |
-> | leriniz | Hayır |
+> | Alertrutatemplates | Hayır |
+> | Leriniz | Hayır |
 > | çalışmaların | Hayır |
 > | Veri bağlayıcıları | Hayır |
 > | varlıklar | Hayır |
@@ -1910,6 +1919,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | iptal | Hayır |
 > | CreateSubscription | Hayır |
+> | etkinleştir | Hayır |
 > | yeniden adlandır | Hayır |
 > | SubscriptionDefinitions | Hayır |
 > | SubscriptionOperations | Hayır |
@@ -1931,7 +1941,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- |
 > | ayrılmış Cloudnodes | Evet |
 > | ayrılmış CloudService | Evet |
-> | virtualMachines | Evet |
+> | VirtualMachines | Evet |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
@@ -1998,11 +2008,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | bileşenleri | Hayır |
+> | Bileşenleri | Hayır |
 > | componentsSummary | Hayır |
 > | Izleme örnekleri | Hayır |
 > | Izleme ınstancessummary | Hayır |
-> | monitörün | Hayır |
+> | Monitörün | Hayır |
 > | notificationSettings | Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar

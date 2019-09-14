@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a613a2eb6499538199306872f2e415019552686
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567727"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958500"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL veritabanı yönetilen örnek denetimi 'ni kullanmaya başlama
 
@@ -39,7 +39,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
       > [!IMPORTANT]
       > Bölgeler arası okuma/yazma işlemlerini önlemek için yönetilen örnekle aynı bölgedeki bir depolama hesabını kullanın.
 
-   1. Depolama hesabında **Genel Bakış ' a** gidin ve Bloblar' a tıklayın.
+   1. Depolama hesabında **Genel Bakış ' a** gidin ve **Bloblar**' a tıklayın.
 
       ![Azure Blob pencere öğesi](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 

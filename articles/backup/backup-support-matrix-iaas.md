@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 62f633b617abb52e1be4003f65cc537cc9ff2a25
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872897"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983785"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
@@ -180,7 +180,7 @@ Birden çok ayrılmış IP adresi |    Destekleniyor. <br/><br/> Özel ağ ayarl
 Birden çok ağ bağdaştırıcısı olan VM 'Ler  | Destekleniyor. <br/><br/> Özel ağ ayarlarıyla VM 'Leri geri yükleme hakkında [daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) .
 Genel IP adreslerine sahip VM 'Ler    | Destekleniyor.<br/><br/> Mevcut bir genel IP adresini NIC ile ilişkilendirin veya bir adres oluşturun ve geri yükleme yapıldıktan sonra bu adresi NIC ile ilişkilendirin.
 NIC/alt ağ üzerinde ağ güvenlik grubu (NSG). |   Destekleniyor.
-Ayrılmış IP adresi (statik) | Desteklenmiyor.<br/><br/> Ayrılmış bir IP adresi olan ve tanımlı uç nokta olmayan bir VM 'yi yedekleyemiyoruz.
+Statik IP adresi | Desteklenmiyor.<br/><br/> Bir geri yükleme noktasından oluşturulan yeni bir sanal makineye dinamik bir IP adresi atanır.<br/><br/> Klasik VM 'Ler için, ayrılmış bir IP adresi ve tanımlı uç nokta olmayan bir VM 'yi yedekleyemiyoruz.
 Dinamik IP adresi |    Destekleniyor.<br/><br/> Kaynak VM üzerindeki NIC dinamik IP adresleme kullanıyorsa, varsayılan olarak, geri yüklenen VM üzerindeki NIC de onu kullanır.
 Azure Traffic Manager   | Destekleniyor.<br/><br/>Yedeklenen VM Traffic Manager, geri yüklenen VM 'yi aynı Traffic Manager örneğine el ile ekleyin.
 Azure DNS | Destekleniyor.

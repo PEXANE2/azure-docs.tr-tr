@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640695"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968251"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric uygulamasını sistem tarafından atanan yönetilen kimlikle dağıtma (Önizleme)
 
@@ -93,15 +93,9 @@ Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe s
     Bu, yukarıda açıklanan, ancak hizmet tanımının perspektifinden, bir hizmetin kimliği ile eşdeğer eşlemedir. Kimliğe, uygulama bildiriminde bildirildiği gibi kolay adı (`WebAdmin`) tarafından başvurulur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-
 * Azure Service Fabric [yönetilen kimlik desteğini](./concepts-managed-identity.md) gözden geçirme
-
 * [Yeni bir dağıtım](./configure-new-azure-service-fabric-enable-managed-identity.md) Yönetilen kimlik desteği olan Azure Service Fabric kümesi 
-
 * Mevcut bir Azure Service Fabric kümesinde [yönetilen kimliği etkinleştirme](./configure-existing-cluster-enable-managed-identity-token-service.md)
-
 * [Kaynak kodundaki Service Fabric uygulamasının yönetilen kimliğinden](./how-to-managed-identity-service-fabric-app-code.md) yararlanın
-
 * [Kullanıcı tarafından atanan yönetilen kimlik ile bir Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
 * [Azure Service Fabric uygulamasına diğer Azure kaynaklarına erişim izni verme](./how-to-grant-access-other-resources.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C | içinde özel ilkeler kullanarak çok kiracılı Azure AD kimlik sağlayıcısı için oturum açma ayarlayın | Microsoft Docs
+title: Azure Active Directory B2C 'de özel ilkeler kullanarak çok kiracılı Azure AD kimlik sağlayıcısı için oturum açma ayarlayın
 description: Özel ilkeler kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısı ekleyin-Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,63 +7,61 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8524eb8f9a8d220964e5dd1f6f8dc6d1aaf94a6d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 21bd9d98bc59424d05ee20d91e52c78b5b0efc4a
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980714"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964491"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak çok kiracılı Azure Active Directory için oturum açma ayarlayın
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure AD B2C içindeki [özel ilkeleri](active-directory-b2c-overview-custom.md) kullanarak Azure Active Directory (Azure AD) için çok kiracılı uç noktasını kullanan kullanıcılar için oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir. Bu, birden çok Azure AD kiracısından kullanıcıların her kiracı için bir teknik sağlayıcı yapılandırmadan Azure AD B2C oturum açmasına olanak tanır. Ancak, bu kiracılardan herhangi birinde bulunan Konuk üyeleri oturum açamaz. Bu şekilde, [her bir kiracıyı tek tek yapılandırmanız](active-directory-b2c-setup-aad-custom.md)gerekir.
-
->[!NOTE]
->`Contoso.com`, kuruluş Azure AD kiracısı için kullanılır ve `fabrikamb2c.onmicrosoft.com` aşağıdaki yönergelerde Azure AD B2C kiracı olarak kullanılır.
+Bu makalede, Azure AD B2C içindeki [özel ilkeleri](active-directory-b2c-overview-custom.md) kullanarak Azure Active Directory (Azure AD) için çok kiracılı uç noktasını kullanan kullanıcılar için oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir. Bu, birden çok Azure AD kiracısından kullanıcıların her kiracı için bir kimlik sağlayıcısı yapılandırmaya gerek kalmadan Azure AD B2C kullanarak oturum açmasına olanak tanır. Ancak, bu kiracılardan herhangi birinde bulunan konuk üyeleri **oturum açamaz.** Bu şekilde, [her bir kiracıyı tek tek yapılandırmanız](active-directory-b2c-setup-aad-custom.md)gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın.
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydet
 
 Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleştirmek için, uygulamayı kurumsal Azure AD kiracısında kaydetmeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Üst menüdeki **Dizin ve abonelik filtresi** ' ne tıklayarak ve kiracınızı içeren dizini seçerek kuruluş Azure AD kiracısı (contoso.com) içeren dizini kullandığınızdan emin olun.
-3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
-4. **Yeni uygulama kaydı**’nı seçin.
-5. Uygulamanız için bir ad girin. Örneğin: `Azure AD B2C App`.
-6. **Uygulama türü**için öğesini seçin `Web app / API`.
-7. **Oturum açma URL 'si**için, aşağıdaki URL 'yi tüm küçük harflerle girin; burada `your-tenant` , Azure AD B2C kiracınızın adı ile değiştirilmiştir (fabrikamb2c.onmicrosoft.com):
+1. Kuruluşunuzun Azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından kiracınızı içeren dizini seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
+1. **Yeni kayıt**seçeneğini belirleyin.
+1. Uygulamanız için bir **ad** girin. Örneğin: `Azure AD B2C App`.
+1. Bu uygulama için **herhangi bir kuruluş dizininde hesaplar '** ı seçin.
+1. **Yeniden yönlendirme URI 'si**için, **Web**'in değerini kabul edin ve aşağıdaki URL 'yi tüm küçük harflerle, burada `your-B2C-tenant-name` Azure AD B2C kiracınızın adıyla birlikte girin.
 
     ```
-    https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-8. **Oluştur**'a tıklayın. Daha sonra kullanılacak **uygulama kimliğini** kopyalayın.
-9. Uygulamayı seçin ve ardından **Ayarlar**' ı seçin.
-10. **Anahtarlar**' ı seçin, anahtar açıklamasını girin, bir süre seçin ve **Kaydet**' e tıklayın. Daha sonra kullanılmak üzere görüntülenen anahtarın değerini kopyalayın.
-11. **Ayarlar**altında **Özellikler**' i seçin, **çok** kiracılı olarak ayarlayın ve `Yes`ardından **Kaydet** ' e tıklayın.
+    Örneğin: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+
+1. **Kaydol**’u seçin. Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+1. **Sertifikalar & sertifikalar**' ı seçin ve ardından **yeni istemci parolası**' nı seçin.
+1. Gizli dizi için bir **Açıklama** girin, bir süre sonu seçin ve ardından **Ekle**' yi seçin. Daha sonraki bir adımda kullanmak için gizli dizi **değerini** kaydedin.
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
 Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız gerekir.
 
-1. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
-2. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-3. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
-4. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-5. **Seçenekler**için öğesini seçin `Manual`.
-6. İlke anahtarı için bir **ad** girin. Örneğin: `ContosoAppSecret`.  Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
-7. **Gizli**, daha önce kaydettiğiniz uygulama anahtarınızı girin.
-8. **Anahtar kullanımı**için öğesini seçin `Signature`.
-9. **Oluştur**'a tıklayın.
+1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
+1. **Seçenekler**için öğesini seçin `Manual`.
+1. İlke anahtarı için bir **ad** girin. Örneğin: `AADAppSecret`.  Önek `B2C_1A_` , oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_AADAppSecret*olur.
+1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
+1. **Anahtar kullanımı**için öğesini seçin `Signature`.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -71,9 +69,9 @@ Kullanıcıların Azure AD 'yi kullanarak oturum açmasını istiyorsanız, Azur
 
 Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz.
 
-1. *TrustFrameworkExtensions. xml*' i açın.
-2. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
-3. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
+1. *TrustFrameworkExtensions. xml* dosyasını açın.
+1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
+1. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
     ```XML
     <ClaimsProvider>
@@ -82,70 +80,75 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
       <TechnicalProfiles>
         <TechnicalProfile Id="Common-AAD">
           <DisplayName>Multi-Tenant AAD</DisplayName>
-          <Protocol Name="OpenIdConnect" />
+          <Description>Login with your Contoso account</Description>
+          <Protocol Name="OpenIdConnect"/>
           <Metadata>
+            <Item Key="METADATA">https://login.windows.net/common/.well-known/openid-configuration</Item>
             <!-- Update the Client ID below to the Application ID -->
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
-            <Item Key="METADATA">https://login.microsoftonline.com/common/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="scope">openid</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
-
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
             <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
-
             <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
             <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
           </Metadata>
           <CryptographicKeys>
-            <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
-            <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret" />
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret"/>
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid"/>
+            <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
             <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="unique_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
           </OutputClaims>
           <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
+            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. **ClaimsProvider** öğesi altında, **etki alanı** değerini diğer kimlik sağlayıcılarından ayırt etmek için kullanılabilecek benzersiz bir değer olarak güncelleştirin.
-5. **Teknisyen** öğesinin altında **DisplayName**değerini güncelleştirin. Bu değer, oturum açma ekranınızdaki oturum açma düğmesinde görüntülenir.
-6. **Client_id** 'ı Azure AD mulity-kiracı uygulama KAYDıNDAN uygulama kimliği olarak ayarlayın.
+1. **ClaimsProvider** öğesi altında, **etki alanı** değerini diğer kimlik sağlayıcılarından ayırt etmek için kullanılabilecek benzersiz bir değer olarak güncelleştirin.
+1. **Teknisyen** öğesinin altında, **DisplayName**için değeri (örneğin, `Contoso Employee`) güncelleştirin. Bu değer, oturum açma sayfanızda oturum açma düğmesinde görüntülenir.
+1. **Client_id** 'i daha önce KAYDETTIĞINIZ Azure AD çok kiracılı UYGULAMASıNıN uygulama kimliğine ayarlayın.
+1. **Cryptographickeys**altında, **Storagereferenceıd** değerini daha önce oluşturulmuş ilke anahtarının adı olarak güncelleştirin. Örneğin: `B2C_1A_AADAppSecret`.
 
 ### <a name="restrict-access"></a>Erişimi kısıtla
 
 > [!NOTE]
 > `https://sts.windows.net` **Validtokenıssueröneklerini** değer olarak kullanmak tüm Azure AD kullanıcılarının uygulamanızda oturum açmasını sağlar.
 
-Geçerli belirteç verenler listesini güncelleştirmeniz ve erişimi, oturum açabilen Azure AD kiracı kullanıcıları 'nın belirli bir listesiyle kısıtlamanız gerekir. Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan meta verilere bakmanız gerekir. Verilerin biçimi şu şekilde görünür: `https://login.windows.net/your-tenant/.well-known/openid-configuration`, burada `your-tenant` Azure AD kiracı adınız (contoso.com veya diğer Azure AD kiracısıdır).
+Geçerli belirteç verenler listesini güncelleştirmeniz ve erişimi, oturum açabilen Azure AD kiracı kullanıcıları 'nın belirli bir listesiyle kısıtlamanız gerekir.
 
-1. Tarayıcınızı açın, **meta veri** URL 'sine gidin ve **veren** nesnesini bulun ve değerini kopyalayın. Aşağıdaki gibi görünmelidir: `https://sts.windows.net/tenant-id/`.
-2. **Validtokenıssueröneklerini** anahtarı için değeri kopyalayıp yapıştırın. Bir virgül kullanarak ayırarak birden çok ekleyebilirsiniz. Bunun bir örneği yukarıdaki örnek XML 'de yorumbir örnektir.
+Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi şuna benzerdir `https://login.windows.net/your-tenant/.well-known/openid-configuration`; burada `your-tenant` Azure AD kiracı adınız bulunur. Örneğin:
+
+`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
+
+Oturum açmak için kullanılması gereken her Azure AD kiracısı için aşağıdaki adımları gerçekleştirin:
+
+1. Tarayıcınızı açın ve kiracı için OpenID Connect meta veri URL 'sine gidin. **Veren** nesnesini bulun ve değerini kaydedin. Şuna benzer `https://sts.windows.net/00000000-0000-0000-0000-000000000000/`görünmelidir.
+1. Değeri, **Validtokenıssuerönekler** anahtarına kopyalayıp yapıştırın. Birden çok verenler virgülle ayırın. Önceki `ClaimsProvider` xml örneğinde iki veren bir örnek görüntülenir.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Uzantı dosyasını doğrulama için karşıya yükle
 
-Şimdi, ilkenizi Azure AD dizininizle nasıl iletişim kuracağını öğrenmek için Azure AD B2C ilkenizi yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
+Şimdi, ilkenizi Azure AD dizinlerinizde nasıl iletişim kuracağını öğrenmek için Azure AD B2C ilkenizi yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
 
 1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
 2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve ardından *TrustFrameworkExtensions. xml* dosyasına gidip seçin.
-3. **Karşıya Yükle**'ye tıklayın.
+3. **Karşıya Yükle**’yi seçin.
 
 ## <a name="register-the-claims-provider"></a>Talep sağlayıcısını Kaydet
 
@@ -161,8 +164,8 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma
 
 **Claimsproviderselection** öğesi, kaydolma/oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. Azure AD için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
-1. Oluşturduğunuz Kullanıcı yolculuğuna dahil `Order="1"` olan **orchestrationstep** öğesini bulun.
-2. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `AzureADExchange`:
+1. *TrustFrameworkExtensions. xml*dosyasında oluşturduğunuz Kullanıcı yolculuğuna `Order="1"` dahil olan **orchestrationstep** öğesini bulun.
+1. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `AzureADExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
@@ -185,23 +188,36 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C uygulaması oluşturma
 
-Azure AD B2C ile iletişim, kiracınızda oluşturduğunuz bir uygulama aracılığıyla oluşur. Bu bölümde, daha önce yapmadıysanız bir test uygulaması oluşturmak için tamamlayabildiğiniz isteğe bağlı adımlar listelenmektedir.
+Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygulama aracılığıyla oluşur. Bu bölümde, daha önce yapmadıysanız bir test uygulaması oluşturmak için tamamlayabildiğiniz isteğe bağlı adımlar listelenmektedir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
-3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
-5. Uygulama için bir ad girin, örneğin *testapp1*.
-6. **Web uygulaması/Web API 'si**için, `Yes`öğesini seçin ve ardından `https://jwt.ms` **yanıt URL 'si**için yazın.
-7. **Oluştur**'a tıklayın.
+1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
+1. Uygulama için bir ad girin, örneğin *testapp1*.
+1. **Web uygulaması/Web API 'si**için, `Yes`öğesini seçin ve ardından `https://jwt.ms` **yanıt URL 'si**için yazın.
+1. **Oluştur**’u seçin.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 
-Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
+Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin:
 
 1. Çalışma dizininizde *Signuporsignın. xml* ' in bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, bunu *Signupsigncontoso. xml*olarak yeniden adlandırın.
-2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin: `SignUpSignInContoso`.
-3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_contoso`
-4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yenı Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin (signupsigncontoso).
-5. Değişikliklerinizi kaydedin, dosyayı karşıya yükleyin ve ardından listeden yeni ilkeyi seçin.
-6. Oluşturduğunuz Azure AD B2C uygulamasının **Uygulama Seç** alanında seçildiğinden emin olun ve **Şimdi Çalıştır**' a tıklayarak test edin.
+1. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin: `SignUpSignInContoso`.
+1. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin: `http://contoso.com/B2C_1A_signup_signin_contoso`.
+1. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, daha önce oluşturduğunuz Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin. Örneğin, *Signupsignıncontoso*.
+1. Değişikliklerinizi kaydedin ve dosyayı karşıya yükleyin.
+1. **Özel ilkeler**altında, listeden yeni ilkeyi seçin.
+1. **Uygulama Seç** açılan penceresinde, daha önce oluşturduğunuz Azure AD B2C uygulamayı seçin. Örneğin, *testapp1*.
+1. **Şimdi Çalıştır uç noktasını** kopyalayın ve özel bir tarayıcı penceresinde açın. Örneğin, Google Chrome 'Da veya Microsoft Edge 'de bir InPrivate penceresinde. Özel bir tarayıcı penceresinde açmak, şu anda önbelleğe alınmış Azure AD kimlik bilgilerini kullanarak tüm Kullanıcı yolculuğunu test etmenize olanak tanır.
+1. Azure AD oturum açma düğmesini (örneğin, *contoso çalışanı*) seçin ve ardından Azure AD kurumsal kiracılarından birindeki bir kullanıcının kimlik bilgilerini girin. Uygulamayı yetkilendirmeniz ve sonra profilinizin bilgilerini girmeniz istenir.
+
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine `https://jwt.ms`yönlendirilir ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
+
+Çok kiracılı oturum açma özelliğini test etmek için, başka bir Azure AD kiracısı olan bir kullanıcının kimlik bilgilerini kullanarak son iki adımı gerçekleştirin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Özel ilkelerle çalışırken, bazen bir ilke geliştirme sırasında sorun giderirken ek bilgilere ihtiyaç duyabilirsiniz.
+
+Sorunları tanılamaya yardımcı olmak için ilkeyi geçici olarak "geliştirici moduna" koyabilirsiniz ve Azure Application Insights ile Günlükler toplayabilirsiniz. [Azure Active Directory B2C nasıl yapılacağını öğrenin: Günlükler](active-directory-b2c-troubleshoot-custom.md)toplanıyor.
