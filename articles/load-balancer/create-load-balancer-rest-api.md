@@ -35,10 +35,10 @@ Yeni Azure temel yük dengeleyici oluşturmak için aşağıdaki HTTP PUT İste�
 
 |Ad  |İçinde  |Gerekli |Tür |Açıklama |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  yol       |  True       |   string      |  Microsoft Azure aboneliği benzersiz olarak tanımlanabilmesi abonelik kimlik bilgileri. Abonelik kimliği, her hizmet çağrısı için URI parçası oluşturur.      |
-|resourceGroupName     |     yol    | True        |  string       |   Kaynak grubunun adı.     |
-|loadBalancerName     |  yol       |      True   |    string     |    Yük dengeleyicinin adı.    |
-|API sürümü    |   sorgu     |  True       |     string    |  İstemci API sürümü.      |
+|subscriptionId   |  path       |  True       |   string      |  Microsoft Azure aboneliği benzersiz olarak tanımlanabilmesi abonelik kimlik bilgileri. Abonelik kimliği, her hizmet çağrısı için URI parçası oluşturur.      |
+|resourceGroupName     |     path    | True        |  string       |   Kaynak grubunun adı.     |
+|loadBalancerName     |  path       |      True   |    string     |    Yük dengeleyicinin adı.    |
+|api-version    |   query     |  True       |     string    |  İstemci API sürümü.      |
 
 
 
