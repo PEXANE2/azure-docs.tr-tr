@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/06/2019
+ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cf72a83035e318d3a937176bbaaebd8e298d3ad2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ff3a19a543f87833420f585bbdf7891cc7589746
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390649"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997202"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modelleri dağıtma
 
@@ -764,7 +764,7 @@ Belirtiden istemci kitaplıkları oluşturabileceğiniz bir yardımcı program i
 ### <a id="azuremlcompute"></a>Toplu çıkarım
 Azure Machine Learning Işlem hedefleri Azure Machine Learning hizmeti tarafından oluşturulur ve yönetilir. Bunlar, Azure Machine Learning işlem hatlarından toplu tahmin için kullanılabilirler.
 
-Azure Machine Learning Işlem ile Batch çıkarımı hakkında yönergeler için bkz. [Batch öngörülerini çalıştırma](how-to-run-batch-predictions.md).
+Azure Machine Learning Işlem ile Batch çıkarımı hakkında yönergeler için bkz. [Batch öngörülerini çalıştırma](tutorial-pipeline-batch-scoring-classification.md).
 
 ### <a id="iotedge"></a>IoT Edge çıkarımı
 Kenara dağıtım desteği önizleme aşamasındadır. Daha fazla bilgi için bkz. [Azure Machine Learning IoT Edge modül olarak dağıtma](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning).
@@ -804,6 +804,19 @@ Daha fazla örnek proje ve örnek için GitHub 'daki Şu örnek depolara bakın:
 
 * [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+## <a name="download-a-model"></a>Model indirme
+Modelinizi kendi yürütme ortamınızda kullanmak üzere indirmek isterseniz, bunu aşağıdaki SDK/CLı komutlarıyla yapabilirsiniz:
+
+'SININ
+```python
+model_path = Model(ws,'mymodel').download()
+```
+
+CLI
+```azurecli-interactive
+az ml model download --model-id mymodel:1 --target-dir model_folder
+```
 
 ## <a name="package-models"></a>Paket modelleri
 

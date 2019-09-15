@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034576"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996212"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API 'SI: Notları indir ve serbest bırak
 > [!div class="op_single_selector"]
@@ -41,6 +41,9 @@ ms.locfileid: "70034576"
 
 ## <a name="release-notes-for-100-series"></a>1\.0.0 serisi için sürüm notları
 1.0.0 Series, [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)'a bağımlılığı alır.
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* Cosmos DB Tablo API'si iletişim kurmak için REST yürütücüsü kullanmak üzere TableClientConfiguration altında yeni yapılandırma tanıtın
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-Önizleme
 * Hata düzeltmeleri
@@ -92,6 +95,7 @@ Bu platformlar arası .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Tabl
 ### <a name="100-series"></a>1.0.0 serisi
 | Version | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
+| [1.0.5](#1.0.5) |13 Eylül 2019 |--- |
 | [1.0.5-Önizleme](#1.0.5-preview) |Auguest 20, 2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4-Önizleme](#1.0.4-preview) |26 Temmuz 2019 |--- |

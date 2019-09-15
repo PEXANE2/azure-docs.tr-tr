@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136737"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993037"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'na veri çoğaltma
 
@@ -37,7 +37,7 @@ Ana sunucudaki [*MySQL sistem veritabanı*](https://mariadb.com/kb/en/library/th
 - Ana sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının `mariadb.az_replication_change_master` saklı yordama eklendiğinden emin olun. Aşağıdaki [örneklere](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
 - Ana sunucunun IP adresinin MariaDB için Azure Veritabanı çoğaltma sunucusunun güvenlik duvarı kurallarına eklendiğinden emin olun. [Azure portalını](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) veya [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
 - Ana sunucuyu barındıran makinenin, 3306 numaralı bağlantı noktasında hem gelen hem de giden trafiğe izin verdiğinden emin olun.
-- Ana sunucunun **Genel IP adresine** sahip olduğundan veya DNS’in genel erişime açık olduğundan emin olun
+- Ana sunucunun **Genel BIR IP adresi**olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
 
 ### <a name="other"></a>Diğer
 - Veri içi çoğaltma yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir.

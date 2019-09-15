@@ -1,6 +1,6 @@
 ---
 title: 'Görsel arabirim örnek #4: Kredi riskini tahmin etmek için sınıflandırma (maliyet duyarlı)'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu makalede, Visual Interface kullanarak karmaşık makine öğrenimi denemesinin nasıl oluşturulacağı gösterilmektedir. Özel Python betikleri uygulamayı ve en iyi seçeneği belirlemek için birden çok modeli karşılaştırmayı öğreneceksiniz.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 977ff101b0f697a48b3e5595834c98fef0f1119a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990425"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997039"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)
 

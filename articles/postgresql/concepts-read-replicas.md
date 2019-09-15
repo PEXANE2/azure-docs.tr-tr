@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1571fc449bd40063c531f9942fe9b51da56f783c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764337"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996507"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -173,4 +173,4 @@ Bir ana sunucu silindiğinde, tüm okuma çoğaltmaları tek başına sunucular 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Portal okuma çoğaltmaları oluşturmayı ve yönetmeyi](howto-read-replicas-portal.md)öğrenin.
-* [Azure CLI 'de okuma çoğaltmaları oluşturmayı ve yönetmeyi](howto-read-replicas-cli.md)öğrenin.
+* [Azure CLI ve REST API okuma çoğaltmaları oluşturma ve yönetme](howto-read-replicas-cli.md)hakkında bilgi edinin.

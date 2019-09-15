@@ -4,14 +4,14 @@ description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bcbd7b14de497cb6a8bb5cf12de4ec8c555b97b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983898"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996820"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](resource-group-using-tags.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir.
@@ -151,6 +151,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Sıterecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft. Solutions](#microsoftsolutions)
+> - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft. Storage](#microsoftstorage)
 > - [Microsoft. StorageCache](#microsoftstoragecache)
@@ -1820,6 +1821,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/Restokbledroppeddatabases | Hayır | Hayır |
 > | Sunucu/hizmet hedefleri | Hayır | Hayır |
 > | sunucular/tdeCertificates | Hayır | Hayır |
+> | Virtualkümeler | Hayır | Hayır |
 
 <a id="sqlnote" />
 

@@ -1,6 +1,6 @@
 ---
 title: 'Görsel arabirim örnek #6: Uçuş gecikmelerini tahmin etmek için sınıflandırma'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu makalede, sürükle ve bırak görsel arabirimini ve özel R kodunu kullanarak uçuş gecikmelerini tahmin etmek için bir makine öğrenimi modelinin nasıl oluşturulacağı gösterilmektedir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3d1363d24aa6e5f8875ba90513a8d9d5b951c9db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990018"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997119"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Örnek 6-sınıflandırma: R kullanarak uçuş gecikmelerini tahmin etme
 

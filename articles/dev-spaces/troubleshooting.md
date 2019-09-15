@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: b16a7d874f15747c14df1d728be824fac76de2be
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019639"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993957"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
@@ -419,7 +419,7 @@ Linux 'lerin bir Windows düğümünde çalıştırılmak üzere zamanlanmadığ
 
 ### <a name="reason"></a>Reason
 
-Azure dev Spaces, aks kümenizde bir denetleyici oluşturamadı, çünkü Pod 'yi zamanlamak için serbest bir durumda olmayan bir düğüm bulunamıyor. Azure Dev Spaces, kullanım sürelerinin toleranlarını belirtmeden zamanlamaya izin veren, *Ready* durumunda en az bir Linux düğümü gerektirir.
+Azure dev Spaces, aks kümenizde bir denetleyici oluşturamadı, çünkü Pod 'yi zamanlamak için serbest *bir durumda olmayan* bir düğüm bulunamıyor. Azure Dev Spaces, kullanım sürelerinin toleranlarını belirtmeden zamanlamaya izin veren, *Ready* durumunda en az bir Linux düğümü gerektirir.
 
 ### <a name="try"></a>Deneme
 En az bir Linux düğümünün tolerans belirtmeden zamanlamalara izin verdiğinden emin olmak için AKS kümenizde [taınt yapılandırmanızı güncelleştirin](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) . Ayrıca, tolerans belirtmeden düğüm zamanlamaya izin veren en az bir Linux düğümünün, *Ready* durumunda olduğundan emin olun. Düğümünüz, *hazırlık* durumuna ulaşmak uzun sürüyorsa, düğümünüz yeniden başlatmayı deneyebilirsiniz.
@@ -456,3 +456,40 @@ Pod belirtimde uygulanacak bir proxy kaynakları ek açıklamasına örnek aşa�
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+## <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>Hata "yetkisiz: kimlik doğrulaması gerekiyor" özel bir kayıt defterinden Docker görüntüsünü kullanmaya çalışırken
+
+### <a name="reason"></a>Reason
+
+Kimlik doğrulaması gerektiren özel bir kayıt defterinden Docker görüntüsü kullanıyorsunuz. Geliştirici alanlarının, [ımagepullgizlilikler](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)kullanarak bu özel kayıt defterinden görüntü doğrulamasına ve çekmelerine izin verebilirsiniz.
+
+### <a name="try"></a>Deneme
+
+Imagepullgizliliklerini kullanmak için, görüntüyü kullandığınız ad alanında [bir Kubernetes gizli anahtarı oluşturun](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) . Daha sonra gizli anahtarı ' de `azds.yaml`bir ımagepullsecret olarak sağlayın.
+
+Aşağıda ımagepullgizliliklerin `azds.yaml`belirtilmesine ilişkin bir örnek verilmiştir.
+
+```
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: $BUILD_CONTEXT$
+  dockerfile: Dockerfile
+install:
+  chart: $CHART_DIR$
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    # Optional, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
+    # This will override the imagePullSecrets array in values.yaml file.
+    # If the dockerfile specifies any private registry, the imagePullSecret for the registry must be added here.
+    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    #
+    # This uses credentials from secret "myRegistryKeySecretName".
+    imagePullSecrets:
+      - name: myRegistryKeySecretName
+```
+
+> [!IMPORTANT]
+> ' De `azds.yaml` ımagepullgizlilikler ayarlandığında, `values.yaml`içinde belirtilen ımagepullgizlilikler geçersiz kılınır.

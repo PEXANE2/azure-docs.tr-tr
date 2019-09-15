@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297582"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995138"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme 
 
@@ -92,7 +92,7 @@ WamDefaultAuthority: organizations
 
 Aşağıdaki alanları gözden geçirin ve beklenen değerlere sahip olduklarından emin olun:
 
-#### <a name="domainjoined--yes"></a>Domainkatılmış: YES  
+#### <a name="domainjoined--yes"></a>Domainkatılmış: EVET  
 
 Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gösterir. Değer **Hayır**ise, cihaz karma Azure AD katılımı gerçekleştiremez.  
 
@@ -100,7 +100,7 @@ Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gö
 
 Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış*olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet**ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 ' un yıldönümü güncelleştirme sürümü (1607) kullanılırken hesap yok sayılır.
 
-#### <a name="azureadjoined--yes"></a>Azureadkatıldı: YES  
+#### <a name="azureadjoined--yes"></a>Azureadkatıldı: EVET  
 
 Bu alan, cihazın Azure AD 'ye katılıp katılmadığını gösterir. Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır. 
 
@@ -396,7 +396,7 @@ Ortak betikleri buradan alın: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3
 
 ### <a name="retrieve-the-join-status"></a>JOIN durumunu al 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: Evet ve AzureADPrt: YES
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: Evet ve AzureADPrt: EVET
   
 Bu alanlar, kullanıcının cihazda oturum açarken Azure AD 'ye başarıyla kimlik doğrulaması yapıp belirtmediğini belirtir. Değerler **Hayır**ise bunun nedeni şu olabilir:
 
@@ -404,6 +404,9 @@ Bu alanlar, kullanıcının cihazda oturum açarken Azure AD 'ye başarıyla kim
 - Alternatif oturum açma KIMLIĞI
 - HTTP proxy bulunamadı
 
+## <a name="known-issues"></a>Bilinen sorunlar
+- Ayarlar-> hesaplar-Iş veya okul > erişin, karma Azure AD 'ye katılmış cihazlar, Mobil etkin noktalara veya dış WiFi ağlarına bağlıyken, biri Azure AD ve bir şirket içi AD için olmak üzere iki farklı hesap gösterebilir. Bu yalnızca bir kullanıcı arabirimi sorunudur ve işlevselliği etkilemez. 
+ 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Dsregcmd komutunu kullanarak cihazlarda sorun gidermeye](troubleshoot-device-dsregcmd.md) devam edin

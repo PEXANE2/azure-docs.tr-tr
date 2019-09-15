@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885114"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995553"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight 'ta Apache Spark işlerini iyileştirme
 
@@ -96,7 +96,7 @@ Başvurunuz için Spark bellek yapısı ve bazı önemli yürütücü belleği p
 
 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)kullanıyorsanız, Yarn her Spark düğümündeki tüm kapsayıcılar tarafından kullanılan en fazla bellek toplamını denetler.  Aşağıdaki diyagramda, temel nesneler ve bunların ilişkileri gösterilmektedir.
 
-![YARN Spark bellek yönetimi](./media/apache-spark-perf/yarn-spark-memory.png)
+![YARN Spark bellek yönetimi](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 ' Bellek yetersiz ' iletilerini ele almak için şunu deneyin:
 

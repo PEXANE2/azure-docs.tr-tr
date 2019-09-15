@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78e113f881d1f62c9848ba40f039fa19eeb09055
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129188"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996460"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme'de sorun giderin
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -395,6 +395,18 @@ Bu hata, Azure Dosya Eşitleme Aracısı Azure dosya paylaşımında erişemedi�
     ```
 2. [Depolama hesabının mevcut olduğundan emin olun.](#troubleshoot-storage-account)
 3. [Depolama hesabındaki güvenlik duvarının ve sanal ağ ayarlarının düzgün yapılandırıldığını doğrulama (etkinse)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Depolama hesabına erişirken bilinmeyen bir hata oluştu.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8308a |
+| **HRESULT (ondalık)** | -2134364022 |
+| **Hata dizesi** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
+| **Düzeltme gerekli** | Evet |
+
+1. [Depolama hesabının mevcut olduğundan emin olun.](#troubleshoot-storage-account)
+2. [Depolama hesabındaki güvenlik duvarının ve sanal ağ ayarlarının düzgün yapılandırıldığını doğrulama (etkinse)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 

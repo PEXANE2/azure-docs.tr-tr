@@ -4,14 +4,14 @@ description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma m
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 268f6b7f3e7462986e6289088a0716794dc832f1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983977"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995257"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -154,6 +154,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Sıterecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft. Solutions](#microsoftsolutions)
+> - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft. Storage](#microsoftstorage)
 > - [Microsoft. StorageCache](#microsoftstoragecache)
@@ -1822,6 +1823,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/Restokbledroppeddatabases | Hayır |
 > | Sunucu/hizmet hedefleri | Hayır |
 > | sunucular/tdeCertificates | Hayır |
+> | Virtualkümeler | Hayır |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 

@@ -1,7 +1,7 @@
 ---
 title: Dağıtım sorunlarını giderme kılavuzu
-titleSuffix: Azure Machine Learning service
-description: Azure Kubernetes hizmeti ve Azure Container Instances Azure Machine Learning hizmetini kullanarak genel Docker dağıtım hatalarını nasıl giderebileceğinizi, çözeceğinizi ve sorun gidermeyi öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure Kubernetes hizmeti ile genel Docker dağıtım hatalarını çözmenin, çözme ve sorunlarını giderme hakkında bilgi edinin ve Azure Machine Learning kullanarak Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183546"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997170"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
-Azure Machine Learning hizmetini kullanarak Azure Container Instances (ACI) ve Azure Kubernetes hizmeti (AKS) ile genel Docker dağıtım hatalarını çözmenin veya çözme hakkında bilgi edinin.
+Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kubernetes hizmeti (AKS) ile genel Docker dağıtım hatalarını çözmenin veya çözme hakkında bilgi edinin.
 
-Azure Machine Learning hizmetinde bir model dağıtımına, sistemin bir dizi görevi gerçekleştirir. Dağıtım görevleri şunlardır:
+Azure Machine Learning bir modeli dağıttığınızda, sistem bir dizi görevi gerçekleştirir. Dağıtım görevleri şunlardır:
 
 1. Çalışma alanı model kayıt defterinde modeli kaydedin.
 
@@ -346,7 +346,7 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ Bu metin örneğinde, kayıt defteri adı `myregistry` ve görüntü adlandırı
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Kapsayıcının içindeki PTVSD 'e VS Code iliştirmek için, VS Code açın ve F5 tuşunu kullanın veya __Hata Ayıkla__' yı seçin. İstendiğinde __Azure Machine Learning hizmetini seçin: Docker hata__ ayıklama yapılandırması. Ayrıca, __Azure Machine Learning hizmeti olan yan çubukta hata ayıklama simgesini de seçebilirsiniz: Hata ayıklama açılan__ menüsünden Docker hata ayıklama girişi yapın ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanın.
+1. Kapsayıcının içindeki PTVSD 'e VS Code iliştirmek için, VS Code açın ve F5 tuşunu kullanın veya __Hata Ayıkla__' yı seçin. İstendiğinde __Azure Machine Learning seçin: Docker hata__ ayıklama yapılandırması. Ayrıca, __yan çubukta hata ayıklama simgesini de seçebilirsiniz Azure Machine Learning: Hata ayıklama açılan__ menüsünden Docker hata ayıklama girişi yapın ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanın.
 
     ![Hata ayıklama simgesi, hata ayıklamayı Başlat düğmesi ve yapılandırma Seçicisi](media/how-to-troubleshoot-deployment/start-debugging.png)
 

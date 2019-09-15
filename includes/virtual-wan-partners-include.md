@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/08/2019
+ms.date: 09/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e95000f068d2ab36292a7c5d0440fab01cb44bb5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8899a6933c7941332d3d633b0360568eef9c64d7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879300"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996360"
 ---
 İş ortakları tarafından sunulan hizmetler hakkında daha fazla bilgi için bu bölümdeki bağlantıları kontrol edebilirsiniz. Dal cihazı ortağınız aşağıdaki bölümde listelenmiyorsa, dal cihaz sağlayıcınızın bizimle iletişim kurun. E-posta azurevirtualwan@microsoft.comgöndererek bizimle iletişim kurabilirler.
 
@@ -26,4 +26,5 @@ ms.locfileid: "68879300"
 |[Netlen Ry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|
 |[Palo Alto ağları](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |
 |[Riveryatak teknolojisi](https://www.riverbed.com/go/steelconnect-azurewan.html)|
+| [Ekler](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) |
 |[128 teknolojisi](https://www.128technology.com/partners/azure) |

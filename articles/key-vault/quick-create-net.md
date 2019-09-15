@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934899"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996636"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Hızlı Başlangıç: .NET için Azure Key Vault istemci kitaplığı
 
@@ -26,7 +26,6 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
 [API başvurusu belge](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -120,24 +119,12 @@ Bu işlem, bir dizi anahtar/değer çifti döndürür.
 
 Aşağıdaki [anahtar kasanıza kimlik doğrulama adımınıza](#authenticate-to-your-key-vault) ulaşacağız, ClientID ve ClientSecret hakkında bir göz atın.
 
-Ayrıca hizmet sorumlusunun AppID 'Sine de ihtiyacınız olacaktır. Şu `--show-mine` parametreyle [az ad SP List](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) çalıştırarak bulabilirsiniz:
-
-```azurecli
-az ad sp list --show-mine
-```
-
-Döndürülen JSON 'da görünür: `appID`
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
-
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Anahtar kasanıza hizmet sorumlusu erişimi verin
 
-Hizmet sorumlusuna izin veren Anahtar Kasası için bir erişim ilkesi oluşturun. Bunu [az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuyla yapabilirsiniz. Her iki anahtar ve gizli dizi için hizmet sorumlusu al, Listele ve ayarla izinleri vereceğiz.
+ClientID 'yi [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek, hizmet sorumlusuna izin veren Anahtar Kasası için bir erişim ilkesi oluşturun. Her iki anahtar ve gizli dizi için hizmet sorumlusu al, Listele ve ayarla izinlerini verin.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>Nesne modeli

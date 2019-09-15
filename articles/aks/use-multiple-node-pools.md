@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915849"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996891"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerService
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
 * Birden çok düğüm havuzu yalnızca, aboneliğiniz için *Multiagentpoolpreview* özelliğini başarıyla kaydettikten sonra oluşturulan kümeler için kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
-* İlk düğüm havuzunu silemezsiniz.
+* Varsayılan (ilk) düğüm havuzunu silemezsiniz.
 * HTTP uygulama yönlendirme eklentisi kullanılamıyor.
-* Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez/güncelleştiremez/silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
+* Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez veya silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
@@ -89,6 +89,8 @@ Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
 Başlamak için, tek düğümlü havuz ile bir AKS kümesi oluşturun. Aşağıdaki örnek, *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturmak için [az Group Create][az-group-create] komutunu kullanır. *Myakscluster* adlı bir aks kümesi daha sonra [az aks Create][az-aks-create] komutu kullanılarak oluşturulur. Bir *--Kubernetes-* *1.13.10* , aşağıdaki adımlarda bir düğüm havuzunun nasıl güncelleştiğine göstermek için kullanılır. [Desteklenen Kubernetes sürümünü][supported-versions]belirtebilirsiniz.
+
+Birden çok düğüm havuzu kullanılırken standart SKU yük dengeleyicinin kullanılması kesinlikle önerilir. AKS ile standart yük dengeleyiciler kullanma hakkında daha fazla bilgi edinmek için [Bu belgeyi](load-balancer-standard.md) okuyun.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +103,8 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10
+    --kubernetes-version 1.13.10 \
+    --load-balancer-sku standard
 ```
 
 Kümenin oluşturulması birkaç dakika sürer.
@@ -578,7 +581,7 @@ Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Düğüm havuzunda düğüm başına genel IP atama
 
 > [!NOTE]
-> Önizleme sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle bu özelliği *AKS (Önizleme) standart Load Balancer SKU 'su* ile kullanmanın bir sınırlaması vardır. Önizlemede, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU 'su* kullanın.
+> Düğüm başına genel IP atama önizlemesi sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle *AKS 'de standart Load Balancer SKU 'su* ile kullanılamaz. Önizlemede, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU 'su* kullanın.
 
 AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak bazı senaryolar, düğüm havuzundaki düğümlerin kendi genel IP adreslerine sahip olmasını gerektirebilir. Örneğin, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için gereken oyun. Bu, ayrı bir önizleme özelliği olan düğüm genel IP (Önizleme) için kaydolarak elde edilebilir.
 

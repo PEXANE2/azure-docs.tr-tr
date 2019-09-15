@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142854"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996430"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure kaynakları için rol tanımlarını anlama
 
@@ -213,16 +213,18 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 
 ## <a name="assignablescopes"></a>Astifblescopes
 
-`AssignableScopes` Özelliği, bu rol tanımının kullanılabildiği kapsamları (abonelikler, kaynak grupları veya kaynaklar) belirtir. Rolü yalnızca bunu gerektiren abonelikler veya kaynak gruplarında atama için kullanılabilir hale getirebilirsiniz ve abonelik veya kaynak gruplarının geri kalanı için Kullanıcı deneyimini kalabalımez. En az bir abonelik, kaynak grubu veya kaynak KIMLIĞI kullanmanız gerekir.
+`AssignableScopes` Özelliği, bu rol tanımının kullanılabildiği kapsamları (Yönetim grupları, abonelikler, kaynak grupları veya kaynaklar) belirtir. Rolü yalnızca gereken yönetim gruplarında, aboneliklerde veya kaynak gruplarında atama için kullanılabilir hale getirebilirsiniz. En az bir yönetim grubu, abonelik, kaynak grubu veya kaynak KIMLIĞI kullanmanız gerekir.
 
 Yerleşik roller `AssignableScopes` kök kapsamına (`"/"`) ayarlı. Kök kapsamı, rolün tüm kapsamlardaki atamaya uygun olduğunu gösterir. Geçerli atanabilir kapsamların örnekleri şunlardır:
 
-| Senaryo | Örnek |
+| Rol atama için kullanılabilir | Örnek |
 |----------|---------|
-| Rol, tek bir abonelikte atama için kullanılabilir | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| Rol, iki aboneliğe atanmak üzere kullanılabilir | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| Rol yalnızca ağ kaynak grubunda atanmak üzere kullanılabilir | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Rol tüm kapsamlarda atama için kullanılabilir (yalnızca yerleşik roller için geçerlidir) | `"/"` |
+| Bir abonelik | `"/subscriptions/{subscriptionId1}"` |
+| İki abonelik | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Ağ kaynak grubu | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| Bir yönetim grubu | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| Yönetim grubu ve abonelik | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| Tüm kapsamlar (yalnızca yerleşik roller için geçerlidir) | `"/"` |
 
 Özel roller hakkında `AssignableScopes` daha fazla bilgi için bkz. [Azure kaynakları için özel roller](custom-roles.md).
 

@@ -1,6 +1,6 @@
 ---
 title: 'Görsel arabirim örnek #3: fiyat ve karşılaştırma algoritmalarına gerileme'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu makalede, görsel arabirimi kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi denemesinin nasıl oluşturulacağı gösterilmektedir. Bir otomobil 'nin teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini eğitme ve karşılaştırma hakkında bilgi edinin
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2c45ccf55b1adde7150dee17fd562b24ee4777ba
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990013"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997093"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Örnek 2-gerileme: Fiyat ve karşılaştırma algoritmalarını tahmin etme
 

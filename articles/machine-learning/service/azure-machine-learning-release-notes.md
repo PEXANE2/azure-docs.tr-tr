@@ -1,7 +1,7 @@
 ---
 title: Yayındaki yenilikler nelerdir?
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti için en son güncelleştirmeler ve Machine Learning ve Data Prep Python SDK 'Ları hakkında bilgi edinin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning için en son güncelleştirmeler ve Machine Learning ve Data Prep Python SDK 'Ları hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930732"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993420"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
+# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
-Bu makalede, Azure Machine Learning hizmet sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin. 
+Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin. 
 
 Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
 
@@ -557,7 +557,7 @@ Azure portal, şimdi şunları yapabilirsiniz:
 + Çalışma raporları ve çalışma ayrıntıları sayfalarında canlı grafik ve ölçüm güncelleştirmesi
 + Çalışma ayrıntıları sayfalarındaki Günlükler, çıktılar ve anlık görüntüler için dosya Görüntüleyicisi güncelleştirildi.
 + Denemeleri sekmesinde yeni ve geliştirilmiş rapor oluşturma deneyimi. 
-+ Azure Machine Learning hizmeti çalışma alanının genel bakış sayfasından config. json dosyasını indirme özelliği eklendi.
++ Azure Machine Learning çalışma alanının genel bakış sayfasından config. json dosyasını indirme özelliği eklendi.
 + Azure Databricks çalışma alanından hizmet çalışma alanı oluşturma desteği Machine Learning 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -576,7 +576,7 @@ Machine Learning denemeleri 'i programtabileceğiniz, modelleri Web uç noktalar
 + [](tutorial-1st-experiment-sdk-setup.md) Azure Machine Learning SDK ve ilgili paketlerin en son sürümüne sahip olan önceden yapılandırılmış bir not defteri VM 'sini hızlıca çalıştırın.
 + Erişim, HTTPS, Azure Active Directory kimlik doğrulaması ve yetkilendirme gibi kanıtlanmış teknolojiler aracılığıyla güvenli hale getirilir.
 + Azure Machine Learning Çalışma Alanı BLOB depolama hesabınızda Not defterlerinin ve kodun güvenilir bulut depolaması. Çalışmanızı kaybetmeden Not defteri sanal makinenizin güvenli bir şekilde silinmesini sağlayabilirsiniz.
-+ Azure Machine Learning hizmeti özelliklerini incelemek ve denemek için önceden yüklenmiş örnek Not defterleri.
++ Azure Machine Learning özellikleri araştırmak ve denemek için önceden yüklenmiş örnek Not defterleri.
 + Azure VM 'lerinin tam özelleştirme özellikleri, herhangi bir VM türü, herhangi bir paket, herhangi bir sürücü. 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -873,7 +873,7 @@ Not: Data Prep Python SDK artık yüklenemez `numpy` ve `pandas` paketlerdir. Bk
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04: Genel Erişilebilirlik
 
-Azure Machine Learning hizmeti genel kullanıma sunulmuştur.
+Azure Machine Learning genel kullanıma sunulmuştur.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
 Bu sürümle birlikte [Azure Machine Learning işlem](how-to-set-up-training-targets.md#amlcompute)aracılığıyla yeni bir yönetilen işlem deneyimi duyuruyoruz. Bu işlem hedefi Azure Machine Learning Azure Batch AI işlem yerini alır. 
@@ -985,7 +985,7 @@ Veri hazırlığı SDK'sı hakkında daha fazla bilgi edinmek [başvuru belgeler
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>Azure portal 
-Azure Machine Learning hizmeti için Azure portalı aşağıdaki güncelleştirmeler bulunur:
+Azure Machine Learning için Azure portal aşağıdaki güncelleştirmelere sahiptir:
   * Yeni bir **işlem hatları** yayımlanan işlem hatları için sekmesinde.
   * İşlem hedefi olarak var olan bir HDInsight kümesine ekleme desteği eklendi.
 
@@ -1098,4 +1098,4 @@ Azure Machine Learning yeni, yenilenmiş bir sürümü: Bu sürüm hakkında dah
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Machine Learning hizmeti](../service/overview-what-is-azure-ml.md)için genel bakışı okuyun.
+[Azure Machine Learning](../service/overview-what-is-azure-ml.md)’e genel bakışı okuyun.

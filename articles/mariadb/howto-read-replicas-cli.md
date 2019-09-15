@@ -1,23 +1,26 @@
 ---
-title: MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
-description: Bu makalede, Azure CLı kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmalarını ayarlama ve yönetme işlemlerinin nasıl yapılacağı açıklanır.
+title: MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-AZURE CLı, REST API
+description: Bu makalede, Azure CLı ve REST API kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmalarının nasıl ayarlanacağı ve yönetileceği açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: ba0f3bd002b2675c33ea5106ce64c7957c9989d0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.date: 09/13/2019
+ms.openlocfilehash: 2f5029ccbf80551721ecc363aa4c3930961d9154
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309116"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993070"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLı kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
-Bu makalede, Azure CLı kullanarak MariaDB hizmeti için Azure veritabanı 'nda ana öğe ile aynı Azure bölgesinde bulunan okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz.
+Bu makalede, Azure CLı ve REST API kullanarak MariaDB hizmeti için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="azure-cli"></a>Azure CLI
+Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
+
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - Ana sunucu olarak kullanılacak [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md) . 
@@ -25,7 +28,7 @@ Bu makalede, Azure CLı kullanarak MariaDB hizmeti için Azure veritabanı 'nda 
 > [!IMPORTANT]
 > Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Bu fiyatlandırma katmanlarından birini ana sunucusu olduğundan emin olun.
 
-## <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
+### <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
 
 Salt okunur çoğaltma sunucusu, aşağıdaki komutu kullanarak oluşturulabilir:
 
@@ -53,7 +56,22 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 > [!NOTE]
 > Okuma çoğaltmaları aynı sunucu yapılandırma yöneticisi olarak oluşturulur. Çoğaltma sunucusu yapılandırması, oluşturulduktan sonra değiştirilebilir. Çoğaltma sunucusunun yapılandırmasını çoğaltma ana ayak olduğundan emin olmak için ana daha eşit veya daha fazla değerlerinde tutulması gereken önerilir.
 
-## <a name="stop-replication-to-a-replica-server"></a>Bir çoğaltma sunucusu için çoğaltma durdurma
+### <a name="list-replicas-for-a-master-server"></a>Ana sunucu için liste çoğaltmaları
+
+Verilen bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın: 
+
+```azurecli-interactive
+az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
+```
+
+`az mariadb server replica list` Komut takip eden parametreleri gerektiriyor:
+
+| Ayar | Örnek değer | Açıklama  |
+| --- | --- | --- |
+| resource-group |  myresourcegroup |  Çoğaltma sunucusu oluşturulacağı kaynak grubu.  |
+| server-name | mydemoserver | Adı veya ana sunucu kimliği. |
+
+### <a name="stop-replication-to-a-replica-server"></a>Bir çoğaltma sunucusu için çoğaltma durdurma
 
 > [!IMPORTANT]
 > Bir sunucuya çoğaltma durdurma işlemi geri alınamaz. Bir ana ve çoğaltma arasında çoğaltmayı durdurdu sonra geri alınamaz. Çoğaltma sunucusu bir tek başına sunucu olur ve artık hem okuma hem de yazma işlemleri destekler. Bu sunucu bir yinelemeye yeniden yapılamıyor.
@@ -71,7 +89,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun mevcut olduğu kaynak grubu.  |
 | ad | mydemoreplicaserver | Üzerindeki çoğaltma durdurma çoğaltma sunucusunun adı. |
 
-## <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu Sil
+### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu Sil
 
 **[Az MariaDB Server DELETE](/cli/azure/mariadb/server)** komutu çalıştırılarak bir okuma çoğaltması sunucusunu silme işlemi gerçekleştirilebilir.
 
@@ -79,7 +97,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-## <a name="delete-a-master-server"></a>Bir ana sunucu silme
+### <a name="delete-a-master-server"></a>Bir ana sunucu silme
 
 > [!IMPORTANT]
 > Ana sunucu silme tüm çoğaltma sunucuları için çoğaltma durdurulur ve ana sunucusunu siler. Artık hem okuma hem de yazma işlemleri destekleyen tek başına sunucular çoğaltma sunucusu olur.
@@ -90,20 +108,70 @@ Ana Sunucuyu silmek için **[az MariaDB Server DELETE](/cli/azure/mariadb/server
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="list-replicas-for-a-master-server"></a>Ana sunucu için liste çoğaltmaları
+## <a name="rest-api"></a>REST API
+[Azure REST API](/rest/api/azure/)kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-Verilen bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın: 
+### <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
+[Oluşturma API](/rest/api/mariadb/servers/create)'sini kullanarak bir okuma çoğaltması oluşturabilirsiniz:
 
-```azurecli-interactive
-az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{replicaName}?api-version=2017-12-01
 ```
 
-`az mariadb server replica list` Komut takip eden parametreleri gerektiriyor:
+```json
+{
+  "location": "southeastasia",
+  "properties": {
+    "createMode": "Replica",
+    "sourceServerId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}"
+  }
+}
+```
 
-| Ayar | Örnek değer | Açıklama  |
-| --- | --- | --- |
-| resource-group |  myresourcegroup |  Çoğaltma sunucusu oluşturulacağı kaynak grubu.  |
-| server-name | mydemoserver | Adı veya ana sunucu kimliği. |
+> [!NOTE]
+> İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
+
+`azure.replication_support` Parametreyi genel amaçlı veya bellek için iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
+
+Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
+
+
+> [!IMPORTANT]
+> Ana sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
+
+### <a name="list-replicas"></a>Çoğaltmaları Listele
+[Çoğaltma LISTESI API](/rest/api/mariadb/replicas/listbyserver)'sini kullanarak bir ana sunucunun çoğaltmalarının listesini görüntüleyebilirsiniz:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}/Replicas?api-version=2017-12-01
+```
+
+### <a name="stop-replication-to-a-replica-server"></a>Bir çoğaltma sunucusu için çoğaltma durdurma
+[GÜNCELLEŞTIRME API](/rest/api/mariadb/servers/update)'sini kullanarak bir ana sunucu ve okuma çoğaltması arasındaki çoğaltmayı durdurabilirsiniz.
+
+Bir ana sunucu ve bir okuma çoğaltması için çoğaltmayı durdurduktan sonra geri alınamaz. Okuma çoğaltması, hem okuma hem de yazma işlemlerini destekleyen tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
+
+```http
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}?api-version=2017-12-01
+```
+
+```json
+{
+  "properties": {
+    "replicationRole":"None"  
+   }
+}
+```
+
+### <a name="delete-a-master-or-replica-server"></a>Ana veya çoğaltma sunucusunu silme
+Ana veya çoğaltma sunucusunu silmek için, [SILME API](/rest/api/mariadb/servers/delete)'sini kullanın:
+
+Bir ana sunucuyu sildiğinizde, tüm okuma çoğaltmalarına çoğaltma durdurulur. Okuma çoğaltmaları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}?api-version=2017-12-01
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

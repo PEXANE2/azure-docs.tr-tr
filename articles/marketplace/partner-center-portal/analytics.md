@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962743"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993711"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
 
@@ -244,7 +244,7 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu için özel Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |
 | Müşteri şehri| Müşteri| Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir.||
 | Müşteri Iletişim dili  | Müşteri| İletişim için müşterinin tercih ettiği dil.||
-| Müşteri şirket adı | Müşteri, sipariş | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir.|  |
+| Müşteri şirket adı | Müşteri, sipariş | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki adından farklı olabilir.|  |
 | Müşteri ülkesi | Müşteri, sipariş | Müşterinin sunduğu ülke adı. Ülke, müşterinin Azure aboneliğindeki ülkeden farklı olabilir.|  |
 | Müşteri e-postası| Müşteri| Son müşteri tarafından sunulan e-posta adresi. E-posta, müşterinin Azure aboneliğindeki e-posta adresinden farklı olabilir.||
 | Müşteri adı| Müşteri| Müşterinin verdiği ad. Ad, müşterinin Azure aboneliğinde belirtilen ad ile farklı olabilir.| |

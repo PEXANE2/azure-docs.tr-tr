@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816527"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996611"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -38,7 +38,7 @@ Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölç
 
 1. Ölçüm olarak **işlemler** ' i seçin.
 
-1. **ResponseType** için bir filtre ekleyin ve herhangi bir isteğin bir yanıt kodu (SMB için) veya **CLIENTKıSıTıNGERROR** (REST için) yanıt koduna sahip olup olmadığını denetleyin.
+1. **ResponseType** için bir filtre ekleyin ve herhangi bir isteğin bir yanıt **kodu (SMB** için) veya **CLIENTKıSıTıNGERROR** (REST için) yanıt koduna sahip olup olmadığını denetleyin.
 
 ![Premium dosya paylaşımları için ölçüm seçenekleri](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -85,6 +85,7 @@ Bunun olası nedenlerinden biri, SMB çoklu kanal desteğinin olmamasıdır. Şu
 
 - Daha büyük bir çekirdekli VM 'nin alınması, aktarım hızını artırmaya yardımcı olabilir.
 - İstemci uygulamasını birden çok VM 'den çalıştırmak, aktarım hızını artırır.
+
 - Mümkün olduğunda REST API 'Leri kullanın.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Linux istemcilerinde üretilen iş, Windows istemcileri ile karşılaştırıldığında önemli ölçüde düşüktür.
@@ -95,8 +96,9 @@ Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur
 
 ### <a name="workaround"></a>Geçici Çözüm
 
-- Yükü birden çok VM arasında yayma
+- Yükü birden çok VM arasında yayın.
 - Aynı VM 'de, **nosharesock** seçeneğiyle birden çok bağlama noktası kullanın ve yükü bu bağlama noktalarına yayın.
+- Linux 'ta, her fsync çağrısında SMB temizlemeyi zormaktan kaçınmak için **nostrictsync** seçeneğiyle bağlamayı deneyin. Azure dosyaları için bu seçenek, veri ayrıntılarını etkilemez, ancak dizin listelemesi (**ls-l** komutu) üzerinde eski dosya meta verileri oluşmasına neden olabilir. Dosya meta verilerinin (**stat** komutu) doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Kapsamlı açık/kapalı işlemleri içeren meta veriler ağır iş yükleri için yüksek gecikme süreleri.
 

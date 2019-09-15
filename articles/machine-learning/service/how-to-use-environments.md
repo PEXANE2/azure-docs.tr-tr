@@ -1,6 +1,6 @@
 ---
 title: Model eğitimi ve dağıtımı için ortamları oluşturma, kullanma ve yönetme
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Model eğitimi ve dağıtımı için ortamları oluşturun ve yönetin. Bu ortam için Python paketlerini ve diğer ayarları yönetin.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098945"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996631"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Eğitim ve dağıtım için ortamları oluşturma ve yönetme
 
 Bu makalede, Azure Machine Learning [ortamları](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) oluşturma ve yönetme hakkında bilgi edinmek için projenizin yazılım bağımlılıklarını geliştikçe izleyip yeniden oluşturabilirsiniz.
 
-Yazılım bağımlılığı yönetimi, geliştiriciler için ortak bir görevdir. Derlemelerin birçok el ile yazılım yapılandırması olmadan tekrarlanabilir olmasını sağlamak istiyorsunuz. PIP ve Conda gibi yerel geliştirme çözümleriyle, Azure Machine Learning hizmet ortamları sınıfı hem yerel hem de Dağıtılmış bulut geliştirmesi için bir çözüm sağlar.
+Yazılım bağımlılığı yönetimi, geliştiriciler için ortak bir görevdir. Derlemelerin birçok el ile yazılım yapılandırması olmadan tekrarlanabilir olmasını sağlamak istiyorsunuz. PIP ve Conda gibi yerel geliştirme çözümleriyle, Azure Machine Learning ortamları sınıfı hem yerel hem de Dağıtılmış bulut geliştirmesi için bir çözüm sağlar.
 
 Bu makaledeki örneklerde nasıl yapılacağı gösterilmektedir:
 
@@ -52,7 +52,7 @@ Sistem tarafından yönetilen ortamlar, Python ortamını ve komut dosyası bağ
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Python için Azure Machine Learning SDK 'Sı [yüklendi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* Bir [Azure Machine Learning hizmet çalışma alanı](how-to-manage-workspace.md).
+* [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
 ## <a name="create-an-environment"></a>Ortam oluşturma
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 889c2e75e9eee0586c709b032dbb6d1c58d45102
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142048"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993061"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na veri çoğaltma
 
@@ -22,6 +22,8 @@ Gelen Verileri Çoğaltma kullanmayı göz önünde bulundurmanız gereken temel
 
 - **Karma veri eşitleme:** Gelen Verileri Çoğaltma ile, şirket içi sunucularınız ve MySQL için Azure veritabanı arasında verileri eşitlenmiş halde tutabilirsiniz. Bu eşitleme, karma uygulamalar oluşturmak için kullanışlıdır. Bu yöntem, var olan bir yerel veritabanı sunucunuz olduğunda ancak verileri son kullanıcılara yakın bir bölgeye taşımak istediğinizde çarpıcı olur.
 - **Çoklu bulut eşitlemesi:** Karmaşık bulut çözümleri için, MySQL için Azure veritabanı ve bu bulutlarda barındırılan sanal makineler ve veritabanı hizmetleri dahil farklı bulut sağlayıcıları arasında veri eşitlemesi için Gelen Verileri Çoğaltma kullanın.
+ 
+Geçiş senaryoları için, [Azure veritabanı geçiş hizmeti](https://azure.microsoft.com/services/database-migration/)'ni (DMS) kullanın.
 
 ## <a name="limitations-and-considerations"></a>Sınırlamalar ve önemli noktalar
 
@@ -37,7 +39,7 @@ Ana sunucudaki [*MySQL sistem veritabanı*](https://dev.mysql.com/doc/refman/5.7
 - Ana sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının `mysql.az_replication_change_master` saklı yordama eklendiğinden emin olun. Aşağıdaki [örneklere](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
 - Ana sunucunun IP adresinin MySQL için Azure Veritabanı çoğaltma sunucusunun güvenlik duvarı kurallarına eklendiğinden emin olun. [Azure portalını](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
 - Ana sunucuyu barındıran makinenin, 3306 numaralı bağlantı noktasında hem gelen hem de giden trafiğe izin verdiğinden emin olun.
-- Ana sunucunun **genel IP adresi** olduğundan veya DNS 'nin Genel erişilebilir olduğundan emin olun.
+- Ana sunucunun **Genel BIR IP adresi**olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
 
 ### <a name="other"></a>Diğer
 - Veri içi çoğaltma yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir.
@@ -46,3 +48,4 @@ Ana sunucudaki [*MySQL sistem veritabanı*](https://dev.mysql.com/doc/refman/5.7
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Verileri çoğaltmayı ayarlamayı](howto-data-in-replication.md) öğrenin
 - [Azure 'da okuma çoğaltmalarıyla çoğaltma](concepts-read-replicas.md) hakkında bilgi edinin
+- [DMS kullanarak verileri en az kapalı kalma süresiyle geçirme](howto-migrate-online.md) hakkında bilgi edinin

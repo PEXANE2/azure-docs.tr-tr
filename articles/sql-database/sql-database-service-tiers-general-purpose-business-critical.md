@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: 8709d88c4d21a40ac8ebb27e5c1669d8f5fa3555
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934217"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995426"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL veritabanı hizmet katmanları
 
@@ -46,8 +46,6 @@ Aşağıdaki tabloda, en son nesil (5. nesil) için hizmet katmanları arasında
 | | Yönetilen örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
 | **TempDB boyutu** | Tek veritabanı/elastik havuz | [vCore başına 32 GB](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [vCore başına 32 GB](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [vCore başına 32 GB](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Yönetilen örnek  | [vCore başına 24 GB](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Yok | En fazla 4 TB- [sınırlı depolama boyutuna göre](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **GÇ işleme** | Tek veritabanı | [vCore başına 500 ıOPS](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | Etkin IOPS iş yüküne bağlı olacaktır. | [vCore başına 4000 ıOPS](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
-| | Yönetilen örnek | [dosya başına 100-250MB/s ve 500-7500 ıOPS](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Yok | [vCore başına 1375 ıOPS](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **Günlüğe yazma aktarım hızı** | Tek veritabanı | [vCore başına 1,875 MB/s (en fazla 30 MB/sn)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [vCore başına 6 MB/s (en fazla 96 MB/sn)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Yönetilen örnek | [Sanal çekirdek başına 3 MB/s (en fazla 22 MB/sn)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Yok | [sanal çekirdek başına 4 MB/s (en fazla 48 MB/sn)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**Kullanılabilirlik**|Tümü| %99,99 |  [bir ikincil çoğaltmayla% 99,95, daha fazla çoğaltmayla% 99,99](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | %99,99 <br/> [bölge yedekli tek veritabanı ile% 99,995](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |

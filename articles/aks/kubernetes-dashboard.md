@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f150103c8e9534bfd1bb93d20e3d65d715767184
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126871"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996959"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
@@ -36,34 +36,47 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 Bu komut, geliştirme sisteminiz ile Kubernetes API 'niz arasında bir ara sunucu oluşturur ve Kubernetes panosuna bir Web tarayıcısı açar. Bir Web tarayıcısı Kubernetes panosuna açılmazsa, genellikle `http://127.0.0.1:8001`Azure CLı 'de belirtilen URL adresini kopyalayıp yapıştırın.
 
-![Kubernetes Web panosunun oturum açma sayfası](./media/kubernetes-dashboard/dashboard-login.png)
+<!--
+![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
 
-Kümenizin panosunda oturum açmak için aşağıdaki seçenekleriniz vardır:
+You have the following options to sign in to your cluster's dashboard:
 
-* Bir [kubeconfig dosyası][kubeconfig-file]. [Az aks Get-Credentials][az-aks-get-credentials]komutunu kullanarak bir kubeconfig dosyası oluşturabilirsiniz.
-* [Hizmet hesabı belirteci][aks-service-accounts] veya kullanıcı belirteci gibi bir belirteç. [AAD etkin kümeler][aad-cluster]üzerinde bu BELIRTEÇ bir AAD belirteci olur. Kubeconfig `kubectl config view` dosyanızdaki belirteçleri listelemek için öğesini kullanabilirsiniz. AKS kümesiyle kullanılmak üzere bir AAD belirteci oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme][aad-cluster].
-* *Atla*' ya tıkladığınızda kullanılan varsayılan pano hizmeti hesabı.
+* A [kubeconfig file][kubeconfig-file]. You can generate a kubeconfig file using [az aks get-credentials][az-aks-get-credentials].
+* A token, such as a [service account token][aks-service-accounts] or user token. On [AAD-enabled clusters][aad-cluster], this token would be an AAD token. You can use `kubectl config view` to list the tokens in your kubeconfig file. For more details on creating an AAD token for use with an AKS cluster see [Integrate Azure Active Directory with Azure Kubernetes Service using the Azure CLI][aad-cluster].
+* The default dashboard service account, which is used if you click *Skip*.
 
 > [!WARNING]
-> Kullanılan kimlik doğrulama yönteminden bağımsız olarak, Kubernetes panosunu herkese açık bir şekilde kullanıma sunmayın.
+> Never expose the Kubernetes dashboard publicly, regardless of the authentication method used.
 > 
-> Kubernetes panosu için kimlik doğrulaması ayarlarken, varsayılan pano hizmeti hesabı üzerinde bir belirteç kullanmanız önerilir. Bir belirteç, her kullanıcının kendi izinlerini kullanmasına izin verir. Varsayılan pano hizmeti hesabını kullanmak, bir kullanıcının kendi izinlerini atlamasına ve bunun yerine hizmet hesabını kullanmasına izin verebilir.
+> When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> Varsayılan pano hizmeti hesabını kullanmayı seçerseniz ve AKS kümeniz RBAC kullanıyorsa, panoya doğru şekilde erişebilmeniz için bir *Clusterrolebinding* oluşturulması gerekir. Varsayılan olarak, Kubernetes panosu, en az okuma erişimiyle dağıtılır ve RBAC erişim hatalarını görüntüler. Bir Küme Yöneticisi, *Kubernetes-Dashboard* hizmet hesabına ek erişim izni vermeyi seçebilir ancak bu, ayrıcalık yükseltme için bir vektör olabilir. Ayrıca, daha ayrıntılı bir erişim düzeyi sağlamak için Azure Active Directory kimlik doğrulamasını tümleştirebilirsiniz.
+> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
-> Bir bağlama oluşturmak için aşağıdaki örnekte gösterildiği gibi [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] komutunu kullanın. **Bu örnek bağlama, ek kimlik doğrulama bileşenleri uygulamaz ve güvenli olmayan kullanıma yol açabilir.**
+> To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> Artık, RBAC özellikli kümenizdeki Kubernetes panosuna erişebilirsiniz. Kubernetes panosunu başlatmak için, önceki adımda açıklandığı gibi [az aks zat][az-aks-browse] komutunu kullanın.
+> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> Kümeniz RBAC kullanmıyorsa, *Clusterrolebinding*oluşturulması önerilmez.
+> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> 
+> For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
+
+After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
+-->
+
+> [!IMPORTANT]
+> AKS kümeniz RBAC kullanıyorsa, panoya doğru şekilde erişebilmeniz için bir *Clusterrolebinding* oluşturulması gerekir. Varsayılan olarak, Kubernetes panosu, en az okuma erişimiyle dağıtılır ve RBAC erişim hatalarını görüntüler. Kubernetes panosu şu anda Kullanıcı tarafından sağlanan kimlik bilgilerini, hizmet hesabına verilen rolleri kullanması yerine, erişim düzeyini belirleyecek şekilde desteklememektedir. Bir Küme Yöneticisi, *Kubernetes-Dashboard* hizmet hesabına ek erişim izni vermeyi seçebilir ancak bu, ayrıcalık yükseltme için bir vektör olabilir. Ayrıca, daha ayrıntılı bir erişim düzeyi sağlamak için Azure Active Directory kimlik doğrulamasını tümleştirebilirsiniz.
+> 
+> Bir bağlama oluşturmak için [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] komutunu kullanın. Aşağıdaki örnek, örnek bağlamanın nasıl oluşturulacağını gösterir, ancak bu örnek bağlama ek kimlik doğrulama bileşenleri uygulamaz ve güvenli olmayan kullanıma neden olabilir. Kubernetes panosu, URL 'ye erişimi olan herkese açıktır. Kubernetes panosunu herkese açık bir şekilde gösterme.
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
 > 
 > Farklı kimlik doğrulama yöntemlerini kullanma hakkında daha fazla bilgi için [erişim denetimlerinde][dashboard-authentication]Kubernetes Pano wiki bölümüne bakın.
-
-Oturum açmak için bir yöntem seçtikten sonra Kubernetes panosu görüntülenir. *Belirteç* veya *atlama*kullanmayı seçerseniz, Kubernetes panosu kümeye erişmek için o anda oturum açmış kullanıcının izinlerini kullanacaktır.
 
 ![Kubernetes Web panosunun genel bakış sayfası](./media/kubernetes-dashboard/dashboard-overview.png)
 

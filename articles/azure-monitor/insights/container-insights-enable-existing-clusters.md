@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624444"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996259"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -49,17 +49,51 @@ az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMana
 provisioningState       : Succeeded
 ```
 
-Yerine mevcut bir çalışma alanı ile tümleştirme, bu çalışma belirlemek için aşağıdaki komutu kullanın.
+### <a name="integrate-with-an-existing-workspace"></a>Mevcut bir çalışma alanıyla tümleştirin
 
-```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
-```
+Mevcut bir çalışma alanıyla tümleştirileceğini tercih ediyorsanız, `--workspace-resource-id` parametre için gereken Log Analytics çalışma alanınızın tam kaynak kimliğini belirlemek için aşağıdaki adımları uygulayın ve sonra izleme eklentisini etkinleştirmek için komutunu çalıştırın Belirtilen çalışma alanı.  
 
-Çıktı şuna benzer:
+1. Aşağıdaki komutu kullanarak erişiminiz olan tüm abonelikleri listeleyin:
 
-```azurecli
-provisioningState       : Succeeded
-```
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    Çıktı şuna benzer:
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    ```
+
+    **SubscriptionID**değerini kopyalayın.
+
+2. Aşağıdaki komutu kullanarak Log Analytics çalışma alanını barındıran aboneliğe geçin:
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+3. Aşağıdaki örnek, aboneliklerinizdeki çalışma alanlarının listesini varsayılan JSON biçiminde görüntüler. 
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+    Çıktıda, çalışma alanı adını bulun ve alan **kimliği**altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
+ 
+4. İzleme eklentisini etkinleştirmek için, `--workspace-resource-id` parametresinin değerini değiştirerek aşağıdaki komutu çalıştırın. Dize değeri çift tırnak içinde olmalıdır:
+
+    ```azurecli
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    ```
+
+    Çıktı şuna benzer:
+
+    ```azurecli
+    provisioningState       : Succeeded
+    ```
 
 ## <a name="enable-using-terraform"></a>Terraform kullanarak etkinleştirin
 

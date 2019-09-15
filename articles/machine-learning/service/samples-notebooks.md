@@ -1,7 +1,7 @@
 ---
 title: Örnek Jupyter Not Defterleri
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning Service Python SDK 'sını araştırmak için örnek jupi not defterlerini bulun ve kullanın.
+titleSuffix: Azure Machine Learning
+description: SDK için Azure Machine Learning Python 'u araştırmak için örnek jupi not defterlerini bulun ve kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860384"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997072"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyıter Not defterleri ile Azure Machine Learning hizmetini keşfet
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupi Not defterleri ile Azure Machine Learning araştırma
 
 [Örnek Azure Machine Learning Not defteri deposu](https://github.com/azure/machinelearningnotebooks) , en son Azure MACHINE LEARNING Python SDK örnekleri içerir. Bu Jupter Not defterleri, SDK 'Yı keşfetmenize ve kendi makine öğrenimi projeleriniz için model olarak sunmanıza yardımcı olacak şekilde tasarlanmıştır.
 
@@ -55,7 +55,7 @@ Veri Bilimi Sanal Makinesi (DSVM), özellikle veri bilimi yapmak için oluşturu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmetin neler yapabileceğini öğrenmek için [örnek not defterlerini](https://aka.ms/aml-notebooks) keşfetme veya bu öğreticileri deneyin:
+Azure Machine Learning neler yapabileceğini öğrenmek için [örnek not defterlerini](https://aka.ms/aml-notebooks) bulun veya bu öğreticileri deneyin:
 
 - [Eğitmek ve bir görüntü sınıflandırma modeli MNIST ile dağıtma](tutorial-train-models-with-aml.md)
 

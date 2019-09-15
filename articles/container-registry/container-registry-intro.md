@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8b20c54d2151afae227a085dd66a0d31f2b85305
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310662"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994370"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure'da özel Docker kapsayıcısı kayıt defterlerine giriş
 
@@ -31,7 +31,7 @@ Azure kapsayıcısı kayıt defterinden çeşitli dağıtım hedeflerine görün
 * [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) ve [Docker Swarm](https://docs.docker.com/swarm/) dahil olmak üzere konak kümeleri arasında kapsayıcı haline getirilmiş uygulamaları yöneten **ölçeklenebilir düzenleme sistemleri**.
 * [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) ve diğerleri gibi uygun ölçekte uygulama oluşturulmasını ve çalıştırılmasını destekleyen **Azure hizmetleri**.
 
-Geliştiriciler bir kapsayıcı geliştirme iş akışı kapsamında bir kapsayıcı kayıt defterine de öğe itebilir. Örneğin, [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) veya [Jenkins](https://jenkins.io/)gibi bir sürekli tümleştirme ve teslim aracından bir kapsayıcı kayıt defteri hedefleyin.
+Geliştiriciler bir kapsayıcı geliştirme iş akışı kapsamında bir kapsayıcı kayıt defterine de öğe itebilir. Örneğin, [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) veya [Jenkins](https://jenkins.io/)gibi bir sürekli tümleştirme ve teslim aracından bir kapsayıcı kayıt defteri hedefleyin.
 
 ACR görevlerini, temel görüntülerinin güncelleştirildiği sırada uygulama görüntülerini otomatik olarak yeniden oluşturmak üzere yapılandırın veya ekibiniz bir git deposuna kod onayladığınızda görüntü derlemelerini otomatikleştirin. Bulutta paralel olarak birden çok kapsayıcı görüntüsünü oluşturma, test etme ve düzeltme eki uygulama işlemlerini otomatik hale getirmek için çok adımlı Görevler oluşturun.
 

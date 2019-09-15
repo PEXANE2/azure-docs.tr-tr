@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309304"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995446"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
@@ -179,4 +179,4 @@ Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 * [PostgreSQL Için Azure veritabanı 'nda okuma çoğaltmaları](concepts-read-replicas.md)hakkında daha fazla bilgi edinin.
-* [Azure CLI 'de okuma çoğaltmaları oluşturmayı ve yönetmeyi](howto-read-replicas-cli.md)öğrenin.
+* [Azure CLI ve REST API okuma çoğaltmaları oluşturma ve yönetme](howto-read-replicas-cli.md)hakkında bilgi edinin.

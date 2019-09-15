@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814105"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995495"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight üzerinde çalışan hata ayıklama Apache Spark işleri
 
@@ -29,14 +29,14 @@ Aşağıdakilere sahip olmanız gerekir:
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN Kullanıcı arabiriminde uygulama izleme
 1. YARN Kullanıcı arabirimini başlatın. **Küme panoları**altında **Yarn** ' ye tıklayın.
    
-    ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için, **küme panoları**altında, **ambarı giriş** ' e tıklayın. Ambarı kullanıcı arabiriminden, **Yarn**' ye tıklayın, **hızlı bağlantılar**' a tıklayın, etkin kaynak yöneticisi ve ardından **Kaynak Yöneticisi Kullanıcı arabirimi**' ne tıklayın. 
 
 2. Jupiter not defterlerini kullanarak Spark işini başlattığınız için, uygulama **remoteparlak mıknatıcs** adına sahiptir (Bu, not defterlerinden başlatılan tüm uygulamaların adıdır). İş hakkında daha fazla bilgi edinmek için uygulama adına karşı uygulama KIMLIĞI ' ne tıklayın. Bu, uygulama görünümünü başlatır.
    
-    ![Spark uygulama KIMLIĞINI bul](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Spark uygulama KIMLIĞINI bul](./media/apache-spark-job-debugging/find-application-id1.png)
    
     Jupyter not defterlerinden başlatılan uygulamalar için, Not defterinizden çıkana kadar durum her zaman **çalışır** .
 3. Uygulama görünümünden, uygulamayla ve günlüklerle (stdout/stderr) ilişkili kapsayıcıları bulmak için daha fazla ayrıntıya gidebilirsiniz. Spark Kullanıcı arabirimini aşağıda gösterildiği gibi **Izleme URL**'sine karşılık gelen bağlamaya tıklayarak da başlatabilirsiniz. 
@@ -48,13 +48,13 @@ Spark Kullanıcı arabiriminde, daha önce başlattığınız uygulama tarafınd
 
 1. Spark Kullanıcı arabirimini başlatmak için, uygulama görünümünden, yukarıdaki ekran yakalama bölümünde gösterildiği gibi **izleme URL 'sine**karşı bağlantıya tıklayın. Jupyter not defterinde çalışan uygulama tarafından başlatılan Spark işlerinin tümünü görebilirsiniz.
    
-    ![Spark işlerini görüntüle](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![Spark işlerini görüntüle](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. Her bir yürütücü için işleme ve depolama bilgilerini görmek üzere **Yürüticileri** sekmesine tıklayın. Ayrıca, **Iş parçacığı dökümü** bağlantısına tıklayarak çağrı yığınını da alabilirsiniz.
    
     ![Spark yürüticileri görüntüleme](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. Uygulamayla ilişkili aşamaları görmek için **aşamalar** sekmesine tıklayın.
    
-    ![Spark aşamalarını görüntüle](./media/apache-spark-job-debugging/view-spark-stages.png "Spark aşamalarını görüntüle")
+    ![Spark aşamalarını görüntüle](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark aşamalarını görüntüle")
    
     Her aşamada, aşağıda gösterildiği gibi, yürütme istatistiklerini görüntüleyebileceğiniz birden fazla görev olabilir.
    

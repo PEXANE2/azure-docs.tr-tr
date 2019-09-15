@@ -1,7 +1,7 @@
 ---
 title: Machine Learning CLı uzantısı
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning CLI uzantı hakkında Azure CLI için öğrenin. Azure CLI'yı Azure buluttaki kaynaklar ile çalışmanıza olanak sağlayan bir platformlar arası komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning hizmeti ile çalışmanıza olanak sağlar.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning CLI uzantı hakkında Azure CLI için öğrenin. Azure CLI'yı Azure buluttaki kaynaklar ile çalışmanıza olanak sağlayan bir platformlar arası komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning çalışmanıza olanak sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: jordane
 author: jpe316
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996740"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997074"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için CLI uzantısını kullanma
+# <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLı uzantısını kullanın
 
-Azure Machine Learning CLI uzantısıdır [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), Azure platformu için platformlar arası komut satırı arabirimi. Bu uzantı Azure Machine Learning hizmeti ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
+Azure Machine Learning CLI uzantısıdır [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), Azure platformu için platformlar arası komut satırı arabirimi. Bu uzantı Azure Machine Learning ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
 
 + Makine öğrenimi modelleri oluşturma çalıştırın
 
@@ -32,7 +32,7 @@ CLI, Azure Machine Learning SDK'sı yerine değil. Otomasyonuna uygun olan yüks
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* CLI kullanmak için Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* CLI kullanmak için Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -86,7 +86,7 @@ Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakla
     az group create -n myresourcegroup -l westus2
     ```
 
-+ Bir Azure Machine Learning hizmeti çalışma alanında oluşturun:
++ Azure Machine Learning çalışma alanı oluşturun:
 
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
@@ -163,7 +163,7 @@ Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakla
 
 ## <a name="environment-management"></a>Ortam yönetimi
 
-Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning hizmet [ortamlarının](how-to-configure-environment.md) nasıl oluşturulacağı, kaydedileceği ve listelebileceği gösterilmektedir:
+Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ortamlarının](how-to-configure-environment.md) nasıl oluşturulacağı, kaydedileceği ve listenin nasıl yapılacağı gösterilmektedir:
 
 + Bir ortam için bir yapı iskelesi dosyaları oluşturun:
 

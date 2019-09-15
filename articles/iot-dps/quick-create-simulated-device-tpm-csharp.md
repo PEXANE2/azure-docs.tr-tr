@@ -9,26 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56d41d92b77ea6ef536f1e371a825b775a780bef
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369730"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993882"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Cihazı Sağlama Hizmeti için C# cihaz SDK'sını kullanarak sanal bir TPM cihazı oluşturma ve sağlama
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Bu adımlar nasıl kullanılacağını göstermektedir [için Azure IOT örnekleri C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) üzerinde Windows işletim sistemi çalıştıran geliştirme makinenizde bir TPM cihazını benzetme için. Örnek, bir IOT Hub cihazı sağlama Hizmeti'ni kullanarak sanal cihazı da bağlanır. 
+Bu adımlarda, Windows işletim sistemini çalıştıran bir geliştirme makinesinde TPM cihazının benzetimini yapmak için [Azure IoT örneklerinin C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) nasıl kullanılacağı gösterilmektedir. Örnek ayrıca, cihaz sağlama hizmeti 'ni kullanarak sanal cihazı bir IoT Hub da bağlar. 
 
 Örnek kodda cihazın [Donanım Güvenlik Modülü (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) olarak Windows TPM simülatörü kullanılmaktadır. 
 
 Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
 
 Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
-- [Kayıt grupları](concepts-service.md#enrollment-group): Birden çok ilgili cihazları kaydetmek için kullanılır.
-- [Bireysel kayıtlar](concepts-service.md#individual-enrollment): Tek bir cihazı kaydetmek için kullanılır.
+
+- [Kayıt grupları](concepts-service.md#enrollment-group): Birden çok ilişkili cihazı kaydetmek için kullanılır.
+- [Bireysel](concepts-service.md#individual-enrollment)kayıtlar: Tek bir cihazı kaydetmek için kullanılır.
 
 Bu makalede bireysel kayıtlar gösterilmektedir.
 
@@ -37,23 +38,21 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama 
 
-1. Olduğundan emin olun [.NET Core 2.1 SDK veya üzeri](https://www.microsoft.com/net/download/windows) makinenizde yüklü. 
+1. Makinenizde [.NET Core 2,1 SDK veya sonraki bir sürümünün](https://www.microsoft.com/net/download/windows) yüklü olduğundan emin olun. 
 
 1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
-1. Bir komut istemi veya Git Bash’i açın. Azure IOT örnekleri kopyalama C# GitHub deposu:
-    
+1. Bir komut istemi veya Git Bash’i açın. GitHub deposu için C# Azure IoT örneklerini kopyalayın:
+
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="provision-the-simulated-device"></a>Sanal cihazı sağlama
 
-
 1. Azure Portal’da oturum açın. Sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve Cihaz Sağlama hizmetinizi açın. **Genel bakış** dikey penceresinde bulunan **_Kimlik Kapsamı_** değerini not edin.
 
     ![Portal dikey penceresindeki sağlama hizmeti Kapsam Kimliğini kopyalama](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
-
 
 2. Komut isteminde dizini TPM cihaz sağlama örneğinin proje dizini olacak şekilde değiştirin.
 
@@ -67,9 +66,9 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
     dotnet run <IDScope>
     ```
 
-    Bu komut, TPM yongası simülatör'de ayrı bir komut istemi başlatılır.  
+    Bu komut, TPM yonga simülatörünü ayrı bir komut isteminde başlatacaktır. Windows 'ta, simülatör. exe ' nin ortak ağlarda iletişim kurmasına izin vermek isteyip istemediğinizi soran bir Windows Güvenlik uyarısıyla karşılaşabilirsiniz. Bu örneğin amaçları doğrultusunda, isteği iptal edebilirsiniz.
 
-1. Komut penceresinde cihaz kaydı için gereken **_Onay Anahtarı_**, **_Kayıt Kimliği_** ve önerilen **_Cihaz Kimliği_** görüntülenir. Bu değerleri not alın. Cihaz sağlama hizmeti örneğinizi içinde bireysel kayıt oluşturmak için bu değeri kullanır. 
+1. Komut penceresinde cihaz kaydı için gereken **_Onay Anahtarı_** , **_Kayıt Kimliği_** ve önerilen **_Cihaz Kimliği_** görüntülenir. Bu değerleri bir yere göz atın. Bu değeri, cihaz sağlama hizmeti Örneğinizde tek bir kayıt oluşturmak için kullanacaksınız. 
    > [!NOTE]
    > Komut çıktısını içeren pencereyi TPM simülatörü çıktısını içeren pencereyle karıştırmayın. Komut penceresini öne getirmek için tıklamanız gerekebilir.
 
@@ -79,24 +78,23 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 5. **Kayıt Ekle** altına aşağıdaki bilgileri girin:
    - Kimlik onay *Mekanizması* olarak **TPM** seçeneğini belirleyin.
-   - Girin *kayıt kimliği* ve *onay anahtarını* TPM cihazınızın önceden not ettiğiniz için.
+   - Daha önce not ettiğiniz TPM cihazınız için *kayıt kimliği* ve *onay anahtarı* ' nı girin.
    - İsteğe bağlı olarak sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
    - Benzersiz bir cihaz kimliği girin. Örnek çıktıda önerilen cihaz kimliğini girebilir veya kendiniz bir değer belirtebilirsiniz. Kendi belirttiğiniz değeri kullanıyorsanız cihazınızı adlandırırken gizli veriler kullanmaktan kaçının. 
-   - İsteğe bağlı olarak güncelleştir **ilk cihaz ikizi durumu** cihaz için istenen başlangıç yapılandırmasına sahip.
+   - İsteğe bağlı olarak, **ilk cihaz ikizi durumunu** cihaz için istenen ilk yapılandırmayla güncelleştirin.
    - Tamamlandığında **Kaydet** düğmesine tıklayın. 
 
      ![Portal dikey penceresinde cihaz kayıt bilgilerini girme](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Kayıt başarıyla tamamlanınca cihazınızın *Kayıt Kimliği* listenin altında *Tek Tek Kayıtlar* sekmesinde görünür. 
 
-6. Komut penceresinde (**_Onay Anahtarı_**’nı, **_Kayıt Kimliği_**’ni ve önerilen **_Cihaz Kimliği_**’ni görüntüleyen) Enter tuşuna basarak benzetimi yapılan cihazı kaydedin. IoT hub bilgilerinizi almak için cihaz önyüklemesi ve Cihaz Sağlama Hizmetine bağlanma benzetimi gerçekleştiren iletilere dikkat edin. 
+6. Komut penceresinde ( **_Onay Anahtarı_** ’nı, **_Kayıt Kimliği_** ’ni ve önerilen **_Cihaz Kimliği_** ’ni görüntüleyen) Enter tuşuna basarak benzetimi yapılan cihazı kaydedin. IoT hub bilgilerinizi almak için cihaz önyüklemesi ve Cihaz Sağlama Hizmetine bağlanma benzetimi gerçekleştiren iletilere dikkat edin. 
 
 1. Cihazın sağlandığını doğrulayın. Sanal cihazın, sağlama hizmetinizle bağlantılı IoT hub ile başarıyla sağlanmasından sonra cihaz kimliği hub'ın **IoT Cihazları** dikey penceresinde görünür. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
     Cihazınız için *başlangıç cihaz ikizi durumu* ayarının kayıt girişindeki varsayılan değerini değiştirdiyseniz istenen ikili durumu hub'dan çekerek ona göre hareket edebilir. Daha fazla bilgi için bkz. [IoT Hub'daki cihaz ikizlerini kavrama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md)
-
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

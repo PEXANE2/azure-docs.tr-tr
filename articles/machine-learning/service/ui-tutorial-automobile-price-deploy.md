@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti görsel arabiriminde tahmine dayalı analiz çözümü oluşturmayı öğrenin. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin eden iki bölümden oluşan bir serinin ikinci bölümüdür.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning görsel arabiriminde tahmine dayalı analiz çözümü oluşturmayı öğrenin. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin eden iki bölümden oluşan bir serinin ikinci bölümüdür.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858641"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997021"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma
 
@@ -105,7 +105,7 @@ Daha fazla API ayrıntısı bulmak için **API belge** sekmesine gidin.
 
 ## <a name="manage-models-and-deployments"></a>Modelleri ve dağıtımları yönetme
 
-Görsel arabirimde oluşturduğunuz modeller ve Web hizmeti dağıtımları Azure Machine Learning hizmet çalışma alanından da yönetilebilir.
+Görsel arabirimde oluşturduğunuz modeller ve Web hizmeti dağıtımları da Azure Machine Learning çalışma alanından yönetilebilir.
 
 1. Çalışma alanınızı [Azure Portal](https://portal.azure.com/)açın.  
 

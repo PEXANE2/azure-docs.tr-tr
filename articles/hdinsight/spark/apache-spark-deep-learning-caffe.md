@@ -3,16 +3,17 @@ title: Dağıtılmış derin öğrenme için Azure HDInsight Spark Caffe kullanm
 description: Azure HDInsight 'ta dağıtılmış derin öğrenme için Apache Spark 'da Caffe kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814204"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995599"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Dağıtılmış derin öğrenme için Azure HDInsight Spark Caffe kullanma
 
@@ -65,7 +66,7 @@ Betik eyleminde iki adım vardır. İlk adım gereken tüm kitaplıkları yükle
 
 Başlamak için, bu betik eylemini yalnızca tüm çalışan düğümleri ve baş düğümler (HDInsight 3,5 için) için kümenize çalıştırabilirsiniz. Betik eylemlerini mevcut bir kümede çalıştırabilir ya da küme oluşturma sırasında betik eylemleri kullanabilirsiniz. Betik eylemleri hakkında daha fazla bilgi için [buradaki](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)belgelere bakın.
 
-![Bağımlılıkları yüklemek için betik eylemleri](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![Bağımlılıkları yüklemek için betik eylemleri](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2\. adım: Baş düğümde HDInsight için Apache Spark Caffe oluşturun
@@ -175,7 +176,8 @@ Bu örnekte, GPU yerine CPU kullandığından, son satırı şu şekilde değiş
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe config1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe config1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 Diğer satırları gerektiği gibi değiştirebilirsiniz.
 
@@ -184,7 +186,7 @@ Diğer satırları gerektiği gibi değiştirebilirsiniz.
 - "File:/Users/Mridul/bigml/demodl/mnist_train_lmdb" değerini "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb" olarak değiştirin
 - "File:/Users/Mridul/bigml/demodl/mnist_test_lmdb/" değerini "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb" olarak değiştirin
 
-![Caffe Config2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe Config2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 Ağı tanımlama hakkında daha fazla bilgi için, [MNIST veri kümesindeki Caffe belgelerini](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) denetleyin
 
@@ -204,15 +206,15 @@ Ne olduğunu biliyorsanız, genellikle Spark sürücüsünün günlüğünü alm
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![YARN KULLANICI ARABIRIMI](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![YARN KULLANICI ARABIRIMI](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 Bu belirli uygulama için ayrılan kaynak sayısına göz atabilirsiniz. "Scheduler" bağlantısına tıklayabilirsiniz ve bu uygulama için çalışan dokuz kapsayıcı olduğunu görürsünüz. YARN 'nin sekiz yürütme sağlamasını ve başka bir kapsayıcı de sürücü işlemi için olduğunu sorabilirsiniz. 
 
-![YARN Zamanlayıcı](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![YARN Zamanlayıcı](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Başarısızlık durumunda sürücü günlüklerini veya kapsayıcı günlüklerini denetlemek isteyebilirsiniz. Sürücü günlükleri için, YARN Kullanıcı arabiriminde uygulama KIMLIĞI ' ne tıklayabilir ve ardından "Günlükler" düğmesine tıklayabilirsiniz. Sürücü günlükleri stderr 'e yazılır.
 
-![YARN UI 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![YARN UI 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Örneğin, daha fazla sayıda yürütme ayırdığını belirten sürücü günlüklerinden aşağıdaki bazı hataları görebilirsiniz.
 

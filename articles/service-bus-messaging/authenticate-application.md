@@ -8,12 +8,12 @@ author: axisc
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 0860b1d621d2df5f371638bb48a03fdd8474d12d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014548"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997000"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
 Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonelikler veya filtreler) yetki vermek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -21,7 +21,7 @@ Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonel
 ## <a name="overview"></a>Genel Bakış
 Bir güvenlik sorumlusu (Kullanıcı, Grup veya uygulama) bir Service Bus varlığına erişmeyi denediğinde, isteğin yetkilendirilmiş olması gerekir. Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir. 
 
- 1. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. 
+ 1. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. Belirteç istemek için kaynak adı `https://servicebus.azure.net`.
  1. Ardından, belirteç, belirtilen kaynağa erişim yetkisi vermek için Service Bus hizmetine bir isteğin bir parçası olarak geçirilir.
 
 Kimlik doğrulama adımı, bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesi gerekir. Bir uygulama bir Azure VM 'si, bir sanal makine ölçek kümesi veya bir Azure Işlev uygulaması gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için yönetilen bir kimlik kullanabilir. Yönetilen bir kimlik tarafından Service Bus hizmetine yapılan isteklerin nasıl doğrulanabilmesi hakkında bilgi edinmek için bkz. [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile Azure Service Bus kaynaklarına erişim kimlik doğrulaması](service-bus-managed-service-identity.md). 

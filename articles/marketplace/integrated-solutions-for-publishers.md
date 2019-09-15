@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860295"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993676"
 ---
-# <a name="publishing-integrated-solutions"></a>Yayımlama ile tümleşik çözümler
+# <a name="publishing-integrated-solutions"></a>Tümleşik çözümler yayımlanıyor
 
 Tümleşik bir çözüm birden çok ISV Point çözüm teknolojisini birlikte, bir sistem tümleştirici (sı) dağıtımı ve hizmetleriyle birlikte, bir [danışmanlık hizmetleri teklifi](https://docs.microsoft.com/azure/marketplace/consulting-services)olarak da Market 'te listelenen tek bir paketlenmiş teklifle birleştirir.
 
@@ -89,5 +89,9 @@ Danışmanlık Hizmetleri teklifleri için kullanılabilecek beş hizmet türü 
 ## <a name="going-to-market-with-your-integrated-solution"></a>Tümleşik çözümünüz ile pazara devam edin 
 
 Çözümünüz Azure Market veya AppSource 'ta canlı olduktan sonra, pazarlama etkinlikleri aracılığıyla tanıma ve talep oluşturmayı yönlendirmek isteyeceksiniz. İş ortaklarının kendi takımları içinde ve bir diğeri ile bir arada kullanabildiği etkinlikler dahil olmak üzere [Proje planı ve zaman çizelgesinde](https://aka.ms/AA5qiuc)listelenen etkinlikleri gözden geçirin. Daha sonra, Market 'te yayınlanan iş ortakları için sunulan [pazara karşı avantaj avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) erişin. Tüm Tümleşik çözüm teklifleri, deneme düzeyi avantajlarına uygundur.
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+Market 'te tümleşik bir çözüm satın alma hakkında bilgi için bkz. [Tümleşik çözümler](https://docs.microsoft.com/azure/marketplace/integrated-solutions) .
 
 ---

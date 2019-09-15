@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 36f70ebaaf3fe6d841ef700561bbd6a200366c84
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563880"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996256"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme (Önizleme)
 
@@ -42,6 +42,10 @@ Bu özellik, herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı ger
 
 >[!NOTE]
 >Bu özelliğe erişmek için ücret alınmaz ve [Azure izleyici fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/) sayfasında açıklandığı gibi, yalnızca yapılandırdığınız veya etkinleştirdiğiniz Azure izleyici temel özellikleri için ücretlendirilirsiniz.
+
+>[!NOTE]
+>Depolama için Azure Izleyici, [genel amaçlı v1 hesaplarını](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)desteklemez.
+>
 
 ## <a name="view-from-azure-monitor"></a>Azure Izleyici 'den görüntüle
 
@@ -70,7 +74,7 @@ Açılan listelerin altındaki sayaç kutucuğu, abonelikteki toplam depolama he
 **Kullanılabilir**sütunlarda bir değer seçin, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hataları** , sizi için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir depolama hesabı. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
 
 >[!NOTE]
->Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, clientkısıtlanror gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
+>Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
 
 Varsayılan **kullanılabilirlik** eşiği:
 
@@ -101,7 +105,7 @@ Bir depolama hesabından doğrudan VM'ler için Azure İzleyici erişmek için:
 
 Depolama hesabı için **genel bakış** çalışma kitabında, hızlı bir şekilde değerlendirmenize yardımcı olan çeşitli depolama performans ölçümleri gösterilmektedir:
 
-* Denetim dışında bir sorunun, dağıtım sütununun dağıtıldığı bölgedeki depolama hizmetini etkileyip etkilemediğini anında görmek için depolama hizmetinin sistem durumu.
+* Denetim dışında bir sorunun, **dağıtım sütununun dağıtıldığı** bölgedeki depolama hizmetini etkileyip etkilemediğini anında görmek için depolama hizmetinin sistem durumu.
 
 * Depolama kapasitesi, kullanılabilirlik, işlemler ve gecikme süresi ile ilgili en önemli ayrıntıları gösteren etkileşimli performans grafikleri.  
 
@@ -209,7 +213,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 ### <a name="modify-the-availability-threshold"></a>Kullanılabilirlik eşiğini değiştirme
 
-Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışıyoruz ve kullanılabilirlik eşiğini nasıl değiştireceğiniz gösterilir. Varsayılan olarak, kutucuk ve ızgara raporlama yüzdesi kullanılabilirliği, minimum 90 eşiğini ve en fazla 99 eşiğini kullanarak yapılandırılır. En düşük eşik değerini, **API adı ızgarası tarafından kullanılabilirlik** açısından % 85 olarak değiştirebiliyoruz. bu, eşiğin yüzde 85 ' den küçük olması durumunda sağlık durumunun kritik olarak değiştiği anlamına gelir. 
+Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışıyoruz ve kullanılabilirlik eşiğini nasıl değiştireceğiniz gösterilir. Varsayılan olarak, kutucuk ve ızgara raporlama yüzdesi kullanılabilirliği, minimum 90 eşiğini ve en fazla 99 eşiğini kullanarak yapılandırılır. En düşük eşik değerini, **API adı ızgarası tarafından kullanılabilirlik** açısından **% 85** olarak değiştirebiliyoruz. bu, eşiğin yüzde 85 ' den küçük olması durumunda sağlık durumunun kritik olarak değiştiği anlamına gelir. 
 
 1. Portaldan **depolama hesapları** ' nı seçin ve ardından listeden bir depolama hesabı seçin.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512652"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997745"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 'da hangi disk türleri kullanılabilir?
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üz
 
 ## <a name="ultra-disk"></a>Ultra disk
 
-Azure Ultra diskler, Azure IaaS VM 'Leri için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikmeli disk depolama alanı sunar. Ultra disklerin bazı ek avantajları, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan, iş yükleriniz ile birlikte, diskin performansını dinamik olarak değiştirme olanağını içerir. Ultra diskler SAP HANA, üst katman veritabanları ve işlem açısından ağır iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur. Ultra diskler yalnızca veri diski olarak kullanılabilir. Premium SSDs 'yi işletim sistemi diskleri olarak kullanmanızı öneririz.
+Azure Ultra diskler, Azure IaaS VM 'Leri için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikmeli disk depolama alanı sunar. Ultra disklerin bazı ek avantajları, sanal makinelerinizi (VM) yeniden başlatmanıza gerek kalmadan, iş yükleriniz ile birlikte, diskin performansını dinamik olarak değiştirme imkanını içerir. Ultra diskler SAP HANA, üst katman veritabanları ve işlem açısından ağır iş yükleri gibi veri kullanımı yoğun iş yükleri için uygundur. Ultra diskler yalnızca veri diski olarak kullanılabilir. Premium SSDs 'yi işletim sistemi diskleri olarak kullanmanızı öneririz.
 
 ### <a name="performance"></a>Performans
 
@@ -42,9 +42,9 @@ Bir ultra disk sağladığınızda, diskin kapasitesini ve performansını bağ�
 Ultra disklerin bazı önemli özellikleri şunlardır:
 
 - Disk kapasitesi: Ultra diskler kapasitesi, 4 GiB 'den 64 TiB 'ye kadar olan kapasite aralıklarıyla değişir.
-- Disk ıOPS: Ultra diskler, disk başına en fazla 160 K ıOPS 'ye kadar 300 ıOPS/GiB 'nin ıOPS sınırlarını destekler. Sağladığınız ıOPS 'yi başarmak için, seçilen disk ıOPS 'nin VM ıOPS sınırından küçük olduğundan emin olun. Disk başına minimum ıOPS, en az 100 ıOPS olan 2 ıOPS/GiB 'dir. Örneğin, 4 GiB Ultra diskiniz varsa, en az 100 IOPS, 8 ıOPS yerine olacaktır.
+- Disk ıOPS: Ultra diskler, disk başına en fazla 160 K ıOPS 'ye kadar 300 ıOPS/GiB 'nin ıOPS sınırlarını destekler. Sağladığınız ıOPS 'yi başarmak için, seçilen disk ıOPS 'nin VM ıOPS sınırından küçük olduğundan emin olun. Disk başına minimum ıOPS, en az 100 ıOPS olan 2 ıOPS/GiB 'dir. Örneğin, 4 GiB Ultra diskiniz varsa sekiz ıOPS yerine en az 100 ıOPS olur.
 - Disk işleme: Ultra disklerle, tek bir diskin aktarım hızı sınırı her sağlanan ıOPS için 256 KiB/sn, disk başına en fazla 2000 MB/sn (MB/sn = 10 ^ 6 bayt/saniye). Disk başına en düşük aktarım hızı, sağlanan her ıOPS için 4KiB/sn, genel taban çizgisi 1 MB/sn 'dir.
-- Ultra diskler, diski sanal makineden kullanımdan çıkarmadan, çalışma zamanında disk performansı özniteliklerinin (ıOPS ve aktarım hızı) ayarlanmasını destekler. Disk performansı yeniden boyutlandırma işlemi bir diskte verildikten sonra, değişikliğin gerçekten etkili olması bir saate kadar sürebilir.
+- Ultra diskler, diski sanal makineden kullanımdan çıkarmadan, çalışma zamanında disk performansı özniteliklerinin (ıOPS ve aktarım hızı) ayarlanmasını destekler. Disk performansı yeniden boyutlandırma işlemi bir diskte verildikten sonra, değişikliğin gerçekten etkili olması bir saate kadar sürebilir. 24 saatlik bir pencere sırasında dört performans yeniden boyutlandırma işlemi sınırı vardır. Performans yeniden boyutlandırma işleminin performans bant genişliği kapasitesinin olmaması nedeniyle başarısız olması mümkündür.
 
 ### <a name="disk-size"></a>Disk boyutu
 
@@ -71,3 +71,4 @@ Ultra disklerin bazı önemli özellikleri şunlardır:
 - Yalnızca boş disk olarak oluşturulabilir  
 - Disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini, sanal makine ölçek kümelerini ve Azure disk şifrelemesini henüz desteklemez
 - Azure Backup veya Azure Site Recovery tümleştirmeyi henüz desteklemez
+- GA VM 'lerde ıOPS için geçerli en büyük sınır 80.000 ' dir.

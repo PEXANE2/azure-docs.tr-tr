@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814171"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994059"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Bir HDInsight kümesindeki Apache Spark uygulamalarda SSH aracılığıyla Azure Toolkit for IntelliJ hata ayıklama
 
@@ -77,7 +77,7 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
 1. **SparkCore_wasbloTest** betiğini açın, betik Düzenleyicisi ' ne sağ tıklayın ve ardından yerel çalıştırma gerçekleştirmek için **' [Spark Job] xxx ' Çalıştır** seçeneğini belirleyin.
 1. Yerel çalıştırma tamamlandığında, çıkış dosyasını geçerli Proje Gezgini **veri** >  **__varsayılanındaki__** kaydetme dosyasına bakabilirsiniz.
 
-    ![Yerel çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
+    ![Yerel çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 1. Yerel çalıştırma ve yerel hata ayıklama gerçekleştirirken araçlarımız varsayılan yerel çalıştırma yapılandırmasını otomatik olarak ayarladı. Sağ üst köşedeki [ **Spark on HDInsight] xxx** yapılandırmasını açın, **HDInsight üzerinde Apache Spark**' de zaten oluşturulmuş olan **[HDInsight on HDInsight] xxx** 'yi görebilirsiniz. **Yerel olarak çalıştır** sekmesine geçin.
 
     ![Yerel çalıştırma yapılandırması](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
@@ -114,13 +114,11 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
 
 1. Yapılandırma ayarlarını tamamladıktan sonra, projeyi uzak kümede çalıştırabilir veya uzaktan hata ayıklama işlemi yapabilirsiniz.
    
-   ![Uzaktan Çalıştır düğmesi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
+   ![Uzaktan Çalıştır düğmesi](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. Gönderim günlüklerinin sol bölmede görünmediğinden **bağlantıyı kes** düğmesine tıklayın. Ancak, arka uçta hala çalışır.
 
-   ![Uzaktan çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
-
-
+   ![Uzaktan çalıştırma sonucu](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>Senaryo 2: Uzaktan hata ayıklama gerçekleştir
 1. Kesme noktaları ayarlayın ve ardından **Uzaktan hata ayıklama** simgesine tıklayın. Uzaktan gönderim farkı, SSH Kullanıcı adı/parolasının yapılandırılması gerektiğidir.
@@ -148,7 +146,7 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
 
 1. **Hata Ayıkla** sekmesinde hedefi sağ tıklatın ve ardından **değeri ayarla**' yı seçin. Sonra, değişken için yeni bir değer girin. Sonra değeri kaydetmek için **ENTER** ' u seçin. 
 
-   ![Değer ata](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Değer ata](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. Programı çalıştırmaya devam etmek için **programı Sürdür** simgesini seçin. Bu kez, hiçbir özel durum yakalanmaz. Projenin özel durum olmadan başarıyla çalıştığını görebilirsiniz.
 

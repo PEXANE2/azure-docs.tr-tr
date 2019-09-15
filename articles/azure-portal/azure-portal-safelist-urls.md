@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 07/29/2019
+ms.date: 08/29/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3747ca7504e1a8a6bbeb6237c1b3cb2e5e4afb5b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 5b279a86df2024828044c32b7d188fa1d9545271
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667481"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995084"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure portal URL 'Lerini listeleyin
 
@@ -22,30 +22,54 @@ Yerel veya geniş alan ağınız ile Azure bulutu arasında iyi performans ve ba
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Proxy atlama için Azure portal URL 'Leri
 
-Kısıtlamaları atlamak için bu uç noktalara yönelik ağ trafiğine izin vermek üzere proxy sunucunuza veya güvenlik duvarına aşağıdaki URL listesini ekleyin:
+Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür. Bulutunuzu seçin, sonra bu uç noktalara yönelik ağ trafiğinin kısıtlamaları atlamasına izin vermek için proxy sunucunuza veya güvenlik duvarına URL listesini ekleyin.
 
-* *.aadcdn.microsoftonline-p.com
-* *.aimon.applicationinsights.io
-* *.azure.com
-* *.azuredatalakestore.net
-* *.azureedge.net
-* *.exp.azure.com
-* *.ext.azure.com
-* *.gfx.ms
-* *.account.microsoft.com
-* *.hosting.portal.azure.net
-* *.marketplaceapi.microsoft.com
-* *.microsoftonline.com
-* *.msauth.net
-* *.msftauth.net
-* *.portal.azure.com
-* *.portalext.visualstudio.com
-* *.sts.microsoft.com
-* *.vortex.data.microsoft.com
-* *.vscommerce.visualstudio.com
-* *.vssps.visualstudio.com
-* *.windows.net
-* *.wpc.azureedge.net
+#### <a name="public-cloudtabpublic-cloud"></a>[Genel bulut](#tab/public-cloud)
+```
+*.aadcdn.microsoftonline-p.com
+*.aka.ms
+*.applicationinsights.io
+*.azure.com
+*.azure.net
+*.azureafd.net
+*.azure-api.net
+*.azuredatalakestore.net
+*.azureedge.net
+*.loganalytics.io
+*.microsoft.com
+*.microsoftonline.com
+*.microsoftonline-p.com
+*.msauth.net
+*.msftauth.net
+*.trafficmanager.net
+*.visualstudio.com
+*.windows.net
+*.windows-int.net
+```
+
+#### <a name="us-government-cloudtabus-government-cloud"></a>[ENGELL Kamu Bulutu](#tab/us-government-cloud)
+```
+*.azure.us
+*.loganalytics.us
+*.microsoft.us
+*.microsoftonline.us
+*.msauth.net
+*.usgovcloudapi.net
+*.usgovtrafficmanager.net
+*.windowsazure.us
+```
+
+#### <a name="china-government-cloudtabchina-government-cloud"></a>[Çin Devlet bulutu](#tab/china-government-cloud)
+```
+*.azure.cn
+*.microsoft.cn
+*.microsoftonline.cn
+*.chinacloudapi.cn
+*.trafficmanager.cn
+*.chinacloudsites.cn
+*.windowsazure.cn
+```
+---
 
 > [!NOTE]
 > Bu uç noktalara giden trafik, HTTP (80) ve HTTPS (443) için standart TCP bağlantı noktalarını kullanır.
@@ -53,5 +77,11 @@ Kısıtlamaları atlamak için bu uç noktalara yönelik ağ trafiğine izin ver
 >
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* IP adreslerini güvenli listeye almanız mı gerekiyor? [Microsoft Azure veri MERKEZI IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653)listesini indirin.
-* Diğer Microsoft Hizmetleri, bağlantı için ek URL 'Ler ve IP adresleri kullanır. Microsoft 365 hizmetleri için ağ bağlantısını iyileştirmek için bkz. [ağınızı Office 365 Için ayarlama](/office365/enterprise/set-up-network-for-office-365).
+IP adreslerini güvenli listeye almanız mı gerekiyor? Bulutunuz için Microsoft Azure veri merkezi IP aralıklarının listesini indirin:
+
+* [Dünya çapında](https://www.microsoft.com/download/details.aspx?id=56519)
+* [ENGELL Devlet](http://www.microsoft.com/download/details.aspx?id=57063)
+* [Almanya](http://www.microsoft.com/download/details.aspx?id=57064)
+* [Çin](http://www.microsoft.com/download/details.aspx?id=57062)
+
+Diğer Microsoft Hizmetleri, bağlantı için ek URL 'Ler ve IP adresleri kullanır. Microsoft 365 hizmetleri için ağ bağlantısını iyileştirmek için bkz. [ağınızı Office 365 Için ayarlama](/office365/enterprise/set-up-network-for-office-365).

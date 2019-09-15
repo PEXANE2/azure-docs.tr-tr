@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: f6cc119387482e4f5403e91de98916cbe2aaff2a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963505"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993569"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Azure Search içinde içeri ve dışarı dizinlemeye yönelik ilişkisel SQL verilerini modelleme
 
@@ -152,11 +152,11 @@ Aşağıdaki örnek, [karmaşık veri türlerini Modelme](search-howto-complex-d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede açıklananlara benzer bir satır kümesini indekslemek için [veri alma Sihirbazı 'nı](search-import-data-portal.md) kullanabilirsiniz. Sihirbaz, *odalarda* gömülü JSON koleksiyonunu algılar ve uygun karmaşık tür toplamayı sağlayan bir dizin şemasını anlar. 
+Kendi veri kümesini kullanarak, dizin oluşturmak ve yüklemek için [veri alma Sihirbazı 'nı](search-import-data-portal.md) kullanabilirsiniz. Sihirbaz, *odalarda*içerilen gıbı gömülü JSON koleksiyonunu algılar ve karmaşık bir tür koleksiyonu içeren bir dizin şemasını bulur. 
 
   ![Verileri Içeri aktarma Sihirbazı tarafından gösterilen Dizin](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Verileri Içeri aktarma Sihirbazı tarafından gösterilen Dizin")
 
-İçeri aktarmayı tamamlayıp kullanılabilir bir dizin oluşturmak için anahtarı seçmeniz ve öznitelikleri kendiniz ayarlamanız gerekir. Bu sihirbaz hakkında bilginiz yoksa, temel adımları öğrenmek için aşağıdaki hızlı başlangıcı deneyin.
+Veri alma sihirbazının temel adımlarını öğrenmek için aşağıdaki hızlı başlangıcı deneyin.
 
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: Azure portal kullanarak arama dizini oluşturma](search-get-started-portal.md)

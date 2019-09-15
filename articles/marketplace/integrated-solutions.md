@@ -1,44 +1,46 @@
 ---
-title: Tümleşik çözümler | Azure
-description: Azure Market ve AppSource tümleşik çözümler
+title: Tümleşik çözümler | Mavisi
+description: Azure Market ve AppSource 'ta Tümleşik çözümler
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515608"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993637"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Market ve AppSource tümleşik çözümler
+# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Market ve AppSource 'ta Tümleşik çözümler
 
-Tümleşik bir çözüm en iyi teknoloji danışmanlığı, dağıtım ve Uzman sistemleri Entegratörleri (sı) tarafından sağlanan destekler yanı sıra Microsoft iş ortaklarının sunduğu araya getirir.
+Tümleşik bir çözüm, Microsoft iş ortaklarının sunduğu ve uzman sistem tümleştiricileri (sı) tarafından sağlanmış olan danışmanlıya, dağıtıma ve desteğiyle birlikte sunulan en iyi bir teknoloji sunar.
 
-Bu çözümler, gereken belirli bir müşteri adresi ya da sektör sınama veya sorunlu noktaları bir anlayış başlayan senaryo oluşturulur. İki veya daha fazla iyi dayandığına teknolojileri sonra bunları almak için müşteriler ve hızlı bir şekilde çalıştırmak için bir birleşik ve tekrarlanabilir dağıtım deneyimi oluşturmak üzere bir İM ile tümleşiktir. Entegratörü ayrıca tek bir nokta sağlar sistemleri, ilgili özelleştirme sağlama ve danışmanlık, müşteri için başvurun ve çözüm destekler.  Sonucu gerekli teknolojiyi ve Hizmetleri dahil olmak üzere tümleşik bir çözümdür.
+Bu çözümler, sektör Challenge veya sorunlu noktaların anlaşılmasına başlayan belirli bir müşteri ihtiyacı veya senaryosuna yönelik olarak tasarlanmıştır. İki veya daha fazla bir ıbreed teknolojiden daha sonra, müşteriler için Birleşik ve yinelenebilir bir dağıtım deneyimi oluşturmak üzere BT tarafından hızlı bir şekilde çalışmaya başlayın. Ayrıca, Sistem Tümleştirici, ilgili özelleştirme ve danışmanlık olanağı sunan ve çözüm etrafında destek sağlayan, müşteri için tek bir iletişim noktası sağlar.  Sonuç, teknoloji ve hizmetler de dahil olmak üzere tümleşik bir çözümdür.
 
 ## <a name="advantages"></a>Yararları
 
-Tümleşik bir yaklaşımın avantajları şunlardır:
+Tümleşik yaklaşımın avantajları şunlardır:
 
-* *Endüstri uzmanlığı*: Sistem tümleştiricilerinin sektöre özgü çözümler ve bilgi sağlama
-* *Süresi değeri*: Anında avantajlar daha iyi anlamanıza yardımcı olması için tümleşik dağıtım yaklaşımı
-* *Türünün en iyisi çözümleri*: Tümleşik bir satın alma ve uygulama deneyimi kolaylığı keşfedin
+* *Sektör uzmanlığı*: Sektöre özgü çözümler ve bilgi sağlayan sistem tümleştiricileri
+* *Değere göre süre*: Anında avantaj elde etmenize yardımcı olmak için tümleşik dağıtım yaklaşımı
+* *En Iyi şekilde kullanılabilecek çözümler*: Tümleşik satın alma ve uygulama deneyiminin kolaylığını öğrenin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tümleşik çözümler bulmak ve bunların listelerini burada ziyaret ederek bu değere sahip iş ortaklarına bağlanın:
+Bunlarla ilgili listeleri ziyaret ederek tümleşik çözümleri bulabilir ve bu değerli iş ortaklarıyla bağlantı sağlayabilirsiniz:
 
-* [Müşteri 360 Zero2Hero tarafından desteklenen](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Zero2Hero tarafından desteklenen müşteri 360](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
 * [Hızlı ticaret](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [Kredi analizi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [Sağlık Hizmeti Cloud Security yığınının](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [Kredi Analizi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Sağlık bulutu güvenlik yığını](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
 * [DevOps hızlandırma altyapısı](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Windows Server destek sonu](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Windows Server destek bitişi](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
 
-ve ayrıca danışmanlık hizmetleri bölümünü ziyaret [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/consulting-services)'Nin Danışmanlık Hizmetleri bölümünü de ziyaret edebilirsiniz.
+
+Daha fazla bilgi için bkz. [Tümleşik Çözümleri Yayımlama](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers) .
 
 ---

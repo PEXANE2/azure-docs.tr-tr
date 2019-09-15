@@ -1,6 +1,6 @@
 ---
 title: 'Görsel arabirim örnek #5: Karmaşıklığın tahmin edilmesi için sınıflandırma + uygulama-satış'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu görsel arabirim örnek denemesi, müşteri ilişkileri yönetimi (CRM) için ortak bir görev olan ikili sınıflandırıcı kullanımını gösterir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 054ac3ea5224a4ffea2e7bae9da329ba7bc81233
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016464"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997130"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Örnek 5-sınıflandırma: Dalgalanma, uygulama ve BT satışı tahmin etme 
 

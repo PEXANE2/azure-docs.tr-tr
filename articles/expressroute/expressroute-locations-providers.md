@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69226cafc31771ae5307999e921cec4ae7841f8c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 17d1a8e2e98f1b2967b4f2e33e14ee187a765190
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967134"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995714"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -82,7 +82,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 ### <a name="production-azure"></a>Üretim Azure
 | **Location** | **Sahip ve adres** | **Yerel Azure bölgeleri** | **Hizmet sağlayıcıları** |
 | --- | --- | --- | --- |
-| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Batı Avrupa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
+| **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Batı Avrupa | Aryaka Networks, AT & T Netbonı, Ingiliz telekomünikasyon, Colt, Equinx, Eunetçalışmalar, GÉANT, Intercloud, ınterxiyon, KPN, x REACH, Level 3 Communications, Megaport, NTT Communications, turuncu, Tata Communications, Telefonica, Telenor, Telia taşıyıcısı, Verizon, Zayo |
 | **Amsterdam2** | [Interxiyon AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | Batı Avrupa | CenturyLink Cloud Connect, DE-CIX, Colt, ınterxiyon, Vodavfone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | yok | Equinix, Megaport |
 | **Auckland** | [Vocus grubu NZ Albümno](https://www.vocus.co.nz/business/cloud-data-centres) | yok | Devoli, Kordia, Megaport, Spark NZ, Vocus Group NZ |
@@ -195,16 +195,16 @@ Uzaktan çalışıyorsanız ve fiber bağlantınız yoksa veya diğer bağlantı
 ## <a name="c1partners"></a>Ek hizmet sağlayıcıları üzerinden bağlantı
 | **Location** | **Exchange** | **Bağlantı sağlayıcıları** |
 | --- | --- | --- |
-| **Amsterdam** | Equinx, ınterxiyon, düzey 3 Iletişimleri, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, Gulf Köprüsü International, Kalaam Telebel B. S. C, MainOne, Nianet, POST Telepı, Proximus, TDC Erhverv, Telekom |
+| **Amsterdam** | Equinx, ınterxiyon, düzey 3 Iletişimleri | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, Gulf Köprüsü International, Kalaam Telebel B. S. C, MainOne, Nianet, POST Telepı, Proximus, TDC Erhverv, Telekom |
 | **Atlanta** | Equinix| Crown kalele
 | **Cape Town** | Teraco | MTN |
 | **Chicago** | Equinix| Crown kalele, SPI Enterprise, WINI akışı |
 | **Dallas** | Equinix, Megaport | AXTEL, C3ntro Teley, Cox Iş, Crown, veri bulunan |
-| **Frankfurt** | Interxiyon, Telecity | BICS, Cinia, Nianet, QSC AG, Telekod Deutschland GmbH |
+| **Frankfurt** | Interxion | BICS, Cinia, Nianet, QSC AG, Telekod Deutschland GmbH |
 | **Hamburg** | Equinix | Cinia |
 | **Hong Kong ÖIB** | Equinix | Başkan, makro görünümü telekomünikasyon |
 | **Johannesburg** | Teraco | MTN |
-| **Londra** | BICS, Equinx, Eunetçalışma, Telecity | Bezeq International Ltd., CoreAzure, Epsilon telekomünikasyon Limited, üstel E, HSO, NexGen Networks, Proximus, Tamares Teley, Zain |
+| **Londra** | Bics, equinx, eunetçalışma| Bezeq International Ltd., CoreAzure, Epsilon telekomünikasyon Limited, üstel E, HSO, NexGen Networks, Proximus, Tamares Teley, Zain |
 | **Los Angeles** | Equinix |Crown kalele, SPI kurumsal, Transtelco |
 | **Madrid** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Aptum teknolojileri, Roger, ZiRrO |

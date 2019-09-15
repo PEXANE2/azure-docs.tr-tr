@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 90ccd6c827371d9bf72391e2b24c7dcef31f36c9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0df60cac241151b5968c5ddfc01ca9c0515a5e6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844639"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996983"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -52,7 +52,7 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
    - **Hizmet sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu**ile bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir tane kullanmak için *hizmet sorumlusu Yapılandır* ' ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
    - Kubernetes rol tabanlı erişim denetimleri (RBAC) seçeneğini etkinleştirin. Bu, AKS kümenizde dağıtılan Kubernetes kaynaklarına erişim üzerinde daha ayrıntılı denetim sağlar.
 
-    Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. **Gözden geçir + oluştur** ' a tıklayın ve doğrulama tamamlandığında **Oluştur** ' a tıklayın.
+Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. **Gözden geçir + oluştur** ' a tıklayın ve doğrulama tamamlandığında **Oluştur** ' a tıklayın.
 
 AKS kümesini oluşturmak birkaç dakika sürer. Dağıtımınız tamamlandığında **Kaynağa Git ' e**tıklayın veya *MYRESOURCEGROUP*gibi aks kümesi kaynak grubuna gidin ve *myakscluster*gibi aks kaynağını seçin. AKS kümesi panosu, aşağıdaki örnekte olduğu gibi gösterilir:
 
@@ -236,7 +236,7 @@ Aşağıdaki örnekte olduğu gibi *azure-vote-back* ve *azure-vote-front* kapsa
 
 ![AKS'de çalışan kapsayıcıların durumunu görüntüleme](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-`azure-vote-front` pod'unun günlüklerini görmek için kapsayıcı listesinin sağ tarafındaki **Kapsayıcı günlüklerini görüntüle** bağlantısını seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
+`azure-vote-front` Pod 'un günlüklerini görmek için kapsayıcılar listesinin açılan listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
 
 ![AKS'deki kapsayıcı günlüklerini görüntüleme](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 

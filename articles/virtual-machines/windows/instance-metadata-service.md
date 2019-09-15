@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: bffe6436678a055ac6d861587f048542f15c5f22
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0610648594d09de3f86c5d9eb2f0cae722978cca
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079317"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996397"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -263,7 +263,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 Örnek meta verileri `curl` program aracılığıyla Windows 'da alınabilir:
 
-```bash
+```powershell
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
 ```
 
@@ -363,7 +363,7 @@ name | VM adı | 2017-04-02
 sunar | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü Galerisi 'nden dağıtılan görüntülerde bulunur | 2017-04-02
 osType | Linux veya Windows | 2017-04-02
 placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-planınızın | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
+plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
 sağlayıcı | VM sağlayıcısı | 2018-10-01
@@ -644,7 +644,7 @@ Verification successful
 Data | Açıklama
 -----|------------
 nonce | Kullanıcı istek ile isteğe bağlı dize sağladı. İstekte hiçbir nonce sağlanmazsa, geçerli UTC zaman damgası döndürülür
-planınızın | Azure Market görüntüsündeki bir VM için [plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) yapın, ad, ürün ve yayımcı içerir
+plan | Azure Market görüntüsündeki bir VM için [plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) yapın, ad, ürün ve yayımcı içerir
 zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu zaman damgası
 zaman damgası/expiresOn | İmzalanan belgenin süresi dolan zaman damgası
 vmId |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)

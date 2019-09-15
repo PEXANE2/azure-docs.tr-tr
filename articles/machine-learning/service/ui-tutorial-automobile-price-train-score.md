@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Görsel arabirim ile otomobil fiyatını tahmin edin'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bir sürükle ve bırak görsel arabirimi kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma hakkında bilgi edinin. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin etmeye yönelik iki bölümlü bir serinin bir parçasıdır.
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891689"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996772"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Öğretici: Görsel arabirim ile otomobil fiyatını tahmin edin
 
-Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden tahmine dayalı analitik çözüm geliştirmek ve dağıtmak için Azure Machine Learning hizmeti görsel arabirimini nasıl kullanacağınızı öğreneceksiniz. 
+Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden tahmine dayalı analitik çözüm geliştirmek ve dağıtmak için Azure Machine Learning görsel arabirimini kullanmayı öğreneceksiniz. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -41,11 +41,11 @@ Bu öğreticinin tamamlanmış sürümü örnek bir deneme olarak sunulmaktadır
 
 ## <a name="create-a-new-experiment"></a>Yeni bir deneme oluşturma
 
-Bir Visual Interface denemesi oluşturmak için önce bir Azure Machine dersleri hizmet çalışma alanı gerekir. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
+Bir görsel arabirim denemesi oluşturmak için önce bir Azure Machine Learning hizmet çalışma alanı gerekir. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
 
 ### <a name="create-a-new-workspace"></a>Yeni bir çalışma alanı oluşturma
 
-Bir Azure Machine Learning hizmeti çalışma alanınız varsa, sonraki bölüme atlayın.
+Bir Azure Machine Learning çalışma alanınız varsa, sonraki bölüme atlayın.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
