@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914182"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996677"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 'de dizin oluşturma ilkeleri
 
@@ -29,7 +29,7 @@ Azure Cosmos DB iki dizin oluşturma modunu destekler:
 - **Tutarlı**: Kapsayıcının dizin oluşturma ilkesi tutarlı olarak ayarlandıysa, öğe oluşturma, güncelleştirme veya silme işlemi sırasında dizin zaman uyumlu olarak güncelleştirilir. Bu, okuma sorgularınızın tutarlılığı, [hesap için yapılandırılmış tutarlılığa](consistency-levels.md)sahip olacağı anlamına gelir.
 - **Hiçbiri**: Kapsayıcının dizin oluşturma ilkesi hiçbiri olarak ayarlandıysa, dizin oluşturma Bu kapsayıcıda etkin bir şekilde devre dışı bırakılır. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu ekleme işlemlerinin hızlandırde sağlanmasına yardımcı olabilir.
 
-Ayrıca, dizin oluşturma ilkesindeki **Otomatik** özelliğini **true**olarak ayarlamanız gerekir. Bu özelliğin true olarak ayarlanması, Azure Cosmos DB belgelerin yazıldığı şekilde otomatik olarak dizin oluşturulmasına olanak sağlar.
+Varsayılan olarak, dizin oluşturma ilkesi olarak `automatic`ayarlanır. Dizin oluşturma ilkesindeki `automatic` özelliği olarak `true`ayarlanarak elde edilir. Bu özelliği ayarlamak için `true` Azure cosmosdb 'nin belgeleri yazıldığı gibi otomatik olarak dizin oluşturulmasına izin verir.
 
 ## <a name="including-and-excluding-property-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 

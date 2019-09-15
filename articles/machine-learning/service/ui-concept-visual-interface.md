@@ -1,7 +1,7 @@
 ---
 title: Görsel arabirim
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti için görsel arabirimi (Önizleme) oluşturan hüküm, kavramlar ve iş akışı hakkında bilgi edinin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning için görsel arabirimi (Önizleme) oluşturan hüküm, kavramlar ve iş akışı hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860405"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996518"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için görsel arabirim nedir? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Azure Machine Learning için görsel arabirim nedir? 
 
-Azure Machine Learning hizmeti için görsel arabirim (Önizleme), kod yazmadan, verileri hazırlamanıza, test etmenize, dağıtmanıza, dağıtmanıza, yönetmenize ve izlemenize olanak sağlar.
+Azure Machine Learning için görsel arabirim (Önizleme), kod yazmadan, verileri dağıtmanıza, eğitmenize, test etmenize, dağıtmanıza, yönetmenize ve izlemenize olanak sağlar.
 
 Programlama gerekmez, modelinizi oluşturmak için [veri kümelerini](#dataset) ve [modülleri](#module) görsel olarak bağlamanız gerekir.
 
-Görsel arabirim, Azure Machine Learning hizmeti [çalışma alanınızı](concept-workspace.md) şu amaçlarla kullanır:
+Görsel arabirim, Azure Machine Learning [çalışma alanınızı](concept-workspace.md) şu amaçlarla kullanır:
 
 + [Deneme](#experiment) sürümü yapılarını çalışma alanına yazın.
 + [Veri kümelerine](#dataset)erişin.

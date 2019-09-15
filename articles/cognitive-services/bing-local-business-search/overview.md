@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: 8ee5dbe546b78557dde70868d01ec09ae33bee07
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906335"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996698"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing yerel Iş arama nedir?
 Bing yerel Iş Arama API 'SI, uygulamalarınızın arama sorguları temelinde yerel işletmeler hakkında bilgi bulmasına olanak tanıyan bir yeniden hizmet hizmetidir. Örneğin, `q=<business-name> in Redmond, Washington`veya `q=Italian restaurants near me`. 

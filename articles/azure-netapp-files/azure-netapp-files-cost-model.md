@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030804"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995110"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files için maliyet modeli 
 
@@ -73,7 +73,7 @@ Aşağıdaki diyagramda şu kavramlar gösterilmektedir:
     * 1 ile 8 arasında birimlere her biri 60 bir kota atanır.  Kullanılan toplam kapasite 480 TiB 'dir.  
         Her birimde 3,75 GiB/sn (60 TiB * 64 MIB/s) için bir QoS sınırı vardır.  
     * 9\. birime 20 TiB kotası atanır.  
-        9\. birimde, 1,25 GiB/sn (60 TiB * 64 MIB/s) için bir QoS sınırı vardır.
+        9\. birimde, 1,25 GiB/sn (20 TiB * 64 MIB/s) için bir QoS sınırı vardır.
 * Birim 9, bir fazla kullanım senaryosudur. Bu, gerçek tüketim olan 25 GB 'a sahiptir.  
     * Bir saatlik yetkisiz kullanım süresinden sonra, kapasite havuzu 505 TiB olarak yeniden boyutlandırılır.  
         Diğer bir deyişle, 1 ile 8 arasında birimler için kullanılan toplam kapasite = 8 * 60-TiB kotası ve birim 9 için 25 TiB gerçek tüketim.

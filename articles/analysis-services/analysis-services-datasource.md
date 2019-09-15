@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899424"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993382"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -42,7 +42,7 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 **Sağlayıcısını**   
 Azure veri kaynaklarına bağlanan bellek içi ve DirectQuery modelleri SQL Server için .NET Framework Veri Sağlayıcısı kullanır.
 
-## <a name="on-premises-data-sources"></a>Şirket içi veri kaynakları
+## <a name="other-data-sources"></a>Diğer veri kaynakları
 
 Ve Azure 'dan sunucuya şirket içi veri kaynaklarına bağlanmak için şirket içi ağ geçidi gerekir. Bir ağ geçidi kullanırken, 64 bit sağlayıcılar gereklidir.
 
@@ -113,6 +113,10 @@ Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabi
 Bulut veri kaynakları için:
 
 * SQL kimlik doğrulaması kullanılıyorsa, kimliğe bürünme hizmet hesabı olmalıdır.
+
+## <a name="oauth-credentials"></a>OAuth kimlik bilgileri
+
+1400 ve üzeri uyumluluk düzeyindeki tablo modelleriyle ilgili olarak, Azure SQL veritabanı, Azure SQL veri ambarı, Dynamics 365 ve SharePoint listesi OAuth kimlik bilgilerini destekler. Azure Analysis Services uzun süre çalışan yenileme işlemleri için zaman aşımlarını önlemek üzere OAuth veri kaynakları için belirteç yenilemeyi yönetir. Geçerli belirteçler oluşturmak için SSMS kullanarak kimlik bilgilerini ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi ağ geçidi](analysis-services-gateway.md)   

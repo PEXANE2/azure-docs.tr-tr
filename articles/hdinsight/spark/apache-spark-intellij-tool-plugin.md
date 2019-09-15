@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: b13eb6f61aed37344e0df3c864e021f68a4ca85b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c19d867553290ba956515fddc50c4fd836877860
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900301"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996036"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Öğretici: HDInsight kümesi için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma
 
@@ -46,8 +46,8 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 1. IntelliJ IDEA’yı açın.
 
 2. Giriş **ekranında, eklentiler penceresini açmak** için**eklentileri** **Yapılandır** > ' a gidin.
-   
-    ![Scala eklentisini etkinleştirme](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin.png)
+
+    ![Scala eklentisini etkinleştirme](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
 3. Yeni pencerede tanıtılan Scala eklentisine yönelik **Install** öğesini seçin.  
 
@@ -80,7 +80,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
     |Proje SDK 'Sı| Bu, ilk fıkrın kullanımı üzerinde boş olabilir.  **Yeni...** öğesini seçin ve JDK 'nize gidin.|
     |Spark sürümü|Oluşturma Sihirbazı Spark SDK ve Scala SDK için doğru sürümü tümleştirir. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi takdirde, **Spark2.x** seçeneğini belirleyin. Bu örnek **Spark 2.3.0 (Scala 2.11.8)** kullanır.|
 
-    ![Spark SDK’sını seçme](./media/apache-spark-intellij-tool-plugin/hdi-new-project.png)
+    ![Spark SDK’sını seçme](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
 7. **Son**’u seçin.  Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
 
@@ -92,7 +92,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
    c. Yapıtı görüntüledikten sonra **iptal** ' i seçin.
 
-      ![İletişim kutusunda yapıt bilgisi](./media/apache-spark-intellij-tool-plugin/default-artifact.png)
+      ![İletişim kutusunda yapıt bilgisi](./media/apache-spark-intellij-tool-plugin/default-artifact-dialog.png)
 
 9. Aşağıdaki işlemleri gerçekleştirerek uygulama kaynak kodunuzu ekleyin:
 
@@ -134,28 +134,28 @@ Kullanıcı [Azure aboneliğinde oturum](#sign-in-to-your-azure-subscription)aç
 ### <a name="sign-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
 
 1. Menü çubuğunda, **Görünüm** > **Aracı Windows** > **Azure Gezgini**' ne gidin.
-       
-   ![Azure Gezginini göster](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+
+   ![Azure Gezginini göster](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
 
 2. Azure Gezgini 'nden **Azure** düğümüne sağ tıklayın ve ardından **oturum aç**' ı seçin.
-   
+
    ![Gezgin ' i sağ tıklatın](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
 3. **Azure oturum açma** Iletişim kutusunda **cihaz oturumu açma**' yı ve ardından **oturum aç**' ı seçin.
 
-    ![Görünüm Gezgini 2](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
+    ![Görünüm Gezgini 2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
 
 4. **Azure cihaz oturum açma** Iletişim kutusunda **Kopyala & aç**' a tıklayın.
-   
-   ![Gezgin 5 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
+
+   ![Gezgin 5 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
 
 5. Tarayıcı arabiriminde, kodu yapıştırın ve ardından **İleri**' ye tıklayın.
-   
-   ![Görünüm Gezgini 6](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
+
+   ![Görünüm Gezgini 6](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
 
 6. Azure kimlik bilgilerinizi girin ve ardından tarayıcıyı kapatın.
-   
-   ![Gezgin 7 ' yi görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
+
+   ![Gezgin 7 ' yi görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
 
 7. Oturum açtıktan sonra, **abonelikler Seç** iletişim kutusunda kimlik bilgileriyle Ilişkili tüm Azure abonelikleri listelenir. Aboneliğinizi seçin ve ardından **Seç** düğmesini seçin.
 
@@ -163,11 +163,11 @@ Kullanıcı [Azure aboneliğinde oturum](#sign-in-to-your-azure-subscription)aç
 
 8. **Azure Explorer**'da, aboneliklerinizde bulunan HDInsight Spark kümelerini görüntülemek için **HDInsight** ' ı genişletin.
 
-    ![Görünüm Gezgini 3](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
+    ![Görünüm Gezgini 3](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png)
 
-9.  Kümeyle ilişkili kaynakları (örneğin, depolama hesapları) görüntülemek için bir küme adı düğümünü daha da genişletebilirsiniz.
+9. Kümeyle ilişkili kaynakları (örneğin, depolama hesapları) görüntülemek için bir küme adı düğümünü daha da genişletebilirsiniz.
 
-    ![Genişletilmiş küme adı düğümü](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
+    ![Genişletilmiş küme adı düğümü](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png)
 
 ### <a name="link-a-cluster"></a>Bir kümeyi bağlama
 
@@ -175,11 +175,11 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
 
 1. Menü çubuğunda, **Görünüm** > **Aracı Windows** > **Azure Gezgini**' ne gidin.
 
-2. Azure Gezgini 'nden **HDInsight** düğümüne sağ tıklayın ve ardından **bir kümeyi bağla**' yı seçin.
+1. Azure Gezgini 'nden **HDInsight** düğümüne sağ tıklayın ve ardından **bir kümeyi bağla**' yı seçin.
 
    ![bağlama kümesi bağlam menüsü](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-3. **Küme bağlantısı** penceresindeki kullanılabilir seçenekler, **kaynak türü** açılan listesinde hangi değere seçtiğinize bağlı olarak değişir.  Değerlerinizi girip **Tamam**' ı seçin.
+1. **Küme bağlantısı** penceresindeki kullanılabilir seçenekler, **kaynak türü** açılan listesinde hangi değere seçtiğinize bağlı olarak değişir.  Değerlerinizi girip **Tamam**' ı seçin.
 
     * **HDInsight kümesi**  
   
@@ -190,7 +190,7 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
         |Kimlik Doğrulama Türü| **Temel kimlik doğrulaması** olarak bırak|
         |Kullanıcı adı| Küme Kullanıcı adı ' nı girin, varsayılan olarak admin ' dir.|
         |istemcisiyle yönetilen bir cihaz için)| Kullanıcı adı için parola girin.|
-    
+
         ![HDInsight kümesi bağlantısı iletişim kutusu](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Livy hizmeti**  
@@ -209,9 +209,9 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
 
 1. Bağlı kümenizi **HDInsight** düğümünden görebilirsiniz.
 
-   ![bağlı küme](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
+   ![bağlı küme](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
 
-2. Ayrıca bir kümenin bağlantısını **Azure Explorer**'da kaldırabilirsiniz.
+1. Ayrıca bir kümenin bağlantısını **Azure Explorer**'da kaldırabilirsiniz.
 
    ![bağlantısız küme](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
@@ -220,7 +220,7 @@ Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini
 Bir Scala uygulaması oluşturduktan sonra kümeye gönderebilirsiniz.
 
 1. Projeden **MyApp** > **src**MainScala > MyApp sayfasına gidin. >  >   **MyApp**öğesine sağ tıklayın ve **Spark uygulaması gönder** ' i seçin (büyük olasılıkla listenin altında bulunur).
-    
+
       ![Spark uygulamasını HDInsight 'a Gönder komutu](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
 2. **Spark uygulaması gönder** iletişim penceresinde 1 ' i seçin **. HDInsight**'ta spark.
@@ -244,7 +244,7 @@ Bir Scala uygulaması oluşturduktan sonra kümeye gönderebilirsiniz.
     ![Spark gönderimi iletişim kutusu](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
 
 4. Projenizi seçili kümeye göndermek için **mini Iş çalıştırma** ' yı seçin. **Küme Içindeki uzak Spark işi** , en altta iş yürütme ilerleme durumunu görüntüler. Kırmızı düğmeye tıklayarak uygulamayı durdurabilirsiniz. İş çıktısına nasıl erişebileceğinizi öğrenmek için, bu makalenin devamındaki "Azure Toolkit for IntelliJ kullanarak HDInsight Spark kümelerine erişme ve yönetme" bölümüne bakın.  
-      
+
     ![Spark gönderim penceresi](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
 ## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>HDInsight kümesinde Apache Spark uygulamalarında yerel olarak veya uzaktan hata ayıklama 
@@ -259,11 +259,11 @@ Azure Toolkit for IntelliJ kullanarak çeşitli işlemler gerçekleştirebilirsi
 
 1. Azure Gezgini 'nden, > > **iş işlerinde** **HDInsight** > \<'a gidin.
 
-    ![İş görünümü düğümü](./media/apache-spark-intellij-tool-plugin/job-view-node.png)
+    ![İş görünümü düğümü](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
 
 2. Sağ bölmede **Spark Iş görünümü** sekmesi kümede çalıştırılan tüm uygulamaları görüntüler. Daha fazla ayrıntı görmek istediğiniz uygulamanın adını seçin.
 
-    ![Uygulama ayrıntıları](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
+    ![Uygulama ayrıntıları](./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png)
 
 3. Temel çalışan iş bilgilerini göstermek için iş grafiğinin üzerine gelin. Her işin ürettiği aşamalar grafiğini ve bilgilerini görüntülemek için, iş grafiğinde bir düğüm seçin.
 
@@ -271,7 +271,7 @@ Azure Toolkit for IntelliJ kullanarak çeşitli işlemler gerçekleştirebilirsi
 
 4. *Sürücü stderr*, *sürücü stdout*ve *Dizin bilgileri*gibi sık kullanılan günlükleri görüntülemek için **günlük** sekmesini seçin.
 
-    ![Günlük ayrıntıları](./media/apache-spark-intellij-tool-plugin/Job-log-info.png)
+    ![Günlük ayrıntıları](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
 
 5. Ayrıca, pencerenin üst kısmındaki bir bağlantıyı seçerek Spark geçmiş Kullanıcı arabirimini ve YARN Kullanıcı arabirimini (uygulama düzeyinde) görüntüleyebilirsiniz.
 
@@ -326,9 +326,9 @@ WINUTILS ' i karşılatığınızdan emin olun. EXE önkoşulu.
 
 7. Ardından, bağımlılıkları otomatik olarak onarmak isteyip istemediğinizi sormak için iki iletişim kutusu görüntülenebilir. Öyleyse **otomatik çözüm**' i seçin.
 
-    ![Spark Auto Fix1](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+    ![Spark Auto Fix1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
 
-    ![Spark Auto fix2](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
+    ![Spark Auto fix2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
 8. Konsol aşağıdaki resme benzer görünmelidir. Konsol penceresi yazın `sc.appName`ve ardından CTRL + ENTER tuşlarına basın.  Sonuç görüntülenecektir. Kırmızı düğme ' ye tıklayarak Yerel konsolu sonlandırabilirsiniz.
 
@@ -374,50 +374,49 @@ Kullanıcılar işi yalnızca okuyucu rolü izni olan bir kümeye gönderdiğind
 ### <a name="link-cluster-from-context-menu"></a>Bağlam menüsünden küme bağlama
 
 1. Yalnızca okuyucu rol hesabıyla oturum açın.
-       
+
 2. **Azure Explorer**'da, aboneliğinizdeki HDInsight kümelerini görüntülemek için **HDInsight** ' ı genişletin. **"Role: Reader"** olarak işaretlenen kümelerin yalnızca yalnızca okuyucu rolü izni vardır.
 
-    ![Gezgin 15 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
+    ![Gezgin 15 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
 
 3. Yalnızca okuyucu rolü izniyle kümeye sağ tıklayın. **Bu kümeyi** bağlama menüsünden Bağla ' yı seçin. Ambarı Kullanıcı adı ve parolasını girin.
 
-  
-    ![Gezgin 11 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
+    ![Gezgin 11 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png)
 
 4. Küme başarıyla bağlanmışsa, HDInsight yenilenir.
    Kümenin aşaması bağlantılı hale gelir.
   
-    ![Gezgin 8 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
+    ![Gezgin 8 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>Işler düğümünü genişleterek küme bağlama
 
 1. **İşler** düğümü ' ne tıklayın, **küme işi erişimi reddedildi** penceresi açılır.
-   
+
 2. **Bu kümeyi** bağlantı kümesine bağla ' ya tıklayın.
-   
-    ![Görünüm Gezgini 9](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
+
+    ![Görünüm Gezgini 9](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>Kümeyi çalıştırma/hata ayıklama yapılandırması penceresinden bağla
 
 1. HDInsight yapılandırması oluşturun. Sonra **kümede uzaktan Çalıştır '** ı seçin.
-   
+
 2. Spark kümeleri için yalnızca okuyucu rolü iznine sahip olan bir küme seçin **(yalnızca Linux)** . Uyarı iletisi görüntülenir. **Bu kümeyi** bağlantı kümesine bağla ' ya tıklayabilirsiniz.
-   
-   ![Yapılandırma 1 oluştur](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
-   
+
+   ![Yapılandırma 1 oluştur](./media/apache-spark-intellij-tool-plugin/create-configuration.png)
+
 ### <a name="view-storage-accounts"></a>Depolama hesaplarını görüntüleme
 
 * Yalnızca okuyucu rolü iznine sahip kümeler için **depolama hesapları** düğümü ' ne tıklayın, **depolama erişimi reddedildi** penceresi açılır. Depolama Gezgini açmak için **Azure Depolama Gezgini aç** ' a tıklayabilirsiniz.
-     
-   ![Görünüm Gezgini 14](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
 
-   ![Gezgin 10 görüntüleme](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
+   ![Görünüm Gezgini 14](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
+
+   ![Gezgin 10 görüntüleme](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
 
 * Bağlantılı kümeler için **depolama hesapları** düğümü ' ne tıklayın, **depolama erişimi reddedildi** penceresi açılır. Depolama Gezgini açmak için **Azure Storage 'ı aç** ' a tıklayabilirsiniz.
-     
-   ![Gezgin 13 ' ü görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
 
-   ![Gezgin 12 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
+   ![Gezgin 13 ' ü görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
+
+   ![Gezgin 12 ' i görüntüle](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Mevcut IntelliJ fıkır uygulamalarını kullanacak şekilde Dönüştür Azure Toolkit for IntelliJ
 
@@ -426,11 +425,11 @@ IntelliJ fıkır içinde oluşturduğunuz mevcut Spark Scala uygulamalarını Az
 1. IntelliJ fıkrı aracılığıyla oluşturulmuş mevcut bir Spark Scala uygulaması için ilişkili. IML dosyasını açın.
 
 2. Kök düzeyinde, aşağıdaki gibi bir **Modül** öğesidir:
-   
+
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
 
    Modül öğesinin aşağıdaki gibi görünmesi `UniqueKey="HDInsightTool"` için eklenecek öğeyi düzenleyin:
-   
+
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
 3. Değişiklikleri kaydedin. Uygulamanız artık Azure Toolkit for IntelliJ uyumlu olmalıdır. Projedeki proje adına sağ tıklayarak test edebilirsiniz. Açılır menüde artık **Spark uygulamasını HDInsight 'A gönder**seçeneği vardır.

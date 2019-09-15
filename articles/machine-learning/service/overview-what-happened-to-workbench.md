@@ -1,7 +1,7 @@
 ---
 title: Machine Learning çalışma ekranına ne oldu?
-titleSuffix: Azure Machine Learning service
-description: Machine Learning çalışma ekranı uygulamasına ne olduğunu, Azure Machine Learning hizmette nelerin değiştirildiğini ve destek zaman çizelgesinin ne olduğunu öğrenin.
+titleSuffix: Azure Machine Learning
+description: Machine Learning çalışma ekranı uygulamasına ne olduğunu, Azure Machine Learning nelerin değiştirildiğini ve destek zaman çizelgesinin ne olduğunu öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3d7a4ed5ae3bf2c9015625f41ea9cdb10fa1bba
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 724e120a8ed92f71ff2e7f2bdda7d1884d80bc10
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860442"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997144"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
@@ -24,23 +24,23 @@ Azure Machine Learning Workbench uygulaması ve diğer bazı erken Özellikler k
 
 Deneyim, deneyiminizi geliştirmek için müşteri geri bildirimi tarafından istenen birçok önemli güncelleştirme içerir. Deneme çalıştırmalarının temel işlevleri model dağıtımına göre değişmemiştir. Ancak şimdi, Machine Learning görevlerinizi ve işlem hatlarını gerçekleştirmek için sağlam <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> ve [Azure CLI](reference-azure-machine-learning-cli.md) kullanabilirsiniz.
 
-Azure Machine Learning hizmetinin önceki sürümünde oluşturulan yapıtların çoğu kendi yerel veya bulut depolama alanına depolanır. Bu yapıtlar hiçbir zaman kaybolmayacaktır.
+Önceki Azure Machine Learning sürümünde oluşturulan yapıtların çoğu kendi yerel veya bulut depolama ortamınızda saklanır. Bu yapıtlar hiçbir zaman kaybolmayacaktır.
 
 Bu makalede, nelerin değiştiğini ve Azure Machine Learning Workbench ve API 'Leri ile önceden var olan çalışmanızı nasıl etkilediğini öğreneceksiniz.
 
 >[!Warning]
->Bu makalede, Azure Machine Learning Studio kullanıcılar için değil. Workbench (Önizleme) uygulamasının yüklü olması ve/veya deneme ve model Yönetimi Önizleme hesapları Azure Machine Learning hizmeti müşteriler için var.
+>Bu makalede, Azure Machine Learning Studio kullanıcılar için değil. Bu, çalışma ekranı (Önizleme) uygulamasını yükleyen ve/veya deneme ve model yönetimi önizleme hesaplarına sahip olan Azure Machine Learning müşteriler içindir.
 
 
 ## <a name="what-changed"></a>Ne değişti?
 
-Azure Machine Learning hizmetinin en son sürümü aşağıdaki özellikleri içerir:
+Azure Machine Learning en son sürümü aşağıdaki özellikleri içerir:
 + [Basitleştirilmiş bir Azure kaynakları modeli](concept-azure-machine-learning-architecture.md).
 + Denemeleri ve işlem hedeflerinizi yönetmek için [Yeni bir Portal Kullanıcı arabirimi](how-to-track-experiments.md) .
 + Yeni, daha kapsamlı bir Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>.
 + Machine Learning için yeni genişletilmiş [Azure CLI uzantısı](reference-azure-machine-learning-cli.md) .
 
-[Mimari](concept-azure-machine-learning-architecture.md) kullanım kolaylığı için yeniden tasarlanmıştır. Birden çok Azure kaynağı ve hesabı yerine, size gereken yalnızca bir [Azure Machine Learning hizmeti Çalışma Alanı](concept-workspace.md)'dır. [Azure portalda](how-to-manage-workspace.md) hemen çalışma alanları oluşturabilirsiniz. Bir çalışma alanı kullanarak, birden çok Kullanıcı eğitim ve dağıtım işlem hedeflerini, model denemeleri, Docker görüntülerini, dağıtılan modelleri ve benzerlerini depolayabilirler.
+[Mimari](concept-azure-machine-learning-architecture.md) kullanım kolaylığı için yeniden tasarlanmıştır. Birden çok Azure kaynağı ve hesabı yerine, size gereken yalnızca bir [Azure Machine Learning Çalışma Alanı](concept-workspace.md)'dır. [Azure portalda](how-to-manage-workspace.md) hemen çalışma alanları oluşturabilirsiniz. Bir çalışma alanı kullanarak, birden çok Kullanıcı eğitim ve dağıtım işlem hedeflerini, model denemeleri, Docker görüntülerini, dağıtılan modelleri ve benzerlerini depolayabilirler.
 
 Geçerli sürümde geliştirilmiş yeni CLı ve SDK istemcileri olsa da masaüstü çalışma ekranı uygulamasının kendisi kullanımdan kaldırılmıştır. Denemeleri, [Azure Portal çalışma alanı panosunda](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)yönetilebilir. Deneme geçmişinizi almak, çalışma alanınıza bağlı işlem hedeflerini yönetmek, modellerinizi ve Docker görüntülerinizi yönetmek, hatta web hizmetlerini dağıtmak için panoyu kullanın.
 
@@ -62,7 +62,7 @@ Portalın çalışma alanı panosu yalnızca Microsoft Edge, Chrome ve Firefox t
 
 [![Çevrimiçi portal](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
-Modellerinizde eğitim ve yeni CLI ve SDK'sını kullanarak çalıştırma geçmişleri izleme başlatın. Şunları öğrenebilirsiniz nasıl [öğretici: Azure Machine Learning hizmeti ile modellerinin eğitilmesi](tutorial-train-models-with-aml.md).
+Modellerinizde eğitim ve yeni CLI ve SDK'sını kullanarak çalıştırma geçmişleri izleme başlatın. Öğreticiden nasıl eğitim alabileceğinizi öğrenebilirsiniz [: modelleri Azure Machine Learning ile eğitme](tutorial-train-models-with-aml.md).
 
 ## <a name="can-i-still-prep-data"></a>Verileri yine hazırlayabilir miyim?
 
@@ -72,7 +72,7 @@ Her boyuttaki veri kümeleri sayesinde, Python kodu yazarak verileri modellemeye
 
 ## <a name="will-projects-persist"></a>Projeler kalacak mı?
 
-Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning hizmeti çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
+Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
 
 Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python komutunda veya `az ml project attach` CLI komutunu kullanarak dizinin adını belirtin.  Örneğin:
 ```python
@@ -96,13 +96,13 @@ En son sürümde modelleri web hizmetleri için Azure Container Instances'a (ACI
 
 Bu makalelerde daha fazla bilgi edinin:
 + [Modellerin nasıl ve nasıl dağıtılacağı](how-to-deploy-and-where.md)
-+ [Öğretici: Azure Machine Learning hizmeti ile modelleri dağıtma](tutorial-deploy-models-with-aml.md)
++ [Öğretici: Azure Machine Learning modelleri dağıtma](tutorial-deploy-models-with-aml.md)
 
 ## <a name="what-about-the-old-sdk-and-cli"></a>Eski SDK ve CLı hakkında ne olacak?
 
 Önceki [zaman çizelgesine](#timeline)bakın. Yeni denemeleri ve modellerinizi en son SDK veya CLı ile oluşturmaya başlayabilmeniz önerilir.
 
-Yeni Python SDK 'sını en son sürümde kullanarak, herhangi bir Python ortamında Azure Machine Learning hizmetiyle etkileşime geçebilirsiniz. En son <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>’yı yüklemeyi öğrenin. Ayrıca, Azure Cloud Shell dahil olmak üzere herhangi bir komut satırı ortamında hizmetle etkileşimde bulunmak `az ml` için, güncelleştirilmiş [Azure Machine Learning CLI uzantısını](reference-azure-machine-learning-cli.md) zengin komutlarla birlikte kullanabilirsiniz.
+Yeni Python SDK 'sını en son sürümde kullanarak, herhangi bir Python ortamında Azure Machine Learning etkileşime geçebilirsiniz. En son <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>’yı yüklemeyi öğrenin. Ayrıca, Azure Cloud Shell dahil olmak üzere herhangi bir komut satırı ortamında hizmetle etkileşimde bulunmak `az ml` için, güncelleştirilmiş [Azure Machine Learning CLI uzantısını](reference-azure-machine-learning-cli.md) zengin komutlarla birlikte kullanabilirsiniz.
 
 ## <a name="what-about-visual-studio-code-tools-for-ai"></a>Ne Visual Studio Code Tools for AI?
 
@@ -116,10 +116,10 @@ Bilgisayar görme, metin analizi ve tahmin için etki alanı paketleri Azure Mac
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Machine Learning hizmeti için en son mimari](concept-azure-machine-learning-architecture.md)hakkında bilgi edinin.
+[Azure Machine Learning için en son mimari](concept-azure-machine-learning-architecture.md)hakkında bilgi edinin.
 
-Hizmete genel bakış için [Azure Machine Learning hizmeti nedir?](overview-what-is-azure-ml.md)makalesini okuyun.
+Hizmete genel bakış için [Azure Machine Learning nedir?](overview-what-is-azure-ml.md)makalesini okuyun.
 
 [Ortamı ve çalışma alanını ayarlamak](tutorial-1st-experiment-sdk-setup.md) ve [İlk modelinize eğmek](tutorial-1st-experiment-sdk-train.md) için iki bölümden oluşan öğreticide ilk denemenizi oluşturun
 
-Bu iş akışı hakkında daha ayrıntılı bir deneyim için, Azure Machine Learning hizmeti ile modellerle dağıtım ve dağıtım için ayrıntılı adımlar içeren [tam uzunluklu öğreticiyi](tutorial-train-models-with-aml.md) izleyin.
+Bu iş akışı hakkında daha ayrıntılı bir deneyim için, Azure Machine Learning ile modeller dağıtmaya ve dağıtıma yönelik ayrıntılı adımları içeren [tam uzunluklu öğreticiyi](tutorial-train-models-with-aml.md) izleyin.
