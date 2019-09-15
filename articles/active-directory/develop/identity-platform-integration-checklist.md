@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33128cbece3b217778182b3831b02e2f3f654f3b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c01f695210ebbd69a26b957e846ff645b1dea5bb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853209"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999023"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft Identity platform tümleştirmesi denetim listesi
 
@@ -66,7 +66,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulamanız bir dizine kayıtlıysa, uygulama kayıt sahiplerinin listesini simge durumuna küçültün ve el ile izleyin. |
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Açıkça gerekli olmadığı takdirde [OAuth2 örtük verme akışı](v2-oauth2-implicit-grant-flow.md) desteğini etkinleştirmeyin. Geçerli senaryo hakkında [buradan](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)bilgi edinin. |
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Kullanıcıların parolalarını doğrudan işleyen [kaynak sahibi parola kimlik bilgisi akışını (ROPC)](v2-oauth-ropc.md)kullanmayın. Bu akış, yüksek derecede güven ve Kullanıcı pozlaması gerektirir ve yalnızca diğer, daha güvenli ve akış kullanılmıyorsa kullanılmalıdır. |
-| ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulama kimlik bilgilerinizi koruyun ve yönetin. Parola kimlik bilgilerini (istemci gizli dizileri) değil [sertifika kimlik bilgilerini](active-directory-certificate-credentials.md)kullanın. Parola kimlik bilgisi kullanmanız gerekiyorsa, el ile ayarlama. Kimlik bilgilerini kod veya yapılandırmaya depolamayın ve bu kullanıcıların insanların işlenmesine izin vermez. Mümkünse, [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) veya kimlik bilgilerinizi depolamak ve düzenli aralıklarla döndürmek için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) kullanın. |
+| ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulama kimlik bilgilerinizi koruyun ve yönetin. Parola kimlik bilgilerini (istemci gizli dizileri) değil [sertifika kimlik bilgilerini](active-directory-certificate-credentials.md)kullanın. Parola kimlik bilgisi kullanmanız gerekiyorsa, el ile ayarlama. Kimlik bilgilerini kod veya yapılandırmaya depolamayın ve bu kullanıcıların insanların işlenmesine izin vermez. Mümkünse, [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) veya kimlik bilgilerinizi depolamak ve düzenli aralıklarla döndürmek için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) kullanın. |
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulamanızın en az ayrıcalık izinleri istediğinizden emin olun. Yalnızca uygulamanızın kesinlikle ihtiyacı olan ve yalnızca ihtiyacınız olduğunda izin ister. Farklı [izin türlerini](v1-permissions-and-consent.md#types-of-permissions)anlayın. Yalnızca gerekirse uygulama izinlerini kullanın; mümkün olduğunca temsilci izinleri kullanın. Microsoft Graph izinlerinin tam listesi için bu [izin başvurusuna](https://docs.microsoft.com/graph/permissions-reference)bakın. |
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Bir API 'YI Microsoft Identity platformunu kullanarak güvenli hale getiriyorsanız, ortaya çıkarmak gereken izinleri dikkatle düşünün. Çözümünüz için doğru ayrıntı düzeyini ve hangi izinlerin yönetici onayı gerektirdiğini göz önünde bulundurun. Herhangi bir yetkilendirme kararı vermeden önce gelen belirteçlerde beklenen izinleri denetleyin. |
 

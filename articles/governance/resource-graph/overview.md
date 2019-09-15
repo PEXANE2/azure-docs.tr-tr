@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207584"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001643"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Kaynak Grafiği hizmetine genel bakış
 
@@ -49,7 +49,7 @@ Kaynak Grafiği daha sonra veritabanını güncelleştirir. Kaynak Grafiği de d
 
 ## <a name="the-query-language"></a>Sorgu dili
 
-Artık Azure Kaynak Grafiği’nin ne olduğuna dair daha iyi bir anlayışa sahip olduğunuza göre, sorguların nasıl oluşturulacağına bakalım.
+Azure Kaynak Grafının ne olduğunu daha iyi kavradığınıza göre, sorgu oluşturma konusuna bakalım.
 
 Azure Kaynak grafiğinin sorgu dilinin Azure Veri Gezgini tarafından kullanılan [kusto sorgu diline](../../data-explorer/data-explorer-overview.md) göre olduğunu anlamak önemlidir.
 

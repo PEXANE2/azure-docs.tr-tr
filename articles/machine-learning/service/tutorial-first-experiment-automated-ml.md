@@ -1,6 +1,6 @@
 ---
 title: İlk otomatik makine öğrenimi denemenizi oluşturun
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning çalışma alanı giriş sayfasında (Önizleme) otomatik makine öğrenimi ile bir sınıflandırma modelini eğitme ve dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984524"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001860"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -26,7 +26,7 @@ Otomatik makine öğrenimi sayesinde yoğun zamanda yoğun görevleri otomatik h
 Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure Machine Learning hizmet çalışma alanı oluşturun.
+> * Bir Azure Machine Learning çalışma alanı oluşturun.
 > * Otomatik makine öğrenimi denemesinin çalıştırın.
 > * Deneme ayrıntılarını görüntüleyin.
 > * Model dağıtma.

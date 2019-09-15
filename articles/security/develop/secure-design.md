@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928084"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000977"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
 Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -89,7 +89,7 @@ OWASP En Iyi 10 Web uygulamalarına yönelik kritik güvenlik risklerini giderme
 Bu güvenlik risklerinin farkında, uygulamanızda bu riskleri en aza indirecek gereksinim ve tasarım kararları almanıza yardımcı olabilir.
 
 İhlallerinin önemli olduğunu engellemek için güvenlik denetimleri hakkında düşünce vardır.
-Ancak, bir ihlalin meydana gelir [olduğunu varsayalım](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops) . İhlalin, güvenlikle ilgili bazı önemli soruların yanıtlanmasına yardımcı olur ve bu nedenle bir acil durum ile yanıtlanması gerekmez:
+Ancak, [bir ihlalin meydana gelir olduğunu varsayalım](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops) . İhlalin, güvenlikle ilgili bazı önemli soruların yanıtlanmasına yardımcı olur ve bu nedenle bir acil durum ile yanıtlanması gerekmez:
 
   - Bir saldırıyı nasıl algılayabilirim?
 
@@ -155,7 +155,7 @@ Uygulama tasarımını modelleme ve [ilerleme](https://docs.google.com/viewer?a=
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Sızdır               | Authentication        | [HTTPS bağlantıları gerektir](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Kurcalama              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
-| Kar            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
+| Kar            | Red olmayan       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
 | Bilgilerin Açığa Çıkması | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
 | Hizmet Reddi      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
 | Ayrıcalık Yükseltme | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
@@ -203,7 +203,7 @@ Web uygulamaları geliştirmeye yönelik kimlik merkezli bir yaklaşım gelişti
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>Kullanıcılar için Multi-Factor Authentication 'ı zorlama
 
-İki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır çünkü Kullanıcı adı ve parola türleri ile ilgili güvenlik zayıflarını önler. Azure Yönetim arabirimlerine (Azure portal/uzak PowerShell) ve müşteriye yönelik hizmetlere erişim, [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)kullanmak üzere tasarlanmalı ve yapılandırılmalıdır.
+İki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır çünkü Kullanıcı adı ve parola türleri ile ilgili güvenlik zayıflarını önler. Azure Yönetim arabirimlerine (Azure portal/uzak PowerShell) ve müşteriye yönelik hizmetlere erişim, [azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)kullanacak şekilde tasarlanmalı ve yapılandırılmalıdır.
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Güçlü kimlik doğrulama ve yetkilendirme platformları kullanın
 
@@ -242,11 +242,11 @@ Bu tür bir saldırıya karşı savunmanız gereken en iyi yol, kullanıcıdan s
 
 Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü bir şey, yetkisiz bir tarafın bunlara erişmesini sağlayabilir. Saldırganlar, GitHub gibi kod depolarında depolanan anahtarları ve gizli dizileri bulmak için otomatik ve el ile tekniklerin avantajlarından yararlanabilir. Bu genel kod depolarında veya diğer bir sunucuda anahtar ve gizli dizileri yerleştirmeyin.
 
-Anahtar yönetimi çözümüne her zaman anahtarlarınızı, sertifikalarınızı, sırları ve bağlantı dizilerinizi koyun. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Key Vault](../../key-vault/key-vault-whatis.md)ile BULUTTA bir HSM sağlar.
+Anahtar yönetimi çözümüne her zaman anahtarlarınızı, sertifikalarınızı, sırları ve bağlantı dizilerinizi koyun. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Key Vault](../../key-vault/key-vault-overview.md)ile BULUTTA bir HSM sağlar.
 
 *Gizli bir depo*olan Key Vault: uygulama gizli dizileri depolamak için merkezi bir bulut hizmetidir. Key Vault, uygulama gizli dizilerini tek bir merkezi konumda tutarak ve güvenli erişim, izin denetimi ve erişim günlüğü sağlayarak gizli verilerinizi güvende tutar.
 
-Gizli dizileri tek tek kasaların içinde depolanır. Her kasanın, erişimi denetlemek için kendi yapılandırması ve güvenlik ilkeleri vardır. Verilerinize bir REST API veya birçok programlama dili için kullanılabilen bir istemci SDK 'Sı üzerinden ulaşabilirsiniz.
+Gizli *dizileri tek tek*kasaların içinde depolanır. Her kasanın, erişimi denetlemek için kendi yapılandırması ve güvenlik ilkeleri vardır. Verilerinize bir REST API veya birçok programlama dili için kullanılabilen bir istemci SDK 'Sı üzerinden ulaşabilirsiniz.
 
 > [!IMPORTANT]
 > Azure Key Vault, sunucu uygulamaları için yapılandırma gizli dizilerini depolamak üzere tasarlanmıştır. Uygulama kullanıcılarına ait olan verileri depolamak için tasarlanmamıştır. Bu, performans özelliklerine, API 'ye ve maliyet modeline yansıtılır.
@@ -277,7 +277,7 @@ Kodunuzda açıklama yerleştirdiğinizde, hassas bilgileri saklamayın olduğun
 
 Temel olarak, geliştirme projenizdeki her şeyin dağıtıldığında genel bilgi olacağını varsayalım. Projedeki herhangi bir türden hassas verileri dahil kullanmaktan kaçının.
 
-Daha önce [Azure Key Vault](../../key-vault/key-vault-whatis.md)tartışıyoruz. Key Vault kullanarak anahtarlar ve parolalar gibi gizli dizileri, onları sabit kodlamak yerine depolayın. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault kullandığınızda Azure Web uygulamanız, kaynak denetiimde veya yapılandırmanızda gizli dizileri depolamadan kolayca ve güvenli bir şekilde gizli dizi yapılandırma değerlerine erişebilir. Daha fazla bilgi edinmek için bkz. [Azure Key Vault ile sunucu uygulamalarınızda gizli dizileri yönetme](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Daha önce [Azure Key Vault](../../key-vault/key-vault-overview.md)tartışıyoruz. Key Vault kullanarak anahtarlar ve parolalar gibi gizli dizileri, onları sabit kodlamak yerine depolayın. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault kullandığınızda Azure Web uygulamanız, kaynak denetiimde veya yapılandırmanızda gizli dizileri depolamadan kolayca ve güvenli bir şekilde gizli dizi yapılandırma değerlerine erişebilir. Daha fazla bilgi edinmek için bkz. [Azure Key Vault ile sunucu uygulamalarınızda gizli dizileri yönetme](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Başarısız-güvenli ölçüleri uygulama
 

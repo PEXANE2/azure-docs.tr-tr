@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698623"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999414"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Bir Azure IOT Edge ağ geçidi için bir aşağı akış cihazı bağlayın
 
@@ -170,10 +170,9 @@ Bu bölüm, bir IOT Edge ağ geçidi için bir Azure IOT Java cihaz istemcisi ba
 
 Bu bölüm, bir IOT Edge ağ geçidi için bir Azure IOT Python cihaz istemcisi bağlanmak için örnek bir uygulama tanıtır. 
 
-1. Örneğe ilişkin edinme **edge_downstream_client** gelen [Python örnekleri için Azure IOT cihaz SDK'sını](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples). 
-2. İnceleyerek örneği çalıştırmak için tüm önkoşullara sahip olduğunuzdan emin olun **readme.md** dosya. 
-3. Edge_downstream_client.py dosyasında güncelleştirme **CONNECTION_STRING** ve **TRUSTED_ROOT_CA_CERTIFICATE_PATH** değişkenleri. 
-4. Cihazınızda örneği çalıştırmak yönergeler için SDK belgelerine bakın. 
+1. [Python örnekleri Için Azure IoT CIHAZ SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)'sından **send_message** için örnek alın. 
+2. Bir kenar kapsayıcısında ya da bir hata ayıklama senaryosunda `EdgeHubConnectionString` çalışırken, ve `EdgeModuleCACertificateFile` ortam değişkenlerinin ayarlanmış olduğundan emin olun.
+3. Cihazınızda örneği çalıştırmak yönergeler için SDK belgelerine bakın. 
 
 
 ## <a name="test-the-gateway-connection"></a>Ağ geçidi bağlantısını test etme

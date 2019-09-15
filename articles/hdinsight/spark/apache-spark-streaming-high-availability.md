@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915400"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002965"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN ile yüksek kullanılabilirliğe sahip Apache Spark akışı işleri oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "70915400"
 
 Spark akışı, verilere dönüşümler uygulayabileceğiniz ve ardından sonuçları filesystems, veritabanları, panolar ve konsola gönderebilecek uzun süre çalışan işler oluşturur. Spark akışı, önce tanımlı bir zaman aralığı boyunca bir olay toplu işi toplayarak mikro-veri yığınlarını işler. Ardından, bu toplu işlem, işleme ve çıkış için tarihinde gönderilir. Toplu iş zaman aralıkları genellikle saniyenin kesirleri olarak tanımlanır.
 
-![Spark akışı](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Spark akışı](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -57,7 +57,7 @@ Her bir olayı bir kez (ve yalnızca bir kez) işleyen bir uygulama oluşturmak 
 
 HDInsight 'ta küme çalışması, *henüz başka bir kaynak Negotiator* (Yarn) tarafından koordine edilir. Spark akışı için yüksek kullanılabilirlik tasarlama, Spark akışı ve ayrıca YARN bileşenleri için teknikler içerir.  YARN kullanan örnek bir yapılandırma aşağıda gösterilmiştir. 
 
-![YARN mimarisi](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![YARN mimarisi](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 Aşağıdaki bölümlerde bu yapılandırmaya ilişkin tasarım konuları açıklanır.
 

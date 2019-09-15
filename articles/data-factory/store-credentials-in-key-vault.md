@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 735013046f65a9dba345c52db883df0b114ba7f2
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3f46c54edff2bc765e75742848f83d30e7aa7c09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892063"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003406"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Kimlik bilgilerini Azure Key Vault içinde depola
 
-Veri depoları için kimlik bilgilerini saklayabilir ve bir [Azure Key Vault](../key-vault/key-vault-whatis.md). Azure Data Factory, veri deposu/işlem kullanan bir etkinliği yürütürken kimlik bilgilerini alır.
+Veri depoları için kimlik bilgilerini saklayabilir ve bir [Azure Key Vault](../key-vault/key-vault-overview.md). Azure Data Factory, veri deposu/işlem kullanan bir etkinliği yürütürken kimlik bilgilerini alır.
 
 Şu anda, özel etkinlik dışındaki tüm etkinlik türleri bu özelliği destekler. Özellikle bağlayıcı yapılandırması için, Ayrıntılar için [her bağlayıcı konusunun](copy-activity-overview.md#supported-data-stores-and-formats) "bağlı hizmet özellikleri" bölümüne bakın.
 
@@ -44,7 +44,7 @@ Azure Key Vault bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Type özelliği şu şekilde ayarlanmalıdır: **AzureKeyVault**. | Evet |
-| baseUrl | Azure Key Vault URL 'sini belirtin. | Evet |
+| BaseUrl | Azure Key Vault URL 'sini belirtin. | Evet |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 
@@ -77,7 +77,7 @@ Aşağıdaki özellikler, bağlantılı hizmette bir Anahtar Kasası gizliliğin
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Alanın Type özelliği şu şekilde ayarlanmalıdır: **AzureKeyVaultSecret**. | Evet |
-| secretName | Azure Key Vault ' deki gizli dizi adı. | Evet |
+| SecretName | Azure Key Vault ' deki gizli dizi adı. | Evet |
 | Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| Hayır |
 | store | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Evet |
 

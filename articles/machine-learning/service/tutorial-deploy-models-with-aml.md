@@ -1,7 +1,7 @@
 ---
 title: 'Görüntü sınıflandırma öğreticisi: Modelleri dağıtma'
-titleSuffix: Azure Machine Learning service
-description: Bu öğretici, Azure Machine Learning hizmetini kullanarak Python Jupyter not defterinde scikit-learn ile bir görüntü sınıflandırma modelinin nasıl dağıtıldığını gösterir. Bu öğretici, iki bölümden oluşan bir serinin ikinci bölümüdür.
+titleSuffix: Azure Machine Learning
+description: Bu öğreticide, bir Python Jupyter not defterinde scikit-öğrenme ile görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning nasıl kullanılacağı gösterilmektedir. Bu öğretici, iki bölümden oluşan bir serinin ikinci bölümüdür.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036214"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003063"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 
@@ -23,7 +23,7 @@ Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölüm�
 
 Artık modeli, [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/)bir Web hizmeti olarak dağıtmaya hazır olursunuz. Bir Web hizmeti, bu durumda bir Docker görüntüsü olan bir görüntüdür. Puanlama mantığını ve modelin kendisini kapsüller. 
 
-Öğreticinin bu bölümünde aşağıdaki görevler için Azure Machine Learning hizmetini kullanırsınız:
+Öğreticinin bu bölümünde aşağıdaki görevler için Azure Machine Learning kullanırsınız:
 
 > [!div class="checklist"]
 > * Test ortamınızı ayarlayın.
@@ -378,7 +378,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure Machine Learning hizmeti için dağıtım seçenekleri](how-to-deploy-and-where.md)hakkında bilgi edinin.
++ [Azure Machine Learning için dağıtım seçenekleri](how-to-deploy-and-where.md)hakkında bilgi edinin.
 + [Web hizmeti için istemci oluşturma](how-to-consume-web-service.md)hakkında bilgi edinin.
 +  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](how-to-run-batch-predictions.md) .
 + Azure Machine Learning modellerinizi [Application Insights](how-to-enable-app-insights.md)izleyin.

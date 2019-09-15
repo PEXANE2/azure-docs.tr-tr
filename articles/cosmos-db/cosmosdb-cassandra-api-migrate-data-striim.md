@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 31273105c2f4de6950eae6a66c50264803197642
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 39427ac12dc6214630d6c3e5ace62692b1ea30b6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981867"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003077"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Çarpıcı anlık ileti kullanarak verileri Azure Cosmos DB Cassandra API hesabına geçirme
 
@@ -24,7 +24,7 @@ Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesa
 
 * [Azure aboneliğiniz](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-* Şirket içinde çalışan ve içindeki verilerle bir Oracle veritabanı.
+* Şirket içinde, içindeki bazı verilerle çalışan bir Oracle veritabanı.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Çarpıcı anlık ileti marketi çözümünü dağıtma
 
@@ -43,7 +43,7 @@ Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesa
 
    |Ayar | Değer | Açıklama |
    | ---| ---| ---|
-   |Anlık ileti dağıtım türü |Tek Başına | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın. | 
+   |Anlık ileti dağıtım türü |Bağımsız | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın. | 
    | Çarpıcı anlık ileti kümesinin adı|    < Striim_cluster_Name >|  Çarpıcı anlık ileti kümesinin adı.|
    | Anlık ileti kümesi parolası|   < Striim_cluster_password >|  Küme için parola.|
 
@@ -155,7 +155,17 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
 
    ![Hedefe Bağlan](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Hedef Azure Cosmos DB örneğinizin yapılandırma özelliklerini girin ve devam etmek için **Kaydet** ' i seçin.
+1. Hedefi yapılandırmadan önce, bir [Baldaha fazla kök sertifikası](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store)eklediğinizden emin olun.
+
+1. Hedef Azure Cosmos DB örneğinizin yapılandırma özelliklerini girin ve devam etmek için **Kaydet** ' i seçin. Aklınızda önemli parametreler aşağıda verilmiştir:
+
+   * **Bağdaştırıcı** - **databasewriter**kullanın. Azure Cosmos DB Cassandra API yazarken DatabaseWriter gereklidir. Cassandra Driver 3.6.0, çarpıcı anlık ileti ile paketlenmiştir. DatabaseWriter, Azure Cosmos kapsayıcıda sağlanan RUs sayısını aşarsa, uygulama kilitlenir.
+
+   * **Kullanıcı adı** -Azure Cosmos hesabınızın adını belirtin.
+   
+   * **Parola** -Azure Cosmos hesabınızın birincil anahtarını belirtin.
+
+   * **Tablolar** -hedef tablolarda birincil anahtarlar olmalıdır ve birincil anahtarlar güncelleştirilemiyor.
 
    ![Hedef özelliklerini yapılandırma](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png)
 
@@ -178,8 +188,7 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
 
 1. Son olarak Azure 'da oturum açalım ve Azure Cosmos hesabınıza gitmeniz gerekir. Veri Gezgini yenileyin ve verilerin geldiğini görebilirsiniz. 
 
-Azure 'da çabam çözümünü kullanarak verileri, Oracle, Cassandra, MongoDB gibi çeşitli kaynaklardan sürekli olarak Azure Cosmos DB Azure Cosmos DB ve çeşitli diğer kaynaklardan sürekli olarak geçirebilirsiniz. Geçiş yolunu sorunsuz bir şekilde ayarlarken herhangi bir sorun için, sorunsuz [IM Web sitesinde](https://go2.striim.com/request-support-striim)bir destek isteği yapın.
-
+Azure 'da çabam çözümünü kullanarak verileri, Oracle, Cassandra, MongoDB gibi çeşitli kaynaklardan sürekli olarak Azure Cosmos DB Azure Cosmos DB ve çeşitli diğer kaynaklardan sürekli olarak geçirebilirsiniz. Daha fazla bilgi edinmek için lütfen bir anlık ileti [Web sitesini](https://www.striim.com/)ziyaret edin, [ücretsiz bir 30 günlük deneme sürümü indirin](https://go2.striim.com/download-free-trial)ve geçiş yolunu sorunsuz bir şekilde ayarlarken bir [destek isteği yapın.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

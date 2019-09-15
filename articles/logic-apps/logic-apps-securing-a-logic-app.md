@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845422"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004098"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -185,7 +185,7 @@ Başkalarının mantıksal uygulamanızı değiştirmesini veya silmesini engell
 
 Mantıksal uygulama çalıştırması sırasında, tüm veriler aktarım sırasında aktarım [Katmanı Güvenliği (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) ve [bekleyen](../security/fundamentals/encryption-atrest.md)' i kullanılarak şifrelenir. Mantıksal uygulamanız çalışmayı bitirdiğinde, her eylem için durum, süre, girişler ve çıkışlarla birlikte çalışan adımlar dahil olmak üzere o çalıştırmaya ilişkin geçmişi görüntüleyebilirsiniz. Bu zengin ayrıntı, mantıksal uygulamanızın nasıl çalıştığı ve ortaya çıkan tüm sorunları gidermeye başlayabileceğiniz hakkında öngörüler sağlar.
 
-Mantıksal uygulamanızın çalıştırma geçmişine eriştiğinizde Logic Apps erişiminizin kimliğini doğrular ve mantıksal uygulamanızın çalıştırmasında isteklerinizin ve yanıtların giriş ve çıkışları için bağlantılar sağlar. Ancak, herhangi bir parolayı, parolayı, anahtarı veya diğer hassas bilgileri işleyen eylemler için başkalarının bu verilere bakmasını ve erişimini engellemek isteyebilirsiniz. Örneğin, mantıksal uygulamanız bir HTTP eyleminin kimlik doğrulaması sırasında kullanmak üzere [Azure Key Vault](../key-vault/key-vault-whatis.md) bir gizli dizi alırsa, bu gizli anahtarı görünümden gizlemek istersiniz.
+Mantıksal uygulamanızın çalıştırma geçmişine eriştiğinizde Logic Apps erişiminizin kimliğini doğrular ve mantıksal uygulamanızın çalıştırmasında isteklerinizin ve yanıtların giriş ve çıkışları için bağlantılar sağlar. Ancak, herhangi bir parolayı, parolayı, anahtarı veya diğer hassas bilgileri işleyen eylemler için başkalarının bu verilere bakmasını ve erişimini engellemek isteyebilirsiniz. Örneğin, mantıksal uygulamanız bir HTTP eyleminin kimlik doğrulaması sırasında kullanmak üzere [Azure Key Vault](../key-vault/key-vault-overview.md) bir gizli dizi alırsa, bu gizli anahtarı görünümden gizlemek istersiniz.
 
 Mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara erişimi denetlemek için şu seçeneklere sahipsiniz:
 
@@ -370,7 +370,7 @@ Daha fazla bilgi için bu konunun ilerleyen kısımlarında [yer alarak iş akı
 
 [Azure Resource Manager şablonlarıyla](../azure-resource-manager/resource-group-authoring-templates.md#parameters)dağıtımları otomatikleştirdiğiniz zaman, `securestring` ve `secureobject` türlerini kullanarak dağıtımda değerlendirilen güvenli şablon parametrelerini tanımlayabilirsiniz. Şablon parametrelerini tanımlamak için, şablonunuzun en üst düzey `parameters` bölümünü kullanın, bu, iş akışı `parameters` tanımınızın bölümüne göre ayrı ve farklıdır. Şablon parametrelerinin değerlerini sağlamak için ayrı bir [parametre dosyası](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)kullanın.
 
-Örneğin, gizli dizileri kullanıyorsanız, bu gizli dizileri dağıtım [Azure Key Vault](../key-vault/key-vault-whatis.md) ' den alan güvenli şablon parametrelerini tanımlayabilir ve kullanabilirsiniz. Daha sonra, parametre dosyanızdaki anahtar kasasına ve gizli dizi ile gizli dizi oluşturabilirsiniz. Daha fazla bilgi için şu konulara bakın:
+Örneğin, gizli dizileri kullanıyorsanız, bu gizli dizileri dağıtım [Azure Key Vault](../key-vault/key-vault-overview.md) ' den alan güvenli şablon parametrelerini tanımlayabilir ve kullanabilirsiniz. Daha sonra, parametre dosyanızdaki anahtar kasasına ve gizli dizi ile gizli dizi oluşturabilirsiniz. Daha fazla bilgi için şu konulara bakın:
 
 * [Dağıtım sırasında güvenli parametre değerlerini geçirmek için Azure Key Vault kullanma](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * Bu konunun ilerleyen kısımlarında [Azure Resource Manager şablonlarda güvenli parametreler](#secure-parameters-deployment-template)
@@ -425,7 +425,7 @@ Mantıksal uygulamanızın iş akışı tanımındaki hassas bilgileri korumak i
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda güvenli parametreler
 
-Mantıksal uygulama için bir kaynak yöneticisi şablonu birden çok `parameters` bölüme sahiptir. Parolaları, anahtarları, sırları ve diğer hassas bilgileri korumak için, `securestring` veya `secureobject` türünü kullanarak şablon düzeyinde ve iş akışı tanımı düzeyinde güvenli parametreleri tanımlayın. Daha sonra bu değerleri [Azure Key Vault](../key-vault/key-vault-whatis.md) saklayabilir ve anahtar kasası ve gizli dizi için [parametre dosyasını](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) kullanabilirsiniz. Şablonunuz daha sonra bu bilgileri dağıtımda alır. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değerlerini geçirmek için Azure Key Vault kullanma](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Mantıksal uygulama için bir kaynak yöneticisi şablonu birden çok `parameters` bölüme sahiptir. Parolaları, anahtarları, sırları ve diğer hassas bilgileri korumak için, `securestring` veya `secureobject` türünü kullanarak şablon düzeyinde ve iş akışı tanımı düzeyinde güvenli parametreleri tanımlayın. Daha sonra bu değerleri [Azure Key Vault](../key-vault/key-vault-overview.md) saklayabilir ve anahtar kasası ve gizli dizi için [parametre dosyasını](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) kullanabilirsiniz. Şablonunuz daha sonra bu bilgileri dağıtımda alır. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değerlerini geçirmek için Azure Key Vault kullanma](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
 Bu `parameters` bölümler hakkında daha fazla bilgi aşağıda verilmiştir:
 

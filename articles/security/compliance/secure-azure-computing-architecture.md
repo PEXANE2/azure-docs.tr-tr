@@ -6,12 +6,12 @@ ms.author: jahender
 ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 3a27eac3d4609f1054b0ef6a9417fe2f1ca53ae4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: a12f5643c96b855d07bd038fcc96100a87f1252d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656638"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001872"
 ---
 # <a name="secure-azure-computing-architecture"></a>Güvenli Azure Bilgi İşlem Mimarisi
 
@@ -117,14 +117,14 @@ Daha önce bahsedildiği gibi, bu SACA başvurusunu çeşitli gereçler ve Azure
 
     - [Azure İzleyici](https://docs.microsoft.com/azure/azure-monitor/overview )
     - [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) 
-    - [Azure ağ Izleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) 
-    - [Azure Anahtar Kasası.](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 
+    - [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) 
+    - [Azure Anahtar Kasası.](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 
     - [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
     - [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview)
     - [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/overview) 
     - [Azure ön kapısı](https://docs.microsoft.com/azure/frontdoor/front-door-overview)
     - [Azure Güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview)
-    - [Azure DDoS koruması](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
+    - [Azure DDoS Koruması](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
     - [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)
 - Boyutlandırma
     - Bir boyutlandırma alıştırması tamamlanması gerekir. SACA örneği ve ağ aktarım hızı gereksinimleri ile sahip olabileceğiniz eşzamanlı bağlantı sayısına bakın. 
@@ -161,7 +161,7 @@ SCCA gereksinimlerini karşıladığından bu mimariyi öneririz. Yüksek oranda
             - Bu alt ağ, ExpressRoute ağ geçidinin dağıtıldığı yerdir.
 - Yönetim hızlı geçiş kutusu sanal makineleri
     - Ortamın bant dışı yönetimi için kullanılırlar.
-- Ağ sanal cihazları
+- Ağ sanal aletleri
     - Dağıttığınız şablona göre Citrix veya F5 kullanın.
 - Ortak IP'ler
     - ExpressRoute çevrimiçi duruma gelene kadar ön uç için kullanılırlar. Bu IP 'Ler, arka uç Azure özel adres alanına çeviri yapar.

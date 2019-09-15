@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 18864a662464f77d799e54d583092a371bc2d137
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891989"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999961"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Çözümünüz için doğru IoT Hub katmanını seçin
 
@@ -33,7 +33,7 @@ Her bir IoT Hub katmanı, belirli bir günde işleyebilecekleri veri işleme mik
 
 IoT Hub standart katmanı tüm özellikleri sağlar ve çift yönlü iletişim yeteneklerini kullanmak isteyen IoT çözümleri için gereklidir. Temel katman, özelliklerin bir alt kümesini sağlar ve cihazlarından buluta yalnızca tek yönlü iletişim gerektiren IoT çözümlerine yöneliktir. Her iki katmanda de aynı güvenlik ve kimlik doğrulama özellikleri sunulur.
 
-Her IoT Hub için bir katmanda yalnızca bir tür [sürümü](https://azure.microsoft.com/pricing/details/iot-hub/) seçilebilir. Örneğin, S1 ve B3 veya S1 ve S2 gibi farklı sürümlerden birim karışımı olmadan, birden fazla S1 birimli bir IoT Hub oluşturabilirsiniz.
+Her IoT Hub için bir katmanda yalnızca bir tür [sürümü](https://azure.microsoft.com/pricing/details/iot-hub/) seçilebilir. Örneğin, S1 ve S2 gibi farklı sürümlerden birim karışımı olmadan birden fazla S1 birimiyle bir IoT Hub oluşturabilirsiniz.
 
 | Özellik | Temel katman | Ücretsiz/Standart katman |
 | ---------- | ---------- | ------------- |
@@ -86,6 +86,10 @@ IoT Hub temel ve standart katmanları arasındaki desteklenen özelliklerde fark
 | Modül olayı gönder | Yalnızca AMQP ve MQTT | Yalnızca AMQP ve MQTT |
 | [Karşıya dosya yükleme durumunu güncelleştir](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Evet | Evet |
 | [Toplu cihaz işlemi](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Evet, IoT Edge özellikleri dışında | Evet |
+| [İçeri aktarma dışarı aktarma işini iptal et](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | Evet | Evet |
+| [İçeri aktarma dışarı aktarma işi oluştur](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | Evet | Evet |
+| [İçeri aktarma dışarı aktarma işi al](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | Evet | Evet |
+| [İçeri aktarma işlerini al](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | Evet | Evet |
 | [Komut kuyruğunu temizle](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Evet |
 | [Cihaz ikizi al](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Evet |
 | [Modül ikizi al](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Evet |
@@ -107,17 +111,17 @@ Bir IoT Hub çözümü boyutunun en iyi yolu, trafiği birim başına göre değ
 * Bulut-cihaz iletilerini
 * Kimlik kayıt defteri işlemleri
 
-Trafik, hub başına değil, birim başına hesaplanır. Düzey 1 veya 2 IoT Hub örneği, onunla ilişkilendirilmiş çok sayıda 200 birimi olabilir. Düzey 3 IoT Hub örneği en fazla 10 birime sahip olabilir. IoT Hub 'ınızı oluşturduktan sonra, mevcut işlemlerinizi kesintiye uğramadan birim sayısını değiştirebilir veya belirli bir katman içindeki 1, 2 ve 3 boyut arasında geçiş yapabilirsiniz. Daha fazla bilgi için bkz. [IoT Hub yükseltme](iot-hub-upgrade.md).
+Trafik, IoT Hub 'ınız için birim başına ölçülür. Bir IoT Hub 'ı oluşturduğunuzda, katmanını ve sürümünü seçersiniz ve kullanılabilir birim sayısını ayarlarsınız. B1, B2, S1 veya S2 sürümü için en fazla 200 birim satın alabilir veya B3 veya S3 sürümü için en fazla 10 birim satın alabilirsiniz. IoT Hub 'ınız oluşturulduktan sonra, kendi sürümü içinde kullanılabilir birim sayısını değiştirebilir, katmanı içindeki sürümler arasında yükseltme veya düşürme (B1-B2) veya mevcut işlemlerinizi kesintiye uğramadan temel bilgisayardan Standart katmana (B1-S1) yükseltebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub 'ınızı yükseltme](iot-hub-upgrade.md).  
 
 Her bir katmanın trafik özelliklerine örnek olarak, cihazdan buluta iletiler şu sürekli işleme talimatlarını izler:
 
-| Katman | Sürekli üretilen iş | Sürekli gönderme oranı |
+| Katman sürümü | Sürekli üretilen iş | Sürekli gönderme oranı |
 | --- | --- | --- |
 | B1, S1 |Birim başına en fazla 1111 KB/dakika<br/>(1,5 GB/gün/birim) |Birim başına ortalama 278 ileti/dakika<br/>(400.000 ileti/birim başına gün) |
 | B2, S2 |Birim başına en fazla 16 MB/dakika<br/>(22,8 GB/gün/birim) |Birim başına ortalama 4.167 ileti/dakika<br/>(6.000.000 ileti/birim başına gün) |
 | B3, S3 |Birim başına en fazla 814 MB/dakika<br/>(1144,4 GB/gün/birim) |Birim başına ortalama 208.333 ileti/dakika<br/>(300.000.000 ileti/birim başına gün) |
 
-Bu aktarım hızı bilgilerine ek olarak, [IoT Hub kotaları](iot-hub-devguide-quotas-throttling.md) konusuna bakın ve çözümünüzü uygun şekilde tasarlayın.
+Cihazdan buluta aktarım hızı, IoT çözümünü tasarlarken göz önünde bulundurmanız gereken ölçülerden yalnızca biridir. Daha kapsamlı bilgi için bkz. [IoT Hub kotaları ve kısıtları](iot-hub-devguide-quotas-throttling.md).
 
 ### <a name="identity-registry-operation-throughput"></a>Kimlik kayıt defteri işlem performansı
 
@@ -127,7 +131,7 @@ Belirli veri bloğu performans numaraları için bkz. [IoT Hub kotaları ve kıs
 
 ## <a name="auto-scale"></a>Otomatik Ölçeklendirme
 
-IoT Hub izin verilen ileti sınırına yaklaşırsanız, aynı IoT Hub katmanında bir IoT Hub birimini artırmak üzere [otomatik olarak ölçeklendirmek](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) için bu adımları kullanabilirsiniz.
+IoT Hub 'ınızda izin verilen ileti sınırına yaklaşırsanız, aynı IoT Hub katmanındaki IoT Hub birimini artırmak üzere [otomatik olarak ölçeklendirmek](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) için bu adımları kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

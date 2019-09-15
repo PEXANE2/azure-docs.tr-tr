@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB'de WHERE yan tümcesi
+title: Azure Cosmos DB WHERE yan tümcesi
 description: Azure Cosmos DB için SQL WHERE yan tümcesi hakkında bilgi edinin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6a942e48ffea7785fe971cc2f8fa66e8569ed672
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342702"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003462"
 ---
 # <a name="where-clause"></a>WHERE yan tümcesi
 
-İsteğe bağlı WHERE yan tümcesi (`WHERE <filter_condition>`) koşulları belirtir kaynak JSON öğeleri sorgu sonuçlarında eklemek için karşılaması gerekir. Bir JSON öğesi için belirtilen koşullar değerlendirmelidir `true` sonucu olarak kabul edilmesi için. Dizin katman WHERE yan tümcesi, sonuç bir parçası olabilir kaynak öğeleri en küçük kümesini belirlemek için kullanır.
+İsteğe bağlı where yan tümcesi`WHERE <filter_condition>`(), sorgu için kaynak JSON öğelerinin sonuçlara dahil etmek için karşılaması gereken koşulları belirtir. Bir JSON öğesi, sonuç için göz önünde bulundurulması `true` için belirtilen koşulları değerlendirmelidir. Dizin Katmanı WHERE yan tümcesini kullanarak sonucun parçası olabilecek en küçük kaynak öğeleri alt kümesini tespit edebilir.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -33,7 +33,7 @@ WHERE <filter_condition>
   
 - `<scalar_expression>`  
   
-   Hesaplanmasını değeri gösteren ifade. Bkz: [skaler ifadelerin](sql-query-scalar-expressions.md) Ayrıntılar için.  
+   Hesaplanmasını değeri gösteren ifade. Ayrıntılar için bkz. [skalar ifadeler](sql-query-scalar-expressions.md) .  
   
 
 ## <a name="remarks"></a>Açıklamalar
@@ -42,7 +42,7 @@ WHERE <filter_condition>
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki sorguda içeren istekleri öğelerini bir `id` özellik değeri `AndersenFamily`. Sahip olmayan herhangi bir öğeyi hariç bir `id` özelliği veya değeri eşleşmiyor `AndersenFamily`.
+Aşağıdaki sorgu, `id` `AndersenFamily`değeri olan bir özelliği içeren öğeleri ister. Özelliği olmayan veya değeri eşleşmeyen `id` `AndersenFamily`herhangi bir öğeyi dışlar.
 
 ```sql
     SELECT f.address
@@ -50,7 +50,7 @@ Aşağıdaki sorguda içeren istekleri öğelerini bir `id` özellik değeri `An
     WHERE f.id = "AndersenFamily"
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -62,11 +62,11 @@ Sonuçlar şu şekildedir:
     }]
 ```
 
-### <a name="scalar-expressions-in-the-where-clause"></a>WHERE yan tümcesinde skaler ifade
+### <a name="scalar-expressions-in-the-where-clause"></a>WHERE yan tümcesindeki skaler ifadeler
 
-Önceki örnekte, bir basit eşitlik sorgu gösterdi. SQL API'si ayrıca çeşitli destekler [skaler ifadelerin](sql-query-scalar-expressions.md). En sık kullanılan ikili ve birli ifadelerdir. Kaynak JSON nesne özelliği başvurularından da geçerli ifadelerdir.
+Önceki örnekte, bir basit eşitlik sorgu gösterdi. SQL API ayrıca çeşitli [Skalar ifadeleri](sql-query-scalar-expressions.md)destekler. En sık kullanılan ikili ve birli ifadelerdir. Kaynak JSON nesne özelliği başvurularından da geçerli ifadelerdir.
 
-Aşağıdaki desteklenen ikili işleçler kullanabilirsiniz:  
+Aşağıdaki desteklenen ikili işleçleri kullanabilirsiniz:  
 
 |**İşleç türü**  | **Değerler** |
 |---------|---------|
@@ -76,7 +76,7 @@ Aşağıdaki desteklenen ikili işleçler kullanabilirsiniz:
 |Karşılaştırma | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
 |Dize     |  \|\| (birleştirme) |
 
-Aşağıdaki sorgularda ikili işleçler kullanın:
+Aşağıdaki sorgular ikili işleçler kullanır:
 
 ```sql
     SELECT *
@@ -92,7 +92,7 @@ Aşağıdaki sorgularda ikili işleçler kullanın:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-Birli işleçleri kullanabilirsiniz +,-, ~, aşağıdaki örneklerde gösterildiği gibi sorgu değil ve:
+Ayrıca, aşağıdaki örneklerde gösterildiği gibi, sorgularda DEĞIL Birli İşleçler +,-, ~, kullanabilirsiniz:
 
 ```sql
     SELECT *
@@ -104,10 +104,10 @@ Birli işleçleri kullanabilirsiniz +,-, ~, aşağıdaki örneklerde gösterildi
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sorgularda başvuran bir özelliğe de kullanabilirsiniz. Örneğin, `SELECT * FROM Families f WHERE f.isRegistered` özelliği içeren JSON öğeyi döndürür `isRegistered` eşit bir değer ile `true`. Gibi diğer değer `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`, veya `<array>`, öğe sonuçtan dışlar. 
+Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin, `SELECT * FROM Families f WHERE f.isRegistered` değerine eşit `isRegistered` olan özelliği içeren JSON öğesini döndürür. `true` , `false`,, `<number>`, `null` `Undefined` ,`<object>`,Veya gibiherhangibirdeğer,`<array>`sonucu sonuçtan dışlar. `<string>` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Başlarken](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM yan tümcesi](sql-query-from.md)

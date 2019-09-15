@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 4d4fe32b5f457e2b223132006afd20bfe3161bbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/14/2019
+ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142615"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002411"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory 'de sürekli tümleştirme ve teslim (CI/CD)
 
@@ -426,7 +426,7 @@ Aşağıda, yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne gör
 * Altında `typeProperties`iki özellik parametrelenir. Birincisi `maxConcurrency`, varsayılan bir değere sahip ve türünde`string`olan bir ' dır. Varsayılan parametre adına `<entityName>_properties_typeProperties_maxConcurrency`sahiptir.
 * `recurrence` Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , sayı türü olarak parametreleştirilen ve parametre adı sonekli `<entityName>_properties_typeProperties_recurrence_triggerSuffix`olan özelliktir. Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin: `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>LinkedServices
+#### <a name="linkedservices"></a>linkedServices
 
 * Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, türündeki `AzureDataLakeStore`tüm bağlı hizmetler, belirli bir şablon uygulanır ve diğerleri için (aracılığıyla \*) farklı bir şablon uygulanır.
 * Özelliği bir `securestring` değer olarak parametrelendirilecektir, varsayılan bir değere sahip olmayacaktır ve ile `connectionString`Sonekli bir kısaltılmış parametre adı olacaktır. `connectionString`

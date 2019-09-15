@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098634"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999057"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -88,7 +88,7 @@ Ağ çevre ilkeleri ve desenleri, Decades için kullanılabilir. Buna karşılı
 Kimlik kuşağını yönetmeye yönelik en iyi yöntemler aşağıda verilmiştir.
 
 **En iyi uygulama**: PaaS dağıtımınızın güvenliğini sağlamak için anahtarlarınızın ve kimlik bilgilerinizin güvenliğini sağlayın.   
-**Ayrıntı**: Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolanabileceği merkezi bir çözüm kullanabilirsiniz. [Azure Key Vault](../../key-vault/key-vault-whatis.md) , kimlik doğrulama anahtarlarını, depolama hesabı anahtarlarını, veri şifreleme anahtarlarını,. pfx dosyalarını ve parolaları HSM 'ler tarafından korunan anahtarları kullanarak şifreleyerek, anahtarlarınızı ve gizli dizileri korur.
+**Ayrıntı**: Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolanabileceği merkezi bir çözüm kullanabilirsiniz. [Azure Key Vault](../../key-vault/key-vault-overview.md) , kimlik doğrulama anahtarlarını, depolama hesabı anahtarlarını, veri şifreleme anahtarlarını,. pfx dosyalarını ve parolaları HSM 'ler tarafından korunan anahtarları kullanarak şifreleyerek, anahtarlarınızı ve gizli dizileri korur.
 
 **En iyi uygulama**: Kaynak kodunda veya GitHub 'da kimlik bilgilerini ve diğer gizli dizileri yerleştirmeyin.   
 **Ayrıntı**: Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü bir şey, yetkisiz bir tarafın bunlara erişmesini sağlayabilir. Saldırganlar, GitHub gibi kod depolarında depolanan anahtar ve gizli dizileri bulmak için bot teknolojisinden yararlanabilir. Bu genel kod depolarında anahtar ve gizli dizileri yerleştirmeyin.
@@ -133,7 +133,7 @@ App Service kullanmak için en iyi yöntemler aşağıda verilmiştir.
 **Ayrıntı**: Erişim kısıtlama, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur. Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak için RBAC kullanabilirsiniz. Kullanıcılara uygulamalara erişim verme hakkında daha fazla bilgi edinmek için bkz. [erişim yönetimi ile çalışmaya başlama](/azure/role-based-access-control/overview).
 
 **En iyi uygulama**: Anahtarlarınızı koruyun.   
-**Ayrıntı**: Azure Key Vault, bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault, anahtarları ve gizli dizileri (kimlik doğrulaması anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilirsiniz. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Ek güvenlik için HSM'lerde anahtarları içeri aktarabilir veya oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](/azure/key-vault/key-vault-whatis) . Otomatik yenilemeyle TLS sertifikalarınızı yönetmek için Key Vault de kullanabilirsiniz.
+**Ayrıntı**: Azure Key Vault, bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault, anahtarları ve gizli dizileri (kimlik doğrulaması anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilirsiniz. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Ek güvenlik için HSM'lerde anahtarları içeri aktarabilir veya oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](/azure/key-vault/key-vault-overview) . Otomatik yenilemeyle TLS sertifikalarınızı yönetmek için Key Vault de kullanabilirsiniz.
 
 **En iyi uygulama**: Gelen kaynak IP adreslerini kısıtla.   
 **Ayrıntı**: [App Service ortamı](/azure/app-service/environment/intro) , gelen kaynak IP adreslerini ağ güvenlik grupları aracılığıyla kısıtlamanıza yardımcı olan bir sanal ağ tümleştirme özelliğine sahiptir. Sanal ağlar, erişimi denetlediğiniz internet olmayan, yönlendirilebilir bir ağa Azure kaynakları yerleştiretkinleştirmenizi sağlar. Daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](/azure/app-service/web-sites-integrate-with-vnet).

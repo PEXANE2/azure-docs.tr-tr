@@ -9,12 +9,12 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ca155763109dbf4292738354244dc397272d06f4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036622"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002252"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Azure CLı 'dan Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -120,4 +120,4 @@ Bir anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanma
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md) 
-- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

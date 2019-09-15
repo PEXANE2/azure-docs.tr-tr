@@ -1,7 +1,7 @@
 ---
 title: GPU ile çıkarım için model dağıtma
-titleSuffix: Azure Machine Learning service
-description: Bu makalede, bir Web hizmeti olarak GPU özellikli bir TensorFlow derin öğrenme modelini dağıtmak için Azure Machine Learning hizmetini nasıl kullanacağınız öğretilir. hizmet ve puan çıkarım istekleri.
+titleSuffix: Azure Machine Learning
+description: Bu makalede, GPU özellikli bir TensorFlow derin öğrenme modelini Web hizmeti olarak dağıtmak için Azure Machine Learning kullanma öğretilir. hizmet ve puan çıkarma istekleri.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844993"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002779"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 
-Bu makalede, bir Web hizmeti olarak GPU özellikli bir modeli dağıtmak için Azure Machine Learning hizmetini nasıl kullanacağınız öğretilir. Bu makaledeki bilgiler, Azure Kubernetes Service (AKS) üzerinde bir model dağıtmaya dayalıdır. AKS kümesi, çıkarım için model tarafından kullanılan bir GPU kaynağı sağlar.
+Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için Azure Machine Learning kullanma öğretilir. Bu makaledeki bilgiler, Azure Kubernetes Service (AKS) üzerinde bir model dağıtmaya dayalıdır. AKS kümesi, çıkarım için model tarafından kullanılan bir GPU kaynağı sağlar.
 
 Çıkarım veya model Puanlama, dağıtılan modelin tahminleri yapmak için kullanıldığı aşamadır. CPU yerine GPU 'Ları kullanmak, yüksek bir paralelleştirilebilir hesaplama üzerinde performans avantajları sunar.
 
@@ -34,7 +34,7 @@ Bu makalede, bir Web hizmeti olarak GPU özellikli bir modeli dağıtmak için A
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md).
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 * Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için bkz. [SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -51,7 +51,7 @@ Bu makalede, bir Web hizmeti olarak GPU özellikli bir modeli dağıtmak için A
 Mevcut bir çalışma alanına bağlanmak için aşağıdaki kodu kullanın:
 
 > [!IMPORTANT]
-> Bu kod parçacığı, çalışma alanı yapılandırmasının geçerli dizine veya onun üst öğesine kaydedilmesini bekliyor. Çalışma alanı oluşturma hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti çalışma alanları oluşturma ve yönetme](how-to-manage-workspace.md).   Yapılandırmayı dosyaya kaydetme hakkında daha fazla bilgi için bkz. [çalışma alanı yapılandırma dosyası oluşturma](how-to-configure-environment.md#workspace).
+> Bu kod parçacığı, çalışma alanı yapılandırmasının geçerli dizine veya onun üst öğesine kaydedilmesini bekliyor. Çalışma alanı oluşturma hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanları oluşturma ve yönetme](how-to-manage-workspace.md).   Yapılandırmayı dosyaya kaydetme hakkında daha fazla bilgi için bkz. [çalışma alanı yapılandırma dosyası oluşturma](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure, AKS kümesi mevcut olduğu sürece sizi faturalandıracaktır. İle işiniz bittiğinde AKS kümenizi sildiğinizden emin olun.
 
-Azure Machine Learning hizmeti ile AKS kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetine dağıtım](how-to-deploy-azure-kubernetes-service.md).
+Azure Machine Learning ile AKS kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetine dağıtım](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>Giriş betiğini yazın
 

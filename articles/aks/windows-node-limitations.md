@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233137"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000228"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -36,7 +36,7 @@ Pencere sunucusu düğüm havuzu desteği, Kubernetes projesinde yukarı akış 
 
 Kubernetes, geçmişte Linux odaklı. Yukarı akış [Kubernetes.io][kubernetes] Web sitesinde kullanılan birçok örnek, Linux düğümlerinde kullanılmak üzere tasarlanmıştır. Windows Server kapsayıcıları kullanan dağıtımlar oluşturduğunuzda, işletim sistemi düzeyinde aşağıdaki noktalar geçerlidir:
 
-- **Identity** -Linux, tamsayı türleri olarak temsil edilen UserID (UID) ve GROUPıD (GID) kullanır. Kullanıcı ve grup adları kurallı değildir; yalnızca */etc/Groups* ' ın veya bir */etc/passwd* ' in UID + GID ' ye geri doğru bir diğer addır.
+- **Identity** -Linux bir kullanıcıyı bir tamsayı Kullanıcı TANıMLAYıCıSıNA (UID) göre tanımlar. Kullanıcının oturum açmak için alfasayısal bir Kullanıcı adı da vardır. Bu, Linux 'un Kullanıcı UID 'ye çeviri anlamına gelir. Benzer şekilde Linux bir kullanıcı grubunu bir tamsayı grubu tanımlayıcısı (GID) ile tanımlar ve bir grup adını karşılık gelen GID 'ye çevirir.
     - Windows Server, Windows güvenlik erişimi Yöneticisi (SAM) veritabanında depolanan daha büyük bir ikili güvenlik tanımlayıcısı (SID) kullanır. Bu veritabanı, konak ve kapsayıcılar ile ya da kapsayıcılar arasında paylaşılmaz.
 - **Dosya izinleri** -Windows Server, bir bit MASKESI ve UID + GID yerine SID 'lere dayalı bir erişim denetim listesi kullanır
 - **Dosya yolları** -Windows Server 'daki kural/yerine \ ' i kullanmaktır.

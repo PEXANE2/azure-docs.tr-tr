@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning hizmetinde günlüğü etkinleştir
-titleSuffix: Azure Machine Learning service
-description: Hem varsayılan Python günlüğü paketini hem de SDK 'ya özgü işlevleri kullanarak Azure Machine Learning hizmetinde günlüğe yazmayı nasıl etkinleştireceğinizi öğrenin.
+title: Azure Machine Learning oturum açmayı etkinleştir
+titleSuffix: Azure Machine Learning
+description: Hem varsayılan Python günlüğü paketini hem de SDK 'ya özgü işlevselliği kullanarak Azure Machine Learning oturum açmayı nasıl etkinleştireceğinizi öğrenin.
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847918"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002749"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde günlüğü etkinleştir
+# <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning oturum açmayı etkinleştir
 
 Azure Machine Learning Python SDK 'Sı, hem varsayılan Python günlüğü paketini hem de yerel günlüğe kaydetme ve portalda çalışma alanınıza oturum açmak için SDK 'ya özgü işlevselliği kullanarak günlüğü etkinleştirmenizi sağlar. Günlükler geliştiricilere uygulama durumu hakkında gerçek zamanlı bilgiler sağlar ve hataları veya uyarıları tanılamanıza yardımcı olabilir. Bu makalede, aşağıdaki alanlarda günlüğü etkinleştirmenin farklı yollarını öğreneceksiniz:
 
@@ -27,7 +27,7 @@ Azure Machine Learning Python SDK 'Sı, hem varsayılan Python günlüğü paket
 > * Dağıtılan modeller
 > * Python `logging` ayarları
 
-[Azure Machine Learning hizmet çalışma alanı oluşturun](how-to-manage-workspace.md). SDK hakkında daha fazla bilgi için [Kılavuzu](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) kullanın.
+[Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md). SDK hakkında daha fazla bilgi için [Kılavuzu](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) kullanın.
 
 ## <a name="training-models-and-compute-target-logging"></a>Eğitim modelleri ve işlem hedefi günlüğü
 

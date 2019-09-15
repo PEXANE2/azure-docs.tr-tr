@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d97ca91466516b8722ecca77d19078399a258f7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814098"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001718"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesi için kaynakları yönetme 
 
@@ -51,17 +51,19 @@ Spark geçmiş sunucusu Web Kullanıcı arabirimi şöyle görünür:
 ![HDInsight Spark geçmiş sunucusu](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>Yarn Kullanıcı arabirimini açın
+
 Şu anda Spark kümesinde çalışmakta olan uygulamaları izlemek için YARN Kullanıcı arabirimini kullanabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com/)Spark kümesini açın. Daha fazla bilgi için bkz. [kümeleri listeleme ve gösterme](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. **Hızlı bağlantılardan** **küme panosu**' na ve ardından **Yarn**' ye tıklayın.
 
-    ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için **küme panosu**' na ve ardından **HDInsight küme panosu**' na tıklayın. Ambarı kullanıcı arabiriminden, **Yarn**' ye tıklayın, **hızlı bağlantılar**' a tıklayın, etkin kaynak yöneticisi ve ardından **Kaynak Yöneticisi Kullanıcı arabirimi**' ne tıklayın.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Spark uygulamaları için kümeleri iyileştirme
+
 Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanılabilecek üç temel parametre, `spark.executor.instances` `spark.executor.cores`ve `spark.executor.memory`' dir. Yürütücü, Spark uygulaması için başlatılan bir işlemdir. Çalışan düğümünde çalışır ve uygulama için görevleri yürütmekten sorumludur. Her kümenin varsayılan yürütmelerin sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bu bilgiler, ' de `spark-defaults.conf` küme baş düğümlerinde depolanır.
 
 Üç yapılandırma parametresi küme düzeyinde yapılandırılabilir (küme üzerinde çalışan tüm uygulamalar için) veya her bir uygulama için de belirlenebilir.
@@ -76,7 +78,7 @@ Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanıl
 
 3. Yapılandırma değişikliklerini kaydetmek için **Kaydet** ' e tıklayın. Sayfanın üst kısmında, etkilenen tüm hizmetleri yeniden başlatmanız istenir. **Yeniden Başlat**'a tıklayın.
 
-    ![Hizmetleri yeniden Başlat](./media/apache-spark-resource-manager/restart-services.png)
+    ![Hizmetleri yeniden Başlat](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Not defteri 'nde çalışan bir uygulamanın parametrelerini değiştirme
 Jupyter not defterinde çalışan uygulamalar için, yapılandırma değişikliğini yapmak için `%%configure` Magic 'i kullanabilirsiniz. İdeal olarak, ilk kod hücresini çalıştırmadan önce bu değişiklikleri uygulamanın başlangıcında yapmanız gerekir. Bunun yapılması, yapılandırmanın, oluşturulduğu zaman, uygun bir oturuma uygulanmasını sağlar. Uygulamada sonraki bir aşamada yapılandırmayı değiştirmek istiyorsanız `-f` parametresini kullanmanız gerekir. Ancak bunu yaparak uygulamadaki tüm ilerleme durumu kaybedilir.
@@ -135,21 +137,21 @@ Spark dinamik ayırma nedeniyle, yalnızca Thrift sunucusu tarafından tüketile
 ## <a name="restart-the-jupyter-service"></a>Jupyıter hizmetini yeniden başlatma
 Makalenin başlangıcında gösterildiği gibi, ambarı Web Kullanıcı arabirimini başlatın. Sol gezinti bölmesinden **jupi**' ye tıklayın, **hizmet eylemleri**' ne tıklayın ve ardından **Tümünü Yeniden Başlat**' a tıklayın. Bu, Jupyıter hizmetini tüm yayın düğümlerinde başlatır.
 
-![Jupyıter 'ı yeniden Başlat](./media/apache-spark-resource-manager/restart-jupyter.png "Jupyıter 'ı yeniden Başlat")
+![Jupyıter 'ı yeniden Başlat](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyıter 'ı yeniden Başlat")
 
 ## <a name="monitor-resources"></a>Kaynakları izleme
 Makalenin başlangıcında gösterildiği gibi Yarn Kullanıcı arabirimini başlatın. Ekranın üstündeki küme ölçümleri tablosunda, **kullanılan bellek** ve **bellek toplam** sütunları değerlerini denetleyin. İki değer yakınsa, bir sonraki uygulamayı başlatmak için yeterli kaynak bulunmayabilir. Aynı, **kullanılan sanal çekirdekler** ve **sanal çekirdekler** için de geçerlidir. Ayrıca, ana görünümde, **kabul edilmiş** durumda olan ve **çalışan** ya da **başarısız** durumuna geçmemiş bir uygulama varsa, bu, başlamak için yeterli kaynak bulunmadığını de ifade eder.
 
-![Kaynak sınırı](./media/apache-spark-resource-manager/resource-limit.png "Kaynak sınırı")
+![Kaynak sınırı](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Kaynak sınırı")
 
 ## <a name="kill-running-applications"></a>Çalışan uygulamaları Sonlandır
 1. Yarn Kullanıcı arabiriminde sol bölmede, **çalışıyor**' a tıklayın. Çalışan uygulamalar listesinden, sonlandırılacak uygulamayı belirleme ve **kimliğe**tıklama.
 
-    ![KILL APP1](./media/apache-spark-resource-manager/kill-app1.png "KILL APP1")
+    ![KILL APP1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "KILL APP1")
 
 2. Sağ üst köşedeki **Uygulamayı Sonlandır** ' a ve ardından **Tamam**' a tıklayın.
 
-    ![KILL app2](./media/apache-spark-resource-manager/kill-app2.png "KILL app2")
+    ![KILL app2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "KILL app2")
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [HDInsight’ta bir Apache Spark kümesinde çalışan işleri izleme ve hata ayıklama](apache-spark-job-debugging.md)

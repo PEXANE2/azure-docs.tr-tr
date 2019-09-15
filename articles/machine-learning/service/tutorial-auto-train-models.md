@@ -1,7 +1,7 @@
 ---
 title: 'Regresyon modeli öğreticisi: Otomatikleştirilmiş ML'
-titleSuffix: Azure Machine Learning service
-description: Otomatik makine öğrenimi kullanarak makine öğrenimi modeli oluşturmayı öğrenin. Azure Machine Learning, veri ön işleme, algoritma seçimi ve hiper parametre seçimini sizin için otomatik bir şekilde gerçekleştirebilir. Ardından, son model Azure Machine Learning hizmeti ile dağıtılır.
+titleSuffix: Azure Machine Learning
+description: Otomatik makine öğrenimi kullanarak makine öğrenimi modeli oluşturmayı öğrenin. Azure Machine Learning, veri ön işleme, algoritma seçimi ve hiper parametre seçimini sizin için otomatik bir şekilde gerçekleştirebilir. Ardından, son model Azure Machine Learning ile dağıtılır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036242"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003975"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: Taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 
-Bu öğreticide, NYC TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure Machine Learning hizmetinde otomatik makine öğrenimini kullanırsınız. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul eder ve en iyi modele ulaşmak için farklı özellik normalleştirme/standartlaştırma yöntemlerinin, modellerinin ve hiper parametre ayarlarının birleşimleri aracılığıyla otomatik olarak yinelenir.
+Bu öğreticide, NYC TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure Machine Learning ' de otomatik makine öğrenimini kullanırsınız. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul eder ve en iyi modele ulaşmak için farklı özellik normalleştirme/standartlaştırma yöntemlerinin, modellerinin ve hiper parametre ayarlarının birleşimleri aracılığıyla otomatik olarak yinelenir.
 
 ![Akış diyagramı](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,11 +30,11 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 > * Otomatik makine öğrenimi regresyon modelini eğitme
 > * Model doğruluğunu hesapla
 
-Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning Service 'in [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Zaten bir Azure Machine Learning Service çalışma alanınız veya Not defteriniz sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
+* Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak **öğreticiler/Regression-Automated-ml. ipynb** Not defterini açın.
 
 Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Gerekli `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` paketleri almak için öğesini çalıştırın.
@@ -1012,7 +1012,7 @@ y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-`root mean squared error` Sonuçların sayısını hesaplayın. Tahmin edilen değerlerle karşılaştırmak için veriçerçevesinibirlisteyedönüştürün.`y_test` İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y değişkeni ile aynı birimlerde bir hata verir. EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir.
+`root mean squared error` Sonuçların sayısını hesaplayın. Tahmin edilen değerlerle karşılaştırmak için veriçerçevesinibirlisteyedönüştürün.`y_test` İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y değişkeni ile aynı birimlerde bir hata **verir.** EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1057,7 +1057,7 @@ Geleneksel makine öğrenme modeli geliştirme sürecinde yüksek kaynak kullan�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer Azure Machine Learning hizmeti öğreticilerini çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
+Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
 
 ### <a name="stop-the-notebook-vm"></a>Not defteri VM 'sini durdur
 
@@ -1088,4 +1088,4 @@ Bu otomatik makine öğrenimi öğreticisinde aşağıdaki görevleri yaptınız
 > * Özel parametrelerle yerel olarak otomatik regresyon modeli kullanılarak eğitilen.
 > * Araştırılan ve gözden geçirilmiş eğitim sonuçları.
 
-[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning hizmetiyle dağıtın.
+[Modelinizi](tutorial-deploy-models-with-aml.md) Azure Machine Learning ile.

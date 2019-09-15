@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2010
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259236"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003498"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Hızlı Başlangıç: Düğüm Web uygulaması kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma 
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıç, bir gizli dizi Azure Key Vault ve bir Web uygulaması k
 * Web uygulaması için [yönetilen kimliği](../active-directory/managed-service-identity/overview.md) etkinleştirin.
 * Web uygulamasının anahtar kasasından verileri okuması için gereken izinleri verme.
 
-Devam etmeden önce [Key Vault için temel kavramları](key-vault-whatis.md#basic-concepts)öğrendiğinizden emin olun.
+Devam etmeden önce [Key Vault için temel kavramları](basic-concepts.md)öğrendiğinizden emin olun.
 
 > [!NOTE]
 > Key Vault, gizli dizilerin program aracılığıyla depolandığı merkezi bir depodur. Ancak bunun için uygulamaların ve kullanıcıların bir Key Vault'a kimlik doğrulaması yapması, yani gizli dizi sunması gerekir. En iyi güvenlik uygulamaları ile, bu ilk parolanın düzenli aralıklarla döndürülmesi gerekir. 

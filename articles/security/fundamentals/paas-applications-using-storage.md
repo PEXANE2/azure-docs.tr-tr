@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726757"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999163"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage kullanarak PaaS Web ve mobil uygulamaları güvenli hale getirmenin en iyi yöntemleri
 Bu makalede, hizmet olarak platform (PaaS) Web ve mobil uygulamalarınızın güvenliğini sağlamak için Azure Depolama güvenliği en iyi uygulamalarının bir koleksiyonunu tartıştık. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
@@ -71,7 +71,7 @@ RBAC hakkında daha fazla bilgi için bkz.:
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Yüksek değerli veriler için istemci tarafı şifrelemeyi kullanın
 İstemci tarafı şifreleme, Azure depolama 'ya yüklemeden önce yoldaki verileri programlı bir şekilde şifrelemenizi ve verileri alma sırasında program aracılığıyla şifrelerini nasıl çözebilmenizi sağlar. Bu, aktarım sırasında verilerin şifrelenmesini sağlar, ancak bekleyen verilerin şifrelenmesini de sağlar. İstemci tarafı şifreleme, verilerinizi şifrelemek için en güvenli yöntemdir ancak uygulamanızda programlı değişiklikler yapmanız ve anahtar yönetim süreçlerini yerinde yerleştirmeniz gerekir.
 
-İstemci tarafı şifreleme, şifreleme anahtarlarınız üzerinde tek denetim sağlamanıza de olanak sağlar. Kendi şifreleme anahtarlarınızı oluşturabilir ve yönetebilirsiniz. Azure Storage istemci kitaplığı 'nın anahtar şifreleme anahtarı (KEK) kullanılarak Sarmalanan (şifreli) bir içerik şifreleme anahtarı (CEK) oluşturduğu bir Envelope teknii kullanır. KEK bir anahtar tanımlayıcısı tarafından tanımlanır ve asimetrik bir anahtar çifti veya simetrik anahtar olabilir ve yerel olarak yönetilebilir veya [Azure Key Vault](/azure/key-vault/key-vault-whatis)depolanabilir.
+İstemci tarafı şifreleme, şifreleme anahtarlarınız üzerinde tek denetim sağlamanıza de olanak sağlar. Kendi şifreleme anahtarlarınızı oluşturabilir ve yönetebilirsiniz. Azure Storage istemci kitaplığı 'nın anahtar şifreleme anahtarı (KEK) kullanılarak Sarmalanan (şifreli) bir içerik şifreleme anahtarı (CEK) oluşturduğu bir Envelope teknii kullanır. KEK bir anahtar tanımlayıcısı tarafından tanımlanır ve asimetrik bir anahtar çifti veya simetrik anahtar olabilir ve yerel olarak yönetilebilir veya [Azure Key Vault](/azure/key-vault/key-vault-overview)depolanabilir.
 
 İstemci tarafı şifreleme, Java ve .NET depolama istemci kitaplıklarında yerleşik olarak bulunur. İstemci uygulamaları içindeki verileri şifreleme ve kendi şifreleme anahtarlarınızı oluşturma ve yönetme hakkında bilgi için bkz. [istemci tarafı şifreleme ve Azure Key Vault Microsoft Azure depolama](/azure/storage/common/storage-client-side-encryption) .
 

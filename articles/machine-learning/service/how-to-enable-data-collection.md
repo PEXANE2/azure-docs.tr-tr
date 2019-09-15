@@ -1,6 +1,6 @@
 ---
 title: Üretim modellerinizde veri toplama
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Blob depolama alanındaki Azure Machine Learning modeli giriş verilerini nasıl toplayacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860526"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002853"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modelleri için veri toplama
 
-Bu makalede, giriş model verileri, dağıttınız Azure Machine Learning hizmetlerinden Azure Kubernetes kümesi (AKS) ile bir Azure Blob depolama alanına toplamak nasıl öğrenebilirsiniz. 
+Bu makalede, Azure Kubernetes kümesine (AKS) bir Azure Blob depolama alanına dağıttığınız Azure Machine Learning giriş modeli verilerini nasıl toplayabileceğinizi öğrenebilirsiniz. 
 
 Etkinleştirildikten sonra bu verileri, Topla, yardımcı olur:
 * Üretim verileri modelinize girdiğinde [veri Drifts izleme](how-to-monitor-data-drift.md)
@@ -50,9 +50,9 @@ Aşağıdaki veriler toplanabilir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-- Bir Azure Machine Learning hizmeti çalışma alanında, yüklü Python için betikleri ve Azure Machine Learning SDK'sını içeren yerel bir dizin. Kullanarak şu önkoşul olarak gerekenleri edinin öğrenin [bir geliştirme ortamı yapılandırma](how-to-configure-environment.md) belge.
+- Azure Machine Learning çalışma alanı, betikleri içeren yerel dizin ve Python için Azure Machine Learning SDK 'Sı yüklendi. Kullanarak şu önkoşul olarak gerekenleri edinin öğrenin [bir geliştirme ortamı yapılandırma](how-to-configure-environment.md) belge.
 
 - Azure Kubernetes Service (AKS) dağıtılması için eğitilen makine öğrenme modeli. Yoksa, bkz. [görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md) öğretici.
 
@@ -61,7 +61,7 @@ Aşağıdaki veriler toplanabilir:
 - [Ortamınızı ayarlama](how-to-configure-environment.md) yükleyip [izleme SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Veri toplamayı etkinleştirme
-Veri toplama, Azure Machine Learning hizmeti veya diğer araçları dağıtılan model bağımsız olarak etkinleştirilebilir. 
+Veri toplama, Azure Machine Learning veya diğer araçlarla dağıtılan modelden bağımsız olarak etkinleştirilebilir. 
 
 Bunu etkinleştirmek için şunları yapmanız:
 

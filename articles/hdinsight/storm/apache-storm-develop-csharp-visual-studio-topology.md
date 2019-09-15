@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915180"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003808"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual C# Studio için Data Lake araçları 'nı kullanarak Apache Storm için topolojiler geliştirin
 
@@ -135,7 +135,7 @@ Bu bileşeni kullanan ve HDInsight 3,5 üzerinde fırtınası ile birlikte çal�
 
 2. **Yeni proje** penceresinde, **yüklü** > **Şablonlar**' ı genişletin ve **Azure Data Lake**' yi seçin. Şablonlar listesinden, **fırtınası uygulaması**' nı seçin. Ekranın alt kısmında, **WORDCOUNT** değerini uygulamanın adı olarak girin.
 
-    ![Yeni proje penceresinin ekran görüntüsü](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Yeni proje penceresinin ekran görüntüsü](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. Projeyi oluşturduktan sonra, aşağıdaki dosyalara sahip olmanız gerekir:
 
@@ -338,7 +338,7 @@ Bu bileşeni kullanan ve HDInsight 3,5 üzerinde fırtınası ile birlikte çal�
 
 Spout ve cıvatları, verilerin bileşenler arasında nasıl akacağını tanımlayan bir grafikte düzenlenir. Bu topoloji için grafik aşağıdaki gibidir:
 
-![Bileşenlerin nasıl düzenlendiğine ilişkin diyagram](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Bileşenlerin nasıl düzenlendiğine ilişkin diyagram](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 Cümleler Spout 'den dağıtılır ve Splitter sürgüsü örneklerine dağıtılır. Bölümlendirici, tümce, sayaç ayraçına dağıtılan kelimelerin içine alınır.
 
@@ -461,7 +461,6 @@ Karma topolojinin bir örneği için bir proje oluşturun ve sonra da **fırtın
   > [!NOTE]  
   > Bu sürüm ayrıca bir metin dosyasındaki Clojure kodunun Java bileşeni olarak nasıl kullanılacağını gösterir.
 
-
 Proje gönderildiğinde kullanılan topolojiyi değiştirmek için, `[Active(true)]` ifadeyi kümeye göndermeden önce, kullanmak istediğiniz topolojiye taşıyın.
 
 > [!NOTE]  
@@ -571,15 +570,15 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
    > [!NOTE]
    > Topolojiyi bir kümeye dağıtmadan önce, **çıkış türünü** yeniden **sınıf kitaplığına** değiştirmeyi unutmayın.
 
-2. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından**Yeni öğe** **Ekle** > ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak **LocalTest.cs** girin. Son olarak, **Ekle**' ye tıklayın.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından**Yeni öğe** **Ekle** > ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak **LocalTest.cs** girin. Son olarak, **Ekle**' ye tıklayın.
 
-3. **LocalTest.cs**açın ve aşağıdaki **using** ifadesini en üste ekleyin:
+1. **LocalTest.cs**açın ve aşağıdaki **using** ifadesini en üste ekleyin:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. **Localtest** sınıfının içeriği olarak aşağıdaki kodu kullanın:
+1. **Localtest** sınıfının içeriği olarak aşağıdaki kodu kullanın:
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
     Console.ReadKey();
     ```
 
-2. Değişiklikleri kaydedin ve ardından **F5** ' e tıklayın veya projeyi başlatmak için hata**ayıklamayı Başlat** ' **ı seçin.**  >  Bir konsol penceresi görünür ve test ilerleme durumu olarak günlüğe kaydedilir. **Sınamalar tamamlandığında** , pencereyi kapatmak için herhangi bir tuşa basın.
+1. Değişiklikleri kaydedin ve ardından **F5** ' e tıklayın veya projeyi başlatmak için hata**ayıklamayı Başlat** ' **ı seçin.**  >  Bir konsol penceresi görünür ve test ilerleme durumu olarak günlüğe kaydedilir. **Sınamalar tamamlandığında** , pencereyi kapatmak için herhangi bir tuşa basın.
 
-3. Projenizi içeren dizini bulmak için **Windows Gezgini** 'ni kullanın. Örneğin: **C:\Users\<your_user_name > \ Studio 2013 \ projeler\wordcount\wordcount**. Bu dizinde, **bin**' i açın ve ardından **Hata Ayıkla**' ya tıklayın. Testler çalıştırıldığında üretilen metin dosyalarını görmeniz gerekir: cümleler. txt, Counter. txt ve Splitter. txt. Her metin dosyasını açın ve verileri inceleyin.
+1. Projenizi içeren dizini bulmak için **Windows Gezgini** 'ni kullanın. Örneğin: **C:\Users\<your_user_name > \ Studio 2013 \ projeler\wordcount\wordcount**. Bu dizinde, **bin**' i açın ve ardından **Hata Ayıkla**' ya tıklayın. Testler çalıştırıldığında üretilen metin dosyalarını görmeniz gerekir: cümleler. txt, Counter. txt ve Splitter. txt. Her metin dosyasını açın ve verileri inceleyin.
 
    > [!NOTE]  
    > Dize verileri, bu dosyalardaki ondalık değerlerin bir dizisi olarak devam ettirir. Örneğin, [ \[97.103.111]], **Splitter. txt** dosyasında *ve*kelimedir.

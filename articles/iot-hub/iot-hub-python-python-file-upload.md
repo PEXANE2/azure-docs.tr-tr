@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 37ea126952451eae81c548a11f70b9a258808d34
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147362"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001118"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub (Python) ile cihazınızdan buluta dosya yükleme
 
@@ -25,7 +25,7 @@ Bu makalede, [Azure Blob depolamaya](../storage/index.yml)bir dosyayı karşıya
 
 * IoT Hub 'ınız aracılığıyla bir dosyayı karşıya yüklemek için Python istemcisini kullanın.
 
-[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-python.md) hızlı başlangıç telemetriyi, IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Dosyaları bir cihazdan kapladığınızda, IoT Hub güvenlik ve güvenilirliğini kullanmaya devam edebilirsiniz.
+[Bir cihazdan IoT Hub 'ına hızlı başlangıç Telemetriyi](quickstart-send-telemetry-python.md) , IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Dosyaları bir cihazdan kapladığınızda, IoT Hub güvenlik ve güvenilirliğini kullanmaya devam edebilirsiniz.
 
 > [!NOTE]
 > IoT Hub Python SDK Şu anda yalnızca **. txt** dosyaları gibi karakter tabanlı dosyaları karşıya yüklemeyi desteklemektedir.
@@ -35,6 +35,9 @@ Bu öğreticinin sonunda Python konsol uygulamasını çalıştırırsınız:
 * Python cihaz SDK 'sını kullanarak bir dosyayı depolamaya yükleyen **FileUpload.py**.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+> [!NOTE]
+> Bu kılavuz, yeni v2 SDK 'sında dosya karşıya yükleme özelliği henüz uygulanmadığı için kullanımdan kaldırılan v1 Python SDK 'sını kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

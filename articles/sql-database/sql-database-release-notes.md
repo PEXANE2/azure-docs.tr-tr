@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: ef19d22b5c47c51f5ee3f74a4d7ab06725f7ed41
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: ed41ccea0754f3eeffdd0248bac567859db1492c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968323"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001521"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -36,13 +36,9 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 |Bellek Izni geri bildirimi (satır modu) (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [bellek verme geri bildirimi (satır modu)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | Azure portal sorgu Düzenleyicisi |Bilgi için bkz. [Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](sql-database-connect-query-portal.md).|
 | Tek veritabanları ve elastik havuzlarla R Hizmetleri/makine öğrenimi |Bilgi için bkz. [Azure SQL veritabanı 'nda Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
-| Yönetilen örneklerle bırakılan veritabanlarını yeniden oluşturma |Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde bırakılan veritabanlarını yeniden oluşturma](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266).|
-| Yönetilen örneklerle çoğaltma |Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma](replication-with-sql-database-managed-instance.md).|
 | Sunucusuz işlem katmanı | Daha fazla bilgi için bkz. [SQL veritabanı sunucusuz (Önizleme)](sql-database-serverless.md).|
 |SQL Analytics|Bilgi için bkz. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Tablo değişkeni ertelenmiş derlemesi (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [tablo değişkeni ertelenmiş derleme](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
-| Yönetilen örneklerle tehdit algılama |Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'nde tehdit algılamayı yapılandırma](sql-database-managed-instance-threat-detection.md).|
-| Yönetilen örneklerle Kendi Anahtarını Getir (BYOK) ile saydam veri şifrelemesi (TDE) |Bilgi için, bkz [. Azure SQL saydam veri şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlar: Kendi Anahtarını Getir desteği](transparent-data-encryption-byok-azure-sql.md).|
 | &nbsp; |
 
 ### <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
@@ -50,13 +46,19 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 | Özellik | Ayrıntılar |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
-| <a href="https://aka.ms/managed-instance-tde-byok">Kendi şifreleme anahtarlarınızı getir</a> | Mevcut TDE anahtarlarıyla Saydam Veri Şifrelemesi (TDE) zaten etkinleştirilmiş olan Şirket içinden veritabanını geçirin. |
+| <a href="https://aka.ms/managed-instance-tde-byok">Kendi Anahtarını Getir (BYOK) ile saydam veri şifrelemesi (TDE)</a> |Bilgi için, bkz [. Azure SQL saydam veri şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlar: Kendi Anahtarını Getir desteği](transparent-data-encryption-byok-azure-sql.md).|
 | <a href="https://aka.ms/managed-instance-failover-groups">Coğrafi olarak dağıtılmış yük devretme grupları</a> | Örneğin bir kopyasını başka bir bölgede tutun ve bölgesel olağanüstü durum senaryosunda bile verilerinizin kullanılabilir olmasını sağlayın. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak sunucu düzeyinde oturumlar oluşturun. |
-| [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) | Tablolardaki değişiklikleri yönetilen örneklere, tek veritabanlarına veya SQL Server örneklerine yerleştirilmiş diğer veritabanlarına çoğaltın veya diğer yönetilen örneklerde veya SQL Server örneğinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. |
+| [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) | Tablolardaki değişiklikleri yönetilen örneklere, tek veritabanlarına veya SQL Server örneklerine yerleştirilmiş diğer veritabanlarına çoğaltın veya diğer yönetilen örneklerde veya SQL Server örneğinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma](replication-with-sql-database-managed-instance.md). |
+| Tehdit algılama |Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'nde tehdit algılamayı yapılandırma](sql-database-managed-instance-threat-detection.md).|
+| Yönetilen örneklerle bırakılan veritabanlarını yeniden oluşturma |Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde bırakılan veritabanlarını yeniden oluşturma](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266).|
 | &nbsp; |
 
 ---
+
+## <a name="fixed-known-issues"></a>Bilinen sorunlar düzeltildi
+
+- **2019 Ağu** -kapsanan veritabanları yönetilen örnekte tam olarak desteklenmektedir.
 
 ## <a name="updates"></a>Güncelleştirmeler
 

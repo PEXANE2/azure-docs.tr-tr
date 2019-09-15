@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716833"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998426"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler
 
@@ -55,7 +55,7 @@ Azure 'daki müşteri kimliği ve erişim yönetimi (CıHAR) hizmeti şunları i
 
 Kimlik sağlayıcıları, kullanıcılar, diğer sistemlerle ve bir kimlik görevi elde etmek için sırasıyla Yerel Kullanıcı diziniyle etkileşime Azure AD B2C. Örneğin, bir kullanıcı için oturum açın, yeni bir Kullanıcı kaydedin veya parolayı sıfırlayın. Kimlik deneyimi çerçevesi ve bir ilke (Kullanıcı yolculuğu veya güven çerçevesi ilkesi olarak da bilinir), çok taraflara sahip güven oluşturur ve açıkça aktörleri, eylemleri, protokolleri ve tamamlanacak adımların sırasını tanımlar.
 
-Kimlik deneyimi çerçevesi, OpenID Connect, OAuth, SAML, Wsbeslik gibi standart protokol biçimlerindeki varlıklar arasında güveni düzenleyen ve örneğin REST gibi standart olmayan,, ilke temelli ve bulut tabanlı bir Azure platformudur. API tabanlı sistemden sisteme talep değişimler. Framework, HTML ve CSS 'yi destekleyen, Kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
+Kimlik deneyimi çerçevesi, OpenID Connect, OAuth, SAML ve standart olmayan birkaç standart protokol biçiminde varlıklar arasında güveni düzenleyen, örneğin REST gibi standart bir yapılandırılabilir, ilke odaklı, bulut tabanlı bir Azure platformudur. API tabanlı sistemden sisteme talep değişimler. Framework, HTML ve CSS 'yi destekleyen, Kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
 
 Özel ilke bir veya hiyerarşi zincirinde birbirine başvuran daha fazla XML biçimindeki dosyadan oluşabilir. XML öğeleri, diğer öğelerin yanı sıra talep şemasını, talep dönüştürmelerini, içerik tanımlarını, talep sağlayıcılarını, teknik profilleri ve Kullanıcı yolculuğu düzenleme adımlarını tanımlar. Özel bir ilke, bağlı olan taraf tarafından çağrıldığında kimlik deneyimi çerçevesi tarafından yürütülen bir veya birkaç XML dosyası olarak erişilebilir. Özel ilkeleri yapılandıran geliştiriciler, her bir kimlik sağlayıcısı için gerektiğinde meta veri uç noktalarını, tam talep istekleri Exchange tanımlarını ve parolaları, anahtarları ve sertifikaları yapılandırmak için güvenilir ilişkileri dikkatle tanımlamalıdır.
 

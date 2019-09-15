@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: ae9aaea91f62a7e79835e65a5a9f9c76017afdb1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934396"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003853"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Öğretici: Python 'da Windows sanal makinesiyle Azure Key Vault kullanma
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Key Vault bilgileri okumak için bir konsol uygulamasın�
 > * Yönetilen bir kimliği etkinleştirin.
 > * VM kimliğine izin atayın.
 
-Başlamadan önce [temel kavramları Key Vault](key-vault-whatis.md#basic-concepts)okuyun. 
+Başlamadan önce [temel kavramları Key Vault](basic-concepts.md)okuyun. 
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
@@ -46,7 +46,7 @@ Windows, Mac ve Linux için:
 
 Azure Key Vault, kimlik bilgilerini güvenli bir şekilde depolar, bu nedenle kodunuzda görüntülenmezler. Ancak, anahtarlarınızı almak için Azure Key Vault kimlik doğrulaması yapmanız gerekir. Key Vault kimlik doğrulaması yapmak için bir kimlik bilgisi gerekir. Bu, klasik bir önyükleme divma. Yönetilen Hizmet Kimliği (MSI), işlemi basitleştiren bir _önyükleme kimliği_ sağlayarak bu sorunu çözer.
 
-Azure sanal makineler, Azure App Service veya Azure Işlevleri gibi bir Azure hizmeti için MSI 'yi etkinleştirdiğinizde Azure bir [hizmet sorumlusu](key-vault-whatis.md#basic-concepts)oluşturur. MSI bunu, Azure Active Directory (Azure AD) içindeki hizmetin örneği için yapar ve hizmet sorumlusu kimlik bilgilerini bu örneğe çıkartır. 
+Azure sanal makineler, Azure App Service veya Azure Işlevleri gibi bir Azure hizmeti için MSI 'yi etkinleştirdiğinizde Azure bir [hizmet sorumlusu](basic-concepts.md)oluşturur. MSI bunu, Azure Active Directory (Azure AD) içindeki hizmetin örneği için yapar ve hizmet sorumlusu kimlik bilgilerini bu örneğe çıkartır. 
 
 ![MSI](media/MSI.png)
 
@@ -81,7 +81,7 @@ Bu öğreticide yeni oluşturulan kaynak grubunuzu kullanırsınız.
 
 * Anahtar Kasası adı: yalnızca rakam (0-9), harf (a-z, A-Z) ve kısa çizgi (-) içerebilen 3 ile 24 karakter arasında bir dize
 * Kaynak grubu adı
-* Konum: **Batı ABD**
+* Konumuna **Batı ABD**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"

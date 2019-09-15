@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516756"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002814"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Sanal dizi en iyi uygulamaları
 
@@ -199,7 +199,7 @@ StorSimple birimleri için ACRs 'yi yapılandırırken aşağıdaki en iyi yönt
 ### <a name="data-security-and-encryption"></a>Veri güvenliği ve şifreleme
 StorSimple Sanal diziniz, verilerinizin gizliliğini ve bütünlüğünü sağlayan veri güvenliğine ve şifreleme özelliklerine sahiptir. Bu özellikleri kullanırken, bu en iyi yöntemleri izlemeniz önerilir: 
 
-* Veri sanal dizinizden buluta gönderilmeden önce AES-256 şifrelemesi oluşturmak için bir bulut depolama şifreleme anahtarı tanımlayın. Verileriniz ile başlamak üzere şifrelendiyse bu anahtar gerekli değildir. Anahtar, [Azure Anahtar Kasası](../key-vault/key-vault-whatis.md)gibi bir anahtar yönetim sistemi kullanılarak oluşturulabilir ve güvenli bir şekilde saklanabilir.
+* Veri sanal dizinizden buluta gönderilmeden önce AES-256 şifrelemesi oluşturmak için bir bulut depolama şifreleme anahtarı tanımlayın. Verileriniz ile başlamak üzere şifrelendiyse bu anahtar gerekli değildir. Anahtar, [Azure Anahtar Kasası](../key-vault/key-vault-overview.md)gibi bir anahtar yönetim sistemi kullanılarak oluşturulabilir ve güvenli bir şekilde saklanabilir.
 * StorSimple Yöneticisi hizmeti aracılığıyla depolama hesabını yapılandırırken, StorSimple cihazınız ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak üzere SSL modunu etkinleştirdiğinizden emin olun.
 * Değiştirilen Yöneticiler listesine göre erişim değişiklikleri için düzenli aralıklarla depolama hesaplarınız (Azure Storage Service 'e erişerek) anahtarlarını yeniden oluşturun.
 * Sanal dizinizdeki veriler Azure 'a gönderilmeden önce sıkıştırılır ve yinelenenleri kaldırılmış. Windows Server konağında yinelenen verileri kaldırma rol hizmetini kullanmanızı önermiyoruz.

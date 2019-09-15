@@ -1,7 +1,7 @@
 ---
 title: Keras ile derin öğrenme sinir ağını eğitme
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetini kullanarak TensorFlow 'da çalışan keras derin sinir ağ sınıflandırma modelini eğitme ve kaydetme hakkında bilgi edinin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning kullanarak TensorFlow 'da çalışan keras derin sinir ağ sınıflandırma modelini eğitme ve kaydetme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966809"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999365"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile keras sınıflandırma modelini eğitme ve kaydetme
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning ile keras sınıflandırma modelini eğitme ve kaydetme
 
-Bu makalede, Azure Machine Learning hizmeti kullanılarak TensorFlow 'da oluşturulan keras sınıflandırma modelinin nasıl eğildiği ve kaydedileceği gösterilmektedir. Popüler [veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanarak, [TensorFlow](https://www.tensorflow.org/overview)üzerinde çalışan [keras Python kitaplığı](https://keras.io) kullanılarak oluşturulan derin bir sinir ağı (DNN) kullanarak el yazısı rakamlarını sınıflandırın.
+Bu makalede, Azure Machine Learning kullanarak TensorFlow 'da oluşturulan keras sınıflandırma modelinin nasıl eğildiği ve kaydedileceği gösterilmektedir. Popüler [veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanarak, [TensorFlow](https://www.tensorflow.org/overview)üzerinde çalışan [keras Python kitaplığı](https://keras.io) kullanılarak oluşturulan derin bir sinir ağı (DNN) kullanarak el yazısı rakamlarını sınıflandırın.
 
-Keras, geliştirmeyi basitleştirmek için diğer popüler DNN çerçevelerinin üstünü çalıştırabilen üst düzey bir sinir ağ API 'sidir. Azure Machine Learning hizmeti sayesinde, esnek bulut işlem kaynaklarını kullanarak eğitim işlerini hızla ölçeklendirebilirsiniz. Ayrıca eğitim çalıştırmalarını, sürüm modellerinizi, modellerinizi dağıtmayı ve daha fazlasını izleyebilirsiniz.
+Keras, geliştirmeyi basitleştirmek için diğer popüler DNN çerçevelerinin üstünü çalıştırabilen üst düzey bir sinir ağ API 'sidir. Azure Machine Learning, esnek bulut işlem kaynaklarını kullanarak eğitim işlerini hızla ölçeklendirebilirsiniz. Ayrıca eğitim çalıştırmalarını, sürüm modellerinizi, modellerinizi dağıtmayı ve daha fazlasını izleyebilirsiniz.
 
-Sıfırdan bir keras modeli geliştirdiğinizi veya var olan bir modeli buluta verdiğinize göre Azure Machine Learning hizmet, üretime hazır modeller oluşturmanıza yardımcı olabilir.
+Sıfırdan bir keras modeli geliştirirken veya var olan bir modeli buluta getiriyor Azure Machine Learning, üretime hazır modeller oluşturmanıza yardımcı olabilir.
 
 Machine Learning ve derin öğrenme arasındaki farklar hakkında bilgi edinmek için [kavramsal makaleye](concept-deep-learning-vs-machine-learning.md) bakın.
 
@@ -68,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning hizmet çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz.
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz.
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -203,7 +203,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Machine Learning hizmetinde bir keras modeli eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için model dağıtım makalemize devam edin.
+Bu makalede, Azure Machine Learning bir keras modeli eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için model dağıtım makalemize devam edin.
 
 > [!div class="nextstepaction"]
 > [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)

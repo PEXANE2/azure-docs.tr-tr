@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: dc30aeae842cf9c3cd39422517ed49773c524f1e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 81bde54c65cf3ed25da634c38b7b99e72a187e00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232845"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002457"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Azure Geçişi giriş bölgesi şema örneği için Microsoft Bulutu Benimseme Çerçevesine genel bakış
 
@@ -29,7 +29,7 @@ CAF Geçişi giriş bölgesi şema örneği, kuruluşlar tarafından abonelikler
 
 Bu ortam, güvenli, tam olarak izlenen, kurumsal kullanıma hazır yönetim sağlamak amacıyla kullanılan çeşitli Azure hizmetlerinden oluşur. Bu ortam şunlardan oluşur:
 
-- Paylaşılan hizmetler ortamına dağıtılmış Sertifikalar, Anahtarlar ve Gizli Dizilere yönelik gizli dizileri barındırmak üzere kullanılan [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) örneği
+- Paylaşılan hizmetler ortamına dağıtılmış Sertifikalar, Anahtarlar ve Gizli Dizilere yönelik gizli dizileri barındırmak üzere kullanılan [Azure Key Vault](../../../../key-vault/key-vault-overview.md) örneği
 - Geçiş işleminize başladığınız andan itibaren tüm eylemlerin ve hizmetlerin merkezi bir konumda günlüğe kaydedildiğinden emin olmak amacıyla dağıtılan [Log Analytics](../../../../azure-monitor/overview.md) dağıtımı
 - [Azure Güvenlik Merkezi](../../../../security-center/security-center-intro.md) (standart sürüm) dağıtımını yaparak, geçirilen iş yüklerinize yönelik tehdit koruması sağlayın.
 - [Azure Sanal Ağı](../../../../virtual-network/virtual-networks-overview.md) dağıtımını yaparak, sanal makineniz için yalıtılmış ağ ve alt ağlar sağlayın.

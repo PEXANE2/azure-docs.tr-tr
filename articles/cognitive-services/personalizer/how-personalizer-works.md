@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034385"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002885"
 ---
 # <a name="how-personalizer-works"></a>Kişiselleştirme nasıl çalışır?
 
-Kişiselleştirici, bir bağlamda hangi eylemin kullanılacağını saptamak için makine öğrenimini kullanır. Her öğrenme döngüsünün, işleme ve **yeniden** arama yoluyla kendisine gönderdiğiniz veriler üzerinde özel olarak eğitilen bir modeli vardır. Her öğrenme döngüsü birbirleriyle tamamen bağımsızdır. Kişiselleştirmek istediğiniz her bir bölüm veya davranış için bir öğrenme döngüsü oluşturun.
+Kişiselleştirici, bir bağlamda hangi eylemin kullanılacağını saptamak için makine öğrenimini kullanır. Her öğrenme döngüsünün, **işleme ve** **yeniden** arama yoluyla kendisine gönderdiğiniz veriler üzerinde özel olarak eğitilen bir modeli vardır. Her öğrenme döngüsü birbirleriyle tamamen bağımsızdır. Kişiselleştirmek istediğiniz her bir bölüm veya davranış için bir öğrenme döngüsü oluşturun.
 
 Her döngü için, geçerli bağlamı temel alarak **Rank API 'sini** şu şekilde çağırın:
 
@@ -89,31 +89,6 @@ Kişiselleştirici, Microsoft Research 'daki incelemeler, araştırma etkinlikle
 * Bot nitelikleri & tonu: ton, ayrıntı ve yazma stili değişebilen botlar için, bu nitelikleri kişiselleştirilmiş yollarla değiştirmeyi göz önünde bulundurun.
 * Bildirim & uyarı içeriği: kullanıcılara daha fazla etkileşim kurmak için uyarı için hangi metnin kullanılacağına karar verin.
 * Bildirim & uyarı zamanlaması: kullanıcılara daha fazla gitmek için ne zaman bildirim gönderileceğini kişiselleştirilmiş olarak öğreniyor.
-
-## <a name="checklist-for-applying-personalizer"></a>Kişiselleştirici uygulama için denetim listesi
-
-Şu durumlarda kişiselleştirici uygulayabilirsiniz:
-
-* Uygulamanız için bir iş veya kullanılabilirlik hedefi vardır.
-* Uygulamanızda, kullanıcıların bu hedefi iyileştirebilecekleri bağlamsal kararı veren bir yerdir.
-* En iyi seçenek, toplu Kullanıcı davranışından ve toplam ödül puanından öğrenilmesi gerekir.
-* Kişiselleştirmeye yönelik makine öğrenmesinin kullanımı, ekibiniz için [kullanım yönergelerinden](ethics-responsible-use.md) ve seçimlerden sorumludur.
-* Karar, en iyi seçenek olan (sınırlı bir seçenek kümesinden[eylem](concepts-features.md#actions-represent-a-list-of-options) ) sıralama olarak ifade edilebilir.
-* Çalışan çalışma mantığınızın, Kullanıcı davranışının bazı yönlerini ölçerek ve bunu-1 ile 1 arasında bir sayı olarak ifade etmeyle ne kadar iyi hesaplanbileceği.
-* Ödül puanı, çok fazla sayıda ek veya dış etken getirmiyor, özellikle de deneme süresi uygun olduğu sürece, ödül puanı hesaplanabileceği kadar düşüktür.
-* En az 5 özelliğin bağlamını, doğru seçim yapmaya yardımcı olacağını düşündüğünüz ve kişisel olarak tanımlanabilen bilgileri içermeyen en az 5 özellik sözlüğü olarak ifade edebilirsiniz.
-* Her eylem hakkında, kişiselleştirmenize yardımcı olacak en az 5 özniteliğin veya özelliğin bir sözlüğü olarak doğru seçim yapıp yapadüşündüğünüze ilişkin bilgilere sahip olursunuz.
-* En az 100.000 etkileşimi için bir geçmişi biriktirmek üzere verileri yeterince uzun süre koruyabilirsiniz.
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Kişiselleştirici uygulamaya yönelik makine öğrenimi konuları
-
-Kişiselleştirici, bir makine öğrenimine, size verdiğiniz geri bildirimde bulunarak bir yaklaşım olan pekiştirmeye dayalı öğrenimini temel alır. 
-
-Kişiselleştirici, şu durumlarda en iyi şekilde bilgi edineceksiniz:
-* Sorun zaman içinde Drifts, en iyi kişiselleştirmeye devam etmek için yeterli olay vardır (haber veya şekilde Tercihler gibi). Kişiselleştirici gerçek dünyada sürekli değişikliğe uyum sağlar, ancak yeni desenleri bulma ve kapatma hakkında bilgi almak için yeterli olay ve veri yoksa sonuçlar en uygun olmayacaktır. Genellikle yeterince gerçekleşen bir kullanım durumu seçmeniz gerekir. Günde en az 500 kez gerçekleşen kullanım örneklerini aramak için göz önünde bulundurun.
-* Bağlam ve eylemlerin öğrenmesini kolaylaştırmak için yeterli özelliği vardır.
-* Çağrı başına derece 50 ' den az eylem vardır.
-* Veri saklama ayarlarınız, kişiselleştirmeye, çevrimdışı değerlendirmeler ve ilke iyileştirmesi gerçekleştirmek için yeterli veri toplamasına izin verir. Bu genellikle en az 50.000 veri noktası olur.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Web uygulamasında kişiselleştirici kullanma
 

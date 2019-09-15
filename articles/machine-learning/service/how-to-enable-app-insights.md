@@ -1,7 +1,7 @@
 ---
 title: ML modellerini izlemek için Azure Application Insights ayarlama
-titleSuffix: Azure Machine Learning service
-description: Azure Application Insights kullanarak Azure Machine Learning hizmetiyle dağıtılan Web hizmetlerini izleme
+titleSuffix: Azure Machine Learning
+description: Azure Application Insights kullanarak Azure Machine Learning ile dağıtılan Web hizmetlerini izleme
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ff9261e2720ed80fc96131cea69d2985c8e0883e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 785507e9ae12d8da564a223c8cdf544a98b8de61
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858748"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002880"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Azure Machine Learning Modellerinizi Application Insights ile izleme
 
-Bu makalede, Azure Application ınsights'ı, Azure Machine Learning hizmeti için ayarlama konusunda bilgi edinin. Application Insights izleme olanağı sağlar:
+Bu makalede, Azure Machine Learning için Azure Application Insights ayarlamayı öğreneceksiniz. Application Insights izleme olanağı sağlar:
 * Oranları, yanıt süreleri ve hata oranları isteyin.
 * Bağımlılık oranları, yanıt süreleri ve hata oranları.
 * Özel durumlar.
@@ -30,7 +30,7 @@ Bu makalede, Azure Application ınsights'ı, Azure Machine Learning hizmeti içi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * Bir Azure Machine Learning çalışma alanı, yüklü Python için betikleri ve Azure Machine Learning SDK'sını içeren yerel bir dizin. Bu Önkoşullar alma hakkında bilgi için bkz: [bir geliştirme ortamı yapılandırma](how-to-configure-environment.md).
 * Azure Kubernetes Service (AKS) veya Azure Container örneği (ACI) dağıtılması için eğitilen makine öğrenme modeli. Yoksa, bkz. [görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md) öğretici.
@@ -111,7 +111,7 @@ Etkinleştirebilir ve Azure portalında Application ınsights'ı devre dışı b
  
 
 ## <a name="evaluate-data"></a>Veri değerlendir
-Application ınsights'ı hesabınız, Azure Machine Learning hizmeti aynı kaynak grubunda hizmetinizin veriler depolanır.
+Hizmetinizin verileri, Azure Machine Learning ile aynı kaynak grubundaki Application Insights hesabınızda depolanır.
 Bunu görüntülemek için:
 1. Machine Learning hizmeti çalışma alanınızda Git [Azure portalında](https://portal.azure.com) ve Application Insights bağlantıya tıklayın.
 

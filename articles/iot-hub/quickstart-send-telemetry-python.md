@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360202"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998475"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Hızlı Başlangıç: Bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla (Python) okuma
 
@@ -30,22 +30,6 @@ Bu hızlı başlangıçta, telemetri göndermek için önceden yazılmış bir P
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
-
-Bu hızlı başlangıçta çalıştırdığınız örnek uygulama Python kullanılarak yazılmıştır. Şu anda Python için Microsoft Azure IoT SDK 'Ları, her platform için yalnızca belirli Python sürümlerini destekler. Daha fazla bilgi için bkz. [Python SDK Benioku dosyası](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
-
-Bu hızlı başlangıç, bir Windows geliştirme makinesi kullandığınızı varsayar. Windows sistemleri için yalnızca [Python 3.6. x](https://www.python.org/downloads/release/python-368/) desteklenir. Çalıştığınız sistemin mimarisine uygun Python yükleyicisini seçmeniz gerekir. Sistem CPU mimariniz 32 bit ise, x86 yükleyicisi 'ni indirin; 64 bitlik mimari için x86-64 yükleyicisini indirin. Ayrıca, [Visual Studio 2019 Için Microsoft C++ Visual Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) 'ın mimariniz (x86 veya x64) için yüklü olduğundan emin olun.
-
-[Python.org](https://www.python.org/downloads/)adresinden diğer platformlar için Python indirebilirsiniz.
-
-Aşağıdaki komutlardan birini kullanarak geliştirme makinenizde geçerli Python sürümünü doğrulayabilirsiniz:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
 
@@ -100,7 +84,7 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulamasını çalıştırın:
@@ -112,13 +96,7 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
     Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
 
     ![Simülasyon cihazını çalıştırma](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-    
-### <a name="to-avoid-the-import-iothubclient-error"></a>İçeri aktarma iothub_client hatasını önlemek için
-Python için Azure IoT SDK 'sının geçerli sürümü, [C SDK 'umuz](https://github.com/azure/azure-iot-sdk-c)üzerinde bir sarmalayıcıdır. Bu, [Boost](https://www.boost.org/) kitaplığı kullanılarak oluşturulur. Bu nedenle, bazı önemli sınırlamalara sahiptir. Daha fazla ayrıntı için [buraya](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) bakın
 
-1. [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)'un doğru sürümüne sahip olup olmadığınızı denetleyin. Yalnızca belirli sürümlerin bu örnek için sorunsuz bir şekilde çalıştığına dikkat edin. 
-2. [Visual Studio 2019 Için Microsoft Visual C++ yeniden dağıtılabilir](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) C++ çalışma zamanının doğru sürümüne sahip olup olmadığınızı kontrol edin. (En son önerilir).
-3. Iothub istemcisini yüklediğinizden emin olun: `pip install azure-iothub-device-client`.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 

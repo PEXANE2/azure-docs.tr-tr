@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996677"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000319"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 'de dizin oluşturma ilkeleri
 
@@ -26,8 +26,11 @@ Bazı durumlarda, gereksinimlerinize daha iyi uyacak şekilde bu otomatik davran
 
 Azure Cosmos DB iki dizin oluşturma modunu destekler:
 
-- **Tutarlı**: Kapsayıcının dizin oluşturma ilkesi tutarlı olarak ayarlandıysa, öğe oluşturma, güncelleştirme veya silme işlemi sırasında dizin zaman uyumlu olarak güncelleştirilir. Bu, okuma sorgularınızın tutarlılığı, [hesap için yapılandırılmış tutarlılığa](consistency-levels.md)sahip olacağı anlamına gelir.
-- **Hiçbiri**: Kapsayıcının dizin oluşturma ilkesi hiçbiri olarak ayarlandıysa, dizin oluşturma Bu kapsayıcıda etkin bir şekilde devre dışı bırakılır. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu ekleme işlemlerinin hızlandırde sağlanmasına yardımcı olabilir.
+- **Tutarlı**: Öğe oluşturma, güncelleştirme veya silme işlemi sırasında dizin zaman uyumlu olarak güncelleştirilir. Bu, okuma sorgularınızın tutarlılığı, [hesap için yapılandırılmış tutarlılığa](consistency-levels.md)sahip olacağı anlamına gelir.
+- **Hiçbiri**: Dizin oluşturma, kapsayıcıda devre dışı bırakıldı. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu tutarlı olarak ayarlanabilir ve sonra, Işlem tamamlanana kadar [ındexdönüşümle ilerlemesi](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) kullanılarak izlenebilir.
+
+> [!NOTE]
+> Cosmos DB, yavaş dizin oluşturma modunu da destekler. Yavaş dizin oluşturma, altyapı başka bir iş gerçekleştirmediğinden daha düşük bir öncelik düzeyinde dizinde güncelleştirmeler gerçekleştirir. Bu, **tutarsız veya tamamlanmamış** sorgu sonuçlarının oluşmasına neden olabilir. Ayrıca, toplu işlemler için ' none ' yerine yavaş dizin oluşturma özelliği, Dizin modunda yapılan herhangi bir değişiklik dizinin bırakılmasına ve yeniden oluşturulmasına neden olacağı için de hiçbir avantaj sağlamaz. Bu nedenlerden dolayı müşterileri kullanan müşterilere karşı öneririz. Toplu işlemlere yönelik performansı artırmak için, Dizin modunu None olarak ayarlayın, ardından tutarlı moda geri dönün ve işlem tamamlanana `IndexTransformationProgress` kadar kapsayıcıda özelliği izleyin.
 
 Varsayılan olarak, dizin oluşturma ilkesi olarak `automatic`ayarlanır. Dizin oluşturma ilkesindeki `automatic` özelliği olarak `true`ayarlanarak elde edilir. Bu özelliği ayarlamak için `true` Azure cosmosdb 'nin belgeleri yazıldığı gibi otomatik olarak dizin oluşturulmasına izin verir.
 

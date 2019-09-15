@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773120"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000574"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Anahtarlar, gizli diziler ve sertifikalar hakkında
 
@@ -25,7 +25,7 @@ Azure Key Vault, Microsoft Azure uygulamaların ve kullanıcıların çeşitli t
 - Sertifika , Anahtarların ve parolaların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler.
 - Azure depolama: Sizin için bir Azure depolama hesabı anahtarlarını yönetebilir. Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir) ve anahtarları düzenli olarak yeniden oluşturabilir (döndürün). 
 
-Key Vault hakkında daha fazla genel bilgi için bkz. [Azure Key Vault nedir?](/azure/key-vault/key-vault-whatis)
+Key Vault hakkında daha fazla genel bilgi için bkz. [Azure Key Vault nedir?](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 

@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883072"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000545"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Azure Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme 
 
@@ -158,7 +158,7 @@ Key Vault doğrulamak için üç yol vardır:
 - Hizmet sorumlusu ve sertifikası kullanın. 
 - Hizmet sorumlusu ve parolası kullanın. Bu yaklaşım önerilmez.
 
-Daha fazla bilgi için bkz [. Azure Key Vault: Temel kavramlar](key-vault-whatis.md#basic-concepts).
+Daha fazla bilgi için bkz [. Azure Key Vault: Temel kavramlar](basic-concepts.md).
 
 Aşağıdaki örnekte, paylaşılan erişim imzası belirteçlerinin nasıl getirileceği gösterilmektedir. Paylaşılan erişim imzası tanımını oluşturduktan sonra belirteçleri getirin. 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: c27c787eeac9bbf68b512b55b9ceab11074a81d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934349"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003374"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Öğretici: .NET ' te Azure Web App ile Azure Key Vault kullanma
 
@@ -33,7 +33,7 @@ Bu öğreticide, Azure anahtar kasasından bilgi okuyabilen bir Azure Web uygula
 > * Web uygulaması için izin atama.
 > * Web uygulamasını Azure 'da çalıştırın.
 
-Başlamadan önce [temel kavramları Key Vault](key-vault-whatis.md#basic-concepts)okuyun. 
+Başlamadan önce [temel kavramları Key Vault](basic-concepts.md)okuyun. 
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
 
@@ -50,7 +50,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 Azure Key Vault, kimlik bilgilerini güvenli bir şekilde depolar, bu nedenle kodunuzda görüntülenmezler. Ancak, anahtarlarınızı almak için Azure Key Vault kimlik doğrulaması yapmanız gerekir. Key Vault kimlik doğrulaması yapmak için bir kimlik bilgisi gerekir. Bu, klasik bir önyükleme divma. Yönetilen Hizmet Kimliği (MSI), işlemi basitleştiren bir _önyükleme kimliği_ sağlayarak bu sorunu çözer.
 
-Azure sanal makineler, Azure App Service veya Azure Işlevleri gibi bir Azure hizmeti için MSI 'yi etkinleştirdiğinizde Azure bir [hizmet sorumlusu](key-vault-whatis.md#basic-concepts)oluşturur. MSI bunu, Azure Active Directory (Azure AD) içindeki hizmetin örneği için yapar ve hizmet sorumlusu kimlik bilgilerini bu örneğe çıkartır.
+Azure sanal makineler, Azure App Service veya Azure Işlevleri gibi bir Azure hizmeti için MSI 'yi etkinleştirdiğinizde Azure bir [hizmet sorumlusu](basic-concepts.md)oluşturur. MSI bunu, Azure Active Directory (Azure AD) içindeki hizmetin örneği için yapar ve hizmet sorumlusu kimlik bilgilerini bu örneğe çıkartır.
 
 ![MSI diyagramı](media/MSI.png)
 
@@ -85,7 +85,7 @@ Kaynak grubunuzda bir Anahtar Kasası oluşturmak için aşağıdaki bilgileri s
 
 * Anahtar Kasası adı: yalnızca rakam (0-9), harf (a-z, A-Z) ve kısa çizgi (-) içerebilen 3 ile 24 karakter arasında bir dize
 * Kaynak grubu adı
-* Konum: **Batı ABD**
+* Konumuna **Batı ABD**
 
 Azure CLı 'de şu komutu girin:
 
@@ -191,7 +191,7 @@ Ayrıca şu videoyu izleyebilirsiniz:
 
 ## <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
 
-1. Visual Studio 2019 ' in ana menüsünde hata ayıklama**başlangıcı**, hata ayıklama ile veya olmadan ' ı seçin. >  
+1. Visual Studio 2019 ' in ana menüsünde hata ayıklama**başlangıcı**, hata ayıklama ile veya olmadan ' **ı seçin.**  >  
 1. Tarayıcıda **hakkında** sayfasına gidin.  
     **AppSecret** değeri görüntülenir.
 

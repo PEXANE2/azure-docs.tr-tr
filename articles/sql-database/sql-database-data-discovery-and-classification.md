@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072955"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000555"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 
-Veri bulma & sınıflandırması, veritabanlarınızdaki hassas verileri**korumak** , **sınıflandırmak**ve **etiketleme** & için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş yetenekler sağlar.
+Veri bulma & sınıflandırması, veritabanlarınızdaki hassas verileri**korumak** , **sınıflandırmak**ve **etiketleme** &  **için Azure**SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş yetenekler sağlar.
 
 En hassas verilerinizi (iş, finans, sağlık, kişisel olarak tanımlanabilir veriler (PII) vb.) bulmak ve sınıflandırmak, kurumsal bilgi koruma hazırünüzde bir özetleme rolü oynayabilir. Bu, için altyapı işlevi görebilir:
 
@@ -137,6 +137,8 @@ T-SQL ' i sütun sınıflandırmaları eklemek/kaldırmak ve tüm veritabanını
 - Bir veya daha fazla sütunun sınıflandırmasını ekleyin/güncelleştirin: [DUYARLILIK SINIFLANDIRMASI EKLE](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - Sınıflandırmayı bir veya daha fazla sütundan kaldırın: [DUYARLILIK SINIFLANDIRMASINI BIRAK](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Veritabanındaki tüm sınıflandırmaları görüntüle: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+### <a name="manage-classifications-using-rest-apis"></a>REST API 'Leri kullanarak sınıflandırmaları yönetme
 
 Sınıflandırmaları programlı bir şekilde yönetmek için REST API 'Lerini de kullanabilirsiniz. Yayımlanan REST API 'Leri aşağıdaki işlemleri destekler:
 

@@ -7,12 +7,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 9670433284ae963783b655322c4b18f748df52c5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231960"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004087"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -33,7 +33,7 @@ REST API aracılığıyla parametreler, şema üzerinde oluşturulabilir. Bu par
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString ve secureObject parametrelerini kullanma
 
 Kaynak Yöneticisi Şablon _yapıtı_ **SecureString** ve **secureobject** türlerindeki parametreleri desteklese de Azure şemaları, her birinin bir Azure Key Vault bağlanmasını gerektirir.
-Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, Kaynak Yöneticisi şablonu yapıtında güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
+Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, Kaynak Yöneticisi şablonu _yapıtında_güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
 
 - Key Vault kaynak KIMLIĞI
 - Key Vault gizli dizi adı
@@ -41,7 +41,7 @@ Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmas�
 
 Şema ataması **sistem tarafından atanan yönetilen kimlik**kullanıyorsa, başvurulan Key Vault şema tanımının atandığı abonelikte aynı _olması gerekir_ .
 
-Şema ataması **Kullanıcı tarafından atanan yönetilen kimlik**kullanıyorsa, başvurulan Key Vault merkezi bir abonelikte bulunabilir . Yönetilen kimliğe, şema atamasından önce Key Vault uygun haklara sahip olmalıdır.
+Şema ataması **Kullanıcı tarafından atanan yönetilen kimlik**kullanıyorsa, _başvurulan Key Vault merkezi bir abonelikte bulunabilir._ Yönetilen kimliğe, şema atamasından önce Key Vault uygun haklara sahip olmalıdır.
 
 > [!IMPORTANT]
 > Her iki durumda da, Key Vault **erişim ilkeleri** sayfasında yapılandırılmış **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştir** olmalıdır. Bu özelliğin nasıl etkinleştirileceği hakkında yönergeler için bkz. [Key Vault-şablon dağıtımını etkinleştirme](../../../managed-applications/key-vault-access.md#enable-template-deployment).
@@ -177,7 +177,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
-1. Atamak istediğiniz şema öğesine sağ tıklayın. Şema ata veya atamak istediğiniz şema ' i seçin, ardından şema **ata** düğmesine tıklayın.
+1. Atamak istediğiniz şema öğesine sağ tıklayın. Şema **ata veya atamak istediğiniz şema '** i seçin, ardından şema **ata** düğmesine tıklayın.
 
 1. **Şeması ata** sayfasında, **yapıt parametreleri** bölümünü bulun. En az bir **dinamik parametresi** olan her yapıt yapıt ve yapılandırma seçeneklerini görüntüler. Blueprint 'i atamadan önce parametrelere gerekli değerler sağlayın. Aşağıdaki örnekte _ad_ , şema atamasını tamamlayacak şekilde tanımlanması gereken **dinamik bir parametredir** .
 
@@ -239,7 +239,7 @@ Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer giri
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Şema işlevlerinin](../reference/blueprint-functions.md)listesine bakın.
-- [Şema yaşam döngüsü](lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.

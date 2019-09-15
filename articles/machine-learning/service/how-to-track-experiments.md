@@ -1,6 +1,6 @@
 ---
 title: ML denemeleri & ölçümlerini günlüğe kaydet
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure ML denemeleri izleyin ve model oluşturma işlemini iyileştirmek için çalışma ölçümlerini izleyin. Eğitim betiğe günlük kaydı ekleyin ve bir çalıştırmanın günlüğe kaydedilmiş sonuçlarını görüntüleyin.  Run. log, Run. start_logging veya ScriptRunConfig kullanın.
 services: machine-learning
 author: heatherbshapiro
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959951"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002702"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 
-Denemeleri ve izleme çalıştırma ölçümlerinizi izleyerek model oluşturma sürecini geliştirin. Bu makalede, eğitim betiğe günlük kodu eklemeyi, bir deneme çalıştırması göndermeyi, çalışmayı izlemeyi ve Azure Machine Learning hizmetinde sonuçları incelemeyi öğrenin.
+Denemeleri ve izleme çalıştırma ölçümlerinizi izleyerek model oluşturma sürecini geliştirin. Bu makalede, eğitim betiğe günlük kodu eklemeyi, bir deneme çalıştırması göndermeyi, çalışmayı izlemeyi ve Azure Machine Learning sonuçları incelemeyi öğrenin.
 
 > [!NOTE]
-> Azure Machine Learning hizmet, otomatik makine öğrenimi çalıştırmaları veya eğitim işini çalıştıran Docker kapsayıcısı gibi eğitim sırasında diğer kaynaklardaki bilgileri de günlüğe alabilir. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
+> Azure Machine Learning, otomatik makine öğrenimi çalıştırmaları veya eğitim işini çalıştıran Docker kapsayıcısı gibi eğitim sırasında diğer kaynaklardaki bilgileri de günlüğe alabilir. Bu Günlükler belgelenmemiştir. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
 
 ## <a name="available-metrics-to-track"></a>İzlenecek kullanılabilir ölçümler
 
@@ -65,7 +65,7 @@ Günlüğe kaydetme ve deneme gönderme eklemeden önce çalışma alanını aya
 
 **start_logging** dizüstü bilgisayarlar gibi senaryolarda kullanım için etkileşimli bir çalışma oluşturur. Oturumu sırasında günlüğe kaydedilen tüm ölçümler, denemeyi çalıştırma kaydı eklenir.
 
-Aşağıdaki örnek, yerel Jupyter not defterini yerel olarak basit bir sklearn Ridge modeli eğitir. Farklı ortamlara denemeleri gönderme hakkında daha fazla bilgi için bkz. [işlem hedeflerine yönelik Azure Machine Learning hizmeti ile model eğitiminin ayarlama](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Aşağıdaki örnek, yerel Jupyter not defterini yerel olarak basit bir sklearn Ridge modeli eğitir. Farklı ortamlara denemeleri gönderme hakkında daha fazla bilgi edinmek için bkz. [Azure Machine Learning ile model eğitimi için işlem hedeflerini ayarlama](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
 1. Bir eğitim betiği yerel bir Jupyter not defteri oluşturun. 
 
@@ -91,7 +91,7 @@ Aşağıdaki örnek, yerel Jupyter not defterini yerel olarak basit bir sklearn 
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Azure Machine Learning hizmeti SDK'sını kullanarak deneme izleme ekleyebilir ve kalıcı bir modeli çalıştırma kaydı denemesine yükleme. Aşağıdaki kod, etiketler, günlükleri, ekler ve denemeyi çalıştırmak için bir model dosyası yükler.
+2. Azure Machine Learning SDK kullanarak deneme izleme ekleyin ve deneme çalıştırması kaydına kalıcı bir model yükleyin. Aşağıdaki kod, etiketler, günlükleri, ekler ve denemeyi çalıştırmak için bir model dosyası yükler.
 
    ```python
     # Get an experiment object from Azure Machine Learning

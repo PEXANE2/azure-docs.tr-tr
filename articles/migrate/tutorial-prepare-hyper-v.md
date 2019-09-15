@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 87a585f821f7b41c689899818627d863394fe844
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952073"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003090"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -99,7 +99,7 @@ Hyper-V değerlendirmesi için hazırlanmak üzere şunları yapın:
 1. Hyper-V konak ayarlarını doğrulayın.
 2. Her konakta PowerShell uzaktan iletişimini ayarlayın, böylece Azure geçişi gereci konakta PowerShell komutlarını bir WinRM bağlantısı üzerinden çalıştırabilir.
 3. VM diskleri uzak SMB depolaması 'nda bulunuyorsa, kimlik bilgilerinin temsili gereklidir. 
-    - Azure geçişi gerecinin istemci olarak davranabilmesi ve bir konağa kimlik bilgileri temsilciliğini sağlamak için CredSSP temsilcisini etkinleştirin. T
+    - Azure geçişi gerecinin istemci olarak davranabilmesi ve bir konağa kimlik bilgileri temsilciliğini sağlamak için CredSSP temsilcisini etkinleştirin.
     - Aşağıda açıklandığı gibi, her bir konağın gereç için bir temsilci görevi görmesini sağlayabilirsiniz.
     - Daha sonra gereci ayarladığınızda, Gereç üzerinde temsilciyi etkinleştirecektir.
 4. Gereç gereksinimlerini ve gereç için gereken URL/bağlantı noktası erişimini gözden geçirin.
@@ -113,7 +113,7 @@ Aşağıdaki yordamları kullanarak bu ayarları el ile yapılandırabilirsiniz.
 
 Betik, Hyper-v konaklarını doğrular ve Hyper-V VM 'lerini bulup değerlendirmek için ihtiyacınız olan ayarları yapılandırır. İşte şunları yapar:
 
-- Komut dosyasında, desteklenen bir PowerShell sürümünde çalışmakta olduğunuzu denetler.
+- Betiği desteklenen bir PowerShell sürümünde çalıştırıp çalıştırdığınızı denetler.
 - Sizin (betiği çalıştıran kullanıcı) Hyper-V konağında yönetim ayrıcalıklarına sahip olduğunu doğrular.
 - , Hyper-V konağından iletişim kurmak üzere Azure geçişi hizmeti için kullanılan bir yerel kullanıcı hesabı (yönetici değil) oluşturmanıza olanak sağlar. Bu Kullanıcı hesabı konaktaki bu gruplara eklenir:
     - Uzaktan yönetim kullanıcıları
@@ -194,7 +194,7 @@ Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan ön
 1. Gereç gereksinimlerini [doğrulayın](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
 2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) .
 3. Bulma ve değerlendirme sırasında gereç tarafından toplanacak verileri gözden geçirin.
-4. [](migrate-support-matrix-hyper-v.md#assessment-port-requirements) Gereç için bağlantı noktası erişim gereksinimleri.
+4. Gereç [için bağlantı noktası](migrate-support-matrix-hyper-v.md#assessment-port-requirements) erişim gereksinimleri.
 
 
 ### <a name="set-up-an-account-for-vm-discovery"></a>VM bulma için bir hesap ayarlama

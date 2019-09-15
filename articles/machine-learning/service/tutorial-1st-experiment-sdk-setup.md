@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: İlk ML denemenizi oluşturun: Kurulum'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu öğretici serisinde, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız.  Birinci bölüm, bir bulut Not defteri sunucu ortamının oluşturulmasını ve denemeleri ve makine öğrenimi modellerinizi yönetmek için bir çalışma alanı oluşturmayı kapsamaktadır.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: d968d6e799b75940d1fb73aa31c22eb84068df7d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860414"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004052"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
 
@@ -27,11 +27,11 @@ Bu öğreticide şunları yaptınız:
 > * Sonraki öğreticide kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
 > * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış bir bulut tabanlı Jupyter Not defteri VM 'si oluşturun.
 
-Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz SDK 'daki kolayca tüketilen bir nesneye sahiptir. Zaten bir Azure Machine Learning Service çalışma alanınız varsa, [sonraki bölüme](#azure)atlayın. Aksi takdirde, şimdi bir tane oluşturun.
+Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz SDK 'daki kolayca tüketilen bir nesneye sahiptir. Zaten bir Azure Machine Learning çalışma alanınız varsa, [sonraki bölüme](#azure)atlayın. Aksi takdirde, şimdi bir tane oluşturun.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -39,7 +39,7 @@ Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini 
 
 Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](how-to-configure-environment.md#local) kullanın.
 
-Jupyıter not defterlerini kullanmaya başlamak için çalışma alanınızdan bir bulut kaynağı oluşturursunuz. Bu kaynak, Azure Machine Learning hizmetini çalıştırmak için ihtiyacınız olan her şey ile önceden yapılandırılmış bulut tabanlı bir Linux sanal makinedir.
+Jupyıter not defterlerini kullanmaya başlamak için çalışma alanınızdan bir bulut kaynağı oluşturursunuz. Bu kaynak, Azure Machine Learning çalıştırmanız gereken her şey ile önceden yapılandırılmış bulut tabanlı bir Linux sanal makinedir.
 
 1. Çalışma alanınızı [Azure Portal](https://portal.azure.com/)açın.  Portalda çalışma alanınızı bulma konusunda emin değilseniz, bkz. [çalışma alanınızı bulma](how-to-manage-workspace.md#view).
 
@@ -69,7 +69,7 @@ Jupyıter not defterlerini kullanmaya başlamak için çalışma alanınızdan b
 
 Bu öğreticide, şu görevleri tamamladınız:
 
-* Azure Machine Learning hizmet çalışma alanı oluşturuldu.
+* Azure Machine Learning çalışma alanı oluşturuldu.
 * Çalışma alanınızda bir bulut Not defteri sunucusu oluşturulup yapılandırıldı.
 
 Öğreticinin **ikinci bölümünde** , bir makine öğrenimi modelini eğitebilmeniz `tutorial-1st-experiment-sdk-train.ipynb` için kodu çalıştırırsınız. 

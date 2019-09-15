@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736015"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003135"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
 
@@ -44,11 +44,11 @@ Apache Spark üç sistem yapılandırma konumuna sahiptir:
 Spark 'ın belirli bir sürümünü seçtiğinizde, kümeniz varsayılan yapılandırma ayarlarını içerir.  Varsayılan Spark yapılandırma değerlerini özel bir Spark yapılandırma dosyası kullanarak değiştirebilirsiniz.  Aşağıda bir örnek gösterilmiştir.
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 Yukarıda gösterilen örnek, beş Spark yapılandırma parametresi için birkaç varsayılan değeri geçersiz kılar.  Bunlar sıkıştırma codec 'tir Apache Hadoop, MapReduce Split minimum boyut ve Parquet blok boyutları ve ayrıca Spar SQL bölümü ve açık dosya boyutları varsayılan değerleri.  Bu yapılandırma değişiklikleri, ilişkili veriler ve işler (Bu örnekte genomik verileri) belirli özelliklere sahip olduğundan ve bu özel yapılandırma ayarları kullanılarak daha iyi gerçekleştirilecek şekilde seçilir.
@@ -63,7 +63,7 @@ Apache ambarı Web Kullanıcı arabirimi, anahtar kümesi kaynak kullanımı öl
 
 Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi**' ni seçin ve ardından **Spark2**' ı seçin.  Yapılandırma sekmesini **seçin ve ardından** hizmet listesindeki `Spark` ( `Spark2`sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
 
-![Spark yapılandırması](./media/apache-spark-settings/spark-config.png)
+![Spark yapılandırması](./media/apache-spark-settings/spark-configurations.png)
 
 Tek tek Spark yapılandırma değerlerini görmek ve değiştirmek için bağlantı başlığında "Spark" kelimesiyle herhangi bir bağlantı seçin.  Spark yapılandırmaları, bu kategorilerdeki özel ve gelişmiş yapılandırma değerlerini içerir:
 
@@ -82,7 +82,7 @@ Varsayılan olmayan bir yapılandırma değerleri kümesi oluşturursanız, yap�
 
 Aşağıdaki diyagramda, anahtar Spark nesneleri: sürücü programı ve onunla ilişkili Spark bağlamı ve Küme Yöneticisi ve *n* çalışan düğümleri gösterilmektedir.  Her çalışan düğümü bir yürütücü, önbellek ve *n* görev örnekleri içerir.
 
-![Küme nesneleri](./media/apache-spark-settings/spark-arch.png)
+![Küme nesneleri](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 Spark işleri çalışan kaynakları, özellikle bellek kullanır, bu yüzden çalışan düğüm Yürüticileri için Spark yapılandırma değerlerini ayarlamak yaygındır.
 
@@ -93,7 +93,7 @@ Uygulama gereksinimlerini geliştirmek üzere Spark yapılandırmalarının ayar
 
 Spark Yürütücüleri tarafından kullanılan kaynaklar hakkında bir diğer bilgi kaynağı Spark Uygulaması Kullanıcı Arabirimidir.  Spark Kullanıcı arabiriminde, yürüticileri tarafından tüketilen yapılandırma ve kaynakların Özet ve ayrıntı görünümlerini göstermek için **yürüticileri** sekmesini seçin.  Bu görünümler varsayılan değerleri kümenin tamamında Spark yürütücüleri için mi yoksa belirli bir iş yürütmeleri kümesi için mi değiştireceğinizi saptamanıza yardımcı olabilir.
 
-![Spark Yürüticileri](./media/apache-spark-settings/spark-executors.png)
+![Spark Yürüticileri](./media/apache-spark-settings/apache-spark-executors.png)
 
 Alternatif olarak, HDInsight ve Spark kümesi yapılandırma ayarlarını programlı bir şekilde doğrulamak için ambarı REST API kullanabilirsiniz.  [GitHub 'Daki Apache AMBARı API başvurusunda](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)daha fazla bilgi bulabilirsiniz.
 
@@ -105,7 +105,7 @@ Spark iş yükünüze bağlı olarak, varsayılan dışındaki bir Spark yapıla
 
 Farklı yapılandırma değerlerine sahip iki çalışan düğümü örneği aşağıda verilmiştir:
 
-![İki düğümlü yapılandırma](./media/apache-spark-settings/executor-config.png)
+![İki düğümlü yapılandırma](./media/apache-spark-settings/executor-configuration.png)
 
 Aşağıdaki listede Key Spark yürütücü bellek parametreleri gösterilmektedir.
 
@@ -116,7 +116,7 @@ Aşağıdaki listede Key Spark yürütücü bellek parametreleri gösterilmekted
 
 YARN, her Spark düğümündeki kapsayıcı tarafından kullanılan en fazla bellek toplamını denetler. Aşağıdaki diyagramda, YARN yapılandırma nesneleri ile Spark nesneleri arasındaki düğüm başına ilişkiler gösterilmektedir.
 
-![YARN Spark bellek yönetimi](./media/apache-spark-settings/yarn-spark-memory.png)
+![YARN Spark bellek yönetimi](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Not defteri 'nde çalışan bir uygulama için parametreleri değiştirme
 
@@ -136,8 +136,8 @@ Jupyter not defterinde çalışan uygulamalar için, `%%configure` komut defteri
 Aşağıdaki kod, bir Jupyter not defterinde çalışan bir uygulama için yapılandırmanın nasıl değiştirileceğini gösterir.
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>Sonuç

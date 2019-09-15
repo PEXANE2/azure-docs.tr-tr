@@ -1,7 +1,7 @@
 ---
 title: Dışarı aktarma veya çalışma alanı verilerini sil
-titleSuffix: Azure Machine Learning service
-description: Azure portal, CLI, SDK ve kimliği doğrulanmış REST API'leri ile çalışma alanınızı silme veya dışarı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure portal, CLı, SDK ve kimliği doğrulanmış REST API 'Leri ile çalışma alanınızı dışarı aktarmayı veya silmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023967"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002833"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Dışarı aktarma veya, Machine Learning hizmeti çalışma alanı verilerini sil 
 
@@ -27,9 +27,9 @@ Azure Machine Learning'de dışarı aktarma veya kimliği doğrulanmış REST AP
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Çalışma alanı sizin denetiminizdedir
-Azure Machine Learning Hizmetleri tarafından depolanan ürün içi verileri dışarı aktarma ve silme işlemi Azure portalı, CLI, SDK'sı aracılığıyla kullanılabilir ve kimliği doğrulanmış REST API'leri. Telemetri verilerini Azure gizlilik portal üzerinden erişilebilir. 
+Azure Machine Learning tarafından depolanan ürün içi veriler Azure portal, CLı, SDK ve kimliği doğrulanmış REST API 'Leri aracılığıyla dışarı ve silmeye hazırdır. Telemetri verilerini Azure gizlilik portal üzerinden erişilebilir. 
 
-Azure Machine Learning hizmetleri çalıştırma geçmişi belgelerde ve telemetri kayıt hizmeti ile bazı kullanıcı etkileşimi sonucu oluşan kullanıcı bilgilerini kişisel verileri oluşur.
+Azure Machine Learning, kişisel veriler, çalışma geçmişi belgelerinin ve hizmet ile bazı kullanıcı etkileşimlerinin telemetri kayıtlarındaki Kullanıcı bilgilerinden oluşur.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>REST API'si ile çalışma alanı verilerini sil 
 
@@ -232,28 +232,28 @@ Veri kaynakları tarafından alınabilir:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>Görsel arabirim varlığını silme
+## <a name="delete-visual-interface-assets"></a>Görsel arabirim varlıklarını silme
 
-Denemenizi oluşturulduğu görsel arabirim tek varlıklar silin:
+Denemenizi oluşturduğunuz görsel arabirimde, tek tek varlıkları silin:
 
 1. Sol tarafta, silmek istediğiniz varlık türünü seçin.
 
     ![Varlıkları silme](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. Listeden silmek için tek tek varlıkları seçin.
+1. Listede, silinecek tek tek varlıkları seçin.
 
-1. Alt kısmında seçin **Sil**.
+1. Alt kısımdaki **Sil**' i seçin.
 
-## <a name="export-visual-interface-data"></a>Görsel arabirim verileri dışarı aktarma
+## <a name="export-visual-interface-data"></a>Görsel Arabirim verilerini dışarı aktar
 
-Denemenizi oluşturulduğu görsel arabirim eklediğiniz verileri dışarı aktarma:
+Denemenizi oluşturduğunuz görsel arabirimde, eklediğiniz verileri dışarı aktarın:
 
-1. Sol tarafta, seçin **veri**.
+1. Sol tarafta **veri**' yi seçin.
 
-1. En üstte seçin **My veri kümeleri** veya **örnekleri** dışarı aktarmak istediğiniz verilerin bulunacak.
+1. En üstte, dışarı aktarmak istediğiniz verileri bulmak için veri **kümelerim** veya **örnekler** ' i seçin.
 
-    ![Veri indirin](media/how-to-export-delete-data.md/download-data.png)
+    ![Verileri indir](media/how-to-export-delete-data.md/download-data.png)
 
-1. Listesinde, dışa aktarmak için tek tek veri kümesi seçin.
+1. Listeden dışarı aktarılacak tekil veri kümelerini seçin.
 
-1. Alt kısmında seçin **indirme**.
+1. Alt kısımda **İndir**' i seçin.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934583"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998941"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric güvenliğine genel bakış
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) , ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştıran bir dağıtılmış sistemler platformudur. Service Fabric, bulut uygulamaları geliştirme ve yönetme sorunlarını giderir. Geliştiriciler ve Yöneticiler, karmaşık altyapı sorunlarından kaçınıp ölçeklenebilir ve güvenilir olan görev açısından kritik, zorlu iş yüklerini uygulamaya odaklanabilirler.
@@ -132,7 +132,7 @@ Clienentidentities kullanarak istemciden düğüme güvenliği yapılandırırs�
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında gizli dizileri yönetme
 Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir.
 
-Anahtarları ve gizli dizileri yönetmek için [Azure Key Vault](../../key-vault/key-vault-whatis.md) kullanabilirsiniz. Ancak, bir uygulamadaki gizli dizi kullanımı belirli bir bulut platformuna bağlı değildir. Uygulamaları herhangi bir yerde barındırılan bir kümeye dağıtabilirsiniz. Bu akışta dört ana adım vardır:
+Anahtarları ve gizli dizileri yönetmek için [Azure Key Vault](../../key-vault/key-vault-overview.md) kullanabilirsiniz. Ancak, bir uygulamadaki gizli dizi kullanımı belirli bir bulut platformuna bağlı değildir. Uygulamaları herhangi bir yerde barındırılan bir kümeye dağıtabilirsiniz. Bu akışta dört ana adım vardır:
 
 1.  Veri şifreleme sertifikası alın.
 2.  Sertifikayı kümenize yükler.

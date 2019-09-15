@@ -1,6 +1,6 @@
 ---
 title: Bir sanal ağda güvenli denemeleri ve çıkarım
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: bir Azure sanal ağı içindeki Azure Machine Learning deneme/eğitim işlerinin ve çıkarım/Puanlama işlerinin güvenliğini nasıl sağlayacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: fcd47cdf3968e8c8a204cb15f10dd41c4eaab641
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f12c77a25bad9781d5f23b9563f6684997a2a6c4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885662"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002785"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 
@@ -23,13 +23,13 @@ Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning deneme/
 
 Bir **sanal ağ** , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
 
-Azure Machine Learning hizmeti, işlem kaynakları için diğer Azure hizmetlerini kullanır. İşlem kaynakları veya [işlem hedefleri](concept-compute-target.md), modelleri eğitmek ve dağıtmak için kullanılır. Hedefler bir sanal ağ içinde oluşturulabilir. Örneğin, bir modeli eğitme ve modeli Azure Kubernetes Service (AKS) ' e dağıtmak için Microsoft Veri Bilimi Sanal Makinesi kullanabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [Azure sanal ağa genel bakış](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Azure Machine Learning, işlem kaynakları için diğer Azure hizmetlerini kullanır. İşlem kaynakları veya [işlem hedefleri](concept-compute-target.md), modelleri eğitmek ve dağıtmak için kullanılır. Hedefler bir sanal ağ içinde oluşturulabilir. Örneğin, bir modeli eğitme ve modeli Azure Kubernetes Service (AKS) ' e dağıtmak için Microsoft Veri Bilimi Sanal Makinesi kullanabilirsiniz. Sanal ağlar hakkında daha fazla bilgi için bkz. [Azure sanal ağa genel bakış](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 Bu makalede, *Gelişmiş güvenlik ayarları*, temel veya Deneysel kullanım durumları için gerekli olmayan bilgiler hakkında ayrıntılı bilgiler de sağlanmaktadır. Bu makalenin bazı bölümleri çeşitli senaryolar için yapılandırma bilgileri sağlar. Yönergeleri sırasıyla veya tamamen doldurmanız gerekmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-+ Bir Azure Machine Learning hizmet [çalışma alanı](how-to-manage-workspace.md).
++ Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 
 + [Azure sanal ağ hizmeti](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ve [IP ağının](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)genel çalışma bilgileri.
 
@@ -45,7 +45,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
 
 1. Azure portal, çalışma alanınıza bağlı depolama alanına gidin.
 
-   [![Azure Machine Learning hizmeti çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+   [![Azure Machine Learning çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
 1. **Azure depolama** sayfasında __güvenlik duvarları ve sanal ağlar__' ı seçin.
 
@@ -74,7 +74,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
     ```
 
 > [!IMPORTANT]
-> Azure Machine Learning hizmeti için hem _varsayılan depolama hesabını_ hem de _varsayılan olmayan depolama hesaplarını_ bir sanal ağa yerleştirebilirsiniz.
+> Bir sanal ağda Azure Machine Learning veya _varsayılan olmayan depolama hesapları_ için hem _varsayılan depolama hesabını_ yerleştirebilirsiniz.
 >
 > Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
 >
@@ -82,7 +82,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Çalışma alanınız ile bir Anahtar Kasası örneği kullanın
 
-Çalışma alanıyla ilişkili anahtar kasası örneği, Azure Machine Learning hizmeti tarafından aşağıdaki kimlik bilgilerini depolamak için kullanılır:
+Çalışma alanıyla ilişkili anahtar kasası örneği, Azure Machine Learning tarafından aşağıdaki kimlik bilgilerini depolamak için kullanılır:
 * İlişkili depolama hesabı bağlantı dizesi
 * Azure Container Repository deposu örneklerine parolalar
 * Veri depolarına yönelik bağlantı dizeleri
@@ -90,7 +90,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak �
 Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yeteneklerini kullanmak için şunları yapın:
 1. Çalışma alanıyla ilişkili olan anahtar kasasına gidin.
 
-   [![Azure Machine Learning hizmeti çalışma alanıyla ilişkili olan Anahtar Kasası](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
+   [![Azure Machine Learning çalışma alanıyla ilişkili olan Anahtar Kasası](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
 1. **Key Vault** sayfasında, sol bölmede __güvenlik duvarları ve sanal ağlar__' ı seçin.
 
@@ -110,7 +110,7 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 Bir sanal ağda Azure Machine Learning Işlem örneği kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
 
 > [!div class="checklist"]
-> * Sanal ağın, Azure Machine Learning hizmeti çalışma alanıyla aynı abonelikte ve bölgede olması gerekir.
+> * Sanal ağın, Azure Machine Learning çalışma alanıyla aynı abonelikte ve bölgede olması gerekir.
 > * Hesaplama kümesi için belirtilen alt ağ, küme için hedeflenen VM sayısına uyum sağlayacak yeterli sayıda atanmamış IP adresine sahip olmalıdır. Alt ağda yeterli sayıda atanmamış IP adresi yoksa, küme kısmen ayrılacaktır.
 > * Sanal ağın aboneliğine veya kaynak grubuna yönelik güvenlik ilkelerinizin veya kilitlerinizin sanal ağı yönetmek için izinleri kısıtlayıp kısıtlamamadığını denetleyin. Trafiği kısıtlayarak sanal ağın güvenliğini sağlamayı planlıyorsanız, bazı bağlantı noktalarını işlem hizmeti için açık bırakın. Daha fazla bilgi için, [gerekli bağlantı noktaları](#mlcports) bölümüne bakın.
 > * Tek bir sanal ağa birden çok işlem kümesi koyacaksanız bir veya daha fazla kaynağınız için bir kota artışı istemeniz gerekebilir.
@@ -157,7 +157,7 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
 - Giden trafiği şu şekilde sınırlayın:
    - __Storage. Region_Name__ __hizmet etiketi__ kullanılarak Azure depolama (örneğin, Storage. EastUS)
    - __AzureContainerRegistry. Region_Name__ __hizmet etiketi__ kullanılarak Azure Container Registry (örneğin, AzureContainerRegistry. EastUS)
-   - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning hizmeti
+   - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
 
 Azure portal NSG kural yapılandırması aşağıdaki görüntüde gösterilmektedir:
 
@@ -189,7 +189,7 @@ Daha fazla bilgi için bkz. [Sanal ağda Azure Batch havuzu oluşturma](../../ba
 
 Machine Learning İşlem kümesi oluşturmak için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com), Azure Machine Learning hizmeti çalışma alanınızı seçin.
+1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınızı seçin.
 
 1. __Uygulama__ bölümünde __işlem__' i seçin ve ardından __İşlem Ekle__' yi seçin.
 
@@ -248,7 +248,7 @@ Oluşturma işlemi tamamlandığında, bir deneyde kümeyi kullanarak modelinizi
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Bir sanal makine veya HDInsight kümesi kullanma
 
 > [!IMPORTANT]
-> Azure Machine Learning hizmeti yalnızca Ubuntu çalıştıran sanal makineleri destekler.
+> Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler.
 
 Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip bir sanal ağda kullanmak için şunları yapın:
 
@@ -257,7 +257,7 @@ Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 
     * [Azure sanal ağını kullanarak HDInsight 'ı genişletme](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Azure Machine Learning hizmetinin VM veya kümedeki SSH bağlantı noktasıyla iletişim kurmasına izin vermek için, ağ güvenlik grubu için bir kaynak girişi yapılandırın. SSH bağlantı noktası genellikle bağlantı noktası 22 ' dir. Bu kaynaktan gelen trafiğe izin vermek için aşağıdakileri yapın:
+1. Azure Machine Learning, VM veya kümedeki SSH bağlantı noktasıyla iletişim kurmasına izin vermek için, ağ güvenlik grubu için bir kaynak girişi yapılandırın. SSH bağlantı noktası genellikle bağlantı noktası 22 ' dir. Bu kaynaktan gelen trafiğe izin vermek için aşağıdakileri yapın:
 
     * __Kaynak__ açılan listesinde __hizmet etiketi__' ni seçin.
 
@@ -279,7 +279,7 @@ Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 
     Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın giden erişimini sınırlandırmak istiyorsanız, [sanal ağ ile giden bağlantıyı sınırla](#limiting-outbound-from-vnet) bölümüne bakın.
 
-1. VM veya HDInsight kümesini Azure Machine Learning hizmet çalışma alanınıza ekleyin. Daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md).
+1. Azure Machine Learning çalışma alanınıza VM veya HDInsight kümesini ekleyin. Daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md).
 
 <a id="aksvnet"></a>
 
@@ -292,11 +292,11 @@ Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 >
 > AKS örneği ve Azure sanal ağı aynı bölgede olmalıdır. Bir sanal ağ içinde çalışma alanı tarafından kullanılan Azure depolama hesaplarını güvenli hale getirmek istiyorsanız, AKS örneğiyle aynı sanal ağda olmaları gerekir.
 
-1. [Azure Portal](https://portal.azure.com), sanal ağı denetleyen NSG 'nin **kaynak**olarak __AzureMachineLearning__ kullanarak Azure Machine Learning hizmeti için etkinleştirilen bir gelen kuralı olduğundan emin olun.
+1. [Azure Portal](https://portal.azure.com), sanal ağı denetleyen NSG 'nin **kaynak**olarak __AzureMachineLearning__ kullanarak Azure Machine Learning için etkinleştirilen bir gelen kuralı olduğundan emin olun.
 
-    [![Azure Machine Learning hizmeti Işlem bölmesi ekleme](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+    [![Işlem bölmesi ekleme Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
 
-1. Azure Machine Learning hizmeti çalışma alanınızı seçin.
+1. Azure Machine Learning çalışma alanınızı seçin.
 
 1. __Uygulama__ bölümünde __işlem__' i seçin ve ardından __İşlem Ekle__' yi seçin.
 
@@ -316,7 +316,7 @@ Bir sanal makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 
     - __Docker köprü adresi__ kutusuna Docker köprü adresini girin. Bu IP adresi Docker köprüsüne atandı. Herhangi bir alt ağ IP aralığında olmamalı veya Kubernetes hizmeti adres aralığı (örneğin, 172.17.0.1/16) olmalıdır.
 
-   ![Azure Machine Learning hizmeti: Sanal ağ ayarlarını Machine Learning İşlem](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+   ![Azure Machine Learning: Sanal ağ ayarlarını Machine Learning İşlem](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
 1. Sanal ağı denetleyen NSG grubunun, sanal ağ dışından çağrılabilmesi için Puanlama uç noktası için etkin bir gelen güvenlik kuralına sahip olduğundan emin olun.
    > [!IMPORTANT]

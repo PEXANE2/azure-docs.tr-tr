@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074047"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001202"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service için bir SSL sertifikası satın alın ve yapılandırın
 
-Bu öğreticide, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) ' de bir App Service sertifikası oluşturarak (satın alarak) [App Service uygulamanızın](https://docs.microsoft.com/azure/app-service/) veya [işlev uygulamanızın](https://docs.microsoft.com/azure/azure-functions/) güvenliğini sağlama işlemi gösterilir ve sonra bunu bir App Service uygulamasına bağlarsınız.
+Bu öğreticide, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) ' de bir App Service sertifikası oluşturarak (satın alarak) [App Service uygulamanızın](https://docs.microsoft.com/azure/app-service/) veya [işlev uygulamanızın](https://docs.microsoft.com/azure/azure-functions/) güvenliğini sağlama işlemi gösterilir ve sonra bunu bir App Service uygulamasına bağlarsınız.
 
 > [!TIP]
 > App Service sertifikaları Azure veya Azure dışı hizmetler için kullanılabilir ve App Services ile sınırlı değildir. Bunu yapmak için, istediğiniz her yerde kullanabileceğiniz bir App Service sertifikasının yerel bir PFX kopyasını oluşturmanız gerekir. Daha fazla bilgi için, bkz. [bir App Service sertifikası yerel PFX kopyası oluşturma](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
@@ -64,7 +64,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 ![KV içinde depolamaya hazırlanma görüntüsünü Ekle](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , bulut uygulamaları ve Hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olan bir Azure hizmetidir. Bu, App Service sertifikaları için tercih edilen depolardır.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) , bulut uygulamaları ve Hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olan bir Azure hizmetidir. Bu, App Service sertifikaları için tercih edilen depolardır.
 
 **Key Vault durum** sayfasında, yeni bir kasa oluşturmak veya mevcut bir kasayı seçmek Için **Key Vault deposu** ' na tıklayın. Yeni bir kasa oluşturmayı seçerseniz, kasayı yapılandırmanıza ve Oluştur ' a tıklaetmenize yardımcı olması için aşağıdaki tabloyu kullanın. aynı abonelik ve kaynak grubu içinde yeni Key Vault oluşturmak için bkz.
 

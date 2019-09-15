@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614446"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999924"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>SQL sorgu yürütmeyi Azure Cosmos DB
 
@@ -245,7 +245,7 @@ Sonraki örnekte, LINQ `SelectMany`aracılığıyla ifade edilen birleşimler g�
 
 Ayrıca, `IDocumentQueryable` `IQueryable` nesnesini kullanarak ve sonra `ResponseContinuationToken` değerleri okuyarak ve sonra yeniden `RequestContinuationToken` `FeedOptions`geçirerek, sayfalama denetimini açıkça denetleyebilirsiniz. Sorgu, yapılandırılmış `EnableScanInQuery` dizin oluşturma ilkesi tarafından desteklenmiyorsa taramayı etkinleştir olarak ayarlayabilirsiniz. Bölümlenmiş kapsayıcılar için, sorguyu tek bir `PartitionKey` bölüme karşı çalıştırmak için kullanabilirsiniz, ancak Azure Cosmos db sorgu metinden otomatik olarak ayıklayabilir. Birden çok bölüme karşı sorgu çalıştırmak için'ikullanabilirsiniz.`EnableCrossPartitionQuery`
 
-Sorgularla daha fazla .NET örneği için bkz. GitHub 'da [.net örneklerine Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet) .
+Sorgularla daha fazla .NET örneği için bkz. GitHub 'da [.net örneklerine Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3) .
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript sunucu tarafı API'si
 
@@ -288,5 +288,5 @@ Aşağıdaki örnek, saklı yordamların ve tetikleyicilerin `queryDocuments` i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Cosmos DB giriş](introduction.md)
-- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Tutarlılık düzeylerini Azure Cosmos DB](consistency-levels.md)

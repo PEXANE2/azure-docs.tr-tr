@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ca640b058a1d91d15c5accb9367936368511a3ef
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881599"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000807"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Geliştirici Kılavuzu Azure Key Vault
 
@@ -24,7 +24,7 @@ Key Vault, uygulamalarınızın içinden hassas bilgilere güvenli bir şekilde 
 - Uygulamanız imzalama ve şifreleme için anahtarlar kullanabilir, ancak çözümünüz coğrafi olarak dağıtılmış bir uygulama olarak uygun olacak şekilde uygulamanızda önemli yönetim sağlar.
 - Key Vault Eylül 2016 sürümünden itibaren uygulamalarınız artık Key Vault sertifikaları yönetebilir. Daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
-Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](key-vault-whatis.md).
+Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](key-vault-overview.md).
 
 ## <a name="public-previews"></a>Genel önizlemeler
 

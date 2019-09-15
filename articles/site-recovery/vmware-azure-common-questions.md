@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 27e5323e2c9fed3886b2ddf175a2c67718ad52d0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959142"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002286"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma hakkında sık sorulan sorular
 
@@ -231,7 +231,7 @@ Yapılandırma sunucusu için tek, yüksek oranda kullanılabilir, şirket içi 
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Bir şablon kullanmak yerine yapılandırma sunucusunu el ile ayarlayabilir miyim?
 
-[Yapılandırma sunucusu VM](vmware-azure-deploy-configuration-server.md) 'Sini, açık sanal makine biçimi (ovf) şablonunun en son sürümünü kullanarak oluşturmanız önerilir. Şablonu kullanmıyorsanız (örneğin, VMware sunucusuna erişiminiz yoksa), kurulum dosyasını portaldan [indirin](physical-azure-set-up-source.md) ve yapılandırma sunucusunu ayarlayın.
+[Yapılandırma sunucusu VM](vmware-azure-deploy-configuration-server.md) 'sini Open Virtualization Format (ovf) şablonunun en son sürümünü kullanarak oluşturmanız önerilir. Şablonu kullanmıyorsanız (örneğin, VMware sunucusuna erişiminiz yoksa), kurulum dosyasını portaldan [indirin](physical-azure-set-up-source.md) ve yapılandırma sunucusunu ayarlayın.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Bir yapılandırma sunucusu birden fazla bölgeye çoğaltılabilir mi?
 

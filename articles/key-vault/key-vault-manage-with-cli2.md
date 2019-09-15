@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976355"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000633"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLı kullanarak Key Vault yönetme 
 
@@ -35,7 +35,7 @@ Azure Anahtar Kasası çoğu bölgede kullanılabilir. Daha fazla bilgi için bk
 > Bu makalede, bir uygulamanın anahtar kasasında anahtar veya gizli dizi kullanma yetkisini nasıl yetkilendirecek hakkında, adımlardan birine dahil olmak üzere Azure uygulamasını yazma yönergeleri dahil değildir.
 >
 
-Azure Key Vault genel bir bakış için bkz. [Azure Key Vault nedir?](key-vault-whatis.md)
+Azure Key Vault genel bir bakış için bkz. [Azure Key Vault nedir?](key-vault-overview.md)
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar

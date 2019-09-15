@@ -1,7 +1,7 @@
 ---
 title: Azure CLı ile çalışma alanları oluşturma
-titleSuffix: Azure Machine Learning service
-description: Azure CLı kullanarak yeni bir Azure Machine Learning hizmet çalışma alanı oluşturma hakkında bilgi edinin.
+titleSuffix: Azure Machine Learning
+description: Yeni bir Azure Machine Learning çalışma alanı oluşturmak için Azure CLı 'nın nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873486"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002644"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Azure CLı ile Azure Machine Learning hizmeti için bir çalışma alanı oluşturma
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
-Bu makalede, Azure CLı kullanarak Azure Machine Learning hizmet çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning hizmet kaynaklarıyla çalışmaya yönelik komutlar sağlar.
+Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir **Azure aboneliği**. Bunlardan birine sahip değilseniz, [Azure Machine Learning hizmetinin ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+* Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 * **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Azure Machine Learning hizmet çalışma alanı aşağıdaki Azure hizmetlerini veya varlıklarını kullanır:
+Azure Machine Learning çalışma alanı aşağıdaki Azure hizmetlerine veya varlıklara bağımlıdır:
 
 > [!IMPORTANT]
 > Mevcut bir Azure hizmeti belirtmezseniz, bir tane, çalışma alanı oluşturma sırasında otomatik olarak oluşturulur. Her zaman bir kaynak grubu belirtmeniz gerekir.
@@ -68,10 +68,10 @@ Azure Machine Learning hizmet çalışma alanı aşağıdaki Azure hizmetlerini 
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Machine Learning hizmet çalışma alanı bir kaynak grubu içinde oluşturulmalıdır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz. __Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. Bu `<resource-group-name>` kaynak grubu için kullanılacak adla değiştirin. Bu `<location>` kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
+Azure Machine Learning çalışma alanı bir kaynak grubu içinde oluşturulmalıdır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz. __Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. Bu `<resource-group-name>` kaynak grubu için kullanılacak adla değiştirin. Bu `<location>` kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
 
 > [!TIP]
-> Azure Machine Learning hizmetinin kullanılabildiği bir bölge seçmelisiniz. Bilgi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Azure Machine Learning kullanılabildiği bir bölge seçmelisiniz. Bilgi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > Kapsayıcı kayıt defterinde bir Azure Machine Learning hizmeti çalışma alanıyla kullanılmadan önce [yönetici hesabının](/azure/container-registry/container-registry-authentication#admin-account) etkinleştirilmiş olması gerekir.
+    > Kapsayıcı kayıt defterinde, bir Azure Machine Learning çalışma alanıyla kullanılmadan önce [yönetici hesabının](/azure/container-registry/container-registry-authentication#admin-account) etkinleştirilmiş olması gerekir.
 
 Çalışma alanıyla kullanmak istediğiniz kaynakların kimliklerine sahip olduktan sonra, temel `az workspace create -w <workspace-name> -g <resource-group-name>` komutunu kullanın ve var olan kaynaklar için parametreleri ve kimlikleri ekleyin. Örneğin, aşağıdaki komut, var olan bir kapsayıcı kayıt defteri kullanan bir çalışma alanı oluşturur:
 
@@ -302,7 +302,7 @@ Bir çalışma alanını aboneliğinizdeki başka bir kullanıcıyla paylaşmak 
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Azure Machine Learning hizmeti ile rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Manage Users and Roles](how-to-assign-roles.md).
+Azure Machine Learning ile rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
 
 Daha fazla bilgi için, [az ml çalışma alanı paylaşma](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) belgelerine bakın.
 

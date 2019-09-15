@@ -1,7 +1,7 @@
 ---
 title: 'Görüntü sınıflandırma öğreticisi: Modelleri eğitme'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti ile bir Python Jupyter Not defteri içinde, bir görüntü sınıflandırma modelini scikit ile eğitme hakkında bilgi edinin. Bu öğretici, iki bölümden oluşan bir serinin birinci bölümüdür.
+titleSuffix: Azure Machine Learning
+description: Bir görüntü sınıflandırma modelini scikit ile eğitme hakkında bilgi edinin Azure Machine Learning bir Python Jupyter not defterinde öğrenin. Bu öğretici, iki bölümden oluşan bir serinin birinci bölümüdür.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cf639a290067e71b562e0df844ee01d018a7557
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170565"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001675"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: Veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
 
-Bu öğreticide, bir makine öğrenimi modelini uzaktan işlem kaynaklarında eğitebilirsiniz. Azure Machine Learning hizmetinde bir Python Jupyter not defteri için eğitim ve dağıtım iş akışı'nı kullanacaksınız.  Ardından not defterini şablon olarak kullanıp kendi verilerinizle kendi makine öğrenmesi modelinizi eğitebilirsiniz. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin birinci bölümüdür**.  
+Bu öğreticide, bir makine öğrenimi modelini uzaktan işlem kaynaklarında eğitebilirsiniz. Bir Python Jupyter not defterinde Azure Machine Learning için eğitim ve dağıtım iş akışını kullanacaksınız.  Ardından not defterini şablon olarak kullanıp kendi verilerinizle kendi makine öğrenmesi modelinizi eğitebilirsiniz. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin birinci bölümüdür**.  
 
-Bu öğreticide, [Mnist](http://yann.lecun.com/exdb/mnist/) veri kümesini ve [scikit-](https://scikit-learn.org) Azure Machine Learning hizmeti 'ni kullanarak basit bir Lojistik gerileme yapılır. MNIST, 70.000 gri tonlamalı resimden oluşan popüler bir veri kümesidir. Her görüntü, sıfır ile dokuz arasında bir sayıyı temsil eden 28 x 28 piksellik bir sayının el ile yazılmış bir rakamdır. Amaç, belirli bir görüntünün temsil ettiği basamağı belirlemek için birden çok Lass sınıflandırıcı oluşturmaktır.
+Bu öğreticide, [Mnist](http://yann.lecun.com/exdb/mnist/) veri kümesini ve scikit 'i kullanarak basit bir Lojistik gerileme yapılır. Azure Machine Learning [hakkında bilgi edinin](https://scikit-learn.org) . MNIST, 70.000 gri tonlamalı resimden oluşan popüler bir veri kümesidir. Her görüntü, sıfır ile dokuz arasında bir sayıyı temsil eden 28 x 28 piksellik bir sayının el ile yazılmış bir rakamdır. Amaç, belirli bir görüntünün temsil ettiği basamağı belirlemek için birden çok Lass sınıflandırıcı oluşturmaktır.
 
 Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 
@@ -33,7 +33,7 @@ Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 
 Bir modelin nasıl seçeceğinizi ve [Bu öğreticinin ikinci bölümünde](tutorial-deploy-models-with-aml.md)nasıl dağıtılacağını öğreneceksiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 >[!NOTE]
 > Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sürümü 1.0.57 ile test edilmiştir.
@@ -436,7 +436,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu Azure Machine Learning hizmet öğreticisinde, Python 'u aşağıdaki görevler için kullandınız:
+Bu Azure Machine Learning öğreticide, aşağıdaki görevler için Python kullandınız:
 
 > [!div class="checklist"]
 > * Geliştirme ortamınızı ayarlayın.

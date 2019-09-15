@@ -1,6 +1,6 @@
 ---
 title: Yönetme ve kaynak kotaları isteyin
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu nasıl yapılır kılavuzunda, Azure Machine Learning ve görüntüleme ve daha fazla kota isteği için kaynaklar üzerinde çeşitli kotalar açıklar.
 services: machine-learning
 ms.service: machine-learning
@@ -11,26 +11,26 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2ee819625f772c96ac6c5a771935da17ee05f3aa
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278060"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002683"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Yönetme ve Azure kaynakları için kota isteği
 
-Olarak diğer Azure hizmetleriyle sınırı yoktur Azure Machine Learning hizmetiyle ilişkili belirli kaynaklar. Bu sınırlar, model eğitimi veya çıkarım/Puanlama için kullanılan gerçek temel işlem üzerinde sınırlaması için oluşturabileceğiniz çalışma alanı sayısı üst sınırından aralığıdır. 
+Diğer Azure hizmetlerinde olduğu gibi, Azure Machine Learning ilişkili belirli kaynaklarda sınırlamalar vardır. Bu sınırlar, model eğitimi veya çıkarım/Puanlama için kullanılan gerçek temel işlem üzerinde sınırlaması için oluşturabileceğiniz çalışma alanı sayısı üst sınırından aralığıdır. 
 
 Bu makalede, aboneliğiniz için çeşitli Azure kaynakları üzerinde önceden yapılandırılmış sınırları hakkında daha fazla ayrıntı sağlar ve ayrıca her kaynak türü için istek kota geliştirmeleri için kullanışlı bağlantılar içerir. Bu sınırlar, bütçe taşmaları nedeniyle sahtekarlığı önlemek ve Azure kapasitesi kısıtlamaları uymanız yerinde yerleştirilir.
 
-Üretim iş yükleri için Azure Machine Learning hizmet kaynaklarınızı tasarlarken ve ölçekleyerek bu kotaları aklınızda bulundurun. Örneğin, kümeniz belirlediğiniz hedef düğüm sayısına ulaşmazsa, aboneliğiniz için bir Azure Machine Learning Işlem çekirdeği sınırına ulaşmış olabilirsiniz. Sınırı veya kota varsayılan sınırı artırmak istiyorsanız, ücretsiz bir çevrimiçi müşteri destek isteği açın. Azure kapasitesi kısıtlamaları nedeniyle aşağıdaki tablolarda gösterilen üst sınırı değerini yukarıda sınırları yükseltilemez. Üst sınır sütun yok ise, kaynak sınırları ayarlanabilir sahip değil.
+Üretim iş yükleri için Azure Machine Learning kaynaklarınızı tasarlarken ve ölçekleyerek bu kotaları göz önünde bulundurun. Örneğin, kümeniz belirlediğiniz hedef düğüm sayısına ulaşmazsa, aboneliğiniz için bir Azure Machine Learning Işlem çekirdeği sınırına ulaşmış olabilirsiniz. Sınırı veya kota varsayılan sınırı artırmak istiyorsanız, ücretsiz bir çevrimiçi müşteri destek isteği açın. Azure kapasitesi kısıtlamaları nedeniyle aşağıdaki tablolarda gösterilen üst sınırı değerini yukarıda sınırları yükseltilemez. Üst sınır sütun yok ise, kaynak sınırları ayarlanabilir sahip değil.
 
 ## <a name="special-considerations"></a>Özel durumlar
 
 + Kota kapasitesini garanti bir kredi sınırına ' dir. Büyük ölçekli kapasite gereksinimleriniz varsa, Azure desteğine başvurun.
 
-+ Kota, aboneliklerinizde Azure Machine Learning hizmeti de dahil tüm hizmetler arasında paylaşılır. Tek özel durum, çekirdek işlem kotasından ayrı bir kota içeren Azure Machine Learning işlem amaçlıdır. Kota kullanımını tüm hizmetler arasında kapasite gereksinimlerinizi değerlendirirken hesaplamak emin olun.
++ Kotayı Azure Machine Learning dahil olmak üzere aboneliklerinizde bulunan tüm hizmetler arasında paylaşılır. Tek özel durum, çekirdek işlem kotasından ayrı bir kota içeren Azure Machine Learning işlem amaçlıdır. Kota kullanımını tüm hizmetler arasında kapasite gereksinimlerinizi değerlendirirken hesaplamak emin olun.
 
 + Varsayılan sınırları, F, G, teklif, ücretsiz deneme, Kullandıkça Öde ve gibi Dv2 serisi gibi kategori türüne göre değişir ve benzeri.
 

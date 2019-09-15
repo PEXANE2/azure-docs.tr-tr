@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186241"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004011"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Azure Search bir bilgi deposunda projeksiyonlarla çalışma
 
@@ -34,7 +34,7 @@ Bilgi deposu iki tür projeksiyonu destekler:
 
 + **Nesneler**: Verilerinizin ve zenginleştirme için bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir.
 
-Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya başlama](knowledge-store-howto.md)
+Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya](knowledge-store-howto.md)başlayın.
 
 ## <a name="projection-groups"></a>Projeksiyon grupları
 
@@ -67,13 +67,16 @@ Dizininizdeki tek bir belgeyi birden çok tabloya proje ekleyebilirsiniz ve ili�
 
 Beceri `knowledgeStore` öğesi içinde tablo projeksiyonu tanımlarken, zenginleştirme ağacındaki bir düğümü tablo kaynağına eşleyerek başlayın. Genellikle bu düğüm, tablolarda proje yapmanız gereken belirli bir şekli oluşturmak için yetenekler listesine eklediğiniz **her** bir beceriye ait çıktıdır. Projeyi seçtiğiniz düğüm birden çok tablo halinde projeye dilimlenebilir. Tablolar tanımı, proje yapmak istediğiniz tabloların bir listesidir. 
 
+#### <a name="projection-slicing"></a>Projeksiyon Dilimleme
+Bir tablo projeksiyon grubu tanımlarken, zenginleştirme ağacındaki tek bir düğüm birden çok ilişkili tabloya dilimlenebilir. Var olan bir tablo projeksiyonunun alt düğümü olan bir kaynak yolu içeren bir tablo eklemek, alt düğümün üst düğümden dilimlenmiş ve yeni, bununla ilişkili yeni tabloya yansıtılmakta olacaktır. Bu, tüm tablo projeksiyonlarınızın kaynağı olabilecek her bir şekilde mil halinde tek bir düğüm tanımlamanızı sağlar.
+
 Her tablo üç özellik gerektirir:
 
 + TableName Azure depolama 'daki tablonun adı.
 
 + generatedKeyName: Bu satırı benzersiz bir şekilde tanımlayan anahtarın sütun adı.
 
-+ kaynaktaki Zenginleştirme ağacınızdaki düğüm, zenginleştirmelerin kaynağını kaynak olarak gerçekleştirebilirsiniz. Bu genellikle biçimlendiricilerin çıktıdır, ancak yeteneklerin herhangi birinin çıktısı olabilir.
++ Kaynaktaki Zenginleştirme ağacınızdaki düğüm, zenginleştirmelerin kaynağını kaynak olarak gerçekleştirebilirsiniz. Bu genellikle biçimlendiricilerin çıktıdır, ancak yeteneklerin herhangi birinin çıktısı olabilir.
 
 Aşağıda tablo projeksiyonlarını örnek verilmiştir.
 
@@ -153,8 +156,8 @@ Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginle
 Nesne projeksiyonu oluşturmak, nesneye özgü birkaç özniteliği gerektirir:
 
 + storageContainer: Nesnelerin kaydedileceği kapsayıcı
-+ kaynaktaki Projeksiyonun kökü olan zenginleştirme ağacının düğümünün yolu
-+ anahtar Depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
++ Kaynaktaki Projeksiyonun kökü olan zenginleştirme ağacının düğümünün yolu
++ Anahtar Depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
 
 ## <a name="projection-lifecycle"></a>Projeksiyon yaşam döngüsü
 

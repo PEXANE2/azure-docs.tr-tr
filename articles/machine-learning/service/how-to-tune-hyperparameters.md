@@ -1,7 +1,7 @@
 ---
 title: İçin model ayarlama hiperparametreleri
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetini kullanarak derin öğrenme / makine öğrenimi modeliniz için hiperparametreleri verimli bir şekilde ayarlayın. Parametre arama alanını nasıl tanımlayacağınızı, iyileştirmek için bir birincil ölçüm belirtmenizi ve kötü performanslı çalıştırmaları erken sonlandırmayı öğreneceksiniz.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning kullanarak, derin öğrenme/makine öğrenimi modelinize yönelik hiper parametreleri verimli bir şekilde ayarlayın. Parametre arama alanını nasıl tanımlayacağınızı, iyileştirmek için bir birincil ölçüm belirtmenizi ve kötü performanslı çalıştırmaları erken sonlandırmayı öğreneceksiniz.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873054"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999383"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modeliniz için ayarlama hiperparametreleri
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning modelinize ait hiper parametreleri ayarlama
 
-Azure Machine Learning hizmetini kullanarak modeliniz için hiperparametreleri verimli bir şekilde ayarlayın.  Hiper parametre ayarı, aşağıdaki adımları içerir:
+Azure Machine Learning kullanarak modelinize yönelik hiper parametreleri verimli bir şekilde ayarlayın.  Hiper parametre ayarı, aşağıdaki adımları içerir:
 
 * Parametre arama alanı tanımlayın
 * En iyi duruma getirmek için birincil bir ölçüm belirtin  
@@ -94,7 +94,7 @@ Bu kod, bir arama alanı ile iki parametre - tanımlar `learning_rate` ve `keep_
 
 ### <a name="sampling-the-hyperparameter-space"></a>Hiper parametre alanı örnekleme
 
-İçinde hiper parametre alanı tanımı kullanılacak parametre örnekleme yöntemini de belirtebilirsiniz. Azure Machine Learning hizmeti rastgele örnekleme, kılavuz örnekleme ve Bayes örnekleme destekler.
+İçinde hiper parametre alanı tanımı kullanılacak parametre örnekleme yöntemini de belirtebilirsiniz. Azure Machine Learning rastgele örnekleme, kılavuz örneklemesi ve Bayeme örneklemesini destekler.
 
 #### <a name="random-sampling"></a>Rastgele örnekleme
 
@@ -186,7 +186,7 @@ Bir erken sonlandırma ilkesini kullanarak, bir ilke uygulandığında denetleye
 * `evaluation_interval`: ilkeyi uygulamak için sıklığı. Her birincil Metrik eğitim betiği oturum açtığında bir aralık olarak sayılır. Bu nedenle bir `evaluation_interval` birincil Metrik eğitim betiğini raporları her zaman 1 ilke uygulanır. Bir `evaluation_interval` 2 eğitim betiğini birincil Metrik raporları her zaman ilke uygulanır. Belirtilmezse, `evaluation_interval` varsayılan olarak 1 olarak ayarlanır.
 * `delay_evaluation`: belirtilen sayıda aralıkları için ilk ilke değerlendirmesi geciktirir. Bu Eğitimin erken sonlandırma önleme aralıkları, ilk en düşük numaralı çalıştırmak tüm yapılandırmaları sağlayan isteğe bağlı bir parametre çalıştıran olur. Bu seçenek belirtilmişse, büyüktür veya eşittir delay_evaluation evaluation_interval her birden çok ilke uygulanır.
 
-Azure Machine Learning hizmeti aşağıdaki erken sonlandırma ilkeleri destekler.
+Azure Machine Learning, aşağıdaki erken sonlandırma Ilkelerini destekler.
 
 ### <a name="bandit-policy"></a>Bandit İlkesi
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` deney, ayarlama, Hiper parametre atadığınız adı ve `workspace` istediğiniz bir deneme oluşturmak çalışma alanı (denemeler hakkında daha fazla bilgi için bkz. [nasıl Azure Machine Learning hizmeti çalışır?](concept-azure-machine-learning-architecture.md))
+`experiment_name`, hyperparameter ayarlama denemenize atadığınız addır ve `workspace` deneme oluşturmak istediğiniz çalışma alanıdır (denemeleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning nasıl çalışır?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Deneme görselleştirin
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976970"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000660"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -35,7 +35,7 @@ Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak içi
 > Bu makalede, tanılama günlüğünü güncelleştirmek için Azure PowerShell yönergeler sağlanmaktadır. Tanılama günlük kaydını, Azure portal **tanılama günlükleri** bölümünde Azure izleyici 'yi kullanarak da güncelleştirebilirsiniz. 
 >
 
-Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](key-vault-whatis.md). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
+Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](key-vault-overview.md). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

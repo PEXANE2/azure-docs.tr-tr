@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960467"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000109"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
 
@@ -146,5 +146,5 @@ Küme anahtara erişimi kaybederse, uyarılar Apache ambarı portalında göster
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault](../../key-vault/key-vault-whatis.md)nedir?
+* Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault](../../key-vault/key-vault-overview.md)nedir?
 * Azure Key Vault kullanmaya başlamak için bkz. [Azure Key Vault kullanmaya](../../key-vault/key-vault-overview.md)başlama.

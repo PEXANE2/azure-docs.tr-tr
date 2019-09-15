@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Toplu Puanlama için Azure ML işlem hatları'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bir görüntü sınıflandırma modelinde toplu Puanlama çalıştırmak için bir ML işlem hattı oluşturun. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine uzmanınıza, makine öğrenimine odaklanmanıza olanak sağlayabilir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 039dbc435cbffed9fe2a9e9be0053d5eb663e9bb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997358"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001611"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Batch Puanlama için Azure Machine Learning işlem hatları kullanma
 
-Bu öğreticide, toplu Puanlama veya çıkarım işi çalıştırmak için Azure Machine Learning hizmet işlem hatlarını kullanırsınız. Bu örnek iş, etiketli görüntüleri sınıflandırmak için önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) evsel sinir Network TensorFlow modelini kullanır. İşlem hattını oluşturup yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetikleyebilmeniz için bir REST uç noktası yapılandırırsınız.
+Bu öğreticide, Batch Puanlama veya çıkarım işi çalıştırmak için Azure Machine Learning işlem hatlarını kullanırsınız. Bu örnek iş, etiketli görüntüleri sınıflandırmak için önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) evsel sinir Network TensorFlow modelini kullanır. İşlem hattını oluşturup yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetikleyebilmeniz için bir REST uç noktası yapılandırırsınız.
 
 Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine uzmanınıza, makine öğrenimine odaklanmanıza olanak sağlayabilir. [Ml işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
 
@@ -33,11 +33,11 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 > * İşlem hattı oluşturma, çalıştırma ve yayımlama
 > * İşlem hattı için bir REST uç noktasını etkinleştirme
 
-Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Zaten bir Azure Machine Learning hizmet çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md) doldurun.
+* Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak **Öğreticiler/Tutorial-Pipeline-Batch-Scoring-Classification. ipynb** Not defterini açın.
 
 Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Gerekli `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` paketleri almak için öğesini çalıştırın.
@@ -512,7 +512,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer Azure Machine Learning hizmeti öğreticilerini çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
+Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
 
 ### <a name="stop-the-notebook-vm"></a>Not defteri VM 'sini durdur
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6a43b721b70858d82083538638853c5bbdf1531d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946355"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004124"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -48,7 +48,7 @@ Aşağıdaki tablo desteklenen her dil için kod örneklerine bağlantılar içe
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples) |IoTHubTransportProvider.MQTT |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Her zaman varsayılan olarak MQTT 'yi destekler |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Bir cihaz uygulamasını AMQP 'den MQTT 'ye geçirme
 
@@ -59,6 +59,8 @@ Bunu yaparken, aşağıdaki öğeleri denetlediğinizden emin olun:
 * AMQP, çok sayıda koşul için hatalar döndürüyor, ancak MQTT bağlantıyı sonlandırır. Sonuç olarak, özel durum işleme mantığınızın bazı değişiklikler gerektirebilirler.
 
 * MQTT, [buluttan cihaza iletileri](iot-hub-devguide-messaging.md)alırken *reddetme* işlemlerini desteklemez. Arka uç uygulamanızın cihaz uygulamasından bir yanıt alması gerekiyorsa, [doğrudan Yöntemler](iot-hub-devguide-direct-methods.md)kullanmayı göz önünde bulundurun.
+
+* AMQP, Python SDK 'sında desteklenmez
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT protokolünü doğrudan kullanma (cihaz olarak)
 
@@ -133,7 +135,7 @@ Modül kimliğini kullanarak MQTT üzerinden IoT Hub bağlantı, cihaza benzerdi
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL yapılandırması
 
-MQTT protokolünü doğrudan kullanmak için, istemciniz TLS/ SSL üzerinden bağlanmalıdır. Bu adımı atlama denemeleri bağlantı hatalarıyla başarısız olur.
+MQTT protokolünü doğrudan kullanmak için, istemciniz TLS/SSL *üzerinden bağlanmalıdır.* Bu adımı atlama denemeleri bağlantı hatalarıyla başarısız olur.
 
 Bir TLS bağlantısı kurmak için DigiCert Baltidaha daha fazla kök sertifikasını indirmeniz ve başvurmanız gerekebilir. Bu sertifika, Azure 'un bağlantıyı güvenli hale getirmek için kullandığı bir sertifikadır. Bu sertifikayı [Azure-IoT-SDK-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) deposunda bulabilirsiniz. Bu sertifikalar hakkında daha fazla bilgi, [DigiCert 'ın Web sitesinde](https://www.digicert.com/digicert-root-certificates.htm)bulunabilir.
 

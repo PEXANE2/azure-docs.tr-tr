@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: İlk ML modelinizi eğitme'
-titleSuffix: Azure Machine Learning service
-description: Bu öğreticide, Azure Machine Learning hizmetinde temel tasarım düzenlerini öğrenir ve diabetes veri kümesine dayalı basit bir scikit-öğrenme modeli eğitin.
+titleSuffix: Azure Machine Learning
+description: Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241288"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004038"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
-Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. Önceki öğreticide [bir çalışma alanı oluşturdunuz ve bir geliştirme ortamı seçtiniz](tutorial-1st-experiment-sdk-setup.md). Bu öğreticide, Azure Machine Learning hizmetinde temel tasarım düzenlerini öğrenir ve diabetes veri kümesine dayalı basit bir scikit-öğrenme modeli eğitin. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeklenebilmeniz için SDK 'nın pratik bilgisine sahip olursunuz.
+Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. Önceki öğreticide [bir çalışma alanı oluşturdunuz ve bir geliştirme ortamı seçtiniz](tutorial-1st-experiment-sdk-setup.md). Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz. Bu Öğreticiyi tamamladıktan sonra, daha karmaşık denemeleri ve iş akışları geliştirmek üzere ölçeklenebilmeniz için SDK 'nın pratik bilgisine sahip olursunuz.
 
 Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer Azure Machine Learning hizmeti öğreticilerini çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
+Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
 
 ### <a name="stop-the-notebook-vm"></a>Not defteri VM 'sini durdur
 

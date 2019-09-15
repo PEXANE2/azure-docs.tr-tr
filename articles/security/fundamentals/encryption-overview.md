@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727367"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003939"
 ---
 # <a name="azure-encryption-overview"></a>Azure şifrelemeye genel bakış
 
@@ -61,7 +61,7 @@ Azure, hizmet tarafından yönetilen anahtarlar, Key Vault içindeki müşteri t
 
 Windows ve Linux sanal makinelerini, [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) teknolojisini ve Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) [' i kullanarak](/azure/security/azure-security-disk-encryption), hem işletim sistemi disklerini hem de tam birim şifrelemesi ile veri disklerini korumak üzere koruyabilirsiniz.
 
-Şifreleme anahtarları ve gizli dizileri [Azure Key Vault aboneliğinizde](../../key-vault/key-vault-whatis.md)korunmuş. Azure Backup hizmetini kullanarak, anahtar şifreleme anahtarı (KEK) yapılandırmasını kullanan şifrelenmiş sanal makineleri (VM) yedekleyebilir ve geri yükleyebilirsiniz.
+Şifreleme anahtarları ve gizli dizileri [Azure Key Vault aboneliğinizde](../../key-vault/key-vault-overview.md)korunmuş. Azure Backup hizmetini kullanarak, anahtar şifreleme anahtarı (KEK) yapılandırmasını kullanan şifrelenmiş sanal makineleri (VM) yedekleyebilir ve geri yükleyebilirsiniz.
 
 ### <a name="azure-storage-service-encryption"></a>Azure Depolama Hizmeti Şifrelemesi
 

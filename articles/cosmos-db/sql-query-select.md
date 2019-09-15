@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB'de SELECT yan tümcesi
-description: Azure Cosmos DB için SQL SELECT yan tümcesi hakkında öğrenin. SQL, bir Azure Cosmos DB JSON sorgu dili olarak kullanın.
+title: Azure Cosmos DB yan tümce SEÇIN
+description: Azure Cosmos DB için SQL SELECT yan tümcesi hakkında bilgi edinin. SQL 'i Azure Cosmos DB JSON sorgu dili olarak kullanın.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: 84d0212f7f212b4554b506726e027fe51f795eea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342627"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003520"
 ---
 # <a name="select-clause"></a>SELECT yan tümcesi
 
-SELECT yan tümcesi ve isteğe bağlı her sorgu oluşur [FROM](sql-query-from.md) ve [burada](sql-query-where.md) ANSI SQL standartları başına yan tümceleri. Genellikle, kaynak FROM yan tümcesindeki numaralandırılana ve WHERE yan tümcesi JSON öğelerinin kümesini almak için kaynak bir filtre uygular. SELECT yan tümcesi, ardından istenen JSON değerleri seçim listesinde yansıtıyor.
+Her sorgu, ANSI SQL standartlarına göre, SELECT yan tümcesi ve from ve [WHERE](sql-query-where.md) yan [tümcelerinden](sql-query-from.md) oluşur. Genellikle, FROM yan tümcesindeki kaynak numaralandırılır ve WHERE yan tümcesi JSON öğelerinin bir alt kümesini almak için kaynak üzerinde bir filtre uygular. SELECT yan tümcesi daha sonra seçim listesinde istenen JSON değerlerini projeler.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -52,7 +52,7 @@ SELECT <select_specification>
  
 - `DISTINCT`
   
-  Yinelenen öngörülen özelliklerinin kaldırılması gerektiğini belirtir.  
+  Yansıtılan özelliklerin tekrarların kaldırılması gerektiğini belirtir.  
 
 - `<scalar_expression>`  
 
@@ -78,7 +78,7 @@ Her ikisi de `SELECT <select_list>` ve `SELECT *` "söz dizimi sugar" olan ve a�
   
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki SELECT sorgu örneği döndürür `address` gelen `Families` olan `id` eşleşen `AndersenFamily`:
+Aşağıdaki SELECT sorgusu `address` örneği, `id` eşleşmelerin `Families` `AndersenFamily`döndürdüğü örnekleri:
 
 ```sql
     SELECT f.address
@@ -86,7 +86,7 @@ Aşağıdaki SELECT sorgu örneği döndürür `address` gelen `Families` olan `
     WHERE f.id = "AndersenFamily"
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -98,8 +98,8 @@ Sonuçlar şu şekildedir:
     }]
 ```
 
-### <a name="quoted-property-accessor"></a>Tırnak işaretli bir özellik erişimcisi
-Tırnak işaretli özelliği [] işleci kullanılarak özelliklerine erişebilirsiniz. Örneğin, `SELECT c.grade` ve `SELECT c["grade"]` eşdeğerdir. Bu sözdizimi, kaçış özel karakterleri, boşluk içeren veya SQL anahtar sözcüğü ya da ayrılmış sözcük aynı ada sahip bir özellik kullanışlıdır.
+### <a name="quoted-property-accessor"></a>Alıntılanmış özellik erişimcisi
+[] Alıntı özelliği işlecini kullanarak özelliklere erişebilirsiniz. Örneğin, `SELECT c.grade` ve `SELECT c["grade"]` eşdeğerdir. Bu sözdizimi, boşluk, özel karakter veya bir SQL anahtar sözcüğüyle veya ayrılmış sözcükle aynı ada sahip bir özelliğin kaçış için yararlıdır.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ Tırnak işaretli özelliği [] işleci kullanılarak özelliklerine erişebilir
 
 ### <a name="nested-properties"></a>İç içe Özellikler
 
-Aşağıdaki örnek iki iç içe özellikler projeleri `f.address.state` ve `f.address.city`.
+Aşağıdaki örnek, `f.address.state` iki iç içe geçmiş özelliği ve `f.address.city`.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -117,7 +117,7 @@ Aşağıdaki örnek iki iç içe özellikler projeleri `f.address.state` ve `f.a
     WHERE f.id = "AndersenFamily"
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -127,7 +127,7 @@ Sonuçlar şu şekildedir:
 ```
 ### <a name="json-expressions"></a>JSON ifadeleri
 
-Projeksiyon, ayrıca aşağıdaki örnekte gösterildiği gibi JSON ifadeleri destekler:
+Projeksiyon, aşağıdaki örnekte gösterildiği gibi JSON ifadelerini de destekler:
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -135,7 +135,7 @@ Projeksiyon, ayrıca aşağıdaki örnekte gösterildiği gibi JSON ifadeleri de
     WHERE f.id = "AndersenFamily"
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -147,7 +147,7 @@ Sonuçlar şu şekildedir:
     }]
 ```
 
-Önceki örnekte, bir JSON nesnesi oluşturmak SELECT yan tümcesi gerekir ve örnek, herhangi bir anahtar sağlar. bu yana yan tümcesi örtük bağımsız değişken adını kullanır. `$1`. Aşağıdaki sorguda iki örtük bağımsız değişkenlerini döndürür: `$1` ve `$2`.
+Önceki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını `$1`kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürür: `$1` ve `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -156,7 +156,7 @@ Sonuçlar şu şekildedir:
     WHERE f.id = "AndersenFamily"
 ```
 
-Sonuçlar şu şekildedir:
+Sonuçlar şunlardır:
 
 ```json
     [{
@@ -173,5 +173,5 @@ Sonuçlar şu şekildedir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Başlarken](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE yan tümcesi](sql-query-where.md)

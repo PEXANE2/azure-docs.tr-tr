@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847042"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999097"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -48,12 +48,12 @@ ms.locfileid: "67847042"
 
 **ClaimType** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşumlar | Açıklama |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Çeşitli ekranlarda kullanıcılara görüntülenen başlık. Değer [yerelleştirilmiş](localization.md)olabilir. |
 | DataType | 0:1 | Talebin türü. Boolean, Date, dateTime, int, Long, String, stringCollection, Alternativesecurityıdcollection veri türleri kullanılabilir. |
 | DefaultPartnerClaimTypes | 0:1 | Belirtilen bir protokol için kullanılacak iş ortağı varsayılan talep türleri. Değerin **ınputclaim** veya **outputclaim** öğelerinde belirtilen **partnerclaimtype** 'da üzerine yazılabilir. Bir protokol için varsayılan adı belirtmek üzere bu öğeyi kullanın.  |
-| Maskesi | 0:1 | Talep görüntülenirken uygulanabilecek bir maske karakterleri için isteğe bağlı bir dize. Örneğin, 324-232-4343 telefon numarası XXX-XXX-4343 olarak maskelenebilir. |
+| Maske | 0:1 | Talep görüntülenirken uygulanabilecek bir maske karakterleri için isteğe bağlı bir dize. Örneğin, 324-232-4343 telefon numarası XXX-XXX-4343 olarak maskelenebilir. |
 | UserHelpText | 0:1 | Kullanıcıların amacını anlaması için yararlı olabilecek talep türünün açıklaması. Değer [yerelleştirilmiş](localization.md)olabilir. |
 | Userınputtype | 0:1 | Talep türü için talep verilerini el ile girerken Kullanıcı tarafından kullanılabilir olması gereken giriş denetiminin türü. Bu sayfada daha sonra tanımlanan Kullanıcı giriş türlerine bakın. |
 | Kısıtlama | 0:1 | Bu talep için normal ifade (Regex) veya kabul edilebilir değerlerin bir listesi gibi değer kısıtlamaları. Değer [yerelleştirilmiş](localization.md)olabilir. |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 **Defaultpartnerclaimtypes** aşağıdaki öğeyi içerebilir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşumlar | Açıklama |
 | ------- | ----------- | ----------- |
 | Protocol | 0: n | Varsayılan iş ortağı talep türü adı olan protokollerin listesi. |
 
@@ -71,10 +71,10 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Name | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır:  OAuth1, OAuth2, SAML2, Openıdconnect, Wsbesor WsTrust. |
+| Name | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır:  OAuth1, OAuth2, SAML2, Openıdconnect. |
 | PartnerClaimType | Evet | Kullanılacak talep türü adı. |
 
-Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla  `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`etkileşime geçtiğinde, openıdconnect ve OAuth2 ile, `family_name` talebin eşlendiği .
+Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`etkileşime geçtiğinde, openıdconnect ve OAuth2 ile, `family_name` talebin eşlendiği .
 
 ```XML
 <ClaimType Id="surname">
@@ -100,7 +100,7 @@ Sonuç olarak, Azure AD B2C tarafından verilen JWT belirteci, ClaimType adını
 }
 ```
 
-### <a name="mask"></a>Maskesi
+### <a name="mask"></a>Maske
 
 **Mask** öğesi aşağıdaki öznitelikleri içerir:
 
@@ -150,7 +150,7 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 
 **Kısıtlama** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşumlar | Açıklama |
 | ------- | ----------- | ----------- |
 | Listelenen | 1: n | Kullanıcının bir talep için seçmesini sağlamak üzere Kullanıcı arabirimindeki kullanılabilir seçenekler (örneğin, açılan menüdeki bir değer). |
 | Desen | 1:1 | Kullanılacak normal ifade. |
@@ -165,7 +165,7 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 |Value | Evet | Bu seçeneği belirleyerek ilişkili talep değeri. |
 | SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: TRUE veya False. |
 
-Aşağıdaki örnek, varsayılan değer  olarak `New York`ayarlanmış bir şehir açılan listesi talebi yapılandırır:
+Aşağıdaki örnek, varsayılan değer olarak `New York`ayarlanmış bir şehir açılan listesi talebi yapılandırır:
 
 ```XML
 <ClaimType Id="city">
@@ -354,7 +354,7 @@ Kullanıcı giriş **türü, kullanıcının** bir seçenek seçmesini sağlayan
 ```
 
 
-### <a name="paragraph"></a>Ina
+### <a name="paragraph"></a>Paragraf
 
 **Paragraf** Kullanıcı giriş türü, yalnızca bir paragraf etiketinde metin gösteren bir alan sağlamak için kullanılır. Örneğin, &lt;p&gt;metni&lt;/p.&gt;
 

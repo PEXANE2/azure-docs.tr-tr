@@ -1,7 +1,7 @@
 ---
 title: OData coğrafi uzamsal işlev başvurusu-Azure Search
 description: Azure Search sorgularda OData coğrafi uzamsal işlevler, coğrafi. uzaklık ve coğrafi. kesişiyor.
-ms.date: 06/13/2019
+ms.date: 09/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,18 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647571"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003450"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Azure Search `geo.distance` ve içindeki OData coğrafi uzamsal işlevleri`geo.intersects`
 
 Azure Search, `geo.distance` ve `geo.intersects` işlevleri aracılığıyla [OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) coğrafi uzamsal sorguları destekler. `geo.distance` İşlevi iki noktası arasındaki mesafeyi kilometre cinsinden, biri alan veya Aralık değişkeni, diğeri ise filtrenin bir parçası olarak geçen bir sabit değer olarak döndürür. `geo.intersects` Bu`true` işlev, belirli bir noktanın belirli bir çokgen içindeyse, noktanın bir alan veya Aralık değişkeni olduğu ve çokgenin, filtrenin bir parçası olarak geçirildiği bir sabit olarak belirtildiği şekilde belirtilir.
 
 İşlev, arama sonuçlarını belirli bir noktadan uzaklığına göre sıralamak için [ **$OrderBy** parametresinde](search-query-odata-orderby.md) de kullanılabilir. `geo.distance` `geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $OrderBy kullanılırken `geo.distance` ,geçerli olduğu alan türünde `Edm.GeographyPoint` olmalıdır ve aynı zamanda **sıralanabilir**olmalıdır.
+
+> [!NOTE]
+> $OrderBy parametresinde `geo.distance` kullanırken, işleve geçirdiğiniz alan yalnızca tek bir coğrafi nokta içermelidir. Diğer bir deyişle, türünde `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`olması gerekir. Azure Search içindeki koleksiyon alanlarında sıralama yapılamaz.
 
 ## <a name="syntax"></a>Sözdizimi
 

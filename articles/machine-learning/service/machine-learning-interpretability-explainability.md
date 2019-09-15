@@ -1,6 +1,6 @@
 ---
 title: Model yorumlanabilirliği
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Modelinizin Azure Machine Learning SDK 'Yı kullanarak neden tahmin sağladığını açıklayacağınızı öğrenin. Bu, modelinizin tahminleri nasıl yaptığını anlamak için eğitim ve çıkarım sırasında kullanılabilir.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872397"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002351"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile model yorumlenebilirliği
+# <a name="model-interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile model yorumlenebilirliği
 
 Bu makalede, modelinizin, Azure Machine Learning Python SDK 'sının çeşitli yorumlamalar paketleriyle neden olduğunu nasıl anlatacağınızı öğreneceksiniz.
 
@@ -219,7 +219,7 @@ Açıklama işlevleri, giriş olarak hem modelleri hem de işlem hatlarını kab
 
 ### <a name="train-and-explain-remotely"></a>Uzaktan eğitme ve açıklama
 
-Azure Machine Learning hizmeti tarafından desteklenen çeşitli işlem hedefleri üzerinde eğitebilirsiniz, bu bölümdeki örnek, Azure Machine Learning Işlem hedefi kullanarak bunun nasıl yapılacağını gösterir.
+Azure Machine Learning tarafından desteklenen çeşitli işlem hedefleri üzerinde eğitebilirsiniz, bu bölümdeki örnek, Azure Machine Learning Işlem hedefi kullanarak bunun nasıl yapılacağını gösterir.
 
 1. Yerel bir Jupyter not defterinde eğitim betiği oluşturun (örneğin, run_explainer. Kopyala).
 
@@ -474,7 +474,7 @@ Açıklama, özgün modelle birlikte dağıtılabilir ve yerel açıklama bilgil
 
 1. Görüntüyü bir işlem hedefine dağıtın:
 
-   1. Puanlama dosyası oluşturma (Bu adımdan önce, özgün tahmin modelinizi kaydetmek için [Azure Machine Learning hizmet ile modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) bölümündeki adımları izleyin)
+   1. Puanlama dosyası oluşturma (Bu adımdan önce, ilk tahmin modelinizi kaydetmek için [Azure Machine Learning modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) ' daki adımları izleyin)
 
         ```python
         %%writefile score.py

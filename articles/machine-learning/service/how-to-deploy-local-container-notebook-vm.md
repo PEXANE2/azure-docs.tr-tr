@@ -1,7 +1,7 @@
 ---
 title: Modelleri dizüstü bilgisayar VM 'lerine dağıtma
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmet modellerinizi bir Web hizmeti olarak not defteri VM 'Leri kullanarak dağıtmayı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning modellerinizi Not defteri VM 'lerini kullanarak bir Web hizmeti olarak dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947766"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002818"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>Dizüstü bilgisayar VM 'lerine model dağıtma
 
-Azure Machine Learning hizmetini kullanarak bir modeli bir Web hizmeti olarak not defteri sanal makinenizde nasıl dağıtacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Not defteri VM 'lerini kullanın:
+Azure Machine Learning kullanarak bir modeli Not defteri sanal makinenizde Web hizmeti olarak dağıtma hakkında bilgi edinin. Aşağıdaki koşullardan biri doğru ise Not defteri VM 'lerini kullanın:
 
 - Hızlı bir şekilde dağıtın ve modelinizi doğrulama gerekir.
 - Geliştirilmekte olan bir modeli test edersiniz.
 
 > [!TIP]
-> Bir not defteri VM 'deki Jupyter Notebook bir modeli aynı VM 'deki bir Web hizmetine dağıtmak _Yerel_bir dağıtımdır. Bu durumda, ' yerel ' bilgisayar, Not defteri sanal bilgisayardır. Dağıtımlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning Service ile modelleri dağıtma](how-to-deploy-and-where.md).
+> Bir not defteri VM 'deki Jupyter Notebook bir modeli aynı VM 'deki bir Web hizmetine dağıtmak _yerel bir dağıtımdır_. Bu durumda, ' yerel ' bilgisayar, Not defteri sanal bilgisayardır. Dağıtımlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Çalışan bir not defteri VM 'si olan Azure Machine Learning hizmet çalışma alanı. Daha fazla bilgi için bkz. [Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
+- Bir not defteri VM 'si çalıştıran bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="deploy-to-the-notebook-vms"></a>Not defteri VM 'lerine dağıtma
 

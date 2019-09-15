@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d2fe8da1c4d49f5b57f907a5940ec9c445d0d1f7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 9057cefa5108924c57dbc85bbb895b31e804a51c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984328"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000651"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory 'de SSIS paketi yürütme etkinliğiyle bir SSIS paketi çalıştırın
 Bu makalede, SSIS paketi yürütme etkinliğini kullanarak Azure Data Factory (ADF) işlem hattının SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. 
@@ -269,7 +269,7 @@ Bu adımda, SSIS paketi yürütme etkinliğine sahip bir işlem hattı oluştura
    }
    ```
 
-Dosya sistemlerinde/dosya paylaşımlarında/Azure dosyalarında depolanan paketleri yürütmek için, paket/günlük konumu özelliklerine ilişkin değerleri aşağıdaki şekilde girebilirsiniz.
+   Dosya sistemlerinde/dosya paylaşımlarında/Azure dosyalarında depolanan paketleri yürütmek için, paket/günlük konumu özelliklerine ilişkin değerleri aşağıdaki şekilde girebilirsiniz.
 
    ```json
    {
@@ -318,7 +318,7 @@ Dosya sistemlerinde/dosya paylaşımlarında/Azure dosyalarında depolanan paket
    }
    ```
 
-Dosya sistemlerinde/dosya paylaşımlarında/Azure dosyalarında depolanan projeler içindeki paketleri yürütmek için, paket konumu özelliği için değerleri aşağıdaki gibi girebilirsiniz.
+   Dosya sistemlerinde/dosya paylaşımlarında/Azure dosyalarında depolanan projeler içindeki paketleri yürütmek için, paket konumu özelliği için değerleri aşağıdaki gibi girebilirsiniz.
 
    ```json
    {

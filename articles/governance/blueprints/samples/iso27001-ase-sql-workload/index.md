@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8877c29341c95d5cd0fe8e35887c44594e0b6d41
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231772"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000132"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Ortamı/SQL Veritabanı iş yükü şema örneğine genel bakış
 
@@ -36,7 +36,7 @@ Bu ortam, ISO 27001 standartlarında güvenli, tümüyle izlenen, kurumsal kulla
 - Ortama dağıtılabilecek hizmetleri belirlemek ve herhangi bir genel IP adresi (PIP) kaynağı oluşturma işlemini reddetmek için [Azure İlkeleri](../../../policy/overview.md)
 - Tek bir alt ağ içeren, önceden varolan [paylaşılan hizmetler](../iso27001-shared/index.md) ortamıyla geri eşlenen ve tüm trafiğin [paylaşılan hizmetler](../iso27001-shared/index.md) güvenlik duvarından geçmesini zorunlu tutan bir sanal ağ. Sanal ağ aşağıdaki kaynakları barındırır:
   - Bir veya birden çok web uygulamasını, web API'sini veya işlevi barındırmak için kullanılabilen [Azure App Service Ortamları](../../../../app-service/environment/intro.md)
-  - İş yükü ortamında çalıştırılan uygulamaların kullandığı gizli dizileri depolamak için, sanal ağ hizmeti uç noktasını kullanan bir [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) örneği
+  - İş yükü ortamında çalıştırılan uygulamaların kullandığı gizli dizileri depolamak için, sanal ağ hizmeti uç noktasını kullanan bir [Azure Key Vault](../../../../key-vault/key-vault-overview.md) örneği
   - İş yükü ortamındaki uygulamalarda kullanılan veritabanlarını depolamak için, sanal ağ hizmeti uç noktasını kullanan bir [Azure SQL Veritabanı](../../../../sql-database/sql-database-technical-overview.md) sunucu örneği
 
 ## <a name="next-steps"></a>Sonraki adımlar
