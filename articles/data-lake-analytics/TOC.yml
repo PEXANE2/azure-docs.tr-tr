@@ -1,10 +1,10 @@
 - name: Data Lake Analytics Belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Data Lake Analytics nedir?
       href: data-lake-analytics-overview.md
-- name: başlarken
+- name: Başlarken
   items:
     - name: Azure portal
       href: data-lake-analytics-get-started-portal.md
