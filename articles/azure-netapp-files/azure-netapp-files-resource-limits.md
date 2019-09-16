@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515852"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983997"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -36,7 +36,7 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
 |  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
 |  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1\.   |    Hayır    |
-|  Azure NetApp Files erişebilen VNet 'teki eş zamanlı IP sayısı (eşlenen VNET 'Ler dahil)   |    1000   |    Hayır   |
+|  Bir sanal ağ içindeki (eşlenen VNET 'Ler dahil), Azure NetApp Files erişebilen IP sayısı   |    1000   |    Evet   |
 |  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
 |  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
 |  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
@@ -53,7 +53,7 @@ Azure portal gezinti düzleminden:
 2. **+ Yeni destek isteği**' ne tıklayın.
 3. Temel bilgiler sekmesinde, aşağıdaki bilgileri sağlayın: 
     1. Sorun türü: **Hizmet ve abonelik sınırlarını (kotalar)** seçin.
-    2. Abonelikler: Kotanın artması gereken kaynak için aboneliği seçin.
+    2. Aboneliklerin Kotanın artması gereken kaynak için aboneliği seçin.
     3. Kota türü: Depolama **seçin: Azure NetApp Files sınırları**.
     4. İleri **' ye tıklayın: Çözümler**.
 4. Ayrıntılar sekmesinde:

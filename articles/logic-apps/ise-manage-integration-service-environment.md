@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 8f10e3d3fd7c67d1e803e8f85c9918c91bb81d59
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517468"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967801"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınızı (ıSE) yönetme
 
-[Tümleştirme hizmeti ortamınız (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) için ağ durumunu denetlemek ve ortamınızda bulunan Logic Apps, bağlantılar, tümleştirme hesapları ve özel bağlayıcılar yönetmek için bu konudaki adımları izleyin.
+[Tümleştirme hizmeti ortamınızın (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ağ durumunu denetlemek ve Ise 'de mevcut olan Logic Apps, bağlantılar, tümleştirme hesapları ve bağlayıcıları yönetmek için bu konudaki adımları izleyin. Bu yapıtları ıSE 'nize eklemek için bkz. [Integration Service ortamınıza yapıt ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>ISE 'nizi görüntüleme
 
@@ -46,31 +46,49 @@ ISE menüsünde **Ayarlar**' ın altında **ağ durumu**' nu seçin. Bu bölmede
 
 ## <a name="manage-your-logic-apps"></a>Mantıksal uygulamalarınızı yönetin
 
+ISE 'de olan Logic Apps 'i görüntüleyebilir ve yönetebilirsiniz.
+
 1. ISE menüsünde, **Ayarlar**' ın altında **Logic Apps**' i seçin.
 
-   ![Logic Apps bulma](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Mantıksal uygulamaları görüntüleme](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Artık gerekmiyorsa mantıksal uygulamaları ıSE 'den kaldırmak için bu mantıksal uygulamaları seçin ve **Sil**' i seçin.
+1. Artık ihtiyacınız olmayan Logic Apps 'i kaldırmak için bu Logic Apps ' i seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>API bağlantılarını yönetme
 
-1. ISE 'de çalışan Logic Apps tarafından oluşturulan API bağlantılarını görüntülemek için, çalışma menüsünde, **Ayarlar**' ın altında, **API bağlantıları**' nı seçin.
+ISE 'de çalışan Logic Apps tarafından oluşturulan bağlantıları görüntüleyebilir ve yönetebilirsiniz.
 
-   ![API bağlantılarını bul](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+1. ISE menüsünde **Ayarlar**' ın altında **API bağlantıları**' nı seçin.
 
-1. Artık gerekli olmayan bağlantıları bağlantı noktasından kaldırmak için bu bağlantıları seçin ve **Sil**' i seçin.
+   ![API bağlantılarını görüntüle](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+
+1. Artık ihtiyacınız olmayan bağlantıları kaldırmak için bu bağlantıları seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+
+<a name="manage-api-connectors"></a>
+
+## <a name="manage-ise-connectors"></a>ISE bağlayıcılarını yönetme
+
+ISE 'nize dağıtılan API bağlayıcılarını görüntüleyebilir ve yönetebilirsiniz.
+
+1. ISE menüsünde, **Ayarlar**' ın altında, **yönetilen bağlayıcılar**' ı seçin.
+
+   ![Yönetilen bağlayıcıları görüntüleme](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+
+1. ISE 'de kullanılabilir olmasını istemediğiniz bağlayıcıları kaldırmak için bu bağlayıcıları seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>Özel bağlayıcıları yönetme
 
-1. ISE ortamınızda oluşturulan özel bağlayıcıları görüntülemek için, ıSE menüsünde, **Ayarlar**' ın altında **özel bağlayıcılar**' ı seçin.
+ISE 'nize dağıttığınız özel bağlayıcıları görüntüleyebilir ve yönetebilirsiniz.
+
+1. ISE menüsünde **Ayarlar**' ın altında **özel bağlayıcılar**' ı seçin.
 
    ![Özel bağlayıcıları bulma](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Artık gerekli olmayan özel bağlayıcıları ıSE bilgisayarınızdan kaldırmak için bu Bağlayıcılar ' ı seçin ve **Sil**' i seçin.
+1. Artık ihtiyacınız olmayan özel bağlayıcıları kaldırmak için bu Bağlayıcılar ' ı seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
 
 <a name="find-integration-accounts"></a>
 

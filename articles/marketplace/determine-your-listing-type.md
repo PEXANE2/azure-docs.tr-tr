@@ -8,17 +8,17 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6fef64bae6462923da67fc41945871f5dcde3094
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 49723a80bb198e8151c7e85a90453183068c9d2b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450050"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962814"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleyin
-Teklifiniz için seçtiğiniz yayımlama seçeneği doğrudan hem uygunluk gereksinimleri ve Market Avantajlarımız ilişkilendirir. Daha da önemlisi, kullanıcılar, Market teklifi ile nasıl etkileşime gireceğini seçeneğini ve Teklif türü yayımlama seçimi tanımlar.
+Teklifiniz için seçtiğiniz yayımlama seçeneği doğrudan hem uygunluk gereksinimleri ve Market Avantajlarımız ilişkilendirir. Daha önemlisi, yayımlama seçeneği ve teklif türü seçimi, kullanıcıların Market teklifinizle nasıl etkileşime gireceğini tanımlar.
 
-Teklifinizi yapılandırmak için aşağıdaki anahtar Market kavramları anlamanıza gerekecektir: çağrıları nasıl ve nerede teklifinizi Market vitrininin birleşiminden içinde sunulur yöneten eylem türleri ve yapılandırmanız yayımlama seçeneklerini sunar.
+Teklifinizi yapılandırmak için aşağıdaki ana Market kavramlarını anlamanız gerekir: Yayımlama seçenekleri, teklif türleri ve yapılandırma ve teklifinizin Market stokörlerde nasıl ve nerede sunulduğunu belirleyen, eylem çağrıları.
 
 ![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
@@ -33,28 +33,28 @@ Bu makalede, öğreneceksiniz...
 
 Yayımlama seçeneği seçmeden önce Market çözümleri, uygulamalar ve hizmetler için mağaza uygunluk gereksinimlerini anlamak önemlidir:
 
-**Azure Market** uygulamalardır teknik "yapı-yapı taşıdır" Çözüm yerleşik olarak bulunan veya oluşturulan için Azure ve yönelik bir BT veya Geliştirici hedef kitle. Azure Market danışmanlık hizmetleri, Profesyonel hizmetler müşterilere yardımcı tekliflerini kullanmaya başlayın veya Azure kullanımını hızlandırın.
+**Azure Market** uygulamaları, Azure için yerleşik veya yerleşik olarak bulunan ve BT ya da geliştirici kitlesi için tasarlanan teknik "derleme bloğu" çözümleridir. Azure Market danışmanlık hizmetleri, Profesyonel hizmetler müşterilere yardımcı tekliflerini kullanmaya başlayın veya Azure kullanımını hızlandırın.
 
-**AppSource** uygulamalardır, yerleşik Azure açma satır iş kolu çözümleri veya yerleşik için: Dynamics 365, Office 365, Power BI ve Power Apps. AppSource danışmanlık hizmetleri kullanmaya başlayın ya da Dynamics 365 ve Power BI kullanımını hızlandırın müşterilere yardımcı Profesyonel hizmetler tekliflerdir.
+**Appsource** uygulamaları, Azure 'da veya yerleşik olarak yerleşik olabilecek iş kolu çözümleridir: Dynamics 365, Office 365, Power BI veya Power Apps. AppSource danışmanlık hizmetleri kullanmaya başlayın ya da Dynamics 365 ve Power BI kullanımını hızlandırın müşterilere yardımcı Profesyonel hizmetler tekliflerdir.
 
 
 ## <a name="understand-storefront-selection"></a>Vitrin seçimi anlama
 
-Azure Market ve/veya AppSource, burada, teklifinizin sunulur, mağazada teklif ayrıntılarınızı ve hedef kitlesi, hem de kategorileri ve teklifinizi oluştururken tarafından seçmiş sektörler tarafından otomatik olarak belirlenir. 
+Teklifinizin sunulacak olan storefront, Azure Marketi ve/veya AppSource, teklif ayrıntılarınız ve hedef kitlelerinizin yanı sıra teklifinizi oluştururken seçtiğiniz Kategoriler ve endüstriler tarafından otomatik olarak belirlenir. 
 
 >[!Note]
 >"Arası listeleme" (SaaS uygulamaları için yalnızca): bir liste veya deneme tabanlı teklif hem bir teknik ve işletmeye kullanıcı kitlesi ölçütleri karşıladığında teklifinizi hem vitrinler içinde listelenir. Aşağıdaki Yayımlama seçenekleri hakkında daha fazla bilgi edinin.
 
 ## <a name="choose-a-publishing-option"></a>Yayımlama seçeneği
 
-Fark yaratan müşteri katılımı, ayırabilir sırasında Yayımlama seçenekleri sunan müşteri adayı paylaşmaya erişim ve [Go-To-Market avantajları](https://partner.microsoft.com/reach-customers/gtm). Çağrıları yayımlama seçeneğiyle karşılık gelen eylem dikkat edin:
+Kullanılabilir yayımlama seçenekleri, müşteri adayı paylaşma ve [ticari Market avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)erişmenizi sağlarken farklılaştırılan müşteri katılımı sunar.  Çağrıları yayımlama seçeneğiyle karşılık gelen eylem dikkat edin:
 
 | **Yayımlama seçeneği**    | **Açıklama**  |
 | :------------------- | :-------------------|
 | **Liste** | Uygulamanız veya hizmetiniz bir Market kullanıcının isteği müşteri ile bağlanmanıza olanak sağlayan listesi basit **benimle iletişim kurun** eylem çağrısı. |
-| **Deneme** | Market bulunabilirliği geliştirin ve olası kullanıcıların SaaS, Iaas veya Microsoft uygulama deneyiminizi bunlar satın almadan önce sınırlı bir süreliğine ücretsiz olarak kullanmak, çözümünüzün deneme sürümü deneyimi sağlanmasını otomatikleştirmek için kullanın. Çağrıları deneme yayımlama seçeneği için kullanılan eylem ya da şunlardır: **Ücretsiz deneme sürümü** veya **Test Sürüşü**. |
-|**KLG**  |Finansal işlemin ayrı ayrı tamamlamanız ve Market bulunabilirliği geliştirmek ve çözümünüzü sağlanmasını otomatikleştirmek için kullanın. KLG teklif türleri geçişleri buluta şirket için idealdir. Eylem çağrısı **şimdi edinin**.
-| **Transact** | Uygulamanız Azure üzerinde çalışır ve müşteri seçtiğinde doğrudan müşterinin Azure Aboneliğinize bir kaynak olarak sağlanabilen **şimdi edinin** eylemini çağırın. Yazılım Lisans ücretleri, isteğe bağlı olarak satın alınıp müşterinin tercih ettiğiniz ödeme ve koşulları faturalandırılır ve süre sınırlı erişim sunmak seçebilirsiniz, **ücretsiz yazılım deneme sürümü** (yalnızca Azure için kullanılabilir Market.) |
+| **Deneme** | Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın almadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan çağrı eylemi şunlardır: **Ücretsiz deneme** veya **test sürücüsü**. |
+|**KLG**  |Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Eyleme çağrı **Şimdi**alınır.
+| **Transact** | Uygulamanız Azure 'da çalışır ve müşteri **Şimdi bu uygulamayı şimdi al** eylemini seçtiğinde müşterinin Azure aboneliğine doğrudan bir kaynak olarak sağlanabilir. Yazılım Lisans ücretleri, isteğe bağlı olarak satın alınıp müşterinin tercih ettiğiniz ödeme ve koşulları faturalandırılır ve süre sınırlı erişim sunmak seçebilirsiniz, **ücretsiz yazılım deneme sürümü** (yalnızca Azure için kullanılabilir Market.) |
 
 >[!Note]
 >Yayımlama seçeneği Transact kullanırken, fiyatlandırma, faturalandırma, faturalama ve ödeme konuları teklif türünü seçme ve teklifinizi oluşturma önce anlamak önemlidir. Gözden geçirme [daha fazla bilgi için Market faturalama ve ticari konuları makale](./marketplace-commercial-transaction-capabilities-and-considerations.md).

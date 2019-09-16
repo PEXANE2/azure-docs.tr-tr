@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879360"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960820"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
 
@@ -31,11 +31,11 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
 2. Sol taraftaki menüden **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
 
-    ![Tüm kullanıcılar bölmesi](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Tüm kullanıcılar bölmesi](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Yeni Kullanıcı formunu doldurun. Küme tabanlı izinleri atamak için oluşturduğunuz grupları seçin. Bu örnekte, Yeni Kullanıcı atayabilmeniz için "HiveUsers" adlı bir grup oluşturun. Bir ESP kümesi oluşturmak için [örnek yönergeler](hdinsight-domain-joined-configure.md) , ve `HiveUsers` `AAD DC Administrators`olmak üzere iki grup ekleme içerir.
 
-    ![Yeni Kullanıcı bölmesi](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Yeni Kullanıcı bölmesi](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. **Oluştur**’u seçin.
 
@@ -131,11 +131,11 @@ Yeni Azure AD kullanıcısının eklendiğini doğrulamak için [Apache ambarı 
 
 1. Ambarı panosundan **yönetici** menüsünde **ambarı Yönet** ' i seçin.
 
-    ![Ambarı yönetme](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Ambarı yönetme](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. Sayfanın sol tarafındaki **Kullanıcı + Grup Yönetimi** menü grubu altında **Kullanıcılar** ' ı seçin.
 
-    ![Kullanıcılar menü öğesi](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![Kullanıcılar menü öğesi](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Yeni kullanıcının kullanıcı tablosu içinde listelenmesi gerekir. Türü yerine olarak `LDAP` `Local`ayarlanır.
 

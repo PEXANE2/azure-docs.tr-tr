@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873313"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984996"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -117,6 +117,7 @@ Azure portalda kasanızın sayfasında, **Başlarken** bölümünden **Site Reco
 |---------|-----------|
 | Makineleriniz nerede bulunuyor? |**Şirket içi**’ni seçin.|
 | Makinelerinizi nereye çoğaltmak istiyorsunuz? |**Azure’a**’yı seçin.|
+| Geçiş gerçekleştiriyor musunuz? | **Evet**' i seçin, sonra da beğenim ' ın yanındaki kutuyu işaretleyin **, ancak Azure Site Recovery devam etmek istiyorum.**
 | Makineleriniz sanallaştırılmış mı? |**Sanallaştırılmamış / Diğer**’i seçin.|
 
 İşiniz bittiğinde, sonraki bölüme geçmek için **Tamam**’ı seçin.

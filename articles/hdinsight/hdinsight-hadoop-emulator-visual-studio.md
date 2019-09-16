@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9fba32c9c21faa6e02c8b48b3907ab67e47036d5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885492"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962188"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonçalışmalar korumalı alanı ile Visual Studio için Azure Data Lake araçları 'nı kullanma
 
@@ -41,7 +41,7 @@ Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardında
 
 2. **Sunucu Gezgini**, **HDInsight** girdisini sağ tıklatın ve ardından **HDInsight Emulator 'a Bağlan**' ı seçin.
 
-    ![HDInsight Emulator 'a bağlanma ile Sunucu Gezgini ekran görüntüsü vurgulanmış](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
+    ![HDInsight Emulator 'a bağlanma ile Sunucu Gezgini ekran görüntüsü vurgulanmış](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. **HDInsight öykünücüsüne Bağlan** iletişim kutusuna, ambarı için yapılandırdığınız parolayı girin.
 
@@ -51,19 +51,19 @@ Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardında
 
 4. `root` Hesap için yapılandırdığınız parolayı girmek için **parola** alanını kullanın. Diğer alanları varsayılan değerde bırakın.
 
-    ![Kök parola metin kutusu vurgulanmış iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
+    ![Kök parola metin kutusu vurgulanmış iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
     Devam etmek için **İleri**’yi seçin.
 
 5. Hizmetlerin doğrulanmasının bitmesini bekleyin. Bazı durumlarda, doğrulama başarısız olabilir ve yapılandırmayı güncelleştirmenizi isteyebilir. Doğrulama başarısız olursa **Güncelleştir**' i seçin ve hizmetin bitmesini ve doğrulanması için bekleyin.
 
-    ![Güncelleştirme düğmesi vurgulanmış şekilde iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
+    ![Güncelleştirme düğmesi vurgulanmış şekilde iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update-window.png)
 
     > [!NOTE]  
     > Güncelleştirme işlemi, Hortonçalışmalar korumalı alanı yapılandırmasını Visual Studio için Data Lake araçları tarafından beklenildiği şekilde değiştirmek için ambarı kullanır.
 
 6. Doğrulama bittikten sonra, yapılandırmayı tamamladıktan sonra **son** ' u seçin.
-    ![Son düğme vurgulanmış şekilde iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
+    ![Son düğme vurgulanmış şekilde iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > Geliştirme ortamınızın hızına ve sanal makineye ayrılan bellek miktarına bağlı olarak, hizmetleri yapılandırmak ve doğrulamak birkaç dakika sürebilir.
@@ -76,7 +76,7 @@ Hive yapılandırılmış verilerle çalışmak için SQL benzeri bir sorgu dili
 
 1. **Sunucu Gezgini**' de, daha önce eklediğiniz yerel kümenin girişine sağ tıklayın ve ardından **Hive sorgusu yaz**' ı seçin.
 
-    ![Hive sorgusu yazma vurgulanmış Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
+    ![Hive sorgusu yazma vurgulanmış Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/write-apache-hive-query.png)
 
     Yeni bir sorgu penceresi görüntülenir. Burada, yerel kümeye hızlı bir şekilde bir sorgu yazabilir ve gönderebilirsiniz.
 
@@ -86,15 +86,15 @@ Hive yapılandırılmış verilerle çalışmak için SQL benzeri bir sorgu dili
 
     Sorguyu çalıştırmak için pencerenin üst kısmında **Gönder** ' i seçin. Varsayılan değerlerde diğer değerleri (**Batch** ve sunucu adı) bırakın.
 
-    ![Gönder düğmesi vurgulanmış şekilde sorgu penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
+    ![Gönder düğmesi vurgulanmış şekilde sorgu penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/query-window-submit-hive.png)
 
     **Gelişmiş**' i seçmek için **Gönder** ' in yanındaki açılan menüyü de kullanabilirsiniz. Gelişmiş Seçenekler işi gönderdiğinizde ek seçenekler sağlamanıza olanak tanır.
 
-    ![Betik Gönder iletişim kutusu Hive ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
+    ![Betik Gönder iletişim kutusu Hive ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
 
 3. Sorguyu gönderdikten sonra, iş durumu görüntülenir. İş durumu, Hadoop tarafından işlendiği gibi iş hakkındaki bilgileri görüntüler. **Iş durumu** işin durumunu sağlar. Durum düzenli olarak güncelleştirilir veya yenileme simgesini kullanarak durumu el ile yenileyebilirsiniz.
 
-    ![İş durumu vurgulanmış şekilde Iş görünümü iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
+    ![İş durumu vurgulanmış şekilde Iş görünümü iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/job-view-dialog-box1.png)
 
     **Iş durumu** **tamamlandı**olarak değiştirildikten sonra, yönlendirilmiş bir ÇEVRIMSIZ Graf (DAG) görüntülenir. Bu diyagram, Hive sorgusu işlenirken tez tarafından belirlenen yürütme yolunu açıklar. Tez, yerel kümedeki Hive için varsayılan yürütme altyapısıdır.
 
@@ -105,14 +105,14 @@ Hive yapılandırılmış verilerle çalışmak için SQL benzeri bir sorgu dili
 
 4. **Toplu iş** alanını **etkileşimli**olarak değiştirerek Hive işlerini etkileşimli olarak da çalıştırabilirsiniz. Ardından **Yürüt**' ü seçin.
 
-    ![Etkileşimli ve yürütme düğmelerinin vurgulandığı ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
+    ![Etkileşimli ve yürütme düğmelerinin vurgulandığı ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hdi-interactive-query.png)
 
     Etkileşimli bir sorgu, işleme sırasında oluşturulan çıkış günlüğünü **HiveServer2 çıkış** penceresine akıp.
 
     > [!NOTE]  
     > Bilgi, iş bittikten sonra **Iş günlüğü** bağlantısından kullanılabilir.
 
-    ![Çıkış günlüğünün ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
+    ![Çıkış günlüğünün ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Hive projesi oluşturma
 
@@ -122,7 +122,7 @@ Ayrıca, birden çok Hive komut dosyası içeren bir proje da oluşturabilirsini
 
 2. Projeler listesinden **Şablonlar**' ı genişletin, **Azure Data Lake**' ı genişletin ve **HIVE (HDInsight)** öğesini seçin. Şablon listesinden **Hive örneği**' ni seçin. Bir ad ve konum girip **Tamam**' ı seçin.
 
-    ![Azure Data Lake, HIVE, Hive örneği ve Tamam vurgulanmış şekilde yeni proje penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
+    ![Azure Data Lake, HIVE, Hive örneği ve Tamam vurgulanmış şekilde yeni proje penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 **Hive örnek** projesi iki komut dosyası Içerir, **webloganalysis. HQL** ve **sensordataanalysis. HQL**. Pencerenin üst kısmındaki **Gönder** düğmesini kullanarak bu betikleri gönderebilirsiniz.
 
@@ -132,7 +132,7 @@ Hive, yapılandırılmış verilerle çalışmak için SQL benzeri bir dil sağl
 
 1. Visual Studio 'yu açın ve **Dosya**, **Yeni**ve ardından **Proje**' yi seçin. Projeler listesinden **Şablonlar**' ı genişletin, **Azure Data Lake**' ı genişletin ve ardından **Pig (HDInsight)** öğesini seçin. Şablonlar listesinden **Pig uygulaması**' nı seçin. Bir ad ve konum girin ve **Tamam**' ı seçin.
 
-    ![Azure Data Lake, Pig, Pig uygulaması ve Tamam vurgulanmış yeni proje penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
+    ![Azure Data Lake, Pig, Pig uygulaması ve Tamam vurgulanmış yeni proje penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/new-apche-pig-project.png)
 
 2. Bu projeyle oluşturulan **Script. Pig** dosyasının içeriği olarak aşağıdaki metni girin.
 
@@ -149,11 +149,11 @@ Hive, yapılandırılmış verilerle çalışmak için SQL benzeri bir dil sağl
 
     Pig, Hive 'den farklı bir dil kullandığında, işleri nasıl çalıştıracağınız, **Gönder** düğmesi aracılığıyla her iki dil arasında tutarlıdır. **Gönder** ' in yanındaki açılan kutuyu seçtiğinizde, Pig için bir Gelişmiş gönderme iletişim kutusu görüntülenir.
 
-    ![Betik Gönder iletişim kutusunun ekran görüntüsü Pig](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
+    ![Betik Gönder iletişim kutusunun ekran görüntüsü Pig](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
 
 3. İş durumu ve çıkışı Ayrıca bir Hive sorgusuyla aynı şekilde görüntülenir.
 
-    ![Tamamlanmış bir Pig işinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
+    ![Tamamlanmış bir Pig işinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/completed-apache-pig.png)
 
 ## <a name="view-jobs"></a>İşleri görüntüle
 
@@ -161,11 +161,11 @@ Data Lake araçları ayrıca Hadoop 'ta çalıştırılan işlerle ilgili bilgil
 
 1. **Sunucu Gezgini**, yerel kümeye sağ tıklayın ve ardından **işleri görüntüle**' yi seçin. Kümeye gönderilen işlerin bir listesi görüntülenir.
 
-    ![Görünüm Işleri vurgulanmış şekilde Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
+    ![Görünüm Işleri vurgulanmış şekilde Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/server-explorer-view-jobs.png)
 
 2. İş listesinden, iş ayrıntılarını görüntülemek için bir tane seçin.
 
-    ![Iş tarayıcısının, her biri vurgulanmış işlerin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
+    ![Iş tarayıcısının, her biri vurgulanmış işlerin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-job-details.png)
 
     Görüntülenecek bilgiler, çıktı ve günlük bilgilerini görüntüleme bağlantıları dahil olmak üzere Hive veya Pig sorgusu çalıştırdıktan sonra gördüklerinize benzer.
 
@@ -175,11 +175,11 @@ Data Lake araçları ayrıca Hadoop 'ta çalıştırılan işlerle ilgili bilgil
 
 1. **Sunucu Gezgini**, **HDInsight yerel küme** girişini genişletin ve **Hive veritabanları**' nı genişletin. Yerel kümedeki **varsayılan** ve **xademo** veritabanları görüntülenir. Bir veritabanını genişletmek, veritabanının içindeki tabloları gösterir.
 
-    ![Veritabanları genişletilmiş Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
+    ![Veritabanları genişletilmiş Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases-view.png)
 
 2. Bir tablonun genişletilmesi, bu tablo için sütunları görüntüler. Verileri hızlı bir şekilde görüntülemek için bir tabloya sağ tıklayın ve **ilk 100 satırı görüntüle**' yi seçin.
 
-    ![Tablo genişletilmiş ve görüntüleme üst 100 satırları seçiliyken Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
+    ![Tablo genişletilmiş ve görüntüleme üst 100 satırları seçiliyken Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Veritabanı ve tablo özellikleri
 
@@ -191,11 +191,11 @@ Bir veritabanının veya tablonun özelliklerini görüntüleyebilirsiniz. **Öz
 
 Bir tablo oluşturmak için, bir veritabanına sağ tıklayın ve ardından **tablo oluştur**' u seçin.
 
-![Tablo oluştur vurgulanarak Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![Tablo oluştur vurgulanarak Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/server-explorer-create-table.png)
 
 Daha sonra formu kullanarak tablo oluşturabilirsiniz. Aşağıdaki ekran görüntüsünün en altında, tabloyu oluşturmak için kullanılan ham HiveQL ' yi görebilirsiniz.
 
-![Tablo oluşturmak için kullanılan formun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
+![Tablo oluşturmak için kullanılan formun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form-box.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 63eb13dd131fcc1c424c02fdac10f531cc9f0282
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876621"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961496"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Soru-Cevap Oluşturma için Bilgi Bankası içeriğinin dil desteği
 
@@ -29,19 +29,11 @@ Dil, ayıklanan veri kaynaklarının içeriğinden otomatik olarak tanınır. Ye
 
     ![Azure Search kaynak seçin](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-1. **Testkb** dizinini seçin. Bu Azure Search Dizin her zaman ilk oluşturulur ve bu hizmette bulunan tüm bilgi temellerine ait kaydedilen içeriği içerir. 
+1. **Dizinler**' i seçin ve ardından **Testkb** dizini ' ni seçin. Bu, oluşturulan ilk Azure Search dizindir ve bu hizmet içindeki tüm bilgi temellerine ait kaydedilen içeriği içerir. 
 
-    ![Sınama KB 'sini seçin](../media/qnamaker-how-to-language-kb/select-testkb.png)
+1. Dizindeki alanları görmek için **alanları** seçin.
 
-1. _Testkb_ ayrıntılarının gösterildiği **alanlar** bölümünü seçin.
-
-    ![Alanları Seçin](../media/qnamaker-how-to-language-kb/selectfields.png)
-
-1. Dil ayrıntılarını görmek için **çözümleyici** kutusunu işaretleyin.
-
-    ![Çözümleyici 'yi seçin](../media/qnamaker-how-to-language-kb/select-analyzer.png)
-
-1. _Çözümleyici_ 'nin belirli bir dile ayarlandığını bulmalısınız. Bu dil, içeri aktarılan dosyalar ve URL 'lerden bilgi tabanı oluşturma adımı sırasında otomatik olarak algılandı. Bu dil, kaynak oluşturulduktan sonra değiştirilemez.
+1. `questions` Ve`answer` alanlarının çözümleyici sütunu belirli bir dile ayarlanır. Bu dil, içeri aktarılan dosyalar ve URL 'lerden bilgi tabanı oluşturma adımı sırasında otomatik olarak algılandı. Bu dil, kaynak oluşturulduktan sonra değiştirilemez.
 
     ![Seçili çözümleyici](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 

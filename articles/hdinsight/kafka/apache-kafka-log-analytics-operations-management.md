@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka - Azure HDInsight için Azure izleme günlükleri
-description: Azure HDInsight üzerinde Apache Kafka kümesi günlükleri analiz etmek için Azure İzleyici günlüklerine kullanmayı öğrenin.
+title: Azure Izleme günlükleri Apache Kafka-Azure HDInsight
+description: Azure Izleyici günlüklerini kullanarak Azure HDInsight 'ta Apache Kafka kümeden günlükleri analiz etme hakkında bilgi edinin.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,37 +8,37 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1e141aea3b22bfdcb981513f03e595b6c2f15466
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147978"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960131"
 ---
-# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlüklerini çözümleme
+# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri analiz etme
 
-HDInsight üzerinde Apache Kafka tarafından oluşturulan günlükleri analiz etmek için Azure İzleyici günlüklerine kullanmayı öğrenin.
+HDInsight üzerinde Apache Kafka tarafından oluşturulan günlükleri çözümlemek için Azure Izleyici günlüklerini nasıl kullanacağınızı öğrenin.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure İzleyici günlüklerine için Apache kafka'yı etkinleştir
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Apache Kafka için Azure Izleyici günlüklerini etkinleştirme
 
-HDInsight için Azure İzleyici günlüklerine etkinleştirme adımları tüm HDInsight kümeleri için aynıdır. Gerekli hizmetlerini oluşturup yapılandırın anlamak için aşağıdaki bağlantıları kullanın:
+HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDInsight kümeleri için aynıdır. Gerekli hizmetleri nasıl oluşturup yapılandıracağınızı anlamak için aşağıdaki bağlantıları kullanın:
 
-1. Bir Log Analytics çalışma alanı oluşturun. Daha fazla bilgi için [Azure İzleyici'de oturum](../../azure-monitor/platform/data-platform-logs.md) belge.
+1. Log Analytics çalışma alanı oluşturun. Daha fazla bilgi için bkz. [Azure izleyici belgesinde Günlükler](../../azure-monitor/platform/data-platform-logs.md) .
 
-2. HDInsight kümesinde Kafka oluşturmak. Daha fazla bilgi için [HDInsight üzerinde Apache Kafka kullanmaya başlama](apache-kafka-get-started.md) belge.
+2. HDInsight kümesi üzerinde bir Kafka oluşturun. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md) belgesi.
 
-3. Kafka kümesi, Azure İzleyici günlüklerine kullanmak için yapılandırın. Daha fazla bilgi için [kullanımı Azure İzleyici günlükleri HDInsight izlemek için](../hdinsight-hadoop-oms-log-analytics-tutorial.md) belge.
+3. Kafka kümesini Azure Izleyici günlüklerini kullanacak şekilde yapılandırın. Daha fazla bilgi için bkz. [HDInsight 'ı izlemek Için Azure izleyici günlüklerini kullanma](../hdinsight-hadoop-oms-log-analytics-tutorial.md) .
 
 > [!IMPORTANT]  
-> Bu, veri için Azure İzleyici günlüklerine kullanılabilir olmadan önce yaklaşık 20 dakika sürebilir.
+> Verilerin Azure Izleyici günlükleri için kullanılabilmesi 20 dakika sürebilir.
 
 ## <a name="query-logs"></a>Sorgu günlükleri
 
-1. Gelen [Azure portalında](https://portal.azure.com), Log Analytics çalışma alanınızı seçin.
+1. [Azure Portal](https://portal.azure.com), Log Analytics çalışma alanınızı seçin.
 
-2. Sol menüden altında **genel**seçin **günlükleri**. Buradan, Kafka'dan toplanan verileri arayabilirsiniz. Sorgu penceresinde bir sorgu girin ve ardından **çalıştırma**. Bazı örnek aramalar şunlardır:
+2. Sol taraftaki menüden, **genel**altında **Günlükler**' i seçin. Buradan, Kafka adresinden toplanan verileri arayabilirsiniz. Sorgu penceresinde bir sorgu girin ve sonra **Çalıştır**' ı seçin. Aşağıda bazı örnek aramalar verilmiştir:
 
 * Disk kullanımı:
 
@@ -56,7 +56,7 @@ HDInsight için Azure İzleyici günlüklerine etkinleştirme adımları tüm HD
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına gelen iletileri:
+* Saniye başına gelen ileti:
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ HDInsight için Azure İzleyici günlüklerine etkinleştirme adımları tüm HD
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına gelen bayt sayısı:
+* Saniye başına gelen bayt:
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +72,7 @@ HDInsight için Azure İzleyici günlüklerine etkinleştirme adımları tüm HD
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına Giden bayt sayısı:
+* Saniye başına giden bayt:
 
     ```kusto
     metrics_kafka_CL 
@@ -81,25 +81,25 @@ HDInsight için Azure İzleyici günlüklerine etkinleştirme adımları tüm HD
     ```
 
     > [!IMPORTANT]  
-    > Sorgu değerleri kümeye özel bilgileri ile değiştirin. Örneğin, `ClusterName_s` kümenizin adı olarak ayarlanması gerekir. `HostName_s` Kümedeki çalışan düğümü etki alanı adı olarak ayarlanmalıdır.
+    > Sorgu değerlerini kümenize özgü bilgileriniz ile değiştirin. Örneğin, `ClusterName_s` kümenizin adına ayarlanmalıdır. `HostName_s`kümedeki bir çalışan düğümünün etki alanı adına ayarlanmalıdır.
     
-    Ayrıca girebilirsiniz `*` kaydedilen tüm türleri aranacak. Şu anda aşağıdaki günlükleri sorgular için kullanılabilir:
+    Günlüğe kaydedilen tüm türleri `*` aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
     
     | Günlük türü | Açıklama |
     | ---- | ---- |
-    | Günlük\_kafkaserver\_Temizle | Kafka Aracısı server.log |
-    | Günlük\_kafkacontroller\_Temizle | Kafka Aracısı controller.log |
-    | Ölçümleri\_kafka\_Temizle | Kafka JMX ölçümlerini |
+    | log\_kafkaserver\_CL | Kafka Broker Server. log |
+    | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
+    | ölçümler\_Kafka\_CL | Kafka JMX ölçümleri |
     
-    ![CPU kullanım arama görüntüsü](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
+    ![CPU kullanımı aramasının görüntüsü](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure İzleyici hakkında daha fazla bilgi için bkz. [Azure İzleyiciye Genel Bakış](../../log-analytics/log-analytics-get-started.md), ve [sorgu Azure İzleyici HDInsight kümeleri izleme oturumu](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Azure Izleyici hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye genel bakış](../../log-analytics/log-analytics-get-started.md)ve [HDInsight kümelerini Izlemek için Azure izleyici günlüklerini sorgulama](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 Apache Kafka ile çalışma hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [HDInsight kümeleri arasında yansıtmayı Apache Kafka](apache-kafka-mirroring.md)
-* [HDInsight üzerinde Apache Kafka'nın ölçeklenebilirliğini artırma](apache-kafka-scalability.md)
-* [Apache Spark ile Apache Kafka (DStreams) akış kullanma](../hdinsight-apache-spark-with-kafka.md)
-* [Apache Spark kullanma Apache Kafka ile structured streaming](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [HDInsight kümeleri arasında yansıtma Apache Kafka](apache-kafka-mirroring.md)
+* [HDInsight üzerinde Apache Kafka ölçeklenebilirliğini artırma](apache-kafka-scalability.md)
+* [Apache Kafka ile Apache Spark akışı (DStreams) kullanma](../hdinsight-apache-spark-with-kafka.md)
+* [Apache Kafka ile yapılandırılmış akış Apache Spark kullanma](../hdinsight-apache-kafka-spark-structured-streaming.md)

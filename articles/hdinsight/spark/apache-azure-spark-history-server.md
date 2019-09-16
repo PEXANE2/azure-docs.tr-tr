@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736463"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968012"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
 
@@ -47,23 +47,23 @@ Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki
 
 + Sekmeleri ayrı olarak seçerek **girişleri**, **çıkışları**ve **tablo işlemlerini** kontrol edin.
 
-    ![Veri sekmeleri](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![Veri sekmeleri](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + Düğme **Kopyala**' ya tıklayarak tüm satırları kopyalayın.
 
-    ![Veri kopyalama](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![Veri kopyalama](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + Düğme **CSV**' ye tıklayarak tüm verileri CSV dosyası olarak kaydedin.
 
-    ![Veri kaydetme](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![Veri kaydetme](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + Arama sonucu, alan **aramasına**anahtar sözcükler girerek hemen görüntülenecektir.
 
-    ![Veri arama](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![Veri arama](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + Tabloyu sıralamak için sütun başlığına tıklayın, daha fazla ayrıntı göstermek üzere bir satırı genişletmek için artı işaretine tıklayın veya bir satırı daraltmak için eksi işaretine tıklayın.
 
-    ![Veri tablosu](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![Veri tablosu](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + Tek bir dosyayı indirin ve sağ tarafta bulunan düğme **kısmi indirmesi** ' ne tıklayarak seçili dosya yerel olarak indirilir, ancak dosya artık yoksa hata iletilerini göstermek için yeni bir sekme açar.
 
@@ -75,7 +75,7 @@ Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki
 
 + Tek sayfada görüntülenecek çok fazla satır olduğunda sayfalarda gezinmek için tablonun altındaki sayıya tıklayın. 
 
-    ![Veri sayfası](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![Veri sayfası](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + Araç ipucunu göstermek için verilerin yanındaki soru işaretine gelin veya daha fazla bilgi edinmek için soru işaretine tıklayın.
 
@@ -93,7 +93,7 @@ Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki
 
 + Varsayılan olarak, tüm işleri gösterir ve **Iş kimliğine**göre filtrelenebilir.
 
-    ![Graph iş KIMLIĞI](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![Graph iş KIMLIĞI](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + Varsayılan olarak, **ilerleme** seçilidir. Kullanıcı, **ekran**açılan listesinde **Oku/yazılır** ' i seçerek veri akışını denetleyebilir.
 
@@ -211,15 +211,15 @@ Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın:
 5. Özelliği şimdi **yanlış** olarak ayarlanır.
 6. Yapılandırmayı kaydetmek için **Kaydet** ' e tıklayın.
 
-    ![Özellik kapatılır](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![Özellik kapatılır](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. Sol bölmede **Spark2** ' ye tıklayın, **Özet** sekmesinde, **Spark2 geçmiş sunucusu**' na tıklayın.
 
-    ![Sunucu1 'yi yeniden Başlat](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![Sunucu1 'yi yeniden Başlat](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. **Spark2 geçmiş sunucusunu** **Yeniden Başlat** ' a tıklayarak geçmiş sunucusunu yeniden başlatın.
 
-    ![Sunucu2 'yi yeniden Başlat](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![Sunucu2 'yi yeniden Başlat](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. Spark geçmiş sunucusu Web Kullanıcı arabirimini yenileyerek, bu işlem topluluk sürümüne geri döndürülecek.
 
@@ -236,7 +236,7 @@ Geçmiş sunucu hatasıyla karşılaşırsanız, olayı sağlamak için aşağı
 
 3. Hatanın başlığını ve açıklamasını girip, ZIP dosyasını düzenleme alanına sürükleyin ve sonra **yeni sorun gönder**' e tıklayın.
 
-    ![dosya sorunu](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![dosya sorunu](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Düzeltme senaryosu için jar dosyasını yükselt
@@ -314,7 +314,7 @@ Düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanın, Spark-E
    + **Baş** ve **çalışanı**denetleyin.
    + **Parametreler**: parametreleri ayarla Bash kullanımını izleyin.
 
-     ![karşıya yükleme günlüğü veya düzeltmeyi yükseltme](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![karşıya yükleme günlüğü veya düzeltmeyi yükseltme](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>Bilinen sorunlar

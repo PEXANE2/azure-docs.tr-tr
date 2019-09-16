@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991804"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959121"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
@@ -100,7 +100,7 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 | **Blobsigortası** |Henüz desteklenmiyor|
 | **Özel etki alanları** |Henüz desteklenmiyor|
 | **Dosya sistemi Gezgini** | Sınırlı destek |
-| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. <br><br>Azure portal günlüklerin etkinleştirilmesi Şu anda desteklenmiyor. Günlükleri PowerShell kullanarak nasıl etkinleştireceğinizi gösteren bir örnek aşağıda verilmiştir. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Bu örnekte gösterildiği gibi `Blob` `-ServiceType` parametrenin değeri olarak belirttiğinizden emin olun. 
+| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. <br><br>Azure portal günlüklerin etkinleştirilmesi Şu anda desteklenmiyor. Günlükleri PowerShell kullanarak nasıl etkinleştireceğinizi gösteren bir örnek aşağıda verilmiştir. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Bu örnekte gösterildiği gibi `Blob` `-ServiceType` parametrenin değeri olarak belirttiğinizden emin olun. <br><br>Şu anda Azure Depolama Gezgini tanılama günlüklerini görüntülemek için kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
 | **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
 | **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları yalnızca [Data Lake Storage önizlemesinde çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. <br><br> Diğer tüm erişim katmanları henüz desteklenmiyor.|
 | **PowerShell ve CLı desteği** | Sınırlı işlevsellik <br><br>Hesap oluşturma gibi yönetim işlemleri desteklenir. Dosya yükleme ve indirme gibi veri düzlemi işlemleri, [Data Lake Storage üzerindeki çoklu protokol erişiminin](data-lake-storage-multi-protocol-access.md)bir parçası olarak genel önizlemededir. Dizinlerle çalışma ve erişim denetim listelerini (ACL 'Ler) ayarlama henüz desteklenmiyor. |

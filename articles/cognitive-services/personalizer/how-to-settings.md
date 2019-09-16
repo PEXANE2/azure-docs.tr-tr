@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559096"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962510"
 ---
 # <a name="personalizer-settings"></a>Kişiselleştirici ayarları
 
@@ -67,7 +67,7 @@ Her etkin olaydan gelen API çağrılarından eğitilen en son model, kişiselle
 
 Yüksek model güncelleştirme frekansları, Kullanıcı davranışlardaki değişiklikleri yakından izlemek istediğiniz durumlar için yararlıdır. Örnek olarak canlı haberler, viral içerik veya canlı Ürün Deklarasyon üzerinde çalışan siteler bulunur. Bu senaryolarda 15 dakikalık bir sıklık kullanabilirsiniz. Çoğu kullanım durumu için, daha düşük bir güncelleştirme sıklığı etkilidir. Tek dakikalık güncelleştirme frekansları, bir uygulama kodunun kişiselleştirici kullanılarak hata ayıklaması, tanıtımlar yapılması veya makine öğrenimi yönlerini etkileşimli olarak test edilmesi için yararlıdır.
 
-![Model güncelleştirme sıklığı, yeni bir kişiselleştirici modelin ne sıklıkta geri alınacağını ayarlar.](media/settings/configure-model-update-frequency-settings.png)
+![Model güncelleştirme sıklığı, yeni bir kişiselleştirici modelin ne sıklıkta geri alınacağını ayarlar.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 Bu ayarı değiştirdikten sonra **Kaydet**' i seçtiğinizden emin olun.
 

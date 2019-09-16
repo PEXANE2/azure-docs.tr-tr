@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206843"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961524"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Bilgi bankanız hakkında analizler alma
 
@@ -26,9 +26,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
     ![Application Insights kaynağınızı seçin](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. **Analiz**' ı seçin. Soru-Cevap Oluşturma Telemetriyi Sorgulayabileceğiniz yeni bir pencere açılır.
-
-    ![Analiz Seç](../media/qnamaker-how-to-analytics-kb/analytics.png)
+2. **Günlük (Analiz)** öğesini seçin. Soru-Cevap Oluşturma Telemetriyi Sorgulayabileceğiniz yeni bir pencere açılır.
 
 3. Aşağıdaki sorguyu yapıştırın ve çalıştırın.
 
@@ -48,7 +46,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
     Sorguyu çalıştırmak için **Çalıştır** ' ı seçin.
 
-    ![Sorguyu çalıştır](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    [![Kullanıcılardan gelen soruları, yanıtları ve puanı öğrenmek için sorguyu çalıştırın](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma bilgi bankasında diğer analizler için sorgular çalıştırma
 

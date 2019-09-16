@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 09/12/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 5b46c5b2e8f613d351442fdf3c8ae5ee2198f2da
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933979"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966625"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Hızlı Başlangıç: MetaMask kullanarak akıllı bir sözleşmeyi bağlama ve dağıtma
 
@@ -62,20 +62,13 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti uç noktası ad
 Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır. MetaMask ve yeniden karıştır kullanarak akıllı sözleşmeleri dağıtabilir ve bunlar üzerinde işlem yapabilirsiniz.
 
 1. Tarayıcınızda `https://remix.ethereum.org` adresine gidin.
-1. **Çalıştır**'ı seçin. 
-
-    MetaMask, **ortamınızı** ağınıza **Web3** ve **hesabı** eklemek için ayarlar.
-
-    ![Çalışma sekmesi](./media/connect-metamask/injected-web3.png)
-
-1. **Yeni dosya oluştur**' u seçin.
+1. **Dosya**altındaki **giriş** sekmesinde **yeni dosya** ' yı seçin.
 
     Yeni dosyayı `simple.sol`adlandırın.
 
     ![Dosya oluştur](./media/connect-metamask/create-file.png)
 
     **Tamam**’ı seçin.
-
 1. Yeniden karıştır düzenleyicisinde, aşağıdaki **basit akıllı sözleşme** kodunu yapıştırın.
 
     ```solidity
@@ -99,14 +92,18 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
     ```
 
     **Basit sözleşme** , **Bakiye**adlı bir durum değişkeni bildirir. Tanımlanmış iki işlev vardır. **Add** işlevi **dengelemek**için bir sayı ekler. **Get** işlevi, **Bakiyenin**değerini döndürür.
-
-1. Sözleşmeyi derlemek için derlemek **> derlemek Için Başlat**' ı seçin. Başarılı olursa, anlaşma adı ile yeşil bir kutu görüntülenir.
+1. Sözleşmeyi derlemek için önce Solidity derleyici bölmesini seçin, sonra **Simple. Nuevo derlemesini**seçin. 
 
     ![Derleme](./media/connect-metamask/compile.png)
 
-1. Sözleşmeyi yürütmek için **Çalıştır** sekmesini seçin. **Basit** sözleşmeyi seçin ve ardından **dağıtın**.
+1. **Dağıtım & Çalıştır** bölmesini seçin ve ardından **ortamı** , MetaMask ile blok zinciri üyesine bağlamak üzere **eklenmiş Web3** olarak ayarlayın.
 
-    ![Özel RPC](./media/connect-metamask/deploy.png)
+    ![Çalışma sekmesi](./media/connect-metamask/injected-web3.png)
+
+1. **Basit** sözleşmeyi seçin ve ardından **dağıtın**.
+
+    ![Dağıtma](./media/connect-metamask/deploy.png)
+
 
 1. Bir MetaMask bildirimi, işlemi gerçekleştirmek için yeterli fon olduğunu uyarır.
 
@@ -125,13 +122,13 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
 
     İki eylem **ekleyin** **ve bu** , sözleşmede tanımlanan işlevlere eşleyin.
 
-1. Blok zincirinde bir işlem **ekleme** işlemi gerçekleştirmek için, eklenecek bir sayı girin ve **Ekle**' yi seçin.
+1. Blok zincirinde bir işlem **ekleme** işlemi gerçekleştirmek için, eklenecek bir sayı girin ve **Ekle**' yi seçin. Yeniden karışmaya yönelik bir gaz tahmin hatası iletisi alabilirsiniz. İşlemi, gaz gerektirmeyen özel bir blok zincirine gönderiyorsunuz. İşlemi zorlamak için **Işlem gönder** ' i seçin.
 1. Sözleşmeyi dağıttığınıza benzer şekilde, işlemi gerçekleştirmek için yeterli fon MetaMask bildirimi görüntülenir.
 
     Bu bir konsorsiyumun özel bir ağı olduğundan, gaz fiyatını sıfıra ayarlayabiliriz.
 
 1.  **Gaz ücretini seçin > gelişmiş > düzenleyin**, **gaz fiyatını** 0 olarak ayarlayın ve **Kaydet**' i seçin.
-1. İşlemi blok zincirinde gerçekleştirmek için **Onayla** ' yı seçin.
+1. İşlemi blok zincirine göndermek için **Onayla** ' yı seçin.
 1. Eylem **Al** ' ı seçin. Bu, düğüm verilerini sorgulamak için bir çağrıdır. Bir işlem gerekli değildir.
 1. Yeniden karıştırma 'nın hata ayıklama bölmesinde, blok zincirindeki işlemler hakkındaki ayrıntıları görebilirsiniz.
 

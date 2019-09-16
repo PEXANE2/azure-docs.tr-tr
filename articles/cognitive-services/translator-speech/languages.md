@@ -1,33 +1,33 @@
 ---
-title: Desteklenen diller - Translator konuşma tanıma API'si
+title: Desteklenen diller-Translator Konuşma Çevirisi API'si
 titlesuffix: Azure Cognitive Services
-description: Translator konuşma tanıma API'si tarafından desteklenen diller görüntüleyin.
+description: Translator Konuşma Çevirisi API'si tarafından desteklenen dilleri görüntüleyin.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed8f693e4dc0344a0117ae9d6992b925992ef0c4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f5b48f2dbc2d109c03613676c6a119fd971603b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446921"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965435"
 ---
-# <a name="languages-supported-by-the-translator-speech-api"></a>Translator konuşma tanıma API'si tarafından desteklenen diller
+# <a name="languages-supported-by-the-translator-speech-api"></a>Translator Konuşma Çevirisi API'si tarafından desteklenen diller
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Aşağıdaki dilleri konuşma çevirisi için desteklenir. Konuşma çevirisi, konuşma için okuma veya Konuşmayı metne dönüştürme için desteklenen iki dilde kullanılabilir. Hedef Dil, konuşma çevirisi için desteklenmiyor, yalnızca konuşma metin çevirisi için kullanılabilir.
+Aşağıdaki diller konuşma çevirisi için desteklenir. Konuşma çevirisi için her iki dil de destekleniyorsa, konuşmayı konuşmaya veya konuşmayı metne dönüştürme özelliği vardır. Hedef dil konuşma çevirisi için desteklenmiyorsa, yalnızca konuşmayı metin çevirisi kullanılabilir.
 
 | Konuşma dili    |
 |:----------- |
 | Arapça (Modern standart)      |
-| Portekizce (Brezilya)     |
+| Brezilya Portekizcesi     |
 | Çince (Mandarin)      |
 | Türkçe      |
 | Fransızca      |
@@ -37,7 +37,7 @@ Aşağıdaki dilleri konuşma çevirisi için desteklenir. Konuşma çevirisi, k
 | Rusça      |
 | İspanyolca      |
 
-Translator konuşma tanıma API'si, metin çevirisi konuşma için bir hedef dil olarak aşağıdaki dilleri desteklemektedir.
+Translator Konuşma Çevirisi API'si, konuşma için metin çevirisi için bir hedef dil olarak aşağıdaki dilleri destekler.
 
 | SMS dili    | Dil kodu |
 |:----------- |:-------------:|
@@ -105,16 +105,16 @@ Translator konuşma tanıma API'si, metin çevirisi konuşma için bir hedef dil
 | Gaelce      | `cy`          |
 | Yucatec Maya      | `yua`          |
 
-## <a name="access-the-list-programmatically"></a>Listenin programlamayla erişme
+## <a name="access-the-list-programmatically"></a>Listeye program aracılığıyla erişin
 
-Dilleri kaynak program aracılığıyla kullanarak desteklenen dillerin listesini erişebilirsiniz. Liste, desteklenen herhangi bir dili veya İngilizce dil adı yanı sıra dil kodu sağlar. Yeni dil kullanılabilir duruma geldiğinde bu liste Translator konuşma çevirisi hizmeti tarafından otomatik olarak güncelleştirilir.
+Diller kaynağını kullanarak desteklenen dillerin listesine programlı bir şekilde erişebilirsiniz. Liste, dil adının yanı sıra Ingilizce veya desteklenen başka bir dili de sağlar. Yeni diller kullanılabilir hale geldiğinde bu liste Translator Konuşma Çevirisi Hizmeti tarafından otomatik olarak güncelleştirilir.
 
-Dil kaynağı, konuşma tanıma, metin ve metin okuma için desteklenen dillerin listesini döndürür. Dil kaynağı, kimlik doğrulaması gerektirmez.
+Diller kaynağı konuşma, metin ve metin okuma için desteklenen dillerin listesini döndürür. Diller kaynağı kimlik doğrulaması gerektirmez.
 
-[API Başvurusu, dil yöntemini deneyin için ziyaret edin](languages-reference.md)
+[Diller metodunu denemek için API başvurusunu ziyaret edin](languages-reference.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web sitesinde listeye erişme
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web sitesindeki listeye erişin
 
-Dilleri hızlı bir bakış için Microsoft Translator Web sitesi Translator metin ve konuşma API'leri tarafından desteklenen tüm dillerde gösterir. Bu liste, dil kodu gibi geliştirici özgü bilgileri içermez.
+Microsoft Translator Web sitesinde, dillere hızlı bir bakış için Translator Metin Çevirisi ve konuşma API 'Leri tarafından desteklenen tüm diller gösterilmektedir. Bu liste, dil kodları gibi geliştiriciye özgü bilgiler içermez.
 
-[Dilleri listesine bakın](https://www.microsoft.com/translator/languages.aspx)
+[Dillerin listesine bakın](https://www.microsoft.com/translator/languages.aspx)

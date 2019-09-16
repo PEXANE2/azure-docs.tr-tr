@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596110"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958979"
 ---
 # <a name="monitor-server-metrics"></a>Sunucu ölçümlerini izleme
 
@@ -55,14 +55,18 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 |MemoryLimitLow|Bellek: Bellek sınırı düşük|Bayt|Average|Yapılandırma dosyasından düşük bellek sınırı.|
 |MemoryLimitVertiPaq|Bellek: Bellek sınırı VertiPaq|Bayt|Average|Yapılandırma dosyasından bellek içi sınır.|
 |MemoryUsage|Bellek: Bellek Kullanımı|Bayt|Average|Sunucu işleminin temizleyici bellek fiyatını hesaplamada kullanılan bellek kullanımı. Altyapı bellek sınırının fazla olması halinde bellek içi analiz altyapısı (VertiPaq) tarafından eşlenen veya ayrılan belleği yok sayan, bellek eşlemeli verilerin boyutuna eşit.|
+|private_bytes_metric|Özel Baytlar |Bayt|Average|Analysis Services altyapısı işleminin ve karma kapsayıcı işlemlerinin ayırdığı, diğer işlemlerle paylaşılan bellek dahil değil toplam bellek miktarı.|
+|virtual_bytes_metric|Sanal baytlar |Bayt|Average|Analysis Services altyapısı işleminin ve mashup kapsayıcı işlemlerinin kullandığı sanal adres alanının geçerli boyutu.|
+|mashup_engine_private_bytes_metric|D motoru özel baytlar |Bayt|Average|Diğer işlemlerle paylaşılan bellek dahil değil, ayrılan bellek karma kapsayıcı işlemlerinin toplam miktarı.|
+|mashup_engine_virtual_bytes_metric|D motoru sanal bayt sayısı |Bayt|Average|Sanal adres alanı karma kapsayıcı işlemlerinin geçerli boyutu kullanıyor.|
 |Kota|Bellek: Kota|Bayt|Average|Bayt cinsinden geçerli bellek kotası. Bellek kotası, bellek verme veya bellek ayırma olarak da bilinir.|
 |Quotabkilitli|Bellek: Kota engellendi|Count|Average|Diğer bellek kotaları boşaltılana kadar engellenen kota isteklerinin geçerli sayısı.|
 |Vertipaqdisk belleksiz|Bellek: VertiPaq disk belleksiz|Bayt|Average|Bellek içi altyapı tarafından kullanılmak üzere çalışma kümesinde kilitlenen bellek baytları.|
 |Vertipaqdisk|Bellek: VertiPaq disk belleğine|Bayt|Average|Bellek içi veriler için kullanılan disk belleğine alınan bellek miktarı.|
 |ProcessingPoolJobQueueLength|İşleme havuzu Iş kuyruğu uzunluğu|Count|Average|İşleme iş parçacığı havuzu kuyruğundaki g/ç dışı iş sayısı.|
-|RowsConvertedPerSec|İşleniyor: Dönüştürülen satır sayısı/saniye|CountPerSecond|Average|İşlem sırasında dönüştürülen satır oranı.|
-|RowsReadPerSec|İşleniyor: Okunan satır sayısı/saniye|CountPerSecond|Average|Tüm ilişkisel veritabanlarından okunan satır oranı.|
-|RowsWrittenPerSec|İşleniyor: Saniyede yazılan satır sayısı|CountPerSecond|Average|İşlem sırasında yazılan satır oranı.|
+|RowsConvertedPerSec|İşlerken Dönüştürülen satır sayısı/saniye|CountPerSecond|Average|İşlem sırasında dönüştürülen satır oranı.|
+|RowsReadPerSec|İşlerken Okunan satır sayısı/saniye|CountPerSecond|Average|Tüm ilişkisel veritabanlarından okunan satır oranı.|
+|RowsWrittenPerSec|İşlerken Saniyede yazılan satır sayısı|CountPerSecond|Average|İşlem sırasında yazılan satır oranı.|
 |qpu_metric|QPU|Count|Average|QPU. S1 için 0-100 aralığı, S2 için 0-200 ve S4 için 0-400|
 |Querypoolbusyıthreads|Sorgu havuzu meşgul Iş parçacıkları|Count|Average|Sorgu iş parçacığı havuzundaki meşgul iş parçacığı sayısı.|
 |Başarılı bir bağlantı Spersec|Saniyedeki başarılı bağlantı sayısı|CountPerSecond|Average|Başarılı bağlantı tamamlama oranı.|

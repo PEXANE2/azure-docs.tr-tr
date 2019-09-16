@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 2e79f38fb6495d75e0438fa3622cc226886c0773
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: aabcf7ac6c7bf14264178831bb3e4f6670d29984
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885555"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960907"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -37,7 +37,7 @@ Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları
 |[Azure CLI](hdinsight-administer-use-command-line.md)|Azure HDInsight kümesi yeniden \<boyutlandırma clusterName \<> hedef örnek sayısı > |
 |[Azure portal](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
 
-![Kümeyi ölçeklendirin](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Kümeyi ölçeklendirin](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 Bu yöntemlerin herhangi birini kullanarak, HDInsight kümenizi dakikalar içinde yukarı veya aşağı ölçeklendirebilirsiniz.
 
@@ -112,7 +112,7 @@ Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adıml
 3. Ambarı kullanıcı arabiriminden, sol taraftaki menüdeki hizmetler listesinden **Yarn** ' yi seçin.  
 4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümünün üzerine gelin, sonra **ResourceManager Kullanıcı arabirimi**' ni seçin.
 
-    ![ResourceManager Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![ResourceManager Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 ResourceManager Kullanıcı arabirimine doğrudan ile `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`erişebilirsiniz.
 

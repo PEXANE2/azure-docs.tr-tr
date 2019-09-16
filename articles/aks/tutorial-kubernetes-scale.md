@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019181"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965126"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes hizmeti 'nde (AKS) uygulamaları ölçeklendirme
 
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-Aşağıdaki örnek, [kubectl otomatik ölçeklendirme][kubectl-autoscale] komutunu kullanarak *Azure-oy ön* dağıtımındaki Pod sayısını otomatik olarak ölçeklendirin. CPU kullanımı% 50 değerini aşarsa, otomatik Scaler, en fazla *10* örneğe kadar olan sayıyı artırır. Dağıtım için en az *3* örnek tanımlanmıştır:
+Aşağıdaki örnek, [kubectl otomatik ölçeklendirme][kubectl-autoscale] komutunu kullanarak *Azure-oy ön* dağıtımındaki Pod sayısını otomatik olarak ölçeklendirin. Tüm FID 'ler genelinde ortalama CPU kullanımı, istenen kullanımlarının% 50 ' ünü aşarsa, otomatik Scaler, Pod 'leri en fazla *10* örneğe kadar artırır. Dağıtım için en az *3* örnek tanımlanmıştır:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

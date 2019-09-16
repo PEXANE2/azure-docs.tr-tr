@@ -17,12 +17,12 @@ ms.date: 07/29/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b2d80d21822758991ad8b3bc1d3bb44e2257f4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129815"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983495"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -85,7 +85,7 @@ Bu sayede ek alanları görüntüleyebilir ya da zaten görüntülenen alanları
 
 Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
-![Ayrıntılı bilgiler](./media/concept-provisioning-logs/detailed-information.png "Ayrıntılı bilgiler")
+![Ayrıntılı bilgiler](./media/concept-provisioning-logs/steps.png "Filtre Uygula")
 
 
 ## <a name="filter-provisioning-activities"></a>Sağlama etkinliklerini filtrele

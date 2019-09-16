@@ -4,15 +4,16 @@ description: Bu hızlı başlangıçta, Azure portalını kullanarak Azure HDIns
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779518"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960308"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
@@ -38,7 +39,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
 2. Sol taraftaki menüden **+ Resource** > **Analytics** > **HDInsight**oluştur ' a gidin.
    
-    ![HDInsight kümesi oluşturma](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![HDInsight kümesi oluşturma](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. **Temel Bilgiler** bölümünde aşağıdaki bilgileri girin veya seçin:
 
@@ -49,7 +50,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
     
    **Küme yapılandırması**’nı görüntülemek için __Küme Türü__’nü seçin.
    
-   ![HDInsight üzerinde Apache Kafka kümesi temel yapılandırma](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![HDInsight üzerinde Apache Kafka kümesi temel yapılandırma](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. __Küme yapılandırmasından__aşağıdaki değerleri seçin:
 
@@ -60,11 +61,11 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
     Küme türü ayarlarını kaydetmek ve __temel bilgilere__dönmek için **Seç** ' i seçin.
 
-    ![Küme türü seçin](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Küme türü seçin](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. __Temel Bilgiler__ bölümünde aşağıdaki bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | --- | --- |
     | Küme oturum açma kullanıcı adı | Web hizmetlerine veya küme üzerinde barındırılan REST API’lerine erişirken kullanılan oturum açma kimliği. Varsayılan değeri (admin) değiştirmeyin. |
     | Küme oturum açma parolası | Web hizmetlerine veya küme üzerinde barındırılan REST API’lerine erişirken kullanılan oturum açma parolası. |
@@ -98,7 +99,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
     **Çalışan düğümü başına disk sayısı** girişi HDInsight üzerinde Apache Kafka'nın ölçeklenebilirliğini yapılandırır. HDInsight üzerinde Apache Kafka, veri depolamak için kümedeki sanal makinelerin yerel diskini kullanır. Apache Kafka yoğun G/Ç kullandığından yüksek aktarım hızı ve düğüm başına daha fazla depolama alanı sağlamak için [Azure Yönetilen Diskler](../../virtual-machines/windows/managed-disks-overview.md) kullanılır. Yönetilen diskin türü __Standart__ (HDD) veya __Premium__ (SSD) olabilir. Disk türü, çalışan düğümler (Apache Kafka aracıları) tarafından kullanılan sanal makine boyutuna bağlıdır. Premium diskler otomatik olarak DS ve GS serisi sanal makinelerle kullanılır. Diğer tüm VM türleri standart disk kullanır.
 
-   ![Apache Kafka küme boyutunu ayarlama](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![Apache Kafka küme boyutunu ayarlama](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. __Gelişmiş ayarlar__ bölümünden __İleri__'yi seçerek varsayılan ayarlarla devam edin.
 

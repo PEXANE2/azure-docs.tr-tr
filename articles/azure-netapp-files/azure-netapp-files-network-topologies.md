@@ -3,7 +3,7 @@ title: Azure NetApp Files ağ planlamasına yönelik yönergeler | Microsoft Doc
 description: Azure NetApp Files kullanarak etkin bir ağ mimarisi tasarlamanıza yardımcı olabilecek yönergeleri açıklar.
 services: azure-netapp-files
 documentationcenter: ''
-author: b-juche
+author: ram-kakani
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383492"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984132"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
 
@@ -36,13 +36,13 @@ Azure NetApp Files ağını planlarken bazı noktaları anlamanız gerekir.
 Aşağıdaki özellikler Şu anda Azure NetApp Files için desteklenmiyor: 
 
 * Temsilci alt ağına uygulanan ağ güvenlik grupları (NSG 'ler)
-* Azure NetApp dosyaları alt ağı olarak sonraki atlamada Kullanıcı tanımlı yollar (UDRs)
+* Azure NetApp dosyaları alt ağı olarak adres ön ekine sahip kullanıcı tanımlı yollar (UDRs)
 * Azure NetApp Files arabirimindeki Azure ilkeleri (örneğin, Özel adlandırma ilkeleri)
 * Azure NetApp Files trafiği için yük dengeleyiciler
 
 Aşağıdaki ağ kısıtlamaları Azure NetApp Files için geçerlidir:
 
-* Azure NetApp Files (eşlenen sanal ağlar dahil) bir VNet 'te kullanılmakta olan IP sayısı 1000 ' i aşamaz.
+* Azure NetApp Files (eşlenen sanal ağlar dahil) bir VNet 'te kullanılmakta olan IP sayısı 1000 ' i aşamaz. Müşteri ölçek taleplerini karşılamak için bu sınırı artırmak üzere çalışıyoruz. Bu arada, daha fazla IP için ihtiyaç duyuyorsanız, kullanım örneğimiz ve gerekli limitle destek ekibimize ulaşın.
 * Her bir Azure sanal ağında (VNet), Azure NetApp Files için yalnızca bir alt ağ atanabilir.
 
 
@@ -50,11 +50,11 @@ Aşağıdaki ağ kısıtlamaları Azure NetApp Files için geçerlidir:
 
 Aşağıdaki tabloda Azure NetApp Files tarafından desteklenen ağ topolojileri açıklanmaktadır.  Ayrıca, desteklenmeyen topolojilerle ilgili geçici çözümleri açıklar. 
 
-|    Anlatır    |    Desteklenir    |     Geçici Çözüm    |
+|    Topolojiler    |    Desteklenir    |     Geçici Çözüm    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Yerel VNet 'teki birime bağlantı    |    Evet    |         |
 |    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Evet    |         |
-|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    None    |
+|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Yok.    |
 |    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Evet    |         |
 |    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Evet    |        |
 |    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
