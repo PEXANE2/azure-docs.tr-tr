@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: Bilişsel Arama
       href: cognitive-search-concept-intro.md
+    - name: Beceri kümeleri
+      href: cognitive-search-working-with-skillsets.md
     - name: Bilgi deposu
       href: knowledge-store-concept-intro.md
     - name: Yansıtmalar
@@ -166,9 +168,7 @@
         - name: Karmaşık veri türlerini modelleme
           href: search-howto-complex-data-types.md
         - name: İlişkisel verileri modelleme
-          href: search-example-adventureworks-modeling.md
-        - name: Çok düzeyli modeller
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: Veri yükleme
       items:
         - name: Verileri içeri aktarmaya genel bakış
@@ -241,10 +241,14 @@
           href: cognitive-search-resources-documentation.md
     - name: Bilgi deposu (önizleme)
       items:
-        - name: Power BI kullanarak bağlanma
-          href: knowledge-store-connect-powerbi.md
+        - name: Azure portalında bilgi deposu oluşturma
+          href: knowledge-store-create-portal.md
         - name: REST ve Postman kullanarak oluşturma
           href: knowledge-store-howto.md
+        - name: Depolama Gezgini ile görüntüleme
+          href: knowledge-store-view-storage-explorer.md
+        - name: Power BI ile bağlanma
+          href: knowledge-store-connect-power-bi.md
     - name: Verileri sorgulama
       items:
         - name: Temel bir sorgu oluşturma
@@ -273,6 +277,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Koleksiyon filtrelerini anlama
           href: search-query-understand-collection-filters.md
+        - name: Çok düzeyli model örneği
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: Sonuçları işleme
       items:
         - name: Sayfayla ilgili özellikler

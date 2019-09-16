@@ -89,7 +89,7 @@
       items:
         - name: Azure AD Uygulama Ara Sunucusunu Dağıtma
           href: deploy-azure-app-proxy.md
-        - name: SharePoint Server için profil eşitleme desteğini yapılandırma
+        - name: SharePoint Server için profil eşitlemeyi etkinleştirme
           href: deploy-sp-profile-sync.md
     - name: Sorun giderme
       items:

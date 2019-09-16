@@ -121,6 +121,10 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: Profili düzenleme
       href: billing-how-to-change-azure-account-profile.md
+    - name: Bankacılık ve güçlü müşteri kimlik doğrulamasını açma
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: Vadesi geçmiş bakiye sorunlarını çözme
+      href: billing-azure-subscription-past-due-balance.md
     - name: Faturalandırmaya erişim izni verme
       href: billing-manage-access.md
     - name: Azure’da Microsoft Müşteri Sözleşmesi rolleri
@@ -131,6 +135,8 @@
       href: billing-view-all-accounts.md
     - name: Maliyetleri fatura bölümleriyle düzenleme
       href: billing-mca-section-invoice.md
+    - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
+      href: billing-mca-enterprise-operations.md
     - name: EA yönetimi
       items:
         - name: Azure EA portalını kullanmaya başlama
@@ -151,8 +157,6 @@
           href: billing-ea-portal-troubleshoot.md
         - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
           href: billing-mca-enterprise-operations.md
-    - name: Vadesi geçmiş bakiye sorunlarını çözme
-      href: billing-azure-subscription-past-due-balance.md
     - name: Microsoft Müşteri Sözleşmesi için ödeme hesabı ayarlama
       href: billing-mca-setup-account.md
     - name: Office 365 hesabıyla kaydolma

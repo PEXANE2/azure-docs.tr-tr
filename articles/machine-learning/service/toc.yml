@@ -1,9 +1,9 @@
-- name: Azure Machine Learning Hizmeti Belgeleri
+- name: Azure Machine Learning Belgeleri
   href: ../index.yml
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Azure Machine Learning hizmeti nedir?
+    - name: Azure Machine Learning nedir?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Mimari ve koşullar
@@ -31,6 +31,11 @@
             - name: ML modelini otomatik olarak eğitme
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: İşlem hatları ile toplu puanlama (gelişmiş)
+          items:
+            - name: Sınıflandırma modelini toplu puanlama
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: Görsel arabirim
       items:
         - name: 1. Regresyon modelini eğitme
@@ -122,7 +127,7 @@
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "Geliştirme ortamı ayarlama\_"
+    - name: Geliştirme ortamı ayarlama
       items:
         - name: Geliştirme ortamlarını yapılandırma
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

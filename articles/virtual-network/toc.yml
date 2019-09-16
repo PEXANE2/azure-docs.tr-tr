@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: Genel IP ön eki
           href: manage-public-ip-address-prefix.md
+    - name: Bölgeler arasında taşıma
+      items:
+        - name: Sanal ağlar - Portal
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: Sorun giderme
       items:
         - name: Sanal ağ eşleme sorunlarını giderme

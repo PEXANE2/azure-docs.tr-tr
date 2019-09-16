@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL Veritabanı Belgeleri
+title: Azure SQL Veritabanı belgeleri
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Azure SQL Veritabanı Belgeleri - Öğreticiler, API Başvurusu'
+  title: 'Azure SQL Veritabanı belgeleri - Öğreticiler, API başvurusu'
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   author: stevestein
@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 03/04/2019
+  ms.date: 09/09/2019
   ms.author: sstein
 abstract:
   description: 'Azure SQL Veritabanı, Microsoft SQL Server Veritabanı Altyapısı''nın en son kararlı sürümünü temel alan genel amaçlı ilişkisel bir hizmet olarak veritabanı (DBaaS) ürünüdür. SQL Veritabanı, altyapı yönetimine gerek kalmadan kendi seçtiğiniz programlama dilinde veri odaklı uygulamalar ve web siteleri oluşturmak için kullanabileceğiniz yüksek performanslı, güvenilir ve güvenli bir bulut veritabanıdır. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, SQL Veritabanı’nı kullanmayı öğrenin.'
@@ -27,29 +27,56 @@ abstract:
     href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-  - items:
+  - title: Kavramlar
+    items:
+      - type: paragraph
+        text: Hizmet olarak platform veritabanının sağladığı temel değerler ve en iyi fiyat/performans yapılandırmasını elde etmek için kullanabileceğiniz satın alma modelleri ve hizmet katmanları hakkında bilgi edinin.
       - type: list
         style: cards
         className: cardsM
         columns: 3
         items:
           - href: /azure/sql-database/sql-database-technical-overview
-            html: '<p>Her zaman SQL Server Veritabanı Altyapısı’nın en son kararlı sürümünde çalışan PaaS veritabanı %99,99 kullanılabilirlik ile yama uygulanmış işletim sistemi.</p>'
+            html: '<p>Her zaman SQL Server Veritabanı Altyapısı’nın en son kararlı sürümünde çalışan PaaS veritabanı %99,99 kullanılabilirlik ile düzeltme eki uygulanmış işletim sistemi.</p>'
             image:
               src: media/index/i_managed.svg
-            title: Tam olarak yönetilir
+            title: Genel Bakış
           - href: /azure/sql-database/sql-database-service-tiers
             html: <p>Aylık 5 ABD Doları gibi makul ücretlerden 80 çekirdekli güçlü veritabanlarına varan esnek hizmet katmanlarıyla fiyat/performans oranını ihtiyaçlarınıza göre uyarlayın.</p>
             image:
               src: media/index/i_perftier.svg
-            title: Fiyat/hizmet katmanları
+            title: Fiyatlandırma modelleri
+          - href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
+            html: <p>Gereksinimlerinize en uygun veya şirket içi ortamınızda kullandığınız altyapıyla eşleşen bir hizmet katmanı ve bulut mimarisi seçin.</p>
+            image:
+              src: media/index/gear.svg
+            title: Hizmet katmanları
           - href: /azure/sql-database/sql-database-scalability-index
             html: '<p>Uygulamanızın performansını artırmak için ihtiyaçlarınıza göre veritabanlarınızın ölçeğini artırın, ölçeğini genişletin veya bunları parçalara ayırın.</p>'
             image:
               src: media/index/i_scale.svg
             title: Ölçeklenebilirlik
+          - href: /azure/sql-database/sql-database-paas
+            html: '<p>Yerleşik yüksek kullanılabilirlik, otomatik yedeklemeler ve coğrafi çoğaltma özellikleri, bakım işlemlerinin ve altyapı veya donanım hatalarının işletmenizi durdurmasını önler.</p>'
+            image:
+              src: media/index/i_intelligence.svg
+            title: Hizmet olarak Platform
+          - href: /azure/sql-database/sql-database-security-index
+            html: '<p>Veritabanınızı Azure AD kimlik doğrulaması, sanal ağlar, güvenlik duvarları ve Always Encrypted bağlantılar ile koruyun. Yerleşik güvenlik aracılığıyla tehditleri ve güvenlik açıklarını belirleyin.</p>'
+            image:
+              src: media/index/i_security.svg
+            title: Gelişmiş güvenlik
+  - title: Dağıtım modelleri
+    items:
+      - type: paragraph
+        text: 'İhtiyaçlarınıza uyan dağıtım modelini seçin: tek bir veritabanı yeni modern bulut uygulamaları için en iyi seçenektir, elastik havuzlar büyük ölçekli veritabanlarını barındırmak için en iyi yerdir ve yönetilen bir örnek SQL Server ile yüksek uyumluluk sağlar ve bu sayede buluta geçişi kolaylaştırır.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
           - href: /azure/sql-database/sql-database-single-index
-            html: <p>Performansı öngörülebilen tek bir veritabanının gerektiği SaaS uygulamalarınız ve mikro hizmetleriniz için SQL Veritabanı sunucusu tarafından yönetilen tek veritabanını kullanın.</p>
+            html: <p>Performansı öngörülebilen tek bir veritabanının gerektiği SaaS uygulamalarınız ve mikro hizmetleriniz için SQL Veritabanı sunucusu tarafından yönetilen tek bir veritabanını kullanın.</p>
             image:
               src: media/index/i_db.svg
             title: Tek veritabanı
@@ -59,29 +86,14 @@ sections:
               src: media/index/i_elasticpool.svg
             title: Esnek havuzlar
           - href: /azure/sql-database/sql-database-managed-instance-index
-            html: '<p>Azure bulutunda barındırılan, şirket içi veritabanlarından geçiş yaparken çok az veritabanı kod değişikliği gerektiren veya hiç gerektirmeyen ve tam olarak yönetilen bir SQL Server Veritabanı Altyapı Örneği elde etmek için Yönetilen Örnek kullanın.</p>'
+            html: '<p>Azure bulutunda barındırılan, şirket içi veritabanlarından geçiş yaparken çok az veritabanı kod değişikliği gerektiren veya hiç gerektirmeyen ve tam olarak yönetilen bir SQL Server Veritabanı Altyapı örneği elde etmek için yönetilen örnek kullanın.</p>'
             image:
               src: media/index/i_mi.svg
             title: Yönetilen örnek
-          - href: /azure/sql-database/sql-database-paas
-            html: '<p>Yerleşik yüksek kullanılabilirlik, otomatik yedeklemeler ve coğrafi çoğaltma özellikleri, bakım işlemlerinin ve altyapı veya donanım hatalarının işletmenizi durdurmasını önler.</p>'
-            image:
-              src: media/index/gear.svg
-            title: Hizmet olarak Platform
-          - href: /azure/sql-database/sql-database-security-index
-            html: '<p>Veritabanınızı Azure AD kimlik doğrulaması, Sanal Ağlar, Güvenlik Duvarları ve Always Encrypted bağlantılar ile koruyun. Yerleşik güvenlik sayesinde tehditleri ve güvenlik açıklarını belirleyin.</p>'
-            image:
-              src: media/index/i_security.svg
-            title: Gelişmiş güvenlik
-          - href: /azure/sql-database/sql-database-monitoring-tuning-index
-            html: '<p>Yerleşik izleme ve zeka ayarı, veritabanı çalıştırma ve yönetim maliyetlerinizi önemli ölçüde azaltmanıza yardımcı olur ve uygulamanızı performans açısından üst düzeye taşır.</p>'
-            image:
-              src: media/index/i_intelligence.svg
-            title: İzleme ve ayarlama
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
-        text: 'Azure SQL Veritabanı sayesinde Azure portal, Azure CLI ve Azure PowerShell’i kullanarak temel yönetim görevlerini kolayca gerçekleştirebilirsiniz. Aşağıdaki hızlı başlangıç örneklerini kullanarak temel yönetim görevlerini nasıl gerçekleştireceğinizi öğrenin:'
+        text: 'Azure SQL Veritabanı sayesinde Azure portalı, Azure CLI ve Azure PowerShell’i kullanarak temel yönetim görevlerini kolayca gerçekleştirebilirsiniz. Aşağıdaki hızlı başlangıç örneklerini kullanarak temel yönetim görevlerini nasıl gerçekleştireceğinizi öğrenin:'
       - type: table
         style: dataMatrix
         columns:
@@ -116,18 +128,21 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-  - title: Adım Adım Öğreticiler
+  - title: Adım Adım Öğreticiler ve öğrenme malzemeleri
     items:
       - type: paragraph
         text: 'SQL Veritabanı kullanarak veritabanlarını oluşturma, yönetme ve geçirme hakkında bilgi edinin'
       - type: list
         style: ordered
         items:
+          - html: <a href="/azure/sql-database/sql-database-paas-vs-sql-server-iaas">VM üzerinde SQL Server (IaaS) veya Azure SQL Veritabanı’nın (PaaS) iş yükünüze uygun olup olmadığına</a> nasıl karar vereceğinizi öğrenin.
+          - html: <a href="/azure/sql-database/sql-database-features">Azure SQL Veritabanı’nda desteklenen özellikleri ve davranış farklarını</a> öğrenin.
           - html: Hızlı başlangıç kılavuzlarımızı kullanarak <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">tek veritabanı</a> ve bir <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">yönetilen örnek</a> ile çalışmaya başlayın.
           - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> veya <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> kullanarak yeni tek veritabanı için şema oluşturma ve tasarlama
-          - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">Yerel SQL Server yedekleme dosyası</a> veya <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Veritabanı Geçiş Yardımcısı</a>'nı kullanarak ya da <a href="/azure/sql-database/sql-database-import">BACPAC dosyasını içeri aktararak</a> mevcut veritabanını Azure'a geçirme
+          - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">Yerel SQL Server yedekleme dosyası</a> veya <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Veritabanı Geçiş Yardımcısı</a>'nı kullanarak ya da <a href="/azure/sql-database/sql-database-import">BACPAC dosyasını içeri aktararak</a> mevcut veritabanını Azure'a geçirin.
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Veritabanınızın güvenliğini sağlama</a>
-          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Coğrafi olarak dağıtılmış bir veritabanı</a> kullanarak verilerinizi global ölçekte dağıtma
+          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Coğrafi olarak dağıtılmış bir veritabanı</a> kullanarak verilerinizi global ölçekte dağıtın.
+          - html: <a href="/azure/sql-database/sql-database-release-notes">Azure SQL Veritabanı</a>’ndaki yeni özellikleri bulun.
   - title: Microsoft Learn ile becerilerinizi geliştirin
     items:
       - type: list

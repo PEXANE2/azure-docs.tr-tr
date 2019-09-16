@@ -614,6 +614,12 @@
       items:
         - name: Sabit genişlikli metin dosyalarını işleme
           href: how-to-fixed-width.md
+    - name: Şirket içinden SSIS’ye geçirme
+      items:
+        - name: SSIS geçişine genel bakış
+          href: scenario-ssis-migration-overview.md
+        - name: SSISDB’den Azure SQL Veritabanı yönetilen örneğine geçirme
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Başvuru
   items:
     - name: .NET

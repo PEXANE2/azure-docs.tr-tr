@@ -98,6 +98,10 @@
       href: functions-premium-plan.md
     - name: Dağıtımlar
       href: functions-deployment-technologies.md
+    - name: Olaylar ve mesajlaşma
+      items:
+        - name: Özdeş giriş için tasarlama
+          href: functions-idempotent.md
     - name: Tetikleyiciler ve bağlamalar
       items:
         - name: Tetikleyiciler ve bağlamalar hakkında

@@ -1,19 +1,19 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Geliştirme Belgelerinin Güvenliğini Sağlama
+title: Geliştirme belgelerinin güvenliğini sağlama
 metadata:
   document_id: null
-  title: Microsoft Azure’da Geliştirme Belgelerinin Güvenliğini Sağlama
+  title: Microsoft Azure’da geliştirme belgelerinin güvenliğini sağlama
   meta.description: Learn how to develop secure apps on Azure.
   services: security
   author: TerryLanfear
-  manager: barbkess
+  manager: rkarlin
   ms.service: security
   ms.subservice: develop
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 08/29/2019
+  ms.date: 09/14/2019
   ms.author: terrylan
 abstract:
   description: 'Örnek uygulamalarımız, en iyi yöntemler ve kılavuzlar ile Azure’da güvenli uygulamalar geliştirmeyi ve dağıtmayı öğrenin.'
@@ -27,12 +27,12 @@ sections:
           - href: /azure/security/develop/secure-dev-overview
             html: <p>Azure'da güvenli bir web uygulamasını dağıtma</p>
             image:
-              src: /media/common/i_get-started.svg
+              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
             title: Başlarken
           - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
             html: <p>Web uygulamaları için en iyi beş güvenlik öğesi</p>
             image:
-              src: /media/common/i_learn-about.svg
+              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
             title: Microsoft Learn ile becerilerinizi geliştirin
   - title: Örnek uygulamaların güvenliğini sağlama
     items:
@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Linux kapsayıcısında web uygulaması</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Ödeme kartı endüstrisi</a>
   - title: Kavramlar
     items:
       - type: list

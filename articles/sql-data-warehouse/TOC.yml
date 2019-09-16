@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Gerçekleştirilmiş görünüm
           items:
+            - name: Performans ayarlama kılavuzu
+              href: performance-tuning-materialized-views.md
             - name: Oluştur
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: Değiştir
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Sıralı kümelenmiş columnstore dizini
+          items:
+            - name: Performans ayarlama kılavuzu
+              href: performance-tuning-ordered-CCI.md
         - name: Sonuç kümesini önbelleğe alma
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tablolar

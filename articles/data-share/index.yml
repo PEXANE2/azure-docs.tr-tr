@@ -1,63 +1,61 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Veri Paylaşımı Önizleme belgeleri
+### YamlMime:Landing
+title: Azure Veri Paylaşımı (önizleme) belgeleri
+summary: Azure Veri Paylaşımı Önizleme, üçüncü taraf kuruluşlarla veri paylaşımına olanak sağlayan güvenli bir hizmettir.
 metadata:
-  title: 'Azure Veri Paylaşımı Önizleme belgeleri - Öğreticiler, nasıl yapılır kılavuzları'
-  description: 'Azure Veri Paylaşımı Önizleme, üçüncü taraf kuruluşlarla veri paylaşımına olanak sağlayan güvenli bir hizmettir.'
-  author: joannapea
-  ms.author: joanpo
+  title: Azure Veri Paylaşımı (önizleme)
+  description: Azure Veri Paylaşımı (önizleme), üçüncü taraf kuruluşlarla veri paylaşımına olanak sağlayan güvenli bir hizmettir.
+  services: service
   ms.service: data-share
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/10/2019
-abstract:
-  description: '<p>Azure Veri Paylaşımı Önizleme, üçüncü taraf kuruluşlarla veri paylaşımına olanak sağlayan güvenli bir hizmettir. Paylaşmak istediğiniz veri kümelerini seçin, alıcıları ekleyin ve yönetip izleyebilme olanağıyla birlikte verilerinizi paylaşmaya başlayın. Ayrıca veri paylaşımı ilişkilerinizi de denetleyebilirsiniz. </p><p>Öğretici ve nasıl yapılır kılavuzlarıyla Azure Veri Paylaşımı’nı kullanmayı öğrenin.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/azure-friday.png
-      width: 250
-    title: Azure Friday’de Azure Veri Paylaşımı
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
-    width: 250
-sections:
-  - title: Nasıl yapılır kılavuzları
-    items:
-      - type: paragraph
-        text: 'Veri paylaşımınızı izlemeyi, veri kümesi eşlemelerini yapılandırmayı, alıcılar eklemeyi ve çok daha fazlasını şu nasıl yapılır kılavuzlarından birini kullanarak öğrenin:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Azure Veri Paylaşımı’nı izleme
-            href: /azure/data-share/how-to-monitor
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Bir veri kümesi eşlemesi yapılandırma
-            href: /azure/data-share/how-to-configure-mapping
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Azure Veri Paylaşımı sorunlarını giderme
-            href: /azure/data-share/data-share-troubleshoot
-  - title: Adım Adım öğreticiler
-    items:
-      - type: paragraph
-        text: Azure Veri Paylaşımı’nı kullanarak veri paylaşmaya nasıl başlayacağınızı öğrenme
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="share-your-data">Azure Veri Paylaşımı’nı kullanarak verilerinizi paylaşma</a>
-          - html: <a href="subscribe-to-data-share">Azure Veri Paylaşımı’nı kullanarak veri kabul etme ve alma</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Diller
-            html: <p><a href="/dotnet/api/overview/azure/datashare">.NET</a></p>
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/datashare">REST API</a></p>
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 7e44541fae4cb9987f4c2e3b68a6ec3ff61c1bcf
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70993929"
+landingContent:
+- title: Azure Veri Paylaşımı hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Veri Paylaşımı nedir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Veri Paylaşımı kavramları
+      url: terminology.md
+    - text: Azure Veri Paylaşımı rolleri ve gereksinimleri
+      url: concepts-roles-permissions.md
+- title: Veri paylaşımı
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Veri Paylaşımı’nı kullanarak verilerinizi paylaşma
+      url: share-your-data.md
+    - text: Azure Veri Paylaşımı’nı kullanarak veri kabul etme ve alma
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: Veri kümesi eşlemelerini yapılandırma
+      url: how-to-configure-mapping.md
+    - text: Veri kümeleri ekleme
+      url: how-to-add-datasets.md
+- title: İzleme ve yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Veri Paylaşımı’nı izleme
+      url: how-to-monitor.md
+    - text: Yaygın sorunları giderme
+      url: data-share-troubleshoot.md
+    - text: Veri kümeleri ekleme
+      url: how-to-add-datasets.md
+    - text: Davet silme
+      url: how-to-delete-invitation.md
+    - text: Paylaşım aboneliğini iptal etme
+      url: how-to-revoke-share-subscription.md

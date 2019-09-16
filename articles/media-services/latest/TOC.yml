@@ -32,6 +32,10 @@
     - name: DRM ile dinamik olarak şifreleme
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
+- name: Örnekler
+  items:
+    - name: Media Services örnekleri
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: Kavramlar
   items:
     - name: Genel Bakış
