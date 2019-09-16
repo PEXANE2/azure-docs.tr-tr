@@ -216,7 +216,7 @@ Başlamak için aşağıdaki adımları uygulayın:
     Connect-AzureAD -Confirm
     ```
 
-3. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. Aşağıdaki senaryolarda işlemlerden en çok sonra bu komutu çalıştırın. Komutu çalıştırmak, ilkeleriniz için * * * * * * * * * * * * * *.
+3. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. Aşağıdaki senaryolarda işlemlerden en çok sonra bu komutu çalıştırın. Komutu çalıştırmak, ** ** ilkeleriniz için .
 
     ```powershell
     Get-AzureADPolicy

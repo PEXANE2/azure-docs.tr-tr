@@ -90,7 +90,7 @@ Her öğenin birincil, _kurallı_adı departman adıdır. Her bir kurallı adın
 
 |Kurallı ad|Eş anlamlılar|
 |--|--|
-|Muhasebe|\<br>aci<br>3456|
+|Muhasebe|acct<br>aci<br>3456|
 |Geliştirme Işlemleri|DevOps<br>4949|
 |Mühendislik|ing<br>altyapısındaki<br>4567|
 |Finans|ın<br>2020|
