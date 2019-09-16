@@ -306,7 +306,7 @@ Sertifikanın, bilgisayar\'s Kişisel deposunda yüklü olduğunu doğrulayın. 
         |---|---|
         | Source | Any |
         | Source port ranges | * |
-        | Hedef | Any |
+        | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
