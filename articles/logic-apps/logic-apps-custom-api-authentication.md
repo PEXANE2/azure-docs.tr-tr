@@ -238,7 +238,7 @@ Web uygulamanızı veya API uygulaması için mantıksal uygulamadan gelen istek
 | ------- | -------- | ----------- | 
 | type | Evet | Kimlik doğrulaması türü. SSL istemci sertifikaları için bir değer olmalıdır `ClientCertificate`. | 
 | password | Evet | İstemci sertifikası (PFX dosyası) erişmek için parola | 
-| PFX | Evet | İstemci sertifikası (PFX dosyası) base64 ile kodlanmış içeriği | 
+| pfx | Evet | İstemci sertifikası (PFX dosyası) base64 ile kodlanmış içeriği | 
 |||| 
 
 <a name="basic"></a>
