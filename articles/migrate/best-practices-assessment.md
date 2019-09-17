@@ -1,17 +1,17 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ile değerlendirme oluşturmak için en iyi uygulamalar | Microsoft Docs
+title: Azure geçişi sunucu değerlendirmesi ile değerlendirme oluşturmak için en iyi uygulamalar
 description: Azure geçişi sunucu değerlendirmesi ile değerlendirmeler oluşturmaya yönelik ipuçları sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234308"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007724"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -33,8 +33,8 @@ Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, v
 
 - **Performans tabanlı değerlendirme**:
     - Core (4 x 0,20 = 0,8) ve bellek (8 GB x 0,10 = 0,8) kullanımı temel alınarak etkin çekirdekleri ve bellek tanımlar.
-    - Boyutlandırma için kullanılacak değerleri almak için değerlendirme özelliklerinde belirtilen rahatlık faktörünü (le'ts söyleyin 1.3 x) uygular. 
-    - , Azure 'da ~ 1,4 çekirdek (0,8 x 1,3) ve ~ 1,4 GB (0,8 x 1,3) belleği destekleyebilen en yakın VM boyutunu önerir.
+    - Boyutlandırma için kullanılacak değerleri almak için değerlendirme özelliklerinde belirtilen rahatlık faktörünü (diyelim ki 1,3 x) uygular. 
+    - , Azure 'da ~ 1,04 çekirdek (0,8 x 1,3) ve ~ 1,04 GB (0,8 x 1,3) belleği destekleyebilen en yakın VM boyutunu önerir.
 
 - **As (Şirket içi) değerlendirmesi**:
     -  Dört çekirdekli bir VM önerir; 8 GB bellek.
@@ -85,9 +85,9 @@ Bir değerlendirme, birkaç nedenden dolayı tüm veri noktalarına sahip olmaya
 
 - Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin, performans süresi bir hafta olarak ayarlanan *performans tabanlı bir değerlendirme* oluşturuyorsanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir hafta beklemeniz gerekir. En son geçerli güvenilirlik derecelendirmesini görmek için her zaman **yeniden hesapla** ' yı tıklayabilirsiniz. Güvenilirlik derecelendirmesi yalnızca *performans tabanlı* bir değerlendirme oluşturduğunuzda uygulanabilir.
 
-- Değerlendirmenin hesaplandığı dönem boyunca birkaç sanal makine kapatılmıştır. Bazı VM 'Ler bir süre için kapatılmışsa, sunucu değerlendirmesi söz konusu döneme ait performans verilerini toplayamaz.
+- Değerlendirmenin hesaplandığı dönem boyunca birkaç sanal makine kapatılmıştır. Bazı VM'ler belirli bir süre boyunca kapatıldıysa Sunucu Değerlendirmesi o süreye ait performans verilerini toplayamaz.
 
-- Sunucu değerlendirmesinde bulma işlemi başlatıldıktan sonra birkaç VM oluşturuldu. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, yeni VM 'Ler için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır.
+- Sunucu Değerlendirmesi'nde bulma işlemi başlatıldıktan sonra birkaç VM oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

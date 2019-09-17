@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6793fbcc50711e10231b87fa6e1f11f54f90d325
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: d9e31c1c7decec159de9224f97edfcba15f93966
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445443"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007825"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Azure Data Factory (Önizleme) ile Xero veri kopyalama
 
@@ -27,6 +27,11 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Xero veri kopyalamak iç
 > Bu bağlayıcı, şu anda Önizleme aşamasındadır. Deneyin ve geri bildirim sağlayın. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Xero Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Xero tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
@@ -49,7 +54,7 @@ Xero bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Xero** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Xero** | Evet |
 | host | Xero sunucu uç noktası (`api.xero.com`).  | Evet |
 | consumerKey | Xero uygulamayla ilişkili tüketici anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | privateKey | Özel anahtar, Xero özel uygulama için oluşturulan .pem dosyasından bkz [bir ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Not **numbits 512 ile privatekey.pem oluşturmak** kullanarak `openssl genrsa -out privatekey.pem 512`; 1024 desteklenmiyor. .Pem dosyasından UNIX satırı endings(\n) dahil olmak üzere tüm metni eklemek, aşağıdaki örneğe bakın.<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
@@ -95,7 +100,7 @@ Xero verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **Xe
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **XeroObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **XeroObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
@@ -105,11 +110,12 @@ Xero verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **Xe
     "name": "XeroDataset",
     "properties": {
         "type": "XeroObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Xero linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -124,7 +130,7 @@ Xero verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayarl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **XeroSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **XeroSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Contacts"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
@@ -212,6 +218,11 @@ Aşağıdaki tablolarda, yalnızca tam şemasıyla sorgulanabilir:
 - Complete.Receipt_Line_Items 
 - Complete.Receipt_Line_Item_Tracking 
 - Complete.Tracking_Category_Options
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

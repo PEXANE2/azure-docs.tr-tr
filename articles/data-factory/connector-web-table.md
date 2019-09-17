@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: eceb61234e3ae10934e6bb9057f8ddc800c19c94
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274722"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009733"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Web tablosundan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,6 +33,11 @@ Bu Web tablosu Bağlayıcısı arasındaki fark, [rest Bağlayıcısı](connecto
 - **Http Bağlayıcısı** , örneğin dosyayı indirmek için HERHANGI bir HTTP uç noktasından veri almak için geneldir. 
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Web tablosu Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Web tablosu veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
@@ -177,6 +182,10 @@ Web tablosundan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 Excel 2013 kullanıyorsanız, dizini almak için [Excel için Microsoft Power Query](https://www.microsoft.com/download/details.aspx?id=39379) kullanın. Ayrıntılar için bkz. [Web sayfasına bağlanma](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) makalesi. [Masaüstü Için Microsoft Power BI](https://powerbi.microsoft.com/desktop/)kullanıyorsanız, bu adımlar benzerdir.
 
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

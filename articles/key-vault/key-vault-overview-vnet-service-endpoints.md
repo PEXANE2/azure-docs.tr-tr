@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 2617ae7bd1c761ae7977eac518c2e40ca55da00c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b39482f5c753fbfe6cc6663dda4f5381300c2c21
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883230"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017244"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
 
@@ -60,7 +60,7 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 
 **Güvenilen hizmetlere Izin ver** seçeneği etkinse, anahtar kasasına erişmesine izin verilen güvenilir hizmetlerin bir listesi aşağıda verilmiştir.
 
-|Güvenilen hizmet|Kullanım senaryoları|
+|Güvenilen hizmet|Desteklenen kullanım senaryoları|
 | --- | --- |
 |Azure Sanal Makineleri dağıtım hizmeti|[Sertifikaları, müşteri tarafından yönetilen Key Vault sanal makinelere dağıtın](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Azure Resource Manager şablonu dağıtım hizmeti|[Dağıtım sırasında güvenli değerler geçirin](../azure-resource-manager/resource-manager-keyvault-parameter.md).|

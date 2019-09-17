@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951863"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018703"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -79,7 +79,7 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 
-**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **US**
+**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
 --- | --- | --- | ---
 **Uygulamayla tutarlı** | Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemlerini yakalar. Uygulamayla tutarlı anlık görüntüler, bir yedekleme gerçekleşmeden önce uygulama verilerinin tutarlılığını sağlamak için bir VSS yazıcısı (veya Linux için ön betikler öncesi) kullanır. | VM 'yi uygulamayla tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Uygulamalar tutarlı bir durumda başlar. | Windows: Tüm VSS yazıcıları başarılı oldu<br/><br/> Linux: Betikler ön/sonrası yapılandırılmış ve başarılı
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: Bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: Varsayılan (ön/Post betikleri yapılandırılmamışsa veya başarısız olursa)
@@ -87,7 +87,7 @@ Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanm
 
 ## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konuları
 
-**US** | **Ayrıntılar**
+**Dikkate Alınacak Nokta** | **Ayrıntılar**
 --- | ---
 **Disk** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
 **Planlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM 'Lerin yedeklenmesi aynı anda trafik jams oluşmasına neden olur.
@@ -140,48 +140,13 @@ Veri diski 2 | 4095 GB | 0 GB
 Bu durumda sanal makinenin gerçek boyutu 17 GB + 30 GB + 0 GB = 47 GB 'dir. Bu korumalı örnek boyutu (47 GB) aylık faturanın temelini oluşturur. VM 'deki veri miktarı büyüdükçe, faturalandırma değişiklikleri için kullanılan korumalı örnek boyutu.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Sınırlı genel önizleme: Disk boyutlarına göre 30 TB 'a kadar VM yedeklemesi
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Genel Önizleme: Disk boyutlarına göre 30 TB 'a kadar VM yedeklemesi
 
-Azure Backup artık boyutu 30 TB 'a kadar olan daha büyük ve daha güçlü [Azure yönetilen disklerinin](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) sınırlı bir genel önizlemesini desteklemektedir. Bu önizleme, yönetilen sanal makineler için üretim düzeyi desteği sağlar.
+Azure Backup artık boyutu 30 TB 'a kadar olan daha büyük ve daha güçlü [Azure yönetilen disklerinin](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) genel önizlemesini desteklemektedir. Bu önizleme, yönetilen sanal makineler için üretim düzeyi desteği sağlar.
 
-Devam eden yedeklemeleriniz üzerinde herhangi bir etki olmadan önizlemeye sorunsuzca kayıt yapabilirsiniz. Abonelik önizlemeye kaydedildikten sonra, disk boyutları 30 TB 'a kadar olan tüm sanal makinelerin başarılı bir şekilde yedeklenmesi gerekir. Önizlemeye kaydolmak için:
- 
-Aşağıdaki cmdlet 'leri yükseltilmiş bir PowerShell terminalden yürütün:
+Her disk boyutu 30 TB 'a varan sanal makineleriniz için yedeklemeler ve bir VM 'deki tüm diskler için en fazla 256TB, var olan yedeklemelerinizi etkilemeden sorunsuz bir şekilde çalışır. Sanal makine zaten Azure Backup ile yapılandırılmışsa, büyük ölçekli diskler için çalışan yedeklemeleri almak için Kullanıcı eylemi gerekmez.
 
-1. Azure hesabınızda oturum açın.
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. Yükseltme için kaydolmak istediğiniz aboneliği seçin:
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. Bu aboneliği Önizleme programına Kaydet: 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    Aboneliğin önizlemeye kaydolması için 30 dakika bekleyin. 
-
- 4. Durumu denetlemek için aşağıdaki cmdlet 'leri çalıştırın:
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. Aboneliğin kayıtlı olarak gösterdiği zaman aşağıdaki komutu çalıştırın:
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> 4 TB 'tan büyük disklere sahip şifrelenmiş VM 'Ler Bu önizlemede desteklenmez.
-
-
+Yedekleme yapılandırılmış büyük disklere sahip tüm Azure sanal makineleri başarıyla yedeklenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

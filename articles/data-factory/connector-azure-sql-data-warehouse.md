@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 29f5b9b704bcf4648e9c24516d8eff5429a0ce1d
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813579"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009950"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure SQL veri ambarı veri kopyalayın 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -28,7 +28,7 @@ Bu makalede, verilerin Azure SQL veri ambarı 'na veya Azure 'a nasıl kopyalana
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Bu Azure Blob Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu Azure SQL veri ambarı Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 - [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak/havuz matris](copy-activity-overview.md) tablosuyla Kopyala
 - [Veri akışını eşleme](concepts-data-flow-overview.md)
@@ -379,7 +379,7 @@ Azure SQL veri ambarı'na veri kopyalamak için kopyalama etkinliği Havuz tür�
 | rejectType        | Belirtir olup olmadığını **rejectValue** seçenektir değişmez değer veya bir yüzdesi.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzdesi**. | Hayır                                            |
 | rejectSampleValue | Reddedilen satırların yüzdesi PolyBase yeniden hesaplar önce almak için satır sayısını belirler.<br/><br/>İzin verilen değerler: 1, 2, vs. | Evet, varsa **rejectType** olduğu **yüzdesi**. |
 | useTypeDefault    | PolyBase metin dosyasından veri aldığında sınırlandırılmış metin dosyaları eksik değerleri nasıl ele alınacağını belirtir.<br/><br/>Bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi [oluşturma EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>İzin verilen değerler **True** ve **False** (varsayılan).<br><br> | Hayır                                            |
-| writeBatchSize    | **Toplu iş BAŞıNA**SQL tablosuna eklenecek satır sayısı. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **tamsayı** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirleme. | Hayır                                            |
+| writeBatchSize    | **Toplu iş BAŞıNA**SQL tablosuna eklenecek satır sayısı. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **tamsayı** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır                                            |
 | writeBatchTimeout | Toplu ekleme işlemi zaman aşımına uğramadan önce tamamlanması için bir süre bekleyin. Yalnızca PolyBase ne zaman kullanılmaz geçerlidir.<br/><br/>İzin verilen değer **timespan**. Örnek: "00:30:00" (30 dakika). | Hayır                                            |
 | preCopyScript     | Her bir çalıştırmada Azure SQL Data Warehouse'a veri yazılmadan önce çalıştırmak kopyalama etkinliği için bir SQL sorgusunu belirtin. Önceden yüklenmiş ve verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
 | tableOption | Kaynak şemasına göre yoksa havuz tablosunun otomatik olarak oluşturulup oluşturulmayacağını belirtir. Hazırlanan kopya kopyalama etkinliğinde yapılandırıldığında otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate`. |Hayır |
@@ -440,7 +440,7 @@ Gereksinimleri karşılanmadığı takdirde, Azure Data Factory ayarları denetl
    3. `rowDelimiter`**varsayılan**, **\n**, **\r\n**veya **\r**'dir.
    4. `nullValue`Varsayılan olarak bırakılır veya **boş dize** ("") olarak ayarlanır ve `treatEmptyAsNull` varsayılan olarak bırakılır ya da true olarak ayarlanır.
    5. `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
-   6. `quoteChar`, `escapeChar` ve`skipLineCount` belirtilmedi. PolyBase destek Atla olarak yapılandırılan üst bilgi satırı `firstRowAsHeader` ADF içinde.
+   6. `quoteChar`, `escapeChar` ve`skipLineCount` belirtilmedi. PolyBase desteği, ADF 'de olduğu gibi `firstRowAsHeader` yapılandırılabilen üst bilgi satırını atlar.
    7. `compression` olabilir **sıkıştırma**, **GZip**, veya **Deflate**.
 
 3. Kaynağınız bir klasörse, `recursive` Copy etkinliğinin true olarak ayarlanması gerekir.
@@ -625,6 +625,14 @@ Veya Azure SQL veri ambarı veri kopyalayın, aşağıdaki eşlemeler Azure SQL 
 | uniqueidentifier                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata etkinlik özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) denetleyin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure veri fabrikasında kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları ve biçimler](copy-activity-overview.md##supported-data-stores-and-formats).

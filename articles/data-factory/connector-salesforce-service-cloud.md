@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 729ea0fa667a11f710fd815003bc0995cb08ae70
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ac9b12f07a27b3bb8ff66d8a5637cb656e06abc6
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842562"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010560"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Salesforce hizmeti bulutlarından kopyalama
 
 Bu makalede, verileri Salesforce hizmeti bulutlarından kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliğine genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Salesforce hizmeti bulutu Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Salesforce hizmeti bulutundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan verileri Salesforce hizmeti bulutuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
@@ -63,7 +68,7 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 | environmentUrl | Salesforce hizmeti bulut örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"`. <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"`. <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"`. |Hayır |
 | username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
 | password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
-| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Bir güvenlik belirtecini sıfırlama ve alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
+| securityToken |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Bir güvenlik belirtecini sıfırlama ve alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, kaynak bağlı hizmette tümleştirme çalışma zamanı yoksa, havuz için Evet |
 
 >[!IMPORTANT]
@@ -310,8 +315,8 @@ Salesforce hizmeti bulutlarından verileri kopyaladığınızda, veri türleri D
 | Auto Number |Dize |
 | Checkbox |Boole değeri |
 | Currency |Decimal |
-| Date |Datetime |
-| Date/Time |Datetime |
+| Date |DateTime |
+| Date/Time |DateTime |
 | Email |Dize |
 | Id |Dize |
 | Lookup Relationship |Dize |
@@ -326,6 +331,11 @@ Salesforce hizmeti bulutlarından verileri kopyaladığınızda, veri türleri D
 | Text Area (Rich) |Dize |
 | Text (Encrypted) |Dize |
 | URL |Dize |
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri fabrikasında kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

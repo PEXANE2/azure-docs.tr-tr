@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: ab2035ec344e07d88e2ac4ffb19cb1b2361f2e92
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 26eb3852106fdacd30425abd14aa2c594aed978c
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277475"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007794"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -27,6 +27,11 @@ ms.locfileid: "70277475"
 Bu makalede, bir Sybase veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Sybase Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Verileri Sybase veritabanından desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
@@ -169,6 +174,11 @@ Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi dest
 Verileri Sybase 'ten kopyalarken, veri türleri Azure Data Factory için Sybase veri türlerinden aşağıdaki eşlemeler kullanılır. Bkz: [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) eşlemelerini nasıl yapar? kopyalama etkinliği kaynak şema ve veri türü için havuz hakkında bilgi edinmek için.
 
 Sybase T-SQL türlerini destekler. SQL türlerindeki bir eşleme tablosu, ara veri türlerini Azure Data Factory için, bkz. [Azure SQL Veritabanı Bağlayıcısı-veri türü eşleme](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) bölümü.
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 91467f99e7932ce7ffcd5b3300f8544fb848ccfa
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883634"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019070"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -486,7 +486,7 @@ Her bir Application Insights işlemi (istek veya bağımlılık) `Activity` `Sta
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Application Insights [telemetri bağıntısı](correlation.md) hakkında temel bilgileri öğrenin.
-- Bağıntılı verilerin [Işlem tanılama deneyimini](/azure-monitor/app/transaction-diagnostics) ve [uygulama haritasını](/azure-monitor/app/app-map)nasıl kuvvetlerine göz atın.
+- Bağıntılı verilerin [Işlem tanılama deneyimini](../../azure-monitor/app/transaction-diagnostics.md) ve [uygulama haritasını](../../azure-monitor/app/app-map.md)nasıl kuvvetlerine göz atın.
 - Application Insights türleri ve veri modeli için [veri modeline](../../azure-monitor/app/data-model.md) bakın.
 - Application Insights için özel [olayları ve ölçümleri](../../azure-monitor/app/api-custom-events-metrics.md) bildirin.
 - Bağlam özellikleri koleksiyonu için standart [yapılandırmayı](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) inceleyin.

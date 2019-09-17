@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15a11ba74262ec5a354f0cb3fe22c09167c8d5a6
+ms.sourcegitcommit: d15b23e23328ce7502dd3d2846b49fd2d6d8209c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001611"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005388"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Batch Puanlama için Azure Machine Learning işlem hatları kullanma
 
-Bu öğreticide, Batch Puanlama veya çıkarım işi çalıştırmak için Azure Machine Learning işlem hatlarını kullanırsınız. Bu örnek iş, etiketli görüntüleri sınıflandırmak için önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) evsel sinir Network TensorFlow modelini kullanır. İşlem hattını oluşturup yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetikleyebilmeniz için bir REST uç noktası yapılandırırsınız.
+Bu öğreticide, Batch Puanlama işini çalıştırmak için Azure Machine Learning işlem hatlarını kullanırsınız. Bu örnek, etiketli görüntüleri sınıflandırmak için önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) evsel sinir Network TensorFlow modelini kullanır. İşlem hattını oluşturup yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetikleyebilmeniz için bir REST uç noktası yapılandırırsınız.
 
 Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine uzmanınıza, makine öğrenimine odaklanmanıza olanak sağlayabilir. [Ml işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
 

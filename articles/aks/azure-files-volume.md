@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: e3050d189396a797dbc0980e06e11533b9de977e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098604"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018725"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde Azure dosya paylaşımıyla bir birimi el ile oluşturma ve kullanma
 
@@ -135,17 +135,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Bağlama seçenekleri
 
-Varsayılan *FileMode* ve *dirmode* değerleri, aşağıdaki tabloda açıklandığı gibi Kubernetes sürümleri arasında farklılık gösterir.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 veya üzeri | 0755 |
-| v 1.9.0 | 0700 |
-| v 1.9.1 veya üzeri | 0755 |
-
-Bir sürüm 1.8.5 veya daha büyük bir küme kullanılıyorsa ve kalıcı birim nesnesini statik olarak oluşturursanız, *Persistentvolume* nesnesinde bağlama seçeneklerinin belirtilmesi gerekir.
+*FileMode* ve *dirmode* Için varsayılan değer, Kubernetes sürüm 1.9.1 ve üzeri için *0755* ' dir. Kuberetes sürüm 1.8.5 veya üzerini içeren bir küme kullanılıyorsa ve kalıcı birim nesnesini statik olarak oluşturduğunuzda, *Persistentvolume* nesnesinde bağlama seçeneklerinin belirtilmesi gerekir. Aşağıdaki örnek *0777*olarak ayarlanır:
 
 ```yaml
 apiVersion: v1
@@ -157,6 +147,7 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
+  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -166,9 +157,79 @@ spec:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
 ```
 
 1\.8.0-1.8.4 sürümünün bir kümesini kullanıyorsanız, *RunAsUser* değeri *0*olarak ayarlanmış bir güvenlik bağlamı belirtilebilir. Pod güvenlik bağlamı hakkında daha fazla bilgi için bkz. [güvenlik bağlamını yapılandırma][kubernetes-security-context].
+
+Bağlama seçeneklerinizi güncelleştirmek için, bir *azurefile-Mount-Options-BD. YAML* dosyasını *Persistentvolume*ile oluşturun. Örneğin:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  azureFile:
+    secretName: azure-secret
+    shareName: aksshare
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+```
+
+*Persistentvolume*kullanan bir *Persistentvolumeclaim* ile *azurefile-Mount-Options-PVC. YAML* dosyası oluşturun. Örneğin:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+*Persistentvolume* ve *persistentvolumeclaim*oluşturmak için komutlarıkullanın.`kubectl`
+
+```console
+kubectl apply -f azurefile-mount-options-pv.yaml
+kubectl apply -f azurefile-mount-options-pvc.yaml
+```
+
+*Persistentvolumeclaim* 'Nin oluşturulup *Persistentvolume*'e bağlandığını doğrulayın.
+
+```console
+$ kubectl get pvc azurefile
+
+NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
+```
+
+Kalıcı olarak, *Persistentvolumeclaim* 'nize başvuracak ve pod 'nizi güncelleştiren kapsayıcı belirtimini güncelleştirin. Örneğin:
+
+```yaml
+...
+  volumes:
+  - name: azure
+    persistentVolumeClaim:
+      claimName: azurefile
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

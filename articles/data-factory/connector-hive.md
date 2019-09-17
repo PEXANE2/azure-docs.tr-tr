@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 40f97c3b31a7e49c9a5ecc790e3cc762572ecaa3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 120aed4277abfb2ea977670c107a4ee759bd3524
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276364"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009132"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Hive Azure Data Factory kullanarak verileri kopyalama 
 
 Bu makalede, kopyalama etkinliği Azure Data Factory'de kovanından veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Hive Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Tüm desteklenen havuz veri deposuna kovanından veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
@@ -46,14 +51,14 @@ Hive bağlı hizmeti için aşağıdaki özellikleri destekler:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Type özelliği şu şekilde ayarlanmalıdır: **Hive** | Evet |
-| host | IP adresi veya ana bilgisayar adı (yalnızca serviceDiscoveryMode etkin olduğunda) birden çok konak için ';' ile ayrılmış Hive sunucusu.  | Evet |
+| host | Birden çok konak için '; ' ile ayrılmış Hive sunucusunun IP adresi veya ana bilgisayar adı (yalnızca serviceDiscoveryMode etkinleştirildiğinde).  | Evet |
 | port | Hive sunucusunun istemci bağlantıları için dinlemek üzere kullandığı TCP bağlantı noktası. Azure Hdınsights bağlarsanız, bağlantı noktası 443 belirtin. | Evet |
 | serverType | Hive sunucusu tür. <br/>İzin verilen değerler şunlardır: **HiveServer1**, **HiveServer2**, **hivethriftserver** | Hayır |
 | thriftTransportProtocol | Thrift katmanda kullanılacak taşıma protokol. <br/>İzin verilen değerler şunlardır: **İkili**, **SASL**, **http** | Hayır |
 | authenticationType | Hive sunucuya erişmek için kullanılan kimlik doğrulama yöntemi. <br/>İzin verilen değerler şunlardır: **Anonim**, **Kullanıcı adı**, **userNameAndPassWord**, **WindowsAzureHDInsightService** | Evet |
 | serviceDiscoveryMode | ZooKeeper hizmeti yanlış kullanmayan belirtmek için true.  | Hayır |
 | zooKeeperNameSpace | Ad alanı üzerinde ZooKeeper düğümleri altında hangi Hive Server 2 eklenir.  | Hayır |
-| useNativeQuery | Sürücü yerel HiveQL sorgularını kullanır veya eşdeğer bir HiveQL formunda dönüştürür olup olmadığını belirtir.  | Hayır |
+| useNativeQuery | Sürücünün yerel HiveQL sorguları kullanıp kullanmadığını veya onları HiveQL 'teki eşdeğer bir biçime dönüştürmeyeceğini belirtir.  | Hayır |
 | username | Hive sunucusuna erişmek için kullandığınız kullanıcı adı.  | Hayır |
 | password | Kullanıcıya karşılık gelen parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
 | httpPath | Hive sunucuya karşılık gelen kısmi URL.  | Hayır |
@@ -159,6 +164,11 @@ Kovanından veri kopyalamak için kopyalama etkinliği için kaynak türünü ay
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

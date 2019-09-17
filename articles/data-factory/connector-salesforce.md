@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 625f31252942c3d8dea9ca9b4772af19f60e17ab
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 08d1afb4175a61b70d8e04b19db187bcc87dd129
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720724"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010523"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve Salesforce 'a kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -27,6 +27,12 @@ ms.locfileid: "68720724"
 Bu makalede, verileri Salesforce 'tan ve Salesforce 'a kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliğine genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Salesforce Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Arama etkinliği](control-flow-lookup-activity.md)
+
 
 Salesforce 'tan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan verileri Salesforce 'a kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
@@ -319,8 +325,8 @@ Salesforce 'tan verileri kopyaladığınızda, veri türleri Data Factory için 
 | Auto Number |Dize |
 | Checkbox |Boole değeri |
 | Currency |Decimal |
-| Date |Datetime |
-| Date/Time |Datetime |
+| Date |DateTime |
+| Date/Time |DateTime |
 | Email |Dize |
 | Id |Dize |
 | Lookup Relationship |Dize |
@@ -335,6 +341,11 @@ Salesforce 'tan verileri kopyaladığınızda, veri türleri Data Factory için 
 | Text Area (Rich) |Dize |
 | Text (Encrypted) |Dize |
 | URL |Dize |
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri fabrikasında kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

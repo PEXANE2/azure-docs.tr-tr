@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873505"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010294"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL veritabanı özellikleri
 
@@ -32,7 +32,7 @@ Azure SQL veritabanı, veritabanlarınızı yönetir ve yüksek kullanılabilirl
 
 Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve özellik hakkında daha fazla bilgi için bir bağlantıyla birlikte, özelliğin yönetilen örnekte veya Tek Veritabanı ve elastik havuzlarda kısmen veya tam olarak desteklenmediği hakkında bilgi sağlanır.
 
-| **SQL özelliği** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler** |
+| **SQL özelliği** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler ve örnek havuzları** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Evet-bkz. [sertifika deposu](sql-database-always-encrypted.md) ve [Anahtar Kasası](sql-database-always-encrypted-azure-key-vault.md) | Evet-bkz. [sertifika deposu](sql-database-always-encrypted.md) ve [Anahtar Kasası](sql-database-always-encrypted-azure-key-vault.md) |
 | [Always on kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Yüksek kullanılabilirlik](sql-database-high-availability.md) , her veritabanına dahildir. Olağanüstü durum kurtarma, [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış konusunda](sql-database-business-continuity.md) ele alınmıştır | [Yüksek kullanılabilirlik](sql-database-high-availability.md) her veritabanına dahildir ve [Kullanıcı tarafından yönetilemez](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Olağanüstü durum kurtarma, [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış konusunda](sql-database-business-continuity.md) ele alınmıştır |
@@ -112,7 +112,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 
 Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklenen bir dizi PaaS özelliği sağlar. Azure SQL veritabanı hizmeti ile kullanılabilen çeşitli dış hizmetler vardır. 
 
-| **Platform özelliği** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler** |
+| **Platform özelliği** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler ve örnek havuzları** |
 | --- | --- | --- |
 | [Etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) | Evet-hiperscale dışında tüm hizmet katmanları | Hayır, bkz. [otomatik yük devretme grupları (Önizleme)](sql-database-auto-failover-group.md) alternatif olarak |
 | [Otomatik yük devretme grupları](sql-database-auto-failover-group.md) | Evet-hiperscale dışında tüm hizmet katmanları | Evet, [genel önizlemede](sql-database-auto-failover-group.md)|
@@ -131,7 +131,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | [İlke tabanlı yönetim](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Hayır | Hayır |
 | Genel IP adresi | Evet. Erişim, güvenlik duvarı veya hizmet uç noktaları kullanılarak kısıtlanabilir.  | Evet. Açıkça etkinleştirilmesi gerekir ve NSG kurallarında 3342 numaralı bağlantı noktası etkinleştirilmelidir. Gerekirse genel IP devre dışı bırakılabilir. Daha fazla ayrıntı için bkz. [genel uç nokta](sql-database-managed-instance-public-endpoint-securely.md) . | 
 | [Zaman noktası veritabanı geri yükleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Evet-hiper ölçek dışında tüm hizmet katmanları-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md#point-in-time-restore) | Evet-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Kaynak havuzları | Evet, [elastik havuzlar](sql-database-elastic-pool.md) olarak | Hayır. Tek bir yönetilen örnek, aynı kaynak havuzunu paylaşan birden çok veritabanına sahip olabilir. Yönetilen örnekler kaynakları paylaşamaz. |
+| Kaynak havuzları | Evet, [elastik havuzlar](sql-database-elastic-pool.md) olarak | Evet. Tek bir yönetilen örnek, aynı kaynak havuzunu paylaşan birden çok veritabanına sahip olabilir. Ayrıca, kaynakları paylaşabilen [örnek havuzlarda (Önizleme)](sql-database-instance-pools.md) birden çok yönetilen örnek dağıtabilirsiniz. |
 | Ölçeği artırma veya azaltma (çevrimiçi) | Evet, DTU veya ayrılmış sanal çekirdekleri ya da en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. | Evet, ayrılmış sanal çekirdekleri veya en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. |
 | SQL diğer adı | Evet, bkz. [DNS diğer adı](dns-alias-overview.md) | Hayır |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Evet | Evet |
@@ -146,7 +146,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 ## <a name="tools"></a>Araçlar
 Azure SQL veritabanı, verilerinizi yönetmenize yardımcı olabilecek çeşitli veri araçlarını destekler.
 
-| **Araç** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler** |
+| **Araç** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler ve örnek havuzları** |
 | --- | --- | --- |
 | Azure portal | Evet | Evet |
 | Azure CLI | Evet | Evet|
@@ -167,7 +167,7 @@ Azure SQL veritabanı, verilerinizi yönetmenize yardımcı olabilecek çeşitli
 
 Verilerinizi SQL Server, Tek Veritabanı ve yönetilen örnek veritabanları arasında taşımak için farklı geçiş yöntemleri kullanabilirsiniz. Bazı yöntemler **çevrimiçi** ve geçiş çalışırken kaynak üzerinde yapılan tüm değişiklikleri kullanıma alır, **çevrimdışı** metotlarda geçiş devam ederken kaynaktaki verileri değiştirme iş yükünüzü durdurmanız gerekir.
 
-| **Kaynak** | **Tek veritabanı ve elastik havuz** | **Yönetilen örnek** |
+| **Kaynak** | **Tek veritabanı ve elastik havuz** | **Yönetilen örnek ve örnek havuzları** |
 | --- | --- | --- |
 | SQL Server (Şirket içi, AzureVM, Amazon RDS) | **Çevrimiç** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimiç** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Yerel yedekleme/geri yükleme, [bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
 | Tek veritabanı | **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp |
@@ -183,3 +183,4 @@ Microsoft, Azure SQL veritabanı 'na özellik eklemeye devam etmektedir. Bu filt
 Azure SQL veritabanı türleri hakkında daha fazla bilgi için bkz.
 - [SQL Veritabanı nedir?](sql-database-technical-overview.md)
 - [Yönetilen örnek nedir?](sql-database-managed-instance.md)
+- [Yönetilen örnek havuzları nelerdir?](sql-database-instance-pools.md)

@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 580363973afd918351931edfb187a1a8d38d6985
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67665980"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018830"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Azure dosyaları ile kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
@@ -33,6 +33,7 @@ Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir 
 * *Standard_LRS* -standart yerel olarak yedekli depolama (LRS)
 * *Standard_GRS* -standart coğrafi olarak yedekli depolama (GRS)
 * *Standard_RAGRS* -standart Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)
+* *Premium_LRS* -Premium yerel olarak yedekli depolama (LRS)
 
 > [!NOTE]
 > Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerindeki Premium depolamayı destekler.
@@ -52,6 +53,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```
@@ -101,7 +105,7 @@ kubectl apply -f azure-pvc-roles.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>Kalıcı bir birim talebi oluşturun
 
-Kalıcı bir birim talebi (PVC), bir Azure dosya paylaşımının dinamik olarak sağlanması için depolama sınıfı nesnesini kullanır. Aşağıdaki YAML, *Readwritemany* erişimiyle sürekli olarak *5 GB* boyutunda kalıcı bir birim talebi oluşturmak için kullanılabilir. Erişim modları hakkında daha fazla bilgi için bkz. [Kubernetes kalıcı birimi][access-modes] belgeleri.
+Kalıcı bir birim talebi (PVC), bir Azure dosya paylaşımının dinamik olarak sağlanması için depolama sınıfı nesnesini kullanır. Aşağıdaki YAML, *Readwritemany* ERIŞIMIYLE *5 GB* boyutunda kalıcı bir birim talebi oluşturmak için kullanılabilir. Erişim modları hakkında daha fazla bilgi için bkz. [Kubernetes kalıcı birimi][access-modes] belgeleri.
 
 Şimdi aşağıdaki YAML 'de `azure-file-pvc.yaml` adlı bir dosya oluşturun ve kopyalayın. *Storageclassname* 'in, son adımda oluşturulan depolama sınıfıyla eşleştiğinden emin olun:
 
@@ -118,6 +122,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!NOTE]
+> Depolama sınıfınız için *Premium_LRS* SKU 'su kullanılıyorsa, *depolama* Için en düşük değer *100gi*olmalıdır.
 
 [Kubectl Apply][kubectl-apply] komutuyla kalıcı birim talebi oluşturun:
 
@@ -196,17 +203,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Bağlama seçenekleri
 
-Varsayılan *FileMode* ve *dirmode* değerleri, aşağıdaki tabloda açıklandığı gibi Kubernetes sürümleri arasında farklılık gösterir.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 veya üzeri | 0755 |
-| v 1.9.0 | 0700 |
-| v 1.9.1 veya üzeri | 0755 |
-
-Bir sürüm 1.8.5 veya daha büyük bir küme kullanılıyorsa ve kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturduğunuzda, depolama sınıfı nesnesinde bağlama seçenekleri belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
+*FileMode* ve *dirmode* Için varsayılan değer, Kubernetes sürüm 1.9.1 ve üzeri için *0755* ' dir. Kuberetes sürüm 1.8.5 veya üzerini içeren bir küme kullanıyorsanız ve kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturursanız, depolama sınıfı nesnesinde bağlama seçenekleri belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
 
 ```yaml
 kind: StorageClass
@@ -219,6 +216,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```

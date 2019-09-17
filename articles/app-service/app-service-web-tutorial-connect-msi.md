@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d4e0d632fe476df159710f800eca3a2a283f7908
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743392"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018295"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service Azure SQL veritabanı bağlantısını güvenli hale getirme
 
@@ -83,10 +83,22 @@ Active Directory Yöneticisi ekleme hakkında daha fazla bilgi için bkz. [Azure
 
 ## <a name="set-up-visual-studio"></a>Visual Studio 'Yu ayarlama
 
-Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için, menüden **Dosya** > **Hesap ayarları** ' nı seçerek Azure AD kullanıcısını Visual Studio 'ya ekleyin ve **Hesap Ekle**' ye tıklayın.
+### <a name="windows"></a>Windows
+Windows için Visual Studio, Azure AD kimlik doğrulamasıyla tümleşiktir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için, menüden **Dosya** > **Hesap ayarları** ' nı seçerek Azure AD kullanıcısını Visual Studio 'ya ekleyin ve **Hesap Ekle**' ye tıklayın.
 
 Azure hizmet kimlik doğrulaması için Azure AD kullanıcısını ayarlamak için, menüden **Araçlar** > **Seçenekler** ' i seçin ve ardından **Azure hizmeti kimlik doğrulama** > **hesabı seçimi**' ni seçin. Eklediğiniz Azure AD kullanıcısını seçip **Tamam**' a tıklayın.
 
+Artık Azure AD kimlik doğrulaması ile SQL veritabanıyla arka uç olarak uygulamanızı geliştirmeye ve hata ayıklamaya hazırsınız.
+
+### <a name="macos"></a>macOS
+
+Mac için Visual Studio Azure AD kimlik doğrulamasıyla tümleştirilmiştir. Ancak, daha sonra kullanacağınız [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) KITAPLıĞı Azure CLI 'dan belirteçleri kullanabilir. Visual Studio 'da geliştirme ve hata ayıklamayı etkinleştirmek için öncelikle yerel makinenize [Azure CLI yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli) gerekir.
+
+Azure CLı yerel makinenize yüklendikten sonra Azure AD kullanıcısını kullanarak aşağıdaki komutla Azure CLı 'da oturum açın:
+
+```bash
+az login --allow-no-subscriptions
+```
 Artık Azure AD kimlik doğrulaması ile SQL veritabanıyla arka uç olarak uygulamanızı geliştirmeye ve hata ayıklamaya hazırsınız.
 
 ## <a name="modify-your-project"></a>Projenizi değiştirme

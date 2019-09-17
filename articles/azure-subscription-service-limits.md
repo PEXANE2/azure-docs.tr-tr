@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68698267"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018503"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -89,8 +89,9 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
   * [Azure Güvenlik Duvarı](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Yük Dengeleyici](#load-balancer)
-  * [Genel IP adresi](#publicip-address)
   * [Ağ Izleyicisi](#network-watcher-limits)
+  * [Genel IP adresi](#publicip-address)
+  * [Özel bağlantı](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Sanal Ağ](#networking-limits)
 * [Notification Hubs](#notification-hubs-limits)
@@ -168,6 +169,9 @@ Aşağıdaki tablo, aksi belirtilmediği takdirde v1, v2, standart ve WAF SKU 'L
 
 #### <a name="network-watcher-limits"></a>Ağ Izleyicisi sınırları
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>Özel bağlantı limitleri
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager sınırları
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

@@ -11,14 +11,14 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984965"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018986"
 ---
-# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamalar ve bilinen sorunlar
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
 Bu makalede, Azure SQL veritabanı yönetilen örneği ve şirket içi SQL Server veritabanı altyapısı arasındaki söz dizimi ve davranış farklılıkları özetlenmektedir ve açıklanmaktadır. Yönetilen örnek dağıtım seçeneği, şirket içi SQL Server veritabanı altyapısı ile yüksek uyumluluk sağlar. SQL Server veritabanı altyapısı özelliklerinin çoğu yönetilen bir örnekte desteklenir.
 
@@ -339,14 +339,14 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 - `ALTER ASSEMBLY`dosyalara başvurulamıyor. Bkz. [alter assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Veritabanı Postası (db_mail)
- - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve dış paylaşımlar ya da Azure Blob depolama, bu yordamda erişilebilir değildir.
+ - `sp_send_dbmail`parametre kullanılarak @file_attachments ekler gönderilemez. Yerel dosya sistemi ve dış paylaşımlar veya Azure Blob depolamaya bu yordamdan erişilemez.
  - `@query` Parametreli ve kimlik doğrulamasıyla ilgili bilinen sorunlara bakın.
  
 ### <a name="dbcc"></a>DBCC
 
 SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde desteklenmez.
 
-- Yalnızca sınırlı sayıda Global `Trace flags` değer desteklenir. Oturum düzeyi `Trace flags` desteklenmiyor. Bkz. [izleme bayrakları](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- Yalnızca sınırlı sayıda genel Izleme bayrağı desteklenir. Oturum düzeyi `Trace flags` desteklenmiyor. Bkz. [izleme bayrakları](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) ve [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) , sınırlı sayıda Global Trace-Flags ile çalışır.
 - Veritabanı `SINGLE_USER` modda ayarlanamadığı için REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST ve REPAIR_REBUILD seçeneklerine sahip [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) kullanılamıyor-bkz. [alter database farkları](#alter-database-statement). Olası veritabanı bozuklukları Azure destek ekibi tarafından işlenir. Yaşıyorsanız veritabanında düzeltilmesi gereken bir veritabanı bozulması varsa Azure desteği 'ne başvurun.
 
@@ -480,7 +480,7 @@ Algılan
 - `.BAK`birden çok yedekleme kümesi içeren dosyalar geri yüklenemez. 
 - `.BAK`birden çok günlük dosyası içeren dosyalar geri yüklenemez.
 - 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya örnek başına 280 dosya aşılacak dosya sayısı bir Genel Amaçlı örneğine geri yüklenemez. 
-- 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine [geri yüklenemez.](sql-database-managed-instance-resource-limits.md)
+- 4 TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine [geri yüklenemez.](sql-database-managed-instance-resource-limits.md)
 Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
  > [!IMPORTANT]
@@ -544,6 +544,16 @@ Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata g
 
 ## <a name="Issues"></a>Bilinen sorunlar
 
+### <a name="missing-validations-in-restore-process"></a>Restore işleminde eksik doğrulamalar
+
+**Güncel** Eyl 2019
+
+`RESTORE`bildirim ve yerleşik nokta geri yükleme, geri yüklenen veritabanında bazı nessecary denetimleri gerçekleştirmez:
+- **DBCC CHECKDB**  -  `DBCC CHECKDB` deyimleri geri yüklenen veritabanında gerçekleştirilemiyor.`RESTORE` Özgün bir veritabanı bozuksa veya Azure Blob depolama alanına kopyalanırken yedekleme dosyası bozuksa, otomatik yedeklemeler alınmaz ve Azure desteği müşteriyle iletişim kuracaktır. 
+- Yerleşik bir zaman noktası geri yükleme işlemi, İş Açısından Kritik örneğinden otomatik yedeklemenin [bellek ıçı OLTP nesnelerini](sql-database-in-memory.md#in-memory-oltp)içermediğini denetlemez. 
+
+**Geçici çözüm**: Yedekleme yapmadan önce kaynak veritabanında yürütdiğinizden `DBCC CHECKDB` `WITH CHECKSUM` ve yönetilen örnek üzerinde geri yüklenelebilecek potansiyel bozulmaları önlemek için yedekleme seçeneğini kullanmaktan emin olun. Kaynak veritabanınızın Genel Amaçlı katmana geri yüklüyorsanız [bellek ıçı OLTP nesneleri](sql-database-in-memory.md#in-memory-oltp) içermediğinden emin olun.
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir
 
 **Güncel** Eyl 2019
@@ -552,19 +562,19 @@ Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Re
 
 **Geçici çözüm**: Resource Governor `ALTER RESOURCE GOVERNOR RECONFIGURE` kullanıyorsanız, örnek başladığında SQL aracısını yürüten SQL Aracısı işinin bir parçası olarak veya SQL Agent işinin bir parçası olarak çalıştırın [](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Güvenli bağlantı (SSL) kullanılarak dış posta sunucularına kimlik doğrulamak yapılamaz
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Güvenli bağlantı (SSL) kullanılarak dış posta sunucularında kimlik doğrulaması yapılamıyor
 
 **Güncel** Ağu 2019
 
 [Güvenli bağlantı (SSL) kullanılarak yapılandırılan](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) veritabanı postası, Azure dışındaki bazı e-posta sunucularında kimlik doğrulaması yapamaz. Bu, yakında çözümlenecek olan güvenlik yapılandırması sorununa neden olur.
 
-**Sorunu** Güvenli bağlantı (SSL) geçici kaldırma, sorun çözülene kadar veritabanı posta yapılandırmasını oluşturur. 
+**Sorunu** Güvenli bağlantı (SSL), sorun çözülene kadar veritabanı posta yapılandırmasından geçici kaldırma. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 
 **Güncel** Ağu 2019
 
-Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler **kaybolmaz** ve gönderici kuyruğunda bulunabilir. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. Diğer veritabanındaki hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri, hedef hizmete ileti iletileri teslim edilmesini durdurur. `DIALOG`
+Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler **kaybolmaz** ve gönderici kuyruğunda bulunabilir. Yönetilen örnekteki sanal çekirdeklerin veya örnek depolama boyutunun herhangi bir değişikliği, `service_broke_guid` [sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki değerin tüm veritabanları için değiştirilmesine neden olur. Diğer veritabanındaki hizmet aracılarına başvuran [BEGIN BEGIN iletişim kutusu](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) deyimleri, hedef hizmete ileti teslim etme işlemini durdurur. `DIALOG`
 
 **Sorunu** Hizmet katmanını güncelleştirmeden önce veritabanları arası Hizmet Aracısı iletişim konuşmaları kullanan tüm etkinlikleri durdurun ve sonra yeniden başlatın. Hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
 
@@ -586,13 +596,13 @@ Aşağıdaki AAD `EXECUTE AS USER` sorumluları `EXECUTE AS LOGIN` kullanılarak
 
 **Güncel** Mar 2019
 
-Bir otomatik yük devretme grubundaki bir veritabanında Işlem çoğaltması etkinleştirilmişse, yönetilen örnek Yöneticisi eski birincil üzerindeki tüm yayınları temizlemeli ve başka bir bölgeye yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırmalıdır. Daha fazla ayrıntı için bkz. [çoğaltma](#replication) .
+Bir otomatik yük devretme grubundaki bir veritabanında Işlem çoğaltması etkinleştirilmişse, yönetilen örnek yöneticisinin eski birincil üzerindeki tüm yayınları temizlemesi ve başka bir bölgeye yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırması gerekir. Daha fazla ayrıntı için bkz. [çoğaltma](#replication) .
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>AAD oturum açmaları ve kullanıcılar araçlar 'da desteklenmez
 
 **Güncel** Ocak 2019
 
-SQL Server Management Studio ve SQL Server Veri Araçları, Azure 'un seçkin Dizin oturumlarını ve kullanıcılarını desteklemez.
+SQL Server Management Studio ve SQL Server Veri Araçları Azure Active Directory oturumlarını ve kullanıcılarını tam olarak desteklemez.
 - SQL Server Veri Araçları şu anda Azure AD Server sorumlularını (oturum açma) ve kullanıcıları (Genel Önizleme) kullanma desteklenmiyor.
 - Azure AD Server sorumluları (oturumlar) ve kullanıcıları (Genel Önizleme) için betik oluşturma SQL Server Management Studio desteklenmez.
 
@@ -612,7 +622,7 @@ Bir veritabanı yönetilen örneğe geri yüklenirken, geri yükleme hizmeti ön
 
 Her Genel Amaçlı yönetilen örnek, Azure Premium disk alanı için ayrılan 35 TB 'a kadar depolama alanı içerir. Her veritabanı dosyası ayrı bir fiziksel diske yerleştirilir. Disk boyutları 128 GB, 256 GB, 512 GB, 1 TB veya 4 TB olabilir. Diskteki kullanılmayan alan ücretlendirilmez, ancak Azure Premium disk boyutlarının toplam toplamı 35 TB 'yi aşamaz. Bazı durumlarda, toplam olarak 8 TB 'lık bir yönetilen örnek, iç parçalanma nedeniyle depolama boyutu 35 TB Azure sınırını aşabilir.
 
-Örneğin, Genel Amaçlı yönetilen bir örnek, 4 TB 'lık bir diske yerleştirilmiş boyutu 1,2 TB olan bir büyük dosyaya sahip olabilir. Ayrıca, her biri ayrı 128 GB disklere yerleştirilmiş 248 dosya 1 GB dosyasına sahip olabilir. Bu örnekte:
+Örneğin, Genel Amaçlı yönetilen bir örnek, 4 TB 'lık bir diske yerleştirilmiş boyutu 1,2 TB olan bir büyük dosyaya sahip olabilir. Ayrıca, her biri ayrı 128 GB disklere yerleştirilmiş 1 GB boyutundaki 248 dosya olabilir. Bu örnekte:
 
 - Ayrılan toplam disk depolama boyutu 1 x 4 TB + 248 x 128 GB = 35 TB 'tır.
 - Örnekteki veritabanları için ayrılan toplam alan 1 x 1,2 TB + 248 x 1 GB = 1,4 TB 'tır.

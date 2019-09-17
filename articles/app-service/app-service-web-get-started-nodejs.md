@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071672"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018488"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma
 
@@ -51,7 +51,7 @@ _index.js_ dosyasını açın ve aşağıdaki satırı bulun:
 const port = process.env.PORT || 1337;
 ```
 
-App Service, process.env.PORT dosyasını uygulamanıza ekleyerek kodun bu değişkenle dinlemesi gereken bağlantı noktasını öğrenmesini sağlar. 
+App Service, **Process. env. Port**ortam değişkenini doldurur. Kodun hangi bağlantı noktasını dinleyeceğini bilmesi için bunu uygulamanızda kullanın.
 
 Bir Terminal penceresinde, örnek Node. js projesinin **kök dizinine** gidin ( _index. js_içeren dizin).
 

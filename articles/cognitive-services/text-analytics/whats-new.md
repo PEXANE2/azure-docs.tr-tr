@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697058"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017768"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
 
-## <a name="sentiment-analysis-v3-public-preview---july-2019"></a>Yaklaşım Analizi v3 genel önizleme-Temmuz 2019
+## <a name="sentiment-analysis-v3-public-preview---september-2019"></a>Yaklaşım Analizi v3 genel Önizleme-Eylül 2019
 
 Yaklaşım Analizi sonraki sürümü artık genel önizlemeye sunuldu ve API 'nin metin kategorisi ve puanlaması için doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar. Ayrıca şunları sağlar:
 
 * Metindeki farklı sentiler için otomatik etiketleme.
 * Bir belge ve tümce düzeyinde yaklaşım Analizi ve çıktısı. 
 
-Ingilizce 'yi destekler ve üç bölgede kullanılabilir: Orta Kanada, Doğu Asya ve Orta ABD. Sonraki sürümlerde eklenecek ek diller ve bölgeler için arama yapın.
+Ingilizce, Japonca `Australia East`ve Basitleştirilmiş Çince 'yi destekler ve şu bölgelerde kullanılabilir:, `Southeast Asia` `North Europe` `Central Canada`, `East US 2` `Central US` `East Asia`,, `East US`,,,, `South Central US` , `UK South`,,ve. `West Europe` `West US 2`
 
 > [!div class="nextstepaction"]
 > [Yaklaşım Analizi v3 hakkında daha fazla bilgi edinin](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

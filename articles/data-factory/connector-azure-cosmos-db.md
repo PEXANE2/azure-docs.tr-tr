@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3082c568b3ce3fa5199c7a7d0d082db36720d293
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 561f383327738c9a2ab29f2907f00ace1eec6def
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233025"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010287"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Cosmos DB'den (SQL API'si) ya da veri kopyalama
 
@@ -31,6 +31,11 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de gelen ve Azure Cosmos DB
 >Bu bağlayıcı yalnızca destek veri gönderip buralardan veri Cosmos DB SQL API kopyalayın. MongoDB API 'SI için, [MongoDB için Azure Cosmos DB API 'sine yönelik bağlayıcıya](connector-azure-cosmos-db-mongodb-api.md)başvurun. Diğer API türleri şu anda desteklenmiyor.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Azure Cosmos DB (SQL API) Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Azure Cosmos DB (SQL API) ' den desteklenen herhangi bir havuz veri deposuna veri kopyalayabilir veya desteklenen herhangi bir kaynak veri deposundan verileri Azure Cosmos DB (SQL API) kopyalayabilirsiniz. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -251,6 +256,9 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
     }
 ]
 ```
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="import-or-export-json-documents"></a>JSON belgelerini içeri veya dışarı aktarma
 

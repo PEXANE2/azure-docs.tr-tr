@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 09/16/2019
 ms.locfileid: "70174671"
 ---
 Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için harika olan yüksek bir bellek-CPU oranı sunar. Bu makalede, bu gruplandırmadaki her bir boyut için sanal CPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkında bilgi sağlanır.
@@ -147,7 +147,7 @@ Mv2 serisi VM 'nin özelliği, hiper Iş parçacığı teknolojisinin Intel®
 
 <sup>1</sup> bu büyük VM 'ler, desteklenen bu konuk işletim sistemlerinden birini gerektirir: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
-<sup>2</sup> Mv2 serisi VM 'ler yalnızca [2. kuşak](/azure/virtual-machines/linux/generation-2) . Linux kullanıyorsanız, SUSE Linux görüntüsünü bulma ve seçme hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
+<sup>2</sup> Mv2 serisi VM 'ler yalnızca 2. kuşak. Linux kullanıyorsanız, SUSE Linux görüntüsünü bulma ve seçme hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
 
 #### <a name="find-a-suse-image"></a>SUSE görüntüsü bulma
 

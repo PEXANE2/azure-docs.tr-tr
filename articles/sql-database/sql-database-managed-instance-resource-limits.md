@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930620"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010198"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
-Bu makalede, Azure SQL veritabanı yönetilen örneği için kaynak sınırlarına genel bir bakış sağlanır ve bu sınırlara bir artış isteme hakkında bilgi sağlanır.
+Bu makalede, Azure SQL veritabanı yönetilen örneği için teknik özelliklere ve kaynak sınırlarına genel bir bakış sağlanır ve bu sınırlara bir artış isteme hakkında bilgi sağlanır.
 
 > [!NOTE]
-> Desteklenen özellikler ve T-SQL deyimlerindeki farklar için bkz. [özellik farklılıkları](sql-database-features.md) ve [t-SQL deyimi desteği](sql-database-managed-instance-transact-sql-information.md).
+> Desteklenen özellikler ve T-SQL deyimlerindeki farklar için bkz. [özellik farklılıkları](sql-database-features.md) ve [t-SQL deyimi desteği](sql-database-managed-instance-transact-sql-information.md). Tek veritabanı ve yönetilen örnekteki hizmet katmanları arasında genel farklıara için bkz. [hizmet katmanı karşılaştırması](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="instance-level-resource-limits"></a>Örnek düzeyi kaynak sınırları
 
@@ -43,11 +43,11 @@ Azure SQL veritabanı yönetilen örneği iki donanım nesile dağıtılabilir: 
 
 > [!IMPORTANT]
 > - 4\. nesil donanım kullanıma alınıyor. 5. nesil donanımında yeni yönetilen örnekler dağıtmanız önerilir.
-> - Şu anda 4. nesil donanım aşağıdaki bölgelerde kullanılabilir: Kuzey Avrupa, Batı Avrupa, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Batı ABD 2, Orta ABD, Kanada Orta, Güney Hindistan, Güneydoğu Asya ve Kore Orta.
+> - Şu anda 4. nesil donanım hala yalnızca aşağıdaki bölgelerde kullanılabilir: Kuzey Avrupa, Batı Avrupa, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Batı ABD 2, Orta ABD, Kanada Orta, Güney Hindistan, Güneydoğu Asya ve Kore Orta.
 
 ### <a name="service-tier-characteristics"></a>Hizmet katmanı özellikleri
 
-Yönetilen örnek iki hizmet katmanına sahiptir: Genel Amaçlı ve İş Açısından Kritik. Bu katmanlar, aşağıdaki tabloda açıklandığı gibi farklı yetenekler sağlar:
+Yönetilen örnek iki hizmet katmanına sahiptir: [Genel amaçlı](sql-database-service-tier-general-purpose.md) ve [iş açısından kritik](sql-database-service-tier-business-critical.md). Bu katmanlar, aşağıdaki tabloda açıklandığı gibi [farklı yetenekler](sql-database-service-tiers-general-purpose-business-critical.md)sağlar:
 
 | **Özelliği** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
@@ -73,6 +73,9 @@ Yönetilen örnek iki hizmet katmanına sahiptir: Genel Amaçlı ve İş Açıs�
 > - Aktarım hızı ve ıOPS ayrıca yönetilen örnekle açıkça sınırlı olmayan sayfa boyutuna bağlıdır.
 > Farklı Azure bölgesinde, otomatik yük devretme grupları kullanarak başka bir okunabilir çoğaltma oluşturabilirsiniz.
 
+> [!NOTE]
+> [Bu makaledeki yönetilen örnek havuzlardaki kaynak limitleri](sql-database-instance-pools.md#instance-pools-resource-limitations)hakkında daha fazla bilgi bulabilirsiniz.
+
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
 Yönetilen örnekler yalnızca [desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)oluşturulabilir. Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için, [Azure Portal aracılığıyla bir destek isteği gönderebilirsiniz](#obtaining-a-larger-quota-for-sql-managed-instance).
@@ -93,7 +96,7 @@ Yönetilen örnek şu anda yalnızca aşağıdaki abonelik türlerinde dağıtı
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. Yönetilen örnek, bir tür abonelik türüne bağlı olarak Azure bölgesi başına iki varsayılan sınıra sahiptir:
 
 - **Alt ağ sınırı**: Yönetilen örneklerin tek bir bölgede dağıtıldığı en fazla alt ağ sayısı.
-- **sanal çekirdek sınırı**: Tek bir bölgedeki tüm örneklerde dağıtılabilecek maksimum sanal çekirdek sayısı.
+- **sanal çekirdek sınırı**: Tek bir bölgedeki tüm örneklerde dağıtılabilecek maksimum sanal çekirdek sayısı. Toplam örnek sayısı, vCore sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
 > Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla yönetilen örneğe ihtiyacınız varsa Azure portal özel bir [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde yeni yönetilen örnekler oluşturabilirsiniz.

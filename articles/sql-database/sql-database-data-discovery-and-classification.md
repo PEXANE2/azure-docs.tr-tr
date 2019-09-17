@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000555"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009987"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması
 
@@ -144,8 +144,11 @@ Sınıflandırmaları programlı bir şekilde yönetmek için REST API 'Lerini d
 
 - [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) -belirli bir sütunun duyarlılık etiketini oluşturur veya güncelleştirir
 - [Sil](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -belirli bir sütunun duyarlılık etiketini siler
+- [Öneriyi devre dışı bırak](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) -belirli bir sütunda duyarlılık önerilerini devre dışı bırakır
+- [Öneriyi etkinleştir](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) -belirli bir sütunda duyarlılık önerilerini etkinleştirir (öneriler varsayılan olarak tüm sütunlarda etkindir)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -belirli bir sütunun duyarlılık etiketini alır
 - [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -belirli bir veritabanının geçerli duyarlılık etiketlerini alır
+
 - [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -belirli bir veritabanının önerilen duyarlılık etiketlerini alır
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Azure PowerShell kullanarak veri bulmayı ve sınıflandırmayı yönetme

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933926"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010237"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -59,7 +59,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 **Yeniden çalışma sonrasında temizle** | İkincil Azure 'a yük devreder ve sonra birincil bölgeye geri döndüğünüzde, Site Recovery ikincil bölgedeki makineleri otomatik olarak temizler. VM 'leri ve NIC 'leri el ile silmeniz gerekmez.
 **Sınama yük devretmesi IP adreslerini korur** | Artık bir olağanüstü durum kurtarma ayrıntısı sırasında kaynak VM 'nin IP adresini koruyabilir ve yük devretme testi için bir statik IP adresi seçebilirsiniz.
 
-## <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fiziksel sunucu olağanüstü durum kurtarma
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fiziksel sunucu olağanüstü durum kurtarma
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
@@ -67,13 +67,13 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 --- | ---
 Yeni işlem sunucusu uyarıları | Yeni işlem sunucusu uyarıları ekledik. [Daha fazla bilgi edinin](vmware-physical-azure-monitor-process-server.md). 
 
-## <a name="hyper-v-disaster-recovery"></a>Hyper-V olağanüstü durum kurtarma
+### <a name="hyper-v-disaster-recovery"></a>Hyper-V olağanüstü durum kurtarma
 
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 **Özelliği** | **Ayrıntılar**
 --- | ---
-Depolama hesabı | Site Recovery artık rol tabanlı erişim denetimi (RBAC) etkin olan bir depolama hesabı kullanımını desteklemektedir. Depolama hesapları için erişim denetimi hakkında [daha fazla bilgi edinin](../storage/common/storage-account-manage.md#access-control) . 
+Depolama hesabı | Site Recovery artık Hyper-V için Azure olağanüstü durum kurtarma için Güvenlik Duvarı etkinleştirilmiş depolama hesaplarının kullanımını desteklemektedir.  Güvenlik Duvarı etkinleştirilmiş depolama hesaplarını hedef hesap olarak veya önbellek depolaması için seçebilirsiniz. Güvenlik Duvarı etkinleştirilmiş hesabı kullanıyorsanız, güvenilen Microsoft hizmetlerine izin verme seçeneğini etkinleştirdiğinizden emin olun.
 
 
 ## <a name="updates-august-2019"></a>Güncelleştirmeler (Ağustos 2019)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873344"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008838"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -132,8 +132,8 @@ Blok blobları | Hayır | Hayır
 Bekleyen şifreleme (SSE)| Evet | Evet
 Premium depolama | Evet | Evet
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır
-Hedef depolama/önbellek depolama hesabında yapılandırılan sanal ağlar için Azure Storage güvenlik duvarları (çoğaltma verilerini depolamak için kullanılır) | Hayır | Hayır
-Depolama hesabını değiştirme | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Olağanüstü durum kurtarmayı değiştirme, devre dışı bırakma ve yeniden etkinleştirme. | Hayır
+Güvenlik Duvarı etkin Azure depolama hesapları | Hayır  | Evet. Hedef depolama ve önbellek için.
+Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | Hayır
 
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: e154b830df6b49855414563be8c740bfe513c85a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967884"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018258"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway SSL ilkesi sürümlerini ve şifre paketlerini yapılandırma
 
@@ -116,13 +116,7 @@ Aşağıdaki örnek, bir uygulama ağ geçidinde özel bir SSL ilkesi ayarlıyor
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> Özel bir SSL ilkesi yapılandırılırken, aşağıdaki listeden en az bir şifre paketinin seçilmesi gerekir. Application Gateway, arka uç yönetimi için RSA SHA256 şifre paketlerini kullanır.
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-> * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_256_CBC_SHA256
-> * TLS_RSA_WITH_AES_128_CBC_SHA256
+> Özel bir SSL ilkesi yapılandırılırken TLS_RSA_WITH_AES_256_CBC_SHA256 seçilmelidir. Application Gateway, arka uç yönetimi için bu şifre paketini kullanır. Bunu diğer herhangi bir paket ile birlikte kullanabilirsiniz, ancak bunun de seçilmesi gerekir. 
 
 ```powershell
 # get an application gateway resource

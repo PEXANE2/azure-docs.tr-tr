@@ -13,18 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: orspodek
-ms.openlocfilehash: a7ac0bdc2bd5eed802f6959a628dee4c8141dbd1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5cb08ddafe2075ae27ced6d70894696025df0a86
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720795"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010262"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama
 
 Bu makalede, [Azure Veri Gezgini](../data-explorer/data-explorer-overview.md)veri kopyalamak Için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
+
+Bu Azure Veri Gezgini Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Arama etkinliği](control-flow-lookup-activity.md)
 
 Desteklenen herhangi bir kaynak veri deposundan Azure Veri Gezgini veri kopyalayabilirsiniz. Ayrıca, Azure Veri Gezgini verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md) tablo.
 
@@ -56,7 +61,7 @@ Azure Veri Gezgini Bağlayıcısı hizmet sorumlusu kimlik doğrulamasını kull
     - Uygulama anahtarı
     - Kiracı Kimliği
 
-2. Azure Veri Gezgini 'de hizmet sorumlusu uygun iznini verin. Roller ve izinler hakkında ayrıntılı bilgi ve izinleri yönetmeye yönelik izlenecek yol ile [Azure Veri Gezgini veritabanı Izinlerini yönetme](../data-explorer/manage-database-permissions.md) bölümüne bakın. Genel olarak, şunları yapmanız gerekir
+2. Azure Veri Gezgini 'de hizmet sorumlusu uygun iznini verin. Rol ve izinlerle ilgili ayrıntılı bilgilerle [Azure Veri Gezgini veritabanı Izinlerini yönetme](../data-explorer/manage-database-permissions.md) ve izinleri yönetme konusunda adım adım yönergeler için bkz. Genel olarak, şunları yapmanız gerekir
 
     - **Kaynak olarak**, veritabanınıza en az **veritabanı Görüntüleyicisi** rolü verin.
     - **Havuz olarak**, veritabanınıza en az **veritabanı** alma rolü verin.
@@ -134,14 +139,14 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="azure-data-explorer-as-source"></a>Kaynak olarak Azure Veri Gezgini
 
-Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağındaki **Type** özelliğini **AzureDataExplorerSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağındaki **Type** özelliğini **AzureDataExplorerSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının **Type** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSource** | Evet |
 | query | Bir [KQL biçiminde](/azure/kusto/query/)verilen salt okunurdur bir istek. Özel KQL sorgusunu başvuru olarak kullanın. | Evet |
 | queryTimeout | Sorgu isteğinin zaman aşımına uğramadan önce beklenecek bekleme süresi. Varsayılan değer 10 dakikadır (00:10:00); izin verilen en büyük değer 1 saattir (01:00:00). | Hayır |
-| Kesilmesi | Döndürülen sonuç kümesinin kesilme edilip edilmeyeceğini belirtir. Varsayılan olarak, sonuç 500.000 kayıt veya 64MB sonra kesilir. Etkinliğin uygun bir davranışı için kesme kesinlikle önerilir. |Hayır |
+| Kesilmesi | Döndürülen sonuç kümesinin kesilme edilip edilmeyeceğini belirtir. Varsayılan olarak, sonuç 500.000 kayıt veya 64 MB 'tan sonra kesilir. Etkinliğin uygun bir davranışı için kesme kesinlikle önerilir. |Hayır |
 
 >[!NOTE]
 >Azure Veri Gezgini kaynağı varsayılan olarak 500.000 kayıt veya 64 MB boyutunda bir boyut sınırına sahiptir. Tüm kayıtları kesme olmadan almak için sorgunuzun başlangıcında belirtebilirsiniz `set notruncation;` . Daha ayrıntılı bilgi için [sorgu sınırlarına](https://docs.microsoft.com/azure/kusto/concepts/querylimits) bakın.
@@ -219,6 +224,10 @@ Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tü
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

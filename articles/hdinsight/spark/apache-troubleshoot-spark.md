@@ -4,15 +4,16 @@ description: Apache Spark ve Azure HDInsight ile çalışma hakkında sık sorul
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049592"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018298"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark, Azure HDInsight'ı kullanarak sorun giderme
 
@@ -26,49 +27,49 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama `OutofMemoryError` ö
 
 1. **Spark2** > **configs**sayfasına gidin.
 
-    ![Yapılandırmaları sekmesini seçin](./media/apache-troubleshoot-spark/update-config-2.png)
+    ![Yapılandırmaları sekmesini seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve genişletin.
 
 1. Gibi ayarlamak için gereken değer ayarı Ara **spark.executor.memory**. Bu durumda, **9728dk** değeri çok yüksektir.
 
-    ![Özel spark Varsayılanları seçin](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![Özel spark Varsayılanları seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. Önerilen ayar için değer ayarlayın. Değer **2048m** için bu ayar önerilir.
 
 1. Değer kaydedin ve ardından yapılandırmayı kaydedin. **Kaydet**’i seçin.
 
-    ![Değeri değiştirmek için 2048 m](./media/apache-troubleshoot-spark/update-config-6a.png)
+    ![Değeri değiştirmek için 2048 m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
     Yapılandırma değişiklikleri hakkında bir not yazın ve ardından **Kaydet**.
 
-    ![Yaptığınız değişiklikleri hakkında bir not girin](./media/apache-troubleshoot-spark/update-config-6c.png)
+    ![Yaptığınız değişiklikleri hakkında bir not girin](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
     Tüm yapılandırmaları dikkat etmeniz gerekiyorsa size bildirilir. Öğeleri not edin ve ardından **yine de devam**.
 
-    ![Select yine de devam](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Select yine de devam](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
 1. Bir yapılandırma kaydedildiği zaman hizmeti yeniden başlatmanız istenir. Seçin **yeniden**.
 
-    ![Yeniden başlatma seçin](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![Yeniden başlatma seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     Yeniden başlatma işlemini onaylayın.
 
-    ![Tüm yeniden Onayla seçeneğini belirleyin](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![Tüm yeniden Onayla seçeneğini belirleyin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
     Çalışan işlemler gözden geçirebilirsiniz.
 
-    ![Çalışan işlemleri gözden geçirin](./media/apache-troubleshoot-spark/update-config-7c.png)
+    ![Çalışan işlemleri gözden geçirin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
 1. Yapılandırmaları ekleyebilirsiniz. Listeden yapılandırmaları seçin **özel spark2 varsayılanları**ve ardından **Özellik Ekle**.
 
-    ![Özellik Ekle'yi seçin](./media/apache-troubleshoot-spark/update-config-8.png)
+    ![Özellik Ekle'yi seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Yeni bir özellik tanımlayın. Veri türü gibi belirli ayarlar için bir iletişim kutusunu kullanarak, tek bir özellik tanımlayabilirsiniz. Veya, her satırda bir tanım'ı kullanarak birden çok özellik tanımlayabilirsiniz.
 
     Bu örnekte, **spark.driver.memory** özellik değeriyle tanımlanan **4g**.
 
-    ![Yeni bir özellik tanımlayın](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![Yeni bir özellik tanımlayın](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
 1. Yapılandırmayı kaydetmek ve 6 ve 7. adımda açıklandığı hizmeti yeniden başlatın.
 
