@@ -119,16 +119,16 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Logic Apps istek üst bilgisi alanı | Value | Type | Açıklama |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
-   | **x-MS-Content-Length** | <*içerik uzunluğu*> | Integer | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
+   | **x-ms-transfer-mode** | öbekli | String | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
+   | **x-MS-content-length** | <*içerik uzunluğu*> | Integer | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
    ||||
 
 2. Uç nokta, "200" başarı durum kodu ve bu isteğe bağlı bilgiler ile yanıt verir:
 
    | Uç nokta yanıt üst bilgisi alanı | Type | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-öbek boyutu** | Integer | Hayır | Önerilen öbek boyutu (bayt) |
-   | **Location** | Dize | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
+   | **x-ms-chunk-size** | Integer | Hayır | Önerilen öbek boyutu (bayt) |
+   | **Location** | String | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
 3. Mantıksal uygulamanız, bu bilgileri içeren, izleme HTTP PATCH iletileri oluşturur ve gönderir:
