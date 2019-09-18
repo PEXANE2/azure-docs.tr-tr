@@ -95,8 +95,8 @@ Azure Uygulama Hizmetleri için aşağıdakileri yapın:
 
 Anahtar `JAVA_OPTS`Deeri`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0-BETA.jar`
 
-Java aracısının en son sürümü için buradaki [](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)yayınları kontrol edin. 
+Java aracısının en son sürümü için [buradaki](https://github.com/Microsoft/ApplicationInsights-Java/releases
+) yayınları kontrol edin. 
 
 Aracı, projenizde D:/Home/site/Wwwroot/dizinde bitecek bir kaynak olarak paketlenmesi gerekir. Aracının doğru App Service dizininde olduğunu, **geliştirme araçları** > **Gelişmiş Araçlar** > **hata ayıklama konsolu** ' na giderek ve site dizininin içeriğini inceleyerek emin olabilirsiniz.    
 
