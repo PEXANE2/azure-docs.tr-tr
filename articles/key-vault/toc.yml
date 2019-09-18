@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: Gizli dizi ayarlama ve alma - Node.js
       href: quick-create-node.md
-    - name: Gizli dizi ayarlama ve alma - Resource Manager Şablonu
+    - name: Gizli dizi ayarlama ve alma - şablon
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Öğreticiler

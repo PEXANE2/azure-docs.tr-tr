@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: Sunucu günlükleri
               href: concepts-server-logs.md
+            - name: Denetim günlükleri
+              href: concepts-audit.md
             - name: Sorgu Deposu
               items:
                 - name: Sorgu Deposu
