@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C - bir Azure aboneliğine bağlama | Microsoft Docs
+title: Azure aboneliğini bağlama-Azure Active Directory B2C | Microsoft Docs
 description: Bir Azure aboneliği ile Azure AD B2C kiracısı için faturalama için adım adım kılavuzu.
 services: active-directory-b2c
 author: mmacy
@@ -10,17 +10,17 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cc6c8b4947f8c5ebeb27be2dc82f323f84a6902
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 892f47b6acf22c62ce2290e2ede9d0bcd21eefc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835434"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065905"
 ---
-# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Bir Azure Active Directory B2C kiracıma bir Azure aboneliği
+# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure aboneliğini Azure Active Directory B2C kiracısına bağlama
 
 > [!IMPORTANT]
-> En son Azure Active Directory (Azure AD) B2C için fiyatlandırma ve faturalama kullanımı hakkında bilgi için [Azure AD B2C fiyatlandırma](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Azure Active Directory B2C (Azure AD B2C) için kullanım faturalaması ve fiyatlandırmayla ilgili en son bilgiler için bkz. [Azure AD B2C fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 Azure AD B2C için kullanım ücretleri, bir Azure aboneliğine faturalandırılır. Azure AD B2C kiracısı oluşturulduğunda, Kiracı Yöneticisi açıkça Azure AD B2C kiracısı bir Azure aboneliğine bağlamak gerekir. Bu makalede, nasıl gösterir.
 
@@ -29,7 +29,7 @@ Azure AD B2C için kullanım ücretleri, bir Azure aboneliğine faturalandırıl
 
 Abonelik bağlantısını içinde ' % s'hedef Azure aboneliğinin bir Azure AD B2C "kaynak" oluşturarak elde edilir. Diğer Azure kaynakları (örneğin, VM'ler, veri depolama için LogicApps) ile birlikte tek bir Azure aboneliği içindeki birçok Azure AD B2C "Kaynaklar" oluşturulabilir. Aboneliğin ilişkili olduğu Azure AD kiracısı giderek Abonelikteki kaynakların tümünü görebilirsiniz.
 
-Azure bulut çözümü sağlayıcıları (CSP) abonelikleri Azure AD B2C'de desteklenir. Azure AD B2C için ve tüm Azure kaynakları için API'leri veya Azure portalını kullanarak işlevselliği kullanılabilir. CSP'ye abonelik yöneticileri bağlantı taşıyın ve tüm Azure kaynakları için yaptı aynı şekilde Azure AD B2C ile ilişkileri silin. Rol tabanlı erişim denetimi kullanarak yönetim Azure AD B2C Azure AD B2C kiracısı ile bir Azure CSP aboneliği arasındaki ilişkilendirmeyi etkilenmez. Rol tabanlı erişim denetimi, Kiracı tabanlı rolleri, abonelik tabanlı roller kullanılarak elde edilir.
+Azure bulut çözümü sağlayıcıları (CSP) abonelikleri Azure AD B2C desteklenir. İşlevsellik, Azure AD B2C ve tüm Azure kaynakları için API 'Ler veya Azure portal kullanılarak kullanılabilir. CSP aboneliği yöneticileri, Azure AD B2C ilişkilerini tüm Azure kaynakları için yapıldığı şekilde bağlayabilir, taşıyabilir ve silebilir. Rol tabanlı erişim denetimi kullanan Azure AD B2C yönetimi, Azure AD B2C kiracısı ile Azure CSP aboneliği arasındaki ilişkilendirmeden etkilenmez. Rol tabanlı erişim denetimi, abonelik tabanlı roller değil, kiracı temel rolleri kullanılarak elde edilir.
 
 Devam etmek için geçerli bir Azure aboneliği gereklidir.
 
@@ -45,9 +45,9 @@ Azure aboneliğinizi gösteren Azure AD kiracısına gidin. Açık [Azure portal
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Azure Market'te Azure AD B2C'yi bulun
 
-Tıklayın **kaynak Oluştur** düğmesi. İçinde **markette Ara** alanına `Active Directory B2C`.
+Tıklayın **kaynak Oluştur** düğmesi. Market 'te **Ara** alanına girin `Active Directory B2C`.
 
-![Market araması, 'Active Directory B2C' ile portalı ekran görüntüsü](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Market aramasında ' Active Directory B2C ' ile portal ekran görüntüsü](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 Sonuç listesinden **Azure AD B2C**.
 
@@ -67,7 +67,7 @@ Abonelik için Yöneticisi olduğunuz bir etkin Azure aboneliği seçin.
 
 Bir kaynak grubu ve kaynak grubu konumu seçin. Seçimin Burada, Azure AD B2C Kiracı konumu, performans veya faturalama durumu herhangi bir etkisi yoktur.
 
-![Azure portalında Azure AD B2C kaynağı oluşturma sayfası](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Azure portal Azure AD B2C kaynak oluşturma sayfası](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Azure AD B2C kiracısı kaynaklarınızı yönetin
 
@@ -80,15 +80,15 @@ Bu kaynak için kullanabilirsiniz:
 - Destek talebi gönderme
 - Azure AD B2C Kiracı kaynak başka bir Azure aboneliğine veya başka bir kaynak grubuna taşıyın.
 
-![Azure portalındaki B2C kaynağı Ayarları sayfası](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
+![Azure portal B2C kaynak ayarları sayfası](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
 
-## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Abonelik faturalama Azure AD B2C kiracısını değiştirme
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C kiracı faturalandırma aboneliğini değiştirin
 
-Kaynak ve hedef abonelikler aynı Azure Active Directory kiracısı içinde varsa, azure AD B2C kiracıları başka bir aboneliğe taşınabilir.
+Kaynak ve hedef abonelikler aynı Azure Active Directory kiracısında mevcutsa Azure AD B2C kiracılar başka bir aboneliğe taşınabilir.
 
-Azure AD B2C kiracınızı gibi Azure kaynaklarını başka bir aboneliğe taşıma hakkında bilgi edinmek için [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
+Azure AD B2C kiracınız gibi Azure kaynaklarını başka bir aboneliğe taşımayı öğrenmek için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
 
-Taşıma başlatmadan önce bu tür bir taşıma için gereksinimleri ve sınırlamaları tam olarak anlamak için tüm makalesini okuduğunuzdan emin olun. Kaynakları taşıma için yönergeler ek olarak, ön taşıma denetim listesi ve taşıma işlemini doğrulamak nasıl gibi önemli bilgiler içerir.
+Taşımayı başlatmadan önce, böyle bir taşımanın sınırlamalarını ve gereksinimlerini tam olarak anlamak için makalenin tamamını okuduğunuzdan emin olun. Kaynak taşıma yönergelerine ek olarak, bir taşıma öncesi denetim listesi ve taşıma işleminin nasıl doğrulanacağı gibi kritik bilgileri de içerir.
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 

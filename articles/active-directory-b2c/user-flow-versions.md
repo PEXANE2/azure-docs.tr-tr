@@ -1,6 +1,6 @@
 ---
-title: Kullanıcı akışı sürümlerinde Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C'de kullanılabilir olan kullanıcı Akışları'nın sürümleri hakkında bilgi edinin.
+title: Azure Active Directory B2C 'daki Kullanıcı akışı sürümleri | Microsoft Docs
+description: Azure Active Directory B2C ' de kullanılabilen Kullanıcı akışlarının sürümleri hakkında bilgi edinin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,38 +10,38 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7b3ce6a4e72b90c6fd642b92d4a92eb02f4c92c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511933"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063190"
 ---
-# <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanıcı akışı sürümlerinde
+# <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'daki Kullanıcı akışı sürümleri
 
 >[!IMPORTANT]
-> Makalede listelenen herhangi bir kullanıcı akışı olarak tanımlanan sürece genel Önizleme aşamasında olduğu kabul edilir **önerilen**. Yalnızca, üretim uygulamaları için önerilen kullanıcı akışları kullanmanız gerekir.
+> Makalede listelenen herhangi bir Kullanıcı akışı, **Önerilen**şekilde tanımlanmadığı sürece genel önizlemede olduğu kabul edilir. Üretim uygulamalarınız için yalnızca önerilen Kullanıcı akışlarını kullanmanız gerekir.
 
-Azure Active Directory (Azure AD) B2C kullanıcı akışlarında ortak kümesi yardımcı [ilkeleri](active-directory-b2c-reference-policies.md) müşteri kimlik deneyimi tam olarak açıklanmaktadır. Bu deneyimler, kaydolma, oturum açma parolasını sıfırlama veya profil düzenleme içerir. Azure AD B2C'de önerilen kullanıcı akışları hem Önizleme kullanıcı akışları koleksiyonundan seçebilirsiniz. 
+Azure Active Directory B2C (Azure AD B2C) Kullanıcı akışları, müşteri kimlik deneyimlerini tam olarak tanımlayan ortak [ilkeleri](active-directory-b2c-reference-policies.md) ayarlamanıza yardımcı olur. Bu deneyimlere kaydolma, oturum açma, parola sıfırlama veya profil düzenlemesi dahildir. Azure AD B2C, hem önerilen Kullanıcı akışlarının bir koleksiyonundan seçim yapabilir hem de Kullanıcı akışlarını önizleyebilirsiniz.
 
-Yeni kullanıcı akışları yeni sürümler olarak eklenir. Kullanıcı akışları kararlı haline geldiğinden, bunlar kullanmak için önerilen. Kullanıcı akışları olarak işaretlenmiş **önerilen** varsa bunlar baştan sona test. Kullanıcı akışları önerildiği şekilde işaretlenmiş kadar Önizleme'de kabul edilir. Herhangi bir üretim uygulaması için önerilen kullanıcı akışı kullanın, ancak uygun olduğunda yeni işlevselliğini test etmek için diğer sürümlerden seçin. Önerilen kullanıcı Akışları'nın eski sürümlerini kullanmamalısınız.
+Yeni Kullanıcı akışları yeni sürümler olarak eklenir. Kullanıcı akışları kararlı hale geldiğinde kullanım için tavsiye edilir. Kullanıcı akışları, tamamen test edilmiş olmaları durumunda **Önerilen** olarak işaretlenir. Kullanıcı akışları, önerilen olarak işaretlenene kadar önizleme olarak değerlendirilir. Herhangi bir üretim uygulaması için önerilen bir Kullanıcı akışı kullanın, ancak kullanılabilir hale geldiğinde yeni işlevselliği test etmek için diğer sürümlerden birini seçin. Önerilen Kullanıcı akışlarının eski sürümlerini kullanmamanız gerekir.
 
 ## <a name="v1"></a>V1
 
 | Kullanıcı akışı | Önerilen | Açıklama |
 | --------- | ----------- | ----------- |
-| Parola sıfırlama | Evet | Bir kullanıcının e-postasına doğruladıktan sonra yeni bir parola seçmenizi sağlar. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Parola karmaşıklık gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Profil düzenleme | Evet | Kullanıcı özniteliklerinin yapılandırmak bir kullanıcı etkinleştirir. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
-| Kaynak sahibi | Hayır | Doğrudan yerel uygulamaları (tarayıcı gerekli) oturum açmak bir yerel hesabı kullanıcıyla sağlar. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li></ul> |
-| Oturum aç | Hayır | Bir kullanıcı, hesabında oturum açmak etkinleştirir. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>Blok oturum açma</li><li>Parola sıfırlama zorla</li><li>(KMSI) içinde Oturumumu açık tut</ul><br>Bu kullanıcı akışını kullanıcı arabirimiyle özelleştiremezsiniz. |
-| Kaydolma | Hayır | Kullanıcının bir hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklık gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Kaydolma ve oturum açma | Evet | Bir kullanıcı, hesabında oturum açın veya hesap oluşturmak etkinleştirir. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklık gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul>|
+| Parola sıfırlama | Evet | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Parola karmaşıklığı gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Profil düzenleme | Evet | Kullanıcının kullanıcı özniteliklerini yapılandırmasına olanak sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li></ul> |
+| Kaynak sahibi | Hayır | Yerel bir hesaba sahip olan bir kullanıcının doğrudan yerel uygulamalarda oturum açmasını sağlar (tarayıcı gerekmez). Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li></ul> |
+| Oturum aç | Hayır | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>Oturum açmayı engelle</li><li>Parola sıfırlamayı zorla</li><li>Oturumumu Açık tut (KMSı)</ul><br>Kullanıcı arabirimini bu kullanıcı akışıyla özelleştiremezsiniz. |
+| Kaydolun | Hayır | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklığı gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Kaydolma ve oturum açma | Evet | Kullanıcının hesabı oluşturmasını veya hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Parola karmaşıklığı gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul>|
 
 ## <a name="v2"></a>V2
 
 | Kullanıcı akışı | Önerilen | Açıklama |
 | --------- | ----------- | ----------- |
-| V2 parola sıfırlama | Hayır | Bir kullanıcının e-postasına doğruladıktan sonra yeni bir parola seçmenizi sağlar. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Yaş geçidi](basic-age-gating.md)</li><li>[Parola karmaşıklık gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| V2'de oturum açın | Hayır | Bir kullanıcı, hesabında oturum açmak etkinleştirir. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş geçidi](basic-age-gating.md)</li><li>Oturum açma sayfasını özelleştirme</li></ul> |
-| V2 ' oturum | Hayır | Kullanıcının bir hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş geçidi](basic-age-gating.md)</li><li>[Parola karmaşıklık gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| Kaydolma ve oturum açma v2'de | Hayır | Hesap oluşturmak ya da kendi hesabında oturum açmasına olanak tanır. Bu kullanıcı akışını kullanarak, aşağıdakileri yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Yaş geçidi](basic-age-gating.md)</li><li>[Parola karmaşıklık gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Parola sıfırlama v2 | Hayır | Kullanıcının e-postalarını doğruladıktan sonra yeni bir parola seçmesini sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Belirteç uyumluluk ayarları</li><li>[Yaş aşımları](basic-age-gating.md)</li><li>[parola karmaşıklığı gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Oturum açma v2 | Hayır | Kullanıcının hesabında oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş aşımları](basic-age-gating.md)</li><li>Oturum açma sayfası özelleştirmesi</li></ul> |
+| Kaydolma V2 | Hayır | Kullanıcının hesap oluşturmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Belirteç ömrü](active-directory-b2c-reference-tokens.md)</li><li>Belirteç uyumluluk ayarları</li><li>Oturum davranışı</li><li>[Yaş aşımları](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Kaydolun ve oturum açın v2 | Hayır | Kullanıcının hesabında hesap oluşturmasını veya oturum açmasını sağlar. Bu kullanıcı akışını kullanarak şunları yapılandırabilirsiniz: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Yaş aşımları](basic-age-gating.md)</li><li>[Parola karmaşıklığı gereksinimleri](active-directory-b2c-reference-password-complexity.md)</li></ul> |

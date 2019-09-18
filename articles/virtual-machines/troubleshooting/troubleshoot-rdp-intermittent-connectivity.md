@@ -4,7 +4,7 @@ description: Azure VM 'de Uzak Masaüstü bağlantısı ile ilgili sık gerçekl
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 16322b2cca4875f1ace89e29752608b95fe568ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: be563e39ed1bfa405830999a96d8630b6f8254bb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103449"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057962"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 'de Uzak Masaüstü bağlantısı genellikle kesiliyor
 
@@ -166,7 +166,7 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 18. VM 'yi yeniden başlatın ve RDP kullanarak bu sunucuya bağlanmayı yeniden deneyin.
 
 ## <a name="need-help"></a>Yardım mı gerekiyor? 
-Desteğe başvurun. Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+Desteğe başvurun. Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 
 

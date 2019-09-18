@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 13eedeb66d826d212b814fac321f920e78758cb8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346761"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063730"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C, kendi Restsize hizmeti için destek sağlar. Azure AD B2C, verileri bir giriş talep koleksiyonundaki yeniden takip eden hizmete gönderir ve verileri bir çıkış talep koleksiyonunda geri alır. Yeniden hizmet tümleştirmesiyle şunları yapabilirsiniz:
+Azure Active Directory B2C (Azure AD B2C), kendi Reststeğiniz hizmetiniz için destek sağlar. Azure AD B2C, verileri bir giriş talep koleksiyonundaki yeniden takip eden hizmete gönderir ve verileri bir çıkış talep koleksiyonunda geri alır. Yeniden hizmet tümleştirmesiyle şunları yapabilirsiniz:
 
 - **Kullanıcı giriş verilerini doğrulama** -hatalı oluşturulmuş verilerin Azure AD B2C kalıcı olmasını önler. Kullanıcının değeri geçerli değilse, yeniden deneme hizmetiniz, kullanıcıdan bir giriş sağlamasını bildiren bir hata mesajı döndürür. Örneğin, Kullanıcı tarafından girilen e-posta adresinin müşterinizin veritabanında mevcut olduğunu doğrulayabilirsiniz.
 - **Giriş taleplerinin üzerine yaz** -giriş taleplerdeki değerleri yeniden biçimlendirmenizi sağlar. Örneğin, bir Kullanıcı ilk adı küçük harfle veya tüm büyük harflerde girerse, adı yalnızca ilk harfi büyük harfle biçimlendirebilirsiniz.
@@ -43,12 +43,12 @@ Aşağıdaki örnek, bir Restsize teknik profil göstermektedir:
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-**Inputclaim** öğesi REST API göndermek için talepler listesi içerir. Ayrıca, talebin adını REST API tanımlanan adla eşleyebilirsiniz. Aşağıdaki örnekte, ilkeniz ve REST API arasındaki eşleme gösterilmektedir. REST API  , **Soyadı** , soyadı olarak gönderilirken **adı**olarak **gönderilir.** **E-posta** talebi olduğu gibi ayarlanır.
+**Inputclaim** öğesi REST API göndermek için talepler listesi içerir. Ayrıca, talebin adını REST API tanımlanan adla eşleyebilirsiniz. Aşağıdaki örnekte, ilkeniz ve REST API arasındaki eşleme gösterilmektedir. REST API **,** **Soyadı** , **Soyadı olarak gönderilirken** **adı**olarak gönderilir. **E-posta** talebi olduğu gibi ayarlanır.
 
 ```XML
 <InputClaims>
@@ -70,7 +70,7 @@ Aşağıdaki örnek, REST API tarafından döndürülen talebi gösterir:
 
 - **Loyaltynumber** talep adıyla eşlenen **membershipID** talebi.
 
-Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de döndürür: 
+Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de döndürür:
 
 - Varsayılan değeri olarak `true`ayarlanmış **Loyaltynumberisnew** talebi.
 
@@ -85,11 +85,11 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ServiceUrl | Evet | REST API uç noktasının URL 'SI. | 
-| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None`, `Basic`, veya `ClientCertificate`. `None` Değer REST API anonim olmadığını gösterir. `Basic` Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate` (Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca Azure AD B2C gibi uygun sertifikalara sahip hizmetler hizmetinize erişebilir. | 
-| SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`, veya `QueryString`. `Body` Değer, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form` Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header` Değer, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString` Değer, istek sorgu dizesinde gönderilen giriş talebinde bulunur. | 
-| ClaimsFormat | Hayır | Çıkış taleplerinin biçimini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`, veya `QueryString`. `Body` Değer, JSON biçiminde istek gövdesinde gönderilen çıkış talebinde bulunur. `Form` Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen çıkış talebinde bulunur. `Header` Değer, istek üstbilgisinde gönderilen çıkış talebinde bulunur. `QueryString` Değer, istek sorgu dizesinde gönderilen çıkış talebinde bulunur. | 
-| DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. Hata iletisi döndüren bölümüne bakın. | 
+| serviceUrl | Evet | REST API uç noktasının URL 'SI. |
+| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None`, `Basic`, veya `ClientCertificate`. `None` Değer REST API anonim olmadığını gösterir. `Basic` Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate` (Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca Azure AD B2C gibi uygun sertifikalara sahip hizmetler hizmetinize erişebilir. |
+| SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`, veya `QueryString`. `Body` Değer, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form` Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header` Değer, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString` Değer, istek sorgu dizesinde gönderilen giriş talebinde bulunur. |
+| ClaimsFormat | Hayır | Çıkış taleplerinin biçimini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`, veya `QueryString`. `Body` Değer, JSON biçiminde istek gövdesinde gönderilen çıkış talebinde bulunur. `Form` Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen çıkış talebinde bulunur. `Header` Değer, istek üstbilgisinde gönderilen çıkış talebinde bulunur. `QueryString` Değer, istek sorgu dizesinde gönderilen çıkış talebinde bulunur. |
+| DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. Hata iletisi döndüren bölümüne bakın. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -111,7 +111,7 @@ Kimlik doğrulaması türü olarak `Basic`ayarlandıysa, **cryptographickeys** �
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Evet | Kimlik doğrulaması için kullanılan Kullanıcı adı. | 
+| BasicAuthenticationUsername | Evet | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
 | BasicAuthenticationPassword | Evet | Kimlik doğrulaması için kullanılan parola. |
 
 Aşağıdaki örnek, temel kimlik doğrulaması ile bir teknik profil gösterir:
@@ -136,7 +136,7 @@ Kimlik doğrulaması türü olarak `ClientCertificate`ayarlandıysa, **cryptogra
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClientCertificate | Evet | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). | 
+| ClientCertificate | Evet | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,13 +159,13 @@ REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi dönd
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| version | Evet | 1.0.0 | 
-| status | Evet | 409 | 
-| code | Hayır | Etkin olduğunda `DebugMode` görünen, RESTAN uç nokta sağlayıcısından bir hata kodu. | 
-| requestId | Hayır | Etkinleştirildiğinde görünen `DebugMode` , restlen uç nokta sağlayıcısından gelen istek tanımlayıcısı. | 
-| userMessage | Evet | Kullanıcıya gösterilen bir hata iletisi. | 
-| developerMessage | Hayır | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini, etkinleştirildiğinde görüntülenir `DebugMode` . | 
-| daha fazla bilgi | Hayır | Etkinleştirildiğinde görüntülenen `DebugMode` ek bilgilere işaret eden bir URI. | 
+| version | Evet | 1.0.0 |
+| status | Evet | 409 |
+| code | Hayır | Etkin olduğunda `DebugMode` görünen, RESTAN uç nokta sağlayıcısından bir hata kodu. |
+| requestId | Hayır | Etkinleştirildiğinde görünen `DebugMode` , restlen uç nokta sağlayıcısından gelen istek tanımlayıcısı. |
+| userMessage | Evet | Kullanıcıya gösterilen bir hata iletisi. |
+| developerMessage | Hayır | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini, etkinleştirildiğinde görüntülenir `DebugMode` . |
+| daha fazla bilgi | Hayır | Etkinleştirildiğinde görüntülenen `DebugMode` ek bilgilere işaret eden bir URI. |
 
 Aşağıdaki örnek, JSON içinde biçimlendirilen bir hata iletisi döndüren REST API gösterir:
 
@@ -175,9 +175,9 @@ Aşağıdaki örnek, JSON içinde biçimlendirilen bir hata iletisi döndüren R
   "status": 409,
   "code": "API12345",
   "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "userMessage": "Message for the user",
+  "developerMessage": "Verbose description of problem and how to fix it.",
+  "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
 
@@ -197,10 +197,10 @@ public class ResponseContent
 ```
 
 ## <a name="examples"></a>Örnekler:
-- [Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](active-directory-b2c-custom-rest-api-netfw.md) 
+- [Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](active-directory-b2c-custom-rest-api-netfw.md)
 - [HTTP temel kimlik doğrulaması kullanarak yeniden takip eden hizmetlerinizin güvenliğini sağlama](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Gidiş Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın](active-directory-b2c-rest-api-validation-custom.md)
+- [İzlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın](active-directory-b2c-rest-api-validation-custom.md)
 
  
 

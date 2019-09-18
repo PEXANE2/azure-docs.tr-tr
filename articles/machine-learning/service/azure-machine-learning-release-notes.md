@@ -10,18 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993420"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067723"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sayfasına gidin. 
 
 Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Python v 1.0.62 için SDK Azure Machine Learning
+
++ **Yeni Özellikler**
+  + Tabulardataset üzerinde zaman serisi nitelik kullanıma sunulmuştur. Bu nitelik, bir zaman aralığı veya en son veriler arasında tüm verileri almak gibi bir TabularDataset veri kümesi verilerinde kolay zaman damgası filtrelemesini mümkün bir şekilde sunar. Tabulardataset üzerinde bu zaman serisi nitelik hakkında bilgi edinmek için lütfen belgeler veya https://aka.ms/azureml-data https://aka.ms/azureml-tsd-notebook örnek bir not defteri için ziyaret edin. 
+  + TabularDataset ve FileDataset ile eğitime etkin. Lütfen örnek https://aka.ms/dataset-tutorial bir not defteri için ziyaret edin. 
+  
+  + **azureml-tren-çekirdek**
+    + Pytorch tahmin aracı içinde nccl ve gloo desteği eklendi
+  
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-oto ml-çekirdek**
+    + ' Lag_length ' ve LaggingTransformer.
+    + Veri akışı biçiminde belirtilmişse giriş verilerinin doğru doğrulanması düzeltildi
+    + JSON grafiğini oluşturmak ve yapıtlara yüklemek için fit_pipeline. Kopyala değiştirildi. 
+    + Cytoscape kullanarak userrun altında grafik işlendi.
+  + **azureml-çekirdek**
+    + ADB kodundaki özel durum işlemeyi yeniden ziyaret ediyor ve yeni hata işleme uyarınca değişiklik yapma
+    + Not defteri VM 'Leri için otomatik MSI kimlik doğrulaması eklendi.
+    + Başarısız denemeler nedeniyle bozuk veya boş modellerin karşıya yüklenebildiği hatayı düzeltir.
+    + `DataReference` Mod değiştiğinde `DataReference` adın değiştiği hata düzeltildi ( `as_download`örn., veya `as_mount`çağrılırken `as_upload`).
+    + Ve `mount_point` `target_path` için yapın ve `FileDataset.mount` için isteğe bağlıdır. `FileDataset.download`
+    + Zaman damgası sütununun bulunamadığını belirten özel durum, zaman içinde ilgili API 'SI, hassas zaman damgası sütunu atanmamış veya atanan zaman damgası sütunları bırakılınca oluşturulur.
+    + Zaman seri sütunları, türü tarih olan sütunla atanmalıdır, aksi takdirde özel durum beklenmektedir
+    + ' With_timestamp_columns ' API 'sini atayan zaman damgası sütunları, daha önce atanan zaman damgası sütunlarını temizleyerek hiç bir değer ince/kaba zaman damgası sütun adı alabilir.
+    + Büyük/küçük bir zaman damgası sütunu, bırakma listesindeki zaman damgası sütunu dışladıktan sonra veya with_time_stamp çağrısında zaman damgasına olmayan bir değere çağrı yapıldığında, sütunlardan
+    + Sütunları tut listesine, sütun tut listesinde zaman damgası sütunu dahil edildiğinde veya with_time_stamp çağrısı yapılmamış bir Kullanıcı bildirimi ile, sütun tut listesinde yer alan bir durum ortaya çıkar. zaman damgası sütunlarını serbest bırakma değeri.
+    + Kayıtlı bir modelin boyutu için günlük kaydı eklendi.
+  + **azureml-açıkla-model**
+    + "Paketleme" Python paketi yüklü olmadığında konsola sabitlenmiş uyarı düzeltildi: "Desteklenen bir lightgbm sürümünden daha eski bir sürümü kullanıyor, lütfen 2.2.1 sürümüne yükseltin"
+    + Birçok özelliğe sahip genel açıklamalar için parçalı yükleme modeli açıklaması düzeltildi
+    + Eksik başlatma örnekleri çıkış açıklamasında açıklama düzeltildi
+    + İki farklı model türü kullanarak açıklama istemcisiyle karşıya yüklenirken özelliklerde ayarlanan özelliklerde sabit hata düzeltildi
+    + Puanlama açıklama. açıkla () için bir get_raw parametresi eklendi. bu nedenle, bir Puanlama açıklama hem mühendislik yapılan hem de ham değerleri döndürebilir.
+  + **azureml-eğitme-oto ml**
+    + Oto ml 'yi açıklayan ve oto ml 'nin SDK 'sı ile tümleşik ham açıklama desteğini destekleyen, oto ml 'nin SDK 'sı tarafından desteklenen genel API 'Ler modelde.
+    + Uzak eğitim ortamlarından azureml varsayılan değerleri kaldırılıyor.
+    + AzureDatabricks Code yolunda bulunan bir AzureFileCacheStore One tabanlı dosya olan varsayılan önbellek depolama konumu, bir.
+    + Veri akışı biçiminde belirtilmişse giriş verilerinin doğru doğrulanması düzeltildi
+  + **azureml-tren-çekirdek**
+    + Source_directory_data_store kullanımdan kaldırıldı.
+    + Azureml yüklü paket sürümlerini geçersiz kılma özelliği eklendi. 
+    + Estimators 'daki `environment_definition` parametreye dockerfile desteği eklendi.
+    + Estimators 'da Basitleştirilmiş dağıtılmış eğitim parametreleri.
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
 
 ## <a name="2019-09-09"></a>2019-09-09
 

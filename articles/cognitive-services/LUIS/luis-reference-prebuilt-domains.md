@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307428"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067607"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUSıS uygulamanız için önceden oluşturulmuş etki alanı başvurusu
 Bu başvuru, hakkında bilgi sağlar. [önceden oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md), önceden oluşturulmuş koleksiyon hedefleri ve LUIS sunan varlıkların olduğu.
@@ -27,7 +27,7 @@ Bu başvuru, hakkında bilgi sağlar. [önceden oluşturulmuş etki alanları](l
 
 Aşağıdaki tabloda, şu anda desteklenen etki alanları özetlenmektedir. Ingilizce desteği genellikle diğerlerinden daha tamamdır. 
 
-| Varlık türü       | EN-US      | ZH-CN   | DE    | GS     | ES    | IT      | PT-BR |  JP  |      DILI |        NL |    TR |
+| Varlık türü       | EN-US      | ZH-CN   | DE    | GS     | ES    | BT      | PT-BR |  JP  |      DILI |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
 | [Takvim](#calendar)    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | [Kurulan](#communication)   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -54,10 +54,10 @@ Takvim, kişisel toplantılar ve randevular (örneğin, dünya Kupa zamanlamalar
 Amaç adı | Açıklama | Örnekler
 ---------|----------|---------------
  AcceptEventEntry | Takvimdeki (n) bir randevuyu/toplantıyı/olayı kabul edin. | Bir randevuyu kabul edin. <br> Olayı kabul et <br> Bugünün toplantısını kabul edin.
- İptal | Bir toplantı oluşturma işlemini iptal etme gibi, sanal yardım ile devam eden işlemi iptal edin. <br> ***Uyarı**: Bu amaç genellikle takvim senaryosunda "Iptal" eylemini içerir. "Iptal" üzerinde genel ifadeye ihtiyacınız varsa, lütfen **Utilities** etki alanındaki "iptal" hedefini kullanın. * | Tamam, yalnızca olayı iptal et. <br> Hayır, yalnızca randevuyu iptal ediyorum.
+ İptal | Bir toplantı oluşturma işlemini iptal etme gibi, sanal yardım ile devam eden işlemi iptal edin. <br> _**Uyarı**: Bu amaç genellikle takvim senaryosunda "Iptal" eylemini içerir. "Iptal" üzerinde genel ifadeye ihtiyacınız varsa, lütfen **yardımcı programlar** etki alanındaki "iptal" hedefini kullanın._ | Tamam, yalnızca olayı iptal et. <br> Hayır, yalnızca randevuyu iptal ediyorum.
  ChangeCalendarEntry | Takvim girişini değiştirin veya yeniden zamanlayın. | 6 ' yı yeniden zamanla Yarın-2 p.m. arası randevu <br> Doktor randevusu 5 PM için Yeniden Çizelgele <br> Jenny Olson ile Cuma günleri yeniden zamanlayın. <br> Olay saatini değiştir.
  CheckAvailability | Kullanılabilirlik randevu veya kullanıcının takvim veya başka bir kişinin Takvim toplantı bulun. | Jim karşılamak kullanılabilir olduğunda? <br> Carol 'ın yarın ne zaman kullanılabilir olduğunu gösterir. <br> Chris Cumartesi günleri ücretsiz mi?
- Onayla | Önceki amaca göre bir işlem/eylem yapılıp yapılmayacağını onaylayın. <br> ***Uyarı**: Bu amaç genellikle takvim senaryosu için "Onayla" eylemini içerir. "Onayla" üzerinde daha fazla genel ifadeye ihtiyacınız varsa, lütfen **Utilities** etki alanında "Onayla" hedefini kullanın. *| Bu doğru, lütfen toplantıyı oluşturun <br> Evet, teşekkürler, toplantıya Bağlan.
+ Onayla | Önceki amaca göre bir işlem/eylem yapılıp yapılmayacağını onaylayın. <br> _**Uyarı**: Bu amaç genellikle takvim senaryosu için "Onayla" eylemini içerir. "Onayla" üzerinde daha fazla genel ifadeye ihtiyacınız varsa, lütfen **yardımcı programlar** etki alanında "Onayla" hedefini kullanın._| Bu doğru, lütfen toplantıyı oluşturun <br> Evet, teşekkürler, toplantıya Bağlan.
  ConnectToMeeting | Bir toplantıya bağlanın. | Andy ile 11:00 konferans çağrısına beni bağlayın. <br> Bütçe toplantısı çağrısını kabul edin.
  Contactmeeting ınkatılımcılar | Toplantı katılımcıları ile iletişim kurun. | Toplantıya geç 3:00 toplantısını çalıştırdığımı söyleyin. <br> İş arkadaşlarınıza, 8:30 ' de başlaması gereken 8 toplantı toplantısı için bildirim gönderin.
  CreateCalendarEntry | Yeni bir kerelik öğe takviminize ekleyin. | Sorunları ele alarak bir toplantı oluşturun. <br> ile bir toplantı oluşturunabc@microsoft.com
@@ -69,17 +69,17 @@ Amaç adı | Açıklama | Örnekler
  FindCalendarDetail | Zamanlamanın ayrıntılarını denetleyin ve görüntüleyin. | İş arkadaşımın bulunduğu toplantının ayrıntılarını bana sağlamanız gerekiyor.
  FindDuration | Süreyi denetleyin. | Market 'i ne kadar zaman çekmem gerekir? <br> Öğle yemeği ne kadar süreyle var?
  Findmeeting Inodi | Kullanılabilir toplantı odalarını bulun. | Odalara uydum? <br> Yeni bir toplantı konumu bulun.
- GoBack | Son adıma veya öğeye geri dönün.  <br> ***Uyarı**: Daha fazla GoBack genel atıfta bulunmak için lütfen **yardımcı programlar** etki alanına bakın. * | Önceki bir <br> Son e-postaya geri dönün.
- Reddet | Kullanıcı sanal yardımcıyı önerdiğini reddeder. <br> ***Uyarı**: Daha fazla reddetmek için lütfen **yardımcı programları** etki alanına bakın. * | Olayı ayarlama gereksinimi yoktur. <br> Bu sırada yapacağım başka şeyler var.
-ShowNext | Sonraki olayı denetleyin. <br> ***Uyarı**: Daha fazla ShowNext genel kullanım için lütfen **yardımcı programlar** etki alanına bakın. * | Bana bir sonraki olayımı ver. <br> Takvimde ileri git?
- ShowPrevious | Önceki olayı denetleyin. <br> ***Uyarı**: Daha fazla ShowPrevious genel kullanım için lütfen **yardımcı programlar** etki alanına bakın. * | Zamanlama ne kadar önce?
+ GoBack | Son adıma veya öğeye geri dönün.  <br> _**Uyarı**: Daha fazla GoBack genel atıfta bulunmak için lütfen **yardımcı programlar** etki alanına bakın._ | Önceki bir <br> Son e-postaya geri dönün.
+ Reddet | Kullanıcı sanal yardımcıyı önerdiğini reddeder. <br> _**Uyarı**: Daha fazla reddetme genel kullanım için lütfen toC **yardımcı programları** etki alanına bakın._ | Olayı ayarlama gereksinimi yoktur. <br> Bu sırada yapacağım başka şeyler var.
+ShowNext | Sonraki olayı denetleyin. <br> _**Uyarı**: Daha fazla ShowNext genel kullanım için lütfen **yardımcı programlar** etki alanına bakın._ | Bana bir sonraki olayımı ver. <br> Takvimde ileri git?
+ ShowPrevious | Önceki olayı denetleyin. <br> _**Uyarı**: Daha fazla ShowPrevious genel kullanım için lütfen **yardımcı programlar** etki alanına bakın._ | Zamanlama ne kadar önce?
  TimeRemaining | Sonraki olaya kadar kalan süreyi kontrol edin. | Toplantılarıma ne kadar süre sonra ihtiyacım olduğunu görüntüleyin. <br> Sonraki toplantım başlamadan önce sahip olduğumu gösteren süreyi görüntüleyin.
  
 ### <a name="entities"></a>**Varlıklar**
 Varlık Adı | Varlık türü | Açıklama | Örnekler | Yuvalar
 -------|-----------------------|-------------|---------|--------
 ContactName | kişi adı | Bir kişinin veya toplantı katılımcısının adı. | **Betsy**ile tanışın. <br>  3 Temmuz 'da 7 p.m. üzerinde **Aubrey** ile tanışın | Betsy <br> Aubrey <br> Amy 
-Hedef takvim | MPLE | Hedef takvim adı. | MOM ile öğle yemeği 12 **Kişisel** Salı <br> **Google** takvimimi varsayılan takvimim olarak kullan. <br> Yoga sınıfını 3 p.m. ' de Mon 'a Güncelleştir **Kişisel** takvimdeki liste. | Google <br> c <br> başlar <br> Ana
+Hedef takvim | MPLE | Hedef takvim adı. | MOM ile öğle yemeği 12 **Kişisel** Salı <br> **Google** takvimimi varsayılan takvimim olarak kullan. <br> Yoga sınıfını 3 p.m. ' de Mon 'a Güncelleştir **Kişisel** takvimdeki liste. | Google <br> C <br> başlar <br> Ana
 Duration | datetime | Toplantý, randevunun veya kalan sürenin süresi. | **20 dakika**boyunca 00 ' da yarın Scholarship ayrıntılarını tartışmak için Gary ile birlikte iş tavder toplantısına ekleyin. <br> 9 p.m. ' de **bir saat** boyunca Thomas ile bir etkinlik olacak şekilde takvime kısa bir olay ekleyin | bir saat <br> 2 gün <br> 20 dakika 
 EndDate | datetime | Bir toplantının veya randevunun bitiş tarihi. | Takvim bas salonu, **Mary 5** ' te konser ekleyin | Mary 5  
 EndTime | datetime | Toplantı veya randevunun bitiş saati. | Bunu **üç** ile 2 30 yapabilirsiniz | üç 
@@ -152,7 +152,7 @@ Varlık Adı | Varlık türü | Açıklama | Örnekler | Yuvalar
 Attachment | MPLE | Kullanıcının metin veya e-posta ile göndermek istediği ek. | OneNote 'tan bir **dosyayı** e-posta ile gönderin. <br> Evlerimin evmi olduğunu bir kaya gönderin. | dosyası <br> Belg
 AudioDeviceType | MPLE | Ses cihazının türü (konuşmacı, kulaklık, mikrofon vb.). | **Eller ücretsiz**kullanarak yanıtlayın. <br> **Konuşmacı telefonunda**yeniden arayın. | sesini <br> Eller ücretsiz <br> Bluetooth
 Category | MPLE | Bir ileti veya e-postanın kategorisi, Kategori "okunmamış", "bayrak" gibi e-posta sisteminde açık bir tanıma sahip olmalıdır. Açıklama w/o Clear Definition, örneğin, "New" ve "son" Kategoriler değildir. | Tüm e-postaları **okundu** olarak işaretle  <br> Paul için yeni **yüksek öncelikli** e-posta | önemli <br> yüksek öncelikli <br> oku
-ContactAttribute | MPLE | Kullanıcı ile ilgili olarak iletişim kurmak için bir özniteliği.| Sonraki ayın **Doğum günlerini** öğrenmem gerekir mi? | günleri <br> address <br> telefon numarası
+ContactAttribute | MPLE | Kullanıcı ile ilgili olarak iletişim kurmak için bir özniteliği.| Sonraki ayın **Doğum günlerini** öğrenmem gerekir mi? | günleri <br> address <br> Telefon numarası
 ContactName | kişi adı  | Bir kişi veya ileti alıcı adı. | E-postayı **Stevens** 'e gönder | Stevenler
 Date/Time | datetime | Alınan e-postanın tarih ve saati. | **Bugünün**postasını okuyun <br> **Bugün**bana kim e-posta gönder? <br> 7:00 **'** da kimler kurdu? | bugün <br> yarın
 Hedef telefon | MPLE | Hedef Kullanıcı ' a bir metin çağırmak veya göndermek istiyor. | **evin** bir çağrısını yapın <br> **ana sayfaya** kısa mesaj gönder | diği <br> giriş sayfası
@@ -165,7 +165,7 @@ FromRelationshipName | MPLE | Gönderenin ilişki adı. | **Babacığım**iletis
 `Message` | basit, model. Kaydedilmemiş |  Bir e-posta veya metin olarak gönderilecek ileti.  | "**Meşgul olduğum**" e-posta gönderin. | Meşgul mıyım
 OrderReference | MPLE | Listesini almak için bir öğeyi tanımlamak, sıralı ya da göreli konumu. | Gönderdiğim **son** ileti neydi? <br> **En son** Nokia e-postasını okuyun. <br> **Yeni** metin iletilerini okuyun. | soyadına <br> latest <br> yapılan <br> alanına
 PositionReference | basit, sıralı | Listesini almak için bir öğeyi tanımlamak, sıralı ya da göreli konumu.| Gönderdiğim **ilk** ileti neydi? <br> **3** . bir.| İlk <br> 3 taraf
-phoneNumber | phoneNumber | Kullanıcının, bir metin aramasını veya uygulamasına bir metin göndermesini isteyen telefon numarası. | **4 1 5 6 8 4 5 2 8 4** 'ye metin gönderin | 3525214446
+PhoneNumber | PhoneNumber | Kullanıcının, bir metin aramasını veya uygulamasına bir metin göndermesini isteyen telefon numarası. | **4 1 5 6 8 4 5 2 8 4** 'ye metin gönderin | 3525214446
 RelationshipName | MPLE | Bir kişinin veya ileti alıcısının ilişki adı. | **Wife** 'e e-posta gönder | Eşim
 Searchmetinmetinler | basit, model. any | E-postaları veya iletileri filtrelemek için kullanılan metinler | "**Surface Pro**" içeren tüm e-postaları ara | Surface Pro
 Yerleştirildi | MPLE | Hızlı arama. | Çağrı **3 4 5**. <br> Hız çevir **tek**ayarla. | 345 <br> 5
@@ -268,7 +268,7 @@ Varlık Adı | Varlık türü | Açıklama | Örnekler
 Text | basit, model. Kaydedilmemiş | Not veya anımsatıcı metni. | Yürüyen önce Uzat <br> uzun süre çalışan yarın
 Başlık | basit, model. Kaydedilmemiş | Not ın başlığı. | Market <br> çağrılacak kişiler <br> Yapılacaklar
 CreationDate | datetimeV2 | Bu yuva, kullanıcının belirli bir tarih/saat penceresinde oluşturulmuş notları istediğinde kullanılır. | 
-Miktar Niteleyici | List | Bir Kullanıcı ' All ', ' her ' veya ' any ' öğeleri veya bir nottaki tüm metinler üzerinde bir eylem gerçekleştirmeyi istediğinde. | tümü <br> herhangi biri <br> Her
+Miktar Niteleyici | List | Bir Kullanıcı ' All ', ' her ' veya ' any ' öğeleri veya bir nottaki tüm metinler üzerinde bir eylem gerçekleştirmeyi istediğinde. | tümü <br> Kaydedilmemiş <br> Her
 OrderReference | ordinal | Kullanıcı, "First", "Last", "Next" vs. Items ile eylem yapmak istiyor. | adı <br> soyadına
 
 
@@ -386,7 +386,7 @@ LUSıS varlığı | Varlık türü | Açıklama | Örnekler
 ------------|-------------|-------------|---------
 ordinal | ordinal | Bir öğeye yönelik sıra veya sayısal başvuru. | **İkinci** bir. <br> **Sonraki** bir.
 numarası | numarası | Kullanıcının istediği öğe miktarı | Sonraki **3** öğe
-DirectionalReference | MPLE | Ekranda bir öğenin bulunduğu bir başvuru noktası. | Bir doğru <br> üst
+DirectionalReference | MPLE | Ekranda bir öğenin bulunduğu bir başvuru noktası. | Bir doğru <br> Üst
 
 ## <a name="weather"></a>**Gü**
 Hava durumu etki alanı, hava durumu koşullarına ve BT danışmanlarını, hava durumu koşullarına göre konum ve saat ya da denetim saatine
@@ -404,12 +404,12 @@ LUSıS varlığı | Varlık türü | Açıklama | Örnekler
 ------------|-------------|-------------|---------
 Location | Coğrafya | Hava durumu isteğinin mutlak veya örtük konumu. | Palo Alto<br>Shanghai<br>Seattle<br>Delvina<br>
 Date/Time   | datetime | Hava durumunu sorgulamak için tarih/saat veya süre. | Kasım<br>hourly<br>BAH<br>Bu hafta sonu<br>10 gün<br>
-Additionalhava durumu | list | Hava durumu için, Rüzgar hızı veya yönü gibi ek açıklama sözcüğü. | direction<br>Hızlı<br>ınız
+Additionalhava durumu | list | Hava durumu için, Rüzgar hızı veya yönü gibi ek açıklama sözcüğü. | direction<br>Hızlı<br>Inız
 Yer | MPLE | Geçmiş hava durumu koşulunun açıklama kelimeleri, son zaman döneminde ortalama Joomla boralimli durumlar da dahil olmak üzere. | başlangıcından<br>geçmiş/geçmiş<br>Dönemsel<br>en iyi zaman<br>Şimdiye kadar kaydedildi
 PrecipitationUnit | boyut | Kar veya yağmur için yağış. | 5 inç<br>6 cm
 SuitableFor | MPLE | Bir hava durumu koşulunda bir insan etkinliğinin açıklaması; kullanıcılar, hava durumu koşuluna bağlı olan etkinlik önerisi ' ne geldiğinde yaygın olarak kullanılır. | ceket<br>şemsiye<br>Yüzme
 TemperatureUnit |sıcaklık | sıcaklık | 18 Santi<br>7 Kelvin derece
-Hava aralığı | MPLE | Belirli bir süre içinde sıcaklık, Rüzgar ve diğer hava durumu koşullarının belirli bir koşulu | en fazla<br>geniş<br>düşük<br>Ortalama yüksek<br>En Yüksek
+Hava aralığı | MPLE | Belirli bir süre içinde sıcaklık, Rüzgar ve diğer hava durumu koşullarının belirli bir koşulu | en fazla<br>Geniş<br>düşük<br>Ortalama yüksek<br>En Yüksek
 Hava durumu | MPLE | Hava durumu koşulu açıklaması | güneşli<br>maktan<br>yağan<br>sıcaklık<br>kar<br>Sık erişimli
 Wınte Directionunit | list | Rüzgar yönü kelimeleri | Kuzeydoğu<br>Eli<br>üzerinden<br>Batı<br>Kuzeydoğu
 

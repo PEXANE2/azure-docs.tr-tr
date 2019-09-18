@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019816"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066343"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT çekirdek cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -43,13 +43,27 @@ Cihaz şablonunun yapılandırmasıyla ilgili tüm ayrıntılar için bkz. [Wind
 
 ## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
 
-Azure IoT Central uygulamanızda, **Windows 10 IoT çekirdek** cihaz şablonundan gerçek bir cihaz eklemek için **Device Explorer** sayfasını kullanın. Cihaz bağlantısı ayrıntılarını (**kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**) bir yere unutmayın. Daha fazla bilgi için bkz. [bağlantı bilgilerini al](howto-generate-connection-string.md#get-connection-information).
+Azure IoT Central uygulamanızda, **Windows 10 IoT çekirdek** cihaz şablonundan gerçek bir cihaz eklemek için **Device Explorer** sayfasını kullanın. Cihaz bağlantısı ayrıntılarını (**kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**) bir yere unutmayın.
 
 ## <a name="prepare-the-device"></a>Cihazı hazırlama
 
-Cihazın IoT Central bağlanmasına yönelik bir bağlantı dizesi gerekir.
+Cihazın IoT Central bağlanmasına yönelik bir bağlantı dizesi gerekir:
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. Bir bağlantı dizesi oluşturmak için komutsatırıyardımcıprogramınıkullanın:`dps-keygen`
+
+    [Anahtar Oluşturucu yardımcı programını](https://github.com/Azure/dps-keygen)yüklemek için şu komutu çalıştırın:
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. Bir bağlantı dizesi oluşturmak için, daha önce not ettiğiniz bağlantı ayrıntılarını kullanarak aşağıdaki komutu çalıştırın:
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. Bağlantı dizesini, cihaz kodunuzda kullanılacak `dps-keygen` çıktıdan kopyalayın.
 
 Aygıt kodunun bağlantı dizesine erişmesi için, Windows 10 IoT çekirdek cihazındaki klasörde `C:\Data\Users\DefaultAccount\Documents\` **Connection. String. ıothub** adlı bir dosyaya kaydedin.
 

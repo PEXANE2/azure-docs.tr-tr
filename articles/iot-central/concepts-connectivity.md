@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0088cc2c2bd30748a8a62217c76f962dd1b174f8
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: bb7711eea927212042ed2299bae74130867c1692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019980"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067634"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central cihaz bağlantısı
 
@@ -34,14 +34,17 @@ DPS kullanılması şunları sunar:
 
 Bu makalede aşağıdaki dört kullanım durumu açıklanmaktadır:
 
-1. [SAS kullanarak tek bir cihazı hızlı bir şekilde bağlama](#connect-a-single-device)
-1. [SAS kullanarak cihazları ölçeklendirmeye bağlama](#connect-devices-at-scale-using-sas)
-1. [X. 509.440 sertifikalarını kullanarak cihazları ölçeklendirmeye bağlayın](#connect-devices-using-x509-certificates) bu, üretim ortamları için önerilen yaklaşımdır.
-1. [Önce cihazları kaydetmeden Bağlan](#connect-without-registering-devices)
+- [SAS kullanarak tek bir cihazı hızlı bir şekilde bağlama](#connect-a-single-device)
+- [SAS kullanarak cihazları ölçeklendirmeye bağlama](#connect-devices-at-scale-using-sas)
+- [X. 509.440 sertifikalarını kullanarak cihazları ölçeklendirmeye bağlayın](#connect-devices-using-x509-certificates) bu, üretim ortamları için önerilen yaklaşımdır.
+- [Önce cihazları kaydetmeden Bağlan](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>Tek bir cihazı bağlama
 
-Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıdır. Bir cihaz için bağlantı dizesi oluşturmak üzere IoT Central uygulamanızdaki cihaz bağlantı bilgilerini kullanabilirsiniz. Ayrıntılı adımlar için bkz. [Azure IoT Central uygulamasına bağlanmak için cihaz bağlantı dizesi oluşturma](howto-generate-connection-string.md).
+Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıdır. Cihaz sağlama hizmeti 'ni (DPS) kullanarak bir cihazı IoT Central uygulamanıza bağlamak için IoT Central uygulamanızdaki cihaz bağlantı bilgilerini kullanabilirsiniz. Aşağıdaki diller için örnek DPS cihaz istemci kodunu bulabilirsiniz:
+
+- [C\#](./howto-connect-raspberry-pi-csharp.md)
+- [Node.js](./howto-connect-nodejs.md)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS kullanarak cihazları ölçeklendirmeye bağlama
 
@@ -152,7 +155,7 @@ Gerçek bir cihaz IoT Central uygulamasına bağlanırsa, sağlama durumu aşağ
 
 1. Geçerli kimlik bilgileriyle IoT Central uygulamanıza bağlı olan cihaz sağlama adımını tamamladığında cihaz sağlama durumu **sağlandı** olarak değişir. Bu adımda, cihaz IoT Hub bir bağlantı dizesi alır. Cihaz artık IoT Hub bağlanabilir ve veri göndermeye başlayabilir.
 
-1. Bir işleç, bir cihazı engelleyebilir. Bir cihaz engellendiğinde, IoT Central uygulamanıza veri gönderemeyecektir. Engellenen cihazların sağlama durumu **engellendi**. Bir operatör, verileri göndermeye başlamadan önce cihazı sıfırlamalıdır. Bir operatör bir cihazı engellerse, sağlama durumu önceki değerine geri döner, **kaydedilir** veya sağlanır.
+1. Bir işleç, bir cihazı engelleyebilir. Bir cihaz engellendiğinde, IoT Central uygulamanıza veri gönderemeyecektir. Engellenen cihazların sağlama durumu **engellendi**. Bir operatör, verileri göndermeye başlamadan önce cihazı sıfırlamalıdır. Bir operatör bir cihazı engellerse, sağlama durumu önceki değerine geri döner, **kaydedilir** **veya sağlanır**.
 
 ## <a name="sdk-support"></a>SDK desteği
 
@@ -163,8 +166,6 @@ Azure cihaz SDK 'Ları, cihaz kodunuzu uygulamanız için en kolay yolu sunar. A
 - [Node. js için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
 - [Java için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
 - [.NET için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-csharp)
-
-Her cihaz, cihazı tanımlayan benzersiz bir bağlantı dizesi kullanarak bağlanır. Bir cihaz yalnızca kayıtlı olan IoT Hub 'ına bağlanabilir. Azure IoT Central uygulamanızda gerçek bir cihaz oluşturduğunuzda, uygulama kullanarak `dps-keygen`bağlantı dizesi oluşturmak için gereken bilgileri oluşturur.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK özellikleri ve IoT Hub bağlantısı
 
